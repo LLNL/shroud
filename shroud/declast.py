@@ -470,7 +470,9 @@ class Parser(ExprParser):
                     # Save fully resolved typename
                     node.typemap = ns.typemap
                     #self.info("Typemap {}".format(ns.typemap.name))
-                    if node.typemap.base == "template":
+                    if node.typemap.base == "shared_ptr":
+                        create_shared_ptr_typemap(node, self.symtab)
+                    elif node.typemap.base == "template":
                         node.template_argument = ns_name
                     found_type = True
                 else:
@@ -1149,7 +1151,7 @@ class Node(object):
         """
         return self.unqualified_lookup("{}-{}".format(tag, name))
         
-    def create_template_typemaps(self, node, symtab):
+    def XXXcreate_template_typemaps(self, node, symtab):
         """
         Create typemaps for each template argument.
         This is done after we know if if is a class/struct/function template.
@@ -1660,6 +1662,45 @@ class CXXClass(Node):
         symtab.add_child_to_current(self)
         symtab.push_scope(self)
 
+def create_shared_ptr_typemap(node, symtab):
+    """Create a Typemap entry for a shared pointer instantiation.
+
+    ex: std::shared_ptr<Object> *return_ptr(void);
+
+    base_typemap is referencing type Object.
+
+    Parameters:
+      node - declast.Declaration
+      symtab - declast.SymbolTable
+    """
+    targs = node.gen_template_arguments()
+    type_name = node.typemap.name + targs
+    base_typemap = node.template_arguments[0].typemap
+    node.typemap = fetch_shared_ptr_typemap(type_name, base_typemap, symtab)
+
+def fetch_shared_ptr_typemap(type_name, base_typemap, symtab):
+    """Return a Typemap entry for a shared pointer instantiation.
+
+    Return existing entry if it already exists, otherwise create one.
+    Create with sgroup=shadow. It servers a a place holder and 
+    will be filled in later.
+
+    Parameters:
+      type_name - str
+      symtab - declast.SymbolTable
+    """
+    ntypemap = symtab.lookup_typemap(type_name)
+    if ntypemap is None:
+        ntypemap = typemap.Typemap(
+            type_name,
+            base="shared",
+            sgroup="shared",
+            base_typemap=base_typemap,
+            ntemplate_args=1,
+        )
+        symtab.register_typemap(type_name, ntypemap)
+    return ntypemap
+
 
 class Namespace(Node):
     """A C++ namespace statement.
@@ -1838,6 +1879,8 @@ class SymbolTable(object):
     scope_stack - stack (list) of AstNodes.
     name_stack - stack (list) of names of scope_stack nodes.
        useful to create scoped names - ns::class::enum
+
+    Maintain a dictionary of typemaps.
     """
     def __init__(self, language="cxx"):
         self.scope_stack = []

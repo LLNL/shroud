@@ -67,6 +67,8 @@ class FillFormat(object):
                 cursor.push_phase("FillFormat class struct")
                 self.wrap_struct(cls)
                 cursor.pop_phase("FillFormat class struct")
+            else:
+                self.wrap_class(cls)
                 
             cursor.push_phase("FillFormat class function")
             self.fmt_functions(cls, cls.functions)
@@ -87,6 +89,27 @@ class FillFormat(object):
             fmt = statements.set_bind_fmtdict(bind, node.fmtdict)
             set_f_var_format(var, bind)
 
+    def wrap_class(self, node):
+        options = node.options
+        fmt_class = node.fmtdict
+        cls_cursor = self.cursor.push_node(node)
+
+        if node.baseclass:
+            # Only single inheritance supported.
+            # Base class already contains F_derived_member.
+            # ['pubic', 'ClassName', declast.CXXClass]
+            fmt_class.F_derived_member_base = node.baseclass[0][2].typemap.f_derived_type
+            fmt_class.baseclass = statements.BaseClassFormat(node.baseclass[0][2])
+        elif options.class_baseclass:
+            # Used with wrap_struct_as=class.
+            baseclass = node.parent.ast.unqualified_lookup(options.class_baseclass)
+            if not baseclass:
+                self.cursor.warning("Unknown class '{}' in option.class_baseclass".format(options.class_baseclass))
+                fmt_class.F_derived_member_base = "===>F_derived_member_base<==="
+            else:
+                fmt_class.F_derived_member_base = baseclass.typemap.f_derived_type
+        self.cursor.pop_node(node)
+            
     def fmt_typedefs(self, node):
         if node.wrap.fortran:
             if node.ast.declarator.is_function_pointer():

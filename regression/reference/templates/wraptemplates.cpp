@@ -29,7 +29,7 @@ extern "C" {
 TEM_user_int * TEM_returnUserType(TEM_user_int * SHC_rv)
 {
     // splicer begin function.returnUserType
-    user<int> * SHC_rv_cxx = new user<int>;
+    user<int> *SHC_rv_cxx = new user<int>;
     *SHC_rv_cxx = returnUserType();
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 5;
@@ -43,7 +43,7 @@ TEM_user_int * TEM_returnUserType(TEM_user_int * SHC_rv)
 void TEM_returnUserType_bufferify(TEM_user_int * SHC_rv)
 {
     // splicer begin function.returnUserType_bufferify
-    user<int> * SHC_rv_cxx = new user<int>;
+    user<int> *SHC_rv_cxx = new user<int>;
     *SHC_rv_cxx = returnUserType();
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 5;

@@ -5008,6 +5008,7 @@
                     "PY_to_object_func": "PP_Circle_to_Object",
                     "PY_to_object_idtor_func": "PP_Circle_to_Object_idtor",
                     "PY_type_filename": "pyCircletype.cpp",
+                    "baseclass": "<BasesClassFormat classes::Shape>",
                     "class_scope": "Circle::",
                     "cxx_class": "Circle",
                     "cxx_type": "Circle",

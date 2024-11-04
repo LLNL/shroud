@@ -19,6 +19,7 @@ program tester
   call init_fruit
 
   call test_object
+  call test_object_shared
 
   call fruit_summary
   call fruit_finalize
@@ -31,13 +32,32 @@ program tester
 contains
 
   subroutine test_object
-    type(object) objectSharedPtr
+    type(object) objectPtr
 
     call set_case_name("test_object")
 
-    objectSharedPtr = object()
-    call assert_true(objectSharedPtr%associated())
+    objectPtr = object()
+    call assert_true(objectPtr%associated())
 
   end subroutine test_object
+
+  subroutine test_object_shared
+    type(object_shared) objectSharedPtr
+    type(object_shared) childA, childB
+
+    call set_case_name("test_object_shared")
+
+    objectSharedPtr = object_shared()
+    call assert_true(objectSharedPtr%associated())
+
+    childA = objectSharedPtr%create_child_a()
+    call assert_true(childA%associated())
+
+    childB = objectSharedPtr%create_child_b()
+    call assert_true(childB%associated())
+
+    call objectSharedPtr%replace_child_b(childA)
+
+  end subroutine test_object_shared
 
 end program tester

@@ -1337,6 +1337,9 @@ XXXXXXXXXXXXXXXXXXXX
 XXXX CODE
 int fun1(std::vector<int> arg1, std::vector<int> *arg2, std::vector<int> &arg3);
 int callback1(int in, int (*incr)(int));
+
+class Object;
+std::shared_ptr<Object> *return_ptr(void);
 XXXX PRINT
 0 int
    fun1(std::vector<int> arg1, std::vector<int> *arg2, std::vector<int> &arg3)
@@ -1367,9 +1370,24 @@ XXXX DeclStr
          gen_decl: 1 int (*incr)(int)
          as_c    : 1 int (*incr)(int)
          as_cxx  : 1 int (*incr)(int)
+2 class Object
+   
+XXXX DeclStr
+     gen_decl: 2 class Object
+     as_c    : 2 --NOTYPE--
+     as_cxx  : 2 --NOTYPE--
+3 std::shared_ptr<Object>
+   *return_ptr(void)
+XXXX DeclStr
+     gen_decl: 3 std::shared_ptr<Object> *return_ptr(void)
+     as_c    : 3 --NOTYPE-- *return_ptr
+     as_cxx  : 3 --NOTYPE-- *return_ptr
+     no params: std::shared_ptr<Object> *return_ptr
 XXXX PRINT_NODE
 int fun1(std::vector<int> arg1, std::vector<int> *arg2, std::vector<int> &arg3);
 int callback1(int in, int (*incr)(int));
+class Object;
+std::shared_ptr<Object> *return_ptr(void);
 
 XXXX AST
 stmts:
@@ -1461,12 +1479,38 @@ stmts:
   specifier:
   - int
   typemap_name: int
+- _ast: Declaration
+  declarator:
+    typemap_name: Object
+  specifier:
+  - class Object
+  typemap_name: Object
+- _ast: Declaration
+  declarator:
+    name: return_ptr
+    params: []
+    pointer:
+    - ptr: '*'
+    typemap_name: std::shared_ptr<Object>
+  specifier:
+  - std::shared_ptr
+  template_arguments:
+  - _ast: Declaration
+    declarator:
+      typemap_name: Object
+    specifier:
+    - Object
+    typemap_name: Object
+  typemap_name: std::shared_ptr<Object>
 XXXX SymbolTable
 cls: Global
 symbols:
   MPI_Comm:
     cls: Typedef
     typemap: MPI_Comm
+  Object:
+    cls: CXXClass
+    typemap: Object
   int16_t:
     cls: Typedef
     typemap: int16_t
@@ -1507,7 +1551,15 @@ symbols:
     cls: Typedef
     typemap: uint8_t
 XXXX Typemap
+Object:
+  base: shadow
+  sgroup: shadow
 int(*)(int):
   base: procedure
   f_type: f-function-pointer
   sgroup: procedure
+std::shared_ptr<Object>:
+  base: shared
+  base_typemap: Object
+  ntemplate_args: 1
+  sgroup: shared

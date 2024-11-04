@@ -283,6 +283,8 @@ class ToDict(visitor.Visitor):
         for key, value in node.__dict__.items():
             if key in ["gen"]:
                 continue
+            elif key in ["baseclass"]:
+                d[key] = repr(value)
             elif key in ["targs"]:
                 d[key] = self.visit(value)
             elif key == "typemap":
@@ -310,15 +312,16 @@ class ToDict(visitor.Visitor):
                 # Only save Typemap names to avoid too much clutter.
                 if value:
                     names = {}
-                    for key, ntypemap in value.items():
-                        names[key] = ntypemap.name
-                    d["cxx_instantiation"] = names
+                    for key2, ntypemap in value.items():
+                        names[key2] = ntypemap.name
+                    d[key] = names
             elif key == "ast":
                 if value is not None:
-                    d["ast"] = self.visit(value)
-            elif key == "typedef":
+                    d[key] = self.visit(value)
+            elif key in ["base_typemap", "typedef"]:
+                # value is Typemap
                 if value is not None:
-                    d["typedef"] = value.name
+                    d[key] = value.name
             else:
                 if value is not defvalue:
                     d[key] = value

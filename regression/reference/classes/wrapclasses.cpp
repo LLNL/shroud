@@ -276,7 +276,7 @@ void CLA_getClassReference_bufferify(CLA_Class1 * SHC_rv)
 CLA_Class1 * CLA_getClassCopy(int flag, CLA_Class1 * SHC_rv)
 {
     // splicer begin function.getClassCopy
-    classes::Class1 * SHC_rv_cxx = new classes::Class1;
+    classes::Class1 *SHC_rv_cxx = new classes::Class1;
     *SHC_rv_cxx = classes::getClassCopy(flag);
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 1;
@@ -297,7 +297,7 @@ CLA_Class1 * CLA_getClassCopy(int flag, CLA_Class1 * SHC_rv)
 void CLA_getClassCopy_bufferify(int flag, CLA_Class1 * SHC_rv)
 {
     // splicer begin function.getClassCopy_bufferify
-    classes::Class1 * SHC_rv_cxx = new classes::Class1;
+    classes::Class1 *SHC_rv_cxx = new classes::Class1;
     *SHC_rv_cxx = classes::getClassCopy(flag);
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 1;

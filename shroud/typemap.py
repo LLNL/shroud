@@ -74,6 +74,7 @@ class Typemap(object):
                     # Set from format.template_suffix in YAML for class.
         ("ntemplate_args", 0), # Number of template arguments
         ("base", "unknown"),  # Base type: 'string', 'integer', 'real', 'complex'
+        ("base_typemap", None), # std::shared_ptr<base_typemap>
         ("typedef", None),  # Initialize from existing type (name of type)
                             # A Typemap instance
         ("cpp_if", None),  # C preprocessor test for c_header
@@ -296,7 +297,7 @@ class Typemap(object):
             order = self._keyorder
         else: # class
             # To be used by other libraries which import shadow types. 
-            if self.base == "shadow":
+            if self.base in ["shadow", "shared"]:
                 order = [
                     "base",
                     "wrap_header",
@@ -1506,7 +1507,7 @@ def return_user_types(typemaps):  # typemaps -> dict
         if ntypemap.name == "--template-parameter--":
             continue
         elif ntypemap.sgroup in [
-                "shadow", "struct", "template", "enum", "procedure"]:
+                "shadow", "shared", "struct", "template", "enum", "procedure"]:
             dct[key] = ntypemap
         elif ntypemap.is_enum:
             dct[key] = ntypemap

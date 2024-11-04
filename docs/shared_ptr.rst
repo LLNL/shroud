@@ -13,9 +13,47 @@ Shared pointers
 .. note:: Work in progress
 
 Shroud has support for ``std::shared_ptr``.
+When the option **C_shared_ptr** is set to *true* for a class, a subclass will be
+created in the Fortran wrapper. This shadow class holds the smart pointer instead
+of a pointer to an instance of the class.
 
-A ``std::shared_ptr`` will be created when the constructor has the
-**+owner(shared)** attribute.
-The option **C_shared_ptr** is used to create a ``FINAL`` subprogram
-which will reduce the count in the ``shared_ptr``.
+.. code-block:: yaml
 
+    declarations:
+    - decl: class Object
+      options:
+        C_shared_ptr: true
+      declarations:
+      - decl: Object()
+      - decl: ~Object()
+
+The generated Fortran wrappers will be
+
+.. code-block:: fortran
+
+    type object
+        type(SHA_SHROUD_capsule_data) :: cxxmem
+    contains
+        procedure :: dtor => object_dtor
+    end type object
+
+    type, extends(object) :: object_shared
+    contains
+        procedure :: dtor => object_shared_dtor
+        final :: object_shared_final
+    end type object_shared
+
+    interface object
+        module procedure object_ctor
+    end interface object
+
+    interface object_shared
+        module procedure object_shared_ctor
+    end interface object_shared
+
+To create an object in C++ with ``new object``, call the ``object``
+function.  To create a shared object with
+``std::make_shared(object)``, call the ``object_shared`` function.
+
+The ``final`` function on object_shared will call the ``reset``
+function to decrement the reference count.

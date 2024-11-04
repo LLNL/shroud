@@ -254,7 +254,7 @@ class FillMeta(object):
             # Unable to set Fortran pointer for void
             # if deref set, error
             pass
-        elif ntypemap.sgroup == "shadow":
+        elif ntypemap.sgroup in ["shared", "shadow"]:
             # Change a C++ pointer into a Fortran pointer
             # return 'void *' as 'type(C_PTR)'
             # 'shadow' assigns pointer to type(C_PTR) in a derived type
@@ -440,7 +440,7 @@ class FillMeta(object):
 
         if api is not missing:
             meta["api"] = api
-        elif ntypemap.sgroup == "shadow":
+        elif ntypemap.sgroup in ["shared", "shadow"]:
             if node.return_this:
                 meta["api"] = "this"
             elif node.options.C_shadow_result:
@@ -462,7 +462,7 @@ class FillMeta(object):
                 # capptr is not used with Fortran wrappers.
                 api = "capsule"
             meta["api"] = api
-        elif ntypemap.sgroup == "shadow":
+        elif ntypemap.sgroup in ["shared", "shadow"]:
             if node.return_this:
                 meta["api"] = "this"
             else:
@@ -531,29 +531,35 @@ class FillMeta(object):
             meta["deref"] = "arg"
             meta["api"] = "buf"
 
-    def set_func_post_c(self, node, meta):
+    def set_func_post_c(self, cls, node, meta):
         """Final check on metaattributes for C.
         Check defaults from typemap.
         """
         ast = node.ast
         ntypemap = ast.typemap
 
-        if ntypemap.sgroup == "shared_ptr":
+        if cls and cls.C_shared_class:
             # XXX - special case for now, need to copy from ntypemap
-            meta["owner"] = "shared"
-            meta["api"] = "capptr"
+            if ast.is_ctor:
+                meta["owner"] = "shared"
+                meta["api"] = "capptr"
+            elif ast.is_dtor:
+                meta["owner"] = "shared"
 
-    def set_func_post_fortran(self, node, meta):
+    def set_func_post_fortran(self, cls, node, meta):
         """Final check on metaattributes for Fortran.
         Check defaults from typemap.
         """
         ast = node.ast
         ntypemap = ast.typemap
 
-        if ntypemap.sgroup == "shared_ptr":
-            meta["owner"] = "shared"
-            meta["api"] = "capsule"
-            meta["deref"] = None
+        if cls and cls.C_shared_class:
+            if ast.is_ctor:
+                meta["owner"] = "shared"
+                meta["api"] = "capsule"
+                meta["deref"] = None
+            elif ast.is_dtor:
+                meta["owner"] = "shared"
             
     def set_arg_api_c(self, arg, meta):
         declarator = arg.declarator
@@ -995,7 +1001,7 @@ class FillMetaC(FillMeta):
         self.set_func_share(node, r_meta)
         self.set_func_deref_c(node, r_meta)
         self.set_func_api_c(node, r_meta)
-        self.set_func_post_c(node, r_meta)
+        self.set_func_post_c(cls, node, r_meta)
 
         # --- Loop over function parameters
         for arg in declarator.params:
@@ -1058,7 +1064,7 @@ class FillMetaFortran(FillMeta):
         self.set_func_share(node, r_meta)
         self.set_func_deref_fortran(node, r_meta)
         self.set_func_api_fortran(node, r_meta)
-        self.set_func_post_fortran(node, r_meta)
+        self.set_func_post_fortran(cls, node, r_meta)
         
         self.meta_function_params(node, fptr_arg)
 

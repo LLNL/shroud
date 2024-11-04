@@ -726,9 +726,9 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_name_instance_get="get_instance",
             F_name_instance_set="set_instance",
             F_name_final="final",
+            F_name_scope = "",
             F_name_typedef="",
             f_result_var="SHT_rv",
-            F_name_scope = "",
             F_this="obj",
             C_string_result_as_arg="SHF_rv",
             F_string_result_as_arg="",
@@ -1155,7 +1155,7 @@ class ClassNode(AstNode, NamespaceMixin):
         cxx_template - list of TemplateArgument instances
 
         Args:
-            base - list of tuples ('public|private|protected', qualified-name (aa:bb), ntypemap)
+            base - list of tuples ('public|private|protected', qualified-name (aa:bb), declast.CXXClass)
             parse_keyword - keyword from decl - "class" or "struct".
         """
         # From arguments
@@ -1177,6 +1177,7 @@ class ClassNode(AstNode, NamespaceMixin):
 
         self.python = kwargs.get("python", {})
         self.cpp_if = kwargs.get("cpp_if", None)
+        self.C_shared_class = False        # True if subclass of option.C_shared_ptr
 
         self.options = util.Scope(parent=parent.options)
         if options:

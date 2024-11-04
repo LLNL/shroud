@@ -154,12 +154,6 @@ def find_abstract_declarator(arg):
     Args:
         arg - declast.Declaration
     """
-    if arg.typemap.sgroup == "shared_ptr":
-        arg = arg.template_arguments[0]
-        suffix = ["*"]
-    else:
-        suffix = []
-        
     declarator = arg.declarator
     if declarator.is_function_pointer():
         decl = ["procedure"]
@@ -176,7 +170,6 @@ def find_abstract_declarator(arg):
             decl.append(",")
         decl[-1] = ">"
     decl.append(abstract)
-    decl.extend(suffix)
     return "".join(decl)
 
 def lookup_fc_stmts(path):
@@ -762,6 +755,7 @@ def print_tree_statements(fp, statements, defaults):
     yaml.safe_dump(complete, fp, sort_keys=False)
 
     return
+    # DEBUG
     # Dump each group to a file
     # This makes it easier to compare one finalized group to another using diff.
     for name, group in complete.items():
@@ -908,3 +902,28 @@ def set_template_fields(ast, fmt):
     """
     fmt.cxx_T = ast.gen_template_argument()
     fmt.targs = [TemplateFormat(targ) for targ in ast.template_arguments]
+
+
+######################################################################
+# baseclass
+
+class BaseClassFormat(object):
+    """Used with Scope and format fields.
+    to access type information for the baseclass.
+
+    "{baseclass.cxx_type}"
+    """
+    def __init__(self, cls):
+        """
+        cls - ast.ClassNode
+        """
+        self.cls = cls
+
+    def __str__(self):
+        return self.cls.typemap.name
+
+    def __repr__(self):
+        return "<BasesClassFormat {}>".format(self.cls.typemap.name)
+
+    def __getattr__(self, name):
+        return getattr(self.cls.typemap, name)

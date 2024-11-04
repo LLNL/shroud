@@ -29,7 +29,6 @@ c_ctor_shadow_capptr_shared:
   comments:
   - Pass function result as a capsule field of shadow class
   - from Fortran to C.
-  notes:
   - Create a std::shared_pointer on the heap to hold the pointer to the instance.
   intent: ctor
   i_arg_names:
@@ -47,8 +46,8 @@ c_ctor_shadow_capptr_shared:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
-  - "std::shared_ptr<{cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{cxx_type}>;"
-  - "*{c_local_shared} = \t std::make_shared<{cxx_type}>({C_call_list});"
+  - "std::shared_ptr<{baseclass.cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{baseclass.cxx_type}>;"
+  - "*{c_local_shared} = \t std::make_shared<{baseclass.cxx_type}>({C_call_list});"
   - "{c_var}->addr = static_cast<{c_const}void *>(\t{c_local_shared});"
   - '{c_var}->idtor = {idtor};'
   c_local:
@@ -59,8 +58,7 @@ c_ctor_shadow_capptr_shared:
   - <memory>
   destructor_name: shadow-{cxx_type}
   destructor:
-  - "std::shared_ptr<{cxx_type}> *shared =\t reinterpret_cast<std::shared_ptr<{cxx_type}>\
-    \ *>(ptr);"
+  - "{cxx_type} *shared =\t reinterpret_cast<{cxx_type} *>(ptr);"
   - shared->reset();
   - delete shared;
   owner: shared
@@ -147,6 +145,7 @@ c_function_char*_arg:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Call function and assign to a local C++ variable.
   notes:
   - Change function result into an argument
   - Use F_string_result_as_arg as the argument name.
@@ -190,6 +189,7 @@ c_function_char*_buf_arg:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Call function and assign to a local C++ variable.
   notes:
   - Change function result into an argument
   - Use F_string_result_as_arg as the argument name.
@@ -233,6 +233,7 @@ c_function_char*_buf_copy:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Call function and assign to a local C++ variable.
   notes:
   - char *getname() +len(30)
   - Copy result into caller's buffer.
@@ -432,6 +433,11 @@ c_function_shadow&_capptr_library:
 c_function_shadow&_capsule:
   name: c_function_shadow&_capsule
   comments:
+  - Call the C wrapper as a subroutine.
+  - Pass function result as a capsule argument from Fortran to C.
+  - Call function and assign to a local C++ variable.
+  - Assign to capsule in C wrapper.
+  notes:
   - Return a C_capsule_data_type.
   intent: function
   i_arg_names:
@@ -455,6 +461,11 @@ c_function_shadow&_capsule:
 c_function_shadow&_capsule_caller:
   name: c_function_shadow&_capsule_caller
   comments:
+  - Call the C wrapper as a subroutine.
+  - Pass function result as a capsule argument from Fortran to C.
+  - Call function and assign to a local C++ variable.
+  - Assign to capsule in C wrapper.
+  notes:
   - Return a C_capsule_data_type.
   intent: function
   i_arg_names:
@@ -478,6 +489,11 @@ c_function_shadow&_capsule_caller:
 c_function_shadow&_capsule_library:
   name: c_function_shadow&_capsule_library
   comments:
+  - Call the C wrapper as a subroutine.
+  - Pass function result as a capsule argument from Fortran to C.
+  - Call function and assign to a local C++ variable.
+  - Assign to capsule in C wrapper.
+  notes:
   - Return a C_capsule_data_type.
   intent: function
   i_arg_names:
@@ -623,6 +639,11 @@ c_function_shadow*_capptr_shared:
 c_function_shadow*_capsule:
   name: c_function_shadow*_capsule
   comments:
+  - Call the C wrapper as a subroutine.
+  - Pass function result as a capsule argument from Fortran to C.
+  - Call function and assign to a local C++ variable.
+  - Assign to capsule in C wrapper.
+  notes:
   - Return a C_capsule_data_type.
   intent: function
   i_arg_names:
@@ -658,7 +679,7 @@ c_function_shadow*_this:
 c_function_shadow<native>_capptr:
   name: c_function_shadow<native>_capptr
   comments:
-  - Return a instance by value.
+  - Return an instance by value.
   notes:
   - Create memory in c_pre_call so it will survive the return.
   - owner=caller sets idtor flag to release the memory.
@@ -679,7 +700,7 @@ c_function_shadow<native>_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_pre_call:
-  - '{cxx_type} * {c_local_cxx} = new {cxx_type};'
+  - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
   - '*{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -696,7 +717,7 @@ c_function_shadow<native>_capptr:
 c_function_shadow_capptr:
   name: c_function_shadow_capptr
   comments:
-  - Return a instance by value.
+  - Return an instance by value.
   notes:
   - Create memory in c_pre_call so it will survive the return.
   - owner=caller sets idtor flag to release the memory.
@@ -717,7 +738,79 @@ c_function_shadow_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_pre_call:
-  - '{cxx_type} * {c_local_cxx} = new {cxx_type};'
+  - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
+  c_call:
+  - '*{c_local_cxx} = {C_call_function};'
+  c_post_call:
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  c_return:
+  - return {c_var};
+  c_return_type: '{c_type} *'
+  c_local:
+  - cxx
+  fmtdict:
+    cxx_addr: ''
+  owner: caller
+c_function_shared<shadow>*_capptr:
+  name: c_function_shared<shadow>*_capptr
+  comments:
+  - Pass function result as a capsule field of shadow class
+  - from Fortran to C.
+  - Call function and assign to a local C++ variable.
+  - Assign to capsule in C wrapper.
+  intent: function
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
+  i_result_decl:
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_call:
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  c_post_call:
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  c_return:
+  - return {c_var};
+  c_return_type: '{c_type} *'
+  c_local:
+  - cxx
+  owner: library
+c_function_shared<shadow>_capptr:
+  name: c_function_shared<shadow>_capptr
+  comments:
+  - Pass function result as a capsule field of shadow class
+  - from Fortran to C.
+  - Allocate a function result on the heap.
+  - Assign to capsule in C wrapper.
+  notes:
+  - Used with std::shared_ptr<Object>* createChildA(void)
+  intent: function
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
+  i_result_decl:
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_pre_call:
+  - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
   - '*{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -1483,6 +1576,29 @@ c_in_shadow*:
   name: c_in_shadow*
   comments:
   - Pass a shadow type to C wrapper.
+  - Cast C argument to local C++ variable.
+  intent: in
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
+  i_module:
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_arg_call:
+  - '{c_local_cxx}'
+  c_pre_call:
+  - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  c_local:
+  - cxx
+  owner: library
+c_in_shared<shadow>*:
+  name: c_in_shared<shadow>*
+  comments:
+  - Pass a shadow type to C wrapper.
+  - Cast C argument to local C++ variable.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -2256,6 +2372,7 @@ c_inout_shadow&:
   name: c_inout_shadow&
   comments:
   - Pass a shadow type to C wrapper.
+  - Cast C argument to local C++ variable.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2277,6 +2394,29 @@ c_inout_shadow*:
   name: c_inout_shadow*
   comments:
   - Pass a shadow type to C wrapper.
+  - Cast C argument to local C++ variable.
+  intent: inout
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
+  i_module:
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_arg_call:
+  - '{c_local_cxx}'
+  c_pre_call:
+  - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  c_local:
+  - cxx
+  owner: library
+c_inout_shared<shadow>*:
+  name: c_inout_shared<shadow>*
+  comments:
+  - Pass a shadow type to C wrapper.
+  - Cast C argument to local C++ variable.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2762,6 +2902,18 @@ c_mixin_arg_native_cfi:
   iface_header:
   - ISO_Fortran_binding.h
   owner: library
+c_mixin_cast-argument:
+  name: c_mixin_cast-argument
+  comments:
+  - Cast C argument to local C++ variable.
+  intent: mixin
+  c_arg_call:
+  - '{c_local_cxx}'
+  c_pre_call:
+  - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  c_local:
+  - cxx
+  owner: library
 c_mixin_character:
   name: c_mixin_character
   intent: mixin
@@ -2808,8 +2960,7 @@ c_mixin_destructor_new-shadow-shared:
   - <memory>
   destructor_name: shadow-{cxx_type}
   destructor:
-  - "std::shared_ptr<{cxx_type}> *shared =\t reinterpret_cast<std::shared_ptr<{cxx_type}>\
-    \ *>(ptr);"
+  - "{cxx_type} *shared =\t reinterpret_cast<{cxx_type} *>(ptr);"
   - shared->reset();
   - delete shared;
   owner: library
@@ -2834,6 +2985,37 @@ c_mixin_function:
   comments:
   - Call a function.
   intent: mixin
+  owner: library
+c_mixin_function-assign-to-local:
+  name: c_mixin_function-assign-to-local
+  comments:
+  - Call function and assign to a local C++ variable.
+  intent: mixin
+  c_call:
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  c_local:
+  - cxx
+  owner: library
+c_mixin_function-assign-to-new:
+  name: c_mixin_function-assign-to-new
+  comments:
+  - Allocate a function result on the heap.
+  intent: mixin
+  c_pre_call:
+  - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
+  c_call:
+  - '*{c_local_cxx} = {C_call_function};'
+  c_local:
+  - cxx
+  fmtdict:
+    cxx_addr: ''
+  owner: caller
+c_mixin_function-return-cvar:
+  name: c_mixin_function-return-cvar
+  intent: mixin
+  c_return:
+  - return {c_var};
+  c_return_type: '{c_type} *'
   owner: library
 c_mixin_function_char*_cdesc:
   name: c_mixin_function_char*_cdesc
@@ -3000,6 +3182,21 @@ c_mixin_inout_vector_cdesc:
   c_helper:
   - array_context
   owner: library
+c_mixin_make-shared:
+  name: c_mixin_make-shared
+  comments:
+  - Create a std::shared_pointer on the heap to hold the pointer to the instance.
+  intent: mixin
+  c_call:
+  - "std::shared_ptr<{baseclass.cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{baseclass.cxx_type}>;"
+  - "*{c_local_shared} = \t std::make_shared<{baseclass.cxx_type}>({C_call_list});"
+  - "{c_var}->addr = static_cast<{c_const}void *>(\t{c_local_shared});"
+  - '{c_var}->idtor = {idtor};'
+  c_local:
+  - shared
+  impl_header:
+  - <memory>
+  owner: shared
 c_mixin_native_capsule_fill:
   name: c_mixin_native_capsule_fill
   comments:
@@ -4180,14 +4377,16 @@ f_ctor_shadow_capsule:
 f_ctor_shadow_capsule_shared:
   name: f_ctor_shadow_capsule_shared
   comments:
+  - Call the C wrapper as a subroutine.
   - Pass function result as a capsule argument from Fortran to C.
-  notes:
   - Create a std::shared_pointer on the heap to hold the pointer to the instance.
   intent: ctor
   f_arg_decl:
   - '{f_type} :: {f_var}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -4199,8 +4398,8 @@ f_ctor_shadow_capsule_shared:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
-  - "std::shared_ptr<{cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{cxx_type}>;"
-  - "*{c_local_shared} = \t std::make_shared<{cxx_type}>({C_call_list});"
+  - "std::shared_ptr<{baseclass.cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{baseclass.cxx_type}>;"
+  - "*{c_local_shared} = \t std::make_shared<{baseclass.cxx_type}>({C_call_list});"
   - "{c_var}->addr = static_cast<{c_const}void *>(\t{c_local_shared});"
   - '{c_var}->idtor = {idtor};'
   c_return_type: void
@@ -4212,8 +4411,7 @@ f_ctor_shadow_capsule_shared:
   - <memory>
   destructor_name: shadow-{cxx_type}
   destructor:
-  - "std::shared_ptr<{cxx_type}> *shared =\t reinterpret_cast<std::shared_ptr<{cxx_type}>\
-    \ *>(ptr);"
+  - "{cxx_type} *shared =\t reinterpret_cast<{cxx_type} *>(ptr);"
   - shared->reset();
   - delete shared;
   owner: shared
@@ -4309,6 +4507,7 @@ f_function_char*_arg:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Call function and assign to a local C++ variable.
   notes:
   - Change function result into an argument
   - Use F_string_result_as_arg as the argument name.
@@ -4374,6 +4573,7 @@ f_function_char*_buf_arg:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Call function and assign to a local C++ variable.
   notes:
   - Change function result into an argument
   - Use F_string_result_as_arg as the argument name.
@@ -4439,6 +4639,7 @@ f_function_char*_buf_copy:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Call function and assign to a local C++ variable.
   notes:
   - char *getname() +len(30)
   - Copy result into caller's buffer.
@@ -5485,6 +5686,11 @@ f_function_native*_scalar:
 f_function_shadow&_capsule:
   name: f_function_shadow&_capsule
   comments:
+  - Call the C wrapper as a subroutine.
+  - Pass function result as a capsule argument from Fortran to C.
+  - Call function and assign to a local C++ variable.
+  - Assign to capsule in C wrapper.
+  notes:
   - Return a C_capsule_data_type.
   intent: function
   f_arg_decl:
@@ -5515,6 +5721,11 @@ f_function_shadow&_capsule:
 f_function_shadow&_capsule_caller:
   name: f_function_shadow&_capsule_caller
   comments:
+  - Call the C wrapper as a subroutine.
+  - Pass function result as a capsule argument from Fortran to C.
+  - Call function and assign to a local C++ variable.
+  - Assign to capsule in C wrapper.
+  notes:
   - Return a C_capsule_data_type.
   intent: function
   f_arg_decl:
@@ -5545,6 +5756,11 @@ f_function_shadow&_capsule_caller:
 f_function_shadow&_capsule_library:
   name: f_function_shadow&_capsule_library
   comments:
+  - Call the C wrapper as a subroutine.
+  - Pass function result as a capsule argument from Fortran to C.
+  - Call function and assign to a local C++ variable.
+  - Assign to capsule in C wrapper.
+  notes:
   - Return a C_capsule_data_type.
   intent: function
   f_arg_decl:
@@ -5575,6 +5791,11 @@ f_function_shadow&_capsule_library:
 f_function_shadow*_capsule:
   name: f_function_shadow*_capsule
   comments:
+  - Call the C wrapper as a subroutine.
+  - Pass function result as a capsule argument from Fortran to C.
+  - Call function and assign to a local C++ variable.
+  - Assign to capsule in C wrapper.
+  notes:
   - Return a C_capsule_data_type.
   intent: function
   f_arg_decl:
@@ -5605,6 +5826,11 @@ f_function_shadow*_capsule:
 f_function_shadow*_capsule_caller:
   name: f_function_shadow*_capsule_caller
   comments:
+  - Call the C wrapper as a subroutine.
+  - Pass function result as a capsule argument from Fortran to C.
+  - Call function and assign to a local C++ variable.
+  - Assign to capsule in C wrapper.
+  notes:
   - Return a C_capsule_data_type.
   intent: function
   f_arg_decl:
@@ -5635,6 +5861,11 @@ f_function_shadow*_capsule_caller:
 f_function_shadow*_capsule_library:
   name: f_function_shadow*_capsule_library
   comments:
+  - Call the C wrapper as a subroutine.
+  - Pass function result as a capsule argument from Fortran to C.
+  - Call function and assign to a local C++ variable.
+  - Assign to capsule in C wrapper.
+  notes:
   - Return a C_capsule_data_type.
   intent: function
   f_arg_decl:
@@ -5680,7 +5911,7 @@ f_function_shadow*_this:
 f_function_shadow<native>_capsule:
   name: f_function_shadow<native>_capsule
   comments:
-  - Return a instance by value.
+  - Return an instance by value.
   notes:
   - Create memory in c_pre_call so it will survive the return.
   - owner=caller sets idtor flag to release the memory.
@@ -5703,7 +5934,7 @@ f_function_shadow<native>_capsule:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_pre_call:
-  - '{cxx_type} * {c_local_cxx} = new {cxx_type};'
+  - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
   - '*{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -5718,7 +5949,7 @@ f_function_shadow<native>_capsule:
 f_function_shadow_capsule:
   name: f_function_shadow_capsule
   comments:
-  - Return a instance by value.
+  - Return an instance by value.
   notes:
   - Create memory in c_pre_call so it will survive the return.
   - owner=caller sets idtor flag to release the memory.
@@ -5741,7 +5972,79 @@ f_function_shadow_capsule:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_pre_call:
-  - '{cxx_type} * {c_local_cxx} = new {cxx_type};'
+  - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
+  c_call:
+  - '*{c_local_cxx} = {C_call_function};'
+  c_post_call:
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  c_return_type: void
+  c_local:
+  - cxx
+  fmtdict:
+    cxx_addr: ''
+  owner: caller
+f_function_shared<shadow>*_capsule:
+  name: f_function_shared<shadow>*_capsule
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass function result as a capsule argument from Fortran to C.
+  - Call function and assign to a local C++ variable.
+  - Assign to capsule in C wrapper.
+  intent: function
+  f_arg_decl:
+  - '{f_type} :: {f_var}'
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  f_need_wrapper: true
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
+  i_module:
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_call:
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  c_post_call:
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  c_return_type: void
+  c_local:
+  - cxx
+  owner: library
+f_function_shared<shadow>_capsule:
+  name: f_function_shared<shadow>_capsule
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass function result as a capsule argument from Fortran to C.
+  - Allocate a function result on the heap.
+  - Assign to capsule in C wrapper.
+  notes:
+  - Used with std::shared_ptr<Object>* createChildA(void)
+  intent: function
+  f_arg_decl:
+  - '{f_type} :: {f_var}'
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  f_need_wrapper: true
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
+  i_module:
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_pre_call:
+  - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
   - '*{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -7469,6 +7772,7 @@ f_function_string_cdesc_allocatable:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
+  - Allocate a function result on the heap.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
@@ -7513,7 +7817,7 @@ f_function_string_cdesc_allocatable:
   - '{C_array_type} *{c_var_cdesc}'
   - '{C_capsule_data_type} *{c_var_capsule}'
   c_pre_call:
-  - std::string *{cxx_var} = new std::string;
+  - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
   - '*{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -7536,12 +7840,13 @@ f_function_string_cdesc_allocatable:
   destructor:
   - "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);"
   - delete cxx_ptr;
-  owner: library
+  owner: caller
 f_function_string_cdesc_allocatable_caller:
   name: f_function_string_cdesc_allocatable_caller
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
+  - Allocate a function result on the heap.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
@@ -7586,7 +7891,7 @@ f_function_string_cdesc_allocatable_caller:
   - '{C_array_type} *{c_var_cdesc}'
   - '{C_capsule_data_type} *{c_var_capsule}'
   c_pre_call:
-  - std::string *{cxx_var} = new std::string;
+  - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
   - '*{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -7609,12 +7914,13 @@ f_function_string_cdesc_allocatable_caller:
   destructor:
   - "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);"
   - delete cxx_ptr;
-  owner: library
+  owner: caller
 f_function_string_cdesc_allocatable_library:
   name: f_function_string_cdesc_allocatable_library
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
+  - Allocate a function result on the heap.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
@@ -7659,7 +7965,7 @@ f_function_string_cdesc_allocatable_library:
   - '{C_array_type} *{c_var_cdesc}'
   - '{C_capsule_data_type} *{c_var_capsule}'
   c_pre_call:
-  - std::string *{cxx_var} = new std::string;
+  - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
   - '*{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -7682,7 +7988,7 @@ f_function_string_cdesc_allocatable_library:
   destructor:
   - "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);"
   - delete cxx_ptr;
-  owner: library
+  owner: caller
 f_function_string_cfi_allocatable:
   name: f_function_string_cfi_allocatable
   comments:
@@ -9121,6 +9427,39 @@ f_in_shadow*:
   name: f_in_shadow*
   comments:
   - Pass a shadow type to C wrapper.
+  - Cast C argument to local C++ variable.
+  intent: in
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_intent_attr} :: {f_var}'
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
+  f_need_wrapper: true
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
+  i_module:
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_arg_call:
+  - '{c_local_cxx}'
+  c_pre_call:
+  - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  c_local:
+  - cxx
+  owner: library
+f_in_shared<shadow>*:
+  name: f_in_shared<shadow>*
+  comments:
+  - Pass a shadow type to C wrapper.
+  - Cast C argument to local C++ variable.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -10379,6 +10718,7 @@ f_inout_shadow&:
   name: f_inout_shadow&
   comments:
   - Pass a shadow type to C wrapper.
+  - Cast C argument to local C++ variable.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -10410,6 +10750,39 @@ f_inout_shadow*:
   name: f_inout_shadow*
   comments:
   - Pass a shadow type to C wrapper.
+  - Cast C argument to local C++ variable.
+  intent: inout
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_intent_attr} :: {f_var}'
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
+  f_need_wrapper: true
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
+  i_module:
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_arg_call:
+  - '{c_local_cxx}'
+  c_pre_call:
+  - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  c_local:
+  - cxx
+  owner: library
+f_inout_shared<shadow>*:
+  name: f_inout_shared<shadow>*
+  comments:
+  - Pass a shadow type to C wrapper.
+  - Cast C argument to local C++ variable.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -13815,6 +14188,10 @@ root
         this -- c_function_shadow*_this
       shadow<native>
         capptr -- c_function_shadow<native>_capptr
+      shared<shadow>
+        capptr -- c_function_shared<shadow>_capptr
+      shared<shadow>*
+        capptr -- c_function_shared<shadow>*_capptr
       string -- c_function_string
         buf
           arg -- c_function_string_buf_arg
@@ -13857,6 +14234,7 @@ root
       shadow -- c_in_shadow
       shadow& -- c_in_shadow&
       shadow* -- c_in_shadow*
+      shared<shadow>* -- c_in_shared<shadow>*
       string -- c_in_string
         buf -- c_in_string_buf
       string& -- c_in_string&
@@ -13898,6 +14276,7 @@ root
         hidden -- c_inout_native*_hidden
       shadow& -- c_inout_shadow&
       shadow* -- c_inout_shadow*
+      shared<shadow>* -- c_inout_shared<shadow>*
       string& -- c_inout_string&
         buf -- c_inout_string&_buf
       string* -- c_inout_string*
@@ -13927,6 +14306,7 @@ root
           cfi -- c_mixin_arg_character_cfi
         native
           cfi -- c_mixin_arg_native_cfi
+      cast-argument -- c_mixin_cast-argument
       character -- c_mixin_character
       cvar-capsule-fill -- c_mixin_cvar-capsule-fill
       declare-arg -- c_mixin_declare-arg
@@ -13944,6 +14324,9 @@ root
           cdesc -- c_mixin_function_string_cdesc
         vector
           malloc -- c_mixin_function_vector_malloc
+      function-assign-to-local -- c_mixin_function-assign-to-local
+      function-assign-to-new -- c_mixin_function-assign-to-new
+      function-return-cvar -- c_mixin_function-return-cvar
       in
         character
           buf -- c_mixin_in_character_buf
@@ -13952,6 +14335,7 @@ root
           cdesc -- c_mixin_inout_vector_cdesc
         vector<native>
           cdesc -- c_mixin_inout_vector<native>_cdesc
+      make-shared -- c_mixin_make-shared
       native
         capsule
           fill -- c_mixin_native_capsule_fill
@@ -14097,6 +14481,10 @@ root
         this -- f_function_shadow*_this
       shadow<native>
         capsule -- f_function_shadow<native>_capsule
+      shared<shadow>
+        capsule -- f_function_shared<shadow>_capsule
+      shared<shadow>*
+        capsule -- f_function_shared<shadow>*_capsule
       string
         buf -- f_function_string_buf
           arg -- f_function_string_buf_arg
@@ -14205,6 +14593,7 @@ root
       shadow -- f_in_shadow
       shadow& -- f_in_shadow&
       shadow* -- f_in_shadow*
+      shared<shadow>* -- f_in_shared<shadow>*
       string
         buf -- f_in_string_buf
         cfi -- f_in_string_cfi
@@ -14258,6 +14647,7 @@ root
         hidden -- f_inout_native*_hidden
       shadow& -- f_inout_shadow&
       shadow* -- f_inout_shadow*
+      shared<shadow>* -- f_inout_shared<shadow>*
       string& -- f_inout_string&
         buf -- f_inout_string&_buf
         cfi -- f_inout_string&_cfi

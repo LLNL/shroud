@@ -62,6 +62,52 @@
         "sphinx-end-before": "f_mixin_declare-fortran-arg"
     },
     {
+        "name": "c_mixin_cast-argument",
+        "comments": [
+            "Cast C argument to local C++ variable."
+        ],
+        "c_local": [
+            "cxx"
+        ],
+        "c_pre_call": [
+            "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+        ],
+        "c_arg_call": [
+            "{c_local_cxx}"
+        ]
+    },
+    {
+        "name": "c_mixin_function-assign-to-local",
+        "comments": [
+            "Call function and assign to a local C++ variable."
+        ],
+        "c_local": [
+            "cxx"
+        ],
+        "c_call": [
+            "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+        ]
+    },
+    {
+        "name": "c_mixin_function-assign-to-new",
+        "comments": [
+            "Allocate a function result on the heap."
+        ],
+        "fmtdict": {
+            "cxx_addr": ""
+        },
+        "c_local": [
+            "cxx"
+        ],
+        "c_pre_call": [
+            "{cxx_type} *{c_local_cxx} = new {cxx_type};"
+        ],
+        "c_call": [
+            "*{c_local_cxx} = {C_call_function};"
+        ],
+        "owner": "caller"
+    },
+    {
         "name": "f_mixin_interface-as-cptr",
         "notes": [
             "Pass the address of the argument directly to C.",
@@ -660,6 +706,17 @@
         }
     },
     {
+        "name": "c_mixin_function-return-cvar",
+        "notes": [
+            "Return a pointer to a heap variable.",
+            "Used when a function returns a value."
+        ],
+        "c_return_type": "{c_type} *",
+        "c_return": [
+            "return {c_var};"
+        ]
+    },
+    {
         "name": "c_mixin_destructor_new-string",
         "destructor_name": "new_string",
         "destructor": [
@@ -686,7 +743,7 @@
             "<memory>"
         ],
         "destructor": [
-            "std::shared_ptr<{cxx_type}> *shared =\t reinterpret_cast<std::shared_ptr<{cxx_type}> *>(ptr);",
+            "{cxx_type} *shared =\t reinterpret_cast<{cxx_type} *>(ptr);",
             "shared->reset();",
             "delete shared;"
         ]
@@ -1953,16 +2010,11 @@
             "f_mixin_function-to-subroutine",
             "f_mixin_declare-fortran-result",
             "f_mixin_pass_character_buf",
-            "c_mixin_in_character_buf"
-        ],
-        "c_local": [
-            "cxx"
+            "c_mixin_in_character_buf",
+            "c_mixin_function-assign-to-local"
         ],
         "c_helper": [
             "char_copy"
-        ],
-        "c_call": [
-            "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
         ],
         "c_post_call": [
             "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
@@ -2623,22 +2675,11 @@
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_pass_cdesc",
+            "c_mixin_function-assign-to-new",
             "c_mixin_destructor_new-string",
             "c_mixin_function_string_cdesc",
             "f_mixin_char_cdesc_allocate",
             "f_mixin_use_capsule"
-        ],
-        "fmtdict": {
-            "cxx_addr": ""
-        },
-        "c_local": [
-            "cxx"
-        ],
-        "c_pre_call": [
-            "std::string *{cxx_var} = new std::string;"
-        ],
-        "c_call": [
-            "*{c_local_cxx} = {C_call_function};"
         ]
     },
     {
@@ -3541,20 +3582,17 @@
             "f_inout_shadow*",
             "c_inout_shadow*",
             "f_inout_shadow&",
-            "c_inout_shadow&"
+            "c_inout_shadow&",
+            "f_in_shared<shadow>*",
+            "c_in_shared<shadow>*",
+            "f_inout_shared<shadow>*",
+            "c_inout_shared<shadow>*"
+            
         ],
         "mixin": [
             "f_mixin_shadow-arg",
+            "c_mixin_cast-argument",
             "c_mixin_shadow"
-        ],
-        "c_local": [
-            "cxx"
-        ],
-        "c_pre_call": [
-            "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
-        ],
-        "c_arg_call": [
-            "{c_local_cxx}"
         ]
     },
     {
@@ -3571,20 +3609,15 @@
             "c_function_shadow&_capsule_caller",
             "c_function_shadow&_capsule_library"
         ],
-        "comments": [
+        "notes": [
             "Return a C_capsule_data_type."
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_function_shadow_capsule",
             "c_mixin_shadow",
+            "c_mixin_function-assign-to-local",
             "c_mixin_cvar-capsule-fill"
-        ],
-        "c_local": [
-            "cxx"
-        ],
-        "c_call": [
-            "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
         ]
     },
     {
@@ -3639,17 +3672,9 @@
         "mixin": [
             "c_mixin_function_shadow_capptr",
             "c_mixin_shadow",
-            "c_mixin_cvar-capsule-fill"
-        ],
-        "c_local": [
-            "cxx"
-        ],
-        "c_call": [
-            "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
-        ],
-        "c_return_type": "{c_type} *",
-        "c_return": [
-            "return {c_var};"
+            "c_mixin_function-assign-to-local",
+            "c_mixin_cvar-capsule-fill",
+            "c_mixin_function-return-cvar"
         ]
     },
     {
@@ -3667,7 +3692,7 @@
             "f_function_shadow<native>_capsule"
         ],
         "comments": [
-            "Return a instance by value."
+            "Return an instance by value."
         ],
         "notes": [
             "Create memory in c_pre_call so it will survive the return.",
@@ -3675,29 +3700,12 @@
             "c_local_var is passed in as argument."
         ],
         "mixin": [
-            "#f_mixin_function-to-subroutine",
-            "#f_mixin_function_shadow_capsule",
+            "f_mixin_function-to-subroutine",
             "f_mixin_function_shadow_capsule",
             "c_mixin_shadow",
+            "c_mixin_function-assign-to-new",
             "c_mixin_cvar-capsule-fill"
-        ],
-        "fmtdict": {
-            "cxx_addr": ""
-        },
-        "owner": "caller",
-        "f_call": [
-            "call {f_call_function}({F_arg_c_call})"
-        ],
-        "c_local": [
-            "cxx"
-        ],
-        "c_pre_call": [
-            "{cxx_type} * {c_local_cxx} = new {cxx_type};"
-        ],
-        "c_call": [
-            "*{c_local_cxx} = {C_call_function};"
-        ],
-        "c_return_type": "void"
+        ]
     },
     {
         "alias": [
@@ -3705,7 +3713,7 @@
             "c_function_shadow<native>_capptr"
         ],
         "comments": [
-            "Return a instance by value."
+            "Return an instance by value."
         ],
         "notes": [
             "Create memory in c_pre_call so it will survive the return.",
@@ -3715,24 +3723,9 @@
         "mixin": [
             "c_mixin_function_shadow_capptr",
             "c_mixin_shadow",
-            "c_mixin_cvar-capsule-fill"
-        ],
-        "fmtdict": {
-            "cxx_addr": ""
-        },
-        "owner": "caller",
-        "c_local": [
-            "cxx"
-        ],
-        "c_pre_call": [
-            "{cxx_type} * {c_local_cxx} = new {cxx_type};"
-        ],
-        "c_call": [
-            "*{c_local_cxx} = {C_call_function};"
-        ],
-        "c_return_type": "{c_type} *",
-        "c_return": [
-            "return {c_var};"
+            "c_mixin_function-assign-to-new",
+            "c_mixin_cvar-capsule-fill",
+            "c_mixin_function-return-cvar"
         ]
     },
     {
@@ -3768,20 +3761,16 @@
         "owner": "caller"
     },
     {
-        "alias": [
-            "f_ctor_shadow_capsule_shared"
-        ],
-        "notes": [
+        "name":"#### shared ################################################"
+    },
+    {
+        "name": "c_mixin_make-shared",
+        "comments": [
             "Create a std::shared_pointer on the heap to hold the pointer to the instance."
         ],
-        "mixin": [
-            "f_mixin_function_shadow_capsule",
-            "c_mixin_shadow",
-            "c_mixin_destructor_new-shadow-shared"
-        ],
         "c_call": [
-            "std::shared_ptr<{cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{cxx_type}>;",
-            "*{c_local_shared} = \t std::make_shared<{cxx_type}>({C_call_list});",
+            "std::shared_ptr<{baseclass.cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{baseclass.cxx_type}>;",
+            "*{c_local_shared} = \t std::make_shared<{baseclass.cxx_type}>({C_call_list});",
             "{c_var}->addr = static_cast<{c_const}void *>(\t{c_local_shared});",
             "{c_var}->idtor = {idtor};"
         ],
@@ -3791,34 +3780,87 @@
         "c_local": [
             "shared"
         ],
-        "c_return_type": "void",
         "owner": "shared"
+    },
+    {
+        "alias": [
+            "f_ctor_shadow_capsule_shared"
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_function_shadow_capsule",
+            "c_mixin_shadow",
+            "c_mixin_destructor_new-shadow-shared",
+            "c_mixin_make-shared"
+        ]
     },
     {
         "alias": [
             "c_ctor_shadow_capptr_shared"
         ],
+        "mixin": [
+            "c_mixin_function_shadow_capptr",
+            "c_mixin_shadow",
+            "c_mixin_destructor_new-shadow-shared",
+            "c_mixin_make-shared"
+        ]
+    },
+    {
+        "alias": [
+            "f_function_shared<shadow>_capsule"
+        ],
         "notes": [
-            "Create a std::shared_pointer on the heap to hold the pointer to the instance."
+            "Used with std::shared_ptr<Object>* createChildA(void)"
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_function_shadow_capsule",
+            "c_mixin_shadow",
+            "c_mixin_function-assign-to-new",
+            "c_mixin_cvar-capsule-fill"
+        ]
+    },
+    {
+        "alias": [
+            "f_function_shared<shadow>*_capsule"
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_function_shadow_capsule",
+            "c_mixin_shadow",
+            "c_mixin_function-assign-to-local",
+            "c_mixin_cvar-capsule-fill"
+        ]
+    },
+    {
+        "alias": [
+            "c_function_shared<shadow>_capptr"
+        ],
+        "notes": [
+            "Used with std::shared_ptr<Object>* createChildA(void)"
         ],
         "mixin": [
             "c_mixin_function_shadow_capptr",
             "c_mixin_shadow",
-            "c_mixin_destructor_new-shadow-shared"
+            "c_mixin_function-assign-to-new",
+            "c_mixin_cvar-capsule-fill",
+            "c_mixin_function-return-cvar"
+        ]
+    },
+    {
+        "alias": [
+            "c_function_shared<shadow>*_capptr"
         ],
-        "c_call": [
-            "std::shared_ptr<{cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{cxx_type}>;",
-            "*{c_local_shared} = \t std::make_shared<{cxx_type}>({C_call_list});",
-            "{c_var}->addr = static_cast<{c_const}void *>(\t{c_local_shared});",
-            "{c_var}->idtor = {idtor};"
-        ],
-        "impl_header": [
-            "<memory>"
-        ],
-        "c_local": [
-            "shared"
-        ],
-        "owner": "shared"
+        "mixin": [
+            "c_mixin_function_shadow_capptr",
+            "c_mixin_shadow",
+            "c_mixin_function-assign-to-local",
+            "c_mixin_cvar-capsule-fill",
+            "c_mixin_function-return-cvar"
+        ]
+    },
+    {
+        "name":"#### dtor ##################################################"
     },
     {
         "alias": [
@@ -4418,16 +4460,16 @@
             "{f_var}"
         ],
         "f_need_wrapper": true,
-        "c_pre_call": [],
         "c_helper": [
             "char_copy"
+        ],
+        "c_pre_call": [],
+        "c_call": [
+            "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
         ],
         "c_post_call": [
             "char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
             "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {c_local_cxx},\t -1);"
-        ],
-        "c_call": [
-            "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
         ]
     },
     {
@@ -4603,10 +4645,10 @@
         "f_arg_call": [
             "{f_var}"
         ],
-        "c_pre_call": [],
         "c_helper": [
             "char_copy"
         ],
+        "c_pre_call": [],
         "c_call": [
             "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
         ],

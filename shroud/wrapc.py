@@ -721,7 +721,12 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         fmt_class = node.fmtdict
         # call method syntax
-        fmt_class.CXX_this_call = fmt_class.CXX_this + "->"
+        if node.C_shared_class:
+            # Dereference shared_ptr before calling method.
+            fmt_class.CXX_this_call = wformat("(*{CXX_this})->", fmt_class)
+            pass
+        else:
+            fmt_class.CXX_this_call = fmt_class.CXX_this + "->"
 
         self.compute_idtor(node)
         self.add_class_capsule_structs(node)
@@ -1028,8 +1033,8 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
                     # LHS is class' cxx_to_c
                     cls_typemap = cls.typemap
-                    if cls_typemap.base != "shadow":
-                        raise RuntimeError(
+                    if cls_typemap.base not in ["shared", "shadow"]:
+                        cursor.warning(
                             "Wapped class {} is not a shadow type"
                             .format(cls_typemap.name)
                         )

@@ -442,6 +442,93 @@ class GenFunctions(object):
         for ns in node.namespaces:
             self.instantiate_all_classes(ns)
 
+    def template_class(self, cls, clslist):
+        """Create a class for each list of template_arguments.
+        """
+        orig_typemap = cls.typemap
+        if orig_typemap.cxx_instantiation is None:
+            orig_typemap.cxx_instantiation = {}
+        for function in cls.functions:
+            self.append_function_index(function)
+        # Replace class with new class for each template instantiation.
+        # targs -> ast.TemplateArgument
+        for i, targs in enumerate(cls.template_arguments):
+            newcls = cls.clone()
+            clslist.append(newcls)
+
+            # If single template argument, use its name; else sequence.
+            # XXX - maybe change to names
+            #   i.e.  _int_double  However <std::string,int> is a problem.
+            if targs.fmtdict and 'template_suffix' in targs.fmtdict:
+                class_suffix = targs.fmtdict['template_suffix']
+            elif len(targs.asts) == 1:
+                ntypemap = targs.asts[0].typemap
+                if ntypemap.template_suffix:
+                    class_suffix = ntypemap.template_suffix
+                else:
+                    class_suffix = "_" + ntypemap.flat_name
+            else:
+                class_suffix = "_" + str(i)
+
+            # Update name of class.
+            #  name_api           - vector_0 or vector_int     (Fortran and C names)
+            #  name_instantiation - vector<int>
+            if targs.fmtdict and "cxx_class" in targs.fmtdict:
+                newcls.name_api = targs.fmtdict["cxx_class"]
+            else:
+                newcls.name_api = cls.name + class_suffix
+            newcls.name_instantiation = cls.name + targs.instantiation
+            newcls.scope_file[-1] += class_suffix
+
+            # Add fmt and options from YAML
+            if targs.fmtdict:
+                newcls.user_fmt.update(targs.fmtdict)
+            if targs.options:
+                newcls.options.update(targs.options)
+            
+            # Remove defaulted attributes then reset with current values.
+            newcls.delete_format_templates()
+            newcls.default_format()
+
+            newcls.typemap = typemap.create_class_typemap(newcls)
+            if targs.instantiation in orig_typemap.cxx_instantiation:
+                print("instantiate_classes: {} already in "
+                      "typemap.cxx_instantiation".format(targs.instantiation))
+            orig_typemap.cxx_instantiation[targs.instantiation] = newcls.typemap
+
+            self.template_typedef(newcls, targs)
+
+            self.push_instantiate_scope(newcls, targs)
+            self.process_class(newcls, newcls)
+            self.pop_instantiate_scope()
+
+    def share_class(self, cls):
+        """Create a subclass for use with std::shared.
+        """
+        newcls = cls.clone()
+        # XXX - need a option template to create the name.
+        class_suffix = "_shared"
+        newcls.name_api = cls.name + class_suffix
+        newcls.name_instantiation = "std::shared_ptr<{}>".format(cls.fmtdict.cxx_type)
+        newcls.scope_file[-1] += class_suffix
+#        newcls.functions = []
+
+        newcls.C_shared_class = True
+        # Remove defaulted attributes then reset with current values.
+        newcls.delete_format_templates()
+        newcls.default_format()
+
+        newcls.typemap = declast.fetch_shared_ptr_typemap(
+            newcls.name_instantiation,
+            cls.typemap,
+            self.newlibrary.symtab)
+        typemap.fill_class_typemap(newcls)
+        newcls.typemap.base = "shared"
+        newcls.typemap.sgroup = "shared"
+
+        newcls.baseclass = [ ( 'public', "DDDD", cls.ast) ]
+        return newcls
+        
     def instantiate_classes(self, node):
         """Instantate any template_arguments.
 
@@ -463,64 +550,14 @@ class GenFunctions(object):
                     self.add_struct_ctor(cls)
                 self.process_class(node, cls)
             elif cls.template_arguments:
-                orig_typemap = cls.typemap
-                if orig_typemap.cxx_instantiation is None:
-                    orig_typemap.cxx_instantiation = {}
-                for function in cls.functions:
-                    self.append_function_index(function)
-                # Replace class with new class for each template instantiation.
-                # targs -> ast.TemplateArgument
-                for i, targs in enumerate(cls.template_arguments):
-                    newcls = cls.clone()
-                    clslist.append(newcls)
-
-                    # If single template argument, use its name; else sequence.
-                    # XXX - maybe change to names
-                    #   i.e.  _int_double  However <std::string,int> is a problem.
-                    if targs.fmtdict and 'template_suffix' in targs.fmtdict:
-                        class_suffix = targs.fmtdict['template_suffix']
-                    elif len(targs.asts) == 1:
-                        ntypemap = targs.asts[0].typemap
-                        if ntypemap.template_suffix:
-                            class_suffix = ntypemap.template_suffix
-                        else:
-                            class_suffix = "_" + ntypemap.flat_name
-                    else:
-                        class_suffix = "_" + str(i)
-
-                    # Update name of class.
-                    #  name_api           - vector_0 or vector_int     (Fortran and C names)
-                    #  name_instantiation - vector<int>
-                    if targs.fmtdict and "cxx_class" in targs.fmtdict:
-                        newcls.name_api = targs.fmtdict["cxx_class"]
-                    else:
-                        newcls.name_api = cls.name + class_suffix
-                    newcls.name_instantiation = cls.name + targs.instantiation
-                    newcls.scope_file[-1] += class_suffix
-
-                    if targs.fmtdict:
-                        newcls.user_fmt.update(targs.fmtdict)
-                    if targs.options:
-                        newcls.options.update(targs.options)
-                    
-                    # Remove defaulted attributes then reset with current values.
-                    newcls.delete_format_templates()
-                    newcls.default_format()
-
-                    newcls.typemap = typemap.create_class_typemap(newcls)
-                    if targs.instantiation in orig_typemap.cxx_instantiation:
-                        print("instantiate_classes: {} already in "
-                              "typemap.cxx_instantiation".format(targs.instantiation))
-                    orig_typemap.cxx_instantiation[targs.instantiation] = newcls.typemap
-
-                    self.template_typedef(newcls, targs)
-
-                    self.push_instantiate_scope(newcls, targs)
-                    self.process_class(newcls, newcls)
-                    self.pop_instantiate_scope()
+                self.template_class(cls, clslist)
             else:
                 clslist.append(cls)
                 self.process_class(cls, cls)
+                if cls.options.C_shared_ptr:
+                    shared = self.share_class(cls)
+                    clslist.append(shared)
+                    self.process_class(shared, shared)
             self.cursor.pop_node(cls)
 
         node.classes = clslist
