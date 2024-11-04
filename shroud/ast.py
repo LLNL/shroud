@@ -727,6 +727,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_name_instance_set="set_instance",
             F_name_final="final",
             F_name_scope = "",
+            F_name_shared_use_count="use_count",
             F_name_typedef="",
             f_result_var="SHT_rv",
             F_this="obj",
@@ -2272,7 +2273,7 @@ def clean_dictionary(ddct):
             if value is None:
                 ddct["default_arg_suffix"][i] = ""
 
-    if "format" in ddct:
+    if "format" in ddct and ddct["format"] is not None:
         fmtdict = ddct["format"]
         for key in ["function_suffix"]:
             if key in fmtdict and fmtdict[key] is None:

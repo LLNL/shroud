@@ -1224,6 +1224,11 @@ F_name_instance_set
     Defaults to *set_instance*.
     If the name is blank, no function is generated.
 
+F_name_shared_use_count
+    Name of ``use_count`` method added to ``std::shared_ptr``
+    when option *C_shared_ptr* is set.
+    If the name is blank, no function is generated.
+
 cxx_class
     The name of the C++ class from the YAML input file.
     Used in generating names for C and Fortran and filenames.

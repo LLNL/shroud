@@ -180,6 +180,7 @@
             "F_name_instance_get": "get_instance",
             "F_name_instance_set": "set_instance",
             "F_name_scope": "",
+            "F_name_shared_use_count": "use_count",
             "F_name_typedef": "",
             "F_string_result_as_arg": "",
             "F_this": "obj",

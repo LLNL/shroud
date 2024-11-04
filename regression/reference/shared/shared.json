@@ -1689,6 +1689,9 @@
                         "declgen": "long use_count(void)",
                         "name": "use_count",
                         "options": {},
+                        "user_fmt": {
+                            "F_name_api": "use_count"
+                        },
                         "wrap": {
                             "c": true,
                             "fortran": true

@@ -536,9 +536,14 @@ class GenFunctions(object):
         long use_count() const noexcept;
 	T* get() const noexcept;
         """
-        decl = "long use_count(void)"
-        fcn = cls.add_function(decl)
-        fcn.C_shared_method = True
+        fmt_class = cls.fmtdict
+        if fmt_class.F_name_shared_use_count:
+            decl = "long use_count(void)"
+            fmt_func = dict(
+                F_name_api = fmt_class.F_name_shared_use_count,
+            )
+            fcn = cls.add_function(decl, format=fmt_func)
+            fcn.C_shared_method = True
         
     def instantiate_classes(self, node):
         """Instantate any template_arguments.
