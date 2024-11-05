@@ -19,15 +19,21 @@ int main() {
     std::shared_ptr<Object>* childA = objectSharedPtr->createChildA();
     std::shared_ptr<Object>* childB = objectSharedPtr->createChildB();
 
+    std::cout << "shared A: " << childA->use_count() << std::endl;
+    std::cout << "shared B: " << childB->use_count() << std::endl;
+
     std::weak_ptr<Object> wpA = *childA;
     std::weak_ptr<Object> wpB = *childB;
 
-    std::cout << wpA.use_count() << std::endl;
-    std::cout << wpB.use_count() << std::endl;
+    std::cout << "weak A: " << wpA.use_count() << std::endl;
+    std::cout << "weak B: " << wpB.use_count() << std::endl;
 
     objectSharedPtr->replaceChildB(childA);
-    std::cout << wpA.use_count() << std::endl;
-    std::cout << wpB.use_count() << std::endl;
+    std::cout << "weak A: " << wpA.use_count() << std::endl;
+    std::cout << "weak B: " << wpB.use_count() << std::endl;
 
+    std::cout << "shared A: " << childA->use_count() << std::endl;
+    std::cout << "shared B: " << childB->use_count() << std::endl;
+    
     return 0;
 }

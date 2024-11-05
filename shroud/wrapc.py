@@ -957,6 +957,11 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         result_stmt = r_bind.stmt
         result_typemap = ast.typemap
 
+        if node.C_shared_method:
+            # Override value set with cls.C_shared_class.
+            # Call method on smart pointer, not what it points to.
+            fmt_result.CXX_this_call = fmt_result.CXX_this + "->"
+
         # self.impl_typedef_nodes.update(node.gen_headers_typedef) Python 3.6
         self.impl_typedef_nodes.update(node.gen_headers_typedef.items())
         header_typedef_nodes = OrderedDict()

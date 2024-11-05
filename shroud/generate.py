@@ -508,10 +508,13 @@ class GenFunctions(object):
         newcls = cls.clone()
         # XXX - need a option template to create the name.
         class_suffix = "_shared"
-        newcls.name_api = cls.name + class_suffix
-        newcls.name_instantiation = "std::shared_ptr<{}>".format(cls.fmtdict.cxx_type)
-        newcls.scope_file[-1] += class_suffix
+        newcls.eval_template("C_name_shared_api")
+        fmt_class = newcls.fmtdict
+        newcls.name_api = fmt_class.C_name_shared_api
+        newcls.name_instantiation = "std::shared_ptr<{}>".format(fmt_class.cxx_type)
+        newcls.scope_file[-1] = newcls.name_api
 #        newcls.functions = []
+        self.share_methods(newcls)
 
         newcls.C_shared_class = True
         # Remove defaulted attributes then reset with current values.
@@ -528,6 +531,21 @@ class GenFunctions(object):
 
         newcls.baseclass = [ ( 'public', "DDDD", cls.ast) ]
         return newcls
+
+    def share_methods(self, cls):
+        """A methods to a std::shared_ptr class.
+
+        long use_count() const noexcept;
+	T* get() const noexcept;
+        """
+        fmt_class = cls.fmtdict
+        if fmt_class.F_name_shared_use_count:
+            decl = "long use_count(void)"
+            fmt_func = dict(
+                F_name_api = fmt_class.F_name_shared_use_count,
+            )
+            fcn = cls.add_function(decl, format=fmt_func)
+            fcn.C_shared_method = True
         
     def instantiate_classes(self, node):
         """Instantate any template_arguments.

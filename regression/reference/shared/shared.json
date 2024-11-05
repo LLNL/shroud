@@ -1671,6 +1671,136 @@
                             "c_var": "self",
                             "function_name": "replaceChildB"
                         }
+                    },
+                    {
+                        "<FUNCTION>": "use_count  10 ****************************************",
+                        "ast": {
+                            "declarator": {
+                                "name": "use_count",
+                                "params": [],
+                                "typemap_name": "long"
+                            },
+                            "specifier": [
+                                "long"
+                            ],
+                            "typemap_name": "long"
+                        },
+                        "decl": "long use_count(void)",
+                        "declgen": "long use_count(void)",
+                        "name": "use_count",
+                        "options": {},
+                        "user_fmt": {
+                            "F_name_api": "use_count"
+                        },
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "CXX_this_call": "SH_this->",
+                                        "C_call_function": "SH_this->use_count(\t)",
+                                        "C_name": "SHA_Object_shared_use_count",
+                                        "C_prototype": "SHA_Object_shared * self",
+                                        "C_return_type": "long",
+                                        "c_const": "",
+                                        "c_get_value": "",
+                                        "c_type": "long",
+                                        "c_var": "SHC_rv",
+                                        "cfi_type": "CFI_type_long",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHC_rv",
+                                        "cxx_rv_decl": "long SHC_rv",
+                                        "cxx_type": "long",
+                                        "cxx_var": "SHC_rv",
+                                        "i_name_function": "c_object_shared_use_count",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_LONG",
+                                        "stmt_name": "c_function_native",
+                                        "typemap_name": "long"
+                                    },
+                                    "meta": {
+                                        "abstract": "native",
+                                        "intent": "function"
+                                    },
+                                    "stmt": "c_function_native"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "CXX_this_call": "SH_this->",
+                                        "C_call_function": "SH_this->use_count(\t)",
+                                        "C_name": "SHA_Object_shared_use_count",
+                                        "C_prototype": "SHA_Object_shared * self",
+                                        "C_return_type": "long",
+                                        "F_arg_c_call": "obj%cxxmem",
+                                        "F_arguments": "obj",
+                                        "F_subprogram": "function",
+                                        "c_const": "",
+                                        "c_get_value": "",
+                                        "c_type": "long",
+                                        "c_var": "SHC_rv",
+                                        "cfi_type": "CFI_type_long",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHC_rv",
+                                        "cxx_rv_decl": "long SHC_rv",
+                                        "cxx_type": "long",
+                                        "cxx_var": "SHC_rv",
+                                        "f_call_function": "c_object_shared_use_count",
+                                        "f_intent": "OUT",
+                                        "f_intent_attr": ", intent(OUT)",
+                                        "f_kind": "C_LONG",
+                                        "f_module_name": "iso_c_binding",
+                                        "f_result_clause": "\fresult(SHT_rv)",
+                                        "f_type": "integer(C_LONG)",
+                                        "f_var": "SHT_rv",
+                                        "fc_var": "SHT_rv",
+                                        "i_arguments": "self",
+                                        "i_kind": "C_LONG",
+                                        "i_module_name": "iso_c_binding",
+                                        "i_name_function": "c_object_shared_use_count",
+                                        "i_result_clause": "\fresult(SHT_rv)",
+                                        "i_subprogram": "function",
+                                        "i_type": "integer(C_LONG)",
+                                        "i_var": "SHT_rv",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_LONG",
+                                        "stmt_name": "f_function_native",
+                                        "typemap_name": "long"
+                                    },
+                                    "meta": {
+                                        "abstract": "native",
+                                        "intent": "function"
+                                    },
+                                    "stmt": "f_function_native"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "abstract": "native",
+                                        "intent": "function"
+                                    }
+                                }
+                            }
+                        },
+                        "zz_fmtdict": {
+                            "C_name_api": "use_count",
+                            "F_name_api": "use_count",
+                            "F_name_function": "use_count",
+                            "F_name_generic": "use_count",
+                            "F_name_impl": "object_shared_use_count",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "function_name": "use_count"
+                        }
                     }
                 ],
                 "name": "Object",
@@ -1692,6 +1822,7 @@
                     "C_impl_filename": "wrapObject_shared.cpp",
                     "C_name_api": "Object_shared",
                     "C_name_scope": "Object_shared_",
+                    "C_name_shared_api": "Object_shared",
                     "C_type_name": "SHA_Object_shared",
                     "F_derived_member_base": "object",
                     "F_derived_name": "object_shared",

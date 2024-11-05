@@ -17,6 +17,10 @@ options:
 
 declarations:
 - decl: class Object
+#  format:
+#    C_name_shared_api: rename_object
+#    F_name_shared_use_count: "rename_use_count"
+#    F_name_shared_use_count:
   options:
     C_shared_ptr: true
   declarations:

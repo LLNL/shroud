@@ -90,7 +90,7 @@ class AstNode(object):
             fmt = self.fmtdict
         if not fmt.inlocal(name):
             tname = name + tname + "_template"
-            setattr(fmt, name, util.wformat(self.options[tname], fmt))
+            setattr(fmt, name, wformat(self.options[tname], fmt))
 
     def reeval_template(self, name, tname="", fmt=None):
         """Always evaluate template."""
@@ -566,6 +566,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_impl_utility_template="util{library}.{C_impl_filename_suffix}",
             C_enum_type_template="{C_prefix}{C_name_scope}{enum_name}",
             C_enum_member_template="{C_prefix}{C_name_scope}{C_name_api}",
+            C_name_shared_api_template="{C_name_api}_shared",
             C_name_template=(
                 "{C_prefix}{C_name_scope}{C_name_api}{function_suffix}{i_suffix}{template_suffix}"
             ),
@@ -727,6 +728,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_name_instance_set="set_instance",
             F_name_final="final",
             F_name_scope = "",
+            F_name_shared_use_count="use_count",
             F_name_typedef="",
             f_result_var="SHT_rv",
             F_this="obj",
@@ -1547,6 +1549,7 @@ class FunctionNode(AstNode):
         self.C_force_wrapper = False
         self.C_signature = None
         self.C_fortran_generic = False
+        self.C_shared_method = False      # True if method of a smart pointer (ex. use_count)
 
         # self.function_index = []
 
@@ -2271,7 +2274,7 @@ def clean_dictionary(ddct):
             if value is None:
                 ddct["default_arg_suffix"][i] = ""
 
-    if "format" in ddct:
+    if "format" in ddct and ddct["format"] is not None:
         fmtdict = ddct["format"]
         for key in ["function_suffix"]:
             if key in fmtdict and fmtdict[key] is None:

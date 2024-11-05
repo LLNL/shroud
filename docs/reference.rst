@@ -595,6 +595,10 @@ C_memory_dtor_function_template
 C_name_template
     ``{C_prefix}{C_name_scope}{C_name_api}{function_suffix}{f_c_suffix}{template_suffix}``
 
+C_name_shared_api_template
+    Name of the smart pointer object created by option *C_shared_ptr*.
+     ``{C_name_api}_shared``
+    
 C_name_typedef_template
     ``{C_prefix}{C_name_scope}{typedef_name}``
     
@@ -1222,6 +1226,11 @@ F_name_instance_get
 F_name_instance_set
     Name of method to set ``type(C_PTR)`` instance pointer in wrapped class.
     Defaults to *set_instance*.
+    If the name is blank, no function is generated.
+
+F_name_shared_use_count
+    Name of ``use_count`` method added to ``std::shared_ptr``
+    when option *C_shared_ptr* is set.
     If the name is blank, no function is generated.
 
 cxx_class

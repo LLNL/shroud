@@ -144,4 +144,17 @@ void SHA_Object_shared_replaceChildB(SHA_Object_shared * self,
     // splicer end class.Object.method.replaceChildB
 }
 
+// ----------------------------------------
+// Function:  long use_count
+// Statement: c_function_native
+long SHA_Object_shared_use_count(SHA_Object_shared * self)
+{
+    std::shared_ptr<Object> *SH_this =
+        static_cast<std::shared_ptr<Object> *>(self->addr);
+    // splicer begin class.Object.method.use_count
+    long SHC_rv = SH_this->use_count();
+    return SHC_rv;
+    // splicer end class.Object.method.use_count
+}
+
 }  // extern "C"
