@@ -825,10 +825,10 @@
                         "format": {
                             "YAML_test": "smart_pointer"
                         },
-                        "name": "std::shared_ptr"
+                        "type": "std::shared_ptr"
                     },
                     {
-                        "name": "std::weak_ptr"
+                        "type": "std::weak_ptr"
                     }
                 ],
                 "typemap_name": "Object",

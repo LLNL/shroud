@@ -22,7 +22,7 @@ of a pointer to an instance of the class.
     declarations:
     - decl: class Object
       smart_pointer:
-      - name: std::shared_ptr
+      - type: std::shared_ptr
       declarations:
       - decl: Object()
       - decl: ~Object()

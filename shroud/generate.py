@@ -506,22 +506,22 @@ class GenFunctions(object):
         """Create a subclass for use with std::shared.
 
         smart is a dictionary with fields
-          name - std::shared_ptr, std::weak_ptr
+          type   - std::shared_ptr, std::weak_ptr
           format
         """
         newcls = cls.clone()
         newcls.smart_pointer = []
         fmt_class = newcls.fmtdict
 
-        name = smart["name"]
-        ntypemap = cls.symtab.lookup_typemap(name)
+        name_type = smart["type"]
+        ntypemap = cls.symtab.lookup_typemap(name_type)
         if ntypemap is None:
             error.get_cursor().warning(
-                "smart_pointer name '{}' is unknown".format(name))
+                "smart_pointer type '{}' is unknown".format(name_type))
             return
         if ntypemap.sgroup != "shared_ptr":
             error.get_cursor().warning(
-                "smart_pointer name '{}' is not a smart pointer".format(name))
+                "smart_pointer type '{}' is not a smart pointer".format(name_type))
             return
 
         fmt_class.smart_pointer = ntypemap.smart_pointer
@@ -529,7 +529,7 @@ class GenFunctions(object):
             fmt_class.update(smart["format"])
         newcls.eval_template("C_name_shared_api")
         newcls.name_api = fmt_class.C_name_shared_api
-        newcls.name_instantiation = "{}<{}>".format(name, fmt_class.cxx_type)
+        newcls.name_instantiation = "{}<{}>".format(name_type, fmt_class.cxx_type)
         newcls.scope_file[-1] = newcls.name_api
 
         if ntypemap.smart_pointer == "weak":
