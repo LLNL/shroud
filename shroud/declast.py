@@ -470,7 +470,7 @@ class Parser(ExprParser):
                     # Save fully resolved typename
                     node.typemap = ns.typemap
                     #self.info("Typemap {}".format(ns.typemap.name))
-                    if node.typemap.base == "shared_ptr":
+                    if node.typemap.sgroup == "shared_ptr":
                         create_shared_ptr_typemap(node, self.symtab)
                     elif node.typemap.base == "template":
                         node.template_argument = ns_name
@@ -1695,6 +1695,7 @@ def fetch_shared_ptr_typemap(type_name, base_typemap, symtab):
             type_name,
             base="shared",
             sgroup="shared",
+            cxx_type=type_name,
             base_typemap=base_typemap,
             ntemplate_args=1,
         )
@@ -2112,6 +2113,7 @@ class SymbolTable(object):
         self.add_typedef_by_name("string")
         self.add_typedef_by_name("vector")
         self.add_typedef_by_name("shared_ptr")
+        self.add_typedef_by_name("weak_ptr")
         self.restore_depth(depth)
 
     def find_ntemplate_args(self):
