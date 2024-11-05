@@ -816,11 +816,14 @@
                     }
                 ],
                 "name": "Object",
-                "options": {
-                    "C_shared_ptr": true
-                },
+                "options": {},
                 "parse_keyword": "class",
                 "scope": "Object::",
+                "smart_pointer": [
+                    {
+                        "name": "std::shared_ptr"
+                    }
+                ],
                 "typemap_name": "Object",
                 "wrap": {
                     "c": true,
@@ -1806,9 +1809,7 @@
                 "name": "Object",
                 "name_api": "Object_shared",
                 "name_instantiation": "std::shared_ptr<Object>",
-                "options": {
-                    "C_shared_ptr": true
-                },
+                "options": {},
                 "parse_keyword": "class",
                 "scope": "Object::",
                 "typemap_name": "std::shared_ptr<Object>",

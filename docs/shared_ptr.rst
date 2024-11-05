@@ -12,8 +12,8 @@ Shared pointers
 
 .. note:: Work in progress
 
-Shroud has support for ``std::shared_ptr``.
-When the option **C_shared_ptr** is set to *true* for a class, a subclass will be
+Shroud has support for smart pointers.
+When the entry **smart_pointer** has values in a class, a subclass will be
 created in the Fortran wrapper. This shadow class holds the smart pointer instead
 of a pointer to an instance of the class.
 
@@ -21,8 +21,8 @@ of a pointer to an instance of the class.
 
     declarations:
     - decl: class Object
-      options:
-        C_shared_ptr: true
+      smart_pointer:
+      - name: std::shared_ptr
       declarations:
       - decl: Object()
       - decl: ~Object()

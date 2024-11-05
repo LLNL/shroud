@@ -596,7 +596,7 @@ nullify(lhs%{F_derived_member}%addr)
             )
 
     def write_object_final(self, node, fileinfo):
-#        if options.F_auto_reference_count or options.C_shared_ptr:
+#        if options.F_auto_reference_count or smart_pointer:
         if not node.C_shared_class:
             return
         options = node.options

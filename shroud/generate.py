@@ -502,10 +502,11 @@ class GenFunctions(object):
             self.process_class(newcls, newcls)
             self.pop_instantiate_scope()
 
-    def share_class(self, cls):
+    def share_class(self, cls, smart):
         """Create a subclass for use with std::shared.
         """
         newcls = cls.clone()
+        newcls.smart_pointer = []
         # XXX - need a option template to create the name.
         class_suffix = "_shared"
         newcls.eval_template("C_name_shared_api")
@@ -572,8 +573,8 @@ class GenFunctions(object):
             else:
                 clslist.append(cls)
                 self.process_class(cls, cls)
-                if cls.options.C_shared_ptr:
-                    shared = self.share_class(cls)
+                for smart in cls.smart_pointer:
+                    shared = self.share_class(cls, smart)
                     clslist.append(shared)
                     self.process_class(shared, shared)
             self.cursor.pop_node(cls)
