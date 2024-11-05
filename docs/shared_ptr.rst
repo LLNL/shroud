@@ -65,3 +65,10 @@ function to decrement the reference count.
 Shroud will add the function ``use_count`` to operate on the shared_ptr.
 It can be renamed with the format field *F_name_shared_use_count*.  If
 *F_name_shared_use_count* is blank the function will not be added.
+
+
+
+.. Adding a new smart pointer
+
+   Create a Typemap with sgroup="shared_ptr"
+   Add to symtab

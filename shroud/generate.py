@@ -504,15 +504,29 @@ class GenFunctions(object):
 
     def share_class(self, cls, smart):
         """Create a subclass for use with std::shared.
+
+        smart is a dictionary with fields
+          name - std::shared_ptr, std::weak_ptr
+          format
         """
         newcls = cls.clone()
         newcls.smart_pointer = []
-        # XXX - need a option template to create the name.
-        class_suffix = "_shared"
-        newcls.eval_template("C_name_shared_api")
         fmt_class = newcls.fmtdict
+
+        name = smart["name"]
+        ntypemap = cls.symtab.lookup_typemap(name)
+        if ntypemap is None:
+            error.get_cursor().warning(
+                "smart_pointer name '{}' is unknown".format(name))
+            return
+        if ntypemap.sgroup != "shared_ptr":
+            error.get_cursor().warning(
+                "smart_pointer name '{}' is not a smart pointer".format(name))
+            return
+        
+        newcls.eval_template("C_name_shared_api")
         newcls.name_api = fmt_class.C_name_shared_api
-        newcls.name_instantiation = "std::shared_ptr<{}>".format(fmt_class.cxx_type)
+        newcls.name_instantiation = "{}<{}>".format(name, fmt_class.cxx_type)
         newcls.scope_file[-1] = newcls.name_api
 #        newcls.functions = []
         self.share_methods(newcls)
