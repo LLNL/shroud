@@ -254,7 +254,7 @@ class FillMeta(object):
             # Unable to set Fortran pointer for void
             # if deref set, error
             pass
-        elif ntypemap.sgroup in ["shared", "shadow"]:
+        elif ntypemap.sgroup in ["smartptr", "shadow"]:
             # Change a C++ pointer into a Fortran pointer
             # return 'void *' as 'type(C_PTR)'
             # 'shadow' assigns pointer to type(C_PTR) in a derived type
@@ -440,7 +440,7 @@ class FillMeta(object):
 
         if api is not missing:
             meta["api"] = api
-        elif ntypemap.sgroup in ["shared", "shadow"]:
+        elif ntypemap.sgroup in ["smartptr", "shadow"]:
             if node.return_this:
                 meta["api"] = "this"
             elif node.options.C_shadow_result:
@@ -462,7 +462,7 @@ class FillMeta(object):
                 # capptr is not used with Fortran wrappers.
                 api = "capsule"
             meta["api"] = api
-        elif ntypemap.sgroup in ["shared", "shadow"]:
+        elif ntypemap.sgroup in ["smartptr", "shadow"]:
             if node.return_this:
                 meta["api"] = "this"
             else:

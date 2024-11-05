@@ -470,8 +470,8 @@ class Parser(ExprParser):
                     # Save fully resolved typename
                     node.typemap = ns.typemap
                     #self.info("Typemap {}".format(ns.typemap.name))
-                    if node.typemap.sgroup == "shared_ptr":
-                        create_shared_ptr_typemap(node, self.symtab)
+                    if node.typemap.sgroup == "smart_ptr":
+                        create_smart_ptr_typemap(node, self.symtab)
                     elif node.typemap.base == "template":
                         node.template_argument = ns_name
                     found_type = True
@@ -1662,7 +1662,7 @@ class CXXClass(Node):
         symtab.add_child_to_current(self)
         symtab.push_scope(self)
 
-def create_shared_ptr_typemap(node, symtab):
+def create_smart_ptr_typemap(node, symtab):
     """Create a Typemap entry for a shared pointer instantiation.
 
     ex: std::shared_ptr<Object> *return_ptr(void);
@@ -1676,9 +1676,9 @@ def create_shared_ptr_typemap(node, symtab):
     targs = node.gen_template_arguments()
     type_name = node.typemap.name + targs
     base_typemap = node.template_arguments[0].typemap
-    node.typemap = fetch_shared_ptr_typemap(type_name, base_typemap, symtab)
+    node.typemap = fetch_smart_ptr_typemap(type_name, base_typemap, symtab)
 
-def fetch_shared_ptr_typemap(type_name, base_typemap, symtab):
+def fetch_smart_ptr_typemap(type_name, base_typemap, symtab):
     """Return a Typemap entry for a shared pointer instantiation.
 
     Return existing entry if it already exists, otherwise create one.
@@ -1693,8 +1693,8 @@ def fetch_shared_ptr_typemap(type_name, base_typemap, symtab):
     if ntypemap is None:
         ntypemap = typemap.Typemap(
             type_name,
-            base="shared",
-            sgroup="shared",
+            base="smartptr",
+            sgroup="smartptr",
             cxx_type=type_name,
             base_typemap=base_typemap,
             ntemplate_args=1,

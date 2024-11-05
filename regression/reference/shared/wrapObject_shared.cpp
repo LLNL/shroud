@@ -66,7 +66,7 @@ void SHA_Object_shared_dtor(SHA_Object_shared * self)
 
 // ----------------------------------------
 // Function:  std::shared_ptr<Object> *createChildA
-// Statement: c_function_shared<shadow>*_capptr
+// Statement: c_function_smartptr<shadow>*_capptr
 SHA_Object_shared * SHA_Object_shared_createChildA(
     SHA_Object_shared * self, SHA_Object_shared * SHC_rv)
 {
@@ -82,7 +82,7 @@ SHA_Object_shared * SHA_Object_shared_createChildA(
 
 // ----------------------------------------
 // Function:  std::shared_ptr<Object> *createChildA
-// Statement: f_function_shared<shadow>*_capsule
+// Statement: f_function_smartptr<shadow>*_capsule
 void SHA_Object_shared_createChildA_bufferify(SHA_Object_shared * self,
     SHA_Object_shared * SHC_rv)
 {
@@ -97,7 +97,7 @@ void SHA_Object_shared_createChildA_bufferify(SHA_Object_shared * self,
 
 // ----------------------------------------
 // Function:  std::shared_ptr<Object> *createChildB
-// Statement: c_function_shared<shadow>*_capptr
+// Statement: c_function_smartptr<shadow>*_capptr
 SHA_Object_shared * SHA_Object_shared_createChildB(
     SHA_Object_shared * self, SHA_Object_shared * SHC_rv)
 {
@@ -113,7 +113,7 @@ SHA_Object_shared * SHA_Object_shared_createChildB(
 
 // ----------------------------------------
 // Function:  std::shared_ptr<Object> *createChildB
-// Statement: f_function_shared<shadow>*_capsule
+// Statement: f_function_smartptr<shadow>*_capsule
 void SHA_Object_shared_createChildB_bufferify(SHA_Object_shared * self,
     SHA_Object_shared * SHC_rv)
 {
@@ -131,7 +131,7 @@ void SHA_Object_shared_createChildB_bufferify(SHA_Object_shared * self,
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  std::shared_ptr<Object> *child
-// Statement: c_inout_shared<shadow>*
+// Statement: c_inout_smartptr<shadow>*
 void SHA_Object_shared_replaceChildB(SHA_Object_shared * self,
     SHA_Object_shared * child)
 {

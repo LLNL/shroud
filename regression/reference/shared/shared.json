@@ -325,7 +325,7 @@
                                         "i_var": "SHT_rv",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_OTHER",
-                                        "stmt_name": "c_function_shared<shadow>*_capptr",
+                                        "stmt_name": "c_function_smartptr<shadow>*_capptr",
                                         "targs": [
                                             {
                                                 "cxx_T": "Object",
@@ -335,11 +335,11 @@
                                         "typemap_name": "std::shared_ptr<Object>"
                                     },
                                     "meta": {
-                                        "abstract": "shared<shadow>*",
+                                        "abstract": "smartptr<shadow>*",
                                         "api": "capptr",
                                         "intent": "function"
                                     },
-                                    "stmt": "c_function_shared<shadow>*_capptr"
+                                    "stmt": "c_function_smartptr<shadow>*_capptr"
                                 }
                             },
                             "f": {
@@ -388,7 +388,7 @@
                                         "i_var": "SHT_rv",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_OTHER",
-                                        "stmt_name": "f_function_shared<shadow>*_capsule",
+                                        "stmt_name": "f_function_smartptr<shadow>*_capsule",
                                         "targs": [
                                             {
                                                 "cxx_T": "Object",
@@ -398,17 +398,17 @@
                                         "typemap_name": "std::shared_ptr<Object>"
                                     },
                                     "meta": {
-                                        "abstract": "shared<shadow>*",
+                                        "abstract": "smartptr<shadow>*",
                                         "api": "capsule",
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_shared<shadow>*_capsule"
+                                    "stmt": "f_function_smartptr<shadow>*_capsule"
                                 }
                             },
                             "share": {
                                 "+result": {
                                     "meta": {
-                                        "abstract": "shared<shadow>*",
+                                        "abstract": "smartptr<shadow>*",
                                         "intent": "function"
                                     }
                                 }
@@ -506,7 +506,7 @@
                                         "i_var": "SHT_rv",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_OTHER",
-                                        "stmt_name": "c_function_shared<shadow>*_capptr",
+                                        "stmt_name": "c_function_smartptr<shadow>*_capptr",
                                         "targs": [
                                             {
                                                 "cxx_T": "Object",
@@ -516,11 +516,11 @@
                                         "typemap_name": "std::shared_ptr<Object>"
                                     },
                                     "meta": {
-                                        "abstract": "shared<shadow>*",
+                                        "abstract": "smartptr<shadow>*",
                                         "api": "capptr",
                                         "intent": "function"
                                     },
-                                    "stmt": "c_function_shared<shadow>*_capptr"
+                                    "stmt": "c_function_smartptr<shadow>*_capptr"
                                 }
                             },
                             "f": {
@@ -569,7 +569,7 @@
                                         "i_var": "SHT_rv",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_OTHER",
-                                        "stmt_name": "f_function_shared<shadow>*_capsule",
+                                        "stmt_name": "f_function_smartptr<shadow>*_capsule",
                                         "targs": [
                                             {
                                                 "cxx_T": "Object",
@@ -579,17 +579,17 @@
                                         "typemap_name": "std::shared_ptr<Object>"
                                     },
                                     "meta": {
-                                        "abstract": "shared<shadow>*",
+                                        "abstract": "smartptr<shadow>*",
                                         "api": "capsule",
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_shared<shadow>*_capsule"
+                                    "stmt": "f_function_smartptr<shadow>*_capsule"
                                 }
                             },
                             "share": {
                                 "+result": {
                                     "meta": {
-                                        "abstract": "shared<shadow>*",
+                                        "abstract": "smartptr<shadow>*",
                                         "intent": "function"
                                     }
                                 }
@@ -697,7 +697,7 @@
                                         "f_intent_attr": ", intent(INOUT)",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_OTHER",
-                                        "stmt_name": "c_inout_shared<shadow>*",
+                                        "stmt_name": "c_inout_smartptr<shadow>*",
                                         "targs": [
                                             {
                                                 "cxx_T": "Object",
@@ -707,10 +707,10 @@
                                         "typemap_name": "std::shared_ptr<Object>"
                                     },
                                     "meta": {
-                                        "abstract": "shared<shadow>*",
+                                        "abstract": "smartptr<shadow>*",
                                         "intent": "inout"
                                     },
-                                    "stmt": "c_inout_shared<shadow>*"
+                                    "stmt": "c_inout_smartptr<shadow>*"
                                 }
                             },
                             "f": {
@@ -771,7 +771,7 @@
                                         "i_var": "child",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_OTHER",
-                                        "stmt_name": "f_inout_shared<shadow>*",
+                                        "stmt_name": "f_inout_smartptr<shadow>*",
                                         "targs": [
                                             {
                                                 "cxx_T": "Object",
@@ -781,10 +781,10 @@
                                         "typemap_name": "std::shared_ptr<Object>"
                                     },
                                     "meta": {
-                                        "abstract": "shared<shadow>*",
+                                        "abstract": "smartptr<shadow>*",
                                         "intent": "inout"
                                     },
-                                    "stmt": "f_inout_shared<shadow>*"
+                                    "stmt": "f_inout_smartptr<shadow>*"
                                 }
                             },
                             "share": {
@@ -796,7 +796,7 @@
                                 },
                                 "child": {
                                     "meta": {
-                                        "abstract": "shared<shadow>*",
+                                        "abstract": "smartptr<shadow>*",
                                         "intent": "inout"
                                     }
                                 }
@@ -1190,7 +1190,7 @@
                                         "i_var": "SHT_rv",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_OTHER",
-                                        "stmt_name": "c_function_shared<shadow>*_capptr",
+                                        "stmt_name": "c_function_smartptr<shadow>*_capptr",
                                         "targs": [
                                             {
                                                 "cxx_T": "Object",
@@ -1200,11 +1200,11 @@
                                         "typemap_name": "std::shared_ptr<Object>"
                                     },
                                     "meta": {
-                                        "abstract": "shared<shadow>*",
+                                        "abstract": "smartptr<shadow>*",
                                         "api": "capptr",
                                         "intent": "function"
                                     },
-                                    "stmt": "c_function_shared<shadow>*_capptr"
+                                    "stmt": "c_function_smartptr<shadow>*_capptr"
                                 }
                             },
                             "f": {
@@ -1253,7 +1253,7 @@
                                         "i_var": "SHT_rv",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_OTHER",
-                                        "stmt_name": "f_function_shared<shadow>*_capsule",
+                                        "stmt_name": "f_function_smartptr<shadow>*_capsule",
                                         "targs": [
                                             {
                                                 "cxx_T": "Object",
@@ -1263,17 +1263,17 @@
                                         "typemap_name": "std::shared_ptr<Object>"
                                     },
                                     "meta": {
-                                        "abstract": "shared<shadow>*",
+                                        "abstract": "smartptr<shadow>*",
                                         "api": "capsule",
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_shared<shadow>*_capsule"
+                                    "stmt": "f_function_smartptr<shadow>*_capsule"
                                 }
                             },
                             "share": {
                                 "+result": {
                                     "meta": {
-                                        "abstract": "shared<shadow>*",
+                                        "abstract": "smartptr<shadow>*",
                                         "intent": "function"
                                     }
                                 }
@@ -1372,7 +1372,7 @@
                                         "i_var": "SHT_rv",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_OTHER",
-                                        "stmt_name": "c_function_shared<shadow>*_capptr",
+                                        "stmt_name": "c_function_smartptr<shadow>*_capptr",
                                         "targs": [
                                             {
                                                 "cxx_T": "Object",
@@ -1382,11 +1382,11 @@
                                         "typemap_name": "std::shared_ptr<Object>"
                                     },
                                     "meta": {
-                                        "abstract": "shared<shadow>*",
+                                        "abstract": "smartptr<shadow>*",
                                         "api": "capptr",
                                         "intent": "function"
                                     },
-                                    "stmt": "c_function_shared<shadow>*_capptr"
+                                    "stmt": "c_function_smartptr<shadow>*_capptr"
                                 }
                             },
                             "f": {
@@ -1435,7 +1435,7 @@
                                         "i_var": "SHT_rv",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_OTHER",
-                                        "stmt_name": "f_function_shared<shadow>*_capsule",
+                                        "stmt_name": "f_function_smartptr<shadow>*_capsule",
                                         "targs": [
                                             {
                                                 "cxx_T": "Object",
@@ -1445,17 +1445,17 @@
                                         "typemap_name": "std::shared_ptr<Object>"
                                     },
                                     "meta": {
-                                        "abstract": "shared<shadow>*",
+                                        "abstract": "smartptr<shadow>*",
                                         "api": "capsule",
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_shared<shadow>*_capsule"
+                                    "stmt": "f_function_smartptr<shadow>*_capsule"
                                 }
                             },
                             "share": {
                                 "+result": {
                                     "meta": {
-                                        "abstract": "shared<shadow>*",
+                                        "abstract": "smartptr<shadow>*",
                                         "intent": "function"
                                     }
                                 }
@@ -1564,7 +1564,7 @@
                                         "f_intent_attr": ", intent(INOUT)",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_OTHER",
-                                        "stmt_name": "c_inout_shared<shadow>*",
+                                        "stmt_name": "c_inout_smartptr<shadow>*",
                                         "targs": [
                                             {
                                                 "cxx_T": "Object",
@@ -1574,10 +1574,10 @@
                                         "typemap_name": "std::shared_ptr<Object>"
                                     },
                                     "meta": {
-                                        "abstract": "shared<shadow>*",
+                                        "abstract": "smartptr<shadow>*",
                                         "intent": "inout"
                                     },
-                                    "stmt": "c_inout_shared<shadow>*"
+                                    "stmt": "c_inout_smartptr<shadow>*"
                                 }
                             },
                             "f": {
@@ -1638,7 +1638,7 @@
                                         "i_var": "child",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_OTHER",
-                                        "stmt_name": "f_inout_shared<shadow>*",
+                                        "stmt_name": "f_inout_smartptr<shadow>*",
                                         "targs": [
                                             {
                                                 "cxx_T": "Object",
@@ -1648,10 +1648,10 @@
                                         "typemap_name": "std::shared_ptr<Object>"
                                     },
                                     "meta": {
-                                        "abstract": "shared<shadow>*",
+                                        "abstract": "smartptr<shadow>*",
                                         "intent": "inout"
                                     },
-                                    "stmt": "f_inout_shared<shadow>*"
+                                    "stmt": "f_inout_smartptr<shadow>*"
                                 }
                             },
                             "share": {
@@ -1663,7 +1663,7 @@
                                 },
                                 "child": {
                                     "meta": {
-                                        "abstract": "shared<shadow>*",
+                                        "abstract": "smartptr<shadow>*",
                                         "intent": "inout"
                                     }
                                 }
@@ -2086,7 +2086,7 @@
         "std::shared_ptr<Object>": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
             "LUA_type": "LUA_TUSERDATA",
-            "base": "shared",
+            "base": "smartptr",
             "base_typemap": "Object",
             "c_to_cxx": "static_cast<{c_const}std::shared_ptr<Object> *>\t({c_var}->addr)",
             "c_type": "SHA_Object_shared",
@@ -2116,7 +2116,7 @@
                 "shared.hpp"
             ],
             "ntemplate_args": 1,
-            "sgroup": "shared",
+            "sgroup": "smartptr",
             "wrap_header": [
                 "typesShared.h"
             ]
@@ -2124,7 +2124,7 @@
         "std::weak_ptr<Object>": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
             "LUA_type": "LUA_TUSERDATA",
-            "base": "shared",
+            "base": "smartptr",
             "base_typemap": "Object",
             "c_to_cxx": "static_cast<{c_const}std::weak_ptr<Object> *>\t({c_var}->addr)",
             "c_type": "SHA_Object_weak",
@@ -2153,7 +2153,7 @@
                 "shared.hpp"
             ],
             "ntemplate_args": 1,
-            "sgroup": "shared",
+            "sgroup": "smartptr",
             "wrap_header": [
                 "typesShared.h"
             ]

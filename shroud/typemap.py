@@ -298,7 +298,7 @@ class Typemap(object):
             order = self._keyorder
         else: # class
             # To be used by other libraries which import shadow types. 
-            if self.base in ["shadow", "shared"]:
+            if self.base in ["shadow", "smartptr"]:
                 order = [
                     "base",
                     "wrap_header",
@@ -928,8 +928,8 @@ def default_typemap():
             cxx_type="std::shared_ptr<{cxx_T}>",
             cxx_header="<memory>",
             impl_header=["<memory>"],
-            base="shared_ptr",
-            sgroup="shared_ptr",
+            base="smart_ptr",
+            sgroup="smart_ptr",
             smart_pointer="shared",
         ),
         weak_ptr=Typemap(
@@ -938,8 +938,8 @@ def default_typemap():
             cxx_type="std::weak_ptr<{cxx_T}>",
             cxx_header="<memory>",
             impl_header=["<memory>"],
-            base="shared_ptr",
-            sgroup="shared_ptr",
+            base="smart_ptr",
+            sgroup="smart_ptr",
             smart_pointer="weak",
         ),
         MPI_Comm=Typemap(
@@ -1521,7 +1521,7 @@ def return_user_types(typemaps):  # typemaps -> dict
         if ntypemap.name == "--template-parameter--":
             continue
         elif ntypemap.sgroup in [
-                "shadow", "shared", "struct", "template", "enum", "procedure"]:
+                "shadow", "smartptr", "struct", "template", "enum", "procedure"]:
             dct[key] = ntypemap
         elif ntypemap.is_enum:
             dct[key] = ntypemap

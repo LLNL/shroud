@@ -1038,7 +1038,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
                     # LHS is class' cxx_to_c
                     cls_typemap = cls.typemap
-                    if cls_typemap.base not in ["shared", "shadow"]:
+                    if cls_typemap.base not in ["smartptr", "shadow"]:
                         cursor.warning(
                             "Wapped class {} is not a shadow type"
                             .format(cls_typemap.name)

@@ -3583,10 +3583,10 @@
             "c_inout_shadow*",
             "f_inout_shadow&",
             "c_inout_shadow&",
-            "f_in_shared<shadow>*",
-            "c_in_shared<shadow>*",
-            "f_inout_shared<shadow>*",
-            "c_inout_shared<shadow>*"
+            "f_in_smartptr<shadow>*",
+            "c_in_smartptr<shadow>*",
+            "f_inout_smartptr<shadow>*",
+            "c_inout_smartptr<shadow>*"
             
         ],
         "mixin": [
@@ -3761,7 +3761,7 @@
         "owner": "caller"
     },
     {
-        "name":"#### shared ################################################"
+        "name":"#### smartptr ##############################################"
     },
     {
         "name": "c_mixin_make-shared",
@@ -3807,7 +3807,7 @@
     },
     {
         "alias": [
-            "f_function_shared<shadow>_capsule"
+            "f_function_smartptr<shadow>_capsule"
         ],
         "notes": [
             "Used with std::shared_ptr<Object>* createChildA(void)"
@@ -3822,7 +3822,7 @@
     },
     {
         "alias": [
-            "f_function_shared<shadow>*_capsule"
+            "f_function_smartptr<shadow>*_capsule"
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
@@ -3834,7 +3834,7 @@
     },
     {
         "alias": [
-            "c_function_shared<shadow>_capptr"
+            "c_function_smartptr<shadow>_capptr"
         ],
         "notes": [
             "Used with std::shared_ptr<Object>* createChildA(void)"
@@ -3849,7 +3849,7 @@
     },
     {
         "alias": [
-            "c_function_shared<shadow>*_capptr"
+            "c_function_smartptr<shadow>*_capptr"
         ],
         "mixin": [
             "c_mixin_function_shadow_capptr",

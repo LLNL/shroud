@@ -1565,9 +1565,9 @@ int(*)(int):
   f_type: f-function-pointer
   sgroup: procedure
 std::shared_ptr<Object>:
-  base: shared
+  base: smartptr
   base_typemap: Object
   cxx_type: std::shared_ptr<Object>
   flat_name: std_shared_ptr_Object
   ntemplate_args: 1
-  sgroup: shared
+  sgroup: smartptr

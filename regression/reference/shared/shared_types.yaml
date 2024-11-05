@@ -20,7 +20,7 @@ typemap:
       f_to_c: "{f_var}%cxxmem"
   - type: shared_ptr<Object>
     fields:
-      base: shared
+      base: smartptr
       wrap_header:
       - typesShared.h
       c_type: SHA_Object_shared
@@ -30,7 +30,7 @@ typemap:
       f_to_c: "{f_var}%cxxmem"
   - type: weak_ptr<Object>
     fields:
-      base: shared
+      base: smartptr
       wrap_header:
       - typesShared.h
       c_type: SHA_Object_weak

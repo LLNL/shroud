@@ -116,7 +116,7 @@ module shared_mod
 
         ! ----------------------------------------
         ! Function:  std::shared_ptr<Object> *createChildA
-        ! Statement: c_function_shared<shadow>*_capptr
+        ! Statement: c_function_smartptr<shadow>*_capptr
         function c_object_create_child_a(self, SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="SHA_Object_createChildA")
@@ -130,7 +130,7 @@ module shared_mod
 
         ! ----------------------------------------
         ! Function:  std::shared_ptr<Object> *createChildA
-        ! Statement: f_function_shared<shadow>*_capsule
+        ! Statement: f_function_smartptr<shadow>*_capsule
         subroutine c_object_create_child_a_bufferify(self, SHT_rv) &
                 bind(C, name="SHA_Object_createChildA_bufferify")
             import :: SHA_SHROUD_capsule_data
@@ -141,7 +141,7 @@ module shared_mod
 
         ! ----------------------------------------
         ! Function:  std::shared_ptr<Object> *createChildB
-        ! Statement: c_function_shared<shadow>*_capptr
+        ! Statement: c_function_smartptr<shadow>*_capptr
         function c_object_create_child_b(self, SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="SHA_Object_createChildB")
@@ -155,7 +155,7 @@ module shared_mod
 
         ! ----------------------------------------
         ! Function:  std::shared_ptr<Object> *createChildB
-        ! Statement: f_function_shared<shadow>*_capsule
+        ! Statement: f_function_smartptr<shadow>*_capsule
         subroutine c_object_create_child_b_bufferify(self, SHT_rv) &
                 bind(C, name="SHA_Object_createChildB_bufferify")
             import :: SHA_SHROUD_capsule_data
@@ -169,7 +169,7 @@ module shared_mod
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  std::shared_ptr<Object> *child
-        ! Statement: f_inout_shared<shadow>*
+        ! Statement: f_inout_smartptr<shadow>*
         subroutine c_object_replace_child_b(self, child) &
                 bind(C, name="SHA_Object_replaceChildB")
             import :: SHA_SHROUD_capsule_data
@@ -213,7 +213,7 @@ module shared_mod
 
         ! ----------------------------------------
         ! Function:  std::shared_ptr<Object> *createChildA
-        ! Statement: c_function_shared<shadow>*_capptr
+        ! Statement: c_function_smartptr<shadow>*_capptr
         function c_object_shared_create_child_a(self, SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="SHA_Object_shared_createChildA")
@@ -227,7 +227,7 @@ module shared_mod
 
         ! ----------------------------------------
         ! Function:  std::shared_ptr<Object> *createChildA
-        ! Statement: f_function_shared<shadow>*_capsule
+        ! Statement: f_function_smartptr<shadow>*_capsule
         subroutine c_object_shared_create_child_a_bufferify(self, &
                 SHT_rv) &
                 bind(C, name="SHA_Object_shared_createChildA_bufferify")
@@ -239,7 +239,7 @@ module shared_mod
 
         ! ----------------------------------------
         ! Function:  std::shared_ptr<Object> *createChildB
-        ! Statement: c_function_shared<shadow>*_capptr
+        ! Statement: c_function_smartptr<shadow>*_capptr
         function c_object_shared_create_child_b(self, SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="SHA_Object_shared_createChildB")
@@ -253,7 +253,7 @@ module shared_mod
 
         ! ----------------------------------------
         ! Function:  std::shared_ptr<Object> *createChildB
-        ! Statement: f_function_shared<shadow>*_capsule
+        ! Statement: f_function_smartptr<shadow>*_capsule
         subroutine c_object_shared_create_child_b_bufferify(self, &
                 SHT_rv) &
                 bind(C, name="SHA_Object_shared_createChildB_bufferify")
@@ -268,7 +268,7 @@ module shared_mod
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  std::shared_ptr<Object> *child
-        ! Statement: f_inout_shared<shadow>*
+        ! Statement: f_inout_smartptr<shadow>*
         subroutine c_object_shared_replace_child_b(self, child) &
                 bind(C, name="SHA_Object_shared_replaceChildB")
             import :: SHA_SHROUD_capsule_data
@@ -340,7 +340,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  std::shared_ptr<Object> *createChildA
-    ! Statement: f_function_shared<shadow>*_capsule
+    ! Statement: f_function_smartptr<shadow>*_capsule
     function object_create_child_a(obj) &
             result(SHT_rv)
         class(object) :: obj
@@ -353,7 +353,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  std::shared_ptr<Object> *createChildB
-    ! Statement: f_function_shared<shadow>*_capsule
+    ! Statement: f_function_smartptr<shadow>*_capsule
     function object_create_child_b(obj) &
             result(SHT_rv)
         class(object) :: obj
@@ -369,7 +369,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::shared_ptr<Object> *child
-    ! Statement: f_inout_shared<shadow>*
+    ! Statement: f_inout_smartptr<shadow>*
     subroutine object_replace_child_b(obj, child)
         class(object) :: obj
         type(object_shared), intent(INOUT) :: child
@@ -427,7 +427,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  std::shared_ptr<Object> *createChildA
-    ! Statement: f_function_shared<shadow>*_capsule
+    ! Statement: f_function_smartptr<shadow>*_capsule
     function object_shared_create_child_a(obj) &
             result(SHT_rv)
         class(object_shared) :: obj
@@ -440,7 +440,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  std::shared_ptr<Object> *createChildB
-    ! Statement: f_function_shared<shadow>*_capsule
+    ! Statement: f_function_smartptr<shadow>*_capsule
     function object_shared_create_child_b(obj) &
             result(SHT_rv)
         class(object_shared) :: obj
@@ -456,7 +456,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::shared_ptr<Object> *child
-    ! Statement: f_inout_shared<shadow>*
+    ! Statement: f_inout_smartptr<shadow>*
     subroutine object_shared_replace_child_b(obj, child)
         class(object_shared) :: obj
         type(object_shared), intent(INOUT) :: child

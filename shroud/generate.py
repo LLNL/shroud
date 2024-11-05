@@ -519,7 +519,7 @@ class GenFunctions(object):
             error.get_cursor().warning(
                 "smart_pointer type '{}' is unknown".format(name_type))
             return
-        if ntypemap.sgroup != "shared_ptr":
+        if ntypemap.sgroup != "smart_ptr":
             error.get_cursor().warning(
                 "smart_pointer type '{}' is not a smart pointer".format(name_type))
             return
@@ -542,13 +542,13 @@ class GenFunctions(object):
         newcls.delete_format_templates()
         newcls.default_format()
 
-        newcls.typemap = declast.fetch_shared_ptr_typemap(
+        newcls.typemap = declast.fetch_smart_ptr_typemap(
             newcls.name_instantiation,
             cls.typemap,
             self.newlibrary.symtab)
         typemap.fill_class_typemap(newcls)
-        newcls.typemap.base = "shared"
-        newcls.typemap.sgroup = "shared"
+        newcls.typemap.base = "smartptr"
+        newcls.typemap.sgroup = "smartptr"
 
         newcls.baseclass = [ ( 'public', "DDDD", cls.ast) ]
         return newcls

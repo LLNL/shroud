@@ -729,7 +729,7 @@
             "sh_type": "SH_TYPE_SIZE_T"
         },
         "std::shared_ptr": {
-            "base": "shared_ptr",
+            "base": "smart_ptr",
             "cxx_header": [
                 "<memory>"
             ],
@@ -739,7 +739,7 @@
                 "<memory>"
             ],
             "ntemplate_args": 1,
-            "sgroup": "shared_ptr",
+            "sgroup": "smart_ptr",
             "smart_pointer": "shared"
         },
         "std::string": {
@@ -785,7 +785,7 @@
             "sgroup": "vector"
         },
         "std::weak_ptr": {
-            "base": "shared_ptr",
+            "base": "smart_ptr",
             "cxx_header": [
                 "<memory>"
             ],
@@ -795,7 +795,7 @@
                 "<memory>"
             ],
             "ntemplate_args": 1,
-            "sgroup": "shared_ptr",
+            "sgroup": "smart_ptr",
             "smart_pointer": "weak"
         },
         "uint16_t": {
