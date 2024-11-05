@@ -1676,9 +1676,9 @@ def create_smart_ptr_typemap(node, symtab):
     targs = node.gen_template_arguments()
     type_name = node.typemap.name + targs
     base_typemap = node.template_arguments[0].typemap
-    node.typemap = fetch_smart_ptr_typemap(type_name, base_typemap, symtab)
+    node.typemap = fetch_smart_ptr_typemap(type_name, node.typemap, base_typemap, symtab)
 
-def fetch_smart_ptr_typemap(type_name, base_typemap, symtab):
+def fetch_smart_ptr_typemap(type_name, ptr_typemap, base_typemap, symtab):
     """Return a Typemap entry for a shared pointer instantiation.
 
     Return existing entry if it already exists, otherwise create one.
@@ -1687,6 +1687,9 @@ def fetch_smart_ptr_typemap(type_name, base_typemap, symtab):
 
     Parameters:
       type_name - str
+      ptr_typemap - Typemap for smart pointer without template argument
+                    std::shared_ptr not std::shared_ptr<Object>
+      base_typemap - Typemap for template argument, <Object>.
       symtab - declast.SymbolTable
     """
     ntypemap = symtab.lookup_typemap(type_name)
@@ -1698,6 +1701,7 @@ def fetch_smart_ptr_typemap(type_name, base_typemap, symtab):
             cxx_type=type_name,
             base_typemap=base_typemap,
             ntemplate_args=1,
+            smart_pointer=ptr_typemap.smart_pointer,
         )
         symtab.register_typemap(type_name, ntypemap)
     return ntypemap

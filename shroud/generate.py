@@ -544,6 +544,7 @@ class GenFunctions(object):
 
         newcls.typemap = declast.fetch_smart_ptr_typemap(
             newcls.name_instantiation,
+            ntypemap,
             cls.typemap,
             self.newlibrary.symtab)
         typemap.fill_class_typemap(newcls)

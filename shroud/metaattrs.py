@@ -539,12 +539,11 @@ class FillMeta(object):
         ntypemap = ast.typemap
 
         if cls and cls.C_shared_class:
-            # XXX - special case for now, need to copy from ntypemap
             if ast.is_ctor:
-                meta["owner"] = "shared"
+                meta["owner"] = cls.typemap.smart_pointer
                 meta["api"] = "capptr"
             elif ast.is_dtor:
-                meta["owner"] = "shared"
+                meta["owner"] = cls.typemap.smart_pointer
 
     def set_func_post_fortran(self, cls, node, meta):
         """Final check on metaattributes for Fortran.
@@ -555,11 +554,11 @@ class FillMeta(object):
 
         if cls and cls.C_shared_class:
             if ast.is_ctor:
-                meta["owner"] = "shared"
+                meta["owner"] = cls.typemap.smart_pointer
                 meta["api"] = "capsule"
                 meta["deref"] = None
             elif ast.is_dtor:
-                meta["owner"] = "shared"
+                meta["owner"] = cls.typemap.smart_pointer
             
     def set_arg_api_c(self, arg, meta):
         declarator = arg.declarator

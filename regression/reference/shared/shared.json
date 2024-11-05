@@ -2117,6 +2117,7 @@
             ],
             "ntemplate_args": 1,
             "sgroup": "smartptr",
+            "smart_pointer": "shared",
             "wrap_header": [
                 "typesShared.h"
             ]
@@ -2154,6 +2155,7 @@
             ],
             "ntemplate_args": 1,
             "sgroup": "smartptr",
+            "smart_pointer": "weak",
             "wrap_header": [
                 "typesShared.h"
             ]

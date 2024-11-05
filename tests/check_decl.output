@@ -1571,3 +1571,4 @@ std::shared_ptr<Object>:
   flat_name: std_shared_ptr_Object
   ntemplate_args: 1
   sgroup: smartptr
+  smart_pointer: shared
