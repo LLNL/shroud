@@ -821,6 +821,9 @@
                 "scope": "Object::",
                 "smart_pointer": [
                     {
+                        "format": {
+                            "YAML_test": "smart_pointer"
+                        },
                         "name": "std::shared_ptr"
                     }
                 ],
@@ -1829,6 +1832,7 @@
                     "F_derived_name": "object_shared",
                     "F_name_api": "object_shared",
                     "F_name_scope": "object_shared_",
+                    "YAML_test": "smart_pointer",
                     "baseclass": "<BasesClassFormat Object>",
                     "class_scope": "std::shared_ptr<Object>::",
                     "cxx_class": "Object_shared",

@@ -55,6 +55,8 @@ To create an object in C++ with ``new object``, call the ``object``
 function.  To create a shared object with
 ``std::make_shared(object)``, call the ``object_shared`` function.
 
+The *smart_pointer* entry may have a *format* entry to control
+names in the generated code.
 The name of the shared object is controlled by the format field
 *C_name_shared_api* which has a default value from option
 *C_name_shared_api_template*.

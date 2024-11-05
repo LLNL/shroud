@@ -523,7 +523,9 @@ class GenFunctions(object):
             error.get_cursor().warning(
                 "smart_pointer name '{}' is not a smart pointer".format(name))
             return
-        
+
+        if "format" in smart:
+            fmt_class.update(smart["format"])
         newcls.eval_template("C_name_shared_api")
         newcls.name_api = fmt_class.C_name_shared_api
         newcls.name_instantiation = "{}<{}>".format(name, fmt_class.cxx_type)
