@@ -46,6 +46,7 @@ contains
     type(object_shared) childA, childB
     integer(C_LONG) count
     ! use_count returns a LONG but assert_equals does not have generic for LONG.
+    ! convert with int(count).
 
     call set_case_name("test_object_shared")
 
@@ -71,7 +72,6 @@ contains
 
     count = childB%use_count()
     call assert_equals(2, int(count), "childB use_count post replace")
-
     
   end subroutine test_object_shared
 

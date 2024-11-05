@@ -1822,6 +1822,7 @@
                     "C_impl_filename": "wrapObject_shared.cpp",
                     "C_name_api": "Object_shared",
                     "C_name_scope": "Object_shared_",
+                    "C_name_shared_api": "Object_shared",
                     "C_type_name": "SHA_Object_shared",
                     "F_derived_member_base": "object",
                     "F_derived_name": "object_shared",

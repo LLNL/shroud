@@ -595,6 +595,10 @@ C_memory_dtor_function_template
 C_name_template
     ``{C_prefix}{C_name_scope}{C_name_api}{function_suffix}{f_c_suffix}{template_suffix}``
 
+C_name_shared_api_template
+    Name of the smart pointer object created by option *C_shared_ptr*.
+     ``{C_name_api}_shared``
+    
 C_name_typedef_template
     ``{C_prefix}{C_name_scope}{typedef_name}``
     

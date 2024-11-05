@@ -106,7 +106,7 @@ Use of format fields for creating class wrappers.
         procedure :: {F_name_function} => {F_name_impl}
         generic :: {F_name_generic} => {F_name_function}, ...
 
-        ! F_name_getter, F_name_setter, F_name_instance_get as underscore_name
+        ! F_name_instance_get, F_name_instance_set
         procedure :: [F_name_function_template] => [F_name_impl_template]
 
     end type {F_derived_name}

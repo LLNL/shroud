@@ -508,9 +508,11 @@ class GenFunctions(object):
         newcls = cls.clone()
         # XXX - need a option template to create the name.
         class_suffix = "_shared"
-        newcls.name_api = cls.name + class_suffix
-        newcls.name_instantiation = "std::shared_ptr<{}>".format(cls.fmtdict.cxx_type)
-        newcls.scope_file[-1] += class_suffix
+        newcls.eval_template("C_name_shared_api")
+        fmt_class = newcls.fmtdict
+        newcls.name_api = fmt_class.C_name_shared_api
+        newcls.name_instantiation = "std::shared_ptr<{}>".format(fmt_class.cxx_type)
+        newcls.scope_file[-1] = newcls.name_api
 #        newcls.functions = []
         self.share_methods(newcls)
 
