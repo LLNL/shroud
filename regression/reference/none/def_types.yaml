@@ -470,6 +470,7 @@ typemap:
       sgroup: shared_ptr
       sh_type: SH_TYPE_OTHER
       cfi_type: CFI_type_other
+      smart_pointer: shared
   - type: std::string
     fields:
       flat_name: std_string
@@ -536,6 +537,7 @@ typemap:
       sgroup: shared_ptr
       sh_type: SH_TYPE_OTHER
       cfi_type: CFI_type_other
+      smart_pointer: weak
   - type: uint16_t
     fields:
       flat_name: uint16_t

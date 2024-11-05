@@ -566,7 +566,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_impl_utility_template="util{library}.{C_impl_filename_suffix}",
             C_enum_type_template="{C_prefix}{C_name_scope}{enum_name}",
             C_enum_member_template="{C_prefix}{C_name_scope}{C_name_api}",
-            C_name_shared_api_template="{C_name_api}_shared",
+            C_name_shared_api_template="{C_name_api}_{smart_pointer}",
             C_name_template=(
                 "{C_prefix}{C_name_scope}{C_name_api}{function_suffix}{i_suffix}{template_suffix}"
             ),

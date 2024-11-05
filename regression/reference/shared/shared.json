@@ -1839,7 +1839,8 @@
                     "cxx_type": "std::shared_ptr<Object>",
                     "f_capsule_data_type": "SHA_SHROUD_capsule_data",
                     "f_helper_capsule_data_helper": "SHA_SHROUD_capsule_data",
-                    "file_scope": "Object_shared"
+                    "file_scope": "Object_shared",
+                    "smart_pointer": "shared"
                 }
             }
         ],

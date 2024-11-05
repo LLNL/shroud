@@ -26,7 +26,7 @@
             "C_impl_utility_template": "util{library}.{C_impl_filename_suffix}",
             "C_line_length": 72,
             "C_memory_dtor_function_template": "{C_prefix}SHROUD_memory_destructor",
-            "C_name_shared_api_template": "{C_name_api}_shared",
+            "C_name_shared_api_template": "{C_name_api}_{smart_pointer}",
             "C_name_template": "{C_prefix}{C_name_scope}{C_name_api}{function_suffix}{i_suffix}{template_suffix}",
             "C_name_typedef_template": "{C_prefix}{C_name_scope}{typedef_name}",
             "C_shadow_result": true,
@@ -739,7 +739,8 @@
                 "<memory>"
             ],
             "ntemplate_args": 1,
-            "sgroup": "shared_ptr"
+            "sgroup": "shared_ptr",
+            "smart_pointer": "shared"
         },
         "std::string": {
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})",
@@ -794,7 +795,8 @@
                 "<memory>"
             ],
             "ntemplate_args": 1,
-            "sgroup": "shared_ptr"
+            "sgroup": "shared_ptr",
+            "smart_pointer": "weak"
         },
         "uint16_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",

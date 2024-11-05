@@ -72,5 +72,7 @@ It can be renamed with the format field *F_name_shared_use_count*.  If
 
 .. Adding a new smart pointer
 
-   Create a Typemap with sgroup="shared_ptr"
+   Create a Typemap
+      sgroup="shared_ptr"
+      smart_pointer="name", used in generated names.
    Add to symtab

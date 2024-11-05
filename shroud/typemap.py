@@ -153,6 +153,7 @@ class Typemap(object):
         ("cfi_type", "CFI_type_other"),
         ("is_enum", False),
         ("export", False),      # If True, export to YAML file.
+        ("smart_pointer", None), # Used to generated names
         ("__line__", None),
     )
 
@@ -929,6 +930,7 @@ def default_typemap():
             impl_header=["<memory>"],
             base="shared_ptr",
             sgroup="shared_ptr",
+            smart_pointer="shared",
         ),
         weak_ptr=Typemap(
             "std::weak_ptr",
@@ -938,6 +940,7 @@ def default_typemap():
             impl_header=["<memory>"],
             base="shared_ptr",
             sgroup="shared_ptr",
+            smart_pointer="weak",
         ),
         MPI_Comm=Typemap(
             "MPI_Comm",

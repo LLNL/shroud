@@ -591,7 +591,8 @@ C_name_template
 
 C_name_shared_api_template
     Name of the smart pointer object created by group *smart_pointer*.
-     ``{C_name_api}_shared``
+    The format field *smart_pointer* is taken from the Typemap for the smart pointer.
+     ``{C_name_api}_{smart_pointer}``
     
 C_name_typedef_template
     ``{C_prefix}{C_name_scope}{typedef_name}``

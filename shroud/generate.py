@@ -524,6 +524,7 @@ class GenFunctions(object):
                 "smart_pointer name '{}' is not a smart pointer".format(name))
             return
 
+        fmt_class.smart_pointer = ntypemap.smart_pointer
         if "format" in smart:
             fmt_class.update(smart["format"])
         newcls.eval_template("C_name_shared_api")
