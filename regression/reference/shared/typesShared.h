@@ -42,6 +42,13 @@ struct s_SHA_Object_shared {
     int idtor;      /* index of destructor */
 };
 typedef struct s_SHA_Object_shared SHA_Object_shared;
+
+// C++ capsule SHA_Object_weak
+struct s_SHA_Object_weak {
+    std::weak_ptr<Object> *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_SHA_Object_weak SHA_Object_weak;
 #endif
 
 // C capsule SHA_Object
@@ -57,6 +64,13 @@ struct s_SHA_Object_shared {
     int idtor;      /* index of destructor */
 };
 typedef struct s_SHA_Object_shared SHA_Object_shared;
+
+// C capsule SHA_Object_weak
+struct s_SHA_Object_weak {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_SHA_Object_weak SHA_Object_weak;
 
 void SHA_SHROUD_memory_destructor(SHA_SHROUD_capsule_data *cap);
 

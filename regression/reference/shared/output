@@ -3,6 +3,8 @@ Wrote wrapObject.h
 Wrote wrapObject.cpp
 Wrote wrapObject_shared.h
 Wrote wrapObject_shared.cpp
+Wrote wrapObject_weak.h
+Wrote wrapObject_weak.cpp
 Wrote wrapfshared.f
 Wrote utilShared.cpp
 Wrote typesShared.h

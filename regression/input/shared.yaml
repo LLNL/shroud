@@ -24,6 +24,7 @@ declarations:
 #      C_name_shared_api: rename_object
 #      F_name_shared_use_count: "rename_use_count"
 #      F_name_shared_use_count:
+  - name: std::weak_ptr
   declarations:
   - decl: Object()
   - decl: ~Object()

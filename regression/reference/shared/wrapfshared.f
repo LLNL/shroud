@@ -57,14 +57,26 @@ module shared_mod
         ! splicer end class.Object_shared.type_bound_procedure_part
     end type object_shared
 
+    type, extends(object) :: object_weak
+        ! splicer begin class.Object_weak.component_part
+        ! splicer end class.Object_weak.component_part
+    contains
+        procedure :: use_count => object_weak_use_count
+        final :: object_weak_final
+        ! splicer begin class.Object_weak.type_bound_procedure_part
+        ! splicer end class.Object_weak.type_bound_procedure_part
+    end type object_weak
+
     interface operator (.eq.)
         module procedure object_eq
         module procedure object_shared_eq
+        module procedure object_weak_eq
     end interface
 
     interface operator (.ne.)
         module procedure object_ne
         module procedure object_shared_ne
+        module procedure object_weak_ne
     end interface
 
     interface
@@ -277,6 +289,19 @@ module shared_mod
             type(SHA_SHROUD_capsule_data), intent(IN) :: self
             integer(C_LONG) :: SHT_rv
         end function c_object_shared_use_count
+
+        ! ----------------------------------------
+        ! Function:  long use_count
+        ! Statement: f_function_native
+        function c_object_weak_use_count(self) &
+                result(SHT_rv) &
+                bind(C, name="SHA_Object_weak_use_count")
+            use iso_c_binding, only : C_LONG
+            import :: SHA_SHROUD_capsule_data
+            implicit none
+            type(SHA_SHROUD_capsule_data), intent(IN) :: self
+            integer(C_LONG) :: SHT_rv
+        end function c_object_weak_use_count
     end interface
 
     interface object
@@ -472,6 +497,38 @@ contains
     ! splicer begin class.Object_shared.additional_functions
     ! splicer end class.Object_shared.additional_functions
 
+    ! ----------------------------------------
+    ! Function:  long use_count
+    ! Statement: f_function_native
+    function object_weak_use_count(obj) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_LONG
+        class(object_weak) :: obj
+        integer(C_LONG) :: SHT_rv
+        ! splicer begin class.Object_weak.method.use_count
+        SHT_rv = c_object_weak_use_count(obj%cxxmem)
+        ! splicer end class.Object_weak.method.use_count
+    end function object_weak_use_count
+
+    subroutine object_weak_final(obj)
+        use iso_c_binding, only : c_associated
+        type(object_weak), intent(INOUT) :: obj
+        interface
+            subroutine array_destructor(capsule) &
+                bind(C, name="SHA_SHROUD_memory_destructor")
+                import SHA_SHROUD_capsule_data
+                implicit none
+                type(SHA_SHROUD_capsule_data), intent(INOUT) :: capsule
+            end subroutine array_destructor
+        end interface
+        if (c_associated(obj%cxxmem%addr)) then
+            call array_destructor(obj%cxxmem)
+        endif
+    end subroutine object_weak_final
+
+    ! splicer begin class.Object_weak.additional_functions
+    ! splicer end class.Object_weak.additional_functions
+
     ! splicer begin additional_functions
     ! splicer end additional_functions
 
@@ -518,5 +575,27 @@ contains
             rv = .false.
         endif
     end function object_shared_ne
+
+    function object_weak_eq(a,b) result (rv)
+        use iso_c_binding, only: c_associated
+        type(object_weak), intent(IN) ::a,b
+        logical :: rv
+        if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
+            rv = .true.
+        else
+            rv = .false.
+        endif
+    end function object_weak_eq
+
+    function object_weak_ne(a,b) result (rv)
+        use iso_c_binding, only: c_associated
+        type(object_weak), intent(IN) ::a,b
+        logical :: rv
+        if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
+            rv = .true.
+        else
+            rv = .false.
+        endif
+    end function object_weak_ne
 
 end module shared_mod

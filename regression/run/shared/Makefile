@@ -26,7 +26,8 @@ VPATH = \
 C_OBJS = \
     utilShared.o \
     wrapObject.o \
-    wrapObject_shared.o
+    wrapObject_shared.o \
+    wrapObject_weak.o
 F_OBJS = \
     wrapfshared.o \
     fruit.o \
@@ -42,6 +43,7 @@ clean :
 utilShared.o : utilShared.cpp shared.hpp typesShared.h
 wrapObject.o : wrapObject.cpp shared.hpp wrapObject.h
 wrapObject_shared.o : wrapObject_shared.cpp shared.hpp wrapObject_shared.h
+wrapObject_weak.o : wrapObject_weak.cpp shared.hpp wrapObject_weak.h
 main.o : fruit.o wrapfshared.o
 
 # useful to isolate load error with just C++ code

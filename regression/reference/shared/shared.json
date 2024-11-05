@@ -3,7 +3,8 @@
     "library": {
         "class_map": [
             "Object",
-            "std_shared_ptr_Object"
+            "std_shared_ptr_Object",
+            "std_weak_ptr_Object"
         ],
         "classes": [
             {
@@ -825,6 +826,9 @@
                             "YAML_test": "smart_pointer"
                         },
                         "name": "std::shared_ptr"
+                    },
+                    {
+                        "name": "std::weak_ptr"
                     }
                 ],
                 "typemap_name": "Object",
@@ -1842,6 +1846,181 @@
                     "file_scope": "Object_shared",
                     "smart_pointer": "shared"
                 }
+            },
+            {
+                "<CLASS>": "Object ****************************************",
+                "baseclass": [
+                    [
+                        "public",
+                        "DDDD",
+                        "Object"
+                    ]
+                ],
+                "cxx_header": [],
+                "functions": [
+                    {
+                        "<FUNCTION>": "use_count  11 ****************************************",
+                        "ast": {
+                            "declarator": {
+                                "name": "use_count",
+                                "params": [],
+                                "typemap_name": "long"
+                            },
+                            "specifier": [
+                                "long"
+                            ],
+                            "typemap_name": "long"
+                        },
+                        "decl": "long use_count(void)",
+                        "declgen": "long use_count(void)",
+                        "name": "use_count",
+                        "options": {},
+                        "user_fmt": {
+                            "F_name_api": "use_count"
+                        },
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "CXX_this_call": "SH_this->",
+                                        "C_call_function": "SH_this->use_count(\t)",
+                                        "C_name": "SHA_Object_weak_use_count",
+                                        "C_prototype": "SHA_Object_weak * self",
+                                        "C_return_type": "long",
+                                        "c_const": "",
+                                        "c_get_value": "",
+                                        "c_type": "long",
+                                        "c_var": "SHC_rv",
+                                        "cfi_type": "CFI_type_long",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHC_rv",
+                                        "cxx_rv_decl": "long SHC_rv",
+                                        "cxx_type": "long",
+                                        "cxx_var": "SHC_rv",
+                                        "i_name_function": "c_object_weak_use_count",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_LONG",
+                                        "stmt_name": "c_function_native",
+                                        "typemap_name": "long"
+                                    },
+                                    "meta": {
+                                        "abstract": "native",
+                                        "intent": "function"
+                                    },
+                                    "stmt": "c_function_native"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "CXX_this_call": "SH_this->",
+                                        "C_call_function": "SH_this->use_count(\t)",
+                                        "C_name": "SHA_Object_weak_use_count",
+                                        "C_prototype": "SHA_Object_weak * self",
+                                        "C_return_type": "long",
+                                        "F_arg_c_call": "obj%cxxmem",
+                                        "F_arguments": "obj",
+                                        "F_subprogram": "function",
+                                        "c_const": "",
+                                        "c_get_value": "",
+                                        "c_type": "long",
+                                        "c_var": "SHC_rv",
+                                        "cfi_type": "CFI_type_long",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHC_rv",
+                                        "cxx_rv_decl": "long SHC_rv",
+                                        "cxx_type": "long",
+                                        "cxx_var": "SHC_rv",
+                                        "f_call_function": "c_object_weak_use_count",
+                                        "f_intent": "OUT",
+                                        "f_intent_attr": ", intent(OUT)",
+                                        "f_kind": "C_LONG",
+                                        "f_module_name": "iso_c_binding",
+                                        "f_result_clause": "\fresult(SHT_rv)",
+                                        "f_type": "integer(C_LONG)",
+                                        "f_var": "SHT_rv",
+                                        "fc_var": "SHT_rv",
+                                        "i_arguments": "self",
+                                        "i_kind": "C_LONG",
+                                        "i_module_name": "iso_c_binding",
+                                        "i_name_function": "c_object_weak_use_count",
+                                        "i_result_clause": "\fresult(SHT_rv)",
+                                        "i_subprogram": "function",
+                                        "i_type": "integer(C_LONG)",
+                                        "i_var": "SHT_rv",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_LONG",
+                                        "stmt_name": "f_function_native",
+                                        "typemap_name": "long"
+                                    },
+                                    "meta": {
+                                        "abstract": "native",
+                                        "intent": "function"
+                                    },
+                                    "stmt": "f_function_native"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "abstract": "native",
+                                        "intent": "function"
+                                    }
+                                }
+                            }
+                        },
+                        "zz_fmtdict": {
+                            "C_name_api": "use_count",
+                            "F_name_api": "use_count",
+                            "F_name_function": "use_count",
+                            "F_name_generic": "use_count",
+                            "F_name_impl": "object_weak_use_count",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "function_name": "use_count"
+                        }
+                    }
+                ],
+                "name": "Object",
+                "name_api": "Object_weak",
+                "name_instantiation": "std::weak_ptr<Object>",
+                "options": {},
+                "parse_keyword": "class",
+                "scope": "Object::",
+                "typemap_name": "std::weak_ptr<Object>",
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_fmtdict": {
+                    "CXX_this_call": "(*SH_this)->",
+                    "C_header_filename": "wrapObject_weak.h",
+                    "C_impl_filename": "wrapObject_weak.cpp",
+                    "C_name_api": "Object_weak",
+                    "C_name_scope": "Object_weak_",
+                    "C_name_shared_api": "Object_weak",
+                    "C_type_name": "SHA_Object_weak",
+                    "F_derived_member_base": "object",
+                    "F_derived_name": "object_weak",
+                    "F_name_api": "object_weak",
+                    "F_name_scope": "object_weak_",
+                    "baseclass": "<BasesClassFormat Object>",
+                    "class_scope": "std::weak_ptr<Object>::",
+                    "cxx_class": "Object_weak",
+                    "cxx_type": "std::weak_ptr<Object>",
+                    "f_capsule_data_type": "SHA_SHROUD_capsule_data",
+                    "f_helper_capsule_data_helper": "SHA_SHROUD_capsule_data",
+                    "file_scope": "Object_weak",
+                    "smart_pointer": "weak"
+                }
             }
         ],
         "copyright": [
@@ -1933,6 +2112,43 @@
             },
             "i_type": "type(SHA_SHROUD_capsule_data)",
             "idtor": "2",
+            "impl_header": [
+                "shared.hpp"
+            ],
+            "ntemplate_args": 1,
+            "sgroup": "shared",
+            "wrap_header": [
+                "typesShared.h"
+            ]
+        },
+        "std::weak_ptr<Object>": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "base": "shared",
+            "base_typemap": "Object",
+            "c_to_cxx": "static_cast<{c_const}std::weak_ptr<Object> *>\t({c_var}->addr)",
+            "c_type": "SHA_Object_weak",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "std::weak_ptr<Object>",
+            "f_capsule_data_type": "SHA_SHROUD_capsule_data",
+            "f_class": "class(object_weak)",
+            "f_derived_type": "object_weak",
+            "f_kind": "object_weak",
+            "f_module": {
+                "shared_mod": [
+                    "object_weak"
+                ]
+            },
+            "f_module_name": "shared_mod",
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(object_weak)",
+            "flat_name": "std_weak_ptr_Object",
+            "i_module": {
+                "shared_mod": [
+                    "SHA_SHROUD_capsule_data"
+                ]
+            },
+            "i_type": "type(SHA_SHROUD_capsule_data)",
             "impl_header": [
                 "shared.hpp"
             ],

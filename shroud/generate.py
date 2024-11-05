@@ -531,7 +531,10 @@ class GenFunctions(object):
         newcls.name_api = fmt_class.C_name_shared_api
         newcls.name_instantiation = "{}<{}>".format(name, fmt_class.cxx_type)
         newcls.scope_file[-1] = newcls.name_api
-#        newcls.functions = []
+
+        if ntypemap.smart_pointer == "weak":
+            newcls.functions = []
+
         self.share_methods(newcls)
 
         newcls.C_shared_class = True
