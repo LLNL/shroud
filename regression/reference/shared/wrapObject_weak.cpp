@@ -21,6 +21,29 @@ extern "C" {
 // splicer end class.Object.C_definitions
 
 // ----------------------------------------
+// Function:  void assign_weak +custom(weakptr)+operator(assignment)
+// Statement: c_subroutine_assignment_weakptr
+// ----------------------------------------
+// Argument:  std::shared_ptr<Object> *from +intent(in)
+// Statement: c_in_smartptr<shadow>*
+void SHA_Object_weak_assign_weak(SHA_Object_weak * self,
+    SHA_Object_shared * from)
+{
+    std::weak_ptr<Object> *SH_this =
+        static_cast<std::weak_ptr<Object> *>(self->addr);
+    // splicer begin class.Object.method.assign_weak
+    std::shared_ptr<Object> * SHC_from_cxx =
+        static_cast<std::shared_ptr<Object> *>(from->addr);
+    if (SH_this == nullptr) {
+        SH_this = new std::weak_ptr<Object>(*SHC_from_cxx);
+        self->addr = SH_this;
+    } else {
+        *SH_this = *SHC_from_cxx;
+    }
+    // splicer end class.Object.method.assign_weak
+}
+
+// ----------------------------------------
 // Function:  long use_count
 // Statement: c_function_native
 long SHA_Object_weak_use_count(SHA_Object_weak * self)

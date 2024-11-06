@@ -191,6 +191,30 @@
         ]
     },
     {
+        "alias": [
+            "f_subroutine_assignment_weakptr",
+            "c_subroutine_assignment_weakptr"
+        ],
+        "notes": [
+            "std::weak_ptr has no wrapped constructor.",
+            "It must be made from a std::shared_ptr."
+        ],
+        "mixin": [
+            "c_mixin_noargs"
+        ],
+        "f_call": [
+            "call {f_call_function}({F_arg_c_call})"
+        ],
+        "c_call": [
+            "if (SH_this == nullptr) {{+",
+            "SH_this = new {cxx_type}(*SHC_from_cxx);",
+            "self->addr = SH_this;",
+            "-}} else {{+",
+            "*{CXX_this} = *SHC_from_cxx;",
+            "-}}"
+        ]
+    },
+    {
         "name": "c_mixin_function",
         "comments": [
             "Call a function."

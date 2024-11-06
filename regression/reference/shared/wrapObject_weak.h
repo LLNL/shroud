@@ -28,6 +28,9 @@ extern "C" {
 // splicer begin class.Object.C_declarations
 // splicer end class.Object.C_declarations
 
+void SHA_Object_weak_assign_weak(SHA_Object_weak * self,
+    SHA_Object_shared * from);
+
 long SHA_Object_weak_use_count(SHA_Object_weak * self);
 
 #ifdef __cplusplus

@@ -150,6 +150,14 @@ class FillMeta(object):
         else:
             meta["intent"] = declarator.get_subprogram()
 
+        operator = declarator.attrs.get("operator", missing)
+        if operator is not missing:
+            meta["operator"] = operator
+
+        custom = declarator.attrs.get("custom", missing)
+        if custom is not missing:
+            meta["custom"] = custom
+
     def check_intent(self, arg):
         intent = arg.declarator.attrs.get("intent", missing)
         if intent is missing:
@@ -668,8 +676,8 @@ class FillMeta(object):
             meta["intent"] = share_meta["intent"]
         for attr in [
                 "abstract", "assumedtype",
-                "dimension", "dim_ast",
-                "free_pattern", "hidden", "len", "owner", "rank",
+                "custom", "dimension", "dim_ast",
+                "free_pattern", "hidden", "len", "operator", "owner", "rank",
         ]:
             meta[attr] = share_meta[attr]
 
@@ -776,12 +784,14 @@ class FillMetaShare(FillMeta):
             if attr not in [
                 "api",          # arguments to pass to C wrapper.
                 "allocatable",  # return a Fortran ALLOCATABLE
+                "custom",
                 "deref",  # How to dereference pointer
                 "dimension",
                 "free_pattern",
                 "intent",    # getter/setter
                 "len",
                 "name",
+                "operator",
                 "owner",
                 "pure",
                 "rank",

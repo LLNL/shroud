@@ -4349,6 +4349,20 @@ c_subroutine:
   name: c_subroutine
   intent: subroutine
   owner: library
+c_subroutine_assignment_weakptr:
+  name: c_subroutine_assignment_weakptr
+  notes:
+  - std::weak_ptr has no wrapped constructor.
+  - It must be made from a std::shared_ptr.
+  intent: subroutine
+  c_call:
+  - if (SH_this == nullptr) {{+
+  - SH_this = new {cxx_type}(*SHC_from_cxx);
+  - self->addr = SH_this;
+  - -}} else {{+
+  - '*{CXX_this} = *SHC_from_cxx;'
+  - -}}
+  owner: library
 f_ctor_shadow_capsule:
   name: f_ctor_shadow_capsule
   comments:
@@ -14151,6 +14165,22 @@ f_subroutine:
   f_call:
   - call {f_call_function}({F_arg_c_call})
   owner: library
+f_subroutine_assignment_weakptr:
+  name: f_subroutine_assignment_weakptr
+  notes:
+  - std::weak_ptr has no wrapped constructor.
+  - It must be made from a std::shared_ptr.
+  intent: subroutine
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  c_call:
+  - if (SH_this == nullptr) {{+
+  - SH_this = new {cxx_type}(*SHC_from_cxx);
+  - self->addr = SH_this;
+  - -}} else {{+
+  - '*{CXX_this} = *SHC_from_cxx;'
+  - -}}
+  owner: library
 root
   c
     ctor
@@ -14423,6 +14453,8 @@ root
         scalar
           buf -- c_setter_string_scalar_buf
     subroutine -- c_subroutine
+      assignment
+        weakptr -- c_subroutine_assignment_weakptr
   f
     ctor
       shadow
@@ -14823,6 +14855,8 @@ root
         pointer -- f_setter_struct*_pointer
       struct** -- f_setter_struct**
     subroutine -- f_subroutine
+      assignment
+        weakptr -- f_subroutine_assignment_weakptr
 ***** Python
 py_ctor_char*:
   name: py_ctor_char*

@@ -1859,7 +1859,229 @@
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "use_count  11 ****************************************",
+                        "<FUNCTION>": "assign_weak  11 ****************************************",
+                        "ast": {
+                            "declarator": {
+                                "attrs": {
+                                    "custom": "weakptr",
+                                    "operator": "assignment"
+                                },
+                                "name": "assign_weak",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "intent": "in"
+                                            },
+                                            "name": "from",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "std::shared_ptr<Object>"
+                                        },
+                                        "specifier": [
+                                            "std::shared_ptr"
+                                        ],
+                                        "template_arguments": [
+                                            {
+                                                "declarator": {
+                                                    "typemap_name": "Object"
+                                                },
+                                                "specifier": [
+                                                    "Object"
+                                                ],
+                                                "typemap_name": "Object"
+                                            }
+                                        ],
+                                        "typemap_name": "std::shared_ptr<Object>"
+                                    }
+                                ],
+                                "typemap_name": "void"
+                            },
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void assign_weak(std::shared_ptr<Object> *from +intent(in)) +operator(assignment)+custom(weakptr)",
+                        "declgen": "void assign_weak(std::shared_ptr<Object> *from +intent(in)) +custom(weakptr)+operator(assignment)",
+                        "name": "assign_weak",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "CXX_this_call": "SH_this->",
+                                        "C_call_function": "SH_this->assign_weak(\tSHC_from_cxx)",
+                                        "C_call_list": "SHC_from_cxx",
+                                        "C_name": "SHA_Object_weak_assign_weak",
+                                        "C_prototype": "SHA_Object_weak * self,\t SHA_Object_shared * from",
+                                        "C_return_type": "void",
+                                        "i_name_function": "c_object_weak_assign_weak",
+                                        "stmt_name": "c_subroutine_assignment_weakptr",
+                                        "typemap_name": "void"
+                                    },
+                                    "meta": {
+                                        "abstract": "void",
+                                        "custom": "weakptr",
+                                        "intent": "subroutine",
+                                        "operator": "assignment"
+                                    },
+                                    "stmt": "c_subroutine_assignment_weakptr"
+                                },
+                                "from": {
+                                    "fmtdict": {
+                                        "c_abstract_decl": "SHA_Object *",
+                                        "c_addr": "",
+                                        "c_const": "",
+                                        "c_deref": "*",
+                                        "c_local_cxx": "SHC_from_cxx",
+                                        "c_member": "->",
+                                        "c_type": "SHA_Object_shared",
+                                        "c_var": "from",
+                                        "cfi_type": "CFI_type_other",
+                                        "cxx_T": "Object",
+                                        "cxx_abstract_decl": "Object *",
+                                        "cxx_addr": "",
+                                        "cxx_member": "->",
+                                        "cxx_nonconst_ptr": "SHC_from_cxx",
+                                        "cxx_type": "std::shared_ptr<Object>",
+                                        "cxx_var": "SHC_from_cxx",
+                                        "f_intent": "IN",
+                                        "f_intent_attr": ", intent(IN)",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_OTHER",
+                                        "stmt_name": "c_in_smartptr<shadow>*",
+                                        "targs": [
+                                            {
+                                                "cxx_T": "Object",
+                                                "typemap_name": "Object"
+                                            }
+                                        ],
+                                        "typemap_name": "std::shared_ptr<Object>"
+                                    },
+                                    "meta": {
+                                        "abstract": "smartptr<shadow>*",
+                                        "intent": "in"
+                                    },
+                                    "stmt": "c_in_smartptr<shadow>*"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "CXX_this_call": "SH_this->",
+                                        "C_call_function": "SH_this->assign_weak(\tSHC_from_cxx)",
+                                        "C_call_list": "SHC_from_cxx",
+                                        "C_name": "SHA_Object_weak_assign_weak",
+                                        "C_prototype": "SHA_Object_weak * self,\t SHA_Object_shared * from",
+                                        "C_return_type": "void",
+                                        "F_arg_c_call": "obj%cxxmem,\t from%cxxmem",
+                                        "F_arguments": "obj,\t from",
+                                        "F_subprogram": "subroutine",
+                                        "f_call_function": "c_object_weak_assign_weak",
+                                        "i_arguments": "self,\t from",
+                                        "i_name_function": "c_object_weak_assign_weak",
+                                        "i_subprogram": "subroutine",
+                                        "stmt_name": "f_subroutine_assignment_weakptr",
+                                        "typemap_name": "void"
+                                    },
+                                    "meta": {
+                                        "abstract": "void",
+                                        "custom": "weakptr",
+                                        "intent": "subroutine",
+                                        "operator": "assignment"
+                                    },
+                                    "stmt": "f_subroutine_assignment_weakptr"
+                                },
+                                "from": {
+                                    "fmtdict": {
+                                        "c_abstract_decl": "SHA_Object *",
+                                        "c_addr": "",
+                                        "c_const": "",
+                                        "c_deref": "*",
+                                        "c_local_cxx": "SHC_from_cxx",
+                                        "c_member": "->",
+                                        "c_type": "SHA_Object_shared",
+                                        "c_var": "from",
+                                        "cfi_type": "CFI_type_other",
+                                        "cxx_T": "Object",
+                                        "cxx_abstract_decl": "Object *",
+                                        "cxx_addr": "",
+                                        "cxx_member": "->",
+                                        "cxx_nonconst_ptr": "SHC_from_cxx",
+                                        "cxx_type": "std::shared_ptr<Object>",
+                                        "cxx_var": "SHC_from_cxx",
+                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data",
+                                        "f_derived_type": "object_shared",
+                                        "f_intent": "IN",
+                                        "f_intent_attr": ", intent(IN)",
+                                        "f_kind": "object_shared",
+                                        "f_module_name": "shared_mod",
+                                        "f_type": "type(object_shared)",
+                                        "f_var": "from",
+                                        "fc_var": "from",
+                                        "i_kind": "object_shared",
+                                        "i_local_cxx": "SHC_from_cxx",
+                                        "i_module_name": "shared_mod",
+                                        "i_type": "type(SHA_SHROUD_capsule_data)",
+                                        "i_var": "from",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_OTHER",
+                                        "stmt_name": "f_in_smartptr<shadow>*",
+                                        "targs": [
+                                            {
+                                                "cxx_T": "Object",
+                                                "typemap_name": "Object"
+                                            }
+                                        ],
+                                        "typemap_name": "std::shared_ptr<Object>"
+                                    },
+                                    "meta": {
+                                        "abstract": "smartptr<shadow>*",
+                                        "intent": "in"
+                                    },
+                                    "stmt": "f_in_smartptr<shadow>*"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "abstract": "void",
+                                        "custom": "weakptr",
+                                        "intent": "subroutine",
+                                        "operator": "assignment"
+                                    }
+                                },
+                                "from": {
+                                    "meta": {
+                                        "abstract": "smartptr<shadow>*",
+                                        "intent": "in"
+                                    }
+                                }
+                            }
+                        },
+                        "zz_fmtdict": {
+                            "C_name_api": "assign_weak",
+                            "F_name_api": "assign_weak",
+                            "F_name_function": "assign_weak",
+                            "F_name_generic": "assign_weak",
+                            "F_name_impl": "object_weak_assign_weak",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "function_name": "assign_weak"
+                        }
+                    },
+                    {
+                        "<FUNCTION>": "use_count  12 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "use_count",

@@ -575,13 +575,11 @@ class GenFunctions(object):
 
         Assignment functions
         """
-        return
         fmt_class = cls.fmtdict
 
-        if fmt_class.F_name_shared_use_count:
-            decl = "void assign_share(std::shared_ptr<Object> *from) +owner(weak)"
-            fcn = cls.add_function(decl)
-            fcn.C_shared_method = True
+        decl = "void assign_weak(std::shared_ptr<Object> *from +intent(in)) +operator(assignment)+custom(weakptr)"
+        fcn = cls.add_function(decl)
+        fcn.C_shared_method = True
         
     def instantiate_classes(self, node):
         """Instantate any template_arguments.

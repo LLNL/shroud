@@ -196,12 +196,13 @@ def lookup_c_function_stmt(node):
     sintent = r_meta["intent"]
     if subprogram == "subroutine":
         # intent will be "subroutine", "dtor", "setter"
-        stmts = ["c", sintent]
+        stmts = ["c", sintent, r_meta["operator"], r_meta["custom"]]
         result_stmt = lookup_fc_stmts(stmts)
     else:
         # intent will be "function", "ctor", "getter"
         stmts = ["c", sintent, r_meta["abstract"],
-                 r_meta["api"], r_meta["deref"], r_meta["owner"]]
+                 r_meta["api"], r_meta["deref"], r_meta["owner"],
+                 r_meta["operator"], r_meta["custom"]]
     result_stmt = lookup_fc_stmts(stmts)
     return result_stmt
 
@@ -214,12 +215,13 @@ def lookup_f_function_stmt(node):
     sintent = r_meta["intent"]
     if subprogram == "subroutine":
         # intent will be "subroutine", "dtor", "setter"
-        stmts = ["f", sintent]
+        stmts = ["f", sintent, r_meta["operator"], r_meta["custom"]]
         result_stmt = lookup_fc_stmts(stmts)
     else:
         # intent will be "function", "ctor", "getter"
         stmts = ["f", sintent, r_meta["abstract"],
-                 r_meta["api"], r_meta["deref"], r_meta["owner"]]
+                 r_meta["api"], r_meta["deref"], r_meta["owner"],
+                 r_meta["operator"], r_meta["custom"]]
     result_stmt = lookup_fc_stmts(stmts)
     return result_stmt
 
