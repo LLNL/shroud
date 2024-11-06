@@ -63,11 +63,13 @@ contains
     count = childA%use_count()
     call assert_equals(1, int(count), "childA use_count")
 
-    call wpA%assign_weak(childA)
+!    call wpA%assign_weak(childA)
+    wpA = childA
     count = wpA%use_count()
     call assert_equals(1, int(count), "wpA use_count before")
 
-    call wpB%assign_weak(childB)
+!    call wpB%assign_weak(childB)
+    wpB = childB
     count = wpB%use_count()
     call assert_equals(1, int(count), "wpB use_count before")
     

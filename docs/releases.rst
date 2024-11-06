@@ -345,6 +345,8 @@ New Features
 * Add intent attribute to a function's ``PASS`` argument. If the C++ function
   is ``const`` set to ``intent(IN). Otherwise, set to ``intent(INOUT)``.
 
+* Added attribute *+operator(assignment)* to add a Fortran assignment overload.
+
 Fixed
 ^^^^^
 

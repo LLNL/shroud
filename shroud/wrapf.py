@@ -1633,6 +1633,10 @@ rv = .false.
                 append_format(type_bound_part,
                               "procedure :: {F_name_function} => {F_name_impl}",
                               fmt_result)
+                if r_meta["operator"] == "assignment":
+                    append_format(type_bound_part,
+                                  "generic :: assignment(=) => {F_name_function}",
+                                  fmt_result)
             if node.cpp_if:
                 type_bound_part.append("#endif")
 

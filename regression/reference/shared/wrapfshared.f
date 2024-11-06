@@ -62,6 +62,7 @@ module shared_mod
         ! splicer end class.Object_weak.component_part
     contains
         procedure :: assign_weak => object_weak_assign_weak
+        generic :: assignment(=) => assign_weak
         procedure :: use_count => object_weak_use_count
         final :: object_weak_final
         ! splicer begin class.Object_weak.type_bound_procedure_part
