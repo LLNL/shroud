@@ -69,7 +69,7 @@ contains
     function class1_func_in_class(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin class.Class1.method.func_in_class
         SHT_rv = c_class1_func_in_class_bufferify(obj%cxxmem)

@@ -278,7 +278,7 @@ contains
     ! Function:  ~vector
     ! Statement: f_dtor
     subroutine vector_int_dtor(obj)
-        class(vector_int) :: obj
+        class(vector_int), intent(INOUT) :: obj
         ! splicer begin namespace.std.class.vector_int.method.dtor
         call c_vector_int_dtor(obj%cxxmem)
         ! splicer end namespace.std.class.vector_int.method.dtor
@@ -293,7 +293,7 @@ contains
     ! Statement: f_in_native&
     subroutine vector_int_push_back(obj, value)
         use iso_c_binding, only : C_INT
-        class(vector_int) :: obj
+        class(vector_int), intent(INOUT) :: obj
         integer(C_INT), intent(IN) :: value
         ! splicer begin namespace.std.class.vector_int.method.push_back
         call c_vector_int_push_back(obj%cxxmem, value)
@@ -310,7 +310,7 @@ contains
     function vector_int_at(obj, n) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
-        class(vector_int) :: obj
+        class(vector_int), intent(INOUT) :: obj
         integer(vector_int_size_type), value, intent(IN) :: n
         integer(C_INT), pointer :: SHT_rv
         ! splicer begin namespace.std.class.vector_int.method.at
@@ -361,7 +361,7 @@ contains
     ! Function:  ~vector
     ! Statement: f_dtor
     subroutine vector_double_dtor(obj)
-        class(vector_double) :: obj
+        class(vector_double), intent(INOUT) :: obj
         ! splicer begin namespace.std.class.vector_double.method.dtor
         call c_vector_double_dtor(obj%cxxmem)
         ! splicer end namespace.std.class.vector_double.method.dtor
@@ -376,7 +376,7 @@ contains
     ! Statement: f_in_native&
     subroutine vector_double_push_back(obj, value)
         use iso_c_binding, only : C_DOUBLE
-        class(vector_double) :: obj
+        class(vector_double), intent(INOUT) :: obj
         real(C_DOUBLE), intent(IN) :: value
         ! splicer begin namespace.std.class.vector_double.method.push_back
         call c_vector_double_push_back(obj%cxxmem, value)
@@ -393,7 +393,7 @@ contains
     function vector_double_at(obj, n) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_PTR, c_f_pointer
-        class(vector_double) :: obj
+        class(vector_double), intent(INOUT) :: obj
         integer(vector_double_size_type), value, intent(IN) :: n
         real(C_DOUBLE), pointer :: SHT_rv
         ! splicer begin namespace.std.class.vector_double.method.at

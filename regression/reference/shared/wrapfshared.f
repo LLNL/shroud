@@ -347,7 +347,7 @@ contains
     ! Function:  ~Object
     ! Statement: f_dtor
     subroutine object_dtor(obj)
-        class(object) :: obj
+        class(object), intent(INOUT) :: obj
         ! splicer begin class.Object.method.dtor
         call c_object_dtor(obj%cxxmem)
         ! splicer end class.Object.method.dtor
@@ -358,7 +358,7 @@ contains
     ! Statement: f_function_smartptr<shadow>*_capsule
     function object_create_child_a(obj) &
             result(SHT_rv)
-        class(object) :: obj
+        class(object), intent(INOUT) :: obj
         type(object_shared) :: SHT_rv
         ! splicer begin class.Object.method.create_child_a
         call c_object_create_child_a_bufferify(obj%cxxmem, &
@@ -371,7 +371,7 @@ contains
     ! Statement: f_function_smartptr<shadow>*_capsule
     function object_create_child_b(obj) &
             result(SHT_rv)
-        class(object) :: obj
+        class(object), intent(INOUT) :: obj
         type(object_shared) :: SHT_rv
         ! splicer begin class.Object.method.create_child_b
         call c_object_create_child_b_bufferify(obj%cxxmem, &
@@ -386,7 +386,7 @@ contains
     ! Argument:  std::shared_ptr<Object> *child
     ! Statement: f_inout_smartptr<shadow>*
     subroutine object_replace_child_b(obj, child)
-        class(object) :: obj
+        class(object), intent(INOUT) :: obj
         type(object_shared), intent(INOUT) :: child
         ! splicer begin class.Object.method.replace_child_b
         call c_object_replace_child_b(obj%cxxmem, child%cxxmem)
@@ -434,7 +434,7 @@ contains
     ! Function:  ~Object
     ! Statement: f_dtor
     subroutine object_shared_dtor(obj)
-        class(object_shared) :: obj
+        class(object_shared), intent(INOUT) :: obj
         ! splicer begin class.Object_shared.method.dtor
         call c_object_shared_dtor(obj%cxxmem)
         ! splicer end class.Object_shared.method.dtor
@@ -445,7 +445,7 @@ contains
     ! Statement: f_function_smartptr<shadow>*_capsule
     function object_shared_create_child_a(obj) &
             result(SHT_rv)
-        class(object_shared) :: obj
+        class(object_shared), intent(INOUT) :: obj
         type(object_shared) :: SHT_rv
         ! splicer begin class.Object_shared.method.create_child_a
         call c_object_shared_create_child_a_bufferify(obj%cxxmem, &
@@ -458,7 +458,7 @@ contains
     ! Statement: f_function_smartptr<shadow>*_capsule
     function object_shared_create_child_b(obj) &
             result(SHT_rv)
-        class(object_shared) :: obj
+        class(object_shared), intent(INOUT) :: obj
         type(object_shared) :: SHT_rv
         ! splicer begin class.Object_shared.method.create_child_b
         call c_object_shared_create_child_b_bufferify(obj%cxxmem, &
@@ -473,7 +473,7 @@ contains
     ! Argument:  std::shared_ptr<Object> *child
     ! Statement: f_inout_smartptr<shadow>*
     subroutine object_shared_replace_child_b(obj, child)
-        class(object_shared) :: obj
+        class(object_shared), intent(INOUT) :: obj
         type(object_shared), intent(INOUT) :: child
         ! splicer begin class.Object_shared.method.replace_child_b
         call c_object_shared_replace_child_b(obj%cxxmem, child%cxxmem)
@@ -486,7 +486,7 @@ contains
     function object_shared_use_count(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_LONG
-        class(object_shared) :: obj
+        class(object_shared), intent(INOUT) :: obj
         integer(C_LONG) :: SHT_rv
         ! splicer begin class.Object_shared.method.use_count
         SHT_rv = c_object_shared_use_count(obj%cxxmem)
@@ -519,7 +519,7 @@ contains
     ! Argument:  std::shared_ptr<Object> *from +intent(in)
     ! Statement: f_in_smartptr<shadow>*
     subroutine object_weak_assign_weak(obj, from)
-        class(object_weak) :: obj
+        class(object_weak), intent(INOUT) :: obj
         type(object_shared), intent(IN) :: from
         ! splicer begin class.Object_weak.method.assign_weak
         call c_object_weak_assign_weak(obj%cxxmem, from%cxxmem)
@@ -532,7 +532,7 @@ contains
     function object_weak_use_count(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_LONG
-        class(object_weak) :: obj
+        class(object_weak), intent(INOUT) :: obj
         integer(C_LONG) :: SHT_rv
         ! splicer begin class.Object_weak.method.use_count
         SHT_rv = c_object_weak_use_count(obj%cxxmem)

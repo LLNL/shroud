@@ -1078,6 +1078,7 @@ rv = .false.
         cursor = self.cursor
         func_cursor = cursor.push_node(node)
         options = node.options
+        fmt_func = node.fmtdict
 
         ast = node.ast
         declarator = ast.declarator
@@ -1122,10 +1123,11 @@ rv = .false.
                 arg_c_names.append(fmt_result.C_this)
                 if sintent == "dtor":
                     # dtor will modify C_this to set addr to nullptr.
+#                    line = "type({F_capsule_data_type}){f_intent_attr} :: {C_this}"
                     line = "type({F_capsule_data_type}), intent(INOUT) :: {C_this}"
                 else:
                     line = "type({F_capsule_data_type}), intent(IN) :: {C_this}"
-                append_format(arg_c_decl, line, fmt_result)
+                append_format(arg_c_decl, line, fmt_func)
                 imports[fmt_result.F_capsule_data_type] = True
 
         args_all_in = True  # assume all arguments are intent(in)
@@ -1383,6 +1385,7 @@ rv = .false.
             fmt_result.f_call_function = C_node._bind["c"]["+result"].fmtdict.i_name_function
         result_stmt = r_bind.stmt
         func_cursor.stmt = result_stmt
+        self.fill_fortran_function(cls, node)
         self.fill_fortran_result(cls, node, r_bind)
 
         subprogram = fmt_result.F_subprogram
@@ -1427,7 +1430,7 @@ rv = .false.
                 # Add 'this' argument
                 arg_f_names.append(fmt_result.F_this)
                 arg_f_decl.append(
-                    wformat("class({F_derived_name}) :: {F_this}", fmt_func)
+                    wformat("class({F_derived_name}){f_intent_attr} :: {F_this}", fmt_func)
                 )
                 # could use {f_to_c} but I'd rather not hide the shadow class
                 arg_c_call.append(

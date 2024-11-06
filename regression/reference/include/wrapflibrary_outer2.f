@@ -64,7 +64,7 @@ contains
     ! Function:  void method
     ! Statement: f_subroutine
     subroutine class0_method(obj)
-        class(class0) :: obj
+        class(class0), intent(INOUT) :: obj
         call c_class0_method(obj%cxxmem)
     end subroutine class0_method
 

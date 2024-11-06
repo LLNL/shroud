@@ -422,7 +422,7 @@ contains
     ! Statement: f_in_native
     subroutine user_int_nested_double(obj, arg1, arg2)
         use iso_c_binding, only : C_DOUBLE, C_INT
-        class(user_int) :: obj
+        class(user_int), intent(INOUT) :: obj
         integer(C_INT), value, intent(IN) :: arg1
         real(C_DOUBLE), value, intent(IN) :: arg2
         ! splicer begin class.user_int.method.nested_double
@@ -475,7 +475,7 @@ contains
     ! Statement: f_in_native
     subroutine struct_as_class_int_set_npts(obj, n)
         use iso_c_binding, only : C_INT
-        class(struct_as_class_int) :: obj
+        class(struct_as_class_int), intent(INOUT) :: obj
         integer(C_INT), value, intent(IN) :: n
         ! splicer begin class.structAsClass_int.method.set_npts
         call c_struct_as_class_int_set_npts(obj%cxxmem, n)
@@ -488,7 +488,7 @@ contains
     function struct_as_class_int_get_npts(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(struct_as_class_int) :: obj
+        class(struct_as_class_int), intent(INOUT) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin class.structAsClass_int.method.get_npts
         SHT_rv = c_struct_as_class_int_get_npts(obj%cxxmem)
@@ -504,7 +504,7 @@ contains
     ! Statement: f_in_native
     subroutine struct_as_class_int_set_value(obj, v)
         use iso_c_binding, only : C_INT
-        class(struct_as_class_int) :: obj
+        class(struct_as_class_int), intent(INOUT) :: obj
         integer(C_INT), value, intent(IN) :: v
         ! splicer begin class.structAsClass_int.method.set_value
         call c_struct_as_class_int_set_value(obj%cxxmem, v)
@@ -518,7 +518,7 @@ contains
     function struct_as_class_int_get_value(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(struct_as_class_int) :: obj
+        class(struct_as_class_int), intent(INOUT) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin class.structAsClass_int.method.get_value
         SHT_rv = c_struct_as_class_int_get_value(obj%cxxmem)
@@ -570,7 +570,7 @@ contains
     ! Statement: f_in_native
     subroutine struct_as_class_double_set_npts(obj, n)
         use iso_c_binding, only : C_INT
-        class(struct_as_class_double) :: obj
+        class(struct_as_class_double), intent(INOUT) :: obj
         integer(C_INT), value, intent(IN) :: n
         ! splicer begin class.structAsClass_double.method.set_npts
         call c_struct_as_class_double_set_npts(obj%cxxmem, n)
@@ -583,7 +583,7 @@ contains
     function struct_as_class_double_get_npts(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(struct_as_class_double) :: obj
+        class(struct_as_class_double), intent(INOUT) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin class.structAsClass_double.method.get_npts
         SHT_rv = c_struct_as_class_double_get_npts(obj%cxxmem)
@@ -599,7 +599,7 @@ contains
     ! Statement: f_in_native
     subroutine struct_as_class_double_set_value(obj, v)
         use iso_c_binding, only : C_DOUBLE
-        class(struct_as_class_double) :: obj
+        class(struct_as_class_double), intent(INOUT) :: obj
         real(C_DOUBLE), value, intent(IN) :: v
         ! splicer begin class.structAsClass_double.method.set_value
         call c_struct_as_class_double_set_value(obj%cxxmem, v)
@@ -613,7 +613,7 @@ contains
     function struct_as_class_double_get_value(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
-        class(struct_as_class_double) :: obj
+        class(struct_as_class_double), intent(INOUT) :: obj
         real(C_DOUBLE) :: SHT_rv
         ! splicer begin class.structAsClass_double.method.get_value
         SHT_rv = c_struct_as_class_double_get_value(obj%cxxmem)

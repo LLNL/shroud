@@ -208,7 +208,7 @@ contains
     ! Function:  void method1
     ! Statement: f_subroutine
     subroutine user1_method1(obj)
-        class(user1) :: obj
+        class(user1), intent(INOUT) :: obj
         ! splicer begin class.User1.method.method1
         call c_user1_method1(obj%cxxmem)
         ! splicer end class.User1.method.method1
@@ -219,7 +219,7 @@ contains
     ! Function:  void method2
     ! Statement: f_subroutine
     subroutine user1_method2(obj)
-        class(user1) :: obj
+        class(user1), intent(INOUT) :: obj
         ! splicer begin class.User1.method.method2
         call c_user1_method2(obj%cxxmem)
         ! splicer end class.User1.method.method2
@@ -232,7 +232,7 @@ contains
     ! Function:  void method3def
     ! Statement: f_subroutine
     subroutine user1_method3def_0(obj)
-        class(user1) :: obj
+        class(user1), intent(INOUT) :: obj
         ! splicer begin class.User1.method.method3def_0
         call c_user1_method3def_0(obj%cxxmem)
         ! splicer end class.User1.method.method3def_0
@@ -248,7 +248,7 @@ contains
     ! Statement: f_in_native
     subroutine user1_method3def_1(obj, i)
         use iso_c_binding, only : C_INT
-        class(user1) :: obj
+        class(user1), intent(INOUT) :: obj
         integer(C_INT), value, intent(IN) :: i
         ! splicer begin class.User1.method.method3def_1
         call c_user1_method3def_1(obj%cxxmem, i)
@@ -288,7 +288,7 @@ contains
     ! Function:  void exfunc
     ! Statement: f_subroutine
     subroutine user2_exfunc_0(obj)
-        class(user2) :: obj
+        class(user2), intent(INOUT) :: obj
         ! splicer begin class.User2.method.exfunc_0
         call c_user2_exfunc_0(obj%cxxmem)
         ! splicer end class.User2.method.exfunc_0
@@ -304,7 +304,7 @@ contains
     ! Statement: f_in_native
     subroutine user2_exfunc_1(obj, flag)
         use iso_c_binding, only : C_INT
-        class(user2) :: obj
+        class(user2), intent(INOUT) :: obj
         integer(C_INT), value, intent(IN) :: flag
         ! splicer begin class.User2.method.exfunc_1
         call c_user2_exfunc_1(obj%cxxmem, flag)

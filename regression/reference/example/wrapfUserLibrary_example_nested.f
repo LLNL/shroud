@@ -1238,7 +1238,7 @@ contains
     !! longer description joined with previous line
     !<
     subroutine ex_class1_dtor(obj)
-        class(ex_class1) :: obj
+        class(ex_class1), intent(INOUT) :: obj
         ! splicer begin namespace.example::nested.class.ExClass1.method.delete
         call c_ex_class1_dtor(obj%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass1.method.delete
@@ -1253,7 +1253,7 @@ contains
     function ex_class1_increment_count(obj, incr) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(ex_class1) :: obj
+        class(ex_class1), intent(INOUT) :: obj
         integer(C_INT), value, intent(IN) :: incr
         integer(C_INT) :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass1.method.increment_count
@@ -1266,7 +1266,7 @@ contains
     ! Statement: f_function_string&_cdesc_allocatable
     function ex_class1_get_name_error_check(obj) &
             result(SHT_rv)
-        class(ex_class1) :: obj
+        class(ex_class1), intent(IN) :: obj
         character(len=:), allocatable :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass1.method.get_name_error_check
         type(AA_SHROUD_array) :: SHT_rv_cdesc
@@ -1285,7 +1285,7 @@ contains
     ! Statement: f_function_string&_buf_arg
     subroutine ex_class1_get_name_arg(obj, name)
         use iso_c_binding, only : C_INT
-        class(ex_class1) :: obj
+        class(ex_class1), intent(IN) :: obj
         character(len=*), intent(OUT) :: name
         ! splicer begin namespace.example::nested.class.ExClass1.method.get_name_arg
         integer(C_INT) nname
@@ -1303,7 +1303,7 @@ contains
     function ex_class1_get_value_from_int(obj, value) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(ex_class1) :: obj
+        class(ex_class1), intent(INOUT) :: obj
         integer(C_INT), value, intent(IN) :: value
         integer(C_INT) :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass1.method.get_value_from_int
@@ -1320,7 +1320,7 @@ contains
     function ex_class1_get_value_1(obj, value) &
             result(SHT_rv)
         use iso_c_binding, only : C_LONG
-        class(ex_class1) :: obj
+        class(ex_class1), intent(INOUT) :: obj
         integer(C_LONG), value, intent(IN) :: value
         integer(C_LONG) :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass1.method.get_value_1
@@ -1337,7 +1337,7 @@ contains
     function ex_class1_has_addr(obj, in) &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL
-        class(ex_class1) :: obj
+        class(ex_class1), intent(INOUT) :: obj
         logical, value, intent(IN) :: in
         logical :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass1.method.has_addr
@@ -1351,7 +1351,7 @@ contains
     ! Function:  void SplicerSpecial
     ! Statement: f_subroutine
     subroutine ex_class1_splicer_special(obj)
-        class(ex_class1) :: obj
+        class(ex_class1), intent(INOUT) :: obj
         ! splicer begin namespace.example::nested.class.ExClass1.method.splicer_special
         blah blah blah
         ! splicer end namespace.example::nested.class.ExClass1.method.splicer_special
@@ -1407,7 +1407,7 @@ contains
     !!
     !<
     subroutine ex_class2_dtor(obj)
-        class(ex_class2) :: obj
+        class(ex_class2), intent(INOUT) :: obj
         ! splicer begin namespace.example::nested.class.ExClass2.method.delete
         call c_ex_class2_dtor(obj%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass2.method.delete
@@ -1419,7 +1419,7 @@ contains
     function ex_class2_get_name(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(ex_class2) :: obj
+        class(ex_class2), intent(IN) :: obj
         character(len=aa_exclass2_get_name_length({F_this}%{F_derived_member})) :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name
         integer(C_INT) SHT_rv_len
@@ -1434,7 +1434,7 @@ contains
     ! Statement: f_function_string&_cdesc_allocatable
     function ex_class2_get_name2(obj) &
             result(SHT_rv)
-        class(ex_class2) :: obj
+        class(ex_class2), intent(INOUT) :: obj
         character(len=:), allocatable :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name2
         type(AA_SHROUD_array) :: SHT_rv_cdesc
@@ -1453,7 +1453,7 @@ contains
     ! Statement: f_function_string&_cdesc_allocatable
     function ex_class2_get_name3(obj) &
             result(SHT_rv)
-        class(ex_class2) :: obj
+        class(ex_class2), intent(IN) :: obj
         character(len=:), allocatable :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name3
         type(AA_SHROUD_array) :: SHT_rv_cdesc
@@ -1472,7 +1472,7 @@ contains
     ! Statement: f_function_string&_cdesc_allocatable
     function ex_class2_get_name4(obj) &
             result(SHT_rv)
-        class(ex_class2) :: obj
+        class(ex_class2), intent(INOUT) :: obj
         character(len=:), allocatable :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name4
         type(AA_SHROUD_array) :: SHT_rv_cdesc
@@ -1496,7 +1496,7 @@ contains
     function ex_class2_get_name_length(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(ex_class2) :: obj
+        class(ex_class2), intent(IN) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name_length
         SHT_rv = c_ex_class2_get_name_length(obj%cxxmem)
@@ -1511,7 +1511,7 @@ contains
     ! Statement: f_in_shadow*
     function ex_class2_get_class1(obj, in) &
             result(SHT_rv)
-        class(ex_class2) :: obj
+        class(ex_class2), intent(INOUT) :: obj
         type(ex_class1), intent(IN) :: in
         type(ex_class1) :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_class1
@@ -1524,7 +1524,7 @@ contains
     ! Function:  void destroyall
     ! Statement: f_subroutine
     subroutine ex_class2_destroyall(obj)
-        class(ex_class2) :: obj
+        class(ex_class2), intent(INOUT) :: obj
         ! splicer begin namespace.example::nested.class.ExClass2.method.destroyall
         call c_ex_class2_destroyall(obj%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass2.method.destroyall
@@ -1539,7 +1539,7 @@ contains
     ! Statement: f_in_native
     subroutine ex_class2_set_value_int(obj, value)
         use iso_c_binding, only : C_INT
-        class(ex_class2) :: obj
+        class(ex_class2), intent(INOUT) :: obj
         integer(C_INT), value, intent(IN) :: value
         ! splicer begin namespace.example::nested.class.ExClass2.method.set_value_int
         call c_ex_class2_set_value_int(obj%cxxmem, value)
@@ -1555,7 +1555,7 @@ contains
     ! Statement: f_in_native
     subroutine ex_class2_set_value_long(obj, value)
         use iso_c_binding, only : C_LONG
-        class(ex_class2) :: obj
+        class(ex_class2), intent(INOUT) :: obj
         integer(C_LONG), value, intent(IN) :: value
         ! splicer begin namespace.example::nested.class.ExClass2.method.set_value_long
         call c_ex_class2_set_value_long(obj%cxxmem, value)
@@ -1571,7 +1571,7 @@ contains
     ! Statement: f_in_native
     subroutine ex_class2_set_value_float(obj, value)
         use iso_c_binding, only : C_FLOAT
-        class(ex_class2) :: obj
+        class(ex_class2), intent(INOUT) :: obj
         real(C_FLOAT), value, intent(IN) :: value
         ! splicer begin namespace.example::nested.class.ExClass2.method.set_value_float
         call c_ex_class2_set_value_float(obj%cxxmem, value)
@@ -1587,7 +1587,7 @@ contains
     ! Statement: f_in_native
     subroutine ex_class2_set_value_double(obj, value)
         use iso_c_binding, only : C_DOUBLE
-        class(ex_class2) :: obj
+        class(ex_class2), intent(INOUT) :: obj
         real(C_DOUBLE), value, intent(IN) :: value
         ! splicer begin namespace.example::nested.class.ExClass2.method.set_value_double
         call c_ex_class2_set_value_double(obj%cxxmem, value)
@@ -1601,7 +1601,7 @@ contains
     function ex_class2_get_value_int(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(ex_class2) :: obj
+        class(ex_class2), intent(INOUT) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_value_int
         SHT_rv = c_ex_class2_get_value_int(obj%cxxmem)
@@ -1615,7 +1615,7 @@ contains
     function ex_class2_get_value_double(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
-        class(ex_class2) :: obj
+        class(ex_class2), intent(INOUT) :: obj
         real(C_DOUBLE) :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_value_double
         SHT_rv = c_ex_class2_get_value_double(obj%cxxmem)

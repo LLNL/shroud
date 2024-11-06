@@ -84,7 +84,7 @@ contains
     ! Statement: f_in_unknown
     subroutine class2_method1(obj, comm)
         use iso_c_binding, only : C_INT
-        class(class2) :: obj
+        class(class2), intent(INOUT) :: obj
         integer, value, intent(IN) :: comm
         call c_class2_method1(obj%cxxmem, comm)
     end subroutine class2_method1
@@ -97,7 +97,7 @@ contains
     ! Statement: f_inout_shadow*
     subroutine class2_method2(obj, c2)
         use library_three_mod, only : class1
-        class(class2) :: obj
+        class(class2), intent(INOUT) :: obj
         type(class1), intent(INOUT) :: c2
         call c_class2_method2(obj%cxxmem, c2%cxxmem)
     end subroutine class2_method2

@@ -260,6 +260,7 @@
                             "PY_name_impl": "PY_Class2_tp_init",
                             "PY_type_impl": "PY_Class2_tp_init",
                             "PY_type_method": "tp_init",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor"
                         },
                         "zz_fmtlang": {
@@ -391,6 +392,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "dtor"
                         },
                         "zz_fmtlang": {
@@ -666,6 +668,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "func1"
                         },
                         "zz_fmtlang": {
@@ -951,6 +954,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "acceptClass3"
                         },
                         "zz_fmtlang": {

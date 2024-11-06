@@ -235,7 +235,7 @@ contains
     function cstruct_as_subclass_get_x1(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(cstruct_as_subclass) :: obj
+        class(cstruct_as_subclass), intent(INOUT) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin class.Cstruct_as_subclass.method.get_x1
         SHT_rv = c_cstruct_as_subclass_get_x1(obj%cxxmem)
@@ -251,7 +251,7 @@ contains
     ! Statement: f_setter_native
     subroutine cstruct_as_subclass_set_x1(obj, val)
         use iso_c_binding, only : C_INT
-        class(cstruct_as_subclass) :: obj
+        class(cstruct_as_subclass), intent(INOUT) :: obj
         integer(C_INT), value, intent(IN) :: val
         ! splicer begin class.Cstruct_as_subclass.method.set_x1
         call c_cstruct_as_subclass_set_x1(obj%cxxmem, val)
@@ -265,7 +265,7 @@ contains
     function cstruct_as_subclass_get_y1(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(cstruct_as_subclass) :: obj
+        class(cstruct_as_subclass), intent(INOUT) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin class.Cstruct_as_subclass.method.get_y1
         SHT_rv = c_cstruct_as_subclass_get_y1(obj%cxxmem)
@@ -281,7 +281,7 @@ contains
     ! Statement: f_setter_native
     subroutine cstruct_as_subclass_set_y1(obj, val)
         use iso_c_binding, only : C_INT
-        class(cstruct_as_subclass) :: obj
+        class(cstruct_as_subclass), intent(INOUT) :: obj
         integer(C_INT), value, intent(IN) :: val
         ! splicer begin class.Cstruct_as_subclass.method.set_y1
         call c_cstruct_as_subclass_set_y1(obj%cxxmem, val)
@@ -295,7 +295,7 @@ contains
     function cstruct_as_subclass_get_z1(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(cstruct_as_subclass) :: obj
+        class(cstruct_as_subclass), intent(INOUT) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin class.Cstruct_as_subclass.method.get_z1
         SHT_rv = c_cstruct_as_subclass_get_z1(obj%cxxmem)
@@ -311,7 +311,7 @@ contains
     ! Statement: f_setter_native
     subroutine cstruct_as_subclass_set_z1(obj, val)
         use iso_c_binding, only : C_INT
-        class(cstruct_as_subclass) :: obj
+        class(cstruct_as_subclass), intent(INOUT) :: obj
         integer(C_INT), value, intent(IN) :: val
         ! splicer begin class.Cstruct_as_subclass.method.set_z1
         call c_cstruct_as_subclass_set_z1(obj%cxxmem, val)

@@ -1285,7 +1285,7 @@ contains
     ! Statement: f_dtor
     ! start class1_delete
     subroutine class1_delete(obj)
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         ! splicer begin class.Class1.method.delete
         call c_class1_delete(obj%cxxmem)
         ! splicer end class.Class1.method.delete
@@ -1303,7 +1303,7 @@ contains
     function class1_method1(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin class.Class1.method.method1
         SHT_rv = c_class1_method1(obj%cxxmem)
@@ -1324,7 +1324,7 @@ contains
     ! start class1_equivalent
     function class1_equivalent(obj, obj2) &
             result(SHT_rv)
-        class(class1) :: obj
+        class(class1), intent(IN) :: obj
         type(class1), intent(IN) :: obj2
         logical :: SHT_rv
         ! splicer begin class.Class1.method.equivalent
@@ -1342,7 +1342,7 @@ contains
     !<
     ! start class1_return_this
     subroutine class1_return_this(obj)
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         ! splicer begin class.Class1.method.return_this
         call c_class1_return_this(obj%cxxmem)
         ! splicer end class.Class1.method.return_this
@@ -1366,7 +1366,7 @@ contains
     function class1_return_this_buffer(obj, name, flag) &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL, C_INT
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         character(len=*), intent(IN) :: name
         logical, value, intent(IN) :: flag
         type(class1) :: SHT_rv
@@ -1391,7 +1391,7 @@ contains
     ! start class1_getclass3
     function class1_getclass3(obj) &
             result(SHT_rv)
-        class(class1) :: obj
+        class(class1), intent(IN) :: obj
         type(class1) :: SHT_rv
         ! splicer begin class.Class1.method.getclass3
         call c_class1_getclass3_bufferify(obj%cxxmem, SHT_rv%cxxmem)
@@ -1409,7 +1409,7 @@ contains
     ! start class1_get_name
     function class1_get_name(obj) &
             result(SHT_rv)
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         character(len=:), allocatable :: SHT_rv
         ! splicer begin class.Class1.method.get_name
         type(CLA_SHROUD_array) :: SHT_rv_cdesc
@@ -1434,7 +1434,7 @@ contains
     function class1_direction_func(obj, arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         integer(C_INT), value, intent(IN) :: arg
         integer(C_INT) :: SHT_rv
         ! splicer begin class.Class1.method.direction_func
@@ -1451,7 +1451,7 @@ contains
     function class1_get_m_flag(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin class.Class1.method.get_m_flag
         SHT_rv = c_class1_get_m_flag(obj%cxxmem)
@@ -1467,7 +1467,7 @@ contains
     function class1_get_test(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin class.Class1.method.get_test
         SHT_rv = c_class1_get_test(obj%cxxmem)
@@ -1485,7 +1485,7 @@ contains
     ! start class1_set_test
     subroutine class1_set_test(obj, val)
         use iso_c_binding, only : C_INT
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         integer(C_INT), value, intent(IN) :: val
         ! splicer begin class.Class1.method.set_test
         call c_class1_set_test(obj%cxxmem, val)
@@ -1500,7 +1500,7 @@ contains
     ! start class1_get_m_bool
     function class1_get_m_bool(obj) &
             result(SHT_rv)
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         logical :: SHT_rv
         ! splicer begin class.Class1.method.get_m_bool
         SHT_rv = c_class1_get_m_bool(obj%cxxmem)
@@ -1518,7 +1518,7 @@ contains
     ! start class1_set_m_bool
     subroutine class1_set_m_bool(obj, val)
         use iso_c_binding, only : C_BOOL
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         logical, value, intent(IN) :: val
         ! splicer begin class.Class1.method.set_m_bool
         logical(C_BOOL) :: SHT_val_cxx
@@ -1535,7 +1535,7 @@ contains
     ! start class1_get_m_name
     function class1_get_m_name(obj) &
             result(SHT_rv)
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         character(len=:), allocatable :: SHT_rv
         ! splicer begin class.Class1.method.get_m_name
         type(CLA_SHROUD_array) :: SHT_rv_cdesc
@@ -1557,7 +1557,7 @@ contains
     ! start class1_set_m_name
     subroutine class1_set_m_name(obj, val)
         use iso_c_binding, only : C_INT
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         character(len=*), intent(IN) :: val
         ! splicer begin class.Class1.method.set_m_name
         integer(C_INT) SHT_val_len
@@ -1602,7 +1602,7 @@ contains
     !<
     function class2_get_name(obj) &
             result(SHT_rv)
-        class(class2) :: obj
+        class(class2), intent(INOUT) :: obj
         character(len=:), allocatable :: SHT_rv
         ! splicer begin class.Class2.method.get_name
         type(CLA_SHROUD_array) :: SHT_rv_cdesc
@@ -1675,7 +1675,7 @@ contains
     function shape_get_ivar(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(shape) :: obj
+        class(shape), intent(IN) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin class.Shape.method.get_ivar
         SHT_rv = c_shape_get_ivar(obj%cxxmem)
@@ -1731,7 +1731,7 @@ contains
     ! start data_allocate
     subroutine data_allocate(obj, n)
         use iso_c_binding, only : C_INT
-        class(data) :: obj
+        class(data), intent(INOUT) :: obj
         integer(C_INT), value, intent(IN) :: n
         ! splicer begin class.Data.method.allocate
         call c_data_allocate(obj%cxxmem, n)
@@ -1744,7 +1744,7 @@ contains
     ! Statement: f_subroutine
     ! start data_free
     subroutine data_free(obj)
-        class(data) :: obj
+        class(data), intent(INOUT) :: obj
         ! splicer begin class.Data.method.free
         call c_data_free(obj%cxxmem)
         ! splicer end class.Data.method.free
@@ -1769,7 +1769,7 @@ contains
     ! Statement: f_dtor
     ! start data_dtor
     subroutine data_dtor(obj)
-        class(data) :: obj
+        class(data), intent(INOUT) :: obj
         ! splicer begin class.Data.method.dtor
         call c_data_dtor(obj%cxxmem)
         ! splicer end class.Data.method.dtor
@@ -1784,7 +1784,7 @@ contains
     function data_get_nitems(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(data) :: obj
+        class(data), intent(INOUT) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin class.Data.method.get_nitems
         SHT_rv = c_data_get_nitems(obj%cxxmem)
@@ -1802,7 +1802,7 @@ contains
     ! start data_set_nitems
     subroutine data_set_nitems(obj, val)
         use iso_c_binding, only : C_INT
-        class(data) :: obj
+        class(data), intent(INOUT) :: obj
         integer(C_INT), value, intent(IN) :: val
         ! splicer begin class.Data.method.set_nitems
         call c_data_set_nitems(obj%cxxmem, val)
@@ -1818,7 +1818,7 @@ contains
     function data_get_items(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, c_f_pointer
-        class(data) :: obj
+        class(data), intent(INOUT) :: obj
         integer(C_INT), pointer :: SHT_rv(:)
         ! splicer begin class.Data.method.get_items
         type(CLA_SHROUD_array) :: SHT_rv_cdesc
@@ -1839,7 +1839,7 @@ contains
     ! start data_set_items
     subroutine data_set_items(obj, val)
         use iso_c_binding, only : C_INT
-        class(data) :: obj
+        class(data), intent(INOUT) :: obj
         integer(C_INT), intent(IN) :: val(:)
         ! splicer begin class.Data.method.set_items
         call c_data_set_items(obj%cxxmem, val)

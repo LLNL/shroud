@@ -195,7 +195,7 @@ contains
     ! Function:  ~Class2
     ! Statement: f_dtor
     subroutine class2_dtor(obj)
-        class(class2) :: obj
+        class(class2), intent(INOUT) :: obj
         ! splicer begin class.Class2.method.dtor
         call c_class2_dtor(obj%cxxmem)
         ! splicer end class.Class2.method.dtor
@@ -209,7 +209,7 @@ contains
     ! Statement: f_in_shadow*
     subroutine class2_func1(obj, arg)
         use tutorial_mod, only : class1
-        class(class2) :: obj
+        class(class2), intent(INOUT) :: obj
         type(class1), intent(IN) :: arg
         ! splicer begin class.Class2.method.func1
         call c_class2_func1(obj%cxxmem, arg%cxxmem)
@@ -223,7 +223,7 @@ contains
     ! Argument:  Class3 *arg +intent(in)
     ! Statement: f_in_shadow*
     subroutine class2_accept_class3(obj, arg)
-        class(class2) :: obj
+        class(class2), intent(INOUT) :: obj
         type(class3), intent(IN) :: arg
         ! splicer begin class.Class2.method.accept_class3
         call c_class2_accept_class3(obj%cxxmem, arg%cxxmem)

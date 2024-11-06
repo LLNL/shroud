@@ -473,7 +473,7 @@ contains
     ! Function:  ~Class1
     ! Statement: f_dtor
     subroutine class1_dtor(obj)
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         ! splicer begin class.Class1.method.dtor
         call c_class1_dtor(obj%cxxmem)
         ! splicer end class.Class1.method.dtor
@@ -486,7 +486,7 @@ contains
     function class1_get_flag(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin class.Class1.method.get_flag
         SHT_rv = c_class1_get_flag(obj%cxxmem)

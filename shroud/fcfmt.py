@@ -382,6 +382,20 @@ class FillFormat(object):
         self.name_temp_vars(arg_name, bind, "c", "i")
         statements.apply_fmtdict_from_stmts(bind)
 
+    def fill_fortran_function(self, cls, node):
+        """Sets format fields for the 'pass' argument of the function.
+        """
+        if cls is None:
+            return
+        ast = node.ast
+        declarator = ast.declarator
+        fmt_func = node.fmtdict
+
+        if declarator.func_const:
+            fmt_func.f_intent_attr = ", intent(IN)"
+        else:
+            fmt_func.f_intent_attr = ", intent(INOUT)"
+
     def fill_fortran_result(self, cls, node, bind):
         ast = node.ast
         declarator = ast.declarator

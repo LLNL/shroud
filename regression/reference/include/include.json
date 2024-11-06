@@ -190,6 +190,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "method1"
                         }
                     },
@@ -372,6 +373,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "method2"
                         }
                     }
@@ -749,6 +751,7 @@
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "self",
+                                    "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "method1"
                                 }
                             }
@@ -900,6 +903,7 @@
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "self",
+                                    "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "method"
                                 }
                             }
@@ -1137,6 +1141,7 @@
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "self",
+                                    "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "method"
                                 }
                             }

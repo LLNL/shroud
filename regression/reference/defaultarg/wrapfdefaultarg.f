@@ -692,7 +692,7 @@ contains
     ! Function:  ~Class1 +name(delete)
     ! Statement: f_dtor
     subroutine class1_delete(obj)
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         ! splicer begin class.Class1.method.delete
         call c_class1_delete(obj%cxxmem)
         ! splicer end class.Class1.method.delete
@@ -711,7 +711,7 @@ contains
     !<
     subroutine class1_default_arguments_0(obj, arg1)
         use iso_c_binding, only : C_INT
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         integer(C_INT), value, intent(IN) :: arg1
         ! splicer begin class.Class1.method.default_arguments_0
         call c_class1_default_arguments_0(obj%cxxmem, arg1)
@@ -734,7 +734,7 @@ contains
     !<
     subroutine class1_default_arguments_1(obj, arg1, arg2)
         use iso_c_binding, only : C_INT
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         integer(C_INT), value, intent(IN) :: arg1
         integer(C_INT), value, intent(IN) :: arg2
         ! splicer begin class.Class1.method.default_arguments_1
@@ -760,7 +760,7 @@ contains
     !<
     subroutine class1_default_arguments_2(obj, arg1, arg2, arg3)
         use iso_c_binding, only : C_INT
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         integer(C_INT), value, intent(IN) :: arg1
         integer(C_INT), value, intent(IN) :: arg2
         integer(C_INT), value, intent(IN) :: arg3
@@ -776,7 +776,7 @@ contains
     function class1_get_field1(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin class.Class1.method.get_field1
         SHT_rv = c_class1_get_field1(obj%cxxmem)
@@ -790,7 +790,7 @@ contains
     function class1_get_field2(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin class.Class1.method.get_field2
         SHT_rv = c_class1_get_field2(obj%cxxmem)
@@ -804,7 +804,7 @@ contains
     function class1_get_field3(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin class.Class1.method.get_field3
         SHT_rv = c_class1_get_field3(obj%cxxmem)

@@ -513,7 +513,7 @@ contains
     ! Statement: f_in_native
     subroutine ArrayWrapper_setSize(obj, size)
         use iso_c_binding, only : C_INT
-        class(ArrayWrapper) :: obj
+        class(ArrayWrapper), intent(INOUT) :: obj
         integer(C_INT), value, intent(IN) :: size
         ! splicer begin class.ArrayWrapper.method.setSize
         call c_ArrayWrapper_setSize(obj%cxxmem, size)
@@ -526,7 +526,7 @@ contains
     function ArrayWrapper_getSize(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(ArrayWrapper) :: obj
+        class(ArrayWrapper), intent(IN) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin class.ArrayWrapper.method.getSize
         SHT_rv = c_ArrayWrapper_getSize(obj%cxxmem)
@@ -541,7 +541,7 @@ contains
     ! Statement: f_out_native&
     subroutine ArrayWrapper_fillSize(obj, size)
         use iso_c_binding, only : C_INT
-        class(ArrayWrapper) :: obj
+        class(ArrayWrapper), intent(INOUT) :: obj
         integer(C_INT), intent(OUT) :: size
         ! splicer begin class.ArrayWrapper.method.fillSize
         call c_ArrayWrapper_fillSize(obj%cxxmem, size)
@@ -552,7 +552,7 @@ contains
     ! Function:  void allocate
     ! Statement: f_subroutine
     subroutine ArrayWrapper_allocate(obj)
-        class(ArrayWrapper) :: obj
+        class(ArrayWrapper), intent(INOUT) :: obj
         ! splicer begin class.ArrayWrapper.method.allocate
         call c_ArrayWrapper_allocate(obj%cxxmem)
         ! splicer end class.ArrayWrapper.method.allocate
@@ -564,7 +564,7 @@ contains
     function ArrayWrapper_getArray(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
-        class(ArrayWrapper) :: obj
+        class(ArrayWrapper), intent(INOUT) :: obj
         real(C_DOUBLE), pointer :: SHT_rv(:)
         ! splicer begin class.ArrayWrapper.method.getArray
         type(ARR_SHROUD_array) :: SHT_rv_cdesc
@@ -580,7 +580,7 @@ contains
     function ArrayWrapper_getArrayConst(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
-        class(ArrayWrapper) :: obj
+        class(ArrayWrapper), intent(IN) :: obj
         real(C_DOUBLE), pointer :: SHT_rv(:)
         ! splicer begin class.ArrayWrapper.method.getArrayConst
         type(ARR_SHROUD_array) :: SHT_rv_cdesc
@@ -597,7 +597,7 @@ contains
     function ArrayWrapper_getArrayC(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
-        class(ArrayWrapper) :: obj
+        class(ArrayWrapper), intent(INOUT) :: obj
         real(C_DOUBLE), pointer :: SHT_rv(:)
         ! splicer begin class.ArrayWrapper.method.getArrayC
         type(ARR_SHROUD_array) :: SHT_rv_cdesc
@@ -614,7 +614,7 @@ contains
     function ArrayWrapper_getArrayConstC(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
-        class(ArrayWrapper) :: obj
+        class(ArrayWrapper), intent(IN) :: obj
         real(C_DOUBLE), pointer :: SHT_rv(:)
         ! splicer begin class.ArrayWrapper.method.getArrayConstC
         type(ARR_SHROUD_array) :: SHT_rv_cdesc
@@ -633,7 +633,7 @@ contains
     ! Statement: f_out_native**_cdesc_pointer
     subroutine ArrayWrapper_fetchArrayPtr(obj, array)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
-        class(ArrayWrapper) :: obj
+        class(ArrayWrapper), intent(INOUT) :: obj
         real(C_DOUBLE), intent(OUT), pointer :: array(:)
         ! splicer begin class.ArrayWrapper.method.fetchArrayPtr
         type(ARR_SHROUD_array) :: SHT_array_cdesc
@@ -652,7 +652,7 @@ contains
     ! Statement: f_out_native*&_cdesc_pointer
     subroutine ArrayWrapper_fetchArrayRef(obj, array)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
-        class(ArrayWrapper) :: obj
+        class(ArrayWrapper), intent(INOUT) :: obj
         real(C_DOUBLE), intent(OUT), pointer :: array(:)
         ! splicer begin class.ArrayWrapper.method.fetchArrayRef
         type(ARR_SHROUD_array) :: SHT_array_cdesc
@@ -671,7 +671,7 @@ contains
     ! Statement: f_out_native**_cdesc_pointer
     subroutine ArrayWrapper_fetchArrayPtrConst(obj, array)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
-        class(ArrayWrapper) :: obj
+        class(ArrayWrapper), intent(INOUT) :: obj
         real(C_DOUBLE), intent(OUT), pointer :: array(:)
         ! splicer begin class.ArrayWrapper.method.fetchArrayPtrConst
         type(ARR_SHROUD_array) :: SHT_array_cdesc
@@ -690,7 +690,7 @@ contains
     ! Statement: f_out_native*&_cdesc_pointer
     subroutine ArrayWrapper_fetchArrayRefConst(obj, array)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
-        class(ArrayWrapper) :: obj
+        class(ArrayWrapper), intent(INOUT) :: obj
         real(C_DOUBLE), intent(OUT), pointer :: array(:)
         ! splicer begin class.ArrayWrapper.method.fetchArrayRefConst
         type(ARR_SHROUD_array) :: SHT_array_cdesc
@@ -709,7 +709,7 @@ contains
     ! Statement: f_out_void**
     subroutine ArrayWrapper_fetchVoidPtr(obj, array)
         use iso_c_binding, only : C_PTR
-        class(ArrayWrapper) :: obj
+        class(ArrayWrapper), intent(INOUT) :: obj
         type(C_PTR), intent(OUT) :: array
         ! splicer begin class.ArrayWrapper.method.fetchVoidPtr
         call c_ArrayWrapper_fetchVoidPtr(obj%cxxmem, array)
@@ -724,7 +724,7 @@ contains
     ! Statement: f_out_void*&
     subroutine ArrayWrapper_fetchVoidRef(obj, array)
         use iso_c_binding, only : C_PTR
-        class(ArrayWrapper) :: obj
+        class(ArrayWrapper), intent(INOUT) :: obj
         type(C_PTR), intent(OUT) :: array
         ! splicer begin class.ArrayWrapper.method.fetchVoidRef
         call c_ArrayWrapper_fetchVoidRef(obj%cxxmem, array)
@@ -740,7 +740,7 @@ contains
     function ArrayWrapper_checkPtr(obj, array) &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
-        class(ArrayWrapper) :: obj
+        class(ArrayWrapper), intent(INOUT) :: obj
         type(C_PTR), intent(IN) :: array
         logical :: SHT_rv
         ! splicer begin class.ArrayWrapper.method.checkPtr
@@ -754,7 +754,7 @@ contains
     function ArrayWrapper_sumArray(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
-        class(ArrayWrapper) :: obj
+        class(ArrayWrapper), intent(INOUT) :: obj
         real(C_DOUBLE) :: SHT_rv
         ! splicer begin class.ArrayWrapper.method.sumArray
         SHT_rv = c_ArrayWrapper_sumArray(obj%cxxmem)

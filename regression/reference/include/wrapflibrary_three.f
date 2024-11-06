@@ -65,7 +65,7 @@ contains
     ! Statement: f_in_native
     subroutine class1_method1(obj, arg1)
         use library_mod, only : custom_type
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         integer(custom_type), value, intent(IN) :: arg1
         call c_class1_method1(obj%cxxmem, arg1)
     end subroutine class1_method1

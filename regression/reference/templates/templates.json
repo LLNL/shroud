@@ -503,6 +503,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "nested",
                             "template_suffix": "_double"
                         },
@@ -727,6 +728,7 @@
                             "F_name_function": "ctor",
                             "F_name_generic": "struct_as_class_int",
                             "F_name_impl": "struct_as_class_int_ctor",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor"
                         }
                     },
@@ -905,6 +907,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "set_npts"
                         }
                     },
@@ -1031,6 +1034,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "get_npts"
                         }
                     },
@@ -1269,6 +1273,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "set_value"
                         }
                     },
@@ -1439,6 +1444,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "get_value"
                         }
                     }
@@ -1655,6 +1661,7 @@
                             "F_name_function": "ctor",
                             "F_name_generic": "struct_as_class_double",
                             "F_name_impl": "struct_as_class_double_ctor",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor"
                         }
                     },
@@ -1833,6 +1840,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "set_npts"
                         }
                     },
@@ -1959,6 +1967,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "get_npts"
                         }
                     },
@@ -2197,6 +2206,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "set_value"
                         }
                     },
@@ -2367,6 +2377,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "get_value"
                         }
                     }
@@ -4200,6 +4211,7 @@
                                     "PY_name_impl": "PY_vector_int_tp_init",
                                     "PY_type_impl": "PY_vector_int_tp_init",
                                     "PY_type_method": "tp_init",
+                                    "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "ctor"
                                 },
                                 "zz_fmtlang": {
@@ -4310,6 +4322,7 @@
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "self",
+                                    "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "dtor"
                                 },
                                 "zz_fmtlang": {
@@ -4606,6 +4619,7 @@
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "self",
+                                    "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "push_back"
                                 },
                                 "zz_fmtlang": {
@@ -4987,6 +5001,7 @@
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "self",
+                                    "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "at"
                                 },
                                 "zz_fmtlang": {
@@ -5279,6 +5294,7 @@
                                     "PY_name_impl": "PY_vector_double_tp_init",
                                     "PY_type_impl": "PY_vector_double_tp_init",
                                     "PY_type_method": "tp_init",
+                                    "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "ctor"
                                 },
                                 "zz_fmtlang": {
@@ -5389,6 +5405,7 @@
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "self",
+                                    "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "dtor"
                                 },
                                 "zz_fmtlang": {
@@ -5685,6 +5702,7 @@
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "self",
+                                    "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "push_back"
                                 },
                                 "zz_fmtlang": {
@@ -6066,6 +6084,7 @@
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "self",
+                                    "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "at"
                                 },
                                 "zz_fmtlang": {
