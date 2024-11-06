@@ -1355,6 +1355,7 @@ rv = .false.
         cursor = self.cursor
         func_cursor = cursor.push_node(node)
         options = node.options
+        fmt_func = node.fmtdict
 
         # Assume that the C function can be called directly via an interface.
         # If the wrapper does any work, then set need_wraper to True
@@ -1426,7 +1427,7 @@ rv = .false.
                 # Add 'this' argument
                 arg_f_names.append(fmt_result.F_this)
                 arg_f_decl.append(
-                    wformat("class({F_derived_name}) :: {F_this}", fmt_result)
+                    wformat("class({F_derived_name}) :: {F_this}", fmt_func)
                 )
                 # could use {f_to_c} but I'd rather not hide the shadow class
                 arg_c_call.append(
