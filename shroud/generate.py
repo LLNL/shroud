@@ -534,8 +534,9 @@ class GenFunctions(object):
 
         if ntypemap.smart_pointer == "weak":
             newcls.functions = []
+            self.add_weak_smart_methods(newcls)
 
-        self.share_methods(newcls)
+        self.add_share_smart_methods(newcls)
 
         newcls.C_shared_class = True
         # Remove defaulted attributes then reset with current values.
@@ -554,7 +555,7 @@ class GenFunctions(object):
         newcls.baseclass = [ ( 'public', "DDDD", cls.ast) ]
         return newcls
 
-    def share_methods(self, cls):
+    def add_share_smart_methods(self, cls):
         """A methods to a std::shared_ptr class.
 
         long use_count() const noexcept;
@@ -567,6 +568,19 @@ class GenFunctions(object):
                 F_name_api = fmt_class.F_name_shared_use_count,
             )
             fcn = cls.add_function(decl, format=fmt_func)
+            fcn.C_shared_method = True
+        
+    def add_weak_smart_methods(self, cls):
+        """A methods to a std::weak_ptr class.
+
+        Assignment functions
+        """
+        return
+        fmt_class = cls.fmtdict
+
+        if fmt_class.F_name_shared_use_count:
+            decl = "void assign_share(std::shared_ptr<Object> *from) +owner(weak)"
+            fcn = cls.add_function(decl)
             fcn.C_shared_method = True
         
     def instantiate_classes(self, node):

@@ -930,7 +930,8 @@ class FillMetaShare(FillMeta):
 
         owner = attrs.get("owner", missing)
         if owner is not missing:
-            if owner not in ["caller", "library", "shared"]:
+            # XXX - Need to extract smart_poiner from Typemaps
+            if owner not in ["caller", "library", "shared", "weak"]:
                 # XXX - shared is only valued with language=c++
                 self.cursor.generate(
                     "Illegal value '{}' for owner attribute. "
