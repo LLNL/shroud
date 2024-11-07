@@ -37,6 +37,7 @@ void SHA_Object_weak_assign_weak(SHA_Object_weak * self,
     if (SH_this == nullptr) {
         SH_this = new std::weak_ptr<Object>(*SHC_from_cxx);
         self->addr = SH_this;
+        self->idtor = 4;
     } else {
         *SH_this = *SHC_from_cxx;
     }

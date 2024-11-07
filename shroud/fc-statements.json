@@ -209,9 +209,18 @@
             "if (SH_this == nullptr) {{+",
             "SH_this = new {cxx_type}(*SHC_from_cxx);",
             "self->addr = SH_this;",
+            "self->idtor = {idtor};",
             "-}} else {{+",
             "*{CXX_this} = *SHC_from_cxx;",
             "-}}"
+        ],
+        "destructor_name": "assignment-{cxx_type}",
+        "destructor_header": [
+            "<memory>"
+        ],
+        "destructor": [
+            "auto cxx_ptr =\t reinterpret_cast<{cxx_type}*>(ptr);",
+            "delete cxx_ptr;"
         ]
     },
     {

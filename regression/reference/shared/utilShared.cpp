@@ -49,6 +49,12 @@ void SHA_SHROUD_memory_destructor(SHA_SHROUD_capsule_data *cap)
         delete shared;
         break;
     }
+    case 4:   // assignment-std::weak_ptr<Object>
+    {
+        auto cxx_ptr = reinterpret_cast<std::weak_ptr<Object>*>(ptr);
+        delete cxx_ptr;
+        break;
+    }
     default:
     {
         // Unexpected case in destructor

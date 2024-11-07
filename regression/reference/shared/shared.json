@@ -1935,6 +1935,7 @@
                                         "C_prototype": "SHA_Object_weak * self,\t SHA_Object_shared * from",
                                         "C_return_type": "void",
                                         "i_name_function": "c_object_weak_assign_weak",
+                                        "idtor": "4",
                                         "stmt_name": "c_subroutine_assignment_weakptr",
                                         "typemap_name": "void"
                                     },
@@ -2000,6 +2001,7 @@
                                         "i_arguments": "self,\t from",
                                         "i_name_function": "c_object_weak_assign_weak",
                                         "i_subprogram": "subroutine",
+                                        "idtor": "4",
                                         "stmt_name": "f_subroutine_assignment_weakptr",
                                         "typemap_name": "void"
                                     },

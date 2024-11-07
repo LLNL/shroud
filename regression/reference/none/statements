@@ -4359,9 +4359,16 @@ c_subroutine_assignment_weakptr:
   - if (SH_this == nullptr) {{+
   - SH_this = new {cxx_type}(*SHC_from_cxx);
   - self->addr = SH_this;
+  - self->idtor = {idtor};
   - -}} else {{+
   - '*{CXX_this} = *SHC_from_cxx;'
   - -}}
+  destructor_header:
+  - <memory>
+  destructor_name: assignment-{cxx_type}
+  destructor:
+  - "auto cxx_ptr =\t reinterpret_cast<{cxx_type}*>(ptr);"
+  - delete cxx_ptr;
   owner: library
 f_ctor_shadow_capsule:
   name: f_ctor_shadow_capsule
@@ -14177,9 +14184,16 @@ f_subroutine_assignment_weakptr:
   - if (SH_this == nullptr) {{+
   - SH_this = new {cxx_type}(*SHC_from_cxx);
   - self->addr = SH_this;
+  - self->idtor = {idtor};
   - -}} else {{+
   - '*{CXX_this} = *SHC_from_cxx;'
   - -}}
+  destructor_header:
+  - <memory>
+  destructor_name: assignment-{cxx_type}
+  destructor:
+  - "auto cxx_ptr =\t reinterpret_cast<{cxx_type}*>(ptr);"
+  - delete cxx_ptr;
   owner: library
 root
   c
