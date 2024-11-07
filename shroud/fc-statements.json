@@ -197,7 +197,7 @@
         ],
         "notes": [
             "std::weak_ptr has no wrapped constructor.",
-            "It must be made from a std::shared_ptr."
+            "It must be made from a std::shared_ptr with an assignment."
         ],
         "mixin": [
             "c_mixin_noargs"

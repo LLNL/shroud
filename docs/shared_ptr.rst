@@ -23,6 +23,7 @@ of a pointer to an instance of the class.
     - decl: class Object
       smart_pointer:
       - type: std::shared_ptr
+      - type: std::weak_ptr
       declarations:
       - decl: Object()
       - decl: ~Object()
@@ -68,7 +69,14 @@ Shroud will add the function ``use_count`` to operate on the shared_ptr.
 It can be renamed with the format field *F_name_shared_use_count*.  If
 *F_name_shared_use_count* is blank the function will not be added.
 
+.. code-block:: fortran
 
+    type(object_shared) shared
+    type(object_weak) weak
+
+    shared = object_shared()
+    weak = shared
+    print *, shared.use_count()
 
 .. Adding a new smart pointer
 

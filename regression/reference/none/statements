@@ -4353,7 +4353,7 @@ c_subroutine_assignment_weakptr:
   name: c_subroutine_assignment_weakptr
   notes:
   - std::weak_ptr has no wrapped constructor.
-  - It must be made from a std::shared_ptr.
+  - It must be made from a std::shared_ptr with an assignment.
   intent: subroutine
   c_call:
   - if (SH_this == nullptr) {{+
@@ -14176,7 +14176,7 @@ f_subroutine_assignment_weakptr:
   name: f_subroutine_assignment_weakptr
   notes:
   - std::weak_ptr has no wrapped constructor.
-  - It must be made from a std::shared_ptr.
+  - It must be made from a std::shared_ptr with an assignment.
   intent: subroutine
   f_call:
   - call {f_call_function}({F_arg_c_call})
