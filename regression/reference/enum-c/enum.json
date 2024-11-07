@@ -415,6 +415,10 @@
                     "F_name_generic": "convert_to_int",
                     "F_name_impl": "convert_to_int",
                     "PY_name_impl": "PY_convert_to_int",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "in"
+                    ],
                     "function_name": "convert_to_int"
                 },
                 "zz_fmtlang": {
@@ -636,6 +640,10 @@
                     "F_name_generic": "return_enum",
                     "F_name_impl": "return_enum",
                     "PY_name_impl": "PY_returnEnum",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "in"
+                    ],
                     "function_name": "returnEnum"
                 },
                 "zz_fmtlang": {
@@ -785,6 +793,10 @@
                     "F_name_function": "return_enum_out_arg",
                     "F_name_generic": "return_enum_out_arg",
                     "F_name_impl": "return_enum_out_arg",
+                    "f_arglist": [
+                        "f_var",
+                        "out"
+                    ],
                     "function_name": "returnEnumOutArg"
                 }
             },
@@ -947,6 +959,10 @@
                     "F_name_function": "return_enum_in_out_arg",
                     "F_name_generic": "return_enum_in_out_arg",
                     "F_name_impl": "return_enum_in_out_arg",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "inout"
+                    ],
                     "function_name": "returnEnumInOutArg"
                 }
             }

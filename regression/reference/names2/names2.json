@@ -88,6 +88,12 @@
                     "F_name_function": "a_function",
                     "F_name_generic": "a_function",
                     "F_name_impl": "a_function",
+                    "c_arglist": [
+                        "c_var"
+                    ],
+                    "f_arglist": [
+                        "f_var"
+                    ],
                     "function_name": "AFunction"
                 }
             }

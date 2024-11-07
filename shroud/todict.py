@@ -283,6 +283,10 @@ class ToDict(visitor.Visitor):
         for key, value in node.__dict__.items():
             if key in ["gen"]:
                 continue
+            elif key == "c_arglist":
+                d[key] = [ d3.get("c_var", "c_var") for d3 in value]
+            elif key == "f_arglist":
+                d[key] = [ d3.get("f_var", "f_var") for d3 in value]
             elif key in ["baseclass"]:
                 d[key] = repr(value)
             elif key in ["targs"]:

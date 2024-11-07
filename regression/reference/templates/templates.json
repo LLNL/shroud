@@ -499,10 +499,20 @@
                             "F_name_generic": "nested",
                             "F_name_impl": "user_int_nested_double",
                             "PY_name_impl": "PY_nested_double",
+                            "c_arglist": [
+                                "self",
+                                "arg1",
+                                "arg2"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "arg1",
+                                "arg2"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "nested",
                             "template_suffix": "_double"
@@ -728,6 +738,12 @@
                             "F_name_function": "ctor",
                             "F_name_generic": "struct_as_class_int",
                             "F_name_impl": "struct_as_class_int_ctor",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor"
                         }
@@ -903,10 +919,18 @@
                             "F_name_function": "set_npts",
                             "F_name_generic": "set_npts",
                             "F_name_impl": "struct_as_class_int_set_npts",
+                            "c_arglist": [
+                                "self",
+                                "n"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "n"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "set_npts"
                         }
@@ -1030,10 +1054,16 @@
                             "F_name_function": "get_npts",
                             "F_name_generic": "get_npts",
                             "F_name_impl": "struct_as_class_int_get_npts",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "get_npts"
                         }
@@ -1269,10 +1299,18 @@
                             "F_name_function": "set_value",
                             "F_name_generic": "set_value",
                             "F_name_impl": "struct_as_class_int_set_value",
+                            "c_arglist": [
+                                "self",
+                                "v"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "v"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "set_value"
                         }
@@ -1440,10 +1478,16 @@
                             "F_name_function": "get_value",
                             "F_name_generic": "get_value",
                             "F_name_impl": "struct_as_class_int_get_value",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "get_value"
                         }
@@ -1661,6 +1705,12 @@
                             "F_name_function": "ctor",
                             "F_name_generic": "struct_as_class_double",
                             "F_name_impl": "struct_as_class_double_ctor",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor"
                         }
@@ -1836,10 +1886,18 @@
                             "F_name_function": "set_npts",
                             "F_name_generic": "set_npts",
                             "F_name_impl": "struct_as_class_double_set_npts",
+                            "c_arglist": [
+                                "self",
+                                "n"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "n"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "set_npts"
                         }
@@ -1963,10 +2021,16 @@
                             "F_name_function": "get_npts",
                             "F_name_generic": "get_npts",
                             "F_name_impl": "struct_as_class_double_get_npts",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "get_npts"
                         }
@@ -2202,10 +2266,18 @@
                             "F_name_function": "set_value",
                             "F_name_generic": "set_value",
                             "F_name_impl": "struct_as_class_double_set_value",
+                            "c_arglist": [
+                                "self",
+                                "v"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "v"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "set_value"
                         }
@@ -2373,10 +2445,16 @@
                             "F_name_function": "get_value",
                             "F_name_generic": "get_value",
                             "F_name_impl": "struct_as_class_double_get_value",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "get_value"
                         }
@@ -2629,6 +2707,12 @@
                     "F_name_function": "return_user_type",
                     "F_name_generic": "return_user_type",
                     "F_name_impl": "return_user_type",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "returnUserType"
                 }
             },
@@ -3127,6 +3211,16 @@
                     "F_name_generic": "function_tu",
                     "F_name_impl": "function_tu_0",
                     "PY_name_impl": "PY_FunctionTU_0",
+                    "c_arglist": [
+                        "c_var",
+                        "arg1",
+                        "arg2"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "arg1",
+                        "arg2"
+                    ],
                     "function_name": "FunctionTU",
                     "template_suffix": "_0"
                 },
@@ -3527,6 +3621,16 @@
                     "F_name_generic": "function_tu",
                     "F_name_impl": "function_tu_1",
                     "PY_name_impl": "PY_FunctionTU_1",
+                    "c_arglist": [
+                        "c_var",
+                        "arg1",
+                        "arg2"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "arg1",
+                        "arg2"
+                    ],
                     "function_name": "FunctionTU",
                     "template_suffix": "_1"
                 },
@@ -3803,6 +3907,12 @@
                     "F_name_generic": "use_impl_worker",
                     "F_name_impl": "use_impl_worker_internal_ImplWorker1",
                     "PY_name_impl": "PY_UseImplWorker_internal_ImplWorker1",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "UseImplWorker",
                     "template_suffix": "_internal_ImplWorker1"
                 },
@@ -4005,6 +4115,12 @@
                     "F_name_generic": "use_impl_worker",
                     "F_name_impl": "use_impl_worker_internal_ImplWorker2",
                     "PY_name_impl": "PY_UseImplWorker_internal_ImplWorker2",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "UseImplWorker",
                     "template_suffix": "_internal_ImplWorker2"
                 },
@@ -4211,6 +4327,12 @@
                                     "PY_name_impl": "PY_vector_int_tp_init",
                                     "PY_type_impl": "PY_vector_int_tp_init",
                                     "PY_type_method": "tp_init",
+                                    "c_arglist": [
+                                        "SHC_rv"
+                                    ],
+                                    "f_arglist": [
+                                        "SHT_rv"
+                                    ],
                                     "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "ctor"
                                 },
@@ -4318,10 +4440,16 @@
                                     "F_name_function": "dtor",
                                     "F_name_generic": "dtor",
                                     "F_name_impl": "vector_int_dtor",
+                                    "c_arglist": [
+                                        "self"
+                                    ],
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "self",
+                                    "f_arglist": [
+                                        "f_var"
+                                    ],
                                     "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "dtor"
                                 },
@@ -4615,10 +4743,18 @@
                                     "F_name_generic": "push_back",
                                     "F_name_impl": "vector_int_push_back",
                                     "PY_name_impl": "PY_push_back",
+                                    "c_arglist": [
+                                        "self",
+                                        "value"
+                                    ],
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "self",
+                                    "f_arglist": [
+                                        "f_var",
+                                        "value"
+                                    ],
                                     "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "push_back"
                                 },
@@ -4997,10 +5133,18 @@
                                     "F_name_generic": "at",
                                     "F_name_impl": "vector_int_at",
                                     "PY_name_impl": "PY_at",
+                                    "c_arglist": [
+                                        "SHC_rv",
+                                        "n"
+                                    ],
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "self",
+                                    "f_arglist": [
+                                        "SHT_rv",
+                                        "n"
+                                    ],
                                     "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "at"
                                 },
@@ -5294,6 +5438,12 @@
                                     "PY_name_impl": "PY_vector_double_tp_init",
                                     "PY_type_impl": "PY_vector_double_tp_init",
                                     "PY_type_method": "tp_init",
+                                    "c_arglist": [
+                                        "SHC_rv"
+                                    ],
+                                    "f_arglist": [
+                                        "SHT_rv"
+                                    ],
                                     "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "ctor"
                                 },
@@ -5401,10 +5551,16 @@
                                     "F_name_function": "dtor",
                                     "F_name_generic": "dtor",
                                     "F_name_impl": "vector_double_dtor",
+                                    "c_arglist": [
+                                        "self"
+                                    ],
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "self",
+                                    "f_arglist": [
+                                        "f_var"
+                                    ],
                                     "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "dtor"
                                 },
@@ -5698,10 +5854,18 @@
                                     "F_name_generic": "push_back",
                                     "F_name_impl": "vector_double_push_back",
                                     "PY_name_impl": "PY_push_back",
+                                    "c_arglist": [
+                                        "self",
+                                        "value"
+                                    ],
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "self",
+                                    "f_arglist": [
+                                        "f_var",
+                                        "value"
+                                    ],
                                     "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "push_back"
                                 },
@@ -6080,10 +6244,18 @@
                                     "F_name_generic": "at",
                                     "F_name_impl": "vector_double_at",
                                     "PY_name_impl": "PY_at",
+                                    "c_arglist": [
+                                        "SHC_rv",
+                                        "n"
+                                    ],
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "self",
+                                    "f_arglist": [
+                                        "SHT_rv",
+                                        "n"
+                                    ],
                                     "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "at"
                                 },

@@ -102,6 +102,12 @@
                     "F_name_generic": "worker3",
                     "F_name_impl": "inner3_worker3",
                     "PY_name_impl": "PY_worker3",
+                    "c_arglist": [
+                        "c_var"
+                    ],
+                    "f_arglist": [
+                        "f_var"
+                    ],
                     "function_name": "worker3"
                 },
                 "zz_fmtlang": {
@@ -207,6 +213,12 @@
                     "F_name_generic": "worker",
                     "F_name_impl": "worker",
                     "PY_name_impl": "PY_worker",
+                    "c_arglist": [
+                        "c_var"
+                    ],
+                    "f_arglist": [
+                        "f_var"
+                    ],
                     "function_name": "worker"
                 },
                 "zz_fmtlang": {
@@ -318,6 +330,12 @@
                             "F_name_generic": "worker",
                             "F_name_impl": "worker",
                             "PY_name_impl": "PY_worker",
+                            "c_arglist": [
+                                "c_var"
+                            ],
+                            "f_arglist": [
+                                "f_var"
+                            ],
                             "function_name": "worker"
                         },
                         "zz_fmtlang": {
@@ -459,6 +477,12 @@
                             "F_name_generic": "worker",
                             "F_name_impl": "worker",
                             "PY_name_impl": "PY_worker",
+                            "c_arglist": [
+                                "c_var"
+                            ],
+                            "f_arglist": [
+                                "f_var"
+                            ],
                             "function_name": "worker"
                         },
                         "zz_fmtlang": {
@@ -600,6 +624,12 @@
                             "F_name_generic": "worker4",
                             "F_name_impl": "inner4_worker4",
                             "PY_name_impl": "PY_worker4",
+                            "c_arglist": [
+                                "c_var"
+                            ],
+                            "f_arglist": [
+                                "f_var"
+                            ],
                             "function_name": "worker4"
                         },
                         "zz_fmtlang": {

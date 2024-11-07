@@ -298,6 +298,12 @@
                             "PY_name_impl": "PY_Class1_tp_init_default",
                             "PY_type_impl": "PY_Class1_tp_init_default",
                             "PY_type_method": "tp_init",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor",
                             "function_suffix": "_default"
@@ -667,6 +673,14 @@
                             "PY_name_impl": "PY_Class1_tp_init_flag",
                             "PY_type_impl": "PY_Class1_tp_init_flag",
                             "PY_type_method": "tp_init",
+                            "c_arglist": [
+                                "SHC_rv",
+                                "flag"
+                            ],
+                            "f_arglist": [
+                                "SHT_rv",
+                                "flag"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor",
                             "function_suffix": "_flag"
@@ -797,10 +811,16 @@
                             "LUA_name": "delete",
                             "LUA_name_api": "delete",
                             "LUA_name_impl": "l_Class1_delete",
+                            "c_arglist": [
+                                "self"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "delete"
                         },
@@ -987,10 +1007,16 @@
                             "LUA_name_api": "Method1",
                             "LUA_name_impl": "l_Class1_Method1",
                             "PY_name_impl": "PY_Method1",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "Method1"
                         },
@@ -1305,10 +1331,18 @@
                             "F_name_generic": "equivalent",
                             "F_name_impl": "class1_equivalent",
                             "PY_name_impl": "PY_equivalent",
+                            "c_arglist": [
+                                "SHC_rv",
+                                "obj2"
+                            ],
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv",
+                                "obj2"
+                            ],
                             "f_intent_attr": ", intent(IN)",
                             "function_name": "equivalent"
                         },
@@ -1465,10 +1499,16 @@
                             "F_name_function": "return_this",
                             "F_name_generic": "return_this",
                             "F_name_impl": "class1_return_this",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "returnThis"
                         }
@@ -1835,10 +1875,20 @@
                             "F_name_function": "return_this_buffer",
                             "F_name_generic": "return_this_buffer",
                             "F_name_impl": "class1_return_this_buffer",
+                            "c_arglist": [
+                                "SHC_rv",
+                                "name",
+                                "flag"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv",
+                                "name",
+                                "flag"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "returnThisBuffer"
                         }
@@ -2036,10 +2086,16 @@
                             "F_name_generic": "getclass3",
                             "F_name_impl": "class1_getclass3",
                             "PY_name_impl": "PY_getclass3",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(IN)",
                             "function_name": "getclass3"
                         },
@@ -2273,10 +2329,16 @@
                             "LUA_name_api": "getName",
                             "LUA_name_impl": "l_Class1_getName",
                             "PY_name_impl": "PY_getName",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "getName"
                         },
@@ -2635,10 +2697,18 @@
                             "LUA_name_api": "directionFunc",
                             "LUA_name_impl": "l_Class1_directionFunc",
                             "PY_name_impl": "PY_directionFunc",
+                            "c_arglist": [
+                                "SHC_rv",
+                                "arg"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv",
+                                "arg"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "directionFunc"
                         },
@@ -2768,6 +2838,9 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_flag",
                             "function_name": "get_m_flag",
@@ -2875,6 +2948,9 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_test",
                             "function_name": "get_test",
@@ -3020,6 +3096,10 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "val"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_test",
                             "function_name": "set_test",
@@ -3125,6 +3205,9 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_bool",
                             "function_name": "get_m_bool",
@@ -3269,6 +3352,10 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "val"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_bool",
                             "function_name": "set_m_bool",
@@ -3396,6 +3483,9 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_name",
                             "function_name": "get_m_name",
@@ -3541,6 +3631,10 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "val"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_name",
                             "function_name": "set_m_name",
@@ -3954,10 +4048,16 @@
                             "LUA_name_api": "getName",
                             "LUA_name_impl": "l_Class2_getName",
                             "PY_name_impl": "PY_getName",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "getName"
                         },
@@ -4224,10 +4324,16 @@
                             "F_name_impl": "singleton_get_reference",
                             "PY_name_impl": "PY_getReference",
                             "PY_this_call": "classes::Singleton::",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "getReference"
                         },
@@ -4494,6 +4600,12 @@
                             "PY_name_impl": "PY_Shape_tp_init",
                             "PY_type_impl": "PY_Shape_tp_init",
                             "PY_type_method": "tp_init",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor"
                         },
@@ -4684,10 +4796,16 @@
                             "LUA_name_api": "get_ivar",
                             "LUA_name_impl": "l_Shape_get_ivar",
                             "PY_name_impl": "PY_get_ivar",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(IN)",
                             "function_name": "get_ivar"
                         },
@@ -4967,6 +5085,12 @@
                             "PY_name_impl": "PY_Circle_tp_init",
                             "PY_type_impl": "PY_Circle_tp_init",
                             "PY_type_method": "tp_init",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor"
                         },
@@ -5213,10 +5337,18 @@
                             "F_name_function": "allocate",
                             "F_name_generic": "allocate",
                             "F_name_impl": "data_allocate",
+                            "c_arglist": [
+                                "self",
+                                "n"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "n"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "allocate"
                         }
@@ -5300,10 +5432,16 @@
                             "F_name_function": "free",
                             "F_name_generic": "free",
                             "F_name_impl": "data_free",
+                            "c_arglist": [
+                                "self"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "free"
                         }
@@ -5452,6 +5590,12 @@
                             "F_name_function": "ctor",
                             "F_name_generic": "data",
                             "F_name_impl": "data_ctor",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor"
                         }
@@ -5537,10 +5681,16 @@
                             "F_name_function": "dtor",
                             "F_name_generic": "dtor",
                             "F_name_impl": "data_dtor",
+                            "c_arglist": [
+                                "self"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "dtor"
                         }
@@ -5645,6 +5795,9 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "nitems",
                             "function_name": "get_nitems",
@@ -5790,6 +5943,10 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "val"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "nitems",
                             "function_name": "set_nitems",
@@ -5940,6 +6097,9 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "items",
                             "function_name": "get_items",
@@ -6095,6 +6255,10 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "val"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "items",
                             "function_name": "set_items",
@@ -6564,6 +6728,14 @@
                     "LUA_name_api": "directionFunc",
                     "LUA_name_impl": "l_directionFunc",
                     "PY_name_impl": "PY_directionFunc",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg"
+                    ],
                     "function_name": "directionFunc"
                 },
                 "zz_fmtlang": {
@@ -6828,6 +7000,14 @@
                     "F_name_generic": "pass_class_by_value",
                     "F_name_impl": "pass_class_by_value",
                     "PY_name_impl": "PY_passClassByValue",
+                    "c_arglist": [
+                        "c_var",
+                        "arg"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "arg"
+                    ],
                     "function_name": "passClassByValue"
                 },
                 "zz_fmtlang": {
@@ -7132,6 +7312,14 @@
                     "F_name_generic": "useclass",
                     "F_name_impl": "useclass",
                     "PY_name_impl": "PY_useclass",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg"
+                    ],
                     "function_name": "useclass"
                 },
                 "zz_fmtlang": {
@@ -7307,6 +7495,12 @@
                     "F_name_function": "getclass2",
                     "F_name_generic": "getclass2",
                     "F_name_impl": "getclass2",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "getclass2"
                 }
             },
@@ -7502,6 +7696,12 @@
                     "F_name_generic": "getclass3",
                     "F_name_impl": "getclass3",
                     "PY_name_impl": "PY_getclass3",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "getclass3"
                 },
                 "zz_fmtlang": {
@@ -7656,6 +7856,12 @@
                     "F_name_function": "getclass2_void",
                     "F_name_generic": "getclass2_void",
                     "F_name_impl": "getclass2_void",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "getclass2_void"
                 }
             },
@@ -7797,6 +8003,12 @@
                     "F_name_function": "getclass3_void",
                     "F_name_generic": "getclass3_void",
                     "F_name_impl": "getclass3_void",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "getclass3_void"
                 }
             },
@@ -7953,6 +8165,12 @@
                     "F_name_function": "get_const_class_reference",
                     "F_name_generic": "get_const_class_reference",
                     "F_name_impl": "get_const_class_reference",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "getConstClassReference"
                 }
             },
@@ -8145,6 +8363,12 @@
                     "F_name_generic": "get_class_reference",
                     "F_name_impl": "get_class_reference",
                     "PY_name_impl": "PY_getClassReference",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "getClassReference"
                 },
                 "zz_fmtlang": {
@@ -8409,6 +8633,14 @@
                     "F_name_function": "get_class_copy",
                     "F_name_generic": "get_class_copy",
                     "F_name_impl": "get_class_copy",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "flag"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "flag"
+                    ],
                     "function_name": "getClassCopy"
                 }
             },
@@ -8656,6 +8888,14 @@
                     "LUA_name_api": "set_global_flag",
                     "LUA_name_impl": "l_set_global_flag",
                     "PY_name_impl": "PY_set_global_flag",
+                    "c_arglist": [
+                        "c_var",
+                        "arg"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "arg"
+                    ],
                     "function_name": "set_global_flag"
                 },
                 "zz_fmtlang": {
@@ -8843,6 +9083,12 @@
                     "LUA_name_api": "get_global_flag",
                     "LUA_name_impl": "l_get_global_flag",
                     "PY_name_impl": "PY_get_global_flag",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "get_global_flag"
                 },
                 "zz_fmtlang": {
@@ -9073,6 +9319,12 @@
                     "LUA_name_api": "LastFunctionCalled",
                     "LUA_name_impl": "l_LastFunctionCalled",
                     "PY_name_impl": "PY_LastFunctionCalled",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "LastFunctionCalled"
                 },
                 "zz_fmtlang": {

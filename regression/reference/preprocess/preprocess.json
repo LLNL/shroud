@@ -103,10 +103,16 @@
                             "F_name_generic": "method1",
                             "F_name_impl": "user1_method1",
                             "PY_name_impl": "PY_method1",
+                            "c_arglist": [
+                                "self"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "method1"
                         },
@@ -215,10 +221,16 @@
                             "F_name_generic": "method2",
                             "F_name_impl": "user1_method2",
                             "PY_name_impl": "PY_method2",
+                            "c_arglist": [
+                                "self"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "method2"
                         },
@@ -319,10 +331,16 @@
                             "F_name_function": "method3def_0",
                             "F_name_generic": "method3def",
                             "F_name_impl": "user1_method3def_0",
+                            "c_arglist": [
+                                "self"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "method3def",
                             "function_suffix": "_0"
@@ -548,10 +566,18 @@
                             "F_name_impl": "user1_method3def_1",
                             "PY_cleanup_decref": "Py_XDECREF",
                             "PY_name_impl": "PY_method3def_1",
+                            "c_arglist": [
+                                "self",
+                                "i"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "i"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "method3def",
                             "function_suffix": "_1"
@@ -709,10 +735,16 @@
                             "F_name_generic": "exfunc",
                             "F_name_impl": "user2_exfunc_0",
                             "PY_name_impl": "PY_exfunc_0",
+                            "c_arglist": [
+                                "self"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "exfunc",
                             "function_suffix": "_0"
@@ -939,10 +971,18 @@
                             "F_name_generic": "exfunc",
                             "F_name_impl": "user2_exfunc_1",
                             "PY_name_impl": "PY_exfunc_1",
+                            "c_arglist": [
+                                "self",
+                                "flag"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "flag"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "exfunc",
                             "function_suffix": "_1"

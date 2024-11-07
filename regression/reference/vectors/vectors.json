@@ -261,6 +261,14 @@
                     "F_name_function": "vector_sum",
                     "F_name_generic": "vector_sum",
                     "F_name_impl": "vector_sum",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg"
+                    ],
                     "function_name": "vector_sum"
                 }
             },
@@ -506,6 +514,14 @@
                     "F_name_function": "vector_iota_out",
                     "F_name_generic": "vector_iota_out",
                     "F_name_impl": "vector_iota_out",
+                    "c_arglist": [
+                        "c_var",
+                        "arg"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "arg"
+                    ],
                     "function_name": "vector_iota_out"
                 }
             },
@@ -800,6 +816,14 @@
                     "F_name_function": "vector_iota_out_with_num",
                     "F_name_generic": "vector_iota_out_with_num",
                     "F_name_impl": "vector_iota_out_with_num",
+                    "c_arglist": [
+                        "c_var",
+                        "arg"
+                    ],
+                    "f_arglist": [
+                        "num",
+                        "arg"
+                    ],
                     "function_name": "vector_iota_out_with_num"
                 }
             },
@@ -1077,6 +1101,14 @@
                     "F_name_function": "vector_iota_out_with_num2",
                     "F_name_generic": "vector_iota_out_with_num2",
                     "F_name_impl": "vector_iota_out_with_num2",
+                    "c_arglist": [
+                        "c_var",
+                        "arg"
+                    ],
+                    "f_arglist": [
+                        "num",
+                        "arg"
+                    ],
                     "function_name": "vector_iota_out_with_num2"
                 }
             },
@@ -1326,6 +1358,14 @@
                     "F_name_function": "vector_iota_out_alloc",
                     "F_name_generic": "vector_iota_out_alloc",
                     "F_name_impl": "vector_iota_out_alloc",
+                    "c_arglist": [
+                        "c_var",
+                        "arg"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "arg"
+                    ],
                     "function_name": "vector_iota_out_alloc"
                 }
             },
@@ -1582,6 +1622,14 @@
                     "F_name_function": "vector_iota_inout_alloc",
                     "F_name_generic": "vector_iota_inout_alloc",
                     "F_name_impl": "vector_iota_inout_alloc",
+                    "c_arglist": [
+                        "c_var",
+                        "arg"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "arg"
+                    ],
                     "function_name": "vector_iota_inout_alloc"
                 }
             },
@@ -1825,6 +1873,14 @@
                     "F_name_function": "vector_increment",
                     "F_name_generic": "vector_increment",
                     "F_name_impl": "vector_increment",
+                    "c_arglist": [
+                        "c_var",
+                        "arg"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "arg"
+                    ],
                     "function_name": "vector_increment"
                 }
             },
@@ -2069,6 +2125,14 @@
                     "F_name_function": "vector_iota_out_d",
                     "F_name_generic": "vector_iota_out_d",
                     "F_name_impl": "vector_iota_out_d",
+                    "c_arglist": [
+                        "c_var",
+                        "arg"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "arg"
+                    ],
                     "function_name": "vector_iota_out_d"
                 }
             },
@@ -2422,6 +2486,16 @@
                     "F_name_function": "vector_of_pointers",
                     "F_name_generic": "vector_of_pointers",
                     "F_name_impl": "vector_of_pointers",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg1",
+                        "num"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1",
+                        "num"
+                    ],
                     "function_name": "vector_of_pointers"
                 }
             },
@@ -2695,6 +2769,14 @@
                     "F_name_function": "vector_string_count",
                     "F_name_generic": "vector_string_count",
                     "F_name_impl": "vector_string_count",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg"
+                    ],
                     "function_name": "vector_string_count"
                 }
             },
@@ -2933,6 +3015,14 @@
                     "F_name_function": "vector_string_fill",
                     "F_name_generic": "vector_string_fill",
                     "F_name_impl": "vector_string_fill",
+                    "c_arglist": [
+                        "c_var",
+                        "arg"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "arg"
+                    ],
                     "function_name": "vector_string_fill"
                 }
             },
@@ -3183,6 +3273,14 @@
                     "F_name_function": "vector_string_fill_allocatable",
                     "F_name_generic": "vector_string_fill_allocatable",
                     "F_name_impl": "vector_string_fill_allocatable",
+                    "c_arglist": [
+                        "c_var",
+                        "arg"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "arg"
+                    ],
                     "function_name": "vector_string_fill_allocatable"
                 }
             },
@@ -3440,6 +3538,14 @@
                     "F_name_function": "vector_string_fill_allocatable_len",
                     "F_name_generic": "vector_string_fill_allocatable_len",
                     "F_name_impl": "vector_string_fill_allocatable_len",
+                    "c_arglist": [
+                        "c_var",
+                        "arg"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "arg"
+                    ],
                     "function_name": "vector_string_fill_allocatable_len"
                 }
             },
@@ -3807,6 +3913,14 @@
                     "F_name_function": "return_vector_alloc",
                     "F_name_generic": "return_vector_alloc",
                     "F_name_impl": "return_vector_alloc",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "n"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "n"
+                    ],
                     "function_name": "ReturnVectorAlloc"
                 }
             },
@@ -4123,6 +4237,16 @@
                     "F_name_function": "return_dim2",
                     "F_name_generic": "return_dim2",
                     "F_name_impl": "return_dim2",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg",
+                        "len"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg",
+                        "len"
+                    ],
                     "function_name": "returnDim2"
                 }
             }

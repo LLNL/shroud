@@ -205,6 +205,10 @@
                     "F_name_function": "process_twostruct",
                     "F_name_generic": "process_twostruct",
                     "F_name_impl": "process_twostruct",
+                    "f_arglist": [
+                        "f_var",
+                        "arg"
+                    ],
                     "function_name": "process_twostruct"
                 }
             }

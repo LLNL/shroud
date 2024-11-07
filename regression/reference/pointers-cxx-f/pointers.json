@@ -136,6 +136,10 @@
                     "F_name_function": "intargs_in",
                     "F_name_generic": "intargs_in",
                     "F_name_impl": "intargs_in",
+                    "f_arglist": [
+                        "f_var",
+                        "arg"
+                    ],
                     "function_name": "intargs_in"
                 }
             },
@@ -264,6 +268,10 @@
                     "F_name_function": "intargs_inout",
                     "F_name_generic": "intargs_inout",
                     "F_name_impl": "intargs_inout",
+                    "f_arglist": [
+                        "f_var",
+                        "arg"
+                    ],
                     "function_name": "intargs_inout"
                 }
             },
@@ -392,6 +400,10 @@
                     "F_name_function": "intargs_out",
                     "F_name_generic": "intargs_out",
                     "F_name_impl": "intargs_out",
+                    "f_arglist": [
+                        "f_var",
+                        "arg"
+                    ],
                     "function_name": "intargs_out"
                 }
             },
@@ -643,6 +655,12 @@
                     "F_name_function": "intargs",
                     "F_name_generic": "intargs",
                     "F_name_impl": "intargs",
+                    "f_arglist": [
+                        "f_var",
+                        "argin",
+                        "arginout",
+                        "argout"
+                    ],
                     "function_name": "intargs"
                 }
             },
@@ -935,6 +953,12 @@
                     "F_name_function": "cos_doubles",
                     "F_name_generic": "cos_doubles",
                     "F_name_impl": "cos_doubles",
+                    "f_arglist": [
+                        "f_var",
+                        "in",
+                        "out",
+                        "sizein"
+                    ],
                     "function_name": "cos_doubles"
                 }
             },
@@ -1227,6 +1251,12 @@
                     "F_name_function": "truncate_to_int",
                     "F_name_generic": "truncate_to_int",
                     "F_name_impl": "truncate_to_int",
+                    "f_arglist": [
+                        "f_var",
+                        "in",
+                        "out",
+                        "sizein"
+                    ],
                     "function_name": "truncate_to_int"
                 }
             },
@@ -1440,6 +1470,11 @@
                     "F_name_function": "get_values",
                     "F_name_generic": "get_values",
                     "F_name_impl": "get_values",
+                    "f_arglist": [
+                        "f_var",
+                        "nvalues",
+                        "values"
+                    ],
                     "function_name": "get_values"
                 }
             },
@@ -1672,6 +1707,11 @@
                     "F_name_function": "get_values2",
                     "F_name_generic": "get_values2",
                     "F_name_impl": "get_values2",
+                    "f_arglist": [
+                        "f_var",
+                        "arg1",
+                        "arg2"
+                    ],
                     "function_name": "get_values2"
                 }
             },
@@ -1876,6 +1916,11 @@
                     "F_name_function": "iota_dimension",
                     "F_name_generic": "iota_dimension",
                     "F_name_impl": "iota_dimension",
+                    "f_arglist": [
+                        "f_var",
+                        "nvar",
+                        "values"
+                    ],
                     "function_name": "iota_dimension"
                 }
             },
@@ -2137,6 +2182,12 @@
                     "F_name_function": "sum",
                     "F_name_generic": "sum",
                     "F_name_impl": "sum",
+                    "f_arglist": [
+                        "f_var",
+                        "len",
+                        "values",
+                        "result"
+                    ],
                     "function_name": "Sum"
                 }
             },
@@ -2287,6 +2338,10 @@
                     "F_name_function": "fill_int_array",
                     "F_name_generic": "fill_int_array",
                     "F_name_impl": "fill_int_array",
+                    "f_arglist": [
+                        "f_var",
+                        "out"
+                    ],
                     "function_name": "fillIntArray"
                 }
             },
@@ -2487,6 +2542,11 @@
                     "F_name_function": "increment_int_array",
                     "F_name_generic": "increment_int_array",
                     "F_name_impl": "increment_int_array",
+                    "f_arglist": [
+                        "f_var",
+                        "array",
+                        "sizein"
+                    ],
                     "function_name": "incrementIntArray"
                 }
             },
@@ -2683,6 +2743,11 @@
                     "F_name_function": "fill_with_zeros",
                     "F_name_generic": "fill_with_zeros",
                     "F_name_impl": "fill_with_zeros",
+                    "f_arglist": [
+                        "f_var",
+                        "x",
+                        "x_length"
+                    ],
                     "function_name": "fill_with_zeros"
                 }
             },
@@ -2906,6 +2971,11 @@
                     "F_name_function": "accumulate",
                     "F_name_generic": "accumulate",
                     "F_name_impl": "accumulate",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arr",
+                        "len"
+                    ],
                     "function_name": "accumulate"
                 }
             },
@@ -3086,6 +3156,10 @@
                     "F_name_function": "accept_char_array_in",
                     "F_name_generic": "accept_char_array_in",
                     "F_name_impl": "accept_char_array_in",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "names"
+                    ],
                     "function_name": "acceptCharArrayIn"
                 }
             },
@@ -3209,6 +3283,10 @@
                     "F_name_function": "set_global_int",
                     "F_name_generic": "set_global_int",
                     "F_name_impl": "set_global_int",
+                    "f_arglist": [
+                        "f_var",
+                        "value"
+                    ],
                     "function_name": "setGlobalInt"
                 }
             },
@@ -3301,6 +3379,9 @@
                     "F_name_function": "sum_fixed_array",
                     "F_name_generic": "sum_fixed_array",
                     "F_name_impl": "sum_fixed_array",
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "sumFixedArray"
                 }
             },
@@ -3450,6 +3531,10 @@
                     "F_name_function": "get_ptr_to_scalar",
                     "F_name_generic": "get_ptr_to_scalar",
                     "F_name_impl": "get_ptr_to_scalar",
+                    "f_arglist": [
+                        "f_var",
+                        "nitems"
+                    ],
                     "function_name": "getPtrToScalar"
                 }
             },
@@ -3623,6 +3708,10 @@
                     "F_name_function": "get_ptr_to_fixed_array",
                     "F_name_generic": "get_ptr_to_fixed_array",
                     "F_name_impl": "get_ptr_to_fixed_array",
+                    "f_arglist": [
+                        "f_var",
+                        "count"
+                    ],
                     "function_name": "getPtrToFixedArray"
                 }
             },
@@ -3859,6 +3948,11 @@
                     "F_name_function": "get_ptr_to_dynamic_array",
                     "F_name_generic": "get_ptr_to_dynamic_array",
                     "F_name_impl": "get_ptr_to_dynamic_array",
+                    "f_arglist": [
+                        "f_var",
+                        "count",
+                        "ncount"
+                    ],
                     "function_name": "getPtrToDynamicArray"
                 }
             },
@@ -4034,6 +4128,10 @@
                     "F_name_function": "get_ptr_to_func_array",
                     "F_name_generic": "get_ptr_to_func_array",
                     "F_name_impl": "get_ptr_to_func_array",
+                    "f_arglist": [
+                        "f_var",
+                        "count"
+                    ],
                     "function_name": "getPtrToFuncArray"
                 }
             },
@@ -4184,6 +4282,10 @@
                     "F_name_function": "get_ptr_to_const_scalar",
                     "F_name_generic": "get_ptr_to_const_scalar",
                     "F_name_impl": "get_ptr_to_const_scalar",
+                    "f_arglist": [
+                        "f_var",
+                        "nitems"
+                    ],
                     "function_name": "getPtrToConstScalar"
                 }
             },
@@ -4355,6 +4457,10 @@
                     "F_name_function": "get_ptr_to_fixed_const_array",
                     "F_name_generic": "get_ptr_to_fixed_const_array",
                     "F_name_impl": "get_ptr_to_fixed_const_array",
+                    "f_arglist": [
+                        "f_var",
+                        "count"
+                    ],
                     "function_name": "getPtrToFixedConstArray"
                 }
             },
@@ -4589,6 +4695,11 @@
                     "F_name_function": "get_ptr_to_dynamic_const_array",
                     "F_name_generic": "get_ptr_to_dynamic_const_array",
                     "F_name_impl": "get_ptr_to_dynamic_const_array",
+                    "f_arglist": [
+                        "f_var",
+                        "count",
+                        "ncount"
+                    ],
                     "function_name": "getPtrToDynamicConstArray"
                 }
             },
@@ -4725,6 +4836,10 @@
                     "F_name_function": "get_raw_ptr_to_scalar",
                     "F_name_generic": "get_raw_ptr_to_scalar",
                     "F_name_impl": "get_raw_ptr_to_scalar",
+                    "f_arglist": [
+                        "f_var",
+                        "nitems"
+                    ],
                     "function_name": "getRawPtrToScalar"
                 }
             },
@@ -4864,6 +4979,10 @@
                     "F_name_function": "get_raw_ptr_to_scalar_force",
                     "F_name_generic": "get_raw_ptr_to_scalar_force",
                     "F_name_impl": "get_raw_ptr_to_scalar_force",
+                    "f_arglist": [
+                        "f_var",
+                        "nitems"
+                    ],
                     "function_name": "getRawPtrToScalarForce"
                 }
             },
@@ -5000,6 +5119,10 @@
                     "F_name_function": "get_raw_ptr_to_fixed_array",
                     "F_name_generic": "get_raw_ptr_to_fixed_array",
                     "F_name_impl": "get_raw_ptr_to_fixed_array",
+                    "f_arglist": [
+                        "f_var",
+                        "count"
+                    ],
                     "function_name": "getRawPtrToFixedArray"
                 }
             },
@@ -5139,6 +5262,10 @@
                     "F_name_function": "get_raw_ptr_to_fixed_array_force",
                     "F_name_generic": "get_raw_ptr_to_fixed_array_force",
                     "F_name_impl": "get_raw_ptr_to_fixed_array_force",
+                    "f_arglist": [
+                        "f_var",
+                        "count"
+                    ],
                     "function_name": "getRawPtrToFixedArrayForce"
                 }
             },
@@ -5278,6 +5405,10 @@
                     "F_name_function": "get_raw_ptr_to_int2d",
                     "F_name_generic": "get_raw_ptr_to_int2d",
                     "F_name_impl": "get_raw_ptr_to_int2d",
+                    "f_arglist": [
+                        "f_var",
+                        "arg"
+                    ],
                     "function_name": "getRawPtrToInt2d"
                 }
             },
@@ -5440,6 +5571,10 @@
                     "F_name_function": "check_int2d",
                     "F_name_generic": "check_int2d",
                     "F_name_impl": "check_int2d",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg"
+                    ],
                     "function_name": "checkInt2d"
                 }
             },
@@ -5599,6 +5734,10 @@
                     "F_name_function": "dimension_in",
                     "F_name_generic": "dimension_in",
                     "F_name_impl": "dimension_in",
+                    "f_arglist": [
+                        "f_var",
+                        "arg"
+                    ],
                     "function_name": "DimensionIn"
                 }
             },
@@ -5785,6 +5924,10 @@
                     "F_name_function": "get_alloc_to_fixed_array",
                     "F_name_generic": "get_alloc_to_fixed_array",
                     "F_name_impl": "get_alloc_to_fixed_array",
+                    "f_arglist": [
+                        "f_var",
+                        "count"
+                    ],
                     "function_name": "getAllocToFixedArray"
                 }
             },
@@ -5939,6 +6082,10 @@
                     "F_name_function": "return_address1",
                     "F_name_generic": "return_address1",
                     "F_name_impl": "return_address1",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "flag"
+                    ],
                     "function_name": "returnAddress1"
                 }
             },
@@ -6095,6 +6242,10 @@
                     "F_name_function": "return_address2",
                     "F_name_generic": "return_address2",
                     "F_name_impl": "return_address2",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "flag"
+                    ],
                     "function_name": "returnAddress2"
                 }
             },
@@ -6226,6 +6377,10 @@
                     "F_name_function": "fetch_void_ptr",
                     "F_name_generic": "fetch_void_ptr",
                     "F_name_impl": "fetch_void_ptr",
+                    "f_arglist": [
+                        "f_var",
+                        "addr"
+                    ],
                     "function_name": "fetchVoidPtr"
                 }
             },
@@ -6360,6 +6515,10 @@
                     "F_name_function": "update_void_ptr",
                     "F_name_generic": "update_void_ptr",
                     "F_name_impl": "update_void_ptr",
+                    "f_arglist": [
+                        "f_var",
+                        "addr"
+                    ],
                     "function_name": "updateVoidPtr"
                 }
             },
@@ -6527,6 +6686,10 @@
                     "F_name_function": "void_ptr_array",
                     "F_name_generic": "void_ptr_array",
                     "F_name_impl": "void_ptr_array",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "addr"
+                    ],
                     "function_name": "VoidPtrArray"
                 }
             },
@@ -6623,6 +6786,9 @@
                     "F_name_function": "return_int_ptr_to_scalar",
                     "F_name_generic": "return_int_ptr_to_scalar",
                     "F_name_impl": "return_int_ptr_to_scalar",
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "returnIntPtrToScalar"
                 }
             },
@@ -6756,6 +6922,9 @@
                     "F_name_function": "return_int_ptr_to_fixed_array",
                     "F_name_generic": "return_int_ptr_to_fixed_array",
                     "F_name_impl": "return_int_ptr_to_fixed_array",
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "returnIntPtrToFixedArray"
                 }
             },
@@ -6853,6 +7022,9 @@
                     "F_name_function": "return_int_ptr_to_const_scalar",
                     "F_name_generic": "return_int_ptr_to_const_scalar",
                     "F_name_impl": "return_int_ptr_to_const_scalar",
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "returnIntPtrToConstScalar"
                 }
             },
@@ -6987,6 +7159,9 @@
                     "F_name_function": "return_int_ptr_to_fixed_const_array",
                     "F_name_generic": "return_int_ptr_to_fixed_const_array",
                     "F_name_impl": "return_int_ptr_to_fixed_const_array",
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "returnIntPtrToFixedConstArray"
                 }
             },
@@ -7084,6 +7259,9 @@
                     "F_name_function": "return_int_scalar",
                     "F_name_generic": "return_int_scalar",
                     "F_name_impl": "return_int_scalar",
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "returnIntScalar"
                 }
             },
@@ -7187,6 +7365,9 @@
                     "F_name_function": "return_int_raw",
                     "F_name_generic": "return_int_raw",
                     "F_name_impl": "return_int_raw",
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "returnIntRaw"
                 }
             },
@@ -7353,6 +7534,10 @@
                     "F_name_function": "return_int_raw_with_args",
                     "F_name_generic": "return_int_raw_with_args",
                     "F_name_impl": "return_int_raw_with_args",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "name"
+                    ],
                     "function_name": "returnIntRawWithArgs"
                 }
             },
@@ -7456,6 +7641,9 @@
                     "F_name_function": "return_raw_ptr_to_int2d",
                     "F_name_generic": "return_raw_ptr_to_int2d",
                     "F_name_impl": "return_raw_ptr_to_int2d",
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "returnRawPtrToInt2d"
                 }
             },
@@ -7602,6 +7790,9 @@
                     "F_name_function": "return_int_alloc_to_fixed_array",
                     "F_name_generic": "return_int_alloc_to_fixed_array",
                     "F_name_impl": "return_int_alloc_to_fixed_array",
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "returnIntAllocToFixedArray"
                 }
             }

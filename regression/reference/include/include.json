@@ -186,10 +186,18 @@
                             "F_name_function": "method1",
                             "F_name_generic": "method1",
                             "F_name_impl": "class2_method1",
+                            "c_arglist": [
+                                "self",
+                                "comm"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "comm"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "method1"
                         }
@@ -369,10 +377,18 @@
                             "F_name_function": "method2",
                             "F_name_generic": "method2",
                             "F_name_impl": "class2_method2",
+                            "c_arglist": [
+                                "self",
+                                "c2"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "c2"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "method2"
                         }
@@ -505,6 +521,12 @@
                                     "F_name_function": "function1",
                                     "F_name_generic": "function1",
                                     "F_name_impl": "function1",
+                                    "c_arglist": [
+                                        "c_var"
+                                    ],
+                                    "f_arglist": [
+                                        "f_var"
+                                    ],
                                     "function_name": "function1"
                                 }
                             }
@@ -747,10 +769,18 @@
                                     "F_name_function": "method1",
                                     "F_name_generic": "method1",
                                     "F_name_impl": "class1_method1",
+                                    "c_arglist": [
+                                        "self",
+                                        "arg1"
+                                    ],
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "self",
+                                    "f_arglist": [
+                                        "f_var",
+                                        "arg1"
+                                    ],
                                     "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "method1"
                                 }
@@ -899,10 +929,16 @@
                                     "F_name_function": "method",
                                     "F_name_generic": "method",
                                     "F_name_impl": "class0_method",
+                                    "c_arglist": [
+                                        "self"
+                                    ],
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "self",
+                                    "f_arglist": [
+                                        "f_var"
+                                    ],
                                     "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "method"
                                 }
@@ -1015,6 +1051,12 @@
                             "F_name_function": "outer_func",
                             "F_name_generic": "outer_func",
                             "F_name_impl": "outer_func",
+                            "c_arglist": [
+                                "c_var"
+                            ],
+                            "f_arglist": [
+                                "f_var"
+                            ],
                             "function_name": "outer_func"
                         }
                     }
@@ -1137,10 +1179,16 @@
                                     "F_name_function": "method",
                                     "F_name_generic": "method",
                                     "F_name_impl": "class0_method",
+                                    "c_arglist": [
+                                        "self"
+                                    ],
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "self",
+                                    "f_arglist": [
+                                        "f_var"
+                                    ],
                                     "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "method"
                                 }
@@ -1253,6 +1301,12 @@
                             "F_name_function": "outer_func",
                             "F_name_generic": "outer_func",
                             "F_name_impl": "outer_func",
+                            "c_arglist": [
+                                "c_var"
+                            ],
+                            "f_arglist": [
+                                "f_var"
+                            ],
                             "function_name": "outer_func"
                         }
                     }

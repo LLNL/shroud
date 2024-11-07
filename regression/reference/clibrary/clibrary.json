@@ -162,6 +162,9 @@
                     "F_name_generic": "no_return_no_arguments",
                     "F_name_impl": "no_return_no_arguments",
                     "PY_name_impl": "PY_NoReturnNoArguments",
+                    "f_arglist": [
+                        "f_var"
+                    ],
                     "function_name": "NoReturnNoArguments"
                 },
                 "zz_fmtlang": {
@@ -455,6 +458,11 @@
                     "F_name_generic": "pass_by_value",
                     "F_name_impl": "pass_by_value",
                     "PY_name_impl": "PY_PassByValue",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1",
+                        "arg2"
+                    ],
                     "function_name": "PassByValue"
                 },
                 "zz_fmtlang": {
@@ -726,6 +734,11 @@
                     "F_name_generic": "pass_by_reference",
                     "F_name_impl": "pass_by_reference",
                     "PY_name_impl": "PY_PassByReference",
+                    "f_arglist": [
+                        "f_var",
+                        "arg1",
+                        "arg2"
+                    ],
                     "function_name": "PassByReference"
                 },
                 "zz_fmtlang": {
@@ -947,6 +960,10 @@
                     "F_name_generic": "pass_by_value_macro",
                     "F_name_impl": "pass_by_value_macro",
                     "PY_name_impl": "PY_PassByValueMacro",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg2"
+                    ],
                     "function_name": "PassByValueMacro"
                 },
                 "zz_fmtlang": {
@@ -1306,6 +1323,12 @@
                     "F_name_generic": "check_bool",
                     "F_name_impl": "check_bool",
                     "PY_name_impl": "PY_checkBool",
+                    "f_arglist": [
+                        "f_var",
+                        "arg1",
+                        "arg2",
+                        "arg3"
+                    ],
                     "function_name": "checkBool"
                 },
                 "zz_fmtlang": {
@@ -1635,6 +1658,11 @@
                     "F_name_generic": "function4a",
                     "F_name_impl": "function4a",
                     "PY_name_impl": "PY_Function4a",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1",
+                        "arg2"
+                    ],
                     "function_name": "Function4a"
                 },
                 "zz_fmtlang": {
@@ -1817,6 +1845,10 @@
                     "F_name_generic": "accept_name",
                     "F_name_impl": "accept_name",
                     "PY_name_impl": "PY_acceptName",
+                    "f_arglist": [
+                        "f_var",
+                        "name"
+                    ],
                     "function_name": "acceptName"
                 },
                 "zz_fmtlang": {
@@ -2018,6 +2050,10 @@
                     "F_name_generic": "pass_char_ptr_in_out",
                     "F_name_impl": "pass_char_ptr_in_out",
                     "PY_name_impl": "PY_passCharPtrInOut",
+                    "f_arglist": [
+                        "f_var",
+                        "s"
+                    ],
                     "function_name": "passCharPtrInOut"
                 },
                 "zz_fmtlang": {
@@ -2288,6 +2324,12 @@
                     "F_name_function": "pass_char_ptr_capi",
                     "F_name_generic": "pass_char_ptr_capi",
                     "F_name_impl": "pass_char_ptr_capi",
+                    "f_arglist": [
+                        "f_var",
+                        "n",
+                        "in",
+                        "out"
+                    ],
                     "function_name": "passCharPtrCAPI"
                 }
             },
@@ -2473,6 +2515,10 @@
                     "F_name_generic": "return_one_name",
                     "F_name_impl": "return_one_name",
                     "PY_name_impl": "PY_returnOneName",
+                    "f_arglist": [
+                        "f_var",
+                        "name1"
+                    ],
                     "function_name": "returnOneName"
                 },
                 "zz_fmtlang": {
@@ -2761,6 +2807,11 @@
                     "F_name_generic": "return_two_names",
                     "F_name_impl": "return_two_names",
                     "PY_name_impl": "PY_returnTwoNames",
+                    "f_arglist": [
+                        "f_var",
+                        "name1",
+                        "name2"
+                    ],
                     "function_name": "returnTwoNames"
                 },
                 "zz_fmtlang": {
@@ -3045,6 +3096,11 @@
                     "F_name_generic": "implied_text_len",
                     "F_name_impl": "implied_text_len",
                     "PY_name_impl": "PY_ImpliedTextLen",
+                    "f_arglist": [
+                        "f_var",
+                        "text",
+                        "ltext"
+                    ],
                     "function_name": "ImpliedTextLen"
                 },
                 "zz_fmtlang": {
@@ -3441,6 +3497,12 @@
                     "F_name_generic": "implied_len",
                     "F_name_impl": "implied_len",
                     "PY_name_impl": "PY_ImpliedLen",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "text",
+                        "ltext",
+                        "flag"
+                    ],
                     "function_name": "ImpliedLen"
                 },
                 "zz_fmtlang": {
@@ -3842,6 +3904,12 @@
                     "F_name_generic": "implied_len_trim",
                     "F_name_impl": "implied_len_trim",
                     "PY_name_impl": "PY_ImpliedLenTrim",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "text",
+                        "ltext",
+                        "flag"
+                    ],
                     "function_name": "ImpliedLenTrim"
                 },
                 "zz_fmtlang": {
@@ -4065,6 +4133,10 @@
                     "F_name_generic": "implied_bool_true",
                     "F_name_impl": "implied_bool_true",
                     "PY_name_impl": "PY_ImpliedBoolTrue",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "flag"
+                    ],
                     "function_name": "ImpliedBoolTrue"
                 },
                 "zz_fmtlang": {
@@ -4284,6 +4356,10 @@
                     "F_name_generic": "implied_bool_false",
                     "F_name_impl": "implied_bool_false",
                     "PY_name_impl": "PY_ImpliedBoolFalse",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "flag"
+                    ],
                     "function_name": "ImpliedBoolFalse"
                 },
                 "zz_fmtlang": {
@@ -4368,6 +4444,9 @@
                     "F_name_function": "bind_c1",
                     "F_name_generic": "bind_c1",
                     "F_name_impl": "Fortran_bindC1a",
+                    "f_arglist": [
+                        "f_var"
+                    ],
                     "function_name": "bindC1",
                     "i_name_function": "Fortran_bindC1b"
                 }
@@ -4515,6 +4594,10 @@
                     "F_name_function": "bind_c2",
                     "F_name_generic": "bind_c2",
                     "F_name_impl": "Fortran_bindC2a",
+                    "f_arglist": [
+                        "f_var",
+                        "outbuf"
+                    ],
                     "function_name": "bindC2"
                 }
             },
@@ -4717,6 +4800,11 @@
                     "F_name_function": "pass_void_star_star",
                     "F_name_generic": "pass_void_star_star",
                     "F_name_impl": "pass_void_star_star",
+                    "f_arglist": [
+                        "f_var",
+                        "in",
+                        "out"
+                    ],
                     "function_name": "passVoidStarStar"
                 }
             },
@@ -4879,6 +4967,10 @@
                     "F_name_function": "pass_assumed_type",
                     "F_name_generic": "pass_assumed_type",
                     "F_name_impl": "pass_assumed_type",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg"
+                    ],
                     "function_name": "passAssumedType"
                 }
             },
@@ -5022,6 +5114,10 @@
                     "F_name_function": "pass_assumed_type_rank",
                     "F_name_generic": "pass_assumed_type_rank",
                     "F_name_impl": "pass_assumed_type_rank",
+                    "f_arglist": [
+                        "f_var",
+                        "arg"
+                    ],
                     "function_name": "passAssumedTypeRank"
                 }
             },
@@ -5255,6 +5351,11 @@
                     "F_name_function": "pass_assumed_type_buf",
                     "F_name_generic": "pass_assumed_type_buf",
                     "F_name_impl": "pass_assumed_type_buf",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg",
+                        "outbuf"
+                    ],
                     "function_name": "passAssumedTypeBuf"
                 }
             },
@@ -5828,6 +5929,12 @@
                     "F_name_function": "callback_set_alloc",
                     "F_name_generic": "callback_set_alloc",
                     "F_name_impl": "callback_set_alloc",
+                    "f_arglist": [
+                        "f_var",
+                        "tc",
+                        "arr",
+                        "alloc"
+                    ],
                     "function_name": "callback_set_alloc"
                 }
             }

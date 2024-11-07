@@ -712,6 +712,12 @@
                             "F_name_function": "ctor",
                             "F_name_generic": "class1",
                             "F_name_impl": "class1_ctor",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor"
                         }
@@ -843,10 +849,16 @@
                             "F_name_function": "check_length_0",
                             "F_name_generic": "check_length",
                             "F_name_impl": "class1_check_length_0",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "check_length",
                             "function_suffix": "_0"
@@ -1036,6 +1048,10 @@
                         "zz_fmtdict": {
                             "C_name_api": "check_length",
                             "F_name_api": "check_length",
+                            "c_arglist": [
+                                "SHC_rv",
+                                "length"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1207,6 +1223,10 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv",
+                                "length"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "check_length",
                             "function_suffix": "_1_int"
@@ -1375,6 +1395,10 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv",
+                                "length"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "check_length",
                             "function_suffix": "_1_long"
@@ -1605,10 +1629,18 @@
                             "F_name_function": "declare_0",
                             "F_name_generic": "declare",
                             "F_name_impl": "class1_declare_0",
+                            "c_arglist": [
+                                "SHC_rv",
+                                "flag"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv",
+                                "flag"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "declare",
                             "function_suffix": "_0"
@@ -1880,6 +1912,11 @@
                         "zz_fmtdict": {
                             "C_name_api": "declare",
                             "F_name_api": "declare",
+                            "c_arglist": [
+                                "SHC_rv",
+                                "flag",
+                                "length"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -2103,6 +2140,11 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv",
+                                "flag",
+                                "length"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "declare",
                             "function_suffix": "_1_int"
@@ -2323,6 +2365,11 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv",
+                                "flag",
+                                "length"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "declare",
                             "function_suffix": "_1_long"
@@ -2428,6 +2475,9 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_length",
                             "function_name": "get_length",
@@ -3130,6 +3180,12 @@
                     "F_name_function": "default_ptr_is_null_0",
                     "F_name_generic": "default_ptr_is_null",
                     "F_name_impl": "default_ptr_is_null_0",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "defaultPtrIsNULL",
                     "function_suffix": "_0"
                 }
@@ -3418,6 +3474,14 @@
                     "F_name_impl": "default_ptr_is_null_1",
                     "PY_cleanup_decref": "Py_XDECREF",
                     "PY_name_impl": "PY_defaultPtrIsNULL_1",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "data"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "data"
+                    ],
                     "function_name": "defaultPtrIsNULL",
                     "function_suffix": "_1"
                 },
@@ -3796,6 +3860,18 @@
                     "F_name_function": "default_args_in_out_0",
                     "F_name_generic": "default_args_in_out",
                     "F_name_impl": "default_args_in_out_0",
+                    "c_arglist": [
+                        "c_var",
+                        "in1",
+                        "out1",
+                        "out2"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "in1",
+                        "out1",
+                        "out2"
+                    ],
                     "function_name": "defaultArgsInOut",
                     "function_suffix": "_0"
                 }
@@ -4366,6 +4442,20 @@
                     "F_name_impl": "default_args_in_out_1",
                     "PY_cleanup_decref": "Py_XDECREF",
                     "PY_name_impl": "PY_defaultArgsInOut_1",
+                    "c_arglist": [
+                        "c_var",
+                        "in1",
+                        "out1",
+                        "out2",
+                        "flag"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "in1",
+                        "out1",
+                        "out2",
+                        "flag"
+                    ],
                     "function_name": "defaultArgsInOut",
                     "function_suffix": "_1"
                 },
@@ -4579,6 +4669,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "getGroupName",
                     "F_name_api": "get_group_name",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "idx"
+                    ],
                     "function_name": "getGroupName"
                 }
             },
@@ -4764,6 +4858,10 @@
                     "F_name_function": "get_group_name_int32_t",
                     "F_name_generic": "get_group_name",
                     "F_name_impl": "get_group_name_int32_t",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "idx"
+                    ],
                     "function_name": "getGroupName",
                     "function_suffix": "_int32_t"
                 }
@@ -4950,6 +5048,10 @@
                     "F_name_function": "get_group_name_int64_t",
                     "F_name_generic": "get_group_name",
                     "F_name_impl": "get_group_name_int64_t",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "idx"
+                    ],
                     "function_name": "getGroupName",
                     "function_suffix": "_int64_t"
                 }
@@ -5137,6 +5239,10 @@
                     "F_name_function": "nested_get_parent",
                     "F_name_generic": "nested_get_parent",
                     "F_name_impl": "nested_get_parent",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "SH_this"
+                    ],
                     "field_name": "parent",
                     "function_name": "nested_get_parent",
                     "struct_name": "nested",
@@ -5340,6 +5446,11 @@
                     "F_name_function": "nested_set_parent",
                     "F_name_generic": "nested_set_parent",
                     "F_name_impl": "nested_set_parent",
+                    "f_arglist": [
+                        "f_var",
+                        "SH_this",
+                        "val"
+                    ],
                     "field_name": "parent",
                     "function_name": "nested_set_parent",
                     "struct_name": "nested",
@@ -5555,6 +5666,10 @@
                     "F_name_function": "nested_get_child",
                     "F_name_generic": "nested_get_child",
                     "F_name_impl": "nested_get_child",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "SH_this"
+                    ],
                     "field_name": "child",
                     "function_name": "nested_get_child",
                     "struct_name": "nested",
@@ -5769,6 +5884,11 @@
                     "F_name_function": "nested_set_child",
                     "F_name_generic": "nested_set_child",
                     "F_name_impl": "nested_set_child",
+                    "f_arglist": [
+                        "f_var",
+                        "SH_this",
+                        "val"
+                    ],
                     "field_name": "child",
                     "function_name": "nested_set_child",
                     "struct_name": "nested",
@@ -5981,6 +6101,10 @@
                     "F_name_function": "nested_get_array",
                     "F_name_generic": "nested_get_array",
                     "F_name_impl": "nested_get_array",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "SH_this"
+                    ],
                     "field_name": "array",
                     "function_name": "nested_get_array",
                     "struct_name": "nested",
@@ -6192,6 +6316,11 @@
                     "F_name_function": "nested_set_array",
                     "F_name_generic": "nested_set_array",
                     "F_name_impl": "nested_set_array",
+                    "f_arglist": [
+                        "f_var",
+                        "SH_this",
+                        "val"
+                    ],
                     "field_name": "array",
                     "function_name": "nested_set_array",
                     "struct_name": "nested",
@@ -6589,6 +6718,14 @@
                             "F_name_generic": "pass_struct_by_reference",
                             "F_name_impl": "pass_struct_by_reference",
                             "PY_name_impl": "PY_passStructByReference",
+                            "c_arglist": [
+                                "SHC_rv",
+                                "arg"
+                            ],
+                            "f_arglist": [
+                                "SHT_rv",
+                                "arg"
+                            ],
                             "function_name": "passStructByReference"
                         },
                         "zz_fmtlang": {
@@ -6879,6 +7016,14 @@
                             "F_name_generic": "pass_struct_by_reference_in",
                             "F_name_impl": "pass_struct_by_reference_in",
                             "PY_name_impl": "PY_passStructByReferenceIn",
+                            "c_arglist": [
+                                "SHC_rv",
+                                "arg"
+                            ],
+                            "f_arglist": [
+                                "SHT_rv",
+                                "arg"
+                            ],
                             "function_name": "passStructByReferenceIn"
                         },
                         "zz_fmtlang": {
@@ -7116,6 +7261,14 @@
                             "F_name_generic": "pass_struct_by_reference_inout",
                             "F_name_impl": "pass_struct_by_reference_inout",
                             "PY_name_impl": "PY_passStructByReferenceInout",
+                            "c_arglist": [
+                                "c_var",
+                                "arg"
+                            ],
+                            "f_arglist": [
+                                "f_var",
+                                "arg"
+                            ],
                             "function_name": "passStructByReferenceInout"
                         },
                         "zz_fmtlang": {
@@ -7352,6 +7505,14 @@
                             "F_name_generic": "pass_struct_by_reference_out",
                             "F_name_impl": "pass_struct_by_reference_out",
                             "PY_name_impl": "PY_passStructByReferenceOut",
+                            "c_arglist": [
+                                "c_var",
+                                "arg"
+                            ],
+                            "f_arglist": [
+                                "f_var",
+                                "arg"
+                            ],
                             "function_name": "passStructByReferenceOut"
                         },
                         "zz_fmtlang": {

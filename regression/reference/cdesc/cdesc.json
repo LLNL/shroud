@@ -228,6 +228,14 @@
                     "F_name_function": "rank2_in",
                     "F_name_generic": "rank2_in",
                     "F_name_impl": "rank2_in",
+                    "c_arglist": [
+                        "c_var",
+                        "arg"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "arg"
+                    ],
                     "function_name": "Rank2In"
                 }
             },
@@ -545,6 +553,11 @@
                 "zz_fmtdict": {
                     "C_name_api": "GetScalar1",
                     "F_name_api": "get_scalar1",
+                    "c_arglist": [
+                        "c_var",
+                        "name",
+                        "value"
+                    ],
                     "function_name": "GetScalar1"
                 }
             },
@@ -798,6 +811,11 @@
                     "F_name_function": "get_scalar1_0",
                     "F_name_generic": "get_scalar1",
                     "F_name_impl": "get_scalar1_0",
+                    "f_arglist": [
+                        "f_var",
+                        "name",
+                        "value"
+                    ],
                     "function_name": "GetScalar1",
                     "function_suffix": "_0"
                 }
@@ -1052,6 +1070,11 @@
                     "F_name_function": "get_scalar1_1",
                     "F_name_generic": "get_scalar1",
                     "F_name_impl": "get_scalar1_1",
+                    "f_arglist": [
+                        "f_var",
+                        "name",
+                        "value"
+                    ],
                     "function_name": "GetScalar1",
                     "function_suffix": "_1"
                 }
@@ -1286,6 +1309,12 @@
                     "F_name_function": "get_data_int",
                     "F_name_generic": "get_data",
                     "F_name_impl": "get_data_int",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "getData",
                     "template_suffix": "_int"
                 }
@@ -1452,6 +1481,12 @@
                     "F_name_function": "get_data_double",
                     "F_name_generic": "get_data",
                     "F_name_impl": "get_data_double",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "getData",
                     "template_suffix": "_double"
                 }
@@ -1879,6 +1914,11 @@
                     "F_name_function": "get_scalar2_0",
                     "F_name_generic": "get_scalar2",
                     "F_name_impl": "get_scalar2_0",
+                    "f_arglist": [
+                        "f_var",
+                        "name",
+                        "value"
+                    ],
                     "function_name": "GetScalar2",
                     "function_suffix": "_0",
                     "stype": "int"
@@ -2108,6 +2148,11 @@
                     "F_name_function": "get_scalar2_1",
                     "F_name_generic": "get_scalar2",
                     "F_name_impl": "get_scalar2_1",
+                    "f_arglist": [
+                        "f_var",
+                        "name",
+                        "value"
+                    ],
                     "function_name": "GetScalar2",
                     "function_suffix": "_1",
                     "stype": "double"

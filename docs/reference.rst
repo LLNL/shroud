@@ -592,7 +592,7 @@ C_name_template
 C_name_shared_api_template
     Name of the smart pointer object created by group *smart_pointer*.
     The format field *smart_pointer* is taken from the Typemap for the smart pointer.
-     ``{C_name_api}_{smart_pointer}``
+    ``{C_name_api}_{smart_pointer}``
     
 C_name_typedef_template
     ``{C_prefix}{C_name_scope}{typedef_name}``
@@ -1185,6 +1185,13 @@ F_value
 Class
 ^^^^^
 
+c_arglist
+    An array of format fields for the C wrapper of the function and
+    its arguments.  Entry 0 is the function, 1 is the first argument,
+    and so on.  Allows the statement group of an argument to access
+    another argument's format fields to coordinate behavior.
+    For example, ``c_arglist[1].c_local_cxx``.
+
 C_header_filename
     Name of generated header file for the class.
     Defaulted from expansion of option *C_header_filename_class_template*.
@@ -1198,6 +1205,13 @@ baseclass
     class' *typemap*.  Used in format fields as
     ``{baseclass.cxx_type}``.
     
+f_arglist
+    An array of format fields for the Fortran wrapper of the function and
+    its arguments.  Entry 0 is the function, 1 is the first argument,
+    and so on.  Allows the statement group of an argument to access
+    another argument's format fields to coordinate behavior.
+    For example, ``c_arglist[1].c_local_cxx``.
+
 F_derived_name
     Name of Fortran derived type for this class.
     Computed from option *F_derived_name_template*.

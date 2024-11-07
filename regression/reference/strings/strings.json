@@ -109,6 +109,12 @@
                     "F_name_generic": "init_test",
                     "F_name_impl": "init_test",
                     "PY_name_impl": "PY_init_test",
+                    "c_arglist": [
+                        "c_var"
+                    ],
+                    "f_arglist": [
+                        "f_var"
+                    ],
                     "function_name": "init_test"
                 },
                 "zz_fmtlang": {
@@ -334,6 +340,14 @@
                     "F_name_generic": "pass_char",
                     "F_name_impl": "pass_char",
                     "PY_name_impl": "PY_passChar",
+                    "c_arglist": [
+                        "c_var",
+                        "status"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "status"
+                    ],
                     "function_name": "passChar"
                 },
                 "zz_fmtlang": {
@@ -527,6 +541,14 @@
                     "F_name_function": "pass_char_force",
                     "F_name_generic": "pass_char_force",
                     "F_name_impl": "pass_char_force",
+                    "c_arglist": [
+                        "c_var",
+                        "status"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "status"
+                    ],
                     "function_name": "passCharForce"
                 }
             },
@@ -673,6 +695,12 @@
                     "F_name_generic": "return_char",
                     "F_name_impl": "return_char",
                     "PY_name_impl": "PY_returnChar",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "returnChar"
                 },
                 "zz_fmtlang": {
@@ -1050,6 +1078,16 @@
                     "F_name_generic": "pass_char_ptr",
                     "F_name_impl": "pass_char_ptr",
                     "PY_name_impl": "PY_passCharPtr",
+                    "c_arglist": [
+                        "c_var",
+                        "dest",
+                        "src"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "dest",
+                        "src"
+                    ],
                     "function_name": "passCharPtr"
                 },
                 "zz_fmtlang": {
@@ -1310,6 +1348,14 @@
                     "F_name_generic": "pass_char_ptr_in_out",
                     "F_name_impl": "pass_char_ptr_in_out",
                     "PY_name_impl": "PY_passCharPtrInOut",
+                    "c_arglist": [
+                        "c_var",
+                        "s"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "s"
+                    ],
                     "function_name": "passCharPtrInOut"
                 },
                 "zz_fmtlang": {
@@ -1516,6 +1562,12 @@
                     "F_name_generic": "get_char_ptr1",
                     "F_name_impl": "get_char_ptr1",
                     "PY_name_impl": "PY_getCharPtr1",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "getCharPtr1"
                 },
                 "zz_fmtlang": {
@@ -1720,6 +1772,12 @@
                     "F_name_generic": "get_char_ptr2",
                     "F_name_impl": "get_char_ptr2",
                     "PY_name_impl": "PY_getCharPtr2",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "getCharPtr2"
                 },
                 "zz_fmtlang": {
@@ -1916,6 +1974,12 @@
                     "F_name_impl": "get_char_ptr3",
                     "F_string_result_as_arg": "output",
                     "PY_name_impl": "PY_getCharPtr3",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "output"
+                    ],
                     "function_name": "getCharPtr3"
                 },
                 "zz_fmtlang": {
@@ -2061,6 +2125,12 @@
                     "F_name_function": "get_char_ptr4",
                     "F_name_generic": "get_char_ptr4",
                     "F_name_impl": "get_char_ptr4",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "getCharPtr4"
                 }
             },
@@ -2224,6 +2294,12 @@
                     "F_name_function": "get_char_ptr5",
                     "F_name_generic": "get_char_ptr5",
                     "F_name_impl": "get_char_ptr5",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "getCharPtr5"
                 }
             },
@@ -2419,6 +2495,12 @@
                     "F_name_generic": "get_const_string_result",
                     "F_name_impl": "get_const_string_result",
                     "PY_name_impl": "PY_getConstStringResult",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "getConstStringResult"
                 },
                 "zz_fmtlang": {
@@ -2618,6 +2700,12 @@
                     "F_name_generic": "get_const_string_len",
                     "F_name_impl": "get_const_string_len",
                     "PY_name_impl": "PY_getConstStringLen",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "getConstStringLen"
                 },
                 "zz_fmtlang": {
@@ -2809,6 +2897,12 @@
                     "F_name_impl": "get_const_string_as_arg",
                     "F_string_result_as_arg": "output",
                     "PY_name_impl": "PY_getConstStringAsArg",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "output"
+                    ],
                     "function_name": "getConstStringAsArg"
                 },
                 "zz_fmtlang": {
@@ -3011,6 +3105,12 @@
                     "F_name_generic": "get_const_string_alloc",
                     "F_name_impl": "get_const_string_alloc",
                     "PY_name_impl": "PY_getConstStringAlloc",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "getConstStringAlloc"
                 },
                 "zz_fmtlang": {
@@ -3221,6 +3321,12 @@
                     "F_name_generic": "get_const_string_ref_pure",
                     "F_name_impl": "get_const_string_ref_pure",
                     "PY_name_impl": "PY_getConstStringRefPure",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "getConstStringRefPure"
                 },
                 "zz_fmtlang": {
@@ -3426,6 +3532,12 @@
                     "F_name_generic": "get_const_string_ref_len",
                     "F_name_impl": "get_const_string_ref_len",
                     "PY_name_impl": "PY_getConstStringRefLen",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "getConstStringRefLen"
                 },
                 "zz_fmtlang": {
@@ -3623,6 +3735,12 @@
                     "F_name_impl": "get_const_string_ref_as_arg",
                     "F_string_result_as_arg": "output",
                     "PY_name_impl": "PY_getConstStringRefAsArg",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "output"
+                    ],
                     "function_name": "getConstStringRefAsArg"
                 },
                 "zz_fmtlang": {
@@ -3827,6 +3945,12 @@
                     "F_name_generic": "get_const_string_ref_len_empty",
                     "F_name_impl": "get_const_string_ref_len_empty",
                     "PY_name_impl": "PY_getConstStringRefLenEmpty",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "getConstStringRefLenEmpty"
                 },
                 "zz_fmtlang": {
@@ -4032,6 +4156,12 @@
                     "F_name_generic": "get_const_string_ref_alloc",
                     "F_name_impl": "get_const_string_ref_alloc",
                     "PY_name_impl": "PY_getConstStringRefAlloc",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "getConstStringRefAlloc"
                 },
                 "zz_fmtlang": {
@@ -4244,6 +4374,12 @@
                     "F_name_generic": "get_const_string_ptr_len",
                     "F_name_impl": "get_const_string_ptr_len",
                     "PY_name_impl": "PY_getConstStringPtrLen",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "getConstStringPtrLen"
                 },
                 "zz_fmtlang": {
@@ -4456,6 +4592,12 @@
                     "F_name_generic": "get_const_string_ptr_alloc",
                     "F_name_impl": "get_const_string_ptr_alloc",
                     "PY_name_impl": "PY_getConstStringPtrAlloc",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "getConstStringPtrAlloc"
                 },
                 "zz_fmtlang": {
@@ -4671,6 +4813,12 @@
                     "F_name_generic": "get_const_string_ptr_owns_alloc",
                     "F_name_impl": "get_const_string_ptr_owns_alloc",
                     "PY_name_impl": "PY_getConstStringPtrOwnsAlloc",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "getConstStringPtrOwnsAlloc"
                 },
                 "zz_fmtlang": {
@@ -4891,6 +5039,12 @@
                     "F_name_generic": "get_const_string_ptr_owns_alloc_pattern",
                     "F_name_impl": "get_const_string_ptr_owns_alloc_pattern",
                     "PY_name_impl": "PY_getConstStringPtrOwnsAllocPattern",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "getConstStringPtrOwnsAllocPattern"
                 },
                 "zz_fmtlang": {
@@ -5070,6 +5224,12 @@
                     "F_name_function": "get_const_string_ptr_pointer",
                     "F_name_generic": "get_const_string_ptr_pointer",
                     "F_name_impl": "get_const_string_ptr_pointer",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "getConstStringPtrPointer"
                 }
             },
@@ -5311,6 +5471,14 @@
                     "F_name_generic": "accept_string_const_reference",
                     "F_name_impl": "accept_string_const_reference",
                     "PY_name_impl": "PY_acceptStringConstReference",
+                    "c_arglist": [
+                        "c_var",
+                        "arg1"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "arg1"
+                    ],
                     "function_name": "acceptStringConstReference"
                 },
                 "zz_fmtlang": {
@@ -5569,6 +5737,14 @@
                     "F_name_generic": "accept_string_reference_out",
                     "F_name_impl": "accept_string_reference_out",
                     "PY_name_impl": "PY_acceptStringReferenceOut",
+                    "c_arglist": [
+                        "c_var",
+                        "arg1"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "arg1"
+                    ],
                     "function_name": "acceptStringReferenceOut"
                 },
                 "zz_fmtlang": {
@@ -5824,6 +6000,14 @@
                     "F_name_generic": "accept_string_reference",
                     "F_name_impl": "accept_string_reference",
                     "PY_name_impl": "PY_acceptStringReference",
+                    "c_arglist": [
+                        "c_var",
+                        "arg1"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "arg1"
+                    ],
                     "function_name": "acceptStringReference"
                 },
                 "zz_fmtlang": {
@@ -6080,6 +6264,14 @@
                     "F_name_generic": "accept_string_pointer_const",
                     "F_name_impl": "accept_string_pointer_const",
                     "PY_name_impl": "PY_acceptStringPointerConst",
+                    "c_arglist": [
+                        "c_var",
+                        "arg1"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "arg1"
+                    ],
                     "function_name": "acceptStringPointerConst"
                 },
                 "zz_fmtlang": {
@@ -6336,6 +6528,14 @@
                     "F_name_generic": "accept_string_pointer",
                     "F_name_impl": "accept_string_pointer",
                     "PY_name_impl": "PY_acceptStringPointer",
+                    "c_arglist": [
+                        "c_var",
+                        "arg1"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "arg1"
+                    ],
                     "function_name": "acceptStringPointer"
                 },
                 "zz_fmtlang": {
@@ -6595,6 +6795,14 @@
                     "F_name_generic": "fetch_string_pointer",
                     "F_name_impl": "fetch_string_pointer",
                     "PY_name_impl": "PY_fetchStringPointer",
+                    "c_arglist": [
+                        "c_var",
+                        "arg1"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "arg1"
+                    ],
                     "function_name": "fetchStringPointer"
                 },
                 "zz_fmtlang": {
@@ -6972,6 +7180,16 @@
                     "F_name_generic": "accept_string_pointer_len",
                     "F_name_impl": "accept_string_pointer_len",
                     "PY_name_impl": "PY_acceptStringPointerLen",
+                    "c_arglist": [
+                        "c_var",
+                        "arg1",
+                        "nlen"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "arg1",
+                        "nlen"
+                    ],
                     "function_name": "acceptStringPointerLen"
                 },
                 "zz_fmtlang": {
@@ -7356,6 +7574,16 @@
                     "F_name_generic": "fetch_string_pointer_len",
                     "F_name_impl": "fetch_string_pointer_len",
                     "PY_name_impl": "PY_fetchStringPointerLen",
+                    "c_arglist": [
+                        "c_var",
+                        "arg1",
+                        "nlen"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "arg1",
+                        "nlen"
+                    ],
                     "function_name": "fetchStringPointerLen"
                 },
                 "zz_fmtlang": {
@@ -7663,6 +7891,14 @@
                     "F_name_generic": "accept_string_instance",
                     "F_name_impl": "accept_string_instance",
                     "PY_name_impl": "PY_acceptStringInstance",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg1"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1"
+                    ],
                     "function_name": "acceptStringInstance"
                 },
                 "zz_fmtlang": {
@@ -8189,6 +8425,16 @@
                     "F_name_function": "fetch_array_string_arg",
                     "F_name_generic": "fetch_array_string_arg",
                     "F_name_impl": "fetch_array_string_arg",
+                    "c_arglist": [
+                        "c_var",
+                        "strs",
+                        "nstrs"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "strs",
+                        "nstrs"
+                    ],
                     "function_name": "fetchArrayStringArg"
                 }
             },
@@ -8544,6 +8790,16 @@
                     "F_name_function": "fetch_array_string_alloc",
                     "F_name_generic": "fetch_array_string_alloc",
                     "F_name_impl": "fetch_array_string_alloc",
+                    "c_arglist": [
+                        "c_var",
+                        "strs",
+                        "nstrs"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "strs",
+                        "nstrs"
+                    ],
                     "function_name": "fetchArrayStringAlloc"
                 }
             },
@@ -8906,6 +9162,16 @@
                     "F_name_function": "fetch_array_string_alloc_len",
                     "F_name_generic": "fetch_array_string_alloc_len",
                     "F_name_impl": "fetch_array_string_alloc_len",
+                    "c_arglist": [
+                        "c_var",
+                        "strs",
+                        "nstrs"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "strs",
+                        "nstrs"
+                    ],
                     "function_name": "fetchArrayStringAllocLen"
                 }
             },
@@ -9192,6 +9458,14 @@
                     "F_name_generic": "explicit1",
                     "F_name_impl": "explicit1",
                     "PY_name_impl": "PY_explicit1",
+                    "c_arglist": [
+                        "c_var",
+                        "name"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "name"
+                    ],
                     "function_name": "explicit1"
                 },
                 "zz_fmtlang": {
@@ -9413,6 +9687,14 @@
                     "F_name_function": "explicit2",
                     "F_name_generic": "explicit2",
                     "F_name_impl": "explicit2",
+                    "c_arglist": [
+                        "c_var",
+                        "name"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "name"
+                    ],
                     "function_name": "explicit2"
                 }
             },
@@ -9630,6 +9912,14 @@
                     "F_name_generic": "cpass_char",
                     "F_name_impl": "cpass_char",
                     "PY_name_impl": "PY_CpassChar",
+                    "c_arglist": [
+                        "c_var",
+                        "status"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "status"
+                    ],
                     "function_name": "CpassChar"
                 },
                 "zz_fmtlang": {
@@ -9793,6 +10083,12 @@
                     "F_name_generic": "creturn_char",
                     "F_name_impl": "creturn_char",
                     "PY_name_impl": "PY_CreturnChar",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "CreturnChar"
                 },
                 "zz_fmtlang": {
@@ -10118,6 +10414,16 @@
                     "F_name_function": "cpass_char_ptr",
                     "F_name_generic": "cpass_char_ptr",
                     "F_name_impl": "cpass_char_ptr",
+                    "c_arglist": [
+                        "c_var",
+                        "dest",
+                        "src"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "dest",
+                        "src"
+                    ],
                     "function_name": "CpassCharPtr"
                 }
             },
@@ -10427,6 +10733,16 @@
                     "F_name_function": "cpass_char_ptr_blank",
                     "F_name_generic": "cpass_char_ptr_blank",
                     "F_name_impl": "cpass_char_ptr_blank",
+                    "c_arglist": [
+                        "c_var",
+                        "dest",
+                        "src"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "dest",
+                        "src"
+                    ],
                     "function_name": "CpassCharPtrBlank"
                 }
             },
@@ -10811,6 +11127,16 @@
                     "F_name_generic": "post_declare",
                     "F_name_impl": "post_declare",
                     "PY_name_impl": "PY_PostDeclare",
+                    "c_arglist": [
+                        "c_var",
+                        "count",
+                        "name"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "count",
+                        "name"
+                    ],
                     "function_name": "PostDeclare"
                 },
                 "zz_fmtlang": {
@@ -11081,6 +11407,14 @@
                     "F_name_function": "cpass_char_ptr_notrim",
                     "F_name_generic": "cpass_char_ptr_notrim",
                     "F_name_impl": "cpass_char_ptr_notrim",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "src"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "src"
+                    ],
                     "function_name": "CpassCharPtrNotrim"
                 }
             },
@@ -11396,6 +11730,16 @@
                     "F_name_function": "cpass_char_ptr_capi",
                     "F_name_generic": "cpass_char_ptr_capi",
                     "F_name_impl": "cpass_char_ptr_capi",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "addr",
+                        "src"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "addr",
+                        "src"
+                    ],
                     "function_name": "CpassCharPtrCAPI"
                 }
             },
@@ -11706,6 +12050,16 @@
                     "F_name_function": "cpass_char_ptr_capi2",
                     "F_name_generic": "cpass_char_ptr_capi2",
                     "F_name_impl": "cpass_char_ptr_capi2",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "in",
+                        "src"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "in",
+                        "src"
+                    ],
                     "function_name": "CpassCharPtrCAPI2"
                 }
             }

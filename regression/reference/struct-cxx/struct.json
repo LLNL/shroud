@@ -876,6 +876,9 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "x1",
                             "function_name": "get_x1",
@@ -1021,6 +1024,10 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "val"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "x1",
                             "function_name": "set_x1",
@@ -1128,6 +1135,9 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "y1",
                             "function_name": "get_y1",
@@ -1273,6 +1283,10 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "val"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "y1",
                             "function_name": "set_y1",
@@ -1478,6 +1492,9 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "x1",
                             "function_name": "get_x1",
@@ -1623,6 +1640,10 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "val"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "x1",
                             "function_name": "set_x1",
@@ -1730,6 +1751,9 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "y1",
                             "function_name": "get_y1",
@@ -1875,6 +1899,10 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "val"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "y1",
                             "function_name": "set_y1",
@@ -1982,6 +2010,9 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "z1",
                             "function_name": "get_z1",
@@ -2127,6 +2158,10 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "val"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "z1",
                             "function_name": "set_z1",
@@ -2553,6 +2588,14 @@
                     "F_name_function": "pass_struct_by_value",
                     "F_name_generic": "pass_struct_by_value",
                     "F_name_impl": "pass_struct_by_value",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg"
+                    ],
                     "function_name": "passStructByValue"
                 }
             },
@@ -2769,6 +2812,14 @@
                     "F_name_function": "pass_struct1",
                     "F_name_generic": "pass_struct1",
                     "F_name_impl": "pass_struct1",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg"
+                    ],
                     "function_name": "passStruct1"
                 }
             },
@@ -3118,6 +3169,16 @@
                     "F_name_function": "pass_struct2",
                     "F_name_generic": "pass_struct2",
                     "F_name_impl": "pass_struct2",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "s1",
+                        "outbuf"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "s1",
+                        "outbuf"
+                    ],
                     "function_name": "passStruct2"
                 }
             },
@@ -3334,6 +3395,14 @@
                     "F_name_function": "accept_struct_in_ptr",
                     "F_name_generic": "accept_struct_in_ptr",
                     "F_name_impl": "accept_struct_in_ptr",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg"
+                    ],
                     "function_name": "acceptStructInPtr"
                 }
             },
@@ -3690,6 +3759,18 @@
                     "F_name_function": "accept_struct_out_ptr",
                     "F_name_generic": "accept_struct_out_ptr",
                     "F_name_impl": "accept_struct_out_ptr",
+                    "c_arglist": [
+                        "c_var",
+                        "arg",
+                        "i",
+                        "d"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "arg",
+                        "i",
+                        "d"
+                    ],
                     "function_name": "acceptStructOutPtr"
                 }
             },
@@ -3867,6 +3948,14 @@
                     "F_name_function": "accept_struct_in_out_ptr",
                     "F_name_generic": "accept_struct_in_out_ptr",
                     "F_name_impl": "accept_struct_in_out_ptr",
+                    "c_arglist": [
+                        "c_var",
+                        "arg"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "arg"
+                    ],
                     "function_name": "acceptStructInOutPtr"
                 }
             },
@@ -4165,6 +4254,16 @@
                     "F_name_function": "return_struct_by_value",
                     "F_name_generic": "return_struct_by_value",
                     "F_name_impl": "return_struct_by_value",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "i",
+                        "d"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "i",
+                        "d"
+                    ],
                     "function_name": "returnStructByValue"
                 }
             },
@@ -4519,6 +4618,16 @@
                     "F_name_function": "return_struct_ptr1",
                     "F_name_generic": "return_struct_ptr1",
                     "F_name_impl": "return_struct_ptr1",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "i",
+                        "d"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "i",
+                        "d"
+                    ],
                     "function_name": "returnStructPtr1"
                 }
             },
@@ -4978,6 +5087,18 @@
                     "F_name_function": "return_struct_ptr2",
                     "F_name_generic": "return_struct_ptr2",
                     "F_name_impl": "return_struct_ptr2",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "i",
+                        "d",
+                        "outbuf"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "i",
+                        "d",
+                        "outbuf"
+                    ],
                     "function_name": "returnStructPtr2"
                 }
             },
@@ -5173,6 +5294,12 @@
                     "F_name_function": "return_struct_ptr_array",
                     "F_name_generic": "return_struct_ptr_array",
                     "F_name_impl": "return_struct_ptr_array",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "returnStructPtrArray"
                 }
             },
@@ -5328,6 +5455,12 @@
                     "F_name_function": "get_global_struct_list",
                     "F_name_generic": "get_global_struct_list",
                     "F_name_impl": "get_global_struct_list",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "get_global_struct_list"
                 }
             },
@@ -5485,6 +5618,12 @@
                     "F_name_function": "create_cstruct_as_class",
                     "F_name_generic": "create_cstruct_as_class",
                     "F_name_impl": "create_cstruct_as_class",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "Create_Cstruct_as_class"
                 }
             },
@@ -5836,6 +5975,16 @@
                     "F_name_function": "create_cstruct_as_class_args",
                     "F_name_generic": "create_cstruct_as_class_args",
                     "F_name_impl": "create_cstruct_as_class_args",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "x",
+                        "y"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "x",
+                        "y"
+                    ],
                     "function_name": "Create_Cstruct_as_class_args"
                 }
             },
@@ -5973,6 +6122,12 @@
                     "F_name_function": "return_cstruct_as_class",
                     "F_name_generic": "return_cstruct_as_class",
                     "F_name_impl": "return_cstruct_as_class",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "Return_Cstruct_as_class"
                 }
             },
@@ -6289,6 +6444,16 @@
                     "F_name_function": "return_cstruct_as_class_args",
                     "F_name_generic": "return_cstruct_as_class_args",
                     "F_name_impl": "return_cstruct_as_class_args",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "x",
+                        "y"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "x",
+                        "y"
+                    ],
                     "function_name": "Return_Cstruct_as_class_args"
                 }
             },
@@ -6516,6 +6681,14 @@
                     "F_name_function": "sum",
                     "F_name_generic": "cstruct_as_class_sum",
                     "F_name_impl": "cstruct_as_class_sum",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "point"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "point"
+                    ],
                     "function_name": "Cstruct_as_class_sum"
                 }
             },
@@ -6963,6 +7136,18 @@
                     "F_name_function": "create_cstruct_as_subclass_args",
                     "F_name_generic": "create_cstruct_as_subclass_args",
                     "F_name_impl": "create_cstruct_as_subclass_args",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "x",
+                        "y",
+                        "z"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "x",
+                        "y",
+                        "z"
+                    ],
                     "function_name": "Create_Cstruct_as_subclass_args"
                 }
             },
@@ -7367,6 +7552,18 @@
                     "F_name_function": "return_cstruct_as_subclass_args",
                     "F_name_generic": "return_cstruct_as_subclass_args",
                     "F_name_impl": "return_cstruct_as_subclass_args",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "x",
+                        "y",
+                        "z"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "x",
+                        "y",
+                        "z"
+                    ],
                     "function_name": "Return_Cstruct_as_subclass_args"
                 }
             },
@@ -7539,6 +7736,10 @@
                     "F_name_function": "cstruct_ptr_get_const_dvalue",
                     "F_name_generic": "cstruct_ptr_get_const_dvalue",
                     "F_name_impl": "cstruct_ptr_get_const_dvalue",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "SH_this"
+                    ],
                     "field_name": "const_dvalue",
                     "function_name": "Cstruct_ptr_get_const_dvalue",
                     "struct_name": "Cstruct_ptr",
@@ -7742,6 +7943,11 @@
                     "F_name_function": "cstruct_ptr_set_const_dvalue",
                     "F_name_generic": "cstruct_ptr_set_const_dvalue",
                     "F_name_impl": "cstruct_ptr_set_const_dvalue",
+                    "f_arglist": [
+                        "f_var",
+                        "SH_this",
+                        "val"
+                    ],
                     "field_name": "const_dvalue",
                     "function_name": "Cstruct_ptr_set_const_dvalue",
                     "struct_name": "Cstruct_ptr",
@@ -7965,6 +8171,10 @@
                     "F_name_function": "cstruct_list_get_ivalue",
                     "F_name_generic": "cstruct_list_get_ivalue",
                     "F_name_impl": "cstruct_list_get_ivalue",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "SH_this"
+                    ],
                     "field_name": "ivalue",
                     "function_name": "Cstruct_list_get_ivalue",
                     "struct_name": "Cstruct_list",
@@ -8175,6 +8385,11 @@
                     "F_name_function": "cstruct_list_set_ivalue",
                     "F_name_generic": "cstruct_list_set_ivalue",
                     "F_name_impl": "cstruct_list_set_ivalue",
+                    "f_arglist": [
+                        "f_var",
+                        "SH_this",
+                        "val"
+                    ],
                     "field_name": "ivalue",
                     "function_name": "Cstruct_list_set_ivalue",
                     "struct_name": "Cstruct_list",
@@ -8398,6 +8613,10 @@
                     "F_name_function": "cstruct_list_get_dvalue",
                     "F_name_generic": "cstruct_list_get_dvalue",
                     "F_name_impl": "cstruct_list_get_dvalue",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "SH_this"
+                    ],
                     "field_name": "dvalue",
                     "function_name": "Cstruct_list_get_dvalue",
                     "struct_name": "Cstruct_list",
@@ -8608,6 +8827,11 @@
                     "F_name_function": "cstruct_list_set_dvalue",
                     "F_name_generic": "cstruct_list_set_dvalue",
                     "F_name_impl": "cstruct_list_set_dvalue",
+                    "f_arglist": [
+                        "f_var",
+                        "SH_this",
+                        "val"
+                    ],
                     "field_name": "dvalue",
                     "function_name": "Cstruct_list_set_dvalue",
                     "struct_name": "Cstruct_list",

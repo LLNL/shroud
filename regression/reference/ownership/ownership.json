@@ -114,10 +114,16 @@
                             "LUA_name": "dtor",
                             "LUA_name_api": "dtor",
                             "LUA_name_impl": "l_Class1_dtor",
+                            "c_arglist": [
+                                "self"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "dtor"
                         },
@@ -236,6 +242,9 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_flag",
                             "function_name": "get_flag",
@@ -430,6 +439,9 @@
                 "zz_fmtdict": {
                     "C_name_api": "ReturnIntPtrRaw",
                     "F_name_api": "return_int_ptr_raw",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
                     "function_name": "ReturnIntPtrRaw"
                 }
             },
@@ -610,6 +622,12 @@
                     "F_name_generic": "return_int_ptr_scalar",
                     "F_name_impl": "return_int_ptr_scalar",
                     "PY_name_impl": "PY_ReturnIntPtrScalar",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "ReturnIntPtrScalar"
                 },
                 "zz_fmtlang": {
@@ -802,6 +820,12 @@
                     "F_name_generic": "return_int_ptr_pointer",
                     "F_name_impl": "return_int_ptr_pointer",
                     "PY_name_impl": "PY_ReturnIntPtrPointer",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "ReturnIntPtrPointer"
                 },
                 "zz_fmtlang": {
@@ -969,6 +993,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "ReturnIntPtrDimRaw",
                     "F_name_api": "return_int_ptr_dim_raw",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "len"
+                    ],
                     "function_name": "ReturnIntPtrDimRaw"
                 }
             },
@@ -1350,6 +1378,14 @@
                     "F_name_generic": "return_int_ptr_dim_pointer",
                     "F_name_impl": "return_int_ptr_dim_pointer",
                     "PY_name_impl": "PY_ReturnIntPtrDimPointer",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "len"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "len"
+                    ],
                     "function_name": "ReturnIntPtrDimPointer"
                 },
                 "zz_fmtlang": {
@@ -1753,6 +1789,14 @@
                     "F_name_generic": "return_int_ptr_dim_alloc",
                     "F_name_impl": "return_int_ptr_dim_alloc",
                     "PY_name_impl": "PY_ReturnIntPtrDimAlloc",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "len"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "len"
+                    ],
                     "function_name": "ReturnIntPtrDimAlloc"
                 },
                 "zz_fmtlang": {
@@ -2144,6 +2188,14 @@
                     "F_name_generic": "return_int_ptr_dim_default",
                     "F_name_impl": "return_int_ptr_dim_default",
                     "PY_name_impl": "PY_ReturnIntPtrDimDefault",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "len"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "len"
+                    ],
                     "function_name": "ReturnIntPtrDimDefault"
                 },
                 "zz_fmtlang": {
@@ -2333,6 +2385,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "ReturnIntPtrDimRawNew",
                     "F_name_api": "return_int_ptr_dim_raw_new",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "len"
+                    ],
                     "function_name": "ReturnIntPtrDimRawNew"
                 }
             },
@@ -2723,6 +2779,14 @@
                     "F_name_generic": "return_int_ptr_dim_pointer_new",
                     "F_name_impl": "return_int_ptr_dim_pointer_new",
                     "PY_name_impl": "PY_ReturnIntPtrDimPointerNew",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "len"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "len"
+                    ],
                     "function_name": "ReturnIntPtrDimPointerNew"
                 },
                 "zz_fmtlang": {
@@ -2998,6 +3062,10 @@
                     "C_name_api": "ReturnIntPtrDimAllocNew",
                     "F_name_api": "return_int_ptr_dim_alloc_new",
                     "PY_name_impl": "PY_ReturnIntPtrDimAllocNew",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "len"
+                    ],
                     "function_name": "ReturnIntPtrDimAllocNew"
                 },
                 "zz_fmtlang": {
@@ -3399,6 +3467,14 @@
                     "F_name_generic": "return_int_ptr_dim_default_new",
                     "F_name_impl": "return_int_ptr_dim_default_new",
                     "PY_name_impl": "PY_ReturnIntPtrDimDefaultNew",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "len"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "len"
+                    ],
                     "function_name": "ReturnIntPtrDimDefaultNew"
                 },
                 "zz_fmtlang": {
@@ -4439,6 +4515,14 @@
                     "F_name_generic": "create_class_static",
                     "F_name_impl": "create_class_static",
                     "PY_name_impl": "PY_createClassStatic",
+                    "c_arglist": [
+                        "c_var",
+                        "flag"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "flag"
+                    ],
                     "function_name": "createClassStatic"
                 },
                 "zz_fmtlang": {
@@ -4654,6 +4738,12 @@
                     "F_name_generic": "get_class_static",
                     "F_name_impl": "get_class_static",
                     "PY_name_impl": "PY_getClassStatic",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "getClassStatic"
                 },
                 "zz_fmtlang": {
@@ -5000,6 +5090,14 @@
                     "F_name_generic": "get_class_new",
                     "F_name_impl": "get_class_new",
                     "PY_name_impl": "PY_getClassNew",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "flag"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "flag"
+                    ],
                     "function_name": "getClassNew"
                 },
                 "zz_fmtlang": {

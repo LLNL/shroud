@@ -197,7 +197,8 @@
         ],
         "notes": [
             "std::weak_ptr has no wrapped constructor.",
-            "It must be made from a std::shared_ptr with an assignment."
+            "It must be made from a std::shared_ptr with an assignment.",
+            "arglist[1] is the 'from' argument."
         ],
         "mixin": [
             "c_mixin_noargs"
@@ -211,7 +212,7 @@
             "self->addr = SH_this;",
             "self->idtor = {idtor};",
             "-}} else {{+",
-            "*{CXX_this} = *SHC_from_cxx;",
+            "*{CXX_this} = *{c_arglist[1].c_local_cxx};",
             "-}}"
         ],
         "destructor_name": "assignment-{cxx_type}",

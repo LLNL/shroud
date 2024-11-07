@@ -142,6 +142,12 @@
                     "F_name_function": "get_name_length",
                     "F_name_generic": "get_name_length",
                     "F_name_impl": "get_name_length",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "GetNameLength"
                 }
             },
@@ -305,6 +311,12 @@
                     "F_name_function": "get_name_error_pattern",
                     "F_name_generic": "get_name_error_pattern",
                     "F_name_impl": "get_name_error_pattern",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "getNameErrorPattern"
                 }
             },
@@ -515,6 +527,14 @@
                     "F_name_function": "name_is_valid",
                     "F_name_generic": "name_is_valid",
                     "F_name_impl": "name_is_valid",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "name"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "name"
+                    ],
                     "function_name": "nameIsValid"
                 }
             }

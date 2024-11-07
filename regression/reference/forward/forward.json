@@ -260,6 +260,12 @@
                             "PY_name_impl": "PY_Class2_tp_init",
                             "PY_type_impl": "PY_Class2_tp_init",
                             "PY_type_method": "tp_init",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor"
                         },
@@ -388,10 +394,16 @@
                             "LUA_name": "dtor",
                             "LUA_name_api": "dtor",
                             "LUA_name_impl": "l_Class2_dtor",
+                            "c_arglist": [
+                                "self"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "dtor"
                         },
@@ -664,10 +676,18 @@
                             "LUA_name_api": "func1",
                             "LUA_name_impl": "l_Class2_func1",
                             "PY_name_impl": "PY_func1",
+                            "c_arglist": [
+                                "self",
+                                "arg"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "arg"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "func1"
                         },
@@ -950,10 +970,18 @@
                             "LUA_name_api": "acceptClass3",
                             "LUA_name_impl": "l_Class2_acceptClass3",
                             "PY_name_impl": "PY_acceptClass3",
+                            "c_arglist": [
+                                "self",
+                                "arg"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "arg"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "acceptClass3"
                         },
@@ -1253,6 +1281,14 @@
                     "F_name_function": "pass_struct1",
                     "F_name_generic": "pass_struct1",
                     "F_name_impl": "pass_struct1",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg"
+                    ],
                     "function_name": "passStruct1"
                 }
             }

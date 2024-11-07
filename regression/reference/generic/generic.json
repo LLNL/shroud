@@ -178,6 +178,10 @@
                     "F_name_function": "update_as_float",
                     "F_name_generic": "update_real",
                     "F_name_impl": "update_as_float",
+                    "f_arglist": [
+                        "f_var",
+                        "arg"
+                    ],
                     "function_name": "UpdateAsFloat"
                 }
             },
@@ -305,6 +309,10 @@
                     "F_name_function": "update_as_double",
                     "F_name_generic": "update_real",
                     "F_name_impl": "update_as_double",
+                    "f_arglist": [
+                        "f_var",
+                        "arg"
+                    ],
                     "function_name": "UpdateAsDouble"
                 }
             },
@@ -393,6 +401,9 @@
                     "F_name_function": "get_global_double",
                     "F_name_generic": "get_global_double",
                     "F_name_impl": "get_global_double",
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "GetGlobalDouble"
                 }
             },
@@ -547,6 +558,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "GenericReal",
                     "F_name_api": "generic_real",
+                    "c_arglist": [
+                        "c_var",
+                        "arg"
+                    ],
                     "function_name": "GenericReal"
                 }
             },
@@ -678,6 +693,10 @@
                     "F_name_function": "generic_real_float",
                     "F_name_generic": "generic_real",
                     "F_name_impl": "generic_real_float",
+                    "f_arglist": [
+                        "f_var",
+                        "arg"
+                    ],
                     "function_name": "GenericReal",
                     "function_suffix": "_float"
                 }
@@ -810,6 +829,10 @@
                     "F_name_function": "generic_real_double",
                     "F_name_generic": "generic_real",
                     "F_name_impl": "generic_real_double",
+                    "f_arglist": [
+                        "f_var",
+                        "arg"
+                    ],
                     "function_name": "GenericReal",
                     "function_suffix": "_double"
                 }
@@ -1064,6 +1087,11 @@
                 "zz_fmtdict": {
                     "C_name_api": "GenericReal2",
                     "F_name_api": "generic_real2",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg1",
+                        "arg2"
+                    ],
                     "function_name": "GenericReal2"
                 }
             },
@@ -1274,6 +1302,11 @@
                     "F_name_function": "generic_real2_all_int",
                     "F_name_generic": "generic_real2",
                     "F_name_impl": "generic_real2_all_int",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1",
+                        "arg2"
+                    ],
                     "function_name": "GenericReal2",
                     "function_suffix": "_all_int"
                 }
@@ -1485,6 +1518,11 @@
                     "F_name_function": "generic_real2_all_long",
                     "F_name_generic": "generic_real2",
                     "F_name_impl": "generic_real2_all_long",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1",
+                        "arg2"
+                    ],
                     "function_name": "GenericReal2",
                     "function_suffix": "_all_long"
                 }
@@ -1904,6 +1942,11 @@
                     "F_name_function": "sum_values_0d",
                     "F_name_generic": "sum_values",
                     "F_name_impl": "sum_values_0d",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "values",
+                        "nvalues"
+                    ],
                     "function_name": "SumValues",
                     "function_suffix": "_0d"
                 }
@@ -2138,6 +2181,11 @@
                     "F_name_function": "sum_values_1d",
                     "F_name_generic": "sum_values",
                     "F_name_impl": "sum_values_1d",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "values",
+                        "nvalues"
+                    ],
                     "function_name": "SumValues",
                     "function_suffix": "_1d"
                 }
@@ -2372,6 +2420,11 @@
                     "F_name_function": "sum_values_2d",
                     "F_name_generic": "sum_values",
                     "F_name_impl": "sum_values_2d",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "values",
+                        "nvalues"
+                    ],
                     "function_name": "SumValues",
                     "function_suffix": "_2d"
                 }
@@ -2981,6 +3034,13 @@
                     "F_name_function": "assign_values_scalar",
                     "F_name_generic": "assign_values",
                     "F_name_impl": "assign_values_scalar",
+                    "f_arglist": [
+                        "f_var",
+                        "from",
+                        "nfrom",
+                        "to",
+                        "nto"
+                    ],
                     "function_name": "AssignValues",
                     "function_suffix": "_scalar"
                 }
@@ -3302,6 +3362,13 @@
                     "F_name_function": "assign_values_broadcast",
                     "F_name_generic": "assign_values",
                     "F_name_impl": "assign_values_broadcast",
+                    "f_arglist": [
+                        "f_var",
+                        "from",
+                        "nfrom",
+                        "to",
+                        "nto"
+                    ],
                     "function_name": "AssignValues",
                     "function_suffix": "_broadcast"
                 }
@@ -3633,6 +3700,13 @@
                     "F_name_function": "assign_values_copy",
                     "F_name_generic": "assign_values",
                     "F_name_impl": "assign_values_copy",
+                    "f_arglist": [
+                        "f_var",
+                        "from",
+                        "nfrom",
+                        "to",
+                        "nto"
+                    ],
                     "function_name": "AssignValues",
                     "function_suffix": "_copy"
                 }
@@ -4099,6 +4173,12 @@
                     "F_name_function": "save_pointer_float1d",
                     "F_name_generic": "save_pointer",
                     "F_name_impl": "save_pointer_float1d",
+                    "f_arglist": [
+                        "f_var",
+                        "addr",
+                        "type",
+                        "size"
+                    ],
                     "function_name": "SavePointer",
                     "function_suffix": "_float1d"
                 }
@@ -4366,6 +4446,12 @@
                     "F_name_function": "save_pointer_float2d",
                     "F_name_generic": "save_pointer",
                     "F_name_impl": "save_pointer_float2d",
+                    "f_arglist": [
+                        "f_var",
+                        "addr",
+                        "type",
+                        "size"
+                    ],
                     "function_name": "SavePointer",
                     "function_suffix": "_float2d"
                 }
@@ -4890,6 +4976,12 @@
                     "F_name_function": "save_pointer2_float1d",
                     "F_name_generic": "save_pointer2",
                     "F_name_impl": "save_pointer2_float1d",
+                    "f_arglist": [
+                        "f_var",
+                        "addr",
+                        "type",
+                        "size"
+                    ],
                     "function_name": "SavePointer2",
                     "function_suffix": "_float1d"
                 }
@@ -5185,6 +5277,12 @@
                     "F_name_function": "save_pointer2_float2d",
                     "F_name_generic": "save_pointer2",
                     "F_name_impl": "save_pointer2_float2d",
+                    "f_arglist": [
+                        "f_var",
+                        "addr",
+                        "type",
+                        "size"
+                    ],
                     "function_name": "SavePointer2",
                     "function_suffix": "_float2d"
                 }
@@ -5440,6 +5538,12 @@
                     "F_name_function": "get_pointer",
                     "F_name_generic": "get_pointer",
                     "F_name_impl": "get_pointer",
+                    "f_arglist": [
+                        "f_var",
+                        "addr",
+                        "type",
+                        "size"
+                    ],
                     "function_name": "GetPointer"
                 }
             },
@@ -5988,6 +6092,12 @@
                     "F_name_function": "get_pointer_as_pointer_float1d",
                     "F_name_generic": "get_pointer_as_pointer",
                     "F_name_impl": "get_pointer_as_pointer_float1d",
+                    "f_arglist": [
+                        "f_var",
+                        "addr",
+                        "type",
+                        "size"
+                    ],
                     "function_name": "GetPointerAsPointer",
                     "function_suffix": "_float1d"
                 }
@@ -6280,6 +6390,12 @@
                     "F_name_function": "get_pointer_as_pointer_float2d",
                     "F_name_generic": "get_pointer_as_pointer",
                     "F_name_impl": "get_pointer_as_pointer_float2d",
+                    "f_arglist": [
+                        "f_var",
+                        "addr",
+                        "type",
+                        "size"
+                    ],
                     "function_name": "GetPointerAsPointer",
                     "function_suffix": "_float2d"
                 }
@@ -6384,6 +6500,9 @@
                     "F_name_function": "create_struct_as_class",
                     "F_name_generic": "create_struct_as_class",
                     "F_name_impl": "create_struct_as_class",
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "CreateStructAsClass"
                 }
             },
@@ -6742,6 +6861,11 @@
                     "F_name_function": "update_struct_as_class_int",
                     "F_name_generic": "update_struct_as_class",
                     "F_name_impl": "update_struct_as_class_int",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg",
+                        "inew"
+                    ],
                     "function_name": "UpdateStructAsClass",
                     "function_suffix": "_int"
                 }
@@ -6963,6 +7087,11 @@
                     "F_name_function": "update_struct_as_class_long",
                     "F_name_generic": "update_struct_as_class",
                     "F_name_impl": "update_struct_as_class_long",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg",
+                        "inew"
+                    ],
                     "function_name": "UpdateStructAsClass",
                     "function_suffix": "_long"
                 }

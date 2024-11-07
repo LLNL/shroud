@@ -208,6 +208,12 @@
                     "F_name_generic": "last_function_called",
                     "F_name_impl": "last_function_called",
                     "PY_name_impl": "PY_LastFunctionCalled",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "LastFunctionCalled"
                 },
                 "zz_fmtlang": {
@@ -314,6 +320,12 @@
                     "F_name_generic": "one",
                     "F_name_impl": "one",
                     "PY_name_impl": "PY_One",
+                    "c_arglist": [
+                        "c_var"
+                    ],
+                    "f_arglist": [
+                        "f_var"
+                    ],
                     "function_name": "One"
                 },
                 "zz_fmtlang": {
@@ -823,6 +835,12 @@
                             "F_name_generic": "one",
                             "F_name_impl": "one",
                             "PY_name_impl": "PY_One",
+                            "c_arglist": [
+                                "c_var"
+                            ],
+                            "f_arglist": [
+                                "f_var"
+                            ],
                             "function_name": "One"
                         },
                         "zz_fmtlang": {

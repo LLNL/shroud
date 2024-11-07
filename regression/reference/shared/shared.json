@@ -155,6 +155,12 @@
                             "F_name_function": "ctor",
                             "F_name_generic": "object",
                             "F_name_impl": "object_ctor",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor"
                         }
@@ -240,10 +246,16 @@
                             "F_name_function": "dtor",
                             "F_name_generic": "dtor",
                             "F_name_impl": "object_dtor",
+                            "c_arglist": [
+                                "self"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "dtor"
                         }
@@ -422,10 +434,16 @@
                             "F_name_function": "create_child_a",
                             "F_name_generic": "create_child_a",
                             "F_name_impl": "object_create_child_a",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "createChildA"
                         }
@@ -604,10 +622,16 @@
                             "F_name_function": "create_child_b",
                             "F_name_generic": "create_child_b",
                             "F_name_impl": "object_create_child_b",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "createChildB"
                         }
@@ -812,10 +836,18 @@
                             "F_name_function": "replace_child_b",
                             "F_name_generic": "replace_child_b",
                             "F_name_impl": "object_replace_child_b",
+                            "c_arglist": [
+                                "self",
+                                "child"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "child"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "replaceChildB"
                         }
@@ -1021,6 +1053,12 @@
                             "F_name_function": "ctor",
                             "F_name_generic": "object_shared",
                             "F_name_impl": "object_shared_ctor",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor"
                         }
@@ -1109,10 +1147,16 @@
                             "F_name_function": "dtor",
                             "F_name_generic": "dtor",
                             "F_name_impl": "object_shared_dtor",
+                            "c_arglist": [
+                                "self"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "dtor"
                         }
@@ -1292,10 +1336,16 @@
                             "F_name_function": "create_child_a",
                             "F_name_generic": "create_child_a",
                             "F_name_impl": "object_shared_create_child_a",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "createChildA"
                         }
@@ -1475,10 +1525,16 @@
                             "F_name_function": "create_child_b",
                             "F_name_generic": "create_child_b",
                             "F_name_impl": "object_shared_create_child_b",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "createChildB"
                         }
@@ -1684,10 +1740,18 @@
                             "F_name_function": "replace_child_b",
                             "F_name_generic": "replace_child_b",
                             "F_name_impl": "object_shared_replace_child_b",
+                            "c_arglist": [
+                                "self",
+                                "child"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "child"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "replaceChildB"
                         }
@@ -1815,10 +1879,16 @@
                             "F_name_function": "use_count",
                             "F_name_generic": "use_count",
                             "F_name_impl": "object_shared_use_count",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "use_count"
                         }
@@ -2086,10 +2156,18 @@
                             "F_name_function": "assign_weak",
                             "F_name_generic": "assign_weak",
                             "F_name_impl": "object_weak_assign_weak",
+                            "c_arglist": [
+                                "self",
+                                "from"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "from"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "assign_weak"
                         }
@@ -2217,10 +2295,16 @@
                             "F_name_function": "use_count",
                             "F_name_generic": "use_count",
                             "F_name_impl": "object_weak_use_count",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "use_count"
                         }
