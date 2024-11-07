@@ -102,3 +102,10 @@ And the Fortran version::
 
     cptr = class1_new()
     call cptr%method1
+
+
+.. Overload operators
+
+   Adding the +operator(assignment) attribute will add
+   generic :: assignment(=) => assign_weak.
+   The function is assumed to have the correct arguments.

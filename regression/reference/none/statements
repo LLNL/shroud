@@ -752,8 +752,8 @@ c_function_shadow_capptr:
   fmtdict:
     cxx_addr: ''
   owner: caller
-c_function_shared<shadow>*_capptr:
-  name: c_function_shared<shadow>*_capptr
+c_function_smartptr<shadow>*_capptr:
+  name: c_function_smartptr<shadow>*_capptr
   comments:
   - Pass function result as a capsule field of shadow class
   - from Fortran to C.
@@ -785,8 +785,8 @@ c_function_shared<shadow>*_capptr:
   c_local:
   - cxx
   owner: library
-c_function_shared<shadow>_capptr:
-  name: c_function_shared<shadow>_capptr
+c_function_smartptr<shadow>_capptr:
+  name: c_function_smartptr<shadow>_capptr
   comments:
   - Pass function result as a capsule field of shadow class
   - from Fortran to C.
@@ -1594,8 +1594,8 @@ c_in_shadow*:
   c_local:
   - cxx
   owner: library
-c_in_shared<shadow>*:
-  name: c_in_shared<shadow>*
+c_in_smartptr<shadow>*:
+  name: c_in_smartptr<shadow>*
   comments:
   - Pass a shadow type to C wrapper.
   - Cast C argument to local C++ variable.
@@ -2412,8 +2412,8 @@ c_inout_shadow*:
   c_local:
   - cxx
   owner: library
-c_inout_shared<shadow>*:
-  name: c_inout_shared<shadow>*
+c_inout_smartptr<shadow>*:
+  name: c_inout_smartptr<shadow>*
   comments:
   - Pass a shadow type to C wrapper.
   - Cast C argument to local C++ variable.
@@ -4349,6 +4349,27 @@ c_subroutine:
   name: c_subroutine
   intent: subroutine
   owner: library
+c_subroutine_assignment_weakptr:
+  name: c_subroutine_assignment_weakptr
+  notes:
+  - std::weak_ptr has no wrapped constructor.
+  - It must be made from a std::shared_ptr with an assignment.
+  intent: subroutine
+  c_call:
+  - if (SH_this == nullptr) {{+
+  - SH_this = new {cxx_type}(*SHC_from_cxx);
+  - self->addr = SH_this;
+  - self->idtor = {idtor};
+  - -}} else {{+
+  - '*{CXX_this} = *SHC_from_cxx;'
+  - -}}
+  destructor_header:
+  - <memory>
+  destructor_name: assignment-{cxx_type}
+  destructor:
+  - "auto cxx_ptr =\t reinterpret_cast<{cxx_type}*>(ptr);"
+  - delete cxx_ptr;
+  owner: library
 f_ctor_shadow_capsule:
   name: f_ctor_shadow_capsule
   comments:
@@ -5984,8 +6005,8 @@ f_function_shadow_capsule:
   fmtdict:
     cxx_addr: ''
   owner: caller
-f_function_shared<shadow>*_capsule:
-  name: f_function_shared<shadow>*_capsule
+f_function_smartptr<shadow>*_capsule:
+  name: f_function_smartptr<shadow>*_capsule
   comments:
   - Call the C wrapper as a subroutine.
   - Pass function result as a capsule argument from Fortran to C.
@@ -6017,8 +6038,8 @@ f_function_shared<shadow>*_capsule:
   c_local:
   - cxx
   owner: library
-f_function_shared<shadow>_capsule:
-  name: f_function_shared<shadow>_capsule
+f_function_smartptr<shadow>_capsule:
+  name: f_function_smartptr<shadow>_capsule
   comments:
   - Call the C wrapper as a subroutine.
   - Pass function result as a capsule argument from Fortran to C.
@@ -9455,8 +9476,8 @@ f_in_shadow*:
   c_local:
   - cxx
   owner: library
-f_in_shared<shadow>*:
-  name: f_in_shared<shadow>*
+f_in_smartptr<shadow>*:
+  name: f_in_smartptr<shadow>*
   comments:
   - Pass a shadow type to C wrapper.
   - Cast C argument to local C++ variable.
@@ -10778,8 +10799,8 @@ f_inout_shadow*:
   c_local:
   - cxx
   owner: library
-f_inout_shared<shadow>*:
-  name: f_inout_shared<shadow>*
+f_inout_smartptr<shadow>*:
+  name: f_inout_smartptr<shadow>*
   comments:
   - Pass a shadow type to C wrapper.
   - Cast C argument to local C++ variable.
@@ -12103,9 +12124,13 @@ f_mixin_unknown:
   name: f_mixin_unknown
   comments:
   - Default returned by lookup_fc_stmts when group is not found.
+  - The values will be added to generated code to mark where each group
+  - will add text.
   intent: mixin
   f_arg_decl:
   - ===>f_arg_decl<===
+  f_arg_call:
+  - ===>f_arg_call<===
   i_arg_names:
   - ===>i_arg_names<===
   i_arg_decl:
@@ -14147,6 +14172,29 @@ f_subroutine:
   f_call:
   - call {f_call_function}({F_arg_c_call})
   owner: library
+f_subroutine_assignment_weakptr:
+  name: f_subroutine_assignment_weakptr
+  notes:
+  - std::weak_ptr has no wrapped constructor.
+  - It must be made from a std::shared_ptr with an assignment.
+  intent: subroutine
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  c_call:
+  - if (SH_this == nullptr) {{+
+  - SH_this = new {cxx_type}(*SHC_from_cxx);
+  - self->addr = SH_this;
+  - self->idtor = {idtor};
+  - -}} else {{+
+  - '*{CXX_this} = *SHC_from_cxx;'
+  - -}}
+  destructor_header:
+  - <memory>
+  destructor_name: assignment-{cxx_type}
+  destructor:
+  - "auto cxx_ptr =\t reinterpret_cast<{cxx_type}*>(ptr);"
+  - delete cxx_ptr;
+  owner: library
 root
   c
     ctor
@@ -14188,10 +14236,10 @@ root
         this -- c_function_shadow*_this
       shadow<native>
         capptr -- c_function_shadow<native>_capptr
-      shared<shadow>
-        capptr -- c_function_shared<shadow>_capptr
-      shared<shadow>*
-        capptr -- c_function_shared<shadow>*_capptr
+      smartptr<shadow>
+        capptr -- c_function_smartptr<shadow>_capptr
+      smartptr<shadow>*
+        capptr -- c_function_smartptr<shadow>*_capptr
       string -- c_function_string
         buf
           arg -- c_function_string_buf_arg
@@ -14234,7 +14282,7 @@ root
       shadow -- c_in_shadow
       shadow& -- c_in_shadow&
       shadow* -- c_in_shadow*
-      shared<shadow>* -- c_in_shared<shadow>*
+      smartptr<shadow>* -- c_in_smartptr<shadow>*
       string -- c_in_string
         buf -- c_in_string_buf
       string& -- c_in_string&
@@ -14276,7 +14324,7 @@ root
         hidden -- c_inout_native*_hidden
       shadow& -- c_inout_shadow&
       shadow* -- c_inout_shadow*
-      shared<shadow>* -- c_inout_shared<shadow>*
+      smartptr<shadow>* -- c_inout_smartptr<shadow>*
       string& -- c_inout_string&
         buf -- c_inout_string&_buf
       string* -- c_inout_string*
@@ -14419,6 +14467,8 @@ root
         scalar
           buf -- c_setter_string_scalar_buf
     subroutine -- c_subroutine
+      assignment
+        weakptr -- c_subroutine_assignment_weakptr
   f
     ctor
       shadow
@@ -14481,10 +14531,10 @@ root
         this -- f_function_shadow*_this
       shadow<native>
         capsule -- f_function_shadow<native>_capsule
-      shared<shadow>
-        capsule -- f_function_shared<shadow>_capsule
-      shared<shadow>*
-        capsule -- f_function_shared<shadow>*_capsule
+      smartptr<shadow>
+        capsule -- f_function_smartptr<shadow>_capsule
+      smartptr<shadow>*
+        capsule -- f_function_smartptr<shadow>*_capsule
       string
         buf -- f_function_string_buf
           arg -- f_function_string_buf_arg
@@ -14593,7 +14643,7 @@ root
       shadow -- f_in_shadow
       shadow& -- f_in_shadow&
       shadow* -- f_in_shadow*
-      shared<shadow>* -- f_in_shared<shadow>*
+      smartptr<shadow>* -- f_in_smartptr<shadow>*
       string
         buf -- f_in_string_buf
         cfi -- f_in_string_cfi
@@ -14647,7 +14697,7 @@ root
         hidden -- f_inout_native*_hidden
       shadow& -- f_inout_shadow&
       shadow* -- f_inout_shadow*
-      shared<shadow>* -- f_inout_shared<shadow>*
+      smartptr<shadow>* -- f_inout_smartptr<shadow>*
       string& -- f_inout_string&
         buf -- f_inout_string&_buf
         cfi -- f_inout_string&_cfi
@@ -14819,6 +14869,8 @@ root
         pointer -- f_setter_struct*_pointer
       struct** -- f_setter_struct**
     subroutine -- f_subroutine
+      assignment
+        weakptr -- f_subroutine_assignment_weakptr
 ***** Python
 py_ctor_char*:
   name: py_ctor_char*

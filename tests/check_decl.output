@@ -41,6 +41,9 @@ symbols:
       vector:
         cls: Typedef
         typemap: std::vector
+      weak_ptr:
+        cls: Typedef
+        typemap: std::weak_ptr
   uint16_t:
     cls: Typedef
     typemap: uint16_t
@@ -1538,6 +1541,9 @@ symbols:
       vector:
         cls: Typedef
         typemap: std::vector
+      weak_ptr:
+        cls: Typedef
+        typemap: std::weak_ptr
   uint16_t:
     cls: Typedef
     typemap: uint16_t
@@ -1559,7 +1565,10 @@ int(*)(int):
   f_type: f-function-pointer
   sgroup: procedure
 std::shared_ptr<Object>:
-  base: shared
+  base: smartptr
   base_typemap: Object
+  cxx_type: std::shared_ptr<Object>
+  flat_name: std_shared_ptr_Object
   ntemplate_args: 1
-  sgroup: shared
+  sgroup: smartptr
+  smart_pointer: shared

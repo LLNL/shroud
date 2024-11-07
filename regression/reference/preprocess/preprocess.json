@@ -107,6 +107,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "method1"
                         },
                         "zz_fmtlang": {
@@ -218,6 +219,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "method2"
                         },
                         "zz_fmtlang": {
@@ -321,6 +323,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "method3def",
                             "function_suffix": "_0"
                         }
@@ -549,6 +552,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "method3def",
                             "function_suffix": "_1"
                         },
@@ -709,6 +713,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "exfunc",
                             "function_suffix": "_0"
                         },
@@ -938,6 +943,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "exfunc",
                             "function_suffix": "_1"
                         },

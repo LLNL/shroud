@@ -227,6 +227,7 @@
                                             "PY_name_impl": "PP_ExClass1_tp_init_0",
                                             "PY_type_impl": "PP_ExClass1_tp_init_0",
                                             "PY_type_method": "tp_init",
+                                            "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "ctor",
                                             "function_suffix": "_0"
                                         },
@@ -610,6 +611,7 @@
                                             "PY_name_impl": "PP_ExClass1_tp_init_1",
                                             "PY_type_impl": "PP_ExClass1_tp_init_1",
                                             "PY_type_method": "tp_init",
+                                            "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "ctor",
                                             "function_suffix": "_1"
                                         },
@@ -747,6 +749,7 @@
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "dtor"
                                         },
                                         "zz_fmtlang": {
@@ -1069,6 +1072,7 @@
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "incrementCount"
                                         },
                                         "zz_fmtlang": {
@@ -1316,6 +1320,7 @@
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_intent_attr": ", intent(IN)",
                                             "function_name": "getNameErrorCheck"
                                         },
                                         "zz_fmtlang": {
@@ -1545,6 +1550,7 @@
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_intent_attr": ", intent(IN)",
                                             "function_name": "getNameArg"
                                         },
                                         "zz_fmtlang": {
@@ -1877,6 +1883,7 @@
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "getValue",
                                             "function_suffix": "_from_int"
                                         },
@@ -2212,6 +2219,7 @@
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "getValue",
                                             "function_suffix": "_1"
                                         },
@@ -2538,6 +2546,7 @@
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "hasAddr"
                                         },
                                         "zz_fmtlang": {
@@ -2679,6 +2688,7 @@
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "SplicerSpecial"
                                         },
                                         "zz_fmtlang": {
@@ -3153,6 +3163,7 @@
                                             "PY_name_impl": "PP_ExClass2_tp_init",
                                             "PY_type_impl": "PP_ExClass2_tp_init",
                                             "PY_type_method": "tp_init",
+                                            "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "ctor"
                                         },
                                         "zz_fmtlang": {
@@ -3295,6 +3306,7 @@
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "dtor"
                                         },
                                         "zz_fmtlang": {
@@ -3527,6 +3539,7 @@
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_intent_attr": ", intent(IN)",
                                             "function_name": "getName"
                                         },
                                         "zz_fmtlang": {
@@ -3767,6 +3780,7 @@
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "getName2"
                                         },
                                         "zz_fmtlang": {
@@ -4008,6 +4022,7 @@
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_intent_attr": ", intent(IN)",
                                             "function_name": "getName3"
                                         },
                                         "zz_fmtlang": {
@@ -4247,6 +4262,7 @@
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "getName4"
                                         },
                                         "zz_fmtlang": {
@@ -4449,6 +4465,7 @@
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_intent_attr": ", intent(IN)",
                                             "function_name": "GetNameLength"
                                         },
                                         "zz_fmtlang": {
@@ -4834,6 +4851,7 @@
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "get_class1"
                                         },
                                         "zz_fmtlang": {
@@ -4975,6 +4993,7 @@
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "destroyall"
                                         },
                                         "zz_fmtlang": {
@@ -5412,6 +5431,7 @@
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "setValue",
                                             "template_suffix": "_int"
                                         },
@@ -5744,6 +5764,7 @@
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "setValue",
                                             "template_suffix": "_long"
                                         },
@@ -6067,6 +6088,7 @@
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "setValue",
                                             "template_suffix": "_float"
                                         },
@@ -6396,6 +6418,7 @@
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "setValue",
                                             "template_suffix": "_double"
                                         },
@@ -6692,6 +6715,7 @@
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "getValue",
                                             "template_suffix": "_int"
                                         },
@@ -6924,6 +6948,7 @@
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "getValue",
                                             "template_suffix": "_double"
                                         },

@@ -399,6 +399,15 @@ by adding a splicer block in the YAML file:
 
 .. warning :: Using *charlen* and *dimension* together is not currently supported.
 
+custom
+^^^^^^
+
+A user defined string which is used when creating the statement group name.
+This allows some custom behavior in the wrapper.
+For example, by defining the *c_call* field with other code.
+This is used by 'std::weak_ptr`` to perform assignment on the pointer which
+is not part of the C++ library being wrapped.
+
 default
 ^^^^^^^
 
@@ -745,6 +754,12 @@ convention such as ``m_variable``.  The *name* can be set to
 prefix.  Fortran and Python both have an explicit scope of
 ``self%variable`` and ``self.variable`` instead of an implied
 ``this``.
+
+operator
+^^^^^^^^
+
+Defines the function as a Fortran operator.
+Used to create assignment overloads.
 
 owner
 ^^^^^

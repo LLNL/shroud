@@ -150,6 +150,14 @@ class FillMeta(object):
         else:
             meta["intent"] = declarator.get_subprogram()
 
+        operator = declarator.attrs.get("operator", missing)
+        if operator is not missing:
+            meta["operator"] = operator
+
+        custom = declarator.attrs.get("custom", missing)
+        if custom is not missing:
+            meta["custom"] = custom
+
     def check_intent(self, arg):
         intent = arg.declarator.attrs.get("intent", missing)
         if intent is missing:
@@ -254,7 +262,7 @@ class FillMeta(object):
             # Unable to set Fortran pointer for void
             # if deref set, error
             pass
-        elif ntypemap.sgroup in ["shared", "shadow"]:
+        elif ntypemap.sgroup in ["smartptr", "shadow"]:
             # Change a C++ pointer into a Fortran pointer
             # return 'void *' as 'type(C_PTR)'
             # 'shadow' assigns pointer to type(C_PTR) in a derived type
@@ -440,7 +448,7 @@ class FillMeta(object):
 
         if api is not missing:
             meta["api"] = api
-        elif ntypemap.sgroup in ["shared", "shadow"]:
+        elif ntypemap.sgroup in ["smartptr", "shadow"]:
             if node.return_this:
                 meta["api"] = "this"
             elif node.options.C_shadow_result:
@@ -462,7 +470,7 @@ class FillMeta(object):
                 # capptr is not used with Fortran wrappers.
                 api = "capsule"
             meta["api"] = api
-        elif ntypemap.sgroup in ["shared", "shadow"]:
+        elif ntypemap.sgroup in ["smartptr", "shadow"]:
             if node.return_this:
                 meta["api"] = "this"
             else:
@@ -539,12 +547,11 @@ class FillMeta(object):
         ntypemap = ast.typemap
 
         if cls and cls.C_shared_class:
-            # XXX - special case for now, need to copy from ntypemap
             if ast.is_ctor:
-                meta["owner"] = "shared"
+                meta["owner"] = cls.typemap.smart_pointer
                 meta["api"] = "capptr"
             elif ast.is_dtor:
-                meta["owner"] = "shared"
+                meta["owner"] = cls.typemap.smart_pointer
 
     def set_func_post_fortran(self, cls, node, meta):
         """Final check on metaattributes for Fortran.
@@ -555,11 +562,11 @@ class FillMeta(object):
 
         if cls and cls.C_shared_class:
             if ast.is_ctor:
-                meta["owner"] = "shared"
+                meta["owner"] = cls.typemap.smart_pointer
                 meta["api"] = "capsule"
                 meta["deref"] = None
             elif ast.is_dtor:
-                meta["owner"] = "shared"
+                meta["owner"] = cls.typemap.smart_pointer
             
     def set_arg_api_c(self, arg, meta):
         declarator = arg.declarator
@@ -669,8 +676,8 @@ class FillMeta(object):
             meta["intent"] = share_meta["intent"]
         for attr in [
                 "abstract", "assumedtype",
-                "dimension", "dim_ast",
-                "free_pattern", "hidden", "len", "owner", "rank",
+                "custom", "dimension", "dim_ast",
+                "free_pattern", "hidden", "len", "operator", "owner", "rank",
         ]:
             meta[attr] = share_meta[attr]
 
@@ -777,12 +784,14 @@ class FillMetaShare(FillMeta):
             if attr not in [
                 "api",          # arguments to pass to C wrapper.
                 "allocatable",  # return a Fortran ALLOCATABLE
+                "custom",
                 "deref",  # How to dereference pointer
                 "dimension",
                 "free_pattern",
                 "intent",    # getter/setter
                 "len",
                 "name",
+                "operator",
                 "owner",
                 "pure",
                 "rank",
@@ -931,7 +940,8 @@ class FillMetaShare(FillMeta):
 
         owner = attrs.get("owner", missing)
         if owner is not missing:
-            if owner not in ["caller", "library", "shared"]:
+            # XXX - Need to extract smart_poiner from Typemaps
+            if owner not in ["caller", "library", "shared", "weak"]:
                 # XXX - shared is only valued with language=c++
                 self.cursor.generate(
                     "Illegal value '{}' for owner attribute. "

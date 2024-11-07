@@ -506,7 +506,7 @@ contains
     function class1_check_length_0(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin class.Class1.method.check_length_0
         SHT_rv = c_class1_check_length_0(obj%cxxmem)
@@ -527,7 +527,7 @@ contains
     function class1_check_length_1_int(obj, length) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         integer(C_INT), value, intent(IN) :: length
         integer(C_INT) :: SHT_rv
         ! splicer begin class.Class1.method.check_length_1_int
@@ -550,7 +550,7 @@ contains
     function class1_check_length_1_long(obj, length) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_LONG
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         integer(C_LONG), value, intent(IN) :: length
         integer(C_INT) :: SHT_rv
         ! splicer begin class.Class1.method.check_length_1_long
@@ -567,7 +567,7 @@ contains
     ! Statement: f_in_native
     subroutine class1_declare_0(obj, flag)
         use iso_c_binding, only : C_INT
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         integer(C_INT), value, intent(IN) :: flag
         ! splicer begin class.Class1.method.declare_0
         call c_class1_declare_0(obj%cxxmem, flag)
@@ -587,7 +587,7 @@ contains
     ! Argument:  LengthType length=1
     subroutine class1_declare_1_int(obj, flag, length)
         use iso_c_binding, only : C_INT
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         integer(C_INT), value, intent(IN) :: flag
         integer(C_INT), value, intent(IN) :: length
         ! splicer begin class.Class1.method.declare_1_int
@@ -609,7 +609,7 @@ contains
     ! Argument:  LengthType length=1
     subroutine class1_declare_1_long(obj, flag, length)
         use iso_c_binding, only : C_INT, C_LONG
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         integer(C_INT), value, intent(IN) :: flag
         integer(C_LONG), value, intent(IN) :: length
         ! splicer begin class.Class1.method.declare_1_long
@@ -625,7 +625,7 @@ contains
     function class1_get_length(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         integer(C_INT) :: SHT_rv
         ! splicer begin class.Class1.method.get_length
         SHT_rv = c_class1_get_length(obj%cxxmem)

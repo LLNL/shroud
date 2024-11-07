@@ -191,6 +191,39 @@
         ]
     },
     {
+        "alias": [
+            "f_subroutine_assignment_weakptr",
+            "c_subroutine_assignment_weakptr"
+        ],
+        "notes": [
+            "std::weak_ptr has no wrapped constructor.",
+            "It must be made from a std::shared_ptr with an assignment."
+        ],
+        "mixin": [
+            "c_mixin_noargs"
+        ],
+        "f_call": [
+            "call {f_call_function}({F_arg_c_call})"
+        ],
+        "c_call": [
+            "if (SH_this == nullptr) {{+",
+            "SH_this = new {cxx_type}(*SHC_from_cxx);",
+            "self->addr = SH_this;",
+            "self->idtor = {idtor};",
+            "-}} else {{+",
+            "*{CXX_this} = *SHC_from_cxx;",
+            "-}}"
+        ],
+        "destructor_name": "assignment-{cxx_type}",
+        "destructor_header": [
+            "<memory>"
+        ],
+        "destructor": [
+            "auto cxx_ptr =\t reinterpret_cast<{cxx_type}*>(ptr);",
+            "delete cxx_ptr;"
+        ]
+    },
+    {
         "name": "c_mixin_function",
         "comments": [
             "Call a function."
@@ -3583,10 +3616,10 @@
             "c_inout_shadow*",
             "f_inout_shadow&",
             "c_inout_shadow&",
-            "f_in_shared<shadow>*",
-            "c_in_shared<shadow>*",
-            "f_inout_shared<shadow>*",
-            "c_inout_shared<shadow>*"
+            "f_in_smartptr<shadow>*",
+            "c_in_smartptr<shadow>*",
+            "f_inout_smartptr<shadow>*",
+            "c_inout_smartptr<shadow>*"
             
         ],
         "mixin": [
@@ -3761,7 +3794,7 @@
         "owner": "caller"
     },
     {
-        "name":"#### shared ################################################"
+        "name":"#### smartptr ##############################################"
     },
     {
         "name": "c_mixin_make-shared",
@@ -3807,7 +3840,7 @@
     },
     {
         "alias": [
-            "f_function_shared<shadow>_capsule"
+            "f_function_smartptr<shadow>_capsule"
         ],
         "notes": [
             "Used with std::shared_ptr<Object>* createChildA(void)"
@@ -3822,7 +3855,7 @@
     },
     {
         "alias": [
-            "f_function_shared<shadow>*_capsule"
+            "f_function_smartptr<shadow>*_capsule"
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
@@ -3834,7 +3867,7 @@
     },
     {
         "alias": [
-            "c_function_shared<shadow>_capptr"
+            "c_function_smartptr<shadow>_capptr"
         ],
         "notes": [
             "Used with std::shared_ptr<Object>* createChildA(void)"
@@ -3849,7 +3882,7 @@
     },
     {
         "alias": [
-            "c_function_shared<shadow>*_capptr"
+            "c_function_smartptr<shadow>*_capptr"
         ],
         "mixin": [
             "c_mixin_function_shadow_capptr",
@@ -5059,10 +5092,15 @@
     {
         "name": "f_mixin_unknown",
         "comments": [
-            "Default returned by lookup_fc_stmts when group is not found."
+            "Default returned by lookup_fc_stmts when group is not found.",
+            "The values will be added to generated code to mark where each group",
+            "will add text."
         ],
         "f_arg_decl": [
             "===>f_arg_decl<==="
+        ],
+        "f_arg_call": [
+            "===>f_arg_call<==="
         ],
         "i_arg_names": [
             "===>i_arg_names<==="

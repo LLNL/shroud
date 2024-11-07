@@ -263,6 +263,7 @@
                             "F_name_function": "new_0",
                             "F_name_generic": "class1",
                             "F_name_impl": "class1_new_0",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "new",
                             "function_suffix": "_0"
                         }
@@ -618,6 +619,7 @@
                             "F_name_function": "new_1",
                             "F_name_generic": "class1",
                             "F_name_impl": "class1_new_1",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "new",
                             "function_suffix": "_1"
                         }
@@ -1074,6 +1076,7 @@
                             "F_name_function": "new_2",
                             "F_name_generic": "class1",
                             "F_name_impl": "class1_new_2",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "new",
                             "function_suffix": "_2"
                         }
@@ -1166,6 +1169,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "delete"
                         }
                     },
@@ -1352,6 +1356,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "DefaultArguments",
                             "function_suffix": "_0"
                         }
@@ -1628,6 +1633,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "DefaultArguments",
                             "function_suffix": "_1"
                         }
@@ -1997,6 +2003,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "DefaultArguments",
                             "function_suffix": "_2"
                         }
@@ -2101,6 +2108,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_field1",
                             "function_name": "get_field1",
                             "struct_name": "Class1",
@@ -2207,6 +2215,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_field2",
                             "function_name": "get_field2",
                             "struct_name": "Class1",
@@ -2313,6 +2322,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_field3",
                             "function_name": "get_field3",
                             "struct_name": "Class1",

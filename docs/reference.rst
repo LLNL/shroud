@@ -261,12 +261,6 @@ C_shadow_result
   return a pointer to the result.  This does not impact the C wrappers
   used by the Fortran wrapper.  They will always used *+api(capsule)*.
 
-C_shared_ptr
-  This will create a ``final`` function for the Fortran derived type
-  which wraps a C++ class.
-  If the constructor has the *+shared* attribute, this will cause
-  the destructor to be called when the object goes out of scope.
-
 class_baseclass
   Used to define a baseclass for a struct for *wrap_struct_as=class*".
   The baseclase must already be defined earlier in the YAML file.
@@ -596,8 +590,9 @@ C_name_template
     ``{C_prefix}{C_name_scope}{C_name_api}{function_suffix}{f_c_suffix}{template_suffix}``
 
 C_name_shared_api_template
-    Name of the smart pointer object created by option *C_shared_ptr*.
-     ``{C_name_api}_shared``
+    Name of the smart pointer object created by group *smart_pointer*.
+    The format field *smart_pointer* is taken from the Typemap for the smart pointer.
+     ``{C_name_api}_{smart_pointer}``
     
 C_name_typedef_template
     ``{C_prefix}{C_name_scope}{typedef_name}``
@@ -1230,7 +1225,7 @@ F_name_instance_set
 
 F_name_shared_use_count
     Name of ``use_count`` method added to ``std::shared_ptr``
-    when option *C_shared_ptr* is set.
+    when group *smart_pointer* is set on a class.
     If the name is blank, no function is generated.
 
 cxx_class

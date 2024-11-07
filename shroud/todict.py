@@ -383,6 +383,7 @@ class ToDict(visitor.Visitor):
                 "python",
                 "scope",
                 "template_parameters",
+                "smart_pointer",
             ]
         )
         if node.baseclass:

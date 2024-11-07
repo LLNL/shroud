@@ -298,6 +298,7 @@
                             "PY_name_impl": "PY_Class1_tp_init_default",
                             "PY_type_impl": "PY_Class1_tp_init_default",
                             "PY_type_method": "tp_init",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor",
                             "function_suffix": "_default"
                         },
@@ -666,6 +667,7 @@
                             "PY_name_impl": "PY_Class1_tp_init_flag",
                             "PY_type_impl": "PY_Class1_tp_init_flag",
                             "PY_type_method": "tp_init",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor",
                             "function_suffix": "_flag"
                         },
@@ -799,6 +801,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "delete"
                         },
                         "zz_fmtlang": {
@@ -988,6 +991,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "Method1"
                         },
                         "zz_fmtlang": {
@@ -1305,6 +1309,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(IN)",
                             "function_name": "equivalent"
                         },
                         "zz_fmtlang": {
@@ -1464,6 +1469,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "returnThis"
                         }
                     },
@@ -1833,6 +1839,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "returnThisBuffer"
                         }
                     },
@@ -2033,6 +2040,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(IN)",
                             "function_name": "getclass3"
                         },
                         "zz_fmtlang": {
@@ -2269,6 +2277,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "getName"
                         },
                         "zz_fmtlang": {
@@ -2630,6 +2639,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "directionFunc"
                         },
                         "zz_fmtlang": {
@@ -2758,6 +2768,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_flag",
                             "function_name": "get_m_flag",
                             "struct_name": "Class1",
@@ -2864,6 +2875,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_test",
                             "function_name": "get_test",
                             "struct_name": "Class1",
@@ -3008,6 +3020,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_test",
                             "function_name": "set_test",
                             "struct_name": "Class1",
@@ -3112,6 +3125,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_bool",
                             "function_name": "get_m_bool",
                             "struct_name": "Class1",
@@ -3255,6 +3269,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_bool",
                             "function_name": "set_m_bool",
                             "struct_name": "Class1",
@@ -3381,6 +3396,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_name",
                             "function_name": "get_m_name",
                             "struct_name": "Class1",
@@ -3525,6 +3541,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_name",
                             "function_name": "set_m_name",
                             "struct_name": "Class1",
@@ -3941,6 +3958,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "getName"
                         },
                         "zz_fmtlang": {
@@ -4210,6 +4228,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "getReference"
                         },
                         "zz_fmtlang": {
@@ -4475,6 +4494,7 @@
                             "PY_name_impl": "PY_Shape_tp_init",
                             "PY_type_impl": "PY_Shape_tp_init",
                             "PY_type_method": "tp_init",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor"
                         },
                         "zz_fmtlang": {
@@ -4668,6 +4688,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(IN)",
                             "function_name": "get_ivar"
                         },
                         "zz_fmtlang": {
@@ -4946,6 +4967,7 @@
                             "PY_name_impl": "PY_Circle_tp_init",
                             "PY_type_impl": "PY_Circle_tp_init",
                             "PY_type_method": "tp_init",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor"
                         },
                         "zz_fmtlang": {
@@ -5195,6 +5217,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "allocate"
                         }
                     },
@@ -5281,6 +5304,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "free"
                         }
                     },
@@ -5428,6 +5452,7 @@
                             "F_name_function": "ctor",
                             "F_name_generic": "data",
                             "F_name_impl": "data_ctor",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor"
                         }
                     },
@@ -5516,6 +5541,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "dtor"
                         }
                     },
@@ -5619,6 +5645,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "nitems",
                             "function_name": "get_nitems",
                             "struct_name": "Data",
@@ -5763,6 +5790,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "nitems",
                             "function_name": "set_nitems",
                             "struct_name": "Data",
@@ -5912,6 +5940,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "items",
                             "function_name": "get_items",
                             "struct_name": "Data",
@@ -6066,6 +6095,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "items",
                             "function_name": "set_items",
                             "struct_name": "Data",

@@ -118,6 +118,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "dtor"
                         },
                         "zz_fmtlang": {
@@ -235,6 +236,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_flag",
                             "function_name": "get_flag",
                             "struct_name": "Class1",

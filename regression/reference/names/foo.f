@@ -119,7 +119,7 @@ contains
     ! Function:  void method1
     ! Statement: f_subroutine
     subroutine names_method1(obj)
-        class(FNames) :: obj
+        class(FNames), intent(INOUT) :: obj
         ! splicer begin namespace.ns0.class.Names.method.type_method1
         call XXX_TES_names_method1(obj%cxxmem)
         ! splicer end namespace.ns0.class.Names.method.type_method1
@@ -129,7 +129,7 @@ contains
     ! Function:  void method2
     ! Statement: f_subroutine
     subroutine names_method2(obj2)
-        class(FNames) :: obj2
+        class(FNames), intent(INOUT) :: obj2
         ! splicer begin namespace.ns0.class.Names.method.method2
         call XXX_TES_names_method2(obj2%cxxmem)
         ! splicer end namespace.ns0.class.Names.method.method2

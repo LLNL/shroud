@@ -78,7 +78,7 @@ contains
     ! Function:  void Member1
     ! Statement: f_subroutine
     subroutine class1_member1(obj)
-        class(class1) :: obj
+        class(class1), intent(INOUT) :: obj
         ! splicer begin namespace.CAPI.class.Class1.method.member1
         call c_class1_member1(obj%cxxmem)
         ! splicer end namespace.CAPI.class.Class1.method.member1

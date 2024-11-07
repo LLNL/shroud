@@ -502,37 +502,60 @@ class GenFunctions(object):
             self.process_class(newcls, newcls)
             self.pop_instantiate_scope()
 
-    def share_class(self, cls):
+    def share_class(self, cls, smart):
         """Create a subclass for use with std::shared.
+
+        smart is a dictionary with fields
+          type   - std::shared_ptr, std::weak_ptr
+          format
         """
         newcls = cls.clone()
-        # XXX - need a option template to create the name.
-        class_suffix = "_shared"
-        newcls.eval_template("C_name_shared_api")
+        newcls.smart_pointer = []
         fmt_class = newcls.fmtdict
+
+        name_type = smart["type"]
+        ntypemap = cls.symtab.lookup_typemap(name_type)
+        if ntypemap is None:
+            error.get_cursor().warning(
+                "smart_pointer type '{}' is unknown".format(name_type))
+            return
+        if ntypemap.sgroup != "smart_ptr":
+            error.get_cursor().warning(
+                "smart_pointer type '{}' is not a smart pointer".format(name_type))
+            return
+
+        fmt_class.smart_pointer = ntypemap.smart_pointer
+        if "format" in smart:
+            fmt_class.update(smart["format"])
+        newcls.eval_template("C_name_shared_api")
         newcls.name_api = fmt_class.C_name_shared_api
-        newcls.name_instantiation = "std::shared_ptr<{}>".format(fmt_class.cxx_type)
+        newcls.name_instantiation = "{}<{}>".format(name_type, fmt_class.cxx_type)
         newcls.scope_file[-1] = newcls.name_api
-#        newcls.functions = []
-        self.share_methods(newcls)
+
+        if ntypemap.smart_pointer == "weak":
+            newcls.functions = []
+            self.add_weak_smart_methods(newcls)
+
+        self.add_share_smart_methods(newcls)
 
         newcls.C_shared_class = True
         # Remove defaulted attributes then reset with current values.
         newcls.delete_format_templates()
         newcls.default_format()
 
-        newcls.typemap = declast.fetch_shared_ptr_typemap(
+        newcls.typemap = declast.fetch_smart_ptr_typemap(
             newcls.name_instantiation,
+            ntypemap,
             cls.typemap,
             self.newlibrary.symtab)
         typemap.fill_class_typemap(newcls)
-        newcls.typemap.base = "shared"
-        newcls.typemap.sgroup = "shared"
+        newcls.typemap.base = "smartptr"
+        newcls.typemap.sgroup = "smartptr"
 
         newcls.baseclass = [ ( 'public', "DDDD", cls.ast) ]
         return newcls
 
-    def share_methods(self, cls):
+    def add_share_smart_methods(self, cls):
         """A methods to a std::shared_ptr class.
 
         long use_count() const noexcept;
@@ -546,6 +569,17 @@ class GenFunctions(object):
             )
             fcn = cls.add_function(decl, format=fmt_func)
             fcn.C_shared_method = True
+        
+    def add_weak_smart_methods(self, cls):
+        """A methods to a std::weak_ptr class.
+
+        Assignment functions
+        """
+        fmt_class = cls.fmtdict
+
+        decl = "void assign_weak(std::shared_ptr<Object> *from +intent(in)) +operator(assignment)+custom(weakptr)"
+        fcn = cls.add_function(decl)
+        fcn.C_shared_method = True
         
     def instantiate_classes(self, node):
         """Instantate any template_arguments.
@@ -572,8 +606,8 @@ class GenFunctions(object):
             else:
                 clslist.append(cls)
                 self.process_class(cls, cls)
-                if cls.options.C_shared_ptr:
-                    shared = self.share_class(cls)
+                for smart in cls.smart_pointer:
+                    shared = self.share_class(cls, smart)
                     clslist.append(shared)
                     self.process_class(shared, shared)
             self.cursor.pop_node(cls)

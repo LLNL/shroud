@@ -44,6 +44,7 @@ contains
   subroutine test_object_shared
     type(object_shared) objectSharedPtr
     type(object_shared) childA, childB
+    type(object_weak) wpA, wpB
     integer(C_LONG) count
     ! use_count returns a LONG but assert_equals does not have generic for LONG.
     ! convert with int(count).
@@ -62,10 +63,26 @@ contains
     count = childA%use_count()
     call assert_equals(1, int(count), "childA use_count")
 
+!    call wpA%assign_weak(childA)
+    wpA = childA
+    count = wpA%use_count()
+    call assert_equals(1, int(count), "wpA use_count before")
+
+!    call wpB%assign_weak(childB)
+    wpB = childB
+    count = wpB%use_count()
+    call assert_equals(1, int(count), "wpB use_count before")
+    
     count = childB%use_count()
     call assert_equals(1, int(count), "childB use_count")
 
     call objectSharedPtr%replace_child_b(childA)
+
+    count = wpA%use_count()
+    call assert_equals(2, int(count), "wpA use_count after")
+
+    count = wpB%use_count()
+    call assert_equals(0, int(count), "wpB use_count after")
 
     count = childA%use_count()
     call assert_equals(2, int(count), "childA use_count post replace")

@@ -96,7 +96,7 @@ contains
         type(struct1), intent(IN) :: SH_this
         ===>f_arg_decl<===
         ! splicer begin function.struct1_get_arg2
-        SHT_rv = c_struct1_get_arg2(SH_this, SHT_rv)
+        SHT_rv = c_struct1_get_arg2(SH_this, ===>f_arg_call<===)
         ! splicer end function.struct1_get_arg2
     end function struct1_get_arg2
 #endif

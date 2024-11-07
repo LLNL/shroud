@@ -3196,7 +3196,7 @@
                                 "C_name": "ERR_struct1_get_arg2",
                                 "C_prototype": "ERR_struct1 *SH_this,\t ===>SHC_rv<===",
                                 "C_return_type": "int *",
-                                "F_arg_c_call": "SH_this,\t SHT_rv",
+                                "F_arg_c_call": "SH_this,\t ===>f_arg_call<===",
                                 "F_arguments": "SH_this",
                                 "F_subprogram": "function",
                                 "c_array_size2": "SH_this->narg2",

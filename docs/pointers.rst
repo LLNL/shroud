@@ -355,16 +355,6 @@ to set the value of the result and possible free memory for
           that feature.  The current Shroud implementation works with
           Fortran 2003.
 
-std::shared_ptr
----------------
-
-.. note:: Work in progress
-
-A ``std::shared_ptr`` will be created when the constructor has the
-**+owner(shared)** attribute.
-The option **C_shared_ptr** is used to create a ``FINAL`` subprogram
-which will reduce the count in the ``shared_ptr``.
-
 Python
 ------
 
