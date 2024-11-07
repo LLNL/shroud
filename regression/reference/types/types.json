@@ -273,6 +273,14 @@
                     "F_name_generic": "short_func",
                     "F_name_impl": "short_func",
                     "PY_name_impl": "PY_short_func",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg1"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1"
+                    ],
                     "function_name": "short_func"
                 },
                 "zz_fmtlang": {
@@ -552,6 +560,14 @@
                     "F_name_generic": "int_func",
                     "F_name_impl": "int_func",
                     "PY_name_impl": "PY_int_func",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg1"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1"
+                    ],
                     "function_name": "int_func"
                 },
                 "zz_fmtlang": {
@@ -831,6 +847,14 @@
                     "F_name_generic": "long_func",
                     "F_name_impl": "long_func",
                     "PY_name_impl": "PY_long_func",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg1"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1"
+                    ],
                     "function_name": "long_func"
                 },
                 "zz_fmtlang": {
@@ -1114,6 +1138,14 @@
                     "F_name_generic": "long_long_func",
                     "F_name_impl": "long_long_func",
                     "PY_name_impl": "PY_long_long_func",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg1"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1"
+                    ],
                     "function_name": "long_long_func"
                 },
                 "zz_fmtlang": {
@@ -1395,6 +1427,14 @@
                     "F_name_generic": "short_int_func",
                     "F_name_impl": "short_int_func",
                     "PY_name_impl": "PY_short_int_func",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg1"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1"
+                    ],
                     "function_name": "short_int_func"
                 },
                 "zz_fmtlang": {
@@ -1676,6 +1716,14 @@
                     "F_name_generic": "long_int_func",
                     "F_name_impl": "long_int_func",
                     "PY_name_impl": "PY_long_int_func",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg1"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1"
+                    ],
                     "function_name": "long_int_func"
                 },
                 "zz_fmtlang": {
@@ -1961,6 +2009,14 @@
                     "F_name_generic": "long_long_int_func",
                     "F_name_impl": "long_long_int_func",
                     "PY_name_impl": "PY_long_long_int_func",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg1"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1"
+                    ],
                     "function_name": "long_long_int_func"
                 },
                 "zz_fmtlang": {
@@ -2240,6 +2296,14 @@
                     "F_name_generic": "unsigned_func",
                     "F_name_impl": "unsigned_func",
                     "PY_name_impl": "PY_unsigned_func",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg1"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1"
+                    ],
                     "function_name": "unsigned_func"
                 },
                 "zz_fmtlang": {
@@ -2521,6 +2585,14 @@
                     "F_name_generic": "ushort_func",
                     "F_name_impl": "ushort_func",
                     "PY_name_impl": "PY_ushort_func",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg1"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1"
+                    ],
                     "function_name": "ushort_func"
                 },
                 "zz_fmtlang": {
@@ -2802,6 +2874,14 @@
                     "F_name_generic": "uint_func",
                     "F_name_impl": "uint_func",
                     "PY_name_impl": "PY_uint_func",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg1"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1"
+                    ],
                     "function_name": "uint_func"
                 },
                 "zz_fmtlang": {
@@ -3083,6 +3163,14 @@
                     "F_name_generic": "ulong_func",
                     "F_name_impl": "ulong_func",
                     "PY_name_impl": "PY_ulong_func",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg1"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1"
+                    ],
                     "function_name": "ulong_func"
                 },
                 "zz_fmtlang": {
@@ -3368,6 +3456,14 @@
                     "F_name_generic": "ulong_long_func",
                     "F_name_impl": "ulong_long_func",
                     "PY_name_impl": "PY_ulong_long_func",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg1"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1"
+                    ],
                     "function_name": "ulong_long_func"
                 },
                 "zz_fmtlang": {
@@ -3651,6 +3747,14 @@
                     "F_name_generic": "ulong_int_func",
                     "F_name_impl": "ulong_int_func",
                     "PY_name_impl": "PY_ulong_int_func",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg1"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1"
+                    ],
                     "function_name": "ulong_int_func"
                 },
                 "zz_fmtlang": {
@@ -3930,6 +4034,14 @@
                     "F_name_generic": "int8_func",
                     "F_name_impl": "int8_func",
                     "PY_name_impl": "PY_int8_func",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg1"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1"
+                    ],
                     "function_name": "int8_func"
                 },
                 "zz_fmtlang": {
@@ -4209,6 +4321,14 @@
                     "F_name_generic": "int16_func",
                     "F_name_impl": "int16_func",
                     "PY_name_impl": "PY_int16_func",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg1"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1"
+                    ],
                     "function_name": "int16_func"
                 },
                 "zz_fmtlang": {
@@ -4488,6 +4608,14 @@
                     "F_name_generic": "int32_func",
                     "F_name_impl": "int32_func",
                     "PY_name_impl": "PY_int32_func",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg1"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1"
+                    ],
                     "function_name": "int32_func"
                 },
                 "zz_fmtlang": {
@@ -4767,6 +4895,14 @@
                     "F_name_generic": "int64_func",
                     "F_name_impl": "int64_func",
                     "PY_name_impl": "PY_int64_func",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg1"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1"
+                    ],
                     "function_name": "int64_func"
                 },
                 "zz_fmtlang": {
@@ -5046,6 +5182,14 @@
                     "F_name_generic": "uint8_func",
                     "F_name_impl": "uint8_func",
                     "PY_name_impl": "PY_uint8_func",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg1"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1"
+                    ],
                     "function_name": "uint8_func"
                 },
                 "zz_fmtlang": {
@@ -5325,6 +5469,14 @@
                     "F_name_generic": "uint16_func",
                     "F_name_impl": "uint16_func",
                     "PY_name_impl": "PY_uint16_func",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg1"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1"
+                    ],
                     "function_name": "uint16_func"
                 },
                 "zz_fmtlang": {
@@ -5604,6 +5756,14 @@
                     "F_name_generic": "uint32_func",
                     "F_name_impl": "uint32_func",
                     "PY_name_impl": "PY_uint32_func",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg1"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1"
+                    ],
                     "function_name": "uint32_func"
                 },
                 "zz_fmtlang": {
@@ -5883,6 +6043,14 @@
                     "F_name_generic": "uint64_func",
                     "F_name_impl": "uint64_func",
                     "PY_name_impl": "PY_uint64_func",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg1"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1"
+                    ],
                     "function_name": "uint64_func"
                 },
                 "zz_fmtlang": {
@@ -6162,6 +6330,14 @@
                     "F_name_generic": "size_func",
                     "F_name_impl": "size_func",
                     "PY_name_impl": "PY_size_func",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg1"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1"
+                    ],
                     "function_name": "size_func"
                 },
                 "zz_fmtlang": {
@@ -6441,6 +6617,14 @@
                     "F_name_generic": "bool_func",
                     "F_name_impl": "bool_func",
                     "PY_name_impl": "PY_bool_func",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg"
+                    ],
                     "function_name": "bool_func"
                 },
                 "zz_fmtlang": {
@@ -6727,6 +6911,14 @@
                     "F_name_generic": "return_bool_and_others",
                     "F_name_impl": "return_bool_and_others",
                     "PY_name_impl": "PY_returnBoolAndOthers",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "flag"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "flag"
+                    ],
                     "function_name": "returnBoolAndOthers"
                 },
                 "zz_fmtlang": {

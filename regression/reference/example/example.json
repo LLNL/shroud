@@ -227,6 +227,12 @@
                                             "PY_name_impl": "PP_ExClass1_tp_init_0",
                                             "PY_type_impl": "PP_ExClass1_tp_init_0",
                                             "PY_type_method": "tp_init",
+                                            "c_arglist": [
+                                                "SHC_rv"
+                                            ],
+                                            "f_arglist": [
+                                                "SHT_rv"
+                                            ],
                                             "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "ctor",
                                             "function_suffix": "_0"
@@ -611,6 +617,14 @@
                                             "PY_name_impl": "PP_ExClass1_tp_init_1",
                                             "PY_type_impl": "PP_ExClass1_tp_init_1",
                                             "PY_type_method": "tp_init",
+                                            "c_arglist": [
+                                                "SHC_rv",
+                                                "name"
+                                            ],
+                                            "f_arglist": [
+                                                "SHT_rv",
+                                                "name"
+                                            ],
                                             "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "ctor",
                                             "function_suffix": "_1"
@@ -745,10 +759,16 @@
                                             "LUA_name": "dtor",
                                             "LUA_name_api": "dtor",
                                             "LUA_name_impl": "l_example_nested_ExClass1_dtor",
+                                            "c_arglist": [
+                                                "self"
+                                            ],
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_arglist": [
+                                                "f_var"
+                                            ],
                                             "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "dtor"
                                         },
@@ -1068,10 +1088,18 @@
                                             "LUA_name_api": "incrementCount",
                                             "LUA_name_impl": "l_example_nested_ExClass1_incrementCount",
                                             "PY_name_impl": "PP_incrementCount",
+                                            "c_arglist": [
+                                                "SHC_rv",
+                                                "incr"
+                                            ],
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_arglist": [
+                                                "SHT_rv",
+                                                "incr"
+                                            ],
                                             "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "incrementCount"
                                         },
@@ -1316,10 +1344,16 @@
                                             "LUA_name_api": "getNameErrorCheck",
                                             "LUA_name_impl": "l_example_nested_ExClass1_getNameErrorCheck",
                                             "PY_name_impl": "PP_getNameErrorCheck",
+                                            "c_arglist": [
+                                                "SHC_rv"
+                                            ],
                                             "c_const": "const ",
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_arglist": [
+                                                "SHT_rv"
+                                            ],
                                             "f_intent_attr": ", intent(IN)",
                                             "function_name": "getNameErrorCheck"
                                         },
@@ -1546,10 +1580,16 @@
                                             "LUA_name_api": "getNameArg",
                                             "LUA_name_impl": "l_example_nested_ExClass1_getNameArg",
                                             "PY_name_impl": "PP_getNameArg",
+                                            "c_arglist": [
+                                                "SHC_rv"
+                                            ],
                                             "c_const": "const ",
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_arglist": [
+                                                "name"
+                                            ],
                                             "f_intent_attr": ", intent(IN)",
                                             "function_name": "getNameArg"
                                         },
@@ -1879,10 +1919,18 @@
                                             "LUA_name_api": "getValue",
                                             "LUA_name_impl": "l_example_nested_ExClass1_getValue",
                                             "PY_name_impl": "PP_getValue_from_int",
+                                            "c_arglist": [
+                                                "SHC_rv",
+                                                "value"
+                                            ],
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_arglist": [
+                                                "SHT_rv",
+                                                "value"
+                                            ],
                                             "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "getValue",
                                             "function_suffix": "_from_int"
@@ -2215,10 +2263,18 @@
                                             "F_name_generic": "get_value",
                                             "F_name_impl": "ex_class1_get_value_1",
                                             "PY_name_impl": "PP_getValue_1",
+                                            "c_arglist": [
+                                                "SHC_rv",
+                                                "value"
+                                            ],
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_arglist": [
+                                                "SHT_rv",
+                                                "value"
+                                            ],
                                             "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "getValue",
                                             "function_suffix": "_1"
@@ -2542,10 +2598,18 @@
                                             "LUA_name_api": "hasAddr",
                                             "LUA_name_impl": "l_example_nested_ExClass1_hasAddr",
                                             "PY_name_impl": "PP_hasAddr",
+                                            "c_arglist": [
+                                                "SHC_rv",
+                                                "in"
+                                            ],
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_arglist": [
+                                                "SHT_rv",
+                                                "in"
+                                            ],
                                             "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "hasAddr"
                                         },
@@ -2684,10 +2748,16 @@
                                             "LUA_name_api": "SplicerSpecial",
                                             "LUA_name_impl": "l_example_nested_ExClass1_SplicerSpecial",
                                             "PY_name_impl": "PP_SplicerSpecial",
+                                            "c_arglist": [
+                                                "self"
+                                            ],
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_arglist": [
+                                                "f_var"
+                                            ],
                                             "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "SplicerSpecial"
                                         },
@@ -3163,6 +3233,14 @@
                                             "PY_name_impl": "PP_ExClass2_tp_init",
                                             "PY_type_impl": "PP_ExClass2_tp_init",
                                             "PY_type_method": "tp_init",
+                                            "c_arglist": [
+                                                "SHC_rv",
+                                                "name"
+                                            ],
+                                            "f_arglist": [
+                                                "SHT_rv",
+                                                "name"
+                                            ],
                                             "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "ctor"
                                         },
@@ -3302,10 +3380,16 @@
                                             "LUA_name": "dtor",
                                             "LUA_name_api": "dtor",
                                             "LUA_name_impl": "l_example_nested_ExClass2_dtor",
+                                            "c_arglist": [
+                                                "self"
+                                            ],
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_arglist": [
+                                                "f_var"
+                                            ],
                                             "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "dtor"
                                         },
@@ -3535,10 +3619,16 @@
                                             "LUA_name_api": "getName",
                                             "LUA_name_impl": "l_example_nested_ExClass2_getName",
                                             "PY_name_impl": "PP_getName",
+                                            "c_arglist": [
+                                                "SHC_rv"
+                                            ],
                                             "c_const": "const ",
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_arglist": [
+                                                "SHT_rv"
+                                            ],
                                             "f_intent_attr": ", intent(IN)",
                                             "function_name": "getName"
                                         },
@@ -3776,10 +3866,16 @@
                                             "LUA_name_api": "getName2",
                                             "LUA_name_impl": "l_example_nested_ExClass2_getName2",
                                             "PY_name_impl": "PP_getName2",
+                                            "c_arglist": [
+                                                "SHC_rv"
+                                            ],
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_arglist": [
+                                                "SHT_rv"
+                                            ],
                                             "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "getName2"
                                         },
@@ -4018,10 +4114,16 @@
                                             "LUA_name_api": "getName3",
                                             "LUA_name_impl": "l_example_nested_ExClass2_getName3",
                                             "PY_name_impl": "PP_getName3",
+                                            "c_arglist": [
+                                                "SHC_rv"
+                                            ],
                                             "c_const": "const ",
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_arglist": [
+                                                "SHT_rv"
+                                            ],
                                             "f_intent_attr": ", intent(IN)",
                                             "function_name": "getName3"
                                         },
@@ -4258,10 +4360,16 @@
                                             "LUA_name_api": "getName4",
                                             "LUA_name_impl": "l_example_nested_ExClass2_getName4",
                                             "PY_name_impl": "PP_getName4",
+                                            "c_arglist": [
+                                                "SHC_rv"
+                                            ],
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_arglist": [
+                                                "SHT_rv"
+                                            ],
                                             "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "getName4"
                                         },
@@ -4461,10 +4569,16 @@
                                             "LUA_name_api": "GetNameLength",
                                             "LUA_name_impl": "l_example_nested_ExClass2_GetNameLength",
                                             "PY_name_impl": "PP_GetNameLength",
+                                            "c_arglist": [
+                                                "SHC_rv"
+                                            ],
                                             "c_const": "const ",
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_arglist": [
+                                                "SHT_rv"
+                                            ],
                                             "f_intent_attr": ", intent(IN)",
                                             "function_name": "GetNameLength"
                                         },
@@ -4847,10 +4961,18 @@
                                             "LUA_name_api": "get_class1",
                                             "LUA_name_impl": "l_example_nested_ExClass2_get_class1",
                                             "PY_name_impl": "PP_get_class1",
+                                            "c_arglist": [
+                                                "SHC_rv",
+                                                "in"
+                                            ],
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_arglist": [
+                                                "SHT_rv",
+                                                "in"
+                                            ],
                                             "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "get_class1"
                                         },
@@ -4989,10 +5111,16 @@
                                             "LUA_name_api": "destroyall",
                                             "LUA_name_impl": "l_example_nested_ExClass2_destroyall",
                                             "PY_name_impl": "PP_destroyall",
+                                            "c_arglist": [
+                                                "self"
+                                            ],
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_arglist": [
+                                                "f_var"
+                                            ],
                                             "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "destroyall"
                                         },
@@ -5427,10 +5555,18 @@
                                             "LUA_name_api": "setValue",
                                             "LUA_name_impl": "l_example_nested_ExClass2_setValue",
                                             "PY_name_impl": "PP_setValue_int",
+                                            "c_arglist": [
+                                                "self",
+                                                "value"
+                                            ],
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_arglist": [
+                                                "f_var",
+                                                "value"
+                                            ],
                                             "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "setValue",
                                             "template_suffix": "_int"
@@ -5760,10 +5896,18 @@
                                             "F_name_generic": "set_value",
                                             "F_name_impl": "ex_class2_set_value_long",
                                             "PY_name_impl": "PP_setValue_long",
+                                            "c_arglist": [
+                                                "self",
+                                                "value"
+                                            ],
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_arglist": [
+                                                "f_var",
+                                                "value"
+                                            ],
                                             "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "setValue",
                                             "template_suffix": "_long"
@@ -6084,10 +6228,18 @@
                                             "F_name_generic": "set_value",
                                             "F_name_impl": "ex_class2_set_value_float",
                                             "PY_name_impl": "PP_setValue_float",
+                                            "c_arglist": [
+                                                "self",
+                                                "value"
+                                            ],
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_arglist": [
+                                                "f_var",
+                                                "value"
+                                            ],
                                             "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "setValue",
                                             "template_suffix": "_float"
@@ -6414,10 +6566,18 @@
                                             "F_name_generic": "set_value",
                                             "F_name_impl": "ex_class2_set_value_double",
                                             "PY_name_impl": "PP_setValue_double",
+                                            "c_arglist": [
+                                                "self",
+                                                "value"
+                                            ],
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_arglist": [
+                                                "f_var",
+                                                "value"
+                                            ],
                                             "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "setValue",
                                             "template_suffix": "_double"
@@ -6711,10 +6871,16 @@
                                             "LUA_name_api": "getValue",
                                             "LUA_name_impl": "l_example_nested_ExClass2_getValue",
                                             "PY_name_impl": "PP_getValue_int",
+                                            "c_arglist": [
+                                                "SHC_rv"
+                                            ],
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_arglist": [
+                                                "SHT_rv"
+                                            ],
                                             "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "getValue",
                                             "template_suffix": "_int"
@@ -6944,10 +7110,16 @@
                                             "F_name_generic": "get_value",
                                             "F_name_impl": "ex_class2_get_value_double",
                                             "PY_name_impl": "PP_getValue_double",
+                                            "c_arglist": [
+                                                "SHC_rv"
+                                            ],
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
                                             "c_var": "self",
+                                            "f_arglist": [
+                                                "SHT_rv"
+                                            ],
                                             "f_intent_attr": ", intent(INOUT)",
                                             "function_name": "getValue",
                                             "template_suffix": "_double"
@@ -7140,6 +7312,12 @@
                                     "LUA_name_api": "local_function1",
                                     "LUA_name_impl": "l_example_nested_local_function1",
                                     "PY_name_impl": "PP_local_function1",
+                                    "c_arglist": [
+                                        "c_var"
+                                    ],
+                                    "f_arglist": [
+                                        "f_var"
+                                    ],
                                     "function_name": "local_function1"
                                 },
                                 "zz_fmtlang": {
@@ -7501,6 +7679,14 @@
                                     "LUA_name_api": "isNameValid",
                                     "LUA_name_impl": "l_example_nested_isNameValid",
                                     "PY_name_impl": "PP_isNameValid",
+                                    "c_arglist": [
+                                        "SHC_rv",
+                                        "name"
+                                    ],
+                                    "f_arglist": [
+                                        "SHT_rv",
+                                        "name"
+                                    ],
                                     "function_name": "isNameValid"
                                 },
                                 "zz_fmtlang": {
@@ -7691,6 +7877,12 @@
                                     "LUA_name_api": "isInitialized",
                                     "LUA_name_impl": "l_example_nested_isInitialized",
                                     "PY_name_impl": "PP_isInitialized",
+                                    "c_arglist": [
+                                        "SHC_rv"
+                                    ],
+                                    "f_arglist": [
+                                        "SHT_rv"
+                                    ],
                                     "function_name": "isInitialized"
                                 },
                                 "zz_fmtlang": {
@@ -7985,6 +8177,14 @@
                                     "LUA_name_api": "test_names",
                                     "LUA_name_impl": "l_example_nested_test_names",
                                     "PY_name_impl": "PP_test_names",
+                                    "c_arglist": [
+                                        "c_var",
+                                        "name"
+                                    ],
+                                    "f_arglist": [
+                                        "f_var",
+                                        "name"
+                                    ],
                                     "function_name": "test_names",
                                     "function_suffix": ""
                                 },
@@ -8422,6 +8622,16 @@
                                     "F_name_generic": "test_names",
                                     "F_name_impl": "test_names_flag",
                                     "PY_name_impl": "PP_test_names_flag",
+                                    "c_arglist": [
+                                        "c_var",
+                                        "name",
+                                        "flag"
+                                    ],
+                                    "f_arglist": [
+                                        "f_var",
+                                        "name",
+                                        "flag"
+                                    ],
                                     "function_name": "test_names",
                                     "function_suffix": "_flag"
                                 },
@@ -8525,6 +8735,12 @@
                                     "F_name_function": "testoptional_0",
                                     "F_name_generic": "testoptional",
                                     "F_name_impl": "testoptional_0",
+                                    "c_arglist": [
+                                        "c_var"
+                                    ],
+                                    "f_arglist": [
+                                        "f_var"
+                                    ],
                                     "function_name": "testoptional",
                                     "function_suffix": "_0"
                                 }
@@ -8706,6 +8922,14 @@
                                     "F_name_function": "testoptional_1",
                                     "F_name_generic": "testoptional",
                                     "F_name_impl": "testoptional_1",
+                                    "c_arglist": [
+                                        "c_var",
+                                        "i"
+                                    ],
+                                    "f_arglist": [
+                                        "f_var",
+                                        "i"
+                                    ],
                                     "function_name": "testoptional",
                                     "function_suffix": "_1"
                                 }
@@ -9100,6 +9324,16 @@
                                     "LUA_name_impl": "l_example_nested_testoptional",
                                     "PY_cleanup_decref": "Py_XDECREF",
                                     "PY_name_impl": "PP_testoptional_2",
+                                    "c_arglist": [
+                                        "c_var",
+                                        "i",
+                                        "j"
+                                    ],
+                                    "f_arglist": [
+                                        "f_var",
+                                        "i",
+                                        "j"
+                                    ],
                                     "function_name": "testoptional",
                                     "function_suffix": "_2"
                                 },
@@ -9290,6 +9524,12 @@
                                     "LUA_name_api": "test_size_t",
                                     "LUA_name_impl": "l_example_nested_test_size_t",
                                     "PY_name_impl": "PP_test_size_t",
+                                    "c_arglist": [
+                                        "SHC_rv"
+                                    ],
+                                    "f_arglist": [
+                                        "SHT_rv"
+                                    ],
                                     "function_name": "test_size_t"
                                 },
                                 "zz_fmtlang": {
@@ -9568,6 +9808,14 @@
                                     "LUA_name_api": "testmpi",
                                     "LUA_name_impl": "l_example_nested_testmpi",
                                     "PY_name_impl": "PP_testmpi_mpi",
+                                    "c_arglist": [
+                                        "c_var",
+                                        "comm"
+                                    ],
+                                    "f_arglist": [
+                                        "f_var",
+                                        "comm"
+                                    ],
                                     "function_name": "testmpi",
                                     "function_suffix": "_mpi"
                                 },
@@ -9703,6 +9951,12 @@
                                     "F_name_generic": "testmpi",
                                     "F_name_impl": "testmpi_serial",
                                     "PY_name_impl": "PP_testmpi_serial",
+                                    "c_arglist": [
+                                        "c_var"
+                                    ],
+                                    "f_arglist": [
+                                        "f_var"
+                                    ],
                                     "function_name": "testmpi",
                                     "function_suffix": "_serial"
                                 },
@@ -10225,6 +10479,14 @@
                                     "LUA_name_api": "FuncPtr1",
                                     "LUA_name_impl": "l_example_nested_FuncPtr1",
                                     "PY_name_impl": "PP_FuncPtr1",
+                                    "c_arglist": [
+                                        "c_var",
+                                        "get"
+                                    ],
+                                    "f_arglist": [
+                                        "f_var",
+                                        "get"
+                                    ],
                                     "function_name": "FuncPtr1"
                                 },
                                 "zz_fmtlang": {
@@ -10844,6 +11106,14 @@
                                     "LUA_name_api": "FuncPtr2",
                                     "LUA_name_impl": "l_example_nested_FuncPtr2",
                                     "PY_name_impl": "PP_FuncPtr2",
+                                    "c_arglist": [
+                                        "c_var",
+                                        "get"
+                                    ],
+                                    "f_arglist": [
+                                        "f_var",
+                                        "get"
+                                    ],
                                     "function_name": "FuncPtr2"
                                 },
                                 "zz_fmtlang": {
@@ -11856,6 +12126,14 @@
                                     "LUA_name_api": "FuncPtr3",
                                     "LUA_name_impl": "l_example_nested_FuncPtr3",
                                     "PY_name_impl": "PP_FuncPtr3",
+                                    "c_arglist": [
+                                        "c_var",
+                                        "get"
+                                    ],
+                                    "f_arglist": [
+                                        "f_var",
+                                        "get"
+                                    ],
                                     "function_name": "FuncPtr3"
                                 },
                                 "zz_fmtlang": {
@@ -12504,6 +12782,14 @@
                                     "F_name_function": "func_ptr4",
                                     "F_name_generic": "func_ptr4",
                                     "F_name_impl": "func_ptr4",
+                                    "c_arglist": [
+                                        "c_var",
+                                        "get"
+                                    ],
+                                    "f_arglist": [
+                                        "f_var",
+                                        "get"
+                                    ],
                                     "function_name": "FuncPtr4"
                                 }
                             },
@@ -15118,6 +15404,14 @@
                                     "LUA_name_api": "FuncPtr5",
                                     "LUA_name_impl": "l_example_nested_FuncPtr5",
                                     "PY_name_impl": "PP_FuncPtr5",
+                                    "c_arglist": [
+                                        "c_var",
+                                        "get"
+                                    ],
+                                    "f_arglist": [
+                                        "f_var",
+                                        "get"
+                                    ],
                                     "function_name": "FuncPtr5"
                                 },
                                 "zz_fmtlang": {
@@ -16603,6 +16897,32 @@
                                     "LUA_name_api": "verylongfunctionname1",
                                     "LUA_name_impl": "l_example_nested_verylongfunctionname1",
                                     "PY_name_impl": "PP_verylongfunctionname1",
+                                    "c_arglist": [
+                                        "c_var",
+                                        "verylongname1",
+                                        "verylongname2",
+                                        "verylongname3",
+                                        "verylongname4",
+                                        "verylongname5",
+                                        "verylongname6",
+                                        "verylongname7",
+                                        "verylongname8",
+                                        "verylongname9",
+                                        "verylongname10"
+                                    ],
+                                    "f_arglist": [
+                                        "f_var",
+                                        "verylongname1",
+                                        "verylongname2",
+                                        "verylongname3",
+                                        "verylongname4",
+                                        "verylongname5",
+                                        "verylongname6",
+                                        "verylongname7",
+                                        "verylongname8",
+                                        "verylongname9",
+                                        "verylongname10"
+                                    ],
                                     "function_name": "verylongfunctionname1"
                                 },
                                 "zz_fmtlang": {
@@ -18130,6 +18450,32 @@
                                     "LUA_name_api": "verylongfunctionname2",
                                     "LUA_name_impl": "l_example_nested_verylongfunctionname2",
                                     "PY_name_impl": "PP_verylongfunctionname2",
+                                    "c_arglist": [
+                                        "SHC_rv",
+                                        "verylongname1",
+                                        "verylongname2",
+                                        "verylongname3",
+                                        "verylongname4",
+                                        "verylongname5",
+                                        "verylongname6",
+                                        "verylongname7",
+                                        "verylongname8",
+                                        "verylongname9",
+                                        "verylongname10"
+                                    ],
+                                    "f_arglist": [
+                                        "SHT_rv",
+                                        "verylongname1",
+                                        "verylongname2",
+                                        "verylongname3",
+                                        "verylongname4",
+                                        "verylongname5",
+                                        "verylongname6",
+                                        "verylongname7",
+                                        "verylongname8",
+                                        "verylongname9",
+                                        "verylongname10"
+                                    ],
                                     "function_name": "verylongfunctionname2"
                                 },
                                 "zz_fmtlang": {
@@ -18761,6 +19107,18 @@
                                     "LUA_name_api": "cos_doubles",
                                     "LUA_name_impl": "l_example_nested_cos_doubles",
                                     "PY_name_impl": "PP_cos_doubles",
+                                    "c_arglist": [
+                                        "c_var",
+                                        "in",
+                                        "out",
+                                        "sizein"
+                                    ],
+                                    "f_arglist": [
+                                        "f_var",
+                                        "in",
+                                        "out",
+                                        "sizein"
+                                    ],
                                     "function_name": "cos_doubles"
                                 },
                                 "zz_fmtlang": {

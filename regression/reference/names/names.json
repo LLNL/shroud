@@ -642,6 +642,14 @@
                     "F_name_generic": "get_name",
                     "F_name_impl": "get_name",
                     "PY_name_impl": "PY_getName",
+                    "c_arglist": [
+                        "c_var",
+                        "name"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "name"
+                    ],
                     "function_name": "getName"
                 },
                 "zz_fmtlang": {
@@ -753,6 +761,12 @@
                     "F_name_generic": "function1",
                     "F_name_impl": "testnames_function1",
                     "PY_name_impl": "PY_function1",
+                    "c_arglist": [
+                        "c_var"
+                    ],
+                    "f_arglist": [
+                        "f_var"
+                    ],
                     "function_name": "function1"
                 },
                 "zz_fmtlang": {
@@ -864,6 +878,12 @@
                     "F_name_generic": "function2",
                     "F_name_impl": "f_name_special",
                     "PY_name_impl": "PY_function2",
+                    "c_arglist": [
+                        "c_var"
+                    ],
+                    "f_arglist": [
+                        "f_var"
+                    ],
                     "function_name": "function2",
                     "i_name_function": "f_c_name_special"
                 },
@@ -1092,6 +1112,14 @@
                     "F_name_generic": "generic3",
                     "F_name_impl": "F_name_function3a_int",
                     "PY_name_impl": "PY_function3a_0",
+                    "c_arglist": [
+                        "c_var",
+                        "i"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "i"
+                    ],
                     "function_name": "function3a",
                     "function_suffix": "_0"
                 },
@@ -1325,6 +1353,14 @@
                     "F_name_generic": "generic3",
                     "F_name_impl": "F_name_function3a_long",
                     "PY_name_impl": "PY_function3a_1",
+                    "c_arglist": [
+                        "c_var",
+                        "i"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "i"
+                    ],
                     "function_name": "function3a",
                     "function_suffix": "_1"
                 },
@@ -1640,6 +1676,14 @@
                     "F_name_generic": "function4",
                     "F_name_impl": "testnames_function4",
                     "PY_name_impl": "PY_function4",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "rv"
+                    ],
                     "function_name": "function4"
                 },
                 "zz_fmtlang": {
@@ -1754,6 +1798,12 @@
                     "F_name_generic": "fiveplus",
                     "F_name_impl": "testnames_fiveplus",
                     "PY_name_impl": "PY_fiveplus",
+                    "c_arglist": [
+                        "c_var"
+                    ],
+                    "f_arglist": [
+                        "f_var"
+                    ],
                     "function_name": "fiveplus"
                 },
                 "zz_fmtlang": {
@@ -2147,6 +2197,16 @@
                     "F_name_generic": "test_multiline_splicer",
                     "F_name_impl": "test_multiline_splicer",
                     "PY_name_impl": "PY_TestMultilineSplicer",
+                    "c_arglist": [
+                        "c_var",
+                        "name",
+                        "value"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "name",
+                        "value"
+                    ],
                     "function_name": "TestMultilineSplicer"
                 },
                 "zz_fmtlang": {
@@ -2687,6 +2747,16 @@
                     "F_name_generic": "function_tu",
                     "F_name_impl": "f_name_instantiation1",
                     "PY_name_impl": "PY_name_instantiation1",
+                    "c_arglist": [
+                        "c_var",
+                        "arg1",
+                        "arg2"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "arg1",
+                        "arg2"
+                    ],
                     "function_name": "FunctionTU",
                     "i_name_function": "f_c_name_instantiation1",
                     "template_suffix": "_0"
@@ -3100,6 +3170,16 @@
                     "F_name_generic": "function_tu",
                     "F_name_impl": "function_tu_instantiation2",
                     "PY_name_impl": "PY_FunctionTU_instantiation2",
+                    "c_arglist": [
+                        "c_var",
+                        "arg1",
+                        "arg2"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "arg1",
+                        "arg2"
+                    ],
                     "function_name": "FunctionTU",
                     "template_suffix": "_instantiation2"
                 },
@@ -3350,6 +3430,12 @@
                     "F_name_generic": "use_impl_worker",
                     "F_name_impl": "use_impl_worker_instantiation3",
                     "PY_name_impl": "PY_UseImplWorker_instantiation3",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "UseImplWorker",
                     "template_suffix": "_instantiation3"
                 },
@@ -3640,6 +3726,14 @@
                     "F_name_generic": "cstruct_as_class_sum",
                     "F_name_impl": "cstruct_as_class_sum",
                     "PY_name_impl": "PY_Cstruct_as_class_sum",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "point"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "point"
+                    ],
                     "function_name": "Cstruct_as_class_sum"
                 },
                 "zz_fmtlang": {
@@ -5546,6 +5640,24 @@
                     "F_name_function": "external_funcs",
                     "F_name_generic": "external_funcs",
                     "F_name_impl": "external_funcs",
+                    "c_arglist": [
+                        "c_var",
+                        "rdbase",
+                        "pkg",
+                        "name",
+                        "alloc",
+                        "afree",
+                        "assoc"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "rdbase",
+                        "pkg",
+                        "name",
+                        "alloc",
+                        "afree",
+                        "assoc"
+                    ],
                     "function_name": "external_funcs"
                 }
             },
@@ -5731,6 +5843,14 @@
                     "F_name_function": "bindtest",
                     "F_name_generic": "bindtest",
                     "F_name_impl": "bindtest",
+                    "c_arglist": [
+                        "c_var",
+                        "arg1"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "arg1"
+                    ],
                     "function_name": "bindtest"
                 }
             }
@@ -5925,6 +6045,12 @@
                                     "PY_name_impl": "PY_Names_tp_init",
                                     "PY_type_impl": "PY_Names_tp_init",
                                     "PY_type_method": "tp_init",
+                                    "c_arglist": [
+                                        "SHC_rv"
+                                    ],
+                                    "f_arglist": [
+                                        "SHT_rv"
+                                    ],
                                     "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "defaultctor"
                                 },
@@ -6037,10 +6163,16 @@
                                     "F_name_generic": "method1",
                                     "F_name_impl": "names_method1",
                                     "PY_name_impl": "PY_method1",
+                                    "c_arglist": [
+                                        "self"
+                                    ],
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "self",
+                                    "f_arglist": [
+                                        "f_var"
+                                    ],
                                     "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "method1"
                                 },
@@ -6157,10 +6289,16 @@
                                     "F_name_impl": "names_method2",
                                     "F_this": "obj2",
                                     "PY_name_impl": "PY_method2",
+                                    "c_arglist": [
+                                        "self2"
+                                    ],
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "self2",
+                                    "f_arglist": [
+                                        "f_var"
+                                    ],
                                     "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "method2"
                                 },
@@ -6455,6 +6593,12 @@
                             "F_name_generic": "init_ns1",
                             "F_name_impl": "testnames_init_ns1",
                             "PY_name_impl": "PY_init_ns1",
+                            "c_arglist": [
+                                "c_var"
+                            ],
+                            "f_arglist": [
+                                "f_var"
+                            ],
                             "function_name": "init_ns1"
                         },
                         "zz_fmtlang": {
@@ -7099,10 +7243,16 @@
                                     "F_name_function": "member1",
                                     "F_name_generic": "member1",
                                     "F_name_impl": "class1_member1",
+                                    "c_arglist": [
+                                        "self"
+                                    ],
                                     "c_const": "",
                                     "c_deref": "*",
                                     "c_member": "->",
                                     "c_var": "self",
+                                    "f_arglist": [
+                                        "f_var"
+                                    ],
                                     "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "Member1"
                                 }
@@ -7215,6 +7365,12 @@
                             "F_name_function": "worker1",
                             "F_name_generic": "worker1",
                             "F_name_impl": "worker1",
+                            "c_arglist": [
+                                "c_var"
+                            ],
+                            "f_arglist": [
+                                "f_var"
+                            ],
                             "function_name": "Worker1"
                         }
                     }
@@ -7332,6 +7488,12 @@
                             "F_name_function": "worker1",
                             "F_name_generic": "worker1",
                             "F_name_impl": "worker1",
+                            "c_arglist": [
+                                "c_var"
+                            ],
+                            "f_arglist": [
+                                "f_var"
+                            ],
                             "function_name": "Worker1"
                         }
                     }

@@ -240,6 +240,10 @@
                     "F_name_function": "callback1",
                     "F_name_generic": "callback1",
                     "F_name_impl": "callback1",
+                    "f_arglist": [
+                        "f_var",
+                        "incr1"
+                    ],
                     "function_name": "callback1"
                 }
             },
@@ -473,6 +477,10 @@
                     "F_name_function": "callback1_wrap",
                     "F_name_generic": "callback1_wrap",
                     "F_name_impl": "callback1_wrap",
+                    "f_arglist": [
+                        "f_var",
+                        "incr1_wrap"
+                    ],
                     "function_name": "callback1_wrap"
                 }
             },
@@ -713,6 +721,10 @@
                     "F_name_function": "callback1_external",
                     "F_name_generic": "callback1_external",
                     "F_name_impl": "callback1_external",
+                    "f_arglist": [
+                        "f_var",
+                        "incr1_external"
+                    ],
                     "function_name": "callback1_external"
                 }
             },
@@ -955,6 +967,10 @@
                     "F_name_function": "callback1_funptr",
                     "F_name_generic": "callback1_funptr",
                     "F_name_impl": "callback1_funptr",
+                    "f_arglist": [
+                        "f_var",
+                        "incr1_funptr"
+                    ],
                     "function_name": "callback1_funptr"
                 }
             },
@@ -1198,6 +1214,12 @@
                     "F_name_function": "callback2",
                     "F_name_generic": "callback2",
                     "F_name_impl": "callback2",
+                    "f_arglist": [
+                        "f_var",
+                        "name",
+                        "ival",
+                        "incr"
+                    ],
                     "function_name": "callback2"
                 }
             },
@@ -1445,6 +1467,12 @@
                     "F_name_function": "callback2_external",
                     "F_name_generic": "callback2_external",
                     "F_name_impl": "callback2_external",
+                    "f_arglist": [
+                        "f_var",
+                        "name",
+                        "ival",
+                        "incr"
+                    ],
                     "function_name": "callback2_external"
                 }
             },
@@ -1693,6 +1721,12 @@
                     "F_name_function": "callback2_funptr",
                     "F_name_generic": "callback2_funptr",
                     "F_name_impl": "callback2_funptr",
+                    "f_arglist": [
+                        "f_var",
+                        "name",
+                        "ival",
+                        "incr"
+                    ],
                     "function_name": "callback2_funptr"
                 }
             },
@@ -2054,6 +2088,12 @@
                     "F_name_function": "callback3",
                     "F_name_generic": "callback3",
                     "F_name_impl": "callback3",
+                    "f_arglist": [
+                        "f_var",
+                        "type",
+                        "in",
+                        "incr3"
+                    ],
                     "function_name": "callback3"
                 }
             },
@@ -2700,6 +2740,12 @@
                     "F_name_function": "callback4",
                     "F_name_generic": "callback4",
                     "F_name_impl": "callback4",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "ilow",
+                        "nargs",
+                        "actor"
+                    ],
                     "function_name": "callback4"
                 }
             },
@@ -2969,6 +3015,10 @@
                     "F_name_function": "callback_ptr",
                     "F_name_generic": "callback_ptr",
                     "F_name_impl": "callback_ptr",
+                    "f_arglist": [
+                        "f_var",
+                        "get_ptr"
+                    ],
                     "function_name": "callback_ptr"
                 }
             },
@@ -3406,6 +3456,10 @@
                     "F_name_function": "callback_double",
                     "F_name_generic": "callback_double",
                     "F_name_impl": "callback_double",
+                    "f_arglist": [
+                        "f_var",
+                        "get"
+                    ],
                     "function_name": "callback_double"
                 }
             },
@@ -3924,6 +3978,11 @@
                     "F_name_function": "abstract1",
                     "F_name_generic": "abstract1",
                     "F_name_impl": "abstract1",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "input",
+                        "get_abs"
+                    ],
                     "function_name": "abstract1"
                 }
             },
@@ -4259,6 +4318,10 @@
                     "F_name_function": "callback_void_ptr",
                     "F_name_generic": "callback_void_ptr",
                     "F_name_impl": "callback_void_ptr",
+                    "f_arglist": [
+                        "f_var",
+                        "void_ptr_arg"
+                    ],
                     "function_name": "callback_void_ptr"
                 }
             },
@@ -5052,6 +5115,10 @@
                     "F_name_function": "callback_all_types",
                     "F_name_generic": "callback_all_types",
                     "F_name_impl": "callback_all_types",
+                    "f_arglist": [
+                        "f_var",
+                        "all_types"
+                    ],
                     "function_name": "callback_all_types"
                 }
             }

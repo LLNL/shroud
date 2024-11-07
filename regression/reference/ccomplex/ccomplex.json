@@ -137,6 +137,10 @@
                     "F_name_function": "accept_float_complex_inout_ptr",
                     "F_name_generic": "accept_float_complex_inout_ptr",
                     "F_name_impl": "accept_float_complex_inout_ptr",
+                    "f_arglist": [
+                        "f_var",
+                        "arg1"
+                    ],
                     "function_name": "acceptFloatComplexInoutPtr"
                 }
             },
@@ -304,6 +308,10 @@
                     "F_name_generic": "accept_double_complex_inout_ptr",
                     "F_name_impl": "accept_double_complex_inout_ptr",
                     "PY_name_impl": "PY_acceptDoubleComplexInoutPtr",
+                    "f_arglist": [
+                        "f_var",
+                        "arg1"
+                    ],
                     "function_name": "acceptDoubleComplexInoutPtr"
                 },
                 "zz_fmtlang": {
@@ -489,6 +497,10 @@
                     "F_name_generic": "accept_double_complex_out_ptr",
                     "F_name_impl": "accept_double_complex_out_ptr",
                     "PY_name_impl": "PY_acceptDoubleComplexOutPtr",
+                    "f_arglist": [
+                        "f_var",
+                        "arg1"
+                    ],
                     "function_name": "acceptDoubleComplexOutPtr"
                 },
                 "zz_fmtlang": {
@@ -931,6 +943,11 @@
                     "F_name_generic": "accept_double_complex_out_ptr_flag",
                     "F_name_impl": "accept_double_complex_out_ptr_flag",
                     "PY_name_impl": "PY_acceptDoubleComplexOutPtrFlag",
+                    "f_arglist": [
+                        "f_var",
+                        "arg1",
+                        "flag"
+                    ],
                     "function_name": "acceptDoubleComplexOutPtrFlag"
                 },
                 "zz_fmtlang": {

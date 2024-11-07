@@ -278,6 +278,11 @@
                 "zz_fmtdict": {
                     "C_name_api": "passIndex",
                     "F_name_api": "pass_index",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "i1",
+                        "i2"
+                    ],
                     "function_name": "passIndex"
                 }
             },
@@ -494,6 +499,11 @@
                     "F_name_function": "pass_index_32",
                     "F_name_generic": "pass_index",
                     "F_name_impl": "pass_index_32",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "i1",
+                        "i2"
+                    ],
                     "function_name": "passIndex",
                     "function_suffix": "_32"
                 }
@@ -711,6 +721,11 @@
                     "F_name_function": "pass_index_64",
                     "F_name_generic": "pass_index",
                     "F_name_impl": "pass_index_64",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "i1",
+                        "i2"
+                    ],
                     "function_name": "passIndex",
                     "function_suffix": "_64"
                 }
@@ -861,6 +876,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "passIndex2",
                     "F_name_api": "pass_index2",
+                    "c_arglist": [
+                        "c_var",
+                        "i1"
+                    ],
                     "function_name": "passIndex2"
                 }
             },
@@ -987,6 +1006,10 @@
                     "F_name_function": "pass_index2_32",
                     "F_name_generic": "pass_index2",
                     "F_name_impl": "pass_index2_32",
+                    "f_arglist": [
+                        "f_var",
+                        "i1"
+                    ],
                     "function_name": "passIndex2",
                     "function_suffix": "_32"
                 }
@@ -1114,6 +1137,10 @@
                     "F_name_function": "pass_index2_64",
                     "F_name_generic": "pass_index2",
                     "F_name_impl": "pass_index2_64",
+                    "f_arglist": [
+                        "f_var",
+                        "i1"
+                    ],
                     "function_name": "passIndex2",
                     "function_suffix": "_64"
                 }
@@ -1264,6 +1291,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "passFloat",
                     "F_name_api": "pass_float",
+                    "c_arglist": [
+                        "c_var",
+                        "f1"
+                    ],
                     "function_name": "passFloat"
                 }
             },
@@ -1390,6 +1421,10 @@
                     "F_name_function": "pass_float_float",
                     "F_name_generic": "pass_float",
                     "F_name_impl": "pass_float_float",
+                    "f_arglist": [
+                        "f_var",
+                        "f1"
+                    ],
                     "function_name": "passFloat",
                     "function_suffix": "_float"
                 }
@@ -1517,6 +1552,10 @@
                     "F_name_function": "pass_float_double",
                     "F_name_generic": "pass_float",
                     "F_name_impl": "pass_float_double",
+                    "f_arglist": [
+                        "f_var",
+                        "f1"
+                    ],
                     "function_name": "passFloat",
                     "function_suffix": "_double"
                 }

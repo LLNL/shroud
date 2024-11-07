@@ -187,6 +187,12 @@
                             "PY_name_impl": "PY_ArrayWrapper_tp_init",
                             "PY_type_impl": "PY_ArrayWrapper_tp_init",
                             "PY_type_method": "tp_init",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor"
                         },
@@ -412,10 +418,18 @@
                             "F_name_generic": "setSize",
                             "F_name_impl": "ArrayWrapper_setSize",
                             "PY_name_impl": "PY_setSize",
+                            "c_arglist": [
+                                "self",
+                                "size"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "size"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "setSize"
                         },
@@ -582,10 +596,16 @@
                             "F_name_generic": "getSize",
                             "F_name_impl": "ArrayWrapper_getSize",
                             "PY_name_impl": "PY_getSize",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(IN)",
                             "function_name": "getSize"
                         },
@@ -814,10 +834,18 @@
                             "F_name_generic": "fillSize",
                             "F_name_impl": "ArrayWrapper_fillSize",
                             "PY_name_impl": "PY_fillSize",
+                            "c_arglist": [
+                                "self",
+                                "size"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "size"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "fillSize"
                         },
@@ -927,10 +955,16 @@
                             "F_name_generic": "allocate",
                             "F_name_impl": "ArrayWrapper_allocate",
                             "PY_name_impl": "PY_allocate",
+                            "c_arglist": [
+                                "self"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "allocate"
                         },
@@ -1175,10 +1209,16 @@
                             "F_name_generic": "getArray",
                             "F_name_impl": "ArrayWrapper_getArray",
                             "PY_name_impl": "PY_getArray",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "getArray"
                         },
@@ -1427,10 +1467,16 @@
                             "F_name_generic": "getArrayConst",
                             "F_name_impl": "ArrayWrapper_getArrayConst",
                             "PY_name_impl": "PY_getArrayConst",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(IN)",
                             "function_name": "getArrayConst"
                         },
@@ -1678,10 +1724,16 @@
                             "F_name_generic": "getArrayC",
                             "F_name_impl": "ArrayWrapper_getArrayC",
                             "PY_name_impl": "PY_getArrayC",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "getArrayC"
                         },
@@ -1931,10 +1983,16 @@
                             "F_name_generic": "getArrayConstC",
                             "F_name_impl": "ArrayWrapper_getArrayConstC",
                             "PY_name_impl": "PY_getArrayConstC",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(IN)",
                             "function_name": "getArrayConstC"
                         },
@@ -2365,10 +2423,20 @@
                             "F_name_generic": "fetchArrayPtr",
                             "F_name_impl": "ArrayWrapper_fetchArrayPtr",
                             "PY_name_impl": "PY_fetchArrayPtr",
+                            "c_arglist": [
+                                "self",
+                                "array",
+                                "isize"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "array",
+                                "isize"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "fetchArrayPtr"
                         },
@@ -2798,10 +2866,20 @@
                             "F_name_generic": "fetchArrayRef",
                             "F_name_impl": "ArrayWrapper_fetchArrayRef",
                             "PY_name_impl": "PY_fetchArrayRef",
+                            "c_arglist": [
+                                "self",
+                                "array",
+                                "isize"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "array",
+                                "isize"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "fetchArrayRef"
                         },
@@ -3232,10 +3310,20 @@
                             "F_name_generic": "fetchArrayPtrConst",
                             "F_name_impl": "ArrayWrapper_fetchArrayPtrConst",
                             "PY_name_impl": "PY_fetchArrayPtrConst",
+                            "c_arglist": [
+                                "self",
+                                "array",
+                                "isize"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "array",
+                                "isize"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "fetchArrayPtrConst"
                         },
@@ -3666,10 +3754,20 @@
                             "F_name_generic": "fetchArrayRefConst",
                             "F_name_impl": "ArrayWrapper_fetchArrayRefConst",
                             "PY_name_impl": "PY_fetchArrayRefConst",
+                            "c_arglist": [
+                                "self",
+                                "array",
+                                "isize"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "array",
+                                "isize"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "fetchArrayRefConst"
                         },
@@ -3901,10 +3999,18 @@
                             "F_name_generic": "fetchVoidPtr",
                             "F_name_impl": "ArrayWrapper_fetchVoidPtr",
                             "PY_name_impl": "PY_fetchVoidPtr",
+                            "c_arglist": [
+                                "self",
+                                "array"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "array"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "fetchVoidPtr"
                         },
@@ -4136,10 +4242,18 @@
                             "F_name_generic": "fetchVoidRef",
                             "F_name_impl": "ArrayWrapper_fetchVoidRef",
                             "PY_name_impl": "PY_fetchVoidRef",
+                            "c_arglist": [
+                                "self",
+                                "array"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "array"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "fetchVoidRef"
                         },
@@ -4422,10 +4536,18 @@
                             "F_name_generic": "checkPtr",
                             "F_name_impl": "ArrayWrapper_checkPtr",
                             "PY_name_impl": "PY_checkPtr",
+                            "c_arglist": [
+                                "SHC_rv",
+                                "array"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv",
+                                "array"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "checkPtr"
                         },
@@ -4592,10 +4714,16 @@
                             "F_name_generic": "sumArray",
                             "F_name_impl": "ArrayWrapper_sumArray",
                             "PY_name_impl": "PY_sumArray",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "sumArray"
                         },

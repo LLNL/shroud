@@ -109,6 +109,9 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "x1",
                             "function_name": "get_x1",
@@ -254,6 +257,10 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "val"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "x1",
                             "function_name": "set_x1",
@@ -361,6 +368,9 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "y1",
                             "function_name": "get_y1",
@@ -506,6 +516,10 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "val"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "y1",
                             "function_name": "set_y1",
@@ -613,6 +627,9 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "z1",
                             "function_name": "get_z1",
@@ -758,6 +775,10 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "val"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "z1",
                             "function_name": "set_z1",
@@ -1030,6 +1051,12 @@
                     "F_name_generic": "bad_fstatements",
                     "F_name_impl": "bad_fstatements",
                     "PY_name_impl": "PY_BadFstatements",
+                    "c_arglist": [
+                        "c_var"
+                    ],
+                    "f_arglist": [
+                        "f_var"
+                    ],
                     "function_name": "BadFstatements"
                 },
                 "zz_fmtlang": {
@@ -1271,6 +1298,10 @@
                     "C_name_api": "AssumedRank",
                     "F_name_api": "assumed_rank",
                     "PY_name_impl": "PY_AssumedRank",
+                    "c_arglist": [
+                        "c_var",
+                        "data"
+                    ],
                     "function_name": "AssumedRank"
                 },
                 "zz_fmtlang": {
@@ -1428,6 +1459,10 @@
                     "F_name_function": "assumed_rank_0d",
                     "F_name_generic": "assumed_rank",
                     "F_name_impl": "assumed_rank_0d",
+                    "f_arglist": [
+                        "f_var",
+                        "data"
+                    ],
                     "function_name": "AssumedRank",
                     "function_suffix": "_0d"
                 }
@@ -1573,6 +1608,10 @@
                     "F_name_function": "assumed_rank_1d",
                     "F_name_generic": "assumed_rank",
                     "F_name_impl": "assumed_rank_1d",
+                    "f_arglist": [
+                        "f_var",
+                        "data"
+                    ],
                     "function_name": "AssumedRank",
                     "function_suffix": "_1d"
                 }
@@ -1718,6 +1757,10 @@
                     "F_name_function": "assumed_rank_2d",
                     "F_name_generic": "assumed_rank",
                     "F_name_impl": "assumed_rank_2d",
+                    "f_arglist": [
+                        "f_var",
+                        "data"
+                    ],
                     "function_name": "AssumedRank",
                     "function_suffix": "_2d"
                 }

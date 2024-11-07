@@ -117,6 +117,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "intargs_in",
                     "F_name_api": "intargs_in",
+                    "c_arglist": [
+                        "c_var",
+                        "arg"
+                    ],
                     "function_name": "intargs_in"
                 }
             },
@@ -226,6 +230,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "intargs_inout",
                     "F_name_api": "intargs_inout",
+                    "c_arglist": [
+                        "c_var",
+                        "arg"
+                    ],
                     "function_name": "intargs_inout"
                 }
             },
@@ -335,6 +343,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "intargs_out",
                     "F_name_api": "intargs_out",
+                    "c_arglist": [
+                        "c_var",
+                        "arg"
+                    ],
                     "function_name": "intargs_out"
                 }
             },
@@ -549,6 +561,12 @@
                 "zz_fmtdict": {
                     "C_name_api": "intargs",
                     "F_name_api": "intargs",
+                    "c_arglist": [
+                        "c_var",
+                        "argin",
+                        "arginout",
+                        "argout"
+                    ],
                     "function_name": "intargs"
                 }
             },
@@ -794,6 +812,12 @@
                 "zz_fmtdict": {
                     "C_name_api": "cos_doubles",
                     "F_name_api": "cos_doubles",
+                    "c_arglist": [
+                        "c_var",
+                        "in",
+                        "out",
+                        "sizein"
+                    ],
                     "function_name": "cos_doubles"
                 }
             },
@@ -1039,6 +1063,12 @@
                 "zz_fmtdict": {
                     "C_name_api": "truncate_to_int",
                     "F_name_api": "truncate_to_int",
+                    "c_arglist": [
+                        "c_var",
+                        "in",
+                        "out",
+                        "sizein"
+                    ],
                     "function_name": "truncate_to_int"
                 }
             },
@@ -1220,6 +1250,11 @@
                 "zz_fmtdict": {
                     "C_name_api": "get_values",
                     "F_name_api": "get_values",
+                    "c_arglist": [
+                        "c_var",
+                        "nvalues",
+                        "values"
+                    ],
                     "function_name": "get_values"
                 }
             },
@@ -1416,6 +1451,11 @@
                 "zz_fmtdict": {
                     "C_name_api": "get_values2",
                     "F_name_api": "get_values2",
+                    "c_arglist": [
+                        "c_var",
+                        "arg1",
+                        "arg2"
+                    ],
                     "function_name": "get_values2"
                 }
             },
@@ -1588,6 +1628,11 @@
                 "zz_fmtdict": {
                     "C_name_api": "iota_dimension",
                     "F_name_api": "iota_dimension",
+                    "c_arglist": [
+                        "c_var",
+                        "nvar",
+                        "values"
+                    ],
                     "function_name": "iota_dimension"
                 }
             },
@@ -1806,6 +1851,12 @@
                 "zz_fmtdict": {
                     "C_name_api": "Sum",
                     "F_name_api": "sum",
+                    "c_arglist": [
+                        "c_var",
+                        "len",
+                        "values",
+                        "result"
+                    ],
                     "function_name": "Sum"
                 }
             },
@@ -1933,6 +1984,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "fillIntArray",
                     "F_name_api": "fill_int_array",
+                    "c_arglist": [
+                        "c_var",
+                        "out"
+                    ],
                     "function_name": "fillIntArray"
                 }
             },
@@ -2099,6 +2154,11 @@
                 "zz_fmtdict": {
                     "C_name_api": "incrementIntArray",
                     "F_name_api": "increment_int_array",
+                    "c_arglist": [
+                        "c_var",
+                        "array",
+                        "sizein"
+                    ],
                     "function_name": "incrementIntArray"
                 }
             },
@@ -2261,6 +2321,11 @@
                 "zz_fmtdict": {
                     "C_name_api": "fill_with_zeros",
                     "F_name_api": "fill_with_zeros",
+                    "c_arglist": [
+                        "c_var",
+                        "x",
+                        "x_length"
+                    ],
                     "function_name": "fill_with_zeros"
                 }
             },
@@ -2437,6 +2502,11 @@
                 "zz_fmtdict": {
                     "C_name_api": "accumulate",
                     "F_name_api": "accumulate",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arr",
+                        "len"
+                    ],
                     "function_name": "accumulate"
                 }
             },
@@ -2567,6 +2637,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "acceptCharArrayIn",
                     "F_name_api": "accept_char_array_in",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "names"
+                    ],
                     "function_name": "acceptCharArrayIn"
                 }
             },
@@ -2671,6 +2745,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "setGlobalInt",
                     "F_name_api": "set_global_int",
+                    "c_arglist": [
+                        "c_var",
+                        "value"
+                    ],
                     "function_name": "setGlobalInt"
                 }
             },
@@ -2741,6 +2819,9 @@
                 "zz_fmtdict": {
                     "C_name_api": "sumFixedArray",
                     "F_name_api": "sum_fixed_array",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
                     "function_name": "sumFixedArray"
                 }
             },
@@ -2855,6 +2936,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "getPtrToScalar",
                     "F_name_api": "get_ptr_to_scalar",
+                    "c_arglist": [
+                        "c_var",
+                        "nitems"
+                    ],
                     "function_name": "getPtrToScalar"
                 }
             },
@@ -2985,6 +3070,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "getPtrToFixedArray",
                     "F_name_api": "get_ptr_to_fixed_array",
+                    "c_arglist": [
+                        "c_var",
+                        "count"
+                    ],
                     "function_name": "getPtrToFixedArray"
                 }
             },
@@ -3169,6 +3258,11 @@
                 "zz_fmtdict": {
                     "C_name_api": "getPtrToDynamicArray",
                     "F_name_api": "get_ptr_to_dynamic_array",
+                    "c_arglist": [
+                        "c_var",
+                        "count",
+                        "ncount"
+                    ],
                     "function_name": "getPtrToDynamicArray"
                 }
             },
@@ -3301,6 +3395,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "getPtrToFuncArray",
                     "F_name_api": "get_ptr_to_func_array",
+                    "c_arglist": [
+                        "c_var",
+                        "count"
+                    ],
                     "function_name": "getPtrToFuncArray"
                 }
             },
@@ -3416,6 +3514,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "getPtrToConstScalar",
                     "F_name_api": "get_ptr_to_const_scalar",
+                    "c_arglist": [
+                        "c_var",
+                        "nitems"
+                    ],
                     "function_name": "getPtrToConstScalar"
                 }
             },
@@ -3544,6 +3646,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "getPtrToFixedConstArray",
                     "F_name_api": "get_ptr_to_fixed_const_array",
+                    "c_arglist": [
+                        "c_var",
+                        "count"
+                    ],
                     "function_name": "getPtrToFixedConstArray"
                 }
             },
@@ -3726,6 +3832,11 @@
                 "zz_fmtdict": {
                     "C_name_api": "getPtrToDynamicConstArray",
                     "F_name_api": "get_ptr_to_dynamic_const_array",
+                    "c_arglist": [
+                        "c_var",
+                        "count",
+                        "ncount"
+                    ],
                     "function_name": "getPtrToDynamicConstArray"
                 }
             },
@@ -3842,6 +3953,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "getRawPtrToScalar",
                     "F_name_api": "get_raw_ptr_to_scalar",
+                    "c_arglist": [
+                        "c_var",
+                        "nitems"
+                    ],
                     "function_name": "getRawPtrToScalar"
                 }
             },
@@ -3961,6 +4076,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "getRawPtrToScalarForce",
                     "F_name_api": "get_raw_ptr_to_scalar_force",
+                    "c_arglist": [
+                        "c_var",
+                        "nitems"
+                    ],
                     "function_name": "getRawPtrToScalarForce"
                 }
             },
@@ -4077,6 +4196,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "getRawPtrToFixedArray",
                     "F_name_api": "get_raw_ptr_to_fixed_array",
+                    "c_arglist": [
+                        "c_var",
+                        "count"
+                    ],
                     "function_name": "getRawPtrToFixedArray"
                 }
             },
@@ -4196,6 +4319,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "getRawPtrToFixedArrayForce",
                     "F_name_api": "get_raw_ptr_to_fixed_array_force",
+                    "c_arglist": [
+                        "c_var",
+                        "count"
+                    ],
                     "function_name": "getRawPtrToFixedArrayForce"
                 }
             },
@@ -4316,6 +4443,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "getRawPtrToInt2d",
                     "F_name_api": "get_raw_ptr_to_int2d",
+                    "c_arglist": [
+                        "c_var",
+                        "arg"
+                    ],
                     "function_name": "getRawPtrToInt2d"
                 }
             },
@@ -4446,6 +4577,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "checkInt2d",
                     "F_name_api": "check_int2d",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg"
+                    ],
                     "function_name": "checkInt2d"
                 }
             },
@@ -4582,6 +4717,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "DimensionIn",
                     "F_name_api": "dimension_in",
+                    "c_arglist": [
+                        "c_var",
+                        "arg"
+                    ],
                     "function_name": "DimensionIn"
                 }
             },
@@ -4715,6 +4854,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "getAllocToFixedArray",
                     "F_name_api": "get_alloc_to_fixed_array",
+                    "c_arglist": [
+                        "c_var",
+                        "count"
+                    ],
                     "function_name": "getAllocToFixedArray"
                 }
             },
@@ -4837,6 +4980,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "returnAddress1",
                     "F_name_api": "return_address1",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "flag"
+                    ],
                     "function_name": "returnAddress1"
                 }
             },
@@ -4961,6 +5108,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "returnAddress2",
                     "F_name_api": "return_address2",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "flag"
+                    ],
                     "function_name": "returnAddress2"
                 }
             },
@@ -5073,6 +5224,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "fetchVoidPtr",
                     "F_name_api": "fetch_void_ptr",
+                    "c_arglist": [
+                        "c_var",
+                        "addr"
+                    ],
                     "function_name": "fetchVoidPtr"
                 }
             },
@@ -5188,6 +5343,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "updateVoidPtr",
                     "F_name_api": "update_void_ptr",
+                    "c_arglist": [
+                        "c_var",
+                        "addr"
+                    ],
                     "function_name": "updateVoidPtr"
                 }
             },
@@ -5318,6 +5477,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "VoidPtrArray",
                     "F_name_api": "void_ptr_array",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "addr"
+                    ],
                     "function_name": "VoidPtrArray"
                 }
             },
@@ -5390,6 +5553,9 @@
                 "zz_fmtdict": {
                     "C_name_api": "returnIntPtrToScalar",
                     "F_name_api": "return_int_ptr_to_scalar",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
                     "function_name": "returnIntPtrToScalar"
                 }
             },
@@ -5479,6 +5645,9 @@
                 "zz_fmtdict": {
                     "C_name_api": "returnIntPtrToFixedArray",
                     "F_name_api": "return_int_ptr_to_fixed_array",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
                     "function_name": "returnIntPtrToFixedArray"
                 }
             },
@@ -5552,6 +5721,9 @@
                 "zz_fmtdict": {
                     "C_name_api": "returnIntPtrToConstScalar",
                     "F_name_api": "return_int_ptr_to_const_scalar",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
                     "function_name": "returnIntPtrToConstScalar"
                 }
             },
@@ -5642,6 +5814,9 @@
                 "zz_fmtdict": {
                     "C_name_api": "returnIntPtrToFixedConstArray",
                     "F_name_api": "return_int_ptr_to_fixed_const_array",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
                     "function_name": "returnIntPtrToFixedConstArray"
                 }
             },
@@ -5717,6 +5892,9 @@
                 "zz_fmtdict": {
                     "C_name_api": "returnIntScalar",
                     "F_name_api": "return_int_scalar",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
                     "function_name": "returnIntScalar"
                 }
             },
@@ -5797,6 +5975,9 @@
                 "zz_fmtdict": {
                     "C_name_api": "returnIntRaw",
                     "F_name_api": "return_int_raw",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
                     "function_name": "returnIntRaw"
                 }
             },
@@ -5930,6 +6111,10 @@
                 "zz_fmtdict": {
                     "C_name_api": "returnIntRawWithArgs",
                     "F_name_api": "return_int_raw_with_args",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "name"
+                    ],
                     "function_name": "returnIntRawWithArgs"
                 }
             },
@@ -6011,6 +6196,9 @@
                 "zz_fmtdict": {
                     "C_name_api": "returnRawPtrToInt2d",
                     "F_name_api": "return_raw_ptr_to_int2d",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
                     "function_name": "returnRawPtrToInt2d"
                 }
             },
@@ -6103,6 +6291,9 @@
                 "zz_fmtdict": {
                     "C_name_api": "returnIntAllocToFixedArray",
                     "F_name_api": "return_int_alloc_to_fixed_array",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
                     "function_name": "returnIntAllocToFixedArray"
                 }
             }

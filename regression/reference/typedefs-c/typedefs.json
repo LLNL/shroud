@@ -500,6 +500,10 @@
                     "F_name_generic": "typefunc",
                     "F_name_impl": "typefunc",
                     "PY_name_impl": "PY_typefunc",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg"
+                    ],
                     "function_name": "typefunc"
                 },
                 "zz_fmtlang": {
@@ -673,6 +677,10 @@
                     "F_name_function": "typefunc_wrap",
                     "F_name_generic": "typefunc_wrap",
                     "F_name_impl": "typefunc_wrap",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg"
+                    ],
                     "function_name": "typefunc_wrap"
                 }
             },
@@ -878,6 +886,10 @@
                     "F_name_generic": "return_enum",
                     "F_name_impl": "return_enum",
                     "PY_name_impl": "PY_returnEnum",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "in"
+                    ],
                     "function_name": "returnEnum"
                 },
                 "zz_fmtlang": {
@@ -1099,6 +1111,10 @@
                     "F_name_generic": "return_type_id",
                     "F_name_impl": "return_type_id",
                     "PY_name_impl": "PY_returnTypeID",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "in"
+                    ],
                     "function_name": "returnTypeID"
                 },
                 "zz_fmtlang": {
@@ -1282,6 +1298,10 @@
                     "F_name_generic": "typestruct",
                     "F_name_impl": "typestruct",
                     "PY_name_impl": "PY_typestruct",
+                    "f_arglist": [
+                        "f_var",
+                        "arg1"
+                    ],
                     "function_name": "typestruct"
                 },
                 "zz_fmtlang": {
@@ -1448,6 +1468,10 @@
                     "F_name_function": "return_bytes_for_index_type",
                     "F_name_generic": "return_bytes_for_index_type",
                     "F_name_impl": "return_bytes_for_index_type",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg"
+                    ],
                     "function_name": "returnBytesForIndexType"
                 }
             },
@@ -1669,6 +1693,11 @@
                     "F_name_function": "return_shape_size",
                     "F_name_generic": "return_shape_size",
                     "F_name_impl": "return_shape_size",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "ndims",
+                        "shape"
+                    ],
                     "function_name": "returnShapeSize"
                 }
             },
@@ -1819,6 +1848,10 @@
                     "F_name_function": "return_bytes_for_index_type2",
                     "F_name_generic": "return_bytes_for_index_type2",
                     "F_name_impl": "return_bytes_for_index_type2",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg"
+                    ],
                     "function_name": "returnBytesForIndexType2"
                 }
             },
@@ -2040,6 +2073,11 @@
                     "F_name_function": "return_shape_size2",
                     "F_name_generic": "return_shape_size2",
                     "F_name_impl": "return_shape_size2",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "ndims",
+                        "shape"
+                    ],
                     "function_name": "returnShapeSize2"
                 }
             }

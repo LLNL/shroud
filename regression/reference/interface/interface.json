@@ -72,6 +72,9 @@
                     "F_name_function": "function1",
                     "F_name_generic": "function1",
                     "F_name_impl": "function1",
+                    "f_arglist": [
+                        "f_var"
+                    ],
                     "function_name": "Function1"
                 }
             },
@@ -277,6 +280,11 @@
                     "F_name_function": "function2",
                     "F_name_generic": "function2",
                     "F_name_impl": "function2",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1",
+                        "arg2"
+                    ],
                     "function_name": "Function2"
                 }
             }

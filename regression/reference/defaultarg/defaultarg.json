@@ -263,6 +263,14 @@
                             "F_name_function": "new_0",
                             "F_name_generic": "class1",
                             "F_name_impl": "class1_new_0",
+                            "c_arglist": [
+                                "SHC_rv",
+                                "arg1"
+                            ],
+                            "f_arglist": [
+                                "SHT_rv",
+                                "arg1"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "new",
                             "function_suffix": "_0"
@@ -619,6 +627,16 @@
                             "F_name_function": "new_1",
                             "F_name_generic": "class1",
                             "F_name_impl": "class1_new_1",
+                            "c_arglist": [
+                                "SHC_rv",
+                                "arg1",
+                                "arg2"
+                            ],
+                            "f_arglist": [
+                                "SHT_rv",
+                                "arg1",
+                                "arg2"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "new",
                             "function_suffix": "_1"
@@ -1076,6 +1094,18 @@
                             "F_name_function": "new_2",
                             "F_name_generic": "class1",
                             "F_name_impl": "class1_new_2",
+                            "c_arglist": [
+                                "SHC_rv",
+                                "arg1",
+                                "arg2",
+                                "arg3"
+                            ],
+                            "f_arglist": [
+                                "SHT_rv",
+                                "arg1",
+                                "arg2",
+                                "arg3"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "new",
                             "function_suffix": "_2"
@@ -1165,10 +1195,16 @@
                             "F_name_function": "delete",
                             "F_name_generic": "delete",
                             "F_name_impl": "class1_delete",
+                            "c_arglist": [
+                                "self"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "delete"
                         }
@@ -1352,10 +1388,18 @@
                             "F_name_function": "default_arguments_0",
                             "F_name_generic": "default_arguments",
                             "F_name_impl": "class1_default_arguments_0",
+                            "c_arglist": [
+                                "self",
+                                "arg1"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "arg1"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "DefaultArguments",
                             "function_suffix": "_0"
@@ -1629,10 +1673,20 @@
                             "F_name_function": "default_arguments_1",
                             "F_name_generic": "default_arguments",
                             "F_name_impl": "class1_default_arguments_1",
+                            "c_arglist": [
+                                "self",
+                                "arg1",
+                                "arg2"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "arg1",
+                                "arg2"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "DefaultArguments",
                             "function_suffix": "_1"
@@ -1999,10 +2053,22 @@
                             "F_name_function": "default_arguments_2",
                             "F_name_generic": "default_arguments",
                             "F_name_impl": "class1_default_arguments_2",
+                            "c_arglist": [
+                                "self",
+                                "arg1",
+                                "arg2",
+                                "arg3"
+                            ],
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "arg1",
+                                "arg2",
+                                "arg3"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "function_name": "DefaultArguments",
                             "function_suffix": "_2"
@@ -2108,6 +2174,9 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_field1",
                             "function_name": "get_field1",
@@ -2215,6 +2284,9 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_field2",
                             "function_name": "get_field2",
@@ -2322,6 +2394,9 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
                             "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_field3",
                             "function_name": "get_field3",
@@ -2651,6 +2726,14 @@
                     "F_name_function": "apply_generic_nelems",
                     "F_name_generic": "apply_generic",
                     "F_name_impl": "apply_generic_nelems",
+                    "c_arglist": [
+                        "c_var",
+                        "num_elems"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "num_elems"
+                    ],
                     "function_name": "apply_generic",
                     "function_suffix": "_nelems"
                 }
@@ -2927,6 +3010,16 @@
                     "F_name_function": "apply_generic_nelems_offset",
                     "F_name_generic": "apply_generic",
                     "F_name_impl": "apply_generic_nelems_offset",
+                    "c_arglist": [
+                        "c_var",
+                        "num_elems",
+                        "offset"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "num_elems",
+                        "offset"
+                    ],
                     "function_name": "apply_generic",
                     "function_suffix": "_nelems_offset"
                 }
@@ -3296,6 +3389,18 @@
                     "F_name_function": "apply_generic_nelems_offset_stride",
                     "F_name_generic": "apply_generic",
                     "F_name_impl": "apply_generic_nelems_offset_stride",
+                    "c_arglist": [
+                        "c_var",
+                        "num_elems",
+                        "offset",
+                        "stride"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "num_elems",
+                        "offset",
+                        "stride"
+                    ],
                     "function_name": "apply_generic",
                     "function_suffix": "_nelems_offset_stride"
                 }
@@ -3575,6 +3680,16 @@
                     "F_name_function": "apply_generic_type_nelems",
                     "F_name_generic": "apply_generic",
                     "F_name_impl": "apply_generic_type_nelems",
+                    "c_arglist": [
+                        "c_var",
+                        "type",
+                        "num_elems"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "type",
+                        "num_elems"
+                    ],
                     "function_name": "apply_generic",
                     "function_suffix": "_type_nelems"
                 }
@@ -3943,6 +4058,18 @@
                     "F_name_function": "apply_generic_type_nelems_offset",
                     "F_name_generic": "apply_generic",
                     "F_name_impl": "apply_generic_type_nelems_offset",
+                    "c_arglist": [
+                        "c_var",
+                        "type",
+                        "num_elems",
+                        "offset"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "type",
+                        "num_elems",
+                        "offset"
+                    ],
                     "function_name": "apply_generic",
                     "function_suffix": "_type_nelems_offset"
                 }
@@ -4404,6 +4531,20 @@
                     "F_name_function": "apply_generic_type_nelems_offset_stride",
                     "F_name_generic": "apply_generic",
                     "F_name_impl": "apply_generic_type_nelems_offset_stride",
+                    "c_arglist": [
+                        "c_var",
+                        "type",
+                        "num_elems",
+                        "offset",
+                        "stride"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "type",
+                        "num_elems",
+                        "offset",
+                        "stride"
+                    ],
                     "function_name": "apply_generic",
                     "function_suffix": "_type_nelems_offset_stride"
                 }
@@ -4763,6 +4904,18 @@
                     "F_name_function": "apply_require_0",
                     "F_name_generic": "apply_require",
                     "F_name_impl": "apply_require_0",
+                    "c_arglist": [
+                        "c_var",
+                        "num_elems",
+                        "offset",
+                        "stride"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "num_elems",
+                        "offset",
+                        "stride"
+                    ],
                     "function_name": "apply_require",
                     "function_suffix": "_0"
                 }
@@ -5214,6 +5367,20 @@
                     "F_name_function": "apply_require_1",
                     "F_name_generic": "apply_require",
                     "F_name_impl": "apply_require_1",
+                    "c_arglist": [
+                        "c_var",
+                        "type",
+                        "num_elems",
+                        "offset",
+                        "stride"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "type",
+                        "num_elems",
+                        "offset",
+                        "stride"
+                    ],
                     "function_name": "apply_require",
                     "function_suffix": "_1"
                 }
@@ -5585,6 +5752,18 @@
                     "F_name_function": "apply_optional_0",
                     "F_name_generic": "apply_optional",
                     "F_name_impl": "apply_optional_0",
+                    "c_arglist": [
+                        "c_var",
+                        "num_elems",
+                        "offset",
+                        "stride"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "num_elems",
+                        "offset",
+                        "stride"
+                    ],
                     "function_name": "apply_optional",
                     "function_suffix": "_0"
                 }
@@ -6048,6 +6227,20 @@
                     "F_name_function": "apply_optional_1",
                     "F_name_generic": "apply_optional",
                     "F_name_impl": "apply_optional_1",
+                    "c_arglist": [
+                        "c_var",
+                        "type",
+                        "num_elems",
+                        "offset",
+                        "stride"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "type",
+                        "num_elems",
+                        "offset",
+                        "stride"
+                    ],
                     "function_name": "apply_optional",
                     "function_suffix": "_1"
                 }

@@ -301,6 +301,16 @@ See the sgroup.yaml test.
 Format fields
 -------------
 
+Each statement group is evaluated in the context of a format
+dictionary created for the function result or argument.
+
+* c_arglist, f_arglist
+
+  An array of format fields for all arguments to the function.  Entry
+  0 is the function, 1 is the first argument, and so on.  This allows
+  a statement group to access other variable using a value such as
+  ``c_arglist[1].c_local_cxx``.
+
 Several format fields are defined to help use a set of statements with both
 pointers and references.
 

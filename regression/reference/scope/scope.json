@@ -735,6 +735,10 @@
                     "F_name_function": "data_pointer_get_items",
                     "F_name_generic": "data_pointer_get_items",
                     "F_name_impl": "data_pointer_get_items",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "SH_this"
+                    ],
                     "field_name": "items",
                     "function_name": "DataPointer_get_items",
                     "struct_name": "DataPointer",
@@ -945,6 +949,11 @@
                     "F_name_function": "data_pointer_set_items",
                     "F_name_generic": "data_pointer_set_items",
                     "F_name_impl": "data_pointer_set_items",
+                    "f_arglist": [
+                        "f_var",
+                        "SH_this",
+                        "val"
+                    ],
                     "field_name": "items",
                     "function_name": "DataPointer_set_items",
                     "struct_name": "DataPointer",
@@ -1350,6 +1359,10 @@
                             "F_name_function": "data_pointer_get_items",
                             "F_name_generic": "data_pointer_get_items",
                             "F_name_impl": "data_pointer_get_items",
+                            "f_arglist": [
+                                "SHT_rv",
+                                "SH_this"
+                            ],
                             "field_name": "items",
                             "function_name": "DataPointer_get_items",
                             "struct_name": "DataPointer",
@@ -1560,6 +1573,11 @@
                             "F_name_function": "data_pointer_set_items",
                             "F_name_generic": "data_pointer_set_items",
                             "F_name_impl": "data_pointer_set_items",
+                            "f_arglist": [
+                                "f_var",
+                                "SH_this",
+                                "val"
+                            ],
                             "field_name": "items",
                             "function_name": "DataPointer_set_items",
                             "struct_name": "DataPointer",
@@ -1992,6 +2010,10 @@
                             "F_name_function": "data_pointer_get_items",
                             "F_name_generic": "data_pointer_get_items",
                             "F_name_impl": "data_pointer_get_items",
+                            "f_arglist": [
+                                "SHT_rv",
+                                "SH_this"
+                            ],
                             "field_name": "items",
                             "function_name": "DataPointer_get_items",
                             "struct_name": "DataPointer",
@@ -2202,6 +2224,11 @@
                             "F_name_function": "data_pointer_set_items",
                             "F_name_generic": "data_pointer_set_items",
                             "F_name_impl": "data_pointer_set_items",
+                            "f_arglist": [
+                                "f_var",
+                                "SH_this",
+                                "val"
+                            ],
                             "field_name": "items",
                             "function_name": "DataPointer_set_items",
                             "struct_name": "DataPointer",

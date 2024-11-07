@@ -3317,6 +3317,10 @@
                     "F_name_function": "struct1_get_arg2",
                     "F_name_generic": "struct1_get_arg2",
                     "F_name_impl": "struct1_get_arg2",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "SH_this"
+                    ],
                     "field_name": "arg2",
                     "function_name": "struct1_get_arg2",
                     "struct_name": "struct1",
@@ -3527,6 +3531,11 @@
                     "F_name_function": "struct1_set_arg2",
                     "F_name_generic": "struct1_set_arg2",
                     "F_name_impl": "struct1_set_arg2",
+                    "f_arglist": [
+                        "f_var",
+                        "SH_this",
+                        "val"
+                    ],
                     "field_name": "arg2",
                     "function_name": "struct1_set_arg2",
                     "struct_name": "struct1",

@@ -4354,6 +4354,7 @@ c_subroutine_assignment_weakptr:
   notes:
   - std::weak_ptr has no wrapped constructor.
   - It must be made from a std::shared_ptr with an assignment.
+  - arglist[1] is the 'from' argument.
   intent: subroutine
   c_call:
   - if (SH_this == nullptr) {{+
@@ -4361,7 +4362,7 @@ c_subroutine_assignment_weakptr:
   - self->addr = SH_this;
   - self->idtor = {idtor};
   - -}} else {{+
-  - '*{CXX_this} = *SHC_from_cxx;'
+  - '*{CXX_this} = *{c_arglist[1].c_local_cxx};'
   - -}}
   destructor_header:
   - <memory>
@@ -14177,6 +14178,7 @@ f_subroutine_assignment_weakptr:
   notes:
   - std::weak_ptr has no wrapped constructor.
   - It must be made from a std::shared_ptr with an assignment.
+  - arglist[1] is the 'from' argument.
   intent: subroutine
   f_call:
   - call {f_call_function}({F_arg_c_call})
@@ -14186,7 +14188,7 @@ f_subroutine_assignment_weakptr:
   - self->addr = SH_this;
   - self->idtor = {idtor};
   - -}} else {{+
-  - '*{CXX_this} = *SHC_from_cxx;'
+  - '*{CXX_this} = *{c_arglist[1].c_local_cxx};'
   - -}}
   destructor_header:
   - <memory>

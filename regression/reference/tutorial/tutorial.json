@@ -190,6 +190,12 @@
                     "LUA_name_api": "NoReturnNoArguments",
                     "LUA_name_impl": "l_NoReturnNoArguments",
                     "PY_name_impl": "PY_NoReturnNoArguments",
+                    "c_arglist": [
+                        "c_var"
+                    ],
+                    "f_arglist": [
+                        "f_var"
+                    ],
                     "function_name": "NoReturnNoArguments"
                 },
                 "zz_fmtlang": {
@@ -641,6 +647,16 @@
                     "LUA_name_api": "PassByValue",
                     "LUA_name_impl": "l_PassByValue",
                     "PY_name_impl": "PY_PassByValue",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg1",
+                        "arg2"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1",
+                        "arg2"
+                    ],
                     "function_name": "PassByValue"
                 },
                 "zz_fmtlang": {
@@ -1182,6 +1198,16 @@
                     "LUA_name_api": "ConcatenateStrings",
                     "LUA_name_impl": "l_ConcatenateStrings",
                     "PY_name_impl": "PY_ConcatenateStrings",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg1",
+                        "arg2"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1",
+                        "arg2"
+                    ],
                     "function_name": "ConcatenateStrings"
                 },
                 "zz_fmtlang": {
@@ -1338,6 +1364,12 @@
                     "F_name_function": "use_default_arguments",
                     "F_name_generic": "use_default_arguments",
                     "F_name_impl": "use_default_arguments",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "UseDefaultArguments",
                     "function_suffix": ""
                 }
@@ -1565,6 +1597,14 @@
                     "F_name_function": "use_default_arguments_arg1",
                     "F_name_generic": "use_default_arguments",
                     "F_name_impl": "use_default_arguments_arg1",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg1"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1"
+                    ],
                     "function_name": "UseDefaultArguments",
                     "function_suffix": "_arg1"
                 }
@@ -2024,6 +2064,16 @@
                     "LUA_name_impl": "l_UseDefaultArguments",
                     "PY_cleanup_decref": "Py_XDECREF",
                     "PY_name_impl": "PY_UseDefaultArguments_arg1_arg2",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg1",
+                        "arg2"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg1",
+                        "arg2"
+                    ],
                     "function_name": "UseDefaultArguments",
                     "function_suffix": "_arg1_arg2"
                 },
@@ -2325,6 +2375,14 @@
                     "LUA_name_api": "OverloadedFunction",
                     "LUA_name_impl": "l_OverloadedFunction",
                     "PY_name_impl": "PY_OverloadedFunction_from_name",
+                    "c_arglist": [
+                        "c_var",
+                        "name"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "name"
+                    ],
                     "function_name": "OverloadedFunction",
                     "function_suffix": "_from_name"
                 },
@@ -2597,6 +2655,14 @@
                     "F_name_generic": "overloaded_function",
                     "F_name_impl": "overloaded_function_from_index",
                     "PY_name_impl": "PY_OverloadedFunction_from_index",
+                    "c_arglist": [
+                        "c_var",
+                        "indx"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "indx"
+                    ],
                     "function_name": "OverloadedFunction",
                     "function_suffix": "_from_index"
                 },
@@ -2983,6 +3049,14 @@
                     "LUA_name_api": "TemplateArgument",
                     "LUA_name_impl": "l_TemplateArgument",
                     "PY_name_impl": "PY_TemplateArgument_int",
+                    "c_arglist": [
+                        "c_var",
+                        "arg"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "arg"
+                    ],
                     "function_name": "TemplateArgument",
                     "template_suffix": "_int"
                 },
@@ -3291,6 +3365,14 @@
                     "F_name_generic": "template_argument",
                     "F_name_impl": "template_argument_double",
                     "PY_name_impl": "PY_TemplateArgument_double",
+                    "c_arglist": [
+                        "c_var",
+                        "arg"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "arg"
+                    ],
                     "function_name": "TemplateArgument",
                     "template_suffix": "_double"
                 },
@@ -3539,6 +3621,12 @@
                     "F_name_function": "template_return_int",
                     "F_name_generic": "template_return",
                     "F_name_impl": "template_return_int",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "TemplateReturn",
                     "template_suffix": "_int"
                 }
@@ -3704,6 +3792,12 @@
                     "F_name_function": "template_return_double",
                     "F_name_generic": "template_return",
                     "F_name_impl": "template_return_double",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "TemplateReturn",
                     "template_suffix": "_double"
                 }
@@ -3816,6 +3910,12 @@
                     "LUA_name_api": "FortranGenericOverloaded",
                     "LUA_name_impl": "l_FortranGenericOverloaded",
                     "PY_name_impl": "PY_FortranGenericOverloaded_0",
+                    "c_arglist": [
+                        "c_var"
+                    ],
+                    "f_arglist": [
+                        "f_var"
+                    ],
                     "function_name": "FortranGenericOverloaded",
                     "function_suffix": "_0"
                 },
@@ -4199,6 +4299,11 @@
                     "C_name_api": "FortranGenericOverloaded",
                     "F_name_api": "fortran_generic_overloaded",
                     "PY_name_impl": "PY_FortranGenericOverloaded_1",
+                    "c_arglist": [
+                        "c_var",
+                        "name",
+                        "arg2"
+                    ],
                     "function_name": "FortranGenericOverloaded",
                     "function_suffix": "_1"
                 },
@@ -4419,6 +4524,11 @@
                     "F_name_function": "fortran_generic_overloaded_1_float",
                     "F_name_generic": "fortran_generic_overloaded",
                     "F_name_impl": "fortran_generic_overloaded_1_float",
+                    "f_arglist": [
+                        "f_var",
+                        "name",
+                        "arg2"
+                    ],
                     "function_name": "FortranGenericOverloaded",
                     "function_suffix": "_1_float"
                 }
@@ -4624,6 +4734,11 @@
                     "F_name_function": "fortran_generic_overloaded_1_double",
                     "F_name_generic": "fortran_generic_overloaded",
                     "F_name_impl": "fortran_generic_overloaded_1_double",
+                    "f_arglist": [
+                        "f_var",
+                        "name",
+                        "arg2"
+                    ],
                     "function_name": "FortranGenericOverloaded",
                     "function_suffix": "_1_double"
                 }
@@ -4848,6 +4963,14 @@
                     "F_name_function": "use_default_overload_num",
                     "F_name_generic": "use_default_overload",
                     "F_name_impl": "use_default_overload_num",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "num"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "num"
+                    ],
                     "function_name": "UseDefaultOverload",
                     "function_suffix": "_num"
                 }
@@ -5161,6 +5284,16 @@
                     "F_name_function": "use_default_overload_num_offset",
                     "F_name_generic": "use_default_overload",
                     "F_name_impl": "use_default_overload_num_offset",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "num",
+                        "offset"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "num",
+                        "offset"
+                    ],
                     "function_name": "UseDefaultOverload",
                     "function_suffix": "_num_offset"
                 }
@@ -5750,6 +5883,18 @@
                     "LUA_name_impl": "l_UseDefaultOverload",
                     "PY_cleanup_decref": "Py_XDECREF",
                     "PY_name_impl": "PY_UseDefaultOverload_num_offset_stride",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "num",
+                        "offset",
+                        "stride"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "num",
+                        "offset",
+                        "stride"
+                    ],
                     "function_name": "UseDefaultOverload",
                     "function_suffix": "_num_offset_stride"
                 },
@@ -6083,6 +6228,16 @@
                     "F_name_function": "use_default_overload_3",
                     "F_name_generic": "use_default_overload",
                     "F_name_impl": "use_default_overload_3",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "type",
+                        "num"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "type",
+                        "num"
+                    ],
                     "function_name": "UseDefaultOverload",
                     "function_suffix": "_3"
                 }
@@ -6479,6 +6634,18 @@
                     "F_name_function": "use_default_overload_4",
                     "F_name_generic": "use_default_overload",
                     "F_name_impl": "use_default_overload_4",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "type",
+                        "num",
+                        "offset"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "type",
+                        "num",
+                        "offset"
+                    ],
                     "function_name": "UseDefaultOverload",
                     "function_suffix": "_4"
                 }
@@ -7193,6 +7360,20 @@
                     "F_name_impl": "use_default_overload_5",
                     "PY_cleanup_decref": "Py_XDECREF",
                     "PY_name_impl": "PY_UseDefaultOverload_5",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "type",
+                        "num",
+                        "offset",
+                        "stride"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "type",
+                        "num",
+                        "offset",
+                        "stride"
+                    ],
                     "function_name": "UseDefaultOverload",
                     "function_suffix": "_5"
                 },
@@ -7514,6 +7695,14 @@
                     "LUA_name_api": "typefunc",
                     "LUA_name_impl": "l_typefunc",
                     "PY_name_impl": "PY_typefunc",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg"
+                    ],
                     "function_name": "typefunc"
                 },
                 "zz_fmtlang": {
@@ -7874,6 +8063,14 @@
                     "LUA_name_api": "colorfunc",
                     "LUA_name_impl": "l_colorfunc",
                     "PY_name_impl": "PY_colorfunc",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "arg"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg"
+                    ],
                     "function_name": "colorfunc"
                 },
                 "zz_fmtlang": {
@@ -8254,6 +8451,16 @@
                     "F_name_generic": "get_min_max",
                     "F_name_impl": "get_min_max",
                     "PY_name_impl": "PY_getMinMax",
+                    "c_arglist": [
+                        "c_var",
+                        "min",
+                        "max"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "min",
+                        "max"
+                    ],
                     "function_name": "getMinMax"
                 },
                 "zz_fmtlang": {
@@ -8894,6 +9101,16 @@
                     "F_name_function": "callback1",
                     "F_name_generic": "callback1",
                     "F_name_impl": "callback1",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "in",
+                        "incr"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "in",
+                        "incr"
+                    ],
                     "function_name": "callback1"
                 }
             },
@@ -9106,6 +9323,12 @@
                     "LUA_name_api": "LastFunctionCalled",
                     "LUA_name_impl": "l_LastFunctionCalled",
                     "PY_name_impl": "PY_LastFunctionCalled",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "LastFunctionCalled"
                 },
                 "zz_fmtlang": {

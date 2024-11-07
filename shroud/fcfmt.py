@@ -143,6 +143,8 @@ class FillFormat(object):
         func_cursor = cursor.push_node(node)
 
         fmt_func = node.fmtdict
+        arglist = []
+        setattr(fmt_func, "{}_arglist".format(wlang), arglist)
 
         bind_result = statements.fetch_func_bind(node, wlang)
         fmt_result = statements.set_bind_fmtdict(bind_result, fmt_func)
@@ -156,6 +158,7 @@ class FillFormat(object):
         func_cursor.stmt = result_stmt
         set_share_function_format(node, bind_result, wlang)
         func_cursor.stmt = None
+        arglist.append(bind_result.fmtdict)
 
         # --- Loop over function parameters
         for arg in node.ast.declarator.params:
@@ -167,6 +170,7 @@ class FillFormat(object):
             fmt_arg = statements.set_bind_fmtdict(bind_arg, fmt_func)
             arg_stmt = bind_arg.stmt
             func_cursor.stmt = arg_stmt
+            arglist.append(fmt_arg)
 
             set_f_arg_format(node, arg, bind_arg, wlang)
             if wlang == "f":
