@@ -81,7 +81,13 @@ end type LIB_SHROUD_capsule_data
     "dependent_helpers": [
         "capsule_data_helper"
     ],
-    "fmtname": "LIB_SHROUD_capsule_dtor"
+    "fmtdict": {
+        "cnamefunc": "{C_memory_dtor_function}",
+        "cnameproto": "void {cnamefunc}\t({C_capsule_data_type} *cap)",
+        "fnamefunc": "{C_prefix}SHROUD_capsule_dtor"
+    },
+    "fmtname": "LIB_SHROUD_capsule_dtor",
+    "name": "capsule_dtor"
 }
 
 ##### start capsule_dtor interface

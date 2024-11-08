@@ -163,34 +163,45 @@ def add_external_helpers(symtab):
 
     ########################################
     name = "capsule_dtor"
-    fmt.hname = name
-    fmt.cnamefunc = fmt.C_memory_dtor_function
-    fmt.cnameproto = wformat("void {cnamefunc}\t({C_capsule_data_type} *cap)",fmt)
-    # Add the C prototype. The body is created Wrapc.write_capsule_code.
-    fmt.fnamefunc = wformat("{C_prefix}SHROUD_capsule_dtor", fmt)
     CHelpers[name] = dict(
-        fmtname=fmt.cnamefunc,
+        name="capsule_dtor",
+        fmtname="{cnamefunc}",
+        fmtdict=dict(
+            cnamefunc = "{C_memory_dtor_function}",
+            cnameproto = "void {cnamefunc}\t({C_capsule_data_type} *cap)",
+            # Add the C prototype. The body is created Wrapc.write_capsule_code.
+            fnamefunc = "{C_prefix}SHROUD_capsule_dtor",
+        ),
         api="c",
         dependent_helpers=["capsule_data_helper"],
-        proto=fmt.cnameproto + ";",
+        proto="{cnameproto};",
     )
+    apply_fmtdict_from_helpers(CHelpers[name], name, fmt)
+    
     FHelpers[name] = dict(
-        fmtname=fmt.fnamefunc,
-        dependent_helpers=["capsule_data_helper"],
-        interface=wformat(
-            """
-interface+
-! helper {hname}
-! Delete memory in a capsule.
-subroutine {fnamefunc}(ptr)\tbind(C, name="{cnamefunc}")+
-import {F_capsule_data_type}
-implicit none
-type({F_capsule_data_type}), intent(INOUT) :: ptr
--end subroutine {fnamefunc}
--end interface""",
-            fmt,
+        name="capsule_dtor",
+        fmtname="{fnamefunc}",
+        fmtdict=dict(
+            cnamefunc = "{C_memory_dtor_function}",
+            cnameproto = "void {cnamefunc}\t({C_capsule_data_type} *cap)",
+            # Add the C prototype. The body is created Wrapc.write_capsule_code.
+            fnamefunc = "{C_prefix}SHROUD_capsule_dtor",
         ),
+        dependent_helpers=["capsule_data_helper"],
+        interface=[
+            "",
+            "interface+",
+            "! helper {hname}",
+            "! Delete memory in a capsule.",
+            "subroutine {fnamefunc}(ptr)\tbind(C, name=\"{cnamefunc}\")+",
+            "import {F_capsule_data_type}",
+            "implicit none",
+            "type({F_capsule_data_type}), intent(INOUT) :: ptr",
+            "-end subroutine {fnamefunc}",
+            "-end interface",
+        ],
     )
+    apply_fmtdict_from_helpers(FHelpers[name], name, fmt)
     
     ########################################
     # XXX - Only used with std::vector and thus C++.
@@ -2097,20 +2108,49 @@ def gather_helpers(fp, wrapper, helpers, keys):
 
     return
 
+c_lines = ["source", "c_source", "cxx_source"]
+f_lines = ["derived_type", "interface", "source"]
+fc_lines = c_lines + f_lines
+
 def write_c_helpers(fp):
     wrapper = util.WrapperMixin()
     wrapper.linelen = 72
     wrapper.indent = 0
     wrapper.cont = ""
-    output = gather_helpers(fp, wrapper, CHelpers, ["source", "c_source", "cxx_source"])
+    output = gather_helpers(fp, wrapper, CHelpers, c_lines)
 
 def write_f_helpers(fp):
     wrapper = util.WrapperMixin()
     wrapper.linelen = 72
     wrapper.indent = 0
     wrapper.cont = "&"
-    output = gather_helpers(fp, wrapper, FHelpers, ["derived_type", "interface", "source"])
+    output = gather_helpers(fp, wrapper, FHelpers, f_lines)
 
+
+def apply_fmtdict_from_helpers(helper, hname, fmt):
+    """Apply fmtdict field from helpers
+    """
+    fmt.hname = helper["name"]
+    if "fmtdict" in helper:
+        for key, value in helper["fmtdict"].items():
+            setattr(fmt, key, wformat(value, fmt))
+
+    # Merge list into a single string
+    for field in fc_lines:
+        if field in helper:
+            helper[field] = "\n".join(helper[field])
+            
+    for field in [
+            # general
+            "fmtname",
+            # C
+            "proto",
+            # Fortran
+            "interface",
+            ]:
+        if field in helper:
+            helper[field] = wformat(helper[field], fmt)
+    
 
 cmake = """
 # Setup Shroud

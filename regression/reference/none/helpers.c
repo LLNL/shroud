@@ -175,7 +175,13 @@ typedef struct s_LIB_SHROUD_capsule_data LIB_SHROUD_capsule_data;
     "dependent_helpers": [
         "capsule_data_helper"
     ],
+    "fmtdict": {
+        "cnamefunc": "{C_memory_dtor_function}",
+        "cnameproto": "void {cnamefunc}\t({C_capsule_data_type} *cap)",
+        "fnamefunc": "{C_prefix}SHROUD_capsule_dtor"
+    },
     "fmtname": "LIB_SHROUD_memory_destructor",
+    "name": "capsule_dtor",
     "proto": "void LIB_SHROUD_memory_destructor\t(LIB_SHROUD_capsule_data *cap);"
 }
 
