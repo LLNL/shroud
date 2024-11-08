@@ -2126,7 +2126,7 @@ return 1;""",
         """
         self.c_helper[name] = True
         # Adjust for alias like with type char.
-        return whelpers.CHelpers[name]["name"]
+        return whelpers.CHelpers[name]["fmtname"]
         
     def _gather_helper_code(self, name, done):
         """Add code from helpers.

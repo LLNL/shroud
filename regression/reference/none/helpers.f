@@ -4,6 +4,7 @@
     "dependent_helpers": [
         "type_defines"
     ],
+    "fmtname": "LIB_SHROUD_array",
     "modules": {
         "iso_c_binding": [
             "C_NULL_PTR",
@@ -12,8 +13,7 @@
             "C_INT",
             "C_LONG"
         ]
-    },
-    "name": "LIB_SHROUD_array"
+    }
 }
 
 ##### start array_context derived_type
@@ -39,7 +39,7 @@ end type LIB_SHROUD_array
     "dependent_helpers": [
         "array_context"
     ],
-    "name": "LIB_SHROUD_array_string_allocatable"
+    "fmtname": "LIB_SHROUD_array_string_allocatable"
 }
 
 ##### start array_string_allocatable interface
@@ -57,14 +57,14 @@ end interface
 
 ---------- capsule_data_helper ----------
 {
+    "fmtname": "LIB_SHROUD_capsule_data",
     "modules": {
         "iso_c_binding": [
             "C_PTR",
             "C_INT",
             "C_NULL_PTR"
         ]
-    },
-    "name": "LIB_SHROUD_capsule_data"
+    }
 }
 
 ##### start capsule_data_helper derived_type
@@ -81,7 +81,7 @@ end type LIB_SHROUD_capsule_data
     "dependent_helpers": [
         "capsule_data_helper"
     ],
-    "name": "LIB_SHROUD_capsule_dtor"
+    "fmtname": "LIB_SHROUD_capsule_dtor"
 }
 
 ##### start capsule_dtor interface
@@ -138,7 +138,7 @@ end subroutine SHROUD_capsule_delete
     "dependent_helpers": [
         "array_context"
     ],
-    "name": "LIB_SHROUD_copy_array"
+    "fmtname": "LIB_SHROUD_copy_array"
 }
 
 ##### start copy_array interface
@@ -162,7 +162,7 @@ end interface
     "dependent_helpers": [
         "array_context"
     ],
-    "name": "LIB_SHROUD_copy_string"
+    "fmtname": "LIB_SHROUD_copy_string"
 }
 
 ##### start copy_string interface
@@ -186,7 +186,7 @@ end interface
     "dependent_helpers": [
         "array_context"
     ],
-    "name": "LIB_SHROUD_pointer_string"
+    "fmtname": "LIB_SHROUD_pointer_string"
 }
 
 ##### start pointer_string source
@@ -248,7 +248,7 @@ integer, parameter, private :: &
     "dependent_helpers": [
         "array_context"
     ],
-    "name": "LIB_SHROUD_vector_string_allocatable"
+    "fmtname": "LIB_SHROUD_vector_string_allocatable"
 }
 
 ##### start vector_string_allocatable interface
@@ -270,7 +270,7 @@ end interface
     "dependent_helpers": [
         "array_context"
     ],
-    "name": "LIB_shroud_vector_string_out"
+    "fmtname": "LIB_shroud_vector_string_out"
 }
 
 ##### start vector_string_out interface

@@ -759,30 +759,32 @@ class FillFormat(object):
         add_f_helper(node_helpers, stmt.f_helper, fmt)
         
 def add_c_helper(node_helpers, helpers, fmt):
-    """Add a list of C helpers."""
+    """Add a list of C helpers.
+    Add fmt.c_helper_{fmtname} for use by pre_call and post_call.
+    """
     for c_helper in helpers:
         helper = wformat(c_helper, fmt)
-        if helper not in whelpers.CHelpers:
-            error.get_cursor().warning("No such c_helper '{}'".format(helper))
-        else:
+        if helper in whelpers.CHelpers:
             node_helpers[helper] = True
-            name = whelpers.CHelpers[helper].get("name")
-            if name:
-                setattr(fmt, "c_helper_" + helper, name)
+            fmtname = whelpers.CHelpers[helper].get("fmtname")
+            if fmtname:
+                setattr(fmt, "c_helper_" + helper, fmtname)
+        else:
+            error.get_cursor().warning("No such c_helper '{}'".format(helper))
 
 def add_f_helper(node_helpers, helpers, fmt):
     """Add a list of Fortran helpers.
-    Add fmt.fhelper_X for use by pre_call and post_call.
+    Add fmt.f_helper_{fmtname} for use by pre_call and post_call.
     """
     for f_helper in helpers:
         helper = wformat(f_helper, fmt)
-        if helper not in whelpers.FHelpers:
-            error.get_cursor().warning("No such f_helper '{}'".format(helper))
-        else:
+        if helper in whelpers.FHelpers:
             node_helpers[helper] = True
-            name = whelpers.FHelpers[helper].get("name")
-            if name:
-                setattr(fmt, "f_helper_" + helper, name)
+            fmtname = whelpers.FHelpers[helper].get("fmtname")
+            if fmtname:
+                setattr(fmt, "f_helper_" + helper, fmtname)
+        else:
+            error.get_cursor().warning("No such f_helper '{}'".format(helper))
 
 
 ######################################################################
