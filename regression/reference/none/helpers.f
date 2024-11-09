@@ -39,7 +39,13 @@ end type LIB_SHROUD_array
     "dependent_helpers": [
         "array_context"
     ],
-    "fmtname": "LIB_SHROUD_array_string_allocatable"
+    "fmtdict": {
+        "cnamefunc": "{C_prefix}ShroudArrayStringAllocatable",
+        "cnameproto": "void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)",
+        "fnamefunc": "{C_prefix}SHROUD_array_string_allocatable"
+    },
+    "fmtname": "LIB_SHROUD_array_string_allocatable",
+    "name": "array_string_allocatable"
 }
 
 ##### start array_string_allocatable interface
@@ -144,7 +150,12 @@ end subroutine SHROUD_capsule_delete
     "dependent_helpers": [
         "array_context"
     ],
-    "fmtname": "LIB_SHROUD_copy_array"
+    "fmtdict": {
+        "cnamefunc": "{C_prefix}ShroudCopyArray",
+        "fnamefunc": "{C_prefix}SHROUD_{hname}"
+    },
+    "fmtname": "LIB_SHROUD_copy_array",
+    "name": "copy_array"
 }
 
 ##### start copy_array interface
@@ -168,7 +179,12 @@ end interface
     "dependent_helpers": [
         "array_context"
     ],
-    "fmtname": "LIB_SHROUD_copy_string"
+    "fmtdict": {
+        "cnamefunc": "{C_prefix}ShroudCopyString",
+        "fnamefunc": "{C_prefix}SHROUD_copy_string"
+    },
+    "fmtname": "LIB_SHROUD_copy_string",
+    "name": "copy_string"
 }
 
 ##### start copy_string interface
@@ -192,7 +208,11 @@ end interface
     "dependent_helpers": [
         "array_context"
     ],
-    "fmtname": "LIB_SHROUD_pointer_string"
+    "fmtdict": {
+        "fnamefunc": "{C_prefix}SHROUD_pointer_string"
+    },
+    "fmtname": "LIB_SHROUD_pointer_string",
+    "name": "pointer_string"
 }
 
 ##### start pointer_string source
@@ -254,7 +274,13 @@ integer, parameter, private :: &
     "dependent_helpers": [
         "array_context"
     ],
-    "fmtname": "LIB_SHROUD_vector_string_allocatable"
+    "fmtdict": {
+        "cnamefunc": "{C_prefix}ShroudVectorStringAllocatable",
+        "cnameproto": "void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)",
+        "fnamefunc": "{C_prefix}SHROUD_vector_string_allocatable"
+    },
+    "fmtname": "LIB_SHROUD_vector_string_allocatable",
+    "name": "vector_string_allocatable"
 }
 
 ##### start vector_string_allocatable interface
@@ -276,7 +302,14 @@ end interface
     "dependent_helpers": [
         "array_context"
     ],
-    "fmtname": "LIB_shroud_vector_string_out"
+    "fmtdict": {
+        "cnamefunc": "{C_prefix}ShroudVectorStringOut",
+        "cnamefunc_vector_string_out": "{cnamefunc}",
+        "cnameproto": "void {cnamefunc}({C_array_type} *outdesc, std::vector<std::string> &in)",
+        "fnamefunc": "{C_prefix}shroud_vector_string_out"
+    },
+    "fmtname": "LIB_shroud_vector_string_out",
+    "name": "vector_string_out"
 }
 
 ##### start vector_string_out interface
