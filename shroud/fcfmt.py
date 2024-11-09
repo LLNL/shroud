@@ -766,7 +766,7 @@ def add_c_helper(node_helpers, helpers, fmt):
         helper = wformat(c_helper, fmt)
         if helper in whelpers.CHelpers:
             node_helpers[helper] = True
-            fmtname = whelpers.CHelpers[helper].get("fmtname")
+            fmtname = whelpers.CHelpers[helper].get("c_fmtname")
             if fmtname:
                 setattr(fmt, "c_helper_" + helper, fmtname)
         else:
@@ -780,7 +780,7 @@ def add_f_helper(node_helpers, helpers, fmt):
         helper = wformat(f_helper, fmt)
         if helper in whelpers.FHelpers:
             node_helpers[helper] = True
-            fmtname = whelpers.FHelpers[helper].get("fmtname")
+            fmtname = whelpers.FHelpers[helper].get("f_fmtname")
             if fmtname:
                 setattr(fmt, "f_helper_" + helper, fmtname)
         else:

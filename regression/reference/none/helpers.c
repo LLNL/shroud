@@ -34,13 +34,14 @@ typedef struct {
 
 ---------- array_context ----------
 {
+    "c_fmtname": "LIB_SHROUD_array",
     "dependent_helpers": [
         "type_defines"
     ],
-    "fmtname": "LIB_SHROUD_array",
     "include": [
         "<stddef.h>"
     ],
+    "name": "array_context",
     "scope": "cwrap_include"
 }
 
@@ -61,6 +62,7 @@ typedef struct s_LIB_SHROUD_array LIB_SHROUD_array;
 ---------- array_string_allocatable ----------
 {
     "api": "c",
+    "c_fmtname": "LIB_ShroudArrayStringAllocatable",
     "dependent_helpers": [
         "capsule_data_helper",
         "array_context",
@@ -71,7 +73,6 @@ typedef struct s_LIB_SHROUD_array LIB_SHROUD_array;
         "cnameproto": "void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)",
         "fnamefunc": "{C_prefix}SHROUD_array_string_allocatable"
     },
-    "fmtname": "LIB_ShroudArrayStringAllocatable",
     "name": "array_string_allocatable",
     "proto": "void LIB_ShroudArrayStringAllocatable(LIB_SHROUD_array *dest, LIB_SHROUD_capsule_data *src);",
     "scope": "cwrap_impl"
@@ -94,6 +95,7 @@ void LIB_ShroudArrayStringAllocatable(LIB_SHROUD_array *dest, LIB_SHROUD_capsule
 ---------- array_string_out ----------
 {
     "api": "cxx",
+    "c_fmtname": "LIB_ShroudArrayStringOut",
     "cxx_include": [
         "<cstring>",
         "<cstddef>"
@@ -106,7 +108,6 @@ void LIB_ShroudArrayStringAllocatable(LIB_SHROUD_array *dest, LIB_SHROUD_capsule
         "cnamefunc_array_string_out": "{cnamefunc}",
         "cnameproto": "void {cnamefunc}({C_array_type} *outdesc, std::string *in, size_t nsize)"
     },
-    "fmtname": "LIB_ShroudArrayStringOut",
     "name": "array_string_out",
     "proto": "void LIB_ShroudArrayStringOut(LIB_SHROUD_array *outdesc, std::string *in, size_t nsize);",
     "proto_include": [
@@ -142,11 +143,11 @@ void LIB_ShroudArrayStringOut(LIB_SHROUD_array *outdesc, std::string *in, size_t
 ---------- array_string_out_len ----------
 {
     "api": "cxx",
+    "c_fmtname": "LIB_ShroudArrayStringOutSize",
     "fmtdict": {
         "cnamefunc": "{C_prefix}ShroudArrayStringOutSize",
         "cnameproto": "size_t {cnamefunc}(std::string *in, size_t nsize)"
     },
-    "fmtname": "LIB_ShroudArrayStringOutSize",
     "name": "array_string_out_len",
     "proto": "size_t LIB_ShroudArrayStringOutSize(std::string *in, size_t nsize);",
     "proto_include": [
@@ -173,6 +174,7 @@ size_t LIB_ShroudArrayStringOutSize(std::string *in, size_t nsize)
 
 ---------- capsule_data_helper ----------
 {
+    "name": "capsule_data_helper",
     "scope": "cwrap_include"
 }
 
@@ -189,6 +191,7 @@ typedef struct s_LIB_SHROUD_capsule_data LIB_SHROUD_capsule_data;
 ---------- capsule_dtor ----------
 {
     "api": "c",
+    "c_fmtname": "LIB_SHROUD_memory_destructor",
     "dependent_helpers": [
         "capsule_data_helper"
     ],
@@ -197,13 +200,13 @@ typedef struct s_LIB_SHROUD_capsule_data LIB_SHROUD_capsule_data;
         "cnameproto": "void {cnamefunc}\t({C_capsule_data_type} *cap)",
         "fnamefunc": "{C_prefix}SHROUD_capsule_dtor"
     },
-    "fmtname": "LIB_SHROUD_memory_destructor",
     "name": "capsule_dtor",
     "proto": "void LIB_SHROUD_memory_destructor\t(LIB_SHROUD_capsule_data *cap);"
 }
 
 ---------- char_alloc ----------
 {
+    "c_fmtname": "ShroudCharAlloc",
     "c_include": [
         "<string.h>",
         "<stdlib.h>",
@@ -216,7 +219,7 @@ typedef struct s_LIB_SHROUD_capsule_data LIB_SHROUD_capsule_data;
     "dependent_helpers": [
         "char_len_trim"
     ],
-    "fmtname": "ShroudCharAlloc"
+    "name": "char_alloc"
 }
 
 ##### start char_alloc c_source
@@ -263,6 +266,7 @@ static char *ShroudCharAlloc(const char *src, int nsrc, int blanknull)
 
 ---------- char_array_alloc ----------
 {
+    "c_fmtname": "ShroudStrArrayAlloc",
     "c_include": [
         "<string.h>",
         "<stdlib.h>"
@@ -274,7 +278,7 @@ static char *ShroudCharAlloc(const char *src, int nsrc, int blanknull)
     "dependent_helpers": [
         "char_len_trim"
     ],
-    "fmtname": "ShroudStrArrayAlloc"
+    "name": "char_array_alloc"
 }
 
 ##### start char_array_alloc c_source
@@ -321,13 +325,14 @@ static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
 
 ---------- char_array_free ----------
 {
+    "c_fmtname": "ShroudStrArrayFree",
     "c_include": [
         "<stdlib.h>"
     ],
     "cxx_include": [
         "<cstdlib>"
     ],
-    "fmtname": "ShroudStrArrayFree"
+    "name": "char_array_free"
 }
 
 ##### start char_array_free c_source
@@ -358,13 +363,14 @@ static void ShroudStrArrayFree(char **src, int nsrc)
 
 ---------- char_blank_fill ----------
 {
+    "c_fmtname": "ShroudCharBlankFill",
     "c_include": [
         "<string.h>"
     ],
     "cxx_include": [
         "<cstring>"
     ],
-    "fmtname": "ShroudCharBlankFill"
+    "name": "char_blank_fill"
 }
 
 ##### start char_blank_fill c_source
@@ -391,13 +397,14 @@ static void ShroudCharBlankFill(char *dest, int ndest)
 
 ---------- char_copy ----------
 {
+    "c_fmtname": "ShroudCharCopy",
     "c_include": [
         "<string.h>"
     ],
     "cxx_include": [
         "<cstring>"
     ],
-    "fmtname": "ShroudCharCopy"
+    "name": "char_copy"
 }
 
 ##### start char_copy c_source
@@ -440,13 +447,14 @@ static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
 
 ---------- char_free ----------
 {
+    "c_fmtname": "ShroudCharFree",
     "c_include": [
         "<stdlib.h>"
     ],
     "cxx_include": [
         "<cstdlib>"
     ],
-    "fmtname": "ShroudCharFree"
+    "name": "char_free"
 }
 
 ##### start char_free c_source
@@ -475,7 +483,8 @@ static void ShroudCharFree(char *src)
 
 ---------- char_len_trim ----------
 {
-    "fmtname": "ShroudCharLenTrim"
+    "c_fmtname": "ShroudCharLenTrim",
+    "name": "char_len_trim"
 }
 
 ##### start char_len_trim source
@@ -499,6 +508,7 @@ static int ShroudCharLenTrim(const char *src, int nsrc) {
 
 ---------- copy_array ----------
 {
+    "c_fmtname": "LIB_ShroudCopyArray",
     "c_include": [
         "<string.h>",
         "<stddef.h>"
@@ -514,7 +524,6 @@ static int ShroudCharLenTrim(const char *src, int nsrc) {
         "cnamefunc": "{C_prefix}ShroudCopyArray",
         "fnamefunc": "{C_prefix}SHROUD_{hname}"
     },
-    "fmtname": "LIB_ShroudCopyArray",
     "name": "copy_array",
     "scope": "cwrap_impl"
 }
@@ -537,6 +546,7 @@ void LIB_ShroudCopyArray(LIB_SHROUD_array *data, void *c_var,
 
 ---------- copy_string ----------
 {
+    "c_fmtname": "LIB_ShroudCopyString",
     "cxx_include": [
         "<cstring>",
         "<cstddef>"
@@ -548,7 +558,6 @@ void LIB_ShroudCopyArray(LIB_SHROUD_array *data, void *c_var,
         "cnamefunc": "{C_prefix}ShroudCopyString",
         "fnamefunc": "{C_prefix}SHROUD_copy_string"
     },
-    "fmtname": "LIB_ShroudCopyString",
     "name": "copy_string",
     "scope": "cwrap_impl"
 }
@@ -5174,7 +5183,8 @@ static void FREE_py_capsule_dtor(PyObject *obj)
     ],
     "cxx_include": [
         "<cstddef>"
-    ]
+    ],
+    "name": "size_CFI"
 }
 
 ##### start size_CFI source
@@ -5193,6 +5203,7 @@ size_t ShroudSizeCFI(CFI_cdesc_t *desc)
 
 ---------- string_to_cdesc ----------
 {
+    "c_fmtname": "ShroudStringToCdesc",
     "cxx_include": [
         "<cstring>",
         "<cstddef>"
@@ -5203,7 +5214,6 @@ size_t ShroudSizeCFI(CFI_cdesc_t *desc)
     "fmtdict": {
         "cnamefunc": "ShroudStringToCdesc"
     },
-    "fmtname": "ShroudStringToCdesc",
     "name": "string_to_cdesc"
 }
 
@@ -6082,6 +6092,7 @@ static PyObject *SHROUD_to_PyList_vector_unsigned_short
 
 ---------- type_defines ----------
 {
+    "name": "type_defines",
     "scope": "cwrap_include"
 }
 
@@ -6997,6 +7008,7 @@ static void SHROUD_update_PyList_vector_unsigned_short
 ---------- vector_string_allocatable ----------
 {
     "api": "c",
+    "c_fmtname": "LIB_ShroudVectorStringAllocatable",
     "dependent_helpers": [
         "capsule_data_helper",
         "array_context",
@@ -7007,7 +7019,6 @@ static void SHROUD_update_PyList_vector_unsigned_short
         "cnameproto": "void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)",
         "fnamefunc": "{C_prefix}SHROUD_vector_string_allocatable"
     },
-    "fmtname": "LIB_ShroudVectorStringAllocatable",
     "name": "vector_string_allocatable",
     "proto": "void LIB_ShroudVectorStringAllocatable(LIB_SHROUD_array *dest, LIB_SHROUD_capsule_data *src);",
     "scope": "cwrap_impl"
@@ -7031,6 +7042,7 @@ void LIB_ShroudVectorStringAllocatable(LIB_SHROUD_array *dest, LIB_SHROUD_capsul
 ---------- vector_string_out ----------
 {
     "api": "cxx",
+    "c_fmtname": "LIB_ShroudVectorStringOut",
     "cxx_include": [
         "<cstring>",
         "<cstddef>"
@@ -7044,7 +7056,6 @@ void LIB_ShroudVectorStringAllocatable(LIB_SHROUD_array *dest, LIB_SHROUD_capsul
         "cnameproto": "void {cnamefunc}({C_array_type} *outdesc, std::vector<std::string> &in)",
         "fnamefunc": "{C_prefix}shroud_vector_string_out"
     },
-    "fmtname": "LIB_ShroudVectorStringOut",
     "name": "vector_string_out",
     "proto": "void LIB_ShroudVectorStringOut(LIB_SHROUD_array *outdesc, std::vector<std::string> &in);",
     "proto_include": [
@@ -7081,11 +7092,11 @@ void LIB_ShroudVectorStringOut(LIB_SHROUD_array *outdesc, std::vector<std::strin
 ---------- vector_string_out_len ----------
 {
     "api": "cxx",
+    "c_fmtname": "LIB_ShroudVectorStringOutSize",
     "fmtdict": {
         "cnamefunc": "{C_prefix}ShroudVectorStringOutSize",
         "cnameproto": "size_t {cnamefunc}(std::vector<std::string> &in)"
     },
-    "fmtname": "LIB_ShroudVectorStringOutSize",
     "name": "vector_string_out_len",
     "proto": "size_t LIB_ShroudVectorStringOutSize(std::vector<std::string> &in);",
     "proto_include": [

@@ -4,7 +4,7 @@
     "dependent_helpers": [
         "type_defines"
     ],
-    "fmtname": "LIB_SHROUD_array",
+    "f_fmtname": "LIB_SHROUD_array",
     "modules": {
         "iso_c_binding": [
             "C_NULL_PTR",
@@ -13,7 +13,8 @@
             "C_INT",
             "C_LONG"
         ]
-    }
+    },
+    "name": "array_context"
 }
 
 ##### start array_context derived_type
@@ -39,12 +40,12 @@ end type LIB_SHROUD_array
     "dependent_helpers": [
         "array_context"
     ],
+    "f_fmtname": "LIB_SHROUD_array_string_allocatable",
     "fmtdict": {
         "cnamefunc": "{C_prefix}ShroudArrayStringAllocatable",
         "cnameproto": "void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)",
         "fnamefunc": "{C_prefix}SHROUD_array_string_allocatable"
     },
-    "fmtname": "LIB_SHROUD_array_string_allocatable",
     "name": "array_string_allocatable"
 }
 
@@ -63,14 +64,15 @@ end interface
 
 ---------- capsule_data_helper ----------
 {
-    "fmtname": "LIB_SHROUD_capsule_data",
+    "f_fmtname": "LIB_SHROUD_capsule_data",
     "modules": {
         "iso_c_binding": [
             "C_PTR",
             "C_INT",
             "C_NULL_PTR"
         ]
-    }
+    },
+    "name": "capsule_data_helper"
 }
 
 ##### start capsule_data_helper derived_type
@@ -87,12 +89,12 @@ end type LIB_SHROUD_capsule_data
     "dependent_helpers": [
         "capsule_data_helper"
     ],
+    "f_fmtname": "LIB_SHROUD_capsule_dtor",
     "fmtdict": {
         "cnamefunc": "{C_memory_dtor_function}",
         "cnameproto": "void {cnamefunc}\t({C_capsule_data_type} *cap)",
         "fnamefunc": "{C_prefix}SHROUD_capsule_dtor"
     },
-    "fmtname": "LIB_SHROUD_capsule_dtor",
     "name": "capsule_dtor"
 }
 
@@ -150,11 +152,11 @@ end subroutine SHROUD_capsule_delete
     "dependent_helpers": [
         "array_context"
     ],
+    "f_fmtname": "LIB_SHROUD_copy_array",
     "fmtdict": {
         "cnamefunc": "{C_prefix}ShroudCopyArray",
         "fnamefunc": "{C_prefix}SHROUD_{hname}"
     },
-    "fmtname": "LIB_SHROUD_copy_array",
     "name": "copy_array"
 }
 
@@ -179,11 +181,11 @@ end interface
     "dependent_helpers": [
         "array_context"
     ],
+    "f_fmtname": "LIB_SHROUD_copy_string",
     "fmtdict": {
         "cnamefunc": "{C_prefix}ShroudCopyString",
         "fnamefunc": "{C_prefix}SHROUD_copy_string"
     },
-    "fmtname": "LIB_SHROUD_copy_string",
     "name": "copy_string"
 }
 
@@ -208,10 +210,10 @@ end interface
     "dependent_helpers": [
         "array_context"
     ],
+    "f_fmtname": "LIB_SHROUD_pointer_string",
     "fmtdict": {
         "fnamefunc": "{C_prefix}SHROUD_pointer_string"
     },
-    "fmtname": "LIB_SHROUD_pointer_string",
     "name": "pointer_string"
 }
 
@@ -231,7 +233,9 @@ end subroutine LIB_SHROUD_pointer_string
 ##### end pointer_string source
 
 ---------- type_defines ----------
-{}
+{
+    "name": "type_defines"
+}
 
 ##### start type_defines derived_type
 
@@ -274,12 +278,12 @@ integer, parameter, private :: &
     "dependent_helpers": [
         "array_context"
     ],
+    "f_fmtname": "LIB_SHROUD_vector_string_allocatable",
     "fmtdict": {
         "cnamefunc": "{C_prefix}ShroudVectorStringAllocatable",
         "cnameproto": "void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)",
         "fnamefunc": "{C_prefix}SHROUD_vector_string_allocatable"
     },
-    "fmtname": "LIB_SHROUD_vector_string_allocatable",
     "name": "vector_string_allocatable"
 }
 
@@ -302,13 +306,13 @@ end interface
     "dependent_helpers": [
         "array_context"
     ],
+    "f_fmtname": "LIB_shroud_vector_string_out",
     "fmtdict": {
         "cnamefunc": "{C_prefix}ShroudVectorStringOut",
         "cnamefunc_vector_string_out": "{cnamefunc}",
         "cnameproto": "void {cnamefunc}({C_array_type} *outdesc, std::vector<std::string> &in)",
         "fnamefunc": "{C_prefix}shroud_vector_string_out"
     },
-    "fmtname": "LIB_shroud_vector_string_out",
     "name": "vector_string_out"
 }
 

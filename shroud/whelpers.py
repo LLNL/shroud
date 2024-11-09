@@ -9,8 +9,8 @@
  C helper functions which may be added to a implementation file.
 
  fmtname     = Name of function or type created by the helper.
-               This allows the function name to be independent
-               of the helper name so that it may include a prefix
+ c_fmtname     This allows the function name to be independent
+ f_fmtname     of the helper name so that it may include a prefix
                to help control namespace/scope.
                Useful when two helpers create the same function.
                ex. SHROUD_get_from_object_char_{numpy,list}
@@ -171,7 +171,7 @@ def add_external_helpers(symtab):
             # Add the C prototype. The body is created Wrapc.write_capsule_code.
             fnamefunc = "{C_prefix}SHROUD_capsule_dtor",
         ),
-        fmtname="{cnamefunc}",
+        c_fmtname="{cnamefunc}",
         api="c",
         dependent_helpers=["capsule_data_helper"],
         proto="{cnameproto};",
@@ -186,7 +186,7 @@ def add_external_helpers(symtab):
             # Add the C prototype. The body is created Wrapc.write_capsule_code.
             fnamefunc = "{C_prefix}SHROUD_capsule_dtor",
         ),
-        fmtname="{fnamefunc}",
+        f_fmtname="{fnamefunc}",
         dependent_helpers=["capsule_data_helper"],
         interface=[
             "",
@@ -223,7 +223,7 @@ def add_external_helpers(symtab):
             cnamefunc="{C_prefix}ShroudCopyArray",
             fnamefunc="{C_prefix}SHROUD_{hname}",
         ),
-        fmtname="{cnamefunc}",
+        c_fmtname="{cnamefunc}",
         scope="cwrap_impl",
         dependent_helpers=["array_context"],
         c_include=["<string.h>", "<stddef.h>"],  # mempcy, size_t
@@ -254,7 +254,7 @@ def add_external_helpers(symtab):
             cnamefunc="{C_prefix}ShroudCopyArray",
             fnamefunc="{C_prefix}SHROUD_{hname}",
         ),
-        fmtname="{fnamefunc}",
+        f_fmtname="{fnamefunc}",
         dependent_helpers=["array_context"],
         interface=[
             "",
@@ -392,7 +392,7 @@ def add_external_helpers(symtab):
             cnamefunc="{C_prefix}ShroudCopyString",
             fnamefunc="{C_prefix}SHROUD_copy_string",
         ),
-        fmtname="{cnamefunc}",
+        c_fmtname="{cnamefunc}",
         scope="cwrap_impl",
         dependent_helpers=["array_context"],
         cxx_include=["<cstring>", "<cstddef>"],
@@ -421,7 +421,7 @@ def add_external_helpers(symtab):
             cnamefunc="{C_prefix}ShroudCopyString",
             fnamefunc="{C_prefix}SHROUD_copy_string",
         ),
-        fmtname="{fnamefunc}",
+        f_fmtname="{fnamefunc}",
         dependent_helpers=["array_context"],
         interface=[
             "",
@@ -457,7 +457,7 @@ def add_external_helpers(symtab):
             cnamefunc_array_string_out="{cnamefunc}",    ## used to remember name
             cnameproto= "void {cnamefunc}({C_array_type} *outdesc, std::string *in, size_t nsize)",
         ),
-        fmtname="{cnamefunc}",
+        c_fmtname="{cnamefunc}",
         api="cxx",
         scope="cwrap_impl",
         dependent_helpers=["array_context"],
@@ -531,7 +531,7 @@ def add_external_helpers(symtab):
             fnamefunc="{C_prefix}SHROUD_array_string_allocatable",
             cnameproto="void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)",
         ),
-        fmtname="{cnamefunc}",
+        c_fmtname="{cnamefunc}",
         api="c",
         scope="cwrap_impl",
         dependent_helpers=["capsule_data_helper", "array_context", "array_string_out"],
@@ -562,7 +562,7 @@ def add_external_helpers(symtab):
             cnameproto="void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)",
         ),
         dependent_helpers=["array_context"],
-        fmtname="{fnamefunc}",
+        f_fmtname="{fnamefunc}",
         interface=[
             "",
             "interface+",
@@ -590,7 +590,7 @@ def add_external_helpers(symtab):
             cnamefunc="{C_prefix}ShroudArrayStringOutSize",
             cnameproto="size_t {cnamefunc}(std::string *in, size_t nsize)",
         ),
-        fmtname="{cnamefunc}",
+        c_fmtname="{cnamefunc}",
         api="cxx",
         scope="cwrap_impl",
         proto_include=["<string>", "<vector>"],
@@ -633,7 +633,7 @@ def add_external_helpers(symtab):
             cnamefunc_vector_string_out="{cnamefunc}", # XXXX savename
             cnameproto="void {cnamefunc}({C_array_type} *outdesc, std::vector<std::string> &in)",
         ),
-        fmtname="{cnamefunc}",
+        c_fmtname="{cnamefunc}",
         api="cxx",
         scope="cwrap_impl",
         dependent_helpers=["array_context"],
@@ -677,7 +677,7 @@ def add_external_helpers(symtab):
             cnameproto="void {cnamefunc}({C_array_type} *outdesc, std::vector<std::string> &in)",
         ),
         dependent_helpers=["array_context"],
-        fmtname="{fnamefunc}",
+        f_fmtname="{fnamefunc}",
         interface=[
             "",
             "interface+",
@@ -737,7 +737,7 @@ def add_external_helpers(symtab):
             fnamefunc = "{C_prefix}SHROUD_vector_string_allocatable",
             cnameproto = "void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)",
         ),
-        fmtname="{cnamefunc}",
+        c_fmtname="{cnamefunc}",
         api="c",
         scope="cwrap_impl",
         dependent_helpers=["capsule_data_helper", "array_context", "vector_string_out"],
@@ -768,7 +768,7 @@ def add_external_helpers(symtab):
             cnameproto = "void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)",
         ),
         dependent_helpers=["array_context"],
-        fmtname="{fnamefunc}",
+        f_fmtname="{fnamefunc}",
         interface=[
             "",
             "interface+",
@@ -797,7 +797,7 @@ def add_external_helpers(symtab):
             cnamefunc="{C_prefix}ShroudVectorStringOutSize",
             cnameproto="size_t {cnamefunc}(std::vector<std::string> &in)",
         ),
-        fmtname="{cnamefunc}",
+        c_fmtname="{cnamefunc}",
         api="cxx",
         scope="cwrap_impl",
         proto_include=["<string>", "<vector>"],
@@ -833,7 +833,7 @@ def add_external_helpers(symtab):
             fnamefunc="{C_prefix}SHROUD_pointer_string",
         ),
         dependent_helpers=["array_context"],
-        fmtname="{fnamefunc}",
+        f_fmtname="{fnamefunc}",
         source=[
             "",
             "! helper {hname}",
@@ -861,7 +861,7 @@ def add_external_helpers(symtab):
         fmtdict=dict(
             cnamefunc="ShroudStringToCdesc",
         ),
-        fmtname="{cnamefunc}",
+        c_fmtname="{cnamefunc}",
         dependent_helpers=["array_context"],
         cxx_include=["<cstring>", "<cstddef>"],
         source=[
@@ -1106,7 +1106,8 @@ def add_capsule_helper():
         fmt.lend = ""
 
     helper = dict(
-        fmtname=fmt.F_capsule_data_type,
+        name="capsule_data_helper",
+        f_fmtname=fmt.F_capsule_data_type,
         derived_type=wformat(
             """
 {lstart}! helper {hname}
@@ -1121,6 +1122,7 @@ integer(C_INT) :: idtor = 0       ! index of destructor
     FHelpers[name] = helper
 
     helper = dict(
+        name="capsule_data_helper",
         scope="cwrap_include",
         source=wformat(
             """
@@ -1138,7 +1140,7 @@ typedef struct s_{C_capsule_data_type} {C_capsule_data_type};""",
     ########################################
     name = "capsule_helper"
     fmt.hname = name
-    fmt.__helper = FHelpers["capsule_dtor"]["fmtname"]
+    fmt.__helper = FHelpers["capsule_dtor"]["f_fmtname"]   # XXXX fix for JSON
     # XXX split helper into to parts, one for each derived type
     helper = dict(
         dependent_helpers=["capsule_data_helper", "capsule_dtor"],
@@ -1180,7 +1182,8 @@ call {__helper}(cap%mem)
         fmt.lstart = "{}{}\n".format(cstart, name)
         fmt.lend = "\n{}{}".format(cend, name)
     helper = dict(
-        fmtname=fmt.C_array_type,
+        name="array_context",
+        c_fmtname=fmt.C_array_type,
         scope="cwrap_include",
         include=["<stddef.h>"],
         # Create a union for addr to avoid some casts.
@@ -1211,7 +1214,8 @@ typedef struct s_{C_array_type} {C_array_type};{lend}""",
         fmt.lstart = "{}{}\n".format(fstart, name)
         fmt.lend = "\n{}{}".format(fend, name)
     helper = dict(
-        fmtname=fmt.F_array_type,
+        name="array_context",
+        f_fmtname=fmt.F_array_type,
         derived_type=wformat(
             """
 {lstart}! helper {hname}
@@ -1799,6 +1803,7 @@ CHelpers = dict(
     type_defines=dict(
         # Order derived from TS 29113
         # with the addition of unsigned types
+        name="type_defines",
         scope="cwrap_include",
         source="""
 /* helper type_defines */
@@ -1843,7 +1848,8 @@ CHelpers = dict(
 #define SH_TYPE_OTHER      32""",
     ),
     char_copy=dict(
-        fmtname="ShroudCharCopy",
+        name="char_copy",
+        c_fmtname="ShroudCharCopy",
         c_include=["<string.h>"],
         c_source="""
 // helper ShroudCharCopy
@@ -1882,7 +1888,8 @@ static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
 
     ########################################
     char_blank_fill=dict(
-        fmtname="ShroudCharBlankFill",
+        name="char_blank_fill",
+        c_fmtname="ShroudCharBlankFill",
         c_include=["<string.h>"],
         c_source="""
 // helper char_blank_fill
@@ -1907,7 +1914,8 @@ static void ShroudCharBlankFill(char *dest, int ndest)
     # Used by 'const char *' arguments which need to be NULL terminated
     # in the C wrapper.
     char_alloc=dict(
-        fmtname="ShroudCharAlloc",
+        name="char_alloc",
+        c_fmtname="ShroudCharAlloc",
         c_include=["<string.h>", "<stdlib.h>", "<stddef.h>"],
         c_source="""
 // helper char_alloc
@@ -1950,7 +1958,8 @@ static char *ShroudCharAlloc(const char *src, int nsrc, int blanknull)
     ),
 
     char_free=dict(
-        fmtname="ShroudCharFree",
+        name="char_free",
+        c_fmtname="ShroudCharFree",
         c_include=["<stdlib.h>"],
         c_source="""
 // helper char_free
@@ -1975,7 +1984,8 @@ static void ShroudCharFree(char *src)
 
     ########################################
     char_len_trim=dict(
-        fmtname="ShroudCharLenTrim",
+        name="char_len_trim",
+        c_fmtname="ShroudCharLenTrim",
         source="""
 // helper char_len_trim
 // Returns the length of character string src with length nsrc,
@@ -1996,7 +2006,8 @@ static int ShroudCharLenTrim(const char *src, int nsrc) {
     ########################################
     # Used with 'char **' arguments.
     char_array_alloc=dict(
-        fmtname="ShroudStrArrayAlloc",
+        name="char_array_alloc",
+        c_fmtname="ShroudStrArrayAlloc",
         dependent_helpers=["char_len_trim"],
         c_include=["<string.h>", "<stdlib.h>"],
         c_source="""
@@ -2039,7 +2050,8 @@ static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
     ),
     
     char_array_free=dict(
-        fmtname="ShroudStrArrayFree",
+        name="char_array_free",
+        c_fmtname="ShroudStrArrayFree",
         c_include=["<stdlib.h>"],
         c_source="""
 // helper char_array_free
@@ -2066,6 +2078,7 @@ static void ShroudStrArrayFree(char **src, int nsrc)
     ########################################
     # Find size of CFI array
     size_CFI=dict(
+        name="size_CFI",
         c_include=["<stddef.h>"],
         cxx_include=["<cstddef>"],
         source="""
@@ -2086,6 +2099,7 @@ size_t ShroudSizeCFI(CFI_cdesc_t *desc)
 
 FHelpers = dict(
     type_defines=dict(
+        name="type_defines",
         derived_type="""
 ! helper type_defines
 ! Shroud type defines from helper type_defines
@@ -2188,6 +2202,8 @@ def apply_fmtdict_from_helpers(helper, fmt):
     for field in [
             # general
             "fmtname",
+            "c_fmtname",
+            "f_fmtname",
             # C
             "proto",
             "source",
