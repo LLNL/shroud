@@ -1773,7 +1773,7 @@ rv = .false.
         if lines:
             fileinfo.interface_lines.append(lines)
 
-        lines = helper_info.get("source", None)
+        lines = helper_info.get("f_source", None)
         if lines:
             fileinfo.helper_source.append(lines)
 

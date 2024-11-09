@@ -132,7 +132,7 @@ contains
 end type LIB_SHROUD_capsule
 ##### end capsule_helper derived_type
 
-##### start capsule_helper source
+##### start capsule_helper f_source
 
 ! helper capsule_helper
 ! finalize a static LIB_SHROUD_capsule_data
@@ -145,7 +145,7 @@ subroutine SHROUD_capsule_delete(cap)
     class(LIB_SHROUD_capsule) :: cap
     call LIB_SHROUD_capsule_dtor(cap%mem)
 end subroutine SHROUD_capsule_delete
-##### end capsule_helper source
+##### end capsule_helper f_source
 
 ---------- copy_array ----------
 {
@@ -217,7 +217,7 @@ end interface
     "name": "pointer_string"
 }
 
-##### start pointer_string source
+##### start pointer_string f_source
 
 ! helper pointer_string
 ! Assign context to an assumed-length character pointer
@@ -230,7 +230,7 @@ subroutine LIB_SHROUD_pointer_string(context, var)
     call c_f_pointer(context%base_addr, fptr)
     var => fptr
 end subroutine LIB_SHROUD_pointer_string
-##### end pointer_string source
+##### end pointer_string f_source
 
 ---------- type_defines ----------
 {

@@ -834,7 +834,7 @@ def add_external_helpers(symtab):
         ),
         dependent_helpers=["array_context"],
         f_fmtname="{fnamefunc}",
-        source=[
+        f_source=[
             "",
             "! helper {hname}",
             "! Assign context to an assumed-length character pointer",
@@ -1157,7 +1157,7 @@ procedure :: delete => {F_capsule_delete_function}
             fmt,
         ),
         # cannot be declared with both PRIVATE and BIND(C) attributes
-        source=wformat(
+        f_source=wformat(
             """
 ! helper {hname}
 ! finalize a static {F_capsule_data_type}
@@ -2168,8 +2168,8 @@ def gather_helpers(fp, wrapper, helpers, keys):
     return
 
 c_lines = ["source", "c_source", "cxx_source"]
-f_lines = ["derived_type", "interface", "source"]
-fc_lines = c_lines + f_lines[:-1]
+f_lines = ["derived_type", "interface", "f_source"]
+fc_lines = c_lines + f_lines
 
 def write_c_helpers(fp):
     wrapper = util.WrapperMixin()
@@ -2209,6 +2209,7 @@ def apply_fmtdict_from_helpers(helper, fmt):
             "source",
             # Fortran
             "interface",
+            "f_source",
             ]:
         if field in helper:
             helper[field] = wformat(helper[field], fmt)
