@@ -117,7 +117,8 @@ end interface
     "dependent_helpers": [
         "capsule_data_helper",
         "capsule_dtor"
-    ]
+    ],
+    "name": "capsule_helper"
 }
 
 ##### start capsule_helper derived_type

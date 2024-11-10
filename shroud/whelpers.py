@@ -1107,34 +1107,34 @@ def add_capsule_helper():
 
     helper = dict(
         name="capsule_data_helper",
-        f_fmtname=fmt.F_capsule_data_type,
-        derived_type=wformat(
-            """
-{lstart}! helper {hname}
-type, bind(C) :: {F_capsule_data_type}+
-type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-integer(C_INT) :: idtor = 0       ! index of destructor
--end type {F_capsule_data_type}{lend}""",
-            fmt,
-        ),
+        f_fmtname="{F_capsule_data_type}",
+        derived_type=[
+            "",
+            "{lstart}! helper {hname}",
+            "type, bind(C) :: {F_capsule_data_type}+",
+            "type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory",
+            "integer(C_INT) :: idtor = 0       ! index of destructor",
+            "-end type {F_capsule_data_type}{lend}",
+        ],
         modules=dict(iso_c_binding=["C_PTR", "C_INT", "C_NULL_PTR"]),
     )
+    apply_fmtdict_from_helpers(helper, fmt)
     FHelpers[name] = helper
 
     helper = dict(
         name="capsule_data_helper",
         scope="cwrap_include",
-        source=wformat(
-            """
-// helper {hname}
-struct s_{C_capsule_data_type} {{+
-void *addr;     /* address of C++ memory */
-int idtor;      /* index of destructor */
--}};
-typedef struct s_{C_capsule_data_type} {C_capsule_data_type};""",
-            fmt,
-        )
+        source=[
+            "",
+            "// helper {hname}",
+            "struct s_{C_capsule_data_type} {{+",
+            "void *addr;     /* address of C++ memory */",
+            "int idtor;      /* index of destructor */",
+            "-}};",
+            "typedef struct s_{C_capsule_data_type} {C_capsule_data_type};",
+        ],
     )
+    apply_fmtdict_from_helpers(helper, fmt)
     CHelpers[name] = helper
 
     ########################################
@@ -1143,36 +1143,36 @@ typedef struct s_{C_capsule_data_type} {C_capsule_data_type};""",
     fmt.__helper = FHelpers["capsule_dtor"]["f_fmtname"]   # XXXX fix for JSON
     # XXX split helper into to parts, one for each derived type
     helper = dict(
+        name="capsule_helper",
         dependent_helpers=["capsule_data_helper", "capsule_dtor"],
-        derived_type=wformat(
-            """
-! helper {hname}
-type :: {F_capsule_type}+
-private
-type({F_capsule_data_type}) :: mem
--contains
-+final :: {F_capsule_final_function}
-procedure :: delete => {F_capsule_delete_function}
--end type {F_capsule_type}""",
-            fmt,
-        ),
+        derived_type=[
+            "",
+            "! helper {hname}",
+            "type :: {F_capsule_type}+",
+            "private",
+            "type({F_capsule_data_type}) :: mem",
+            "-contains",
+            "+final :: {F_capsule_final_function}",
+            "procedure :: delete => {F_capsule_delete_function}",
+            "-end type {F_capsule_type}",
+        ],
         # cannot be declared with both PRIVATE and BIND(C) attributes
-        f_source=wformat(
-            """
-! helper {hname}
-! finalize a static {F_capsule_data_type}
-subroutine {F_capsule_final_function}(cap)+
-type({F_capsule_type}), intent(INOUT) :: cap
-call {__helper}(cap%mem)
--end subroutine {F_capsule_final_function}
-
-subroutine {F_capsule_delete_function}(cap)+
-class({F_capsule_type}) :: cap
-call {__helper}(cap%mem)
--end subroutine {F_capsule_delete_function}""",
-            fmt,
-        ),
+        f_source=[
+            "",
+            "! helper {hname}",
+            "! finalize a static {F_capsule_data_type}",
+            "subroutine {F_capsule_final_function}(cap)+",
+            "type({F_capsule_type}), intent(INOUT) :: cap",
+            "call {__helper}(cap%mem)",
+            "-end subroutine {F_capsule_final_function}",
+            "",
+            "subroutine {F_capsule_delete_function}(cap)+",
+            "class({F_capsule_type}) :: cap",
+            "call {__helper}(cap%mem)",
+            "-end subroutine {F_capsule_delete_function}",
+        ],
     )
+    apply_fmtdict_from_helpers(helper, fmt)
     FHelpers[name] = helper
 
     ########################################
@@ -1188,22 +1188,22 @@ call {__helper}(cap%mem)
         include=["<stddef.h>"],
         # Create a union for addr to avoid some casts.
         # And help with debugging since ccharp will display contents.
-        source=wformat(
-            """
-{lstart}// helper {hname}
-struct s_{C_array_type} {{+
-void * base_addr;
-int type;        /* type of element */
-size_t elem_len; /* bytes-per-item or character len in c++ */
-size_t size;     /* size of data in c++ */
-int rank;        /* number of dimensions, 0=scalar */
-long shape[7];
--}};
-typedef struct s_{C_array_type} {C_array_type};{lend}""",
-            fmt,
-        ),
+        source=[
+            "",
+            "{lstart}// helper {hname}",
+            "struct s_{C_array_type} {{+",
+            "void * base_addr;",
+            "int type;        /* type of element */",
+            "size_t elem_len; /* bytes-per-item or character len in c++ */",
+            "size_t size;     /* size of data in c++ */",
+            "int rank;        /* number of dimensions, 0=scalar */",
+            "long shape[7];",
+            "-}};",
+            "typedef struct s_{C_array_type} {C_array_type};{lend}",
+        ],
         dependent_helpers=["type_defines"], # used with type field
     )
+    apply_fmtdict_from_helpers(helper, fmt)
     CHelpers[name] = helper
 
     # Create a derived type used to communicate with C wrapper.
@@ -1216,28 +1216,28 @@ typedef struct s_{C_array_type} {C_array_type};{lend}""",
     helper = dict(
         name="array_context",
         f_fmtname=fmt.F_array_type,
-        derived_type=wformat(
-            """
-{lstart}! helper {hname}
-type, bind(C) :: {F_array_type}+
-! address of data
-type(C_PTR) :: base_addr = C_NULL_PTR
-! type of element
-integer(C_INT) :: type
-! bytes-per-item or character len of data in cxx
-integer(C_SIZE_T) :: elem_len = 0_C_SIZE_T
-! size of data in cxx
-integer(C_SIZE_T) :: size = 0_C_SIZE_T
-! number of dimensions
-integer(C_INT) :: rank = -1
-integer(C_LONG) :: shape(7) = 0
--end type {F_array_type}{lend}""",
-            fmt,
-        ),
+        derived_type=[
+            "",
+            "{lstart}! helper {hname}",
+            "type, bind(C) :: {F_array_type}+",
+            "! address of data",
+            "type(C_PTR) :: base_addr = C_NULL_PTR",
+            "! type of element",
+            "integer(C_INT) :: type",
+            "! bytes-per-item or character len of data in cxx",
+            "integer(C_SIZE_T) :: elem_len = 0_C_SIZE_T",
+            "! size of data in cxx",
+            "integer(C_SIZE_T) :: size = 0_C_SIZE_T",
+            "! number of dimensions",
+            "integer(C_INT) :: rank = -1",
+            "integer(C_LONG) :: shape(7) = 0",
+            "-end type {F_array_type}{lend}",
+        ],
         modules=dict(iso_c_binding=[
             "C_NULL_PTR", "C_PTR", "C_SIZE_T", "C_INT", "C_LONG"]),
         dependent_helpers=["type_defines"], # used with type field
     )
+    apply_fmtdict_from_helpers(helper, fmt)
     FHelpers[name] = helper
 
 
@@ -2208,6 +2208,7 @@ def apply_fmtdict_from_helpers(helper, fmt):
             "proto",
             "source",
             # Fortran
+            "derived_type",
             "interface",
             "f_source",
             ]:
