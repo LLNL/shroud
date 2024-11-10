@@ -304,8 +304,8 @@ and the ``bind(C)`` equivalent **F_array_type**.:
 
 .. literalinclude:: ../regression/reference/memdoc/typesmemdoc.h
    :language: c++
-   :start-after: start array_context
-   :end-before: end array_context
+   :start-after: start helper array_context
+   :end-before: end helper array_context
 
 The union for ``addr`` makes some assignments easier by removing
 the need for casts and also aids debugging.
@@ -313,8 +313,8 @@ The union is replaced with a single ``type(C_PTR)`` for Fortran:
 
 .. literalinclude:: ../regression/reference/memdoc/wrapfmemdoc.f
    :language: fortran
-   :start-after: start array_context
-   :end-before: end array_context
+   :start-after: start helper array_context
+   :end-before: end helper array_context
    :dedent: 4
 
 The C wrapper does not return a ``std::string`` pointer.  Instead it

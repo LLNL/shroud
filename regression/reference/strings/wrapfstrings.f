@@ -55,7 +55,7 @@ module strings_mod
         SH_TYPE_STRUCT    = 31, &
         SH_TYPE_OTHER     = 32
 
-    ! start array_context
+    ! start helper array_context
     ! helper array_context
     type, bind(C) :: STR_SHROUD_array
         ! address of data
@@ -70,7 +70,7 @@ module strings_mod
         integer(C_INT) :: rank = -1
         integer(C_LONG) :: shape(7) = 0
     end type STR_SHROUD_array
-    ! end array_context
+    ! end helper array_context
 
     ! start helper capsule_data_helper
     ! helper capsule_data_helper

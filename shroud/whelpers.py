@@ -121,6 +121,7 @@ cstart = "// start "
 cend   = "// end "
 fstart = "! start "
 fend   = "! end "
+literalinclude = False
 
 _newlibrary = None
 def set_library(library):
@@ -132,9 +133,15 @@ def add_all_helpers(symtab):
     """Create helper functions.
     Create helpers for all types.
     """
+    global literalinclude
+    literalinclude = _newlibrary.options.literalinclude2
     fmt = util.Scope(_newlibrary.fmtdict)
+    fmt.c_lstart = ""
+    fmt.c_lend = ""
+    fmt.f_lstart = ""
+    fmt.f_lend = ""
     add_external_helpers(symtab)
-    add_capsule_helper()
+    add_capsule_helper(fmt)
     for ntypemap in symtab.typemaps.values():
         if ntypemap.sgroup == "native":
             add_to_PyList_helper(fmt, ntypemap)
@@ -1087,34 +1094,22 @@ size_t size;
     
 ######################################################################
 
-def add_capsule_helper():
+def add_capsule_helper(fmt):
     """Share info with C++ to allow Fortran to release memory.
 
     Used with shadow classes and std::vector.
     """
-    fmtin = _newlibrary.fmtdict
-    literalinclude = _newlibrary.options.literalinclude2
-    # Add some format strings
-    fmt = util.Scope(fmtin)
     name = "capsule_data_helper"
-    fmt.hname = name
-    if literalinclude:
-        fmt.lstart = "{}helper {}\n".format(fstart, name)
-        fmt.lend = "\n{}helper {}".format(fend, name)
-    else:
-        fmt.lstart = ""
-        fmt.lend = ""
-
     helper = dict(
         name="capsule_data_helper",
         f_fmtname="{F_capsule_data_type}",
         derived_type=[
             "",
-            "{lstart}! helper {hname}",
+            "{f_lstart}! helper {hname}",
             "type, bind(C) :: {F_capsule_data_type}+",
             "type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory",
             "integer(C_INT) :: idtor = 0       ! index of destructor",
-            "-end type {F_capsule_data_type}{lend}",
+            "-end type {F_capsule_data_type}{f_lend}",
         ],
         modules=dict(iso_c_binding=["C_PTR", "C_INT", "C_NULL_PTR"]),
     )
@@ -1139,7 +1134,6 @@ def add_capsule_helper():
 
     ########################################
     name = "capsule_helper"
-    fmt.hname = name
     fmt.__helper = FHelpers["capsule_dtor"]["f_fmtname"]   # XXXX fix for JSON
     # XXX split helper into to parts, one for each derived type
     helper = dict(
@@ -1177,10 +1171,6 @@ def add_capsule_helper():
 
     ########################################
     name = "array_context"
-    fmt.hname = name
-    if literalinclude:
-        fmt.lstart = "{}{}\n".format(cstart, name)
-        fmt.lend = "\n{}{}".format(cend, name)
     helper = dict(
         name="array_context",
         c_fmtname=fmt.C_array_type,
@@ -1190,7 +1180,7 @@ def add_capsule_helper():
         # And help with debugging since ccharp will display contents.
         source=[
             "",
-            "{lstart}// helper {hname}",
+            "{c_lstart}// helper {hname}",
             "struct s_{C_array_type} {{+",
             "void * base_addr;",
             "int type;        /* type of element */",
@@ -1199,7 +1189,7 @@ def add_capsule_helper():
             "int rank;        /* number of dimensions, 0=scalar */",
             "long shape[7];",
             "-}};",
-            "typedef struct s_{C_array_type} {C_array_type};{lend}",
+            "typedef struct s_{C_array_type} {C_array_type};{c_lend}",
         ],
         dependent_helpers=["type_defines"], # used with type field
     )
@@ -1210,15 +1200,12 @@ def add_capsule_helper():
     # Should never be exposed to user.
     # Inspired by futher interoperability with C.
     # XXX - shape is C_LONG, maybe it should be C_PTRDIFF_T.
-    if literalinclude:
-        fmt.lstart = "{}{}\n".format(fstart, name)
-        fmt.lend = "\n{}{}".format(fend, name)
     helper = dict(
         name="array_context",
         f_fmtname=fmt.F_array_type,
         derived_type=[
             "",
-            "{lstart}! helper {hname}",
+            "{f_lstart}! helper {hname}",
             "type, bind(C) :: {F_array_type}+",
             "! address of data",
             "type(C_PTR) :: base_addr = C_NULL_PTR",
@@ -1231,7 +1218,7 @@ def add_capsule_helper():
             "! number of dimensions",
             "integer(C_INT) :: rank = -1",
             "integer(C_LONG) :: shape(7) = 0",
-            "-end type {F_array_type}{lend}",
+            "-end type {F_array_type}{f_lend}",
         ],
         modules=dict(iso_c_binding=[
             "C_NULL_PTR", "C_PTR", "C_SIZE_T", "C_INT", "C_LONG"]),
@@ -2189,7 +2176,15 @@ def write_f_helpers(fp):
 def apply_fmtdict_from_helpers(helper, fmt):
     """Apply fmtdict field from helpers
     """
-    fmt.hname = helper["name"]
+    name = helper["name"]
+    fmt.hname = name
+
+    if literalinclude:
+        fmt.c_lstart = "{}helper {}\n".format(cstart, name)
+        fmt.c_lend = "\n{}helper {}".format(cend, name)
+        fmt.f_lstart = "{}helper {}\n".format(fstart, name)
+        fmt.f_lend = "\n{}helper {}".format(fend, name)
+    
     if "fmtdict" in helper:
         for key, value in helper["fmtdict"].items():
             setattr(fmt, key, wformat(value, fmt))

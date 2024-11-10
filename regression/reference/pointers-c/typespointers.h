@@ -58,7 +58,7 @@
 #define SH_TYPE_STRUCT     31
 #define SH_TYPE_OTHER      32
 
-// start array_context
+// start helper array_context
 // helper array_context
 struct s_POI_SHROUD_array {
     void * base_addr;
@@ -69,7 +69,7 @@ struct s_POI_SHROUD_array {
     long shape[7];
 };
 typedef struct s_POI_SHROUD_array POI_SHROUD_array;
-// end array_context
+// end helper array_context
 
 // helper capsule_data_helper
 struct s_POI_SHROUD_capsule_data {
