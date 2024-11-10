@@ -140,14 +140,14 @@ def add_all_helpers(symtab):
     fmt.c_lend = ""
     fmt.f_lstart = ""
     fmt.f_lend = ""
-    add_external_helpers(symtab)
+    add_external_helpers(fmt, symtab)
     add_capsule_helper(fmt)
     for ntypemap in symtab.typemaps.values():
         if ntypemap.sgroup == "native":
             add_to_PyList_helper(fmt, ntypemap)
             add_to_PyList_helper_vector(fmt, ntypemap)
 
-def add_external_helpers(symtab):
+def add_external_helpers(fmt, symtab):
     """Create helper which have generated names.
     For example, code uses format entries
     C_prefix, C_memory_dtor_function,
@@ -158,16 +158,9 @@ def add_external_helpers(symtab):
     confict with other Shroud wrapped libraries.
 
     Args:
-        fmtin - format dictionary from the library.
-        literalinclude - value of top level option.literalinclude2
+        fmt - format dictionary
+        symtab - 
     """
-    fmtin = _newlibrary.fmtdict
-    literalinclude = _newlibrary.options.literalinclude2
-    
-    fmt = util.Scope(fmtin)
-    fmt.lstart = ""
-    fmt.lend = ""
-
     ########################################
     name = "capsule_dtor"
     CHelpers[name] = dict(
@@ -239,7 +232,7 @@ def add_external_helpers(symtab):
         # via an interface for each cxx_type.
         source=[
             "",
-            "{lstart}// helper {hname}",
+            "{c_lstart}// helper {hname}",
             "// Copy std::vector into array c_var(c_var_size).",
             "// Then release std::vector.",
             "// Called from Fortran.",
@@ -249,7 +242,7 @@ def add_external_helpers(symtab):
             "int n = c_var_size < data->size ? c_var_size : data->size;",
             "n *= data->elem_len;",
             "{stdlib}memcpy(c_var, cxx_var, n);",
-            "-}}{lend}",
+            "-}}{c_lend}",
         ]
     )
     apply_fmtdict_from_helpers(CHelpers[name], fmt)
@@ -285,9 +278,6 @@ def add_external_helpers(symtab):
 ##-    # Only used with std::string and thus C++.
 ##-    name = "string_capsule_size"
 ##-    fmt.hname = name
-##-    if literalinclude:
-##-        fmt.lstart = "{}helper {}\n".format(cstart, name)
-##-        fmt.lend = "\n{}helper {}".format(cend, name)
 ##-    fmt.cnamefunc = wformat("{C_prefix}ShroudStringCapsuleSize", fmt)
 ##-    fmt.fnamefunc = wformat("{C_prefix}SHROUD_string_capsule_size", fmt)
 ##-    CHelpers[name] = dict(
@@ -298,13 +288,13 @@ def add_external_helpers(symtab):
 ##-        # XXX - mangle name
 ##-        source=wformat(
 ##-            """
-##-{lstart}// helper {hname}
+##-{c_lstart}// helper {hname}
 ##-// Extract the length of the std::string in the capsule.
 ##-// Called by Fortran to deal with allocatable character.
 ##-size_t {cnamefunc}(\t{C_capsule_data_type} *capsule) {{+
 ##-const std::string *src = static_cast<const std::string *>(capsule->addr);
 ##-return src->size();
-##--}}{lend}
+##--}}{c_lend}
 ##-""",
 ##-            fmt,
 ##-        ),
@@ -336,9 +326,6 @@ def add_external_helpers(symtab):
 ##-    ##########
 ##-    name = "copy_string_capsule"
 ##-    fmt.hname = name
-##-    if literalinclude:
-##-        fmt.lstart = "{}helper {}\n".format(cstart, name)
-##-        fmt.lend = "\n{}helper {}".format(cend, name)
 ##-    fmt.cnamefunc = wformat("{C_prefix}ShroudCopyStringCapsule", fmt)
 ##-    fmt.fnamefunc = wformat("{C_prefix}SHROUD_copy_string_capsule", fmt)
 ##-    CHelpers[name] = dict(
@@ -349,7 +336,7 @@ def add_external_helpers(symtab):
 ##-        # XXX - mangle name
 ##-        source=wformat(
 ##-            """
-##-{lstart}// helper {hname}
+##-{c_lstart}// helper {hname}
 ##-// Copy the char* or std::string in context into c_var.
 ##-// Called by Fortran to deal with allocatable character.
 ##-void {cnamefunc}(\t{C_capsule_data_type} *capsule,\t char *c_var,\t size_t c_var_len) {{+
@@ -359,7 +346,7 @@ def add_external_helpers(symtab):
 ##--}} else {{+
 ##-std::strncpy(c_var, src->data(), src->length());
 ##--}}
-##--}}{lend}
+##--}}{c_lend}
 ##-""",
 ##-            fmt,
 ##-        ),
@@ -390,9 +377,6 @@ def add_external_helpers(symtab):
 
     ##########
     name = "copy_string"
-    if literalinclude:
-        fmt.lstart = "{}helper {}\n".format(cstart, name)
-        fmt.lend = "\n{}helper {}".format(cend, name)
     CHelpers[name] = dict(
         name="copy_string",
         fmtdict=dict(
@@ -406,7 +390,7 @@ def add_external_helpers(symtab):
         # XXX - mangle name
         source=[
             "",
-            "{lstart}// helper {hname}",
+            "{c_lstart}// helper {hname}",
             "// Copy the char* or std::string in context into c_var.",
             "// Called by Fortran to deal with allocatable character.",
             "void {cnamefunc}(\t{C_array_type} *data,\t char *c_var,\t size_t c_var_len) {{+",
@@ -414,7 +398,7 @@ def add_external_helpers(symtab):
             "size_t n = c_var_len;",
             "if (data->elem_len < n) n = data->elem_len;",
             "{stdlib}memcpy(c_var, cxx_var, n);",
-            "-}}{lend}",
+            "-}}{c_lend}",
             "",  # XXX  - remove
         ],
     )
@@ -454,9 +438,6 @@ def add_external_helpers(symtab):
     ########################################
     # Only used with std::string and thus C++.
     name = "array_string_out"
-    if literalinclude:
-        fmt.lstart = "{}helper {}\n".format(cstart, name)
-        fmt.lend = "\n{}helper {}".format(cend, name)
     CHelpers[name] = dict(
         name="array_string_out",
         fmtdict=dict(
@@ -474,7 +455,7 @@ def add_external_helpers(symtab):
         # XXX - mangle name
         source=[
             "",
-            "{lstart}// helper {hname}",
+            "{c_lstart}// helper {hname}",
             "// Copy the std::vector<std::string> into Fortran array argument.",
             "// Called by C++.",
             "{cnameproto}",
@@ -491,7 +472,7 @@ def add_external_helpers(symtab):
             "std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));",
             "dest += outdesc->elem_len;",
             "-}}",
-            "-}}{lend}",
+            "-}}{c_lend}",
             "",   # XXX remove
         ]
     )
@@ -528,9 +509,6 @@ def add_external_helpers(symtab):
     # The capsule contains a pointer to a std::vector<std::string>
     # which is copied into the cdesc.
     name = "array_string_allocatable"
-    if literalinclude:
-        fmt.lstart = "{}helper {}\n".format(cstart, name)
-        fmt.lend = "\n{}helper {}".format(cend, name)
     CHelpers[name] = dict(
         name="array_string_allocatable",
         fmtdict=dict(
@@ -545,7 +523,7 @@ def add_external_helpers(symtab):
         proto="{cnameproto};",
         source=[
             "",
-            "{lstart}// helper {hname}",
+            "{c_lstart}// helper {hname}",
             "// Copy the std::string array into Fortran array.",
             "// Called by Fortran to deal with allocatable character.",
             "// out is already blank filled.",
@@ -553,7 +531,7 @@ def add_external_helpers(symtab):
             "{{+",
             "std::string *cxxvec =\t static_cast< std::string *>\t(src->addr);",
             "{cnamefunc_array_string_out}(dest, cxxvec, dest->size);",
-            "-}}{lend}",
+            "-}}{c_lend}",
             "",
         ],
     )
@@ -588,9 +566,6 @@ def add_external_helpers(symtab):
     ########################################
     ########################################
     name = "array_string_out_len"
-    if literalinclude:
-        fmt.lstart = "{}helper {}\n".format(cstart, name)
-        fmt.lend = "\n{}helper {}".format(cend, name)
     CHelpers[name] = dict(
         name="array_string_out_len",
         fmtdict=dict(
@@ -604,7 +579,7 @@ def add_external_helpers(symtab):
         proto="{cnameproto};",
         source=[
             "",
-            "{lstart}// helper {hname}",
+            "{c_lstart}// helper {hname}",
             "// Return the maximum string length in a std::vector<std::string>.",
             "{cnameproto}",
             "{{+",
@@ -613,7 +588,7 @@ def add_external_helpers(symtab):
             "len = std::max(len, in[i].length());",
             "-}}",
             "return len;",
-            "-}}{lend}",
+            "-}}{c_lend}",
             "",
         ]
     )
@@ -629,9 +604,6 @@ def add_external_helpers(symtab):
     ########################################
     # Only used with std::string and thus C++.
     name = "vector_string_out"
-    if literalinclude:
-        fmt.lstart = "{}helper {}\n".format(cstart, name)
-        fmt.lend = "\n{}helper {}".format(cend, name)
     CHelpers[name] = dict(
         name="vector_string_out",
         fmtdict=dict(
@@ -650,7 +622,7 @@ def add_external_helpers(symtab):
         # XXX - mangle name
         source=[
             "",
-            "{lstart}// helper {hname}",
+            "{c_lstart}// helper {hname}",
             "// Copy the std::vector<std::string> into Fortran array argument.",
             "// Called by C++.",
             "{cnameproto}",
@@ -668,7 +640,7 @@ def add_external_helpers(symtab):
             "std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));",
             "dest += outdesc->elem_len;",
             "-}}",
-            "-}}{lend}",
+            "-}}{c_lend}",
             "",
         ],
     )
@@ -734,9 +706,6 @@ def add_external_helpers(symtab):
     # The capsule contains a pointer to a std::vector<std::string>
     # which is copied into the cdesc.
     name = "vector_string_allocatable"
-    if literalinclude:
-        fmt.lstart = "{}helper {}\n".format(cstart, name)
-        fmt.lend = "\n{}helper {}".format(cend, name)
     CHelpers[name] = dict(
         name="vector_string_allocatable",
         fmtdict=dict(
@@ -751,7 +720,7 @@ def add_external_helpers(symtab):
         proto="{cnameproto};",
         source=[
             "",
-            "{lstart}// helper {hname}",
+            "{c_lstart}// helper {hname}",
             "// Copy the std::vector<std::string> into Fortran array.",
             "// Called by Fortran to deal with allocatable character.",
             "// out is already blank filled.",
@@ -759,7 +728,7 @@ def add_external_helpers(symtab):
             "{{+",
             "std::vector<std::string> *cxxvec =\t static_cast< std::vector<std::string> * >\t(src->addr);",
             "{cnamefunc_vector_string_out}(dest, *cxxvec);",
-            "-}}{lend}",
+            "-}}{c_lend}",
             "",
         ],
     )
@@ -795,9 +764,6 @@ def add_external_helpers(symtab):
     ########################################
     ########################################
     name = "vector_string_out_len"
-    if literalinclude:
-        fmt.lstart = "{}helper {}\n".format(cstart, name)
-        fmt.lend = "\n{}helper {}".format(cend, name)
     CHelpers[name] = dict(
         name="vector_string_out_len",
         fmtdict=dict(
@@ -811,7 +777,7 @@ def add_external_helpers(symtab):
         proto="{cnameproto};",
         source=[
             "",
-            "{lstart}// helper {hname}",
+            "{c_lstart}// helper {hname}",
             "// Return the maximum string length in a std::vector<std::string>.",
             "{cnameproto}",
             "{{+",
@@ -821,7 +787,7 @@ def add_external_helpers(symtab):
             "len = std::max(len, in[i].length());",
             "-}}",
             "return len;",
-            "-}}{lend}",
+            "-}}{c_lend}",
             "",
         ],
     )
@@ -860,9 +826,6 @@ def add_external_helpers(symtab):
     
     ########################################
     name = "string_to_cdesc"
-    if literalinclude:
-        fmt.lstart = "{}helper {}\n".format(cstart, name)
-        fmt.lend = "\n{}helper {}".format(cend, name)
     CHelpers[name] = dict(
         name="string_to_cdesc",
         fmtdict=dict(
@@ -873,7 +836,7 @@ def add_external_helpers(symtab):
         cxx_include=["<cstring>", "<cstddef>"],
         source=[
             "",
-            "{lstart}// helper {hname}",
+            "{c_lstart}// helper {hname}",
             "// Save std::string metadata into array to allow Fortran to access values.",
             "// CHARACTER(len=elem_size) src",
             "static void {cnamefunc}(\t{C_array_type} *cdesc,\t const std::string * src)",
@@ -887,7 +850,7 @@ def add_external_helpers(symtab):
             "-}}",
             "cdesc->size = 1;",
             "cdesc->rank = 0;  // scalar",
-            "-}}{lend}",
+            "-}}{c_lend}",
         ]
     )
     apply_fmtdict_from_helpers(CHelpers[name], fmt)
