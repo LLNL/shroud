@@ -1697,92 +1697,97 @@ if (PyList_Check(seq))
 # Static helpers
 
 def add_global_helpers(fmt):
-    global CHelpers
-    CHelpers = dict(
+    THelpers = dict(
         type_defines=dict(
             # Order derived from TS 29113
             # with the addition of unsigned types
             name="type_defines",
             scope="cwrap_include",
-            source="""
-/* helper type_defines */
-/* Shroud type defines */
-#define SH_TYPE_SIGNED_CHAR 1
-#define SH_TYPE_SHORT       2
-#define SH_TYPE_INT         3
-#define SH_TYPE_LONG        4
-#define SH_TYPE_LONG_LONG   5
-#define SH_TYPE_SIZE_T      6
-
-#define SH_TYPE_UNSIGNED_SHORT       SH_TYPE_SHORT + 100
-#define SH_TYPE_UNSIGNED_INT         SH_TYPE_INT + 100
-#define SH_TYPE_UNSIGNED_LONG        SH_TYPE_LONG + 100
-#define SH_TYPE_UNSIGNED_LONG_LONG   SH_TYPE_LONG_LONG + 100
-
-#define SH_TYPE_INT8_T      7
-#define SH_TYPE_INT16_T     8
-#define SH_TYPE_INT32_T     9
-#define SH_TYPE_INT64_T    10
-
-#define SH_TYPE_UINT8_T    SH_TYPE_INT8_T + 100
-#define SH_TYPE_UINT16_T   SH_TYPE_INT16_T + 100
-#define SH_TYPE_UINT32_T   SH_TYPE_INT32_T + 100
-#define SH_TYPE_UINT64_T   SH_TYPE_INT64_T + 100
-
-/* least8 least16 least32 least64 */
-/* fast8 fast16 fast32 fast64 */
-/* intmax_t intptr_t ptrdiff_t */
-
-#define SH_TYPE_FLOAT        22
-#define SH_TYPE_DOUBLE       23
-#define SH_TYPE_LONG_DOUBLE  24
-#define SH_TYPE_FLOAT_COMPLEX       25
-#define SH_TYPE_DOUBLE_COMPLEX      26
-#define SH_TYPE_LONG_DOUBLE_COMPLEX 27
-
-#define SH_TYPE_BOOL       28
-#define SH_TYPE_CHAR       29
-#define SH_TYPE_CPTR       30
-#define SH_TYPE_STRUCT     31
-#define SH_TYPE_OTHER      32""",
-    ),
+            source=[
+                "",
+                "/* helper type_defines */",
+                "/* Shroud type defines */",
+                "#define SH_TYPE_SIGNED_CHAR 1",
+                "#define SH_TYPE_SHORT       2",
+                "#define SH_TYPE_INT         3",
+                "#define SH_TYPE_LONG        4",
+                "#define SH_TYPE_LONG_LONG   5",
+                "#define SH_TYPE_SIZE_T      6",
+                "",
+                "#define SH_TYPE_UNSIGNED_SHORT       SH_TYPE_SHORT + 100",
+                "#define SH_TYPE_UNSIGNED_INT         SH_TYPE_INT + 100",
+                "#define SH_TYPE_UNSIGNED_LONG        SH_TYPE_LONG + 100",
+                "#define SH_TYPE_UNSIGNED_LONG_LONG   SH_TYPE_LONG_LONG + 100",
+                "",
+                "#define SH_TYPE_INT8_T      7",
+                "#define SH_TYPE_INT16_T     8",
+                "#define SH_TYPE_INT32_T     9",
+                "#define SH_TYPE_INT64_T    10",
+                "",
+                "#define SH_TYPE_UINT8_T    SH_TYPE_INT8_T + 100",
+                "#define SH_TYPE_UINT16_T   SH_TYPE_INT16_T + 100",
+                "#define SH_TYPE_UINT32_T   SH_TYPE_INT32_T + 100",
+                "#define SH_TYPE_UINT64_T   SH_TYPE_INT64_T + 100",
+                "",
+                "/* least8 least16 least32 least64 */",
+                "/* fast8 fast16 fast32 fast64 */",
+                "/* intmax_t intptr_t ptrdiff_t */",
+                "",
+                "#define SH_TYPE_FLOAT        22",
+                "#define SH_TYPE_DOUBLE       23",
+                "#define SH_TYPE_LONG_DOUBLE  24",
+                "#define SH_TYPE_FLOAT_COMPLEX       25",
+                "#define SH_TYPE_DOUBLE_COMPLEX      26",
+                "#define SH_TYPE_LONG_DOUBLE_COMPLEX 27",
+                "",
+                "#define SH_TYPE_BOOL       28",
+                "#define SH_TYPE_CHAR       29",
+                "#define SH_TYPE_CPTR       30",
+                "#define SH_TYPE_STRUCT     31",
+                "#define SH_TYPE_OTHER      32",
+            ]
+        ),
         char_copy=dict(
             name="char_copy",
             c_fmtname="ShroudCharCopy",
             c_include=["<string.h>"],
-            c_source="""
-// helper ShroudCharCopy
-// Copy src into dest, blank fill to ndest characters
-// Truncate if dest is too short.
-// dest will not be NULL terminated.
-static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
-{
-   if (src == NULL) {
-     memset(dest,' ',ndest); // convert NULL pointer to blank filled string
-   } else {
-     if (nsrc < 0) nsrc = strlen(src);
-     int nm = nsrc < ndest ? nsrc : ndest;
-     memcpy(dest,src,nm);
-     if(ndest > nm) memset(dest+nm,' ',ndest-nm); // blank fill
-   }
-}""",
+            c_source=[
+                "",
+                "// helper ShroudCharCopy",
+                "// Copy src into dest, blank fill to ndest characters",
+                "// Truncate if dest is too short.",
+                "// dest will not be NULL terminated.",
+                "static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)",
+                "{",
+                "   if (src == NULL) {",
+                "     memset(dest,' ',ndest); // convert NULL pointer to blank filled string",
+                "   } else {",
+                "     if (nsrc < 0) nsrc = strlen(src);",
+                "     int nm = nsrc < ndest ? nsrc : ndest;",
+                "     memcpy(dest,src,nm);",
+                "     if(ndest > nm) memset(dest+nm,' ',ndest-nm); // blank fill",
+                "   }",
+                "}",
+            ],
             cxx_include=["<cstring>"],
-            cxx_source="""
-// helper ShroudCharCopy
-// Copy src into dest, blank fill to ndest characters
-// Truncate if dest is too short.
-// dest will not be NULL terminated.
-static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
-{
-   if (src == NULL) {
-     std::memset(dest,' ',ndest); // convert NULL pointer to blank filled string
-   } else {
-     if (nsrc < 0) nsrc = std::strlen(src);
-     int nm = nsrc < ndest ? nsrc : ndest;
-     std::memcpy(dest,src,nm);
-     if(ndest > nm) std::memset(dest+nm,' ',ndest-nm); // blank fill
-   }
-}""",
+            cxx_source=[
+                "",
+                "// helper ShroudCharCopy",
+                "// Copy src into dest, blank fill to ndest characters",
+                "// Truncate if dest is too short.",
+                "// dest will not be NULL terminated.",
+                "static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)",
+                "{",
+                "   if (src == NULL) {",
+                "     std::memset(dest,' ',ndest); // convert NULL pointer to blank filled string",
+                "   } else {",
+                "     if (nsrc < 0) nsrc = std::strlen(src);",
+                "     int nm = nsrc < ndest ? nsrc : ndest;",
+                "     std::memcpy(dest,src,nm);",
+                "     if(ndest > nm) std::memset(dest+nm,' ',ndest-nm); // blank fill",
+                "   }",
+                "}",
+            ]
         ),
 
         ########################################
@@ -1790,23 +1795,27 @@ static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
             name="char_blank_fill",
             c_fmtname="ShroudCharBlankFill",
             c_include=["<string.h>"],
-            c_source="""
-// helper char_blank_fill
-// blank fill dest starting at trailing NULL.
-static void ShroudCharBlankFill(char *dest, int ndest)
-{
-   int nm = strlen(dest);
-   if(ndest > nm) memset(dest+nm,' ',ndest-nm);
-}""",
+            c_source=[
+                "",
+                "// helper char_blank_fill",
+                "// blank fill dest starting at trailing NULL.",
+                "static void ShroudCharBlankFill(char *dest, int ndest)",
+                "{",
+                "   int nm = strlen(dest);",
+                "   if(ndest > nm) memset(dest+nm,' ',ndest-nm);",
+                "}",
+            ],
             cxx_include=["<cstring>"],
-            cxx_source="""
-// helper char_blank_fill
-// blank fill dest starting at trailing NULL.
-static void ShroudCharBlankFill(char *dest, int ndest)
-{
-   int nm = std::strlen(dest);
-   if(ndest > nm) std::memset(dest+nm,' ',ndest-nm);
-}""",
+            cxx_source=[
+                "",
+                "// helper char_blank_fill",
+                "// blank fill dest starting at trailing NULL.",
+                "static void ShroudCharBlankFill(char *dest, int ndest)",
+                "{",
+                "   int nm = std::strlen(dest);",
+                "   if(ndest > nm) std::memset(dest+nm,' ',ndest-nm);",
+                "}",
+            ],
         ),
 
         ########################################
@@ -1816,43 +1825,47 @@ static void ShroudCharBlankFill(char *dest, int ndest)
             name="char_alloc",
             c_fmtname="ShroudCharAlloc",
             c_include=["<string.h>", "<stdlib.h>", "<stddef.h>"],
-            c_source="""
-// helper char_alloc
-// Copy src into new memory and null terminate.
-// If ntrim is 0, return NULL pointer.
-// If blanknull is 1, return NULL when string is blank.
-static char *ShroudCharAlloc(const char *src, int nsrc, int blanknull)
-{
-   int ntrim = ShroudCharLenTrim(src, nsrc);
-   if (ntrim == 0 && blanknull == 1) {
-     return NULL;
-   }
-   char *rv = malloc(nsrc + 1);
-   if (ntrim > 0) {
-     memcpy(rv, src, ntrim);
-   }
-   rv[ntrim] = '\\0';
-   return rv;
-}""",
+            c_source=[
+                "",
+                "// helper char_alloc",
+                "// Copy src into new memory and null terminate.",
+                "// If ntrim is 0, return NULL pointer.",
+                "// If blanknull is 1, return NULL when string is blank.",
+                "static char *ShroudCharAlloc(const char *src, int nsrc, int blanknull)",
+                "{",
+                "   int ntrim = ShroudCharLenTrim(src, nsrc);",
+                "   if (ntrim == 0 && blanknull == 1) {",
+                "     return NULL;",
+                "   }",
+                "   char *rv = malloc(nsrc + 1);",
+                "   if (ntrim > 0) {",
+                "     memcpy(rv, src, ntrim);",
+                "   }",
+                "   rv[ntrim] = '\\0';",
+                "   return rv;",
+                "}",
+            ],
             cxx_include=["<cstring>", "<cstdlib>"],
-            cxx_source="""
-// helper char_alloc
-// Copy src into new memory and null terminate.
-// If ntrim is 0, return NULL pointer.
-// If blanknull is 1, return NULL when string is blank.
-static char *ShroudCharAlloc(const char *src, int nsrc, int blanknull)
-{
-   int ntrim = ShroudCharLenTrim(src, nsrc);
-   if (ntrim == 0 && blanknull == 1) {
-     return nullptr;
-   }
-   char *rv = (char *) std::malloc(nsrc + 1);
-   if (ntrim > 0) {
-     std::memcpy(rv, src, ntrim);
-   }
-   rv[ntrim] = '\\0';
-   return rv;
-}""",
+            cxx_source=[
+                "",
+                "// helper char_alloc",
+                "// Copy src into new memory and null terminate.",
+                "// If ntrim is 0, return NULL pointer.",
+                "// If blanknull is 1, return NULL when string is blank.",
+                "static char *ShroudCharAlloc(const char *src, int nsrc, int blanknull)",
+                "{",
+                "   int ntrim = ShroudCharLenTrim(src, nsrc);",
+                "   if (ntrim == 0 && blanknull == 1) {",
+                "     return nullptr;",
+                "   }",
+                "   char *rv = (char *) std::malloc(nsrc + 1);",
+                "   if (ntrim > 0) {",
+                "     std::memcpy(rv, src, ntrim);",
+                "   }",
+                "   rv[ntrim] = '\\0';",
+                "   return rv;",
+                "}",
+            ],
             dependent_helpers=["char_len_trim"],
         ),
         
@@ -1860,47 +1873,53 @@ static char *ShroudCharAlloc(const char *src, int nsrc, int blanknull)
             name="char_free",
             c_fmtname="ShroudCharFree",
             c_include=["<stdlib.h>"],
-            c_source="""
-// helper char_free
-// Release memory allocated by ShroudCharAlloc
-static void ShroudCharFree(char *src)
-{
-   if (src != NULL) {
-     free(src);
-   }
-}""",
+            c_source=[
+                "",
+                "// helper char_free",
+                "// Release memory allocated by ShroudCharAlloc",
+                "static void ShroudCharFree(char *src)",
+                "{",
+                "   if (src != NULL) {",
+                "     free(src);",
+                "   }",
+                "}",
+            ],
             cxx_include=["<cstdlib>"],
-            cxx_source="""
-// helper char_free
-// Release memory allocated by ShroudCharAlloc
-static void ShroudCharFree(char *src)
-{
-   if (src != NULL) {
-     std::free(src);
-   }
-}""",
+            cxx_source=[
+                "",
+                "// helper char_free",
+                "// Release memory allocated by ShroudCharAlloc",
+                "static void ShroudCharFree(char *src)",
+                "{",
+                "   if (src != NULL) {",
+                "     std::free(src);",
+                "   }",
+                "}",
+            ],
         ),
 
         ########################################
         char_len_trim=dict(
             name="char_len_trim",
             c_fmtname="ShroudCharLenTrim",
-            source="""
-// helper char_len_trim
-// Returns the length of character string src with length nsrc,
-// ignoring any trailing blanks.
-static int ShroudCharLenTrim(const char *src, int nsrc) {
-    int i;
-
-    for (i = nsrc - 1; i >= 0; i--) {
-        if (src[i] != ' ') {
-            break;
-        }
-    }
-
-    return i + 1;
-}
-"""
+            source=[
+                "",
+                "// helper char_len_trim",
+                "// Returns the length of character string src with length nsrc,",
+                "// ignoring any trailing blanks.",
+                "static int ShroudCharLenTrim(const char *src, int nsrc) {{+",
+                "int i;",
+                "",
+                "for (i = nsrc - 1; i >= 0; i--) {{+",
+                "if (src[i] != ' ') {{+",
+                "break;",
+                "-}}",
+                "-}}",
+                "",
+                "return i + 1;",
+                "-}}",
+                "",
+            ],
         ),
         ########################################
         # Used with 'char **' arguments.
@@ -1909,70 +1928,78 @@ static int ShroudCharLenTrim(const char *src, int nsrc) {
             c_fmtname="ShroudStrArrayAlloc",
             dependent_helpers=["char_len_trim"],
             c_include=["<string.h>", "<stdlib.h>"],
-            c_source="""
-// helper char_array_alloc
-// Copy src into new memory and null terminate.
-static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
-{
-   char **rv = malloc(sizeof(char *) * nsrc);
-   const char *src0 = src;
-   for(int i=0; i < nsrc; ++i) {
-      int ntrim = ShroudCharLenTrim(src0, len);
-      char *tgt = malloc(ntrim+1);
-      memcpy(tgt, src0, ntrim);
-      tgt[ntrim] = '\\0';
-      rv[i] = tgt;
-      src0 += len;
-   }
-   return rv;
-}""",
+            c_source=[
+                "",
+                "// helper char_array_alloc",
+                "// Copy src into new memory and null terminate.",
+                "static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)",
+                "{",
+                "   char **rv = malloc(sizeof(char *) * nsrc);",
+                "   const char *src0 = src;",
+                "   for(int i=0; i < nsrc; ++i) {",
+                "      int ntrim = ShroudCharLenTrim(src0, len);",
+                "      char *tgt = malloc(ntrim+1);",
+                "      memcpy(tgt, src0, ntrim);",
+                "      tgt[ntrim] = '\\0';",
+                "      rv[i] = tgt;",
+                "      src0 += len;",
+                "   }",
+                "   return rv;",
+                "}",
+            ],
             cxx_include=["<cstring>", "<cstdlib>"],
-            cxx_source="""
-// helper char_array_alloc
-// Copy src into new memory and null terminate.
-// char **src +size(nsrc) +len(len)
-// CHARACTER(len) src(nsrc)
-static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
-{
-   char **rv = static_cast\t<char **>\t(std::malloc(sizeof(char *) * nsrc));
-   const char *src0 = src;
-   for(int i=0; i < nsrc; ++i) {
-      int ntrim = ShroudCharLenTrim(src0, len);
-      char *tgt = static_cast<char *>(std::malloc(ntrim+1));
-      std::memcpy(tgt, src0, ntrim);
-      tgt[ntrim] = '\\0';
-      rv[i] = tgt;
-      src0 += len;
-   }
-   return rv;
-}""",
+            cxx_source=[
+                "",
+                "// helper char_array_alloc",
+                "// Copy src into new memory and null terminate.",
+                "// char **src +size(nsrc) +len(len)",
+                "// CHARACTER(len) src(nsrc)",
+                "static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)",
+                "{",
+                "   char **rv = static_cast\t<char **>\t(std::malloc(sizeof(char *) * nsrc));",
+                "   const char *src0 = src;",
+                "   for(int i=0; i < nsrc; ++i) {",
+                "      int ntrim = ShroudCharLenTrim(src0, len);",
+                "      char *tgt = static_cast<char *>(std::malloc(ntrim+1));",
+                "      std::memcpy(tgt, src0, ntrim);",
+                "      tgt[ntrim] = '\\0';",
+                "      rv[i] = tgt;",
+                "      src0 += len;",
+                "   }",
+                "   return rv;",
+                "}",
+            ],
         ),
     
         char_array_free=dict(
             name="char_array_free",
             c_fmtname="ShroudStrArrayFree",
             c_include=["<stdlib.h>"],
-            c_source="""
-// helper char_array_free
-// Release memory allocated by ShroudStrArrayAlloc
-static void ShroudStrArrayFree(char **src, int nsrc)
-{
-   for(int i=0; i < nsrc; ++i) {
-       free(src[i]);
-   }
-   free(src);
-}""",
+            c_source=[
+                "",
+                "// helper char_array_free",
+                "// Release memory allocated by ShroudStrArrayAlloc",
+                "static void ShroudStrArrayFree(char **src, int nsrc)",
+                "{",
+                "   for(int i=0; i < nsrc; ++i) {",
+                "       free(src[i]);",
+                "   }",
+                "   free(src);",
+                "}",
+            ],
             cxx_include=["<cstdlib>"],
-            cxx_source="""
-// helper char_array_free
-// Release memory allocated by ShroudStrArrayAlloc
-static void ShroudStrArrayFree(char **src, int nsrc)
-{
-   for(int i=0; i < nsrc; ++i) {
-       std::free(src[i]);
-   }
-   std::free(src);
-}""",
+            cxx_source=[
+                "",
+                "// helper char_array_free",
+                "// Release memory allocated by ShroudStrArrayAlloc",
+                "static void ShroudStrArrayFree(char **src, int nsrc)",
+                "{",
+                "   for(int i=0; i < nsrc; ++i) {",
+                "       std::free(src[i]);",
+                "   }",
+                "   std::free(src);",
+                "}",
+            ],
         ),
         ########################################
         # Find size of CFI array
@@ -1980,20 +2007,25 @@ static void ShroudStrArrayFree(char **src, int nsrc)
             name="size_CFI",
             c_include=["<stddef.h>"],
             cxx_include=["<cstddef>"],
-            source="""
-// helper size_CFI
-// Compute number of items in CFI_cdesc_t
-size_t ShroudSizeCFI(CFI_cdesc_t *desc)
-{
-    size_t nitems = 1;
-    for (int i = 0; i < desc->rank; i++) {
-        nitems *= desc->dim[i].extent;
-    }
-    return nitems;
-}""",
+            source=[
+                "",
+                "// helper size_CFI",
+                "// Compute number of items in CFI_cdesc_t",
+                "size_t ShroudSizeCFI(CFI_cdesc_t *desc)",
+                "{{+",
+                "size_t nitems = 1;",
+                "for (int i = 0; i < desc->rank; i++) {{+",
+                "nitems *= desc->dim[i].extent;",
+                "-}}",
+                "return nitems;",
+                "-}}",
+            ],
         ),
         ########################################
     )   # end CHelpers
+    for name, helper in THelpers.items():
+        apply_fmtdict_from_helpers(helper, fmt)
+        CHelpers[name] = helper
     
 
     helper = dict(
