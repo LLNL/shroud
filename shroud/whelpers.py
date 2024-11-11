@@ -163,7 +163,7 @@ def add_external_helpers(fmt, symtab):
     """
     ########################################
     name = "capsule_dtor"
-    CHelpers[name] = dict(
+    helper = dict(
         name="capsule_dtor",
         fmtdict=dict(
             cnamefunc = "{C_memory_dtor_function}",
@@ -175,19 +175,8 @@ def add_external_helpers(fmt, symtab):
         api="c",
         dependent_helpers=["capsule_data_helper"],
         proto="{cnameproto};",
-    )
-    apply_fmtdict_from_helpers(CHelpers[name], fmt)
-    
-    FHelpers[name] = dict(
-        name="capsule_dtor",
-        fmtdict=dict(
-            cnamefunc = "{C_memory_dtor_function}",
-            cnameproto = "void {cnamefunc}\t({C_capsule_data_type} *cap)",
-            # Add the C prototype. The body is created Wrapc.write_capsule_code.
-            fnamefunc = "{C_prefix}SHROUD_capsule_dtor",
-        ),
+
         f_fmtname="{fnamefunc}",
-        dependent_helpers=["capsule_data_helper"],
         interface=[
             "",
             "interface+",
@@ -201,7 +190,9 @@ def add_external_helpers(fmt, symtab):
             "-end interface",
         ],
     )
-    apply_fmtdict_from_helpers(FHelpers[name], fmt)
+    apply_fmtdict_from_helpers(helper, fmt)
+    CHelpers[name] = helper
+    FHelpers[name] = helper
     
     ########################################
     # XXX - Only used with std::vector and thus C++.
@@ -214,10 +205,7 @@ def add_external_helpers(fmt, symtab):
     # This allows multiple wrapped libraries to coexist.
     
     name = "copy_array"
-    if literalinclude:
-        fmt.lstart = "{}helper {}\n".format(cstart, name)
-        fmt.lend = "\n{}helper {}".format(cend, name)
-    CHelpers[name] = dict(
+    helper = dict(
         name="copy_array",
         fmtdict=dict(
             cnamefunc="{C_prefix}ShroudCopyArray",
@@ -243,19 +231,9 @@ def add_external_helpers(fmt, symtab):
             "n *= data->elem_len;",
             "{stdlib}memcpy(c_var, cxx_var, n);",
             "-}}{c_lend}",
-        ]
-    )
-    apply_fmtdict_from_helpers(CHelpers[name], fmt)
-
-    FHelpers[name] = dict(
+        ],
         # XXX when f_kind == C_SIZE_T
-        name="copy_array",
-        fmtdict=dict(
-            cnamefunc="{C_prefix}ShroudCopyArray",
-            fnamefunc="{C_prefix}SHROUD_{hname}",
-        ),
         f_fmtname="{fnamefunc}",
-        dependent_helpers=["array_context"],
         interface=[
             "",
             "interface+",
@@ -272,7 +250,9 @@ def add_external_helpers(fmt, symtab):
             "-end interface",
         ],
     )
-    apply_fmtdict_from_helpers(FHelpers[name], fmt)
+    apply_fmtdict_from_helpers(helper, fmt)
+    CHelpers[name] = helper
+    FHelpers[name] = helper
     
 ##-    ########################################
 ##-    # Only used with std::string and thus C++.
@@ -377,7 +357,7 @@ def add_external_helpers(fmt, symtab):
 
     ##########
     name = "copy_string"
-    CHelpers[name] = dict(
+    helper = dict(
         name="copy_string",
         fmtdict=dict(
             cnamefunc="{C_prefix}ShroudCopyString",
@@ -401,19 +381,10 @@ def add_external_helpers(fmt, symtab):
             "-}}{c_lend}",
             "",  # XXX  - remove
         ],
-    )
-    apply_fmtdict_from_helpers(CHelpers[name], fmt)
 
     # Fortran interface for above function.
     # Deal with allocatable character
-    FHelpers[name] = dict(
-        name="copy_string",
-        fmtdict=dict(
-            cnamefunc="{C_prefix}ShroudCopyString",
-            fnamefunc="{C_prefix}SHROUD_copy_string",
-        ),
         f_fmtname="{fnamefunc}",
-        dependent_helpers=["array_context"],
         interface=[
             "",
             "interface+",
@@ -428,9 +399,11 @@ def add_external_helpers(fmt, symtab):
             "integer(C_SIZE_T), value :: c_var_size",
             "-end subroutine {fnamefunc}",
             "-end interface",
-            ],
+        ],
     )
-    apply_fmtdict_from_helpers(FHelpers[name], fmt)
+    apply_fmtdict_from_helpers(helper, fmt)
+    CHelpers[name] = helper
+    FHelpers[name] = helper
 
     ######################################################################
     ########################################
@@ -438,7 +411,7 @@ def add_external_helpers(fmt, symtab):
     ########################################
     # Only used with std::string and thus C++.
     name = "array_string_out"
-    CHelpers[name] = dict(
+    helper = dict(
         name="array_string_out",
         fmtdict=dict(
             cnamefunc="{C_prefix}ShroudArrayStringOut",
@@ -476,7 +449,9 @@ def add_external_helpers(fmt, symtab):
             "",   # XXX remove
         ]
     )
-    apply_fmtdict_from_helpers(CHelpers[name], fmt)
+    apply_fmtdict_from_helpers(helper, fmt)
+    CHelpers[name] = helper
+    FHelpers[name] = helper
 
     # Fortran interface for above function.
     # Deal with allocatable character
@@ -509,7 +484,7 @@ def add_external_helpers(fmt, symtab):
     # The capsule contains a pointer to a std::vector<std::string>
     # which is copied into the cdesc.
     name = "array_string_allocatable"
-    CHelpers[name] = dict(
+    helper = dict(
         name="array_string_allocatable",
         fmtdict=dict(
             cnamefunc="{C_prefix}ShroudArrayStringAllocatable",
@@ -534,19 +509,9 @@ def add_external_helpers(fmt, symtab):
             "-}}{c_lend}",
             "",
         ],
-    )
-    apply_fmtdict_from_helpers(CHelpers[name], fmt)
 
     # Fortran interface for above function.
     # Deal with allocatable character
-    FHelpers[name] = dict(
-        name="array_string_allocatable",
-        fmtdict=dict(
-            cnamefunc="{C_prefix}ShroudArrayStringAllocatable",
-            fnamefunc="{C_prefix}SHROUD_array_string_allocatable",
-            cnameproto="void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)",
-        ),
-        dependent_helpers=["array_context"],
         f_fmtname="{fnamefunc}",
         interface=[
             "",
@@ -561,12 +526,14 @@ def add_external_helpers(fmt, symtab):
             "-end interface",
         ]
     )
-    apply_fmtdict_from_helpers(FHelpers[name], fmt)
+    apply_fmtdict_from_helpers(helper, fmt)
+    CHelpers[name] = helper
+    FHelpers[name] = helper
 
     ########################################
     ########################################
     name = "array_string_out_len"
-    CHelpers[name] = dict(
+    helper = dict(
         name="array_string_out_len",
         fmtdict=dict(
             cnamefunc="{C_prefix}ShroudArrayStringOutSize",
@@ -592,7 +559,8 @@ def add_external_helpers(fmt, symtab):
             "",
         ]
     )
-    apply_fmtdict_from_helpers(CHelpers[name], fmt)
+    apply_fmtdict_from_helpers(helper, fmt)
+    CHelpers[name] = helper
 
     ########################################
 
@@ -604,7 +572,8 @@ def add_external_helpers(fmt, symtab):
     ########################################
     # Only used with std::string and thus C++.
     name = "vector_string_out"
-    CHelpers[name] = dict(
+    CHelpers[name] = helper
+    helper = dict(
         name="vector_string_out",
         fmtdict=dict(
             cnamefunc="{C_prefix}ShroudVectorStringOut",
@@ -643,35 +612,25 @@ def add_external_helpers(fmt, symtab):
             "-}}{c_lend}",
             "",
         ],
-    )
-    apply_fmtdict_from_helpers(CHelpers[name], fmt)
 
-    # Fortran interface for above function.
-    FHelpers[name] = dict(
-        name="vector_string_out",
-        fmtdict=dict(
-            cnamefunc="{C_prefix}ShroudVectorStringOut",
-            fnamefunc="{C_prefix}shroud_vector_string_out",
-            cnamefunc_vector_string_out="{cnamefunc}", # XXXX savename
-            cnameproto="void {cnamefunc}({C_array_type} *outdesc, std::vector<std::string> &in)",
-        ),
-        dependent_helpers=["array_context"],
-        f_fmtname="{fnamefunc}",
-        interface=[
-            "",
-            "interface+",
-            "! helper {hname}",
-            "subroutine {fnamefunc}(out, in) &",
-            "     bind(c,name=\"{cnamefunc}\")+",
-            "use, intrinsic :: iso_c_binding, only : C_PTR",
-            "import {F_array_type}",
-            "type({F_array_type}), intent(IN) :: out",
-            "type(C_PTR), intent(IN) :: in",
-            "-end subroutine {fnamefunc}",
-            "-end interface",
-        ],
+#        f_fmtname="{fnamefunc}",
+#        interface=[
+#            "",
+#            "interface+",
+#            "! helper {hname}",
+#            "subroutine {fnamefunc}(out, in) &",
+#            "     bind(c,name=\"{cnamefunc}\")+",
+#            "use, intrinsic :: iso_c_binding, only : C_PTR",
+#            "import {F_array_type}",
+#            "type({F_array_type}), intent(IN) :: out",
+#            "type(C_PTR), intent(IN) :: in",
+#            "-end subroutine {fnamefunc}",
+#            "-end interface",
+#        ],
     )
-    apply_fmtdict_from_helpers(FHelpers[name], fmt)
+    apply_fmtdict_from_helpers(helper, fmt)
+    CHelpers[name] = helper
+    FHelpers[name] = helper
 
     ########################################
 
@@ -706,7 +665,7 @@ def add_external_helpers(fmt, symtab):
     # The capsule contains a pointer to a std::vector<std::string>
     # which is copied into the cdesc.
     name = "vector_string_allocatable"
-    CHelpers[name] = dict(
+    helper = dict(
         name="vector_string_allocatable",
         fmtdict=dict(
             cnamefunc="{C_prefix}ShroudVectorStringAllocatable",
@@ -731,19 +690,8 @@ def add_external_helpers(fmt, symtab):
             "-}}{c_lend}",
             "",
         ],
-    )
-    apply_fmtdict_from_helpers(CHelpers[name], fmt)
 
-    # Fortran interface for above function.
     # Deal with allocatable character
-    FHelpers[name] = dict(
-        name="vector_string_allocatable",
-        fmtdict=dict(
-            cnamefunc="{C_prefix}ShroudVectorStringAllocatable",
-            fnamefunc = "{C_prefix}SHROUD_vector_string_allocatable",
-            cnameproto = "void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)",
-        ),
-        dependent_helpers=["array_context"],
         f_fmtname="{fnamefunc}",
         interface=[
             "",
@@ -759,12 +707,14 @@ def add_external_helpers(fmt, symtab):
             "-end interface",
         ]
     )
-    apply_fmtdict_from_helpers(FHelpers[name], fmt)
+    apply_fmtdict_from_helpers(helper, fmt)
+    CHelpers[name] = helper
+    FHelpers[name] = helper
 
     ########################################
     ########################################
     name = "vector_string_out_len"
-    CHelpers[name] = dict(
+    helper = dict(
         name="vector_string_out_len",
         fmtdict=dict(
             cnamefunc="{C_prefix}ShroudVectorStringOutSize",
@@ -791,7 +741,8 @@ def add_external_helpers(fmt, symtab):
             "",
         ],
     )
-    apply_fmtdict_from_helpers(CHelpers[name], fmt)
+    apply_fmtdict_from_helpers(helper, fmt)
+    CHelpers[name] = helper
 
     ######################################################################
     ########################################
@@ -800,7 +751,7 @@ def add_external_helpers(fmt, symtab):
     # Set Fortran POINTER to string.
     # Must be a function (or a F2008 BLOCK) since fptr must
     # be declared after the string length is known.
-    FHelpers[name] = dict(
+    helper = dict(
         name="pointer_string",
         fmtdict=dict(
             fnamefunc="{C_prefix}SHROUD_pointer_string",
@@ -822,11 +773,12 @@ def add_external_helpers(fmt, symtab):
             "-end subroutine {fnamefunc}",
         ],
     )
-    apply_fmtdict_from_helpers(FHelpers[name], fmt)
+    apply_fmtdict_from_helpers(helper, fmt)
+    FHelpers[name] = helper
     
     ########################################
     name = "string_to_cdesc"
-    CHelpers[name] = dict(
+    helper = dict(
         name="string_to_cdesc",
         fmtdict=dict(
             cnamefunc="ShroudStringToCdesc",
@@ -853,7 +805,8 @@ def add_external_helpers(fmt, symtab):
             "-}}{c_lend}",
         ]
     )
-    apply_fmtdict_from_helpers(CHelpers[name], fmt)
+    apply_fmtdict_from_helpers(helper, fmt)
+    CHelpers[name] = helper
 
     
     ########################################

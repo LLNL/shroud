@@ -56,8 +56,12 @@ end type LIB_SHROUD_array
 
 ---------- array_string_allocatable ----------
 {
+    "api": "c",
+    "c_fmtname": "LIB_ShroudArrayStringAllocatable",
     "dependent_helpers": [
-        "array_context"
+        "capsule_data_helper",
+        "array_context",
+        "array_string_out"
     ],
     "f_fmtname": "LIB_SHROUD_array_string_allocatable",
     "fmtdict": {
@@ -65,8 +69,24 @@ end type LIB_SHROUD_array
         "cnameproto": "void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)",
         "fnamefunc": "{C_prefix}SHROUD_array_string_allocatable"
     },
-    "name": "array_string_allocatable"
+    "name": "array_string_allocatable",
+    "proto": "void LIB_ShroudArrayStringAllocatable(LIB_SHROUD_array *dest, LIB_SHROUD_capsule_data *src);",
+    "scope": "cwrap_impl"
 }
+
+##### start array_string_allocatable source
+
+// helper array_string_allocatable
+// Copy the std::string array into Fortran array.
+// Called by Fortran to deal with allocatable character.
+// out is already blank filled.
+void LIB_ShroudArrayStringAllocatable(LIB_SHROUD_array *dest, LIB_SHROUD_capsule_data *src)
+{
+    std::string *cxxvec = static_cast< std::string *>(src->addr);
+    LIB_ShroudArrayStringOut(dest, cxxvec, dest->size);
+}
+
+##### end array_string_allocatable source
 
 ##### start array_string_allocatable interface
 
@@ -80,6 +100,54 @@ interface
     end subroutine LIB_SHROUD_array_string_allocatable
 end interface
 ##### end array_string_allocatable interface
+
+---------- array_string_out ----------
+{
+    "api": "cxx",
+    "c_fmtname": "LIB_ShroudArrayStringOut",
+    "cxx_include": [
+        "<cstring>",
+        "<cstddef>"
+    ],
+    "dependent_helpers": [
+        "array_context"
+    ],
+    "fmtdict": {
+        "cnamefunc": "{C_prefix}ShroudArrayStringOut",
+        "cnamefunc_array_string_out": "{cnamefunc}",
+        "cnameproto": "void {cnamefunc}({C_array_type} *outdesc, std::string *in, size_t nsize)"
+    },
+    "name": "array_string_out",
+    "proto": "void LIB_ShroudArrayStringOut(LIB_SHROUD_array *outdesc, std::string *in, size_t nsize);",
+    "proto_include": [
+        "<string>",
+        "<vector>"
+    ],
+    "scope": "cwrap_impl"
+}
+
+##### start array_string_out source
+
+// helper array_string_out
+// Copy the std::vector<std::string> into Fortran array argument.
+// Called by C++.
+void LIB_ShroudArrayStringOut(LIB_SHROUD_array *outdesc, std::string *in, size_t nsize)
+{
+    size_t nvect = outdesc->size;
+    size_t len = outdesc->elem_len;
+    char *dest = static_cast<char *>(outdesc->base_addr);
+    // Clear user memory
+    std::memset(dest, ' ', nvect*len);
+
+    // Copy into user memory
+    nvect = std::min(nvect, nsize);
+    for (size_t i = 0; i < nvect; ++i) {
+        std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));
+        dest += outdesc->elem_len;
+    }
+}
+
+##### end array_string_out source
 
 ---------- capsule_data_helper ----------
 {
@@ -116,6 +184,8 @@ typedef struct s_LIB_SHROUD_capsule_data LIB_SHROUD_capsule_data;
 
 ---------- capsule_dtor ----------
 {
+    "api": "c",
+    "c_fmtname": "LIB_SHROUD_memory_destructor",
     "dependent_helpers": [
         "capsule_data_helper"
     ],
@@ -125,7 +195,8 @@ typedef struct s_LIB_SHROUD_capsule_data LIB_SHROUD_capsule_data;
         "cnameproto": "void {cnamefunc}\t({C_capsule_data_type} *cap)",
         "fnamefunc": "{C_prefix}SHROUD_capsule_dtor"
     },
-    "name": "capsule_dtor"
+    "name": "capsule_dtor",
+    "proto": "void LIB_SHROUD_memory_destructor\t(LIB_SHROUD_capsule_data *cap);"
 }
 
 ##### start capsule_dtor interface
@@ -180,6 +251,15 @@ end subroutine SHROUD_capsule_delete
 
 ---------- copy_array ----------
 {
+    "c_fmtname": "LIB_ShroudCopyArray",
+    "c_include": [
+        "<string.h>",
+        "<stddef.h>"
+    ],
+    "cxx_include": [
+        "<cstring>",
+        "<cstddef>"
+    ],
     "dependent_helpers": [
         "array_context"
     ],
@@ -188,8 +268,25 @@ end subroutine SHROUD_capsule_delete
         "cnamefunc": "{C_prefix}ShroudCopyArray",
         "fnamefunc": "{C_prefix}SHROUD_{hname}"
     },
-    "name": "copy_array"
+    "name": "copy_array",
+    "scope": "cwrap_impl"
 }
+
+##### start copy_array source
+
+// helper copy_array
+// Copy std::vector into array c_var(c_var_size).
+// Then release std::vector.
+// Called from Fortran.
+void LIB_ShroudCopyArray(LIB_SHROUD_array *data, void *c_var, &
+    size_t c_var_size)
+{
+    const void *cxx_var = data->base_addr;
+    int n = c_var_size < data->size ? c_var_size : data->size;
+    n *= data->elem_len;
+    std::memcpy(c_var, cxx_var, n);
+}
+##### end copy_array source
 
 ##### start copy_array interface
 
@@ -209,6 +306,11 @@ end interface
 
 ---------- copy_string ----------
 {
+    "c_fmtname": "LIB_ShroudCopyString",
+    "cxx_include": [
+        "<cstring>",
+        "<cstddef>"
+    ],
     "dependent_helpers": [
         "array_context"
     ],
@@ -217,8 +319,24 @@ end interface
         "cnamefunc": "{C_prefix}ShroudCopyString",
         "fnamefunc": "{C_prefix}SHROUD_copy_string"
     },
-    "name": "copy_string"
+    "name": "copy_string",
+    "scope": "cwrap_impl"
 }
+
+##### start copy_string source
+
+// helper copy_string
+// Copy the char* or std::string in context into c_var.
+// Called by Fortran to deal with allocatable character.
+void LIB_ShroudCopyString(LIB_SHROUD_array *data, char *c_var,&
+    size_t c_var_len) {
+    const void *cxx_var = data->base_addr;
+    size_t n = c_var_len;
+    if (data->elem_len < n) n = data->elem_len;
+    std::memcpy(c_var, cxx_var, n);
+}
+
+##### end copy_string source
 
 ##### start copy_string interface
 
@@ -306,8 +424,12 @@ integer, parameter, private :: &
 
 ---------- vector_string_allocatable ----------
 {
+    "api": "c",
+    "c_fmtname": "LIB_ShroudVectorStringAllocatable",
     "dependent_helpers": [
-        "array_context"
+        "capsule_data_helper",
+        "array_context",
+        "vector_string_out"
     ],
     "f_fmtname": "LIB_SHROUD_vector_string_allocatable",
     "fmtdict": {
@@ -315,8 +437,25 @@ integer, parameter, private :: &
         "cnameproto": "void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)",
         "fnamefunc": "{C_prefix}SHROUD_vector_string_allocatable"
     },
-    "name": "vector_string_allocatable"
+    "name": "vector_string_allocatable",
+    "proto": "void LIB_ShroudVectorStringAllocatable(LIB_SHROUD_array *dest, LIB_SHROUD_capsule_data *src);",
+    "scope": "cwrap_impl"
 }
+
+##### start vector_string_allocatable source
+
+// helper vector_string_allocatable
+// Copy the std::vector<std::string> into Fortran array.
+// Called by Fortran to deal with allocatable character.
+// out is already blank filled.
+void LIB_ShroudVectorStringAllocatable(LIB_SHROUD_array *dest, LIB_SHROUD_capsule_data *src)
+{
+    std::vector<std::string> *cxxvec =&
+        static_cast< std::vector<std::string> * >(src->addr);
+    LIB_ShroudVectorStringOut(dest, *cxxvec);
+}
+
+##### end vector_string_allocatable source
 
 ##### start vector_string_allocatable interface
 
@@ -334,29 +473,50 @@ end interface
 
 ---------- vector_string_out ----------
 {
+    "api": "cxx",
+    "c_fmtname": "LIB_ShroudVectorStringOut",
+    "cxx_include": [
+        "<cstring>",
+        "<cstddef>"
+    ],
     "dependent_helpers": [
         "array_context"
     ],
-    "f_fmtname": "LIB_shroud_vector_string_out",
     "fmtdict": {
         "cnamefunc": "{C_prefix}ShroudVectorStringOut",
         "cnamefunc_vector_string_out": "{cnamefunc}",
         "cnameproto": "void {cnamefunc}({C_array_type} *outdesc, std::vector<std::string> &in)",
         "fnamefunc": "{C_prefix}shroud_vector_string_out"
     },
-    "name": "vector_string_out"
+    "name": "vector_string_out",
+    "proto": "void LIB_ShroudVectorStringOut(LIB_SHROUD_array *outdesc, std::vector<std::string> &in);",
+    "proto_include": [
+        "<string>",
+        "<vector>"
+    ],
+    "scope": "cwrap_impl"
 }
 
-##### start vector_string_out interface
+##### start vector_string_out source
 
-interface
-    ! helper vector_string_out
-    subroutine LIB_shroud_vector_string_out(out, in) &
-         bind(c,name="LIB_ShroudVectorStringOut")
-        use, intrinsic :: iso_c_binding, only : C_PTR
-        import LIB_SHROUD_array
-        type(LIB_SHROUD_array), intent(IN) :: out
-        type(C_PTR), intent(IN) :: in
-    end subroutine LIB_shroud_vector_string_out
-end interface
-##### end vector_string_out interface
+// helper vector_string_out
+// Copy the std::vector<std::string> into Fortran array argument.
+// Called by C++.
+void LIB_ShroudVectorStringOut(LIB_SHROUD_array *outdesc, std::vector<std::string> &in)
+{
+    size_t nvect = outdesc->size;
+    size_t len = outdesc->elem_len;
+    char *dest = static_cast<char *>(outdesc->base_addr);
+    // Clear user memory
+    std::memset(dest, ' ', nvect*len);
+
+    // Copy into user memory
+    nvect = std::min(nvect, in.size());
+    //char *dest = static_cast<char *>(outdesc->cxx.addr);
+    for (size_t i = 0; i < nvect; ++i) {
+        std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));
+        dest += outdesc->elem_len;
+    }
+}
+
+##### end vector_string_out source

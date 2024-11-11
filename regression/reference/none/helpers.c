@@ -96,6 +96,7 @@ end type LIB_SHROUD_array
         "array_context",
         "array_string_out"
     ],
+    "f_fmtname": "LIB_SHROUD_array_string_allocatable",
     "fmtdict": {
         "cnamefunc": "{C_prefix}ShroudArrayStringAllocatable",
         "cnameproto": "void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)",
@@ -119,6 +120,19 @@ void LIB_ShroudArrayStringAllocatable(LIB_SHROUD_array *dest, LIB_SHROUD_capsule
 }
 
 ##### end array_string_allocatable source
+
+##### start array_string_allocatable interface
+
+interface
+    ! helper array_string_allocatable
+    subroutine LIB_SHROUD_array_string_allocatable(dest, src) &
+         bind(c,name="LIB_ShroudArrayStringAllocatable")
+        import LIB_SHROUD_array, LIB_SHROUD_capsule_data
+        type(LIB_SHROUD_array), intent(IN) :: dest
+        type(LIB_SHROUD_capsule_data), intent(IN) :: src
+    end subroutine LIB_SHROUD_array_string_allocatable
+end interface
+##### end array_string_allocatable interface
 
 ---------- array_string_out ----------
 {
@@ -240,6 +254,7 @@ typedef struct s_LIB_SHROUD_capsule_data LIB_SHROUD_capsule_data;
     "dependent_helpers": [
         "capsule_data_helper"
     ],
+    "f_fmtname": "LIB_SHROUD_capsule_dtor",
     "fmtdict": {
         "cnamefunc": "{C_memory_dtor_function}",
         "cnameproto": "void {cnamefunc}\t({C_capsule_data_type} *cap)",
@@ -248,6 +263,20 @@ typedef struct s_LIB_SHROUD_capsule_data LIB_SHROUD_capsule_data;
     "name": "capsule_dtor",
     "proto": "void LIB_SHROUD_memory_destructor\t(LIB_SHROUD_capsule_data *cap);"
 }
+
+##### start capsule_dtor interface
+
+interface
+    ! helper capsule_dtor
+    ! Delete memory in a capsule.
+    subroutine LIB_SHROUD_capsule_dtor(ptr)
+        bind(C, name="LIB_SHROUD_memory_destructor")
+        import LIB_SHROUD_capsule_data
+        implicit none
+        type(LIB_SHROUD_capsule_data), intent(INOUT) :: ptr
+    end subroutine LIB_SHROUD_capsule_dtor
+end interface
+##### end capsule_dtor interface
 
 ---------- char_alloc ----------
 {
@@ -565,6 +594,7 @@ static int ShroudCharLenTrim(const char *src, int nsrc) {
     "dependent_helpers": [
         "array_context"
     ],
+    "f_fmtname": "LIB_SHROUD_copy_array",
     "fmtdict": {
         "cnamefunc": "{C_prefix}ShroudCopyArray",
         "fnamefunc": "{C_prefix}SHROUD_{hname}"
@@ -589,6 +619,22 @@ void LIB_ShroudCopyArray(LIB_SHROUD_array *data, void *c_var,
 }
 ##### end copy_array source
 
+##### start copy_array interface
+
+interface
+    ! helper copy_array
+    ! Copy contents of context into c_var.
+    subroutine LIB_SHROUD_copy_array(context, c_var, c_var_size) &
+        bind(C, name="LIB_ShroudCopyArray")
+        use iso_c_binding, only : C_PTR, C_SIZE_T
+        import LIB_SHROUD_array
+        type(LIB_SHROUD_array), intent(IN) :: context
+        type(C_PTR), intent(IN), value :: c_var
+        integer(C_SIZE_T), value :: c_var_size
+    end subroutine LIB_SHROUD_copy_array
+end interface
+##### end copy_array interface
+
 ---------- copy_string ----------
 {
     "c_fmtname": "LIB_ShroudCopyString",
@@ -599,6 +645,7 @@ void LIB_ShroudCopyArray(LIB_SHROUD_array *data, void *c_var,
     "dependent_helpers": [
         "array_context"
     ],
+    "f_fmtname": "LIB_SHROUD_copy_string",
     "fmtdict": {
         "cnamefunc": "{C_prefix}ShroudCopyString",
         "fnamefunc": "{C_prefix}SHROUD_copy_string"
@@ -621,6 +668,22 @@ void LIB_ShroudCopyString(LIB_SHROUD_array *data, char *c_var,
 }
 
 ##### end copy_string source
+
+##### start copy_string interface
+
+interface
+    ! helper copy_string
+    ! Copy the char* or std::string in context into c_var.
+    subroutine LIB_SHROUD_copy_string(context, c_var, c_var_size) &
+         bind(c,name="LIB_ShroudCopyString")
+        use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
+        import LIB_SHROUD_array
+        type(LIB_SHROUD_array), intent(IN) :: context
+        character(kind=C_CHAR), intent(OUT) :: c_var(*)
+        integer(C_SIZE_T), value :: c_var_size
+    end subroutine LIB_SHROUD_copy_string
+end interface
+##### end copy_string interface
 
 ---------- create_from_PyObject_vector_double ----------
 {
@@ -7059,6 +7122,7 @@ static void SHROUD_update_PyList_vector_unsigned_short
         "array_context",
         "vector_string_out"
     ],
+    "f_fmtname": "LIB_SHROUD_vector_string_allocatable",
     "fmtdict": {
         "cnamefunc": "{C_prefix}ShroudVectorStringAllocatable",
         "cnameproto": "void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)",
@@ -7083,6 +7147,20 @@ void LIB_ShroudVectorStringAllocatable(LIB_SHROUD_array *dest, LIB_SHROUD_capsul
 }
 
 ##### end vector_string_allocatable source
+
+##### start vector_string_allocatable interface
+
+interface
+    ! helper vector_string_allocatable
+    ! Copy the char* or std::string in context into c_var.
+    subroutine LIB_SHROUD_vector_string_allocatable(dest, src) &
+         bind(c,name="LIB_ShroudVectorStringAllocatable")
+        import LIB_SHROUD_capsule_data, LIB_SHROUD_array
+        type(LIB_SHROUD_array), intent(IN) :: dest
+        type(LIB_SHROUD_capsule_data), intent(IN) :: src
+    end subroutine LIB_SHROUD_vector_string_allocatable
+end interface
+##### end vector_string_allocatable interface
 
 ---------- vector_string_out ----------
 {
