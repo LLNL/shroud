@@ -1075,12 +1075,7 @@ def add_capsule_helper(fmt):
             "-end type {F_capsule_data_type}{f_lend}",
         ],
         modules=dict(iso_c_binding=["C_PTR", "C_INT", "C_NULL_PTR"]),
-    )
-    apply_fmtdict_from_helpers(helper, fmt)
-    FHelpers[name] = helper
 
-    helper = dict(
-        name="capsule_data_helper",
         scope="cwrap_include",
         source=[
             "",
@@ -1094,6 +1089,7 @@ def add_capsule_helper(fmt):
     )
     apply_fmtdict_from_helpers(helper, fmt)
     CHelpers[name] = helper
+    FHelpers[name] = helper
 
     ########################################
     name = "capsule_helper"
@@ -1155,16 +1151,10 @@ def add_capsule_helper(fmt):
             "typedef struct s_{C_array_type} {C_array_type};{c_lend}",
         ],
         dependent_helpers=["type_defines"], # used with type field
-    )
-    apply_fmtdict_from_helpers(helper, fmt)
-    CHelpers[name] = helper
-
     # Create a derived type used to communicate with C wrapper.
     # Should never be exposed to user.
     # Inspired by futher interoperability with C.
     # XXX - shape is C_LONG, maybe it should be C_PTRDIFF_T.
-    helper = dict(
-        name="array_context",
         f_fmtname=fmt.F_array_type,
         derived_type=[
             "",
@@ -1185,9 +1175,9 @@ def add_capsule_helper(fmt):
         ],
         modules=dict(iso_c_binding=[
             "C_NULL_PTR", "C_PTR", "C_SIZE_T", "C_INT", "C_LONG"]),
-        dependent_helpers=["type_defines"], # used with type field
     )
     apply_fmtdict_from_helpers(helper, fmt)
+    CHelpers[name] = helper
     FHelpers[name] = helper
 
 
@@ -2126,14 +2116,14 @@ def write_c_helpers(fp):
     wrapper.linelen = 72
     wrapper.indent = 0
     wrapper.cont = ""
-    output = gather_helpers(fp, wrapper, CHelpers, c_lines)
+    output = gather_helpers(fp, wrapper, CHelpers, fc_lines)
 
 def write_f_helpers(fp):
     wrapper = util.WrapperMixin()
     wrapper.linelen = 72
     wrapper.indent = 0
     wrapper.cont = "&"
-    output = gather_helpers(fp, wrapper, FHelpers, f_lines)
+    output = gather_helpers(fp, wrapper, FHelpers, fc_lines)
 
 
 def apply_fmtdict_from_helpers(helper, fmt):

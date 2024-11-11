@@ -1,10 +1,14 @@
 
 ---------- array_context ----------
 {
+    "c_fmtname": "LIB_SHROUD_array",
     "dependent_helpers": [
         "type_defines"
     ],
     "f_fmtname": "LIB_SHROUD_array",
+    "include": [
+        "<stddef.h>"
+    ],
     "modules": {
         "iso_c_binding": [
             "C_NULL_PTR",
@@ -14,8 +18,23 @@
             "C_LONG"
         ]
     },
-    "name": "array_context"
+    "name": "array_context",
+    "scope": "cwrap_include"
 }
+
+##### start array_context source
+
+// helper array_context
+struct s_LIB_SHROUD_array {
+    void * base_addr;
+    int type;        /* type of element */
+    size_t elem_len; /* bytes-per-item or character len in c++ */
+    size_t size;     /* size of data in c++ */
+    int rank;        /* number of dimensions, 0=scalar */
+    long shape[7];
+};
+typedef struct s_LIB_SHROUD_array LIB_SHROUD_array;
+##### end array_context source
 
 ##### start array_context derived_type
 
@@ -72,7 +91,8 @@ end interface
             "C_NULL_PTR"
         ]
     },
-    "name": "capsule_data_helper"
+    "name": "capsule_data_helper",
+    "scope": "cwrap_include"
 }
 
 ##### start capsule_data_helper derived_type
@@ -83,6 +103,16 @@ type, bind(C) :: LIB_SHROUD_capsule_data
     integer(C_INT) :: idtor = 0       ! index of destructor
 end type LIB_SHROUD_capsule_data
 ##### end capsule_data_helper derived_type
+
+##### start capsule_data_helper source
+
+// helper capsule_data_helper
+struct s_LIB_SHROUD_capsule_data {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_LIB_SHROUD_capsule_data LIB_SHROUD_capsule_data;
+##### end capsule_data_helper source
 
 ---------- capsule_dtor ----------
 {
