@@ -123,8 +123,8 @@ fstart = "! start "
 fend   = "! end "
 literalinclude = False
 
-CHelpers = {}
-FHelpers = {}
+FCHelpers = {}
+PYHelpers = {}
 
 _newlibrary = None
 def set_library(library):
@@ -195,8 +195,7 @@ def add_external_helpers(fmt, symtab):
         ],
     )
     apply_fmtdict_from_helpers(helper, fmt)
-    CHelpers[name] = helper
-    FHelpers[name] = helper
+    FCHelpers[name] = helper
     
     ########################################
     # XXX - Only used with std::vector and thus C++.
@@ -255,8 +254,7 @@ def add_external_helpers(fmt, symtab):
         ],
     )
     apply_fmtdict_from_helpers(helper, fmt)
-    CHelpers[name] = helper
-    FHelpers[name] = helper
+    FCHelpers[name] = helper
     
 ##-    ########################################
 ##-    # Only used with std::string and thus C++.
@@ -406,8 +404,7 @@ def add_external_helpers(fmt, symtab):
         ],
     )
     apply_fmtdict_from_helpers(helper, fmt)
-    CHelpers[name] = helper
-    FHelpers[name] = helper
+    FCHelpers[name] = helper
 
     ######################################################################
     ########################################
@@ -454,8 +451,7 @@ def add_external_helpers(fmt, symtab):
         ]
     )
     apply_fmtdict_from_helpers(helper, fmt)
-    CHelpers[name] = helper
-    FHelpers[name] = helper
+    FCHelpers[name] = helper
 
     # Fortran interface for above function.
     # Deal with allocatable character
@@ -531,8 +527,7 @@ def add_external_helpers(fmt, symtab):
         ]
     )
     apply_fmtdict_from_helpers(helper, fmt)
-    CHelpers[name] = helper
-    FHelpers[name] = helper
+    FCHelpers[name] = helper
 
     ########################################
     ########################################
@@ -564,7 +559,7 @@ def add_external_helpers(fmt, symtab):
         ]
     )
     apply_fmtdict_from_helpers(helper, fmt)
-    CHelpers[name] = helper
+    FCHelpers[name] = helper
 
     ########################################
 
@@ -576,7 +571,6 @@ def add_external_helpers(fmt, symtab):
     ########################################
     # Only used with std::string and thus C++.
     name = "vector_string_out"
-    CHelpers[name] = helper
     helper = dict(
         name="vector_string_out",
         fmtdict=dict(
@@ -633,8 +627,7 @@ def add_external_helpers(fmt, symtab):
 #        ],
     )
     apply_fmtdict_from_helpers(helper, fmt)
-    CHelpers[name] = helper
-    FHelpers[name] = helper
+    FCHelpers[name] = helper
 
     ########################################
 
@@ -712,8 +705,7 @@ def add_external_helpers(fmt, symtab):
         ]
     )
     apply_fmtdict_from_helpers(helper, fmt)
-    CHelpers[name] = helper
-    FHelpers[name] = helper
+    FCHelpers[name] = helper
 
     ########################################
     ########################################
@@ -746,7 +738,7 @@ def add_external_helpers(fmt, symtab):
         ],
     )
     apply_fmtdict_from_helpers(helper, fmt)
-    CHelpers[name] = helper
+    FCHelpers[name] = helper
 
     ######################################################################
     ########################################
@@ -778,7 +770,7 @@ def add_external_helpers(fmt, symtab):
         ],
     )
     apply_fmtdict_from_helpers(helper, fmt)
-    FHelpers[name] = helper
+    FCHelpers[name] = helper
     
     ########################################
     name = "string_to_cdesc"
@@ -810,7 +802,7 @@ def add_external_helpers(fmt, symtab):
         ]
     )
     apply_fmtdict_from_helpers(helper, fmt)
-    CHelpers[name] = helper
+    FCHelpers[name] = helper
 
     
     ########################################
@@ -819,7 +811,7 @@ def add_external_helpers(fmt, symtab):
     name = "py_capsule_dtor"
     fmt.hname = name
     fmt.hnamefunc = wformat("FREE_{hname}", fmt)
-    CHelpers[name] = dict(
+    PYHelpers[name] = dict(
         fmtname=fmt.hnamefunc,
         source=wformat(
             """
@@ -844,7 +836,7 @@ if (in != {nullptr}) {{+
     fmt.hnamefunc = fmt.PY_helper_prefix + name
     fmt.hnameproto = wformat(
             "int {hnamefunc}\t(PyObject *obj,\t {PY_typedef_converter} *value)", fmt)
-    CHelpers[name] = dict(
+    PYHelpers[name] = dict(
         fmtname=fmt.hnamefunc,
         dependent_helpers=["PY_converter_type"],
         proto=fmt.hnameproto + ";",
@@ -908,11 +900,11 @@ return 1;
     )
     # There are no 'list' or 'numpy' version of these functions.
     # Use the one-true-version get_from_object_char.
-    CHelpers['get_from_object_char_list'] = dict(
+    PYHelpers['get_from_object_char_list'] = dict(
         fmtname=fmt.hnamefunc,
         dependent_helpers=[name],
     )
-    CHelpers['get_from_object_char_numpy'] = dict(
+    PYHelpers['get_from_object_char_numpy'] = dict(
         fmtname=fmt.hnamefunc,
         dependent_helpers=[name],
     )
@@ -929,7 +921,7 @@ return 1;
     fmt.Py_ctor = ntypemap.PY_ctor.format(ctor_expr="in[i]")
     fmt.c_const=""  # XXX issues with struct.yaml test, remove const.
     fmt.hname = "to_PyList_char"
-    CHelpers["to_PyList_char"] = create_to_PyList(fmt)
+    PYHelpers["to_PyList_char"] = create_to_PyList(fmt)
 
     ########################################
     name = "fill_from_PyObject_char"
@@ -937,7 +929,7 @@ return 1;
     fmt.hnamefunc = fmt.PY_helper_prefix + name
     fmt.hnameproto = wformat(
             "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t char *in,\t Py_ssize_t insize)", fmt)
-    CHelpers[name] = dict(
+    PYHelpers[name] = dict(
         fmtname=fmt.hnamefunc,
         dependent_helpers=["get_from_object_char"],
         c_include=["<string.h>"],
@@ -972,20 +964,20 @@ return 0;
     fmt.c_var="in"
     fmt.hname = name
     fmt.hnamefunc = fmt.PY_helper_prefix + name
-    CHelpers[name] = create_get_from_object_list_charptr(fmt)
+    PYHelpers[name] = create_get_from_object_list_charptr(fmt)
     # There are no 'list' or 'numpy' version of these functions.
     # Use the one-true-version SHROUD_get_from_object_charptr.
-    CHelpers['get_from_object_charptr_list'] = dict(
+    PYHelpers['get_from_object_charptr_list'] = dict(
         fmtname=fmt.hnamefunc,
         dependent_helpers=[name],
     )
-    CHelpers['get_from_object_charptr_numpy'] = dict(
+    PYHelpers['get_from_object_charptr_numpy'] = dict(
         fmtname=fmt.hnamefunc,
         dependent_helpers=[name],
     )
 
     ########################################
-    CHelpers['PY_converter_type'] = dict(
+    PYHelpers['PY_converter_type'] = dict(
         scope="pwrap_impl",
         c_include=["<stddef.h>"],
         cxx_include=["<cstddef>"],
@@ -1045,12 +1037,11 @@ def add_capsule_helper(fmt):
         ],
     )
     apply_fmtdict_from_helpers(helper, fmt)
-    CHelpers[name] = helper
-    FHelpers[name] = helper
+    FCHelpers[name] = helper
 
     ########################################
     name = "capsule_helper"
-    fmt.__helper = FHelpers["capsule_dtor"]["f_fmtname"]   # XXXX fix for JSON
+    fmt.__helper = FCHelpers["capsule_dtor"]["f_fmtname"]   # XXXX fix for JSON
     # XXX split helper into to parts, one for each derived type
     helper = dict(
         name="capsule_helper",
@@ -1083,7 +1074,7 @@ def add_capsule_helper(fmt):
         ],
     )
     apply_fmtdict_from_helpers(helper, fmt)
-    FHelpers[name] = helper
+    FCHelpers[name] = helper
 
     ########################################
     name = "array_context"
@@ -1134,8 +1125,7 @@ def add_capsule_helper(fmt):
             "C_NULL_PTR", "C_PTR", "C_SIZE_T", "C_INT", "C_LONG"]),
     )
     apply_fmtdict_from_helpers(helper, fmt)
-    CHelpers[name] = helper
-    FHelpers[name] = helper
+    FCHelpers[name] = helper
 
 
 def add_to_PyList_helper(fmt, ntypemap):
@@ -1163,7 +1153,7 @@ def add_to_PyList_helper(fmt, ntypemap):
         fmt.Py_ctor = ntypemap.PY_ctor.format(ctor_expr=ctor_expr)
         fmt.c_const="const "
         helper = create_to_PyList(fmt)
-        CHelpers[name] = create_to_PyList(fmt)
+        PYHelpers[name] = create_to_PyList(fmt)
 
     ########################################
     # Used with intent(inout)
@@ -1192,7 +1182,7 @@ PyList_SET_ITEM(out, i, {Py_ctor});
 -}}
 -}}""", fmt),
         )
-        CHelpers[name] = helper
+        PYHelpers[name] = helper
 
     ########################################
     # Used with intent(in), setter.
@@ -1211,11 +1201,11 @@ PyList_SET_ITEM(out, i, {Py_ctor});
             fmt.work_ctor = ntypemap.pytype_to_cxx.format(work_var=fmt.work_ctor)
         fmt.Py_get_obj = ntypemap.PY_get.format(py_var="obj")
         fmt.Py_get = ntypemap.PY_get.format(py_var="item")
-        CHelpers[name] = fill_from_PyObject_list(fmt)
+        PYHelpers[name] = fill_from_PyObject_list(fmt)
 
         name = "fill_from_PyObject_" + flat_name + "_numpy"
         fmt.hname = name
-        CHelpers[name] = fill_from_PyObject_numpy(fmt)
+        PYHelpers[name] = fill_from_PyObject_numpy(fmt)
 
     ########################################
     # Function called by typemap.PY_get_converter for NumPy.
@@ -1249,7 +1239,7 @@ value->size = PyArray_SIZE({cast_reinterpret}PyArrayObject *{cast1}{py_tmp}{cast
 return 1;
 -}}""", fmt),
     )
-    CHelpers[name] = helper
+    PYHelpers[name] = helper
 
     ########################################
     # Function called by typemap.PY_get_converter for list.
@@ -1261,7 +1251,7 @@ return 1;
         fmt.Py_get = ntypemap.PY_get.format(py_var="item")
         fmt.hname = name
         fmt.hnamefunc = fmt.PY_helper_prefix + name
-        CHelpers[name] = create_get_from_object_list(fmt)
+        PYHelpers[name] = create_get_from_object_list(fmt)
 
 def fill_from_PyObject_list(fmt):
     """Create helper to convert list of PyObjects to existing C array.
@@ -1409,7 +1399,7 @@ def create_get_from_object_list(fmt):
     """
     fmt.hnameproto = wformat(
             "int {hnamefunc}\t(PyObject *obj,\t {PY_typedef_converter} *value)", fmt)
-    fmt.dtor_helper = CHelpers["py_capsule_dtor"]["fmtname"]
+    fmt.dtor_helper = PYHelpers["py_capsule_dtor"]["fmtname"]
     helper = dict(
         fmtname=fmt.hnamefunc,
         dependent_helpers=[
@@ -1470,7 +1460,7 @@ def create_get_from_object_list_charptr(fmt):
     """
     fmt.hnameproto = wformat(
             "int {hnamefunc}\t(PyObject *obj,\t {PY_typedef_converter} *value)", fmt)
-    fmt.__helper = CHelpers["get_from_object_char"]["fmtname"]
+    fmt.__helper = PYHelpers["get_from_object_char"]["fmtname"]
     helper = dict(
         fmtname=fmt.hnamefunc,
         dependent_helpers=[
@@ -1586,7 +1576,7 @@ return out;
             fmt,
         ),
     )
-    CHelpers[name] = helper
+    PYHelpers[name] = helper
 
     # Used with intent(inout)
     name = "update_PyList_vector_" + flat_name
@@ -1621,7 +1611,7 @@ PyList_SET_ITEM(out, i, {Py_ctor});
             fmt,
         ),
     )
-    CHelpers[name] = helper
+    PYHelpers[name] = helper
 
     # used with intent(in)
     # Return -1 on error.
@@ -1677,7 +1667,7 @@ return 0;
             fmt,
         ),
     )
-    CHelpers[name] = helper
+    PYHelpers[name] = helper
 
 """
 http://effbot.org/zone/python-capi-sequences.htm
@@ -2057,11 +2047,10 @@ def add_global_helpers(fmt):
             ],
         ),
         ########################################
-    )   # end CHelpers
+    )
     for name, helper in THelpers.items():
         apply_fmtdict_from_helpers(helper, fmt)
-        CHelpers[name] = helper
-        FHelpers[name] = helper
+        FCHelpers[name] = helper
 
 
 
@@ -2103,14 +2092,14 @@ def write_c_helpers(fp):
     wrapper.linelen = 72
     wrapper.indent = 0
     wrapper.cont = ""
-    output = gather_helpers(fp, wrapper, CHelpers, fc_lines)
+    output = gather_helpers(fp, wrapper, PYHelpers, fc_lines)
 
 def write_f_helpers(fp):
     wrapper = util.WrapperMixin()
     wrapper.linelen = 72
     wrapper.indent = 0
     wrapper.cont = "&"
-    output = gather_helpers(fp, wrapper, FHelpers, fc_lines)
+    output = gather_helpers(fp, wrapper, FCHelpers, fc_lines)
 
 
 def apply_fmtdict_from_helpers(helper, fmt):

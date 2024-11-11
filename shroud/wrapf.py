@@ -1759,7 +1759,7 @@ rv = .false.
             return  # avoid recursion
         done[name] = True
 
-        helper_info = whelpers.FHelpers[name]
+        helper_info = whelpers.FCHelpers[name]
         if "dependent_helpers" in helper_info:
             for dep in helper_info["dependent_helpers"]:
                 # check for recursion
