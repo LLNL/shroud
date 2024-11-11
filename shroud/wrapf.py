@@ -27,7 +27,6 @@ from . import fcfmt
 from . import statements
 from . import todict
 from . import typemap
-from . import whelpers
 from . import util
 from .statements import get_func_bind, get_arg_bind
 from .util import wformat, append_format
@@ -1759,7 +1758,7 @@ rv = .false.
             return  # avoid recursion
         done[name] = True
 
-        helper_info = whelpers.FCHelpers[name]
+        helper_info = statements.lookup_helper(name)
         if "dependent_helpers" in helper_info:
             for dep in helper_info["dependent_helpers"]:
                 # check for recursion
@@ -2047,6 +2046,11 @@ class ModuleInfo(object):
         output.append("")
         
     def apply_helpers_from_stmts(self, node):
+        """Add node's helpers to the module.
+
+        Parameters:
+          node - ast.FunctionNode
+        """
         self.c_helper.update(node.helpers.get("c", {}))
         self.f_helper.update(node.helpers.get("f", {}))
 

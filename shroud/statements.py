@@ -7,6 +7,7 @@
 """
 """
 from . import error
+from . import whelpers
 from .util import wformat
 
 import collections
@@ -245,6 +246,13 @@ def lookup_f_arg_stmt(node, arg):
     arg_stmt = lookup_fc_stmts(stmts)
     return arg_stmt
 
+def lookup_helper(name):
+    helper = whelpers.FCHelpers.get(name)
+#    helper = fc_dict.get("h_helper_" + name)
+#        if helper is None:
+#            error.cursor.warning("Unknown helper statement: {}".format(name))
+    return helper
+
 def compute_name(path, char="_"):
     """
     Compute a name from a list of components.
@@ -429,6 +437,7 @@ valid_intents = [
     "getter", "setter",
     "ctor", "dtor",
     "descr",
+    "helper",
 ]
 
 def process_mixin(stmts, defaults, stmtdict):
@@ -850,11 +859,21 @@ FStmts = util.Scope(
 # Fortran/C Statements - both sets of defaults.
 FStmts.update(CStmts._to_dict())
 
+HStmts = util.Scope(
+    None,
+    name="h_default",
+    scope="",
+    source=[],
+    derived_type=[],
+    modules=None,
+)
+
 # Define class for nodes in tree based on their first entry.
 # c_native_*_in uses 'c'.
 default_stmts = dict(
     c=CStmts,
     f=FStmts,
+    h=HStmts,
 )
                 
         
