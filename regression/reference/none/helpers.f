@@ -149,6 +149,38 @@ void LIB_ShroudArrayStringOut(LIB_SHROUD_array *outdesc, std::string *in, size_t
 
 ##### end array_string_out source
 
+---------- array_string_out_len ----------
+{
+    "api": "cxx",
+    "c_fmtname": "LIB_ShroudArrayStringOutSize",
+    "fmtdict": {
+        "cnamefunc": "{C_prefix}ShroudArrayStringOutSize",
+        "cnameproto": "size_t {cnamefunc}(std::string *in, size_t nsize)"
+    },
+    "name": "array_string_out_len",
+    "proto": "size_t LIB_ShroudArrayStringOutSize(std::string *in, size_t nsize);",
+    "proto_include": [
+        "<string>",
+        "<vector>"
+    ],
+    "scope": "cwrap_impl"
+}
+
+##### start array_string_out_len source
+
+// helper array_string_out_len
+// Return the maximum string length in a std::vector<std::string>.
+size_t LIB_ShroudArrayStringOutSize(std::string *in, size_t nsize)
+{
+    size_t len = 0;
+    for (size_t i = 0; i < nsize; ++i) {
+        len = std::max(len, in[i].length());
+    }
+    return len;
+}
+
+##### end array_string_out_len source
+
 ---------- capsule_data_helper ----------
 {
     "f_fmtname": "LIB_SHROUD_capsule_data",
@@ -708,6 +740,42 @@ size_t ShroudSizeCFI(CFI_cdesc_t *desc)
 }
 ##### end size_CFI source
 
+---------- string_to_cdesc ----------
+{
+    "c_fmtname": "ShroudStringToCdesc",
+    "cxx_include": [
+        "<cstring>",
+        "<cstddef>"
+    ],
+    "dependent_helpers": [
+        "array_context"
+    ],
+    "fmtdict": {
+        "cnamefunc": "ShroudStringToCdesc"
+    },
+    "name": "string_to_cdesc"
+}
+
+##### start string_to_cdesc source
+
+// helper string_to_cdesc
+// Save std::string metadata into array to allow Fortran to access values.
+// CHARACTER(len=elem_size) src
+static void ShroudStringToCdesc(LIB_SHROUD_array *cdesc,&
+    const std::string * src)
+{
+    if (src->empty()) {
+        cdesc->base_addr = NULL;
+        cdesc->elem_len = 0;
+    } else {
+        cdesc->base_addr = const_cast<char *>(src->data());
+        cdesc->elem_len = src->length();
+    }
+    cdesc->size = 1;
+    cdesc->rank = 0;  // scalar
+}
+##### end string_to_cdesc source
+
 ---------- type_defines ----------
 {
     "name": "type_defines",
@@ -892,3 +960,36 @@ void LIB_ShroudVectorStringOut(LIB_SHROUD_array *outdesc, std::vector<std::strin
 }
 
 ##### end vector_string_out source
+
+---------- vector_string_out_len ----------
+{
+    "api": "cxx",
+    "c_fmtname": "LIB_ShroudVectorStringOutSize",
+    "fmtdict": {
+        "cnamefunc": "{C_prefix}ShroudVectorStringOutSize",
+        "cnameproto": "size_t {cnamefunc}(std::vector<std::string> &in)"
+    },
+    "name": "vector_string_out_len",
+    "proto": "size_t LIB_ShroudVectorStringOutSize(std::vector<std::string> &in);",
+    "proto_include": [
+        "<string>",
+        "<vector>"
+    ],
+    "scope": "cwrap_impl"
+}
+
+##### start vector_string_out_len source
+
+// helper vector_string_out_len
+// Return the maximum string length in a std::vector<std::string>.
+size_t LIB_ShroudVectorStringOutSize(std::vector<std::string> &in)
+{
+    size_t nvect = in.size();
+    size_t len = 0;
+    for (size_t i = 0; i < nvect; ++i) {
+        len = std::max(len, in[i].length());
+    }
+    return len;
+}
+
+##### end vector_string_out_len source
