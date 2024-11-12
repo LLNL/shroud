@@ -5403,5 +5403,130 @@
             "return nitems;",
             "-}}"
         ]
+    },
+    {
+        "name": "h_helper_capsule_dtor",
+        "notes": [
+            "Add the C prototype. The body is created Wrapc.write_capsule_code."
+        ],
+        "fmtdict": {
+            "cnamefunc":  "{C_memory_dtor_function}",
+            "cnameproto":  "void {cnamefunc}\t({C_capsule_data_type} *cap)",
+            "fnamefunc":  "{C_prefix}SHROUD_capsule_dtor",
+            "fnamefunc_capsule_dtor": "{fnamefunc}"
+        },
+        "c_fmtname": "{cnamefunc}",
+        "api": "c",
+        "dependent_helpers": ["capsule_data_helper"],
+        "proto": "{cnameproto};",
+        
+        "f_fmtname": "{fnamefunc}",
+        "interface": [
+            "",
+            "interface+",
+            "! helper {hname}",
+            "! Delete memory in a capsule.",
+            "subroutine {fnamefunc}(ptr)\tbind(C, name=\"{cnamefunc}\")+",
+            "import {F_capsule_data_type}",
+            "implicit none",
+            "type({F_capsule_data_type}), intent(INOUT) :: ptr",
+            "-end subroutine {fnamefunc}",
+            "-end interface"
+        ]
+    },
+    {
+        "name": "h_helper_copy_array",
+        "notes": [
+            "XXX - Only used with std::vector and thus C++.",
+            "Create Fortran interface to helper function which copies an array.",
+            "Used with sgroup='native' types.",
+            "The function has C_prefix in the name since it is not file static.",
+            "This allows multiple wrapped libraries to coexist.",
+            "Create a single C routine which is called from Fortran",
+            "via an interface for each cxx_type.",
+            "XXX when f_kind == C_SIZE_T"
+        ],
+        "fmtdict": {
+            "cnamefunc": "{C_prefix}ShroudCopyArray",
+            "fnamefunc": "{C_prefix}SHROUD_{hname}"
+        },
+        "c_fmtname": "{cnamefunc}",
+        "scope": "cwrap_impl",
+        "dependent_helpers": ["array_context"],
+        "c_include": ["<string.h>", "<stddef.h>"],
+        "cxx_include": ["<cstring>", "<cstddef>"],
+        "source": [
+            "",
+            "{c_lstart}// helper {hname}",
+            "// Copy std::vector into array c_var(c_var_size).",
+            "// Then release std::vector.",
+            "// Called from Fortran.",
+            "void {cnamefunc}({C_array_type} *data, \tvoid *c_var, \tsize_t c_var_size)",
+            "{{+",
+            "const void *cxx_var = data->base_addr;",
+            "int n = c_var_size < data->size ? c_var_size : data->size;",
+            "n *= data->elem_len;",
+            "{stdlib}memcpy(c_var, cxx_var, n);",
+            "-}}{c_lend}"
+        ],
+        "f_fmtname": "{fnamefunc}",
+        "interface": [
+            "",
+            "interface+",
+            "! helper {hname}",
+            "! Copy contents of context into c_var.",
+            "subroutine {fnamefunc}(context, c_var, c_var_size) &+",
+            "bind(C, name=\"{cnamefunc}\")",
+            "use iso_c_binding, only : C_PTR, C_SIZE_T",
+            "import {F_array_type}",
+            "type({F_array_type}), intent(IN) :: context",
+            "type(C_PTR), intent(IN), value :: c_var",
+            "integer(C_SIZE_T), value :: c_var_size",
+            "-end subroutine {fnamefunc}",
+            "-end interface"
+        ]
+    },
+    {
+        "name": "h_helper_copy_string",
+        "notes": [
+            "Deal with allocatable character."
+        ],
+        "fmtdict": {
+            "cnamefunc": "{C_prefix}ShroudCopyString",
+            "fnamefunc": "{C_prefix}SHROUD_copy_string"
+        },
+        "c_fmtname": "{cnamefunc}",
+        "scope": "cwrap_impl",
+        "dependent_helpers": ["array_context"],
+        "cxx_include": ["<cstring>", "<cstddef>"],
+        "source": [
+            "",
+            "{c_lstart}// helper {hname}",
+            "// Copy the char* or std::string in context into c_var.",
+            "// Called by Fortran to deal with allocatable character.",
+            "void {cnamefunc}(\t{C_array_type} *data,\t char *c_var,\t size_t c_var_len) {{+",
+            "const void *cxx_var = data->base_addr;",
+            "size_t n = c_var_len;",
+            "if (data->elem_len < n) n = data->elem_len;",
+            "{stdlib}memcpy(c_var, cxx_var, n);",
+            "-}}{c_lend}"
+        ],
+
+        "f_fmtname": "{fnamefunc}",
+        "interface": [
+            "",
+            "interface+",
+            "! helper {hname}",
+            "! Copy the char* or std::string in context into c_var.",
+            "subroutine {fnamefunc}(context, c_var, c_var_size) &",
+            "     bind(c,name=\"{cnamefunc}\")+",
+            "use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T",
+            "import {F_array_type}",
+            "type({F_array_type}), intent(IN) :: context",
+            "character(kind=C_CHAR), intent(OUT) :: c_var(*)",
+            "integer(C_SIZE_T), value :: c_var_size",
+            "-end subroutine {fnamefunc}",
+            "-end interface"
+        ]
     }
 ]

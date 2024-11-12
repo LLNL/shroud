@@ -165,248 +165,6 @@ def add_external_helpers(fmt, symtab):
         symtab - 
     """
     ########################################
-    name = "capsule_dtor"
-    helper = dict(
-        name="capsule_dtor",
-        fmtdict=dict(
-            cnamefunc = "{C_memory_dtor_function}",
-            cnameproto = "void {cnamefunc}\t({C_capsule_data_type} *cap)",
-            # Add the C prototype. The body is created Wrapc.write_capsule_code.
-            fnamefunc = "{C_prefix}SHROUD_capsule_dtor",
-        ),
-        c_fmtname="{cnamefunc}",
-        api="c",
-        dependent_helpers=["capsule_data_helper"],
-        proto="{cnameproto};",
-
-        f_fmtname="{fnamefunc}",
-        interface=[
-            "",
-            "interface+",
-            "! helper {hname}",
-            "! Delete memory in a capsule.",
-            "subroutine {fnamefunc}(ptr)\tbind(C, name=\"{cnamefunc}\")+",
-            "import {F_capsule_data_type}",
-            "implicit none",
-            "type({F_capsule_data_type}), intent(INOUT) :: ptr",
-            "-end subroutine {fnamefunc}",
-            "-end interface",
-        ],
-    )
-    apply_fmtdict_from_helpers(helper, fmt)
-    FCHelpers[name] = helper
-    
-    ########################################
-    # XXX - Only used with std::vector and thus C++.
-    # Create Fortran interface to helper function
-    # which copies an array based on c_type.
-    # Each interface calls the same C helper.
-    # Used with sgroup="native" types.
-    #
-    # The function has C_prefix in the name since it is not file static.
-    # This allows multiple wrapped libraries to coexist.
-    
-    name = "copy_array"
-    helper = dict(
-        name="copy_array",
-        fmtdict=dict(
-            cnamefunc="{C_prefix}ShroudCopyArray",
-            fnamefunc="{C_prefix}SHROUD_{hname}",
-        ),
-        c_fmtname="{cnamefunc}",
-        scope="cwrap_impl",
-        dependent_helpers=["array_context"],
-        c_include=["<string.h>", "<stddef.h>"],  # mempcy, size_t
-        cxx_include=["<cstring>", "<cstddef>"],
-        # Create a single C routine which is called from Fortran
-        # via an interface for each cxx_type.
-        source=[
-            "",
-            "{c_lstart}// helper {hname}",
-            "// Copy std::vector into array c_var(c_var_size).",
-            "// Then release std::vector.",
-            "// Called from Fortran.",
-            "void {cnamefunc}({C_array_type} *data, \tvoid *c_var, \tsize_t c_var_size)",
-            "{{+",
-            "const void *cxx_var = data->base_addr;",
-            "int n = c_var_size < data->size ? c_var_size : data->size;",
-            "n *= data->elem_len;",
-            "{stdlib}memcpy(c_var, cxx_var, n);",
-            "-}}{c_lend}",
-        ],
-        # XXX when f_kind == C_SIZE_T
-        f_fmtname="{fnamefunc}",
-        interface=[
-            "",
-            "interface+",
-            "! helper {hname}",
-            "! Copy contents of context into c_var.",
-            "subroutine {fnamefunc}(context, c_var, c_var_size) &+",
-            "bind(C, name=\"{cnamefunc}\")",
-            "use iso_c_binding, only : C_PTR, C_SIZE_T",
-            "import {F_array_type}",
-            "type({F_array_type}), intent(IN) :: context",
-            "type(C_PTR), intent(IN), value :: c_var",
-            "integer(C_SIZE_T), value :: c_var_size",
-            "-end subroutine {fnamefunc}",
-            "-end interface",
-        ],
-    )
-    apply_fmtdict_from_helpers(helper, fmt)
-    FCHelpers[name] = helper
-    
-##-    ########################################
-##-    # Only used with std::string and thus C++.
-##-    name = "string_capsule_size"
-##-    fmt.hname = name
-##-    fmt.cnamefunc = wformat("{C_prefix}ShroudStringCapsuleSize", fmt)
-##-    fmt.fnamefunc = wformat("{C_prefix}SHROUD_string_capsule_size", fmt)
-##-    CHelpers[name] = dict(
-##-        fmtname=fmt.cnamefunc,
-##-        scope="cwrap_impl",
-##-        dependent_helpers=["capsule_data_helper"],
-##-        cxx_include=["<string>"],
-##-        # XXX - mangle name
-##-        source=wformat(
-##-            """
-##-{c_lstart}// helper {hname}
-##-// Extract the length of the std::string in the capsule.
-##-// Called by Fortran to deal with allocatable character.
-##-size_t {cnamefunc}(\t{C_capsule_data_type} *capsule) {{+
-##-const std::string *src = static_cast<const std::string *>(capsule->addr);
-##-return src->size();
-##--}}{c_lend}
-##-""",
-##-            fmt,
-##-        ),
-##-    )
-##-    
-##-    # Fortran interface for above function.
-##-    # Deal with allocatable character
-##-    FHelpers[name] = dict(
-##-        dependent_helpers=["capsule_data_helper"],
-##-        fmtname=fmt.fnamefunc,
-##-        interface=wformat(
-##-            """
-##-interface+
-##-! helper {hname}
-##-! Return size of std::string
-##-function {fnamefunc}(capsule) &
-##-     result(strsize) &
-##-     bind(c,name="{cnamefunc}")+
-##-use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
-##-import {F_capsule_data_type}
-##-type({F_capsule_data_type}), intent(IN) :: capsule
-##-integer(C_SIZE_T) :: strsize
-##--end function {fnamefunc}
-##--end interface""",
-##-            fmt,
-##-        ),
-##-    )
-##-
-##-    ##########
-##-    name = "copy_string_capsule"
-##-    fmt.hname = name
-##-    fmt.cnamefunc = wformat("{C_prefix}ShroudCopyStringCapsule", fmt)
-##-    fmt.fnamefunc = wformat("{C_prefix}SHROUD_copy_string_capsule", fmt)
-##-    CHelpers[name] = dict(
-##-        fmtname=fmt.cnamefunc,
-##-        scope="cwrap_impl",
-##-        dependent_helpers=["capsule_data_helper"],
-##-        cxx_include=["<string>", "<cstring>"],
-##-        # XXX - mangle name
-##-        source=wformat(
-##-            """
-##-{c_lstart}// helper {hname}
-##-// Copy the char* or std::string in context into c_var.
-##-// Called by Fortran to deal with allocatable character.
-##-void {cnamefunc}(\t{C_capsule_data_type} *capsule,\t char *c_var,\t size_t c_var_len) {{+
-##-const std::string *src = static_cast<const std::string *>(capsule->addr);
-##-if (src->empty()) {{+
-##-c_var[0] = '\\0';
-##--}} else {{+
-##-std::strncpy(c_var, src->data(), src->length());
-##--}}
-##--}}{c_lend}
-##-""",
-##-            fmt,
-##-        ),
-##-    )
-##-
-##-    # Fortran interface for above function.
-##-    # Deal with allocatable character
-##-    FHelpers[name] = dict(
-##-        dependent_helpers=["capsule_data_helper"],
-##-        fmtname=fmt.fnamefunc,
-##-        interface=wformat(
-##-            """
-##-interface+
-##-! helper {hname}
-##-! Copy the char* or std::string in context into c_var.
-##-subroutine {fnamefunc}(capsule, c_var, c_var_size) &
-##-     bind(c,name="{cnamefunc}")+
-##-use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
-##-import {F_capsule_data_type}
-##-type({F_capsule_data_type}), intent(IN) :: capsule
-##-character(kind=C_CHAR), intent(OUT) :: c_var(*)
-##-integer(C_SIZE_T), value :: c_var_size
-##--end subroutine {fnamefunc}
-##--end interface""",
-##-            fmt,
-##-        ),
-##-    )
-
-    ##########
-    name = "copy_string"
-    helper = dict(
-        name="copy_string",
-        fmtdict=dict(
-            cnamefunc="{C_prefix}ShroudCopyString",
-            fnamefunc="{C_prefix}SHROUD_copy_string",
-        ),
-        c_fmtname="{cnamefunc}",
-        scope="cwrap_impl",
-        dependent_helpers=["array_context"],
-        cxx_include=["<cstring>", "<cstddef>"],
-        # XXX - mangle name
-        source=[
-            "",
-            "{c_lstart}// helper {hname}",
-            "// Copy the char* or std::string in context into c_var.",
-            "// Called by Fortran to deal with allocatable character.",
-            "void {cnamefunc}(\t{C_array_type} *data,\t char *c_var,\t size_t c_var_len) {{+",
-            "const void *cxx_var = data->base_addr;",
-            "size_t n = c_var_len;",
-            "if (data->elem_len < n) n = data->elem_len;",
-            "{stdlib}memcpy(c_var, cxx_var, n);",
-            "-}}{c_lend}",
-            "",  # XXX  - remove
-        ],
-
-    # Fortran interface for above function.
-    # Deal with allocatable character
-        f_fmtname="{fnamefunc}",
-        interface=[
-            "",
-            "interface+",
-            "! helper {hname}",
-            "! Copy the char* or std::string in context into c_var.",
-            "subroutine {fnamefunc}(context, c_var, c_var_size) &",
-            "     bind(c,name=\"{cnamefunc}\")+",
-            "use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T",
-            "import {F_array_type}",
-            "type({F_array_type}), intent(IN) :: context",
-            "character(kind=C_CHAR), intent(OUT) :: c_var(*)",
-            "integer(C_SIZE_T), value :: c_var_size",
-            "-end subroutine {fnamefunc}",
-            "-end interface",
-        ],
-    )
-    apply_fmtdict_from_helpers(helper, fmt)
-    FCHelpers[name] = helper
-
-    ######################################################################
-    ########################################
     # std::string *
     ########################################
     # Only used with std::string and thus C++.
@@ -446,7 +204,6 @@ def add_external_helpers(fmt, symtab):
             "dest += outdesc->elem_len;",
             "-}}",
             "-}}{c_lend}",
-            "",   # XXX remove
         ]
     )
     apply_fmtdict_from_helpers(helper, fmt)
@@ -554,7 +311,6 @@ def add_external_helpers(fmt, symtab):
             "-}}",
             "return len;",
             "-}}{c_lend}",
-            "",
         ]
     )
     apply_fmtdict_from_helpers(helper, fmt)
@@ -607,7 +363,6 @@ def add_external_helpers(fmt, symtab):
             "dest += outdesc->elem_len;",
             "-}}",
             "-}}{c_lend}",
-            "",
         ],
 
 #        f_fmtname="{fnamefunc}",
@@ -684,7 +439,6 @@ def add_external_helpers(fmt, symtab):
             "std::vector<std::string> *cxxvec =\t static_cast< std::vector<std::string> * >\t(src->addr);",
             "{cnamefunc_vector_string_out}(dest, *cxxvec);",
             "-}}{c_lend}",
-            "",
         ],
 
     # Deal with allocatable character
@@ -733,7 +487,6 @@ def add_external_helpers(fmt, symtab):
             "-}}",
             "return len;",
             "-}}{c_lend}",
-            "",
         ],
     )
     apply_fmtdict_from_helpers(helper, fmt)
@@ -1040,7 +793,7 @@ def add_capsule_helper(fmt):
 
     ########################################
     name = "capsule_helper"
-    fmt.__helper = FCHelpers["capsule_dtor"]["f_fmtname"]   # XXXX fix for JSON
+#    fmt.__helper = FCHelpers["capsule_dtor"]["f_fmtname"]   # XXXX fix for JSON
     # XXX split helper into to parts, one for each derived type
     helper = dict(
         name="capsule_helper",
@@ -1063,12 +816,12 @@ def add_capsule_helper(fmt):
             "! finalize a static {F_capsule_data_type}",
             "subroutine {F_capsule_final_function}(cap)+",
             "type({F_capsule_type}), intent(INOUT) :: cap",
-            "call {__helper}(cap%mem)",
+            "call {fnamefunc_capsule_dtor}(cap%mem)",
             "-end subroutine {F_capsule_final_function}",
             "",
             "subroutine {F_capsule_delete_function}(cap)+",
             "class({F_capsule_type}) :: cap",
-            "call {__helper}(cap%mem)",
+            "call {fnamefunc_capsule_dtor}(cap%mem)",
             "-end subroutine {F_capsule_delete_function}",
         ],
     )
@@ -1737,6 +1490,8 @@ def apply_fmtdict_from_helpers(helper, fmt):
     """Apply fmtdict field from helpers
     """
     name = helper["name"]
+    if name.startswith("h_helper_"):
+        name = name[9:]
     fmt.hname = name
 
     if literalinclude:

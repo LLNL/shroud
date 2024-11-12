@@ -31,7 +31,6 @@ void AA_ShroudCopyString(AA_SHROUD_array *data, char *c_var,
     std::memcpy(c_var, cxx_var, n);
 }
 
-
 // Release library allocated memory.
 void AA_SHROUD_memory_destructor(AA_SHROUD_capsule_data *cap)
 {

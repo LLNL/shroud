@@ -30,7 +30,6 @@ void TUT_ShroudCopyString(TUT_SHROUD_array *data, char *c_var,
 }
 // end helper copy_string
 
-
 // start release allocated memory
 // Release library allocated memory.
 void TUT_SHROUD_memory_destructor(TUT_SHROUD_capsule_data *cap)

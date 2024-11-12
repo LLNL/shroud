@@ -45,7 +45,6 @@ void STR_ShroudCopyString(STR_SHROUD_array *data, char *c_var,
 }
 // end helper copy_string
 
-
 // start release allocated memory
 // Release library allocated memory.
 void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap)
@@ -113,7 +112,6 @@ void STR_ShroudArrayStringOut(STR_SHROUD_array *outdesc, std::string *in, size_t
 }
 // end helper array_string_out
 
-
 // start helper array_string_out_len
 // helper array_string_out_len
 // Return the maximum string length in a std::vector<std::string>.
@@ -126,4 +124,3 @@ size_t STR_ShroudArrayStringOutSize(std::string *in, size_t nsize)
     return len;
 }
 // end helper array_string_out_len
-

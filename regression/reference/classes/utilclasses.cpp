@@ -32,7 +32,6 @@ void CLA_ShroudCopyString(CLA_SHROUD_array *data, char *c_var,
 }
 // end helper copy_string
 
-
 // start release allocated memory
 // Release library allocated memory.
 void CLA_SHROUD_memory_destructor(CLA_SHROUD_capsule_data *cap)

@@ -146,7 +146,6 @@ void LIB_ShroudArrayStringOut(LIB_SHROUD_array *outdesc, std::string *in, size_t
         dest += outdesc->elem_len;
     }
 }
-
 ##### end array_string_out source
 
 ---------- array_string_out_len ----------
@@ -178,7 +177,6 @@ size_t LIB_ShroudArrayStringOutSize(std::string *in, size_t nsize)
     }
     return len;
 }
-
 ##### end array_string_out_len source
 
 ---------- capsule_data_helper ----------
@@ -213,37 +211,6 @@ struct s_LIB_SHROUD_capsule_data {
 };
 typedef struct s_LIB_SHROUD_capsule_data LIB_SHROUD_capsule_data;
 ##### end capsule_data_helper source
-
----------- capsule_dtor ----------
-{
-    "api": "c",
-    "c_fmtname": "LIB_SHROUD_memory_destructor",
-    "dependent_helpers": [
-        "capsule_data_helper"
-    ],
-    "f_fmtname": "LIB_SHROUD_capsule_dtor",
-    "fmtdict": {
-        "cnamefunc": "{C_memory_dtor_function}",
-        "cnameproto": "void {cnamefunc}\t({C_capsule_data_type} *cap)",
-        "fnamefunc": "{C_prefix}SHROUD_capsule_dtor"
-    },
-    "name": "capsule_dtor",
-    "proto": "void LIB_SHROUD_memory_destructor\t(LIB_SHROUD_capsule_data *cap);"
-}
-
-##### start capsule_dtor interface
-
-interface
-    ! helper capsule_dtor
-    ! Delete memory in a capsule.
-    subroutine LIB_SHROUD_capsule_dtor(ptr)&
-        bind(C, name="LIB_SHROUD_memory_destructor")
-        import LIB_SHROUD_capsule_data
-        implicit none
-        type(LIB_SHROUD_capsule_data), intent(INOUT) :: ptr
-    end subroutine LIB_SHROUD_capsule_dtor
-end interface
-##### end capsule_dtor interface
 
 ---------- capsule_helper ----------
 {
@@ -280,111 +247,6 @@ subroutine SHROUD_capsule_delete(cap)
     call LIB_SHROUD_capsule_dtor(cap%mem)
 end subroutine SHROUD_capsule_delete
 ##### end capsule_helper f_source
-
----------- copy_array ----------
-{
-    "c_fmtname": "LIB_ShroudCopyArray",
-    "c_include": [
-        "<string.h>",
-        "<stddef.h>"
-    ],
-    "cxx_include": [
-        "<cstring>",
-        "<cstddef>"
-    ],
-    "dependent_helpers": [
-        "array_context"
-    ],
-    "f_fmtname": "LIB_SHROUD_copy_array",
-    "fmtdict": {
-        "cnamefunc": "{C_prefix}ShroudCopyArray",
-        "fnamefunc": "{C_prefix}SHROUD_{hname}"
-    },
-    "name": "copy_array",
-    "scope": "cwrap_impl"
-}
-
-##### start copy_array source
-
-// helper copy_array
-// Copy std::vector into array c_var(c_var_size).
-// Then release std::vector.
-// Called from Fortran.
-void LIB_ShroudCopyArray(LIB_SHROUD_array *data, void *c_var, &
-    size_t c_var_size)
-{
-    const void *cxx_var = data->base_addr;
-    int n = c_var_size < data->size ? c_var_size : data->size;
-    n *= data->elem_len;
-    std::memcpy(c_var, cxx_var, n);
-}
-##### end copy_array source
-
-##### start copy_array interface
-
-interface
-    ! helper copy_array
-    ! Copy contents of context into c_var.
-    subroutine LIB_SHROUD_copy_array(context, c_var, c_var_size) &
-        bind(C, name="LIB_ShroudCopyArray")
-        use iso_c_binding, only : C_PTR, C_SIZE_T
-        import LIB_SHROUD_array
-        type(LIB_SHROUD_array), intent(IN) :: context
-        type(C_PTR), intent(IN), value :: c_var
-        integer(C_SIZE_T), value :: c_var_size
-    end subroutine LIB_SHROUD_copy_array
-end interface
-##### end copy_array interface
-
----------- copy_string ----------
-{
-    "c_fmtname": "LIB_ShroudCopyString",
-    "cxx_include": [
-        "<cstring>",
-        "<cstddef>"
-    ],
-    "dependent_helpers": [
-        "array_context"
-    ],
-    "f_fmtname": "LIB_SHROUD_copy_string",
-    "fmtdict": {
-        "cnamefunc": "{C_prefix}ShroudCopyString",
-        "fnamefunc": "{C_prefix}SHROUD_copy_string"
-    },
-    "name": "copy_string",
-    "scope": "cwrap_impl"
-}
-
-##### start copy_string source
-
-// helper copy_string
-// Copy the char* or std::string in context into c_var.
-// Called by Fortran to deal with allocatable character.
-void LIB_ShroudCopyString(LIB_SHROUD_array *data, char *c_var,&
-    size_t c_var_len) {
-    const void *cxx_var = data->base_addr;
-    size_t n = c_var_len;
-    if (data->elem_len < n) n = data->elem_len;
-    std::memcpy(c_var, cxx_var, n);
-}
-
-##### end copy_string source
-
-##### start copy_string interface
-
-interface
-    ! helper copy_string
-    ! Copy the char* or std::string in context into c_var.
-    subroutine LIB_SHROUD_copy_string(context, c_var, c_var_size) &
-         bind(c,name="LIB_ShroudCopyString")
-        use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
-        import LIB_SHROUD_array
-        type(LIB_SHROUD_array), intent(IN) :: context
-        character(kind=C_CHAR), intent(OUT) :: c_var(*)
-        integer(C_SIZE_T), value :: c_var_size
-    end subroutine LIB_SHROUD_copy_string
-end interface
-##### end copy_string interface
 
 ---------- pointer_string ----------
 {
@@ -481,7 +343,6 @@ void LIB_ShroudVectorStringAllocatable(LIB_SHROUD_array *dest, LIB_SHROUD_capsul
         static_cast< std::vector<std::string> * >(src->addr);
     LIB_ShroudVectorStringOut(dest, *cxxvec);
 }
-
 ##### end vector_string_allocatable source
 
 ##### start vector_string_allocatable interface
@@ -545,7 +406,6 @@ void LIB_ShroudVectorStringOut(LIB_SHROUD_array *outdesc, std::vector<std::strin
         dest += outdesc->elem_len;
     }
 }
-
 ##### end vector_string_out source
 
 ---------- vector_string_out_len ----------
@@ -578,5 +438,4 @@ size_t LIB_ShroudVectorStringOutSize(std::vector<std::string> &in)
     }
     return len;
 }
-
 ##### end vector_string_out_len source
