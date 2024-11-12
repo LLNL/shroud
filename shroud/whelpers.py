@@ -110,6 +110,7 @@ the conversion has failed.
 # This also applies to derived types which are bind(C).
 
 
+from . import statements
 from . import typemap
 from . import util
 
@@ -141,6 +142,7 @@ def add_all_helpers(library):
     fmt.c_lend = ""
     fmt.f_lstart = ""
     fmt.f_lend = ""
+    statements.add_json_fc_helpers(fmt)
     add_global_helpers(fmt)
     add_external_helpers(fmt, symtab)
     add_capsule_helper(fmt)
@@ -1686,90 +1688,6 @@ if (PyList_Check(seq))
 
 def add_global_helpers(fmt):
     THelpers = dict(
-        type_defines=dict(
-            # Order derived from TS 29113
-            # with the addition of unsigned types
-            name="type_defines",
-            scope="cwrap_include",
-            source=[
-                "",
-                "/* helper type_defines */",
-                "/* Shroud type defines */",
-                "#define SH_TYPE_SIGNED_CHAR 1",
-                "#define SH_TYPE_SHORT       2",
-                "#define SH_TYPE_INT         3",
-                "#define SH_TYPE_LONG        4",
-                "#define SH_TYPE_LONG_LONG   5",
-                "#define SH_TYPE_SIZE_T      6",
-                "",
-                "#define SH_TYPE_UNSIGNED_SHORT       SH_TYPE_SHORT + 100",
-                "#define SH_TYPE_UNSIGNED_INT         SH_TYPE_INT + 100",
-                "#define SH_TYPE_UNSIGNED_LONG        SH_TYPE_LONG + 100",
-                "#define SH_TYPE_UNSIGNED_LONG_LONG   SH_TYPE_LONG_LONG + 100",
-                "",
-                "#define SH_TYPE_INT8_T      7",
-                "#define SH_TYPE_INT16_T     8",
-                "#define SH_TYPE_INT32_T     9",
-                "#define SH_TYPE_INT64_T    10",
-                "",
-                "#define SH_TYPE_UINT8_T    SH_TYPE_INT8_T + 100",
-                "#define SH_TYPE_UINT16_T   SH_TYPE_INT16_T + 100",
-                "#define SH_TYPE_UINT32_T   SH_TYPE_INT32_T + 100",
-                "#define SH_TYPE_UINT64_T   SH_TYPE_INT64_T + 100",
-                "",
-                "/* least8 least16 least32 least64 */",
-                "/* fast8 fast16 fast32 fast64 */",
-                "/* intmax_t intptr_t ptrdiff_t */",
-                "",
-                "#define SH_TYPE_FLOAT        22",
-                "#define SH_TYPE_DOUBLE       23",
-                "#define SH_TYPE_LONG_DOUBLE  24",
-                "#define SH_TYPE_FLOAT_COMPLEX       25",
-                "#define SH_TYPE_DOUBLE_COMPLEX      26",
-                "#define SH_TYPE_LONG_DOUBLE_COMPLEX 27",
-                "",
-                "#define SH_TYPE_BOOL       28",
-                "#define SH_TYPE_CHAR       29",
-                "#define SH_TYPE_CPTR       30",
-                "#define SH_TYPE_STRUCT     31",
-                "#define SH_TYPE_OTHER      32",
-            ],
-            derived_type=[
-                "",
-                "! helper type_defines",
-                "! Shroud type defines from helper type_defines",
-                "integer, parameter, private :: &",
-                "    SH_TYPE_SIGNED_CHAR= 1, &",
-                "    SH_TYPE_SHORT      = 2, &",
-                "    SH_TYPE_INT        = 3, &",
-                "    SH_TYPE_LONG       = 4, &",
-                "    SH_TYPE_LONG_LONG  = 5, &",
-                "    SH_TYPE_SIZE_T     = 6, &",
-                "    SH_TYPE_UNSIGNED_SHORT      = SH_TYPE_SHORT + 100, &",
-                "    SH_TYPE_UNSIGNED_INT        = SH_TYPE_INT + 100, &",
-                "    SH_TYPE_UNSIGNED_LONG       = SH_TYPE_LONG + 100, &",
-                "    SH_TYPE_UNSIGNED_LONG_LONG  = SH_TYPE_LONG_LONG + 100, &",
-                "    SH_TYPE_INT8_T    =  7, &",
-                "    SH_TYPE_INT16_T   =  8, &",
-                "    SH_TYPE_INT32_T   =  9, &",
-                "    SH_TYPE_INT64_T   = 10, &",
-                "    SH_TYPE_UINT8_T  =  SH_TYPE_INT8_T + 100, &",
-                "    SH_TYPE_UINT16_T =  SH_TYPE_INT16_T + 100, &",
-                "    SH_TYPE_UINT32_T =  SH_TYPE_INT32_T + 100, &",
-                "    SH_TYPE_UINT64_T =  SH_TYPE_INT64_T + 100, &",
-                "    SH_TYPE_FLOAT       = 22, &",
-                "    SH_TYPE_DOUBLE      = 23, &",
-                "    SH_TYPE_LONG_DOUBLE = 24, &",
-                "    SH_TYPE_FLOAT_COMPLEX      = 25, &",
-                "    SH_TYPE_DOUBLE_COMPLEX     = 26, &",
-                "    SH_TYPE_LONG_DOUBLE_COMPLEX= 27, &",
-                "    SH_TYPE_BOOL      = 28, &",
-                "    SH_TYPE_CHAR      = 29, &",
-                "    SH_TYPE_CPTR      = 30, &",
-                "    SH_TYPE_STRUCT    = 31, &",
-                "    SH_TYPE_OTHER     = 32",
-            ]
-        ),
         char_copy=dict(
             name="char_copy",
             c_fmtname="ShroudCharCopy",

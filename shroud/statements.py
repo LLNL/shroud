@@ -246,13 +246,6 @@ def lookup_f_arg_stmt(node, arg):
     arg_stmt = lookup_fc_stmts(stmts)
     return arg_stmt
 
-def lookup_helper(name):
-    helper = whelpers.FCHelpers.get(name)
-#    helper = fc_dict.get("h_helper_" + name)
-#        if helper is None:
-#            error.cursor.warning("Unknown helper statement: {}".format(name))
-    return helper
-
 def compute_name(path, char="_"):
     """
     Compute a name from a list of components.
@@ -611,6 +604,19 @@ def update_for_language(stmts, lang):
         if specific in item:
             item.update(item[specific])
 
+def lookup_helper(name):
+    helper = fc_dict.get("h_helper_" + name)
+    if not helper:
+        helper = whelpers.FCHelpers.get(name)
+#        if helper is None:
+#            error.cursor.warning("Unknown helper statement: {}".format(name))
+    return helper
+
+def add_json_fc_helpers(fmt):
+    """Format helper entries in JSON file."""
+    for key, stmt in fc_dict.items():
+        if key.startswith("h_helper"):
+            whelpers.apply_fmtdict_from_helpers(stmt, fmt)
 
 def add_statement_to_tree(tree, node):
     """Add node to tree.
@@ -862,6 +868,7 @@ FStmts.update(CStmts._to_dict())
 HStmts = util.Scope(
     None,
     name="h_default",
+    notes=[],
     scope="",
     source=[],
     derived_type=[],
