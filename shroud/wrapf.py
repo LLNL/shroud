@@ -1766,15 +1766,15 @@ rv = .false.
 
         lines = helper_info.get("derived_type", None)
         if lines:
-            fileinfo.helper_derived_type.append(lines)
+            fileinfo.helper_derived_type.extend(lines)
 
         lines = helper_info.get("interface", None)
         if lines:
-            fileinfo.interface_lines.append(lines)
+            fileinfo.interface_lines.extend(lines)
 
         lines = helper_info.get("f_source", None)
         if lines:
-            fileinfo.helper_source.append(lines)
+            fileinfo.helper_source.extend(lines)
 
         mods = helper_info.get("modules", None)
         if mods:

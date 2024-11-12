@@ -275,9 +275,9 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
                 self.helper_include[scope][include] = True
 
         if lang_source in helper_info:
-            self.helper_summary[api][scope].append(helper_info[lang_source])
+            self.helper_summary[api][scope].extend(helper_info[lang_source])
         elif "source" in helper_info:
-            self.helper_summary[api][scope].append(helper_info["source"])
+            self.helper_summary[api][scope].extend(helper_info["source"])
 
         proto = helper_info.get("proto")
         if proto:

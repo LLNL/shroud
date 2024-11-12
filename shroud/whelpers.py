@@ -48,7 +48,7 @@
  proto       = prototype for helper function.
                Must be in the language of api.
  proto_include = List of files to #include before the prototype.
- source      = Code inserted before any wrappers.
+ source      = List of lines of code inserted before any wrappers.
                The functions should be file static.
                Used if c_source or cxx_source is not defined.
  include     = Blank delimited list of files to #include.
@@ -59,9 +59,11 @@
 
  dependent_helpers = list of helpers names needed by this helper
                      They will be added to the output before current helper.
+ derived_type = List of lines of code for a derived type.
+                Inserted before interfaces.
  private   = names for PRIVATE statement
- interface = code for INTERFACE
- source    = code for CONTAINS
+ interface = List of lines of code for INTERFACE
+ source    = List of lines of code for CONTAINS
 
 # Helper in wrapper classes
 
@@ -1981,7 +1983,10 @@ def gather_helpers(fp, wrapper, helpers, keys):
             if key in keys:
                 output.append("")
                 output.append("##### start {} {}".format(name, key))
-                output.append(helper[key])
+                if isinstance(value, list):
+                    output.extend(value)
+                else:
+                    output.append(value)
                 output.append("##### end {} {}".format(name, key))
             else:
                 out[key] = value
@@ -2031,8 +2036,7 @@ def apply_fmtdict_from_helpers(helper, fmt):
     # Merge list into a single string
     for field in fc_lines:
         if field in helper:
-            tmp = "\n".join(helper[field])
-            helper[field] = wformat(tmp, fmt)
+            helper[field] = [wformat(line, fmt) for line in helper[field]]
             
     for field in [
             # general
