@@ -128,19 +128,15 @@ literalinclude = False
 FCHelpers = {}
 PYHelpers = {}
 
-_newlibrary = None
-def set_library(library):
-    global _newlibrary
-    _newlibrary = library
 
-
-def add_all_helpers(symtab):
+def add_all_helpers(library):
     """Create helper functions.
     Create helpers for all types.
     """
+    symtab = library.symtab
     global literalinclude
-    literalinclude = _newlibrary.options.literalinclude2
-    fmt = util.Scope(_newlibrary.fmtdict)
+    literalinclude = library.options.literalinclude2
+    fmt = util.Scope(library.fmtdict)
     fmt.c_lstart = ""
     fmt.c_lend = ""
     fmt.f_lstart = ""
