@@ -251,10 +251,11 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         done[name] = True
 
         helper_info = statements.lookup_helper(name)
-        if "dependent_helpers" in helper_info:
-            for dep in helper_info["dependent_helpers"]:
-                # check for recursion
-                self._gather_helper_code(dep, done)
+
+        dependent_helpers = helper_info.get("dependent_helpers", [])
+        for dep in dependent_helpers:
+            # check for recursion
+            self._gather_helper_code(dep, done)
 
         if self.language == "c":
             lang_include = "c_include"
@@ -265,19 +266,25 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
 
 #        api = helper_info.get("api", self.language)
 # XXX - For historical reasons, default to c
+# XXX - deal with dict and Scope for now.
         api = helper_info.get("api", "c")
+        if not api:
+            api = "c"
         scope = helper_info.get("scope", "file")
-        if lang_include in helper_info:
-            for include in helper_info[lang_include]:
-                self.helper_include[scope][include] = True
-        elif "include" in helper_info:
-            for include in helper_info["include"]:
-                self.helper_include[scope][include] = True
+        if not scope:
+            scope = "file"
 
-        if lang_source in helper_info:
-            self.helper_summary[api][scope].extend(helper_info[lang_source])
-        elif "source" in helper_info:
-            self.helper_summary[api][scope].extend(helper_info["source"])
+        field = helper_info.get(lang_include)
+        if not field:
+            field = helper_info.get("include", [])
+        for include in field:
+            self.helper_include[scope][include] = True
+
+        field = helper_info.get(lang_source)
+        if not field:
+            field = helper_info.get("source")
+        if field:
+            self.helper_summary[api][scope].extend(field)
 
         proto = helper_info.get("proto")
         if proto:

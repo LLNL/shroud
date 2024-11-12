@@ -14197,6 +14197,188 @@ f_subroutine_assignment_weakptr:
   - "auto cxx_ptr =\t reinterpret_cast<{cxx_type}*>(ptr);"
   - delete cxx_ptr;
   owner: library
+h_helper_char_alloc:
+  name: h_helper_char_alloc
+  notes:
+  - Used by 'const char *' arguments which need to be NULL terminated
+  - in the C wrapper.
+  c_fmtname: ShroudCharAlloc
+  c_include:
+  - <string.h>
+  - <stdlib.h>
+  - <stddef.h>
+  cxx_include:
+  - <cstring>
+  - <cstdlib>
+  source:
+  - ''
+  - // helper char_alloc
+  - // Copy src into new memory and null terminate.
+  - // If ntrim is 0, return NULL pointer.
+  - // If blanknull is 1, return NULL when string is blank.
+  - static char *ShroudCharAlloc(const char *src, int nsrc, int blanknull)
+  - '{+'
+  - int ntrim = ShroudCharLenTrim(src, nsrc);
+  - if (ntrim == 0 && blanknull == 1) {+
+  - return nullptr;
+  - -}
+  - char *rv = (char *) std::malloc(nsrc + 1);
+  - if (ntrim > 0) {+
+  - std::memcpy(rv, src, ntrim);
+  - -}
+  - rv[ntrim] = '\0';
+  - return rv;
+  - -}
+  dependent_helpers:
+  - char_len_trim
+h_helper_char_array_alloc:
+  name: h_helper_char_array_alloc
+  notes:
+  - Used with 'char **' arguments.
+  c_fmtname: ShroudStrArrayAlloc
+  c_include:
+  - <string.h>
+  - <stdlib.h>
+  cxx_include:
+  - <cstring>
+  - <cstdlib>
+  source:
+  - ''
+  - // helper char_array_alloc
+  - // Copy src into new memory and null terminate.
+  - // char **src +size(nsrc) +len(len)
+  - // CHARACTER(len) src(nsrc)
+  - static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
+  - '{+'
+  - "char **rv = static_cast<char **>\t(std::malloc(sizeof(char *) * nsrc));"
+  - const char *src0 = src;
+  - for(int i=0; i < nsrc; ++i) {+
+  - int ntrim = ShroudCharLenTrim(src0, len);
+  - "char *tgt = static_cast<char *>\t(std::malloc(ntrim+1));"
+  - std::memcpy(tgt, src0, ntrim);
+  - tgt[ntrim] = '\0';
+  - rv[i] = tgt;
+  - src0 += len;
+  - -}
+  - return rv;
+  - -}
+  dependent_helpers:
+  - char_len_trim
+h_helper_char_array_free:
+  name: h_helper_char_array_free
+  c_fmtname: ShroudStrArrayFree
+  c_include:
+  - <stdlib.h>
+  cxx_include:
+  - <cstdlib>
+  source:
+  - ''
+  - // helper char_array_free
+  - // Release memory allocated by ShroudStrArrayAlloc
+  - static void ShroudStrArrayFree(char **src, int nsrc)
+  - '{+'
+  - for(int i=0; i < nsrc; ++i) {+
+  - std::free(src[i]);
+  - -}
+  - std::free(src);
+  - -}
+h_helper_char_blank_fill:
+  name: h_helper_char_blank_fill
+  c_fmtname: ShroudCharBlankFill
+  c_include:
+  - <string.h>
+  cxx_include:
+  - <cstring>
+  source:
+  - ''
+  - // helper char_blank_fill
+  - // blank fill dest starting at trailing NULL.
+  - static void ShroudCharBlankFill(char *dest, int ndest)
+  - '{+'
+  - int nm = std::strlen(dest);
+  - if(ndest > nm) std::memset(dest+nm,' ',ndest-nm);
+  - -}
+h_helper_char_copy:
+  name: h_helper_char_copy
+  c_fmtname: ShroudCharCopy
+  c_include:
+  - <string.h>
+  cxx_include:
+  - <cstring>
+  source:
+  - ''
+  - // helper ShroudCharCopy
+  - // Copy src into dest, blank fill to ndest characters
+  - // Truncate if dest is too short.
+  - // dest will not be NULL terminated.
+  - static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
+  - '{+'
+  - if (src == NULL) {+
+  - std::memset(dest,' ',ndest); // convert NULL pointer to blank filled string
+  - -} else {+
+  - if (nsrc < 0) nsrc = std::strlen(src);
+  - 'int nm = nsrc < ndest ? nsrc : ndest;'
+  - std::memcpy(dest,src,nm);
+  - if(ndest > nm) std::memset(dest+nm,' ',ndest-nm); // blank fill
+  - -}
+  - -}
+h_helper_char_free:
+  name: h_helper_char_free
+  c_fmtname: ShroudCharFree
+  c_include:
+  - <stdlib.h>
+  cxx_include:
+  - <cstdlib>
+  source:
+  - ''
+  - // helper char_free
+  - // Release memory allocated by ShroudCharAlloc
+  - static void ShroudCharFree(char *src)
+  - '{+'
+  - if (src != NULL) {+
+  - std::free(src);
+  - -}
+  - -}
+h_helper_char_len_trim:
+  name: h_helper_char_len_trim
+  c_fmtname: ShroudCharLenTrim
+  source:
+  - ''
+  - // helper char_len_trim
+  - // Returns the length of character string src with length nsrc,
+  - // ignoring any trailing blanks.
+  - static int ShroudCharLenTrim(const char *src, int nsrc) {+
+  - int i;
+  - ''
+  - for (i = nsrc - 1; i >= 0; i--) {+
+  - if (src[i] != ' ') {+
+  - break;
+  - -}
+  - -}
+  - ''
+  - return i + 1;
+  - -}
+  - ''
+h_helper_size_CFI:
+  name: h_helper_size_CFI
+  notes:
+  - Find size of CFI array.
+  c_include:
+  - <stddef.h>
+  cxx_include:
+  - <cstddef>
+  source:
+  - ''
+  - // helper size_CFI
+  - // Compute number of items in CFI_cdesc_t
+  - size_t ShroudSizeCFI(CFI_cdesc_t *desc)
+  - '{+'
+  - size_t nitems = 1;
+  - for (int i = 0; i < desc->rank; i++) {+
+  - nitems *= desc->dim[i].extent;
+  - -}
+  - return nitems;
+  - -}
 h_helper_type_defines:
   name: h_helper_type_defines
   notes:
@@ -14957,6 +15139,19 @@ root
         weakptr -- f_subroutine_assignment_weakptr
   h
     helper
+      char
+        alloc -- h_helper_char_alloc
+        array
+          alloc -- h_helper_char_array_alloc
+          free -- h_helper_char_array_free
+        blank
+          fill -- h_helper_char_blank_fill
+        copy -- h_helper_char_copy
+        free -- h_helper_char_free
+        len
+          trim -- h_helper_char_len_trim
+      size
+        CFI -- h_helper_size_CFI
       type
         defines -- h_helper_type_defines
 ***** Python

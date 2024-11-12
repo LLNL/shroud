@@ -869,10 +869,18 @@ HStmts = util.Scope(
     None,
     name="h_default",
     notes=[],
+    api="",
+    c_fmtname="",
+    c_include=[],
+    cxx_include=[],
     scope="",
     source=[],
+    c_source=[],
+    cxx_source=[],
+    f_fmtname="",
     derived_type=[],
     modules=None,
+    dependent_helpers=[],
 )
 
 # Define class for nodes in tree based on their first entry.
