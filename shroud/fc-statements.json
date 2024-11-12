@@ -5528,5 +5528,281 @@
             "-end subroutine {fnamefunc}",
             "-end interface"
         ]
+    },
+    {
+        "name": "h_helper_array_string_out",
+        "notes": [
+            "Only used with std::string and thus C++."
+        ],
+        "fmtdict": {
+            "cnamefunc": "{C_prefix}ShroudArrayStringOut",
+            "cnamefunc_array_string_out": "{cnamefunc}",
+            "cnameproto":  "void {cnamefunc}({C_array_type} *outdesc, std::string *in, size_t nsize)"
+        },
+        "c_fmtname": "{cnamefunc}",
+        "api": "cxx",
+        "scope": "cwrap_impl",
+        "dependent_helpers": ["array_context"],
+        "proto_include": ["<string>", "<vector>"],
+        "proto": "{cnameproto};",
+        "cxx_include": ["<cstring>", "<cstddef>"],
+        "source": [
+            "",
+            "{c_lstart}// helper {hname}",
+            "// Copy the std::vector<std::string> into Fortran array argument.",
+            "// Called by C++.",
+            "{cnameproto}",
+            "{{+",
+            "size_t nvect = outdesc->size;",
+            "size_t len = outdesc->elem_len;",
+            "char *dest = static_cast<char *>(outdesc->base_addr);",
+            "// Clear user memory",
+            "std::memset(dest, ' ', nvect*len);",
+            "",
+            "// Copy into user memory",
+            "nvect = std::min(nvect, nsize);",
+            "for (size_t i = 0; i < nvect; ++i) {{+",
+            "std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));",
+            "dest += outdesc->elem_len;",
+            "-}}",
+            "-}}{c_lend}"
+        ]
+    },
+    {
+        "name": "h_helper_array_string_allocatable",
+        "notes": [
+            "Only used with std::string and thus C++.",
+            "Called from Fortran to deal with allocatable character",
+            "The capsule contains a pointer to a std::vector<std::string>",
+            "which is copied into the cdesc."
+        ],
+        "fmtdict": {
+            "cnamefunc": "{C_prefix}ShroudArrayStringAllocatable",
+            "fnamefunc": "{C_prefix}SHROUD_array_string_allocatable",
+            "cnameproto": "void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)"
+        },
+        "c_fmtname": "{cnamefunc}",
+        "api": "c",
+        "scope": "cwrap_impl",
+        "dependent_helpers": ["capsule_data_helper", "array_context", "array_string_out"],
+        "proto": "{cnameproto};",
+        "source": [
+            "",
+            "{c_lstart}// helper {hname}",
+            "// Copy the std::string array into Fortran array.",
+            "// Called by Fortran to deal with allocatable character.",
+            "// out is already blank filled.",
+            "{cnameproto}",
+            "{{+",
+            "std::string *cxxvec =\t static_cast< std::string *>\t(src->addr);",
+            "{cnamefunc_array_string_out}(dest, cxxvec, dest->size);",
+            "-}}{c_lend}",
+            ""
+        ],
+
+        "f_fmtname": "{fnamefunc}",
+        "interface": [
+            "",
+            "interface+",
+            "! helper {hname}",
+            "subroutine {fnamefunc}(dest, src) &",
+            "     bind(c,name=\"{cnamefunc}\")+",
+            "import {F_array_type}, {F_capsule_data_type}",
+            "type({F_array_type}), intent(IN) :: dest",
+            "type({F_capsule_data_type}), intent(IN) :: src",
+            "-end subroutine {fnamefunc}",
+            "-end interface"
+        ]
+    },
+    {
+        "name": "h_helper_array_string_out_len",
+        "fmtdict": {
+            "cnamefunc": "{C_prefix}ShroudArrayStringOutSize",
+            "cnameproto": "size_t {cnamefunc}(std::string *in, size_t nsize)"
+        },
+        "c_fmtname": "{cnamefunc}",
+        "api": "cxx",
+        "scope": "cwrap_impl",
+        "proto_include": ["<string>", "<vector>"],
+        "proto": "{cnameproto};",
+        "source": [
+            "",
+            "{c_lstart}// helper {hname}",
+            "// Return the maximum string length in a std::vector<std::string>.",
+            "{cnameproto}",
+            "{{+",
+            "size_t len = 0;",
+            "for (size_t i = 0; i < nsize; ++i) {{+",
+            "len = std::max(len, in[i].length());",
+            "-}}",
+            "return len;",
+            "-}}{c_lend}"
+        ]
+    },
+    {
+        "name": "h_helper_vector_string_out",
+        "notes": [
+            "Only used with std::vector and thus C++."
+        ],
+        "fmtdict": {
+            "cnamefunc": "{C_prefix}ShroudVectorStringOut",
+            "fnamefunc": "{C_prefix}shroud_vector_string_out",
+            "cnamefunc_vector_string_out": "{cnamefunc}",
+            "cnameproto": "void {cnamefunc}({C_array_type} *outdesc, std::vector<std::string> &in)"
+        },
+        "c_fmtname": "{cnamefunc}",
+        "api": "cxx",
+        "scope": "cwrap_impl",
+        "dependent_helpers": ["array_context"],
+        "proto_include": ["<string>", "<vector>"],
+        "proto": "{cnameproto};",
+        "cxx_include": ["<cstring>", "<cstddef>"],
+        "source": [
+            "",
+            "{c_lstart}// helper {hname}",
+            "// Copy the std::vector<std::string> into Fortran array argument.",
+            "// Called by C++.",
+            "{cnameproto}",
+            "{{+",
+            "size_t nvect = outdesc->size;",
+            "size_t len = outdesc->elem_len;",
+            "char *dest = static_cast<char *>(outdesc->base_addr);",
+            "// Clear user memory",
+            "std::memset(dest, ' ', nvect*len);",
+            "",
+            "// Copy into user memory",
+            "nvect = std::min(nvect, in.size());",
+            "//char *dest = static_cast<char *>(outdesc->cxx.addr);",
+            "for (size_t i = 0; i < nvect; ++i) {{+",
+            "std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));",
+            "dest += outdesc->elem_len;",
+            "-}}",
+            "-}}{c_lend}"
+        ]
+    },
+    {
+        "name": "h_helper_vector_string_allocatable",
+        "notes": [
+            "Only used with std::string and thus C++.",
+            "Called from Fortran.",
+            "The capsule contains a pointer to a std::vector<std::string>",
+            "which is copied into the cdesc."
+        ],
+        "fmtdict": {
+            "cnamefunc": "{C_prefix}ShroudVectorStringAllocatable",
+            "fnamefunc": "{C_prefix}SHROUD_vector_string_allocatable",
+            "cnameproto": "void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)"
+        },
+        "c_fmtname": "{cnamefunc}",
+        "api": "c",
+        "scope": "cwrap_impl",
+        "dependent_helpers": ["capsule_data_helper", "array_context", "vector_string_out"],
+        "proto": "{cnameproto};",
+        "source": [
+            "",
+            "{c_lstart}// helper {hname}",
+            "// Copy the std::vector<std::string> into Fortran array.",
+            "// Called by Fortran to deal with allocatable character.",
+            "// out is already blank filled.",
+            "{cnameproto}",
+            "{{+",
+            "std::vector<std::string> *cxxvec =\t static_cast< std::vector<std::string> * >\t(src->addr);",
+            "{cnamefunc_vector_string_out}(dest, *cxxvec);",
+            "-}}{c_lend}"
+        ],
+        "f_fmtname": "{fnamefunc}",
+        "interface": [
+            "",
+            "interface+",
+            "! helper {hname}",
+            "! Copy the char* or std::string in context into c_var.",
+            "subroutine {fnamefunc}(dest, src) &",
+            "     bind(c,name=\"{cnamefunc}\")+",
+            "import {F_capsule_data_type}, {F_array_type}",
+            "type({F_array_type}), intent(IN) :: dest",
+            "type({F_capsule_data_type}), intent(IN) :: src",
+            "-end subroutine {fnamefunc}",
+            "-end interface"
+        ]
+    },
+    {
+        "name": "h_helper_vector_string_out_len",
+        "fmtdict": {
+            "cnamefunc": "{C_prefix}ShroudVectorStringOutSize",
+            "cnameproto": "size_t {cnamefunc}(std::vector<std::string> &in)"
+        },
+        "c_fmtname": "{cnamefunc}",
+        "api": "cxx",
+        "scope": "cwrap_impl",
+        "proto_include": ["<string>", "<vector>"],
+        "proto": "{cnameproto};",
+        "source": [
+            "",
+            "{c_lstart}// helper {hname}",
+            "// Return the maximum string length in a std::vector<std::string>.",
+            "{cnameproto}",
+            "{{+",
+            "size_t nvect = in.size();",
+            "size_t len = 0;",
+            "for (size_t i = 0; i < nvect; ++i) {{+",
+            "len = std::max(len, in[i].length());",
+            "-}}",
+            "return len;",
+            "-}}{c_lend}"
+        ]
+    },
+    {
+        "name": "h_helper_pointer_string",
+        "notes": [
+            "Set Fortran POINTER to string.",
+            "Must be a function (or a F2008 BLOCK) since fptr must",
+            "be declared after the string length is known."
+        ],
+        "fmtdict": {
+            "fnamefunc": "{C_prefix}SHROUD_pointer_string"
+        },
+        "dependent_helpers": ["array_context"],
+        "f_fmtname": "{fnamefunc}",
+        "f_source": [
+            "",
+            "! helper {hname}",
+            "! Assign context to an assumed-length character pointer",
+            "subroutine {fnamefunc}(context, var)+",
+            "use iso_c_binding, only : c_f_pointer, C_PTR",
+            "implicit none",
+            "type({F_array_type}), intent(IN) :: context",
+            "character(len=:), pointer, intent(OUT) :: var",
+            "character(len=context%elem_len), pointer :: fptr",
+            "call c_f_pointer(context%base_addr, fptr)",
+            "var => fptr",
+            "-end subroutine {fnamefunc}"
+        ]
+    },
+    {
+        "name": "h_helper_string_to_cdesc",
+        "fmtdict": {
+            "cnamefunc": "ShroudStringToCdesc"
+        },
+        "c_fmtname": "{cnamefunc}",
+        "dependent_helpers": ["array_context"],
+        "cxx_include": ["<cstring>", "<cstddef>"],
+        "source": [
+            "",
+            "{c_lstart}// helper {hname}",
+            "// Save std::string metadata into array to allow Fortran to access values.",
+            "// CHARACTER(len=elem_size) src",
+            "static void {cnamefunc}(\t{C_array_type} *cdesc,\t const std::string * src)",
+            "{{+",
+            "if (src->empty()) {{+",
+            "cdesc->base_addr = NULL;",
+            "cdesc->elem_len = 0;",
+            "-}} else {{+",
+            "cdesc->base_addr =\t const_cast<char *>(\tsrc->data());",
+            "cdesc->elem_len = src->length();",
+            "-}}",
+            "cdesc->size = 1;",
+            "cdesc->rank = 0;  // scalar",
+            "-}}{c_lend}"
+        ]
     }
 ]

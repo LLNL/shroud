@@ -14197,6 +14197,112 @@ f_subroutine_assignment_weakptr:
   - "auto cxx_ptr =\t reinterpret_cast<{cxx_type}*>(ptr);"
   - delete cxx_ptr;
   owner: library
+h_helper_array_string_allocatable:
+  name: h_helper_array_string_allocatable
+  notes:
+  - Only used with std::string and thus C++.
+  - Called from Fortran to deal with allocatable character
+  - The capsule contains a pointer to a std::vector<std::string>
+  - which is copied into the cdesc.
+  fmtdict:
+    cnamefunc: '{C_prefix}ShroudArrayStringAllocatable'
+    fnamefunc: '{C_prefix}SHROUD_array_string_allocatable'
+    cnameproto: void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)
+  api: c
+  c_fmtname: LIB_ShroudArrayStringAllocatable
+  scope: cwrap_impl
+  proto: void LIB_ShroudArrayStringAllocatable(LIB_SHROUD_array *dest, LIB_SHROUD_capsule_data
+    *src);
+  source:
+  - ''
+  - // helper array_string_allocatable
+  - // Copy the std::string array into Fortran array.
+  - // Called by Fortran to deal with allocatable character.
+  - // out is already blank filled.
+  - void LIB_ShroudArrayStringAllocatable(LIB_SHROUD_array *dest, LIB_SHROUD_capsule_data
+    *src)
+  - '{+'
+  - "std::string *cxxvec =\t static_cast< std::string *>\t(src->addr);"
+  - LIB_ShroudArrayStringOut(dest, cxxvec, dest->size);
+  - -}
+  - ''
+  f_fmtname: LIB_SHROUD_array_string_allocatable
+  interface:
+  - ''
+  - interface+
+  - '! helper array_string_allocatable'
+  - subroutine LIB_SHROUD_array_string_allocatable(dest, src) &
+  - '     bind(c,name="LIB_ShroudArrayStringAllocatable")+'
+  - import LIB_SHROUD_array, LIB_SHROUD_capsule_data
+  - 'type(LIB_SHROUD_array), intent(IN) :: dest'
+  - 'type(LIB_SHROUD_capsule_data), intent(IN) :: src'
+  - -end subroutine LIB_SHROUD_array_string_allocatable
+  - -end interface
+  dependent_helpers:
+  - capsule_data_helper
+  - array_context
+  - array_string_out
+h_helper_array_string_out:
+  name: h_helper_array_string_out
+  notes:
+  - Only used with std::string and thus C++.
+  fmtdict:
+    cnamefunc: '{C_prefix}ShroudArrayStringOut'
+    cnamefunc_array_string_out: '{cnamefunc}'
+    cnameproto: void {cnamefunc}({C_array_type} *outdesc, std::string *in, size_t
+      nsize)
+  api: cxx
+  c_fmtname: LIB_ShroudArrayStringOut
+  cxx_include:
+  - <cstring>
+  - <cstddef>
+  scope: cwrap_impl
+  proto: void LIB_ShroudArrayStringOut(LIB_SHROUD_array *outdesc, std::string *in,
+    size_t nsize);
+  source:
+  - ''
+  - // helper array_string_out
+  - // Copy the std::vector<std::string> into Fortran array argument.
+  - // Called by C++.
+  - void LIB_ShroudArrayStringOut(LIB_SHROUD_array *outdesc, std::string *in, size_t
+    nsize)
+  - '{+'
+  - size_t nvect = outdesc->size;
+  - size_t len = outdesc->elem_len;
+  - char *dest = static_cast<char *>(outdesc->base_addr);
+  - // Clear user memory
+  - std::memset(dest, ' ', nvect*len);
+  - ''
+  - // Copy into user memory
+  - nvect = std::min(nvect, nsize);
+  - for (size_t i = 0; i < nvect; ++i) {+
+  - std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));
+  - dest += outdesc->elem_len;
+  - -}
+  - -}
+  dependent_helpers:
+  - array_context
+h_helper_array_string_out_len:
+  name: h_helper_array_string_out_len
+  fmtdict:
+    cnamefunc: '{C_prefix}ShroudArrayStringOutSize'
+    cnameproto: size_t {cnamefunc}(std::string *in, size_t nsize)
+  api: cxx
+  c_fmtname: LIB_ShroudArrayStringOutSize
+  scope: cwrap_impl
+  proto: size_t LIB_ShroudArrayStringOutSize(std::string *in, size_t nsize);
+  source:
+  - ''
+  - // helper array_string_out_len
+  - // Return the maximum string length in a std::vector<std::string>.
+  - size_t LIB_ShroudArrayStringOutSize(std::string *in, size_t nsize)
+  - '{+'
+  - size_t len = 0;
+  - for (size_t i = 0; i < nsize; ++i) {+
+  - len = std::max(len, in[i].length());
+  - -}
+  - return len;
+  - -}
 h_helper_capsule_dtor:
   name: h_helper_capsule_dtor
   notes:
@@ -14479,6 +14585,17 @@ h_helper_copy_string:
   - -end interface
   dependent_helpers:
   - array_context
+h_helper_pointer_string:
+  name: h_helper_pointer_string
+  notes:
+  - Set Fortran POINTER to string.
+  - Must be a function (or a F2008 BLOCK) since fptr must
+  - be declared after the string length is known.
+  fmtdict:
+    fnamefunc: '{C_prefix}SHROUD_pointer_string'
+  f_fmtname: LIB_SHROUD_pointer_string
+  dependent_helpers:
+  - array_context
 h_helper_size_CFI:
   name: h_helper_size_CFI
   notes:
@@ -14499,6 +14616,34 @@ h_helper_size_CFI:
   - -}
   - return nitems;
   - -}
+h_helper_string_to_cdesc:
+  name: h_helper_string_to_cdesc
+  fmtdict:
+    cnamefunc: ShroudStringToCdesc
+  c_fmtname: ShroudStringToCdesc
+  cxx_include:
+  - <cstring>
+  - <cstddef>
+  source:
+  - ''
+  - // helper string_to_cdesc
+  - // Save std::string metadata into array to allow Fortran to access values.
+  - // CHARACTER(len=elem_size) src
+  - "static void ShroudStringToCdesc(\tLIB_SHROUD_array *cdesc,\t const std::string\
+    \ * src)"
+  - '{+'
+  - if (src->empty()) {+
+  - cdesc->base_addr = NULL;
+  - cdesc->elem_len = 0;
+  - -} else {+
+  - "cdesc->base_addr =\t const_cast<char *>(\tsrc->data());"
+  - cdesc->elem_len = src->length();
+  - -}
+  - cdesc->size = 1;
+  - cdesc->rank = 0;  // scalar
+  - -}
+  dependent_helpers:
+  - array_context
 h_helper_type_defines:
   name: h_helper_type_defines
   notes:
@@ -14581,6 +14726,116 @@ h_helper_type_defines:
   - '    SH_TYPE_CPTR      = 30, &'
   - '    SH_TYPE_STRUCT    = 31, &'
   - '    SH_TYPE_OTHER     = 32'
+h_helper_vector_string_allocatable:
+  name: h_helper_vector_string_allocatable
+  notes:
+  - Only used with std::string and thus C++.
+  - Called from Fortran.
+  - The capsule contains a pointer to a std::vector<std::string>
+  - which is copied into the cdesc.
+  fmtdict:
+    cnamefunc: '{C_prefix}ShroudVectorStringAllocatable'
+    fnamefunc: '{C_prefix}SHROUD_vector_string_allocatable'
+    cnameproto: void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)
+  api: c
+  c_fmtname: LIB_ShroudVectorStringAllocatable
+  scope: cwrap_impl
+  proto: void LIB_ShroudVectorStringAllocatable(LIB_SHROUD_array *dest, LIB_SHROUD_capsule_data
+    *src);
+  source:
+  - ''
+  - // helper vector_string_allocatable
+  - // Copy the std::vector<std::string> into Fortran array.
+  - // Called by Fortran to deal with allocatable character.
+  - // out is already blank filled.
+  - void LIB_ShroudVectorStringAllocatable(LIB_SHROUD_array *dest, LIB_SHROUD_capsule_data
+    *src)
+  - '{+'
+  - "std::vector<std::string> *cxxvec =\t static_cast< std::vector<std::string> *\
+    \ >\t(src->addr);"
+  - LIB_ShroudVectorStringOut(dest, *cxxvec);
+  - -}
+  f_fmtname: LIB_SHROUD_vector_string_allocatable
+  interface:
+  - ''
+  - interface+
+  - '! helper vector_string_allocatable'
+  - '! Copy the char* or std::string in context into c_var.'
+  - subroutine LIB_SHROUD_vector_string_allocatable(dest, src) &
+  - '     bind(c,name="LIB_ShroudVectorStringAllocatable")+'
+  - import LIB_SHROUD_capsule_data, LIB_SHROUD_array
+  - 'type(LIB_SHROUD_array), intent(IN) :: dest'
+  - 'type(LIB_SHROUD_capsule_data), intent(IN) :: src'
+  - -end subroutine LIB_SHROUD_vector_string_allocatable
+  - -end interface
+  dependent_helpers:
+  - capsule_data_helper
+  - array_context
+  - vector_string_out
+h_helper_vector_string_out:
+  name: h_helper_vector_string_out
+  notes:
+  - Only used with std::vector and thus C++.
+  fmtdict:
+    cnamefunc: '{C_prefix}ShroudVectorStringOut'
+    fnamefunc: '{C_prefix}shroud_vector_string_out'
+    cnamefunc_vector_string_out: '{cnamefunc}'
+    cnameproto: void {cnamefunc}({C_array_type} *outdesc, std::vector<std::string>
+      &in)
+  api: cxx
+  c_fmtname: LIB_ShroudVectorStringOut
+  cxx_include:
+  - <cstring>
+  - <cstddef>
+  scope: cwrap_impl
+  proto: void LIB_ShroudVectorStringOut(LIB_SHROUD_array *outdesc, std::vector<std::string>
+    &in);
+  source:
+  - ''
+  - // helper vector_string_out
+  - // Copy the std::vector<std::string> into Fortran array argument.
+  - // Called by C++.
+  - void LIB_ShroudVectorStringOut(LIB_SHROUD_array *outdesc, std::vector<std::string>
+    &in)
+  - '{+'
+  - size_t nvect = outdesc->size;
+  - size_t len = outdesc->elem_len;
+  - char *dest = static_cast<char *>(outdesc->base_addr);
+  - // Clear user memory
+  - std::memset(dest, ' ', nvect*len);
+  - ''
+  - // Copy into user memory
+  - nvect = std::min(nvect, in.size());
+  - //char *dest = static_cast<char *>(outdesc->cxx.addr);
+  - for (size_t i = 0; i < nvect; ++i) {+
+  - std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));
+  - dest += outdesc->elem_len;
+  - -}
+  - -}
+  dependent_helpers:
+  - array_context
+h_helper_vector_string_out_len:
+  name: h_helper_vector_string_out_len
+  fmtdict:
+    cnamefunc: '{C_prefix}ShroudVectorStringOutSize'
+    cnameproto: size_t {cnamefunc}(std::vector<std::string> &in)
+  api: cxx
+  c_fmtname: LIB_ShroudVectorStringOutSize
+  scope: cwrap_impl
+  proto: size_t LIB_ShroudVectorStringOutSize(std::vector<std::string> &in);
+  source:
+  - ''
+  - // helper vector_string_out_len
+  - // Return the maximum string length in a std::vector<std::string>.
+  - size_t LIB_ShroudVectorStringOutSize(std::vector<std::string> &in)
+  - '{+'
+  - size_t nvect = in.size();
+  - size_t len = 0;
+  - for (size_t i = 0; i < nvect; ++i) {+
+  - len = std::max(len, in[i].length());
+  - -}
+  - return len;
+  - -}
 root
   c
     ctor
@@ -15259,6 +15514,11 @@ root
         weakptr -- f_subroutine_assignment_weakptr
   h
     helper
+      array
+        string
+          allocatable -- h_helper_array_string_allocatable
+          out -- h_helper_array_string_out
+            len -- h_helper_array_string_out_len
       capsule
         dtor -- h_helper_capsule_dtor
       char
@@ -15275,10 +15535,20 @@ root
       copy
         array -- h_helper_copy_array
         string -- h_helper_copy_string
+      pointer
+        string -- h_helper_pointer_string
       size
         CFI -- h_helper_size_CFI
+      string
+        to
+          cdesc -- h_helper_string_to_cdesc
       type
         defines -- h_helper_type_defines
+      vector
+        string
+          allocatable -- h_helper_vector_string_allocatable
+          out -- h_helper_vector_string_out
+            len -- h_helper_vector_string_out_len
 ***** Python
 py_ctor_char*:
   name: py_ctor_char*
