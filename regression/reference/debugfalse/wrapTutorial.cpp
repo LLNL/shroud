@@ -25,14 +25,14 @@ extern "C" {
 // dest will not be NULL terminated.
 static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
 {
-   if (src == NULL) {
-     std::memset(dest,' ',ndest); // convert NULL pointer to blank filled string
-   } else {
-     if (nsrc < 0) nsrc = std::strlen(src);
-     int nm = nsrc < ndest ? nsrc : ndest;
-     std::memcpy(dest,src,nm);
-     if(ndest > nm) std::memset(dest+nm,' ',ndest-nm); // blank fill
-   }
+    if (src == NULL) {
+        std::memset(dest,' ',ndest); // convert NULL pointer to blank filled string
+    } else {
+        if (nsrc < 0) nsrc = std::strlen(src);
+        int nm = nsrc < ndest ? nsrc : ndest;
+        std::memcpy(dest,src,nm);
+        if(ndest > nm) std::memset(dest+nm,' ',ndest-nm); // blank fill
+    }
 }
 
 // helper char_len_trim

@@ -35,27 +35,27 @@ static int ShroudCharLenTrim(const char *src, int nsrc) {
 // Copy src into new memory and null terminate.
 static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
 {
-   char **rv = malloc(sizeof(char *) * nsrc);
-   const char *src0 = src;
-   for(int i=0; i < nsrc; ++i) {
-      int ntrim = ShroudCharLenTrim(src0, len);
-      char *tgt = malloc(ntrim+1);
-      memcpy(tgt, src0, ntrim);
-      tgt[ntrim] = '\0';
-      rv[i] = tgt;
-      src0 += len;
-   }
-   return rv;
+    char **rv = malloc(sizeof(char *) * nsrc);
+    const char *src0 = src;
+    for(int i=0; i < nsrc; ++i) {
+        int ntrim = ShroudCharLenTrim(src0, len);
+        char *tgt = malloc(ntrim+1);
+        memcpy(tgt, src0, ntrim);
+        tgt[ntrim] = '\0';
+        rv[i] = tgt;
+        src0 += len;
+    }
+    return rv;
 }
 
 // helper char_array_free
 // Release memory allocated by ShroudStrArrayAlloc
 static void ShroudStrArrayFree(char **src, int nsrc)
 {
-   for(int i=0; i < nsrc; ++i) {
-       free(src[i]);
-   }
-   free(src);
+    for(int i=0; i < nsrc; ++i) {
+        free(src[i]);
+    }
+    free(src);
 }
 
 // splicer begin C_definitions

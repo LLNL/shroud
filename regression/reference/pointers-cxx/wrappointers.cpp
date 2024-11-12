@@ -42,27 +42,28 @@ static int ShroudCharLenTrim(const char *src, int nsrc) {
 // CHARACTER(len) src(nsrc)
 static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
 {
-   char **rv = static_cast<char **>(std::malloc(sizeof(char *) * nsrc));
-   const char *src0 = src;
-   for(int i=0; i < nsrc; ++i) {
-      int ntrim = ShroudCharLenTrim(src0, len);
-      char *tgt = static_cast<char *>(std::malloc(ntrim+1));
-      std::memcpy(tgt, src0, ntrim);
-      tgt[ntrim] = '\0';
-      rv[i] = tgt;
-      src0 += len;
-   }
-   return rv;
+    char **rv = static_cast<char **>
+        (std::malloc(sizeof(char *) * nsrc));
+    const char *src0 = src;
+    for(int i=0; i < nsrc; ++i) {
+        int ntrim = ShroudCharLenTrim(src0, len);
+        char *tgt = static_cast<char *>(std::malloc(ntrim+1));
+        std::memcpy(tgt, src0, ntrim);
+        tgt[ntrim] = '\0';
+        rv[i] = tgt;
+        src0 += len;
+    }
+    return rv;
 }
 
 // helper char_array_free
 // Release memory allocated by ShroudStrArrayAlloc
 static void ShroudStrArrayFree(char **src, int nsrc)
 {
-   for(int i=0; i < nsrc; ++i) {
-       std::free(src[i]);
-   }
-   std::free(src);
+    for(int i=0; i < nsrc; ++i) {
+        std::free(src[i]);
+    }
+    std::free(src);
 }
 
 // splicer begin C_definitions
