@@ -33,13 +33,15 @@ static int ShroudCharLenTrim(const char *src, int nsrc) {
 
 // helper char_array_alloc
 // Copy src into new memory and null terminate.
+// char **src +size(nsrc) +len(len)
+// CHARACTER(len) src(nsrc)
 static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
 {
-    char **rv = malloc(sizeof(char *) * nsrc);
+    char **rv = (char **) malloc(sizeof(char *) * nsrc);
     const char *src0 = src;
     for(int i=0; i < nsrc; ++i) {
         int ntrim = ShroudCharLenTrim(src0, len);
-        char *tgt = malloc(ntrim+1);
+        char *tgt = (char *) malloc(ntrim+1);
         memcpy(tgt, src0, ntrim);
         tgt[ntrim] = '\0';
         rv[i] = tgt;

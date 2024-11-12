@@ -299,28 +299,7 @@ end subroutine SHROUD_capsule_delete
     "name": "char_alloc"
 }
 
-##### start char_alloc c_source
-
-// helper char_alloc
-// Copy src into new memory and null terminate.
-// If ntrim is 0, return NULL pointer.
-// If blanknull is 1, return NULL when string is blank.
-static char *ShroudCharAlloc(const char *src, int nsrc, int blanknull)
-{
-    int ntrim = ShroudCharLenTrim(src, nsrc);
-    if (ntrim == 0 && blanknull == 1) {
-        return NULL;
-    }
-    char *rv = malloc(nsrc + 1);
-    if (ntrim > 0) {
-        memcpy(rv, src, ntrim);
-    }
-    rv[ntrim] = '\0';
-    return rv;
-}
-##### end char_alloc c_source
-
-##### start char_alloc cxx_source
+##### start char_alloc source
 
 // helper char_alloc
 // Copy src into new memory and null terminate.
@@ -339,7 +318,7 @@ static char *ShroudCharAlloc(const char *src, int nsrc, int blanknull)
     rv[ntrim] = '\0';
     return rv;
 }
-##### end char_alloc cxx_source
+##### end char_alloc source
 
 ---------- char_array_alloc ----------
 {
@@ -358,27 +337,7 @@ static char *ShroudCharAlloc(const char *src, int nsrc, int blanknull)
     "name": "char_array_alloc"
 }
 
-##### start char_array_alloc c_source
-
-// helper char_array_alloc
-// Copy src into new memory and null terminate.
-static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
-{
-    char **rv = malloc(sizeof(char *) * nsrc);
-    const char *src0 = src;
-    for(int i=0; i < nsrc; ++i) {
-        int ntrim = ShroudCharLenTrim(src0, len);
-        char *tgt = malloc(ntrim+1);
-        memcpy(tgt, src0, ntrim);
-        tgt[ntrim] = '\0';
-        rv[i] = tgt;
-        src0 += len;
-    }
-    return rv;
-}
-##### end char_array_alloc c_source
-
-##### start char_array_alloc cxx_source
+##### start char_array_alloc source
 
 // helper char_array_alloc
 // Copy src into new memory and null terminate.
@@ -399,7 +358,7 @@ static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
     }
     return rv;
 }
-##### end char_array_alloc cxx_source
+##### end char_array_alloc source
 
 ---------- char_array_free ----------
 {
@@ -413,20 +372,7 @@ static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
     "name": "char_array_free"
 }
 
-##### start char_array_free c_source
-
-// helper char_array_free
-// Release memory allocated by ShroudStrArrayAlloc
-static void ShroudStrArrayFree(char **src, int nsrc)
-{
-    for(int i=0; i < nsrc; ++i) {
-        free(src[i]);
-    }
-    free(src);
-}
-##### end char_array_free c_source
-
-##### start char_array_free cxx_source
+##### start char_array_free source
 
 // helper char_array_free
 // Release memory allocated by ShroudStrArrayAlloc
@@ -437,7 +383,7 @@ static void ShroudStrArrayFree(char **src, int nsrc)
     }
     std::free(src);
 }
-##### end char_array_free cxx_source
+##### end char_array_free source
 
 ---------- char_blank_fill ----------
 {
@@ -451,18 +397,7 @@ static void ShroudStrArrayFree(char **src, int nsrc)
     "name": "char_blank_fill"
 }
 
-##### start char_blank_fill c_source
-
-// helper char_blank_fill
-// blank fill dest starting at trailing NULL.
-static void ShroudCharBlankFill(char *dest, int ndest)
-{
-    int nm = strlen(dest);
-    if(ndest > nm) memset(dest+nm,' ',ndest-nm);
-}
-##### end char_blank_fill c_source
-
-##### start char_blank_fill cxx_source
+##### start char_blank_fill source
 
 // helper char_blank_fill
 // blank fill dest starting at trailing NULL.
@@ -471,7 +406,7 @@ static void ShroudCharBlankFill(char *dest, int ndest)
     int nm = std::strlen(dest);
     if(ndest > nm) std::memset(dest+nm,' ',ndest-nm);
 }
-##### end char_blank_fill cxx_source
+##### end char_blank_fill source
 
 ---------- char_copy ----------
 {
@@ -485,26 +420,7 @@ static void ShroudCharBlankFill(char *dest, int ndest)
     "name": "char_copy"
 }
 
-##### start char_copy c_source
-
-// helper ShroudCharCopy
-// Copy src into dest, blank fill to ndest characters
-// Truncate if dest is too short.
-// dest will not be NULL terminated.
-static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
-{
-    if (src == NULL) {
-        memset(dest,' ',ndest); // convert NULL pointer to blank filled string
-    } else {
-        if (nsrc < 0) nsrc = strlen(src);
-        int nm = nsrc < ndest ? nsrc : ndest;
-        memcpy(dest,src,nm);
-        if(ndest > nm) memset(dest+nm,' ',ndest-nm); // blank fill
-    }
-}
-##### end char_copy c_source
-
-##### start char_copy cxx_source
+##### start char_copy source
 
 // helper ShroudCharCopy
 // Copy src into dest, blank fill to ndest characters
@@ -521,7 +437,7 @@ static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
         if(ndest > nm) std::memset(dest+nm,' ',ndest-nm); // blank fill
     }
 }
-##### end char_copy cxx_source
+##### end char_copy source
 
 ---------- char_free ----------
 {
@@ -535,19 +451,7 @@ static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
     "name": "char_free"
 }
 
-##### start char_free c_source
-
-// helper char_free
-// Release memory allocated by ShroudCharAlloc
-static void ShroudCharFree(char *src)
-{
-    if (src != NULL) {
-        free(src);
-    }
-}
-##### end char_free c_source
-
-##### start char_free cxx_source
+##### start char_free source
 
 // helper char_free
 // Release memory allocated by ShroudCharAlloc
@@ -557,7 +461,7 @@ static void ShroudCharFree(char *src)
         std::free(src);
     }
 }
-##### end char_free cxx_source
+##### end char_free source
 
 ---------- char_len_trim ----------
 {

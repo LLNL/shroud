@@ -42,7 +42,7 @@ static char *ShroudCharAlloc(const char *src, int nsrc, int blanknull)
     if (ntrim == 0 && blanknull == 1) {
         return NULL;
     }
-    char *rv = malloc(nsrc + 1);
+    char *rv = (char *) malloc(nsrc + 1);
     if (ntrim > 0) {
         memcpy(rv, src, ntrim);
     }
