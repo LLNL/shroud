@@ -366,6 +366,8 @@ if __name__ == "__main__":
                  cmdline=[
                      "--language", "c",
                      "--option", "wrap_python=false",
+                     # Create literal blocks for documentation
+                     "--option", "literalinclude2=true",
                  ]),
         TestDesc("pointers-cxx", yaml="pointers",
                  cmdline=[

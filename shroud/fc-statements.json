@@ -5353,7 +5353,7 @@
         "cxx_include": ["<cstring>", "<cstdlib>"],
         "source": [
             "",
-            "// helper char_array_alloc",
+            "{c_lstart}// helper char_array_alloc",
             "// Copy src into new memory and null terminate.",
             "// char **src +size(nsrc) +len(len)",
             "// CHARACTER(len) src(nsrc)",
@@ -5370,7 +5370,7 @@
             "src0 += len;",
             "-}}",
             "return rv;",
-            "-}}"
+            "-}}{c_lend}"
         ]
     },
     {

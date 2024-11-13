@@ -3,67 +3,16 @@
 # See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
-"""Helper functions for C and Fortran wrappers.
+"""Helper functions for Python wrappers.
 
+C helper functions which may be added to a implementation file.
 
- C helper functions which may be added to a implementation file.
-
- fmtname     = Name of function or type created by the helper.
- c_fmtname     This allows the function name to be independent
- f_fmtname     of the helper name so that it may include a prefix
-               to help control namespace/scope.
-               Useful when two helpers create the same function.
+ fmtname     = name of function created by the helper.
                ex. SHROUD_get_from_object_char_{numpy,list}
-               Added to the wrapper's format dictionary to allow it to be 
-               used in statements.
- api         = "c" or "cxx". Defaults to "c".
-               Must be set to "c" for helper functions which will be called
-               from Fortran.
-               Helpers which use types such as std::string or std::vector
-               can only be compiled with C++. Setting api to "c" will add 
-               the prototype in an 'extern "C"' block.
- scope       = scope of helper.
-               "file" (default) added as file static and may be in
-                  several files. source may set source, c_source, or cxx_source.
-                  functions must be static since they may be included in 
-                  multiple files.
-               "cwrap_include" will add to C_header_utility and shared
-                  among files. These names need to be unique since they
-                  are shared across wrapped libraries.
-                  Used with structure and enums.
-               "cwrap_impl" - Helpers which are written in C and 
-                  called by C or Fortran.
-               "pwrap_impl" - Added to PY_utility_filename and shared
-                  among files.
- c_include   = List of files to #include
-               in implementation file when wrapping a C library.
- cxx_include = List of files to #include.
-               in implementation file when wrapping a C++ library.
- c_source    = language=c source.
- cxx_source  = language=c++ source.
- dependent_helpers = list of helpers names needed by this helper
-                     They will be added to the output before current helper.
  need_numpy  = If True, NumPy headers will be added.
+ scope
+     ``pwrap_impl`` - Added to PY_utility_filename and shared among files.
 
- proto       = prototype for helper function.
-               Must be in the language of api.
- proto_include = List of files to #include before the prototype.
- source      = List of lines of code inserted before any wrappers.
-               The functions should be file static.
-               Used if c_source or cxx_source is not defined.
- include     = Blank delimited list of files to #include.
-               Used when c_header and cxx_header are not defined.
-
-
- Fortran helper functions which may be added to a module.
-
- dependent_helpers = list of helpers names needed by this helper
-                     They will be added to the output before current helper.
- derived_type = List of lines of code for a derived type.
-                Inserted before interfaces.
- private   = names for PRIVATE statement
- interface = List of lines of code for INTERFACE
- source    = List of lines of code for CONTAINS
 
 # Helper in wrapper classes
 
@@ -75,15 +24,6 @@ Methods in wrappers to deal with helpers.
   gather_helper_code - Write helpers in a sorted order (so the generated
    files will compare). Write dependent helpers so their declaration is before
    their use.
-
-# Fortran helpers
-
-Some Fortran helpers are implemented in C.
-Listed in the statements.c_helper and f_helper fields.
-The C helpers are written after creating the Fortran wrappers by 
-clibrary.write_impl_utility function.
-
-# Python helpers
 
 Most C API functions also return an error indicator, usually NULL if
 they are supposed to return a pointer, or -1 if they return an integer.

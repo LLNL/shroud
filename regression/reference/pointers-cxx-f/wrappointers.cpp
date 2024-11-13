@@ -36,6 +36,7 @@ static int ShroudCharLenTrim(const char *src, int nsrc) {
 }
 
 
+// start helper char_array_alloc
 // helper char_array_alloc
 // Copy src into new memory and null terminate.
 // char **src +size(nsrc) +len(len)
@@ -55,6 +56,7 @@ static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
     }
     return rv;
 }
+// end helper char_array_alloc
 
 // helper char_array_free
 // Release memory allocated by ShroudStrArrayAlloc

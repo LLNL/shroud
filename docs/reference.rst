@@ -473,7 +473,7 @@ literalinclude2
   declarations such as some helper functions or types.
   Only effective at the top level.
 
-  Each Fortran interface will be encluded in its own ``interface`` block.
+  Each Fortran interface will be enclosed in its own ``interface`` block.
   This is to provide the interface context when code is added to the
   documentation.
 
