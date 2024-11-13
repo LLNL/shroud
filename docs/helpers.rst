@@ -104,6 +104,15 @@ Otherwise, it is assumed to be a format field.
 Fields
 ------
 
+name
+^^^^
+
+The name must start with ``h_helper_``.  The remainder of the string is used
+as the helper name in the *c_helper* and *f_helper* fields of statement groups.
+
+.. The 'language' is ``h`` which defines the default values of fields.
+   The 'intent' is ``helper``.
+
 c_fmtname / f_fmtname
 ^^^^^^^^^^^^^^^^^^^^^
 
