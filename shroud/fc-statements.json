@@ -5130,5 +5130,796 @@
         "c_arg_decl": [
             "===>{c_var}<==="
         ]
+    },
+    {
+        "alias":[
+            "############################################################",
+            "##### helpers ##############################################",
+            "############################################################"
+        ]
+    },
+    {
+        "name": "h_mixin_unknown",
+        "comments": [
+            "Default returned by lookup_fc_helper when group is not found.",
+            "The values will be added to generated code to mark where each group",
+            "will add text."
+        ]
+    },
+    {
+        "name": "h_helper_type_defines",
+        "notes": [
+            "Order derived from TS 29113",
+            "with the addition of unsigned types."
+        ],
+        "scope": "cwrap_include",
+        "source": [
+            "",
+            "/* helper type_defines */",
+            "/* Shroud type defines */",
+            "#define SH_TYPE_SIGNED_CHAR 1",
+            "#define SH_TYPE_SHORT       2",
+            "#define SH_TYPE_INT         3",
+            "#define SH_TYPE_LONG        4",
+            "#define SH_TYPE_LONG_LONG   5",
+            "#define SH_TYPE_SIZE_T      6",
+            "",
+            "#define SH_TYPE_UNSIGNED_SHORT       SH_TYPE_SHORT + 100",
+            "#define SH_TYPE_UNSIGNED_INT         SH_TYPE_INT + 100",
+            "#define SH_TYPE_UNSIGNED_LONG        SH_TYPE_LONG + 100",
+            "#define SH_TYPE_UNSIGNED_LONG_LONG   SH_TYPE_LONG_LONG + 100",
+            "",
+            "#define SH_TYPE_INT8_T      7",
+            "#define SH_TYPE_INT16_T     8",
+            "#define SH_TYPE_INT32_T     9",
+            "#define SH_TYPE_INT64_T    10",
+            "",
+            "#define SH_TYPE_UINT8_T    SH_TYPE_INT8_T + 100",
+            "#define SH_TYPE_UINT16_T   SH_TYPE_INT16_T + 100",
+            "#define SH_TYPE_UINT32_T   SH_TYPE_INT32_T + 100",
+            "#define SH_TYPE_UINT64_T   SH_TYPE_INT64_T + 100",
+            "",
+            "/* least8 least16 least32 least64 */",
+            "/* fast8 fast16 fast32 fast64 */",
+            "/* intmax_t intptr_t ptrdiff_t */",
+            "",
+            "#define SH_TYPE_FLOAT        22",
+            "#define SH_TYPE_DOUBLE       23",
+            "#define SH_TYPE_LONG_DOUBLE  24",
+            "#define SH_TYPE_FLOAT_COMPLEX       25",
+            "#define SH_TYPE_DOUBLE_COMPLEX      26",
+            "#define SH_TYPE_LONG_DOUBLE_COMPLEX 27",
+            "",
+            "#define SH_TYPE_BOOL       28",
+            "#define SH_TYPE_CHAR       29",
+            "#define SH_TYPE_CPTR       30",
+            "#define SH_TYPE_STRUCT     31",
+            "#define SH_TYPE_OTHER      32"
+        ],
+        "derived_type": [
+            "",
+            "! helper type_defines",
+            "! Shroud type defines from helper type_defines",
+            "integer, parameter, private :: &",
+            "    SH_TYPE_SIGNED_CHAR= 1, &",
+            "    SH_TYPE_SHORT      = 2, &",
+            "    SH_TYPE_INT        = 3, &",
+            "    SH_TYPE_LONG       = 4, &",
+            "    SH_TYPE_LONG_LONG  = 5, &",
+            "    SH_TYPE_SIZE_T     = 6, &",
+            "    SH_TYPE_UNSIGNED_SHORT      = SH_TYPE_SHORT + 100, &",
+            "    SH_TYPE_UNSIGNED_INT        = SH_TYPE_INT + 100, &",
+            "    SH_TYPE_UNSIGNED_LONG       = SH_TYPE_LONG + 100, &",
+            "    SH_TYPE_UNSIGNED_LONG_LONG  = SH_TYPE_LONG_LONG + 100, &",
+            "    SH_TYPE_INT8_T    =  7, &",
+            "    SH_TYPE_INT16_T   =  8, &",
+            "    SH_TYPE_INT32_T   =  9, &",
+            "    SH_TYPE_INT64_T   = 10, &",
+            "    SH_TYPE_UINT8_T  =  SH_TYPE_INT8_T + 100, &",
+            "    SH_TYPE_UINT16_T =  SH_TYPE_INT16_T + 100, &",
+            "    SH_TYPE_UINT32_T =  SH_TYPE_INT32_T + 100, &",
+            "    SH_TYPE_UINT64_T =  SH_TYPE_INT64_T + 100, &",
+            "    SH_TYPE_FLOAT       = 22, &",
+            "    SH_TYPE_DOUBLE      = 23, &",
+            "    SH_TYPE_LONG_DOUBLE = 24, &",
+            "    SH_TYPE_FLOAT_COMPLEX      = 25, &",
+            "    SH_TYPE_DOUBLE_COMPLEX     = 26, &",
+            "    SH_TYPE_LONG_DOUBLE_COMPLEX= 27, &",
+            "    SH_TYPE_BOOL      = 28, &",
+            "    SH_TYPE_CHAR      = 29, &",
+            "    SH_TYPE_CPTR      = 30, &",
+            "    SH_TYPE_STRUCT    = 31, &",
+            "    SH_TYPE_OTHER     = 32"
+        ]
+    },
+    {
+        "name": "h_helper_char_copy",
+        "c_fmtname": "ShroudCharCopy",
+        "c_include": ["<string.h>"],
+        "cxx_include": ["<cstring>"],
+        "source": [
+            "",
+            "// helper ShroudCharCopy",
+            "// Copy src into dest, blank fill to ndest characters",
+            "// Truncate if dest is too short.",
+            "// dest will not be NULL terminated.",
+            "static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)",
+            "{{+",
+            "if (src == NULL) {{+",
+            "{stdlib}memset(dest,' ',ndest); // convert NULL pointer to blank filled string",
+            "-}} else {{+",
+            "if (nsrc < 0) nsrc = {stdlib}strlen(src);",
+            "int nm = nsrc < ndest ? nsrc : ndest;",
+            "{stdlib}memcpy(dest,src,nm);",
+            "if(ndest > nm) {stdlib}memset(dest+nm,' ',ndest-nm); // blank fill",
+            "-}}",
+            "-}}"
+        ]
+    },
+    {
+        "name": "h_helper_char_blank_fill",
+        "c_fmtname": "ShroudCharBlankFill",
+        "c_include": ["<string.h>"],
+        "cxx_include": ["<cstring>"],
+        "source": [
+            "",
+            "// helper char_blank_fill",
+            "// blank fill dest starting at trailing NULL.",
+            "static void ShroudCharBlankFill(char *dest, int ndest)",
+            "{{+",
+            "int nm = {stdlib}strlen(dest);",
+            "if(ndest > nm) {stdlib}memset(dest+nm,' ',ndest-nm);",
+            "-}}"
+        ]
+    },
+    {
+        "name": "h_helper_char_alloc",
+        "notes": [
+            "Used by 'const char *' arguments which need to be NULL terminated",
+            "in the C wrapper."
+        ],
+        "c_fmtname": "ShroudCharAlloc",
+        "c_include": ["<string.h>", "<stdlib.h>", "<stddef.h>"],
+        "cxx_include": ["<cstring>", "<cstdlib>"],
+        "source": [
+            "",
+            "// helper char_alloc",
+            "// Copy src into new memory and null terminate.",
+            "// If ntrim is 0, return NULL pointer.",
+            "// If blanknull is 1, return NULL when string is blank.",
+            "static char *ShroudCharAlloc(const char *src, int nsrc, int blanknull)",
+            "{{+",
+            "int ntrim = ShroudCharLenTrim(src, nsrc);",
+            "if (ntrim == 0 && blanknull == 1) {{+",
+            "return {nullptr};",
+            "-}}",
+            "char *rv = (char *) {stdlib}malloc(nsrc + 1);",
+            "if (ntrim > 0) {{+",
+            "{stdlib}memcpy(rv, src, ntrim);",
+            "-}}",
+            "rv[ntrim] = '\\0';",
+            "return rv;",
+            "-}}"
+        ],
+        "dependent_helpers": ["char_len_trim"]
+    },
+    {
+        "name": "h_helper_char_free",
+        "c_fmtname": "ShroudCharFree",
+        "c_include": ["<stdlib.h>"],
+        "cxx_include": ["<cstdlib>"],
+        "source": [
+            "",
+            "// helper char_free",
+            "// Release memory allocated by ShroudCharAlloc",
+            "static void ShroudCharFree(char *src)",
+            "{{+",
+            "if (src != NULL) {{+",
+            "{stdlib}free(src);",
+            "-}}",
+            "-}}"
+        ]
+    },
+    {
+        "name": "h_helper_char_len_trim",
+        "c_fmtname": "ShroudCharLenTrim",
+        "source": [
+            "",
+            "// helper char_len_trim",
+            "// Returns the length of character string src with length nsrc,",
+            "// ignoring any trailing blanks.",
+            "static int ShroudCharLenTrim(const char *src, int nsrc) {{+",
+            "int i;",
+            "",
+            "for (i = nsrc - 1; i >= 0; i--) {{+",
+            "if (src[i] != ' ') {{+",
+            "break;",
+            "-}}",
+            "-}}",
+            "",
+            "return i + 1;",
+            "-}}",
+            ""
+        ]
+    },
+    {
+        "name": "h_helper_char_array_alloc",
+        "notes": [
+            "Used with 'char **' arguments."
+        ],
+        "c_fmtname": "ShroudStrArrayAlloc",
+        "dependent_helpers": ["char_len_trim"],
+        "c_include": ["<string.h>", "<stdlib.h>"],
+        "cxx_include": ["<cstring>", "<cstdlib>"],
+        "source": [
+            "",
+            "{c_lstart}// helper char_array_alloc",
+            "// Copy src into new memory and null terminate.",
+            "// char **src +size(nsrc) +len(len)",
+            "// CHARACTER(len) src(nsrc)",
+            "static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)",
+            "{{+",
+            "char **rv = {cast_static}char **{cast1}{stdlib}malloc(sizeof(char *) * nsrc){cast2};",
+            "const char *src0 = src;",
+            "for(int i=0; i < nsrc; ++i) {{+",
+            "int ntrim = ShroudCharLenTrim(src0, len);",
+            "char *tgt = {cast_static}char *{cast1}{stdlib}malloc(ntrim+1){cast2};",
+            "{stdlib}memcpy(tgt, src0, ntrim);",
+            "tgt[ntrim] = '\\0';",
+            "rv[i] = tgt;",
+            "src0 += len;",
+            "-}}",
+            "return rv;",
+            "-}}{c_lend}"
+        ]
+    },
+    {
+        "name": "h_helper_char_array_free",
+        "c_fmtname": "ShroudStrArrayFree",
+        "c_include": ["<stdlib.h>"],
+        "cxx_include": ["<cstdlib>"],
+        "source": [
+            "",
+            "// helper char_array_free",
+            "// Release memory allocated by ShroudStrArrayAlloc",
+            "static void ShroudStrArrayFree(char **src, int nsrc)",
+            "{{+",
+            "for(int i=0; i < nsrc; ++i) {{+",
+            "{stdlib}free(src[i]);",
+            "-}}",
+            "{stdlib}free(src);",
+            "-}}"
+        ]
+    },
+    {
+        "name": "h_helper_size_CFI",
+        "notes": [
+            "Find size of CFI array."
+        ],
+        "c_include": ["<stddef.h>"],
+        "cxx_include": ["<cstddef>"],
+        "source": [
+            "",
+            "// helper size_CFI",
+            "// Compute number of items in CFI_cdesc_t",
+            "size_t ShroudSizeCFI(CFI_cdesc_t *desc)",
+            "{{+",
+            "size_t nitems = 1;",
+            "for (int i = 0; i < desc->rank; i++) {{+",
+            "nitems *= desc->dim[i].extent;",
+            "-}}",
+            "return nitems;",
+            "-}}"
+        ]
+    },
+    {
+        "name": "h_helper_capsule_dtor",
+        "notes": [
+            "Add the C prototype. The body is created Wrapc.write_capsule_code."
+        ],
+        "fmtdict": {
+            "cnamefunc":  "{C_memory_dtor_function}",
+            "cnameproto":  "void {cnamefunc}\t({C_capsule_data_type} *cap)",
+            "fnamefunc":  "{C_prefix}SHROUD_capsule_dtor",
+            "fnamefunc_capsule_dtor": "{fnamefunc}"
+        },
+        "c_fmtname": "{cnamefunc}",
+        "api": "c",
+        "dependent_helpers": ["capsule_data_helper"],
+        "proto": "{cnameproto};",
+        
+        "f_fmtname": "{fnamefunc}",
+        "interface": [
+            "",
+            "interface+",
+            "! helper {hname}",
+            "! Delete memory in a capsule.",
+            "subroutine {fnamefunc}(ptr)\tbind(C, name=\"{cnamefunc}\")+",
+            "import {F_capsule_data_type}",
+            "implicit none",
+            "type({F_capsule_data_type}), intent(INOUT) :: ptr",
+            "-end subroutine {fnamefunc}",
+            "-end interface"
+        ]
+    },
+    {
+        "name": "h_helper_copy_array",
+        "notes": [
+            "XXX - Only used with std::vector and thus C++.",
+            "Create Fortran interface to helper function which copies an array.",
+            "Used with sgroup='native' types.",
+            "The function has C_prefix in the name since it is not file static.",
+            "This allows multiple wrapped libraries to coexist.",
+            "Create a single C routine which is called from Fortran",
+            "via an interface for each cxx_type.",
+            "XXX when f_kind == C_SIZE_T"
+        ],
+        "fmtdict": {
+            "cnamefunc": "{C_prefix}ShroudCopyArray",
+            "fnamefunc": "{C_prefix}SHROUD_{hname}"
+        },
+        "c_fmtname": "{cnamefunc}",
+        "scope": "cwrap_impl",
+        "dependent_helpers": ["array_context"],
+        "c_include": ["<string.h>", "<stddef.h>"],
+        "cxx_include": ["<cstring>", "<cstddef>"],
+        "source": [
+            "",
+            "{c_lstart}// helper {hname}",
+            "// Copy std::vector into array c_var(c_var_size).",
+            "// Then release std::vector.",
+            "// Called from Fortran.",
+            "void {cnamefunc}({C_array_type} *data, \tvoid *c_var, \tsize_t c_var_size)",
+            "{{+",
+            "const void *cxx_var = data->base_addr;",
+            "int n = c_var_size < data->size ? c_var_size : data->size;",
+            "n *= data->elem_len;",
+            "{stdlib}memcpy(c_var, cxx_var, n);",
+            "-}}{c_lend}"
+        ],
+        "f_fmtname": "{fnamefunc}",
+        "interface": [
+            "",
+            "interface+",
+            "! helper {hname}",
+            "! Copy contents of context into c_var.",
+            "subroutine {fnamefunc}(context, c_var, c_var_size) &+",
+            "bind(C, name=\"{cnamefunc}\")",
+            "use iso_c_binding, only : C_PTR, C_SIZE_T",
+            "import {F_array_type}",
+            "type({F_array_type}), intent(IN) :: context",
+            "type(C_PTR), intent(IN), value :: c_var",
+            "integer(C_SIZE_T), value :: c_var_size",
+            "-end subroutine {fnamefunc}",
+            "-end interface"
+        ]
+    },
+    {
+        "name": "h_helper_copy_string",
+        "notes": [
+            "Deal with allocatable character."
+        ],
+        "fmtdict": {
+            "cnamefunc": "{C_prefix}ShroudCopyString",
+            "fnamefunc": "{C_prefix}SHROUD_copy_string"
+        },
+        "c_fmtname": "{cnamefunc}",
+        "scope": "cwrap_impl",
+        "dependent_helpers": ["array_context"],
+        "cxx_include": ["<cstring>", "<cstddef>"],
+        "source": [
+            "",
+            "{c_lstart}// helper {hname}",
+            "// Copy the char* or std::string in context into c_var.",
+            "// Called by Fortran to deal with allocatable character.",
+            "void {cnamefunc}(\t{C_array_type} *data,\t char *c_var,\t size_t c_var_len) {{+",
+            "const void *cxx_var = data->base_addr;",
+            "size_t n = c_var_len;",
+            "if (data->elem_len < n) n = data->elem_len;",
+            "{stdlib}memcpy(c_var, cxx_var, n);",
+            "-}}{c_lend}"
+        ],
+
+        "f_fmtname": "{fnamefunc}",
+        "interface": [
+            "",
+            "interface+",
+            "! helper {hname}",
+            "! Copy the char* or std::string in context into c_var.",
+            "subroutine {fnamefunc}(context, c_var, c_var_size) &",
+            "     bind(c,name=\"{cnamefunc}\")+",
+            "use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T",
+            "import {F_array_type}",
+            "type({F_array_type}), intent(IN) :: context",
+            "character(kind=C_CHAR), intent(OUT) :: c_var(*)",
+            "integer(C_SIZE_T), value :: c_var_size",
+            "-end subroutine {fnamefunc}",
+            "-end interface"
+        ]
+    },
+    {
+        "name": "h_helper_array_string_out",
+        "notes": [
+            "Only used with std::string and thus C++."
+        ],
+        "fmtdict": {
+            "cnamefunc": "{C_prefix}ShroudArrayStringOut",
+            "cnamefunc_array_string_out": "{cnamefunc}",
+            "cnameproto":  "void {cnamefunc}({C_array_type} *outdesc, std::string *in, size_t nsize)"
+        },
+        "c_fmtname": "{cnamefunc}",
+        "api": "cxx",
+        "scope": "cwrap_impl",
+        "dependent_helpers": ["array_context"],
+        "proto_include": ["<string>", "<vector>"],
+        "proto": "{cnameproto};",
+        "cxx_include": ["<cstring>", "<cstddef>"],
+        "source": [
+            "",
+            "{c_lstart}// helper {hname}",
+            "// Copy the std::vector<std::string> into Fortran array argument.",
+            "// Called by C++.",
+            "{cnameproto}",
+            "{{+",
+            "size_t nvect = outdesc->size;",
+            "size_t len = outdesc->elem_len;",
+            "char *dest = static_cast<char *>(outdesc->base_addr);",
+            "// Clear user memory",
+            "std::memset(dest, ' ', nvect*len);",
+            "",
+            "// Copy into user memory",
+            "nvect = std::min(nvect, nsize);",
+            "for (size_t i = 0; i < nvect; ++i) {{+",
+            "std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));",
+            "dest += outdesc->elem_len;",
+            "-}}",
+            "-}}{c_lend}"
+        ]
+    },
+    {
+        "name": "h_helper_array_string_allocatable",
+        "notes": [
+            "Only used with std::string and thus C++.",
+            "Called from Fortran to deal with allocatable character",
+            "The capsule contains a pointer to a std::vector<std::string>",
+            "which is copied into the cdesc."
+        ],
+        "fmtdict": {
+            "cnamefunc": "{C_prefix}ShroudArrayStringAllocatable",
+            "fnamefunc": "{C_prefix}SHROUD_array_string_allocatable",
+            "cnameproto": "void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)"
+        },
+        "c_fmtname": "{cnamefunc}",
+        "api": "c",
+        "scope": "cwrap_impl",
+        "dependent_helpers": ["capsule_data_helper", "array_context", "array_string_out"],
+        "proto": "{cnameproto};",
+        "source": [
+            "",
+            "{c_lstart}// helper {hname}",
+            "// Copy the std::string array into Fortran array.",
+            "// Called by Fortran to deal with allocatable character.",
+            "// out is already blank filled.",
+            "{cnameproto}",
+            "{{+",
+            "std::string *cxxvec =\t static_cast< std::string *>\t(src->addr);",
+            "{cnamefunc_array_string_out}(dest, cxxvec, dest->size);",
+            "-}}{c_lend}"
+        ],
+
+        "f_fmtname": "{fnamefunc}",
+        "interface": [
+            "",
+            "interface+",
+            "! helper {hname}",
+            "subroutine {fnamefunc}(dest, src) &",
+            "     bind(c,name=\"{cnamefunc}\")+",
+            "import {F_array_type}, {F_capsule_data_type}",
+            "type({F_array_type}), intent(IN) :: dest",
+            "type({F_capsule_data_type}), intent(IN) :: src",
+            "-end subroutine {fnamefunc}",
+            "-end interface"
+        ]
+    },
+    {
+        "name": "h_helper_array_string_out_len",
+        "fmtdict": {
+            "cnamefunc": "{C_prefix}ShroudArrayStringOutSize",
+            "cnameproto": "size_t {cnamefunc}(std::string *in, size_t nsize)"
+        },
+        "c_fmtname": "{cnamefunc}",
+        "api": "cxx",
+        "scope": "cwrap_impl",
+        "proto_include": ["<string>", "<vector>"],
+        "proto": "{cnameproto};",
+        "source": [
+            "",
+            "{c_lstart}// helper {hname}",
+            "// Return the maximum string length in a std::vector<std::string>.",
+            "{cnameproto}",
+            "{{+",
+            "size_t len = 0;",
+            "for (size_t i = 0; i < nsize; ++i) {{+",
+            "len = std::max(len, in[i].length());",
+            "-}}",
+            "return len;",
+            "-}}{c_lend}"
+        ]
+    },
+    {
+        "name": "h_helper_vector_string_out",
+        "notes": [
+            "Only used with std::vector and thus C++."
+        ],
+        "fmtdict": {
+            "cnamefunc": "{C_prefix}ShroudVectorStringOut",
+            "fnamefunc": "{C_prefix}shroud_vector_string_out",
+            "cnamefunc_vector_string_out": "{cnamefunc}",
+            "cnameproto": "void {cnamefunc}({C_array_type} *outdesc, std::vector<std::string> &in)"
+        },
+        "c_fmtname": "{cnamefunc}",
+        "api": "cxx",
+        "scope": "cwrap_impl",
+        "dependent_helpers": ["array_context"],
+        "proto_include": ["<string>", "<vector>"],
+        "proto": "{cnameproto};",
+        "cxx_include": ["<cstring>", "<cstddef>"],
+        "source": [
+            "",
+            "{c_lstart}// helper {hname}",
+            "// Copy the std::vector<std::string> into Fortran array argument.",
+            "// Called by C++.",
+            "{cnameproto}",
+            "{{+",
+            "size_t nvect = outdesc->size;",
+            "size_t len = outdesc->elem_len;",
+            "char *dest = static_cast<char *>(outdesc->base_addr);",
+            "// Clear user memory",
+            "std::memset(dest, ' ', nvect*len);",
+            "",
+            "// Copy into user memory",
+            "nvect = std::min(nvect, in.size());",
+            "//char *dest = static_cast<char *>(outdesc->cxx.addr);",
+            "for (size_t i = 0; i < nvect; ++i) {{+",
+            "std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));",
+            "dest += outdesc->elem_len;",
+            "-}}",
+            "-}}{c_lend}"
+        ]
+    },
+    {
+        "name": "h_helper_vector_string_allocatable",
+        "notes": [
+            "Only used with std::string and thus C++.",
+            "Called from Fortran.",
+            "The capsule contains a pointer to a std::vector<std::string>",
+            "which is copied into the cdesc."
+        ],
+        "fmtdict": {
+            "cnamefunc": "{C_prefix}ShroudVectorStringAllocatable",
+            "fnamefunc": "{C_prefix}SHROUD_vector_string_allocatable",
+            "cnameproto": "void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)"
+        },
+        "c_fmtname": "{cnamefunc}",
+        "api": "c",
+        "scope": "cwrap_impl",
+        "dependent_helpers": ["capsule_data_helper", "array_context", "vector_string_out"],
+        "proto": "{cnameproto};",
+        "source": [
+            "",
+            "{c_lstart}// helper {hname}",
+            "// Copy the std::vector<std::string> into Fortran array.",
+            "// Called by Fortran to deal with allocatable character.",
+            "// out is already blank filled.",
+            "{cnameproto}",
+            "{{+",
+            "std::vector<std::string> *cxxvec =\t static_cast< std::vector<std::string> * >\t(src->addr);",
+            "{cnamefunc_vector_string_out}(dest, *cxxvec);",
+            "-}}{c_lend}"
+        ],
+        "f_fmtname": "{fnamefunc}",
+        "interface": [
+            "",
+            "interface+",
+            "! helper {hname}",
+            "! Copy the char* or std::string in context into c_var.",
+            "subroutine {fnamefunc}(dest, src) &",
+            "     bind(c,name=\"{cnamefunc}\")+",
+            "import {F_capsule_data_type}, {F_array_type}",
+            "type({F_array_type}), intent(IN) :: dest",
+            "type({F_capsule_data_type}), intent(IN) :: src",
+            "-end subroutine {fnamefunc}",
+            "-end interface"
+        ]
+    },
+    {
+        "name": "h_helper_vector_string_out_len",
+        "fmtdict": {
+            "cnamefunc": "{C_prefix}ShroudVectorStringOutSize",
+            "cnameproto": "size_t {cnamefunc}(std::vector<std::string> &in)"
+        },
+        "c_fmtname": "{cnamefunc}",
+        "api": "cxx",
+        "scope": "cwrap_impl",
+        "proto_include": ["<string>", "<vector>"],
+        "proto": "{cnameproto};",
+        "source": [
+            "",
+            "{c_lstart}// helper {hname}",
+            "// Return the maximum string length in a std::vector<std::string>.",
+            "{cnameproto}",
+            "{{+",
+            "size_t nvect = in.size();",
+            "size_t len = 0;",
+            "for (size_t i = 0; i < nvect; ++i) {{+",
+            "len = std::max(len, in[i].length());",
+            "-}}",
+            "return len;",
+            "-}}{c_lend}"
+        ]
+    },
+    {
+        "name": "h_helper_pointer_string",
+        "notes": [
+            "Set Fortran POINTER to string.",
+            "Must be a function (or a F2008 BLOCK) since fptr must",
+            "be declared after the string length is known."
+        ],
+        "fmtdict": {
+            "fnamefunc": "{C_prefix}SHROUD_pointer_string"
+        },
+        "dependent_helpers": ["array_context"],
+        "f_fmtname": "{fnamefunc}",
+        "f_source": [
+            "",
+            "! helper {hname}",
+            "! Assign context to an assumed-length character pointer",
+            "subroutine {fnamefunc}(context, var)+",
+            "use iso_c_binding, only : c_f_pointer, C_PTR",
+            "implicit none",
+            "type({F_array_type}), intent(IN) :: context",
+            "character(len=:), pointer, intent(OUT) :: var",
+            "character(len=context%elem_len), pointer :: fptr",
+            "call c_f_pointer(context%base_addr, fptr)",
+            "var => fptr",
+            "-end subroutine {fnamefunc}"
+        ]
+    },
+    {
+        "name": "h_helper_string_to_cdesc",
+        "fmtdict": {
+            "cnamefunc": "ShroudStringToCdesc"
+        },
+        "c_fmtname": "{cnamefunc}",
+        "dependent_helpers": ["array_context"],
+        "cxx_include": ["<cstring>", "<cstddef>"],
+        "source": [
+            "",
+            "{c_lstart}// helper {hname}",
+            "// Save std::string metadata into array to allow Fortran to access values.",
+            "// CHARACTER(len=elem_size) src",
+            "static void {cnamefunc}(\t{C_array_type} *cdesc,\t const std::string * src)",
+            "{{+",
+            "if (src->empty()) {{+",
+            "cdesc->base_addr = NULL;",
+            "cdesc->elem_len = 0;",
+            "-}} else {{+",
+            "cdesc->base_addr =\t const_cast<char *>(\tsrc->data());",
+            "cdesc->elem_len = src->length();",
+            "-}}",
+            "cdesc->size = 1;",
+            "cdesc->rank = 0;  // scalar",
+            "-}}{c_lend}"
+        ]
+    },
+    {
+        "name": "h_helper_capsule_data_helper",
+        "notes": [
+            "Share info with C++ to allow Fortran to release memory.",
+            "Used with shadow classes and std::vector."
+        ],
+        "scope": "cwrap_include",
+        "source": [
+            "",
+            "// helper {hname}",
+            "struct s_{C_capsule_data_type} {{+",
+            "void *addr;     /* address of C++ memory */",
+            "int idtor;      /* index of destructor */",
+            "-}};",
+            "typedef struct s_{C_capsule_data_type} {C_capsule_data_type};"
+        ],
+        "f_fmtname": "{F_capsule_data_type}",
+        "derived_type": [
+            "",
+            "{f_lstart}! helper {hname}",
+            "type, bind(C) :: {F_capsule_data_type}+",
+            "type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory",
+            "integer(C_INT) :: idtor = 0       ! index of destructor",
+            "-end type {F_capsule_data_type}{f_lend}"
+        ],
+        "modules": {
+            "iso_c_binding": ["C_PTR", "C_INT", "C_NULL_PTR"]
+        }
+    },
+    {
+        "name": "h_helper_capsule_helper",
+        "notes": [
+            "Fortran cannot be declared with both PRIVATE and BIND(C) attributes"
+        ],
+        "dependent_helpers": ["capsule_data_helper", "capsule_dtor"],
+        "derived_type": [
+            "",
+            "! helper {hname}",
+            "type :: {F_capsule_type}+",
+            "private",
+            "type({F_capsule_data_type}) :: mem",
+            "-contains",
+            "+final :: {F_capsule_final_function}",
+            "procedure :: delete => {F_capsule_delete_function}",
+            "-end type {F_capsule_type}"
+        ],
+        "f_source": [
+            "",
+            "! helper {hname}",
+            "! finalize a static {F_capsule_data_type}",
+            "subroutine {F_capsule_final_function}(cap)+",
+            "type({F_capsule_type}), intent(INOUT) :: cap",
+            "call {fnamefunc_capsule_dtor}(cap%mem)",
+            "-end subroutine {F_capsule_final_function}",
+            "",
+            "subroutine {F_capsule_delete_function}(cap)+",
+            "class({F_capsule_type}) :: cap",
+            "call {fnamefunc_capsule_dtor}(cap%mem)",
+            "-end subroutine {F_capsule_delete_function}"
+        ]
+    },
+    {
+        "name": "h_helper_array_context",
+        "notes": [
+            "XXX - Create a union for addr to avoid some casts.",
+            "And help with debugging since ccharp will display contents.",
+            "Create a derived type used to communicate with C wrapper.",
+            "Should never be exposed to user.",
+            "Inspired by futher interoperability with C.",
+            "XXX - shape is C_LONG, maybe it should be C_PTRDIFF_T."
+        ],
+        "c_fmtname": "{C_array_type}",
+        "scope": "cwrap_include",
+        "include": ["<stddef.h>"],
+        "source": [
+            "",
+            "{c_lstart}// helper {hname}",
+            "struct s_{C_array_type} {{+",
+            "void * base_addr;",
+            "int type;        /* type of element */",
+            "size_t elem_len; /* bytes-per-item or character len in c++ */",
+            "size_t size;     /* size of data in c++ */",
+            "int rank;        /* number of dimensions, 0=scalar */",
+            "long shape[7];",
+            "-}};",
+            "typedef struct s_{C_array_type} {C_array_type};{c_lend}"
+        ],
+        "dependent_helpers": ["type_defines"],
+        "f_fmtname": "{F_array_type}",
+        "derived_type": [
+            "",
+            "{f_lstart}! helper {hname}",
+            "type, bind(C) :: {F_array_type}+",
+            "! address of data",
+            "type(C_PTR) :: base_addr = C_NULL_PTR",
+            "! type of element",
+            "integer(C_INT) :: type",
+            "! bytes-per-item or character len of data in cxx",
+            "integer(C_SIZE_T) :: elem_len = 0_C_SIZE_T",
+            "! size of data in cxx",
+            "integer(C_SIZE_T) :: size = 0_C_SIZE_T",
+            "! number of dimensions",
+            "integer(C_INT) :: rank = -1",
+            "integer(C_LONG) :: shape(7) = 0",
+            "-end type {F_array_type}{f_lend}"
+        ],
+        "modules": {
+            "iso_c_binding": ["C_NULL_PTR", "C_PTR", "C_SIZE_T", "C_INT", "C_LONG"]
+        }
     }
 ]

@@ -151,8 +151,8 @@ wrapX.py  generate.py
 fcfmt.py  metaattrs.py
 ast.py
 declast.py declstr.py
-whelpers.py
 typemap.py statements.py todict.py
+whelpers.py
 util.py visitor.py
 error.py  # no dependencies
 metadata.py

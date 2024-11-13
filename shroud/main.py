@@ -603,6 +603,7 @@ def main_with_args(args):
     try:
         statements.update_fc_statements_for_language(
             newlibrary.language, user_statements.get("fc", {}))
+        whelpers.add_all_helpers(newlibrary)
         wrap = newlibrary.wrap
 
         metaattrs.process_metaattrs(newlibrary, "share")
@@ -654,9 +655,6 @@ def main_with_args(args):
         hfile = os.path.join(args.logdir, args.write_helpers + ".c")
         with open(hfile, "w") as fp:
             whelpers.write_c_helpers(fp)
-        hfile = os.path.join(args.logdir, args.write_helpers + ".f")
-        with open(hfile, "w") as fp:
-            whelpers.write_f_helpers(fp)
 
     if args.write_statements:
         os.chdir(args.logdir)

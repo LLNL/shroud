@@ -7,6 +7,7 @@
 """
 """
 from . import error
+from . import whelpers
 from .util import wformat
 
 import collections
@@ -429,6 +430,7 @@ valid_intents = [
     "getter", "setter",
     "ctor", "dtor",
     "descr",
+    "helper",
 ]
 
 def process_mixin(stmts, defaults, stmtdict):
@@ -602,6 +604,21 @@ def update_for_language(stmts, lang):
         if specific in item:
             item.update(item[specific])
 
+def lookup_fc_helper(name, scope="helper"):
+    """Lookup Fortran/C helper.
+    If not found, print error and return h_mixin_unknown.
+    """
+    helper = fc_dict.get("h_helper_" + name)
+    if helper is None:
+        helper = fc_dict["h_mixin_unknown"]
+        error.cursor.warning("No such {} '{}'".format(scope, name))
+    return helper
+
+def add_json_fc_helpers(fmt):
+    """Format helper entries in JSON file."""
+    for key, stmt in fc_dict.items():
+        if key.startswith("h_helper"):
+            whelpers.apply_fmtdict_from_helpers(stmt, fmt)
 
 def add_statement_to_tree(tree, node):
     """Add node to tree.
@@ -850,11 +867,36 @@ FStmts = util.Scope(
 # Fortran/C Statements - both sets of defaults.
 FStmts.update(CStmts._to_dict())
 
+HStmts = util.Scope(
+    None,
+    name="h_default",
+    notes=[],
+    fmtdict={},
+    api="",
+    c_fmtname="",
+    include=[],
+    c_include=[],
+    cxx_include=[],
+    proto_include=[],
+    scope="",
+    proto="",
+    source=[],
+    c_source=[],
+    cxx_source=[],
+    f_fmtname="",
+    derived_type=[],
+    interface=[],
+    f_source=[],
+    modules=None,
+    dependent_helpers=[],
+)
+
 # Define class for nodes in tree based on their first entry.
 # c_native_*_in uses 'c'.
 default_stmts = dict(
     c=CStmts,
     f=FStmts,
+    h=HStmts,
 )
                 
         

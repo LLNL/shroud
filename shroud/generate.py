@@ -23,7 +23,6 @@ from . import statements
 from . import typemap
 from . import util
 from . import visitor
-from . import whelpers
 
 wformat = util.wformat
 
@@ -232,7 +231,6 @@ class GenFunctions(object):
         """
         self.cursor.push_phase("generate functions")
         newlibrary = self.newlibrary
-        whelpers.add_all_helpers(newlibrary.symtab)
 
         self.function_index = newlibrary.function_index
         self.class_map = newlibrary.class_map
@@ -1188,7 +1186,6 @@ class GenFunctions(object):
             node.declgen = gen_decl(node.ast)
 
 def generate_functions(library, config):
-    whelpers.set_library(library)
     VerifyAttrs(library, config).verify_attrs()
     GenFunctions(library, config).gen_library()
     ast.promote_wrap(library)

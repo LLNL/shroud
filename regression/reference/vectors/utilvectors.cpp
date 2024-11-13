@@ -47,7 +47,6 @@ void VEC_ShroudVectorStringAllocatable(VEC_SHROUD_array *dest, VEC_SHROUD_capsul
 }
 // end helper vector_string_allocatable
 
-
 // start release allocated memory
 // Release library allocated memory.
 void VEC_SHROUD_memory_destructor(VEC_SHROUD_capsule_data *cap)
@@ -110,7 +109,6 @@ void VEC_ShroudVectorStringOut(VEC_SHROUD_array *outdesc, std::vector<std::strin
 }
 // end helper vector_string_out
 
-
 // start helper vector_string_out_len
 // helper vector_string_out_len
 // Return the maximum string length in a std::vector<std::string>.
@@ -124,4 +122,3 @@ size_t VEC_ShroudVectorStringOutSize(std::vector<std::string> &in)
     return len;
 }
 // end helper vector_string_out_len
-

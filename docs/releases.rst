@@ -315,7 +315,8 @@ F_C_name_template             i_name_function_template
 New Features
 ^^^^^^^^^^^^
 
-* Expose default statements to users in the file ``fc-statements.json``.
+* Expose default statements and helpers to users in the file ``fc-statements.json``.
+  See :ref:`StatementsAnchor` and :ref:`HelpersAnchor`.
 
 * Remove the assumption that there is only one template argument for
   types.  This worked for ``std::vector`` but is now generalized.

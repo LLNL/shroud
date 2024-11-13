@@ -1124,10 +1124,10 @@ Most of the work is done by the helper function.
 This converts the Fortran array into NULL terminated strings by
 copying all of the values:
 
-.. literalinclude:: ../regression/reference/none/helpers.c
+.. literalinclude:: ../regression/reference/pointers-c/wrappointers.c
    :language: c
-   :start-after: start char_array_alloc c_source
-   :end-before: end char_array_alloc c_source
+   :start-after: start helper char_array_alloc
+   :end-before: end helper char_array_alloc
 
 Fortran calls C via the following interface:
 

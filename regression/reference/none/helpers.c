@@ -32,513 +32,10 @@ typedef struct {
 } LIB_SHROUD_converter_value;
 ##### end PY_converter_type source
 
----------- array_context ----------
-{
-    "dependent_helpers": [
-        "type_defines"
-    ],
-    "include": [
-        "<stddef.h>"
-    ],
-    "name": "LIB_SHROUD_array",
-    "scope": "cwrap_include"
-}
-
-##### start array_context source
-
-// helper array_context
-struct s_LIB_SHROUD_array {
-    void * base_addr;
-    int type;        /* type of element */
-    size_t elem_len; /* bytes-per-item or character len in c++ */
-    size_t size;     /* size of data in c++ */
-    int rank;        /* number of dimensions, 0=scalar */
-    long shape[7];
-};
-typedef struct s_LIB_SHROUD_array LIB_SHROUD_array;
-##### end array_context source
-
----------- array_string_allocatable ----------
-{
-    "api": "c",
-    "dependent_helpers": [
-        "capsule_data_helper",
-        "array_context",
-        "array_string_out"
-    ],
-    "name": "LIB_ShroudArrayStringAllocatable",
-    "proto": "void LIB_ShroudArrayStringAllocatable(LIB_SHROUD_array *dest, LIB_SHROUD_capsule_data *src);",
-    "scope": "cwrap_impl"
-}
-
-##### start array_string_allocatable source
-
-// helper array_string_allocatable
-// Copy the std::string array into Fortran array.
-// Called by Fortran to deal with allocatable character.
-// out is already blank filled.
-void LIB_ShroudArrayStringAllocatable(LIB_SHROUD_array *dest, LIB_SHROUD_capsule_data *src)
-{
-    std::string *cxxvec = static_cast< std::string *>(src->addr);
-    LIB_ShroudArrayStringOut(dest, cxxvec, dest->size);
-}
-
-##### end array_string_allocatable source
-
----------- array_string_out ----------
-{
-    "api": "cxx",
-    "cxx_include": [
-        "<cstring>",
-        "<cstddef>"
-    ],
-    "dependent_helpers": [
-        "array_context"
-    ],
-    "name": "LIB_ShroudArrayStringOut",
-    "proto": "void LIB_ShroudArrayStringOut(LIB_SHROUD_array *outdesc, std::string *in, size_t nsize);",
-    "proto_include": [
-        "<string>",
-        "<vector>"
-    ],
-    "scope": "cwrap_impl"
-}
-
-##### start array_string_out source
-
-// helper array_string_out
-// Copy the std::vector<std::string> into Fortran array argument.
-// Called by C++.
-void LIB_ShroudArrayStringOut(LIB_SHROUD_array *outdesc, std::string *in, size_t nsize)
-{
-    size_t nvect = outdesc->size;
-    size_t len = outdesc->elem_len;
-    char *dest = static_cast<char *>(outdesc->base_addr);
-    // Clear user memory
-    std::memset(dest, ' ', nvect*len);
-
-    // Copy into user memory
-    nvect = std::min(nvect, nsize);
-    for (size_t i = 0; i < nvect; ++i) {
-        std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));
-        dest += outdesc->elem_len;
-    }
-}
-
-##### end array_string_out source
-
----------- array_string_out_len ----------
-{
-    "api": "cxx",
-    "name": "LIB_ShroudArrayStringOutSize",
-    "proto": "size_t LIB_ShroudArrayStringOutSize(std::string *in, size_t nsize);",
-    "proto_include": [
-        "<string>",
-        "<vector>"
-    ],
-    "scope": "cwrap_impl"
-}
-
-##### start array_string_out_len source
-
-// helper array_string_out_len
-// Return the maximum string length in a std::vector<std::string>.
-size_t LIB_ShroudArrayStringOutSize(std::string *in, size_t nsize)
-{
-    size_t len = 0;
-    for (size_t i = 0; i < nsize; ++i) {
-        len = std::max(len, in[i].length());
-    }
-    return len;
-}
-
-##### end array_string_out_len source
-
----------- capsule_data_helper ----------
-{
-    "scope": "cwrap_include"
-}
-
-##### start capsule_data_helper source
-
-// helper capsule_data_helper
-struct s_LIB_SHROUD_capsule_data {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
-};
-typedef struct s_LIB_SHROUD_capsule_data LIB_SHROUD_capsule_data;
-##### end capsule_data_helper source
-
----------- capsule_dtor ----------
-{
-    "api": "c",
-    "dependent_helpers": [
-        "capsule_data_helper"
-    ],
-    "name": "LIB_SHROUD_memory_destructor",
-    "proto": "void LIB_SHROUD_memory_destructor\t(LIB_SHROUD_capsule_data *cap);"
-}
-
----------- char_alloc ----------
-{
-    "c_include": [
-        "<string.h>",
-        "<stdlib.h>",
-        "<stddef.h>"
-    ],
-    "cxx_include": [
-        "<cstring>",
-        "<cstdlib>"
-    ],
-    "dependent_helpers": [
-        "char_len_trim"
-    ],
-    "name": "ShroudCharAlloc"
-}
-
-##### start char_alloc c_source
-
-// helper char_alloc
-// Copy src into new memory and null terminate.
-// If ntrim is 0, return NULL pointer.
-// If blanknull is 1, return NULL when string is blank.
-static char *ShroudCharAlloc(const char *src, int nsrc, int blanknull)
-{
-   int ntrim = ShroudCharLenTrim(src, nsrc);
-   if (ntrim == 0 && blanknull == 1) {
-     return NULL;
-   }
-   char *rv = malloc(nsrc + 1);
-   if (ntrim > 0) {
-     memcpy(rv, src, ntrim);
-   }
-   rv[ntrim] = '\0';
-   return rv;
-}
-##### end char_alloc c_source
-
-##### start char_alloc cxx_source
-
-// helper char_alloc
-// Copy src into new memory and null terminate.
-// If ntrim is 0, return NULL pointer.
-// If blanknull is 1, return NULL when string is blank.
-static char *ShroudCharAlloc(const char *src, int nsrc, int blanknull)
-{
-   int ntrim = ShroudCharLenTrim(src, nsrc);
-   if (ntrim == 0 && blanknull == 1) {
-     return nullptr;
-   }
-   char *rv = (char *) std::malloc(nsrc + 1);
-   if (ntrim > 0) {
-     std::memcpy(rv, src, ntrim);
-   }
-   rv[ntrim] = '\0';
-   return rv;
-}
-##### end char_alloc cxx_source
-
----------- char_array_alloc ----------
-{
-    "c_include": [
-        "<string.h>",
-        "<stdlib.h>"
-    ],
-    "cxx_include": [
-        "<cstring>",
-        "<cstdlib>"
-    ],
-    "dependent_helpers": [
-        "char_len_trim"
-    ],
-    "name": "ShroudStrArrayAlloc"
-}
-
-##### start char_array_alloc c_source
-
-// helper char_array_alloc
-// Copy src into new memory and null terminate.
-static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
-{
-   char **rv = malloc(sizeof(char *) * nsrc);
-   const char *src0 = src;
-   for(int i=0; i < nsrc; ++i) {
-      int ntrim = ShroudCharLenTrim(src0, len);
-      char *tgt = malloc(ntrim+1);
-      memcpy(tgt, src0, ntrim);
-      tgt[ntrim] = '\0';
-      rv[i] = tgt;
-      src0 += len;
-   }
-   return rv;
-}
-##### end char_array_alloc c_source
-
-##### start char_array_alloc cxx_source
-
-// helper char_array_alloc
-// Copy src into new memory and null terminate.
-// char **src +size(nsrc) +len(len)
-// CHARACTER(len) src(nsrc)
-static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
-{
-   char **rv = static_cast<char **>(std::malloc(sizeof(char *) * nsrc));
-   const char *src0 = src;
-   for(int i=0; i < nsrc; ++i) {
-      int ntrim = ShroudCharLenTrim(src0, len);
-      char *tgt = static_cast<char *>(std::malloc(ntrim+1));
-      std::memcpy(tgt, src0, ntrim);
-      tgt[ntrim] = '\0';
-      rv[i] = tgt;
-      src0 += len;
-   }
-   return rv;
-}
-##### end char_array_alloc cxx_source
-
----------- char_array_free ----------
-{
-    "c_include": [
-        "<stdlib.h>"
-    ],
-    "cxx_include": [
-        "<cstdlib>"
-    ],
-    "name": "ShroudStrArrayFree"
-}
-
-##### start char_array_free c_source
-
-// helper char_array_free
-// Release memory allocated by ShroudStrArrayAlloc
-static void ShroudStrArrayFree(char **src, int nsrc)
-{
-   for(int i=0; i < nsrc; ++i) {
-       free(src[i]);
-   }
-   free(src);
-}
-##### end char_array_free c_source
-
-##### start char_array_free cxx_source
-
-// helper char_array_free
-// Release memory allocated by ShroudStrArrayAlloc
-static void ShroudStrArrayFree(char **src, int nsrc)
-{
-   for(int i=0; i < nsrc; ++i) {
-       std::free(src[i]);
-   }
-   std::free(src);
-}
-##### end char_array_free cxx_source
-
----------- char_blank_fill ----------
-{
-    "c_include": [
-        "<string.h>"
-    ],
-    "cxx_include": [
-        "<cstring>"
-    ],
-    "name": "ShroudCharBlankFill"
-}
-
-##### start char_blank_fill c_source
-
-// helper char_blank_fill
-// blank fill dest starting at trailing NULL.
-static void ShroudCharBlankFill(char *dest, int ndest)
-{
-   int nm = strlen(dest);
-   if(ndest > nm) memset(dest+nm,' ',ndest-nm);
-}
-##### end char_blank_fill c_source
-
-##### start char_blank_fill cxx_source
-
-// helper char_blank_fill
-// blank fill dest starting at trailing NULL.
-static void ShroudCharBlankFill(char *dest, int ndest)
-{
-   int nm = std::strlen(dest);
-   if(ndest > nm) std::memset(dest+nm,' ',ndest-nm);
-}
-##### end char_blank_fill cxx_source
-
----------- char_copy ----------
-{
-    "c_include": [
-        "<string.h>"
-    ],
-    "cxx_include": [
-        "<cstring>"
-    ],
-    "name": "ShroudCharCopy"
-}
-
-##### start char_copy c_source
-
-// helper ShroudCharCopy
-// Copy src into dest, blank fill to ndest characters
-// Truncate if dest is too short.
-// dest will not be NULL terminated.
-static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
-{
-   if (src == NULL) {
-     memset(dest,' ',ndest); // convert NULL pointer to blank filled string
-   } else {
-     if (nsrc < 0) nsrc = strlen(src);
-     int nm = nsrc < ndest ? nsrc : ndest;
-     memcpy(dest,src,nm);
-     if(ndest > nm) memset(dest+nm,' ',ndest-nm); // blank fill
-   }
-}
-##### end char_copy c_source
-
-##### start char_copy cxx_source
-
-// helper ShroudCharCopy
-// Copy src into dest, blank fill to ndest characters
-// Truncate if dest is too short.
-// dest will not be NULL terminated.
-static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
-{
-   if (src == NULL) {
-     std::memset(dest,' ',ndest); // convert NULL pointer to blank filled string
-   } else {
-     if (nsrc < 0) nsrc = std::strlen(src);
-     int nm = nsrc < ndest ? nsrc : ndest;
-     std::memcpy(dest,src,nm);
-     if(ndest > nm) std::memset(dest+nm,' ',ndest-nm); // blank fill
-   }
-}
-##### end char_copy cxx_source
-
----------- char_free ----------
-{
-    "c_include": [
-        "<stdlib.h>"
-    ],
-    "cxx_include": [
-        "<cstdlib>"
-    ],
-    "name": "ShroudCharFree"
-}
-
-##### start char_free c_source
-
-// helper char_free
-// Release memory allocated by ShroudCharAlloc
-static void ShroudCharFree(char *src)
-{
-   if (src != NULL) {
-     free(src);
-   }
-}
-##### end char_free c_source
-
-##### start char_free cxx_source
-
-// helper char_free
-// Release memory allocated by ShroudCharAlloc
-static void ShroudCharFree(char *src)
-{
-   if (src != NULL) {
-     std::free(src);
-   }
-}
-##### end char_free cxx_source
-
----------- char_len_trim ----------
-{
-    "name": "ShroudCharLenTrim"
-}
-
-##### start char_len_trim source
-
-// helper char_len_trim
-// Returns the length of character string src with length nsrc,
-// ignoring any trailing blanks.
-static int ShroudCharLenTrim(const char *src, int nsrc) {
-    int i;
-
-    for (i = nsrc - 1; i >= 0; i--) {
-        if (src[i] != ' ') {
-            break;
-        }
-    }
-
-    return i + 1;
-}
-
-##### end char_len_trim source
-
----------- copy_array ----------
-{
-    "c_include": [
-        "<string.h>",
-        "<stddef.h>"
-    ],
-    "cxx_include": [
-        "<cstring>",
-        "<cstddef>"
-    ],
-    "dependent_helpers": [
-        "array_context"
-    ],
-    "name": "LIB_ShroudCopyArray",
-    "scope": "cwrap_impl"
-}
-
-##### start copy_array source
-
-// helper copy_array
-// Copy std::vector into array c_var(c_var_size).
-// Then release std::vector.
-// Called from Fortran.
-void LIB_ShroudCopyArray(LIB_SHROUD_array *data, void *c_var, 
-    size_t c_var_size)
-{
-    const void *cxx_var = data->base_addr;
-    int n = c_var_size < data->size ? c_var_size : data->size;
-    n *= data->elem_len;
-    std::memcpy(c_var, cxx_var, n);
-}
-##### end copy_array source
-
----------- copy_string ----------
-{
-    "cxx_include": [
-        "<cstring>",
-        "<cstddef>"
-    ],
-    "dependent_helpers": [
-        "array_context"
-    ],
-    "name": "LIB_ShroudCopyString",
-    "scope": "cwrap_impl"
-}
-
-##### start copy_string source
-
-// helper copy_string
-// Copy the char* or std::string in context into c_var.
-// Called by Fortran to deal with allocatable character.
-void LIB_ShroudCopyString(LIB_SHROUD_array *data, char *c_var,
-    size_t c_var_len) {
-    const void *cxx_var = data->base_addr;
-    size_t n = c_var_len;
-    if (data->elem_len < n) n = data->elem_len;
-    std::memcpy(c_var, cxx_var, n);
-}
-
-##### end copy_string source
-
 ---------- create_from_PyObject_vector_double ----------
 {
-    "cxx_proto": "int SHROUD_create_from_PyObject_vector_double\t(PyObject *obj,\t const char *name,\t std::vector<double> & in);",
-    "name": "SHROUD_create_from_PyObject_vector_double"
+    "c_fmtname": "SHROUD_create_from_PyObject_vector_double",
+    "cxx_proto": "int SHROUD_create_from_PyObject_vector_double\t(PyObject *obj,\t const char *name,\t std::vector<double> & in);"
 }
 
 ##### start create_from_PyObject_vector_double cxx_source
@@ -575,8 +72,8 @@ static int SHROUD_create_from_PyObject_vector_double(PyObject *obj,
 
 ---------- create_from_PyObject_vector_double_complex ----------
 {
-    "cxx_proto": "int SHROUD_create_from_PyObject_vector_double_complex\t(PyObject *obj,\t const char *name,\t std::vector<std::complex<double>> & in);",
-    "name": "SHROUD_create_from_PyObject_vector_double_complex"
+    "c_fmtname": "SHROUD_create_from_PyObject_vector_double_complex",
+    "cxx_proto": "int SHROUD_create_from_PyObject_vector_double_complex\t(PyObject *obj,\t const char *name,\t std::vector<std::complex<double>> & in);"
 }
 
 ##### start create_from_PyObject_vector_double_complex cxx_source
@@ -614,8 +111,8 @@ static int SHROUD_create_from_PyObject_vector_double_complex
 
 ---------- create_from_PyObject_vector_float ----------
 {
-    "cxx_proto": "int SHROUD_create_from_PyObject_vector_float\t(PyObject *obj,\t const char *name,\t std::vector<float> & in);",
-    "name": "SHROUD_create_from_PyObject_vector_float"
+    "c_fmtname": "SHROUD_create_from_PyObject_vector_float",
+    "cxx_proto": "int SHROUD_create_from_PyObject_vector_float\t(PyObject *obj,\t const char *name,\t std::vector<float> & in);"
 }
 
 ##### start create_from_PyObject_vector_float cxx_source
@@ -651,8 +148,8 @@ static int SHROUD_create_from_PyObject_vector_float(PyObject *obj,
 
 ---------- create_from_PyObject_vector_float_complex ----------
 {
-    "cxx_proto": "int SHROUD_create_from_PyObject_vector_float_complex\t(PyObject *obj,\t const char *name,\t std::vector<std::complex<float>> & in);",
-    "name": "SHROUD_create_from_PyObject_vector_float_complex"
+    "c_fmtname": "SHROUD_create_from_PyObject_vector_float_complex",
+    "cxx_proto": "int SHROUD_create_from_PyObject_vector_float_complex\t(PyObject *obj,\t const char *name,\t std::vector<std::complex<float>> & in);"
 }
 
 ##### start create_from_PyObject_vector_float_complex cxx_source
@@ -690,8 +187,8 @@ static int SHROUD_create_from_PyObject_vector_float_complex
 
 ---------- create_from_PyObject_vector_int ----------
 {
-    "cxx_proto": "int SHROUD_create_from_PyObject_vector_int\t(PyObject *obj,\t const char *name,\t std::vector<int> & in);",
-    "name": "SHROUD_create_from_PyObject_vector_int"
+    "c_fmtname": "SHROUD_create_from_PyObject_vector_int",
+    "cxx_proto": "int SHROUD_create_from_PyObject_vector_int\t(PyObject *obj,\t const char *name,\t std::vector<int> & in);"
 }
 
 ##### start create_from_PyObject_vector_int cxx_source
@@ -727,8 +224,8 @@ static int SHROUD_create_from_PyObject_vector_int(PyObject *obj,
 
 ---------- create_from_PyObject_vector_int16_t ----------
 {
-    "cxx_proto": "int SHROUD_create_from_PyObject_vector_int16_t\t(PyObject *obj,\t const char *name,\t std::vector<int16_t> & in);",
-    "name": "SHROUD_create_from_PyObject_vector_int16_t"
+    "c_fmtname": "SHROUD_create_from_PyObject_vector_int16_t",
+    "cxx_proto": "int SHROUD_create_from_PyObject_vector_int16_t\t(PyObject *obj,\t const char *name,\t std::vector<int16_t> & in);"
 }
 
 ##### start create_from_PyObject_vector_int16_t cxx_source
@@ -765,8 +262,8 @@ static int SHROUD_create_from_PyObject_vector_int16_t(PyObject *obj,
 
 ---------- create_from_PyObject_vector_int32_t ----------
 {
-    "cxx_proto": "int SHROUD_create_from_PyObject_vector_int32_t\t(PyObject *obj,\t const char *name,\t std::vector<int32_t> & in);",
-    "name": "SHROUD_create_from_PyObject_vector_int32_t"
+    "c_fmtname": "SHROUD_create_from_PyObject_vector_int32_t",
+    "cxx_proto": "int SHROUD_create_from_PyObject_vector_int32_t\t(PyObject *obj,\t const char *name,\t std::vector<int32_t> & in);"
 }
 
 ##### start create_from_PyObject_vector_int32_t cxx_source
@@ -803,8 +300,8 @@ static int SHROUD_create_from_PyObject_vector_int32_t(PyObject *obj,
 
 ---------- create_from_PyObject_vector_int64_t ----------
 {
-    "cxx_proto": "int SHROUD_create_from_PyObject_vector_int64_t\t(PyObject *obj,\t const char *name,\t std::vector<int64_t> & in);",
-    "name": "SHROUD_create_from_PyObject_vector_int64_t"
+    "c_fmtname": "SHROUD_create_from_PyObject_vector_int64_t",
+    "cxx_proto": "int SHROUD_create_from_PyObject_vector_int64_t\t(PyObject *obj,\t const char *name,\t std::vector<int64_t> & in);"
 }
 
 ##### start create_from_PyObject_vector_int64_t cxx_source
@@ -841,8 +338,8 @@ static int SHROUD_create_from_PyObject_vector_int64_t(PyObject *obj,
 
 ---------- create_from_PyObject_vector_int8_t ----------
 {
-    "cxx_proto": "int SHROUD_create_from_PyObject_vector_int8_t\t(PyObject *obj,\t const char *name,\t std::vector<int8_t> & in);",
-    "name": "SHROUD_create_from_PyObject_vector_int8_t"
+    "c_fmtname": "SHROUD_create_from_PyObject_vector_int8_t",
+    "cxx_proto": "int SHROUD_create_from_PyObject_vector_int8_t\t(PyObject *obj,\t const char *name,\t std::vector<int8_t> & in);"
 }
 
 ##### start create_from_PyObject_vector_int8_t cxx_source
@@ -879,8 +376,8 @@ static int SHROUD_create_from_PyObject_vector_int8_t(PyObject *obj,
 
 ---------- create_from_PyObject_vector_long ----------
 {
-    "cxx_proto": "int SHROUD_create_from_PyObject_vector_long\t(PyObject *obj,\t const char *name,\t std::vector<long> & in);",
-    "name": "SHROUD_create_from_PyObject_vector_long"
+    "c_fmtname": "SHROUD_create_from_PyObject_vector_long",
+    "cxx_proto": "int SHROUD_create_from_PyObject_vector_long\t(PyObject *obj,\t const char *name,\t std::vector<long> & in);"
 }
 
 ##### start create_from_PyObject_vector_long cxx_source
@@ -916,8 +413,8 @@ static int SHROUD_create_from_PyObject_vector_long(PyObject *obj,
 
 ---------- create_from_PyObject_vector_long_long ----------
 {
-    "cxx_proto": "int SHROUD_create_from_PyObject_vector_long_long\t(PyObject *obj,\t const char *name,\t std::vector<long long> & in);",
-    "name": "SHROUD_create_from_PyObject_vector_long_long"
+    "c_fmtname": "SHROUD_create_from_PyObject_vector_long_long",
+    "cxx_proto": "int SHROUD_create_from_PyObject_vector_long_long\t(PyObject *obj,\t const char *name,\t std::vector<long long> & in);"
 }
 
 ##### start create_from_PyObject_vector_long_long cxx_source
@@ -954,8 +451,8 @@ static int SHROUD_create_from_PyObject_vector_long_long(PyObject *obj,
 
 ---------- create_from_PyObject_vector_short ----------
 {
-    "cxx_proto": "int SHROUD_create_from_PyObject_vector_short\t(PyObject *obj,\t const char *name,\t std::vector<short> & in);",
-    "name": "SHROUD_create_from_PyObject_vector_short"
+    "c_fmtname": "SHROUD_create_from_PyObject_vector_short",
+    "cxx_proto": "int SHROUD_create_from_PyObject_vector_short\t(PyObject *obj,\t const char *name,\t std::vector<short> & in);"
 }
 
 ##### start create_from_PyObject_vector_short cxx_source
@@ -991,8 +488,8 @@ static int SHROUD_create_from_PyObject_vector_short(PyObject *obj,
 
 ---------- create_from_PyObject_vector_size_t ----------
 {
-    "cxx_proto": "int SHROUD_create_from_PyObject_vector_size_t\t(PyObject *obj,\t const char *name,\t std::vector<size_t> & in);",
-    "name": "SHROUD_create_from_PyObject_vector_size_t"
+    "c_fmtname": "SHROUD_create_from_PyObject_vector_size_t",
+    "cxx_proto": "int SHROUD_create_from_PyObject_vector_size_t\t(PyObject *obj,\t const char *name,\t std::vector<size_t> & in);"
 }
 
 ##### start create_from_PyObject_vector_size_t cxx_source
@@ -1029,8 +526,8 @@ static int SHROUD_create_from_PyObject_vector_size_t(PyObject *obj,
 
 ---------- create_from_PyObject_vector_uint16_t ----------
 {
-    "cxx_proto": "int SHROUD_create_from_PyObject_vector_uint16_t\t(PyObject *obj,\t const char *name,\t std::vector<uint16_t> & in);",
-    "name": "SHROUD_create_from_PyObject_vector_uint16_t"
+    "c_fmtname": "SHROUD_create_from_PyObject_vector_uint16_t",
+    "cxx_proto": "int SHROUD_create_from_PyObject_vector_uint16_t\t(PyObject *obj,\t const char *name,\t std::vector<uint16_t> & in);"
 }
 
 ##### start create_from_PyObject_vector_uint16_t cxx_source
@@ -1067,8 +564,8 @@ static int SHROUD_create_from_PyObject_vector_uint16_t(PyObject *obj,
 
 ---------- create_from_PyObject_vector_uint32_t ----------
 {
-    "cxx_proto": "int SHROUD_create_from_PyObject_vector_uint32_t\t(PyObject *obj,\t const char *name,\t std::vector<uint32_t> & in);",
-    "name": "SHROUD_create_from_PyObject_vector_uint32_t"
+    "c_fmtname": "SHROUD_create_from_PyObject_vector_uint32_t",
+    "cxx_proto": "int SHROUD_create_from_PyObject_vector_uint32_t\t(PyObject *obj,\t const char *name,\t std::vector<uint32_t> & in);"
 }
 
 ##### start create_from_PyObject_vector_uint32_t cxx_source
@@ -1105,8 +602,8 @@ static int SHROUD_create_from_PyObject_vector_uint32_t(PyObject *obj,
 
 ---------- create_from_PyObject_vector_uint64_t ----------
 {
-    "cxx_proto": "int SHROUD_create_from_PyObject_vector_uint64_t\t(PyObject *obj,\t const char *name,\t std::vector<uint64_t> & in);",
-    "name": "SHROUD_create_from_PyObject_vector_uint64_t"
+    "c_fmtname": "SHROUD_create_from_PyObject_vector_uint64_t",
+    "cxx_proto": "int SHROUD_create_from_PyObject_vector_uint64_t\t(PyObject *obj,\t const char *name,\t std::vector<uint64_t> & in);"
 }
 
 ##### start create_from_PyObject_vector_uint64_t cxx_source
@@ -1143,8 +640,8 @@ static int SHROUD_create_from_PyObject_vector_uint64_t(PyObject *obj,
 
 ---------- create_from_PyObject_vector_uint8_t ----------
 {
-    "cxx_proto": "int SHROUD_create_from_PyObject_vector_uint8_t\t(PyObject *obj,\t const char *name,\t std::vector<uint8_t> & in);",
-    "name": "SHROUD_create_from_PyObject_vector_uint8_t"
+    "c_fmtname": "SHROUD_create_from_PyObject_vector_uint8_t",
+    "cxx_proto": "int SHROUD_create_from_PyObject_vector_uint8_t\t(PyObject *obj,\t const char *name,\t std::vector<uint8_t> & in);"
 }
 
 ##### start create_from_PyObject_vector_uint8_t cxx_source
@@ -1181,8 +678,8 @@ static int SHROUD_create_from_PyObject_vector_uint8_t(PyObject *obj,
 
 ---------- create_from_PyObject_vector_unsigned_int ----------
 {
-    "cxx_proto": "int SHROUD_create_from_PyObject_vector_unsigned_int\t(PyObject *obj,\t const char *name,\t std::vector<unsigned int> & in);",
-    "name": "SHROUD_create_from_PyObject_vector_unsigned_int"
+    "c_fmtname": "SHROUD_create_from_PyObject_vector_unsigned_int",
+    "cxx_proto": "int SHROUD_create_from_PyObject_vector_unsigned_int\t(PyObject *obj,\t const char *name,\t std::vector<unsigned int> & in);"
 }
 
 ##### start create_from_PyObject_vector_unsigned_int cxx_source
@@ -1219,8 +716,8 @@ static int SHROUD_create_from_PyObject_vector_unsigned_int
 
 ---------- create_from_PyObject_vector_unsigned_long ----------
 {
-    "cxx_proto": "int SHROUD_create_from_PyObject_vector_unsigned_long\t(PyObject *obj,\t const char *name,\t std::vector<unsigned long> & in);",
-    "name": "SHROUD_create_from_PyObject_vector_unsigned_long"
+    "c_fmtname": "SHROUD_create_from_PyObject_vector_unsigned_long",
+    "cxx_proto": "int SHROUD_create_from_PyObject_vector_unsigned_long\t(PyObject *obj,\t const char *name,\t std::vector<unsigned long> & in);"
 }
 
 ##### start create_from_PyObject_vector_unsigned_long cxx_source
@@ -1257,8 +754,8 @@ static int SHROUD_create_from_PyObject_vector_unsigned_long
 
 ---------- create_from_PyObject_vector_unsigned_long_long ----------
 {
-    "cxx_proto": "int SHROUD_create_from_PyObject_vector_unsigned_long_long\t(PyObject *obj,\t const char *name,\t std::vector<unsigned long long> & in);",
-    "name": "SHROUD_create_from_PyObject_vector_unsigned_long_long"
+    "c_fmtname": "SHROUD_create_from_PyObject_vector_unsigned_long_long",
+    "cxx_proto": "int SHROUD_create_from_PyObject_vector_unsigned_long_long\t(PyObject *obj,\t const char *name,\t std::vector<unsigned long long> & in);"
 }
 
 ##### start create_from_PyObject_vector_unsigned_long_long cxx_source
@@ -1296,8 +793,8 @@ static int SHROUD_create_from_PyObject_vector_unsigned_long_long
 
 ---------- create_from_PyObject_vector_unsigned_short ----------
 {
-    "cxx_proto": "int SHROUD_create_from_PyObject_vector_unsigned_short\t(PyObject *obj,\t const char *name,\t std::vector<unsigned short> & in);",
-    "name": "SHROUD_create_from_PyObject_vector_unsigned_short"
+    "c_fmtname": "SHROUD_create_from_PyObject_vector_unsigned_short",
+    "cxx_proto": "int SHROUD_create_from_PyObject_vector_unsigned_short\t(PyObject *obj,\t const char *name,\t std::vector<unsigned short> & in);"
 }
 
 ##### start create_from_PyObject_vector_unsigned_short cxx_source
@@ -1334,6 +831,7 @@ static int SHROUD_create_from_PyObject_vector_unsigned_short
 
 ---------- fill_from_PyObject_char ----------
 {
+    "c_fmtname": "SHROUD_fill_from_PyObject_char",
     "c_include": [
         "<string.h>"
     ],
@@ -1343,7 +841,6 @@ static int SHROUD_create_from_PyObject_vector_unsigned_short
     "dependent_helpers": [
         "get_from_object_char"
     ],
-    "name": "SHROUD_fill_from_PyObject_char",
     "proto": "int SHROUD_fill_from_PyObject_char\t(PyObject *obj,\t const char *name,\t char *in,\t Py_ssize_t insize);"
 }
 
@@ -1373,7 +870,7 @@ static int SHROUD_fill_from_PyObject_char(PyObject *obj,
 
 ---------- fill_from_PyObject_double_complex_list ----------
 {
-    "name": "SHROUD_fill_from_PyObject_double_complex_list",
+    "c_fmtname": "SHROUD_fill_from_PyObject_double_complex_list",
     "proto": "int SHROUD_fill_from_PyObject_double_complex_list\t(PyObject *obj,\t const char *name,\t double complex *in,\t Py_ssize_t insize);"
 }
 
@@ -1426,7 +923,7 @@ static int SHROUD_fill_from_PyObject_double_complex_list(PyObject *obj,
 
 ---------- fill_from_PyObject_double_complex_numpy ----------
 {
-    "name": "SHROUD_fill_from_PyObject_double_complex_numpy",
+    "c_fmtname": "SHROUD_fill_from_PyObject_double_complex_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_fill_from_PyObject_double_complex_numpy\t(PyObject *obj,\t const char *name,\t double complex *in,\t Py_ssize_t insize);"
 }
@@ -1476,7 +973,7 @@ static int SHROUD_fill_from_PyObject_double_complex_numpy(PyObject *obj,
 
 ---------- fill_from_PyObject_double_list ----------
 {
-    "name": "SHROUD_fill_from_PyObject_double_list",
+    "c_fmtname": "SHROUD_fill_from_PyObject_double_list",
     "proto": "int SHROUD_fill_from_PyObject_double_list\t(PyObject *obj,\t const char *name,\t double *in,\t Py_ssize_t insize);"
 }
 
@@ -1529,7 +1026,7 @@ static int SHROUD_fill_from_PyObject_double_list(PyObject *obj,
 
 ---------- fill_from_PyObject_double_numpy ----------
 {
-    "name": "SHROUD_fill_from_PyObject_double_numpy",
+    "c_fmtname": "SHROUD_fill_from_PyObject_double_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_fill_from_PyObject_double_numpy\t(PyObject *obj,\t const char *name,\t double *in,\t Py_ssize_t insize);"
 }
@@ -1577,7 +1074,7 @@ static int SHROUD_fill_from_PyObject_double_numpy(PyObject *obj,
 
 ---------- fill_from_PyObject_float_complex_list ----------
 {
-    "name": "SHROUD_fill_from_PyObject_float_complex_list",
+    "c_fmtname": "SHROUD_fill_from_PyObject_float_complex_list",
     "proto": "int SHROUD_fill_from_PyObject_float_complex_list\t(PyObject *obj,\t const char *name,\t float complex *in,\t Py_ssize_t insize);"
 }
 
@@ -1630,7 +1127,7 @@ static int SHROUD_fill_from_PyObject_float_complex_list(PyObject *obj,
 
 ---------- fill_from_PyObject_float_complex_numpy ----------
 {
-    "name": "SHROUD_fill_from_PyObject_float_complex_numpy",
+    "c_fmtname": "SHROUD_fill_from_PyObject_float_complex_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_fill_from_PyObject_float_complex_numpy\t(PyObject *obj,\t const char *name,\t float complex *in,\t Py_ssize_t insize);"
 }
@@ -1679,7 +1176,7 @@ static int SHROUD_fill_from_PyObject_float_complex_numpy(PyObject *obj,
 
 ---------- fill_from_PyObject_float_list ----------
 {
-    "name": "SHROUD_fill_from_PyObject_float_list",
+    "c_fmtname": "SHROUD_fill_from_PyObject_float_list",
     "proto": "int SHROUD_fill_from_PyObject_float_list\t(PyObject *obj,\t const char *name,\t float *in,\t Py_ssize_t insize);"
 }
 
@@ -1731,7 +1228,7 @@ static int SHROUD_fill_from_PyObject_float_list(PyObject *obj,
 
 ---------- fill_from_PyObject_float_numpy ----------
 {
-    "name": "SHROUD_fill_from_PyObject_float_numpy",
+    "c_fmtname": "SHROUD_fill_from_PyObject_float_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_fill_from_PyObject_float_numpy\t(PyObject *obj,\t const char *name,\t float *in,\t Py_ssize_t insize);"
 }
@@ -1779,7 +1276,7 @@ static int SHROUD_fill_from_PyObject_float_numpy(PyObject *obj,
 
 ---------- fill_from_PyObject_int16_t_list ----------
 {
-    "name": "SHROUD_fill_from_PyObject_int16_t_list",
+    "c_fmtname": "SHROUD_fill_from_PyObject_int16_t_list",
     "proto": "int SHROUD_fill_from_PyObject_int16_t_list\t(PyObject *obj,\t const char *name,\t int16_t *in,\t Py_ssize_t insize);"
 }
 
@@ -1832,7 +1329,7 @@ static int SHROUD_fill_from_PyObject_int16_t_list(PyObject *obj,
 
 ---------- fill_from_PyObject_int16_t_numpy ----------
 {
-    "name": "SHROUD_fill_from_PyObject_int16_t_numpy",
+    "c_fmtname": "SHROUD_fill_from_PyObject_int16_t_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_fill_from_PyObject_int16_t_numpy\t(PyObject *obj,\t const char *name,\t int16_t *in,\t Py_ssize_t insize);"
 }
@@ -1880,7 +1377,7 @@ static int SHROUD_fill_from_PyObject_int16_t_numpy(PyObject *obj,
 
 ---------- fill_from_PyObject_int32_t_list ----------
 {
-    "name": "SHROUD_fill_from_PyObject_int32_t_list",
+    "c_fmtname": "SHROUD_fill_from_PyObject_int32_t_list",
     "proto": "int SHROUD_fill_from_PyObject_int32_t_list\t(PyObject *obj,\t const char *name,\t int32_t *in,\t Py_ssize_t insize);"
 }
 
@@ -1933,7 +1430,7 @@ static int SHROUD_fill_from_PyObject_int32_t_list(PyObject *obj,
 
 ---------- fill_from_PyObject_int32_t_numpy ----------
 {
-    "name": "SHROUD_fill_from_PyObject_int32_t_numpy",
+    "c_fmtname": "SHROUD_fill_from_PyObject_int32_t_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_fill_from_PyObject_int32_t_numpy\t(PyObject *obj,\t const char *name,\t int32_t *in,\t Py_ssize_t insize);"
 }
@@ -1981,7 +1478,7 @@ static int SHROUD_fill_from_PyObject_int32_t_numpy(PyObject *obj,
 
 ---------- fill_from_PyObject_int64_t_list ----------
 {
-    "name": "SHROUD_fill_from_PyObject_int64_t_list",
+    "c_fmtname": "SHROUD_fill_from_PyObject_int64_t_list",
     "proto": "int SHROUD_fill_from_PyObject_int64_t_list\t(PyObject *obj,\t const char *name,\t int64_t *in,\t Py_ssize_t insize);"
 }
 
@@ -2034,7 +1531,7 @@ static int SHROUD_fill_from_PyObject_int64_t_list(PyObject *obj,
 
 ---------- fill_from_PyObject_int64_t_numpy ----------
 {
-    "name": "SHROUD_fill_from_PyObject_int64_t_numpy",
+    "c_fmtname": "SHROUD_fill_from_PyObject_int64_t_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_fill_from_PyObject_int64_t_numpy\t(PyObject *obj,\t const char *name,\t int64_t *in,\t Py_ssize_t insize);"
 }
@@ -2082,7 +1579,7 @@ static int SHROUD_fill_from_PyObject_int64_t_numpy(PyObject *obj,
 
 ---------- fill_from_PyObject_int8_t_list ----------
 {
-    "name": "SHROUD_fill_from_PyObject_int8_t_list",
+    "c_fmtname": "SHROUD_fill_from_PyObject_int8_t_list",
     "proto": "int SHROUD_fill_from_PyObject_int8_t_list\t(PyObject *obj,\t const char *name,\t int8_t *in,\t Py_ssize_t insize);"
 }
 
@@ -2135,7 +1632,7 @@ static int SHROUD_fill_from_PyObject_int8_t_list(PyObject *obj,
 
 ---------- fill_from_PyObject_int8_t_numpy ----------
 {
-    "name": "SHROUD_fill_from_PyObject_int8_t_numpy",
+    "c_fmtname": "SHROUD_fill_from_PyObject_int8_t_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_fill_from_PyObject_int8_t_numpy\t(PyObject *obj,\t const char *name,\t int8_t *in,\t Py_ssize_t insize);"
 }
@@ -2183,7 +1680,7 @@ static int SHROUD_fill_from_PyObject_int8_t_numpy(PyObject *obj,
 
 ---------- fill_from_PyObject_int_list ----------
 {
-    "name": "SHROUD_fill_from_PyObject_int_list",
+    "c_fmtname": "SHROUD_fill_from_PyObject_int_list",
     "proto": "int SHROUD_fill_from_PyObject_int_list\t(PyObject *obj,\t const char *name,\t int *in,\t Py_ssize_t insize);"
 }
 
@@ -2235,7 +1732,7 @@ static int SHROUD_fill_from_PyObject_int_list(PyObject *obj,
 
 ---------- fill_from_PyObject_int_numpy ----------
 {
-    "name": "SHROUD_fill_from_PyObject_int_numpy",
+    "c_fmtname": "SHROUD_fill_from_PyObject_int_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_fill_from_PyObject_int_numpy\t(PyObject *obj,\t const char *name,\t int *in,\t Py_ssize_t insize);"
 }
@@ -2283,7 +1780,7 @@ static int SHROUD_fill_from_PyObject_int_numpy(PyObject *obj,
 
 ---------- fill_from_PyObject_long_list ----------
 {
-    "name": "SHROUD_fill_from_PyObject_long_list",
+    "c_fmtname": "SHROUD_fill_from_PyObject_long_list",
     "proto": "int SHROUD_fill_from_PyObject_long_list\t(PyObject *obj,\t const char *name,\t long *in,\t Py_ssize_t insize);"
 }
 
@@ -2335,7 +1832,7 @@ static int SHROUD_fill_from_PyObject_long_list(PyObject *obj,
 
 ---------- fill_from_PyObject_long_numpy ----------
 {
-    "name": "SHROUD_fill_from_PyObject_long_numpy",
+    "c_fmtname": "SHROUD_fill_from_PyObject_long_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_fill_from_PyObject_long_numpy\t(PyObject *obj,\t const char *name,\t long *in,\t Py_ssize_t insize);"
 }
@@ -2383,7 +1880,7 @@ static int SHROUD_fill_from_PyObject_long_numpy(PyObject *obj,
 
 ---------- fill_from_PyObject_short_list ----------
 {
-    "name": "SHROUD_fill_from_PyObject_short_list",
+    "c_fmtname": "SHROUD_fill_from_PyObject_short_list",
     "proto": "int SHROUD_fill_from_PyObject_short_list\t(PyObject *obj,\t const char *name,\t short *in,\t Py_ssize_t insize);"
 }
 
@@ -2435,7 +1932,7 @@ static int SHROUD_fill_from_PyObject_short_list(PyObject *obj,
 
 ---------- fill_from_PyObject_short_numpy ----------
 {
-    "name": "SHROUD_fill_from_PyObject_short_numpy",
+    "c_fmtname": "SHROUD_fill_from_PyObject_short_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_fill_from_PyObject_short_numpy\t(PyObject *obj,\t const char *name,\t short *in,\t Py_ssize_t insize);"
 }
@@ -2483,7 +1980,7 @@ static int SHROUD_fill_from_PyObject_short_numpy(PyObject *obj,
 
 ---------- fill_from_PyObject_uint16_t_list ----------
 {
-    "name": "SHROUD_fill_from_PyObject_uint16_t_list",
+    "c_fmtname": "SHROUD_fill_from_PyObject_uint16_t_list",
     "proto": "int SHROUD_fill_from_PyObject_uint16_t_list\t(PyObject *obj,\t const char *name,\t uint16_t *in,\t Py_ssize_t insize);"
 }
 
@@ -2536,7 +2033,7 @@ static int SHROUD_fill_from_PyObject_uint16_t_list(PyObject *obj,
 
 ---------- fill_from_PyObject_uint16_t_numpy ----------
 {
-    "name": "SHROUD_fill_from_PyObject_uint16_t_numpy",
+    "c_fmtname": "SHROUD_fill_from_PyObject_uint16_t_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_fill_from_PyObject_uint16_t_numpy\t(PyObject *obj,\t const char *name,\t uint16_t *in,\t Py_ssize_t insize);"
 }
@@ -2584,7 +2081,7 @@ static int SHROUD_fill_from_PyObject_uint16_t_numpy(PyObject *obj,
 
 ---------- fill_from_PyObject_uint32_t_list ----------
 {
-    "name": "SHROUD_fill_from_PyObject_uint32_t_list",
+    "c_fmtname": "SHROUD_fill_from_PyObject_uint32_t_list",
     "proto": "int SHROUD_fill_from_PyObject_uint32_t_list\t(PyObject *obj,\t const char *name,\t uint32_t *in,\t Py_ssize_t insize);"
 }
 
@@ -2637,7 +2134,7 @@ static int SHROUD_fill_from_PyObject_uint32_t_list(PyObject *obj,
 
 ---------- fill_from_PyObject_uint32_t_numpy ----------
 {
-    "name": "SHROUD_fill_from_PyObject_uint32_t_numpy",
+    "c_fmtname": "SHROUD_fill_from_PyObject_uint32_t_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_fill_from_PyObject_uint32_t_numpy\t(PyObject *obj,\t const char *name,\t uint32_t *in,\t Py_ssize_t insize);"
 }
@@ -2685,7 +2182,7 @@ static int SHROUD_fill_from_PyObject_uint32_t_numpy(PyObject *obj,
 
 ---------- fill_from_PyObject_uint64_t_list ----------
 {
-    "name": "SHROUD_fill_from_PyObject_uint64_t_list",
+    "c_fmtname": "SHROUD_fill_from_PyObject_uint64_t_list",
     "proto": "int SHROUD_fill_from_PyObject_uint64_t_list\t(PyObject *obj,\t const char *name,\t uint64_t *in,\t Py_ssize_t insize);"
 }
 
@@ -2738,7 +2235,7 @@ static int SHROUD_fill_from_PyObject_uint64_t_list(PyObject *obj,
 
 ---------- fill_from_PyObject_uint64_t_numpy ----------
 {
-    "name": "SHROUD_fill_from_PyObject_uint64_t_numpy",
+    "c_fmtname": "SHROUD_fill_from_PyObject_uint64_t_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_fill_from_PyObject_uint64_t_numpy\t(PyObject *obj,\t const char *name,\t uint64_t *in,\t Py_ssize_t insize);"
 }
@@ -2786,7 +2283,7 @@ static int SHROUD_fill_from_PyObject_uint64_t_numpy(PyObject *obj,
 
 ---------- fill_from_PyObject_uint8_t_list ----------
 {
-    "name": "SHROUD_fill_from_PyObject_uint8_t_list",
+    "c_fmtname": "SHROUD_fill_from_PyObject_uint8_t_list",
     "proto": "int SHROUD_fill_from_PyObject_uint8_t_list\t(PyObject *obj,\t const char *name,\t uint8_t *in,\t Py_ssize_t insize);"
 }
 
@@ -2839,7 +2336,7 @@ static int SHROUD_fill_from_PyObject_uint8_t_list(PyObject *obj,
 
 ---------- fill_from_PyObject_uint8_t_numpy ----------
 {
-    "name": "SHROUD_fill_from_PyObject_uint8_t_numpy",
+    "c_fmtname": "SHROUD_fill_from_PyObject_uint8_t_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_fill_from_PyObject_uint8_t_numpy\t(PyObject *obj,\t const char *name,\t uint8_t *in,\t Py_ssize_t insize);"
 }
@@ -2887,7 +2384,7 @@ static int SHROUD_fill_from_PyObject_uint8_t_numpy(PyObject *obj,
 
 ---------- fill_from_PyObject_unsigned_int_list ----------
 {
-    "name": "SHROUD_fill_from_PyObject_unsigned_int_list",
+    "c_fmtname": "SHROUD_fill_from_PyObject_unsigned_int_list",
     "proto": "int SHROUD_fill_from_PyObject_unsigned_int_list\t(PyObject *obj,\t const char *name,\t unsigned int *in,\t Py_ssize_t insize);"
 }
 
@@ -2940,7 +2437,7 @@ static int SHROUD_fill_from_PyObject_unsigned_int_list(PyObject *obj,
 
 ---------- fill_from_PyObject_unsigned_int_numpy ----------
 {
-    "name": "SHROUD_fill_from_PyObject_unsigned_int_numpy",
+    "c_fmtname": "SHROUD_fill_from_PyObject_unsigned_int_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_fill_from_PyObject_unsigned_int_numpy\t(PyObject *obj,\t const char *name,\t unsigned int *in,\t Py_ssize_t insize);"
 }
@@ -2989,7 +2486,7 @@ static int SHROUD_fill_from_PyObject_unsigned_int_numpy(PyObject *obj,
 
 ---------- fill_from_PyObject_unsigned_long_list ----------
 {
-    "name": "SHROUD_fill_from_PyObject_unsigned_long_list",
+    "c_fmtname": "SHROUD_fill_from_PyObject_unsigned_long_list",
     "proto": "int SHROUD_fill_from_PyObject_unsigned_long_list\t(PyObject *obj,\t const char *name,\t unsigned long *in,\t Py_ssize_t insize);"
 }
 
@@ -3042,7 +2539,7 @@ static int SHROUD_fill_from_PyObject_unsigned_long_list(PyObject *obj,
 
 ---------- fill_from_PyObject_unsigned_long_numpy ----------
 {
-    "name": "SHROUD_fill_from_PyObject_unsigned_long_numpy",
+    "c_fmtname": "SHROUD_fill_from_PyObject_unsigned_long_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_fill_from_PyObject_unsigned_long_numpy\t(PyObject *obj,\t const char *name,\t unsigned long *in,\t Py_ssize_t insize);"
 }
@@ -3091,7 +2588,7 @@ static int SHROUD_fill_from_PyObject_unsigned_long_numpy(PyObject *obj,
 
 ---------- fill_from_PyObject_unsigned_short_list ----------
 {
-    "name": "SHROUD_fill_from_PyObject_unsigned_short_list",
+    "c_fmtname": "SHROUD_fill_from_PyObject_unsigned_short_list",
     "proto": "int SHROUD_fill_from_PyObject_unsigned_short_list\t(PyObject *obj,\t const char *name,\t unsigned short *in,\t Py_ssize_t insize);"
 }
 
@@ -3144,7 +2641,7 @@ static int SHROUD_fill_from_PyObject_unsigned_short_list(PyObject *obj,
 
 ---------- fill_from_PyObject_unsigned_short_numpy ----------
 {
-    "name": "SHROUD_fill_from_PyObject_unsigned_short_numpy",
+    "c_fmtname": "SHROUD_fill_from_PyObject_unsigned_short_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_fill_from_PyObject_unsigned_short_numpy\t(PyObject *obj,\t const char *name,\t unsigned short *in,\t Py_ssize_t insize);"
 }
@@ -3194,10 +2691,10 @@ static int SHROUD_fill_from_PyObject_unsigned_short_numpy(PyObject *obj,
 
 ---------- get_from_object_char ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_char",
     "dependent_helpers": [
         "PY_converter_type"
     ],
-    "name": "SHROUD_get_from_object_char",
     "proto": "int SHROUD_get_from_object_char\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
 
@@ -3266,22 +2763,23 @@ static int SHROUD_get_from_object_char(PyObject *obj,
 
 ---------- get_from_object_char_list ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_char",
     "dependent_helpers": [
         "get_from_object_char"
-    ],
-    "name": "SHROUD_get_from_object_char"
+    ]
 }
 
 ---------- get_from_object_char_numpy ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_char",
     "dependent_helpers": [
         "get_from_object_char"
-    ],
-    "name": "SHROUD_get_from_object_char"
+    ]
 }
 
 ---------- get_from_object_charptr ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_charptr",
     "c_include": [
         "<stdlib.h>"
     ],
@@ -3292,7 +2790,6 @@ static int SHROUD_get_from_object_char(PyObject *obj,
         "PY_converter_type",
         "get_from_object_char"
     ],
-    "name": "SHROUD_get_from_object_charptr",
     "proto": "int SHROUD_get_from_object_charptr\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
 
@@ -3367,22 +2864,23 @@ static int SHROUD_get_from_object_charptr(PyObject *obj,
 
 ---------- get_from_object_charptr_list ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_charptr",
     "dependent_helpers": [
         "get_from_object_charptr"
-    ],
-    "name": "SHROUD_get_from_object_charptr"
+    ]
 }
 
 ---------- get_from_object_charptr_numpy ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_charptr",
     "dependent_helpers": [
         "get_from_object_charptr"
-    ],
-    "name": "SHROUD_get_from_object_charptr"
+    ]
 }
 
 ---------- get_from_object_double_complex_list ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_double_complex_list",
     "c_include": [
         "<stdlib.h>"
     ],
@@ -3393,7 +2891,6 @@ static int SHROUD_get_from_object_charptr(PyObject *obj,
         "PY_converter_type",
         "py_capsule_dtor"
     ],
-    "name": "SHROUD_get_from_object_double_complex_list",
     "proto": "int SHROUD_get_from_object_double_complex_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
 
@@ -3440,10 +2937,10 @@ static int SHROUD_get_from_object_double_complex_list(PyObject *obj,
 
 ---------- get_from_object_double_complex_numpy ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_double_complex_numpy",
     "dependent_helpers": [
         "PY_converter_type"
     ],
-    "name": "SHROUD_get_from_object_double_complex_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_get_from_object_double_complex_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
@@ -3474,6 +2971,7 @@ static int SHROUD_get_from_object_double_complex_numpy(PyObject *obj,
 
 ---------- get_from_object_double_list ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_double_list",
     "c_include": [
         "<stdlib.h>"
     ],
@@ -3484,7 +2982,6 @@ static int SHROUD_get_from_object_double_complex_numpy(PyObject *obj,
         "PY_converter_type",
         "py_capsule_dtor"
     ],
-    "name": "SHROUD_get_from_object_double_list",
     "proto": "int SHROUD_get_from_object_double_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
 
@@ -3531,10 +3028,10 @@ static int SHROUD_get_from_object_double_list(PyObject *obj,
 
 ---------- get_from_object_double_numpy ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_double_numpy",
     "dependent_helpers": [
         "PY_converter_type"
     ],
-    "name": "SHROUD_get_from_object_double_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_get_from_object_double_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
@@ -3565,6 +3062,7 @@ static int SHROUD_get_from_object_double_numpy(PyObject *obj,
 
 ---------- get_from_object_float_complex_list ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_float_complex_list",
     "c_include": [
         "<stdlib.h>"
     ],
@@ -3575,7 +3073,6 @@ static int SHROUD_get_from_object_double_numpy(PyObject *obj,
         "PY_converter_type",
         "py_capsule_dtor"
     ],
-    "name": "SHROUD_get_from_object_float_complex_list",
     "proto": "int SHROUD_get_from_object_float_complex_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
 
@@ -3622,10 +3119,10 @@ static int SHROUD_get_from_object_float_complex_list(PyObject *obj,
 
 ---------- get_from_object_float_complex_numpy ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_float_complex_numpy",
     "dependent_helpers": [
         "PY_converter_type"
     ],
-    "name": "SHROUD_get_from_object_float_complex_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_get_from_object_float_complex_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
@@ -3656,6 +3153,7 @@ static int SHROUD_get_from_object_float_complex_numpy(PyObject *obj,
 
 ---------- get_from_object_float_list ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_float_list",
     "c_include": [
         "<stdlib.h>"
     ],
@@ -3666,7 +3164,6 @@ static int SHROUD_get_from_object_float_complex_numpy(PyObject *obj,
         "PY_converter_type",
         "py_capsule_dtor"
     ],
-    "name": "SHROUD_get_from_object_float_list",
     "proto": "int SHROUD_get_from_object_float_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
 
@@ -3712,10 +3209,10 @@ static int SHROUD_get_from_object_float_list(PyObject *obj,
 
 ---------- get_from_object_float_numpy ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_float_numpy",
     "dependent_helpers": [
         "PY_converter_type"
     ],
-    "name": "SHROUD_get_from_object_float_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_get_from_object_float_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
@@ -3746,6 +3243,7 @@ static int SHROUD_get_from_object_float_numpy(PyObject *obj,
 
 ---------- get_from_object_int16_t_list ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_int16_t_list",
     "c_include": [
         "<stdlib.h>"
     ],
@@ -3756,7 +3254,6 @@ static int SHROUD_get_from_object_float_numpy(PyObject *obj,
         "PY_converter_type",
         "py_capsule_dtor"
     ],
-    "name": "SHROUD_get_from_object_int16_t_list",
     "proto": "int SHROUD_get_from_object_int16_t_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
 
@@ -3803,10 +3300,10 @@ static int SHROUD_get_from_object_int16_t_list(PyObject *obj,
 
 ---------- get_from_object_int16_t_numpy ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_int16_t_numpy",
     "dependent_helpers": [
         "PY_converter_type"
     ],
-    "name": "SHROUD_get_from_object_int16_t_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_get_from_object_int16_t_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
@@ -3837,6 +3334,7 @@ static int SHROUD_get_from_object_int16_t_numpy(PyObject *obj,
 
 ---------- get_from_object_int32_t_list ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_int32_t_list",
     "c_include": [
         "<stdlib.h>"
     ],
@@ -3847,7 +3345,6 @@ static int SHROUD_get_from_object_int16_t_numpy(PyObject *obj,
         "PY_converter_type",
         "py_capsule_dtor"
     ],
-    "name": "SHROUD_get_from_object_int32_t_list",
     "proto": "int SHROUD_get_from_object_int32_t_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
 
@@ -3894,10 +3391,10 @@ static int SHROUD_get_from_object_int32_t_list(PyObject *obj,
 
 ---------- get_from_object_int32_t_numpy ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_int32_t_numpy",
     "dependent_helpers": [
         "PY_converter_type"
     ],
-    "name": "SHROUD_get_from_object_int32_t_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_get_from_object_int32_t_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
@@ -3928,6 +3425,7 @@ static int SHROUD_get_from_object_int32_t_numpy(PyObject *obj,
 
 ---------- get_from_object_int64_t_list ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_int64_t_list",
     "c_include": [
         "<stdlib.h>"
     ],
@@ -3938,7 +3436,6 @@ static int SHROUD_get_from_object_int32_t_numpy(PyObject *obj,
         "PY_converter_type",
         "py_capsule_dtor"
     ],
-    "name": "SHROUD_get_from_object_int64_t_list",
     "proto": "int SHROUD_get_from_object_int64_t_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
 
@@ -3985,10 +3482,10 @@ static int SHROUD_get_from_object_int64_t_list(PyObject *obj,
 
 ---------- get_from_object_int64_t_numpy ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_int64_t_numpy",
     "dependent_helpers": [
         "PY_converter_type"
     ],
-    "name": "SHROUD_get_from_object_int64_t_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_get_from_object_int64_t_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
@@ -4019,6 +3516,7 @@ static int SHROUD_get_from_object_int64_t_numpy(PyObject *obj,
 
 ---------- get_from_object_int8_t_list ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_int8_t_list",
     "c_include": [
         "<stdlib.h>"
     ],
@@ -4029,7 +3527,6 @@ static int SHROUD_get_from_object_int64_t_numpy(PyObject *obj,
         "PY_converter_type",
         "py_capsule_dtor"
     ],
-    "name": "SHROUD_get_from_object_int8_t_list",
     "proto": "int SHROUD_get_from_object_int8_t_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
 
@@ -4076,10 +3573,10 @@ static int SHROUD_get_from_object_int8_t_list(PyObject *obj,
 
 ---------- get_from_object_int8_t_numpy ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_int8_t_numpy",
     "dependent_helpers": [
         "PY_converter_type"
     ],
-    "name": "SHROUD_get_from_object_int8_t_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_get_from_object_int8_t_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
@@ -4110,6 +3607,7 @@ static int SHROUD_get_from_object_int8_t_numpy(PyObject *obj,
 
 ---------- get_from_object_int_list ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_int_list",
     "c_include": [
         "<stdlib.h>"
     ],
@@ -4120,7 +3618,6 @@ static int SHROUD_get_from_object_int8_t_numpy(PyObject *obj,
         "PY_converter_type",
         "py_capsule_dtor"
     ],
-    "name": "SHROUD_get_from_object_int_list",
     "proto": "int SHROUD_get_from_object_int_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
 
@@ -4166,10 +3663,10 @@ static int SHROUD_get_from_object_int_list(PyObject *obj,
 
 ---------- get_from_object_int_numpy ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_int_numpy",
     "dependent_helpers": [
         "PY_converter_type"
     ],
-    "name": "SHROUD_get_from_object_int_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_get_from_object_int_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
@@ -4199,6 +3696,7 @@ static int SHROUD_get_from_object_int_numpy(PyObject *obj,
 
 ---------- get_from_object_long_list ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_long_list",
     "c_include": [
         "<stdlib.h>"
     ],
@@ -4209,7 +3707,6 @@ static int SHROUD_get_from_object_int_numpy(PyObject *obj,
         "PY_converter_type",
         "py_capsule_dtor"
     ],
-    "name": "SHROUD_get_from_object_long_list",
     "proto": "int SHROUD_get_from_object_long_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
 
@@ -4255,10 +3752,10 @@ static int SHROUD_get_from_object_long_list(PyObject *obj,
 
 ---------- get_from_object_long_long_numpy ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_long_long_numpy",
     "dependent_helpers": [
         "PY_converter_type"
     ],
-    "name": "SHROUD_get_from_object_long_long_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_get_from_object_long_long_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
@@ -4289,10 +3786,10 @@ static int SHROUD_get_from_object_long_long_numpy(PyObject *obj,
 
 ---------- get_from_object_long_numpy ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_long_numpy",
     "dependent_helpers": [
         "PY_converter_type"
     ],
-    "name": "SHROUD_get_from_object_long_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_get_from_object_long_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
@@ -4323,6 +3820,7 @@ static int SHROUD_get_from_object_long_numpy(PyObject *obj,
 
 ---------- get_from_object_short_list ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_short_list",
     "c_include": [
         "<stdlib.h>"
     ],
@@ -4333,7 +3831,6 @@ static int SHROUD_get_from_object_long_numpy(PyObject *obj,
         "PY_converter_type",
         "py_capsule_dtor"
     ],
-    "name": "SHROUD_get_from_object_short_list",
     "proto": "int SHROUD_get_from_object_short_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
 
@@ -4379,10 +3876,10 @@ static int SHROUD_get_from_object_short_list(PyObject *obj,
 
 ---------- get_from_object_short_numpy ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_short_numpy",
     "dependent_helpers": [
         "PY_converter_type"
     ],
-    "name": "SHROUD_get_from_object_short_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_get_from_object_short_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
@@ -4413,10 +3910,10 @@ static int SHROUD_get_from_object_short_numpy(PyObject *obj,
 
 ---------- get_from_object_size_t_numpy ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_size_t_numpy",
     "dependent_helpers": [
         "PY_converter_type"
     ],
-    "name": "SHROUD_get_from_object_size_t_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_get_from_object_size_t_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
@@ -4446,6 +3943,7 @@ static int SHROUD_get_from_object_size_t_numpy(PyObject *obj,
 
 ---------- get_from_object_uint16_t_list ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_uint16_t_list",
     "c_include": [
         "<stdlib.h>"
     ],
@@ -4456,7 +3954,6 @@ static int SHROUD_get_from_object_size_t_numpy(PyObject *obj,
         "PY_converter_type",
         "py_capsule_dtor"
     ],
-    "name": "SHROUD_get_from_object_uint16_t_list",
     "proto": "int SHROUD_get_from_object_uint16_t_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
 
@@ -4503,10 +4000,10 @@ static int SHROUD_get_from_object_uint16_t_list(PyObject *obj,
 
 ---------- get_from_object_uint16_t_numpy ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_uint16_t_numpy",
     "dependent_helpers": [
         "PY_converter_type"
     ],
-    "name": "SHROUD_get_from_object_uint16_t_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_get_from_object_uint16_t_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
@@ -4537,6 +4034,7 @@ static int SHROUD_get_from_object_uint16_t_numpy(PyObject *obj,
 
 ---------- get_from_object_uint32_t_list ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_uint32_t_list",
     "c_include": [
         "<stdlib.h>"
     ],
@@ -4547,7 +4045,6 @@ static int SHROUD_get_from_object_uint16_t_numpy(PyObject *obj,
         "PY_converter_type",
         "py_capsule_dtor"
     ],
-    "name": "SHROUD_get_from_object_uint32_t_list",
     "proto": "int SHROUD_get_from_object_uint32_t_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
 
@@ -4594,10 +4091,10 @@ static int SHROUD_get_from_object_uint32_t_list(PyObject *obj,
 
 ---------- get_from_object_uint32_t_numpy ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_uint32_t_numpy",
     "dependent_helpers": [
         "PY_converter_type"
     ],
-    "name": "SHROUD_get_from_object_uint32_t_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_get_from_object_uint32_t_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
@@ -4628,6 +4125,7 @@ static int SHROUD_get_from_object_uint32_t_numpy(PyObject *obj,
 
 ---------- get_from_object_uint64_t_list ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_uint64_t_list",
     "c_include": [
         "<stdlib.h>"
     ],
@@ -4638,7 +4136,6 @@ static int SHROUD_get_from_object_uint32_t_numpy(PyObject *obj,
         "PY_converter_type",
         "py_capsule_dtor"
     ],
-    "name": "SHROUD_get_from_object_uint64_t_list",
     "proto": "int SHROUD_get_from_object_uint64_t_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
 
@@ -4685,10 +4182,10 @@ static int SHROUD_get_from_object_uint64_t_list(PyObject *obj,
 
 ---------- get_from_object_uint64_t_numpy ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_uint64_t_numpy",
     "dependent_helpers": [
         "PY_converter_type"
     ],
-    "name": "SHROUD_get_from_object_uint64_t_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_get_from_object_uint64_t_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
@@ -4719,6 +4216,7 @@ static int SHROUD_get_from_object_uint64_t_numpy(PyObject *obj,
 
 ---------- get_from_object_uint8_t_list ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_uint8_t_list",
     "c_include": [
         "<stdlib.h>"
     ],
@@ -4729,7 +4227,6 @@ static int SHROUD_get_from_object_uint64_t_numpy(PyObject *obj,
         "PY_converter_type",
         "py_capsule_dtor"
     ],
-    "name": "SHROUD_get_from_object_uint8_t_list",
     "proto": "int SHROUD_get_from_object_uint8_t_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
 
@@ -4776,10 +4273,10 @@ static int SHROUD_get_from_object_uint8_t_list(PyObject *obj,
 
 ---------- get_from_object_uint8_t_numpy ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_uint8_t_numpy",
     "dependent_helpers": [
         "PY_converter_type"
     ],
-    "name": "SHROUD_get_from_object_uint8_t_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_get_from_object_uint8_t_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
@@ -4810,6 +4307,7 @@ static int SHROUD_get_from_object_uint8_t_numpy(PyObject *obj,
 
 ---------- get_from_object_unsigned_int_list ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_unsigned_int_list",
     "c_include": [
         "<stdlib.h>"
     ],
@@ -4820,7 +4318,6 @@ static int SHROUD_get_from_object_uint8_t_numpy(PyObject *obj,
         "PY_converter_type",
         "py_capsule_dtor"
     ],
-    "name": "SHROUD_get_from_object_unsigned_int_list",
     "proto": "int SHROUD_get_from_object_unsigned_int_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
 
@@ -4867,10 +4364,10 @@ static int SHROUD_get_from_object_unsigned_int_list(PyObject *obj,
 
 ---------- get_from_object_unsigned_int_numpy ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_unsigned_int_numpy",
     "dependent_helpers": [
         "PY_converter_type"
     ],
-    "name": "SHROUD_get_from_object_unsigned_int_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_get_from_object_unsigned_int_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
@@ -4901,6 +4398,7 @@ static int SHROUD_get_from_object_unsigned_int_numpy(PyObject *obj,
 
 ---------- get_from_object_unsigned_long_list ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_unsigned_long_list",
     "c_include": [
         "<stdlib.h>"
     ],
@@ -4911,7 +4409,6 @@ static int SHROUD_get_from_object_unsigned_int_numpy(PyObject *obj,
         "PY_converter_type",
         "py_capsule_dtor"
     ],
-    "name": "SHROUD_get_from_object_unsigned_long_list",
     "proto": "int SHROUD_get_from_object_unsigned_long_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
 
@@ -4958,10 +4455,10 @@ static int SHROUD_get_from_object_unsigned_long_list(PyObject *obj,
 
 ---------- get_from_object_unsigned_long_long_numpy ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_unsigned_long_long_numpy",
     "dependent_helpers": [
         "PY_converter_type"
     ],
-    "name": "SHROUD_get_from_object_unsigned_long_long_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_get_from_object_unsigned_long_long_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
@@ -4992,10 +4489,10 @@ static int SHROUD_get_from_object_unsigned_long_long_numpy
 
 ---------- get_from_object_unsigned_long_numpy ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_unsigned_long_numpy",
     "dependent_helpers": [
         "PY_converter_type"
     ],
-    "name": "SHROUD_get_from_object_unsigned_long_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_get_from_object_unsigned_long_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
@@ -5026,6 +4523,7 @@ static int SHROUD_get_from_object_unsigned_long_numpy(PyObject *obj,
 
 ---------- get_from_object_unsigned_short_list ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_unsigned_short_list",
     "c_include": [
         "<stdlib.h>"
     ],
@@ -5036,7 +4534,6 @@ static int SHROUD_get_from_object_unsigned_long_numpy(PyObject *obj,
         "PY_converter_type",
         "py_capsule_dtor"
     ],
-    "name": "SHROUD_get_from_object_unsigned_short_list",
     "proto": "int SHROUD_get_from_object_unsigned_short_list\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
 
@@ -5083,10 +4580,10 @@ static int SHROUD_get_from_object_unsigned_short_list(PyObject *obj,
 
 ---------- get_from_object_unsigned_short_numpy ----------
 {
+    "c_fmtname": "SHROUD_get_from_object_unsigned_short_numpy",
     "dependent_helpers": [
         "PY_converter_type"
     ],
-    "name": "SHROUD_get_from_object_unsigned_short_numpy",
     "need_numpy": true,
     "proto": "int SHROUD_get_from_object_unsigned_short_numpy\t(PyObject *obj,\t LIB_SHROUD_converter_value *value);"
 }
@@ -5117,7 +4614,7 @@ static int SHROUD_get_from_object_unsigned_short_numpy(PyObject *obj,
 
 ---------- py_capsule_dtor ----------
 {
-    "name": "FREE_py_capsule_dtor"
+    "c_fmtname": "FREE_py_capsule_dtor"
 }
 
 ##### start py_capsule_dtor source
@@ -5134,65 +4631,9 @@ static void FREE_py_capsule_dtor(PyObject *obj)
 }
 ##### end py_capsule_dtor source
 
----------- size_CFI ----------
-{
-    "c_include": [
-        "<stddef.h>"
-    ],
-    "cxx_include": [
-        "<cstddef>"
-    ]
-}
-
-##### start size_CFI source
-
-// helper size_CFI
-// Compute number of items in CFI_cdesc_t
-size_t ShroudSizeCFI(CFI_cdesc_t *desc)
-{
-    size_t nitems = 1;
-    for (int i = 0; i < desc->rank; i++) {
-        nitems *= desc->dim[i].extent;
-    }
-    return nitems;
-}
-##### end size_CFI source
-
----------- string_to_cdesc ----------
-{
-    "cxx_include": [
-        "<cstring>",
-        "<cstddef>"
-    ],
-    "dependent_helpers": [
-        "array_context"
-    ],
-    "name": "ShroudStringToCdesc"
-}
-
-##### start string_to_cdesc source
-
-// helper string_to_cdesc
-// Save std::string metadata into array to allow Fortran to access values.
-// CHARACTER(len=elem_size) src
-static void ShroudStringToCdesc(LIB_SHROUD_array *cdesc,
-    const std::string * src)
-{
-    if (src->empty()) {
-        cdesc->base_addr = NULL;
-        cdesc->elem_len = 0;
-    } else {
-        cdesc->base_addr = const_cast<char *>(src->data());
-        cdesc->elem_len = src->length();
-    }
-    cdesc->size = 1;
-    cdesc->rank = 0;  // scalar
-}
-##### end string_to_cdesc source
-
 ---------- to_PyList_char ----------
 {
-    "name": "SHROUD_to_PyList_char",
+    "c_fmtname": "SHROUD_to_PyList_char",
     "proto": "PyObject *SHROUD_to_PyList_char\t(char * *in, size_t size);"
 }
 
@@ -5212,7 +4653,7 @@ static PyObject *SHROUD_to_PyList_char(char * *in, size_t size)
 
 ---------- to_PyList_double ----------
 {
-    "name": "SHROUD_to_PyList_double",
+    "c_fmtname": "SHROUD_to_PyList_double",
     "proto": "PyObject *SHROUD_to_PyList_double\t(const double *in, size_t size);"
 }
 
@@ -5232,7 +4673,7 @@ static PyObject *SHROUD_to_PyList_double(const double *in, size_t size)
 
 ---------- to_PyList_double_complex ----------
 {
-    "name": "SHROUD_to_PyList_double_complex",
+    "c_fmtname": "SHROUD_to_PyList_double_complex",
     "proto": "PyObject *SHROUD_to_PyList_double_complex\t(const double complex *in, size_t size);"
 }
 
@@ -5254,7 +4695,7 @@ static PyObject *SHROUD_to_PyList_double_complex
 
 ---------- to_PyList_float ----------
 {
-    "name": "SHROUD_to_PyList_float",
+    "c_fmtname": "SHROUD_to_PyList_float",
     "proto": "PyObject *SHROUD_to_PyList_float\t(const float *in, size_t size);"
 }
 
@@ -5274,7 +4715,7 @@ static PyObject *SHROUD_to_PyList_float(const float *in, size_t size)
 
 ---------- to_PyList_float_complex ----------
 {
-    "name": "SHROUD_to_PyList_float_complex",
+    "c_fmtname": "SHROUD_to_PyList_float_complex",
     "proto": "PyObject *SHROUD_to_PyList_float_complex\t(const float complex *in, size_t size);"
 }
 
@@ -5296,7 +4737,7 @@ static PyObject *SHROUD_to_PyList_float_complex
 
 ---------- to_PyList_int ----------
 {
-    "name": "SHROUD_to_PyList_int",
+    "c_fmtname": "SHROUD_to_PyList_int",
     "proto": "PyObject *SHROUD_to_PyList_int\t(const int *in, size_t size);"
 }
 
@@ -5316,7 +4757,7 @@ static PyObject *SHROUD_to_PyList_int(const int *in, size_t size)
 
 ---------- to_PyList_int16_t ----------
 {
-    "name": "SHROUD_to_PyList_int16_t",
+    "c_fmtname": "SHROUD_to_PyList_int16_t",
     "proto": "PyObject *SHROUD_to_PyList_int16_t\t(const int16_t *in, size_t size);"
 }
 
@@ -5337,7 +4778,7 @@ static PyObject *SHROUD_to_PyList_int16_t
 
 ---------- to_PyList_int32_t ----------
 {
-    "name": "SHROUD_to_PyList_int32_t",
+    "c_fmtname": "SHROUD_to_PyList_int32_t",
     "proto": "PyObject *SHROUD_to_PyList_int32_t\t(const int32_t *in, size_t size);"
 }
 
@@ -5358,7 +4799,7 @@ static PyObject *SHROUD_to_PyList_int32_t
 
 ---------- to_PyList_int64_t ----------
 {
-    "name": "SHROUD_to_PyList_int64_t",
+    "c_fmtname": "SHROUD_to_PyList_int64_t",
     "proto": "PyObject *SHROUD_to_PyList_int64_t\t(const int64_t *in, size_t size);"
 }
 
@@ -5379,7 +4820,7 @@ static PyObject *SHROUD_to_PyList_int64_t
 
 ---------- to_PyList_int8_t ----------
 {
-    "name": "SHROUD_to_PyList_int8_t",
+    "c_fmtname": "SHROUD_to_PyList_int8_t",
     "proto": "PyObject *SHROUD_to_PyList_int8_t\t(const int8_t *in, size_t size);"
 }
 
@@ -5399,7 +4840,7 @@ static PyObject *SHROUD_to_PyList_int8_t(const int8_t *in, size_t size)
 
 ---------- to_PyList_long ----------
 {
-    "name": "SHROUD_to_PyList_long",
+    "c_fmtname": "SHROUD_to_PyList_long",
     "proto": "PyObject *SHROUD_to_PyList_long\t(const long *in, size_t size);"
 }
 
@@ -5419,7 +4860,7 @@ static PyObject *SHROUD_to_PyList_long(const long *in, size_t size)
 
 ---------- to_PyList_short ----------
 {
-    "name": "SHROUD_to_PyList_short",
+    "c_fmtname": "SHROUD_to_PyList_short",
     "proto": "PyObject *SHROUD_to_PyList_short\t(const short *in, size_t size);"
 }
 
@@ -5439,7 +4880,7 @@ static PyObject *SHROUD_to_PyList_short(const short *in, size_t size)
 
 ---------- to_PyList_size_t ----------
 {
-    "name": "SHROUD_to_PyList_size_t",
+    "c_fmtname": "SHROUD_to_PyList_size_t",
     "proto": "PyObject *SHROUD_to_PyList_size_t\t(const size_t *in, size_t size);"
 }
 
@@ -5459,7 +4900,7 @@ static PyObject *SHROUD_to_PyList_size_t(const size_t *in, size_t size)
 
 ---------- to_PyList_uint16_t ----------
 {
-    "name": "SHROUD_to_PyList_uint16_t",
+    "c_fmtname": "SHROUD_to_PyList_uint16_t",
     "proto": "PyObject *SHROUD_to_PyList_uint16_t\t(const uint16_t *in, size_t size);"
 }
 
@@ -5480,7 +4921,7 @@ static PyObject *SHROUD_to_PyList_uint16_t
 
 ---------- to_PyList_uint32_t ----------
 {
-    "name": "SHROUD_to_PyList_uint32_t",
+    "c_fmtname": "SHROUD_to_PyList_uint32_t",
     "proto": "PyObject *SHROUD_to_PyList_uint32_t\t(const uint32_t *in, size_t size);"
 }
 
@@ -5501,7 +4942,7 @@ static PyObject *SHROUD_to_PyList_uint32_t
 
 ---------- to_PyList_uint64_t ----------
 {
-    "name": "SHROUD_to_PyList_uint64_t",
+    "c_fmtname": "SHROUD_to_PyList_uint64_t",
     "proto": "PyObject *SHROUD_to_PyList_uint64_t\t(const uint64_t *in, size_t size);"
 }
 
@@ -5522,7 +4963,7 @@ static PyObject *SHROUD_to_PyList_uint64_t
 
 ---------- to_PyList_uint8_t ----------
 {
-    "name": "SHROUD_to_PyList_uint8_t",
+    "c_fmtname": "SHROUD_to_PyList_uint8_t",
     "proto": "PyObject *SHROUD_to_PyList_uint8_t\t(const uint8_t *in, size_t size);"
 }
 
@@ -5543,7 +4984,7 @@ static PyObject *SHROUD_to_PyList_uint8_t
 
 ---------- to_PyList_unsigned_int ----------
 {
-    "name": "SHROUD_to_PyList_unsigned_int",
+    "c_fmtname": "SHROUD_to_PyList_unsigned_int",
     "proto": "PyObject *SHROUD_to_PyList_unsigned_int\t(const unsigned int *in, size_t size);"
 }
 
@@ -5564,7 +5005,7 @@ static PyObject *SHROUD_to_PyList_unsigned_int
 
 ---------- to_PyList_unsigned_long ----------
 {
-    "name": "SHROUD_to_PyList_unsigned_long",
+    "c_fmtname": "SHROUD_to_PyList_unsigned_long",
     "proto": "PyObject *SHROUD_to_PyList_unsigned_long\t(const unsigned long *in, size_t size);"
 }
 
@@ -5585,7 +5026,7 @@ static PyObject *SHROUD_to_PyList_unsigned_long
 
 ---------- to_PyList_unsigned_short ----------
 {
-    "name": "SHROUD_to_PyList_unsigned_short",
+    "c_fmtname": "SHROUD_to_PyList_unsigned_short",
     "proto": "PyObject *SHROUD_to_PyList_unsigned_short\t(const unsigned short *in, size_t size);"
 }
 
@@ -5606,7 +5047,7 @@ static PyObject *SHROUD_to_PyList_unsigned_short
 
 ---------- to_PyList_vector_double ----------
 {
-    "name": "SHROUD_to_PyList_vector_double",
+    "c_fmtname": "SHROUD_to_PyList_vector_double",
     "proto": "PyObject *SHROUD_to_PyList_vector_double\t(std::vector<double> & in);"
 }
 
@@ -5627,7 +5068,7 @@ static PyObject *SHROUD_to_PyList_vector_double
 
 ---------- to_PyList_vector_double_complex ----------
 {
-    "name": "SHROUD_to_PyList_vector_double_complex",
+    "c_fmtname": "SHROUD_to_PyList_vector_double_complex",
     "proto": "PyObject *SHROUD_to_PyList_vector_double_complex\t(std::vector<double complex> & in);"
 }
 
@@ -5649,7 +5090,7 @@ static PyObject *SHROUD_to_PyList_vector_double_complex
 
 ---------- to_PyList_vector_float ----------
 {
-    "name": "SHROUD_to_PyList_vector_float",
+    "c_fmtname": "SHROUD_to_PyList_vector_float",
     "proto": "PyObject *SHROUD_to_PyList_vector_float\t(std::vector<float> & in);"
 }
 
@@ -5669,7 +5110,7 @@ static PyObject *SHROUD_to_PyList_vector_float(std::vector<float> & in)
 
 ---------- to_PyList_vector_float_complex ----------
 {
-    "name": "SHROUD_to_PyList_vector_float_complex",
+    "c_fmtname": "SHROUD_to_PyList_vector_float_complex",
     "proto": "PyObject *SHROUD_to_PyList_vector_float_complex\t(std::vector<float complex> & in);"
 }
 
@@ -5691,7 +5132,7 @@ static PyObject *SHROUD_to_PyList_vector_float_complex
 
 ---------- to_PyList_vector_int ----------
 {
-    "name": "SHROUD_to_PyList_vector_int",
+    "c_fmtname": "SHROUD_to_PyList_vector_int",
     "proto": "PyObject *SHROUD_to_PyList_vector_int\t(std::vector<int> & in);"
 }
 
@@ -5711,7 +5152,7 @@ static PyObject *SHROUD_to_PyList_vector_int(std::vector<int> & in)
 
 ---------- to_PyList_vector_int16_t ----------
 {
-    "name": "SHROUD_to_PyList_vector_int16_t",
+    "c_fmtname": "SHROUD_to_PyList_vector_int16_t",
     "proto": "PyObject *SHROUD_to_PyList_vector_int16_t\t(std::vector<int16_t> & in);"
 }
 
@@ -5732,7 +5173,7 @@ static PyObject *SHROUD_to_PyList_vector_int16_t
 
 ---------- to_PyList_vector_int32_t ----------
 {
-    "name": "SHROUD_to_PyList_vector_int32_t",
+    "c_fmtname": "SHROUD_to_PyList_vector_int32_t",
     "proto": "PyObject *SHROUD_to_PyList_vector_int32_t\t(std::vector<int32_t> & in);"
 }
 
@@ -5753,7 +5194,7 @@ static PyObject *SHROUD_to_PyList_vector_int32_t
 
 ---------- to_PyList_vector_int64_t ----------
 {
-    "name": "SHROUD_to_PyList_vector_int64_t",
+    "c_fmtname": "SHROUD_to_PyList_vector_int64_t",
     "proto": "PyObject *SHROUD_to_PyList_vector_int64_t\t(std::vector<int64_t> & in);"
 }
 
@@ -5774,7 +5215,7 @@ static PyObject *SHROUD_to_PyList_vector_int64_t
 
 ---------- to_PyList_vector_int8_t ----------
 {
-    "name": "SHROUD_to_PyList_vector_int8_t",
+    "c_fmtname": "SHROUD_to_PyList_vector_int8_t",
     "proto": "PyObject *SHROUD_to_PyList_vector_int8_t\t(std::vector<int8_t> & in);"
 }
 
@@ -5795,7 +5236,7 @@ static PyObject *SHROUD_to_PyList_vector_int8_t
 
 ---------- to_PyList_vector_long ----------
 {
-    "name": "SHROUD_to_PyList_vector_long",
+    "c_fmtname": "SHROUD_to_PyList_vector_long",
     "proto": "PyObject *SHROUD_to_PyList_vector_long\t(std::vector<long> & in);"
 }
 
@@ -5815,7 +5256,7 @@ static PyObject *SHROUD_to_PyList_vector_long(std::vector<long> & in)
 
 ---------- to_PyList_vector_long_long ----------
 {
-    "name": "SHROUD_to_PyList_vector_long_long",
+    "c_fmtname": "SHROUD_to_PyList_vector_long_long",
     "proto": "PyObject *SHROUD_to_PyList_vector_long_long\t(std::vector<long long> & in);"
 }
 
@@ -5836,7 +5277,7 @@ static PyObject *SHROUD_to_PyList_vector_long_long
 
 ---------- to_PyList_vector_short ----------
 {
-    "name": "SHROUD_to_PyList_vector_short",
+    "c_fmtname": "SHROUD_to_PyList_vector_short",
     "proto": "PyObject *SHROUD_to_PyList_vector_short\t(std::vector<short> & in);"
 }
 
@@ -5856,7 +5297,7 @@ static PyObject *SHROUD_to_PyList_vector_short(std::vector<short> & in)
 
 ---------- to_PyList_vector_size_t ----------
 {
-    "name": "SHROUD_to_PyList_vector_size_t",
+    "c_fmtname": "SHROUD_to_PyList_vector_size_t",
     "proto": "PyObject *SHROUD_to_PyList_vector_size_t\t(std::vector<size_t> & in);"
 }
 
@@ -5877,7 +5318,7 @@ static PyObject *SHROUD_to_PyList_vector_size_t
 
 ---------- to_PyList_vector_uint16_t ----------
 {
-    "name": "SHROUD_to_PyList_vector_uint16_t",
+    "c_fmtname": "SHROUD_to_PyList_vector_uint16_t",
     "proto": "PyObject *SHROUD_to_PyList_vector_uint16_t\t(std::vector<uint16_t> & in);"
 }
 
@@ -5898,7 +5339,7 @@ static PyObject *SHROUD_to_PyList_vector_uint16_t
 
 ---------- to_PyList_vector_uint32_t ----------
 {
-    "name": "SHROUD_to_PyList_vector_uint32_t",
+    "c_fmtname": "SHROUD_to_PyList_vector_uint32_t",
     "proto": "PyObject *SHROUD_to_PyList_vector_uint32_t\t(std::vector<uint32_t> & in);"
 }
 
@@ -5919,7 +5360,7 @@ static PyObject *SHROUD_to_PyList_vector_uint32_t
 
 ---------- to_PyList_vector_uint64_t ----------
 {
-    "name": "SHROUD_to_PyList_vector_uint64_t",
+    "c_fmtname": "SHROUD_to_PyList_vector_uint64_t",
     "proto": "PyObject *SHROUD_to_PyList_vector_uint64_t\t(std::vector<uint64_t> & in);"
 }
 
@@ -5940,7 +5381,7 @@ static PyObject *SHROUD_to_PyList_vector_uint64_t
 
 ---------- to_PyList_vector_uint8_t ----------
 {
-    "name": "SHROUD_to_PyList_vector_uint8_t",
+    "c_fmtname": "SHROUD_to_PyList_vector_uint8_t",
     "proto": "PyObject *SHROUD_to_PyList_vector_uint8_t\t(std::vector<uint8_t> & in);"
 }
 
@@ -5961,7 +5402,7 @@ static PyObject *SHROUD_to_PyList_vector_uint8_t
 
 ---------- to_PyList_vector_unsigned_int ----------
 {
-    "name": "SHROUD_to_PyList_vector_unsigned_int",
+    "c_fmtname": "SHROUD_to_PyList_vector_unsigned_int",
     "proto": "PyObject *SHROUD_to_PyList_vector_unsigned_int\t(std::vector<unsigned int> & in);"
 }
 
@@ -5982,7 +5423,7 @@ static PyObject *SHROUD_to_PyList_vector_unsigned_int
 
 ---------- to_PyList_vector_unsigned_long ----------
 {
-    "name": "SHROUD_to_PyList_vector_unsigned_long",
+    "c_fmtname": "SHROUD_to_PyList_vector_unsigned_long",
     "proto": "PyObject *SHROUD_to_PyList_vector_unsigned_long\t(std::vector<unsigned long> & in);"
 }
 
@@ -6003,7 +5444,7 @@ static PyObject *SHROUD_to_PyList_vector_unsigned_long
 
 ---------- to_PyList_vector_unsigned_long_long ----------
 {
-    "name": "SHROUD_to_PyList_vector_unsigned_long_long",
+    "c_fmtname": "SHROUD_to_PyList_vector_unsigned_long_long",
     "proto": "PyObject *SHROUD_to_PyList_vector_unsigned_long_long\t(std::vector<unsigned long long> & in);"
 }
 
@@ -6024,7 +5465,7 @@ static PyObject *SHROUD_to_PyList_vector_unsigned_long_long
 
 ---------- to_PyList_vector_unsigned_short ----------
 {
-    "name": "SHROUD_to_PyList_vector_unsigned_short",
+    "c_fmtname": "SHROUD_to_PyList_vector_unsigned_short",
     "proto": "PyObject *SHROUD_to_PyList_vector_unsigned_short\t(std::vector<unsigned short> & in);"
 }
 
@@ -6042,55 +5483,6 @@ static PyObject *SHROUD_to_PyList_vector_unsigned_short
     return out;
 }
 ##### end to_PyList_vector_unsigned_short source
-
----------- type_defines ----------
-{
-    "scope": "cwrap_include"
-}
-
-##### start type_defines source
-
-/* helper type_defines */
-/* Shroud type defines */
-#define SH_TYPE_SIGNED_CHAR 1
-#define SH_TYPE_SHORT       2
-#define SH_TYPE_INT         3
-#define SH_TYPE_LONG        4
-#define SH_TYPE_LONG_LONG   5
-#define SH_TYPE_SIZE_T      6
-
-#define SH_TYPE_UNSIGNED_SHORT       SH_TYPE_SHORT + 100
-#define SH_TYPE_UNSIGNED_INT         SH_TYPE_INT + 100
-#define SH_TYPE_UNSIGNED_LONG        SH_TYPE_LONG + 100
-#define SH_TYPE_UNSIGNED_LONG_LONG   SH_TYPE_LONG_LONG + 100
-
-#define SH_TYPE_INT8_T      7
-#define SH_TYPE_INT16_T     8
-#define SH_TYPE_INT32_T     9
-#define SH_TYPE_INT64_T    10
-
-#define SH_TYPE_UINT8_T    SH_TYPE_INT8_T + 100
-#define SH_TYPE_UINT16_T   SH_TYPE_INT16_T + 100
-#define SH_TYPE_UINT32_T   SH_TYPE_INT32_T + 100
-#define SH_TYPE_UINT64_T   SH_TYPE_INT64_T + 100
-
-/* least8 least16 least32 least64 */
-/* fast8 fast16 fast32 fast64 */
-/* intmax_t intptr_t ptrdiff_t */
-
-#define SH_TYPE_FLOAT        22
-#define SH_TYPE_DOUBLE       23
-#define SH_TYPE_LONG_DOUBLE  24
-#define SH_TYPE_FLOAT_COMPLEX       25
-#define SH_TYPE_DOUBLE_COMPLEX      26
-#define SH_TYPE_LONG_DOUBLE_COMPLEX 27
-
-#define SH_TYPE_BOOL       28
-#define SH_TYPE_CHAR       29
-#define SH_TYPE_CPTR       30
-#define SH_TYPE_STRUCT     31
-#define SH_TYPE_OTHER      32
-##### end type_defines source
 
 ---------- update_PyList_double ----------
 {
@@ -6495,7 +5887,7 @@ static void SHROUD_update_PyList_unsigned_short
 
 ---------- update_PyList_vector_double ----------
 {
-    "name": "SHROUD_update_PyList_vector_double",
+    "c_fmtname": "SHROUD_update_PyList_vector_double",
     "proto": "void SHROUD_update_PyList_vector_double\t(PyObject *out, double *in, size_t size);"
 }
 
@@ -6517,7 +5909,7 @@ static void SHROUD_update_PyList_vector_double
 
 ---------- update_PyList_vector_double_complex ----------
 {
-    "name": "SHROUD_update_PyList_vector_double_complex",
+    "c_fmtname": "SHROUD_update_PyList_vector_double_complex",
     "proto": "void SHROUD_update_PyList_vector_double_complex\t(PyObject *out, double complex *in, size_t size);"
 }
 
@@ -6540,7 +5932,7 @@ static void SHROUD_update_PyList_vector_double_complex
 
 ---------- update_PyList_vector_float ----------
 {
-    "name": "SHROUD_update_PyList_vector_float",
+    "c_fmtname": "SHROUD_update_PyList_vector_float",
     "proto": "void SHROUD_update_PyList_vector_float\t(PyObject *out, float *in, size_t size);"
 }
 
@@ -6562,7 +5954,7 @@ static void SHROUD_update_PyList_vector_float
 
 ---------- update_PyList_vector_float_complex ----------
 {
-    "name": "SHROUD_update_PyList_vector_float_complex",
+    "c_fmtname": "SHROUD_update_PyList_vector_float_complex",
     "proto": "void SHROUD_update_PyList_vector_float_complex\t(PyObject *out, float complex *in, size_t size);"
 }
 
@@ -6585,7 +5977,7 @@ static void SHROUD_update_PyList_vector_float_complex
 
 ---------- update_PyList_vector_int ----------
 {
-    "name": "SHROUD_update_PyList_vector_int",
+    "c_fmtname": "SHROUD_update_PyList_vector_int",
     "proto": "void SHROUD_update_PyList_vector_int\t(PyObject *out, int *in, size_t size);"
 }
 
@@ -6607,7 +5999,7 @@ static void SHROUD_update_PyList_vector_int
 
 ---------- update_PyList_vector_int16_t ----------
 {
-    "name": "SHROUD_update_PyList_vector_int16_t",
+    "c_fmtname": "SHROUD_update_PyList_vector_int16_t",
     "proto": "void SHROUD_update_PyList_vector_int16_t\t(PyObject *out, int16_t *in, size_t size);"
 }
 
@@ -6629,7 +6021,7 @@ static void SHROUD_update_PyList_vector_int16_t
 
 ---------- update_PyList_vector_int32_t ----------
 {
-    "name": "SHROUD_update_PyList_vector_int32_t",
+    "c_fmtname": "SHROUD_update_PyList_vector_int32_t",
     "proto": "void SHROUD_update_PyList_vector_int32_t\t(PyObject *out, int32_t *in, size_t size);"
 }
 
@@ -6651,7 +6043,7 @@ static void SHROUD_update_PyList_vector_int32_t
 
 ---------- update_PyList_vector_int64_t ----------
 {
-    "name": "SHROUD_update_PyList_vector_int64_t",
+    "c_fmtname": "SHROUD_update_PyList_vector_int64_t",
     "proto": "void SHROUD_update_PyList_vector_int64_t\t(PyObject *out, int64_t *in, size_t size);"
 }
 
@@ -6673,7 +6065,7 @@ static void SHROUD_update_PyList_vector_int64_t
 
 ---------- update_PyList_vector_int8_t ----------
 {
-    "name": "SHROUD_update_PyList_vector_int8_t",
+    "c_fmtname": "SHROUD_update_PyList_vector_int8_t",
     "proto": "void SHROUD_update_PyList_vector_int8_t\t(PyObject *out, int8_t *in, size_t size);"
 }
 
@@ -6695,7 +6087,7 @@ static void SHROUD_update_PyList_vector_int8_t
 
 ---------- update_PyList_vector_long ----------
 {
-    "name": "SHROUD_update_PyList_vector_long",
+    "c_fmtname": "SHROUD_update_PyList_vector_long",
     "proto": "void SHROUD_update_PyList_vector_long\t(PyObject *out, long *in, size_t size);"
 }
 
@@ -6717,7 +6109,7 @@ static void SHROUD_update_PyList_vector_long
 
 ---------- update_PyList_vector_long_long ----------
 {
-    "name": "SHROUD_update_PyList_vector_long_long",
+    "c_fmtname": "SHROUD_update_PyList_vector_long_long",
     "proto": "void SHROUD_update_PyList_vector_long_long\t(PyObject *out, long long *in, size_t size);"
 }
 
@@ -6739,7 +6131,7 @@ static void SHROUD_update_PyList_vector_long_long
 
 ---------- update_PyList_vector_short ----------
 {
-    "name": "SHROUD_update_PyList_vector_short",
+    "c_fmtname": "SHROUD_update_PyList_vector_short",
     "proto": "void SHROUD_update_PyList_vector_short\t(PyObject *out, short *in, size_t size);"
 }
 
@@ -6761,7 +6153,7 @@ static void SHROUD_update_PyList_vector_short
 
 ---------- update_PyList_vector_size_t ----------
 {
-    "name": "SHROUD_update_PyList_vector_size_t",
+    "c_fmtname": "SHROUD_update_PyList_vector_size_t",
     "proto": "void SHROUD_update_PyList_vector_size_t\t(PyObject *out, size_t *in, size_t size);"
 }
 
@@ -6783,7 +6175,7 @@ static void SHROUD_update_PyList_vector_size_t
 
 ---------- update_PyList_vector_uint16_t ----------
 {
-    "name": "SHROUD_update_PyList_vector_uint16_t",
+    "c_fmtname": "SHROUD_update_PyList_vector_uint16_t",
     "proto": "void SHROUD_update_PyList_vector_uint16_t\t(PyObject *out, uint16_t *in, size_t size);"
 }
 
@@ -6805,7 +6197,7 @@ static void SHROUD_update_PyList_vector_uint16_t
 
 ---------- update_PyList_vector_uint32_t ----------
 {
-    "name": "SHROUD_update_PyList_vector_uint32_t",
+    "c_fmtname": "SHROUD_update_PyList_vector_uint32_t",
     "proto": "void SHROUD_update_PyList_vector_uint32_t\t(PyObject *out, uint32_t *in, size_t size);"
 }
 
@@ -6827,7 +6219,7 @@ static void SHROUD_update_PyList_vector_uint32_t
 
 ---------- update_PyList_vector_uint64_t ----------
 {
-    "name": "SHROUD_update_PyList_vector_uint64_t",
+    "c_fmtname": "SHROUD_update_PyList_vector_uint64_t",
     "proto": "void SHROUD_update_PyList_vector_uint64_t\t(PyObject *out, uint64_t *in, size_t size);"
 }
 
@@ -6849,7 +6241,7 @@ static void SHROUD_update_PyList_vector_uint64_t
 
 ---------- update_PyList_vector_uint8_t ----------
 {
-    "name": "SHROUD_update_PyList_vector_uint8_t",
+    "c_fmtname": "SHROUD_update_PyList_vector_uint8_t",
     "proto": "void SHROUD_update_PyList_vector_uint8_t\t(PyObject *out, uint8_t *in, size_t size);"
 }
 
@@ -6871,7 +6263,7 @@ static void SHROUD_update_PyList_vector_uint8_t
 
 ---------- update_PyList_vector_unsigned_int ----------
 {
-    "name": "SHROUD_update_PyList_vector_unsigned_int",
+    "c_fmtname": "SHROUD_update_PyList_vector_unsigned_int",
     "proto": "void SHROUD_update_PyList_vector_unsigned_int\t(PyObject *out, unsigned int *in, size_t size);"
 }
 
@@ -6893,7 +6285,7 @@ static void SHROUD_update_PyList_vector_unsigned_int
 
 ---------- update_PyList_vector_unsigned_long ----------
 {
-    "name": "SHROUD_update_PyList_vector_unsigned_long",
+    "c_fmtname": "SHROUD_update_PyList_vector_unsigned_long",
     "proto": "void SHROUD_update_PyList_vector_unsigned_long\t(PyObject *out, unsigned long *in, size_t size);"
 }
 
@@ -6915,7 +6307,7 @@ static void SHROUD_update_PyList_vector_unsigned_long
 
 ---------- update_PyList_vector_unsigned_long_long ----------
 {
-    "name": "SHROUD_update_PyList_vector_unsigned_long_long",
+    "c_fmtname": "SHROUD_update_PyList_vector_unsigned_long_long",
     "proto": "void SHROUD_update_PyList_vector_unsigned_long_long\t(PyObject *out, unsigned long long *in, size_t size);"
 }
 
@@ -6937,7 +6329,7 @@ static void SHROUD_update_PyList_vector_unsigned_long_long
 
 ---------- update_PyList_vector_unsigned_short ----------
 {
-    "name": "SHROUD_update_PyList_vector_unsigned_short",
+    "c_fmtname": "SHROUD_update_PyList_vector_unsigned_short",
     "proto": "void SHROUD_update_PyList_vector_unsigned_short\t(PyObject *out, unsigned short *in, size_t size);"
 }
 
@@ -6956,102 +6348,3 @@ static void SHROUD_update_PyList_vector_unsigned_short
     }
 }
 ##### end update_PyList_vector_unsigned_short source
-
----------- vector_string_allocatable ----------
-{
-    "api": "c",
-    "dependent_helpers": [
-        "capsule_data_helper",
-        "array_context",
-        "vector_string_out"
-    ],
-    "name": "LIB_ShroudVectorStringAllocatable",
-    "proto": "void LIB_ShroudVectorStringAllocatable(LIB_SHROUD_array *dest, LIB_SHROUD_capsule_data *src);",
-    "scope": "cwrap_impl"
-}
-
-##### start vector_string_allocatable source
-
-// helper vector_string_allocatable
-// Copy the std::vector<std::string> into Fortran array.
-// Called by Fortran to deal with allocatable character.
-// out is already blank filled.
-void LIB_ShroudVectorStringAllocatable(LIB_SHROUD_array *dest, LIB_SHROUD_capsule_data *src)
-{
-    std::vector<std::string> *cxxvec =
-        static_cast< std::vector<std::string> * >(src->addr);
-    LIB_ShroudVectorStringOut(dest, *cxxvec);
-}
-
-##### end vector_string_allocatable source
-
----------- vector_string_out ----------
-{
-    "api": "cxx",
-    "cxx_include": [
-        "<cstring>",
-        "<cstddef>"
-    ],
-    "dependent_helpers": [
-        "array_context"
-    ],
-    "name": "LIB_ShroudVectorStringOut",
-    "proto": "void LIB_ShroudVectorStringOut(LIB_SHROUD_array *outdesc, std::vector<std::string> &in);",
-    "proto_include": [
-        "<string>",
-        "<vector>"
-    ],
-    "scope": "cwrap_impl"
-}
-
-##### start vector_string_out source
-
-// helper vector_string_out
-// Copy the std::vector<std::string> into Fortran array argument.
-// Called by C++.
-void LIB_ShroudVectorStringOut(LIB_SHROUD_array *outdesc, std::vector<std::string> &in)
-{
-    size_t nvect = outdesc->size;
-    size_t len = outdesc->elem_len;
-    char *dest = static_cast<char *>(outdesc->base_addr);
-    // Clear user memory
-    std::memset(dest, ' ', nvect*len);
-
-    // Copy into user memory
-    nvect = std::min(nvect, in.size());
-    //char *dest = static_cast<char *>(outdesc->cxx.addr);
-    for (size_t i = 0; i < nvect; ++i) {
-        std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));
-        dest += outdesc->elem_len;
-    }
-}
-
-##### end vector_string_out source
-
----------- vector_string_out_len ----------
-{
-    "api": "cxx",
-    "name": "LIB_ShroudVectorStringOutSize",
-    "proto": "size_t LIB_ShroudVectorStringOutSize(std::vector<std::string> &in);",
-    "proto_include": [
-        "<string>",
-        "<vector>"
-    ],
-    "scope": "cwrap_impl"
-}
-
-##### start vector_string_out_len source
-
-// helper vector_string_out_len
-// Return the maximum string length in a std::vector<std::string>.
-size_t LIB_ShroudVectorStringOutSize(std::vector<std::string> &in)
-{
-    size_t nvect = in.size();
-    size_t len = 0;
-    for (size_t i = 0; i < nvect; ++i) {
-        len = std::max(len, in[i].length());
-    }
-    return len;
-}
-
-##### end vector_string_out_len source

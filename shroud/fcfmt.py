@@ -13,7 +13,6 @@ from .declstr import gen_arg_as_c, gen_arg_as_cxx
 from . import todict
 from . import statements
 from . import util
-from . import whelpers
 from .util import wformat, append_format
 
 import collections
@@ -745,12 +744,22 @@ class FillFormat(object):
                 fmt.f_char_type = wformat("character(len={f_var_cdesc}%elem_len) ::\t ", fmt)
 
     def apply_c_helpers_from_stmts(self, node, bind):
+        """
+        Parameters:
+          node - ast.FunctionNode
+          bind - statements.BindArg
+        """
         stmt = bind.stmt
         fmt = bind.fmtdict
         node_helpers = node.helpers.setdefault("c", {})
         add_c_helper(node_helpers, stmt.c_helper, fmt)
 
     def apply_helpers_from_stmts(self, node, bind):
+        """
+        Parameters:
+          node - ast.FunctionNode
+          bind - statements.BindArg
+        """
         stmt = bind.stmt
         fmt = bind.fmtdict
         node_helpers = node.helpers.setdefault("c", {})
@@ -759,30 +768,30 @@ class FillFormat(object):
         add_f_helper(node_helpers, stmt.f_helper, fmt)
         
 def add_c_helper(node_helpers, helpers, fmt):
-    """Add a list of C helpers."""
+    """Add a list of C helpers.
+    Add fmt.c_helper_{c_fmtname} for use by pre_call and post_call.
+    """
     for c_helper in helpers:
         helper = wformat(c_helper, fmt)
-        if helper not in whelpers.CHelpers:
-            error.get_cursor().warning("No such c_helper '{}'".format(helper))
-        else:
+        helper_info = statements.lookup_fc_helper(helper, "c_helper")
+        if helper_info.name != "h_mixin_unknown":
             node_helpers[helper] = True
-            name = whelpers.CHelpers[helper].get("name")
-            if name:
-                setattr(fmt, "c_helper_" + helper, name)
+            fmtname = helper_info.c_fmtname
+            if fmtname:
+                setattr(fmt, "c_helper_" + helper, fmtname)
 
 def add_f_helper(node_helpers, helpers, fmt):
     """Add a list of Fortran helpers.
-    Add fmt.fhelper_X for use by pre_call and post_call.
+    Add fmt.f_helper_{f_fmtname} for use by pre_call and post_call.
     """
     for f_helper in helpers:
         helper = wformat(f_helper, fmt)
-        if helper not in whelpers.FHelpers:
-            error.get_cursor().warning("No such f_helper '{}'".format(helper))
-        else:
+        helper_info = statements.lookup_fc_helper(helper, "f_helper")
+        if helper_info.name != "h_mixin_unknown":
             node_helpers[helper] = True
-            name = whelpers.FHelpers[helper].get("name")
-            if name:
-                setattr(fmt, "f_helper_" + helper, name)
+            fmtname = helper_info.f_fmtname
+            if fmtname:
+                setattr(fmt, "f_helper_" + helper, fmtname)
 
 
 ######################################################################

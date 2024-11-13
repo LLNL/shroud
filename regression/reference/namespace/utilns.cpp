@@ -28,7 +28,6 @@ void NS_ShroudCopyString(NS_SHROUD_array *data, char *c_var,
     std::memcpy(c_var, cxx_var, n);
 }
 
-
 // Release library allocated memory.
 void NS_SHROUD_memory_destructor(NS_SHROUD_capsule_data *cap)
 {

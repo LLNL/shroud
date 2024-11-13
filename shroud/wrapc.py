@@ -21,7 +21,6 @@ from . import fcfmt
 from . import todict
 from . import statements
 from . import typemap
-from . import whelpers
 from . import util
 from .statements import get_func_bind, get_arg_bind
 from .util import append_format, wformat
@@ -251,43 +250,35 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
             return  # avoid recursion
         done[name] = True
 
-        helper_info = whelpers.CHelpers[name]
-        if "dependent_helpers" in helper_info:
-            for dep in helper_info["dependent_helpers"]:
-                # check for recursion
-                self._gather_helper_code(dep, done)
+        helper_info = statements.lookup_fc_helper(name)
+
+        for dep in helper_info.dependent_helpers:
+            # check for recursion
+            self._gather_helper_code(dep, done)
 
         if self.language == "c":
-            lang_include = "c_include"
-            lang_source = "c_source"
+            lang_include = helper_info.c_include or helper_info.include
+            lang_source = helper_info.c_source or helper_info.source
         else:
-            lang_include = "cxx_include"
-            lang_source = "cxx_source"
+            lang_include = helper_info.cxx_include or helper_info.include
+            lang_source = helper_info.cxx_source or helper_info.source
 
-#        api = helper_info.get("api", self.language)
 # XXX - For historical reasons, default to c
-        api = helper_info.get("api", "c")
-        scope = helper_info.get("scope", "file")
-        if lang_include in helper_info:
-            for include in helper_info[lang_include]:
-                self.helper_include[scope][include] = True
-        elif "include" in helper_info:
-            for include in helper_info["include"]:
-                self.helper_include[scope][include] = True
+        api = helper_info.api or "c"
+        scope = helper_info.scope or "file"
 
-        if lang_source in helper_info:
-            self.helper_summary[api][scope].append(helper_info[lang_source])
-        elif "source" in helper_info:
-            self.helper_summary[api][scope].append(helper_info["source"])
+        for include in lang_include:
+            self.helper_include[scope][include] = True
 
-        proto = helper_info.get("proto")
+        if lang_source:
+            self.helper_summary[api][scope].extend(lang_source)
+
+        proto = helper_info.proto
         if proto:
             self.helper_summary[api]["proto"].append(proto)
 
-        proto_include = helper_info.get("proto_include")
-        if proto_include:
-            for include in proto_include:
-                self.helper_summary[api]["proto_include"][include] = True
+        for include in helper_info.proto_include:
+            self.helper_summary[api]["proto_include"][include] = True
 
     def gather_helper_code(self, helpers):
         """Gather up all helpers requested.

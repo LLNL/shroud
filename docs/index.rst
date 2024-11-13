@@ -54,6 +54,7 @@ Contents
    statements
    cstatements
    fstatements
+   helpers
    reference
    releases
    previouswork

@@ -18,8 +18,8 @@
 // blank fill dest starting at trailing NULL.
 static void ShroudCharBlankFill(char *dest, int ndest)
 {
-   int nm = strlen(dest);
-   if(ndest > nm) memset(dest+nm,' ',ndest-nm);
+    int nm = strlen(dest);
+    if(ndest > nm) memset(dest+nm,' ',ndest-nm);
 }
 
 // splicer begin C_definitions

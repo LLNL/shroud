@@ -38,24 +38,24 @@ static int ShroudCharLenTrim(const char *src, int nsrc) {
 // If blanknull is 1, return NULL when string is blank.
 static char *ShroudCharAlloc(const char *src, int nsrc, int blanknull)
 {
-   int ntrim = ShroudCharLenTrim(src, nsrc);
-   if (ntrim == 0 && blanknull == 1) {
-     return NULL;
-   }
-   char *rv = malloc(nsrc + 1);
-   if (ntrim > 0) {
-     memcpy(rv, src, ntrim);
-   }
-   rv[ntrim] = '\0';
-   return rv;
+    int ntrim = ShroudCharLenTrim(src, nsrc);
+    if (ntrim == 0 && blanknull == 1) {
+        return NULL;
+    }
+    char *rv = (char *) malloc(nsrc + 1);
+    if (ntrim > 0) {
+        memcpy(rv, src, ntrim);
+    }
+    rv[ntrim] = '\0';
+    return rv;
 }
 
 // helper char_blank_fill
 // blank fill dest starting at trailing NULL.
 static void ShroudCharBlankFill(char *dest, int ndest)
 {
-   int nm = strlen(dest);
-   if(ndest > nm) memset(dest+nm,' ',ndest-nm);
+    int nm = strlen(dest);
+    if(ndest > nm) memset(dest+nm,' ',ndest-nm);
 }
 
 // helper ShroudCharCopy
@@ -64,23 +64,23 @@ static void ShroudCharBlankFill(char *dest, int ndest)
 // dest will not be NULL terminated.
 static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
 {
-   if (src == NULL) {
-     memset(dest,' ',ndest); // convert NULL pointer to blank filled string
-   } else {
-     if (nsrc < 0) nsrc = strlen(src);
-     int nm = nsrc < ndest ? nsrc : ndest;
-     memcpy(dest,src,nm);
-     if(ndest > nm) memset(dest+nm,' ',ndest-nm); // blank fill
-   }
+    if (src == NULL) {
+        memset(dest,' ',ndest); // convert NULL pointer to blank filled string
+    } else {
+        if (nsrc < 0) nsrc = strlen(src);
+        int nm = nsrc < ndest ? nsrc : ndest;
+        memcpy(dest,src,nm);
+        if(ndest > nm) memset(dest+nm,' ',ndest-nm); // blank fill
+    }
 }
 
 // helper char_free
 // Release memory allocated by ShroudCharAlloc
 static void ShroudCharFree(char *src)
 {
-   if (src != NULL) {
-     free(src);
-   }
+    if (src != NULL) {
+        free(src);
+    }
 }
 
 // splicer begin C_definitions

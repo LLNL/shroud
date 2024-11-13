@@ -2126,7 +2126,7 @@ return 1;""",
         """
         self.c_helper[name] = True
         # Adjust for alias like with type char.
-        return whelpers.CHelpers[name]["name"]
+        return whelpers.PYHelpers[name]["c_fmtname"]
         
     def _gather_helper_code(self, name, done):
         """Add code from helpers.
@@ -2142,7 +2142,7 @@ return 1;""",
             return  # avoid recursion
         done[name] = True
 
-        helper_info = whelpers.CHelpers[name]
+        helper_info = whelpers.PYHelpers[name]
         if "dependent_helpers" in helper_info:
             for dep in helper_info["dependent_helpers"]:
                 # check for recursion

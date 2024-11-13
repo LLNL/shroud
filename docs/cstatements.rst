@@ -285,9 +285,7 @@ the name of the function or type created by the helper.
 The format value is the helper name prefixed by *c_helper_*.
 For example, format field *c_helper_capsule_data_helper* may be ``TEM_SHROUD_capsule_data``.
 
-There is no current way to add additional helper functions.
-
-.. These functions are defined in whelper.py.
+See :ref:`HelpersAnchor` for a description of helper functions.
 
 c_need_wrapper
 ^^^^^^^^^^^^^^
