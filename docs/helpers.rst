@@ -120,7 +120,7 @@ fmtdict
 ^^^^^^^
 
 A dictionary which will be formatted and added to the common format dictionary
-used to process the helpers.
+used to preprocess the helpers.
 
 api
 ^^^
