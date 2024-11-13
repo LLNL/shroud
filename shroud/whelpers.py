@@ -7,7 +7,7 @@
 
 C helper functions which may be added to a implementation file.
 
- fmtname     = name of function created by the helper.
+ c_fmtname     = name of function created by the helper.
                ex. SHROUD_get_from_object_char_{numpy,list}
  need_numpy  = If True, NumPy headers will be added.
  scope
@@ -109,7 +109,7 @@ def add_external_helpers(fmt, symtab):
     fmt.hname = name
     fmt.hnamefunc = wformat("FREE_{hname}", fmt)
     PYHelpers[name] = dict(
-        fmtname=fmt.hnamefunc,
+        c_fmtname=fmt.hnamefunc,
         source=wformat(
             """
 // helper {hname}
@@ -134,7 +134,7 @@ if (in != {nullptr}) {{+
     fmt.hnameproto = wformat(
             "int {hnamefunc}\t(PyObject *obj,\t {PY_typedef_converter} *value)", fmt)
     PYHelpers[name] = dict(
-        fmtname=fmt.hnamefunc,
+        c_fmtname=fmt.hnamefunc,
         dependent_helpers=["PY_converter_type"],
         proto=fmt.hnameproto + ";",
         source=wformat("""
@@ -198,11 +198,11 @@ return 1;
     # There are no 'list' or 'numpy' version of these functions.
     # Use the one-true-version get_from_object_char.
     PYHelpers['get_from_object_char_list'] = dict(
-        fmtname=fmt.hnamefunc,
+        c_fmtname=fmt.hnamefunc,
         dependent_helpers=[name],
     )
     PYHelpers['get_from_object_char_numpy'] = dict(
-        fmtname=fmt.hnamefunc,
+        c_fmtname=fmt.hnamefunc,
         dependent_helpers=[name],
     )
 
@@ -227,7 +227,7 @@ return 1;
     fmt.hnameproto = wformat(
             "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t char *in,\t Py_ssize_t insize)", fmt)
     PYHelpers[name] = dict(
-        fmtname=fmt.hnamefunc,
+        c_fmtname=fmt.hnamefunc,
         dependent_helpers=["get_from_object_char"],
         c_include=["<string.h>"],
         cxx_include=["<cstring>"],
@@ -265,11 +265,11 @@ return 0;
     # There are no 'list' or 'numpy' version of these functions.
     # Use the one-true-version SHROUD_get_from_object_charptr.
     PYHelpers['get_from_object_charptr_list'] = dict(
-        fmtname=fmt.hnamefunc,
+        c_fmtname=fmt.hnamefunc,
         dependent_helpers=[name],
     )
     PYHelpers['get_from_object_charptr_numpy'] = dict(
-        fmtname=fmt.hnamefunc,
+        c_fmtname=fmt.hnamefunc,
         dependent_helpers=[name],
     )
 
@@ -393,7 +393,7 @@ PyList_SET_ITEM(out, i, {Py_ctor});
     fmt.hnameproto = wformat(
         "int {hnamefunc}\t(PyObject *obj,\t {PY_typedef_converter} *value)", fmt)
     helper = dict(
-        fmtname=fmt.hnamefunc,
+        c_fmtname=fmt.hnamefunc,
         dependent_helpers=["PY_converter_type"],
         need_numpy=True,
         proto=fmt.hnameproto + ";",
@@ -439,7 +439,7 @@ def fill_from_PyObject_list(fmt):
             "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t "
             "{c_type} *in,\t Py_ssize_t insize)", fmt)
     helper = dict(
-        fmtname=fmt.hnamefunc,
+        c_fmtname=fmt.hnamefunc,
         proto=fmt.hnameproto + ";",
         source=wformat(
                 """
@@ -497,7 +497,7 @@ def fill_from_PyObject_numpy(fmt):
     fmt.py_tmp = "array"
     fmt.numpy_type
     helper = dict(
-        fmtname=fmt.hnamefunc,
+        c_fmtname=fmt.hnamefunc,
         proto=fmt.hnameproto + ";",
         need_numpy=True,
         source=wformat(
@@ -547,7 +547,7 @@ def create_to_PyList(fmt):
     fmt.hnameproto = wformat(
         "PyObject *{hnamefunc}\t({c_const}{c_type} *in, size_t size)", fmt)
     helper = dict(
-        fmtname=fmt.hnamefunc,
+        c_fmtname=fmt.hnamefunc,
         proto=fmt.hnameproto + ";",
         source=wformat(
             """
@@ -574,9 +574,9 @@ def create_get_from_object_list(fmt):
     """
     fmt.hnameproto = wformat(
             "int {hnamefunc}\t(PyObject *obj,\t {PY_typedef_converter} *value)", fmt)
-    fmt.dtor_helper = PYHelpers["py_capsule_dtor"]["fmtname"]
+    fmt.dtor_helper = PYHelpers["py_capsule_dtor"]["c_fmtname"]
     helper = dict(
-        fmtname=fmt.hnamefunc,
+        c_fmtname=fmt.hnamefunc,
         dependent_helpers=[
             "PY_converter_type",
             "py_capsule_dtor",
@@ -635,9 +635,9 @@ def create_get_from_object_list_charptr(fmt):
     """
     fmt.hnameproto = wformat(
             "int {hnamefunc}\t(PyObject *obj,\t {PY_typedef_converter} *value)", fmt)
-    fmt.__helper = PYHelpers["get_from_object_char"]["fmtname"]
+    fmt.__helper = PYHelpers["get_from_object_char"]["c_fmtname"]
     helper = dict(
-        fmtname=fmt.hnamefunc,
+        c_fmtname=fmt.hnamefunc,
         dependent_helpers=[
             "PY_converter_type",
             "get_from_object_char",
@@ -734,7 +734,7 @@ def add_to_PyList_helper_vector(fmt, ntypemap):
     fmt.hnamefunc = wformat("{PY_helper_prefix}{hname}", fmt)
     fmt.hnameproto = wformat("PyObject *{hnamefunc}\t(std::vector<{c_type}> & in)", fmt)
     helper = dict(
-        fmtname=fmt.hnamefunc,
+        c_fmtname=fmt.hnamefunc,
         proto=fmt.hnameproto + ";",
         source=wformat(
             """
@@ -768,7 +768,7 @@ return out;
     fmt.hnameproto = wformat(
         "void {hnamefunc}\t(PyObject *out, {c_type} *in, size_t size)", fmt)
     helper = dict(
-        fmtname=fmt.hnamefunc,
+        c_fmtname=fmt.hnamefunc,
         proto=fmt.hnameproto + ";",
         source=wformat(
             """
@@ -810,7 +810,7 @@ PyList_SET_ITEM(out, i, {Py_ctor});
     fmt.hnameproto = wformat(
         "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t std::vector<{cxx_type}> & in)", fmt)
     helper = dict(
-        fmtname=fmt.hnamefunc,
+        c_fmtname=fmt.hnamefunc,
 ##-        cxx_include=["<cstdlib>"],  # malloc/free
         cxx_proto=fmt.hnameproto + ";",
         cxx_source=wformat(
@@ -924,14 +924,7 @@ def apply_fmtdict_from_helpers(helper, fmt):
         if field in helper:
             helper[field] = [wformat(line, fmt) for line in helper[field]]
             
-    for field in [
-            # general
-            "fmtname",
-            "c_fmtname",
-            "f_fmtname",
-            # C
-            "proto",
-            ]:
+    for field in ["c_fmtname", "f_fmtname", "proto"]:
         if field in helper:
             helper[field] = wformat(helper[field], fmt)
     
