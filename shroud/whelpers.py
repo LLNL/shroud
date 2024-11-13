@@ -144,7 +144,6 @@ def add_all_helpers(library):
     fmt.f_lend = ""
     statements.add_json_fc_helpers(fmt)
     add_external_helpers(fmt, symtab)
-    add_capsule_helper(fmt)
     for ntypemap in symtab.typemaps.values():
         if ntypemap.sgroup == "native":
             add_to_PyList_helper(fmt, ntypemap)
@@ -364,128 +363,6 @@ size_t size;
     )
     
 ######################################################################
-
-def add_capsule_helper(fmt):
-    """Share info with C++ to allow Fortran to release memory.
-
-    Used with shadow classes and std::vector.
-    """
-    name = "capsule_data_helper"
-    helper = dict(
-        name="capsule_data_helper",
-        f_fmtname="{F_capsule_data_type}",
-        derived_type=[
-            "",
-            "{f_lstart}! helper {hname}",
-            "type, bind(C) :: {F_capsule_data_type}+",
-            "type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory",
-            "integer(C_INT) :: idtor = 0       ! index of destructor",
-            "-end type {F_capsule_data_type}{f_lend}",
-        ],
-        modules=dict(iso_c_binding=["C_PTR", "C_INT", "C_NULL_PTR"]),
-
-        scope="cwrap_include",
-        source=[
-            "",
-            "// helper {hname}",
-            "struct s_{C_capsule_data_type} {{+",
-            "void *addr;     /* address of C++ memory */",
-            "int idtor;      /* index of destructor */",
-            "-}};",
-            "typedef struct s_{C_capsule_data_type} {C_capsule_data_type};",
-        ],
-    )
-    apply_fmtdict_from_helpers(helper, fmt)
-    FCHelpers[name] = helper
-
-    ########################################
-    name = "capsule_helper"
-#    fmt.__helper = FCHelpers["capsule_dtor"]["f_fmtname"]   # XXXX fix for JSON
-    # XXX split helper into to parts, one for each derived type
-    helper = dict(
-        name="capsule_helper",
-        dependent_helpers=["capsule_data_helper", "capsule_dtor"],
-        derived_type=[
-            "",
-            "! helper {hname}",
-            "type :: {F_capsule_type}+",
-            "private",
-            "type({F_capsule_data_type}) :: mem",
-            "-contains",
-            "+final :: {F_capsule_final_function}",
-            "procedure :: delete => {F_capsule_delete_function}",
-            "-end type {F_capsule_type}",
-        ],
-        # cannot be declared with both PRIVATE and BIND(C) attributes
-        f_source=[
-            "",
-            "! helper {hname}",
-            "! finalize a static {F_capsule_data_type}",
-            "subroutine {F_capsule_final_function}(cap)+",
-            "type({F_capsule_type}), intent(INOUT) :: cap",
-            "call {fnamefunc_capsule_dtor}(cap%mem)",
-            "-end subroutine {F_capsule_final_function}",
-            "",
-            "subroutine {F_capsule_delete_function}(cap)+",
-            "class({F_capsule_type}) :: cap",
-            "call {fnamefunc_capsule_dtor}(cap%mem)",
-            "-end subroutine {F_capsule_delete_function}",
-        ],
-    )
-    apply_fmtdict_from_helpers(helper, fmt)
-    FCHelpers[name] = helper
-
-    ########################################
-    name = "array_context"
-    helper = dict(
-        name="array_context",
-        c_fmtname=fmt.C_array_type,
-        scope="cwrap_include",
-        include=["<stddef.h>"],
-        # Create a union for addr to avoid some casts.
-        # And help with debugging since ccharp will display contents.
-        source=[
-            "",
-            "{c_lstart}// helper {hname}",
-            "struct s_{C_array_type} {{+",
-            "void * base_addr;",
-            "int type;        /* type of element */",
-            "size_t elem_len; /* bytes-per-item or character len in c++ */",
-            "size_t size;     /* size of data in c++ */",
-            "int rank;        /* number of dimensions, 0=scalar */",
-            "long shape[7];",
-            "-}};",
-            "typedef struct s_{C_array_type} {C_array_type};{c_lend}",
-        ],
-        dependent_helpers=["type_defines"], # used with type field
-    # Create a derived type used to communicate with C wrapper.
-    # Should never be exposed to user.
-    # Inspired by futher interoperability with C.
-    # XXX - shape is C_LONG, maybe it should be C_PTRDIFF_T.
-        f_fmtname=fmt.F_array_type,
-        derived_type=[
-            "",
-            "{f_lstart}! helper {hname}",
-            "type, bind(C) :: {F_array_type}+",
-            "! address of data",
-            "type(C_PTR) :: base_addr = C_NULL_PTR",
-            "! type of element",
-            "integer(C_INT) :: type",
-            "! bytes-per-item or character len of data in cxx",
-            "integer(C_SIZE_T) :: elem_len = 0_C_SIZE_T",
-            "! size of data in cxx",
-            "integer(C_SIZE_T) :: size = 0_C_SIZE_T",
-            "! number of dimensions",
-            "integer(C_INT) :: rank = -1",
-            "integer(C_LONG) :: shape(7) = 0",
-            "-end type {F_array_type}{f_lend}",
-        ],
-        modules=dict(iso_c_binding=[
-            "C_NULL_PTR", "C_PTR", "C_SIZE_T", "C_INT", "C_LONG"]),
-    )
-    apply_fmtdict_from_helpers(helper, fmt)
-    FCHelpers[name] = helper
-
 
 def add_to_PyList_helper(fmt, ntypemap):
     """Add helpers to work with Python lists.
@@ -1084,14 +961,6 @@ def write_c_helpers(fp):
     wrapper.indent = 0
     wrapper.cont = ""
     output = gather_helpers(fp, wrapper, PYHelpers, fc_lines)
-
-def write_f_helpers(fp):
-    wrapper = util.WrapperMixin()
-    wrapper.linelen = 72
-    wrapper.indent = 0
-    wrapper.cont = "&"
-    output = gather_helpers(fp, wrapper, FCHelpers, fc_lines)
-
 
 def apply_fmtdict_from_helpers(helper, fmt):
     """Apply fmtdict field from helpers

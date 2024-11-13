@@ -655,9 +655,6 @@ def main_with_args(args):
         hfile = os.path.join(args.logdir, args.write_helpers + ".c")
         with open(hfile, "w") as fp:
             whelpers.write_c_helpers(fp)
-        hfile = os.path.join(args.logdir, args.write_helpers + ".f")
-        with open(hfile, "w") as fp:
-            whelpers.write_f_helpers(fp)
 
     if args.write_statements:
         os.chdir(args.logdir)
