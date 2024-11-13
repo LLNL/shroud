@@ -14276,7 +14276,6 @@ h_helper_array_string_allocatable:
   - "std::string *cxxvec =\t static_cast< std::string *>\t(src->addr);"
   - LIB_ShroudArrayStringOut(dest, cxxvec, dest->size);
   - -}
-  - ''
   f_fmtname: LIB_SHROUD_array_string_allocatable
   interface:
   - ''

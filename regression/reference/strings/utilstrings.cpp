@@ -31,7 +31,6 @@ void STR_ShroudArrayStringAllocatable(STR_SHROUD_array *dest, STR_SHROUD_capsule
 }
 // end helper array_string_allocatable
 
-
 // start helper copy_string
 // helper copy_string
 // Copy the char* or std::string in context into c_var.

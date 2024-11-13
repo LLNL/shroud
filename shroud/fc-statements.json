@@ -5604,8 +5604,7 @@
             "{{+",
             "std::string *cxxvec =\t static_cast< std::string *>\t(src->addr);",
             "{cnamefunc_array_string_out}(dest, cxxvec, dest->size);",
-            "-}}{c_lend}",
-            ""
+            "-}}{c_lend}"
         ],
 
         "f_fmtname": "{fnamefunc}",
