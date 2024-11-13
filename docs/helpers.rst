@@ -14,8 +14,76 @@ needed by many wrappers. This keeps the individual wrappers simpler
 while sharing code among wrappers. Helpers may be in C or
 Fortran. They can also provide a Fortran interface to a C function.
 
+Helper code can be inserted in several files and several locations.
+
+.. code-block:: c++
+
+    // file C_header_util
+
+    // scope=cwrap_include include
+
+    #ifdef __cplusplus
+    extern "C" {
+    #endif
+
+    // api=c scope=cwrap_include source
+
+    // api=c proto
+
+    #ifdef __cplusplus
+    }
+    #endif
+
+    // api=c++ proto_include
+    // api=c++ proto
 
 
+.. code-block:: c++
+
+    // file C_impl_util
+
+    #ifdef __cplusplus
+    extern "C" {
+    #endif
+
+    // api=c scope=cwrap_impl source
+
+    #ifdef __cplusplus
+    }
+    #endif
+
+    // api=c++ scope=cwrap_impl source
+
+
+.. code-block:: c++
+
+    // wrapper implementation file
+
+    // scope=cwrap_include include
+
+    // api=cxx scope=file source
+
+    extern "C" {
+    // api=c scope=file source
+
+.. code-block:: fortran
+
+    module name
+                
+    ! modules
+    use module, only : symbol
+                
+    ! derived_type
+
+    ! interface_lines
+
+    contains
+
+    ! f_source
+
+    end module name
+                
+.. helper_summary
 
 Listed in the statements.c_helper and f_helper fields.
 The C helpers are written after creating the Fortran wrappers by 
