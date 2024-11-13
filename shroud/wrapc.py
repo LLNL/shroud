@@ -263,9 +263,7 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
             lang_include = helper_info.cxx_include or helper_info.include
             lang_source = helper_info.cxx_source or helper_info.source
 
-#        api = helper_info.get("api", self.language)
 # XXX - For historical reasons, default to c
-# XXX - deal with dict and Scope for now.
         api = helper_info.api or "c"
         scope = helper_info.scope or "file"
 

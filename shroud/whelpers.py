@@ -899,7 +899,7 @@ def write_c_helpers(fp):
     wrapper.linelen = 72
     wrapper.indent = 0
     wrapper.cont = ""
-    output = gather_helpers(fp, wrapper, PYHelpers, fc_lines)
+    output = gather_helpers(fp, wrapper, PYHelpers, c_lines)
 
 def apply_fmtdict_from_helpers(helper, fmt):
     """Apply fmtdict field from helpers

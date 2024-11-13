@@ -89,10 +89,20 @@ Listed in the statements.c_helper and f_helper fields.
 The C helpers are written after creating the Fortran wrappers by 
 clibrary.write_impl_utility function.
 
+The helpers will be preprocessed using format to expand some fields.
+All helpers use the same dictionary. This allows a helper to add a field
+using *fmtdict* which can be used by later helpers.
+The format dictionary's parent is the library's format dictionary.
+This give the helpers access to global names such as *C_array_type* and
+*F_array_type*.
+
+Fields which are formatted will need to follow the formatting rules.
+The most common is that  ``{{`` is required to insert a literal ``{``.
+Otherwise, it is assumed to be a format field.
+
 
 Fields
 ------
-
 
 c_fmtname / f_fmtname
 ^^^^^^^^^^^^^^^^^^^^^
@@ -103,6 +113,14 @@ include a prefix to help control namespace/scope.  Useful when two
 helpers create the same function.
 Added to the wrapper's
 format dictionary to allow it to be used in statements.
+
+This field is formatted.
+
+fmtdict
+^^^^^^^
+
+A dictionary which will be formatted and added to the common format dictionary
+used to process the helpers.
 
 api
 ^^^
@@ -140,15 +158,25 @@ cxx_include
 
 List of files to ``#include`` in implementation file when wrapping a C++ library.
 
+source
+^^^^^^
+
+List of lines of code inserted before any wrappers.
+The functions should be file static.
+Used if *c_source* or *cxx_source* is not defined.
+This field is formatted.
+
 c_source
 ^^^^^^^^
 
 Lines of C code used when *language=c*.
+This field is formatted.
 
 cxx_source
 ^^^^^^^^^^
 
 Lines of C++ code used when *language=c++*.
+This field is formatted.
 
 dependent_helpers
 ^^^^^^^^^^^^^^^^^
@@ -160,18 +188,12 @@ proto
 ^^^^^
 
 Prototype for helper function. Must be in the language of *api*.
+This field is formatted.
 
 proto_include
 ^^^^^^^^^^^^^
 
 List of files to ``#include`` before the prototype.
-
-source
-^^^^^^
-
-List of lines of code inserted before any wrappers.
-The functions should be file static.
-Used if *c_source* or *cxx_source* is not defined.
 
 include
 ^^^^^^^
@@ -185,6 +207,7 @@ derived_type
 
 List of lines of Fortran code for a derived type.
 Inserted before interfaces.
+This field is formatted.
 
 .. private   = names for PRIVATE statement
 
@@ -192,9 +215,11 @@ interface
 ^^^^^^^^^
 
 List of lines of Fortran code for ``INTERFACE``.
+This field is formatted.
 
 f_source
 ^^^^^^^^
 
 List of lines of Fortran code for ``CONTAINS``.
+This field is formatted.
 
