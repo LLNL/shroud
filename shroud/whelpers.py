@@ -126,7 +126,6 @@ fstart = "! start "
 fend   = "! end "
 literalinclude = False
 
-FCHelpers = {}
 PYHelpers = {}
 
 

@@ -604,12 +604,14 @@ def update_for_language(stmts, lang):
         if specific in item:
             item.update(item[specific])
 
-def lookup_helper(name):
+def lookup_fc_helper(name, scope="helper"):
+    """Lookup Fortran/C helper.
+    If not found, print error and return h_mixin_unknown.
+    """
     helper = fc_dict.get("h_helper_" + name)
-    if not helper:
-        helper = whelpers.FCHelpers.get(name)
-#        if helper is None:
-#            error.cursor.warning("Unknown helper statement: {}".format(name))
+    if helper is None:
+        helper = fc_dict["h_mixin_unknown"]
+        error.cursor.warning("No such {} '{}'".format(scope, name))
     return helper
 
 def add_json_fc_helpers(fmt):
@@ -872,8 +874,10 @@ HStmts = util.Scope(
     fmtdict={},
     api="",
     c_fmtname="",
+    include=[],
     c_include=[],
     cxx_include=[],
+    proto_include=[],
     scope="",
     proto="",
     source=[],
@@ -882,6 +886,7 @@ HStmts = util.Scope(
     f_fmtname="",
     derived_type=[],
     interface=[],
+    f_source=[],
     modules=None,
     dependent_helpers=[],
 )

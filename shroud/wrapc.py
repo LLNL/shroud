@@ -250,50 +250,37 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
             return  # avoid recursion
         done[name] = True
 
-        helper_info = statements.lookup_helper(name)
+        helper_info = statements.lookup_fc_helper(name)
 
-        dependent_helpers = helper_info.get("dependent_helpers", [])
-        for dep in dependent_helpers:
+        for dep in helper_info.dependent_helpers:
             # check for recursion
             self._gather_helper_code(dep, done)
 
         if self.language == "c":
-            lang_include = "c_include"
-            lang_source = "c_source"
+            lang_include = helper_info.c_include or helper_info.include
+            lang_source = helper_info.c_source or helper_info.source
         else:
-            lang_include = "cxx_include"
-            lang_source = "cxx_source"
+            lang_include = helper_info.cxx_include or helper_info.include
+            lang_source = helper_info.cxx_source or helper_info.source
 
 #        api = helper_info.get("api", self.language)
 # XXX - For historical reasons, default to c
 # XXX - deal with dict and Scope for now.
-        api = helper_info.get("api", "c")
-        if not api:
-            api = "c"
-        scope = helper_info.get("scope", "file")
-        if not scope:
-            scope = "file"
+        api = helper_info.api or "c"
+        scope = helper_info.scope or "file"
 
-        field = helper_info.get(lang_include)
-        if not field:
-            field = helper_info.get("include", [])
-        for include in field:
+        for include in lang_include:
             self.helper_include[scope][include] = True
 
-        field = helper_info.get(lang_source)
-        if not field:
-            field = helper_info.get("source")
-        if field:
-            self.helper_summary[api][scope].extend(field)
+        if lang_source:
+            self.helper_summary[api][scope].extend(lang_source)
 
-        proto = helper_info.get("proto")
+        proto = helper_info.proto
         if proto:
             self.helper_summary[api]["proto"].append(proto)
 
-        proto_include = helper_info.get("proto_include")
-        if proto_include:
-            for include in proto_include:
-                self.helper_summary[api]["proto_include"][include] = True
+        for include in helper_info.proto_include:
+            self.helper_summary[api]["proto_include"][include] = True
 
     def gather_helper_code(self, helpers):
         """Gather up all helpers requested.

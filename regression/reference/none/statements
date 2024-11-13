@@ -14207,6 +14207,8 @@ h_helper_array_context:
   - Inspired by futher interoperability with C.
   - XXX - shape is C_LONG, maybe it should be C_PTRDIFF_T.
   c_fmtname: LIB_SHROUD_array
+  include:
+  - <stddef.h>
   scope: cwrap_include
   source:
   - ''
@@ -14305,6 +14307,9 @@ h_helper_array_string_out:
   cxx_include:
   - <cstring>
   - <cstddef>
+  proto_include:
+  - <string>
+  - <vector>
   scope: cwrap_impl
   proto: void LIB_ShroudArrayStringOut(LIB_SHROUD_array *outdesc, std::string *in,
     size_t nsize);
@@ -14338,6 +14343,9 @@ h_helper_array_string_out_len:
     cnameproto: size_t {cnamefunc}(std::string *in, size_t nsize)
   api: cxx
   c_fmtname: LIB_ShroudArrayStringOutSize
+  proto_include:
+  - <string>
+  - <vector>
   scope: cwrap_impl
   proto: size_t LIB_ShroudArrayStringOutSize(std::string *in, size_t nsize);
   source:
@@ -14420,6 +14428,19 @@ h_helper_capsule_helper:
   - '+final :: SHROUD_capsule_final'
   - 'procedure :: delete => SHROUD_capsule_delete'
   - -end type LIB_SHROUD_capsule
+  f_source:
+  - ''
+  - '! helper capsule_helper'
+  - '! finalize a static LIB_SHROUD_capsule_data'
+  - subroutine SHROUD_capsule_final(cap)+
+  - 'type(LIB_SHROUD_capsule), intent(INOUT) :: cap'
+  - call LIB_SHROUD_capsule_dtor(cap%mem)
+  - -end subroutine SHROUD_capsule_final
+  - ''
+  - subroutine SHROUD_capsule_delete(cap)+
+  - 'class(LIB_SHROUD_capsule) :: cap'
+  - call LIB_SHROUD_capsule_dtor(cap%mem)
+  - -end subroutine SHROUD_capsule_delete
   dependent_helpers:
   - capsule_data_helper
   - capsule_dtor
@@ -14687,6 +14708,19 @@ h_helper_pointer_string:
   fmtdict:
     fnamefunc: '{C_prefix}SHROUD_pointer_string'
   f_fmtname: LIB_SHROUD_pointer_string
+  f_source:
+  - ''
+  - '! helper pointer_string'
+  - '! Assign context to an assumed-length character pointer'
+  - subroutine LIB_SHROUD_pointer_string(context, var)+
+  - 'use iso_c_binding, only : c_f_pointer, C_PTR'
+  - implicit none
+  - 'type(LIB_SHROUD_array), intent(IN) :: context'
+  - 'character(len=:), pointer, intent(OUT) :: var'
+  - 'character(len=context%elem_len), pointer :: fptr'
+  - call c_f_pointer(context%base_addr, fptr)
+  - var => fptr
+  - -end subroutine LIB_SHROUD_pointer_string
   dependent_helpers:
   - array_context
 h_helper_size_CFI:
@@ -14880,6 +14914,9 @@ h_helper_vector_string_out:
   cxx_include:
   - <cstring>
   - <cstddef>
+  proto_include:
+  - <string>
+  - <vector>
   scope: cwrap_impl
   proto: void LIB_ShroudVectorStringOut(LIB_SHROUD_array *outdesc, std::vector<std::string>
     &in);
@@ -14914,6 +14951,9 @@ h_helper_vector_string_out_len:
     cnameproto: size_t {cnamefunc}(std::vector<std::string> &in)
   api: cxx
   c_fmtname: LIB_ShroudVectorStringOutSize
+  proto_include:
+  - <string>
+  - <vector>
   scope: cwrap_impl
   proto: size_t LIB_ShroudVectorStringOutSize(std::vector<std::string> &in);
   source:
@@ -14929,6 +14969,8 @@ h_helper_vector_string_out_len:
   - -}
   - return len;
   - -}
+h_mixin_unknown:
+  name: h_mixin_unknown
 root
   c
     ctor
@@ -15646,6 +15688,8 @@ root
           allocatable -- h_helper_vector_string_allocatable
           out -- h_helper_vector_string_out
             len -- h_helper_vector_string_out_len
+    mixin
+      unknown -- h_mixin_unknown
 ***** Python
 py_ctor_char*:
   name: py_ctor_char*

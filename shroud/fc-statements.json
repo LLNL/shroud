@@ -5139,6 +5139,14 @@
         ]
     },
     {
+        "name": "h_mixin_unknown",
+        "comments": [
+            "Default returned by lookup_fc_helper when group is not found.",
+            "The values will be added to generated code to mark where each group",
+            "will add text."
+        ]
+    },
+    {
         "name": "h_helper_type_defines",
         "notes": [
             "Order derived from TS 29113",

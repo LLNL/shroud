@@ -773,14 +773,12 @@ def add_c_helper(node_helpers, helpers, fmt):
     """
     for c_helper in helpers:
         helper = wformat(c_helper, fmt)
-        helper_info = statements.lookup_helper(helper)
-        if helper_info is not None:
+        helper_info = statements.lookup_fc_helper(helper, "c_helper")
+        if helper_info.name != "h_mixin_unknown":
             node_helpers[helper] = True
-            fmtname = helper_info.get("c_fmtname")
+            fmtname = helper_info.c_fmtname
             if fmtname:
                 setattr(fmt, "c_helper_" + helper, fmtname)
-        else:
-            error.get_cursor().warning("No such c_helper '{}'".format(helper))
 
 def add_f_helper(node_helpers, helpers, fmt):
     """Add a list of Fortran helpers.
@@ -788,14 +786,12 @@ def add_f_helper(node_helpers, helpers, fmt):
     """
     for f_helper in helpers:
         helper = wformat(f_helper, fmt)
-        helper_info = statements.lookup_helper(helper)
-        if helper_info is not None:
+        helper_info = statements.lookup_fc_helper(helper, "f_helper")
+        if helper_info.name != "h_mixin_unknown":
             node_helpers[helper] = True
-            fmtname = helper_info.get("f_fmtname")
+            fmtname = helper_info.f_fmtname
             if fmtname:
                 setattr(fmt, "f_helper_" + helper, fmtname)
-        else:
-            error.get_cursor().warning("No such f_helper '{}'".format(helper))
 
 
 ######################################################################

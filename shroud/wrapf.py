@@ -1758,25 +1758,24 @@ rv = .false.
             return  # avoid recursion
         done[name] = True
 
-        helper_info = statements.lookup_helper(name)
-        if "dependent_helpers" in helper_info:
-            for dep in helper_info["dependent_helpers"]:
-                # check for recursion
-                self._gather_helper_code(dep, done, fileinfo)
+        helper_info = statements.lookup_fc_helper(name)
+        for dep in helper_info.dependent_helpers:
+            # check for recursion
+            self._gather_helper_code(dep, done, fileinfo)
 
-        lines = helper_info.get("derived_type", None)
+        lines = helper_info.derived_type
         if lines:
             fileinfo.helper_derived_type.extend(lines)
 
-        lines = helper_info.get("interface", None)
+        lines = helper_info.interface
         if lines:
             fileinfo.interface_lines.extend(lines)
 
-        lines = helper_info.get("f_source", None)
+        lines = helper_info.f_source
         if lines:
             fileinfo.helper_source.extend(lines)
 
-        mods = helper_info.get("modules", None)
+        mods = helper_info.modules
         if mods:
             self.update_f_module_helper(fileinfo.module_use, mods)
 
