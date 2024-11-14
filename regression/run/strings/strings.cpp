@@ -167,8 +167,7 @@ const std::string getConstStringAlloc()
 
 const std::string * getConstStringPtrLen()
 {
-    // caller_owns_return = True
-    // C_finalize_buf: delete {cxx_var};
+    // +owner(caller)
     std::string * rv = new std::string("getConstStringPtrLen");
     return rv;
 }

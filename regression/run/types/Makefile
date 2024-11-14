@@ -40,7 +40,6 @@ main.o : fruit.o wrapftypes.o types.o
 # useful to isolate load error with just C++ code
 maincpp : maincpp.o wraptypes.o types.o
 	$(CXX) $(CXXFLAGS) $^ -o $@ $(CXXLIBS)
-
-testc.o : testc.c wraptypes.h types.hpp
+testc.o : testc.c wraptypes.h
 testc : testc.o $(C_OBJS)
 	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)

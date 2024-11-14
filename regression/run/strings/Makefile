@@ -23,18 +23,23 @@ VPATH = \
     $(top)/regression/run/strings \
     $(top)/regression/run/fruit
 
-OBJS = \
+C_OBJS = \
     strings.o \
     utilstrings.o \
+    wrapstrings.o
+F_OBJS = \
     wrapfstrings.o \
-    wrapstrings.o \
     fruit.o \
     main.o
 
-strings : $(OBJS)
+strings : $(C_OBJS) $(F_OBJS)
 	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
 
 clean :
 	rm -f $(OBJS) *.mod strings
 
 main.o : fruit.o wrapfstrings.o
+
+testc.o : testc.c wrapstrings.h
+testc : testc.o $(C_OBJS)
+	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)
