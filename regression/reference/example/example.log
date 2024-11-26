@@ -97,6 +97,8 @@ C c int verylongfunctionname2(int verylongname1, int verylongname2, int verylong
 C f int verylongfunctionname2(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)
 C c void cos_doubles(double *in +intent(in)+rank(2), double *out +dimension(shape(in))+intent(out), int sizein +implied(size(in)))
 C f void cos_doubles(double *in +intent(in)+rank(2), double *out +dimension(shape(in))+intent(out), int sizein +implied(size(in)))
+C c void pass_voidstartstar(void **args +intent(in)+value)
+C f void pass_voidstartstar(void **args +intent(in)+value)
 Close wrapUserLibrary_example_nested.h
 Close wrapUserLibrary_example_nested.cpp
 Close wrapUserLibrary.h
@@ -183,6 +185,7 @@ Fortran void FuncPtr5(void (*get)(int verylongname1, int verylongname2, int very
 Fortran void verylongfunctionname1(int *verylongname1 +intent(inout), int *verylongname2 +intent(inout), int *verylongname3 +intent(inout), int *verylongname4 +intent(inout), int *verylongname5 +intent(inout), int *verylongname6 +intent(inout), int *verylongname7 +intent(inout), int *verylongname8 +intent(inout), int *verylongname9 +intent(inout), int *verylongname10 +intent(inout))
 Fortran int verylongfunctionname2(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)
 Fortran void cos_doubles(double *in +intent(in)+rank(2), double *out +dimension(shape(in))+intent(out), int sizein +implied(size(in)))
+Fortran void pass_voidstartstar(void **args +intent(in)+value)
 C-interface f void local_function1(void)
 C-interface c bool isNameValid(const std::string &name)
 C-interface f bool isNameValid(const std::string &name)
@@ -205,6 +208,7 @@ C-interface f void FuncPtr5(void (*get)(int verylongname1, int verylongname2, in
 C-interface f void verylongfunctionname1(int *verylongname1 +intent(inout), int *verylongname2 +intent(inout), int *verylongname3 +intent(inout), int *verylongname4 +intent(inout), int *verylongname5 +intent(inout), int *verylongname6 +intent(inout), int *verylongname7 +intent(inout), int *verylongname8 +intent(inout), int *verylongname9 +intent(inout), int *verylongname10 +intent(inout))
 C-interface f int verylongfunctionname2(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)
 C-interface f void cos_doubles(double *in +intent(in)+rank(2), double *out +dimension(shape(in))+intent(out), int sizein +implied(size(in)))
+C-interface f void pass_voidstartstar(void **args +intent(in)+value)
 Close wrapfUserLibrary_example_nested.f
 Close wrapfUserLibrary_example.f
 Close wrapfuserlibrary.f

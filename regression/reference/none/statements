@@ -2169,7 +2169,7 @@ c_in_void**:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'type(C_PTR){f_intent_attr} :: {i_var}{i_dimension}'
+  - 'type(C_PTR){f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -2806,7 +2806,7 @@ c_inout_void**:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'type(C_PTR){f_intent_attr} :: {i_var}{i_dimension}'
+  - 'type(C_PTR){f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -4242,7 +4242,7 @@ c_out_void**:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'type(C_PTR){f_intent_attr} :: {i_var}{i_dimension}'
+  - 'type(C_PTR){f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -10308,14 +10308,14 @@ f_in_void**:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - 'type(C_PTR){f_intent_attr} :: {f_var}{f_assumed_shape}'
+  - 'type(C_PTR){f_value_attr}{f_intent_attr} :: {f_var}{f_assumed_shape}'
   f_module:
     iso_c_binding:
     - C_PTR
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'type(C_PTR){f_intent_attr} :: {i_var}{i_dimension}'
+  - 'type(C_PTR){f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -10332,14 +10332,14 @@ f_in_void**_cfi:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - 'type(C_PTR){f_intent_attr} :: {f_var}{f_assumed_shape}'
+  - 'type(C_PTR){f_value_attr}{f_intent_attr} :: {f_var}{f_assumed_shape}'
   f_module:
     iso_c_binding:
     - C_PTR
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'type(C_PTR){f_intent_attr} :: {i_var}{i_dimension}'
+  - 'type(C_PTR){f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -11374,14 +11374,14 @@ f_inout_void**:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - 'type(C_PTR){f_intent_attr} :: {f_var}{f_assumed_shape}'
+  - 'type(C_PTR){f_value_attr}{f_intent_attr} :: {f_var}{f_assumed_shape}'
   f_module:
     iso_c_binding:
     - C_PTR
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'type(C_PTR){f_intent_attr} :: {i_var}{i_dimension}'
+  - 'type(C_PTR){f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -13895,14 +13895,14 @@ f_out_void**:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - 'type(C_PTR){f_intent_attr} :: {f_var}{f_assumed_shape}'
+  - 'type(C_PTR){f_value_attr}{f_intent_attr} :: {f_var}{f_assumed_shape}'
   f_module:
     iso_c_binding:
     - C_PTR
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'type(C_PTR){f_intent_attr} :: {i_var}{i_dimension}'
+  - 'type(C_PTR){f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
     iso_c_binding:
     - C_PTR

@@ -98,6 +98,8 @@ int AA_example_nested_verylongfunctionname2(int verylongname1,
 
 void AA_example_nested_cos_doubles(double *in, double *out, int sizein);
 
+void AA_example_nested_pass_voidstartstar(void **args);
+
 #ifdef __cplusplus
 }
 #endif

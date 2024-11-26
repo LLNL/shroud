@@ -1703,7 +1703,7 @@
             "{f_var}"
         ],
         "f_arg_decl": [
-            "type(C_PTR){f_intent_attr} :: {f_var}{f_assumed_shape}"
+            "type(C_PTR){f_value_attr}{f_intent_attr} :: {f_var}{f_assumed_shape}"
         ],
         "c_arg_decl": [
             "void **{c_var}"
@@ -1712,7 +1712,7 @@
             "{cxx_var}"
         ],
         "i_arg_decl": [
-            "type(C_PTR){f_intent_attr} :: {i_var}{i_dimension}"
+            "type(C_PTR){f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}"
         ],
         "i_arg_names": [
             "{i_var}"

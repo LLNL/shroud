@@ -430,4 +430,17 @@ void AA_example_nested_cos_doubles(double *in, double *out, int sizein)
     // splicer end namespace.example::nested.function.cos_doubles
 }
 
+// ----------------------------------------
+// Function:  void pass_voidstartstar
+// Statement: c_subroutine
+// ----------------------------------------
+// Argument:  void **args +intent(in)+value
+// Statement: c_in_void**
+void AA_example_nested_pass_voidstartstar(void **args)
+{
+    // splicer begin namespace.example::nested.function.pass_voidstartstar
+    example::nested::pass_voidstartstar(args);
+    // splicer end namespace.example::nested.function.pass_voidstartstar
+}
+
 }  // extern "C"

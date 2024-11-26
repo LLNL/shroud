@@ -290,3 +290,8 @@ declarations:
         brief: Test multidimensional arrays with allocatable
       options:
          F_standard: 2008
+
+    - decl: void pass_voidstartstar(void **args+intent(in)+value)
+      options:
+        wrap_lua: False
+        wrap_python: False
