@@ -21,6 +21,7 @@ void callback1_external(void (*incr)(void));
 void callback1_funptr(void (*incr)(void));
 
 typedef int TypeID;
+typedef void (*pfvoid)(void);
 typedef void (*incrtype)(int i, TypeID j);
 typedef void (*incrtype_d)(double i);
 typedef int (*incrtype_fun)(int i);
@@ -42,5 +43,7 @@ int abstract1(int input, int (*get)(double, int));
 void callback_void_ptr(void (*void_ptr_arg)(void *));
 
 void callback_all_types(void (*all_types)(int, int *, char, char *, bool, bool *));
+
+void get_void_ptr(pfvoid *func);
 
 #endif // FUNPTR_H

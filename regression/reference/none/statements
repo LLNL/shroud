@@ -1517,6 +1517,10 @@ c_in_procedure_external:
   owner: library
 c_in_procedure_funptr:
   name: c_in_procedure_funptr
+  comments:
+  - Pass type(C_FUNPTR) argument.
+  notes:
+  - Accept a function pointer in an argument.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -3580,6 +3584,25 @@ c_out_native*_hidden:
   - '&{cxx_var}'
   c_pre_call:
   - '{cxx_type} {cxx_var};'
+  owner: library
+c_out_procedure*_funptr:
+  name: c_out_procedure*_funptr
+  comments:
+  - Pass type(C_FUNPTR) argument.
+  notes:
+  - Return a function pointer in an argument.
+  intent: out
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type(C_FUNPTR) :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_FUNPTR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
+  c_arg_call:
+  - '{cxx_var}'
   owner: library
 c_out_string&:
   name: c_out_string&
@@ -9361,11 +9384,15 @@ f_in_procedure_external:
   owner: library
 f_in_procedure_funptr:
   name: f_in_procedure_funptr
+  comments:
+  - Pass type(C_FUNPTR) argument.
+  notes:
+  - Accept a function pointer in an argument.
   intent: in
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - 'type(C_FUNPTR) :: {f_var}'
+  - 'type(C_FUNPTR){f_intent_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}'
   f_module:
@@ -12083,6 +12110,38 @@ f_mixin_pass_character_buf:
   - len
   f_need_wrapper: true
   owner: library
+f_mixin_procedure-as-funptr:
+  name: f_mixin_procedure-as-funptr
+  comments:
+  - Pass type(C_FUNPTR) argument.
+  intent: mixin
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - 'type(C_FUNPTR){f_intent_attr} :: {f_var}'
+  f_arg_call:
+  - '{f_var}'
+  f_module:
+    iso_c_binding:
+    - C_FUNPTR
+  i_arg_names:
+  - '{i_var}'
+  i_module:
+    iso_c_binding:
+    - C_FUNPTR
+  owner: library
+f_mixin_procedure-as-funptr-byreference:
+  name: f_mixin_procedure-as-funptr-byreference
+  intent: mixin
+  i_arg_decl:
+  - 'type(C_FUNPTR) :: {i_var}'
+  owner: library
+f_mixin_procedure-as-funptr-byvalue:
+  name: f_mixin_procedure-as-funptr-byvalue
+  intent: mixin
+  i_arg_decl:
+  - 'type(C_FUNPTR), value :: {i_var}'
+  owner: library
 f_mixin_shadow-arg:
   name: f_mixin_shadow-arg
   comments:
@@ -13012,6 +13071,34 @@ f_out_native*_hidden:
   - '&{cxx_var}'
   c_pre_call:
   - '{cxx_type} {cxx_var};'
+  owner: library
+f_out_procedure*_funptr:
+  name: f_out_procedure*_funptr
+  comments:
+  - Pass type(C_FUNPTR) argument.
+  notes:
+  - Return a function pointer in an argument.
+  intent: out
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - 'type(C_FUNPTR){f_intent_attr} :: {f_var}'
+  f_arg_call:
+  - '{f_var}'
+  f_module:
+    iso_c_binding:
+    - C_FUNPTR
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type(C_FUNPTR) :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_FUNPTR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
+  c_arg_call:
+  - '{cxx_var}'
   owner: library
 f_out_string&_buf:
   name: f_out_string&_buf
@@ -15197,6 +15284,8 @@ root
       native** -- c_out_native**
         raw -- c_out_native**_raw
       native*** -- c_out_native***
+      procedure*
+        funptr -- c_out_procedure*_funptr
       string& -- c_out_string&
         buf -- c_out_string&_buf
       string* -- c_out_string*
@@ -15560,6 +15649,9 @@ root
         cdesc -- f_mixin_pass_cdesc
         character
           buf -- f_mixin_pass_character_buf
+      procedure-as-funptr -- f_mixin_procedure-as-funptr
+      procedure-as-funptr-byreference -- f_mixin_procedure-as-funptr-byreference
+      procedure-as-funptr-byvalue -- f_mixin_procedure-as-funptr-byvalue
       shadow-arg -- f_mixin_shadow-arg
       str
         array -- f_mixin_str_array
@@ -15600,6 +15692,8 @@ root
           pointer -- f_out_native**_cfi_pointer
         raw -- f_out_native**_raw
       native*** -- f_out_native***
+      procedure*
+        funptr -- f_out_procedure*_funptr
       string&
         buf -- f_out_string&_buf
         cfi -- f_out_string&_cfi

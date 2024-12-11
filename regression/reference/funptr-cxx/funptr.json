@@ -7427,6 +7427,197 @@
                     ],
                     "function_name": "callback_all_types"
                 }
+            },
+            {
+                "<FUNCTION>": "get_void_ptr  14 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "get_void_ptr",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "funptr": true,
+                                        "intent": "out"
+                                    },
+                                    "name": "func",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "pfvoid"
+                                },
+                                "specifier": [
+                                    "pfvoid"
+                                ],
+                                "typemap_name": "pfvoid"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void get_void_ptr(pfvoid *func+intent(out)+funptr)",
+                "declgen": "void get_void_ptr(pfvoid *func +funptr+intent(out))",
+                "doxygen": {
+                    "brief": "Return a function pointer"
+                },
+                "name": "get_void_ptr",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "get_void_ptr(\tfunc)",
+                                "C_call_list": "func",
+                                "C_name": "FUN_get_void_ptr",
+                                "C_prototype": "FUN_pfvoid *func",
+                                "C_return_type": "void",
+                                "i_name_function": "c_get_void_ptr",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "func": {
+                            "fmtdict": {
+                                "c_abstract_decl": "FUN_pfvoid *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "FUN_pfvoid",
+                                "c_var": "func",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "pfvoid *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "func",
+                                "cxx_type": "pfvoid",
+                                "cxx_var": "func",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "c_out_procedure*_funptr",
+                                "typemap_name": "pfvoid"
+                            },
+                            "meta": {
+                                "abstract": "procedure*",
+                                "deref": "funptr",
+                                "intent": "out"
+                            },
+                            "stmt": "c_out_procedure*_funptr"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "get_void_ptr(\tfunc)",
+                                "C_call_list": "func",
+                                "C_name": "FUN_get_void_ptr",
+                                "C_prototype": "FUN_pfvoid *func",
+                                "C_return_type": "void",
+                                "F_arg_c_call": "func",
+                                "F_arguments": "func",
+                                "F_subprogram": "subroutine",
+                                "f_call_function": "c_get_void_ptr",
+                                "i_arguments": "func",
+                                "i_name_function": "get_void_ptr",
+                                "i_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "func": {
+                            "fmtdict": {
+                                "c_abstract_decl": "FUN_pfvoid *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "FUN_pfvoid",
+                                "c_var": "func",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "pfvoid *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "func",
+                                "cxx_type": "pfvoid",
+                                "cxx_var": "func",
+                                "f_abstract_interface": "pfvoid",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "pfvoid",
+                                "f_module_name": "funptr_mod",
+                                "f_type": "procedure(pfvoid)",
+                                "f_var": "func",
+                                "fc_var": "func",
+                                "i_kind": "pfvoid",
+                                "i_module_name": "funptr_mod",
+                                "i_type": "procedure(pfvoid)",
+                                "i_var": "func",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "f_out_procedure*_funptr",
+                                "typemap_name": "pfvoid"
+                            },
+                            "meta": {
+                                "abstract": "procedure*",
+                                "deref": "funptr",
+                                "intent": "out"
+                            },
+                            "stmt": "f_out_procedure*_funptr"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            }
+                        },
+                        "func": {
+                            "meta": {
+                                "abstract": "procedure*",
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "get_void_ptr",
+                    "F_name_api": "get_void_ptr",
+                    "F_name_function": "get_void_ptr",
+                    "F_name_generic": "get_void_ptr",
+                    "F_name_impl": "get_void_ptr",
+                    "c_arglist": [
+                        "c_var",
+                        "func"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "func"
+                    ],
+                    "function_name": "get_void_ptr"
+                }
             }
         ],
         "language": "cxx",
@@ -8464,6 +8655,220 @@
                     "f_abstract_interface": "get_int",
                     "typedef_name": "get_int"
                 }
+            },
+            {
+                "<TYPEDEF>": "pfvoid ****************************************",
+                "ast": {
+                    "declarator": {
+                        "func": {
+                            "name": "pfvoid",
+                            "pointer": [
+                                {
+                                    "ptr": "*"
+                                }
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "name": "pfvoid",
+                        "params": [],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "storage": [
+                        "typedef"
+                    ],
+                    "typemap_name": "pfvoid"
+                },
+                "name": "pfvoid",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "pfvoid": {
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "pfvoid  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "name": "pfvoid",
+                                            "params": [],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "storage": [
+                                            "typedef"
+                                        ],
+                                        "typemap_name": "pfvoid"
+                                    },
+                                    "decl": "typedef void pfvoid(void)",
+                                    "name": "pfvoid",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {
+                                                "fmtdict": {
+                                                    "i_subprogram": "subroutine"
+                                                },
+                                                "meta": {
+                                                    "abstract": "void",
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            }
+                                        },
+                                        "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "abstract": "void",
+                                                    "intent": "subroutine"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "pfvoid",
+                                        "F_name_api": "pfvoid",
+                                        "function_name": "pfvoid"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "f": {
+                        "pfvoid": {
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "pfvoid  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "name": "pfvoid",
+                                            "params": [],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "storage": [
+                                            "typedef"
+                                        ],
+                                        "typemap_name": "pfvoid"
+                                    },
+                                    "decl": "typedef void pfvoid(void)",
+                                    "name": "pfvoid",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {
+                                                "fmtdict": {
+                                                    "i_subprogram": "subroutine"
+                                                },
+                                                "meta": {
+                                                    "abstract": "void",
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            }
+                                        },
+                                        "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "abstract": "void",
+                                                    "intent": "subroutine"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "pfvoid",
+                                        "F_name_api": "pfvoid",
+                                        "function_name": "pfvoid"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "share": {
+                        "pfvoid": {
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "pfvoid  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "name": "pfvoid",
+                                            "params": [],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "storage": [
+                                            "typedef"
+                                        ],
+                                        "typemap_name": "pfvoid"
+                                    },
+                                    "decl": "typedef void pfvoid(void)",
+                                    "name": "pfvoid",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {
+                                                "fmtdict": {
+                                                    "i_subprogram": "subroutine"
+                                                },
+                                                "meta": {
+                                                    "abstract": "void",
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            }
+                                        },
+                                        "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "abstract": "void",
+                                                    "intent": "subroutine"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "pfvoid",
+                                        "F_name_api": "pfvoid",
+                                        "function_name": "pfvoid"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "pfvoid",
+                    "C_name_typedef": "FUN_pfvoid",
+                    "F_name_api": "pfvoid",
+                    "F_name_typedef": "pfvoid",
+                    "cxx_type": "pfvoid",
+                    "f_abstract_interface": "pfvoid",
+                    "typedef_name": "pfvoid"
+                }
             }
         ],
         "wrap": {
@@ -8571,6 +8976,29 @@
             "base": "procedure",
             "f_type": "f-function-pointer",
             "sgroup": "procedure"
+        },
+        "pfvoid": {
+            "base": "procedure",
+            "c_type": "FUN_pfvoid",
+            "cxx_type": "pfvoid",
+            "f_kind": "pfvoid",
+            "f_module": {
+                "funptr_mod": [
+                    "pfvoid"
+                ]
+            },
+            "f_module_name": "funptr_mod",
+            "f_type": "procedure(pfvoid)",
+            "flat_name": "pfvoid",
+            "i_module": {
+                "funptr_mod": [
+                    "pfvoid"
+                ]
+            },
+            "sgroup": "procedure",
+            "wrap_header": [
+                "wrapfunptr.h"
+            ]
         },
         "void(*)(int,int*,char,char*,bool,bool*)": {
             "base": "procedure",

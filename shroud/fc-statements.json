@@ -5013,6 +5013,52 @@
         "name":"##### procedure ############################################"
     },
     {
+        "name": "f_mixin_procedure-as-funptr",
+        "comments": [
+            "Pass type(C_FUNPTR) argument."
+        ],
+        "f_arg_name": [
+            "{f_var}"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_FUNPTR"
+            ]
+        },
+        "f_arg_decl": [
+            "type(C_FUNPTR){f_intent_attr} :: {f_var}"
+        ],
+        "f_arg_call": [
+            "{f_var}"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_FUNPTR"
+            ]
+        }
+    },
+    {
+        "name": "f_mixin_procedure-as-funptr-byvalue",
+        "notes": [
+            "Used to pass a C_FUNPTR into a function."
+        ],
+        "i_arg_decl": [
+            "type(C_FUNPTR), value :: {i_var}"
+        ]
+    },
+    {
+        "name": "f_mixin_procedure-as-funptr-byreference",
+        "notes": [
+            "Used to return a C_FUNPTR from a function."
+        ],
+        "i_arg_decl": [
+            "type(C_FUNPTR) :: {i_var}"
+        ]
+    },
+    {
         "alias": [
             "f_in_procedure",
             "c_in_procedure"
@@ -5058,33 +5104,27 @@
             "f_in_procedure_funptr",
             "c_in_procedure_funptr"
         ],
+        "notes": [
+            "Accept a function pointer in an argument."
+        ],
         "mixin": [
-            "c_mixin_declare-arg"
+            "c_mixin_declare-arg",
+            "f_mixin_procedure-as-funptr",
+            "f_mixin_procedure-as-funptr-byvalue"
+        ]
+    },
+    {
+        "alias": [
+            "f_out_procedure*_funptr",
+            "c_out_procedure*_funptr"
         ],
-        "f_arg_name": [
-            "{f_var}"
+        "notes": [
+            "Return a function pointer in an argument."
         ],
-        "f_module": {
-            "iso_c_binding": [
-                "C_FUNPTR"
-            ]
-        },
-        "f_arg_decl": [
-            "type(C_FUNPTR) :: {f_var}"
-        ],
-        "f_arg_call": [
-            "{f_var}"
-        ],
-        "i_arg_names": [
-            "{i_var}"
-        ],
-        "i_module": {
-            "iso_c_binding": [
-                "C_FUNPTR"
-            ]
-        },
-        "i_arg_decl": [
-            "type(C_FUNPTR), value :: {i_var}"
+        "mixin": [
+            "c_mixin_declare-arg",
+            "f_mixin_procedure-as-funptr",
+            "f_mixin_procedure-as-funptr-byreference"
         ]
     },
     {

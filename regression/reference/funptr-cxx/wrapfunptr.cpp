@@ -306,4 +306,21 @@ void FUN_callback_all_types(void (*all_types)(int, int *, char, char *,
     // splicer end function.callback_all_types
 }
 
+/**
+ * \brief Return a function pointer
+ *
+ */
+// ----------------------------------------
+// Function:  void get_void_ptr
+// Statement: c_subroutine
+// ----------------------------------------
+// Argument:  pfvoid *func +funptr+intent(out)
+// Statement: c_out_procedure*_funptr
+void FUN_get_void_ptr(FUN_pfvoid *func)
+{
+    // splicer begin function.get_void_ptr
+    get_void_ptr(func);
+    // splicer end function.get_void_ptr
+}
+
 }  // extern "C"

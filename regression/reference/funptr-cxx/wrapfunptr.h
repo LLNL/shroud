@@ -45,6 +45,11 @@ typedef void (*FUN_incrtype)(int i, FUN_TypeID j);
 typedef int (*FUN_get_int)(double, int);
 // splicer end typedef.get_int
 
+// typedef pfvoid
+// splicer begin typedef.pfvoid
+typedef void (*FUN_pfvoid)(void);
+// splicer end typedef.pfvoid
+
 void FUN_callback1(void (*incr1)(void));
 
 void FUN_callback1_wrap(void (*incr1_wrap)(void));
@@ -76,6 +81,8 @@ void FUN_callback_void_ptr(void (*void_ptr_arg)(void *));
 
 void FUN_callback_all_types(void (*all_types)(int, int *, char, char *,
     bool, bool *));
+
+void FUN_get_void_ptr(FUN_pfvoid *func);
 
 #ifdef __cplusplus
 }

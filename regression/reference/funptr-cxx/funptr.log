@@ -27,11 +27,14 @@ C c void callback_void_ptr(void (*void_ptr_arg)(void *))
 C f void callback_void_ptr(void (*void_ptr_arg)(void *))
 C c void callback_all_types(void (*all_types)(int, int * +rank(1), char, char *, bool, bool *))
 C f void callback_all_types(void (*all_types)(int, int * +rank(1), char, char *, bool, bool *))
+C c void get_void_ptr(pfvoid *func +funptr+intent(out))
+C f void get_void_ptr(pfvoid *func +funptr+intent(out))
 Close wrapfunptr.h
 Close wrapfunptr.cpp
 typedef TypeID
 typedef incrtype
 typedef get_int
+typedef pfvoid
 Fortran void callback1(void (*incr1)(void))
 Fortran void callback1_wrap(void (*incr1_wrap)(void))
 Fortran void callback1_external(void (*incr1_external)(void) +external)
@@ -46,6 +49,7 @@ Fortran void callback_double(double (*get)(int i, int))
 Fortran int abstract1(int input, int (*get_abs)(double, int))
 Fortran void callback_void_ptr(void (*void_ptr_arg)(void *))
 Fortran void callback_all_types(void (*all_types)(int, int * +rank(1), char, char *, bool, bool *))
+Fortran void get_void_ptr(pfvoid *func +funptr+intent(out))
 C-interface f void callback1(void (*incr1)(void))
 C-interface f void callback1_wrap(void (*incr1_wrap)(void))
 C-interface f void callback1_external(void (*incr1_external)(void) +external)
@@ -60,6 +64,7 @@ C-interface f void callback_double(double (*get)(int i, int))
 C-interface f int abstract1(int input, int (*get_abs)(double, int))
 C-interface f void callback_void_ptr(void (*void_ptr_arg)(void *))
 C-interface f void callback_all_types(void (*all_types)(int, int * +rank(1), char, char *, bool, bool *))
+C-interface f void get_void_ptr(pfvoid *func +funptr+intent(out))
 Close wrapffunptr.f
 Close utilfunptr.cpp
 Close typesfunptr.h
