@@ -503,15 +503,15 @@ const char STR_getConstStringLen(void)
 void STR_getConstStringLen_bufferify(char *SHC_rv, int SHT_rv_len)
 {
     // splicer begin function.getConstStringLen_bufferify
-    const std::string SHCXX_rv = getConstStringLen();
+    const std::string SHC_rv_cxx = getConstStringLen();
     // C_error_pattern
     // Some error code for buf
 
-    if (SHCXX_rv.empty()) {
+    if (SHC_rv_cxx.empty()) {
         ShroudCharCopy(SHC_rv, SHT_rv_len, nullptr, 0);
     } else {
-        ShroudCharCopy(SHC_rv, SHT_rv_len, SHCXX_rv.data(),
-            SHCXX_rv.size());
+        ShroudCharCopy(SHC_rv, SHT_rv_len, SHC_rv_cxx.data(),
+            SHC_rv_cxx.size());
     }
     // splicer end function.getConstStringLen_bufferify
 }
@@ -550,15 +550,15 @@ const char STR_getConstStringAsArg(void)
 void STR_getConstStringAsArg_bufferify(char *output, int noutput)
 {
     // splicer begin function.getConstStringAsArg_bufferify
-    const std::string SHCXX_rv = getConstStringAsArg();
+    const std::string SHC_rv_cxx = getConstStringAsArg();
     // C_error_pattern
     // Some error code for buf
 
-    if (SHCXX_rv.empty()) {
+    if (SHC_rv_cxx.empty()) {
         ShroudCharCopy(output, noutput, nullptr, 0);
     } else {
-        ShroudCharCopy(output, noutput, SHCXX_rv.data(),
-            SHCXX_rv.size());
+        ShroudCharCopy(output, noutput, SHC_rv_cxx.data(),
+            SHC_rv_cxx.size());
     }
     // splicer end function.getConstStringAsArg_bufferify
 }
@@ -668,15 +668,15 @@ const char * STR_getConstStringRefLen(void)
 void STR_getConstStringRefLen_bufferify(char *SHC_rv, int SHT_rv_len)
 {
     // splicer begin function.getConstStringRefLen_bufferify
-    const std::string &SHCXX_rv = getConstStringRefLen();
+    const std::string &SHC_rv_cxx = getConstStringRefLen();
     // C_error_pattern
     // Some error code for buf
 
-    if (SHCXX_rv.empty()) {
+    if (SHC_rv_cxx.empty()) {
         ShroudCharCopy(SHC_rv, SHT_rv_len, nullptr, 0);
     } else {
-        ShroudCharCopy(SHC_rv, SHT_rv_len, SHCXX_rv.data(),
-            SHCXX_rv.size());
+        ShroudCharCopy(SHC_rv, SHT_rv_len, SHC_rv_cxx.data(),
+            SHC_rv_cxx.size());
     }
     // splicer end function.getConstStringRefLen_bufferify
 }
@@ -716,15 +716,15 @@ const char * STR_getConstStringRefAsArg(void)
 void STR_getConstStringRefAsArg_bufferify(char *output, int noutput)
 {
     // splicer begin function.getConstStringRefAsArg_bufferify
-    const std::string &SHCXX_rv = getConstStringRefAsArg();
+    const std::string &SHC_rv_cxx = getConstStringRefAsArg();
     // C_error_pattern
     // Some error code for buf
 
-    if (SHCXX_rv.empty()) {
+    if (SHC_rv_cxx.empty()) {
         ShroudCharCopy(output, noutput, nullptr, 0);
     } else {
-        ShroudCharCopy(output, noutput, SHCXX_rv.data(),
-            SHCXX_rv.size());
+        ShroudCharCopy(output, noutput, SHC_rv_cxx.data(),
+            SHC_rv_cxx.size());
     }
     // splicer end function.getConstStringRefAsArg_bufferify
 }
@@ -761,15 +761,15 @@ void STR_getConstStringRefLenEmpty_bufferify(char *SHC_rv,
     int SHT_rv_len)
 {
     // splicer begin function.getConstStringRefLenEmpty_bufferify
-    const std::string &SHCXX_rv = getConstStringRefLenEmpty();
+    const std::string &SHC_rv_cxx = getConstStringRefLenEmpty();
     // C_error_pattern
     // Some error code for buf
 
-    if (SHCXX_rv.empty()) {
+    if (SHC_rv_cxx.empty()) {
         ShroudCharCopy(SHC_rv, SHT_rv_len, nullptr, 0);
     } else {
-        ShroudCharCopy(SHC_rv, SHT_rv_len, SHCXX_rv.data(),
-            SHCXX_rv.size());
+        ShroudCharCopy(SHC_rv, SHT_rv_len, SHC_rv_cxx.data(),
+            SHC_rv_cxx.size());
     }
     // splicer end function.getConstStringRefLenEmpty_bufferify
 }
@@ -835,16 +835,16 @@ const char * STR_getConstStringPtrLen(void)
 void STR_getConstStringPtrLen_bufferify(char *SHC_rv, int SHT_rv_len)
 {
     // splicer begin function.getConstStringPtrLen_bufferify
-    const std::string *SHCXX_rv = getConstStringPtrLen();
-    if (SHCXX_rv->empty()) {
+    const std::string *SHC_rv_cxx = getConstStringPtrLen();
+    if (SHC_rv_cxx->empty()) {
         ShroudCharCopy(SHC_rv, SHT_rv_len, nullptr, 0);
     } else {
-        ShroudCharCopy(SHC_rv, SHT_rv_len, SHCXX_rv->data(),
-            SHCXX_rv->size());
+        ShroudCharCopy(SHC_rv, SHT_rv_len, SHC_rv_cxx->data(),
+            SHC_rv_cxx->size());
     }
     {
         // final
-        delete SHCXX_rv;
+        delete SHC_rv_cxx;
     }
     // splicer end function.getConstStringPtrLen_bufferify
 }

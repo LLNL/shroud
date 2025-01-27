@@ -142,12 +142,12 @@ void CXX_getGroupName_int32_t_bufferify(int32_t idx, char *SHC_rv,
     int SHT_rv_len)
 {
     // splicer begin function.getGroupName_int32_t_bufferify
-    const std::string &SHCXX_rv = getGroupName(idx);
-    if (SHCXX_rv.empty()) {
+    const std::string &SHC_rv_cxx = getGroupName(idx);
+    if (SHC_rv_cxx.empty()) {
         ShroudCharCopy(SHC_rv, SHT_rv_len, nullptr, 0);
     } else {
-        ShroudCharCopy(SHC_rv, SHT_rv_len, SHCXX_rv.data(),
-            SHCXX_rv.size());
+        ShroudCharCopy(SHC_rv, SHT_rv_len, SHC_rv_cxx.data(),
+            SHC_rv_cxx.size());
     }
     // splicer end function.getGroupName_int32_t_bufferify
 }
@@ -167,12 +167,12 @@ void CXX_getGroupName_int64_t_bufferify(int64_t idx, char *SHC_rv,
     int SHT_rv_len)
 {
     // splicer begin function.getGroupName_int64_t_bufferify
-    const std::string &SHCXX_rv = getGroupName(idx);
-    if (SHCXX_rv.empty()) {
+    const std::string &SHC_rv_cxx = getGroupName(idx);
+    if (SHC_rv_cxx.empty()) {
         ShroudCharCopy(SHC_rv, SHT_rv_len, nullptr, 0);
     } else {
-        ShroudCharCopy(SHC_rv, SHT_rv_len, SHCXX_rv.data(),
-            SHCXX_rv.size());
+        ShroudCharCopy(SHC_rv, SHT_rv_len, SHC_rv_cxx.data(),
+            SHC_rv_cxx.size());
     }
     // splicer end function.getGroupName_int64_t_bufferify
 }
