@@ -268,8 +268,6 @@ c_function_char*_buf_copy:
   owner: library
 c_function_enum:
   name: c_function_enum
-  comments:
-  - Call a function.
   intent: function
   i_result_decl:
   - '{i_type} :: {i_var}'
@@ -840,8 +838,6 @@ c_function_string:
   notimplemented: true
 c_function_string&:
   name: c_function_string&
-  comments:
-  - Call a function.
   notes:
   - Fortran calling a C function without
   - any api argument - is this useful?
@@ -941,8 +937,6 @@ c_function_string&_buf_copy:
   owner: library
 c_function_string&_copy:
   name: c_function_string&_copy
-  comments:
-  - Call a function.
   notes:
   - Fortran calling a C function without
   - any api argument - is this useful?
@@ -959,8 +953,6 @@ c_function_string&_copy:
   owner: library
 c_function_string*:
   name: c_function_string*
-  comments:
-  - Call a function.
   notes:
   - Fortran calling a C function without
   - any api argument - is this useful?
@@ -1016,8 +1008,6 @@ c_function_string*_buf_copy:
   owner: library
 c_function_string*_caller:
   name: c_function_string*_caller
-  comments:
-  - Call a function.
   notes:
   - Fortran calling a C function without
   - any api argument - is this useful?
@@ -1034,8 +1024,6 @@ c_function_string*_caller:
   owner: library
 c_function_string*_copy:
   name: c_function_string*_copy
-  comments:
-  - Call a function.
   notes:
   - Fortran calling a C function without
   - any api argument - is this useful?
@@ -1052,8 +1040,6 @@ c_function_string*_copy:
   owner: library
 c_function_string*_library:
   name: c_function_string*_library
-  comments:
-  - Call a function.
   notes:
   - Fortran calling a C function without
   - any api argument - is this useful?
@@ -1228,8 +1214,6 @@ c_function_vector<native>_malloc:
   owner: library
 c_function_void*:
   name: c_function_void*
-  comments:
-  - Call a function.
   notes:
   - XXX - f entries are the same as the i entries, share?
   intent: function
@@ -3054,12 +3038,6 @@ c_mixin_destructor_new-vector:
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
-  owner: library
-c_mixin_function:
-  name: c_mixin_function
-  comments:
-  - Call a function.
-  intent: mixin
   owner: library
 c_mixin_function-assign-to-local:
   name: c_mixin_function-assign-to-local
@@ -9052,8 +9030,6 @@ f_function_vector_scalar_cdesc:
   owner: library
 f_function_void*:
   name: f_function_void*
-  comments:
-  - Call a function.
   notes:
   - XXX - f entries are the same as the i entries, share?
   intent: function
@@ -15731,7 +15707,7 @@ root
         new-shadow-shared -- c_mixin_destructor_new-shadow-shared
         new-string -- c_mixin_destructor_new-string
         new-vector -- c_mixin_destructor_new-vector
-      function -- c_mixin_function
+      function
         char*
           cdesc -- c_mixin_function_char*_cdesc
         shadow

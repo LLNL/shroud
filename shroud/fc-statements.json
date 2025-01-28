@@ -225,15 +225,6 @@
         ]
     },
     {
-        "name": "c_mixin_function",
-        "comments": [
-            "Call a function."
-        ],
-        "mixin": [
-            "c_mixin_noargs"
-        ]
-    },
-    {
         "name": "f_mixin_function",
         "comments": [
             "Call a function."
@@ -1709,8 +1700,7 @@
             "XXX - f entries are the same as the i entries, share?"
         ],
         "mixin": [
-            "f_mixin_declare-fortran-result",
-            "c_mixin_function"
+            "f_mixin_declare-fortran-result"
         ],
         "i_module": {
             "iso_c_binding": [
@@ -1856,9 +1846,6 @@
     {
         "alias": [
             "c_function_enum"
-        ],
-        "mixin": [
-            "c_mixin_function"
         ],
         "i_result_decl": [
             "{i_type} :: {i_var}"
@@ -2569,9 +2556,6 @@
             "Fortran calling a C function without",
             "any api argument - is this useful?"
         ],
-        "mixin": [
-            "c_mixin_function"
-        ],
         "c_return": [
             "return {c_var};"
         ],
@@ -2601,7 +2585,6 @@
             "Cannot return a char array by value."
         ],
         "mixin": [
-            "c_mixin_function",
             "#c_mixin_pass_capsule",
             "#c_mixin_c-str",
             "#c_mixin_native_capsule_fill",
