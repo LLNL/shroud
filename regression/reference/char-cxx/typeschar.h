@@ -85,17 +85,10 @@ struct s_CHA_SHROUD_capsule_data {
 };
 typedef struct s_CHA_SHROUD_capsule_data CHA_SHROUD_capsule_data;
 
-void CHA_ShroudArrayStringAllocatable(CHA_SHROUD_array *dest, CHA_SHROUD_capsule_data *src);
 void CHA_SHROUD_memory_destructor(CHA_SHROUD_capsule_data *cap);
 
 #ifdef __cplusplus
 }
-#include <string>
-#include <vector>
-
-// C++ implementation prototypes
-void CHA_ShroudArrayStringOut(CHA_SHROUD_array *outdesc, std::string *in, size_t nsize);
-size_t CHA_ShroudArrayStringOutSize(std::string *in, size_t nsize);
 #endif
 
 #endif  // TYPESCHAR_H

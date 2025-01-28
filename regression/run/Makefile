@@ -91,7 +91,6 @@ fortran-test-list-std = \
   test-fortran-vectors \
   test-fortran-cdesc \
   test-fortran-preprocess \
-  test-fortran-cxx \
   test-fortran-char-cxx \
   test-fortran-strings \
   test-fortran-ccomplex \
@@ -220,6 +219,7 @@ python-test-list = \
   test-python-enum-c \
   test-python-enum-cxx \
   test-python-namespace \
+  test-python-char-cxx \
   test-python-strings \
   test-python-pointers-numpy-cxx \
   test-python-pointers-list-cxx \

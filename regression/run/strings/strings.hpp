@@ -15,19 +15,6 @@
 
 void init_test(void);
 
-void passChar(char status);
-void passCharForce(char status);
-char returnChar();
-
-void passCharPtr(char * dest, const char *src);
-void passCharPtrInOut(char * s);
-
-const char * getCharPtr1();
-const char * getCharPtr2();
-const char * getCharPtr3();
-const char * getCharPtr4();
-const char * getCharPtr5();
-
 const std::string getConstStringResult();
 const std::string getConstStringLen();
 const std::string getConstStringAsArg();
@@ -82,14 +69,9 @@ extern "C" {
   void CpassChar(char status);
   char CreturnChar();
 
-  void CpassCharPtr(char * dest, const char *src);
 }
-void CpassCharPtrBlank(char *dest, const char *src);
 
 void PostDeclare(int *count, std::string &name);
-int CpassCharPtrNotrim(const char *src);
-int CpassCharPtrCAPI(void *addr, const char *src);
-int CpassCharPtrCAPI2(const char *in, const char *src);
 
 
 #endif // STRINGS_HPP

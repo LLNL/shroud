@@ -22,7 +22,6 @@ program tester
   call test_charargs
   call test_charargs_c
   call test_functions
-  call test_string_array
   call test_explicit
   call char_functions
 #ifdef TEST_C_WRAPPER
@@ -106,7 +105,6 @@ contains
     character(30) str
     character(30), parameter :: static_str = "dog                         "
     character, pointer :: raw_str(:)
-    integer(C_INT) :: nlen
 
     call set_case_name("test_functions")
 
@@ -142,175 +140,8 @@ contains
     call assert_true(pstr == "bird", "get_char_ptr5")
 #endif
 
-    !--------------------------------------------------
-
-    ! character(:), allocatable function
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_const_string_result()
-    call assert_true(str == "getConstStringResult", "getConstStringResult")
-
-    ! character(30) function
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_const_string_len()
-    call assert_true(str == static_str, "getConstStringLen")
-
-    ! string_result_as_arg
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    call get_const_string_as_arg(str)
-    call assert_true(str == static_str, "getConstStringAsArg")
-
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_const_string_alloc()
-    call assert_true(str == "getConstStringAlloc", "getConstStringAlloc")
- 
-    !--------------------------------------------------
-
-    ! problem with pgi
-    ! character(*) function
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_const_string_ref_pure()
-    call assert_true( str == static_str, "getConstStringRefPure")
-
-    ! character(30) function
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_const_string_ref_len()
-    call assert_true( str == static_str, "getConstStringRefLen")
-
-    ! string_result_as_arg
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    call get_const_string_ref_as_arg(str)
-    call assert_true( str == static_str, "getConstStringRefAsArg")
- 
-    ! character(30) function
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_const_string_ref_len_empty()
-    call assert_true( str == " ", "getConstStringRefLenEmpty")
-
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_const_string_ref_alloc()
-    call assert_true( str == static_str, "getConstStringRefAlloc")
-
-    !--------------------------------------------------
-
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_const_string_ptr_len()
-    call assert_true(str == "getConstStringPtrLen", "getConstStringPtrLen")
-
-    ! string_result_as_arg
- 
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_const_string_ptr_alloc()
-    call assert_true( str == static_str, "getConstStringPtrAlloc")
-
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_const_string_ptr_owns_alloc()
-    call assert_true( str == "getConstStringPtrOwnsAlloc", &
-         "getConstStringPtrOwnsAlloc")
-
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_const_string_ptr_owns_alloc_pattern()
-    call assert_true( str == "getConstStringPtrOwnsAllocPatt", &
-         "getConstStringPtrOwnsAllocPattern")
-
-    !--------------------------------------------------
-    ! POINTER result
-
-#ifdef HAVE_CHARACTER_POINTER_FUNCTION
-    nullify(pstr)
-    pstr => get_const_string_ptr_pointer()
-    call assert_true(associated(pstr), "getConstStringPtrPointer associate")
-    call assert_true(pstr == static_str, "getConstStringPtrPointer")
-#endif
-
-!    pstr => get_const_string_ptr_owns_pointer()
-!    call assert_true( str == "getConstStringPtrOwnsPointer", &
-!         "getConstStringPtrOwnsPointer")
-    
-    !--------------------------------------------------
-
-    call accept_string_const_reference("cat")
-!    check global_str == "cat"
-
-    str = " "
-    call accept_string_reference_out(str)
-    call assert_true( str == "dog")
-
-    str = "cat"
-    call accept_string_reference(str)
-    call assert_true( str == "catdog")
-
-    ! Store in global_str.
-    call accept_string_pointer_const("from Fortran")
-
-    ! Fetch from global_str.
-    call fetch_string_pointer(str)
-    call assert_true( str == "from Fortran", "fetchStringPointer")
-
-    call fetch_string_pointer_len(str, nlen)
-    call assert_true( str == "from Fortran", "FetchStringPointerLen")
-    call assert_equals(len_trim(str), nlen, "FetchStringPointerLen")
-
-    ! Return length of string
-    nlen = accept_string_instance("from Fortran")
-    call assert_equals(12, nlen, "acceptStringInstance")
-    str = "from Fortran"
-    nlen = accept_string_instance(str) ! Returns trimmed length
-    call assert_equals(12, nlen, "acceptStringInstance")
-    ! argument is passed by value to C++ so changes will not effect argument.
-    call assert_equals("from Fortran", str)
-
-    ! append "dog".
-    str = "bird"
-    call accept_string_pointer(str)
-    call assert_true( str == "birddog", "acceptStringPointer")
-
-    str = "bird"
-    call accept_string_pointer_len(str, nlen)
-    call assert_true( str == "birddog", "acceptStringPointerLen")
-    call assert_equals(len_trim(str), nlen, "acceptStringPointerLen")
-
   end subroutine test_functions
 
-  subroutine test_string_array
-    character(20) :: strs(5)
-    character(:), allocatable :: stralloc(:)
-    character(20), allocatable :: strlen(:)
-
-    call set_case_name("test_string_array")
-
-    ! copy into argument
-    strs = "xxx"
-    call fetch_array_string_arg(strs)
-    call assert_true(strs(1) == "apple",  "fetch_array_string_copy(1)")
-    call assert_true(strs(2) == "pear",   "fetch_array_string_copy(2)")
-    call assert_true(strs(3) == "peach",  "fetch_array_string_copy(3)")
-    call assert_true(strs(4) == "cherry", "fetch_array_string_copy(4)")
-    call assert_true(strs(5) == " ",      "fetch_array_string_copy(5)")
-
-    ! allocate the argument
-    call assert_false(allocated(stralloc), "stralloc not allocated")
-    call fetch_array_string_alloc(stralloc)
-    call assert_true(allocated(stralloc), "stralloc is allocated")
-    call assert_equals(4, size(stralloc), "size of stralloc")
-    call assert_equals(6, len(stralloc), "len of stralloc")
-    call assert_true(stralloc(1) == "apple",  "fetch_array_string_alloc(1)")
-    call assert_true(stralloc(2) == "pear",   "fetch_array_string_alloc(2)")
-    call assert_true(stralloc(3) == "peach",  "fetch_array_string_alloc(3)")
-    call assert_true(stralloc(4) == "cherry", "fetch_array_string_alloc(4)")
-    
-    ! allocate the argument with a predefined len
-    call assert_false(allocated(strlen), "strlen not allocated")
-    call fetch_array_string_alloc_len(strlen)
-    call assert_true(allocated(strlen), "strlen is allocated")
-    call assert_equals(4, size(strlen), "size of strlen")
-    call assert_equals(20, len(strlen), "len of strlen")
-    call assert_true(strlen(1) == "apple",  "fetch_array_string_alloc(1)")
-    call assert_true(strlen(2) == "pear",   "fetch_array_string_alloc(2)")
-    call assert_true(strlen(3) == "peach",  "fetch_array_string_alloc(3)")
-    call assert_true(strlen(4) == "cherry", "fetch_array_string_alloc(4)")
-    
-  end subroutine test_string_array
-  
   subroutine test_explicit
     character(10) name
     call set_case_name("test_explicit")
@@ -328,7 +159,7 @@ contains
     character(20), target :: str
     character(20) :: str1, str2
     
-    call set_case_name("test_explicit")
+    call set_case_name("char_functions")
 
     call assert_equals(4, cpass_char_ptr_notrim("tree"), "CpassCharPtrNotrim")
 

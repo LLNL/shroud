@@ -39,27 +39,6 @@ class Strings(unittest.TestCase):
         ## do something...
         print("FooTest:tearDown_:end")
      
-    def testpassChar(self):
-        strings.passChar('w')
-
-    def testpassCharPtr(self):
-        out = strings.passCharPtr("elephant")
-        self.assertEqual("elephant", out)
-
-    def testreturnChar(self):
-        self.assertEqual('w', strings.returnChar())
-
-    def testpassCharPtrInOut(self):
-        """char * +intent(out)"""
-        self.assertEqual('DOG', strings.passCharPtrInOut('dog'))
-
-    def testgetChar(self):
-        # The variations are useful for the Fortran API,
-        # but really no difference in the Python API.
-        self.assertEqual(static_char, strings.getCharPtr1())
-        self.assertEqual(static_char, strings.getCharPtr2())
-        self.assertEqual(static_char, strings.getCharPtr3())
-
     def testgetConstString(self):
         """return std::string"""
         self.assertEqual('getConstStringResult', strings.getConstStringResult())

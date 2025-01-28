@@ -33,43 +33,6 @@ extern "C" {
 
 void STR_init_test(void);
 
-void STR_passChar(char status);
-
-void STR_passCharForce(char status);
-
-void STR_returnChar(char *SHC_rv);
-
-void STR_passCharPtr(char *dest, const char *src);
-
-void STR_passCharPtr_CFI(CFI_cdesc_t *SHT_dest_cfi,
-    CFI_cdesc_t *SHT_src_cfi);
-
-void STR_passCharPtrInOut(char *s);
-
-void STR_passCharPtrInOut_CFI(CFI_cdesc_t *SHT_s_cfi);
-
-const char * STR_getCharPtr1(void);
-
-void STR_getCharPtr1_CFI(CFI_cdesc_t *SHT_rv_cfi);
-
-const char * STR_getCharPtr2(void);
-
-void STR_getCharPtr2_CFI(CFI_cdesc_t *SHT_rv_cfi);
-
-const char * STR_getCharPtr3(void);
-
-void STR_getCharPtr3_CFI(CFI_cdesc_t *SHT_rv_cfi);
-
-const char * STR_getCharPtr4(void);
-
-#ifdef HAVE_CHARACTER_POINTER_FUNCTION
-const char * STR_getCharPtr5(void);
-#endif
-
-#ifdef HAVE_CHARACTER_POINTER_FUNCTION
-void STR_getCharPtr5_CFI(CFI_cdesc_t *SHT_rv_cfi);
-#endif
-
 void STR_getConstStringResult_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 void STR_getConstStringLen_CFI(CFI_cdesc_t *SHT_rv_cfi);
@@ -166,38 +129,12 @@ void STR_fetchArrayStringAlloc_CFI(CFI_cdesc_t *SHT_strs_cfi);
 
 void STR_fetchArrayStringAllocLen_CFI(CFI_cdesc_t *SHT_strs_cfi);
 
-void STR_explicit1(char *name);
-
-void STR_explicit1_CFI(CFI_cdesc_t *SHT_name_cfi);
-
-void STR_explicit2(char *name);
-
-void STR_explicit2_CFI(CFI_cdesc_t *SHT_name_cfi);
-
 void STR_CreturnChar(char *SHC_rv);
-
-void STR_CpassCharPtr_CFI(CFI_cdesc_t *SHT_dest_cfi,
-    CFI_cdesc_t *SHT_src_cfi);
-
-void STR_CpassCharPtrBlank(char *dest, const char *src);
-
-void STR_CpassCharPtrBlank_CFI(CFI_cdesc_t *SHT_dest_cfi,
-    CFI_cdesc_t *SHT_src_cfi);
 
 void STR_PostDeclare(int *count, char *name);
 
 void STR_PostDeclare_CFI(CFI_cdesc_t *SHT_count_cfi,
     CFI_cdesc_t *SHT_name_cfi);
-
-int STR_CpassCharPtrNotrim(const char *src);
-
-int STR_CpassCharPtrNotrim_CFI(CFI_cdesc_t *SHT_src_cfi);
-
-int STR_CpassCharPtrCAPI(void *addr, const char *src);
-
-int STR_CpassCharPtrCAPI2(const char *in, const char *src);
-
-int STR_CpassCharPtrCAPI2_CFI(CFI_cdesc_t *SHT_in_cfi, const char *src);
 
 #ifdef __cplusplus
 }

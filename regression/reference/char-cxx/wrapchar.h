@@ -67,128 +67,13 @@ const char * CHA_getCharPtr5(void);
 void CHA_getCharPtr5_bufferify(CHA_SHROUD_array *SHT_rv_cdesc);
 #endif
 
-void CHA_getConstStringResult_bufferify(CHA_SHROUD_array *SHT_rv_cdesc,
-    CHA_SHROUD_capsule_data *SHT_rv_capsule);
-
-void CHA_getConstStringLen_bufferify(char *SHC_rv, int SHT_rv_len);
-
-void CHA_getConstStringAsArg_bufferify(char *output, int noutput);
-
-void CHA_getConstStringAlloc_bufferify(CHA_SHROUD_array *SHT_rv_cdesc,
-    CHA_SHROUD_capsule_data *SHT_rv_capsule);
-
-const char * CHA_getConstStringRefPure(void);
-
-void CHA_getConstStringRefPure_bufferify(CHA_SHROUD_array *SHT_rv_cdesc,
-    CHA_SHROUD_capsule_data *SHT_rv_capsule);
-
-const char * CHA_getConstStringRefLen(void);
-
-void CHA_getConstStringRefLen_bufferify(char *SHC_rv, int SHT_rv_len);
-
-const char * CHA_getConstStringRefAsArg(void);
-
-void CHA_getConstStringRefAsArg_bufferify(char *output, int noutput);
-
-const char * CHA_getConstStringRefLenEmpty(void);
-
-void CHA_getConstStringRefLenEmpty_bufferify(char *SHC_rv,
-    int SHT_rv_len);
-
-const char * CHA_getConstStringRefAlloc(void);
-
-void CHA_getConstStringRefAlloc_bufferify(
-    CHA_SHROUD_array *SHT_rv_cdesc,
-    CHA_SHROUD_capsule_data *SHT_rv_capsule);
-
-const char * CHA_getConstStringPtrLen(void);
-
-void CHA_getConstStringPtrLen_bufferify(char *SHC_rv, int SHT_rv_len);
-
-const char * CHA_getConstStringPtrAlloc(void);
-
-void CHA_getConstStringPtrAlloc_bufferify(
-    CHA_SHROUD_array *SHT_rv_cdesc,
-    CHA_SHROUD_capsule_data *SHT_rv_capsule);
-
-const char * CHA_getConstStringPtrOwnsAlloc(void);
-
-void CHA_getConstStringPtrOwnsAlloc_bufferify(
-    CHA_SHROUD_array *SHT_rv_cdesc,
-    CHA_SHROUD_capsule_data *SHT_rv_capsule);
-
-const char * CHA_getConstStringPtrOwnsAllocPattern(void);
-
-void CHA_getConstStringPtrOwnsAllocPattern_bufferify(
-    CHA_SHROUD_array *SHT_rv_cdesc,
-    CHA_SHROUD_capsule_data *SHT_rv_capsule);
-
-#ifdef HAVE_CHARACTER_POINTER_FUNCTION
-const char * CHA_getConstStringPtrPointer(void);
-#endif
-
-#ifdef HAVE_CHARACTER_POINTER_FUNCTION
-void CHA_getConstStringPtrPointer_bufferify(
-    CHA_SHROUD_array *SHT_rv_cdesc);
-#endif
-
-void CHA_acceptStringConstReference(const char *arg1);
-
-void CHA_acceptStringConstReference_bufferify(char *arg1,
-    int SHT_arg1_len);
-
-void CHA_acceptStringReferenceOut(char *arg1);
-
-void CHA_acceptStringReferenceOut_bufferify(char *arg1,
-    int SHT_arg1_len);
-
-void CHA_acceptStringReference(char *arg1);
-
-void CHA_acceptStringReference_bufferify(char *arg1, int SHT_arg1_len);
-
-void CHA_acceptStringPointerConst(const char *arg1);
-
-void CHA_acceptStringPointerConst_bufferify(char *arg1,
-    int SHT_arg1_len);
-
-void CHA_acceptStringPointer(char *arg1);
-
-void CHA_acceptStringPointer_bufferify(char *arg1, int SHT_arg1_len);
-
-void CHA_fetchStringPointer(char *arg1);
-
-void CHA_fetchStringPointer_bufferify(char *arg1, int SHT_arg1_len);
-
-void CHA_acceptStringPointerLen(char *arg1, int *nlen);
-
-void CHA_acceptStringPointerLen_bufferify(char *arg1, int SHT_arg1_len,
-    int *nlen);
-
-void CHA_fetchStringPointerLen(char *arg1, int *nlen);
-
-void CHA_fetchStringPointerLen_bufferify(char *arg1, int SHT_arg1_len,
-    int *nlen);
-
-int CHA_acceptStringInstance(char *arg1);
-
-int CHA_acceptStringInstance_bufferify(char *arg1, int SHT_arg1_len);
-
-void CHA_fetchArrayStringArg_bufferify(
-    CHA_SHROUD_array *SHT_strs_cdesc);
-
-void CHA_fetchArrayStringAlloc_bufferify(
-    CHA_SHROUD_array *SHT_strs_cdesc,
-    CHA_SHROUD_capsule_data *SHT_strs_capsule);
-
-void CHA_fetchArrayStringAllocLen_bufferify(
-    CHA_SHROUD_array *SHT_strs_cdesc,
-    CHA_SHROUD_capsule_data *SHT_strs_capsule);
-
 void CHA_explicit1(char *name);
 
 void CHA_explicit2(char *name);
 
 void CHA_explicit2_bufferify(char *name, int SHT_name_len);
+
+void CHA_CpassChar(char status);
 
 void CHA_CreturnChar(char *SHC_rv);
 
@@ -199,11 +84,6 @@ void CHA_CpassCharPtrBlank(char *dest, const char *src);
 
 void CHA_CpassCharPtrBlank_bufferify(char *dest, int SHT_dest_len,
     char *src, int SHT_src_len);
-
-void CHA_PostDeclare(int *count, char *name);
-
-void CHA_PostDeclare_bufferify(int *count, char *name,
-    int SHT_name_len);
 
 int CHA_CpassCharPtrNotrim(const char *src);
 
