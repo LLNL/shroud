@@ -548,6 +548,10 @@ if __name__ == "__main__":
         TestDesc("names2"),
         TestDesc("namespace"),
         TestDesc("namespacedoc"),
+        TestDesc("char-cxx", yaml="char",
+                 cmdline=[
+                     "--language", "c++",
+                 ]),
         TestDesc("strings"),
         TestDesc("strings-cfi", yaml="strings",
                  keywords=["cfi"],
