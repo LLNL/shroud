@@ -8,7 +8,7 @@
 //
 
 // cxx_header
-#include "char.hpp"
+#include "char.h"
 #include "shroud/features.h"
 // typemap
 #include <string>

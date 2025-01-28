@@ -10,7 +10,7 @@ copyright:
 #
 
 library: char
-cxx_header: char.hpp shroud/features.h
+cxx_header: char.h shroud/features.h
 fortran_header: shroud/features.h
 
 options:

@@ -43,19 +43,22 @@ endif
 
 .PHONY : sync-cxx
 sync-cxx : \
+  $(relrunpath)/cxx/char.cpp \
   $(relrunpath)/cxx/enum.cpp \
+  $(relrunpath)/cxx/funptr.cpp \
   $(relrunpath)/cxx/pointers.cpp \
   $(relrunpath)/cxx/struct.cpp \
-  $(relrunpath)/cxx/funptr.cpp \
   $(relrunpath)/cxx/typedefs.cpp
 
+$(relrunpath)/cxx/char.cpp : regression/run/char/char.c | $(relrunpath)/cxx/..
+	cp $< $@
 $(relrunpath)/cxx/enum.cpp : regression/run/enum/enum.c | $(relrunpath)/cxx/..
+	cp $< $@
+$(relrunpath)/cxx/funptr.cpp : regression/run/funptr/funptr.c | $(relrunpath)/cxx/..
 	cp $< $@
 $(relrunpath)/cxx/struct.cpp : regression/run/struct/struct.c | $(relrunpath)/cxx/..
 	cp $< $@
 $(relrunpath)/cxx/pointers.cpp : regression/run/pointers/pointers.c | $(relrunpath)/cxx/..
-	cp $< $@
-$(relrunpath)/cxx/funptr.cpp : regression/run/funptr/funptr.c | $(relrunpath)/cxx/..
 	cp $< $@
 $(relrunpath)/cxx/typedefs.cpp : regression/run/typedefs/typedefs.c | $(relrunpath)/cxx/..
 	cp $< $@
@@ -88,6 +91,8 @@ fortran-test-list-std = \
   test-fortran-vectors \
   test-fortran-cdesc \
   test-fortran-preprocess \
+  test-fortran-cxx \
+  test-fortran-char-cxx \
   test-fortran-strings \
   test-fortran-ccomplex \
   test-fortran-clibrary \

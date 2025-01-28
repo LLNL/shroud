@@ -5,14 +5,14 @@
 ! SPDX-License-Identifier: (BSD-3-Clause)
 ! #######################################################################
 !
-! Test Fortran API generated from strings.yaml.
+! Test Fortran API generated from char.yaml.
 !
 #include "shroud/features.h"
 
 program tester
   use fruit
   use iso_c_binding
-  use strings_mod
+  use char_mod
   implicit none
   logical ok
 

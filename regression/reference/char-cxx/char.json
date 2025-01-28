@@ -10,7 +10,7 @@
             ""
         ],
         "cxx_header": [
-            "char.hpp",
+            "char.h",
             "shroud/features.h"
         ],
         "fortran_header": [

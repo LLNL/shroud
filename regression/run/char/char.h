@@ -5,11 +5,11 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 // #######################################################################
 //
-// strings.hpp - wrapped routines
+// char.h - wrapped routines
 //
 
-#ifndef STRINGS_HPP
-#define STRINGS_HPP
+#ifndef CHAR_HPP
+#define CHAR_HPP
 
 #include <string>
 
@@ -92,4 +92,4 @@ int CpassCharPtrCAPI(void *addr, const char *src);
 int CpassCharPtrCAPI2(const char *in, const char *src);
 
 
-#endif // STRINGS_HPP
+#endif // CHAR_HPP

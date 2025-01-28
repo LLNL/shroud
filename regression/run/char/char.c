@@ -5,10 +5,10 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 // #######################################################################
 //
-// strings.cpp
+// char.c
 //
 
-#include "strings.hpp"
+#include "char.h"
 #include <cstring>
 
 static std::string last_function_called;

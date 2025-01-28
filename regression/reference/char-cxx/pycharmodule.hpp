@@ -12,7 +12,7 @@
 #include <Python.h>
 
 // cxx_header
-#include "char.hpp"
+#include "char.h"
 #include "shroud/features.h"
 
 // splicer begin header.include
