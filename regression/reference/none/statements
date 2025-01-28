@@ -2932,6 +2932,13 @@ c_mixin_arg_native_cfi:
   iface_header:
   - ISO_Fortran_binding.h
   owner: library
+c_mixin_c-str:
+  name: c_mixin_c-str
+  intent: mixin
+  c_post_call:
+  - // c_mixin_c-str
+  - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
+  owner: library
 c_mixin_cast-argument:
   name: c_mixin_cast-argument
   comments:
@@ -3387,6 +3394,22 @@ c_mixin_out_vector_buf_malloc:
   - size_t *{c_var_size}
   c_temps:
   - size
+  owner: library
+c_mixin_pass_capsule:
+  name: c_mixin_pass_capsule
+  comments:
+  - Pass capsule as argument to C wrapper.
+  intent: mixin
+  i_arg_names:
+  - '{i_var_capsule}'
+  i_arg_decl:
+  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  i_import:
+  - '{F_capsule_data_type}'
+  c_arg_decl:
+  - '{C_capsule_data_type} *{c_var_capsule}'
+  c_temps:
+  - capsule
   owner: library
 c_mixin_shadow:
   name: c_mixin_shadow
@@ -4232,7 +4255,8 @@ c_out_vector<string>&_cdesc_allocatable:
   name: c_out_vector<string>&_cdesc_allocatable
   comments:
   - Pass cdesc as argument to C wrapper.
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   - Allocate Fortran array from cdesc.
   - Allocate a vector<string> variable.
   - Copy into Fortran allocated memory.
@@ -5409,7 +5433,8 @@ f_function_native*_cdesc_allocatable:
   - Fill cdesc from native in the C wrapper.
   - Allocate Fortran native array, then fill from cdesc
   - using helper copy_array.
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   intent: function
@@ -5524,6 +5549,7 @@ f_function_native*_cdesc_pointer_caller:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
   - Add a capsule argument to the Fortran wrapper.
   - Pass the capsule as argument to C wrapper.
   - Fill cdesc from native in the C wrapper.
@@ -6462,7 +6488,8 @@ f_function_string&_cdesc_allocatable:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign to local capsule variable in C wrapper.
@@ -6523,7 +6550,8 @@ f_function_string&_cdesc_allocatable_caller:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign to local capsule variable in C wrapper.
@@ -6584,7 +6612,8 @@ f_function_string&_cdesc_allocatable_library:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign to local capsule variable in C wrapper.
@@ -7356,7 +7385,8 @@ f_function_string*_cdesc_allocatable:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign to local capsule variable in C wrapper.
@@ -7417,7 +7447,8 @@ f_function_string*_cdesc_allocatable_caller:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign to local capsule variable in C wrapper.
@@ -7478,7 +7509,8 @@ f_function_string*_cdesc_allocatable_library:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign to local capsule variable in C wrapper.
@@ -8269,7 +8301,8 @@ f_function_string_cdesc_allocatable:
   - in the C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   intent: function
@@ -8343,7 +8376,8 @@ f_function_string_cdesc_allocatable_caller:
   - in the C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   intent: function
@@ -8417,7 +8451,8 @@ f_function_string_cdesc_allocatable_library:
   - in the C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   intent: function
@@ -11919,6 +11954,7 @@ f_inout_void*_cdesc:
 f_mixin_arg_capsule:
   name: f_mixin_arg_capsule
   comments:
+  - Pass capsule as argument to C wrapper.
   - Add a capsule argument to the Fortran wrapper.
   - Pass the capsule as argument to C wrapper.
   intent: mixin
@@ -12494,7 +12530,8 @@ f_mixin_out_vector_buf:
 f_mixin_pass_capsule:
   name: f_mixin_pass_capsule
   comments:
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   intent: mixin
   f_declare:
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
@@ -12664,7 +12701,8 @@ f_mixin_unknown:
 f_mixin_use_capsule:
   name: f_mixin_use_capsule
   comments:
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   intent: mixin
@@ -13234,7 +13272,8 @@ f_out_native**_cdesc_allocatable:
   - Fill cdesc from native in the C wrapper.
   - Allocate Fortran native array for argument
   - then fill from cdesc using helper copy_array.
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   notes:
@@ -13651,7 +13690,8 @@ f_out_string**_cdesc_allocatable:
   name: f_out_string**_cdesc_allocatable
   comments:
   - Pass cdesc as argument to C wrapper.
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   - Allocate Fortran array from cdesc.
   - Allocate a vector<string> variable.
   - Assign to std::string pointer from C++ function.
@@ -14281,7 +14321,8 @@ f_out_vector<string>&_cdesc_allocatable:
   name: f_out_vector<string>&_cdesc_allocatable
   comments:
   - Pass cdesc as argument to C wrapper.
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   - Allocate Fortran array from cdesc.
   - Allocate a vector<string> variable.
   - Copy into Fortran allocated memory.
@@ -15677,6 +15718,7 @@ root
           cfi -- c_mixin_arg_character_cfi
         native
           cfi -- c_mixin_arg_native_cfi
+      c-str -- c_mixin_c-str
       cast-argument -- c_mixin_cast-argument
       char-copy-to-arg -- c_mixin_char-copy-to-arg
       char-copy-to-arg-cfi -- c_mixin_char-copy-to-arg-cfi
@@ -15726,6 +15768,8 @@ root
             malloc -- c_mixin_out_vector_buf_malloc
         vector<native>
           cdesc -- c_mixin_out_vector<native>_cdesc
+      pass
+        capsule -- c_mixin_pass_capsule
       shadow -- c_mixin_shadow
       unknown -- c_mixin_unknown
       vector

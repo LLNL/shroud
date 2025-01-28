@@ -392,23 +392,14 @@
         ]
     },
     {
-        "name": "f_mixin_pass_capsule",
+        "name": "c_mixin_pass_capsule",
         "comments": [
-            "Pass local capsule as argument to C wrapper."
+            "Pass capsule as argument to C wrapper."
         ],
-        "f_helper": [
-            "array_context"
+        "notes": [
+            "The C wrapper will use the capsule to save the address",
+            "of a variable."
         ],
-        "f_declare": [
-            "type({F_capsule_data_type}) :: {f_var_capsule}"
-        ],
-        "f_arg_call": [
-            "{f_var_capsule}"
-        ],
-        "f_temps": [
-            "capsule"
-        ],
-        "f_need_wrapper": true,
         "c_arg_decl": [
             "{C_capsule_data_type} *{c_var_capsule}"
         ],
@@ -426,10 +417,45 @@
         ]
     },
     {
+        "name": "f_mixin_pass_capsule",
+        "comments": [
+            "Create a local Fortran capsule." 
+        ],
+        "notes": [
+            "This can be used by the Fortran wrapper to release C++ memory",
+            "after copying the values into Fortran memory."
+        ],
+        "mixin": [
+            "c_mixin_pass_capsule"
+        ],
+        "f_helper": [
+            "array_context"
+        ],
+        "f_declare": [
+            "type({F_capsule_data_type}) :: {f_var_capsule}"
+        ],
+        "f_arg_call": [
+            "{f_var_capsule}"
+        ],
+        "f_temps": [
+            "capsule"
+        ],
+        "f_need_wrapper": true
+    },
+    {
         "name": "f_mixin_arg_capsule",
         "comments": [
             "Add a capsule argument to the Fortran wrapper.",
             "Pass the capsule as argument to C wrapper."
+        ],
+        "notes": [
+            "This adds a capsule to the Fortran API to control C++ memory.",
+            "The C++ memory maybe referenced by a Fortran pointer to allow",
+            "the user to access it.",
+            "The user is responsible to release the memory in the capsule."
+        ],
+        "mixin": [
+            "c_mixin_pass_capsule"
         ],
         "f_helper": [
             "array_context",
@@ -448,21 +474,6 @@
             "capsule"
         ],
         "f_need_wrapper": true,
-        "c_temps": [
-            "capsule"
-        ],
-        "c_arg_decl": [
-            "{C_capsule_data_type} *{c_var_capsule}"
-        ],
-        "i_arg_decl": [
-            "type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}"
-        ],
-        "i_arg_names": [
-            "{i_var_capsule}"
-        ],
-        "i_import": [
-            "{F_capsule_data_type}"
-        ],
         "fmtdict": {
             "f_var_capsule": "Crv"
         }
@@ -2577,13 +2588,24 @@
         ]
     },
     {
+        "name": "c_mixin_c-str",
+        "c_post_call": [
+            "// c_mixin_c-str",
+            "{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();"
+        ]
+    },
+    {
         "name": "c_function_string",
         "notimplemented": true,
         "comments": [
             "Cannot return a char array by value."
         ],
         "mixin": [
-            "c_mixin_function"
+            "c_mixin_function",
+            "#c_mixin_pass_capsule",
+            "#c_mixin_c-str",
+            "#c_mixin_native_capsule_fill",
+            "##c_mixin_function-assign-to-new"
         ],
         "i_module": {
             "iso_c_binding": [
