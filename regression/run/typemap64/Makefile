@@ -19,8 +19,7 @@ TEST_FFLAGS   = -DUSE_64BIT_INDEXTYPE -DUSE_64BIT_FLOAT
 
 INCLUDE = \
     -I$(top)/regression/reference/typemap \
-    -I$(top)/regression/run/typemap \
-    -I$(top)/regression/run/fruit
+    -I$(top)/regression/run/typemap
 
 VPATH = \
     $(top)/regression/reference/typemap \

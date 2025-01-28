@@ -11,8 +11,7 @@ include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
     -I$(top)/regression/reference/forward \
-    -I$(top)/regression/run/forward \
-    -I$(top)/regression/run/fruit
+    -I$(top)/regression/run/forward
 
 #    -I$(top)/regression/run/tutorial
 

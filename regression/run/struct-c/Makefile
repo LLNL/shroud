@@ -12,8 +12,7 @@ include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
     -I$(top)/regression/reference/struct-c \
-    -I$(top)/regression/run/struct \
-    -I$(top)/regression/run/fruit
+    -I$(top)/regression/run/struct
 
 VPATH = \
     $(top)/regression/reference/struct-c \

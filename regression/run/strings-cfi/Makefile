@@ -14,8 +14,7 @@ include $(top)/regression/run/defaults.mk
 INCLUDE = \
     -I$(top)/regression/reference/strings-cfi \
     -I$(top)/regression/run \
-    -I$(top)/regression/run/strings \
-    -I$(top)/regression/run/fruit
+    -I$(top)/regression/run/strings
 
 VPATH = \
     $(top)/regression/reference/strings-cfi \

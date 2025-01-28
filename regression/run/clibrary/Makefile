@@ -10,8 +10,7 @@ include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
     -I$(top)/regression/reference/clibrary \
-    -I$(top)/regression/run/clibrary \
-    -I$(top)/regression/run/fruit
+    -I$(top)/regression/run/clibrary
 
 VPATH = \
     $(top)/regression/reference/clibrary \

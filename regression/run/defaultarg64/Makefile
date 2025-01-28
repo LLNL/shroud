@@ -19,8 +19,7 @@ TEST_FFLAGS   = -DINDEXTYPE_SIZE=64
 
 INCLUDE = \
     -I$(top)/regression/reference/defaultarg \
-    -I$(top)/regression/run/defaultarg \
-    -I$(top)/regression/run/fruit
+    -I$(top)/regression/run/defaultarg
 
 VPATH = \
     $(top)/regression/reference/defaultarg \
