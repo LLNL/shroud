@@ -40,6 +40,7 @@ statements:
     - name: f_in_twostruct<native,native>
       mixin:
       - c_mixin_declare-arg
+      - c_mixin_arg-call-cvar
       - f_mixin_declare-interface-arg
       - f_mixin_declare-fortran-arg
     # Add meaningful fields here

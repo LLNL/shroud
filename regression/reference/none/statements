@@ -1273,6 +1273,8 @@ c_getter_native*:
   owner: library
 c_in_bool:
   name: c_in_bool
+  comments:
+  - Pass cxx variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -1303,6 +1305,8 @@ c_in_char:
   owner: library
 c_in_char*:
   name: c_in_char*
+  comments:
+  - Pass cxx variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -1426,6 +1430,8 @@ c_in_enum:
   owner: library
 c_in_native:
   name: c_in_native
+  comments:
+  - Pass cxx variable to library.
   notes:
   - An intent of 'none' is used with function pointers
   intent: in
@@ -1443,6 +1449,8 @@ c_in_native:
   owner: library
 c_in_native&:
   name: c_in_native&
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -1458,6 +1466,8 @@ c_in_native&:
   owner: library
 c_in_native*:
   name: c_in_native*
+  comments:
+  - Pass cxx variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -1473,6 +1483,8 @@ c_in_native*:
   owner: library
 c_in_native**:
   name: c_in_native**
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Any array of pointers.  Assumed to be non-contiguous memory.
   - All Fortran can do is treat as a type(C_PTR).
@@ -1519,6 +1531,8 @@ c_in_native*_cdesc:
     - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
 c_in_procedure:
   name: c_in_procedure
+  comments:
+  - Pass cxx variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -1533,6 +1547,8 @@ c_in_procedure:
   owner: library
 c_in_procedure_external:
   name: c_in_procedure_external
+  comments:
+  - Pass cxx variable to library.
   notes:
   - EXTERNAL is not allowed in BIND(C), so force wrapper.
   intent: in
@@ -1550,6 +1566,7 @@ c_in_procedure_external:
 c_in_procedure_funptr:
   name: c_in_procedure_funptr
   comments:
+  - Pass cxx variable to library.
   - Pass type(C_FUNPTR) argument.
   notes:
   - Accept a function pointer in an argument.
@@ -1674,6 +1691,8 @@ c_in_string:
   owner: library
 c_in_string&:
   name: c_in_string&
+  comments:
+  - Pass cxx local variable to library.
   notes:
   - Similar to f_in_string*, but c_arg_call is pass by value
   intent: in
@@ -1727,6 +1746,7 @@ c_in_string*:
   name: c_in_string*
   comments:
   - Create local std::string from the argument.
+  - Pass address of local cxx variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -1807,6 +1827,8 @@ c_in_string_buf:
   owner: library
 c_in_struct:
   name: c_in_struct
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
@@ -1825,6 +1847,8 @@ c_in_struct:
   owner: library
 c_in_struct&:
   name: c_in_struct&
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -1840,6 +1864,8 @@ c_in_struct&:
   owner: library
 c_in_struct*:
   name: c_in_struct*
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
@@ -1858,6 +1884,8 @@ c_in_struct*:
   owner: library
 c_in_unknown:
   name: c_in_unknown
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Used with MPI types
   intent: in
@@ -2169,6 +2197,8 @@ c_in_vector<string>_buf:
   owner: library
 c_in_void:
   name: c_in_void
+  comments:
+  - Pass cxx variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -2184,6 +2214,8 @@ c_in_void:
   owner: library
 c_in_void*:
   name: c_in_void*
+  comments:
+  - Pass cxx variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -2244,6 +2276,8 @@ c_in_void*_cdesc:
     - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
 c_inout_bool_*:
   name: c_inout_bool_*
+  comments:
+  - Pass cxx variable to library.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2259,6 +2293,8 @@ c_inout_bool_*:
   owner: library
 c_inout_char*:
   name: c_inout_char*
+  comments:
+  - Pass cxx variable to library.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2328,6 +2364,8 @@ c_inout_enum*:
   owner: library
 c_inout_native&:
   name: c_inout_native&
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2353,6 +2391,8 @@ c_inout_native&_hidden:
   owner: library
 c_inout_native*:
   name: c_inout_native*
+  comments:
+  - Pass cxx variable to library.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2595,6 +2635,8 @@ c_inout_string*_buf:
   owner: library
 c_inout_struct&:
   name: c_inout_struct&
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2610,6 +2652,8 @@ c_inout_struct&:
   owner: library
 c_inout_struct*:
   name: c_inout_struct*
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
@@ -2879,6 +2923,54 @@ c_inout_void*_cdesc:
   lang_cxx:
     c_pre_call:
     - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
+c_mixin_arg-call-cvar:
+  name: c_mixin_arg-call-cvar
+  comments:
+  - Pass cxx variable to library.
+  intent: mixin
+  c_arg_call:
+  - '{cxx_var}'
+  owner: library
+c_mixin_arg-call-cvar-address:
+  name: c_mixin_arg-call-cvar-address
+  comments:
+  - Pass address of cxx variable to library.
+  intent: mixin
+  c_arg_call:
+  - '&{cxx_var}'
+  owner: library
+c_mixin_arg-call-cvar-value:
+  name: c_mixin_arg-call-cvar-value
+  comments:
+  - Pass dereference of cxx variable to library.
+  intent: mixin
+  c_arg_call:
+  - '*{cxx_var}'
+  owner: library
+c_mixin_arg-call-cxx:
+  name: c_mixin_arg-call-cxx
+  comments:
+  - Pass cxx local variable to library.
+  intent: mixin
+  c_arg_call:
+  - '{c_local_cxx}'
+  owner: library
+c_mixin_arg-call-cxx-address:
+  name: c_mixin_arg-call-cxx-address
+  comments:
+  - Pass address of local cxx variable to library.
+  intent: mixin
+  c_arg_call:
+  - '&{c_local_cxx}'
+  owner: library
+c_mixin_arg-call-cxx-value:
+  name: c_mixin_arg-call-cxx-value
+  comments:
+  - Pass dereference of local cxx variable to library.
+  intent: mixin
+  c_arg_call:
+  - '*{c_local_cxx}'
+  owner: library
 c_mixin_arg_cfi:
   name: c_mixin_arg_cfi
   comments:
@@ -3020,8 +3112,6 @@ c_mixin_declare-arg:
   intent: mixin
   c_arg_decl:
   - '{gen.cdecl.c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 c_mixin_declare-fortran-result:
   name: c_mixin_declare-fortran-result
@@ -3263,6 +3353,16 @@ c_mixin_inout_vector_cdesc:
   c_helper:
   - array_context
   owner: library
+c_mixin_local-string:
+  name: c_mixin_local-string
+  comments:
+  - Create local std::string from the argument.
+  intent: mixin
+  c_pre_call:
+  - '{c_const}std::string {c_local_cxx}({c_var});'
+  c_local:
+  - cxx
+  owner: library
 c_mixin_make-shared:
   name: c_mixin_make-shared
   comments:
@@ -3460,6 +3560,8 @@ c_mixin_vector_cdesc_fill-cdesc:
   owner: library
 c_out_bool_*:
   name: c_out_bool_*
+  comments:
+  - Pass cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -3475,6 +3577,8 @@ c_out_bool_*:
   owner: library
 c_out_char*:
   name: c_out_char*
+  comments:
+  - Pass cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -3538,6 +3642,8 @@ c_out_enum*:
   owner: library
 c_out_native&:
   name: c_out_native&
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -3563,6 +3669,8 @@ c_out_native&_hidden:
   owner: library
 c_out_native*:
   name: c_out_native*
+  comments:
+  - Pass cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -3578,6 +3686,8 @@ c_out_native*:
   owner: library
 c_out_native*&:
   name: c_out_native*&
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -3593,6 +3703,8 @@ c_out_native*&:
   owner: library
 c_out_native**:
   name: c_out_native**
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'
   intent: out
@@ -3610,6 +3722,8 @@ c_out_native**:
   owner: library
 c_out_native***:
   name: c_out_native***
+  comments:
+  - Pass cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -3625,6 +3739,8 @@ c_out_native***:
   owner: library
 c_out_native**_raw:
   name: c_out_native**_raw
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'
   intent: out
@@ -3681,6 +3797,7 @@ c_out_native*_hidden:
 c_out_procedure*_funptr:
   name: c_out_procedure*_funptr
   comments:
+  - Pass cxx variable to library.
   - Pass type(C_FUNPTR) argument.
   notes:
   - Return a function pointer in an argument.
@@ -3699,6 +3816,8 @@ c_out_procedure*_funptr:
   owner: library
 c_out_string&:
   name: c_out_string&
+  comments:
+  - Pass cxx local variable to library.
   notes:
   - Similar to f_out_string*
   intent: out
@@ -3758,6 +3877,8 @@ c_out_string&_buf:
   owner: library
 c_out_string*:
   name: c_out_string*
+  comments:
+  - Pass address of local cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -3784,6 +3905,8 @@ c_out_string*:
     - <cstring>
 c_out_string**:
   name: c_out_string**
+  comments:
+  - Pass cxx variable to library.
   notes:
   - std::string **arg+intent(out)+dimension(size)
   - Returning a pointer to a string*. However, this needs additional
@@ -3864,6 +3987,8 @@ c_out_string*_buf:
   owner: library
 c_out_struct&:
   name: c_out_struct&
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -3879,6 +4004,8 @@ c_out_struct&:
   owner: library
 c_out_struct*:
   name: c_out_struct*
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
@@ -4215,6 +4342,8 @@ c_out_vector<string>&:
   notimplemented: true
 c_out_vector<string>&_buf_copy:
   name: c_out_vector<string>&_buf_copy
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -4306,6 +4435,8 @@ c_out_vector<string>&_cdesc_allocatable:
   owner: library
 c_out_vector<string>*_buf_copy:
   name: c_out_vector<string>*_buf_copy
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -4322,6 +4453,8 @@ c_out_vector<string>*_buf_copy:
   notimplemented: true
 c_out_vector<string>_buf_copy:
   name: c_out_vector<string>_buf_copy
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -4338,6 +4471,8 @@ c_out_vector<string>_buf_copy:
   notimplemented: true
 c_out_void*&:
   name: c_out_void*&
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -4414,8 +4549,6 @@ c_setter_native:
     - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   owner: library
@@ -4431,8 +4564,6 @@ c_setter_native*:
     - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   owner: library
@@ -9342,6 +9473,8 @@ f_getter_struct*_fapi_pointer:
   owner: library
 f_in_bool:
   name: f_in_bool
+  comments:
+  - Pass cxx variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -9393,6 +9526,8 @@ f_in_char:
   owner: library
 f_in_char*:
   name: f_in_char*
+  comments:
+  - Pass cxx variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -9571,6 +9706,8 @@ f_in_char*_buf:
   owner: library
 f_in_char*_capi:
   name: f_in_char*_capi
+  comments:
+  - Pass cxx variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -9659,6 +9796,8 @@ f_in_enum:
   owner: library
 f_in_native:
   name: f_in_native
+  comments:
+  - Pass cxx variable to library.
   notes:
   - An intent of 'none' is used with function pointers
   intent: in
@@ -9683,6 +9822,8 @@ f_in_native:
   owner: library
 f_in_native&:
   name: f_in_native&
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -9705,6 +9846,8 @@ f_in_native&:
   owner: library
 f_in_native*:
   name: f_in_native*
+  comments:
+  - Pass cxx variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -9727,6 +9870,8 @@ f_in_native*:
   owner: library
 f_in_native**:
   name: f_in_native**
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Any array of pointers.  Assumed to be non-contiguous memory.
   - All Fortran can do is treat as a type(C_PTR).
@@ -9832,6 +9977,8 @@ f_in_native*_cfi:
   owner: library
 f_in_procedure:
   name: f_in_procedure
+  comments:
+  - Pass cxx variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -9852,6 +9999,8 @@ f_in_procedure:
   owner: library
 f_in_procedure_external:
   name: f_in_procedure_external
+  comments:
+  - Pass cxx variable to library.
   notes:
   - EXTERNAL is not allowed in BIND(C), so force wrapper.
   intent: in
@@ -9876,6 +10025,7 @@ f_in_procedure_external:
 f_in_procedure_funptr:
   name: f_in_procedure_funptr
   comments:
+  - Pass cxx variable to library.
   - Pass type(C_FUNPTR) argument.
   notes:
   - Accept a function pointer in an argument.
@@ -10029,6 +10179,8 @@ f_in_smartptr<shadow>*:
   owner: library
 f_in_string&:
   name: f_in_string&
+  comments:
+  - Pass cxx local variable to library.
   notes:
   - Similar to f_in_string*, but c_arg_call is pass by value
   intent: in
@@ -10133,6 +10285,7 @@ f_in_string*:
   name: f_in_string*
   comments:
   - Create local std::string from the argument.
+  - Pass address of local cxx variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -10315,6 +10468,8 @@ f_in_string_cfi:
   owner: library
 f_in_struct:
   name: f_in_struct
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
@@ -10340,6 +10495,8 @@ f_in_struct:
   owner: library
 f_in_struct&:
   name: f_in_struct&
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -10362,6 +10519,8 @@ f_in_struct&:
   owner: library
 f_in_struct*:
   name: f_in_struct*
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
@@ -10387,6 +10546,8 @@ f_in_struct*:
   owner: library
 f_in_unknown:
   name: f_in_unknown
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Used with MPI types
   intent: in
@@ -10776,6 +10937,8 @@ f_in_vector_&_cdesc_targ_native_scalar:
   owner: library
 f_in_void:
   name: f_in_void
+  comments:
+  - Pass cxx variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -10798,6 +10961,8 @@ f_in_void:
   owner: library
 f_in_void*:
   name: f_in_void*
+  comments:
+  - Pass cxx variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -10915,6 +11080,8 @@ f_in_void*_cdesc:
   owner: library
 f_inout_bool*:
   name: f_inout_bool*
+  comments:
+  - Pass cxx variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -10949,6 +11116,8 @@ f_inout_bool*:
   owner: library
 f_inout_char*:
   name: f_inout_char*
+  comments:
+  - Pass cxx variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -11023,6 +11192,8 @@ f_inout_char*_buf:
   owner: library
 f_inout_char*_capi:
   name: f_inout_char*_capi
+  comments:
+  - Pass cxx variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -11112,6 +11283,8 @@ f_inout_enum*:
   owner: library
 f_inout_native&:
   name: f_inout_native&
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -11144,6 +11317,8 @@ f_inout_native&_hidden:
   owner: library
 f_inout_native*:
   name: f_inout_native*
+  comments:
+  - Pass cxx variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -11611,6 +11786,8 @@ f_inout_string*_cfi:
   owner: library
 f_inout_struct&:
   name: f_inout_struct&
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -11633,6 +11810,8 @@ f_inout_struct&:
   owner: library
 f_inout_struct*:
   name: f_inout_struct*
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
@@ -12738,6 +12917,8 @@ f_mixin_use_capsule:
   owner: library
 f_none_bool:
   name: f_none_bool
+  comments:
+  - Pass cxx variable to library.
   intent: none
   f_arg_name:
   - '{f_var}'
@@ -12770,6 +12951,8 @@ f_none_bool:
   owner: library
 f_none_bool*:
   name: f_none_bool*
+  comments:
+  - Pass cxx variable to library.
   intent: none
   f_arg_name:
   - '{f_var}'
@@ -12821,6 +13004,8 @@ f_none_char:
   owner: library
 f_none_char*:
   name: f_none_char*
+  comments:
+  - Pass cxx variable to library.
   intent: none
   f_arg_name:
   - '{f_var}'
@@ -12843,6 +13028,8 @@ f_none_char*:
   owner: library
 f_none_native:
   name: f_none_native
+  comments:
+  - Pass cxx variable to library.
   notes:
   - An intent of 'none' is used with function pointers
   intent: none
@@ -12867,6 +13054,8 @@ f_none_native:
   owner: library
 f_none_native*:
   name: f_none_native*
+  comments:
+  - Pass cxx variable to library.
   intent: none
   f_arg_name:
   - '{f_var}'
@@ -12889,6 +13078,8 @@ f_none_native*:
   owner: library
 f_none_void*:
   name: f_none_void*
+  comments:
+  - Pass cxx variable to library.
   intent: none
   f_arg_name:
   - '{f_var}'
@@ -12911,6 +13102,8 @@ f_none_void*:
   owner: library
 f_out_bool*:
   name: f_out_bool*
+  comments:
+  - Pass cxx variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -12943,6 +13136,8 @@ f_out_bool*:
   owner: library
 f_out_char*:
   name: f_out_char*
+  comments:
+  - Pass cxx variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -13011,6 +13206,8 @@ f_out_char*_buf:
   owner: library
 f_out_char*_capi:
   name: f_out_char*_capi
+  comments:
+  - Pass cxx variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -13095,6 +13292,8 @@ f_out_enum*:
   owner: library
 f_out_native&:
   name: f_out_native&
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -13127,6 +13326,8 @@ f_out_native&_hidden:
   owner: library
 f_out_native*:
   name: f_out_native*
+  comments:
+  - Pass cxx variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -13249,6 +13450,8 @@ f_out_native*&_cdesc_pointer:
   owner: library
 f_out_native***:
   name: f_out_native***
+  comments:
+  - Pass cxx variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -13493,6 +13696,8 @@ f_out_native**_cfi_pointer:
   owner: library
 f_out_native**_raw:
   name: f_out_native**_raw
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'
   intent: out
@@ -13579,6 +13784,7 @@ f_out_native*_hidden:
 f_out_procedure*_funptr:
   name: f_out_procedure*_funptr
   comments:
+  - Pass cxx variable to library.
   - Pass type(C_FUNPTR) argument.
   notes:
   - Return a function pointer in an argument.
@@ -13881,6 +14087,8 @@ f_out_string**_cfi_copy:
   owner: library
 f_out_string**_copy:
   name: f_out_string**_copy
+  comments:
+  - Pass cxx variable to library.
   notes:
   - std::string **arg+intent(out)+dimension(size)
   - Returning a pointer to a string*. However, this needs additional
@@ -13987,6 +14195,8 @@ f_out_string*_cfi:
   owner: library
 f_out_struct&:
   name: f_out_struct&
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -14009,6 +14219,8 @@ f_out_struct&:
   owner: library
 f_out_struct*:
   name: f_out_struct*
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
@@ -14460,6 +14672,8 @@ f_out_vector_buf_targ_string_scalar:
   owner: library
 f_out_void*&:
   name: f_out_void*&
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -14588,8 +14802,6 @@ f_setter_bool:
     - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   owner: library
@@ -14614,8 +14826,6 @@ f_setter_native:
     - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   owner: library
@@ -14640,8 +14850,6 @@ f_setter_native*:
     - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   owner: library
@@ -14707,8 +14915,6 @@ f_setter_struct*:
     - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   owner: library
@@ -14731,8 +14937,6 @@ f_setter_struct**:
     - C_PTR
   c_arg_decl:
   - '{gen.cdecl.c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   owner: library
@@ -14755,8 +14959,6 @@ f_setter_struct*_pointer:
     - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   owner: library
@@ -15722,6 +15924,12 @@ root
           cfi -- c_mixin_arg_character_cfi
         native
           cfi -- c_mixin_arg_native_cfi
+      arg-call-cvar -- c_mixin_arg-call-cvar
+      arg-call-cvar-address -- c_mixin_arg-call-cvar-address
+      arg-call-cvar-value -- c_mixin_arg-call-cvar-value
+      arg-call-cxx -- c_mixin_arg-call-cxx
+      arg-call-cxx-address -- c_mixin_arg-call-cxx-address
+      arg-call-cxx-value -- c_mixin_arg-call-cxx-value
       c-str -- c_mixin_c-str
       cast-argument -- c_mixin_cast-argument
       char-copy-to-arg -- c_mixin_char-copy-to-arg
@@ -15755,6 +15963,7 @@ root
           cdesc -- c_mixin_inout_vector_cdesc
         vector<native>
           cdesc -- c_mixin_inout_vector<native>_cdesc
+      local-string -- c_mixin_local-string
       make-shared -- c_mixin_make-shared
       native
         capsule

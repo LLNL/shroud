@@ -3008,8 +3008,7 @@
                             "f": {
                                 "+result": {
                                     "fmtdict": {
-                                        "C_call_function": "SH_this->set_test(\tval)",
-                                        "C_call_list": "val",
+                                        "C_call_function": "SH_this->set_test(\t)",
                                         "C_name": "CLA_Class1_set_test",
                                         "C_prototype": "CLA_Class1 * self,\t int val",
                                         "C_return_type": "void",
@@ -3265,8 +3264,7 @@
                             "f": {
                                 "+result": {
                                     "fmtdict": {
-                                        "C_call_function": "SH_this->set_m_bool(\tval)",
-                                        "C_call_list": "val",
+                                        "C_call_function": "SH_this->set_m_bool(\t)",
                                         "C_name": "CLA_Class1_set_m_bool",
                                         "C_prototype": "CLA_Class1 * self,\t bool val",
                                         "C_return_type": "void",
@@ -5855,8 +5853,7 @@
                             "f": {
                                 "+result": {
                                     "fmtdict": {
-                                        "C_call_function": "SH_this->set_nitems(\tval)",
-                                        "C_call_list": "val",
+                                        "C_call_function": "SH_this->set_nitems(\t)",
                                         "C_name": "CLA_Data_set_nitems",
                                         "C_prototype": "CLA_Data * self,\t int val",
                                         "C_return_type": "void",
@@ -6163,8 +6160,7 @@
                             "f": {
                                 "+result": {
                                     "fmtdict": {
-                                        "C_call_function": "SH_this->set_items(\tval)",
-                                        "C_call_list": "val",
+                                        "C_call_function": "SH_this->set_items(\t)",
                                         "C_name": "CLA_Data_set_items",
                                         "C_prototype": "CLA_Data * self,\t int *val",
                                         "C_return_type": "void",

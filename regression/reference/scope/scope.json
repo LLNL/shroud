@@ -816,8 +816,8 @@
                     "f": {
                         "+result": {
                             "fmtdict": {
-                                "C_call_function": "DataPointer_set_items(\tSH_this,\t val)",
-                                "C_call_list": "SH_this,\t val",
+                                "C_call_function": "DataPointer_set_items(\tSH_this)",
+                                "C_call_list": "SH_this",
                                 "C_name": "SCO_DataPointer_set_items",
                                 "C_prototype": "SCO_datapointer *SH_this,\t int *val",
                                 "C_return_type": "void",
@@ -1440,8 +1440,8 @@
                             "f": {
                                 "+result": {
                                     "fmtdict": {
-                                        "C_call_function": "ns1::DataPointer_set_items(\tSH_this,\t val)",
-                                        "C_call_list": "SH_this,\t val",
+                                        "C_call_function": "ns1::DataPointer_set_items(\tSH_this)",
+                                        "C_call_list": "SH_this",
                                         "C_name": "SCO_ns1_DataPointer_set_items",
                                         "C_prototype": "SCO_datapointer *SH_this,\t int *val",
                                         "C_return_type": "void",
@@ -2091,8 +2091,8 @@
                             "f": {
                                 "+result": {
                                     "fmtdict": {
-                                        "C_call_function": "ns2::DataPointer_set_items(\tSH_this,\t val)",
-                                        "C_call_list": "SH_this,\t val",
+                                        "C_call_function": "ns2::DataPointer_set_items(\tSH_this)",
+                                        "C_call_list": "SH_this",
                                         "C_name": "SCO_ns2_DataPointer_set_items",
                                         "C_prototype": "SCO_datapointer *SH_this,\t int *val",
                                         "C_return_type": "void",

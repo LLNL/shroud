@@ -936,8 +936,7 @@
                             "f": {
                                 "+result": {
                                     "fmtdict": {
-                                        "C_call_function": "SH_this->set_x1(\tval)",
-                                        "C_call_list": "val",
+                                        "C_call_function": "SH_this->set_x1(\t)",
                                         "C_name": "STR_Cstruct_as_class_set_x1",
                                         "C_prototype": "STR_Cstruct_as_class * self,\t int val",
                                         "C_return_type": "void",
@@ -1195,8 +1194,7 @@
                             "f": {
                                 "+result": {
                                     "fmtdict": {
-                                        "C_call_function": "SH_this->set_y1(\tval)",
-                                        "C_call_list": "val",
+                                        "C_call_function": "SH_this->set_y1(\t)",
                                         "C_name": "STR_Cstruct_as_class_set_y1",
                                         "C_prototype": "STR_Cstruct_as_class * self,\t int val",
                                         "C_return_type": "void",
@@ -1552,8 +1550,7 @@
                             "f": {
                                 "+result": {
                                     "fmtdict": {
-                                        "C_call_function": "SH_this->set_x1(\tval)",
-                                        "C_call_list": "val",
+                                        "C_call_function": "SH_this->set_x1(\t)",
                                         "C_name": "STR_Cstruct_as_subclass_set_x1",
                                         "C_prototype": "STR_Cstruct_as_subclass * self,\t int val",
                                         "C_return_type": "void",
@@ -1811,8 +1808,7 @@
                             "f": {
                                 "+result": {
                                     "fmtdict": {
-                                        "C_call_function": "SH_this->set_y1(\tval)",
-                                        "C_call_list": "val",
+                                        "C_call_function": "SH_this->set_y1(\t)",
                                         "C_name": "STR_Cstruct_as_subclass_set_y1",
                                         "C_prototype": "STR_Cstruct_as_subclass * self,\t int val",
                                         "C_return_type": "void",
@@ -2070,8 +2066,7 @@
                             "f": {
                                 "+result": {
                                     "fmtdict": {
-                                        "C_call_function": "SH_this->set_z1(\tval)",
-                                        "C_call_list": "val",
+                                        "C_call_function": "SH_this->set_z1(\t)",
                                         "C_name": "STR_Cstruct_as_subclass_set_z1",
                                         "C_prototype": "STR_Cstruct_as_subclass * self,\t int val",
                                         "C_return_type": "void",
@@ -7817,8 +7812,8 @@
                     "f": {
                         "+result": {
                             "fmtdict": {
-                                "C_call_function": "Cstruct_ptr_set_const_dvalue(\tSH_this,\t val)",
-                                "C_call_list": "SH_this,\t val",
+                                "C_call_function": "Cstruct_ptr_set_const_dvalue(\tSH_this)",
+                                "C_call_list": "SH_this",
                                 "C_name": "STR_Cstruct_ptr_set_const_dvalue",
                                 "C_prototype": "STR_cstruct_ptr *SH_this,\t const double *val",
                                 "C_return_type": "void",
@@ -8252,8 +8247,8 @@
                     "f": {
                         "+result": {
                             "fmtdict": {
-                                "C_call_function": "Cstruct_list_set_ivalue(\tSH_this,\t val)",
-                                "C_call_list": "SH_this,\t val",
+                                "C_call_function": "Cstruct_list_set_ivalue(\tSH_this)",
+                                "C_call_list": "SH_this",
                                 "C_name": "STR_Cstruct_list_set_ivalue",
                                 "C_prototype": "STR_cstruct_list *SH_this,\t int *val",
                                 "C_return_type": "void",
@@ -8694,8 +8689,8 @@
                     "f": {
                         "+result": {
                             "fmtdict": {
-                                "C_call_function": "Cstruct_list_set_dvalue(\tSH_this,\t val)",
-                                "C_call_list": "SH_this,\t val",
+                                "C_call_function": "Cstruct_list_set_dvalue(\tSH_this)",
+                                "C_call_list": "SH_this",
                                 "C_name": "STR_Cstruct_list_set_dvalue",
                                 "C_prototype": "STR_cstruct_list *SH_this,\t double *val",
                                 "C_return_type": "void",
