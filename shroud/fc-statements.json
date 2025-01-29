@@ -2603,17 +2603,6 @@
             "c_mixin_function-assign-to-new",
             "c_mixin_c-str",
             "c_mixin_native_capsule_fill"
-        ],
-        "#i_module": {
-            "iso_c_binding": [
-                "C_CHAR"
-            ]
-        },
-        "#i_result_decl": [
-            "character(kind=C_CHAR) :: {i_var}(*)"
-        ],
-        "#c_post_call": [
-            "{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();"
         ]
     },
     {
