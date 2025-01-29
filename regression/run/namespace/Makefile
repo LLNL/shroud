@@ -15,8 +15,7 @@ include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
     -I$(top)/regression/reference/namespace \
-    -I$(top)/regression/run/namespace \
-    -I$(top)/regression/run/fruit
+    -I$(top)/regression/run/namespace
 
 VPATH = \
     $(top)/regression/reference/namespace \

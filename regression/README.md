@@ -17,6 +17,11 @@ Header only.
 Same as the tutorial test but with option debug set to False.
 All other tests have debug set to True to aid development.
 
+### char
+
+Test the many variations of char.
+Tested as char-c and char-cxx.
+
 ### clibrary
 
 Uses assumed-type in a test.  Does not work with PGI.
@@ -50,3 +55,7 @@ helpers and statements
 
 Test enums in different scopes.
 See *enum* for C enums.
+
+### strings
+
+Test the many variations of std::string.

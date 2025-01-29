@@ -234,6 +234,7 @@ program tester
   call test_callback4
   call test_abstract_declarator
   call test_callback_arguments
+  call test_return_fptr
 
   call fruit_summary
   call fruit_finalize
@@ -420,5 +421,17 @@ contains
     call assert_true(old_bool_array, "callback_all_types arg5")
     
   end subroutine test_callback_arguments
+
+  subroutine test_return_fptr
+    type(C_FUNPTR) argptr
+    procedure(pfvoid), pointer :: argfunc
+
+    call set_case_name("test_return_fptr")
+
+    call get_void_ptr(argptr)
+    call c_f_procpointer(argptr, argfunc)
+    call argfunc()
+    
+  end subroutine test_return_fptr
   
 end program tester

@@ -268,8 +268,6 @@ c_function_char*_buf_copy:
   owner: library
 c_function_enum:
   name: c_function_enum
-  comments:
-  - Call a function.
   intent: function
   i_result_decl:
   - '{i_type} :: {i_var}'
@@ -828,20 +826,40 @@ c_function_string:
   name: c_function_string
   comments:
   - Cannot return a char array by value.
+  - Return a const pointer to std::string data.
   intent: function
+  i_arg_names:
+  - '{i_var_capsule}'
+  i_arg_decl:
+  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_result_decl:
-  - 'character(kind=C_CHAR) :: {i_var}(*)'
+  - 'type(C_PTR) :: {i_var}'
+  i_import:
+  - '{F_capsule_data_type}'
   i_module:
     iso_c_binding:
-    - C_CHAR
+    - C_PTR
+  c_arg_decl:
+  - '{C_capsule_data_type} *{c_var_capsule}'
+  c_pre_call:
+  - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
+  c_call:
+  - '*{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
-  owner: library
-  notimplemented: true
+  - const char *{c_var} = NULL;
+  - if (!{c_local_cxx}->empty()) {c_var} = {c_local_cxx}->c_str();
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
+  c_return_type: const char *
+  c_temps:
+  - capsule
+  c_local:
+  - cxx
+  fmtdict:
+    cxx_addr: ''
+  owner: caller
 c_function_string&:
   name: c_function_string&
-  comments:
-  - Call a function.
   notes:
   - Fortran calling a C function without
   - any api argument - is this useful?
@@ -877,6 +895,8 @@ c_function_string&_buf_arg:
   - int {c_var_len}
   c_arg_call:
   - '{cxx_var}'
+  c_call:
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -886,6 +906,8 @@ c_function_string&_buf_arg:
   c_return_type: void
   c_temps:
   - len
+  c_local:
+  - cxx
   c_helper:
   - char_copy
   fmtdict:
@@ -901,6 +923,8 @@ c_function_string&_buf_copy:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Call function and assign to a local C++ variable.
+  - Copy cxx variable into c variable.
   intent: function
   i_arg_names:
   - '{i_var}'
@@ -917,6 +941,8 @@ c_function_string&_buf_copy:
   - int {c_var_len}
   c_arg_call:
   - '{cxx_var}'
+  c_call:
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -926,13 +952,13 @@ c_function_string&_buf_copy:
   c_return_type: void
   c_temps:
   - len
+  c_local:
+  - cxx
   c_helper:
   - char_copy
   owner: library
 c_function_string&_copy:
   name: c_function_string&_copy
-  comments:
-  - Call a function.
   notes:
   - Fortran calling a C function without
   - any api argument - is this useful?
@@ -949,8 +975,6 @@ c_function_string&_copy:
   owner: library
 c_function_string*:
   name: c_function_string*
-  comments:
-  - Call a function.
   notes:
   - Fortran calling a C function without
   - any api argument - is this useful?
@@ -970,6 +994,8 @@ c_function_string*_buf_copy:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Call function and assign to a local C++ variable.
+  - Copy cxx variable into c variable.
   intent: function
   i_arg_names:
   - '{i_var}'
@@ -986,6 +1012,8 @@ c_function_string*_buf_copy:
   - int {c_var_len}
   c_arg_call:
   - '{cxx_var}'
+  c_call:
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -995,13 +1023,13 @@ c_function_string*_buf_copy:
   c_return_type: void
   c_temps:
   - len
+  c_local:
+  - cxx
   c_helper:
   - char_copy
   owner: library
 c_function_string*_caller:
   name: c_function_string*_caller
-  comments:
-  - Call a function.
   notes:
   - Fortran calling a C function without
   - any api argument - is this useful?
@@ -1018,8 +1046,6 @@ c_function_string*_caller:
   owner: library
 c_function_string*_copy:
   name: c_function_string*_copy
-  comments:
-  - Call a function.
   notes:
   - Fortran calling a C function without
   - any api argument - is this useful?
@@ -1036,8 +1062,6 @@ c_function_string*_copy:
   owner: library
 c_function_string*_library:
   name: c_function_string*_library
-  comments:
-  - Call a function.
   notes:
   - Fortran calling a C function without
   - any api argument - is this useful?
@@ -1073,6 +1097,8 @@ c_function_string_buf_arg:
   - int {c_var_len}
   c_arg_call:
   - '{cxx_var}'
+  c_call:
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -1082,6 +1108,8 @@ c_function_string_buf_arg:
   c_return_type: void
   c_temps:
   - len
+  c_local:
+  - cxx
   c_helper:
   - char_copy
   fmtdict:
@@ -1097,6 +1125,8 @@ c_function_string_buf_copy:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Call function and assign to a local C++ variable.
+  - Copy cxx variable into c variable.
   intent: function
   i_arg_names:
   - '{i_var}'
@@ -1113,6 +1143,8 @@ c_function_string_buf_copy:
   - int {c_var_len}
   c_arg_call:
   - '{cxx_var}'
+  c_call:
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -1122,6 +1154,8 @@ c_function_string_buf_copy:
   c_return_type: void
   c_temps:
   - len
+  c_local:
+  - cxx
   c_helper:
   - char_copy
   owner: library
@@ -1202,8 +1236,6 @@ c_function_vector<native>_malloc:
   owner: library
 c_function_void*:
   name: c_function_void*
-  comments:
-  - Call a function.
   notes:
   - XXX - f entries are the same as the i entries, share?
   intent: function
@@ -1517,6 +1549,10 @@ c_in_procedure_external:
   owner: library
 c_in_procedure_funptr:
   name: c_in_procedure_funptr
+  comments:
+  - Pass type(C_FUNPTR) argument.
+  notes:
+  - Accept a function pointer in an argument.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -2169,7 +2205,7 @@ c_in_void**:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'type(C_PTR){f_intent_attr} :: {i_var}{i_dimension}'
+  - 'type(C_PTR){f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -2806,7 +2842,7 @@ c_inout_void**:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'type(C_PTR){f_intent_attr} :: {i_var}{i_dimension}'
+  - 'type(C_PTR){f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -2846,7 +2882,7 @@ c_inout_void*_cdesc:
 c_mixin_arg_cfi:
   name: c_mixin_arg_cfi
   comments:
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   intent: mixin
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
@@ -2858,7 +2894,7 @@ c_mixin_arg_cfi:
 c_mixin_arg_character_cfi:
   name: c_mixin_arg_character_cfi
   comments:
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
   intent: mixin
   i_arg_names:
@@ -2881,7 +2917,7 @@ c_mixin_arg_character_cfi:
 c_mixin_arg_native_cfi:
   name: c_mixin_arg_native_cfi
   comments:
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   - Native argument which use CFI_desc_t.
   intent: mixin
   i_arg_names:
@@ -2902,6 +2938,19 @@ c_mixin_arg_native_cfi:
   iface_header:
   - ISO_Fortran_binding.h
   owner: library
+c_mixin_c-str:
+  name: c_mixin_c-str
+  intent: mixin
+  i_result_decl:
+  - 'type(C_PTR) :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  c_post_call:
+  - const char *{c_var} = NULL;
+  - if (!{c_local_cxx}->empty()) {c_var} = {c_local_cxx}->c_str();
+  c_return_type: const char *
+  owner: library
 c_mixin_cast-argument:
   name: c_mixin_cast-argument
   comments:
@@ -2913,6 +2962,36 @@ c_mixin_cast-argument:
   - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
   c_local:
   - cxx
+  owner: library
+c_mixin_char-copy-to-arg:
+  name: c_mixin_char-copy-to-arg
+  comments:
+  - Copy cxx variable into c variable.
+  intent: mixin
+  c_post_call:
+  - if ({cxx_var}{cxx_member}empty()) {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
+  - -}} else {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
+  - -}}
+  c_helper:
+  - char_copy
+  owner: library
+c_mixin_char-copy-to-arg-cfi:
+  name: c_mixin_char-copy-to-arg-cfi
+  comments:
+  - Copy cxx variable into c variable.
+  intent: mixin
+  c_post_call:
+  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - if ({c_local_cxx}{cxx_member}empty()) {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {nullptr},\t 0);"
+  - -}} else {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {c_local_cxx}{cxx_member}data(),\t\
+    \ {c_local_cxx}{cxx_member}size());"
+  - -}}
+  c_helper:
+  - char_copy
   owner: library
 c_mixin_character:
   name: c_mixin_character
@@ -2953,6 +3032,14 @@ c_mixin_declare-fortran-result:
     '{i_module_name}':
     - '{i_kind}'
   owner: library
+c_mixin_delete-cxx-variable:
+  name: c_mixin_delete-cxx-variable
+  comments:
+  - Delete the cxx variable.
+  intent: mixin
+  c_post_call:
+  - delete {cxx_var};
+  owner: library
 c_mixin_destructor_new-shadow-shared:
   name: c_mixin_destructor_new-shadow-shared
   intent: mixin
@@ -2979,12 +3066,6 @@ c_mixin_destructor_new-vector:
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
-  owner: library
-c_mixin_function:
-  name: c_mixin_function
-  comments:
-  - Call a function.
-  intent: mixin
   owner: library
 c_mixin_function-assign-to-local:
   name: c_mixin_function-assign-to-local
@@ -3320,6 +3401,22 @@ c_mixin_out_vector_buf_malloc:
   c_temps:
   - size
   owner: library
+c_mixin_pass_capsule:
+  name: c_mixin_pass_capsule
+  comments:
+  - Pass capsule as argument to C wrapper.
+  intent: mixin
+  i_arg_names:
+  - '{i_var_capsule}'
+  i_arg_decl:
+  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  i_import:
+  - '{F_capsule_data_type}'
+  c_arg_decl:
+  - '{C_capsule_data_type} *{c_var_capsule}'
+  c_temps:
+  - capsule
+  owner: library
 c_mixin_shadow:
   name: c_mixin_shadow
   intent: mixin
@@ -3580,6 +3677,25 @@ c_out_native*_hidden:
   - '&{cxx_var}'
   c_pre_call:
   - '{cxx_type} {cxx_var};'
+  owner: library
+c_out_procedure*_funptr:
+  name: c_out_procedure*_funptr
+  comments:
+  - Pass type(C_FUNPTR) argument.
+  notes:
+  - Return a function pointer in an argument.
+  intent: out
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type(C_FUNPTR) :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_FUNPTR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
+  c_arg_call:
+  - '{cxx_var}'
   owner: library
 c_out_string&:
   name: c_out_string&
@@ -4145,7 +4261,8 @@ c_out_vector<string>&_cdesc_allocatable:
   name: c_out_vector<string>&_cdesc_allocatable
   comments:
   - Pass cdesc as argument to C wrapper.
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   - Allocate Fortran array from cdesc.
   - Allocate a vector<string> variable.
   - Copy into Fortran allocated memory.
@@ -4242,7 +4359,7 @@ c_out_void**:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'type(C_PTR){f_intent_attr} :: {i_var}{i_dimension}'
+  - 'type(C_PTR){f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -4813,7 +4930,7 @@ f_function_char*_cfi_allocatable:
   name: f_function_char*_cfi_allocatable
   comments:
   - Call the C wrapper as a subroutine.
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   notes:
   - Add allocatable attribute to declaration.
   intent: function
@@ -4932,7 +5049,7 @@ f_function_char*_cfi_pointer:
   name: f_function_char*_cfi_pointer
   comments:
   - Call the C wrapper as a subroutine.
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   intent: function
   f_arg_decl:
   - 'character(len=:), pointer :: {f_var}'
@@ -5120,7 +5237,7 @@ f_function_char_cfi_allocatable:
   name: f_function_char_cfi_allocatable
   comments:
   - Call the C wrapper as a subroutine.
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   notes:
   - Add allocatable attribute to declaration.
   intent: function
@@ -5155,7 +5272,7 @@ f_function_char_cfi_pointer:
   name: f_function_char_cfi_pointer
   comments:
   - Call the C wrapper as a subroutine.
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   intent: function
   f_arg_decl:
   - 'character(len=:), pointer :: {f_var}'
@@ -5322,7 +5439,8 @@ f_function_native*_cdesc_allocatable:
   - Fill cdesc from native in the C wrapper.
   - Allocate Fortran native array, then fill from cdesc
   - using helper copy_array.
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   intent: function
@@ -5437,6 +5555,7 @@ f_function_native*_cdesc_pointer_caller:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
   - Add a capsule argument to the Fortran wrapper.
   - Pass the capsule as argument to C wrapper.
   - Fill cdesc from native in the C wrapper.
@@ -6083,6 +6202,8 @@ f_function_string&_buf:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Call function and assign to a local C++ variable.
+  - Copy cxx variable into c variable.
   intent: function
   f_arg_decl:
   - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
@@ -6118,6 +6239,8 @@ f_function_string&_buf:
   - int {c_var_len}
   c_arg_call:
   - '{cxx_var}'
+  c_call:
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -6127,6 +6250,8 @@ f_function_string&_buf:
   c_return_type: void
   c_temps:
   - len
+  c_local:
+  - cxx
   c_helper:
   - char_copy
   owner: library
@@ -6173,6 +6298,8 @@ f_function_string&_buf_arg:
   - int {c_var_len}
   c_arg_call:
   - '{cxx_var}'
+  c_call:
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -6182,6 +6309,8 @@ f_function_string&_buf_arg:
   c_return_type: void
   c_temps:
   - len
+  c_local:
+  - cxx
   c_helper:
   - char_copy
   fmtdict:
@@ -6192,11 +6321,13 @@ f_function_string&_buf_arg:
     i_var_len: n{F_string_result_as_arg}
     c_var_len: n{F_string_result_as_arg}
   owner: library
-f_function_string&_buf_copy:
-  name: f_function_string&_buf_copy
+f_function_string&_buf_caller:
+  name: f_function_string&_buf_caller
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Copy cxx variable into c variable.
+  - Delete the cxx variable.
   intent: function
   f_arg_decl:
   - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
@@ -6238,6 +6369,120 @@ f_function_string&_buf_copy:
   - -}} else {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
   - -}}
+  - delete {cxx_var};
+  c_return_type: void
+  c_temps:
+  - len
+  c_helper:
+  - char_copy
+  owner: library
+f_function_string&_buf_copy:
+  name: f_function_string&_buf_copy
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass CHARACTER and LEN to C wrapper.
+  - Call function and assign to a local C++ variable.
+  - Copy cxx variable into c variable.
+  intent: function
+  f_arg_decl:
+  - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
+  f_declare:
+  - integer(C_INT) {f_var_len}
+  f_pre_call:
+  - '{f_var_len} = len({f_var}, kind=C_INT)'
+  f_arg_call:
+  - '{f_var}'
+  - '{f_var_len}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
+    iso_c_binding:
+    - C_INT
+  f_temps:
+  - len
+  f_need_wrapper: true
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_len}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  c_arg_decl:
+  - char *{c_var}
+  - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
+  c_call:
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  c_post_call:
+  - if ({cxx_var}{cxx_member}empty()) {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
+  - -}} else {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
+  - -}}
+  c_return_type: void
+  c_temps:
+  - len
+  c_local:
+  - cxx
+  c_helper:
+  - char_copy
+  owner: library
+f_function_string&_buf_copy_caller:
+  name: f_function_string&_buf_copy_caller
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass CHARACTER and LEN to C wrapper.
+  - Copy cxx variable into c variable.
+  - Delete the cxx variable.
+  intent: function
+  f_arg_decl:
+  - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
+  f_declare:
+  - integer(C_INT) {f_var_len}
+  f_pre_call:
+  - '{f_var_len} = len({f_var}, kind=C_INT)'
+  f_arg_call:
+  - '{f_var}'
+  - '{f_var_len}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
+    iso_c_binding:
+    - C_INT
+  f_temps:
+  - len
+  f_need_wrapper: true
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_len}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  c_arg_decl:
+  - char *{c_var}
+  - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
+  c_post_call:
+  - if ({cxx_var}{cxx_member}empty()) {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
+  - -}} else {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
+  - -}}
+  - delete {cxx_var};
   c_return_type: void
   c_temps:
   - len
@@ -6249,7 +6494,8 @@ f_function_string&_cdesc_allocatable:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign to local capsule variable in C wrapper.
@@ -6310,7 +6556,8 @@ f_function_string&_cdesc_allocatable_caller:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign to local capsule variable in C wrapper.
@@ -6371,7 +6618,8 @@ f_function_string&_cdesc_allocatable_library:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign to local capsule variable in C wrapper.
@@ -6566,7 +6814,7 @@ f_function_string&_cfi_allocatable:
   name: f_function_string&_cfi_allocatable
   comments:
   - Call the C wrapper as a subroutine.
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   intent: function
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
@@ -6599,7 +6847,7 @@ f_function_string&_cfi_allocatable_caller:
   name: f_function_string&_cfi_allocatable_caller
   comments:
   - Call the C wrapper as a subroutine.
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   intent: function
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
@@ -6632,7 +6880,7 @@ f_function_string&_cfi_allocatable_library:
   name: f_function_string&_cfi_allocatable_library
   comments:
   - Call the C wrapper as a subroutine.
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   intent: function
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
@@ -6703,6 +6951,7 @@ f_function_string&_cfi_arg:
   - cfi
   c_local:
   - cxx
+  - cxx
   c_helper:
   - char_copy
   fmtdict:
@@ -6716,8 +6965,11 @@ f_function_string&_cfi_copy:
   name: f_function_string&_cfi_copy
   comments:
   - Call the C wrapper as a subroutine.
-  - Make the argument a CFI_desc_t.
+  - Pass argument to C wrapper
+  - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
+  - Call function and assign to a local C++ variable.
+  - Copy cxx variable into c variable.
   intent: function
   f_arg_decl:
   - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
@@ -6752,6 +7004,7 @@ f_function_string&_cfi_copy:
   - cfi
   c_local:
   - cxx
+  - cxx
   c_helper:
   - char_copy
   iface_header:
@@ -6761,7 +7014,7 @@ f_function_string&_cfi_pointer:
   name: f_function_string&_cfi_pointer
   comments:
   - Call the C wrapper as a subroutine.
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   notes:
   - XXX - consolidate with c_function*_cfi_pointer?
   - XXX - via a helper to get address and length of string
@@ -6811,7 +7064,7 @@ f_function_string&_cfi_pointer_caller:
   name: f_function_string&_cfi_pointer_caller
   comments:
   - Call the C wrapper as a subroutine.
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   notes:
   - XXX - consolidate with c_function*_cfi_pointer?
   - XXX - via a helper to get address and length of string
@@ -6861,7 +7114,7 @@ f_function_string&_cfi_pointer_library:
   name: f_function_string&_cfi_pointer_library
   comments:
   - Call the C wrapper as a subroutine.
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   notes:
   - XXX - consolidate with c_function*_cfi_pointer?
   - XXX - via a helper to get address and length of string
@@ -6912,6 +7165,66 @@ f_function_string*_buf:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Call function and assign to a local C++ variable.
+  - Copy cxx variable into c variable.
+  intent: function
+  f_arg_decl:
+  - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
+  f_declare:
+  - integer(C_INT) {f_var_len}
+  f_pre_call:
+  - '{f_var_len} = len({f_var}, kind=C_INT)'
+  f_arg_call:
+  - '{f_var}'
+  - '{f_var_len}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
+    iso_c_binding:
+    - C_INT
+  f_temps:
+  - len
+  f_need_wrapper: true
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_len}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  c_arg_decl:
+  - char *{c_var}
+  - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
+  c_call:
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  c_post_call:
+  - if ({cxx_var}{cxx_member}empty()) {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
+  - -}} else {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
+  - -}}
+  c_return_type: void
+  c_temps:
+  - len
+  c_local:
+  - cxx
+  c_helper:
+  - char_copy
+  owner: library
+f_function_string*_buf_caller:
+  name: f_function_string*_buf_caller
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass CHARACTER and LEN to C wrapper.
+  - Copy cxx variable into c variable.
+  - Delete the cxx variable.
   intent: function
   f_arg_decl:
   - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
@@ -6953,6 +7266,7 @@ f_function_string*_buf:
   - -}} else {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
   - -}}
+  - delete {cxx_var};
   c_return_type: void
   c_temps:
   - len
@@ -6964,6 +7278,66 @@ f_function_string*_buf_copy:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Call function and assign to a local C++ variable.
+  - Copy cxx variable into c variable.
+  intent: function
+  f_arg_decl:
+  - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
+  f_declare:
+  - integer(C_INT) {f_var_len}
+  f_pre_call:
+  - '{f_var_len} = len({f_var}, kind=C_INT)'
+  f_arg_call:
+  - '{f_var}'
+  - '{f_var_len}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
+    iso_c_binding:
+    - C_INT
+  f_temps:
+  - len
+  f_need_wrapper: true
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_len}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  c_arg_decl:
+  - char *{c_var}
+  - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
+  c_call:
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  c_post_call:
+  - if ({cxx_var}{cxx_member}empty()) {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
+  - -}} else {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
+  - -}}
+  c_return_type: void
+  c_temps:
+  - len
+  c_local:
+  - cxx
+  c_helper:
+  - char_copy
+  owner: library
+f_function_string*_buf_copy_caller:
+  name: f_function_string*_buf_copy_caller
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass CHARACTER and LEN to C wrapper.
+  - Copy cxx variable into c variable.
+  - Delete the cxx variable.
   intent: function
   f_arg_decl:
   - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
@@ -7005,6 +7379,7 @@ f_function_string*_buf_copy:
   - -}} else {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
   - -}}
+  - delete {cxx_var};
   c_return_type: void
   c_temps:
   - len
@@ -7016,7 +7391,8 @@ f_function_string*_cdesc_allocatable:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign to local capsule variable in C wrapper.
@@ -7077,7 +7453,8 @@ f_function_string*_cdesc_allocatable_caller:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign to local capsule variable in C wrapper.
@@ -7138,7 +7515,8 @@ f_function_string*_cdesc_allocatable_library:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign to local capsule variable in C wrapper.
@@ -7333,7 +7711,7 @@ f_function_string*_cfi_allocatable:
   name: f_function_string*_cfi_allocatable
   comments:
   - Call the C wrapper as a subroutine.
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   intent: function
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
@@ -7366,7 +7744,7 @@ f_function_string*_cfi_allocatable_caller:
   name: f_function_string*_cfi_allocatable_caller
   comments:
   - Call the C wrapper as a subroutine.
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   intent: function
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
@@ -7399,7 +7777,7 @@ f_function_string*_cfi_allocatable_library:
   name: f_function_string*_cfi_allocatable_library
   comments:
   - Call the C wrapper as a subroutine.
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   intent: function
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
@@ -7432,8 +7810,11 @@ f_function_string*_cfi_copy:
   name: f_function_string*_cfi_copy
   comments:
   - Call the C wrapper as a subroutine.
-  - Make the argument a CFI_desc_t.
+  - Pass argument to C wrapper
+  - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
+  - Call function and assign to a local C++ variable.
+  - Copy cxx variable into c variable.
   intent: function
   f_arg_decl:
   - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
@@ -7468,6 +7849,7 @@ f_function_string*_cfi_copy:
   - cfi
   c_local:
   - cxx
+  - cxx
   c_helper:
   - char_copy
   iface_header:
@@ -7477,7 +7859,7 @@ f_function_string*_cfi_pointer:
   name: f_function_string*_cfi_pointer
   comments:
   - Call the C wrapper as a subroutine.
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   notes:
   - XXX - consolidate with c_function*_cfi_pointer?
   - XXX - via a helper to get address and length of string
@@ -7527,7 +7909,7 @@ f_function_string*_cfi_pointer_caller:
   name: f_function_string*_cfi_pointer_caller
   comments:
   - Call the C wrapper as a subroutine.
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   notes:
   - XXX - consolidate with c_function*_cfi_pointer?
   - XXX - via a helper to get address and length of string
@@ -7577,7 +7959,7 @@ f_function_string*_cfi_pointer_library:
   name: f_function_string*_cfi_pointer_library
   comments:
   - Call the C wrapper as a subroutine.
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   notes:
   - XXX - consolidate with c_function*_cfi_pointer?
   - XXX - via a helper to get address and length of string
@@ -7628,6 +8010,8 @@ f_function_string_buf:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Call function and assign to a local C++ variable.
+  - Copy cxx variable into c variable.
   intent: function
   f_arg_decl:
   - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
@@ -7663,6 +8047,8 @@ f_function_string_buf:
   - int {c_var_len}
   c_arg_call:
   - '{cxx_var}'
+  c_call:
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -7672,6 +8058,8 @@ f_function_string_buf:
   c_return_type: void
   c_temps:
   - len
+  c_local:
+  - cxx
   c_helper:
   - char_copy
   owner: library
@@ -7718,6 +8106,8 @@ f_function_string_buf_arg:
   - int {c_var_len}
   c_arg_call:
   - '{cxx_var}'
+  c_call:
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -7727,6 +8117,8 @@ f_function_string_buf_arg:
   c_return_type: void
   c_temps:
   - len
+  c_local:
+  - cxx
   c_helper:
   - char_copy
   fmtdict:
@@ -7737,11 +8129,13 @@ f_function_string_buf_arg:
     i_var_len: n{F_string_result_as_arg}
     c_var_len: n{F_string_result_as_arg}
   owner: library
-f_function_string_buf_copy:
-  name: f_function_string_buf_copy
+f_function_string_buf_caller:
+  name: f_function_string_buf_caller
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Copy cxx variable into c variable.
+  - Delete the cxx variable.
   intent: function
   f_arg_decl:
   - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
@@ -7783,6 +8177,120 @@ f_function_string_buf_copy:
   - -}} else {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
   - -}}
+  - delete {cxx_var};
+  c_return_type: void
+  c_temps:
+  - len
+  c_helper:
+  - char_copy
+  owner: library
+f_function_string_buf_copy:
+  name: f_function_string_buf_copy
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass CHARACTER and LEN to C wrapper.
+  - Call function and assign to a local C++ variable.
+  - Copy cxx variable into c variable.
+  intent: function
+  f_arg_decl:
+  - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
+  f_declare:
+  - integer(C_INT) {f_var_len}
+  f_pre_call:
+  - '{f_var_len} = len({f_var}, kind=C_INT)'
+  f_arg_call:
+  - '{f_var}'
+  - '{f_var_len}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
+    iso_c_binding:
+    - C_INT
+  f_temps:
+  - len
+  f_need_wrapper: true
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_len}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  c_arg_decl:
+  - char *{c_var}
+  - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
+  c_call:
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  c_post_call:
+  - if ({cxx_var}{cxx_member}empty()) {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
+  - -}} else {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
+  - -}}
+  c_return_type: void
+  c_temps:
+  - len
+  c_local:
+  - cxx
+  c_helper:
+  - char_copy
+  owner: library
+f_function_string_buf_copy_caller:
+  name: f_function_string_buf_copy_caller
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass CHARACTER and LEN to C wrapper.
+  - Copy cxx variable into c variable.
+  - Delete the cxx variable.
+  intent: function
+  f_arg_decl:
+  - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
+  f_declare:
+  - integer(C_INT) {f_var_len}
+  f_pre_call:
+  - '{f_var_len} = len({f_var}, kind=C_INT)'
+  f_arg_call:
+  - '{f_var}'
+  - '{f_var_len}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
+    iso_c_binding:
+    - C_INT
+  f_temps:
+  - len
+  f_need_wrapper: true
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_len}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  c_arg_decl:
+  - char *{c_var}
+  - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
+  c_post_call:
+  - if ({cxx_var}{cxx_member}empty()) {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
+  - -}} else {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
+  - -}}
+  - delete {cxx_var};
   c_return_type: void
   c_temps:
   - len
@@ -7799,7 +8307,8 @@ f_function_string_cdesc_allocatable:
   - in the C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   intent: function
@@ -7873,7 +8382,8 @@ f_function_string_cdesc_allocatable_caller:
   - in the C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   intent: function
@@ -7947,7 +8457,8 @@ f_function_string_cdesc_allocatable_library:
   - in the C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   intent: function
@@ -8015,7 +8526,7 @@ f_function_string_cfi_allocatable:
   name: f_function_string_cfi_allocatable
   comments:
   - Call the C wrapper as a subroutine.
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   notes:
   - std::string & function()
   intent: function
@@ -8048,7 +8559,7 @@ f_function_string_cfi_allocatable_caller:
   name: f_function_string_cfi_allocatable_caller
   comments:
   - Call the C wrapper as a subroutine.
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   intent: function
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
@@ -8081,7 +8592,7 @@ f_function_string_cfi_allocatable_library:
   name: f_function_string_cfi_allocatable_library
   comments:
   - Call the C wrapper as a subroutine.
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   intent: function
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
@@ -8152,6 +8663,7 @@ f_function_string_cfi_arg:
   - cfi
   c_local:
   - cxx
+  - cxx
   c_helper:
   - char_copy
   fmtdict:
@@ -8165,8 +8677,11 @@ f_function_string_cfi_copy:
   name: f_function_string_cfi_copy
   comments:
   - Call the C wrapper as a subroutine.
-  - Make the argument a CFI_desc_t.
+  - Pass argument to C wrapper
+  - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
+  - Call function and assign to a local C++ variable.
+  - Copy cxx variable into c variable.
   intent: function
   f_arg_decl:
   - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
@@ -8201,6 +8716,7 @@ f_function_string_cfi_copy:
   - cfi
   c_local:
   - cxx
+  - cxx
   c_helper:
   - char_copy
   iface_header:
@@ -8210,7 +8726,7 @@ f_function_string_cfi_pointer:
   name: f_function_string_cfi_pointer
   comments:
   - Call the C wrapper as a subroutine.
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   notes:
   - XXX - consolidate with c_function*_cfi_pointer?
   - XXX - via a helper to get address and length of string
@@ -8260,7 +8776,7 @@ f_function_string_cfi_pointer_caller:
   name: f_function_string_cfi_pointer_caller
   comments:
   - Call the C wrapper as a subroutine.
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   notes:
   - XXX - consolidate with c_function*_cfi_pointer?
   - XXX - via a helper to get address and length of string
@@ -8310,7 +8826,7 @@ f_function_string_cfi_pointer_library:
   name: f_function_string_cfi_pointer_library
   comments:
   - Call the C wrapper as a subroutine.
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   notes:
   - XXX - consolidate with c_function*_cfi_pointer?
   - XXX - via a helper to get address and length of string
@@ -8542,8 +9058,6 @@ f_function_vector_scalar_cdesc:
   owner: library
 f_function_void*:
   name: f_function_void*
-  comments:
-  - Call a function.
   notes:
   - XXX - f entries are the same as the i entries, share?
   intent: function
@@ -8970,7 +9484,7 @@ f_in_char**_buf:
 f_in_char**_cfi:
   name: f_in_char**_cfi
   comments:
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
   intent: in
   f_arg_name:
@@ -9080,7 +9594,7 @@ f_in_char*_capi:
 f_in_char*_cfi:
   name: f_in_char*_cfi
   comments:
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
   intent: in
   f_arg_name:
@@ -9286,7 +9800,7 @@ f_in_native*_cdesc:
 f_in_native*_cfi:
   name: f_in_native*_cfi
   comments:
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   - Native argument which use CFI_desc_t.
   intent: in
   f_arg_name:
@@ -9361,11 +9875,15 @@ f_in_procedure_external:
   owner: library
 f_in_procedure_funptr:
   name: f_in_procedure_funptr
+  comments:
+  - Pass type(C_FUNPTR) argument.
+  notes:
+  - Accept a function pointer in an argument.
   intent: in
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - 'type(C_FUNPTR) :: {f_var}'
+  - 'type(C_FUNPTR){f_intent_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}'
   f_module:
@@ -9582,7 +10100,7 @@ f_in_string&_buf:
 f_in_string&_cfi:
   name: f_in_string&_cfi
   comments:
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
   intent: in
   f_arg_name:
@@ -9684,7 +10202,7 @@ f_in_string*_buf:
 f_in_string*_cfi:
   name: f_in_string*_cfi
   comments:
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
   intent: in
   f_arg_name:
@@ -9766,7 +10284,7 @@ f_in_string_buf:
 f_in_string_cfi:
   name: f_in_string_cfi
   comments:
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
   intent: in
   f_arg_name:
@@ -10308,14 +10826,14 @@ f_in_void**:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - 'type(C_PTR){f_intent_attr} :: {f_var}{f_assumed_shape}'
+  - 'type(C_PTR){f_value_attr}{f_intent_attr} :: {f_var}{f_assumed_shape}'
   f_module:
     iso_c_binding:
     - C_PTR
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'type(C_PTR){f_intent_attr} :: {i_var}{i_dimension}'
+  - 'type(C_PTR){f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -10332,14 +10850,14 @@ f_in_void**_cfi:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - 'type(C_PTR){f_intent_attr} :: {f_var}{f_assumed_shape}'
+  - 'type(C_PTR){f_value_attr}{f_intent_attr} :: {f_var}{f_assumed_shape}'
   f_module:
     iso_c_binding:
     - C_PTR
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'type(C_PTR){f_intent_attr} :: {i_var}{i_dimension}'
+  - 'type(C_PTR){f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -10528,7 +11046,7 @@ f_inout_char*_capi:
 f_inout_char*_cfi:
   name: f_inout_char*_cfi
   comments:
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
   intent: inout
   f_arg_name:
@@ -10696,7 +11214,7 @@ f_inout_native*_cdesc:
 f_inout_native*_cfi:
   name: f_inout_native*_cfi
   comments:
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   - Native argument which use CFI_desc_t.
   intent: inout
   f_arg_name:
@@ -10924,7 +11442,7 @@ f_inout_string&_buf:
 f_inout_string&_cfi:
   name: f_inout_string&_cfi
   comments:
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
   intent: inout
   f_arg_name:
@@ -11055,7 +11573,7 @@ f_inout_string*_buf:
 f_inout_string*_cfi:
   name: f_inout_string*_cfi
   comments:
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
   intent: inout
   f_arg_name:
@@ -11374,14 +11892,14 @@ f_inout_void**:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - 'type(C_PTR){f_intent_attr} :: {f_var}{f_assumed_shape}'
+  - 'type(C_PTR){f_value_attr}{f_intent_attr} :: {f_var}{f_assumed_shape}'
   f_module:
     iso_c_binding:
     - C_PTR
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'type(C_PTR){f_intent_attr} :: {i_var}{i_dimension}'
+  - 'type(C_PTR){f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -11440,6 +11958,7 @@ f_inout_void*_cdesc:
 f_mixin_arg_capsule:
   name: f_mixin_arg_capsule
   comments:
+  - Pass capsule as argument to C wrapper.
   - Add a capsule argument to the Fortran wrapper.
   - Pass the capsule as argument to C wrapper.
   intent: mixin
@@ -12015,7 +12534,8 @@ f_mixin_out_vector_buf:
 f_mixin_pass_capsule:
   name: f_mixin_pass_capsule
   comments:
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   intent: mixin
   f_declare:
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
@@ -12083,6 +12603,47 @@ f_mixin_pass_character_buf:
   - len
   f_need_wrapper: true
   owner: library
+f_mixin_pass_character_cfi:
+  name: f_mixin_pass_character_cfi
+  comments:
+  - Pass argument to C wrapper
+  intent: mixin
+  f_arg_call:
+  - '{f_var}'
+  f_need_wrapper: true
+  owner: library
+f_mixin_procedure-as-funptr:
+  name: f_mixin_procedure-as-funptr
+  comments:
+  - Pass type(C_FUNPTR) argument.
+  intent: mixin
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - 'type(C_FUNPTR){f_intent_attr} :: {f_var}'
+  f_arg_call:
+  - '{f_var}'
+  f_module:
+    iso_c_binding:
+    - C_FUNPTR
+  i_arg_names:
+  - '{i_var}'
+  i_module:
+    iso_c_binding:
+    - C_FUNPTR
+  owner: library
+f_mixin_procedure-as-funptr-byreference:
+  name: f_mixin_procedure-as-funptr-byreference
+  intent: mixin
+  i_arg_decl:
+  - 'type(C_FUNPTR) :: {i_var}'
+  owner: library
+f_mixin_procedure-as-funptr-byvalue:
+  name: f_mixin_procedure-as-funptr-byvalue
+  intent: mixin
+  i_arg_decl:
+  - 'type(C_FUNPTR), value :: {i_var}'
+  owner: library
 f_mixin_shadow-arg:
   name: f_mixin_shadow-arg
   comments:
@@ -12144,7 +12705,8 @@ f_mixin_unknown:
 f_mixin_use_capsule:
   name: f_mixin_use_capsule
   comments:
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   intent: mixin
@@ -12472,7 +13034,7 @@ f_out_char*_capi:
 f_out_char*_cfi:
   name: f_out_char*_cfi
   comments:
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
   intent: out
   f_arg_name:
@@ -12714,7 +13276,8 @@ f_out_native**_cdesc_allocatable:
   - Fill cdesc from native in the C wrapper.
   - Allocate Fortran native array for argument
   - then fill from cdesc using helper copy_array.
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   notes:
@@ -13013,6 +13576,34 @@ f_out_native*_hidden:
   c_pre_call:
   - '{cxx_type} {cxx_var};'
   owner: library
+f_out_procedure*_funptr:
+  name: f_out_procedure*_funptr
+  comments:
+  - Pass type(C_FUNPTR) argument.
+  notes:
+  - Return a function pointer in an argument.
+  intent: out
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - 'type(C_FUNPTR){f_intent_attr} :: {f_var}'
+  f_arg_call:
+  - '{f_var}'
+  f_module:
+    iso_c_binding:
+    - C_FUNPTR
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type(C_FUNPTR) :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_FUNPTR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
+  c_arg_call:
+  - '{cxx_var}'
+  owner: library
 f_out_string&_buf:
   name: f_out_string&_buf
   comments:
@@ -13066,7 +13657,7 @@ f_out_string&_buf:
 f_out_string&_cfi:
   name: f_out_string&_cfi
   comments:
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
   intent: out
   f_arg_name:
@@ -13103,7 +13694,8 @@ f_out_string**_cdesc_allocatable:
   name: f_out_string**_cdesc_allocatable
   comments:
   - Pass cdesc as argument to C wrapper.
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   - Allocate Fortran array from cdesc.
   - Allocate a vector<string> variable.
   - Assign to std::string pointer from C++ function.
@@ -13227,7 +13819,7 @@ f_out_string**_cdesc_copy:
 f_out_string**_cfi_allocatable:
   name: f_out_string**_cfi_allocatable
   comments:
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   notes:
   - std::string **strs +intent(out)+dimension(nstrs)+deref(allocatable),
   - int *nstrs+intent(out)+hidden
@@ -13260,7 +13852,7 @@ f_out_string**_cfi_allocatable:
 f_out_string**_cfi_copy:
   name: f_out_string**_cfi_copy
   comments:
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -13360,7 +13952,7 @@ f_out_string*_buf:
 f_out_string*_cfi:
   name: f_out_string*_cfi
   comments:
-  - Make the argument a CFI_desc_t.
+  - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
   intent: out
   f_arg_name:
@@ -13733,7 +14325,8 @@ f_out_vector<string>&_cdesc_allocatable:
   name: f_out_vector<string>&_cdesc_allocatable
   comments:
   - Pass cdesc as argument to C wrapper.
-  - Pass local capsule as argument to C wrapper.
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
   - Allocate Fortran array from cdesc.
   - Allocate a vector<string> variable.
   - Copy into Fortran allocated memory.
@@ -13895,14 +14488,14 @@ f_out_void**:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - 'type(C_PTR){f_intent_attr} :: {f_var}{f_assumed_shape}'
+  - 'type(C_PTR){f_value_attr}{f_intent_attr} :: {f_var}{f_assumed_shape}'
   f_module:
     iso_c_binding:
     - C_PTR
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'type(C_PTR){f_intent_attr} :: {i_var}{i_dimension}'
+  - 'type(C_PTR){f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -15129,16 +15722,20 @@ root
           cfi -- c_mixin_arg_character_cfi
         native
           cfi -- c_mixin_arg_native_cfi
+      c-str -- c_mixin_c-str
       cast-argument -- c_mixin_cast-argument
+      char-copy-to-arg -- c_mixin_char-copy-to-arg
+      char-copy-to-arg-cfi -- c_mixin_char-copy-to-arg-cfi
       character -- c_mixin_character
       cvar-capsule-fill -- c_mixin_cvar-capsule-fill
       declare-arg -- c_mixin_declare-arg
       declare-fortran-result -- c_mixin_declare-fortran-result
+      delete-cxx-variable -- c_mixin_delete-cxx-variable
       destructor
         new-shadow-shared -- c_mixin_destructor_new-shadow-shared
         new-string -- c_mixin_destructor_new-string
         new-vector -- c_mixin_destructor_new-vector
-      function -- c_mixin_function
+      function
         char*
           cdesc -- c_mixin_function_char*_cdesc
         shadow
@@ -15175,6 +15772,8 @@ root
             malloc -- c_mixin_out_vector_buf_malloc
         vector<native>
           cdesc -- c_mixin_out_vector<native>_cdesc
+      pass
+        capsule -- c_mixin_pass_capsule
       shadow -- c_mixin_shadow
       unknown -- c_mixin_unknown
       vector
@@ -15197,6 +15796,8 @@ root
       native** -- c_out_native**
         raw -- c_out_native**_raw
       native*** -- c_out_native***
+      procedure*
+        funptr -- c_out_procedure*_funptr
       string& -- c_out_string&
         buf -- c_out_string&_buf
       string* -- c_out_string*
@@ -15313,7 +15914,9 @@ root
       string
         buf -- f_function_string_buf
           arg -- f_function_string_buf_arg
+          caller -- f_function_string_buf_caller
           copy -- f_function_string_buf_copy
+            caller -- f_function_string_buf_copy_caller
         cdesc
           allocatable -- f_function_string_cdesc_allocatable
             caller -- f_function_string_cdesc_allocatable_caller
@@ -15330,7 +15933,9 @@ root
       string&
         buf -- f_function_string&_buf
           arg -- f_function_string&_buf_arg
+          caller -- f_function_string&_buf_caller
           copy -- f_function_string&_buf_copy
+            caller -- f_function_string&_buf_copy_caller
         cdesc
           allocatable -- f_function_string&_cdesc_allocatable
             caller -- f_function_string&_cdesc_allocatable_caller
@@ -15349,7 +15954,9 @@ root
             library -- f_function_string&_cfi_pointer_library
       string*
         buf -- f_function_string*_buf
+          caller -- f_function_string*_buf_caller
           copy -- f_function_string*_buf_copy
+            caller -- f_function_string*_buf_copy_caller
         cdesc
           allocatable -- f_function_string*_cdesc_allocatable
             caller -- f_function_string*_cdesc_allocatable_caller
@@ -15560,6 +16167,10 @@ root
         cdesc -- f_mixin_pass_cdesc
         character
           buf -- f_mixin_pass_character_buf
+          cfi -- f_mixin_pass_character_cfi
+      procedure-as-funptr -- f_mixin_procedure-as-funptr
+      procedure-as-funptr-byreference -- f_mixin_procedure-as-funptr-byreference
+      procedure-as-funptr-byvalue -- f_mixin_procedure-as-funptr-byvalue
       shadow-arg -- f_mixin_shadow-arg
       str
         array -- f_mixin_str_array
@@ -15600,6 +16211,8 @@ root
           pointer -- f_out_native**_cfi_pointer
         raw -- f_out_native**_raw
       native*** -- f_out_native***
+      procedure*
+        funptr -- f_out_procedure*_funptr
       string&
         buf -- f_out_string&_buf
         cfi -- f_out_string&_cfi

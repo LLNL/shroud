@@ -144,3 +144,15 @@ void callback_all_types(void (*all_types)(int, int *, char, char *, bool, bool *
 }
 
 //----------------------------------------------------------------------
+
+void local_void_func(void)
+{
+    // Have some side effect here to verify it ran.
+}
+
+void get_void_ptr(pfvoid *func)
+{
+    *func = local_void_func;
+}
+
+//----------------------------------------------------------------------

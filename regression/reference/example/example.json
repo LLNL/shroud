@@ -1475,6 +1475,7 @@
                                                         "c_abstract_decl": "const char *",
                                                         "c_const": "const ",
                                                         "c_helper_char_copy": "ShroudCharCopy",
+                                                        "c_local_cxx": "SHC_rv_cxx",
                                                         "c_type": "char",
                                                         "c_var": "name",
                                                         "c_var_len": "nname",
@@ -1482,10 +1483,10 @@
                                                         "cxx_abstract_decl": "const std::string *",
                                                         "cxx_addr": "&",
                                                         "cxx_member": ".",
-                                                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                                                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHC_rv_cxx)",
                                                         "cxx_rv_decl": "const std::string &SHCXX_rv",
                                                         "cxx_type": "std::string",
-                                                        "cxx_var": "SHCXX_rv",
+                                                        "cxx_var": "SHC_rv_cxx",
                                                         "f_call_function": "c_ex_class1_get_name_arg_bufferify",
                                                         "f_intent": "OUT",
                                                         "f_intent_attr": ", intent(OUT)",
@@ -1496,6 +1497,7 @@
                                                         "i_arguments": "self,\t name,\t nname",
                                                         "i_dimension": "(*)",
                                                         "i_kind": "C_CHAR",
+                                                        "i_local_cxx": "SHC_rv_cxx",
                                                         "i_module_name": "iso_c_binding",
                                                         "i_name_function": "c_ex_class1_get_name_arg_bufferify",
                                                         "i_subprogram": "subroutine",
@@ -3509,6 +3511,7 @@
                                                         "c_char_len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})",
                                                         "c_const": "const ",
                                                         "c_helper_char_copy": "ShroudCharCopy",
+                                                        "c_local_cxx": "SHC_rv_cxx",
                                                         "c_type": "char",
                                                         "c_var": "SHC_rv",
                                                         "c_var_len": "SHT_rv_len",
@@ -3516,10 +3519,10 @@
                                                         "cxx_abstract_decl": "const std::string *",
                                                         "cxx_addr": "&",
                                                         "cxx_member": ".",
-                                                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                                                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHC_rv_cxx)",
                                                         "cxx_rv_decl": "const std::string &SHCXX_rv",
                                                         "cxx_type": "std::string",
-                                                        "cxx_var": "SHCXX_rv",
+                                                        "cxx_var": "SHC_rv_cxx",
                                                         "f_call_function": "c_ex_class2_get_name_bufferify",
                                                         "f_char_len": "len=aa_exclass2_get_name_length({F_this}%{F_derived_member})",
                                                         "f_intent": "OUT",
@@ -3532,6 +3535,7 @@
                                                         "i_arguments": "self,\t SHT_rv,\t SHT_rv_len",
                                                         "i_dimension": "(*)",
                                                         "i_kind": "C_CHAR",
+                                                        "i_local_cxx": "SHC_rv_cxx",
                                                         "i_module_name": "iso_c_binding",
                                                         "i_name_function": "c_ex_class2_get_name_bufferify",
                                                         "i_subprogram": "subroutine",
@@ -8652,7 +8656,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "testoptional  44 ****************************************",
+                                "<FUNCTION>": "testoptional  45 ****************************************",
                                 "_generated": "has_default_arg",
                                 "_generated_path": [
                                     "has_default_arg"
@@ -8746,7 +8750,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "testoptional  45 ****************************************",
+                                "<FUNCTION>": "testoptional  46 ****************************************",
                                 "_generated": "has_default_arg",
                                 "_generated_path": [
                                     "has_default_arg"
@@ -8937,8 +8941,8 @@
                             {
                                 "<FUNCTION>": "testoptional  32 ****************************************",
                                 "_default_funcs": [
-                                    44,
-                                    45
+                                    45,
+                                    46
                                 ],
                                 "_has_default_arg": true,
                                 "_nargs": [
@@ -19141,6 +19145,202 @@
                                         "PyArg_vargs": "&SHTPy_in",
                                         "py_var": "SHPy_out"
                                     }
+                                }
+                            },
+                            {
+                                "<FUNCTION>": "pass_voidstartstar  44 ****************************************",
+                                "ast": {
+                                    "declarator": {
+                                        "name": "pass_voidstartstar",
+                                        "params": [
+                                            {
+                                                "declarator": {
+                                                    "attrs": {
+                                                        "intent": "in",
+                                                        "value": true
+                                                    },
+                                                    "name": "args",
+                                                    "pointer": [
+                                                        {
+                                                            "ptr": "*"
+                                                        },
+                                                        {
+                                                            "ptr": "*"
+                                                        }
+                                                    ],
+                                                    "typemap_name": "void"
+                                                },
+                                                "specifier": [
+                                                    "void"
+                                                ],
+                                                "typemap_name": "void"
+                                            }
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "specifier": [
+                                        "void"
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "decl": "void pass_voidstartstar(void **args+intent(in)+value)",
+                                "declgen": "void pass_voidstartstar(void **args +intent(in)+value)",
+                                "name": "pass_voidstartstar",
+                                "options": {
+                                    "wrap_lua": false,
+                                    "wrap_python": false
+                                },
+                                "wrap": {
+                                    "c": true,
+                                    "fortran": true
+                                },
+                                "zz_bind": {
+                                    "c": {
+                                        "+result": {
+                                            "fmtdict": {
+                                                "C_call_function": "example::nested::pass_voidstartstar(\targs)",
+                                                "C_call_list": "args",
+                                                "C_name": "AA_example_nested_pass_voidstartstar",
+                                                "C_prototype": "void **args",
+                                                "C_return_type": "void",
+                                                "i_name_function": "c_pass_voidstartstar",
+                                                "stmt_name": "c_subroutine",
+                                                "typemap_name": "void"
+                                            },
+                                            "meta": {
+                                                "abstract": "void",
+                                                "intent": "subroutine"
+                                            },
+                                            "stmt": "c_subroutine"
+                                        },
+                                        "args": {
+                                            "fmtdict": {
+                                                "c_abstract_decl": "void **",
+                                                "c_addr": "",
+                                                "c_const": "",
+                                                "c_deref": "*",
+                                                "c_member": "->",
+                                                "c_type": "void",
+                                                "c_var": "args",
+                                                "cfi_type": "CFI_type_intptr_t",
+                                                "cxx_abstract_decl": "void **",
+                                                "cxx_addr": "",
+                                                "cxx_member": "->",
+                                                "cxx_nonconst_ptr": "args",
+                                                "cxx_type": "void",
+                                                "cxx_var": "args",
+                                                "f_intent": "IN",
+                                                "f_intent_attr": ", intent(IN)",
+                                                "f_value_attr": ", value",
+                                                "idtor": "0",
+                                                "sh_type": "SH_TYPE_CPTR",
+                                                "stmt_name": "c_in_void**",
+                                                "typemap_name": "void"
+                                            },
+                                            "meta": {
+                                                "abstract": "void**",
+                                                "intent": "in",
+                                                "value": true
+                                            },
+                                            "stmt": "c_in_void**"
+                                        }
+                                    },
+                                    "f": {
+                                        "+result": {
+                                            "fmtdict": {
+                                                "C_call_function": "example::nested::pass_voidstartstar(\targs)",
+                                                "C_call_list": "args",
+                                                "C_name": "AA_example_nested_pass_voidstartstar",
+                                                "C_prototype": "void **args",
+                                                "C_return_type": "void",
+                                                "F_arg_c_call": "args",
+                                                "F_arguments": "args",
+                                                "F_subprogram": "subroutine",
+                                                "f_call_function": "c_pass_voidstartstar",
+                                                "i_arguments": "args",
+                                                "i_name_function": "pass_voidstartstar",
+                                                "i_subprogram": "subroutine",
+                                                "stmt_name": "f_subroutine",
+                                                "typemap_name": "void"
+                                            },
+                                            "meta": {
+                                                "abstract": "void",
+                                                "intent": "subroutine"
+                                            },
+                                            "stmt": "f_subroutine"
+                                        },
+                                        "args": {
+                                            "fmtdict": {
+                                                "c_abstract_decl": "void **",
+                                                "c_addr": "",
+                                                "c_const": "",
+                                                "c_deref": "*",
+                                                "c_member": "->",
+                                                "c_type": "void",
+                                                "c_var": "args",
+                                                "cfi_type": "CFI_type_intptr_t",
+                                                "cxx_abstract_decl": "void **",
+                                                "cxx_addr": "",
+                                                "cxx_member": "->",
+                                                "cxx_nonconst_ptr": "args",
+                                                "cxx_type": "void",
+                                                "cxx_var": "args",
+                                                "f_intent": "IN",
+                                                "f_intent_attr": ", intent(IN)",
+                                                "f_kind": "C_PTR",
+                                                "f_module_name": "iso_c_binding",
+                                                "f_type": "type(C_PTR)",
+                                                "f_value_attr": ", value",
+                                                "f_var": "args",
+                                                "fc_var": "args",
+                                                "i_kind": "C_PTR",
+                                                "i_module_name": "iso_c_binding",
+                                                "i_type": "type(C_PTR)",
+                                                "i_var": "args",
+                                                "idtor": "0",
+                                                "sh_type": "SH_TYPE_CPTR",
+                                                "stmt_name": "f_in_void**",
+                                                "typemap_name": "void"
+                                            },
+                                            "meta": {
+                                                "abstract": "void**",
+                                                "intent": "in",
+                                                "value": true
+                                            },
+                                            "stmt": "f_in_void**"
+                                        }
+                                    },
+                                    "share": {
+                                        "+result": {
+                                            "meta": {
+                                                "abstract": "void",
+                                                "intent": "subroutine"
+                                            }
+                                        },
+                                        "args": {
+                                            "meta": {
+                                                "abstract": "void**",
+                                                "intent": "in",
+                                                "value": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "zz_fmtdict": {
+                                    "C_name_api": "pass_voidstartstar",
+                                    "F_name_api": "pass_voidstartstar",
+                                    "F_name_function": "pass_voidstartstar",
+                                    "F_name_generic": "pass_voidstartstar",
+                                    "F_name_impl": "pass_voidstartstar",
+                                    "c_arglist": [
+                                        "c_var",
+                                        "args"
+                                    ],
+                                    "f_arglist": [
+                                        "f_var",
+                                        "args"
+                                    ],
+                                    "function_name": "pass_voidstartstar"
                                 }
                             }
                         ],

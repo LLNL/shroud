@@ -1119,6 +1119,19 @@ module userlibrary_example_nested_mod
             real(C_DOUBLE), intent(OUT) :: out(*)
             integer(C_INT), value, intent(IN) :: sizein
         end subroutine c_cos_doubles
+
+        ! ----------------------------------------
+        ! Function:  void pass_voidstartstar
+        ! Statement: f_subroutine
+        ! ----------------------------------------
+        ! Argument:  void **args +intent(in)+value
+        ! Statement: f_in_void**
+        subroutine pass_voidstartstar(args) &
+                bind(C, name="AA_example_nested_pass_voidstartstar")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR), value, intent(IN) :: args
+        end subroutine pass_voidstartstar
     end interface
 
     interface ex_class1
@@ -2026,6 +2039,23 @@ contains
         call c_cos_doubles(in, out, SH_sizein)
         ! splicer end namespace.example::nested.function.cos_doubles
     end subroutine cos_doubles
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void pass_voidstartstar
+    ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  void **args +intent(in)+value
+    ! Statement: f_in_void**
+    subroutine pass_voidstartstar(args)
+        use iso_c_binding, only : C_PTR
+        type(C_PTR), value, intent(IN) :: args
+        ! splicer begin namespace.example::nested.function.pass_voidstartstar
+        call c_pass_voidstartstar(args)
+        ! splicer end namespace.example::nested.function.pass_voidstartstar
+    end subroutine pass_voidstartstar
+#endif
 
     ! splicer begin namespace.example::nested.additional_functions
     ! splicer end namespace.example::nested.additional_functions

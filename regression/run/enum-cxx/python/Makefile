@@ -16,8 +16,8 @@ INCLUDE = \
 
 VPATH = \
     $(top)/regression/reference/enum-cxx \
-    $(top)/regression/run/enum \
-    ../../cxx
+    ../../cxx \
+    $(top)/regression/run/enum
 
 OBJS = \
     enum.o \

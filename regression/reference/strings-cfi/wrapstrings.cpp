@@ -14,7 +14,6 @@
 #include <string>
 // shroud
 #include <cstring>
-#include <cstdlib>
 #include "wrapstrings.h"
 
 // splicer begin CXX_definitions
@@ -22,48 +21,6 @@
 
 extern "C" {
 
-
-// helper char_len_trim
-// Returns the length of character string src with length nsrc,
-// ignoring any trailing blanks.
-static int ShroudCharLenTrim(const char *src, int nsrc) {
-    int i;
-
-    for (i = nsrc - 1; i >= 0; i--) {
-        if (src[i] != ' ') {
-            break;
-        }
-    }
-
-    return i + 1;
-}
-
-
-// helper char_alloc
-// Copy src into new memory and null terminate.
-// If ntrim is 0, return NULL pointer.
-// If blanknull is 1, return NULL when string is blank.
-static char *ShroudCharAlloc(const char *src, int nsrc, int blanknull)
-{
-    int ntrim = ShroudCharLenTrim(src, nsrc);
-    if (ntrim == 0 && blanknull == 1) {
-        return nullptr;
-    }
-    char *rv = (char *) std::malloc(nsrc + 1);
-    if (ntrim > 0) {
-        std::memcpy(rv, src, ntrim);
-    }
-    rv[ntrim] = '\0';
-    return rv;
-}
-
-// helper char_blank_fill
-// blank fill dest starting at trailing NULL.
-static void ShroudCharBlankFill(char *dest, int ndest)
-{
-    int nm = std::strlen(dest);
-    if(ndest > nm) std::memset(dest+nm,' ',ndest-nm);
-}
 
 // helper ShroudCharCopy
 // Copy src into dest, blank fill to ndest characters
@@ -81,14 +38,21 @@ static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
     }
 }
 
-// helper char_free
-// Release memory allocated by ShroudCharAlloc
-static void ShroudCharFree(char *src)
-{
-    if (src != NULL) {
-        std::free(src);
+// helper char_len_trim
+// Returns the length of character string src with length nsrc,
+// ignoring any trailing blanks.
+static int ShroudCharLenTrim(const char *src, int nsrc) {
+    int i;
+
+    for (i = nsrc - 1; i >= 0; i--) {
+        if (src[i] != ' ') {
+            break;
+        }
     }
+
+    return i + 1;
 }
+
 
 // splicer begin C_definitions
 // splicer end C_definitions
@@ -104,355 +68,29 @@ void STR_init_test(void)
 }
 
 /**
- * \brief pass a single char argument as a scalar.
- *
- */
-// ----------------------------------------
-// Function:  void passChar
-// Statement: c_subroutine
-// ----------------------------------------
-// Argument:  char status
-// Statement: c_in_char
-void STR_passChar(char status)
-{
-    // splicer begin function.passChar
-    passChar(status);
-    // splicer end function.passChar
-}
-
-/**
- * By default no Fortran wrapper is created.
- * Force one so it can be tested.
- */
-// ----------------------------------------
-// Function:  void passCharForce
-// Statement: c_subroutine
-// ----------------------------------------
-// Argument:  char status
-// Statement: c_in_char
-void STR_passCharForce(char status)
-{
-    // splicer begin function.passCharForce
-    passCharForce(status);
-    // splicer end function.passCharForce
-}
-
-/**
- * \brief return a char argument (non-pointer)
- *
- */
-// ----------------------------------------
-// Function:  char returnChar
-// Statement: c_function_char
-void STR_returnChar(char *SHC_rv)
-{
-    // splicer begin function.returnChar
-    *SHC_rv = returnChar();
-    // splicer end function.returnChar
-}
-
-/**
- * \brief strcpy like behavior
- *
- * dest is marked intent(OUT) to override the intent(INOUT) default
- * This avoid a copy-in on dest.
- * In Python, src must not be over 40 characters, defined by charlen.
- */
-// ----------------------------------------
-// Function:  void passCharPtr
-// Statement: c_subroutine
-// ----------------------------------------
-// Argument:  char *dest +charlen(40)+intent(out)
-// Statement: c_out_char*
-// ----------------------------------------
-// Argument:  const char *src
-// Statement: c_in_char*
-// start STR_passCharPtr
-void STR_passCharPtr(char *dest, const char *src)
-{
-    // splicer begin function.passCharPtr
-    passCharPtr(dest, src);
-    // splicer end function.passCharPtr
-}
-// end STR_passCharPtr
-
-/**
- * \brief strcpy like behavior
- *
- * dest is marked intent(OUT) to override the intent(INOUT) default
- * This avoid a copy-in on dest.
- * In Python, src must not be over 40 characters, defined by charlen.
- */
-// ----------------------------------------
-// Function:  void passCharPtr
-// Statement: f_subroutine
-// ----------------------------------------
-// Argument:  char *dest +charlen(40)+intent(out)
-// Statement: f_out_char*_cfi
-// ----------------------------------------
-// Argument:  const char *src
-// Statement: f_in_char*_cfi
-// start STR_passCharPtr_CFI
-void STR_passCharPtr_CFI(CFI_cdesc_t *SHT_dest_cfi,
-    CFI_cdesc_t *SHT_src_cfi)
-{
-    // splicer begin function.passCharPtr_CFI
-    char *SHC_dest_cxx = static_cast<char *>(SHT_dest_cfi->base_addr);
-    char *src = static_cast<char *>(SHT_src_cfi->base_addr);
-    char *SHC_src_cxx = ShroudCharAlloc(src, SHT_src_cfi->elem_len, 0);
-    passCharPtr(SHC_dest_cxx, SHC_src_cxx);
-    ShroudCharBlankFill(SHC_dest_cxx, SHT_dest_cfi->elem_len);
-    ShroudCharFree(SHC_src_cxx);
-    // splicer end function.passCharPtr_CFI
-}
-// end STR_passCharPtr_CFI
-
-/**
- * \brief toupper
- *
- * Change a string in-place.
- * For Python, return a new string since strings are immutable.
- */
-// ----------------------------------------
-// Function:  void passCharPtrInOut
-// Statement: c_subroutine
-// ----------------------------------------
-// Argument:  char *s +intent(inout)
-// Statement: c_inout_char*
-void STR_passCharPtrInOut(char *s)
-{
-    // splicer begin function.passCharPtrInOut
-    passCharPtrInOut(s);
-    // splicer end function.passCharPtrInOut
-}
-
-/**
- * \brief toupper
- *
- * Change a string in-place.
- * For Python, return a new string since strings are immutable.
- */
-// ----------------------------------------
-// Function:  void passCharPtrInOut
-// Statement: f_subroutine
-// ----------------------------------------
-// Argument:  char *s +intent(inout)
-// Statement: f_inout_char*_cfi
-void STR_passCharPtrInOut_CFI(CFI_cdesc_t *SHT_s_cfi)
-{
-    // splicer begin function.passCharPtrInOut_CFI
-    char *s = static_cast<char *>(SHT_s_cfi->base_addr);
-    char *SHC_s_cxx = ShroudCharAlloc(s, SHT_s_cfi->elem_len, 0);
-    passCharPtrInOut(SHC_s_cxx);
-    ShroudCharCopy(s, SHT_s_cfi->elem_len, SHC_s_cxx, -1);
-    ShroudCharFree(SHC_s_cxx);
-    // splicer end function.passCharPtrInOut_CFI
-}
-
-/**
- * \brief return a 'const char *' as character(*)
- *
- */
-// ----------------------------------------
-// Function:  const char *getCharPtr1
-// Statement: c_function_char*
-// start STR_getCharPtr1
-const char * STR_getCharPtr1(void)
-{
-    // splicer begin function.getCharPtr1
-    const char *SHC_rv = getCharPtr1();
-    return SHC_rv;
-    // splicer end function.getCharPtr1
-}
-// end STR_getCharPtr1
-
-/**
- * \brief return a 'const char *' as character(*)
- *
- */
-// ----------------------------------------
-// Function:  const char *getCharPtr1
-// Statement: f_function_char*_cfi_allocatable
-// start STR_getCharPtr1_CFI
-void STR_getCharPtr1_CFI(CFI_cdesc_t *SHT_rv_cfi)
-{
-    // splicer begin function.getCharPtr1_CFI
-    const char *SHC_rv = getCharPtr1();
-    if (SHC_rv != nullptr) {
-        int SH_ret = CFI_allocate(SHT_rv_cfi, (CFI_index_t *) 0, 
-            (CFI_index_t *) 0, strlen(SHC_rv));
-        if (SH_ret == CFI_SUCCESS) {
-            std::memcpy(SHT_rv_cfi->base_addr, SHC_rv, 
-                SHT_rv_cfi->elem_len);
-        }
-    }
-    // splicer end function.getCharPtr1_CFI
-}
-// end STR_getCharPtr1_CFI
-
-/**
- * \brief return 'const char *' with fixed size (len=30)
- *
- */
-// ----------------------------------------
-// Function:  const char *getCharPtr2 +len(30)
-// Statement: c_function_char*
-// start STR_getCharPtr2
-const char * STR_getCharPtr2(void)
-{
-    // splicer begin function.getCharPtr2
-    const char *SHC_rv = getCharPtr2();
-    return SHC_rv;
-    // splicer end function.getCharPtr2
-}
-// end STR_getCharPtr2
-
-/**
- * \brief return 'const char *' with fixed size (len=30)
- *
- */
-// ----------------------------------------
-// Function:  const char *getCharPtr2 +len(30)
-// Statement: f_function_char*_cfi_copy
-// start STR_getCharPtr2_CFI
-void STR_getCharPtr2_CFI(CFI_cdesc_t *SHT_rv_cfi)
-{
-    // splicer begin function.getCharPtr2_CFI
-    const char *SHC_rv_cxx = getCharPtr2();
-    char *SHC_rv = static_cast<char *>(SHT_rv_cfi->base_addr);
-    ShroudCharCopy(SHC_rv, SHT_rv_cfi->elem_len, SHC_rv_cxx, -1);
-    // splicer end function.getCharPtr2_CFI
-}
-// end STR_getCharPtr2_CFI
-
-/**
- * \brief return a 'const char *' as argument
- *
- */
-// ----------------------------------------
-// Function:  const char *getCharPtr3
-// Statement: c_function_char*
-// start STR_getCharPtr3
-const char * STR_getCharPtr3(void)
-{
-    // splicer begin function.getCharPtr3
-    const char *SHC_rv = getCharPtr3();
-    return SHC_rv;
-    // splicer end function.getCharPtr3
-}
-// end STR_getCharPtr3
-
-/**
- * \brief return a 'const char *' as argument
- *
- */
-// ----------------------------------------
-// Function:  const char *getCharPtr3
-// Statement: f_function_char*_cfi_arg
-// start STR_getCharPtr3_CFI
-void STR_getCharPtr3_CFI(CFI_cdesc_t *SHT_rv_cfi)
-{
-    // splicer begin function.getCharPtr3_CFI
-    const char *SHC_rv_cxx = getCharPtr3();
-    char *output = static_cast<char *>(SHT_rv_cfi->base_addr);
-    ShroudCharCopy(output, SHT_rv_cfi->elem_len, SHC_rv_cxx, -1);
-    // splicer end function.getCharPtr3_CFI
-}
-// end STR_getCharPtr3_CFI
-
-/**
- * \brief return a 'const char *' as type(C_PTR)
- *
- */
-// ----------------------------------------
-// Function:  const char *getCharPtr4 +deref(raw)
-// Statement: c_function_char*
-const char * STR_getCharPtr4(void)
-{
-    // splicer begin function.getCharPtr4
-    const char *SHC_rv = getCharPtr4();
-    return SHC_rv;
-    // splicer end function.getCharPtr4
-}
-
-/**
- * \brief return a 'const char *' as character(:) pointer
- *
- */
-#ifdef HAVE_CHARACTER_POINTER_FUNCTION
-// ----------------------------------------
-// Function:  const char *getCharPtr5 +deref(pointer)
-// Statement: c_function_char*
-const char * STR_getCharPtr5(void)
-{
-    // splicer begin function.getCharPtr5
-    const char *SHC_rv = getCharPtr5();
-    return SHC_rv;
-    // splicer end function.getCharPtr5
-}
-#endif  // ifdef HAVE_CHARACTER_POINTER_FUNCTION
-
-/**
- * \brief return a 'const char *' as character(:) pointer
- *
- */
-#ifdef HAVE_CHARACTER_POINTER_FUNCTION
-// ----------------------------------------
-// Function:  const char *getCharPtr5 +deref(pointer)
-// Statement: f_function_char*_cfi_pointer
-void STR_getCharPtr5_CFI(CFI_cdesc_t *SHT_rv_cfi)
-{
-    // splicer begin function.getCharPtr5_CFI
-    const char *SHC_rv = getCharPtr5();
-    int SHC_rv_err;
-    if (SHC_rv == nullptr) {
-        SHC_rv_err = CFI_setpointer(SHT_rv_cfi, nullptr, nullptr);
-    } else {
-        CFI_CDESC_T(0) SHC_rv_fptr;
-        CFI_cdesc_t *SHC_rv_cdesc = reinterpret_cast<CFI_cdesc_t *>
-            (&SHC_rv_fptr);
-        void *SHC_rv_cptr = const_cast<char *>(SHC_rv);
-        size_t SHC_rv_len = std::strlen(SHC_rv);
-        SHC_rv_err = CFI_establish(SHC_rv_cdesc, SHC_rv_cptr,
-            CFI_attribute_pointer, CFI_type_char, SHC_rv_len, 0,
-            nullptr);
-        if (SHC_rv_err == CFI_SUCCESS) {
-            SHT_rv_cfi->elem_len = SHC_rv_cdesc->elem_len;
-            SHC_rv_err = CFI_setpointer(SHT_rv_cfi, SHC_rv_cdesc,
-                nullptr);
-        }
-    }
-    // splicer end function.getCharPtr5_CFI
-}
-#endif  // ifdef HAVE_CHARACTER_POINTER_FUNCTION
-
-#if 0
-! Not Implemented
-/**
- * \brief return an ALLOCATABLE CHARACTER from std::string
- *
+ * Return an ALLOCATABLE CHARACTER from std::string.
+ * The language=C wrapper will return a const char *
  */
 // ----------------------------------------
 // Function:  const string getConstStringResult
 // Statement: c_function_string
-const char STR_getConstStringResult(void)
+const char * STR_getConstStringResult(
+    STR_SHROUD_capsule_data *SHT_rv_capsule)
 {
     // splicer begin function.getConstStringResult
-    const std::string SHCXX_rv = getConstStringResult();
-    // C_error_pattern
-    if (SHCXX_rv.empty()) {
-        return NULL;
-    }
-
-    const char SHC_rv = SHCXX_rv.c_str();
+    std::string *SHC_rv_cxx = new std::string;
+    *SHC_rv_cxx = getConstStringResult();
+    const char *SHC_rv = NULL;
+    if (!SHC_rv_cxx->empty()) SHC_rv = SHC_rv_cxx->c_str();
+    SHT_rv_capsule->addr  = const_cast<std::string *>(SHC_rv_cxx);
+    SHT_rv_capsule->idtor = 1;
     return SHC_rv;
     // splicer end function.getConstStringResult
 }
-#endif
 
 /**
- * \brief return an ALLOCATABLE CHARACTER from std::string
- *
+ * Return an ALLOCATABLE CHARACTER from std::string.
+ * The language=C wrapper will return a const char *
  */
 // ----------------------------------------
 // Function:  const string getConstStringResult
@@ -461,9 +99,6 @@ void STR_getConstStringResult_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringResult_CFI
     const std::string SHCXX_rv = getConstStringResult();
-    // C_error_pattern
-    // Some error code for buf
-
     int SH_ret = CFI_allocate(SHT_rv_cfi, (CFI_index_t *) 0, 
         (CFI_index_t *) 0, SHCXX_rv.length());
     if (SH_ret == CFI_SUCCESS) {
@@ -472,30 +107,6 @@ void STR_getConstStringResult_CFI(CFI_cdesc_t *SHT_rv_cfi)
     }
     // splicer end function.getConstStringResult_CFI
 }
-
-#if 0
-! Not Implemented
-/**
- * \brief return a 'const string' as argument
- *
- */
-// ----------------------------------------
-// Function:  const string getConstStringLen +len(30)
-// Statement: c_function_string
-const char STR_getConstStringLen(void)
-{
-    // splicer begin function.getConstStringLen
-    const std::string SHCXX_rv = getConstStringLen();
-    // C_error_pattern
-    if (SHCXX_rv.empty()) {
-        return NULL;
-    }
-
-    const char SHC_rv = SHCXX_rv.c_str();
-    return SHC_rv;
-    // splicer end function.getConstStringLen
-}
-#endif
 
 /**
  * \brief return a 'const string' as argument
@@ -521,30 +132,6 @@ void STR_getConstStringLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
     // splicer end function.getConstStringLen_CFI
 }
 
-#if 0
-! Not Implemented
-/**
- * \brief return a 'const string' as argument
- *
- */
-// ----------------------------------------
-// Function:  const string getConstStringAsArg
-// Statement: c_function_string
-const char STR_getConstStringAsArg(void)
-{
-    // splicer begin function.getConstStringAsArg
-    const std::string SHCXX_rv = getConstStringAsArg();
-    // C_error_pattern
-    if (SHCXX_rv.empty()) {
-        return NULL;
-    }
-
-    const char SHC_rv = SHCXX_rv.c_str();
-    return SHC_rv;
-    // splicer end function.getConstStringAsArg
-}
-#endif
-
 /**
  * \brief return a 'const string' as argument
  *
@@ -568,21 +155,6 @@ void STR_getConstStringAsArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
     }
     // splicer end function.getConstStringAsArg_CFI
 }
-
-#if 0
-! Not Implemented
-// ----------------------------------------
-// Function:  const std::string getConstStringAlloc
-// Statement: c_function_string
-const char STR_getConstStringAlloc(void)
-{
-    // splicer begin function.getConstStringAlloc
-    const std::string SHCXX_rv = getConstStringAlloc();
-    const char SHC_rv = SHCXX_rv.c_str();
-    return SHC_rv;
-    // splicer end function.getConstStringAlloc
-}
-#endif
 
 // ----------------------------------------
 // Function:  const std::string getConstStringAlloc
@@ -1575,64 +1147,6 @@ void STR_fetchArrayStringAllocLen_CFI(CFI_cdesc_t *SHT_strs_cfi)
     // splicer end function.fetchArrayStringAllocLen_CFI
 }
 
-// ----------------------------------------
-// Function:  void explicit1
-// Statement: c_subroutine
-// ----------------------------------------
-// Argument:  char *name +intent(in)+len_trim(AAlen)
-// Statement: c_in_char*
-void STR_explicit1(char *name)
-{
-    // splicer begin function.explicit1
-    explicit1(name);
-    // splicer end function.explicit1
-}
-
-// ----------------------------------------
-// Function:  void explicit1
-// Statement: f_subroutine
-// ----------------------------------------
-// Argument:  char *name +intent(in)+len_trim(AAlen)
-// Statement: f_in_char*_cfi
-void STR_explicit1_CFI(CFI_cdesc_t *SHT_name_cfi)
-{
-    // splicer begin function.explicit1_CFI
-    char *name = static_cast<char *>(SHT_name_cfi->base_addr);
-    char *SHC_name_cxx = ShroudCharAlloc(name, SHT_name_cfi->elem_len,
-        0);
-    explicit1(SHC_name_cxx);
-    ShroudCharFree(SHC_name_cxx);
-    // splicer end function.explicit1_CFI
-}
-
-// ----------------------------------------
-// Function:  void explicit2
-// Statement: c_subroutine
-// ----------------------------------------
-// Argument:  char *name +intent(out)+len(AAtrim)
-// Statement: c_out_char*
-void STR_explicit2(char *name)
-{
-    // splicer begin function.explicit2
-    explicit2(name);
-    // splicer end function.explicit2
-}
-
-// ----------------------------------------
-// Function:  void explicit2
-// Statement: f_subroutine
-// ----------------------------------------
-// Argument:  char *name +intent(out)+len(AAtrim)
-// Statement: f_out_char*_cfi
-void STR_explicit2_CFI(CFI_cdesc_t *SHT_name_cfi)
-{
-    // splicer begin function.explicit2_CFI
-    char *SHC_name_cxx = static_cast<char *>(SHT_name_cfi->base_addr);
-    explicit2(SHC_name_cxx);
-    ShroudCharBlankFill(SHC_name_cxx, SHT_name_cfi->elem_len);
-    // splicer end function.explicit2_CFI
-}
-
 /**
  * \brief return a char argument (non-pointer), extern "C"
  *
@@ -1645,82 +1159,6 @@ void STR_CreturnChar(char *SHC_rv)
     // splicer begin function.CreturnChar
     *SHC_rv = CreturnChar();
     // splicer end function.CreturnChar
-}
-
-/**
- * \brief strcpy like behavior
- *
- * dest is marked intent(OUT) to override the intent(INOUT) default
- * This avoid a copy-in on dest.
- * extern "C"
- * If src is a blank string, pass a NULL pointer to C library function.
- */
-// ----------------------------------------
-// Function:  void CpassCharPtr
-// Statement: f_subroutine
-// ----------------------------------------
-// Argument:  char *dest +intent(out)
-// Statement: f_out_char*_cfi
-// ----------------------------------------
-// Argument:  const char *src +blanknull
-// Statement: f_in_char*_cfi
-void STR_CpassCharPtr_CFI(CFI_cdesc_t *SHT_dest_cfi,
-    CFI_cdesc_t *SHT_src_cfi)
-{
-    // splicer begin function.CpassCharPtr_CFI
-    char *SHC_dest_cxx = static_cast<char *>(SHT_dest_cfi->base_addr);
-    char *src = static_cast<char *>(SHT_src_cfi->base_addr);
-    char *SHC_src_cxx = ShroudCharAlloc(src, SHT_src_cfi->elem_len, 1);
-    CpassCharPtr(SHC_dest_cxx, SHC_src_cxx);
-    ShroudCharBlankFill(SHC_dest_cxx, SHT_dest_cfi->elem_len);
-    ShroudCharFree(SHC_src_cxx);
-    // splicer end function.CpassCharPtr_CFI
-}
-
-/**
- * \brief Test F_blanknull option
- *
- */
-// ----------------------------------------
-// Function:  void CpassCharPtrBlank
-// Statement: c_subroutine
-// ----------------------------------------
-// Argument:  char *dest +intent(out)
-// Statement: c_out_char*
-// ----------------------------------------
-// Argument:  const char *src
-// Statement: c_in_char*
-void STR_CpassCharPtrBlank(char *dest, const char *src)
-{
-    // splicer begin function.CpassCharPtrBlank
-    CpassCharPtrBlank(dest, src);
-    // splicer end function.CpassCharPtrBlank
-}
-
-/**
- * \brief Test F_blanknull option
- *
- */
-// ----------------------------------------
-// Function:  void CpassCharPtrBlank
-// Statement: f_subroutine
-// ----------------------------------------
-// Argument:  char *dest +intent(out)
-// Statement: f_out_char*_cfi
-// ----------------------------------------
-// Argument:  const char *src
-// Statement: f_in_char*_cfi
-void STR_CpassCharPtrBlank_CFI(CFI_cdesc_t *SHT_dest_cfi,
-    CFI_cdesc_t *SHT_src_cfi)
-{
-    // splicer begin function.CpassCharPtrBlank_CFI
-    char *SHC_dest_cxx = static_cast<char *>(SHT_dest_cfi->base_addr);
-    char *src = static_cast<char *>(SHT_src_cfi->base_addr);
-    char *SHC_src_cxx = ShroudCharAlloc(src, SHT_src_cfi->elem_len, 1);
-    CpassCharPtrBlank(SHC_dest_cxx, SHC_src_cxx);
-    ShroudCharBlankFill(SHC_dest_cxx, SHT_dest_cfi->elem_len);
-    ShroudCharFree(SHC_src_cxx);
-    // splicer end function.CpassCharPtrBlank_CFI
 }
 
 /**
@@ -1774,119 +1212,6 @@ void STR_PostDeclare_CFI(CFI_cdesc_t *SHT_count_cfi,
     ShroudCharCopy(name, SHT_name_cfi->elem_len, SHC_name_cxx.data(),
         SHC_name_cxx.size());
     // splicer end function.PostDeclare_CFI
-}
-
-/**
- * \brief NULL terminate input string in C, not in Fortran.
- *
- */
-// ----------------------------------------
-// Function:  int CpassCharPtrNotrim
-// Statement: c_function_native
-// ----------------------------------------
-// Argument:  const char *src
-// Statement: c_in_char*
-int STR_CpassCharPtrNotrim(const char *src)
-{
-    // splicer begin function.CpassCharPtrNotrim
-    int SHC_rv = CpassCharPtrNotrim(src);
-    return SHC_rv;
-    // splicer end function.CpassCharPtrNotrim
-}
-
-/**
- * \brief NULL terminate input string in C, not in Fortran.
- *
- */
-// ----------------------------------------
-// Function:  int CpassCharPtrNotrim
-// Statement: f_function_native
-// ----------------------------------------
-// Argument:  const char *src
-// Statement: f_in_char*_cfi
-int STR_CpassCharPtrNotrim_CFI(CFI_cdesc_t *SHT_src_cfi)
-{
-    // splicer begin function.CpassCharPtrNotrim_CFI
-    char *src = static_cast<char *>(SHT_src_cfi->base_addr);
-    char *SHC_src_cxx = ShroudCharAlloc(src, SHT_src_cfi->elem_len, 0);
-    int SHC_rv = CpassCharPtrNotrim(SHC_src_cxx);
-    ShroudCharFree(SHC_src_cxx);
-    return SHC_rv;
-    // splicer end function.CpassCharPtrNotrim_CFI
-}
-
-/**
- * \brief Do not NULL terminate input string
- *
- * The C library function should get the same address
- * for addr and src.
- * Used when the C function needs the true address of the argument.
- * Skips null-termination. Useful to create an interface for
- * a function which is already callable by Fortran.
- * For example, the length is passed explicitly.
- * This example will not create a Fortran wrapper since C can be
- * called directly.
- */
-// ----------------------------------------
-// Function:  int CpassCharPtrCAPI
-// Statement: c_function_native
-// ----------------------------------------
-// Argument:  void *addr
-// Statement: c_in_void*
-// ----------------------------------------
-// Argument:  const char *src +api(capi)
-// Statement: c_in_char*
-int STR_CpassCharPtrCAPI(void *addr, const char *src)
-{
-    // splicer begin function.CpassCharPtrCAPI
-    int SHC_rv = CpassCharPtrCAPI(addr, src);
-    return SHC_rv;
-    // splicer end function.CpassCharPtrCAPI
-}
-
-/**
- * \brief Mix api(buf) and api(capi)
- *
- */
-// ----------------------------------------
-// Function:  int CpassCharPtrCAPI2
-// Statement: c_function_native
-// ----------------------------------------
-// Argument:  const char *in
-// Statement: c_in_char*
-// ----------------------------------------
-// Argument:  const char *src +api(capi)
-// Statement: c_in_char*
-int STR_CpassCharPtrCAPI2(const char *in, const char *src)
-{
-    // splicer begin function.CpassCharPtrCAPI2
-    int SHC_rv = CpassCharPtrCAPI2(in, src);
-    return SHC_rv;
-    // splicer end function.CpassCharPtrCAPI2
-}
-
-/**
- * \brief Mix api(buf) and api(capi)
- *
- */
-// ----------------------------------------
-// Function:  int CpassCharPtrCAPI2
-// Statement: f_function_native
-// ----------------------------------------
-// Argument:  const char *in
-// Statement: f_in_char*_cfi
-// ----------------------------------------
-// Argument:  const char *src +api(capi)
-// Statement: f_in_char*_capi
-int STR_CpassCharPtrCAPI2_CFI(CFI_cdesc_t *SHT_in_cfi, const char *src)
-{
-    // splicer begin function.CpassCharPtrCAPI2_CFI
-    char *in = static_cast<char *>(SHT_in_cfi->base_addr);
-    char *SHC_in_cxx = ShroudCharAlloc(in, SHT_in_cfi->elem_len, 0);
-    int SHC_rv = CpassCharPtrCAPI2(SHC_in_cxx, src);
-    ShroudCharFree(SHC_in_cxx);
-    return SHC_rv;
-    // splicer end function.CpassCharPtrCAPI2_CFI
 }
 
 }  // extern "C"

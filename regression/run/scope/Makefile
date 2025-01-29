@@ -16,8 +16,7 @@ include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
     -I$(top)/regression/reference/scope \
-    -I$(top)/regression/run/scope \
-    -I$(top)/regression/run/fruit
+    -I$(top)/regression/run/scope
 
 VPATH = \
     $(top)/regression/reference/scope \

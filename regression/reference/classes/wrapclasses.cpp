@@ -346,12 +346,12 @@ const char * CLA_LastFunctionCalled(void)
 void CLA_LastFunctionCalled_bufferify(char *SHC_rv, int SHT_rv_len)
 {
     // splicer begin function.LastFunctionCalled_bufferify
-    const std::string &SHCXX_rv = classes::LastFunctionCalled();
-    if (SHCXX_rv.empty()) {
+    const std::string &SHC_rv_cxx = classes::LastFunctionCalled();
+    if (SHC_rv_cxx.empty()) {
         ShroudCharCopy(SHC_rv, SHT_rv_len, nullptr, 0);
     } else {
-        ShroudCharCopy(SHC_rv, SHT_rv_len, SHCXX_rv.data(),
-            SHCXX_rv.size());
+        ShroudCharCopy(SHC_rv, SHT_rv_len, SHC_rv_cxx.data(),
+            SHC_rv_cxx.size());
     }
     // splicer end function.LastFunctionCalled_bufferify
 }

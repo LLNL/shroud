@@ -164,12 +164,12 @@ void AA_example_nested_ExClass2_getName_bufferify(
     const example::nested::ExClass2 *SH_this =
         static_cast<const example::nested::ExClass2 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass2.method.getName_bufferify
-    const std::string &SHCXX_rv = SH_this->getName();
-    if (SHCXX_rv.empty()) {
+    const std::string &SHC_rv_cxx = SH_this->getName();
+    if (SHC_rv_cxx.empty()) {
         ShroudCharCopy(SHC_rv, SHT_rv_len, nullptr, 0);
     } else {
-        ShroudCharCopy(SHC_rv, SHT_rv_len, SHCXX_rv.data(),
-            SHCXX_rv.size());
+        ShroudCharCopy(SHC_rv, SHT_rv_len, SHC_rv_cxx.data(),
+            SHC_rv_cxx.size());
     }
     // splicer end namespace.example::nested.class.ExClass2.method.getName_bufferify
 }

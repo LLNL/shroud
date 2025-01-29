@@ -143,8 +143,6 @@ module tutorial_mod
         end function pass_by_value
     end interface
 
-#if 0
-    ! Not Implemented
     ! ----------------------------------------
     ! Function:  const std::string ConcatenateStrings
     ! Statement: c_function_string
@@ -155,17 +153,18 @@ module tutorial_mod
     ! Argument:  const std::string &arg2
     ! Statement: c_in_string&
     interface
-        function c_concatenate_strings(arg1, arg2) &
+        function c_concatenate_strings(arg1, arg2, SHT_rv_capsule) &
                 result(SHT_rv) &
                 bind(C, name="TUT_ConcatenateStrings")
-            use iso_c_binding, only : C_CHAR
+            use iso_c_binding, only : C_CHAR, C_PTR
+            import :: TUT_SHROUD_capsule_data
             implicit none
             character(kind=C_CHAR), intent(IN) :: arg1(*)
             character(kind=C_CHAR), intent(IN) :: arg2(*)
-            character(kind=C_CHAR) :: SHT_rv(*)
+            type(TUT_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
+            type(C_PTR) :: SHT_rv
         end function c_concatenate_strings
     end interface
-#endif
 
     ! ----------------------------------------
     ! Function:  const std::string ConcatenateStrings

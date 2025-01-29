@@ -962,9 +962,9 @@ passCharPtr
 The function ``passCharPtr(dest, src)`` is equivalent to the Fortran
 statement ``dest = src``:
 
-C++ library function in :file:`strings.cpp`:
+C++ library function in :file:`char.c`:
 
-.. literalinclude:: ../regression/run/strings/strings.cpp
+.. literalinclude:: ../regression/run/char/char.c
    :language: c
    :start-after: start passCharPtr
    :end-before: end passCharPtr
@@ -988,27 +988,27 @@ The user is responsible for providing the ``NULL`` termination.
 The result in ``str`` will also be ``NULL`` terminated instead of 
 blank filled.:
 
-.. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
+.. literalinclude:: ../regression/reference/char-cxx/wrapchar.cpp
    :language: c
-   :start-after: start STR_passCharPtr
-   :end-before: end STR_passCharPtr
+   :start-after: start CHA_passCharPtr
+   :end-before: end CHA_passCharPtr
 
 The C wrapper:
 
-.. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
+.. literalinclude:: ../regression/reference/char-cxx/wrapchar.cpp
    :language: c
-   :start-after: start STR_passCharPtr_bufferify
-   :end-before: end STR_passCharPtr_bufferify
+   :start-after: start CHA_passCharPtr_bufferify
+   :end-before: end CHA_passCharPtr_bufferify
 
 Fortran calls C via the following interface:
 
-.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
+.. literalinclude:: ../regression/reference/char-cxx/wrapfchar.f
    :language: fortran
    :start-after: start c_pass_char_ptr
    :end-before: end c_pass_char_ptr
    :dedent: 4
 
-.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
+.. literalinclude:: ../regression/reference/char-cxx/wrapfchar.f
    :language: fortran
    :start-after: start c_pass_char_ptr_bufferify
    :end-before: end c_pass_char_ptr_bufferify
@@ -1016,7 +1016,7 @@ Fortran calls C via the following interface:
 
 The Fortran wrapper:
 
-.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
+.. literalinclude:: ../regression/reference/char-cxx/wrapfchar.f
    :language: fortran
    :start-after: start pass_char_ptr
    :end-before: end pass_char_ptr
@@ -1257,9 +1257,9 @@ variable.  The Fortran application is responsible to release the
 memory.  However, this may be done automatically by the Fortran
 runtime.
 
-C++ library function in :file:`strings.cpp`:
+C++ library function in :file:`char.c`:
 
-.. literalinclude:: ../regression/run/strings/strings.cpp
+.. literalinclude:: ../regression/run/char/char.c
    :language: c
    :start-after: start getCharPtr1
    :end-before: end getCharPtr1
@@ -1273,25 +1273,25 @@ C++ library function in :file:`strings.cpp`:
 The C wrapper copies all of the metadata into a ``SHROUD_array``
 struct which is used by the Fortran wrapper:
 
-.. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
+.. literalinclude:: ../regression/reference/char-cxx/wrapchar.cpp
    :language: c
-   :start-after: start STR_getCharPtr1_bufferify
-   :end-before: end STR_getCharPtr1_bufferify
+   :start-after: start CHA_getCharPtr1_bufferify
+   :end-before: end CHA_getCharPtr1_bufferify
 
 Fortran calls C via the following interface:
 
-.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
+.. literalinclude:: ../regression/reference/char-cxx/wrapfchar.f
    :language: fortran
    :start-after: start c_get_char_ptr1_bufferify
    :end-before: end c_get_char_ptr1_bufferify
    :dedent: 4
 
-The Fortran wrapper uses the metadata in ``DSHF_rv`` to allocate
+The Fortran wrapper uses the metadata in ``SHT_rv_cdesc`` to allocate
 a ``CHARACTER`` variable of the correct length.
 The helper function ``SHROUD_copy_string_and_free`` will copy 
 the results of the C++ function into the return variable:
 
-.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
+.. literalinclude:: ../regression/reference/char-cxx/wrapfchar.f
    :language: fortran
    :start-after: start get_char_ptr1
    :end-before: end get_char_ptr1
@@ -1306,50 +1306,50 @@ Fortran usage:
 
 .. ############################################################
 
-.. _example_getCharPtr2:
+.. _example_getConstCharPtrLen:
 
-getCharPtr2
-^^^^^^^^^^^
+getConstCharPtrLen
+^^^^^^^^^^^^^^^^^^
 
 If you know the maximum size of string that you expect the function to
 return, then the *len* attribute is used to declare the length.  The
 explicit ``ALLOCATE`` is avoided but any result which is longer than
 the length will be silently truncated.
 
-C++ library function in :file:`strings.cpp`:
+C++ library function in :file:`char.c`:
 
-.. literalinclude:: ../regression/run/strings/strings.cpp
+.. literalinclude:: ../regression/run/char/char.c
    :language: c
-   :start-after: start getCharPtr2
-   :end-before: end getCharPtr2
+   :start-after: start getConstCharPtrLen
+   :end-before: end getConstCharPtrLen
 
 :file:`strings.yaml`:
 
 .. code-block:: yaml
 
-    - decl: const char * getCharPtr2() +len(30)
+    - decl: const char *getConstCharPtrLen() +len(30)
 
 The C wrapper:
 
-.. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
+.. literalinclude:: ../regression/reference/char-cxx/wrapchar.cpp
    :language: c
-   :start-after: start STR_getCharPtr2_bufferify
-   :end-before: end STR_getCharPtr2_bufferify
+   :start-after: start CHA_getConstCharPtrLen_bufferify
+   :end-before: end CHA_getConstCharPtrLen_bufferify
 
 Fortran calls C via the following interface:
 
-.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
+.. literalinclude:: ../regression/reference/char-cxx/wrapfchar.f
    :language: fortran
-   :start-after: start c_get_char_ptr2_bufferify
-   :end-before: end c_get_char_ptr2_bufferify
+   :start-after: start c_get_const_char_ptr_len_bufferify
+   :end-before: end c_get_const_char_ptr_len_bufferify
    :dedent: 4
 
 The Fortran wrapper:
 
-.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
+.. literalinclude:: ../regression/reference/char-cxx/wrapfchar.f
    :language: fortran
-   :start-after: start get_char_ptr2
-   :end-before: end get_char_ptr2
+   :start-after: start get_const_char_ptr_len
+   :end-before: end get_const_char_ptr_len
    :dedent: 4
 
 Fortran usage:
@@ -1357,56 +1357,56 @@ Fortran usage:
 .. code-block:: fortran
 
     character(30) str
-    str = get_char_ptr2()
+    str = get_const_char_ptr_len()
 
 .. ############################################################
 
-.. _example_getCharPtr3:
+.. _example_getConstCharPtrAsArg:
 
-getCharPtr3
-^^^^^^^^^^^
+getConstCharPtrAsArg
+^^^^^^^^^^^^^^^^^^^^
 
 Create a Fortran subroutine with an additional ``CHARACTER``
 argument for the C function result. Any size character string can
 be returned limited by the size of the Fortran argument.  The
 argument is defined by the *F_string_result_as_arg* format string.
 
-C++ library function in :file:`strings.cpp`:
+C++ library function in :file:`char.c`:
 
-.. literalinclude:: ../regression/run/strings/strings.cpp
+.. literalinclude:: ../regression/run/char/char.c
    :language: c
-   :start-after: start getCharPtr3
-   :end-before: end getCharPtr3
+   :start-after: start getConstCharPtrAsArg
+   :end-before: end getConstCharPtrAsArg
 
 :file:`strings.yaml`:
 
 .. code-block:: yaml
 
-    - decl: const char * getCharPtr3()
+    - decl: const char *getConstCharPtrAsArg()
       format:
         F_string_result_as_arg: output
 
 The C wrapper:
 
-.. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
+.. literalinclude:: ../regression/reference/char-cxx/wrapchar.cpp
    :language: c
-   :start-after: start STR_getCharPtr3_bufferify
-   :end-before: end STR_getCharPtr3_bufferify
+   :start-after: start CHA_getConstCharPtrAsArg_bufferify
+   :end-before: end CHA_getConstCharPtrAsArg_bufferify
 
 Fortran calls C via the following interface:
 
-.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
+.. literalinclude:: ../regression/reference/char-cxx/wrapfchar.f
    :language: fortran
-   :start-after: start c_get_char_ptr3_bufferify
-   :end-before: end c_get_char_ptr3_bufferify
+   :start-after: start c_get_const_char_ptr_as_arg_bufferify
+   :end-before: end c_get_const_char_ptr_as_arg_bufferify
    :dedent: 4
 
 The Fortran wrapper:
 
-.. literalinclude:: ../regression/reference/strings/wrapfstrings.f
+.. literalinclude:: ../regression/reference/char-cxx/wrapfchar.f
    :language: fortran
-   :start-after: start get_char_ptr3
-   :end-before: end get_char_ptr3
+   :start-after: start get_const_char_ptr_as_arg
+   :end-before: end get_const_char_ptr_as_arg
    :dedent: 4
 
 Fortran usage:
@@ -1414,7 +1414,7 @@ Fortran usage:
 .. code-block:: fortran
 
     character(30) str
-    call get_char_ptrs(str)
+    call get_const_char_ptr_as_arg(str)
 
 string functions
 ----------------

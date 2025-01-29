@@ -266,20 +266,20 @@ wrapped differently.
     automatically by the Fortran runtime.
     See example :ref:`getCharPtr1 <example_getCharPtr1>`.
 
-``char *getCharPtr2``
+``char *getConstCharPtrLen``
     Create a Fortran function which returns a predefined ``CHARACTER`` 
     value.  The size is determined by the *len* argument on the function.
     This is useful when the maximum size is already known.
     Works with Fortran 90.
-    See example :ref:`getCharPtr2 <example_getCharPtr2>`.
+    See example :ref:`getConstCharPtrLen <example_getConstCharPtrLen>`.
 
-``char *getCharPtr3``
+``char *getConstCharPtrAsArg``
     Create a Fortran subroutine with an additional ``CHARACTER``
     argument for the C function result. Any size character string can
     be returned limited by the size of the Fortran argument.  The
     argument is defined by the *F_string_result_as_arg* format string.
     Works with Fortran 90.
-    See example :ref:`getCharPtr3 <example_getCharPtr3>`.
+    See example :ref:`getConstCharPtrAsArg <example_getConstCharPtrAsArg>`.
 
 
 .. XXX returning a scalar char will pass the result to the C wrapper

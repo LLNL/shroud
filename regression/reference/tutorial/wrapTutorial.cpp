@@ -105,8 +105,6 @@ double TUT_PassByValue(double arg1, int arg2)
     // splicer end function.PassByValue
 }
 
-#if 0
-! Not Implemented
 /**
  * Note that since a reference is returned, no intermediate string
  * is allocated.  It is assumed +owner(library).
@@ -120,18 +118,22 @@ double TUT_PassByValue(double arg1, int arg2)
 // ----------------------------------------
 // Argument:  const std::string &arg2
 // Statement: c_in_string&
-const char TUT_ConcatenateStrings(const char *arg1, const char *arg2)
+const char * TUT_ConcatenateStrings(const char *arg1, const char *arg2,
+    TUT_SHROUD_capsule_data *SHT_rv_capsule)
 {
     // splicer begin function.ConcatenateStrings
     const std::string SHC_arg1_cxx(arg1);
     const std::string SHC_arg2_cxx(arg2);
-    const std::string SHCXX_rv = tutorial::ConcatenateStrings(
-        SHC_arg1_cxx, SHC_arg2_cxx);
-    const char SHC_rv = SHCXX_rv.c_str();
+    std::string *SHC_rv_cxx = new std::string;
+    *SHC_rv_cxx = tutorial::ConcatenateStrings(SHC_arg1_cxx,
+        SHC_arg2_cxx);
+    const char *SHC_rv = NULL;
+    if (!SHC_rv_cxx->empty()) SHC_rv = SHC_rv_cxx->c_str();
+    SHT_rv_capsule->addr  = const_cast<std::string *>(SHC_rv_cxx);
+    SHT_rv_capsule->idtor = 1;
     return SHC_rv;
     // splicer end function.ConcatenateStrings
 }
-#endif
 
 /**
  * Note that since a reference is returned, no intermediate string
@@ -160,7 +162,7 @@ void TUT_ConcatenateStrings_bufferify(char *arg1, int SHT_arg1_len,
         SHC_arg2_cxx);
     ShroudStringToCdesc(SHT_rv_cdesc, SHC_rv_cxx);
     SHT_rv_capsule->addr  = const_cast<std::string *>(SHC_rv_cxx);
-    SHT_rv_capsule->idtor = 1;
+    SHT_rv_capsule->idtor = 2;
     // splicer end function.ConcatenateStrings_bufferify
 }
 
@@ -603,12 +605,12 @@ const char * TUT_LastFunctionCalled(void)
 void TUT_LastFunctionCalled_bufferify(char *SHC_rv, int SHT_rv_len)
 {
     // splicer begin function.LastFunctionCalled_bufferify
-    const std::string &SHCXX_rv = tutorial::LastFunctionCalled();
-    if (SHCXX_rv.empty()) {
+    const std::string &SHC_rv_cxx = tutorial::LastFunctionCalled();
+    if (SHC_rv_cxx.empty()) {
         ShroudCharCopy(SHC_rv, SHT_rv_len, nullptr, 0);
     } else {
-        ShroudCharCopy(SHC_rv, SHT_rv_len, SHCXX_rv.data(),
-            SHCXX_rv.size());
+        ShroudCharCopy(SHC_rv, SHT_rv_len, SHC_rv_cxx.data(),
+            SHC_rv_cxx.size());
     }
     // splicer end function.LastFunctionCalled_bufferify
 }

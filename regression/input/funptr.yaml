@@ -127,3 +127,11 @@ declarations:
   doxygen:
     brief: Test callback argument types
 # XXX - array of bool is not supported
+
+#####
+
+- decl: typedef void (*pfvoid)(void);
+- decl: void get_void_ptr(pfvoid *func+intent(out)+funptr)
+  doxygen:
+    brief: Return a function pointer
+

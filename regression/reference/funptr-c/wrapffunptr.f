@@ -193,6 +193,13 @@ module funptr_mod
             integer(type_id), value :: j
         end subroutine incrtype
 
+        ! ----------------------------------------
+        ! Function:  typedef void pfvoid
+        ! Statement: f_subroutine
+        subroutine pfvoid() bind(C)
+            implicit none
+        end subroutine pfvoid
+
     end interface
 
     interface
@@ -432,6 +439,19 @@ module funptr_mod
             implicit none
             procedure(callback_all_types_all_types) :: all_types
         end subroutine callback_all_types
+
+        ! ----------------------------------------
+        ! Function:  void get_void_ptr
+        ! Statement: f_subroutine
+        ! ----------------------------------------
+        ! Argument:  pfvoid *func +funptr+intent(out)
+        ! Statement: f_out_procedure*_funptr
+        subroutine get_void_ptr(func) &
+                bind(C, name="get_void_ptr")
+            use iso_c_binding, only : C_FUNPTR
+            implicit none
+            type(C_FUNPTR) :: func
+        end subroutine get_void_ptr
     end interface
 
     ! splicer begin additional_declarations
@@ -510,7 +530,7 @@ contains
     ! start callback1_funptr
     subroutine callback1_funptr(incr1_funptr)
         use iso_c_binding, only : C_FUNPTR
-        type(C_FUNPTR) :: incr1_funptr
+        type(C_FUNPTR), intent(IN) :: incr1_funptr
         ! splicer begin function.callback1_funptr
         call c_callback1_funptr(incr1_funptr)
         ! splicer end function.callback1_funptr
@@ -592,7 +612,7 @@ contains
         use iso_c_binding, only : C_FUNPTR, C_INT, C_NULL_CHAR
         character(len=*), intent(IN) :: name
         integer(C_INT), value, intent(IN) :: ival
-        type(C_FUNPTR) :: incr
+        type(C_FUNPTR), intent(IN) :: incr
         ! splicer begin function.callback2_funptr
         call c_callback2_funptr(trim(name)//C_NULL_CHAR, ival, incr)
         ! splicer end function.callback2_funptr
@@ -620,7 +640,7 @@ contains
         use iso_c_binding, only : C_FUNPTR, C_INT, C_PTR
         integer(C_INT), value, intent(IN) :: type
         type(*), intent(IN) :: in
-        type(C_FUNPTR) :: incr3
+        type(C_FUNPTR), intent(IN) :: incr3
         ! splicer begin function.callback3
         call c_callback3(type, in, incr3)
         ! splicer end function.callback3
@@ -759,6 +779,27 @@ contains
         call c_callback_all_types(all_types)
         ! splicer end function.callback_all_types
     end subroutine callback_all_types
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void get_void_ptr
+    ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  pfvoid *func +funptr+intent(out)
+    ! Statement: f_out_procedure*_funptr
+    !>
+    !! \brief Return a function pointer
+    !!
+    !<
+    subroutine get_void_ptr(func)
+        use iso_c_binding, only : C_FUNPTR
+        type(C_FUNPTR), intent(OUT) :: func
+        ! splicer begin function.get_void_ptr
+        call c_get_void_ptr(func)
+        ! splicer end function.get_void_ptr
+    end subroutine get_void_ptr
 #endif
 
     ! splicer begin additional_functions
