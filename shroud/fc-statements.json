@@ -1227,9 +1227,6 @@
             "char *{c_var}",
             "int {c_var_len}"
         ],
-        "c_arg_call": [
-            "{cxx_var}"
-        ],
         "i_arg_names": [
             "{i_var}",
             "{i_var_len}"
@@ -2050,7 +2047,8 @@
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "f_mixin_pass_character_buf",
-            "c_mixin_in_character_buf"
+            "c_mixin_in_character_buf",
+            "c_mixin_arg-call-cvar"
         ],
         "c_temps": [
             "len",
@@ -2078,7 +2076,8 @@
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "f_mixin_pass_character_buf",
-            "c_mixin_in_character_buf"
+            "c_mixin_in_character_buf",
+            "c_mixin_arg-call-cvar"
         ],
         "c_helper": [
             "char_blank_fill"
@@ -2095,7 +2094,8 @@
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "f_mixin_pass_character_buf",
-            "c_mixin_in_character_buf"
+            "c_mixin_in_character_buf",
+            "c_mixin_arg-call-cvar"
         ],
         "c_temps": [
             "len",
@@ -2132,6 +2132,7 @@
             "f_mixin_declare-fortran-result",
             "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf",
+            "c_mixin_arg-call-cvar",
             "c_mixin_function-assign-to-local"
         ],
         "c_helper": [
@@ -2455,7 +2456,8 @@
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "f_mixin_pass_character_buf",
-            "c_mixin_in_character_buf"
+            "c_mixin_in_character_buf",
+            "c_mixin_arg-call-cxx-address"
         ],
         "c_helper": [
             "char_len_trim"
@@ -2465,9 +2467,6 @@
         ],
         "c_pre_call": [
             "{c_const}std::string {c_local_cxx}({c_var},\t {c_helper_char_len_trim}({c_var}, {c_var_len}));"
-        ],
-        "c_arg_call": [
-            "&{c_local_cxx}"
         ]
     },
     {
@@ -2478,7 +2477,8 @@
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "f_mixin_pass_character_buf",
-            "c_mixin_in_character_buf"
+            "c_mixin_in_character_buf",
+            "c_mixin_arg-call-cxx"
         ],
         "c_helper": [
             "char_len_trim"
@@ -2488,9 +2488,6 @@
         ],
         "c_pre_call": [
             "{c_const}std::string {c_local_cxx}({c_var},\t {c_helper_char_len_trim}({c_var}, {c_var_len}));"
-        ],
-        "c_arg_call": [
-            "{c_local_cxx}"
         ]
     },
     {
@@ -2501,7 +2498,8 @@
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "f_mixin_pass_character_buf",
-            "c_mixin_in_character_buf"
+            "c_mixin_in_character_buf",
+            "c_mixin_arg-call-cxx-address"
         ],
         "c_helper": [
             "char_copy"
@@ -2511,9 +2509,6 @@
         ],
         "c_pre_call": [
             "std::string {c_local_cxx};"
-        ],
-        "c_arg_call": [
-            "&{c_local_cxx}"
         ],
         "c_post_call": [
             "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx}.data(),\t {c_local_cxx}.size());"
@@ -2527,7 +2522,8 @@
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "f_mixin_pass_character_buf",
-            "c_mixin_in_character_buf"
+            "c_mixin_in_character_buf",
+            "c_mixin_arg-call-cxx"
         ],
         "c_helper": [
             "char_copy"
@@ -2537,9 +2533,6 @@
         ],
         "c_pre_call": [
             "std::string {c_local_cxx};"
-        ],
-        "c_arg_call": [
-            "{c_local_cxx}"
         ],
         "c_post_call": [
             "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx}.data(),\t {c_local_cxx}.size());"
@@ -2553,7 +2546,8 @@
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "f_mixin_pass_character_buf",
-            "c_mixin_in_character_buf"
+            "c_mixin_in_character_buf",
+            "c_mixin_arg-call-cxx-address"
         ],
         "c_helper": [
             "char_copy",
@@ -2564,9 +2558,6 @@
         ],
         "c_pre_call": [
             "std::string {c_local_cxx}({c_var},\t {c_helper_char_len_trim}({c_var}, {c_var_len}));"
-        ],
-        "c_arg_call": [
-            "&{c_local_cxx}"
         ],
         "c_post_call": [
             "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx}.data(),\t {c_local_cxx}.size());"
@@ -2580,7 +2571,8 @@
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "f_mixin_pass_character_buf",
-            "c_mixin_in_character_buf"
+            "c_mixin_in_character_buf",
+            "c_mixin_arg-call-cxx"
         ],
         "c_helper": [
             "char_copy",
@@ -2591,9 +2583,6 @@
         ],
         "c_pre_call": [
             "std::string {c_local_cxx}({c_var},\t {c_helper_char_len_trim}({c_var}, {c_var_len}));"
-        ],
-        "c_arg_call": [
-            "{c_local_cxx}"
         ],
         "c_post_call": [
             "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx}.data(),\t {c_local_cxx}.size());"
@@ -2700,7 +2689,8 @@
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "f_mixin_pass_character_buf",
-            "c_mixin_in_character_buf"
+            "c_mixin_in_character_buf",
+            "c_mixin_arg-call-cxx"
         ],
         "c_helper": [
             "char_len_trim"
@@ -2708,9 +2698,6 @@
         "c_pre_call": [
             "int {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_len});",
             "std::string {c_local_cxx}({c_var}, {c_local_trim});"
-        ],
-        "c_arg_call": [
-            "{c_local_cxx}"
         ],
         "c_local": [
             "cxx",
@@ -2753,6 +2740,7 @@
             "f_mixin_declare-fortran-result",
             "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf",
+            "c_mixin_arg-call-cvar",
             "c_mixin_function-assign-to-local",
             "c_mixin_char-copy-to-arg"
         ]
@@ -2775,6 +2763,7 @@
             "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf",
             "c_mixin_char-copy-to-arg",
+            "c_mixin_arg-call-cvar",
             "c_mixin_delete-cxx-variable"
         ]
     },

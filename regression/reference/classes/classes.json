@@ -3541,8 +3541,7 @@
                             "f": {
                                 "+result": {
                                     "fmtdict": {
-                                        "C_call_function": "SH_this->set_m_name(\tval)",
-                                        "C_call_list": "val",
+                                        "C_call_function": "SH_this->set_m_name(\t)",
                                         "C_name": "CLA_Class1_set_m_name",
                                         "C_prototype": "CLA_Class1 * self,\t char *val,\t int SHT_val_len",
                                         "C_return_type": "void",

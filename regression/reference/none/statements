@@ -145,6 +145,7 @@ c_function_char*_arg:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   notes:
   - Change function result into an argument
@@ -189,6 +190,7 @@ c_function_char*_buf_arg:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   notes:
   - Change function result into an argument
@@ -233,6 +235,7 @@ c_function_char*_buf_copy:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   notes:
   - char *getname() +len(30)
@@ -923,6 +926,7 @@ c_function_string&_buf_copy:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
@@ -994,6 +998,7 @@ c_function_string*_buf_copy:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
@@ -1125,6 +1130,7 @@ c_function_string_buf_copy:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
@@ -1379,6 +1385,7 @@ c_in_char*_buf:
   name: c_in_char*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -1716,6 +1723,7 @@ c_in_string&_buf:
   name: c_in_string&_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx local variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -1768,6 +1776,7 @@ c_in_string*_buf:
   name: c_in_string*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass address of local cxx variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -1798,6 +1807,7 @@ c_in_string_buf:
   name: c_in_string_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx local variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -2312,6 +2322,7 @@ c_inout_char*_buf:
   name: c_inout_char*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2542,6 +2553,7 @@ c_inout_string&_buf:
   name: c_inout_string&_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx local variable to library.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2605,6 +2617,7 @@ c_inout_string*_buf:
   name: c_inout_string*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass address of local cxx variable to library.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -3264,8 +3277,6 @@ c_mixin_in_character_buf:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
-  c_arg_call:
-  - '{cxx_var}'
   c_temps:
   - len
   owner: library
@@ -3596,6 +3607,7 @@ c_out_char_*_buf:
   name: c_out_char_*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -3848,6 +3860,7 @@ c_out_string&_buf:
   name: c_out_string&_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx local variable to library.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -3958,6 +3971,7 @@ c_out_string*_buf:
   name: c_out_string*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass address of local cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -4586,8 +4600,6 @@ c_setter_string_scalar_buf:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - "{CXX_this}->{field_name} = std::string({c_var},\t {c_var_len});"
   c_temps:
@@ -4777,6 +4789,7 @@ f_function_char*_arg:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   notes:
   - Change function result into an argument
@@ -4843,6 +4856,7 @@ f_function_char*_buf_arg:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   notes:
   - Change function result into an argument
@@ -4909,6 +4923,7 @@ f_function_char*_buf_copy:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   notes:
   - char *getname() +len(30)
@@ -6333,6 +6348,7 @@ f_function_string&_buf:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
@@ -6458,6 +6474,7 @@ f_function_string&_buf_caller:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
   - Copy cxx variable into c variable.
+  - Pass cxx variable to library.
   - Delete the cxx variable.
   intent: function
   f_arg_decl:
@@ -6512,6 +6529,7 @@ f_function_string&_buf_copy:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
@@ -6571,6 +6589,7 @@ f_function_string&_buf_copy_caller:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
   - Copy cxx variable into c variable.
+  - Pass cxx variable to library.
   - Delete the cxx variable.
   intent: function
   f_arg_decl:
@@ -7296,6 +7315,7 @@ f_function_string*_buf:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
@@ -7355,6 +7375,7 @@ f_function_string*_buf_caller:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
   - Copy cxx variable into c variable.
+  - Pass cxx variable to library.
   - Delete the cxx variable.
   intent: function
   f_arg_decl:
@@ -7409,6 +7430,7 @@ f_function_string*_buf_copy:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
@@ -7468,6 +7490,7 @@ f_function_string*_buf_copy_caller:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
   - Copy cxx variable into c variable.
+  - Pass cxx variable to library.
   - Delete the cxx variable.
   intent: function
   f_arg_decl:
@@ -8141,6 +8164,7 @@ f_function_string_buf:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
@@ -8266,6 +8290,7 @@ f_function_string_buf_caller:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
   - Copy cxx variable into c variable.
+  - Pass cxx variable to library.
   - Delete the cxx variable.
   intent: function
   f_arg_decl:
@@ -8320,6 +8345,7 @@ f_function_string_buf_copy:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
@@ -8379,6 +8405,7 @@ f_function_string_buf_copy_caller:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
   - Copy cxx variable into c variable.
+  - Pass cxx variable to library.
   - Delete the cxx variable.
   intent: function
   f_arg_decl:
@@ -9658,6 +9685,7 @@ f_in_char*_buf:
   name: f_in_char*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -10204,6 +10232,7 @@ f_in_string&_buf:
   name: f_in_string&_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx local variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -10307,6 +10336,7 @@ f_in_string*_buf:
   name: f_in_string*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass address of local cxx variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -10388,6 +10418,7 @@ f_in_string_buf:
   name: f_in_string_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx local variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -11142,6 +11173,7 @@ f_inout_char*_buf:
   name: f_inout_char*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -11567,6 +11599,7 @@ f_inout_string&_buf:
   name: f_inout_string&_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx local variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -11698,6 +11731,7 @@ f_inout_string*_buf:
   name: f_inout_string*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass address of local cxx variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -13162,6 +13196,7 @@ f_out_char*_buf:
   name: f_out_char*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -13814,6 +13849,7 @@ f_out_string&_buf:
   name: f_out_string&_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx local variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -14111,6 +14147,7 @@ f_out_string*_buf:
   name: f_out_string*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass address of local cxx variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -14889,8 +14926,6 @@ f_setter_string_buf:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - "{CXX_this}->{field_name} = std::string({c_var},\t {c_var_len});"
   c_temps:
