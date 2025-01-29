@@ -826,16 +826,38 @@ c_function_string:
   name: c_function_string
   comments:
   - Cannot return a char array by value.
+  - Return a const pointer to std::string data.
   intent: function
+  i_arg_names:
+  - '{i_var_capsule}'
+  i_arg_decl:
+  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_result_decl:
-  - 'character(kind=C_CHAR) :: {i_var}(*)'
+  - 'type(C_PTR) :: {i_var}'
+  i_import:
+  - '{F_capsule_data_type}'
   i_module:
     iso_c_binding:
-    - C_CHAR
+    - C_PTR
+  c_arg_decl:
+  - '{C_capsule_data_type} *{c_var_capsule}'
+  c_pre_call:
+  - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
+  c_call:
+  - '*{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
-  owner: library
-  notimplemented: true
+  - const char *{c_var} = NULL;
+  - if (!{c_local_cxx}->empty()) {c_var} = {c_local_cxx}->c_str();
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
+  c_return_type: const char *
+  c_temps:
+  - capsule
+  c_local:
+  - cxx
+  fmtdict:
+    cxx_addr: ''
+  owner: caller
 c_function_string&:
   name: c_function_string&
   notes:
@@ -2919,9 +2941,15 @@ c_mixin_arg_native_cfi:
 c_mixin_c-str:
   name: c_mixin_c-str
   intent: mixin
+  i_result_decl:
+  - 'type(C_PTR) :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
   c_post_call:
-  - // c_mixin_c-str
-  - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
+  - const char *{c_var} = NULL;
+  - if (!{c_local_cxx}->empty()) {c_var} = {c_local_cxx}->c_str();
+  c_return_type: const char *
   owner: library
 c_mixin_cast-argument:
   name: c_mixin_cast-argument

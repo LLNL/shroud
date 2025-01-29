@@ -31,21 +31,20 @@ module strings_mod
         end subroutine init_test
     end interface
 
-#if 0
-    ! Not Implemented
     ! ----------------------------------------
     ! Function:  const string getConstStringResult
     ! Statement: c_function_string
     interface
-        function c_get_const_string_result() &
+        function c_get_const_string_result(SHT_rv_capsule) &
                 result(SHT_rv) &
                 bind(C, name="STR_getConstStringResult")
-            use iso_c_binding, only : C_CHAR
+            use iso_c_binding, only : C_PTR
+            import :: STR_SHROUD_capsule_data
             implicit none
-            character(kind=C_CHAR) :: SHT_rv(*)
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
+            type(C_PTR) :: SHT_rv
         end function c_get_const_string_result
     end interface
-#endif
 
     ! ----------------------------------------
     ! Function:  const string getConstStringResult
@@ -58,22 +57,6 @@ module strings_mod
         end subroutine c_get_const_string_result_CFI
     end interface
 
-#if 0
-    ! Not Implemented
-    ! ----------------------------------------
-    ! Function:  const string getConstStringLen +len(30)
-    ! Statement: c_function_string
-    interface
-        function c_get_const_string_len() &
-                result(SHT_rv) &
-                bind(C, name="STR_getConstStringLen")
-            use iso_c_binding, only : C_CHAR
-            implicit none
-            character(kind=C_CHAR) :: SHT_rv(*)
-        end function c_get_const_string_len
-    end interface
-#endif
-
     ! ----------------------------------------
     ! Function:  const string getConstStringLen +len(30)
     ! Statement: f_function_string_cfi_copy
@@ -85,22 +68,6 @@ module strings_mod
         end subroutine c_get_const_string_len_CFI
     end interface
 
-#if 0
-    ! Not Implemented
-    ! ----------------------------------------
-    ! Function:  const string getConstStringAsArg
-    ! Statement: c_function_string
-    interface
-        function c_get_const_string_as_arg() &
-                result(SHT_rv) &
-                bind(C, name="STR_getConstStringAsArg")
-            use iso_c_binding, only : C_CHAR
-            implicit none
-            character(kind=C_CHAR) :: SHT_rv(*)
-        end function c_get_const_string_as_arg
-    end interface
-#endif
-
     ! ----------------------------------------
     ! Function:  const string getConstStringAsArg
     ! Statement: f_function_string_cfi_arg
@@ -111,22 +78,6 @@ module strings_mod
             character(len=*), intent(OUT) :: output
         end subroutine c_get_const_string_as_arg_CFI
     end interface
-
-#if 0
-    ! Not Implemented
-    ! ----------------------------------------
-    ! Function:  const std::string getConstStringAlloc
-    ! Statement: c_function_string
-    interface
-        function c_get_const_string_alloc() &
-                result(SHT_rv) &
-                bind(C, name="STR_getConstStringAlloc")
-            use iso_c_binding, only : C_CHAR
-            implicit none
-            character(kind=C_CHAR) :: SHT_rv(*)
-        end function c_get_const_string_alloc
-    end interface
-#endif
 
     ! ----------------------------------------
     ! Function:  const std::string getConstStringAlloc
@@ -871,6 +822,7 @@ contains
     !>
     !! \brief return an ALLOCATABLE CHARACTER from std::string
     !!
+    !! The language=C wrapper will return a const char *
     !<
     function get_const_string_result() &
             result(SHT_rv)

@@ -49,6 +49,9 @@ void TUT_NoReturnNoArguments(void);
 
 double TUT_PassByValue(double arg1, int arg2);
 
+const char * TUT_ConcatenateStrings(const char *arg1, const char *arg2,
+    TUT_SHROUD_capsule_data *SHT_rv_capsule);
+
 void TUT_ConcatenateStrings_bufferify(char *arg1, int SHT_arg1_len,
     char *arg2, int SHT_arg2_len, TUT_SHROUD_array *SHT_rv_cdesc,
     TUT_SHROUD_capsule_data *SHT_rv_capsule);

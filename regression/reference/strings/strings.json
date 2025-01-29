@@ -130,7 +130,6 @@
             },
             {
                 "<FUNCTION>": "getConstStringResult  1 ****************************************",
-                "C_error_pattern": "C_invalid_name",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -146,7 +145,8 @@
                 "decl": "const string getConstStringResult()",
                 "declgen": "const string getConstStringResult(void)",
                 "doxygen": {
-                    "brief": "return an ALLOCATABLE CHARACTER from std::string"
+                    "brief": "return an ALLOCATABLE CHARACTER from std::string",
+                    "description": "The language=C wrapper will return a const char *\n"
                 },
                 "helpers": {
                     "c": [
@@ -173,35 +173,39 @@
                             "fmtdict": {
                                 "C_call_function": "getConstStringResult(\t)",
                                 "C_name": "STR_getConstStringResult",
-                                "C_prototype": "void",
-                                "C_return_type": "const char",
+                                "C_prototype": "STR_SHROUD_capsule_data *SHT_rv_capsule",
+                                "C_return_type": "const char *",
                                 "c_abstract_decl": "const char",
                                 "c_const": "const ",
                                 "c_get_value": "",
+                                "c_local_cxx": "SHC_rv_cxx",
                                 "c_type": "char",
                                 "c_var": "SHC_rv",
+                                "c_var_capsule": "SHT_rv_capsule",
                                 "cfi_type": "CFI_type_other",
                                 "cxx_abstract_decl": "const std::string",
-                                "cxx_addr": "&",
+                                "cxx_addr": "",
                                 "cxx_member": ".",
-                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHC_rv_cxx)",
                                 "cxx_rv_decl": "const std::string SHCXX_rv",
                                 "cxx_type": "std::string",
-                                "cxx_var": "SHCXX_rv",
+                                "cxx_var": "SHC_rv_cxx",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
                                 "f_type": "character(len=*)",
                                 "f_var": "SHT_rv",
-                                "i_arguments": "",
+                                "i_arguments": "SHT_rv_capsule",
                                 "i_dimension": "(*)",
                                 "i_kind": "C_CHAR",
+                                "i_local_cxx": "SHC_rv_cxx",
                                 "i_module_name": "iso_c_binding",
                                 "i_name_function": "c_get_const_string_result",
                                 "i_result_clause": "\fresult(SHT_rv)",
                                 "i_subprogram": "function",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "SHT_rv",
-                                "idtor": "0",
+                                "i_var_capsule": "SHT_rv_capsule",
+                                "idtor": "1",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt_name": "c_function_string",
                                 "typemap_name": "std::string"
@@ -266,7 +270,7 @@
                                 "i_var": "SHT_rv",
                                 "i_var_capsule": "SHT_rv_capsule",
                                 "i_var_cdesc": "SHT_rv_cdesc",
-                                "idtor": "1",
+                                "idtor": "2",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt_name": "f_function_string_cdesc_allocatable",
                                 "typemap_name": "std::string"
@@ -369,61 +373,14 @@
                     ]
                 },
                 "name": "getConstStringLen",
-                "options": {},
+                "options": {
+                    "wrap_c": false
+                },
                 "wrap": {
-                    "c": true,
                     "fortran": true,
                     "python": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "fmtdict": {
-                                "C_call_function": "getConstStringLen(\t)",
-                                "C_name": "STR_getConstStringLen",
-                                "C_prototype": "void",
-                                "C_return_type": "const char",
-                                "c_abstract_decl": "const char",
-                                "c_char_len": 30,
-                                "c_const": "const ",
-                                "c_get_value": "",
-                                "c_type": "char",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_other",
-                                "cxx_abstract_decl": "const std::string",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
-                                "cxx_rv_decl": "const std::string SHCXX_rv",
-                                "cxx_type": "std::string",
-                                "cxx_var": "SHCXX_rv",
-                                "f_char_len": "len=30",
-                                "f_intent": "OUT",
-                                "f_intent_attr": ", intent(OUT)",
-                                "f_type": "character(len=30)",
-                                "f_var": "SHT_rv",
-                                "i_arguments": "",
-                                "i_dimension": "(*)",
-                                "i_kind": "C_CHAR",
-                                "i_module_name": "iso_c_binding",
-                                "i_name_function": "c_get_const_string_len",
-                                "i_result_clause": "\fresult(SHT_rv)",
-                                "i_subprogram": "function",
-                                "i_type": "character(kind=C_CHAR)",
-                                "i_var": "SHT_rv",
-                                "idtor": "0",
-                                "sh_type": "SH_TYPE_OTHER",
-                                "stmt_name": "c_function_string",
-                                "typemap_name": "std::string"
-                            },
-                            "meta": {
-                                "abstract": "string",
-                                "intent": "function",
-                                "len": 30
-                            },
-                            "stmt": "c_function_string"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "fmtdict": {
@@ -527,9 +484,6 @@
                     "F_name_generic": "get_const_string_len",
                     "F_name_impl": "get_const_string_len",
                     "PY_name_impl": "PY_getConstStringLen",
-                    "c_arglist": [
-                        "SHC_rv"
-                    ],
                     "f_arglist": [
                         "SHT_rv"
                     ],
@@ -573,61 +527,17 @@
                     ]
                 },
                 "name": "getConstStringAsArg",
-                "options": {},
+                "options": {
+                    "wrap_c": false
+                },
                 "user_fmt": {
                     "F_string_result_as_arg": "output"
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true,
                     "python": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "fmtdict": {
-                                "C_call_function": "getConstStringAsArg(\t)",
-                                "C_name": "STR_getConstStringAsArg",
-                                "C_prototype": "void",
-                                "C_return_type": "const char",
-                                "c_abstract_decl": "const char",
-                                "c_const": "const ",
-                                "c_get_value": "",
-                                "c_type": "char",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_other",
-                                "cxx_abstract_decl": "const std::string",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
-                                "cxx_rv_decl": "const std::string SHCXX_rv",
-                                "cxx_type": "std::string",
-                                "cxx_var": "SHCXX_rv",
-                                "f_intent": "OUT",
-                                "f_intent_attr": ", intent(OUT)",
-                                "f_type": "character(len=*)",
-                                "f_var": "SHT_rv",
-                                "i_arguments": "",
-                                "i_dimension": "(*)",
-                                "i_kind": "C_CHAR",
-                                "i_module_name": "iso_c_binding",
-                                "i_name_function": "c_get_const_string_as_arg",
-                                "i_result_clause": "\fresult(SHT_rv)",
-                                "i_subprogram": "function",
-                                "i_type": "character(kind=C_CHAR)",
-                                "i_var": "SHT_rv",
-                                "idtor": "0",
-                                "sh_type": "SH_TYPE_OTHER",
-                                "stmt_name": "c_function_string",
-                                "typemap_name": "std::string"
-                            },
-                            "meta": {
-                                "abstract": "string",
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_string"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "fmtdict": {
@@ -726,9 +636,6 @@
                     "F_name_impl": "get_const_string_as_arg",
                     "F_string_result_as_arg": "output",
                     "PY_name_impl": "PY_getConstStringAsArg",
-                    "c_arglist": [
-                        "SHC_rv"
-                    ],
                     "f_arglist": [
                         "output"
                     ],
@@ -775,58 +682,14 @@
                     ]
                 },
                 "name": "getConstStringAlloc",
-                "options": {},
+                "options": {
+                    "wrap_c": false
+                },
                 "wrap": {
-                    "c": true,
                     "fortran": true,
                     "python": true
                 },
                 "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "fmtdict": {
-                                "C_call_function": "getConstStringAlloc(\t)",
-                                "C_name": "STR_getConstStringAlloc",
-                                "C_prototype": "void",
-                                "C_return_type": "const char",
-                                "c_abstract_decl": "const char",
-                                "c_const": "const ",
-                                "c_get_value": "",
-                                "c_type": "char",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_other",
-                                "cxx_abstract_decl": "const std::string",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
-                                "cxx_rv_decl": "const std::string SHCXX_rv",
-                                "cxx_type": "std::string",
-                                "cxx_var": "SHCXX_rv",
-                                "f_intent": "OUT",
-                                "f_intent_attr": ", intent(OUT)",
-                                "f_type": "character(len=*)",
-                                "f_var": "SHT_rv",
-                                "i_arguments": "",
-                                "i_dimension": "(*)",
-                                "i_kind": "C_CHAR",
-                                "i_module_name": "iso_c_binding",
-                                "i_name_function": "c_get_const_string_alloc",
-                                "i_result_clause": "\fresult(SHT_rv)",
-                                "i_subprogram": "function",
-                                "i_type": "character(kind=C_CHAR)",
-                                "i_var": "SHT_rv",
-                                "idtor": "0",
-                                "sh_type": "SH_TYPE_OTHER",
-                                "stmt_name": "c_function_string",
-                                "typemap_name": "std::string"
-                            },
-                            "meta": {
-                                "abstract": "string",
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_string"
-                        }
-                    },
                     "f": {
                         "+result": {
                             "fmtdict": {
@@ -880,7 +743,7 @@
                                 "i_var": "SHT_rv",
                                 "i_var_capsule": "SHT_rv_capsule",
                                 "i_var_cdesc": "SHT_rv_cdesc",
-                                "idtor": "1",
+                                "idtor": "2",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt_name": "f_function_string_cdesc_allocatable",
                                 "typemap_name": "std::string"
@@ -934,9 +797,6 @@
                     "F_name_generic": "get_const_string_alloc",
                     "F_name_impl": "get_const_string_alloc",
                     "PY_name_impl": "PY_getConstStringAlloc",
-                    "c_arglist": [
-                        "SHC_rv"
-                    ],
                     "f_arglist": [
                         "SHT_rv"
                     ],
@@ -2528,7 +2388,7 @@
                                 "i_subprogram": "function",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "SHT_rv",
-                                "idtor": "2",
+                                "idtor": "1",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt_name": "c_function_string*_caller",
                                 "typemap_name": "std::string"
@@ -2592,7 +2452,7 @@
                                 "i_var": "SHT_rv",
                                 "i_var_capsule": "SHT_rv_capsule",
                                 "i_var_cdesc": "SHT_rv_cdesc",
-                                "idtor": "2",
+                                "idtor": "1",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt_name": "f_function_string*_cdesc_allocatable_caller",
                                 "typemap_name": "std::string"

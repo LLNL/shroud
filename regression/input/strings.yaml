@@ -24,16 +24,23 @@ declarations:
 
 ########################################
 # return std::string
+# These must allocate a std::string in the wrapper to
+# hold the return value.
+# Do not wrap the variants of this test for C.
+# They would all be the same.
 
 - decl: const string getConstStringResult()
-  C_error_pattern: C_invalid_name
   doxygen:
     brief: return an ALLOCATABLE CHARACTER from std::string
+    description: |
+      The language=C wrapper will return a const char *
 
 - decl: const string getConstStringLen() +len=30
   C_error_pattern: C_invalid_name
   doxygen:
     brief: return a 'const string' as argument
+  options:
+    wrap_c: False
 
 - decl: const string getConstStringAsArg()
   C_error_pattern: C_invalid_name
@@ -41,8 +48,12 @@ declarations:
     brief: return a 'const string' as argument
   format:
     F_string_result_as_arg: output
+  options:
+    wrap_c: False
 
 - decl: const std::string getConstStringAlloc()
+  options:
+    wrap_c: False
 
 ########################################
 # return std::string reference

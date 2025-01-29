@@ -67,33 +67,32 @@ void STR_init_test(void)
     // splicer end function.init_test
 }
 
-#if 0
-! Not Implemented
 /**
  * \brief return an ALLOCATABLE CHARACTER from std::string
  *
+ * The language=C wrapper will return a const char *
  */
 // ----------------------------------------
 // Function:  const string getConstStringResult
 // Statement: c_function_string
-const char STR_getConstStringResult(void)
+const char * STR_getConstStringResult(
+    STR_SHROUD_capsule_data *SHT_rv_capsule)
 {
     // splicer begin function.getConstStringResult
-    const std::string SHCXX_rv = getConstStringResult();
-    // C_error_pattern
-    if (SHCXX_rv.empty()) {
-        return NULL;
-    }
-
-    const char SHC_rv = SHCXX_rv.c_str();
+    std::string *SHC_rv_cxx = new std::string;
+    *SHC_rv_cxx = getConstStringResult();
+    const char *SHC_rv = NULL;
+    if (!SHC_rv_cxx->empty()) SHC_rv = SHC_rv_cxx->c_str();
+    SHT_rv_capsule->addr  = const_cast<std::string *>(SHC_rv_cxx);
+    SHT_rv_capsule->idtor = 1;
     return SHC_rv;
     // splicer end function.getConstStringResult
 }
-#endif
 
 /**
  * \brief return an ALLOCATABLE CHARACTER from std::string
  *
+ * The language=C wrapper will return a const char *
  */
 // ----------------------------------------
 // Function:  const string getConstStringResult
@@ -102,9 +101,6 @@ void STR_getConstStringResult_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringResult_CFI
     const std::string SHCXX_rv = getConstStringResult();
-    // C_error_pattern
-    // Some error code for buf
-
     int SH_ret = CFI_allocate(SHT_rv_cfi, (CFI_index_t *) 0, 
         (CFI_index_t *) 0, SHCXX_rv.length());
     if (SH_ret == CFI_SUCCESS) {
@@ -113,30 +109,6 @@ void STR_getConstStringResult_CFI(CFI_cdesc_t *SHT_rv_cfi)
     }
     // splicer end function.getConstStringResult_CFI
 }
-
-#if 0
-! Not Implemented
-/**
- * \brief return a 'const string' as argument
- *
- */
-// ----------------------------------------
-// Function:  const string getConstStringLen +len(30)
-// Statement: c_function_string
-const char STR_getConstStringLen(void)
-{
-    // splicer begin function.getConstStringLen
-    const std::string SHCXX_rv = getConstStringLen();
-    // C_error_pattern
-    if (SHCXX_rv.empty()) {
-        return NULL;
-    }
-
-    const char SHC_rv = SHCXX_rv.c_str();
-    return SHC_rv;
-    // splicer end function.getConstStringLen
-}
-#endif
 
 /**
  * \brief return a 'const string' as argument
@@ -162,30 +134,6 @@ void STR_getConstStringLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
     // splicer end function.getConstStringLen_CFI
 }
 
-#if 0
-! Not Implemented
-/**
- * \brief return a 'const string' as argument
- *
- */
-// ----------------------------------------
-// Function:  const string getConstStringAsArg
-// Statement: c_function_string
-const char STR_getConstStringAsArg(void)
-{
-    // splicer begin function.getConstStringAsArg
-    const std::string SHCXX_rv = getConstStringAsArg();
-    // C_error_pattern
-    if (SHCXX_rv.empty()) {
-        return NULL;
-    }
-
-    const char SHC_rv = SHCXX_rv.c_str();
-    return SHC_rv;
-    // splicer end function.getConstStringAsArg
-}
-#endif
-
 /**
  * \brief return a 'const string' as argument
  *
@@ -209,21 +157,6 @@ void STR_getConstStringAsArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
     }
     // splicer end function.getConstStringAsArg_CFI
 }
-
-#if 0
-! Not Implemented
-// ----------------------------------------
-// Function:  const std::string getConstStringAlloc
-// Statement: c_function_string
-const char STR_getConstStringAlloc(void)
-{
-    // splicer begin function.getConstStringAlloc
-    const std::string SHCXX_rv = getConstStringAlloc();
-    const char SHC_rv = SHCXX_rv.c_str();
-    return SHC_rv;
-    // splicer end function.getConstStringAlloc
-}
-#endif
 
 // ----------------------------------------
 // Function:  const std::string getConstStringAlloc

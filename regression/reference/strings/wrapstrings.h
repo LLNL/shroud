@@ -30,6 +30,9 @@ extern "C" {
 
 void STR_init_test(void);
 
+const char * STR_getConstStringResult(
+    STR_SHROUD_capsule_data *SHT_rv_capsule);
+
 void STR_getConstStringResult_bufferify(STR_SHROUD_array *SHT_rv_cdesc,
     STR_SHROUD_capsule_data *SHT_rv_capsule);
 

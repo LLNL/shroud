@@ -2573,32 +2573,46 @@
     },
     {
         "name": "c_mixin_c-str",
+        "notes": [
+            "Always return a const ptr since c_str is const.",
+            "//{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();",
+            "The Fortran interface returns a type(C_PTR)."
+        ],
+        "c_return_type": "const char *",
         "c_post_call": [
-            "// c_mixin_c-str",
-            "{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();"
+            "const char *{c_var} = NULL;",
+            "if (!{c_local_cxx}->empty()) {c_var} = {c_local_cxx}->c_str();"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        },
+        "i_result_decl": [
+            "type(C_PTR) :: {i_var}"
         ]
     },
     {
         "name": "c_function_string",
-        "notimplemented": true,
         "comments": [
-            "Cannot return a char array by value."
+            "Cannot return a char array by value.",
+            "Return a const pointer to std::string data."
         ],
         "mixin": [
-            "#c_mixin_pass_capsule",
-            "#c_mixin_c-str",
-            "#c_mixin_native_capsule_fill",
-            "##c_mixin_function-assign-to-new"
+            "c_mixin_pass_capsule",
+            "c_mixin_function-assign-to-new",
+            "c_mixin_c-str",
+            "c_mixin_native_capsule_fill"
         ],
-        "i_module": {
+        "#i_module": {
             "iso_c_binding": [
                 "C_CHAR"
             ]
         },
-        "i_result_decl": [
+        "#i_result_decl": [
             "character(kind=C_CHAR) :: {i_var}(*)"
         ],
-        "c_post_call": [
+        "#c_post_call": [
             "{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();"
         ]
     },

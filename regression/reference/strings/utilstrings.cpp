@@ -55,13 +55,13 @@ void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap)
         // Nothing to delete
         break;
     }
-    case 1:   // new_string
+    case 1:   // std::string
     {
         std::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);
         delete cxx_ptr;
         break;
     }
-    case 2:   // std::string
+    case 2:   // new_string
     {
         std::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);
         delete cxx_ptr;

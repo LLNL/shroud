@@ -33,6 +33,9 @@ extern "C" {
 
 void STR_init_test(void);
 
+const char * STR_getConstStringResult(
+    STR_SHROUD_capsule_data *SHT_rv_capsule);
+
 void STR_getConstStringResult_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 void STR_getConstStringLen_CFI(CFI_cdesc_t *SHT_rv_cfi);

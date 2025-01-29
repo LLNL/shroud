@@ -15,9 +15,18 @@
 
 void test_functions(void)
 {
-    const char *aaa = STR_getConstStringPtrLen();
-    assert(strcmp(aaa, "getConstStringPtrLen") == 0 && "getConstStringPtrLen");
-    // XXX - This will leak the std::string return by the C++ function.
+    {
+        STR_SHROUD_capsule_data capsule = {0};
+        const char *rv = STR_getConstStringResult(&capsule);
+        assert(strcmp(rv, "getConstStringResult") == 0 && "getConstStringResult");
+        STR_SHROUD_memory_destructor(&capsule);
+    }
+
+    {
+        const char *rv = STR_getConstStringPtrLen();
+        assert(strcmp(rv, "getConstStringPtrLen") == 0 && "getConstStringPtrLen");
+        // XXX - This will leak the std::string return by the C++ function.
+    }
 }
 
 int main(int argc, char *argv[])

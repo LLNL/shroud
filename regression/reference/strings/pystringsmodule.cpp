@@ -112,6 +112,7 @@ static char PY_getConstStringResult__doc__[] =
 /**
  * \brief return an ALLOCATABLE CHARACTER from std::string
  *
+ * The language=C wrapper will return a const char *
  */
 static PyObject *
 PY_getConstStringResult(
