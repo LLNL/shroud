@@ -259,34 +259,35 @@ module char_mod
     ! end c_get_const_char_ptr_len_bufferify
 
     ! ----------------------------------------
-    ! Function:  const char *getCharPtr3
+    ! Function:  const char *getConstCharPtrAsArg
     ! Statement: c_function_char*
-    ! start c_get_char_ptr3
+    ! start c_get_const_char_ptr_as_arg
     interface
-        function c_get_char_ptr3() &
+        function c_get_const_char_ptr_as_arg() &
                 result(SHT_rv) &
-                bind(C, name="CHA_getCharPtr3")
+                bind(C, name="CHA_getConstCharPtrAsArg")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) :: SHT_rv
-        end function c_get_char_ptr3
+        end function c_get_const_char_ptr_as_arg
     end interface
-    ! end c_get_char_ptr3
+    ! end c_get_const_char_ptr_as_arg
 
     ! ----------------------------------------
-    ! Function:  const char *getCharPtr3
+    ! Function:  const char *getConstCharPtrAsArg
     ! Statement: f_function_char*_buf_arg
-    ! start c_get_char_ptr3_bufferify
+    ! start c_get_const_char_ptr_as_arg_bufferify
     interface
-        subroutine c_get_char_ptr3_bufferify(output, noutput) &
-                bind(C, name="CHA_getCharPtr3_bufferify")
+        subroutine c_get_const_char_ptr_as_arg_bufferify(output, &
+                noutput) &
+                bind(C, name="CHA_getConstCharPtrAsArg_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: output(*)
             integer(C_INT), value, intent(IN) :: noutput
-        end subroutine c_get_char_ptr3_bufferify
+        end subroutine c_get_const_char_ptr_as_arg_bufferify
     end interface
-    ! end c_get_char_ptr3_bufferify
+    ! end c_get_const_char_ptr_as_arg_bufferify
 
     ! ----------------------------------------
     ! Function:  const char *getCharPtr4 +deref(raw)
@@ -737,23 +738,23 @@ contains
     ! end get_const_char_ptr_len
 
     ! ----------------------------------------
-    ! Function:  const char *getCharPtr3
+    ! Function:  const char *getConstCharPtrAsArg
     ! Statement: f_function_char*_buf_arg
     !>
     !! \brief return a 'const char *' as argument
     !!
     !<
-    ! start get_char_ptr3
-    subroutine get_char_ptr3(output)
+    ! start get_const_char_ptr_as_arg
+    subroutine get_const_char_ptr_as_arg(output)
         use iso_c_binding, only : C_INT
         character(len=*), intent(OUT) :: output
-        ! splicer begin function.get_char_ptr3
+        ! splicer begin function.get_const_char_ptr_as_arg
         integer(C_INT) noutput
         noutput = len(output, kind=C_INT)
-        call c_get_char_ptr3_bufferify(output, noutput)
-        ! splicer end function.get_char_ptr3
-    end subroutine get_char_ptr3
-    ! end get_char_ptr3
+        call c_get_const_char_ptr_as_arg_bufferify(output, noutput)
+        ! splicer end function.get_const_char_ptr_as_arg
+    end subroutine get_const_char_ptr_as_arg
+    ! end get_const_char_ptr_as_arg
 
 #if 0
     ! Only the interface is needed

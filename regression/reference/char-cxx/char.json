@@ -1793,11 +1793,11 @@
                 }
             },
             {
-                "<FUNCTION>": "getCharPtr3  8 ****************************************",
+                "<FUNCTION>": "getConstCharPtrAsArg  8 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "name": "getCharPtr3",
+                        "name": "getConstCharPtrAsArg",
                         "params": [],
                         "pointer": [
                             {
@@ -1811,8 +1811,8 @@
                     ],
                     "typemap_name": "char"
                 },
-                "decl": "const char * getCharPtr3()",
-                "declgen": "const char *getCharPtr3(void)",
+                "decl": "const char *getConstCharPtrAsArg()",
+                "declgen": "const char *getConstCharPtrAsArg(void)",
                 "doxygen": {
                     "brief": "return a 'const char *' as argument"
                 },
@@ -1821,7 +1821,7 @@
                         "char_copy"
                     ]
                 },
-                "name": "getCharPtr3",
+                "name": "getConstCharPtrAsArg",
                 "options": {
                     "literalinclude": true
                 },
@@ -1837,8 +1837,8 @@
                     "c": {
                         "+result": {
                             "fmtdict": {
-                                "C_call_function": "getCharPtr3(\t)",
-                                "C_name": "CHA_getCharPtr3",
+                                "C_call_function": "getConstCharPtrAsArg(\t)",
+                                "C_name": "CHA_getConstCharPtrAsArg",
                                 "C_prototype": "void",
                                 "C_return_type": "const char *",
                                 "c_const": "const ",
@@ -1860,7 +1860,7 @@
                                 "i_dimension": "(*)",
                                 "i_kind": "C_CHAR",
                                 "i_module_name": "iso_c_binding",
-                                "i_name_function": "c_get_char_ptr3",
+                                "i_name_function": "c_get_const_char_ptr_as_arg",
                                 "i_result_clause": "\fresult(SHT_rv)",
                                 "i_subprogram": "function",
                                 "i_type": "character(kind=C_CHAR)",
@@ -1880,8 +1880,8 @@
                     "f": {
                         "+result": {
                             "fmtdict": {
-                                "C_call_function": "getCharPtr3(\t)",
-                                "C_name": "CHA_getCharPtr3_bufferify",
+                                "C_call_function": "getConstCharPtrAsArg(\t)",
+                                "C_name": "CHA_getConstCharPtrAsArg_bufferify",
                                 "C_prototype": "char *output,\t int noutput",
                                 "C_return_type": "void",
                                 "F_arg_c_call": "output,\t noutput",
@@ -1900,7 +1900,7 @@
                                 "cxx_rv_decl": "const char *SHC_rv",
                                 "cxx_type": "char",
                                 "cxx_var": "SHC_rv_cxx",
-                                "f_call_function": "c_get_char_ptr3_bufferify",
+                                "f_call_function": "c_get_const_char_ptr_as_arg_bufferify",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
                                 "f_type": "character(len=*)",
@@ -1912,7 +1912,7 @@
                                 "i_kind": "C_CHAR",
                                 "i_local_cxx": "SHC_rv_cxx",
                                 "i_module_name": "iso_c_binding",
-                                "i_name_function": "c_get_char_ptr3_bufferify",
+                                "i_name_function": "c_get_const_char_ptr_as_arg_bufferify",
                                 "i_subprogram": "subroutine",
                                 "i_suffix": "_bufferify",
                                 "i_type": "character(kind=C_CHAR)",
@@ -1967,24 +1967,24 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name_api": "getCharPtr3",
-                    "F_name_api": "get_char_ptr3",
-                    "F_name_function": "get_char_ptr3",
-                    "F_name_generic": "get_char_ptr3",
-                    "F_name_impl": "get_char_ptr3",
+                    "C_name_api": "getConstCharPtrAsArg",
+                    "F_name_api": "get_const_char_ptr_as_arg",
+                    "F_name_function": "get_const_char_ptr_as_arg",
+                    "F_name_generic": "get_const_char_ptr_as_arg",
+                    "F_name_impl": "get_const_char_ptr_as_arg",
                     "F_string_result_as_arg": "output",
-                    "PY_name_impl": "PY_getCharPtr3",
+                    "PY_name_impl": "PY_getConstCharPtrAsArg",
                     "c_arglist": [
                         "SHC_rv"
                     ],
                     "f_arglist": [
                         "output"
                     ],
-                    "function_name": "getCharPtr3"
+                    "function_name": "getConstCharPtrAsArg"
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_call_function": "getCharPtr3()",
+                        "C_call_function": "getConstCharPtrAsArg()",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",

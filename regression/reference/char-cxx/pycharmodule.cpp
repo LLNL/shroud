@@ -262,9 +262,9 @@ PY_getConstCharPtrLen(
 }
 
 // ----------------------------------------
-// Function:  const char *getCharPtr3
+// Function:  const char *getConstCharPtrAsArg
 // Statement: py_function_char*
-static char PY_getCharPtr3__doc__[] =
+static char PY_getConstCharPtrAsArg__doc__[] =
 "documentation"
 ;
 
@@ -273,21 +273,21 @@ static char PY_getCharPtr3__doc__[] =
  *
  */
 static PyObject *
-PY_getCharPtr3(
+PY_getConstCharPtrAsArg(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.getCharPtr3
+// splicer begin function.getConstCharPtrAsArg
     PyObject * SHTPy_rv = nullptr;
 
-    const char *SHCXX_rv = getCharPtr3();
+    const char *SHCXX_rv = getConstCharPtrAsArg();
 
     // post_call
     SHTPy_rv = PyString_FromString(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.getCharPtr3
+// splicer end function.getConstCharPtrAsArg
 }
 
 // ----------------------------------------
@@ -399,8 +399,8 @@ static PyMethodDef PY_methods[] = {
     PY_getCharPtr1__doc__},
 {"getConstCharPtrLen", (PyCFunction)PY_getConstCharPtrLen, METH_NOARGS,
     PY_getConstCharPtrLen__doc__},
-{"getCharPtr3", (PyCFunction)PY_getCharPtr3, METH_NOARGS,
-    PY_getCharPtr3__doc__},
+{"getConstCharPtrAsArg", (PyCFunction)PY_getConstCharPtrAsArg,
+    METH_NOARGS, PY_getConstCharPtrAsArg__doc__},
 {"explicit1", (PyCFunction)PY_explicit1, METH_VARARGS|METH_KEYWORDS,
     PY_explicit1__doc__},
 {"CpassChar", (PyCFunction)PY_CpassChar, METH_VARARGS|METH_KEYWORDS,

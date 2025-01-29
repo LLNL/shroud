@@ -317,34 +317,34 @@ void CHA_getConstCharPtrLen_bufferify(char *SHC_rv, int SHT_rv_len)
  *
  */
 // ----------------------------------------
-// Function:  const char *getCharPtr3
+// Function:  const char *getConstCharPtrAsArg
 // Statement: c_function_char*
-// start CHA_getCharPtr3
-const char * CHA_getCharPtr3(void)
+// start CHA_getConstCharPtrAsArg
+const char * CHA_getConstCharPtrAsArg(void)
 {
-    // splicer begin function.getCharPtr3
-    const char *SHC_rv = getCharPtr3();
+    // splicer begin function.getConstCharPtrAsArg
+    const char *SHC_rv = getConstCharPtrAsArg();
     return SHC_rv;
-    // splicer end function.getCharPtr3
+    // splicer end function.getConstCharPtrAsArg
 }
-// end CHA_getCharPtr3
+// end CHA_getConstCharPtrAsArg
 
 /**
  * \brief return a 'const char *' as argument
  *
  */
 // ----------------------------------------
-// Function:  const char *getCharPtr3
+// Function:  const char *getConstCharPtrAsArg
 // Statement: f_function_char*_buf_arg
-// start CHA_getCharPtr3_bufferify
-void CHA_getCharPtr3_bufferify(char *output, int noutput)
+// start CHA_getConstCharPtrAsArg_bufferify
+void CHA_getConstCharPtrAsArg_bufferify(char *output, int noutput)
 {
-    // splicer begin function.getCharPtr3_bufferify
-    const char *SHC_rv_cxx = getCharPtr3();
+    // splicer begin function.getConstCharPtrAsArg_bufferify
+    const char *SHC_rv_cxx = getConstCharPtrAsArg();
     ShroudCharCopy(output, noutput, SHC_rv_cxx, -1);
-    // splicer end function.getCharPtr3_bufferify
+    // splicer end function.getConstCharPtrAsArg_bufferify
 }
-// end CHA_getCharPtr3_bufferify
+// end CHA_getConstCharPtrAsArg_bufferify
 
 /**
  * \brief return a 'const char *' as type(C_PTR)

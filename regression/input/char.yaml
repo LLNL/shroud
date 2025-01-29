@@ -80,8 +80,7 @@ declarations:
   options:
     literalinclude: True
 
-- decl: const char * getCharPtr3()
-#  C_error_pattern: C_char_invalid_name
+- decl: const char *getConstCharPtrAsArg()
   doxygen:
     brief: return a 'const char *' as argument
   options:

@@ -121,8 +121,8 @@ contains
 
     ! string_result_as_arg
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    call get_char_ptr3(str)
-    call assert_true( str == "bird", "get_char_ptr3")
+    call get_const_char_ptr_as_arg(str)
+    call assert_true( str == "bird", "getConstCharPtrAsArg")
 
     strptr = get_char_ptr4()
     call c_f_pointer(strptr, raw_str, [4])

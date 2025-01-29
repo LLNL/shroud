@@ -53,9 +53,9 @@ const char * CHA_getConstCharPtrLen(void);
 
 void CHA_getConstCharPtrLen_bufferify(char *SHC_rv, int SHT_rv_len);
 
-const char * CHA_getCharPtr3(void);
+const char * CHA_getConstCharPtrAsArg(void);
 
-void CHA_getCharPtr3_bufferify(char *output, int noutput);
+void CHA_getConstCharPtrAsArg_bufferify(char *output, int noutput);
 
 const char * CHA_getCharPtr4(void);
 

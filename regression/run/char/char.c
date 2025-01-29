@@ -75,12 +75,12 @@ const char *getConstCharPtrLen(void)
 }
 // end getConstCharPtrLen
 
-// start getCharPtr3
-const char * getCharPtr3(void)
+// start getConstCharPtrAsArg
+const char *getConstCharPtrAsArg(void)
 {
     return static_char;
 }
-// end getCharPtr3
+// end getConstCharPtrAsArg
 
 // +deref(raw)
 // start getCharPtr4

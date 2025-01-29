@@ -22,7 +22,7 @@ void passCharPtrInOut(char * s);
 
 const char *getCharPtr1(void);
 const char *getConstCharPtrLen(void);
-const char *getCharPtr3(void);
+const char *getConstCharPtrAsArg(void);
 const char *getCharPtr4(void);
 const char *getCharPtr5(void);
 
