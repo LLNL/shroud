@@ -2987,8 +2987,8 @@ c_mixin_arg-call-cvar-address:
   c_arg_call:
   - '&{cxx_var}'
   owner: library
-c_mixin_arg-call-cvar-value:
-  name: c_mixin_arg-call-cvar-value
+c_mixin_arg-call-cvar-deref:
+  name: c_mixin_arg-call-cvar-deref
   comments:
   - Pass dereference of cxx variable to library.
   intent: mixin
@@ -3011,8 +3011,8 @@ c_mixin_arg-call-cxx-address:
   c_arg_call:
   - '&{c_local_cxx}'
   owner: library
-c_mixin_arg-call-cxx-value:
-  name: c_mixin_arg-call-cxx-value
+c_mixin_arg-call-cxx-deref:
+  name: c_mixin_arg-call-cxx-deref
   comments:
   - Pass dereference of local cxx variable to library.
   intent: mixin
@@ -16070,10 +16070,10 @@ root
           cfi -- c_mixin_arg_native_cfi
       arg-call-cvar -- c_mixin_arg-call-cvar
       arg-call-cvar-address -- c_mixin_arg-call-cvar-address
-      arg-call-cvar-value -- c_mixin_arg-call-cvar-value
+      arg-call-cvar-deref -- c_mixin_arg-call-cvar-deref
       arg-call-cxx -- c_mixin_arg-call-cxx
       arg-call-cxx-address -- c_mixin_arg-call-cxx-address
-      arg-call-cxx-value -- c_mixin_arg-call-cxx-value
+      arg-call-cxx-deref -- c_mixin_arg-call-cxx-deref
       c-str -- c_mixin_c-str
       cast-argument -- c_mixin_cast-argument
       char-copy-to-arg -- c_mixin_char-copy-to-arg

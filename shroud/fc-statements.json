@@ -90,7 +90,7 @@
         ]
     },
     {
-        "name": "c_mixin_arg-call-cvar-value",
+        "name": "c_mixin_arg-call-cvar-deref",
         "comments": [
             "Pass dereference of cxx variable to library."
         ],
@@ -117,7 +117,7 @@
         ]
     },
     {
-        "name": "c_mixin_arg-call-cxx-value",
+        "name": "c_mixin_arg-call-cxx-deref",
         "comments": [
             "Pass dereference of local cxx variable to library."
         ],
@@ -1323,7 +1323,7 @@
         ],
         "mixin": [
             "c_mixin_declare-arg",
-            "c_mixin_arg-call-cvar-value",
+            "c_mixin_arg-call-cvar-deref",
             "f_mixin_declare-interface-arg",
             "f_mixin_declare-fortran-arg"
         ]
@@ -1368,7 +1368,7 @@
         ],
         "mixin": [
             "c_mixin_declare-arg",
-            "c_mixin_arg-call-cvar-value",
+            "c_mixin_arg-call-cvar-deref",
             "f_mixin_interface-as-cptr",
             "f_mixin_declare-fortran-arg"
         ]
@@ -3260,7 +3260,7 @@
         "name": "f_inout_vector<native>&_cdesc_allocatable",
         "mixin": [
             "c_mixin_inout_vector<native>_cdesc",
-            "c_mixin_arg-call-cxx-value"
+            "c_mixin_arg-call-cxx-deref"
         ],
         "append": {
             "f_module": {
@@ -3334,7 +3334,7 @@
         "notimplemented": true,
         "mixin": [
             "c_mixin_declare-arg",
-            "c_mixin_arg-call-cvar-value"
+            "c_mixin_arg-call-cvar-deref"
         ],
         "i_arg_names": [
             "{i_var}"
@@ -3498,14 +3498,14 @@
             "f_mixin_out_array_cdesc_allocatable",
             "f_mixin_helper_vector_string_allocatable",
             "f_mixin_capsule_dtor",
-            "c_mixin_arg-call-cxx-value"
+            "c_mixin_arg-call-cxx-deref"
         ]
     },
     {
         "name": "f_inout_vector<native>&_cdesc",
         "mixin": [
             "c_mixin_inout_vector<native>_cdesc",
-            "c_mixin_arg-call-cxx-value"
+            "c_mixin_arg-call-cxx-deref"
         ],
         "append": {
             "f_module": {
@@ -3557,7 +3557,7 @@
         "mixin": [
             "f_mixin_pass_cdesc",
             "c_mixin_out_vector<native>_cdesc",
-            "c_mixin_arg-call-cxx-value"
+            "c_mixin_arg-call-cxx-deref"
         ],
         "f_helper": [
             "copy_array"
@@ -3632,7 +3632,7 @@
         "mixin": [
             "f_mixin_shadow-arg",
             "c_mixin_shadow",
-            "c_mixin_arg-call-cxx-value"
+            "c_mixin_arg-call-cxx-deref"
         ],
         "c_arg_decl": [
             "{c_type} {c_var}"
@@ -3718,7 +3718,7 @@
         "mixin": [
             "f_mixin_shadow-arg",
             "c_mixin_shadow",
-            "c_mixin_arg-call-cxx-value"
+            "c_mixin_arg-call-cxx-deref"
         ],
         "c_local": [
             "cxx"
@@ -3993,7 +3993,7 @@
         ],
         "mixin": [
             "c_mixin_declare-arg",
-            "c_mixin_arg-call-cvar-value",
+            "c_mixin_arg-call-cvar-deref",
             "f_mixin_declare-interface-arg",
             "f_mixin_declare-fortran-arg"
         ]
