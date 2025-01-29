@@ -68,14 +68,13 @@ declarations:
 # char * function
 
 - decl: const char * getCharPtr1()
-#  C_error_pattern: C_invalid_name
   doxygen:
-    brief: return a 'const char *' as character(*)
+    description: |
+      Return an ALLOCATABLE CHARACTER from char *.
   options:
     literalinclude: True
 
-- decl: const char * getCharPtr2() +len(30)
-#  C_error_pattern: C_char_invalid_name
+- decl: const char *getConstCharPtrLen() +len(30)
   doxygen:
     brief: return 'const char *' with fixed size (len=30)
   options:

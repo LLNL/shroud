@@ -31,8 +31,8 @@ declarations:
 
 - decl: const string getConstStringResult()
   doxygen:
-    brief: return an ALLOCATABLE CHARACTER from std::string
     description: |
+      Return an ALLOCATABLE CHARACTER from std::string.
       The language=C wrapper will return a const char *
 
 - decl: const string getConstStringLen() +len=30

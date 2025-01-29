@@ -266,12 +266,12 @@ wrapped differently.
     automatically by the Fortran runtime.
     See example :ref:`getCharPtr1 <example_getCharPtr1>`.
 
-``char *getCharPtr2``
+``char *getConstCharPtrLen``
     Create a Fortran function which returns a predefined ``CHARACTER`` 
     value.  The size is determined by the *len* argument on the function.
     This is useful when the maximum size is already known.
     Works with Fortran 90.
-    See example :ref:`getCharPtr2 <example_getCharPtr2>`.
+    See example :ref:`getConstCharPtrLen <example_getConstCharPtrLen>`.
 
 ``char *getCharPtr3``
     Create a Fortran subroutine with an additional ``CHARACTER``

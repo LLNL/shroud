@@ -116,8 +116,8 @@ contains
 
     ! character(30) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_char_ptr2()
-    call assert_true( str == "bird", "get_char_ptr2")
+    str = get_const_char_ptr_len()
+    call assert_true( str == "bird", "getConstCharPtrLen")
 
     ! string_result_as_arg
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'

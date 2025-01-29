@@ -243,8 +243,7 @@ void CHA_passCharPtrInOut_bufferify(char *s, int SHT_s_len)
 }
 
 /**
- * \brief return a 'const char *' as character(*)
- *
+ * Return an ALLOCATABLE CHARACTER from char *.
  */
 // ----------------------------------------
 // Function:  const char *getCharPtr1
@@ -260,8 +259,7 @@ const char * CHA_getCharPtr1(void)
 // end CHA_getCharPtr1
 
 /**
- * \brief return a 'const char *' as character(*)
- *
+ * Return an ALLOCATABLE CHARACTER from char *.
  */
 // ----------------------------------------
 // Function:  const char *getCharPtr1
@@ -285,34 +283,34 @@ void CHA_getCharPtr1_bufferify(CHA_SHROUD_array *SHT_rv_cdesc)
  *
  */
 // ----------------------------------------
-// Function:  const char *getCharPtr2 +len(30)
+// Function:  const char *getConstCharPtrLen +len(30)
 // Statement: c_function_char*
-// start CHA_getCharPtr2
-const char * CHA_getCharPtr2(void)
+// start CHA_getConstCharPtrLen
+const char * CHA_getConstCharPtrLen(void)
 {
-    // splicer begin function.getCharPtr2
-    const char *SHC_rv = getCharPtr2();
+    // splicer begin function.getConstCharPtrLen
+    const char *SHC_rv = getConstCharPtrLen();
     return SHC_rv;
-    // splicer end function.getCharPtr2
+    // splicer end function.getConstCharPtrLen
 }
-// end CHA_getCharPtr2
+// end CHA_getConstCharPtrLen
 
 /**
  * \brief return 'const char *' with fixed size (len=30)
  *
  */
 // ----------------------------------------
-// Function:  const char *getCharPtr2 +len(30)
+// Function:  const char *getConstCharPtrLen +len(30)
 // Statement: f_function_char*_buf_copy
-// start CHA_getCharPtr2_bufferify
-void CHA_getCharPtr2_bufferify(char *SHC_rv, int SHT_rv_len)
+// start CHA_getConstCharPtrLen_bufferify
+void CHA_getConstCharPtrLen_bufferify(char *SHC_rv, int SHT_rv_len)
 {
-    // splicer begin function.getCharPtr2_bufferify
-    const char *SHC_rv_cxx = getCharPtr2();
+    // splicer begin function.getConstCharPtrLen_bufferify
+    const char *SHC_rv_cxx = getConstCharPtrLen();
     ShroudCharCopy(SHC_rv, SHT_rv_len, SHC_rv_cxx, -1);
-    // splicer end function.getCharPtr2_bufferify
+    // splicer end function.getConstCharPtrLen_bufferify
 }
-// end CHA_getCharPtr2_bufferify
+// end CHA_getConstCharPtrLen_bufferify
 
 /**
  * \brief return a 'const char *' as argument

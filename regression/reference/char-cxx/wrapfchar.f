@@ -228,34 +228,35 @@ module char_mod
     ! end c_get_char_ptr1_bufferify
 
     ! ----------------------------------------
-    ! Function:  const char *getCharPtr2 +len(30)
+    ! Function:  const char *getConstCharPtrLen +len(30)
     ! Statement: c_function_char*
-    ! start c_get_char_ptr2
+    ! start c_get_const_char_ptr_len
     interface
-        function c_get_char_ptr2() &
+        function c_get_const_char_ptr_len() &
                 result(SHT_rv) &
-                bind(C, name="CHA_getCharPtr2")
+                bind(C, name="CHA_getConstCharPtrLen")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) :: SHT_rv
-        end function c_get_char_ptr2
+        end function c_get_const_char_ptr_len
     end interface
-    ! end c_get_char_ptr2
+    ! end c_get_const_char_ptr_len
 
     ! ----------------------------------------
-    ! Function:  const char *getCharPtr2 +len(30)
+    ! Function:  const char *getConstCharPtrLen +len(30)
     ! Statement: f_function_char*_buf_copy
-    ! start c_get_char_ptr2_bufferify
+    ! start c_get_const_char_ptr_len_bufferify
     interface
-        subroutine c_get_char_ptr2_bufferify(SHT_rv, SHT_rv_len) &
-                bind(C, name="CHA_getCharPtr2_bufferify")
+        subroutine c_get_const_char_ptr_len_bufferify(SHT_rv, &
+                SHT_rv_len) &
+                bind(C, name="CHA_getConstCharPtrLen_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
             integer(C_INT), value, intent(IN) :: SHT_rv_len
-        end subroutine c_get_char_ptr2_bufferify
+        end subroutine c_get_const_char_ptr_len_bufferify
     end interface
-    ! end c_get_char_ptr2_bufferify
+    ! end c_get_const_char_ptr_len_bufferify
 
     ! ----------------------------------------
     ! Function:  const char *getCharPtr3
@@ -699,8 +700,7 @@ contains
     ! Function:  const char *getCharPtr1
     ! Statement: f_function_char*_cdesc_allocatable
     !>
-    !! \brief return a 'const char *' as character(*)
-    !!
+    !! Return an ALLOCATABLE CHARACTER from char *.
     !<
     ! start get_char_ptr1
     function get_char_ptr1() &
@@ -717,24 +717,24 @@ contains
     ! end get_char_ptr1
 
     ! ----------------------------------------
-    ! Function:  const char *getCharPtr2 +len(30)
+    ! Function:  const char *getConstCharPtrLen +len(30)
     ! Statement: f_function_char*_buf_copy
     !>
     !! \brief return 'const char *' with fixed size (len=30)
     !!
     !<
-    ! start get_char_ptr2
-    function get_char_ptr2() &
+    ! start get_const_char_ptr_len
+    function get_const_char_ptr_len() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         character(len=30) :: SHT_rv
-        ! splicer begin function.get_char_ptr2
+        ! splicer begin function.get_const_char_ptr_len
         integer(C_INT) SHT_rv_len
         SHT_rv_len = len(SHT_rv, kind=C_INT)
-        call c_get_char_ptr2_bufferify(SHT_rv, SHT_rv_len)
-        ! splicer end function.get_char_ptr2
-    end function get_char_ptr2
-    ! end get_char_ptr2
+        call c_get_const_char_ptr_len_bufferify(SHT_rv, SHT_rv_len)
+        ! splicer end function.get_const_char_ptr_len
+    end function get_const_char_ptr_len
+    ! end get_const_char_ptr_len
 
     ! ----------------------------------------
     ! Function:  const char *getCharPtr3

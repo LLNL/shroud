@@ -20,11 +20,11 @@ char returnChar();
 void passCharPtr(char * dest, const char *src);
 void passCharPtrInOut(char * s);
 
-const char * getCharPtr1();
-const char * getCharPtr2();
-const char * getCharPtr3();
-const char * getCharPtr4();
-const char * getCharPtr5();
+const char *getCharPtr1(void);
+const char *getConstCharPtrLen(void);
+const char *getCharPtr3(void);
+const char *getCharPtr4(void);
+const char *getCharPtr5(void);
 
 char returnMany(int * arg1);
 

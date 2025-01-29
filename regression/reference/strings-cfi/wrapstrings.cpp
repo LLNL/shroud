@@ -68,8 +68,7 @@ void STR_init_test(void)
 }
 
 /**
- * \brief return an ALLOCATABLE CHARACTER from std::string
- *
+ * Return an ALLOCATABLE CHARACTER from std::string.
  * The language=C wrapper will return a const char *
  */
 // ----------------------------------------
@@ -90,8 +89,7 @@ const char * STR_getConstStringResult(
 }
 
 /**
- * \brief return an ALLOCATABLE CHARACTER from std::string
- *
+ * Return an ALLOCATABLE CHARACTER from std::string.
  * The language=C wrapper will return a const char *
  */
 // ----------------------------------------

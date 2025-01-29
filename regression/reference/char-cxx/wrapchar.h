@@ -49,9 +49,9 @@ const char * CHA_getCharPtr1(void);
 
 void CHA_getCharPtr1_bufferify(CHA_SHROUD_array *SHT_rv_cdesc);
 
-const char * CHA_getCharPtr2(void);
+const char * CHA_getConstCharPtrLen(void);
 
-void CHA_getCharPtr2_bufferify(char *SHC_rv, int SHT_rv_len);
+void CHA_getConstCharPtrLen_bufferify(char *SHC_rv, int SHT_rv_len);
 
 const char * CHA_getCharPtr3(void);
 

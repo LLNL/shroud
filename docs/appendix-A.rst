@@ -1306,10 +1306,10 @@ Fortran usage:
 
 .. ############################################################
 
-.. _example_getCharPtr2:
+.. _example_getConstCharPtrLen:
 
-getCharPtr2
-^^^^^^^^^^^
+getConstCharPtrLen
+^^^^^^^^^^^^^^^^^^
 
 If you know the maximum size of string that you expect the function to
 return, then the *len* attribute is used to declare the length.  The
@@ -1320,36 +1320,36 @@ C++ library function in :file:`char.c`:
 
 .. literalinclude:: ../regression/run/char/char.c
    :language: c
-   :start-after: start getCharPtr2
-   :end-before: end getCharPtr2
+   :start-after: start getConstCharPtrLen
+   :end-before: end getConstCharPtrLen
 
 :file:`strings.yaml`:
 
 .. code-block:: yaml
 
-    - decl: const char * getCharPtr2() +len(30)
+    - decl: const char *getConstCharPtrLen() +len(30)
 
 The C wrapper:
 
 .. literalinclude:: ../regression/reference/char-cxx/wrapchar.cpp
    :language: c
-   :start-after: start CHA_getCharPtr2_bufferify
-   :end-before: end CHA_getCharPtr2_bufferify
+   :start-after: start CHA_getConstCharPtrLen_bufferify
+   :end-before: end CHA_getConstCharPtrLen_bufferify
 
 Fortran calls C via the following interface:
 
 .. literalinclude:: ../regression/reference/char-cxx/wrapfchar.f
    :language: fortran
-   :start-after: start c_get_char_ptr2_bufferify
-   :end-before: end c_get_char_ptr2_bufferify
+   :start-after: start c_get_const_char_ptr_len_bufferify
+   :end-before: end c_get_const_char_ptr_len_bufferify
    :dedent: 4
 
 The Fortran wrapper:
 
 .. literalinclude:: ../regression/reference/char-cxx/wrapfchar.f
    :language: fortran
-   :start-after: start get_char_ptr2
-   :end-before: end get_char_ptr2
+   :start-after: start get_const_char_ptr_len
+   :end-before: end get_const_char_ptr_len
    :dedent: 4
 
 Fortran usage:

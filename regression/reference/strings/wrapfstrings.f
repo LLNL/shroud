@@ -981,8 +981,7 @@ contains
     ! Function:  const string getConstStringResult
     ! Statement: f_function_string_cdesc_allocatable
     !>
-    !! \brief return an ALLOCATABLE CHARACTER from std::string
-    !!
+    !! Return an ALLOCATABLE CHARACTER from std::string.
     !! The language=C wrapper will return a const char *
     !<
     function get_const_string_result() &

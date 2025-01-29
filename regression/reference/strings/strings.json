@@ -145,8 +145,7 @@
                 "decl": "const string getConstStringResult()",
                 "declgen": "const string getConstStringResult(void)",
                 "doxygen": {
-                    "brief": "return an ALLOCATABLE CHARACTER from std::string",
-                    "description": "The language=C wrapper will return a const char *\n"
+                    "description": "Return an ALLOCATABLE CHARACTER from std::string.\nThe language=C wrapper will return a const char *\n"
                 },
                 "helpers": {
                     "c": [

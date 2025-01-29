@@ -1397,7 +1397,7 @@
                 "decl": "const char * getCharPtr1()",
                 "declgen": "const char *getCharPtr1(void)",
                 "doxygen": {
-                    "brief": "return a 'const char *' as character(*)"
+                    "description": "Return an ALLOCATABLE CHARACTER from char *.\n"
                 },
                 "helpers": {
                     "c": [
@@ -1583,14 +1583,14 @@
                 }
             },
             {
-                "<FUNCTION>": "getCharPtr2  7 ****************************************",
+                "<FUNCTION>": "getConstCharPtrLen  7 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
                         "attrs": {
                             "len": "30"
                         },
-                        "name": "getCharPtr2",
+                        "name": "getConstCharPtrLen",
                         "params": [],
                         "pointer": [
                             {
@@ -1604,8 +1604,8 @@
                     ],
                     "typemap_name": "char"
                 },
-                "decl": "const char * getCharPtr2() +len(30)",
-                "declgen": "const char *getCharPtr2(void) +len(30)",
+                "decl": "const char *getConstCharPtrLen() +len(30)",
+                "declgen": "const char *getConstCharPtrLen(void) +len(30)",
                 "doxygen": {
                     "brief": "return 'const char *' with fixed size (len=30)"
                 },
@@ -1614,7 +1614,7 @@
                         "char_copy"
                     ]
                 },
-                "name": "getCharPtr2",
+                "name": "getConstCharPtrLen",
                 "options": {
                     "literalinclude": true
                 },
@@ -1627,8 +1627,8 @@
                     "c": {
                         "+result": {
                             "fmtdict": {
-                                "C_call_function": "getCharPtr2(\t)",
-                                "C_name": "CHA_getCharPtr2",
+                                "C_call_function": "getConstCharPtrLen(\t)",
+                                "C_name": "CHA_getConstCharPtrLen",
                                 "C_prototype": "void",
                                 "C_return_type": "const char *",
                                 "c_char_len": "30",
@@ -1652,7 +1652,7 @@
                                 "i_dimension": "(*)",
                                 "i_kind": "C_CHAR",
                                 "i_module_name": "iso_c_binding",
-                                "i_name_function": "c_get_char_ptr2",
+                                "i_name_function": "c_get_const_char_ptr_len",
                                 "i_result_clause": "\fresult(SHT_rv)",
                                 "i_subprogram": "function",
                                 "i_type": "character(kind=C_CHAR)",
@@ -1673,8 +1673,8 @@
                     "f": {
                         "+result": {
                             "fmtdict": {
-                                "C_call_function": "getCharPtr2(\t)",
-                                "C_name": "CHA_getCharPtr2_bufferify",
+                                "C_call_function": "getConstCharPtrLen(\t)",
+                                "C_name": "CHA_getConstCharPtrLen_bufferify",
                                 "C_prototype": "char *SHC_rv,\t int SHT_rv_len",
                                 "C_return_type": "void",
                                 "F_arg_c_call": "SHT_rv,\t SHT_rv_len",
@@ -1694,7 +1694,7 @@
                                 "cxx_rv_decl": "const char *SHC_rv",
                                 "cxx_type": "char",
                                 "cxx_var": "SHC_rv_cxx",
-                                "f_call_function": "c_get_char_ptr2_bufferify",
+                                "f_call_function": "c_get_const_char_ptr_len_bufferify",
                                 "f_char_len": "len=30",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
@@ -1708,7 +1708,7 @@
                                 "i_kind": "C_CHAR",
                                 "i_local_cxx": "SHC_rv_cxx",
                                 "i_module_name": "iso_c_binding",
-                                "i_name_function": "c_get_char_ptr2_bufferify",
+                                "i_name_function": "c_get_const_char_ptr_len_bufferify",
                                 "i_subprogram": "subroutine",
                                 "i_suffix": "_bufferify",
                                 "i_type": "character(kind=C_CHAR)",
@@ -1766,23 +1766,23 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name_api": "getCharPtr2",
-                    "F_name_api": "get_char_ptr2",
-                    "F_name_function": "get_char_ptr2",
-                    "F_name_generic": "get_char_ptr2",
-                    "F_name_impl": "get_char_ptr2",
-                    "PY_name_impl": "PY_getCharPtr2",
+                    "C_name_api": "getConstCharPtrLen",
+                    "F_name_api": "get_const_char_ptr_len",
+                    "F_name_function": "get_const_char_ptr_len",
+                    "F_name_generic": "get_const_char_ptr_len",
+                    "F_name_impl": "get_const_char_ptr_len",
+                    "PY_name_impl": "PY_getConstCharPtrLen",
                     "c_arglist": [
                         "SHC_rv"
                     ],
                     "f_arglist": [
                         "SHT_rv"
                     ],
-                    "function_name": "getCharPtr2"
+                    "function_name": "getConstCharPtrLen"
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_call_function": "getCharPtr2()",
+                        "C_call_function": "getConstCharPtrLen()",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
