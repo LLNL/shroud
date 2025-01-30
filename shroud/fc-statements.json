@@ -1046,8 +1046,10 @@
     {
         "name": "f_mixin_inout_array_cdesc",
         "comments": [
-            "Pass argument and size to C.",
-            "Pass array_type to C which will fill it in."
+            "Declare local Fortran array_type argument."
+        ],
+        "notes": [
+            "Paried with c_mixin_inout_vector_cdesc"
         ],
         "f_helper": [
             "array_context"
@@ -1072,8 +1074,10 @@
     {
         "name": "c_mixin_inout_vector_cdesc",
         "comments": [
-            "Pass argument and size to C.",
-            "Pass array_type to C which will fill it in."
+            "Accept array_type in C wrapper."
+        ],
+        "notes": [
+            "Paried with f_mixin_inout_vector_cdesc"
         ],
         "c_helper": [
             "array_context"
