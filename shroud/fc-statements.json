@@ -4902,14 +4902,11 @@
     },
     {
         "name": "f_mixin_out_string**_cfi",
-        "c_temps": [
+        "c_local": [
             "cxx"
         ],
         "c_pre_call": [
-            "std::string *{c_var_cxx};"
-        ],
-        "c_arg_call": [
-            "&{c_var_cxx}"
+            "std::string *{c_local_cxx};"
         ]
     },
     {
@@ -4921,7 +4918,8 @@
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "c_mixin_arg_cfi",
-            "f_mixin_out_string**_cfi"
+            "f_mixin_out_string**_cfi",
+            "c_mixin_arg-call-cxx-address"
         ],
         "i_arg_names": [
             "{i_var}"
@@ -4938,7 +4936,8 @@
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "c_mixin_arg_cfi",
-            "f_mixin_out_string**_cfi"
+            "f_mixin_out_string**_cfi",
+            "c_mixin_arg-call-cxx-address"
         ],
         "i_arg_names": [
             "{i_var}"

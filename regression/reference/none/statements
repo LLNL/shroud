@@ -12810,11 +12810,9 @@ f_mixin_out_native_cdesc_pointer:
 f_mixin_out_string**_cfi:
   name: f_mixin_out_string**_cfi
   intent: mixin
-  c_arg_call:
-  - '&{c_var_cxx}'
   c_pre_call:
-  - std::string *{c_var_cxx};
-  c_temps:
+  - std::string *{c_local_cxx};
+  c_local:
   - cxx
   owner: library
 f_mixin_out_vector<native>_copy:
@@ -14202,6 +14200,7 @@ f_out_string**_cfi_allocatable:
   name: f_out_string**_cfi_allocatable
   comments:
   - Make the C wrapper argument a CFI_desc_t.
+  - Pass address of local cxx variable to library.
   notes:
   - std::string **strs +intent(out)+dimension(nstrs)+deref(allocatable),
   - int *nstrs+intent(out)+hidden
@@ -14220,13 +14219,14 @@ f_out_string**_cfi_allocatable:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_arg_call:
-  - '&{c_var_cxx}'
+  - '&{c_local_cxx}'
   c_pre_call:
-  - std::string *{c_var_cxx};
+  - std::string *{c_local_cxx};
   c_post_call:
   - // Allocate and copy into {c_var}
   c_temps:
   - cfi
+  c_local:
   - cxx
   iface_header:
   - ISO_Fortran_binding.h
@@ -14235,6 +14235,7 @@ f_out_string**_cfi_copy:
   name: f_out_string**_cfi_copy
   comments:
   - Make the C wrapper argument a CFI_desc_t.
+  - Pass address of local cxx variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -14250,13 +14251,14 @@ f_out_string**_cfi_copy:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_arg_call:
-  - '&{c_var_cxx}'
+  - '&{c_local_cxx}'
   c_pre_call:
-  - std::string *{c_var_cxx};
+  - std::string *{c_local_cxx};
   c_post_call:
   - // Copy results into {c_var}
   c_temps:
   - cfi
+  c_local:
   - cxx
   iface_header:
   - ISO_Fortran_binding.h

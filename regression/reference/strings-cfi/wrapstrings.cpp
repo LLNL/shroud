@@ -1032,9 +1032,9 @@ void STR_fetchArrayStringArg(char **strs, int *nstrs)
 void STR_fetchArrayStringArg_CFI(CFI_cdesc_t *SHT_strs_cfi)
 {
     // splicer begin function.fetchArrayStringArg_CFI
-    std::string *SHT_strs_cxx;
+    std::string *SHC_strs_cxx;
     int nstrs;
-    fetchArrayStringArg(&SHT_strs_cxx, &nstrs);
+    fetchArrayStringArg(&SHC_strs_cxx, &nstrs);
     // Copy results into strs
     // splicer end function.fetchArrayStringArg_CFI
 }
@@ -1086,9 +1086,9 @@ void STR_fetchArrayStringAlloc(char **strs, int *nstrs)
 void STR_fetchArrayStringAlloc_CFI(CFI_cdesc_t *SHT_strs_cfi)
 {
     // splicer begin function.fetchArrayStringAlloc_CFI
-    std::string *SHT_strs_cxx;
+    std::string *SHC_strs_cxx;
     int nstrs;
-    fetchArrayStringAlloc(&SHT_strs_cxx, &nstrs);
+    fetchArrayStringAlloc(&SHC_strs_cxx, &nstrs);
     // Allocate and copy into strs
     // splicer end function.fetchArrayStringAlloc_CFI
 }
@@ -1140,9 +1140,9 @@ void STR_fetchArrayStringAllocLen(char **strs, int *nstrs)
 void STR_fetchArrayStringAllocLen_CFI(CFI_cdesc_t *SHT_strs_cfi)
 {
     // splicer begin function.fetchArrayStringAllocLen_CFI
-    std::string *SHT_strs_cxx;
+    std::string *SHC_strs_cxx;
     int nstrs;
-    fetchArrayStringAllocLen(&SHT_strs_cxx, &nstrs);
+    fetchArrayStringAllocLen(&SHC_strs_cxx, &nstrs);
     // Allocate and copy into strs
     // splicer end function.fetchArrayStringAllocLen_CFI
 }
