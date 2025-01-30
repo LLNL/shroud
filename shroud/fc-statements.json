@@ -1623,7 +1623,7 @@
         "name":"#### bool ##################################################"
     },
     {
-        "name": "f_mixin_local-logical-var",
+        "name": "f_mixin_logical-local-var",
         "f_temps": [
             "cxx"
         ],
@@ -1640,6 +1640,18 @@
         ]
     },
     {
+        "name": "f_mixin_logical-in",
+        "f_pre_call": [
+            "{f_var_cxx} = {f_var}  ! coerce to C_BOOL"
+        ]
+    },
+    {
+        "name": "f_mixin_logical-out",
+        "f_post_call": [
+            "{f_var} = {f_var_cxx}  ! coerce to logical"
+        ]
+    },
+    {
         "alias": [
             "f_in_bool",
             "c_in_bool",
@@ -1650,10 +1662,8 @@
             "c_mixin_arg-call-cvar",
             "f_mixin_declare-fortran-arg",
             "f_mixin_declare-interface-arg",
-            "f_mixin_local-logical-var"
-        ],
-        "f_pre_call": [
-            "{f_var_cxx} = {f_var}  ! coerce to C_BOOL"
+            "f_mixin_logical-local-var",
+            "f_mixin_logical-in"
         ]
     },
     {
@@ -1667,10 +1677,8 @@
             "c_mixin_arg-call-cvar",
             "f_mixin_declare-fortran-arg",
             "f_mixin_declare-interface-arg",
-            "f_mixin_local-logical-var"
-        ],
-        "f_post_call": [
-            "{f_var} = {f_var_cxx}  ! coerce to logical"
+            "f_mixin_logical-local-var",
+            "f_mixin_logical-out"
         ]
     },
     {
@@ -1683,13 +1691,9 @@
             "c_mixin_arg-call-cvar",
             "f_mixin_declare-fortran-arg",
             "f_mixin_declare-interface-arg",
-            "f_mixin_local-logical-var"
-        ],
-        "f_pre_call": [
-            "{f_var_cxx} = {f_var}  ! coerce to C_BOOL"
-        ],
-        "f_post_call": [
-            "{f_var} = {f_var_cxx}  ! coerce to logical"
+            "f_mixin_logical-local-var",
+            "f_mixin_logical-in",
+            "f_mixin_logical-out"
         ]
     },
     {
@@ -4028,7 +4032,7 @@
             "c_mixin_declare-arg",
             "f_mixin_declare-fortran-arg",
             "f_mixin_declare-interface-arg",
-            "f_mixin_local-logical-var"
+            "f_mixin_logical-local-var"
         ],
         "f_pre_call": [
             "{f_var_cxx} = {f_var}  ! coerce to C_BOOL"

@@ -12766,8 +12766,14 @@ f_mixin_interface-as-cptr-value:
     iso_c_binding:
     - C_PTR
   owner: library
-f_mixin_local-logical-var:
-  name: f_mixin_local-logical-var
+f_mixin_logical-in:
+  name: f_mixin_logical-in
+  intent: mixin
+  f_pre_call:
+  - '{f_var_cxx} = {f_var}  ! coerce to C_BOOL'
+  owner: library
+f_mixin_logical-local-var:
+  name: f_mixin_logical-local-var
   intent: mixin
   f_declare:
   - 'logical(C_BOOL) :: {f_var_cxx}'
@@ -12778,6 +12784,12 @@ f_mixin_local-logical-var:
     - C_BOOL
   f_temps:
   - cxx
+  owner: library
+f_mixin_logical-out:
+  name: f_mixin_logical-out
+  intent: mixin
+  f_post_call:
+  - '{f_var} = {f_var_cxx}  ! coerce to logical'
   owner: library
 f_mixin_native_cdesc_allocate:
   name: f_mixin_native_cdesc_allocate
@@ -16639,7 +16651,9 @@ root
           cdesc -- f_mixin_inout_array_cdesc
       interface-as-cptr -- f_mixin_interface-as-cptr
       interface-as-cptr-value -- f_mixin_interface-as-cptr-value
-      local-logical-var -- f_mixin_local-logical-var
+      logical-in -- f_mixin_logical-in
+      logical-local-var -- f_mixin_logical-local-var
+      logical-out -- f_mixin_logical-out
       native
         cdesc
           allocate -- f_mixin_native_cdesc_allocate
