@@ -1642,11 +1642,13 @@ c_in_char*_buf:
   name: c_in_char*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Allocate a local char variable in C wrapper.
   - Pass cxx local variable to library.
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
+  - '  c_mixin_char-alloc'
   - '  c_mixin_arg-call-cxx'
   intent: in
   i_arg_names:
@@ -2763,11 +2765,15 @@ c_inout_char*_buf:
   comments:
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx local variable to library.
+  - Copy cxx variable to c variable.
+  - Allocate a local char variable in C wrapper.
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cxx'
+  - '  c_mixin_char-copy'
+  - '  c_mixin_char-alloc'
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2794,8 +2800,8 @@ c_inout_char*_buf:
   c_local:
   - cxx
   c_helper:
-  - char_alloc
   - char_copy
+  - char_alloc
   - char_free
   owner: library
 c_inout_enum*:
@@ -3627,6 +3633,41 @@ c_mixin_cast-argument:
   c_local:
   - cxx
   owner: library
+c_mixin_char-alloc:
+  name: c_mixin_char-alloc
+  comments:
+  - Allocate a local char variable in C wrapper.
+  intent: mixin
+  c_pre_call:
+  - "char * {c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
+  c_post_call:
+  - '{c_helper_char_free}({c_local_cxx});'
+  c_local:
+  - cxx
+  c_helper:
+  - char_alloc
+  - char_free
+  owner: library
+c_mixin_char-blank-fill:
+  name: c_mixin_char-blank-fill
+  comments:
+  - Blank fill C variable.
+  intent: mixin
+  c_post_call:
+  - '{c_helper_char_blank_fill}({c_var}, {c_var_len});'
+  c_helper:
+  - char_blank_fill
+  owner: library
+c_mixin_char-copy:
+  name: c_mixin_char-copy
+  comments:
+  - Copy cxx variable to c variable.
+  intent: mixin
+  c_post_call:
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
+  c_helper:
+  - char_copy
+  owner: library
 c_mixin_char-copy-to-arg:
   name: c_mixin_char-copy-to-arg
   comments:
@@ -3842,10 +3883,8 @@ c_mixin_in_character_buf:
 c_mixin_inout_vector<native>_cdesc:
   name: c_mixin_inout_vector<native>_cdesc
   comments:
-  - Pass argument and size to C.
-  - Pass array_type to C which will fill it in.
-  - Pass argument and size to C.
-  - Pass array_type to C which will fill it in.
+  - Declare local Fortran array_type argument.
+  - Accept array_type in C wrapper.
   - Fill cdesc with vector information.
   - Return address and size of vector data.
   mixin_names:
@@ -3899,8 +3938,7 @@ c_mixin_inout_vector<native>_cdesc:
 c_mixin_inout_vector_cdesc:
   name: c_mixin_inout_vector_cdesc
   comments:
-  - Pass argument and size to C.
-  - Pass array_type to C which will fill it in.
+  - Accept array_type in C wrapper.
   intent: mixin
   i_arg_names:
   - '{i_var}'
@@ -4237,11 +4275,13 @@ c_out_char_*_buf:
   comments:
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
+  - Blank fill C variable.
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
+  - '  c_mixin_char-blank-fill'
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -11258,6 +11298,7 @@ f_in_char*_buf:
   name: f_in_char*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Allocate a local char variable in C wrapper.
   - Pass cxx local variable to library.
   intent: in
   f_arg_name:
@@ -11283,6 +11324,7 @@ f_in_char*_buf:
   - '  f_mixin_declare-fortran-arg'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
+  - '  c_mixin_char-alloc'
   - '  c_mixin_arg-call-cxx'
   i_arg_names:
   - '{i_var}'
@@ -12963,6 +13005,8 @@ f_inout_char*_buf:
   comments:
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx local variable to library.
+  - Copy cxx variable to c variable.
+  - Allocate a local char variable in C wrapper.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -12988,6 +13032,8 @@ f_inout_char*_buf:
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cxx'
+  - '  c_mixin_char-copy'
+  - '  c_mixin_char-alloc'
   i_arg_names:
   - '{i_var}'
   - '{i_var_len}'
@@ -13013,8 +13059,8 @@ f_inout_char*_buf:
   c_local:
   - cxx
   c_helper:
-  - char_alloc
   - char_copy
+  - char_alloc
   - char_free
   owner: library
 f_inout_char*_capi:
@@ -13788,10 +13834,8 @@ f_inout_struct*:
 f_inout_vector<native>&_cdesc:
   name: f_inout_vector<native>&_cdesc
   comments:
-  - Pass argument and size to C.
-  - Pass array_type to C which will fill it in.
-  - Pass argument and size to C.
-  - Pass array_type to C which will fill it in.
+  - Declare local Fortran array_type argument.
+  - Accept array_type in C wrapper.
   - Fill cdesc with vector information.
   - Return address and size of vector data.
   - Pass dereference of local cxx variable to library.
@@ -13872,10 +13916,8 @@ f_inout_vector<native>&_cdesc:
 f_inout_vector<native>&_cdesc_allocatable:
   name: f_inout_vector<native>&_cdesc_allocatable
   comments:
-  - Pass argument and size to C.
-  - Pass array_type to C which will fill it in.
-  - Pass argument and size to C.
-  - Pass array_type to C which will fill it in.
+  - Declare local Fortran array_type argument.
+  - Accept array_type in C wrapper.
   - Fill cdesc with vector information.
   - Return address and size of vector data.
   - Pass dereference of local cxx variable to library.
@@ -14500,8 +14542,7 @@ f_mixin_in_vector_buf:
 f_mixin_inout_array_cdesc:
   name: f_mixin_inout_array_cdesc
   comments:
-  - Pass argument and size to C.
-  - Pass array_type to C which will fill it in.
+  - Declare local Fortran array_type argument.
   intent: mixin
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
@@ -15228,6 +15269,7 @@ f_out_char*_buf:
   comments:
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
+  - Blank fill C variable.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -15253,6 +15295,7 @@ f_out_char*_buf:
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
+  - '  c_mixin_char-blank-fill'
   i_arg_names:
   - '{i_var}'
   - '{i_var_len}'
@@ -18287,6 +18330,9 @@ root
       arg-call-cxx-deref -- c_mixin_arg-call-cxx-deref
       c-str -- c_mixin_c-str
       cast-argument -- c_mixin_cast-argument
+      char-alloc -- c_mixin_char-alloc
+      char-blank-fill -- c_mixin_char-blank-fill
+      char-copy -- c_mixin_char-copy
       char-copy-to-arg -- c_mixin_char-copy-to-arg
       char-copy-to-arg-cfi -- c_mixin_char-copy-to-arg-cfi
       character -- c_mixin_character

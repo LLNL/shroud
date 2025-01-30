@@ -1917,6 +1917,49 @@
         ]
     },
     {
+        "name": "c_mixin_char-alloc",
+        "comments": [
+            "Allocate a local char variable in C wrapper."
+        ],
+        "c_local": [
+            "cxx"
+        ],
+        "c_helper": [
+            "char_alloc",
+            "char_free"
+        ],
+        "c_pre_call": [
+            "char * {c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
+        ],
+        "c_post_call": [
+            "{c_helper_char_free}({c_local_cxx});"
+        ]
+    },
+    {
+        "name": "c_mixin_char-blank-fill",
+        "comments": [
+            "Blank fill C variable."
+        ],
+        "c_helper": [
+            "char_blank_fill"
+        ],
+        "c_post_call": [
+            "{c_helper_char_blank_fill}({c_var}, {c_var_len});"
+        ]
+    },
+    {
+        "name": "c_mixin_char-copy",
+        "comments": [
+            "Copy cxx variable to c variable."
+        ],
+        "c_helper": [
+            "char_copy"
+        ],
+        "c_post_call": [
+            "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
+        ]
+    },
+    {
         "alias": [
             "f_in_char",
             "c_in_char",
@@ -2031,20 +2074,8 @@
             "f_mixin_declare-fortran-arg",
             "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf",
+            "c_mixin_char-alloc",
             "c_mixin_arg-call-cxx"
-        ],
-        "c_local": [
-            "cxx"
-        ],
-        "c_helper": [
-            "char_alloc",
-            "char_free"
-        ],
-        "c_pre_call": [
-            "char * {c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
-        ],
-        "c_post_call": [
-            "{c_helper_char_free}({c_local_cxx});"
         ]
     },
     {
@@ -2056,13 +2087,8 @@
             "f_mixin_declare-fortran-arg",
             "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf",
-            "c_mixin_arg-call-cvar"
-        ],
-        "c_helper": [
-            "char_blank_fill"
-        ],
-        "c_post_call": [
-            "{c_helper_char_blank_fill}({c_var}, {c_var_len});"
+            "c_mixin_arg-call-cvar",
+            "c_mixin_char-blank-fill"
         ]
     },
     {
@@ -2074,22 +2100,9 @@
             "f_mixin_declare-fortran-arg",
             "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf",
-            "c_mixin_arg-call-cxx"
-        ],
-        "c_local": [
-            "cxx"
-        ],
-        "c_helper": [
-            "char_alloc",
-            "char_copy",
-            "char_free"
-        ],
-        "c_pre_call": [
-            "char * {c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
-        ],
-        "c_post_call": [
-            "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);",
-            "{c_helper_char_free}({c_local_cxx});"
+            "c_mixin_arg-call-cxx",
+            "c_mixin_char-copy",
+            "c_mixin_char-alloc"
         ]
     },
     {

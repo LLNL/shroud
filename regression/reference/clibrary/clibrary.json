@@ -1907,8 +1907,8 @@
                 },
                 "helpers": {
                     "c": [
-                        "char_alloc",
                         "char_copy",
+                        "char_alloc",
                         "char_free"
                     ]
                 },
