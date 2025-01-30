@@ -405,6 +405,9 @@ def append_mixin(stmt, mixin):
             if key == "notes":
                 # notes do not accumulate like other fields.
                 continue
+            elif key == "mixin_names":
+                # Indent nested mixins
+                value = ["  " + val for val in value]
             if key not in stmt:
                 stmt[key] = []
             if False:#True:
@@ -512,11 +515,13 @@ def process_mixin(stmts, defaults, stmtdict):
         if "mixin" in stmt:
             if "base" in stmt:
                 print("XXXX - Groups with mixin cannot have a 'base' field ", name)
+            tmp_node["mixin_names"] = []
             for mixin in stmt["mixin"]:
                 ### compute mixin permutations
                 if mixin[0] == "#":
                     continue
                 mparts = mixin.split("_", 2)
+                tmp_node["mixin_names"].append("  " + mixin)
                 if mparts[1] != "mixin":
                     cursor.warning("Mixin '{}' must have intent 'mixin'.".format(mixin))
                 elif mixin not in mixins:
@@ -805,6 +810,7 @@ CStmts = util.Scope(
     name="c_default",
     comments=[],
     notes=[],      # implementation notes
+    mixin_names=[],
     index="X",
     intent=None,
 
