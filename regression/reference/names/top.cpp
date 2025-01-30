@@ -183,7 +183,8 @@ int YYY_TES_function4(const char *rv)
 int YYY_TES_function4_bufferify(char *rv, int SHT_rv_len)
 {
     // splicer begin function.function4_bufferify
-    const std::string SHC_rv_cxx(rv, ShroudCharLenTrim(rv, SHT_rv_len));
+    int SHC_rv_trim = ShroudCharLenTrim(rv, SHT_rv_len);
+    const std::string SHC_rv_cxx(rv, SHC_rv_trim);
     int SHC_rv = function4(SHC_rv_cxx);
     return SHC_rv;
     // splicer end function.function4_bufferify

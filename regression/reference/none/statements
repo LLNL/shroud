@@ -1246,7 +1246,7 @@ c_function_void*:
   - XXX - f entries are the same as the i entries, share?
   intent: function
   i_result_decl:
-  - 'type(C_PTR) :: {f_var}'
+  - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1712,6 +1712,7 @@ c_in_string:
 c_in_string&:
   name: c_in_string&
   comments:
+  - Create local std::string from the argument.
   - Pass cxx local variable to library.
   notes:
   - Similar to f_in_string*, but c_arg_call is pass by value
@@ -1736,6 +1737,7 @@ c_in_string&_buf:
   name: c_in_string&_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Create local std::string from the argument with trim.
   - Pass cxx local variable to library.
   intent: in
   i_arg_names:
@@ -1754,12 +1756,13 @@ c_in_string&_buf:
   c_arg_call:
   - '{c_local_cxx}'
   c_pre_call:
-  - "{c_const}std::string {c_local_cxx}({c_var},\t {c_helper_char_len_trim}({c_var},\
-    \ {c_var_len}));"
+  - int {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_len});
+  - '{c_const}std::string {c_local_cxx}({c_var}, {c_local_trim});'
   c_temps:
   - len
   c_local:
   - cxx
+  - trim
   c_helper:
   - char_len_trim
   owner: library
@@ -1789,6 +1792,7 @@ c_in_string*_buf:
   name: c_in_string*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Create local std::string from the argument with trim.
   - Pass address of local cxx variable to library.
   intent: in
   i_arg_names:
@@ -1807,12 +1811,13 @@ c_in_string*_buf:
   c_arg_call:
   - '&{c_local_cxx}'
   c_pre_call:
-  - "{c_const}std::string {c_local_cxx}({c_var},\t {c_helper_char_len_trim}({c_var},\
-    \ {c_var_len}));"
+  - int {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_len});
+  - '{c_const}std::string {c_local_cxx}({c_var}, {c_local_trim});'
   c_temps:
   - len
   c_local:
   - cxx
+  - trim
   c_helper:
   - char_len_trim
   owner: library
@@ -1820,6 +1825,7 @@ c_in_string_buf:
   name: c_in_string_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Create local std::string from the argument with trim.
   - Pass cxx local variable to library.
   intent: in
   i_arg_names:
@@ -1839,7 +1845,7 @@ c_in_string_buf:
   - '{c_local_cxx}'
   c_pre_call:
   - int {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_len});
-  - std::string {c_local_cxx}({c_var}, {c_local_trim});
+  - '{c_const}std::string {c_local_cxx}({c_var}, {c_local_trim});'
   c_temps:
   - len
   c_local:
@@ -2554,7 +2560,9 @@ c_inout_string&:
   name: c_inout_string&
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Create local std::string from the argument.
   - Pass cxx local variable to library.
+  - Strcpy std::string into argument.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2570,20 +2578,19 @@ c_inout_string&:
   c_pre_call:
   - '{c_const}std::string {c_local_cxx}({c_var});'
   c_post_call:
-  - strcpy({c_var}, {c_local_cxx}.c_str());
+  - std::strcpy({c_var}, {c_local_cxx}.c_str());
   c_local:
   - cxx
   impl_header:
   - <cstring>
   owner: library
-  lang_cxx:
-    impl_header:
-    - <cstring>
 c_inout_string&_buf:
   name: c_inout_string&_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Create local std::string from the argument with trim.
   - Pass cxx local variable to library.
+  - Copy std::string into argument.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2601,22 +2608,26 @@ c_inout_string&_buf:
   c_arg_call:
   - '{c_local_cxx}'
   c_pre_call:
-  - "std::string {c_local_cxx}({c_var},\t {c_helper_char_len_trim}({c_var}, {c_var_len}));"
+  - int {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_len});
+  - '{c_const}std::string {c_local_cxx}({c_var}, {c_local_trim});'
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx}.data(),\t {c_local_cxx}.size());"
   c_temps:
   - len
   c_local:
   - cxx
+  - trim
   c_helper:
-  - char_copy
   - char_len_trim
+  - char_copy
   owner: library
 c_inout_string*:
   name: c_inout_string*
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Create local std::string from the argument.
   - Pass address of local cxx variable to library.
+  - Strcpy std::string into argument.
   notes:
   - XXX - the fortran wrapper is incorrect since it is passing buf
   - '  but only accepting one argument. Confused with f_inout_string*_buf'
@@ -2635,20 +2646,19 @@ c_inout_string*:
   c_pre_call:
   - '{c_const}std::string {c_local_cxx}({c_var});'
   c_post_call:
-  - strcpy({c_var}, {c_local_cxx}.c_str());
+  - std::strcpy({c_var}, {c_local_cxx}.c_str());
   c_local:
   - cxx
   impl_header:
   - <cstring>
   owner: library
-  lang_cxx:
-    impl_header:
-    - <cstring>
 c_inout_string*_buf:
   name: c_inout_string*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Create local std::string from the argument with trim.
   - Pass address of local cxx variable to library.
+  - Copy std::string into argument.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2666,16 +2676,18 @@ c_inout_string*_buf:
   c_arg_call:
   - '&{c_local_cxx}'
   c_pre_call:
-  - "std::string {c_local_cxx}({c_var},\t {c_helper_char_len_trim}({c_var}, {c_var_len}));"
+  - int {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_len});
+  - '{c_const}std::string {c_local_cxx}({c_var}, {c_local_trim});'
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx}.data(),\t {c_local_cxx}.size());"
   c_temps:
   - len
   c_local:
   - cxx
+  - trim
   c_helper:
-  - char_copy
   - char_len_trim
+  - char_copy
   owner: library
 c_inout_struct&:
   name: c_inout_struct&
@@ -3396,12 +3408,36 @@ c_mixin_inout_vector_cdesc:
 c_mixin_local-string:
   name: c_mixin_local-string
   comments:
+  - Create local std::string.
+  intent: mixin
+  c_pre_call:
+  - '{c_const}std::string {c_local_cxx};'
+  c_local:
+  - cxx
+  owner: library
+c_mixin_local-string-init:
+  name: c_mixin_local-string-init
+  comments:
   - Create local std::string from the argument.
   intent: mixin
   c_pre_call:
   - '{c_const}std::string {c_local_cxx}({c_var});'
   c_local:
   - cxx
+  owner: library
+c_mixin_local-string-init-trim:
+  name: c_mixin_local-string-init-trim
+  comments:
+  - Create local std::string from the argument with trim.
+  intent: mixin
+  c_pre_call:
+  - int {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_len});
+  - '{c_const}std::string {c_local_cxx}({c_var}, {c_local_trim});'
+  c_local:
+  - cxx
+  - trim
+  c_helper:
+  - char_len_trim
   owner: library
 c_mixin_make-shared:
   name: c_mixin_make-shared
@@ -3493,6 +3529,16 @@ c_mixin_out_native**:
   c_pre_call:
   - '{c_const}{cxx_type} *{cxx_var};'
   owner: library
+c_mixin_out_string**:
+  name: c_mixin_out_string**
+  comments:
+  - Create local std::string pointer.
+  intent: mixin
+  c_pre_call:
+  - std::string *{c_local_cxx};
+  c_local:
+  - cxx
+  owner: library
 c_mixin_out_vector<native>_cdesc:
   name: c_mixin_out_vector<native>_cdesc
   comments:
@@ -3567,6 +3613,26 @@ c_mixin_shadow:
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
+  owner: library
+c_mixin_string-copy-out:
+  name: c_mixin_string-copy-out
+  comments:
+  - Copy std::string into argument.
+  intent: mixin
+  c_post_call:
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx}.data(),\t {c_local_cxx}.size());"
+  c_helper:
+  - char_copy
+  owner: library
+c_mixin_string-strcpy-out:
+  name: c_mixin_string-strcpy-out
+  comments:
+  - Strcpy std::string into argument.
+  intent: mixin
+  c_post_call:
+  - std::strcpy({c_var}, {c_local_cxx}.c_str());
+  impl_header:
+  - <cstring>
   owner: library
 c_mixin_unknown:
   name: c_mixin_unknown
@@ -3859,7 +3925,9 @@ c_out_procedure*_funptr:
 c_out_string&:
   name: c_out_string&
   comments:
+  - Create local std::string.
   - Pass cxx local variable to library.
+  - Strcpy std::string into argument.
   notes:
   - Similar to f_out_string*
   intent: out
@@ -3877,20 +3945,19 @@ c_out_string&:
   c_pre_call:
   - '{c_const}std::string {c_local_cxx};'
   c_post_call:
-  - strcpy({c_var}, {c_local_cxx}.c_str());
+  - std::strcpy({c_var}, {c_local_cxx}.c_str());
   c_local:
   - cxx
   impl_header:
   - <cstring>
   owner: library
-  lang_cxx:
-    impl_header:
-    - <cstring>
 c_out_string&_buf:
   name: c_out_string&_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Create local std::string.
   - Pass cxx local variable to library.
+  - Copy std::string into argument.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -3908,7 +3975,7 @@ c_out_string&_buf:
   c_arg_call:
   - '{c_local_cxx}'
   c_pre_call:
-  - std::string {c_local_cxx};
+  - '{c_const}std::string {c_local_cxx};'
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx}.data(),\t {c_local_cxx}.size());"
   c_temps:
@@ -3921,7 +3988,9 @@ c_out_string&_buf:
 c_out_string*:
   name: c_out_string*
   comments:
+  - Create local std::string.
   - Pass address of local cxx variable to library.
+  - Strcpy std::string into argument.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -3937,15 +4006,12 @@ c_out_string*:
   c_pre_call:
   - '{c_const}std::string {c_local_cxx};'
   c_post_call:
-  - strcpy({c_var}, {c_local_cxx}.c_str());
+  - std::strcpy({c_var}, {c_local_cxx}.c_str());
   c_local:
   - cxx
   impl_header:
   - <cstring>
   owner: library
-  lang_cxx:
-    impl_header:
-    - <cstring>
 c_out_string**:
   name: c_out_string**
   comments:
@@ -4002,7 +4068,9 @@ c_out_string*_buf:
   name: c_out_string*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Create local std::string.
   - Pass address of local cxx variable to library.
+  - Copy std::string into argument.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -4020,7 +4088,7 @@ c_out_string*_buf:
   c_arg_call:
   - '&{c_local_cxx}'
   c_pre_call:
-  - std::string {c_local_cxx};
+  - '{c_const}std::string {c_local_cxx};'
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx}.data(),\t {c_local_cxx}.size());"
   c_temps:
@@ -9281,7 +9349,7 @@ f_function_void*:
     '{f_module_name}':
     - '{f_kind}'
   i_result_decl:
-  - 'type(C_PTR) :: {f_var}'
+  - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -10280,6 +10348,7 @@ f_in_smartptr<shadow>*:
 f_in_string&:
   name: f_in_string&
   comments:
+  - Create local std::string from the argument.
   - Pass cxx local variable to library.
   notes:
   - Similar to f_in_string*, but c_arg_call is pass by value
@@ -10304,6 +10373,7 @@ f_in_string&_buf:
   name: f_in_string&_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Create local std::string from the argument with trim.
   - Pass cxx local variable to library.
   intent: in
   f_arg_name:
@@ -10341,12 +10411,13 @@ f_in_string&_buf:
   c_arg_call:
   - '{c_local_cxx}'
   c_pre_call:
-  - "{c_const}std::string {c_local_cxx}({c_var},\t {c_helper_char_len_trim}({c_var},\
-    \ {c_var_len}));"
+  - int {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_len});
+  - '{c_const}std::string {c_local_cxx}({c_var}, {c_local_trim});'
   c_temps:
   - len
   c_local:
   - cxx
+  - trim
   c_helper:
   - char_len_trim
   owner: library
@@ -10409,6 +10480,7 @@ f_in_string*_buf:
   name: f_in_string*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Create local std::string from the argument with trim.
   - Pass address of local cxx variable to library.
   intent: in
   f_arg_name:
@@ -10446,12 +10518,13 @@ f_in_string*_buf:
   c_arg_call:
   - '&{c_local_cxx}'
   c_pre_call:
-  - "{c_const}std::string {c_local_cxx}({c_var},\t {c_helper_char_len_trim}({c_var},\
-    \ {c_var_len}));"
+  - int {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_len});
+  - '{c_const}std::string {c_local_cxx}({c_var}, {c_local_trim});'
   c_temps:
   - len
   c_local:
   - cxx
+  - trim
   c_helper:
   - char_len_trim
   owner: library
@@ -10492,6 +10565,7 @@ f_in_string_buf:
   name: f_in_string_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Create local std::string from the argument with trim.
   - Pass cxx local variable to library.
   intent: in
   f_arg_name:
@@ -10530,7 +10604,7 @@ f_in_string_buf:
   - '{c_local_cxx}'
   c_pre_call:
   - int {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_len});
-  - std::string {c_local_cxx}({c_var}, {c_local_trim});
+  - '{c_const}std::string {c_local_cxx}({c_var}, {c_local_trim});'
   c_temps:
   - len
   c_local:
@@ -11656,7 +11730,9 @@ f_inout_string&:
   name: f_inout_string&
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Create local std::string from the argument.
   - Pass cxx local variable to library.
+  - Strcpy std::string into argument.
   intent: inout
   f_declare:
   - integer(C_INT) {f_var_len}
@@ -11685,7 +11761,7 @@ f_inout_string&:
   c_pre_call:
   - '{c_const}std::string {c_local_cxx}({c_var});'
   c_post_call:
-  - strcpy({c_var}, {c_local_cxx}.c_str());
+  - std::strcpy({c_var}, {c_local_cxx}.c_str());
   c_local:
   - cxx
   impl_header:
@@ -11695,7 +11771,9 @@ f_inout_string&_buf:
   name: f_inout_string&_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Create local std::string from the argument with trim.
   - Pass cxx local variable to library.
+  - Copy std::string into argument.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -11732,16 +11810,18 @@ f_inout_string&_buf:
   c_arg_call:
   - '{c_local_cxx}'
   c_pre_call:
-  - "std::string {c_local_cxx}({c_var},\t {c_helper_char_len_trim}({c_var}, {c_var_len}));"
+  - int {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_len});
+  - '{c_const}std::string {c_local_cxx}({c_var}, {c_local_trim});'
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx}.data(),\t {c_local_cxx}.size());"
   c_temps:
   - len
   c_local:
   - cxx
+  - trim
   c_helper:
-  - char_copy
   - char_len_trim
+  - char_copy
   owner: library
 f_inout_string&_cfi:
   name: f_inout_string&_cfi
@@ -11787,7 +11867,9 @@ f_inout_string*:
   name: f_inout_string*
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Create local std::string from the argument.
   - Pass address of local cxx variable to library.
+  - Strcpy std::string into argument.
   notes:
   - XXX - the fortran wrapper is incorrect since it is passing buf
   - '  but only accepting one argument. Confused with f_inout_string*_buf'
@@ -11819,7 +11901,7 @@ f_inout_string*:
   c_pre_call:
   - '{c_const}std::string {c_local_cxx}({c_var});'
   c_post_call:
-  - strcpy({c_var}, {c_local_cxx}.c_str());
+  - std::strcpy({c_var}, {c_local_cxx}.c_str());
   c_local:
   - cxx
   impl_header:
@@ -11829,7 +11911,9 @@ f_inout_string*_buf:
   name: f_inout_string*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Create local std::string from the argument with trim.
   - Pass address of local cxx variable to library.
+  - Copy std::string into argument.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -11866,16 +11950,18 @@ f_inout_string*_buf:
   c_arg_call:
   - '&{c_local_cxx}'
   c_pre_call:
-  - "std::string {c_local_cxx}({c_var},\t {c_helper_char_len_trim}({c_var}, {c_var_len}));"
+  - int {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_len});
+  - '{c_const}std::string {c_local_cxx}({c_var}, {c_local_trim});'
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx}.data(),\t {c_local_cxx}.size());"
   c_temps:
   - len
   c_local:
   - cxx
+  - trim
   c_helper:
-  - char_copy
   - char_len_trim
+  - char_copy
   owner: library
 f_inout_string*_cfi:
   name: f_inout_string*_cfi
@@ -12690,8 +12776,14 @@ f_mixin_interface-as-cptr-value:
     iso_c_binding:
     - C_PTR
   owner: library
-f_mixin_local-logical-var:
-  name: f_mixin_local-logical-var
+f_mixin_logical-in:
+  name: f_mixin_logical-in
+  intent: mixin
+  f_pre_call:
+  - '{f_var_cxx} = {f_var}  ! coerce to C_BOOL'
+  owner: library
+f_mixin_logical-local-var:
+  name: f_mixin_logical-local-var
   intent: mixin
   f_declare:
   - 'logical(C_BOOL) :: {f_var_cxx}'
@@ -12702,6 +12794,12 @@ f_mixin_local-logical-var:
     - C_BOOL
   f_temps:
   - cxx
+  owner: library
+f_mixin_logical-out:
+  name: f_mixin_logical-out
+  intent: mixin
+  f_post_call:
+  - '{f_var} = {f_var_cxx}  ! coerce to logical'
   owner: library
 f_mixin_native_cdesc_allocate:
   name: f_mixin_native_cdesc_allocate
@@ -12806,14 +12904,6 @@ f_mixin_out_native_cdesc_pointer:
     - '{f_kind}'
     iso_c_binding:
     - c_f_pointer
-  owner: library
-f_mixin_out_string**_cfi:
-  name: f_mixin_out_string**_cfi
-  intent: mixin
-  c_pre_call:
-  - std::string *{c_local_cxx};
-  c_local:
-  - cxx
   owner: library
 f_mixin_out_vector<native>_copy:
   name: f_mixin_out_vector<native>_copy
@@ -13984,7 +14074,9 @@ f_out_string&_buf:
   name: f_out_string&_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Create local std::string.
   - Pass cxx local variable to library.
+  - Copy std::string into argument.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -14021,7 +14113,7 @@ f_out_string&_buf:
   c_arg_call:
   - '{c_local_cxx}'
   c_pre_call:
-  - std::string {c_local_cxx};
+  - '{c_const}std::string {c_local_cxx};'
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx}.data(),\t {c_local_cxx}.size());"
   c_temps:
@@ -14200,6 +14292,7 @@ f_out_string**_cfi_allocatable:
   name: f_out_string**_cfi_allocatable
   comments:
   - Make the C wrapper argument a CFI_desc_t.
+  - Create local std::string pointer.
   - Pass address of local cxx variable to library.
   notes:
   - std::string **strs +intent(out)+dimension(nstrs)+deref(allocatable),
@@ -14235,6 +14328,7 @@ f_out_string**_cfi_copy:
   name: f_out_string**_cfi_copy
   comments:
   - Make the C wrapper argument a CFI_desc_t.
+  - Create local std::string pointer.
   - Pass address of local cxx variable to library.
   intent: out
   f_arg_name:
@@ -14289,7 +14383,9 @@ f_out_string*_buf:
   name: f_out_string*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Create local std::string.
   - Pass address of local cxx variable to library.
+  - Copy std::string into argument.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -14326,7 +14422,7 @@ f_out_string*_buf:
   c_arg_call:
   - '&{c_local_cxx}'
   c_pre_call:
-  - std::string {c_local_cxx};
+  - '{c_const}std::string {c_local_cxx};'
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx}.data(),\t {c_local_cxx}.size());"
   c_temps:
@@ -16166,6 +16262,8 @@ root
         vector<native>
           cdesc -- c_mixin_inout_vector<native>_cdesc
       local-string -- c_mixin_local-string
+      local-string-init -- c_mixin_local-string-init
+      local-string-init-trim -- c_mixin_local-string-init-trim
       make-shared -- c_mixin_make-shared
       native
         capsule
@@ -16178,6 +16276,7 @@ root
       noargs -- c_mixin_noargs
       out
         native** -- c_mixin_out_native**
+        string** -- c_mixin_out_string**
         vector
           buf
             malloc -- c_mixin_out_vector_buf_malloc
@@ -16186,6 +16285,8 @@ root
       pass
         capsule -- c_mixin_pass_capsule
       shadow -- c_mixin_shadow
+      string-copy-out -- c_mixin_string-copy-out
+      string-strcpy-out -- c_mixin_string-strcpy-out
       unknown -- c_mixin_unknown
       vector
         cdesc
@@ -16555,7 +16656,9 @@ root
           cdesc -- f_mixin_inout_array_cdesc
       interface-as-cptr -- f_mixin_interface-as-cptr
       interface-as-cptr-value -- f_mixin_interface-as-cptr-value
-      local-logical-var -- f_mixin_local-logical-var
+      logical-in -- f_mixin_logical-in
+      logical-local-var -- f_mixin_logical-local-var
+      logical-out -- f_mixin_logical-out
       native
         cdesc
           allocate -- f_mixin_native_cdesc_allocate
@@ -16569,8 +16672,6 @@ root
           cdesc
             allocate -- f_mixin_out_native_cdesc_allocate
             pointer -- f_mixin_out_native_cdesc_pointer
-        string**
-          cfi -- f_mixin_out_string**_cfi
         vector
           buf -- f_mixin_out_vector_buf
         vector<native>

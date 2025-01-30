@@ -3070,6 +3070,7 @@
                                 "c_deref": "*",
                                 "c_helper_char_len_trim": "ShroudCharLenTrim",
                                 "c_local_cxx": "SHC_arg1_cxx",
+                                "c_local_trim": "SHC_arg1_trim",
                                 "c_member": "->",
                                 "c_type": "char",
                                 "c_var": "arg1",
@@ -3090,6 +3091,7 @@
                                 "i_dimension": "(*)",
                                 "i_kind": "C_CHAR",
                                 "i_local_cxx": "SHC_arg1_cxx",
+                                "i_local_trim": "SHC_arg1_trim",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "arg1",
@@ -3492,8 +3494,8 @@
                 },
                 "helpers": {
                     "c": [
-                        "char_copy",
-                        "char_len_trim"
+                        "char_len_trim",
+                        "char_copy"
                     ]
                 },
                 "name": "acceptStringReference",
@@ -3599,6 +3601,7 @@
                                 "c_helper_char_copy": "ShroudCharCopy",
                                 "c_helper_char_len_trim": "ShroudCharLenTrim",
                                 "c_local_cxx": "SHC_arg1_cxx",
+                                "c_local_trim": "SHC_arg1_trim",
                                 "c_member": "->",
                                 "c_type": "char",
                                 "c_var": "arg1",
@@ -3619,6 +3622,7 @@
                                 "i_dimension": "(*)",
                                 "i_kind": "C_CHAR",
                                 "i_local_cxx": "SHC_arg1_cxx",
+                                "i_local_trim": "SHC_arg1_trim",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "arg1",
@@ -3863,6 +3867,7 @@
                                 "c_deref": "*",
                                 "c_helper_char_len_trim": "ShroudCharLenTrim",
                                 "c_local_cxx": "SHC_arg1_cxx",
+                                "c_local_trim": "SHC_arg1_trim",
                                 "c_member": "->",
                                 "c_type": "char",
                                 "c_var": "arg1",
@@ -3883,6 +3888,7 @@
                                 "i_dimension": "(*)",
                                 "i_kind": "C_CHAR",
                                 "i_local_cxx": "SHC_arg1_cxx",
+                                "i_local_trim": "SHC_arg1_trim",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "arg1",
@@ -4022,8 +4028,8 @@
                 },
                 "helpers": {
                     "c": [
-                        "char_copy",
-                        "char_len_trim"
+                        "char_len_trim",
+                        "char_copy"
                     ]
                 },
                 "name": "acceptStringPointer",
@@ -4127,6 +4133,7 @@
                                 "c_helper_char_copy": "ShroudCharCopy",
                                 "c_helper_char_len_trim": "ShroudCharLenTrim",
                                 "c_local_cxx": "SHC_arg1_cxx",
+                                "c_local_trim": "SHC_arg1_trim",
                                 "c_member": "->",
                                 "c_type": "char",
                                 "c_var": "arg1",
@@ -4147,6 +4154,7 @@
                                 "i_dimension": "(*)",
                                 "i_kind": "C_CHAR",
                                 "i_local_cxx": "SHC_arg1_cxx",
+                                "i_local_trim": "SHC_arg1_trim",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "arg1",
@@ -4568,8 +4576,8 @@
                 },
                 "helpers": {
                     "c": [
-                        "char_copy",
-                        "char_len_trim"
+                        "char_len_trim",
+                        "char_copy"
                     ]
                 },
                 "name": "acceptStringPointerLen",
@@ -4710,6 +4718,7 @@
                                 "c_helper_char_copy": "ShroudCharCopy",
                                 "c_helper_char_len_trim": "ShroudCharLenTrim",
                                 "c_local_cxx": "SHC_arg1_cxx",
+                                "c_local_trim": "SHC_arg1_trim",
                                 "c_member": "->",
                                 "c_type": "char",
                                 "c_var": "arg1",
@@ -4730,6 +4739,7 @@
                                 "i_dimension": "(*)",
                                 "i_kind": "C_CHAR",
                                 "i_local_cxx": "SHC_arg1_cxx",
+                                "i_local_trim": "SHC_arg1_trim",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "arg1",
@@ -7332,8 +7342,8 @@
                 },
                 "helpers": {
                     "c": [
-                        "char_copy",
-                        "char_len_trim"
+                        "char_len_trim",
+                        "char_copy"
                     ]
                 },
                 "name": "PostDeclare",
@@ -7526,6 +7536,7 @@
                                 "c_helper_char_copy": "ShroudCharCopy",
                                 "c_helper_char_len_trim": "ShroudCharLenTrim",
                                 "c_local_cxx": "SHC_name_cxx",
+                                "c_local_trim": "SHC_name_trim",
                                 "c_member": "->",
                                 "c_type": "char",
                                 "c_var": "name",
@@ -7546,6 +7557,7 @@
                                 "i_dimension": "(*)",
                                 "i_kind": "C_CHAR",
                                 "i_local_cxx": "SHC_name_cxx",
+                                "i_local_trim": "SHC_name_trim",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "name",

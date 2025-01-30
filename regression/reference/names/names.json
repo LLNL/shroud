@@ -1567,6 +1567,7 @@
                                 "c_deref": "*",
                                 "c_helper_char_len_trim": "ShroudCharLenTrim",
                                 "c_local_cxx": "SHC_rv_cxx",
+                                "c_local_trim": "SHC_rv_trim",
                                 "c_member": "->",
                                 "c_type": "char",
                                 "c_var": "rv",
@@ -1587,6 +1588,7 @@
                                 "i_dimension": "(*)",
                                 "i_kind": "C_CHAR",
                                 "i_local_cxx": "SHC_rv_cxx",
+                                "i_local_trim": "SHC_rv_trim",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "rv",
@@ -1871,8 +1873,8 @@
                 },
                 "helpers": {
                     "c": [
-                        "char_copy",
-                        "char_len_trim"
+                        "char_len_trim",
+                        "char_copy"
                     ]
                 },
                 "name": "TestMultilineSplicer",
@@ -2031,6 +2033,7 @@
                                 "c_helper_char_copy": "ShroudCharCopy",
                                 "c_helper_char_len_trim": "ShroudCharLenTrim",
                                 "c_local_cxx": "SHC_name_cxx",
+                                "c_local_trim": "SHC_name_trim",
                                 "c_member": "->",
                                 "c_type": "char",
                                 "c_var": "name",
@@ -2051,6 +2054,7 @@
                                 "i_dimension": "(*)",
                                 "i_kind": "C_CHAR",
                                 "i_local_cxx": "SHC_name_cxx",
+                                "i_local_trim": "SHC_name_trim",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "name",
