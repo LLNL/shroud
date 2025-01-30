@@ -3498,7 +3498,7 @@ c_mixin_out_vector<native>_cdesc:
   comments:
   - Fill cdesc with vector information.
   - Return address and size of vector data.
-  - Create a std::vector on the stack and pass to C++.
+  - Create a local std::vector.
   intent: mixin
   c_pre_call:
   - "{c_const}std::vector<{cxx_T}>\t *{c_local_cxx} = new std::vector<{cxx_T}>;"
@@ -4154,9 +4154,14 @@ c_out_vector<native>&_buf_malloc:
 c_out_vector<native>&_cdesc:
   name: c_out_vector<native>&_cdesc
   comments:
-  - copy into user's existing array.
+  - Pass cdesc as argument to C wrapper.
+  - Copy std::vector into user's memory.
+  - Fill cdesc with vector information.
+  - Return address and size of vector data.
+  - Create a local std::vector.
+  - Pass dereference of local cxx variable to library.
   notes:
-  - c_local_cxx is always a pointer to a vector.
+  - Not supported for C wrappers.
   intent: out
   i_arg_names:
   - '{i_var_cdesc}'
@@ -4182,7 +4187,9 @@ c_out_vector<native>&_cdesc:
   c_local:
   - cxx
   c_helper:
+  - array_context
   - copy_array
+  - type_defines
   - type_defines
   destructor_name: std_vector_{cxx_T}
   destructor:
@@ -4269,9 +4276,14 @@ c_out_vector<native>*_buf_malloc:
 c_out_vector<native>*_cdesc:
   name: c_out_vector<native>*_cdesc
   comments:
-  - copy into user's existing array.
+  - Pass cdesc as argument to C wrapper.
+  - Copy std::vector into user's memory.
+  - Fill cdesc with vector information.
+  - Return address and size of vector data.
+  - Create a local std::vector.
+  - Pass cxx local variable to library.
   notes:
-  - c_local_cxx is always a pointer to a vector.
+  - Not supported for C wrappers.
   intent: out
   i_arg_names:
   - '{i_var_cdesc}'
@@ -4297,7 +4309,9 @@ c_out_vector<native>*_cdesc:
   c_local:
   - cxx
   c_helper:
+  - array_context
   - copy_array
+  - type_defines
   - type_defines
   destructor_name: std_vector_{cxx_T}
   destructor:
@@ -12803,6 +12817,28 @@ f_mixin_out_string**_cfi:
   c_temps:
   - cxx
   owner: library
+f_mixin_out_vector<native>_copy:
+  name: f_mixin_out_vector<native>_copy
+  comments:
+  - Copy std::vector into user's memory.
+  intent: mixin
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{targs[0].f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
+  f_post_call:
+  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+  f_module:
+    iso_c_binding:
+    - '{targs[0].f_kind}'
+    - C_SIZE_T
+    - C_LOC
+  f_helper:
+  - copy_array
+  c_helper:
+  - copy_array
+  - type_defines
+  owner: library
 f_mixin_out_vector_buf:
   name: f_mixin_out_vector_buf
   comments:
@@ -14389,9 +14425,14 @@ f_out_struct*:
 f_out_vector<native>&_cdesc:
   name: f_out_vector<native>&_cdesc
   comments:
-  - copy into user's existing array.
+  - Pass cdesc as argument to C wrapper.
+  - Copy std::vector into user's memory.
+  - Fill cdesc with vector information.
+  - Return address and size of vector data.
+  - Create a local std::vector.
+  - Pass dereference of local cxx variable to library.
   notes:
-  - c_local_cxx is always a pointer to a vector.
+  - Not supported for C wrappers.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -14411,6 +14452,7 @@ f_out_vector<native>&_cdesc:
   f_temps:
   - cdesc
   f_helper:
+  - array_context
   - copy_array
   f_need_wrapper: true
   i_arg_names:
@@ -14437,7 +14479,9 @@ f_out_vector<native>&_cdesc:
   c_local:
   - cxx
   c_helper:
+  - array_context
   - copy_array
+  - type_defines
   - type_defines
   destructor_name: std_vector_{cxx_T}
   destructor:
@@ -14450,7 +14494,7 @@ f_out_vector<native>&_cdesc_allocatable:
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc with vector information.
   - Return address and size of vector data.
-  - Create a std::vector on the stack and pass to C++.
+  - Create a local std::vector.
   - Pass dereference of local cxx variable to library.
   notes:
   - Copy into allocated array.
@@ -14509,9 +14553,14 @@ f_out_vector<native>&_cdesc_allocatable:
 f_out_vector<native>*_cdesc:
   name: f_out_vector<native>*_cdesc
   comments:
-  - copy into user's existing array.
+  - Pass cdesc as argument to C wrapper.
+  - Copy std::vector into user's memory.
+  - Fill cdesc with vector information.
+  - Return address and size of vector data.
+  - Create a local std::vector.
+  - Pass cxx local variable to library.
   notes:
-  - c_local_cxx is always a pointer to a vector.
+  - Not supported for C wrappers.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -14531,6 +14580,7 @@ f_out_vector<native>*_cdesc:
   f_temps:
   - cdesc
   f_helper:
+  - array_context
   - copy_array
   f_need_wrapper: true
   i_arg_names:
@@ -14557,7 +14607,9 @@ f_out_vector<native>*_cdesc:
   c_local:
   - cxx
   c_helper:
+  - array_context
   - copy_array
+  - type_defines
   - type_defines
   destructor_name: std_vector_{cxx_T}
   destructor:
@@ -14570,7 +14622,7 @@ f_out_vector<native>*_cdesc_allocatable:
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc with vector information.
   - Return address and size of vector data.
-  - Create a std::vector on the stack and pass to C++.
+  - Create a local std::vector.
   - Pass dereference of local cxx variable to library.
   notes:
   - Copy into allocated array.
@@ -16519,6 +16571,8 @@ root
           cfi -- f_mixin_out_string**_cfi
         vector
           buf -- f_mixin_out_vector_buf
+        vector<native>
+          copy -- f_mixin_out_vector<native>_copy
       pass
         capsule -- f_mixin_pass_capsule
         cdesc -- f_mixin_pass_cdesc

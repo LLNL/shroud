@@ -322,10 +322,12 @@
                 },
                 "helpers": {
                     "c": [
+                        "array_context",
                         "copy_array",
                         "type_defines"
                     ],
                     "f": [
+                        "array_context",
                         "copy_array"
                     ]
                 },
@@ -443,6 +445,7 @@
                                 "c_addr": "",
                                 "c_const": "",
                                 "c_deref": "*",
+                                "c_helper_array_context": "VEC_SHROUD_array",
                                 "c_helper_copy_array": "VEC_ShroudCopyArray",
                                 "c_local_cxx": "SHC_arg_cxx",
                                 "c_member": "->",
@@ -460,6 +463,7 @@
                                 "f_assumed_shape": "(:)",
                                 "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:1) = shape(arg)",
                                 "f_dimension": "(:)",
+                                "f_helper_array_context": "VEC_SHROUD_array",
                                 "f_helper_copy_array": "VEC_SHROUD_copy_array",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
@@ -604,10 +608,12 @@
                 },
                 "helpers": {
                     "c": [
+                        "array_context",
                         "copy_array",
                         "type_defines"
                     ],
                     "f": [
+                        "array_context",
                         "copy_array"
                     ]
                 },
@@ -745,6 +751,7 @@
                                 "c_addr": "",
                                 "c_const": "",
                                 "c_deref": "*",
+                                "c_helper_array_context": "VEC_SHROUD_array",
                                 "c_helper_copy_array": "VEC_ShroudCopyArray",
                                 "c_local_cxx": "SHC_arg_cxx",
                                 "c_member": "->",
@@ -762,6 +769,7 @@
                                 "f_assumed_shape": "(:)",
                                 "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:1) = shape(arg)",
                                 "f_dimension": "(:)",
+                                "f_helper_array_context": "VEC_SHROUD_array",
                                 "f_helper_copy_array": "VEC_SHROUD_copy_array",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
@@ -894,10 +902,12 @@
                 },
                 "helpers": {
                     "c": [
+                        "array_context",
                         "copy_array",
                         "type_defines"
                     ],
                     "f": [
+                        "array_context",
                         "copy_array"
                     ]
                 },
@@ -1030,6 +1040,7 @@
                                 "c_addr": "",
                                 "c_const": "",
                                 "c_deref": "*",
+                                "c_helper_array_context": "VEC_SHROUD_array",
                                 "c_helper_copy_array": "VEC_ShroudCopyArray",
                                 "c_local_cxx": "SHC_arg_cxx",
                                 "c_member": "->",
@@ -1047,6 +1058,7 @@
                                 "f_assumed_shape": "(:)",
                                 "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:1) = shape(arg)",
                                 "f_dimension": "(:)",
+                                "f_helper_array_context": "VEC_SHROUD_array",
                                 "f_helper_copy_array": "VEC_SHROUD_copy_array",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
@@ -1934,10 +1946,12 @@
                 },
                 "helpers": {
                     "c": [
+                        "array_context",
                         "copy_array",
                         "type_defines"
                     ],
                     "f": [
+                        "array_context",
                         "copy_array"
                     ]
                 },
@@ -2054,6 +2068,7 @@
                                 "c_addr": "",
                                 "c_const": "",
                                 "c_deref": "*",
+                                "c_helper_array_context": "VEC_SHROUD_array",
                                 "c_helper_copy_array": "VEC_ShroudCopyArray",
                                 "c_local_cxx": "SHC_arg_cxx",
                                 "c_member": "->",
@@ -2071,6 +2086,7 @@
                                 "f_assumed_shape": "(:)",
                                 "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:1) = shape(arg)",
                                 "f_dimension": "(:)",
+                                "f_helper_array_context": "VEC_SHROUD_array",
                                 "f_helper_copy_array": "VEC_SHROUD_copy_array",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",

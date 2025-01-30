@@ -3044,54 +3044,9 @@
         ]
     },
     {
-        "name": "c_mixin_vector_cdesc_fill-cdesc",
+        "name": "f_mixin_out_vector<native>_copy",
         "comments": [
-            "Fill cdesc with vector information.",
-            "Return address and size of vector data."
-        ],
-        "c_helper": [
-            "type_defines"
-        ],
-        "c_post_call": [
-            "{c_var_cdesc}->base_addr = {c_local_cxx}->empty() ? {nullptr} : &{c_local_cxx}->front();",
-            "{c_var_cdesc}->type = {targs[0].sh_type};",
-            "{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});",
-            "{c_var_cdesc}->size = {c_local_cxx}->size();",
-            "{c_var_cdesc}->rank = 1;",
-            "{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;"
-        ]
-    },
-    {
-        "name": "c_mixin_out_vector<native>_cdesc",
-        "mixin": [
-            "c_mixin_destructor_new-vector",
-            "c_mixin_vector_cdesc_fill-cdesc"
-        ],
-        "comments": [
-            "Create a std::vector on the stack and pass to C++."
-        ],
-        "c_local": [
-            "cxx"
-        ],
-        "c_pre_call": [
-            "{c_const}std::vector<{cxx_T}>\t *{c_local_cxx} = new std::vector<{cxx_T}>;"
-        ]
-    },
-    {
-        "alias": [
-            "f_out_vector<native>*_cdesc",
-            "c_out_vector<native>*_cdesc"
-        ],
-        "comments": [
-            "copy into user's existing array."
-        ],
-        "notes": [
-            "c_local_cxx is always a pointer to a vector."
-        ],
-        "mixin": [
-            "f_mixin_pass_cdesc",
-            "c_mixin_out_vector<native>_cdesc",
-            "c_mixin_arg-call-cxx"
+            "Copy std::vector into user's memory."
         ],
         "c_helper": [
             "copy_array",
@@ -3118,13 +3073,67 @@
         ]
     },
     {
+        "name": "c_mixin_vector_cdesc_fill-cdesc",
+        "comments": [
+            "Fill cdesc with vector information.",
+            "Return address and size of vector data."
+        ],
+        "c_helper": [
+            "type_defines"
+        ],
+        "c_post_call": [
+            "{c_var_cdesc}->base_addr = {c_local_cxx}->empty() ? {nullptr} : &{c_local_cxx}->front();",
+            "{c_var_cdesc}->type = {targs[0].sh_type};",
+            "{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});",
+            "{c_var_cdesc}->size = {c_local_cxx}->size();",
+            "{c_var_cdesc}->rank = 1;",
+            "{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;"
+        ]
+    },
+    {
+        "name": "c_mixin_out_vector<native>_cdesc",
+        "mixin": [
+            "c_mixin_destructor_new-vector",
+            "c_mixin_vector_cdesc_fill-cdesc"
+        ],
+        "comments": [
+            "Create a local std::vector."
+        ],
+        "c_local": [
+            "cxx"
+        ],
+        "c_pre_call": [
+            "{c_const}std::vector<{cxx_T}>\t *{c_local_cxx} = new std::vector<{cxx_T}>;"
+        ]
+    },
+    {
+        "alias": [
+            "f_out_vector<native>*_cdesc",
+            "c_out_vector<native>*_cdesc"
+        ],
+        "mixin": [
+            "f_mixin_pass_cdesc",
+            "f_mixin_out_vector<native>_copy",
+            "c_mixin_out_vector<native>_cdesc",
+            "c_mixin_arg-call-cxx"
+        ],
+        "notes": [
+            "Not supported for C wrappers."
+        ]
+    },
+    {
         "alias": [
             "f_out_vector<native>&_cdesc",
             "c_out_vector<native>&_cdesc"
         ],
-        "base": "f_out_vector<native>*_cdesc",
-        "c_arg_call": [
-            "*{c_local_cxx}"
+        "mixin": [
+            "f_mixin_pass_cdesc",
+            "f_mixin_out_vector<native>_copy",
+            "c_mixin_out_vector<native>_cdesc",
+            "c_mixin_arg-call-cxx-deref"
+        ],
+        "notes": [
+            "Not supported for C wrappers."
         ]
     },
     {
