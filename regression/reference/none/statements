@@ -954,7 +954,7 @@ c_function_smartptr<shadow>_capptr:
   comments:
   - Pass function result as a capsule field of shadow class
   - from Fortran to C.
-  - Allocate a function result on the heap.
+  - Allocate a C wrapper result on the heap.
   - Assign to capsule in C wrapper.
   notes:
   - Used with std::shared_ptr<Object>* createChildA(void)
@@ -2282,7 +2282,7 @@ c_in_unknown:
   comments:
   - Pass cxx variable to library.
   notes:
-  - Used with MPI types
+  - Used with MPI types.
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar'
@@ -3775,7 +3775,7 @@ c_mixin_function-assign-to-local:
 c_mixin_function-assign-to-new:
   name: c_mixin_function-assign-to-new
   comments:
-  - Allocate a function result on the heap.
+  - Allocate a C wrapper result on the heap.
   intent: mixin
   c_pre_call:
   - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
@@ -7446,7 +7446,7 @@ f_function_smartptr<shadow>_capsule:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass function result as a capsule argument from Fortran to C.
-  - Allocate a function result on the heap.
+  - Allocate a C wrapper result on the heap.
   - Assign to capsule in C wrapper.
   notes:
   - Used with std::shared_ptr<Object>* createChildA(void)
@@ -9912,7 +9912,7 @@ f_function_string_cdesc_allocatable:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
-  - Allocate a function result on the heap.
+  - Allocate a C wrapper result on the heap.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
@@ -10000,7 +10000,7 @@ f_function_string_cdesc_allocatable_caller:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
-  - Allocate a function result on the heap.
+  - Allocate a C wrapper result on the heap.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
@@ -10088,7 +10088,7 @@ f_function_string_cdesc_allocatable_library:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
-  - Allocate a function result on the heap.
+  - Allocate a C wrapper result on the heap.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
@@ -12356,7 +12356,7 @@ f_in_unknown:
   comments:
   - Pass cxx variable to library.
   notes:
-  - Used with MPI types
+  - Used with MPI types.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -12769,10 +12769,6 @@ f_in_vector<string>_buf:
   - s
   c_helper:
   - char_len_trim
-  owner: library
-f_in_vector_&_cdesc_targ_native_scalar:
-  name: f_in_vector_&_cdesc_targ_native_scalar
-  intent: in
   owner: library
 f_in_void:
   name: f_in_void
@@ -14391,7 +14387,6 @@ f_mixin_getter_cdesc:
 f_mixin_helper_array_string_allocatable:
   name: f_mixin_helper_array_string_allocatable
   comments:
-  - Allocate a vector<string> variable.
   - Assign to std::string pointer from C++ function.
   - Copy into Fortran allocated memory.
   intent: mixin
@@ -16145,7 +16140,6 @@ f_out_string**_cdesc_allocatable:
   - Pass capsule as argument to C wrapper.
   - Create a local Fortran capsule.
   - Allocate Fortran array from cdesc.
-  - Allocate a vector<string> variable.
   - Assign to std::string pointer from C++ function.
   - Copy into Fortran allocated memory.
   - Pass address of cxx variable to library.
@@ -18666,12 +18660,6 @@ root
       struct& -- f_in_struct&
       struct* -- f_in_struct*
       unknown -- f_in_unknown
-      vector
-        &
-          cdesc
-            targ
-              native
-                scalar -- f_in_vector_&_cdesc_targ_native_scalar
       vector<native*>&
         buf -- f_in_vector<native*>&_buf
       vector<native>
