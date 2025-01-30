@@ -1390,7 +1390,7 @@ c_in_char*_buf:
   name: c_in_char*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  - Pass cxx variable to library.
+  - Pass cxx local variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -1406,14 +1406,15 @@ c_in_char*_buf:
   - char *{c_var}
   - int {c_var_len}
   c_arg_call:
-  - '{c_var_str}'
+  - '{c_local_cxx}'
   c_pre_call:
-  - "char * {c_var_str} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
+  - "char * {c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
   c_post_call:
-  - '{c_helper_char_free}({c_var_str});'
+  - '{c_helper_char_free}({c_local_cxx});'
   c_temps:
   - len
-  - str
+  c_local:
+  - cxx
   c_helper:
   - char_alloc
   - char_free
@@ -2343,7 +2344,7 @@ c_inout_char*_buf:
   name: c_inout_char*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  - Pass cxx variable to library.
+  - Pass cxx local variable to library.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2359,15 +2360,16 @@ c_inout_char*_buf:
   - char *{c_var}
   - int {c_var_len}
   c_arg_call:
-  - '{c_var_str}'
+  - '{c_local_cxx}'
   c_pre_call:
-  - "char * {c_var_str} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
+  - "char * {c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
   c_post_call:
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_var_str},\t -1);"
-  - '{c_helper_char_free}({c_var_str});'
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
+  - '{c_helper_char_free}({c_local_cxx});'
   c_temps:
   - len
-  - str
+  c_local:
+  - cxx
   c_helper:
   - char_alloc
   - char_copy
@@ -9731,7 +9733,7 @@ f_in_char*_buf:
   name: f_in_char*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  - Pass cxx variable to library.
+  - Pass cxx local variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -9766,14 +9768,15 @@ f_in_char*_buf:
   - char *{c_var}
   - int {c_var_len}
   c_arg_call:
-  - '{c_var_str}'
+  - '{c_local_cxx}'
   c_pre_call:
-  - "char * {c_var_str} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
+  - "char * {c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
   c_post_call:
-  - '{c_helper_char_free}({c_var_str});'
+  - '{c_helper_char_free}({c_local_cxx});'
   c_temps:
   - len
-  - str
+  c_local:
+  - cxx
   c_helper:
   - char_alloc
   - char_free
@@ -11242,7 +11245,7 @@ f_inout_char*_buf:
   name: f_inout_char*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  - Pass cxx variable to library.
+  - Pass cxx local variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -11277,15 +11280,16 @@ f_inout_char*_buf:
   - char *{c_var}
   - int {c_var_len}
   c_arg_call:
-  - '{c_var_str}'
+  - '{c_local_cxx}'
   c_pre_call:
-  - "char * {c_var_str} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
+  - "char * {c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
   c_post_call:
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_var_str},\t -1);"
-  - '{c_helper_char_free}({c_var_str});'
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
+  - '{c_helper_char_free}({c_local_cxx});'
   c_temps:
   - len
-  - str
+  c_local:
+  - cxx
   c_helper:
   - char_alloc
   - char_copy

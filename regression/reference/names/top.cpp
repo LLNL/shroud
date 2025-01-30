@@ -106,10 +106,10 @@ void TES_getName(char *name)
 void TES_getName_bufferify(char *name, int SHT_name_len)
 {
     // splicer begin function.getName_bufferify
-    char * SHT_name_str = ShroudCharAlloc(name, SHT_name_len, 0);
-    getName(SHT_name_str);
-    ShroudCharCopy(name, SHT_name_len, SHT_name_str, -1);
-    ShroudCharFree(SHT_name_str);
+    char * SHC_name_cxx = ShroudCharAlloc(name, SHT_name_len, 0);
+    getName(SHC_name_cxx);
+    ShroudCharCopy(name, SHT_name_len, SHC_name_cxx, -1);
+    ShroudCharFree(SHC_name_cxx);
     // splicer end function.getName_bufferify
 }
 

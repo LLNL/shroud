@@ -235,10 +235,10 @@ void CHA_passCharPtrInOut(char *s)
 void CHA_passCharPtrInOut_bufferify(char *s, int SHT_s_len)
 {
     // splicer begin function.passCharPtrInOut_bufferify
-    char * SHT_s_str = ShroudCharAlloc(s, SHT_s_len, 0);
-    passCharPtrInOut(SHT_s_str);
-    ShroudCharCopy(s, SHT_s_len, SHT_s_str, -1);
-    ShroudCharFree(SHT_s_str);
+    char * SHC_s_cxx = ShroudCharAlloc(s, SHT_s_len, 0);
+    passCharPtrInOut(SHC_s_cxx);
+    ShroudCharCopy(s, SHT_s_len, SHC_s_cxx, -1);
+    ShroudCharFree(SHC_s_cxx);
     // splicer end function.passCharPtrInOut_bufferify
 }
 
@@ -491,10 +491,10 @@ void CHA_CpassCharPtr_bufferify(char *dest, int SHT_dest_len, char *src,
     int SHT_src_len)
 {
     // splicer begin function.CpassCharPtr_bufferify
-    char * SHT_src_str = ShroudCharAlloc(src, SHT_src_len, 1);
-    CpassCharPtr(dest, SHT_src_str);
+    char * SHC_src_cxx = ShroudCharAlloc(src, SHT_src_len, 1);
+    CpassCharPtr(dest, SHC_src_cxx);
     ShroudCharBlankFill(dest, SHT_dest_len);
-    ShroudCharFree(SHT_src_str);
+    ShroudCharFree(SHC_src_cxx);
     // splicer end function.CpassCharPtr_bufferify
 }
 
@@ -535,10 +535,10 @@ void CHA_CpassCharPtrBlank_bufferify(char *dest, int SHT_dest_len,
     char *src, int SHT_src_len)
 {
     // splicer begin function.CpassCharPtrBlank_bufferify
-    char * SHT_src_str = ShroudCharAlloc(src, SHT_src_len, 1);
-    CpassCharPtrBlank(dest, SHT_src_str);
+    char * SHC_src_cxx = ShroudCharAlloc(src, SHT_src_len, 1);
+    CpassCharPtrBlank(dest, SHC_src_cxx);
     ShroudCharBlankFill(dest, SHT_dest_len);
-    ShroudCharFree(SHT_src_str);
+    ShroudCharFree(SHC_src_cxx);
     // splicer end function.CpassCharPtrBlank_bufferify
 }
 
@@ -573,9 +573,9 @@ int CHA_CpassCharPtrNotrim(const char *src)
 int CHA_CpassCharPtrNotrim_bufferify(char *src, int SHT_src_len)
 {
     // splicer begin function.CpassCharPtrNotrim_bufferify
-    char * SHT_src_str = ShroudCharAlloc(src, SHT_src_len, 0);
-    int SHC_rv = CpassCharPtrNotrim(SHT_src_str);
-    ShroudCharFree(SHT_src_str);
+    char * SHC_src_cxx = ShroudCharAlloc(src, SHT_src_len, 0);
+    int SHC_rv = CpassCharPtrNotrim(SHC_src_cxx);
+    ShroudCharFree(SHC_src_cxx);
     return SHC_rv;
     // splicer end function.CpassCharPtrNotrim_bufferify
 }
