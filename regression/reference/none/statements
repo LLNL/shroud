@@ -1064,7 +1064,7 @@ c_function_string&_buf_arg:
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_char-copy-to-arg'
+  - '  c_mixin_string-char-copy-to-arg'
   intent: function
   i_arg_names:
   - '{i_var}'
@@ -1120,7 +1120,7 @@ c_function_string&_buf_copy:
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_char-copy-to-arg'
+  - '  c_mixin_string-char-copy-to-arg'
   intent: function
   i_arg_names:
   - '{i_var}'
@@ -1201,7 +1201,7 @@ c_function_string*_buf_copy:
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_char-copy-to-arg'
+  - '  c_mixin_string-char-copy-to-arg'
   intent: function
   i_arg_names:
   - '{i_var}'
@@ -1295,7 +1295,7 @@ c_function_string_buf_arg:
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_char-copy-to-arg'
+  - '  c_mixin_string-char-copy-to-arg'
   intent: function
   i_arg_names:
   - '{i_var}'
@@ -1351,7 +1351,7 @@ c_function_string_buf_copy:
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_char-copy-to-arg'
+  - '  c_mixin_string-char-copy-to-arg'
   intent: function
   i_arg_names:
   - '{i_var}'
@@ -3674,20 +3674,6 @@ c_mixin_char-copy:
   c_helper:
   - char_copy
   owner: library
-c_mixin_char-copy-to-arg:
-  name: c_mixin_char-copy-to-arg
-  comments:
-  - Copy cxx variable into c variable.
-  intent: mixin
-  c_post_call:
-  - if ({cxx_var}{cxx_member}empty()) {{+
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
-  - -}} else {{+
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
-  - -}}
-  c_helper:
-  - char_copy
-  owner: library
 c_mixin_char-copy-to-arg-cfi:
   name: c_mixin_char-copy-to-arg-cfi
   comments:
@@ -4181,6 +4167,20 @@ c_mixin_shadow:
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
+  owner: library
+c_mixin_string-char-copy-to-arg:
+  name: c_mixin_string-char-copy-to-arg
+  comments:
+  - Copy cxx variable into c variable.
+  intent: mixin
+  c_post_call:
+  - if ({cxx_var}{cxx_member}empty()) {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
+  - -}} else {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
+  - -}}
+  c_helper:
+  - char_copy
   owner: library
 c_mixin_string-copy-out:
   name: c_mixin_string-copy-out
@@ -7523,7 +7523,7 @@ f_function_string&_buf:
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_char-copy-to-arg'
+  - '  c_mixin_string-char-copy-to-arg'
   i_arg_names:
   - '{i_var}'
   - '{i_var_len}'
@@ -7591,7 +7591,7 @@ f_function_string&_buf_arg:
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_char-copy-to-arg'
+  - '  c_mixin_string-char-copy-to-arg'
   i_arg_names:
   - '{i_var}'
   - '{i_var_len}'
@@ -7664,7 +7664,7 @@ f_function_string&_buf_caller:
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
-  - '  c_mixin_char-copy-to-arg'
+  - '  c_mixin_string-char-copy-to-arg'
   - '  c_mixin_arg-call-cvar'
   - '  c_mixin_delete-cxx-variable'
   i_arg_names:
@@ -7731,7 +7731,7 @@ f_function_string&_buf_copy:
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_char-copy-to-arg'
+  - '  c_mixin_string-char-copy-to-arg'
   i_arg_names:
   - '{i_var}'
   - '{i_var_len}'
@@ -7797,7 +7797,7 @@ f_function_string&_buf_copy_caller:
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
-  - '  c_mixin_char-copy-to-arg'
+  - '  c_mixin_string-char-copy-to-arg'
   - '  c_mixin_arg-call-cvar'
   - '  c_mixin_delete-cxx-variable'
   i_arg_names:
@@ -8631,7 +8631,7 @@ f_function_string*_buf:
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_char-copy-to-arg'
+  - '  c_mixin_string-char-copy-to-arg'
   i_arg_names:
   - '{i_var}'
   - '{i_var_len}'
@@ -8697,7 +8697,7 @@ f_function_string*_buf_caller:
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
-  - '  c_mixin_char-copy-to-arg'
+  - '  c_mixin_string-char-copy-to-arg'
   - '  c_mixin_arg-call-cvar'
   - '  c_mixin_delete-cxx-variable'
   i_arg_names:
@@ -8764,7 +8764,7 @@ f_function_string*_buf_copy:
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_char-copy-to-arg'
+  - '  c_mixin_string-char-copy-to-arg'
   i_arg_names:
   - '{i_var}'
   - '{i_var_len}'
@@ -8830,7 +8830,7 @@ f_function_string*_buf_copy_caller:
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
-  - '  c_mixin_char-copy-to-arg'
+  - '  c_mixin_string-char-copy-to-arg'
   - '  c_mixin_arg-call-cvar'
   - '  c_mixin_delete-cxx-variable'
   i_arg_names:
@@ -9602,7 +9602,7 @@ f_function_string_buf:
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_char-copy-to-arg'
+  - '  c_mixin_string-char-copy-to-arg'
   i_arg_names:
   - '{i_var}'
   - '{i_var_len}'
@@ -9670,7 +9670,7 @@ f_function_string_buf_arg:
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_char-copy-to-arg'
+  - '  c_mixin_string-char-copy-to-arg'
   i_arg_names:
   - '{i_var}'
   - '{i_var_len}'
@@ -9743,7 +9743,7 @@ f_function_string_buf_caller:
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
-  - '  c_mixin_char-copy-to-arg'
+  - '  c_mixin_string-char-copy-to-arg'
   - '  c_mixin_arg-call-cvar'
   - '  c_mixin_delete-cxx-variable'
   i_arg_names:
@@ -9810,7 +9810,7 @@ f_function_string_buf_copy:
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_char-copy-to-arg'
+  - '  c_mixin_string-char-copy-to-arg'
   i_arg_names:
   - '{i_var}'
   - '{i_var_len}'
@@ -9876,7 +9876,7 @@ f_function_string_buf_copy_caller:
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
-  - '  c_mixin_char-copy-to-arg'
+  - '  c_mixin_string-char-copy-to-arg'
   - '  c_mixin_arg-call-cvar'
   - '  c_mixin_delete-cxx-variable'
   i_arg_names:
@@ -18345,7 +18345,6 @@ root
       char-alloc -- c_mixin_char-alloc
       char-blank-fill -- c_mixin_char-blank-fill
       char-copy -- c_mixin_char-copy
-      char-copy-to-arg -- c_mixin_char-copy-to-arg
       char-copy-to-arg-cfi -- c_mixin_char-copy-to-arg-cfi
       character -- c_mixin_character
       cvar-capsule-fill -- c_mixin_cvar-capsule-fill
@@ -18400,6 +18399,7 @@ root
       pass
         capsule -- c_mixin_pass_capsule
       shadow -- c_mixin_shadow
+      string-char-copy-to-arg -- c_mixin_string-char-copy-to-arg
       string-copy-out -- c_mixin_string-copy-out
       string-strcpy-out -- c_mixin_string-strcpy-out
       unknown -- c_mixin_unknown
