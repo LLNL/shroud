@@ -817,8 +817,8 @@ CStmts = util.Scope(
     i_module=None,
 
     c_arg_decl=None,    # C prototype
-    c_arg_call=[],
     c_pre_call=[],
+    c_arg_call=[],
     c_call=[],
     c_post_call=[],
     c_final=[],      # tested in strings.yaml, part of ownership
