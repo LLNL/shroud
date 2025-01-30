@@ -1767,8 +1767,7 @@
         "notes": [
             "Treat as an assumed length array in Fortran interface."
         ],
-        "mixin":
-        [
+        "mixin": [
             "c_mixin_arg-call-cvar"
         ],
         "f_module": {
@@ -1923,8 +1922,7 @@
             "c_in_char",
             "f_none_char"
         ],
-        "mixin":
-        [
+        "mixin": [
             "c_mixin_arg-call-cvar"
         ],
         "f_arg_name": [
