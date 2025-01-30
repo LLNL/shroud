@@ -172,6 +172,7 @@ c_function_char*_arg:
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
+  - Copy cxx variable to c variable.
   notes:
   - Change function result into an argument
   - Use F_string_result_as_arg as the argument name.
@@ -183,6 +184,7 @@ c_function_char*_arg:
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
   - '  c_mixin_function-assign-to-local'
+  - '  c_mixin_char-copy'
   intent: function
   i_arg_names:
   - '{i_var}'
@@ -225,6 +227,7 @@ c_function_char*_buf_arg:
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
+  - Copy cxx variable to c variable.
   notes:
   - Change function result into an argument
   - Use F_string_result_as_arg as the argument name.
@@ -236,6 +239,7 @@ c_function_char*_buf_arg:
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
   - '  c_mixin_function-assign-to-local'
+  - '  c_mixin_char-copy'
   intent: function
   i_arg_names:
   - '{i_var}'
@@ -278,6 +282,7 @@ c_function_char*_buf_copy:
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
+  - Copy cxx variable to c variable.
   notes:
   - char *getname() +len(30)
   - Copy result into caller's buffer.
@@ -290,6 +295,7 @@ c_function_char*_buf_copy:
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
   - '  c_mixin_function-assign-to-local'
+  - '  c_mixin_char-copy'
   intent: function
   i_arg_names:
   - '{i_var}'
@@ -5690,6 +5696,7 @@ f_function_char*_arg:
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
+  - Copy cxx variable to c variable.
   notes:
   - Change function result into an argument
   - Use F_string_result_as_arg as the argument name.
@@ -5724,6 +5731,7 @@ f_function_char*_arg:
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
   - '  c_mixin_function-assign-to-local'
+  - '  c_mixin_char-copy'
   i_arg_names:
   - '{i_var}'
   - '{i_var_len}'
@@ -5765,6 +5773,7 @@ f_function_char*_buf_arg:
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
+  - Copy cxx variable to c variable.
   notes:
   - Change function result into an argument
   - Use F_string_result_as_arg as the argument name.
@@ -5799,6 +5808,7 @@ f_function_char*_buf_arg:
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
   - '  c_mixin_function-assign-to-local'
+  - '  c_mixin_char-copy'
   i_arg_names:
   - '{i_var}'
   - '{i_var_len}'
@@ -5840,6 +5850,7 @@ f_function_char*_buf_copy:
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
+  - Copy cxx variable to c variable.
   notes:
   - char *getname() +len(30)
   - Copy result into caller's buffer.
@@ -5872,6 +5883,7 @@ f_function_char*_buf_copy:
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
   - '  c_mixin_function-assign-to-local'
+  - '  c_mixin_char-copy'
   i_arg_names:
   - '{i_var}'
   - '{i_var_len}'

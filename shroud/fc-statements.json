@@ -2121,13 +2121,8 @@
             "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf",
             "c_mixin_arg-call-cvar",
-            "c_mixin_function-assign-to-local"
-        ],
-        "c_helper": [
-            "char_copy"
-        ],
-        "c_post_call": [
-            "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
+            "c_mixin_function-assign-to-local",
+            "c_mixin_char-copy"
         ]
     },
     {
