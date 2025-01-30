@@ -655,22 +655,6 @@
         ]
     },
     {
-        "name": "c_mixin_char-copy-to-arg",
-        "comments": [
-            "Copy cxx variable into c variable."
-        ],
-        "c_helper": [
-            "char_copy"
-        ],
-        "c_post_call": [
-            "if ({cxx_var}{cxx_member}empty()) {{+",
-            "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);",
-            "-}} else {{+",
-            "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());",
-            "-}}"
-        ]
-    },
-    {
         "name": "c_mixin_delete-cxx-variable",
         "comments": [
             "Delete the cxx variable."
@@ -2307,6 +2291,22 @@
         ]
     },
     {
+        "name": "c_mixin_string-char-copy-to-arg",
+        "comments": [
+            "Copy cxx variable into c variable."
+        ],
+        "c_helper": [
+            "char_copy"
+        ],
+        "c_post_call": [
+            "if ({cxx_var}{cxx_member}empty()) {{+",
+            "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);",
+            "-}} else {{+",
+            "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());",
+            "-}}"
+        ]
+    },
+    {
         "name": "f_mixin_str_array",
         "comments": [
             "Collect information about a string argument."
@@ -2661,7 +2661,7 @@
             "c_mixin_in_character_buf",
             "c_mixin_arg-call-cvar",
             "c_mixin_function-assign-to-local",
-            "c_mixin_char-copy-to-arg"
+            "c_mixin_string-char-copy-to-arg"
         ]
     },
     {
@@ -2681,7 +2681,7 @@
             "f_mixin_declare-fortran-result",
             "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf",
-            "c_mixin_char-copy-to-arg",
+            "c_mixin_string-char-copy-to-arg",
             "c_mixin_arg-call-cvar",
             "c_mixin_delete-cxx-variable"
         ]
