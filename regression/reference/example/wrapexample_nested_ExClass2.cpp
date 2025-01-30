@@ -113,8 +113,8 @@ void AA_example_nested_ExClass2_ctor_bufferify(char *name,
     int SHT_name_len, AA_example_nested_ExClass2 * SHC_rv)
 {
     // splicer begin namespace.example::nested.class.ExClass2.method.ctor_bufferify
-    const std::string SHC_name_cxx(name,
-        ShroudCharLenTrim(name, SHT_name_len));
+    int SHC_name_trim = ShroudCharLenTrim(name, SHT_name_len);
+    const std::string SHC_name_cxx(name, SHC_name_trim);
     example::nested::ExClass2 *SHCXX_rv =
         new example::nested::ExClass2(&SHC_name_cxx);
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);

@@ -250,8 +250,8 @@ void CLA_Class1_returnThisBuffer_bufferify(CLA_Class1 * self,
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
     // splicer begin class.Class1.method.returnThisBuffer_bufferify
-    std::string SHC_name_cxx(name,
-        ShroudCharLenTrim(name, SHT_name_len));
+    int SHC_name_trim = ShroudCharLenTrim(name, SHT_name_len);
+    std::string SHC_name_cxx(name, SHC_name_trim);
     classes::Class1 *SHC_rv_cxx = SH_this->returnThisBuffer(
         SHC_name_cxx, flag);
     SHC_rv->addr  = SHC_rv_cxx;

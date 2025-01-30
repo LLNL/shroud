@@ -109,8 +109,8 @@ void AA_example_nested_test_names_bufferify(char *name,
     int SHT_name_len)
 {
     // splicer begin namespace.example::nested.function.test_names_bufferify
-    const std::string SHC_name_cxx(name,
-        ShroudCharLenTrim(name, SHT_name_len));
+    int SHC_name_trim = ShroudCharLenTrim(name, SHT_name_len);
+    const std::string SHC_name_cxx(name, SHC_name_trim);
     example::nested::test_names(SHC_name_cxx);
     // splicer end namespace.example::nested.function.test_names_bufferify
 }
@@ -145,8 +145,8 @@ void AA_example_nested_test_names_flag_bufferify(char *name,
     int SHT_name_len, int flag)
 {
     // splicer begin namespace.example::nested.function.test_names_flag_bufferify
-    const std::string SHC_name_cxx(name,
-        ShroudCharLenTrim(name, SHT_name_len));
+    int SHC_name_trim = ShroudCharLenTrim(name, SHT_name_len);
+    const std::string SHC_name_cxx(name, SHC_name_trim);
     example::nested::test_names(SHC_name_cxx, flag);
     // splicer end namespace.example::nested.function.test_names_flag_bufferify
 }

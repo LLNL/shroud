@@ -644,7 +644,7 @@ void STR_acceptStringReferenceOut(char *arg1)
     // splicer begin function.acceptStringReferenceOut
     std::string SHC_arg1_cxx;
     acceptStringReferenceOut(SHC_arg1_cxx);
-    strcpy(arg1, SHC_arg1_cxx.c_str());
+    std::strcpy(arg1, SHC_arg1_cxx.c_str());
     // splicer end function.acceptStringReferenceOut
 }
 
@@ -691,7 +691,7 @@ void STR_acceptStringReference(char *arg1)
     // splicer begin function.acceptStringReference
     std::string SHC_arg1_cxx(arg1);
     acceptStringReference(SHC_arg1_cxx);
-    strcpy(arg1, SHC_arg1_cxx.c_str());
+    std::strcpy(arg1, SHC_arg1_cxx.c_str());
     // splicer end function.acceptStringReference
 }
 // end STR_acceptStringReference
@@ -776,7 +776,7 @@ void STR_acceptStringPointer(char *arg1)
     // splicer begin function.acceptStringPointer
     std::string SHC_arg1_cxx(arg1);
     acceptStringPointer(&SHC_arg1_cxx);
-    strcpy(arg1, SHC_arg1_cxx.c_str());
+    std::strcpy(arg1, SHC_arg1_cxx.c_str());
     // splicer end function.acceptStringPointer
 }
 
@@ -818,7 +818,7 @@ void STR_fetchStringPointer(char *arg1)
     // splicer begin function.fetchStringPointer
     std::string SHC_arg1_cxx;
     fetchStringPointer(&SHC_arg1_cxx);
-    strcpy(arg1, SHC_arg1_cxx.c_str());
+    std::strcpy(arg1, SHC_arg1_cxx.c_str());
     // splicer end function.fetchStringPointer
 }
 
@@ -864,7 +864,7 @@ void STR_acceptStringPointerLen(char *arg1, int *nlen)
     // splicer begin function.acceptStringPointerLen
     std::string SHC_arg1_cxx(arg1);
     acceptStringPointerLen(&SHC_arg1_cxx, nlen);
-    strcpy(arg1, SHC_arg1_cxx.c_str());
+    std::strcpy(arg1, SHC_arg1_cxx.c_str());
     // splicer end function.acceptStringPointerLen
 }
 
@@ -917,7 +917,7 @@ void STR_fetchStringPointerLen(char *arg1, int *nlen)
     // splicer begin function.fetchStringPointerLen
     std::string SHC_arg1_cxx;
     fetchStringPointerLen(&SHC_arg1_cxx, nlen);
-    strcpy(arg1, SHC_arg1_cxx.c_str());
+    std::strcpy(arg1, SHC_arg1_cxx.c_str());
     // splicer end function.fetchStringPointerLen
 }
 
@@ -1181,7 +1181,7 @@ void STR_PostDeclare(int *count, char *name)
     // splicer begin function.PostDeclare
     std::string SHC_name_cxx(name);
     PostDeclare(count, SHC_name_cxx);
-    strcpy(name, SHC_name_cxx.c_str());
+    std::strcpy(name, SHC_name_cxx.c_str());
     // splicer end function.PostDeclare
 }
 

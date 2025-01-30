@@ -153,10 +153,10 @@ void TUT_ConcatenateStrings_bufferify(char *arg1, int SHT_arg1_len,
     TUT_SHROUD_capsule_data *SHT_rv_capsule)
 {
     // splicer begin function.ConcatenateStrings_bufferify
-    const std::string SHC_arg1_cxx(arg1,
-        ShroudCharLenTrim(arg1, SHT_arg1_len));
-    const std::string SHC_arg2_cxx(arg2,
-        ShroudCharLenTrim(arg2, SHT_arg2_len));
+    int SHC_arg1_trim = ShroudCharLenTrim(arg1, SHT_arg1_len);
+    const std::string SHC_arg1_cxx(arg1, SHC_arg1_trim);
+    int SHC_arg2_trim = ShroudCharLenTrim(arg2, SHT_arg2_len);
+    const std::string SHC_arg2_cxx(arg2, SHC_arg2_trim);
     std::string *SHC_rv_cxx = new std::string;
     *SHC_rv_cxx = tutorial::ConcatenateStrings(SHC_arg1_cxx,
         SHC_arg2_cxx);
@@ -240,8 +240,8 @@ void TUT_OverloadedFunction_from_name_bufferify(char *name,
     int SHT_name_len)
 {
     // splicer begin function.OverloadedFunction_from_name_bufferify
-    const std::string SHC_name_cxx(name,
-        ShroudCharLenTrim(name, SHT_name_len));
+    int SHC_name_trim = ShroudCharLenTrim(name, SHT_name_len);
+    const std::string SHC_name_cxx(name, SHC_name_trim);
     tutorial::OverloadedFunction(SHC_name_cxx);
     // splicer end function.OverloadedFunction_from_name_bufferify
 }
@@ -352,8 +352,8 @@ void TUT_FortranGenericOverloaded_1_float_bufferify(char *name,
     int SHT_name_len, float arg2)
 {
     // splicer begin function.FortranGenericOverloaded_1_float_bufferify
-    const std::string SHC_name_cxx(name,
-        ShroudCharLenTrim(name, SHT_name_len));
+    int SHC_name_trim = ShroudCharLenTrim(name, SHT_name_len);
+    const std::string SHC_name_cxx(name, SHC_name_trim);
     tutorial::FortranGenericOverloaded(SHC_name_cxx, arg2);
     // splicer end function.FortranGenericOverloaded_1_float_bufferify
 }
@@ -372,8 +372,8 @@ void TUT_FortranGenericOverloaded_1_double_bufferify(char *name,
     int SHT_name_len, double arg2)
 {
     // splicer begin function.FortranGenericOverloaded_1_double_bufferify
-    const std::string SHC_name_cxx(name,
-        ShroudCharLenTrim(name, SHT_name_len));
+    int SHC_name_trim = ShroudCharLenTrim(name, SHT_name_len);
+    const std::string SHC_name_cxx(name, SHC_name_trim);
     tutorial::FortranGenericOverloaded(SHC_name_cxx, arg2);
     // splicer end function.FortranGenericOverloaded_1_double_bufferify
 }
