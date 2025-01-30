@@ -169,8 +169,7 @@
                             "f": {
                                 "+result": {
                                     "fmtdict": {
-                                        "C_call_function": "SH_this->set_x1(\tval)",
-                                        "C_call_list": "val",
+                                        "C_call_function": "SH_this->set_x1(\t)",
                                         "C_name": "ERR_Cstruct_as_subclass_set_x1",
                                         "C_prototype": "ERR_Cstruct_as_subclass * self,\t int val",
                                         "C_return_type": "void",
@@ -428,8 +427,7 @@
                             "f": {
                                 "+result": {
                                     "fmtdict": {
-                                        "C_call_function": "SH_this->set_y1(\tval)",
-                                        "C_call_list": "val",
+                                        "C_call_function": "SH_this->set_y1(\t)",
                                         "C_name": "ERR_Cstruct_as_subclass_set_y1",
                                         "C_prototype": "ERR_Cstruct_as_subclass * self,\t int val",
                                         "C_return_type": "void",
@@ -687,8 +685,7 @@
                             "f": {
                                 "+result": {
                                     "fmtdict": {
-                                        "C_call_function": "SH_this->set_z1(\tval)",
-                                        "C_call_list": "val",
+                                        "C_call_function": "SH_this->set_z1(\t)",
                                         "C_name": "ERR_Cstruct_as_subclass_set_z1",
                                         "C_prototype": "ERR_Cstruct_as_subclass * self,\t int val",
                                         "C_return_type": "void",

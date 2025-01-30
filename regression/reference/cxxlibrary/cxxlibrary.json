@@ -5323,8 +5323,8 @@
                     "f": {
                         "+result": {
                             "fmtdict": {
-                                "C_call_function": "nested_set_parent(\tSH_this,\t val)",
-                                "C_call_list": "SH_this,\t val",
+                                "C_call_function": "nested_set_parent(\tSH_this)",
+                                "C_call_list": "SH_this",
                                 "C_name": "CXX_nested_set_parent",
                                 "C_prototype": "CXX_nested *SH_this,\t CXX_nested *val",
                                 "C_return_type": "void",
@@ -5754,8 +5754,8 @@
                     "f": {
                         "+result": {
                             "fmtdict": {
-                                "C_call_function": "nested_set_child(\tSH_this,\t val)",
-                                "C_call_list": "SH_this,\t val",
+                                "C_call_function": "nested_set_child(\tSH_this)",
+                                "C_call_list": "SH_this",
                                 "C_name": "CXX_nested_set_child",
                                 "C_prototype": "CXX_nested *SH_this,\t CXX_nested **val",
                                 "C_return_type": "void",
@@ -6186,8 +6186,8 @@
                     "f": {
                         "+result": {
                             "fmtdict": {
-                                "C_call_function": "nested_set_array(\tSH_this,\t val)",
-                                "C_call_list": "SH_this,\t val",
+                                "C_call_function": "nested_set_array(\tSH_this)",
+                                "C_call_list": "SH_this",
                                 "C_name": "CXX_nested_set_array",
                                 "C_prototype": "CXX_nested *SH_this,\t CXX_nested *val",
                                 "C_return_type": "void",

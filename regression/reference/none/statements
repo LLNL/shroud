@@ -145,6 +145,7 @@ c_function_char*_arg:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   notes:
   - Change function result into an argument
@@ -189,6 +190,7 @@ c_function_char*_buf_arg:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   notes:
   - Change function result into an argument
@@ -233,6 +235,7 @@ c_function_char*_buf_copy:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   notes:
   - char *getname() +len(30)
@@ -923,6 +926,7 @@ c_function_string&_buf_copy:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
@@ -994,6 +998,7 @@ c_function_string*_buf_copy:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
@@ -1125,6 +1130,7 @@ c_function_string_buf_copy:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
@@ -1273,6 +1279,8 @@ c_getter_native*:
   owner: library
 c_in_bool:
   name: c_in_bool
+  comments:
+  - Pass cxx variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -1288,6 +1296,8 @@ c_in_bool:
   owner: library
 c_in_char:
   name: c_in_char
+  comments:
+  - Pass cxx variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -1303,6 +1313,8 @@ c_in_char:
   owner: library
 c_in_char*:
   name: c_in_char*
+  comments:
+  - Pass cxx variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -1318,6 +1330,8 @@ c_in_char*:
   owner: library
 c_in_char**:
   name: c_in_char**
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Treat as an assumed length array in Fortran interface.
   intent: in
@@ -1337,6 +1351,7 @@ c_in_char**_buf:
   name: c_in_char**_buf
   comments:
   - Pass argument, size and len to C.
+  - Pass cxx local variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -1375,6 +1390,7 @@ c_in_char*_buf:
   name: c_in_char*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx local variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -1390,20 +1406,23 @@ c_in_char*_buf:
   - char *{c_var}
   - int {c_var_len}
   c_arg_call:
-  - '{c_var_str}'
+  - '{c_local_cxx}'
   c_pre_call:
-  - "char * {c_var_str} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
+  - "char * {c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
   c_post_call:
-  - '{c_helper_char_free}({c_var_str});'
+  - '{c_helper_char_free}({c_local_cxx});'
   c_temps:
   - len
-  - str
+  c_local:
+  - cxx
   c_helper:
   - char_alloc
   - char_free
   owner: library
 c_in_enum:
   name: c_in_enum
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Use gen.cidecl to get the C interface type.
   - enums use option.F_enum_type to control the C type.
@@ -1426,6 +1445,8 @@ c_in_enum:
   owner: library
 c_in_native:
   name: c_in_native
+  comments:
+  - Pass cxx variable to library.
   notes:
   - An intent of 'none' is used with function pointers
   intent: in
@@ -1443,6 +1464,8 @@ c_in_native:
   owner: library
 c_in_native&:
   name: c_in_native&
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -1458,6 +1481,8 @@ c_in_native&:
   owner: library
 c_in_native*:
   name: c_in_native*
+  comments:
+  - Pass cxx variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -1473,6 +1498,8 @@ c_in_native*:
   owner: library
 c_in_native**:
   name: c_in_native**
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Any array of pointers.  Assumed to be non-contiguous memory.
   - All Fortran can do is treat as a type(C_PTR).
@@ -1493,6 +1520,7 @@ c_in_native*_cdesc:
   name: c_in_native*_cdesc
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Pass cxx variable to library.
   intent: in
   i_arg_names:
   - '{i_var_cdesc}'
@@ -1519,6 +1547,8 @@ c_in_native*_cdesc:
     - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
 c_in_procedure:
   name: c_in_procedure
+  comments:
+  - Pass cxx variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -1533,6 +1563,8 @@ c_in_procedure:
   owner: library
 c_in_procedure_external:
   name: c_in_procedure_external
+  comments:
+  - Pass cxx variable to library.
   notes:
   - EXTERNAL is not allowed in BIND(C), so force wrapper.
   intent: in
@@ -1550,6 +1582,7 @@ c_in_procedure_external:
 c_in_procedure_funptr:
   name: c_in_procedure_funptr
   comments:
+  - Pass cxx variable to library.
   - Pass type(C_FUNPTR) argument.
   notes:
   - Accept a function pointer in an argument.
@@ -1570,6 +1603,7 @@ c_in_shadow:
   name: c_in_shadow
   comments:
   - Pass a shadow type to C wrapper.
+  - Pass dereference of local cxx variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -1591,6 +1625,7 @@ c_in_shadow&:
   name: c_in_shadow&
   comments:
   - Pass a shadow type to C wrapper.
+  - Pass dereference of local cxx variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -1613,6 +1648,7 @@ c_in_shadow*:
   comments:
   - Pass a shadow type to C wrapper.
   - Cast C argument to local C++ variable.
+  - Pass cxx local variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -1635,6 +1671,7 @@ c_in_smartptr<shadow>*:
   comments:
   - Pass a shadow type to C wrapper.
   - Cast C argument to local C++ variable.
+  - Pass cxx local variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -1674,6 +1711,8 @@ c_in_string:
   owner: library
 c_in_string&:
   name: c_in_string&
+  comments:
+  - Pass cxx local variable to library.
   notes:
   - Similar to f_in_string*, but c_arg_call is pass by value
   intent: in
@@ -1697,6 +1736,7 @@ c_in_string&_buf:
   name: c_in_string&_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx local variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -1727,6 +1767,7 @@ c_in_string*:
   name: c_in_string*
   comments:
   - Create local std::string from the argument.
+  - Pass address of local cxx variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -1748,6 +1789,7 @@ c_in_string*_buf:
   name: c_in_string*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass address of local cxx variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -1778,6 +1820,7 @@ c_in_string_buf:
   name: c_in_string_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx local variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -1807,6 +1850,8 @@ c_in_string_buf:
   owner: library
 c_in_struct:
   name: c_in_struct
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
@@ -1825,6 +1870,8 @@ c_in_struct:
   owner: library
 c_in_struct&:
   name: c_in_struct&
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -1840,6 +1887,8 @@ c_in_struct&:
   owner: library
 c_in_struct*:
   name: c_in_struct*
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
@@ -1858,6 +1907,8 @@ c_in_struct*:
   owner: library
 c_in_unknown:
   name: c_in_unknown
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Used with MPI types
   intent: in
@@ -1927,6 +1978,7 @@ c_in_vector<native>&_buf:
   name: c_in_vector<native>&_buf
   comments:
   - Pass argument and size by value to C.
+  - Pass cxx local variable to library.
   notes:
   - XXX - need to test scalar and pointer versions
   intent: in
@@ -1956,6 +2008,7 @@ c_in_vector<native>*_buf:
   name: c_in_vector<native>*_buf
   comments:
   - Pass argument and size by value to C.
+  - Pass cxx local variable to library.
   notes:
   - XXX - need to test scalar and pointer versions
   intent: in
@@ -1985,6 +2038,7 @@ c_in_vector<native>_buf:
   name: c_in_vector<native>_buf
   comments:
   - Pass argument and size by value to C.
+  - Pass cxx local variable to library.
   notes:
   - XXX - need to test scalar and pointer versions
   intent: in
@@ -2021,6 +2075,7 @@ c_in_vector<string>&_buf:
   name: c_in_vector<string>&_buf
   comments:
   - Pass argument, size and len to C.
+  - Pass cxx local variable to library.
   notes:
   - XXX - need to test scalar and pointer versions
   intent: in
@@ -2071,6 +2126,7 @@ c_in_vector<string>*_buf:
   name: c_in_vector<string>*_buf
   comments:
   - Pass argument, size and len to C.
+  - Pass cxx local variable to library.
   notes:
   - XXX - need to test scalar and pointer versions
   intent: in
@@ -2121,6 +2177,7 @@ c_in_vector<string>_buf:
   name: c_in_vector<string>_buf
   comments:
   - Pass argument, size and len to C.
+  - Pass cxx local variable to library.
   notes:
   - XXX - need to test scalar and pointer versions
   intent: in
@@ -2169,6 +2226,8 @@ c_in_vector<string>_buf:
   owner: library
 c_in_void:
   name: c_in_void
+  comments:
+  - Pass cxx variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -2184,6 +2243,8 @@ c_in_void:
   owner: library
 c_in_void*:
   name: c_in_void*
+  comments:
+  - Pass cxx variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -2199,6 +2260,8 @@ c_in_void*:
   owner: library
 c_in_void**:
   name: c_in_void**
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Treat as an assumed length array in Fortran interface.
   intent: in
@@ -2218,6 +2281,7 @@ c_in_void*_cdesc:
   name: c_in_void*_cdesc
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Pass cxx variable to library.
   intent: in
   i_arg_names:
   - '{i_var_cdesc}'
@@ -2244,6 +2308,8 @@ c_in_void*_cdesc:
     - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
 c_inout_bool_*:
   name: c_inout_bool_*
+  comments:
+  - Pass cxx variable to library.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2259,6 +2325,8 @@ c_inout_bool_*:
   owner: library
 c_inout_char*:
   name: c_inout_char*
+  comments:
+  - Pass cxx variable to library.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2276,6 +2344,7 @@ c_inout_char*_buf:
   name: c_inout_char*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx local variable to library.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2291,15 +2360,16 @@ c_inout_char*_buf:
   - char *{c_var}
   - int {c_var_len}
   c_arg_call:
-  - '{c_var_str}'
+  - '{c_local_cxx}'
   c_pre_call:
-  - "char * {c_var_str} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
+  - "char * {c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
   c_post_call:
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_var_str},\t -1);"
-  - '{c_helper_char_free}({c_var_str});'
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
+  - '{c_helper_char_free}({c_local_cxx});'
   c_temps:
   - len
-  - str
+  c_local:
+  - cxx
   c_helper:
   - char_alloc
   - char_copy
@@ -2307,6 +2377,8 @@ c_inout_char*_buf:
   owner: library
 c_inout_enum*:
   name: c_inout_enum*
+  comments:
+  - Pass address of local cxx variable to library.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2328,6 +2400,8 @@ c_inout_enum*:
   owner: library
 c_inout_native&:
   name: c_inout_native&
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2353,6 +2427,8 @@ c_inout_native&_hidden:
   owner: library
 c_inout_native*:
   name: c_inout_native*
+  comments:
+  - Pass cxx variable to library.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2370,6 +2446,7 @@ c_inout_native*_cdesc:
   name: c_inout_native*_cdesc
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Pass cxx variable to library.
   intent: inout
   i_arg_names:
   - '{i_var_cdesc}'
@@ -2409,6 +2486,7 @@ c_inout_shadow&:
   comments:
   - Pass a shadow type to C wrapper.
   - Cast C argument to local C++ variable.
+  - Pass cxx local variable to library.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2431,6 +2509,7 @@ c_inout_shadow*:
   comments:
   - Pass a shadow type to C wrapper.
   - Cast C argument to local C++ variable.
+  - Pass cxx local variable to library.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2453,6 +2532,7 @@ c_inout_smartptr<shadow>*:
   comments:
   - Pass a shadow type to C wrapper.
   - Cast C argument to local C++ variable.
+  - Pass cxx local variable to library.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2474,6 +2554,7 @@ c_inout_string&:
   name: c_inout_string&
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx local variable to library.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2502,6 +2583,7 @@ c_inout_string&_buf:
   name: c_inout_string&_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx local variable to library.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2534,6 +2616,7 @@ c_inout_string*:
   name: c_inout_string*
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass address of local cxx variable to library.
   notes:
   - XXX - the fortran wrapper is incorrect since it is passing buf
   - '  but only accepting one argument. Confused with f_inout_string*_buf'
@@ -2565,6 +2648,7 @@ c_inout_string*_buf:
   name: c_inout_string*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass address of local cxx variable to library.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2595,6 +2679,8 @@ c_inout_string*_buf:
   owner: library
 c_inout_struct&:
   name: c_inout_struct&
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2610,6 +2696,8 @@ c_inout_struct&:
   owner: library
 c_inout_struct*:
   name: c_inout_struct*
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
@@ -2630,6 +2718,7 @@ c_inout_vector<native>&_buf_copy:
   name: c_inout_vector<native>&_buf_copy
   comments:
   - Pass argument and size by reference to C.
+  - Pass cxx local variable to library.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2697,6 +2786,7 @@ c_inout_vector<native>*_buf_copy:
   name: c_inout_vector<native>*_buf_copy
   comments:
   - Pass argument and size by reference to C.
+  - Pass cxx local variable to library.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2764,6 +2854,7 @@ c_inout_vector<native>_buf_copy:
   name: c_inout_vector<native>_buf_copy
   comments:
   - Pass argument and size by reference to C.
+  - Pass cxx local variable to library.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2836,6 +2927,8 @@ c_inout_vector<scalar>&:
   notimplemented: true
 c_inout_void**:
   name: c_inout_void**
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Treat as an assumed length array in Fortran interface.
   intent: inout
@@ -2855,6 +2948,7 @@ c_inout_void*_cdesc:
   name: c_inout_void*_cdesc
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Pass cxx variable to library.
   intent: inout
   i_arg_names:
   - '{i_var_cdesc}'
@@ -2879,6 +2973,54 @@ c_inout_void*_cdesc:
   lang_cxx:
     c_pre_call:
     - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
+c_mixin_arg-call-cvar:
+  name: c_mixin_arg-call-cvar
+  comments:
+  - Pass cxx variable to library.
+  intent: mixin
+  c_arg_call:
+  - '{cxx_var}'
+  owner: library
+c_mixin_arg-call-cvar-address:
+  name: c_mixin_arg-call-cvar-address
+  comments:
+  - Pass address of cxx variable to library.
+  intent: mixin
+  c_arg_call:
+  - '&{cxx_var}'
+  owner: library
+c_mixin_arg-call-cvar-deref:
+  name: c_mixin_arg-call-cvar-deref
+  comments:
+  - Pass dereference of cxx variable to library.
+  intent: mixin
+  c_arg_call:
+  - '*{cxx_var}'
+  owner: library
+c_mixin_arg-call-cxx:
+  name: c_mixin_arg-call-cxx
+  comments:
+  - Pass cxx local variable to library.
+  intent: mixin
+  c_arg_call:
+  - '{c_local_cxx}'
+  owner: library
+c_mixin_arg-call-cxx-address:
+  name: c_mixin_arg-call-cxx-address
+  comments:
+  - Pass address of local cxx variable to library.
+  intent: mixin
+  c_arg_call:
+  - '&{c_local_cxx}'
+  owner: library
+c_mixin_arg-call-cxx-deref:
+  name: c_mixin_arg-call-cxx-deref
+  comments:
+  - Pass dereference of local cxx variable to library.
+  intent: mixin
+  c_arg_call:
+  - '*{c_local_cxx}'
+  owner: library
 c_mixin_arg_cfi:
   name: c_mixin_arg_cfi
   comments:
@@ -2903,8 +3045,6 @@ c_mixin_arg_character_cfi:
   - 'character(len=*){f_intent_attr} :: {i_var}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
-  c_arg_call:
-  - '{c_local_cxx}'
   c_pre_call:
   - char *{c_local_cxx} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   c_temps:
@@ -2929,8 +3069,6 @@ c_mixin_arg_native_cfi:
     - '{f_kind}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
-  c_arg_call:
-  - '{c_local_cxx}'
   c_temps:
   - cfi
   c_local:
@@ -2956,8 +3094,6 @@ c_mixin_cast-argument:
   comments:
   - Cast C argument to local C++ variable.
   intent: mixin
-  c_arg_call:
-  - '{c_local_cxx}'
   c_pre_call:
   - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
   c_local:
@@ -3020,8 +3156,6 @@ c_mixin_declare-arg:
   intent: mixin
   c_arg_decl:
   - '{gen.cdecl.c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 c_mixin_declare-fortran-result:
   name: c_mixin_declare-fortran-result
@@ -3174,8 +3308,6 @@ c_mixin_in_character_buf:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
-  c_arg_call:
-  - '{cxx_var}'
   c_temps:
   - len
   owner: library
@@ -3186,8 +3318,8 @@ c_mixin_inout_vector<native>_cdesc:
   - Pass array_type to C which will fill it in.
   - Pass argument and size to C.
   - Pass array_type to C which will fill it in.
-  - Fill cdesc with vector information,
-  - ' Return address and size of vector data.'
+  - Fill cdesc with vector information.
+  - Return address and size of vector data.
   intent: mixin
   i_arg_names:
   - '{i_var}'
@@ -3207,8 +3339,6 @@ c_mixin_inout_vector<native>_cdesc:
   - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_size}
   - '{C_array_type} *{c_var_cdesc}'
-  c_arg_call:
-  - '{c_local_cxx}'
   c_pre_call:
   - "std::vector<{cxx_T}> *{c_local_cxx} = \tnew std::vector<{cxx_T}>\t(\t{c_var},\
     \ {c_var} + {c_var_size});"
@@ -3262,6 +3392,16 @@ c_mixin_inout_vector_cdesc:
   - cdesc
   c_helper:
   - array_context
+  owner: library
+c_mixin_local-string:
+  name: c_mixin_local-string
+  comments:
+  - Create local std::string from the argument.
+  intent: mixin
+  c_pre_call:
+  - '{c_const}std::string {c_local_cxx}({c_var});'
+  c_local:
+  - cxx
   owner: library
 c_mixin_make-shared:
   name: c_mixin_make-shared
@@ -3347,21 +3487,19 @@ c_mixin_noargs:
   owner: library
 c_mixin_out_native**:
   name: c_mixin_out_native**
+  comments:
+  - Declare a local C pointer.
   intent: mixin
-  c_arg_call:
-  - '&{cxx_var}'
   c_pre_call:
   - '{c_const}{cxx_type} *{cxx_var};'
   owner: library
 c_mixin_out_vector<native>_cdesc:
   name: c_mixin_out_vector<native>_cdesc
   comments:
-  - Fill cdesc with vector information,
-  - ' Return address and size of vector data.'
-  - Create a std::vector on the stack and pass to C++.
+  - Fill cdesc with vector information.
+  - Return address and size of vector data.
+  - Create a local std::vector.
   intent: mixin
-  c_arg_call:
-  - '{c_local_cxx}'
   c_pre_call:
   - "{c_const}std::vector<{cxx_T}>\t *{c_local_cxx} = new std::vector<{cxx_T}>;"
   c_post_call:
@@ -3445,8 +3583,8 @@ c_mixin_unknown:
 c_mixin_vector_cdesc_fill-cdesc:
   name: c_mixin_vector_cdesc_fill-cdesc
   comments:
-  - Fill cdesc with vector information,
-  - ' Return address and size of vector data.'
+  - Fill cdesc with vector information.
+  - Return address and size of vector data.
   intent: mixin
   c_post_call:
   - '{c_var_cdesc}->base_addr = {c_local_cxx}->empty() ? {nullptr} : &{c_local_cxx}->front();'
@@ -3460,6 +3598,8 @@ c_mixin_vector_cdesc_fill-cdesc:
   owner: library
 c_out_bool_*:
   name: c_out_bool_*
+  comments:
+  - Pass cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -3475,6 +3615,8 @@ c_out_bool_*:
   owner: library
 c_out_char*:
   name: c_out_char*
+  comments:
+  - Pass cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -3492,6 +3634,7 @@ c_out_char_*_buf:
   name: c_out_char_*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -3517,6 +3660,8 @@ c_out_char_*_buf:
   owner: library
 c_out_enum*:
   name: c_out_enum*
+  comments:
+  - Pass address of local cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -3538,6 +3683,8 @@ c_out_enum*:
   owner: library
 c_out_native&:
   name: c_out_native&
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -3563,6 +3710,8 @@ c_out_native&_hidden:
   owner: library
 c_out_native*:
   name: c_out_native*
+  comments:
+  - Pass cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -3578,6 +3727,8 @@ c_out_native*:
   owner: library
 c_out_native*&:
   name: c_out_native*&
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -3593,6 +3744,8 @@ c_out_native*&:
   owner: library
 c_out_native**:
   name: c_out_native**
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'
   intent: out
@@ -3610,6 +3763,8 @@ c_out_native**:
   owner: library
 c_out_native***:
   name: c_out_native***
+  comments:
+  - Pass cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -3625,6 +3780,8 @@ c_out_native***:
   owner: library
 c_out_native**_raw:
   name: c_out_native**_raw
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'
   intent: out
@@ -3644,6 +3801,7 @@ c_out_native*_cdesc:
   name: c_out_native*_cdesc
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Pass cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var_cdesc}'
@@ -3681,6 +3839,7 @@ c_out_native*_hidden:
 c_out_procedure*_funptr:
   name: c_out_procedure*_funptr
   comments:
+  - Pass cxx variable to library.
   - Pass type(C_FUNPTR) argument.
   notes:
   - Return a function pointer in an argument.
@@ -3699,6 +3858,8 @@ c_out_procedure*_funptr:
   owner: library
 c_out_string&:
   name: c_out_string&
+  comments:
+  - Pass cxx local variable to library.
   notes:
   - Similar to f_out_string*
   intent: out
@@ -3729,6 +3890,7 @@ c_out_string&_buf:
   name: c_out_string&_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx local variable to library.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -3758,6 +3920,8 @@ c_out_string&_buf:
   owner: library
 c_out_string*:
   name: c_out_string*
+  comments:
+  - Pass address of local cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -3784,6 +3948,8 @@ c_out_string*:
     - <cstring>
 c_out_string**:
   name: c_out_string**
+  comments:
+  - Pass cxx variable to library.
   notes:
   - std::string **arg+intent(out)+dimension(size)
   - Returning a pointer to a string*. However, this needs additional
@@ -3807,6 +3973,7 @@ c_out_string**_cdesc_copy:
   comments:
   - Collect information about a string argument.
   - Pass cdesc as argument to C wrapper.
+  - Pass address of cxx variable to library.
   notes:
   - Pass a cdesc down to describe the memory and a capsule to hold the
   - C++ array. Copy into Fortran argument.
@@ -3835,6 +4002,7 @@ c_out_string*_buf:
   name: c_out_string*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass address of local cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -3864,6 +4032,8 @@ c_out_string*_buf:
   owner: library
 c_out_struct&:
   name: c_out_struct&
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -3879,6 +4049,8 @@ c_out_struct&:
   owner: library
 c_out_struct*:
   name: c_out_struct*
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
@@ -3906,6 +4078,7 @@ c_out_vector<native>&_buf_copy:
   name: c_out_vector<native>&_buf_copy
   comments:
   - Pass argument and size by reference to C.
+  - Pass cxx local variable to library.
   notes:
   - XXX - need to test scalar and pointer versions
   intent: out
@@ -3981,9 +4154,14 @@ c_out_vector<native>&_buf_malloc:
 c_out_vector<native>&_cdesc:
   name: c_out_vector<native>&_cdesc
   comments:
-  - copy into user's existing array.
+  - Pass cdesc as argument to C wrapper.
+  - Copy std::vector into user's memory.
+  - Fill cdesc with vector information.
+  - Return address and size of vector data.
+  - Create a local std::vector.
+  - Pass dereference of local cxx variable to library.
   notes:
-  - c_local_cxx is always a pointer to a vector.
+  - Not supported for C wrappers.
   intent: out
   i_arg_names:
   - '{i_var_cdesc}'
@@ -4009,7 +4187,9 @@ c_out_vector<native>&_cdesc:
   c_local:
   - cxx
   c_helper:
+  - array_context
   - copy_array
+  - type_defines
   - type_defines
   destructor_name: std_vector_{cxx_T}
   destructor:
@@ -4020,6 +4200,7 @@ c_out_vector<native>*_buf_copy:
   name: c_out_vector<native>*_buf_copy
   comments:
   - Pass argument and size by reference to C.
+  - Pass cxx local variable to library.
   notes:
   - XXX - need to test scalar and pointer versions
   intent: out
@@ -4095,9 +4276,14 @@ c_out_vector<native>*_buf_malloc:
 c_out_vector<native>*_cdesc:
   name: c_out_vector<native>*_cdesc
   comments:
-  - copy into user's existing array.
+  - Pass cdesc as argument to C wrapper.
+  - Copy std::vector into user's memory.
+  - Fill cdesc with vector information.
+  - Return address and size of vector data.
+  - Create a local std::vector.
+  - Pass cxx local variable to library.
   notes:
-  - c_local_cxx is always a pointer to a vector.
+  - Not supported for C wrappers.
   intent: out
   i_arg_names:
   - '{i_var_cdesc}'
@@ -4123,7 +4309,9 @@ c_out_vector<native>*_cdesc:
   c_local:
   - cxx
   c_helper:
+  - array_context
   - copy_array
+  - type_defines
   - type_defines
   destructor_name: std_vector_{cxx_T}
   destructor:
@@ -4134,6 +4322,7 @@ c_out_vector<native>_buf_copy:
   name: c_out_vector<native>_buf_copy
   comments:
   - Pass argument and size by reference to C.
+  - Pass cxx local variable to library.
   notes:
   - XXX - need to test scalar and pointer versions
   intent: out
@@ -4215,6 +4404,8 @@ c_out_vector<string>&:
   notimplemented: true
 c_out_vector<string>&_buf_copy:
   name: c_out_vector<string>&_buf_copy
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -4234,6 +4425,7 @@ c_out_vector<string>&_cdesc:
   comments:
   - Collect information about a string argument.
   - Pass cdesc as argument to C wrapper.
+  - Pass cxx variable to library.
   notes:
   - f_arg_decl replaces values from f_mixin_str_array.
   - This one needs to use targs.
@@ -4267,6 +4459,7 @@ c_out_vector<string>&_cdesc_allocatable:
   - Allocate a vector<string> variable.
   - Copy into Fortran allocated memory.
   - Release memory from capsule.
+  - Pass dereference of local cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var_cdesc}'
@@ -4306,6 +4499,8 @@ c_out_vector<string>&_cdesc_allocatable:
   owner: library
 c_out_vector<string>*_buf_copy:
   name: c_out_vector<string>*_buf_copy
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -4322,6 +4517,8 @@ c_out_vector<string>*_buf_copy:
   notimplemented: true
 c_out_vector<string>_buf_copy:
   name: c_out_vector<string>_buf_copy
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -4338,6 +4535,8 @@ c_out_vector<string>_buf_copy:
   notimplemented: true
 c_out_void*&:
   name: c_out_void*&
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -4353,6 +4552,8 @@ c_out_void*&:
   owner: library
 c_out_void**:
   name: c_out_void**
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Treat as an assumed length array in Fortran interface.
   intent: out
@@ -4372,6 +4573,7 @@ c_out_void*_cdesc:
   name: c_out_void*_cdesc
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Pass cxx variable to library.
   intent: out
   i_arg_names:
   - '{i_var_cdesc}'
@@ -4414,8 +4616,6 @@ c_setter_native:
     - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   owner: library
@@ -4431,8 +4631,6 @@ c_setter_native*:
     - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   owner: library
@@ -4455,8 +4653,6 @@ c_setter_string_scalar_buf:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - "{CXX_this}->{field_name} = std::string({c_var},\t {c_var_len});"
   c_temps:
@@ -4646,6 +4842,7 @@ f_function_char*_arg:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   notes:
   - Change function result into an argument
@@ -4712,6 +4909,7 @@ f_function_char*_buf_arg:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   notes:
   - Change function result into an argument
@@ -4778,6 +4976,7 @@ f_function_char*_buf_copy:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   notes:
   - char *getname() +len(30)
@@ -6202,6 +6401,7 @@ f_function_string&_buf:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
@@ -6327,6 +6527,7 @@ f_function_string&_buf_caller:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
   - Copy cxx variable into c variable.
+  - Pass cxx variable to library.
   - Delete the cxx variable.
   intent: function
   f_arg_decl:
@@ -6381,6 +6582,7 @@ f_function_string&_buf_copy:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
@@ -6440,6 +6642,7 @@ f_function_string&_buf_copy_caller:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
   - Copy cxx variable into c variable.
+  - Pass cxx variable to library.
   - Delete the cxx variable.
   intent: function
   f_arg_decl:
@@ -6968,6 +7171,7 @@ f_function_string&_cfi_copy:
   - Pass argument to C wrapper
   - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
+  - Pass cxx local variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
@@ -7165,6 +7369,7 @@ f_function_string*_buf:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
@@ -7224,6 +7429,7 @@ f_function_string*_buf_caller:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
   - Copy cxx variable into c variable.
+  - Pass cxx variable to library.
   - Delete the cxx variable.
   intent: function
   f_arg_decl:
@@ -7278,6 +7484,7 @@ f_function_string*_buf_copy:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
@@ -7337,6 +7544,7 @@ f_function_string*_buf_copy_caller:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
   - Copy cxx variable into c variable.
+  - Pass cxx variable to library.
   - Delete the cxx variable.
   intent: function
   f_arg_decl:
@@ -7813,6 +8021,7 @@ f_function_string*_cfi_copy:
   - Pass argument to C wrapper
   - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
+  - Pass cxx local variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
@@ -8010,6 +8219,7 @@ f_function_string_buf:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
@@ -8135,6 +8345,7 @@ f_function_string_buf_caller:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
   - Copy cxx variable into c variable.
+  - Pass cxx variable to library.
   - Delete the cxx variable.
   intent: function
   f_arg_decl:
@@ -8189,6 +8400,7 @@ f_function_string_buf_copy:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
@@ -8248,6 +8460,7 @@ f_function_string_buf_copy_caller:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
   - Copy cxx variable into c variable.
+  - Pass cxx variable to library.
   - Delete the cxx variable.
   intent: function
   f_arg_decl:
@@ -8680,6 +8893,7 @@ f_function_string_cfi_copy:
   - Pass argument to C wrapper
   - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
+  - Pass cxx local variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
@@ -8980,8 +9194,8 @@ f_function_vector<native>_cdesc_allocatable:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
-  - Fill cdesc with vector information,
-  - ' Return address and size of vector data.'
+  - Fill cdesc with vector information.
+  - Return address and size of vector data.
   notes:
   - Almost same as intent_out_buf.
   - Similar to f_vector_out_allocatable but must declare result variable.
@@ -9342,6 +9556,8 @@ f_getter_struct*_fapi_pointer:
   owner: library
 f_in_bool:
   name: f_in_bool
+  comments:
+  - Pass cxx variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -9374,6 +9590,8 @@ f_in_bool:
   owner: library
 f_in_char:
   name: f_in_char
+  comments:
+  - Pass cxx variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -9393,6 +9611,8 @@ f_in_char:
   owner: library
 f_in_char*:
   name: f_in_char*
+  comments:
+  - Pass cxx variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -9415,6 +9635,8 @@ f_in_char*:
   owner: library
 f_in_char**:
   name: f_in_char**
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Treat as an assumed length array in Fortran interface.
   intent: in
@@ -9434,6 +9656,7 @@ f_in_char**_buf:
   name: f_in_char**_buf
   comments:
   - Pass argument, size and len to C.
+  - Pass cxx local variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -9486,6 +9709,7 @@ f_in_char**_cfi:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
+  - Pass cxx local variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -9523,6 +9747,7 @@ f_in_char*_buf:
   name: f_in_char*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx local variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -9557,20 +9782,23 @@ f_in_char*_buf:
   - char *{c_var}
   - int {c_var_len}
   c_arg_call:
-  - '{c_var_str}'
+  - '{c_local_cxx}'
   c_pre_call:
-  - "char * {c_var_str} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
+  - "char * {c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
   c_post_call:
-  - '{c_helper_char_free}({c_var_str});'
+  - '{c_helper_char_free}({c_local_cxx});'
   c_temps:
   - len
-  - str
+  c_local:
+  - cxx
   c_helper:
   - char_alloc
   - char_free
   owner: library
 f_in_char*_capi:
   name: f_in_char*_capi
+  comments:
+  - Pass cxx variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -9596,6 +9824,7 @@ f_in_char*_cfi:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
+  - Pass cxx local variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -9630,6 +9859,8 @@ f_in_char*_cfi:
   owner: library
 f_in_enum:
   name: f_in_enum
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Use gen.cidecl to get the C interface type.
   - enums use option.F_enum_type to control the C type.
@@ -9659,6 +9890,8 @@ f_in_enum:
   owner: library
 f_in_native:
   name: f_in_native
+  comments:
+  - Pass cxx variable to library.
   notes:
   - An intent of 'none' is used with function pointers
   intent: in
@@ -9683,6 +9916,8 @@ f_in_native:
   owner: library
 f_in_native&:
   name: f_in_native&
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -9705,6 +9940,8 @@ f_in_native&:
   owner: library
 f_in_native*:
   name: f_in_native*
+  comments:
+  - Pass cxx variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -9727,6 +9964,8 @@ f_in_native*:
   owner: library
 f_in_native**:
   name: f_in_native**
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Any array of pointers.  Assumed to be non-contiguous memory.
   - All Fortran can do is treat as a type(C_PTR).
@@ -9754,6 +9993,7 @@ f_in_native*_cdesc:
   name: f_in_native*_cdesc
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Pass cxx variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -9802,6 +10042,7 @@ f_in_native*_cfi:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Native argument which use CFI_desc_t.
+  - Pass cxx local variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -9832,6 +10073,8 @@ f_in_native*_cfi:
   owner: library
 f_in_procedure:
   name: f_in_procedure
+  comments:
+  - Pass cxx variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -9852,6 +10095,8 @@ f_in_procedure:
   owner: library
 f_in_procedure_external:
   name: f_in_procedure_external
+  comments:
+  - Pass cxx variable to library.
   notes:
   - EXTERNAL is not allowed in BIND(C), so force wrapper.
   intent: in
@@ -9876,6 +10121,7 @@ f_in_procedure_external:
 f_in_procedure_funptr:
   name: f_in_procedure_funptr
   comments:
+  - Pass cxx variable to library.
   - Pass type(C_FUNPTR) argument.
   notes:
   - Accept a function pointer in an argument.
@@ -9905,6 +10151,7 @@ f_in_shadow:
   name: f_in_shadow
   comments:
   - Pass a shadow type to C wrapper.
+  - Pass dereference of local cxx variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -9936,6 +10183,7 @@ f_in_shadow&:
   name: f_in_shadow&
   comments:
   - Pass a shadow type to C wrapper.
+  - Pass dereference of local cxx variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -9968,6 +10216,7 @@ f_in_shadow*:
   comments:
   - Pass a shadow type to C wrapper.
   - Cast C argument to local C++ variable.
+  - Pass cxx local variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -10000,6 +10249,7 @@ f_in_smartptr<shadow>*:
   comments:
   - Pass a shadow type to C wrapper.
   - Cast C argument to local C++ variable.
+  - Pass cxx local variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -10029,6 +10279,8 @@ f_in_smartptr<shadow>*:
   owner: library
 f_in_string&:
   name: f_in_string&
+  comments:
+  - Pass cxx local variable to library.
   notes:
   - Similar to f_in_string*, but c_arg_call is pass by value
   intent: in
@@ -10052,6 +10304,7 @@ f_in_string&_buf:
   name: f_in_string&_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx local variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -10102,6 +10355,7 @@ f_in_string&_cfi:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
+  - Pass cxx local variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -10133,6 +10387,7 @@ f_in_string*:
   name: f_in_string*
   comments:
   - Create local std::string from the argument.
+  - Pass address of local cxx variable to library.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -10154,6 +10409,7 @@ f_in_string*_buf:
   name: f_in_string*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass address of local cxx variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -10204,6 +10460,7 @@ f_in_string*_cfi:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
+  - Pass cxx local variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -10235,6 +10492,7 @@ f_in_string_buf:
   name: f_in_string_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx local variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -10286,6 +10544,7 @@ f_in_string_cfi:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
+  - Pass cxx local variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -10315,6 +10574,8 @@ f_in_string_cfi:
   owner: library
 f_in_struct:
   name: f_in_struct
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
@@ -10340,6 +10601,8 @@ f_in_struct:
   owner: library
 f_in_struct&:
   name: f_in_struct&
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -10362,6 +10625,8 @@ f_in_struct&:
   owner: library
 f_in_struct*:
   name: f_in_struct*
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
@@ -10387,6 +10652,8 @@ f_in_struct*:
   owner: library
 f_in_unknown:
   name: f_in_unknown
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Used with MPI types
   intent: in
@@ -10462,6 +10729,7 @@ f_in_vector<native>&_buf:
   name: f_in_vector<native>&_buf
   comments:
   - Pass argument and size by value to C.
+  - Pass cxx local variable to library.
   notes:
   - XXX - need to test scalar and pointer versions
   intent: in
@@ -10503,6 +10771,7 @@ f_in_vector<native>*_buf:
   name: f_in_vector<native>*_buf
   comments:
   - Pass argument and size by value to C.
+  - Pass cxx local variable to library.
   notes:
   - XXX - need to test scalar and pointer versions
   intent: in
@@ -10544,6 +10813,7 @@ f_in_vector<native>_buf:
   name: f_in_vector<native>_buf
   comments:
   - Pass argument and size by value to C.
+  - Pass cxx local variable to library.
   notes:
   - XXX - need to test scalar and pointer versions
   intent: in
@@ -10585,6 +10855,7 @@ f_in_vector<string>&_buf:
   name: f_in_vector<string>&_buf
   comments:
   - Pass argument, size and len to C.
+  - Pass cxx local variable to library.
   notes:
   - XXX - need to test scalar and pointer versions
   intent: in
@@ -10648,6 +10919,7 @@ f_in_vector<string>*_buf:
   name: f_in_vector<string>*_buf
   comments:
   - Pass argument, size and len to C.
+  - Pass cxx local variable to library.
   notes:
   - XXX - need to test scalar and pointer versions
   intent: in
@@ -10711,6 +10983,7 @@ f_in_vector<string>_buf:
   name: f_in_vector<string>_buf
   comments:
   - Pass argument, size and len to C.
+  - Pass cxx local variable to library.
   notes:
   - XXX - need to test scalar and pointer versions
   intent: in
@@ -10776,6 +11049,8 @@ f_in_vector_&_cdesc_targ_native_scalar:
   owner: library
 f_in_void:
   name: f_in_void
+  comments:
+  - Pass cxx variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -10798,6 +11073,8 @@ f_in_void:
   owner: library
 f_in_void*:
   name: f_in_void*
+  comments:
+  - Pass cxx variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -10820,6 +11097,8 @@ f_in_void*:
   owner: library
 f_in_void**:
   name: f_in_void**
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Treat as an assumed length array in Fortran interface.
   intent: in
@@ -10844,6 +11123,8 @@ f_in_void**:
   owner: library
 f_in_void**_cfi:
   name: f_in_void**_cfi
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Treat as an assumed length array in Fortran interface.
   intent: in
@@ -10870,6 +11151,7 @@ f_in_void*_cdesc:
   name: f_in_void*_cdesc
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Pass cxx variable to library.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -10915,6 +11197,8 @@ f_in_void*_cdesc:
   owner: library
 f_inout_bool*:
   name: f_inout_bool*
+  comments:
+  - Pass cxx variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -10949,6 +11233,8 @@ f_inout_bool*:
   owner: library
 f_inout_char*:
   name: f_inout_char*
+  comments:
+  - Pass cxx variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -10973,6 +11259,7 @@ f_inout_char*_buf:
   name: f_inout_char*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx local variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -11007,15 +11294,16 @@ f_inout_char*_buf:
   - char *{c_var}
   - int {c_var_len}
   c_arg_call:
-  - '{c_var_str}'
+  - '{c_local_cxx}'
   c_pre_call:
-  - "char * {c_var_str} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
+  - "char * {c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
   c_post_call:
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_var_str},\t -1);"
-  - '{c_helper_char_free}({c_var_str});'
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
+  - '{c_helper_char_free}({c_local_cxx});'
   c_temps:
   - len
-  - str
+  c_local:
+  - cxx
   c_helper:
   - char_alloc
   - char_copy
@@ -11023,6 +11311,8 @@ f_inout_char*_buf:
   owner: library
 f_inout_char*_capi:
   name: f_inout_char*_capi
+  comments:
+  - Pass cxx variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -11048,6 +11338,7 @@ f_inout_char*_cfi:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
+  - Pass cxx local variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -11084,6 +11375,8 @@ f_inout_char*_cfi:
   owner: library
 f_inout_enum*:
   name: f_inout_enum*
+  comments:
+  - Pass address of local cxx variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -11112,6 +11405,8 @@ f_inout_enum*:
   owner: library
 f_inout_native&:
   name: f_inout_native&
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -11144,6 +11439,8 @@ f_inout_native&_hidden:
   owner: library
 f_inout_native*:
   name: f_inout_native*
+  comments:
+  - Pass cxx variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -11168,6 +11465,7 @@ f_inout_native*_cdesc:
   name: f_inout_native*_cdesc
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Pass cxx variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -11216,6 +11514,7 @@ f_inout_native*_cfi:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Native argument which use CFI_desc_t.
+  - Pass cxx local variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -11259,6 +11558,7 @@ f_inout_shadow&:
   comments:
   - Pass a shadow type to C wrapper.
   - Cast C argument to local C++ variable.
+  - Pass cxx local variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -11291,6 +11591,7 @@ f_inout_shadow*:
   comments:
   - Pass a shadow type to C wrapper.
   - Cast C argument to local C++ variable.
+  - Pass cxx local variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -11323,6 +11624,7 @@ f_inout_smartptr<shadow>*:
   comments:
   - Pass a shadow type to C wrapper.
   - Cast C argument to local C++ variable.
+  - Pass cxx local variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -11354,6 +11656,7 @@ f_inout_string&:
   name: f_inout_string&
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx local variable to library.
   intent: inout
   f_declare:
   - integer(C_INT) {f_var_len}
@@ -11392,6 +11695,7 @@ f_inout_string&_buf:
   name: f_inout_string&_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx local variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -11444,6 +11748,7 @@ f_inout_string&_cfi:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
+  - Pass address of local cxx variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -11482,6 +11787,7 @@ f_inout_string*:
   name: f_inout_string*
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass address of local cxx variable to library.
   notes:
   - XXX - the fortran wrapper is incorrect since it is passing buf
   - '  but only accepting one argument. Confused with f_inout_string*_buf'
@@ -11523,6 +11829,7 @@ f_inout_string*_buf:
   name: f_inout_string*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass address of local cxx variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -11575,6 +11882,7 @@ f_inout_string*_cfi:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
+  - Pass address of local cxx variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -11611,6 +11919,8 @@ f_inout_string*_cfi:
   owner: library
 f_inout_struct&:
   name: f_inout_struct&
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -11633,6 +11943,8 @@ f_inout_struct&:
   owner: library
 f_inout_struct*:
   name: f_inout_struct*
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
@@ -11663,8 +11975,9 @@ f_inout_vector<native>&_cdesc:
   - Pass array_type to C which will fill it in.
   - Pass argument and size to C.
   - Pass array_type to C which will fill it in.
-  - Fill cdesc with vector information,
-  - ' Return address and size of vector data.'
+  - Fill cdesc with vector information.
+  - Return address and size of vector data.
+  - Pass dereference of local cxx variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -11739,8 +12052,9 @@ f_inout_vector<native>&_cdesc_allocatable:
   - Pass array_type to C which will fill it in.
   - Pass argument and size to C.
   - Pass array_type to C which will fill it in.
-  - Fill cdesc with vector information,
-  - ' Return address and size of vector data.'
+  - Fill cdesc with vector information.
+  - Return address and size of vector data.
+  - Pass dereference of local cxx variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -11814,6 +12128,7 @@ f_inout_vector_buf_targ_string_scalar:
   name: f_inout_vector_buf_targ_string_scalar
   comments:
   - Pass argument, size and len to C.
+  - Pass cxx local variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -11886,6 +12201,8 @@ f_inout_vector_buf_targ_string_scalar:
   owner: library
 f_inout_void**:
   name: f_inout_void**
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Treat as an assumed length array in Fortran interface.
   intent: inout
@@ -11912,6 +12229,7 @@ f_inout_void*_cdesc:
   name: f_inout_void*_cdesc
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Pass cxx variable to library.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -12178,8 +12496,6 @@ f_mixin_helper_array_string_allocatable:
   - call {f_helper_array_string_allocatable}({f_var_cdesc}, {f_var_capsule})
   f_helper:
   - array_string_allocatable
-  c_arg_call:
-  - '&{cxx_var}'
   c_pre_call:
   - std::string *{cxx_var};
   c_post_call:
@@ -12204,8 +12520,6 @@ f_mixin_helper_vector_string_allocatable:
   - call {f_helper_vector_string_allocatable}({f_var_cdesc}, {f_var_capsule})
   f_helper:
   - vector_string_allocatable
-  c_arg_call:
-  - '*{c_local_cxx}'
   c_pre_call:
   - std::vector<std::string> *{c_local_cxx} = new std::vector<std::string>;
   c_post_call:
@@ -12496,12 +12810,32 @@ f_mixin_out_native_cdesc_pointer:
 f_mixin_out_string**_cfi:
   name: f_mixin_out_string**_cfi
   intent: mixin
-  c_arg_call:
-  - '&{c_var_cxx}'
   c_pre_call:
-  - std::string *{c_var_cxx};
-  c_temps:
+  - std::string *{c_local_cxx};
+  c_local:
   - cxx
+  owner: library
+f_mixin_out_vector<native>_copy:
+  name: f_mixin_out_vector<native>_copy
+  comments:
+  - Copy std::vector into user's memory.
+  intent: mixin
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{targs[0].f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
+  f_post_call:
+  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+  f_module:
+    iso_c_binding:
+    - '{targs[0].f_kind}'
+    - C_SIZE_T
+    - C_LOC
+  f_helper:
+  - copy_array
+  c_helper:
+  - copy_array
+  - type_defines
   owner: library
 f_mixin_out_vector_buf:
   name: f_mixin_out_vector_buf
@@ -12738,6 +13072,8 @@ f_mixin_use_capsule:
   owner: library
 f_none_bool:
   name: f_none_bool
+  comments:
+  - Pass cxx variable to library.
   intent: none
   f_arg_name:
   - '{f_var}'
@@ -12770,6 +13106,8 @@ f_none_bool:
   owner: library
 f_none_bool*:
   name: f_none_bool*
+  comments:
+  - Pass cxx variable to library.
   intent: none
   f_arg_name:
   - '{f_var}'
@@ -12802,6 +13140,8 @@ f_none_bool*:
   owner: library
 f_none_char:
   name: f_none_char
+  comments:
+  - Pass cxx variable to library.
   intent: none
   f_arg_name:
   - '{f_var}'
@@ -12821,6 +13161,8 @@ f_none_char:
   owner: library
 f_none_char*:
   name: f_none_char*
+  comments:
+  - Pass cxx variable to library.
   intent: none
   f_arg_name:
   - '{f_var}'
@@ -12843,6 +13185,8 @@ f_none_char*:
   owner: library
 f_none_native:
   name: f_none_native
+  comments:
+  - Pass cxx variable to library.
   notes:
   - An intent of 'none' is used with function pointers
   intent: none
@@ -12867,6 +13211,8 @@ f_none_native:
   owner: library
 f_none_native*:
   name: f_none_native*
+  comments:
+  - Pass cxx variable to library.
   intent: none
   f_arg_name:
   - '{f_var}'
@@ -12889,6 +13235,8 @@ f_none_native*:
   owner: library
 f_none_void*:
   name: f_none_void*
+  comments:
+  - Pass cxx variable to library.
   intent: none
   f_arg_name:
   - '{f_var}'
@@ -12911,6 +13259,8 @@ f_none_void*:
   owner: library
 f_out_bool*:
   name: f_out_bool*
+  comments:
+  - Pass cxx variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -12943,6 +13293,8 @@ f_out_bool*:
   owner: library
 f_out_char*:
   name: f_out_char*
+  comments:
+  - Pass cxx variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -12967,6 +13319,7 @@ f_out_char*_buf:
   name: f_out_char*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -13011,6 +13364,8 @@ f_out_char*_buf:
   owner: library
 f_out_char*_capi:
   name: f_out_char*_capi
+  comments:
+  - Pass cxx variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -13036,6 +13391,7 @@ f_out_char*_cfi:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
+  - Pass cxx local variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -13067,6 +13423,8 @@ f_out_char*_cfi:
   owner: library
 f_out_enum*:
   name: f_out_enum*
+  comments:
+  - Pass address of local cxx variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -13095,6 +13453,8 @@ f_out_enum*:
   owner: library
 f_out_native&:
   name: f_out_native&
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -13127,6 +13487,8 @@ f_out_native&_hidden:
   owner: library
 f_out_native*:
   name: f_out_native*
+  comments:
+  - Pass cxx variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -13151,6 +13513,8 @@ f_out_native*&_cdesc:
   name: f_out_native*&_cdesc
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Declare a local C pointer.
+  - Pass cxx variable to library.
   - Fill cdesc from native in the C wrapper.
   - Set Fortran pointer to native array.
   intent: out
@@ -13201,6 +13565,8 @@ f_out_native*&_cdesc_pointer:
   name: f_out_native*&_cdesc_pointer
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Declare a local C pointer.
+  - Pass cxx variable to library.
   - Fill cdesc from native in the C wrapper.
   - Set Fortran pointer to native array.
   intent: out
@@ -13249,6 +13615,8 @@ f_out_native*&_cdesc_pointer:
   owner: library
 f_out_native***:
   name: f_out_native***
+  comments:
+  - Pass cxx variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -13274,6 +13642,8 @@ f_out_native**_cdesc_allocatable:
   comments:
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from native in the C wrapper.
+  - Declare a local C pointer.
+  - Pass address of cxx variable to library.
   - Allocate Fortran native array for argument
   - then fill from cdesc using helper copy_array.
   - Pass capsule as argument to C wrapper.
@@ -13350,6 +13720,8 @@ f_out_native**_cdesc_pointer:
   name: f_out_native**_cdesc_pointer
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Declare a local C pointer.
+  - Pass address of cxx variable to library.
   - Fill cdesc from native in the C wrapper.
   - Set Fortran pointer to native array.
   notes:
@@ -13493,6 +13865,8 @@ f_out_native**_cfi_pointer:
   owner: library
 f_out_native**_raw:
   name: f_out_native**_raw
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'
   intent: out
@@ -13519,6 +13893,7 @@ f_out_native*_cdesc:
   name: f_out_native*_cdesc
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Pass cxx variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -13579,6 +13954,7 @@ f_out_native*_hidden:
 f_out_procedure*_funptr:
   name: f_out_procedure*_funptr
   comments:
+  - Pass cxx variable to library.
   - Pass type(C_FUNPTR) argument.
   notes:
   - Return a function pointer in an argument.
@@ -13608,6 +13984,7 @@ f_out_string&_buf:
   name: f_out_string&_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx local variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -13659,6 +14036,7 @@ f_out_string&_cfi:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
+  - Pass address of local cxx variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -13700,6 +14078,7 @@ f_out_string**_cdesc_allocatable:
   - Allocate a vector<string> variable.
   - Assign to std::string pointer from C++ function.
   - Copy into Fortran allocated memory.
+  - Pass address of cxx variable to library.
   - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   intent: out
@@ -13769,6 +14148,7 @@ f_out_string**_cdesc_copy:
   comments:
   - Collect information about a string argument.
   - Pass cdesc as argument to C wrapper.
+  - Pass address of cxx variable to library.
   notes:
   - Pass a cdesc down to describe the memory and a capsule to hold the
   - C++ array. Copy into Fortran argument.
@@ -13820,6 +14200,7 @@ f_out_string**_cfi_allocatable:
   name: f_out_string**_cfi_allocatable
   comments:
   - Make the C wrapper argument a CFI_desc_t.
+  - Pass address of local cxx variable to library.
   notes:
   - std::string **strs +intent(out)+dimension(nstrs)+deref(allocatable),
   - int *nstrs+intent(out)+hidden
@@ -13838,13 +14219,14 @@ f_out_string**_cfi_allocatable:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_arg_call:
-  - '&{c_var_cxx}'
+  - '&{c_local_cxx}'
   c_pre_call:
-  - std::string *{c_var_cxx};
+  - std::string *{c_local_cxx};
   c_post_call:
   - // Allocate and copy into {c_var}
   c_temps:
   - cfi
+  c_local:
   - cxx
   iface_header:
   - ISO_Fortran_binding.h
@@ -13853,6 +14235,7 @@ f_out_string**_cfi_copy:
   name: f_out_string**_cfi_copy
   comments:
   - Make the C wrapper argument a CFI_desc_t.
+  - Pass address of local cxx variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -13868,19 +14251,22 @@ f_out_string**_cfi_copy:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_arg_call:
-  - '&{c_var_cxx}'
+  - '&{c_local_cxx}'
   c_pre_call:
-  - std::string *{c_var_cxx};
+  - std::string *{c_local_cxx};
   c_post_call:
   - // Copy results into {c_var}
   c_temps:
   - cfi
+  c_local:
   - cxx
   iface_header:
   - ISO_Fortran_binding.h
   owner: library
 f_out_string**_copy:
   name: f_out_string**_copy
+  comments:
+  - Pass cxx variable to library.
   notes:
   - std::string **arg+intent(out)+dimension(size)
   - Returning a pointer to a string*. However, this needs additional
@@ -13903,6 +14289,7 @@ f_out_string*_buf:
   name: f_out_string*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  - Pass address of local cxx variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -13954,6 +14341,7 @@ f_out_string*_cfi:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
+  - Pass address of local cxx variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -13987,6 +14375,8 @@ f_out_string*_cfi:
   owner: library
 f_out_struct&:
   name: f_out_struct&
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -14009,6 +14399,8 @@ f_out_struct&:
   owner: library
 f_out_struct*:
   name: f_out_struct*
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
@@ -14035,9 +14427,14 @@ f_out_struct*:
 f_out_vector<native>&_cdesc:
   name: f_out_vector<native>&_cdesc
   comments:
-  - copy into user's existing array.
+  - Pass cdesc as argument to C wrapper.
+  - Copy std::vector into user's memory.
+  - Fill cdesc with vector information.
+  - Return address and size of vector data.
+  - Create a local std::vector.
+  - Pass dereference of local cxx variable to library.
   notes:
-  - c_local_cxx is always a pointer to a vector.
+  - Not supported for C wrappers.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -14057,6 +14454,7 @@ f_out_vector<native>&_cdesc:
   f_temps:
   - cdesc
   f_helper:
+  - array_context
   - copy_array
   f_need_wrapper: true
   i_arg_names:
@@ -14083,7 +14481,9 @@ f_out_vector<native>&_cdesc:
   c_local:
   - cxx
   c_helper:
+  - array_context
   - copy_array
+  - type_defines
   - type_defines
   destructor_name: std_vector_{cxx_T}
   destructor:
@@ -14094,9 +14494,10 @@ f_out_vector<native>&_cdesc_allocatable:
   name: f_out_vector<native>&_cdesc_allocatable
   comments:
   - Pass cdesc as argument to C wrapper.
-  - Fill cdesc with vector information,
-  - ' Return address and size of vector data.'
-  - Create a std::vector on the stack and pass to C++.
+  - Fill cdesc with vector information.
+  - Return address and size of vector data.
+  - Create a local std::vector.
+  - Pass dereference of local cxx variable to library.
   notes:
   - Copy into allocated array.
   intent: out
@@ -14154,9 +14555,14 @@ f_out_vector<native>&_cdesc_allocatable:
 f_out_vector<native>*_cdesc:
   name: f_out_vector<native>*_cdesc
   comments:
-  - copy into user's existing array.
+  - Pass cdesc as argument to C wrapper.
+  - Copy std::vector into user's memory.
+  - Fill cdesc with vector information.
+  - Return address and size of vector data.
+  - Create a local std::vector.
+  - Pass cxx local variable to library.
   notes:
-  - c_local_cxx is always a pointer to a vector.
+  - Not supported for C wrappers.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -14176,6 +14582,7 @@ f_out_vector<native>*_cdesc:
   f_temps:
   - cdesc
   f_helper:
+  - array_context
   - copy_array
   f_need_wrapper: true
   i_arg_names:
@@ -14202,7 +14609,9 @@ f_out_vector<native>*_cdesc:
   c_local:
   - cxx
   c_helper:
+  - array_context
   - copy_array
+  - type_defines
   - type_defines
   destructor_name: std_vector_{cxx_T}
   destructor:
@@ -14213,9 +14622,10 @@ f_out_vector<native>*_cdesc_allocatable:
   name: f_out_vector<native>*_cdesc_allocatable
   comments:
   - Pass cdesc as argument to C wrapper.
-  - Fill cdesc with vector information,
-  - ' Return address and size of vector data.'
-  - Create a std::vector on the stack and pass to C++.
+  - Fill cdesc with vector information.
+  - Return address and size of vector data.
+  - Create a local std::vector.
+  - Pass dereference of local cxx variable to library.
   notes:
   - Copy into allocated array.
   intent: out
@@ -14275,6 +14685,7 @@ f_out_vector<string>&_cdesc:
   comments:
   - Collect information about a string argument.
   - Pass cdesc as argument to C wrapper.
+  - Pass cxx variable to library.
   notes:
   - f_arg_decl replaces values from f_mixin_str_array.
   - This one needs to use targs.
@@ -14331,6 +14742,7 @@ f_out_vector<string>&_cdesc_allocatable:
   - Allocate a vector<string> variable.
   - Copy into Fortran allocated memory.
   - Release memory from capsule.
+  - Pass dereference of local cxx variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -14399,6 +14811,7 @@ f_out_vector_buf_targ_string_scalar:
   name: f_out_vector_buf_targ_string_scalar
   comments:
   - Pass argument, size and len to C.
+  - Pass cxx local variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -14460,6 +14873,8 @@ f_out_vector_buf_targ_string_scalar:
   owner: library
 f_out_void*&:
   name: f_out_void*&
+  comments:
+  - Pass dereference of cxx variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -14482,6 +14897,8 @@ f_out_void*&:
   owner: library
 f_out_void**:
   name: f_out_void**
+  comments:
+  - Pass cxx variable to library.
   notes:
   - Treat as an assumed length array in Fortran interface.
   intent: out
@@ -14508,6 +14925,7 @@ f_out_void*_cdesc:
   name: f_out_void*_cdesc
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Pass cxx variable to library.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -14588,8 +15006,6 @@ f_setter_bool:
     - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   owner: library
@@ -14614,8 +15030,6 @@ f_setter_native:
     - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   owner: library
@@ -14640,8 +15054,6 @@ f_setter_native*:
     - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   owner: library
@@ -14681,8 +15093,6 @@ f_setter_string_buf:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - "{CXX_this}->{field_name} = std::string({c_var},\t {c_var_len});"
   c_temps:
@@ -14707,8 +15117,6 @@ f_setter_struct*:
     - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   owner: library
@@ -14731,8 +15139,6 @@ f_setter_struct**:
     - C_PTR
   c_arg_decl:
   - '{gen.cdecl.c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   owner: library
@@ -14755,8 +15161,6 @@ f_setter_struct*_pointer:
     - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   owner: library
@@ -15722,6 +16126,12 @@ root
           cfi -- c_mixin_arg_character_cfi
         native
           cfi -- c_mixin_arg_native_cfi
+      arg-call-cvar -- c_mixin_arg-call-cvar
+      arg-call-cvar-address -- c_mixin_arg-call-cvar-address
+      arg-call-cvar-deref -- c_mixin_arg-call-cvar-deref
+      arg-call-cxx -- c_mixin_arg-call-cxx
+      arg-call-cxx-address -- c_mixin_arg-call-cxx-address
+      arg-call-cxx-deref -- c_mixin_arg-call-cxx-deref
       c-str -- c_mixin_c-str
       cast-argument -- c_mixin_cast-argument
       char-copy-to-arg -- c_mixin_char-copy-to-arg
@@ -15755,6 +16165,7 @@ root
           cdesc -- c_mixin_inout_vector_cdesc
         vector<native>
           cdesc -- c_mixin_inout_vector<native>_cdesc
+      local-string -- c_mixin_local-string
       make-shared -- c_mixin_make-shared
       native
         capsule
@@ -16162,6 +16573,8 @@ root
           cfi -- f_mixin_out_string**_cfi
         vector
           buf -- f_mixin_out_vector_buf
+        vector<native>
+          copy -- f_mixin_out_vector<native>_copy
       pass
         capsule -- f_mixin_pass_capsule
         cdesc -- f_mixin_pass_cdesc

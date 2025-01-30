@@ -3398,8 +3398,8 @@
                     "f": {
                         "+result": {
                             "fmtdict": {
-                                "C_call_function": "struct1_set_arg2(\tSH_this,\t val)",
-                                "C_call_list": "SH_this,\t val",
+                                "C_call_function": "struct1_set_arg2(\tSH_this)",
+                                "C_call_list": "SH_this",
                                 "C_name": "ERR_struct1_set_arg2",
                                 "C_prototype": "ERR_struct1 *SH_this,\t int *val",
                                 "C_return_type": "void",
