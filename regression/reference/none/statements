@@ -3529,6 +3529,16 @@ c_mixin_out_native**:
   c_pre_call:
   - '{c_const}{cxx_type} *{cxx_var};'
   owner: library
+c_mixin_out_string**:
+  name: c_mixin_out_string**
+  comments:
+  - Create local std::string pointer.
+  intent: mixin
+  c_pre_call:
+  - std::string *{c_local_cxx};
+  c_local:
+  - cxx
+  owner: library
 c_mixin_out_vector<native>_cdesc:
   name: c_mixin_out_vector<native>_cdesc
   comments:
@@ -12895,14 +12905,6 @@ f_mixin_out_native_cdesc_pointer:
     iso_c_binding:
     - c_f_pointer
   owner: library
-f_mixin_out_string**_cfi:
-  name: f_mixin_out_string**_cfi
-  intent: mixin
-  c_pre_call:
-  - std::string *{c_local_cxx};
-  c_local:
-  - cxx
-  owner: library
 f_mixin_out_vector<native>_copy:
   name: f_mixin_out_vector<native>_copy
   comments:
@@ -14290,6 +14292,7 @@ f_out_string**_cfi_allocatable:
   name: f_out_string**_cfi_allocatable
   comments:
   - Make the C wrapper argument a CFI_desc_t.
+  - Create local std::string pointer.
   - Pass address of local cxx variable to library.
   notes:
   - std::string **strs +intent(out)+dimension(nstrs)+deref(allocatable),
@@ -14325,6 +14328,7 @@ f_out_string**_cfi_copy:
   name: f_out_string**_cfi_copy
   comments:
   - Make the C wrapper argument a CFI_desc_t.
+  - Create local std::string pointer.
   - Pass address of local cxx variable to library.
   intent: out
   f_arg_name:
@@ -16272,6 +16276,7 @@ root
       noargs -- c_mixin_noargs
       out
         native** -- c_mixin_out_native**
+        string** -- c_mixin_out_string**
         vector
           buf
             malloc -- c_mixin_out_vector_buf_malloc
@@ -16667,8 +16672,6 @@ root
           cdesc
             allocate -- f_mixin_out_native_cdesc_allocate
             pointer -- f_mixin_out_native_cdesc_pointer
-        string**
-          cfi -- f_mixin_out_string**_cfi
         vector
           buf -- f_mixin_out_vector_buf
         vector<native>
