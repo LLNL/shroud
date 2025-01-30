@@ -4032,10 +4032,8 @@
             "c_mixin_declare-arg",
             "f_mixin_declare-fortran-arg",
             "f_mixin_declare-interface-arg",
-            "f_mixin_logical-local-var"
-        ],
-        "f_pre_call": [
-            "{f_var_cxx} = {f_var}  ! coerce to C_BOOL"
+            "f_mixin_logical-local-var",
+            "f_mixin_logical-in"
         ],
         "c_post_call": [
             "{CXX_this}->{field_name} = val;"
