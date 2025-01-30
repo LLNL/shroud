@@ -433,8 +433,8 @@
                 "declgen": "void getName(char *name +len(worklen)+len_trim(worktrim))",
                 "helpers": {
                     "c": [
-                        "char_alloc",
                         "char_copy",
+                        "char_alloc",
                         "char_free"
                     ]
                 },
