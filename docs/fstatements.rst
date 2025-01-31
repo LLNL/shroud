@@ -120,9 +120,11 @@ f_arg_call
 
 List of arguments to pass to C wrapper.
 By default the arguments of the Fortran wrapper are passed to the C
-wrapper.  The list of arguments can be set to pass additional
-arguments or expressions.  The format field *f_var* the name of the
-argument.
+wrapper. It will use the *f_to_c* typemap field if defined.
+The list of arguments can be set to pass different
+arguments or expressions. For example, when passing the character length
+for attribute ``+api(buf)``.
+The format field *f_var* is the name of the argument.
 
 When used with a **f_function** statement, the argument will be added
 to the end of the call list.
