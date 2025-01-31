@@ -132,8 +132,10 @@ c_function_char:
   name: c_function_char
   comments:
   - Call the C wrapper as a subroutine.
+  - Return a single char from a function.
   mixin_names:
   - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_function_char'
   intent: function
   i_arg_names:
   - '{i_var}'
@@ -1517,8 +1519,12 @@ c_in_bool:
 c_in_char:
   name: c_in_char
   comments:
+  - Fortran wrapper character argument.
+  - C wrapper character argument.
   - Pass cxx variable to library.
   mixin_names:
+  - '  f_mixin_declare-arg-char'
+  - '  c_mixin_declare-arg-char'
   - '  c_mixin_arg-call-cvar'
   intent: in
   i_arg_names:
@@ -3692,6 +3698,21 @@ c_mixin_declare-arg:
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   owner: library
+c_mixin_declare-arg-char:
+  name: c_mixin_declare-arg-char
+  comments:
+  - C wrapper character argument.
+  intent: mixin
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR), value{f_intent_attr} :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+  c_arg_decl:
+  - char {c_var}
+  owner: library
 c_mixin_declare-fortran-result:
   name: c_mixin_declare-fortran-result
   intent: mixin
@@ -5591,6 +5612,7 @@ f_function_char:
   name: f_function_char
   comments:
   - Call the C wrapper as a subroutine.
+  - Return a single char from a function.
   intent: function
   f_arg_decl:
   - 'character :: {f_var}'
@@ -5600,6 +5622,7 @@ f_function_char:
   - call {f_call_function}({F_arg_c_call})
   mixin_names:
   - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_function_char'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -10992,6 +11015,8 @@ f_in_bool:
 f_in_char:
   name: f_in_char
   comments:
+  - Fortran wrapper character argument.
+  - C wrapper character argument.
   - Pass cxx variable to library.
   intent: in
   f_arg_name:
@@ -10999,6 +11024,8 @@ f_in_char:
   f_arg_decl:
   - 'character, value{f_intent_attr} :: {f_var}'
   mixin_names:
+  - '  f_mixin_declare-arg-char'
+  - '  c_mixin_declare-arg-char'
   - '  c_mixin_arg-call-cvar'
   i_arg_names:
   - '{i_var}'
@@ -14091,6 +14118,16 @@ f_mixin_char_cdesc_pointer:
   f_helper:
   - pointer_string
   owner: library
+f_mixin_declare-arg-char:
+  name: f_mixin_declare-arg-char
+  comments:
+  - Fortran wrapper character argument.
+  intent: mixin
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - 'character, value{f_intent_attr} :: {f_var}'
+  owner: library
 f_mixin_declare-as-cptr:
   name: f_mixin_declare-as-cptr
   intent: mixin
@@ -14177,6 +14214,27 @@ f_mixin_function_c-ptr:
     iso_c_binding:
     - C_PTR
   c_need_wrapper: true
+  owner: library
+f_mixin_function_char:
+  name: f_mixin_function_char
+  comments:
+  - Return a single char from a function.
+  intent: mixin
+  f_arg_decl:
+  - 'character :: {f_var}'
+  f_arg_call:
+  - '{f_var}'
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR), intent(OUT) :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+  c_arg_decl:
+  - char *{c_var}
+  c_call:
+  - '*{c_var} = {C_call_function};'
   owner: library
 f_mixin_function_ptr:
   name: f_mixin_function_ptr
@@ -14909,6 +14967,8 @@ f_none_bool*:
 f_none_char:
   name: f_none_char
   comments:
+  - Fortran wrapper character argument.
+  - C wrapper character argument.
   - Pass cxx variable to library.
   intent: none
   f_arg_name:
@@ -14916,6 +14976,8 @@ f_none_char:
   f_arg_decl:
   - 'character, value{f_intent_attr} :: {f_var}'
   mixin_names:
+  - '  f_mixin_declare-arg-char'
+  - '  c_mixin_declare-arg-char'
   - '  c_mixin_arg-call-cvar'
   i_arg_names:
   - '{i_var}'
@@ -18183,6 +18245,7 @@ root
       character -- c_mixin_character
       cvar-capsule-fill -- c_mixin_cvar-capsule-fill
       declare-arg -- c_mixin_declare-arg
+      declare-arg-char -- c_mixin_declare-arg-char
       declare-fortran-result -- c_mixin_declare-fortran-result
       delete-cxx-variable -- c_mixin_delete-cxx-variable
       destructor
@@ -18562,12 +18625,14 @@ root
         cdesc
           allocate -- f_mixin_char_cdesc_allocate
           pointer -- f_mixin_char_cdesc_pointer
+      declare-arg-char -- f_mixin_declare-arg-char
       declare-as-cptr -- f_mixin_declare-as-cptr
       declare-fortran-arg -- f_mixin_declare-fortran-arg
       declare-fortran-result -- f_mixin_declare-fortran-result
       declare-interface-arg -- f_mixin_declare-interface-arg
       function -- f_mixin_function
         c-ptr -- f_mixin_function_c-ptr
+        char -- f_mixin_function_char
         ptr -- f_mixin_function_ptr
         shadow
           capsule -- f_mixin_function_shadow_capsule
