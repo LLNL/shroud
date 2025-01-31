@@ -1769,6 +1769,45 @@
         "name":"##### char mixin ###########################################"
     },
     {
+        "name": "f_mixin_declare-arg-char",
+        "comments": [
+            "Fortran wrapper character argument."
+        ],
+        "notes": [
+            "A single character."
+            "XXX - value should not be necessary but fails without it."
+        ],
+        "f_arg_name": [
+            "{f_var}"
+        ],
+        "f_arg_decl": [
+            "character, value{f_intent_attr} :: {f_var}"
+        ]
+    },
+    {
+        "name": "c_mixin_declare-arg-char",
+        "comments": [
+            "C wrapper character argument."
+        ],
+        "notes": [
+            "A single character."
+        ],
+        "c_arg_decl": [
+            "char {c_var}"
+        ],
+        "i_arg_decl": [
+            "character(kind=C_CHAR), value{f_intent_attr} :: {i_var}"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_CHAR"
+            ]
+        }
+    },
+    {
         "name": "c_mixin_character",
         "notes": [
             "Create a character argument"
@@ -1970,28 +2009,10 @@
             "f_none_char"
         ],
         "mixin": [
+            "f_mixin_declare-arg-char",
+            "c_mixin_declare-arg-char",
             "c_mixin_arg-call-cvar"
-        ],
-        "f_arg_name": [
-            "{f_var}"
-        ],
-        "f_arg_decl": [
-            "character, value{f_intent_attr} :: {f_var}"
-        ],
-        "c_arg_decl": [
-            "char {c_var}"
-        ],
-        "i_arg_decl": [
-            "character(kind=C_CHAR), value{f_intent_attr} :: {i_var}"
-        ],
-        "i_arg_names": [
-            "{i_var}"
-        ],
-        "i_module": {
-            "iso_c_binding": [
-                "C_CHAR"
-            ]
-        }
+        ]
     },
     {
         "alias": [
