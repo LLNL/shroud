@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Copyright (c) 2017-2024, Lawrence Livermore National Security, LLC and
+# Copyright (c) 2017-2025, Lawrence Livermore National Security, LLC and
 # Shroud Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
@@ -43,12 +43,12 @@ for i in `cat files2change`
 do
     echo $i
     cp $i $i.sed.bak
-    sed "s/Copyright (c) 2017-2024/Copyright (c) 2017-2024/" $i.sed.bak > $i
+    sed "s/Copyright (c) 2017-2025/Copyright (c) 2017-2025/" $i.sed.bak > $i
 done
 
 echo LICENSE
 cp LICENSE LICENSE.sed.bak
-sed "s/Copyright (c) 2017-2024/Copyright (c) 2017-2024/" LICENSE.sed.bak > LICENSE
+sed "s/Copyright (c) 2017-2025/Copyright (c) 2017-2025/" LICENSE.sed.bak > LICENSE
 
 #echo RELEASE
 #cp RELEASE RELEASE.sed.bak
@@ -56,7 +56,7 @@ sed "s/Copyright (c) 2017-2024/Copyright (c) 2017-2024/" LICENSE.sed.bak > LICEN
 
 echo README
 cp README.md README.md.sed.bak
-sed "s/2017-2023/2017-2024/" README.md.sed.bak > README.md
+sed "s/2017-2024/2017-2025/" README.md.sed.bak > README.md
 
 #echo RELEASE-NOTES
 #cp RELEASE-NOTES.md RELEASE-NOTES.md.sed.bak
@@ -64,7 +64,7 @@ sed "s/2017-2023/2017-2024/" README.md.sed.bak > README.md
 
 echo docs/conf.py
 cp docs/conf.py docs/conf.py.sed.bak
-sed "s/2017-2023/2017-2024/" docs/conf.py.sed.bak > docs/conf.py
+sed "s/2017-2024/2017-2025/" docs/conf.py.sed.bak > docs/conf.py
 
 #=============================================================================
 # Remove temporary files created in the process
