@@ -1260,7 +1260,7 @@ rv = .false.
         This includes arguments to the function in arg_c_call.
         modules may also be updated.
 
-        Add call arguments from stmts_blk if defined,
+        Add call arguments in f_arg_call from stmts_blk if defined,
         This is used to override the C function arguments and used
         for cases like pointers and raw/pointer/allocatable.
         Otherwise, generate from c_ast.
@@ -1281,7 +1281,7 @@ rv = .false.
         if stmts_blk.f_arg_call is not None:
             for arg in stmts_blk.f_arg_call:
                 append_format(arg_c_call, arg, fmt)
-        elif stmts_blk.intent == "function":
+        elif stmts_blk.intent in ["function", "subroutine"]:
             # Functions do not pass arguments by default.
             pass
         elif arg_typemap.f_to_c:
@@ -1294,7 +1294,8 @@ rv = .false.
             append_format(arg_c_call, arg_typemap.f_cast, fmt)
             self.update_f_module(modules, arg_typemap.f_module, fmt)
         else:
-            arg_c_call.append(fmt.fc_var)
+            # Using append_format reports an error when fc_var is not defined.
+            append_format(arg_c_call, "{fc_var}", fmt)
         return need_wrapper
 
     def add_code_from_statements(

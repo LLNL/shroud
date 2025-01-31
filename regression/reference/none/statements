@@ -99,7 +99,6 @@ c_dtor:
   - Call the C wrapper as a subroutine.
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   intent: dtor
   c_call:
   - delete {CXX_this};
@@ -120,7 +119,6 @@ c_function_bool:
   - Call a function.
   mixin_names:
   - '  f_mixin_function'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  c_mixin_declare-fortran-result'
   intent: function
@@ -136,7 +134,6 @@ c_function_char:
   - Call the C wrapper as a subroutine.
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   intent: function
   i_arg_names:
   - '{i_var}'
@@ -157,7 +154,6 @@ c_function_char*:
   - Call a function.
   mixin_names:
   - '  f_mixin_function'
-  - '    c_mixin_noargs'
   intent: function
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
@@ -178,7 +174,6 @@ c_function_char*_arg:
   - Use F_string_result_as_arg as the argument name.
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
@@ -233,7 +228,6 @@ c_function_char*_buf_arg:
   - Use F_string_result_as_arg as the argument name.
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
@@ -289,7 +283,6 @@ c_function_char*_buf_copy:
   - XXX - maybe fmtdict to rename c_local_cxx as output
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
@@ -338,7 +331,6 @@ c_function_native:
   - Call a function.
   mixin_names:
   - '  f_mixin_function'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  c_mixin_declare-fortran-result'
   intent: function
@@ -354,7 +346,6 @@ c_function_native&:
   - Return a C pointer directly as type(C_PTR).
   mixin_names:
   - '  f_mixin_function_ptr'
-  - '    c_mixin_noargs'
   intent: function
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
@@ -368,7 +359,6 @@ c_function_native*:
   - Return a C pointer directly as type(C_PTR).
   mixin_names:
   - '  f_mixin_function_ptr'
-  - '    c_mixin_noargs'
   intent: function
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
@@ -382,7 +372,6 @@ c_function_native**:
   - Return a C pointer directly as type(C_PTR).
   mixin_names:
   - '  f_mixin_function_ptr'
-  - '    c_mixin_noargs'
   intent: function
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
@@ -396,7 +385,6 @@ c_function_native*_caller:
   - Return a C pointer directly as type(C_PTR).
   mixin_names:
   - '  f_mixin_function_ptr'
-  - '    c_mixin_noargs'
   intent: function
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
@@ -532,7 +520,6 @@ c_function_shadow&_capsule:
   - Return a C_capsule_data_type.
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_function_shadow_capsule'
   - '  c_mixin_shadow'
   - '  c_mixin_function-assign-to-local'
@@ -567,7 +554,6 @@ c_function_shadow&_capsule_caller:
   - Return a C_capsule_data_type.
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_function_shadow_capsule'
   - '  c_mixin_shadow'
   - '  c_mixin_function-assign-to-local'
@@ -602,7 +588,6 @@ c_function_shadow&_capsule_library:
   - Return a C_capsule_data_type.
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_function_shadow_capsule'
   - '  c_mixin_shadow'
   - '  c_mixin_function-assign-to-local'
@@ -783,7 +768,6 @@ c_function_shadow*_capsule:
   - Return a C_capsule_data_type.
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_function_shadow_capsule'
   - '  c_mixin_shadow'
   - '  c_mixin_function-assign-to-local'
@@ -816,7 +800,6 @@ c_function_shadow*_this:
   - Do not return anything.
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   intent: function
   c_call:
   - '{C_call_function};'
@@ -1058,7 +1041,6 @@ c_function_string&_buf_arg:
   - Use F_string_result_as_arg as the argument name.
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
@@ -1114,7 +1096,6 @@ c_function_string&_buf_copy:
   - Copy cxx variable into c variable.
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
@@ -1195,7 +1176,6 @@ c_function_string*_buf_copy:
   - Copy cxx variable into c variable.
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
@@ -1289,7 +1269,6 @@ c_function_string_buf_arg:
   - Use F_string_result_as_arg as the argument name.
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
@@ -1345,7 +1324,6 @@ c_function_string_buf_copy:
   - Copy cxx variable into c variable.
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
@@ -1390,7 +1368,6 @@ c_function_struct:
   - Call the C wrapper as a subroutine.
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-interface-arg'
   - '  f_mixin_declare-fortran-result'
   intent: function
@@ -1413,7 +1390,6 @@ c_function_struct*:
   - C++ pointer -> void pointer -> C pointer.
   mixin_names:
   - '  f_mixin_function_c-ptr'
-  - '    c_mixin_noargs'
   intent: function
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
@@ -1485,7 +1461,6 @@ c_function_void*:
 c_getter_native:
   name: c_getter_native
   mixin_names:
-  - '  c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  c_mixin_declare-fortran-result'
   intent: getter
@@ -1502,7 +1477,6 @@ c_getter_native:
 c_getter_native*:
   name: c_getter_native*
   mixin_names:
-  - '  c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  c_mixin_declare-fortran-result'
   intent: getter
@@ -4068,10 +4042,6 @@ c_mixin_native_cfi_pointer:
   - cdesc
   - err
   owner: library
-c_mixin_noargs:
-  name: c_mixin_noargs
-  intent: mixin
-  owner: library
 c_mixin_out_native**:
   name: c_mixin_out_native**
   comments:
@@ -5408,8 +5378,6 @@ c_out_void*_cdesc:
     - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
 c_setter:
   name: c_setter
-  mixin_names:
-  - '  c_mixin_noargs'
   intent: setter
   c_call:
   - // skip call c_setter
@@ -5481,8 +5449,6 @@ c_setter_string_scalar_buf:
   owner: library
 c_subroutine:
   name: c_subroutine
-  mixin_names:
-  - '  c_mixin_noargs'
   intent: subroutine
   owner: library
 c_subroutine_assignment_weakptr:
@@ -5491,8 +5457,6 @@ c_subroutine_assignment_weakptr:
   - std::weak_ptr has no wrapped constructor.
   - It must be made from a std::shared_ptr with an assignment.
   - arglist[1] is the 'from' argument.
-  mixin_names:
-  - '  c_mixin_noargs'
   intent: subroutine
   c_call:
   - if (SH_this == nullptr) {{+
@@ -5553,7 +5517,6 @@ f_ctor_shadow_capsule_shared:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_function_shadow_capsule'
   - '  c_mixin_shadow'
   - '  c_mixin_destructor_new-shadow-shared'
@@ -5594,7 +5557,6 @@ f_dtor:
   - call {f_call_function}({F_arg_c_call})
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   c_call:
   - delete {CXX_this};
   - '{C_this}->addr = {nullptr};'
@@ -5617,7 +5579,6 @@ f_function_bool:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  c_mixin_declare-fortran-result'
   i_result_decl:
@@ -5639,7 +5600,6 @@ f_function_char:
   - call {f_call_function}({F_arg_c_call})
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -5664,7 +5624,6 @@ f_function_char*:
   - '{f_result_var} = {f_call_function}({F_arg_c_call})'
   mixin_names:
   - '  f_mixin_function'
-  - '    c_mixin_noargs'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
@@ -5682,7 +5641,6 @@ f_function_char*_allocatable:
   - '{f_result_var} = {f_call_function}({F_arg_c_call})'
   mixin_names:
   - '  f_mixin_function'
-  - '    c_mixin_noargs'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
@@ -5725,7 +5683,6 @@ f_function_char*_arg:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
@@ -5802,7 +5759,6 @@ f_function_char*_buf_arg:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
@@ -5877,7 +5833,6 @@ f_function_char*_buf_copy:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
@@ -5939,7 +5894,6 @@ f_function_char*_cdesc_allocatable:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_pass_cdesc'
   - '  f_mixin_char_cdesc_allocate'
   - '  c_mixin_function_char*_cdesc'
@@ -5994,7 +5948,6 @@ f_function_char*_cdesc_pointer:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_pass_cdesc'
   - '  c_mixin_function_char*_cdesc'
   - '  f_mixin_char_cdesc_pointer'
@@ -6036,7 +5989,6 @@ f_function_char*_cfi_allocatable:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
@@ -6079,7 +6031,6 @@ f_function_char*_cfi_arg:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  c_mixin_arg_character_cfi'
   - '    c_mixin_arg_cfi'
@@ -6128,7 +6079,6 @@ f_function_char*_cfi_copy:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  c_mixin_arg_character_cfi'
   - '    c_mixin_arg_cfi'
@@ -6171,7 +6121,6 @@ f_function_char*_cfi_pointer:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
@@ -6218,7 +6167,6 @@ f_function_char*_copy:
   - '{f_result_var} = {f_call_function}({F_arg_c_call})'
   mixin_names:
   - '  f_mixin_function'
-  - '    c_mixin_noargs'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
@@ -6236,7 +6184,6 @@ f_function_char*_pointer:
   - '{f_result_var} = {f_call_function}({F_arg_c_call})'
   mixin_names:
   - '  f_mixin_function'
-  - '    c_mixin_noargs'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
@@ -6254,7 +6201,6 @@ f_function_char*_raw:
   - '{f_result_var} = {f_call_function}({F_arg_c_call})'
   mixin_names:
   - '  f_mixin_function'
-  - '    c_mixin_noargs'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
@@ -6289,7 +6235,6 @@ f_function_char_cdesc_allocatable:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_pass_cdesc'
   - '  f_mixin_char_cdesc_allocate'
   - '  c_mixin_function_char*_cdesc'
@@ -6344,7 +6289,6 @@ f_function_char_cdesc_pointer:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_pass_cdesc'
   - '  c_mixin_function_char*_cdesc'
   - '  f_mixin_char_cdesc_pointer'
@@ -6386,7 +6330,6 @@ f_function_char_cfi_allocatable:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
@@ -6423,7 +6366,6 @@ f_function_char_cfi_pointer:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
@@ -6473,7 +6415,6 @@ f_function_enum:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_function'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  c_mixin_declare-fortran-result'
   i_result_decl:
@@ -6498,7 +6439,6 @@ f_function_native:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_function'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  c_mixin_declare-fortran-result'
   i_result_decl:
@@ -6533,7 +6473,6 @@ f_function_native&:
   - ptr
   mixin_names:
   - '  f_mixin_function_c-ptr'
-  - '    c_mixin_noargs'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
@@ -6567,7 +6506,6 @@ f_function_native&_pointer:
   - ptr
   mixin_names:
   - '  f_mixin_function_c-ptr'
-  - '    c_mixin_noargs'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
@@ -6587,7 +6525,6 @@ f_function_native**:
     - C_PTR
   mixin_names:
   - '  f_mixin_function_ptr'
-  - '    c_mixin_noargs'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
@@ -6639,7 +6576,6 @@ f_function_native*_cdesc_allocatable:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_pass_cdesc'
   - '  c_mixin_native_cdesc_fill-cdesc'
   - '  f_mixin_native_cdesc_allocate'
@@ -6706,7 +6642,6 @@ f_function_native*_cdesc_pointer:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_pass_cdesc'
   - '  c_mixin_native_cdesc_fill-cdesc'
   - '  f_mixin_native_cdesc_pointer'
@@ -6774,7 +6709,6 @@ f_function_native*_cdesc_pointer_caller:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_pass_cdesc'
   - '  f_mixin_arg_capsule'
   - '    c_mixin_pass_capsule'
@@ -6828,7 +6762,6 @@ f_function_native*_cfi_allocatable:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  c_mixin_arg_native_cfi'
   - '    c_mixin_arg_cfi'
   - '  c_mixin_arg-call-cxx'
@@ -6884,7 +6817,6 @@ f_function_native*_cfi_pointer:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  c_mixin_arg_native_cfi'
   - '    c_mixin_arg_cfi'
   - '  c_mixin_arg-call-cxx'
@@ -6953,7 +6885,6 @@ f_function_native*_pointer:
   - ptr
   mixin_names:
   - '  f_mixin_function_c-ptr'
-  - '    c_mixin_noargs'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
@@ -6987,7 +6918,6 @@ f_function_native*_pointer_caller:
   - ptr
   mixin_names:
   - '  f_mixin_function_c-ptr'
-  - '    c_mixin_noargs'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
@@ -7007,7 +6937,6 @@ f_function_native*_raw:
     - C_PTR
   mixin_names:
   - '  f_mixin_function_ptr'
-  - '    c_mixin_noargs'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
@@ -7028,7 +6957,6 @@ f_function_native*_scalar:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_function'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  c_mixin_declare-fortran-result'
   i_result_decl:
@@ -7060,7 +6988,6 @@ f_function_shadow&_capsule:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_function_shadow_capsule'
   - '  c_mixin_shadow'
   - '  c_mixin_function-assign-to-local'
@@ -7102,7 +7029,6 @@ f_function_shadow&_capsule_caller:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_function_shadow_capsule'
   - '  c_mixin_shadow'
   - '  c_mixin_function-assign-to-local'
@@ -7144,7 +7070,6 @@ f_function_shadow&_capsule_library:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_function_shadow_capsule'
   - '  c_mixin_shadow'
   - '  c_mixin_function-assign-to-local'
@@ -7186,7 +7111,6 @@ f_function_shadow*_capsule:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_function_shadow_capsule'
   - '  c_mixin_shadow'
   - '  c_mixin_function-assign-to-local'
@@ -7228,7 +7152,6 @@ f_function_shadow*_capsule_caller:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_function_shadow_capsule'
   - '  c_mixin_shadow'
   - '  c_mixin_function-assign-to-local'
@@ -7270,7 +7193,6 @@ f_function_shadow*_capsule_library:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_function_shadow_capsule'
   - '  c_mixin_shadow'
   - '  c_mixin_function-assign-to-local'
@@ -7306,7 +7228,6 @@ f_function_shadow*_this:
   f_result_var: as-subroutine
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   c_call:
   - '{C_call_function};'
   c_return_type: void
@@ -7329,7 +7250,6 @@ f_function_shadow<native>_capsule:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_function_shadow_capsule'
   - '  c_mixin_shadow'
   - '  c_mixin_function-assign-to-new'
@@ -7374,7 +7294,6 @@ f_function_shadow_capsule:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_function_shadow_capsule'
   - '  c_mixin_shadow'
   - '  c_mixin_function-assign-to-new'
@@ -7418,7 +7337,6 @@ f_function_smartptr<shadow>*_capsule:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_function_shadow_capsule'
   - '  c_mixin_shadow'
   - '  c_mixin_function-assign-to-local'
@@ -7460,7 +7378,6 @@ f_function_smartptr<shadow>_capsule:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_function_shadow_capsule'
   - '  c_mixin_shadow'
   - '  c_mixin_function-assign-to-new'
@@ -7517,7 +7434,6 @@ f_function_string&_buf:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
@@ -7585,7 +7501,6 @@ f_function_string&_buf_arg:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
@@ -7660,7 +7575,6 @@ f_function_string&_buf_caller:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
@@ -7725,7 +7639,6 @@ f_function_string&_buf_copy:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
@@ -7793,7 +7706,6 @@ f_function_string&_buf_copy_caller:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
@@ -7867,7 +7779,6 @@ f_function_string&_cdesc_allocatable:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_pass_cdesc'
   - '  f_mixin_pass_capsule'
   - '    c_mixin_pass_capsule'
@@ -7939,7 +7850,6 @@ f_function_string&_cdesc_allocatable_caller:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_pass_cdesc'
   - '  f_mixin_pass_capsule'
   - '    c_mixin_pass_capsule'
@@ -8011,7 +7921,6 @@ f_function_string&_cdesc_allocatable_library:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_pass_cdesc'
   - '  f_mixin_pass_capsule'
   - '    c_mixin_pass_capsule'
@@ -8074,7 +7983,6 @@ f_function_string&_cdesc_pointer:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_pass_cdesc'
   - '  c_mixin_function_string_cdesc'
   - '  f_mixin_char_cdesc_pointer'
@@ -8125,7 +8033,6 @@ f_function_string&_cdesc_pointer_caller:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_pass_cdesc'
   - '  c_mixin_function_string_cdesc'
   - '  f_mixin_char_cdesc_pointer'
@@ -8176,7 +8083,6 @@ f_function_string&_cdesc_pointer_library:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_pass_cdesc'
   - '  c_mixin_function_string_cdesc'
   - '  f_mixin_char_cdesc_pointer'
@@ -8212,7 +8118,6 @@ f_function_string&_cfi_allocatable:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_function_string_cfi_allocatable'
   - '  c_mixin_arg_cfi'
   i_arg_names:
@@ -8250,7 +8155,6 @@ f_function_string&_cfi_allocatable_caller:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_function_string_cfi_allocatable'
   - '  c_mixin_arg_cfi'
   i_arg_names:
@@ -8288,7 +8192,6 @@ f_function_string&_cfi_allocatable_library:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_function_string_cfi_allocatable'
   - '  c_mixin_arg_cfi'
   i_arg_names:
@@ -8332,7 +8235,6 @@ f_function_string&_cfi_arg:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_cfi'
   - '  c_mixin_arg_character_cfi'
@@ -8396,7 +8298,6 @@ f_function_string&_cfi_copy:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_cfi'
   - '  c_mixin_arg_character_cfi'
@@ -8451,7 +8352,6 @@ f_function_string&_cfi_pointer:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
@@ -8505,7 +8405,6 @@ f_function_string&_cfi_pointer_caller:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
@@ -8559,7 +8458,6 @@ f_function_string&_cfi_pointer_library:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
@@ -8625,7 +8523,6 @@ f_function_string*_buf:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
@@ -8693,7 +8590,6 @@ f_function_string*_buf_caller:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
@@ -8758,7 +8654,6 @@ f_function_string*_buf_copy:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
@@ -8826,7 +8721,6 @@ f_function_string*_buf_copy_caller:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
@@ -8900,7 +8794,6 @@ f_function_string*_cdesc_allocatable:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_pass_cdesc'
   - '  f_mixin_pass_capsule'
   - '    c_mixin_pass_capsule'
@@ -8972,7 +8865,6 @@ f_function_string*_cdesc_allocatable_caller:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_pass_cdesc'
   - '  f_mixin_pass_capsule'
   - '    c_mixin_pass_capsule'
@@ -9044,7 +8936,6 @@ f_function_string*_cdesc_allocatable_library:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_pass_cdesc'
   - '  f_mixin_pass_capsule'
   - '    c_mixin_pass_capsule'
@@ -9107,7 +8998,6 @@ f_function_string*_cdesc_pointer:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_pass_cdesc'
   - '  c_mixin_function_string_cdesc'
   - '  f_mixin_char_cdesc_pointer'
@@ -9158,7 +9048,6 @@ f_function_string*_cdesc_pointer_caller:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_pass_cdesc'
   - '  c_mixin_function_string_cdesc'
   - '  f_mixin_char_cdesc_pointer'
@@ -9209,7 +9098,6 @@ f_function_string*_cdesc_pointer_library:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_pass_cdesc'
   - '  c_mixin_function_string_cdesc'
   - '  f_mixin_char_cdesc_pointer'
@@ -9245,7 +9133,6 @@ f_function_string*_cfi_allocatable:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_function_string_cfi_allocatable'
   - '  c_mixin_arg_cfi'
   i_arg_names:
@@ -9283,7 +9170,6 @@ f_function_string*_cfi_allocatable_caller:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_function_string_cfi_allocatable'
   - '  c_mixin_arg_cfi'
   i_arg_names:
@@ -9321,7 +9207,6 @@ f_function_string*_cfi_allocatable_library:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_function_string_cfi_allocatable'
   - '  c_mixin_arg_cfi'
   i_arg_names:
@@ -9367,7 +9252,6 @@ f_function_string*_cfi_copy:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_cfi'
   - '  c_mixin_arg_character_cfi'
@@ -9422,7 +9306,6 @@ f_function_string*_cfi_pointer:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
@@ -9476,7 +9359,6 @@ f_function_string*_cfi_pointer_caller:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
@@ -9530,7 +9412,6 @@ f_function_string*_cfi_pointer_library:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
@@ -9596,7 +9477,6 @@ f_function_string_buf:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
@@ -9664,7 +9544,6 @@ f_function_string_buf_arg:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
@@ -9739,7 +9618,6 @@ f_function_string_buf_caller:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
@@ -9804,7 +9682,6 @@ f_function_string_buf_copy:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
@@ -9872,7 +9749,6 @@ f_function_string_buf_copy_caller:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
@@ -9947,7 +9823,6 @@ f_function_string_cdesc_allocatable:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_pass_cdesc'
   - '  c_mixin_function-assign-to-new'
   - '  c_mixin_destructor_new-string'
@@ -10035,7 +9910,6 @@ f_function_string_cdesc_allocatable_caller:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_pass_cdesc'
   - '  c_mixin_function-assign-to-new'
   - '  c_mixin_destructor_new-string'
@@ -10123,7 +9997,6 @@ f_function_string_cdesc_allocatable_library:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_pass_cdesc'
   - '  c_mixin_function-assign-to-new'
   - '  c_mixin_destructor_new-string'
@@ -10188,7 +10061,6 @@ f_function_string_cfi_allocatable:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_function_string_cfi_allocatable'
   - '  c_mixin_arg_cfi'
   i_arg_names:
@@ -10224,7 +10096,6 @@ f_function_string_cfi_allocatable_caller:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_function_string_cfi_allocatable'
   - '  c_mixin_arg_cfi'
   i_arg_names:
@@ -10262,7 +10133,6 @@ f_function_string_cfi_allocatable_library:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_function_string_cfi_allocatable'
   - '  c_mixin_arg_cfi'
   i_arg_names:
@@ -10306,7 +10176,6 @@ f_function_string_cfi_arg:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_cfi'
   - '  c_mixin_arg_character_cfi'
@@ -10370,7 +10239,6 @@ f_function_string_cfi_copy:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  f_mixin_pass_character_cfi'
   - '  c_mixin_arg_character_cfi'
@@ -10425,7 +10293,6 @@ f_function_string_cfi_pointer:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
@@ -10479,7 +10346,6 @@ f_function_string_cfi_pointer_caller:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
@@ -10533,7 +10399,6 @@ f_function_string_cfi_pointer_library:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
@@ -10585,7 +10450,6 @@ f_function_struct:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_declare-interface-arg'
   - '  f_mixin_declare-fortran-result'
   i_arg_names:
@@ -10631,7 +10495,6 @@ f_function_struct*_cdesc_pointer:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_pass_cdesc'
   - '  c_mixin_native_cdesc_fill-cdesc'
   - '  f_mixin_native_cdesc_pointer'
@@ -10678,7 +10541,6 @@ f_function_struct*_pointer:
   - ptr
   mixin_names:
   - '  f_mixin_function_c-ptr'
-  - '    c_mixin_noargs'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
@@ -10721,7 +10583,6 @@ f_function_vector<native>_cdesc_allocatable:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_pass_cdesc'
   - '  c_mixin_destructor_new-vector'
   - '  c_mixin_vector_cdesc_fill-cdesc'
@@ -10800,7 +10661,6 @@ f_getter_bool:
     '{f_module_name}':
     - '{f_kind}'
   mixin_names:
-  - '  c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  c_mixin_declare-fortran-result'
   i_result_decl:
@@ -10822,7 +10682,6 @@ f_getter_native:
     '{f_module_name}':
     - '{f_kind}'
   mixin_names:
-  - '  c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  c_mixin_declare-fortran-result'
   i_result_decl:
@@ -10868,7 +10727,6 @@ f_getter_native*_cdesc_pointer:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_pass_cdesc'
   - '  f_mixin_native_cdesc_pointer'
   - '  f_mixin_getter_cdesc'
@@ -10903,7 +10761,6 @@ f_getter_native*_pointer:
     '{f_module_name}':
     - '{f_kind}'
   mixin_names:
-  - '  c_mixin_noargs'
   - '  f_mixin_declare-fortran-result'
   - '  c_mixin_declare-fortran-result'
   i_result_decl:
@@ -10940,7 +10797,6 @@ f_getter_string_cdesc_allocatable:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_pass_cdesc'
   - '  f_mixin_char_cdesc_allocate'
   i_arg_names:
@@ -10993,7 +10849,6 @@ f_getter_struct**_cdesc_raw:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_pass_cdesc'
   - '  f_mixin_native_cdesc_raw'
   - '  f_mixin_getter_cdesc'
@@ -11052,7 +10907,6 @@ f_getter_struct*_cdesc_pointer:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '    c_mixin_noargs'
   - '  f_mixin_pass_cdesc'
   - '  f_mixin_native_cdesc_pointer'
   - '  f_mixin_getter_cdesc'
@@ -14286,8 +14140,6 @@ f_mixin_function:
   intent: mixin
   f_call:
   - '{f_result_var} = {f_call_function}({F_arg_c_call})'
-  mixin_names:
-  - '  c_mixin_noargs'
   owner: library
 f_mixin_function-to-subroutine:
   name: f_mixin_function-to-subroutine
@@ -14296,8 +14148,6 @@ f_mixin_function-to-subroutine:
   intent: mixin
   f_call:
   - call {f_call_function}({F_arg_c_call})
-  mixin_names:
-  - '  c_mixin_noargs'
   c_return_type: void
   owner: library
 f_mixin_function_c-ptr:
@@ -14321,8 +14171,6 @@ f_mixin_function_c-ptr:
     - c_f_pointer
   f_local:
   - ptr
-  mixin_names:
-  - '  c_mixin_noargs'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
@@ -14340,8 +14188,6 @@ f_mixin_function_ptr:
   f_module:
     iso_c_binding:
     - C_PTR
-  mixin_names:
-  - '  c_mixin_noargs'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
@@ -17142,8 +16988,6 @@ f_setter:
   intent: setter
   f_call:
   - call {f_call_function}({F_arg_c_call})
-  mixin_names:
-  - '  c_mixin_noargs'
   c_call:
   - // skip call c_setter
   owner: library
@@ -17367,8 +17211,6 @@ f_subroutine:
   intent: subroutine
   f_call:
   - call {f_call_function}({F_arg_c_call})
-  mixin_names:
-  - '  c_mixin_noargs'
   owner: library
 f_subroutine_assignment_weakptr:
   name: f_subroutine_assignment_weakptr
@@ -17379,8 +17221,6 @@ f_subroutine_assignment_weakptr:
   intent: subroutine
   f_call:
   - call {f_call_function}({F_arg_c_call})
-  mixin_names:
-  - '  c_mixin_noargs'
   c_call:
   - if (SH_this == nullptr) {{+
   - SH_this = new {cxx_type}(*SHC_from_cxx);
@@ -18381,7 +18221,6 @@ root
         cfi
           allocatable -- c_mixin_native_cfi_allocatable
           pointer -- c_mixin_native_cfi_pointer
-      noargs -- c_mixin_noargs
       out
         native** -- c_mixin_out_native**
         string** -- c_mixin_out_string**

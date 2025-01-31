@@ -3,13 +3,6 @@
         "name":"##### argument mixin #######################################"
     },
     {
-        "name": "c_mixin_noargs",
-        "notes": [
-            "No arguments to a function."
-        ],
-        "f_arg_call": []
-    },
-    {
         "sphinx-start-after": "c_mixin_declare-arg",
         "name": "c_mixin_declare-arg",
         "c_arg_decl": [
@@ -214,9 +207,6 @@
         "comments": [
             "Call a function."
         ],
-        "mixin": [
-            "c_mixin_noargs"
-        ],
         "f_call": [
             "{f_result_var} = {f_call_function}({F_arg_c_call})"
         ]
@@ -225,9 +215,6 @@
         "name": "f_mixin_function-to-subroutine",
         "comments": [
             "Call the C wrapper as a subroutine."
-        ],
-        "mixin": [
-            "c_mixin_noargs"
         ],
         "f_call": [
             "call {f_call_function}({F_arg_c_call})"
@@ -268,9 +255,6 @@
         "comments": [
             "Return a C pointer directly as type(C_PTR)."
         ],
-        "mixin": [
-            "c_mixin_noargs"
-        ],
         "f_module": {
             "iso_c_binding": [
                 "C_PTR"
@@ -292,9 +276,6 @@
         "name": "f_mixin_function_c-ptr",
         "comments": [
             "Return a C pointer as a type(C_PTR)."
-        ],
-        "mixin": [
-            "c_mixin_noargs"
         ],
         "c_need_wrapper": true,
         "f_module": {
@@ -368,9 +349,6 @@
             "f_subroutine",
             "c_subroutine"
         ],
-        "mixin": [
-            "c_mixin_noargs"
-        ],
         "f_call": [
             "call {f_call_function}({F_arg_c_call})"
         ]
@@ -384,9 +362,6 @@
             "std::weak_ptr has no wrapped constructor.",
             "It must be made from a std::shared_ptr with an assignment.",
             "arglist[1] is the 'from' argument."
-        ],
-        "mixin": [
-            "c_mixin_noargs"
         ],
         "f_call": [
             "call {f_call_function}({F_arg_c_call})"
@@ -4091,7 +4066,6 @@
     {
         "name": "f_getter_bool",
         "mixin": [
-            "c_mixin_noargs",
             "f_mixin_declare-fortran-result",
             "c_mixin_declare-fortran-result"
         ],
@@ -4124,7 +4098,6 @@
             "c_getter_native*"
         ],
         "mixin": [
-            "c_mixin_noargs",
             "f_mixin_declare-fortran-result",
             "c_mixin_declare-fortran-result"
         ],
@@ -4140,9 +4113,6 @@
         "alias": [
             "f_setter",
             "c_setter"
-        ],
-        "mixin": [
-            "c_mixin_noargs"
         ],
         "f_arg_call": [],
         "f_call": [
