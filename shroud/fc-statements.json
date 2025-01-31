@@ -1774,7 +1774,7 @@
             "Fortran wrapper character argument."
         ],
         "notes": [
-            "A single character."
+            "A single character.",
             "XXX - value should not be necessary but fails without it."
         ],
         "f_arg_name": [
@@ -2000,6 +2000,35 @@
         ]
     },
     {
+        "name": "f_mixin_function_char",
+        "comments": [
+            "Return a single char from a function."
+        ],
+        "f_arg_decl": [
+            "character :: {f_var}"
+        ],
+        "f_arg_call": [
+            "{f_var}"
+        ],
+        "c_arg_decl": [
+            "char *{c_var}"
+        ],
+        "c_call": [
+            "*{c_var} = {C_call_function};"
+        ],
+        "i_arg_decl": [
+            "character(kind=C_CHAR), intent(OUT) :: {i_var}"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_CHAR"
+            ]
+        }
+    },
+    {
         "name":"##### char #################################################"
     },
     {
@@ -2020,31 +2049,9 @@
             "c_function_char"
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine"
-        ],
-        "f_arg_decl": [
-            "character :: {f_var}"
-        ],
-        "f_arg_call": [
-            "{f_var}"
-        ],
-        "c_call": [
-            "*{c_var} = {C_call_function};"
-        ],
-        "c_arg_decl": [
-            "char *{c_var}"
-        ],
-        "i_arg_decl": [
-            "character(kind=C_CHAR), intent(OUT) :: {i_var}"
-        ],
-        "i_arg_names": [
-            "{i_var}"
-        ],
-        "i_module": {
-            "iso_c_binding": [
-                "C_CHAR"
-            ]
-        }
+            "f_mixin_function-to-subroutine",
+            "f_mixin_function_char"
+        ]
     },
     {
         "alias": [

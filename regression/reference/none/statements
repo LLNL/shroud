@@ -132,8 +132,10 @@ c_function_char:
   name: c_function_char
   comments:
   - Call the C wrapper as a subroutine.
+  - Return a single char from a function.
   mixin_names:
   - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_function_char'
   intent: function
   i_arg_names:
   - '{i_var}'
@@ -5610,6 +5612,7 @@ f_function_char:
   name: f_function_char
   comments:
   - Call the C wrapper as a subroutine.
+  - Return a single char from a function.
   intent: function
   f_arg_decl:
   - 'character :: {f_var}'
@@ -5619,6 +5622,7 @@ f_function_char:
   - call {f_call_function}({F_arg_c_call})
   mixin_names:
   - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_function_char'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -14211,6 +14215,27 @@ f_mixin_function_c-ptr:
     - C_PTR
   c_need_wrapper: true
   owner: library
+f_mixin_function_char:
+  name: f_mixin_function_char
+  comments:
+  - Return a single char from a function.
+  intent: mixin
+  f_arg_decl:
+  - 'character :: {f_var}'
+  f_arg_call:
+  - '{f_var}'
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR), intent(OUT) :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+  c_arg_decl:
+  - char *{c_var}
+  c_call:
+  - '*{c_var} = {C_call_function};'
+  owner: library
 f_mixin_function_ptr:
   name: f_mixin_function_ptr
   comments:
@@ -18607,6 +18632,7 @@ root
       declare-interface-arg -- f_mixin_declare-interface-arg
       function -- f_mixin_function
         c-ptr -- f_mixin_function_c-ptr
+        char -- f_mixin_function_char
         ptr -- f_mixin_function_ptr
         shadow
           capsule -- f_mixin_function_shadow_capsule
