@@ -4203,7 +4203,7 @@ c_mixin_unknown:
   i_arg_decl:
   - ===>i_arg_decl<===
   c_arg_decl:
-  - ===>{c_var}<===
+  - ===>c_arg_decl<===
   owner: library
 c_mixin_vector_cdesc_fill-cdesc:
   name: c_mixin_vector_cdesc_fill-cdesc
@@ -14830,6 +14830,8 @@ f_mixin_unknown:
   - The values will be added to generated code to mark where each group
   - will add text.
   intent: mixin
+  f_arg_name:
+  - ===>f_arg_name<===
   f_arg_decl:
   - ===>f_arg_decl<===
   f_arg_call:
@@ -14841,7 +14843,7 @@ f_mixin_unknown:
   i_result_decl:
   - ===>i_result_decl<===
   c_arg_decl:
-  - ===>{c_var}<===
+  - ===>c_arg_decl<===
   owner: library
 f_mixin_use_capsule:
   name: f_mixin_use_capsule

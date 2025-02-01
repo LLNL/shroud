@@ -5160,6 +5160,9 @@
             "The values will be added to generated code to mark where each group",
             "will add text."
         ],
+        "f_arg_name": [
+            "===>f_arg_name<==="
+        ],
         "f_arg_decl": [
             "===>f_arg_decl<==="
         ],
@@ -5176,7 +5179,7 @@
             "===>i_result_decl<==="
         ],
         "c_arg_decl": [
-            "===>{c_var}<==="
+            "===>c_arg_decl<==="
         ]
     },
     {
@@ -5191,7 +5194,7 @@
             "===>i_arg_decl<==="
         ],
         "c_arg_decl": [
-            "===>{c_var}<==="
+            "===>c_arg_decl<==="
         ]
     },
     {
