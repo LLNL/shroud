@@ -107,6 +107,7 @@ fortran-test-list-std = \
 
 fortran-test-list-cfi = \
   test-fortran-pointers-cfi \
+  test-fortran-char-cxx-cfi \
   test-fortran-strings-cfi \
   test-fortran-generic-cfi
 
