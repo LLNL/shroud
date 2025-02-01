@@ -1863,6 +1863,9 @@
         "comments": [
             "Copy cxx variable to c variable."
         ],
+        "notes": [
+            "Used to NULL terminated an input Fortran string"
+        ],
         "c_helper": [
             "char_copy"
         ],
@@ -4519,16 +4522,16 @@
     },
     {
         "name": "f_out_char*_cfi",
+        "notes": [
+            "XXX - need to test when to blank fill."
+        ],
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "c_mixin_arg_character_cfi",
+            "c_mixin_cfi-unpack-len",
+            "c_mixin_char-blank-fill",
+            "c_mixin_char-alloc",
             "c_mixin_arg-call-cxx"
-        ],
-        "c_helper": [
-            "char_blank_fill"
-        ],
-        "c_post_call": [
-            "{c_helper_char_blank_fill}({c_local_cxx}, {c_var_cfi}->elem_len);"
         ]
     },
     {

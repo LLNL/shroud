@@ -112,6 +112,8 @@ void explicit1(char * name)
     keep_explicit1 = name;
 }
 
+// Assigning to a char* without knowing the length can result in an overwrite.
+
 void explicit2(char * name)
 {
     *name = 'a';

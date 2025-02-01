@@ -2,16 +2,6 @@
 ----------------------------------------
 Phase: Wrapc.wrap_function
 ----------------------------------------
-Node: passCharPtr
-line 46
-Statement: f_out_char*_cfi
-No value for 'c_local_cxx' in '{c_helper_char_blank_fill}({c_local_cxx}, {c_var_cfi}->elem_len);'
---------------------
-Node: passCharPtr
-line 46
-Statement: f_out_char*_cfi
-No value for 'c_local_cxx' in '{c_local_cxx}'
---------------------
 Node: passCharPtrInOut
 line 60
 Statement: f_inout_char*_cfi
@@ -41,36 +31,6 @@ Node: getConstCharPtrAsArg
 line 83
 Statement: f_function_char*_cfi_arg
 No value for 'c_local_cxx' in '{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {c_local_cxx},\t -1);'
---------------------
-Node: explicit2
-line 125
-Statement: f_out_char*_cfi
-No value for 'c_local_cxx' in '{c_helper_char_blank_fill}({c_local_cxx}, {c_var_cfi}->elem_len);'
---------------------
-Node: explicit2
-line 125
-Statement: f_out_char*_cfi
-No value for 'c_local_cxx' in '{c_local_cxx}'
---------------------
-Node: CpassCharPtr
-line 149
-Statement: f_out_char*_cfi
-No value for 'c_local_cxx' in '{c_helper_char_blank_fill}({c_local_cxx}, {c_var_cfi}->elem_len);'
---------------------
-Node: CpassCharPtr
-line 149
-Statement: f_out_char*_cfi
-No value for 'c_local_cxx' in '{c_local_cxx}'
---------------------
-Node: CpassCharPtrBlank
-line 164
-Statement: f_out_char*_cfi
-No value for 'c_local_cxx' in '{c_helper_char_blank_fill}({c_local_cxx}, {c_var_cfi}->elem_len);'
---------------------
-Node: CpassCharPtrBlank
-line 164
-Statement: f_out_char*_cfi
-No value for 'c_local_cxx' in '{c_local_cxx}'
 Wrote wrapchar.h
 Wrote wrapchar.cpp
 Wrote wrapfchar.f

@@ -15305,7 +15305,11 @@ f_out_char*_cfi:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
+  - Blank fill C variable.
+  - Allocate a local char variable in C wrapper.
   - Pass cxx local variable to library.
+  notes:
+  - XXX - need to test when to blank fill.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -15318,6 +15322,9 @@ f_out_char*_cfi:
   - '  f_mixin_declare-fortran-arg'
   - '  c_mixin_arg_character_cfi'
   - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi-unpack-len'
+  - '  c_mixin_char-blank-fill'
+  - '  c_mixin_char-alloc'
   - '  c_mixin_arg-call-cxx'
   i_arg_names:
   - '{i_var}'
@@ -15327,14 +15334,22 @@ f_out_char*_cfi:
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
   - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - size_t {c_var_len} = {c_var_cfi}->elem_len;
+  - "char * {c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
   c_arg_call:
   - '{c_local_cxx}'
   c_post_call:
-  - '{c_helper_char_blank_fill}({c_local_cxx}, {c_var_cfi}->elem_len);'
+  - '{c_helper_char_blank_fill}({c_var}, {c_var_len});'
+  - '{c_helper_char_free}({c_local_cxx});'
   c_temps:
   - cfi
+  - len
+  c_local:
+  - cxx
   c_helper:
   - char_blank_fill
+  - char_alloc
+  - char_free
   iface_header:
   - ISO_Fortran_binding.h
   owner: library

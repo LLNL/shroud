@@ -196,11 +196,14 @@ void CHA_passCharPtr_CFI(CFI_cdesc_t *SHT_dest_cfi,
 {
     // splicer begin function.passCharPtr_CFI
     char *dest = static_cast<char *>(SHT_dest_cfi->base_addr);
+    size_t SHT_dest_len = SHT_dest_cfi->elem_len;
+    char * SHC_dest_cxx = ShroudCharAlloc(dest, SHT_dest_len, 0);
     char *src = static_cast<char *>(SHT_src_cfi->base_addr);
     size_t SHT_src_len = SHT_src_cfi->elem_len;
     char * SHC_src_cxx = ShroudCharAlloc(src, SHT_src_len, 0);
-    passCharPtr(===>{c_local_cxx}<===, SHC_src_cxx);
-    ===>{c_helper_char_blank_fill}({c_local_cxx}, {c_var_cfi}->elem_len);<===
+    passCharPtr(SHC_dest_cxx, SHC_src_cxx);
+    ShroudCharBlankFill(dest, SHT_dest_len);
+    ShroudCharFree(SHC_dest_cxx);
     ShroudCharFree(SHC_src_cxx);
     // splicer end function.passCharPtr_CFI
 }
@@ -480,8 +483,11 @@ void CHA_explicit2_CFI(CFI_cdesc_t *SHT_name_cfi)
 {
     // splicer begin function.explicit2_CFI
     char *name = static_cast<char *>(SHT_name_cfi->base_addr);
-    explicit2(===>{c_local_cxx}<===);
-    ===>{c_helper_char_blank_fill}({c_local_cxx}, {c_var_cfi}->elem_len);<===
+    size_t SHT_name_len = SHT_name_cfi->elem_len;
+    char * SHC_name_cxx = ShroudCharAlloc(name, SHT_name_len, 0);
+    explicit2(SHC_name_cxx);
+    ShroudCharBlankFill(name, SHT_name_len);
+    ShroudCharFree(SHC_name_cxx);
     // splicer end function.explicit2_CFI
 }
 
@@ -538,11 +544,14 @@ void CHA_CpassCharPtr_CFI(CFI_cdesc_t *SHT_dest_cfi,
 {
     // splicer begin function.CpassCharPtr_CFI
     char *dest = static_cast<char *>(SHT_dest_cfi->base_addr);
+    size_t SHT_dest_len = SHT_dest_cfi->elem_len;
+    char * SHC_dest_cxx = ShroudCharAlloc(dest, SHT_dest_len, 0);
     char *src = static_cast<char *>(SHT_src_cfi->base_addr);
     size_t SHT_src_len = SHT_src_cfi->elem_len;
     char * SHC_src_cxx = ShroudCharAlloc(src, SHT_src_len, 1);
-    CpassCharPtr(===>{c_local_cxx}<===, SHC_src_cxx);
-    ===>{c_helper_char_blank_fill}({c_local_cxx}, {c_var_cfi}->elem_len);<===
+    CpassCharPtr(SHC_dest_cxx, SHC_src_cxx);
+    ShroudCharBlankFill(dest, SHT_dest_len);
+    ShroudCharFree(SHC_dest_cxx);
     ShroudCharFree(SHC_src_cxx);
     // splicer end function.CpassCharPtr_CFI
 }
@@ -585,11 +594,14 @@ void CHA_CpassCharPtrBlank_CFI(CFI_cdesc_t *SHT_dest_cfi,
 {
     // splicer begin function.CpassCharPtrBlank_CFI
     char *dest = static_cast<char *>(SHT_dest_cfi->base_addr);
+    size_t SHT_dest_len = SHT_dest_cfi->elem_len;
+    char * SHC_dest_cxx = ShroudCharAlloc(dest, SHT_dest_len, 0);
     char *src = static_cast<char *>(SHT_src_cfi->base_addr);
     size_t SHT_src_len = SHT_src_cfi->elem_len;
     char * SHC_src_cxx = ShroudCharAlloc(src, SHT_src_len, 1);
-    CpassCharPtrBlank(===>{c_local_cxx}<===, SHC_src_cxx);
-    ===>{c_helper_char_blank_fill}({c_local_cxx}, {c_var_cfi}->elem_len);<===
+    CpassCharPtrBlank(SHC_dest_cxx, SHC_src_cxx);
+    ShroudCharBlankFill(dest, SHT_dest_len);
+    ShroudCharFree(SHC_dest_cxx);
     ShroudCharFree(SHC_src_cxx);
     // splicer end function.CpassCharPtrBlank_CFI
 }
