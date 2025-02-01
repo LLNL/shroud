@@ -1586,9 +1586,12 @@ c_in_char**_buf:
   name: c_in_char**_buf
   comments:
   - Pass argument, size and len to C.
+  - Converts a contiguous Fortran array of characters into
+  - an array of of char * pointers to NULL terminated strings.
   - Pass cxx local variable to library.
   mixin_names:
   - '  f_mixin_in_string_array_buf'
+  - '  c_mixin_char-array-alloc'
   - '  c_mixin_arg-call-cxx'
   intent: in
   i_arg_names:
@@ -3564,11 +3567,9 @@ c_mixin_arg_character_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
-  - char *{c_local_cxx} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   c_temps:
   - cfi
-  c_local:
-  - cxx
   iface_header:
   - ISO_Fortran_binding.h
   owner: library
@@ -3619,6 +3620,24 @@ c_mixin_cast-argument:
   c_local:
   - cxx
   owner: library
+c_mixin_cfi-unpack-len:
+  name: c_mixin_cfi-unpack-len
+  intent: mixin
+  c_pre_call:
+  - size_t {c_var_len} = {c_var_cfi}->elem_len;
+  c_temps:
+  - len
+  owner: library
+c_mixin_cfi-unpack-len-size:
+  name: c_mixin_cfi-unpack-len-size
+  intent: mixin
+  c_pre_call:
+  - size_t {c_var_len} = {c_var_cfi}->elem_len;
+  - size_t {c_var_size} = {c_var_cfi}->dim[0].extent;
+  c_temps:
+  - len
+  - size
+  owner: library
 c_mixin_char-alloc:
   name: c_mixin_char-alloc
   comments:
@@ -3633,6 +3652,23 @@ c_mixin_char-alloc:
   c_helper:
   - char_alloc
   - char_free
+  owner: library
+c_mixin_char-array-alloc:
+  name: c_mixin_char-array-alloc
+  comments:
+  - Converts a contiguous Fortran array of characters into
+  - an array of of char * pointers to NULL terminated strings.
+  intent: mixin
+  c_pre_call:
+  - "char **{c_local_cxx} = {c_helper_char_array_alloc}({c_var},\t {c_var_size},\t\
+    \ {c_var_len});"
+  c_post_call:
+  - '{c_helper_char_array_free}({c_local_cxx}, {c_var_size});'
+  c_local:
+  - cxx
+  c_helper:
+  - char_array_alloc
+  - char_array_free
   owner: library
 c_mixin_char-blank-fill:
   name: c_mixin_char-blank-fill
@@ -6074,8 +6110,6 @@ f_function_char*_cfi_arg:
   c_return_type: void
   c_temps:
   - cfi
-  c_local:
-  - cxx
   c_helper:
   - char_copy
   fmtdict:
@@ -6122,8 +6156,6 @@ f_function_char*_cfi_copy:
   c_return_type: void
   c_temps:
   - cfi
-  c_local:
-  - cxx
   c_helper:
   - char_copy
   iface_header:
@@ -8288,7 +8320,6 @@ f_function_string&_cfi_arg:
   - cfi
   c_local:
   - cxx
-  - cxx
   c_helper:
   - char_copy
   fmtdict:
@@ -8350,7 +8381,6 @@ f_function_string&_cfi_copy:
   c_temps:
   - cfi
   c_local:
-  - cxx
   - cxx
   c_helper:
   - char_copy
@@ -9305,7 +9335,6 @@ f_function_string*_cfi_copy:
   - cfi
   c_local:
   - cxx
-  - cxx
   c_helper:
   - char_copy
   iface_header:
@@ -10229,7 +10258,6 @@ f_function_string_cfi_arg:
   - cfi
   c_local:
   - cxx
-  - cxx
   c_helper:
   - char_copy
   fmtdict:
@@ -10291,7 +10319,6 @@ f_function_string_cfi_copy:
   c_temps:
   - cfi
   c_local:
-  - cxx
   - cxx
   c_helper:
   - char_copy
@@ -11093,6 +11120,8 @@ f_in_char**_buf:
   name: f_in_char**_buf
   comments:
   - Pass argument, size and len to C.
+  - Converts a contiguous Fortran array of characters into
+  - an array of of char * pointers to NULL terminated strings.
   - Pass cxx local variable to library.
   intent: in
   f_arg_name:
@@ -11110,6 +11139,7 @@ f_in_char**_buf:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_in_string_array_buf'
+  - '  c_mixin_char-array-alloc'
   - '  c_mixin_arg-call-cxx'
   i_arg_names:
   - '{i_var}'
@@ -11149,6 +11179,8 @@ f_in_char**_cfi:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
+  - Converts a contiguous Fortran array of characters into
+  - an array of of char * pointers to NULL terminated strings.
   - Pass cxx local variable to library.
   intent: in
   f_arg_name:
@@ -11158,6 +11190,8 @@ f_in_char**_cfi:
   mixin_names:
   - '  c_mixin_arg_character_cfi'
   - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi-unpack-len-size'
+  - '  c_mixin_char-array-alloc'
   - '  c_mixin_arg-call-cxx'
   i_arg_names:
   - '{i_var}'
@@ -11280,6 +11314,7 @@ f_in_char*_cfi:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
+  - Allocate a local char variable in C wrapper.
   - Pass cxx local variable to library.
   intent: in
   f_arg_name:
@@ -11293,6 +11328,8 @@ f_in_char*_cfi:
   - '  f_mixin_declare-fortran-arg'
   - '  c_mixin_arg_character_cfi'
   - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi-unpack-len'
+  - '  c_mixin_char-alloc'
   - '  c_mixin_arg-call-cxx'
   i_arg_names:
   - '{i_var}'
@@ -11302,14 +11339,15 @@ f_in_char*_cfi:
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
   - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
-  - "char *{c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_cfi}->elem_len,\t\
-    \ {c_blanknull});"
+  - size_t {c_var_len} = {c_var_cfi}->elem_len;
+  - "char * {c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
   c_arg_call:
   - '{c_local_cxx}'
   c_post_call:
   - '{c_helper_char_free}({c_local_cxx});'
   c_temps:
   - cfi
+  - len
   c_local:
   - cxx
   c_helper:
@@ -13017,8 +13055,6 @@ f_inout_char*_cfi:
   - '{c_helper_char_free}({c_local_cxx});'
   c_temps:
   - cfi
-  c_local:
-  - cxx
   c_helper:
   - char_alloc
   - char_copy
@@ -15290,15 +15326,13 @@ f_out_char*_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
-  - char *{c_local_cxx} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   c_arg_call:
   - '{c_local_cxx}'
   c_post_call:
   - '{c_helper_char_blank_fill}({c_local_cxx}, {c_var_cfi}->elem_len);'
   c_temps:
   - cfi
-  c_local:
-  - cxx
   c_helper:
   - char_blank_fill
   iface_header:
@@ -16004,6 +16038,7 @@ f_out_string&_buf:
 f_out_string&_cfi:
   name: f_out_string&_cfi
   comments:
+  - Create local std::string.
   - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
   - Pass address of local cxx variable to library.
@@ -16017,6 +16052,7 @@ f_out_string&_cfi:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
+  - '  c_mixin_local-string'
   - '  c_mixin_arg_character_cfi'
   - '    c_mixin_arg_cfi'
   - '  c_mixin_arg-call-cxx-address'
@@ -16027,7 +16063,7 @@ f_out_string&_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
-  - std::string {c_local_cxx};
+  - '{c_const}std::string {c_local_cxx};'
   - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   c_arg_call:
   - '{c_local_cxx}'
@@ -16351,6 +16387,7 @@ f_out_string*_buf:
 f_out_string*_cfi:
   name: f_out_string*_cfi
   comments:
+  - Create local std::string.
   - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
   - Pass address of local cxx variable to library.
@@ -16364,6 +16401,7 @@ f_out_string*_cfi:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
+  - '  c_mixin_local-string'
   - '  c_mixin_arg_character_cfi'
   - '    c_mixin_arg_cfi'
   - '  c_mixin_arg-call-cxx-address'
@@ -16374,7 +16412,7 @@ f_out_string*_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
-  - std::string {c_local_cxx};
+  - '{c_const}std::string {c_local_cxx};'
   - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   c_arg_call:
   - '&{c_local_cxx}'
@@ -17584,6 +17622,8 @@ h_helper_char_array_alloc:
   name: h_helper_char_array_alloc
   notes:
   - Used with 'char **' arguments.
+  - Converts a contiguous Fortran array of characters into
+  - an array of of char * pointers to NULL terminated strings.
   c_fmtname: ShroudStrArrayAlloc
   c_include:
   - <string.h>
@@ -18240,7 +18280,10 @@ root
       arg-call-cxx-deref -- c_mixin_arg-call-cxx-deref
       c-str -- c_mixin_c-str
       cast-argument -- c_mixin_cast-argument
+      cfi-unpack-len -- c_mixin_cfi-unpack-len
+      cfi-unpack-len-size -- c_mixin_cfi-unpack-len-size
       char-alloc -- c_mixin_char-alloc
+      char-array-alloc -- c_mixin_char-array-alloc
       char-blank-fill -- c_mixin_char-blank-fill
       char-copy -- c_mixin_char-copy
       char-copy-to-arg-cfi -- c_mixin_char-copy-to-arg-cfi
