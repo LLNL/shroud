@@ -57,11 +57,11 @@ contains
     ! character(*) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     call pass_char_ptr(dest=str, src="bird")
-    call assert_true( str == "bird")
+    call assert_true( str == "bird", "passCharPtr")
 
     str = 'dog'
     call pass_char_ptr_in_out(str)
-    call assert_true( str == "DOG")
+    call assert_true( str == "DOG", "passCharPtrInOut")
 
   end subroutine test_charargs
 
@@ -81,19 +81,19 @@ contains
     ! character(*) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     call cpass_char_ptr(dest=str, src="bird")
-    call assert_true( str == "bird")
+    call assert_true( str == "bird", "CpassCharPtr")
 
     ! Test passing a blank string, treat as NULL pointer.
     ! +blanknull
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     call cpass_char_ptr(dest=str, src=" ")
-    call assert_true( str == "NULL", "blank string")
+    call assert_true( str == "NULL", "CpassCharPtr - blank")
 
     ! Test passing a blank string, treat as NULL pointer.
     ! options.F_blanknull
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     call cpass_char_ptr_blank(dest=str, src=" ")
-    call assert_true( str == "NULL", "blank string")
+    call assert_true( str == "NULL", "CpassCharPtrBlank - blank")
 
   end subroutine test_charargs_c
 
@@ -151,7 +151,7 @@ contains
 
     name = " "
     call explicit2(name)
-    call assert_equals("a", name(1:1))
+    call assert_equals("a", name(1:1), "explicit2")
     
   end subroutine test_explicit
 
@@ -169,7 +169,7 @@ contains
 
     str1 = "sample string"
     str2 = str1
-    call assert_equals(1, cpass_char_ptr_capi2(str1, str2))
+    call assert_equals(1, cpass_char_ptr_capi2(str1, str2), "CpassCharPtrCAPI2")
     
   end subroutine char_functions
 

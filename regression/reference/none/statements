@@ -6112,25 +6112,34 @@ f_function_char*_cfi_arg:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_pass_character_cfi'
   - '  c_mixin_arg_character_cfi'
   - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi-unpack-len'
   - '  c_mixin_arg-call-cxx'
+  - '  c_mixin_function-assign-to-local'
+  - '  c_mixin_char-copy'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - 'character(len=*){f_intent_attr} :: {i_var}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
+  c_pre_call:
+  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - size_t {c_var_len} = {c_var_cfi}->elem_len;
   c_arg_call:
   - '{c_local_cxx}'
   c_call:
   - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
-  - "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {c_local_cxx},\t -1);"
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   c_return_type: void
   c_temps:
   - cfi
+  - len
+  c_local:
+  - cxx
   c_helper:
   - char_copy
   fmtdict:
@@ -6158,25 +6167,34 @@ f_function_char*_cfi_copy:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_pass_character_cfi'
   - '  c_mixin_arg_character_cfi'
   - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi-unpack-len'
   - '  c_mixin_arg-call-cxx'
+  - '  c_mixin_function-assign-to-local'
+  - '  c_mixin_char-copy'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - 'character(len=*){f_intent_attr} :: {i_var}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
+  c_pre_call:
+  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - size_t {c_var_len} = {c_var_cfi}->elem_len;
   c_arg_call:
   - '{c_local_cxx}'
   c_call:
   - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
-  - "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {c_local_cxx},\t -1);"
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   c_return_type: void
   c_temps:
   - cfi
+  - len
+  c_local:
+  - cxx
   c_helper:
   - char_copy
   iface_header:
@@ -13069,6 +13087,8 @@ f_inout_char*_cfi:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
+  - Blank fill C variable.
+  - Allocate a local char variable in C wrapper.
   - Pass cxx local variable to library.
   intent: inout
   f_arg_name:
@@ -13082,6 +13102,9 @@ f_inout_char*_cfi:
   - '  f_mixin_declare-fortran-arg'
   - '  c_mixin_arg_character_cfi'
   - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi-unpack-len'
+  - '  c_mixin_char-blank-fill'
+  - '  c_mixin_char-alloc'
   - '  c_mixin_arg-call-cxx'
   i_arg_names:
   - '{i_var}'
@@ -13091,18 +13114,21 @@ f_inout_char*_cfi:
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
   - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
-  - "char *{c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_cfi}->elem_len,\t\
-    \ {c_blanknull});"
+  - size_t {c_var_len} = {c_var_cfi}->elem_len;
+  - "char * {c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
   c_arg_call:
   - '{c_local_cxx}'
   c_post_call:
-  - "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {c_local_cxx},\t -1);"
+  - '{c_helper_char_blank_fill}({c_var}, {c_var_len});'
   - '{c_helper_char_free}({c_local_cxx});'
   c_temps:
   - cfi
+  - len
+  c_local:
+  - cxx
   c_helper:
+  - char_blank_fill
   - char_alloc
-  - char_copy
   - char_free
   iface_header:
   - ISO_Fortran_binding.h

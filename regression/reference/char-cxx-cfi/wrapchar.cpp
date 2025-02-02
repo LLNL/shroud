@@ -244,12 +244,11 @@ void CHA_passCharPtrInOut_CFI(CFI_cdesc_t *SHT_s_cfi)
 {
     // splicer begin function.passCharPtrInOut_CFI
     char *s = static_cast<char *>(SHT_s_cfi->base_addr);
-    ===>char *{c_local_cxx} = {c_helper_char_alloc}({c_var},
-        {c_var_cfi}->elem_len, {c_blanknull});<===
-    passCharPtrInOut(===>{c_local_cxx}<===);
-    ===>{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,
-        {c_local_cxx}, -1);<===
-    ===>{c_helper_char_free}({c_local_cxx});<===
+    size_t SHT_s_len = SHT_s_cfi->elem_len;
+    char * SHC_s_cxx = ShroudCharAlloc(s, SHT_s_len, 0);
+    passCharPtrInOut(SHC_s_cxx);
+    ShroudCharBlankFill(s, SHT_s_len);
+    ShroudCharFree(SHC_s_cxx);
     // splicer end function.passCharPtrInOut_CFI
 }
 
@@ -320,10 +319,10 @@ const char * CHA_getConstCharPtrLen(void)
 void CHA_getConstCharPtrLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstCharPtrLen_CFI
-    const char *===>c_local_cxx<=== = getConstCharPtrLen();
     char *SHC_rv = static_cast<char *>(SHT_rv_cfi->base_addr);
-    ===>{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,
-        {c_local_cxx}, -1);<===
+    size_t SHT_rv_len = SHT_rv_cfi->elem_len;
+    const char *SHC_rv_cxx = getConstCharPtrLen();
+    ShroudCharCopy(SHC_rv, SHT_rv_len, SHC_rv_cxx, -1);
     // splicer end function.getConstCharPtrLen_CFI
 }
 // end CHA_getConstCharPtrLen_CFI
@@ -356,10 +355,10 @@ const char * CHA_getConstCharPtrAsArg(void)
 void CHA_getConstCharPtrAsArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstCharPtrAsArg_CFI
-    const char *===>c_local_cxx<=== = getConstCharPtrAsArg();
     char *output = static_cast<char *>(SHT_rv_cfi->base_addr);
-    ===>{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,
-        {c_local_cxx}, -1);<===
+    size_t SHT_rv_len = SHT_rv_cfi->elem_len;
+    const char *SHC_rv_cxx = getConstCharPtrAsArg();
+    ShroudCharCopy(output, SHT_rv_len, SHC_rv_cxx, -1);
     // splicer end function.getConstCharPtrAsArg_CFI
 }
 // end CHA_getConstCharPtrAsArg_CFI
