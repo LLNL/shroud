@@ -4120,6 +4120,7 @@
                                         "f": {
                                             "+result": {
                                                 "fmtdict": {
+                                                    "f_deref_attr": ", pointer",
                                                     "f_intent": "OUT",
                                                     "f_intent_attr": ", intent(OUT)",
                                                     "f_kind": "C_INT",
@@ -4250,6 +4251,7 @@
                                         "f": {
                                             "+result": {
                                                 "fmtdict": {
+                                                    "f_deref_attr": ", pointer",
                                                     "f_intent": "OUT",
                                                     "f_intent_attr": ", intent(OUT)",
                                                     "f_kind": "C_INT",
@@ -4331,6 +4333,7 @@
                                         "f": {
                                             "+result": {
                                                 "fmtdict": {
+                                                    "f_deref_attr": ", pointer",
                                                     "f_intent": "OUT",
                                                     "f_intent_attr": ", intent(OUT)",
                                                     "f_kind": "C_INT",

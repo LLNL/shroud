@@ -6068,7 +6068,7 @@ f_function_char*_cdesc_allocatable:
   - Fill cdesc from char * in the C wrapper.
   intent: function
   f_arg_decl:
-  - 'character(len=:), allocatable :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
@@ -6120,7 +6120,7 @@ f_function_char*_cdesc_pointer:
   - Assign Fortran pointer from cdesc using helper pointer_string.
   intent: function
   f_arg_decl:
-  - 'character(len=:), pointer :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
@@ -6173,7 +6173,7 @@ f_function_char*_cfi_allocatable:
   - Add allocatable attribute to declaration.
   intent: function
   f_arg_decl:
-  - 'character(len=:), allocatable :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -6185,7 +6185,7 @@ f_function_char*_cfi_allocatable:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(len=:){f_intent_attr}, allocatable :: {i_var}'
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {i_var}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -6320,7 +6320,7 @@ f_function_char*_cfi_pointer:
   - Make the C wrapper argument a CFI_desc_t.
   intent: function
   f_arg_decl:
-  - 'character(len=:), pointer :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -6332,7 +6332,7 @@ f_function_char*_cfi_pointer:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(len=:){f_intent_attr}, pointer :: {i_var}'
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {i_var}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -6448,7 +6448,7 @@ f_function_char_cdesc_allocatable:
   - Fill cdesc from char * in the C wrapper.
   intent: function
   f_arg_decl:
-  - 'character(len=:), allocatable :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
@@ -6500,7 +6500,7 @@ f_function_char_cdesc_pointer:
   - Assign Fortran pointer from cdesc using helper pointer_string.
   intent: function
   f_arg_decl:
-  - 'character(len=:), pointer :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
@@ -6553,7 +6553,7 @@ f_function_char_cfi_allocatable:
   - Add allocatable attribute to declaration.
   intent: function
   f_arg_decl:
-  - 'character(len=:), allocatable :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -6565,7 +6565,7 @@ f_function_char_cfi_allocatable:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(len=:){f_intent_attr}, allocatable :: {i_var}'
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {i_var}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -6589,7 +6589,7 @@ f_function_char_cfi_pointer:
   - Make the C wrapper argument a CFI_desc_t.
   intent: function
   f_arg_decl:
-  - 'character(len=:), pointer :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -6601,7 +6601,7 @@ f_function_char_cfi_pointer:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(len=:){f_intent_attr}, pointer :: {i_var}'
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {i_var}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -6776,7 +6776,7 @@ f_function_native*_cdesc_allocatable:
   - Release memory from capsule.
   intent: function
   f_arg_decl:
-  - '{f_type}, allocatable, target :: {f_var}{f_dimension}'
+  - '{f_type}{f_deref_attr}, target :: {f_var}{f_dimension}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
@@ -6852,7 +6852,7 @@ f_function_native*_cdesc_pointer:
   - Set Fortran pointer to native array.
   intent: function
   f_arg_decl:
-  - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
+  - '{f_type}{f_deref_attr} :: {f_var}{f_assumed_shape}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
@@ -6915,7 +6915,7 @@ f_function_native*_cdesc_pointer_caller:
   - '{f_var_capsule}'
   f_arg_decl:
   - 'type({F_capsule_type}), intent(OUT) :: {f_var_capsule}'
-  - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
+  - '{f_type}{f_deref_attr} :: {f_var}{f_assumed_shape}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
@@ -6990,7 +6990,7 @@ f_function_native*_cfi_allocatable:
   - Return an allocated copy of data.
   intent: function
   f_arg_decl:
-  - '{f_type}, allocatable :: {f_var}{f_assumed_shape}'
+  - '{f_type}{f_deref_attr} :: {f_var}{f_assumed_shape}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -7008,7 +7008,7 @@ f_function_native*_cfi_allocatable:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{i_type}{f_intent_attr}, allocatable :: {i_var}{f_assumed_shape}'
+  - '{i_type}{f_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   i_module:
     iso_c_binding:
     - '{f_kind}'
@@ -7044,7 +7044,7 @@ f_function_native*_cfi_pointer:
   - Return Fortran pointer to data.
   intent: function
   f_arg_decl:
-  - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
+  - '{f_type}{f_deref_attr} :: {f_var}{f_assumed_shape}'
   f_pre_call:
   - nullify({f_var})
   f_arg_call:
@@ -7064,7 +7064,7 @@ f_function_native*_cfi_pointer:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{i_type}{f_intent_attr}, pointer :: {i_var}{f_assumed_shape}'
+  - '{i_type}{f_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   i_module:
     iso_c_binding:
     - '{f_kind}'
@@ -8003,7 +8003,7 @@ f_function_string&_cdesc_allocatable:
   - Release memory from capsule.
   intent: function
   f_arg_decl:
-  - 'character(len=:), allocatable :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
@@ -8074,7 +8074,7 @@ f_function_string&_cdesc_allocatable_caller:
   - Release memory from capsule.
   intent: function
   f_arg_decl:
-  - 'character(len=:), allocatable :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
@@ -8145,7 +8145,7 @@ f_function_string&_cdesc_allocatable_library:
   - Release memory from capsule.
   intent: function
   f_arg_decl:
-  - 'character(len=:), allocatable :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
@@ -8211,7 +8211,7 @@ f_function_string&_cdesc_pointer:
   - Assign Fortran pointer from cdesc using helper pointer_string.
   intent: function
   f_arg_decl:
-  - 'character(len=:), pointer :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
@@ -8261,7 +8261,7 @@ f_function_string&_cdesc_pointer_caller:
   - Assign Fortran pointer from cdesc using helper pointer_string.
   intent: function
   f_arg_decl:
-  - 'character(len=:), pointer :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
@@ -8311,7 +8311,7 @@ f_function_string&_cdesc_pointer_library:
   - Assign Fortran pointer from cdesc using helper pointer_string.
   intent: function
   f_arg_decl:
-  - 'character(len=:), pointer :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
@@ -8358,7 +8358,7 @@ f_function_string&_cfi_allocatable:
   - Make the C wrapper argument a CFI_desc_t.
   intent: function
   f_arg_decl:
-  - 'character(len=:), allocatable :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -8372,7 +8372,7 @@ f_function_string&_cfi_allocatable:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(len=:){f_intent_attr}, allocatable :: {i_var}'
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {i_var}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -8396,7 +8396,7 @@ f_function_string&_cfi_allocatable_caller:
   - Make the C wrapper argument a CFI_desc_t.
   intent: function
   f_arg_decl:
-  - 'character(len=:), allocatable :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -8410,7 +8410,7 @@ f_function_string&_cfi_allocatable_caller:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(len=:){f_intent_attr}, allocatable :: {i_var}'
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {i_var}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -8434,7 +8434,7 @@ f_function_string&_cfi_allocatable_library:
   - Make the C wrapper argument a CFI_desc_t.
   intent: function
   f_arg_decl:
-  - 'character(len=:), allocatable :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -8448,7 +8448,7 @@ f_function_string&_cfi_allocatable_library:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(len=:){f_intent_attr}, allocatable :: {i_var}'
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {i_var}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -8599,7 +8599,7 @@ f_function_string&_cfi_pointer:
   - XXX - via a helper to get address and length of string
   intent: function
   f_arg_decl:
-  - 'character(len=:), pointer :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -8611,7 +8611,7 @@ f_function_string&_cfi_pointer:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(len=:){f_intent_attr}, pointer :: {i_var}'
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {i_var}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -8652,7 +8652,7 @@ f_function_string&_cfi_pointer_caller:
   - XXX - via a helper to get address and length of string
   intent: function
   f_arg_decl:
-  - 'character(len=:), pointer :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -8664,7 +8664,7 @@ f_function_string&_cfi_pointer_caller:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(len=:){f_intent_attr}, pointer :: {i_var}'
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {i_var}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -8705,7 +8705,7 @@ f_function_string&_cfi_pointer_library:
   - XXX - via a helper to get address and length of string
   intent: function
   f_arg_decl:
-  - 'character(len=:), pointer :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -8717,7 +8717,7 @@ f_function_string&_cfi_pointer_library:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(len=:){f_intent_attr}, pointer :: {i_var}'
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {i_var}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -9025,7 +9025,7 @@ f_function_string*_cdesc_allocatable:
   - Release memory from capsule.
   intent: function
   f_arg_decl:
-  - 'character(len=:), allocatable :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
@@ -9096,7 +9096,7 @@ f_function_string*_cdesc_allocatable_caller:
   - Release memory from capsule.
   intent: function
   f_arg_decl:
-  - 'character(len=:), allocatable :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
@@ -9167,7 +9167,7 @@ f_function_string*_cdesc_allocatable_library:
   - Release memory from capsule.
   intent: function
   f_arg_decl:
-  - 'character(len=:), allocatable :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
@@ -9233,7 +9233,7 @@ f_function_string*_cdesc_pointer:
   - Assign Fortran pointer from cdesc using helper pointer_string.
   intent: function
   f_arg_decl:
-  - 'character(len=:), pointer :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
@@ -9283,7 +9283,7 @@ f_function_string*_cdesc_pointer_caller:
   - Assign Fortran pointer from cdesc using helper pointer_string.
   intent: function
   f_arg_decl:
-  - 'character(len=:), pointer :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
@@ -9333,7 +9333,7 @@ f_function_string*_cdesc_pointer_library:
   - Assign Fortran pointer from cdesc using helper pointer_string.
   intent: function
   f_arg_decl:
-  - 'character(len=:), pointer :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
@@ -9380,7 +9380,7 @@ f_function_string*_cfi_allocatable:
   - Make the C wrapper argument a CFI_desc_t.
   intent: function
   f_arg_decl:
-  - 'character(len=:), allocatable :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -9394,7 +9394,7 @@ f_function_string*_cfi_allocatable:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(len=:){f_intent_attr}, allocatable :: {i_var}'
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {i_var}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -9418,7 +9418,7 @@ f_function_string*_cfi_allocatable_caller:
   - Make the C wrapper argument a CFI_desc_t.
   intent: function
   f_arg_decl:
-  - 'character(len=:), allocatable :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -9432,7 +9432,7 @@ f_function_string*_cfi_allocatable_caller:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(len=:){f_intent_attr}, allocatable :: {i_var}'
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {i_var}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -9456,7 +9456,7 @@ f_function_string*_cfi_allocatable_library:
   - Make the C wrapper argument a CFI_desc_t.
   intent: function
   f_arg_decl:
-  - 'character(len=:), allocatable :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -9470,7 +9470,7 @@ f_function_string*_cfi_allocatable_library:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(len=:){f_intent_attr}, allocatable :: {i_var}'
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {i_var}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -9555,7 +9555,7 @@ f_function_string*_cfi_pointer:
   - XXX - via a helper to get address and length of string
   intent: function
   f_arg_decl:
-  - 'character(len=:), pointer :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -9567,7 +9567,7 @@ f_function_string*_cfi_pointer:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(len=:){f_intent_attr}, pointer :: {i_var}'
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {i_var}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -9608,7 +9608,7 @@ f_function_string*_cfi_pointer_caller:
   - XXX - via a helper to get address and length of string
   intent: function
   f_arg_decl:
-  - 'character(len=:), pointer :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -9620,7 +9620,7 @@ f_function_string*_cfi_pointer_caller:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(len=:){f_intent_attr}, pointer :: {i_var}'
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {i_var}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -9661,7 +9661,7 @@ f_function_string*_cfi_pointer_library:
   - XXX - via a helper to get address and length of string
   intent: function
   f_arg_decl:
-  - 'character(len=:), pointer :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -9673,7 +9673,7 @@ f_function_string*_cfi_pointer_library:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(len=:){f_intent_attr}, pointer :: {i_var}'
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {i_var}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -10056,7 +10056,7 @@ f_function_string_cdesc_allocatable:
   - Release memory from capsule.
   intent: function
   f_arg_decl:
-  - 'character(len=:), allocatable :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
@@ -10143,7 +10143,7 @@ f_function_string_cdesc_allocatable_caller:
   - Release memory from capsule.
   intent: function
   f_arg_decl:
-  - 'character(len=:), allocatable :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
@@ -10230,7 +10230,7 @@ f_function_string_cdesc_allocatable_library:
   - Release memory from capsule.
   intent: function
   f_arg_decl:
-  - 'character(len=:), allocatable :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
@@ -10310,7 +10310,7 @@ f_function_string_cfi_allocatable:
   - std::string & function()
   intent: function
   f_arg_decl:
-  - 'character(len=:), allocatable :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -10323,7 +10323,7 @@ f_function_string_cfi_allocatable:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(len=:){f_intent_attr}, allocatable :: {i_var}'
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {i_var}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -10345,7 +10345,7 @@ f_function_string_cfi_allocatable_caller:
   - Make the C wrapper argument a CFI_desc_t.
   intent: function
   f_arg_decl:
-  - 'character(len=:), allocatable :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -10359,7 +10359,7 @@ f_function_string_cfi_allocatable_caller:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(len=:){f_intent_attr}, allocatable :: {i_var}'
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {i_var}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -10383,7 +10383,7 @@ f_function_string_cfi_allocatable_library:
   - Make the C wrapper argument a CFI_desc_t.
   intent: function
   f_arg_decl:
-  - 'character(len=:), allocatable :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -10397,7 +10397,7 @@ f_function_string_cfi_allocatable_library:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(len=:){f_intent_attr}, allocatable :: {i_var}'
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {i_var}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -10548,7 +10548,7 @@ f_function_string_cfi_pointer:
   - XXX - via a helper to get address and length of string
   intent: function
   f_arg_decl:
-  - 'character(len=:), pointer :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -10560,7 +10560,7 @@ f_function_string_cfi_pointer:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(len=:){f_intent_attr}, pointer :: {i_var}'
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {i_var}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -10601,7 +10601,7 @@ f_function_string_cfi_pointer_caller:
   - XXX - via a helper to get address and length of string
   intent: function
   f_arg_decl:
-  - 'character(len=:), pointer :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -10613,7 +10613,7 @@ f_function_string_cfi_pointer_caller:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(len=:){f_intent_attr}, pointer :: {i_var}'
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {i_var}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -10654,7 +10654,7 @@ f_function_string_cfi_pointer_library:
   - XXX - via a helper to get address and length of string
   intent: function
   f_arg_decl:
-  - 'character(len=:), pointer :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -10666,7 +10666,7 @@ f_function_string_cfi_pointer_library:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(len=:){f_intent_attr}, pointer :: {i_var}'
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {i_var}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -10737,7 +10737,7 @@ f_function_struct*_cdesc_pointer:
   - Set Fortran pointer to native array.
   intent: function
   f_arg_decl:
-  - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
+  - '{f_type}{f_deref_attr} :: {f_var}{f_assumed_shape}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
@@ -10824,7 +10824,7 @@ f_function_vector<native>_cdesc_allocatable:
   - Always return a 1-d array.
   intent: function
   f_arg_decl:
-  - '{targs[0].f_type}, allocatable, target :: {f_var}{f_assumed_shape}'
+  - '{targs[0].f_type}{f_deref_attr}, target :: {f_var}{f_assumed_shape}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
@@ -10969,7 +10969,7 @@ f_getter_native*_cdesc_pointer:
   - Similar to calling a function, but save field pointer instead.
   intent: getter
   f_arg_decl:
-  - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
+  - '{f_type}{f_deref_attr} :: {f_var}{f_assumed_shape}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
@@ -11042,7 +11042,7 @@ f_getter_string_cdesc_allocatable:
   - Return argument meta data to Fortran.
   intent: getter
   f_arg_decl:
-  - 'character(len=:), allocatable :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
@@ -11149,7 +11149,7 @@ f_getter_struct*_cdesc_pointer:
   - Similar to calling a function, but save field pointer instead.
   intent: getter
   f_arg_decl:
-  - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
+  - '{f_type}{f_deref_attr} :: {f_var}{f_assumed_shape}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
@@ -11203,7 +11203,7 @@ f_getter_struct*_fapi_pointer:
   - Return value a function result.
   intent: getter
   f_arg_decl:
-  - '{f_type}, pointer :: {f_result_var}'
+  - '{f_type}{f_deref_attr} :: {f_result_var}'
   f_call:
   - call c_f_pointer({CXX_this}%{field_name}, {f_result_var})
   f_module:
@@ -14128,7 +14128,7 @@ f_inout_vector<native>&_cdesc_allocatable:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - '{targs[0].f_type}{f_intent_attr}, allocatable, target :: {f_var}{f_assumed_shape}'
+  - '{targs[0].f_type}{f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
@@ -14431,7 +14431,7 @@ f_mixin_char_cdesc_allocate:
   - using helper copy_string.
   intent: mixin
   f_arg_decl:
-  - 'character(len=:), allocatable :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
@@ -14446,7 +14446,7 @@ f_mixin_char_cdesc_pointer:
   - Assign Fortran pointer from cdesc using helper pointer_string.
   intent: mixin
   f_arg_decl:
-  - 'character(len=:), pointer :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_post_call:
   - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
   f_module:
@@ -14632,7 +14632,7 @@ f_mixin_function_string_cfi_allocatable:
   name: f_mixin_function_string_cfi_allocatable
   intent: mixin
   f_arg_decl:
-  - 'character(len=:), allocatable :: {f_var}'
+  - 'character(len=:){f_deref_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}'
   f_need_wrapper: true
@@ -14899,7 +14899,7 @@ f_mixin_native_cdesc_allocate:
   - using helper copy_array.
   intent: mixin
   f_arg_decl:
-  - '{f_type}, allocatable, target :: {f_var}{f_dimension}'
+  - '{f_type}{f_deref_attr}, target :: {f_var}{f_dimension}'
   f_post_call:
   - allocate({f_var}{f_array_allocate})
   - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\t\
@@ -14921,7 +14921,7 @@ f_mixin_native_cdesc_pointer:
   - Set Fortran pointer to native array.
   intent: mixin
   f_arg_decl:
-  - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
+  - '{f_type}{f_deref_attr} :: {f_var}{f_assumed_shape}'
   f_post_call:
   - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
   f_module:
@@ -14952,7 +14952,7 @@ f_mixin_out_array_cdesc_allocatable:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - 'character({f_char_len}), intent(OUT), allocatable, target :: {f_var}{f_assumed_shape}'
+  - 'character({f_char_len}), intent(OUT){f_deref_attr}, target :: {f_var}{f_assumed_shape}'
   f_post_call:
   - allocate({f_char_type}{f_var}({f_var_cdesc}%size))
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
@@ -14987,7 +14987,7 @@ f_mixin_out_native_cdesc_pointer:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - '{f_type}{f_intent_attr}, pointer :: {f_var}{f_assumed_shape}'
+  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
   f_post_call:
   - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})
   f_module:
@@ -15817,7 +15817,7 @@ f_out_native*&_cdesc:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - '{f_type}{f_intent_attr}, pointer :: {f_var}{f_assumed_shape}'
+  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
@@ -15875,7 +15875,7 @@ f_out_native*&_cdesc_pointer:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - '{f_type}{f_intent_attr}, pointer :: {f_var}{f_assumed_shape}'
+  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
@@ -16057,7 +16057,7 @@ f_out_native**_cdesc_pointer:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - '{f_type}{f_intent_attr}, pointer :: {f_var}{f_assumed_shape}'
+  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
@@ -16129,7 +16129,7 @@ f_out_native**_cfi_allocatable:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{i_type}{f_intent_attr}, allocatable :: {i_var}{f_assumed_shape}'
+  - '{i_type}{f_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   i_module:
     iso_c_binding:
     - '{f_kind}'
@@ -16178,7 +16178,7 @@ f_out_native**_cfi_pointer:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{i_type}{f_intent_attr}, pointer :: {i_var}{f_assumed_shape}'
+  - '{i_type}{f_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   i_module:
     iso_c_binding:
     - '{f_kind}'
@@ -16471,7 +16471,7 @@ f_out_string**_cdesc_allocatable:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - 'character({f_char_len}), intent(OUT), allocatable, target :: {f_var}{f_assumed_shape}'
+  - 'character({f_char_len}), intent(OUT){f_deref_attr}, target :: {f_var}{f_assumed_shape}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
@@ -16957,7 +16957,7 @@ f_out_vector<native>&_cdesc_allocatable:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - '{targs[0].f_type}{f_intent_attr}, allocatable, target :: {f_var}{f_assumed_shape}'
+  - '{targs[0].f_type}{f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
@@ -17098,7 +17098,7 @@ f_out_vector<native>*_cdesc_allocatable:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - '{targs[0].f_type}{f_intent_attr}, allocatable, target :: {f_var}{f_assumed_shape}'
+  - '{targs[0].f_type}{f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
@@ -17223,7 +17223,7 @@ f_out_vector<string>&_cdesc_allocatable:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - 'character({f_char_len}), intent(OUT), allocatable, target :: {f_var}{f_assumed_shape}'
+  - 'character({f_char_len}), intent(OUT){f_deref_attr}, target :: {f_var}{f_assumed_shape}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'

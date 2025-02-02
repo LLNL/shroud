@@ -1474,7 +1474,7 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
         type(cstruct_ptr), intent(IN) :: SH_this
-        real(C_DOUBLE) :: SHT_rv
+        real(C_DOUBLE), pointer :: SHT_rv
         ! splicer begin function.cstruct_ptr_get_const_dvalue
         SHT_rv = c_cstruct_ptr_get_const_dvalue(SH_this)
         ! splicer end function.cstruct_ptr_get_const_dvalue
