@@ -95,6 +95,18 @@
         "sphinx-end-before": "f_mixin_declare-fortran-arg"
     },
     {
+        "name": "c_mixin_local-cvar",
+        "comments": [
+            "Declare a local variable."
+        ],
+        "c_local": [
+            "cxx"
+        ],
+        "c_pre_call": [
+            "{c_const}{c_type} * {c_local_cxx};"
+        ]
+    },
+    {
         "name": "c_mixin_cast-argument",
         "comments": [
             "Cast C argument to local C++ variable."
@@ -4405,6 +4417,15 @@
         ]
     },
     {
+        "name": "c_mixin_cfi-unpack-base-addr-cxx",
+        "c_local": [
+            "cxx"
+        ],
+        "c_pre_call": [
+            "{cxx_type} *{c_local_cxx} = {cast_static}{cxx_type} *{cast1}{c_var_cfi}->base_addr{cast2};"
+        ]
+    },
+    {
         "name": "c_mixin_cfi-unpack-len",
         "c_temps": [
             "len"
@@ -4480,9 +4501,6 @@
         },
         "i_arg_names": [
             "{i_var}"
-        ],
-        "c_local": [
-            "cxx"
         ]
     },
     {
@@ -4636,10 +4654,8 @@
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "c_mixin_arg_native_cfi",
+            "c_mixin_cfi-unpack-base-addr-cxx",
             "c_mixin_arg-call-cxx"
-        ],
-        "c_pre_call": [
-            "{cxx_type} *{c_local_cxx} = {cast_static}{cxx_type} *{cast1}{c_var_cfi}->base_addr{cast2};"
         ]
     },
     {
@@ -5046,14 +5062,12 @@
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "c_mixin_arg_native_cfi",
+            "c_mixin_local-cvar",
             "c_mixin_arg-call-cxx-address",
             "c_mixin_native_cfi_allocatable"
         ],
         "i_arg_decl": [
             "{i_type}{f_intent_attr}, allocatable :: {i_var}{f_assumed_shape}"
-        ],
-        "c_pre_call": [
-            "{c_const}{c_type} * {c_local_cxx};"
         ]
     },
     {
@@ -5064,19 +5078,17 @@
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "c_mixin_arg_native_cfi",
+            "c_mixin_local-cvar",
             "c_mixin_arg-call-cxx-address",
             "c_mixin_native_cfi_pointer"
         ],
         "i_arg_decl": [
             "{i_type}{f_intent_attr}, pointer :: {i_var}{f_assumed_shape}"
-        ],
-        "c_pre_call": [
-            "{c_const}{c_type} * {c_local_cxx};"
         ]
     },
     {
         "name": "f_function_native*_cfi_allocatable",
-        "comments": [
+        "notes": [
             "Pass result as an argument to C wrapper.",
             "Convert to subroutine and pass result as an argument.",
             "Return an allocated copy of data."
@@ -5085,6 +5097,7 @@
             "f_mixin_function-to-subroutine",
             "c_mixin_arg_native_cfi",
             "c_mixin_arg-call-cxx",
+            "c_mixin_function-assign-to-local",
             "c_mixin_native_cfi_allocatable"
         ],
         "f_module": {
@@ -5100,9 +5113,6 @@
         ],
         "i_arg_decl": [
             "{i_type}{f_intent_attr}, allocatable :: {i_var}{f_assumed_shape}"
-        ],
-        "c_call": [
-            "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
         ]
     },
     {
@@ -5116,6 +5126,7 @@
             "f_mixin_function-to-subroutine",
             "c_mixin_arg_native_cfi",
             "c_mixin_arg-call-cxx",
+            "c_mixin_function-assign-to-local",
             "c_mixin_native_cfi_pointer"
         ],
         "f_module": {
@@ -5134,9 +5145,6 @@
         ],
         "i_arg_decl": [
             "{i_type}{f_intent_attr}, pointer :: {i_var}{f_assumed_shape}"
-        ],
-        "c_call": [
-            "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
         ]
     },
     {

@@ -3608,8 +3608,6 @@ c_mixin_arg_native_cfi:
   - CFI_cdesc_t *{c_var_cfi}
   c_temps:
   - cfi
-  c_local:
-  - cxx
   iface_header:
   - ISO_Fortran_binding.h
   owner: library
@@ -3633,6 +3631,14 @@ c_mixin_cast-argument:
   intent: mixin
   c_pre_call:
   - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  c_local:
+  - cxx
+  owner: library
+c_mixin_cfi-unpack-base-addr-cxx:
+  name: c_mixin_cfi-unpack-base-addr-cxx
+  intent: mixin
+  c_pre_call:
+  - '{cxx_type} *{c_local_cxx} = {cast_static}{cxx_type} *{cast1}{c_var_cfi}->base_addr{cast2};'
   c_local:
   - cxx
   owner: library
@@ -4084,6 +4090,16 @@ c_mixin_inout_vector_cdesc:
   - cdesc
   c_helper:
   - array_context
+  owner: library
+c_mixin_local-cvar:
+  name: c_mixin_local-cvar
+  comments:
+  - Declare a local variable.
+  intent: mixin
+  c_pre_call:
+  - '{c_const}{c_type} * {c_local_cxx};'
+  c_local:
+  - cxx
   owner: library
 c_mixin_local-string:
   name: c_mixin_local-string
@@ -6956,6 +6972,13 @@ f_function_native*_cdesc_pointer_caller:
 f_function_native*_cfi_allocatable:
   name: f_function_native*_cfi_allocatable
   comments:
+  - Call the C wrapper as a subroutine.
+  - Make the C wrapper argument a CFI_desc_t.
+  - Native argument which use CFI_desc_t.
+  - Pass cxx local variable to library.
+  - Call function and assign to a local C++ variable.
+  - Allocate copy of C pointer (requires +dimension).
+  notes:
   - Pass result as an argument to C wrapper.
   - Convert to subroutine and pass result as an argument.
   - Return an allocated copy of data.
@@ -6974,6 +6997,7 @@ f_function_native*_cfi_allocatable:
   - '  c_mixin_arg_native_cfi'
   - '    c_mixin_arg_cfi'
   - '  c_mixin_arg-call-cxx'
+  - '  c_mixin_function-assign-to-local'
   - '  c_mixin_native_cfi_allocatable'
   i_arg_names:
   - '{i_var}'
@@ -7029,6 +7053,7 @@ f_function_native*_cfi_pointer:
   - '  c_mixin_arg_native_cfi'
   - '    c_mixin_arg_cfi'
   - '  c_mixin_arg-call-cxx'
+  - '  c_mixin_function-assign-to-local'
   - '  c_mixin_native_cfi_pointer'
   i_arg_names:
   - '{i_var}'
@@ -11750,6 +11775,7 @@ f_in_native*_cfi:
   - '  f_mixin_declare-fortran-arg'
   - '  c_mixin_arg_native_cfi'
   - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi-unpack-base-addr-cxx'
   - '  c_mixin_arg-call-cxx'
   i_arg_names:
   - '{i_var}'
@@ -13413,6 +13439,7 @@ f_inout_native*_cfi:
   - '  f_mixin_declare-fortran-arg'
   - '  c_mixin_arg_native_cfi'
   - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi-unpack-base-addr-cxx'
   - '  c_mixin_arg-call-cxx'
   i_arg_names:
   - '{i_var}'
@@ -15995,6 +16022,7 @@ f_out_native**_cfi_allocatable:
   - '  f_mixin_declare-fortran-arg'
   - '  c_mixin_arg_native_cfi'
   - '    c_mixin_arg_cfi'
+  - '  c_mixin_local-cvar'
   - '  c_mixin_arg-call-cxx-address'
   - '  c_mixin_native_cfi_allocatable'
   i_arg_names:
@@ -16043,6 +16071,7 @@ f_out_native**_cfi_pointer:
   - '  f_mixin_declare-fortran-arg'
   - '  c_mixin_arg_native_cfi'
   - '    c_mixin_arg_cfi'
+  - '  c_mixin_local-cvar'
   - '  c_mixin_arg-call-cxx-address'
   - '  c_mixin_native_cfi_pointer'
   i_arg_names:
@@ -18519,6 +18548,7 @@ root
       arg-call-cxx-deref -- c_mixin_arg-call-cxx-deref
       c-str -- c_mixin_c-str
       cast-argument -- c_mixin_cast-argument
+      cfi-unpack-base-addr-cxx -- c_mixin_cfi-unpack-base-addr-cxx
       cfi-unpack-len -- c_mixin_cfi-unpack-len
       cfi-unpack-len-size -- c_mixin_cfi-unpack-len-size
       char-alloc -- c_mixin_char-alloc
@@ -18562,6 +18592,7 @@ root
           cdesc -- c_mixin_inout_vector_cdesc
         vector<native>
           cdesc -- c_mixin_inout_vector<native>_cdesc
+      local-cvar -- c_mixin_local-cvar
       local-string -- c_mixin_local-string
       local-string-init -- c_mixin_local-string-init
       local-string-init-trim -- c_mixin_local-string-init-trim
