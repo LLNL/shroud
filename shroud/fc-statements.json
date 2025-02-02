@@ -4472,7 +4472,7 @@
     {
         "name": "c_mixin_arg_character_cfi",
         "comments": [
-            "Local character argument passed as CFI_desc_t."
+            "Character argument passed as CFI_desc_t."
         ],
         "mixin": [
             "c_mixin_arg_cfi"

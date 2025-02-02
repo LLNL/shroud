@@ -3572,7 +3572,7 @@ c_mixin_arg_character_cfi:
   name: c_mixin_arg_character_cfi
   comments:
   - Make the C wrapper argument a CFI_desc_t.
-  - Local character argument passed as CFI_desc_t.
+  - Character argument passed as CFI_desc_t.
   mixin_names:
   - '  c_mixin_arg_cfi'
   intent: mixin
@@ -8471,7 +8471,7 @@ f_function_string&_cfi_arg:
   - Call the C wrapper as a subroutine.
   - Pass argument to C wrapper
   - Make the C wrapper argument a CFI_desc_t.
-  - Local character argument passed as CFI_desc_t.
+  - Character argument passed as CFI_desc_t.
   - Pass cxx local variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
@@ -8537,7 +8537,7 @@ f_function_string&_cfi_copy:
   - Call the C wrapper as a subroutine.
   - Pass argument to C wrapper
   - Make the C wrapper argument a CFI_desc_t.
-  - Local character argument passed as CFI_desc_t.
+  - Character argument passed as CFI_desc_t.
   - Pass cxx local variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
@@ -9493,7 +9493,7 @@ f_function_string*_cfi_copy:
   - Call the C wrapper as a subroutine.
   - Pass argument to C wrapper
   - Make the C wrapper argument a CFI_desc_t.
-  - Local character argument passed as CFI_desc_t.
+  - Character argument passed as CFI_desc_t.
   - Pass cxx local variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
@@ -10420,7 +10420,7 @@ f_function_string_cfi_arg:
   - Call the C wrapper as a subroutine.
   - Pass argument to C wrapper
   - Make the C wrapper argument a CFI_desc_t.
-  - Local character argument passed as CFI_desc_t.
+  - Character argument passed as CFI_desc_t.
   - Pass cxx local variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
@@ -10486,7 +10486,7 @@ f_function_string_cfi_copy:
   - Call the C wrapper as a subroutine.
   - Pass argument to C wrapper
   - Make the C wrapper argument a CFI_desc_t.
-  - Local character argument passed as CFI_desc_t.
+  - Character argument passed as CFI_desc_t.
   - Pass cxx local variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
@@ -11531,7 +11531,7 @@ f_in_char*_cfi:
   name: f_in_char*_cfi
   comments:
   - Make the C wrapper argument a CFI_desc_t.
-  - Local character argument passed as CFI_desc_t.
+  - Character argument passed as CFI_desc_t.
   - Allocate a local char variable in C wrapper.
   - Pass cxx local variable to library.
   intent: in
@@ -12147,7 +12147,7 @@ f_in_string&_cfi:
   name: f_in_string&_cfi
   comments:
   - Make the C wrapper argument a CFI_desc_t.
-  - Local character argument passed as CFI_desc_t.
+  - Character argument passed as CFI_desc_t.
   - Create local std::string from the argument with trim.
   - Pass cxx local variable to library.
   intent: in
@@ -12279,7 +12279,7 @@ f_in_string*_cfi:
   name: f_in_string*_cfi
   comments:
   - Make the C wrapper argument a CFI_desc_t.
-  - Local character argument passed as CFI_desc_t.
+  - Character argument passed as CFI_desc_t.
   - Create local std::string from the argument with trim.
   - Pass address of local cxx variable to library.
   notes:
@@ -12386,7 +12386,7 @@ f_in_string_cfi:
   name: f_in_string_cfi
   comments:
   - Make the C wrapper argument a CFI_desc_t.
-  - Local character argument passed as CFI_desc_t.
+  - Character argument passed as CFI_desc_t.
   - Create local std::string from the argument with trim.
   - Pass cxx local variable to library.
   intent: in
@@ -13275,7 +13275,7 @@ f_inout_char*_cfi:
   name: f_inout_char*_cfi
   comments:
   - Make the C wrapper argument a CFI_desc_t.
-  - Local character argument passed as CFI_desc_t.
+  - Character argument passed as CFI_desc_t.
   - Blank fill C argument.
   - Allocate a local char variable in C wrapper.
   - Pass cxx local variable to library.
@@ -13758,7 +13758,7 @@ f_inout_string&_cfi:
   name: f_inout_string&_cfi
   comments:
   - Make the C wrapper argument a CFI_desc_t.
-  - Local character argument passed as CFI_desc_t.
+  - Character argument passed as CFI_desc_t.
   - Create local std::string from the argument with trim.
   - Pass cxx local variable to library.
   - Copy std::string into argument.
@@ -13925,7 +13925,7 @@ f_inout_string*_cfi:
   name: f_inout_string*_cfi
   comments:
   - Make the C wrapper argument a CFI_desc_t.
-  - Local character argument passed as CFI_desc_t.
+  - Character argument passed as CFI_desc_t.
   - Create local std::string from the argument with trim.
   - Pass address of local cxx variable to library.
   - Copy std::string into argument.
@@ -15644,7 +15644,7 @@ f_out_char*_cfi:
   name: f_out_char*_cfi
   comments:
   - Make the C wrapper argument a CFI_desc_t.
-  - Local character argument passed as CFI_desc_t.
+  - Character argument passed as CFI_desc_t.
   - Allocate a local char array in C wrapper.
   - Pass cxx local variable to library.
   - Copy cxx variable to c argument.
@@ -16405,7 +16405,7 @@ f_out_string&_cfi:
   comments:
   - Create local std::string.
   - Make the C wrapper argument a CFI_desc_t.
-  - Local character argument passed as CFI_desc_t.
+  - Character argument passed as CFI_desc_t.
   - Pass cxx local variable to library.
   - Copy std::string into argument.
   notes:
@@ -16761,7 +16761,7 @@ f_out_string*_cfi:
   comments:
   - Create local std::string.
   - Make the C wrapper argument a CFI_desc_t.
-  - Local character argument passed as CFI_desc_t.
+  - Character argument passed as CFI_desc_t.
   - Pass address of local cxx variable to library.
   - Copy std::string into argument.
   intent: out
