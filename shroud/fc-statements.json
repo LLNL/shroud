@@ -4803,22 +4803,26 @@
             "c_mixin_local-string",
             "c_mixin_arg_character_cfi",
             "c_mixin_cfi-unpack-base-addr",
-            "c_mixin_arg-call-cxx-address"
-        ],
-        "c_helper": [
-            "char_copy"
-        ],
-        "c_post_call": [
-            "{c_helper_char_copy}({c_var},\t {c_var_cfi}->elem_len,\t {c_local_cxx}.data(),\t {c_local_cxx}.size());"
+            "c_mixin_cfi-unpack-len",
+            "c_mixin_arg-call-cxx-address",
+            "c_mixin_string-copy-out"
         ]
     },
     {
         "alias": [
             "f_out_string&_cfi"
         ],
-        "base": "f_out_string*_cfi",
-        "c_arg_call": [
-            "{c_local_cxx}"
+        "notes": [
+            "was base:f_out_string*_cfi"
+        ],
+        "mixin": [
+            "f_mixin_declare-fortran-arg",
+            "c_mixin_local-string",
+            "c_mixin_arg_character_cfi",
+            "c_mixin_cfi-unpack-base-addr",
+            "c_mixin_cfi-unpack-len",
+            "c_mixin_arg-call-cxx",
+            "c_mixin_string-copy-out"
         ]
     },
     {
@@ -4839,9 +4843,17 @@
         "alias": [
             "f_inout_string&_cfi"
         ],
-        "base": "f_inout_string*_cfi",
-        "c_arg_call": [
-            "{c_local_cxx}"
+        "notes": [
+            "was base:f_inout_string*_cfi"
+        ],
+        "mixin": [
+            "f_mixin_declare-fortran-arg",
+            "c_mixin_arg_character_cfi",
+            "c_mixin_cfi-unpack-base-addr",
+            "c_mixin_cfi-unpack-len",
+            "c_mixin_local-string-init-trim",
+            "c_mixin_arg-call-cxx",
+            "c_mixin_string-copy-out"
         ]
     },
     {

@@ -667,8 +667,9 @@ void STR_acceptStringReferenceOut_CFI(CFI_cdesc_t *SHT_arg1_cfi)
     // splicer begin function.acceptStringReferenceOut_CFI
     std::string SHC_arg1_cxx;
     char *arg1 = static_cast<char *>(SHT_arg1_cfi->base_addr);
+    size_t SHT_arg1_len = SHT_arg1_cfi->elem_len;
     acceptStringReferenceOut(SHC_arg1_cxx);
-    ShroudCharCopy(arg1, SHT_arg1_cfi->elem_len, SHC_arg1_cxx.data(),
+    ShroudCharCopy(arg1, SHT_arg1_len, SHC_arg1_cxx.data(),
         SHC_arg1_cxx.size());
     // splicer end function.acceptStringReferenceOut_CFI
 }
@@ -842,8 +843,9 @@ void STR_fetchStringPointer_CFI(CFI_cdesc_t *SHT_arg1_cfi)
     // splicer begin function.fetchStringPointer_CFI
     std::string SHC_arg1_cxx;
     char *arg1 = static_cast<char *>(SHT_arg1_cfi->base_addr);
+    size_t SHT_arg1_len = SHT_arg1_cfi->elem_len;
     fetchStringPointer(&SHC_arg1_cxx);
-    ShroudCharCopy(arg1, SHT_arg1_cfi->elem_len, SHC_arg1_cxx.data(),
+    ShroudCharCopy(arg1, SHT_arg1_len, SHC_arg1_cxx.data(),
         SHC_arg1_cxx.size());
     // splicer end function.fetchStringPointer_CFI
 }
@@ -947,8 +949,9 @@ void STR_fetchStringPointerLen_CFI(CFI_cdesc_t *SHT_arg1_cfi, int *nlen)
     // splicer begin function.fetchStringPointerLen_CFI
     std::string SHC_arg1_cxx;
     char *arg1 = static_cast<char *>(SHT_arg1_cfi->base_addr);
+    size_t SHT_arg1_len = SHT_arg1_cfi->elem_len;
     fetchStringPointerLen(&SHC_arg1_cxx, nlen);
-    ShroudCharCopy(arg1, SHT_arg1_cfi->elem_len, SHC_arg1_cxx.data(),
+    ShroudCharCopy(arg1, SHT_arg1_len, SHC_arg1_cxx.data(),
         SHC_arg1_cxx.size());
     // splicer end function.fetchStringPointerLen_CFI
 }
