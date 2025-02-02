@@ -179,16 +179,6 @@ void Rank2Input(int *arg)
 }
 
 //----------------------------------------------------------------------
-// Return the strlen of the first index as a check
-
-int acceptCharArrayIn(char **names)
-{
-    if (names == NULL)
-        return 0;
-    return strlen(names[0]);
-}
-
-//----------------------------------------------------------------------
 
 // Set global_int to use with testing.
 void setGlobalInt(int value)

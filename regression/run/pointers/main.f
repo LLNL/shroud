@@ -21,7 +21,6 @@ program tester
   call test_functions
   call test_functions2
   call test_swig
-  call test_char_arrays
   call test_out_ptrs
   call test_out_alloc
   call test_nested_ptrs
@@ -128,35 +127,6 @@ contains
     
   end subroutine test_swig
   
-  subroutine test_char_arrays
-    integer nchar, i
-    character(10) :: in(3) = [ &
-         "dog       ", &
-         "cat       ", &
-         "monkey    "  &
-         ]
-    character(11), target :: inc(3)
-    type(C_PTR) :: inptr(3)
-
-    call set_case_name("test_char_arrays")
-
-    ! Call the bufferify function.
-    ! It will copy strings to create char ** variable.
-    nchar = accept_char_array_in(in)
-    call assert_equals(len_trim(in(1)), nchar, "acceptCharArrayIn")
-
-    ! Create the char** data structure.
-    do i = 1, 3
-       inc(i) = trim(in(i)) // C_NULL_CHAR
-       inptr(i) = C_LOC(inc(i))
-    enddo
-
-    ! The interface is not created with pointers-c
-!    nchar = c_accept_char_array_in(inptr)
-!    call assert_equals(len_trim(in(1)), nchar, "acceptCharArrayIn")
-
-  end subroutine test_char_arrays
-
   subroutine test_out_ptrs
     integer(C_INT) :: ivalue
     integer(C_INT), target :: ivalue1, ivalue2

@@ -457,44 +457,6 @@ module pointers_mod
     ! end c_accumulate_CFI
 
     ! ----------------------------------------
-    ! Function:  int acceptCharArrayIn
-    ! Statement: c_function_native
-    ! ----------------------------------------
-    ! Argument:  char **names +intent(in)
-    ! Statement: c_in_char**
-    ! start c_accept_char_array_in
-    interface
-        function c_accept_char_array_in(names) &
-                result(SHT_rv) &
-                bind(C, name="POI_acceptCharArrayIn")
-            use iso_c_binding, only : C_INT, C_PTR
-            implicit none
-            type(C_PTR), intent(IN) :: names(*)
-            integer(C_INT) :: SHT_rv
-        end function c_accept_char_array_in
-    end interface
-    ! end c_accept_char_array_in
-
-    ! ----------------------------------------
-    ! Function:  int acceptCharArrayIn
-    ! Statement: f_function_native
-    ! ----------------------------------------
-    ! Argument:  char **names +intent(in)
-    ! Statement: f_in_char**_cfi
-    ! start accept_char_array_in
-    interface
-        function accept_char_array_in(names) &
-                result(SHT_rv) &
-                bind(C, name="POI_acceptCharArrayIn_CFI")
-            use iso_c_binding, only : C_INT
-            implicit none
-            character(len=*), intent(IN) :: names(:)
-            integer(C_INT) :: SHT_rv
-        end function accept_char_array_in
-    end interface
-    ! end accept_char_array_in
-
-    ! ----------------------------------------
     ! Function:  void setGlobalInt
     ! Statement: f_subroutine
     ! ----------------------------------------
@@ -1611,30 +1573,6 @@ contains
         ! splicer end function.accumulate
     end function accumulate
     ! end accumulate
-
-#if 0
-    ! Only the interface is needed
-    ! ----------------------------------------
-    ! Function:  int acceptCharArrayIn
-    ! Statement: f_function_native
-    ! ----------------------------------------
-    ! Argument:  char **names +intent(in)
-    ! Statement: f_in_char**_cfi
-    !>
-    !! Return strlen of the first index as a check.
-    !<
-    ! start accept_char_array_in
-    function accept_char_array_in(names) &
-            result(SHT_rv)
-        use iso_c_binding, only : C_INT
-        character(len=*), intent(IN) :: names(:)
-        integer(C_INT) :: SHT_rv
-        ! splicer begin function.accept_char_array_in
-        SHT_rv = c_accept_char_array_in_CFI(names)
-        ! splicer end function.accept_char_array_in
-    end function accept_char_array_in
-    ! end accept_char_array_in
-#endif
 
 #if 0
     ! Only the interface is needed

@@ -4095,10 +4095,10 @@ c_mixin_inout_vector_cdesc:
   c_helper:
   - array_context
   owner: library
-c_mixin_local-cvar:
-  name: c_mixin_local-cvar
+c_mixin_local-cvar-ptr:
+  name: c_mixin_local-cvar-ptr
   comments:
-  - Declare a local variable.
+  - Declare a local pointer variable in the C wrapper.
   intent: mixin
   c_pre_call:
   - '{c_const}{c_type} * {c_local_cxx};'
@@ -16106,7 +16106,11 @@ f_out_native**_cdesc_pointer:
 f_out_native**_cfi_allocatable:
   name: f_out_native**_cfi_allocatable
   comments:
-  - Set Fortran pointer to point to cxx_var.
+  - Make the C wrapper argument a CFI_desc_t.
+  - Native argument which use CFI_desc_t.
+  - Declare a local pointer variable in the C wrapper.
+  - Pass address of local cxx variable to library.
+  - Allocate copy of C pointer (requires +dimension).
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -16119,7 +16123,7 @@ f_out_native**_cfi_allocatable:
   - '  f_mixin_declare-fortran-arg'
   - '  c_mixin_arg_native_cfi'
   - '    c_mixin_arg_cfi'
-  - '  c_mixin_local-cvar'
+  - '  c_mixin_local-cvar-ptr'
   - '  c_mixin_arg-call-cxx-address'
   - '  c_mixin_native_cfi_allocatable'
   i_arg_names:
@@ -16168,7 +16172,7 @@ f_out_native**_cfi_pointer:
   - '  f_mixin_declare-fortran-arg'
   - '  c_mixin_arg_native_cfi'
   - '    c_mixin_arg_cfi'
-  - '  c_mixin_local-cvar'
+  - '  c_mixin_local-cvar-ptr'
   - '  c_mixin_arg-call-cxx-address'
   - '  c_mixin_native_cfi_pointer'
   i_arg_names:
@@ -18702,7 +18706,7 @@ root
           cdesc -- c_mixin_inout_vector_cdesc
         vector<native>
           cdesc -- c_mixin_inout_vector<native>_cdesc
-      local-cvar -- c_mixin_local-cvar
+      local-cvar-ptr -- c_mixin_local-cvar-ptr
       local-string -- c_mixin_local-string
       local-string-init -- c_mixin_local-string-init
       local-string-init-trim -- c_mixin_local-string-init-trim

@@ -307,25 +307,6 @@ int POI_accumulate(const int *arr, size_t len)
 }
 // end POI_accumulate
 
-/**
- * Return strlen of the first index as a check.
- */
-// ----------------------------------------
-// Function:  int acceptCharArrayIn
-// Statement: c_function_native
-// ----------------------------------------
-// Argument:  char **names +intent(in)
-// Statement: c_in_char**
-// start POI_acceptCharArrayIn
-int POI_acceptCharArrayIn(char **names)
-{
-    // splicer begin function.acceptCharArrayIn
-    int SHC_rv = acceptCharArrayIn(names);
-    return SHC_rv;
-    // splicer end function.acceptCharArrayIn
-}
-// end POI_acceptCharArrayIn
-
 // ----------------------------------------
 // Function:  void setGlobalInt
 // Statement: c_subroutine

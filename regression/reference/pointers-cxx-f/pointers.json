@@ -2980,191 +2980,7 @@
                 }
             },
             {
-                "<FUNCTION>": "acceptCharArrayIn  14 ****************************************",
-                "ast": {
-                    "declarator": {
-                        "name": "acceptCharArrayIn",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "name": "names",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        },
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "char"
-                                },
-                                "specifier": [
-                                    "char"
-                                ],
-                                "typemap_name": "char"
-                            }
-                        ],
-                        "typemap_name": "int"
-                    },
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int"
-                },
-                "decl": "int acceptCharArrayIn(char **names +intent(in))",
-                "declgen": "int acceptCharArrayIn(char **names +intent(in))",
-                "doxygen": {
-                    "description": "Return strlen of the first index as a check.\n"
-                },
-                "helpers": {
-                    "c": [
-                        "char_array_alloc",
-                        "char_array_free"
-                    ]
-                },
-                "name": "acceptCharArrayIn",
-                "options": {},
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "fmtdict": {
-                                "C_call_function": "acceptCharArrayIn(\tSHC_names_cxx)",
-                                "C_call_list": "SHC_names_cxx",
-                                "C_name": "POI_acceptCharArrayIn_bufferify",
-                                "C_prototype": "const char *names,\t size_t SHT_names_size,\t int SHT_names_len",
-                                "C_return_type": "int",
-                                "F_arg_c_call": "names,\t size(names, kind=C_SIZE_T),\t len(names, kind=C_INT)",
-                                "F_arguments": "names",
-                                "F_subprogram": "function",
-                                "c_const": "",
-                                "c_get_value": "",
-                                "c_type": "int",
-                                "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_int",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_nonconst_ptr": "&SHC_rv",
-                                "cxx_rv_decl": "int SHC_rv",
-                                "cxx_type": "int",
-                                "cxx_var": "SHC_rv",
-                                "f_call_function": "c_accept_char_array_in_bufferify",
-                                "f_intent": "OUT",
-                                "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_INT",
-                                "f_module_name": "iso_c_binding",
-                                "f_result_clause": "\fresult(SHT_rv)",
-                                "f_type": "integer(C_INT)",
-                                "f_var": "SHT_rv",
-                                "fc_var": "SHT_rv",
-                                "i_arguments": "names,\t SHT_names_size,\t SHT_names_len",
-                                "i_kind": "C_INT",
-                                "i_module_name": "iso_c_binding",
-                                "i_name_function": "c_accept_char_array_in_bufferify",
-                                "i_result_clause": "\fresult(SHT_rv)",
-                                "i_subprogram": "function",
-                                "i_suffix": "_bufferify",
-                                "i_type": "integer(C_INT)",
-                                "i_var": "SHT_rv",
-                                "idtor": "0",
-                                "sh_type": "SH_TYPE_INT",
-                                "stmt_name": "f_function_native",
-                                "typemap_name": "int"
-                            },
-                            "meta": {
-                                "abstract": "native",
-                                "intent": "function"
-                            },
-                            "stmt": "f_function_native"
-                        },
-                        "names": {
-                            "fmtdict": {
-                                "c_abstract_decl": "char **",
-                                "c_addr": "",
-                                "c_const": "",
-                                "c_deref": "*",
-                                "c_helper_char_array_alloc": "ShroudStrArrayAlloc",
-                                "c_helper_char_array_free": "ShroudStrArrayFree",
-                                "c_local_cxx": "SHC_names_cxx",
-                                "c_member": "->",
-                                "c_type": "char",
-                                "c_var": "names",
-                                "c_var_len": "SHT_names_len",
-                                "c_var_size": "SHT_names_size",
-                                "cfi_type": "CFI_type_other",
-                                "cxx_abstract_decl": "char **",
-                                "cxx_addr": "",
-                                "cxx_member": "->",
-                                "cxx_nonconst_ptr": "names",
-                                "cxx_type": "char",
-                                "cxx_var": "SHC_names_cxx",
-                                "f_assumed_shape": "(:)",
-                                "f_dimension": "(:)",
-                                "f_intent": "IN",
-                                "f_intent_attr": ", intent(IN)",
-                                "f_type": "character(len=*)",
-                                "f_var": "names",
-                                "fc_var": "names",
-                                "i_dimension": "(*)",
-                                "i_kind": "C_CHAR",
-                                "i_local_cxx": "SHC_names_cxx",
-                                "i_module_name": "iso_c_binding",
-                                "i_type": "character(kind=C_CHAR)",
-                                "i_var": "names",
-                                "i_var_len": "SHT_names_len",
-                                "i_var_size": "SHT_names_size",
-                                "idtor": "0",
-                                "rank": "1",
-                                "sh_type": "SH_TYPE_OTHER",
-                                "size": "size(names)",
-                                "stmt_name": "f_in_char**_buf",
-                                "typemap_name": "char"
-                            },
-                            "meta": {
-                                "abstract": "char**",
-                                "api": "buf",
-                                "intent": "in",
-                                "rank": 1
-                            },
-                            "stmt": "f_in_char**_buf"
-                        }
-                    },
-                    "share": {
-                        "+result": {
-                            "meta": {
-                                "abstract": "native",
-                                "intent": "function"
-                            }
-                        },
-                        "names": {
-                            "meta": {
-                                "abstract": "char**",
-                                "intent": "in",
-                                "rank": 1
-                            }
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_name_api": "acceptCharArrayIn",
-                    "F_name_api": "accept_char_array_in",
-                    "F_name_function": "accept_char_array_in",
-                    "F_name_generic": "accept_char_array_in",
-                    "F_name_impl": "accept_char_array_in",
-                    "f_arglist": [
-                        "SHT_rv",
-                        "names"
-                    ],
-                    "function_name": "acceptCharArrayIn"
-                }
-            },
-            {
-                "<FUNCTION>": "setGlobalInt  15 ****************************************",
+                "<FUNCTION>": "setGlobalInt  14 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "setGlobalInt",
@@ -3291,7 +3107,7 @@
                 }
             },
             {
-                "<FUNCTION>": "sumFixedArray  16 ****************************************",
+                "<FUNCTION>": "sumFixedArray  15 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "sumFixedArray",
@@ -3386,7 +3202,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getPtrToScalar  17 ****************************************",
+                "<FUNCTION>": "getPtrToScalar  16 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToScalar",
@@ -3539,7 +3355,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getPtrToFixedArray  18 ****************************************",
+                "<FUNCTION>": "getPtrToFixedArray  17 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToFixedArray",
@@ -3716,7 +3532,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getPtrToDynamicArray  19 ****************************************",
+                "<FUNCTION>": "getPtrToDynamicArray  18 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToDynamicArray",
@@ -3957,7 +3773,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getPtrToFuncArray  20 ****************************************",
+                "<FUNCTION>": "getPtrToFuncArray  19 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToFuncArray",
@@ -4136,7 +3952,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getPtrToConstScalar  21 ****************************************",
+                "<FUNCTION>": "getPtrToConstScalar  20 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToConstScalar",
@@ -4290,7 +4106,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getPtrToFixedConstArray  22 ****************************************",
+                "<FUNCTION>": "getPtrToFixedConstArray  21 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToFixedConstArray",
@@ -4465,7 +4281,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getPtrToDynamicConstArray  23 ****************************************",
+                "<FUNCTION>": "getPtrToDynamicConstArray  22 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToDynamicConstArray",
@@ -4704,7 +4520,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getRawPtrToScalar  24 ****************************************",
+                "<FUNCTION>": "getRawPtrToScalar  23 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getRawPtrToScalar",
@@ -4844,7 +4660,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getRawPtrToScalarForce  25 ****************************************",
+                "<FUNCTION>": "getRawPtrToScalarForce  24 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getRawPtrToScalarForce",
@@ -4987,7 +4803,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getRawPtrToFixedArray  26 ****************************************",
+                "<FUNCTION>": "getRawPtrToFixedArray  25 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getRawPtrToFixedArray",
@@ -5127,7 +4943,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getRawPtrToFixedArrayForce  27 ****************************************",
+                "<FUNCTION>": "getRawPtrToFixedArrayForce  26 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getRawPtrToFixedArrayForce",
@@ -5270,7 +5086,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getRawPtrToInt2d  28 ****************************************",
+                "<FUNCTION>": "getRawPtrToInt2d  27 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getRawPtrToInt2d",
@@ -5413,7 +5229,7 @@
                 }
             },
             {
-                "<FUNCTION>": "checkInt2d  29 ****************************************",
+                "<FUNCTION>": "checkInt2d  28 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "checkInt2d",
@@ -5579,7 +5395,7 @@
                 }
             },
             {
-                "<FUNCTION>": "DimensionIn  30 ****************************************",
+                "<FUNCTION>": "DimensionIn  29 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "DimensionIn",
@@ -5742,7 +5558,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getAllocToFixedArray  31 ****************************************",
+                "<FUNCTION>": "getAllocToFixedArray  30 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getAllocToFixedArray",
@@ -5932,7 +5748,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnAddress1  32 ****************************************",
+                "<FUNCTION>": "returnAddress1  31 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnAddress1",
@@ -6090,7 +5906,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnAddress2  33 ****************************************",
+                "<FUNCTION>": "returnAddress2  32 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnAddress2",
@@ -6250,7 +6066,7 @@
                 }
             },
             {
-                "<FUNCTION>": "fetchVoidPtr  34 ****************************************",
+                "<FUNCTION>": "fetchVoidPtr  33 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "fetchVoidPtr",
@@ -6385,7 +6201,7 @@
                 }
             },
             {
-                "<FUNCTION>": "updateVoidPtr  35 ****************************************",
+                "<FUNCTION>": "updateVoidPtr  34 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "updateVoidPtr",
@@ -6523,7 +6339,7 @@
                 }
             },
             {
-                "<FUNCTION>": "VoidPtrArray  36 ****************************************",
+                "<FUNCTION>": "VoidPtrArray  35 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "VoidPtrArray",
@@ -6694,7 +6510,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnIntPtrToScalar  37 ****************************************",
+                "<FUNCTION>": "returnIntPtrToScalar  36 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnIntPtrToScalar",
@@ -6793,7 +6609,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnIntPtrToFixedArray  38 ****************************************",
+                "<FUNCTION>": "returnIntPtrToFixedArray  37 ****************************************",
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -6929,7 +6745,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnIntPtrToConstScalar  39 ****************************************",
+                "<FUNCTION>": "returnIntPtrToConstScalar  38 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -7029,7 +6845,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnIntPtrToFixedConstArray  40 ****************************************",
+                "<FUNCTION>": "returnIntPtrToFixedConstArray  39 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -7166,7 +6982,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnIntScalar  41 ****************************************",
+                "<FUNCTION>": "returnIntScalar  40 ****************************************",
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -7266,7 +7082,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnIntRaw  42 ****************************************",
+                "<FUNCTION>": "returnIntRaw  41 ****************************************",
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -7372,7 +7188,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnIntRawWithArgs  43 ****************************************",
+                "<FUNCTION>": "returnIntRawWithArgs  42 ****************************************",
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -7542,7 +7358,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnRawPtrToInt2d  44 ****************************************",
+                "<FUNCTION>": "returnRawPtrToInt2d  43 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnRawPtrToInt2d",
@@ -7648,7 +7464,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnIntAllocToFixedArray  45 ****************************************",
+                "<FUNCTION>": "returnIntAllocToFixedArray  44 ****************************************",
                 "ast": {
                     "declarator": {
                         "attrs": {

@@ -563,6 +563,43 @@ module char_mod
         end function c_cpass_char_ptr_capi2
     end interface
 
+    ! ----------------------------------------
+    ! Function:  int acceptCharArrayIn
+    ! Statement: c_function_native
+    ! ----------------------------------------
+    ! Argument:  char **names +intent(in)
+    ! Statement: c_in_char**
+    interface
+        function c_accept_char_array_in(names) &
+                result(SHT_rv) &
+                bind(C, name="CHA_acceptCharArrayIn")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            type(C_PTR), intent(IN) :: names(*)
+            integer(C_INT) :: SHT_rv
+        end function c_accept_char_array_in
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  int acceptCharArrayIn
+    ! Statement: f_function_native
+    ! ----------------------------------------
+    ! Argument:  char **names +intent(in)
+    ! Statement: f_in_char**_buf
+    interface
+        function c_accept_char_array_in_bufferify(names, SHT_names_size, &
+                SHT_names_len) &
+                result(SHT_rv) &
+                bind(C, name="CHA_acceptCharArrayIn_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT, C_SIZE_T
+            implicit none
+            character(kind=C_CHAR), intent(IN) :: names(*)
+            integer(C_SIZE_T), intent(IN), value :: SHT_names_size
+            integer(C_INT), intent(IN), value :: SHT_names_len
+            integer(C_INT) :: SHT_rv
+        end function c_accept_char_array_in_bufferify
+    end interface
+
     interface
         ! helper copy_string
         ! Copy the char* or std::string in context into c_var.
@@ -998,6 +1035,26 @@ contains
         SHT_rv = c_cpass_char_ptr_capi2(trim(in)//C_NULL_CHAR, src)
         ! splicer end function.cpass_char_ptr_capi2
     end function cpass_char_ptr_capi2
+
+    ! ----------------------------------------
+    ! Function:  int acceptCharArrayIn
+    ! Statement: f_function_native
+    ! ----------------------------------------
+    ! Argument:  char **names +intent(in)
+    ! Statement: f_in_char**_buf
+    !>
+    !! Return strlen of the first index as a check.
+    !<
+    function accept_char_array_in(names) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT, C_SIZE_T
+        character(len=*), intent(IN) :: names(:)
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.accept_char_array_in
+        SHT_rv = c_accept_char_array_in_bufferify(names, &
+            size(names, kind=C_SIZE_T), len(names, kind=C_INT))
+        ! splicer end function.accept_char_array_in
+    end function accept_char_array_in
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

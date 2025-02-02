@@ -55,6 +55,38 @@ static char *ShroudCharAlloc(const char *src, int nsrc, int blanknull)
     return rv;
 }
 
+// start helper char_array_alloc
+// helper char_array_alloc
+// Copy src into new memory and null terminate.
+// char **src +size(nsrc) +len(len)
+// CHARACTER(len) src(nsrc)
+static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
+{
+    char **rv = static_cast<char **>
+        (std::malloc(sizeof(char *) * nsrc));
+    const char *src0 = src;
+    for(int i=0; i < nsrc; ++i) {
+        int ntrim = ShroudCharLenTrim(src0, len);
+        char *tgt = static_cast<char *>(std::malloc(ntrim+1));
+        std::memcpy(tgt, src0, ntrim);
+        tgt[ntrim] = '\0';
+        rv[i] = tgt;
+        src0 += len;
+    }
+    return rv;
+}
+// end helper char_array_alloc
+
+// helper char_array_free
+// Release memory allocated by ShroudStrArrayAlloc
+static void ShroudStrArrayFree(char **src, int nsrc)
+{
+    for(int i=0; i < nsrc; ++i) {
+        std::free(src[i]);
+    }
+    std::free(src);
+}
+
 // helper char_blank_fill
 // blank fill dest starting at trailing NULL.
 static void ShroudCharBlankFill(char *dest, int ndest)
@@ -628,6 +660,44 @@ int CHA_CpassCharPtrCAPI2(const char *in, const char *src)
     int SHC_rv = CpassCharPtrCAPI2(in, src);
     return SHC_rv;
     // splicer end function.CpassCharPtrCAPI2
+}
+
+/**
+ * Return strlen of the first index as a check.
+ */
+// ----------------------------------------
+// Function:  int acceptCharArrayIn
+// Statement: c_function_native
+// ----------------------------------------
+// Argument:  char **names +intent(in)
+// Statement: c_in_char**
+int CHA_acceptCharArrayIn(char **names)
+{
+    // splicer begin function.acceptCharArrayIn
+    int SHC_rv = acceptCharArrayIn(names);
+    return SHC_rv;
+    // splicer end function.acceptCharArrayIn
+}
+
+/**
+ * Return strlen of the first index as a check.
+ */
+// ----------------------------------------
+// Function:  int acceptCharArrayIn
+// Statement: f_function_native
+// ----------------------------------------
+// Argument:  char **names +intent(in)
+// Statement: f_in_char**_buf
+int CHA_acceptCharArrayIn_bufferify(const char *names,
+    size_t SHT_names_size, int SHT_names_len)
+{
+    // splicer begin function.acceptCharArrayIn_bufferify
+    char **SHC_names_cxx = ShroudStrArrayAlloc(names, SHT_names_size,
+        SHT_names_len);
+    int SHC_rv = acceptCharArrayIn(SHC_names_cxx);
+    ShroudStrArrayFree(SHC_names_cxx, SHT_names_size);
+    return SHC_rv;
+    // splicer end function.acceptCharArrayIn_bufferify
 }
 
 }  // extern "C"

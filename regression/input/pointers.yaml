@@ -102,15 +102,6 @@ declarations:
 - decl: int accumulate(const int *arr+rank(1), size_t len+implied(size(arr)));
 
 ######################################################################
-# Deal with 'char **' arguments
-# Python: treat as list of string, even with numpy.
-
-- decl: int acceptCharArrayIn(char **names +intent(in))
-  doxygen:
-    description: |
-      Return strlen of the first index as a check.
-
-######################################################################
 # Routine which return pointers in arguments.
 
 - decl: void setGlobalInt(int value)

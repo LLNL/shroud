@@ -51,6 +51,11 @@ Parse an empty file.  This test also uses some additional flags to
 Shroud to dump some debugging files. It produces a summary of types,
 helpers and statements
 
+### pointers
+
+Pointer to native types (int, double).
+See *char* for `char *` tests.
+
 ### scope
 
 Test enums in different scopes.

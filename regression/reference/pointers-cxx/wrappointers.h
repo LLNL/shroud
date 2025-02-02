@@ -62,11 +62,6 @@ void POI_fill_with_zeros(double *x, int x_length);
 
 int POI_accumulate(const int *arr, size_t len);
 
-int POI_acceptCharArrayIn(char **names);
-
-int POI_acceptCharArrayIn_bufferify(const char *names,
-    size_t SHT_names_size, int SHT_names_len);
-
 void POI_setGlobalInt(int value);
 
 int POI_sumFixedArray(void);
