@@ -3960,6 +3960,18 @@ c_mixin_header_stdlib:
   lang_cxx:
     impl_header:
     - <cstdlib>
+c_mixin_header_string:
+  name: c_mixin_header_string
+  intent: mixin
+  impl_header:
+  - <cstring>
+  owner: library
+  lang_c:
+    impl_header:
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstring>
 c_mixin_in_character_buf:
   name: c_mixin_in_character_buf
   intent: mixin
@@ -8309,6 +8321,7 @@ f_function_string&_cfi_allocatable:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '  f_mixin_function_string_cfi_allocatable'
+  - '  c_mixin_header_string'
   - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
@@ -8346,6 +8359,7 @@ f_function_string&_cfi_allocatable_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '  f_mixin_function_string_cfi_allocatable'
+  - '  c_mixin_header_string'
   - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
@@ -8383,6 +8397,7 @@ f_function_string&_cfi_allocatable_library:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '  f_mixin_function_string_cfi_allocatable'
+  - '  c_mixin_header_string'
   - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
@@ -9322,6 +9337,7 @@ f_function_string*_cfi_allocatable:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '  f_mixin_function_string_cfi_allocatable'
+  - '  c_mixin_header_string'
   - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
@@ -9359,6 +9375,7 @@ f_function_string*_cfi_allocatable_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '  f_mixin_function_string_cfi_allocatable'
+  - '  c_mixin_header_string'
   - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
@@ -9396,6 +9413,7 @@ f_function_string*_cfi_allocatable_library:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '  f_mixin_function_string_cfi_allocatable'
+  - '  c_mixin_header_string'
   - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
@@ -10284,6 +10302,7 @@ f_function_string_cfi_allocatable_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '  f_mixin_function_string_cfi_allocatable'
+  - '  c_mixin_header_string'
   - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
@@ -10321,6 +10340,7 @@ f_function_string_cfi_allocatable_library:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '  f_mixin_function_string_cfi_allocatable'
+  - '  c_mixin_header_string'
   - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
@@ -18499,6 +18519,7 @@ root
       header
         stddef -- c_mixin_header_stddef
         stdlib -- c_mixin_header_stdlib
+        string -- c_mixin_header_string
       in
         character
           buf -- c_mixin_in_character_buf

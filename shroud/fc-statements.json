@@ -33,6 +33,19 @@
         }
     },
     {
+        "name": "c_mixin_header_string",
+        "lang_c": {
+            "impl_header": [
+                "<string.h>"
+            ]
+        },
+        "lang_cxx": {
+            "impl_header": [
+                "<cstring>"
+            ]
+        }
+    },
+    {
         "name":"##### argument mixin #######################################"
     },
     {
@@ -4904,6 +4917,7 @@
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_function_string_cfi_allocatable",
+            "c_mixin_header_string",
             "c_mixin_arg_cfi"
         ],
         "i_arg_decl": [
@@ -4912,16 +4926,6 @@
         "i_arg_names": [
             "{i_var}"
         ],
-        "lang_c": {
-            "impl_header": [
-                "<string.h>"
-            ]
-        },
-        "lang_cxx": {
-            "impl_header": [
-                "<cstring>"
-            ]
-        },
         "c_post_call": [
             "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *) 0, \t{cxx_var}{cxx_member}length());",
             "if (SH_ret == CFI_SUCCESS) {{+",
