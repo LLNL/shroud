@@ -178,13 +178,32 @@
         "name": "f_mixin_interface-as-cptr",
         "notes": [
             "Pass the address of the argument directly to C.",
-            "Used when there is no direct mapping to Fortran"
+            "Used when there is no direct mapping to Fortran."
         ],
         "i_arg_names": [
             "{i_var}"
         ],
         "i_arg_decl": [
             "type(C_PTR){f_intent_attr} :: {i_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        }
+    },
+    {
+        "name": "f_mixin_interface-as-cptr-array",
+        "notes": [
+            "Pass an array of address of the argument directly to C.",
+            "Used when there is no direct mapping to Fortran.",
+            "ex. char **"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_arg_decl": [
+            "type(C_PTR){f_intent_attr} :: {i_var}(*)"
         ],
         "i_module": {
             "iso_c_binding": [
@@ -2326,25 +2345,15 @@
             "c_in_char**"
         ],
         "notes": [
-            "Treat as an assumed length array in Fortran interface."
+            "Treat as an assumed length array in Fortran interface.",
+            "From Fortran, the caller is responsible for creating an array",
+            "of pointers to NULL terminated strings."
         ],
         "mixin": [
+            "f_mixin_interface-as-cptr-array",
+            "c_mixin_declare-arg",
             "c_mixin_arg-call-cvar"
-        ],
-        "c_arg_decl": [
-            "char **{c_var}"
-        ],
-        "i_arg_decl": [
-            "type(C_PTR), intent(IN) :: {i_var}(*)"
-        ],
-        "i_arg_names": [
-            "{i_var}"
-        ],
-        "i_module": {
-            "iso_c_binding": [
-                "C_PTR"
-            ]
-        }
+        ]
     },
     {
         "alias": [

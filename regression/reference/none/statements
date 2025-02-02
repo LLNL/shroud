@@ -1573,18 +1573,22 @@ c_in_char**:
   - Pass cxx variable to library.
   notes:
   - Treat as an assumed length array in Fortran interface.
+  - From Fortran, the caller is responsible for creating an array
+  - of pointers to NULL terminated strings.
   mixin_names:
+  - '  f_mixin_interface-as-cptr-array'
+  - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar'
   intent: in
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'type(C_PTR), intent(IN) :: {i_var}(*)'
+  - 'type(C_PTR){f_intent_attr} :: {i_var}(*)'
   i_module:
     iso_c_binding:
     - C_PTR
   c_arg_decl:
-  - char **{c_var}
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -11256,18 +11260,22 @@ f_in_char**:
   - Pass cxx variable to library.
   notes:
   - Treat as an assumed length array in Fortran interface.
+  - From Fortran, the caller is responsible for creating an array
+  - of pointers to NULL terminated strings.
   intent: in
   mixin_names:
+  - '  f_mixin_interface-as-cptr-array'
+  - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'type(C_PTR), intent(IN) :: {i_var}(*)'
+  - 'type(C_PTR){f_intent_attr} :: {i_var}(*)'
   i_module:
     iso_c_binding:
     - C_PTR
   c_arg_decl:
-  - char **{c_var}
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -14695,6 +14703,17 @@ f_mixin_interface-as-cptr:
   - '{i_var}'
   i_arg_decl:
   - 'type(C_PTR){f_intent_attr} :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  owner: library
+f_mixin_interface-as-cptr-array:
+  name: f_mixin_interface-as-cptr-array
+  intent: mixin
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type(C_PTR){f_intent_attr} :: {i_var}(*)'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -18920,6 +18939,7 @@ root
         array
           cdesc -- f_mixin_inout_array_cdesc
       interface-as-cptr -- f_mixin_interface-as-cptr
+      interface-as-cptr-array -- f_mixin_interface-as-cptr-array
       interface-as-cptr-value -- f_mixin_interface-as-cptr-value
       logical-in -- f_mixin_logical-in
       logical-local-var -- f_mixin_logical-local-var
