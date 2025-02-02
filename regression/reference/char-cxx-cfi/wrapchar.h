@@ -100,6 +100,10 @@ int CHA_CpassCharPtrCAPI2(const char *in, const char *src);
 
 int CHA_CpassCharPtrCAPI2_CFI(CFI_cdesc_t *SHT_in_cfi, const char *src);
 
+int CHA_acceptCharArrayIn(char **names);
+
+int CHA_acceptCharArrayIn_CFI(CFI_cdesc_t *SHT_names_cfi);
+
 #ifdef __cplusplus
 }
 #endif

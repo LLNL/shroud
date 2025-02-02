@@ -376,28 +376,6 @@ module pointers_mod
     ! end c_accumulate_bufferify
 
     ! ----------------------------------------
-    ! Function:  int acceptCharArrayIn
-    ! Statement: f_function_native
-    ! ----------------------------------------
-    ! Argument:  char **names +intent(in)
-    ! Statement: f_in_char**_buf
-    ! start c_accept_char_array_in_bufferify
-    interface
-        function c_accept_char_array_in_bufferify(names, SHT_names_size, &
-                SHT_names_len) &
-                result(SHT_rv) &
-                bind(C, name="POI_acceptCharArrayIn_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT, C_SIZE_T
-            implicit none
-            character(kind=C_CHAR), intent(IN) :: names(*)
-            integer(C_SIZE_T), intent(IN), value :: SHT_names_size
-            integer(C_INT), intent(IN), value :: SHT_names_len
-            integer(C_INT) :: SHT_rv
-        end function c_accept_char_array_in_bufferify
-    end interface
-    ! end c_accept_char_array_in_bufferify
-
-    ! ----------------------------------------
     ! Function:  void setGlobalInt
     ! Statement: f_subroutine
     ! ----------------------------------------
@@ -1295,28 +1273,6 @@ contains
         ! splicer end function.accumulate
     end function accumulate
     ! end accumulate
-
-    ! ----------------------------------------
-    ! Function:  int acceptCharArrayIn
-    ! Statement: f_function_native
-    ! ----------------------------------------
-    ! Argument:  char **names +intent(in)
-    ! Statement: f_in_char**_buf
-    !>
-    !! Return strlen of the first index as a check.
-    !<
-    ! start accept_char_array_in
-    function accept_char_array_in(names) &
-            result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_SIZE_T
-        character(len=*), intent(IN) :: names(:)
-        integer(C_INT) :: SHT_rv
-        ! splicer begin function.accept_char_array_in
-        SHT_rv = c_accept_char_array_in_bufferify(names, &
-            size(names, kind=C_SIZE_T), len(names, kind=C_INT))
-        ! splicer end function.accept_char_array_in
-    end function accept_char_array_in
-    ! end accept_char_array_in
 
 #if 0
     ! Only the interface is needed

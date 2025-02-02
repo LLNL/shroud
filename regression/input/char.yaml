@@ -198,6 +198,15 @@ declarations:
     wrap_python: False
 
 ########################################
+# Deal with 'char **' arguments
+# Python: treat as list of string, even with numpy.
+
+- decl: int acceptCharArrayIn(char **names +intent(in))
+  doxygen:
+    description: |
+      Return strlen of the first index as a check.
+
+########################################
 patterns:
     C_invalid_name: |
         if ({cxx_var}.empty()) {{

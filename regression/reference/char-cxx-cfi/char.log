@@ -39,6 +39,8 @@ C c int CpassCharPtrCAPI(void *addr, const char *src +api(capi))
 C f int CpassCharPtrCAPI(void *addr, const char *src +api(capi))
 C c int CpassCharPtrCAPI2(const char *in, const char *src +api(capi))
 C f int CpassCharPtrCAPI2(const char *in, const char *src +api(capi))
+C c int acceptCharArrayIn(char **names +intent(in))
+C f int acceptCharArrayIn(char **names +intent(in))
 Close wrapchar.h
 Close wrapchar.cpp
 Fortran void init_test(void)
@@ -61,6 +63,7 @@ Fortran void CpassCharPtrBlank(char *dest +intent(out), const char *src)
 Fortran int CpassCharPtrNotrim(const char *src)
 Fortran int CpassCharPtrCAPI(void *addr, const char *src +api(capi))
 Fortran int CpassCharPtrCAPI2(const char *in, const char *src +api(capi))
+Fortran int acceptCharArrayIn(char **names +intent(in))
 C-interface f void init_test(void)
 C-interface f void passChar(char status)
 C-interface f void passCharForce(char status)
@@ -93,6 +96,8 @@ C-interface f int CpassCharPtrNotrim(const char *src)
 C-interface f int CpassCharPtrCAPI(void *addr, const char *src +api(capi))
 C-interface c int CpassCharPtrCAPI2(const char *in, const char *src +api(capi))
 C-interface f int CpassCharPtrCAPI2(const char *in, const char *src +api(capi))
+C-interface c int acceptCharArrayIn(char **names +intent(in))
+C-interface f int acceptCharArrayIn(char **names +intent(in))
 Close wrapfchar.f
 Close utilchar.cpp
 Close typeschar.h

@@ -41,5 +41,6 @@ int CpassCharPtrNotrim(const char *src);
 int CpassCharPtrCAPI(void *addr, const char *src);
 int CpassCharPtrCAPI2(const char *in, const char *src);
 
+int acceptCharArrayIn(char **names);
 
 #endif // CHAR_HPP

@@ -79,10 +79,6 @@ int POI_accumulate(const int *arr, size_t len);
 
 int POI_accumulate_CFI(CFI_cdesc_t *SHT_arr_cfi, size_t len);
 
-int POI_acceptCharArrayIn(char **names);
-
-int POI_acceptCharArrayIn_CFI(CFI_cdesc_t *SHT_names_cfi);
-
 void POI_setGlobalInt(int value);
 
 int POI_sumFixedArray(void);

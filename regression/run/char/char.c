@@ -193,3 +193,12 @@ int CpassCharPtrCAPI2(const char *in, const char *src)
     }
 }
 
+//----------------------------------------------------------------------
+// Return the strlen of the first index as a check
+
+int acceptCharArrayIn(char **names)
+{
+    if (names == NULL)
+        return 0;
+    return strlen(names[0]);
+}

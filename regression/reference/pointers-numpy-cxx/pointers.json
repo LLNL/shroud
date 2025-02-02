@@ -2473,144 +2473,7 @@
                 }
             },
             {
-                "<FUNCTION>": "acceptCharArrayIn  14 ****************************************",
-                "ast": {
-                    "declarator": {
-                        "name": "acceptCharArrayIn",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "name": "names",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        },
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "char"
-                                },
-                                "specifier": [
-                                    "char"
-                                ],
-                                "typemap_name": "char"
-                            }
-                        ],
-                        "typemap_name": "int"
-                    },
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int"
-                },
-                "decl": "int acceptCharArrayIn(char **names +intent(in))",
-                "declgen": "int acceptCharArrayIn(char **names +intent(in))",
-                "doxygen": {
-                    "description": "Return strlen of the first index as a check.\n"
-                },
-                "name": "acceptCharArrayIn",
-                "options": {},
-                "wrap": {
-                    "python": true
-                },
-                "zz_bind": {
-                    "py": {
-                        "+result": {
-                            "fmtdict": {
-                                "c_var": "SHCXX_rv",
-                                "ctor_expr": "SHCXX_rv",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_nonconst_ptr": "&SHCXX_rv",
-                                "cxx_type": "int",
-                                "cxx_var": "SHCXX_rv",
-                                "data_var": "SHData_rv",
-                                "numpy_type": "NPY_INT",
-                                "py_var": "SHTPy_rv",
-                                "size_var": "SHSize_rv",
-                                "stmt": "py_function_native",
-                                "value_var": "SHValue_rv"
-                            },
-                            "meta": {
-                                "abstract": "native",
-                                "intent": "function"
-                            },
-                            "stmt": "py_function_native"
-                        },
-                        "names": {
-                            "fmtdict": {
-                                "c_const": "",
-                                "c_helper_get_from_object_charptr": "SHROUD_get_from_object_charptr",
-                                "c_type": "char",
-                                "c_var": "names",
-                                "ctor_expr": "*names",
-                                "cxx_addr": "",
-                                "cxx_member": "->",
-                                "cxx_nonconst_ptr": "names",
-                                "cxx_type": "char",
-                                "cxx_var": "names",
-                                "data_var": "SHData_names",
-                                "numpy_type": "NPY_INTP",
-                                "py_var": "SHPy_names",
-                                "pytmp_var": "SHTPy_names",
-                                "rank": "1",
-                                "size_var": "SHSize_names",
-                                "stmt": "py_in_char**",
-                                "value_var": "SHValue_names"
-                            },
-                            "meta": {
-                                "abstract": "char**",
-                                "intent": "in",
-                                "rank": 1
-                            },
-                            "stmt": "py_in_char**"
-                        }
-                    },
-                    "share": {
-                        "+result": {
-                            "meta": {
-                                "abstract": "native",
-                                "intent": "function"
-                            }
-                        },
-                        "names": {
-                            "meta": {
-                                "abstract": "char**",
-                                "intent": "in",
-                                "rank": 1
-                            }
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_name_api": "acceptCharArrayIn",
-                    "F_name_api": "accept_char_array_in",
-                    "PY_name_impl": "PY_acceptCharArrayIn",
-                    "function_name": "acceptCharArrayIn"
-                },
-                "zz_fmtlang": {
-                    "py": {
-                        "C_call_function": "acceptCharArrayIn(names)",
-                        "PY_array_arg": "numpy",
-                        "PY_call_list": "names",
-                        "PY_doc_string": "documentation",
-                        "PY_error_return": "nullptr",
-                        "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_used_param_args": true,
-                        "PY_used_param_kwds": true,
-                        "PyArg_format": "O:acceptCharArrayIn",
-                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
-                        "PyArg_vargs": "&SHTPy_names",
-                        "py_var": "SHTPy_rv"
-                    }
-                }
-            },
-            {
-                "<FUNCTION>": "setGlobalInt  15 ****************************************",
+                "<FUNCTION>": "setGlobalInt  14 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "setGlobalInt",
@@ -2717,7 +2580,7 @@
                 }
             },
             {
-                "<FUNCTION>": "sumFixedArray  16 ****************************************",
+                "<FUNCTION>": "sumFixedArray  15 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "sumFixedArray",
@@ -2792,7 +2655,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getPtrToScalar  17 ****************************************",
+                "<FUNCTION>": "getPtrToScalar  16 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToScalar",
@@ -2856,7 +2719,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getPtrToFixedArray  18 ****************************************",
+                "<FUNCTION>": "getPtrToFixedArray  17 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToFixedArray",
@@ -2990,7 +2853,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getPtrToDynamicArray  19 ****************************************",
+                "<FUNCTION>": "getPtrToDynamicArray  18 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToDynamicArray",
@@ -3175,7 +3038,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getPtrToFuncArray  20 ****************************************",
+                "<FUNCTION>": "getPtrToFuncArray  19 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToFuncArray",
@@ -3311,7 +3174,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getPtrToConstScalar  21 ****************************************",
+                "<FUNCTION>": "getPtrToConstScalar  20 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToConstScalar",
@@ -3376,7 +3239,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getPtrToFixedConstArray  22 ****************************************",
+                "<FUNCTION>": "getPtrToFixedConstArray  21 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToFixedConstArray",
@@ -3508,7 +3371,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getPtrToDynamicConstArray  23 ****************************************",
+                "<FUNCTION>": "getPtrToDynamicConstArray  22 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getPtrToDynamicConstArray",
@@ -3691,7 +3554,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getRawPtrToScalar  24 ****************************************",
+                "<FUNCTION>": "getRawPtrToScalar  23 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getRawPtrToScalar",
@@ -3809,7 +3672,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getRawPtrToScalarForce  25 ****************************************",
+                "<FUNCTION>": "getRawPtrToScalarForce  24 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getRawPtrToScalarForce",
@@ -3878,7 +3741,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getRawPtrToFixedArray  26 ****************************************",
+                "<FUNCTION>": "getRawPtrToFixedArray  25 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getRawPtrToFixedArray",
@@ -3996,7 +3859,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getRawPtrToFixedArrayForce  27 ****************************************",
+                "<FUNCTION>": "getRawPtrToFixedArrayForce  26 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getRawPtrToFixedArrayForce",
@@ -4065,7 +3928,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getRawPtrToInt2d  28 ****************************************",
+                "<FUNCTION>": "getRawPtrToInt2d  27 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getRawPtrToInt2d",
@@ -4135,7 +3998,7 @@
                 }
             },
             {
-                "<FUNCTION>": "checkInt2d  29 ****************************************",
+                "<FUNCTION>": "checkInt2d  28 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "checkInt2d",
@@ -4202,7 +4065,7 @@
                 }
             },
             {
-                "<FUNCTION>": "DimensionIn  30 ****************************************",
+                "<FUNCTION>": "DimensionIn  29 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "DimensionIn",
@@ -4277,7 +4140,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getAllocToFixedArray  31 ****************************************",
+                "<FUNCTION>": "getAllocToFixedArray  30 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getAllocToFixedArray",
@@ -4352,7 +4215,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnAddress1  32 ****************************************",
+                "<FUNCTION>": "returnAddress1  31 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnAddress1",
@@ -4479,7 +4342,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnAddress2  33 ****************************************",
+                "<FUNCTION>": "returnAddress2  32 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnAddress2",
@@ -4608,7 +4471,7 @@
                 }
             },
             {
-                "<FUNCTION>": "fetchVoidPtr  34 ****************************************",
+                "<FUNCTION>": "fetchVoidPtr  33 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "fetchVoidPtr",
@@ -4721,7 +4584,7 @@
                 }
             },
             {
-                "<FUNCTION>": "updateVoidPtr  35 ****************************************",
+                "<FUNCTION>": "updateVoidPtr  34 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "updateVoidPtr",
@@ -4786,7 +4649,7 @@
                 }
             },
             {
-                "<FUNCTION>": "VoidPtrArray  36 ****************************************",
+                "<FUNCTION>": "VoidPtrArray  35 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "VoidPtrArray",
@@ -4852,7 +4715,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnIntPtrToScalar  37 ****************************************",
+                "<FUNCTION>": "returnIntPtrToScalar  36 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnIntPtrToScalar",
@@ -4931,7 +4794,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnIntPtrToFixedArray  38 ****************************************",
+                "<FUNCTION>": "returnIntPtrToFixedArray  37 ****************************************",
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -5030,7 +4893,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnIntPtrToConstScalar  39 ****************************************",
+                "<FUNCTION>": "returnIntPtrToConstScalar  38 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -5110,7 +4973,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnIntPtrToFixedConstArray  40 ****************************************",
+                "<FUNCTION>": "returnIntPtrToFixedConstArray  39 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -5210,7 +5073,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnIntScalar  41 ****************************************",
+                "<FUNCTION>": "returnIntScalar  40 ****************************************",
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -5292,7 +5155,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnIntRaw  42 ****************************************",
+                "<FUNCTION>": "returnIntRaw  41 ****************************************",
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -5339,7 +5202,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnIntRawWithArgs  43 ****************************************",
+                "<FUNCTION>": "returnIntRawWithArgs  42 ****************************************",
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -5409,7 +5272,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnRawPtrToInt2d  44 ****************************************",
+                "<FUNCTION>": "returnRawPtrToInt2d  43 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnRawPtrToInt2d",
@@ -5457,7 +5320,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnIntAllocToFixedArray  45 ****************************************",
+                "<FUNCTION>": "returnIntAllocToFixedArray  44 ****************************************",
                 "ast": {
                     "declarator": {
                         "attrs": {

@@ -125,10 +125,6 @@ class Pointers(unittest.TestCase):
         sum = pointers.accumulate(array)
         self.assertEqual(15, sum)
         
-    def test_acceptCharArrayIn(self):
-        n = pointers.acceptCharArrayIn(["dog", "cat", "monkey"])
-        self.assertEqual(len("dog"), n)
-
     def test_out_ptrs(self):
         # Functions which return a pointer in an argument.
 

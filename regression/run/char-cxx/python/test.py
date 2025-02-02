@@ -47,6 +47,9 @@ class Strings(unittest.TestCase):
     def testCreturnChar(self):
         self.assertEqual('w', char.CreturnChar())
 
+    def test_acceptCharArrayIn(self):
+        n = char.acceptCharArrayIn(["dog", "cat", "monkey"])
+        self.assertEqual(len("dog"), n)
 
 # creating a new test suite
 newSuite = unittest.TestSuite()

@@ -524,6 +524,40 @@ module char_mod
         end function cpass_char_ptr_capi2
     end interface
 
+    ! ----------------------------------------
+    ! Function:  int acceptCharArrayIn
+    ! Statement: c_function_native
+    ! ----------------------------------------
+    ! Argument:  char **names +intent(in)
+    ! Statement: c_in_char**
+    interface
+        function c_accept_char_array_in(names) &
+                result(SHT_rv) &
+                bind(C, name="CHA_acceptCharArrayIn")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            type(C_PTR), intent(IN) :: names(*)
+            integer(C_INT) :: SHT_rv
+        end function c_accept_char_array_in
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  int acceptCharArrayIn
+    ! Statement: f_function_native
+    ! ----------------------------------------
+    ! Argument:  char **names +intent(in)
+    ! Statement: f_in_char**_cfi
+    interface
+        function accept_char_array_in(names) &
+                result(SHT_rv) &
+                bind(C, name="CHA_acceptCharArrayIn_CFI")
+            use iso_c_binding, only : C_INT
+            implicit none
+            character(len=*), intent(IN) :: names(:)
+            integer(C_INT) :: SHT_rv
+        end function accept_char_array_in
+    end interface
+
     ! splicer begin additional_declarations
     ! splicer end additional_declarations
 
@@ -931,6 +965,28 @@ contains
         SHT_rv = c_cpass_char_ptr_capi2_CFI(in, src)
         ! splicer end function.cpass_char_ptr_capi2
     end function cpass_char_ptr_capi2
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  int acceptCharArrayIn
+    ! Statement: f_function_native
+    ! ----------------------------------------
+    ! Argument:  char **names +intent(in)
+    ! Statement: f_in_char**_cfi
+    !>
+    !! Return strlen of the first index as a check.
+    !<
+    function accept_char_array_in(names) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        character(len=*), intent(IN) :: names(:)
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.accept_char_array_in
+        SHT_rv = c_accept_char_array_in_CFI(names)
+        ! splicer end function.accept_char_array_in
+    end function accept_char_array_in
 #endif
 
     ! splicer begin additional_functions

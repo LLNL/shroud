@@ -93,6 +93,11 @@ int CHA_CpassCharPtrCAPI(void *addr, const char *src);
 
 int CHA_CpassCharPtrCAPI2(const char *in, const char *src);
 
+int CHA_acceptCharArrayIn(char **names);
+
+int CHA_acceptCharArrayIn_bufferify(const char *names,
+    size_t SHT_names_size, int SHT_names_len);
+
 #ifdef __cplusplus
 }
 #endif

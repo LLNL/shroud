@@ -11,9 +11,6 @@
 #define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
 #include "numpy/arrayobject.h"
 
-// shroud
-#include <stdlib.h>
-
 // splicer begin include
 // splicer end include
 
@@ -30,130 +27,6 @@
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
-
-// helper get_from_object_char
-// Converter from PyObject to char *.
-// The returned status will be 1 for a successful conversion
-// and 0 if the conversion has failed.
-// value.obj is unused.
-// value.dataobj - object which holds the data.
-// If same as obj argument, its refcount is incremented.
-// value.data is owned by value.dataobj and must be copied to be preserved.
-// Caller must use Py_XDECREF(value.dataobj).
-static int SHROUD_get_from_object_char(PyObject *obj,
-    POI_SHROUD_converter_value *value)
-{
-    size_t size = 0;
-    char *out;
-    if (PyUnicode_Check(obj)) {
-#if PY_MAJOR_VERSION >= 3
-        PyObject *strobj = PyUnicode_AsUTF8String(obj);
-        out = PyBytes_AS_STRING(strobj);
-        size = PyBytes_GET_SIZE(strobj);
-        value->dataobj = strobj;  // steal reference
-#else
-        PyObject *strobj = PyUnicode_AsUTF8String(obj);
-        out = PyString_AsString(strobj);
-        size = PyString_Size(obj);
-        value->dataobj = strobj;  // steal reference
-#endif
-#if PY_MAJOR_VERSION < 3
-    } else if (PyString_Check(obj)) {
-        out = PyString_AsString(obj);
-        size = PyString_Size(obj);
-        value->dataobj = obj;
-        Py_INCREF(obj);
-#endif
-    } else if (PyBytes_Check(obj)) {
-        out = PyBytes_AS_STRING(obj);
-        size = PyBytes_GET_SIZE(obj);
-        value->dataobj = obj;
-        Py_INCREF(obj);
-    } else if (PyByteArray_Check(obj)) {
-        out = PyByteArray_AS_STRING(obj);
-        size = PyByteArray_GET_SIZE(obj);
-        value->dataobj = obj;
-        Py_INCREF(obj);
-    } else if (obj == Py_None) {
-        out = NULL;
-        size = 0;
-        value->dataobj = NULL;
-    } else {
-        PyErr_Format(PyExc_TypeError,
-            "argument should be string or None, not %.200s",
-            Py_TYPE(obj)->tp_name);
-        return 0;
-    }
-    value->obj = NULL;
-    value->data = out;
-    value->size = size;
-    return 1;
-}
-
-
-
-// helper FREE_get_from_object_charptr
-static void FREE_get_from_object_charptr(PyObject *obj)
-{
-    char **in = (char **) PyCapsule_GetPointer(obj, NULL);
-    if (in == NULL)
-        return;
-    size_t *size = (size_t *) PyCapsule_GetContext(obj);
-    if (size == NULL)
-        return;
-    for (size_t i=0; i < *size; ++i) {
-        if (in[i] == NULL)
-            continue;
-        free(in[i]);
-    }
-    free(in);
-    free(size);
-}
-
-// helper get_from_object_charptr
-// Convert obj into an array of char * (i.e. char **).
-static int SHROUD_get_from_object_charptr(PyObject *obj,
-    POI_SHROUD_converter_value *value)
-{
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            value->name);
-        return -1;
-    }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-    char **in = (char **) calloc(size, sizeof(char *));
-    PyObject *dataobj = PyCapsule_New(in, NULL, FREE_get_from_object_charptr);
-    size_t *size_context = (size_t *) malloc(sizeof(size_t));
-    *size_context = size;
-    int ierr = PyCapsule_SetContext(dataobj, size_context);
-    // XXX - check error
-    POI_SHROUD_converter_value itemvalue = {NULL, NULL, NULL, NULL, 0};
-    for (Py_ssize_t i = 0; i < size; i++) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        ierr = SHROUD_get_from_object_char(item, &itemvalue);
-        if (ierr == 0) {
-            Py_XDECREF(itemvalue.dataobj);
-            Py_DECREF(dataobj);
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_TypeError,
-                "argument '%s', index %d must be string", value->name,
-                (int) i);
-            return 0;
-        }
-        if (itemvalue.data != NULL) {
-            in[i] = strdup((char *) itemvalue.data);
-        }
-        Py_XDECREF(itemvalue.dataobj);
-    }
-    Py_DECREF(seq);
-
-    value->obj = NULL;
-    value->dataobj = dataobj;
-    value->data = in;
-    value->size = size;
-    return 1;
-}
 
 // splicer begin C_definition
 // splicer end C_definition
@@ -929,61 +802,6 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  int acceptCharArrayIn
-// Statement: py_function_native
-// ----------------------------------------
-// Argument:  char **names +intent(in)
-// Statement: py_in_char**
-static char PY_acceptCharArrayIn__doc__[] =
-"documentation"
-;
-
-/**
- * Return strlen of the first index as a check.
- */
-static PyObject *
-PY_acceptCharArrayIn(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *args,
-  PyObject *kwds)
-{
-// splicer begin function.acceptCharArrayIn
-    char ** names = NULL;
-    PyObject * SHTPy_names;
-    POI_SHROUD_converter_value SHValue_names = {NULL, NULL, NULL, NULL, 0};
-    SHValue_names.name = "names";
-    Py_ssize_t SHSize_names;
-    char *SHT_kwlist[] = {
-        "names",
-        NULL };
-    int SHCXX_rv;
-    PyObject * SHTPy_rv = NULL;
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:acceptCharArrayIn",
-        SHT_kwlist, &SHTPy_names))
-        return NULL;
-
-    // pre_call
-    if (SHROUD_get_from_object_charptr
-        (SHTPy_names, &SHValue_names) == 0)
-        goto fail;
-    names = (char **) SHValue_names.data;
-
-    SHCXX_rv = acceptCharArrayIn(names);
-
-    // post_call
-    Py_XDECREF(SHValue_names.dataobj);
-    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
-
-    return (PyObject *) SHTPy_rv;
-
-fail:
-    Py_XDECREF(SHValue_names.dataobj);
-    return NULL;
-// splicer end function.acceptCharArrayIn
-}
-
-// ----------------------------------------
 // Function:  void setGlobalInt
 // Statement: py_subroutine
 // ----------------------------------------
@@ -1592,8 +1410,6 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_fill_with_zeros__doc__},
 {"accumulate", (PyCFunction)PY_accumulate, METH_VARARGS|METH_KEYWORDS,
     PY_accumulate__doc__},
-{"acceptCharArrayIn", (PyCFunction)PY_acceptCharArrayIn,
-    METH_VARARGS|METH_KEYWORDS, PY_acceptCharArrayIn__doc__},
 {"setGlobalInt", (PyCFunction)PY_setGlobalInt,
     METH_VARARGS|METH_KEYWORDS, PY_setGlobalInt__doc__},
 {"sumFixedArray", (PyCFunction)PY_sumFixedArray, METH_NOARGS,
