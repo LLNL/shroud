@@ -200,6 +200,34 @@
         }
     },
     {
+        "name": "f_mixin_function-as-cptr",
+        "comments": [
+            "Declare function result as a type(C_PTR)"
+        ],
+        "f_arg_decl": [
+            "type(C_PTR) :: {f_var}"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        }
+    },
+    {
+        "name": "f_mixin_function-interface-as-cptr",
+        "notes": [
+            "Return a type(C_PTR) from a interface."
+        ],
+        "i_result_decl": [
+            "type(C_PTR) :: {i_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        }
+    },
+    {
         "name":"##### subprogram mixin #####################################"
     },
     {
@@ -2085,20 +2113,14 @@
             "f_function_char*_pointer",
             "f_function_char*_raw"
         ],
+        "notes": [
+            "Return a type(C_PTR) from Fortran."
+        ],
         "mixin": [
-            "f_mixin_function"
-        ],
-        "f_arg_decl": [
-            "type(C_PTR) :: {f_var}"
-        ],
-        "i_result_decl": [
-            "type(C_PTR) :: {i_var}"
-        ],
-        "i_module": {
-            "iso_c_binding": [
-                "C_PTR"
-            ]
-        }
+            "f_mixin_function",
+            "f_mixin_function-as-cptr",
+            "f_mixin_function-interface-as-cptr"
+        ]
     },
     {
         "alias": [

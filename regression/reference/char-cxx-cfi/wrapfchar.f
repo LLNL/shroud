@@ -704,6 +704,7 @@ contains
     !<
     function get_char_ptr4() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
         type(C_PTR) :: SHT_rv
         ! splicer begin function.get_char_ptr4
         SHT_rv = c_get_char_ptr4()

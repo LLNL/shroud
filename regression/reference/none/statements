@@ -154,8 +154,13 @@ c_function_char*:
   name: c_function_char*
   comments:
   - Call a function.
+  - Declare function result as a type(C_PTR)
+  notes:
+  - Return a type(C_PTR) from Fortran.
   mixin_names:
   - '  f_mixin_function'
+  - '  f_mixin_function-as-cptr'
+  - '  f_mixin_function-interface-as-cptr'
   intent: function
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
@@ -5676,13 +5681,21 @@ f_function_char*:
   name: f_function_char*
   comments:
   - Call a function.
+  - Declare function result as a type(C_PTR)
+  notes:
+  - Return a type(C_PTR) from Fortran.
   intent: function
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
   f_call:
   - '{f_result_var} = {f_call_function}({F_arg_c_call})'
+  f_module:
+    iso_c_binding:
+    - C_PTR
   mixin_names:
   - '  f_mixin_function'
+  - '  f_mixin_function-as-cptr'
+  - '  f_mixin_function-interface-as-cptr'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
@@ -5693,13 +5706,21 @@ f_function_char*_allocatable:
   name: f_function_char*_allocatable
   comments:
   - Call a function.
+  - Declare function result as a type(C_PTR)
+  notes:
+  - Return a type(C_PTR) from Fortran.
   intent: function
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
   f_call:
   - '{f_result_var} = {f_call_function}({F_arg_c_call})'
+  f_module:
+    iso_c_binding:
+    - C_PTR
   mixin_names:
   - '  f_mixin_function'
+  - '  f_mixin_function-as-cptr'
+  - '  f_mixin_function-interface-as-cptr'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
@@ -6215,13 +6236,21 @@ f_function_char*_copy:
   name: f_function_char*_copy
   comments:
   - Call a function.
+  - Declare function result as a type(C_PTR)
+  notes:
+  - Return a type(C_PTR) from Fortran.
   intent: function
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
   f_call:
   - '{f_result_var} = {f_call_function}({F_arg_c_call})'
+  f_module:
+    iso_c_binding:
+    - C_PTR
   mixin_names:
   - '  f_mixin_function'
+  - '  f_mixin_function-as-cptr'
+  - '  f_mixin_function-interface-as-cptr'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
@@ -6232,13 +6261,21 @@ f_function_char*_pointer:
   name: f_function_char*_pointer
   comments:
   - Call a function.
+  - Declare function result as a type(C_PTR)
+  notes:
+  - Return a type(C_PTR) from Fortran.
   intent: function
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
   f_call:
   - '{f_result_var} = {f_call_function}({F_arg_c_call})'
+  f_module:
+    iso_c_binding:
+    - C_PTR
   mixin_names:
   - '  f_mixin_function'
+  - '  f_mixin_function-as-cptr'
+  - '  f_mixin_function-interface-as-cptr'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
@@ -6249,13 +6286,21 @@ f_function_char*_raw:
   name: f_function_char*_raw
   comments:
   - Call a function.
+  - Declare function result as a type(C_PTR)
+  notes:
+  - Return a type(C_PTR) from Fortran.
   intent: function
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
   f_call:
   - '{f_result_var} = {f_call_function}({F_arg_c_call})'
+  f_module:
+    iso_c_binding:
+    - C_PTR
   mixin_names:
   - '  f_mixin_function'
+  - '  f_mixin_function-as-cptr'
+  - '  f_mixin_function-interface-as-cptr'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
@@ -14214,6 +14259,26 @@ f_mixin_function:
   f_call:
   - '{f_result_var} = {f_call_function}({F_arg_c_call})'
   owner: library
+f_mixin_function-as-cptr:
+  name: f_mixin_function-as-cptr
+  comments:
+  - Declare function result as a type(C_PTR)
+  intent: mixin
+  f_arg_decl:
+  - 'type(C_PTR) :: {f_var}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  owner: library
+f_mixin_function-interface-as-cptr:
+  name: f_mixin_function-interface-as-cptr
+  intent: mixin
+  i_result_decl:
+  - 'type(C_PTR) :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  owner: library
 f_mixin_function-to-subroutine:
   name: f_mixin_function-to-subroutine
   comments:
@@ -18699,6 +18764,8 @@ root
         string
           cfi
             allocatable -- f_mixin_function_string_cfi_allocatable
+      function-as-cptr -- f_mixin_function-as-cptr
+      function-interface-as-cptr -- f_mixin_function-interface-as-cptr
       function-to-subroutine -- f_mixin_function-to-subroutine
       getter
         cdesc -- f_mixin_getter_cdesc
