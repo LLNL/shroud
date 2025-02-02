@@ -3582,8 +3582,6 @@ c_mixin_arg_character_cfi:
   - 'character(len=*){f_intent_attr} :: {i_var}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
-  c_pre_call:
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   c_temps:
   - cfi
   iface_header:
@@ -3633,6 +3631,12 @@ c_mixin_cast-argument:
   - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
   c_local:
   - cxx
+  owner: library
+c_mixin_cfi-unpack-base-addr:
+  name: c_mixin_cfi-unpack-base-addr
+  intent: mixin
+  c_pre_call:
+  - '{c_type} *{c_var} = {cast_static}{c_type} *{cast1}{c_var_cfi}->base_addr{cast2};'
   owner: library
 c_mixin_cfi-unpack-base-addr-cxx:
   name: c_mixin_cfi-unpack-base-addr-cxx
@@ -6222,6 +6226,7 @@ f_function_char*_cfi_arg:
   - '  f_mixin_pass_character_cfi'
   - '  c_mixin_arg_character_cfi'
   - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi-unpack-base-addr'
   - '  c_mixin_cfi-unpack-len'
   - '  c_mixin_arg-call-cxx'
   - '  c_mixin_function-assign-to-local'
@@ -6233,7 +6238,7 @@ f_function_char*_cfi_arg:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - '{c_type} *{c_var} = {cast_static}{c_type} *{cast1}{c_var_cfi}->base_addr{cast2};'
   - size_t {c_var_len} = {c_var_cfi}->elem_len;
   c_arg_call:
   - '{c_local_cxx}'
@@ -6277,6 +6282,7 @@ f_function_char*_cfi_copy:
   - '  f_mixin_pass_character_cfi'
   - '  c_mixin_arg_character_cfi'
   - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi-unpack-base-addr'
   - '  c_mixin_cfi-unpack-len'
   - '  c_mixin_arg-call-cxx'
   - '  c_mixin_function-assign-to-local'
@@ -6288,7 +6294,7 @@ f_function_char*_cfi_copy:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - '{c_type} *{c_var} = {cast_static}{c_type} *{cast1}{c_var_cfi}->base_addr{cast2};'
   - size_t {c_var_len} = {c_var_cfi}->elem_len;
   c_arg_call:
   - '{c_local_cxx}'
@@ -11385,6 +11391,7 @@ f_in_char**_cfi:
   mixin_names:
   - '  c_mixin_arg_character_cfi'
   - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi-unpack-base-addr'
   - '  c_mixin_cfi-unpack-len-size'
   - '  c_mixin_char-array-alloc'
   - '  c_mixin_arg-call-cxx'
@@ -11395,7 +11402,7 @@ f_in_char**_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - '{c_type} *{c_var} = {cast_static}{c_type} *{cast1}{c_var_cfi}->base_addr{cast2};'
   - size_t {c_var_len} = {c_var_cfi}->elem_len;
   - size_t {c_var_size} = {c_var_cfi}->dim[0].extent;
   - "char **{c_local_cxx} = {c_helper_char_array_alloc}({c_var},\t {c_var_size},\t\
@@ -11523,6 +11530,7 @@ f_in_char*_cfi:
   - '  f_mixin_declare-fortran-arg'
   - '  c_mixin_arg_character_cfi'
   - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi-unpack-base-addr'
   - '  c_mixin_cfi-unpack-len'
   - '  c_mixin_char-alloc'
   - '  c_mixin_arg-call-cxx'
@@ -11533,7 +11541,7 @@ f_in_char*_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - '{c_type} *{c_var} = {cast_static}{c_type} *{cast1}{c_var_cfi}->base_addr{cast2};'
   - size_t {c_var_len} = {c_var_cfi}->elem_len;
   - "char * {c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
   c_arg_call:
@@ -12124,6 +12132,7 @@ f_in_string&_cfi:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
+  - Create local std::string from the argument with trim.
   - Pass cxx local variable to library.
   intent: in
   f_arg_name:
@@ -12133,6 +12142,9 @@ f_in_string&_cfi:
   mixin_names:
   - '  c_mixin_arg_character_cfi'
   - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi-unpack-base-addr'
+  - '  c_mixin_cfi-unpack-len'
+  - '  c_mixin_local-string-init-trim'
   - '  c_mixin_arg-call-cxx'
   i_arg_names:
   - '{i_var}'
@@ -12141,13 +12153,15 @@ f_in_string&_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
-  - size_t {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_cfi}->elem_len);
+  - '{c_type} *{c_var} = {cast_static}{c_type} *{cast1}{c_var_cfi}->base_addr{cast2};'
+  - size_t {c_var_len} = {c_var_cfi}->elem_len;
+  - int {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_len});
   - '{c_const}std::string {c_local_cxx}({c_var}, {c_local_trim});'
   c_arg_call:
   - '{c_local_cxx}'
   c_temps:
   - cfi
+  - len
   c_local:
   - cxx
   - trim
@@ -12246,6 +12260,7 @@ f_in_string*_cfi:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
+  - Create local std::string from the argument with trim.
   - Pass cxx local variable to library.
   intent: in
   f_arg_name:
@@ -12255,6 +12270,9 @@ f_in_string*_cfi:
   mixin_names:
   - '  c_mixin_arg_character_cfi'
   - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi-unpack-base-addr'
+  - '  c_mixin_cfi-unpack-len'
+  - '  c_mixin_local-string-init-trim'
   - '  c_mixin_arg-call-cxx'
   i_arg_names:
   - '{i_var}'
@@ -12263,13 +12281,15 @@ f_in_string*_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
-  - size_t {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_cfi}->elem_len);
+  - '{c_type} *{c_var} = {cast_static}{c_type} *{cast1}{c_var_cfi}->base_addr{cast2};'
+  - size_t {c_var_len} = {c_var_cfi}->elem_len;
+  - int {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_len});
   - '{c_const}std::string {c_local_cxx}({c_var}, {c_local_trim});'
   c_arg_call:
   - '&{c_local_cxx}'
   c_temps:
   - cfi
+  - len
   c_local:
   - cxx
   - trim
@@ -12341,6 +12361,7 @@ f_in_string_cfi:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
+  - Create local std::string from the argument with trim.
   - Pass cxx local variable to library.
   intent: in
   f_arg_name:
@@ -12350,6 +12371,9 @@ f_in_string_cfi:
   mixin_names:
   - '  c_mixin_arg_character_cfi'
   - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi-unpack-base-addr'
+  - '  c_mixin_cfi-unpack-len'
+  - '  c_mixin_local-string-init-trim'
   - '  c_mixin_arg-call-cxx'
   i_arg_names:
   - '{i_var}'
@@ -12358,13 +12382,15 @@ f_in_string_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
-  - size_t {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_cfi}->elem_len);
+  - '{c_type} *{c_var} = {cast_static}{c_type} *{cast1}{c_var_cfi}->base_addr{cast2};'
+  - size_t {c_var_len} = {c_var_cfi}->elem_len;
+  - int {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_len});
   - '{c_const}std::string {c_local_cxx}({c_var}, {c_local_trim});'
   c_arg_call:
   - '{c_local_cxx}'
   c_temps:
   - cfi
+  - len
   c_local:
   - cxx
   - trim
@@ -13235,6 +13261,7 @@ f_inout_char*_cfi:
   - '  f_mixin_declare-fortran-arg'
   - '  c_mixin_arg_character_cfi'
   - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi-unpack-base-addr'
   - '  c_mixin_cfi-unpack-len'
   - '  c_mixin_char-blank-fill'
   - '  c_mixin_char-alloc'
@@ -13246,7 +13273,7 @@ f_inout_char*_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - '{c_type} *{c_var} = {cast_static}{c_type} *{cast1}{c_var_cfi}->base_addr{cast2};'
   - size_t {c_var_len} = {c_var_cfi}->elem_len;
   - "char * {c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
   c_arg_call:
@@ -13702,7 +13729,9 @@ f_inout_string&_cfi:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
+  - Create local std::string from the argument with trim.
   - Pass address of local cxx variable to library.
+  - Copy std::string into argument.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -13715,7 +13744,11 @@ f_inout_string&_cfi:
   - '  f_mixin_declare-fortran-arg'
   - '  c_mixin_arg_character_cfi'
   - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi-unpack-base-addr'
+  - '  c_mixin_cfi-unpack-len'
+  - '  c_mixin_local-string-init-trim'
   - '  c_mixin_arg-call-cxx-address'
+  - '  c_mixin_string-copy-out'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -13723,22 +13756,23 @@ f_inout_string&_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
-  - size_t {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_cfi}->elem_len);
+  - '{c_type} *{c_var} = {cast_static}{c_type} *{cast1}{c_var_cfi}->base_addr{cast2};'
+  - size_t {c_var_len} = {c_var_cfi}->elem_len;
+  - int {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_len});
   - '{c_const}std::string {c_local_cxx}({c_var}, {c_local_trim});'
   c_arg_call:
   - '{c_local_cxx}'
   c_post_call:
-  - "{c_helper_char_copy}({c_var},\t {c_var_cfi}->elem_len,\t {c_local_cxx}.data(),\t\
-    \ {c_local_cxx}.size());"
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx}.data(),\t {c_local_cxx}.size());"
   c_temps:
   - cfi
+  - len
   c_local:
   - cxx
   - trim
   c_helper:
-  - char_copy
   - char_len_trim
+  - char_copy
   iface_header:
   - ISO_Fortran_binding.h
   owner: library
@@ -13860,7 +13894,9 @@ f_inout_string*_cfi:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
+  - Create local std::string from the argument with trim.
   - Pass address of local cxx variable to library.
+  - Copy std::string into argument.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -13873,7 +13909,11 @@ f_inout_string*_cfi:
   - '  f_mixin_declare-fortran-arg'
   - '  c_mixin_arg_character_cfi'
   - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi-unpack-base-addr'
+  - '  c_mixin_cfi-unpack-len'
+  - '  c_mixin_local-string-init-trim'
   - '  c_mixin_arg-call-cxx-address'
+  - '  c_mixin_string-copy-out'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -13881,22 +13921,23 @@ f_inout_string*_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
-  - size_t {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_cfi}->elem_len);
+  - '{c_type} *{c_var} = {cast_static}{c_type} *{cast1}{c_var_cfi}->base_addr{cast2};'
+  - size_t {c_var_len} = {c_var_cfi}->elem_len;
+  - int {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_len});
   - '{c_const}std::string {c_local_cxx}({c_var}, {c_local_trim});'
   c_arg_call:
   - '&{c_local_cxx}'
   c_post_call:
-  - "{c_helper_char_copy}({c_var},\t {c_var_cfi}->elem_len,\t {c_local_cxx}.data(),\t\
-    \ {c_local_cxx}.size());"
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx}.data(),\t {c_local_cxx}.size());"
   c_temps:
   - cfi
+  - len
   c_local:
   - cxx
   - trim
   c_helper:
-  - char_copy
   - char_len_trim
+  - char_copy
   iface_header:
   - ISO_Fortran_binding.h
   owner: library
@@ -15569,6 +15610,7 @@ f_out_char*_cfi:
   - '  f_mixin_declare-fortran-arg'
   - '  c_mixin_arg_character_cfi'
   - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi-unpack-base-addr'
   - '  c_mixin_cfi-unpack-len'
   - '  c_mixin_char-malloc'
   - '    c_mixin_header_stdlib'
@@ -15583,7 +15625,7 @@ f_out_char*_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - '{c_type} *{c_var} = {cast_static}{c_type} *{cast1}{c_var_cfi}->base_addr{cast2};'
   - size_t {c_var_len} = {c_var_cfi}->elem_len;
   - char *{c_local_cxx} = new char[{c_var_len}+1];
   c_arg_call:
@@ -16323,6 +16365,7 @@ f_out_string&_cfi:
   - '  c_mixin_local-string'
   - '  c_mixin_arg_character_cfi'
   - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi-unpack-base-addr'
   - '  c_mixin_arg-call-cxx-address'
   i_arg_names:
   - '{i_var}'
@@ -16332,7 +16375,7 @@ f_out_string&_cfi:
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
   - '{c_const}std::string {c_local_cxx};'
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - '{c_type} *{c_var} = {cast_static}{c_type} *{cast1}{c_var_cfi}->base_addr{cast2};'
   c_arg_call:
   - '{c_local_cxx}'
   c_post_call:
@@ -16672,6 +16715,7 @@ f_out_string*_cfi:
   - '  c_mixin_local-string'
   - '  c_mixin_arg_character_cfi'
   - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi-unpack-base-addr'
   - '  c_mixin_arg-call-cxx-address'
   i_arg_names:
   - '{i_var}'
@@ -16681,7 +16725,7 @@ f_out_string*_cfi:
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
   - '{c_const}std::string {c_local_cxx};'
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - '{c_type} *{c_var} = {cast_static}{c_type} *{cast1}{c_var_cfi}->base_addr{cast2};'
   c_arg_call:
   - '&{c_local_cxx}'
   c_post_call:
@@ -18548,6 +18592,7 @@ root
       arg-call-cxx-deref -- c_mixin_arg-call-cxx-deref
       c-str -- c_mixin_c-str
       cast-argument -- c_mixin_cast-argument
+      cfi-unpack-base-addr -- c_mixin_cfi-unpack-base-addr
       cfi-unpack-base-addr-cxx -- c_mixin_cfi-unpack-base-addr-cxx
       cfi-unpack-len -- c_mixin_cfi-unpack-len
       cfi-unpack-len-size -- c_mixin_cfi-unpack-len-size

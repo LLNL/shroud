@@ -4417,6 +4417,12 @@
         ]
     },
     {
+        "name": "c_mixin_cfi-unpack-base-addr",
+        "c_pre_call": [
+            "{c_type} *{c_var} = {cast_static}{c_type} *{cast1}{c_var_cfi}->base_addr{cast2};"
+        ]
+    },
+    {
         "name": "c_mixin_cfi-unpack-base-addr-cxx",
         "c_local": [
             "cxx"
@@ -4478,9 +4484,6 @@
         ],
         "i_arg_names": [
             "{i_var}"
-        ],
-        "c_pre_call": [
-            "char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};"
         ]
     },
     {
@@ -4663,6 +4666,7 @@
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "c_mixin_arg_character_cfi",
+            "c_mixin_cfi-unpack-base-addr",
             "c_mixin_cfi-unpack-len",
             "c_mixin_char-alloc",
             "c_mixin_arg-call-cxx"
@@ -4678,6 +4682,7 @@
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "c_mixin_arg_character_cfi",
+            "c_mixin_cfi-unpack-base-addr",
             "c_mixin_cfi-unpack-len",
             "c_mixin_char-malloc",
             "c_mixin_arg-call-cxx",
@@ -4690,6 +4695,7 @@
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "c_mixin_arg_character_cfi",
+            "c_mixin_cfi-unpack-base-addr",
             "c_mixin_cfi-unpack-len",
             "c_mixin_char-blank-fill",
             "c_mixin_char-alloc",
@@ -4706,6 +4712,7 @@
             "f_mixin_declare-fortran-result",
             "f_mixin_pass_character_cfi",
             "c_mixin_arg_character_cfi",
+            "c_mixin_cfi-unpack-base-addr",
             "c_mixin_cfi-unpack-len",
             "c_mixin_arg-call-cxx",
             "c_mixin_function-assign-to-local",
@@ -4726,6 +4733,7 @@
             "f_mixin_function-as-character-arg",
             "f_mixin_pass_character_cfi",
             "c_mixin_arg_character_cfi",
+            "c_mixin_cfi-unpack-base-addr",
             "c_mixin_cfi-unpack-len",
             "c_mixin_arg-call-cxx",
             "c_mixin_function-assign-to-local",
@@ -4742,6 +4750,7 @@
         "name": "f_in_char**_cfi",
         "mixin": [
             "c_mixin_arg_character_cfi",
+            "c_mixin_cfi-unpack-base-addr",
             "c_mixin_cfi-unpack-len-size",
             "c_mixin_char-array-alloc",
             "c_mixin_arg-call-cxx"
@@ -4764,6 +4773,9 @@
         "mixin": [
             "#f_mixin_declare-fortran-arg",
             "c_mixin_arg_character_cfi",
+            "c_mixin_cfi-unpack-base-addr",
+            "c_mixin_cfi-unpack-len",
+            "c_mixin_local-string-init-trim",
             "c_mixin_arg-call-cxx"
         ],
         "f_arg_name": [
@@ -4771,18 +4783,6 @@
         ],
         "f_arg_decl": [
             "character(len=*){f_intent_attr} :: {f_var}"
-        ],
-        "c_helper": [
-            "char_len_trim"
-        ],
-        "c_local": [
-            "cxx",
-            "trim"
-        ],
-        "c_pre_call": [
-            "char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
-            "size_t {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_cfi}->elem_len);",
-            "{c_const}std::string {c_local_cxx}({c_var}, {c_local_trim});"
         ]
     },
     {
@@ -4802,6 +4802,7 @@
             "f_mixin_declare-fortran-arg",
             "c_mixin_local-string",
             "c_mixin_arg_character_cfi",
+            "c_mixin_cfi-unpack-base-addr",
             "c_mixin_arg-call-cxx-address"
         ],
         "c_helper": [
@@ -4827,23 +4828,11 @@
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "c_mixin_arg_character_cfi",
-            "c_mixin_arg-call-cxx-address"
-        ],
-        "c_helper": [
-            "char_copy",
-            "char_len_trim"
-        ],
-        "c_local": [
-            "cxx",
-            "trim"
-        ],
-        "c_pre_call": [
-            "char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
-            "size_t {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_cfi}->elem_len);",
-            "{c_const}std::string {c_local_cxx}({c_var}, {c_local_trim});"
-        ],
-        "c_post_call": [
-            "{c_helper_char_copy}({c_var},\t {c_var_cfi}->elem_len,\t {c_local_cxx}.data(),\t {c_local_cxx}.size());"
+            "c_mixin_cfi-unpack-base-addr",
+            "c_mixin_cfi-unpack-len",
+            "c_mixin_local-string-init-trim",
+            "c_mixin_arg-call-cxx-address",
+            "c_mixin_string-copy-out"
         ]
     },
     {
@@ -4869,8 +4858,7 @@
             "c_mixin_arg-call-cxx",
             "c_mixin_function-assign-to-local",
             "c_mixin_char-copy-to-arg-cfi"
-        ],
-        "c_pre_call": []
+        ]
     },
     {
         "alias": [
