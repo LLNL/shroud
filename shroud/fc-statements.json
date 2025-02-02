@@ -4485,6 +4485,30 @@
         ]
     },
     {
+        "name": "f_mixin_arg-character-array-cfi",
+        "comments": [
+            "Character array argument passed as CFI_desc_t."
+        ],
+        "notes": [
+            "XXX - does the interface need kind=C_CHAR and/or len=:"
+        ],
+        "mixin": [
+            "c_mixin_arg_cfi"
+        ],
+        "f_arg_name": [
+            "{f_var}"
+        ],
+        "f_arg_decl": [
+            "character(len=*){f_intent_attr} :: {f_var}(:)"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_arg_decl": [
+            "character(len=*){f_intent_attr} :: {i_var}(:)"
+        ]
+    },
+    {
         "name": "c_mixin_arg_native_cfi",
         "comments": [
             "Native argument which use CFI_desc_t."
@@ -4747,20 +4771,11 @@
     {
         "name": "f_in_char**_cfi",
         "mixin": [
-            "c_mixin_arg_character_cfi",
+            "f_mixin_arg-character-array-cfi",
             "c_mixin_cfi-unpack-base-addr",
             "c_mixin_cfi-unpack-len-size",
             "c_mixin_char-array-alloc",
             "c_mixin_arg-call-cxx"
-        ],
-        "f_arg_name": [
-            "{f_var}"
-        ],
-        "f_arg_decl": [
-            "character(len=*){f_intent_attr} :: {f_var}(:)"
-        ],
-        "i_arg_decl": [
-            "character(len=*){f_intent_attr} :: {i_var}(:)"
         ]
     },
     {

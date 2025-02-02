@@ -11395,7 +11395,7 @@ f_in_char**_cfi:
   name: f_in_char**_cfi
   comments:
   - Make the C wrapper argument a CFI_desc_t.
-  - Local character argument passed as CFI_desc_t.
+  - Character array argument passed as CFI_desc_t.
   - Converts a contiguous Fortran array of characters into
   - an array of of char * pointers to NULL terminated strings.
   - Pass cxx local variable to library.
@@ -11405,7 +11405,7 @@ f_in_char**_cfi:
   f_arg_decl:
   - 'character(len=*){f_intent_attr} :: {f_var}(:)'
   mixin_names:
-  - '  c_mixin_arg_character_cfi'
+  - '  f_mixin_arg-character-array-cfi'
   - '    c_mixin_arg_cfi'
   - '  c_mixin_cfi-unpack-base-addr'
   - '  c_mixin_cfi-unpack-len-size'
@@ -14356,6 +14356,29 @@ f_inout_void*_cdesc:
   - cdesc
   c_helper:
   - array_context
+  owner: library
+f_mixin_arg-character-array-cfi:
+  name: f_mixin_arg-character-array-cfi
+  comments:
+  - Make the C wrapper argument a CFI_desc_t.
+  - Character array argument passed as CFI_desc_t.
+  intent: mixin
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - 'character(len=*){f_intent_attr} :: {f_var}(:)'
+  mixin_names:
+  - '  c_mixin_arg_cfi'
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(len=*){f_intent_attr} :: {i_var}(:)'
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_temps:
+  - cfi
+  iface_header:
+  - ISO_Fortran_binding.h
   owner: library
 f_mixin_arg_capsule:
   name: f_mixin_arg_capsule
@@ -19027,6 +19050,7 @@ root
     mixin
       arg
         capsule -- f_mixin_arg_capsule
+      arg-character-array-cfi -- f_mixin_arg-character-array-cfi
       capsule
         dtor -- f_mixin_capsule_dtor
       char
