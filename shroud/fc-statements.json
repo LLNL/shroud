@@ -1,5 +1,38 @@
 [
     {
+        "name":"##### header mixin #########################################",
+        "notes": [
+            "Use header for C or C++.",
+            "Use {stdlib} before funtion call to include namespace."
+        ]
+    },
+    {
+        "name": "c_mixin_header_stddef",
+        "lang_c": {
+            "impl_header": [
+                "<stddef.h>"
+            ]
+        },
+        "lang_cxx": {
+            "impl_header": [
+                "<cstddef>"
+            ]
+        }
+    },
+    {
+        "name": "c_mixin_header_stdlib",
+        "lang_c": {
+            "impl_header": [
+                "<stdlib.h>"
+            ]
+        },
+        "lang_cxx": {
+            "impl_header": [
+                "<cstdlib>"
+            ]
+        }
+    },
+    {
         "name":"##### argument mixin #######################################"
     },
     {
@@ -1856,6 +1889,50 @@
         ]
     },
     {
+        "name": "c_mixin_char-malloc",
+        "comments": [
+            "Allocate a local char array in C wrapper."
+        ],
+        "notes": [
+            "With space for terminating NULL."
+        ],
+        "mixin": [
+            "c_mixin_header_stdlib"
+        ],
+        "c_local": [
+            "cxx"
+        ],
+        "lang_c": {
+            "c_pre_call": [
+                "char *{c_local_cxx} = {stdlib}malloc({c_var_len}+1);"
+            ]
+        },
+        "lang_cxx": {
+            "c_pre_call": [
+                "char *{c_local_cxx} = new char[{c_var_len}+1];"
+            ]
+        }
+    },
+    {
+        "name": "c_mixin_char-free",
+        "comments": [
+            "Free a local char array in C wrapper."
+        ],
+        "mixin": [
+            "c_mixin_header_stdlib"
+        ],
+        "lang_c": {
+            "c_post_call": [
+                "{stdlib}free({c_local_cxx});"
+            ]
+        },
+        "lang_cxx": {
+            "c_post_call": [
+                "delete[] {c_local_cxx};"
+            ]
+        }
+    },
+    {
         "name": "c_mixin_char-alloc",
         "comments": [
             "Allocate a local char variable in C wrapper."
@@ -1877,7 +1954,7 @@
     {
         "name": "c_mixin_char-blank-fill",
         "comments": [
-            "Blank fill C variable."
+            "Blank fill C argument."
         ],
         "c_helper": [
             "char_blank_fill"
@@ -1889,10 +1966,10 @@
     {
         "name": "c_mixin_char-copy",
         "comments": [
-            "Copy cxx variable to c variable."
+            "Copy cxx variable to c argument."
         ],
         "notes": [
-            "Used to NULL terminated an input Fortran string"
+            "Used to NULL terminated an input Fortran string."
         ],
         "c_helper": [
             "char_copy"
@@ -3973,18 +4050,9 @@
             "c_dtor"
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine"
+            "f_mixin_function-to-subroutine",
+            "c_mixin_header_stddef"
         ],
-        "lang_c": {
-            "impl_header": [
-                "<stddef.h>"
-            ]
-        },
-        "lang_cxx": {
-            "impl_header": [
-                "<cstddef>"
-            ]
-        },
         "f_arg_call": [],
         "c_call": [
             "delete {CXX_this};",
@@ -4545,15 +4613,18 @@
     {
         "name": "f_out_char*_cfi",
         "notes": [
-            "XXX - need to test when to blank fill."
+            "Allocate a local array as large as input argument plus 1.",
+            "Pass the library function, then copy back to input argument",
+            "and blank fill before returning."
         ],
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "c_mixin_arg_character_cfi",
             "c_mixin_cfi-unpack-len",
-            "c_mixin_char-blank-fill",
-            "c_mixin_char-alloc",
-            "c_mixin_arg-call-cxx"
+            "c_mixin_char-malloc",
+            "c_mixin_arg-call-cxx",
+            "c_mixin_char-copy",
+            "c_mixin_char-free"
         ]
     },
     {

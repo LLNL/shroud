@@ -99,6 +99,7 @@ c_dtor:
   - Call the C wrapper as a subroutine.
   mixin_names:
   - '  f_mixin_function-to-subroutine'
+  - '  c_mixin_header_stddef'
   intent: dtor
   c_call:
   - delete {CXX_this};
@@ -175,7 +176,7 @@ c_function_char*_arg:
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
-  - Copy cxx variable to c variable.
+  - Copy cxx variable to c argument.
   notes:
   - Change function result into an argument
   - Use F_string_result_as_arg as the argument name.
@@ -229,7 +230,7 @@ c_function_char*_buf_arg:
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
-  - Copy cxx variable to c variable.
+  - Copy cxx variable to c argument.
   notes:
   - Change function result into an argument
   - Use F_string_result_as_arg as the argument name.
@@ -283,7 +284,7 @@ c_function_char*_buf_copy:
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
-  - Copy cxx variable to c variable.
+  - Copy cxx variable to c argument.
   notes:
   - char *getname() +len(30)
   - Copy result into caller's buffer.
@@ -2759,7 +2760,7 @@ c_inout_char*_buf:
   comments:
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx local variable to library.
-  - Copy cxx variable to c variable.
+  - Copy cxx variable to c argument.
   - Allocate a local char variable in C wrapper.
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
@@ -3678,7 +3679,7 @@ c_mixin_char-array-alloc:
 c_mixin_char-blank-fill:
   name: c_mixin_char-blank-fill
   comments:
-  - Blank fill C variable.
+  - Blank fill C argument.
   intent: mixin
   c_post_call:
   - '{c_helper_char_blank_fill}({c_var}, {c_var_len});'
@@ -3688,7 +3689,7 @@ c_mixin_char-blank-fill:
 c_mixin_char-copy:
   name: c_mixin_char-copy
   comments:
-  - Copy cxx variable to c variable.
+  - Copy cxx variable to c argument.
   intent: mixin
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
@@ -3711,6 +3712,52 @@ c_mixin_char-copy-to-arg-cfi:
   c_helper:
   - char_copy
   owner: library
+c_mixin_char-free:
+  name: c_mixin_char-free
+  comments:
+  - Free a local char array in C wrapper.
+  mixin_names:
+  - '  c_mixin_header_stdlib'
+  intent: mixin
+  c_post_call:
+  - delete[] {c_local_cxx};
+  impl_header:
+  - <cstdlib>
+  owner: library
+  lang_c:
+    impl_header:
+    - <stdlib.h>
+    c_post_call:
+    - '{stdlib}free({c_local_cxx});'
+  lang_cxx:
+    impl_header:
+    - <cstdlib>
+    c_post_call:
+    - delete[] {c_local_cxx};
+c_mixin_char-malloc:
+  name: c_mixin_char-malloc
+  comments:
+  - Allocate a local char array in C wrapper.
+  mixin_names:
+  - '  c_mixin_header_stdlib'
+  intent: mixin
+  c_pre_call:
+  - char *{c_local_cxx} = new char[{c_var_len}+1];
+  c_local:
+  - cxx
+  impl_header:
+  - <cstdlib>
+  owner: library
+  lang_c:
+    impl_header:
+    - <stdlib.h>
+    c_pre_call:
+    - char *{c_local_cxx} = {stdlib}malloc({c_var_len}+1);
+  lang_cxx:
+    impl_header:
+    - <cstdlib>
+    c_pre_call:
+    - char *{c_local_cxx} = new char[{c_var_len}+1];
 c_mixin_character:
   name: c_mixin_character
   intent: mixin
@@ -3889,6 +3936,30 @@ c_mixin_function_vector_malloc:
   c_temps:
   - size
   owner: library
+c_mixin_header_stddef:
+  name: c_mixin_header_stddef
+  intent: mixin
+  impl_header:
+  - <cstddef>
+  owner: library
+  lang_c:
+    impl_header:
+    - <stddef.h>
+  lang_cxx:
+    impl_header:
+    - <cstddef>
+c_mixin_header_stdlib:
+  name: c_mixin_header_stdlib
+  intent: mixin
+  impl_header:
+  - <cstdlib>
+  owner: library
+  lang_c:
+    impl_header:
+    - <stdlib.h>
+  lang_cxx:
+    impl_header:
+    - <cstdlib>
 c_mixin_in_character_buf:
   name: c_mixin_in_character_buf
   intent: mixin
@@ -4313,7 +4384,7 @@ c_out_char_*_buf:
   comments:
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
-  - Blank fill C variable.
+  - Blank fill C argument.
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
   - '  f_mixin_pass_character_buf'
@@ -5619,6 +5690,7 @@ f_dtor:
   - call {f_call_function}({F_arg_c_call})
   mixin_names:
   - '  f_mixin_function-to-subroutine'
+  - '  c_mixin_header_stddef'
   c_call:
   - delete {CXX_this};
   - '{C_this}->addr = {nullptr};'
@@ -5734,7 +5806,7 @@ f_function_char*_arg:
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
-  - Copy cxx variable to c variable.
+  - Copy cxx variable to c argument.
   notes:
   - Change function result into an argument
   - Use F_string_result_as_arg as the argument name.
@@ -5810,7 +5882,7 @@ f_function_char*_buf_arg:
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
-  - Copy cxx variable to c variable.
+  - Copy cxx variable to c argument.
   notes:
   - Change function result into an argument
   - Use F_string_result_as_arg as the argument name.
@@ -5886,7 +5958,7 @@ f_function_char*_buf_copy:
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
-  - Copy cxx variable to c variable.
+  - Copy cxx variable to c argument.
   notes:
   - char *getname() +len(30)
   - Copy result into caller's buffer.
@@ -12995,7 +13067,7 @@ f_inout_char*_buf:
   comments:
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx local variable to library.
-  - Copy cxx variable to c variable.
+  - Copy cxx variable to c argument.
   - Allocate a local char variable in C wrapper.
   intent: inout
   f_arg_name:
@@ -13087,7 +13159,7 @@ f_inout_char*_cfi:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
-  - Blank fill C variable.
+  - Blank fill C argument.
   - Allocate a local char variable in C wrapper.
   - Pass cxx local variable to library.
   intent: inout
@@ -15313,7 +15385,7 @@ f_out_char*_buf:
   comments:
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
-  - Blank fill C variable.
+  - Blank fill C argument.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -15396,11 +15468,14 @@ f_out_char*_cfi:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
-  - Blank fill C variable.
-  - Allocate a local char variable in C wrapper.
+  - Allocate a local char array in C wrapper.
   - Pass cxx local variable to library.
+  - Copy cxx variable to c argument.
+  - Free a local char array in C wrapper.
   notes:
-  - XXX - need to test when to blank fill.
+  - Allocate a local array as large as input argument plus 1.
+  - Pass the library function, then copy back to input argument
+  - and blank fill before returning.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -15414,9 +15489,12 @@ f_out_char*_cfi:
   - '  c_mixin_arg_character_cfi'
   - '    c_mixin_arg_cfi'
   - '  c_mixin_cfi-unpack-len'
-  - '  c_mixin_char-blank-fill'
-  - '  c_mixin_char-alloc'
+  - '  c_mixin_char-malloc'
+  - '    c_mixin_header_stdlib'
   - '  c_mixin_arg-call-cxx'
+  - '  c_mixin_char-copy'
+  - '  c_mixin_char-free'
+  - '    c_mixin_header_stdlib'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -15426,23 +15504,24 @@ f_out_char*_cfi:
   c_pre_call:
   - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   - size_t {c_var_len} = {c_var_cfi}->elem_len;
-  - "char * {c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
+  - char *{c_local_cxx} = new char[{c_var_len}+1];
   c_arg_call:
   - '{c_local_cxx}'
   c_post_call:
-  - '{c_helper_char_blank_fill}({c_var}, {c_var_len});'
-  - '{c_helper_char_free}({c_local_cxx});'
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
+  - delete[] {c_local_cxx};
   c_temps:
   - cfi
   - len
   c_local:
   - cxx
   c_helper:
-  - char_blank_fill
-  - char_alloc
-  - char_free
+  - char_copy
   iface_header:
   - ISO_Fortran_binding.h
+  impl_header:
+  - <cstdlib>
+  - <cstdlib>
   owner: library
 f_out_enum*:
   name: f_out_enum*
@@ -18393,6 +18472,8 @@ root
       char-blank-fill -- c_mixin_char-blank-fill
       char-copy -- c_mixin_char-copy
       char-copy-to-arg-cfi -- c_mixin_char-copy-to-arg-cfi
+      char-free -- c_mixin_char-free
+      char-malloc -- c_mixin_char-malloc
       character -- c_mixin_character
       cvar-capsule-fill -- c_mixin_cvar-capsule-fill
       declare-arg -- c_mixin_declare-arg
@@ -18415,6 +18496,9 @@ root
       function-assign-to-local -- c_mixin_function-assign-to-local
       function-assign-to-new -- c_mixin_function-assign-to-new
       function-return-cvar -- c_mixin_function-return-cvar
+      header
+        stddef -- c_mixin_header_stddef
+        stdlib -- c_mixin_header_stdlib
       in
         character
           buf -- c_mixin_in_character_buf

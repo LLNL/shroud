@@ -656,7 +656,7 @@
                 },
                 "helpers": {
                     "c": [
-                        "char_blank_fill",
+                        "char_copy",
                         "char_alloc",
                         "char_free"
                     ]
@@ -795,9 +795,7 @@
                                 "c_addr": "",
                                 "c_const": "",
                                 "c_deref": "*",
-                                "c_helper_char_alloc": "ShroudCharAlloc",
-                                "c_helper_char_blank_fill": "ShroudCharBlankFill",
-                                "c_helper_char_free": "ShroudCharFree",
+                                "c_helper_char_copy": "ShroudCharCopy",
                                 "c_local_cxx": "SHC_dest_cxx",
                                 "c_member": "->",
                                 "c_type": "char",
@@ -2248,9 +2246,7 @@
                 "declgen": "void explicit2(char *name +intent(out)+len(AAtrim))",
                 "helpers": {
                     "c": [
-                        "char_blank_fill",
-                        "char_alloc",
-                        "char_free"
+                        "char_copy"
                     ]
                 },
                 "name": "explicit2",
@@ -2355,9 +2351,7 @@
                                 "c_char_len": "AAtrim",
                                 "c_const": "",
                                 "c_deref": "*",
-                                "c_helper_char_alloc": "ShroudCharAlloc",
-                                "c_helper_char_blank_fill": "ShroudCharBlankFill",
-                                "c_helper_char_free": "ShroudCharFree",
+                                "c_helper_char_copy": "ShroudCharCopy",
                                 "c_local_cxx": "SHC_name_cxx",
                                 "c_member": "->",
                                 "c_type": "char",
@@ -2800,7 +2794,7 @@
                 },
                 "helpers": {
                     "c": [
-                        "char_blank_fill",
+                        "char_copy",
                         "char_alloc",
                         "char_free"
                     ]
@@ -2940,9 +2934,7 @@
                                 "c_addr": "",
                                 "c_const": "",
                                 "c_deref": "*",
-                                "c_helper_char_alloc": "ShroudCharAlloc",
-                                "c_helper_char_blank_fill": "ShroudCharBlankFill",
-                                "c_helper_char_free": "ShroudCharFree",
+                                "c_helper_char_copy": "ShroudCharCopy",
                                 "c_local_cxx": "SHC_dest_cxx",
                                 "c_member": "->",
                                 "c_type": "char",
@@ -3125,7 +3117,7 @@
                 },
                 "helpers": {
                     "c": [
-                        "char_blank_fill",
+                        "char_copy",
                         "char_alloc",
                         "char_free"
                     ]
@@ -3265,9 +3257,7 @@
                                 "c_addr": "",
                                 "c_const": "",
                                 "c_deref": "*",
-                                "c_helper_char_alloc": "ShroudCharAlloc",
-                                "c_helper_char_blank_fill": "ShroudCharBlankFill",
-                                "c_helper_char_free": "ShroudCharFree",
+                                "c_helper_char_copy": "ShroudCharCopy",
                                 "c_local_cxx": "SHC_dest_cxx",
                                 "c_member": "->",
                                 "c_type": "char",
