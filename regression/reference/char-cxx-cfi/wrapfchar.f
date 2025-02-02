@@ -14,63 +14,12 @@
 ! splicer begin file_top
 ! splicer end file_top
 module char_mod
-    use iso_c_binding, only : C_INT, C_LONG, C_NULL_PTR, C_PTR, C_SIZE_T
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
 
     ! splicer begin module_top
     ! splicer end module_top
-
-    ! helper type_defines
-    ! Shroud type defines from helper type_defines
-    integer, parameter, private :: &
-        SH_TYPE_SIGNED_CHAR= 1, &
-        SH_TYPE_SHORT      = 2, &
-        SH_TYPE_INT        = 3, &
-        SH_TYPE_LONG       = 4, &
-        SH_TYPE_LONG_LONG  = 5, &
-        SH_TYPE_SIZE_T     = 6, &
-        SH_TYPE_UNSIGNED_SHORT      = SH_TYPE_SHORT + 100, &
-        SH_TYPE_UNSIGNED_INT        = SH_TYPE_INT + 100, &
-        SH_TYPE_UNSIGNED_LONG       = SH_TYPE_LONG + 100, &
-        SH_TYPE_UNSIGNED_LONG_LONG  = SH_TYPE_LONG_LONG + 100, &
-        SH_TYPE_INT8_T    =  7, &
-        SH_TYPE_INT16_T   =  8, &
-        SH_TYPE_INT32_T   =  9, &
-        SH_TYPE_INT64_T   = 10, &
-        SH_TYPE_UINT8_T  =  SH_TYPE_INT8_T + 100, &
-        SH_TYPE_UINT16_T =  SH_TYPE_INT16_T + 100, &
-        SH_TYPE_UINT32_T =  SH_TYPE_INT32_T + 100, &
-        SH_TYPE_UINT64_T =  SH_TYPE_INT64_T + 100, &
-        SH_TYPE_FLOAT       = 22, &
-        SH_TYPE_DOUBLE      = 23, &
-        SH_TYPE_LONG_DOUBLE = 24, &
-        SH_TYPE_FLOAT_COMPLEX      = 25, &
-        SH_TYPE_DOUBLE_COMPLEX     = 26, &
-        SH_TYPE_LONG_DOUBLE_COMPLEX= 27, &
-        SH_TYPE_BOOL      = 28, &
-        SH_TYPE_CHAR      = 29, &
-        SH_TYPE_CPTR      = 30, &
-        SH_TYPE_STRUCT    = 31, &
-        SH_TYPE_OTHER     = 32
-
-    ! start helper array_context
-    ! helper array_context
-    type, bind(C) :: CHA_SHROUD_array
-        ! address of data
-        type(C_PTR) :: base_addr = C_NULL_PTR
-        ! type of element
-        integer(C_INT) :: type
-        ! bytes-per-item or character len of data in cxx
-        integer(C_SIZE_T) :: elem_len = 0_C_SIZE_T
-        ! size of data in cxx
-        integer(C_SIZE_T) :: size = 0_C_SIZE_T
-        ! number of dimensions
-        integer(C_INT) :: rank = -1
-        integer(C_LONG) :: shape(7) = 0
-    end type CHA_SHROUD_array
-    ! end helper array_context
 
     ! ----------------------------------------
     ! Function:  void init_test
@@ -150,22 +99,20 @@ module char_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char *dest +charlen(40)+intent(out)
-    ! Statement: f_out_char*_buf
+    ! Statement: f_out_char*_cfi
     ! ----------------------------------------
     ! Argument:  const char *src
-    ! Statement: f_in_char*
-    ! start c_pass_char_ptr_bufferify
+    ! Statement: f_in_char*_cfi
+    ! start pass_char_ptr
     interface
-        subroutine c_pass_char_ptr_bufferify(dest, SHT_dest_len, src) &
-                bind(C, name="CHA_passCharPtr_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
+        subroutine pass_char_ptr(dest, src) &
+                bind(C, name="CHA_passCharPtr_CFI")
             implicit none
-            character(kind=C_CHAR), intent(OUT) :: dest(*)
-            integer(C_INT), value, intent(IN) :: SHT_dest_len
-            character(kind=C_CHAR), intent(IN) :: src(*)
-        end subroutine c_pass_char_ptr_bufferify
+            character(len=*), intent(OUT) :: dest
+            character(len=*), intent(IN) :: src
+        end subroutine pass_char_ptr
     end interface
-    ! end c_pass_char_ptr_bufferify
+    ! end pass_char_ptr
 
     ! ----------------------------------------
     ! Function:  void passCharPtrInOut
@@ -187,15 +134,13 @@ module char_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char *s +intent(inout)
-    ! Statement: f_inout_char*_buf
+    ! Statement: f_inout_char*_cfi
     interface
-        subroutine c_pass_char_ptr_in_out_bufferify(s, SHT_s_len) &
-                bind(C, name="CHA_passCharPtrInOut_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
+        subroutine pass_char_ptr_in_out(s) &
+                bind(C, name="CHA_passCharPtrInOut_CFI")
             implicit none
-            character(kind=C_CHAR), intent(INOUT) :: s(*)
-            integer(C_INT), value, intent(IN) :: SHT_s_len
-        end subroutine c_pass_char_ptr_in_out_bufferify
+            character(len=*), intent(INOUT) :: s
+        end subroutine pass_char_ptr_in_out
     end interface
 
     ! ----------------------------------------
@@ -215,17 +160,16 @@ module char_mod
 
     ! ----------------------------------------
     ! Function:  const char *getCharPtr1
-    ! Statement: f_function_char*_cdesc_allocatable
-    ! start c_get_char_ptr1_bufferify
+    ! Statement: f_function_char*_cfi_allocatable
+    ! start c_get_char_ptr1_CFI
     interface
-        subroutine c_get_char_ptr1_bufferify(SHT_rv_cdesc) &
-                bind(C, name="CHA_getCharPtr1_bufferify")
-            import :: CHA_SHROUD_array
+        subroutine c_get_char_ptr1_CFI(SHT_rv) &
+                bind(C, name="CHA_getCharPtr1_CFI")
             implicit none
-            type(CHA_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
-        end subroutine c_get_char_ptr1_bufferify
+            character(len=:), intent(OUT), allocatable :: SHT_rv
+        end subroutine c_get_char_ptr1_CFI
     end interface
-    ! end c_get_char_ptr1_bufferify
+    ! end c_get_char_ptr1_CFI
 
     ! ----------------------------------------
     ! Function:  const char *getConstCharPtrLen +len(30)
@@ -244,19 +188,16 @@ module char_mod
 
     ! ----------------------------------------
     ! Function:  const char *getConstCharPtrLen +len(30)
-    ! Statement: f_function_char*_buf_copy
-    ! start c_get_const_char_ptr_len_bufferify
+    ! Statement: f_function_char*_cfi_copy
+    ! start c_get_const_char_ptr_len_CFI
     interface
-        subroutine c_get_const_char_ptr_len_bufferify(SHT_rv, &
-                SHT_rv_len) &
-                bind(C, name="CHA_getConstCharPtrLen_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
+        subroutine c_get_const_char_ptr_len_CFI(SHT_rv) &
+                bind(C, name="CHA_getConstCharPtrLen_CFI")
             implicit none
-            character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
-            integer(C_INT), value, intent(IN) :: SHT_rv_len
-        end subroutine c_get_const_char_ptr_len_bufferify
+            character(len=*), intent(OUT) :: SHT_rv
+        end subroutine c_get_const_char_ptr_len_CFI
     end interface
-    ! end c_get_const_char_ptr_len_bufferify
+    ! end c_get_const_char_ptr_len_CFI
 
     ! ----------------------------------------
     ! Function:  const char *getConstCharPtrAsArg
@@ -275,19 +216,16 @@ module char_mod
 
     ! ----------------------------------------
     ! Function:  const char *getConstCharPtrAsArg
-    ! Statement: f_function_char*_buf_arg
-    ! start c_get_const_char_ptr_as_arg_bufferify
+    ! Statement: f_function_char*_cfi_arg
+    ! start c_get_const_char_ptr_as_arg_CFI
     interface
-        subroutine c_get_const_char_ptr_as_arg_bufferify(output, &
-                noutput) &
-                bind(C, name="CHA_getConstCharPtrAsArg_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
+        subroutine c_get_const_char_ptr_as_arg_CFI(output) &
+                bind(C, name="CHA_getConstCharPtrAsArg_CFI")
             implicit none
-            character(kind=C_CHAR), intent(OUT) :: output(*)
-            integer(C_INT), value, intent(IN) :: noutput
-        end subroutine c_get_const_char_ptr_as_arg_bufferify
+            character(len=*), intent(OUT) :: output
+        end subroutine c_get_const_char_ptr_as_arg_CFI
     end interface
-    ! end c_get_const_char_ptr_as_arg_bufferify
+    ! end c_get_const_char_ptr_as_arg_CFI
 
     ! ----------------------------------------
     ! Function:  const char *getCharPtr4 +deref(raw)
@@ -320,23 +258,22 @@ module char_mod
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
     ! ----------------------------------------
     ! Function:  const char *getCharPtr5 +deref(pointer)
-    ! Statement: f_function_char*_cdesc_pointer
+    ! Statement: f_function_char*_cfi_pointer
     interface
-        subroutine c_get_char_ptr5_bufferify(SHT_rv_cdesc) &
-                bind(C, name="CHA_getCharPtr5_bufferify")
-            import :: CHA_SHROUD_array
+        subroutine c_get_char_ptr5_CFI(SHT_rv) &
+                bind(C, name="CHA_getCharPtr5_CFI")
             implicit none
-            type(CHA_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
-        end subroutine c_get_char_ptr5_bufferify
+            character(len=:), intent(OUT), pointer :: SHT_rv
+        end subroutine c_get_char_ptr5_CFI
     end interface
 #endif
 
     ! ----------------------------------------
     ! Function:  void explicit1
-    ! Statement: f_subroutine
+    ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  char *name +intent(in)+len_trim(AAlen)
-    ! Statement: f_in_char*
+    ! Statement: c_in_char*
     interface
         subroutine c_explicit1(name) &
                 bind(C, name="CHA_explicit1")
@@ -344,6 +281,20 @@ module char_mod
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
         end subroutine c_explicit1
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void explicit1
+    ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  char *name +intent(in)+len_trim(AAlen)
+    ! Statement: f_in_char*_cfi
+    interface
+        subroutine explicit1(name) &
+                bind(C, name="CHA_explicit1_CFI")
+            implicit none
+            character(len=*), intent(IN) :: name
+        end subroutine explicit1
     end interface
 
     ! ----------------------------------------
@@ -366,15 +317,13 @@ module char_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char *name +intent(out)+len(AAtrim)
-    ! Statement: f_out_char*_buf
+    ! Statement: f_out_char*_cfi
     interface
-        subroutine c_explicit2_bufferify(name, SHT_name_len) &
-                bind(C, name="CHA_explicit2_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
+        subroutine explicit2(name) &
+                bind(C, name="CHA_explicit2_CFI")
             implicit none
-            character(kind=C_CHAR), intent(OUT) :: name(*)
-            integer(C_INT), value, intent(IN) :: SHT_name_len
-        end subroutine c_explicit2_bufferify
+            character(len=*), intent(OUT) :: name
+        end subroutine explicit2
     end interface
 
     ! ----------------------------------------
@@ -428,21 +377,17 @@ module char_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char *dest +intent(out)
-    ! Statement: f_out_char*_buf
+    ! Statement: f_out_char*_cfi
     ! ----------------------------------------
     ! Argument:  const char *src +blanknull
-    ! Statement: f_in_char*_buf
+    ! Statement: f_in_char*_cfi
     interface
-        subroutine c_cpass_char_ptr_bufferify(dest, SHT_dest_len, src, &
-                SHT_src_len) &
-                bind(C, name="CHA_CpassCharPtr_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
+        subroutine cpass_char_ptr(dest, src) &
+                bind(C, name="CHA_CpassCharPtr_CFI")
             implicit none
-            character(kind=C_CHAR), intent(OUT) :: dest(*)
-            integer(C_INT), value, intent(IN) :: SHT_dest_len
-            character(kind=C_CHAR), intent(IN) :: src(*)
-            integer(C_INT), value, intent(IN) :: SHT_src_len
-        end subroutine c_cpass_char_ptr_bufferify
+            character(len=*), intent(OUT) :: dest
+            character(len=*), intent(IN) :: src
+        end subroutine cpass_char_ptr
     end interface
 
     ! ----------------------------------------
@@ -469,21 +414,17 @@ module char_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char *dest +intent(out)
-    ! Statement: f_out_char*_buf
+    ! Statement: f_out_char*_cfi
     ! ----------------------------------------
     ! Argument:  const char *src
-    ! Statement: f_in_char*_buf
+    ! Statement: f_in_char*_cfi
     interface
-        subroutine c_cpass_char_ptr_blank_bufferify(dest, SHT_dest_len, &
-                src, SHT_src_len) &
-                bind(C, name="CHA_CpassCharPtrBlank_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
+        subroutine cpass_char_ptr_blank(dest, src) &
+                bind(C, name="CHA_CpassCharPtrBlank_CFI")
             implicit none
-            character(kind=C_CHAR), intent(OUT) :: dest(*)
-            integer(C_INT), value, intent(IN) :: SHT_dest_len
-            character(kind=C_CHAR), intent(IN) :: src(*)
-            integer(C_INT), value, intent(IN) :: SHT_src_len
-        end subroutine c_cpass_char_ptr_blank_bufferify
+            character(len=*), intent(OUT) :: dest
+            character(len=*), intent(IN) :: src
+        end subroutine cpass_char_ptr_blank
     end interface
 
     ! ----------------------------------------
@@ -508,17 +449,16 @@ module char_mod
     ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  const char *src
-    ! Statement: f_in_char*_buf
+    ! Statement: f_in_char*_cfi
     interface
-        function c_cpass_char_ptr_notrim_bufferify(src, SHT_src_len) &
+        function cpass_char_ptr_notrim(src) &
                 result(SHT_rv) &
-                bind(C, name="CHA_CpassCharPtrNotrim_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
+                bind(C, name="CHA_CpassCharPtrNotrim_CFI")
+            use iso_c_binding, only : C_INT
             implicit none
-            character(kind=C_CHAR), intent(IN) :: src(*)
-            integer(C_INT), value, intent(IN) :: SHT_src_len
+            character(len=*), intent(IN) :: src
             integer(C_INT) :: SHT_rv
-        end function c_cpass_char_ptr_notrim_bufferify
+        end function cpass_char_ptr_notrim
     end interface
 
     ! ----------------------------------------
@@ -544,13 +484,13 @@ module char_mod
 
     ! ----------------------------------------
     ! Function:  int CpassCharPtrCAPI2
-    ! Statement: f_function_native
+    ! Statement: c_function_native
     ! ----------------------------------------
     ! Argument:  const char *in
-    ! Statement: f_in_char*
+    ! Statement: c_in_char*
     ! ----------------------------------------
     ! Argument:  const char *src +api(capi)
-    ! Statement: f_in_char*_capi
+    ! Statement: c_in_char*
     interface
         function c_cpass_char_ptr_capi2(in, src) &
                 result(SHT_rv) &
@@ -563,17 +503,25 @@ module char_mod
         end function c_cpass_char_ptr_capi2
     end interface
 
+    ! ----------------------------------------
+    ! Function:  int CpassCharPtrCAPI2
+    ! Statement: f_function_native
+    ! ----------------------------------------
+    ! Argument:  const char *in
+    ! Statement: f_in_char*_cfi
+    ! ----------------------------------------
+    ! Argument:  const char *src +api(capi)
+    ! Statement: f_in_char*_capi
     interface
-        ! helper copy_string
-        ! Copy the char* or std::string in context into c_var.
-        subroutine CHA_SHROUD_copy_string(context, c_var, c_var_size) &
-             bind(c,name="CHA_ShroudCopyString")
-            use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
-            import CHA_SHROUD_array
-            type(CHA_SHROUD_array), intent(IN) :: context
-            character(kind=C_CHAR), intent(OUT) :: c_var(*)
-            integer(C_SIZE_T), value :: c_var_size
-        end subroutine CHA_SHROUD_copy_string
+        function cpass_char_ptr_capi2(in, src) &
+                result(SHT_rv) &
+                bind(C, name="CHA_CpassCharPtrCAPI2_CFI")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(len=*), intent(IN) :: in
+            character(kind=C_CHAR), intent(IN) :: src(*)
+            integer(C_INT) :: SHT_rv
+        end function cpass_char_ptr_capi2
     end interface
 
     ! splicer begin additional_declarations
@@ -645,15 +593,17 @@ contains
         ! splicer end function.return_char
     end function return_char
 
+#if 0
+    ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void passCharPtr
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char *dest +charlen(40)+intent(out)
-    ! Statement: f_out_char*_buf
+    ! Statement: f_out_char*_cfi
     ! ----------------------------------------
     ! Argument:  const char *src
-    ! Statement: f_in_char*
+    ! Statement: f_in_char*_cfi
     !>
     !! \brief strcpy like behavior
     !!
@@ -663,24 +613,23 @@ contains
     !<
     ! start pass_char_ptr
     subroutine pass_char_ptr(dest, src)
-        use iso_c_binding, only : C_INT, C_NULL_CHAR
         character(len=*), intent(OUT) :: dest
         character(len=*), intent(IN) :: src
         ! splicer begin function.pass_char_ptr
-        integer(C_INT) SHT_dest_len
-        SHT_dest_len = len(dest, kind=C_INT)
-        call c_pass_char_ptr_bufferify(dest, SHT_dest_len, &
-            trim(src)//C_NULL_CHAR)
+        call c_pass_char_ptr_CFI(dest, src)
         ! splicer end function.pass_char_ptr
     end subroutine pass_char_ptr
     ! end pass_char_ptr
+#endif
 
+#if 0
+    ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void passCharPtrInOut
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char *s +intent(inout)
-    ! Statement: f_inout_char*_buf
+    ! Statement: f_inout_char*_cfi
     !>
     !! \brief toupper
     !!
@@ -688,18 +637,16 @@ contains
     !! For Python, return a new string since strings are immutable.
     !<
     subroutine pass_char_ptr_in_out(s)
-        use iso_c_binding, only : C_INT
         character(len=*), intent(INOUT) :: s
         ! splicer begin function.pass_char_ptr_in_out
-        integer(C_INT) SHT_s_len
-        SHT_s_len = len(s, kind=C_INT)
-        call c_pass_char_ptr_in_out_bufferify(s, SHT_s_len)
+        call c_pass_char_ptr_in_out_CFI(s)
         ! splicer end function.pass_char_ptr_in_out
     end subroutine pass_char_ptr_in_out
+#endif
 
     ! ----------------------------------------
     ! Function:  const char *getCharPtr1
-    ! Statement: f_function_char*_cdesc_allocatable
+    ! Statement: f_function_char*_cfi_allocatable
     !>
     !! Return an ALLOCATABLE CHARACTER from char *.
     !<
@@ -708,18 +655,14 @@ contains
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_char_ptr1
-        type(CHA_SHROUD_array) :: SHT_rv_cdesc
-        call c_get_char_ptr1_bufferify(SHT_rv_cdesc)
-        allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
-        call CHA_SHROUD_copy_string(SHT_rv_cdesc, SHT_rv, &
-            SHT_rv_cdesc%elem_len)
+        call c_get_char_ptr1_CFI(SHT_rv)
         ! splicer end function.get_char_ptr1
     end function get_char_ptr1
     ! end get_char_ptr1
 
     ! ----------------------------------------
     ! Function:  const char *getConstCharPtrLen +len(30)
-    ! Statement: f_function_char*_buf_copy
+    ! Statement: f_function_char*_cfi_copy
     !>
     !! \brief return 'const char *' with fixed size (len=30)
     !!
@@ -727,31 +670,25 @@ contains
     ! start get_const_char_ptr_len
     function get_const_char_ptr_len() &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT
         character(len=30) :: SHT_rv
         ! splicer begin function.get_const_char_ptr_len
-        integer(C_INT) SHT_rv_len
-        SHT_rv_len = len(SHT_rv, kind=C_INT)
-        call c_get_const_char_ptr_len_bufferify(SHT_rv, SHT_rv_len)
+        call c_get_const_char_ptr_len_CFI(SHT_rv)
         ! splicer end function.get_const_char_ptr_len
     end function get_const_char_ptr_len
     ! end get_const_char_ptr_len
 
     ! ----------------------------------------
     ! Function:  const char *getConstCharPtrAsArg
-    ! Statement: f_function_char*_buf_arg
+    ! Statement: f_function_char*_cfi_arg
     !>
     !! \brief return a 'const char *' as argument
     !!
     !<
     ! start get_const_char_ptr_as_arg
     subroutine get_const_char_ptr_as_arg(output)
-        use iso_c_binding, only : C_INT
         character(len=*), intent(OUT) :: output
         ! splicer begin function.get_const_char_ptr_as_arg
-        integer(C_INT) noutput
-        noutput = len(output, kind=C_INT)
-        call c_get_const_char_ptr_as_arg_bufferify(output, noutput)
+        call c_get_const_char_ptr_as_arg_CFI(output)
         ! splicer end function.get_const_char_ptr_as_arg
     end subroutine get_const_char_ptr_as_arg
     ! end get_const_char_ptr_as_arg
@@ -778,52 +715,51 @@ contains
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
     ! ----------------------------------------
     ! Function:  const char *getCharPtr5 +deref(pointer)
-    ! Statement: f_function_char*_cdesc_pointer
+    ! Statement: f_function_char*_cfi_pointer
     !>
     !! \brief return a 'const char *' as character(:) pointer
     !!
     !<
     function get_char_ptr5() &
             result(SHT_rv)
-        use iso_c_binding, only : c_f_pointer
         character(len=:), pointer :: SHT_rv
         ! splicer begin function.get_char_ptr5
-        type(CHA_SHROUD_array) :: SHT_rv_cdesc
-        call c_get_char_ptr5_bufferify(SHT_rv_cdesc)
-        call CHA_SHROUD_pointer_string(SHT_rv_cdesc, SHT_rv)
+        call c_get_char_ptr5_CFI(SHT_rv)
         ! splicer end function.get_char_ptr5
     end function get_char_ptr5
 #endif
 
+#if 0
+    ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void explicit1
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char *name +intent(in)+len_trim(AAlen)
-    ! Statement: f_in_char*
+    ! Statement: f_in_char*_cfi
     subroutine explicit1(name)
-        use iso_c_binding, only : C_NULL_CHAR
         character(len=*), intent(IN) :: name
         ! splicer begin function.explicit1
-        call c_explicit1(trim(name)//C_NULL_CHAR)
+        call c_explicit1_CFI(name)
         ! splicer end function.explicit1
     end subroutine explicit1
+#endif
 
+#if 0
+    ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void explicit2
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char *name +intent(out)+len(AAtrim)
-    ! Statement: f_out_char*_buf
+    ! Statement: f_out_char*_cfi
     subroutine explicit2(name)
-        use iso_c_binding, only : C_INT
         character(len=*), intent(OUT) :: name
         ! splicer begin function.explicit2
-        integer(C_INT) SHT_name_len
-        SHT_name_len = len(name, kind=C_INT)
-        call c_explicit2_bufferify(name, SHT_name_len)
+        call c_explicit2_CFI(name)
         ! splicer end function.explicit2
     end subroutine explicit2
+#endif
 
 #if 0
     ! Only the interface is needed
@@ -860,15 +796,17 @@ contains
         ! splicer end function.creturn_char
     end function creturn_char
 
+#if 0
+    ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void CpassCharPtr
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char *dest +intent(out)
-    ! Statement: f_out_char*_buf
+    ! Statement: f_out_char*_cfi
     ! ----------------------------------------
     ! Argument:  const char *src +blanknull
-    ! Statement: f_in_char*_buf
+    ! Statement: f_in_char*_cfi
     !>
     !! \brief strcpy like behavior
     !!
@@ -878,52 +816,46 @@ contains
     !! If src is a blank string, pass a NULL pointer to C library function.
     !<
     subroutine cpass_char_ptr(dest, src)
-        use iso_c_binding, only : C_INT
         character(len=*), intent(OUT) :: dest
         character(len=*), intent(IN) :: src
         ! splicer begin function.cpass_char_ptr
-        integer(C_INT) SHT_dest_len
-        integer(C_INT) SHT_src_len
-        SHT_dest_len = len(dest, kind=C_INT)
-        SHT_src_len = len(src, kind=C_INT)
-        call c_cpass_char_ptr_bufferify(dest, SHT_dest_len, src, &
-            SHT_src_len)
+        call c_cpass_char_ptr_CFI(dest, src)
         ! splicer end function.cpass_char_ptr
     end subroutine cpass_char_ptr
+#endif
 
+#if 0
+    ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void CpassCharPtrBlank
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char *dest +intent(out)
-    ! Statement: f_out_char*_buf
+    ! Statement: f_out_char*_cfi
     ! ----------------------------------------
     ! Argument:  const char *src
-    ! Statement: f_in_char*_buf
+    ! Statement: f_in_char*_cfi
     !>
     !! \brief Test F_blanknull option
     !!
     !<
     subroutine cpass_char_ptr_blank(dest, src)
-        use iso_c_binding, only : C_INT
         character(len=*), intent(OUT) :: dest
         character(len=*), intent(IN) :: src
         ! splicer begin function.cpass_char_ptr_blank
-        integer(C_INT) SHT_dest_len
-        integer(C_INT) SHT_src_len
-        SHT_dest_len = len(dest, kind=C_INT)
-        SHT_src_len = len(src, kind=C_INT)
-        call c_cpass_char_ptr_blank_bufferify(dest, SHT_dest_len, src, &
-            SHT_src_len)
+        call c_cpass_char_ptr_blank_CFI(dest, src)
         ! splicer end function.cpass_char_ptr_blank
     end subroutine cpass_char_ptr_blank
+#endif
 
+#if 0
+    ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int CpassCharPtrNotrim
     ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  const char *src
-    ! Statement: f_in_char*_buf
+    ! Statement: f_in_char*_cfi
     !>
     !! \brief NULL terminate input string in C, not in Fortran.
     !!
@@ -934,11 +866,10 @@ contains
         character(len=*), intent(IN) :: src
         integer(C_INT) :: SHT_rv
         ! splicer begin function.cpass_char_ptr_notrim
-        integer(C_INT) SHT_src_len
-        SHT_src_len = len(src, kind=C_INT)
-        SHT_rv = c_cpass_char_ptr_notrim_bufferify(src, SHT_src_len)
+        SHT_rv = c_cpass_char_ptr_notrim_CFI(src)
         ! splicer end function.cpass_char_ptr_notrim
     end function cpass_char_ptr_notrim
+#endif
 
 #if 0
     ! Only the interface is needed
@@ -975,12 +906,14 @@ contains
     end function cpass_char_ptr_capi
 #endif
 
+#if 0
+    ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int CpassCharPtrCAPI2
     ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  const char *in
-    ! Statement: f_in_char*
+    ! Statement: f_in_char*_cfi
     ! ----------------------------------------
     ! Argument:  const char *src +api(capi)
     ! Statement: f_in_char*_capi
@@ -990,28 +923,17 @@ contains
     !<
     function cpass_char_ptr_capi2(in, src) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_NULL_CHAR
+        use iso_c_binding, only : C_INT
         character(len=*), intent(IN) :: in
         character(len=*), intent(IN) :: src
         integer(C_INT) :: SHT_rv
         ! splicer begin function.cpass_char_ptr_capi2
-        SHT_rv = c_cpass_char_ptr_capi2(trim(in)//C_NULL_CHAR, src)
+        SHT_rv = c_cpass_char_ptr_capi2_CFI(in, src)
         ! splicer end function.cpass_char_ptr_capi2
     end function cpass_char_ptr_capi2
+#endif
 
     ! splicer begin additional_functions
     ! splicer end additional_functions
-
-    ! helper pointer_string
-    ! Assign context to an assumed-length character pointer
-    subroutine CHA_SHROUD_pointer_string(context, var)
-        use iso_c_binding, only : c_f_pointer, C_PTR
-        implicit none
-        type(CHA_SHROUD_array), intent(IN) :: context
-        character(len=:), pointer, intent(OUT) :: var
-        character(len=context%elem_len), pointer :: fptr
-        call c_f_pointer(context%base_addr, fptr)
-        var => fptr
-    end subroutine CHA_SHROUD_pointer_string
 
 end module char_mod

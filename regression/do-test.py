@@ -552,6 +552,12 @@ if __name__ == "__main__":
                  cmdline=[
                      "--language", "c++",
                  ]),
+        TestDesc("char-cxx-cfi", yaml="char",
+                 cmdline=[
+                     "--language", "c++",
+                     "--option", "F_CFI=true",
+                     "--option", "wrap_python=false",
+                 ]),
         TestDesc("strings"),
         TestDesc("strings-cfi", yaml="strings",
                  keywords=["cfi"],

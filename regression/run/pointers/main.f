@@ -129,12 +129,14 @@ contains
   end subroutine test_swig
   
   subroutine test_char_arrays
-    integer nchar
+    integer nchar, i
     character(10) :: in(3) = [ &
          "dog       ", &
          "cat       ", &
          "monkey    "  &
          ]
+    character(11), target :: inc(3)
+    type(C_PTR) :: inptr(3)
 
     call set_case_name("test_char_arrays")
 
@@ -142,6 +144,16 @@ contains
     ! It will copy strings to create char ** variable.
     nchar = accept_char_array_in(in)
     call assert_equals(len_trim(in(1)), nchar, "acceptCharArrayIn")
+
+    ! Create the char** data structure.
+    do i = 1, 3
+       inc(i) = trim(in(i)) // C_NULL_CHAR
+       inptr(i) = C_LOC(inc(i))
+    enddo
+
+    ! The interface is not created with pointers-c
+!    nchar = c_accept_char_array_in(inptr)
+!    call assert_equals(len_trim(in(1)), nchar, "acceptCharArrayIn")
 
   end subroutine test_char_arrays
 

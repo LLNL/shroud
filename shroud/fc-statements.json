@@ -1,5 +1,51 @@
 [
     {
+        "name":"##### header mixin #########################################",
+        "notes": [
+            "Use header for C or C++.",
+            "Use {stdlib} before funtion call to include namespace."
+        ]
+    },
+    {
+        "name": "c_mixin_header_stddef",
+        "lang_c": {
+            "impl_header": [
+                "<stddef.h>"
+            ]
+        },
+        "lang_cxx": {
+            "impl_header": [
+                "<cstddef>"
+            ]
+        }
+    },
+    {
+        "name": "c_mixin_header_stdlib",
+        "lang_c": {
+            "impl_header": [
+                "<stdlib.h>"
+            ]
+        },
+        "lang_cxx": {
+            "impl_header": [
+                "<cstdlib>"
+            ]
+        }
+    },
+    {
+        "name": "c_mixin_header_string",
+        "lang_c": {
+            "impl_header": [
+                "<string.h>"
+            ]
+        },
+        "lang_cxx": {
+            "impl_header": [
+                "<cstring>"
+            ]
+        }
+    },
+    {
         "name":"##### argument mixin #######################################"
     },
     {
@@ -47,6 +93,18 @@
             "{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}"
         ],
         "sphinx-end-before": "f_mixin_declare-fortran-arg"
+    },
+    {
+        "name": "c_mixin_local-cvar-ptr",
+        "comments": [
+            "Declare a local pointer variable in the C wrapper."
+        ],
+        "c_local": [
+            "cxx"
+        ],
+        "c_pre_call": [
+            "{c_const}{c_type} * {c_local_cxx};"
+        ]
     },
     {
         "name": "c_mixin_cast-argument",
@@ -132,13 +190,32 @@
         "name": "f_mixin_interface-as-cptr",
         "notes": [
             "Pass the address of the argument directly to C.",
-            "Used when there is no direct mapping to Fortran"
+            "Used when there is no direct mapping to Fortran."
         ],
         "i_arg_names": [
             "{i_var}"
         ],
         "i_arg_decl": [
             "type(C_PTR){f_intent_attr} :: {i_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        }
+    },
+    {
+        "name": "f_mixin_interface-as-cptr-array",
+        "notes": [
+            "Pass an array of address of the argument directly to C.",
+            "Used when there is no direct mapping to Fortran.",
+            "ex. char **"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_arg_decl": [
+            "type(C_PTR){f_intent_attr} :: {i_var}(*)"
         ],
         "i_module": {
             "iso_c_binding": [
@@ -194,6 +271,34 @@
             "type(C_PTR){f_intent_attr} :: {f_var}"
         ],
         "f_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        }
+    },
+    {
+        "name": "f_mixin_function-as-cptr",
+        "comments": [
+            "Declare function result as a type(C_PTR)"
+        ],
+        "f_arg_decl": [
+            "type(C_PTR) :: {f_var}"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        }
+    },
+    {
+        "name": "f_mixin_function-interface-as-cptr",
+        "notes": [
+            "Return a type(C_PTR) from a interface."
+        ],
+        "i_result_decl": [
+            "type(C_PTR) :: {i_var}"
+        ],
+        "i_module": {
             "iso_c_binding": [
                 "C_PTR"
             ]
@@ -1808,6 +1913,18 @@
         }
     },
     {
+        "name": "f_mixin_function-as-character-arg",
+        "notes" : [
+            "Convert the function result to a character argument"
+        ],
+        "f_arg_name": [
+            "{f_var}"
+        ],
+        "f_arg_decl": [
+            "character(len=*), intent(OUT) :: {f_var}"
+        ]
+    },
+    {
         "name": "c_mixin_character",
         "notes": [
             "Create a character argument"
@@ -1826,6 +1943,50 @@
         "c_arg_decl": [
             "{gen.cdecl.c_var}"
         ]
+    },
+    {
+        "name": "c_mixin_char-malloc",
+        "comments": [
+            "Allocate a local char array in C wrapper."
+        ],
+        "notes": [
+            "With space for terminating NULL."
+        ],
+        "mixin": [
+            "c_mixin_header_stdlib"
+        ],
+        "c_local": [
+            "cxx"
+        ],
+        "lang_c": {
+            "c_pre_call": [
+                "char *{c_local_cxx} = {stdlib}malloc({c_var_len}+1);"
+            ]
+        },
+        "lang_cxx": {
+            "c_pre_call": [
+                "char *{c_local_cxx} = new char[{c_var_len}+1];"
+            ]
+        }
+    },
+    {
+        "name": "c_mixin_char-free",
+        "comments": [
+            "Free a local char array in C wrapper."
+        ],
+        "mixin": [
+            "c_mixin_header_stdlib"
+        ],
+        "lang_c": {
+            "c_post_call": [
+                "{stdlib}free({c_local_cxx});"
+            ]
+        },
+        "lang_cxx": {
+            "c_post_call": [
+                "delete[] {c_local_cxx};"
+            ]
+        }
     },
     {
         "name": "c_mixin_char-alloc",
@@ -1849,7 +2010,7 @@
     {
         "name": "c_mixin_char-blank-fill",
         "comments": [
-            "Blank fill C variable."
+            "Blank fill C argument."
         ],
         "c_helper": [
             "char_blank_fill"
@@ -1861,13 +2022,36 @@
     {
         "name": "c_mixin_char-copy",
         "comments": [
-            "Copy cxx variable to c variable."
+            "Copy cxx variable to c argument."
+        ],
+        "notes": [
+            "Used to NULL terminated an input Fortran string."
         ],
         "c_helper": [
             "char_copy"
         ],
         "c_post_call": [
             "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
+        ]
+    },
+    {
+        "name": "c_mixin_char-array-alloc",
+        "comments": [
+            "Converts a contiguous Fortran array of characters into",
+            "an array of of char * pointers to NULL terminated strings."
+        ],
+        "c_helper": [
+            "char_array_alloc",
+            "char_array_free"
+        ],
+        "c_local": [
+            "cxx"
+        ],
+        "c_pre_call": [
+            "char **{c_local_cxx} = {c_helper_char_array_alloc}({c_var},\t {c_var_size},\t {c_var_len});"
+        ],
+        "c_post_call": [
+            "{c_helper_char_array_free}({c_local_cxx}, {c_var_size});"
         ]
     },
     {
@@ -2062,20 +2246,14 @@
             "f_function_char*_pointer",
             "f_function_char*_raw"
         ],
+        "notes": [
+            "Return a type(C_PTR) from Fortran."
+        ],
         "mixin": [
-            "f_mixin_function"
-        ],
-        "f_arg_decl": [
-            "type(C_PTR) :: {f_var}"
-        ],
-        "i_result_decl": [
-            "type(C_PTR) :: {i_var}"
-        ],
-        "i_module": {
-            "iso_c_binding": [
-                "C_PTR"
-            ]
-        }
+            "f_mixin_function",
+            "f_mixin_function-as-cptr",
+            "f_mixin_function-interface-as-cptr"
+        ]
     },
     {
         "alias": [
@@ -2166,9 +2344,18 @@
         ],
         "notes": [
             "Change function result into an argument",
-            "Use F_string_result_as_arg as the argument name."
+            "Use F_string_result_as_arg as the argument name.",
+            "was base:f_function_char*_buf_copy"
         ],
-        "base": "f_function_char*_buf_copy",
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_function-as-character-arg",
+            "f_mixin_pass_character_buf",
+            "c_mixin_in_character_buf",
+            "c_mixin_arg-call-cvar",
+            "c_mixin_function-assign-to-local",
+            "c_mixin_char-copy"
+        ],
         "fmtdict": {
             "f_var": "{F_string_result_as_arg}",
             "i_var": "{F_string_result_as_arg}",
@@ -2177,13 +2364,7 @@
             "i_var_len": "n{F_string_result_as_arg}",
             "c_var_len": "n{F_string_result_as_arg}"
         },
-        "f_result_var": "as-subroutine",
-        "f_arg_name": [
-            "{f_var}"
-        ],
-        "f_arg_decl": [
-            "character(len=*), intent(OUT) :: {f_var}"
-        ]
+        "f_result_var": "as-subroutine"
     },
     {
         "alias": [
@@ -2191,25 +2372,15 @@
             "c_in_char**"
         ],
         "notes": [
-            "Treat as an assumed length array in Fortran interface."
+            "Treat as an assumed length array in Fortran interface.",
+            "From Fortran, the caller is responsible for creating an array",
+            "of pointers to NULL terminated strings."
         ],
         "mixin": [
+            "f_mixin_interface-as-cptr-array",
+            "c_mixin_declare-arg",
             "c_mixin_arg-call-cvar"
-        ],
-        "c_arg_decl": [
-            "char **{c_var}"
-        ],
-        "i_arg_decl": [
-            "type(C_PTR), intent(IN) :: {i_var}(*)"
-        ],
-        "i_arg_names": [
-            "{i_var}"
-        ],
-        "i_module": {
-            "iso_c_binding": [
-                "C_PTR"
-            ]
-        }
+        ]
     },
     {
         "alias": [
@@ -2218,20 +2389,8 @@
         ],
         "mixin": [
             "f_mixin_in_string_array_buf",
+            "c_mixin_char-array-alloc",
             "c_mixin_arg-call-cxx"
-        ],
-        "c_helper": [
-            "char_array_alloc",
-            "char_array_free"
-        ],
-        "c_local": [
-            "cxx"
-        ],
-        "c_pre_call": [
-            "char **{c_local_cxx} = {c_helper_char_array_alloc}({c_var},\t {c_var_size},\t {c_var_len});"
-        ],
-        "c_post_call": [
-            "{c_helper_char_array_free}({c_local_cxx}, {c_var_size});"
         ]
     },
     {
@@ -2782,7 +2941,18 @@
             "Change function result into an argument.",
             "Use F_string_result_as_arg as the argument name."
         ],
-        "base": "f_function_string_buf",
+        "notes": [
+            "was base:f_function_string_buf"
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_function-as-character-arg",
+            "f_mixin_pass_character_buf",
+            "c_mixin_in_character_buf",
+            "c_mixin_arg-call-cvar",
+            "c_mixin_function-assign-to-local",
+            "c_mixin_string-char-copy-to-arg"
+        ],
         "fmtdict": {
             "f_var": "{F_string_result_as_arg}",
             "i_var": "{F_string_result_as_arg}",
@@ -2791,13 +2961,7 @@
             "i_var_len": "n{F_string_result_as_arg}",
             "c_var_len": "n{F_string_result_as_arg}"
         },
-        "f_result_var": "as-subroutine",
-        "f_arg_name": [
-            "{f_var}"
-        ],
-        "f_arg_decl": [
-            "character(len=*), intent(OUT) :: {f_var}"
-        ]
+        "f_result_var": "as-subroutine"
     },
     {
         "alias": [
@@ -3763,10 +3927,8 @@
             "f_function_shadow_capsule",
             "f_function_shadow<native>_capsule"
         ],
-        "comments": [
-            "Return an instance by value."
-        ],
         "notes": [
+            "Return an instance by value.",
             "Create memory in c_pre_call so it will survive the return.",
             "owner=caller sets idtor flag to release the memory.",
             "c_local_var is passed in as argument."
@@ -3940,18 +4102,9 @@
             "c_dtor"
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine"
+            "f_mixin_function-to-subroutine",
+            "c_mixin_header_stddef"
         ],
-        "lang_c": {
-            "impl_header": [
-                "<stddef.h>"
-            ]
-        },
-        "lang_cxx": {
-            "impl_header": [
-                "<cstddef>"
-            ]
-        },
         "f_arg_call": [],
         "c_call": [
             "delete {CXX_this};",
@@ -4262,6 +4415,44 @@
         ]
     },
     {
+        "name": "c_mixin_cfi-unpack-base-addr",
+        "c_pre_call": [
+            "{c_type} *{c_var} = {cast_static}{c_type} *{cast1}{c_var_cfi}->base_addr{cast2};"
+        ]
+    },
+    {
+        "name": "c_mixin_cfi-unpack-base-addr-cxx",
+        "c_local": [
+            "cxx"
+        ],
+        "c_pre_call": [
+            "{cxx_type} *{c_local_cxx} = {cast_static}{cxx_type} *{cast1}{c_var_cfi}->base_addr{cast2};"
+        ]
+    },
+    {
+        "name": "c_mixin_cfi-unpack-len",
+        "c_temps": [
+            "len"
+        ],
+        "c_pre_call": [
+            "size_t {c_var_len} = {c_var_cfi}->elem_len;"
+        ]
+    },
+    {
+        "name": "c_mixin_cfi-unpack-len-size",
+        "notes": [
+            "Used with 1d arrays of characters:  CHARACTER(len) var(nvar)"
+        ],
+        "c_temps": [
+            "len",
+            "size"
+        ],
+        "c_pre_call": [
+            "size_t {c_var_len} = {c_var_cfi}->elem_len;",
+            "size_t {c_var_size} = {c_var_cfi}->dim[0].extent;"
+        ]
+    },
+    {
         "name": "c_mixin_char-copy-to-arg-cfi",
         "comments": [
             "Copy cxx variable into c variable."
@@ -4281,7 +4472,7 @@
     {
         "name": "c_mixin_arg_character_cfi",
         "comments": [
-            "Local character argument passed as CFI_desc_t."
+            "Character argument passed as CFI_desc_t."
         ],
         "mixin": [
             "c_mixin_arg_cfi"
@@ -4291,12 +4482,30 @@
         ],
         "i_arg_names": [
             "{i_var}"
+        ]
+    },
+    {
+        "name": "f_mixin_arg-character-array-cfi",
+        "comments": [
+            "Character array argument passed as CFI_desc_t."
         ],
-        "c_local": [
-            "cxx"
+        "notes": [
+            "XXX - does the interface need kind=C_CHAR and/or len=:"
         ],
-        "c_pre_call": [
-            "char *{c_local_cxx} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};"
+        "mixin": [
+            "c_mixin_arg_cfi"
+        ],
+        "f_arg_name": [
+            "{f_var}"
+        ],
+        "f_arg_decl": [
+            "character(len=*){f_intent_attr} :: {f_var}(:)"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_arg_decl": [
+            "character(len=*){f_intent_attr} :: {i_var}(:)"
         ]
     },
     {
@@ -4317,9 +4526,6 @@
         },
         "i_arg_names": [
             "{i_var}"
-        ],
-        "c_local": [
-            "cxx"
         ]
     },
     {
@@ -4473,10 +4679,8 @@
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "c_mixin_arg_native_cfi",
+            "c_mixin_cfi-unpack-base-addr-cxx",
             "c_mixin_arg-call-cxx"
-        ],
-        "c_pre_call": [
-            "{cxx_type} *{c_local_cxx} = {cast_static}{cxx_type} *{cast1}{c_var_cfi}->base_addr{cast2};"
         ]
     },
     {
@@ -4484,32 +4688,28 @@
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "c_mixin_arg_character_cfi",
+            "c_mixin_cfi-unpack-base-addr",
+            "c_mixin_cfi-unpack-len",
+            "c_mixin_char-alloc",
             "c_mixin_arg-call-cxx"
-        ],
-        "c_helper": [
-            "char_alloc",
-            "char_free"
-        ],
-        "c_pre_call": [
-            "char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
-            "char *{c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_cfi}->elem_len,\t {c_blanknull});"
-        ],
-        "c_post_call": [
-            "{c_helper_char_free}({c_local_cxx});"
         ]
     },
     {
         "name": "f_out_char*_cfi",
+        "notes": [
+            "Allocate a local array as large as input argument plus 1.",
+            "Pass the library function, then copy back to input argument",
+            "and blank fill before returning."
+        ],
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "c_mixin_arg_character_cfi",
-            "c_mixin_arg-call-cxx"
-        ],
-        "c_helper": [
-            "char_blank_fill"
-        ],
-        "c_post_call": [
-            "{c_helper_char_blank_fill}({c_local_cxx}, {c_var_cfi}->elem_len);"
+            "c_mixin_cfi-unpack-base-addr",
+            "c_mixin_cfi-unpack-len",
+            "c_mixin_char-malloc",
+            "c_mixin_arg-call-cxx",
+            "c_mixin_char-copy",
+            "c_mixin_char-free"
         ]
     },
     {
@@ -4517,20 +4717,11 @@
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "c_mixin_arg_character_cfi",
+            "c_mixin_cfi-unpack-base-addr",
+            "c_mixin_cfi-unpack-len",
+            "c_mixin_char-blank-fill",
+            "c_mixin_char-alloc",
             "c_mixin_arg-call-cxx"
-        ],
-        "c_helper": [
-            "char_alloc",
-            "char_copy",
-            "char_free"
-        ],
-        "c_pre_call": [
-            "char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
-            "char *{c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_cfi}->elem_len,\t {c_blanknull});"
-        ],
-        "c_post_call": [
-            "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {c_local_cxx},\t -1);",
-            "{c_helper_char_free}({c_local_cxx});"
         ]
     },
     {
@@ -4541,23 +4732,13 @@
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_declare-fortran-result",
+            "f_mixin_pass_character_cfi",
             "c_mixin_arg_character_cfi",
-            "c_mixin_arg-call-cxx"
-        ],
-        "f_arg_call": [
-            "{f_var}"
-        ],
-        "f_need_wrapper": true,
-        "c_helper": [
-            "char_copy"
-        ],
-        "c_pre_call": [],
-        "c_call": [
-            "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
-        ],
-        "c_post_call": [
-            "char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
-            "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {c_local_cxx},\t -1);"
+            "c_mixin_cfi-unpack-base-addr",
+            "c_mixin_cfi-unpack-len",
+            "c_mixin_arg-call-cxx",
+            "c_mixin_function-assign-to-local",
+            "c_mixin_char-copy"
         ]
     },
     {
@@ -4566,52 +4747,35 @@
             "Change function result into an argument.",
             "Use F_string_result_as_arg as the argument name."
         ],
-        "base": "f_function_char*_cfi_copy",
+        "notes": [
+            "was base:f_function_char*_cfi_copy"
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_function-as-character-arg",
+            "f_mixin_pass_character_cfi",
+            "c_mixin_arg_character_cfi",
+            "c_mixin_cfi-unpack-base-addr",
+            "c_mixin_cfi-unpack-len",
+            "c_mixin_arg-call-cxx",
+            "c_mixin_function-assign-to-local",
+            "c_mixin_char-copy"
+        ],
         "fmtdict": {
             "f_var": "{F_string_result_as_arg}",
             "i_var": "{F_string_result_as_arg}",
             "c_var": "{F_string_result_as_arg}"
         },
-        "f_result_var": "as-subroutine",
-        "f_arg_name": [
-            "{f_var}"
-        ],
-        "f_arg_decl": [
-            "character(len=*), intent(OUT) :: {f_var}"
-        ]
+        "f_result_var": "as-subroutine"
     },
     {
         "name": "f_in_char**_cfi",
         "mixin": [
-            "c_mixin_arg_character_cfi",
+            "f_mixin_arg-character-array-cfi",
+            "c_mixin_cfi-unpack-base-addr",
+            "c_mixin_cfi-unpack-len-size",
+            "c_mixin_char-array-alloc",
             "c_mixin_arg-call-cxx"
-        ],
-        "f_arg_name": [
-            "{f_var}"
-        ],
-        "f_arg_decl": [
-            "character(len=*){f_intent_attr} :: {f_var}(:)"
-        ],
-        "i_arg_decl": [
-            "character(len=*){f_intent_attr} :: {i_var}(:)"
-        ],
-        "c_temps": [
-            "cfi",
-            "len",
-            "size"
-        ],
-        "c_helper": [
-            "char_array_alloc",
-            "char_array_free"
-        ],
-        "c_pre_call": [
-            "char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
-            "size_t {c_var_len} = {c_var_cfi}->elem_len;",
-            "size_t {c_var_size} = {c_var_cfi}->dim[0].extent;",
-            "char **{c_local_cxx} = {c_helper_char_array_alloc}({c_var},\t {c_var_size},\t {c_var_len});"
-        ],
-        "c_post_call": [
-            "{c_helper_char_array_free}({c_local_cxx}, {c_var_size});"
         ]
     },
     {
@@ -4620,36 +4784,28 @@
             "f_in_string&_cfi"
         ],
         "mixin": [
-            "#f_mixin_declare-fortran-arg",
+            "f_mixin_declare-fortran-arg",
             "c_mixin_arg_character_cfi",
+            "c_mixin_cfi-unpack-base-addr",
+            "c_mixin_cfi-unpack-len",
+            "c_mixin_local-string-init-trim",
             "c_mixin_arg-call-cxx"
-        ],
-        "f_arg_name": [
-            "{f_var}"
-        ],
-        "f_arg_decl": [
-            "character(len=*){f_intent_attr} :: {f_var}"
-        ],
-        "c_helper": [
-            "char_len_trim"
-        ],
-        "c_local": [
-            "cxx",
-            "trim"
-        ],
-        "c_pre_call": [
-            "char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
-            "size_t {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_cfi}->elem_len);",
-            "{c_const}std::string {c_local_cxx}({c_var}, {c_local_trim});"
         ]
     },
     {
         "alias": [
             "f_in_string*_cfi"
         ],
-        "base": "f_in_string_cfi",
-        "c_arg_call": [
-            "&{c_local_cxx}"
+        "notes": [
+            "was base:f_in_string_cfi"
+        ],
+        "mixin": [
+            "f_mixin_declare-fortran-arg",
+            "c_mixin_arg_character_cfi",
+            "c_mixin_cfi-unpack-base-addr",
+            "c_mixin_cfi-unpack-len",
+            "c_mixin_local-string-init-trim",
+            "c_mixin_arg-call-cxx-address"
         ]
     },
     {
@@ -4658,27 +4814,29 @@
         ],
         "mixin": [
             "f_mixin_declare-fortran-arg",
+            "c_mixin_local-string",
             "c_mixin_arg_character_cfi",
-            "c_mixin_arg-call-cxx-address"
-        ],
-        "c_helper": [
-            "char_copy"
-        ],
-        "c_pre_call": [
-            "std::string {c_local_cxx};",
-            "char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};"
-        ],
-        "c_post_call": [
-            "{c_helper_char_copy}({c_var},\t {c_var_cfi}->elem_len,\t {c_local_cxx}.data(),\t {c_local_cxx}.size());"
+            "c_mixin_cfi-unpack-base-addr",
+            "c_mixin_cfi-unpack-len",
+            "c_mixin_arg-call-cxx-address",
+            "c_mixin_string-copy-out"
         ]
     },
     {
         "alias": [
             "f_out_string&_cfi"
         ],
-        "base": "f_out_string*_cfi",
-        "c_arg_call": [
-            "{c_local_cxx}"
+        "notes": [
+            "was base:f_out_string*_cfi"
+        ],
+        "mixin": [
+            "f_mixin_declare-fortran-arg",
+            "c_mixin_local-string",
+            "c_mixin_arg_character_cfi",
+            "c_mixin_cfi-unpack-base-addr",
+            "c_mixin_cfi-unpack-len",
+            "c_mixin_arg-call-cxx",
+            "c_mixin_string-copy-out"
         ]
     },
     {
@@ -4688,32 +4846,28 @@
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "c_mixin_arg_character_cfi",
-            "c_mixin_arg-call-cxx-address"
-        ],
-        "c_helper": [
-            "char_copy",
-            "char_len_trim"
-        ],
-        "c_local": [
-            "cxx",
-            "trim"
-        ],
-        "c_pre_call": [
-            "char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
-            "size_t {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_cfi}->elem_len);",
-            "{c_const}std::string {c_local_cxx}({c_var}, {c_local_trim});"
-        ],
-        "c_post_call": [
-            "{c_helper_char_copy}({c_var},\t {c_var_cfi}->elem_len,\t {c_local_cxx}.data(),\t {c_local_cxx}.size());"
+            "c_mixin_cfi-unpack-base-addr",
+            "c_mixin_cfi-unpack-len",
+            "c_mixin_local-string-init-trim",
+            "c_mixin_arg-call-cxx-address",
+            "c_mixin_string-copy-out"
         ]
     },
     {
         "alias": [
             "f_inout_string&_cfi"
         ],
-        "base": "f_inout_string*_cfi",
-        "c_arg_call": [
-            "{c_local_cxx}"
+        "notes": [
+            "was base:f_inout_string*_cfi"
+        ],
+        "mixin": [
+            "f_mixin_declare-fortran-arg",
+            "c_mixin_arg_character_cfi",
+            "c_mixin_cfi-unpack-base-addr",
+            "c_mixin_cfi-unpack-len",
+            "c_mixin_local-string-init-trim",
+            "c_mixin_arg-call-cxx",
+            "c_mixin_string-copy-out"
         ]
     },
     {
@@ -4730,8 +4884,7 @@
             "c_mixin_arg-call-cxx",
             "c_mixin_function-assign-to-local",
             "c_mixin_char-copy-to-arg-cfi"
-        ],
-        "c_pre_call": []
+        ]
     },
     {
         "alias": [
@@ -4739,23 +4892,26 @@
             "#f_function_string&_cfi_arg  XXX needs a test",
             "f_function_string&_cfi_arg"
         ],
-        "comments": [
+        "notes": [
             "Change function result into an argument.",
-            "Use F_string_result_as_arg as the argument name."
+            "Use F_string_result_as_arg as the argument name.",
+            "was base:f_function_string_cfi_copy"
         ],
-        "base": "f_function_string_cfi_copy",
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_function-as-character-arg",
+            "f_mixin_pass_character_cfi",
+            "c_mixin_arg_character_cfi",
+            "c_mixin_arg-call-cxx",
+            "c_mixin_function-assign-to-local",
+            "c_mixin_char-copy-to-arg-cfi"
+        ],
         "fmtdict": {
             "f_var": "{F_string_result_as_arg}",
             "i_var": "{F_string_result_as_arg}",
             "c_var": "{F_string_result_as_arg}"
         },
-        "f_result_var": "as-subroutine",
-        "f_arg_name": [
-            "{f_var}"
-        ],
-        "f_arg_decl": [
-            "character(len=*), intent(OUT) :: {f_var}"
-        ]
+        "f_result_var": "as-subroutine"
     },
     {
         "alias": [
@@ -4829,6 +4985,7 @@
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_function_string_cfi_allocatable",
+            "c_mixin_header_string",
             "c_mixin_arg_cfi"
         ],
         "i_arg_decl": [
@@ -4837,16 +4994,6 @@
         "i_arg_names": [
             "{i_var}"
         ],
-        "lang_c": {
-            "impl_header": [
-                "<string.h>"
-            ]
-        },
-        "lang_cxx": {
-            "impl_header": [
-                "<cstring>"
-            ]
-        },
         "c_post_call": [
             "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *) 0, \t{cxx_var}{cxx_member}length());",
             "if (SH_ret == CFI_SUCCESS) {{+",
@@ -4923,20 +5070,15 @@
     },
     {
         "name": "f_out_native**_cfi_allocatable",
-        "comments": [
-            "Set Fortran pointer to point to cxx_var."
-        ],
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "c_mixin_arg_native_cfi",
+            "c_mixin_local-cvar-ptr",
             "c_mixin_arg-call-cxx-address",
             "c_mixin_native_cfi_allocatable"
         ],
         "i_arg_decl": [
             "{i_type}{f_intent_attr}, allocatable :: {i_var}{f_assumed_shape}"
-        ],
-        "c_pre_call": [
-            "{c_const}{c_type} * {c_local_cxx};"
         ]
     },
     {
@@ -4947,19 +5089,17 @@
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "c_mixin_arg_native_cfi",
+            "c_mixin_local-cvar-ptr",
             "c_mixin_arg-call-cxx-address",
             "c_mixin_native_cfi_pointer"
         ],
         "i_arg_decl": [
             "{i_type}{f_intent_attr}, pointer :: {i_var}{f_assumed_shape}"
-        ],
-        "c_pre_call": [
-            "{c_const}{c_type} * {c_local_cxx};"
         ]
     },
     {
         "name": "f_function_native*_cfi_allocatable",
-        "comments": [
+        "notes": [
             "Pass result as an argument to C wrapper.",
             "Convert to subroutine and pass result as an argument.",
             "Return an allocated copy of data."
@@ -4968,6 +5108,7 @@
             "f_mixin_function-to-subroutine",
             "c_mixin_arg_native_cfi",
             "c_mixin_arg-call-cxx",
+            "c_mixin_function-assign-to-local",
             "c_mixin_native_cfi_allocatable"
         ],
         "f_module": {
@@ -4983,9 +5124,6 @@
         ],
         "i_arg_decl": [
             "{i_type}{f_intent_attr}, allocatable :: {i_var}{f_assumed_shape}"
-        ],
-        "c_call": [
-            "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
         ]
     },
     {
@@ -4999,6 +5137,7 @@
             "f_mixin_function-to-subroutine",
             "c_mixin_arg_native_cfi",
             "c_mixin_arg-call-cxx",
+            "c_mixin_function-assign-to-local",
             "c_mixin_native_cfi_pointer"
         ],
         "f_module": {
@@ -5017,9 +5156,6 @@
         ],
         "i_arg_decl": [
             "{i_type}{f_intent_attr}, pointer :: {i_var}{f_assumed_shape}"
-        ],
-        "c_call": [
-            "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
         ]
     },
     {
@@ -5160,6 +5296,9 @@
             "The values will be added to generated code to mark where each group",
             "will add text."
         ],
+        "f_arg_name": [
+            "===>f_arg_name<==="
+        ],
         "f_arg_decl": [
             "===>f_arg_decl<==="
         ],
@@ -5176,7 +5315,7 @@
             "===>i_result_decl<==="
         ],
         "c_arg_decl": [
-            "===>{c_var}<==="
+            "===>c_arg_decl<==="
         ]
     },
     {
@@ -5191,7 +5330,7 @@
             "===>i_arg_decl<==="
         ],
         "c_arg_decl": [
-            "===>{c_var}<==="
+            "===>c_arg_decl<==="
         ]
     },
     {
@@ -5419,7 +5558,9 @@
     {
         "name": "h_helper_char_array_alloc",
         "notes": [
-            "Used with 'char **' arguments."
+            "Used with 'char **' arguments.",
+            "Converts a contiguous Fortran array of characters into",
+            "an array of of char * pointers to NULL terminated strings."
         ],
         "c_fmtname": "ShroudStrArrayAlloc",
         "dependent_helpers": ["char_len_trim"],

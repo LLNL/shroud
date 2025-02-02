@@ -58,7 +58,7 @@ struct s_ERR_nested {
 extern "C" {
 #endif
 
-int * ERR_struct1_get_arg2(ERR_struct1 *SH_this, ===>SHC_rv<===);
+int * ERR_struct1_get_arg2(ERR_struct1 *SH_this, ===>c_arg_decl<===);
 
 void ERR_struct1_set_arg2(ERR_struct1 *SH_this, int *val);
 

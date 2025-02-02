@@ -2376,6 +2376,7 @@
                                 "c_type": "char",
                                 "c_var": "arg1",
                                 "c_var_cfi": "SHT_arg1_cfi",
+                                "c_var_len": "SHT_arg1_len",
                                 "cfi_type": "CFI_type_other",
                                 "cxx_abstract_decl": "const std::string *",
                                 "cxx_addr": "&",
@@ -2396,6 +2397,7 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "arg1",
                                 "i_var_cfi": "SHT_arg1_cfi",
+                                "i_var_len": "SHT_arg1_len",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt_name": "f_in_string&_cfi",
@@ -2587,6 +2589,7 @@
                                 "c_type": "char",
                                 "c_var": "arg1",
                                 "c_var_cfi": "SHT_arg1_cfi",
+                                "c_var_len": "SHT_arg1_len",
                                 "cfi_type": "CFI_type_other",
                                 "cxx_abstract_decl": "std::string *",
                                 "cxx_addr": "&",
@@ -2606,6 +2609,7 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "arg1",
                                 "i_var_cfi": "SHT_arg1_cfi",
+                                "i_var_len": "SHT_arg1_len",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt_name": "f_out_string&_cfi",
@@ -2688,8 +2692,8 @@
                 },
                 "helpers": {
                     "c": [
-                        "char_copy",
-                        "char_len_trim"
+                        "char_len_trim",
+                        "char_copy"
                     ]
                 },
                 "name": "acceptStringReference",
@@ -2799,6 +2803,7 @@
                                 "c_type": "char",
                                 "c_var": "arg1",
                                 "c_var_cfi": "SHT_arg1_cfi",
+                                "c_var_len": "SHT_arg1_len",
                                 "cfi_type": "CFI_type_other",
                                 "cxx_abstract_decl": "std::string *",
                                 "cxx_addr": "&",
@@ -2819,6 +2824,7 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "arg1",
                                 "i_var_cfi": "SHT_arg1_cfi",
+                                "i_var_len": "SHT_arg1_len",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt_name": "f_inout_string&_cfi",
@@ -3008,6 +3014,7 @@
                                 "c_type": "char",
                                 "c_var": "arg1",
                                 "c_var_cfi": "SHT_arg1_cfi",
+                                "c_var_len": "SHT_arg1_len",
                                 "cfi_type": "CFI_type_other",
                                 "cxx_abstract_decl": "const std::string *",
                                 "cxx_addr": "",
@@ -3028,6 +3035,7 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "arg1",
                                 "i_var_cfi": "SHT_arg1_cfi",
+                                "i_var_len": "SHT_arg1_len",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt_name": "f_in_string*_cfi",
@@ -3109,8 +3117,8 @@
                 },
                 "helpers": {
                     "c": [
-                        "char_copy",
-                        "char_len_trim"
+                        "char_len_trim",
+                        "char_copy"
                     ]
                 },
                 "name": "acceptStringPointer",
@@ -3218,6 +3226,7 @@
                                 "c_type": "char",
                                 "c_var": "arg1",
                                 "c_var_cfi": "SHT_arg1_cfi",
+                                "c_var_len": "SHT_arg1_len",
                                 "cfi_type": "CFI_type_other",
                                 "cxx_abstract_decl": "std::string *",
                                 "cxx_addr": "",
@@ -3238,6 +3247,7 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "arg1",
                                 "i_var_cfi": "SHT_arg1_cfi",
+                                "i_var_len": "SHT_arg1_len",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt_name": "f_inout_string*_cfi",
@@ -3429,6 +3439,7 @@
                                 "c_type": "char",
                                 "c_var": "arg1",
                                 "c_var_cfi": "SHT_arg1_cfi",
+                                "c_var_len": "SHT_arg1_len",
                                 "cfi_type": "CFI_type_other",
                                 "cxx_abstract_decl": "std::string *",
                                 "cxx_addr": "",
@@ -3448,6 +3459,7 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "arg1",
                                 "i_var_cfi": "SHT_arg1_cfi",
+                                "i_var_len": "SHT_arg1_len",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt_name": "f_out_string*_cfi",
@@ -3548,8 +3560,8 @@
                 },
                 "helpers": {
                     "c": [
-                        "char_copy",
-                        "char_len_trim"
+                        "char_len_trim",
+                        "char_copy"
                     ]
                 },
                 "name": "acceptStringPointerLen",
@@ -3694,6 +3706,7 @@
                                 "c_type": "char",
                                 "c_var": "arg1",
                                 "c_var_cfi": "SHT_arg1_cfi",
+                                "c_var_len": "SHT_arg1_len",
                                 "cfi_type": "CFI_type_other",
                                 "cxx_abstract_decl": "std::string *",
                                 "cxx_addr": "",
@@ -3714,6 +3727,7 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "arg1",
                                 "i_var_cfi": "SHT_arg1_cfi",
+                                "i_var_len": "SHT_arg1_len",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt_name": "f_inout_string*_cfi",
@@ -4006,6 +4020,7 @@
                                 "c_type": "char",
                                 "c_var": "arg1",
                                 "c_var_cfi": "SHT_arg1_cfi",
+                                "c_var_len": "SHT_arg1_len",
                                 "cfi_type": "CFI_type_other",
                                 "cxx_abstract_decl": "std::string *",
                                 "cxx_addr": "",
@@ -4025,6 +4040,7 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "arg1",
                                 "i_var_cfi": "SHT_arg1_cfi",
+                                "i_var_len": "SHT_arg1_len",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt_name": "f_out_string*_cfi",
@@ -4302,6 +4318,7 @@
                                 "c_type": "char",
                                 "c_var": "arg1",
                                 "c_var_cfi": "SHT_arg1_cfi",
+                                "c_var_len": "SHT_arg1_len",
                                 "cfi_type": "CFI_type_other",
                                 "cxx_abstract_decl": "std::string",
                                 "cxx_addr": "&",
@@ -4322,6 +4339,7 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "arg1",
                                 "i_var_cfi": "SHT_arg1_cfi",
+                                "i_var_len": "SHT_arg1_len",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt_name": "f_in_string_cfi",
@@ -5850,8 +5868,8 @@
                 },
                 "helpers": {
                     "c": [
-                        "char_copy",
-                        "char_len_trim"
+                        "char_len_trim",
+                        "char_copy"
                     ]
                 },
                 "name": "PostDeclare",
@@ -6053,6 +6071,7 @@
                                 "c_type": "char",
                                 "c_var": "name",
                                 "c_var_cfi": "SHT_name_cfi",
+                                "c_var_len": "SHT_name_len",
                                 "cfi_type": "CFI_type_other",
                                 "cxx_abstract_decl": "std::string *",
                                 "cxx_addr": "&",
@@ -6073,6 +6092,7 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "name",
                                 "i_var_cfi": "SHT_name_cfi",
+                                "i_var_len": "SHT_name_len",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt_name": "f_inout_string&_cfi",

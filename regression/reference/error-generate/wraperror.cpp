@@ -27,7 +27,7 @@ extern "C" {
 // ----------------------------------------
 // Argument:  struct1 *SH_this +intent(in)
 // Statement: f_in_struct*
-int * ERR_struct1_get_arg2(ERR_struct1 *SH_this, ===>SHC_rv<===)
+int * ERR_struct1_get_arg2(ERR_struct1 *SH_this, ===>c_arg_decl<===)
 {
     // splicer begin function.struct1_get_arg2
     int *SHC_rv = struct1_get_arg2(SH_this);

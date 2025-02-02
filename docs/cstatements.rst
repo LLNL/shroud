@@ -99,6 +99,7 @@ i_result_decl
 A list of declarations in the Fortran interface for a function result value.
 
 .. c_var is set to fmt.F_result
+.. does not require i_arg_names
 
 i_result_var
 ^^^^^^^^^^^^

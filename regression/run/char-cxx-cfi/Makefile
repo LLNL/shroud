@@ -6,11 +6,11 @@
 #
 # #######################################################################
 #
-# run/char-cxx
+# run/char-cxx-cfi
 #
 include $(top)/regression/run/defaults.mk
 
-testdir = char-cxx
+testdir = char-cxx-cfi
 #TEST_FFLAGS = -DTEST_C_WRAPPER
 
 INCLUDE = \
