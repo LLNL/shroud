@@ -127,6 +127,7 @@
                                 "cxx_var": "SHCXX_rv",
                                 "f_call_function": "c_get_const_string_ptr_alloc_bufferify",
                                 "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
+                                "f_deref_attr": ", allocatable",
                                 "f_helper_array_context": "STR_SHROUD_array",
                                 "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                                 "f_helper_copy_string": "STR_SHROUD_copy_string",

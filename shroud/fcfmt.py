@@ -970,17 +970,21 @@ def set_share_function_format(node, bind, wlang):
     fmt.gen = FormatGen(node, node.ast, fmt, wlang)
     
 def set_f_function_format(node, bind, subprogram):
+    fmt = bind.fmtdict
+    meta = bind.meta
+
     if subprogram == "function":
-        fmt = bind.fmtdict
         fmt.f_intent = "OUT"
         fmt.f_intent_attr = ", intent(OUT)"
+
+    if meta["deref"] == "allocatable":
+        fmt.f_deref_attr = ", allocatable"
+    elif meta["deref"] == "pointer":
+        fmt.f_deref_attr = ", pointer"
     return
 
     # XXX - need something like this.
     # XXX - it sets intent properly on some routines which are missing it now.
-    meta = bind.meta
-    fmt = bind.fmtdict
-
     intent = meta["intent"].upper()
     if intent == "FUNCTION":
         intent = "OUT"
