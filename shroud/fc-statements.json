@@ -3927,10 +3927,8 @@
             "f_function_shadow_capsule",
             "f_function_shadow<native>_capsule"
         ],
-        "comments": [
-            "Return an instance by value."
-        ],
         "notes": [
+            "Return an instance by value.",
             "Create memory in c_pre_call so it will survive the return.",
             "owner=caller sets idtor flag to release the memory.",
             "c_local_var is passed in as argument."
@@ -4771,27 +4769,28 @@
             "f_in_string&_cfi"
         ],
         "mixin": [
-            "#f_mixin_declare-fortran-arg",
+            "f_mixin_declare-fortran-arg",
             "c_mixin_arg_character_cfi",
             "c_mixin_cfi-unpack-base-addr",
             "c_mixin_cfi-unpack-len",
             "c_mixin_local-string-init-trim",
             "c_mixin_arg-call-cxx"
-        ],
-        "f_arg_name": [
-            "{f_var}"
-        ],
-        "f_arg_decl": [
-            "character(len=*){f_intent_attr} :: {f_var}"
         ]
     },
     {
         "alias": [
             "f_in_string*_cfi"
         ],
-        "base": "f_in_string_cfi",
-        "c_arg_call": [
-            "&{c_local_cxx}"
+        "notes": [
+            "was base:f_in_string_cfi"
+        ],
+        "mixin": [
+            "f_mixin_declare-fortran-arg",
+            "c_mixin_arg_character_cfi",
+            "c_mixin_cfi-unpack-base-addr",
+            "c_mixin_cfi-unpack-len",
+            "c_mixin_local-string-init-trim",
+            "c_mixin_arg-call-cxx-address"
         ]
     },
     {

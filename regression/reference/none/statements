@@ -7475,8 +7475,12 @@ f_function_shadow*_this:
 f_function_shadow<native>_capsule:
   name: f_function_shadow<native>_capsule
   comments:
-  - Return an instance by value.
+  - Call the C wrapper as a subroutine.
+  - Pass function result as a capsule argument from Fortran to C.
+  - Allocate a C wrapper result on the heap.
+  - Assign to capsule in C wrapper.
   notes:
+  - Return an instance by value.
   - Create memory in c_pre_call so it will survive the return.
   - owner=caller sets idtor flag to release the memory.
   - c_local_var is passed in as argument.
@@ -7519,8 +7523,12 @@ f_function_shadow<native>_capsule:
 f_function_shadow_capsule:
   name: f_function_shadow_capsule
   comments:
-  - Return an instance by value.
+  - Call the C wrapper as a subroutine.
+  - Pass function result as a capsule argument from Fortran to C.
+  - Allocate a C wrapper result on the heap.
+  - Assign to capsule in C wrapper.
   notes:
+  - Return an instance by value.
   - Create memory in c_pre_call so it will survive the return.
   - owner=caller sets idtor flag to release the memory.
   - c_local_var is passed in as argument.
@@ -12146,8 +12154,12 @@ f_in_string&_cfi:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - 'character(len=*){f_intent_attr} :: {f_var}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   mixin_names:
+  - '  f_mixin_declare-fortran-arg'
   - '  c_mixin_arg_character_cfi'
   - '    c_mixin_arg_cfi'
   - '  c_mixin_cfi-unpack-base-addr'
@@ -12269,19 +12281,25 @@ f_in_string*_cfi:
   - Make the C wrapper argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
   - Create local std::string from the argument with trim.
-  - Pass cxx local variable to library.
+  - Pass address of local cxx variable to library.
+  notes:
+  - was base:f_in_string_cfi
   intent: in
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - 'character(len=*){f_intent_attr} :: {f_var}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   mixin_names:
+  - '  f_mixin_declare-fortran-arg'
   - '  c_mixin_arg_character_cfi'
   - '    c_mixin_arg_cfi'
   - '  c_mixin_cfi-unpack-base-addr'
   - '  c_mixin_cfi-unpack-len'
   - '  c_mixin_local-string-init-trim'
-  - '  c_mixin_arg-call-cxx'
+  - '  c_mixin_arg-call-cxx-address'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -12375,8 +12393,12 @@ f_in_string_cfi:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - 'character(len=*){f_intent_attr} :: {f_var}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   mixin_names:
+  - '  f_mixin_declare-fortran-arg'
   - '  c_mixin_arg_character_cfi'
   - '    c_mixin_arg_cfi'
   - '  c_mixin_cfi-unpack-base-addr'
