@@ -1901,6 +1901,18 @@
         }
     },
     {
+        "name": "f_mixin_function-as-character-arg",
+        "notes" : [
+            "Convert the function result to a character argument"
+        ],
+        "f_arg_name": [
+            "{f_var}"
+        ],
+        "f_arg_decl": [
+            "character(len=*), intent(OUT) :: {f_var}"
+        ]
+    },
+    {
         "name": "c_mixin_character",
         "notes": [
             "Create a character argument"
@@ -2320,9 +2332,18 @@
         ],
         "notes": [
             "Change function result into an argument",
-            "Use F_string_result_as_arg as the argument name."
+            "Use F_string_result_as_arg as the argument name.",
+            "was base:f_function_char*_buf_copy"
         ],
-        "base": "f_function_char*_buf_copy",
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_function-as-character-arg",
+            "f_mixin_pass_character_buf",
+            "c_mixin_in_character_buf",
+            "c_mixin_arg-call-cvar",
+            "c_mixin_function-assign-to-local",
+            "c_mixin_char-copy"
+        ],
         "fmtdict": {
             "f_var": "{F_string_result_as_arg}",
             "i_var": "{F_string_result_as_arg}",
@@ -2331,13 +2352,7 @@
             "i_var_len": "n{F_string_result_as_arg}",
             "c_var_len": "n{F_string_result_as_arg}"
         },
-        "f_result_var": "as-subroutine",
-        "f_arg_name": [
-            "{f_var}"
-        ],
-        "f_arg_decl": [
-            "character(len=*), intent(OUT) :: {f_var}"
-        ]
+        "f_result_var": "as-subroutine"
     },
     {
         "alias": [
@@ -2914,7 +2929,18 @@
             "Change function result into an argument.",
             "Use F_string_result_as_arg as the argument name."
         ],
-        "base": "f_function_string_buf",
+        "notes": [
+            "was base:f_function_string_buf"
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_function-as-character-arg",
+            "f_mixin_pass_character_buf",
+            "c_mixin_in_character_buf",
+            "c_mixin_arg-call-cvar",
+            "c_mixin_function-assign-to-local",
+            "c_mixin_string-char-copy-to-arg"
+        ],
         "fmtdict": {
             "f_var": "{F_string_result_as_arg}",
             "i_var": "{F_string_result_as_arg}",
@@ -2923,13 +2949,7 @@
             "i_var_len": "n{F_string_result_as_arg}",
             "c_var_len": "n{F_string_result_as_arg}"
         },
-        "f_result_var": "as-subroutine",
-        "f_arg_name": [
-            "{f_var}"
-        ],
-        "f_arg_decl": [
-            "character(len=*), intent(OUT) :: {f_var}"
-        ]
+        "f_result_var": "as-subroutine"
     },
     {
         "alias": [
@@ -4682,19 +4702,25 @@
             "Change function result into an argument.",
             "Use F_string_result_as_arg as the argument name."
         ],
-        "base": "f_function_char*_cfi_copy",
+        "notes": [
+            "was base:f_function_char*_cfi_copy"
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_function-as-character-arg",
+            "f_mixin_pass_character_cfi",
+            "c_mixin_arg_character_cfi",
+            "c_mixin_cfi-unpack-len",
+            "c_mixin_arg-call-cxx",
+            "c_mixin_function-assign-to-local",
+            "c_mixin_char-copy"
+        ],
         "fmtdict": {
             "f_var": "{F_string_result_as_arg}",
             "i_var": "{F_string_result_as_arg}",
             "c_var": "{F_string_result_as_arg}"
         },
-        "f_result_var": "as-subroutine",
-        "f_arg_name": [
-            "{f_var}"
-        ],
-        "f_arg_decl": [
-            "character(len=*), intent(OUT) :: {f_var}"
-        ]
+        "f_result_var": "as-subroutine"
     },
     {
         "name": "f_in_char**_cfi",
@@ -4839,6 +4865,9 @@
         "comments": [
             "Change function result into an argument.",
             "Use F_string_result_as_arg as the argument name."
+        ],
+        "notes": [
+            "was base:f_function_string_cfi_copy"
         ],
         "base": "f_function_string_cfi_copy",
         "fmtdict": {

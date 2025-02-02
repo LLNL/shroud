@@ -180,9 +180,10 @@ c_function_char*_arg:
   notes:
   - Change function result into an argument
   - Use F_string_result_as_arg as the argument name.
+  - was base:f_function_char*_buf_copy
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_function-as-character-arg'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -234,9 +235,10 @@ c_function_char*_buf_arg:
   notes:
   - Change function result into an argument
   - Use F_string_result_as_arg as the argument name.
+  - was base:f_function_char*_buf_copy
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_function-as-character-arg'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -1047,9 +1049,11 @@ c_function_string&_buf_arg:
   comments:
   - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
+  notes:
+  - was base:f_function_string_buf
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_function-as-character-arg'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -1275,9 +1279,11 @@ c_function_string_buf_arg:
   comments:
   - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
+  notes:
+  - was base:f_function_string_buf
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_function-as-character-arg'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -5826,6 +5832,7 @@ f_function_char*_arg:
   notes:
   - Change function result into an argument
   - Use F_string_result_as_arg as the argument name.
+  - was base:f_function_char*_buf_copy
   intent: function
   f_arg_name:
   - '{f_var}'
@@ -5842,8 +5849,6 @@ f_function_char*_arg:
   - call {f_call_function}({F_arg_c_call})
   f_result_var: as-subroutine
   f_module:
-    '{f_module_name}':
-    - '{f_kind}'
     iso_c_binding:
     - C_INT
   f_temps:
@@ -5851,7 +5856,7 @@ f_function_char*_arg:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_function-as-character-arg'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -5902,6 +5907,7 @@ f_function_char*_buf_arg:
   notes:
   - Change function result into an argument
   - Use F_string_result_as_arg as the argument name.
+  - was base:f_function_char*_buf_copy
   intent: function
   f_arg_name:
   - '{f_var}'
@@ -5918,8 +5924,6 @@ f_function_char*_buf_arg:
   - call {f_call_function}({F_arg_c_call})
   f_result_var: as-subroutine
   f_module:
-    '{f_module_name}':
-    - '{f_kind}'
     iso_c_binding:
     - C_INT
   f_temps:
@@ -5927,7 +5931,7 @@ f_function_char*_buf_arg:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_function-as-character-arg'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -6183,6 +6187,8 @@ f_function_char*_cfi_arg:
   comments:
   - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
+  notes:
+  - was base:f_function_char*_cfi_copy
   intent: function
   f_arg_name:
   - '{f_var}'
@@ -6193,13 +6199,10 @@ f_function_char*_cfi_arg:
   f_call:
   - call {f_call_function}({F_arg_c_call})
   f_result_var: as-subroutine
-  f_module:
-    '{f_module_name}':
-    - '{f_kind}'
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_function-as-character-arg'
   - '  f_mixin_pass_character_cfi'
   - '  c_mixin_arg_character_cfi'
   - '    c_mixin_arg_cfi'
@@ -7682,6 +7685,8 @@ f_function_string&_buf_arg:
   comments:
   - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
+  notes:
+  - was base:f_function_string_buf
   intent: function
   f_arg_name:
   - '{f_var}'
@@ -7698,8 +7703,6 @@ f_function_string&_buf_arg:
   - call {f_call_function}({F_arg_c_call})
   f_result_var: as-subroutine
   f_module:
-    '{f_module_name}':
-    - '{f_kind}'
     iso_c_binding:
     - C_INT
   f_temps:
@@ -7707,7 +7710,7 @@ f_function_string&_buf_arg:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_function-as-character-arg'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -8428,6 +8431,8 @@ f_function_string&_cfi_arg:
   comments:
   - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
+  notes:
+  - was base:f_function_string_cfi_copy
   intent: function
   f_arg_name:
   - '{f_var}'
@@ -9728,6 +9733,8 @@ f_function_string_buf_arg:
   comments:
   - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
+  notes:
+  - was base:f_function_string_buf
   intent: function
   f_arg_name:
   - '{f_var}'
@@ -9744,8 +9751,6 @@ f_function_string_buf_arg:
   - call {f_call_function}({F_arg_c_call})
   f_result_var: as-subroutine
   f_module:
-    '{f_module_name}':
-    - '{f_kind}'
     iso_c_binding:
     - C_INT
   f_temps:
@@ -9753,7 +9758,7 @@ f_function_string_buf_arg:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_function-as-character-arg'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -10371,6 +10376,8 @@ f_function_string_cfi_arg:
   comments:
   - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
+  notes:
+  - was base:f_function_string_cfi_copy
   intent: function
   f_arg_name:
   - '{f_var}'
@@ -14384,6 +14391,14 @@ f_mixin_function:
   intent: mixin
   f_call:
   - '{f_result_var} = {f_call_function}({F_arg_c_call})'
+  owner: library
+f_mixin_function-as-character-arg:
+  name: f_mixin_function-as-character-arg
+  intent: mixin
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - 'character(len=*), intent(OUT) :: {f_var}'
   owner: library
 f_mixin_function-as-cptr:
   name: f_mixin_function-as-cptr
@@ -18914,6 +18929,7 @@ root
         string
           cfi
             allocatable -- f_mixin_function_string_cfi_allocatable
+      function-as-character-arg -- f_mixin_function-as-character-arg
       function-as-cptr -- f_mixin_function-as-cptr
       function-interface-as-cptr -- f_mixin_function-interface-as-cptr
       function-to-subroutine -- f_mixin_function-to-subroutine
