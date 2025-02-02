@@ -4878,26 +4878,26 @@
             "#f_function_string&_cfi_arg  XXX needs a test",
             "f_function_string&_cfi_arg"
         ],
-        "comments": [
-            "Change function result into an argument.",
-            "Use F_string_result_as_arg as the argument name."
-        ],
         "notes": [
+            "Change function result into an argument.",
+            "Use F_string_result_as_arg as the argument name.",
             "was base:f_function_string_cfi_copy"
         ],
-        "base": "f_function_string_cfi_copy",
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_function-as-character-arg",
+            "f_mixin_pass_character_cfi",
+            "c_mixin_arg_character_cfi",
+            "c_mixin_arg-call-cxx",
+            "c_mixin_function-assign-to-local",
+            "c_mixin_char-copy-to-arg-cfi"
+        ],
         "fmtdict": {
             "f_var": "{F_string_result_as_arg}",
             "i_var": "{F_string_result_as_arg}",
             "c_var": "{F_string_result_as_arg}"
         },
-        "f_result_var": "as-subroutine",
-        "f_arg_name": [
-            "{f_var}"
-        ],
-        "f_arg_decl": [
-            "character(len=*), intent(OUT) :: {f_var}"
-        ]
+        "f_result_var": "as-subroutine"
     },
     {
         "alias": [

@@ -8460,9 +8460,16 @@ f_function_string&_cfi_allocatable_library:
 f_function_string&_cfi_arg:
   name: f_function_string&_cfi_arg
   comments:
+  - Call the C wrapper as a subroutine.
+  - Pass argument to C wrapper
+  - Make the C wrapper argument a CFI_desc_t.
+  - Local character argument passed as CFI_desc_t.
+  - Pass cxx local variable to library.
+  - Call function and assign to a local C++ variable.
+  - Copy cxx variable into c variable.
+  notes:
   - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
-  notes:
   - was base:f_function_string_cfi_copy
   intent: function
   f_arg_name:
@@ -8474,13 +8481,10 @@ f_function_string&_cfi_arg:
   f_call:
   - call {f_call_function}({F_arg_c_call})
   f_result_var: as-subroutine
-  f_module:
-    '{f_module_name}':
-    - '{f_kind}'
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_function-as-character-arg'
   - '  f_mixin_pass_character_cfi'
   - '  c_mixin_arg_character_cfi'
   - '    c_mixin_arg_cfi'
@@ -10405,9 +10409,16 @@ f_function_string_cfi_allocatable_library:
 f_function_string_cfi_arg:
   name: f_function_string_cfi_arg
   comments:
+  - Call the C wrapper as a subroutine.
+  - Pass argument to C wrapper
+  - Make the C wrapper argument a CFI_desc_t.
+  - Local character argument passed as CFI_desc_t.
+  - Pass cxx local variable to library.
+  - Call function and assign to a local C++ variable.
+  - Copy cxx variable into c variable.
+  notes:
   - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
-  notes:
   - was base:f_function_string_cfi_copy
   intent: function
   f_arg_name:
@@ -10419,13 +10430,10 @@ f_function_string_cfi_arg:
   f_call:
   - call {f_call_function}({F_arg_c_call})
   f_result_var: as-subroutine
-  f_module:
-    '{f_module_name}':
-    - '{f_kind}'
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_function-as-character-arg'
   - '  f_mixin_pass_character_cfi'
   - '  c_mixin_arg_character_cfi'
   - '    c_mixin_arg_cfi'
