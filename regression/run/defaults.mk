@@ -28,6 +28,7 @@ ifeq ($(compiler),gcc)
 #     ((PyObject*)(op))->ob_refcnt++)
 
 CC = gcc
+#ASAN = -fsanitize=address
 # -Wextra
 # -O3 generates additional warnings, but makes it harder to debug.
 #CXXWARNINGS = -O3
@@ -36,12 +37,13 @@ LOCAL_CFLAGS = -g -Wall -Wstrict-prototypes -fno-strict-aliasing -std=c99
 LOCAL_CFLAGS += -Wno-enum-compare
 CLIBS = -lstdc++
 CXX = g++
-LOCAL_CXXFLAGS = -g $(CXXWARNINGS) -Wall -std=c++11 -fno-strict-aliasing
+LOCAL_CXXFLAGS = -g $(CXXWARNINGS) -Wall -std=c++11 -fno-strict-aliasing $(ASAN)
 FC = gfortran
-LOCAL_FFLAGS = -g -cpp -Wall -ffree-form -fbounds-check
+LOCAL_FFLAGS = -g -cpp -Wall -ffree-form -fbounds-check $(ASAN)
 #FFLAGS += -std=f2003
 FLIBS = -lstdc++
 SHARED = -fPIC
+LDFLAGS = $(ASAN)
 LD_SHARED = -shared
 endif
 

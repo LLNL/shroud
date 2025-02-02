@@ -42,6 +42,7 @@ contains
     ! test C++ functions
 
     character(30) str
+    character(4)  str4
     character ch
 
     call set_case_name("test_charargs")
@@ -57,11 +58,18 @@ contains
     ! character(*) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     call pass_char_ptr(dest=str, src="bird")
-    call assert_true( str == "bird", "passCharPtr")
+    call assert_true(str == "bird", "passCharPtr")
+
+    ! character(*) function
+    ! Input and output the same length.
+    str4 = 'XXXX'
+! XXX - asan error
+!    call pass_char_ptr(dest=str4, src="bird")
+!    call assert_true(str4 == "bird", "passCharPtr - same length")
 
     str = 'dog'
     call pass_char_ptr_in_out(str)
-    call assert_true( str == "DOG", "passCharPtrInOut")
+    call assert_true(str == "DOG", "passCharPtrInOut")
 
   end subroutine test_charargs
 

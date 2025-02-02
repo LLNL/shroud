@@ -34,7 +34,7 @@ F_OBJS = \
     wrapfchar.o
 
 $(testdir) : $(F_OBJS) $(C_OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(CLIBS)
+	$(FC) $(LDFLAGS) $^ -o $@ $(CLIBS)
 
 main.o : main.f fruit.o wrapfchar.o
 char.o : char.cpp char.h
