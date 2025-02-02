@@ -95,9 +95,9 @@
         "sphinx-end-before": "f_mixin_declare-fortran-arg"
     },
     {
-        "name": "c_mixin_local-cvar",
+        "name": "c_mixin_local-cvar-ptr",
         "comments": [
-            "Declare a local variable."
+            "Declare a local pointer variable in the C wrapper."
         ],
         "c_local": [
             "cxx"
@@ -5070,13 +5070,10 @@
     },
     {
         "name": "f_out_native**_cfi_allocatable",
-        "comments": [
-            "Set Fortran pointer to point to cxx_var."
-        ],
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "c_mixin_arg_native_cfi",
-            "c_mixin_local-cvar",
+            "c_mixin_local-cvar-ptr",
             "c_mixin_arg-call-cxx-address",
             "c_mixin_native_cfi_allocatable"
         ],
@@ -5092,7 +5089,7 @@
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "c_mixin_arg_native_cfi",
-            "c_mixin_local-cvar",
+            "c_mixin_local-cvar-ptr",
             "c_mixin_arg-call-cxx-address",
             "c_mixin_native_cfi_pointer"
         ],
