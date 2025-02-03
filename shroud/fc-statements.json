@@ -1922,7 +1922,21 @@
         ],
         "f_arg_decl": [
             "character(len=*), intent(OUT) :: {f_var}"
-        ]
+        ],
+        "fmtdict": {
+            "f_var": "{F_string_result_as_arg}",
+            "i_var": "{F_string_result_as_arg}",
+            "c_var": "{F_string_result_as_arg}"
+        },
+        "f_result_var": "as-subroutine"
+    },
+    {
+        "name": "f_mixin_function-as-character-arg-var-len",
+        "fmtdict": {
+            "f_var_len": "n{F_string_result_as_arg}",
+            "i_var_len": "n{F_string_result_as_arg}",
+            "c_var_len": "n{F_string_result_as_arg}"
+        }
     },
     {
         "name": "c_mixin_character",
@@ -2350,21 +2364,13 @@
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_function-as-character-arg",
+            "f_mixin_function-as-character-arg-var-len",
             "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf",
             "c_mixin_arg-call-cvar",
             "c_mixin_function-assign-to-local",
             "c_mixin_char-copy"
-        ],
-        "fmtdict": {
-            "f_var": "{F_string_result_as_arg}",
-            "i_var": "{F_string_result_as_arg}",
-            "c_var": "{F_string_result_as_arg}",
-            "f_var_len": "n{F_string_result_as_arg}",
-            "i_var_len": "n{F_string_result_as_arg}",
-            "c_var_len": "n{F_string_result_as_arg}"
-        },
-        "f_result_var": "as-subroutine"
+        ]
     },
     {
         "alias": [
@@ -2947,21 +2953,13 @@
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_function-as-character-arg",
+            "f_mixin_function-as-character-arg-var-len",
             "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf",
             "c_mixin_arg-call-cvar",
             "c_mixin_function-assign-to-local",
             "c_mixin_string-char-copy-to-arg"
-        ],
-        "fmtdict": {
-            "f_var": "{F_string_result_as_arg}",
-            "i_var": "{F_string_result_as_arg}",
-            "c_var": "{F_string_result_as_arg}",
-            "f_var_len": "n{F_string_result_as_arg}",
-            "i_var_len": "n{F_string_result_as_arg}",
-            "c_var_len": "n{F_string_result_as_arg}"
-        },
-        "f_result_var": "as-subroutine"
+        ]
     },
     {
         "alias": [
@@ -4760,13 +4758,7 @@
             "c_mixin_arg-call-cxx",
             "c_mixin_function-assign-to-local",
             "c_mixin_char-copy"
-        ],
-        "fmtdict": {
-            "f_var": "{F_string_result_as_arg}",
-            "i_var": "{F_string_result_as_arg}",
-            "c_var": "{F_string_result_as_arg}"
-        },
-        "f_result_var": "as-subroutine"
+        ]
     },
     {
         "name": "f_in_char**_cfi",
@@ -4905,13 +4897,7 @@
             "c_mixin_arg-call-cxx",
             "c_mixin_function-assign-to-local",
             "c_mixin_char-copy-to-arg-cfi"
-        ],
-        "fmtdict": {
-            "f_var": "{F_string_result_as_arg}",
-            "i_var": "{F_string_result_as_arg}",
-            "c_var": "{F_string_result_as_arg}"
-        },
-        "f_result_var": "as-subroutine"
+        ]
     },
     {
         "alias": [

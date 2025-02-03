@@ -184,6 +184,7 @@ c_function_char*_arg:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '  f_mixin_function-as-character-arg'
+  - '  f_mixin_function-as-character-arg-var-len'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -239,6 +240,7 @@ c_function_char*_buf_arg:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '  f_mixin_function-as-character-arg'
+  - '  f_mixin_function-as-character-arg-var-len'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -1054,6 +1056,7 @@ c_function_string&_buf_arg:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '  f_mixin_function-as-character-arg'
+  - '  f_mixin_function-as-character-arg-var-len'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -1284,6 +1287,7 @@ c_function_string_buf_arg:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '  f_mixin_function-as-character-arg'
+  - '  f_mixin_function-as-character-arg-var-len'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -5877,6 +5881,7 @@ f_function_char*_arg:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '  f_mixin_function-as-character-arg'
+  - '  f_mixin_function-as-character-arg-var-len'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -5952,6 +5957,7 @@ f_function_char*_buf_arg:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '  f_mixin_function-as-character-arg'
+  - '  f_mixin_function-as-character-arg-var-len'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -7750,6 +7756,7 @@ f_function_string&_buf_arg:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '  f_mixin_function-as-character-arg'
+  - '  f_mixin_function-as-character-arg-var-len'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -9802,6 +9809,7 @@ f_function_string_buf_arg:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '  f_mixin_function-as-character-arg'
+  - '  f_mixin_function-as-character-arg-var-len'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -14522,6 +14530,19 @@ f_mixin_function-as-character-arg:
   - '{f_var}'
   f_arg_decl:
   - 'character(len=*), intent(OUT) :: {f_var}'
+  f_result_var: as-subroutine
+  fmtdict:
+    f_var: '{F_string_result_as_arg}'
+    i_var: '{F_string_result_as_arg}'
+    c_var: '{F_string_result_as_arg}'
+  owner: library
+f_mixin_function-as-character-arg-var-len:
+  name: f_mixin_function-as-character-arg-var-len
+  intent: mixin
+  fmtdict:
+    f_var_len: n{F_string_result_as_arg}
+    i_var_len: n{F_string_result_as_arg}
+    c_var_len: n{F_string_result_as_arg}
   owner: library
 f_mixin_function-as-cptr:
   name: f_mixin_function-as-cptr
@@ -19076,6 +19097,7 @@ root
           cfi
             allocatable -- f_mixin_function_string_cfi_allocatable
       function-as-character-arg -- f_mixin_function-as-character-arg
+      function-as-character-arg-var-len -- f_mixin_function-as-character-arg-var-len
       function-as-cptr -- f_mixin_function-as-cptr
       function-interface-as-cptr -- f_mixin_function-interface-as-cptr
       function-to-subroutine -- f_mixin_function-to-subroutine
