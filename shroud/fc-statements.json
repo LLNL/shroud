@@ -2242,7 +2242,7 @@
             "*{c_var} = {C_call_function};"
         ],
         "i_arg_decl": [
-            "character(kind=C_CHAR), intent(OUT) :: {i_var}"
+            "character(kind=C_CHAR){i_intent_attr} :: {i_var}"
         ],
         "i_arg_names": [
             "{i_var}"
@@ -3561,7 +3561,7 @@
             "{i_var}"
         ],
         "i_arg_decl": [
-            "character(kind=C_CHAR), intent(OUT) :: {i_var}(*)"
+            "character(kind=C_CHAR){i_intent_attr} :: {i_var}(*)"
         ],
         "i_module": {
             "iso_c_binding": [
