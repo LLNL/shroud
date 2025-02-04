@@ -112,13 +112,13 @@
                                         "cxx_var": "SHCXX_rv",
                                         "f_capsule_data_type": "FOR_SHROUD_capsule_data",
                                         "f_derived_type": "class2",
-                                        "f_intent": "OUT",
-                                        "f_intent_attr": ", intent(OUT)",
                                         "f_kind": "class2",
                                         "f_module_name": "forward_mod",
                                         "f_type": "type(class2)",
                                         "f_var": "SHT_rv",
                                         "i_arguments": "SHT_rv",
+                                        "i_intent": "OUT",
+                                        "i_intent_attr": ", intent(OUT)",
                                         "i_kind": "class2",
                                         "i_module_name": "forward_mod",
                                         "i_name_function": "c_class2_ctor",
@@ -173,6 +173,8 @@
                                         "f_var": "SHT_rv",
                                         "fc_var": "SHT_rv",
                                         "i_arguments": "SHT_rv",
+                                        "i_intent": "OUT",
+                                        "i_intent_attr": ", intent(OUT)",
                                         "i_kind": "class2",
                                         "i_module_name": "forward_mod",
                                         "i_name_function": "c_class2_ctor_bufferify",
@@ -266,7 +268,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor"
                         },
                         "zz_fmtlang": {
@@ -404,7 +405,6 @@
                             "f_arglist": [
                                 "f_var"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "dtor"
                         },
                         "zz_fmtlang": {
@@ -502,6 +502,8 @@
                                         "cxx_var": "SHC_arg_cxx",
                                         "f_intent": "IN",
                                         "f_intent_attr": ", intent(IN)",
+                                        "i_intent": "IN",
+                                        "i_intent_attr": ", intent(IN)",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_OTHER",
                                         "stmt_name": "c_in_shadow*",
@@ -564,6 +566,8 @@
                                         "f_type": "type(class1)",
                                         "f_var": "arg",
                                         "fc_var": "arg",
+                                        "i_intent": "IN",
+                                        "i_intent_attr": ", intent(IN)",
                                         "i_kind": "class1",
                                         "i_local_cxx": "SHC_arg_cxx",
                                         "i_module_name": "tutorial_mod",
@@ -688,7 +692,6 @@
                                 "f_var",
                                 "arg"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "func1"
                         },
                         "zz_fmtlang": {
@@ -794,6 +797,8 @@
                                         "cxx_var": "SHC_arg_cxx",
                                         "f_intent": "IN",
                                         "f_intent_attr": ", intent(IN)",
+                                        "i_intent": "IN",
+                                        "i_intent_attr": ", intent(IN)",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_OTHER",
                                         "stmt_name": "c_in_shadow*",
@@ -856,6 +861,8 @@
                                         "f_type": "type(class3)",
                                         "f_var": "arg",
                                         "fc_var": "arg",
+                                        "i_intent": "IN",
+                                        "i_intent_attr": ", intent(IN)",
                                         "i_kind": "class3",
                                         "i_local_cxx": "SHC_arg_cxx",
                                         "i_module_name": "forward_mod",
@@ -982,7 +989,6 @@
                                 "f_var",
                                 "arg"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "acceptClass3"
                         },
                         "zz_fmtlang": {
@@ -1158,6 +1164,8 @@
                                 "cxx_var": "arg",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt_name": "c_in_struct*",
@@ -1193,8 +1201,6 @@
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
                                 "f_call_function": "c_pass_struct1",
-                                "f_intent": "OUT",
-                                "f_intent_attr": ", intent(OUT)",
                                 "f_kind": "C_INT",
                                 "f_module_name": "iso_c_binding",
                                 "f_result_clause": "\fresult(SHT_rv)",
@@ -1244,6 +1250,8 @@
                                 "f_type": "type(cstruct1)",
                                 "f_var": "arg",
                                 "fc_var": "arg",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
                                 "i_kind": "cstruct1",
                                 "i_module_name": "struct_mod",
                                 "i_type": "type(cstruct1)",

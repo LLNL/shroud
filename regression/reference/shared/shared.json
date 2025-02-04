@@ -59,13 +59,13 @@
                                         "cxx_var": "SHCXX_rv",
                                         "f_capsule_data_type": "SHA_SHROUD_capsule_data",
                                         "f_derived_type": "object",
-                                        "f_intent": "OUT",
-                                        "f_intent_attr": ", intent(OUT)",
                                         "f_kind": "object",
                                         "f_module_name": "shared_mod",
                                         "f_type": "type(object)",
                                         "f_var": "SHT_rv",
                                         "i_arguments": "SHT_rv",
+                                        "i_intent": "OUT",
+                                        "i_intent_attr": ", intent(OUT)",
                                         "i_kind": "object",
                                         "i_module_name": "shared_mod",
                                         "i_name_function": "c_object_ctor",
@@ -120,6 +120,8 @@
                                         "f_var": "SHT_rv",
                                         "fc_var": "SHT_rv",
                                         "i_arguments": "SHT_rv",
+                                        "i_intent": "OUT",
+                                        "i_intent_attr": ", intent(OUT)",
                                         "i_kind": "object",
                                         "i_module_name": "shared_mod",
                                         "i_name_function": "c_object_ctor_bufferify",
@@ -161,7 +163,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor"
                         }
                     },
@@ -256,7 +257,6 @@
                             "f_arglist": [
                                 "f_var"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "dtor"
                         }
                     },
@@ -321,13 +321,13 @@
                                         "cxx_var": "SHC_rv_cxx",
                                         "f_capsule_data_type": "SHA_SHROUD_capsule_data",
                                         "f_derived_type": "object_shared",
-                                        "f_intent": "OUT",
-                                        "f_intent_attr": ", intent(OUT)",
                                         "f_kind": "object_shared",
                                         "f_module_name": "shared_mod",
                                         "f_type": "type(object_shared)",
                                         "f_var": "SHT_rv",
                                         "i_arguments": "self,\t SHT_rv",
+                                        "i_intent": "OUT",
+                                        "i_intent_attr": ", intent(OUT)",
                                         "i_kind": "object_shared",
                                         "i_local_cxx": "SHC_rv_cxx",
                                         "i_module_name": "shared_mod",
@@ -383,8 +383,6 @@
                                         "f_call_function": "c_object_create_child_a_bufferify",
                                         "f_capsule_data_type": "SHA_SHROUD_capsule_data",
                                         "f_derived_type": "object_shared",
-                                        "f_intent": "OUT",
-                                        "f_intent_attr": ", intent(OUT)",
                                         "f_kind": "object_shared",
                                         "f_module_name": "shared_mod",
                                         "f_result_clause": "\fresult(SHT_rv)",
@@ -392,6 +390,8 @@
                                         "f_var": "SHT_rv",
                                         "fc_var": "SHT_rv",
                                         "i_arguments": "self,\t SHT_rv",
+                                        "i_intent": "OUT",
+                                        "i_intent_attr": ", intent(OUT)",
                                         "i_kind": "object_shared",
                                         "i_local_cxx": "SHC_rv_cxx",
                                         "i_module_name": "shared_mod",
@@ -444,7 +444,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "createChildA"
                         }
                     },
@@ -509,13 +508,13 @@
                                         "cxx_var": "SHC_rv_cxx",
                                         "f_capsule_data_type": "SHA_SHROUD_capsule_data",
                                         "f_derived_type": "object_shared",
-                                        "f_intent": "OUT",
-                                        "f_intent_attr": ", intent(OUT)",
                                         "f_kind": "object_shared",
                                         "f_module_name": "shared_mod",
                                         "f_type": "type(object_shared)",
                                         "f_var": "SHT_rv",
                                         "i_arguments": "self,\t SHT_rv",
+                                        "i_intent": "OUT",
+                                        "i_intent_attr": ", intent(OUT)",
                                         "i_kind": "object_shared",
                                         "i_local_cxx": "SHC_rv_cxx",
                                         "i_module_name": "shared_mod",
@@ -571,8 +570,6 @@
                                         "f_call_function": "c_object_create_child_b_bufferify",
                                         "f_capsule_data_type": "SHA_SHROUD_capsule_data",
                                         "f_derived_type": "object_shared",
-                                        "f_intent": "OUT",
-                                        "f_intent_attr": ", intent(OUT)",
                                         "f_kind": "object_shared",
                                         "f_module_name": "shared_mod",
                                         "f_result_clause": "\fresult(SHT_rv)",
@@ -580,6 +577,8 @@
                                         "f_var": "SHT_rv",
                                         "fc_var": "SHT_rv",
                                         "i_arguments": "self,\t SHT_rv",
+                                        "i_intent": "OUT",
+                                        "i_intent_attr": ", intent(OUT)",
                                         "i_kind": "object_shared",
                                         "i_local_cxx": "SHC_rv_cxx",
                                         "i_module_name": "shared_mod",
@@ -632,7 +631,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "createChildB"
                         }
                     },
@@ -723,6 +721,8 @@
                                         "cxx_var": "SHC_child_cxx",
                                         "f_intent": "INOUT",
                                         "f_intent_attr": ", intent(INOUT)",
+                                        "i_intent": "INOUT",
+                                        "i_intent_attr": ", intent(INOUT)",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_OTHER",
                                         "stmt_name": "c_inout_smartptr<shadow>*",
@@ -792,6 +792,8 @@
                                         "f_type": "type(object_shared)",
                                         "f_var": "child",
                                         "fc_var": "child",
+                                        "i_intent": "INOUT",
+                                        "i_intent_attr": ", intent(INOUT)",
                                         "i_kind": "object_shared",
                                         "i_local_cxx": "SHC_child_cxx",
                                         "i_module_name": "shared_mod",
@@ -848,7 +850,6 @@
                                 "f_var",
                                 "child"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "replaceChildB"
                         }
                     }
@@ -952,13 +953,13 @@
                                         "cxx_var": "SHCXX_rv",
                                         "f_capsule_data_type": "SHA_SHROUD_capsule_data",
                                         "f_derived_type": "object_shared",
-                                        "f_intent": "OUT",
-                                        "f_intent_attr": ", intent(OUT)",
                                         "f_kind": "object_shared",
                                         "f_module_name": "shared_mod",
                                         "f_type": "type(object_shared)",
                                         "f_var": "SHT_rv",
                                         "i_arguments": "SHT_rv",
+                                        "i_intent": "OUT",
+                                        "i_intent_attr": ", intent(OUT)",
                                         "i_kind": "object_shared",
                                         "i_local_shared": "SHC_rv_shared",
                                         "i_module_name": "shared_mod",
@@ -1007,8 +1008,6 @@
                                         "f_call_function": "c_object_shared_ctor_bufferify",
                                         "f_capsule_data_type": "SHA_SHROUD_capsule_data",
                                         "f_derived_type": "object_shared",
-                                        "f_intent": "OUT",
-                                        "f_intent_attr": ", intent(OUT)",
                                         "f_kind": "object_shared",
                                         "f_module_name": "shared_mod",
                                         "f_result_clause": "\fresult(SHT_rv)",
@@ -1016,6 +1015,8 @@
                                         "f_var": "SHT_rv",
                                         "fc_var": "SHT_rv",
                                         "i_arguments": "SHT_rv",
+                                        "i_intent": "OUT",
+                                        "i_intent_attr": ", intent(OUT)",
                                         "i_kind": "object_shared",
                                         "i_local_shared": "SHC_rv_shared",
                                         "i_module_name": "shared_mod",
@@ -1059,7 +1060,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor"
                         }
                     },
@@ -1157,7 +1157,6 @@
                             "f_arglist": [
                                 "f_var"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "dtor"
                         }
                     },
@@ -1223,13 +1222,13 @@
                                         "cxx_var": "SHC_rv_cxx",
                                         "f_capsule_data_type": "SHA_SHROUD_capsule_data",
                                         "f_derived_type": "object_shared",
-                                        "f_intent": "OUT",
-                                        "f_intent_attr": ", intent(OUT)",
                                         "f_kind": "object_shared",
                                         "f_module_name": "shared_mod",
                                         "f_type": "type(object_shared)",
                                         "f_var": "SHT_rv",
                                         "i_arguments": "self,\t SHT_rv",
+                                        "i_intent": "OUT",
+                                        "i_intent_attr": ", intent(OUT)",
                                         "i_kind": "object_shared",
                                         "i_local_cxx": "SHC_rv_cxx",
                                         "i_module_name": "shared_mod",
@@ -1285,8 +1284,6 @@
                                         "f_call_function": "c_object_shared_create_child_a_bufferify",
                                         "f_capsule_data_type": "SHA_SHROUD_capsule_data",
                                         "f_derived_type": "object_shared",
-                                        "f_intent": "OUT",
-                                        "f_intent_attr": ", intent(OUT)",
                                         "f_kind": "object_shared",
                                         "f_module_name": "shared_mod",
                                         "f_result_clause": "\fresult(SHT_rv)",
@@ -1294,6 +1291,8 @@
                                         "f_var": "SHT_rv",
                                         "fc_var": "SHT_rv",
                                         "i_arguments": "self,\t SHT_rv",
+                                        "i_intent": "OUT",
+                                        "i_intent_attr": ", intent(OUT)",
                                         "i_kind": "object_shared",
                                         "i_local_cxx": "SHC_rv_cxx",
                                         "i_module_name": "shared_mod",
@@ -1346,7 +1345,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "createChildA"
                         }
                     },
@@ -1412,13 +1410,13 @@
                                         "cxx_var": "SHC_rv_cxx",
                                         "f_capsule_data_type": "SHA_SHROUD_capsule_data",
                                         "f_derived_type": "object_shared",
-                                        "f_intent": "OUT",
-                                        "f_intent_attr": ", intent(OUT)",
                                         "f_kind": "object_shared",
                                         "f_module_name": "shared_mod",
                                         "f_type": "type(object_shared)",
                                         "f_var": "SHT_rv",
                                         "i_arguments": "self,\t SHT_rv",
+                                        "i_intent": "OUT",
+                                        "i_intent_attr": ", intent(OUT)",
                                         "i_kind": "object_shared",
                                         "i_local_cxx": "SHC_rv_cxx",
                                         "i_module_name": "shared_mod",
@@ -1474,8 +1472,6 @@
                                         "f_call_function": "c_object_shared_create_child_b_bufferify",
                                         "f_capsule_data_type": "SHA_SHROUD_capsule_data",
                                         "f_derived_type": "object_shared",
-                                        "f_intent": "OUT",
-                                        "f_intent_attr": ", intent(OUT)",
                                         "f_kind": "object_shared",
                                         "f_module_name": "shared_mod",
                                         "f_result_clause": "\fresult(SHT_rv)",
@@ -1483,6 +1479,8 @@
                                         "f_var": "SHT_rv",
                                         "fc_var": "SHT_rv",
                                         "i_arguments": "self,\t SHT_rv",
+                                        "i_intent": "OUT",
+                                        "i_intent_attr": ", intent(OUT)",
                                         "i_kind": "object_shared",
                                         "i_local_cxx": "SHC_rv_cxx",
                                         "i_module_name": "shared_mod",
@@ -1535,7 +1533,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "createChildB"
                         }
                     },
@@ -1627,6 +1624,8 @@
                                         "cxx_var": "SHC_child_cxx",
                                         "f_intent": "INOUT",
                                         "f_intent_attr": ", intent(INOUT)",
+                                        "i_intent": "INOUT",
+                                        "i_intent_attr": ", intent(INOUT)",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_OTHER",
                                         "stmt_name": "c_inout_smartptr<shadow>*",
@@ -1696,6 +1695,8 @@
                                         "f_type": "type(object_shared)",
                                         "f_var": "child",
                                         "fc_var": "child",
+                                        "i_intent": "INOUT",
+                                        "i_intent_attr": ", intent(INOUT)",
                                         "i_kind": "object_shared",
                                         "i_local_cxx": "SHC_child_cxx",
                                         "i_module_name": "shared_mod",
@@ -1752,7 +1753,6 @@
                                 "f_var",
                                 "child"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "replaceChildB"
                         }
                     },
@@ -1836,8 +1836,6 @@
                                         "cxx_type": "long",
                                         "cxx_var": "SHC_rv",
                                         "f_call_function": "c_object_shared_use_count",
-                                        "f_intent": "OUT",
-                                        "f_intent_attr": ", intent(OUT)",
                                         "f_kind": "C_LONG",
                                         "f_module_name": "iso_c_binding",
                                         "f_result_clause": "\fresult(SHT_rv)",
@@ -1889,7 +1887,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "use_count"
                         }
                     }
@@ -2037,6 +2034,8 @@
                                         "cxx_var": "SHC_from_cxx",
                                         "f_intent": "IN",
                                         "f_intent_attr": ", intent(IN)",
+                                        "i_intent": "IN",
+                                        "i_intent_attr": ", intent(IN)",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_OTHER",
                                         "stmt_name": "c_in_smartptr<shadow>*",
@@ -2110,6 +2109,8 @@
                                         "f_type": "type(object_shared)",
                                         "f_var": "from",
                                         "fc_var": "from",
+                                        "i_intent": "IN",
+                                        "i_intent_attr": ", intent(IN)",
                                         "i_kind": "object_shared",
                                         "i_local_cxx": "SHC_from_cxx",
                                         "i_module_name": "shared_mod",
@@ -2168,7 +2169,6 @@
                                 "f_var",
                                 "from"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "assign_weak"
                         }
                     },
@@ -2252,8 +2252,6 @@
                                         "cxx_type": "long",
                                         "cxx_var": "SHC_rv",
                                         "f_call_function": "c_object_weak_use_count",
-                                        "f_intent": "OUT",
-                                        "f_intent_attr": ", intent(OUT)",
                                         "f_kind": "C_LONG",
                                         "f_module_name": "iso_c_binding",
                                         "f_result_clause": "\fresult(SHT_rv)",
@@ -2305,7 +2303,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "use_count"
                         }
                     }

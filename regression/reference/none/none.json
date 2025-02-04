@@ -253,6 +253,8 @@
             "file_scope": "library",
             "function_suffix": "",
             "i_dimension": "",
+            "i_intent": "",
+            "i_intent_attr": "",
             "i_name_function": "-i_name_function-",
             "i_prefix": "c_",
             "i_pure_clause": "",

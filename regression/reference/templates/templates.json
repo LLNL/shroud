@@ -257,6 +257,8 @@
                                         "f_intent": "IN",
                                         "f_intent_attr": ", intent(IN)",
                                         "f_value_attr": ", value",
+                                        "i_intent": "IN",
+                                        "i_intent_attr": ", intent(IN)",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_INT",
                                         "stmt_name": "c_in_native",
@@ -288,6 +290,8 @@
                                         "f_intent": "IN",
                                         "f_intent_attr": ", intent(IN)",
                                         "f_value_attr": ", value",
+                                        "i_intent": "IN",
+                                        "i_intent_attr": ", intent(IN)",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_DOUBLE",
                                         "stmt_name": "c_in_native",
@@ -349,6 +353,8 @@
                                         "f_value_attr": ", value",
                                         "f_var": "arg1",
                                         "fc_var": "arg1",
+                                        "i_intent": "IN",
+                                        "i_intent_attr": ", intent(IN)",
                                         "i_kind": "C_INT",
                                         "i_module_name": "iso_c_binding",
                                         "i_type": "integer(C_INT)",
@@ -389,6 +395,8 @@
                                         "f_value_attr": ", value",
                                         "f_var": "arg2",
                                         "fc_var": "arg2",
+                                        "i_intent": "IN",
+                                        "i_intent_attr": ", intent(IN)",
                                         "i_kind": "C_DOUBLE",
                                         "i_module_name": "iso_c_binding",
                                         "i_type": "real(C_DOUBLE)",
@@ -513,7 +521,6 @@
                                 "arg1",
                                 "arg2"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "nested",
                             "template_suffix": "_double"
                         },
@@ -642,13 +649,13 @@
                                         "cxx_var": "SHCXX_rv",
                                         "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                                         "f_derived_type": "struct_as_class_int",
-                                        "f_intent": "OUT",
-                                        "f_intent_attr": ", intent(OUT)",
                                         "f_kind": "struct_as_class_int",
                                         "f_module_name": "templates_mod",
                                         "f_type": "type(struct_as_class_int)",
                                         "f_var": "SHT_rv",
                                         "i_arguments": "SHT_rv",
+                                        "i_intent": "OUT",
+                                        "i_intent_attr": ", intent(OUT)",
                                         "i_kind": "struct_as_class_int",
                                         "i_module_name": "templates_mod",
                                         "i_name_function": "c_struct_as_class_int_ctor",
@@ -703,6 +710,8 @@
                                         "f_var": "SHT_rv",
                                         "fc_var": "SHT_rv",
                                         "i_arguments": "SHT_rv",
+                                        "i_intent": "OUT",
+                                        "i_intent_attr": ", intent(OUT)",
                                         "i_kind": "struct_as_class_int",
                                         "i_module_name": "templates_mod",
                                         "i_name_function": "c_struct_as_class_int_ctor_bufferify",
@@ -744,7 +753,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor"
                         }
                     },
@@ -819,6 +827,8 @@
                                         "f_intent": "IN",
                                         "f_intent_attr": ", intent(IN)",
                                         "f_value_attr": ", value",
+                                        "i_intent": "IN",
+                                        "i_intent_attr": ", intent(IN)",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_INT",
                                         "stmt_name": "c_in_native",
@@ -880,6 +890,8 @@
                                         "f_value_attr": ", value",
                                         "f_var": "n",
                                         "fc_var": "n",
+                                        "i_intent": "IN",
+                                        "i_intent_attr": ", intent(IN)",
                                         "i_kind": "C_INT",
                                         "i_module_name": "iso_c_binding",
                                         "i_type": "integer(C_INT)",
@@ -931,7 +943,6 @@
                                 "f_var",
                                 "n"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "set_npts"
                         }
                     },
@@ -1011,8 +1022,6 @@
                                         "cxx_type": "int",
                                         "cxx_var": "SHC_rv",
                                         "f_call_function": "c_struct_as_class_int_get_npts",
-                                        "f_intent": "OUT",
-                                        "f_intent_attr": ", intent(OUT)",
                                         "f_kind": "C_INT",
                                         "f_module_name": "iso_c_binding",
                                         "f_result_clause": "\fresult(SHT_rv)",
@@ -1064,7 +1073,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "get_npts"
                         }
                     },
@@ -1199,6 +1207,8 @@
                                         "f_intent": "IN",
                                         "f_intent_attr": ", intent(IN)",
                                         "f_value_attr": ", value",
+                                        "i_intent": "IN",
+                                        "i_intent_attr": ", intent(IN)",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_INT",
                                         "stmt_name": "c_in_native",
@@ -1260,6 +1270,8 @@
                                         "f_value_attr": ", value",
                                         "f_var": "v",
                                         "fc_var": "v",
+                                        "i_intent": "IN",
+                                        "i_intent_attr": ", intent(IN)",
                                         "i_kind": "C_INT",
                                         "i_module_name": "iso_c_binding",
                                         "i_type": "integer(C_INT)",
@@ -1311,7 +1323,6 @@
                                 "f_var",
                                 "v"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "set_value"
                         }
                     },
@@ -1435,8 +1446,6 @@
                                         "cxx_type": "int",
                                         "cxx_var": "SHC_rv",
                                         "f_call_function": "c_struct_as_class_int_get_value",
-                                        "f_intent": "OUT",
-                                        "f_intent_attr": ", intent(OUT)",
                                         "f_kind": "C_INT",
                                         "f_module_name": "iso_c_binding",
                                         "f_result_clause": "\fresult(SHT_rv)",
@@ -1488,7 +1497,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "get_value"
                         }
                     }
@@ -1609,13 +1617,13 @@
                                         "cxx_var": "SHCXX_rv",
                                         "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                                         "f_derived_type": "struct_as_class_double",
-                                        "f_intent": "OUT",
-                                        "f_intent_attr": ", intent(OUT)",
                                         "f_kind": "struct_as_class_double",
                                         "f_module_name": "templates_mod",
                                         "f_type": "type(struct_as_class_double)",
                                         "f_var": "SHT_rv",
                                         "i_arguments": "SHT_rv",
+                                        "i_intent": "OUT",
+                                        "i_intent_attr": ", intent(OUT)",
                                         "i_kind": "struct_as_class_double",
                                         "i_module_name": "templates_mod",
                                         "i_name_function": "c_struct_as_class_double_ctor",
@@ -1670,6 +1678,8 @@
                                         "f_var": "SHT_rv",
                                         "fc_var": "SHT_rv",
                                         "i_arguments": "SHT_rv",
+                                        "i_intent": "OUT",
+                                        "i_intent_attr": ", intent(OUT)",
                                         "i_kind": "struct_as_class_double",
                                         "i_module_name": "templates_mod",
                                         "i_name_function": "c_struct_as_class_double_ctor_bufferify",
@@ -1711,7 +1721,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor"
                         }
                     },
@@ -1786,6 +1795,8 @@
                                         "f_intent": "IN",
                                         "f_intent_attr": ", intent(IN)",
                                         "f_value_attr": ", value",
+                                        "i_intent": "IN",
+                                        "i_intent_attr": ", intent(IN)",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_INT",
                                         "stmt_name": "c_in_native",
@@ -1847,6 +1858,8 @@
                                         "f_value_attr": ", value",
                                         "f_var": "n",
                                         "fc_var": "n",
+                                        "i_intent": "IN",
+                                        "i_intent_attr": ", intent(IN)",
                                         "i_kind": "C_INT",
                                         "i_module_name": "iso_c_binding",
                                         "i_type": "integer(C_INT)",
@@ -1898,7 +1911,6 @@
                                 "f_var",
                                 "n"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "set_npts"
                         }
                     },
@@ -1978,8 +1990,6 @@
                                         "cxx_type": "int",
                                         "cxx_var": "SHC_rv",
                                         "f_call_function": "c_struct_as_class_double_get_npts",
-                                        "f_intent": "OUT",
-                                        "f_intent_attr": ", intent(OUT)",
                                         "f_kind": "C_INT",
                                         "f_module_name": "iso_c_binding",
                                         "f_result_clause": "\fresult(SHT_rv)",
@@ -2031,7 +2041,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "get_npts"
                         }
                     },
@@ -2166,6 +2175,8 @@
                                         "f_intent": "IN",
                                         "f_intent_attr": ", intent(IN)",
                                         "f_value_attr": ", value",
+                                        "i_intent": "IN",
+                                        "i_intent_attr": ", intent(IN)",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_DOUBLE",
                                         "stmt_name": "c_in_native",
@@ -2227,6 +2238,8 @@
                                         "f_value_attr": ", value",
                                         "f_var": "v",
                                         "fc_var": "v",
+                                        "i_intent": "IN",
+                                        "i_intent_attr": ", intent(IN)",
                                         "i_kind": "C_DOUBLE",
                                         "i_module_name": "iso_c_binding",
                                         "i_type": "real(C_DOUBLE)",
@@ -2278,7 +2291,6 @@
                                 "f_var",
                                 "v"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "set_value"
                         }
                     },
@@ -2402,8 +2414,6 @@
                                         "cxx_type": "double",
                                         "cxx_var": "SHC_rv",
                                         "f_call_function": "c_struct_as_class_double_get_value",
-                                        "f_intent": "OUT",
-                                        "f_intent_attr": ", intent(OUT)",
                                         "f_kind": "C_DOUBLE",
                                         "f_module_name": "iso_c_binding",
                                         "f_result_clause": "\fresult(SHT_rv)",
@@ -2455,7 +2465,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "get_value"
                         }
                     }
@@ -2594,13 +2603,13 @@
                                 "cxx_var": "SHC_rv_cxx",
                                 "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                                 "f_derived_type": "user_int",
-                                "f_intent": "OUT",
-                                "f_intent_attr": ", intent(OUT)",
                                 "f_kind": "user_int",
                                 "f_module_name": "templates_mod",
                                 "f_type": "type(user_int)",
                                 "f_var": "SHT_rv",
                                 "i_arguments": "SHT_rv",
+                                "i_intent": "OUT",
+                                "i_intent_attr": ", intent(OUT)",
                                 "i_kind": "user_int",
                                 "i_local_cxx": "SHC_rv_cxx",
                                 "i_module_name": "templates_mod",
@@ -2656,8 +2665,6 @@
                                 "f_call_function": "c_return_user_type_bufferify",
                                 "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                                 "f_derived_type": "user_int",
-                                "f_intent": "OUT",
-                                "f_intent_attr": ", intent(OUT)",
                                 "f_kind": "user_int",
                                 "f_module_name": "templates_mod",
                                 "f_result_clause": "\fresult(SHT_rv)",
@@ -2665,6 +2672,8 @@
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
                                 "i_arguments": "SHT_rv",
+                                "i_intent": "OUT",
+                                "i_intent_attr": ", intent(OUT)",
                                 "i_kind": "user_int",
                                 "i_local_cxx": "SHC_rv_cxx",
                                 "i_module_name": "templates_mod",
@@ -2969,6 +2978,8 @@
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
                                 "f_value_attr": ", value",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
                                 "stmt_name": "c_in_native",
@@ -3000,6 +3011,8 @@
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
                                 "f_value_attr": ", value",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_LONG",
                                 "stmt_name": "c_in_native",
@@ -3061,6 +3074,8 @@
                                 "f_value_attr": ", value",
                                 "f_var": "arg1",
                                 "fc_var": "arg1",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
                                 "i_kind": "C_INT",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "integer(C_INT)",
@@ -3101,6 +3116,8 @@
                                 "f_value_attr": ", value",
                                 "f_var": "arg2",
                                 "fc_var": "arg2",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
                                 "i_kind": "C_LONG",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "integer(C_LONG)",
@@ -3379,6 +3396,8 @@
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
                                 "f_value_attr": ", value",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_FLOAT",
                                 "stmt_name": "c_in_native",
@@ -3410,6 +3429,8 @@
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
                                 "f_value_attr": ", value",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "stmt_name": "c_in_native",
@@ -3471,6 +3492,8 @@
                                 "f_value_attr": ", value",
                                 "f_var": "arg1",
                                 "fc_var": "arg1",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
                                 "i_kind": "C_FLOAT",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "real(C_FLOAT)",
@@ -3511,6 +3534,8 @@
                                 "f_value_attr": ", value",
                                 "f_var": "arg2",
                                 "fc_var": "arg2",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
                                 "i_kind": "C_DOUBLE",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "real(C_DOUBLE)",
@@ -3838,8 +3863,6 @@
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
                                 "f_call_function": "c_use_impl_worker_internal_ImplWorker1",
-                                "f_intent": "OUT",
-                                "f_intent_attr": ", intent(OUT)",
                                 "f_kind": "C_INT",
                                 "f_module_name": "iso_c_binding",
                                 "f_result_clause": "\fresult(SHT_rv)",
@@ -4046,8 +4069,6 @@
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
                                 "f_call_function": "c_use_impl_worker_internal_ImplWorker2",
-                                "f_intent": "OUT",
-                                "f_intent_attr": ", intent(OUT)",
                                 "f_kind": "C_INT",
                                 "f_module_name": "iso_c_binding",
                                 "f_result_clause": "\fresult(SHT_rv)",
@@ -4198,13 +4219,13 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                                                 "f_derived_type": "vector_int",
-                                                "f_intent": "OUT",
-                                                "f_intent_attr": ", intent(OUT)",
                                                 "f_kind": "vector_int",
                                                 "f_module_name": "templates_std_mod",
                                                 "f_type": "type(vector_int)",
                                                 "f_var": "SHT_rv",
                                                 "i_arguments": "SHT_rv",
+                                                "i_intent": "OUT",
+                                                "i_intent_attr": ", intent(OUT)",
                                                 "i_kind": "vector_int",
                                                 "i_module_name": "templates_std_mod",
                                                 "i_name_function": "c_vector_int_ctor",
@@ -4259,6 +4280,8 @@
                                                 "f_var": "SHT_rv",
                                                 "fc_var": "SHT_rv",
                                                 "i_arguments": "SHT_rv",
+                                                "i_intent": "OUT",
+                                                "i_intent_attr": ", intent(OUT)",
                                                 "i_kind": "vector_int",
                                                 "i_module_name": "templates_std_mod",
                                                 "i_name_function": "c_vector_int_ctor_bufferify",
@@ -4333,7 +4356,6 @@
                                     "f_arglist": [
                                         "SHT_rv"
                                     ],
-                                    "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "ctor"
                                 },
                                 "zz_fmtlang": {
@@ -4450,7 +4472,6 @@
                                     "f_arglist": [
                                         "f_var"
                                     ],
-                                    "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "dtor"
                                 },
                                 "zz_fmtlang": {
@@ -4609,6 +4630,8 @@
                                                 "cxx_var": "value",
                                                 "f_intent": "IN",
                                                 "f_intent_attr": ", intent(IN)",
+                                                "i_intent": "IN",
+                                                "i_intent_attr": ", intent(IN)",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "c_in_native&",
@@ -4668,6 +4691,8 @@
                                                 "f_type": "integer(C_INT)",
                                                 "f_var": "value",
                                                 "fc_var": "value",
+                                                "i_intent": "IN",
+                                                "i_intent_attr": ", intent(IN)",
                                                 "i_kind": "C_INT",
                                                 "i_module_name": "iso_c_binding",
                                                 "i_type": "integer(C_INT)",
@@ -4755,7 +4780,6 @@
                                         "f_var",
                                         "value"
                                     ],
-                                    "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "push_back"
                                 },
                                 "zz_fmtlang": {
@@ -4901,8 +4925,6 @@
                                                 "cxx_rv_decl": "int &SHC_rv",
                                                 "cxx_type": "int",
                                                 "cxx_var": "SHC_rv",
-                                                "f_intent": "OUT",
-                                                "f_intent_attr": ", intent(OUT)",
                                                 "f_kind": "C_INT",
                                                 "f_module_name": "iso_c_binding",
                                                 "f_type": "integer(C_INT)",
@@ -4949,6 +4971,8 @@
                                                 "f_type": "integer(vector_int_size_type)",
                                                 "f_value_attr": ", value",
                                                 "f_var": "n",
+                                                "i_intent": "IN",
+                                                "i_intent_attr": ", intent(IN)",
                                                 "i_kind": "vector_int_size_type",
                                                 "i_module_name": "templates_std_mod",
                                                 "i_type": "integer(vector_int_size_type)",
@@ -4990,8 +5014,6 @@
                                                 "cxx_var": "SHC_rv",
                                                 "f_call_function": "c_vector_int_at_bufferify",
                                                 "f_deref_attr": ", pointer",
-                                                "f_intent": "OUT",
-                                                "f_intent_attr": ", intent(OUT)",
                                                 "f_kind": "C_INT",
                                                 "f_local_ptr": "SHC_rv_ptr",
                                                 "f_module_name": "iso_c_binding",
@@ -5044,6 +5066,8 @@
                                                 "f_value_attr": ", value",
                                                 "f_var": "n",
                                                 "fc_var": "n",
+                                                "i_intent": "IN",
+                                                "i_intent_attr": ", intent(IN)",
                                                 "i_kind": "vector_int_size_type",
                                                 "i_module_name": "templates_std_mod",
                                                 "i_type": "integer(vector_int_size_type)",
@@ -5146,7 +5170,6 @@
                                         "SHT_rv",
                                         "n"
                                     ],
-                                    "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "at"
                                 },
                                 "zz_fmtlang": {
@@ -5310,13 +5333,13 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "f_capsule_data_type": "TEM_SHROUD_capsule_data",
                                                 "f_derived_type": "vector_double",
-                                                "f_intent": "OUT",
-                                                "f_intent_attr": ", intent(OUT)",
                                                 "f_kind": "vector_double",
                                                 "f_module_name": "templates_std_mod",
                                                 "f_type": "type(vector_double)",
                                                 "f_var": "SHT_rv",
                                                 "i_arguments": "SHT_rv",
+                                                "i_intent": "OUT",
+                                                "i_intent_attr": ", intent(OUT)",
                                                 "i_kind": "vector_double",
                                                 "i_module_name": "templates_std_mod",
                                                 "i_name_function": "c_vector_double_ctor",
@@ -5371,6 +5394,8 @@
                                                 "f_var": "SHT_rv",
                                                 "fc_var": "SHT_rv",
                                                 "i_arguments": "SHT_rv",
+                                                "i_intent": "OUT",
+                                                "i_intent_attr": ", intent(OUT)",
                                                 "i_kind": "vector_double",
                                                 "i_module_name": "templates_std_mod",
                                                 "i_name_function": "c_vector_double_ctor_bufferify",
@@ -5445,7 +5470,6 @@
                                     "f_arglist": [
                                         "SHT_rv"
                                     ],
-                                    "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "ctor"
                                 },
                                 "zz_fmtlang": {
@@ -5562,7 +5586,6 @@
                                     "f_arglist": [
                                         "f_var"
                                     ],
-                                    "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "dtor"
                                 },
                                 "zz_fmtlang": {
@@ -5721,6 +5744,8 @@
                                                 "cxx_var": "value",
                                                 "f_intent": "IN",
                                                 "f_intent_attr": ", intent(IN)",
+                                                "i_intent": "IN",
+                                                "i_intent_attr": ", intent(IN)",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_DOUBLE",
                                                 "stmt_name": "c_in_native&",
@@ -5780,6 +5805,8 @@
                                                 "f_type": "real(C_DOUBLE)",
                                                 "f_var": "value",
                                                 "fc_var": "value",
+                                                "i_intent": "IN",
+                                                "i_intent_attr": ", intent(IN)",
                                                 "i_kind": "C_DOUBLE",
                                                 "i_module_name": "iso_c_binding",
                                                 "i_type": "real(C_DOUBLE)",
@@ -5867,7 +5894,6 @@
                                         "f_var",
                                         "value"
                                     ],
-                                    "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "push_back"
                                 },
                                 "zz_fmtlang": {
@@ -6013,8 +6039,6 @@
                                                 "cxx_rv_decl": "double &SHC_rv",
                                                 "cxx_type": "double",
                                                 "cxx_var": "SHC_rv",
-                                                "f_intent": "OUT",
-                                                "f_intent_attr": ", intent(OUT)",
                                                 "f_kind": "C_DOUBLE",
                                                 "f_module_name": "iso_c_binding",
                                                 "f_type": "real(C_DOUBLE)",
@@ -6061,6 +6085,8 @@
                                                 "f_type": "integer(vector_double_size_type)",
                                                 "f_value_attr": ", value",
                                                 "f_var": "n",
+                                                "i_intent": "IN",
+                                                "i_intent_attr": ", intent(IN)",
                                                 "i_kind": "vector_double_size_type",
                                                 "i_module_name": "templates_std_mod",
                                                 "i_type": "integer(vector_double_size_type)",
@@ -6102,8 +6128,6 @@
                                                 "cxx_var": "SHC_rv",
                                                 "f_call_function": "c_vector_double_at_bufferify",
                                                 "f_deref_attr": ", pointer",
-                                                "f_intent": "OUT",
-                                                "f_intent_attr": ", intent(OUT)",
                                                 "f_kind": "C_DOUBLE",
                                                 "f_local_ptr": "SHC_rv_ptr",
                                                 "f_module_name": "iso_c_binding",
@@ -6156,6 +6180,8 @@
                                                 "f_value_attr": ", value",
                                                 "f_var": "n",
                                                 "fc_var": "n",
+                                                "i_intent": "IN",
+                                                "i_intent_attr": ", intent(IN)",
                                                 "i_kind": "vector_double_size_type",
                                                 "i_module_name": "templates_std_mod",
                                                 "i_type": "integer(vector_double_size_type)",
@@ -6258,7 +6284,6 @@
                                         "SHT_rv",
                                         "n"
                                     ],
-                                    "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "at"
                                 },
                                 "zz_fmtlang": {

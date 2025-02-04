@@ -770,6 +770,8 @@ class LibraryNode(AstNode, NamespaceMixin):
 
             # Fortran interface
             i_dimension="",
+            i_intent="",
+            i_intent_attr="",
             i_name_function="-i_name_function-",
             i_prefix="c_",
             i_result_var = "SHT_rv",

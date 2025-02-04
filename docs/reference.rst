@@ -1531,13 +1531,15 @@ f_intent
 
 f_intent_attr
     The value of the *intent* metaattribute
-    converted into a Fortran attribute.
+    converted into a Fortran attribute
+    to be used with the Fortran wrapper.
     ex ``, intent(IN)``.
     Used with argument declarations:
     ``{f_type}{f_intent_attr} ::``.
     If *intent* is *none*, the format field will be blank.
-    *f_intent_attr* can also be used with Fortran interface.
-    (There is no *i_intent_attr*)
+
+    When a subroutine is converted into a function, it is necessary
+    to explicitly set this attribute to ``, intent(OUT)``.
 
 f_kind
     The name of a parameter from *f_module_name* required to
@@ -1577,6 +1579,22 @@ i_dimension
    ``char *`` and ``std::string`` become an array of ``CHAR`` with a
    dimension of ``(*)``.
 
+i_intent
+    The intent of the argument from the *intent* attribute
+    to be used with the Fortran interface.
+    See *f_intent*.
+
+i_intent_attr
+    The value of the *intent* metaattribute
+    converted into a Fortran attribute
+    to be used with the Fortran interface.
+    ex ``, intent(IN)``.
+    See *f_intent_attr*.
+
+    The Fortran wrapper may pass the result as an argument to
+    the C wrapper which will require explicitly setting the
+    this format field.
+   
 i_kind
   The bind(C) interface of the argument.
   Derived from the ``typemap.i_type`` for the argument.
