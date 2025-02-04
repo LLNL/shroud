@@ -342,6 +342,9 @@
         "comments": [
             "Call the C wrapper as a subroutine."
         ],
+        "notes": [
+            "Other groups must be used to pass argument to the C wrapper."
+        ],
         "mixin": [
             "c_mixin_as-intent-out"
         ],
@@ -361,7 +364,7 @@
             ]
         },
         "f_arg_decl": [
-            "{f_type}{f_deref_attr} :: {f_var}{f_dimension}"
+            "{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}"
         ]
     },
     {
@@ -852,7 +855,7 @@
             ]
         },
         "f_arg_decl": [
-            "{f_type}{f_deref_attr}, target :: {f_var}{f_dimension}"
+            "{f_type}{f_intent_attr}{f_deref_attr}, target :: {f_var}{f_dimension}"
         ],
         "f_post_call": [
             "allocate({f_var}{f_array_allocate})",
@@ -901,7 +904,7 @@
             ]
         },
         "f_arg_decl": [
-            "{f_type}{f_deref_attr} :: {f_var}{f_assumed_shape}"
+            "{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}"
         ],
         "f_post_call": [
             "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
@@ -964,7 +967,7 @@
             "copy_string"
         ],
         "f_arg_decl": [
-            "character(len=:){f_deref_attr} :: {f_var}"
+            "character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}"
         ],
         "f_post_call": [
             "allocate(character(len={f_var_cdesc}%elem_len):: {f_var})",
@@ -980,7 +983,7 @@
             "pointer_string"
         ],
         "f_arg_decl": [
-            "character(len=:){f_deref_attr} :: {f_var}"
+            "character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}"
         ],
         "f_module": {
             "iso_c_binding": [
@@ -1026,7 +1029,7 @@
             "{f_var}"
         ],
         "f_arg_decl": [
-            "{targs[0].f_type}, intent(IN) :: {f_var}{f_assumed_shape}"
+            "{targs[0].f_type}{f_intent_attr} :: {f_var}{f_assumed_shape}"
         ],
         "f_arg_call": [
             "{f_var}",
@@ -2106,7 +2109,7 @@
             "{f_var}"
         ],
         "f_arg_decl": [
-            "character({f_char_len}), intent(OUT){f_deref_attr}, target :: {f_var}{f_assumed_shape}"
+            "character({f_char_len}){f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}"
         ],
         "f_post_call": [
             "allocate({f_char_type}{f_var}({f_var_cdesc}%size))",
@@ -2122,7 +2125,7 @@
             "{f_var}"
         ],
         "f_arg_decl": [
-            "character(len=*), intent(IN) :: {f_var}(:)"
+            "character(len=*){f_intent_attr} :: {f_var}(:)"
         ],
         "f_arg_call": [
             "{f_var}",
@@ -2227,7 +2230,7 @@
             "Return a single char from a function."
         ],
         "f_arg_decl": [
-            "character :: {f_var}"
+            "character{f_intent_attr} :: {f_var}"
         ],
         "f_arg_call": [
             "{f_var}"
@@ -3365,7 +3368,7 @@
             ]
         },
         "f_arg_decl": [
-            "{targs[0].f_type}{f_deref_attr}, target :: {f_var}{f_assumed_shape}"
+            "{targs[0].f_type}{f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}"
         ],
         "f_post_call": [
             "allocate({f_var}({f_var_cdesc}%size))",
@@ -4609,7 +4612,7 @@
         ],
         "f_need_wrapper": true,
         "f_arg_decl": [
-            "character(len=:){f_deref_attr} :: {f_var}"
+            "character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}"
         ],
         "f_arg_call": [
             "{f_var}"
@@ -4632,7 +4635,7 @@
         ],
         "f_need_wrapper": true,
         "f_arg_decl": [
-            "character(len=:){f_deref_attr} :: {f_var}"
+            "character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}"
         ],
         "f_arg_call": [
             "{f_var}"
@@ -4664,7 +4667,7 @@
         ],
         "f_need_wrapper": true,
         "f_arg_decl": [
-            "character(len=:){f_deref_attr} :: {f_var}"
+            "character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}"
         ],
         "f_arg_call": [
             "{f_var}"
@@ -4952,7 +4955,7 @@
         ],
         "f_need_wrapper": true,
         "f_arg_decl": [
-            "character(len=:){f_deref_attr} :: {f_var}"
+            "character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}"
         ],
         "f_arg_call": [
             "{f_var}"
@@ -5134,7 +5137,7 @@
             ]
         },
         "f_arg_decl": [
-            "{f_type}{f_deref_attr} :: {f_var}{f_assumed_shape}"
+            "{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}"
         ],
         "f_arg_call": [
             "{f_var}"
@@ -5163,7 +5166,7 @@
             ]
         },
         "f_arg_decl": [
-            "{f_type}{f_deref_attr} :: {f_var}{f_assumed_shape}"
+            "{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}"
         ],
         "f_pre_call": [
             "nullify({f_var})"
