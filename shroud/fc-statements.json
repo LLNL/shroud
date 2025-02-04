@@ -79,7 +79,7 @@
         "sphinx-start-after": "f_mixin_declare-fortran-arg",
         "name": "f_mixin_declare-fortran-arg",
         "notes": [
-            "Fortran wrapper argument"
+            "Fortran wrapper argument."
         ],
         "f_arg_name": [
             "{f_var}"
@@ -227,7 +227,7 @@
         "name": "f_mixin_interface-as-cptr-value",
         "notes": [
             "Pass the address of the argument directly to C.",
-            "Used when there is no direct mapping to Fortran"
+            "Used when there is no direct mapping to Fortran."
         ],
         "i_arg_names": [
             "{i_var}"
@@ -245,7 +245,7 @@
         "name": "#f_mixin_interface-as-cptr-dimension",
         "notes": [
             "Pass the address of the argument directly to C.",
-            "Used when there is no direct mapping to Fortran"
+            "Used when there is no direct mapping to Fortran."
         ],
         "i_arg_names": [
             "{i_var}"
@@ -262,7 +262,7 @@
     {
         "name": "f_mixin_declare-as-cptr",
         "notes": [
-            "Used when there is no direct mapping to Fortran"
+            "Used when there is no direct mapping to Fortran."
         ],
         "f_arg_name": [
             "{f_var}"
@@ -279,7 +279,7 @@
     {
         "name": "f_mixin_function-as-cptr",
         "comments": [
-            "Declare function result as a type(C_PTR)"
+            "Declare function result as a type(C_PTR)."
         ],
         "f_arg_decl": [
             "type(C_PTR) :: {f_var}"
@@ -319,7 +319,7 @@
     {
         "name": "f_mixin_as-intent-out",
         "notes": [
-            "Change intent of function result"
+            "Change intent of function result."
         ],
         "fmtdict": {
             "f_intent": "OUT",
@@ -1017,7 +1017,7 @@
         "notes": [
             "These were written with std::vector in mind",
             "but may work with std::span as well",
-            "since they deal with the template argument in an abstract manner"
+            "since they deal with the template argument in an abstract manner."
         ]
     },
     {
@@ -1277,7 +1277,7 @@
     },
     {
         "name": "f_function_native*_scalar",
-        "comments": [
+        "notes": [
             "Return a scalar to avoid doing the deref in Fortran."
         ],
         "mixin": [
@@ -1317,7 +1317,7 @@
             "f_none_native"
         ],
         "notes": [
-            "An intent of 'none' is used with function pointers"
+            "An intent of 'none' is used with function pointers."
         ],
         "mixin": [
             "c_mixin_declare-arg",
@@ -1365,7 +1365,7 @@
             "c_out_native**"
         ],
         "notes": [
-            "Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'"
+            "Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'."
         ],
         "mixin": [
             "c_mixin_declare-arg",
@@ -1506,7 +1506,7 @@
             "c_out_native*_hidden",
             "c_inout_native*_hidden"
         ],
-        "comments": [
+        "notes": [
             "Declare a local variable and pass to C."
         ],
         "mixin": [
@@ -1523,7 +1523,7 @@
             "c_out_native&_hidden",
             "c_inout_native&_hidden"
         ],
-        "comments": [
+        "notes": [
             "Declare a local variable and pass to C."
         ],
         "mixin": [
@@ -1874,7 +1874,7 @@
         "alias": [
             "f_function_enum"
         ],
-        "comments": [
+        "notes": [
             "Return as the Fortran bind(C) type."
         ],
         "mixin": [
@@ -1942,7 +1942,7 @@
     {
         "name": "f_mixin_function-as-character-arg",
         "notes" : [
-            "Convert the function result to a character argument"
+            "Convert the function result to a character argument."
         ],
         "f_arg_name": [
             "{f_var}"
@@ -1968,7 +1968,7 @@
     {
         "name": "c_mixin_character",
         "notes": [
-            "Create a character argument"
+            "Create a character argument."
         ],
         "i_arg_names": [
             "{i_var}"
@@ -2384,7 +2384,7 @@
             "c_function_char*_buf_arg"
         ],
         "notes": [
-            "Change function result into an argument",
+            "Change function result into an argument.",
             "Use F_string_result_as_arg as the argument name.",
             "was base:f_function_char*_buf_copy"
         ],
@@ -2669,7 +2669,7 @@
             "c_in_string&"
         ],
         "notes": [
-            "Similar to f_in_string*, but c_arg_call is pass by value"
+            "Similar to f_in_string*, but c_arg_call is pass by value."
         ],
         "mixin": [
             "c_mixin_declare-arg",
@@ -2695,7 +2695,7 @@
             "c_out_string&"
         ],
         "notes": [
-            "Similar to f_out_string*"
+            "Similar to f_out_string*."
         ],
         "mixin": [
             "c_mixin_declare-arg",
@@ -2847,7 +2847,7 @@
     },
     {
         "name": "c_function_string",
-        "comments": [
+        "notes": [
             "Cannot return a char array by value.",
             "Return a const pointer to std::string data."
         ],
@@ -2872,10 +2872,8 @@
         "alias": [
             "c_in_string"
         ],
-        "comments": [
-            "Pass a NULL terminated string to C wrapper"
-        ],
         "notes": [
+            "Pass a NULL terminated string to C wrapper.",
             "Pass directly as argument which will construct the std::string.",
             "This would work for Fortran if it explicited added C_NULL_CHAR."
         ],
@@ -2970,11 +2968,9 @@
             "f_function_string&_buf_arg",
             "c_function_string&_buf_arg"
         ],
-        "comments": [
-            "Change function result into an argument.",
-            "Use F_string_result_as_arg as the argument name."
-        ],
         "notes": [
+            "Change function result into an argument.",
+            "Use F_string_result_as_arg as the argument name.",
             "was base:f_function_string_buf"
         ],
         "mixin": [
@@ -3068,7 +3064,7 @@
     {
         "name": "c_function_vector<native>",
         "notimplemented": true,
-        "comments": [
+        "notes": [
             "Cannot return a std::vector<native> by value."
         ]
     },
@@ -3082,7 +3078,7 @@
             "c_out_vector<string>&"
         ],
         "notimplemented": true,
-        "comments": [
+        "notes": [
             "Need to know the length of the vector from C."
         ]
     },
@@ -3095,12 +3091,12 @@
             "c_in_vector<native>*_buf",
             "c_in_vector<native>&_buf"
         ],
+        "notes": [
+            "XXX - need to test scalar and pointer versions"
+        ],
         "mixin": [
             "f_mixin_in_vector_buf",
             "c_mixin_arg-call-cxx"
-        ],
-        "notes": [
-            "XXX - need to test scalar and pointer versions"
         ],
         "c_local": [
             "cxx"
@@ -3115,12 +3111,12 @@
             "c_out_vector<native>*_buf_copy",
             "c_out_vector<native>&_buf_copy"
         ],
+        "notes": [
+            "XXX - need to test scalar and pointer versions"
+        ],
         "mixin": [
             "f_mixin_out_vector_buf",
             "c_mixin_arg-call-cxx"
-        ],
-        "notes": [
-            "XXX - need to test scalar and pointer versions"
         ],
         "c_local": [
             "cxx",
@@ -3165,16 +3161,14 @@
             "c_out_vector<native>*_buf_malloc",
             "c_out_vector<native>&_buf_malloc"
         ],
-        "comments": [
+        "notes": [
             "Create empty local vector then copy result to",
-            "malloc allocated array."
+            "malloc allocated array.",
+            "XXX - need to test scalar and pointer versions"
         ],
         "mixin": [
             "c_mixin_out_vector_buf_malloc",
             "c_mixin_arg-call-cxx"
-        ],
-        "notes": [
-            "XXX - need to test scalar and pointer versions"
         ],
         "c_local": [
             "cxx",
@@ -3200,7 +3194,7 @@
             "c_inout_vector<native>*_buf_malloc",
             "c_inout_vector<native>&_buf_malloc"
         ],
-        "comments": [
+        "notes": [
             "Create local vector from arguments then copy result to",
             "malloc allocated array."
         ],
@@ -3386,7 +3380,7 @@
     },
     {
         "name": "c_function_vector<native>_malloc",
-        "comments": [
+        "notes": [
             "Create empty local vector then copy result to",
             "malloc allocated array.",
             "Add an argument with the length of the array."
@@ -3420,11 +3414,9 @@
             "f_in_vector<native*>&_buf",
             "c_in_vector<native*>&_buf"
         ],
-        "comments": [
-            "Create a vector for pointers."
-        ],
         "notes": [
-            "Specialize for std::vector<native *>"
+            "Create a vector for pointers.",
+            "Specialize for std::vector<native *>."
         ],
         "mixin": [
             "f_mixin_in_2d_vector_buf",
@@ -3515,13 +3507,12 @@
             "f_in_vector<string>&_buf",
             "c_in_vector<string>&_buf"
         ],
+        "notes": [
+            "XXX - need to test scalar and pointer versions"
+        ],
         "mixin": [
             "f_mixin_in_string_array_buf",
             "c_mixin_arg-call-cxx"
-        ],
-        "notes":
-        [
-            "XXX - need to test scalar and pointer versions"
         ],
         "c_helper": [
             "char_len_trim"
@@ -3927,7 +3918,7 @@
             "c_function_shadow&_capptr_caller",
             "c_function_shadow&_capptr_library"
         ],
-        "comments": [
+        "notes": [
             "Return a C_capsule_data_type."
         ],
         "mixin": [
@@ -3972,10 +3963,8 @@
             "c_function_shadow_capptr",
             "c_function_shadow<native>_capptr"
         ],
-        "comments": [
-            "Return an instance by value."
-        ],
         "notes": [
+            "Return an instance by value.",
             "Create memory in c_pre_call so it will survive the return.",
             "owner=caller sets idtor flag to release the memory.",
             "c_local_var is passed in as argument."
@@ -4159,7 +4148,7 @@
         ],
         "notes": [
             "Used with in, out, inout.",
-            "C pointer -> void pointer -> C++ pointer"
+            "C pointer -> void pointer -> C++ pointer."
         ],
         "mixin": [
             "c_mixin_declare-arg",
@@ -4211,7 +4200,7 @@
             "f_function_struct*_pointer",
             "c_function_struct*"
         ],
-        "comments": [
+        "notes": [
             "C++ pointer -> void pointer -> C pointer."
         ],
         "mixin": [
@@ -4380,7 +4369,7 @@
     },
     {
         "name": "f_getter_string_cdesc_allocatable",
-        "comments": [
+        "notes": [
             "Return argument meta data to Fortran."
         ],
         "mixin": [
@@ -4400,7 +4389,7 @@
             "f_setter_string_buf",
             "c_setter_string_scalar_buf"
         ],
-        "comments": [
+        "notes": [
             "Extract meta data and pass to C.",
             "Create std::string from Fortran meta data."
         ],
@@ -4473,7 +4462,7 @@
     {
         "name": "c_mixin_cfi-unpack-len-size",
         "notes": [
-            "Used with 1d arrays of characters:  CHARACTER(len) var(nvar)"
+            "Used with 1d arrays of characters:  CHARACTER(len) var(nvar)."
         ],
         "c_temps": [
             "len",
@@ -4758,7 +4747,7 @@
     },
     {
         "name": "f_function_char*_cfi_copy",
-        "comments": [
+        "notes": [
             "Copy result into caller's buffer."
         ],
         "mixin": [
@@ -4775,11 +4764,9 @@
     },
     {
         "name": "f_function_char*_cfi_arg",
-        "comments": [
-            "Change function result into an argument.",
-            "Use F_string_result_as_arg as the argument name."
-        ],
         "notes": [
+            "Change function result into an argument.",
+            "Use F_string_result_as_arg as the argument name.",
             "was base:f_function_char*_cfi_copy"
         ],
         "mixin": [
@@ -5103,7 +5090,7 @@
     },
     {
         "name": "f_out_native**_cfi_pointer",
-        "comments": [
+        "notes": [
             "Set Fortran pointer to point to c_local_cxx."
         ],
         "mixin": [
@@ -5148,7 +5135,7 @@
     },
     {
         "name": "f_function_native*_cfi_pointer",
-        "comments": [
+        "notes": [
             "Pass result as an argument to C wrapper.",
             "Convert to subroutine and pass result as an argument.",
             "Return Fortran pointer to data."

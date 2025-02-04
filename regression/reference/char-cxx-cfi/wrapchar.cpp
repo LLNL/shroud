@@ -126,12 +126,14 @@ static void ShroudCharFree(char *src)
 // ----------------------------------------
 // Function:  void init_test
 // Statement: c_subroutine
+// start CHA_init_test
 void CHA_init_test(void)
 {
     // splicer begin function.init_test
     init_test();
     // splicer end function.init_test
 }
+// end CHA_init_test
 
 /**
  * \brief pass a single char argument as a scalar.
@@ -143,12 +145,14 @@ void CHA_init_test(void)
 // ----------------------------------------
 // Argument:  char status
 // Statement: c_in_char
+// start CHA_passChar
 void CHA_passChar(char status)
 {
     // splicer begin function.passChar
     passChar(status);
     // splicer end function.passChar
 }
+// end CHA_passChar
 
 /**
  * By default no Fortran wrapper is created.
@@ -160,12 +164,14 @@ void CHA_passChar(char status)
 // ----------------------------------------
 // Argument:  char status
 // Statement: c_in_char
+// start CHA_passCharForce
 void CHA_passCharForce(char status)
 {
     // splicer begin function.passCharForce
     passCharForce(status);
     // splicer end function.passCharForce
 }
+// end CHA_passCharForce
 
 /**
  * \brief return a char argument (non-pointer)
@@ -174,12 +180,14 @@ void CHA_passCharForce(char status)
 // ----------------------------------------
 // Function:  char returnChar
 // Statement: c_function_char
+// start CHA_returnChar
 void CHA_returnChar(char *SHC_rv)
 {
     // splicer begin function.returnChar
     *SHC_rv = returnChar();
     // splicer end function.returnChar
 }
+// end CHA_returnChar
 
 /**
  * \brief strcpy like behavior
@@ -253,12 +261,14 @@ void CHA_passCharPtr_CFI(CFI_cdesc_t *SHT_dest_cfi,
 // ----------------------------------------
 // Argument:  char *s +intent(inout)
 // Statement: c_inout_char*
+// start CHA_passCharPtrInOut
 void CHA_passCharPtrInOut(char *s)
 {
     // splicer begin function.passCharPtrInOut
     passCharPtrInOut(s);
     // splicer end function.passCharPtrInOut
 }
+// end CHA_passCharPtrInOut
 
 /**
  * \brief toupper
@@ -272,6 +282,7 @@ void CHA_passCharPtrInOut(char *s)
 // ----------------------------------------
 // Argument:  char *s +intent(inout)
 // Statement: f_inout_char*_cfi
+// start CHA_passCharPtrInOut_CFI
 void CHA_passCharPtrInOut_CFI(CFI_cdesc_t *SHT_s_cfi)
 {
     // splicer begin function.passCharPtrInOut_CFI
@@ -283,6 +294,7 @@ void CHA_passCharPtrInOut_CFI(CFI_cdesc_t *SHT_s_cfi)
     ShroudCharFree(SHC_s_cxx);
     // splicer end function.passCharPtrInOut_CFI
 }
+// end CHA_passCharPtrInOut_CFI
 
 /**
  * Return an ALLOCATABLE CHARACTER from char *.
@@ -402,6 +414,7 @@ void CHA_getConstCharPtrAsArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // ----------------------------------------
 // Function:  const char *getCharPtr4 +deref(raw)
 // Statement: c_function_char*
+// start CHA_getCharPtr4
 const char * CHA_getCharPtr4(void)
 {
     // splicer begin function.getCharPtr4
@@ -409,6 +422,7 @@ const char * CHA_getCharPtr4(void)
     return SHC_rv;
     // splicer end function.getCharPtr4
 }
+// end CHA_getCharPtr4
 
 /**
  * \brief return a 'const char *' as character(:) pointer
@@ -418,6 +432,7 @@ const char * CHA_getCharPtr4(void)
 // ----------------------------------------
 // Function:  const char *getCharPtr5 +deref(pointer)
 // Statement: c_function_char*
+// start CHA_getCharPtr5
 const char * CHA_getCharPtr5(void)
 {
     // splicer begin function.getCharPtr5
@@ -425,6 +440,7 @@ const char * CHA_getCharPtr5(void)
     return SHC_rv;
     // splicer end function.getCharPtr5
 }
+// end CHA_getCharPtr5
 #endif  // ifdef HAVE_CHARACTER_POINTER_FUNCTION
 
 /**
@@ -435,6 +451,7 @@ const char * CHA_getCharPtr5(void)
 // ----------------------------------------
 // Function:  const char *getCharPtr5 +deref(pointer)
 // Statement: f_function_char*_cfi_pointer
+// start CHA_getCharPtr5_CFI
 void CHA_getCharPtr5_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getCharPtr5_CFI
@@ -459,6 +476,7 @@ void CHA_getCharPtr5_CFI(CFI_cdesc_t *SHT_rv_cfi)
     }
     // splicer end function.getCharPtr5_CFI
 }
+// end CHA_getCharPtr5_CFI
 #endif  // ifdef HAVE_CHARACTER_POINTER_FUNCTION
 
 // ----------------------------------------
@@ -467,12 +485,14 @@ void CHA_getCharPtr5_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // ----------------------------------------
 // Argument:  char *name +intent(in)+len_trim(AAlen)
 // Statement: c_in_char*
+// start CHA_explicit1
 void CHA_explicit1(char *name)
 {
     // splicer begin function.explicit1
     explicit1(name);
     // splicer end function.explicit1
 }
+// end CHA_explicit1
 
 // ----------------------------------------
 // Function:  void explicit1
@@ -480,6 +500,7 @@ void CHA_explicit1(char *name)
 // ----------------------------------------
 // Argument:  char *name +intent(in)+len_trim(AAlen)
 // Statement: f_in_char*_cfi
+// start CHA_explicit1_CFI
 void CHA_explicit1_CFI(CFI_cdesc_t *SHT_name_cfi)
 {
     // splicer begin function.explicit1_CFI
@@ -490,6 +511,7 @@ void CHA_explicit1_CFI(CFI_cdesc_t *SHT_name_cfi)
     ShroudCharFree(SHC_name_cxx);
     // splicer end function.explicit1_CFI
 }
+// end CHA_explicit1_CFI
 
 // ----------------------------------------
 // Function:  void explicit2
@@ -497,12 +519,14 @@ void CHA_explicit1_CFI(CFI_cdesc_t *SHT_name_cfi)
 // ----------------------------------------
 // Argument:  char *name +intent(out)+len(AAtrim)
 // Statement: c_out_char*
+// start CHA_explicit2
 void CHA_explicit2(char *name)
 {
     // splicer begin function.explicit2
     explicit2(name);
     // splicer end function.explicit2
 }
+// end CHA_explicit2
 
 // ----------------------------------------
 // Function:  void explicit2
@@ -510,6 +534,7 @@ void CHA_explicit2(char *name)
 // ----------------------------------------
 // Argument:  char *name +intent(out)+len(AAtrim)
 // Statement: f_out_char*_cfi
+// start CHA_explicit2_CFI
 void CHA_explicit2_CFI(CFI_cdesc_t *SHT_name_cfi)
 {
     // splicer begin function.explicit2_CFI
@@ -521,6 +546,7 @@ void CHA_explicit2_CFI(CFI_cdesc_t *SHT_name_cfi)
     delete[] SHC_name_cxx;
     // splicer end function.explicit2_CFI
 }
+// end CHA_explicit2_CFI
 
 /**
  * \brief pass a single char argument as a scalar, extern "C"
@@ -532,12 +558,14 @@ void CHA_explicit2_CFI(CFI_cdesc_t *SHT_name_cfi)
 // ----------------------------------------
 // Argument:  char status
 // Statement: c_in_char
+// start CHA_CpassChar
 void CHA_CpassChar(char status)
 {
     // splicer begin function.CpassChar
     CpassChar(status);
     // splicer end function.CpassChar
 }
+// end CHA_CpassChar
 
 /**
  * \brief return a char argument (non-pointer), extern "C"
@@ -546,12 +574,14 @@ void CHA_CpassChar(char status)
 // ----------------------------------------
 // Function:  char CreturnChar
 // Statement: c_function_char
+// start CHA_CreturnChar
 void CHA_CreturnChar(char *SHC_rv)
 {
     // splicer begin function.CreturnChar
     *SHC_rv = CreturnChar();
     // splicer end function.CreturnChar
 }
+// end CHA_CreturnChar
 
 /**
  * \brief strcpy like behavior
@@ -570,6 +600,7 @@ void CHA_CreturnChar(char *SHC_rv)
 // ----------------------------------------
 // Argument:  const char *src +blanknull
 // Statement: f_in_char*_cfi
+// start CHA_CpassCharPtr_CFI
 void CHA_CpassCharPtr_CFI(CFI_cdesc_t *SHT_dest_cfi,
     CFI_cdesc_t *SHT_src_cfi)
 {
@@ -586,6 +617,7 @@ void CHA_CpassCharPtr_CFI(CFI_cdesc_t *SHT_dest_cfi,
     ShroudCharFree(SHC_src_cxx);
     // splicer end function.CpassCharPtr_CFI
 }
+// end CHA_CpassCharPtr_CFI
 
 /**
  * \brief Test F_blanknull option
@@ -600,12 +632,14 @@ void CHA_CpassCharPtr_CFI(CFI_cdesc_t *SHT_dest_cfi,
 // ----------------------------------------
 // Argument:  const char *src
 // Statement: c_in_char*
+// start CHA_CpassCharPtrBlank
 void CHA_CpassCharPtrBlank(char *dest, const char *src)
 {
     // splicer begin function.CpassCharPtrBlank
     CpassCharPtrBlank(dest, src);
     // splicer end function.CpassCharPtrBlank
 }
+// end CHA_CpassCharPtrBlank
 
 /**
  * \brief Test F_blanknull option
@@ -620,6 +654,7 @@ void CHA_CpassCharPtrBlank(char *dest, const char *src)
 // ----------------------------------------
 // Argument:  const char *src
 // Statement: f_in_char*_cfi
+// start CHA_CpassCharPtrBlank_CFI
 void CHA_CpassCharPtrBlank_CFI(CFI_cdesc_t *SHT_dest_cfi,
     CFI_cdesc_t *SHT_src_cfi)
 {
@@ -636,6 +671,7 @@ void CHA_CpassCharPtrBlank_CFI(CFI_cdesc_t *SHT_dest_cfi,
     ShroudCharFree(SHC_src_cxx);
     // splicer end function.CpassCharPtrBlank_CFI
 }
+// end CHA_CpassCharPtrBlank_CFI
 
 /**
  * \brief NULL terminate input string in C, not in Fortran.
@@ -647,6 +683,7 @@ void CHA_CpassCharPtrBlank_CFI(CFI_cdesc_t *SHT_dest_cfi,
 // ----------------------------------------
 // Argument:  const char *src
 // Statement: c_in_char*
+// start CHA_CpassCharPtrNotrim
 int CHA_CpassCharPtrNotrim(const char *src)
 {
     // splicer begin function.CpassCharPtrNotrim
@@ -654,6 +691,7 @@ int CHA_CpassCharPtrNotrim(const char *src)
     return SHC_rv;
     // splicer end function.CpassCharPtrNotrim
 }
+// end CHA_CpassCharPtrNotrim
 
 /**
  * \brief NULL terminate input string in C, not in Fortran.
@@ -665,6 +703,7 @@ int CHA_CpassCharPtrNotrim(const char *src)
 // ----------------------------------------
 // Argument:  const char *src
 // Statement: f_in_char*_cfi
+// start CHA_CpassCharPtrNotrim_CFI
 int CHA_CpassCharPtrNotrim_CFI(CFI_cdesc_t *SHT_src_cfi)
 {
     // splicer begin function.CpassCharPtrNotrim_CFI
@@ -676,6 +715,7 @@ int CHA_CpassCharPtrNotrim_CFI(CFI_cdesc_t *SHT_src_cfi)
     return SHC_rv;
     // splicer end function.CpassCharPtrNotrim_CFI
 }
+// end CHA_CpassCharPtrNotrim_CFI
 
 /**
  * \brief Do not NULL terminate input string
@@ -698,6 +738,7 @@ int CHA_CpassCharPtrNotrim_CFI(CFI_cdesc_t *SHT_src_cfi)
 // ----------------------------------------
 // Argument:  const char *src +api(capi)
 // Statement: c_in_char*
+// start CHA_CpassCharPtrCAPI
 int CHA_CpassCharPtrCAPI(void *addr, const char *src)
 {
     // splicer begin function.CpassCharPtrCAPI
@@ -705,6 +746,7 @@ int CHA_CpassCharPtrCAPI(void *addr, const char *src)
     return SHC_rv;
     // splicer end function.CpassCharPtrCAPI
 }
+// end CHA_CpassCharPtrCAPI
 
 /**
  * \brief Mix api(buf) and api(capi)
@@ -719,6 +761,7 @@ int CHA_CpassCharPtrCAPI(void *addr, const char *src)
 // ----------------------------------------
 // Argument:  const char *src +api(capi)
 // Statement: c_in_char*
+// start CHA_CpassCharPtrCAPI2
 int CHA_CpassCharPtrCAPI2(const char *in, const char *src)
 {
     // splicer begin function.CpassCharPtrCAPI2
@@ -726,6 +769,7 @@ int CHA_CpassCharPtrCAPI2(const char *in, const char *src)
     return SHC_rv;
     // splicer end function.CpassCharPtrCAPI2
 }
+// end CHA_CpassCharPtrCAPI2
 
 /**
  * \brief Mix api(buf) and api(capi)
@@ -740,6 +784,7 @@ int CHA_CpassCharPtrCAPI2(const char *in, const char *src)
 // ----------------------------------------
 // Argument:  const char *src +api(capi)
 // Statement: f_in_char*_capi
+// start CHA_CpassCharPtrCAPI2_CFI
 int CHA_CpassCharPtrCAPI2_CFI(CFI_cdesc_t *SHT_in_cfi, const char *src)
 {
     // splicer begin function.CpassCharPtrCAPI2_CFI
@@ -751,6 +796,7 @@ int CHA_CpassCharPtrCAPI2_CFI(CFI_cdesc_t *SHT_in_cfi, const char *src)
     return SHC_rv;
     // splicer end function.CpassCharPtrCAPI2_CFI
 }
+// end CHA_CpassCharPtrCAPI2_CFI
 
 /**
  * Return strlen of the first index as a check.
@@ -761,6 +807,7 @@ int CHA_CpassCharPtrCAPI2_CFI(CFI_cdesc_t *SHT_in_cfi, const char *src)
 // ----------------------------------------
 // Argument:  char **names +intent(in)
 // Statement: c_in_char**
+// start CHA_acceptCharArrayIn
 int CHA_acceptCharArrayIn(char **names)
 {
     // splicer begin function.acceptCharArrayIn
@@ -768,6 +815,7 @@ int CHA_acceptCharArrayIn(char **names)
     return SHC_rv;
     // splicer end function.acceptCharArrayIn
 }
+// end CHA_acceptCharArrayIn
 
 /**
  * Return strlen of the first index as a check.
@@ -778,6 +826,7 @@ int CHA_acceptCharArrayIn(char **names)
 // ----------------------------------------
 // Argument:  char **names +intent(in)
 // Statement: f_in_char**_cfi
+// start CHA_acceptCharArrayIn_CFI
 int CHA_acceptCharArrayIn_CFI(CFI_cdesc_t *SHT_names_cfi)
 {
     // splicer begin function.acceptCharArrayIn_CFI
@@ -791,5 +840,6 @@ int CHA_acceptCharArrayIn_CFI(CFI_cdesc_t *SHT_names_cfi)
     return SHC_rv;
     // splicer end function.acceptCharArrayIn_CFI
 }
+// end CHA_acceptCharArrayIn_CFI
 
 }  // extern "C"

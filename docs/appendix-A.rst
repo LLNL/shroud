@@ -1105,7 +1105,7 @@ terminated strings.  In Fortran this pattern would be an array of
 variable is converted into the the C version by copying the data then
 releasing it at the end of the wrapper.
 
-:file:`pointers.yaml`:
+:file:`char.yaml`:
 
 .. code-block:: yaml
 
@@ -1113,25 +1113,25 @@ releasing it at the end of the wrapper.
 
 This is a C file which provides the bufferify function.
 
-:file:`wrappointers.c`:
+:file:`wrapchar.cpp`:
 
-.. literalinclude:: ../regression/reference/pointers-c/wrappointers.c
-   :language: c
-   :start-after: start POI_acceptCharArrayIn_bufferify
-   :end-before: end POI_acceptCharArrayIn_bufferify
+.. literalinclude:: ../regression/reference/char-cxx/wrapchar.cpp
+   :language: c++
+   :start-after: start CHA_acceptCharArrayIn_bufferify
+   :end-before: end CHA_acceptCharArrayIn_bufferify
 
 Most of the work is done by the helper function.
 This converts the Fortran array into NULL terminated strings by
 copying all of the values:
 
-.. literalinclude:: ../regression/reference/pointers-c/wrappointers.c
-   :language: c
+.. literalinclude:: ../regression/reference/char-cxx/wrapchar.cpp
+   :language: c++
    :start-after: start helper char_array_alloc
    :end-before: end helper char_array_alloc
 
 Fortran calls C via the following interface:
 
-.. literalinclude:: ../regression/reference/pointers-c/wrapfpointers.f
+.. literalinclude:: ../regression/reference/char-cxx/wrapfchar.f
    :language: fortran
    :start-after: start c_accept_char_array_in
    :end-before: end c_accept_char_array_in
@@ -1139,7 +1139,7 @@ Fortran calls C via the following interface:
 
 The Fortran wrapper:
 
-.. literalinclude:: ../regression/reference/pointers-c/wrapfpointers.f
+.. literalinclude:: ../regression/reference/char-cxx/wrapfchar.f
    :language: fortran
    :start-after: start accept_char_array_in
    :end-before: end accept_char_array_in

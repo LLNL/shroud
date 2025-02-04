@@ -522,7 +522,9 @@ def process_mixin(stmts, defaults, stmtdict):
                     continue
                 mparts = mixin.split("_", 2)
                 tmp_node["mixin_names"].append("  " + mixin)
-                if mparts[1] != "mixin":
+                if len(mparts) < 2:
+                    cursor.warning("Mixin '{}' must have intent 'mixin'.".format(mixin))
+                elif mparts[1] != "mixin":
                     cursor.warning("Mixin '{}' must have intent 'mixin'.".format(mixin))
                 elif mixin not in mixins:
                     cursor.warning("Mixin '{}' not found.".format(mixin))

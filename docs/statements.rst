@@ -158,6 +158,9 @@ Comments list the steps used by the wrapper.
 The final group's comment will be a collection of all of the mixin's comments.
 Each mixin can contribute a step in the wrapping process.
 Comments are appended as part of the mixin process.
+Note that if the final non-mixin group also defines comments, it will replace
+the comments created from the mixins. *notes* is intended for text which
+provides additional information specific to a group.
 
 notes
 ^^^^^
