@@ -24,12 +24,14 @@ module char_mod
     ! ----------------------------------------
     ! Function:  void init_test
     ! Statement: f_subroutine
+    ! start init_test
     interface
         subroutine init_test() &
                 bind(C, name="CHA_init_test")
             implicit none
         end subroutine init_test
     end interface
+    ! end init_test
 
     ! ----------------------------------------
     ! Function:  void passChar
@@ -37,6 +39,7 @@ module char_mod
     ! ----------------------------------------
     ! Argument:  char status
     ! Statement: f_in_char
+    ! start pass_char
     interface
         subroutine pass_char(status) &
                 bind(C, name="CHA_passChar")
@@ -45,6 +48,7 @@ module char_mod
             character(kind=C_CHAR), value, intent(IN) :: status
         end subroutine pass_char
     end interface
+    ! end pass_char
 
     ! ----------------------------------------
     ! Function:  void passCharForce
@@ -52,6 +56,7 @@ module char_mod
     ! ----------------------------------------
     ! Argument:  char status
     ! Statement: f_in_char
+    ! start c_pass_char_force
     interface
         subroutine c_pass_char_force(status) &
                 bind(C, name="CHA_passCharForce")
@@ -60,10 +65,12 @@ module char_mod
             character(kind=C_CHAR), value, intent(IN) :: status
         end subroutine c_pass_char_force
     end interface
+    ! end c_pass_char_force
 
     ! ----------------------------------------
     ! Function:  char returnChar
     ! Statement: f_function_char
+    ! start c_return_char
     interface
         subroutine c_return_char(SHT_rv) &
                 bind(C, name="CHA_returnChar")
@@ -72,6 +79,7 @@ module char_mod
             character(kind=C_CHAR), intent(OUT) :: SHT_rv
         end subroutine c_return_char
     end interface
+    ! end c_return_char
 
     ! ----------------------------------------
     ! Function:  void passCharPtr
@@ -120,6 +128,7 @@ module char_mod
     ! ----------------------------------------
     ! Argument:  char *s +intent(inout)
     ! Statement: c_inout_char*
+    ! start c_pass_char_ptr_in_out
     interface
         subroutine c_pass_char_ptr_in_out(s) &
                 bind(C, name="CHA_passCharPtrInOut")
@@ -128,6 +137,7 @@ module char_mod
             character(kind=C_CHAR), intent(INOUT) :: s(*)
         end subroutine c_pass_char_ptr_in_out
     end interface
+    ! end c_pass_char_ptr_in_out
 
     ! ----------------------------------------
     ! Function:  void passCharPtrInOut
@@ -135,6 +145,7 @@ module char_mod
     ! ----------------------------------------
     ! Argument:  char *s +intent(inout)
     ! Statement: f_inout_char*_cfi
+    ! start pass_char_ptr_in_out
     interface
         subroutine pass_char_ptr_in_out(s) &
                 bind(C, name="CHA_passCharPtrInOut_CFI")
@@ -142,6 +153,7 @@ module char_mod
             character(len=*), intent(INOUT) :: s
         end subroutine pass_char_ptr_in_out
     end interface
+    ! end pass_char_ptr_in_out
 
     ! ----------------------------------------
     ! Function:  const char *getCharPtr1
@@ -230,6 +242,7 @@ module char_mod
     ! ----------------------------------------
     ! Function:  const char *getCharPtr4 +deref(raw)
     ! Statement: f_function_char*_raw
+    ! start get_char_ptr4
     interface
         function get_char_ptr4() &
                 result(SHT_rv) &
@@ -239,11 +252,13 @@ module char_mod
             type(C_PTR) :: SHT_rv
         end function get_char_ptr4
     end interface
+    ! end get_char_ptr4
 
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
     ! ----------------------------------------
     ! Function:  const char *getCharPtr5 +deref(pointer)
     ! Statement: c_function_char*
+    ! start c_get_char_ptr5
     interface
         function c_get_char_ptr5() &
                 result(SHT_rv) &
@@ -253,12 +268,14 @@ module char_mod
             type(C_PTR) :: SHT_rv
         end function c_get_char_ptr5
     end interface
+    ! end c_get_char_ptr5
 #endif
 
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
     ! ----------------------------------------
     ! Function:  const char *getCharPtr5 +deref(pointer)
     ! Statement: f_function_char*_cfi_pointer
+    ! start c_get_char_ptr5_CFI
     interface
         subroutine c_get_char_ptr5_CFI(SHT_rv) &
                 bind(C, name="CHA_getCharPtr5_CFI")
@@ -266,6 +283,7 @@ module char_mod
             character(len=:), intent(OUT), pointer :: SHT_rv
         end subroutine c_get_char_ptr5_CFI
     end interface
+    ! end c_get_char_ptr5_CFI
 #endif
 
     ! ----------------------------------------
@@ -274,6 +292,7 @@ module char_mod
     ! ----------------------------------------
     ! Argument:  char *name +intent(in)+len_trim(AAlen)
     ! Statement: c_in_char*
+    ! start c_explicit1
     interface
         subroutine c_explicit1(name) &
                 bind(C, name="CHA_explicit1")
@@ -282,6 +301,7 @@ module char_mod
             character(kind=C_CHAR), intent(IN) :: name(*)
         end subroutine c_explicit1
     end interface
+    ! end c_explicit1
 
     ! ----------------------------------------
     ! Function:  void explicit1
@@ -289,6 +309,7 @@ module char_mod
     ! ----------------------------------------
     ! Argument:  char *name +intent(in)+len_trim(AAlen)
     ! Statement: f_in_char*_cfi
+    ! start explicit1
     interface
         subroutine explicit1(name) &
                 bind(C, name="CHA_explicit1_CFI")
@@ -296,6 +317,7 @@ module char_mod
             character(len=*), intent(IN) :: name
         end subroutine explicit1
     end interface
+    ! end explicit1
 
     ! ----------------------------------------
     ! Function:  void explicit2
@@ -303,6 +325,7 @@ module char_mod
     ! ----------------------------------------
     ! Argument:  char *name +intent(out)+len(AAtrim)
     ! Statement: c_out_char*
+    ! start c_explicit2
     interface
         subroutine c_explicit2(name) &
                 bind(C, name="CHA_explicit2")
@@ -311,6 +334,7 @@ module char_mod
             character(kind=C_CHAR), intent(OUT) :: name(*)
         end subroutine c_explicit2
     end interface
+    ! end c_explicit2
 
     ! ----------------------------------------
     ! Function:  void explicit2
@@ -318,6 +342,7 @@ module char_mod
     ! ----------------------------------------
     ! Argument:  char *name +intent(out)+len(AAtrim)
     ! Statement: f_out_char*_cfi
+    ! start explicit2
     interface
         subroutine explicit2(name) &
                 bind(C, name="CHA_explicit2_CFI")
@@ -325,6 +350,7 @@ module char_mod
             character(len=*), intent(OUT) :: name
         end subroutine explicit2
     end interface
+    ! end explicit2
 
     ! ----------------------------------------
     ! Function:  void CpassChar
@@ -332,6 +358,7 @@ module char_mod
     ! ----------------------------------------
     ! Argument:  char status
     ! Statement: f_in_char
+    ! start cpass_char
     interface
         subroutine cpass_char(status) &
                 bind(C, name="CHA_CpassChar")
@@ -340,10 +367,12 @@ module char_mod
             character(kind=C_CHAR), value, intent(IN) :: status
         end subroutine cpass_char
     end interface
+    ! end cpass_char
 
     ! ----------------------------------------
     ! Function:  char CreturnChar
     ! Statement: f_function_char
+    ! start c_creturn_char
     interface
         subroutine c_creturn_char(SHT_rv) &
                 bind(C, name="CHA_CreturnChar")
@@ -352,6 +381,7 @@ module char_mod
             character(kind=C_CHAR), intent(OUT) :: SHT_rv
         end subroutine c_creturn_char
     end interface
+    ! end c_creturn_char
 
     ! ----------------------------------------
     ! Function:  void CpassCharPtr
@@ -362,6 +392,7 @@ module char_mod
     ! ----------------------------------------
     ! Argument:  const char *src +blanknull
     ! Statement: c_in_char*
+    ! start c_cpass_char_ptr
     interface
         subroutine c_cpass_char_ptr(dest, src) &
                 bind(C, name="CpassCharPtr")
@@ -371,6 +402,7 @@ module char_mod
             character(kind=C_CHAR), intent(IN) :: src(*)
         end subroutine c_cpass_char_ptr
     end interface
+    ! end c_cpass_char_ptr
 
     ! ----------------------------------------
     ! Function:  void CpassCharPtr
@@ -381,6 +413,7 @@ module char_mod
     ! ----------------------------------------
     ! Argument:  const char *src +blanknull
     ! Statement: f_in_char*_cfi
+    ! start cpass_char_ptr
     interface
         subroutine cpass_char_ptr(dest, src) &
                 bind(C, name="CHA_CpassCharPtr_CFI")
@@ -389,6 +422,7 @@ module char_mod
             character(len=*), intent(IN) :: src
         end subroutine cpass_char_ptr
     end interface
+    ! end cpass_char_ptr
 
     ! ----------------------------------------
     ! Function:  void CpassCharPtrBlank
@@ -399,6 +433,7 @@ module char_mod
     ! ----------------------------------------
     ! Argument:  const char *src
     ! Statement: c_in_char*
+    ! start c_cpass_char_ptr_blank
     interface
         subroutine c_cpass_char_ptr_blank(dest, src) &
                 bind(C, name="CHA_CpassCharPtrBlank")
@@ -408,6 +443,7 @@ module char_mod
             character(kind=C_CHAR), intent(IN) :: src(*)
         end subroutine c_cpass_char_ptr_blank
     end interface
+    ! end c_cpass_char_ptr_blank
 
     ! ----------------------------------------
     ! Function:  void CpassCharPtrBlank
@@ -418,6 +454,7 @@ module char_mod
     ! ----------------------------------------
     ! Argument:  const char *src
     ! Statement: f_in_char*_cfi
+    ! start cpass_char_ptr_blank
     interface
         subroutine cpass_char_ptr_blank(dest, src) &
                 bind(C, name="CHA_CpassCharPtrBlank_CFI")
@@ -426,6 +463,7 @@ module char_mod
             character(len=*), intent(IN) :: src
         end subroutine cpass_char_ptr_blank
     end interface
+    ! end cpass_char_ptr_blank
 
     ! ----------------------------------------
     ! Function:  int CpassCharPtrNotrim
@@ -433,6 +471,7 @@ module char_mod
     ! ----------------------------------------
     ! Argument:  const char *src
     ! Statement: c_in_char*
+    ! start c_cpass_char_ptr_notrim
     interface
         function c_cpass_char_ptr_notrim(src) &
                 result(SHT_rv) &
@@ -443,6 +482,7 @@ module char_mod
             integer(C_INT) :: SHT_rv
         end function c_cpass_char_ptr_notrim
     end interface
+    ! end c_cpass_char_ptr_notrim
 
     ! ----------------------------------------
     ! Function:  int CpassCharPtrNotrim
@@ -450,6 +490,7 @@ module char_mod
     ! ----------------------------------------
     ! Argument:  const char *src
     ! Statement: f_in_char*_cfi
+    ! start cpass_char_ptr_notrim
     interface
         function cpass_char_ptr_notrim(src) &
                 result(SHT_rv) &
@@ -460,6 +501,7 @@ module char_mod
             integer(C_INT) :: SHT_rv
         end function cpass_char_ptr_notrim
     end interface
+    ! end cpass_char_ptr_notrim
 
     ! ----------------------------------------
     ! Function:  int CpassCharPtrCAPI
@@ -470,6 +512,7 @@ module char_mod
     ! ----------------------------------------
     ! Argument:  const char *src +api(capi)
     ! Statement: f_in_char*_capi
+    ! start cpass_char_ptr_capi
     interface
         function cpass_char_ptr_capi(addr, src) &
                 result(SHT_rv) &
@@ -481,6 +524,7 @@ module char_mod
             integer(C_INT) :: SHT_rv
         end function cpass_char_ptr_capi
     end interface
+    ! end cpass_char_ptr_capi
 
     ! ----------------------------------------
     ! Function:  int CpassCharPtrCAPI2
@@ -491,6 +535,7 @@ module char_mod
     ! ----------------------------------------
     ! Argument:  const char *src +api(capi)
     ! Statement: c_in_char*
+    ! start c_cpass_char_ptr_capi2
     interface
         function c_cpass_char_ptr_capi2(in, src) &
                 result(SHT_rv) &
@@ -502,6 +547,7 @@ module char_mod
             integer(C_INT) :: SHT_rv
         end function c_cpass_char_ptr_capi2
     end interface
+    ! end c_cpass_char_ptr_capi2
 
     ! ----------------------------------------
     ! Function:  int CpassCharPtrCAPI2
@@ -512,6 +558,7 @@ module char_mod
     ! ----------------------------------------
     ! Argument:  const char *src +api(capi)
     ! Statement: f_in_char*_capi
+    ! start cpass_char_ptr_capi2
     interface
         function cpass_char_ptr_capi2(in, src) &
                 result(SHT_rv) &
@@ -523,6 +570,7 @@ module char_mod
             integer(C_INT) :: SHT_rv
         end function cpass_char_ptr_capi2
     end interface
+    ! end cpass_char_ptr_capi2
 
     ! ----------------------------------------
     ! Function:  int acceptCharArrayIn
@@ -530,6 +578,7 @@ module char_mod
     ! ----------------------------------------
     ! Argument:  char **names +intent(in)
     ! Statement: c_in_char**
+    ! start c_accept_char_array_in
     interface
         function c_accept_char_array_in(names) &
                 result(SHT_rv) &
@@ -540,6 +589,7 @@ module char_mod
             integer(C_INT) :: SHT_rv
         end function c_accept_char_array_in
     end interface
+    ! end c_accept_char_array_in
 
     ! ----------------------------------------
     ! Function:  int acceptCharArrayIn
@@ -547,6 +597,7 @@ module char_mod
     ! ----------------------------------------
     ! Argument:  char **names +intent(in)
     ! Statement: f_in_char**_cfi
+    ! start accept_char_array_in
     interface
         function accept_char_array_in(names) &
                 result(SHT_rv) &
@@ -557,6 +608,7 @@ module char_mod
             integer(C_INT) :: SHT_rv
         end function accept_char_array_in
     end interface
+    ! end accept_char_array_in
 
     ! splicer begin additional_declarations
     ! splicer end additional_declarations
@@ -568,11 +620,13 @@ contains
     ! ----------------------------------------
     ! Function:  void init_test
     ! Statement: f_subroutine
+    ! start init_test
     subroutine init_test()
         ! splicer begin function.init_test
         call c_init_test()
         ! splicer end function.init_test
     end subroutine init_test
+    ! end init_test
 #endif
 
 #if 0
@@ -587,12 +641,14 @@ contains
     !! \brief pass a single char argument as a scalar.
     !!
     !<
+    ! start pass_char
     subroutine pass_char(status)
         character, value, intent(IN) :: status
         ! splicer begin function.pass_char
         call c_pass_char(status)
         ! splicer end function.pass_char
     end subroutine pass_char
+    ! end pass_char
 #endif
 
     ! ----------------------------------------
@@ -605,12 +661,14 @@ contains
     !! By default no Fortran wrapper is created.
     !! Force one so it can be tested.
     !<
+    ! start pass_char_force
     subroutine pass_char_force(status)
         character, value, intent(IN) :: status
         ! splicer begin function.pass_char_force
         call c_pass_char_force(status)
         ! splicer end function.pass_char_force
     end subroutine pass_char_force
+    ! end pass_char_force
 
     ! ----------------------------------------
     ! Function:  char returnChar
@@ -619,6 +677,7 @@ contains
     !! \brief return a char argument (non-pointer)
     !!
     !<
+    ! start return_char
     function return_char() &
             result(SHT_rv)
         character :: SHT_rv
@@ -626,6 +685,7 @@ contains
         call c_return_char(SHT_rv)
         ! splicer end function.return_char
     end function return_char
+    ! end return_char
 
 #if 0
     ! Only the interface is needed
@@ -670,12 +730,14 @@ contains
     !! Change a string in-place.
     !! For Python, return a new string since strings are immutable.
     !<
+    ! start pass_char_ptr_in_out
     subroutine pass_char_ptr_in_out(s)
         character(len=*), intent(INOUT) :: s
         ! splicer begin function.pass_char_ptr_in_out
         call c_pass_char_ptr_in_out_CFI(s)
         ! splicer end function.pass_char_ptr_in_out
     end subroutine pass_char_ptr_in_out
+    ! end pass_char_ptr_in_out
 #endif
 
     ! ----------------------------------------
@@ -736,6 +798,7 @@ contains
     !! \brief return a 'const char *' as type(C_PTR)
     !!
     !<
+    ! start get_char_ptr4
     function get_char_ptr4() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -744,6 +807,7 @@ contains
         SHT_rv = c_get_char_ptr4()
         ! splicer end function.get_char_ptr4
     end function get_char_ptr4
+    ! end get_char_ptr4
 #endif
 
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
@@ -754,6 +818,7 @@ contains
     !! \brief return a 'const char *' as character(:) pointer
     !!
     !<
+    ! start get_char_ptr5
     function get_char_ptr5() &
             result(SHT_rv)
         character(len=:), pointer :: SHT_rv
@@ -761,6 +826,7 @@ contains
         call c_get_char_ptr5_CFI(SHT_rv)
         ! splicer end function.get_char_ptr5
     end function get_char_ptr5
+    ! end get_char_ptr5
 #endif
 
 #if 0
@@ -771,12 +837,14 @@ contains
     ! ----------------------------------------
     ! Argument:  char *name +intent(in)+len_trim(AAlen)
     ! Statement: f_in_char*_cfi
+    ! start explicit1
     subroutine explicit1(name)
         character(len=*), intent(IN) :: name
         ! splicer begin function.explicit1
         call c_explicit1_CFI(name)
         ! splicer end function.explicit1
     end subroutine explicit1
+    ! end explicit1
 #endif
 
 #if 0
@@ -787,12 +855,14 @@ contains
     ! ----------------------------------------
     ! Argument:  char *name +intent(out)+len(AAtrim)
     ! Statement: f_out_char*_cfi
+    ! start explicit2
     subroutine explicit2(name)
         character(len=*), intent(OUT) :: name
         ! splicer begin function.explicit2
         call c_explicit2_CFI(name)
         ! splicer end function.explicit2
     end subroutine explicit2
+    ! end explicit2
 #endif
 
 #if 0
@@ -807,12 +877,14 @@ contains
     !! \brief pass a single char argument as a scalar, extern "C"
     !!
     !<
+    ! start cpass_char
     subroutine cpass_char(status)
         character, value, intent(IN) :: status
         ! splicer begin function.cpass_char
         call c_cpass_char(status)
         ! splicer end function.cpass_char
     end subroutine cpass_char
+    ! end cpass_char
 #endif
 
     ! ----------------------------------------
@@ -822,6 +894,7 @@ contains
     !! \brief return a char argument (non-pointer), extern "C"
     !!
     !<
+    ! start creturn_char
     function creturn_char() &
             result(SHT_rv)
         character :: SHT_rv
@@ -829,6 +902,7 @@ contains
         call c_creturn_char(SHT_rv)
         ! splicer end function.creturn_char
     end function creturn_char
+    ! end creturn_char
 
 #if 0
     ! Only the interface is needed
@@ -849,6 +923,7 @@ contains
     !! extern "C"
     !! If src is a blank string, pass a NULL pointer to C library function.
     !<
+    ! start cpass_char_ptr
     subroutine cpass_char_ptr(dest, src)
         character(len=*), intent(OUT) :: dest
         character(len=*), intent(IN) :: src
@@ -856,6 +931,7 @@ contains
         call c_cpass_char_ptr_CFI(dest, src)
         ! splicer end function.cpass_char_ptr
     end subroutine cpass_char_ptr
+    ! end cpass_char_ptr
 #endif
 
 #if 0
@@ -873,6 +949,7 @@ contains
     !! \brief Test F_blanknull option
     !!
     !<
+    ! start cpass_char_ptr_blank
     subroutine cpass_char_ptr_blank(dest, src)
         character(len=*), intent(OUT) :: dest
         character(len=*), intent(IN) :: src
@@ -880,6 +957,7 @@ contains
         call c_cpass_char_ptr_blank_CFI(dest, src)
         ! splicer end function.cpass_char_ptr_blank
     end subroutine cpass_char_ptr_blank
+    ! end cpass_char_ptr_blank
 #endif
 
 #if 0
@@ -894,6 +972,7 @@ contains
     !! \brief NULL terminate input string in C, not in Fortran.
     !!
     !<
+    ! start cpass_char_ptr_notrim
     function cpass_char_ptr_notrim(src) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -903,6 +982,7 @@ contains
         SHT_rv = c_cpass_char_ptr_notrim_CFI(src)
         ! splicer end function.cpass_char_ptr_notrim
     end function cpass_char_ptr_notrim
+    ! end cpass_char_ptr_notrim
 #endif
 
 #if 0
@@ -928,6 +1008,7 @@ contains
     !! This example will not create a Fortran wrapper since C can be
     !! called directly.
     !<
+    ! start cpass_char_ptr_capi
     function cpass_char_ptr_capi(addr, src) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR
@@ -938,6 +1019,7 @@ contains
         SHT_rv = c_cpass_char_ptr_capi(addr, src)
         ! splicer end function.cpass_char_ptr_capi
     end function cpass_char_ptr_capi
+    ! end cpass_char_ptr_capi
 #endif
 
 #if 0
@@ -955,6 +1037,7 @@ contains
     !! \brief Mix api(buf) and api(capi)
     !!
     !<
+    ! start cpass_char_ptr_capi2
     function cpass_char_ptr_capi2(in, src) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -965,6 +1048,7 @@ contains
         SHT_rv = c_cpass_char_ptr_capi2_CFI(in, src)
         ! splicer end function.cpass_char_ptr_capi2
     end function cpass_char_ptr_capi2
+    ! end cpass_char_ptr_capi2
 #endif
 
 #if 0
@@ -978,6 +1062,7 @@ contains
     !>
     !! Return strlen of the first index as a check.
     !<
+    ! start accept_char_array_in
     function accept_char_array_in(names) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -987,6 +1072,7 @@ contains
         SHT_rv = c_accept_char_array_in_CFI(names)
         ! splicer end function.accept_char_array_in
     end function accept_char_array_in
+    ! end accept_char_array_in
 #endif
 
     ! splicer begin additional_functions

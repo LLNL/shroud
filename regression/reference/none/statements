@@ -170,7 +170,7 @@ c_function_char*:
   name: c_function_char*
   comments:
   - Call a function.
-  - Declare function result as a type(C_PTR)
+  - Declare function result as a type(C_PTR).
   notes:
   - Return a type(C_PTR) from Fortran.
   mixin_names:
@@ -193,7 +193,7 @@ c_function_char*_arg:
   - Call function and assign to a local C++ variable.
   - Copy cxx variable to c argument.
   notes:
-  - Change function result into an argument
+  - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
   - was base:f_function_char*_buf_copy
   mixin_names:
@@ -252,7 +252,7 @@ c_function_char*_buf_arg:
   - Call function and assign to a local C++ variable.
   - Copy cxx variable to c argument.
   notes:
-  - Change function result into an argument
+  - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
   - was base:f_function_char*_buf_copy
   mixin_names:
@@ -441,6 +441,11 @@ c_function_native*_scalar:
 c_function_shadow&_capptr:
   name: c_function_shadow&_capptr
   comments:
+  - Pass function result as a capsule field of shadow class
+  - from Fortran to C.
+  - Call function and assign to a local C++ variable.
+  - Assign to capsule in C wrapper.
+  notes:
   - Return a C_capsule_data_type.
   mixin_names:
   - '  c_mixin_function_shadow_capptr'
@@ -481,6 +486,11 @@ c_function_shadow&_capptr:
 c_function_shadow&_capptr_caller:
   name: c_function_shadow&_capptr_caller
   comments:
+  - Pass function result as a capsule field of shadow class
+  - from Fortran to C.
+  - Call function and assign to a local C++ variable.
+  - Assign to capsule in C wrapper.
+  notes:
   - Return a C_capsule_data_type.
   mixin_names:
   - '  c_mixin_function_shadow_capptr'
@@ -521,6 +531,11 @@ c_function_shadow&_capptr_caller:
 c_function_shadow&_capptr_library:
   name: c_function_shadow&_capptr_library
   comments:
+  - Pass function result as a capsule field of shadow class
+  - from Fortran to C.
+  - Call function and assign to a local C++ variable.
+  - Assign to capsule in C wrapper.
+  notes:
   - Return a C_capsule_data_type.
   mixin_names:
   - '  c_mixin_function_shadow_capptr'
@@ -675,6 +690,11 @@ c_function_shadow&_capsule_library:
 c_function_shadow*_capptr:
   name: c_function_shadow*_capptr
   comments:
+  - Pass function result as a capsule field of shadow class
+  - from Fortran to C.
+  - Call function and assign to a local C++ variable.
+  - Assign to capsule in C wrapper.
+  notes:
   - Return a C_capsule_data_type.
   mixin_names:
   - '  c_mixin_function_shadow_capptr'
@@ -715,6 +735,11 @@ c_function_shadow*_capptr:
 c_function_shadow*_capptr_caller:
   name: c_function_shadow*_capptr_caller
   comments:
+  - Pass function result as a capsule field of shadow class
+  - from Fortran to C.
+  - Call function and assign to a local C++ variable.
+  - Assign to capsule in C wrapper.
+  notes:
   - Return a C_capsule_data_type.
   mixin_names:
   - '  c_mixin_function_shadow_capptr'
@@ -755,6 +780,11 @@ c_function_shadow*_capptr_caller:
 c_function_shadow*_capptr_library:
   name: c_function_shadow*_capptr_library
   comments:
+  - Pass function result as a capsule field of shadow class
+  - from Fortran to C.
+  - Call function and assign to a local C++ variable.
+  - Assign to capsule in C wrapper.
+  notes:
   - Return a C_capsule_data_type.
   mixin_names:
   - '  c_mixin_function_shadow_capptr'
@@ -795,7 +825,10 @@ c_function_shadow*_capptr_library:
 c_function_shadow*_capptr_shared:
   name: c_function_shadow*_capptr_shared
   comments:
-  - Return a C_capsule_data_type.
+  - Pass function result as a capsule field of shadow class
+  - from Fortran to C.
+  - Call function and assign to a local C++ variable.
+  - Assign to capsule in C wrapper.
   notes:
   - std::shared_ptr with a shadow class.
   mixin_names:
@@ -893,8 +926,12 @@ c_function_shadow*_this:
 c_function_shadow<native>_capptr:
   name: c_function_shadow<native>_capptr
   comments:
-  - Return an instance by value.
+  - Pass function result as a capsule field of shadow class
+  - from Fortran to C.
+  - Allocate a C wrapper result on the heap.
+  - Assign to capsule in C wrapper.
   notes:
+  - Return an instance by value.
   - Create memory in c_pre_call so it will survive the return.
   - owner=caller sets idtor flag to release the memory.
   - c_local_var is passed in as argument.
@@ -940,8 +977,12 @@ c_function_shadow<native>_capptr:
 c_function_shadow_capptr:
   name: c_function_shadow_capptr
   comments:
-  - Return an instance by value.
+  - Pass function result as a capsule field of shadow class
+  - from Fortran to C.
+  - Allocate a C wrapper result on the heap.
+  - Assign to capsule in C wrapper.
   notes:
+  - Return an instance by value.
   - Create memory in c_pre_call so it will survive the return.
   - owner=caller sets idtor flag to release the memory.
   - c_local_var is passed in as argument.
@@ -1078,6 +1119,10 @@ c_function_smartptr<shadow>_capptr:
 c_function_string:
   name: c_function_string
   comments:
+  - Pass capsule as argument to C wrapper.
+  - Allocate a C wrapper result on the heap.
+  - Assign to local capsule variable in C wrapper.
+  notes:
   - Cannot return a char array by value.
   - Return a const pointer to std::string data.
   mixin_names:
@@ -1135,9 +1180,14 @@ c_function_string&:
 c_function_string&_buf_arg:
   name: c_function_string&_buf_arg
   comments:
+  - Call the C wrapper as a subroutine.
+  - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
+  - Call function and assign to a local C++ variable.
+  - Copy cxx variable into c variable.
+  notes:
   - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
-  notes:
   - was base:f_function_string_buf
   mixin_names:
   - '  f_mixin_function-to-subroutine'
@@ -1377,9 +1427,14 @@ c_function_string*_library:
 c_function_string_buf_arg:
   name: c_function_string_buf_arg
   comments:
+  - Call the C wrapper as a subroutine.
+  - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
+  - Call function and assign to a local C++ variable.
+  - Copy cxx variable into c variable.
+  notes:
   - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
-  notes:
   - was base:f_function_string_buf
   mixin_names:
   - '  f_mixin_function-to-subroutine'
@@ -1513,6 +1568,8 @@ c_function_struct:
 c_function_struct*:
   name: c_function_struct*
   comments:
+  - Return a C pointer as a type(C_PTR).
+  notes:
   - C++ pointer -> void pointer -> C pointer.
   mixin_names:
   - '  f_mixin_function_c-ptr'
@@ -1526,7 +1583,7 @@ c_function_struct*:
   owner: library
 c_function_vector<native>:
   name: c_function_vector<native>
-  comments:
+  notes:
   - Cannot return a std::vector<native> by value.
   intent: function
   owner: library
@@ -1534,6 +1591,9 @@ c_function_vector<native>:
 c_function_vector<native>_malloc:
   name: c_function_vector<native>_malloc
   comments:
+  - Return pointer to array type.
+  - Add an argument to return the length of the array.
+  notes:
   - Create empty local vector then copy result to
   - malloc allocated array.
   - Add an argument with the length of the array.
@@ -1827,7 +1887,7 @@ c_in_native:
   comments:
   - Pass cxx variable to library.
   notes:
-  - An intent of 'none' is used with function pointers
+  - An intent of 'none' is used with function pointers.
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar'
@@ -2123,8 +2183,9 @@ c_in_smartptr<shadow>*:
 c_in_string:
   name: c_in_string
   comments:
-  - Pass a NULL terminated string to C wrapper
+  - Pass cxx variable to library.
   notes:
+  - Pass a NULL terminated string to C wrapper.
   - Pass directly as argument which will construct the std::string.
   - This would work for Fortran if it explicited added C_NULL_CHAR.
   mixin_names:
@@ -2149,7 +2210,7 @@ c_in_string&:
   - Create local std::string from the argument.
   - Pass cxx local variable to library.
   notes:
-  - Similar to f_in_string*, but c_arg_call is pass by value
+  - Similar to f_in_string*, but c_arg_call is pass by value.
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_local-string-init'
@@ -2322,7 +2383,7 @@ c_in_struct:
   - Pass cxx variable to library.
   notes:
   - Used with in, out, inout.
-  - C pointer -> void pointer -> C++ pointer
+  - C pointer -> void pointer -> C++ pointer.
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar'
@@ -2369,7 +2430,7 @@ c_in_struct*:
   - Pass cxx variable to library.
   notes:
   - Used with in, out, inout.
-  - C pointer -> void pointer -> C++ pointer
+  - C pointer -> void pointer -> C++ pointer.
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar'
@@ -2414,7 +2475,7 @@ c_in_unknown:
   owner: library
 c_in_vector<native*>&:
   name: c_in_vector<native*>&
-  comments:
+  notes:
   - Need to know the length of the vector from C.
   intent: in
   owner: library
@@ -2422,9 +2483,11 @@ c_in_vector<native*>&:
 c_in_vector<native*>&_buf:
   name: c_in_vector<native*>&_buf
   comments:
-  - Create a vector for pointers.
+  - Pass argument, len and size to C.
+  - Pass cxx local variable to library.
   notes:
-  - Specialize for std::vector<native *>
+  - Create a vector for pointers.
+  - Specialize for std::vector<native *>.
   mixin_names:
   - '  f_mixin_in_2d_vector_buf'
   - '  c_mixin_arg-call-cxx'
@@ -2460,7 +2523,7 @@ c_in_vector<native*>&_buf:
   owner: library
 c_in_vector<native>&:
   name: c_in_vector<native>&
-  comments:
+  notes:
   - Need to know the length of the vector from C.
   intent: in
   owner: library
@@ -2566,7 +2629,7 @@ c_in_vector<native>_buf:
   owner: library
 c_in_vector<string>&:
   name: c_in_vector<string>&
-  comments:
+  notes:
   - Need to know the length of the vector from C.
   intent: in
   owner: library
@@ -2973,6 +3036,8 @@ c_inout_native&:
 c_inout_native&_hidden:
   name: c_inout_native&_hidden
   comments:
+  - Pass cxx variable to library.
+  notes:
   - Declare a local variable and pass to C.
   mixin_names:
   - '  c_mixin_arg-call-cvar'
@@ -3039,6 +3104,8 @@ c_inout_native*_cdesc:
 c_inout_native*_hidden:
   name: c_inout_native*_hidden
   comments:
+  - Pass address of cxx variable to library.
+  notes:
   - Declare a local variable and pass to C.
   mixin_names:
   - '  c_mixin_arg-call-cvar-address'
@@ -3319,7 +3386,7 @@ c_inout_struct*:
   - Pass cxx variable to library.
   notes:
   - Used with in, out, inout.
-  - C pointer -> void pointer -> C++ pointer
+  - C pointer -> void pointer -> C++ pointer.
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar'
@@ -3375,6 +3442,9 @@ c_inout_vector<native>&_buf_copy:
 c_inout_vector<native>&_buf_malloc:
   name: c_inout_vector<native>&_buf_malloc
   comments:
+  - Pass raw pointer and size by reference to C.
+  - Pass cxx local variable to library.
+  notes:
   - Create local vector from arguments then copy result to
   - malloc allocated array.
   mixin_names:
@@ -3449,6 +3519,9 @@ c_inout_vector<native>*_buf_copy:
 c_inout_vector<native>*_buf_malloc:
   name: c_inout_vector<native>*_buf_malloc
   comments:
+  - Pass raw pointer and size by reference to C.
+  - Pass cxx local variable to library.
+  notes:
   - Create local vector from arguments then copy result to
   - malloc allocated array.
   mixin_names:
@@ -3523,6 +3596,9 @@ c_inout_vector<native>_buf_copy:
 c_inout_vector<native>_buf_malloc:
   name: c_inout_vector<native>_buf_malloc
   comments:
+  - Pass raw pointer and size by reference to C.
+  - Pass cxx local variable to library.
+  notes:
   - Create local vector from arguments then copy result to
   - malloc allocated array.
   mixin_names:
@@ -3562,7 +3638,7 @@ c_inout_vector<native>_buf_malloc:
   owner: library
 c_inout_vector<scalar>&:
   name: c_inout_vector<scalar>&
-  comments:
+  notes:
   - Need to know the length of the vector from C.
   intent: inout
   owner: library
@@ -4627,6 +4703,8 @@ c_out_native&:
 c_out_native&_hidden:
   name: c_out_native&_hidden
   comments:
+  - Pass cxx variable to library.
+  notes:
   - Declare a local variable and pass to C.
   mixin_names:
   - '  c_mixin_arg-call-cvar'
@@ -4685,7 +4763,7 @@ c_out_native**:
   comments:
   - Pass cxx variable to library.
   notes:
-  - Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'
+  - Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'.
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar'
@@ -4731,7 +4809,7 @@ c_out_native**_raw:
   comments:
   - Pass cxx variable to library.
   notes:
-  - Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'
+  - Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'.
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar'
@@ -4785,6 +4863,8 @@ c_out_native*_cdesc:
 c_out_native*_hidden:
   name: c_out_native*_hidden
   comments:
+  - Pass address of cxx variable to library.
+  notes:
   - Declare a local variable and pass to C.
   mixin_names:
   - '  c_mixin_arg-call-cvar-address'
@@ -4826,7 +4906,7 @@ c_out_string&:
   - Pass cxx local variable to library.
   - Strcpy std::string into argument.
   notes:
-  - Similar to f_out_string*
+  - Similar to f_out_string*.
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_local-string'
@@ -5057,7 +5137,7 @@ c_out_struct*:
   - Pass cxx variable to library.
   notes:
   - Used with in, out, inout.
-  - C pointer -> void pointer -> C++ pointer
+  - C pointer -> void pointer -> C++ pointer.
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar'
@@ -5078,7 +5158,7 @@ c_out_struct*:
   owner: library
 c_out_vector<native>&:
   name: c_out_vector<native>&
-  comments:
+  notes:
   - Need to know the length of the vector from C.
   intent: out
   owner: library
@@ -5127,9 +5207,11 @@ c_out_vector<native>&_buf_copy:
 c_out_vector<native>&_buf_malloc:
   name: c_out_vector<native>&_buf_malloc
   comments:
+  - Pass raw pointer and size by reference to C.
+  - Pass cxx local variable to library.
+  notes:
   - Create empty local vector then copy result to
   - malloc allocated array.
-  notes:
   - XXX - need to test scalar and pointer versions
   mixin_names:
   - '  c_mixin_out_vector_buf_malloc'
@@ -5262,9 +5344,11 @@ c_out_vector<native>*_buf_copy:
 c_out_vector<native>*_buf_malloc:
   name: c_out_vector<native>*_buf_malloc
   comments:
+  - Pass raw pointer and size by reference to C.
+  - Pass cxx local variable to library.
+  notes:
   - Create empty local vector then copy result to
   - malloc allocated array.
-  notes:
   - XXX - need to test scalar and pointer versions
   mixin_names:
   - '  c_mixin_out_vector_buf_malloc'
@@ -5397,9 +5481,11 @@ c_out_vector<native>_buf_copy:
 c_out_vector<native>_buf_malloc:
   name: c_out_vector<native>_buf_malloc
   comments:
+  - Pass raw pointer and size by reference to C.
+  - Pass cxx local variable to library.
+  notes:
   - Create empty local vector then copy result to
   - malloc allocated array.
-  notes:
   - XXX - need to test scalar and pointer versions
   mixin_names:
   - '  c_mixin_out_vector_buf_malloc'
@@ -5438,7 +5524,7 @@ c_out_vector<native>_buf_malloc:
   owner: library
 c_out_vector<string>&:
   name: c_out_vector<string>&
-  comments:
+  notes:
   - Need to know the length of the vector from C.
   intent: out
   owner: library
@@ -5717,6 +5803,8 @@ c_setter_native*:
 c_setter_string_scalar_buf:
   name: c_setter_string_scalar_buf
   comments:
+  - Pass CHARACTER and LEN to C wrapper.
+  notes:
   - Extract meta data and pass to C.
   - Create std::string from Fortran meta data.
   mixin_names:
@@ -5923,7 +6011,7 @@ f_function_char*:
   name: f_function_char*
   comments:
   - Call a function.
-  - Declare function result as a type(C_PTR)
+  - Declare function result as a type(C_PTR).
   notes:
   - Return a type(C_PTR) from Fortran.
   intent: function
@@ -5948,7 +6036,7 @@ f_function_char*_allocatable:
   name: f_function_char*_allocatable
   comments:
   - Call a function.
-  - Declare function result as a type(C_PTR)
+  - Declare function result as a type(C_PTR).
   notes:
   - Return a type(C_PTR) from Fortran.
   intent: function
@@ -5978,7 +6066,7 @@ f_function_char*_arg:
   - Call function and assign to a local C++ variable.
   - Copy cxx variable to c argument.
   notes:
-  - Change function result into an argument
+  - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
   - was base:f_function_char*_buf_copy
   intent: function
@@ -6057,7 +6145,7 @@ f_function_char*_buf_arg:
   - Call function and assign to a local C++ variable.
   - Copy cxx variable to c argument.
   notes:
-  - Change function result into an argument
+  - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
   - was base:f_function_char*_buf_copy
   intent: function
@@ -6357,9 +6445,16 @@ f_function_char*_cfi_allocatable:
 f_function_char*_cfi_arg:
   name: f_function_char*_cfi_arg
   comments:
+  - Call the C wrapper as a subroutine.
+  - Pass argument to C wrapper
+  - Make the C wrapper argument a CFI_desc_t.
+  - Character argument passed as CFI_desc_t.
+  - Pass cxx local variable to library.
+  - Call function and assign to a local C++ variable.
+  - Copy cxx variable to c argument.
+  notes:
   - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
-  notes:
   - was base:f_function_char*_cfi_copy
   intent: function
   f_arg_name:
@@ -6419,6 +6514,14 @@ f_function_char*_cfi_arg:
 f_function_char*_cfi_copy:
   name: f_function_char*_cfi_copy
   comments:
+  - Call the C wrapper as a subroutine.
+  - Pass argument to C wrapper
+  - Make the C wrapper argument a CFI_desc_t.
+  - Character argument passed as CFI_desc_t.
+  - Pass cxx local variable to library.
+  - Call function and assign to a local C++ variable.
+  - Copy cxx variable to c argument.
+  notes:
   - Copy result into caller's buffer.
   intent: function
   f_arg_decl:
@@ -6530,7 +6633,7 @@ f_function_char*_copy:
   name: f_function_char*_copy
   comments:
   - Call a function.
-  - Declare function result as a type(C_PTR)
+  - Declare function result as a type(C_PTR).
   notes:
   - Return a type(C_PTR) from Fortran.
   intent: function
@@ -6555,7 +6658,7 @@ f_function_char*_pointer:
   name: f_function_char*_pointer
   comments:
   - Call a function.
-  - Declare function result as a type(C_PTR)
+  - Declare function result as a type(C_PTR).
   notes:
   - Return a type(C_PTR) from Fortran.
   intent: function
@@ -6580,7 +6683,7 @@ f_function_char*_raw:
   name: f_function_char*_raw
   comments:
   - Call a function.
-  - Declare function result as a type(C_PTR)
+  - Declare function result as a type(C_PTR).
   notes:
   - Return a type(C_PTR) from Fortran.
   intent: function
@@ -6814,6 +6917,8 @@ f_function_char_cfi_pointer:
 f_function_enum:
   name: f_function_enum
   comments:
+  - Call a function.
+  notes:
   - Return as the Fortran bind(C) type.
   intent: function
   f_arg_decl:
@@ -7233,6 +7338,13 @@ f_function_native*_cfi_allocatable:
 f_function_native*_cfi_pointer:
   name: f_function_native*_cfi_pointer
   comments:
+  - Call the C wrapper as a subroutine.
+  - Make the C wrapper argument a CFI_desc_t.
+  - Native argument which use CFI_desc_t.
+  - Pass cxx local variable to library.
+  - Call function and assign to a local C++ variable.
+  - Convert C pointer to Fortran pointer.
+  notes:
   - Pass result as an argument to C wrapper.
   - Convert to subroutine and pass result as an argument.
   - Return Fortran pointer to data.
@@ -7384,6 +7496,8 @@ f_function_native*_raw:
 f_function_native*_scalar:
   name: f_function_native*_scalar
   comments:
+  - Call a function.
+  notes:
   - Return a scalar to avoid doing the deref in Fortran.
   intent: function
   f_arg_decl:
@@ -7965,9 +8079,14 @@ f_function_string&_buf:
 f_function_string&_buf_arg:
   name: f_function_string&_buf_arg
   comments:
+  - Call the C wrapper as a subroutine.
+  - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
+  - Call function and assign to a local C++ variable.
+  - Copy cxx variable into c variable.
+  notes:
   - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
-  notes:
   - was base:f_function_string_buf
   intent: function
   f_arg_name:
@@ -10160,9 +10279,14 @@ f_function_string_buf:
 f_function_string_buf_arg:
   name: f_function_string_buf_arg
   comments:
+  - Call the C wrapper as a subroutine.
+  - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
+  - Call function and assign to a local C++ variable.
+  - Copy cxx variable into c variable.
+  notes:
   - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
-  notes:
   - was base:f_function_string_buf
   intent: function
   f_arg_name:
@@ -11234,6 +11358,8 @@ f_function_struct*_cdesc_pointer:
 f_function_struct*_pointer:
   name: f_function_struct*_pointer
   comments:
+  - Return a C pointer as a type(C_PTR).
+  notes:
   - C++ pointer -> void pointer -> C pointer.
   intent: function
   f_arg_decl:
@@ -11497,6 +11623,11 @@ f_getter_native*_pointer:
 f_getter_string_cdesc_allocatable:
   name: f_getter_string_cdesc_allocatable
   comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc
+  - using helper copy_string.
+  notes:
   - Return argument meta data to Fortran.
   intent: getter
   f_arg_decl:
@@ -12084,7 +12215,7 @@ f_in_native:
   comments:
   - Pass cxx variable to library.
   notes:
-  - An intent of 'none' is used with function pointers
+  - An intent of 'none' is used with function pointers.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -12532,7 +12663,7 @@ f_in_string&:
   - Create local std::string from the argument.
   - Pass cxx local variable to library.
   notes:
-  - Similar to f_in_string*, but c_arg_call is pass by value
+  - Similar to f_in_string*, but c_arg_call is pass by value.
   intent: in
   mixin_names:
   - '  c_mixin_declare-arg'
@@ -12905,7 +13036,7 @@ f_in_struct:
   - Pass cxx variable to library.
   notes:
   - Used with in, out, inout.
-  - C pointer -> void pointer -> C++ pointer
+  - C pointer -> void pointer -> C++ pointer.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -12966,7 +13097,7 @@ f_in_struct*:
   - Pass cxx variable to library.
   notes:
   - Used with in, out, inout.
-  - C pointer -> void pointer -> C++ pointer
+  - C pointer -> void pointer -> C++ pointer.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -13026,9 +13157,11 @@ f_in_unknown:
 f_in_vector<native*>&_buf:
   name: f_in_vector<native*>&_buf
   comments:
-  - Create a vector for pointers.
+  - Pass argument, len and size to C.
+  - Pass cxx local variable to library.
   notes:
-  - Specialize for std::vector<native *>
+  - Create a vector for pointers.
+  - Specialize for std::vector<native *>.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -13859,6 +13992,8 @@ f_inout_native&:
 f_inout_native&_hidden:
   name: f_inout_native&_hidden
   comments:
+  - Pass cxx variable to library.
+  notes:
   - Declare a local variable and pass to C.
   intent: inout
   mixin_names:
@@ -13991,6 +14126,8 @@ f_inout_native*_cfi:
 f_inout_native*_hidden:
   name: f_inout_native*_hidden
   comments:
+  - Pass address of cxx variable to library.
+  notes:
   - Declare a local variable and pass to C.
   intent: inout
   mixin_names:
@@ -14478,7 +14615,7 @@ f_inout_struct*:
   - Pass cxx variable to library.
   notes:
   - Used with in, out, inout.
-  - C pointer -> void pointer -> C++ pointer
+  - C pointer -> void pointer -> C++ pointer.
   intent: inout
   f_arg_name:
   - '{f_var}'
@@ -15016,7 +15153,7 @@ f_mixin_function-as-character-arg-var-len:
 f_mixin_function-as-cptr:
   name: f_mixin_function-as-cptr
   comments:
-  - Declare function result as a type(C_PTR)
+  - Declare function result as a type(C_PTR).
   intent: mixin
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
@@ -15898,7 +16035,7 @@ f_none_native:
   comments:
   - Pass cxx variable to library.
   notes:
-  - An intent of 'none' is used with function pointers
+  - An intent of 'none' is used with function pointers.
   intent: none
   f_arg_name:
   - '{f_var}'
@@ -16262,6 +16399,8 @@ f_out_native&:
 f_out_native&_hidden:
   name: f_out_native&_hidden
   comments:
+  - Pass cxx variable to library.
+  notes:
   - Declare a local variable and pass to C.
   intent: out
   mixin_names:
@@ -16654,6 +16793,12 @@ f_out_native**_cfi_allocatable:
 f_out_native**_cfi_pointer:
   name: f_out_native**_cfi_pointer
   comments:
+  - Make the C wrapper argument a CFI_desc_t.
+  - Native argument which use CFI_desc_t.
+  - Declare a local pointer variable in the C wrapper.
+  - Pass address of local cxx variable to library.
+  - Convert C pointer to Fortran pointer.
+  notes:
   - Set Fortran pointer to point to c_local_cxx.
   intent: out
   f_arg_name:
@@ -16712,7 +16857,7 @@ f_out_native**_raw:
   comments:
   - Pass cxx variable to library.
   notes:
-  - Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'
+  - Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -16796,6 +16941,8 @@ f_out_native*_cfi_allocatable:
 f_out_native*_hidden:
   name: f_out_native*_hidden
   comments:
+  - Pass address of cxx variable to library.
+  notes:
   - Declare a local variable and pass to C.
   intent: out
   mixin_names:
@@ -17339,7 +17486,7 @@ f_out_struct*:
   - Pass cxx variable to library.
   notes:
   - Used with in, out, inout.
-  - C pointer -> void pointer -> C++ pointer
+  - C pointer -> void pointer -> C++ pointer.
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -18066,6 +18213,8 @@ f_setter_native*:
 f_setter_string_buf:
   name: f_setter_string_buf
   comments:
+  - Pass CHARACTER and LEN to C wrapper.
+  notes:
   - Extract meta data and pass to C.
   - Create std::string from Fortran meta data.
   intent: setter
