@@ -1536,8 +1536,11 @@ f_intent_attr
     Used with argument declarations:
     ``{f_type}{f_intent_attr} ::``.
     If *intent* is *none*, the format field will be blank.
-    *f_intent_attr* can also be used with Fortran interface.
+    *f_intent_attr* can also be used with the Fortran interface.
     (There is no *i_intent_attr*)
+
+    When a subroutine is converted into a function, it is necessary
+    to explicitly set this attribute to ``, intent(OUT)``.
 
 f_kind
     The name of a parameter from *f_module_name* required to

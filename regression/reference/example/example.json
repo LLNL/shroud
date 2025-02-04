@@ -910,8 +910,6 @@
                                                         "cxx_type": "int",
                                                         "cxx_var": "SHC_rv",
                                                         "f_call_function": "c_ex_class1_increment_count",
-                                                        "f_intent": "OUT",
-                                                        "f_intent_attr": ", intent(OUT)",
                                                         "f_kind": "C_INT",
                                                         "f_module_name": "iso_c_binding",
                                                         "f_result_clause": "\fresult(SHT_rv)",
@@ -1193,8 +1191,6 @@
                                                         "cxx_rv_decl": "const std::string &SHCXX_rv",
                                                         "cxx_type": "std::string",
                                                         "cxx_var": "SHCXX_rv",
-                                                        "f_intent": "OUT",
-                                                        "f_intent_attr": ", intent(OUT)",
                                                         "f_type": "character(len=*)",
                                                         "f_var": "SHT_rv",
                                                         "i_arguments": "self",
@@ -1439,8 +1435,6 @@
                                                         "cxx_rv_decl": "const std::string &SHCXX_rv",
                                                         "cxx_type": "std::string",
                                                         "cxx_var": "SHCXX_rv",
-                                                        "f_intent": "OUT",
-                                                        "f_intent_attr": ", intent(OUT)",
                                                         "f_type": "character(len=*)",
                                                         "f_var": "SHT_rv",
                                                         "i_arguments": "self",
@@ -1744,8 +1738,6 @@
                                                         "cxx_type": "int",
                                                         "cxx_var": "SHC_rv",
                                                         "f_call_function": "c_ex_class1_get_value_from_int",
-                                                        "f_intent": "OUT",
-                                                        "f_intent_attr": ", intent(OUT)",
                                                         "f_kind": "C_INT",
                                                         "f_module_name": "iso_c_binding",
                                                         "f_result_clause": "\fresult(SHT_rv)",
@@ -2091,8 +2083,6 @@
                                                         "cxx_type": "long",
                                                         "cxx_var": "SHC_rv",
                                                         "f_call_function": "c_ex_class1_get_value_1",
-                                                        "f_intent": "OUT",
-                                                        "f_intent_attr": ", intent(OUT)",
                                                         "f_kind": "C_LONG",
                                                         "f_module_name": "iso_c_binding",
                                                         "f_result_clause": "\fresult(SHT_rv)",
@@ -2423,8 +2413,6 @@
                                                         "cxx_type": "bool",
                                                         "cxx_var": "SHC_rv",
                                                         "f_call_function": "c_ex_class1_has_addr",
-                                                        "f_intent": "OUT",
-                                                        "f_intent_attr": ", intent(OUT)",
                                                         "f_result_clause": "\fresult(SHT_rv)",
                                                         "f_type": "logical",
                                                         "f_var": "SHT_rv",
@@ -3475,8 +3463,6 @@
                                                         "cxx_type": "std::string",
                                                         "cxx_var": "SHCXX_rv",
                                                         "f_char_len": "len=aa_exclass2_get_name_length({F_this}%{F_derived_member})",
-                                                        "f_intent": "OUT",
-                                                        "f_intent_attr": ", intent(OUT)",
                                                         "f_type": "character(len=aa_exclass2_get_name_length({F_this}%{F_derived_member}))",
                                                         "f_var": "SHT_rv",
                                                         "i_arguments": "self",
@@ -3723,8 +3709,6 @@
                                                         "cxx_rv_decl": "const std::string &SHCXX_rv",
                                                         "cxx_type": "std::string",
                                                         "cxx_var": "SHCXX_rv",
-                                                        "f_intent": "OUT",
-                                                        "f_intent_attr": ", intent(OUT)",
                                                         "f_type": "character(len=*)",
                                                         "f_var": "SHT_rv",
                                                         "i_arguments": "self",
@@ -3971,8 +3955,6 @@
                                                         "cxx_rv_decl": "std::string &SHCXX_rv",
                                                         "cxx_type": "std::string",
                                                         "cxx_var": "SHCXX_rv",
-                                                        "f_intent": "OUT",
-                                                        "f_intent_attr": ", intent(OUT)",
                                                         "f_type": "character(len=*)",
                                                         "f_var": "SHT_rv",
                                                         "i_arguments": "self",
@@ -4219,8 +4201,6 @@
                                                         "cxx_rv_decl": "std::string &SHCXX_rv",
                                                         "cxx_type": "std::string",
                                                         "cxx_var": "SHCXX_rv",
-                                                        "f_intent": "OUT",
-                                                        "f_intent_attr": ", intent(OUT)",
                                                         "f_type": "character(len=*)",
                                                         "f_var": "SHT_rv",
                                                         "i_arguments": "self",
@@ -4492,8 +4472,6 @@
                                                         "cxx_type": "int",
                                                         "cxx_var": "SHC_rv",
                                                         "f_call_function": "c_ex_class2_get_name_length",
-                                                        "f_intent": "OUT",
-                                                        "f_intent_attr": ", intent(OUT)",
                                                         "f_kind": "C_INT",
                                                         "f_module_name": "iso_c_binding",
                                                         "f_result_clause": "\fresult(SHT_rv)",
@@ -6794,8 +6772,6 @@
                                                         "cxx_type": "int",
                                                         "cxx_var": "SHC_rv",
                                                         "f_call_function": "c_ex_class2_get_value_int",
-                                                        "f_intent": "OUT",
-                                                        "f_intent_attr": ", intent(OUT)",
                                                         "f_kind": "C_INT",
                                                         "f_module_name": "iso_c_binding",
                                                         "f_result_clause": "\fresult(SHT_rv)",
@@ -7036,8 +7012,6 @@
                                                         "cxx_type": "double",
                                                         "cxx_var": "SHC_rv",
                                                         "f_call_function": "c_ex_class2_get_value_double",
-                                                        "f_intent": "OUT",
-                                                        "f_intent_attr": ", intent(OUT)",
                                                         "f_kind": "C_DOUBLE",
                                                         "f_module_name": "iso_c_binding",
                                                         "f_result_clause": "\fresult(SHT_rv)",
@@ -7423,8 +7397,6 @@
                                                 "cxx_rv_decl": "bool SHC_rv",
                                                 "cxx_type": "bool",
                                                 "cxx_var": "SHC_rv",
-                                                "f_intent": "OUT",
-                                                "f_intent_attr": ", intent(OUT)",
                                                 "f_type": "logical",
                                                 "f_var": "SHT_rv",
                                                 "i_arguments": "name",
@@ -7508,8 +7480,6 @@
                                                 "cxx_type": "bool",
                                                 "cxx_var": "SHC_rv",
                                                 "f_call_function": "c_is_name_valid_bufferify",
-                                                "f_intent": "OUT",
-                                                "f_intent_attr": ", intent(OUT)",
                                                 "f_result_clause": "\fresult(SHT_rv)",
                                                 "f_type": "logical",
                                                 "f_var": "SHT_rv",
@@ -7804,8 +7774,6 @@
                                                 "cxx_type": "bool",
                                                 "cxx_var": "SHC_rv",
                                                 "f_call_function": "c_is_initialized",
-                                                "f_intent": "OUT",
-                                                "f_intent_attr": ", intent(OUT)",
                                                 "f_result_clause": "\fresult(SHT_rv)",
                                                 "f_type": "logical",
                                                 "f_var": "SHT_rv",
@@ -9454,8 +9422,6 @@
                                                 "cxx_type": "size_t",
                                                 "cxx_var": "SHC_rv",
                                                 "f_call_function": "c_test_size_t",
-                                                "f_intent": "OUT",
-                                                "f_intent_attr": ", intent(OUT)",
                                                 "f_kind": "C_SIZE_T",
                                                 "f_module_name": "iso_c_binding",
                                                 "f_result_clause": "\fresult(SHT_rv)",
@@ -10655,8 +10621,6 @@
                                                             "+result": {
                                                                 "fmtdict": {
                                                                     "f_deref_attr": ", pointer",
-                                                                    "f_intent": "OUT",
-                                                                    "f_intent_attr": ", intent(OUT)",
                                                                     "f_kind": "C_DOUBLE",
                                                                     "f_module_name": "iso_c_binding",
                                                                     "f_type": "real(C_DOUBLE)",
@@ -10788,8 +10752,6 @@
                                                             "+result": {
                                                                 "fmtdict": {
                                                                     "f_deref_attr": ", pointer",
-                                                                    "f_intent": "OUT",
-                                                                    "f_intent_attr": ", intent(OUT)",
                                                                     "f_kind": "C_DOUBLE",
                                                                     "f_module_name": "iso_c_binding",
                                                                     "f_type": "real(C_DOUBLE)",
@@ -10888,8 +10850,6 @@
                                                             "+result": {
                                                                 "fmtdict": {
                                                                     "f_deref_attr": ", pointer",
-                                                                    "f_intent": "OUT",
-                                                                    "f_intent_attr": ", intent(OUT)",
                                                                     "f_kind": "C_DOUBLE",
                                                                     "f_module_name": "iso_c_binding",
                                                                     "f_type": "real(C_DOUBLE)",
@@ -10993,8 +10953,6 @@
                                                             "+result": {
                                                                 "fmtdict": {
                                                                     "f_deref_attr": ", pointer",
-                                                                    "f_intent": "OUT",
-                                                                    "f_intent_attr": ", intent(OUT)",
                                                                     "f_kind": "C_DOUBLE",
                                                                     "f_module_name": "iso_c_binding",
                                                                     "f_type": "real(C_DOUBLE)",
@@ -11077,8 +11035,6 @@
                                                             "+result": {
                                                                 "fmtdict": {
                                                                     "f_deref_attr": ", pointer",
-                                                                    "f_intent": "OUT",
-                                                                    "f_intent_attr": ", intent(OUT)",
                                                                     "f_kind": "C_DOUBLE",
                                                                     "f_module_name": "iso_c_binding",
                                                                     "f_type": "real(C_DOUBLE)",
@@ -11319,8 +11275,6 @@
                                                         "f": {
                                                             "+result": {
                                                                 "fmtdict": {
-                                                                    "f_intent": "OUT",
-                                                                    "f_intent_attr": ", intent(OUT)",
                                                                     "f_kind": "C_DOUBLE",
                                                                     "f_module_name": "iso_c_binding",
                                                                     "f_type": "real(C_DOUBLE)",
@@ -11527,8 +11481,6 @@
                                                         "f": {
                                                             "+result": {
                                                                 "fmtdict": {
-                                                                    "f_intent": "OUT",
-                                                                    "f_intent_attr": ", intent(OUT)",
                                                                     "f_kind": "C_DOUBLE",
                                                                     "f_module_name": "iso_c_binding",
                                                                     "f_type": "real(C_DOUBLE)",
@@ -11701,8 +11653,6 @@
                                                         "f": {
                                                             "+result": {
                                                                 "fmtdict": {
-                                                                    "f_intent": "OUT",
-                                                                    "f_intent_attr": ", intent(OUT)",
                                                                     "f_kind": "C_DOUBLE",
                                                                     "f_module_name": "iso_c_binding",
                                                                     "f_type": "real(C_DOUBLE)",
@@ -11879,8 +11829,6 @@
                                                         "f": {
                                                             "+result": {
                                                                 "fmtdict": {
-                                                                    "f_intent": "OUT",
-                                                                    "f_intent_attr": ", intent(OUT)",
                                                                     "f_kind": "C_DOUBLE",
                                                                     "f_module_name": "iso_c_binding",
                                                                     "f_type": "real(C_DOUBLE)",
@@ -12037,8 +11985,6 @@
                                                         "f": {
                                                             "+result": {
                                                                 "fmtdict": {
-                                                                    "f_intent": "OUT",
-                                                                    "f_intent_attr": ", intent(OUT)",
                                                                     "f_kind": "C_DOUBLE",
                                                                     "f_module_name": "iso_c_binding",
                                                                     "f_type": "real(C_DOUBLE)",
@@ -12337,8 +12283,6 @@
                                                         "f": {
                                                             "+result": {
                                                                 "fmtdict": {
-                                                                    "f_intent": "OUT",
-                                                                    "f_intent_attr": ", intent(OUT)",
                                                                     "f_kind": "C_DOUBLE",
                                                                     "f_module_name": "iso_c_binding",
                                                                     "f_type": "real(C_DOUBLE)",
@@ -12542,8 +12486,6 @@
                                                         "f": {
                                                             "+result": {
                                                                 "fmtdict": {
-                                                                    "f_intent": "OUT",
-                                                                    "f_intent_attr": ", intent(OUT)",
                                                                     "f_kind": "C_DOUBLE",
                                                                     "f_module_name": "iso_c_binding",
                                                                     "f_type": "real(C_DOUBLE)",
@@ -12697,8 +12639,6 @@
                                                         "f": {
                                                             "+result": {
                                                                 "fmtdict": {
-                                                                    "f_intent": "OUT",
-                                                                    "f_intent_attr": ", intent(OUT)",
                                                                     "f_kind": "C_DOUBLE",
                                                                     "f_module_name": "iso_c_binding",
                                                                     "f_type": "real(C_DOUBLE)",
@@ -17465,8 +17405,6 @@
                                                 "cxx_type": "int",
                                                 "cxx_var": "SHC_rv",
                                                 "f_call_function": "c_verylongfunctionname2",
-                                                "f_intent": "OUT",
-                                                "f_intent_attr": ", intent(OUT)",
                                                 "f_kind": "C_INT",
                                                 "f_module_name": "iso_c_binding",
                                                 "f_result_clause": "\fresult(SHT_rv)",

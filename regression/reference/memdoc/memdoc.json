@@ -72,8 +72,6 @@
                                 "cxx_rv_decl": "const std::string *SHCXX_rv",
                                 "cxx_type": "std::string",
                                 "cxx_var": "SHCXX_rv",
-                                "f_intent": "OUT",
-                                "f_intent_attr": ", intent(OUT)",
                                 "f_type": "character(len=*)",
                                 "f_var": "SHT_rv",
                                 "i_arguments": "",

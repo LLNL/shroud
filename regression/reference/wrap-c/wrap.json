@@ -54,8 +54,6 @@
                                         "cxx_type": "int",
                                         "cxx_var": "SHC_rv",
                                         "f_call_function": "c_class1_func_in_class_bufferify",
-                                        "f_intent": "OUT",
-                                        "f_intent_attr": ", intent(OUT)",
                                         "f_kind": "C_INT",
                                         "f_module_name": "iso_c_binding",
                                         "f_result_clause": "\fresult(SHT_rv)",

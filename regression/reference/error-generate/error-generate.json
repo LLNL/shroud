@@ -3214,8 +3214,6 @@
                                 "f_assumed_shape": "(:)",
                                 "f_call_function": "c_struct1_get_arg2",
                                 "f_dimension": "(narg2)",
-                                "f_intent": "OUT",
-                                "f_intent_attr": ", intent(OUT)",
                                 "f_kind": "C_INT",
                                 "f_module_name": "iso_c_binding",
                                 "f_result_clause": "\fresult(SHT_rv)",

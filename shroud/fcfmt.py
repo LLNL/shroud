@@ -973,34 +973,10 @@ def set_f_function_format(node, bind, subprogram):
     fmt = bind.fmtdict
     meta = bind.meta
 
-    if subprogram == "function":
-        fmt.f_intent = "OUT"
-        fmt.f_intent_attr = ", intent(OUT)"
-
     if meta["deref"] == "allocatable":
         fmt.f_deref_attr = ", allocatable"
     elif meta["deref"] == "pointer":
         fmt.f_deref_attr = ", pointer"
-    return
-
-    # XXX - need something like this.
-    # XXX - it sets intent properly on some routines which are missing it now.
-    intent = meta["intent"].upper()
-    if intent == "FUNCTION":
-        intent = "OUT"
-    elif intent == "SUBROUTINE":
-        intent = "OUT"
-    elif intent == "SETTER":
-        intent = "NONE"
-    elif intent == "GETTER":
-        intent = "OUT"
-    elif intent == "CTOR":
-        intent = "OUT"
-    elif intent == "DTOR":
-        intent = "INOUT"
-    if intent != "NONE":
-        fmt.f_intent = intent
-        fmt.f_intent_attr = ", intent({})".format(fmt.f_intent)
     
 def set_f_arg_format(node, arg, bind, wlang):
     """

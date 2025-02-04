@@ -317,9 +317,33 @@
         ]
     },
     {
+        "name": "f_mixin_as-intent-out",
+        "notes": [
+            "Change intent of function result"
+        ],
+        "fmtdict": {
+            "f_intent": "OUT",
+            "f_intent_attr": ", intent(OUT)"
+        }
+    },
+    {
+        "name": "c_mixin_as-intent-out",
+        "notes": [
+            "Change intent of function result",
+            "Only used with C interfaces"
+        ],
+        "fmtdict": {
+            "f_intent": "OUT",
+            "f_intent_attr": ", intent(OUT)"
+        }
+    },
+    {
         "name": "f_mixin_function-to-subroutine",
         "comments": [
             "Call the C wrapper as a subroutine."
+        ],
+        "mixin": [
+            "f_mixin_as-intent-out"
         ],
         "f_call": [
             "call {f_call_function}({F_arg_c_call})"
@@ -1118,7 +1142,7 @@
             "{i_var_size}"
         ],
         "i_arg_decl": [
-            "integer(C_SIZE_T){f_intent_attr} :: {i_var_size}"
+            "integer(C_SIZE_T), intent(OUT) :: {i_var_size}"
         ],
         "i_module": {
             "iso_c_binding": [
@@ -3906,6 +3930,7 @@
         "mixin": [
             "c_mixin_function_shadow_capptr",
             "c_mixin_shadow",
+            "c_mixin_as-intent-out",
             "c_mixin_function-assign-to-local",
             "c_mixin_cvar-capsule-fill",
             "c_mixin_function-return-cvar"
@@ -3955,6 +3980,7 @@
         "mixin": [
             "c_mixin_function_shadow_capptr",
             "c_mixin_shadow",
+            "c_mixin_as-intent-out",
             "c_mixin_function-assign-to-new",
             "c_mixin_cvar-capsule-fill",
             "c_mixin_function-return-cvar"
@@ -3966,6 +3992,7 @@
             "c_ctor_shadow_capsule"
         ],
         "mixin": [
+            "f_mixin_as-intent-out",
             "f_mixin_function_shadow_capsule",
             "c_mixin_shadow"
         ],
@@ -3983,7 +4010,8 @@
         ],
         "mixin": [
             "c_mixin_function_shadow_capptr",
-            "c_mixin_shadow"
+            "c_mixin_shadow",
+            "c_mixin_as-intent-out"
         ],
         "c_call": [
             "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});",
@@ -4033,6 +4061,7 @@
         "mixin": [
             "c_mixin_function_shadow_capptr",
             "c_mixin_shadow",
+            "c_mixin_as-intent-out",
             "c_mixin_destructor_new-shadow-shared",
             "c_mixin_make-shared"
         ]
@@ -4074,6 +4103,7 @@
         "mixin": [
             "c_mixin_function_shadow_capptr",
             "c_mixin_shadow",
+            "c_mixin_as-intent-out",
             "c_mixin_function-assign-to-new",
             "c_mixin_cvar-capsule-fill",
             "c_mixin_function-return-cvar"
@@ -4086,6 +4116,7 @@
         "mixin": [
             "c_mixin_function_shadow_capptr",
             "c_mixin_shadow",
+            "c_mixin_as-intent-out",
             "c_mixin_function-assign-to-local",
             "c_mixin_cvar-capsule-fill",
             "c_mixin_function-return-cvar"
@@ -4100,7 +4131,6 @@
             "c_dtor"
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
             "c_mixin_header_stddef"
         ],
         "f_arg_call": [],
