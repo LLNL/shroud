@@ -998,6 +998,8 @@ def set_f_arg_format(node, arg, bind, wlang):
     if intent != "NONE":
         fmt.f_intent = intent
         fmt.f_intent_attr = ", intent({})".format(fmt.f_intent)
+        fmt.i_intent = intent
+        fmt.i_intent_attr = ", intent({})".format(fmt.i_intent)
 
     if meta["optional"]:
         fmt.f_optional_attr = ", optional"
