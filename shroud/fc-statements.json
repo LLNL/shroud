@@ -71,7 +71,7 @@
             ]
         },
         "i_arg_decl": [
-            "{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}"
+            "{i_type}{f_value_attr}{i_intent_attr} :: {i_var}{i_dimension}"
         ],
         "sphinx-end-before": "f_mixin_declare-interface-arg"
     },
@@ -196,7 +196,7 @@
             "{i_var}"
         ],
         "i_arg_decl": [
-            "type(C_PTR){f_intent_attr} :: {i_var}"
+            "type(C_PTR){i_intent_attr} :: {i_var}"
         ],
         "i_module": {
             "iso_c_binding": [
@@ -215,7 +215,7 @@
             "{i_var}"
         ],
         "i_arg_decl": [
-            "type(C_PTR){f_intent_attr} :: {i_var}(*)"
+            "type(C_PTR){i_intent_attr} :: {i_var}(*)"
         ],
         "i_module": {
             "iso_c_binding": [
@@ -233,7 +233,7 @@
             "{i_var}"
         ],
         "i_arg_decl": [
-            "type(C_PTR){f_intent_attr}, value :: {i_var}"
+            "type(C_PTR){i_intent_attr}, value :: {i_var}"
         ],
         "i_module": {
             "iso_c_binding": [
@@ -251,7 +251,7 @@
             "{i_var}"
         ],
         "i_arg_decl": [
-            "type(C_PTR){f_intent_attr} :: {i_var}{i_dimension}"
+            "type(C_PTR){i_intent_attr} :: {i_var}{i_dimension}"
         ],
         "i_module": {
             "iso_c_binding": [
@@ -329,12 +329,12 @@
     {
         "name": "c_mixin_as-intent-out",
         "notes": [
-            "Change intent of function result",
-            "Only used with C interfaces"
+            "Change intent of Fortran wrapper result.",
+            "Only used with C interfaces."
         ],
         "fmtdict": {
-            "f_intent": "OUT",
-            "f_intent_attr": ", intent(OUT)"
+            "i_intent": "OUT",
+            "i_intent_attr": ", intent(OUT)"
         }
     },
     {
@@ -343,7 +343,7 @@
             "Call the C wrapper as a subroutine."
         ],
         "mixin": [
-            "f_mixin_as-intent-out"
+            "c_mixin_as-intent-out"
         ],
         "f_call": [
             "call {f_call_function}({F_arg_c_call})"
@@ -1085,8 +1085,8 @@
             "{i_var_size}"
         ],
         "i_arg_decl": [
-            "{targs[0].f_type}{f_intent_attr} :: {i_var}(*)",
-            "integer(C_SIZE_T){f_intent_attr} :: {i_var_size}"
+            "{targs[0].f_type}{i_intent_attr} :: {i_var}(*)",
+            "integer(C_SIZE_T){i_intent_attr} :: {i_var_size}"
         ],
         "i_module": {
             "iso_c_binding": [
@@ -1112,8 +1112,8 @@
             "{i_var_size}"
         ],
         "i_arg_decl": [
-            "type(C_PTR){f_intent_attr} :: {i_var}",
-            "integer(C_SIZE_T){f_intent_attr} :: {i_var_size}"
+            "type(C_PTR){i_intent_attr} :: {i_var}",
+            "integer(C_SIZE_T){i_intent_attr} :: {i_var_size}"
         ],
         "i_module": {
             "iso_c_binding": [
@@ -1732,7 +1732,7 @@
             "{f_type}{f_intent_attr} :: {f_var}"
         ],
         "i_arg_decl": [
-            "{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}"
+            "{i_type}{f_value_attr}{i_intent_attr} :: {i_var}{i_dimension}"
         ]
     },
     {
@@ -1786,7 +1786,7 @@
             "void **{c_var}"
         ],
         "i_arg_decl": [
-            "type(C_PTR){f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}"
+            "type(C_PTR){f_value_attr}{i_intent_attr} :: {i_var}{i_dimension}"
         ],
         "i_arg_names": [
             "{i_var}"
@@ -1814,7 +1814,7 @@
             "c_mixin_arg-call-cvar"
         ],
         "i_arg_decl": [
-            "{i_type}, value{f_intent_attr} :: {i_var}"
+            "{i_type}, value{i_intent_attr} :: {i_var}"
         ],
         "i_arg_names": [
             "{i_var}"
@@ -1925,7 +1925,7 @@
             "char {c_var}"
         ],
         "i_arg_decl": [
-            "character(kind=C_CHAR), value{f_intent_attr} :: {i_var}"
+            "character(kind=C_CHAR), value{i_intent_attr} :: {i_var}"
         ],
         "i_arg_names": [
             "{i_var}"
@@ -1971,7 +1971,7 @@
             "{i_var}"
         ],
         "i_arg_decl": [
-            "character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)"
+            "character(kind=C_CHAR){i_intent_attr} :: {i_var}(*)"
         ],
         "i_module": {
             "iso_c_binding": [
@@ -2208,7 +2208,7 @@
             "{i_var_len}"
         ],
         "i_arg_decl": [
-            "character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)",
+            "character(kind=C_CHAR){i_intent_attr} :: {i_var}(*)",
             "integer(C_INT), value, intent(IN) :: {i_var_len}"
         ],
         "i_module": {
@@ -3797,7 +3797,7 @@
             "{c_type} * {c_var}"
         ],
         "i_arg_decl": [
-            "type({f_capsule_data_type}){f_intent_attr} :: {i_var}"
+            "type({f_capsule_data_type}){i_intent_attr} :: {i_var}"
         ],
         "i_arg_names": [
             "{i_var}"
@@ -3825,7 +3825,7 @@
             "{c_type} {c_var}"
         ],
         "i_arg_decl": [
-            "type({f_capsule_data_type}){f_intent_attr}, value :: {i_var}"
+            "type({f_capsule_data_type}){i_intent_attr}, value :: {i_var}"
         ],
         "c_local": [
             "cxx"
@@ -3994,7 +3994,8 @@
         "mixin": [
             "f_mixin_as-intent-out",
             "f_mixin_function_shadow_capsule",
-            "c_mixin_shadow"
+            "c_mixin_shadow",
+            "c_mixin_as-intent-out"
         ],
         "c_call": [
             "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});",
@@ -4506,7 +4507,7 @@
             "c_mixin_arg_cfi"
         ],
         "i_arg_decl": [
-            "character(len=*){f_intent_attr} :: {i_var}"
+            "character(len=*){i_intent_attr} :: {i_var}"
         ],
         "i_arg_names": [
             "{i_var}"
@@ -4533,7 +4534,7 @@
             "{i_var}"
         ],
         "i_arg_decl": [
-            "character(len=*){f_intent_attr} :: {i_var}(:)"
+            "character(len=*){i_intent_attr} :: {i_var}(:)"
         ]
     },
     {
@@ -4545,7 +4546,7 @@
             "c_mixin_arg_cfi"
         ],
         "i_arg_decl": [
-            "{f_type}{f_intent_attr} :: {i_var}{f_assumed_shape}"
+            "{f_type}{i_intent_attr} :: {i_var}{f_assumed_shape}"
         ],
         "i_module": {
             "iso_c_binding": [
@@ -4640,7 +4641,7 @@
             "{i_var}"
         ],
         "i_arg_decl": [
-            "character(len=:){f_intent_attr}{f_deref_attr} :: {i_var}"
+            "character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}"
         ],
         "c_pre_call": [],
         "c_post_call": [
@@ -4672,7 +4673,7 @@
             "{i_var}"
         ],
         "i_arg_decl": [
-            "character(len=:){f_intent_attr}{f_deref_attr} :: {i_var}"
+            "character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}"
         ],
         "c_pre_call": [],
         "c_post_call": [
@@ -4960,7 +4961,7 @@
             "{i_var}"
         ],
         "i_arg_decl": [
-            "character(len=:){f_intent_attr}{f_deref_attr} :: {i_var}"
+            "character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}"
         ],
         "c_pre_call": [],
         "c_post_call": [
@@ -5005,7 +5006,7 @@
             "c_mixin_arg_cfi"
         ],
         "i_arg_decl": [
-            "character(len=:){f_intent_attr}{f_deref_attr} :: {i_var}"
+            "character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}"
         ],
         "i_arg_names": [
             "{i_var}"
@@ -5031,7 +5032,7 @@
             "{i_var}"
         ],
         "i_arg_decl": [
-            "character(len=:){f_intent_attr}{f_deref_attr} :: {i_var}"
+            "character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}"
         ],
         "c_pre_call": [],
         "c_post_call": [
@@ -5057,7 +5058,7 @@
             "{i_var}"
         ],
         "i_arg_decl": [
-            "character(*){f_intent_attr} :: {i_var}{f_assumed_shape}"
+            "character(*){i_intent_attr} :: {i_var}{f_assumed_shape}"
         ],
         "c_post_call": [
             "// Allocate and copy into {c_var}"
@@ -5075,7 +5076,7 @@
             "{i_var}"
         ],
         "i_arg_decl": [
-            "character(*){f_intent_attr} :: {i_var}{f_assumed_shape}"
+            "character(*){i_intent_attr} :: {i_var}{f_assumed_shape}"
         ],
         "c_post_call": [
             "// Copy results into {c_var}"
@@ -5094,7 +5095,7 @@
             "c_mixin_native_cfi_allocatable"
         ],
         "i_arg_decl": [
-            "{i_type}{f_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}"
+            "{i_type}{i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}"
         ]
     },
     {
@@ -5110,7 +5111,7 @@
             "c_mixin_native_cfi_pointer"
         ],
         "i_arg_decl": [
-            "{i_type}{f_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}"
+            "{i_type}{i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}"
         ]
     },
     {
@@ -5139,7 +5140,7 @@
             "{f_var}"
         ],
         "i_arg_decl": [
-            "{i_type}{f_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}"
+            "{i_type}{i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}"
         ]
     },
     {
@@ -5171,7 +5172,7 @@
             "{f_var}"
         ],
         "i_arg_decl": [
-            "{i_type}{f_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}"
+            "{i_type}{i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}"
         ]
     },
     {
