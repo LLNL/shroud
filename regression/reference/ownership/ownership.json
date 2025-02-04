@@ -124,7 +124,6 @@
                             "f_arglist": [
                                 "f_var"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "dtor"
                         },
                         "zz_fmtlang": {
@@ -243,7 +242,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_flag",
                             "function_name": "get_flag",
                             "struct_name": "Class1",

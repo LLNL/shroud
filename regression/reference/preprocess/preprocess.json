@@ -113,7 +113,6 @@
                             "f_arglist": [
                                 "f_var"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "method1"
                         },
                         "zz_fmtlang": {
@@ -231,7 +230,6 @@
                             "f_arglist": [
                                 "f_var"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "method2"
                         },
                         "zz_fmtlang": {
@@ -341,7 +339,6 @@
                             "f_arglist": [
                                 "f_var"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "method3def",
                             "function_suffix": "_0"
                         }
@@ -582,7 +579,6 @@
                                 "f_var",
                                 "i"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "method3def",
                             "function_suffix": "_1"
                         },
@@ -749,7 +745,6 @@
                             "f_arglist": [
                                 "f_var"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "exfunc",
                             "function_suffix": "_0"
                         },
@@ -991,7 +986,6 @@
                                 "f_var",
                                 "flag"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "exfunc",
                             "function_suffix": "_1"
                         },

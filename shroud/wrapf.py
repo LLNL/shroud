@@ -1428,10 +1428,15 @@ rv = .false.
                 pass
             else:
                 # Add 'this' argument
+                # The derived type is not actually changed when non-const.
+                # The C++ object pointed to by the derived type may change
+                # so the intent here is not accurate.
                 arg_f_names.append(fmt_result.F_this)
-                arg_f_decl.append(
-                    wformat("class({F_derived_name}){f_intent_attr} :: {F_this}", fmt_func)
-                )
+                if declarator.func_const:
+                    line = "class({F_derived_name}), intent(IN) :: {F_this}"
+                else:
+                    line = "class({F_derived_name}), intent(INOUT) :: {F_this}"
+                append_format(arg_f_decl, line, fmt_func)
                 # could use {f_to_c} but I'd rather not hide the shadow class
                 arg_c_call.append(
                     wformat("{F_this}%{F_derived_member}", fmt_result)

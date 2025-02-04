@@ -394,11 +394,6 @@ class FillFormat(object):
         declarator = ast.declarator
         fmt_func = node.fmtdict
 
-        if declarator.func_const:
-            fmt_func.f_intent_attr = ", intent(IN)"
-        else:
-            fmt_func.f_intent_attr = ", intent(INOUT)"
-
     def fill_fortran_result(self, cls, node, bind):
         ast = node.ast
         declarator = ast.declarator

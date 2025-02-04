@@ -202,7 +202,6 @@
                                 "f_var",
                                 "comm"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "method1"
                         }
                     },
@@ -397,7 +396,6 @@
                                 "f_var",
                                 "c2"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "method2"
                         }
                     }
@@ -793,7 +791,6 @@
                                         "f_var",
                                         "arg1"
                                     ],
-                                    "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "method1"
                                 }
                             }
@@ -951,7 +948,6 @@
                                     "f_arglist": [
                                         "f_var"
                                     ],
-                                    "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "method"
                                 }
                             }
@@ -1201,7 +1197,6 @@
                                     "f_arglist": [
                                         "f_var"
                                     ],
-                                    "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "method"
                                 }
                             }

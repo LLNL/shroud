@@ -277,7 +277,6 @@
                                 "SHT_rv",
                                 "arg1"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "new",
                             "function_suffix": "_0"
                         }
@@ -653,7 +652,6 @@
                                 "arg1",
                                 "arg2"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "new",
                             "function_suffix": "_1"
                         }
@@ -1136,7 +1134,6 @@
                                 "arg2",
                                 "arg3"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "new",
                             "function_suffix": "_2"
                         }
@@ -1235,7 +1232,6 @@
                             "f_arglist": [
                                 "f_var"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "delete"
                         }
                     },
@@ -1434,7 +1430,6 @@
                                 "f_var",
                                 "arg1"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "DefaultArguments",
                             "function_suffix": "_0"
                         }
@@ -1729,7 +1724,6 @@
                                 "arg1",
                                 "arg2"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "DefaultArguments",
                             "function_suffix": "_1"
                         }
@@ -2123,7 +2117,6 @@
                                 "arg2",
                                 "arg3"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "DefaultArguments",
                             "function_suffix": "_2"
                         }
@@ -2229,7 +2222,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_field1",
                             "function_name": "get_field1",
                             "struct_name": "Class1",
@@ -2337,7 +2329,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_field2",
                             "function_name": "get_field2",
                             "struct_name": "Class1",
@@ -2445,7 +2436,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_field3",
                             "function_name": "get_field3",
                             "struct_name": "Class1",

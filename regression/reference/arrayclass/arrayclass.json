@@ -195,7 +195,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor"
                         },
                         "zz_fmtlang": {
@@ -436,7 +435,6 @@
                                 "f_var",
                                 "size"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "setSize"
                         },
                         "zz_fmtlang": {
@@ -610,7 +608,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(IN)",
                             "function_name": "getSize"
                         },
                         "zz_fmtlang": {
@@ -854,7 +851,6 @@
                                 "f_var",
                                 "size"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "fillSize"
                         },
                         "zz_fmtlang": {
@@ -973,7 +969,6 @@
                             "f_arglist": [
                                 "f_var"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "allocate"
                         },
                         "zz_fmtlang": {
@@ -1226,7 +1221,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "getArray"
                         },
                         "zz_fmtlang": {
@@ -1483,7 +1477,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(IN)",
                             "function_name": "getArrayConst"
                         },
                         "zz_fmtlang": {
@@ -1739,7 +1732,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "getArrayC"
                         },
                         "zz_fmtlang": {
@@ -1997,7 +1989,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(IN)",
                             "function_name": "getArrayConstC"
                         },
                         "zz_fmtlang": {
@@ -2449,7 +2440,6 @@
                                 "array",
                                 "isize"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "fetchArrayPtr"
                         },
                         "zz_fmtlang": {
@@ -2900,7 +2890,6 @@
                                 "array",
                                 "isize"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "fetchArrayRef"
                         },
                         "zz_fmtlang": {
@@ -3352,7 +3341,6 @@
                                 "array",
                                 "isize"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "fetchArrayPtrConst"
                         },
                         "zz_fmtlang": {
@@ -3804,7 +3792,6 @@
                                 "array",
                                 "isize"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "fetchArrayRefConst"
                         },
                         "zz_fmtlang": {
@@ -4051,7 +4038,6 @@
                                 "f_var",
                                 "array"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "fetchVoidPtr"
                         },
                         "zz_fmtlang": {
@@ -4298,7 +4284,6 @@
                                 "f_var",
                                 "array"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "fetchVoidRef"
                         },
                         "zz_fmtlang": {
@@ -4594,7 +4579,6 @@
                                 "SHT_rv",
                                 "array"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "checkPtr"
                         },
                         "zz_fmtlang": {
@@ -4768,7 +4752,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "sumArray"
                         },
                         "zz_fmtlang": {

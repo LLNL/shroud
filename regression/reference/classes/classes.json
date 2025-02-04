@@ -306,7 +306,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor",
                             "function_suffix": "_default"
                         },
@@ -689,7 +688,6 @@
                                 "SHT_rv",
                                 "flag"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor",
                             "function_suffix": "_flag"
                         },
@@ -829,7 +827,6 @@
                             "f_arglist": [
                                 "f_var"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "delete"
                         },
                         "zz_fmtlang": {
@@ -1023,7 +1020,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "Method1"
                         },
                         "zz_fmtlang": {
@@ -1351,7 +1347,6 @@
                                 "SHT_rv",
                                 "obj2"
                             ],
-                            "f_intent_attr": ", intent(IN)",
                             "function_name": "equivalent"
                         },
                         "zz_fmtlang": {
@@ -1519,7 +1514,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "returnThis"
                         }
                     },
@@ -1909,7 +1903,6 @@
                                 "name",
                                 "flag"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "returnThisBuffer"
                         }
                     },
@@ -2116,7 +2109,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(IN)",
                             "function_name": "getclass3"
                         },
                         "zz_fmtlang": {
@@ -2358,7 +2350,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "getName"
                         },
                         "zz_fmtlang": {
@@ -2728,7 +2719,6 @@
                                 "SHT_rv",
                                 "arg"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "directionFunc"
                         },
                         "zz_fmtlang": {
@@ -2858,7 +2848,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_flag",
                             "function_name": "get_m_flag",
                             "struct_name": "Class1",
@@ -2966,7 +2955,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_test",
                             "function_name": "get_test",
                             "struct_name": "Class1",
@@ -3116,7 +3104,6 @@
                                 "f_var",
                                 "val"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_test",
                             "function_name": "set_test",
                             "struct_name": "Class1",
@@ -3222,7 +3209,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_bool",
                             "function_name": "get_m_bool",
                             "struct_name": "Class1",
@@ -3371,7 +3357,6 @@
                                 "f_var",
                                 "val"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_bool",
                             "function_name": "set_m_bool",
                             "struct_name": "Class1",
@@ -3502,7 +3487,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_name",
                             "function_name": "get_m_name",
                             "struct_name": "Class1",
@@ -3652,7 +3636,6 @@
                                 "f_var",
                                 "val"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_name",
                             "function_name": "set_m_name",
                             "struct_name": "Class1",
@@ -4074,7 +4057,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "getName"
                         },
                         "zz_fmtlang": {
@@ -4350,7 +4332,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "getReference"
                         },
                         "zz_fmtlang": {
@@ -4624,7 +4605,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor"
                         },
                         "zz_fmtlang": {
@@ -4822,7 +4802,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(IN)",
                             "function_name": "get_ivar"
                         },
                         "zz_fmtlang": {
@@ -5109,7 +5088,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor"
                         },
                         "zz_fmtlang": {
@@ -5371,7 +5349,6 @@
                                 "f_var",
                                 "n"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "allocate"
                         }
                     },
@@ -5464,7 +5441,6 @@
                             "f_arglist": [
                                 "f_var"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "free"
                         }
                     },
@@ -5620,7 +5596,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor"
                         }
                     },
@@ -5715,7 +5690,6 @@
                             "f_arglist": [
                                 "f_var"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "dtor"
                         }
                     },
@@ -5820,7 +5794,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "nitems",
                             "function_name": "get_nitems",
                             "struct_name": "Data",
@@ -5970,7 +5943,6 @@
                                 "f_var",
                                 "val"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "nitems",
                             "function_name": "set_nitems",
                             "struct_name": "Data",
@@ -6124,7 +6096,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "items",
                             "function_name": "get_items",
                             "struct_name": "Data",
@@ -6284,7 +6255,6 @@
                                 "f_var",
                                 "val"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "items",
                             "function_name": "set_items",
                             "struct_name": "Data",

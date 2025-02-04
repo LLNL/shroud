@@ -720,7 +720,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor"
                         }
                     },
@@ -859,7 +858,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "check_length",
                             "function_suffix": "_0"
                         }
@@ -1227,7 +1225,6 @@
                                 "SHT_rv",
                                 "length"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "check_length",
                             "function_suffix": "_1_int"
                         }
@@ -1399,7 +1396,6 @@
                                 "SHT_rv",
                                 "length"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "check_length",
                             "function_suffix": "_1_long"
                         }
@@ -1647,7 +1643,6 @@
                                 "SHT_rv",
                                 "flag"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "declare",
                             "function_suffix": "_0"
                         }
@@ -2161,7 +2156,6 @@
                                 "flag",
                                 "length"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "declare",
                             "function_suffix": "_1_int"
                         }
@@ -2392,7 +2386,6 @@
                                 "flag",
                                 "length"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "declare",
                             "function_suffix": "_1_long"
                         }
@@ -2498,7 +2491,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "m_length",
                             "function_name": "get_length",
                             "struct_name": "Class1",

@@ -163,7 +163,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor"
                         }
                     },
@@ -258,7 +257,6 @@
                             "f_arglist": [
                                 "f_var"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "dtor"
                         }
                     },
@@ -446,7 +444,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "createChildA"
                         }
                     },
@@ -634,7 +631,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "createChildB"
                         }
                     },
@@ -854,7 +850,6 @@
                                 "f_var",
                                 "child"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "replaceChildB"
                         }
                     }
@@ -1065,7 +1060,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor"
                         }
                     },
@@ -1163,7 +1157,6 @@
                             "f_arglist": [
                                 "f_var"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "dtor"
                         }
                     },
@@ -1352,7 +1345,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "createChildA"
                         }
                     },
@@ -1541,7 +1533,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "createChildB"
                         }
                     },
@@ -1762,7 +1753,6 @@
                                 "f_var",
                                 "child"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "replaceChildB"
                         }
                     },
@@ -1897,7 +1887,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "use_count"
                         }
                     }
@@ -2180,7 +2169,6 @@
                                 "f_var",
                                 "from"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "assign_weak"
                         }
                     },
@@ -2315,7 +2303,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "use_count"
                         }
                     }

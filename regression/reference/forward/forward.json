@@ -268,7 +268,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "ctor"
                         },
                         "zz_fmtlang": {
@@ -406,7 +405,6 @@
                             "f_arglist": [
                                 "f_var"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "dtor"
                         },
                         "zz_fmtlang": {
@@ -694,7 +692,6 @@
                                 "f_var",
                                 "arg"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "func1"
                         },
                         "zz_fmtlang": {
@@ -992,7 +989,6 @@
                                 "f_var",
                                 "arg"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "function_name": "acceptClass3"
                         },
                         "zz_fmtlang": {

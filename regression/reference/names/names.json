@@ -6151,7 +6151,6 @@
                                     "f_arglist": [
                                         "SHT_rv"
                                     ],
-                                    "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "defaultctor"
                                 },
                                 "zz_fmtlang": {
@@ -6273,7 +6272,6 @@
                                     "f_arglist": [
                                         "f_var"
                                     ],
-                                    "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "method1"
                                 },
                                 "zz_fmtlang": {
@@ -6399,7 +6397,6 @@
                                     "f_arglist": [
                                         "f_var"
                                     ],
-                                    "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "method2"
                                 },
                                 "zz_fmtlang": {
@@ -7353,7 +7350,6 @@
                                     "f_arglist": [
                                         "f_var"
                                     ],
-                                    "f_intent_attr": ", intent(INOUT)",
                                     "function_name": "Member1"
                                 }
                             }

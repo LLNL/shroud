@@ -859,7 +859,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "x1",
                             "function_name": "get_x1",
                             "struct_name": "Cstruct_as_class",
@@ -1009,7 +1008,6 @@
                                 "f_var",
                                 "val"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "x1",
                             "function_name": "set_x1",
                             "struct_name": "Cstruct_as_class",
@@ -1117,7 +1115,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "y1",
                             "function_name": "get_y1",
                             "struct_name": "Cstruct_as_class",
@@ -1267,7 +1264,6 @@
                                 "f_var",
                                 "val"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "y1",
                             "function_name": "set_y1",
                             "struct_name": "Cstruct_as_class",
@@ -1470,7 +1466,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "x1",
                             "function_name": "get_x1",
                             "struct_name": "Cstruct_as_subclass",
@@ -1620,7 +1615,6 @@
                                 "f_var",
                                 "val"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "x1",
                             "function_name": "set_x1",
                             "struct_name": "Cstruct_as_subclass",
@@ -1728,7 +1722,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "y1",
                             "function_name": "get_y1",
                             "struct_name": "Cstruct_as_subclass",
@@ -1878,7 +1871,6 @@
                                 "f_var",
                                 "val"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "y1",
                             "function_name": "set_y1",
                             "struct_name": "Cstruct_as_subclass",
@@ -1986,7 +1978,6 @@
                             "f_arglist": [
                                 "SHT_rv"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "z1",
                             "function_name": "get_z1",
                             "struct_name": "Cstruct_as_subclass",
@@ -2136,7 +2127,6 @@
                                 "f_var",
                                 "val"
                             ],
-                            "f_intent_attr": ", intent(INOUT)",
                             "field_name": "z1",
                             "function_name": "set_z1",
                             "struct_name": "Cstruct_as_subclass",
