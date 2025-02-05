@@ -1181,7 +1181,7 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "name",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_OTHER",
+                                "sh_type": "SH_TYPE_CHAR",
                                 "stmt_name": "f_in_char*",
                                 "typemap_name": "char"
                             },
@@ -1440,7 +1440,7 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "name",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_OTHER",
+                                "sh_type": "SH_TYPE_CHAR",
                                 "stmt_name": "f_in_char*",
                                 "typemap_name": "char"
                             },
@@ -1700,7 +1700,7 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "name",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_OTHER",
+                                "sh_type": "SH_TYPE_CHAR",
                                 "stmt_name": "f_in_char*",
                                 "typemap_name": "char"
                             },
@@ -4708,7 +4708,7 @@
                                                     "i_module_name": "iso_c_binding",
                                                     "i_type": "character(kind=C_CHAR)",
                                                     "i_var": "arg2",
-                                                    "sh_type": "SH_TYPE_OTHER",
+                                                    "sh_type": "SH_TYPE_CHAR",
                                                     "stmt_name": "f_none_char",
                                                     "typemap_name": "char"
                                                 },
@@ -4729,7 +4729,7 @@
                                                     "i_module_name": "iso_c_binding",
                                                     "i_type": "character(kind=C_CHAR)",
                                                     "i_var": "arg3",
-                                                    "sh_type": "SH_TYPE_OTHER",
+                                                    "sh_type": "SH_TYPE_CHAR",
                                                     "stmt_name": "f_none_char*",
                                                     "typemap_name": "char"
                                                 },
@@ -5016,7 +5016,7 @@
                                                     "i_module_name": "iso_c_binding",
                                                     "i_type": "character(kind=C_CHAR)",
                                                     "i_var": "arg2",
-                                                    "sh_type": "SH_TYPE_OTHER",
+                                                    "sh_type": "SH_TYPE_CHAR",
                                                     "stmt_name": "f_none_char",
                                                     "typemap_name": "char"
                                                 },
@@ -5037,7 +5037,7 @@
                                                     "i_module_name": "iso_c_binding",
                                                     "i_type": "character(kind=C_CHAR)",
                                                     "i_var": "arg3",
-                                                    "sh_type": "SH_TYPE_OTHER",
+                                                    "sh_type": "SH_TYPE_CHAR",
                                                     "stmt_name": "f_none_char*",
                                                     "typemap_name": "char"
                                                 },

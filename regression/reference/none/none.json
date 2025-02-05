@@ -355,7 +355,8 @@
             },
             "i_module_name": "iso_c_binding",
             "i_type": "character(kind=C_CHAR)",
-            "sgroup": "char"
+            "sgroup": "char",
+            "sh_type": "SH_TYPE_CHAR"
         },
         "double": {
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})",

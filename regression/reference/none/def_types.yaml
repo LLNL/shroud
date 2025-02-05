@@ -101,7 +101,7 @@ typemap:
       LUA_pop: lua_tostring({LUA_state_var}, {LUA_index})
       LUA_push: lua_pushstring({LUA_state_var}, {push_arg})
       sgroup: char
-      sh_type: SH_TYPE_OTHER
+      sh_type: SH_TYPE_CHAR
       cfi_type: CFI_type_other
   - type: double
     fields:

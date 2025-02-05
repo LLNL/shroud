@@ -874,6 +874,7 @@ def default_typemap():
             LUA_push="lua_pushstring({LUA_state_var}, {push_arg})",
             base="string",
             sgroup="char",
+            sh_type="SH_TYPE_CHAR",
         ),
         # C++ std::string
         string=Typemap(

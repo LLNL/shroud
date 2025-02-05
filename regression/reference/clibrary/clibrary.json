@@ -1475,7 +1475,7 @@
                                 "i_var": "SHT_rv",
                                 "i_var_len": "SHT_rv_len",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_OTHER",
+                                "sh_type": "SH_TYPE_CHAR",
                                 "stmt_name": "f_function_char*_buf_copy",
                                 "typemap_name": "char"
                             },
@@ -1517,7 +1517,7 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "arg1",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_OTHER",
+                                "sh_type": "SH_TYPE_CHAR",
                                 "stmt_name": "f_in_char*",
                                 "typemap_name": "char"
                             },
@@ -1557,7 +1557,7 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "arg2",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_OTHER",
+                                "sh_type": "SH_TYPE_CHAR",
                                 "stmt_name": "f_in_char*",
                                 "typemap_name": "char"
                             },
@@ -1792,7 +1792,7 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "name",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_OTHER",
+                                "sh_type": "SH_TYPE_CHAR",
                                 "stmt_name": "f_in_char*",
                                 "typemap_name": "char"
                             },
@@ -1999,7 +1999,7 @@
                                 "i_var": "s",
                                 "i_var_len": "SHT_s_len",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_OTHER",
+                                "sh_type": "SH_TYPE_CHAR",
                                 "stmt_name": "f_inout_char*_buf",
                                 "typemap_name": "char"
                             },
@@ -2222,7 +2222,7 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "in",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_OTHER",
+                                "sh_type": "SH_TYPE_CHAR",
                                 "stmt_name": "f_inout_char*_capi",
                                 "typemap_name": "char"
                             },
@@ -2304,7 +2304,7 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "out",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_OTHER",
+                                "sh_type": "SH_TYPE_CHAR",
                                 "stmt_name": "f_out_char*_capi",
                                 "typemap_name": "char"
                             },
@@ -2470,7 +2470,7 @@
                                 "i_var": "name1",
                                 "i_var_len": "SHT_name1_len",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_OTHER",
+                                "sh_type": "SH_TYPE_CHAR",
                                 "stmt_name": "f_out_char*_buf",
                                 "typemap_name": "char"
                             },
@@ -2689,7 +2689,7 @@
                                 "i_var": "name1",
                                 "i_var_len": "SHT_name1_len",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_OTHER",
+                                "sh_type": "SH_TYPE_CHAR",
                                 "stmt_name": "f_out_char*_buf",
                                 "typemap_name": "char"
                             },
@@ -2733,7 +2733,7 @@
                                 "i_var": "name2",
                                 "i_var_len": "SHT_name2_len",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_OTHER",
+                                "sh_type": "SH_TYPE_CHAR",
                                 "stmt_name": "f_out_char*_buf",
                                 "typemap_name": "char"
                             },
@@ -3025,7 +3025,7 @@
                                 "i_var": "text",
                                 "i_var_len": "SHT_text_len",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_OTHER",
+                                "sh_type": "SH_TYPE_CHAR",
                                 "stmt_name": "f_out_char*_buf",
                                 "typemap_name": "char"
                             },
@@ -3385,7 +3385,7 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "text",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_OTHER",
+                                "sh_type": "SH_TYPE_CHAR",
                                 "stmt_name": "f_in_char*_capi",
                                 "typemap_name": "char"
                             },
@@ -3796,7 +3796,7 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "text",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_OTHER",
+                                "sh_type": "SH_TYPE_CHAR",
                                 "stmt_name": "f_in_char*_capi",
                                 "typemap_name": "char"
                             },
@@ -4607,7 +4607,7 @@
                                 "i_var": "outbuf",
                                 "i_var_len": "SHT_outbuf_len",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_OTHER",
+                                "sh_type": "SH_TYPE_CHAR",
                                 "stmt_name": "f_out_char*_buf",
                                 "typemap_name": "char"
                             },
@@ -5365,7 +5365,7 @@
                                 "i_var": "outbuf",
                                 "i_var_len": "SHT_outbuf_len",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_OTHER",
+                                "sh_type": "SH_TYPE_CHAR",
                                 "stmt_name": "f_out_char*_buf",
                                 "typemap_name": "char"
                             },
