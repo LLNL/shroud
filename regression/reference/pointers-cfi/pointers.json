@@ -10735,7 +10735,7 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "name",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_OTHER",
+                                "sh_type": "SH_TYPE_CHAR",
                                 "stmt_name": "c_in_char*",
                                 "typemap_name": "char"
                             },
@@ -10833,7 +10833,7 @@
                                 "i_var_cfi": "SHT_name_cfi",
                                 "i_var_len": "SHT_name_len",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_OTHER",
+                                "sh_type": "SH_TYPE_CHAR",
                                 "stmt_name": "f_in_char*_cfi",
                                 "typemap_name": "char"
                             },

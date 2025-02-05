@@ -314,7 +314,7 @@ void CHA_getCharPtr1_bufferify(CHA_SHROUD_array *SHT_rv_cdesc)
     // splicer begin function.getCharPtr1_bufferify
     const char *SHC_rv = getCharPtr1();
     SHT_rv_cdesc->base_addr = const_cast<char *>(SHC_rv);
-    SHT_rv_cdesc->type = SH_TYPE_OTHER;
+    SHT_rv_cdesc->type = SH_TYPE_CHAR;
     SHT_rv_cdesc->elem_len = SHC_rv == nullptr ? 0 : std::strlen(SHC_rv);
     SHT_rv_cdesc->size = 1;
     SHT_rv_cdesc->rank = 0;
@@ -440,7 +440,7 @@ void CHA_getCharPtr5_bufferify(CHA_SHROUD_array *SHT_rv_cdesc)
     // splicer begin function.getCharPtr5_bufferify
     const char *SHC_rv = getCharPtr5();
     SHT_rv_cdesc->base_addr = const_cast<char *>(SHC_rv);
-    SHT_rv_cdesc->type = SH_TYPE_OTHER;
+    SHT_rv_cdesc->type = SH_TYPE_CHAR;
     SHT_rv_cdesc->elem_len = SHC_rv == nullptr ? 0 : std::strlen(SHC_rv);
     SHT_rv_cdesc->size = 1;
     SHT_rv_cdesc->rank = 0;

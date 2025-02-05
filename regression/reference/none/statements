@@ -3827,6 +3827,20 @@ c_mixin_cast-argument:
   c_local:
   - cxx
   owner: library
+c_mixin_cdesc-char-fill-cvar:
+  name: c_mixin_cdesc-char-fill-cvar
+  comments:
+  - Fill cdesc from char * in the C wrapper.
+  intent: mixin
+  c_post_call:
+  - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
+  - '{c_var_cdesc}->size = 1;'
+  - '{c_var_cdesc}->rank = 0;'
+  c_helper:
+  - type_defines
+  owner: library
 c_mixin_cfi-unpack-base-addr:
   name: c_mixin_cfi-unpack-base-addr
   intent: mixin
@@ -4090,20 +4104,6 @@ c_mixin_function-return-cvar:
   c_return:
   - return {c_var};
   c_return_type: '{c_type} *'
-  owner: library
-c_mixin_function_char*_cdesc:
-  name: c_mixin_function_char*_cdesc
-  comments:
-  - Fill cdesc from char * in the C wrapper.
-  intent: mixin
-  c_post_call:
-  - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
-  - '{c_var_cdesc}->size = 1;'
-  - '{c_var_cdesc}->rank = 0;'
-  c_helper:
-  - type_defines
   owner: library
 c_mixin_function_shadow_capptr:
   name: c_mixin_function_shadow_capptr
@@ -6317,7 +6317,7 @@ f_function_char*_cdesc_allocatable:
   - '    c_mixin_as-intent-out'
   - '  f_mixin_pass_cdesc'
   - '  f_mixin_char_cdesc_allocate'
-  - '  c_mixin_function_char*_cdesc'
+  - '  c_mixin_cdesc-char-fill-cvar'
   i_arg_names:
   - '{i_var_cdesc}'
   i_arg_decl:
@@ -6374,7 +6374,7 @@ f_function_char*_cdesc_pointer:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_pass_cdesc'
-  - '  c_mixin_function_char*_cdesc'
+  - '  c_mixin_cdesc-char-fill-cvar'
   - '  f_mixin_char_cdesc_pointer'
   i_arg_names:
   - '{i_var_cdesc}'
@@ -6735,7 +6735,7 @@ f_function_char_cdesc_allocatable:
   - '    c_mixin_as-intent-out'
   - '  f_mixin_pass_cdesc'
   - '  f_mixin_char_cdesc_allocate'
-  - '  c_mixin_function_char*_cdesc'
+  - '  c_mixin_cdesc-char-fill-cvar'
   i_arg_names:
   - '{i_var_cdesc}'
   i_arg_decl:
@@ -6792,7 +6792,7 @@ f_function_char_cdesc_pointer:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_pass_cdesc'
-  - '  c_mixin_function_char*_cdesc'
+  - '  c_mixin_cdesc-char-fill-cvar'
   - '  f_mixin_char_cdesc_pointer'
   i_arg_names:
   - '{i_var_cdesc}'
@@ -19306,6 +19306,7 @@ root
       as-intent-out -- c_mixin_as-intent-out
       c-str -- c_mixin_c-str
       cast-argument -- c_mixin_cast-argument
+      cdesc-char-fill-cvar -- c_mixin_cdesc-char-fill-cvar
       cfi-unpack-base-addr -- c_mixin_cfi-unpack-base-addr
       cfi-unpack-base-addr-cxx -- c_mixin_cfi-unpack-base-addr-cxx
       cfi-unpack-len -- c_mixin_cfi-unpack-len
@@ -19328,8 +19329,6 @@ root
         new-string -- c_mixin_destructor_new-string
         new-vector -- c_mixin_destructor_new-vector
       function
-        char*
-          cdesc -- c_mixin_function_char*_cdesc
         shadow
           capptr -- c_mixin_function_shadow_capptr
         string

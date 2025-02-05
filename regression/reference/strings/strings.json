@@ -7010,7 +7010,7 @@
                                 "i_intent": "IN",
                                 "i_intent_attr": ", intent(IN)",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_OTHER",
+                                "sh_type": "SH_TYPE_CHAR",
                                 "stmt_name": "c_in_char",
                                 "typemap_name": "char"
                             },
@@ -7076,7 +7076,7 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "status",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_OTHER",
+                                "sh_type": "SH_TYPE_CHAR",
                                 "stmt_name": "f_in_char",
                                 "typemap_name": "char"
                             },
@@ -7224,7 +7224,7 @@
                                 "i_intent_attr": ", intent(OUT)",
                                 "i_name_function": "c_creturn_char",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_OTHER",
+                                "sh_type": "SH_TYPE_CHAR",
                                 "stmt_name": "c_function_char",
                                 "typemap_name": "char"
                             },
@@ -7271,7 +7271,7 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_OTHER",
+                                "sh_type": "SH_TYPE_CHAR",
                                 "stmt_name": "f_function_char",
                                 "typemap_name": "char"
                             },

@@ -805,7 +805,7 @@
         ]
     },
     {
-        "name": "c_mixin_function_char*_cdesc",
+        "name": "c_mixin_cdesc-char-fill-cvar",
         "comments": [
             "Fill cdesc from char * in the C wrapper."
         ],
@@ -2435,7 +2435,7 @@
             "f_mixin_function-to-subroutine",
             "f_mixin_pass_cdesc",
             "f_mixin_char_cdesc_allocate",
-            "c_mixin_function_char*_cdesc"
+            "c_mixin_cdesc-char-fill-cvar"
         ]
     },
     {
@@ -2446,7 +2446,7 @@
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_pass_cdesc",
-            "c_mixin_function_char*_cdesc",
+            "c_mixin_cdesc-char-fill-cvar",
             "f_mixin_char_cdesc_pointer"
         ]
     },
