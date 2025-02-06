@@ -574,7 +574,7 @@ fail:
 // Statement: py_subroutine
 // ----------------------------------------
 // Argument:  char **outstr +intent(out)
-// Statement: py_mixin_unknown
+// Statement: py_out_char**
 static char PY_fetchCharPtrLibrary__doc__[] =
 "documentation"
 ;
@@ -589,13 +589,13 @@ PY_fetchCharPtrLibrary(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.fetchCharPtrLibrary
-    char **outstr;
+    char *outstr = nullptr;
     PyObject * SHPy_outstr = nullptr;
 
-    fetchCharPtrLibrary(outstr);
+    fetchCharPtrLibrary(&outstr);
 
     // post_call
-    SHPy_outstr = PyString_FromString(*outstr);
+    SHPy_outstr = PyString_FromString(outstr);
 
     return (PyObject *) SHPy_outstr;
 // splicer end function.fetchCharPtrLibrary

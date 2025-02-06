@@ -5396,7 +5396,7 @@
                                 "c_const": "",
                                 "c_type": "char",
                                 "c_var": "outstr",
-                                "ctor_expr": "*outstr",
+                                "ctor_expr": "outstr",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
                                 "cxx_nonconst_ptr": "outstr",
@@ -5407,7 +5407,7 @@
                                 "py_var": "SHPy_outstr",
                                 "rank": "1",
                                 "size_var": "SHSize_outstr",
-                                "stmt": "py_mixin_unknown",
+                                "stmt": "py_out_char**",
                                 "value_var": "SHValue_outstr"
                             },
                             "meta": {
@@ -5415,7 +5415,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "py_mixin_unknown"
+                            "stmt": "py_out_char**"
                         }
                     },
                     "share": {
@@ -5453,9 +5453,9 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_call_function": "fetchCharPtrLibrary(outstr)",
+                        "C_call_function": "fetchCharPtrLibrary(&outstr)",
                         "PY_array_arg": "numpy",
-                        "PY_call_list": "outstr",
+                        "PY_call_list": "&outstr",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_NOARGS",

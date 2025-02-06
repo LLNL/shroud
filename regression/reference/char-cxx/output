@@ -3,13 +3,6 @@ Wrote wrapchar.cpp
 Wrote wrapfchar.f
 Wrote utilchar.cpp
 Wrote typeschar.h
-
-----------------------------------------
-Phase: Wrapp.wrap_functions
-----------------------------------------
-Node: fetchCharPtrLibrary
-line 209
-Unknown statement: py_out_char**
 Wrote pycharmodule.cpp
 Wrote pycharmodule.hpp
 Wrote setup.py

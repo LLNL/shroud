@@ -1052,7 +1052,7 @@ return 1;""",
         """
         blk = None
         incref = False
-        
+
         if intent_blk.object_created:
             # Explicit code exists to create object.
             # For example, NumPy intent(OUT) arguments as part of pre-call.
@@ -4446,6 +4446,18 @@ py_statements = [
             "Py_XDECREF({value_var}.dataobj);",
         ],
         goto_fail=True,
+    ),
+    dict(
+        # The defaults work for this, but defining these fields creates
+        # a wrapper which is easier to understand.
+        name="py_out_char**",
+        arg_declare=[
+            "{c_const}char *{cxx_var} = {nullptr};",
+        ],
+        arg_call=["&{cxx_var}"],
+        fmtdict=dict(
+            ctor_expr="{cxx_var}",
+        ),
     ),
     
 ########################################
