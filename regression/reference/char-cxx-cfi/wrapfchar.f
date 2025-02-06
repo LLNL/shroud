@@ -632,13 +632,13 @@ module char_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char **outstr +intent(out)
-    ! Statement: f_mixin_unknown
+    ! Statement: f_out_char**_cfi_pointer
     ! start fetch_char_ptr_library
     interface
-        subroutine fetch_char_ptr_library(===>i_arg_names<===) &
+        subroutine fetch_char_ptr_library(outstr) &
                 bind(C, name="CHA_fetchCharPtrLibrary_CFI")
             implicit none
-            ===>i_arg_decl<===
+            character(len=:), intent(OUT), pointer :: outstr
         end subroutine fetch_char_ptr_library
     end interface
     ! end fetch_char_ptr_library
@@ -1115,15 +1115,15 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char **outstr +intent(out)
-    ! Statement: f_mixin_unknown
+    ! Statement: f_out_char**_cfi_pointer
     !>
     !! Fetch a pointer to a char array owned by the library.
     !<
     ! start fetch_char_ptr_library
-    subroutine fetch_char_ptr_library(===>f_arg_name<===)
-        ===>f_arg_decl<===
+    subroutine fetch_char_ptr_library(outstr)
+        character(len=:), intent(OUT), pointer :: outstr
         ! splicer begin function.fetch_char_ptr_library
-        call c_fetch_char_ptr_library_CFI(===>f_arg_call<===)
+        call c_fetch_char_ptr_library_CFI(outstr)
         ! splicer end function.fetch_char_ptr_library
     end subroutine fetch_char_ptr_library
     ! end fetch_char_ptr_library

@@ -4779,15 +4779,16 @@
                     "f": {
                         "+result": {
                             "fmtdict": {
-                                "C_call_function": "fetchCharPtrLibrary(\t)",
+                                "C_call_function": "fetchCharPtrLibrary(\t&outstr)",
+                                "C_call_list": "&outstr",
                                 "C_name": "CHA_fetchCharPtrLibrary_CFI",
-                                "C_prototype": "===>c_arg_decl<===",
+                                "C_prototype": "CFI_cdesc_t *SHT_outstr_cfi",
                                 "C_return_type": "void",
-                                "F_arg_c_call": "===>f_arg_call<===",
-                                "F_arguments": "===>f_arg_name<===",
+                                "F_arg_c_call": "outstr",
+                                "F_arguments": "outstr",
                                 "F_subprogram": "subroutine",
                                 "f_call_function": "c_fetch_char_ptr_library_CFI",
-                                "i_arguments": "===>i_arg_names<===",
+                                "i_arguments": "outstr",
                                 "i_name_function": "fetch_char_ptr_library",
                                 "i_subprogram": "subroutine",
                                 "i_suffix": "_CFI",
@@ -4806,9 +4807,15 @@
                                 "c_addr": "",
                                 "c_const": "",
                                 "c_deref": "*",
+                                "c_local_cdesc": "SHC_outstr_cdesc",
+                                "c_local_cptr": "SHC_outstr_cptr",
+                                "c_local_err": "SHC_outstr_err",
+                                "c_local_fptr": "SHC_outstr_fptr",
+                                "c_local_len": "SHC_outstr_len",
                                 "c_member": "->",
                                 "c_type": "char",
                                 "c_var": "outstr",
+                                "c_var_cfi": "SHT_outstr_cfi",
                                 "cfi_type": "CFI_type_other",
                                 "cxx_abstract_decl": "char **",
                                 "cxx_addr": "",
@@ -4828,14 +4835,20 @@
                                 "i_intent": "OUT",
                                 "i_intent_attr": ", intent(OUT)",
                                 "i_kind": "C_CHAR",
+                                "i_local_cdesc": "SHC_outstr_cdesc",
+                                "i_local_cptr": "SHC_outstr_cptr",
+                                "i_local_err": "SHC_outstr_err",
+                                "i_local_fptr": "SHC_outstr_fptr",
+                                "i_local_len": "SHC_outstr_len",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "outstr",
+                                "i_var_cfi": "SHT_outstr_cfi",
                                 "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_CHAR",
                                 "size": "size(outstr)",
-                                "stmt_name": "f_mixin_unknown",
+                                "stmt_name": "f_out_char**_cfi_pointer",
                                 "typemap_name": "char"
                             },
                             "meta": {
@@ -4845,7 +4858,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "f_mixin_unknown"
+                            "stmt": "f_out_char**_cfi_pointer"
                         }
                     },
                     "share": {

@@ -106,7 +106,7 @@ int CHA_acceptCharArrayIn_CFI(CFI_cdesc_t *SHT_names_cfi);
 
 void CHA_fetchCharPtrLibrary(char **outstr);
 
-void CHA_fetchCharPtrLibrary_CFI(===>c_arg_decl<===);
+void CHA_fetchCharPtrLibrary_CFI(CFI_cdesc_t *SHT_outstr_cfi);
 
 #ifdef __cplusplus
 }

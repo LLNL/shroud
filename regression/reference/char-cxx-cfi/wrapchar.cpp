@@ -868,12 +868,32 @@ void CHA_fetchCharPtrLibrary(char **outstr)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  char **outstr +intent(out)
-// Statement: f_mixin_unknown
+// Statement: f_out_char**_cfi_pointer
 // start CHA_fetchCharPtrLibrary_CFI
-void CHA_fetchCharPtrLibrary_CFI(===>c_arg_decl<===)
+void CHA_fetchCharPtrLibrary_CFI(CFI_cdesc_t *SHT_outstr_cfi)
 {
     // splicer begin function.fetchCharPtrLibrary_CFI
-    fetchCharPtrLibrary();
+    char *outstr;
+    fetchCharPtrLibrary(&outstr);
+    int SHC_outstr_err;
+    if (outstr == nullptr) {
+        SHC_outstr_err = CFI_setpointer(SHT_outstr_cfi, nullptr,
+            nullptr);
+    } else {
+        CFI_CDESC_T(0) SHC_outstr_fptr;
+        CFI_cdesc_t *SHC_outstr_cdesc = reinterpret_cast<CFI_cdesc_t *>
+            (&SHC_outstr_fptr);
+        void *SHC_outstr_cptr = outstr;
+        size_t SHC_outstr_len = std::strlen(outstr);
+        SHC_outstr_err = CFI_establish(SHC_outstr_cdesc,
+            SHC_outstr_cptr, CFI_attribute_pointer, CFI_type_char,
+            SHC_outstr_len, 0, nullptr);
+        if (SHC_outstr_err == CFI_SUCCESS) {
+            SHT_outstr_cfi->elem_len = SHC_outstr_cdesc->elem_len;
+            SHC_outstr_err = CFI_setpointer(SHT_outstr_cfi,
+                SHC_outstr_cdesc, nullptr);
+        }
+    }
     // splicer end function.fetchCharPtrLibrary_CFI
 }
 // end CHA_fetchCharPtrLibrary_CFI
