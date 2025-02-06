@@ -28,6 +28,7 @@ program tester
   call test_c_wrapper
 #endif
   call test_char_arrays
+  call test_char_ptr_out
 
   call fruit_summary
   call fruit_finalize
@@ -241,4 +242,17 @@ contains
 
   end subroutine test_char_arrays
 
+  subroutine test_char_ptr_out
+    character(len=:), pointer :: outptr
+
+    call set_case_name("test_char_ptr_out")
+
+    nullify(outptr)
+    call fetch_char_ptr_library(outptr)
+    call assert_true(associated(outptr), "fetchCharPtrLibrary associated")
+    call assert_equals(outptr, "static_char_array", "fetchCharPtrLibrary value")
+    
+  end subroutine test_char_ptr_out
+
+  
 end program tester

@@ -648,6 +648,40 @@ module char_mod
     end interface
     ! end c_accept_char_array_in_bufferify
 
+    ! ----------------------------------------
+    ! Function:  void fetchCharPtrLibrary
+    ! Statement: c_subroutine
+    ! ----------------------------------------
+    ! Argument:  char **outstr +intent(out)
+    ! Statement: c_out_char**
+    ! start c_fetch_char_ptr_library
+    interface
+        subroutine c_fetch_char_ptr_library(outstr) &
+                bind(C, name="CHA_fetchCharPtrLibrary")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR), intent(OUT) :: outstr
+        end subroutine c_fetch_char_ptr_library
+    end interface
+    ! end c_fetch_char_ptr_library
+
+    ! ----------------------------------------
+    ! Function:  void fetchCharPtrLibrary
+    ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  char **outstr +intent(out)
+    ! Statement: f_out_char**_cdesc_pointer
+    ! start c_fetch_char_ptr_library_bufferify
+    interface
+        subroutine c_fetch_char_ptr_library_bufferify(SHT_outstr_cdesc) &
+                bind(C, name="CHA_fetchCharPtrLibrary_bufferify")
+            import :: CHA_SHROUD_array
+            implicit none
+            type(CHA_SHROUD_array), intent(OUT) :: SHT_outstr_cdesc
+        end subroutine c_fetch_char_ptr_library_bufferify
+    end interface
+    ! end c_fetch_char_ptr_library_bufferify
+
     interface
         ! helper copy_string
         ! Copy the char* or std::string in context into c_var.
@@ -1138,9 +1172,31 @@ contains
     end function accept_char_array_in
     ! end accept_char_array_in
 
+    ! ----------------------------------------
+    ! Function:  void fetchCharPtrLibrary
+    ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  char **outstr +intent(out)
+    ! Statement: f_out_char**_cdesc_pointer
+    !>
+    !! Fetch a pointer to a char array owned by the library.
+    !<
+    ! start fetch_char_ptr_library
+    subroutine fetch_char_ptr_library(outstr)
+        use iso_c_binding, only : c_f_pointer
+        character(len=:), intent(OUT), pointer :: outstr
+        ! splicer begin function.fetch_char_ptr_library
+        type(CHA_SHROUD_array) :: SHT_outstr_cdesc
+        call c_fetch_char_ptr_library_bufferify(SHT_outstr_cdesc)
+        call CHA_SHROUD_pointer_string(SHT_outstr_cdesc, outstr)
+        ! splicer end function.fetch_char_ptr_library
+    end subroutine fetch_char_ptr_library
+    ! end fetch_char_ptr_library
+
     ! splicer begin additional_functions
     ! splicer end additional_functions
 
+    ! start helper pointer_string
     ! helper pointer_string
     ! Assign context to an assumed-length character pointer
     subroutine CHA_SHROUD_pointer_string(context, var)
@@ -1152,5 +1208,6 @@ contains
         call c_f_pointer(context%base_addr, fptr)
         var => fptr
     end subroutine CHA_SHROUD_pointer_string
+    ! end helper pointer_string
 
 end module char_mod

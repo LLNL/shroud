@@ -610,6 +610,39 @@ module char_mod
     end interface
     ! end accept_char_array_in
 
+    ! ----------------------------------------
+    ! Function:  void fetchCharPtrLibrary
+    ! Statement: c_subroutine
+    ! ----------------------------------------
+    ! Argument:  char **outstr +intent(out)
+    ! Statement: c_out_char**
+    ! start c_fetch_char_ptr_library
+    interface
+        subroutine c_fetch_char_ptr_library(outstr) &
+                bind(C, name="CHA_fetchCharPtrLibrary")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR), intent(OUT) :: outstr
+        end subroutine c_fetch_char_ptr_library
+    end interface
+    ! end c_fetch_char_ptr_library
+
+    ! ----------------------------------------
+    ! Function:  void fetchCharPtrLibrary
+    ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  char **outstr +intent(out)
+    ! Statement: f_mixin_unknown
+    ! start fetch_char_ptr_library
+    interface
+        subroutine fetch_char_ptr_library(===>i_arg_names<===) &
+                bind(C, name="CHA_fetchCharPtrLibrary_CFI")
+            implicit none
+            ===>i_arg_decl<===
+        end subroutine fetch_char_ptr_library
+    end interface
+    ! end fetch_char_ptr_library
+
     ! splicer begin additional_declarations
     ! splicer end additional_declarations
 
@@ -1073,6 +1106,27 @@ contains
         ! splicer end function.accept_char_array_in
     end function accept_char_array_in
     ! end accept_char_array_in
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void fetchCharPtrLibrary
+    ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  char **outstr +intent(out)
+    ! Statement: f_mixin_unknown
+    !>
+    !! Fetch a pointer to a char array owned by the library.
+    !<
+    ! start fetch_char_ptr_library
+    subroutine fetch_char_ptr_library(===>f_arg_name<===)
+        ===>f_arg_decl<===
+        ! splicer begin function.fetch_char_ptr_library
+        call c_fetch_char_ptr_library_CFI(===>f_arg_call<===)
+        ! splicer end function.fetch_char_ptr_library
+    end subroutine fetch_char_ptr_library
+    ! end fetch_char_ptr_library
 #endif
 
     ! splicer begin additional_functions

@@ -8,22 +8,25 @@
  * Test C API generated from strings.yaml.
  */
 
-#include <wrapstrings.h>
+#include <wrapchar.h>
 
 #include <assert.h>
 #include <string.h>
 
-void test_functions(void)
+void test_char_ptr_out(void)
 {
-    const char *aaa = STR_getConstStringPtrLen();
-    assert(strcmp(aaa, "getConstStringPtrLen") == 0 && "getConstStringPtrLen");
-    // XXX - This will leak the std::string return by the C++ function.
+    char *outptr;
+    
+    CHA_fetchCharPtrLibrary(&outptr);
+    assert(strcmp(outptr, "static_char_array") == 0 && "fetchCharPtrLibrary");
 }
 
 int main(int argc, char *argv[])
 {
-  test_functions();
+    CHA_init_test();
+    
+    test_char_ptr_out();
 
-  return 0;
+    return 0;
 }
 

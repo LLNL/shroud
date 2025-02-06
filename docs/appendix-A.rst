@@ -1156,6 +1156,66 @@ Example usage:
          ]
     call accept_char_array_in(in)
 
+.. ############################################################
+
+.. _example_fetchCharPtrLibrary:
+
+fetchCharPtrLibrary
+^^^^^^^^^^^^^^^^^^^
+
+The argument will return the address of a character array which
+is owned by the library. The user will not need to release the
+memory.  The Fortran wrapper will use a variable with the
+``POINTER`` attribute which points to the same memory. The length
+of the string is based on the ``strlen`` of the argument.
+
+:file:`char.yaml`:
+
+.. code-block:: yaml
+
+    - decl: void fetchCharPtrLibrary(char **outstr+intent(out))
+
+This is a C++ file which provides the bufferify function.
+
+:file:`wrapchar.cpp`:
+
+.. literalinclude:: ../regression/reference/char-cxx/wrapchar.cpp
+   :language: c++
+   :start-after: start CHA_fetchCharPtrLibrary_bufferify
+   :end-before: end CHA_fetchCharPtrLibrary_bufferify
+
+Fortran calls C via the following interface:
+
+.. literalinclude:: ../regression/reference/char-cxx/wrapfchar.f
+   :language: fortran
+   :start-after: start c_fetch_char_ptr_library
+   :end-before: end c_fetch_char_ptr_library
+   :dedent: 4
+
+The Fortran wrapper:
+
+.. literalinclude:: ../regression/reference/char-cxx/wrapfchar.f
+   :language: fortran
+   :start-after: start fetch_char_ptr_library
+   :end-before: end fetch_char_ptr_library
+   :dedent: 4
+
+The helper function is required to set the length of the character pointer.
+
+.. literalinclude:: ../regression/reference/char-cxx/wrapfchar.f
+   :language: fortran
+   :start-after: start helper pointer_string
+   :end-before: end helper pointer_string
+
+Example usage:
+
+.. code-block:: fortran
+
+    character(len=:), pointer :: outptr
+
+    call fetch_char_ptr_library(outptr)
+    print *, outptr
+
 
 std::string
 -----------

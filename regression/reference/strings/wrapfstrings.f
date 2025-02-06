@@ -1616,6 +1616,7 @@ contains
     ! splicer begin additional_functions
     ! splicer end additional_functions
 
+    ! start helper pointer_string
     ! helper pointer_string
     ! Assign context to an assumed-length character pointer
     subroutine STR_SHROUD_pointer_string(context, var)
@@ -1627,5 +1628,6 @@ contains
         call c_f_pointer(context%base_addr, fptr)
         var => fptr
     end subroutine STR_SHROUD_pointer_string
+    ! end helper pointer_string
 
 end module strings_mod

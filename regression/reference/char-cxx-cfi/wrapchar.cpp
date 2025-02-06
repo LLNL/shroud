@@ -842,4 +842,40 @@ int CHA_acceptCharArrayIn_CFI(CFI_cdesc_t *SHT_names_cfi)
 }
 // end CHA_acceptCharArrayIn_CFI
 
+/**
+ * Fetch a pointer to a char array owned by the library.
+ */
+// ----------------------------------------
+// Function:  void fetchCharPtrLibrary
+// Statement: c_subroutine
+// ----------------------------------------
+// Argument:  char **outstr +intent(out)
+// Statement: c_out_char**
+// start CHA_fetchCharPtrLibrary
+void CHA_fetchCharPtrLibrary(char **outstr)
+{
+    // splicer begin function.fetchCharPtrLibrary
+    fetchCharPtrLibrary(outstr);
+    // splicer end function.fetchCharPtrLibrary
+}
+// end CHA_fetchCharPtrLibrary
+
+/**
+ * Fetch a pointer to a char array owned by the library.
+ */
+// ----------------------------------------
+// Function:  void fetchCharPtrLibrary
+// Statement: f_subroutine
+// ----------------------------------------
+// Argument:  char **outstr +intent(out)
+// Statement: f_mixin_unknown
+// start CHA_fetchCharPtrLibrary_CFI
+void CHA_fetchCharPtrLibrary_CFI(===>c_arg_decl<===)
+{
+    // splicer begin function.fetchCharPtrLibrary_CFI
+    fetchCharPtrLibrary();
+    // splicer end function.fetchCharPtrLibrary_CFI
+}
+// end CHA_fetchCharPtrLibrary_CFI
+
 }  // extern "C"

@@ -206,6 +206,12 @@ declarations:
     description: |
       Return strlen of the first index as a check.
 
+- decl: void fetchCharPtrLibrary(char **outstr+intent(out))
+  doxygen:
+    description: |
+      Fetch a pointer to a char array owned by the library.
+
+
 ########################################
 patterns:
     C_invalid_name: |

@@ -568,6 +568,38 @@ fail:
     return nullptr;
 // splicer end function.acceptCharArrayIn
 }
+
+// ----------------------------------------
+// Function:  void fetchCharPtrLibrary
+// Statement: py_subroutine
+// ----------------------------------------
+// Argument:  char **outstr +intent(out)
+// Statement: py_mixin_unknown
+static char PY_fetchCharPtrLibrary__doc__[] =
+"documentation"
+;
+
+/**
+ * Fetch a pointer to a char array owned by the library.
+ */
+static PyObject *
+PY_fetchCharPtrLibrary(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.fetchCharPtrLibrary
+    char **outstr;
+    PyObject * SHPy_outstr = nullptr;
+
+    fetchCharPtrLibrary(outstr);
+
+    // post_call
+    SHPy_outstr = PyString_FromString(*outstr);
+
+    return (PyObject *) SHPy_outstr;
+// splicer end function.fetchCharPtrLibrary
+}
 static PyMethodDef PY_methods[] = {
 {"init_test", (PyCFunction)PY_init_test, METH_NOARGS,
     PY_init_test__doc__},
@@ -593,6 +625,8 @@ static PyMethodDef PY_methods[] = {
     PY_CreturnChar__doc__},
 {"acceptCharArrayIn", (PyCFunction)PY_acceptCharArrayIn,
     METH_VARARGS|METH_KEYWORDS, PY_acceptCharArrayIn__doc__},
+{"fetchCharPtrLibrary", (PyCFunction)PY_fetchCharPtrLibrary,
+    METH_NOARGS, PY_fetchCharPtrLibrary__doc__},
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 

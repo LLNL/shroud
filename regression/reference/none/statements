@@ -4296,6 +4296,14 @@ c_mixin_local-cvar-ptr:
   - Declare a local pointer variable in the C wrapper.
   intent: mixin
   c_pre_call:
+  - '{c_const}{c_type} *{c_var};'
+  owner: library
+c_mixin_local-cxx-ptr:
+  name: c_mixin_local-cxx-ptr
+  comments:
+  - Declare a local_cxx pointer variable in the C wrapper.
+  intent: mixin
+  c_pre_call:
   - '{c_const}{c_type} * {c_local_cxx};'
   c_local:
   - cxx
@@ -4611,6 +4619,27 @@ c_out_char*:
   i_module:
     '{i_module_name}':
     - '{i_kind}'
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
+  c_arg_call:
+  - '{cxx_var}'
+  owner: library
+c_out_char**:
+  name: c_out_char**
+  comments:
+  - Pass cxx variable to library.
+  mixin_names:
+  - '  f_mixin_interface-as-cptr'
+  - '  c_mixin_declare-arg'
+  - '  c_mixin_arg-call-cvar'
+  intent: out
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type(C_PTR){i_intent_attr} :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -15121,6 +15150,12 @@ f_mixin_declare-interface-arg:
     '{i_module_name}':
     - '{i_kind}'
   owner: library
+f_mixin_dummy_arg:
+  name: f_mixin_dummy_arg
+  intent: mixin
+  f_arg_name:
+  - '{f_var}'
+  owner: library
 f_mixin_function:
   name: f_mixin_function
   comments:
@@ -16189,6 +16224,67 @@ f_out_char*:
   c_arg_call:
   - '{cxx_var}'
   owner: library
+f_out_char**_cdesc_pointer:
+  name: f_out_char**_cdesc_pointer
+  comments:
+  - Assign Fortran pointer from cdesc using helper pointer_string.
+  - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from char * in the C wrapper.
+  - Declare a local pointer variable in the C wrapper.
+  - Pass address of cxx variable to library.
+  notes:
+  - Return a Fortran pointer to C memory.
+  intent: out
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
+  f_declare:
+  - 'type({F_array_type}) :: {f_var_cdesc}'
+  f_arg_call:
+  - '{f_var_cdesc}'
+  f_post_call:
+  - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
+  f_module:
+    iso_c_binding:
+    - c_f_pointer
+  f_temps:
+  - cdesc
+  f_helper:
+  - pointer_string
+  - array_context
+  f_need_wrapper: true
+  mixin_names:
+  - '  f_mixin_dummy_arg'
+  - '  f_mixin_char_cdesc_pointer'
+  - '  f_mixin_pass_cdesc'
+  - '  c_mixin_cdesc-char-fill-cvar'
+  - '  c_mixin_local-cvar-ptr'
+  - '  c_mixin_arg-call-cvar-address'
+  i_arg_names:
+  - '{i_var_cdesc}'
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_pre_call:
+  - '{c_const}{c_type} *{c_var};'
+  c_arg_call:
+  - '&{cxx_var}'
+  c_post_call:
+  - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
+  - '{c_var_cdesc}->size = 1;'
+  - '{c_var_cdesc}->rank = 0;'
+  c_temps:
+  - cdesc
+  c_helper:
+  - array_context
+  - type_defines
+  owner: library
 f_out_char*_buf:
   name: f_out_char*_buf
   comments:
@@ -16742,7 +16838,7 @@ f_out_native**_cfi_allocatable:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Native argument which use CFI_desc_t.
-  - Declare a local pointer variable in the C wrapper.
+  - Declare a local_cxx pointer variable in the C wrapper.
   - Pass address of local cxx variable to library.
   - Allocate copy of C pointer (requires +dimension).
   intent: out
@@ -16757,7 +16853,7 @@ f_out_native**_cfi_allocatable:
   - '  f_mixin_declare-fortran-arg'
   - '  c_mixin_arg_native_cfi'
   - '    c_mixin_arg_cfi'
-  - '  c_mixin_local-cvar-ptr'
+  - '  c_mixin_local-cxx-ptr'
   - '  c_mixin_arg-call-cxx-address'
   - '  c_mixin_native_cfi_allocatable'
   i_arg_names:
@@ -16795,7 +16891,7 @@ f_out_native**_cfi_pointer:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Native argument which use CFI_desc_t.
-  - Declare a local pointer variable in the C wrapper.
+  - Declare a local_cxx pointer variable in the C wrapper.
   - Pass address of local cxx variable to library.
   - Convert C pointer to Fortran pointer.
   notes:
@@ -16812,7 +16908,7 @@ f_out_native**_cfi_pointer:
   - '  f_mixin_declare-fortran-arg'
   - '  c_mixin_arg_native_cfi'
   - '    c_mixin_arg_cfi'
-  - '  c_mixin_local-cvar-ptr'
+  - '  c_mixin_local-cxx-ptr'
   - '  c_mixin_arg-call-cxx-address'
   - '  c_mixin_native_cfi_pointer'
   i_arg_names:
@@ -19351,6 +19447,7 @@ root
         vector<native>
           cdesc -- c_mixin_inout_vector<native>_cdesc
       local-cvar-ptr -- c_mixin_local-cvar-ptr
+      local-cxx-ptr -- c_mixin_local-cxx-ptr
       local-string -- c_mixin_local-string
       local-string-init -- c_mixin_local-string-init
       local-string-init-trim -- c_mixin_local-string-init-trim
@@ -19388,6 +19485,7 @@ root
         *
           buf -- c_out_char_*_buf
       char* -- c_out_char*
+      char** -- c_out_char**
       enum* -- c_out_enum*
       native& -- c_out_native&
         hidden -- c_out_native&_hidden
@@ -19711,6 +19809,8 @@ root
       declare-fortran-arg -- f_mixin_declare-fortran-arg
       declare-fortran-result -- f_mixin_declare-fortran-result
       declare-interface-arg -- f_mixin_declare-interface-arg
+      dummy
+        arg -- f_mixin_dummy_arg
       function -- f_mixin_function
         c-ptr -- f_mixin_function_c-ptr
         char -- f_mixin_function_char
@@ -19798,6 +19898,9 @@ root
         buf -- f_out_char*_buf
         capi -- f_out_char*_capi
         cfi -- f_out_char*_cfi
+      char**
+        cdesc
+          pointer -- f_out_char**_cdesc_pointer
       enum* -- f_out_enum*
       native& -- f_out_native&
         hidden -- f_out_native&_hidden

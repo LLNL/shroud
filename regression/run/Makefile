@@ -150,6 +150,7 @@ c-test-list = \
   test-c-struct-cxx \
   test-c-funptr-cxx \
   test-c-vectors \
+  test-c-char-cxx \
   test-c-strings \
   test-c-statement \
   test-c-templates

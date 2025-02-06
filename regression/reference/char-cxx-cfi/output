@@ -1,3 +1,10 @@
+
+----------------------------------------
+Phase: FillMeta function
+----------------------------------------
+Node: fetchCharPtrLibrary
+line 209
+Unknown statement: f_out_char**_cfi_pointer
 Wrote wrapchar.h
 Wrote wrapchar.cpp
 Wrote wrapfchar.f
