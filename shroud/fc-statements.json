@@ -4507,6 +4507,22 @@
         ]
     },
     {
+        "name": "f_mixin_cfi_character-deferred-length",
+        "notes": [
+            "Pass a character deferred length argument down to C",
+            "This may be used with function result so do not mixin f_mixin_dummy_arg."
+        ],
+        "mixin": [
+            "f_mixin_character-deferred-length",
+            "c_mixin_dummy_arg",
+            "c_mixin_character-deferred-length",
+            "c_mixin_arg_cfi"
+        ],
+        "f_arg_call": [
+            "{f_var}"
+        ]
+    },
+    {
         "name": "c_mixin_cfi-unpack-base-addr",
         "notes": [
             "Unpack the base_addr from the CFI_desc_t variable."
@@ -4703,19 +4719,6 @@
         ]
     },
     {
-        "name": "f_mixin_function_string_cfi_allocatable",
-        "notes": [
-            "similar to f_char_scalar_allocatable."
-        ],
-        "f_need_wrapper": true,
-        "f_arg_decl": [
-            "character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}"
-        ],
-        "f_arg_call": [
-            "{f_var}"
-        ]
-    },
-    {
         "name":"##### cfi ##################################################"
     },
     {
@@ -4728,22 +4731,9 @@
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
-            "c_mixin_arg_cfi"
+            "f_mixin_cfi_character-deferred-length"
         ],
         "f_need_wrapper": true,
-        "f_arg_decl": [
-            "character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}"
-        ],
-        "f_arg_call": [
-            "{f_var}"
-        ],
-        "i_arg_names": [
-            "{i_var}"
-        ],
-        "i_arg_decl": [
-            "character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}"
-        ],
-        "c_pre_call": [],
         "c_post_call": [
             "if ({cxx_var} != {nullptr}) {{+",
             "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *) 0, \tstrlen({cxx_var}));",
@@ -4760,22 +4750,10 @@
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
-            "c_mixin_arg_cfi",
+            "f_mixin_cfi_character-deferred-length",
             "c_mixin_character_cfi_pointer"
         ],
-        "f_need_wrapper": true,
-        "f_arg_decl": [
-            "character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}"
-        ],
-        "f_arg_call": [
-            "{f_var}"
-        ],
-        "i_arg_names": [
-            "{i_var}"
-        ],
-        "i_arg_decl": [
-            "character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}"
-        ]
+        "f_need_wrapper": true
     },
     {
         "alias": [
@@ -5039,21 +5017,9 @@
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
-            "c_mixin_arg_cfi"
+            "f_mixin_cfi_character-deferred-length"
         ],
         "f_need_wrapper": true,
-        "f_arg_decl": [
-            "character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}"
-        ],
-        "f_arg_call": [
-            "{f_var}"
-        ],
-        "i_arg_names": [
-            "{i_var}"
-        ],
-        "i_arg_decl": [
-            "character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}"
-        ],
         "c_pre_call": [],
         "c_post_call": [
             "int {c_local_err};",
@@ -5092,16 +5058,10 @@
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
-            "f_mixin_function_string_cfi_allocatable",
-            "c_mixin_header_string",
-            "c_mixin_arg_cfi"
+            "f_mixin_cfi_character-deferred-length",
+            "c_mixin_header_string"
         ],
-        "i_arg_decl": [
-            "character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}"
-        ],
-        "i_arg_names": [
-            "{i_var}"
-        ],
+        "f_need_wrapper": true,
         "c_post_call": [
             "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *) 0, \t{cxx_var}{cxx_member}length());",
             "if (SH_ret == CFI_SUCCESS) {{+",
@@ -5116,16 +5076,9 @@
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
-            "f_mixin_function_string_cfi_allocatable",
-            "c_mixin_arg_cfi"
+            "f_mixin_cfi_character-deferred-length"
         ],
-        "i_arg_names": [
-            "{i_var}"
-        ],
-        "i_arg_decl": [
-            "character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}"
-        ],
-        "c_pre_call": [],
+        "f_need_wrapper": true,
         "c_post_call": [
             "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *) 0, \t{cxx_var}.length());",
             "if (SH_ret == CFI_SUCCESS) {{+",

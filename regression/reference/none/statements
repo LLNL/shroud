@@ -6487,7 +6487,11 @@ f_function_char*_cfi_allocatable:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  c_mixin_arg_cfi'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -6661,7 +6665,11 @@ f_function_char*_cfi_pointer:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  c_mixin_arg_cfi'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_arg_cfi'
   - '  c_mixin_character_cfi_pointer'
   i_arg_names:
   - '{i_var}'
@@ -6907,7 +6915,11 @@ f_function_char_cfi_allocatable:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  c_mixin_arg_cfi'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -6948,7 +6960,11 @@ f_function_char_cfi_pointer:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  c_mixin_arg_cfi'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_arg_cfi'
   - '  c_mixin_character_cfi_pointer'
   i_arg_names:
   - '{i_var}'
@@ -8842,9 +8858,12 @@ f_function_string&_cfi_allocatable:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_string_cfi_allocatable'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_arg_cfi'
   - '  c_mixin_header_string'
-  - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -8884,9 +8903,12 @@ f_function_string&_cfi_allocatable_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_string_cfi_allocatable'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_arg_cfi'
   - '  c_mixin_header_string'
-  - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -8926,9 +8948,12 @@ f_function_string&_cfi_allocatable_library:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_string_cfi_allocatable'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_arg_cfi'
   - '  c_mixin_header_string'
-  - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9102,7 +9127,11 @@ f_function_string&_cfi_pointer:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  c_mixin_arg_cfi'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9159,7 +9188,11 @@ f_function_string&_cfi_pointer_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  c_mixin_arg_cfi'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9216,7 +9249,11 @@ f_function_string&_cfi_pointer_library:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  c_mixin_arg_cfi'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9935,9 +9972,12 @@ f_function_string*_cfi_allocatable:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_string_cfi_allocatable'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_arg_cfi'
   - '  c_mixin_header_string'
-  - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9977,9 +10017,12 @@ f_function_string*_cfi_allocatable_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_string_cfi_allocatable'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_arg_cfi'
   - '  c_mixin_header_string'
-  - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -10019,9 +10062,12 @@ f_function_string*_cfi_allocatable_library:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_string_cfi_allocatable'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_arg_cfi'
   - '  c_mixin_header_string'
-  - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -10126,7 +10172,11 @@ f_function_string*_cfi_pointer:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  c_mixin_arg_cfi'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -10183,7 +10233,11 @@ f_function_string*_cfi_pointer_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  c_mixin_arg_cfi'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -10240,7 +10294,11 @@ f_function_string*_cfi_pointer_library:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  c_mixin_arg_cfi'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -10927,8 +10985,11 @@ f_function_string_cfi_allocatable:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_string_cfi_allocatable'
-  - '  c_mixin_arg_cfi'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -10966,9 +11027,12 @@ f_function_string_cfi_allocatable_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_string_cfi_allocatable'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_arg_cfi'
   - '  c_mixin_header_string'
-  - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -11008,9 +11072,12 @@ f_function_string_cfi_allocatable_library:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_string_cfi_allocatable'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_arg_cfi'
   - '  c_mixin_header_string'
-  - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -11184,7 +11251,11 @@ f_function_string_cfi_pointer:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  c_mixin_arg_cfi'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -11241,7 +11312,11 @@ f_function_string_cfi_pointer_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  c_mixin_arg_cfi'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -11298,7 +11373,11 @@ f_function_string_cfi_pointer_library:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  c_mixin_arg_cfi'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -15386,6 +15465,31 @@ f_mixin_cdesc_pass:
   c_helper:
   - array_context
   owner: library
+f_mixin_cfi_character-deferred-length:
+  name: f_mixin_cfi_character-deferred-length
+  comments:
+  - Make the C wrapper argument a CFI_desc_t.
+  intent: mixin
+  f_arg_decl:
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
+  f_arg_call:
+  - '{f_var}'
+  mixin_names:
+  - '  f_mixin_character-deferred-length'
+  - '  c_mixin_dummy_arg'
+  - '  c_mixin_character-deferred-length'
+  - '  c_mixin_arg_cfi'
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_temps:
+  - cfi
+  iface_header:
+  - ISO_Fortran_binding.h
+  owner: library
 f_mixin_character-deferred-length:
   name: f_mixin_character-deferred-length
   intent: mixin
@@ -15577,15 +15681,6 @@ f_mixin_function_ptr:
   i_module:
     iso_c_binding:
     - C_PTR
-  owner: library
-f_mixin_function_string_cfi_allocatable:
-  name: f_mixin_function_string_cfi_allocatable
-  intent: mixin
-  f_arg_decl:
-  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
-  f_arg_call:
-  - '{f_var}'
-  f_need_wrapper: true
   owner: library
 f_mixin_helper_array_string_allocatable:
   name: f_mixin_helper_array_string_allocatable
@@ -19940,6 +20035,8 @@ root
             allocate -- f_mixin_cdesc_out_native_allocate
             pointer -- f_mixin_cdesc_out_native_pointer
         pass -- f_mixin_cdesc_pass
+      cfi
+        character-deferred-length -- f_mixin_cfi_character-deferred-length
       character-deferred-length -- f_mixin_character-deferred-length
       declare-arg-char -- f_mixin_declare-arg-char
       declare-as-cptr -- f_mixin_declare-as-cptr
@@ -19952,9 +20049,6 @@ root
         c-ptr -- f_mixin_function_c-ptr
         char -- f_mixin_function_char
         ptr -- f_mixin_function_ptr
-        string
-          cfi
-            allocatable -- f_mixin_function_string_cfi_allocatable
       function-as-character-arg -- f_mixin_function-as-character-arg
       function-as-character-arg-var-len -- f_mixin_function-as-character-arg-var-len
       function-as-cptr -- f_mixin_function-as-cptr
