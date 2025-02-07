@@ -3887,6 +3887,22 @@ c_mixin_cdesc_native_fill:
   - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
   - '{c_var_cdesc}->size = {c_array_size};'
   owner: library
+c_mixin_cdesc_vector_fill:
+  name: c_mixin_cdesc_vector_fill
+  intent: mixin
+  comments:
+  - Fill cdesc with vector information.
+  - Return address and size of vector data.
+  c_post_call:
+  - '{c_var_cdesc}->base_addr = {c_local_cxx}->empty() ? {nullptr} : &{c_local_cxx}->front();'
+  - '{c_var_cdesc}->type = {targs[0].sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
+  - '{c_var_cdesc}->size = {c_local_cxx}->size();'
+  - '{c_var_cdesc}->rank = 1;'
+  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
+  c_helper:
+  - type_defines
+  owner: library
 c_mixin_cfi-unpack-base-addr:
   name: c_mixin_cfi-unpack-base-addr
   intent: mixin
@@ -4379,7 +4395,7 @@ c_mixin_inout_vector<native>_cdesc:
   - '  f_mixin_cdesc_inout_array'
   - '  c_mixin_cdesc_inout_vector'
   - '  c_mixin_destructor_new-vector'
-  - '  c_mixin_vector_cdesc_fill-cdesc'
+  - '  c_mixin_cdesc_vector_fill'
   i_arg_names:
   - '{i_var}'
   - '{i_var_size}'
@@ -4489,26 +4505,8 @@ c_mixin_make-shared:
   impl_header:
   - <memory>
   owner: shared
-c_mixin_out_native**:
-  name: c_mixin_out_native**
-  intent: mixin
-  comments:
-  - Declare a local C pointer.
-  c_pre_call:
-  - '{c_const}{cxx_type} *{cxx_var};'
-  owner: library
-c_mixin_out_string**:
-  name: c_mixin_out_string**
-  intent: mixin
-  comments:
-  - Create local std::string pointer.
-  c_pre_call:
-  - std::string *{c_local_cxx};
-  c_local:
-  - cxx
-  owner: library
-c_mixin_out_vector<native>_cdesc:
-  name: c_mixin_out_vector<native>_cdesc
+c_mixin_new_vector<native>:
+  name: c_mixin_new_vector<native>
   intent: mixin
   comments:
   - Fill cdesc with vector information.
@@ -4516,7 +4514,7 @@ c_mixin_out_vector<native>_cdesc:
   - Create a local std::vector.
   mixin_names:
   - '  c_mixin_destructor_new-vector'
-  - '  c_mixin_vector_cdesc_fill-cdesc'
+  - '  c_mixin_cdesc_vector_fill'
   c_pre_call:
   - "{c_const}std::vector<{cxx_T}>\t *{c_local_cxx} = new std::vector<{cxx_T}>;"
   c_post_call:
@@ -4534,6 +4532,24 @@ c_mixin_out_vector<native>_cdesc:
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
+  owner: library
+c_mixin_out_native**:
+  name: c_mixin_out_native**
+  intent: mixin
+  comments:
+  - Declare a local C pointer.
+  c_pre_call:
+  - '{c_const}{cxx_type} *{cxx_var};'
+  owner: library
+c_mixin_out_string**:
+  name: c_mixin_out_string**
+  intent: mixin
+  comments:
+  - Create local std::string pointer.
+  c_pre_call:
+  - std::string *{c_local_cxx};
+  c_local:
+  - cxx
   owner: library
 c_mixin_out_vector_buf_malloc:
   name: c_mixin_out_vector_buf_malloc
@@ -4614,22 +4630,6 @@ c_mixin_unknown:
   - ===>i_arg_decl<===
   c_arg_decl:
   - ===>c_arg_decl<===
-  owner: library
-c_mixin_vector_cdesc_fill-cdesc:
-  name: c_mixin_vector_cdesc_fill-cdesc
-  intent: mixin
-  comments:
-  - Fill cdesc with vector information.
-  - Return address and size of vector data.
-  c_post_call:
-  - '{c_var_cdesc}->base_addr = {c_local_cxx}->empty() ? {nullptr} : &{c_local_cxx}->front();'
-  - '{c_var_cdesc}->type = {targs[0].sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
-  - '{c_var_cdesc}->size = {c_local_cxx}->size();'
-  - '{c_var_cdesc}->rank = 1;'
-  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
-  c_helper:
-  - type_defines
   owner: library
 c_out_bool_*:
   name: c_out_bool_*
@@ -5345,9 +5345,9 @@ c_out_vector<native>&_cdesc:
   mixin_names:
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_out_vector<native>_copy'
-  - '  c_mixin_out_vector<native>_cdesc'
+  - '  c_mixin_new_vector<native>'
   - '    c_mixin_destructor_new-vector'
-  - '    c_mixin_vector_cdesc_fill-cdesc'
+  - '    c_mixin_cdesc_vector_fill'
   - '  c_mixin_arg-call-cxx-deref'
   i_arg_names:
   - '{i_var_cdesc}'
@@ -5482,9 +5482,9 @@ c_out_vector<native>*_cdesc:
   mixin_names:
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_out_vector<native>_copy'
-  - '  c_mixin_out_vector<native>_cdesc'
+  - '  c_mixin_new_vector<native>'
   - '    c_mixin_destructor_new-vector'
-  - '    c_mixin_vector_cdesc_fill-cdesc'
+  - '    c_mixin_cdesc_vector_fill'
   - '  c_mixin_arg-call-cxx'
   i_arg_names:
   - '{i_var_cdesc}'
@@ -11620,7 +11620,7 @@ f_function_vector<native>_cdesc_allocatable:
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  c_mixin_destructor_new-vector'
-  - '  c_mixin_vector_cdesc_fill-cdesc'
+  - '  c_mixin_cdesc_vector_fill'
   i_arg_names:
   - '{i_var_cdesc}'
   i_arg_decl:
@@ -14880,7 +14880,7 @@ f_inout_vector<native>&_cdesc:
   - '    f_mixin_cdesc_inout_array'
   - '    c_mixin_cdesc_inout_vector'
   - '    c_mixin_destructor_new-vector'
-  - '    c_mixin_vector_cdesc_fill-cdesc'
+  - '    c_mixin_cdesc_vector_fill'
   - '  c_mixin_arg-call-cxx-deref'
   i_arg_names:
   - '{i_var}'
@@ -14964,7 +14964,7 @@ f_inout_vector<native>&_cdesc_allocatable:
   - '    f_mixin_cdesc_inout_array'
   - '    c_mixin_cdesc_inout_vector'
   - '    c_mixin_destructor_new-vector'
-  - '    c_mixin_vector_cdesc_fill-cdesc'
+  - '    c_mixin_cdesc_vector_fill'
   - '  c_mixin_arg-call-cxx-deref'
   i_arg_names:
   - '{i_var}'
@@ -17910,9 +17910,9 @@ f_out_vector<native>&_cdesc:
   mixin_names:
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_out_vector<native>_copy'
-  - '  c_mixin_out_vector<native>_cdesc'
+  - '  c_mixin_new_vector<native>'
   - '    c_mixin_destructor_new-vector'
-  - '    c_mixin_vector_cdesc_fill-cdesc'
+  - '    c_mixin_cdesc_vector_fill'
   - '  c_mixin_arg-call-cxx-deref'
   i_arg_names:
   - '{i_var_cdesc}'
@@ -17981,9 +17981,9 @@ f_out_vector<native>&_cdesc_allocatable:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_cdesc_pass'
-  - '  c_mixin_out_vector<native>_cdesc'
+  - '  c_mixin_new_vector<native>'
   - '    c_mixin_destructor_new-vector'
-  - '    c_mixin_vector_cdesc_fill-cdesc'
+  - '    c_mixin_cdesc_vector_fill'
   - '  c_mixin_arg-call-cxx-deref'
   i_arg_names:
   - '{i_var_cdesc}'
@@ -18051,9 +18051,9 @@ f_out_vector<native>*_cdesc:
   mixin_names:
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_out_vector<native>_copy'
-  - '  c_mixin_out_vector<native>_cdesc'
+  - '  c_mixin_new_vector<native>'
   - '    c_mixin_destructor_new-vector'
-  - '    c_mixin_vector_cdesc_fill-cdesc'
+  - '    c_mixin_cdesc_vector_fill'
   - '  c_mixin_arg-call-cxx'
   i_arg_names:
   - '{i_var_cdesc}'
@@ -18122,9 +18122,9 @@ f_out_vector<native>*_cdesc_allocatable:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_cdesc_pass'
-  - '  c_mixin_out_vector<native>_cdesc'
+  - '  c_mixin_new_vector<native>'
   - '    c_mixin_destructor_new-vector'
-  - '    c_mixin_vector_cdesc_fill-cdesc'
+  - '    c_mixin_cdesc_vector_fill'
   - '  c_mixin_arg-call-cxx-deref'
   i_arg_names:
   - '{i_var_cdesc}'
@@ -19677,6 +19677,8 @@ root
           vector -- c_mixin_cdesc_inout_vector
         native
           fill -- c_mixin_cdesc_native_fill
+        vector
+          fill -- c_mixin_cdesc_vector_fill
       cfi
         arg -- c_mixin_cfi_arg
           character -- c_mixin_cfi_arg_character
@@ -19733,22 +19735,19 @@ root
       local-string-init -- c_mixin_local-string-init
       local-string-init-trim -- c_mixin_local-string-init-trim
       make-shared -- c_mixin_make-shared
+      new
+        vector<native> -- c_mixin_new_vector<native>
       out
         native** -- c_mixin_out_native**
         string** -- c_mixin_out_string**
         vector
           buf
             malloc -- c_mixin_out_vector_buf_malloc
-        vector<native>
-          cdesc -- c_mixin_out_vector<native>_cdesc
       shadow -- c_mixin_shadow
       string-char-copy-to-arg -- c_mixin_string-char-copy-to-arg
       string-copy-out -- c_mixin_string-copy-out
       string-strcpy-out -- c_mixin_string-strcpy-out
       unknown -- c_mixin_unknown
-      vector
-        cdesc
-          fill-cdesc -- c_mixin_vector_cdesc_fill-cdesc
     out
       bool
         * -- c_out_bool_*

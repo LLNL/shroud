@@ -3338,7 +3338,7 @@
         ]
     },
     {
-        "name": "c_mixin_vector_cdesc_fill-cdesc",
+        "name": "c_mixin_cdesc_vector_fill",
         "comments": [
             "Fill cdesc with vector information.",
             "Return address and size of vector data."
@@ -3356,10 +3356,10 @@
         ]
     },
     {
-        "name": "c_mixin_out_vector<native>_cdesc",
+        "name": "c_mixin_new_vector<native>",
         "mixin": [
             "c_mixin_destructor_new-vector",
-            "c_mixin_vector_cdesc_fill-cdesc"
+            "c_mixin_cdesc_vector_fill"
         ],
         "comments": [
             "Create a local std::vector."
@@ -3379,7 +3379,7 @@
         "mixin": [
             "f_mixin_cdesc_pass",
             "f_mixin_out_vector<native>_copy",
-            "c_mixin_out_vector<native>_cdesc",
+            "c_mixin_new_vector<native>",
             "c_mixin_arg-call-cxx"
         ],
         "notes": [
@@ -3394,7 +3394,7 @@
         "mixin": [
             "f_mixin_cdesc_pass",
             "f_mixin_out_vector<native>_copy",
-            "c_mixin_out_vector<native>_cdesc",
+            "c_mixin_new_vector<native>",
             "c_mixin_arg-call-cxx-deref"
         ],
         "notes": [
@@ -3407,7 +3407,7 @@
             "f_mixin_cdesc_inout_array",
             "c_mixin_cdesc_inout_vector",
             "c_mixin_destructor_new-vector",
-            "c_mixin_vector_cdesc_fill-cdesc"
+            "c_mixin_cdesc_vector_fill"
         ],
         "c_pre_call": [
             "std::vector<{cxx_T}> *{c_local_cxx} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var} + {c_var_size});"
@@ -3433,7 +3433,7 @@
             "f_mixin_function-to-subroutine",
             "f_mixin_cdesc_pass",
             "c_mixin_destructor_new-vector",
-            "c_mixin_vector_cdesc_fill-cdesc"
+            "c_mixin_cdesc_vector_fill"
         ],
         "f_arg_decl": [
             "{targs[0].f_type}{f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}"
@@ -3822,7 +3822,7 @@
         ],
         "mixin": [
             "f_mixin_cdesc_pass",
-            "c_mixin_out_vector<native>_cdesc",
+            "c_mixin_new_vector<native>",
             "c_mixin_arg-call-cxx-deref"
         ],
         "f_module": {
