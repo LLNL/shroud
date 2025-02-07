@@ -810,20 +810,23 @@ def print_tree_statements(fp, statements, defaults):
 CStmts = util.Scope(
     None,
     name="c_default",
+    intent=None,
     comments=[],
     notes=[],      # implementation notes
     mixin_names=[],
     index="X",
-    intent=None,
 
+    # code fields
     i_arg_names=None,
     i_arg_decl=None,
-
     i_result_decl=None,
     i_result_var=None,
+    # bookkeeping fields
     i_import=None,
     i_module=None,
 
+    # code fields
+    c_return_type=None,
     c_arg_decl=None,    # C prototype
     c_pre_call=[],
     c_arg_call=[],
@@ -831,7 +834,7 @@ CStmts = util.Scope(
     c_post_call=[],
     c_final=[],      # tested in strings.yaml, part of ownership
     c_return=[],
-    c_return_type=None,
+    # bookkeeping fields
     c_temps=None,
     c_local=None,
     c_helper=[],
@@ -852,11 +855,12 @@ CStmts = util.Scope(
 FStmts = util.Scope(
     None,
     name="f_default",
+    intent=None,
     comments=[],
     notes=[],      # implementation notes
     index="X",
-    intent=None,
 
+    # code fields
     f_arg_name=None,
     f_arg_decl=None,
     f_declare=[],
@@ -865,6 +869,7 @@ FStmts = util.Scope(
     f_call=[],
     f_post_call=[],
     f_result_var=None,
+    # bookkeeping fields
     f_module=None,
     f_temps=None,
     f_local=None,
