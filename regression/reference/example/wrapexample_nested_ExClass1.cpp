@@ -59,7 +59,7 @@ static int ShroudCharLenTrim(const char *src, int nsrc) {
 // Save std::string metadata into array to allow Fortran to access values.
 // CHARACTER(len=elem_size) src
 static void ShroudStringToCdesc(AA_SHROUD_array *cdesc,
-    const std::string * src)
+    const std::string *src)
 {
     if (src->empty()) {
         cdesc->base_addr = NULL;
@@ -79,7 +79,7 @@ static void ShroudStringToCdesc(AA_SHROUD_array *cdesc,
 // Function:  ExClass1
 // Statement: c_ctor_shadow_capptr
 AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_0(
-    AA_example_nested_ExClass1 * SHC_rv)
+    AA_example_nested_ExClass1 *SHC_rv)
 {
     // splicer begin namespace.example::nested.class.ExClass1.method.ctor_0
     example::nested::ExClass1 *SHCXX_rv =
@@ -94,7 +94,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_0(
 // Function:  ExClass1
 // Statement: f_ctor_shadow_capsule
 void AA_example_nested_ExClass1_ctor_0_bufferify(
-    AA_example_nested_ExClass1 * SHC_rv)
+    AA_example_nested_ExClass1 *SHC_rv)
 {
     // splicer begin namespace.example::nested.class.ExClass1.method.ctor_0_bufferify
     example::nested::ExClass1 *SHCXX_rv =
@@ -119,7 +119,7 @@ void AA_example_nested_ExClass1_ctor_0_bufferify(
 // Argument:  const string *name
 // Statement: c_in_string*
 AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1(
-    const char *name, AA_example_nested_ExClass1 * SHC_rv)
+    const char *name, AA_example_nested_ExClass1 *SHC_rv)
 {
     // splicer begin namespace.example::nested.class.ExClass1.method.ctor_1
     const std::string SHC_name_cxx(name);
@@ -146,7 +146,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1(
 // Argument:  const string *name
 // Statement: f_in_string*_buf
 void AA_example_nested_ExClass1_ctor_1_bufferify(char *name,
-    int SHT_name_len, AA_example_nested_ExClass1 * SHC_rv)
+    int SHT_name_len, AA_example_nested_ExClass1 *SHC_rv)
 {
     // splicer begin namespace.example::nested.class.ExClass1.method.ctor_1_bufferify
     int SHC_name_trim = ShroudCharLenTrim(name, SHT_name_len);

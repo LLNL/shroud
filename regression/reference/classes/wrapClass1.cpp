@@ -43,7 +43,7 @@ static int ShroudCharLenTrim(const char *src, int nsrc) {
 // Save std::string metadata into array to allow Fortran to access values.
 // CHARACTER(len=elem_size) src
 static void ShroudStringToCdesc(CLA_SHROUD_array *cdesc,
-    const std::string * src)
+    const std::string *src)
 {
     if (src->empty()) {
         cdesc->base_addr = NULL;
@@ -64,7 +64,7 @@ static void ShroudStringToCdesc(CLA_SHROUD_array *cdesc,
 // Function:  Class1
 // Statement: c_ctor_shadow_capptr
 // start CLA_Class1_ctor_default
-CLA_Class1 * CLA_Class1_ctor_default(CLA_Class1 * SHC_rv)
+CLA_Class1 * CLA_Class1_ctor_default(CLA_Class1 *SHC_rv)
 {
     // splicer begin class.Class1.method.ctor_default
     classes::Class1 *SHCXX_rv = new classes::Class1();
@@ -79,7 +79,7 @@ CLA_Class1 * CLA_Class1_ctor_default(CLA_Class1 * SHC_rv)
 // Function:  Class1
 // Statement: f_ctor_shadow_capsule
 // start CLA_Class1_ctor_default_bufferify
-void CLA_Class1_ctor_default_bufferify(CLA_Class1 * SHC_rv)
+void CLA_Class1_ctor_default_bufferify(CLA_Class1 *SHC_rv)
 {
     // splicer begin class.Class1.method.ctor_default_bufferify
     classes::Class1 *SHCXX_rv = new classes::Class1();
@@ -96,7 +96,7 @@ void CLA_Class1_ctor_default_bufferify(CLA_Class1 * SHC_rv)
 // Argument:  int flag
 // Statement: c_in_native
 // start CLA_Class1_ctor_flag
-CLA_Class1 * CLA_Class1_ctor_flag(int flag, CLA_Class1 * SHC_rv)
+CLA_Class1 * CLA_Class1_ctor_flag(int flag, CLA_Class1 *SHC_rv)
 {
     // splicer begin class.Class1.method.ctor_flag
     classes::Class1 *SHCXX_rv = new classes::Class1(flag);
@@ -114,7 +114,7 @@ CLA_Class1 * CLA_Class1_ctor_flag(int flag, CLA_Class1 * SHC_rv)
 // Argument:  int flag
 // Statement: f_in_native
 // start CLA_Class1_ctor_flag_bufferify
-void CLA_Class1_ctor_flag_bufferify(int flag, CLA_Class1 * SHC_rv)
+void CLA_Class1_ctor_flag_bufferify(int flag, CLA_Class1 *SHC_rv)
 {
     // splicer begin class.Class1.method.ctor_flag_bufferify
     classes::Class1 *SHCXX_rv = new classes::Class1(flag);
@@ -169,12 +169,12 @@ int CLA_Class1_Method1(CLA_Class1 * self)
 // Argument:  const Class1 &obj2
 // Statement: c_in_shadow&
 // start CLA_Class1_equivalent
-bool CLA_Class1_equivalent(const CLA_Class1 * self, CLA_Class1 * obj2)
+bool CLA_Class1_equivalent(const CLA_Class1 * self, CLA_Class1 *obj2)
 {
     const classes::Class1 *SH_this =
         static_cast<const classes::Class1 *>(self->addr);
     // splicer begin class.Class1.method.equivalent
-    const classes::Class1 * SHC_obj2_cxx =
+    const classes::Class1 *SHC_obj2_cxx =
         static_cast<const classes::Class1 *>(obj2->addr);
     bool SHC_rv = SH_this->equivalent(*SHC_obj2_cxx);
     return SHC_rv;
@@ -215,7 +215,7 @@ void CLA_Class1_returnThis(CLA_Class1 * self)
 // Statement: c_in_bool
 // start CLA_Class1_returnThisBuffer
 CLA_Class1 * CLA_Class1_returnThisBuffer(CLA_Class1 * self, char *name,
-    bool flag, CLA_Class1 * SHC_rv)
+    bool flag, CLA_Class1 *SHC_rv)
 {
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
@@ -245,7 +245,7 @@ CLA_Class1 * CLA_Class1_returnThisBuffer(CLA_Class1 * self, char *name,
 // Statement: f_in_bool
 // start CLA_Class1_returnThisBuffer_bufferify
 void CLA_Class1_returnThisBuffer_bufferify(CLA_Class1 * self,
-    char *name, int SHT_name_len, bool flag, CLA_Class1 * SHC_rv)
+    char *name, int SHT_name_len, bool flag, CLA_Class1 *SHC_rv)
 {
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
@@ -269,7 +269,7 @@ void CLA_Class1_returnThisBuffer_bufferify(CLA_Class1 * self,
 // Statement: c_function_shadow*_capptr
 // start CLA_Class1_getclass3
 CLA_Class1 * CLA_Class1_getclass3(const CLA_Class1 * self,
-    CLA_Class1 * SHC_rv)
+    CLA_Class1 *SHC_rv)
 {
     const classes::Class1 *SH_this =
         static_cast<const classes::Class1 *>(self->addr);
@@ -291,7 +291,7 @@ CLA_Class1 * CLA_Class1_getclass3(const CLA_Class1 * self,
 // Statement: f_function_shadow*_capsule
 // start CLA_Class1_getclass3_bufferify
 void CLA_Class1_getclass3_bufferify(const CLA_Class1 * self,
-    CLA_Class1 * SHC_rv)
+    CLA_Class1 *SHC_rv)
 {
     const classes::Class1 *SH_this =
         static_cast<const classes::Class1 *>(self->addr);

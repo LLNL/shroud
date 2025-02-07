@@ -24,7 +24,7 @@ extern "C" {
 // Function:  structAsClass
 // Statement: c_ctor_shadow_capptr
 TEM_structAsClass_int * TEM_structAsClass_int_ctor(
-    TEM_structAsClass_int * SHC_rv)
+    TEM_structAsClass_int *SHC_rv)
 {
     // splicer begin class.structAsClass.method.ctor
     structAsClass<int> *SHCXX_rv = new structAsClass<int>();
@@ -37,8 +37,7 @@ TEM_structAsClass_int * TEM_structAsClass_int_ctor(
 // ----------------------------------------
 // Function:  structAsClass
 // Statement: f_ctor_shadow_capsule
-void TEM_structAsClass_int_ctor_bufferify(
-    TEM_structAsClass_int * SHC_rv)
+void TEM_structAsClass_int_ctor_bufferify(TEM_structAsClass_int *SHC_rv)
 {
     // splicer begin class.structAsClass.method.ctor_bufferify
     structAsClass<int> *SHCXX_rv = new structAsClass<int>();

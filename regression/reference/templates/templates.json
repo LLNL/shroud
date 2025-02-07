@@ -633,7 +633,7 @@
                                     "fmtdict": {
                                         "C_call_function": "SH_this->ctor(\t)",
                                         "C_name": "TEM_structAsClass_int_ctor",
-                                        "C_prototype": "TEM_structAsClass_int * SHC_rv",
+                                        "C_prototype": "TEM_structAsClass_int *SHC_rv",
                                         "C_return_type": "TEM_structAsClass_int *",
                                         "c_abstract_decl": "TEM_structAsClass_int *",
                                         "c_const": "",
@@ -682,7 +682,7 @@
                                     "fmtdict": {
                                         "C_call_function": "SH_this->ctor(\t)",
                                         "C_name": "TEM_structAsClass_int_ctor_bufferify",
-                                        "C_prototype": "TEM_structAsClass_int * SHC_rv",
+                                        "C_prototype": "TEM_structAsClass_int *SHC_rv",
                                         "C_return_type": "void",
                                         "F_arg_c_call": "SHT_rv%cxxmem",
                                         "F_arguments": "",
@@ -1601,7 +1601,7 @@
                                     "fmtdict": {
                                         "C_call_function": "SH_this->ctor(\t)",
                                         "C_name": "TEM_structAsClass_double_ctor",
-                                        "C_prototype": "TEM_structAsClass_double * SHC_rv",
+                                        "C_prototype": "TEM_structAsClass_double *SHC_rv",
                                         "C_return_type": "TEM_structAsClass_double *",
                                         "c_abstract_decl": "TEM_structAsClass_double *",
                                         "c_const": "",
@@ -1650,7 +1650,7 @@
                                     "fmtdict": {
                                         "C_call_function": "SH_this->ctor(\t)",
                                         "C_name": "TEM_structAsClass_double_ctor_bufferify",
-                                        "C_prototype": "TEM_structAsClass_double * SHC_rv",
+                                        "C_prototype": "TEM_structAsClass_double *SHC_rv",
                                         "C_return_type": "void",
                                         "F_arg_c_call": "SHT_rv%cxxmem",
                                         "F_arguments": "",
@@ -2585,7 +2585,7 @@
                             "fmtdict": {
                                 "C_call_function": "returnUserType(\t)",
                                 "C_name": "TEM_returnUserType",
-                                "C_prototype": "TEM_user_int * SHC_rv",
+                                "C_prototype": "TEM_user_int *SHC_rv",
                                 "C_return_type": "TEM_user_int *",
                                 "c_abstract_decl": "int",
                                 "c_const": "",
@@ -2643,7 +2643,7 @@
                             "fmtdict": {
                                 "C_call_function": "returnUserType(\t)",
                                 "C_name": "TEM_returnUserType_bufferify",
-                                "C_prototype": "TEM_user_int * SHC_rv",
+                                "C_prototype": "TEM_user_int *SHC_rv",
                                 "C_return_type": "void",
                                 "F_arg_c_call": "SHT_rv%cxxmem",
                                 "F_arguments": "",
@@ -4203,7 +4203,7 @@
                                             "fmtdict": {
                                                 "C_call_function": "SH_this->ctor(\t)",
                                                 "C_name": "TEM_vector_int_ctor",
-                                                "C_prototype": "TEM_vector_int * SHC_rv",
+                                                "C_prototype": "TEM_vector_int *SHC_rv",
                                                 "C_return_type": "TEM_vector_int *",
                                                 "c_abstract_decl": "TEM_vector_int *",
                                                 "c_const": "",
@@ -4252,7 +4252,7 @@
                                             "fmtdict": {
                                                 "C_call_function": "SH_this->ctor(\t)",
                                                 "C_name": "TEM_vector_int_ctor_bufferify",
-                                                "C_prototype": "TEM_vector_int * SHC_rv",
+                                                "C_prototype": "TEM_vector_int *SHC_rv",
                                                 "C_return_type": "void",
                                                 "F_arg_c_call": "SHT_rv%cxxmem",
                                                 "F_arguments": "",
@@ -5317,7 +5317,7 @@
                                             "fmtdict": {
                                                 "C_call_function": "SH_this->ctor(\t)",
                                                 "C_name": "TEM_vector_double_ctor",
-                                                "C_prototype": "TEM_vector_double * SHC_rv",
+                                                "C_prototype": "TEM_vector_double *SHC_rv",
                                                 "C_return_type": "TEM_vector_double *",
                                                 "c_abstract_decl": "TEM_vector_double *",
                                                 "c_const": "",
@@ -5366,7 +5366,7 @@
                                             "fmtdict": {
                                                 "C_call_function": "SH_this->ctor(\t)",
                                                 "C_name": "TEM_vector_double_ctor_bufferify",
-                                                "C_prototype": "TEM_vector_double * SHC_rv",
+                                                "C_prototype": "TEM_vector_double *SHC_rv",
                                                 "C_return_type": "void",
                                                 "F_arg_c_call": "SHT_rv%cxxmem",
                                                 "F_arguments": "",

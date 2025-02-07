@@ -37,31 +37,31 @@ int CLA_directionFunc_bufferify(int arg);
 
 void CLA_passClassByValue(CLA_Class1 arg);
 
-int CLA_useclass(CLA_Class1 * arg);
+int CLA_useclass(CLA_Class1 *arg);
 
-CLA_Class1 * CLA_getclass2(CLA_Class1 * SHC_rv);
+CLA_Class1 * CLA_getclass2(CLA_Class1 *SHC_rv);
 
-void CLA_getclass2_bufferify(CLA_Class1 * SHC_rv);
+void CLA_getclass2_bufferify(CLA_Class1 *SHC_rv);
 
-CLA_Class1 * CLA_getclass3(CLA_Class1 * SHC_rv);
+CLA_Class1 * CLA_getclass3(CLA_Class1 *SHC_rv);
 
-void CLA_getclass3_bufferify(CLA_Class1 * SHC_rv);
+void CLA_getclass3_bufferify(CLA_Class1 *SHC_rv);
 
-void CLA_getclass2_void(CLA_Class1 * SHC_rv);
+void CLA_getclass2_void(CLA_Class1 *SHC_rv);
 
-void CLA_getclass3_void(CLA_Class1 * SHC_rv);
+void CLA_getclass3_void(CLA_Class1 *SHC_rv);
 
-CLA_Class1 * CLA_getConstClassReference(CLA_Class1 * SHC_rv);
+CLA_Class1 * CLA_getConstClassReference(CLA_Class1 *SHC_rv);
 
-void CLA_getConstClassReference_bufferify(CLA_Class1 * SHC_rv);
+void CLA_getConstClassReference_bufferify(CLA_Class1 *SHC_rv);
 
-CLA_Class1 * CLA_getClassReference(CLA_Class1 * SHC_rv);
+CLA_Class1 * CLA_getClassReference(CLA_Class1 *SHC_rv);
 
-void CLA_getClassReference_bufferify(CLA_Class1 * SHC_rv);
+void CLA_getClassReference_bufferify(CLA_Class1 *SHC_rv);
 
-CLA_Class1 * CLA_getClassCopy(int flag, CLA_Class1 * SHC_rv);
+CLA_Class1 * CLA_getClassCopy(int flag, CLA_Class1 *SHC_rv);
 
-void CLA_getClassCopy_bufferify(int flag, CLA_Class1 * SHC_rv);
+void CLA_getClassCopy_bufferify(int flag, CLA_Class1 *SHC_rv);
 
 void CLA_set_global_flag(int arg);
 

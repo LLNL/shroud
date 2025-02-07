@@ -240,7 +240,7 @@ void GEN_SavePointer2_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
 void GEN_GetPointerAsPointer_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi)
 {
     // splicer begin function.GetPointerAsPointer_float1d_CFI
-    float * SHC_addr_cxx;
+    float *SHC_addr_cxx;
     int type;
     size_t size;
     GetPointerAsPointer(&SHC_addr_cxx, &type, &size);
@@ -276,7 +276,7 @@ void GEN_GetPointerAsPointer_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi)
 void GEN_GetPointerAsPointer_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi)
 {
     // splicer begin function.GetPointerAsPointer_float2d_CFI
-    float * SHC_addr_cxx;
+    float *SHC_addr_cxx;
     int type;
     size_t size;
     GetPointerAsPointer(&SHC_addr_cxx, &type, &size);
@@ -298,7 +298,7 @@ void GEN_GetPointerAsPointer_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi)
 // ----------------------------------------
 // Function:  StructAsClass *CreateStructAsClass
 // Statement: f_function_shadow*_capsule
-void GEN_CreateStructAsClass_bufferify(GEN_StructAsClass * SHC_rv)
+void GEN_CreateStructAsClass_bufferify(GEN_StructAsClass *SHC_rv)
 {
     // splicer begin function.CreateStructAsClass_bufferify
     StructAsClass *SHC_rv_cxx = CreateStructAsClass();
@@ -317,11 +317,11 @@ void GEN_CreateStructAsClass_bufferify(GEN_StructAsClass * SHC_rv)
 // ----------------------------------------
 // Argument:  int inew
 // Statement: f_in_native
-long GEN_UpdateStructAsClass_int_bufferify(GEN_StructAsClass * arg,
+long GEN_UpdateStructAsClass_int_bufferify(GEN_StructAsClass *arg,
     int inew)
 {
     // splicer begin function.UpdateStructAsClass_int_bufferify
-    StructAsClass * SHC_arg_cxx = (StructAsClass *) arg->addr;
+    StructAsClass *SHC_arg_cxx = (StructAsClass *) arg->addr;
     long SHC_rv = UpdateStructAsClass(SHC_arg_cxx, inew);
     return SHC_rv;
     // splicer end function.UpdateStructAsClass_int_bufferify
@@ -337,11 +337,11 @@ long GEN_UpdateStructAsClass_int_bufferify(GEN_StructAsClass * arg,
 // ----------------------------------------
 // Argument:  long inew
 // Statement: f_in_native
-long GEN_UpdateStructAsClass_long_bufferify(GEN_StructAsClass * arg,
+long GEN_UpdateStructAsClass_long_bufferify(GEN_StructAsClass *arg,
     long inew)
 {
     // splicer begin function.UpdateStructAsClass_long_bufferify
-    StructAsClass * SHC_arg_cxx = (StructAsClass *) arg->addr;
+    StructAsClass *SHC_arg_cxx = (StructAsClass *) arg->addr;
     long SHC_rv = UpdateStructAsClass(SHC_arg_cxx, inew);
     return SHC_rv;
     // splicer end function.UpdateStructAsClass_long_bufferify

@@ -137,7 +137,7 @@ void CLI_Function4a_bufferify(const char *arg1, const char *arg2,
 void CLI_passCharPtrInOut_bufferify(char *s, int SHT_s_len)
 {
     // splicer begin function.passCharPtrInOut_bufferify
-    char * SHC_s_cxx = ShroudCharAlloc(s, SHT_s_len, 0);
+    char *SHC_s_cxx = ShroudCharAlloc(s, SHT_s_len, 0);
     passCharPtrInOut(SHC_s_cxx);
     ShroudCharCopy(s, SHT_s_len, SHC_s_cxx, -1);
     ShroudCharFree(SHC_s_cxx);

@@ -24,7 +24,7 @@ extern "C" {
 // Function:  static Singleton &getReference
 // Statement: c_function_shadow&_capptr
 // start CLA_Singleton_getReference
-CLA_Singleton * CLA_Singleton_getReference(CLA_Singleton * SHC_rv)
+CLA_Singleton * CLA_Singleton_getReference(CLA_Singleton *SHC_rv)
 {
     // splicer begin class.Singleton.method.getReference
     classes::Singleton &SHC_rv_cxx = classes::Singleton::getReference();
@@ -39,7 +39,7 @@ CLA_Singleton * CLA_Singleton_getReference(CLA_Singleton * SHC_rv)
 // Function:  static Singleton &getReference
 // Statement: f_function_shadow&_capsule
 // start CLA_Singleton_getReference_bufferify
-void CLA_Singleton_getReference_bufferify(CLA_Singleton * SHC_rv)
+void CLA_Singleton_getReference_bufferify(CLA_Singleton *SHC_rv)
 {
     // splicer begin class.Singleton.method.getReference_bufferify
     classes::Singleton &SHC_rv_cxx = classes::Singleton::getReference();

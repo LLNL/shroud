@@ -62,8 +62,7 @@ static char *ShroudCharAlloc(const char *src, int nsrc, int blanknull)
 // CHARACTER(len) src(nsrc)
 static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
 {
-    char **rv = static_cast<char **>
-        (std::malloc(sizeof(char *) * nsrc));
+    char **rv = static_cast<char **>(std::malloc(sizeof(char *) *nsrc));
     const char *src0 = src;
     for(int i=0; i < nsrc; ++i) {
         int ntrim = ShroudCharLenTrim(src0, len);
@@ -240,7 +239,7 @@ void CHA_passCharPtr_CFI(CFI_cdesc_t *SHT_dest_cfi,
     char *SHC_dest_cxx = new char[SHT_dest_len+1];
     char *src = static_cast<char *>(SHT_src_cfi->base_addr);
     size_t SHT_src_len = SHT_src_cfi->elem_len;
-    char * SHC_src_cxx = ShroudCharAlloc(src, SHT_src_len, 0);
+    char *SHC_src_cxx = ShroudCharAlloc(src, SHT_src_len, 0);
     passCharPtr(SHC_dest_cxx, SHC_src_cxx);
     ShroudCharCopy(dest, SHT_dest_len, SHC_dest_cxx, -1);
     delete[] SHC_dest_cxx;
@@ -288,7 +287,7 @@ void CHA_passCharPtrInOut_CFI(CFI_cdesc_t *SHT_s_cfi)
     // splicer begin function.passCharPtrInOut_CFI
     char *s = static_cast<char *>(SHT_s_cfi->base_addr);
     size_t SHT_s_len = SHT_s_cfi->elem_len;
-    char * SHC_s_cxx = ShroudCharAlloc(s, SHT_s_len, 0);
+    char *SHC_s_cxx = ShroudCharAlloc(s, SHT_s_len, 0);
     passCharPtrInOut(SHC_s_cxx);
     ShroudCharBlankFill(s, SHT_s_len);
     ShroudCharFree(SHC_s_cxx);
@@ -506,7 +505,7 @@ void CHA_explicit1_CFI(CFI_cdesc_t *SHT_name_cfi)
     // splicer begin function.explicit1_CFI
     char *name = static_cast<char *>(SHT_name_cfi->base_addr);
     size_t SHT_name_len = SHT_name_cfi->elem_len;
-    char * SHC_name_cxx = ShroudCharAlloc(name, SHT_name_len, 0);
+    char *SHC_name_cxx = ShroudCharAlloc(name, SHT_name_len, 0);
     explicit1(SHC_name_cxx);
     ShroudCharFree(SHC_name_cxx);
     // splicer end function.explicit1_CFI
@@ -610,7 +609,7 @@ void CHA_CpassCharPtr_CFI(CFI_cdesc_t *SHT_dest_cfi,
     char *SHC_dest_cxx = new char[SHT_dest_len+1];
     char *src = static_cast<char *>(SHT_src_cfi->base_addr);
     size_t SHT_src_len = SHT_src_cfi->elem_len;
-    char * SHC_src_cxx = ShroudCharAlloc(src, SHT_src_len, 1);
+    char *SHC_src_cxx = ShroudCharAlloc(src, SHT_src_len, 1);
     CpassCharPtr(SHC_dest_cxx, SHC_src_cxx);
     ShroudCharCopy(dest, SHT_dest_len, SHC_dest_cxx, -1);
     delete[] SHC_dest_cxx;
@@ -664,7 +663,7 @@ void CHA_CpassCharPtrBlank_CFI(CFI_cdesc_t *SHT_dest_cfi,
     char *SHC_dest_cxx = new char[SHT_dest_len+1];
     char *src = static_cast<char *>(SHT_src_cfi->base_addr);
     size_t SHT_src_len = SHT_src_cfi->elem_len;
-    char * SHC_src_cxx = ShroudCharAlloc(src, SHT_src_len, 1);
+    char *SHC_src_cxx = ShroudCharAlloc(src, SHT_src_len, 1);
     CpassCharPtrBlank(SHC_dest_cxx, SHC_src_cxx);
     ShroudCharCopy(dest, SHT_dest_len, SHC_dest_cxx, -1);
     delete[] SHC_dest_cxx;
@@ -709,7 +708,7 @@ int CHA_CpassCharPtrNotrim_CFI(CFI_cdesc_t *SHT_src_cfi)
     // splicer begin function.CpassCharPtrNotrim_CFI
     char *src = static_cast<char *>(SHT_src_cfi->base_addr);
     size_t SHT_src_len = SHT_src_cfi->elem_len;
-    char * SHC_src_cxx = ShroudCharAlloc(src, SHT_src_len, 0);
+    char *SHC_src_cxx = ShroudCharAlloc(src, SHT_src_len, 0);
     int SHC_rv = CpassCharPtrNotrim(SHC_src_cxx);
     ShroudCharFree(SHC_src_cxx);
     return SHC_rv;
@@ -790,7 +789,7 @@ int CHA_CpassCharPtrCAPI2_CFI(CFI_cdesc_t *SHT_in_cfi, const char *src)
     // splicer begin function.CpassCharPtrCAPI2_CFI
     char *in = static_cast<char *>(SHT_in_cfi->base_addr);
     size_t SHT_in_len = SHT_in_cfi->elem_len;
-    char * SHC_in_cxx = ShroudCharAlloc(in, SHT_in_len, 0);
+    char *SHC_in_cxx = ShroudCharAlloc(in, SHT_in_len, 0);
     int SHC_rv = CpassCharPtrCAPI2(SHC_in_cxx, src);
     ShroudCharFree(SHC_in_cxx);
     return SHC_rv;

@@ -54,7 +54,7 @@ void CLA_Data_free(CLA_Data * self)
 // Function:  Data
 // Statement: c_ctor_shadow_capptr
 // start CLA_Data_ctor
-CLA_Data * CLA_Data_ctor(CLA_Data * SHC_rv)
+CLA_Data * CLA_Data_ctor(CLA_Data *SHC_rv)
 {
     // splicer begin class.Data.method.ctor
     classes::Data *SHCXX_rv = new classes::Data();
@@ -69,7 +69,7 @@ CLA_Data * CLA_Data_ctor(CLA_Data * SHC_rv)
 // Function:  Data
 // Statement: f_ctor_shadow_capsule
 // start CLA_Data_ctor_bufferify
-void CLA_Data_ctor_bufferify(CLA_Data * SHC_rv)
+void CLA_Data_ctor_bufferify(CLA_Data *SHC_rv)
 {
     // splicer begin class.Data.method.ctor_bufferify
     classes::Data *SHCXX_rv = new classes::Data();

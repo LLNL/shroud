@@ -341,7 +341,7 @@ void STR_get_global_struct_list_bufferify(
 // Statement: c_function_shadow*_capptr
 // start STR_Create_Cstruct_as_class
 STR_Cstruct_as_class * STR_Create_Cstruct_as_class(
-    STR_Cstruct_as_class * SHC_rv)
+    STR_Cstruct_as_class *SHC_rv)
 {
     // splicer begin function.Create_Cstruct_as_class
     Cstruct_as_class *SHC_rv_cxx = Create_Cstruct_as_class();
@@ -356,8 +356,7 @@ STR_Cstruct_as_class * STR_Create_Cstruct_as_class(
 // Function:  Cstruct_as_class *Create_Cstruct_as_class
 // Statement: f_function_shadow*_capsule
 // start STR_Create_Cstruct_as_class_bufferify
-void STR_Create_Cstruct_as_class_bufferify(
-    STR_Cstruct_as_class * SHC_rv)
+void STR_Create_Cstruct_as_class_bufferify(STR_Cstruct_as_class *SHC_rv)
 {
     // splicer begin function.Create_Cstruct_as_class_bufferify
     Cstruct_as_class *SHC_rv_cxx = Create_Cstruct_as_class();
@@ -377,7 +376,7 @@ void STR_Create_Cstruct_as_class_bufferify(
 // Argument:  int y
 // Statement: c_in_native
 STR_Cstruct_as_class * STR_Create_Cstruct_as_class_args(int x, int y,
-    STR_Cstruct_as_class * SHC_rv)
+    STR_Cstruct_as_class *SHC_rv)
 {
     // splicer begin function.Create_Cstruct_as_class_args
     Cstruct_as_class *SHC_rv_cxx = Create_Cstruct_as_class_args(x, y);
@@ -397,7 +396,7 @@ STR_Cstruct_as_class * STR_Create_Cstruct_as_class_args(int x, int y,
 // Argument:  int y
 // Statement: f_in_native
 void STR_Create_Cstruct_as_class_args_bufferify(int x, int y,
-    STR_Cstruct_as_class * SHC_rv)
+    STR_Cstruct_as_class *SHC_rv)
 {
     // splicer begin function.Create_Cstruct_as_class_args_bufferify
     Cstruct_as_class *SHC_rv_cxx = Create_Cstruct_as_class_args(x, y);
@@ -409,7 +408,7 @@ void STR_Create_Cstruct_as_class_args_bufferify(int x, int y,
 // ----------------------------------------
 // Function:  Cstruct_as_class *Return_Cstruct_as_class
 // Statement: c_function_shadow*_capsule
-void STR_Return_Cstruct_as_class(STR_Cstruct_as_class * SHC_rv)
+void STR_Return_Cstruct_as_class(STR_Cstruct_as_class *SHC_rv)
 {
     // splicer begin function.Return_Cstruct_as_class
     Cstruct_as_class *SHC_rv_cxx = Return_Cstruct_as_class();
@@ -428,7 +427,7 @@ void STR_Return_Cstruct_as_class(STR_Cstruct_as_class * SHC_rv)
 // Argument:  int y
 // Statement: c_in_native
 void STR_Return_Cstruct_as_class_args(int x, int y,
-    STR_Cstruct_as_class * SHC_rv)
+    STR_Cstruct_as_class *SHC_rv)
 {
     // splicer begin function.Return_Cstruct_as_class_args
     Cstruct_as_class *SHC_rv_cxx = Return_Cstruct_as_class_args(x, y);
@@ -443,10 +442,10 @@ void STR_Return_Cstruct_as_class_args(int x, int y,
 // ----------------------------------------
 // Argument:  const Cstruct_as_class *point +pass
 // Statement: c_in_shadow*
-int STR_Cstruct_as_class_sum(STR_Cstruct_as_class * point)
+int STR_Cstruct_as_class_sum(STR_Cstruct_as_class *point)
 {
     // splicer begin function.Cstruct_as_class_sum
-    const Cstruct_as_class * SHC_point_cxx =
+    const Cstruct_as_class *SHC_point_cxx =
         static_cast<const Cstruct_as_class *>(point->addr);
     int SHC_rv = Cstruct_as_class_sum(SHC_point_cxx);
     return SHC_rv;
@@ -466,7 +465,7 @@ int STR_Cstruct_as_class_sum(STR_Cstruct_as_class * point)
 // Argument:  int z
 // Statement: c_in_native
 STR_Cstruct_as_subclass * STR_Create_Cstruct_as_subclass_args(int x,
-    int y, int z, STR_Cstruct_as_subclass * SHC_rv)
+    int y, int z, STR_Cstruct_as_subclass *SHC_rv)
 {
     // splicer begin function.Create_Cstruct_as_subclass_args
     Cstruct_as_subclass *SHC_rv_cxx = Create_Cstruct_as_subclass_args(x,
@@ -490,7 +489,7 @@ STR_Cstruct_as_subclass * STR_Create_Cstruct_as_subclass_args(int x,
 // Argument:  int z
 // Statement: f_in_native
 void STR_Create_Cstruct_as_subclass_args_bufferify(int x, int y, int z,
-    STR_Cstruct_as_subclass * SHC_rv)
+    STR_Cstruct_as_subclass *SHC_rv)
 {
     // splicer begin function.Create_Cstruct_as_subclass_args_bufferify
     Cstruct_as_subclass *SHC_rv_cxx = Create_Cstruct_as_subclass_args(x,
@@ -513,7 +512,7 @@ void STR_Create_Cstruct_as_subclass_args_bufferify(int x, int y, int z,
 // Argument:  int z
 // Statement: c_in_native
 void STR_Return_Cstruct_as_subclass_args(int x, int y, int z,
-    STR_Cstruct_as_subclass * SHC_rv)
+    STR_Cstruct_as_subclass *SHC_rv)
 {
     // splicer begin function.Return_Cstruct_as_subclass_args
     Cstruct_as_subclass *SHC_rv_cxx = Return_Cstruct_as_subclass_args(x,

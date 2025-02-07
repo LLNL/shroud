@@ -106,7 +106,7 @@ void TES_getName(char *name)
 void TES_getName_bufferify(char *name, int SHT_name_len)
 {
     // splicer begin function.getName_bufferify
-    char * SHC_name_cxx = ShroudCharAlloc(name, SHT_name_len, 0);
+    char *SHC_name_cxx = ShroudCharAlloc(name, SHT_name_len, 0);
     getName(SHC_name_cxx);
     ShroudCharCopy(name, SHT_name_len, SHC_name_cxx, -1);
     ShroudCharFree(SHC_name_cxx);
@@ -305,10 +305,10 @@ int TES_UseImplWorker_instantiation3(void)
 // ----------------------------------------
 // Argument:  const Cstruct_as_class *point +pass
 // Statement: c_in_shadow*
-int TES_Cstruct_as_class_sum(TES_Cstruct_as_class * point)
+int TES_Cstruct_as_class_sum(TES_Cstruct_as_class *point)
 {
     // splicer begin function.Cstruct_as_class_sum
-    const Cstruct_as_class * SHC_point_cxx =
+    const Cstruct_as_class *SHC_point_cxx =
         static_cast<const Cstruct_as_class *>(point->addr);
     int SHC_rv = Cstruct_as_class_sum(SHC_point_cxx);
     return SHC_rv;

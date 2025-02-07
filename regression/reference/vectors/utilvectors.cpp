@@ -42,7 +42,7 @@ void VEC_ShroudCopyArray(VEC_SHROUD_array *data, void *c_var,
 void VEC_ShroudVectorStringAllocatable(VEC_SHROUD_array *dest, VEC_SHROUD_capsule_data *src)
 {
     std::vector<std::string> *cxxvec =
-        static_cast< std::vector<std::string> * >(src->addr);
+        static_cast< std::vector<std::string> *>(src->addr);
     VEC_ShroudVectorStringOut(dest, *cxxvec);
 }
 // end helper vector_string_allocatable

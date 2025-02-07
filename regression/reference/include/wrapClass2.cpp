@@ -36,10 +36,10 @@ void LIB_Class2_method1(LIB_Class2 * self, MPI_Fint comm)
 // ----------------------------------------
 // Argument:  three::Class1 *c2
 // Statement: c_inout_shadow*
-void LIB_Class2_method2(LIB_Class2 * self, LIB_three_Class1 * c2)
+void LIB_Class2_method2(LIB_Class2 * self, LIB_three_Class1 *c2)
 {
     Class2 *SH_this = static_cast<Class2 *>(self->addr);
-    three::Class1 * SHC_c2_cxx = static_cast<three::Class1 *>(c2->addr);
+    three::Class1 *SHC_c2_cxx = static_cast<three::Class1 *>(c2->addr);
     SH_this->method2(SHC_c2_cxx);
 }
 

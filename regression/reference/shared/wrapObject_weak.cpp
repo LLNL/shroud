@@ -27,12 +27,12 @@ extern "C" {
 // Argument:  std::shared_ptr<Object> *from +intent(in)
 // Statement: c_in_smartptr<shadow>*
 void SHA_Object_weak_assign_weak(SHA_Object_weak * self,
-    SHA_Object_shared * from)
+    SHA_Object_shared *from)
 {
     std::weak_ptr<Object> *SH_this =
         static_cast<std::weak_ptr<Object> *>(self->addr);
     // splicer begin class.Object.method.assign_weak
-    std::shared_ptr<Object> * SHC_from_cxx =
+    std::shared_ptr<Object> *SHC_from_cxx =
         static_cast<std::shared_ptr<Object> *>(from->addr);
     if (SH_this == nullptr) {
         SH_this = new std::weak_ptr<Object>(*SHC_from_cxx);

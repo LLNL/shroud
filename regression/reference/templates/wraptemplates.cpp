@@ -26,7 +26,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  user<int> returnUserType
 // Statement: c_function_shadow<native>_capptr
-TEM_user_int * TEM_returnUserType(TEM_user_int * SHC_rv)
+TEM_user_int * TEM_returnUserType(TEM_user_int *SHC_rv)
 {
     // splicer begin function.returnUserType
     user<int> *SHC_rv_cxx = new user<int>;
@@ -40,7 +40,7 @@ TEM_user_int * TEM_returnUserType(TEM_user_int * SHC_rv)
 // ----------------------------------------
 // Function:  user<int> returnUserType
 // Statement: f_function_shadow<native>_capsule
-void TEM_returnUserType_bufferify(TEM_user_int * SHC_rv)
+void TEM_returnUserType_bufferify(TEM_user_int *SHC_rv)
 {
     // splicer begin function.returnUserType_bufferify
     user<int> *SHC_rv_cxx = new user<int>;

@@ -23,7 +23,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  Class1
 // Statement: c_ctor_shadow_capptr
-CXX_Class1 * CXX_Class1_ctor(CXX_Class1 * SHC_rv)
+CXX_Class1 * CXX_Class1_ctor(CXX_Class1 *SHC_rv)
 {
     // splicer begin class.Class1.method.ctor
     Class1 *SHCXX_rv = new Class1();
@@ -36,7 +36,7 @@ CXX_Class1 * CXX_Class1_ctor(CXX_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  Class1
 // Statement: f_ctor_shadow_capsule
-void CXX_Class1_ctor_bufferify(CXX_Class1 * SHC_rv)
+void CXX_Class1_ctor_bufferify(CXX_Class1 *SHC_rv)
 {
     // splicer begin class.Class1.method.ctor_bufferify
     Class1 *SHCXX_rv = new Class1();

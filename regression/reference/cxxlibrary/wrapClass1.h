@@ -30,9 +30,9 @@ extern "C" {
 // splicer begin class.Class1.C_declarations
 // splicer end class.Class1.C_declarations
 
-CXX_Class1 * CXX_Class1_ctor(CXX_Class1 * SHC_rv);
+CXX_Class1 * CXX_Class1_ctor(CXX_Class1 *SHC_rv);
 
-void CXX_Class1_ctor_bufferify(CXX_Class1 * SHC_rv);
+void CXX_Class1_ctor_bufferify(CXX_Class1 *SHC_rv);
 
 int CXX_Class1_check_length_0(CXX_Class1 * self);
 

@@ -23,7 +23,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  Names +name(defaultctor)
 // Statement: c_ctor_shadow_capptr
-TES_ns0_Names * XXX_TES_ns0_Names_defaultctor(TES_ns0_Names * SHC_rv)
+TES_ns0_Names * XXX_TES_ns0_Names_defaultctor(TES_ns0_Names *SHC_rv)
 {
     // splicer begin namespace.ns0.class.Names.method.defaultctor
     ns0::Names *ARG_rv = new ns0::Names();
@@ -36,7 +36,7 @@ TES_ns0_Names * XXX_TES_ns0_Names_defaultctor(TES_ns0_Names * SHC_rv)
 // ----------------------------------------
 // Function:  Names +name(defaultctor)
 // Statement: f_ctor_shadow_capsule
-void XXX_TES_ns0_Names_defaultctor_bufferify(TES_ns0_Names * SHC_rv)
+void XXX_TES_ns0_Names_defaultctor_bufferify(TES_ns0_Names *SHC_rv)
 {
     // splicer begin namespace.ns0.class.Names.method.defaultctor_bufferify
     ns0::Names *ARG_rv = new ns0::Names();

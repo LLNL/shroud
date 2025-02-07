@@ -73,13 +73,13 @@ void OWN_ReturnIntPtrDimDefaultNew_bufferify(
 
 void OWN_createClassStatic(int flag);
 
-OWN_Class1 * OWN_getClassStatic(OWN_Class1 * SHC_rv);
+OWN_Class1 * OWN_getClassStatic(OWN_Class1 *SHC_rv);
 
-void OWN_getClassStatic_bufferify(OWN_Class1 * SHC_rv);
+void OWN_getClassStatic_bufferify(OWN_Class1 *SHC_rv);
 
-OWN_Class1 * OWN_getClassNew(int flag, OWN_Class1 * SHC_rv);
+OWN_Class1 * OWN_getClassNew(int flag, OWN_Class1 *SHC_rv);
 
-void OWN_getClassNew_bufferify(int flag, OWN_Class1 * SHC_rv);
+void OWN_getClassNew_bufferify(int flag, OWN_Class1 *SHC_rv);
 
 #ifdef __cplusplus
 }

@@ -263,7 +263,7 @@
             "Declare a local_cxx pointer variable in the C wrapper."
         ],
         "c_pre_call": [
-            "{c_const}{c_type} * {c_local_cxx};"
+            "{c_const}{c_type} *{c_local_cxx};"
         ],
         "c_local": [
             "cxx"
@@ -275,7 +275,7 @@
             "Cast C argument to local C++ variable."
         ],
         "c_pre_call": [
-            "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+            "{c_const}{cxx_type} *{c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
         ],
         "c_local": [
             "cxx"
@@ -1538,12 +1538,12 @@
         ],
         "lang_c": {
             "c_pre_call": [
-                "{cxx_type} * {c_var} = {c_var_cdesc}->base_addr;"
+                "{cxx_type} *{c_var} = {c_var_cdesc}->base_addr;"
             ]
         },
         "lang_cxx": {
             "c_pre_call": [
-                "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
+                "{cxx_type} *{c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
             ]
         }
     },
@@ -2095,7 +2095,7 @@
             "Allocate a local char variable in C wrapper."
         ],
         "c_pre_call": [
-            "char * {c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
+            "char *{c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
         ],
         "c_post_call": [
             "{c_helper_char_free}({c_local_cxx});"
@@ -3605,7 +3605,7 @@
         "c_pre_call": [
             "std::vector<{cxx_T}> {c_local_cxx};",
             "{{+",
-            "{c_const}char * {c_local_s} = {c_var};",
+            "{c_const}char *{c_local_s} = {c_var};",
             "std::vector<{cxx_T}>::size_type",
             "+{c_local_i} = 0,",
             "{c_local_n} = {c_var_size};",
@@ -3659,7 +3659,7 @@
         ],
         "c_post_call": [
             "{{+",
-            "char * {c_local_s} = {c_var};",
+            "char *{c_local_s} = {c_var};",
             "std::vector<{cxx_T}>::size_type",
             "+{c_local_i} = 0,",
             "{c_local_n} = {c_var_size};",
@@ -3689,7 +3689,7 @@
         "c_pre_call": [
             "std::vector<{cxx_T}> {cxx_var};",
             "{{+",
-            "{c_const}char * {c_local_s} = {c_var};",
+            "{c_const}char *{c_local_s} = {c_var};",
             "std::vector<{cxx_T}>::size_type",
             "+{c_local_i} = 0,",
             "{c_local_n} = {c_var_size};",
@@ -3701,7 +3701,7 @@
         ],
         "c_post_call": [
             "{{+",
-            "char * {c_local_s} = {c_var};",
+            "char *{c_local_s} = {c_var};",
             "std::vector<{cxx_T}>::size_type",
             "+{c_local_i} = 0,",
             "{c_local_n} = {c_var_size};",
@@ -3887,7 +3887,7 @@
             ]
         },
         "c_arg_decl": [
-            "{c_type} * {c_var}"
+            "{c_type} *{c_var}"
         ]
     },
     {
@@ -3910,7 +3910,7 @@
             "{c_type} {c_var}"
         ],
         "c_pre_call": [
-            "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}.addr{cast2};"
+            "{c_const}{cxx_type} *{c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}.addr{cast2};"
         ],
         "c_local": [
             "cxx"
@@ -3990,7 +3990,7 @@
             "c_mixin_arg-call-cxx-deref"
         ],
         "c_pre_call": [
-            "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+            "{c_const}{cxx_type} *{c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
         ],
         "c_local": [
             "cxx"
@@ -5622,7 +5622,7 @@
             "// CHARACTER(len) src(nsrc)",
             "static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)",
             "{{+",
-            "char **rv = {cast_static}char **{cast1}{stdlib}malloc(sizeof(char *) * nsrc){cast2};",
+            "char **rv = {cast_static}char **{cast1}{stdlib}malloc(sizeof(char *) *nsrc){cast2};",
             "const char *src0 = src;",
             "for(int i=0; i < nsrc; ++i) {{+",
             "int ntrim = ShroudCharLenTrim(src0, len);",
@@ -5976,7 +5976,7 @@
             "// out is already blank filled.",
             "{cnameproto}",
             "{{+",
-            "std::vector<std::string> *cxxvec =\t static_cast< std::vector<std::string> * >\t(src->addr);",
+            "std::vector<std::string> *cxxvec =\t static_cast< std::vector<std::string> *>\t(src->addr);",
             "{cnamefunc_vector_string_out}(dest, *cxxvec);",
             "-}}{c_lend}"
         ],
@@ -6061,7 +6061,7 @@
             "{c_lstart}// helper {hname}",
             "// Save std::string metadata into array to allow Fortran to access values.",
             "// CHARACTER(len=elem_size) src",
-            "static void {cnamefunc}(\t{C_array_type} *cdesc,\t const std::string * src)",
+            "static void {cnamefunc}(\t{C_array_type} *cdesc,\t const std::string *src)",
             "{{+",
             "if (src->empty()) {{+",
             "cdesc->base_addr = NULL;",
@@ -6153,7 +6153,7 @@
             "",
             "{c_lstart}// helper {hname}",
             "struct s_{C_array_type} {{+",
-            "void * base_addr;",
+            "void *base_addr;",
             "int type;        /* type of element */",
             "size_t elem_len; /* bytes-per-item or character len in c++ */",
             "size_t size;     /* size of data in c++ */",

@@ -549,7 +549,7 @@ void POI_getPtrToScalar(int **nitems)
 void POI_getPtrToScalar_CFI(CFI_cdesc_t *SHT_nitems_cfi)
 {
     // splicer begin function.getPtrToScalar_CFI
-    int * SHC_nitems_cxx;
+    int *SHC_nitems_cxx;
     getPtrToScalar(&SHC_nitems_cxx);
     {
         CFI_CDESC_T(0) SHC_nitems_fptr;
@@ -599,7 +599,7 @@ void POI_getPtrToFixedArray(int **count)
 void POI_getPtrToFixedArray_CFI(CFI_cdesc_t *SHT_count_cfi)
 {
     // splicer begin function.getPtrToFixedArray_CFI
-    int * SHC_count_cxx;
+    int *SHC_count_cxx;
     getPtrToFixedArray(&SHC_count_cxx);
     {
         CFI_CDESC_T(1) SHC_count_fptr;
@@ -660,7 +660,7 @@ void POI_getPtrToDynamicArray(int **count, int *ncount)
 void POI_getPtrToDynamicArray_CFI(CFI_cdesc_t *SHT_count_cfi)
 {
     // splicer begin function.getPtrToDynamicArray_CFI
-    int * SHC_count_cxx;
+    int *SHC_count_cxx;
     int ncount;
     getPtrToDynamicArray(&SHC_count_cxx, &ncount);
     {
@@ -718,7 +718,7 @@ void POI_getPtrToFuncArray(int **count)
 void POI_getPtrToFuncArray_CFI(CFI_cdesc_t *SHT_count_cfi)
 {
     // splicer begin function.getPtrToFuncArray_CFI
-    int * SHC_count_cxx;
+    int *SHC_count_cxx;
     getPtrToFuncArray(&SHC_count_cxx);
     {
         CFI_CDESC_T(1) SHC_count_fptr;
@@ -765,7 +765,7 @@ void POI_getPtrToConstScalar(const int **nitems)
 void POI_getPtrToConstScalar_CFI(CFI_cdesc_t *SHT_nitems_cfi)
 {
     // splicer begin function.getPtrToConstScalar_CFI
-    const int * SHC_nitems_cxx;
+    const int *SHC_nitems_cxx;
     getPtrToConstScalar(&SHC_nitems_cxx);
     {
         CFI_CDESC_T(0) SHC_nitems_fptr;
@@ -809,7 +809,7 @@ void POI_getPtrToFixedConstArray(const int **count)
 void POI_getPtrToFixedConstArray_CFI(CFI_cdesc_t *SHT_count_cfi)
 {
     // splicer begin function.getPtrToFixedConstArray_CFI
-    const int * SHC_count_cxx;
+    const int *SHC_count_cxx;
     getPtrToFixedConstArray(&SHC_count_cxx);
     {
         CFI_CDESC_T(1) SHC_count_fptr;
@@ -862,7 +862,7 @@ void POI_getPtrToDynamicConstArray(const int **count, int *ncount)
 void POI_getPtrToDynamicConstArray_CFI(CFI_cdesc_t *SHT_count_cfi)
 {
     // splicer begin function.getPtrToDynamicConstArray_CFI
-    const int * SHC_count_cxx;
+    const int *SHC_count_cxx;
     int ncount;
     getPtrToDynamicConstArray(&SHC_count_cxx, &ncount);
     {
@@ -1047,7 +1047,7 @@ void POI_getAllocToFixedArray(int **count)
 void POI_getAllocToFixedArray_CFI(CFI_cdesc_t *SHT_count_cfi)
 {
     // splicer begin function.getAllocToFixedArray_CFI
-    int * SHC_count_cxx;
+    int *SHC_count_cxx;
     getAllocToFixedArray(&SHC_count_cxx);
     if (SHC_count_cxx != nullptr) {
         CFI_index_t SHT_count_lower[1] = {1};
@@ -1372,7 +1372,7 @@ int * POI_returnIntRawWithArgs_CFI(CFI_cdesc_t *SHT_name_cfi)
     // splicer begin function.returnIntRawWithArgs_CFI
     char *name = static_cast<char *>(SHT_name_cfi->base_addr);
     size_t SHT_name_len = SHT_name_cfi->elem_len;
-    char * SHC_name_cxx = ShroudCharAlloc(name, SHT_name_len, 0);
+    char *SHC_name_cxx = ShroudCharAlloc(name, SHT_name_len, 0);
     int *SHC_rv = returnIntRawWithArgs(SHC_name_cxx);
     ShroudCharFree(SHC_name_cxx);
     return SHC_rv;

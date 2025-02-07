@@ -91,7 +91,7 @@ int CLA_directionFunc_bufferify(int arg)
 void CLA_passClassByValue(CLA_Class1 arg)
 {
     // splicer begin function.passClassByValue
-    classes::Class1 * SHC_arg_cxx = static_cast<classes::Class1 *>
+    classes::Class1 *SHC_arg_cxx = static_cast<classes::Class1 *>
         (arg.addr);
     classes::passClassByValue(*SHC_arg_cxx);
     // splicer end function.passClassByValue
@@ -103,10 +103,10 @@ void CLA_passClassByValue(CLA_Class1 arg)
 // ----------------------------------------
 // Argument:  const Class1 *arg
 // Statement: c_in_shadow*
-int CLA_useclass(CLA_Class1 * arg)
+int CLA_useclass(CLA_Class1 *arg)
 {
     // splicer begin function.useclass
-    const classes::Class1 * SHC_arg_cxx =
+    const classes::Class1 *SHC_arg_cxx =
         static_cast<const classes::Class1 *>(arg->addr);
     int SHC_rv = classes::useclass(SHC_arg_cxx);
     return SHC_rv;
@@ -120,7 +120,7 @@ int CLA_useclass(CLA_Class1 * arg)
 // ----------------------------------------
 // Function:  const Class1 *getclass2
 // Statement: c_function_shadow*_capptr
-CLA_Class1 * CLA_getclass2(CLA_Class1 * SHC_rv)
+CLA_Class1 * CLA_getclass2(CLA_Class1 *SHC_rv)
 {
     // splicer begin function.getclass2
     const classes::Class1 *SHC_rv_cxx = classes::getclass2();
@@ -137,7 +137,7 @@ CLA_Class1 * CLA_getclass2(CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  const Class1 *getclass2
 // Statement: f_function_shadow*_capsule
-void CLA_getclass2_bufferify(CLA_Class1 * SHC_rv)
+void CLA_getclass2_bufferify(CLA_Class1 *SHC_rv)
 {
     // splicer begin function.getclass2_bufferify
     const classes::Class1 *SHC_rv_cxx = classes::getclass2();
@@ -153,7 +153,7 @@ void CLA_getclass2_bufferify(CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  Class1 *getclass3
 // Statement: c_function_shadow*_capptr
-CLA_Class1 * CLA_getclass3(CLA_Class1 * SHC_rv)
+CLA_Class1 * CLA_getclass3(CLA_Class1 *SHC_rv)
 {
     // splicer begin function.getclass3
     classes::Class1 *SHC_rv_cxx = classes::getclass3();
@@ -170,7 +170,7 @@ CLA_Class1 * CLA_getclass3(CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  Class1 *getclass3
 // Statement: f_function_shadow*_capsule
-void CLA_getclass3_bufferify(CLA_Class1 * SHC_rv)
+void CLA_getclass3_bufferify(CLA_Class1 *SHC_rv)
 {
     // splicer begin function.getclass3_bufferify
     classes::Class1 *SHC_rv_cxx = classes::getclass3();
@@ -186,7 +186,7 @@ void CLA_getclass3_bufferify(CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  const Class1 *getclass2_void
 // Statement: c_function_shadow*_capsule
-void CLA_getclass2_void(CLA_Class1 * SHC_rv)
+void CLA_getclass2_void(CLA_Class1 *SHC_rv)
 {
     // splicer begin function.getclass2_void
     const classes::Class1 *SHC_rv_cxx = classes::getclass2_void();
@@ -202,7 +202,7 @@ void CLA_getclass2_void(CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  Class1 *getclass3_void
 // Statement: c_function_shadow*_capsule
-void CLA_getclass3_void(CLA_Class1 * SHC_rv)
+void CLA_getclass3_void(CLA_Class1 *SHC_rv)
 {
     // splicer begin function.getclass3_void
     classes::Class1 *SHC_rv_cxx = classes::getclass3_void();
@@ -214,7 +214,7 @@ void CLA_getclass3_void(CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  const Class1 &getConstClassReference
 // Statement: c_function_shadow&_capptr
-CLA_Class1 * CLA_getConstClassReference(CLA_Class1 * SHC_rv)
+CLA_Class1 * CLA_getConstClassReference(CLA_Class1 *SHC_rv)
 {
     // splicer begin function.getConstClassReference
     const classes::Class1 &SHC_rv_cxx = classes::getConstClassReference(
@@ -228,7 +228,7 @@ CLA_Class1 * CLA_getConstClassReference(CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  const Class1 &getConstClassReference
 // Statement: f_function_shadow&_capsule
-void CLA_getConstClassReference_bufferify(CLA_Class1 * SHC_rv)
+void CLA_getConstClassReference_bufferify(CLA_Class1 *SHC_rv)
 {
     // splicer begin function.getConstClassReference_bufferify
     const classes::Class1 &SHC_rv_cxx = classes::getConstClassReference(
@@ -241,7 +241,7 @@ void CLA_getConstClassReference_bufferify(CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  Class1 &getClassReference
 // Statement: c_function_shadow&_capptr
-CLA_Class1 * CLA_getClassReference(CLA_Class1 * SHC_rv)
+CLA_Class1 * CLA_getClassReference(CLA_Class1 *SHC_rv)
 {
     // splicer begin function.getClassReference
     classes::Class1 &SHC_rv_cxx = classes::getClassReference();
@@ -254,7 +254,7 @@ CLA_Class1 * CLA_getClassReference(CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  Class1 &getClassReference
 // Statement: f_function_shadow&_capsule
-void CLA_getClassReference_bufferify(CLA_Class1 * SHC_rv)
+void CLA_getClassReference_bufferify(CLA_Class1 *SHC_rv)
 {
     // splicer begin function.getClassReference_bufferify
     classes::Class1 &SHC_rv_cxx = classes::getClassReference();
@@ -273,7 +273,7 @@ void CLA_getClassReference_bufferify(CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Argument:  int flag
 // Statement: c_in_native
-CLA_Class1 * CLA_getClassCopy(int flag, CLA_Class1 * SHC_rv)
+CLA_Class1 * CLA_getClassCopy(int flag, CLA_Class1 *SHC_rv)
 {
     // splicer begin function.getClassCopy
     classes::Class1 *SHC_rv_cxx = new classes::Class1;
@@ -294,7 +294,7 @@ CLA_Class1 * CLA_getClassCopy(int flag, CLA_Class1 * SHC_rv)
 // ----------------------------------------
 // Argument:  int flag
 // Statement: f_in_native
-void CLA_getClassCopy_bufferify(int flag, CLA_Class1 * SHC_rv)
+void CLA_getClassCopy_bufferify(int flag, CLA_Class1 *SHC_rv)
 {
     // splicer begin function.getClassCopy_bufferify
     classes::Class1 *SHC_rv_cxx = new classes::Class1;

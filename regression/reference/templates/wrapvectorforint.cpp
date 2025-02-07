@@ -24,7 +24,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  vector
 // Statement: c_ctor_shadow_capptr
-TEM_vector_int * TEM_vector_int_ctor(TEM_vector_int * SHC_rv)
+TEM_vector_int * TEM_vector_int_ctor(TEM_vector_int *SHC_rv)
 {
     // splicer begin namespace.std.class.vector.method.ctor
     std::vector<int> *SHCXX_rv = new std::vector<int>();
@@ -37,7 +37,7 @@ TEM_vector_int * TEM_vector_int_ctor(TEM_vector_int * SHC_rv)
 // ----------------------------------------
 // Function:  vector
 // Statement: f_ctor_shadow_capsule
-void TEM_vector_int_ctor_bufferify(TEM_vector_int * SHC_rv)
+void TEM_vector_int_ctor_bufferify(TEM_vector_int *SHC_rv)
 {
     // splicer begin namespace.std.class.vector.method.ctor_bufferify
     std::vector<int> *SHCXX_rv = new std::vector<int>();

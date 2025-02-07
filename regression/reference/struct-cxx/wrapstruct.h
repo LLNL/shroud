@@ -120,32 +120,32 @@ void STR_get_global_struct_list_bufferify(
     STR_SHROUD_array *SHT_rv_cdesc);
 
 STR_Cstruct_as_class * STR_Create_Cstruct_as_class(
-    STR_Cstruct_as_class * SHC_rv);
+    STR_Cstruct_as_class *SHC_rv);
 
 void STR_Create_Cstruct_as_class_bufferify(
-    STR_Cstruct_as_class * SHC_rv);
+    STR_Cstruct_as_class *SHC_rv);
 
 STR_Cstruct_as_class * STR_Create_Cstruct_as_class_args(int x, int y,
-    STR_Cstruct_as_class * SHC_rv);
+    STR_Cstruct_as_class *SHC_rv);
 
 void STR_Create_Cstruct_as_class_args_bufferify(int x, int y,
-    STR_Cstruct_as_class * SHC_rv);
+    STR_Cstruct_as_class *SHC_rv);
 
-void STR_Return_Cstruct_as_class(STR_Cstruct_as_class * SHC_rv);
+void STR_Return_Cstruct_as_class(STR_Cstruct_as_class *SHC_rv);
 
 void STR_Return_Cstruct_as_class_args(int x, int y,
-    STR_Cstruct_as_class * SHC_rv);
+    STR_Cstruct_as_class *SHC_rv);
 
-int STR_Cstruct_as_class_sum(STR_Cstruct_as_class * point);
+int STR_Cstruct_as_class_sum(STR_Cstruct_as_class *point);
 
 STR_Cstruct_as_subclass * STR_Create_Cstruct_as_subclass_args(int x,
-    int y, int z, STR_Cstruct_as_subclass * SHC_rv);
+    int y, int z, STR_Cstruct_as_subclass *SHC_rv);
 
 void STR_Create_Cstruct_as_subclass_args_bufferify(int x, int y, int z,
-    STR_Cstruct_as_subclass * SHC_rv);
+    STR_Cstruct_as_subclass *SHC_rv);
 
 void STR_Return_Cstruct_as_subclass_args(int x, int y, int z,
-    STR_Cstruct_as_subclass * SHC_rv);
+    STR_Cstruct_as_subclass *SHC_rv);
 
 const double * STR_Cstruct_ptr_get_const_dvalue(
     STR_cstruct_ptr *SH_this);
