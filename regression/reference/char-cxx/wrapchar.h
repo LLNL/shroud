@@ -103,6 +103,11 @@ void CHA_fetchCharPtrLibrary(char **outstr);
 void CHA_fetchCharPtrLibrary_bufferify(
     CHA_SHROUD_array *SHT_outstr_cdesc);
 
+void CHA_fetchCharPtrLibraryNULL(char **outstr);
+
+void CHA_fetchCharPtrLibraryNULL_bufferify(
+    CHA_SHROUD_array *SHT_outstr_cdesc);
+
 #ifdef __cplusplus
 }
 #endif

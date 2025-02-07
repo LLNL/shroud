@@ -590,15 +590,57 @@ PY_fetchCharPtrLibrary(
 {
 // splicer begin function.fetchCharPtrLibrary
     char *outstr = nullptr;
-    PyObject * SHPy_outstr = nullptr;
+    PyObject *SHPy_outstr = nullptr;
 
     fetchCharPtrLibrary(&outstr);
 
     // post_call
-    SHPy_outstr = PyString_FromString(outstr);
+    if (outstr == NULL) {
+        SHPy_outstr = Py_None;
+        Py_INCREF(Py_None);
+    } else {
+        SHPy_outstr = PyString_FromString(outstr);
+    }
 
     return (PyObject *) SHPy_outstr;
 // splicer end function.fetchCharPtrLibrary
+}
+
+// ----------------------------------------
+// Function:  void fetchCharPtrLibraryNULL
+// Statement: py_subroutine
+// ----------------------------------------
+// Argument:  char **outstr +intent(out)
+// Statement: py_out_char**
+static char PY_fetchCharPtrLibraryNULL__doc__[] =
+"documentation"
+;
+
+/**
+ * Fetch a NULL pointer to a char array owned by the library.
+ */
+static PyObject *
+PY_fetchCharPtrLibraryNULL(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.fetchCharPtrLibraryNULL
+    char *outstr = nullptr;
+    PyObject *SHPy_outstr = nullptr;
+
+    fetchCharPtrLibraryNULL(&outstr);
+
+    // post_call
+    if (outstr == NULL) {
+        SHPy_outstr = Py_None;
+        Py_INCREF(Py_None);
+    } else {
+        SHPy_outstr = PyString_FromString(outstr);
+    }
+
+    return (PyObject *) SHPy_outstr;
+// splicer end function.fetchCharPtrLibraryNULL
 }
 static PyMethodDef PY_methods[] = {
 {"init_test", (PyCFunction)PY_init_test, METH_NOARGS,
@@ -627,6 +669,8 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_acceptCharArrayIn__doc__},
 {"fetchCharPtrLibrary", (PyCFunction)PY_fetchCharPtrLibrary,
     METH_NOARGS, PY_fetchCharPtrLibrary__doc__},
+{"fetchCharPtrLibraryNULL", (PyCFunction)PY_fetchCharPtrLibraryNULL,
+    METH_NOARGS, PY_fetchCharPtrLibraryNULL__doc__},
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 

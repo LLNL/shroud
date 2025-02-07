@@ -643,6 +643,39 @@ module char_mod
     end interface
     ! end fetch_char_ptr_library
 
+    ! ----------------------------------------
+    ! Function:  void fetchCharPtrLibraryNULL
+    ! Statement: c_subroutine
+    ! ----------------------------------------
+    ! Argument:  char **outstr +intent(out)
+    ! Statement: c_out_char**
+    ! start c_fetch_char_ptr_library_null
+    interface
+        subroutine c_fetch_char_ptr_library_null(outstr) &
+                bind(C, name="CHA_fetchCharPtrLibraryNULL")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR), intent(OUT) :: outstr
+        end subroutine c_fetch_char_ptr_library_null
+    end interface
+    ! end c_fetch_char_ptr_library_null
+
+    ! ----------------------------------------
+    ! Function:  void fetchCharPtrLibraryNULL
+    ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  char **outstr +intent(out)
+    ! Statement: f_out_char**_cfi_pointer
+    ! start fetch_char_ptr_library_null
+    interface
+        subroutine fetch_char_ptr_library_null(outstr) &
+                bind(C, name="CHA_fetchCharPtrLibraryNULL_CFI")
+            implicit none
+            character(len=:), intent(OUT), pointer :: outstr
+        end subroutine fetch_char_ptr_library_null
+    end interface
+    ! end fetch_char_ptr_library_null
+
     ! splicer begin additional_declarations
     ! splicer end additional_declarations
 
@@ -1127,6 +1160,27 @@ contains
         ! splicer end function.fetch_char_ptr_library
     end subroutine fetch_char_ptr_library
     ! end fetch_char_ptr_library
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void fetchCharPtrLibraryNULL
+    ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  char **outstr +intent(out)
+    ! Statement: f_out_char**_cfi_pointer
+    !>
+    !! Fetch a NULL pointer to a char array owned by the library.
+    !<
+    ! start fetch_char_ptr_library_null
+    subroutine fetch_char_ptr_library_null(outstr)
+        character(len=:), intent(OUT), pointer :: outstr
+        ! splicer begin function.fetch_char_ptr_library_null
+        call c_fetch_char_ptr_library_null_CFI(outstr)
+        ! splicer end function.fetch_char_ptr_library_null
+    end subroutine fetch_char_ptr_library_null
+    ! end fetch_char_ptr_library_null
 #endif
 
     ! splicer begin additional_functions

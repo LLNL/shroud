@@ -789,4 +789,47 @@ void CHA_fetchCharPtrLibrary_bufferify(
 }
 // end CHA_fetchCharPtrLibrary_bufferify
 
+/**
+ * Fetch a NULL pointer to a char array owned by the library.
+ */
+// ----------------------------------------
+// Function:  void fetchCharPtrLibraryNULL
+// Statement: c_subroutine
+// ----------------------------------------
+// Argument:  char **outstr +intent(out)
+// Statement: c_out_char**
+// start CHA_fetchCharPtrLibraryNULL
+void CHA_fetchCharPtrLibraryNULL(char **outstr)
+{
+    // splicer begin function.fetchCharPtrLibraryNULL
+    fetchCharPtrLibraryNULL(outstr);
+    // splicer end function.fetchCharPtrLibraryNULL
+}
+// end CHA_fetchCharPtrLibraryNULL
+
+/**
+ * Fetch a NULL pointer to a char array owned by the library.
+ */
+// ----------------------------------------
+// Function:  void fetchCharPtrLibraryNULL
+// Statement: f_subroutine
+// ----------------------------------------
+// Argument:  char **outstr +intent(out)
+// Statement: f_out_char**_cdesc_pointer
+// start CHA_fetchCharPtrLibraryNULL_bufferify
+void CHA_fetchCharPtrLibraryNULL_bufferify(
+    CHA_SHROUD_array *SHT_outstr_cdesc)
+{
+    // splicer begin function.fetchCharPtrLibraryNULL_bufferify
+    char *outstr;
+    fetchCharPtrLibraryNULL(&outstr);
+    SHT_outstr_cdesc->base_addr = const_cast<char *>(outstr);
+    SHT_outstr_cdesc->type = SH_TYPE_CHAR;
+    SHT_outstr_cdesc->elem_len = outstr == nullptr ? 0 : std::strlen(outstr);
+    SHT_outstr_cdesc->size = 1;
+    SHT_outstr_cdesc->rank = 0;
+    // splicer end function.fetchCharPtrLibraryNULL_bufferify
+}
+// end CHA_fetchCharPtrLibraryNULL_bufferify
+
 }  // extern "C"

@@ -211,6 +211,10 @@ declarations:
     description: |
       Fetch a pointer to a char array owned by the library.
 
+- decl: void fetchCharPtrLibraryNULL(char **outstr+intent(out))
+  doxygen:
+    description: |
+      Fetch a NULL pointer to a char array owned by the library.
 
 ########################################
 patterns:

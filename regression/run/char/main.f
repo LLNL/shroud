@@ -244,6 +244,7 @@ contains
 
   subroutine test_char_ptr_out
     character(len=:), pointer :: outptr
+    character(8), target :: nonnull = "Non-null"
 
     call set_case_name("test_char_ptr_out")
 
@@ -251,6 +252,10 @@ contains
     call fetch_char_ptr_library(outptr)
     call assert_true(associated(outptr), "fetchCharPtrLibrary associated")
     call assert_equals(outptr, "static_char_array", "fetchCharPtrLibrary value")
+    
+    outptr => nonnull
+    call fetch_char_ptr_library_null(outptr)
+    call assert_false(associated(outptr), "fetchCharPtrLibraryNULL")
     
   end subroutine test_char_ptr_out
 

@@ -213,3 +213,11 @@ void fetchCharPtrLibrary(char **outstr)
 {
     *outstr = static_char_array;
 }
+
+//----------------------------------------------------------------------
+// Fetch a NULL pointer to a char array owned by the library.
+
+void fetchCharPtrLibraryNULL(char **outstr)
+{
+    *outstr = NULL;
+}

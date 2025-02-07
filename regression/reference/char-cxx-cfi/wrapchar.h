@@ -108,6 +108,10 @@ void CHA_fetchCharPtrLibrary(char **outstr);
 
 void CHA_fetchCharPtrLibrary_CFI(CFI_cdesc_t *SHT_outstr_cfi);
 
+void CHA_fetchCharPtrLibraryNULL(char **outstr);
+
+void CHA_fetchCharPtrLibraryNULL_CFI(CFI_cdesc_t *SHT_outstr_cfi);
+
 #ifdef __cplusplus
 }
 #endif

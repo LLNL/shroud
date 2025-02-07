@@ -22224,10 +22224,18 @@ py_out_char**:
   intent: out
   arg_declare:
   - '{c_const}char *{cxx_var} = {nullptr};'
-  fmtdict:
-    ctor_expr: '{cxx_var}'
   arg_call:
   - '&{cxx_var}'
+  object_created: true
+  declare:
+  - PyObject *{py_var} = {nullptr};
+  post_call:
+  - if ({cxx_var} == NULL) {{+
+  - '{py_var} = Py_None;'
+  - Py_INCREF(Py_None);
+  - -}} else {{+
+  - '{py_var} = PyString_FromString({cxx_var});'
+  - -}}
 py_out_char*_charlen:
   name: py_out_char*_charlen
   intent: out
