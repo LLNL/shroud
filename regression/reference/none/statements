@@ -129,9 +129,10 @@ c_function_bool:
   name: c_function_bool
   comments:
   - Call a function.
+  - Declare a Fortran variable.
   mixin_names:
   - '  f_mixin_function'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  c_mixin_declare-fortran-result'
   intent: function
   i_result_decl:
@@ -306,6 +307,7 @@ c_function_char*_buf_copy:
   name: c_function_char*_buf_copy
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
@@ -317,7 +319,7 @@ c_function_char*_buf_copy:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -366,9 +368,10 @@ c_function_native:
   name: c_function_native
   comments:
   - Call a function.
+  - Declare a Fortran variable.
   mixin_names:
   - '  f_mixin_function'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  c_mixin_declare-fortran-result'
   intent: function
   i_result_decl:
@@ -1244,6 +1247,7 @@ c_function_string&_buf_copy:
   name: c_function_string&_buf_copy
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
@@ -1251,7 +1255,7 @@ c_function_string&_buf_copy:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -1328,6 +1332,7 @@ c_function_string*_buf_copy:
   name: c_function_string*_buf_copy
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
@@ -1335,7 +1340,7 @@ c_function_string*_buf_copy:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -1491,6 +1496,7 @@ c_function_string_buf_copy:
   name: c_function_string_buf_copy
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
@@ -1498,7 +1504,7 @@ c_function_string_buf_copy:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -1543,11 +1549,12 @@ c_function_struct:
   name: c_function_struct
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-interface-arg'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   intent: function
   i_arg_names:
   - '{i_var}'
@@ -1633,10 +1640,12 @@ c_function_vector<native>_malloc:
   owner: library
 c_function_void*:
   name: c_function_void*
+  comments:
+  - Declare a Fortran variable.
   notes:
   - XXX - f entries are the same as the i entries, share?
   mixin_names:
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   intent: function
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
@@ -1646,8 +1655,10 @@ c_function_void*:
   owner: library
 c_getter_native:
   name: c_getter_native
+  comments:
+  - Declare a Fortran variable.
   mixin_names:
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  c_mixin_declare-fortran-result'
   intent: getter
   i_result_decl:
@@ -1662,8 +1673,10 @@ c_getter_native:
   owner: library
 c_getter_native*:
   name: c_getter_native*
+  comments:
+  - Declare a Fortran variable.
   mixin_names:
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  c_mixin_declare-fortran-result'
   intent: getter
   i_result_decl:
@@ -6025,9 +6038,10 @@ f_function_bool:
   name: f_function_bool
   comments:
   - Call a function.
+  - Declare a Fortran variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_call:
   - '{f_result_var} = {f_call_function}({F_arg_c_call})'
   f_module:
@@ -6036,7 +6050,7 @@ f_function_bool:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  c_mixin_declare-fortran-result'
   i_result_decl:
   - '{i_type} :: {i_var}'
@@ -6288,6 +6302,7 @@ f_function_char*_buf_copy:
   name: f_function_char*_buf_copy
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
@@ -6298,7 +6313,7 @@ f_function_char*_buf_copy:
   - XXX - maybe fmtdict to rename c_local_cxx as output
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -6319,7 +6334,7 @@ f_function_char*_buf_copy:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -6588,6 +6603,7 @@ f_function_char*_cfi_copy:
   name: f_function_char*_cfi_copy
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass argument to C wrapper
   - Make the C wrapper argument a CFI_desc_t.
   - Character argument passed as CFI_desc_t.
@@ -6598,7 +6614,7 @@ f_function_char*_cfi_copy:
   - Copy result into caller's buffer.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -6610,7 +6626,7 @@ f_function_char*_cfi_copy:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_cfi_pass_character'
   - '  c_mixin_cfi_arg_character'
   - '    c_mixin_cfi_arg'
@@ -7007,11 +7023,12 @@ f_function_enum:
   name: f_function_enum
   comments:
   - Call a function.
+  - Declare a Fortran variable.
   notes:
   - Return as the Fortran bind(C) type.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_call:
   - '{f_result_var} = {f_call_function}({F_arg_c_call})'
   f_module:
@@ -7019,7 +7036,7 @@ f_function_enum:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_function'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  c_mixin_declare-fortran-result'
   i_result_decl:
   - '{i_type} :: {i_var}'
@@ -7033,9 +7050,10 @@ f_function_native:
   name: f_function_native
   comments:
   - Call a function.
+  - Declare a Fortran variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_call:
   - '{f_result_var} = {f_call_function}({F_arg_c_call})'
   f_module:
@@ -7043,7 +7061,7 @@ f_function_native:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_function'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  c_mixin_declare-fortran-result'
   i_result_decl:
   - '{i_type} :: {i_var}'
@@ -7594,11 +7612,12 @@ f_function_native*_scalar:
   name: f_function_native*_scalar
   comments:
   - Call a function.
+  - Declare a Fortran variable.
   notes:
   - Return a scalar to avoid doing the deref in Fortran.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_call:
   - '{f_result_var} = {f_call_function}({F_arg_c_call})'
   f_module:
@@ -7606,7 +7625,7 @@ f_function_native*_scalar:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_function'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  c_mixin_declare-fortran-result'
   i_result_decl:
   - '{i_type} :: {i_var}'
@@ -8106,13 +8125,14 @@ f_function_string&_buf:
   name: f_function_string&_buf
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -8133,7 +8153,7 @@ f_function_string&_buf:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -8260,13 +8280,14 @@ f_function_string&_buf_caller:
   name: f_function_string&_buf_caller
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Copy cxx variable into c variable.
   - Pass cxx variable to library.
   - Delete the cxx variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -8287,7 +8308,7 @@ f_function_string&_buf_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_string-char-copy-to-arg'
@@ -8328,13 +8349,14 @@ f_function_string&_buf_copy:
   name: f_function_string&_buf_copy
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -8355,7 +8377,7 @@ f_function_string&_buf_copy:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -8399,13 +8421,14 @@ f_function_string&_buf_copy_caller:
   name: f_function_string&_buf_copy_caller
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Copy cxx variable into c variable.
   - Pass cxx variable to library.
   - Delete the cxx variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -8426,7 +8449,7 @@ f_function_string&_buf_copy_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_string-char-copy-to-arg'
@@ -9058,6 +9081,7 @@ f_function_string&_cfi_copy:
   name: f_function_string&_cfi_copy
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass argument to C wrapper
   - Make the C wrapper argument a CFI_desc_t.
   - Character argument passed as CFI_desc_t.
@@ -9066,7 +9090,7 @@ f_function_string&_cfi_copy:
   - Copy cxx variable into c variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -9078,7 +9102,7 @@ f_function_string&_cfi_copy:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_cfi_pass_character'
   - '  c_mixin_cfi_arg_character'
   - '    c_mixin_cfi_arg'
@@ -9303,13 +9327,14 @@ f_function_string*_buf:
   name: f_function_string*_buf
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -9330,7 +9355,7 @@ f_function_string*_buf:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -9374,13 +9399,14 @@ f_function_string*_buf_caller:
   name: f_function_string*_buf_caller
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Copy cxx variable into c variable.
   - Pass cxx variable to library.
   - Delete the cxx variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -9401,7 +9427,7 @@ f_function_string*_buf_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_string-char-copy-to-arg'
@@ -9442,13 +9468,14 @@ f_function_string*_buf_copy:
   name: f_function_string*_buf_copy
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -9469,7 +9496,7 @@ f_function_string*_buf_copy:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -9513,13 +9540,14 @@ f_function_string*_buf_copy_caller:
   name: f_function_string*_buf_copy_caller
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Copy cxx variable into c variable.
   - Pass cxx variable to library.
   - Delete the cxx variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -9540,7 +9568,7 @@ f_function_string*_buf_copy_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_string-char-copy-to-arg'
@@ -10103,6 +10131,7 @@ f_function_string*_cfi_copy:
   name: f_function_string*_cfi_copy
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass argument to C wrapper
   - Make the C wrapper argument a CFI_desc_t.
   - Character argument passed as CFI_desc_t.
@@ -10111,7 +10140,7 @@ f_function_string*_cfi_copy:
   - Copy cxx variable into c variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -10123,7 +10152,7 @@ f_function_string*_cfi_copy:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_cfi_pass_character'
   - '  c_mixin_cfi_arg_character'
   - '    c_mixin_cfi_arg'
@@ -10348,13 +10377,14 @@ f_function_string_buf:
   name: f_function_string_buf
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -10375,7 +10405,7 @@ f_function_string_buf:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -10502,13 +10532,14 @@ f_function_string_buf_caller:
   name: f_function_string_buf_caller
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Copy cxx variable into c variable.
   - Pass cxx variable to library.
   - Delete the cxx variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -10529,7 +10560,7 @@ f_function_string_buf_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_string-char-copy-to-arg'
@@ -10570,13 +10601,14 @@ f_function_string_buf_copy:
   name: f_function_string_buf_copy
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -10597,7 +10629,7 @@ f_function_string_buf_copy:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -10641,13 +10673,14 @@ f_function_string_buf_copy_caller:
   name: f_function_string_buf_copy_caller
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Copy cxx variable into c variable.
   - Pass cxx variable to library.
   - Delete the cxx variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -10668,7 +10701,7 @@ f_function_string_buf_copy_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_string-char-copy-to-arg'
@@ -11182,6 +11215,7 @@ f_function_string_cfi_copy:
   name: f_function_string_cfi_copy
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass argument to C wrapper
   - Make the C wrapper argument a CFI_desc_t.
   - Character argument passed as CFI_desc_t.
@@ -11190,7 +11224,7 @@ f_function_string_cfi_copy:
   - Copy cxx variable into c variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -11202,7 +11236,7 @@ f_function_string_cfi_copy:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_cfi_pass_character'
   - '  c_mixin_cfi_arg_character'
   - '    c_mixin_cfi_arg'
@@ -11427,9 +11461,10 @@ f_function_struct:
   name: f_function_struct
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -11441,7 +11476,7 @@ f_function_struct:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-interface-arg'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -11639,16 +11674,18 @@ f_function_vector_scalar_cdesc:
   owner: library
 f_function_void*:
   name: f_function_void*
+  comments:
+  - Declare a Fortran variable.
   notes:
   - XXX - f entries are the same as the i entries, share?
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
   mixin_names:
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
@@ -11657,14 +11694,16 @@ f_function_void*:
   owner: library
 f_getter_bool:
   name: f_getter_bool
+  comments:
+  - Declare a Fortran variable.
   intent: getter
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
   mixin_names:
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  c_mixin_declare-fortran-result'
   i_result_decl:
   - '{i_type} :: {i_var}'
@@ -11678,14 +11717,16 @@ f_getter_bool:
   owner: library
 f_getter_native:
   name: f_getter_native
+  comments:
+  - Declare a Fortran variable.
   intent: getter
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
   mixin_names:
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  c_mixin_declare-fortran-result'
   i_result_decl:
   - '{i_type} :: {i_var}'
@@ -11761,14 +11802,16 @@ f_getter_native*_cdesc_pointer:
   owner: library
 f_getter_native*_pointer:
   name: f_getter_native*_pointer
+  comments:
+  - Declare a Fortran variable.
   intent: getter
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
   mixin_names:
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  c_mixin_declare-fortran-result'
   i_result_decl:
   - '{i_type} :: {i_var}'
@@ -15549,15 +15592,6 @@ f_mixin_declare-fortran-arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
-  f_module:
-    '{f_module_name}':
-    - '{f_kind}'
-  owner: library
-f_mixin_declare-fortran-result:
-  name: f_mixin_declare-fortran-result
-  intent: mixin
-  f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -20068,7 +20102,6 @@ root
       declare-arg-char -- f_mixin_declare-arg-char
       declare-as-cptr -- f_mixin_declare-as-cptr
       declare-fortran-arg -- f_mixin_declare-fortran-arg
-      declare-fortran-result -- f_mixin_declare-fortran-result
       declare-interface-arg -- f_mixin_declare-interface-arg
       declare-local-variable -- f_mixin_declare-local-variable
       dummy

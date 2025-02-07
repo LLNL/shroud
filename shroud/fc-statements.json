@@ -407,20 +407,6 @@
         "c_return_type": "void"
     },
     {
-        "name": "f_mixin_declare-fortran-result",
-        "notes": [
-            "Fortran function result."
-        ],
-        "f_module": {
-            "{f_module_name}": [
-                "{f_kind}"
-            ]
-        },
-        "f_arg_decl": [
-            "{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}"
-        ]
-    },
-    {
         "name": "c_mixin_declare-fortran-result",
         "notes": [
             "Fortran function result.",
@@ -1328,7 +1314,7 @@
         ],
         "mixin": [
             "f_mixin_function",
-            "f_mixin_declare-fortran-result",
+            "f_mixin_declare-local-variable",
             "c_mixin_declare-fortran-result"
         ]
     },
@@ -1339,7 +1325,7 @@
         ],
         "mixin": [
             "f_mixin_function",
-            "f_mixin_declare-fortran-result",
+            "f_mixin_declare-local-variable",
             "c_mixin_declare-fortran-result"
         ],
         "c_return_type": "{c_type}",
@@ -1768,7 +1754,7 @@
         ],
         "mixin": [
             "f_mixin_function",
-            "f_mixin_declare-fortran-result",
+            "f_mixin_declare-local-variable",
             "c_mixin_declare-fortran-result"
         ],
         "f_need_wrapper": true
@@ -1804,7 +1790,7 @@
             "XXX - f entries are the same as the i entries, share?"
         ],
         "mixin": [
-            "f_mixin_declare-fortran-result"
+            "f_mixin_declare-local-variable"
         ],
         "i_module": {
             "iso_c_binding": [
@@ -1936,7 +1922,7 @@
         ],
         "mixin": [
             "f_mixin_function",
-            "f_mixin_declare-fortran-result",
+            "f_mixin_declare-local-variable",
             "c_mixin_declare-fortran-result"
         ],
         "c_post_call": [
@@ -2437,7 +2423,7 @@
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
-            "f_mixin_declare-fortran-result",
+            "f_mixin_declare-local-variable",
             "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf",
             "c_mixin_arg-call-cvar",
@@ -3028,7 +3014,7 @@
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
-            "f_mixin_declare-fortran-result",
+            "f_mixin_declare-local-variable",
             "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf",
             "c_mixin_arg-call-cvar",
@@ -3050,7 +3036,7 @@
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
-            "f_mixin_declare-fortran-result",
+            "f_mixin_declare-local-variable",
             "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf",
             "c_mixin_string-char-copy-to-arg",
@@ -4279,7 +4265,7 @@
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_declare-interface-arg",
-            "f_mixin_declare-fortran-result"
+            "f_mixin_declare-local-variable"
         ],
         "f_arg_call": [
             "{f_var}"
@@ -4365,7 +4351,7 @@
     {
         "name": "f_getter_bool",
         "mixin": [
-            "f_mixin_declare-fortran-result",
+            "f_mixin_declare-local-variable",
             "c_mixin_declare-fortran-result"
         ],
         "f_arg_call": [],
@@ -4397,7 +4383,7 @@
             "c_getter_native*"
         ],
         "mixin": [
-            "f_mixin_declare-fortran-result",
+            "f_mixin_declare-local-variable",
             "c_mixin_declare-fortran-result"
         ],
         "f_arg_call": [],
@@ -4841,7 +4827,7 @@
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
-            "f_mixin_declare-fortran-result",
+            "f_mixin_declare-local-variable",
             "f_mixin_cfi_pass_character",
             "c_mixin_cfi_arg_character",
             "c_mixin_cfi-unpack-base-addr",
@@ -4996,7 +4982,7 @@
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
-            "f_mixin_declare-fortran-result",
+            "f_mixin_declare-local-variable",
             "f_mixin_cfi_pass_character",
             "c_mixin_cfi_arg_character",
             "c_mixin_arg-call-cxx",
