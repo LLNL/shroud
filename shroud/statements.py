@@ -824,6 +824,7 @@ CStmts = util.Scope(
     i_import=None,
     i_module=None,
 
+    c_return_type=None,
     c_arg_decl=None,    # C prototype
     c_pre_call=[],
     c_arg_call=[],
@@ -831,7 +832,6 @@ CStmts = util.Scope(
     c_post_call=[],
     c_final=[],      # tested in strings.yaml, part of ownership
     c_return=[],
-    c_return_type=None,
     c_temps=None,
     c_local=None,
     c_helper=[],
