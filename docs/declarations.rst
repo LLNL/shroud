@@ -74,17 +74,17 @@ In the following examples, ``int`` can be replaced by any numeric type.
     as the shape.
     See example :ref:`truncate_to_int <example_truncate_to_int>`.
 
-``intent **arg +intent(out)``
+``int **arg +intent(out)``
     Return a pointer in an argument. This is converted into a Fortran
     ``POINTER`` to a scalar.
     See example :ref:`getPtrToScalar <example_getPtrToScalar>`.
 
-``intent **arg +intent(out)+dimension(ncount)``
+``int **arg +intent(out)+dimension(ncount)``
     Return a pointer in an argument. This is converted into a Fortran
     ``POINTER`` to an array by the *dimension* attribute.
     See example :ref:`getPtrToDynamicArray <example_getPtrToDynamicArray>`.
 
-``intent **arg +intent(out)+deref(raw)``
+``int **arg +intent(out)+deref(raw)``
     Return a pointer in an argument.  The Fortran argument will be
     a ``type(C_PTR)``.  This gives the caller the flexibility to
     dereference the pointer themselves using ``c_f_pointer``.
@@ -220,7 +220,13 @@ is to account for blank filled vs ``NULL`` terminated.
     C data structure by copying the data and adding the terminating ``NULL``.
     See example :ref:`acceptCharArrayIn <example_acceptCharArrayIn>`.
 
-.. XXX 
+``char **arg +intent(out)``
+    The argument will return the address of a character array which
+    is owned by the library. The user will not need to release the
+    memory.  The Fortran wrapper will use a variable with the
+    ``POINTER`` attribute which points to the same memory. The length
+    of the string is based on the ``strlen`` of the argument.
+    See example :ref:`fetchCharPtrLibrary <example_fetchCharPtrLibrary>`.
 
 std::string
 -----------

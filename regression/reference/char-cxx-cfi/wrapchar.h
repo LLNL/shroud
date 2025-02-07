@@ -104,6 +104,14 @@ int CHA_acceptCharArrayIn(char **names);
 
 int CHA_acceptCharArrayIn_CFI(CFI_cdesc_t *SHT_names_cfi);
 
+void CHA_fetchCharPtrLibrary(char **outstr);
+
+void CHA_fetchCharPtrLibrary_CFI(CFI_cdesc_t *SHT_outstr_cfi);
+
+int CHA_fetchCharPtrLibraryNULL(char **outstr);
+
+int CHA_fetchCharPtrLibraryNULL_CFI(CFI_cdesc_t *SHT_outstr_cfi);
+
 #ifdef __cplusplus
 }
 #endif

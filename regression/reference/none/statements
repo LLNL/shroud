@@ -4000,6 +4000,40 @@ c_mixin_character:
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   owner: library
+c_mixin_character-deferred-length:
+  name: c_mixin_character-deferred-length
+  intent: mixin
+  i_arg_decl:
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  owner: library
+c_mixin_character_cfi_pointer:
+  name: c_mixin_character_cfi_pointer
+  comments:
+  - Convert C pointer to deferred-length CHARACTER Fortran scalar pointer.
+  intent: mixin
+  c_post_call:
+  - int {c_local_err};
+  - if ({cxx_var} == {nullptr}) {{+
+  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});"
+  - -}} else {{+
+  - CFI_CDESC_T(0) {c_local_fptr};
+  - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
+  - void *{c_local_cptr} = {cxx_nonconst_ptr};
+  - size_t {c_local_len} = {stdlib}strlen({cxx_var});
+  - "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t\
+    \ CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});"
+  - if ({c_local_err} == CFI_SUCCESS) {{+
+  - '{c_var_cfi}->elem_len = {c_local_cdesc}->elem_len;'
+  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {nullptr});"
+  - -}}
+  - -}}
+  c_local:
+  - cptr
+  - fptr
+  - cdesc
+  - len
+  - err
+  owner: library
 c_mixin_cvar-capsule-fill:
   name: c_mixin_cvar-capsule-fill
   comments:
@@ -4073,6 +4107,12 @@ c_mixin_destructor_new-vector:
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
+  owner: library
+c_mixin_dummy_arg:
+  name: c_mixin_dummy_arg
+  intent: mixin
+  i_arg_names:
+  - '{i_var}'
   owner: library
 c_mixin_function-assign-to-local:
   name: c_mixin_function-assign-to-local
@@ -4294,6 +4334,14 @@ c_mixin_local-cvar-ptr:
   name: c_mixin_local-cvar-ptr
   comments:
   - Declare a local pointer variable in the C wrapper.
+  intent: mixin
+  c_pre_call:
+  - '{c_const}{c_type} *{c_var};'
+  owner: library
+c_mixin_local-cxx-ptr:
+  name: c_mixin_local-cxx-ptr
+  comments:
+  - Declare a local_cxx pointer variable in the C wrapper.
   intent: mixin
   c_pre_call:
   - '{c_const}{c_type} * {c_local_cxx};'
@@ -4611,6 +4659,27 @@ c_out_char*:
   i_module:
     '{i_module_name}':
     - '{i_kind}'
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
+  c_arg_call:
+  - '{cxx_var}'
+  owner: library
+c_out_char**:
+  name: c_out_char**
+  comments:
+  - Pass cxx variable to library.
+  mixin_names:
+  - '  f_mixin_interface-as-cptr'
+  - '  c_mixin_declare-arg'
+  - '  c_mixin_arg-call-cvar'
+  intent: out
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type(C_PTR){i_intent_attr} :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -6580,6 +6649,7 @@ f_function_char*_cfi_pointer:
   comments:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
+  - Convert C pointer to deferred-length CHARACTER Fortran scalar pointer.
   intent: function
   f_arg_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
@@ -6592,6 +6662,7 @@ f_function_char*_cfi_pointer:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
   - '  c_mixin_arg_cfi'
+  - '  c_mixin_character_cfi_pointer'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -6865,6 +6936,7 @@ f_function_char_cfi_pointer:
   comments:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
+  - Convert C pointer to deferred-length CHARACTER Fortran scalar pointer.
   intent: function
   f_arg_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
@@ -6877,6 +6949,7 @@ f_function_char_cfi_pointer:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
   - '  c_mixin_arg_cfi'
+  - '  c_mixin_character_cfi_pointer'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -15069,6 +15142,12 @@ f_mixin_char_cdesc_pointer:
   f_helper:
   - pointer_string
   owner: library
+f_mixin_character-deferred-length:
+  name: f_mixin_character-deferred-length
+  intent: mixin
+  f_arg_decl:
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
+  owner: library
 f_mixin_declare-arg-char:
   name: f_mixin_declare-arg-char
   comments:
@@ -15120,6 +15199,12 @@ f_mixin_declare-interface-arg:
   i_module:
     '{i_module_name}':
     - '{i_kind}'
+  owner: library
+f_mixin_dummy_arg:
+  name: f_mixin_dummy_arg
+  intent: mixin
+  f_arg_name:
+  - '{f_var}'
   owner: library
 f_mixin_function:
   name: f_mixin_function
@@ -16189,6 +16274,127 @@ f_out_char*:
   c_arg_call:
   - '{cxx_var}'
   owner: library
+f_out_char**_cdesc_pointer:
+  name: f_out_char**_cdesc_pointer
+  comments:
+  - Assign Fortran pointer from cdesc using helper pointer_string.
+  - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from char * in the C wrapper.
+  - Declare a local pointer variable in the C wrapper.
+  - Pass address of cxx variable to library.
+  notes:
+  - Return a Fortran pointer to C memory.
+  intent: out
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
+  f_declare:
+  - 'type({F_array_type}) :: {f_var_cdesc}'
+  f_arg_call:
+  - '{f_var_cdesc}'
+  f_post_call:
+  - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
+  f_module:
+    iso_c_binding:
+    - c_f_pointer
+  f_temps:
+  - cdesc
+  f_helper:
+  - pointer_string
+  - array_context
+  f_need_wrapper: true
+  mixin_names:
+  - '  f_mixin_dummy_arg'
+  - '  f_mixin_char_cdesc_pointer'
+  - '  f_mixin_pass_cdesc'
+  - '  c_mixin_cdesc-char-fill-cvar'
+  - '  c_mixin_local-cvar-ptr'
+  - '  c_mixin_arg-call-cvar-address'
+  i_arg_names:
+  - '{i_var_cdesc}'
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_pre_call:
+  - '{c_const}{c_type} *{c_var};'
+  c_arg_call:
+  - '&{cxx_var}'
+  c_post_call:
+  - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
+  - '{c_var_cdesc}->size = 1;'
+  - '{c_var_cdesc}->rank = 0;'
+  c_temps:
+  - cdesc
+  c_helper:
+  - array_context
+  - type_defines
+  owner: library
+f_out_char**_cfi_pointer:
+  name: f_out_char**_cfi_pointer
+  comments:
+  - Make the C wrapper argument a CFI_desc_t.
+  - Declare a local pointer variable in the C wrapper.
+  - Pass address of cxx variable to library.
+  - Convert C pointer to deferred-length CHARACTER Fortran scalar pointer.
+  notes:
+  - Return a Fortran pointer to C memory.
+  intent: out
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
+  mixin_names:
+  - '  f_mixin_dummy_arg'
+  - '  f_mixin_character-deferred-length'
+  - '  c_mixin_dummy_arg'
+  - '  c_mixin_character-deferred-length'
+  - '  c_mixin_arg_cfi'
+  - '  c_mixin_local-cvar-ptr'
+  - '  c_mixin_arg-call-cvar-address'
+  - '  c_mixin_character_cfi_pointer'
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_pre_call:
+  - '{c_const}{c_type} *{c_var};'
+  c_arg_call:
+  - '&{cxx_var}'
+  c_post_call:
+  - int {c_local_err};
+  - if ({cxx_var} == {nullptr}) {{+
+  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});"
+  - -}} else {{+
+  - CFI_CDESC_T(0) {c_local_fptr};
+  - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
+  - void *{c_local_cptr} = {cxx_nonconst_ptr};
+  - size_t {c_local_len} = {stdlib}strlen({cxx_var});
+  - "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t\
+    \ CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});"
+  - if ({c_local_err} == CFI_SUCCESS) {{+
+  - '{c_var_cfi}->elem_len = {c_local_cdesc}->elem_len;'
+  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {nullptr});"
+  - -}}
+  - -}}
+  c_temps:
+  - cfi
+  c_local:
+  - cptr
+  - fptr
+  - cdesc
+  - len
+  - err
+  iface_header:
+  - ISO_Fortran_binding.h
+  owner: library
 f_out_char*_buf:
   name: f_out_char*_buf
   comments:
@@ -16742,7 +16948,7 @@ f_out_native**_cfi_allocatable:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Native argument which use CFI_desc_t.
-  - Declare a local pointer variable in the C wrapper.
+  - Declare a local_cxx pointer variable in the C wrapper.
   - Pass address of local cxx variable to library.
   - Allocate copy of C pointer (requires +dimension).
   intent: out
@@ -16757,7 +16963,7 @@ f_out_native**_cfi_allocatable:
   - '  f_mixin_declare-fortran-arg'
   - '  c_mixin_arg_native_cfi'
   - '    c_mixin_arg_cfi'
-  - '  c_mixin_local-cvar-ptr'
+  - '  c_mixin_local-cxx-ptr'
   - '  c_mixin_arg-call-cxx-address'
   - '  c_mixin_native_cfi_allocatable'
   i_arg_names:
@@ -16795,7 +17001,7 @@ f_out_native**_cfi_pointer:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Native argument which use CFI_desc_t.
-  - Declare a local pointer variable in the C wrapper.
+  - Declare a local_cxx pointer variable in the C wrapper.
   - Pass address of local cxx variable to library.
   - Convert C pointer to Fortran pointer.
   notes:
@@ -16812,7 +17018,7 @@ f_out_native**_cfi_pointer:
   - '  f_mixin_declare-fortran-arg'
   - '  c_mixin_arg_native_cfi'
   - '    c_mixin_arg_cfi'
-  - '  c_mixin_local-cvar-ptr'
+  - '  c_mixin_local-cxx-ptr'
   - '  c_mixin_arg-call-cxx-address'
   - '  c_mixin_native_cfi_pointer'
   i_arg_names:
@@ -19319,6 +19525,9 @@ root
       char-free -- c_mixin_char-free
       char-malloc -- c_mixin_char-malloc
       character -- c_mixin_character
+        cfi
+          pointer -- c_mixin_character_cfi_pointer
+      character-deferred-length -- c_mixin_character-deferred-length
       cvar-capsule-fill -- c_mixin_cvar-capsule-fill
       declare-arg -- c_mixin_declare-arg
       declare-arg-char -- c_mixin_declare-arg-char
@@ -19328,6 +19537,8 @@ root
         new-shadow-shared -- c_mixin_destructor_new-shadow-shared
         new-string -- c_mixin_destructor_new-string
         new-vector -- c_mixin_destructor_new-vector
+      dummy
+        arg -- c_mixin_dummy_arg
       function
         shadow
           capptr -- c_mixin_function_shadow_capptr
@@ -19351,6 +19562,7 @@ root
         vector<native>
           cdesc -- c_mixin_inout_vector<native>_cdesc
       local-cvar-ptr -- c_mixin_local-cvar-ptr
+      local-cxx-ptr -- c_mixin_local-cxx-ptr
       local-string -- c_mixin_local-string
       local-string-init -- c_mixin_local-string-init
       local-string-init-trim -- c_mixin_local-string-init-trim
@@ -19388,6 +19600,7 @@ root
         *
           buf -- c_out_char_*_buf
       char* -- c_out_char*
+      char** -- c_out_char**
       enum* -- c_out_enum*
       native& -- c_out_native&
         hidden -- c_out_native&_hidden
@@ -19706,11 +19919,14 @@ root
         cdesc
           allocate -- f_mixin_char_cdesc_allocate
           pointer -- f_mixin_char_cdesc_pointer
+      character-deferred-length -- f_mixin_character-deferred-length
       declare-arg-char -- f_mixin_declare-arg-char
       declare-as-cptr -- f_mixin_declare-as-cptr
       declare-fortran-arg -- f_mixin_declare-fortran-arg
       declare-fortran-result -- f_mixin_declare-fortran-result
       declare-interface-arg -- f_mixin_declare-interface-arg
+      dummy
+        arg -- f_mixin_dummy_arg
       function -- f_mixin_function
         c-ptr -- f_mixin_function_c-ptr
         char -- f_mixin_function_char
@@ -19798,6 +20014,11 @@ root
         buf -- f_out_char*_buf
         capi -- f_out_char*_capi
         cfi -- f_out_char*_cfi
+      char**
+        cdesc
+          pointer -- f_out_char**_cdesc_pointer
+        cfi
+          pointer -- f_out_char**_cfi_pointer
       enum* -- f_out_enum*
       native& -- f_out_native&
         hidden -- f_out_native&_hidden
@@ -21998,6 +22219,23 @@ py_out_bool*:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+py_out_char**:
+  name: py_out_char**
+  intent: out
+  arg_declare:
+  - '{c_const}char *{cxx_var} = {nullptr};'
+  arg_call:
+  - '&{cxx_var}'
+  object_created: true
+  declare:
+  - PyObject *{py_var} = {nullptr};
+  post_call:
+  - if ({cxx_var} == NULL) {{+
+  - '{py_var} = Py_None;'
+  - Py_INCREF(Py_None);
+  - -}} else {{+
+  - '{py_var} = PyString_FromString({cxx_var});'
+  - -}}
 py_out_char*_charlen:
   name: py_out_char*_charlen
   intent: out
@@ -22630,6 +22868,7 @@ root
       bool* -- py_out_bool*
       char*
         charlen -- py_out_char*_charlen
+      char** -- py_out_char**
       enum* -- py_out_enum*
       native& -- py_out_native&
       native* -- py_out_native*

@@ -206,6 +206,17 @@ declarations:
     description: |
       Return strlen of the first index as a check.
 
+- decl: void fetchCharPtrLibrary(char **outstr+intent(out))
+  doxygen:
+    description: |
+      Fetch a pointer to a char array owned by the library.
+
+- decl: int fetchCharPtrLibraryNULL(char **outstr+intent(out))
+  doxygen:
+    description: |
+      Fetch a NULL pointer to a char array owned by the library.
+      Return a value to test Python returning a tuple.
+
 ########################################
 patterns:
     C_invalid_name: |

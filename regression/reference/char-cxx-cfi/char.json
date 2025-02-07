@@ -4664,6 +4664,510 @@
                     ],
                     "function_name": "acceptCharArrayIn"
                 }
+            },
+            {
+                "<FUNCTION>": "fetchCharPtrLibrary  22 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "fetchCharPtrLibrary",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "outstr",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        },
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void fetchCharPtrLibrary(char **outstr+intent(out))",
+                "declgen": "void fetchCharPtrLibrary(char **outstr +intent(out))",
+                "doxygen": {
+                    "description": "Fetch a pointer to a char array owned by the library.\n"
+                },
+                "name": "fetchCharPtrLibrary",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "fetchCharPtrLibrary(\toutstr)",
+                                "C_call_list": "outstr",
+                                "C_name": "CHA_fetchCharPtrLibrary",
+                                "C_prototype": "char **outstr",
+                                "C_return_type": "void",
+                                "i_arguments": "outstr",
+                                "i_name_function": "c_fetch_char_ptr_library",
+                                "i_subprogram": "subroutine",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "outstr": {
+                            "fmtdict": {
+                                "c_abstract_decl": "char **",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "char",
+                                "c_var": "outstr",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "char **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "outstr",
+                                "cxx_type": "char",
+                                "cxx_var": "outstr",
+                                "f_assumed_shape": "(:)",
+                                "f_dimension": "(:)",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_type": "character(len=*)",
+                                "f_var": "outstr",
+                                "i_dimension": "(*)",
+                                "i_intent": "OUT",
+                                "i_intent_attr": ", intent(OUT)",
+                                "i_kind": "C_CHAR",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "character(kind=C_CHAR)",
+                                "i_var": "outstr",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_CHAR",
+                                "size": "size(outstr)",
+                                "stmt_name": "c_out_char**",
+                                "typemap_name": "char"
+                            },
+                            "meta": {
+                                "abstract": "char**",
+                                "intent": "out",
+                                "rank": 1
+                            },
+                            "stmt": "c_out_char**"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "fetchCharPtrLibrary(\t&outstr)",
+                                "C_call_list": "&outstr",
+                                "C_name": "CHA_fetchCharPtrLibrary_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_outstr_cfi",
+                                "C_return_type": "void",
+                                "F_arg_c_call": "outstr",
+                                "F_arguments": "outstr",
+                                "F_subprogram": "subroutine",
+                                "f_call_function": "c_fetch_char_ptr_library_CFI",
+                                "i_arguments": "outstr",
+                                "i_name_function": "fetch_char_ptr_library",
+                                "i_subprogram": "subroutine",
+                                "i_suffix": "_CFI",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "outstr": {
+                            "fmtdict": {
+                                "c_abstract_decl": "char **",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_local_cdesc": "SHC_outstr_cdesc",
+                                "c_local_cptr": "SHC_outstr_cptr",
+                                "c_local_err": "SHC_outstr_err",
+                                "c_local_fptr": "SHC_outstr_fptr",
+                                "c_local_len": "SHC_outstr_len",
+                                "c_member": "->",
+                                "c_type": "char",
+                                "c_var": "outstr",
+                                "c_var_cfi": "SHT_outstr_cfi",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "char **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "outstr",
+                                "cxx_type": "char",
+                                "cxx_var": "outstr",
+                                "f_assumed_shape": "(:)",
+                                "f_deref_attr": ", pointer",
+                                "f_dimension": "(:)",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_type": "character(len=*)",
+                                "f_var": "outstr",
+                                "fc_var": "outstr",
+                                "i_dimension": "(*)",
+                                "i_intent": "OUT",
+                                "i_intent_attr": ", intent(OUT)",
+                                "i_kind": "C_CHAR",
+                                "i_local_cdesc": "SHC_outstr_cdesc",
+                                "i_local_cptr": "SHC_outstr_cptr",
+                                "i_local_err": "SHC_outstr_err",
+                                "i_local_fptr": "SHC_outstr_fptr",
+                                "i_local_len": "SHC_outstr_len",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "character(kind=C_CHAR)",
+                                "i_var": "outstr",
+                                "i_var_cfi": "SHT_outstr_cfi",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_CHAR",
+                                "size": "size(outstr)",
+                                "stmt_name": "f_out_char**_cfi_pointer",
+                                "typemap_name": "char"
+                            },
+                            "meta": {
+                                "abstract": "char**",
+                                "api": "cfi",
+                                "deref": "pointer",
+                                "intent": "out",
+                                "rank": 1
+                            },
+                            "stmt": "f_out_char**_cfi_pointer"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            }
+                        },
+                        "outstr": {
+                            "meta": {
+                                "abstract": "char**",
+                                "intent": "out",
+                                "rank": 1
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "fetchCharPtrLibrary",
+                    "F_name_api": "fetch_char_ptr_library",
+                    "F_name_function": "fetch_char_ptr_library",
+                    "F_name_generic": "fetch_char_ptr_library",
+                    "F_name_impl": "fetch_char_ptr_library",
+                    "c_arglist": [
+                        "c_var",
+                        "outstr"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "outstr"
+                    ],
+                    "function_name": "fetchCharPtrLibrary"
+                }
+            },
+            {
+                "<FUNCTION>": "fetchCharPtrLibraryNULL  23 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "fetchCharPtrLibraryNULL",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "intent": "out"
+                                    },
+                                    "name": "outstr",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        },
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
+                            }
+                        ],
+                        "typemap_name": "int"
+                    },
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int fetchCharPtrLibraryNULL(char **outstr+intent(out))",
+                "declgen": "int fetchCharPtrLibraryNULL(char **outstr +intent(out))",
+                "doxygen": {
+                    "description": "Fetch a NULL pointer to a char array owned by the library.\nReturn a value to test Python returning a tuple.\n"
+                },
+                "name": "fetchCharPtrLibraryNULL",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "fetchCharPtrLibraryNULL(\toutstr)",
+                                "C_call_list": "outstr",
+                                "C_name": "CHA_fetchCharPtrLibraryNULL",
+                                "C_prototype": "char **outstr",
+                                "C_return_type": "int",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_rv_decl": "int SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "f_kind": "C_INT",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "SHT_rv",
+                                "i_arguments": "outstr",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
+                                "i_name_function": "c_fetch_char_ptr_library_null",
+                                "i_result_clause": "\fresult(SHT_rv)",
+                                "i_subprogram": "function",
+                                "i_type": "integer(C_INT)",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_function_native",
+                                "typemap_name": "int"
+                            },
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "function"
+                            },
+                            "stmt": "c_function_native"
+                        },
+                        "outstr": {
+                            "fmtdict": {
+                                "c_abstract_decl": "char **",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "char",
+                                "c_var": "outstr",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "char **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "outstr",
+                                "cxx_type": "char",
+                                "cxx_var": "outstr",
+                                "f_assumed_shape": "(:)",
+                                "f_dimension": "(:)",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_type": "character(len=*)",
+                                "f_var": "outstr",
+                                "i_dimension": "(*)",
+                                "i_intent": "OUT",
+                                "i_intent_attr": ", intent(OUT)",
+                                "i_kind": "C_CHAR",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "character(kind=C_CHAR)",
+                                "i_var": "outstr",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_CHAR",
+                                "size": "size(outstr)",
+                                "stmt_name": "c_out_char**",
+                                "typemap_name": "char"
+                            },
+                            "meta": {
+                                "abstract": "char**",
+                                "intent": "out",
+                                "rank": 1
+                            },
+                            "stmt": "c_out_char**"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "fetchCharPtrLibraryNULL(\t&outstr)",
+                                "C_call_list": "&outstr",
+                                "C_name": "CHA_fetchCharPtrLibraryNULL_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_outstr_cfi",
+                                "C_return_type": "int",
+                                "F_arg_c_call": "outstr",
+                                "F_arguments": "outstr",
+                                "F_subprogram": "function",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_rv_decl": "int SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "f_call_function": "c_fetch_char_ptr_library_null_CFI",
+                                "f_kind": "C_INT",
+                                "f_module_name": "iso_c_binding",
+                                "f_result_clause": "\fresult(SHT_rv)",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_arguments": "outstr",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
+                                "i_name_function": "fetch_char_ptr_library_null",
+                                "i_result_clause": "\fresult(SHT_rv)",
+                                "i_subprogram": "function",
+                                "i_suffix": "_CFI",
+                                "i_type": "integer(C_INT)",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_function_native",
+                                "typemap_name": "int"
+                            },
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_native"
+                        },
+                        "outstr": {
+                            "fmtdict": {
+                                "c_abstract_decl": "char **",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_local_cdesc": "SHC_outstr_cdesc",
+                                "c_local_cptr": "SHC_outstr_cptr",
+                                "c_local_err": "SHC_outstr_err",
+                                "c_local_fptr": "SHC_outstr_fptr",
+                                "c_local_len": "SHC_outstr_len",
+                                "c_member": "->",
+                                "c_type": "char",
+                                "c_var": "outstr",
+                                "c_var_cfi": "SHT_outstr_cfi",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "char **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "outstr",
+                                "cxx_type": "char",
+                                "cxx_var": "outstr",
+                                "f_assumed_shape": "(:)",
+                                "f_deref_attr": ", pointer",
+                                "f_dimension": "(:)",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_type": "character(len=*)",
+                                "f_var": "outstr",
+                                "fc_var": "outstr",
+                                "i_dimension": "(*)",
+                                "i_intent": "OUT",
+                                "i_intent_attr": ", intent(OUT)",
+                                "i_kind": "C_CHAR",
+                                "i_local_cdesc": "SHC_outstr_cdesc",
+                                "i_local_cptr": "SHC_outstr_cptr",
+                                "i_local_err": "SHC_outstr_err",
+                                "i_local_fptr": "SHC_outstr_fptr",
+                                "i_local_len": "SHC_outstr_len",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "character(kind=C_CHAR)",
+                                "i_var": "outstr",
+                                "i_var_cfi": "SHT_outstr_cfi",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_CHAR",
+                                "size": "size(outstr)",
+                                "stmt_name": "f_out_char**_cfi_pointer",
+                                "typemap_name": "char"
+                            },
+                            "meta": {
+                                "abstract": "char**",
+                                "api": "cfi",
+                                "deref": "pointer",
+                                "intent": "out",
+                                "rank": 1
+                            },
+                            "stmt": "f_out_char**_cfi_pointer"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "function"
+                            }
+                        },
+                        "outstr": {
+                            "meta": {
+                                "abstract": "char**",
+                                "intent": "out",
+                                "rank": 1
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "fetchCharPtrLibraryNULL",
+                    "F_name_api": "fetch_char_ptr_library_null",
+                    "F_name_function": "fetch_char_ptr_library_null",
+                    "F_name_generic": "fetch_char_ptr_library_null",
+                    "F_name_impl": "fetch_char_ptr_library_null",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "outstr"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "outstr"
+                    ],
+                    "function_name": "fetchCharPtrLibraryNULL"
+                }
             }
         ],
         "language": "cxx",

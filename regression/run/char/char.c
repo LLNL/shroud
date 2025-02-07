@@ -17,12 +17,15 @@ static char global_char = ' ';
 
 // These variables exist to avoid warning errors
 static const char * static_char = "bird";
+static char static_char_array[32];
 
 //----------------------------------------
 // Initialize datastructures for test
 
 void init_test(void)
 {
+    strncpy(static_char_array, "static_char_array", sizeof(static_char_array));
+    static_char_array[31] = '\0';
 }
 
 //----------------------------------------
@@ -201,4 +204,22 @@ int acceptCharArrayIn(char **names)
     if (names == NULL)
         return 0;
     return strlen(names[0]);
+}
+
+//----------------------------------------------------------------------
+// Fetch a pointer to a char array owned by the library.
+
+void fetchCharPtrLibrary(char **outstr)
+{
+    *outstr = static_char_array;
+}
+
+//----------------------------------------------------------------------
+// Fetch a NULL pointer to a char array owned by the library.
+// Return a value to test Python returning a tuple.
+
+int fetchCharPtrLibraryNULL(char **outstr)
+{
+    *outstr = NULL;
+    return 0;
 }

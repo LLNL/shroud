@@ -76,6 +76,24 @@
         "sphinx-end-before": "f_mixin_declare-interface-arg"
     },
     {
+        "name": "f_mixin_dummy_arg",
+        "notes": [
+            "Pass the library argument to the Fortran wrapper."
+        ],
+        "f_arg_name": [
+            "{f_var}"
+        ]
+    },
+    {
+        "name": "c_mixin_dummy_arg",
+        "notes": [
+            "Pass the library argument to the interface."
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ]
+    },
+    {
         "sphinx-start-after": "f_mixin_declare-fortran-arg",
         "name": "f_mixin_declare-fortran-arg",
         "notes": [
@@ -98,6 +116,15 @@
         "name": "c_mixin_local-cvar-ptr",
         "comments": [
             "Declare a local pointer variable in the C wrapper."
+        ],
+        "c_pre_call": [
+            "{c_const}{c_type} *{c_var};"
+        ]
+    },
+    {
+        "name": "c_mixin_local-cxx-ptr",
+        "comments": [
+            "Declare a local_cxx pointer variable in the C wrapper."
         ],
         "c_local": [
             "cxx"
@@ -730,6 +757,10 @@
         "name": "f_mixin_pass_cdesc",
         "comments": [
             "Pass cdesc as argument to C wrapper."
+        ],
+        "notes": [
+            "Declare the cdesc variable locally in the Fortran wrapper",
+            "then pass to the C wrapper."
         ],
         "f_helper": [
             "array_context"
@@ -1901,6 +1932,18 @@
         "name":"##### char mixin ###########################################"
     },
     {
+        "name": "f_mixin_character-deferred-length",
+        "f_arg_decl": [
+            "character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}"
+        ]
+    },
+    {
+        "name": "c_mixin_character-deferred-length",
+        "i_arg_decl": [
+            "character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}"
+        ]
+    },
+    {
         "name": "f_mixin_declare-arg-char",
         "comments": [
             "Fortran wrapper character argument."
@@ -2424,6 +2467,34 @@
             "f_mixin_in_string_array_buf",
             "c_mixin_char-array-alloc",
             "c_mixin_arg-call-cxx"
+        ]
+    },
+    {
+        "name": "c_out_char**",
+        "usage": [
+            "char **arg +intent(out)"
+        ],
+        "mixin": [
+            "f_mixin_interface-as-cptr",
+            "c_mixin_declare-arg",
+            "c_mixin_arg-call-cvar"
+        ]
+    },
+    {
+        "name": "f_out_char**_cdesc_pointer",
+        "usage": [
+            "char **arg +intent(out)"
+        ],
+        "notes": [
+            "Return a Fortran pointer to C memory."
+        ],
+        "mixin": [
+            "f_mixin_dummy_arg",
+            "f_mixin_char_cdesc_pointer",
+            "f_mixin_pass_cdesc",
+            "c_mixin_cdesc-char-fill-cvar",
+            "c_mixin_local-cvar-ptr",
+            "c_mixin_arg-call-cvar-address"
         ]
     },
     {
@@ -4437,6 +4508,9 @@
     },
     {
         "name": "c_mixin_cfi-unpack-base-addr",
+        "notes": [
+            "Unpack the base_addr from the CFI_desc_t variable."
+        ],
         "c_pre_call": [
             "{c_type} *{c_var} = {cast_static}{c_type} *{cast1}{c_var_cfi}->base_addr{cast2};"
         ]
@@ -4452,6 +4526,9 @@
     },
     {
         "name": "c_mixin_cfi-unpack-len",
+        "notes": [
+            "Unpack the elem_len from the CFI_desc_t variable."
+        ],
         "c_temps": [
             "len"
         ],
@@ -4462,6 +4539,8 @@
     {
         "name": "c_mixin_cfi-unpack-len-size",
         "notes": [
+            "Unpack the base_addr from the CFI_desc_t variable",
+            "and the first dimension as the size.",
             "Used with 1d arrays of characters:  CHARACTER(len) var(nvar)."
         ],
         "c_temps": [
@@ -4595,6 +4674,35 @@
         ]
     },
     {
+        "name": "c_mixin_character_cfi_pointer",
+        "comments": [
+            "Convert C pointer to deferred-length CHARACTER Fortran scalar pointer."
+        ],
+        "c_post_call": [
+            "int {c_local_err};",
+            "if ({cxx_var} == {nullptr}) {{+",
+            "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});",
+            "-}} else {{+",
+            "CFI_CDESC_T(0) {c_local_fptr};",
+            "CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};",
+            "void *{c_local_cptr} = {cxx_nonconst_ptr};",
+            "size_t {c_local_len} = {stdlib}strlen({cxx_var});",
+            "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});",
+            "if ({c_local_err} == CFI_SUCCESS) {{+",
+            "{c_var_cfi}->elem_len = {c_local_cdesc}->elem_len;",
+            "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {nullptr});",
+            "-}}",
+            "-}}"
+        ],
+        "c_local": [
+            "cptr",
+            "fptr",
+            "cdesc",
+            "len",
+            "err"
+        ]
+    },
+    {
         "name": "f_mixin_function_string_cfi_allocatable",
         "notes": [
             "similar to f_char_scalar_allocatable."
@@ -4652,7 +4760,8 @@
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
-            "c_mixin_arg_cfi"
+            "c_mixin_arg_cfi",
+            "c_mixin_character_cfi_pointer"
         ],
         "f_need_wrapper": true,
         "f_arg_decl": [
@@ -4666,30 +4775,6 @@
         ],
         "i_arg_decl": [
             "character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}"
-        ],
-        "c_pre_call": [],
-        "c_post_call": [
-            "int {c_local_err};",
-            "if ({cxx_var} == {nullptr}) {{+",
-            "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});",
-            "-}} else {{+",
-            "CFI_CDESC_T(0) {c_local_fptr};",
-            "CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};",
-            "void *{c_local_cptr} = {cxx_nonconst_ptr};",
-            "size_t {c_local_len} = {stdlib}strlen({cxx_var});",
-            "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});",
-            "if ({c_local_err} == CFI_SUCCESS) {{+",
-            "{c_var_cfi}->elem_len = {c_local_cdesc}->elem_len;",
-            "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {nullptr});",
-            "-}}",
-            "-}}"
-        ],
-        "c_local": [
-            "cptr",
-            "fptr",
-            "cdesc",
-            "len",
-            "err"
         ]
     },
     {
@@ -4789,6 +4874,22 @@
             "c_mixin_cfi-unpack-len-size",
             "c_mixin_char-array-alloc",
             "c_mixin_arg-call-cxx"
+        ]
+    },
+    {
+        "name": "f_out_char**_cfi_pointer",
+        "notes": [
+            "Return a Fortran pointer to C memory."
+        ],
+        "mixin": [
+            "f_mixin_dummy_arg",
+            "f_mixin_character-deferred-length",
+            "c_mixin_dummy_arg",
+            "c_mixin_character-deferred-length",
+            "c_mixin_arg_cfi",
+            "c_mixin_local-cvar-ptr",
+            "c_mixin_arg-call-cvar-address",
+            "c_mixin_character_cfi_pointer"
         ]
     },
     {
@@ -5080,7 +5181,7 @@
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "c_mixin_arg_native_cfi",
-            "c_mixin_local-cvar-ptr",
+            "c_mixin_local-cxx-ptr",
             "c_mixin_arg-call-cxx-address",
             "c_mixin_native_cfi_allocatable"
         ],
@@ -5096,7 +5197,7 @@
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "c_mixin_arg_native_cfi",
-            "c_mixin_local-cvar-ptr",
+            "c_mixin_local-cxx-ptr",
             "c_mixin_arg-call-cxx-address",
             "c_mixin_native_cfi_pointer"
         ],
@@ -5994,7 +6095,7 @@
         "f_fmtname": "{fnamefunc}",
         "f_source": [
             "",
-            "! helper {hname}",
+            "{f_lstart}! helper {hname}",
             "! Assign context to an assumed-length character pointer",
             "subroutine {fnamefunc}(context, var)+",
             "use iso_c_binding, only : c_f_pointer, C_PTR",
@@ -6004,7 +6105,7 @@
             "character(len=context%elem_len), pointer :: fptr",
             "call c_f_pointer(context%base_addr, fptr)",
             "var => fptr",
-            "-end subroutine {fnamefunc}"
+            "-end subroutine {fnamefunc}{f_lend}"
         ]
     },
     {

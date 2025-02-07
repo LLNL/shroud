@@ -51,6 +51,16 @@ class Strings(unittest.TestCase):
         n = char.acceptCharArrayIn(["dog", "cat", "monkey"])
         self.assertEqual(len("dog"), n)
 
+    def test_fetchCharPtrLibrary(self):
+        outstr = char.fetchCharPtrLibrary()
+        self.assertEqual("static_char_array", outstr)
+
+    def test_fetchCharPtrLibraryNULL(self):
+        # Test when outstr is NULL
+        irv, outstr = char.fetchCharPtrLibraryNULL()
+        self.assertEqual(0, irv)
+        self.assertIs(None, outstr)
+
 # creating a new test suite
 newSuite = unittest.TestSuite()
  

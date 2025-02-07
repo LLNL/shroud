@@ -1051,12 +1051,13 @@ rv = .false.
         
         if stmts.i_arg_decl is not None:
             # Use explicit declaration from CStmt, both must exist.
-            for name in stmts.i_arg_names:
-                append_format(arg_c_names, name, fmt)
             for arg in stmts.i_arg_decl:
                 append_format(arg_c_decl, arg, fmt)
             if not meta["assumedtype"]:
                 self.add_i_module_from_stmts(stmts, modules, imports, fmt)
+        if stmts.i_arg_names is not None:
+            for name in stmts.i_arg_names:
+                append_format(arg_c_names, name, fmt)
 
     def wrap_function_interface(self, wlang, cls, node, fileinfo):
         """Write Fortran interface for C function.
