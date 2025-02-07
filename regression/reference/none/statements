@@ -84,7 +84,7 @@ c_ctor_shadow_capsule:
   - Pass function result as a capsule argument from Fortran to C.
   mixin_names:
   - '  f_mixin_as-intent-out'
-  - '  f_mixin_function_shadow_capsule'
+  - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
   - '  c_mixin_as-intent-out'
   intent: ctor
@@ -129,9 +129,10 @@ c_function_bool:
   name: c_function_bool
   comments:
   - Call a function.
+  - Declare a Fortran variable.
   mixin_names:
   - '  f_mixin_function'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  c_mixin_declare-fortran-result'
   intent: function
   i_result_decl:
@@ -306,6 +307,7 @@ c_function_char*_buf_copy:
   name: c_function_char*_buf_copy
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
@@ -317,7 +319,7 @@ c_function_char*_buf_copy:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -366,9 +368,10 @@ c_function_native:
   name: c_function_native
   comments:
   - Call a function.
+  - Declare a Fortran variable.
   mixin_names:
   - '  f_mixin_function'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  c_mixin_declare-fortran-result'
   intent: function
   i_result_decl:
@@ -452,7 +455,7 @@ c_function_shadow&_capptr:
   - '  c_mixin_shadow'
   - '  c_mixin_as-intent-out'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_cvar-capsule-fill'
+  - '  c_mixin_capsule_fill_cvar'
   - '  c_mixin_function-return-cvar'
   intent: function
   i_arg_names:
@@ -497,7 +500,7 @@ c_function_shadow&_capptr_caller:
   - '  c_mixin_shadow'
   - '  c_mixin_as-intent-out'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_cvar-capsule-fill'
+  - '  c_mixin_capsule_fill_cvar'
   - '  c_mixin_function-return-cvar'
   intent: function
   i_arg_names:
@@ -542,7 +545,7 @@ c_function_shadow&_capptr_library:
   - '  c_mixin_shadow'
   - '  c_mixin_as-intent-out'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_cvar-capsule-fill'
+  - '  c_mixin_capsule_fill_cvar'
   - '  c_mixin_function-return-cvar'
   intent: function
   i_arg_names:
@@ -585,10 +588,10 @@ c_function_shadow&_capsule:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_shadow_capsule'
+  - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_cvar-capsule-fill'
+  - '  c_mixin_capsule_fill_cvar'
   intent: function
   i_arg_names:
   - '{i_var}'
@@ -623,10 +626,10 @@ c_function_shadow&_capsule_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_shadow_capsule'
+  - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_cvar-capsule-fill'
+  - '  c_mixin_capsule_fill_cvar'
   intent: function
   i_arg_names:
   - '{i_var}'
@@ -661,10 +664,10 @@ c_function_shadow&_capsule_library:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_shadow_capsule'
+  - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_cvar-capsule-fill'
+  - '  c_mixin_capsule_fill_cvar'
   intent: function
   i_arg_names:
   - '{i_var}'
@@ -701,7 +704,7 @@ c_function_shadow*_capptr:
   - '  c_mixin_shadow'
   - '  c_mixin_as-intent-out'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_cvar-capsule-fill'
+  - '  c_mixin_capsule_fill_cvar'
   - '  c_mixin_function-return-cvar'
   intent: function
   i_arg_names:
@@ -746,7 +749,7 @@ c_function_shadow*_capptr_caller:
   - '  c_mixin_shadow'
   - '  c_mixin_as-intent-out'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_cvar-capsule-fill'
+  - '  c_mixin_capsule_fill_cvar'
   - '  c_mixin_function-return-cvar'
   intent: function
   i_arg_names:
@@ -791,7 +794,7 @@ c_function_shadow*_capptr_library:
   - '  c_mixin_shadow'
   - '  c_mixin_as-intent-out'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_cvar-capsule-fill'
+  - '  c_mixin_capsule_fill_cvar'
   - '  c_mixin_function-return-cvar'
   intent: function
   i_arg_names:
@@ -836,7 +839,7 @@ c_function_shadow*_capptr_shared:
   - '  c_mixin_shadow'
   - '  c_mixin_as-intent-out'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_cvar-capsule-fill'
+  - '  c_mixin_capsule_fill_cvar'
   - '  c_mixin_function-return-cvar'
   intent: function
   i_arg_names:
@@ -879,10 +882,10 @@ c_function_shadow*_capsule:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_shadow_capsule'
+  - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_cvar-capsule-fill'
+  - '  c_mixin_capsule_fill_cvar'
   intent: function
   i_arg_names:
   - '{i_var}'
@@ -940,7 +943,7 @@ c_function_shadow<native>_capptr:
   - '  c_mixin_shadow'
   - '  c_mixin_as-intent-out'
   - '  c_mixin_function-assign-to-new'
-  - '  c_mixin_cvar-capsule-fill'
+  - '  c_mixin_capsule_fill_cvar'
   - '  c_mixin_function-return-cvar'
   intent: function
   i_arg_names:
@@ -991,7 +994,7 @@ c_function_shadow_capptr:
   - '  c_mixin_shadow'
   - '  c_mixin_as-intent-out'
   - '  c_mixin_function-assign-to-new'
-  - '  c_mixin_cvar-capsule-fill'
+  - '  c_mixin_capsule_fill_cvar'
   - '  c_mixin_function-return-cvar'
   intent: function
   i_arg_names:
@@ -1037,7 +1040,7 @@ c_function_smartptr<shadow>*_capptr:
   - '  c_mixin_shadow'
   - '  c_mixin_as-intent-out'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_cvar-capsule-fill'
+  - '  c_mixin_capsule_fill_cvar'
   - '  c_mixin_function-return-cvar'
   intent: function
   i_arg_names:
@@ -1082,7 +1085,7 @@ c_function_smartptr<shadow>_capptr:
   - '  c_mixin_shadow'
   - '  c_mixin_as-intent-out'
   - '  c_mixin_function-assign-to-new'
-  - '  c_mixin_cvar-capsule-fill'
+  - '  c_mixin_capsule_fill_cvar'
   - '  c_mixin_function-return-cvar'
   intent: function
   i_arg_names:
@@ -1126,10 +1129,10 @@ c_function_string:
   - Cannot return a char array by value.
   - Return a const pointer to std::string data.
   mixin_names:
-  - '  c_mixin_pass_capsule'
+  - '  c_mixin_capsule_pass'
   - '  c_mixin_function-assign-to-new'
   - '  c_mixin_c-str'
-  - '  c_mixin_native_capsule_fill'
+  - '  c_mixin_capsule_fill_native'
   intent: function
   i_arg_names:
   - '{i_var_capsule}'
@@ -1244,6 +1247,7 @@ c_function_string&_buf_copy:
   name: c_function_string&_buf_copy
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
@@ -1251,7 +1255,7 @@ c_function_string&_buf_copy:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -1328,6 +1332,7 @@ c_function_string*_buf_copy:
   name: c_function_string*_buf_copy
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
@@ -1335,7 +1340,7 @@ c_function_string*_buf_copy:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -1491,6 +1496,7 @@ c_function_string_buf_copy:
   name: c_function_string_buf_copy
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
@@ -1498,7 +1504,7 @@ c_function_string_buf_copy:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -1543,11 +1549,12 @@ c_function_struct:
   name: c_function_struct
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-interface-arg'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   intent: function
   i_arg_names:
   - '{i_var}'
@@ -1633,10 +1640,12 @@ c_function_vector<native>_malloc:
   owner: library
 c_function_void*:
   name: c_function_void*
+  comments:
+  - Declare a Fortran variable.
   notes:
   - XXX - f entries are the same as the i entries, share?
   mixin_names:
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   intent: function
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
@@ -1646,8 +1655,10 @@ c_function_void*:
   owner: library
 c_getter_native:
   name: c_getter_native
+  comments:
+  - Declare a Fortran variable.
   mixin_names:
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  c_mixin_declare-fortran-result'
   intent: getter
   i_result_decl:
@@ -1662,8 +1673,10 @@ c_getter_native:
   owner: library
 c_getter_native*:
   name: c_getter_native*
+  comments:
+  - Declare a Fortran variable.
   mixin_names:
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  c_mixin_declare-fortran-result'
   intent: getter
   i_result_decl:
@@ -1981,7 +1994,7 @@ c_in_native*_cdesc:
   - Pass cdesc as argument to C wrapper.
   - Pass cxx variable to library.
   mixin_names:
-  - '  f_mixin_pass_cdesc'
+  - '  f_mixin_cdesc_pass'
   - '  c_mixin_arg-call-cvar'
   intent: in
   i_arg_names:
@@ -2867,7 +2880,7 @@ c_in_void*_cdesc:
   - Pass cdesc as argument to C wrapper.
   - Pass cxx variable to library.
   mixin_names:
-  - '  f_mixin_pass_cdesc'
+  - '  f_mixin_cdesc_pass'
   - '  c_mixin_arg-call-cvar'
   intent: in
   i_arg_names:
@@ -3075,7 +3088,7 @@ c_inout_native*_cdesc:
   - Pass cdesc as argument to C wrapper.
   - Pass cxx variable to library.
   mixin_names:
-  - '  f_mixin_pass_cdesc'
+  - '  f_mixin_cdesc_pass'
   - '  c_mixin_arg-call-cvar'
   intent: inout
   i_arg_names:
@@ -3670,7 +3683,7 @@ c_inout_void*_cdesc:
   - Pass cdesc as argument to C wrapper.
   - Pass cxx variable to library.
   mixin_names:
-  - '  f_mixin_pass_cdesc'
+  - '  f_mixin_cdesc_pass'
   - '  c_mixin_arg-call-cvar'
   intent: inout
   i_arg_names:
@@ -3744,59 +3757,6 @@ c_mixin_arg-call-cxx-deref:
   c_arg_call:
   - '*{c_local_cxx}'
   owner: library
-c_mixin_arg_cfi:
-  name: c_mixin_arg_cfi
-  comments:
-  - Make the C wrapper argument a CFI_desc_t.
-  intent: mixin
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_temps:
-  - cfi
-  iface_header:
-  - ISO_Fortran_binding.h
-  owner: library
-c_mixin_arg_character_cfi:
-  name: c_mixin_arg_character_cfi
-  comments:
-  - Make the C wrapper argument a CFI_desc_t.
-  - Character argument passed as CFI_desc_t.
-  mixin_names:
-  - '  c_mixin_arg_cfi'
-  intent: mixin
-  i_arg_names:
-  - '{i_var}'
-  i_arg_decl:
-  - 'character(len=*){i_intent_attr} :: {i_var}'
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_temps:
-  - cfi
-  iface_header:
-  - ISO_Fortran_binding.h
-  owner: library
-c_mixin_arg_native_cfi:
-  name: c_mixin_arg_native_cfi
-  comments:
-  - Make the C wrapper argument a CFI_desc_t.
-  - Native argument which use CFI_desc_t.
-  mixin_names:
-  - '  c_mixin_arg_cfi'
-  intent: mixin
-  i_arg_names:
-  - '{i_var}'
-  i_arg_decl:
-  - '{f_type}{i_intent_attr} :: {i_var}{f_assumed_shape}'
-  i_module:
-    iso_c_binding:
-    - '{f_kind}'
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_temps:
-  - cfi
-  iface_header:
-  - ISO_Fortran_binding.h
-  owner: library
 c_mixin_as-intent-out:
   name: c_mixin_as-intent-out
   intent: mixin
@@ -3817,6 +3777,40 @@ c_mixin_c-str:
   - if (!{c_local_cxx}->empty()) {c_var} = {c_local_cxx}->c_str();
   c_return_type: const char *
   owner: library
+c_mixin_capsule_fill_cvar:
+  name: c_mixin_capsule_fill_cvar
+  comments:
+  - Assign to capsule in C wrapper.
+  intent: mixin
+  c_post_call:
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  owner: library
+c_mixin_capsule_fill_native:
+  name: c_mixin_capsule_fill_native
+  comments:
+  - Assign to local capsule variable in C wrapper.
+  intent: mixin
+  c_post_call:
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
+  owner: library
+c_mixin_capsule_pass:
+  name: c_mixin_capsule_pass
+  comments:
+  - Pass capsule as argument to C wrapper.
+  intent: mixin
+  i_arg_names:
+  - '{i_var_capsule}'
+  i_arg_decl:
+  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  i_import:
+  - '{F_capsule_data_type}'
+  c_arg_decl:
+  - '{C_capsule_data_type} *{c_var_capsule}'
+  c_temps:
+  - capsule
+  owner: library
 c_mixin_cast-argument:
   name: c_mixin_cast-argument
   comments:
@@ -3827,8 +3821,8 @@ c_mixin_cast-argument:
   c_local:
   - cxx
   owner: library
-c_mixin_cdesc-char-fill-cvar:
-  name: c_mixin_cdesc-char-fill-cvar
+c_mixin_cdesc_char_fill_cvar:
+  name: c_mixin_cdesc_char_fill_cvar
   comments:
   - Fill cdesc from char * in the C wrapper.
   intent: mixin
@@ -3840,6 +3834,58 @@ c_mixin_cdesc-char-fill-cvar:
   - '{c_var_cdesc}->rank = 0;'
   c_helper:
   - type_defines
+  owner: library
+c_mixin_cdesc_function_string:
+  name: c_mixin_cdesc_function_string
+  comments:
+  - Fill cdesc from std::string using helper string_to_cdesc
+  - in the C wrapper.
+  intent: mixin
+  c_post_call:
+  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
+  c_helper:
+  - string_to_cdesc
+  owner: library
+c_mixin_cdesc_inout_vector:
+  name: c_mixin_cdesc_inout_vector
+  comments:
+  - Accept array_type in C wrapper.
+  intent: mixin
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_size}'
+  - '{i_var_cdesc}'
+  i_arg_decl:
+  - '{targs[0].f_type}, intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  i_module:
+    iso_c_binding:
+    - '{targs[0].f_kind}'
+    - C_SIZE_T
+  c_arg_decl:
+  - '{targs[0].cxx_type} *{c_var}'
+  - size_t {c_var_size}
+  - '{C_array_type} *{c_var_cdesc}'
+  c_temps:
+  - size
+  - cdesc
+  c_helper:
+  - array_context
+  owner: library
+c_mixin_cdesc_native_fill:
+  name: c_mixin_cdesc_native_fill
+  comments:
+  - Fill cdesc from native in the C wrapper.
+  intent: mixin
+  c_post_call:
+  - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
+  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
+  - '{c_var_cdesc}->size = {c_array_size};'
   owner: library
 c_mixin_cfi-unpack-base-addr:
   name: c_mixin_cfi-unpack-base-addr
@@ -3872,6 +3918,145 @@ c_mixin_cfi-unpack-len-size:
   c_temps:
   - len
   - size
+  owner: library
+c_mixin_cfi_arg:
+  name: c_mixin_cfi_arg
+  comments:
+  - Make the C wrapper argument a CFI_desc_t.
+  intent: mixin
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_temps:
+  - cfi
+  iface_header:
+  - ISO_Fortran_binding.h
+  owner: library
+c_mixin_cfi_arg_character:
+  name: c_mixin_cfi_arg_character
+  comments:
+  - Make the C wrapper argument a CFI_desc_t.
+  - Character argument passed as CFI_desc_t.
+  mixin_names:
+  - '  c_mixin_cfi_arg'
+  intent: mixin
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(len=*){i_intent_attr} :: {i_var}'
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_temps:
+  - cfi
+  iface_header:
+  - ISO_Fortran_binding.h
+  owner: library
+c_mixin_cfi_arg_native:
+  name: c_mixin_cfi_arg_native
+  comments:
+  - Make the C wrapper argument a CFI_desc_t.
+  - Native argument which use CFI_desc_t.
+  mixin_names:
+  - '  c_mixin_cfi_arg'
+  intent: mixin
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_temps:
+  - cfi
+  iface_header:
+  - ISO_Fortran_binding.h
+  owner: library
+c_mixin_cfi_character_pointer:
+  name: c_mixin_cfi_character_pointer
+  comments:
+  - Convert C pointer to deferred-length CHARACTER Fortran scalar pointer.
+  intent: mixin
+  c_post_call:
+  - int {c_local_err};
+  - if ({cxx_var} == {nullptr}) {{+
+  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});"
+  - -}} else {{+
+  - CFI_CDESC_T(0) {c_local_fptr};
+  - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
+  - void *{c_local_cptr} = {cxx_nonconst_ptr};
+  - size_t {c_local_len} = {stdlib}strlen({cxx_var});
+  - "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t\
+    \ CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});"
+  - if ({c_local_err} == CFI_SUCCESS) {{+
+  - '{c_var_cfi}->elem_len = {c_local_cdesc}->elem_len;'
+  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {nullptr});"
+  - -}}
+  - -}}
+  c_local:
+  - cptr
+  - fptr
+  - cdesc
+  - len
+  - err
+  owner: library
+c_mixin_cfi_copy-to-arg:
+  name: c_mixin_cfi_copy-to-arg
+  comments:
+  - Copy cxx variable into c variable.
+  intent: mixin
+  c_post_call:
+  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - if ({c_local_cxx}{cxx_member}empty()) {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {nullptr},\t 0);"
+  - -}} else {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {c_local_cxx}{cxx_member}data(),\t\
+    \ {c_local_cxx}{cxx_member}size());"
+  - -}}
+  c_helper:
+  - char_copy
+  owner: library
+c_mixin_cfi_native_allocatable:
+  name: c_mixin_cfi_native_allocatable
+  comments:
+  - Allocate copy of C pointer (requires +dimension).
+  intent: mixin
+  c_post_call:
+  - if ({c_local_cxx} != {nullptr}) {{+
+  - "{c_temp_lower_decl}{c_temp_extents_decl}int SH_ret = CFI_allocate({c_var_cfi},\
+    \ \t{c_temp_lower_use}, \t{c_temp_extents_use}, \t0);"
+  - if (SH_ret == CFI_SUCCESS) {{+
+  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{c_local_cxx}, \t{c_var_cfi}->elem_len);"
+  - -}}
+  - -}}
+  c_temps:
+  - extents
+  - lower
+  owner: library
+c_mixin_cfi_native_pointer:
+  name: c_mixin_cfi_native_pointer
+  comments:
+  - Convert C pointer to Fortran pointer.
+  intent: mixin
+  c_post_call:
+  - '{{+'
+  - CFI_CDESC_T({rank}) {c_local_fptr};
+  - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
+  - void *{c_local_cptr} = const_cast<{c_type} *>({c_local_cxx});
+  - "{c_temp_extents_decl}{c_temp_lower_decl}int {c_local_err} = CFI_establish({c_local_cdesc},\t\
+    \ {c_local_cptr},\t CFI_attribute_pointer,\t {cfi_type},\t 0,\t {rank},\t {c_temp_extents_use});"
+  - if ({c_local_err} == CFI_SUCCESS) {{+
+  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {c_temp_lower_use});"
+  - -}}
+  - -}}
+  c_temps:
+  - extents
+  - lower
+  c_local:
+  - cptr
+  - fptr
+  - cdesc
+  - err
   owner: library
 c_mixin_char-alloc:
   name: c_mixin_char-alloc
@@ -3922,22 +4107,6 @@ c_mixin_char-copy:
   intent: mixin
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
-  c_helper:
-  - char_copy
-  owner: library
-c_mixin_char-copy-to-arg-cfi:
-  name: c_mixin_char-copy-to-arg-cfi
-  comments:
-  - Copy cxx variable into c variable.
-  intent: mixin
-  c_post_call:
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
-  - if ({c_local_cxx}{cxx_member}empty()) {{+
-  - "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {nullptr},\t 0);"
-  - -}} else {{+
-  - "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {c_local_cxx}{cxx_member}data(),\t\
-    \ {c_local_cxx}{cxx_member}size());"
-  - -}}
   c_helper:
   - char_copy
   owner: library
@@ -4005,43 +4174,6 @@ c_mixin_character-deferred-length:
   intent: mixin
   i_arg_decl:
   - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
-  owner: library
-c_mixin_character_cfi_pointer:
-  name: c_mixin_character_cfi_pointer
-  comments:
-  - Convert C pointer to deferred-length CHARACTER Fortran scalar pointer.
-  intent: mixin
-  c_post_call:
-  - int {c_local_err};
-  - if ({cxx_var} == {nullptr}) {{+
-  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});"
-  - -}} else {{+
-  - CFI_CDESC_T(0) {c_local_fptr};
-  - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
-  - void *{c_local_cptr} = {cxx_nonconst_ptr};
-  - size_t {c_local_len} = {stdlib}strlen({cxx_var});
-  - "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t\
-    \ CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});"
-  - if ({c_local_err} == CFI_SUCCESS) {{+
-  - '{c_var_cfi}->elem_len = {c_local_cdesc}->elem_len;'
-  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {nullptr});"
-  - -}}
-  - -}}
-  c_local:
-  - cptr
-  - fptr
-  - cdesc
-  - len
-  - err
-  owner: library
-c_mixin_cvar-capsule-fill:
-  name: c_mixin_cvar-capsule-fill
-  comments:
-  - Assign to capsule in C wrapper.
-  intent: mixin
-  c_post_call:
-  - '{c_var}->addr  = {cxx_nonconst_ptr};'
-  - '{c_var}->idtor = {idtor};'
   owner: library
 c_mixin_declare-arg:
   name: c_mixin_declare-arg
@@ -4158,17 +4290,6 @@ c_mixin_function_shadow_capptr:
     iso_c_binding:
     - C_PTR
   owner: library
-c_mixin_function_string_cdesc:
-  name: c_mixin_function_string_cdesc
-  comments:
-  - Fill cdesc from std::string using helper string_to_cdesc
-  - in the C wrapper.
-  intent: mixin
-  c_post_call:
-  - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
-  c_helper:
-  - string_to_cdesc
-  owner: library
 c_mixin_function_vector_malloc:
   name: c_mixin_function_vector_malloc
   comments:
@@ -4254,8 +4375,8 @@ c_mixin_inout_vector<native>_cdesc:
   - Fill cdesc with vector information.
   - Return address and size of vector data.
   mixin_names:
-  - '  f_mixin_inout_array_cdesc'
-  - '  c_mixin_inout_vector_cdesc'
+  - '  f_mixin_cdesc_inout_array'
+  - '  c_mixin_cdesc_inout_vector'
   - '  c_mixin_destructor_new-vector'
   - '  c_mixin_vector_cdesc_fill-cdesc'
   intent: mixin
@@ -4300,35 +4421,6 @@ c_mixin_inout_vector<native>_cdesc:
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
-  owner: library
-c_mixin_inout_vector_cdesc:
-  name: c_mixin_inout_vector_cdesc
-  comments:
-  - Accept array_type in C wrapper.
-  intent: mixin
-  i_arg_names:
-  - '{i_var}'
-  - '{i_var_size}'
-  - '{i_var_cdesc}'
-  i_arg_decl:
-  - '{targs[0].f_type}, intent(IN) :: {i_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  i_module:
-    iso_c_binding:
-    - '{targs[0].f_kind}'
-    - C_SIZE_T
-  c_arg_decl:
-  - '{targs[0].cxx_type} *{c_var}'
-  - size_t {c_var_size}
-  - '{C_array_type} *{c_var_cdesc}'
-  c_temps:
-  - size
-  - cdesc
-  c_helper:
-  - array_context
   owner: library
 c_mixin_local-cvar-ptr:
   name: c_mixin_local-cvar-ptr
@@ -4397,69 +4489,6 @@ c_mixin_make-shared:
   impl_header:
   - <memory>
   owner: shared
-c_mixin_native_capsule_fill:
-  name: c_mixin_native_capsule_fill
-  comments:
-  - Assign to local capsule variable in C wrapper.
-  intent: mixin
-  c_post_call:
-  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
-  - '{c_var_capsule}->idtor = {idtor};'
-  owner: library
-c_mixin_native_cdesc_fill-cdesc:
-  name: c_mixin_native_cdesc_fill-cdesc
-  comments:
-  - Fill cdesc from native in the C wrapper.
-  intent: mixin
-  c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
-  owner: library
-c_mixin_native_cfi_allocatable:
-  name: c_mixin_native_cfi_allocatable
-  comments:
-  - Allocate copy of C pointer (requires +dimension).
-  intent: mixin
-  c_post_call:
-  - if ({c_local_cxx} != {nullptr}) {{+
-  - "{c_temp_lower_decl}{c_temp_extents_decl}int SH_ret = CFI_allocate({c_var_cfi},\
-    \ \t{c_temp_lower_use}, \t{c_temp_extents_use}, \t0);"
-  - if (SH_ret == CFI_SUCCESS) {{+
-  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{c_local_cxx}, \t{c_var_cfi}->elem_len);"
-  - -}}
-  - -}}
-  c_temps:
-  - extents
-  - lower
-  owner: library
-c_mixin_native_cfi_pointer:
-  name: c_mixin_native_cfi_pointer
-  comments:
-  - Convert C pointer to Fortran pointer.
-  intent: mixin
-  c_post_call:
-  - '{{+'
-  - CFI_CDESC_T({rank}) {c_local_fptr};
-  - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
-  - void *{c_local_cptr} = const_cast<{c_type} *>({c_local_cxx});
-  - "{c_temp_extents_decl}{c_temp_lower_decl}int {c_local_err} = CFI_establish({c_local_cdesc},\t\
-    \ {c_local_cptr},\t CFI_attribute_pointer,\t {cfi_type},\t 0,\t {rank},\t {c_temp_extents_use});"
-  - if ({c_local_err} == CFI_SUCCESS) {{+
-  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {c_temp_lower_use});"
-  - -}}
-  - -}}
-  c_temps:
-  - extents
-  - lower
-  c_local:
-  - cptr
-  - fptr
-  - cdesc
-  - err
-  owner: library
 c_mixin_out_native**:
   name: c_mixin_out_native**
   comments:
@@ -4526,22 +4555,6 @@ c_mixin_out_vector_buf_malloc:
   - size_t *{c_var_size}
   c_temps:
   - size
-  owner: library
-c_mixin_pass_capsule:
-  name: c_mixin_pass_capsule
-  comments:
-  - Pass capsule as argument to C wrapper.
-  intent: mixin
-  i_arg_names:
-  - '{i_var_capsule}'
-  i_arg_decl:
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
-  i_import:
-  - '{F_capsule_data_type}'
-  c_arg_decl:
-  - '{C_capsule_data_type} *{c_var_capsule}'
-  c_temps:
-  - capsule
   owner: library
 c_mixin_shadow:
   name: c_mixin_shadow
@@ -4903,7 +4916,7 @@ c_out_native*_cdesc:
   - Pass cdesc as argument to C wrapper.
   - Pass cxx variable to library.
   mixin_names:
-  - '  f_mixin_pass_cdesc'
+  - '  f_mixin_cdesc_pass'
   - '  c_mixin_arg-call-cvar'
   intent: out
   i_arg_names:
@@ -5115,7 +5128,7 @@ c_out_string**_cdesc_copy:
   - '[see also f_out_vector_&_cdesc_allocatable_targ_string_scalar]'
   mixin_names:
   - '  f_mixin_str_array'
-  - '  f_mixin_pass_cdesc'
+  - '  f_mixin_cdesc_pass'
   - '  c_mixin_arg-call-cvar-address'
   intent: out
   i_arg_names:
@@ -5329,7 +5342,7 @@ c_out_vector<native>&_cdesc:
   notes:
   - Not supported for C wrappers.
   mixin_names:
-  - '  f_mixin_pass_cdesc'
+  - '  f_mixin_cdesc_pass'
   - '  f_mixin_out_vector<native>_copy'
   - '  c_mixin_out_vector<native>_cdesc'
   - '    c_mixin_destructor_new-vector'
@@ -5466,7 +5479,7 @@ c_out_vector<native>*_cdesc:
   notes:
   - Not supported for C wrappers.
   mixin_names:
-  - '  f_mixin_pass_cdesc'
+  - '  f_mixin_cdesc_pass'
   - '  f_mixin_out_vector<native>_copy'
   - '  c_mixin_out_vector<native>_cdesc'
   - '    c_mixin_destructor_new-vector'
@@ -5630,7 +5643,7 @@ c_out_vector<string>&_cdesc:
   - This one needs to use targs.
   mixin_names:
   - '  f_mixin_str_array'
-  - '  f_mixin_pass_cdesc'
+  - '  f_mixin_cdesc_pass'
   - '  c_mixin_arg-call-cvar'
   intent: out
   i_arg_names:
@@ -5664,10 +5677,10 @@ c_out_vector<string>&_cdesc_allocatable:
   - Release memory from capsule.
   - Pass dereference of local cxx variable to library.
   mixin_names:
-  - '  f_mixin_pass_cdesc'
-  - '  f_mixin_pass_capsule'
-  - '    c_mixin_pass_capsule'
-  - '  f_mixin_out_array_cdesc_allocatable'
+  - '  f_mixin_cdesc_pass'
+  - '  f_mixin_capsule_pass'
+  - '    c_mixin_capsule_pass'
+  - '  f_mixin_cdesc_out_char_array_allocatable'
   - '  f_mixin_helper_vector_string_allocatable'
   - '  f_mixin_capsule_dtor'
   - '  c_mixin_arg-call-cxx-deref'
@@ -5695,7 +5708,7 @@ c_out_vector<string>&_cdesc_allocatable:
   - '{c_var_cdesc}->elem_len = {c_helper_vector_string_out_len}(*{c_local_cxx});'
   - -}}
   - '{c_var_cdesc}->size      = {c_local_cxx}->size();'
-  - // XXX - Use code from c_mixin_native_capsule_fill
+  - // XXX - Use code from c_mixin_capsule_fill_native
   - '{c_var_capsule}->addr  = {c_local_cxx};'
   - '{c_var_capsule}->idtor = {idtor};'
   c_temps:
@@ -5799,7 +5812,7 @@ c_out_void*_cdesc:
   - Pass cdesc as argument to C wrapper.
   - Pass cxx variable to library.
   mixin_names:
-  - '  f_mixin_pass_cdesc'
+  - '  f_mixin_cdesc_pass'
   - '  c_mixin_arg-call-cvar'
   intent: out
   i_arg_names:
@@ -5936,7 +5949,7 @@ f_ctor_shadow_capsule:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_as-intent-out'
-  - '  f_mixin_function_shadow_capsule'
+  - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
   - '  c_mixin_as-intent-out'
   i_arg_names:
@@ -5976,7 +5989,7 @@ f_ctor_shadow_capsule_shared:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_shadow_capsule'
+  - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
   - '  c_mixin_destructor_new-shadow-shared'
   - '  c_mixin_make-shared'
@@ -6025,9 +6038,10 @@ f_function_bool:
   name: f_function_bool
   comments:
   - Call a function.
+  - Declare a Fortran variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_call:
   - '{f_result_var} = {f_call_function}({F_arg_c_call})'
   f_module:
@@ -6036,7 +6050,7 @@ f_function_bool:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  c_mixin_declare-fortran-result'
   i_result_decl:
   - '{i_type} :: {i_var}'
@@ -6288,6 +6302,7 @@ f_function_char*_buf_copy:
   name: f_function_char*_buf_copy
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
@@ -6298,7 +6313,7 @@ f_function_char*_buf_copy:
   - XXX - maybe fmtdict to rename c_local_cxx as output
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -6319,7 +6334,7 @@ f_function_char*_buf_copy:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -6384,9 +6399,9 @@ f_function_char*_cdesc_allocatable:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_pass_cdesc'
-  - '  f_mixin_char_cdesc_allocate'
-  - '  c_mixin_cdesc-char-fill-cvar'
+  - '  f_mixin_cdesc_pass'
+  - '  f_mixin_cdesc_char_allocate'
+  - '  c_mixin_cdesc_char_fill_cvar'
   i_arg_names:
   - '{i_var_cdesc}'
   i_arg_decl:
@@ -6442,9 +6457,9 @@ f_function_char*_cdesc_pointer:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_pass_cdesc'
-  - '  c_mixin_cdesc-char-fill-cvar'
-  - '  f_mixin_char_cdesc_pointer'
+  - '  f_mixin_cdesc_pass'
+  - '  c_mixin_cdesc_char_fill_cvar'
+  - '  f_mixin_cdesc_char_pointer'
   i_arg_names:
   - '{i_var_cdesc}'
   i_arg_decl:
@@ -6487,7 +6502,11 @@ f_function_char*_cfi_allocatable:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  c_mixin_arg_cfi'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_cfi_arg'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -6540,9 +6559,9 @@ f_function_char*_cfi_arg:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_function-as-character-arg'
-  - '  f_mixin_pass_character_cfi'
-  - '  c_mixin_arg_character_cfi'
-  - '    c_mixin_arg_cfi'
+  - '  f_mixin_cfi_pass_character'
+  - '  c_mixin_cfi_arg_character'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_cfi-unpack-base-addr'
   - '  c_mixin_cfi-unpack-len'
   - '  c_mixin_arg-call-cxx'
@@ -6584,6 +6603,7 @@ f_function_char*_cfi_copy:
   name: f_function_char*_cfi_copy
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass argument to C wrapper
   - Make the C wrapper argument a CFI_desc_t.
   - Character argument passed as CFI_desc_t.
@@ -6594,7 +6614,7 @@ f_function_char*_cfi_copy:
   - Copy result into caller's buffer.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -6606,10 +6626,10 @@ f_function_char*_cfi_copy:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
-  - '  f_mixin_pass_character_cfi'
-  - '  c_mixin_arg_character_cfi'
-  - '    c_mixin_arg_cfi'
+  - '  f_mixin_declare-local-variable'
+  - '  f_mixin_cfi_pass_character'
+  - '  c_mixin_cfi_arg_character'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_cfi-unpack-base-addr'
   - '  c_mixin_cfi-unpack-len'
   - '  c_mixin_arg-call-cxx'
@@ -6661,8 +6681,12 @@ f_function_char*_cfi_pointer:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  c_mixin_arg_cfi'
-  - '  c_mixin_character_cfi_pointer'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_cfi_arg'
+  - '  c_mixin_cfi_character_pointer'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -6804,9 +6828,9 @@ f_function_char_cdesc_allocatable:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_pass_cdesc'
-  - '  f_mixin_char_cdesc_allocate'
-  - '  c_mixin_cdesc-char-fill-cvar'
+  - '  f_mixin_cdesc_pass'
+  - '  f_mixin_cdesc_char_allocate'
+  - '  c_mixin_cdesc_char_fill_cvar'
   i_arg_names:
   - '{i_var_cdesc}'
   i_arg_decl:
@@ -6862,9 +6886,9 @@ f_function_char_cdesc_pointer:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_pass_cdesc'
-  - '  c_mixin_cdesc-char-fill-cvar'
-  - '  f_mixin_char_cdesc_pointer'
+  - '  f_mixin_cdesc_pass'
+  - '  c_mixin_cdesc_char_fill_cvar'
+  - '  f_mixin_cdesc_char_pointer'
   i_arg_names:
   - '{i_var_cdesc}'
   i_arg_decl:
@@ -6907,7 +6931,11 @@ f_function_char_cfi_allocatable:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  c_mixin_arg_cfi'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_cfi_arg'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -6948,8 +6976,12 @@ f_function_char_cfi_pointer:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  c_mixin_arg_cfi'
-  - '  c_mixin_character_cfi_pointer'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_cfi_arg'
+  - '  c_mixin_cfi_character_pointer'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -6991,11 +7023,12 @@ f_function_enum:
   name: f_function_enum
   comments:
   - Call a function.
+  - Declare a Fortran variable.
   notes:
   - Return as the Fortran bind(C) type.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_call:
   - '{f_result_var} = {f_call_function}({F_arg_c_call})'
   f_module:
@@ -7003,7 +7036,7 @@ f_function_enum:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_function'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  c_mixin_declare-fortran-result'
   i_result_decl:
   - '{i_type} :: {i_var}'
@@ -7017,9 +7050,10 @@ f_function_native:
   name: f_function_native
   comments:
   - Call a function.
+  - Declare a Fortran variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_call:
   - '{f_result_var} = {f_call_function}({F_arg_c_call})'
   f_module:
@@ -7027,7 +7061,7 @@ f_function_native:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_function'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  c_mixin_declare-fortran-result'
   i_result_decl:
   - '{i_type} :: {i_var}'
@@ -7165,13 +7199,13 @@ f_function_native*_cdesc_allocatable:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_pass_cdesc'
-  - '  c_mixin_native_cdesc_fill-cdesc'
-  - '  f_mixin_native_cdesc_allocate'
-  - '  f_mixin_use_capsule'
-  - '    f_mixin_pass_capsule'
-  - '      c_mixin_pass_capsule'
-  - '    c_mixin_native_capsule_fill'
+  - '  f_mixin_cdesc_pass'
+  - '  c_mixin_cdesc_native_fill'
+  - '  f_mixin_cdesc_native_allocate'
+  - '  f_mixin_capsule_use'
+  - '    f_mixin_capsule_pass'
+  - '      c_mixin_capsule_pass'
+  - '    c_mixin_capsule_fill_native'
   - '    f_mixin_capsule_dtor'
   i_arg_names:
   - '{i_var_cdesc}'
@@ -7235,9 +7269,9 @@ f_function_native*_cdesc_pointer:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_pass_cdesc'
-  - '  c_mixin_native_cdesc_fill-cdesc'
-  - '  f_mixin_native_cdesc_pointer'
+  - '  f_mixin_cdesc_pass'
+  - '  c_mixin_cdesc_native_fill'
+  - '  f_mixin_cdesc_native_pointer'
   i_arg_names:
   - '{i_var_cdesc}'
   i_arg_decl:
@@ -7306,12 +7340,12 @@ f_function_native*_cdesc_pointer_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_pass_cdesc'
-  - '  f_mixin_arg_capsule'
-  - '    c_mixin_pass_capsule'
-  - '  c_mixin_native_cdesc_fill-cdesc'
-  - '  c_mixin_native_capsule_fill'
-  - '  f_mixin_native_cdesc_pointer'
+  - '  f_mixin_cdesc_pass'
+  - '  f_mixin_capsule_arg'
+  - '    c_mixin_capsule_pass'
+  - '  c_mixin_cdesc_native_fill'
+  - '  c_mixin_capsule_fill_native'
+  - '  f_mixin_cdesc_native_pointer'
   i_arg_names:
   - '{i_var_cdesc}'
   - '{i_var_capsule}'
@@ -7347,6 +7381,8 @@ f_function_native*_cfi_allocatable:
   name: f_function_native*_cfi_allocatable
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
+  - Pass Fortran variable to C wrapper.
   - Make the C wrapper argument a CFI_desc_t.
   - Native argument which use CFI_desc_t.
   - Pass cxx local variable to library.
@@ -7358,7 +7394,7 @@ f_function_native*_cfi_allocatable:
   - Return an allocated copy of data.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -7369,11 +7405,13 @@ f_function_native*_cfi_allocatable:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  c_mixin_arg_native_cfi'
-  - '    c_mixin_arg_cfi'
+  - '  f_mixin_declare-local-variable'
+  - '  f_mixin_arg-call-fvar'
+  - '  c_mixin_cfi_arg_native'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_arg-call-cxx'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_native_cfi_allocatable'
+  - '  c_mixin_cfi_native_allocatable'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -7412,6 +7450,8 @@ f_function_native*_cfi_pointer:
   name: f_function_native*_cfi_pointer
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
+  - Pass Fortran variable to C wrapper.
   - Make the C wrapper argument a CFI_desc_t.
   - Native argument which use CFI_desc_t.
   - Pass cxx local variable to library.
@@ -7423,7 +7463,7 @@ f_function_native*_cfi_pointer:
   - Return Fortran pointer to data.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_pre_call:
   - nullify({f_var})
   f_arg_call:
@@ -7436,11 +7476,13 @@ f_function_native*_cfi_pointer:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  c_mixin_arg_native_cfi'
-  - '    c_mixin_arg_cfi'
+  - '  f_mixin_declare-local-variable'
+  - '  f_mixin_arg-call-fvar'
+  - '  c_mixin_cfi_arg_native'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_arg-call-cxx'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_native_cfi_pointer'
+  - '  c_mixin_cfi_native_pointer'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -7570,11 +7612,12 @@ f_function_native*_scalar:
   name: f_function_native*_scalar
   comments:
   - Call a function.
+  - Declare a Fortran variable.
   notes:
   - Return a scalar to avoid doing the deref in Fortran.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_call:
   - '{f_result_var} = {f_call_function}({F_arg_c_call})'
   f_module:
@@ -7582,7 +7625,7 @@ f_function_native*_scalar:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_function'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  c_mixin_declare-fortran-result'
   i_result_decl:
   - '{i_type} :: {i_var}'
@@ -7614,10 +7657,10 @@ f_function_shadow&_capsule:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_shadow_capsule'
+  - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_cvar-capsule-fill'
+  - '  c_mixin_capsule_fill_cvar'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -7659,10 +7702,10 @@ f_function_shadow&_capsule_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_shadow_capsule'
+  - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_cvar-capsule-fill'
+  - '  c_mixin_capsule_fill_cvar'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -7704,10 +7747,10 @@ f_function_shadow&_capsule_library:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_shadow_capsule'
+  - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_cvar-capsule-fill'
+  - '  c_mixin_capsule_fill_cvar'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -7749,10 +7792,10 @@ f_function_shadow*_capsule:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_shadow_capsule'
+  - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_cvar-capsule-fill'
+  - '  c_mixin_capsule_fill_cvar'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -7794,10 +7837,10 @@ f_function_shadow*_capsule_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_shadow_capsule'
+  - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_cvar-capsule-fill'
+  - '  c_mixin_capsule_fill_cvar'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -7839,10 +7882,10 @@ f_function_shadow*_capsule_library:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_shadow_capsule'
+  - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_cvar-capsule-fill'
+  - '  c_mixin_capsule_fill_cvar'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -7908,10 +7951,10 @@ f_function_shadow<native>_capsule:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_shadow_capsule'
+  - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
   - '  c_mixin_function-assign-to-new'
-  - '  c_mixin_cvar-capsule-fill'
+  - '  c_mixin_capsule_fill_cvar'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -7959,10 +8002,10 @@ f_function_shadow_capsule:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_shadow_capsule'
+  - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
   - '  c_mixin_function-assign-to-new'
-  - '  c_mixin_cvar-capsule-fill'
+  - '  c_mixin_capsule_fill_cvar'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -8005,10 +8048,10 @@ f_function_smartptr<shadow>*_capsule:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_shadow_capsule'
+  - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_cvar-capsule-fill'
+  - '  c_mixin_capsule_fill_cvar'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -8050,10 +8093,10 @@ f_function_smartptr<shadow>_capsule:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_shadow_capsule'
+  - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
   - '  c_mixin_function-assign-to-new'
-  - '  c_mixin_cvar-capsule-fill'
+  - '  c_mixin_capsule_fill_cvar'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -8082,13 +8125,14 @@ f_function_string&_buf:
   name: f_function_string&_buf
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -8109,7 +8153,7 @@ f_function_string&_buf:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -8236,13 +8280,14 @@ f_function_string&_buf_caller:
   name: f_function_string&_buf_caller
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Copy cxx variable into c variable.
   - Pass cxx variable to library.
   - Delete the cxx variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -8263,7 +8308,7 @@ f_function_string&_buf_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_string-char-copy-to-arg'
@@ -8304,13 +8349,14 @@ f_function_string&_buf_copy:
   name: f_function_string&_buf_copy
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -8331,7 +8377,7 @@ f_function_string&_buf_copy:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -8375,13 +8421,14 @@ f_function_string&_buf_copy_caller:
   name: f_function_string&_buf_copy_caller
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Copy cxx variable into c variable.
   - Pass cxx variable to library.
   - Delete the cxx variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -8402,7 +8449,7 @@ f_function_string&_buf_copy_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_string-char-copy-to-arg'
@@ -8479,12 +8526,12 @@ f_function_string&_cdesc_allocatable:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_pass_cdesc'
-  - '  f_mixin_pass_capsule'
-  - '    c_mixin_pass_capsule'
-  - '  c_mixin_function_string_cdesc'
-  - '  c_mixin_native_capsule_fill'
-  - '  f_mixin_char_cdesc_allocate'
+  - '  f_mixin_cdesc_pass'
+  - '  f_mixin_capsule_pass'
+  - '    c_mixin_capsule_pass'
+  - '  c_mixin_cdesc_function_string'
+  - '  c_mixin_capsule_fill_native'
+  - '  f_mixin_cdesc_char_allocate'
   - '  f_mixin_capsule_dtor'
   i_arg_names:
   - '{i_var_cdesc}'
@@ -8554,12 +8601,12 @@ f_function_string&_cdesc_allocatable_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_pass_cdesc'
-  - '  f_mixin_pass_capsule'
-  - '    c_mixin_pass_capsule'
-  - '  c_mixin_function_string_cdesc'
-  - '  c_mixin_native_capsule_fill'
-  - '  f_mixin_char_cdesc_allocate'
+  - '  f_mixin_cdesc_pass'
+  - '  f_mixin_capsule_pass'
+  - '    c_mixin_capsule_pass'
+  - '  c_mixin_cdesc_function_string'
+  - '  c_mixin_capsule_fill_native'
+  - '  f_mixin_cdesc_char_allocate'
   - '  f_mixin_capsule_dtor'
   i_arg_names:
   - '{i_var_cdesc}'
@@ -8629,12 +8676,12 @@ f_function_string&_cdesc_allocatable_library:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_pass_cdesc'
-  - '  f_mixin_pass_capsule'
-  - '    c_mixin_pass_capsule'
-  - '  c_mixin_function_string_cdesc'
-  - '  c_mixin_native_capsule_fill'
-  - '  f_mixin_char_cdesc_allocate'
+  - '  f_mixin_cdesc_pass'
+  - '  f_mixin_capsule_pass'
+  - '    c_mixin_capsule_pass'
+  - '  c_mixin_cdesc_function_string'
+  - '  c_mixin_capsule_fill_native'
+  - '  f_mixin_cdesc_char_allocate'
   - '  f_mixin_capsule_dtor'
   i_arg_names:
   - '{i_var_cdesc}'
@@ -8695,9 +8742,9 @@ f_function_string&_cdesc_pointer:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_pass_cdesc'
-  - '  c_mixin_function_string_cdesc'
-  - '  f_mixin_char_cdesc_pointer'
+  - '  f_mixin_cdesc_pass'
+  - '  c_mixin_cdesc_function_string'
+  - '  f_mixin_cdesc_char_pointer'
   i_arg_names:
   - '{i_var_cdesc}'
   i_arg_decl:
@@ -8749,9 +8796,9 @@ f_function_string&_cdesc_pointer_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_pass_cdesc'
-  - '  c_mixin_function_string_cdesc'
-  - '  f_mixin_char_cdesc_pointer'
+  - '  f_mixin_cdesc_pass'
+  - '  c_mixin_cdesc_function_string'
+  - '  f_mixin_cdesc_char_pointer'
   i_arg_names:
   - '{i_var_cdesc}'
   i_arg_decl:
@@ -8803,9 +8850,9 @@ f_function_string&_cdesc_pointer_library:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_pass_cdesc'
-  - '  c_mixin_function_string_cdesc'
-  - '  f_mixin_char_cdesc_pointer'
+  - '  f_mixin_cdesc_pass'
+  - '  c_mixin_cdesc_function_string'
+  - '  f_mixin_cdesc_char_pointer'
   i_arg_names:
   - '{i_var_cdesc}'
   i_arg_decl:
@@ -8842,9 +8889,12 @@ f_function_string&_cfi_allocatable:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_string_cfi_allocatable'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_header_string'
-  - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -8884,9 +8934,12 @@ f_function_string&_cfi_allocatable_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_string_cfi_allocatable'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_header_string'
-  - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -8926,9 +8979,12 @@ f_function_string&_cfi_allocatable_library:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_string_cfi_allocatable'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_header_string'
-  - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -8981,12 +9037,12 @@ f_function_string&_cfi_arg:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_function-as-character-arg'
-  - '  f_mixin_pass_character_cfi'
-  - '  c_mixin_arg_character_cfi'
-  - '    c_mixin_arg_cfi'
+  - '  f_mixin_cfi_pass_character'
+  - '  c_mixin_cfi_arg_character'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_arg-call-cxx'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_char-copy-to-arg-cfi'
+  - '  c_mixin_cfi_copy-to-arg'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9025,6 +9081,7 @@ f_function_string&_cfi_copy:
   name: f_function_string&_cfi_copy
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass argument to C wrapper
   - Make the C wrapper argument a CFI_desc_t.
   - Character argument passed as CFI_desc_t.
@@ -9033,7 +9090,7 @@ f_function_string&_cfi_copy:
   - Copy cxx variable into c variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -9045,13 +9102,13 @@ f_function_string&_cfi_copy:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
-  - '  f_mixin_pass_character_cfi'
-  - '  c_mixin_arg_character_cfi'
-  - '    c_mixin_arg_cfi'
+  - '  f_mixin_declare-local-variable'
+  - '  f_mixin_cfi_pass_character'
+  - '  c_mixin_cfi_arg_character'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_arg-call-cxx'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_char-copy-to-arg-cfi'
+  - '  c_mixin_cfi_copy-to-arg'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9102,7 +9159,11 @@ f_function_string&_cfi_pointer:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  c_mixin_arg_cfi'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_cfi_arg'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9159,7 +9220,11 @@ f_function_string&_cfi_pointer_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  c_mixin_arg_cfi'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_cfi_arg'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9216,7 +9281,11 @@ f_function_string&_cfi_pointer_library:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  c_mixin_arg_cfi'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_cfi_arg'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9258,13 +9327,14 @@ f_function_string*_buf:
   name: f_function_string*_buf
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -9285,7 +9355,7 @@ f_function_string*_buf:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -9329,13 +9399,14 @@ f_function_string*_buf_caller:
   name: f_function_string*_buf_caller
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Copy cxx variable into c variable.
   - Pass cxx variable to library.
   - Delete the cxx variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -9356,7 +9427,7 @@ f_function_string*_buf_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_string-char-copy-to-arg'
@@ -9397,13 +9468,14 @@ f_function_string*_buf_copy:
   name: f_function_string*_buf_copy
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -9424,7 +9496,7 @@ f_function_string*_buf_copy:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -9468,13 +9540,14 @@ f_function_string*_buf_copy_caller:
   name: f_function_string*_buf_copy_caller
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Copy cxx variable into c variable.
   - Pass cxx variable to library.
   - Delete the cxx variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -9495,7 +9568,7 @@ f_function_string*_buf_copy_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_string-char-copy-to-arg'
@@ -9572,12 +9645,12 @@ f_function_string*_cdesc_allocatable:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_pass_cdesc'
-  - '  f_mixin_pass_capsule'
-  - '    c_mixin_pass_capsule'
-  - '  c_mixin_function_string_cdesc'
-  - '  c_mixin_native_capsule_fill'
-  - '  f_mixin_char_cdesc_allocate'
+  - '  f_mixin_cdesc_pass'
+  - '  f_mixin_capsule_pass'
+  - '    c_mixin_capsule_pass'
+  - '  c_mixin_cdesc_function_string'
+  - '  c_mixin_capsule_fill_native'
+  - '  f_mixin_cdesc_char_allocate'
   - '  f_mixin_capsule_dtor'
   i_arg_names:
   - '{i_var_cdesc}'
@@ -9647,12 +9720,12 @@ f_function_string*_cdesc_allocatable_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_pass_cdesc'
-  - '  f_mixin_pass_capsule'
-  - '    c_mixin_pass_capsule'
-  - '  c_mixin_function_string_cdesc'
-  - '  c_mixin_native_capsule_fill'
-  - '  f_mixin_char_cdesc_allocate'
+  - '  f_mixin_cdesc_pass'
+  - '  f_mixin_capsule_pass'
+  - '    c_mixin_capsule_pass'
+  - '  c_mixin_cdesc_function_string'
+  - '  c_mixin_capsule_fill_native'
+  - '  f_mixin_cdesc_char_allocate'
   - '  f_mixin_capsule_dtor'
   i_arg_names:
   - '{i_var_cdesc}'
@@ -9722,12 +9795,12 @@ f_function_string*_cdesc_allocatable_library:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_pass_cdesc'
-  - '  f_mixin_pass_capsule'
-  - '    c_mixin_pass_capsule'
-  - '  c_mixin_function_string_cdesc'
-  - '  c_mixin_native_capsule_fill'
-  - '  f_mixin_char_cdesc_allocate'
+  - '  f_mixin_cdesc_pass'
+  - '  f_mixin_capsule_pass'
+  - '    c_mixin_capsule_pass'
+  - '  c_mixin_cdesc_function_string'
+  - '  c_mixin_capsule_fill_native'
+  - '  f_mixin_cdesc_char_allocate'
   - '  f_mixin_capsule_dtor'
   i_arg_names:
   - '{i_var_cdesc}'
@@ -9788,9 +9861,9 @@ f_function_string*_cdesc_pointer:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_pass_cdesc'
-  - '  c_mixin_function_string_cdesc'
-  - '  f_mixin_char_cdesc_pointer'
+  - '  f_mixin_cdesc_pass'
+  - '  c_mixin_cdesc_function_string'
+  - '  f_mixin_cdesc_char_pointer'
   i_arg_names:
   - '{i_var_cdesc}'
   i_arg_decl:
@@ -9842,9 +9915,9 @@ f_function_string*_cdesc_pointer_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_pass_cdesc'
-  - '  c_mixin_function_string_cdesc'
-  - '  f_mixin_char_cdesc_pointer'
+  - '  f_mixin_cdesc_pass'
+  - '  c_mixin_cdesc_function_string'
+  - '  f_mixin_cdesc_char_pointer'
   i_arg_names:
   - '{i_var_cdesc}'
   i_arg_decl:
@@ -9896,9 +9969,9 @@ f_function_string*_cdesc_pointer_library:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_pass_cdesc'
-  - '  c_mixin_function_string_cdesc'
-  - '  f_mixin_char_cdesc_pointer'
+  - '  f_mixin_cdesc_pass'
+  - '  c_mixin_cdesc_function_string'
+  - '  f_mixin_cdesc_char_pointer'
   i_arg_names:
   - '{i_var_cdesc}'
   i_arg_decl:
@@ -9935,9 +10008,12 @@ f_function_string*_cfi_allocatable:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_string_cfi_allocatable'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_header_string'
-  - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9977,9 +10053,12 @@ f_function_string*_cfi_allocatable_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_string_cfi_allocatable'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_header_string'
-  - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -10019,9 +10098,12 @@ f_function_string*_cfi_allocatable_library:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_string_cfi_allocatable'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_header_string'
-  - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -10049,6 +10131,7 @@ f_function_string*_cfi_copy:
   name: f_function_string*_cfi_copy
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass argument to C wrapper
   - Make the C wrapper argument a CFI_desc_t.
   - Character argument passed as CFI_desc_t.
@@ -10057,7 +10140,7 @@ f_function_string*_cfi_copy:
   - Copy cxx variable into c variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -10069,13 +10152,13 @@ f_function_string*_cfi_copy:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
-  - '  f_mixin_pass_character_cfi'
-  - '  c_mixin_arg_character_cfi'
-  - '    c_mixin_arg_cfi'
+  - '  f_mixin_declare-local-variable'
+  - '  f_mixin_cfi_pass_character'
+  - '  c_mixin_cfi_arg_character'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_arg-call-cxx'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_char-copy-to-arg-cfi'
+  - '  c_mixin_cfi_copy-to-arg'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -10126,7 +10209,11 @@ f_function_string*_cfi_pointer:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  c_mixin_arg_cfi'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_cfi_arg'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -10183,7 +10270,11 @@ f_function_string*_cfi_pointer_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  c_mixin_arg_cfi'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_cfi_arg'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -10240,7 +10331,11 @@ f_function_string*_cfi_pointer_library:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  c_mixin_arg_cfi'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_cfi_arg'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -10282,13 +10377,14 @@ f_function_string_buf:
   name: f_function_string_buf
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -10309,7 +10405,7 @@ f_function_string_buf:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -10436,13 +10532,14 @@ f_function_string_buf_caller:
   name: f_function_string_buf_caller
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Copy cxx variable into c variable.
   - Pass cxx variable to library.
   - Delete the cxx variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -10463,7 +10560,7 @@ f_function_string_buf_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_string-char-copy-to-arg'
@@ -10504,13 +10601,14 @@ f_function_string_buf_copy:
   name: f_function_string_buf_copy
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -10531,7 +10629,7 @@ f_function_string_buf_copy:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_arg-call-cvar'
@@ -10575,13 +10673,14 @@ f_function_string_buf_copy_caller:
   name: f_function_string_buf_copy_caller
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass CHARACTER and LEN to C wrapper.
   - Copy cxx variable into c variable.
   - Pass cxx variable to library.
   - Delete the cxx variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -10602,7 +10701,7 @@ f_function_string_buf_copy_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
   - '  c_mixin_in_character_buf'
   - '  c_mixin_string-char-copy-to-arg'
@@ -10680,15 +10779,15 @@ f_function_string_cdesc_allocatable:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_pass_cdesc'
+  - '  f_mixin_cdesc_pass'
   - '  c_mixin_function-assign-to-new'
   - '  c_mixin_destructor_new-string'
-  - '  c_mixin_function_string_cdesc'
-  - '  f_mixin_char_cdesc_allocate'
-  - '  f_mixin_use_capsule'
-  - '    f_mixin_pass_capsule'
-  - '      c_mixin_pass_capsule'
-  - '    c_mixin_native_capsule_fill'
+  - '  c_mixin_cdesc_function_string'
+  - '  f_mixin_cdesc_char_allocate'
+  - '  f_mixin_capsule_use'
+  - '    f_mixin_capsule_pass'
+  - '      c_mixin_capsule_pass'
+  - '    c_mixin_capsule_fill_native'
   - '    f_mixin_capsule_dtor'
   i_arg_names:
   - '{i_var_cdesc}'
@@ -10770,15 +10869,15 @@ f_function_string_cdesc_allocatable_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_pass_cdesc'
+  - '  f_mixin_cdesc_pass'
   - '  c_mixin_function-assign-to-new'
   - '  c_mixin_destructor_new-string'
-  - '  c_mixin_function_string_cdesc'
-  - '  f_mixin_char_cdesc_allocate'
-  - '  f_mixin_use_capsule'
-  - '    f_mixin_pass_capsule'
-  - '      c_mixin_pass_capsule'
-  - '    c_mixin_native_capsule_fill'
+  - '  c_mixin_cdesc_function_string'
+  - '  f_mixin_cdesc_char_allocate'
+  - '  f_mixin_capsule_use'
+  - '    f_mixin_capsule_pass'
+  - '      c_mixin_capsule_pass'
+  - '    c_mixin_capsule_fill_native'
   - '    f_mixin_capsule_dtor'
   i_arg_names:
   - '{i_var_cdesc}'
@@ -10860,15 +10959,15 @@ f_function_string_cdesc_allocatable_library:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_pass_cdesc'
+  - '  f_mixin_cdesc_pass'
   - '  c_mixin_function-assign-to-new'
   - '  c_mixin_destructor_new-string'
-  - '  c_mixin_function_string_cdesc'
-  - '  f_mixin_char_cdesc_allocate'
-  - '  f_mixin_use_capsule'
-  - '    f_mixin_pass_capsule'
-  - '      c_mixin_pass_capsule'
-  - '    c_mixin_native_capsule_fill'
+  - '  c_mixin_cdesc_function_string'
+  - '  f_mixin_cdesc_char_allocate'
+  - '  f_mixin_capsule_use'
+  - '    f_mixin_capsule_pass'
+  - '      c_mixin_capsule_pass'
+  - '    c_mixin_capsule_fill_native'
   - '    f_mixin_capsule_dtor'
   i_arg_names:
   - '{i_var_cdesc}'
@@ -10927,8 +11026,11 @@ f_function_string_cfi_allocatable:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_string_cfi_allocatable'
-  - '  c_mixin_arg_cfi'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_cfi_arg'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -10966,9 +11068,12 @@ f_function_string_cfi_allocatable_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_string_cfi_allocatable'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_header_string'
-  - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -11008,9 +11113,12 @@ f_function_string_cfi_allocatable_library:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_function_string_cfi_allocatable'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_header_string'
-  - '  c_mixin_arg_cfi'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -11063,12 +11171,12 @@ f_function_string_cfi_arg:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_function-as-character-arg'
-  - '  f_mixin_pass_character_cfi'
-  - '  c_mixin_arg_character_cfi'
-  - '    c_mixin_arg_cfi'
+  - '  f_mixin_cfi_pass_character'
+  - '  c_mixin_cfi_arg_character'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_arg-call-cxx'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_char-copy-to-arg-cfi'
+  - '  c_mixin_cfi_copy-to-arg'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -11107,6 +11215,7 @@ f_function_string_cfi_copy:
   name: f_function_string_cfi_copy
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   - Pass argument to C wrapper
   - Make the C wrapper argument a CFI_desc_t.
   - Character argument passed as CFI_desc_t.
@@ -11115,7 +11224,7 @@ f_function_string_cfi_copy:
   - Copy cxx variable into c variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -11127,13 +11236,13 @@ f_function_string_cfi_copy:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_declare-fortran-result'
-  - '  f_mixin_pass_character_cfi'
-  - '  c_mixin_arg_character_cfi'
-  - '    c_mixin_arg_cfi'
+  - '  f_mixin_declare-local-variable'
+  - '  f_mixin_cfi_pass_character'
+  - '  c_mixin_cfi_arg_character'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_arg-call-cxx'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_char-copy-to-arg-cfi'
+  - '  c_mixin_cfi_copy-to-arg'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -11184,7 +11293,11 @@ f_function_string_cfi_pointer:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  c_mixin_arg_cfi'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_cfi_arg'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -11241,7 +11354,11 @@ f_function_string_cfi_pointer_caller:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  c_mixin_arg_cfi'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_cfi_arg'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -11298,7 +11415,11 @@ f_function_string_cfi_pointer_library:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  c_mixin_arg_cfi'
+  - '  f_mixin_cfi_character-deferred-length'
+  - '    f_mixin_character-deferred-length'
+  - '    c_mixin_dummy_arg'
+  - '    c_mixin_character-deferred-length'
+  - '    c_mixin_cfi_arg'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -11340,9 +11461,10 @@ f_function_struct:
   name: f_function_struct
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -11354,7 +11476,7 @@ f_function_struct:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-interface-arg'
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -11402,9 +11524,9 @@ f_function_struct*_cdesc_pointer:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_pass_cdesc'
-  - '  c_mixin_native_cdesc_fill-cdesc'
-  - '  f_mixin_native_cdesc_pointer'
+  - '  f_mixin_cdesc_pass'
+  - '  c_mixin_cdesc_native_fill'
+  - '  f_mixin_cdesc_native_pointer'
   i_arg_names:
   - '{i_var_cdesc}'
   i_arg_decl:
@@ -11496,7 +11618,7 @@ f_function_vector<native>_cdesc_allocatable:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_pass_cdesc'
+  - '  f_mixin_cdesc_pass'
   - '  c_mixin_destructor_new-vector'
   - '  c_mixin_vector_cdesc_fill-cdesc'
   i_arg_names:
@@ -11552,16 +11674,18 @@ f_function_vector_scalar_cdesc:
   owner: library
 f_function_void*:
   name: f_function_void*
+  comments:
+  - Declare a Fortran variable.
   notes:
   - XXX - f entries are the same as the i entries, share?
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
   mixin_names:
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
@@ -11570,14 +11694,16 @@ f_function_void*:
   owner: library
 f_getter_bool:
   name: f_getter_bool
+  comments:
+  - Declare a Fortran variable.
   intent: getter
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
   mixin_names:
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  c_mixin_declare-fortran-result'
   i_result_decl:
   - '{i_type} :: {i_var}'
@@ -11591,14 +11717,16 @@ f_getter_bool:
   owner: library
 f_getter_native:
   name: f_getter_native
+  comments:
+  - Declare a Fortran variable.
   intent: getter
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
   mixin_names:
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  c_mixin_declare-fortran-result'
   i_result_decl:
   - '{i_type} :: {i_var}'
@@ -11644,9 +11772,9 @@ f_getter_native*_cdesc_pointer:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_pass_cdesc'
-  - '  f_mixin_native_cdesc_pointer'
-  - '  f_mixin_getter_cdesc'
+  - '  f_mixin_cdesc_pass'
+  - '  f_mixin_cdesc_native_pointer'
+  - '  f_mixin_cdesc_getter'
   i_arg_names:
   - '{i_var_cdesc}'
   i_arg_decl:
@@ -11674,14 +11802,16 @@ f_getter_native*_cdesc_pointer:
   owner: library
 f_getter_native*_pointer:
   name: f_getter_native*_pointer
+  comments:
+  - Declare a Fortran variable.
   intent: getter
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
   mixin_names:
-  - '  f_mixin_declare-fortran-result'
+  - '  f_mixin_declare-local-variable'
   - '  c_mixin_declare-fortran-result'
   i_result_decl:
   - '{i_type} :: {i_var}'
@@ -11723,8 +11853,8 @@ f_getter_string_cdesc_allocatable:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_pass_cdesc'
-  - '  f_mixin_char_cdesc_allocate'
+  - '  f_mixin_cdesc_pass'
+  - '  f_mixin_cdesc_char_allocate'
   i_arg_names:
   - '{i_var_cdesc}'
   i_arg_decl:
@@ -11779,9 +11909,9 @@ f_getter_struct**_cdesc_raw:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_pass_cdesc'
-  - '  f_mixin_native_cdesc_raw'
-  - '  f_mixin_getter_cdesc'
+  - '  f_mixin_cdesc_pass'
+  - '  f_mixin_cdesc_native_raw'
+  - '  f_mixin_cdesc_getter'
   i_arg_names:
   - '{i_var_cdesc}'
   i_arg_decl:
@@ -11841,9 +11971,9 @@ f_getter_struct*_cdesc_pointer:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
-  - '  f_mixin_pass_cdesc'
-  - '  f_mixin_native_cdesc_pointer'
-  - '  f_mixin_getter_cdesc'
+  - '  f_mixin_cdesc_pass'
+  - '  f_mixin_cdesc_native_pointer'
+  - '  f_mixin_cdesc_getter'
   i_arg_names:
   - '{i_var_cdesc}'
   i_arg_decl:
@@ -12079,8 +12209,8 @@ f_in_char**_cfi:
   f_arg_decl:
   - 'character(len=*){f_intent_attr} :: {f_var}(:)'
   mixin_names:
-  - '  f_mixin_arg-character-array-cfi'
-  - '    c_mixin_arg_cfi'
+  - '  f_mixin_cfi_arg-character-array'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_cfi-unpack-base-addr'
   - '  c_mixin_cfi-unpack-len-size'
   - '  c_mixin_char-array-alloc'
@@ -12218,8 +12348,8 @@ f_in_char*_cfi:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
-  - '  c_mixin_arg_character_cfi'
-  - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi_arg_character'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_cfi-unpack-base-addr'
   - '  c_mixin_cfi-unpack-len'
   - '  c_mixin_char-alloc'
@@ -12436,7 +12566,7 @@ f_in_native*_cdesc:
   - array_context
   f_need_wrapper: true
   mixin_names:
-  - '  f_mixin_pass_cdesc'
+  - '  f_mixin_cdesc_pass'
   - '  c_mixin_arg-call-cvar'
   i_arg_names:
   - '{i_var_cdesc}'
@@ -12471,14 +12601,14 @@ f_in_native*_cfi:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
-  - '  c_mixin_arg_native_cfi'
-  - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi_arg_native'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_cfi-unpack-base-addr-cxx'
   - '  c_mixin_arg-call-cxx'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{f_type}{i_intent_attr} :: {i_var}{f_assumed_shape}'
+  - '{i_type}{i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   i_module:
     iso_c_binding:
     - '{f_kind}'
@@ -12834,8 +12964,8 @@ f_in_string&_cfi:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
-  - '  c_mixin_arg_character_cfi'
-  - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi_arg_character'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_cfi-unpack-base-addr'
   - '  c_mixin_cfi-unpack-len'
   - '  c_mixin_local-string-init-trim'
@@ -12968,8 +13098,8 @@ f_in_string*_cfi:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
-  - '  c_mixin_arg_character_cfi'
-  - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi_arg_character'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_cfi-unpack-base-addr'
   - '  c_mixin_cfi-unpack-len'
   - '  c_mixin_local-string-init-trim'
@@ -13073,8 +13203,8 @@ f_in_string_cfi:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
-  - '  c_mixin_arg_character_cfi'
-  - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi_arg_character'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_cfi-unpack-base-addr'
   - '  c_mixin_cfi-unpack-len'
   - '  c_mixin_local-string-init-trim'
@@ -13763,7 +13893,7 @@ f_in_void*_cdesc:
   - array_context
   f_need_wrapper: true
   mixin_names:
-  - '  f_mixin_pass_cdesc'
+  - '  f_mixin_cdesc_pass'
   - '  c_mixin_arg-call-cvar'
   i_arg_names:
   - '{i_var_cdesc}'
@@ -13965,8 +14095,8 @@ f_inout_char*_cfi:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
-  - '  c_mixin_arg_character_cfi'
-  - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi_arg_character'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_cfi-unpack-base-addr'
   - '  c_mixin_cfi-unpack-len'
   - '  c_mixin_char-blank-fill'
@@ -14137,7 +14267,7 @@ f_inout_native*_cdesc:
   - array_context
   f_need_wrapper: true
   mixin_names:
-  - '  f_mixin_pass_cdesc'
+  - '  f_mixin_cdesc_pass'
   - '  c_mixin_arg-call-cvar'
   i_arg_names:
   - '{i_var_cdesc}'
@@ -14172,14 +14302,14 @@ f_inout_native*_cfi:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
-  - '  c_mixin_arg_native_cfi'
-  - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi_arg_native'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_cfi-unpack-base-addr-cxx'
   - '  c_mixin_arg-call-cxx'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{f_type}{i_intent_attr} :: {i_var}{f_assumed_shape}'
+  - '{i_type}{i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   i_module:
     iso_c_binding:
     - '{f_kind}'
@@ -14454,8 +14584,8 @@ f_inout_string&_cfi:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
-  - '  c_mixin_arg_character_cfi'
-  - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi_arg_character'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_cfi-unpack-base-addr'
   - '  c_mixin_cfi-unpack-len'
   - '  c_mixin_local-string-init-trim'
@@ -14619,8 +14749,8 @@ f_inout_string*_cfi:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
-  - '  c_mixin_arg_character_cfi'
-  - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi_arg_character'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_cfi-unpack-base-addr'
   - '  c_mixin_cfi-unpack-len'
   - '  c_mixin_local-string-init-trim'
@@ -14747,8 +14877,8 @@ f_inout_vector<native>&_cdesc:
   - copy_array
   mixin_names:
   - '  c_mixin_inout_vector<native>_cdesc'
-  - '    f_mixin_inout_array_cdesc'
-  - '    c_mixin_inout_vector_cdesc'
+  - '    f_mixin_cdesc_inout_array'
+  - '    c_mixin_cdesc_inout_vector'
   - '    c_mixin_destructor_new-vector'
   - '    c_mixin_vector_cdesc_fill-cdesc'
   - '  c_mixin_arg-call-cxx-deref'
@@ -14831,8 +14961,8 @@ f_inout_vector<native>&_cdesc_allocatable:
   - copy_array
   mixin_names:
   - '  c_mixin_inout_vector<native>_cdesc'
-  - '    f_mixin_inout_array_cdesc'
-  - '    c_mixin_inout_vector_cdesc'
+  - '    f_mixin_cdesc_inout_array'
+  - '    c_mixin_cdesc_inout_vector'
   - '    c_mixin_destructor_new-vector'
   - '    c_mixin_vector_cdesc_fill-cdesc'
   - '  c_mixin_arg-call-cxx-deref'
@@ -15018,7 +15148,7 @@ f_inout_void*_cdesc:
   - array_context
   f_need_wrapper: true
   mixin_names:
-  - '  f_mixin_pass_cdesc'
+  - '  f_mixin_cdesc_pass'
   - '  c_mixin_arg-call-cvar'
   i_arg_names:
   - '{i_var_cdesc}'
@@ -15037,31 +15167,23 @@ f_inout_void*_cdesc:
   c_helper:
   - array_context
   owner: library
-f_mixin_arg-character-array-cfi:
-  name: f_mixin_arg-character-array-cfi
+f_mixin_arg-call-fvar:
+  name: f_mixin_arg-call-fvar
   comments:
-  - Make the C wrapper argument a CFI_desc_t.
-  - Character array argument passed as CFI_desc_t.
+  - Pass Fortran variable to C wrapper.
   intent: mixin
-  f_arg_name:
+  f_arg_call:
   - '{f_var}'
-  f_arg_decl:
-  - 'character(len=*){f_intent_attr} :: {f_var}(:)'
-  mixin_names:
-  - '  c_mixin_arg_cfi'
-  i_arg_names:
-  - '{i_var}'
-  i_arg_decl:
-  - 'character(len=*){i_intent_attr} :: {i_var}(:)'
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_temps:
-  - cfi
-  iface_header:
-  - ISO_Fortran_binding.h
   owner: library
-f_mixin_arg_capsule:
-  name: f_mixin_arg_capsule
+f_mixin_as-intent-out:
+  name: f_mixin_as-intent-out
+  intent: mixin
+  fmtdict:
+    f_intent: OUT
+    f_intent_attr: ', intent(OUT)'
+  owner: library
+f_mixin_capsule_arg:
+  name: f_mixin_capsule_arg
   comments:
   - Pass capsule as argument to C wrapper.
   - Add a capsule argument to the Fortran wrapper.
@@ -15080,7 +15202,7 @@ f_mixin_arg_capsule:
   - capsule_helper
   f_need_wrapper: true
   mixin_names:
-  - '  c_mixin_pass_capsule'
+  - '  c_mixin_capsule_pass'
   i_arg_names:
   - '{i_var_capsule}'
   i_arg_decl:
@@ -15094,13 +15216,6 @@ f_mixin_arg_capsule:
   fmtdict:
     f_var_capsule: Crv
   owner: library
-f_mixin_as-intent-out:
-  name: f_mixin_as-intent-out
-  intent: mixin
-  fmtdict:
-    f_intent: OUT
-    f_intent_attr: ', intent(OUT)'
-  owner: library
 f_mixin_capsule_dtor:
   name: f_mixin_capsule_dtor
   comments:
@@ -15111,8 +15226,86 @@ f_mixin_capsule_dtor:
   f_helper:
   - capsule_dtor
   owner: library
-f_mixin_char_cdesc_allocate:
-  name: f_mixin_char_cdesc_allocate
+f_mixin_capsule_function_shadow:
+  name: f_mixin_capsule_function_shadow
+  comments:
+  - Pass function result as a capsule argument from Fortran to C.
+  intent: mixin
+  f_arg_decl:
+  - '{f_type} :: {f_var}'
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_need_wrapper: true
+  owner: library
+f_mixin_capsule_pass:
+  name: f_mixin_capsule_pass
+  comments:
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
+  intent: mixin
+  f_declare:
+  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  f_arg_call:
+  - '{f_var_capsule}'
+  f_temps:
+  - capsule
+  f_helper:
+  - array_context
+  f_need_wrapper: true
+  mixin_names:
+  - '  c_mixin_capsule_pass'
+  i_arg_names:
+  - '{i_var_capsule}'
+  i_arg_decl:
+  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  i_import:
+  - '{F_capsule_data_type}'
+  c_arg_decl:
+  - '{C_capsule_data_type} *{c_var_capsule}'
+  c_temps:
+  - capsule
+  owner: library
+f_mixin_capsule_use:
+  name: f_mixin_capsule_use
+  comments:
+  - Pass capsule as argument to C wrapper.
+  - Create a local Fortran capsule.
+  - Assign to local capsule variable in C wrapper.
+  - Release memory from capsule.
+  intent: mixin
+  f_declare:
+  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  f_arg_call:
+  - '{f_var_capsule}'
+  f_post_call:
+  - call {f_helper_capsule_dtor}({f_var_capsule})
+  f_temps:
+  - capsule
+  f_helper:
+  - array_context
+  - capsule_dtor
+  f_need_wrapper: true
+  mixin_names:
+  - '  f_mixin_capsule_pass'
+  - '    c_mixin_capsule_pass'
+  - '  c_mixin_capsule_fill_native'
+  - '  f_mixin_capsule_dtor'
+  i_arg_names:
+  - '{i_var_capsule}'
+  i_arg_decl:
+  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  i_import:
+  - '{F_capsule_data_type}'
+  c_arg_decl:
+  - '{C_capsule_data_type} *{c_var_capsule}'
+  c_post_call:
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
+  c_temps:
+  - capsule
+  owner: library
+f_mixin_cdesc_char_allocate:
+  name: f_mixin_cdesc_char_allocate
   comments:
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
@@ -15127,8 +15320,8 @@ f_mixin_char_cdesc_allocate:
   c_helper:
   - copy_string
   owner: library
-f_mixin_char_cdesc_pointer:
-  name: f_mixin_char_cdesc_pointer
+f_mixin_cdesc_char_pointer:
+  name: f_mixin_cdesc_char_pointer
   comments:
   - Assign Fortran pointer from cdesc using helper pointer_string.
   intent: mixin
@@ -15141,6 +15334,229 @@ f_mixin_char_cdesc_pointer:
     - c_f_pointer
   f_helper:
   - pointer_string
+  owner: library
+f_mixin_cdesc_getter:
+  name: f_mixin_cdesc_getter
+  comments:
+  - Save pointer struct members in a cdesc
+  - along with shape information.
+  intent: mixin
+  c_call:
+  - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
+  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
+  - '{c_var_cdesc}->size = {c_array_size};'
+  c_helper:
+  - type_defines
+  - array_context
+  owner: library
+f_mixin_cdesc_inout_array:
+  name: f_mixin_cdesc_inout_array
+  comments:
+  - Declare local Fortran array_type argument.
+  intent: mixin
+  f_declare:
+  - 'type({F_array_type}) :: {f_var_cdesc}'
+  f_arg_call:
+  - '{f_var}'
+  - size({f_var}, kind=C_SIZE_T)
+  - '{f_var_cdesc}'
+  f_module:
+    iso_c_binding:
+    - C_SIZE_T
+  f_temps:
+  - cdesc
+  f_helper:
+  - array_context
+  owner: library
+f_mixin_cdesc_native_allocate:
+  name: f_mixin_cdesc_native_allocate
+  comments:
+  - Allocate Fortran native array, then fill from cdesc
+  - using helper copy_array.
+  intent: mixin
+  f_arg_decl:
+  - '{f_type}{f_intent_attr}{f_deref_attr}, target :: {f_var}{f_dimension}'
+  f_post_call:
+  - allocate({f_var}{f_array_allocate})
+  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\t\
+    \ kind=C_SIZE_T))"
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
+    iso_c_binding:
+    - C_LOC
+    - C_SIZE_T
+  f_helper:
+  - copy_array
+  c_helper:
+  - copy_array
+  owner: library
+f_mixin_cdesc_native_pointer:
+  name: f_mixin_cdesc_native_pointer
+  comments:
+  - Set Fortran pointer to native array.
+  intent: mixin
+  f_arg_decl:
+  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
+  f_post_call:
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
+    iso_c_binding:
+    - c_f_pointer
+  owner: library
+f_mixin_cdesc_native_raw:
+  name: f_mixin_cdesc_native_raw
+  comments:
+  - Set Fortran pointer to pointers to arrays.
+  intent: mixin
+  f_arg_decl:
+  - 'type(C_PTR), pointer :: {f_var}{f_assumed_shape}'
+  f_post_call:
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
+  f_module:
+    iso_c_binding:
+    - C_PTR
+    - c_f_pointer
+  owner: library
+f_mixin_cdesc_out_char_array_allocatable:
+  name: f_mixin_cdesc_out_char_array_allocatable
+  comments:
+  - Allocate Fortran array from cdesc.
+  intent: mixin
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - 'character({f_char_len}){f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}'
+  f_post_call:
+  - allocate({f_char_type}{f_var}({f_var_cdesc}%size))
+  - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
+  f_module:
+    iso_c_binding:
+    - C_LOC
+  owner: library
+f_mixin_cdesc_out_native_allocate:
+  name: f_mixin_cdesc_out_native_allocate
+  comments:
+  - Allocate Fortran native array for argument
+  - then fill from cdesc using helper copy_array.
+  intent: mixin
+  f_post_call:
+  - allocate({f_var}{f_array_allocate})
+  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t {f_var_cdesc}%size)"
+  f_module:
+    iso_c_binding:
+    - C_LOC
+  f_helper:
+  - copy_array
+  c_helper:
+  - copy_array
+  fmtdict:
+    f_deref_attr: ', allocatable, target'
+  owner: library
+f_mixin_cdesc_out_native_pointer:
+  name: f_mixin_cdesc_out_native_pointer
+  comments:
+  - Set Fortran pointer to native array.
+  intent: mixin
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
+  f_post_call:
+  - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
+    iso_c_binding:
+    - c_f_pointer
+  owner: library
+f_mixin_cdesc_pass:
+  name: f_mixin_cdesc_pass
+  comments:
+  - Pass cdesc as argument to C wrapper.
+  intent: mixin
+  f_declare:
+  - 'type({F_array_type}) :: {f_var_cdesc}'
+  f_arg_call:
+  - '{f_var_cdesc}'
+  f_temps:
+  - cdesc
+  f_helper:
+  - array_context
+  f_need_wrapper: true
+  i_arg_names:
+  - '{i_var_cdesc}'
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_temps:
+  - cdesc
+  c_helper:
+  - array_context
+  owner: library
+f_mixin_cfi_arg-character-array:
+  name: f_mixin_cfi_arg-character-array
+  comments:
+  - Make the C wrapper argument a CFI_desc_t.
+  - Character array argument passed as CFI_desc_t.
+  intent: mixin
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - 'character(len=*){f_intent_attr} :: {f_var}(:)'
+  mixin_names:
+  - '  c_mixin_cfi_arg'
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(len=*){i_intent_attr} :: {i_var}(:)'
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_temps:
+  - cfi
+  iface_header:
+  - ISO_Fortran_binding.h
+  owner: library
+f_mixin_cfi_character-deferred-length:
+  name: f_mixin_cfi_character-deferred-length
+  comments:
+  - Make the C wrapper argument a CFI_desc_t.
+  intent: mixin
+  f_arg_decl:
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
+  f_arg_call:
+  - '{f_var}'
+  mixin_names:
+  - '  f_mixin_character-deferred-length'
+  - '  c_mixin_dummy_arg'
+  - '  c_mixin_character-deferred-length'
+  - '  c_mixin_cfi_arg'
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_temps:
+  - cfi
+  iface_header:
+  - ISO_Fortran_binding.h
+  owner: library
+f_mixin_cfi_pass_character:
+  name: f_mixin_cfi_pass_character
+  comments:
+  - Pass argument to C wrapper
+  intent: mixin
+  f_arg_call:
+  - '{f_var}'
+  f_need_wrapper: true
   owner: library
 f_mixin_character-deferred-length:
   name: f_mixin_character-deferred-length
@@ -15180,15 +15596,6 @@ f_mixin_declare-fortran-arg:
     '{f_module_name}':
     - '{f_kind}'
   owner: library
-f_mixin_declare-fortran-result:
-  name: f_mixin_declare-fortran-result
-  intent: mixin
-  f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_dimension}'
-  f_module:
-    '{f_module_name}':
-    - '{f_kind}'
-  owner: library
 f_mixin_declare-interface-arg:
   name: f_mixin_declare-interface-arg
   intent: mixin
@@ -15199,6 +15606,17 @@ f_mixin_declare-interface-arg:
   i_module:
     '{i_module_name}':
     - '{i_kind}'
+  owner: library
+f_mixin_declare-local-variable:
+  name: f_mixin_declare-local-variable
+  comments:
+  - Declare a Fortran variable.
+  intent: mixin
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   owner: library
 f_mixin_dummy_arg:
   name: f_mixin_dummy_arg
@@ -15334,42 +15752,6 @@ f_mixin_function_ptr:
     iso_c_binding:
     - C_PTR
   owner: library
-f_mixin_function_shadow_capsule:
-  name: f_mixin_function_shadow_capsule
-  comments:
-  - Pass function result as a capsule argument from Fortran to C.
-  intent: mixin
-  f_arg_decl:
-  - '{f_type} :: {f_var}'
-  f_arg_call:
-  - '{f_var}%{F_derived_member}'
-  f_need_wrapper: true
-  owner: library
-f_mixin_function_string_cfi_allocatable:
-  name: f_mixin_function_string_cfi_allocatable
-  intent: mixin
-  f_arg_decl:
-  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
-  f_arg_call:
-  - '{f_var}'
-  f_need_wrapper: true
-  owner: library
-f_mixin_getter_cdesc:
-  name: f_mixin_getter_cdesc
-  comments:
-  - Save pointer struct members in a cdesc
-  - along with shape information.
-  intent: mixin
-  c_call:
-  - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
-  c_helper:
-  - type_defines
-  - array_context
-  owner: library
 f_mixin_helper_array_string_allocatable:
   name: f_mixin_helper_array_string_allocatable
   comments:
@@ -15413,7 +15795,7 @@ f_mixin_helper_vector_string_allocatable:
   - '{c_var_cdesc}->elem_len = {c_helper_vector_string_out_len}(*{c_local_cxx});'
   - -}}
   - '{c_var_cdesc}->size      = {c_local_cxx}->size();'
-  - // XXX - Use code from c_mixin_native_capsule_fill
+  - // XXX - Use code from c_mixin_capsule_fill_native
   - '{c_var_capsule}->addr  = {c_local_cxx};'
   - '{c_var_capsule}->idtor = {idtor};'
   c_local:
@@ -15532,25 +15914,6 @@ f_mixin_in_vector_buf:
   c_temps:
   - size
   owner: library
-f_mixin_inout_array_cdesc:
-  name: f_mixin_inout_array_cdesc
-  comments:
-  - Declare local Fortran array_type argument.
-  intent: mixin
-  f_declare:
-  - 'type({F_array_type}) :: {f_var_cdesc}'
-  f_arg_call:
-  - '{f_var}'
-  - size({f_var}, kind=C_SIZE_T)
-  - '{f_var_cdesc}'
-  f_module:
-    iso_c_binding:
-    - C_SIZE_T
-  f_temps:
-  - cdesc
-  f_helper:
-  - array_context
-  owner: library
 f_mixin_interface-as-cptr:
   name: f_mixin_interface-as-cptr
   intent: mixin
@@ -15609,110 +15972,6 @@ f_mixin_logical-out:
   f_post_call:
   - '{f_var} = {f_var_cxx}  ! coerce to logical'
   owner: library
-f_mixin_native_cdesc_allocate:
-  name: f_mixin_native_cdesc_allocate
-  comments:
-  - Allocate Fortran native array, then fill from cdesc
-  - using helper copy_array.
-  intent: mixin
-  f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr}, target :: {f_var}{f_dimension}'
-  f_post_call:
-  - allocate({f_var}{f_array_allocate})
-  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\t\
-    \ kind=C_SIZE_T))"
-  f_module:
-    '{f_module_name}':
-    - '{f_kind}'
-    iso_c_binding:
-    - C_LOC
-    - C_SIZE_T
-  f_helper:
-  - copy_array
-  c_helper:
-  - copy_array
-  owner: library
-f_mixin_native_cdesc_pointer:
-  name: f_mixin_native_cdesc_pointer
-  comments:
-  - Set Fortran pointer to native array.
-  intent: mixin
-  f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
-  f_post_call:
-  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
-  f_module:
-    '{f_module_name}':
-    - '{f_kind}'
-    iso_c_binding:
-    - c_f_pointer
-  owner: library
-f_mixin_native_cdesc_raw:
-  name: f_mixin_native_cdesc_raw
-  comments:
-  - Set Fortran pointer to pointers to arrays.
-  intent: mixin
-  f_arg_decl:
-  - 'type(C_PTR), pointer :: {f_var}{f_assumed_shape}'
-  f_post_call:
-  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
-  f_module:
-    iso_c_binding:
-    - C_PTR
-    - c_f_pointer
-  owner: library
-f_mixin_out_array_cdesc_allocatable:
-  name: f_mixin_out_array_cdesc_allocatable
-  comments:
-  - Allocate Fortran array from cdesc.
-  intent: mixin
-  f_arg_name:
-  - '{f_var}'
-  f_arg_decl:
-  - 'character({f_char_len}){f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}'
-  f_post_call:
-  - allocate({f_char_type}{f_var}({f_var_cdesc}%size))
-  - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
-  f_module:
-    iso_c_binding:
-    - C_LOC
-  owner: library
-f_mixin_out_native_cdesc_allocate:
-  name: f_mixin_out_native_cdesc_allocate
-  comments:
-  - Allocate Fortran native array for argument
-  - then fill from cdesc using helper copy_array.
-  intent: mixin
-  f_post_call:
-  - allocate({f_var}{f_array_allocate})
-  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t {f_var_cdesc}%size)"
-  f_module:
-    iso_c_binding:
-    - C_LOC
-  f_helper:
-  - copy_array
-  c_helper:
-  - copy_array
-  fmtdict:
-    f_deref_attr: ', allocatable, target'
-  owner: library
-f_mixin_out_native_cdesc_pointer:
-  name: f_mixin_out_native_cdesc_pointer
-  comments:
-  - Set Fortran pointer to native array.
-  intent: mixin
-  f_arg_name:
-  - '{f_var}'
-  f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
-  f_post_call:
-  - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})
-  f_module:
-    '{f_module_name}':
-    - '{f_kind}'
-    iso_c_binding:
-    - c_f_pointer
-  owner: library
 f_mixin_out_vector<native>_copy:
   name: f_mixin_out_vector<native>_copy
   comments:
@@ -15763,61 +16022,6 @@ f_mixin_out_vector_buf:
   c_temps:
   - size
   owner: library
-f_mixin_pass_capsule:
-  name: f_mixin_pass_capsule
-  comments:
-  - Pass capsule as argument to C wrapper.
-  - Create a local Fortran capsule.
-  intent: mixin
-  f_declare:
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
-  f_arg_call:
-  - '{f_var_capsule}'
-  f_temps:
-  - capsule
-  f_helper:
-  - array_context
-  f_need_wrapper: true
-  mixin_names:
-  - '  c_mixin_pass_capsule'
-  i_arg_names:
-  - '{i_var_capsule}'
-  i_arg_decl:
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
-  i_import:
-  - '{F_capsule_data_type}'
-  c_arg_decl:
-  - '{C_capsule_data_type} *{c_var_capsule}'
-  c_temps:
-  - capsule
-  owner: library
-f_mixin_pass_cdesc:
-  name: f_mixin_pass_cdesc
-  comments:
-  - Pass cdesc as argument to C wrapper.
-  intent: mixin
-  f_declare:
-  - 'type({F_array_type}) :: {f_var_cdesc}'
-  f_arg_call:
-  - '{f_var_cdesc}'
-  f_temps:
-  - cdesc
-  f_helper:
-  - array_context
-  f_need_wrapper: true
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_temps:
-  - cdesc
-  c_helper:
-  - array_context
-  owner: library
 f_mixin_pass_character_buf:
   name: f_mixin_pass_character_buf
   comments:
@@ -15835,15 +16039,6 @@ f_mixin_pass_character_buf:
     - C_INT
   f_temps:
   - len
-  f_need_wrapper: true
-  owner: library
-f_mixin_pass_character_cfi:
-  name: f_mixin_pass_character_cfi
-  comments:
-  - Pass argument to C wrapper
-  intent: mixin
-  f_arg_call:
-  - '{f_var}'
   f_need_wrapper: true
   owner: library
 f_mixin_procedure-as-funptr:
@@ -15937,45 +16132,6 @@ f_mixin_unknown:
   - ===>i_result_decl<===
   c_arg_decl:
   - ===>c_arg_decl<===
-  owner: library
-f_mixin_use_capsule:
-  name: f_mixin_use_capsule
-  comments:
-  - Pass capsule as argument to C wrapper.
-  - Create a local Fortran capsule.
-  - Assign to local capsule variable in C wrapper.
-  - Release memory from capsule.
-  intent: mixin
-  f_declare:
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
-  f_arg_call:
-  - '{f_var_capsule}'
-  f_post_call:
-  - call {f_helper_capsule_dtor}({f_var_capsule})
-  f_temps:
-  - capsule
-  f_helper:
-  - array_context
-  - capsule_dtor
-  f_need_wrapper: true
-  mixin_names:
-  - '  f_mixin_pass_capsule'
-  - '    c_mixin_pass_capsule'
-  - '  c_mixin_native_capsule_fill'
-  - '  f_mixin_capsule_dtor'
-  i_arg_names:
-  - '{i_var_capsule}'
-  i_arg_decl:
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
-  i_import:
-  - '{F_capsule_data_type}'
-  c_arg_decl:
-  - '{C_capsule_data_type} *{c_var_capsule}'
-  c_post_call:
-  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
-  - '{c_var_capsule}->idtor = {idtor};'
-  c_temps:
-  - capsule
   owner: library
 f_none_bool:
   name: f_none_bool
@@ -16306,9 +16462,9 @@ f_out_char**_cdesc_pointer:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_dummy_arg'
-  - '  f_mixin_char_cdesc_pointer'
-  - '  f_mixin_pass_cdesc'
-  - '  c_mixin_cdesc-char-fill-cvar'
+  - '  f_mixin_cdesc_char_pointer'
+  - '  f_mixin_cdesc_pass'
+  - '  c_mixin_cdesc_char_fill_cvar'
   - '  c_mixin_local-cvar-ptr'
   - '  c_mixin_arg-call-cvar-address'
   i_arg_names:
@@ -16354,10 +16510,10 @@ f_out_char**_cfi_pointer:
   - '  f_mixin_character-deferred-length'
   - '  c_mixin_dummy_arg'
   - '  c_mixin_character-deferred-length'
-  - '  c_mixin_arg_cfi'
+  - '  c_mixin_cfi_arg'
   - '  c_mixin_local-cvar-ptr'
   - '  c_mixin_arg-call-cvar-address'
-  - '  c_mixin_character_cfi_pointer'
+  - '  c_mixin_cfi_character_pointer'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -16501,8 +16657,8 @@ f_out_char*_cfi:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
-  - '  c_mixin_arg_character_cfi'
-  - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi_arg_character'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_cfi-unpack-base-addr'
   - '  c_mixin_cfi-unpack-len'
   - '  c_mixin_char-malloc'
@@ -16675,11 +16831,11 @@ f_out_native*&_cdesc:
   - array_context
   f_need_wrapper: true
   mixin_names:
-  - '  f_mixin_pass_cdesc'
+  - '  f_mixin_cdesc_pass'
   - '  c_mixin_out_native**'
   - '  c_mixin_arg-call-cvar'
-  - '  c_mixin_native_cdesc_fill-cdesc'
-  - '  f_mixin_out_native_cdesc_pointer'
+  - '  c_mixin_cdesc_native_fill'
+  - '  f_mixin_cdesc_out_native_pointer'
   i_arg_names:
   - '{i_var_cdesc}'
   i_arg_decl:
@@ -16733,11 +16889,11 @@ f_out_native*&_cdesc_pointer:
   - array_context
   f_need_wrapper: true
   mixin_names:
-  - '  f_mixin_pass_cdesc'
+  - '  f_mixin_cdesc_pass'
   - '  c_mixin_out_native**'
   - '  c_mixin_arg-call-cvar'
-  - '  c_mixin_native_cdesc_fill-cdesc'
-  - '  f_mixin_out_native_cdesc_pointer'
+  - '  c_mixin_cdesc_native_fill'
+  - '  f_mixin_cdesc_out_native_pointer'
   i_arg_names:
   - '{i_var_cdesc}'
   i_arg_decl:
@@ -16838,15 +16994,15 @@ f_out_native**_cdesc_allocatable:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
-  - '  f_mixin_pass_cdesc'
-  - '  c_mixin_native_cdesc_fill-cdesc'
+  - '  f_mixin_cdesc_pass'
+  - '  c_mixin_cdesc_native_fill'
   - '  c_mixin_out_native**'
   - '  c_mixin_arg-call-cvar-address'
-  - '  f_mixin_out_native_cdesc_allocate'
-  - '  f_mixin_use_capsule'
-  - '    f_mixin_pass_capsule'
-  - '      c_mixin_pass_capsule'
-  - '    c_mixin_native_capsule_fill'
+  - '  f_mixin_cdesc_out_native_allocate'
+  - '  f_mixin_capsule_use'
+  - '    f_mixin_capsule_pass'
+  - '      c_mixin_capsule_pass'
+  - '    c_mixin_capsule_fill_native'
   - '    f_mixin_capsule_dtor'
   i_arg_names:
   - '{i_var_cdesc}'
@@ -16915,11 +17071,11 @@ f_out_native**_cdesc_pointer:
   - array_context
   f_need_wrapper: true
   mixin_names:
-  - '  f_mixin_pass_cdesc'
+  - '  f_mixin_cdesc_pass'
   - '  c_mixin_out_native**'
   - '  c_mixin_arg-call-cvar-address'
-  - '  c_mixin_native_cdesc_fill-cdesc'
-  - '  f_mixin_out_native_cdesc_pointer'
+  - '  c_mixin_cdesc_native_fill'
+  - '  f_mixin_cdesc_out_native_pointer'
   i_arg_names:
   - '{i_var_cdesc}'
   i_arg_decl:
@@ -16961,11 +17117,11 @@ f_out_native**_cfi_allocatable:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
-  - '  c_mixin_arg_native_cfi'
-  - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi_arg_native'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_local-cxx-ptr'
   - '  c_mixin_arg-call-cxx-address'
-  - '  c_mixin_native_cfi_allocatable'
+  - '  c_mixin_cfi_native_allocatable'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -17016,11 +17172,11 @@ f_out_native**_cfi_pointer:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
-  - '  c_mixin_arg_native_cfi'
-  - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi_arg_native'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_local-cxx-ptr'
   - '  c_mixin_arg-call-cxx-address'
-  - '  c_mixin_native_cfi_pointer'
+  - '  c_mixin_cfi_native_pointer'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -17121,7 +17277,7 @@ f_out_native*_cdesc:
   - array_context
   f_need_wrapper: true
   mixin_names:
-  - '  f_mixin_pass_cdesc'
+  - '  f_mixin_cdesc_pass'
   - '  c_mixin_arg-call-cvar'
   i_arg_names:
   - '{i_var_cdesc}'
@@ -17273,8 +17429,8 @@ f_out_string&_cfi:
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
   - '  c_mixin_local-string'
-  - '  c_mixin_arg_character_cfi'
-  - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi_arg_character'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_cfi-unpack-base-addr'
   - '  c_mixin_cfi-unpack-len'
   - '  c_mixin_arg-call-cxx'
@@ -17344,13 +17500,13 @@ f_out_string**_cdesc_allocatable:
   - capsule_dtor
   f_need_wrapper: true
   mixin_names:
-  - '  f_mixin_pass_cdesc'
-  - '  f_mixin_pass_capsule'
-  - '    c_mixin_pass_capsule'
-  - '  f_mixin_out_array_cdesc_allocatable'
+  - '  f_mixin_cdesc_pass'
+  - '  f_mixin_capsule_pass'
+  - '    c_mixin_capsule_pass'
+  - '  f_mixin_cdesc_out_char_array_allocatable'
   - '  f_mixin_helper_array_string_allocatable'
   - '  c_mixin_arg-call-cvar-address'
-  - '  c_mixin_native_capsule_fill'
+  - '  c_mixin_capsule_fill_native'
   - '  f_mixin_capsule_dtor'
   i_arg_names:
   - '{i_var_cdesc}'
@@ -17422,7 +17578,7 @@ f_out_string**_cdesc_copy:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_str_array'
-  - '  f_mixin_pass_cdesc'
+  - '  f_mixin_cdesc_pass'
   - '  c_mixin_arg-call-cvar-address'
   i_arg_names:
   - '{i_var_cdesc}'
@@ -17462,7 +17618,7 @@ f_out_string**_cfi_allocatable:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
-  - '  c_mixin_arg_cfi'
+  - '  c_mixin_cfi_arg'
   - '  c_mixin_out_string**'
   - '  c_mixin_arg-call-cxx-address'
   i_arg_names:
@@ -17500,7 +17656,7 @@ f_out_string**_cfi_copy:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
-  - '  c_mixin_arg_cfi'
+  - '  c_mixin_cfi_arg'
   - '  c_mixin_out_string**'
   - '  c_mixin_arg-call-cxx-address'
   i_arg_names:
@@ -17627,8 +17783,8 @@ f_out_string*_cfi:
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
   - '  c_mixin_local-string'
-  - '  c_mixin_arg_character_cfi'
-  - '    c_mixin_arg_cfi'
+  - '  c_mixin_cfi_arg_character'
+  - '    c_mixin_cfi_arg'
   - '  c_mixin_cfi-unpack-base-addr'
   - '  c_mixin_cfi-unpack-len'
   - '  c_mixin_arg-call-cxx-address'
@@ -17752,7 +17908,7 @@ f_out_vector<native>&_cdesc:
   - copy_array
   f_need_wrapper: true
   mixin_names:
-  - '  f_mixin_pass_cdesc'
+  - '  f_mixin_cdesc_pass'
   - '  f_mixin_out_vector<native>_copy'
   - '  c_mixin_out_vector<native>_cdesc'
   - '    c_mixin_destructor_new-vector'
@@ -17824,7 +17980,7 @@ f_out_vector<native>&_cdesc_allocatable:
   - copy_array
   f_need_wrapper: true
   mixin_names:
-  - '  f_mixin_pass_cdesc'
+  - '  f_mixin_cdesc_pass'
   - '  c_mixin_out_vector<native>_cdesc'
   - '    c_mixin_destructor_new-vector'
   - '    c_mixin_vector_cdesc_fill-cdesc'
@@ -17893,7 +18049,7 @@ f_out_vector<native>*_cdesc:
   - copy_array
   f_need_wrapper: true
   mixin_names:
-  - '  f_mixin_pass_cdesc'
+  - '  f_mixin_cdesc_pass'
   - '  f_mixin_out_vector<native>_copy'
   - '  c_mixin_out_vector<native>_cdesc'
   - '    c_mixin_destructor_new-vector'
@@ -17965,7 +18121,7 @@ f_out_vector<native>*_cdesc_allocatable:
   - copy_array
   f_need_wrapper: true
   mixin_names:
-  - '  f_mixin_pass_cdesc'
+  - '  f_mixin_cdesc_pass'
   - '  c_mixin_out_vector<native>_cdesc'
   - '    c_mixin_destructor_new-vector'
   - '    c_mixin_vector_cdesc_fill-cdesc'
@@ -18035,7 +18191,7 @@ f_out_vector<string>&_cdesc:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_str_array'
-  - '  f_mixin_pass_cdesc'
+  - '  f_mixin_cdesc_pass'
   - '  c_mixin_arg-call-cvar'
   i_arg_names:
   - '{i_var_cdesc}'
@@ -18096,10 +18252,10 @@ f_out_vector<string>&_cdesc_allocatable:
   - capsule_dtor
   f_need_wrapper: true
   mixin_names:
-  - '  f_mixin_pass_cdesc'
-  - '  f_mixin_pass_capsule'
-  - '    c_mixin_pass_capsule'
-  - '  f_mixin_out_array_cdesc_allocatable'
+  - '  f_mixin_cdesc_pass'
+  - '  f_mixin_capsule_pass'
+  - '    c_mixin_capsule_pass'
+  - '  f_mixin_cdesc_out_char_array_allocatable'
   - '  f_mixin_helper_vector_string_allocatable'
   - '  f_mixin_capsule_dtor'
   - '  c_mixin_arg-call-cxx-deref'
@@ -18126,7 +18282,7 @@ f_out_vector<string>&_cdesc_allocatable:
   - '{c_var_cdesc}->elem_len = {c_helper_vector_string_out_len}(*{c_local_cxx});'
   - -}}
   - '{c_var_cdesc}->size      = {c_local_cxx}->size();'
-  - // XXX - Use code from c_mixin_native_capsule_fill
+  - // XXX - Use code from c_mixin_capsule_fill_native
   - '{c_var_capsule}->addr  = {c_local_cxx};'
   - '{c_var_capsule}->idtor = {idtor};'
   c_temps:
@@ -18295,7 +18451,7 @@ f_out_void*_cdesc:
   - array_context
   f_need_wrapper: true
   mixin_names:
-  - '  f_mixin_pass_cdesc'
+  - '  f_mixin_cdesc_pass'
   - '  c_mixin_arg-call-cvar'
   i_arg_names:
   - '{i_var_cdesc}'
@@ -19497,12 +19653,6 @@ root
         cdesc -- c_inout_void*_cdesc
       void** -- c_inout_void**
     mixin
-      arg
-        cfi -- c_mixin_arg_cfi
-        character
-          cfi -- c_mixin_arg_character_cfi
-        native
-          cfi -- c_mixin_arg_native_cfi
       arg-call-cvar -- c_mixin_arg-call-cvar
       arg-call-cvar-address -- c_mixin_arg-call-cvar-address
       arg-call-cvar-deref -- c_mixin_arg-call-cvar-deref
@@ -19511,8 +19661,32 @@ root
       arg-call-cxx-deref -- c_mixin_arg-call-cxx-deref
       as-intent-out -- c_mixin_as-intent-out
       c-str -- c_mixin_c-str
+      capsule
+        fill
+          cvar -- c_mixin_capsule_fill_cvar
+          native -- c_mixin_capsule_fill_native
+        pass -- c_mixin_capsule_pass
       cast-argument -- c_mixin_cast-argument
-      cdesc-char-fill-cvar -- c_mixin_cdesc-char-fill-cvar
+      cdesc
+        char
+          fill
+            cvar -- c_mixin_cdesc_char_fill_cvar
+        function
+          string -- c_mixin_cdesc_function_string
+        inout
+          vector -- c_mixin_cdesc_inout_vector
+        native
+          fill -- c_mixin_cdesc_native_fill
+      cfi
+        arg -- c_mixin_cfi_arg
+          character -- c_mixin_cfi_arg_character
+          native -- c_mixin_cfi_arg_native
+        character
+          pointer -- c_mixin_cfi_character_pointer
+        copy-to-arg -- c_mixin_cfi_copy-to-arg
+        native
+          allocatable -- c_mixin_cfi_native_allocatable
+          pointer -- c_mixin_cfi_native_pointer
       cfi-unpack-base-addr -- c_mixin_cfi-unpack-base-addr
       cfi-unpack-base-addr-cxx -- c_mixin_cfi-unpack-base-addr-cxx
       cfi-unpack-len -- c_mixin_cfi-unpack-len
@@ -19521,14 +19695,10 @@ root
       char-array-alloc -- c_mixin_char-array-alloc
       char-blank-fill -- c_mixin_char-blank-fill
       char-copy -- c_mixin_char-copy
-      char-copy-to-arg-cfi -- c_mixin_char-copy-to-arg-cfi
       char-free -- c_mixin_char-free
       char-malloc -- c_mixin_char-malloc
       character -- c_mixin_character
-        cfi
-          pointer -- c_mixin_character_cfi_pointer
       character-deferred-length -- c_mixin_character-deferred-length
-      cvar-capsule-fill -- c_mixin_cvar-capsule-fill
       declare-arg -- c_mixin_declare-arg
       declare-arg-char -- c_mixin_declare-arg-char
       declare-fortran-result -- c_mixin_declare-fortran-result
@@ -19542,8 +19712,6 @@ root
       function
         shadow
           capptr -- c_mixin_function_shadow_capptr
-        string
-          cdesc -- c_mixin_function_string_cdesc
         vector
           malloc -- c_mixin_function_vector_malloc
       function-assign-to-local -- c_mixin_function-assign-to-local
@@ -19557,8 +19725,6 @@ root
         character
           buf -- c_mixin_in_character_buf
       inout
-        vector
-          cdesc -- c_mixin_inout_vector_cdesc
         vector<native>
           cdesc -- c_mixin_inout_vector<native>_cdesc
       local-cvar-ptr -- c_mixin_local-cvar-ptr
@@ -19567,14 +19733,6 @@ root
       local-string-init -- c_mixin_local-string-init
       local-string-init-trim -- c_mixin_local-string-init-trim
       make-shared -- c_mixin_make-shared
-      native
-        capsule
-          fill -- c_mixin_native_capsule_fill
-        cdesc
-          fill-cdesc -- c_mixin_native_cdesc_fill-cdesc
-        cfi
-          allocatable -- c_mixin_native_cfi_allocatable
-          pointer -- c_mixin_native_cfi_pointer
       out
         native** -- c_mixin_out_native**
         string** -- c_mixin_out_string**
@@ -19583,8 +19741,6 @@ root
             malloc -- c_mixin_out_vector_buf_malloc
         vector<native>
           cdesc -- c_mixin_out_vector<native>_cdesc
-      pass
-        capsule -- c_mixin_pass_capsule
       shadow -- c_mixin_shadow
       string-char-copy-to-arg -- c_mixin_string-char-copy-to-arg
       string-copy-out -- c_mixin_string-copy-out
@@ -19909,40 +20065,56 @@ root
         cdesc -- f_inout_void*_cdesc
       void** -- f_inout_void**
     mixin
-      arg
-        capsule -- f_mixin_arg_capsule
-      arg-character-array-cfi -- f_mixin_arg-character-array-cfi
+      arg-call-fvar -- f_mixin_arg-call-fvar
       as-intent-out -- f_mixin_as-intent-out
       capsule
+        arg -- f_mixin_capsule_arg
         dtor -- f_mixin_capsule_dtor
-      char
-        cdesc
-          allocate -- f_mixin_char_cdesc_allocate
-          pointer -- f_mixin_char_cdesc_pointer
+        function
+          shadow -- f_mixin_capsule_function_shadow
+        pass -- f_mixin_capsule_pass
+        use -- f_mixin_capsule_use
+      cdesc
+        char
+          allocate -- f_mixin_cdesc_char_allocate
+          pointer -- f_mixin_cdesc_char_pointer
+        getter -- f_mixin_cdesc_getter
+        inout
+          array -- f_mixin_cdesc_inout_array
+        native
+          allocate -- f_mixin_cdesc_native_allocate
+          pointer -- f_mixin_cdesc_native_pointer
+          raw -- f_mixin_cdesc_native_raw
+        out
+          char
+            array
+              allocatable -- f_mixin_cdesc_out_char_array_allocatable
+          native
+            allocate -- f_mixin_cdesc_out_native_allocate
+            pointer -- f_mixin_cdesc_out_native_pointer
+        pass -- f_mixin_cdesc_pass
+      cfi
+        arg-character-array -- f_mixin_cfi_arg-character-array
+        character-deferred-length -- f_mixin_cfi_character-deferred-length
+        pass
+          character -- f_mixin_cfi_pass_character
       character-deferred-length -- f_mixin_character-deferred-length
       declare-arg-char -- f_mixin_declare-arg-char
       declare-as-cptr -- f_mixin_declare-as-cptr
       declare-fortran-arg -- f_mixin_declare-fortran-arg
-      declare-fortran-result -- f_mixin_declare-fortran-result
       declare-interface-arg -- f_mixin_declare-interface-arg
+      declare-local-variable -- f_mixin_declare-local-variable
       dummy
         arg -- f_mixin_dummy_arg
       function -- f_mixin_function
         c-ptr -- f_mixin_function_c-ptr
         char -- f_mixin_function_char
         ptr -- f_mixin_function_ptr
-        shadow
-          capsule -- f_mixin_function_shadow_capsule
-        string
-          cfi
-            allocatable -- f_mixin_function_string_cfi_allocatable
       function-as-character-arg -- f_mixin_function-as-character-arg
       function-as-character-arg-var-len -- f_mixin_function-as-character-arg-var-len
       function-as-cptr -- f_mixin_function-as-cptr
       function-interface-as-cptr -- f_mixin_function-interface-as-cptr
       function-to-subroutine -- f_mixin_function-to-subroutine
-      getter
-        cdesc -- f_mixin_getter_cdesc
       helper
         array
           string
@@ -19959,38 +20131,20 @@ root
             buf -- f_mixin_in_string_array_buf
         vector
           buf -- f_mixin_in_vector_buf
-      inout
-        array
-          cdesc -- f_mixin_inout_array_cdesc
       interface-as-cptr -- f_mixin_interface-as-cptr
       interface-as-cptr-array -- f_mixin_interface-as-cptr-array
       interface-as-cptr-value -- f_mixin_interface-as-cptr-value
       logical-in -- f_mixin_logical-in
       logical-local-var -- f_mixin_logical-local-var
       logical-out -- f_mixin_logical-out
-      native
-        cdesc
-          allocate -- f_mixin_native_cdesc_allocate
-          pointer -- f_mixin_native_cdesc_pointer
-          raw -- f_mixin_native_cdesc_raw
       out
-        array
-          cdesc
-            allocatable -- f_mixin_out_array_cdesc_allocatable
-        native
-          cdesc
-            allocate -- f_mixin_out_native_cdesc_allocate
-            pointer -- f_mixin_out_native_cdesc_pointer
         vector
           buf -- f_mixin_out_vector_buf
         vector<native>
           copy -- f_mixin_out_vector<native>_copy
       pass
-        capsule -- f_mixin_pass_capsule
-        cdesc -- f_mixin_pass_cdesc
         character
           buf -- f_mixin_pass_character_buf
-          cfi -- f_mixin_pass_character_cfi
       procedure-as-funptr -- f_mixin_procedure-as-funptr
       procedure-as-funptr-byreference -- f_mixin_procedure-as-funptr-byreference
       procedure-as-funptr-byvalue -- f_mixin_procedure-as-funptr-byvalue
@@ -19998,8 +20152,6 @@ root
       str
         array -- f_mixin_str_array
       unknown -- f_mixin_unknown
-      use
-        capsule -- f_mixin_use_capsule
     none
       bool -- f_none_bool
       bool* -- f_none_bool*

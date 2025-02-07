@@ -324,3 +324,13 @@ pointers and references.
     "c_post_call": [
         "{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();"
     ]
+
+
+
+.. mixin naming conventions
+   Must start with c_mixin_ or f_mixin_
+   Group together by adding cdesc_  or capsule_ or _cfi.
+   This makes the mixin block standout better which groups are working together
+   rather than adding the intent or type before cdesc or capsule.
+   
+   The non-mixin groups add capsule/cdesc later since it is from api(cdesc).
