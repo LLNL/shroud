@@ -6649,8 +6649,7 @@ f_function_char*_cfi_pointer:
   comments:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
-  notes:
-  - c_mixin_character_cfi_pointer
+  - Convert C pointer to deferred-length CHARACTER Fortran scalar pointer.
   intent: function
   f_arg_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
@@ -6663,6 +6662,7 @@ f_function_char*_cfi_pointer:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
   - '  c_mixin_arg_cfi'
+  - '  c_mixin_character_cfi_pointer'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -6936,8 +6936,7 @@ f_function_char_cfi_pointer:
   comments:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
-  notes:
-  - c_mixin_character_cfi_pointer
+  - Convert C pointer to deferred-length CHARACTER Fortran scalar pointer.
   intent: function
   f_arg_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
@@ -6950,6 +6949,7 @@ f_function_char_cfi_pointer:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
   - '  c_mixin_arg_cfi'
+  - '  c_mixin_character_cfi_pointer'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:

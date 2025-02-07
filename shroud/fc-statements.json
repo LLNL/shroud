@@ -4758,12 +4758,10 @@
             "f_function_char_cfi_pointer",
             "f_function_char*_cfi_pointer"
         ],
-        "notes": [
-            "c_mixin_character_cfi_pointer"
-        ],
         "mixin": [
             "f_mixin_function-to-subroutine",
-            "c_mixin_arg_cfi"
+            "c_mixin_arg_cfi",
+            "c_mixin_character_cfi_pointer"
         ],
         "f_need_wrapper": true,
         "f_arg_decl": [
@@ -4777,30 +4775,6 @@
         ],
         "i_arg_decl": [
             "character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}"
-        ],
-        "c_pre_call": [],
-        "c_post_call": [
-            "int {c_local_err};",
-            "if ({cxx_var} == {nullptr}) {{+",
-            "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});",
-            "-}} else {{+",
-            "CFI_CDESC_T(0) {c_local_fptr};",
-            "CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};",
-            "void *{c_local_cptr} = {cxx_nonconst_ptr};",
-            "size_t {c_local_len} = {stdlib}strlen({cxx_var});",
-            "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});",
-            "if ({c_local_err} == CFI_SUCCESS) {{+",
-            "{c_var_cfi}->elem_len = {c_local_cdesc}->elem_len;",
-            "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {nullptr});",
-            "-}}",
-            "-}}"
-        ],
-        "c_local": [
-            "cptr",
-            "fptr",
-            "cdesc",
-            "len",
-            "err"
         ]
     },
     {
