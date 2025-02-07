@@ -65,14 +65,14 @@
         "i_arg_names": [
             "{i_var}"
         ],
+        "i_arg_decl": [
+            "{i_type}{f_value_attr}{i_intent_attr} :: {i_var}{i_dimension}"
+        ],
         "i_module": {
             "{i_module_name}": [
                 "{i_kind}"
             ]
         },
-        "i_arg_decl": [
-            "{i_type}{f_value_attr}{i_intent_attr} :: {i_var}{i_dimension}"
-        ],
         "sphinx-end-before": "f_mixin_declare-interface-arg"
     },
     {
@@ -101,14 +101,14 @@
         "notes": [
             "Used with function results."
         ],
+        "f_arg_decl": [
+            "{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}"
+        ],
         "f_module": {
             "{f_module_name}": [
                 "{f_kind}"
             ]
-        },
-        "f_arg_decl": [
-            "{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}"
-        ]
+        }
     },
     {
         "name": "f_mixin_arg-call-fvar",
@@ -128,14 +128,14 @@
         "f_arg_name": [
             "{f_var}"
         ],
+        "f_arg_decl": [
+            "{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}"
+        ],
         "f_module": {
             "{f_module_name}": [
                 "{f_kind}"
             ]
         },
-        "f_arg_decl": [
-            "{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}"
-        ],
         "sphinx-end-before": "f_mixin_declare-fortran-arg"
     },
     {
@@ -448,7 +448,6 @@
         "comments": [
             "Return a C pointer as a type(C_PTR)."
         ],
-        "c_need_wrapper": true,
         "f_arg_decl": [
             "{f_type}, pointer :: {f_var}"
         ],
@@ -480,7 +479,8 @@
             "iso_c_binding": [
                 "C_PTR"
             ]
-        }
+        },
+        "c_need_wrapper": true
     },
     {
         "name": "c_mixin_function-assign-to-new",
@@ -684,14 +684,14 @@
         "f_temps": [
             "capsule"
         ],
-        "f_need_wrapper": true,
         "f_helper": [
             "array_context",
             "capsule_helper"
         ],
         "fmtdict": {
             "f_var_capsule": "Crv"
-        }
+        },
+        "f_need_wrapper": true
     },
     {
         "name": "f_mixin_capsule_dtor",
@@ -2005,12 +2005,12 @@
         "f_arg_decl": [
             "character(len=*), intent(OUT) :: {f_var}"
         ],
+        "f_result_var": "as-subroutine",
         "fmtdict": {
             "f_var": "{F_string_result_as_arg}",
             "i_var": "{F_string_result_as_arg}",
             "c_var": "{F_string_result_as_arg}"
-        },
-        "f_result_var": "as-subroutine"
+        }
     },
     {
         "name": "f_mixin_function-as-character-arg-var-len",
@@ -2675,11 +2675,11 @@
                 "C_PTR"
             ]
         },
+        "c_return_type": "const char *",
         "c_post_call": [
             "const char *{c_var} = NULL;",
             "if (!{c_local_cxx}->empty()) {c_var} = {c_local_cxx}->c_str();"
-        ],
-        "c_return_type": "const char *"
+        ]
     },
     {
         "name": "f_mixin_helper_array_string_allocatable",
