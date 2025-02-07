@@ -94,6 +94,32 @@
         ]
     },
     {
+        "name": "f_mixin_declare-local-variable",
+        "comments": [
+            "Declare a Fortran variable."
+        ],
+        "notes": [
+            "Used with function results."
+        ],
+        "f_module": {
+            "{f_module_name}": [
+                "{f_kind}"
+            ]
+        },
+        "f_arg_decl": [
+            "{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}"
+        ]
+    },
+    {
+        "name": "f_mixin_arg-call-fvar",
+        "comments": [
+            "Pass Fortran variable to C wrapper."
+        ],
+        "f_arg_call": [
+            "{f_var}"
+        ]
+    },
+    {
         "sphinx-start-after": "f_mixin_declare-fortran-arg",
         "name": "f_mixin_declare-fortran-arg",
         "notes": [
@@ -4633,7 +4659,7 @@
             "c_mixin_cfi_arg"
         ],
         "i_arg_decl": [
-            "{f_type}{i_intent_attr} :: {i_var}{f_assumed_shape}"
+            "{i_type}{i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}"
         ],
         "i_module": {
             "iso_c_binding": [
@@ -5137,9 +5163,6 @@
             "c_mixin_local-cxx-ptr",
             "c_mixin_arg-call-cxx-address",
             "c_mixin_cfi_native_allocatable"
-        ],
-        "i_arg_decl": [
-            "{i_type}{i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}"
         ]
     },
     {
@@ -5153,9 +5176,6 @@
             "c_mixin_local-cxx-ptr",
             "c_mixin_arg-call-cxx-address",
             "c_mixin_cfi_native_pointer"
-        ],
-        "i_arg_decl": [
-            "{i_type}{i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}"
         ]
     },
     {
@@ -5167,24 +5187,12 @@
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
+            "f_mixin_declare-local-variable",
+            "f_mixin_arg-call-fvar",
             "c_mixin_cfi_arg_native",
             "c_mixin_arg-call-cxx",
             "c_mixin_function-assign-to-local",
             "c_mixin_cfi_native_allocatable"
-        ],
-        "f_module": {
-            "{f_module_name}": [
-                "{f_kind}"
-            ]
-        },
-        "f_arg_decl": [
-            "{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}"
-        ],
-        "f_arg_call": [
-            "{f_var}"
-        ],
-        "i_arg_decl": [
-            "{i_type}{i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}"
         ]
     },
     {
@@ -5196,27 +5204,15 @@
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
+            "f_mixin_declare-local-variable",
+            "f_mixin_arg-call-fvar",
             "c_mixin_cfi_arg_native",
             "c_mixin_arg-call-cxx",
             "c_mixin_function-assign-to-local",
             "c_mixin_cfi_native_pointer"
         ],
-        "f_module": {
-            "{f_module_name}": [
-                "{f_kind}"
-            ]
-        },
-        "f_arg_decl": [
-            "{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}"
-        ],
         "f_pre_call": [
             "nullify({f_var})"
-        ],
-        "f_arg_call": [
-            "{f_var}"
-        ],
-        "i_arg_decl": [
-            "{i_type}{i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}"
         ]
     },
     {

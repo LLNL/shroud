@@ -3948,7 +3948,7 @@ c_mixin_cfi_arg_native:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{f_type}{i_intent_attr} :: {i_var}{f_assumed_shape}'
+  - '{i_type}{i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   i_module:
     iso_c_binding:
     - '{f_kind}'
@@ -7363,6 +7363,8 @@ f_function_native*_cfi_allocatable:
   name: f_function_native*_cfi_allocatable
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
+  - Pass Fortran variable to C wrapper.
   - Make the C wrapper argument a CFI_desc_t.
   - Native argument which use CFI_desc_t.
   - Pass cxx local variable to library.
@@ -7374,7 +7376,7 @@ f_function_native*_cfi_allocatable:
   - Return an allocated copy of data.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -7385,6 +7387,8 @@ f_function_native*_cfi_allocatable:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
+  - '  f_mixin_declare-local-variable'
+  - '  f_mixin_arg-call-fvar'
   - '  c_mixin_cfi_arg_native'
   - '    c_mixin_cfi_arg'
   - '  c_mixin_arg-call-cxx'
@@ -7428,6 +7432,8 @@ f_function_native*_cfi_pointer:
   name: f_function_native*_cfi_pointer
   comments:
   - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
+  - Pass Fortran variable to C wrapper.
   - Make the C wrapper argument a CFI_desc_t.
   - Native argument which use CFI_desc_t.
   - Pass cxx local variable to library.
@@ -7439,7 +7445,7 @@ f_function_native*_cfi_pointer:
   - Return Fortran pointer to data.
   intent: function
   f_arg_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_pre_call:
   - nullify({f_var})
   f_arg_call:
@@ -7452,6 +7458,8 @@ f_function_native*_cfi_pointer:
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
+  - '  f_mixin_declare-local-variable'
+  - '  f_mixin_arg-call-fvar'
   - '  c_mixin_cfi_arg_native'
   - '    c_mixin_cfi_arg'
   - '  c_mixin_arg-call-cxx'
@@ -12557,7 +12565,7 @@ f_in_native*_cfi:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{f_type}{i_intent_attr} :: {i_var}{f_assumed_shape}'
+  - '{i_type}{i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   i_module:
     iso_c_binding:
     - '{f_kind}'
@@ -14258,7 +14266,7 @@ f_inout_native*_cfi:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{f_type}{i_intent_attr} :: {i_var}{f_assumed_shape}'
+  - '{i_type}{i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   i_module:
     iso_c_binding:
     - '{f_kind}'
@@ -15116,6 +15124,14 @@ f_inout_void*_cdesc:
   c_helper:
   - array_context
   owner: library
+f_mixin_arg-call-fvar:
+  name: f_mixin_arg-call-fvar
+  comments:
+  - Pass Fortran variable to C wrapper.
+  intent: mixin
+  f_arg_call:
+  - '{f_var}'
+  owner: library
 f_mixin_as-intent-out:
   name: f_mixin_as-intent-out
   intent: mixin
@@ -15556,6 +15572,17 @@ f_mixin_declare-interface-arg:
   i_module:
     '{i_module_name}':
     - '{i_kind}'
+  owner: library
+f_mixin_declare-local-variable:
+  name: f_mixin_declare-local-variable
+  comments:
+  - Declare a Fortran variable.
+  intent: mixin
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   owner: library
 f_mixin_dummy_arg:
   name: f_mixin_dummy_arg
@@ -20004,6 +20031,7 @@ root
         cdesc -- f_inout_void*_cdesc
       void** -- f_inout_void**
     mixin
+      arg-call-fvar -- f_mixin_arg-call-fvar
       as-intent-out -- f_mixin_as-intent-out
       capsule
         arg -- f_mixin_capsule_arg
@@ -20042,6 +20070,7 @@ root
       declare-fortran-arg -- f_mixin_declare-fortran-arg
       declare-fortran-result -- f_mixin_declare-fortran-result
       declare-interface-arg -- f_mixin_declare-interface-arg
+      declare-local-variable -- f_mixin_declare-local-variable
       dummy
         arg -- f_mixin_dummy_arg
       function -- f_mixin_function
