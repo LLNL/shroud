@@ -329,7 +329,7 @@ pointers and references.
 
 .. mixin naming conventions
    Must start with c_mixin_ or f_mixin_
-   Group together by adding cdesc_  or capsule_.
+   Group together by adding cdesc_  or capsule_ or _cfi.
    This makes the mixin block standout better which groups are working together
    rather than adding the intent or type before cdesc or capsule.
    
