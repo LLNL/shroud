@@ -810,11 +810,11 @@ def print_tree_statements(fp, statements, defaults):
 CStmts = util.Scope(
     None,
     name="c_default",
+    intent=None,
     comments=[],
     notes=[],      # implementation notes
     mixin_names=[],
     index="X",
-    intent=None,
 
     i_arg_names=None,
     i_arg_decl=None,
@@ -852,10 +852,10 @@ CStmts = util.Scope(
 FStmts = util.Scope(
     None,
     name="f_default",
+    intent=None,
     comments=[],
     notes=[],      # implementation notes
     index="X",
-    intent=None,
 
     f_arg_name=None,
     f_arg_decl=None,
