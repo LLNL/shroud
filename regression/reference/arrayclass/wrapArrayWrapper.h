@@ -32,9 +32,9 @@ extern "C" {
 // splicer begin class.ArrayWrapper.C_declarations
 // splicer end class.ArrayWrapper.C_declarations
 
-ARR_ArrayWrapper * ARR_ArrayWrapper_ctor(ARR_ArrayWrapper * SHC_rv);
+ARR_ArrayWrapper * ARR_ArrayWrapper_ctor(ARR_ArrayWrapper *SHC_rv);
 
-void ARR_ArrayWrapper_ctor_bufferify(ARR_ArrayWrapper * SHC_rv);
+void ARR_ArrayWrapper_ctor_bufferify(ARR_ArrayWrapper *SHC_rv);
 
 void ARR_ArrayWrapper_setSize(ARR_ArrayWrapper * self, int size);
 

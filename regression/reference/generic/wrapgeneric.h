@@ -64,12 +64,12 @@ void GEN_GetPointerAsPointer_float2d_bufferify(
     GEN_SHROUD_array *SHT_addr_cdesc);
 #endif
 
-void GEN_CreateStructAsClass_bufferify(GEN_StructAsClass * SHC_rv);
+void GEN_CreateStructAsClass_bufferify(GEN_StructAsClass *SHC_rv);
 
-long GEN_UpdateStructAsClass_int_bufferify(GEN_StructAsClass * arg,
+long GEN_UpdateStructAsClass_int_bufferify(GEN_StructAsClass *arg,
     int inew);
 
-long GEN_UpdateStructAsClass_long_bufferify(GEN_StructAsClass * arg,
+long GEN_UpdateStructAsClass_long_bufferify(GEN_StructAsClass *arg,
     long inew);
 
 #endif  // WRAPGENERIC_H

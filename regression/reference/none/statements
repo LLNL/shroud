@@ -22,7 +22,7 @@ c_ctor_shadow_capptr:
     '{f_module_name}':
     - '{f_capsule_data_type}'
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_call:
   - "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});"
   - "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
@@ -57,7 +57,7 @@ c_ctor_shadow_capptr_shared:
     '{f_module_name}':
     - '{f_capsule_data_type}'
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_call:
   - "std::shared_ptr<{baseclass.cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{baseclass.cxx_type}>;"
   - "*{c_local_shared} = \t std::make_shared<{baseclass.cxx_type}>({C_call_list});"
@@ -97,7 +97,7 @@ c_ctor_shadow_capsule:
     - '{f_capsule_data_type}'
   c_return_type: void
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_call:
   - "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});"
   - "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
@@ -472,7 +472,7 @@ c_function_shadow&_capptr:
     - '{f_capsule_data_type}'
   c_return_type: '{c_type} *'
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_call:
   - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -517,7 +517,7 @@ c_function_shadow&_capptr_caller:
     - '{f_capsule_data_type}'
   c_return_type: '{c_type} *'
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_call:
   - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -562,7 +562,7 @@ c_function_shadow&_capptr_library:
     - '{f_capsule_data_type}'
   c_return_type: '{c_type} *'
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_call:
   - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -602,7 +602,7 @@ c_function_shadow&_capsule:
     - '{f_capsule_data_type}'
   c_return_type: void
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_call:
   - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -640,7 +640,7 @@ c_function_shadow&_capsule_caller:
     - '{f_capsule_data_type}'
   c_return_type: void
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_call:
   - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -678,7 +678,7 @@ c_function_shadow&_capsule_library:
     - '{f_capsule_data_type}'
   c_return_type: void
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_call:
   - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -721,7 +721,7 @@ c_function_shadow*_capptr:
     - '{f_capsule_data_type}'
   c_return_type: '{c_type} *'
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_call:
   - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -766,7 +766,7 @@ c_function_shadow*_capptr_caller:
     - '{f_capsule_data_type}'
   c_return_type: '{c_type} *'
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_call:
   - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -811,7 +811,7 @@ c_function_shadow*_capptr_library:
     - '{f_capsule_data_type}'
   c_return_type: '{c_type} *'
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_call:
   - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -856,7 +856,7 @@ c_function_shadow*_capptr_shared:
     - '{f_capsule_data_type}'
   c_return_type: '{c_type} *'
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_call:
   - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -896,7 +896,7 @@ c_function_shadow*_capsule:
     - '{f_capsule_data_type}'
   c_return_type: void
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_call:
   - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -960,7 +960,7 @@ c_function_shadow<native>_capptr:
     - '{f_capsule_data_type}'
   c_return_type: '{c_type} *'
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_pre_call:
   - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
@@ -1011,7 +1011,7 @@ c_function_shadow_capptr:
     - '{f_capsule_data_type}'
   c_return_type: '{c_type} *'
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_pre_call:
   - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
@@ -1057,7 +1057,7 @@ c_function_smartptr<shadow>*_capptr:
     - '{f_capsule_data_type}'
   c_return_type: '{c_type} *'
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_call:
   - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -1102,7 +1102,7 @@ c_function_smartptr<shadow>_capptr:
     - '{f_capsule_data_type}'
   c_return_type: '{c_type} *'
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_pre_call:
   - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
@@ -1855,7 +1855,7 @@ c_in_char*_buf:
   - char *{c_var}
   - int {c_var_len}
   c_pre_call:
-  - "char * {c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
+  - "char *{c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
   c_arg_call:
   - '{c_local_cxx}'
   c_post_call:
@@ -2006,7 +2006,7 @@ c_in_native*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_pre_call:
-  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
+  - "{cxx_type} *{c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
   c_arg_call:
   - '{cxx_var}'
   c_temps:
@@ -2016,10 +2016,10 @@ c_in_native*_cdesc:
   owner: library
   lang_c:
     c_pre_call:
-    - '{cxx_type} * {c_var} = {c_var_cdesc}->base_addr;'
+    - '{cxx_type} *{c_var} = {c_var_cdesc}->base_addr;'
   lang_cxx:
     c_pre_call:
-    - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
+    - "{cxx_type} *{c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
 c_in_procedure:
   name: c_in_procedure
   intent: in
@@ -2105,7 +2105,7 @@ c_in_shadow:
   c_arg_decl:
   - '{c_type} {c_var}'
   c_pre_call:
-  - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}.addr{cast2};"
+  - "{c_const}{cxx_type} *{c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}.addr{cast2};"
   c_arg_call:
   - '*{c_local_cxx}'
   c_local:
@@ -2129,9 +2129,9 @@ c_in_shadow&:
     '{f_module_name}':
     - '{f_capsule_data_type}'
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_pre_call:
-  - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  - "{c_const}{cxx_type} *{c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
   c_arg_call:
   - '*{c_local_cxx}'
   c_local:
@@ -2157,9 +2157,9 @@ c_in_shadow*:
     '{f_module_name}':
     - '{f_capsule_data_type}'
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_pre_call:
-  - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  - "{c_const}{cxx_type} *{c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
   c_arg_call:
   - '{c_local_cxx}'
   c_local:
@@ -2185,9 +2185,9 @@ c_in_smartptr<shadow>*:
     '{f_module_name}':
     - '{f_capsule_data_type}'
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_pre_call:
-  - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  - "{c_const}{cxx_type} *{c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
   c_arg_call:
   - '{c_local_cxx}'
   c_local:
@@ -2678,7 +2678,7 @@ c_in_vector<string>&_buf:
   c_pre_call:
   - std::vector<{cxx_T}> {c_local_cxx};
   - '{{+'
-  - '{c_const}char * {c_local_s} = {c_var};'
+  - '{c_const}char *{c_local_s} = {c_var};'
   - std::vector<{cxx_T}>::size_type
   - +{c_local_i} = 0,
   - '{c_local_n} = {c_var_size};'
@@ -2732,7 +2732,7 @@ c_in_vector<string>*_buf:
   c_pre_call:
   - std::vector<{cxx_T}> {c_local_cxx};
   - '{{+'
-  - '{c_const}char * {c_local_s} = {c_var};'
+  - '{c_const}char *{c_local_s} = {c_var};'
   - std::vector<{cxx_T}>::size_type
   - +{c_local_i} = 0,
   - '{c_local_n} = {c_var_size};'
@@ -2786,7 +2786,7 @@ c_in_vector<string>_buf:
   c_pre_call:
   - std::vector<{cxx_T}> {c_local_cxx};
   - '{{+'
-  - '{c_const}char * {c_local_s} = {c_var};'
+  - '{c_const}char *{c_local_s} = {c_var};'
   - std::vector<{cxx_T}>::size_type
   - +{c_local_i} = 0,
   - '{c_local_n} = {c_var_size};'
@@ -2892,7 +2892,7 @@ c_in_void*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_pre_call:
-  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
+  - "{cxx_type} *{c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
   c_arg_call:
   - '{cxx_var}'
   c_temps:
@@ -2902,10 +2902,10 @@ c_in_void*_cdesc:
   owner: library
   lang_c:
     c_pre_call:
-    - '{cxx_type} * {c_var} = {c_var_cdesc}->base_addr;'
+    - '{cxx_type} *{c_var} = {c_var_cdesc}->base_addr;'
   lang_cxx:
     c_pre_call:
-    - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
+    - "{cxx_type} *{c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
 c_inout_bool_*:
   name: c_inout_bool_*
   intent: inout
@@ -2982,7 +2982,7 @@ c_inout_char*_buf:
   - char *{c_var}
   - int {c_var_len}
   c_pre_call:
-  - "char * {c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
+  - "char *{c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
   c_arg_call:
   - '{c_local_cxx}'
   c_post_call:
@@ -3100,7 +3100,7 @@ c_inout_native*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_pre_call:
-  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
+  - "{cxx_type} *{c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
   c_arg_call:
   - '{cxx_var}'
   c_temps:
@@ -3110,10 +3110,10 @@ c_inout_native*_cdesc:
   owner: library
   lang_c:
     c_pre_call:
-    - '{cxx_type} * {c_var} = {c_var_cdesc}->base_addr;'
+    - '{cxx_type} *{c_var} = {c_var_cdesc}->base_addr;'
   lang_cxx:
     c_pre_call:
-    - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
+    - "{cxx_type} *{c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
 c_inout_native*_hidden:
   name: c_inout_native*_hidden
   intent: inout
@@ -3148,9 +3148,9 @@ c_inout_shadow&:
     '{f_module_name}':
     - '{f_capsule_data_type}'
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_pre_call:
-  - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  - "{c_const}{cxx_type} *{c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
   c_arg_call:
   - '{c_local_cxx}'
   c_local:
@@ -3176,9 +3176,9 @@ c_inout_shadow*:
     '{f_module_name}':
     - '{f_capsule_data_type}'
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_pre_call:
-  - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  - "{c_const}{cxx_type} *{c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
   c_arg_call:
   - '{c_local_cxx}'
   c_local:
@@ -3204,9 +3204,9 @@ c_inout_smartptr<shadow>*:
     '{f_module_name}':
     - '{f_capsule_data_type}'
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_pre_call:
-  - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  - "{c_const}{cxx_type} *{c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
   c_arg_call:
   - '{c_local_cxx}'
   c_local:
@@ -3695,7 +3695,7 @@ c_inout_void*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_pre_call:
-  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
+  - "{cxx_type} *{c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
   c_arg_call:
   - '{cxx_var}'
   c_temps:
@@ -3705,10 +3705,10 @@ c_inout_void*_cdesc:
   owner: library
   lang_c:
     c_pre_call:
-    - '{cxx_type} * {c_var} = {c_var_cdesc}->base_addr;'
+    - '{cxx_type} *{c_var} = {c_var_cdesc}->base_addr;'
   lang_cxx:
     c_pre_call:
-    - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
+    - "{cxx_type} *{c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
 c_mixin_arg-call-cvar:
   name: c_mixin_arg-call-cvar
   intent: mixin
@@ -3817,7 +3817,7 @@ c_mixin_cast-argument:
   comments:
   - Cast C argument to local C++ variable.
   c_pre_call:
-  - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  - "{c_const}{cxx_type} *{c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
   c_local:
   - cxx
   owner: library
@@ -4080,7 +4080,7 @@ c_mixin_char-alloc:
   comments:
   - Allocate a local char variable in C wrapper.
   c_pre_call:
-  - "char * {c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
+  - "char *{c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
   c_post_call:
   - '{c_helper_char_free}({c_local_cxx});'
   c_local:
@@ -4452,7 +4452,7 @@ c_mixin_local-cxx-ptr:
   comments:
   - Declare a local_cxx pointer variable in the C wrapper.
   c_pre_call:
-  - '{c_const}{c_type} * {c_local_cxx};'
+  - '{c_const}{c_type} *{c_local_cxx};'
   c_local:
   - cxx
   owner: library
@@ -4583,7 +4583,7 @@ c_mixin_shadow:
     '{f_module_name}':
     - '{f_capsule_data_type}'
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   owner: library
 c_mixin_string-char-copy-to-arg:
   name: c_mixin_string-char-copy-to-arg
@@ -4928,7 +4928,7 @@ c_out_native*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_pre_call:
-  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
+  - "{cxx_type} *{c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
   c_arg_call:
   - '{cxx_var}'
   c_temps:
@@ -4938,10 +4938,10 @@ c_out_native*_cdesc:
   owner: library
   lang_c:
     c_pre_call:
-    - '{cxx_type} * {c_var} = {c_var_cdesc}->base_addr;'
+    - '{cxx_type} *{c_var} = {c_var_cdesc}->base_addr;'
   lang_cxx:
     c_pre_call:
-    - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
+    - "{cxx_type} *{c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
 c_out_native*_hidden:
   name: c_out_native*_hidden
   intent: out
@@ -5824,7 +5824,7 @@ c_out_void*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_pre_call:
-  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
+  - "{cxx_type} *{c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
   c_arg_call:
   - '{cxx_var}'
   c_temps:
@@ -5834,10 +5834,10 @@ c_out_void*_cdesc:
   owner: library
   lang_c:
     c_pre_call:
-    - '{cxx_type} * {c_var} = {c_var_cdesc}->base_addr;'
+    - '{cxx_type} *{c_var} = {c_var_cdesc}->base_addr;'
   lang_cxx:
     c_pre_call:
-    - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
+    - "{cxx_type} *{c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
 c_setter:
   name: c_setter
   intent: setter
@@ -5961,7 +5961,7 @@ f_ctor_shadow_capsule:
     - '{f_capsule_data_type}'
   c_return_type: void
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_call:
   - "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});"
   - "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
@@ -6002,7 +6002,7 @@ f_ctor_shadow_capsule_shared:
     - '{f_capsule_data_type}'
   c_return_type: void
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_call:
   - "std::shared_ptr<{baseclass.cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{baseclass.cxx_type}>;"
   - "*{c_local_shared} = \t std::make_shared<{baseclass.cxx_type}>({C_call_list});"
@@ -7670,7 +7670,7 @@ f_function_shadow&_capsule:
     - '{f_capsule_data_type}'
   c_return_type: void
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_call:
   - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -7715,7 +7715,7 @@ f_function_shadow&_capsule_caller:
     - '{f_capsule_data_type}'
   c_return_type: void
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_call:
   - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -7760,7 +7760,7 @@ f_function_shadow&_capsule_library:
     - '{f_capsule_data_type}'
   c_return_type: void
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_call:
   - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -7805,7 +7805,7 @@ f_function_shadow*_capsule:
     - '{f_capsule_data_type}'
   c_return_type: void
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_call:
   - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -7850,7 +7850,7 @@ f_function_shadow*_capsule_caller:
     - '{f_capsule_data_type}'
   c_return_type: void
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_call:
   - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -7895,7 +7895,7 @@ f_function_shadow*_capsule_library:
     - '{f_capsule_data_type}'
   c_return_type: void
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_call:
   - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -7964,7 +7964,7 @@ f_function_shadow<native>_capsule:
     - '{f_capsule_data_type}'
   c_return_type: void
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_pre_call:
   - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
@@ -8015,7 +8015,7 @@ f_function_shadow_capsule:
     - '{f_capsule_data_type}'
   c_return_type: void
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_pre_call:
   - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
@@ -8061,7 +8061,7 @@ f_function_smartptr<shadow>*_capsule:
     - '{f_capsule_data_type}'
   c_return_type: void
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_call:
   - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -8106,7 +8106,7 @@ f_function_smartptr<shadow>_capsule:
     - '{f_capsule_data_type}'
   c_return_type: void
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_pre_call:
   - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
@@ -12289,7 +12289,7 @@ f_in_char*_buf:
   - char *{c_var}
   - int {c_var_len}
   c_pre_call:
-  - "char * {c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
+  - "char *{c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
   c_arg_call:
   - '{c_local_cxx}'
   c_post_call:
@@ -12363,7 +12363,7 @@ f_in_char*_cfi:
   c_pre_call:
   - '{c_type} *{c_var} = {cast_static}{c_type} *{cast1}{c_var_cfi}->base_addr{cast2};'
   - size_t {c_var_len} = {c_var_cfi}->elem_len;
-  - "char * {c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
+  - "char *{c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
   c_arg_call:
   - '{c_local_cxx}'
   c_post_call:
@@ -12577,7 +12577,7 @@ f_in_native*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_pre_call:
-  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
+  - "{cxx_type} *{c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
   c_arg_call:
   - '{cxx_var}'
   c_temps:
@@ -12742,7 +12742,7 @@ f_in_shadow:
   c_arg_decl:
   - '{c_type} {c_var}'
   c_pre_call:
-  - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}.addr{cast2};"
+  - "{c_const}{cxx_type} *{c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}.addr{cast2};"
   c_arg_call:
   - '*{c_local_cxx}'
   c_local:
@@ -12776,9 +12776,9 @@ f_in_shadow&:
     '{f_module_name}':
     - '{f_capsule_data_type}'
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_pre_call:
-  - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  - "{c_const}{cxx_type} *{c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
   c_arg_call:
   - '*{c_local_cxx}'
   c_local:
@@ -12814,9 +12814,9 @@ f_in_shadow*:
     '{f_module_name}':
     - '{f_capsule_data_type}'
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_pre_call:
-  - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  - "{c_const}{cxx_type} *{c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
   c_arg_call:
   - '{c_local_cxx}'
   c_local:
@@ -12852,9 +12852,9 @@ f_in_smartptr<shadow>*:
     '{f_module_name}':
     - '{f_capsule_data_type}'
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_pre_call:
-  - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  - "{c_const}{cxx_type} *{c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
   c_arg_call:
   - '{c_local_cxx}'
   c_local:
@@ -13590,7 +13590,7 @@ f_in_vector<string>&_buf:
   c_pre_call:
   - std::vector<{cxx_T}> {c_local_cxx};
   - '{{+'
-  - '{c_const}char * {c_local_s} = {c_var};'
+  - '{c_const}char *{c_local_s} = {c_var};'
   - std::vector<{cxx_T}>::size_type
   - +{c_local_i} = 0,
   - '{c_local_n} = {c_var_size};'
@@ -13657,7 +13657,7 @@ f_in_vector<string>*_buf:
   c_pre_call:
   - std::vector<{cxx_T}> {c_local_cxx};
   - '{{+'
-  - '{c_const}char * {c_local_s} = {c_var};'
+  - '{c_const}char *{c_local_s} = {c_var};'
   - std::vector<{cxx_T}>::size_type
   - +{c_local_i} = 0,
   - '{c_local_n} = {c_var_size};'
@@ -13724,7 +13724,7 @@ f_in_vector<string>_buf:
   c_pre_call:
   - std::vector<{cxx_T}> {c_local_cxx};
   - '{{+'
-  - '{c_const}char * {c_local_s} = {c_var};'
+  - '{c_const}char *{c_local_s} = {c_var};'
   - std::vector<{cxx_T}>::size_type
   - +{c_local_i} = 0,
   - '{c_local_n} = {c_var_size};'
@@ -13904,7 +13904,7 @@ f_in_void*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_pre_call:
-  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
+  - "{cxx_type} *{c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
   c_arg_call:
   - '{cxx_var}'
   c_temps:
@@ -14033,7 +14033,7 @@ f_inout_char*_buf:
   - char *{c_var}
   - int {c_var_len}
   c_pre_call:
-  - "char * {c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
+  - "char *{c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
   c_arg_call:
   - '{c_local_cxx}'
   c_post_call:
@@ -14111,7 +14111,7 @@ f_inout_char*_cfi:
   c_pre_call:
   - '{c_type} *{c_var} = {cast_static}{c_type} *{cast1}{c_var_cfi}->base_addr{cast2};'
   - size_t {c_var_len} = {c_var_cfi}->elem_len;
-  - "char * {c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
+  - "char *{c_local_cxx} = {c_helper_char_alloc}(\t{c_var},\t {c_var_len},\t {c_blanknull});"
   c_arg_call:
   - '{c_local_cxx}'
   c_post_call:
@@ -14278,7 +14278,7 @@ f_inout_native*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_pre_call:
-  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
+  - "{cxx_type} *{c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
   c_arg_call:
   - '{cxx_var}'
   c_temps:
@@ -14370,9 +14370,9 @@ f_inout_shadow&:
     '{f_module_name}':
     - '{f_capsule_data_type}'
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_pre_call:
-  - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  - "{c_const}{cxx_type} *{c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
   c_arg_call:
   - '{c_local_cxx}'
   c_local:
@@ -14408,9 +14408,9 @@ f_inout_shadow*:
     '{f_module_name}':
     - '{f_capsule_data_type}'
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_pre_call:
-  - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  - "{c_const}{cxx_type} *{c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
   c_arg_call:
   - '{c_local_cxx}'
   c_local:
@@ -14446,9 +14446,9 @@ f_inout_smartptr<shadow>*:
     '{f_module_name}':
     - '{f_capsule_data_type}'
   c_arg_decl:
-  - '{c_type} * {c_var}'
+  - '{c_type} *{c_var}'
   c_pre_call:
-  - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  - "{c_const}{cxx_type} *{c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
   c_arg_call:
   - '{c_local_cxx}'
   c_local:
@@ -15052,7 +15052,7 @@ f_inout_vector_buf_targ_string_scalar:
   c_pre_call:
   - std::vector<{cxx_T}> {cxx_var};
   - '{{+'
-  - '{c_const}char * {c_local_s} = {c_var};'
+  - '{c_const}char *{c_local_s} = {c_var};'
   - std::vector<{cxx_T}>::size_type
   - +{c_local_i} = 0,
   - '{c_local_n} = {c_var_size};'
@@ -15066,7 +15066,7 @@ f_inout_vector_buf_targ_string_scalar:
   - '{c_local_cxx}'
   c_post_call:
   - '{{+'
-  - char * {c_local_s} = {c_var};
+  - char *{c_local_s} = {c_var};
   - std::vector<{cxx_T}>::size_type
   - +{c_local_i} = 0,
   - '{c_local_n} = {c_var_size};'
@@ -15159,7 +15159,7 @@ f_inout_void*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_pre_call:
-  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
+  - "{cxx_type} *{c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
   c_arg_call:
   - '{cxx_var}'
   c_temps:
@@ -17132,7 +17132,7 @@ f_out_native**_cfi_allocatable:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
-  - '{c_const}{c_type} * {c_local_cxx};'
+  - '{c_const}{c_type} *{c_local_cxx};'
   c_arg_call:
   - '&{c_local_cxx}'
   c_post_call:
@@ -17187,7 +17187,7 @@ f_out_native**_cfi_pointer:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
-  - '{c_const}{c_type} * {c_local_cxx};'
+  - '{c_const}{c_type} *{c_local_cxx};'
   c_arg_call:
   - '&{c_local_cxx}'
   c_post_call:
@@ -17288,7 +17288,7 @@ f_out_native*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_pre_call:
-  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
+  - "{cxx_type} *{c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
   c_arg_call:
   - '{cxx_var}'
   c_temps:
@@ -18340,7 +18340,7 @@ f_out_vector_buf_targ_string_scalar:
   - '{c_local_cxx}'
   c_post_call:
   - '{{+'
-  - char * {c_local_s} = {c_var};
+  - char *{c_local_s} = {c_var};
   - std::vector<{cxx_T}>::size_type
   - +{c_local_i} = 0,
   - '{c_local_n} = {c_var_size};'
@@ -18462,7 +18462,7 @@ f_out_void*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_pre_call:
-  - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
+  - "{cxx_type} *{c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
   c_arg_call:
   - '{cxx_var}'
   c_temps:
@@ -18742,7 +18742,7 @@ h_helper_array_context:
   - ''
   - // helper array_context
   - struct s_LIB_SHROUD_array {+
-  - void * base_addr;
+  - void *base_addr;
   - int type;        /* type of element */
   - size_t elem_len; /* bytes-per-item or character len in c++ */
   - size_t size;     /* size of data in c++ */
@@ -19026,7 +19026,7 @@ h_helper_char_array_alloc:
   - // CHARACTER(len) src(nsrc)
   - static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
   - '{+'
-  - "char **rv = static_cast<char **>\t(std::malloc(sizeof(char *) * nsrc));"
+  - "char **rv = static_cast<char **>\t(std::malloc(sizeof(char *) *nsrc));"
   - const char *src0 = src;
   - for(int i=0; i < nsrc; ++i) {+
   - int ntrim = ShroudCharLenTrim(src0, len);
@@ -19286,7 +19286,7 @@ h_helper_string_to_cdesc:
   - // Save std::string metadata into array to allow Fortran to access values.
   - // CHARACTER(len=elem_size) src
   - "static void ShroudStringToCdesc(\tLIB_SHROUD_array *cdesc,\t const std::string\
-    \ * src)"
+    \ *src)"
   - '{+'
   - if (src->empty()) {+
   - cdesc->base_addr = NULL;
@@ -19407,8 +19407,8 @@ h_helper_vector_string_allocatable:
   - void LIB_ShroudVectorStringAllocatable(LIB_SHROUD_array *dest, LIB_SHROUD_capsule_data
     *src)
   - '{+'
-  - "std::vector<std::string> *cxxvec =\t static_cast< std::vector<std::string> *\
-    \ >\t(src->addr);"
+  - "std::vector<std::string> *cxxvec =\t static_cast< std::vector<std::string> *>\t\
+    (src->addr);"
   - LIB_ShroudVectorStringOut(dest, *cxxvec);
   - -}
   f_fmtname: LIB_SHROUD_vector_string_allocatable

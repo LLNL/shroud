@@ -600,7 +600,7 @@
                                     "fmtdict": {
                                         "C_call_function": "SH_this->ctor(\t)",
                                         "C_name": "CXX_Class1_ctor",
-                                        "C_prototype": "CXX_Class1 * SHC_rv",
+                                        "C_prototype": "CXX_Class1 *SHC_rv",
                                         "C_return_type": "CXX_Class1 *",
                                         "c_abstract_decl": "CXX_Class1 *",
                                         "c_const": "",
@@ -649,7 +649,7 @@
                                     "fmtdict": {
                                         "C_call_function": "SH_this->ctor(\t)",
                                         "C_name": "CXX_Class1_ctor_bufferify",
-                                        "C_prototype": "CXX_Class1 * SHC_rv",
+                                        "C_prototype": "CXX_Class1 *SHC_rv",
                                         "C_return_type": "void",
                                         "F_arg_c_call": "SHT_rv%cxxmem",
                                         "F_arguments": "",

@@ -324,7 +324,7 @@ void OWN_createClassStatic(int flag)
 // ----------------------------------------
 // Function:  Class1 *getClassStatic +owner(library)
 // Statement: c_function_shadow*_capptr_library
-OWN_Class1 * OWN_getClassStatic(OWN_Class1 * SHC_rv)
+OWN_Class1 * OWN_getClassStatic(OWN_Class1 *SHC_rv)
 {
     // splicer begin function.getClassStatic
     Class1 *SHC_rv_cxx = getClassStatic();
@@ -337,7 +337,7 @@ OWN_Class1 * OWN_getClassStatic(OWN_Class1 * SHC_rv)
 // ----------------------------------------
 // Function:  Class1 *getClassStatic +owner(library)
 // Statement: f_function_shadow*_capsule_library
-void OWN_getClassStatic_bufferify(OWN_Class1 * SHC_rv)
+void OWN_getClassStatic_bufferify(OWN_Class1 *SHC_rv)
 {
     // splicer begin function.getClassStatic_bufferify
     Class1 *SHC_rv_cxx = getClassStatic();
@@ -356,7 +356,7 @@ void OWN_getClassStatic_bufferify(OWN_Class1 * SHC_rv)
 // ----------------------------------------
 // Argument:  int flag
 // Statement: c_in_native
-OWN_Class1 * OWN_getClassNew(int flag, OWN_Class1 * SHC_rv)
+OWN_Class1 * OWN_getClassNew(int flag, OWN_Class1 *SHC_rv)
 {
     // splicer begin function.getClassNew
     Class1 *SHC_rv_cxx = getClassNew(flag);
@@ -376,7 +376,7 @@ OWN_Class1 * OWN_getClassNew(int flag, OWN_Class1 * SHC_rv)
 // ----------------------------------------
 // Argument:  int flag
 // Statement: f_in_native
-void OWN_getClassNew_bufferify(int flag, OWN_Class1 * SHC_rv)
+void OWN_getClassNew_bufferify(int flag, OWN_Class1 *SHC_rv)
 {
     // splicer begin function.getClassNew_bufferify
     Class1 *SHC_rv_cxx = getClassNew(flag);

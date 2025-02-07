@@ -62,8 +62,7 @@ static char *ShroudCharAlloc(const char *src, int nsrc, int blanknull)
 // CHARACTER(len) src(nsrc)
 static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
 {
-    char **rv = static_cast<char **>
-        (std::malloc(sizeof(char *) * nsrc));
+    char **rv = static_cast<char **>(std::malloc(sizeof(char *) *nsrc));
     const char *src0 = src;
     for(int i=0; i < nsrc; ++i) {
         int ntrim = ShroudCharLenTrim(src0, len);
@@ -278,7 +277,7 @@ void CHA_passCharPtrInOut(char *s)
 void CHA_passCharPtrInOut_bufferify(char *s, int SHT_s_len)
 {
     // splicer begin function.passCharPtrInOut_bufferify
-    char * SHC_s_cxx = ShroudCharAlloc(s, SHT_s_len, 0);
+    char *SHC_s_cxx = ShroudCharAlloc(s, SHT_s_len, 0);
     passCharPtrInOut(SHC_s_cxx);
     ShroudCharCopy(s, SHT_s_len, SHC_s_cxx, -1);
     ShroudCharFree(SHC_s_cxx);
@@ -552,7 +551,7 @@ void CHA_CpassCharPtr_bufferify(char *dest, int SHT_dest_len, char *src,
     int SHT_src_len)
 {
     // splicer begin function.CpassCharPtr_bufferify
-    char * SHC_src_cxx = ShroudCharAlloc(src, SHT_src_len, 1);
+    char *SHC_src_cxx = ShroudCharAlloc(src, SHT_src_len, 1);
     CpassCharPtr(dest, SHC_src_cxx);
     ShroudCharBlankFill(dest, SHT_dest_len);
     ShroudCharFree(SHC_src_cxx);
@@ -600,7 +599,7 @@ void CHA_CpassCharPtrBlank_bufferify(char *dest, int SHT_dest_len,
     char *src, int SHT_src_len)
 {
     // splicer begin function.CpassCharPtrBlank_bufferify
-    char * SHC_src_cxx = ShroudCharAlloc(src, SHT_src_len, 1);
+    char *SHC_src_cxx = ShroudCharAlloc(src, SHT_src_len, 1);
     CpassCharPtrBlank(dest, SHC_src_cxx);
     ShroudCharBlankFill(dest, SHT_dest_len);
     ShroudCharFree(SHC_src_cxx);
@@ -642,7 +641,7 @@ int CHA_CpassCharPtrNotrim(const char *src)
 int CHA_CpassCharPtrNotrim_bufferify(char *src, int SHT_src_len)
 {
     // splicer begin function.CpassCharPtrNotrim_bufferify
-    char * SHC_src_cxx = ShroudCharAlloc(src, SHT_src_len, 0);
+    char *SHC_src_cxx = ShroudCharAlloc(src, SHT_src_len, 0);
     int SHC_rv = CpassCharPtrNotrim(SHC_src_cxx);
     ShroudCharFree(SHC_src_cxx);
     return SHC_rv;

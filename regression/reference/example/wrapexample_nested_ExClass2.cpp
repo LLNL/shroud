@@ -60,7 +60,7 @@ static int ShroudCharLenTrim(const char *src, int nsrc) {
 // Save std::string metadata into array to allow Fortran to access values.
 // CHARACTER(len=elem_size) src
 static void ShroudStringToCdesc(AA_SHROUD_array *cdesc,
-    const std::string * src)
+    const std::string *src)
 {
     if (src->empty()) {
         cdesc->base_addr = NULL;
@@ -87,7 +87,7 @@ static void ShroudStringToCdesc(AA_SHROUD_array *cdesc,
 // Argument:  const string *name +len_trim(trim_name)
 // Statement: c_in_string*
 AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor(
-    const char *name, AA_example_nested_ExClass2 * SHC_rv)
+    const char *name, AA_example_nested_ExClass2 *SHC_rv)
 {
     // splicer begin namespace.example::nested.class.ExClass2.method.ctor
     const std::string SHC_name_cxx(name);
@@ -110,7 +110,7 @@ AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor(
 // Argument:  const string *name +len_trim(trim_name)
 // Statement: f_in_string*_buf
 void AA_example_nested_ExClass2_ctor_bufferify(char *name,
-    int SHT_name_len, AA_example_nested_ExClass2 * SHC_rv)
+    int SHT_name_len, AA_example_nested_ExClass2 *SHC_rv)
 {
     // splicer begin namespace.example::nested.class.ExClass2.method.ctor_bufferify
     int SHC_name_trim = ShroudCharLenTrim(name, SHT_name_len);
@@ -295,13 +295,13 @@ int AA_example_nested_ExClass2_GetNameLength(
 // Argument:  const ExClass1 *in
 // Statement: c_in_shadow*
 AA_example_nested_ExClass1 * AA_example_nested_ExClass2_get_class1(
-    AA_example_nested_ExClass2 * self, AA_example_nested_ExClass1 * in,
-    AA_example_nested_ExClass1 * SHC_rv)
+    AA_example_nested_ExClass2 * self, AA_example_nested_ExClass1 *in,
+    AA_example_nested_ExClass1 *SHC_rv)
 {
     example::nested::ExClass2 *SH_this =
         static_cast<example::nested::ExClass2 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass2.method.get_class1
-    const example::nested::ExClass1 * SHC_in_cxx =
+    const example::nested::ExClass1 *SHC_in_cxx =
         static_cast<const example::nested::ExClass1 *>(in->addr);
     example::nested::ExClass1 *SHC_rv_cxx = SH_this->get_class1(
         SHC_in_cxx);
@@ -318,13 +318,13 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass2_get_class1(
 // Argument:  const ExClass1 *in
 // Statement: f_in_shadow*
 void AA_example_nested_ExClass2_get_class1_bufferify(
-    AA_example_nested_ExClass2 * self, AA_example_nested_ExClass1 * in,
-    AA_example_nested_ExClass1 * SHC_rv)
+    AA_example_nested_ExClass2 * self, AA_example_nested_ExClass1 *in,
+    AA_example_nested_ExClass1 *SHC_rv)
 {
     example::nested::ExClass2 *SH_this =
         static_cast<example::nested::ExClass2 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass2.method.get_class1_bufferify
-    const example::nested::ExClass1 * SHC_in_cxx =
+    const example::nested::ExClass1 *SHC_in_cxx =
         static_cast<const example::nested::ExClass1 *>(in->addr);
     example::nested::ExClass1 *SHC_rv_cxx = SH_this->get_class1(
         SHC_in_cxx);

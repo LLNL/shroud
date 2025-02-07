@@ -42,7 +42,7 @@
                                     "fmtdict": {
                                         "C_call_function": "SH_this->ctor(\t)",
                                         "C_name": "ARR_ArrayWrapper_ctor",
-                                        "C_prototype": "ARR_ArrayWrapper * SHC_rv",
+                                        "C_prototype": "ARR_ArrayWrapper *SHC_rv",
                                         "C_return_type": "ARR_ArrayWrapper *",
                                         "c_abstract_decl": "ARR_ArrayWrapper *",
                                         "c_const": "",
@@ -91,7 +91,7 @@
                                     "fmtdict": {
                                         "C_call_function": "SH_this->ctor(\t)",
                                         "C_name": "ARR_ArrayWrapper_ctor_bufferify",
-                                        "C_prototype": "ARR_ArrayWrapper * SHC_rv",
+                                        "C_prototype": "ARR_ArrayWrapper *SHC_rv",
                                         "C_return_type": "void",
                                         "F_arg_c_call": "SHT_rv%cxxmem",
                                         "F_arguments": "",

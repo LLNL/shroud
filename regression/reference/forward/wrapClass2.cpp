@@ -27,7 +27,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  Class2
 // Statement: c_ctor_shadow_capptr
-FOR_Class2 * FOR_Class2_ctor(FOR_Class2 * SHC_rv)
+FOR_Class2 * FOR_Class2_ctor(FOR_Class2 *SHC_rv)
 {
     // splicer begin class.Class2.method.ctor
     forward::Class2 *SHCXX_rv = new forward::Class2();
@@ -40,7 +40,7 @@ FOR_Class2 * FOR_Class2_ctor(FOR_Class2 * SHC_rv)
 // ----------------------------------------
 // Function:  Class2
 // Statement: f_ctor_shadow_capsule
-void FOR_Class2_ctor_bufferify(FOR_Class2 * SHC_rv)
+void FOR_Class2_ctor_bufferify(FOR_Class2 *SHC_rv)
 {
     // splicer begin class.Class2.method.ctor_bufferify
     forward::Class2 *SHCXX_rv = new forward::Class2();
@@ -68,12 +68,12 @@ void FOR_Class2_dtor(FOR_Class2 * self)
 // ----------------------------------------
 // Argument:  tutorial::Class1 *arg +intent(in)
 // Statement: c_in_shadow*
-void FOR_Class2_func1(FOR_Class2 * self, TUT_Class1 * arg)
+void FOR_Class2_func1(FOR_Class2 * self, TUT_Class1 *arg)
 {
     forward::Class2 *SH_this = static_cast<forward::Class2 *>
         (self->addr);
     // splicer begin class.Class2.method.func1
-    tutorial::Class1 * SHC_arg_cxx = static_cast<tutorial::Class1 *>
+    tutorial::Class1 *SHC_arg_cxx = static_cast<tutorial::Class1 *>
         (arg->addr);
     SH_this->func1(SHC_arg_cxx);
     // splicer end class.Class2.method.func1
@@ -85,12 +85,12 @@ void FOR_Class2_func1(FOR_Class2 * self, TUT_Class1 * arg)
 // ----------------------------------------
 // Argument:  Class3 *arg +intent(in)
 // Statement: c_in_shadow*
-void FOR_Class2_acceptClass3(FOR_Class2 * self, FOR_Class3 * arg)
+void FOR_Class2_acceptClass3(FOR_Class2 * self, FOR_Class3 *arg)
 {
     forward::Class2 *SH_this = static_cast<forward::Class2 *>
         (self->addr);
     // splicer begin class.Class2.method.acceptClass3
-    forward::Class3 * SHC_arg_cxx = static_cast<forward::Class3 *>
+    forward::Class3 *SHC_arg_cxx = static_cast<forward::Class3 *>
         (arg->addr);
     SH_this->acceptClass3(SHC_arg_cxx);
     // splicer end class.Class2.method.acceptClass3

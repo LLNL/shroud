@@ -32,7 +32,7 @@ extern "C" {
 // ----------------------------------------
 // Argument:  int arg1
 // Statement: c_in_native
-DEF_Class1 * DEF_Class1_new_0(int arg1, DEF_Class1 * SHC_rv)
+DEF_Class1 * DEF_Class1_new_0(int arg1, DEF_Class1 *SHC_rv)
 {
     // splicer begin class.Class1.method.new_0
     Class1 *SHCXX_rv = new Class1(arg1);
@@ -53,7 +53,7 @@ DEF_Class1 * DEF_Class1_new_0(int arg1, DEF_Class1 * SHC_rv)
 // ----------------------------------------
 // Argument:  int arg1
 // Statement: f_in_native
-void DEF_Class1_new_0_bufferify(int arg1, DEF_Class1 * SHC_rv)
+void DEF_Class1_new_0_bufferify(int arg1, DEF_Class1 *SHC_rv)
 {
     // splicer begin class.Class1.method.new_0_bufferify
     Class1 *SHCXX_rv = new Class1(arg1);
@@ -76,7 +76,7 @@ void DEF_Class1_new_0_bufferify(int arg1, DEF_Class1 * SHC_rv)
 // ----------------------------------------
 // Argument:  int arg2=1
 // Statement: c_in_native
-DEF_Class1 * DEF_Class1_new_1(int arg1, int arg2, DEF_Class1 * SHC_rv)
+DEF_Class1 * DEF_Class1_new_1(int arg1, int arg2, DEF_Class1 *SHC_rv)
 {
     // splicer begin class.Class1.method.new_1
     Class1 *SHCXX_rv = new Class1(arg1, arg2);
@@ -100,7 +100,7 @@ DEF_Class1 * DEF_Class1_new_1(int arg1, int arg2, DEF_Class1 * SHC_rv)
 // ----------------------------------------
 // Argument:  int arg2=1
 // Statement: f_in_native
-void DEF_Class1_new_1_bufferify(int arg1, int arg2, DEF_Class1 * SHC_rv)
+void DEF_Class1_new_1_bufferify(int arg1, int arg2, DEF_Class1 *SHC_rv)
 {
     // splicer begin class.Class1.method.new_1_bufferify
     Class1 *SHCXX_rv = new Class1(arg1, arg2);
@@ -126,7 +126,7 @@ void DEF_Class1_new_1_bufferify(int arg1, int arg2, DEF_Class1 * SHC_rv)
 // Argument:  int arg3=2
 // Statement: c_in_native
 DEF_Class1 * DEF_Class1_new_2(int arg1, int arg2, int arg3,
-    DEF_Class1 * SHC_rv)
+    DEF_Class1 *SHC_rv)
 {
     // splicer begin class.Class1.method.new_2
     Class1 *SHCXX_rv = new Class1(arg1, arg2, arg3);
@@ -153,7 +153,7 @@ DEF_Class1 * DEF_Class1_new_2(int arg1, int arg2, int arg3,
 // Argument:  int arg3=2
 // Statement: f_in_native
 void DEF_Class1_new_2_bufferify(int arg1, int arg2, int arg3,
-    DEF_Class1 * SHC_rv)
+    DEF_Class1 *SHC_rv)
 {
     // splicer begin class.Class1.method.new_2_bufferify
     Class1 *SHCXX_rv = new Class1(arg1, arg2, arg3);

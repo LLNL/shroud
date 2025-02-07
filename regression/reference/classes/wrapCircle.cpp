@@ -23,7 +23,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  Circle
 // Statement: c_ctor_shadow_capptr
-CLA_Circle * CLA_Circle_ctor(CLA_Circle * SHC_rv)
+CLA_Circle * CLA_Circle_ctor(CLA_Circle *SHC_rv)
 {
     // splicer begin class.Circle.method.ctor
     classes::Circle *SHCXX_rv = new classes::Circle();
@@ -36,7 +36,7 @@ CLA_Circle * CLA_Circle_ctor(CLA_Circle * SHC_rv)
 // ----------------------------------------
 // Function:  Circle
 // Statement: f_ctor_shadow_capsule
-void CLA_Circle_ctor_bufferify(CLA_Circle * SHC_rv)
+void CLA_Circle_ctor_bufferify(CLA_Circle *SHC_rv)
 {
     // splicer begin class.Circle.method.ctor_bufferify
     classes::Circle *SHCXX_rv = new classes::Circle();

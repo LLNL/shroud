@@ -29,10 +29,10 @@ extern "C" {
 // splicer end namespace.example::nested.class.ExClass2.C_declarations
 
 AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor(
-    const char *name, AA_example_nested_ExClass2 * SHC_rv);
+    const char *name, AA_example_nested_ExClass2 *SHC_rv);
 
 void AA_example_nested_ExClass2_ctor_bufferify(char *name,
-    int SHT_name_len, AA_example_nested_ExClass2 * SHC_rv);
+    int SHT_name_len, AA_example_nested_ExClass2 *SHC_rv);
 
 void AA_example_nested_ExClass2_dtor(AA_example_nested_ExClass2 * self);
 
@@ -69,12 +69,12 @@ int AA_example_nested_ExClass2_GetNameLength(
     const AA_example_nested_ExClass2 * self);
 
 AA_example_nested_ExClass1 * AA_example_nested_ExClass2_get_class1(
-    AA_example_nested_ExClass2 * self, AA_example_nested_ExClass1 * in,
-    AA_example_nested_ExClass1 * SHC_rv);
+    AA_example_nested_ExClass2 * self, AA_example_nested_ExClass1 *in,
+    AA_example_nested_ExClass1 *SHC_rv);
 
 void AA_example_nested_ExClass2_get_class1_bufferify(
-    AA_example_nested_ExClass2 * self, AA_example_nested_ExClass1 * in,
-    AA_example_nested_ExClass1 * SHC_rv);
+    AA_example_nested_ExClass2 * self, AA_example_nested_ExClass1 *in,
+    AA_example_nested_ExClass1 *SHC_rv);
 
 void AA_example_nested_ExClass2_destroyall(
     AA_example_nested_ExClass2 * self);

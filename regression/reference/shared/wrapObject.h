@@ -28,26 +28,26 @@ extern "C" {
 // splicer begin class.Object.C_declarations
 // splicer end class.Object.C_declarations
 
-SHA_Object * SHA_Object_ctor(SHA_Object * SHC_rv);
+SHA_Object * SHA_Object_ctor(SHA_Object *SHC_rv);
 
-void SHA_Object_ctor_bufferify(SHA_Object * SHC_rv);
+void SHA_Object_ctor_bufferify(SHA_Object *SHC_rv);
 
 void SHA_Object_dtor(SHA_Object * self);
 
 SHA_Object_shared * SHA_Object_createChildA(SHA_Object * self,
-    SHA_Object_shared * SHC_rv);
+    SHA_Object_shared *SHC_rv);
 
 void SHA_Object_createChildA_bufferify(SHA_Object * self,
-    SHA_Object_shared * SHC_rv);
+    SHA_Object_shared *SHC_rv);
 
 SHA_Object_shared * SHA_Object_createChildB(SHA_Object * self,
-    SHA_Object_shared * SHC_rv);
+    SHA_Object_shared *SHC_rv);
 
 void SHA_Object_createChildB_bufferify(SHA_Object * self,
-    SHA_Object_shared * SHC_rv);
+    SHA_Object_shared *SHC_rv);
 
 void SHA_Object_replaceChildB(SHA_Object * self,
-    SHA_Object_shared * child);
+    SHA_Object_shared *child);
 
 #ifdef __cplusplus
 }

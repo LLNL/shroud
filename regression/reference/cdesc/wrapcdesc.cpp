@@ -61,7 +61,7 @@ void CDE_Rank2In(int *arg)
 void CDE_Rank2In_bufferify(CDE_SHROUD_array *SHT_arg_cdesc)
 {
     // splicer begin function.Rank2In_bufferify
-    int * arg = static_cast<int *>
+    int *arg = static_cast<int *>
         (const_cast<void *>(SHT_arg_cdesc->base_addr));
     Rank2In(arg);
     // splicer end function.Rank2In_bufferify

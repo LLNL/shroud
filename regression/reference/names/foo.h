@@ -28,9 +28,9 @@ extern "C" {
 // splicer begin namespace.ns0.class.Names.C_declarations
 // splicer end namespace.ns0.class.Names.C_declarations
 
-TES_ns0_Names * XXX_TES_ns0_Names_defaultctor(TES_ns0_Names * SHC_rv);
+TES_ns0_Names * XXX_TES_ns0_Names_defaultctor(TES_ns0_Names *SHC_rv);
 
-void XXX_TES_ns0_Names_defaultctor_bufferify(TES_ns0_Names * SHC_rv);
+void XXX_TES_ns0_Names_defaultctor_bufferify(TES_ns0_Names *SHC_rv);
 
 void XXX_TES_ns0_Names_method1(TES_ns0_Names * self);
 

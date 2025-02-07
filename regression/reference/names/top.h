@@ -72,7 +72,7 @@ void TES_FunctionTU_instantiation2(float arg1, double arg2);
 
 int TES_UseImplWorker_instantiation3(void);
 
-int TES_Cstruct_as_class_sum(TES_Cstruct_as_class * point);
+int TES_Cstruct_as_class_sum(TES_Cstruct_as_class *point);
 
 void TES_external_funcs(const char *rdbase, const char *pkg,
     const char *name, void (*alloc)(double *arr, int *err),

@@ -24,7 +24,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  Object
 // Statement: c_ctor_shadow_capptr
-SHA_Object * SHA_Object_ctor(SHA_Object * SHC_rv)
+SHA_Object * SHA_Object_ctor(SHA_Object *SHC_rv)
 {
     // splicer begin class.Object.method.ctor
     Object *SHCXX_rv = new Object();
@@ -37,7 +37,7 @@ SHA_Object * SHA_Object_ctor(SHA_Object * SHC_rv)
 // ----------------------------------------
 // Function:  Object
 // Statement: f_ctor_shadow_capsule
-void SHA_Object_ctor_bufferify(SHA_Object * SHC_rv)
+void SHA_Object_ctor_bufferify(SHA_Object *SHC_rv)
 {
     // splicer begin class.Object.method.ctor_bufferify
     Object *SHCXX_rv = new Object();
@@ -62,7 +62,7 @@ void SHA_Object_dtor(SHA_Object * self)
 // Function:  std::shared_ptr<Object> *createChildA
 // Statement: c_function_smartptr<shadow>*_capptr
 SHA_Object_shared * SHA_Object_createChildA(SHA_Object * self,
-    SHA_Object_shared * SHC_rv)
+    SHA_Object_shared *SHC_rv)
 {
     Object *SH_this = static_cast<Object *>(self->addr);
     // splicer begin class.Object.method.createChildA
@@ -77,7 +77,7 @@ SHA_Object_shared * SHA_Object_createChildA(SHA_Object * self,
 // Function:  std::shared_ptr<Object> *createChildA
 // Statement: f_function_smartptr<shadow>*_capsule
 void SHA_Object_createChildA_bufferify(SHA_Object * self,
-    SHA_Object_shared * SHC_rv)
+    SHA_Object_shared *SHC_rv)
 {
     Object *SH_this = static_cast<Object *>(self->addr);
     // splicer begin class.Object.method.createChildA_bufferify
@@ -91,7 +91,7 @@ void SHA_Object_createChildA_bufferify(SHA_Object * self,
 // Function:  std::shared_ptr<Object> *createChildB
 // Statement: c_function_smartptr<shadow>*_capptr
 SHA_Object_shared * SHA_Object_createChildB(SHA_Object * self,
-    SHA_Object_shared * SHC_rv)
+    SHA_Object_shared *SHC_rv)
 {
     Object *SH_this = static_cast<Object *>(self->addr);
     // splicer begin class.Object.method.createChildB
@@ -106,7 +106,7 @@ SHA_Object_shared * SHA_Object_createChildB(SHA_Object * self,
 // Function:  std::shared_ptr<Object> *createChildB
 // Statement: f_function_smartptr<shadow>*_capsule
 void SHA_Object_createChildB_bufferify(SHA_Object * self,
-    SHA_Object_shared * SHC_rv)
+    SHA_Object_shared *SHC_rv)
 {
     Object *SH_this = static_cast<Object *>(self->addr);
     // splicer begin class.Object.method.createChildB_bufferify
@@ -123,11 +123,11 @@ void SHA_Object_createChildB_bufferify(SHA_Object * self,
 // Argument:  std::shared_ptr<Object> *child
 // Statement: c_inout_smartptr<shadow>*
 void SHA_Object_replaceChildB(SHA_Object * self,
-    SHA_Object_shared * child)
+    SHA_Object_shared *child)
 {
     Object *SH_this = static_cast<Object *>(self->addr);
     // splicer begin class.Object.method.replaceChildB
-    std::shared_ptr<Object> * SHC_child_cxx =
+    std::shared_ptr<Object> *SHC_child_cxx =
         static_cast<std::shared_ptr<Object> *>(child->addr);
     SH_this->replaceChildB(SHC_child_cxx);
     // splicer end class.Object.method.replaceChildB

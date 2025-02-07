@@ -459,7 +459,7 @@ int VEC_vector_string_count(const char *arg, size_t SHT_arg_size,
     // splicer begin function.vector_string_count
     std::vector<std::string> SHC_arg_cxx;
     {
-        const char * SHC_arg_s = arg;
+        const char *SHC_arg_s = arg;
         std::vector<std::string>::size_type
             SHC_arg_i = 0,
             SHC_arg_n = SHT_arg_size;

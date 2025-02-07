@@ -67,7 +67,7 @@ extern "C" {
 
 // helper array_context
 struct s_CXX_SHROUD_array {
-    void * base_addr;
+    void *base_addr;
     int type;        /* type of element */
     size_t elem_len; /* bytes-per-item or character len in c++ */
     size_t size;     /* size of data in c++ */

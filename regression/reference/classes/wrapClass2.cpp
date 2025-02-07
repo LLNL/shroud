@@ -27,7 +27,7 @@ extern "C" {
 // Save std::string metadata into array to allow Fortran to access values.
 // CHARACTER(len=elem_size) src
 static void ShroudStringToCdesc(CLA_SHROUD_array *cdesc,
-    const std::string * src)
+    const std::string *src)
 {
     if (src->empty()) {
         cdesc->base_addr = NULL;

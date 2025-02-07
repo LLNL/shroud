@@ -23,7 +23,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  Shape
 // Statement: c_ctor_shadow_capptr
-CLA_Shape * CLA_Shape_ctor(CLA_Shape * SHC_rv)
+CLA_Shape * CLA_Shape_ctor(CLA_Shape *SHC_rv)
 {
     // splicer begin class.Shape.method.ctor
     classes::Shape *SHCXX_rv = new classes::Shape();
@@ -36,7 +36,7 @@ CLA_Shape * CLA_Shape_ctor(CLA_Shape * SHC_rv)
 // ----------------------------------------
 // Function:  Shape
 // Statement: f_ctor_shadow_capsule
-void CLA_Shape_ctor_bufferify(CLA_Shape * SHC_rv)
+void CLA_Shape_ctor_bufferify(CLA_Shape *SHC_rv)
 {
     // splicer begin class.Shape.method.ctor_bufferify
     classes::Shape *SHCXX_rv = new classes::Shape();

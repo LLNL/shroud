@@ -23,7 +23,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  ArrayWrapper
 // Statement: c_ctor_shadow_capptr
-ARR_ArrayWrapper * ARR_ArrayWrapper_ctor(ARR_ArrayWrapper * SHC_rv)
+ARR_ArrayWrapper * ARR_ArrayWrapper_ctor(ARR_ArrayWrapper *SHC_rv)
 {
     // splicer begin class.ArrayWrapper.method.ctor
     ArrayWrapper *SHCXX_rv = new ArrayWrapper();
@@ -36,7 +36,7 @@ ARR_ArrayWrapper * ARR_ArrayWrapper_ctor(ARR_ArrayWrapper * SHC_rv)
 // ----------------------------------------
 // Function:  ArrayWrapper
 // Statement: f_ctor_shadow_capsule
-void ARR_ArrayWrapper_ctor_bufferify(ARR_ArrayWrapper * SHC_rv)
+void ARR_ArrayWrapper_ctor_bufferify(ARR_ArrayWrapper *SHC_rv)
 {
     // splicer begin class.ArrayWrapper.method.ctor_bufferify
     ArrayWrapper *SHCXX_rv = new ArrayWrapper();
