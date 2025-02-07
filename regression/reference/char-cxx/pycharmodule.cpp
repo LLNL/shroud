@@ -607,8 +607,8 @@ PY_fetchCharPtrLibrary(
 }
 
 // ----------------------------------------
-// Function:  void fetchCharPtrLibraryNULL
-// Statement: py_subroutine
+// Function:  int fetchCharPtrLibraryNULL
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  char **outstr +intent(out)
 // Statement: py_out_char**
@@ -618,6 +618,7 @@ static char PY_fetchCharPtrLibraryNULL__doc__[] =
 
 /**
  * Fetch a NULL pointer to a char array owned by the library.
+ * Return a value to test Python returning a tuple.
  */
 static PyObject *
 PY_fetchCharPtrLibraryNULL(
@@ -628,8 +629,9 @@ PY_fetchCharPtrLibraryNULL(
 // splicer begin function.fetchCharPtrLibraryNULL
     char *outstr = nullptr;
     PyObject *SHPy_outstr = nullptr;
+    PyObject *SHTPy_rv = nullptr;  // return value object
 
-    fetchCharPtrLibraryNULL(&outstr);
+    int SHCXX_rv = fetchCharPtrLibraryNULL(&outstr);
 
     // post_call
     if (outstr == NULL) {
@@ -638,8 +640,9 @@ PY_fetchCharPtrLibraryNULL(
     } else {
         SHPy_outstr = PyString_FromString(outstr);
     }
+    SHTPy_rv = Py_BuildValue("iN", SHCXX_rv, SHPy_outstr);
 
-    return (PyObject *) SHPy_outstr;
+    return SHTPy_rv;
 // splicer end function.fetchCharPtrLibraryNULL
 }
 static PyMethodDef PY_methods[] = {

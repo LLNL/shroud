@@ -644,35 +644,40 @@ module char_mod
     ! end fetch_char_ptr_library
 
     ! ----------------------------------------
-    ! Function:  void fetchCharPtrLibraryNULL
-    ! Statement: c_subroutine
+    ! Function:  int fetchCharPtrLibraryNULL
+    ! Statement: c_function_native
     ! ----------------------------------------
     ! Argument:  char **outstr +intent(out)
     ! Statement: c_out_char**
     ! start c_fetch_char_ptr_library_null
     interface
-        subroutine c_fetch_char_ptr_library_null(outstr) &
+        function c_fetch_char_ptr_library_null(outstr) &
+                result(SHT_rv) &
                 bind(C, name="CHA_fetchCharPtrLibraryNULL")
-            use iso_c_binding, only : C_PTR
+            use iso_c_binding, only : C_INT, C_PTR
             implicit none
             type(C_PTR), intent(OUT) :: outstr
-        end subroutine c_fetch_char_ptr_library_null
+            integer(C_INT) :: SHT_rv
+        end function c_fetch_char_ptr_library_null
     end interface
     ! end c_fetch_char_ptr_library_null
 
     ! ----------------------------------------
-    ! Function:  void fetchCharPtrLibraryNULL
-    ! Statement: f_subroutine
+    ! Function:  int fetchCharPtrLibraryNULL
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  char **outstr +intent(out)
     ! Statement: f_out_char**_cfi_pointer
     ! start fetch_char_ptr_library_null
     interface
-        subroutine fetch_char_ptr_library_null(outstr) &
+        function fetch_char_ptr_library_null(outstr) &
+                result(SHT_rv) &
                 bind(C, name="CHA_fetchCharPtrLibraryNULL_CFI")
+            use iso_c_binding, only : C_INT
             implicit none
             character(len=:), intent(OUT), pointer :: outstr
-        end subroutine fetch_char_ptr_library_null
+            integer(C_INT) :: SHT_rv
+        end function fetch_char_ptr_library_null
     end interface
     ! end fetch_char_ptr_library_null
 
@@ -1165,21 +1170,25 @@ contains
 #if 0
     ! Only the interface is needed
     ! ----------------------------------------
-    ! Function:  void fetchCharPtrLibraryNULL
-    ! Statement: f_subroutine
+    ! Function:  int fetchCharPtrLibraryNULL
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  char **outstr +intent(out)
     ! Statement: f_out_char**_cfi_pointer
     !>
     !! Fetch a NULL pointer to a char array owned by the library.
+    !! Return a value to test Python returning a tuple.
     !<
     ! start fetch_char_ptr_library_null
-    subroutine fetch_char_ptr_library_null(outstr)
+    function fetch_char_ptr_library_null(outstr) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
         character(len=:), intent(OUT), pointer :: outstr
+        integer(C_INT) :: SHT_rv
         ! splicer begin function.fetch_char_ptr_library_null
-        call c_fetch_char_ptr_library_null_CFI(outstr)
+        SHT_rv = c_fetch_char_ptr_library_null_CFI(outstr)
         ! splicer end function.fetch_char_ptr_library_null
-    end subroutine fetch_char_ptr_library_null
+    end function fetch_char_ptr_library_null
     ! end fetch_char_ptr_library_null
 #endif
 

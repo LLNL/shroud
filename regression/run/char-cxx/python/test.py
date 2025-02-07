@@ -57,7 +57,8 @@ class Strings(unittest.TestCase):
 
     def test_fetchCharPtrLibraryNULL(self):
         # Test when outstr is NULL
-        outstr = char.fetchCharPtrLibraryNULL()
+        irv, outstr = char.fetchCharPtrLibraryNULL()
+        self.assertEqual(0, irv)
         self.assertIs(None, outstr)
 
 # creating a new test suite

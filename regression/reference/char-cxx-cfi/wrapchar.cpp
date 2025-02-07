@@ -900,37 +900,40 @@ void CHA_fetchCharPtrLibrary_CFI(CFI_cdesc_t *SHT_outstr_cfi)
 
 /**
  * Fetch a NULL pointer to a char array owned by the library.
+ * Return a value to test Python returning a tuple.
  */
 // ----------------------------------------
-// Function:  void fetchCharPtrLibraryNULL
-// Statement: c_subroutine
+// Function:  int fetchCharPtrLibraryNULL
+// Statement: c_function_native
 // ----------------------------------------
 // Argument:  char **outstr +intent(out)
 // Statement: c_out_char**
 // start CHA_fetchCharPtrLibraryNULL
-void CHA_fetchCharPtrLibraryNULL(char **outstr)
+int CHA_fetchCharPtrLibraryNULL(char **outstr)
 {
     // splicer begin function.fetchCharPtrLibraryNULL
-    fetchCharPtrLibraryNULL(outstr);
+    int SHC_rv = fetchCharPtrLibraryNULL(outstr);
+    return SHC_rv;
     // splicer end function.fetchCharPtrLibraryNULL
 }
 // end CHA_fetchCharPtrLibraryNULL
 
 /**
  * Fetch a NULL pointer to a char array owned by the library.
+ * Return a value to test Python returning a tuple.
  */
 // ----------------------------------------
-// Function:  void fetchCharPtrLibraryNULL
-// Statement: f_subroutine
+// Function:  int fetchCharPtrLibraryNULL
+// Statement: f_function_native
 // ----------------------------------------
 // Argument:  char **outstr +intent(out)
 // Statement: f_out_char**_cfi_pointer
 // start CHA_fetchCharPtrLibraryNULL_CFI
-void CHA_fetchCharPtrLibraryNULL_CFI(CFI_cdesc_t *SHT_outstr_cfi)
+int CHA_fetchCharPtrLibraryNULL_CFI(CFI_cdesc_t *SHT_outstr_cfi)
 {
     // splicer begin function.fetchCharPtrLibraryNULL_CFI
     char *outstr;
-    fetchCharPtrLibraryNULL(&outstr);
+    int SHC_rv = fetchCharPtrLibraryNULL(&outstr);
     int SHC_outstr_err;
     if (outstr == nullptr) {
         SHC_outstr_err = CFI_setpointer(SHT_outstr_cfi, nullptr,
@@ -950,6 +953,7 @@ void CHA_fetchCharPtrLibraryNULL_CFI(CFI_cdesc_t *SHT_outstr_cfi)
                 SHC_outstr_cdesc, nullptr);
         }
     }
+    return SHC_rv;
     // splicer end function.fetchCharPtrLibraryNULL_CFI
 }
 // end CHA_fetchCharPtrLibraryNULL_CFI

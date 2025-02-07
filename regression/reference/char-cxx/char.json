@@ -5491,17 +5491,17 @@
                                 "typemap_name": "char"
                             }
                         ],
-                        "typemap_name": "void"
+                        "typemap_name": "int"
                     },
                     "specifier": [
-                        "void"
+                        "int"
                     ],
-                    "typemap_name": "void"
+                    "typemap_name": "int"
                 },
-                "decl": "void fetchCharPtrLibraryNULL(char **outstr+intent(out))",
-                "declgen": "void fetchCharPtrLibraryNULL(char **outstr +intent(out))",
+                "decl": "int fetchCharPtrLibraryNULL(char **outstr+intent(out))",
+                "declgen": "int fetchCharPtrLibraryNULL(char **outstr +intent(out))",
                 "doxygen": {
-                    "description": "Fetch a NULL pointer to a char array owned by the library.\n"
+                    "description": "Fetch a NULL pointer to a char array owned by the library.\nReturn a value to test Python returning a tuple.\n"
                 },
                 "helpers": {
                     "c": [
@@ -5528,18 +5528,40 @@
                                 "C_call_list": "outstr",
                                 "C_name": "CHA_fetchCharPtrLibraryNULL",
                                 "C_prototype": "char **outstr",
-                                "C_return_type": "void",
+                                "C_return_type": "int",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_rv_decl": "int SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "f_kind": "C_INT",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "SHT_rv",
                                 "i_arguments": "outstr",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
                                 "i_name_function": "c_fetch_char_ptr_library_null",
-                                "i_subprogram": "subroutine",
-                                "stmt_name": "c_subroutine",
-                                "typemap_name": "void"
+                                "i_result_clause": "\fresult(SHT_rv)",
+                                "i_subprogram": "function",
+                                "i_type": "integer(C_INT)",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_function_native",
+                                "typemap_name": "int"
                             },
                             "meta": {
-                                "abstract": "void",
-                                "intent": "subroutine"
+                                "abstract": "native",
+                                "intent": "function"
                             },
-                            "stmt": "c_subroutine"
+                            "stmt": "c_function_native"
                         },
                         "outstr": {
                             "fmtdict": {
@@ -5592,23 +5614,47 @@
                                 "C_call_list": "&outstr",
                                 "C_name": "CHA_fetchCharPtrLibraryNULL_bufferify",
                                 "C_prototype": "CHA_SHROUD_array *SHT_outstr_cdesc",
-                                "C_return_type": "void",
+                                "C_return_type": "int",
                                 "F_arg_c_call": "SHT_outstr_cdesc",
                                 "F_arguments": "outstr",
-                                "F_subprogram": "subroutine",
+                                "F_subprogram": "function",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_rv_decl": "int SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
                                 "f_call_function": "c_fetch_char_ptr_library_null_bufferify",
+                                "f_kind": "C_INT",
+                                "f_module_name": "iso_c_binding",
+                                "f_result_clause": "\fresult(SHT_rv)",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
                                 "i_arguments": "SHT_outstr_cdesc",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
                                 "i_name_function": "c_fetch_char_ptr_library_null_bufferify",
-                                "i_subprogram": "subroutine",
+                                "i_result_clause": "\fresult(SHT_rv)",
+                                "i_subprogram": "function",
                                 "i_suffix": "_bufferify",
-                                "stmt_name": "f_subroutine",
-                                "typemap_name": "void"
+                                "i_type": "integer(C_INT)",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_function_native",
+                                "typemap_name": "int"
                             },
                             "meta": {
-                                "abstract": "void",
-                                "intent": "subroutine"
+                                "abstract": "native",
+                                "intent": "function"
                             },
-                            "stmt": "f_subroutine"
+                            "stmt": "f_function_native"
                         },
                         "outstr": {
                             "fmtdict": {
@@ -5668,13 +5714,25 @@
                     "py": {
                         "+result": {
                             "fmtdict": {
-                                "stmt": "py_subroutine"
+                                "c_var": "SHCXX_rv",
+                                "ctor_expr": "SHCXX_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHCXX_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHCXX_rv",
+                                "data_var": "SHData_rv",
+                                "numpy_type": "NPY_INT",
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv",
+                                "stmt": "py_function_native",
+                                "value_var": "SHValue_rv"
                             },
                             "meta": {
-                                "abstract": "void",
-                                "intent": "subroutine"
+                                "abstract": "native",
+                                "intent": "function"
                             },
-                            "stmt": "py_subroutine"
+                            "stmt": "py_function_native"
                         },
                         "outstr": {
                             "fmtdict": {
@@ -5706,8 +5764,8 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "abstract": "void",
-                                "intent": "subroutine"
+                                "abstract": "native",
+                                "intent": "function"
                             }
                         },
                         "outstr": {
@@ -5727,11 +5785,11 @@
                     "F_name_impl": "fetch_char_ptr_library_null",
                     "PY_name_impl": "PY_fetchCharPtrLibraryNULL",
                     "c_arglist": [
-                        "c_var",
+                        "SHC_rv",
                         "outstr"
                     ],
                     "f_arglist": [
-                        "f_var",
+                        "SHT_rv",
                         "outstr"
                     ],
                     "function_name": "fetchCharPtrLibraryNULL"
@@ -5744,7 +5802,8 @@
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_NOARGS",
-                        "py_var": "SHPy_outstr"
+                        "PyBuild_format": "iN",
+                        "PyBuild_vargs": "SHCXX_rv,\t SHPy_outstr"
                     }
                 }
             }

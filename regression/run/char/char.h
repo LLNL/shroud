@@ -44,6 +44,6 @@ int CpassCharPtrCAPI2(const char *in, const char *src);
 int acceptCharArrayIn(char **names);
 
 void fetchCharPtrLibrary(char **outstr);
-void fetchCharPtrLibraryNULL(char **outstr);
+int fetchCharPtrLibraryNULL(char **outstr);
 
 #endif // CHAR_HPP

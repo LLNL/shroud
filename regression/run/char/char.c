@@ -216,8 +216,10 @@ void fetchCharPtrLibrary(char **outstr)
 
 //----------------------------------------------------------------------
 // Fetch a NULL pointer to a char array owned by the library.
+// Return a value to test Python returning a tuple.
 
-void fetchCharPtrLibraryNULL(char **outstr)
+int fetchCharPtrLibraryNULL(char **outstr)
 {
     *outstr = NULL;
+    return 0;
 }

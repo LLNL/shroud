@@ -791,43 +791,47 @@ void CHA_fetchCharPtrLibrary_bufferify(
 
 /**
  * Fetch a NULL pointer to a char array owned by the library.
+ * Return a value to test Python returning a tuple.
  */
 // ----------------------------------------
-// Function:  void fetchCharPtrLibraryNULL
-// Statement: c_subroutine
+// Function:  int fetchCharPtrLibraryNULL
+// Statement: c_function_native
 // ----------------------------------------
 // Argument:  char **outstr +intent(out)
 // Statement: c_out_char**
 // start CHA_fetchCharPtrLibraryNULL
-void CHA_fetchCharPtrLibraryNULL(char **outstr)
+int CHA_fetchCharPtrLibraryNULL(char **outstr)
 {
     // splicer begin function.fetchCharPtrLibraryNULL
-    fetchCharPtrLibraryNULL(outstr);
+    int SHC_rv = fetchCharPtrLibraryNULL(outstr);
+    return SHC_rv;
     // splicer end function.fetchCharPtrLibraryNULL
 }
 // end CHA_fetchCharPtrLibraryNULL
 
 /**
  * Fetch a NULL pointer to a char array owned by the library.
+ * Return a value to test Python returning a tuple.
  */
 // ----------------------------------------
-// Function:  void fetchCharPtrLibraryNULL
-// Statement: f_subroutine
+// Function:  int fetchCharPtrLibraryNULL
+// Statement: f_function_native
 // ----------------------------------------
 // Argument:  char **outstr +intent(out)
 // Statement: f_out_char**_cdesc_pointer
 // start CHA_fetchCharPtrLibraryNULL_bufferify
-void CHA_fetchCharPtrLibraryNULL_bufferify(
+int CHA_fetchCharPtrLibraryNULL_bufferify(
     CHA_SHROUD_array *SHT_outstr_cdesc)
 {
     // splicer begin function.fetchCharPtrLibraryNULL_bufferify
     char *outstr;
-    fetchCharPtrLibraryNULL(&outstr);
+    int SHC_rv = fetchCharPtrLibraryNULL(&outstr);
     SHT_outstr_cdesc->base_addr = const_cast<char *>(outstr);
     SHT_outstr_cdesc->type = SH_TYPE_CHAR;
     SHT_outstr_cdesc->elem_len = outstr == nullptr ? 0 : std::strlen(outstr);
     SHT_outstr_cdesc->size = 1;
     SHT_outstr_cdesc->rank = 0;
+    return SHC_rv;
     // splicer end function.fetchCharPtrLibraryNULL_bufferify
 }
 // end CHA_fetchCharPtrLibraryNULL_bufferify

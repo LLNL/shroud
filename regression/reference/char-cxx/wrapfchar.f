@@ -683,37 +683,42 @@ module char_mod
     ! end c_fetch_char_ptr_library_bufferify
 
     ! ----------------------------------------
-    ! Function:  void fetchCharPtrLibraryNULL
-    ! Statement: c_subroutine
+    ! Function:  int fetchCharPtrLibraryNULL
+    ! Statement: c_function_native
     ! ----------------------------------------
     ! Argument:  char **outstr +intent(out)
     ! Statement: c_out_char**
     ! start c_fetch_char_ptr_library_null
     interface
-        subroutine c_fetch_char_ptr_library_null(outstr) &
+        function c_fetch_char_ptr_library_null(outstr) &
+                result(SHT_rv) &
                 bind(C, name="CHA_fetchCharPtrLibraryNULL")
-            use iso_c_binding, only : C_PTR
+            use iso_c_binding, only : C_INT, C_PTR
             implicit none
             type(C_PTR), intent(OUT) :: outstr
-        end subroutine c_fetch_char_ptr_library_null
+            integer(C_INT) :: SHT_rv
+        end function c_fetch_char_ptr_library_null
     end interface
     ! end c_fetch_char_ptr_library_null
 
     ! ----------------------------------------
-    ! Function:  void fetchCharPtrLibraryNULL
-    ! Statement: f_subroutine
+    ! Function:  int fetchCharPtrLibraryNULL
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  char **outstr +intent(out)
     ! Statement: f_out_char**_cdesc_pointer
     ! start c_fetch_char_ptr_library_null_bufferify
     interface
-        subroutine c_fetch_char_ptr_library_null_bufferify( &
+        function c_fetch_char_ptr_library_null_bufferify( &
                 SHT_outstr_cdesc) &
+                result(SHT_rv) &
                 bind(C, name="CHA_fetchCharPtrLibraryNULL_bufferify")
+            use iso_c_binding, only : C_INT
             import :: CHA_SHROUD_array
             implicit none
             type(CHA_SHROUD_array), intent(OUT) :: SHT_outstr_cdesc
-        end subroutine c_fetch_char_ptr_library_null_bufferify
+            integer(C_INT) :: SHT_rv
+        end function c_fetch_char_ptr_library_null_bufferify
     end interface
     ! end c_fetch_char_ptr_library_null_bufferify
 
@@ -1229,24 +1234,27 @@ contains
     ! end fetch_char_ptr_library
 
     ! ----------------------------------------
-    ! Function:  void fetchCharPtrLibraryNULL
-    ! Statement: f_subroutine
+    ! Function:  int fetchCharPtrLibraryNULL
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  char **outstr +intent(out)
     ! Statement: f_out_char**_cdesc_pointer
     !>
     !! Fetch a NULL pointer to a char array owned by the library.
+    !! Return a value to test Python returning a tuple.
     !<
     ! start fetch_char_ptr_library_null
-    subroutine fetch_char_ptr_library_null(outstr)
-        use iso_c_binding, only : c_f_pointer
+    function fetch_char_ptr_library_null(outstr) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT, c_f_pointer
         character(len=:), intent(OUT), pointer :: outstr
+        integer(C_INT) :: SHT_rv
         ! splicer begin function.fetch_char_ptr_library_null
         type(CHA_SHROUD_array) :: SHT_outstr_cdesc
-        call c_fetch_char_ptr_library_null_bufferify(SHT_outstr_cdesc)
+        SHT_rv = c_fetch_char_ptr_library_null_bufferify(SHT_outstr_cdesc)
         call CHA_SHROUD_pointer_string(SHT_outstr_cdesc, outstr)
         ! splicer end function.fetch_char_ptr_library_null
-    end subroutine fetch_char_ptr_library_null
+    end function fetch_char_ptr_library_null
     ! end fetch_char_ptr_library_null
 
     ! splicer begin additional_functions

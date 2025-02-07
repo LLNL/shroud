@@ -243,6 +243,7 @@ contains
   end subroutine test_char_arrays
 
   subroutine test_char_ptr_out
+    integer irv;
     character(len=:), pointer :: outptr
     character(8), target :: nonnull = "Non-null"
 
@@ -251,13 +252,13 @@ contains
     nullify(outptr)
     call fetch_char_ptr_library(outptr)
     call assert_true(associated(outptr), "fetchCharPtrLibrary associated")
-    call assert_equals(outptr, "static_char_array", "fetchCharPtrLibrary value")
+    call assert_equals("static_char_array", outptr, "fetchCharPtrLibrary value")
     
     outptr => nonnull
-    call fetch_char_ptr_library_null(outptr)
+    irv = fetch_char_ptr_library_null(outptr)
     call assert_false(associated(outptr), "fetchCharPtrLibraryNULL")
+    call assert_equals(0, irv, "fetchCharPtrLibrary result")
     
   end subroutine test_char_ptr_out
-
   
 end program tester
