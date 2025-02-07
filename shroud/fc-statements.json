@@ -1898,14 +1898,14 @@
         "c_arg_decl": [
             "{gen.cidecl.c_var}"
         ],
-        "c_local": [
-            "cxx"
-        ],
         "c_pre_call": [
             "{cxx_type} {cxx_var};"
         ],
         "c_post_call": [
             "*{c_var} = {cast_static}{c_type}{cast1}{cxx_var}{cast2};"
+        ],
+        "c_local": [
+            "cxx"
         ]
     },
     {
@@ -2056,9 +2056,6 @@
         "mixin": [
             "c_mixin_header_stdlib"
         ],
-        "c_local": [
-            "cxx"
-        ],
         "lang_c": {
             "c_pre_call": [
                 "char *{c_local_cxx} = {stdlib}malloc({c_var_len}+1);"
@@ -2068,7 +2065,10 @@
             "c_pre_call": [
                 "char *{c_local_cxx} = new char[{c_var_len}+1];"
             ]
-        }
+        },
+        "c_local": [
+            "cxx"
+        ]
     },
     {
         "name": "c_mixin_char-free",
@@ -3186,11 +3186,11 @@
             "f_mixin_in_vector_buf",
             "c_mixin_arg-call-cxx"
         ],
-        "c_local": [
-            "cxx"
-        ],
         "c_pre_call": [
             "{c_const}std::vector<{cxx_T}> {c_local_cxx}({c_var}, {c_var} + {c_var_size});"
+        ],
+        "c_local": [
+            "cxx"
         ]
     },
     {
@@ -3206,10 +3206,6 @@
             "f_mixin_out_vector_buf",
             "c_mixin_arg-call-cxx"
         ],
-        "c_local": [
-            "cxx",
-            "size"
-        ],
         "c_pre_call": [
             "{c_const}std::vector<{cxx_T}> {c_local_cxx};"
         ],
@@ -3217,6 +3213,10 @@
             "size_t {c_local_size} =\t *{c_var_size} < {c_local_cxx}.size() ?\t *{c_var_size} :\t {c_local_cxx}.size();",
             "std::memcpy({c_var},\t {c_local_cxx}.data(),\t {c_local_size}*sizeof({c_local_cxx}[0]));",
             "*{c_var_size} = {c_local_size};"
+        ],
+        "c_local": [
+            "cxx",
+            "size"
         ],
         "impl_header": [
             "<cstring>"
@@ -3232,14 +3232,14 @@
             "f_mixin_out_vector_buf",
             "c_mixin_arg-call-cxx"
         ],
-        "c_local": [
-            "cxx"
-        ],
         "c_pre_call": [
             "{c_const}std::vector<{cxx_T}> {c_local_cxx}({c_var}, {c_var} + *{c_var_size});"
         ],
         "c_post_call": [
             "*{c_var_size} = {c_local_cxx}->size()"
+        ],
+        "c_local": [
+            "cxx"
         ],
         "notimplemented": true
     },
@@ -3258,10 +3258,6 @@
             "c_mixin_out_vector_buf_malloc",
             "c_mixin_arg-call-cxx"
         ],
-        "c_local": [
-            "cxx",
-            "bytes"
-        ],
         "c_pre_call": [
             "{c_const}std::vector<{cxx_T}> {c_local_cxx};"
         ],
@@ -3270,6 +3266,10 @@
             "*{c_var} = static_cast<{targs[0].cxx_type} *>\t(std::malloc({c_local_bytes}));",
             "std::memcpy(*{c_var},\t {c_local_cxx}.data(),\t {c_local_bytes});",
             "*{c_var_size} = {c_local_cxx}.size();"
+        ],
+        "c_local": [
+            "cxx",
+            "bytes"
         ],
         "impl_header": [
             "<cstdlib>",
@@ -3290,10 +3290,6 @@
             "c_mixin_out_vector_buf_malloc",
             "c_mixin_arg-call-cxx"
         ],
-        "c_local": [
-            "cxx",
-            "bytes"
-        ],
         "c_pre_call": [
             "{c_const}std::vector<{cxx_T}> {c_local_cxx}(*{c_var}, *{c_var} + *{c_var_size});"
         ],
@@ -3302,6 +3298,10 @@
             "*{c_var} = static_cast<{targs[0].cxx_type} *>\t(std::realloc(*{c_var},\t {c_local_bytes}));",
             "std::memcpy(*{c_var},\t {c_local_cxx}.data(),\t {c_local_bytes});",
             "*{c_var_size} = {c_local_cxx}.size();"
+        ],
+        "c_local": [
+            "cxx",
+            "bytes"
         ],
         "impl_header": [
             "<cstdlib>",
@@ -3364,11 +3364,11 @@
         "comments": [
             "Create a local std::vector."
         ],
-        "c_local": [
-            "cxx"
-        ],
         "c_pre_call": [
             "{c_const}std::vector<{cxx_T}>\t *{c_local_cxx} = new std::vector<{cxx_T}>;"
+        ],
+        "c_local": [
+            "cxx"
         ]
     },
     {
@@ -3435,13 +3435,6 @@
             "c_mixin_destructor_new-vector",
             "c_mixin_vector_cdesc_fill-cdesc"
         ],
-        "f_module": {
-            "iso_c_binding": [
-                "{targs[0].f_kind}",
-                "C_LOC",
-                "C_SIZE_T"
-            ]
-        },
         "f_arg_decl": [
             "{targs[0].f_type}{f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}"
         ],
@@ -3449,17 +3442,24 @@
             "allocate({f_var}({f_var_cdesc}%size))",
             "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
         ],
+        "f_module": {
+            "iso_c_binding": [
+                "{targs[0].f_kind}",
+                "C_LOC",
+                "C_SIZE_T"
+            ]
+        },
         "f_helper": [
             "copy_array"
-        ],
-        "c_local": [
-            "cxx"
         ],
         "c_pre_call": [
             "{c_const}std::vector<{cxx_T}>\t *{c_local_cxx} = new std::vector<{cxx_T}>;"
         ],
         "c_call": [
             "*{c_local_cxx} = {C_call_function};"
+        ],
+        "c_local": [
+            "cxx"
         ],
         "c_helper": [
             "copy_array",
@@ -3476,10 +3476,6 @@
         "mixin": [
             "c_mixin_function_vector_malloc"
         ],
-        "c_local": [
-            "cxx",
-            "bytes"
-        ],
         "c_pre_call": [
             "{c_const}std::vector<{cxx_T}>\t {c_local_cxx};"
         ],
@@ -3491,6 +3487,10 @@
             "{targs[0].cxx_type} *{c_var} =\t static_cast<{targs[0].cxx_type} *>\t(std::malloc({c_local_bytes}));",
             "std::memcpy({c_var},\t {c_local_cxx}.data(),\t {c_local_bytes});",
             "*{c_var_size} = {c_local_cxx}.size();"
+        ],
+        "c_local": [
+            "cxx",
+            "bytes"
         ],
         "impl_header": [
             "<cstdlib>",
@@ -3510,14 +3510,14 @@
             "f_mixin_in_2d_vector_buf",
             "c_mixin_arg-call-cxx"
         ],
-        "c_local": [
-            "cxx"
-        ],
         "c_pre_call": [
             "std::vector<{cxx_T}> {c_local_cxx};",
             "for (size_t i=0; i < {c_var_size}; ++i) {{+",
             "{c_local_cxx}.push_back({c_var} + ({c_var_len}*i));",
             "-}}"
+        ],
+        "c_local": [
+            "cxx"
         ]
     },
     {
@@ -3602,15 +3602,6 @@
             "f_mixin_in_string_array_buf",
             "c_mixin_arg-call-cxx"
         ],
-        "c_helper": [
-            "char_len_trim"
-        ],
-        "c_local": [
-            "cxx",
-            "i",
-            "n",
-            "s"
-        ],
         "c_pre_call": [
             "std::vector<{cxx_T}> {c_local_cxx};",
             "{{+",
@@ -3623,6 +3614,15 @@
             "{c_local_s} += {c_var_len};",
             "-}}",
             "-}}"
+        ],
+        "c_local": [
+            "cxx",
+            "i",
+            "n",
+            "s"
+        ],
+        "c_helper": [
+            "char_len_trim"
         ]
     },
     {
@@ -3654,15 +3654,6 @@
             "f_mixin_in_string_array_buf",
             "c_mixin_arg-call-cxx"
         ],
-        "c_helper": [
-            "char_copy"
-        ],
-        "c_local": [
-            "cxx",
-            "i",
-            "n",
-            "s"
-        ],
         "c_pre_call": [
             "{c_const}std::vector<{cxx_T}> {c_local_var};"
         ],
@@ -3678,13 +3669,6 @@
             "{c_local_s} += {c_var_len};",
             "-}}",
             "-}}"
-        ]
-    },
-    {
-        "name": "f_inout_vector_buf_targ_string_scalar",
-        "mixin": [
-            "f_mixin_in_string_array_buf",
-            "c_mixin_arg-call-cxx"
         ],
         "c_local": [
             "cxx",
@@ -3693,7 +3677,14 @@
             "s"
         ],
         "c_helper": [
-            "char_len_trim"
+            "char_copy"
+        ]
+    },
+    {
+        "name": "f_inout_vector_buf_targ_string_scalar",
+        "mixin": [
+            "f_mixin_in_string_array_buf",
+            "c_mixin_arg-call-cxx"
         ],
         "c_pre_call": [
             "std::vector<{cxx_T}> {cxx_var};",
@@ -3720,6 +3711,15 @@
             "{c_local_s} += {c_var_len};",
             "-}}",
             "-}}"
+        ],
+        "c_local": [
+            "cxx",
+            "i",
+            "n",
+            "s"
+        ],
+        "c_helper": [
+            "char_len_trim"
         ]
     },
     {
@@ -3903,17 +3903,17 @@
             "c_mixin_shadow",
             "c_mixin_arg-call-cxx-deref"
         ],
-        "c_arg_decl": [
-            "{c_type} {c_var}"
-        ],
         "i_arg_decl": [
             "type({f_capsule_data_type}){i_intent_attr}, value :: {i_var}"
         ],
-        "c_local": [
-            "cxx"
+        "c_arg_decl": [
+            "{c_type} {c_var}"
         ],
         "c_pre_call": [
             "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}.addr{cast2};"
+        ],
+        "c_local": [
+            "cxx"
         ]
     },
     {
@@ -3989,11 +3989,11 @@
             "c_mixin_shadow",
             "c_mixin_arg-call-cxx-deref"
         ],
-        "c_local": [
-            "cxx"
-        ],
         "c_pre_call": [
             "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+        ],
+        "c_local": [
+            "cxx"
         ]
     },
     {

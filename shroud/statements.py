@@ -816,14 +816,16 @@ CStmts = util.Scope(
     mixin_names=[],
     index="X",
 
+    # code fields
     i_arg_names=None,
     i_arg_decl=None,
-
     i_result_decl=None,
     i_result_var=None,
+    # bookkeeping fields
     i_import=None,
     i_module=None,
 
+    # code fields
     c_return_type=None,
     c_arg_decl=None,    # C prototype
     c_pre_call=[],
@@ -832,6 +834,7 @@ CStmts = util.Scope(
     c_post_call=[],
     c_final=[],      # tested in strings.yaml, part of ownership
     c_return=[],
+    # bookkeeping fields
     c_temps=None,
     c_local=None,
     c_helper=[],
@@ -857,6 +860,7 @@ FStmts = util.Scope(
     notes=[],      # implementation notes
     index="X",
 
+    # code fields
     f_arg_name=None,
     f_arg_decl=None,
     f_declare=[],
@@ -865,6 +869,7 @@ FStmts = util.Scope(
     f_call=[],
     f_post_call=[],
     f_result_var=None,
+    # bookkeeping fields
     f_module=None,
     f_temps=None,
     f_local=None,
