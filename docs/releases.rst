@@ -80,7 +80,7 @@ f statements
 Old Name                      New Name
 ===========================   ===========================
 need_wrapper                  f_need_wrapper
-arg_name                      f_arg_name
+arg_name                      f_dummy_arg
 arg_decl                      f_arg_decl
 arg_c_call                    f_arg_call
 declare                       f_declare

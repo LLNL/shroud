@@ -732,8 +732,8 @@ rv = .false.
         if stmts.f_arg_decl:
             for line in stmts.f_arg_decl:
                 append_format(arg_f_decl, line, fmt)
-        if stmts.f_arg_name:
-            for aname in stmts.f_arg_name:
+        if stmts.f_dummy_arg:
+            for aname in stmts.f_dummy_arg:
                 append_format(arg_f_names, aname, fmt)
 
     def add_stmt_var(self, group, lst, fmt):

@@ -91,7 +91,7 @@ contains
     ! ----------------------------------------
     ! Argument:  struct1 *SH_this +intent(in)
     ! Statement: f_in_struct*
-    function struct1_get_arg2(SH_this, ===>f_arg_name<===) &
+    function struct1_get_arg2(SH_this, ===>f_dummy_arg<===) &
             result(SHT_rv)
         type(struct1), intent(IN) :: SH_this
         ===>f_arg_decl<===

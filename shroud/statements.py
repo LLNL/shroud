@@ -330,6 +330,50 @@ def update_fc_statements_for_language(language, user):
     update_for_language(fc_statements, language)
     process_mixin(fc_statements, default_stmts, fc_dict)
 
+# Dictionary of statment fields which have changed name.
+deprecated_fields = dict(
+    c=dict(
+    ),
+    f=dict(
+        # v0.1 changes
+        arg_name="f_dummy_arg",
+        # develop changes
+        f_arg_name="f_dummy_arg",
+    )
+)
+    
+def check_for_deprecated_names(stmt):
+    """
+    Report any deprecated keys.
+    Update stmt with new key name.
+
+    Used to update from version 0.13.
+    The group must have a name field.
+
+    Parameters
+    ----------
+    stmt : dictionary
+    """
+    lang = '#'
+    if "name" in stmt:
+        lang = stmt["name"][0]
+    elif "alias" in stmt:
+        for alias in stmt["alias"]:
+            if alias[0] == "#":
+                continue
+            lang = alias[0]
+            break
+    deprecated = deprecated_fields.get(lang)
+    if deprecated is None:
+        return
+    keys = list(stmt.keys()) # dictionary is changing so snapshot keys
+    for key in keys:
+        if key in deprecated:
+            newkey = deprecated[key]
+            error.cursor.warning("field {} is deprecated, changed to {}".format(
+                key, newkey))
+            stmt[newkey] = stmt.pop(key)
+
 
 def post_mixin_check_statement(name, stmt):
     """check for consistency.
@@ -371,12 +415,12 @@ def post_mixin_check_statement(name, stmt):
                         .format(len(c_arg_decl), len(i_arg_decl), len(i_arg_names)))
 
 ##-    if lang in ["f", "fc"]:
-##-        # Default f_arg_name is often ok.
-##-        f_arg_name = stmt.get("f_arg_name", None)
+##-        # Default f_dummy_arg is often ok.
+##-        f_dummy_arg = stmt.get("f_dummy_arg", None)
 ##-        f_arg_decl = stmt.get("f_arg_decl", None)
-##-        if f_arg_name is not None or f_arg_decl is not None:
+##-        if f_dummy_arg is not None or f_arg_decl is not None:
 ##-            err = False
-##-            for field in ["f_arg_name", "f_arg_decl"]:
+##-            for field in ["f_dummy_arg", "f_arg_decl"]:
 ##-                fvalue = stmt.get(field)
 ##-                if fvalue is None:
 ##-                    err = True
@@ -384,15 +428,15 @@ def post_mixin_check_statement(name, stmt):
 ##-                elif not isinstance(fvalue, list):
 ##-                    err = True
 ##-                    print(field, "must be a list in", name)
-##-            if (f_arg_name is None or
+##-            if (f_dummy_arg is None or
 ##-                f_arg_decl is None):
-##-                print("f_arg_name and f_arg_decl must both exist")
+##-                print("f_dummy_arg and f_arg_decl must both exist")
 ##-                err = True
 ##-            if err:
 ##-                raise RuntimeError("Error with fields")
-##-            if len(f_arg_name) != len(f_arg_decl):
+##-            if len(f_dummy_arg) != len(f_arg_decl):
 ##-                raise RuntimeError(
-##-                    "f_arg_name and f_arg_decl "
+##-                    "f_dummy_arg and f_arg_decl "
 ##-                    "must all be same length in {}".format(name))
 
 def append_mixin(stmt, mixin):
@@ -469,6 +513,7 @@ def process_mixin(stmts, defaults, stmtdict):
         name = None
         aliases = []
         intent = None
+        check_for_deprecated_names(stmt)
         if "alias" in stmt:
             # name is not allowed"
             aliases = [ alias for alias in stmt["alias"] if alias[0] != "#"]
@@ -861,7 +906,7 @@ FStmts = util.Scope(
     index="X",
 
     # code fields
-    f_arg_name=None,
+    f_dummy_arg=None,
     f_arg_decl=None,
     f_declare=[],
     f_pre_call=[],

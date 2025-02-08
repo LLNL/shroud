@@ -6153,7 +6153,7 @@ f_function_char*_arg:
   - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
   - was base:f_function_char*_buf_copy
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'character(len=*), intent(OUT) :: {f_var}'
@@ -6232,7 +6232,7 @@ f_function_char*_buf_arg:
   - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
   - was base:f_function_char*_buf_copy
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'character(len=*), intent(OUT) :: {f_var}'
@@ -6545,7 +6545,7 @@ f_function_char*_cfi_arg:
   - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
   - was base:f_function_char*_cfi_copy
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'character(len=*), intent(OUT) :: {f_var}'
@@ -7310,7 +7310,7 @@ f_function_native*_cdesc_pointer_caller:
   notes:
   - +deref(pointer) +owner(caller)
   - The capsule contains information used to delete the memory.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var_capsule}'
   f_arg_decl:
   - 'type({F_capsule_type}), intent(OUT) :: {f_var_capsule}'
@@ -8206,7 +8206,7 @@ f_function_string&_buf_arg:
   - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
   - was base:f_function_string_buf
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'character(len=*), intent(OUT) :: {f_var}'
@@ -9023,7 +9023,7 @@ f_function_string&_cfi_arg:
   - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
   - was base:f_function_string_cfi_copy
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'character(len=*), intent(OUT) :: {f_var}'
@@ -10458,7 +10458,7 @@ f_function_string_buf_arg:
   - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
   - was base:f_function_string_buf
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'character(len=*), intent(OUT) :: {f_var}'
@@ -11157,7 +11157,7 @@ f_function_string_cfi_arg:
   - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
   - was base:f_function_string_cfi_copy
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'character(len=*), intent(OUT) :: {f_var}'
@@ -12020,7 +12020,7 @@ f_in_bool:
   intent: in
   comments:
   - Pass cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -12063,7 +12063,7 @@ f_in_char:
   - Fortran wrapper character argument.
   - C wrapper character argument.
   - Pass cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'character, value{f_intent_attr} :: {f_var}'
@@ -12088,7 +12088,7 @@ f_in_char*:
   intent: in
   comments:
   - Pass cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -12145,7 +12145,7 @@ f_in_char**_buf:
   - Converts a contiguous Fortran array of characters into
   - an array of of char * pointers to NULL terminated strings.
   - Pass cxx local variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'character(len=*){f_intent_attr} :: {f_var}(:)'
@@ -12204,7 +12204,7 @@ f_in_char**_cfi:
   - Converts a contiguous Fortran array of characters into
   - an array of of char * pointers to NULL terminated strings.
   - Pass cxx local variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'character(len=*){f_intent_attr} :: {f_var}(:)'
@@ -12250,7 +12250,7 @@ f_in_char*_buf:
   - Pass CHARACTER and LEN to C wrapper.
   - Allocate a local char variable in C wrapper.
   - Pass cxx local variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -12307,7 +12307,7 @@ f_in_char*_capi:
   intent: in
   comments:
   - Pass cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -12339,7 +12339,7 @@ f_in_char*_cfi:
   - Character argument passed as CFI_desc_t.
   - Allocate a local char variable in C wrapper.
   - Pass cxx local variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -12387,7 +12387,7 @@ f_in_enum:
   notes:
   - Use gen.cidecl to get the C interface type.
   - enums use option.F_enum_type to control the C type.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -12420,7 +12420,7 @@ f_in_native:
   - Pass cxx variable to library.
   notes:
   - An intent of 'none' is used with function pointers.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -12449,7 +12449,7 @@ f_in_native&:
   intent: in
   comments:
   - Pass dereference of cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -12478,7 +12478,7 @@ f_in_native*:
   intent: in
   comments:
   - Pass cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -12510,7 +12510,7 @@ f_in_native**:
   notes:
   - Any array of pointers.  Assumed to be non-contiguous memory.
   - All Fortran can do is treat as a type(C_PTR).
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -12540,7 +12540,7 @@ f_in_native*_cdesc:
   comments:
   - Pass cdesc as argument to C wrapper.
   - Pass cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
@@ -12592,7 +12592,7 @@ f_in_native*_cfi:
   - Make the C wrapper argument a CFI_desc_t.
   - Native argument which use CFI_desc_t.
   - Pass cxx local variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -12630,7 +12630,7 @@ f_in_procedure:
   intent: in
   comments:
   - Pass cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'procedure({f_abstract_interface}) :: {f_var}'
@@ -12657,7 +12657,7 @@ f_in_procedure_external:
   - Pass cxx variable to library.
   notes:
   - EXTERNAL is not allowed in BIND(C), so force wrapper.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'external :: {f_var}'
@@ -12686,7 +12686,7 @@ f_in_procedure_funptr:
   - Pass type(C_FUNPTR) argument.
   notes:
   - Accept a function pointer in an argument.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'type(C_FUNPTR){f_intent_attr} :: {f_var}'
@@ -12718,7 +12718,7 @@ f_in_shadow:
   comments:
   - Pass a shadow type to C wrapper.
   - Pass dereference of local cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_intent_attr} :: {f_var}'
@@ -12754,7 +12754,7 @@ f_in_shadow&:
   comments:
   - Pass a shadow type to C wrapper.
   - Pass dereference of local cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_intent_attr} :: {f_var}'
@@ -12791,7 +12791,7 @@ f_in_shadow*:
   - Pass a shadow type to C wrapper.
   - Cast C argument to local C++ variable.
   - Pass cxx local variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_intent_attr} :: {f_var}'
@@ -12829,7 +12829,7 @@ f_in_smartptr<shadow>*:
   - Pass a shadow type to C wrapper.
   - Cast C argument to local C++ variable.
   - Pass cxx local variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_intent_attr} :: {f_var}'
@@ -12896,7 +12896,7 @@ f_in_string&_buf:
   - Pass CHARACTER and LEN to C wrapper.
   - Create local std::string from the argument with trim.
   - Pass cxx local variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -12955,7 +12955,7 @@ f_in_string&_cfi:
   - Character argument passed as CFI_desc_t.
   - Create local std::string from the argument with trim.
   - Pass cxx local variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -13028,7 +13028,7 @@ f_in_string*_buf:
   - Pass CHARACTER and LEN to C wrapper.
   - Create local std::string from the argument with trim.
   - Pass address of local cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -13089,7 +13089,7 @@ f_in_string*_cfi:
   - Pass address of local cxx variable to library.
   notes:
   - was base:f_in_string_cfi
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -13135,7 +13135,7 @@ f_in_string_buf:
   - Pass CHARACTER and LEN to C wrapper.
   - Create local std::string from the argument with trim.
   - Pass cxx local variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -13194,7 +13194,7 @@ f_in_string_cfi:
   - Character argument passed as CFI_desc_t.
   - Create local std::string from the argument with trim.
   - Pass cxx local variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -13241,7 +13241,7 @@ f_in_struct:
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -13270,7 +13270,7 @@ f_in_struct&:
   intent: in
   comments:
   - Pass dereference of cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -13302,7 +13302,7 @@ f_in_struct*:
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -13333,7 +13333,7 @@ f_in_unknown:
   - Pass cxx variable to library.
   notes:
   - Used with MPI types.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -13366,7 +13366,7 @@ f_in_vector<native*>&_buf:
   notes:
   - Create a vector for pointers.
   - Specialize for std::vector<native *>.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{targs[0].f_type}{f_intent_attr} :: {f_var}(:,:)'
@@ -13419,7 +13419,7 @@ f_in_vector<native>&_buf:
   - Pass cxx local variable to library.
   notes:
   - XXX - need to test scalar and pointer versions
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{targs[0].f_type}{f_intent_attr} :: {f_var}{f_assumed_shape}'
@@ -13464,7 +13464,7 @@ f_in_vector<native>*_buf:
   - Pass cxx local variable to library.
   notes:
   - XXX - need to test scalar and pointer versions
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{targs[0].f_type}{f_intent_attr} :: {f_var}{f_assumed_shape}'
@@ -13509,7 +13509,7 @@ f_in_vector<native>_buf:
   - Pass cxx local variable to library.
   notes:
   - XXX - need to test scalar and pointer versions
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{targs[0].f_type}{f_intent_attr} :: {f_var}{f_assumed_shape}'
@@ -13554,7 +13554,7 @@ f_in_vector<string>&_buf:
   - Pass cxx local variable to library.
   notes:
   - XXX - need to test scalar and pointer versions
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'character(len=*){f_intent_attr} :: {f_var}(:)'
@@ -13621,7 +13621,7 @@ f_in_vector<string>*_buf:
   - Pass cxx local variable to library.
   notes:
   - XXX - need to test scalar and pointer versions
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'character(len=*){f_intent_attr} :: {f_var}(:)'
@@ -13688,7 +13688,7 @@ f_in_vector<string>_buf:
   - Pass cxx local variable to library.
   notes:
   - XXX - need to test scalar and pointer versions
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'character(len=*){f_intent_attr} :: {f_var}(:)'
@@ -13752,7 +13752,7 @@ f_in_void:
   intent: in
   comments:
   - Pass cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -13781,7 +13781,7 @@ f_in_void*:
   intent: in
   comments:
   - Pass cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_intent_attr} :: {f_var}'
@@ -13812,7 +13812,7 @@ f_in_void**:
   - Pass cxx variable to library.
   notes:
   - Treat as an assumed length array in Fortran interface.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'type(C_PTR){f_value_attr}{f_intent_attr} :: {f_var}{f_assumed_shape}'
@@ -13840,7 +13840,7 @@ f_in_void**_cfi:
   - Pass cxx variable to library.
   notes:
   - Treat as an assumed length array in Fortran interface.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'type(C_PTR){f_value_attr}{f_intent_attr} :: {f_var}{f_assumed_shape}'
@@ -13867,7 +13867,7 @@ f_in_void*_cdesc:
   comments:
   - Pass cdesc as argument to C wrapper.
   - Pass cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
@@ -13917,7 +13917,7 @@ f_inout_bool*:
   intent: inout
   comments:
   - Pass cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -13961,7 +13961,7 @@ f_inout_char*:
   intent: inout
   comments:
   - Pass cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -13993,7 +13993,7 @@ f_inout_char*_buf:
   - Pass cxx local variable to library.
   - Copy cxx variable to c argument.
   - Allocate a local char variable in C wrapper.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -14053,7 +14053,7 @@ f_inout_char*_capi:
   intent: inout
   comments:
   - Pass cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -14086,7 +14086,7 @@ f_inout_char*_cfi:
   - Blank fill C argument.
   - Allocate a local char variable in C wrapper.
   - Pass cxx local variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -14134,7 +14134,7 @@ f_inout_enum*:
   intent: inout
   comments:
   - Pass address of local cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -14168,7 +14168,7 @@ f_inout_native&:
   intent: inout
   comments:
   - Pass dereference of cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -14211,7 +14211,7 @@ f_inout_native*:
   intent: inout
   comments:
   - Pass cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -14241,7 +14241,7 @@ f_inout_native*_cdesc:
   comments:
   - Pass cdesc as argument to C wrapper.
   - Pass cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
@@ -14293,7 +14293,7 @@ f_inout_native*_cfi:
   - Make the C wrapper argument a CFI_desc_t.
   - Native argument which use CFI_desc_t.
   - Pass cxx local variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -14347,7 +14347,7 @@ f_inout_shadow&:
   - Pass a shadow type to C wrapper.
   - Cast C argument to local C++ variable.
   - Pass cxx local variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_intent_attr} :: {f_var}'
@@ -14385,7 +14385,7 @@ f_inout_shadow*:
   - Pass a shadow type to C wrapper.
   - Cast C argument to local C++ variable.
   - Pass cxx local variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_intent_attr} :: {f_var}'
@@ -14423,7 +14423,7 @@ f_inout_smartptr<shadow>*:
   - Pass a shadow type to C wrapper.
   - Cast C argument to local C++ variable.
   - Pass cxx local variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_intent_attr} :: {f_var}'
@@ -14509,7 +14509,7 @@ f_inout_string&_buf:
   - Create local std::string from the argument with trim.
   - Pass cxx local variable to library.
   - Copy std::string into argument.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -14575,7 +14575,7 @@ f_inout_string&_cfi:
   - Copy std::string into argument.
   notes:
   - was base:f_inout_string*_cfi
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -14676,7 +14676,7 @@ f_inout_string*_buf:
   - Create local std::string from the argument with trim.
   - Pass address of local cxx variable to library.
   - Copy std::string into argument.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -14740,7 +14740,7 @@ f_inout_string*_cfi:
   - Create local std::string from the argument with trim.
   - Pass address of local cxx variable to library.
   - Copy std::string into argument.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -14788,7 +14788,7 @@ f_inout_struct&:
   intent: inout
   comments:
   - Pass dereference of cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -14820,7 +14820,7 @@ f_inout_struct*:
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -14853,7 +14853,7 @@ f_inout_vector<native>&_cdesc:
   - Fill cdesc with vector information.
   - Return address and size of vector data.
   - Pass dereference of local cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{targs[0].f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
@@ -14935,7 +14935,7 @@ f_inout_vector<native>&_cdesc_allocatable:
   - Fill cdesc with vector information.
   - Return address and size of vector data.
   - Pass dereference of local cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{targs[0].f_type}{f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}'
@@ -15016,7 +15016,7 @@ f_inout_vector_buf_targ_string_scalar:
   comments:
   - Pass argument, size and len to C.
   - Pass cxx local variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'character(len=*){f_intent_attr} :: {f_var}(:)'
@@ -15095,7 +15095,7 @@ f_inout_void**:
   - Pass cxx variable to library.
   notes:
   - Treat as an assumed length array in Fortran interface.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'type(C_PTR){f_value_attr}{f_intent_attr} :: {f_var}{f_assumed_shape}'
@@ -15122,7 +15122,7 @@ f_inout_void*_cdesc:
   comments:
   - Pass cdesc as argument to C wrapper.
   - Pass cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
@@ -15189,7 +15189,7 @@ f_mixin_capsule_arg:
   - Pass capsule as argument to C wrapper.
   - Add a capsule argument to the Fortran wrapper.
   - Pass the capsule as argument to C wrapper.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var_capsule}'
   f_arg_decl:
   - 'type({F_capsule_type}), intent(OUT) :: {f_var_capsule}'
@@ -15427,7 +15427,7 @@ f_mixin_cdesc_out_char_array_allocatable:
   intent: mixin
   comments:
   - Allocate Fortran array from cdesc.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'character({f_char_len}){f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}'
@@ -15462,7 +15462,7 @@ f_mixin_cdesc_out_native_pointer:
   intent: mixin
   comments:
   - Set Fortran pointer to native array.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
@@ -15507,7 +15507,7 @@ f_mixin_cfi_arg-character-array:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Character array argument passed as CFI_desc_t.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'character(len=*){f_intent_attr} :: {f_var}(:)'
@@ -15569,7 +15569,7 @@ f_mixin_declare-arg-char:
   intent: mixin
   comments:
   - Fortran wrapper character argument.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'character, value{f_intent_attr} :: {f_var}'
@@ -15577,7 +15577,7 @@ f_mixin_declare-arg-char:
 f_mixin_declare-as-cptr:
   name: f_mixin_declare-as-cptr
   intent: mixin
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'type(C_PTR){f_intent_attr} :: {f_var}'
@@ -15588,7 +15588,7 @@ f_mixin_declare-as-cptr:
 f_mixin_declare-fortran-arg:
   name: f_mixin_declare-fortran-arg
   intent: mixin
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -15621,7 +15621,7 @@ f_mixin_declare-local-variable:
 f_mixin_dummy_arg:
   name: f_mixin_dummy_arg
   intent: mixin
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   owner: library
 f_mixin_function:
@@ -15635,7 +15635,7 @@ f_mixin_function:
 f_mixin_function-as-character-arg:
   name: f_mixin_function-as-character-arg
   intent: mixin
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'character(len=*), intent(OUT) :: {f_var}'
@@ -15809,7 +15809,7 @@ f_mixin_in_2d_vector_buf:
   intent: mixin
   comments:
   - Pass argument, len and size to C.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{targs[0].f_type}{f_intent_attr} :: {f_var}(:,:)'
@@ -15847,7 +15847,7 @@ f_mixin_in_string_array_buf:
   intent: mixin
   comments:
   - Pass argument, size and len to C.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'character(len=*){f_intent_attr} :: {f_var}(:)'
@@ -15886,7 +15886,7 @@ f_mixin_in_vector_buf:
   intent: mixin
   comments:
   - Pass argument and size by value to C.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{targs[0].f_type}{f_intent_attr} :: {f_var}{f_assumed_shape}'
@@ -15977,7 +15977,7 @@ f_mixin_out_vector<native>_copy:
   intent: mixin
   comments:
   - Copy std::vector into user's memory.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{targs[0].f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
@@ -16046,7 +16046,7 @@ f_mixin_procedure-as-funptr:
   intent: mixin
   comments:
   - Pass type(C_FUNPTR) argument.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'type(C_FUNPTR){f_intent_attr} :: {f_var}'
@@ -16078,7 +16078,7 @@ f_mixin_shadow-arg:
   intent: mixin
   comments:
   - Pass a shadow type to C wrapper.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_intent_attr} :: {f_var}'
@@ -16094,7 +16094,7 @@ f_mixin_str_array:
   intent: mixin
   comments:
   - Collect information about a string argument.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
@@ -16118,8 +16118,8 @@ f_mixin_unknown:
   - Default returned by lookup_fc_stmts when group is not found.
   - The values will be added to generated code to mark where each group
   - will add text.
-  f_arg_name:
-  - ===>f_arg_name<===
+  f_dummy_arg:
+  - ===>f_dummy_arg<===
   f_arg_decl:
   - ===>f_arg_decl<===
   f_arg_call:
@@ -16138,7 +16138,7 @@ f_none_bool:
   intent: none
   comments:
   - Pass cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -16179,7 +16179,7 @@ f_none_bool*:
   intent: none
   comments:
   - Pass cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -16222,7 +16222,7 @@ f_none_char:
   - Fortran wrapper character argument.
   - C wrapper character argument.
   - Pass cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'character, value{f_intent_attr} :: {f_var}'
@@ -16247,7 +16247,7 @@ f_none_char*:
   intent: none
   comments:
   - Pass cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -16278,7 +16278,7 @@ f_none_native:
   - Pass cxx variable to library.
   notes:
   - An intent of 'none' is used with function pointers.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -16307,7 +16307,7 @@ f_none_native*:
   intent: none
   comments:
   - Pass cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -16336,7 +16336,7 @@ f_none_void*:
   intent: none
   comments:
   - Pass cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_intent_attr} :: {f_var}'
@@ -16365,7 +16365,7 @@ f_out_bool*:
   intent: out
   comments:
   - Pass cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -16406,7 +16406,7 @@ f_out_char*:
   intent: out
   comments:
   - Pass cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -16441,7 +16441,7 @@ f_out_char**_cdesc_pointer:
   - Pass address of cxx variable to library.
   notes:
   - Return a Fortran pointer to C memory.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
@@ -16501,7 +16501,7 @@ f_out_char**_cfi_pointer:
   - Convert C pointer to deferred-length CHARACTER Fortran scalar pointer.
   notes:
   - Return a Fortran pointer to C memory.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
@@ -16558,7 +16558,7 @@ f_out_char*_buf:
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Blank fill C argument.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -16610,7 +16610,7 @@ f_out_char*_capi:
   intent: out
   comments:
   - Pass cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -16648,7 +16648,7 @@ f_out_char*_cfi:
   - Allocate a local array as large as input argument plus 1.
   - Pass the library function, then copy back to input argument
   - and blank fill before returning.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -16700,7 +16700,7 @@ f_out_enum*:
   intent: out
   comments:
   - Pass address of local cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -16734,7 +16734,7 @@ f_out_native&:
   intent: out
   comments:
   - Pass dereference of cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -16777,7 +16777,7 @@ f_out_native*:
   intent: out
   comments:
   - Pass cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -16810,7 +16810,7 @@ f_out_native*&_cdesc:
   - Pass cxx variable to library.
   - Fill cdesc from native in the C wrapper.
   - Set Fortran pointer to native array.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
@@ -16868,7 +16868,7 @@ f_out_native*&_cdesc_pointer:
   - Pass cxx variable to library.
   - Fill cdesc from native in the C wrapper.
   - Set Fortran pointer to native array.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
@@ -16922,7 +16922,7 @@ f_out_native***:
   intent: out
   comments:
   - Pass cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'type(C_PTR){f_intent_attr} :: {f_var}'
@@ -16964,7 +16964,7 @@ f_out_native**_cdesc_allocatable:
   - deref(allocatable)
   - A C function with a 'int **' argument associates it
   - with a Fortran pointer.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -17050,7 +17050,7 @@ f_out_native**_cdesc_pointer:
   - deref(pointer)
   - A C function with a 'int **' argument associates it
   - with a Fortran pointer.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
@@ -17108,7 +17108,7 @@ f_out_native**_cfi_allocatable:
   - Declare a local_cxx pointer variable in the C wrapper.
   - Pass address of local cxx variable to library.
   - Allocate copy of C pointer (requires +dimension).
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -17163,7 +17163,7 @@ f_out_native**_cfi_pointer:
   - Convert C pointer to Fortran pointer.
   notes:
   - Set Fortran pointer to point to c_local_cxx.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -17221,7 +17221,7 @@ f_out_native**_raw:
   - Pass cxx variable to library.
   notes:
   - Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'type(C_PTR){f_intent_attr} :: {f_var}'
@@ -17251,7 +17251,7 @@ f_out_native*_cdesc:
   comments:
   - Pass cdesc as argument to C wrapper.
   - Pass cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
@@ -17322,7 +17322,7 @@ f_out_procedure*_funptr:
   - Pass type(C_FUNPTR) argument.
   notes:
   - Return a function pointer in an argument.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'type(C_FUNPTR){f_intent_attr} :: {f_var}'
@@ -17356,7 +17356,7 @@ f_out_string&_buf:
   - Create local std::string.
   - Pass cxx local variable to library.
   - Copy std::string into argument.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -17419,7 +17419,7 @@ f_out_string&_cfi:
   - Copy std::string into argument.
   notes:
   - was base:f_out_string*_cfi
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -17472,7 +17472,7 @@ f_out_string**_cdesc_allocatable:
   - Pass address of cxx variable to library.
   - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'character({f_char_len}){f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}'
@@ -17553,7 +17553,7 @@ f_out_string**_cdesc_copy:
   - Pass a cdesc down to describe the memory and a capsule to hold the
   - C++ array. Copy into Fortran argument.
   - '[see also f_out_vector_&_cdesc_allocatable_targ_string_scalar]'
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
@@ -17609,7 +17609,7 @@ f_out_string**_cfi_allocatable:
   notes:
   - std::string **strs +intent(out)+dimension(nstrs)+deref(allocatable),
   - int *nstrs+intent(out)+hidden
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -17647,7 +17647,7 @@ f_out_string**_cfi_copy:
   - Make the C wrapper argument a CFI_desc_t.
   - Create local std::string pointer.
   - Pass address of local cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -17712,7 +17712,7 @@ f_out_string*_buf:
   - Create local std::string.
   - Pass address of local cxx variable to library.
   - Copy std::string into argument.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -17773,7 +17773,7 @@ f_out_string*_cfi:
   - Character argument passed as CFI_desc_t.
   - Pass address of local cxx variable to library.
   - Copy std::string into argument.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -17818,7 +17818,7 @@ f_out_struct&:
   intent: out
   comments:
   - Pass dereference of cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -17850,7 +17850,7 @@ f_out_struct*:
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -17886,7 +17886,7 @@ f_out_vector<native>&_cdesc:
   - Pass dereference of local cxx variable to library.
   notes:
   - Not supported for C wrappers.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{targs[0].f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
@@ -17958,7 +17958,7 @@ f_out_vector<native>&_cdesc_allocatable:
   - Pass dereference of local cxx variable to library.
   notes:
   - Copy into allocated array.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{targs[0].f_type}{f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}'
@@ -18027,7 +18027,7 @@ f_out_vector<native>*_cdesc:
   - Pass cxx local variable to library.
   notes:
   - Not supported for C wrappers.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{targs[0].f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
@@ -18099,7 +18099,7 @@ f_out_vector<native>*_cdesc_allocatable:
   - Pass dereference of local cxx variable to library.
   notes:
   - Copy into allocated array.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{targs[0].f_type}{f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}'
@@ -18166,7 +18166,7 @@ f_out_vector<string>&_cdesc:
   notes:
   - f_arg_decl replaces values from f_mixin_str_array.
   - This one needs to use targs.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{targs[0].f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
@@ -18224,7 +18224,7 @@ f_out_vector<string>&_cdesc_allocatable:
   - Copy into Fortran allocated memory.
   - Release memory from capsule.
   - Pass dereference of local cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'character({f_char_len}){f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}'
@@ -18301,7 +18301,7 @@ f_out_vector_buf_targ_string_scalar:
   comments:
   - Pass argument, size and len to C.
   - Pass cxx local variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'character(len=*){f_intent_attr} :: {f_var}(:)'
@@ -18367,7 +18367,7 @@ f_out_void*&:
   intent: out
   comments:
   - Pass dereference of cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -18398,7 +18398,7 @@ f_out_void**:
   - Pass cxx variable to library.
   notes:
   - Treat as an assumed length array in Fortran interface.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'type(C_PTR){f_value_attr}{f_intent_attr} :: {f_var}{f_assumed_shape}'
@@ -18425,7 +18425,7 @@ f_out_void*_cdesc:
   comments:
   - Pass cdesc as argument to C wrapper.
   - Pass cxx variable to library.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
@@ -18481,7 +18481,7 @@ f_setter:
 f_setter_bool:
   name: f_setter_bool
   intent: setter
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -18519,7 +18519,7 @@ f_setter_bool:
 f_setter_native:
   name: f_setter_native
   intent: setter
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -18547,7 +18547,7 @@ f_setter_native:
 f_setter_native*:
   name: f_setter_native*
   intent: setter
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -18580,7 +18580,7 @@ f_setter_string_buf:
   notes:
   - Extract meta data and pass to C.
   - Create std::string from Fortran meta data.
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - 'character(len=*){f_intent_attr} :: {f_var}'
@@ -18621,7 +18621,7 @@ f_setter_string_buf:
 f_setter_struct*:
   name: f_setter_struct*
   intent: setter
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -18647,7 +18647,7 @@ f_setter_struct*:
 f_setter_struct**:
   name: f_setter_struct**
   intent: setter
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
@@ -18672,7 +18672,7 @@ f_setter_struct**:
 f_setter_struct*_pointer:
   name: f_setter_struct*_pointer
   intent: setter
-  f_arg_name:
+  f_dummy_arg:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'

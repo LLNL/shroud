@@ -65,11 +65,11 @@ name
 
 Must start with a ``f``.
 
-f_arg_name
-^^^^^^^^^^
+f_dummy_arg
+^^^^^^^^^^^
 
-List of name of arguments for Fortran subprogram.
-Will be formatted before being used to expand ``{f_var}``.
+List of dummy argument names for the Fortran subprogram.
+It will be formatted before being used to expand ``{f_var}``.
 
 Any function result arguments will be added at the end.
 Only added if *f_arg_decl* is also defined.
@@ -87,7 +87,7 @@ Additional declarations can be added within the splicer via *f_declare*.
 
 .. code-block:: yaml
 
-        f_arg_name:
+        f_dummy_arg:
         - "{f_var}"
         f_arg_decl:
         - character, value, intent(IN) :: {f_var}

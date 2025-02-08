@@ -53,7 +53,7 @@
         "notes": [
             "Pass the library argument to the Fortran wrapper."
         ],
-        "f_arg_name": [
+        "f_dummy_arg": [
             "{f_var}"
         ]
     },
@@ -80,7 +80,7 @@
         "notes": [
             "Fortran wrapper argument."
         ],
-        "f_arg_name": [
+        "f_dummy_arg": [
             "{f_var}"
         ],
         "f_arg_decl": [
@@ -98,7 +98,7 @@
         "notes": [
             "Used when there is no direct mapping to Fortran."
         ],
-        "f_arg_name": [
+        "f_dummy_arg": [
             "{f_var}"
         ],
         "f_arg_decl": [
@@ -677,7 +677,7 @@
         "mixin": [
             "c_mixin_capsule_pass"
         ],
-        "f_arg_name": [
+        "f_dummy_arg": [
             "{f_var_capsule}"
         ],
         "f_arg_decl": [
@@ -984,7 +984,7 @@
         "comments": [
             "Set Fortran pointer to native array."
         ],
-        "f_arg_name": [
+        "f_dummy_arg": [
             "{f_var}"
         ],
         "f_arg_decl": [
@@ -1073,7 +1073,7 @@
         "comments": [
             "Pass argument and size by value to C."
         ],
-        "f_arg_name": [
+        "f_dummy_arg": [
             "{f_var}"
         ],
         "f_arg_decl": [
@@ -1210,7 +1210,7 @@
         "comments": [
             "Pass argument, len and size to C."
         ],
-        "f_arg_name": [
+        "f_dummy_arg": [
             "{f_var}"
         ],
         "f_arg_decl": [
@@ -1511,7 +1511,7 @@
             "f_mixin_cdesc_pass",
             "c_mixin_arg-call-cvar"
         ],
-        "f_arg_name": [
+        "f_dummy_arg": [
             "{f_var}"
         ],
         "f_arg_decl": [
@@ -1827,7 +1827,7 @@
                 "C_PTR"
             ]
         },
-        "f_arg_name": [
+        "f_dummy_arg": [
             "{f_var}"
         ],
         "f_arg_decl": [
@@ -1969,7 +1969,7 @@
             "A single character.",
             "XXX - value should not be necessary but fails without it."
         ],
-        "f_arg_name": [
+        "f_dummy_arg": [
             "{f_var}"
         ],
         "f_arg_decl": [
@@ -2004,7 +2004,7 @@
         "notes" : [
             "Convert the function result to a character argument."
         ],
-        "f_arg_name": [
+        "f_dummy_arg": [
             "{f_var}"
         ],
         "f_arg_decl": [
@@ -2160,7 +2160,7 @@
         "comments": [
             "Allocate Fortran array from cdesc."
         ],
-        "f_arg_name": [
+        "f_dummy_arg": [
             "{f_var}"
         ],
         "f_arg_decl": [
@@ -2181,7 +2181,7 @@
         "comments": [
             "Pass argument, size and len to C."
         ],
-        "f_arg_name": [
+        "f_dummy_arg": [
             "{f_var}"
         ],
         "f_arg_decl": [
@@ -2232,7 +2232,7 @@
             "Pass CHARACTER and LEN to C wrapper."
         ],
         "notes": [
-            "Do not define f_arg_name or f_arg_decl here",
+            "Do not define f_dummy_arg or f_arg_decl here",
             "to allow it to be used with functions and arguments."
         ],
         "f_declare": [
@@ -2642,7 +2642,7 @@
         "notes": [
             "XXX - maybe use character(*) directly in f_arg_decl"
         ],
-        "f_arg_name": [
+        "f_dummy_arg": [
             "{f_var}"
         ],
         "f_arg_decl": [
@@ -3313,7 +3313,7 @@
         "comments": [
             "Copy std::vector into user's memory."
         ],
-        "f_arg_name": [
+        "f_dummy_arg": [
             "{f_var}"
         ],
         "f_arg_decl": [
@@ -3534,7 +3534,7 @@
                 ]
             }
         },
-        "f_arg_name": [
+        "f_dummy_arg": [
             "{f_var}"
         ],
         "f_arg_decl": [
@@ -3781,7 +3781,7 @@
                 ]
             }
         },
-        "f_arg_name": [
+        "f_dummy_arg": [
             "{f_var}"
         ],
         "f_arg_decl": [
@@ -3832,7 +3832,7 @@
                 "C_SIZE_T"
             ]
         },
-        "f_arg_name": [
+        "f_dummy_arg": [
             "{f_var}"
         ],
         "f_arg_decl": [
@@ -3857,7 +3857,7 @@
         "comments": [
             "Pass a shadow type to C wrapper."
         ],
-        "f_arg_name": [
+        "f_dummy_arg": [
             "{f_var}"
         ],
         "f_arg_decl": [
@@ -4485,7 +4485,7 @@
             "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
         ],
-        "f_arg_name": [
+        "f_dummy_arg": [
             "{f_var}"
         ],
         "f_arg_decl": [
@@ -4628,7 +4628,7 @@
         "mixin": [
             "c_mixin_cfi_arg"
         ],
-        "f_arg_name": [
+        "f_dummy_arg": [
             "{f_var}"
         ],
         "f_arg_decl": [
@@ -5214,7 +5214,7 @@
         "comments": [
             "Pass type(C_FUNPTR) argument."
         ],
-        "f_arg_name": [
+        "f_dummy_arg": [
             "{f_var}"
         ],
         "f_arg_decl": [
@@ -5267,7 +5267,7 @@
             "c_mixin_declare-arg",
             "c_mixin_arg-call-cvar"
         ],
-        "f_arg_name": [
+        "f_dummy_arg": [
             "{f_var}"
         ],
         "f_arg_decl": [
@@ -5344,8 +5344,8 @@
             "The values will be added to generated code to mark where each group",
             "will add text."
         ],
-        "f_arg_name": [
-            "===>f_arg_name<==="
+        "f_dummy_arg": [
+            "===>f_dummy_arg<==="
         ],
         "f_arg_decl": [
             "===>f_arg_decl<==="
