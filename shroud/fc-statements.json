@@ -243,7 +243,7 @@
     {
         "sphinx-start-after": "c_mixin_declare-arg",
         "name": "c_mixin_declare-arg",
-        "c_arg_decl": [
+        "c_prototype": [
             "{gen.cdecl.c_var}"
         ],
         "sphinx-end-before": "c_mixin_declare-arg"
@@ -629,7 +629,7 @@
         "i_import": [
             "{F_capsule_data_type}"
         ],
-        "c_arg_decl": [
+        "c_prototype": [
             "{C_capsule_data_type} *{c_var_capsule}"
         ],
         "c_temps": [
@@ -801,7 +801,7 @@
         "i_import": [
             "{F_array_type}"
         ],
-        "c_arg_decl": [
+        "c_prototype": [
             "{C_array_type} *{c_var_cdesc}"
         ],
         "c_temps": [
@@ -1104,7 +1104,7 @@
                 "C_SIZE_T"
             ]
         },
-        "c_arg_decl": [
+        "c_prototype": [
             "{targs[0].cxx_type} *{c_var}",
             "size_t {c_var_size}"
         ],
@@ -1141,7 +1141,7 @@
                 "C_SIZE_T"
             ]
         },
-        "c_arg_decl": [
+        "c_prototype": [
             "{targs[0].cxx_type} *{c_var}",
             "size_t *{c_var_size}"
         ],
@@ -1168,7 +1168,7 @@
                 "C_SIZE_T"
             ]
         },
-        "c_arg_decl": [
+        "c_prototype": [
             "{targs[0].cxx_type} **{c_var}",
             "size_t *{c_var_size}"
         ],
@@ -1198,7 +1198,7 @@
             ]
         },
         "c_return_type": "{targs[0].cxx_type} *",
-        "c_arg_decl": [
+        "c_prototype": [
             "size_t *{c_var_size}"
         ],
         "c_temps": [
@@ -1244,7 +1244,7 @@
                 "C_SIZE_T"
             ]
         },
-        "c_arg_decl": [
+        "c_prototype": [
             "{targs[0].cxx_type} *{c_var}",
             "size_t {c_var_len}",
             "size_t {c_var_size}"
@@ -1281,7 +1281,7 @@
                 "C_SIZE_T"
             ]
         },
-        "c_arg_decl": [
+        "c_prototype": [
             "{targs[0].cxx_type} *{c_var}",
             "size_t {c_var_size}",
             "{C_array_type} *{c_var_cdesc}"
@@ -1833,7 +1833,7 @@
         "f_arg_decl": [
             "type(C_PTR){f_value_attr}{f_intent_attr} :: {f_var}{f_assumed_shape}"
         ],
-        "c_arg_decl": [
+        "c_prototype": [
             "void **{c_var}"
         ],
         "i_arg_decl": [
@@ -1875,7 +1875,7 @@
                 "{i_kind}"
             ]
         },
-        "c_arg_decl": [
+        "c_prototype": [
             "{gen.cidecl.c_var}"
         ],
         "c_pre_call": [
@@ -1895,7 +1895,7 @@
             "f_mixin_declare-interface-arg",
             "c_mixin_arg-call-cxx-address"
         ],
-        "c_arg_decl": [
+        "c_prototype": [
             "{gen.cidecl.c_var}"
         ],
         "c_pre_call": [
@@ -1995,7 +1995,7 @@
                 "C_CHAR"
             ]
         },
-        "c_arg_decl": [
+        "c_prototype": [
             "char {c_var}"
         ]
     },
@@ -2041,7 +2041,7 @@
                 "C_CHAR"
             ]
         },
-        "c_arg_decl": [
+        "c_prototype": [
             "{gen.cdecl.c_var}"
         ]
     },
@@ -2216,7 +2216,7 @@
                 "C_INT"
             ]
         },
-        "c_arg_decl": [
+        "c_prototype": [
             "const char *{c_var}",
             "size_t {c_var_size}",
             "int {c_var_len}"
@@ -2276,7 +2276,7 @@
                 "C_INT"
             ]
         },
-        "c_arg_decl": [
+        "c_prototype": [
             "char *{c_var}",
             "int {c_var_len}"
         ],
@@ -2306,7 +2306,7 @@
                 "C_CHAR"
             ]
         },
-        "c_arg_decl": [
+        "c_prototype": [
             "char *{c_var}"
         ],
         "c_call": [
@@ -2969,7 +2969,7 @@
             "f_mixin_declare-interface-arg",
             "c_mixin_arg-call-cvar"
         ],
-        "c_arg_decl": [
+        "c_prototype": [
             "char *{c_var}"
         ]
     },
@@ -3886,7 +3886,7 @@
                 "{f_capsule_data_type}"
             ]
         },
-        "c_arg_decl": [
+        "c_prototype": [
             "{c_type} *{c_var}"
         ]
     },
@@ -3906,7 +3906,7 @@
         "i_arg_decl": [
             "type({f_capsule_data_type}){i_intent_attr}, value :: {i_var}"
         ],
-        "c_arg_decl": [
+        "c_prototype": [
             "{c_type} {c_var}"
         ],
         "c_pre_call": [
@@ -4275,7 +4275,7 @@
         "f_arg_call": [
             "{f_var}"
         ],
-        "c_arg_decl": [
+        "c_prototype": [
             "{c_type} *{c_var}"
         ],
         "c_call": [
@@ -4513,7 +4513,7 @@
         "comments": [
             "Make the C wrapper argument a CFI_desc_t."
         ],
-        "c_arg_decl": [
+        "c_prototype": [
             "CFI_cdesc_t *{c_var_cfi}"
         ],
         "c_temps": [
@@ -5362,8 +5362,8 @@
         "i_result_decl": [
             "===>i_result_decl<==="
         ],
-        "c_arg_decl": [
-            "===>c_arg_decl<==="
+        "c_prototype": [
+            "===>c_prototype<==="
         ]
     },
     {
@@ -5377,8 +5377,8 @@
         "i_arg_decl": [
             "===>i_arg_decl<==="
         ],
-        "c_arg_decl": [
-            "===>c_arg_decl<==="
+        "c_prototype": [
+            "===>c_prototype<==="
         ]
     },
     {

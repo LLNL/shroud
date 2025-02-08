@@ -832,7 +832,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         append_format(output, "-}};", fmt_enum)
 
     def build_proto_list(self, fmt, stmts_blk, proto_list):
-        """Find prototype based on c_arg_decl in fc_statements.
+        """Find prototype based on c_prototype in fc_statements.
 
         Parameters
         ----------
@@ -842,8 +842,8 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         proto_list - list
             Prototypes are appended to list.
         """
-        if stmts_blk.c_arg_decl is not None:
-            for arg in stmts_blk.c_arg_decl:
+        if stmts_blk.c_prototype is not None:
+            for arg in stmts_blk.c_prototype:
                 append_format(proto_list, arg, fmt)
 
     def add_code_from_statements(

@@ -3194,7 +3194,7 @@
                                 "C_call_function": "struct1_get_arg2(\tSH_this)",
                                 "C_call_list": "SH_this",
                                 "C_name": "ERR_struct1_get_arg2",
-                                "C_prototype": "ERR_struct1 *SH_this,\t ===>c_arg_decl<===",
+                                "C_prototype": "ERR_struct1 *SH_this,\t ===>c_prototype<===",
                                 "C_return_type": "int *",
                                 "F_arg_c_call": "SH_this,\t ===>f_arg_call<===",
                                 "F_arguments": "SH_this,\t ===>f_dummy_arg<===",

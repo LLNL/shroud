@@ -48,7 +48,7 @@ Format fields
 -------------
 
 * C_prototype
-  Built up from *c_arg_decl*.
+  Built up from *c_prototype*.
 
 * C_call_function
   Built up from *c_arg_call*.
@@ -76,7 +76,7 @@ List of dummy argument names for the Fortran interface.
 Defaults to ``{F_C_var}``.
 An empty list will cause no declaration to be added.
 
-.. note:: *c_arg_decl*, *i_arg_decl*, and *i_dummy_arg* must all
+.. note:: *c_prototype*, *i_arg_decl*, and *i_dummy_arg* must all
           exist in a group and have the same number of names.
 
 i_arg_decl
@@ -88,7 +88,7 @@ declared is *c_var*.  *i_module* can be used to add ``USE`` statements
 needed by the declarations.
 An empty list will cause no declaration to be added.
 
-.. note:: *c_arg_decl*, *i_arg_decl*, and *i_dummy_arg* must all
+.. note:: *c_prototype*, *i_arg_decl*, and *i_dummy_arg* must all
           exist in a group and have the same number of names.
 
 .. c_var  c_f_dimension
@@ -135,14 +135,14 @@ Fields will be expanded using the format dictionary before being used.
 If *i_module* is not set, *f_module* will be used when creating the interface.
 Shroud will insert ``IMPORT`` statements instead of ``USE`` as needed.
 
-c_arg_decl
-^^^^^^^^^^
+c_prototype
+^^^^^^^^^^^
 
 A list of declarations to create the format field *C_prototype*.
 An empty list will cause no declaration to be added.
 Functions do not add an argument by default.
 
-.. note:: *c_arg_decl*, *i_arg_decl*, and *i_dummy_arg* must all
+.. note:: *c_prototype*, *i_arg_decl*, and *i_dummy_arg* must all
           exist together in a statement group and have the same number of names.
 
 c_arg_call
@@ -305,7 +305,7 @@ iface_header
 List of header files which will be included in the generated header
 for the C wrapper.  These headers must be C only and will be
 included after ``ifdef __cplusplus``.
-Used for headers needed for declarations in *c_arg_decl*.
+Used for headers needed for declarations in *c_prototype*.
 Can contain headers required for the generated prototypes.
 
 For example, ``ISO_Fortran_binding.h`` is C only.

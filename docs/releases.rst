@@ -59,6 +59,7 @@ c statements
 ===========================   ===========================
 Old Name                      New Name
 ===========================   ===========================
+c_arg_decl                    c_prototype
 arg_call                      c_arg_call
 pre_call                      c_pre_call
 call                          c_call
