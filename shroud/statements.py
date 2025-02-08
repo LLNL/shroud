@@ -333,12 +333,17 @@ def update_fc_statements_for_language(language, user):
 # Dictionary of statment fields which have changed name.
 deprecated_fields = dict(
     c=dict(
+        # v0.13 changes
+
+        # develop changes
+        i_arg_names="i_dummy_arg",
     ),
     f=dict(
-        # v0.1 changes
+        # v0.13 changes
         arg_name="f_dummy_arg",
         # develop changes
         f_arg_name="f_dummy_arg",
+        i_arg_names="i_dummy_arg",
     )
 )
     
@@ -379,7 +384,7 @@ def post_mixin_check_statement(name, stmt):
     """check for consistency.
     Called after mixin are applied.
     This makes it easer to a group to change one of
-    c_arg_decl, i_arg_decl, i_arg_names.
+    c_arg_decl, i_arg_decl, i_dummy_arg.
     """
     parts = name.split("_")
     lang = parts[0]
@@ -388,13 +393,13 @@ def post_mixin_check_statement(name, stmt):
     if lang == "f" and intent not in ["mixin", "setter"]:
         c_arg_decl = stmt.get("c_arg_decl", None)
         i_arg_decl = stmt.get("i_arg_decl", None)
-        i_arg_names = stmt.get("i_arg_names", None)
+        i_dummy_arg = stmt.get("i_dummy_arg", None)
         if (c_arg_decl is not None or
             i_arg_decl is not None or
-            i_arg_names is not None):
+            i_dummy_arg is not None):
             err = False
             missing = []
-            for field in ["c_arg_decl", "i_arg_decl", "i_arg_names"]:
+            for field in ["c_arg_decl", "i_arg_decl", "i_dummy_arg"]:
                 fvalue = stmt.get(field)
                 if fvalue is None:
                     err = True
@@ -403,16 +408,16 @@ def post_mixin_check_statement(name, stmt):
                     err = True
                     error.cursor.warning("{} must be a list.".format(field))
 #            if missing:
-#                error.cursor.warning("c_arg_decl, i_arg_decl and i_arg_names must all exist together.\n" +
+#                error.cursor.warning("c_arg_decl, i_arg_decl and i_dummy_arg must all exist together.\n" +
 #                                     "Missing {}.".format(", ".join(missing)))
 #                err = True
             if not err:
                 length = len(c_arg_decl)
-                if any(len(lst) != length for lst in [i_arg_decl, i_arg_names]):
+                if any(len(lst) != length for lst in [i_arg_decl, i_dummy_arg]):
                     error.cursor.warning(
-                        "c_arg_decl, i_arg_decl and i_arg_names "
+                        "c_arg_decl, i_arg_decl and i_dummy_arg "
                         "must all be same length. Used {}, {}, {}."
-                        .format(len(c_arg_decl), len(i_arg_decl), len(i_arg_names)))
+                        .format(len(c_arg_decl), len(i_arg_decl), len(i_dummy_arg)))
 
 ##-    if lang in ["f", "fc"]:
 ##-        # Default f_dummy_arg is often ok.
@@ -848,7 +853,7 @@ def print_tree_statements(fp, statements, defaults):
 #                 Ex. Will be empty for getter and setter.
 #  i_arg_decl - Add Fortran declaration to Fortran wrapper interface block.
 #                Empty list is no arguments, None is default argument.
-#  i_arg_names - Empty list is no arguments
+#  i_dummy_arg - Empty list is no arguments
 #  i_result_decl - Declaration for function result.
 #                  Can be an empty list to override default.
 #  i_module    - Add module info to interface block.
@@ -862,7 +867,7 @@ CStmts = util.Scope(
     index="X",
 
     # code fields
-    i_arg_names=None,
+    i_dummy_arg=None,
     i_arg_decl=None,
     i_result_decl=None,
     i_result_var=None,

@@ -141,7 +141,7 @@
         "notes": [
             "Pass the library argument to the interface."
         ],
-        "i_arg_names": [
+        "i_dummy_arg": [
             "{i_var}"
         ]
     },
@@ -151,7 +151,7 @@
         "notes": [
             "Declarations for Fortran interface."
         ],
-        "i_arg_names": [
+        "i_dummy_arg": [
             "{i_var}"
         ],
         "i_arg_decl": [
@@ -170,7 +170,7 @@
             "Pass the address of the argument directly to C.",
             "Used when there is no direct mapping to Fortran."
         ],
-        "i_arg_names": [
+        "i_dummy_arg": [
             "{i_var}"
         ],
         "i_arg_decl": [
@@ -189,7 +189,7 @@
             "Used when there is no direct mapping to Fortran.",
             "ex. char **"
         ],
-        "i_arg_names": [
+        "i_dummy_arg": [
             "{i_var}"
         ],
         "i_arg_decl": [
@@ -207,7 +207,7 @@
             "Pass the address of the argument directly to C.",
             "Used when there is no direct mapping to Fortran."
         ],
-        "i_arg_names": [
+        "i_dummy_arg": [
             "{i_var}"
         ],
         "i_arg_decl": [
@@ -225,7 +225,7 @@
             "Pass the address of the argument directly to C.",
             "Used when there is no direct mapping to Fortran."
         ],
-        "i_arg_names": [
+        "i_dummy_arg": [
             "{i_var}"
         ],
         "i_arg_decl": [
@@ -620,7 +620,7 @@
             "The C wrapper will use the capsule to save the address",
             "of a variable."
         ],
-        "i_arg_names": [
+        "i_dummy_arg": [
             "{i_var_capsule}"
         ],
         "i_arg_decl": [
@@ -792,7 +792,7 @@
             "array_context"
         ],
         "f_need_wrapper": true,
-        "i_arg_names": [
+        "i_dummy_arg": [
             "{i_var_cdesc}"
         ],
         "i_arg_decl": [
@@ -1090,7 +1090,7 @@
             ]
         },
         "f_need_wrapper": true,
-        "i_arg_names": [
+        "i_dummy_arg": [
             "{i_var}",
             "{i_var_size}"
         ],
@@ -1127,7 +1127,7 @@
             ]
         },
         "f_need_wrapper": true,
-        "i_arg_names": [
+        "i_dummy_arg": [
             "{i_var}",
             "{i_var_size}"
         ],
@@ -1154,7 +1154,7 @@
         "comments": [
             "Pass raw pointer and size by reference to C."
         ],
-        "i_arg_names": [
+        "i_dummy_arg": [
             "{i_var}",
             "{i_var_size}"
         ],
@@ -1182,7 +1182,7 @@
             "Return pointer to array type.",
             "Add an argument to return the length of the array."
         ],
-        "i_arg_names": [
+        "i_dummy_arg": [
             "{i_var_size}"
         ],
         "i_arg_decl": [
@@ -1228,7 +1228,7 @@
             ]
         },
         "f_need_wrapper": true,
-        "i_arg_names": [
+        "i_dummy_arg": [
             "{i_var}",
             "{i_var_len}",
             "{i_var_size}"
@@ -1262,7 +1262,7 @@
         "notes": [
             "Paired with f_mixin_inout_vector_cdesc."
         ],
-        "i_arg_names": [
+        "i_dummy_arg": [
             "{i_var}",
             "{i_var_size}",
             "{i_var_cdesc}"
@@ -1839,7 +1839,7 @@
         "i_arg_decl": [
             "type(C_PTR){f_value_attr}{i_intent_attr} :: {i_var}{i_dimension}"
         ],
-        "i_arg_names": [
+        "i_dummy_arg": [
             "{i_var}"
         ],
         "i_module": {
@@ -1867,7 +1867,7 @@
         "i_arg_decl": [
             "{i_type}, value{i_intent_attr} :: {i_var}"
         ],
-        "i_arg_names": [
+        "i_dummy_arg": [
             "{i_var}"
         ],
         "i_module": {
@@ -1984,7 +1984,7 @@
         "notes": [
             "A single character."
         ],
-        "i_arg_names": [
+        "i_dummy_arg": [
             "{i_var}"
         ],
         "i_arg_decl": [
@@ -2030,7 +2030,7 @@
         "notes": [
             "Create a character argument."
         ],
-        "i_arg_names": [
+        "i_dummy_arg": [
             "{i_var}"
         ],
         "i_arg_decl": [
@@ -2199,7 +2199,7 @@
             ]
         },
         "f_need_wrapper": true,
-        "i_arg_names": [
+        "i_dummy_arg": [
             "{i_var}",
             "{i_var_size}",
             "{i_var_len}"
@@ -2262,7 +2262,7 @@
             "Used with function which return a char *.",
             "C wrapper will fill argument."
         ],
-        "i_arg_names": [
+        "i_dummy_arg": [
             "{i_var}",
             "{i_var_len}"
         ],
@@ -2295,7 +2295,7 @@
         "f_arg_call": [
             "{f_var}"
         ],
-        "i_arg_names": [
+        "i_dummy_arg": [
             "{i_var}"
         ],
         "i_arg_decl": [
@@ -3636,7 +3636,7 @@
             "c_mixin_declare-arg",
             "c_mixin_arg-call-cvar-deref"
         ],
-        "i_arg_names": [
+        "i_dummy_arg": [
             "{i_var}"
         ],
         "i_arg_decl": [
@@ -3875,7 +3875,7 @@
     },
     {
         "name": "c_mixin_shadow",
-        "i_arg_names": [
+        "i_dummy_arg": [
             "{i_var}"
         ],
         "i_arg_decl": [
@@ -4338,7 +4338,7 @@
             "c_mixin_declare-arg",
             "f_mixin_declare-fortran-arg"
         ],
-        "i_arg_names": [
+        "i_dummy_arg": [
             "{i_var}"
         ],
         "i_arg_decl": [
@@ -4613,7 +4613,7 @@
         "i_arg_decl": [
             "character(len=*){i_intent_attr} :: {i_var}"
         ],
-        "i_arg_names": [
+        "i_dummy_arg": [
             "{i_var}"
         ]
     },
@@ -4634,7 +4634,7 @@
         "f_arg_decl": [
             "character(len=*){f_intent_attr} :: {f_var}(:)"
         ],
-        "i_arg_names": [
+        "i_dummy_arg": [
             "{i_var}"
         ],
         "i_arg_decl": [
@@ -4657,7 +4657,7 @@
                 "{f_kind}"
             ]
         },
-        "i_arg_names": [
+        "i_dummy_arg": [
             "{i_var}"
         ]
     },
@@ -5115,7 +5115,7 @@
             "c_mixin_out_string**",
             "c_mixin_arg-call-cxx-address"
         ],
-        "i_arg_names": [
+        "i_dummy_arg": [
             "{i_var}"
         ],
         "i_arg_decl": [
@@ -5133,7 +5133,7 @@
             "c_mixin_out_string**",
             "c_mixin_arg-call-cxx-address"
         ],
-        "i_arg_names": [
+        "i_dummy_arg": [
             "{i_var}"
         ],
         "i_arg_decl": [
@@ -5228,7 +5228,7 @@
                 "C_FUNPTR"
             ]
         },
-        "i_arg_names": [
+        "i_dummy_arg": [
             "{i_var}"
         ],
         "i_module": {
@@ -5276,7 +5276,7 @@
         "f_arg_call": [
             "{f_var}"
         ],
-        "i_arg_names": [
+        "i_dummy_arg": [
             "{i_var}"
         ],
         "i_import": [
@@ -5353,8 +5353,8 @@
         "f_arg_call": [
             "===>f_arg_call<==="
         ],
-        "i_arg_names": [
-            "===>i_arg_names<==="
+        "i_dummy_arg": [
+            "===>i_dummy_arg<==="
         ],
         "i_arg_decl": [
             "===>i_arg_decl<==="
@@ -5371,8 +5371,8 @@
         "comments": [
             "Default returned by lookup_fc_stmts when group is not found."
         ],
-        "i_arg_names": [
-            "===>i_arg_names<==="
+        "i_dummy_arg": [
+            "===>i_dummy_arg<==="
         ],
         "i_arg_decl": [
             "===>i_arg_decl<==="

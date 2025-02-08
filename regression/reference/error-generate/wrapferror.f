@@ -47,7 +47,7 @@ module error_mod
         ! ----------------------------------------
         ! Argument:  struct1 *SH_this +intent(in)
         ! Statement: f_in_struct*
-        function struct1_get_arg2(SH_this, ===>i_arg_names<===) &
+        function struct1_get_arg2(SH_this, ===>i_dummy_arg<===) &
                 result(SHT_rv) &
                 bind(C, name="ERR_struct1_get_arg2")
             import :: struct1
