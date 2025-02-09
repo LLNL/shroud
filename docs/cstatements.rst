@@ -30,12 +30,12 @@ A corresponding ``bind(C)`` interface can be created for Fortran.
     
 .. code-block:: text
 
-    {i_subprogram} {i_name}({i_arg_names}) &
+    {i_subprogram} {i_name}({i_dummy_arg}) &
         {i_pure_clause} {i_result_clause} &
         bind(C, name="{C_name}")
         [i_module]
         [i_import]
-        [i_arg_decl]
+        [i_dummy_decl]
         [i_result_decl]
     end {i_subprogram} {i_name}
 
@@ -48,14 +48,14 @@ Format fields
 -------------
 
 * C_prototype
-  Built up from *c_arg_decl*.
+  Built up from *c_prototype*.
 
 * C_call_function
   Built up from *c_arg_call*.
   Used with statement *c_call*.
   
 * i_pure_clause
-* i_arguments     = join i_arg_names
+* i_arguments     = join i_dummy_arg
 * i_result_clause = i_result_var
 
     
@@ -69,18 +69,17 @@ name
 
 Must start with a ``c``.
 
-i_arg_names
+i_dummy_arg
 ^^^^^^^^^^^
 
-Names of arguments to pass to C function.
-Defaults to ``{F_C_var}``.
+List of dummy argument names for the Fortran interface.
 An empty list will cause no declaration to be added.
 
-.. note:: *c_arg_decl*, *i_arg_decl*, and *i_arg_names* must all
+.. note:: *c_prototype*, *i_dummy_decl*, and *i_dummy_arg* must all
           exist in a group and have the same number of names.
 
-i_arg_decl
-^^^^^^^^^^
+i_dummy_decl
+^^^^^^^^^^^^
 
 A list of dummy argument declarations in the Fortran ``bind(C)``
 interface. The variable to be
@@ -88,7 +87,7 @@ declared is *c_var*.  *i_module* can be used to add ``USE`` statements
 needed by the declarations.
 An empty list will cause no declaration to be added.
 
-.. note:: *c_arg_decl*, *i_arg_decl*, and *i_arg_names* must all
+.. note:: *c_prototype*, *i_dummy_decl*, and *i_dummy_arg* must all
           exist in a group and have the same number of names.
 
 .. c_var  c_f_dimension
@@ -99,7 +98,7 @@ i_result_decl
 A list of declarations in the Fortran interface for a function result value.
 
 .. c_var is set to fmt.F_result
-.. does not require i_arg_names
+.. does not require i_dummy_arg
 
 i_result_var
 ^^^^^^^^^^^^
@@ -135,14 +134,14 @@ Fields will be expanded using the format dictionary before being used.
 If *i_module* is not set, *f_module* will be used when creating the interface.
 Shroud will insert ``IMPORT`` statements instead of ``USE`` as needed.
 
-c_arg_decl
-^^^^^^^^^^
+c_prototype
+^^^^^^^^^^^
 
 A list of declarations to create the format field *C_prototype*.
 An empty list will cause no declaration to be added.
 Functions do not add an argument by default.
 
-.. note:: *c_arg_decl*, *i_arg_decl*, and *i_arg_names* must all
+.. note:: *c_prototype*, *i_dummy_decl*, and *i_dummy_arg* must all
           exist together in a statement group and have the same number of names.
 
 c_arg_call
@@ -305,7 +304,7 @@ iface_header
 List of header files which will be included in the generated header
 for the C wrapper.  These headers must be C only and will be
 included after ``ifdef __cplusplus``.
-Used for headers needed for declarations in *c_arg_decl*.
+Used for headers needed for declarations in *c_prototype*.
 Can contain headers required for the generated prototypes.
 
 For example, ``ISO_Fortran_binding.h`` is C only.

@@ -900,12 +900,12 @@ An example from vectors.yaml:
           c_return:
           - return SHT_arg_cdesc->size;
           f_result: num
-          f_module:
-            iso_c_binding: ["C_LONG"]
-          f_arg_decl:
+          f_dummy_decl:
           -  "integer(C_LONG) :: {F_result}"
           f_call:
           -  "{F_result} = {F_C_call}({F_arg_c_call})"
+          f_module:
+            iso_c_binding: ["C_LONG"]
 
 A complete description is in the :ref:`StatementsAnchor` chapter.
 

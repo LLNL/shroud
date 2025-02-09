@@ -67,11 +67,27 @@ Invalid intent 'badintent'.
 --------------------
 statement line 62
 Statement: f_in_foo7
-c_arg_decl must be a list.
+field c_arg_decl is deprecated, changed to c_prototype
+--------------------
+statement line 62
+Statement: f_in_foo7
+c_prototype must be a list.
 --------------------
 statement line 64
 Statement: f_in_foo8
-c_arg_decl, i_arg_decl and i_arg_names must all be same length. Used 1, 1, 2.
+field c_arg_decl is deprecated, changed to c_prototype
+--------------------
+statement line 64
+Statement: f_in_foo8
+field i_arg_decl is deprecated, changed to i_dummy_decl
+--------------------
+statement line 64
+Statement: f_in_foo8
+field i_arg_names is deprecated, changed to i_dummy_arg
+--------------------
+statement line 64
+Statement: f_in_foo8
+c_prototype, i_dummy_decl and i_dummy_arg must all be same length. Used 1, 1, 2.
 Wrote wrapferror.f
 Wrote utilerror.cpp
 Wrote typeserror.h

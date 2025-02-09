@@ -113,13 +113,13 @@ A mixin group must not contain *alias*, *append* or *base*
 .. code-block:: yaml
 
     - name: f_mixin_one
-      f_arg_decl:
+      f_dummy_decl:
       - integer arg1
       f_arg_call:
       -  arg1
       f_need_wrapper: True
     - name: f_mixin_two
-      f_arg_decl:
+      f_dummy_decl:
       - integer arg2
       f_arg_call:
       -  arg2
@@ -136,7 +136,7 @@ The final group will be:
 .. code-block:: yaml
 
     - name: f_in_type
-      f_arg_decl:
+      f_dummy_decl:
       - integer arg1
       - integer arg2
       f_arg_call:

@@ -59,12 +59,12 @@ declarations:
       - return SHT_arg_cdesc->size;
       i_result_var: num
       f_result_var: num
-      f_module:
-        iso_c_binding: ["C_LONG"]
-      f_arg_decl:
+      f_dummy_decl:
       -  "integer(C_LONG) :: {f_result_var}"
       f_call:
       -  "{f_result_var} = {f_call_function}({F_arg_c_call})"
+      f_module:
+        iso_c_binding: ["C_LONG"]
 
 - decl: void vector_iota_out_with_num2(std::vector<int> &arg+intent(out))
   doxygen:
@@ -80,12 +80,12 @@ declarations:
   fstatements:
     f:
       f_result_var: num
-      f_module:
-        iso_c_binding: ["C_LONG"]
-      f_arg_decl:
+      f_dummy_decl:
       -  "integer(C_LONG) :: num"
       f_post_call:
       -  "num = SHT_arg_cdesc%size"
+      f_module:
+        iso_c_binding: ["C_LONG"]
 
 - decl: void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))
   doxygen:

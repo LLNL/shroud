@@ -330,27 +330,115 @@ def update_fc_statements_for_language(language, user):
     update_for_language(fc_statements, language)
     process_mixin(fc_statements, default_stmts, fc_dict)
 
+# Dictionary of statment fields which have changed name.
+deprecated_fields = dict(
+    c=dict(
+        # v0.13 changes
+        c_arg_decl="c_prototype",
+        arg_call="c_arg_call",
+        pre_call="c_pre_call",
+        call="c_call",
+        post_call="c_post_call",
+        final="c_final",
+        ret="c_return",
+        temps="c_temps",
+        local="c_local",
+        f_arg_decl="i_dummy_decl",
+        f_result_decl="i_result_decl",
+        f_result_var="i_result_var",
+        f_module="i_module",
+        f_import="i_import",
+        # develop changes
+        i_arg_decl="i_dummy_decl",
+        i_arg_names="i_dummy_arg",
+    ),
+    f=dict(
+        # v0.13 changes
+        need_wrapper="f_need_wrapper",
+        arg_name="f_dummy_arg",
+        arg_decl="f_dummy_decl",
+        arg_c_call="f_arg_call",
+        declare="f_local_decl",
+        pre_call="f_pre_call",
+        call="f_call",
+        post_call="f_post_call",
+        result="f_result_var",
+        temps="f_temps",
+        local="f_local",
+        # develop changes
+        c_arg_decl="c_prototype",
+        f_arg_decl="f_dummy_decl",
+        f_arg_name="f_dummy_arg",
+        i_arg_decl="i_dummy_decl",
+        i_arg_names="i_dummy_arg",
+        f_declare="f_local_decl",
+    )
+)
+
+def check_for_deprecated_names(stmt):
+    """
+    Report any deprecated keys.
+    Update stmt with new key name.
+
+    Used to update from version 0.13.
+    The group must have a name field.
+
+    Parameters
+    ----------
+    stmt : dictionary
+    """
+    lang = '#'
+    if "name" in stmt:
+        lang = stmt["name"][0]
+    elif "alias" in stmt:
+        for alias in stmt["alias"]:
+            if alias[0] == "#":
+                continue
+            lang = alias[0]
+            break
+    check_stmt_for_deprecated_names(lang, stmt)
+
+def check_stmt_for_deprecated_names(lang, stmt):
+    """
+    Also used with fstatements in YAML file.
+
+    Parameters
+    ----------
+    lang : 'c' or 'f'
+    stmt : dictionary
+    """
+    deprecated = deprecated_fields.get(lang)
+    if deprecated is None:
+        return
+    keys = list(stmt.keys()) # dictionary is changing so snapshot keys
+    for key in keys:
+        if key in deprecated:
+            newkey = deprecated[key]
+            error.cursor.warning("field {} is deprecated, changed to {}".format(
+                key, newkey))
+            stmt[newkey] = stmt.pop(key)
+
 
 def post_mixin_check_statement(name, stmt):
     """check for consistency.
     Called after mixin are applied.
     This makes it easer to a group to change one of
-    c_arg_decl, i_arg_decl, i_arg_names.
+    c_prototype, i_dummy_decl, i_dummy_arg.
     """
     parts = name.split("_")
     lang = parts[0]
     intent = parts[1]
 
     if lang == "f" and intent not in ["mixin", "setter"]:
-        c_arg_decl = stmt.get("c_arg_decl", None)
-        i_arg_decl = stmt.get("i_arg_decl", None)
-        i_arg_names = stmt.get("i_arg_names", None)
-        if (c_arg_decl is not None or
-            i_arg_decl is not None or
-            i_arg_names is not None):
+        c_prototype = stmt.get("c_prototype", None)
+        i_dummy_decl = stmt.get("i_dummy_decl", None)
+        i_dummy_arg = stmt.get("i_dummy_arg", None)
+        if (c_prototype is not None or
+            i_dummy_decl is not None or
+            i_dummy_arg is not None):
             err = False
             missing = []
-            for field in ["c_arg_decl", "i_arg_decl", "i_arg_names"]:
+            for field in ["c_prototype", "i_dummy_decl", "i_dummy_arg"]:
                 fvalue = stmt.get(field)
                 if fvalue is None:
                     err = True
@@ -359,24 +447,24 @@ def post_mixin_check_statement(name, stmt):
                     err = True
                     error.cursor.warning("{} must be a list.".format(field))
 #            if missing:
-#                error.cursor.warning("c_arg_decl, i_arg_decl and i_arg_names must all exist together.\n" +
+#                error.cursor.warning("c_prototype, i_dummy_decl and i_dummy_arg must all exist together.\n" +
 #                                     "Missing {}.".format(", ".join(missing)))
 #                err = True
             if not err:
-                length = len(c_arg_decl)
-                if any(len(lst) != length for lst in [i_arg_decl, i_arg_names]):
+                length = len(c_prototype)
+                if any(len(lst) != length for lst in [i_dummy_decl, i_dummy_arg]):
                     error.cursor.warning(
-                        "c_arg_decl, i_arg_decl and i_arg_names "
+                        "c_prototype, i_dummy_decl and i_dummy_arg "
                         "must all be same length. Used {}, {}, {}."
-                        .format(len(c_arg_decl), len(i_arg_decl), len(i_arg_names)))
+                        .format(len(c_prototype), len(i_dummy_decl), len(i_dummy_arg)))
 
 ##-    if lang in ["f", "fc"]:
-##-        # Default f_arg_name is often ok.
-##-        f_arg_name = stmt.get("f_arg_name", None)
-##-        f_arg_decl = stmt.get("f_arg_decl", None)
-##-        if f_arg_name is not None or f_arg_decl is not None:
+##-        # Default f_dummy_arg is often ok.
+##-        f_dummy_arg = stmt.get("f_dummy_arg", None)
+##-        f_dummy_decl = stmt.get("f_dummy_decl", None)
+##-        if f_dummy_arg is not None or f_dummy_decl is not None:
 ##-            err = False
-##-            for field in ["f_arg_name", "f_arg_decl"]:
+##-            for field in ["f_dummy_arg", "f_dummy_decl"]:
 ##-                fvalue = stmt.get(field)
 ##-                if fvalue is None:
 ##-                    err = True
@@ -384,15 +472,15 @@ def post_mixin_check_statement(name, stmt):
 ##-                elif not isinstance(fvalue, list):
 ##-                    err = True
 ##-                    print(field, "must be a list in", name)
-##-            if (f_arg_name is None or
-##-                f_arg_decl is None):
-##-                print("f_arg_name and f_arg_decl must both exist")
+##-            if (f_dummy_arg is None or
+##-                f_dummy_decl is None):
+##-                print("f_dummy_arg and f_dummy_decl must both exist")
 ##-                err = True
 ##-            if err:
 ##-                raise RuntimeError("Error with fields")
-##-            if len(f_arg_name) != len(f_arg_decl):
+##-            if len(f_dummy_arg) != len(f_dummy_decl):
 ##-                raise RuntimeError(
-##-                    "f_arg_name and f_arg_decl "
+##-                    "f_dummy_arg and f_dummy_decl "
 ##-                    "must all be same length in {}".format(name))
 
 def append_mixin(stmt, mixin):
@@ -469,6 +557,7 @@ def process_mixin(stmts, defaults, stmtdict):
         name = None
         aliases = []
         intent = None
+        check_for_deprecated_names(stmt)
         if "alias" in stmt:
             # name is not allowed"
             aliases = [ alias for alias in stmt["alias"] if alias[0] != "#"]
@@ -797,13 +886,13 @@ def print_tree_statements(fp, statements, defaults):
 #  intent      - Set from name.
 #  c_arg_call  - List of arguments passed to C/C++ library function.
 #
-#  c_arg_decl  - Add C declaration to C wrapper.
+#  c_prototype  - Add C declaration to C wrapper.
 #                Empty list is no arguments, None is default argument.
 #  c_call       - code to call the function.
 #                 Ex. Will be empty for getter and setter.
-#  i_arg_decl - Add Fortran declaration to Fortran wrapper interface block.
+#  i_dummy_decl - Add Fortran declaration to Fortran wrapper interface block.
 #                Empty list is no arguments, None is default argument.
-#  i_arg_names - Empty list is no arguments
+#  i_dummy_arg - Empty list is no arguments
 #  i_result_decl - Declaration for function result.
 #                  Can be an empty list to override default.
 #  i_module    - Add module info to interface block.
@@ -817,8 +906,8 @@ CStmts = util.Scope(
     index="X",
 
     # code fields
-    i_arg_names=None,
-    i_arg_decl=None,
+    i_dummy_arg=None,
+    i_dummy_decl=None,
     i_result_decl=None,
     i_result_var=None,
     # bookkeeping fields
@@ -827,7 +916,7 @@ CStmts = util.Scope(
 
     # code fields
     c_return_type=None,
-    c_arg_decl=None,    # C prototype
+    c_prototype=None,
     c_pre_call=[],
     c_arg_call=[],
     c_call=[],
@@ -861,9 +950,9 @@ FStmts = util.Scope(
     index="X",
 
     # code fields
-    f_arg_name=None,
-    f_arg_decl=None,
-    f_declare=[],
+    f_dummy_arg=None,
+    f_dummy_decl=None,
+    f_local_decl=[],
     f_pre_call=[],
     f_arg_call=None,
     f_call=[],

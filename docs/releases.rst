@@ -54,11 +54,15 @@ Changes to YAML input
   This will change the name of fields in *fstatements* in an input YAML file.
   These are used to changed the default behavior of a wrapper.
 
+  Shroud will print a warning and use the new name.
+  To remove the warning, update the YAML file.
+
 c statements
 
 ===========================   ===========================
 Old Name                      New Name
 ===========================   ===========================
+c_arg_decl                    c_prototype
 arg_call                      c_arg_call
 pre_call                      c_pre_call
 call                          c_call
@@ -67,7 +71,7 @@ final                         c_final
 ret                           c_return
 temps                         c_temps
 local                         c_local
-f_arg_decl                    i_arg_decl
+f_arg_decl                    i_dummy_decl
 f_result_decl                 i_result_decl
 f_result_var                  i_result_var
 f_module                      i_module
@@ -80,10 +84,10 @@ f statements
 Old Name                      New Name
 ===========================   ===========================
 need_wrapper                  f_need_wrapper
-arg_name                      f_arg_name
-arg_decl                      f_arg_decl
+arg_name                      f_dummy_arg
+arg_decl                      f_dummy_decl
 arg_c_call                    f_arg_call
-declare                       f_declare
+declare                       f_local_decl
 pre_call                      f_pre_call
 call                          f_call
 post_call                     f_post_call
@@ -132,7 +136,7 @@ is now:
         f_result_var: num
         f_module:
           iso_c_binding: ["C_LONG"]
-        f_arg_decl:
+        f_dummy_decl:
         -  "integer(C_LONG) :: {f_result_var}"
         f_call:
         -  "{f_result_var} = {f_call_function}({F_arg_c_call})"              

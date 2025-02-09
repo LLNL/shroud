@@ -726,15 +726,15 @@ rv = .false.
                 self.wrap_function_interface("f", cls, node, fileinfo)
         cursor.pop_phase("Wrapf.wrap_function_interface")
 
-    def add_stmt_declaration(self, stmts, arg_f_decl, arg_f_names, fmt):
+    def add_stmt_declaration(self, stmts, dummy_decl_list, dummy_arg_list, fmt):
         """Add declarations from fc_statements.
         """
-        if stmts.f_arg_decl:
-            for line in stmts.f_arg_decl:
-                append_format(arg_f_decl, line, fmt)
-        if stmts.f_arg_name:
-            for aname in stmts.f_arg_name:
-                append_format(arg_f_names, aname, fmt)
+        if stmts.f_dummy_decl:
+            for line in stmts.f_dummy_decl:
+                append_format(dummy_decl_list, line, fmt)
+        if stmts.f_dummy_arg:
+            for name in stmts.f_dummy_arg:
+                append_format(dummy_arg_list, name, fmt)
 
     def add_stmt_var(self, group, lst, fmt):
         """Add a variable fc_statements to lst.
@@ -982,8 +982,8 @@ rv = .false.
                 options = node.options
                 subprogram = arg.declarator.get_subprogram()
                 iface.append("")
-                arg_f_names = []
-                arg_c_decl = []
+                dummy_arg_list = []
+                dummy_decl_list = []
                 modules = {}  # indexed as [module][variable]
                 imports = {}  # indexed as [symbol]
                 stmts_comments = []
@@ -996,17 +996,17 @@ rv = .false.
                         self.document_argument(stmts_comments, param, bind.stmt,
                                                gen_decl(param))
                     self.build_arg_list_interface(bind, modules, imports,
-                                                  arg_f_names, arg_c_decl)
+                                                  dummy_arg_list, dummy_decl_list)
                 r_bind = get_func_bind(fptr, "f")
                 result_stmt = r_bind.stmt
                 fmt_result = r_bind.fmtdict
                 self.build_arg_list_interface(r_bind, modules, imports,
-                                              arg_f_names, arg_c_decl)
+                                              dummy_arg_list, dummy_decl_list)
                 if result_stmt.i_result_decl is not None:
                     for arg in result_stmt.i_result_decl:
-                        append_format(arg_c_decl, arg, fmt_result)
+                        append_format(dummy_decl_list, arg, fmt_result)
                     self.add_i_module_from_stmts(result_stmt, modules, imports, fmt_result)
-                arguments = ",\t ".join(arg_f_names)
+                arguments = ",\t ".join(dummy_arg_list)
                 iface.extend(stmts_comments)
                 if options.literalinclude:
                     iface.append("! start abstract " + key)
@@ -1021,7 +1021,7 @@ rv = .false.
                 if imports:
                     iface.append("import :: " + ",\t ".join(sorted(imports.keys())))
                 iface.append("implicit none")
-                iface.extend(arg_c_decl)
+                iface.extend(dummy_decl_list)
                 iface.append(-1)
                 iface.append("end {} {}".format(subprogram, key))
                 if self.newlibrary.options.literalinclude2:
@@ -1035,29 +1035,29 @@ rv = .false.
         self._pop_splicer("abstract")
 
     def build_arg_list_interface(
-            self, bind, modules, imports, arg_c_names, arg_c_decl):
+            self, bind, modules, imports, dummy_arg_list, dummy_decl_list):
         """Build the Fortran interface for a C wrapper function.
 
         Args:
             bind - statements.BindARg
             modules - Build up USE statement.
             imports - Build up IMPORT statement.
-            arg_c_names - Names of arguments to subprogram.
-            arg_c_decl  - Declaration for arguments.
+            dummy_arg_list - Names of arguments to subprogram.
+            dummy_decl_list  - Declaration for arguments.
         """
         meta = bind.meta
         stmts = bind.stmt
         fmt = bind.fmtdict
         
-        if stmts.i_arg_decl is not None:
+        if stmts.i_dummy_decl is not None:
             # Use explicit declaration from CStmt, both must exist.
-            for arg in stmts.i_arg_decl:
-                append_format(arg_c_decl, arg, fmt)
+            for arg in stmts.i_dummy_decl:
+                append_format(dummy_decl_list, arg, fmt)
             if not meta["assumedtype"]:
                 self.add_i_module_from_stmts(stmts, modules, imports, fmt)
-        if stmts.i_arg_names is not None:
-            for name in stmts.i_arg_names:
-                append_format(arg_c_names, name, fmt)
+        if stmts.i_dummy_arg is not None:
+            for name in stmts.i_dummy_arg:
+                append_format(dummy_arg_list, name, fmt)
 
     def wrap_function_interface(self, wlang, cls, node, fileinfo):
         """Write Fortran interface for C function.
@@ -1108,8 +1108,8 @@ rv = .false.
                                    gen_decl_noparams(ast))
 
         notimplemented = result_stmt.notimplemented
-        arg_c_names = []  # argument names for functions
-        arg_c_decl = []  # declaraion of argument names
+        dummy_arg_list = []  # argument names for functions
+        dummy_decl_list = []  # declaraion of argument names
         modules = {}  # indexed as [module][variable]
         imports = {}  # indexed as [name]
 
@@ -1120,14 +1120,14 @@ rv = .false.
                 pass
             else:
                 # Add 'this' argument
-                arg_c_names.append(fmt_result.C_this)
+                dummy_arg_list.append(fmt_result.C_this)
                 if sintent == "dtor":
                     # dtor will modify C_this to set addr to nullptr.
 #                    line = "type({F_capsule_data_type}){f_intent_attr} :: {C_this}"
                     line = "type({F_capsule_data_type}), intent(INOUT) :: {C_this}"
                 else:
                     line = "type({F_capsule_data_type}), intent(IN) :: {C_this}"
-                append_format(arg_c_decl, line, fmt_func)
+                append_format(dummy_decl_list, line, fmt_func)
                 imports[fmt_result.F_capsule_data_type] = True
 
         args_all_in = True  # assume all arguments are intent(in)
@@ -1156,14 +1156,14 @@ rv = .false.
                                        gen_decl(arg))
             self.build_arg_list_interface(
                 arg_bind, modules, imports,
-                arg_c_names, arg_c_decl
+                dummy_arg_list, dummy_decl_list
             )
         # --- End loop over function parameters
         func_cursor.arg = None
         func_cursor.stmt = result_stmt
 
         self.build_arg_list_interface(r_bind, modules, imports,
-                                      arg_c_names, arg_c_decl)
+                                      dummy_arg_list, dummy_decl_list)
 
         # Filter out non-pure functions.
         if result_typemap.base == "shadow":
@@ -1176,13 +1176,13 @@ rv = .false.
             fmt_result.i_pure_clause = "pure "
 
         fmt_result.i_arguments = options.get(
-            "i_arguments", ",\t ".join(arg_c_names)
+            "i_arguments", ",\t ".join(dummy_arg_list)
         )
 
         if fmt_result.i_subprogram == "function":
             if result_stmt.i_result_decl is not None:
                 for arg in result_stmt.i_result_decl:
-                    append_format(arg_c_decl, arg, fmt_result)
+                    append_format(dummy_decl_list, arg, fmt_result)
                 self.add_i_module_from_stmts(result_stmt, modules, imports, fmt_result)
             elif result_stmt.c_return_type:
                 # Return type changed by user.
@@ -1191,7 +1191,7 @@ rv = .false.
                 if ntypemap is None:
                     cursor.warning("Unknown type in c_return_type: {}".format(c_return_type))
                 else:
-                    arg_c_decl.append("{} :: {}".format(ntypemap.f_type, fmt_result.i_result_var))
+                    dummy_decl_list.append("{} :: {}".format(ntypemap.f_type, fmt_result.i_result_var))
                     self.update_f_module(modules, ntypemap.f_module, fmt_result)
 
         arg_f_use = self.sort_module_info(
@@ -1219,7 +1219,7 @@ rv = .false.
         if imports:
             c_interface.append("import :: " + ",\t ".join(sorted(imports.keys())))
         c_interface.append("implicit none")
-        c_interface.extend(arg_c_decl)
+        c_interface.extend(dummy_decl_list)
         c_interface.append(-1)
         c_interface.append(wformat("end {i_subprogram} {i_name_function}", fmt_result))
         if self.newlibrary.options.literalinclude2:
@@ -1327,9 +1327,9 @@ rv = .false.
         """
         self.add_f_module_from_stmts(intent_blk, modules, fmt)
 
-        if declare is not None and intent_blk.f_declare:
+        if declare is not None and intent_blk.f_local_decl:
             need_wrapper = True
-            for line in intent_blk.f_declare:
+            for line in intent_blk.f_local_decl:
                 append_format(declare, line, fmt)
 
         if pre_call is not None and intent_blk.f_pre_call:
@@ -1411,8 +1411,8 @@ rv = .false.
                 stmts_comments.append("! Function:  " + c_decl)
 
         arg_c_call = []  # arguments to C function
-        arg_f_names = []  # arguments in subprogram statement
-        arg_f_decl = []  # Fortran variable declarations
+        dummy_arg_list = []  # arguments in subprogram statement
+        dummy_decl_list = []  # Fortran variable declarations
         declare = []
         optional = []
         pre_call = []
@@ -1432,12 +1432,12 @@ rv = .false.
                 # The derived type is not actually changed when non-const.
                 # The C++ object pointed to by the derived type may change
                 # so the intent here is not accurate.
-                arg_f_names.append(fmt_result.F_this)
+                dummy_arg_list.append(fmt_result.F_this)
                 if declarator.func_const:
                     line = "class({F_derived_name}), intent(IN) :: {F_this}"
                 else:
                     line = "class({F_derived_name}), intent(INOUT) :: {F_this}"
-                append_format(arg_f_decl, line, fmt_func)
+                append_format(dummy_decl_list, line, fmt_func)
                 # could use {f_to_c} but I'd rather not hide the shadow class
                 arg_c_call.append(
                     wformat("{F_this}%{F_derived_member}", fmt_result)
@@ -1505,7 +1505,7 @@ rv = .false.
                     # Create a local variable of the interface type.
                     fmt_arg.fc_var = "SH_" + fmt_arg.f_var
                     arg_stmt.f_module = {"{i_module_name}": ["{i_kind}"]}
-                    arg_stmt.f_arg_decl = ["{i_type} :: {fc_var}"]
+                    arg_stmt.f_dummy_decl = ["{i_type} :: {fc_var}"]
                     arg_stmt.f_pre_call = [
                         "{fc_var} = {pre_call_intent}"
                     ]
@@ -1523,7 +1523,7 @@ rv = .false.
 
             # Explicit declarations from fc_statements.
             self.add_stmt_declaration(
-                arg_stmt, arg_f_decl, arg_f_names, fmt_arg)
+                arg_stmt, dummy_decl_list, dummy_arg_list, fmt_arg)
             self.add_f_module_from_stmts(arg_stmt, modules, fmt_arg)
 
             if options.debug:
@@ -1593,7 +1593,7 @@ rv = .false.
         # since arguments may be used to compute return value
         # (for example, string lengths).
         self.add_stmt_declaration(
-            result_stmt, arg_f_decl, arg_f_names, fmt_result)
+            result_stmt, dummy_decl_list, dummy_arg_list, fmt_result)
         self.add_f_module_from_stmts(result_stmt, modules, fmt_result)
 
         if node.options.class_ctor:
@@ -1650,7 +1650,7 @@ rv = .false.
         if arg_c_call:
             fmt_result.F_arg_c_call = ",\t ".join(arg_c_call)
         fmt_result.F_arguments = options.get(
-            "F_arguments", ",\t ".join(arg_f_names)
+            "F_arguments", ",\t ".join(dummy_arg_list)
         )
 
         # body of function
@@ -1723,7 +1723,7 @@ rv = .false.
             )
             impl.append(1)
             impl.extend(arg_f_use)
-            impl.extend(arg_f_decl)
+            impl.extend(dummy_decl_list)
             if F_code is None:
                 F_code = declare + optional + pre_call + call + post_call
             self._create_splicer(sname, impl, F_code, F_force)
