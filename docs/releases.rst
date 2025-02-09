@@ -54,6 +54,9 @@ Changes to YAML input
   This will change the name of fields in *fstatements* in an input YAML file.
   These are used to changed the default behavior of a wrapper.
 
+  Shroud will print a warning and use the new name.
+  To remove the warning, update the YAML file.
+
 c statements
 
 ===========================   ===========================
