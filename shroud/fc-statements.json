@@ -5345,25 +5345,25 @@
             "will add text."
         ],
         "f_dummy_arg": [
-            "===>f_dummy_arg<==="
+            "===>{f_var} f_dummy_arg<==="
         ],
         "f_dummy_decl": [
-            "===>f_dummy_decl<==="
+            "===>{f_var} f_dummy_decl<==="
         ],
         "f_arg_call": [
-            "===>f_arg_call<==="
+            "===>{f_var} f_arg_call<==="
         ],
         "i_dummy_arg": [
-            "===>i_dummy_arg<==="
+            "===>{i_var} i_dummy_arg<==="
         ],
         "i_dummy_decl": [
-            "===>i_dummy_decl<==="
+            "===>{i_var} i_dummy_decl<==="
         ],
         "i_result_decl": [
-            "===>i_result_decl<==="
+            "===>{i_var} i_result_decl<==="
         ],
         "c_prototype": [
-            "===>c_prototype<==="
+            "===>{c_var} c_prototype<==="
         ]
     },
     {
@@ -5372,13 +5372,13 @@
             "Default returned by lookup_fc_stmts when group is not found."
         ],
         "i_dummy_arg": [
-            "===>i_dummy_arg<==="
+            "===>{i_var} i_dummy_arg<==="
         ],
         "i_dummy_decl": [
-            "===>i_dummy_decl<==="
+            "===>{i_var} i_dummy_decl<==="
         ],
         "c_prototype": [
-            "===>c_prototype<==="
+            "===>{c_var} c_prototype<==="
         ]
     },
     {
