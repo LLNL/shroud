@@ -980,7 +980,7 @@
                 },
                 "helpers": {
                     "c": [
-                        "char_blank_fill",
+                        "char_copy",
                         "char_alloc",
                         "char_free"
                     ]
@@ -1083,7 +1083,7 @@
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_helper_char_alloc": "ShroudCharAlloc",
-                                "c_helper_char_blank_fill": "ShroudCharBlankFill",
+                                "c_helper_char_copy": "ShroudCharCopy",
                                 "c_helper_char_free": "ShroudCharFree",
                                 "c_local_cxx": "SHC_s_cxx",
                                 "c_member": "->",

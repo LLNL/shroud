@@ -2918,9 +2918,6 @@
             "Fortran calling a C function without",
             "any api argument - is this useful?"
         ],
-        "c_return": [
-            "return {c_var};"
-        ],
         "i_result_decl": [
             "type(C_PTR) :: {i_var}"
         ],
@@ -2931,6 +2928,9 @@
         },
         "c_post_call": [
             "{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();"
+        ],
+        "c_return": [
+            "return {c_var};"
         ]
     },
     {
@@ -4820,7 +4820,7 @@
             "c_mixin_cfi_arg_character",
             "c_mixin_cfi-unpack-base-addr",
             "c_mixin_cfi-unpack-len",
-            "c_mixin_char-blank-fill",
+            "c_mixin_char-copy",
             "c_mixin_char-alloc",
             "c_mixin_arg-call-cxx"
         ]

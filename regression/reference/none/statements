@@ -14083,7 +14083,7 @@ f_inout_char*_cfi:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Character argument passed as CFI_desc_t.
-  - Blank fill C argument.
+  - Copy cxx variable to c argument.
   - Allocate a local char variable in C wrapper.
   - Pass cxx local variable to library.
   f_dummy_arg:
@@ -14099,7 +14099,7 @@ f_inout_char*_cfi:
   - '    c_mixin_cfi_arg'
   - '  c_mixin_cfi-unpack-base-addr'
   - '  c_mixin_cfi-unpack-len'
-  - '  c_mixin_char-blank-fill'
+  - '  c_mixin_char-copy'
   - '  c_mixin_char-alloc'
   - '  c_mixin_arg-call-cxx'
   i_dummy_arg:
@@ -14115,7 +14115,7 @@ f_inout_char*_cfi:
   c_arg_call:
   - '{c_local_cxx}'
   c_post_call:
-  - '{c_helper_char_blank_fill}({c_var}, {c_var_len});'
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   - '{c_helper_char_free}({c_local_cxx});'
   c_temps:
   - cfi
@@ -14123,7 +14123,7 @@ f_inout_char*_cfi:
   c_local:
   - cxx
   c_helper:
-  - char_blank_fill
+  - char_copy
   - char_alloc
   - char_free
   iface_header:
