@@ -73,7 +73,6 @@ i_dummy_arg
 ^^^^^^^^^^^
 
 List of dummy argument names for the Fortran interface.
-Defaults to ``{F_C_var}``.
 An empty list will cause no declaration to be added.
 
 .. note:: *c_prototype*, *i_dummy_decl*, and *i_dummy_arg* must all
