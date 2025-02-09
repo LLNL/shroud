@@ -456,7 +456,7 @@
         "f_dummy_decl": [
             "{f_type}, pointer :: {f_var}"
         ],
-        "f_declare": [
+        "f_local_decl": [
             "type(C_PTR) :: {f_local_ptr}"
         ],
         "f_call": [
@@ -648,7 +648,7 @@
         "mixin": [
             "c_mixin_capsule_pass"
         ],
-        "f_declare": [
+        "f_local_decl": [
             "type({F_capsule_data_type}) :: {f_var_capsule}"
         ],
         "f_arg_call": [
@@ -779,7 +779,7 @@
             "Declare the cdesc variable locally in the Fortran wrapper",
             "then pass to the C wrapper."
         ],
-        "f_declare": [
+        "f_local_decl": [
             "type({F_array_type}) :: {f_var_cdesc}"
         ],
         "f_arg_call": [
@@ -819,7 +819,7 @@
         "notes": [
             "Paired with c_mixin_inout_vector_cdesc."
         ],
-        "f_declare": [
+        "f_local_decl": [
             "type({F_array_type}) :: {f_var_cdesc}"
         ],
         "f_arg_call": [
@@ -1680,7 +1680,7 @@
     },
     {
         "name": "f_mixin_logical-local-var",
-        "f_declare": [
+        "f_local_decl": [
             "logical(C_BOOL) :: {f_var_cxx}"
         ],
         "f_arg_call": [
@@ -2235,7 +2235,7 @@
             "Do not define f_dummy_arg or f_dummy_decl here",
             "to allow it to be used with functions and arguments."
         ],
-        "f_declare": [
+        "f_local_decl": [
             "integer(C_INT) {f_var_len}"
         ],
         "f_pre_call": [

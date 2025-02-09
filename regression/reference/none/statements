@@ -6157,7 +6157,7 @@ f_function_char*_arg:
   - '{f_var}'
   f_dummy_decl:
   - 'character(len=*), intent(OUT) :: {f_var}'
-  f_declare:
+  f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
   - '{f_var_len} = len({f_var}, kind=C_INT)'
@@ -6236,7 +6236,7 @@ f_function_char*_buf_arg:
   - '{f_var}'
   f_dummy_decl:
   - 'character(len=*), intent(OUT) :: {f_var}'
-  f_declare:
+  f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
   - '{f_var_len} = len({f_var}, kind=C_INT)'
@@ -6314,7 +6314,7 @@ f_function_char*_buf_copy:
   - XXX - maybe fmtdict to rename c_local_cxx as output
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
-  f_declare:
+  f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
   - '{f_var_len} = len({f_var}, kind=C_INT)'
@@ -6381,7 +6381,7 @@ f_function_char*_cdesc_allocatable:
   - Fill cdesc from char * in the C wrapper.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -6437,7 +6437,7 @@ f_function_char*_cdesc_pointer:
   - Assign Fortran pointer from cdesc using helper pointer_string.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -6810,7 +6810,7 @@ f_function_char_cdesc_allocatable:
   - Fill cdesc from char * in the C wrapper.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -6866,7 +6866,7 @@ f_function_char_cdesc_pointer:
   - Assign Fortran pointer from cdesc using helper pointer_string.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -7079,7 +7079,7 @@ f_function_native&:
   - type(C_PTR) is returned instead of a cdesc argument.
   f_dummy_decl:
   - '{f_type}, pointer :: {f_var}'
-  f_declare:
+  f_local_decl:
   - 'type(C_PTR) :: {f_local_ptr}'
   f_call:
   - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
@@ -7112,7 +7112,7 @@ f_function_native&_pointer:
   - type(C_PTR) is returned instead of a cdesc argument.
   f_dummy_decl:
   - '{f_type}, pointer :: {f_var}'
-  f_declare:
+  f_local_decl:
   - 'type(C_PTR) :: {f_local_ptr}'
   f_call:
   - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
@@ -7168,7 +7168,7 @@ f_function_native*_cdesc_allocatable:
   - Release memory from capsule.
   f_dummy_decl:
   - '{f_type}{f_intent_attr}{f_deref_attr}, target :: {f_var}{f_dimension}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
@@ -7248,7 +7248,7 @@ f_function_native*_cdesc_pointer:
   - Set Fortran pointer to native array.
   f_dummy_decl:
   - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -7315,7 +7315,7 @@ f_function_native*_cdesc_pointer_caller:
   f_dummy_decl:
   - 'type({F_capsule_type}), intent(OUT) :: {f_var_capsule}'
   - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -7534,7 +7534,7 @@ f_function_native*_pointer:
   - type(C_PTR) is returned instead of a cdesc argument.
   f_dummy_decl:
   - '{f_type}, pointer :: {f_var}'
-  f_declare:
+  f_local_decl:
   - 'type(C_PTR) :: {f_local_ptr}'
   f_call:
   - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
@@ -7567,7 +7567,7 @@ f_function_native*_pointer_caller:
   - type(C_PTR) is returned instead of a cdesc argument.
   f_dummy_decl:
   - '{f_type}, pointer :: {f_var}'
-  f_declare:
+  f_local_decl:
   - 'type(C_PTR) :: {f_local_ptr}'
   f_call:
   - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
@@ -8133,7 +8133,7 @@ f_function_string&_buf:
   - Copy cxx variable into c variable.
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
-  f_declare:
+  f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
   - '{f_var_len} = len({f_var}, kind=C_INT)'
@@ -8210,7 +8210,7 @@ f_function_string&_buf_arg:
   - '{f_var}'
   f_dummy_decl:
   - 'character(len=*), intent(OUT) :: {f_var}'
-  f_declare:
+  f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
   - '{f_var_len} = len({f_var}, kind=C_INT)'
@@ -8288,7 +8288,7 @@ f_function_string&_buf_caller:
   - Delete the cxx variable.
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
-  f_declare:
+  f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
   - '{f_var_len} = len({f_var}, kind=C_INT)'
@@ -8357,7 +8357,7 @@ f_function_string&_buf_copy:
   - Copy cxx variable into c variable.
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
-  f_declare:
+  f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
   - '{f_var_len} = len({f_var}, kind=C_INT)'
@@ -8429,7 +8429,7 @@ f_function_string&_buf_copy_caller:
   - Delete the cxx variable.
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
-  f_declare:
+  f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
   - '{f_var_len} = len({f_var}, kind=C_INT)'
@@ -8502,7 +8502,7 @@ f_function_string&_cdesc_allocatable:
   - Release memory from capsule.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
@@ -8577,7 +8577,7 @@ f_function_string&_cdesc_allocatable_caller:
   - Release memory from capsule.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
@@ -8652,7 +8652,7 @@ f_function_string&_cdesc_allocatable_library:
   - Release memory from capsule.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
@@ -8722,7 +8722,7 @@ f_function_string&_cdesc_pointer:
   - Assign Fortran pointer from cdesc using helper pointer_string.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -8776,7 +8776,7 @@ f_function_string&_cdesc_pointer_caller:
   - Assign Fortran pointer from cdesc using helper pointer_string.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -8830,7 +8830,7 @@ f_function_string&_cdesc_pointer_library:
   - Assign Fortran pointer from cdesc using helper pointer_string.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -9335,7 +9335,7 @@ f_function_string*_buf:
   - Copy cxx variable into c variable.
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
-  f_declare:
+  f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
   - '{f_var_len} = len({f_var}, kind=C_INT)'
@@ -9407,7 +9407,7 @@ f_function_string*_buf_caller:
   - Delete the cxx variable.
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
-  f_declare:
+  f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
   - '{f_var_len} = len({f_var}, kind=C_INT)'
@@ -9476,7 +9476,7 @@ f_function_string*_buf_copy:
   - Copy cxx variable into c variable.
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
-  f_declare:
+  f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
   - '{f_var_len} = len({f_var}, kind=C_INT)'
@@ -9548,7 +9548,7 @@ f_function_string*_buf_copy_caller:
   - Delete the cxx variable.
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
-  f_declare:
+  f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
   - '{f_var_len} = len({f_var}, kind=C_INT)'
@@ -9621,7 +9621,7 @@ f_function_string*_cdesc_allocatable:
   - Release memory from capsule.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
@@ -9696,7 +9696,7 @@ f_function_string*_cdesc_allocatable_caller:
   - Release memory from capsule.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
@@ -9771,7 +9771,7 @@ f_function_string*_cdesc_allocatable_library:
   - Release memory from capsule.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
@@ -9841,7 +9841,7 @@ f_function_string*_cdesc_pointer:
   - Assign Fortran pointer from cdesc using helper pointer_string.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -9895,7 +9895,7 @@ f_function_string*_cdesc_pointer_caller:
   - Assign Fortran pointer from cdesc using helper pointer_string.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -9949,7 +9949,7 @@ f_function_string*_cdesc_pointer_library:
   - Assign Fortran pointer from cdesc using helper pointer_string.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -10385,7 +10385,7 @@ f_function_string_buf:
   - Copy cxx variable into c variable.
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
-  f_declare:
+  f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
   - '{f_var_len} = len({f_var}, kind=C_INT)'
@@ -10462,7 +10462,7 @@ f_function_string_buf_arg:
   - '{f_var}'
   f_dummy_decl:
   - 'character(len=*), intent(OUT) :: {f_var}'
-  f_declare:
+  f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
   - '{f_var_len} = len({f_var}, kind=C_INT)'
@@ -10540,7 +10540,7 @@ f_function_string_buf_caller:
   - Delete the cxx variable.
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
-  f_declare:
+  f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
   - '{f_var_len} = len({f_var}, kind=C_INT)'
@@ -10609,7 +10609,7 @@ f_function_string_buf_copy:
   - Copy cxx variable into c variable.
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
-  f_declare:
+  f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
   - '{f_var_len} = len({f_var}, kind=C_INT)'
@@ -10681,7 +10681,7 @@ f_function_string_buf_copy_caller:
   - Delete the cxx variable.
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
-  f_declare:
+  f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
   - '{f_var_len} = len({f_var}, kind=C_INT)'
@@ -10755,7 +10755,7 @@ f_function_string_cdesc_allocatable:
   - Release memory from capsule.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
@@ -10845,7 +10845,7 @@ f_function_string_cdesc_allocatable_caller:
   - Release memory from capsule.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
@@ -10935,7 +10935,7 @@ f_function_string_cdesc_allocatable_library:
   - Release memory from capsule.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
@@ -11503,7 +11503,7 @@ f_function_struct*_cdesc_pointer:
   - Set Fortran pointer to native array.
   f_dummy_decl:
   - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -11559,7 +11559,7 @@ f_function_struct*_pointer:
   - C++ pointer -> void pointer -> C pointer.
   f_dummy_decl:
   - '{f_type}, pointer :: {f_var}'
-  f_declare:
+  f_local_decl:
   - 'type(C_PTR) :: {f_local_ptr}'
   f_call:
   - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
@@ -11596,7 +11596,7 @@ f_function_vector<native>_cdesc_allocatable:
   - Always return a 1-d array.
   f_dummy_decl:
   - '{targs[0].f_type}{f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -11751,7 +11751,7 @@ f_getter_native*_cdesc_pointer:
   - Similar to calling a function, but save field pointer instead.
   f_dummy_decl:
   - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -11835,7 +11835,7 @@ f_getter_string_cdesc_allocatable:
   - Return argument meta data to Fortran.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -11889,7 +11889,7 @@ f_getter_struct**_cdesc_raw:
   - along with shape information.
   f_dummy_decl:
   - 'type(C_PTR), pointer :: {f_var}{f_assumed_shape}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -11950,7 +11950,7 @@ f_getter_struct*_cdesc_pointer:
   - Similar to calling a function, but save field pointer instead.
   f_dummy_decl:
   - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -12024,7 +12024,7 @@ f_in_bool:
   - '{f_var}'
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
-  f_declare:
+  f_local_decl:
   - 'logical(C_BOOL) :: {f_var_cxx}'
   f_pre_call:
   - '{f_var_cxx} = {f_var}  ! coerce to C_BOOL'
@@ -12254,7 +12254,7 @@ f_in_char*_buf:
   - '{f_var}'
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
-  f_declare:
+  f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
   - '{f_var_len} = len({f_var}, kind=C_INT)'
@@ -12544,7 +12544,7 @@ f_in_native*_cdesc:
   - '{f_var}'
   f_dummy_decl:
   - '{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
@@ -12900,7 +12900,7 @@ f_in_string&_buf:
   - '{f_var}'
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
-  f_declare:
+  f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
   - '{f_var_len} = len({f_var}, kind=C_INT)'
@@ -13032,7 +13032,7 @@ f_in_string*_buf:
   - '{f_var}'
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
-  f_declare:
+  f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
   - '{f_var_len} = len({f_var}, kind=C_INT)'
@@ -13139,7 +13139,7 @@ f_in_string_buf:
   - '{f_var}'
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
-  f_declare:
+  f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
   - '{f_var_len} = len({f_var}, kind=C_INT)'
@@ -13871,7 +13871,7 @@ f_in_void*_cdesc:
   - '{f_var}'
   f_dummy_decl:
   - '{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
@@ -13921,7 +13921,7 @@ f_inout_bool*:
   - '{f_var}'
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
-  f_declare:
+  f_local_decl:
   - 'logical(C_BOOL) :: {f_var_cxx}'
   f_pre_call:
   - '{f_var_cxx} = {f_var}  ! coerce to C_BOOL'
@@ -13997,7 +13997,7 @@ f_inout_char*_buf:
   - '{f_var}'
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
-  f_declare:
+  f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
   - '{f_var_len} = len({f_var}, kind=C_INT)'
@@ -14245,7 +14245,7 @@ f_inout_native*_cdesc:
   - '{f_var}'
   f_dummy_decl:
   - '{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
@@ -14462,7 +14462,7 @@ f_inout_string&:
   - Create local std::string from the argument.
   - Pass cxx local variable to library.
   - Strcpy std::string into argument.
-  f_declare:
+  f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
   - '{f_var_len} = len({f_var}, kind=C_INT)'
@@ -14513,7 +14513,7 @@ f_inout_string&_buf:
   - '{f_var}'
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
-  f_declare:
+  f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
   - '{f_var_len} = len({f_var}, kind=C_INT)'
@@ -14629,7 +14629,7 @@ f_inout_string*:
   notes:
   - XXX - the fortran wrapper is incorrect since it is passing buf
   - '  but only accepting one argument. Confused with f_inout_string*_buf'
-  f_declare:
+  f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
   - '{f_var_len} = len({f_var}, kind=C_INT)'
@@ -14680,7 +14680,7 @@ f_inout_string*_buf:
   - '{f_var}'
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
-  f_declare:
+  f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
   - '{f_var_len} = len({f_var}, kind=C_INT)'
@@ -14857,7 +14857,7 @@ f_inout_vector<native>&_cdesc:
   - '{f_var}'
   f_dummy_decl:
   - '{targs[0].f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
   - '{f_var}'
@@ -14939,7 +14939,7 @@ f_inout_vector<native>&_cdesc_allocatable:
   - '{f_var}'
   f_dummy_decl:
   - '{targs[0].f_type}{f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
   - '{f_var}'
@@ -15126,7 +15126,7 @@ f_inout_void*_cdesc:
   - '{f_var}'
   f_dummy_decl:
   - '{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
@@ -15243,7 +15243,7 @@ f_mixin_capsule_pass:
   comments:
   - Pass capsule as argument to C wrapper.
   - Create a local Fortran capsule.
-  f_declare:
+  f_local_decl:
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_capsule}'
@@ -15273,7 +15273,7 @@ f_mixin_capsule_use:
   - Create a local Fortran capsule.
   - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
-  f_declare:
+  f_local_decl:
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_capsule}'
@@ -15356,7 +15356,7 @@ f_mixin_cdesc_inout_array:
   intent: mixin
   comments:
   - Declare local Fortran array_type argument.
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
   - '{f_var}'
@@ -15479,7 +15479,7 @@ f_mixin_cdesc_pass:
   intent: mixin
   comments:
   - Pass cdesc as argument to C wrapper.
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -15694,7 +15694,7 @@ f_mixin_function_c-ptr:
   - Return a C pointer as a type(C_PTR).
   f_dummy_decl:
   - '{f_type}, pointer :: {f_var}'
-  f_declare:
+  f_local_decl:
   - 'type(C_PTR) :: {f_local_ptr}'
   f_call:
   - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
@@ -15956,7 +15956,7 @@ f_mixin_logical-in:
 f_mixin_logical-local-var:
   name: f_mixin_logical-local-var
   intent: mixin
-  f_declare:
+  f_local_decl:
   - 'logical(C_BOOL) :: {f_var_cxx}'
   f_arg_call:
   - '{f_var_cxx}'
@@ -16027,7 +16027,7 @@ f_mixin_pass_character_buf:
   intent: mixin
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  f_declare:
+  f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
   - '{f_var_len} = len({f_var}, kind=C_INT)'
@@ -16142,7 +16142,7 @@ f_none_bool:
   - '{f_var}'
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
-  f_declare:
+  f_local_decl:
   - 'logical(C_BOOL) :: {f_var_cxx}'
   f_pre_call:
   - '{f_var_cxx} = {f_var}  ! coerce to C_BOOL'
@@ -16183,7 +16183,7 @@ f_none_bool*:
   - '{f_var}'
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
-  f_declare:
+  f_local_decl:
   - 'logical(C_BOOL) :: {f_var_cxx}'
   f_arg_call:
   - '{f_var_cxx}'
@@ -16369,7 +16369,7 @@ f_out_bool*:
   - '{f_var}'
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
-  f_declare:
+  f_local_decl:
   - 'logical(C_BOOL) :: {f_var_cxx}'
   f_arg_call:
   - '{f_var_cxx}'
@@ -16445,7 +16445,7 @@ f_out_char**_cdesc_pointer:
   - '{f_var}'
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -16562,7 +16562,7 @@ f_out_char*_buf:
   - '{f_var}'
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
-  f_declare:
+  f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
   - '{f_var_len} = len({f_var}, kind=C_INT)'
@@ -16814,7 +16814,7 @@ f_out_native*&_cdesc:
   - '{f_var}'
   f_dummy_decl:
   - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -16872,7 +16872,7 @@ f_out_native*&_cdesc_pointer:
   - '{f_var}'
   f_dummy_decl:
   - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -16968,7 +16968,7 @@ f_out_native**_cdesc_allocatable:
   - '{f_var}'
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
@@ -17054,7 +17054,7 @@ f_out_native**_cdesc_pointer:
   - '{f_var}'
   f_dummy_decl:
   - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -17255,7 +17255,7 @@ f_out_native*_cdesc:
   - '{f_var}'
   f_dummy_decl:
   - '{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
@@ -17360,7 +17360,7 @@ f_out_string&_buf:
   - '{f_var}'
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
-  f_declare:
+  f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
   - '{f_var_len} = len({f_var}, kind=C_INT)'
@@ -17476,7 +17476,7 @@ f_out_string**_cdesc_allocatable:
   - '{f_var}'
   f_dummy_decl:
   - 'character({f_char_len}){f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
@@ -17557,7 +17557,7 @@ f_out_string**_cdesc_copy:
   - '{f_var}'
   f_dummy_decl:
   - '{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
@@ -17716,7 +17716,7 @@ f_out_string*_buf:
   - '{f_var}'
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
-  f_declare:
+  f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
   - '{f_var_len} = len({f_var}, kind=C_INT)'
@@ -17890,7 +17890,7 @@ f_out_vector<native>&_cdesc:
   - '{f_var}'
   f_dummy_decl:
   - '{targs[0].f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -17962,7 +17962,7 @@ f_out_vector<native>&_cdesc_allocatable:
   - '{f_var}'
   f_dummy_decl:
   - '{targs[0].f_type}{f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -18031,7 +18031,7 @@ f_out_vector<native>*_cdesc:
   - '{f_var}'
   f_dummy_decl:
   - '{targs[0].f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -18103,7 +18103,7 @@ f_out_vector<native>*_cdesc_allocatable:
   - '{f_var}'
   f_dummy_decl:
   - '{targs[0].f_type}{f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -18170,7 +18170,7 @@ f_out_vector<string>&_cdesc:
   - '{f_var}'
   f_dummy_decl:
   - '{targs[0].f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
@@ -18228,7 +18228,7 @@ f_out_vector<string>&_cdesc_allocatable:
   - '{f_var}'
   f_dummy_decl:
   - 'character({f_char_len}){f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
@@ -18429,7 +18429,7 @@ f_out_void*_cdesc:
   - '{f_var}'
   f_dummy_decl:
   - '{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
-  f_declare:
+  f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
@@ -18485,7 +18485,7 @@ f_setter_bool:
   - '{f_var}'
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
-  f_declare:
+  f_local_decl:
   - 'logical(C_BOOL) :: {f_var_cxx}'
   f_pre_call:
   - '{f_var_cxx} = {f_var}  ! coerce to C_BOOL'
@@ -18584,7 +18584,7 @@ f_setter_string_buf:
   - '{f_var}'
   f_dummy_decl:
   - 'character(len=*){f_intent_attr} :: {f_var}'
-  f_declare:
+  f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
   - '{f_var_len} = len({f_var}, kind=C_INT)'

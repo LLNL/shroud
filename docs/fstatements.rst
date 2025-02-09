@@ -27,7 +27,7 @@ A Fortran wrapper is created out of several segments.
         [f_module]
         [f_dummy_decl]
         ! splicer begin
-        [f_declare]
+        [f_local_decl]
         [f_pre_call]
         [f_call]
         [f_post_call]
@@ -83,7 +83,8 @@ to add Fortran attributes such as ``TARGET`` or ``POINTER``.
 Also used when a function result is converted into an argument.
 Added before splicer since it is part of the API and must not be changed
 by the splicer.
-Additional declarations can be added within the splicer via *f_declare*.
+Local variables can be declared with *f_local_decl* for function
+results or intermediate values.
 
 .. code-block:: yaml
 
@@ -98,8 +99,8 @@ Additional declarations can be added within the splicer via *f_declare*.
 It is also used to declare a result defined with *f_result_var* when
 converting a subroutine into a function.
 
-f_declare
-^^^^^^^^^
+f_local_decl
+^^^^^^^^^^^^
 
 A list of declarations needed by *f_pre_call* or *f_post_call*.
 Usually a *c_local_var* is sufficient.
@@ -161,7 +162,7 @@ For example, to assign to an intermediate variable:
 
 .. code-block:: yaml
 
-        f_declare:
+        f_local_decl:
         - "type(C_PTR) :: {c_local_ptr}"
         f_call:
         - "{c_local_ptr} = {F_C_call}({f_arg_call})"

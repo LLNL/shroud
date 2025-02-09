@@ -84,7 +84,7 @@ need_wrapper                  f_need_wrapper
 arg_name                      f_dummy_arg
 arg_decl                      f_dummy_decl
 arg_c_call                    f_arg_call
-declare                       f_declare
+declare                       f_local_decl
 pre_call                      f_pre_call
 call                          f_call
 post_call                     f_post_call

@@ -345,11 +345,13 @@ deprecated_fields = dict(
         arg_name="f_dummy_arg",
         arg_decl="f_dummy_decl",
         c_arg_decl="c_prototype",
+        declare="f_local_decl",
         # develop changes
         f_arg_decl="f_dummy_decl",
         f_arg_name="f_dummy_arg",
         i_arg_decl="i_dummy_decl",
         i_arg_names="i_dummy_arg",
+        f_declare="f_local_decl",
     )
 )
 
@@ -930,7 +932,7 @@ FStmts = util.Scope(
     # code fields
     f_dummy_arg=None,
     f_dummy_decl=None,
-    f_declare=[],
+    f_local_decl=[],
     f_pre_call=[],
     f_arg_call=None,
     f_call=[],

@@ -1327,9 +1327,9 @@ rv = .false.
         """
         self.add_f_module_from_stmts(intent_blk, modules, fmt)
 
-        if declare is not None and intent_blk.f_declare:
+        if declare is not None and intent_blk.f_local_decl:
             need_wrapper = True
-            for line in intent_blk.f_declare:
+            for line in intent_blk.f_local_decl:
                 append_format(declare, line, fmt)
 
         if pre_call is not None and intent_blk.f_pre_call:
