@@ -1748,7 +1748,7 @@ i_type
 
 i_var
     Fortran variable name for argument in interface.
-    Used with statement fields *i_result_decl*, *_iarg_names* and *i_arg_decl*.
+    Used with statement fields *i_result_decl*, *i_dummy_arg* and *i_dummy_decl*.
 
 size
     Expression to compute size of array argument using ``SIZE`` intrinsic.

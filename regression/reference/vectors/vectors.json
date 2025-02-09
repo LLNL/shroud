@@ -597,11 +597,11 @@
                             "return SHT_arg_cdesc->size;"
                         ],
                         "c_return_type": "long",
-                        "f_arg_decl": [
-                            "integer(C_LONG) :: {f_result_var}"
-                        ],
                         "f_call": [
                             "{f_result_var} = {f_call_function}({F_arg_c_call})"
+                        ],
+                        "f_dummy_decl": [
+                            "integer(C_LONG) :: {f_result_var}"
                         ],
                         "f_module": {
                             "iso_c_binding": [
@@ -894,7 +894,7 @@
                 },
                 "fstatements": {
                     "f": {
-                        "f_arg_decl": [
+                        "f_dummy_decl": [
                             "integer(C_LONG) :: num"
                         ],
                         "f_module": {

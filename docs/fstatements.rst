@@ -25,7 +25,7 @@ A Fortran wrapper is created out of several segments.
 
       {F_subprogram} {F_name_impl}({F_arguments}){F_result_clause}
         [f_module]
-        [f_arg_decl]
+        [f_dummy_decl]
         ! splicer begin
         [f_declare]
         [f_pre_call]
@@ -72,12 +72,12 @@ List of dummy argument names for the Fortran subprogram.
 It will be formatted before being used to expand ``{f_var}``.
 
 Any function result arguments will be added at the end.
-Only added if *f_arg_decl* is also defined.
+Only added if *f_dummy_decl* is also defined.
 
-f_arg_decl
-^^^^^^^^^^
+f_dummy_decl
+^^^^^^^^^^^^
 
-List of argument or result declarations.
+List of dummy argument declarations or result declarations.
 Usually constructed from YAML *decl* but sometimes needs to be explicit
 to add Fortran attributes such as ``TARGET`` or ``POINTER``.
 Also used when a function result is converted into an argument.
@@ -89,7 +89,7 @@ Additional declarations can be added within the splicer via *f_declare*.
 
         f_dummy_arg:
         - "{f_var}"
-        f_arg_decl:
+        f_dummy_decl:
         - character, value, intent(IN) :: {f_var}
 
 .. result declaration is added before arguments
@@ -187,7 +187,7 @@ value to ``as-subroutine`` (which is an illegal identifier).
 
 In this example, the subroutine is converted into a function
 which will return the number of items copied into the result argument.
-*f_arg_decl* is used to declare the result variable.
+*f_dummy_decl* is used to declare the result variable.
 
 .. example from vectors.yaml
 
@@ -197,12 +197,12 @@ which will return the number of items copied into the result argument.
       fstatements:
         f:
           f_result_var: num
-          f_module:
-            iso_c_binding: ["C_LONG"]
-          f_arg_decl:
+          f_dummy_decl:
           -  "integer(C_LONG) :: num"
           f_post_call:
           -  "num = SHT_arg_cdesc%size"
+          f_module:
+            iso_c_binding: ["C_LONG"]
 
 When set to **subroutine** it will treat the Fortran wrapper as a ``subroutine``.
 Used when the function result is passed as an argument to the Fortran wrapper

@@ -1672,6 +1672,7 @@ class FunctionNode(AstNode):
                 # value must be a dict
                 if key in ["c", "c_buf", "f", "py"]:
                     # remove __line__?
+                    statements.check_stmt_for_deprecated_names(key, value)
                     self.fstatements[key] = util.Scope(None, **value)
         if "bind" in kwargs:
             # lang must be a dict

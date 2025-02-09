@@ -35,7 +35,7 @@ A corresponding ``bind(C)`` interface can be created for Fortran.
         bind(C, name="{C_name}")
         [i_module]
         [i_import]
-        [i_arg_decl]
+        [i_dummy_decl]
         [i_result_decl]
     end {i_subprogram} {i_name}
 
@@ -76,11 +76,11 @@ List of dummy argument names for the Fortran interface.
 Defaults to ``{F_C_var}``.
 An empty list will cause no declaration to be added.
 
-.. note:: *c_prototype*, *i_arg_decl*, and *i_dummy_arg* must all
+.. note:: *c_prototype*, *i_dummy_decl*, and *i_dummy_arg* must all
           exist in a group and have the same number of names.
 
-i_arg_decl
-^^^^^^^^^^
+i_dummy_decl
+^^^^^^^^^^^^
 
 A list of dummy argument declarations in the Fortran ``bind(C)``
 interface. The variable to be
@@ -88,7 +88,7 @@ declared is *c_var*.  *i_module* can be used to add ``USE`` statements
 needed by the declarations.
 An empty list will cause no declaration to be added.
 
-.. note:: *c_prototype*, *i_arg_decl*, and *i_dummy_arg* must all
+.. note:: *c_prototype*, *i_dummy_decl*, and *i_dummy_arg* must all
           exist in a group and have the same number of names.
 
 .. c_var  c_f_dimension
@@ -142,7 +142,7 @@ A list of declarations to create the format field *C_prototype*.
 An empty list will cause no declaration to be added.
 Functions do not add an argument by default.
 
-.. note:: *c_prototype*, *i_arg_decl*, and *i_dummy_arg* must all
+.. note:: *c_prototype*, *i_dummy_decl*, and *i_dummy_arg* must all
           exist together in a statement group and have the same number of names.
 
 c_arg_call

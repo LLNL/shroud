@@ -6,7 +6,7 @@ copyright:
 - "SPDX-License-Identifier: (BSD-3-Clause)"
 -
 
-# Test error messages from ast.py
+# Test error messages from ast.py.
 
 library: error
 cxx_header: error.hpp
@@ -135,6 +135,11 @@ declarations:
 
 - decl: template<typename T, typename U>
         void process_twostruct(twostruct<T, U> arg)
+  fstatements:
+    f:
+      # f_arg_decl is deprecated, changed to f_dummy_decl
+      f_arg_decl:
+      -  "integer(C_LONG) :: {f_result_var}"
 
 - decl: void process_twostruct(twostruct<int, long> arg)
   cxx_template:

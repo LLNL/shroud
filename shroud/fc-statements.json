@@ -65,7 +65,7 @@
         "notes": [
             "Used with function results."
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}"
         ],
         "f_module": {
@@ -83,7 +83,7 @@
         "f_dummy_arg": [
             "{f_var}"
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}"
         ],
         "f_module": {
@@ -101,7 +101,7 @@
         "f_dummy_arg": [
             "{f_var}"
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "type(C_PTR){f_intent_attr} :: {f_var}"
         ],
         "f_module": {
@@ -115,7 +115,7 @@
         "comments": [
             "Declare function result as a type(C_PTR)."
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "type(C_PTR) :: {f_var}"
         ],
         "f_module": {
@@ -154,7 +154,7 @@
         "i_dummy_arg": [
             "{i_var}"
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "{i_type}{f_value_attr}{i_intent_attr} :: {i_var}{i_dimension}"
         ],
         "i_module": {
@@ -173,7 +173,7 @@
         "i_dummy_arg": [
             "{i_var}"
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "type(C_PTR){i_intent_attr} :: {i_var}"
         ],
         "i_module": {
@@ -192,7 +192,7 @@
         "i_dummy_arg": [
             "{i_var}"
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "type(C_PTR){i_intent_attr} :: {i_var}(*)"
         ],
         "i_module": {
@@ -210,7 +210,7 @@
         "i_dummy_arg": [
             "{i_var}"
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "type(C_PTR){i_intent_attr}, value :: {i_var}"
         ],
         "i_module": {
@@ -228,7 +228,7 @@
         "i_dummy_arg": [
             "{i_var}"
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "type(C_PTR){i_intent_attr} :: {i_var}{i_dimension}"
         ],
         "i_module": {
@@ -417,7 +417,7 @@
         "comments": [
             "Return a C pointer directly as type(C_PTR)."
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "type(C_PTR) :: {f_var}"
         ],
         "f_module": {
@@ -453,7 +453,7 @@
         "comments": [
             "Return a C pointer as a type(C_PTR)."
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "{f_type}, pointer :: {f_var}"
         ],
         "f_declare": [
@@ -623,7 +623,7 @@
         "i_dummy_arg": [
             "{i_var_capsule}"
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}"
         ],
         "i_import": [
@@ -680,7 +680,7 @@
         "f_dummy_arg": [
             "{f_var_capsule}"
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "type({F_capsule_type}), intent(OUT) :: {f_var_capsule}"
         ],
         "f_arg_call": [
@@ -735,7 +735,7 @@
         "comments": [
             "Pass function result as a capsule argument from Fortran to C."
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "{f_type} :: {f_var}"
         ],
         "f_arg_call": [
@@ -795,7 +795,7 @@
         "i_dummy_arg": [
             "{i_var_cdesc}"
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "type({F_array_type}), intent(OUT) :: {i_var_cdesc}"
         ],
         "i_import": [
@@ -887,7 +887,7 @@
             "Allocate Fortran native array, then fill from cdesc",
             "using helper copy_array."
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "{f_type}{f_intent_attr}{f_deref_attr}, target :: {f_var}{f_dimension}"
         ],
         "f_post_call": [
@@ -943,7 +943,7 @@
         "comments": [
             "Set Fortran pointer to native array."
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}"
         ],
         "f_post_call": [
@@ -966,7 +966,7 @@
         "notes": [
             "'double **' function returns 'type(C_PTR), pointer :: array(:)'"
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "type(C_PTR), pointer :: {f_var}{f_assumed_shape}"
         ],
         "f_post_call": [
@@ -987,7 +987,7 @@
         "f_dummy_arg": [
             "{f_var}"
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}"
         ],
         "f_post_call": [
@@ -1008,7 +1008,7 @@
             "Allocate Fortran CHARACTER scalar, then fill from cdesc",
             "using helper copy_string."
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}"
         ],
         "f_post_call": [
@@ -1027,7 +1027,7 @@
         "comments": [
             "Assign Fortran pointer from cdesc using helper pointer_string."
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}"
         ],
         "f_post_call": [
@@ -1076,7 +1076,7 @@
         "f_dummy_arg": [
             "{f_var}"
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "{targs[0].f_type}{f_intent_attr} :: {f_var}{f_assumed_shape}"
         ],
         "f_arg_call": [
@@ -1094,7 +1094,7 @@
             "{i_var}",
             "{i_var_size}"
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "{targs[0].f_type}, intent(IN) :: {i_var}(*)",
             "integer(C_SIZE_T), intent(IN), value :: {i_var_size}"
         ],
@@ -1131,7 +1131,7 @@
             "{i_var}",
             "{i_var_size}"
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "{targs[0].f_type}{i_intent_attr} :: {i_var}(*)",
             "integer(C_SIZE_T){i_intent_attr} :: {i_var_size}"
         ],
@@ -1158,7 +1158,7 @@
             "{i_var}",
             "{i_var_size}"
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "type(C_PTR){i_intent_attr} :: {i_var}",
             "integer(C_SIZE_T){i_intent_attr} :: {i_var_size}"
         ],
@@ -1185,7 +1185,7 @@
         "i_dummy_arg": [
             "{i_var_size}"
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "integer(C_SIZE_T), intent(OUT) :: {i_var_size}"
         ],
         "i_result_decl": [
@@ -1213,7 +1213,7 @@
         "f_dummy_arg": [
             "{f_var}"
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "{targs[0].f_type}{f_intent_attr} :: {f_var}(:,:)"
         ],
         "f_arg_call": [
@@ -1233,7 +1233,7 @@
             "{i_var_len}",
             "{i_var_size}"
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "{targs[0].f_type}, intent(IN) :: {i_var}(*)",
             "integer(C_SIZE_T), intent(IN), value :: {i_var_len}",
             "integer(C_SIZE_T), intent(IN), value :: {i_var_size}"
@@ -1267,7 +1267,7 @@
             "{i_var_size}",
             "{i_var_cdesc}"
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "{targs[0].f_type}, intent(IN) :: {i_var}(*)",
             "integer(C_SIZE_T), intent(IN), value :: {i_var_size}",
             "type({F_array_type}), intent(OUT) :: {i_var_cdesc}"
@@ -1514,7 +1514,7 @@
         "f_dummy_arg": [
             "{f_var}"
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}"
         ],
         "f_module": {
@@ -1779,10 +1779,10 @@
             "f_mixin_interface-as-cptr",
             "f_mixin_declare-fortran-arg"
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "{f_type}{f_intent_attr} :: {f_var}"
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "{i_type}{f_value_attr}{i_intent_attr} :: {i_var}{i_dimension}"
         ]
     },
@@ -1830,13 +1830,13 @@
         "f_dummy_arg": [
             "{f_var}"
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "type(C_PTR){f_value_attr}{f_intent_attr} :: {f_var}{f_assumed_shape}"
         ],
         "c_prototype": [
             "void **{c_var}"
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "type(C_PTR){f_value_attr}{i_intent_attr} :: {i_var}{i_dimension}"
         ],
         "i_dummy_arg": [
@@ -1864,7 +1864,7 @@
             "f_mixin_declare-fortran-arg",
             "c_mixin_arg-call-cvar"
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "{i_type}, value{i_intent_attr} :: {i_var}"
         ],
         "i_dummy_arg": [
@@ -1950,13 +1950,13 @@
     },
     {
         "name": "f_mixin_character-deferred-length",
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}"
         ]
     },
     {
         "name": "c_mixin_character-deferred-length",
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}"
         ]
     },
@@ -1972,7 +1972,7 @@
         "f_dummy_arg": [
             "{f_var}"
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "character, value{f_intent_attr} :: {f_var}"
         ]
     },
@@ -1987,7 +1987,7 @@
         "i_dummy_arg": [
             "{i_var}"
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "character(kind=C_CHAR), value{i_intent_attr} :: {i_var}"
         ],
         "i_module": {
@@ -2007,7 +2007,7 @@
         "f_dummy_arg": [
             "{f_var}"
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "character(len=*), intent(OUT) :: {f_var}"
         ],
         "f_result_var": "as-subroutine",
@@ -2033,7 +2033,7 @@
         "i_dummy_arg": [
             "{i_var}"
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "character(kind=C_CHAR){i_intent_attr} :: {i_var}(*)"
         ],
         "i_module": {
@@ -2163,7 +2163,7 @@
         "f_dummy_arg": [
             "{f_var}"
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "character({f_char_len}){f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}"
         ],
         "f_post_call": [
@@ -2184,7 +2184,7 @@
         "f_dummy_arg": [
             "{f_var}"
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "character(len=*){f_intent_attr} :: {f_var}(:)"
         ],
         "f_arg_call": [
@@ -2204,7 +2204,7 @@
             "{i_var_size}",
             "{i_var_len}"
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "character(kind=C_CHAR), intent(IN) :: {i_var}(*)",
             "integer(C_SIZE_T), intent(IN), value :: {i_var_size}",
             "integer(C_INT), intent(IN), value :: {i_var_len}"
@@ -2232,7 +2232,7 @@
             "Pass CHARACTER and LEN to C wrapper."
         ],
         "notes": [
-            "Do not define f_dummy_arg or f_arg_decl here",
+            "Do not define f_dummy_arg or f_dummy_decl here",
             "to allow it to be used with functions and arguments."
         ],
         "f_declare": [
@@ -2266,7 +2266,7 @@
             "{i_var}",
             "{i_var_len}"
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "character(kind=C_CHAR){i_intent_attr} :: {i_var}(*)",
             "integer(C_INT), value, intent(IN) :: {i_var_len}"
         ],
@@ -2289,7 +2289,7 @@
         "comments": [
             "Return a single char from a function."
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "character{f_intent_attr} :: {f_var}"
         ],
         "f_arg_call": [
@@ -2298,7 +2298,7 @@
         "i_dummy_arg": [
             "{i_var}"
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "character(kind=C_CHAR){i_intent_attr} :: {i_var}"
         ],
         "i_module": {
@@ -2640,12 +2640,12 @@
             "Collect information about a string argument."
         ],
         "notes": [
-            "XXX - maybe use character(*) directly in f_arg_decl"
+            "XXX - maybe use character(*) directly in f_dummy_decl"
         ],
         "f_dummy_arg": [
             "{f_var}"
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}"
         ],
         "f_pre_call": [
@@ -2952,7 +2952,7 @@
         "mixin": [
             "f_mixin_pass_character_buf"
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "character(len=*), intent(IN) :: {f_var}"
         ]
     },
@@ -3316,7 +3316,7 @@
         "f_dummy_arg": [
             "{f_var}"
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "{targs[0].f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}"
         ],
         "f_post_call": [
@@ -3435,7 +3435,7 @@
             "c_mixin_destructor_new-vector",
             "c_mixin_cdesc_vector_fill"
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "{targs[0].f_type}{f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}"
         ],
         "f_post_call": [
@@ -3537,7 +3537,7 @@
         "f_dummy_arg": [
             "{f_var}"
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "{targs[0].f_type}{f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}"
         ],
         "f_post_call": [
@@ -3639,7 +3639,7 @@
         "i_dummy_arg": [
             "{i_var}"
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "character(kind=C_CHAR){i_intent_attr} :: {i_var}(*)"
         ],
         "i_module": {
@@ -3728,7 +3728,7 @@
             "c_out_vector<string>&_cdesc"
         ],
         "notes": [
-            "f_arg_decl replaces values from f_mixin_str_array.",
+            "f_dummy_decl replaces values from f_mixin_str_array.",
             "This one needs to use targs."
         ],
         "mixin": [
@@ -3736,7 +3736,7 @@
             "f_mixin_cdesc_pass",
             "c_mixin_arg-call-cvar"
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "{targs[0].f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}"
         ],
         "f_helper": [
@@ -3784,7 +3784,7 @@
         "f_dummy_arg": [
             "{f_var}"
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "{targs[0].f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}"
         ],
         "f_post_call": [
@@ -3799,7 +3799,7 @@
                 "C_SIZE_T"
             ]
         },
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}"
         ],
         "f_post_call": [
@@ -3835,7 +3835,7 @@
         "f_dummy_arg": [
             "{f_var}"
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "{targs[0].f_type}{f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}"
         ],
         "f_post_call": [
@@ -3860,7 +3860,7 @@
         "f_dummy_arg": [
             "{f_var}"
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "{f_type}{f_intent_attr} :: {f_var}"
         ],
         "f_arg_call": [
@@ -3878,7 +3878,7 @@
         "i_dummy_arg": [
             "{i_var}"
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "type({f_capsule_data_type}){i_intent_attr} :: {i_var}"
         ],
         "i_module": {
@@ -3903,7 +3903,7 @@
             "c_mixin_shadow",
             "c_mixin_arg-call-cxx-deref"
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "type({f_capsule_data_type}){i_intent_attr}, value :: {i_var}"
         ],
         "c_prototype": [
@@ -4310,7 +4310,7 @@
                 "c_f_pointer"
             ]
         },
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "{f_type}{f_deref_attr} :: {f_result_var}"
         ],
         "f_call": [
@@ -4341,7 +4341,7 @@
         "i_dummy_arg": [
             "{i_var}"
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "type(C_PTR), intent(IN) :: {i_var}{i_dimension}"
         ],
         "i_module": {
@@ -4488,7 +4488,7 @@
         "f_dummy_arg": [
             "{f_var}"
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "character(len=*){f_intent_attr} :: {f_var}"
         ],
         "c_post_call": [
@@ -4610,7 +4610,7 @@
         "mixin": [
             "c_mixin_cfi_arg"
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "character(len=*){i_intent_attr} :: {i_var}"
         ],
         "i_dummy_arg": [
@@ -4631,13 +4631,13 @@
         "f_dummy_arg": [
             "{f_var}"
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "character(len=*){f_intent_attr} :: {f_var}(:)"
         ],
         "i_dummy_arg": [
             "{i_var}"
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "character(len=*){i_intent_attr} :: {i_var}(:)"
         ]
     },
@@ -4649,7 +4649,7 @@
         "mixin": [
             "c_mixin_cfi_arg"
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "{i_type}{i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}"
         ],
         "i_module": {
@@ -5118,7 +5118,7 @@
         "i_dummy_arg": [
             "{i_var}"
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "character(*){i_intent_attr} :: {i_var}{f_assumed_shape}"
         ],
         "c_post_call": [
@@ -5136,7 +5136,7 @@
         "i_dummy_arg": [
             "{i_var}"
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "character(*){i_intent_attr} :: {i_var}{f_assumed_shape}"
         ],
         "c_post_call": [
@@ -5217,7 +5217,7 @@
         "f_dummy_arg": [
             "{f_var}"
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "type(C_FUNPTR){f_intent_attr} :: {f_var}"
         ],
         "f_arg_call": [
@@ -5242,7 +5242,7 @@
         "notes": [
             "Used to pass a C_FUNPTR into a function."
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "type(C_FUNPTR), value :: {i_var}"
         ]
     },
@@ -5251,7 +5251,7 @@
         "notes": [
             "Used to return a C_FUNPTR from a function."
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "type(C_FUNPTR) :: {i_var}"
         ]
     },
@@ -5270,7 +5270,7 @@
         "f_dummy_arg": [
             "{f_var}"
         ],
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "procedure({f_abstract_interface}) :: {f_var}"
         ],
         "f_arg_call": [
@@ -5282,7 +5282,7 @@
         "i_import": [
             "{f_abstract_interface}"
         ],
-        "i_arg_decl": [
+        "i_dummy_decl": [
             "procedure({f_abstract_interface}) :: {i_var}"
         ]
     },
@@ -5295,7 +5295,7 @@
             "EXTERNAL is not allowed in BIND(C), so force wrapper."
         ],
         "base": "f_in_procedure",
-        "f_arg_decl": [
+        "f_dummy_decl": [
             "external :: {f_var}"
         ],
         "f_need_wrapper": true
@@ -5347,8 +5347,8 @@
         "f_dummy_arg": [
             "===>f_dummy_arg<==="
         ],
-        "f_arg_decl": [
-            "===>f_arg_decl<==="
+        "f_dummy_decl": [
+            "===>f_dummy_decl<==="
         ],
         "f_arg_call": [
             "===>f_arg_call<==="
@@ -5356,8 +5356,8 @@
         "i_dummy_arg": [
             "===>i_dummy_arg<==="
         ],
-        "i_arg_decl": [
-            "===>i_arg_decl<==="
+        "i_dummy_decl": [
+            "===>i_dummy_decl<==="
         ],
         "i_result_decl": [
             "===>i_result_decl<==="
@@ -5374,8 +5374,8 @@
         "i_dummy_arg": [
             "===>i_dummy_arg<==="
         ],
-        "i_arg_decl": [
-            "===>i_arg_decl<==="
+        "i_dummy_decl": [
+            "===>i_dummy_decl<==="
         ],
         "c_prototype": [
             "===>c_prototype<==="

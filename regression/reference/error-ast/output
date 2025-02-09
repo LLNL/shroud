@@ -117,6 +117,10 @@ line 136
 Templated function requires the 'cxx_template' field
 --------------------
 Node: process_twostruct
-line 139
+line 136
+field f_arg_decl is deprecated, changed to f_dummy_decl
+--------------------
+Node: process_twostruct
+line 144
 'cxx_template' field only used with a templated function
-Too many warnings: 27
+Too many warnings: 28

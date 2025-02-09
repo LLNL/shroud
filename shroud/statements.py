@@ -335,20 +335,24 @@ deprecated_fields = dict(
     c=dict(
         # v0.13 changes
         c_arg_decl="c_prototype",
-
+        f_arg_decl="i_dummy_decl",
         # develop changes
+        i_arg_decl="i_dummy_decl",
         i_arg_names="i_dummy_arg",
     ),
     f=dict(
         # v0.13 changes
         arg_name="f_dummy_arg",
+        arg_decl="f_dummy_decl",
         c_arg_decl="c_prototype",
         # develop changes
+        f_arg_decl="f_dummy_decl",
         f_arg_name="f_dummy_arg",
+        i_arg_decl="i_dummy_decl",
         i_arg_names="i_dummy_arg",
     )
 )
-    
+
 def check_for_deprecated_names(stmt):
     """
     Report any deprecated keys.
@@ -370,6 +374,17 @@ def check_for_deprecated_names(stmt):
                 continue
             lang = alias[0]
             break
+    check_stmt_for_deprecated_names(lang, stmt)
+
+def check_stmt_for_deprecated_names(lang, stmt):
+    """
+    Also used with fstatements in YAML file.
+
+    Parameters
+    ----------
+    lang : 'c' or 'f'
+    stmt : dictionary
+    """
     deprecated = deprecated_fields.get(lang)
     if deprecated is None:
         return
@@ -386,7 +401,7 @@ def post_mixin_check_statement(name, stmt):
     """check for consistency.
     Called after mixin are applied.
     This makes it easer to a group to change one of
-    c_prototype, i_arg_decl, i_dummy_arg.
+    c_prototype, i_dummy_decl, i_dummy_arg.
     """
     parts = name.split("_")
     lang = parts[0]
@@ -394,14 +409,14 @@ def post_mixin_check_statement(name, stmt):
 
     if lang == "f" and intent not in ["mixin", "setter"]:
         c_prototype = stmt.get("c_prototype", None)
-        i_arg_decl = stmt.get("i_arg_decl", None)
+        i_dummy_decl = stmt.get("i_dummy_decl", None)
         i_dummy_arg = stmt.get("i_dummy_arg", None)
         if (c_prototype is not None or
-            i_arg_decl is not None or
+            i_dummy_decl is not None or
             i_dummy_arg is not None):
             err = False
             missing = []
-            for field in ["c_prototype", "i_arg_decl", "i_dummy_arg"]:
+            for field in ["c_prototype", "i_dummy_decl", "i_dummy_arg"]:
                 fvalue = stmt.get(field)
                 if fvalue is None:
                     err = True
@@ -410,24 +425,24 @@ def post_mixin_check_statement(name, stmt):
                     err = True
                     error.cursor.warning("{} must be a list.".format(field))
 #            if missing:
-#                error.cursor.warning("c_prototype, i_arg_decl and i_dummy_arg must all exist together.\n" +
+#                error.cursor.warning("c_prototype, i_dummy_decl and i_dummy_arg must all exist together.\n" +
 #                                     "Missing {}.".format(", ".join(missing)))
 #                err = True
             if not err:
                 length = len(c_prototype)
-                if any(len(lst) != length for lst in [i_arg_decl, i_dummy_arg]):
+                if any(len(lst) != length for lst in [i_dummy_decl, i_dummy_arg]):
                     error.cursor.warning(
-                        "c_prototype, i_arg_decl and i_dummy_arg "
+                        "c_prototype, i_dummy_decl and i_dummy_arg "
                         "must all be same length. Used {}, {}, {}."
-                        .format(len(c_prototype), len(i_arg_decl), len(i_dummy_arg)))
+                        .format(len(c_prototype), len(i_dummy_decl), len(i_dummy_arg)))
 
 ##-    if lang in ["f", "fc"]:
 ##-        # Default f_dummy_arg is often ok.
 ##-        f_dummy_arg = stmt.get("f_dummy_arg", None)
-##-        f_arg_decl = stmt.get("f_arg_decl", None)
-##-        if f_dummy_arg is not None or f_arg_decl is not None:
+##-        f_dummy_decl = stmt.get("f_dummy_decl", None)
+##-        if f_dummy_arg is not None or f_dummy_decl is not None:
 ##-            err = False
-##-            for field in ["f_dummy_arg", "f_arg_decl"]:
+##-            for field in ["f_dummy_arg", "f_dummy_decl"]:
 ##-                fvalue = stmt.get(field)
 ##-                if fvalue is None:
 ##-                    err = True
@@ -436,14 +451,14 @@ def post_mixin_check_statement(name, stmt):
 ##-                    err = True
 ##-                    print(field, "must be a list in", name)
 ##-            if (f_dummy_arg is None or
-##-                f_arg_decl is None):
-##-                print("f_dummy_arg and f_arg_decl must both exist")
+##-                f_dummy_decl is None):
+##-                print("f_dummy_arg and f_dummy_decl must both exist")
 ##-                err = True
 ##-            if err:
 ##-                raise RuntimeError("Error with fields")
-##-            if len(f_dummy_arg) != len(f_arg_decl):
+##-            if len(f_dummy_arg) != len(f_dummy_decl):
 ##-                raise RuntimeError(
-##-                    "f_dummy_arg and f_arg_decl "
+##-                    "f_dummy_arg and f_dummy_decl "
 ##-                    "must all be same length in {}".format(name))
 
 def append_mixin(stmt, mixin):
@@ -853,7 +868,7 @@ def print_tree_statements(fp, statements, defaults):
 #                Empty list is no arguments, None is default argument.
 #  c_call       - code to call the function.
 #                 Ex. Will be empty for getter and setter.
-#  i_arg_decl - Add Fortran declaration to Fortran wrapper interface block.
+#  i_dummy_decl - Add Fortran declaration to Fortran wrapper interface block.
 #                Empty list is no arguments, None is default argument.
 #  i_dummy_arg - Empty list is no arguments
 #  i_result_decl - Declaration for function result.
@@ -870,7 +885,7 @@ CStmts = util.Scope(
 
     # code fields
     i_dummy_arg=None,
-    i_arg_decl=None,
+    i_dummy_decl=None,
     i_result_decl=None,
     i_result_var=None,
     # bookkeeping fields
@@ -914,7 +929,7 @@ FStmts = util.Scope(
 
     # code fields
     f_dummy_arg=None,
-    f_arg_decl=None,
+    f_dummy_decl=None,
     f_declare=[],
     f_pre_call=[],
     f_arg_call=None,

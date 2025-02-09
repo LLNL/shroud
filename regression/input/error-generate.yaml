@@ -6,7 +6,7 @@ copyright:
 - "SPDX-License-Identifier: (BSD-3-Clause)"
 -
 
-# Test error messages from generate.py
+# Test error messages from generate.py.
 
 library: error
 cxx_header: error.hpp

@@ -68,7 +68,7 @@ final                         c_final
 ret                           c_return
 temps                         c_temps
 local                         c_local
-f_arg_decl                    i_arg_decl
+f_arg_decl                    i_dummy_decl
 f_result_decl                 i_result_decl
 f_result_var                  i_result_var
 f_module                      i_module
@@ -82,7 +82,7 @@ Old Name                      New Name
 ===========================   ===========================
 need_wrapper                  f_need_wrapper
 arg_name                      f_dummy_arg
-arg_decl                      f_arg_decl
+arg_decl                      f_dummy_decl
 arg_c_call                    f_arg_call
 declare                       f_declare
 pre_call                      f_pre_call
@@ -133,7 +133,7 @@ is now:
         f_result_var: num
         f_module:
           iso_c_binding: ["C_LONG"]
-        f_arg_decl:
+        f_dummy_decl:
         -  "integer(C_LONG) :: {f_result_var}"
         f_call:
         -  "{f_result_var} = {f_call_function}({F_arg_c_call})"              

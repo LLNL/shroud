@@ -36,6 +36,18 @@ Pass struct by reference since struct.yaml on tests C/C++ compatible features.
 Enums compatible with C.
 See *scope* for scoped enums.
 
+### error-ast
+
+# Test error messages from ast.py.
+
+### error-generate
+
+Test error messages from generate.py.
+
+### error-stmt
+
+Test errors in statements.
+
 ### names
 
 Test name generation and splicer.

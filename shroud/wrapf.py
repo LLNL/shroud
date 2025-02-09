@@ -729,8 +729,8 @@ rv = .false.
     def add_stmt_declaration(self, stmts, arg_f_decl, arg_f_names, fmt):
         """Add declarations from fc_statements.
         """
-        if stmts.f_arg_decl:
-            for line in stmts.f_arg_decl:
+        if stmts.f_dummy_decl:
+            for line in stmts.f_dummy_decl:
                 append_format(arg_f_decl, line, fmt)
         if stmts.f_dummy_arg:
             for aname in stmts.f_dummy_arg:
@@ -1049,9 +1049,9 @@ rv = .false.
         stmts = bind.stmt
         fmt = bind.fmtdict
         
-        if stmts.i_arg_decl is not None:
+        if stmts.i_dummy_decl is not None:
             # Use explicit declaration from CStmt, both must exist.
-            for arg in stmts.i_arg_decl:
+            for arg in stmts.i_dummy_decl:
                 append_format(arg_c_decl, arg, fmt)
             if not meta["assumedtype"]:
                 self.add_i_module_from_stmts(stmts, modules, imports, fmt)
@@ -1505,7 +1505,7 @@ rv = .false.
                     # Create a local variable of the interface type.
                     fmt_arg.fc_var = "SH_" + fmt_arg.f_var
                     arg_stmt.f_module = {"{i_module_name}": ["{i_kind}"]}
-                    arg_stmt.f_arg_decl = ["{i_type} :: {fc_var}"]
+                    arg_stmt.f_dummy_decl = ["{i_type} :: {fc_var}"]
                     arg_stmt.f_pre_call = [
                         "{fc_var} = {pre_call_intent}"
                     ]

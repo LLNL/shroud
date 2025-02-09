@@ -6,7 +6,7 @@ copyright:
 - "SPDX-License-Identifier: (BSD-3-Clause)"
 -
 
-# Test error in statements
+# Test errors in statements.
 
 library: error
 cxx_header: error.hpp
