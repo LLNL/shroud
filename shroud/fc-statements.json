@@ -1517,6 +1517,13 @@
         "f_dummy_decl": [
             "{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}"
         ],
+        "f_pre_call": [
+            "{f_var_cdesc}%base_addr = C_LOC({f_var})",
+            "{f_var_cdesc}%type = {sh_type}",
+            "! {f_var_cdesc}%elem_len = C_SIZEOF()",
+            "{f_var_cdesc}%size = {size}",
+            "{f_var_cdesc}%rank = {rank}{f_cdesc_shape}"
+        ],
         "f_module": {
             "{f_module_name}": [
                 "{f_kind}"
@@ -1525,13 +1532,6 @@
                 "C_LOC"
             ]
         },
-        "f_pre_call": [
-            "{f_var_cdesc}%base_addr = C_LOC({f_var})",
-            "{f_var_cdesc}%type = {sh_type}",
-            "! {f_var_cdesc}%elem_len = C_SIZEOF()",
-            "{f_var_cdesc}%size = {size}",
-            "{f_var_cdesc}%rank = {rank}{f_cdesc_shape}"
-        ],
         "f_helper": [
             "type_defines",
             "array_context"
@@ -1822,20 +1822,17 @@
         "mixin": [
             "c_mixin_arg-call-cvar"
         ],
-        "f_module": {
-            "iso_c_binding": [
-                "C_PTR"
-            ]
-        },
         "f_dummy_arg": [
             "{f_var}"
         ],
         "f_dummy_decl": [
             "type(C_PTR){f_value_attr}{f_intent_attr} :: {f_var}{f_assumed_shape}"
         ],
-        "c_prototype": [
-            "void **{c_var}"
-        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        },
         "i_dummy_decl": [
             "type(C_PTR){f_value_attr}{i_intent_attr} :: {i_var}{i_dimension}"
         ],
@@ -1846,7 +1843,10 @@
             "iso_c_binding": [
                 "C_PTR"
             ]
-        }
+        },
+        "c_prototype": [
+            "void **{c_var}"
+        ]
     },
     {
         "name":"##### enum #################################################"
@@ -3793,18 +3793,18 @@
     },
     {
         "name": "f_function_vector_scalar_cdesc",
-        "f_module": {
-            "iso_c_binding": [
-                "C_LOC",
-                "C_SIZE_T"
-            ]
-        },
         "f_dummy_decl": [
             "{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}"
         ],
         "f_post_call": [
             "call {f_helper_copy_array}(\t{temp0},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
         ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_LOC",
+                "C_SIZE_T"
+            ]
+        },
         "f_helper": [
             "copy_array"
         ],
@@ -3825,13 +3825,6 @@
             "c_mixin_new_vector<native>",
             "c_mixin_arg-call-cxx-deref"
         ],
-        "f_module": {
-            "iso_c_binding": [
-                "{targs[0].f_kind}",
-                "C_LOC",
-                "C_SIZE_T"
-            ]
-        },
         "f_dummy_arg": [
             "{f_var}"
         ],
@@ -3842,6 +3835,13 @@
             "allocate({f_var}({f_var_cdesc}%size))",
             "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
         ],
+        "f_module": {
+            "iso_c_binding": [
+                "{targs[0].f_kind}",
+                "C_LOC",
+                "C_SIZE_T"
+            ]
+        },
         "f_helper": [
             "copy_array"
         ],
@@ -4305,17 +4305,17 @@
             "The getter can be done totally from Fortran for a pointer to a scalar.",
             "Return value a function result."
         ],
-        "f_module": {
-            "iso_c_binding": [
-                "c_f_pointer"
-            ]
-        },
         "f_dummy_decl": [
             "{f_type}{f_deref_attr} :: {f_result_var}"
         ],
         "f_call": [
             "call c_f_pointer({CXX_this}%{field_name}, {f_result_var})"
         ],
+        "f_module": {
+            "iso_c_binding": [
+                "c_f_pointer"
+            ]
+        },
         "f_need_wrapper": true
     },
     {
@@ -4649,6 +4649,9 @@
         "mixin": [
             "c_mixin_cfi_arg"
         ],
+        "i_dummy_arg": [
+            "{i_var}"
+        ],
         "i_dummy_decl": [
             "{i_type}{i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}"
         ],
@@ -4656,10 +4659,7 @@
             "iso_c_binding": [
                 "{f_kind}"
             ]
-        },
-        "i_dummy_arg": [
-            "{i_var}"
-        ]
+        }
     },
     {
         "name": "c_mixin_cfi_native_allocatable",
