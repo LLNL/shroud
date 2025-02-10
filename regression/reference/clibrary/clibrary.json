@@ -1418,7 +1418,7 @@
                 "decl": "char *Function4a( const char *arg1, const char *arg2 ) +len(30)",
                 "declgen": "char *Function4a(const char *arg1, const char *arg2) +len(30)",
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_copy"
                     ]
                 },
@@ -1924,7 +1924,7 @@
                     "description": "Change a string in-place.\nFor Python, return a new string since strings are immutable.\n"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_copy",
                         "char_alloc",
                         "char_free"
@@ -2399,7 +2399,7 @@
                     "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_blank_fill"
                     ]
                 },
@@ -2620,7 +2620,7 @@
                     "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_blank_fill"
                     ]
                 },
@@ -2911,7 +2911,7 @@
                     "brief": "Fill text, at most ltext characters."
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_blank_fill"
                     ]
                 },
@@ -4534,7 +4534,7 @@
                     "description": "This creates a Fortran bufferify function and an interface.\n"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_blank_fill"
                     ]
                 },
@@ -5230,7 +5230,7 @@
                     "description": "A bufferify function is created.\nShould only be call with an C_INT argument, and will\nreturn the value passed in.\n"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_blank_fill"
                     ]
                 },

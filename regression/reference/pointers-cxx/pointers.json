@@ -4688,10 +4688,7 @@
                 "decl": "void getPtrToScalar(int **nitems+intent(out))",
                 "declgen": "void getPtrToScalar(int **nitems +intent(out))",
                 "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
+                    "fc": [
                         "array_context"
                     ]
                 },
@@ -4912,10 +4909,7 @@
                     "description": "Return a Fortran pointer to an array which is always the same length.\n"
                 },
                 "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
+                    "fc": [
                         "array_context"
                     ]
                 },
@@ -5187,10 +5181,7 @@
                     "description": "Return a Fortran pointer to an array which is the length of\nthe argument ncount.\n"
                 },
                 "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
+                    "fc": [
                         "array_context"
                     ]
                 },
@@ -5530,10 +5521,7 @@
                     "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\n"
                 },
                 "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
+                    "fc": [
                         "array_context"
                     ]
                 },
@@ -5786,10 +5774,7 @@
                 "decl": "void getPtrToConstScalar( const int **nitems+intent(out))",
                 "declgen": "void getPtrToConstScalar(const int **nitems +intent(out))",
                 "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
+                    "fc": [
                         "array_context"
                     ]
                 },
@@ -6008,10 +5993,7 @@
                 "decl": "void getPtrToFixedConstArray( const int **count+intent(out)+dimension(10));",
                 "declgen": "void getPtrToFixedConstArray(const int **count +dimension(10)+intent(out))",
                 "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
+                    "fc": [
                         "array_context"
                     ]
                 },
@@ -6281,10 +6263,7 @@
                 "decl": "void getPtrToDynamicConstArray( const int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
                 "declgen": "void getPtrToDynamicConstArray(const int **count +dimension(ncount)+intent(out), int *ncount +hidden+intent(out))",
                 "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
+                    "fc": [
                         "array_context"
                     ]
                 },
@@ -8077,11 +8056,7 @@
                     "description": "Return a Fortran pointer to an array which is always the same length.\n"
                 },
                 "helpers": {
-                    "c": [
-                        "array_context",
-                        "copy_array"
-                    ],
-                    "f": [
+                    "fc": [
                         "array_context",
                         "copy_array",
                         "capsule_dtor"
@@ -8203,6 +8178,7 @@
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_helper_array_context": "POI_SHROUD_array",
+                                "c_helper_capsule_dtor": "POI_SHROUD_memory_destructor",
                                 "c_helper_copy_array": "POI_ShroudCopyArray",
                                 "c_member": "->",
                                 "c_type": "int",
@@ -9551,10 +9527,7 @@
                 "decl": "int *returnIntPtrToFixedArray(void) +dimension(10)",
                 "declgen": "int *returnIntPtrToFixedArray(void) +dimension(10)",
                 "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
+                    "fc": [
                         "array_context"
                     ]
                 },
@@ -9892,10 +9865,7 @@
                 "decl": "const int *returnIntPtrToFixedConstArray(void) +dimension(10)",
                 "declgen": "const int *returnIntPtrToFixedConstArray(void) +dimension(10)",
                 "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
+                    "fc": [
                         "array_context"
                     ]
                 },
@@ -10745,11 +10715,7 @@
                 "decl": "int *returnIntAllocToFixedArray(void) +dimension(10)+deref(allocatable)",
                 "declgen": "int *returnIntAllocToFixedArray(void) +deref(allocatable)+dimension(10)",
                 "helpers": {
-                    "c": [
-                        "array_context",
-                        "copy_array"
-                    ],
-                    "f": [
+                    "fc": [
                         "array_context",
                         "copy_array",
                         "capsule_dtor"
@@ -10833,6 +10799,7 @@
                                 "c_array_size2": "10",
                                 "c_const": "",
                                 "c_helper_array_context": "POI_SHROUD_array",
+                                "c_helper_capsule_dtor": "POI_SHROUD_memory_destructor",
                                 "c_helper_copy_array": "POI_ShroudCopyArray",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",

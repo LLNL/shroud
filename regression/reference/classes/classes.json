@@ -1570,7 +1570,7 @@
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
                         "helpers": {
-                            "c": [
+                            "fc": [
                                 "char_len_trim"
                             ]
                         },
@@ -2150,13 +2150,9 @@
                             "brief": "test helper"
                         },
                         "helpers": {
-                            "c": [
+                            "fc": [
                                 "array_context",
                                 "string_to_cdesc",
-                                "copy_string"
-                            ],
-                            "f": [
-                                "array_context",
                                 "copy_string",
                                 "capsule_dtor"
                             ]
@@ -2225,6 +2221,7 @@
                                         "c_abstract_decl": "const char *",
                                         "c_const": "const ",
                                         "c_helper_array_context": "CLA_SHROUD_array",
+                                        "c_helper_capsule_dtor": "CLA_SHROUD_memory_destructor",
                                         "c_helper_copy_string": "CLA_ShroudCopyString",
                                         "c_helper_string_to_cdesc": "ShroudStringToCdesc",
                                         "c_type": "char",
@@ -3386,11 +3383,7 @@
                         "decl": "std::string get_m_name()",
                         "declgen": "std::string get_m_name(void) +intent(getter)",
                         "helpers": {
-                            "c": [
-                                "array_context",
-                                "copy_string"
-                            ],
-                            "f": [
+                            "fc": [
                                 "array_context",
                                 "copy_string"
                             ]
@@ -3857,13 +3850,9 @@
                             "brief": "test helper"
                         },
                         "helpers": {
-                            "c": [
+                            "fc": [
                                 "array_context",
                                 "string_to_cdesc",
-                                "copy_string"
-                            ],
-                            "f": [
-                                "array_context",
                                 "copy_string",
                                 "capsule_dtor"
                             ]
@@ -3932,6 +3921,7 @@
                                         "c_abstract_decl": "const char *",
                                         "c_const": "const ",
                                         "c_helper_array_context": "CLA_SHROUD_array",
+                                        "c_helper_capsule_dtor": "CLA_SHROUD_memory_destructor",
                                         "c_helper_copy_string": "CLA_ShroudCopyString",
                                         "c_helper_string_to_cdesc": "ShroudStringToCdesc",
                                         "c_type": "char",
@@ -5978,12 +5968,9 @@
                         "decl": "int *get_items()",
                         "declgen": "int *get_items(void) +dimension(nitems)+intent(getter)",
                         "helpers": {
-                            "c": [
+                            "fc": [
                                 "array_context",
                                 "type_defines"
-                            ],
-                            "f": [
-                                "array_context"
                             ]
                         },
                         "name": "get_items",
@@ -9146,7 +9133,7 @@
                 "decl": "const std::string& LastFunctionCalled() +len(30)",
                 "declgen": "const std::string &LastFunctionCalled(void) +len(30)",
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_copy"
                     ]
                 },

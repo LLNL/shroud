@@ -302,7 +302,7 @@
                                             "return": "return new instance"
                                         },
                                         "helpers": {
-                                            "c": [
+                                            "fc": [
                                                 "char_len_trim"
                                             ]
                                         },
@@ -1160,13 +1160,9 @@
                                         "decl": "const string& getNameErrorCheck() const",
                                         "declgen": "const string &getNameErrorCheck(void) const",
                                         "helpers": {
-                                            "c": [
+                                            "fc": [
                                                 "array_context",
                                                 "string_to_cdesc",
-                                                "copy_string"
-                                            ],
-                                            "f": [
-                                                "array_context",
                                                 "copy_string",
                                                 "capsule_dtor"
                                             ]
@@ -1236,6 +1232,7 @@
                                                         "c_abstract_decl": "const char *",
                                                         "c_const": "const ",
                                                         "c_helper_array_context": "AA_SHROUD_array",
+                                                        "c_helper_capsule_dtor": "AA_SHROUD_memory_destructor",
                                                         "c_helper_copy_string": "AA_ShroudCopyString",
                                                         "c_helper_string_to_cdesc": "ShroudStringToCdesc",
                                                         "c_type": "char",
@@ -1407,7 +1404,7 @@
                                         "decl": "const string& getNameArg() const",
                                         "declgen": "const string &getNameArg(void) const",
                                         "helpers": {
-                                            "c": [
+                                            "fc": [
                                                 "char_copy"
                                             ]
                                         },
@@ -2921,7 +2918,7 @@
                                             "brief": "constructor"
                                         },
                                         "helpers": {
-                                            "c": [
+                                            "fc": [
                                                 "char_len_trim"
                                             ]
                                         },
@@ -3447,7 +3444,7 @@
                                         "decl": "const string& getName() const",
                                         "declgen": "const string &getName(void) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))",
                                         "helpers": {
-                                            "c": [
+                                            "fc": [
                                                 "char_copy"
                                             ]
                                         },
@@ -3687,13 +3684,9 @@
                                         "decl": "const string& getName2()",
                                         "declgen": "const string &getName2(void)",
                                         "helpers": {
-                                            "c": [
+                                            "fc": [
                                                 "array_context",
                                                 "string_to_cdesc",
-                                                "copy_string"
-                                            ],
-                                            "f": [
-                                                "array_context",
                                                 "copy_string",
                                                 "capsule_dtor"
                                             ]
@@ -3762,6 +3755,7 @@
                                                         "c_abstract_decl": "const char *",
                                                         "c_const": "const ",
                                                         "c_helper_array_context": "AA_SHROUD_array",
+                                                        "c_helper_capsule_dtor": "AA_SHROUD_memory_destructor",
                                                         "c_helper_copy_string": "AA_ShroudCopyString",
                                                         "c_helper_string_to_cdesc": "ShroudStringToCdesc",
                                                         "c_type": "char",
@@ -3932,13 +3926,9 @@
                                         "decl": "string& getName3() const",
                                         "declgen": "string &getName3(void) const",
                                         "helpers": {
-                                            "c": [
+                                            "fc": [
                                                 "array_context",
                                                 "string_to_cdesc",
-                                                "copy_string"
-                                            ],
-                                            "f": [
-                                                "array_context",
                                                 "copy_string",
                                                 "capsule_dtor"
                                             ]
@@ -4008,6 +3998,7 @@
                                                         "c_abstract_decl": "char *",
                                                         "c_const": "",
                                                         "c_helper_array_context": "AA_SHROUD_array",
+                                                        "c_helper_capsule_dtor": "AA_SHROUD_memory_destructor",
                                                         "c_helper_copy_string": "AA_ShroudCopyString",
                                                         "c_helper_string_to_cdesc": "ShroudStringToCdesc",
                                                         "c_type": "char",
@@ -4177,13 +4168,9 @@
                                         "decl": "string& getName4()",
                                         "declgen": "string &getName4(void)",
                                         "helpers": {
-                                            "c": [
+                                            "fc": [
                                                 "array_context",
                                                 "string_to_cdesc",
-                                                "copy_string"
-                                            ],
-                                            "f": [
-                                                "array_context",
                                                 "copy_string",
                                                 "capsule_dtor"
                                             ]
@@ -4252,6 +4239,7 @@
                                                         "c_abstract_decl": "char *",
                                                         "c_const": "",
                                                         "c_helper_array_context": "AA_SHROUD_array",
+                                                        "c_helper_capsule_dtor": "AA_SHROUD_memory_destructor",
                                                         "c_helper_copy_string": "AA_ShroudCopyString",
                                                         "c_helper_string_to_cdesc": "ShroudStringToCdesc",
                                                         "c_type": "char",
@@ -7379,7 +7367,7 @@
                                 "decl": "bool isNameValid(const std::string& name)",
                                 "declgen": "bool isNameValid(const std::string &name)",
                                 "helpers": {
-                                    "c": [
+                                    "fc": [
                                         "char_len_trim"
                                     ]
                                 },
@@ -7950,7 +7938,7 @@
                                 "decl": "void test_names(const std::string &name)",
                                 "declgen": "void test_names(const std::string &name)",
                                 "helpers": {
-                                    "c": [
+                                    "fc": [
                                         "char_len_trim"
                                     ]
                                 },
@@ -8273,7 +8261,7 @@
                                 "decl": "void test_names(const std::string &name, int flag)",
                                 "declgen": "void test_names(const std::string &name, int flag)",
                                 "helpers": {
-                                    "c": [
+                                    "fc": [
                                         "char_len_trim"
                                     ]
                                 },

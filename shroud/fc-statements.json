@@ -634,6 +634,9 @@
         ],
         "c_temps": [
             "capsule"
+        ],
+        "xhelper": [
+            "capsule_helper"
         ]
     },
     {
@@ -657,10 +660,10 @@
         "f_temps": [
             "capsule"
         ],
-        "f_helper": [
+        "f_need_wrapper": true,
+        "helper": [
             "array_context"
-        ],
-        "f_need_wrapper": true
+        ]
     },
     {
         "name": "f_mixin_capsule_arg",
@@ -689,14 +692,14 @@
         "f_temps": [
             "capsule"
         ],
-        "f_helper": [
-            "array_context",
-            "capsule_helper"
-        ],
+        "f_need_wrapper": true,
         "fmtdict": {
             "f_var_capsule": "Crv"
         },
-        "f_need_wrapper": true
+        "helper": [
+            "array_context",
+            "capsule_helper"
+        ]
     },
     {
         "name": "f_mixin_capsule_dtor",
@@ -706,7 +709,7 @@
         "f_post_call": [
             "call {f_helper_capsule_dtor}({f_var_capsule})"
         ],
-        "f_helper": [
+        "helper": [
             "capsule_dtor"
         ]
     },
@@ -788,9 +791,6 @@
         "f_temps": [
             "cdesc"
         ],
-        "f_helper": [
-            "array_context"
-        ],
         "f_need_wrapper": true,
         "i_dummy_arg": [
             "{i_var_cdesc}"
@@ -807,7 +807,7 @@
         "c_temps": [
             "cdesc"
         ],
-        "c_helper": [
+        "helper": [
             "array_context"
         ]
     },
@@ -835,7 +835,7 @@
         "f_temps": [
             "cdesc"
         ],
-        "f_helper": [
+        "helper": [
             "array_context"
         ]
     },
@@ -864,7 +864,7 @@
             "{c_var_cdesc}->size = 1;",
             "{c_var_cdesc}->rank = 0;"
         ],
-        "c_helper": [
+        "helper": [
             "type_defines"
         ]
     },
@@ -877,7 +877,7 @@
         "c_post_call": [
             "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
         ],
-        "c_helper": [
+        "helper": [
             "string_to_cdesc"
         ]
     },
@@ -903,10 +903,7 @@
                 "C_SIZE_T"
             ]
         },
-        "f_helper": [
-            "copy_array"
-        ],
-        "c_helper": [
+        "helper": [
             "copy_array"
         ]
     },
@@ -928,10 +925,7 @@
                 "C_LOC"
             ]
         },
-        "f_helper": [
-            "copy_array"
-        ],
-        "c_helper": [
+        "helper": [
             "copy_array"
         ],
         "fmtdict": {
@@ -1015,10 +1009,7 @@
             "allocate(character(len={f_var_cdesc}%elem_len):: {f_var})",
             "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
         ],
-        "f_helper": [
-            "copy_string"
-        ],
-        "c_helper": [
+        "helper": [
             "copy_string"
         ]
     },
@@ -1038,7 +1029,7 @@
                 "c_f_pointer"
             ]
         },
-        "f_helper": [
+        "helper": [
             "pointer_string"
         ]
     },
@@ -1055,7 +1046,7 @@
             "{c_var_cdesc}->rank = {rank};{c_array_shape}",
             "{c_var_cdesc}->size = {c_array_size};"
         ],
-        "c_helper": [
+        "helper": [
             "type_defines",
             "array_context"
         ]
@@ -1290,7 +1281,7 @@
             "size",
             "cdesc"
         ],
-        "c_helper": [
+        "helper": [
             "array_context"
         ]
     },
@@ -1532,7 +1523,7 @@
                 "C_LOC"
             ]
         },
-        "f_helper": [
+        "helper": [
             "type_defines",
             "array_context"
         ],
@@ -2103,7 +2094,7 @@
         "c_local": [
             "cxx"
         ],
-        "c_helper": [
+        "helper": [
             "char_alloc",
             "char_free"
         ]
@@ -2116,7 +2107,7 @@
         "c_post_call": [
             "{c_helper_char_blank_fill}({c_var}, {c_var_len});"
         ],
-        "c_helper": [
+        "helper": [
             "char_blank_fill"
         ]
     },
@@ -2131,7 +2122,7 @@
         "c_post_call": [
             "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
         ],
-        "c_helper": [
+        "helper": [
             "char_copy"
         ]
     },
@@ -2150,7 +2141,7 @@
         "c_local": [
             "cxx"
         ],
-        "c_helper": [
+        "helper": [
             "char_array_alloc",
             "char_array_free"
         ]
@@ -2578,7 +2569,7 @@
             "cxx",
             "trim"
         ],
-        "c_helper": [
+        "helper": [
             "char_len_trim"
         ]
     },
@@ -2614,7 +2605,7 @@
         "c_post_call": [
             "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx}.data(),\t {c_local_cxx}.size());"
         ],
-        "c_helper": [
+        "helper": [
             "char_copy"
         ]
     },
@@ -2630,7 +2621,7 @@
             "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());",
             "-}}"
         ],
-        "c_helper": [
+        "helper": [
             "char_copy"
         ]
     },
@@ -2660,7 +2651,7 @@
                 "C_LOC"
             ]
         },
-        "f_helper": [
+        "helper": [
             "type_defines",
             "array_context"
         ]
@@ -2700,9 +2691,6 @@
         "f_post_call": [
             "call {f_helper_array_string_allocatable}({f_var_cdesc}, {f_var_capsule})"
         ],
-        "f_helper": [
-            "array_string_allocatable"
-        ],
         "c_pre_call": [
             "std::string *{cxx_var};"
         ],
@@ -2715,7 +2703,7 @@
             "{c_var_cdesc}->elem_len = {c_helper_array_string_out_len}({cxx_var}, {c_var_cdesc}->size);",
             "-}}"
         ],
-        "c_helper": [
+        "helper": [
             "array_string_allocatable",
             "array_string_out_len"
         ]
@@ -3109,11 +3097,9 @@
         "c_post_call": [
             "{c_helper_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});"
         ],
-        "f_helper": [
+        "helper": [
             "type_defines",
-            "array_context"
-        ],
-        "c_helper": [
+            "array_context",
             "array_string_out"
         ]
     },
@@ -3329,10 +3315,7 @@
                 "C_LOC"
             ]
         },
-        "f_helper": [
-            "copy_array"
-        ],
-        "c_helper": [
+        "helper": [
             "copy_array",
             "type_defines"
         ]
@@ -3351,7 +3334,7 @@
             "{c_var_cdesc}->rank = 1;",
             "{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;"
         ],
-        "c_helper": [
+        "helper": [
             "type_defines"
         ]
     },
@@ -3415,10 +3398,7 @@
         "c_local": [
             "cxx"
         ],
-        "c_helper": [
-            "copy_array"
-        ],
-        "f_helper": [
+        "helper": [
             "copy_array"
         ]
     },
@@ -3449,9 +3429,6 @@
                 "C_SIZE_T"
             ]
         },
-        "f_helper": [
-            "copy_array"
-        ],
         "c_pre_call": [
             "{c_const}std::vector<{cxx_T}>\t *{c_local_cxx} = new std::vector<{cxx_T}>;"
         ],
@@ -3461,7 +3438,7 @@
         "c_local": [
             "cxx"
         ],
-        "c_helper": [
+        "helper": [
             "copy_array",
             "type_defines"
         ]
@@ -3558,9 +3535,6 @@
         "f_post_call": [
             "call {f_helper_vector_string_allocatable}({f_var_cdesc}, {f_var_capsule})"
         ],
-        "f_helper": [
-            "vector_string_allocatable"
-        ],
         "c_pre_call": [
             "std::vector<std::string> *{c_local_cxx} = new std::vector<std::string>;"
         ],
@@ -3578,7 +3552,7 @@
         "c_local": [
             "cxx"
         ],
-        "c_helper": [
+        "helper": [
             "vector_string_allocatable",
             "vector_string_out_len"
         ]
@@ -3621,7 +3595,7 @@
             "n",
             "s"
         ],
-        "c_helper": [
+        "helper": [
             "char_len_trim"
         ]
     },
@@ -3676,7 +3650,7 @@
             "n",
             "s"
         ],
-        "c_helper": [
+        "helper": [
             "char_copy"
         ]
     },
@@ -3718,7 +3692,7 @@
             "n",
             "s"
         ],
-        "c_helper": [
+        "helper": [
             "char_len_trim"
         ]
     },
@@ -3739,17 +3713,15 @@
         "f_dummy_decl": [
             "{targs[0].f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}"
         ],
-        "f_helper": [
-            "type_defines",
-            "array_context"
-        ],
         "c_pre_call": [
             "{c_const}std::vector<std::string> {cxx_var};"
         ],
         "c_post_call": [
             "{c_helper_vector_string_out}(\t{c_var_cdesc},\t {cxx_var});"
         ],
-        "c_helper": [
+        "helper": [
+            "type_defines",
+            "array_context",
             "vector_string_out"
         ]
     },
@@ -3805,10 +3777,7 @@
                 "C_SIZE_T"
             ]
         },
-        "f_helper": [
-            "copy_array"
-        ],
-        "c_helper": [
+        "helper": [
             "copy_array"
         ]
     },
@@ -3842,10 +3811,7 @@
                 "C_SIZE_T"
             ]
         },
-        "f_helper": [
-            "copy_array"
-        ],
-        "c_helper": [
+        "helper": [
             "copy_array"
         ]
     },
@@ -4598,7 +4564,7 @@
             "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {c_local_cxx}{cxx_member}data(),\t {c_local_cxx}{cxx_member}size());",
             "-}}"
         ],
-        "c_helper": [
+        "helper": [
             "char_copy"
         ]
     },

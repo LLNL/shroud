@@ -50,10 +50,7 @@
                 "decl": "void Rank2In(int *arg +intent(in)+rank(2)+api(cdesc))",
                 "declgen": "void Rank2In(int *arg +api(cdesc)+intent(in)+rank(2))",
                 "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
+                    "fc": [
                         "type_defines",
                         "array_context"
                     ]
@@ -392,11 +389,8 @@
                     }
                 ],
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_len_trim",
-                        "array_context"
-                    ],
-                    "f": [
                         "type_defines",
                         "array_context"
                     ]
@@ -635,11 +629,8 @@
                     "description": "Create several Fortran generic functions which call a single\nC wrapper that checks the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nArgument value is intent(in). The pointer does not change, only\nthe pointee.\nXXX - The function is virtual in the sense that GetScalar1 should\nnot need to exist but there is no way, yet, to avoid wrapping the\nnon-bufferify function.\n"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_len_trim",
-                        "array_context"
-                    ],
-                    "f": [
                         "type_defines",
                         "array_context"
                     ]
@@ -900,11 +891,8 @@
                     "description": "Create several Fortran generic functions which call a single\nC wrapper that checks the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nArgument value is intent(in). The pointer does not change, only\nthe pointee.\nXXX - The function is virtual in the sense that GetScalar1 should\nnot need to exist but there is no way, yet, to avoid wrapping the\nnon-bufferify function.\n"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_len_trim",
-                        "array_context"
-                    ],
-                    "f": [
                         "type_defines",
                         "array_context"
                     ]
@@ -1663,7 +1651,7 @@
                     }
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_len_trim"
                     ]
                 },
@@ -1777,7 +1765,7 @@
                     }
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_len_trim"
                     ]
                 },
@@ -2017,7 +2005,7 @@
                     }
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_len_trim"
                     ]
                 },

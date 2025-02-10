@@ -4676,28 +4676,28 @@
                 ],
                 "fstatements": {
                     "c": {
-                        "c_helper": [
-                            "type_defines"
-                        ],
                         "c_pre_call": [
                             "// Test adding a blank line below.",
                             "",
                             "type = convert_type(type);"
+                        ],
+                        "helper": [
+                            "type_defines"
                         ]
                     },
                     "f": {
-                        "c_helper": [
-                            "type_defines"
-                        ],
                         "c_pre_call": [
                             "// Test adding a blank line below.",
                             "",
                             "type = convert_type(type);"
+                        ],
+                        "helper": [
+                            "type_defines"
                         ]
                     }
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "type_defines"
                     ]
                 },
@@ -4812,28 +4812,28 @@
                 "declgen": "void SavePointer2(float *addr +intent(in)+rank(1), int type +implied(type(addr)), size_t size +implied(size(addr)))",
                 "fstatements": {
                     "c": {
-                        "c_helper": [
-                            "type_defines"
-                        ],
                         "c_pre_call": [
                             "// Test adding a blank line below.",
                             "",
                             "type = convert_type(type);"
+                        ],
+                        "helper": [
+                            "type_defines"
                         ]
                     },
                     "f": {
-                        "c_helper": [
-                            "type_defines"
-                        ],
                         "c_pre_call": [
                             "// Test adding a blank line below.",
                             "",
                             "type = convert_type(type);"
+                        ],
+                        "helper": [
+                            "type_defines"
                         ]
                     }
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "type_defines"
                     ]
                 },
@@ -5119,28 +5119,28 @@
                 "declgen": "void SavePointer2(float *addr +intent(in)+rank(2), int type +implied(type(addr)), size_t size +implied(size(addr)))",
                 "fstatements": {
                     "c": {
-                        "c_helper": [
-                            "type_defines"
-                        ],
                         "c_pre_call": [
                             "// Test adding a blank line below.",
                             "",
                             "type = convert_type(type);"
+                        ],
+                        "helper": [
+                            "type_defines"
                         ]
                     },
                     "f": {
-                        "c_helper": [
-                            "type_defines"
-                        ],
                         "c_pre_call": [
                             "// Test adding a blank line below.",
                             "",
                             "type = convert_type(type);"
+                        ],
+                        "helper": [
+                            "type_defines"
                         ]
                     }
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "type_defines"
                     ]
                 },
@@ -5834,10 +5834,7 @@
                     }
                 ],
                 "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
+                    "fc": [
                         "array_context"
                     ]
                 },
@@ -5964,10 +5961,7 @@
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
                 "declgen": "void GetPointerAsPointer(float **addr +deref(pointer)+intent(out)+rank(1), int *type +hidden+intent(out), size_t *size +hidden+intent(out))",
                 "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
+                    "fc": [
                         "array_context"
                     ]
                 },
@@ -6268,10 +6262,7 @@
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
                 "declgen": "void GetPointerAsPointer(float **addr +deref(pointer)+intent(out)+rank(2), int *type +hidden+intent(out), size_t *size +hidden+intent(out))",
                 "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
+                    "fc": [
                         "array_context"
                     ]
                 },

@@ -280,7 +280,7 @@
                     "brief": "return a 'const string' as argument"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_copy"
                     ]
                 },
@@ -395,7 +395,7 @@
                     "brief": "return a 'const string' as argument"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_copy"
                     ]
                 },
@@ -772,7 +772,7 @@
                     "description": "Since +len(30) is provided, the result of the function\nwill be copied directly into memory provided by Fortran.\nThe function will not be ALLOCATABLE.\n"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_copy"
                     ]
                 },
@@ -940,7 +940,7 @@
                     "description": "Pass an additional argument which will be used as the return value.\nThe length of the output variable is declared by the caller.\n"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_copy"
                     ]
                 },
@@ -1106,7 +1106,7 @@
                     "brief": "Test returning empty string reference"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_copy"
                     ]
                 },
@@ -1432,7 +1432,7 @@
                     }
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_copy"
                     ]
                 },
@@ -2254,7 +2254,7 @@
                     "description": "Save contents of arg1.\narg1 is assumed to be intent(IN) since it is const\nWill copy in.\n"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_len_trim"
                     ]
                 },
@@ -2472,7 +2472,7 @@
                     "description": "Set out to a constant string.\narg1 is intent(OUT)\nMust copy out.\n"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_copy"
                     ]
                 },
@@ -2685,7 +2685,7 @@
                     "description": "Append \"dog\" to the end of arg1.\narg1 is assumed to be intent(INOUT)\nMust copy in and copy out.\n"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_len_trim",
                         "char_copy"
                     ]
@@ -2904,7 +2904,7 @@
                     "brief": "Accept a const string pointer - intent(in)"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_len_trim"
                     ]
                 },
@@ -3118,7 +3118,7 @@
                     "brief": "Accept a string pointer - intent(inout)"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_len_trim",
                         "char_copy"
                     ]
@@ -3338,7 +3338,7 @@
                     "description": "Return global_str.\n"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_copy"
                     ]
                 },
@@ -3569,7 +3569,7 @@
                     "description": "Test return tuple with two arguments.\nMust rename argument to nlen to avoid conflict with intrinsic len.\n"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_len_trim",
                         "char_copy"
                     ]
@@ -3894,7 +3894,7 @@
                     "description": "Return global_str.\nTest return tuple with two arguments.\nMust rename argument to nlen to avoid conflict with intrinsic len.\n"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_copy"
                     ]
                 },
@@ -4188,7 +4188,7 @@
                     "brief": "Accept a string instance"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_len_trim"
                     ]
                 },
@@ -5923,7 +5923,7 @@
                     "description": "Test post_declare.\nThe std::string in py_string_inout must be declared before the\ngoto added by py_native_*_in_pointer_list to avoid\n\"jump to label 'fail' crosses initialization of\" error.\n"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_len_trim",
                         "char_copy"
                     ]

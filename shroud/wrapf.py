@@ -1099,6 +1099,8 @@ rv = .false.
         func_cursor.stmt = result_stmt
         self.fill_interface_result(cls, node, r_bind)
             
+        fileinfo.apply_helpers_from_stmts(node)
+
         stmts_comments = []
         if options.debug:
             if node._generated_path:
@@ -1109,7 +1111,7 @@ rv = .false.
 
         notimplemented = result_stmt.notimplemented
         dummy_arg_list = []  # argument names for functions
-        dummy_decl_list = []  # declaraion of argument names
+        dummy_decl_list = []  # declaration of argument names
         modules = {}  # indexed as [module][variable]
         imports = {}  # indexed as [name]
 
@@ -1154,6 +1156,7 @@ rv = .false.
             if options.debug:
                 self.document_argument(stmts_comments, arg, arg_stmt,
                                        gen_decl(arg))
+            fileinfo.apply_helpers_from_stmts(node)
             self.build_arg_list_interface(
                 arg_bind, modules, imports,
                 dummy_arg_list, dummy_decl_list
@@ -2057,12 +2060,12 @@ class ModuleInfo(object):
         Parameters:
           node - ast.FunctionNode
         """
-        self.c_helper.update(node.helpers.get("c", {}))
-        self.f_helper.update(node.helpers.get("f", {}))
+        self.c_helper.update(node.helpers.get("fc", {}))
+        self.f_helper.update(node.helpers.get("fc", {}))
 
     def add_f_helper(self, helpers, fmt):
         """Add a list of Fortran helpers"""
-        fcfmt.add_f_helper(self.f_helper, helpers, fmt)
+        fcfmt.add_fc_helper(self.f_helper, helpers, fmt)
         
 ######################################################################
 

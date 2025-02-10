@@ -578,12 +578,9 @@
                 "decl": "int *DataPointer_get_items(ns3::DataPointer *SH_this+intent(in))",
                 "declgen": "int *DataPointer_get_items(ns3::DataPointer *SH_this +intent(in)) +dimension(nitems)+intent(getter)",
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "array_context",
                         "type_defines"
-                    ],
-                    "f": [
-                        "array_context"
                     ]
                 },
                 "name": "DataPointer_get_items",
@@ -1209,12 +1206,9 @@
                         "decl": "int *DataPointer_get_items(ns1::DataPointer *SH_this+intent(in))",
                         "declgen": "int *DataPointer_get_items(ns1::DataPointer *SH_this +intent(in)) +dimension(nitems)+intent(getter)",
                         "helpers": {
-                            "c": [
+                            "fc": [
                                 "array_context",
                                 "type_defines"
-                            ],
-                            "f": [
-                                "array_context"
                             ]
                         },
                         "name": "DataPointer_get_items",
@@ -1867,12 +1861,9 @@
                         "decl": "int *DataPointer_get_items(ns2::DataPointer *SH_this+intent(in))",
                         "declgen": "int *DataPointer_get_items(ns2::DataPointer *SH_this +intent(in)) +dimension(nitems)+intent(getter)",
                         "helpers": {
-                            "c": [
+                            "fc": [
                                 "array_context",
                                 "type_defines"
-                            ],
-                            "f": [
-                                "array_context"
                             ]
                         },
                         "name": "DataPointer_get_items",

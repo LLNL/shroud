@@ -2702,7 +2702,7 @@
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_blank_fill"
                     ]
                 },
@@ -3692,10 +3692,7 @@
                     "description": "Does not generate a bufferify C wrapper.\n"
                 },
                 "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
+                    "fc": [
                         "array_context"
                     ]
                 },
@@ -3950,12 +3947,9 @@
                     "description": "Generates a bufferify C wrapper function.\n"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "array_context",
                         "char_blank_fill"
-                    ],
-                    "f": [
-                        "array_context"
                     ]
                 },
                 "name": "returnStructPtr2",
@@ -4223,10 +4217,7 @@
                     "brief": "Return a pointer to an array of structs"
                 },
                 "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
+                    "fc": [
                         "array_context"
                     ]
                 },
@@ -4358,10 +4349,7 @@
                 "decl": "Cstruct_list *get_global_struct_list();",
                 "declgen": "Cstruct_list *get_global_struct_list(void)",
                 "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
+                    "fc": [
                         "array_context"
                     ]
                 },
@@ -6307,12 +6295,9 @@
                 "decl": "int *Cstruct_list_get_ivalue(Cstruct_list *SH_this+intent(in))",
                 "declgen": "int *Cstruct_list_get_ivalue(Cstruct_list *SH_this +intent(in)) +dimension(nitems+nitems)+intent(getter)",
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "array_context",
                         "type_defines"
-                    ],
-                    "f": [
-                        "array_context"
                     ]
                 },
                 "name": "Cstruct_list_get_ivalue",
@@ -6756,12 +6741,9 @@
                 "decl": "double *Cstruct_list_get_dvalue(Cstruct_list *SH_this+intent(in))",
                 "declgen": "double *Cstruct_list_get_dvalue(Cstruct_list *SH_this +intent(in)) +dimension(nitems*TWO)+intent(getter)",
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "array_context",
                         "type_defines"
-                    ],
-                    "f": [
-                        "array_context"
                     ]
                 },
                 "name": "Cstruct_list_get_dvalue",

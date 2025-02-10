@@ -432,7 +432,7 @@
                 "decl": "void getName(char *name +len(worklen) +len_trim(worktrim))",
                 "declgen": "void getName(char *name +len(worklen)+len_trim(worktrim))",
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_copy",
                         "char_alloc",
                         "char_free"
@@ -1425,7 +1425,7 @@
                 "decl": "int function4(const std::string &rv)",
                 "declgen": "int function4(const std::string &rv)",
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_len_trim"
                     ]
                 },
@@ -1884,7 +1884,7 @@
                     "description": "Use std::string argument to get bufferified function.\n"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_len_trim",
                         "char_copy"
                     ]

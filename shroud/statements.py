@@ -335,6 +335,7 @@ deprecated_fields = dict(
     c=dict(
         # v0.13 changes
         c_arg_decl="c_prototype",
+        c_helper="helper",
         arg_call="c_arg_call",
         pre_call="c_pre_call",
         call="c_call",
@@ -354,6 +355,8 @@ deprecated_fields = dict(
     ),
     f=dict(
         # v0.13 changes
+        c_helper="helper",
+        f_helper="helper",
         need_wrapper="f_need_wrapper",
         arg_name="f_dummy_arg",
         arg_decl="f_dummy_decl",
@@ -926,10 +929,10 @@ CStmts = util.Scope(
     # bookkeeping fields
     c_temps=None,
     c_local=None,
-    c_helper=[],
-    fmtdict=None,
     c_need_wrapper=False,
 
+    fmtdict=None,
+    helper=[],
     iface_header=[],
     impl_header=[],
     destructor_header=[],
@@ -962,7 +965,6 @@ FStmts = util.Scope(
     f_module=None,
     f_temps=None,
     f_local=None,
-    f_helper=[],
     f_need_wrapper=False,
 )
 

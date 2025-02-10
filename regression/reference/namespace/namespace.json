@@ -39,13 +39,9 @@
                 "decl": "const std::string& LastFunctionCalled()",
                 "declgen": "const std::string &LastFunctionCalled(void)",
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "array_context",
                         "string_to_cdesc",
-                        "copy_string"
-                    ],
-                    "f": [
-                        "array_context",
                         "copy_string",
                         "capsule_dtor"
                     ]
@@ -113,6 +109,7 @@
                                 "c_abstract_decl": "const char *",
                                 "c_const": "const ",
                                 "c_helper_array_context": "NS_SHROUD_array",
+                                "c_helper_capsule_dtor": "NS_SHROUD_memory_destructor",
                                 "c_helper_copy_string": "NS_ShroudCopyString",
                                 "c_helper_string_to_cdesc": "ShroudStringToCdesc",
                                 "c_type": "char",

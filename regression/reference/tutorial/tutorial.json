@@ -742,16 +742,12 @@
                     "description": "Note that since a reference is returned, no intermediate string\nis allocated.  It is assumed +owner(library).\n"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "array_context",
                         "string_to_cdesc",
                         "copy_string",
+                        "capsule_dtor",
                         "char_len_trim"
-                    ],
-                    "f": [
-                        "array_context",
-                        "copy_string",
-                        "capsule_dtor"
                     ]
                 },
                 "name": "ConcatenateStrings",
@@ -905,6 +901,7 @@
                                 "c_abstract_decl": "const char",
                                 "c_const": "const ",
                                 "c_helper_array_context": "TUT_SHROUD_array",
+                                "c_helper_capsule_dtor": "TUT_SHROUD_memory_destructor",
                                 "c_helper_copy_string": "TUT_ShroudCopyString",
                                 "c_helper_string_to_cdesc": "ShroudStringToCdesc",
                                 "c_local_cxx": "SHC_rv_cxx",
@@ -2164,7 +2161,7 @@
                 "decl": "void OverloadedFunction(const std::string& name)",
                 "declgen": "void OverloadedFunction(const std::string &name)",
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_len_trim"
                     ]
                 },
@@ -4089,7 +4086,7 @@
                     }
                 ],
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_len_trim"
                     ]
                 },
@@ -4419,7 +4416,7 @@
                 "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
                 "declgen": "void FortranGenericOverloaded(const std::string &name, float arg2)",
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_len_trim"
                     ]
                 },
@@ -4635,7 +4632,7 @@
                 "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
                 "declgen": "void FortranGenericOverloaded(const std::string &name, double arg2)",
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_len_trim"
                     ]
                 },
@@ -9254,7 +9251,7 @@
                 "decl": "const std::string& LastFunctionCalled() +len(30)",
                 "declgen": "const std::string &LastFunctionCalled(void) +len(30)",
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_copy"
                     ]
                 },

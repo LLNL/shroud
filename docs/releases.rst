@@ -63,6 +63,7 @@ c statements
 Old Name                      New Name
 ===========================   ===========================
 c_arg_decl                    c_prototype
+c_helper                      helper
 arg_call                      c_arg_call
 pre_call                      c_pre_call
 call                          c_call
@@ -94,6 +95,7 @@ post_call                     f_post_call
 result                        f_result_var
 temps                         f_temps
 local                         f_local
+f_helper                      helper
 ===========================   ===========================
 
 .. from vectors.yaml
@@ -197,8 +199,14 @@ F_C_name_template             i_name_function_template
 
 .. See names.yaml
 
+* The **c_helper** and **f_helper** statement fields are merged into **helper**.
+  A helper may have a C and Fortran part. This required the helper to
+  be listed twice. Now it only needs to be listed once.
+  The helpers may have a **c_fmtname** and **f_fmtname** field that is
+  used to identify the C and Fortran functions created by the helper.
+
 * Renamed format fields *hnamefunc*. These fields were added from the
-  statement fields **c_helper** and **f_helper**, each a blank
+  statement fields **helper** (was **c_helper** and **f_helper**), each a blank
   delimited list of names. A format field was added for each name with
   a 0-based suffix corresponding to the position in the list.
   Now, the format fields have the prefix of *c_helper_* or *f_helper_*
@@ -207,9 +215,9 @@ F_C_name_template             i_name_function_template
   when using statement mixin groups since the order of names will no
   longer matter.
 
-* Changed statement fields *c_helper* and *f_helper* from a blank
+* Changed statement fields **helper** (was **c_helper** and **f_helper**) from a blank
   delimited list, into a YAML list.  If they are used in a
-  *f_statements* section of a YAML file, they will need to be changed.
+  *fstatements* section of a YAML file, they will need to be changed.
   This makes them more consistent with *f_temps* and *c_temps* which
   are also list of names.
 
@@ -218,7 +226,7 @@ F_C_name_template             i_name_function_template
 .. code-block:: yaml
 
     -      c_helper: ShroudTypeDefines
-    +      c_helper:
+    +      helper:
     +      - ShroudTypeDefines
 
 .. And easier to use in a mixin group by appending lists.

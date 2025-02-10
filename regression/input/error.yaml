@@ -34,19 +34,17 @@ declarations:
 - decl: void BadFstatements(void)
   fstatements:
     f:
-      c_helper:
-      - no_c_helper
-      f_helper:
-      - no_f_helper
       f_post_call:
       - "{no_such_var} = 10"
       c_return_type: no-such-type
+      helper:
+      - no_c_helper
     c:
-      c_helper:
-      - no_c_helper2
       c_post_call:
       - "{no_c_var} = 11;"
       - "{bad_format = 12;"
+      helper:
+      - no_c_helper2
 
 - decl: void AssumedRank(int *data+dimension(..))
 

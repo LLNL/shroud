@@ -1032,10 +1032,7 @@
                 "decl": "int * ReturnIntPtrDimPointer(int *len+intent(out)+hidden)",
                 "declgen": "int *ReturnIntPtrDimPointer(int *len +hidden+intent(out)) +deref(pointer)+dimension(len)",
                 "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
+                    "fc": [
                         "array_context"
                     ]
                 },
@@ -1436,11 +1433,7 @@
                 "decl": "int * ReturnIntPtrDimAlloc(int *len+intent(out)+hidden)",
                 "declgen": "int *ReturnIntPtrDimAlloc(int *len +hidden+intent(out)) +deref(allocatable)+dimension(len)",
                 "helpers": {
-                    "c": [
-                        "array_context",
-                        "copy_array"
-                    ],
-                    "f": [
+                    "fc": [
                         "array_context",
                         "copy_array",
                         "capsule_dtor"
@@ -1567,6 +1560,7 @@
                                 "c_array_size2": "len",
                                 "c_const": "",
                                 "c_helper_array_context": "OWN_SHROUD_array",
+                                "c_helper_capsule_dtor": "OWN_SHROUD_memory_destructor",
                                 "c_helper_copy_array": "OWN_ShroudCopyArray",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
@@ -1849,10 +1843,7 @@
                 "decl": "int * ReturnIntPtrDimDefault(int *len+intent(out)+hidden)",
                 "declgen": "int *ReturnIntPtrDimDefault(int *len +hidden+intent(out)) +dimension(len)",
                 "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
+                    "fc": [
                         "array_context"
                     ]
                 },
@@ -2434,10 +2425,7 @@
                 "decl": "int * ReturnIntPtrDimPointerNew(int *len+intent(out)+hidden)",
                 "declgen": "int *ReturnIntPtrDimPointerNew(int *len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)",
                 "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
+                    "fc": [
                         "array_context",
                         "capsule_helper"
                     ]
@@ -3125,10 +3113,7 @@
                 "decl": "int * ReturnIntPtrDimDefaultNew(int *len+intent(out)+hidden)",
                 "declgen": "int *ReturnIntPtrDimDefaultNew(int *len +hidden+intent(out)) +dimension(len)+owner(caller)",
                 "helpers": {
-                    "c": [
-                        "array_context"
-                    ],
-                    "f": [
+                    "fc": [
                         "array_context",
                         "capsule_helper"
                     ]
