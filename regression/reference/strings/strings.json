@@ -5858,7 +5858,7 @@
                     "fc": [
                         "type_defines",
                         "array_context",
-                        "array_string_out"
+                        "cdesc_array_string_out"
                     ]
                 },
                 "name": "fetchArrayStringArg",
@@ -6054,7 +6054,7 @@
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_helper_array_context": "STR_SHROUD_array",
-                                "c_helper_array_string_out": "STR_ShroudArrayStringOut",
+                                "c_helper_cdesc_array_string_out": "STR_ShroudCdescArrayStringOut",
                                 "c_member": "->",
                                 "c_type": "char",
                                 "c_var": "strs",
@@ -6415,7 +6415,7 @@
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_helper_array_context": "STR_SHROUD_array",
-                                "c_helper_array_string_allocatable": "STR_ShroudArrayStringAllocatable",
+                                "c_helper_array_string_allocatable": "STR_ShroudCDescArrayStringAllocatable",
                                 "c_helper_array_string_out_len": "STR_ShroudArrayStringOutSize",
                                 "c_helper_capsule_dtor": "STR_SHROUD_memory_destructor",
                                 "c_member": "->",
@@ -6438,7 +6438,7 @@
                                 "f_deref_attr": ", allocatable",
                                 "f_dimension": "(:)",
                                 "f_helper_array_context": "STR_SHROUD_array",
-                                "f_helper_array_string_allocatable": "STR_SHROUD_array_string_allocatable",
+                                "f_helper_array_string_allocatable": "STR_SHROUD_cdesc_array_string_allocatable",
                                 "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
@@ -6790,7 +6790,7 @@
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_helper_array_context": "STR_SHROUD_array",
-                                "c_helper_array_string_allocatable": "STR_ShroudArrayStringAllocatable",
+                                "c_helper_array_string_allocatable": "STR_ShroudCDescArrayStringAllocatable",
                                 "c_helper_array_string_out_len": "STR_ShroudArrayStringOutSize",
                                 "c_helper_capsule_dtor": "STR_SHROUD_memory_destructor",
                                 "c_member": "->",
@@ -6813,7 +6813,7 @@
                                 "f_deref_attr": ", allocatable",
                                 "f_dimension": "(:)",
                                 "f_helper_array_context": "STR_SHROUD_array",
-                                "f_helper_array_string_allocatable": "STR_SHROUD_array_string_allocatable",
+                                "f_helper_array_string_allocatable": "STR_SHROUD_cdesc_array_string_allocatable",
                                 "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",

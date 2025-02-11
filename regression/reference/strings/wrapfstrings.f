@@ -928,12 +928,12 @@ module strings_mod
 
     interface
         ! helper array_string_allocatable
-        subroutine STR_SHROUD_array_string_allocatable(dest, src) &
-             bind(c,name="STR_ShroudArrayStringAllocatable")
+        subroutine STR_SHROUD_cdesc_array_string_allocatable(dest, src) &
+             bind(c,name="STR_ShroudCDescArrayStringAllocatable")
             import STR_SHROUD_array, STR_SHROUD_capsule_data
             type(STR_SHROUD_array), intent(IN) :: dest
             type(STR_SHROUD_capsule_data), intent(IN) :: src
-        end subroutine STR_SHROUD_array_string_allocatable
+        end subroutine STR_SHROUD_cdesc_array_string_allocatable
     end interface
 
     interface
@@ -1518,7 +1518,7 @@ contains
         allocate(character(len=SHT_strs_cdesc%elem_len) :: &
             strs(SHT_strs_cdesc%size))
         SHT_strs_cdesc%base_addr = C_LOC(strs)
-        call STR_SHROUD_array_string_allocatable(SHT_strs_cdesc, SHT_strs_capsule)
+        call STR_SHROUD_cdesc_array_string_allocatable(SHT_strs_cdesc, SHT_strs_capsule)
         call STR_SHROUD_capsule_dtor(SHT_strs_capsule)
         ! splicer end function.fetch_array_string_alloc
     end subroutine fetch_array_string_alloc
@@ -1547,7 +1547,7 @@ contains
             SHT_strs_capsule)
         allocate(strs(SHT_strs_cdesc%size))
         SHT_strs_cdesc%base_addr = C_LOC(strs)
-        call STR_SHROUD_array_string_allocatable(SHT_strs_cdesc, SHT_strs_capsule)
+        call STR_SHROUD_cdesc_array_string_allocatable(SHT_strs_cdesc, SHT_strs_capsule)
         call STR_SHROUD_capsule_dtor(SHT_strs_capsule)
         ! splicer end function.fetch_array_string_alloc_len
     end subroutine fetch_array_string_alloc_len

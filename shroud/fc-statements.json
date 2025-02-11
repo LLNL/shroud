@@ -3095,12 +3095,12 @@
             "std::string *{cxx_var};"
         ],
         "c_post_call": [
-            "{c_helper_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});"
+            "{c_helper_cdesc_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});"
         ],
         "helper": [
             "type_defines",
             "array_context",
-            "array_string_out"
+            "cdesc_array_string_out"
         ]
     },
     {
@@ -3533,7 +3533,7 @@
             "Copy into Fortran allocated memory."
         ],
         "f_post_call": [
-            "call {f_helper_vector_string_allocatable}({f_var_cdesc}, {f_var_capsule})"
+            "call {f_helper_cdesc_vector_string_allocatable}({f_var_cdesc}, {f_var_capsule})"
         ],
         "c_pre_call": [
             "std::vector<std::string> *{c_local_cxx} = new std::vector<std::string>;"
@@ -3553,7 +3553,7 @@
             "cxx"
         ],
         "helper": [
-            "vector_string_allocatable",
+            "cdesc_vector_string_allocatable",
             "vector_string_out_len"
         ]
     },
@@ -3717,12 +3717,12 @@
             "{c_const}std::vector<std::string> {cxx_var};"
         ],
         "c_post_call": [
-            "{c_helper_vector_string_out}(\t{c_var_cdesc},\t {cxx_var});"
+            "{c_helper_cdesc_vector_string_out}(\t{c_var_cdesc},\t {cxx_var});"
         ],
         "helper": [
             "type_defines",
             "array_context",
-            "vector_string_out"
+            "cdesc_vector_string_out"
         ]
     },
     {
@@ -5767,40 +5767,48 @@
         ]
     },
     {
-        "name": "h_helper_array_string_out",
+        "name":"##### helper std::string array #############################",
+        "notes": [
+            "Copy an array or std::vector of std::string into Fortran memory",
+            "  CHARACTER(len=destlen) dest(destsize)"
+        ]
+    },
+    {
+        "name": "h_helper_cdesc_array_string_out",
         "notes": [
             "Only used with std::string and thus C++."
         ],
         "fmtdict": {
-            "cnamefunc": "{C_prefix}ShroudArrayStringOut",
-            "cnamefunc_array_string_out": "{cnamefunc}",
-            "cnameproto":  "void {cnamefunc}({C_array_type} *outdesc, std::string *in, size_t nsize)"
+            "cnamefunc": "{C_prefix}ShroudCdescArrayStringOut",
+            "cnamefunc_cdesc_array_string_out": "{cnamefunc}",
+            "cnameproto":  "void {cnamefunc}({C_array_type} *outdesc, std::string *src, size_t srcsize)"
         },
         "c_fmtname": "{cnamefunc}",
         "api": "cxx",
         "scope": "cwrap_impl",
         "dependent_helpers": ["array_context"],
-        "proto_include": ["<string>", "<vector>"],
+        "proto_include": ["<string>"],
         "proto": "{cnameproto};",
         "cxx_include": ["<cstring>", "<cstddef>"],
         "source": [
             "",
             "{c_lstart}// helper {hname}",
-            "// Copy the std::vector<std::string> into Fortran array argument.",
+            "// Copy the array of std::string into array described by {C_array_type}.",
             "// Called by C++.",
+            "//  CHARACTER(len=destlen) dest(destsize)",
             "{cnameproto}",
             "{{+",
-            "size_t nvect = outdesc->size;",
-            "size_t len = outdesc->elem_len;",
+            "size_t destsize = outdesc->size;",
+            "size_t destlen = outdesc->elem_len;",
             "char *dest = static_cast<char *>(outdesc->base_addr);",
             "// Clear user memory",
-            "std::memset(dest, ' ', nvect*len);",
+            "std::memset(dest, ' ', destsize*destlen);",
             "",
             "// Copy into user memory",
-            "nvect = std::min(nvect, nsize);",
-            "for (size_t i = 0; i < nvect; ++i) {{+",
-            "std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));",
-            "dest += outdesc->elem_len;",
+            "srcsize = std::min(destsize, srcsize);",
+            "for (size_t i = 0; i < srcsize; ++i) {{+",
+            "std::memcpy(dest, src[i].data(), std::min(destlen, src[i].length()));",
+            "dest += destlen;",
             "-}}",
             "-}}{c_lend}"
         ]
@@ -5810,18 +5818,22 @@
         "notes": [
             "Only used with std::string and thus C++.",
             "Called from Fortran to deal with allocatable character",
-            "The capsule contains a pointer to a std::vector<std::string>",
+            "The capsule contains a pointer to a std::string",
             "which is copied into the cdesc."
         ],
         "fmtdict": {
-            "cnamefunc": "{C_prefix}ShroudArrayStringAllocatable",
-            "fnamefunc": "{C_prefix}SHROUD_array_string_allocatable",
+            "cnamefunc": "{C_prefix}ShroudCDescArrayStringAllocatable",
+            "fnamefunc": "{C_prefix}SHROUD_cdesc_array_string_allocatable",
             "cnameproto": "void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)"
         },
         "c_fmtname": "{cnamefunc}",
         "api": "c",
         "scope": "cwrap_impl",
-        "dependent_helpers": ["capsule_data_helper", "array_context", "array_string_out"],
+        "dependent_helpers": [
+            "capsule_data_helper",
+            "array_context",
+            "cdesc_array_string_out"
+        ],
         "proto": "{cnameproto};",
         "source": [
             "",
@@ -5832,7 +5844,7 @@
             "{cnameproto}",
             "{{+",
             "std::string *cxxvec =\t static_cast< std::string *>\t(src->addr);",
-            "{cnamefunc_array_string_out}(dest, cxxvec, dest->size);",
+            "{cnamefunc_cdesc_array_string_out}(dest, cxxvec, dest->size);",
             "-}}{c_lend}"
         ],
 
@@ -5876,15 +5888,15 @@
         ]
     },
     {
-        "name": "h_helper_vector_string_out",
+        "name": "h_helper_cdesc_vector_string_out",
         "notes": [
             "Only used with std::vector and thus C++."
         ],
         "fmtdict": {
-            "cnamefunc": "{C_prefix}ShroudVectorStringOut",
-            "fnamefunc": "{C_prefix}shroud_vector_string_out",
-            "cnamefunc_vector_string_out": "{cnamefunc}",
-            "cnameproto": "void {cnamefunc}({C_array_type} *outdesc, std::vector<std::string> &in)"
+            "cnamefunc": "{C_prefix}ShroudCdescVectorStringOut",
+            "fnamefunc": "{C_prefix}shroud_cdesc_vector_string_out",
+            "cnamefunc_cdesc_vector_string_out": "{cnamefunc}",
+            "cnameproto": "void {cnamefunc}({C_array_type} *outdesc, std::vector<std::string> &src)"
         },
         "c_fmtname": "{cnamefunc}",
         "api": "cxx",
@@ -5896,28 +5908,28 @@
         "source": [
             "",
             "{c_lstart}// helper {hname}",
-            "// Copy the std::vector<std::string> into Fortran array argument.",
+            "// Copy the std::vector<std::string> into array described by {C_array_type}.",
             "// Called by C++.",
+            "//  CHARACTER(len=destlen) dest(destsize)",
             "{cnameproto}",
             "{{+",
-            "size_t nvect = outdesc->size;",
-            "size_t len = outdesc->elem_len;",
+            "size_t destsize = outdesc->size;",
+            "size_t destlen = outdesc->elem_len;",
             "char *dest = static_cast<char *>(outdesc->base_addr);",
             "// Clear user memory",
-            "std::memset(dest, ' ', nvect*len);",
+            "std::memset(dest, ' ', destsize*destlen);",
             "",
             "// Copy into user memory",
-            "nvect = std::min(nvect, in.size());",
-            "//char *dest = static_cast<char *>(outdesc->cxx.addr);",
-            "for (size_t i = 0; i < nvect; ++i) {{+",
-            "std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));",
-            "dest += outdesc->elem_len;",
+            "size_t srcsize = std::min(destsize, src.size());",
+            "for (size_t i = 0; i < srcsize; ++i) {{+",
+            "std::memcpy(dest, src[i].data(), std::min(destlen, src[i].length()));",
+            "dest += destlen;",
             "-}}",
             "-}}{c_lend}"
         ]
     },
     {
-        "name": "h_helper_vector_string_allocatable",
+        "name": "h_helper_cdesc_vector_string_allocatable",
         "notes": [
             "Only used with std::string and thus C++.",
             "Called from Fortran.",
@@ -5925,25 +5937,28 @@
             "which is copied into the cdesc."
         ],
         "fmtdict": {
-            "cnamefunc": "{C_prefix}ShroudVectorStringAllocatable",
-            "fnamefunc": "{C_prefix}SHROUD_vector_string_allocatable",
+            "cnamefunc": "{C_prefix}CDescShroudVectorStringAllocatable",
+            "fnamefunc": "{C_prefix}SHROUD_cdesc_vector_string_allocatable",
             "cnameproto": "void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)"
         },
         "c_fmtname": "{cnamefunc}",
         "api": "c",
         "scope": "cwrap_impl",
-        "dependent_helpers": ["capsule_data_helper", "array_context", "vector_string_out"],
+        "dependent_helpers": [
+            "capsule_data_helper",
+            "array_context",
+            "cdesc_vector_string_out"],
         "proto": "{cnameproto};",
         "source": [
             "",
             "{c_lstart}// helper {hname}",
             "// Copy the std::vector<std::string> into Fortran array.",
             "// Called by Fortran to deal with allocatable character.",
-            "// out is already blank filled.",
+            "// dest is already blank filled.",
             "{cnameproto}",
             "{{+",
             "std::vector<std::string> *cxxvec =\t static_cast< std::vector<std::string> *>\t(src->addr);",
-            "{cnamefunc_vector_string_out}(dest, *cxxvec);",
+            "{cnamefunc_cdesc_vector_string_out}(dest, *cxxvec);",
             "-}}{c_lend}"
         ],
         "f_fmtname": "{fnamefunc}",
@@ -5986,6 +6001,9 @@
             "return len;",
             "-}}{c_lend}"
         ]
+    },
+    {
+        "name":"############################################################"
     },
     {
         "name": "h_helper_pointer_string",

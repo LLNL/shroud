@@ -19,6 +19,19 @@
 extern "C" {
 #endif
 
+// start helper cdesc_vector_string_allocatable
+// helper cdesc_vector_string_allocatable
+// Copy the std::vector<std::string> into Fortran array.
+// Called by Fortran to deal with allocatable character.
+// dest is already blank filled.
+void VEC_CDescShroudVectorStringAllocatable(VEC_SHROUD_array *dest, VEC_SHROUD_capsule_data *src)
+{
+    std::vector<std::string> *cxxvec =
+        static_cast< std::vector<std::string> *>(src->addr);
+    VEC_ShroudCdescVectorStringOut(dest, *cxxvec);
+}
+// end helper cdesc_vector_string_allocatable
+
 // start helper copy_array
 // helper copy_array
 // Copy std::vector into array c_var(c_var_size).
@@ -33,19 +46,6 @@ void VEC_ShroudCopyArray(VEC_SHROUD_array *data, void *c_var,
     std::memcpy(c_var, cxx_var, n);
 }
 // end helper copy_array
-
-// start helper vector_string_allocatable
-// helper vector_string_allocatable
-// Copy the std::vector<std::string> into Fortran array.
-// Called by Fortran to deal with allocatable character.
-// out is already blank filled.
-void VEC_ShroudVectorStringAllocatable(VEC_SHROUD_array *dest, VEC_SHROUD_capsule_data *src)
-{
-    std::vector<std::string> *cxxvec =
-        static_cast< std::vector<std::string> *>(src->addr);
-    VEC_ShroudVectorStringOut(dest, *cxxvec);
-}
-// end helper vector_string_allocatable
 
 // start release allocated memory
 // Release library allocated memory.
@@ -87,27 +87,27 @@ void VEC_SHROUD_memory_destructor(VEC_SHROUD_capsule_data *cap)
 }
 #endif
 
-// start helper vector_string_out
-// helper vector_string_out
-// Copy the std::vector<std::string> into Fortran array argument.
+// start helper cdesc_vector_string_out
+// helper cdesc_vector_string_out
+// Copy the std::vector<std::string> into array described by VEC_SHROUD_array.
 // Called by C++.
-void VEC_ShroudVectorStringOut(VEC_SHROUD_array *outdesc, std::vector<std::string> &in)
+//  CHARACTER(len=destlen) dest(destsize)
+void VEC_ShroudCdescVectorStringOut(VEC_SHROUD_array *outdesc, std::vector<std::string> &src)
 {
-    size_t nvect = outdesc->size;
-    size_t len = outdesc->elem_len;
+    size_t destsize = outdesc->size;
+    size_t destlen = outdesc->elem_len;
     char *dest = static_cast<char *>(outdesc->base_addr);
     // Clear user memory
-    std::memset(dest, ' ', nvect*len);
+    std::memset(dest, ' ', destsize*destlen);
 
     // Copy into user memory
-    nvect = std::min(nvect, in.size());
-    //char *dest = static_cast<char *>(outdesc->cxx.addr);
-    for (size_t i = 0; i < nvect; ++i) {
-        std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));
-        dest += outdesc->elem_len;
+    size_t srcsize = std::min(destsize, src.size());
+    for (size_t i = 0; i < srcsize; ++i) {
+        std::memcpy(dest, src[i].data(), std::min(destlen, src[i].length()));
+        dest += destlen;
     }
 }
-// end helper vector_string_out
+// end helper cdesc_vector_string_out
 
 // start helper vector_string_out_len
 // helper vector_string_out_len
