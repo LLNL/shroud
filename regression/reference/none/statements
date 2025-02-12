@@ -4471,6 +4471,14 @@ c_mixin_local-string:
   c_local:
   - cxx
   owner: library
+c_mixin_local-string*:
+  name: c_mixin_local-string*
+  intent: mixin
+  comments:
+  - Create local std::string pointer.
+  c_pre_call:
+  - std::string *{cxx_var};
+  owner: library
 c_mixin_local-string-init:
   name: c_mixin_local-string-init
   intent: mixin
@@ -4545,16 +4553,6 @@ c_mixin_out_native**:
   - Declare a local C pointer.
   c_pre_call:
   - '{c_const}{cxx_type} *{cxx_var};'
-  owner: library
-c_mixin_out_string**:
-  name: c_mixin_out_string**
-  intent: mixin
-  comments:
-  - Create local std::string pointer.
-  c_pre_call:
-  - std::string *{c_local_cxx};
-  c_local:
-  - cxx
   owner: library
 c_mixin_out_vector_buf_malloc:
   name: c_mixin_out_vector_buf_malloc
@@ -5128,6 +5126,7 @@ c_out_string**_cdesc_copy:
   comments:
   - Collect information about a string argument.
   - Pass cdesc as argument to C wrapper.
+  - Create local std::string pointer.
   - Pass address of cxx variable to library.
   notes:
   - Pass a cdesc down to describe the memory and a capsule to hold the
@@ -5136,6 +5135,7 @@ c_out_string**_cdesc_copy:
   mixin_names:
   - '  f_mixin_str_array'
   - '  f_mixin_cdesc_pass'
+  - '  c_mixin_local-string*'
   - '  c_mixin_arg-call-cvar-address'
   i_dummy_arg:
   - '{i_var_cdesc}'
@@ -5154,8 +5154,6 @@ c_out_string**_cdesc_copy:
   c_temps:
   - cdesc
   helper:
-  - type_defines
-  - array_context
   - cdesc_array_string_out
   owner: library
 c_out_string*_buf:
@@ -15678,10 +15676,13 @@ f_mixin_helper_array_string_allocatable:
   name: f_mixin_helper_array_string_allocatable
   intent: mixin
   comments:
+  - Create local std::string pointer.
   - Assign to std::string pointer from C++ function.
   - Copy into Fortran allocated memory.
   f_post_call:
   - call {f_helper_array_string_allocatable}({f_var_cdesc}, {f_var_capsule})
+  mixin_names:
+  - '  c_mixin_local-string*'
   c_pre_call:
   - std::string *{cxx_var};
   c_post_call:
@@ -17370,6 +17371,7 @@ f_out_string**_cdesc_allocatable:
   - Pass capsule as argument to C wrapper.
   - Create a local Fortran capsule.
   - Allocate Fortran array from cdesc.
+  - Create local std::string pointer.
   - Assign to std::string pointer from C++ function.
   - Copy into Fortran allocated memory.
   - Pass address of cxx variable to library.
@@ -17403,6 +17405,7 @@ f_out_string**_cdesc_allocatable:
   - '    c_mixin_capsule_pass'
   - '  f_mixin_cdesc_out_char_array_allocatable'
   - '  f_mixin_helper_array_string_allocatable'
+  - '    c_mixin_local-string*'
   - '  c_mixin_arg-call-cvar-address'
   - '  c_mixin_capsule_fill_native'
   - '  f_mixin_capsule_dtor'
@@ -17448,6 +17451,7 @@ f_out_string**_cdesc_copy:
   comments:
   - Collect information about a string argument.
   - Pass cdesc as argument to C wrapper.
+  - Create local std::string pointer.
   - Pass address of cxx variable to library.
   notes:
   - Pass a cdesc down to describe the memory and a capsule to hold the
@@ -17476,6 +17480,7 @@ f_out_string**_cdesc_copy:
   mixin_names:
   - '  f_mixin_str_array'
   - '  f_mixin_cdesc_pass'
+  - '  c_mixin_local-string*'
   - '  c_mixin_arg-call-cvar-address'
   i_dummy_arg:
   - '{i_var_cdesc}'
@@ -17494,8 +17499,6 @@ f_out_string**_cdesc_copy:
   c_temps:
   - cdesc
   helper:
-  - type_defines
-  - array_context
   - cdesc_array_string_out
   owner: library
 f_out_string**_cfi_allocatable:
@@ -17504,7 +17507,7 @@ f_out_string**_cfi_allocatable:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Create local std::string pointer.
-  - Pass address of local cxx variable to library.
+  - Pass address of cxx variable to library.
   notes:
   - std::string **strs +intent(out)+dimension(nstrs)+deref(allocatable),
   - int *nstrs+intent(out)+hidden
@@ -17518,8 +17521,8 @@ f_out_string**_cfi_allocatable:
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
   - '  c_mixin_cfi_arg'
-  - '  c_mixin_out_string**'
-  - '  c_mixin_arg-call-cxx-address'
+  - '  c_mixin_local-string*'
+  - '  c_mixin_arg-call-cvar-address'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -17527,15 +17530,13 @@ f_out_string**_cfi_allocatable:
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
-  - std::string *{c_local_cxx};
+  - std::string *{cxx_var};
   c_arg_call:
-  - '&{c_local_cxx}'
+  - '&{cxx_var}'
   c_post_call:
   - // Allocate and copy into {c_var}
   c_temps:
   - cfi
-  c_local:
-  - cxx
   iface_header:
   - ISO_Fortran_binding.h
   owner: library
@@ -17545,7 +17546,7 @@ f_out_string**_cfi_copy:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Create local std::string pointer.
-  - Pass address of local cxx variable to library.
+  - Pass address of cxx variable to library.
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
@@ -17556,8 +17557,8 @@ f_out_string**_cfi_copy:
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
   - '  c_mixin_cfi_arg'
-  - '  c_mixin_out_string**'
-  - '  c_mixin_arg-call-cxx-address'
+  - '  c_mixin_local-string*'
+  - '  c_mixin_arg-call-cvar-address'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -17565,15 +17566,13 @@ f_out_string**_cfi_copy:
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
-  - std::string *{c_local_cxx};
+  - std::string *{cxx_var};
   c_arg_call:
-  - '&{c_local_cxx}'
+  - '&{cxx_var}'
   c_post_call:
   - // Copy results into {c_var}
   c_temps:
   - cfi
-  c_local:
-  - cxx
   iface_header:
   - ISO_Fortran_binding.h
   owner: library
@@ -19615,6 +19614,7 @@ root
       local-cvar-ptr -- c_mixin_local-cvar-ptr
       local-cxx-ptr -- c_mixin_local-cxx-ptr
       local-string -- c_mixin_local-string
+      local-string* -- c_mixin_local-string*
       local-string-init -- c_mixin_local-string-init
       local-string-init-trim -- c_mixin_local-string-init-trim
       make-shared -- c_mixin_make-shared
@@ -19622,7 +19622,6 @@ root
         vector<native> -- c_mixin_new_vector<native>
       out
         native** -- c_mixin_out_native**
-        string** -- c_mixin_out_string**
         vector
           buf
             malloc -- c_mixin_out_vector_buf_malloc

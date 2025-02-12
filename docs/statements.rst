@@ -334,3 +334,7 @@ pointers and references.
    rather than adding the intent or type before cdesc or capsule.
    
    The non-mixin groups add capsule/cdesc later since it is from api(cdesc).
+
+   When using cdesc as an argument, declare the local variable using cxx_var,
+   not cxx_local_var. This is the name used in the declaration.
+   For example, c_mixin_local-string* which defines std::string.

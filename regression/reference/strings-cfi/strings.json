@@ -4681,8 +4681,8 @@
                     "f": {
                         "+result": {
                             "fmtdict": {
-                                "C_call_function": "fetchArrayStringArg(\t&SHC_strs_cxx,\t &nstrs)",
-                                "C_call_list": "&SHC_strs_cxx,\t &nstrs",
+                                "C_call_function": "fetchArrayStringArg(\t&strs,\t &nstrs)",
+                                "C_call_list": "&strs,\t &nstrs",
                                 "C_name": "STR_fetchArrayStringArg_CFI",
                                 "C_prototype": "CFI_cdesc_t *SHT_strs_cfi",
                                 "C_return_type": "void",
@@ -4750,7 +4750,6 @@
                                 "c_array_size2": "nstrs",
                                 "c_const": "",
                                 "c_deref": "*",
-                                "c_local_cxx": "SHC_strs_cxx",
                                 "c_member": "->",
                                 "c_type": "char",
                                 "c_var": "strs",
@@ -4761,7 +4760,7 @@
                                 "cxx_member": "->",
                                 "cxx_nonconst_ptr": "strs",
                                 "cxx_type": "std::string",
-                                "cxx_var": "SHC_strs_cxx",
+                                "cxx_var": "strs",
                                 "f_array_allocate": "(nstrs)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(nstrs)",
@@ -4774,7 +4773,6 @@
                                 "i_intent": "OUT",
                                 "i_intent_attr": ", intent(OUT)",
                                 "i_kind": "C_CHAR",
-                                "i_local_cxx": "SHC_strs_cxx",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "strs",
@@ -5028,8 +5026,8 @@
                     "f": {
                         "+result": {
                             "fmtdict": {
-                                "C_call_function": "fetchArrayStringAlloc(\t&SHC_strs_cxx,\t &nstrs)",
-                                "C_call_list": "&SHC_strs_cxx,\t &nstrs",
+                                "C_call_function": "fetchArrayStringAlloc(\t&strs,\t &nstrs)",
+                                "C_call_list": "&strs,\t &nstrs",
                                 "C_name": "STR_fetchArrayStringAlloc_CFI",
                                 "C_prototype": "CFI_cdesc_t *SHT_strs_cfi",
                                 "C_return_type": "void",
@@ -5097,7 +5095,6 @@
                                 "c_array_size2": "nstrs",
                                 "c_const": "",
                                 "c_deref": "*",
-                                "c_local_cxx": "SHC_strs_cxx",
                                 "c_member": "->",
                                 "c_type": "char",
                                 "c_var": "strs",
@@ -5108,7 +5105,7 @@
                                 "cxx_member": "->",
                                 "cxx_nonconst_ptr": "strs",
                                 "cxx_type": "std::string",
-                                "cxx_var": "SHC_strs_cxx",
+                                "cxx_var": "strs",
                                 "f_array_allocate": "(nstrs)",
                                 "f_assumed_shape": "(:)",
                                 "f_deref_attr": ", allocatable",
@@ -5122,7 +5119,6 @@
                                 "i_intent": "OUT",
                                 "i_intent_attr": ", intent(OUT)",
                                 "i_kind": "C_CHAR",
-                                "i_local_cxx": "SHC_strs_cxx",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "strs",
@@ -5380,8 +5376,8 @@
                     "f": {
                         "+result": {
                             "fmtdict": {
-                                "C_call_function": "fetchArrayStringAllocLen(\t&SHC_strs_cxx,\t &nstrs)",
-                                "C_call_list": "&SHC_strs_cxx,\t &nstrs",
+                                "C_call_function": "fetchArrayStringAllocLen(\t&strs,\t &nstrs)",
+                                "C_call_list": "&strs,\t &nstrs",
                                 "C_name": "STR_fetchArrayStringAllocLen_CFI",
                                 "C_prototype": "CFI_cdesc_t *SHT_strs_cfi",
                                 "C_return_type": "void",
@@ -5450,7 +5446,6 @@
                                 "c_char_len": "20",
                                 "c_const": "",
                                 "c_deref": "*",
-                                "c_local_cxx": "SHC_strs_cxx",
                                 "c_member": "->",
                                 "c_type": "char",
                                 "c_var": "strs",
@@ -5461,7 +5456,7 @@
                                 "cxx_member": "->",
                                 "cxx_nonconst_ptr": "strs",
                                 "cxx_type": "std::string",
-                                "cxx_var": "SHC_strs_cxx",
+                                "cxx_var": "strs",
                                 "f_array_allocate": "(nstrs)",
                                 "f_assumed_shape": "(:)",
                                 "f_char_len": "len=20",
@@ -5476,7 +5471,6 @@
                                 "i_intent": "OUT",
                                 "i_intent_attr": ", intent(OUT)",
                                 "i_kind": "C_CHAR",
-                                "i_local_cxx": "SHC_strs_cxx",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "strs",

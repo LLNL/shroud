@@ -2574,15 +2574,12 @@
         ]
     },
     {
-        "name": "c_mixin_out_string**",
+        "name": "c_mixin_local-string*",
         "comments": [
             "Create local std::string pointer."
         ],
         "c_pre_call": [
-            "std::string *{c_local_cxx};"
-        ],
-        "c_local": [
-            "cxx"
+            "std::string *{cxx_var};"
         ]
     },
     {
@@ -2688,11 +2685,11 @@
             "C++ array. Allocate in fortran, fill from C.",
             "[see also f_out_vector_&_cdesc_allocatable_targ_string_scalar]"
         ],
+        "mixin": [
+            "c_mixin_local-string*"
+        ],
         "f_post_call": [
             "call {f_helper_array_string_allocatable}({f_var_cdesc}, {f_var_capsule})"
-        ],
-        "c_pre_call": [
-            "std::string *{cxx_var};"
         ],
         "c_post_call": [
             "{c_var_cdesc}->rank = {rank};{c_array_shape}",
@@ -3089,17 +3086,13 @@
         "mixin": [
             "f_mixin_str_array",
             "f_mixin_cdesc_pass",
+            "c_mixin_local-string*",
             "c_mixin_arg-call-cvar-address"
-        ],
-        "c_pre_call": [
-            "std::string *{cxx_var};"
         ],
         "c_post_call": [
             "{c_helper_cdesc_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});"
         ],
         "helper": [
-            "type_defines",
-            "array_context",
             "cdesc_array_string_out"
         ]
     },
@@ -5078,8 +5071,8 @@
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "c_mixin_cfi_arg",
-            "c_mixin_out_string**",
-            "c_mixin_arg-call-cxx-address"
+            "c_mixin_local-string*",
+            "c_mixin_arg-call-cvar-address"
         ],
         "i_dummy_arg": [
             "{i_var}"
@@ -5096,8 +5089,8 @@
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "c_mixin_cfi_arg",
-            "c_mixin_out_string**",
-            "c_mixin_arg-call-cxx-address"
+            "c_mixin_local-string*",
+            "c_mixin_arg-call-cvar-address"
         ],
         "i_dummy_arg": [
             "{i_var}"
