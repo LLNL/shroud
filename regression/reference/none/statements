@@ -5770,7 +5770,7 @@ c_out_vector<string>&_cdesc_allocatable:
   - Pass cdesc as argument to C wrapper.
   - Pass capsule as argument to C wrapper.
   - Create a local Fortran capsule.
-  - Allocate Fortran array from cdesc.
+  - Allocate Fortran character array from cdesc.
   - Allocate a vector<string> variable.
   - Copy into Fortran allocated memory.
   - Release memory from capsule.
@@ -5780,7 +5780,7 @@ c_out_vector<string>&_cdesc_allocatable:
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_capsule_pass'
   - '    c_mixin_capsule_pass'
-  - '  f_mixin_cdesc_out_char_array_allocatable'
+  - '  f_mixin_cdesc_allocate_1d_character'
   - '  f_mixin_helper_vector_string_allocatable'
   - '  f_mixin_capsule_dtor'
   - '  c_mixin_arg-call-cxx-deref'
@@ -15470,6 +15470,20 @@ f_mixin_cdesc_allocate_1d:
   f_post_call:
   - allocate({f_var}({f_var_cdesc}%size))
   owner: library
+f_mixin_cdesc_allocate_1d_character:
+  name: f_mixin_cdesc_allocate_1d_character
+  intent: mixin
+  comments:
+  - Allocate Fortran character array from cdesc.
+  f_post_call:
+  - "allocate(character(len={f_var_cdesc}%elem_len) ::\t {f_var}({f_var_cdesc}%size))"
+  - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
+  f_module:
+    iso_c_binding:
+    - C_LOC
+  fmtdict:
+    f_target_attr: ', target'
+  owner: library
 f_mixin_cdesc_char_allocate:
   name: f_mixin_cdesc_char_allocate
   intent: mixin
@@ -15616,20 +15630,6 @@ f_mixin_cdesc_native_raw:
     iso_c_binding:
     - C_PTR
     - c_f_pointer
-  owner: library
-f_mixin_cdesc_out_char_array_allocatable:
-  name: f_mixin_cdesc_out_char_array_allocatable
-  intent: mixin
-  comments:
-  - Allocate Fortran array from cdesc.
-  f_post_call:
-  - allocate({f_char_type}{f_var}({f_var_cdesc}%size))
-  - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
-  f_module:
-    iso_c_binding:
-    - C_LOC
-  fmtdict:
-    f_target_attr: ', target'
   owner: library
 f_mixin_cdesc_out_native_pointer:
   name: f_mixin_cdesc_out_native_pointer
@@ -17644,7 +17644,7 @@ f_out_string**_cdesc_allocatable:
   - Pass cdesc as argument to C wrapper.
   - Pass capsule as argument to C wrapper.
   - Create a local Fortran capsule.
-  - Allocate Fortran array from cdesc.
+  - Allocate Fortran character array from cdesc.
   - Create local std::string pointer.
   - Assign to std::string pointer from C++ function.
   - Copy into Fortran allocated memory.
@@ -17663,7 +17663,7 @@ f_out_string**_cdesc_allocatable:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
   f_post_call:
-  - allocate({f_char_type}{f_var}({f_var_cdesc}%size))
+  - "allocate(character(len={f_var_cdesc}%elem_len) ::\t {f_var}({f_var_cdesc}%size))"
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
   - call {f_helper_array_string_allocatable}({f_var_cdesc}, {f_var_capsule})
   - call {f_helper_capsule_dtor}({f_var_capsule})
@@ -17681,7 +17681,7 @@ f_out_string**_cdesc_allocatable:
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_capsule_pass'
   - '    c_mixin_capsule_pass'
-  - '  f_mixin_cdesc_out_char_array_allocatable'
+  - '  f_mixin_cdesc_allocate_1d_character'
   - '  f_mixin_helper_array_string_allocatable'
   - '    c_mixin_local-string*'
   - '  c_mixin_arg-call-cvar-address'
@@ -18453,7 +18453,7 @@ f_out_vector<string>&_cdesc_allocatable:
   - Pass cdesc as argument to C wrapper.
   - Pass capsule as argument to C wrapper.
   - Create a local Fortran capsule.
-  - Allocate Fortran array from cdesc.
+  - Allocate Fortran character array from cdesc.
   - Allocate a vector<string> variable.
   - Copy into Fortran allocated memory.
   - Release memory from capsule.
@@ -18469,7 +18469,7 @@ f_out_vector<string>&_cdesc_allocatable:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
   f_post_call:
-  - allocate({f_char_type}{f_var}({f_var_cdesc}%size))
+  - "allocate(character(len={f_var_cdesc}%elem_len) ::\t {f_var}({f_var_cdesc}%size))"
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
   - call {f_helper_cdesc_vector_string_allocatable}({f_var_cdesc}, {f_var_capsule})
   - call {f_helper_capsule_dtor}({f_var_capsule})
@@ -18485,7 +18485,7 @@ f_out_vector<string>&_cdesc_allocatable:
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_capsule_pass'
   - '    c_mixin_capsule_pass'
-  - '  f_mixin_cdesc_out_char_array_allocatable'
+  - '  f_mixin_cdesc_allocate_1d_character'
   - '  f_mixin_helper_vector_string_allocatable'
   - '  f_mixin_capsule_dtor'
   - '  c_mixin_arg-call-cxx-deref'
@@ -20369,6 +20369,7 @@ root
       cdesc
         allocate
           1d -- f_mixin_cdesc_allocate_1d
+            character -- f_mixin_cdesc_allocate_1d_character
         char
           allocate -- f_mixin_cdesc_char_allocate
           fill -- f_mixin_cdesc_char_fill
@@ -20383,9 +20384,6 @@ root
           pointer -- f_mixin_cdesc_native_pointer
           raw -- f_mixin_cdesc_native_raw
         out
-          char
-            array
-              allocatable -- f_mixin_cdesc_out_char_array_allocatable
           native
             pointer -- f_mixin_cdesc_out_native_pointer
         pass -- f_mixin_cdesc_pass

@@ -2215,12 +2215,12 @@
         ]
     },
     {
-        "name": "f_mixin_cdesc_out_char_array_allocatable",
+        "name": "f_mixin_cdesc_allocate_1d_character",
         "comments": [
-            "Allocate Fortran array from cdesc."
+            "Allocate Fortran character array from cdesc."
         ],
         "f_post_call": [
-            "allocate({f_char_type}{f_var}({f_var_cdesc}%size))",
+            "allocate(character(len={f_var_cdesc}%elem_len) ::\t {f_var}({f_var_cdesc}%size))",
             "{f_var_cdesc}%base_addr = C_LOC({f_var})"
         ],
         "f_module": {
@@ -3190,7 +3190,7 @@
             "f_mixin_declare-fortran-arg",
             "f_mixin_cdesc_pass",
             "f_mixin_capsule_pass",
-            "f_mixin_cdesc_out_char_array_allocatable",
+            "f_mixin_cdesc_allocate_1d_character",
             "f_mixin_helper_array_string_allocatable",
             "c_mixin_arg-call-cvar-address",
             "c_mixin_capsule_fill_native",
@@ -3740,7 +3740,7 @@
             "f_mixin_declare-character-arg",
             "f_mixin_cdesc_pass",
             "f_mixin_capsule_pass",
-            "f_mixin_cdesc_out_char_array_allocatable",
+            "f_mixin_cdesc_allocate_1d_character",
             "f_mixin_helper_vector_string_allocatable",
             "f_mixin_capsule_dtor",
             "c_mixin_arg-call-cxx-deref"

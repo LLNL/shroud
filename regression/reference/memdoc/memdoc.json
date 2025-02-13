@@ -122,7 +122,6 @@
                                 "cxx_type": "std::string",
                                 "cxx_var": "SHCXX_rv",
                                 "f_call_function": "c_get_const_string_ptr_alloc_bufferify",
-                                "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                                 "f_deref_attr": ", allocatable",
                                 "f_helper_array_context": "STR_SHROUD_array",
                                 "f_helper_capsule_data_helper": "STR_SHROUD_capsule_data",
