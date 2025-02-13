@@ -1995,9 +1995,13 @@ c_in_native*_cdesc:
   intent: in
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from native in the Fortran wrapper.
   - Pass cxx variable to library.
   mixin_names:
+  - '  f_mixin_declare-fortran-arg'
   - '  f_mixin_cdesc_pass'
+  - '  f_mixin_cdesc_native_fill'
+  - '  c_mixin_cdesc_unpack-base-addr'
   - '  c_mixin_arg-call-cvar'
   i_dummy_arg:
   - '{i_var_cdesc}'
@@ -2013,9 +2017,11 @@ c_in_native*_cdesc:
   - '{cxx_var}'
   c_temps:
   - cdesc
+  fmtdict:
+    f_target_attr: ', target'
   helper:
-  - type_defines
   - array_context
+  - type_defines
   owner: library
   lang_c:
     c_pre_call:
@@ -2882,9 +2888,13 @@ c_in_void*_cdesc:
   intent: in
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from native in the Fortran wrapper.
   - Pass cxx variable to library.
   mixin_names:
+  - '  f_mixin_declare-fortran-arg'
   - '  f_mixin_cdesc_pass'
+  - '  f_mixin_cdesc_native_fill'
+  - '  c_mixin_cdesc_unpack-base-addr'
   - '  c_mixin_arg-call-cvar'
   i_dummy_arg:
   - '{i_var_cdesc}'
@@ -2900,9 +2910,11 @@ c_in_void*_cdesc:
   - '{cxx_var}'
   c_temps:
   - cdesc
+  fmtdict:
+    f_target_attr: ', target'
   helper:
-  - type_defines
   - array_context
+  - type_defines
   owner: library
   lang_c:
     c_pre_call:
@@ -3091,9 +3103,13 @@ c_inout_native*_cdesc:
   intent: inout
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from native in the Fortran wrapper.
   - Pass cxx variable to library.
   mixin_names:
+  - '  f_mixin_declare-fortran-arg'
   - '  f_mixin_cdesc_pass'
+  - '  f_mixin_cdesc_native_fill'
+  - '  c_mixin_cdesc_unpack-base-addr'
   - '  c_mixin_arg-call-cvar'
   i_dummy_arg:
   - '{i_var_cdesc}'
@@ -3109,9 +3125,11 @@ c_inout_native*_cdesc:
   - '{cxx_var}'
   c_temps:
   - cdesc
+  fmtdict:
+    f_target_attr: ', target'
   helper:
-  - type_defines
   - array_context
+  - type_defines
   owner: library
   lang_c:
     c_pre_call:
@@ -3687,9 +3705,13 @@ c_inout_void*_cdesc:
   intent: inout
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from native in the Fortran wrapper.
   - Pass cxx variable to library.
   mixin_names:
+  - '  f_mixin_declare-fortran-arg'
   - '  f_mixin_cdesc_pass'
+  - '  f_mixin_cdesc_native_fill'
+  - '  c_mixin_cdesc_unpack-base-addr'
   - '  c_mixin_arg-call-cvar'
   i_dummy_arg:
   - '{i_var_cdesc}'
@@ -3705,9 +3727,11 @@ c_inout_void*_cdesc:
   - '{cxx_var}'
   c_temps:
   - cdesc
+  fmtdict:
+    f_target_attr: ', target'
   helper:
-  - type_defines
   - array_context
+  - type_defines
   owner: library
   lang_c:
     c_pre_call:
@@ -3895,6 +3919,18 @@ c_mixin_cdesc_native_fill:
   - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
   - '{c_var_cdesc}->size = {c_array_size};'
   owner: library
+c_mixin_cdesc_unpack-base-addr:
+  name: c_mixin_cdesc_unpack-base-addr
+  intent: mixin
+  c_pre_call:
+  - "{cxx_type} *{c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
+  owner: library
+  lang_c:
+    c_pre_call:
+    - '{cxx_type} *{c_var} = {c_var_cdesc}->base_addr;'
+  lang_cxx:
+    c_pre_call:
+    - "{cxx_type} *{c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
 c_mixin_cdesc_vector_fill:
   name: c_mixin_cdesc_vector_fill
   intent: mixin
@@ -4956,9 +4992,13 @@ c_out_native*_cdesc:
   intent: out
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from native in the Fortran wrapper.
   - Pass cxx variable to library.
   mixin_names:
+  - '  f_mixin_declare-fortran-arg'
   - '  f_mixin_cdesc_pass'
+  - '  f_mixin_cdesc_native_fill'
+  - '  c_mixin_cdesc_unpack-base-addr'
   - '  c_mixin_arg-call-cvar'
   i_dummy_arg:
   - '{i_var_cdesc}'
@@ -4974,9 +5014,11 @@ c_out_native*_cdesc:
   - '{cxx_var}'
   c_temps:
   - cdesc
+  fmtdict:
+    f_target_attr: ', target'
   helper:
-  - type_defines
   - array_context
+  - type_defines
   owner: library
   lang_c:
     c_pre_call:
@@ -5860,9 +5902,13 @@ c_out_void*_cdesc:
   intent: out
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from native in the Fortran wrapper.
   - Pass cxx variable to library.
   mixin_names:
+  - '  f_mixin_declare-fortran-arg'
   - '  f_mixin_cdesc_pass'
+  - '  f_mixin_cdesc_native_fill'
+  - '  c_mixin_cdesc_unpack-base-addr'
   - '  c_mixin_arg-call-cvar'
   i_dummy_arg:
   - '{i_var_cdesc}'
@@ -5878,9 +5924,11 @@ c_out_void*_cdesc:
   - '{cxx_var}'
   c_temps:
   - cdesc
+  fmtdict:
+    f_target_attr: ', target'
   helper:
-  - type_defines
   - array_context
+  - type_defines
   owner: library
   lang_c:
     c_pre_call:
@@ -6091,7 +6139,8 @@ f_function_bool:
   - Call a function.
   - Declare a Fortran variable.
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_call:
   - '{f_result_var} = {f_call_function}({F_arg_c_call})'
   f_module:
@@ -6363,7 +6412,8 @@ f_function_char*_buf_copy:
   - Copy result into caller's buffer.
   - XXX - maybe fmtdict to rename c_local_cxx as output
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -6659,7 +6709,8 @@ f_function_char*_cfi_copy:
   notes:
   - Copy result into caller's buffer.
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -7068,7 +7119,8 @@ f_function_enum:
   notes:
   - Return as the Fortran bind(C) type.
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_call:
   - '{f_result_var} = {f_call_function}({F_arg_c_call})'
   f_module:
@@ -7093,7 +7145,8 @@ f_function_native:
   - Call a function.
   - Declare a Fortran variable.
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_call:
   - '{f_result_var} = {f_call_function}({F_arg_c_call})'
   f_module:
@@ -7429,7 +7482,8 @@ f_function_native*_cfi_allocatable:
   - Convert to subroutine and pass result as an argument.
   - Return an allocated copy of data.
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -7498,7 +7552,8 @@ f_function_native*_cfi_pointer:
   - Convert to subroutine and pass result as an argument.
   - Return Fortran pointer to data.
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_pre_call:
   - nullify({f_var})
   f_arg_call:
@@ -7652,7 +7707,8 @@ f_function_native*_scalar:
   notes:
   - Return a scalar to avoid doing the deref in Fortran.
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_call:
   - '{f_result_var} = {f_call_function}({F_arg_c_call})'
   f_module:
@@ -8167,7 +8223,8 @@ f_function_string&_buf:
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -8322,7 +8379,8 @@ f_function_string&_buf_caller:
   - Pass cxx variable to library.
   - Delete the cxx variable.
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -8391,7 +8449,8 @@ f_function_string&_buf_copy:
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -8463,7 +8522,8 @@ f_function_string&_buf_copy_caller:
   - Pass cxx variable to library.
   - Delete the cxx variable.
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -9113,7 +9173,8 @@ f_function_string&_cfi_copy:
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -9357,7 +9418,8 @@ f_function_string*_buf:
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -9429,7 +9491,8 @@ f_function_string*_buf_caller:
   - Pass cxx variable to library.
   - Delete the cxx variable.
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -9498,7 +9561,8 @@ f_function_string*_buf_copy:
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -9570,7 +9634,8 @@ f_function_string*_buf_copy_caller:
   - Pass cxx variable to library.
   - Delete the cxx variable.
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -10151,7 +10216,8 @@ f_function_string*_cfi_copy:
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -10395,7 +10461,8 @@ f_function_string_buf:
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -10550,7 +10617,8 @@ f_function_string_buf_caller:
   - Pass cxx variable to library.
   - Delete the cxx variable.
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -10619,7 +10687,8 @@ f_function_string_buf_copy:
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -10691,7 +10760,8 @@ f_function_string_buf_copy_caller:
   - Pass cxx variable to library.
   - Delete the cxx variable.
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -11229,7 +11299,8 @@ f_function_string_cfi_copy:
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -11469,7 +11540,8 @@ f_function_struct:
   - Call the C wrapper as a subroutine.
   - Declare a Fortran variable.
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -11679,7 +11751,8 @@ f_function_void*:
   notes:
   - XXX - f entries are the same as the i entries, share?
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -11697,7 +11770,8 @@ f_getter_bool:
   comments:
   - Declare a Fortran variable.
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -11720,7 +11794,8 @@ f_getter_native:
   comments:
   - Declare a Fortran variable.
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -11795,7 +11870,6 @@ f_getter_native*_cdesc_pointer:
   helper:
   - array_context
   - type_defines
-  - array_context
   owner: library
 f_getter_native*_pointer:
   name: f_getter_native*_pointer
@@ -11803,7 +11877,8 @@ f_getter_native*_pointer:
   comments:
   - Declare a Fortran variable.
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -11927,7 +12002,6 @@ f_getter_struct**_cdesc_raw:
   helper:
   - array_context
   - type_defines
-  - array_context
   owner: library
 f_getter_struct*_cdesc_pointer:
   name: f_getter_struct*_cdesc_pointer
@@ -11987,7 +12061,6 @@ f_getter_struct*_cdesc_pointer:
   helper:
   - array_context
   - type_defines
-  - array_context
   owner: library
 f_getter_struct*_fapi_pointer:
   name: f_getter_struct*_fapi_pointer
@@ -12013,7 +12086,8 @@ f_in_bool:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - 'logical(C_BOOL) :: {f_var_cxx}'
   f_pre_call:
@@ -12081,7 +12155,8 @@ f_in_char*:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -12243,7 +12318,8 @@ f_in_char*_buf:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -12300,7 +12376,8 @@ f_in_char*_capi:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -12332,7 +12409,8 @@ f_in_char*_cfi:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -12380,7 +12458,8 @@ f_in_enum:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -12413,7 +12492,8 @@ f_in_native:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -12442,7 +12522,8 @@ f_in_native&:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -12471,7 +12552,8 @@ f_in_native*:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -12503,7 +12585,8 @@ f_in_native**:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -12529,11 +12612,13 @@ f_in_native*_cdesc:
   intent: in
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from native in the Fortran wrapper.
   - Pass cxx variable to library.
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_pre_call:
@@ -12553,7 +12638,10 @@ f_in_native*_cdesc:
   - cdesc
   f_need_wrapper: true
   mixin_names:
+  - '  f_mixin_declare-fortran-arg'
   - '  f_mixin_cdesc_pass'
+  - '  f_mixin_cdesc_native_fill'
+  - '  c_mixin_cdesc_unpack-base-addr'
   - '  c_mixin_arg-call-cvar'
   i_dummy_arg:
   - '{i_var_cdesc}'
@@ -12569,9 +12657,11 @@ f_in_native*_cdesc:
   - '{cxx_var}'
   c_temps:
   - cdesc
+  fmtdict:
+    f_target_attr: ', target'
   helper:
-  - type_defines
   - array_context
+  - type_defines
   owner: library
 f_in_native*_cfi:
   name: f_in_native*_cfi
@@ -12583,7 +12673,8 @@ f_in_native*_cfi:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -12887,7 +12978,8 @@ f_in_string&_buf:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -12946,7 +13038,8 @@ f_in_string&_cfi:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -13019,7 +13112,8 @@ f_in_string*_buf:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -13080,7 +13174,8 @@ f_in_string*_cfi:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -13126,7 +13221,8 @@ f_in_string_buf:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -13185,7 +13281,8 @@ f_in_string_cfi:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -13232,7 +13329,8 @@ f_in_struct:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -13261,7 +13359,8 @@ f_in_struct&:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -13293,7 +13392,8 @@ f_in_struct*:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -13324,7 +13424,8 @@ f_in_unknown:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -13743,7 +13844,8 @@ f_in_void:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -13854,11 +13956,13 @@ f_in_void*_cdesc:
   intent: in
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from native in the Fortran wrapper.
   - Pass cxx variable to library.
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_pre_call:
@@ -13878,7 +13982,10 @@ f_in_void*_cdesc:
   - cdesc
   f_need_wrapper: true
   mixin_names:
+  - '  f_mixin_declare-fortran-arg'
   - '  f_mixin_cdesc_pass'
+  - '  f_mixin_cdesc_native_fill'
+  - '  c_mixin_cdesc_unpack-base-addr'
   - '  c_mixin_arg-call-cvar'
   i_dummy_arg:
   - '{i_var_cdesc}'
@@ -13894,9 +14001,11 @@ f_in_void*_cdesc:
   - '{cxx_var}'
   c_temps:
   - cdesc
+  fmtdict:
+    f_target_attr: ', target'
   helper:
-  - type_defines
   - array_context
+  - type_defines
   owner: library
 f_inout_bool*:
   name: f_inout_bool*
@@ -13906,7 +14015,8 @@ f_inout_bool*:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - 'logical(C_BOOL) :: {f_var_cxx}'
   f_pre_call:
@@ -13950,7 +14060,8 @@ f_inout_char*:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -13982,7 +14093,8 @@ f_inout_char*_buf:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -14042,7 +14154,8 @@ f_inout_char*_capi:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -14075,7 +14188,8 @@ f_inout_char*_cfi:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -14123,7 +14237,8 @@ f_inout_enum*:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -14157,7 +14272,8 @@ f_inout_native&:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -14200,7 +14316,8 @@ f_inout_native*:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -14226,11 +14343,13 @@ f_inout_native*_cdesc:
   intent: inout
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from native in the Fortran wrapper.
   - Pass cxx variable to library.
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_pre_call:
@@ -14250,7 +14369,10 @@ f_inout_native*_cdesc:
   - cdesc
   f_need_wrapper: true
   mixin_names:
+  - '  f_mixin_declare-fortran-arg'
   - '  f_mixin_cdesc_pass'
+  - '  f_mixin_cdesc_native_fill'
+  - '  c_mixin_cdesc_unpack-base-addr'
   - '  c_mixin_arg-call-cvar'
   i_dummy_arg:
   - '{i_var_cdesc}'
@@ -14266,9 +14388,11 @@ f_inout_native*_cdesc:
   - '{cxx_var}'
   c_temps:
   - cdesc
+  fmtdict:
+    f_target_attr: ', target'
   helper:
-  - type_defines
   - array_context
+  - type_defines
   owner: library
 f_inout_native*_cfi:
   name: f_inout_native*_cfi
@@ -14280,7 +14404,8 @@ f_inout_native*_cfi:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -14496,7 +14621,8 @@ f_inout_string&_buf:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -14562,7 +14688,8 @@ f_inout_string&_cfi:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -14663,7 +14790,8 @@ f_inout_string*_buf:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -14727,7 +14855,8 @@ f_inout_string*_cfi:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -14775,7 +14904,8 @@ f_inout_struct&:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -14807,7 +14937,8 @@ f_inout_struct*:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -15101,11 +15232,13 @@ f_inout_void*_cdesc:
   intent: inout
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from native in the Fortran wrapper.
   - Pass cxx variable to library.
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_pre_call:
@@ -15125,7 +15258,10 @@ f_inout_void*_cdesc:
   - cdesc
   f_need_wrapper: true
   mixin_names:
+  - '  f_mixin_declare-fortran-arg'
   - '  f_mixin_cdesc_pass'
+  - '  f_mixin_cdesc_native_fill'
+  - '  c_mixin_cdesc_unpack-base-addr'
   - '  c_mixin_arg-call-cvar'
   i_dummy_arg:
   - '{i_var_cdesc}'
@@ -15141,9 +15277,11 @@ f_inout_void*_cdesc:
   - '{cxx_var}'
   c_temps:
   - cdesc
+  fmtdict:
+    f_target_attr: ', target'
   helper:
-  - type_defines
   - array_context
+  - type_defines
   owner: library
 f_mixin_arg-call-fvar:
   name: f_mixin_arg-call-fvar
@@ -15328,7 +15466,6 @@ f_mixin_cdesc_getter:
   - '{c_var_cdesc}->size = {c_array_size};'
   helper:
   - type_defines
-  - array_context
   owner: library
 f_mixin_cdesc_inout_array:
   name: f_mixin_cdesc_inout_array
@@ -15369,6 +15506,25 @@ f_mixin_cdesc_native_allocate:
     - C_SIZE_T
   helper:
   - copy_array
+  owner: library
+f_mixin_cdesc_native_fill:
+  name: f_mixin_cdesc_native_fill
+  intent: mixin
+  comments:
+  - Fill cdesc from native in the Fortran wrapper.
+  f_pre_call:
+  - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
+  - '{f_var_cdesc}%type = {sh_type}'
+  - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
+  - '{f_var_cdesc}%size = {size}'
+  - '{f_var_cdesc}%rank = {rank}{f_cdesc_shape}'
+  f_module:
+    iso_c_binding:
+    - C_LOC
+  fmtdict:
+    f_target_attr: ', target'
+  helper:
+  - type_defines
   owner: library
 f_mixin_cdesc_native_pointer:
   name: f_mixin_cdesc_native_pointer
@@ -15564,7 +15720,8 @@ f_mixin_declare-fortran-arg:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -15586,7 +15743,8 @@ f_mixin_declare-local-variable:
   comments:
   - Declare a Fortran variable.
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -16111,7 +16269,8 @@ f_none_bool:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - 'logical(C_BOOL) :: {f_var_cxx}'
   f_pre_call:
@@ -16152,7 +16311,8 @@ f_none_bool*:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - 'logical(C_BOOL) :: {f_var_cxx}'
   f_arg_call:
@@ -16220,7 +16380,8 @@ f_none_char*:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -16251,7 +16412,8 @@ f_none_native:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -16280,7 +16442,8 @@ f_none_native*:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -16338,7 +16501,8 @@ f_out_bool*:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - 'logical(C_BOOL) :: {f_var_cxx}'
   f_arg_call:
@@ -16379,7 +16543,8 @@ f_out_char*:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -16529,7 +16694,8 @@ f_out_char*_buf:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -16581,7 +16747,8 @@ f_out_char*_capi:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -16619,7 +16786,8 @@ f_out_char*_cfi:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -16671,7 +16839,8 @@ f_out_enum*:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -16705,7 +16874,8 @@ f_out_native&:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -16748,7 +16918,8 @@ f_out_native*:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -16931,7 +17102,8 @@ f_out_native**_cdesc_allocatable:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
@@ -17071,7 +17243,8 @@ f_out_native**_cfi_allocatable:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -17126,7 +17299,8 @@ f_out_native**_cfi_pointer:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -17210,11 +17384,13 @@ f_out_native*_cdesc:
   intent: out
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from native in the Fortran wrapper.
   - Pass cxx variable to library.
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_pre_call:
@@ -17234,7 +17410,10 @@ f_out_native*_cdesc:
   - cdesc
   f_need_wrapper: true
   mixin_names:
+  - '  f_mixin_declare-fortran-arg'
   - '  f_mixin_cdesc_pass'
+  - '  f_mixin_cdesc_native_fill'
+  - '  c_mixin_cdesc_unpack-base-addr'
   - '  c_mixin_arg-call-cvar'
   i_dummy_arg:
   - '{i_var_cdesc}'
@@ -17250,9 +17429,11 @@ f_out_native*_cdesc:
   - '{cxx_var}'
   c_temps:
   - cdesc
+  fmtdict:
+    f_target_attr: ', target'
   helper:
-  - type_defines
   - array_context
+  - type_defines
   owner: library
 f_out_native*_cfi_allocatable:
   name: f_out_native*_cfi_allocatable
@@ -17317,7 +17498,8 @@ f_out_string&_buf:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -17380,7 +17562,8 @@ f_out_string&_cfi:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -17571,7 +17754,8 @@ f_out_string**_cfi_allocatable:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -17627,7 +17811,8 @@ f_out_string**_cfi_copy:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -17692,7 +17877,8 @@ f_out_string*_buf:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -17753,7 +17939,8 @@ f_out_string*_cfi:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -17798,7 +17985,8 @@ f_out_struct&:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -17830,7 +18018,8 @@ f_out_struct*:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -18334,7 +18523,8 @@ f_out_void*&:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -18388,11 +18578,13 @@ f_out_void*_cdesc:
   intent: out
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from native in the Fortran wrapper.
   - Pass cxx variable to library.
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_pre_call:
@@ -18412,7 +18604,10 @@ f_out_void*_cdesc:
   - cdesc
   f_need_wrapper: true
   mixin_names:
+  - '  f_mixin_declare-fortran-arg'
   - '  f_mixin_cdesc_pass'
+  - '  f_mixin_cdesc_native_fill'
+  - '  c_mixin_cdesc_unpack-base-addr'
   - '  c_mixin_arg-call-cvar'
   i_dummy_arg:
   - '{i_var_cdesc}'
@@ -18428,9 +18623,11 @@ f_out_void*_cdesc:
   - '{cxx_var}'
   c_temps:
   - cdesc
+  fmtdict:
+    f_target_attr: ', target'
   helper:
-  - type_defines
   - array_context
+  - type_defines
   owner: library
 f_setter:
   name: f_setter
@@ -18446,7 +18643,8 @@ f_setter_bool:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_local_decl:
   - 'logical(C_BOOL) :: {f_var_cxx}'
   f_pre_call:
@@ -18484,7 +18682,8 @@ f_setter_native:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_arg_call:
   - '{fc_var}'
   f_module:
@@ -18512,7 +18711,8 @@ f_setter_native*:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_arg_call:
   - '{fc_var}'
   f_module:
@@ -18586,7 +18786,8 @@ f_setter_struct*:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -18612,7 +18813,8 @@ f_setter_struct**:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -18637,7 +18839,8 @@ f_setter_struct*_pointer:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -19681,6 +19884,7 @@ root
           vector -- c_mixin_cdesc_inout_vector
         native
           fill -- c_mixin_cdesc_native_fill
+        unpack-base-addr -- c_mixin_cdesc_unpack-base-addr
         vector
           fill -- c_mixin_cdesc_vector_fill
       cfi
@@ -20091,6 +20295,7 @@ root
           array -- f_mixin_cdesc_inout_array
         native
           allocate -- f_mixin_cdesc_native_allocate
+          fill -- f_mixin_cdesc_native_fill
           pointer -- f_mixin_cdesc_native_pointer
           raw -- f_mixin_cdesc_native_raw
         out

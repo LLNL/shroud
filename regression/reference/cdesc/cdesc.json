@@ -51,8 +51,8 @@
                 "declgen": "void Rank2In(int *arg +api(cdesc)+intent(in)+rank(2))",
                 "helpers": {
                     "fc": [
-                        "type_defines",
-                        "array_context"
+                        "array_context",
+                        "type_defines"
                     ]
                 },
                 "name": "Rank2In",
@@ -179,6 +179,7 @@
                                 "f_intent_attr": ", intent(IN)",
                                 "f_kind": "C_INT",
                                 "f_module_name": "iso_c_binding",
+                                "f_target_attr": ", target",
                                 "f_type": "integer(C_INT)",
                                 "f_var": "arg",
                                 "f_var_cdesc": "SHT_arg_cdesc",
@@ -391,8 +392,8 @@
                 "helpers": {
                     "fc": [
                         "char_len_trim",
-                        "type_defines",
-                        "array_context"
+                        "array_context",
+                        "type_defines"
                     ]
                 },
                 "name": "GetScalar1",
@@ -631,8 +632,8 @@
                 "helpers": {
                     "fc": [
                         "char_len_trim",
-                        "type_defines",
-                        "array_context"
+                        "array_context",
+                        "type_defines"
                     ]
                 },
                 "name": "GetScalar1",
@@ -761,6 +762,7 @@
                                 "f_intent_attr": ", intent(OUT)",
                                 "f_kind": "C_INT",
                                 "f_module_name": "iso_c_binding",
+                                "f_target_attr": ", target",
                                 "f_type": "integer(C_INT)",
                                 "f_var": "value",
                                 "f_var_cdesc": "SHT_value_cdesc",
@@ -893,8 +895,8 @@
                 "helpers": {
                     "fc": [
                         "char_len_trim",
-                        "type_defines",
-                        "array_context"
+                        "array_context",
+                        "type_defines"
                     ]
                 },
                 "name": "GetScalar1",
@@ -1023,6 +1025,7 @@
                                 "f_intent_attr": ", intent(OUT)",
                                 "f_kind": "C_DOUBLE",
                                 "f_module_name": "iso_c_binding",
+                                "f_target_attr": ", target",
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "value",
                                 "f_var_cdesc": "SHT_value_cdesc",

@@ -1560,6 +1560,10 @@ f_optional_attr
     ``{f_type}{f_optional_attr} ::``.
     If *optional* is *False*, the format field will be blank.
 
+f_target_attr
+    Can be set to ``, target`` to add the ``target`` atribute to a
+    declaration via statement group *f_mixin_declare-fortran-arg*.
+
 f_type
     The Fortran type of the argument.
     Derived from the ``typemap.f_type``.

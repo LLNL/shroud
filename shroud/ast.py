@@ -764,6 +764,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             f_module_name="-f_module_name-",
             f_optional_attr="",
             f_shape_var="",
+            f_target_attr="",
             f_type="",
             f_value_attr="",
             f_var_shape="",      # scalar
