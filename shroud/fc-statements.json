@@ -884,7 +884,7 @@
             "{f_var_cdesc}%type = {sh_type}",
             "! {f_var_cdesc}%elem_len = C_SIZEOF()",
             "{f_var_cdesc}%size = {size}",
-            "{f_var_cdesc}%rank = {rank}{f_cdesc_shape}"
+            "{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}"
         ],
         "f_module": {
             "iso_c_binding": [
@@ -911,7 +911,7 @@
             "{f_var_cdesc}%type = SH_TYPE_CHAR",
             "{f_var_cdesc}%elem_len = len({f_var})",
             "{f_var_cdesc}%size = size({f_var})",
-            "{f_var_cdesc}%rank = rank({f_var}){f_cdesc_shape}"
+            "{f_var_cdesc}%rank = rank({f_var}){gen.f_cdesc_shape}"
         ],
         "f_module": {
             "iso_c_binding": [

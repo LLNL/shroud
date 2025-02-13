@@ -12680,7 +12680,7 @@ f_in_native*_cdesc:
   - '{f_var_cdesc}%type = {sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
   - '{f_var_cdesc}%size = {size}'
-  - '{f_var_cdesc}%rank = {rank}{f_cdesc_shape}'
+  - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
   f_arg_call:
   - '{f_var_cdesc}'
   f_module:
@@ -14027,7 +14027,7 @@ f_in_void*_cdesc:
   - '{f_var_cdesc}%type = {sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
   - '{f_var_cdesc}%size = {size}'
-  - '{f_var_cdesc}%rank = {rank}{f_cdesc_shape}'
+  - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
   f_arg_call:
   - '{f_var_cdesc}'
   f_module:
@@ -14415,7 +14415,7 @@ f_inout_native*_cdesc:
   - '{f_var_cdesc}%type = {sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
   - '{f_var_cdesc}%size = {size}'
-  - '{f_var_cdesc}%rank = {rank}{f_cdesc_shape}'
+  - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
   f_arg_call:
   - '{f_var_cdesc}'
   f_module:
@@ -15327,7 +15327,7 @@ f_inout_void*_cdesc:
   - '{f_var_cdesc}%type = {sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
   - '{f_var_cdesc}%size = {size}'
-  - '{f_var_cdesc}%rank = {rank}{f_cdesc_shape}'
+  - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
   f_arg_call:
   - '{f_var_cdesc}'
   f_module:
@@ -15558,7 +15558,7 @@ f_mixin_cdesc_char_fill:
   - '{f_var_cdesc}%type = SH_TYPE_CHAR'
   - '{f_var_cdesc}%elem_len = len({f_var})'
   - '{f_var_cdesc}%size = size({f_var})'
-  - '{f_var_cdesc}%rank = rank({f_var}){f_cdesc_shape}'
+  - '{f_var_cdesc}%rank = rank({f_var}){gen.f_cdesc_shape}'
   f_module:
     iso_c_binding:
     - C_LOC
@@ -15643,7 +15643,7 @@ f_mixin_cdesc_native_fill:
   - '{f_var_cdesc}%type = {sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
   - '{f_var_cdesc}%size = {size}'
-  - '{f_var_cdesc}%rank = {rank}{f_cdesc_shape}'
+  - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
   f_module:
     iso_c_binding:
     - C_LOC
@@ -17486,7 +17486,7 @@ f_out_native*_cdesc:
   - '{f_var_cdesc}%type = {sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
   - '{f_var_cdesc}%size = {size}'
-  - '{f_var_cdesc}%rank = {rank}{f_cdesc_shape}'
+  - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
   f_arg_call:
   - '{f_var_cdesc}'
   f_module:
@@ -17802,7 +17802,7 @@ f_out_string**_cdesc_copy:
   - '{f_var_cdesc}%type = SH_TYPE_CHAR'
   - '{f_var_cdesc}%elem_len = len({f_var})'
   - '{f_var_cdesc}%size = size({f_var})'
-  - '{f_var_cdesc}%rank = rank({f_var}){f_cdesc_shape}'
+  - '{f_var_cdesc}%rank = rank({f_var}){gen.f_cdesc_shape}'
   f_arg_call:
   - '{f_var_cdesc}'
   f_module:
@@ -18460,7 +18460,7 @@ f_out_vector<string>&_cdesc:
   - '{f_var_cdesc}%type = SH_TYPE_CHAR'
   - '{f_var_cdesc}%elem_len = len({f_var})'
   - '{f_var_cdesc}%size = size({f_var})'
-  - '{f_var_cdesc}%rank = rank({f_var}){f_cdesc_shape}'
+  - '{f_var_cdesc}%rank = rank({f_var}){gen.f_cdesc_shape}'
   f_arg_call:
   - '{f_var_cdesc}'
   f_module:
@@ -18727,7 +18727,7 @@ f_out_void*_cdesc:
   - '{f_var_cdesc}%type = {sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
   - '{f_var_cdesc}%size = {size}'
-  - '{f_var_cdesc}%rank = {rank}{f_cdesc_shape}'
+  - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
   f_arg_call:
   - '{f_var_cdesc}'
   f_module:

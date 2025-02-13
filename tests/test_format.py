@@ -172,6 +172,8 @@ class WFormat(unittest.TestCase):
                          fmtarg.f_allocate_shape)
         self.assertEqual("",
                          fmtarg.c_f_pointer_shape)
+        self.assertEqual("",
+                         fmtarg.f_cdesc_shape)
 
         # No f_var_cdesc
         fmt_var = util.Scope(
@@ -183,6 +185,8 @@ class WFormat(unittest.TestCase):
                          fmtarg.f_allocate_shape)
         self.assertEqual(",\t ===>f_var_cdesc<===%shape(1:1)",
                          fmtarg.c_f_pointer_shape)
+        self.assertEqual("\n===>f_var_cdesc<===%shape(1:1) = shape(===>f_var<===)",
+                         fmtarg.f_cdesc_shape)
 
         # scalar
         fmt_var = util.Scope(
@@ -194,6 +198,9 @@ class WFormat(unittest.TestCase):
                          fmtarg.f_allocate_shape)
         self.assertEqual("",
                          fmtarg.c_f_pointer_shape)
+        self.assertEqual("",
+                         fmtarg.f_cdesc_shape)
+
         # 2-d array
         fmt_var = util.Scope(
             None,
@@ -205,6 +212,8 @@ class WFormat(unittest.TestCase):
                          fmtarg.f_allocate_shape)
         self.assertEqual(",\t SHT_arg_cdesc%shape(1:2)",
                          fmtarg.c_f_pointer_shape)
+        self.assertEqual("\nSHT_arg_cdesc%shape(1:2) = shape(===>f_var<===)",
+                         fmtarg.f_cdesc_shape)
 
 if __name__ == "__main__":
     unittest.main()

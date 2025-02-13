@@ -1242,6 +1242,22 @@ class FormatGen(object):
             value = ",\t {0}%shape(1:{1})".format(f_var_cdesc, rank)
         return value
 
+    @property
+    def f_cdesc_shape(self):
+        """Assign variable shape to cdesc in Fortran using SHAPE intrinsic.
+        This will be passed to C wrapper.
+        Blank for scalars.
+        """
+        fmtdict = self.state.fmtdict
+        f_var = fmtdict.get("f_var", "===>f_var<===")
+        f_var_cdesc = fmtdict.get("f_var_cdesc", "===>f_var_cdesc<===")
+        rank = fmtdict.get("rank", "0")
+        if int(rank) == 0:
+            value = ""
+        else:
+            value = "\n{0}%shape(1:{1}) = shape({2})".format(f_var_cdesc, rank, f_var)
+        return value
+
     def __str__(self):
         """  "{gen}" returns the name"""
         return self.name

@@ -181,6 +181,7 @@ none                          i_module_name
 none                          i_suffix
 f_array_allocate              gen.f_allocate_shape
 f_array_shape                 gen.c_f_pointer_shape
+f_cdesc_shape                 gen.f_cdesc_shape
 ===========================   ===========================
   
 * Renamed option fields
