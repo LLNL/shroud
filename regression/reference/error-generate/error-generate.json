@@ -3210,7 +3210,6 @@
                                 "cxx_rv_decl": "int *SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "f_array_allocate": "(narg2)",
                                 "f_assumed_shape": "(:)",
                                 "f_call_function": "c_struct1_get_arg2",
                                 "f_dimension": "(narg2)",

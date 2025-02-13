@@ -693,15 +693,11 @@ class FillFormat(object):
             if rank == 0:
                 # Assigned to cdesc to pass metadata to C wrapper.
                 fmt.size = "1"
-                if hasattr(fmt, "f_var_cdesc"):
-                    fmt.f_cdesc_shape = ""
             else:
                 fmt.size = wformat("size({f_var})", fmt)
                 fmt.f_assumed_shape = fortran_ranks[rank]
                 fmt.f_dimension = fortran_ranks[rank]
                 fmt.i_dimension = "(*)"
-                if hasattr(fmt, "f_var_cdesc"):
-                    fmt.f_cdesc_shape = wformat("\n{f_var_cdesc}%shape(1:{rank}) = shape({f_var})", fmt)
         elif dim:
             visitor = ToDimension(cls, fcn, fmt)
             visitor.visit(dim)
@@ -710,23 +706,12 @@ class FillFormat(object):
             if rank != "assumed" and rank > 0:
                 fmt.f_assumed_shape = fortran_ranks[rank]
                 fmt.i_dimension = "(*)"
-                # XXX use f_var_cdesc since shape is assigned in C
-                fmt.f_array_allocate = "(" + ",".join(visitor.shape) + ")"
                 if meta["deref"] in ["allocatable","pointer"]:
                     fmt.f_dimension = fmt.f_assumed_shape
                 elif visitor.compute_shape:
                     fmt.f_dimension = fmt.f_assumed_shape
                 else:
-                    fmt.f_dimension = fmt.f_array_allocate
-                if hasattr(fmt, "f_var_cdesc"):
-                    # XXX kludge, name is assumed to be f_var_cdesc.
-                    fmt.f_cdesc_shape = wformat("\n{f_var_cdesc}%shape(1:{rank}) = shape({f_var})", fmt)
-                    # XXX - maybe avoid {rank} with: {f_var_cdes}(:rank({f_var})) = shape({f_var})
-                    fmt.f_array_allocate = "(" + ",".join(
-                        ["{0}%shape({1})".format(fmt.f_var_cdesc, r)
-                         for r in range(1, rank+1)]) + ")"
-                    fmt.f_array_shape = wformat(
-                        ",\t {f_var_cdesc}%shape(1:{rank})", fmt)
+                    fmt.f_dimension = "(" + ",".join(visitor.shape) + ")"
 
     def apply_helpers_from_stmts(self, node, bind):
         """

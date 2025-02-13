@@ -18884,7 +18884,6 @@
                                                 "cxx_nonconst_ptr": "out",
                                                 "cxx_type": "double",
                                                 "cxx_var": "out",
-                                                "f_array_allocate": "(shape(in))",
                                                 "f_assumed_shape": "(:)",
                                                 "f_dimension": "(:)",
                                                 "f_intent": "OUT",

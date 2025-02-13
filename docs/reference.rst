@@ -1656,15 +1656,15 @@ default_value
 
 .. XXX - only defined for native types (integer, real)    
 
-f_array_allocate
-    Fortran shape expression used with ``ALLOCATE`` statement when
-    *dimension* attribute is set.
-    For example, attribute  *+dimension(10)* will create ``(10)``.
-
-f_array_shape
+gen.c_f_pointer_shape
    Shape of array for use with ``c_f_pointer``.
    For example, attribute *+dimension(10)* will create``,\t SHT_rv_cdesc%shape(1:1)``.
    The leading comma is used since scalar will not add a ``SHAPE`` argument to ``c_f_pointer``.
+
+gen.f_allocate_shape
+    Fortran shape expression used with ``ALLOCATE`` statement when
+    *dimension* attribute is set.
+    For example, attribute  *+dimension(10)* will create ``(10)``.
 
 f_assumed_shape
    Set when *rank* attribute is set to the corresponding shape.
@@ -1677,7 +1677,7 @@ f_capsule_data_type
     The name of the derived type used to share memory information with C or C++.
     *F_capsule_data_type* for the argument type.
 
-f_cdesc_shape
+gen.f_cdesc_shape
     Used to assign the rank of a Fortran variable to a cdesc variable.
     It will be blank for a scalar.
     ex: ``\nSHT_arg_cdesc%shape(1:1) = shape(arg)``
