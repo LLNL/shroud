@@ -468,9 +468,9 @@
                         },
                         "name": {
                             "fmtdict": {
+                                "attr_len": "worklen",
                                 "c_abstract_decl": "char *",
                                 "c_addr": "",
-                                "c_char_len": "worklen",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -534,9 +534,9 @@
                         },
                         "name": {
                             "fmtdict": {
+                                "attr_len": "worklen",
                                 "c_abstract_decl": "char *",
                                 "c_addr": "",
-                                "c_char_len": "worklen",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_helper_char_alloc": "ShroudCharAlloc",

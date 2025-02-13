@@ -1413,6 +1413,11 @@ underscore_name
 Argument
 ^^^^^^^^
 
+attr_len
+  The value of the *len* attribute.
+  It willl be evalued in the C wrapper.
+  Defaults to 0 to indicate no length given.
+
 c_abstract_decl
   Includes the declaration and any declarators.
   For example, ``double *``.
@@ -1425,11 +1430,6 @@ c_array_size
 
 c_array_size2
   The *dimension* attributes multiplied together.
-
-c_char_len
-  The value of the *len* attribute.
-  It willl be evalued in the C wrapper.
-  Defaults to 0 to indicate no length given.
 
 c_blanknull
    Used as argument to ``ShroudStrAlloc`` to determine if a

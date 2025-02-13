@@ -700,6 +700,8 @@ class LibraryNode(AstNode, NamespaceMixin):
         C_prefix = self.library.upper()[:3] + "_"  # function prefix
         fmt_library = util.Scope(
             parent=None,
+            attr_len="0",      # +len(n) attribute
+
             C_bufferify_suffix="_bufferify",
             C_cfi_suffix="_CFI",
             C_call_list="",
@@ -739,7 +741,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             c_blanknull="0",     # Argument to helper ShroudStrAlloc.
             c_array_shape="",
             c_array_size="1",
-            c_char_len="0",      # deferred length
             # Assume scalar in CFI_establish
             c_temp_extents_decl="",
             c_temp_extents_use="NULL",
