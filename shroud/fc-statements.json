@@ -1144,6 +1144,23 @@
         ]
     },
     {
+        "name": "f_mixin_template_native_arg1",
+        "notes": [
+            "Declare an dummy argument for the first template argument."
+        ],
+        "f_dummy_arg": [
+            "{f_var}"
+        ],
+        "f_dummy_decl": [
+            "{targs[0].f_type}{f_intent_attr}{f_target_attr} :: {f_var}{f_assumed_shape}"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "{targs[0].f_kind}"
+            ]
+        }
+    },
+    {
         "name": "f_mixin_in_vector_buf",
         "comments": [
             "Pass argument and size by value to C."
@@ -3349,21 +3366,17 @@
         "comments": [
             "Copy std::vector into user's memory."
         ],
-        "f_dummy_arg": [
-            "{f_var}"
-        ],
-        "f_dummy_decl": [
-            "{targs[0].f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}"
-        ],
         "f_post_call": [
             "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
         ],
         "f_module": {
             "iso_c_binding": [
-                "{targs[0].f_kind}",
                 "C_SIZE_T",
                 "C_LOC"
             ]
+        },
+        "fmtdict": {
+            "f_target_attr": ", target"
         },
         "helper": [
             "copy_array",
@@ -3410,6 +3423,7 @@
             "c_out_vector<native>*_cdesc"
         ],
         "mixin": [
+            "f_mixin_template_native_arg1",
             "f_mixin_cdesc_pass",
             "f_mixin_out_vector<native>_copy",
             "c_mixin_new_vector<native>",
@@ -3425,6 +3439,7 @@
             "c_out_vector<native>&_cdesc"
         ],
         "mixin": [
+            "f_mixin_template_native_arg1",
             "f_mixin_cdesc_pass",
             "f_mixin_out_vector<native>_copy",
             "c_mixin_new_vector<native>",
