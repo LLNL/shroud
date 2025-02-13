@@ -41,6 +41,7 @@ The tests are in the ``tests`` directory.
 
 Run a single unittest:
 
+    cd tests
     ../build/temp.linux-x86_64-3.7/venv/bin/python test_declast.py CheckParse.test_inheritance
 
 Running a single Python unit test.

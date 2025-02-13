@@ -7312,7 +7312,7 @@ f_function_native*_cdesc_allocatable:
   f_call:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
-  - allocate({f_var}{f_array_allocate})
+  - allocate({f_var}{gen.f_allocate_shape})
   - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\
     \ kind=C_SIZE_T))"
   - call {f_helper_capsule_dtor}({f_var_capsule})
@@ -7391,7 +7391,7 @@ f_function_native*_cdesc_pointer:
   f_call:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
-  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{gen.c_f_pointer_shape})"
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -7457,7 +7457,7 @@ f_function_native*_cdesc_pointer_caller:
   f_call:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
-  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{gen.c_f_pointer_shape})"
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -11646,7 +11646,7 @@ f_function_struct*_cdesc_pointer:
   f_call:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
-  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{gen.c_f_pointer_shape})"
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -11885,7 +11885,7 @@ f_getter_native*_cdesc_pointer:
   f_call:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
-  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{gen.c_f_pointer_shape})"
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -12018,7 +12018,7 @@ f_getter_struct**_cdesc_raw:
   f_call:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
-  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{gen.c_f_pointer_shape})"
   f_module:
     iso_c_binding:
     - C_PTR
@@ -12076,7 +12076,7 @@ f_getter_struct*_cdesc_pointer:
   f_call:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
-  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{gen.c_f_pointer_shape})"
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -15370,7 +15370,7 @@ f_mixin_allocate:
   comments:
   - Allocate Fortran variable.
   f_post_call:
-  - allocate({f_var}{f_array_allocate})
+  - allocate({f_var}{gen.f_allocate_shape})
   owner: library
 f_mixin_arg-call-fvar:
   name: f_mixin_arg-call-fvar
@@ -15660,7 +15660,7 @@ f_mixin_cdesc_native_pointer:
   f_dummy_decl:
   - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
   f_post_call:
-  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{gen.c_f_pointer_shape})"
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -15675,7 +15675,7 @@ f_mixin_cdesc_native_raw:
   f_dummy_decl:
   - 'type(C_PTR), pointer :: {f_var}{f_assumed_shape}'
   f_post_call:
-  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{gen.c_f_pointer_shape})"
   f_module:
     iso_c_binding:
     - C_PTR
@@ -15691,7 +15691,7 @@ f_mixin_cdesc_out_native_pointer:
   f_dummy_decl:
   - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
   f_post_call:
-  - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})
+  - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{gen.c_f_pointer_shape})
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -17043,7 +17043,7 @@ f_out_native*&_cdesc:
   f_arg_call:
   - '{f_var_cdesc}'
   f_post_call:
-  - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})
+  - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{gen.c_f_pointer_shape})
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -17099,7 +17099,7 @@ f_out_native*&_cdesc_pointer:
   f_arg_call:
   - '{f_var_cdesc}'
   f_post_call:
-  - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})
+  - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{gen.c_f_pointer_shape})
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -17196,7 +17196,7 @@ f_out_native**_cdesc_allocatable:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
   f_post_call:
-  - allocate({f_var}{f_array_allocate})
+  - allocate({f_var}{gen.f_allocate_shape})
   - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\
     \ kind=C_SIZE_T))"
   - call {f_helper_capsule_dtor}({f_var_capsule})
@@ -17281,7 +17281,7 @@ f_out_native**_cdesc_pointer:
   f_arg_call:
   - '{f_var_cdesc}'
   f_post_call:
-  - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})
+  - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{gen.c_f_pointer_shape})
   f_module:
     '{f_module_name}':
     - '{f_kind}'

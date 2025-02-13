@@ -583,7 +583,7 @@
             "Allocate Fortran variable."
         ],
         "f_post_call": [
-            "allocate({f_var}{f_array_allocate})"
+            "allocate({f_var}{gen.f_allocate_shape})"
         ]
     },
     {
@@ -1006,7 +1006,7 @@
             "{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}"
         ],
         "f_post_call": [
-            "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
+            "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{gen.c_f_pointer_shape})"
         ],
         "f_module": {
             "{f_module_name}": [
@@ -1029,7 +1029,7 @@
             "type(C_PTR), pointer :: {f_var}{f_assumed_shape}"
         ],
         "f_post_call": [
-            "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
+            "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{gen.c_f_pointer_shape})"
         ],
         "f_module": {
             "iso_c_binding": [
@@ -1050,7 +1050,7 @@
             "{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}"
         ],
         "f_post_call": [
-            "call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})"
+            "call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{gen.c_f_pointer_shape})"
         ],
         "f_module": {
             "{f_module_name}": [

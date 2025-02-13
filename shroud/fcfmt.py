@@ -1161,7 +1161,7 @@ class FormatCXXdecl(object):
     def __str__(self):
         decl = self.state.ast.to_string_declarator(abstract=True)
         return decl
-            
+
 class FormatCIdecl(object):
     """
     Return a declaration used by the C interface.
@@ -1213,6 +1213,34 @@ class FormatGen(object):
     @property
     def name(self):
         return self.state.ast.declarator.user_name
+
+    @property
+    def f_allocate_shape(self):
+        """Shape to use with ALLOCATE statement.
+        Blank if scalar.
+        """
+        f_var_cdesc = self.state.fmtdict.get("f_var_cdesc", "===>f_var_cdesc<===")
+        rank = int(self.state.fmtdict.get("rank", 0))
+        if rank == 0:
+            value = ""
+        else:
+            value = "(" + ",".join(
+                ["{0}%shape({1})".format(f_var_cdesc, r)
+                 for r in range(1, rank+1)]) + ")"
+        return value
+
+    @property
+    def c_f_pointer_shape(self):
+        """Shape for C_F_POINTER intrinsic.
+        Blank for scalars.
+        """
+        f_var_cdesc = self.state.fmtdict.get("f_var_cdesc", "===>f_var_cdesc<===")
+        rank = self.state.fmtdict.get("rank", "0")
+        if int(rank) == 0:
+            value = ""
+        else:
+            value = ",\t {0}%shape(1:{1})".format(f_var_cdesc, rank)
+        return value
 
     def __str__(self):
         """  "{gen}" returns the name"""

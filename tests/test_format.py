@@ -158,6 +158,54 @@ class WFormat(unittest.TestCase):
         self.assertEqual("std::vector<int> *===>xxx<===",
                          fmtarg.cxxdecl.xxx)
     
+    def test_arg_dimension(self):
+        library = ast.LibraryNode()
+        func = library.add_function(
+            "void DimensionIn(const int *arg +dimension(10,20))")
+
+        arg = func.ast.declarator.params[0]
+
+        # Empty fmtdict
+        fmt_var = util.Scope(None)
+        fmtarg = fcfmt.FormatGen(func, arg, fmt_var, "c")
+        self.assertEqual("",
+                         fmtarg.f_allocate_shape)
+        self.assertEqual("",
+                         fmtarg.c_f_pointer_shape)
+
+        # No f_var_cdesc
+        fmt_var = util.Scope(
+            None,
+            rank=1,
+        )
+        fmtarg = fcfmt.FormatGen(func, arg, fmt_var, "c")
+        self.assertEqual("(===>f_var_cdesc<===%shape(1))",
+                         fmtarg.f_allocate_shape)
+        self.assertEqual(",\t ===>f_var_cdesc<===%shape(1:1)",
+                         fmtarg.c_f_pointer_shape)
+
+        # scalar
+        fmt_var = util.Scope(
+            None,
+            rank=0,
+        )
+        fmtarg = fcfmt.FormatGen(func, arg, fmt_var, "c")
+        self.assertEqual("",
+                         fmtarg.f_allocate_shape)
+        self.assertEqual("",
+                         fmtarg.c_f_pointer_shape)
+        # 2-d array
+        fmt_var = util.Scope(
+            None,
+            rank=2,
+            f_var_cdesc="SHT_arg_cdesc",
+        )
+        fmtarg = fcfmt.FormatGen(func, arg, fmt_var, "c")
+        self.assertEqual("(SHT_arg_cdesc%shape(1),SHT_arg_cdesc%shape(2))",
+                         fmtarg.f_allocate_shape)
+        self.assertEqual(",\t SHT_arg_cdesc%shape(1:2)",
+                         fmtarg.c_f_pointer_shape)
+
 if __name__ == "__main__":
     unittest.main()
         
