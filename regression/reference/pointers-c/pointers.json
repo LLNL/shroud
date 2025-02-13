@@ -7337,7 +7337,6 @@
                                 "f_type": "character(len=*)",
                                 "f_var": "name",
                                 "fc_var": "name",
-                                "i_dimension": "(*)",
                                 "i_intent": "IN",
                                 "i_intent_attr": ", intent(IN)",
                                 "i_kind": "C_CHAR",
