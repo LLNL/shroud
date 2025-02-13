@@ -578,6 +578,24 @@
         "name":"#### memory mixin ##########################################"
     },
     {
+        "name": "f_mixin_allocate",
+        "comments": [
+            "Allocate Fortran variable."
+        ],
+        "f_post_call": [
+            "allocate({f_var}{f_array_allocate})"
+        ]
+    },
+    {
+        "name": "f_mixin_deallocate",
+        "notes": [
+            "Use before an allocate with intent(inout)."
+        ],
+        "f_post_call": [
+            "if (allocated({f_var})) deallocate({f_var})"
+        ]
+    },
+    {
         "name": "c_mixin_delete-cxx-variable",
         "comments": [
             "Delete the cxx variable."
@@ -950,14 +968,22 @@
         ]
     },
     {
+        "name": "f_mixin_cdesc_allocate_1d",
+        "comments": [
+            "Allocate 1-D Fortran variable."
+        ],
+        "f_post_call": [
+            "allocate({f_var}({f_var_cdesc}%size))"
+        ]
+    },
+    {
         "name": "f_mixin_cdesc_native_allocate",
         "comments": [
             "Allocate Fortran native array, then fill from cdesc",
             "using helper copy_array."
         ],
         "f_post_call": [
-            "allocate({f_var}{f_array_allocate})",
-            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\t kind=C_SIZE_T))"
+            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var}, kind=C_SIZE_T))"
         ],
         "f_module": {
             "iso_c_binding": [
@@ -1656,6 +1682,7 @@
             "f_mixin_declare-local-variable",
             "f_mixin_cdesc_pass",
             "c_mixin_cdesc_native_fill",
+            "f_mixin_allocate",
             "f_mixin_cdesc_native_allocate",
             "f_mixin_capsule_use"
         ]
@@ -3477,20 +3504,11 @@
             "f_mixin_function-to-subroutine",
             "f_mixin_template_native_arg1",
             "f_mixin_cdesc_pass",
+            "f_mixin_cdesc_allocate_1d",
+            "f_mixin_cdesc_native_allocate",
             "c_mixin_destructor_new-vector",
             "c_mixin_cdesc_vector_fill"
         ],
-        "f_post_call": [
-            "allocate({f_var}({f_var_cdesc}%size))",
-            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
-        ],
-        "f_module": {
-            "iso_c_binding": [
-                "{targs[0].f_kind}",
-                "C_LOC",
-                "C_SIZE_T"
-            ]
-        },
         "c_pre_call": [
             "{c_const}std::vector<{cxx_T}>\t *{c_local_cxx} = new std::vector<{cxx_T}>;"
         ],
@@ -3499,13 +3517,6 @@
         ],
         "c_local": [
             "cxx"
-        ],
-        "fmtdict": {
-            "f_target_attr": ", target"
-        },
-        "helper": [
-            "copy_array",
-            "type_defines"
         ]
     },
     {
@@ -3567,24 +3578,12 @@
         "mixin": [
             "f_mixin_dummy_arg",
             "f_mixin_template_native_arg1",
+            "f_mixin_deallocate",
+            "f_mixin_cdesc_allocate_1d",
+            "f_mixin_cdesc_native_allocate",
             "c_mixin_inout_vector<native>_cdesc",
             "c_mixin_arg-call-cxx-deref"
-        ],
-        "append": {
-            "f_module": {
-                "iso_c_binding": [
-                    "C_LOC"
-                ]
-            }
-        },
-        "f_post_call": [
-            "if (allocated({f_var})) deallocate({f_var})",
-            "allocate({f_var}({f_var_cdesc}%size))",
-            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
-        ],
-        "fmtdict": {
-            "f_target_attr": ", target"
-        }
+        ]
     },
     {
         "name":"##### vector string mixin ##################################"

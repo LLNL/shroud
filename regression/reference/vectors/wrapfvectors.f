@@ -737,7 +737,7 @@ contains
         if (allocated(arg)) deallocate(arg)
         allocate(arg(SHT_arg_cdesc%size))
         call VEC_SHROUD_copy_array(SHT_arg_cdesc, C_LOC(arg), &
-            size(arg,kind=C_SIZE_T))
+            size(arg, kind=C_SIZE_T))
         ! splicer end function.vector_iota_inout_alloc
     end subroutine vector_iota_inout_alloc
     ! end vector_iota_inout_alloc
@@ -920,7 +920,7 @@ contains
         call c_return_vector_alloc_bufferify(n, SHT_rv_cdesc)
         allocate(SHT_rv(SHT_rv_cdesc%size))
         call VEC_SHROUD_copy_array(SHT_rv_cdesc, C_LOC(SHT_rv), &
-            size(SHT_rv,kind=C_SIZE_T))
+            size(SHT_rv, kind=C_SIZE_T))
         ! splicer end function.return_vector_alloc
     end function return_vector_alloc
 

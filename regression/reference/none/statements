@@ -7270,6 +7270,7 @@ f_function_native*_cdesc_allocatable:
   - Declare a Fortran variable.
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from native in the C wrapper.
+  - Allocate Fortran variable.
   - Allocate Fortran native array, then fill from cdesc
   - using helper copy_array.
   - Pass capsule as argument to C wrapper.
@@ -7289,7 +7290,7 @@ f_function_native*_cdesc_allocatable:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - allocate({f_var}{f_array_allocate})
-  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\t\
+  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\
     \ kind=C_SIZE_T))"
   - call {f_helper_capsule_dtor}({f_var_capsule})
   f_module:
@@ -7308,6 +7309,7 @@ f_function_native*_cdesc_allocatable:
   - '  f_mixin_declare-local-variable'
   - '  f_mixin_cdesc_pass'
   - '  c_mixin_cdesc_native_fill'
+  - '  f_mixin_allocate'
   - '  f_mixin_cdesc_native_allocate'
   - '  f_mixin_capsule_use'
   - '    f_mixin_capsule_pass'
@@ -11683,6 +11685,9 @@ f_function_vector<native>_cdesc_allocatable:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
+  - Allocate 1-D Fortran variable.
+  - Allocate Fortran native array, then fill from cdesc
+  - using helper copy_array.
   - Fill cdesc with vector information.
   - Return address and size of vector data.
   notes:
@@ -11699,7 +11704,8 @@ f_function_vector<native>_cdesc_allocatable:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - allocate({f_var}({f_var_cdesc}%size))
-  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\
+    \ kind=C_SIZE_T))"
   f_module:
     iso_c_binding:
     - '{targs[0].f_kind}'
@@ -11713,6 +11719,8 @@ f_function_vector<native>_cdesc_allocatable:
   - '    c_mixin_as-intent-out'
   - '  f_mixin_template_native_arg1'
   - '  f_mixin_cdesc_pass'
+  - '  f_mixin_cdesc_allocate_1d'
+  - '  f_mixin_cdesc_native_allocate'
   - '  c_mixin_destructor_new-vector'
   - '  c_mixin_cdesc_vector_fill'
   i_dummy_arg:
@@ -11740,8 +11748,11 @@ f_function_vector<native>_cdesc_allocatable:
   c_local:
   - cxx
   fmtdict:
+    i_intent: OUT
+    i_intent_attr: ', intent(OUT)'
     f_target_attr: ', target'
   helper:
+  - array_context
   - copy_array
   - type_defines
   destructor_name: std_vector_{cxx_T}
@@ -15071,6 +15082,9 @@ f_inout_vector<native>&_cdesc_allocatable:
   name: f_inout_vector<native>&_cdesc_allocatable
   intent: inout
   comments:
+  - Allocate 1-D Fortran variable.
+  - Allocate Fortran native array, then fill from cdesc
+  - using helper copy_array.
   - Declare local Fortran array_type argument.
   - Accept array_type in C wrapper.
   - Fill cdesc with vector information.
@@ -15089,17 +15103,22 @@ f_inout_vector<native>&_cdesc_allocatable:
   f_post_call:
   - if (allocated({f_var})) deallocate({f_var})
   - allocate({f_var}({f_var_cdesc}%size))
-  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\
+    \ kind=C_SIZE_T))"
   f_module:
     iso_c_binding:
     - '{targs[0].f_kind}'
-    - C_SIZE_T
     - C_LOC
+    - C_SIZE_T
+    - C_SIZE_T
   f_temps:
   - cdesc
   mixin_names:
   - '  f_mixin_dummy_arg'
   - '  f_mixin_template_native_arg1'
+  - '  f_mixin_deallocate'
+  - '  f_mixin_cdesc_allocate_1d'
+  - '  f_mixin_cdesc_native_allocate'
   - '  c_mixin_inout_vector<native>_cdesc'
   - '    f_mixin_cdesc_inout_array'
   - '    c_mixin_cdesc_inout_vector'
@@ -15144,6 +15163,7 @@ f_inout_vector<native>&_cdesc_allocatable:
   fmtdict:
     f_target_attr: ', target'
   helper:
+  - copy_array
   - array_context
   - array_context
   - type_defines
@@ -15315,6 +15335,14 @@ f_inout_void*_cdesc:
   - array_context
   - type_defines
   owner: library
+f_mixin_allocate:
+  name: f_mixin_allocate
+  intent: mixin
+  comments:
+  - Allocate Fortran variable.
+  f_post_call:
+  - allocate({f_var}{f_array_allocate})
+  owner: library
 f_mixin_arg-call-fvar:
   name: f_mixin_arg-call-fvar
   intent: mixin
@@ -15455,6 +15483,14 @@ f_mixin_capsule_use:
   - array_context
   - capsule_dtor
   owner: library
+f_mixin_cdesc_allocate_1d:
+  name: f_mixin_cdesc_allocate_1d
+  intent: mixin
+  comments:
+  - Allocate 1-D Fortran variable.
+  f_post_call:
+  - allocate({f_var}({f_var_cdesc}%size))
+  owner: library
 f_mixin_cdesc_char_allocate:
   name: f_mixin_cdesc_char_allocate
   intent: mixin
@@ -15544,8 +15580,7 @@ f_mixin_cdesc_native_allocate:
   - Allocate Fortran native array, then fill from cdesc
   - using helper copy_array.
   f_post_call:
-  - allocate({f_var}{f_array_allocate})
-  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\t\
+  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\
     \ kind=C_SIZE_T))"
   f_module:
     iso_c_binding:
@@ -15740,6 +15775,12 @@ f_mixin_character-deferred-length:
   intent: mixin
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
+  owner: library
+f_mixin_deallocate:
+  name: f_mixin_deallocate
+  intent: mixin
+  f_post_call:
+  - if (allocated({f_var})) deallocate({f_var})
   owner: library
 f_mixin_declare-arg-char:
   name: f_mixin_declare-arg-char
@@ -20359,6 +20400,7 @@ root
         cdesc -- f_inout_void*_cdesc
       void** -- f_inout_void**
     mixin
+      allocate -- f_mixin_allocate
       arg-call-fvar -- f_mixin_arg-call-fvar
       as-intent-out -- f_mixin_as-intent-out
       capsule
@@ -20369,6 +20411,8 @@ root
         pass -- f_mixin_capsule_pass
         use -- f_mixin_capsule_use
       cdesc
+        allocate
+          1d -- f_mixin_cdesc_allocate_1d
         char
           allocate -- f_mixin_cdesc_char_allocate
           fill -- f_mixin_cdesc_char_fill
@@ -20395,6 +20439,7 @@ root
         pass
           character -- f_mixin_cfi_pass_character
       character-deferred-length -- f_mixin_character-deferred-length
+      deallocate -- f_mixin_deallocate
       declare-arg-char -- f_mixin_declare-arg-char
       declare-as-cptr -- f_mixin_declare-as-cptr
       declare-character-arg -- f_mixin_declare-character-arg
