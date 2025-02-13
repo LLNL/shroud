@@ -86,14 +86,6 @@ static void ShroudStrArrayFree(char **src, int nsrc)
     std::free(src);
 }
 
-// helper char_blank_fill
-// blank fill dest starting at trailing NULL.
-static void ShroudCharBlankFill(char *dest, int ndest)
-{
-    int nm = std::strlen(dest);
-    if(ndest > nm) std::memset(dest+nm,' ',ndest-nm);
-}
-
 // helper ShroudCharCopy
 // Copy src into dest, blank fill to ndest characters
 // Truncate if dest is too short.
@@ -289,7 +281,7 @@ void CHA_passCharPtrInOut_CFI(CFI_cdesc_t *SHT_s_cfi)
     size_t SHT_s_len = SHT_s_cfi->elem_len;
     char *SHC_s_cxx = ShroudCharAlloc(s, SHT_s_len, 0);
     passCharPtrInOut(SHC_s_cxx);
-    ShroudCharBlankFill(s, SHT_s_len);
+    ShroudCharCopy(s, SHT_s_len, SHC_s_cxx, -1);
     ShroudCharFree(SHC_s_cxx);
     // splicer end function.passCharPtrInOut_CFI
 }

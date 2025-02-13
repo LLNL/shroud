@@ -282,7 +282,7 @@ class FillFormat(object):
             fmt_result.C_return_type = gen_arg_as_c(
                 ast, name=False, add_params=False, lang=maplang[wlang])
         self.name_temp_vars(fmt_result.C_result, bind, "c")
-        self.apply_c_helpers_from_stmts(node, bind)
+        self.apply_helpers_from_stmts(node, bind)
         statements.apply_fmtdict_from_stmts(bind)
         self.find_idtor(node.ast, result_typemap, bind)
         self.set_fmt_fields_c(wlang, cls, node, ast, result_typemap, bind, True)
@@ -300,7 +300,7 @@ class FillFormat(object):
         #       but set by set_fmt_fields
         self.name_temp_vars(arg_name, bind, "c")
         self.set_fmt_fields_c(wlang, cls, node, arg, arg_typemap, bind, False)
-        self.apply_c_helpers_from_stmts(node, bind)
+        self.apply_helpers_from_stmts(node, bind)
         statements.apply_fmtdict_from_stmts(bind)
 
         # prototype:  vector<int> -> int *
@@ -731,23 +731,10 @@ class FillFormat(object):
             # A string becomes an array of CHARACTER.
             fmt.i_dimension = "(*)"
 
-        if "len" in f_attrs:
-            fmt.f_char_len = "len=%s" % f_attrs["len"];
-        elif hasattr(fmt, "f_var_cdesc"):
+        if hasattr(fmt, "f_var_cdesc"):
             if meta["deref"] == "allocatable":
                 # Use elem_len from the C wrapper.
                 fmt.f_char_type = wformat("character(len={f_var_cdesc}%elem_len) ::\t ", fmt)
-
-    def apply_c_helpers_from_stmts(self, node, bind):
-        """
-        Parameters:
-          node - ast.FunctionNode
-          bind - statements.BindArg
-        """
-        stmt = bind.stmt
-        fmt = bind.fmtdict
-        node_helpers = node.helpers.setdefault("c", {})
-        add_c_helper(node_helpers, stmt.c_helper, fmt)
 
     def apply_helpers_from_stmts(self, node, bind):
         """
@@ -757,36 +744,26 @@ class FillFormat(object):
         """
         stmt = bind.stmt
         fmt = bind.fmtdict
-        node_helpers = node.helpers.setdefault("c", {})
-        add_c_helper(node_helpers, stmt.c_helper, fmt)
-        node_helpers = node.helpers.setdefault("f", {})
-        add_f_helper(node_helpers, stmt.f_helper, fmt)
+        node_helpers = node.helpers.setdefault("fc", {})
+        add_fc_helper(node_helpers, stmt.helper, fmt)
         
-def add_c_helper(node_helpers, helpers, fmt):
-    """Add a list of C helpers.
-    Add fmt.c_helper_{c_fmtname} for use by pre_call and post_call.
-    """
-    for c_helper in helpers:
-        helper = wformat(c_helper, fmt)
-        helper_info = statements.lookup_fc_helper(helper, "c_helper")
-        if helper_info.name != "h_mixin_unknown":
-            node_helpers[helper] = True
-            fmtname = helper_info.c_fmtname
-            if fmtname:
-                setattr(fmt, "c_helper_" + helper, fmtname)
-
-def add_f_helper(node_helpers, helpers, fmt):
-    """Add a list of Fortran helpers.
-    Add fmt.f_helper_{f_fmtname} for use by pre_call and post_call.
+def add_fc_helper(node_helpers, helpers, fmt):
+    """Add a list of Fortran and C helpers.
+    Add format variable  for use by pre_call and post_call.
+    C:       fmt.c_helper_{c_fmtname}
+    Fortran: fmt.f_helper_{f_fmtname}
     """
     for f_helper in helpers:
         helper = wformat(f_helper, fmt)
-        helper_info = statements.lookup_fc_helper(helper, "f_helper")
+        helper_info = statements.lookup_fc_helper(helper, "helper")
         if helper_info.name != "h_mixin_unknown":
             node_helpers[helper] = True
             fmtname = helper_info.f_fmtname
             if fmtname:
                 setattr(fmt, "f_helper_" + helper, fmtname)
+            fmtname = helper_info.c_fmtname
+            if fmtname:
+                setattr(fmt, "c_helper_" + helper, fmtname)
 
 
 ######################################################################

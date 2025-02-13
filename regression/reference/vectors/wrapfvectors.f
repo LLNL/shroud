@@ -566,6 +566,17 @@ module vectors_mod
     end interface
 
     interface
+        ! helper cdesc_vector_string_allocatable
+        ! Copy the char* or std::string in context into c_var.
+        subroutine VEC_SHROUD_cdesc_vector_string_allocatable(dest, src) &
+             bind(c,name="VEC_CDescShroudVectorStringAllocatable")
+            import VEC_SHROUD_capsule_data, VEC_SHROUD_array
+            type(VEC_SHROUD_array), intent(IN) :: dest
+            type(VEC_SHROUD_capsule_data), intent(IN) :: src
+        end subroutine VEC_SHROUD_cdesc_vector_string_allocatable
+    end interface
+
+    interface
         ! helper copy_array
         ! Copy contents of context into c_var.
         subroutine VEC_SHROUD_copy_array(context, c_var, c_var_size) &
@@ -576,17 +587,6 @@ module vectors_mod
             type(C_PTR), intent(IN), value :: c_var
             integer(C_SIZE_T), value :: c_var_size
         end subroutine VEC_SHROUD_copy_array
-    end interface
-
-    interface
-        ! helper vector_string_allocatable
-        ! Copy the char* or std::string in context into c_var.
-        subroutine VEC_SHROUD_vector_string_allocatable(dest, src) &
-             bind(c,name="VEC_ShroudVectorStringAllocatable")
-            import VEC_SHROUD_capsule_data, VEC_SHROUD_array
-            type(VEC_SHROUD_array), intent(IN) :: dest
-            type(VEC_SHROUD_capsule_data), intent(IN) :: src
-        end subroutine VEC_SHROUD_vector_string_allocatable
     end interface
 
     ! splicer begin additional_declarations
@@ -863,7 +863,7 @@ contains
     ! Statement: f_out_vector<string>&_cdesc_allocatable
     subroutine vector_string_fill_allocatable(arg)
         use iso_c_binding, only : C_LOC
-        character(:), intent(OUT), allocatable, target :: arg(:)
+        character(len=:), intent(OUT), allocatable, target :: arg(:)
         ! splicer begin function.vector_string_fill_allocatable
         type(VEC_SHROUD_array) :: SHT_arg_cdesc
         type(VEC_SHROUD_capsule_data) :: SHT_arg_capsule
@@ -872,7 +872,7 @@ contains
         allocate(character(len=SHT_arg_cdesc%elem_len) :: &
             arg(SHT_arg_cdesc%size))
         SHT_arg_cdesc%base_addr = C_LOC(arg)
-        call VEC_SHROUD_vector_string_allocatable(SHT_arg_cdesc, SHT_arg_capsule)
+        call VEC_SHROUD_cdesc_vector_string_allocatable(SHT_arg_cdesc, SHT_arg_capsule)
         call VEC_SHROUD_capsule_dtor(SHT_arg_capsule)
         ! splicer end function.vector_string_fill_allocatable
     end subroutine vector_string_fill_allocatable
@@ -885,15 +885,16 @@ contains
     ! Statement: f_out_vector<string>&_cdesc_allocatable
     subroutine vector_string_fill_allocatable_len(arg)
         use iso_c_binding, only : C_LOC
-        character(len=20), intent(OUT), allocatable, target :: arg(:)
+        character(len=:), intent(OUT), allocatable, target :: arg(:)
         ! splicer begin function.vector_string_fill_allocatable_len
         type(VEC_SHROUD_array) :: SHT_arg_cdesc
         type(VEC_SHROUD_capsule_data) :: SHT_arg_capsule
         call c_vector_string_fill_allocatable_len_bufferify(SHT_arg_cdesc, &
             SHT_arg_capsule)
-        allocate(arg(SHT_arg_cdesc%size))
+        allocate(character(len=SHT_arg_cdesc%elem_len) :: &
+            arg(SHT_arg_cdesc%size))
         SHT_arg_cdesc%base_addr = C_LOC(arg)
-        call VEC_SHROUD_vector_string_allocatable(SHT_arg_cdesc, SHT_arg_capsule)
+        call VEC_SHROUD_cdesc_vector_string_allocatable(SHT_arg_cdesc, SHT_arg_capsule)
         call VEC_SHROUD_capsule_dtor(SHT_arg_capsule)
         ! splicer end function.vector_string_fill_allocatable_len
     end subroutine vector_string_fill_allocatable_len

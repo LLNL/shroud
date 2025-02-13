@@ -934,9 +934,6 @@ class FillMetaShare(FillMeta):
             if ntypemap.base == "vector":
                 # default to 1-d assumed shape
                 meta["rank"] = 1
-            elif ntypemap.name == 'char' and is_ptr == 2:
-                # 'char **' -> CHARACTER(*) s(:)
-                meta["rank"] = 1
 
         owner = attrs.get("owner", missing)
         if owner is not missing:

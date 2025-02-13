@@ -10651,7 +10651,7 @@
                     "description": "Like returnIntRaw but with another argument to force a wrapper.\nUses fc_statements f_function_native_*_raw.\n"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_alloc",
                         "char_free"
                     ]

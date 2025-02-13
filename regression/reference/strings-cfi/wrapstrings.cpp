@@ -1041,10 +1041,10 @@ void STR_fetchArrayStringArg(char **strs, int *nstrs)
 void STR_fetchArrayStringArg_CFI(CFI_cdesc_t *SHT_strs_cfi)
 {
     // splicer begin function.fetchArrayStringArg_CFI
-    std::string *SHC_strs_cxx;
+    std::string *strs;
     int nstrs;
-    fetchArrayStringArg(&SHC_strs_cxx, &nstrs);
-    // Copy results into strs
+    fetchArrayStringArg(&strs, &nstrs);
+    STR_ShroudCFIArrayStringOut(SHT_strs_cfi, strs, nstrs);
     // splicer end function.fetchArrayStringArg_CFI
 }
 
@@ -1095,10 +1095,23 @@ void STR_fetchArrayStringAlloc(char **strs, int *nstrs)
 void STR_fetchArrayStringAlloc_CFI(CFI_cdesc_t *SHT_strs_cfi)
 {
     // splicer begin function.fetchArrayStringAlloc_CFI
-    std::string *SHC_strs_cxx;
+    std::string *strs;
     int nstrs;
-    fetchArrayStringAlloc(&SHC_strs_cxx, &nstrs);
-    // Allocate and copy into strs
+    fetchArrayStringAlloc(&strs, &nstrs);
+    size_t SHT_strs_len = 0;
+    if (SHT_strs_len <= 0) {
+        SHT_strs_len = STR_ShroudArrayStringOutSize(strs, nstrs);
+    }
+    if (strs != nullptr) {
+        CFI_index_t SHT_strs_lower[1] = {1};
+        CFI_index_t SHT_strs_extents[1];
+        SHT_strs_extents[0] = nstrs;
+        int SH_ret = CFI_allocate(SHT_strs_cfi, SHT_strs_lower, 
+            SHT_strs_extents, SHT_strs_len);
+        if (SH_ret == CFI_SUCCESS) {
+            STR_ShroudCFIArrayStringOut(SHT_strs_cfi, strs, nstrs);
+        }
+    }
     // splicer end function.fetchArrayStringAlloc_CFI
 }
 
@@ -1149,10 +1162,23 @@ void STR_fetchArrayStringAllocLen(char **strs, int *nstrs)
 void STR_fetchArrayStringAllocLen_CFI(CFI_cdesc_t *SHT_strs_cfi)
 {
     // splicer begin function.fetchArrayStringAllocLen_CFI
-    std::string *SHC_strs_cxx;
+    std::string *strs;
     int nstrs;
-    fetchArrayStringAllocLen(&SHC_strs_cxx, &nstrs);
-    // Allocate and copy into strs
+    fetchArrayStringAllocLen(&strs, &nstrs);
+    size_t SHT_strs_len = 20;
+    if (SHT_strs_len <= 0) {
+        SHT_strs_len = STR_ShroudArrayStringOutSize(strs, nstrs);
+    }
+    if (strs != nullptr) {
+        CFI_index_t SHT_strs_lower[1] = {1};
+        CFI_index_t SHT_strs_extents[1];
+        SHT_strs_extents[0] = nstrs;
+        int SH_ret = CFI_allocate(SHT_strs_cfi, SHT_strs_lower, 
+            SHT_strs_extents, SHT_strs_len);
+        if (SH_ret == CFI_SUCCESS) {
+            STR_ShroudCFIArrayStringOut(SHT_strs_cfi, strs, nstrs);
+        }
+    }
     // splicer end function.fetchArrayStringAllocLen_CFI
 }
 

@@ -323,14 +323,10 @@
                     "brief": "Copy vector into Fortran input array"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "array_context",
                         "copy_array",
                         "type_defines"
-                    ],
-                    "f": [
-                        "array_context",
-                        "copy_array"
                     ]
                 },
                 "name": "vector_iota_out",
@@ -613,14 +609,10 @@
                     }
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "array_context",
                         "copy_array",
                         "type_defines"
-                    ],
-                    "f": [
-                        "array_context",
-                        "copy_array"
                     ]
                 },
                 "name": "vector_iota_out_with_num",
@@ -909,14 +901,10 @@
                     }
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "array_context",
                         "copy_array",
                         "type_defines"
-                    ],
-                    "f": [
-                        "array_context",
-                        "copy_array"
                     ]
                 },
                 "name": "vector_iota_out_with_num2",
@@ -1184,10 +1172,7 @@
                     "brief": "Copy vector into Fortran allocatable array"
                 },
                 "helpers": {
-                    "c": [
-                        "copy_array"
-                    ],
-                    "f": [
+                    "fc": [
                         "copy_array"
                     ]
                 },
@@ -1445,13 +1430,9 @@
                     "brief": "Copy vector into Fortran allocatable array"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "array_context",
                         "type_defines",
-                        "copy_array"
-                    ],
-                    "f": [
-                        "array_context",
                         "copy_array"
                     ]
                 },
@@ -1706,13 +1687,9 @@
                 "decl": "void vector_increment(std::vector<int> &arg)",
                 "declgen": "void vector_increment(std::vector<int> &arg)",
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "array_context",
                         "type_defines",
-                        "copy_array"
-                    ],
-                    "f": [
-                        "array_context",
                         "copy_array"
                     ]
                 },
@@ -1967,14 +1944,10 @@
                     "brief": "Copy vector into Fortran input array"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "array_context",
                         "copy_array",
                         "type_defines"
-                    ],
-                    "f": [
-                        "array_context",
-                        "copy_array"
                     ]
                 },
                 "name": "vector_iota_out_d",
@@ -2595,7 +2568,7 @@
                     "decription": "The input will be copied in order to create the C++ argument\n"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_len_trim"
                     ]
                 },
@@ -2880,12 +2853,10 @@
                     "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
                 },
                 "helpers": {
-                    "c": [
-                        "vector_string_out"
-                    ],
-                    "f": [
+                    "fc": [
                         "type_defines",
-                        "array_context"
+                        "array_context",
+                        "cdesc_vector_string_out"
                     ]
                 },
                 "name": "vector_string_fill",
@@ -2998,7 +2969,8 @@
                                 "c_addr": "",
                                 "c_const": "",
                                 "c_deref": "*",
-                                "c_helper_vector_string_out": "VEC_ShroudVectorStringOut",
+                                "c_helper_array_context": "VEC_SHROUD_array",
+                                "c_helper_cdesc_vector_string_out": "VEC_ShroudCdescVectorStringOut",
                                 "c_member": "->",
                                 "c_type": null,
                                 "c_var": "arg",
@@ -3127,14 +3099,11 @@
                 "decl": "void vector_string_fill_allocatable( std::vector< std::string > &arg+intent(out)+deref(allocatable))",
                 "declgen": "void vector_string_fill_allocatable(std::vector<std::string> &arg +deref(allocatable)+intent(out))",
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "array_context",
-                        "vector_string_allocatable",
-                        "vector_string_out_len"
-                    ],
-                    "f": [
-                        "array_context",
-                        "vector_string_allocatable",
+                        "capsule_data_helper",
+                        "cdesc_vector_string_allocatable",
+                        "vector_string_out_len",
                         "capsule_dtor"
                     ]
                 },
@@ -3249,7 +3218,8 @@
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_helper_array_context": "VEC_SHROUD_array",
-                                "c_helper_vector_string_allocatable": "VEC_ShroudVectorStringAllocatable",
+                                "c_helper_capsule_dtor": "VEC_SHROUD_memory_destructor",
+                                "c_helper_cdesc_vector_string_allocatable": "VEC_CDescShroudVectorStringAllocatable",
                                 "c_helper_vector_string_out_len": "VEC_ShroudVectorStringOutSize",
                                 "c_local_cxx": "SHC_arg_cxx",
                                 "c_member": "->",
@@ -3271,8 +3241,9 @@
                                 "f_deref_attr": ", allocatable",
                                 "f_dimension": "(:)",
                                 "f_helper_array_context": "VEC_SHROUD_array",
+                                "f_helper_capsule_data_helper": "VEC_SHROUD_capsule_data",
                                 "f_helper_capsule_dtor": "VEC_SHROUD_capsule_dtor",
-                                "f_helper_vector_string_allocatable": "VEC_SHROUD_vector_string_allocatable",
+                                "f_helper_cdesc_vector_string_allocatable": "VEC_SHROUD_cdesc_vector_string_allocatable",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
                                 "f_var": "arg",
@@ -3390,14 +3361,11 @@
                 "decl": "void vector_string_fill_allocatable_len( std::vector< std::string > &arg+intent(out)+len(20)+deref(allocatable))",
                 "declgen": "void vector_string_fill_allocatable_len(std::vector<std::string> &arg +deref(allocatable)+intent(out)+len(20))",
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "array_context",
-                        "vector_string_allocatable",
-                        "vector_string_out_len"
-                    ],
-                    "f": [
-                        "array_context",
-                        "vector_string_allocatable",
+                        "capsule_data_helper",
+                        "cdesc_vector_string_allocatable",
+                        "vector_string_out_len",
                         "capsule_dtor"
                     ]
                 },
@@ -3450,7 +3418,6 @@
                                 "cxx_type": "std::vector<{cxx_T}>",
                                 "cxx_var": "arg",
                                 "f_assumed_shape": "(:)",
-                                "f_char_len": "len=20",
                                 "f_dimension": "(:)",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
@@ -3516,7 +3483,8 @@
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_helper_array_context": "VEC_SHROUD_array",
-                                "c_helper_vector_string_allocatable": "VEC_ShroudVectorStringAllocatable",
+                                "c_helper_capsule_dtor": "VEC_SHROUD_memory_destructor",
+                                "c_helper_cdesc_vector_string_allocatable": "VEC_CDescShroudVectorStringAllocatable",
                                 "c_helper_vector_string_out_len": "VEC_ShroudVectorStringOutSize",
                                 "c_local_cxx": "SHC_arg_cxx",
                                 "c_member": "->",
@@ -3534,12 +3502,13 @@
                                 "cxx_var": "SHC_arg_cxx",
                                 "f_assumed_shape": "(:)",
                                 "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:1) = shape(arg)",
-                                "f_char_len": "len=20",
+                                "f_char_type": "character(len=SHT_arg_cdesc%elem_len) ::\t ",
                                 "f_deref_attr": ", allocatable",
                                 "f_dimension": "(:)",
                                 "f_helper_array_context": "VEC_SHROUD_array",
+                                "f_helper_capsule_data_helper": "VEC_SHROUD_capsule_data",
                                 "f_helper_capsule_dtor": "VEC_SHROUD_capsule_dtor",
-                                "f_helper_vector_string_allocatable": "VEC_SHROUD_vector_string_allocatable",
+                                "f_helper_cdesc_vector_string_allocatable": "VEC_SHROUD_cdesc_vector_string_allocatable",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
                                 "f_var": "arg",
@@ -3731,12 +3700,9 @@
                     "description": "Implement iota function.\nReturn a vector as an ALLOCATABLE array.\nCopy results into the new array.\n"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "copy_array",
                         "type_defines"
-                    ],
-                    "f": [
-                        "copy_array"
                     ]
                 },
                 "name": "ReturnVectorAlloc",

@@ -39,13 +39,10 @@
                 "decl": "const std::string& LastFunctionCalled()",
                 "declgen": "const std::string &LastFunctionCalled(void)",
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "array_context",
+                        "capsule_data_helper",
                         "string_to_cdesc",
-                        "copy_string"
-                    ],
-                    "f": [
-                        "array_context",
                         "copy_string",
                         "capsule_dtor"
                     ]
@@ -113,6 +110,7 @@
                                 "c_abstract_decl": "const char *",
                                 "c_const": "const ",
                                 "c_helper_array_context": "NS_SHROUD_array",
+                                "c_helper_capsule_dtor": "NS_SHROUD_memory_destructor",
                                 "c_helper_copy_string": "NS_ShroudCopyString",
                                 "c_helper_string_to_cdesc": "ShroudStringToCdesc",
                                 "c_type": "char",
@@ -131,6 +129,7 @@
                                 "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                                 "f_deref_attr": ", allocatable",
                                 "f_helper_array_context": "NS_SHROUD_array",
+                                "f_helper_capsule_data_helper": "NS_SHROUD_capsule_data",
                                 "f_helper_capsule_dtor": "NS_SHROUD_capsule_dtor",
                                 "f_helper_copy_string": "NS_SHROUD_copy_string",
                                 "f_result_clause": "\fresult(SHT_rv)",

@@ -139,7 +139,7 @@
     {
         "name": "c_mixin_dummy_arg",
         "notes": [
-            "Pass the library argument to the interface."
+            "Pass the Fortran wrapper argument to the interface."
         ],
         "i_dummy_arg": [
             "{i_var}"
@@ -634,6 +634,9 @@
         ],
         "c_temps": [
             "capsule"
+        ],
+        "helper": [
+            "capsule_data_helper"
         ]
     },
     {
@@ -657,10 +660,10 @@
         "f_temps": [
             "capsule"
         ],
-        "f_helper": [
+        "f_need_wrapper": true,
+        "helper": [
             "array_context"
-        ],
-        "f_need_wrapper": true
+        ]
     },
     {
         "name": "f_mixin_capsule_arg",
@@ -689,14 +692,14 @@
         "f_temps": [
             "capsule"
         ],
-        "f_helper": [
-            "array_context",
-            "capsule_helper"
-        ],
+        "f_need_wrapper": true,
         "fmtdict": {
             "f_var_capsule": "Crv"
         },
-        "f_need_wrapper": true
+        "helper": [
+            "array_context",
+            "capsule_helper"
+        ]
     },
     {
         "name": "f_mixin_capsule_dtor",
@@ -706,7 +709,7 @@
         "f_post_call": [
             "call {f_helper_capsule_dtor}({f_var_capsule})"
         ],
-        "f_helper": [
+        "helper": [
             "capsule_dtor"
         ]
     },
@@ -788,9 +791,6 @@
         "f_temps": [
             "cdesc"
         ],
-        "f_helper": [
-            "array_context"
-        ],
         "f_need_wrapper": true,
         "i_dummy_arg": [
             "{i_var_cdesc}"
@@ -807,7 +807,7 @@
         "c_temps": [
             "cdesc"
         ],
-        "c_helper": [
+        "helper": [
             "array_context"
         ]
     },
@@ -835,7 +835,7 @@
         "f_temps": [
             "cdesc"
         ],
-        "f_helper": [
+        "helper": [
             "array_context"
         ]
     },
@@ -864,7 +864,7 @@
             "{c_var_cdesc}->size = 1;",
             "{c_var_cdesc}->rank = 0;"
         ],
-        "c_helper": [
+        "helper": [
             "type_defines"
         ]
     },
@@ -877,7 +877,7 @@
         "c_post_call": [
             "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
         ],
-        "c_helper": [
+        "helper": [
             "string_to_cdesc"
         ]
     },
@@ -903,10 +903,7 @@
                 "C_SIZE_T"
             ]
         },
-        "f_helper": [
-            "copy_array"
-        ],
-        "c_helper": [
+        "helper": [
             "copy_array"
         ]
     },
@@ -928,10 +925,7 @@
                 "C_LOC"
             ]
         },
-        "f_helper": [
-            "copy_array"
-        ],
-        "c_helper": [
+        "helper": [
             "copy_array"
         ],
         "fmtdict": {
@@ -1015,10 +1009,7 @@
             "allocate(character(len={f_var_cdesc}%elem_len):: {f_var})",
             "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
         ],
-        "f_helper": [
-            "copy_string"
-        ],
-        "c_helper": [
+        "helper": [
             "copy_string"
         ]
     },
@@ -1038,7 +1029,7 @@
                 "c_f_pointer"
             ]
         },
-        "f_helper": [
+        "helper": [
             "pointer_string"
         ]
     },
@@ -1055,7 +1046,7 @@
             "{c_var_cdesc}->rank = {rank};{c_array_shape}",
             "{c_var_cdesc}->size = {c_array_size};"
         ],
-        "c_helper": [
+        "helper": [
             "type_defines",
             "array_context"
         ]
@@ -1290,7 +1281,7 @@
             "size",
             "cdesc"
         ],
-        "c_helper": [
+        "helper": [
             "array_context"
         ]
     },
@@ -1532,7 +1523,7 @@
                 "C_LOC"
             ]
         },
-        "f_helper": [
+        "helper": [
             "type_defines",
             "array_context"
         ],
@@ -1957,7 +1948,7 @@
     {
         "name": "c_mixin_character-deferred-length",
         "i_dummy_decl": [
-            "character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}"
+            "character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}"
         ]
     },
     {
@@ -2103,7 +2094,7 @@
         "c_local": [
             "cxx"
         ],
-        "c_helper": [
+        "helper": [
             "char_alloc",
             "char_free"
         ]
@@ -2116,7 +2107,7 @@
         "c_post_call": [
             "{c_helper_char_blank_fill}({c_var}, {c_var_len});"
         ],
-        "c_helper": [
+        "helper": [
             "char_blank_fill"
         ]
     },
@@ -2131,7 +2122,7 @@
         "c_post_call": [
             "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
         ],
-        "c_helper": [
+        "helper": [
             "char_copy"
         ]
     },
@@ -2150,7 +2141,7 @@
         "c_local": [
             "cxx"
         ],
-        "c_helper": [
+        "helper": [
             "char_array_alloc",
             "char_array_free"
         ]
@@ -2164,7 +2155,7 @@
             "{f_var}"
         ],
         "f_dummy_decl": [
-            "character({f_char_len}){f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}"
+            "character(len=:){f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}"
         ],
         "f_post_call": [
             "allocate({f_char_type}{f_var}({f_var_cdesc}%size))",
@@ -2578,20 +2569,17 @@
             "cxx",
             "trim"
         ],
-        "c_helper": [
+        "helper": [
             "char_len_trim"
         ]
     },
     {
-        "name": "c_mixin_out_string**",
+        "name": "c_mixin_local-string*",
         "comments": [
             "Create local std::string pointer."
         ],
         "c_pre_call": [
-            "std::string *{c_local_cxx};"
-        ],
-        "c_local": [
-            "cxx"
+            "std::string *{cxx_var};"
         ]
     },
     {
@@ -2614,7 +2602,7 @@
         "c_post_call": [
             "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx}.data(),\t {c_local_cxx}.size());"
         ],
-        "c_helper": [
+        "helper": [
             "char_copy"
         ]
     },
@@ -2630,7 +2618,7 @@
             "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());",
             "-}}"
         ],
-        "c_helper": [
+        "helper": [
             "char_copy"
         ]
     },
@@ -2660,7 +2648,7 @@
                 "C_LOC"
             ]
         },
-        "f_helper": [
+        "helper": [
             "type_defines",
             "array_context"
         ]
@@ -2697,14 +2685,11 @@
             "C++ array. Allocate in fortran, fill from C.",
             "[see also f_out_vector_&_cdesc_allocatable_targ_string_scalar]"
         ],
+        "mixin": [
+            "c_mixin_local-string*"
+        ],
         "f_post_call": [
             "call {f_helper_array_string_allocatable}({f_var_cdesc}, {f_var_capsule})"
-        ],
-        "f_helper": [
-            "array_string_allocatable"
-        ],
-        "c_pre_call": [
-            "std::string *{cxx_var};"
         ],
         "c_post_call": [
             "{c_var_cdesc}->rank = {rank};{c_array_shape}",
@@ -2715,8 +2700,29 @@
             "{c_var_cdesc}->elem_len = {c_helper_array_string_out_len}({cxx_var}, {c_var_cdesc}->size);",
             "-}}"
         ],
-        "c_helper": [
+        "helper": [
             "array_string_allocatable",
+            "array_string_out_len"
+        ]
+    },
+    {
+        "name": "c_mixin_string_max_len",
+        "comments": [
+            "Compute maximum length of array of std::string."
+        ],
+        "notes": [
+            "c_char_len is defined from attribute +len(x)"
+        ],
+        "c_post_call": [
+            "size_t {c_var_len} = {c_char_len};",
+            "if ({c_var_len} <= 0) {{+",
+            "{c_var_len} = {c_helper_array_string_out_len}({cxx_var}, {c_array_size2});",
+            "-}}"
+        ],
+        "c_temps": [
+            "len"
+        ],
+        "helper": [
             "array_string_out_len"
         ]
     },
@@ -2918,9 +2924,6 @@
             "Fortran calling a C function without",
             "any api argument - is this useful?"
         ],
-        "c_return": [
-            "return {c_var};"
-        ],
         "i_result_decl": [
             "type(C_PTR) :: {i_var}"
         ],
@@ -2931,6 +2934,9 @@
         },
         "c_post_call": [
             "{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();"
+        ],
+        "c_return": [
+            "return {c_var};"
         ]
     },
     {
@@ -3101,20 +3107,14 @@
         "mixin": [
             "f_mixin_str_array",
             "f_mixin_cdesc_pass",
+            "c_mixin_local-string*",
             "c_mixin_arg-call-cvar-address"
         ],
-        "c_pre_call": [
-            "std::string *{cxx_var};"
-        ],
         "c_post_call": [
-            "{c_helper_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});"
+            "{c_helper_cdesc_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});"
         ],
-        "f_helper": [
-            "type_defines",
-            "array_context"
-        ],
-        "c_helper": [
-            "array_string_out"
+        "helper": [
+            "cdesc_array_string_out"
         ]
     },
     {
@@ -3329,10 +3329,7 @@
                 "C_LOC"
             ]
         },
-        "f_helper": [
-            "copy_array"
-        ],
-        "c_helper": [
+        "helper": [
             "copy_array",
             "type_defines"
         ]
@@ -3351,7 +3348,7 @@
             "{c_var_cdesc}->rank = 1;",
             "{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;"
         ],
-        "c_helper": [
+        "helper": [
             "type_defines"
         ]
     },
@@ -3415,10 +3412,7 @@
         "c_local": [
             "cxx"
         ],
-        "c_helper": [
-            "copy_array"
-        ],
-        "f_helper": [
+        "helper": [
             "copy_array"
         ]
     },
@@ -3449,9 +3443,6 @@
                 "C_SIZE_T"
             ]
         },
-        "f_helper": [
-            "copy_array"
-        ],
         "c_pre_call": [
             "{c_const}std::vector<{cxx_T}>\t *{c_local_cxx} = new std::vector<{cxx_T}>;"
         ],
@@ -3461,7 +3452,7 @@
         "c_local": [
             "cxx"
         ],
-        "c_helper": [
+        "helper": [
             "copy_array",
             "type_defines"
         ]
@@ -3556,10 +3547,7 @@
             "Copy into Fortran allocated memory."
         ],
         "f_post_call": [
-            "call {f_helper_vector_string_allocatable}({f_var_cdesc}, {f_var_capsule})"
-        ],
-        "f_helper": [
-            "vector_string_allocatable"
+            "call {f_helper_cdesc_vector_string_allocatable}({f_var_cdesc}, {f_var_capsule})"
         ],
         "c_pre_call": [
             "std::vector<std::string> *{c_local_cxx} = new std::vector<std::string>;"
@@ -3578,8 +3566,8 @@
         "c_local": [
             "cxx"
         ],
-        "c_helper": [
-            "vector_string_allocatable",
+        "helper": [
+            "cdesc_vector_string_allocatable",
             "vector_string_out_len"
         ]
     },
@@ -3621,7 +3609,7 @@
             "n",
             "s"
         ],
-        "c_helper": [
+        "helper": [
             "char_len_trim"
         ]
     },
@@ -3676,7 +3664,7 @@
             "n",
             "s"
         ],
-        "c_helper": [
+        "helper": [
             "char_copy"
         ]
     },
@@ -3718,7 +3706,7 @@
             "n",
             "s"
         ],
-        "c_helper": [
+        "helper": [
             "char_len_trim"
         ]
     },
@@ -3739,18 +3727,16 @@
         "f_dummy_decl": [
             "{targs[0].f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}"
         ],
-        "f_helper": [
-            "type_defines",
-            "array_context"
-        ],
         "c_pre_call": [
             "{c_const}std::vector<std::string> {cxx_var};"
         ],
         "c_post_call": [
-            "{c_helper_vector_string_out}(\t{c_var_cdesc},\t {cxx_var});"
+            "{c_helper_cdesc_vector_string_out}(\t{c_var_cdesc},\t {cxx_var});"
         ],
-        "c_helper": [
-            "vector_string_out"
+        "helper": [
+            "type_defines",
+            "array_context",
+            "cdesc_vector_string_out"
         ]
     },
     {
@@ -3805,10 +3791,7 @@
                 "C_SIZE_T"
             ]
         },
-        "f_helper": [
-            "copy_array"
-        ],
-        "c_helper": [
+        "helper": [
             "copy_array"
         ]
     },
@@ -3842,10 +3825,7 @@
                 "C_SIZE_T"
             ]
         },
-        "f_helper": [
-            "copy_array"
-        ],
-        "c_helper": [
+        "helper": [
             "copy_array"
         ]
     },
@@ -4598,7 +4578,7 @@
             "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {c_local_cxx}{cxx_member}data(),\t {c_local_cxx}{cxx_member}size());",
             "-}}"
         ],
-        "c_helper": [
+        "helper": [
             "char_copy"
         ]
     },
@@ -4639,6 +4619,27 @@
         ],
         "i_dummy_decl": [
             "character(len=*){i_intent_attr} :: {i_var}(:)"
+        ]
+    },
+    {
+        "name": "c_mixin_cfi_string**_allocatable",
+        "comments": [
+            "Allocate for character (requires +dimension)."
+        ],
+        "c_post_call": [
+            "if ({cxx_var} != {nullptr}) {{+",
+            "{c_temp_lower_decl}{c_temp_extents_decl}int SH_ret = CFI_allocate({c_var_cfi}, \t{c_temp_lower_use}, \t{c_temp_extents_use}, \t{c_var_len});",
+            "if (SH_ret == CFI_SUCCESS) {{+",
+            "{c_helper_cfi_array_string_out}({c_var_cfi}, {cxx_var}, {c_array_size2});",
+            "-}}",
+            "-}}"
+        ],
+        "c_temps": [
+            "extents",
+            "lower"
+        ],
+        "helper": [
+            "cfi_array_string_out"
         ]
     },
     {
@@ -4820,7 +4821,7 @@
             "c_mixin_cfi_arg_character",
             "c_mixin_cfi-unpack-base-addr",
             "c_mixin_cfi-unpack-len",
-            "c_mixin_char-blank-fill",
+            "c_mixin_char-copy",
             "c_mixin_char-alloc",
             "c_mixin_arg-call-cxx"
         ]
@@ -5111,18 +5112,13 @@
         ],
         "mixin": [
             "f_mixin_declare-fortran-arg",
+            "c_mixin_character-deferred-length",
+            "c_mixin_dummy_arg",
             "c_mixin_cfi_arg",
-            "c_mixin_out_string**",
-            "c_mixin_arg-call-cxx-address"
-        ],
-        "i_dummy_arg": [
-            "{i_var}"
-        ],
-        "i_dummy_decl": [
-            "character(*){i_intent_attr} :: {i_var}{f_assumed_shape}"
-        ],
-        "c_post_call": [
-            "// Allocate and copy into {c_var}"
+            "c_mixin_local-string*",
+            "c_mixin_arg-call-cvar-address",
+            "c_mixin_string_max_len",
+            "c_mixin_cfi_string**_allocatable"
         ]
     },
     {
@@ -5130,8 +5126,8 @@
         "mixin": [
             "f_mixin_declare-fortran-arg",
             "c_mixin_cfi_arg",
-            "c_mixin_out_string**",
-            "c_mixin_arg-call-cxx-address"
+            "c_mixin_local-string*",
+            "c_mixin_arg-call-cvar-address"
         ],
         "i_dummy_arg": [
             "{i_var}"
@@ -5140,7 +5136,10 @@
             "character(*){i_intent_attr} :: {i_var}{f_assumed_shape}"
         ],
         "c_post_call": [
-            "// Copy results into {c_var}"
+            "{c_helper_cfi_array_string_out}({c_var_cfi}, {cxx_var}, {c_array_size2});"
+        ],
+        "helper": [
+            "cfi_array_string_out"
         ]
     },
     {
@@ -5801,40 +5800,48 @@
         ]
     },
     {
-        "name": "h_helper_array_string_out",
+        "name":"##### helper std::string array #############################",
+        "notes": [
+            "Copy an array or std::vector of std::string into Fortran memory",
+            "  CHARACTER(len=destlen) dest(destsize)"
+        ]
+    },
+    {
+        "name": "h_helper_cdesc_array_string_out",
         "notes": [
             "Only used with std::string and thus C++."
         ],
         "fmtdict": {
-            "cnamefunc": "{C_prefix}ShroudArrayStringOut",
-            "cnamefunc_array_string_out": "{cnamefunc}",
-            "cnameproto":  "void {cnamefunc}({C_array_type} *outdesc, std::string *in, size_t nsize)"
+            "cnamefunc": "{C_prefix}ShroudCdescArrayStringOut",
+            "cnamefunc_cdesc_array_string_out": "{cnamefunc}",
+            "cnameproto":  "void {cnamefunc}({C_array_type} *outdesc, std::string *src, size_t srcsize)"
         },
         "c_fmtname": "{cnamefunc}",
         "api": "cxx",
         "scope": "cwrap_impl",
         "dependent_helpers": ["array_context"],
-        "proto_include": ["<string>", "<vector>"],
+        "proto_include": ["<string>"],
         "proto": "{cnameproto};",
         "cxx_include": ["<cstring>", "<cstddef>"],
         "source": [
             "",
             "{c_lstart}// helper {hname}",
-            "// Copy the std::vector<std::string> into Fortran array argument.",
+            "// Copy the array of std::string into array described by {C_array_type}.",
             "// Called by C++.",
+            "//  CHARACTER(len=destlen) dest(destsize)",
             "{cnameproto}",
             "{{+",
-            "size_t nvect = outdesc->size;",
-            "size_t len = outdesc->elem_len;",
+            "size_t destsize = outdesc->size;",
+            "size_t destlen = outdesc->elem_len;",
             "char *dest = static_cast<char *>(outdesc->base_addr);",
             "// Clear user memory",
-            "std::memset(dest, ' ', nvect*len);",
+            "std::memset(dest, ' ', destsize*destlen);",
             "",
             "// Copy into user memory",
-            "nvect = std::min(nvect, nsize);",
-            "for (size_t i = 0; i < nvect; ++i) {{+",
-            "std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));",
-            "dest += outdesc->elem_len;",
+            "srcsize = std::min(destsize, srcsize);",
+            "for (size_t i = 0; i < srcsize; ++i) {{+",
+            "std::memcpy(dest, src[i].data(), std::min(destlen, src[i].length()));",
+            "dest += destlen;",
             "-}}",
             "-}}{c_lend}"
         ]
@@ -5844,18 +5851,22 @@
         "notes": [
             "Only used with std::string and thus C++.",
             "Called from Fortran to deal with allocatable character",
-            "The capsule contains a pointer to a std::vector<std::string>",
+            "The capsule contains a pointer to a std::string",
             "which is copied into the cdesc."
         ],
         "fmtdict": {
-            "cnamefunc": "{C_prefix}ShroudArrayStringAllocatable",
-            "fnamefunc": "{C_prefix}SHROUD_array_string_allocatable",
+            "cnamefunc": "{C_prefix}ShroudCDescArrayStringAllocatable",
+            "fnamefunc": "{C_prefix}SHROUD_cdesc_array_string_allocatable",
             "cnameproto": "void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)"
         },
         "c_fmtname": "{cnamefunc}",
         "api": "c",
         "scope": "cwrap_impl",
-        "dependent_helpers": ["capsule_data_helper", "array_context", "array_string_out"],
+        "dependent_helpers": [
+            "capsule_data_helper",
+            "array_context",
+            "cdesc_array_string_out"
+        ],
         "proto": "{cnameproto};",
         "source": [
             "",
@@ -5866,7 +5877,7 @@
             "{cnameproto}",
             "{{+",
             "std::string *cxxvec =\t static_cast< std::string *>\t(src->addr);",
-            "{cnamefunc_array_string_out}(dest, cxxvec, dest->size);",
+            "{cnamefunc_cdesc_array_string_out}(dest, cxxvec, dest->size);",
             "-}}{c_lend}"
         ],
 
@@ -5893,7 +5904,9 @@
         "c_fmtname": "{cnamefunc}",
         "api": "cxx",
         "scope": "cwrap_impl",
-        "proto_include": ["<string>", "<vector>"],
+        "proto_include": [
+            "<string>"
+        ],
         "proto": "{cnameproto};",
         "source": [
             "",
@@ -5910,15 +5923,15 @@
         ]
     },
     {
-        "name": "h_helper_vector_string_out",
+        "name": "h_helper_cdesc_vector_string_out",
         "notes": [
             "Only used with std::vector and thus C++."
         ],
         "fmtdict": {
-            "cnamefunc": "{C_prefix}ShroudVectorStringOut",
-            "fnamefunc": "{C_prefix}shroud_vector_string_out",
-            "cnamefunc_vector_string_out": "{cnamefunc}",
-            "cnameproto": "void {cnamefunc}({C_array_type} *outdesc, std::vector<std::string> &in)"
+            "cnamefunc": "{C_prefix}ShroudCdescVectorStringOut",
+            "fnamefunc": "{C_prefix}shroud_cdesc_vector_string_out",
+            "cnamefunc_cdesc_vector_string_out": "{cnamefunc}",
+            "cnameproto": "void {cnamefunc}({C_array_type} *outdesc, std::vector<std::string> &src)"
         },
         "c_fmtname": "{cnamefunc}",
         "api": "cxx",
@@ -5930,28 +5943,28 @@
         "source": [
             "",
             "{c_lstart}// helper {hname}",
-            "// Copy the std::vector<std::string> into Fortran array argument.",
+            "// Copy the std::vector<std::string> into array described by {C_array_type}.",
             "// Called by C++.",
+            "//  CHARACTER(len=destlen) dest(destsize)",
             "{cnameproto}",
             "{{+",
-            "size_t nvect = outdesc->size;",
-            "size_t len = outdesc->elem_len;",
+            "size_t destsize = outdesc->size;",
+            "size_t destlen = outdesc->elem_len;",
             "char *dest = static_cast<char *>(outdesc->base_addr);",
             "// Clear user memory",
-            "std::memset(dest, ' ', nvect*len);",
+            "std::memset(dest, ' ', destsize*destlen);",
             "",
             "// Copy into user memory",
-            "nvect = std::min(nvect, in.size());",
-            "//char *dest = static_cast<char *>(outdesc->cxx.addr);",
-            "for (size_t i = 0; i < nvect; ++i) {{+",
-            "std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));",
-            "dest += outdesc->elem_len;",
+            "size_t srcsize = std::min(destsize, src.size());",
+            "for (size_t i = 0; i < srcsize; ++i) {{+",
+            "std::memcpy(dest, src[i].data(), std::min(destlen, src[i].length()));",
+            "dest += destlen;",
             "-}}",
             "-}}{c_lend}"
         ]
     },
     {
-        "name": "h_helper_vector_string_allocatable",
+        "name": "h_helper_cdesc_vector_string_allocatable",
         "notes": [
             "Only used with std::string and thus C++.",
             "Called from Fortran.",
@@ -5959,25 +5972,28 @@
             "which is copied into the cdesc."
         ],
         "fmtdict": {
-            "cnamefunc": "{C_prefix}ShroudVectorStringAllocatable",
-            "fnamefunc": "{C_prefix}SHROUD_vector_string_allocatable",
+            "cnamefunc": "{C_prefix}CDescShroudVectorStringAllocatable",
+            "fnamefunc": "{C_prefix}SHROUD_cdesc_vector_string_allocatable",
             "cnameproto": "void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)"
         },
         "c_fmtname": "{cnamefunc}",
         "api": "c",
         "scope": "cwrap_impl",
-        "dependent_helpers": ["capsule_data_helper", "array_context", "vector_string_out"],
+        "dependent_helpers": [
+            "capsule_data_helper",
+            "array_context",
+            "cdesc_vector_string_out"],
         "proto": "{cnameproto};",
         "source": [
             "",
             "{c_lstart}// helper {hname}",
             "// Copy the std::vector<std::string> into Fortran array.",
             "// Called by Fortran to deal with allocatable character.",
-            "// out is already blank filled.",
+            "// dest is already blank filled.",
             "{cnameproto}",
             "{{+",
             "std::vector<std::string> *cxxvec =\t static_cast< std::vector<std::string> *>\t(src->addr);",
-            "{cnamefunc_vector_string_out}(dest, *cxxvec);",
+            "{cnamefunc_cdesc_vector_string_out}(dest, *cxxvec);",
             "-}}{c_lend}"
         ],
         "f_fmtname": "{fnamefunc}",
@@ -6020,6 +6036,48 @@
             "return len;",
             "-}}{c_lend}"
         ]
+    },
+    {
+        "name": "h_helper_cfi_array_string_out",
+        "notes": [
+            "Only used with std::string and thus C++."
+        ],
+        "fmtdict": {
+            "cnamefunc": "{C_prefix}ShroudCFIArrayStringOut",
+            "cnamefunc_cfi_array_string_out": "{cnamefunc}",
+            "cnameproto":  "void {cnamefunc}(CFI_cdesc_t *outdesc, std::string *src, size_t srcsize)"
+        },
+        "c_fmtname": "{cnamefunc}",
+        "api": "cxx",
+        "scope": "cwrap_impl",
+        "proto_include": ["<string>", "<ISO_Fortran_binding.h>"],
+        "proto": "{cnameproto};",
+        "cxx_include": ["<cstring>", "<cstddef>"],
+        "source": [
+            "",
+            "{c_lstart}// helper {hname}",
+            "// Copy the array of std::string into array described by {C_array_type}.",
+            "// Called by C++.",
+            "//  CHARACTER(len=destlen) dest(destsize)",
+            "{cnameproto}",
+            "{{+",
+            "size_t destsize = outdesc->dim[0].extent;",
+            "size_t destlen = outdesc->elem_len;",
+            "char *dest = static_cast<char *>(outdesc->base_addr);",
+            "// Clear user memory",
+            "std::memset(dest, ' ', destsize*destlen);",
+            "",
+            "// Copy into user memory",
+            "srcsize = std::min(destsize, srcsize);",
+            "for (size_t i = 0; i < srcsize; ++i) {{+",
+            "std::memcpy(dest, src[i].data(), std::min(destlen, src[i].length()));",
+            "dest += destlen;",
+            "-}}",
+            "-}}{c_lend}"
+        ]
+    },
+    {
+        "name":"############################################################"
     },
     {
         "name": "h_helper_pointer_string",
@@ -6107,6 +6165,8 @@
     {
         "name": "h_helper_capsule_helper",
         "notes": [
+            "Used when the user owns C++ memory.",
+            "Allows the memory to be deleted from Fortran.",
             "Fortran cannot be declared with both PRIVATE and BIND(C) attributes"
         ],
         "dependent_helpers": ["capsule_data_helper", "capsule_dtor"],

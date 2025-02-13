@@ -232,8 +232,6 @@ c_function_char*_arg:
   - len
   c_local:
   - cxx
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -243,6 +241,8 @@ c_function_char*_arg:
     f_var_len: n{F_string_result_as_arg}
     i_var_len: n{F_string_result_as_arg}
     c_var_len: n{F_string_result_as_arg}
+  helper:
+  - char_copy
   owner: library
 c_function_char*_buf_arg:
   name: c_function_char*_buf_arg
@@ -291,8 +291,6 @@ c_function_char*_buf_arg:
   - len
   c_local:
   - cxx
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -302,6 +300,8 @@ c_function_char*_buf_arg:
     f_var_len: n{F_string_result_as_arg}
     i_var_len: n{F_string_result_as_arg}
     c_var_len: n{F_string_result_as_arg}
+  helper:
+  - char_copy
   owner: library
 c_function_char*_buf_copy:
   name: c_function_char*_buf_copy
@@ -350,11 +350,11 @@ c_function_char*_buf_copy:
   - len
   c_local:
   - cxx
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - char_copy
   owner: library
 c_function_enum:
   name: c_function_enum
@@ -1163,6 +1163,8 @@ c_function_string:
   - cxx
   fmtdict:
     cxx_addr: ''
+  helper:
+  - capsule_data_helper
   owner: caller
 c_function_string&:
   name: c_function_string&
@@ -1231,8 +1233,6 @@ c_function_string&_buf_arg:
   - len
   c_local:
   - cxx
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -1242,6 +1242,8 @@ c_function_string&_buf_arg:
     f_var_len: n{F_string_result_as_arg}
     i_var_len: n{F_string_result_as_arg}
     c_var_len: n{F_string_result_as_arg}
+  helper:
+  - char_copy
   owner: library
 c_function_string&_buf_copy:
   name: c_function_string&_buf_copy
@@ -1290,11 +1292,11 @@ c_function_string&_buf_copy:
   - len
   c_local:
   - cxx
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - char_copy
   owner: library
 c_function_string&_copy:
   name: c_function_string&_copy
@@ -1375,11 +1377,11 @@ c_function_string*_buf_copy:
   - len
   c_local:
   - cxx
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - char_copy
   owner: library
 c_function_string*_caller:
   name: c_function_string*_caller
@@ -1480,8 +1482,6 @@ c_function_string_buf_arg:
   - len
   c_local:
   - cxx
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -1491,6 +1491,8 @@ c_function_string_buf_arg:
     f_var_len: n{F_string_result_as_arg}
     i_var_len: n{F_string_result_as_arg}
     c_var_len: n{F_string_result_as_arg}
+  helper:
+  - char_copy
   owner: library
 c_function_string_buf_copy:
   name: c_function_string_buf_copy
@@ -1539,11 +1541,11 @@ c_function_string_buf_copy:
   - len
   c_local:
   - cxx
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - char_copy
   owner: library
 c_function_struct:
   name: c_function_struct
@@ -1824,7 +1826,7 @@ c_in_char**_buf:
   - len
   c_local:
   - cxx
-  c_helper:
+  helper:
   - char_array_alloc
   - char_array_free
   owner: library
@@ -1864,7 +1866,7 @@ c_in_char*_buf:
   - len
   c_local:
   - cxx
-  c_helper:
+  helper:
   - char_alloc
   - char_free
   owner: library
@@ -2011,7 +2013,8 @@ c_in_native*_cdesc:
   - '{cxx_var}'
   c_temps:
   - cdesc
-  c_helper:
+  helper:
+  - type_defines
   - array_context
   owner: library
   lang_c:
@@ -2282,7 +2285,7 @@ c_in_string&_buf:
   c_local:
   - cxx
   - trim
-  c_helper:
+  helper:
   - char_len_trim
   owner: library
 c_in_string*:
@@ -2348,7 +2351,7 @@ c_in_string*_buf:
   c_local:
   - cxx
   - trim
-  c_helper:
+  helper:
   - char_len_trim
   owner: library
 c_in_string_buf:
@@ -2387,7 +2390,7 @@ c_in_string_buf:
   c_local:
   - cxx
   - trim
-  c_helper:
+  helper:
   - char_len_trim
   owner: library
 c_in_struct:
@@ -2698,7 +2701,7 @@ c_in_vector<string>&_buf:
   - i
   - n
   - s
-  c_helper:
+  helper:
   - char_len_trim
   owner: library
 c_in_vector<string>*_buf:
@@ -2752,7 +2755,7 @@ c_in_vector<string>*_buf:
   - i
   - n
   - s
-  c_helper:
+  helper:
   - char_len_trim
   owner: library
 c_in_vector<string>_buf:
@@ -2806,7 +2809,7 @@ c_in_vector<string>_buf:
   - i
   - n
   - s
-  c_helper:
+  helper:
   - char_len_trim
   owner: library
 c_in_void:
@@ -2897,7 +2900,8 @@ c_in_void*_cdesc:
   - '{cxx_var}'
   c_temps:
   - cdesc
-  c_helper:
+  helper:
+  - type_defines
   - array_context
   owner: library
   lang_c:
@@ -2992,7 +2996,7 @@ c_inout_char*_buf:
   - len
   c_local:
   - cxx
-  c_helper:
+  helper:
   - char_copy
   - char_alloc
   - char_free
@@ -3105,7 +3109,8 @@ c_inout_native*_cdesc:
   - '{cxx_var}'
   c_temps:
   - cdesc
-  c_helper:
+  helper:
+  - type_defines
   - array_context
   owner: library
   lang_c:
@@ -3286,7 +3291,7 @@ c_inout_string&_buf:
   c_local:
   - cxx
   - trim
-  c_helper:
+  helper:
   - char_len_trim
   - char_copy
   owner: library
@@ -3367,7 +3372,7 @@ c_inout_string*_buf:
   c_local:
   - cxx
   - trim
-  c_helper:
+  helper:
   - char_len_trim
   - char_copy
   owner: library
@@ -3700,7 +3705,8 @@ c_inout_void*_cdesc:
   - '{cxx_var}'
   c_temps:
   - cdesc
-  c_helper:
+  helper:
+  - type_defines
   - array_context
   owner: library
   lang_c:
@@ -3810,6 +3816,8 @@ c_mixin_capsule_pass:
   - '{C_capsule_data_type} *{c_var_capsule}'
   c_temps:
   - capsule
+  helper:
+  - capsule_data_helper
   owner: library
 c_mixin_cast-argument:
   name: c_mixin_cast-argument
@@ -3832,7 +3840,7 @@ c_mixin_cdesc_char_fill_cvar:
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
   - '{c_var_cdesc}->size = 1;'
   - '{c_var_cdesc}->rank = 0;'
-  c_helper:
+  helper:
   - type_defines
   owner: library
 c_mixin_cdesc_function_string:
@@ -3843,7 +3851,7 @@ c_mixin_cdesc_function_string:
   - in the C wrapper.
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
-  c_helper:
+  helper:
   - string_to_cdesc
   owner: library
 c_mixin_cdesc_inout_vector:
@@ -3872,7 +3880,7 @@ c_mixin_cdesc_inout_vector:
   c_temps:
   - size
   - cdesc
-  c_helper:
+  helper:
   - array_context
   owner: library
 c_mixin_cdesc_native_fill:
@@ -3900,7 +3908,7 @@ c_mixin_cdesc_vector_fill:
   - '{c_var_cdesc}->size = {c_local_cxx}->size();'
   - '{c_var_cdesc}->rank = 1;'
   - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
-  c_helper:
+  helper:
   - type_defines
   owner: library
 c_mixin_cfi-unpack-base-addr:
@@ -4029,7 +4037,7 @@ c_mixin_cfi_copy-to-arg:
   - "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {c_local_cxx}{cxx_member}data(),\t\
     \ {c_local_cxx}{cxx_member}size());"
   - -}}
-  c_helper:
+  helper:
   - char_copy
   owner: library
 c_mixin_cfi_native_allocatable:
@@ -4074,6 +4082,25 @@ c_mixin_cfi_native_pointer:
   - cdesc
   - err
   owner: library
+c_mixin_cfi_string**_allocatable:
+  name: c_mixin_cfi_string**_allocatable
+  intent: mixin
+  comments:
+  - Allocate for character (requires +dimension).
+  c_post_call:
+  - if ({cxx_var} != {nullptr}) {{+
+  - "{c_temp_lower_decl}{c_temp_extents_decl}int SH_ret = CFI_allocate({c_var_cfi},\
+    \ \t{c_temp_lower_use}, \t{c_temp_extents_use}, \t{c_var_len});"
+  - if (SH_ret == CFI_SUCCESS) {{+
+  - '{c_helper_cfi_array_string_out}({c_var_cfi}, {cxx_var}, {c_array_size2});'
+  - -}}
+  - -}}
+  c_temps:
+  - extents
+  - lower
+  helper:
+  - cfi_array_string_out
+  owner: library
 c_mixin_char-alloc:
   name: c_mixin_char-alloc
   intent: mixin
@@ -4085,7 +4112,7 @@ c_mixin_char-alloc:
   - '{c_helper_char_free}({c_local_cxx});'
   c_local:
   - cxx
-  c_helper:
+  helper:
   - char_alloc
   - char_free
   owner: library
@@ -4102,7 +4129,7 @@ c_mixin_char-array-alloc:
   - '{c_helper_char_array_free}({c_local_cxx}, {c_var_size});'
   c_local:
   - cxx
-  c_helper:
+  helper:
   - char_array_alloc
   - char_array_free
   owner: library
@@ -4113,7 +4140,7 @@ c_mixin_char-blank-fill:
   - Blank fill C argument.
   c_post_call:
   - '{c_helper_char_blank_fill}({c_var}, {c_var_len});'
-  c_helper:
+  helper:
   - char_blank_fill
   owner: library
 c_mixin_char-copy:
@@ -4123,7 +4150,7 @@ c_mixin_char-copy:
   - Copy cxx variable to c argument.
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
-  c_helper:
+  helper:
   - char_copy
   owner: library
 c_mixin_char-free:
@@ -4189,7 +4216,7 @@ c_mixin_character-deferred-length:
   name: c_mixin_character-deferred-length
   intent: mixin
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   owner: library
 c_mixin_declare-arg:
   name: c_mixin_declare-arg
@@ -4429,7 +4456,8 @@ c_mixin_inout_vector<native>_cdesc:
   - cdesc
   c_local:
   - cxx
-  c_helper:
+  helper:
+  - array_context
   - array_context
   - type_defines
   - copy_array
@@ -4466,6 +4494,14 @@ c_mixin_local-string:
   c_local:
   - cxx
   owner: library
+c_mixin_local-string*:
+  name: c_mixin_local-string*
+  intent: mixin
+  comments:
+  - Create local std::string pointer.
+  c_pre_call:
+  - std::string *{cxx_var};
+  owner: library
 c_mixin_local-string-init:
   name: c_mixin_local-string-init
   intent: mixin
@@ -4487,7 +4523,7 @@ c_mixin_local-string-init-trim:
   c_local:
   - cxx
   - trim
-  c_helper:
+  helper:
   - char_len_trim
   owner: library
 c_mixin_make-shared:
@@ -4526,7 +4562,7 @@ c_mixin_new_vector<native>:
   - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
   c_local:
   - cxx
-  c_helper:
+  helper:
   - type_defines
   destructor_name: std_vector_{cxx_T}
   destructor:
@@ -4540,16 +4576,6 @@ c_mixin_out_native**:
   - Declare a local C pointer.
   c_pre_call:
   - '{c_const}{cxx_type} *{cxx_var};'
-  owner: library
-c_mixin_out_string**:
-  name: c_mixin_out_string**
-  intent: mixin
-  comments:
-  - Create local std::string pointer.
-  c_pre_call:
-  - std::string *{c_local_cxx};
-  c_local:
-  - cxx
   owner: library
 c_mixin_out_vector_buf_malloc:
   name: c_mixin_out_vector_buf_malloc
@@ -4596,7 +4622,7 @@ c_mixin_string-char-copy-to-arg:
   - -}} else {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
   - -}}
-  c_helper:
+  helper:
   - char_copy
   owner: library
 c_mixin_string-copy-out:
@@ -4606,7 +4632,7 @@ c_mixin_string-copy-out:
   - Copy std::string into argument.
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx}.data(),\t {c_local_cxx}.size());"
-  c_helper:
+  helper:
   - char_copy
   owner: library
 c_mixin_string-strcpy-out:
@@ -4618,6 +4644,21 @@ c_mixin_string-strcpy-out:
   - std::strcpy({c_var}, {c_local_cxx}.c_str());
   impl_header:
   - <cstring>
+  owner: library
+c_mixin_string_max_len:
+  name: c_mixin_string_max_len
+  intent: mixin
+  comments:
+  - Compute maximum length of array of std::string.
+  c_post_call:
+  - size_t {c_var_len} = {c_char_len};
+  - if ({c_var_len} <= 0) {{+
+  - '{c_var_len} = {c_helper_array_string_out_len}({cxx_var}, {c_array_size2});'
+  - -}}
+  c_temps:
+  - len
+  helper:
+  - array_string_out_len
   owner: library
 c_mixin_unknown:
   name: c_mixin_unknown
@@ -4730,7 +4771,7 @@ c_out_char_*_buf:
   - '{c_helper_char_blank_fill}({c_var}, {c_var_len});'
   c_temps:
   - len
-  c_helper:
+  helper:
   - char_blank_fill
   owner: library
 c_out_enum*:
@@ -4933,7 +4974,8 @@ c_out_native*_cdesc:
   - '{cxx_var}'
   c_temps:
   - cdesc
-  c_helper:
+  helper:
+  - type_defines
   - array_context
   owner: library
   lang_c:
@@ -5054,7 +5096,7 @@ c_out_string&_buf:
   - len
   c_local:
   - cxx
-  c_helper:
+  helper:
   - char_copy
   owner: library
 c_out_string*:
@@ -5122,6 +5164,7 @@ c_out_string**_cdesc_copy:
   comments:
   - Collect information about a string argument.
   - Pass cdesc as argument to C wrapper.
+  - Create local std::string pointer.
   - Pass address of cxx variable to library.
   notes:
   - Pass a cdesc down to describe the memory and a capsule to hold the
@@ -5130,6 +5173,7 @@ c_out_string**_cdesc_copy:
   mixin_names:
   - '  f_mixin_str_array'
   - '  f_mixin_cdesc_pass'
+  - '  c_mixin_local-string*'
   - '  c_mixin_arg-call-cvar-address'
   i_dummy_arg:
   - '{i_var_cdesc}'
@@ -5144,11 +5188,11 @@ c_out_string**_cdesc_copy:
   c_arg_call:
   - '&{cxx_var}'
   c_post_call:
-  - "{c_helper_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});"
+  - "{c_helper_cdesc_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});"
   c_temps:
   - cdesc
-  c_helper:
-  - array_string_out
+  helper:
+  - cdesc_array_string_out
   owner: library
 c_out_string*_buf:
   name: c_out_string*_buf
@@ -5188,7 +5232,7 @@ c_out_string*_buf:
   - len
   c_local:
   - cxx
-  c_helper:
+  helper:
   - char_copy
   owner: library
 c_out_struct&:
@@ -5372,7 +5416,7 @@ c_out_vector<native>&_cdesc:
   - cdesc
   c_local:
   - cxx
-  c_helper:
+  helper:
   - array_context
   - copy_array
   - type_defines
@@ -5509,7 +5553,7 @@ c_out_vector<native>*_cdesc:
   - cdesc
   c_local:
   - cxx
-  c_helper:
+  helper:
   - array_context
   - copy_array
   - type_defines
@@ -5659,11 +5703,13 @@ c_out_vector<string>&_cdesc:
   c_arg_call:
   - '{cxx_var}'
   c_post_call:
-  - "{c_helper_vector_string_out}(\t{c_var_cdesc},\t {cxx_var});"
+  - "{c_helper_cdesc_vector_string_out}(\t{c_var_cdesc},\t {cxx_var});"
   c_temps:
   - cdesc
-  c_helper:
-  - vector_string_out
+  helper:
+  - type_defines
+  - array_context
+  - cdesc_vector_string_out
   owner: library
 c_out_vector<string>&_cdesc_allocatable:
   name: c_out_vector<string>&_cdesc_allocatable
@@ -5716,10 +5762,13 @@ c_out_vector<string>&_cdesc_allocatable:
   - capsule
   c_local:
   - cxx
-  c_helper:
+  helper:
   - array_context
-  - vector_string_allocatable
+  - capsule_data_helper
+  - array_context
+  - cdesc_vector_string_allocatable
   - vector_string_out_len
+  - capsule_dtor
   owner: library
 c_out_vector<string>*_buf_copy:
   name: c_out_vector<string>*_buf_copy
@@ -5829,7 +5878,8 @@ c_out_void*_cdesc:
   - '{cxx_var}'
   c_temps:
   - cdesc
-  c_helper:
+  helper:
+  - type_defines
   - array_context
   owner: library
   lang_c:
@@ -6207,8 +6257,6 @@ f_function_char*_arg:
   - len
   c_local:
   - cxx
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -6218,6 +6266,8 @@ f_function_char*_arg:
     f_var_len: n{F_string_result_as_arg}
     i_var_len: n{F_string_result_as_arg}
     c_var_len: n{F_string_result_as_arg}
+  helper:
+  - char_copy
   owner: library
 f_function_char*_buf_arg:
   name: f_function_char*_buf_arg
@@ -6286,8 +6336,6 @@ f_function_char*_buf_arg:
   - len
   c_local:
   - cxx
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -6297,6 +6345,8 @@ f_function_char*_buf_arg:
     f_var_len: n{F_string_result_as_arg}
     i_var_len: n{F_string_result_as_arg}
     c_var_len: n{F_string_result_as_arg}
+  helper:
+  - char_copy
   owner: library
 f_function_char*_buf_copy:
   name: f_function_char*_buf_copy
@@ -6364,11 +6414,11 @@ f_function_char*_buf_copy:
   - len
   c_local:
   - cxx
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - char_copy
   owner: library
 f_function_char*_cdesc_allocatable:
   name: f_function_char*_cdesc_allocatable
@@ -6392,9 +6442,6 @@ f_function_char*_cdesc_allocatable:
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
   f_temps:
   - cdesc
-  f_helper:
-  - array_context
-  - copy_string
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
@@ -6419,13 +6466,13 @@ f_function_char*_cdesc_allocatable:
   - '{c_var_cdesc}->rank = 0;'
   c_temps:
   - cdesc
-  c_helper:
-  - array_context
-  - copy_string
-  - type_defines
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - array_context
+  - copy_string
+  - type_defines
   owner: library
 f_function_char*_cdesc_pointer:
   name: f_function_char*_cdesc_pointer
@@ -6450,9 +6497,6 @@ f_function_char*_cdesc_pointer:
     - c_f_pointer
   f_temps:
   - cdesc
-  f_helper:
-  - array_context
-  - pointer_string
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
@@ -6477,12 +6521,13 @@ f_function_char*_cdesc_pointer:
   - '{c_var_cdesc}->rank = 0;'
   c_temps:
   - cdesc
-  c_helper:
-  - array_context
-  - type_defines
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - array_context
+  - type_defines
+  - pointer_string
   owner: library
 f_function_char*_cfi_allocatable:
   name: f_function_char*_cfi_allocatable
@@ -6510,7 +6555,7 @@ f_function_char*_cfi_allocatable:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -6588,14 +6633,14 @@ f_function_char*_cfi_arg:
   - len
   c_local:
   - cxx
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
     f_var: '{F_string_result_as_arg}'
     i_var: '{F_string_result_as_arg}'
     c_var: '{F_string_result_as_arg}'
+  helper:
+  - char_copy
   iface_header:
   - ISO_Fortran_binding.h
   owner: library
@@ -6656,11 +6701,11 @@ f_function_char*_cfi_copy:
   - len
   c_local:
   - cxx
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - char_copy
   iface_header:
   - ISO_Fortran_binding.h
   owner: library
@@ -6690,7 +6735,7 @@ f_function_char*_cfi_pointer:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -6821,9 +6866,6 @@ f_function_char_cdesc_allocatable:
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
   f_temps:
   - cdesc
-  f_helper:
-  - array_context
-  - copy_string
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
@@ -6848,13 +6890,13 @@ f_function_char_cdesc_allocatable:
   - '{c_var_cdesc}->rank = 0;'
   c_temps:
   - cdesc
-  c_helper:
-  - array_context
-  - copy_string
-  - type_defines
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - array_context
+  - copy_string
+  - type_defines
   owner: library
 f_function_char_cdesc_pointer:
   name: f_function_char_cdesc_pointer
@@ -6879,9 +6921,6 @@ f_function_char_cdesc_pointer:
     - c_f_pointer
   f_temps:
   - cdesc
-  f_helper:
-  - array_context
-  - pointer_string
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
@@ -6906,12 +6945,13 @@ f_function_char_cdesc_pointer:
   - '{c_var_cdesc}->rank = 0;'
   c_temps:
   - cdesc
-  c_helper:
-  - array_context
-  - type_defines
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - array_context
+  - type_defines
+  - pointer_string
   owner: library
 f_function_char_cfi_allocatable:
   name: f_function_char_cfi_allocatable
@@ -6939,7 +6979,7 @@ f_function_char_cfi_allocatable:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -6985,7 +7025,7 @@ f_function_char_cfi_pointer:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -7190,11 +7230,6 @@ f_function_native*_cdesc_allocatable:
   f_temps:
   - cdesc
   - capsule
-  f_helper:
-  - array_context
-  - copy_array
-  - array_context
-  - capsule_dtor
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
@@ -7231,12 +7266,15 @@ f_function_native*_cdesc_allocatable:
   c_temps:
   - cdesc
   - capsule
-  c_helper:
-  - array_context
-  - copy_array
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - array_context
+  - copy_array
+  - capsule_data_helper
+  - array_context
+  - capsule_dtor
   owner: library
 f_function_native*_cdesc_pointer:
   name: f_function_native*_cdesc_pointer
@@ -7263,8 +7301,6 @@ f_function_native*_cdesc_pointer:
     - c_f_pointer
   f_temps:
   - cdesc
-  f_helper:
-  - array_context
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
@@ -7289,11 +7325,11 @@ f_function_native*_cdesc_pointer:
   - '{c_var_cdesc}->size = {c_array_size};'
   c_temps:
   - cdesc
-  c_helper:
-  - array_context
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - array_context
   owner: library
 f_function_native*_cdesc_pointer_caller:
   name: f_function_native*_cdesc_pointer_caller
@@ -7332,10 +7368,6 @@ f_function_native*_cdesc_pointer_caller:
   f_temps:
   - cdesc
   - capsule
-  f_helper:
-  - array_context
-  - array_context
-  - capsule_helper
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
@@ -7370,12 +7402,15 @@ f_function_native*_cdesc_pointer_caller:
   c_temps:
   - cdesc
   - capsule
-  c_helper:
-  - array_context
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
     f_var_capsule: Crv
+  helper:
+  - array_context
+  - capsule_data_helper
+  - array_context
+  - capsule_helper
   owner: library
 f_function_native*_cfi_allocatable:
   name: f_function_native*_cfi_allocatable
@@ -8187,11 +8222,11 @@ f_function_string&_buf:
   - len
   c_local:
   - cxx
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - char_copy
   owner: library
 f_function_string&_buf_arg:
   name: f_function_string&_buf_arg
@@ -8264,8 +8299,6 @@ f_function_string&_buf_arg:
   - len
   c_local:
   - cxx
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -8275,6 +8308,8 @@ f_function_string&_buf_arg:
     f_var_len: n{F_string_result_as_arg}
     i_var_len: n{F_string_result_as_arg}
     c_var_len: n{F_string_result_as_arg}
+  helper:
+  - char_copy
   owner: library
 f_function_string&_buf_caller:
   name: f_function_string&_buf_caller
@@ -8339,11 +8374,11 @@ f_function_string&_buf_caller:
   - delete {cxx_var};
   c_temps:
   - len
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - char_copy
   owner: library
 f_function_string&_buf_copy:
   name: f_function_string&_buf_copy
@@ -8411,11 +8446,11 @@ f_function_string&_buf_copy:
   - len
   c_local:
   - cxx
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - char_copy
   owner: library
 f_function_string&_buf_copy_caller:
   name: f_function_string&_buf_copy_caller
@@ -8480,11 +8515,11 @@ f_function_string&_buf_copy_caller:
   - delete {cxx_var};
   c_temps:
   - len
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - char_copy
   owner: library
 f_function_string&_cdesc_allocatable:
   name: f_function_string&_cdesc_allocatable
@@ -8517,11 +8552,6 @@ f_function_string&_cdesc_allocatable:
   f_temps:
   - cdesc
   - capsule
-  f_helper:
-  - array_context
-  - array_context
-  - copy_string
-  - capsule_dtor
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
@@ -8553,13 +8583,16 @@ f_function_string&_cdesc_allocatable:
   c_temps:
   - cdesc
   - capsule
-  c_helper:
-  - array_context
-  - string_to_cdesc
-  - copy_string
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - array_context
+  - capsule_data_helper
+  - array_context
+  - string_to_cdesc
+  - copy_string
+  - capsule_dtor
   owner: library
 f_function_string&_cdesc_allocatable_caller:
   name: f_function_string&_cdesc_allocatable_caller
@@ -8592,11 +8625,6 @@ f_function_string&_cdesc_allocatable_caller:
   f_temps:
   - cdesc
   - capsule
-  f_helper:
-  - array_context
-  - array_context
-  - copy_string
-  - capsule_dtor
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
@@ -8628,13 +8656,16 @@ f_function_string&_cdesc_allocatable_caller:
   c_temps:
   - cdesc
   - capsule
-  c_helper:
-  - array_context
-  - string_to_cdesc
-  - copy_string
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - array_context
+  - capsule_data_helper
+  - array_context
+  - string_to_cdesc
+  - copy_string
+  - capsule_dtor
   owner: library
 f_function_string&_cdesc_allocatable_library:
   name: f_function_string&_cdesc_allocatable_library
@@ -8667,11 +8698,6 @@ f_function_string&_cdesc_allocatable_library:
   f_temps:
   - cdesc
   - capsule
-  f_helper:
-  - array_context
-  - array_context
-  - copy_string
-  - capsule_dtor
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
@@ -8703,13 +8729,16 @@ f_function_string&_cdesc_allocatable_library:
   c_temps:
   - cdesc
   - capsule
-  c_helper:
-  - array_context
-  - string_to_cdesc
-  - copy_string
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - array_context
+  - capsule_data_helper
+  - array_context
+  - string_to_cdesc
+  - copy_string
+  - capsule_dtor
   owner: library
 f_function_string&_cdesc_pointer:
   name: f_function_string&_cdesc_pointer
@@ -8735,9 +8764,6 @@ f_function_string&_cdesc_pointer:
     - c_f_pointer
   f_temps:
   - cdesc
-  f_helper:
-  - array_context
-  - pointer_string
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
@@ -8758,12 +8784,13 @@ f_function_string&_cdesc_pointer:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_temps:
   - cdesc
-  c_helper:
-  - array_context
-  - string_to_cdesc
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - array_context
+  - string_to_cdesc
+  - pointer_string
   owner: library
 f_function_string&_cdesc_pointer_caller:
   name: f_function_string&_cdesc_pointer_caller
@@ -8789,9 +8816,6 @@ f_function_string&_cdesc_pointer_caller:
     - c_f_pointer
   f_temps:
   - cdesc
-  f_helper:
-  - array_context
-  - pointer_string
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
@@ -8812,12 +8836,13 @@ f_function_string&_cdesc_pointer_caller:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_temps:
   - cdesc
-  c_helper:
-  - array_context
-  - string_to_cdesc
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - array_context
+  - string_to_cdesc
+  - pointer_string
   owner: library
 f_function_string&_cdesc_pointer_library:
   name: f_function_string&_cdesc_pointer_library
@@ -8843,9 +8868,6 @@ f_function_string&_cdesc_pointer_library:
     - c_f_pointer
   f_temps:
   - cdesc
-  f_helper:
-  - array_context
-  - pointer_string
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
@@ -8866,12 +8888,13 @@ f_function_string&_cdesc_pointer_library:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_temps:
   - cdesc
-  c_helper:
-  - array_context
-  - string_to_cdesc
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - array_context
+  - string_to_cdesc
+  - pointer_string
   owner: library
 f_function_string&_cfi_allocatable:
   name: f_function_string&_cfi_allocatable
@@ -8898,7 +8921,7 @@ f_function_string&_cfi_allocatable:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -8943,7 +8966,7 @@ f_function_string&_cfi_allocatable_caller:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -8988,7 +9011,7 @@ f_function_string&_cfi_allocatable_library:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -9066,14 +9089,14 @@ f_function_string&_cfi_arg:
   - cfi
   c_local:
   - cxx
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
     f_var: '{F_string_result_as_arg}'
     i_var: '{F_string_result_as_arg}'
     c_var: '{F_string_result_as_arg}'
+  helper:
+  - char_copy
   iface_header:
   - ISO_Fortran_binding.h
   owner: library
@@ -9132,11 +9155,11 @@ f_function_string&_cfi_copy:
   - cfi
   c_local:
   - cxx
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - char_copy
   iface_header:
   - ISO_Fortran_binding.h
   owner: library
@@ -9167,7 +9190,7 @@ f_function_string&_cfi_pointer:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -9228,7 +9251,7 @@ f_function_string&_cfi_pointer_caller:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -9289,7 +9312,7 @@ f_function_string&_cfi_pointer_library:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -9389,11 +9412,11 @@ f_function_string*_buf:
   - len
   c_local:
   - cxx
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - char_copy
   owner: library
 f_function_string*_buf_caller:
   name: f_function_string*_buf_caller
@@ -9458,11 +9481,11 @@ f_function_string*_buf_caller:
   - delete {cxx_var};
   c_temps:
   - len
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - char_copy
   owner: library
 f_function_string*_buf_copy:
   name: f_function_string*_buf_copy
@@ -9530,11 +9553,11 @@ f_function_string*_buf_copy:
   - len
   c_local:
   - cxx
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - char_copy
   owner: library
 f_function_string*_buf_copy_caller:
   name: f_function_string*_buf_copy_caller
@@ -9599,11 +9622,11 @@ f_function_string*_buf_copy_caller:
   - delete {cxx_var};
   c_temps:
   - len
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - char_copy
   owner: library
 f_function_string*_cdesc_allocatable:
   name: f_function_string*_cdesc_allocatable
@@ -9636,11 +9659,6 @@ f_function_string*_cdesc_allocatable:
   f_temps:
   - cdesc
   - capsule
-  f_helper:
-  - array_context
-  - array_context
-  - copy_string
-  - capsule_dtor
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
@@ -9672,13 +9690,16 @@ f_function_string*_cdesc_allocatable:
   c_temps:
   - cdesc
   - capsule
-  c_helper:
-  - array_context
-  - string_to_cdesc
-  - copy_string
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - array_context
+  - capsule_data_helper
+  - array_context
+  - string_to_cdesc
+  - copy_string
+  - capsule_dtor
   owner: library
 f_function_string*_cdesc_allocatable_caller:
   name: f_function_string*_cdesc_allocatable_caller
@@ -9711,11 +9732,6 @@ f_function_string*_cdesc_allocatable_caller:
   f_temps:
   - cdesc
   - capsule
-  f_helper:
-  - array_context
-  - array_context
-  - copy_string
-  - capsule_dtor
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
@@ -9747,13 +9763,16 @@ f_function_string*_cdesc_allocatable_caller:
   c_temps:
   - cdesc
   - capsule
-  c_helper:
-  - array_context
-  - string_to_cdesc
-  - copy_string
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - array_context
+  - capsule_data_helper
+  - array_context
+  - string_to_cdesc
+  - copy_string
+  - capsule_dtor
   owner: library
 f_function_string*_cdesc_allocatable_library:
   name: f_function_string*_cdesc_allocatable_library
@@ -9786,11 +9805,6 @@ f_function_string*_cdesc_allocatable_library:
   f_temps:
   - cdesc
   - capsule
-  f_helper:
-  - array_context
-  - array_context
-  - copy_string
-  - capsule_dtor
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
@@ -9822,13 +9836,16 @@ f_function_string*_cdesc_allocatable_library:
   c_temps:
   - cdesc
   - capsule
-  c_helper:
-  - array_context
-  - string_to_cdesc
-  - copy_string
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - array_context
+  - capsule_data_helper
+  - array_context
+  - string_to_cdesc
+  - copy_string
+  - capsule_dtor
   owner: library
 f_function_string*_cdesc_pointer:
   name: f_function_string*_cdesc_pointer
@@ -9854,9 +9871,6 @@ f_function_string*_cdesc_pointer:
     - c_f_pointer
   f_temps:
   - cdesc
-  f_helper:
-  - array_context
-  - pointer_string
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
@@ -9877,12 +9891,13 @@ f_function_string*_cdesc_pointer:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_temps:
   - cdesc
-  c_helper:
-  - array_context
-  - string_to_cdesc
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - array_context
+  - string_to_cdesc
+  - pointer_string
   owner: library
 f_function_string*_cdesc_pointer_caller:
   name: f_function_string*_cdesc_pointer_caller
@@ -9908,9 +9923,6 @@ f_function_string*_cdesc_pointer_caller:
     - c_f_pointer
   f_temps:
   - cdesc
-  f_helper:
-  - array_context
-  - pointer_string
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
@@ -9931,12 +9943,13 @@ f_function_string*_cdesc_pointer_caller:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_temps:
   - cdesc
-  c_helper:
-  - array_context
-  - string_to_cdesc
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - array_context
+  - string_to_cdesc
+  - pointer_string
   owner: library
 f_function_string*_cdesc_pointer_library:
   name: f_function_string*_cdesc_pointer_library
@@ -9962,9 +9975,6 @@ f_function_string*_cdesc_pointer_library:
     - c_f_pointer
   f_temps:
   - cdesc
-  f_helper:
-  - array_context
-  - pointer_string
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
@@ -9985,12 +9995,13 @@ f_function_string*_cdesc_pointer_library:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_temps:
   - cdesc
-  c_helper:
-  - array_context
-  - string_to_cdesc
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - array_context
+  - string_to_cdesc
+  - pointer_string
   owner: library
 f_function_string*_cfi_allocatable:
   name: f_function_string*_cfi_allocatable
@@ -10017,7 +10028,7 @@ f_function_string*_cfi_allocatable:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -10062,7 +10073,7 @@ f_function_string*_cfi_allocatable_caller:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -10107,7 +10118,7 @@ f_function_string*_cfi_allocatable_library:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -10182,11 +10193,11 @@ f_function_string*_cfi_copy:
   - cfi
   c_local:
   - cxx
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - char_copy
   iface_header:
   - ISO_Fortran_binding.h
   owner: library
@@ -10217,7 +10228,7 @@ f_function_string*_cfi_pointer:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -10278,7 +10289,7 @@ f_function_string*_cfi_pointer_caller:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -10339,7 +10350,7 @@ f_function_string*_cfi_pointer_library:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -10439,11 +10450,11 @@ f_function_string_buf:
   - len
   c_local:
   - cxx
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - char_copy
   owner: library
 f_function_string_buf_arg:
   name: f_function_string_buf_arg
@@ -10516,8 +10527,6 @@ f_function_string_buf_arg:
   - len
   c_local:
   - cxx
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -10527,6 +10536,8 @@ f_function_string_buf_arg:
     f_var_len: n{F_string_result_as_arg}
     i_var_len: n{F_string_result_as_arg}
     c_var_len: n{F_string_result_as_arg}
+  helper:
+  - char_copy
   owner: library
 f_function_string_buf_caller:
   name: f_function_string_buf_caller
@@ -10591,11 +10602,11 @@ f_function_string_buf_caller:
   - delete {cxx_var};
   c_temps:
   - len
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - char_copy
   owner: library
 f_function_string_buf_copy:
   name: f_function_string_buf_copy
@@ -10663,11 +10674,11 @@ f_function_string_buf_copy:
   - len
   c_local:
   - cxx
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - char_copy
   owner: library
 f_function_string_buf_copy_caller:
   name: f_function_string_buf_copy_caller
@@ -10732,11 +10743,11 @@ f_function_string_buf_copy_caller:
   - delete {cxx_var};
   c_temps:
   - len
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - char_copy
   owner: library
 f_function_string_cdesc_allocatable:
   name: f_function_string_cdesc_allocatable
@@ -10770,11 +10781,6 @@ f_function_string_cdesc_allocatable:
   f_temps:
   - cdesc
   - capsule
-  f_helper:
-  - array_context
-  - copy_string
-  - array_context
-  - capsule_dtor
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
@@ -10815,14 +10821,17 @@ f_function_string_cdesc_allocatable:
   - capsule
   c_local:
   - cxx
-  c_helper:
-  - array_context
-  - string_to_cdesc
-  - copy_string
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
     cxx_addr: ''
+  helper:
+  - array_context
+  - string_to_cdesc
+  - copy_string
+  - capsule_data_helper
+  - array_context
+  - capsule_dtor
   destructor_name: new_string
   destructor:
   - "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);"
@@ -10860,11 +10869,6 @@ f_function_string_cdesc_allocatable_caller:
   f_temps:
   - cdesc
   - capsule
-  f_helper:
-  - array_context
-  - copy_string
-  - array_context
-  - capsule_dtor
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
@@ -10905,14 +10909,17 @@ f_function_string_cdesc_allocatable_caller:
   - capsule
   c_local:
   - cxx
-  c_helper:
-  - array_context
-  - string_to_cdesc
-  - copy_string
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
     cxx_addr: ''
+  helper:
+  - array_context
+  - string_to_cdesc
+  - copy_string
+  - capsule_data_helper
+  - array_context
+  - capsule_dtor
   destructor_name: new_string
   destructor:
   - "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);"
@@ -10950,11 +10957,6 @@ f_function_string_cdesc_allocatable_library:
   f_temps:
   - cdesc
   - capsule
-  f_helper:
-  - array_context
-  - copy_string
-  - array_context
-  - capsule_dtor
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
@@ -10995,14 +10997,17 @@ f_function_string_cdesc_allocatable_library:
   - capsule
   c_local:
   - cxx
-  c_helper:
-  - array_context
-  - string_to_cdesc
-  - copy_string
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
     cxx_addr: ''
+  helper:
+  - array_context
+  - string_to_cdesc
+  - copy_string
+  - capsule_data_helper
+  - array_context
+  - capsule_dtor
   destructor_name: new_string
   destructor:
   - "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);"
@@ -11034,7 +11039,7 @@ f_function_string_cfi_allocatable:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -11077,7 +11082,7 @@ f_function_string_cfi_allocatable_caller:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -11122,7 +11127,7 @@ f_function_string_cfi_allocatable_library:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -11200,14 +11205,14 @@ f_function_string_cfi_arg:
   - cfi
   c_local:
   - cxx
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
     f_var: '{F_string_result_as_arg}'
     i_var: '{F_string_result_as_arg}'
     c_var: '{F_string_result_as_arg}'
+  helper:
+  - char_copy
   iface_header:
   - ISO_Fortran_binding.h
   owner: library
@@ -11266,11 +11271,11 @@ f_function_string_cfi_copy:
   - cfi
   c_local:
   - cxx
-  c_helper:
-  - char_copy
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - char_copy
   iface_header:
   - ISO_Fortran_binding.h
   owner: library
@@ -11301,7 +11306,7 @@ f_function_string_cfi_pointer:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -11362,7 +11367,7 @@ f_function_string_cfi_pointer_caller:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -11423,7 +11428,7 @@ f_function_string_cfi_pointer_library:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -11518,8 +11523,6 @@ f_function_struct*_cdesc_pointer:
     - c_f_pointer
   f_temps:
   - cdesc
-  f_helper:
-  - array_context
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
@@ -11544,11 +11547,11 @@ f_function_struct*_cdesc_pointer:
   - '{c_var_cdesc}->size = {c_array_size};'
   c_temps:
   - cdesc
-  c_helper:
-  - array_context
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - array_context
   owner: library
 f_function_struct*_pointer:
   name: f_function_struct*_pointer
@@ -11612,8 +11615,6 @@ f_function_vector<native>_cdesc_allocatable:
     - C_SIZE_T
   f_temps:
   - cdesc
-  f_helper:
-  - copy_array
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
@@ -11645,12 +11646,12 @@ f_function_vector<native>_cdesc_allocatable:
   - cdesc
   c_local:
   - cxx
-  c_helper:
-  - copy_array
-  - type_defines
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - copy_array
+  - type_defines
   destructor_name: std_vector_{cxx_T}
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
@@ -11667,9 +11668,7 @@ f_function_vector_scalar_cdesc:
     iso_c_binding:
     - C_LOC
     - C_SIZE_T
-  f_helper:
-  - copy_array
-  c_helper:
+  helper:
   - copy_array
   owner: library
 f_function_void*:
@@ -11766,8 +11765,6 @@ f_getter_native*_cdesc_pointer:
     - c_f_pointer
   f_temps:
   - cdesc
-  f_helper:
-  - array_context
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
@@ -11792,13 +11789,13 @@ f_getter_native*_cdesc_pointer:
   - '{c_var_cdesc}->size = {c_array_size};'
   c_temps:
   - cdesc
-  c_helper:
-  - array_context
-  - type_defines
-  - array_context
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - array_context
+  - type_defines
+  - array_context
   owner: library
 f_getter_native*_pointer:
   name: f_getter_native*_pointer
@@ -11846,9 +11843,6 @@ f_getter_string_cdesc_allocatable:
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
   f_temps:
   - cdesc
-  f_helper:
-  - array_context
-  - copy_string
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
@@ -11871,12 +11865,12 @@ f_getter_string_cdesc_allocatable:
   - '{c_var_cdesc}->rank = 0;'
   c_temps:
   - cdesc
-  c_helper:
-  - array_context
-  - copy_string
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - array_context
+  - copy_string
   owner: library
 f_getter_struct**_cdesc_raw:
   name: f_getter_struct**_cdesc_raw
@@ -11903,8 +11897,6 @@ f_getter_struct**_cdesc_raw:
     - c_f_pointer
   f_temps:
   - cdesc
-  f_helper:
-  - array_context
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
@@ -11929,13 +11921,13 @@ f_getter_struct**_cdesc_raw:
   - '{c_var_cdesc}->size = {c_array_size};'
   c_temps:
   - cdesc
-  c_helper:
-  - array_context
-  - type_defines
-  - array_context
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - array_context
+  - type_defines
+  - array_context
   owner: library
 f_getter_struct*_cdesc_pointer:
   name: f_getter_struct*_cdesc_pointer
@@ -11965,8 +11957,6 @@ f_getter_struct*_cdesc_pointer:
     - c_f_pointer
   f_temps:
   - cdesc
-  f_helper:
-  - array_context
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_function-to-subroutine'
@@ -11991,13 +11981,13 @@ f_getter_struct*_cdesc_pointer:
   - '{c_var_cdesc}->size = {c_array_size};'
   c_temps:
   - cdesc
-  c_helper:
-  - array_context
-  - type_defines
-  - array_context
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - array_context
+  - type_defines
+  - array_context
   owner: library
 f_getter_struct*_fapi_pointer:
   name: f_getter_struct*_fapi_pointer
@@ -12191,7 +12181,7 @@ f_in_char**_buf:
   - len
   c_local:
   - cxx
-  c_helper:
+  helper:
   - char_array_alloc
   - char_array_free
   owner: library
@@ -12237,7 +12227,7 @@ f_in_char**_cfi:
   - size
   c_local:
   - cxx
-  c_helper:
+  helper:
   - char_array_alloc
   - char_array_free
   iface_header:
@@ -12298,7 +12288,7 @@ f_in_char*_buf:
   - len
   c_local:
   - cxx
-  c_helper:
+  helper:
   - char_alloc
   - char_free
   owner: library
@@ -12373,7 +12363,7 @@ f_in_char*_cfi:
   - len
   c_local:
   - cxx
-  c_helper:
+  helper:
   - char_alloc
   - char_free
   iface_header:
@@ -12561,9 +12551,6 @@ f_in_native*_cdesc:
     - C_LOC
   f_temps:
   - cdesc
-  f_helper:
-  - type_defines
-  - array_context
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_cdesc_pass'
@@ -12582,7 +12569,8 @@ f_in_native*_cdesc:
   - '{cxx_var}'
   c_temps:
   - cdesc
-  c_helper:
+  helper:
+  - type_defines
   - array_context
   owner: library
 f_in_native*_cfi:
@@ -12944,7 +12932,7 @@ f_in_string&_buf:
   c_local:
   - cxx
   - trim
-  c_helper:
+  helper:
   - char_len_trim
   owner: library
 f_in_string&_cfi:
@@ -12989,7 +12977,7 @@ f_in_string&_cfi:
   c_local:
   - cxx
   - trim
-  c_helper:
+  helper:
   - char_len_trim
   iface_header:
   - ISO_Fortran_binding.h
@@ -13076,7 +13064,7 @@ f_in_string*_buf:
   c_local:
   - cxx
   - trim
-  c_helper:
+  helper:
   - char_len_trim
   owner: library
 f_in_string*_cfi:
@@ -13123,7 +13111,7 @@ f_in_string*_cfi:
   c_local:
   - cxx
   - trim
-  c_helper:
+  helper:
   - char_len_trim
   iface_header:
   - ISO_Fortran_binding.h
@@ -13183,7 +13171,7 @@ f_in_string_buf:
   c_local:
   - cxx
   - trim
-  c_helper:
+  helper:
   - char_len_trim
   owner: library
 f_in_string_cfi:
@@ -13228,7 +13216,7 @@ f_in_string_cfi:
   c_local:
   - cxx
   - trim
-  c_helper:
+  helper:
   - char_len_trim
   iface_header:
   - ISO_Fortran_binding.h
@@ -13610,7 +13598,7 @@ f_in_vector<string>&_buf:
   - i
   - n
   - s
-  c_helper:
+  helper:
   - char_len_trim
   owner: library
 f_in_vector<string>*_buf:
@@ -13677,7 +13665,7 @@ f_in_vector<string>*_buf:
   - i
   - n
   - s
-  c_helper:
+  helper:
   - char_len_trim
   owner: library
 f_in_vector<string>_buf:
@@ -13744,7 +13732,7 @@ f_in_vector<string>_buf:
   - i
   - n
   - s
-  c_helper:
+  helper:
   - char_len_trim
   owner: library
 f_in_void:
@@ -13888,9 +13876,6 @@ f_in_void*_cdesc:
     - C_LOC
   f_temps:
   - cdesc
-  f_helper:
-  - type_defines
-  - array_context
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_cdesc_pass'
@@ -13909,7 +13894,8 @@ f_in_void*_cdesc:
   - '{cxx_var}'
   c_temps:
   - cdesc
-  c_helper:
+  helper:
+  - type_defines
   - array_context
   owner: library
 f_inout_bool*:
@@ -14043,7 +14029,7 @@ f_inout_char*_buf:
   - len
   c_local:
   - cxx
-  c_helper:
+  helper:
   - char_copy
   - char_alloc
   - char_free
@@ -14083,7 +14069,7 @@ f_inout_char*_cfi:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Character argument passed as CFI_desc_t.
-  - Blank fill C argument.
+  - Copy cxx variable to c argument.
   - Allocate a local char variable in C wrapper.
   - Pass cxx local variable to library.
   f_dummy_arg:
@@ -14099,7 +14085,7 @@ f_inout_char*_cfi:
   - '    c_mixin_cfi_arg'
   - '  c_mixin_cfi-unpack-base-addr'
   - '  c_mixin_cfi-unpack-len'
-  - '  c_mixin_char-blank-fill'
+  - '  c_mixin_char-copy'
   - '  c_mixin_char-alloc'
   - '  c_mixin_arg-call-cxx'
   i_dummy_arg:
@@ -14115,15 +14101,15 @@ f_inout_char*_cfi:
   c_arg_call:
   - '{c_local_cxx}'
   c_post_call:
-  - '{c_helper_char_blank_fill}({c_var}, {c_var_len});'
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   - '{c_helper_char_free}({c_local_cxx});'
   c_temps:
   - cfi
   - len
   c_local:
   - cxx
-  c_helper:
-  - char_blank_fill
+  helper:
+  - char_copy
   - char_alloc
   - char_free
   iface_header:
@@ -14262,9 +14248,6 @@ f_inout_native*_cdesc:
     - C_LOC
   f_temps:
   - cdesc
-  f_helper:
-  - type_defines
-  - array_context
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_cdesc_pass'
@@ -14283,7 +14266,8 @@ f_inout_native*_cdesc:
   - '{cxx_var}'
   c_temps:
   - cdesc
-  c_helper:
+  helper:
+  - type_defines
   - array_context
   owner: library
 f_inout_native*_cfi:
@@ -14560,7 +14544,7 @@ f_inout_string&_buf:
   c_local:
   - cxx
   - trim
-  c_helper:
+  helper:
   - char_len_trim
   - char_copy
   owner: library
@@ -14612,7 +14596,7 @@ f_inout_string&_cfi:
   c_local:
   - cxx
   - trim
-  c_helper:
+  helper:
   - char_len_trim
   - char_copy
   iface_header:
@@ -14727,7 +14711,7 @@ f_inout_string*_buf:
   c_local:
   - cxx
   - trim
-  c_helper:
+  helper:
   - char_len_trim
   - char_copy
   owner: library
@@ -14777,7 +14761,7 @@ f_inout_string*_cfi:
   c_local:
   - cxx
   - trim
-  c_helper:
+  helper:
   - char_len_trim
   - char_copy
   iface_header:
@@ -14872,9 +14856,6 @@ f_inout_vector<native>&_cdesc:
     - C_LOC
   f_temps:
   - cdesc
-  f_helper:
-  - array_context
-  - copy_array
   mixin_names:
   - '  c_mixin_inout_vector<native>_cdesc'
   - '    f_mixin_cdesc_inout_array'
@@ -14917,7 +14898,8 @@ f_inout_vector<native>&_cdesc:
   - cdesc
   c_local:
   - cxx
-  c_helper:
+  helper:
+  - array_context
   - array_context
   - type_defines
   - copy_array
@@ -14956,9 +14938,6 @@ f_inout_vector<native>&_cdesc_allocatable:
     - C_LOC
   f_temps:
   - cdesc
-  f_helper:
-  - array_context
-  - copy_array
   mixin_names:
   - '  c_mixin_inout_vector<native>_cdesc'
   - '    f_mixin_cdesc_inout_array'
@@ -15001,7 +14980,8 @@ f_inout_vector<native>&_cdesc_allocatable:
   - cdesc
   c_local:
   - cxx
-  c_helper:
+  helper:
+  - array_context
   - array_context
   - type_defines
   - copy_array
@@ -15085,7 +15065,7 @@ f_inout_vector_buf_targ_string_scalar:
   - i
   - n
   - s
-  c_helper:
+  helper:
   - char_len_trim
   owner: library
 f_inout_void**:
@@ -15143,9 +15123,6 @@ f_inout_void*_cdesc:
     - C_LOC
   f_temps:
   - cdesc
-  f_helper:
-  - type_defines
-  - array_context
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_cdesc_pass'
@@ -15164,7 +15141,8 @@ f_inout_void*_cdesc:
   - '{cxx_var}'
   c_temps:
   - cdesc
-  c_helper:
+  helper:
+  - type_defines
   - array_context
   owner: library
 f_mixin_arg-call-fvar:
@@ -15197,9 +15175,6 @@ f_mixin_capsule_arg:
   - '{f_var_capsule}%mem'
   f_temps:
   - capsule
-  f_helper:
-  - array_context
-  - capsule_helper
   f_need_wrapper: true
   mixin_names:
   - '  c_mixin_capsule_pass'
@@ -15215,6 +15190,10 @@ f_mixin_capsule_arg:
   - capsule
   fmtdict:
     f_var_capsule: Crv
+  helper:
+  - capsule_data_helper
+  - array_context
+  - capsule_helper
   owner: library
 f_mixin_capsule_dtor:
   name: f_mixin_capsule_dtor
@@ -15223,7 +15202,7 @@ f_mixin_capsule_dtor:
   - Release memory from capsule.
   f_post_call:
   - call {f_helper_capsule_dtor}({f_var_capsule})
-  f_helper:
+  helper:
   - capsule_dtor
   owner: library
 f_mixin_capsule_function_shadow:
@@ -15249,8 +15228,6 @@ f_mixin_capsule_pass:
   - '{f_var_capsule}'
   f_temps:
   - capsule
-  f_helper:
-  - array_context
   f_need_wrapper: true
   mixin_names:
   - '  c_mixin_capsule_pass'
@@ -15264,6 +15241,9 @@ f_mixin_capsule_pass:
   - '{C_capsule_data_type} *{c_var_capsule}'
   c_temps:
   - capsule
+  helper:
+  - capsule_data_helper
+  - array_context
   owner: library
 f_mixin_capsule_use:
   name: f_mixin_capsule_use
@@ -15281,9 +15261,6 @@ f_mixin_capsule_use:
   - call {f_helper_capsule_dtor}({f_var_capsule})
   f_temps:
   - capsule
-  f_helper:
-  - array_context
-  - capsule_dtor
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_capsule_pass'
@@ -15303,6 +15280,10 @@ f_mixin_capsule_use:
   - '{c_var_capsule}->idtor = {idtor};'
   c_temps:
   - capsule
+  helper:
+  - capsule_data_helper
+  - array_context
+  - capsule_dtor
   owner: library
 f_mixin_cdesc_char_allocate:
   name: f_mixin_cdesc_char_allocate
@@ -15315,9 +15296,7 @@ f_mixin_cdesc_char_allocate:
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
-  f_helper:
-  - copy_string
-  c_helper:
+  helper:
   - copy_string
   owner: library
 f_mixin_cdesc_char_pointer:
@@ -15332,7 +15311,7 @@ f_mixin_cdesc_char_pointer:
   f_module:
     iso_c_binding:
     - c_f_pointer
-  f_helper:
+  helper:
   - pointer_string
   owner: library
 f_mixin_cdesc_getter:
@@ -15347,7 +15326,7 @@ f_mixin_cdesc_getter:
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
   - '{c_var_cdesc}->size = {c_array_size};'
-  c_helper:
+  helper:
   - type_defines
   - array_context
   owner: library
@@ -15367,7 +15346,7 @@ f_mixin_cdesc_inout_array:
     - C_SIZE_T
   f_temps:
   - cdesc
-  f_helper:
+  helper:
   - array_context
   owner: library
 f_mixin_cdesc_native_allocate:
@@ -15388,9 +15367,7 @@ f_mixin_cdesc_native_allocate:
     iso_c_binding:
     - C_LOC
     - C_SIZE_T
-  f_helper:
-  - copy_array
-  c_helper:
+  helper:
   - copy_array
   owner: library
 f_mixin_cdesc_native_pointer:
@@ -15430,7 +15407,7 @@ f_mixin_cdesc_out_char_array_allocatable:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - 'character({f_char_len}){f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}'
+  - 'character(len=:){f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}'
   f_post_call:
   - allocate({f_char_type}{f_var}({f_var_cdesc}%size))
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
@@ -15450,12 +15427,10 @@ f_mixin_cdesc_out_native_allocate:
   f_module:
     iso_c_binding:
     - C_LOC
-  f_helper:
-  - copy_array
-  c_helper:
-  - copy_array
   fmtdict:
     f_deref_attr: ', allocatable, target'
+  helper:
+  - copy_array
   owner: library
 f_mixin_cdesc_out_native_pointer:
   name: f_mixin_cdesc_out_native_pointer
@@ -15485,8 +15460,6 @@ f_mixin_cdesc_pass:
   - '{f_var_cdesc}'
   f_temps:
   - cdesc
-  f_helper:
-  - array_context
   f_need_wrapper: true
   i_dummy_arg:
   - '{i_var_cdesc}'
@@ -15498,7 +15471,7 @@ f_mixin_cdesc_pass:
   - '{C_array_type} *{c_var_cdesc}'
   c_temps:
   - cdesc
-  c_helper:
+  helper:
   - array_context
   owner: library
 f_mixin_cfi_arg-character-array:
@@ -15541,7 +15514,7 @@ f_mixin_cfi_character-deferred-length:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
   c_temps:
@@ -15756,12 +15729,13 @@ f_mixin_helper_array_string_allocatable:
   name: f_mixin_helper_array_string_allocatable
   intent: mixin
   comments:
+  - Create local std::string pointer.
   - Assign to std::string pointer from C++ function.
   - Copy into Fortran allocated memory.
   f_post_call:
   - call {f_helper_array_string_allocatable}({f_var_cdesc}, {f_var_capsule})
-  f_helper:
-  - array_string_allocatable
+  mixin_names:
+  - '  c_mixin_local-string*'
   c_pre_call:
   - std::string *{cxx_var};
   c_post_call:
@@ -15772,7 +15746,7 @@ f_mixin_helper_array_string_allocatable:
   - -}} else {{+
   - '{c_var_cdesc}->elem_len = {c_helper_array_string_out_len}({cxx_var}, {c_var_cdesc}->size);'
   - -}}
-  c_helper:
+  helper:
   - array_string_allocatable
   - array_string_out_len
   owner: library
@@ -15783,9 +15757,7 @@ f_mixin_helper_vector_string_allocatable:
   - Allocate a vector<string> variable.
   - Copy into Fortran allocated memory.
   f_post_call:
-  - call {f_helper_vector_string_allocatable}({f_var_cdesc}, {f_var_capsule})
-  f_helper:
-  - vector_string_allocatable
+  - call {f_helper_cdesc_vector_string_allocatable}({f_var_cdesc}, {f_var_capsule})
   c_pre_call:
   - std::vector<std::string> *{c_local_cxx} = new std::vector<std::string>;
   c_post_call:
@@ -15800,8 +15772,8 @@ f_mixin_helper_vector_string_allocatable:
   - '{c_var_capsule}->idtor = {idtor};'
   c_local:
   - cxx
-  c_helper:
-  - vector_string_allocatable
+  helper:
+  - cdesc_vector_string_allocatable
   - vector_string_out_len
   owner: library
 f_mixin_in_2d_vector_buf:
@@ -15988,9 +15960,7 @@ f_mixin_out_vector<native>_copy:
     - '{targs[0].f_kind}'
     - C_SIZE_T
     - C_LOC
-  f_helper:
-  - copy_array
-  c_helper:
+  helper:
   - copy_array
   - type_defines
   owner: library
@@ -16107,7 +16077,7 @@ f_mixin_str_array:
   f_module:
     iso_c_binding:
     - C_LOC
-  f_helper:
+  helper:
   - type_defines
   - array_context
   owner: library
@@ -16456,9 +16426,6 @@ f_out_char**_cdesc_pointer:
     - c_f_pointer
   f_temps:
   - cdesc
-  f_helper:
-  - pointer_string
-  - array_context
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_dummy_arg'
@@ -16487,7 +16454,8 @@ f_out_char**_cdesc_pointer:
   - '{c_var_cdesc}->rank = 0;'
   c_temps:
   - cdesc
-  c_helper:
+  helper:
+  - pointer_string
   - array_context
   - type_defines
   owner: library
@@ -16517,7 +16485,7 @@ f_out_char**_cfi_pointer:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
@@ -16602,7 +16570,7 @@ f_out_char*_buf:
   - '{c_helper_char_blank_fill}({c_var}, {c_var_len});'
   c_temps:
   - len
-  c_helper:
+  helper:
   - char_blank_fill
   owner: library
 f_out_char*_capi:
@@ -16687,7 +16655,7 @@ f_out_char*_cfi:
   - len
   c_local:
   - cxx
-  c_helper:
+  helper:
   - char_copy
   iface_header:
   - ISO_Fortran_binding.h
@@ -16827,8 +16795,6 @@ f_out_native*&_cdesc:
     - c_f_pointer
   f_temps:
   - cdesc
-  f_helper:
-  - array_context
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_cdesc_pass'
@@ -16856,7 +16822,7 @@ f_out_native*&_cdesc:
   - '{c_var_cdesc}->size = {c_array_size};'
   c_temps:
   - cdesc
-  c_helper:
+  helper:
   - array_context
   owner: library
 f_out_native*&_cdesc_pointer:
@@ -16885,8 +16851,6 @@ f_out_native*&_cdesc_pointer:
     - c_f_pointer
   f_temps:
   - cdesc
-  f_helper:
-  - array_context
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_cdesc_pass'
@@ -16914,7 +16878,7 @@ f_out_native*&_cdesc_pointer:
   - '{c_var_cdesc}->size = {c_array_size};'
   c_temps:
   - cdesc
-  c_helper:
+  helper:
   - array_context
   owner: library
 f_out_native***:
@@ -16986,11 +16950,6 @@ f_out_native**_cdesc_allocatable:
   f_temps:
   - cdesc
   - capsule
-  f_helper:
-  - array_context
-  - copy_array
-  - array_context
-  - capsule_dtor
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
@@ -17031,11 +16990,14 @@ f_out_native**_cdesc_allocatable:
   c_temps:
   - cdesc
   - capsule
-  c_helper:
-  - array_context
-  - copy_array
   fmtdict:
     f_deref_attr: ', allocatable, target'
+  helper:
+  - array_context
+  - copy_array
+  - capsule_data_helper
+  - array_context
+  - capsule_dtor
   owner: library
 f_out_native**_cdesc_pointer:
   name: f_out_native**_cdesc_pointer
@@ -17067,8 +17029,6 @@ f_out_native**_cdesc_pointer:
     - c_f_pointer
   f_temps:
   - cdesc
-  f_helper:
-  - array_context
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_cdesc_pass'
@@ -17096,7 +17056,7 @@ f_out_native**_cdesc_pointer:
   - '{c_var_cdesc}->size = {c_array_size};'
   c_temps:
   - cdesc
-  c_helper:
+  helper:
   - array_context
   owner: library
 f_out_native**_cfi_allocatable:
@@ -17272,9 +17232,6 @@ f_out_native*_cdesc:
     - C_LOC
   f_temps:
   - cdesc
-  f_helper:
-  - type_defines
-  - array_context
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_cdesc_pass'
@@ -17293,7 +17250,8 @@ f_out_native*_cdesc:
   - '{cxx_var}'
   c_temps:
   - cdesc
-  c_helper:
+  helper:
+  - type_defines
   - array_context
   owner: library
 f_out_native*_cfi_allocatable:
@@ -17405,7 +17363,7 @@ f_out_string&_buf:
   - len
   c_local:
   - cxx
-  c_helper:
+  helper:
   - char_copy
   owner: library
 f_out_string&_cfi:
@@ -17454,7 +17412,7 @@ f_out_string&_cfi:
   - len
   c_local:
   - cxx
-  c_helper:
+  helper:
   - char_copy
   iface_header:
   - ISO_Fortran_binding.h
@@ -17467,6 +17425,7 @@ f_out_string**_cdesc_allocatable:
   - Pass capsule as argument to C wrapper.
   - Create a local Fortran capsule.
   - Allocate Fortran array from cdesc.
+  - Create local std::string pointer.
   - Assign to std::string pointer from C++ function.
   - Copy into Fortran allocated memory.
   - Pass address of cxx variable to library.
@@ -17475,7 +17434,7 @@ f_out_string**_cdesc_allocatable:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - 'character({f_char_len}){f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}'
+  - 'character(len=:){f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
@@ -17493,11 +17452,6 @@ f_out_string**_cdesc_allocatable:
   f_temps:
   - cdesc
   - capsule
-  f_helper:
-  - array_context
-  - array_context
-  - array_string_allocatable
-  - capsule_dtor
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_cdesc_pass'
@@ -17505,6 +17459,7 @@ f_out_string**_cdesc_allocatable:
   - '    c_mixin_capsule_pass'
   - '  f_mixin_cdesc_out_char_array_allocatable'
   - '  f_mixin_helper_array_string_allocatable'
+  - '    c_mixin_local-string*'
   - '  c_mixin_arg-call-cvar-address'
   - '  c_mixin_capsule_fill_native'
   - '  f_mixin_capsule_dtor'
@@ -17537,10 +17492,13 @@ f_out_string**_cdesc_allocatable:
   c_temps:
   - cdesc
   - capsule
-  c_helper:
+  helper:
+  - array_context
+  - capsule_data_helper
   - array_context
   - array_string_allocatable
   - array_string_out_len
+  - capsule_dtor
   owner: library
 f_out_string**_cdesc_copy:
   name: f_out_string**_cdesc_copy
@@ -17548,6 +17506,7 @@ f_out_string**_cdesc_copy:
   comments:
   - Collect information about a string argument.
   - Pass cdesc as argument to C wrapper.
+  - Create local std::string pointer.
   - Pass address of cxx variable to library.
   notes:
   - Pass a cdesc down to describe the memory and a capsule to hold the
@@ -17572,13 +17531,11 @@ f_out_string**_cdesc_copy:
     - C_LOC
   f_temps:
   - cdesc
-  f_helper:
-  - type_defines
-  - array_context
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_str_array'
   - '  f_mixin_cdesc_pass'
+  - '  c_mixin_local-string*'
   - '  c_mixin_arg-call-cvar-address'
   i_dummy_arg:
   - '{i_var_cdesc}'
@@ -17593,11 +17550,11 @@ f_out_string**_cdesc_copy:
   c_arg_call:
   - '&{cxx_var}'
   c_post_call:
-  - "{c_helper_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});"
+  - "{c_helper_cdesc_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});"
   c_temps:
   - cdesc
-  c_helper:
-  - array_string_out
+  helper:
+  - cdesc_array_string_out
   owner: library
 f_out_string**_cfi_allocatable:
   name: f_out_string**_cfi_allocatable
@@ -17605,7 +17562,9 @@ f_out_string**_cfi_allocatable:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Create local std::string pointer.
-  - Pass address of local cxx variable to library.
+  - Pass address of cxx variable to library.
+  - Compute maximum length of array of std::string.
+  - Allocate for character (requires +dimension).
   notes:
   - std::string **strs +intent(out)+dimension(nstrs)+deref(allocatable),
   - int *nstrs+intent(out)+hidden
@@ -17618,25 +17577,43 @@ f_out_string**_cfi_allocatable:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
+  - '  c_mixin_character-deferred-length'
+  - '  c_mixin_dummy_arg'
   - '  c_mixin_cfi_arg'
-  - '  c_mixin_out_string**'
-  - '  c_mixin_arg-call-cxx-address'
+  - '  c_mixin_local-string*'
+  - '  c_mixin_arg-call-cvar-address'
+  - '  c_mixin_string_max_len'
+  - '  c_mixin_cfi_string**_allocatable'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(*){i_intent_attr} :: {i_var}{f_assumed_shape}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
-  - std::string *{c_local_cxx};
+  - std::string *{cxx_var};
   c_arg_call:
-  - '&{c_local_cxx}'
+  - '&{cxx_var}'
   c_post_call:
-  - // Allocate and copy into {c_var}
+  - size_t {c_var_len} = {c_char_len};
+  - if ({c_var_len} <= 0) {{+
+  - '{c_var_len} = {c_helper_array_string_out_len}({cxx_var}, {c_array_size2});'
+  - -}}
+  - if ({cxx_var} != {nullptr}) {{+
+  - "{c_temp_lower_decl}{c_temp_extents_decl}int SH_ret = CFI_allocate({c_var_cfi},\
+    \ \t{c_temp_lower_use}, \t{c_temp_extents_use}, \t{c_var_len});"
+  - if (SH_ret == CFI_SUCCESS) {{+
+  - '{c_helper_cfi_array_string_out}({c_var_cfi}, {cxx_var}, {c_array_size2});'
+  - -}}
+  - -}}
   c_temps:
   - cfi
-  c_local:
-  - cxx
+  - len
+  - extents
+  - lower
+  helper:
+  - array_string_out_len
+  - cfi_array_string_out
   iface_header:
   - ISO_Fortran_binding.h
   owner: library
@@ -17646,7 +17623,7 @@ f_out_string**_cfi_copy:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Create local std::string pointer.
-  - Pass address of local cxx variable to library.
+  - Pass address of cxx variable to library.
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
@@ -17657,8 +17634,8 @@ f_out_string**_cfi_copy:
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
   - '  c_mixin_cfi_arg'
-  - '  c_mixin_out_string**'
-  - '  c_mixin_arg-call-cxx-address'
+  - '  c_mixin_local-string*'
+  - '  c_mixin_arg-call-cvar-address'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -17666,15 +17643,15 @@ f_out_string**_cfi_copy:
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
-  - std::string *{c_local_cxx};
+  - std::string *{cxx_var};
   c_arg_call:
-  - '&{c_local_cxx}'
+  - '&{cxx_var}'
   c_post_call:
-  - // Copy results into {c_var}
+  - '{c_helper_cfi_array_string_out}({c_var_cfi}, {cxx_var}, {c_array_size2});'
   c_temps:
   - cfi
-  c_local:
-  - cxx
+  helper:
+  - cfi_array_string_out
   iface_header:
   - ISO_Fortran_binding.h
   owner: library
@@ -17761,7 +17738,7 @@ f_out_string*_buf:
   - len
   c_local:
   - cxx
-  c_helper:
+  helper:
   - char_copy
   owner: library
 f_out_string*_cfi:
@@ -17808,7 +17785,7 @@ f_out_string*_cfi:
   - len
   c_local:
   - cxx
-  c_helper:
+  helper:
   - char_copy
   iface_header:
   - ISO_Fortran_binding.h
@@ -17903,9 +17880,6 @@ f_out_vector<native>&_cdesc:
     - C_LOC
   f_temps:
   - cdesc
-  f_helper:
-  - array_context
-  - copy_array
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_cdesc_pass'
@@ -17937,7 +17911,7 @@ f_out_vector<native>&_cdesc:
   - cdesc
   c_local:
   - cxx
-  c_helper:
+  helper:
   - array_context
   - copy_array
   - type_defines
@@ -17976,8 +17950,6 @@ f_out_vector<native>&_cdesc_allocatable:
     - C_SIZE_T
   f_temps:
   - cdesc
-  f_helper:
-  - copy_array
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_cdesc_pass'
@@ -18008,7 +17980,7 @@ f_out_vector<native>&_cdesc_allocatable:
   - cdesc
   c_local:
   - cxx
-  c_helper:
+  helper:
   - copy_array
   destructor_name: std_vector_{cxx_T}
   destructor:
@@ -18044,9 +18016,6 @@ f_out_vector<native>*_cdesc:
     - C_LOC
   f_temps:
   - cdesc
-  f_helper:
-  - array_context
-  - copy_array
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_cdesc_pass'
@@ -18078,7 +18047,7 @@ f_out_vector<native>*_cdesc:
   - cdesc
   c_local:
   - cxx
-  c_helper:
+  helper:
   - array_context
   - copy_array
   - type_defines
@@ -18117,8 +18086,6 @@ f_out_vector<native>*_cdesc_allocatable:
     - C_SIZE_T
   f_temps:
   - cdesc
-  f_helper:
-  - copy_array
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_cdesc_pass'
@@ -18149,7 +18116,7 @@ f_out_vector<native>*_cdesc_allocatable:
   - cdesc
   c_local:
   - cxx
-  c_helper:
+  helper:
   - copy_array
   destructor_name: std_vector_{cxx_T}
   destructor:
@@ -18185,9 +18152,6 @@ f_out_vector<string>&_cdesc:
     - C_LOC
   f_temps:
   - cdesc
-  f_helper:
-  - type_defines
-  - array_context
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_str_array'
@@ -18206,11 +18170,13 @@ f_out_vector<string>&_cdesc:
   c_arg_call:
   - '{cxx_var}'
   c_post_call:
-  - "{c_helper_vector_string_out}(\t{c_var_cdesc},\t {cxx_var});"
+  - "{c_helper_cdesc_vector_string_out}(\t{c_var_cdesc},\t {cxx_var});"
   c_temps:
   - cdesc
-  c_helper:
-  - vector_string_out
+  helper:
+  - type_defines
+  - array_context
+  - cdesc_vector_string_out
   owner: library
 f_out_vector<string>&_cdesc_allocatable:
   name: f_out_vector<string>&_cdesc_allocatable
@@ -18227,7 +18193,7 @@ f_out_vector<string>&_cdesc_allocatable:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - 'character({f_char_len}){f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}'
+  - 'character(len=:){f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
@@ -18237,7 +18203,7 @@ f_out_vector<string>&_cdesc_allocatable:
   f_post_call:
   - allocate({f_char_type}{f_var}({f_var_cdesc}%size))
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
-  - call {f_helper_vector_string_allocatable}({f_var_cdesc}, {f_var_capsule})
+  - call {f_helper_cdesc_vector_string_allocatable}({f_var_cdesc}, {f_var_capsule})
   - call {f_helper_capsule_dtor}({f_var_capsule})
   f_module:
     iso_c_binding:
@@ -18245,11 +18211,6 @@ f_out_vector<string>&_cdesc_allocatable:
   f_temps:
   - cdesc
   - capsule
-  f_helper:
-  - array_context
-  - array_context
-  - vector_string_allocatable
-  - capsule_dtor
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_cdesc_pass'
@@ -18290,10 +18251,13 @@ f_out_vector<string>&_cdesc_allocatable:
   - capsule
   c_local:
   - cxx
-  c_helper:
+  helper:
   - array_context
-  - vector_string_allocatable
+  - capsule_data_helper
+  - array_context
+  - cdesc_vector_string_allocatable
   - vector_string_out_len
+  - capsule_dtor
   owner: library
 f_out_vector_buf_targ_string_scalar:
   name: f_out_vector_buf_targ_string_scalar
@@ -18359,7 +18323,7 @@ f_out_vector_buf_targ_string_scalar:
   - i
   - n
   - s
-  c_helper:
+  helper:
   - char_copy
   owner: library
 f_out_void*&:
@@ -18446,9 +18410,6 @@ f_out_void*_cdesc:
     - C_LOC
   f_temps:
   - cdesc
-  f_helper:
-  - type_defines
-  - array_context
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_cdesc_pass'
@@ -18467,7 +18428,8 @@ f_out_void*_cdesc:
   - '{cxx_var}'
   c_temps:
   - cdesc
-  c_helper:
+  helper:
+  - type_defines
   - array_context
   owner: library
 f_setter:
@@ -18781,16 +18743,16 @@ h_helper_array_string_allocatable:
   notes:
   - Only used with std::string and thus C++.
   - Called from Fortran to deal with allocatable character
-  - The capsule contains a pointer to a std::vector<std::string>
+  - The capsule contains a pointer to a std::string
   - which is copied into the cdesc.
   fmtdict:
-    cnamefunc: '{C_prefix}ShroudArrayStringAllocatable'
-    fnamefunc: '{C_prefix}SHROUD_array_string_allocatable'
+    cnamefunc: '{C_prefix}ShroudCDescArrayStringAllocatable'
+    fnamefunc: '{C_prefix}SHROUD_cdesc_array_string_allocatable'
     cnameproto: void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)
   api: c
-  c_fmtname: LIB_ShroudArrayStringAllocatable
+  c_fmtname: LIB_ShroudCDescArrayStringAllocatable
   scope: cwrap_impl
-  proto: void LIB_ShroudArrayStringAllocatable(LIB_SHROUD_array *dest, LIB_SHROUD_capsule_data
+  proto: void LIB_ShroudCDescArrayStringAllocatable(LIB_SHROUD_array *dest, LIB_SHROUD_capsule_data
     *src);
   source:
   - ''
@@ -18798,71 +18760,28 @@ h_helper_array_string_allocatable:
   - // Copy the std::string array into Fortran array.
   - // Called by Fortran to deal with allocatable character.
   - // out is already blank filled.
-  - void LIB_ShroudArrayStringAllocatable(LIB_SHROUD_array *dest, LIB_SHROUD_capsule_data
+  - void LIB_ShroudCDescArrayStringAllocatable(LIB_SHROUD_array *dest, LIB_SHROUD_capsule_data
     *src)
   - '{+'
   - "std::string *cxxvec =\t static_cast< std::string *>\t(src->addr);"
-  - LIB_ShroudArrayStringOut(dest, cxxvec, dest->size);
+  - LIB_ShroudCdescArrayStringOut(dest, cxxvec, dest->size);
   - -}
-  f_fmtname: LIB_SHROUD_array_string_allocatable
+  f_fmtname: LIB_SHROUD_cdesc_array_string_allocatable
   interface:
   - ''
   - interface+
   - '! helper array_string_allocatable'
-  - subroutine LIB_SHROUD_array_string_allocatable(dest, src) &
-  - '     bind(c,name="LIB_ShroudArrayStringAllocatable")+'
+  - subroutine LIB_SHROUD_cdesc_array_string_allocatable(dest, src) &
+  - '     bind(c,name="LIB_ShroudCDescArrayStringAllocatable")+'
   - import LIB_SHROUD_array, LIB_SHROUD_capsule_data
   - 'type(LIB_SHROUD_array), intent(IN) :: dest'
   - 'type(LIB_SHROUD_capsule_data), intent(IN) :: src'
-  - -end subroutine LIB_SHROUD_array_string_allocatable
+  - -end subroutine LIB_SHROUD_cdesc_array_string_allocatable
   - -end interface
   dependent_helpers:
   - capsule_data_helper
   - array_context
-  - array_string_out
-h_helper_array_string_out:
-  name: h_helper_array_string_out
-  notes:
-  - Only used with std::string and thus C++.
-  fmtdict:
-    cnamefunc: '{C_prefix}ShroudArrayStringOut'
-    cnamefunc_array_string_out: '{cnamefunc}'
-    cnameproto: void {cnamefunc}({C_array_type} *outdesc, std::string *in, size_t
-      nsize)
-  api: cxx
-  c_fmtname: LIB_ShroudArrayStringOut
-  cxx_include:
-  - <cstring>
-  - <cstddef>
-  proto_include:
-  - <string>
-  - <vector>
-  scope: cwrap_impl
-  proto: void LIB_ShroudArrayStringOut(LIB_SHROUD_array *outdesc, std::string *in,
-    size_t nsize);
-  source:
-  - ''
-  - // helper array_string_out
-  - // Copy the std::vector<std::string> into Fortran array argument.
-  - // Called by C++.
-  - void LIB_ShroudArrayStringOut(LIB_SHROUD_array *outdesc, std::string *in, size_t
-    nsize)
-  - '{+'
-  - size_t nvect = outdesc->size;
-  - size_t len = outdesc->elem_len;
-  - char *dest = static_cast<char *>(outdesc->base_addr);
-  - // Clear user memory
-  - std::memset(dest, ' ', nvect*len);
-  - ''
-  - // Copy into user memory
-  - nvect = std::min(nvect, nsize);
-  - for (size_t i = 0; i < nvect; ++i) {+
-  - std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));
-  - dest += outdesc->elem_len;
-  - -}
-  - -}
-  dependent_helpers:
-  - array_context
+  - cdesc_array_string_out
 h_helper_array_string_out_len:
   name: h_helper_array_string_out_len
   fmtdict:
@@ -18872,7 +18791,6 @@ h_helper_array_string_out_len:
   c_fmtname: LIB_ShroudArrayStringOutSize
   proto_include:
   - <string>
-  - <vector>
   scope: cwrap_impl
   proto: size_t LIB_ShroudArrayStringOutSize(std::string *in, size_t nsize);
   source:
@@ -18944,6 +18862,8 @@ h_helper_capsule_dtor:
 h_helper_capsule_helper:
   name: h_helper_capsule_helper
   notes:
+  - Used when the user owns C++ memory.
+  - Allows the memory to be deleted from Fortran.
   - Fortran cannot be declared with both PRIVATE and BIND(C) attributes
   derived_type:
   - ''
@@ -18971,6 +18891,181 @@ h_helper_capsule_helper:
   dependent_helpers:
   - capsule_data_helper
   - capsule_dtor
+h_helper_cdesc_array_string_out:
+  name: h_helper_cdesc_array_string_out
+  notes:
+  - Only used with std::string and thus C++.
+  fmtdict:
+    cnamefunc: '{C_prefix}ShroudCdescArrayStringOut'
+    cnamefunc_cdesc_array_string_out: '{cnamefunc}'
+    cnameproto: void {cnamefunc}({C_array_type} *outdesc, std::string *src, size_t
+      srcsize)
+  api: cxx
+  c_fmtname: LIB_ShroudCdescArrayStringOut
+  cxx_include:
+  - <cstring>
+  - <cstddef>
+  proto_include:
+  - <string>
+  scope: cwrap_impl
+  proto: void LIB_ShroudCdescArrayStringOut(LIB_SHROUD_array *outdesc, std::string
+    *src, size_t srcsize);
+  source:
+  - ''
+  - // helper cdesc_array_string_out
+  - // Copy the array of std::string into array described by LIB_SHROUD_array.
+  - // Called by C++.
+  - //  CHARACTER(len=destlen) dest(destsize)
+  - void LIB_ShroudCdescArrayStringOut(LIB_SHROUD_array *outdesc, std::string *src,
+    size_t srcsize)
+  - '{+'
+  - size_t destsize = outdesc->size;
+  - size_t destlen = outdesc->elem_len;
+  - char *dest = static_cast<char *>(outdesc->base_addr);
+  - // Clear user memory
+  - std::memset(dest, ' ', destsize*destlen);
+  - ''
+  - // Copy into user memory
+  - srcsize = std::min(destsize, srcsize);
+  - for (size_t i = 0; i < srcsize; ++i) {+
+  - std::memcpy(dest, src[i].data(), std::min(destlen, src[i].length()));
+  - dest += destlen;
+  - -}
+  - -}
+  dependent_helpers:
+  - array_context
+h_helper_cdesc_vector_string_allocatable:
+  name: h_helper_cdesc_vector_string_allocatable
+  notes:
+  - Only used with std::string and thus C++.
+  - Called from Fortran.
+  - The capsule contains a pointer to a std::vector<std::string>
+  - which is copied into the cdesc.
+  fmtdict:
+    cnamefunc: '{C_prefix}CDescShroudVectorStringAllocatable'
+    fnamefunc: '{C_prefix}SHROUD_cdesc_vector_string_allocatable'
+    cnameproto: void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)
+  api: c
+  c_fmtname: LIB_CDescShroudVectorStringAllocatable
+  scope: cwrap_impl
+  proto: void LIB_CDescShroudVectorStringAllocatable(LIB_SHROUD_array *dest, LIB_SHROUD_capsule_data
+    *src);
+  source:
+  - ''
+  - // helper cdesc_vector_string_allocatable
+  - // Copy the std::vector<std::string> into Fortran array.
+  - // Called by Fortran to deal with allocatable character.
+  - // dest is already blank filled.
+  - void LIB_CDescShroudVectorStringAllocatable(LIB_SHROUD_array *dest, LIB_SHROUD_capsule_data
+    *src)
+  - '{+'
+  - "std::vector<std::string> *cxxvec =\t static_cast< std::vector<std::string> *>\t\
+    (src->addr);"
+  - LIB_ShroudCdescVectorStringOut(dest, *cxxvec);
+  - -}
+  f_fmtname: LIB_SHROUD_cdesc_vector_string_allocatable
+  interface:
+  - ''
+  - interface+
+  - '! helper cdesc_vector_string_allocatable'
+  - '! Copy the char* or std::string in context into c_var.'
+  - subroutine LIB_SHROUD_cdesc_vector_string_allocatable(dest, src) &
+  - '     bind(c,name="LIB_CDescShroudVectorStringAllocatable")+'
+  - import LIB_SHROUD_capsule_data, LIB_SHROUD_array
+  - 'type(LIB_SHROUD_array), intent(IN) :: dest'
+  - 'type(LIB_SHROUD_capsule_data), intent(IN) :: src'
+  - -end subroutine LIB_SHROUD_cdesc_vector_string_allocatable
+  - -end interface
+  dependent_helpers:
+  - capsule_data_helper
+  - array_context
+  - cdesc_vector_string_out
+h_helper_cdesc_vector_string_out:
+  name: h_helper_cdesc_vector_string_out
+  notes:
+  - Only used with std::vector and thus C++.
+  fmtdict:
+    cnamefunc: '{C_prefix}ShroudCdescVectorStringOut'
+    fnamefunc: '{C_prefix}shroud_cdesc_vector_string_out'
+    cnamefunc_cdesc_vector_string_out: '{cnamefunc}'
+    cnameproto: void {cnamefunc}({C_array_type} *outdesc, std::vector<std::string>
+      &src)
+  api: cxx
+  c_fmtname: LIB_ShroudCdescVectorStringOut
+  cxx_include:
+  - <cstring>
+  - <cstddef>
+  proto_include:
+  - <string>
+  - <vector>
+  scope: cwrap_impl
+  proto: void LIB_ShroudCdescVectorStringOut(LIB_SHROUD_array *outdesc, std::vector<std::string>
+    &src);
+  source:
+  - ''
+  - // helper cdesc_vector_string_out
+  - // Copy the std::vector<std::string> into array described by LIB_SHROUD_array.
+  - // Called by C++.
+  - //  CHARACTER(len=destlen) dest(destsize)
+  - void LIB_ShroudCdescVectorStringOut(LIB_SHROUD_array *outdesc, std::vector<std::string>
+    &src)
+  - '{+'
+  - size_t destsize = outdesc->size;
+  - size_t destlen = outdesc->elem_len;
+  - char *dest = static_cast<char *>(outdesc->base_addr);
+  - // Clear user memory
+  - std::memset(dest, ' ', destsize*destlen);
+  - ''
+  - // Copy into user memory
+  - size_t srcsize = std::min(destsize, src.size());
+  - for (size_t i = 0; i < srcsize; ++i) {+
+  - std::memcpy(dest, src[i].data(), std::min(destlen, src[i].length()));
+  - dest += destlen;
+  - -}
+  - -}
+  dependent_helpers:
+  - array_context
+h_helper_cfi_array_string_out:
+  name: h_helper_cfi_array_string_out
+  notes:
+  - Only used with std::string and thus C++.
+  fmtdict:
+    cnamefunc: '{C_prefix}ShroudCFIArrayStringOut'
+    cnamefunc_cfi_array_string_out: '{cnamefunc}'
+    cnameproto: void {cnamefunc}(CFI_cdesc_t *outdesc, std::string *src, size_t srcsize)
+  api: cxx
+  c_fmtname: LIB_ShroudCFIArrayStringOut
+  cxx_include:
+  - <cstring>
+  - <cstddef>
+  proto_include:
+  - <string>
+  - <ISO_Fortran_binding.h>
+  scope: cwrap_impl
+  proto: void LIB_ShroudCFIArrayStringOut(CFI_cdesc_t *outdesc, std::string *src,
+    size_t srcsize);
+  source:
+  - ''
+  - // helper cfi_array_string_out
+  - // Copy the array of std::string into array described by LIB_SHROUD_array.
+  - // Called by C++.
+  - //  CHARACTER(len=destlen) dest(destsize)
+  - void LIB_ShroudCFIArrayStringOut(CFI_cdesc_t *outdesc, std::string *src, size_t
+    srcsize)
+  - '{+'
+  - size_t destsize = outdesc->dim[0].extent;
+  - size_t destlen = outdesc->elem_len;
+  - char *dest = static_cast<char *>(outdesc->base_addr);
+  - // Clear user memory
+  - std::memset(dest, ' ', destsize*destlen);
+  - ''
+  - // Copy into user memory
+  - srcsize = std::min(destsize, srcsize);
+  - for (size_t i = 0; i < srcsize; ++i) {+
+  - std::memcpy(dest, src[i].data(), std::min(destlen, src[i].length()));
+  - dest += destlen;
+  - -}
+  - -}
 h_helper_char_alloc:
   name: h_helper_char_alloc
   notes:
@@ -19382,97 +19477,6 @@ h_helper_type_defines:
   - '    SH_TYPE_CPTR      = 30, &'
   - '    SH_TYPE_STRUCT    = 31, &'
   - '    SH_TYPE_OTHER     = 32'
-h_helper_vector_string_allocatable:
-  name: h_helper_vector_string_allocatable
-  notes:
-  - Only used with std::string and thus C++.
-  - Called from Fortran.
-  - The capsule contains a pointer to a std::vector<std::string>
-  - which is copied into the cdesc.
-  fmtdict:
-    cnamefunc: '{C_prefix}ShroudVectorStringAllocatable'
-    fnamefunc: '{C_prefix}SHROUD_vector_string_allocatable'
-    cnameproto: void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)
-  api: c
-  c_fmtname: LIB_ShroudVectorStringAllocatable
-  scope: cwrap_impl
-  proto: void LIB_ShroudVectorStringAllocatable(LIB_SHROUD_array *dest, LIB_SHROUD_capsule_data
-    *src);
-  source:
-  - ''
-  - // helper vector_string_allocatable
-  - // Copy the std::vector<std::string> into Fortran array.
-  - // Called by Fortran to deal with allocatable character.
-  - // out is already blank filled.
-  - void LIB_ShroudVectorStringAllocatable(LIB_SHROUD_array *dest, LIB_SHROUD_capsule_data
-    *src)
-  - '{+'
-  - "std::vector<std::string> *cxxvec =\t static_cast< std::vector<std::string> *>\t\
-    (src->addr);"
-  - LIB_ShroudVectorStringOut(dest, *cxxvec);
-  - -}
-  f_fmtname: LIB_SHROUD_vector_string_allocatable
-  interface:
-  - ''
-  - interface+
-  - '! helper vector_string_allocatable'
-  - '! Copy the char* or std::string in context into c_var.'
-  - subroutine LIB_SHROUD_vector_string_allocatable(dest, src) &
-  - '     bind(c,name="LIB_ShroudVectorStringAllocatable")+'
-  - import LIB_SHROUD_capsule_data, LIB_SHROUD_array
-  - 'type(LIB_SHROUD_array), intent(IN) :: dest'
-  - 'type(LIB_SHROUD_capsule_data), intent(IN) :: src'
-  - -end subroutine LIB_SHROUD_vector_string_allocatable
-  - -end interface
-  dependent_helpers:
-  - capsule_data_helper
-  - array_context
-  - vector_string_out
-h_helper_vector_string_out:
-  name: h_helper_vector_string_out
-  notes:
-  - Only used with std::vector and thus C++.
-  fmtdict:
-    cnamefunc: '{C_prefix}ShroudVectorStringOut'
-    fnamefunc: '{C_prefix}shroud_vector_string_out'
-    cnamefunc_vector_string_out: '{cnamefunc}'
-    cnameproto: void {cnamefunc}({C_array_type} *outdesc, std::vector<std::string>
-      &in)
-  api: cxx
-  c_fmtname: LIB_ShroudVectorStringOut
-  cxx_include:
-  - <cstring>
-  - <cstddef>
-  proto_include:
-  - <string>
-  - <vector>
-  scope: cwrap_impl
-  proto: void LIB_ShroudVectorStringOut(LIB_SHROUD_array *outdesc, std::vector<std::string>
-    &in);
-  source:
-  - ''
-  - // helper vector_string_out
-  - // Copy the std::vector<std::string> into Fortran array argument.
-  - // Called by C++.
-  - void LIB_ShroudVectorStringOut(LIB_SHROUD_array *outdesc, std::vector<std::string>
-    &in)
-  - '{+'
-  - size_t nvect = outdesc->size;
-  - size_t len = outdesc->elem_len;
-  - char *dest = static_cast<char *>(outdesc->base_addr);
-  - // Clear user memory
-  - std::memset(dest, ' ', nvect*len);
-  - ''
-  - // Copy into user memory
-  - nvect = std::min(nvect, in.size());
-  - //char *dest = static_cast<char *>(outdesc->cxx.addr);
-  - for (size_t i = 0; i < nvect; ++i) {+
-  - std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));
-  - dest += outdesc->elem_len;
-  - -}
-  - -}
-  dependent_helpers:
-  - array_context
 h_helper_vector_string_out_len:
   name: h_helper_vector_string_out_len
   fmtdict:
@@ -19689,6 +19693,8 @@ root
         native
           allocatable -- c_mixin_cfi_native_allocatable
           pointer -- c_mixin_cfi_native_pointer
+        string**
+          allocatable -- c_mixin_cfi_string**_allocatable
       cfi-unpack-base-addr -- c_mixin_cfi-unpack-base-addr
       cfi-unpack-base-addr-cxx -- c_mixin_cfi-unpack-base-addr-cxx
       cfi-unpack-len -- c_mixin_cfi-unpack-len
@@ -19732,6 +19738,7 @@ root
       local-cvar-ptr -- c_mixin_local-cvar-ptr
       local-cxx-ptr -- c_mixin_local-cxx-ptr
       local-string -- c_mixin_local-string
+      local-string* -- c_mixin_local-string*
       local-string-init -- c_mixin_local-string-init
       local-string-init-trim -- c_mixin_local-string-init-trim
       make-shared -- c_mixin_make-shared
@@ -19739,11 +19746,13 @@ root
         vector<native> -- c_mixin_new_vector<native>
       out
         native** -- c_mixin_out_native**
-        string** -- c_mixin_out_string**
         vector
           buf
             malloc -- c_mixin_out_vector_buf_malloc
       shadow -- c_mixin_shadow
+      string
+        max
+          len -- c_mixin_string_max_len
       string-char-copy-to-arg -- c_mixin_string-char-copy-to-arg
       string-copy-out -- c_mixin_string-copy-out
       string-strcpy-out -- c_mixin_string-strcpy-out
@@ -20244,13 +20253,25 @@ root
         context -- h_helper_array_context
         string
           allocatable -- h_helper_array_string_allocatable
-          out -- h_helper_array_string_out
+          out
             len -- h_helper_array_string_out_len
       capsule
         data
           helper -- h_helper_capsule_data_helper
         dtor -- h_helper_capsule_dtor
         helper -- h_helper_capsule_helper
+      cdesc
+        array
+          string
+            out -- h_helper_cdesc_array_string_out
+        vector
+          string
+            allocatable -- h_helper_cdesc_vector_string_allocatable
+            out -- h_helper_cdesc_vector_string_out
+      cfi
+        array
+          string
+            out -- h_helper_cfi_array_string_out
       char
         alloc -- h_helper_char_alloc
         array
@@ -20276,8 +20297,7 @@ root
         defines -- h_helper_type_defines
       vector
         string
-          allocatable -- h_helper_vector_string_allocatable
-          out -- h_helper_vector_string_out
+          out
             len -- h_helper_vector_string_out_len
     mixin
       unknown -- h_mixin_unknown

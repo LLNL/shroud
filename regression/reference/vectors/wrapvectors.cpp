@@ -513,7 +513,7 @@ void VEC_vector_string_fill_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
     // splicer begin function.vector_string_fill_bufferify
     std::vector<std::string> arg;
     vector_string_fill(arg);
-    VEC_ShroudVectorStringOut(SHT_arg_cdesc, arg);
+    VEC_ShroudCdescVectorStringOut(SHT_arg_cdesc, arg);
     // splicer end function.vector_string_fill_bufferify
 }
 

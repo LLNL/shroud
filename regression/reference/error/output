@@ -15,7 +15,7 @@ Phase: Wrapc.wrap_function
 Node: BadFstatements
 line 34
 Statement: c_subroutine
-No such c_helper 'no_c_helper2'
+No such helper 'no_c_helper2'
 --------------------
 Node: BadFstatements
 line 34
@@ -30,7 +30,7 @@ expected '}' before end of string in '{bad_format = 12;'
 Node: BadFstatements
 line 34
 Statement: f_subroutine
-No such c_helper 'no_c_helper'
+No such helper 'no_c_helper'
 Wrote wraperror.h
 Wrote wraperror.cpp
 
@@ -40,12 +40,7 @@ Phase: Wrapf.wrap_function_impl
 Node: BadFstatements
 line 34
 Statement: f_subroutine
-No such c_helper 'no_c_helper'
---------------------
-Node: BadFstatements
-line 34
-Statement: f_subroutine
-No such f_helper 'no_f_helper'
+No such helper 'no_c_helper'
 --------------------
 Node: BadFstatements
 line 34
@@ -67,11 +62,11 @@ Wrote typeserror.h
 Phase: Wrapp.wrap_functions
 ----------------------------------------
 Node: PYGoodFunction
-line 58
+line 56
 Illegal value for PY_array_arg 'none'
 --------------------
 Node: PYGoodFunction
-line 58
+line 56
 Illegal value for PY_struct_arg 'none'
 Wrote pyerrormodule.cpp
 Wrote pyerrormodule.hpp

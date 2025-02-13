@@ -24,10 +24,10 @@ extern "C" {
 // Copy the std::string array into Fortran array.
 // Called by Fortran to deal with allocatable character.
 // out is already blank filled.
-void STR_ShroudArrayStringAllocatable(STR_SHROUD_array *dest, STR_SHROUD_capsule_data *src)
+void STR_ShroudCDescArrayStringAllocatable(STR_SHROUD_array *dest, STR_SHROUD_capsule_data *src)
 {
     std::string *cxxvec = static_cast< std::string *>(src->addr);
-    STR_ShroudArrayStringOut(dest, cxxvec, dest->size);
+    STR_ShroudCdescArrayStringOut(dest, cxxvec, dest->size);
 }
 // end helper array_string_allocatable
 
@@ -90,26 +90,27 @@ void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap)
 }
 #endif
 
-// start helper array_string_out
-// helper array_string_out
-// Copy the std::vector<std::string> into Fortran array argument.
+// start helper cdesc_array_string_out
+// helper cdesc_array_string_out
+// Copy the array of std::string into array described by STR_SHROUD_array.
 // Called by C++.
-void STR_ShroudArrayStringOut(STR_SHROUD_array *outdesc, std::string *in, size_t nsize)
+//  CHARACTER(len=destlen) dest(destsize)
+void STR_ShroudCdescArrayStringOut(STR_SHROUD_array *outdesc, std::string *src, size_t srcsize)
 {
-    size_t nvect = outdesc->size;
-    size_t len = outdesc->elem_len;
+    size_t destsize = outdesc->size;
+    size_t destlen = outdesc->elem_len;
     char *dest = static_cast<char *>(outdesc->base_addr);
     // Clear user memory
-    std::memset(dest, ' ', nvect*len);
+    std::memset(dest, ' ', destsize*destlen);
 
     // Copy into user memory
-    nvect = std::min(nvect, nsize);
-    for (size_t i = 0; i < nvect; ++i) {
-        std::memcpy(dest, in[i].data(), std::min(len, in[i].length()));
-        dest += outdesc->elem_len;
+    srcsize = std::min(destsize, srcsize);
+    for (size_t i = 0; i < srcsize; ++i) {
+        std::memcpy(dest, src[i].data(), std::min(destlen, src[i].length()));
+        dest += destlen;
     }
 }
-// end helper array_string_out
+// end helper cdesc_array_string_out
 
 // start helper array_string_out_len
 // helper array_string_out_len

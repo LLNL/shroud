@@ -32,6 +32,12 @@ void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap);
 
 #ifdef __cplusplus
 }
+#include <string>
+#include <ISO_Fortran_binding.h>
+
+// C++ implementation prototypes
+size_t STR_ShroudArrayStringOutSize(std::string *in, size_t nsize);
+void STR_ShroudCFIArrayStringOut(CFI_cdesc_t *outdesc, std::string *src, size_t srcsize);
 #endif
 
 #endif  // TYPESSTRINGS_H

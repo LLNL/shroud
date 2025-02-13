@@ -261,10 +261,10 @@ variables.  This allows creating names without conflicting with
 
 The format field is named *f_local_{name}*.
 
-f_helper
-^^^^^^^^
+helper
+^^^^^^
 
-A list of Fortran helper function names to add to generated
+A list of helper function names to add to generated
 Fortran code.
 The format dictionary will be applied to the list for additional
 flexibility.
@@ -275,7 +275,8 @@ flexibility.
     - array_context
 
 Each helper will add an entry into the format dictionary with
-the name of the function or type created by the helper.
+the name of the function or type created by the helper
+defined in the helper's *f_fmtname* field.
 The format value is the helper name prefixed by *f_helper_*.
 For example,format field *f_helper_array_context* may be ``VEC_SHROUD_array``.
 

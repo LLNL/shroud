@@ -108,20 +108,20 @@ declarations:
   fstatements:
     c:
       # The void * case
-      c_helper:
-      - type_defines
       c_pre_call:
       - // Test adding a blank line below.
       -
       - type = convert_type(type);
+      helper:
+      - type_defines
     f:
       # The fortran_generic case
-      c_helper:
-      - type_defines
       c_pre_call:
       - // Test adding a blank line below.
       -
       - type = convert_type(type);
+      helper:
+      - type_defines
   fortran_generic:
   - decl: (float *addr+rank(1)+intent(in))
     function_suffix: _float1d

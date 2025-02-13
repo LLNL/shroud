@@ -1447,8 +1447,9 @@ c_deref
 
 c_helper_*
     Helper name for a function.
-    Each name in statements *c_helper* will create a format name
-    which starts with *c_helper_* and end with the helper name.
+    Each name in statements *helper* field will create a format name
+    which starts with *c_helper_* and end with the helper's
+    *c_fmtname* field.
     It will contain the name of the C function for the helper.
     Used by statements *c_pre_call* and *c_post_call* statements.
 
@@ -1677,10 +1678,6 @@ f_cdesc_shape
     It will be blank for a scalar.
     ex: ``\nSHT_arg_cdesc%shape(1:1) = shape(arg)``
 
-f_char_len
-    Defaults to ``:`` for defered length used with allocatable variables.
-    Used in statements as ``character({f_char_len)``.
-
 f_char_type
     Character type used in ``ALLOCATE`` statements.
     Based on *len* attributes.
@@ -1710,8 +1707,9 @@ f_get_shape_array
 
 f_helper_*
     Helper name for a function.
-    Each name in statements *f_helper* will create a format name
-    which starts with *f_helper_* and end with the helper name.
+    Each name in statements *helper* field will create a format name
+    which starts with *f_helper_* and end with the helper's
+    *f_fmtname* field.
     It will contain the name of the Fortran function for the helper.
     Used by statements *f_pre_call* and *f_post_call* statements.
 

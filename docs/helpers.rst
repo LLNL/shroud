@@ -85,7 +85,7 @@ Helper code can be inserted in several files and several locations.
                 
 .. helper_summary
 
-Listed in the statements.c_helper and f_helper fields.
+Listed in the statements.helper field.
 The C helpers are written after creating the Fortran wrappers by 
 clibrary.write_impl_utility function.
 
@@ -108,7 +108,7 @@ name
 ^^^^
 
 The name must start with ``h_helper_``.  The remainder of the string is used
-as the helper name in the *c_helper* and *f_helper* fields of statement groups.
+as the helper name in the *helper* fields of statement groups.
 
 .. The 'language' is ``h`` which defines the default values of fields.
    The 'intent' is ``helper``.
@@ -203,6 +203,8 @@ proto_include
 ^^^^^^^^^^^^^
 
 List of files to ``#include`` before the prototype.
+
+Include in the utility file defined by format field *C_header_utility*.
 
 include
 ^^^^^^^

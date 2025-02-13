@@ -4590,7 +4590,7 @@
                     }
                 ],
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_copy"
                     ]
                 },
@@ -4623,7 +4623,6 @@
                                 "cxx_rv_decl": "const std::string &SHCXX_rv",
                                 "cxx_type": "std::string",
                                 "cxx_var": "SHCXX_rv",
-                                "f_char_len": "len=30",
                                 "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
                                 "i_arguments": "idx",
@@ -4763,7 +4762,7 @@
                     "brief": "String reference function with scalar generic args"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_copy"
                     ]
                 },
@@ -4803,7 +4802,6 @@
                                 "cxx_type": "std::string",
                                 "cxx_var": "SHC_rv_cxx",
                                 "f_call_function": "c_get_group_name_int32_t_bufferify",
-                                "f_char_len": "len=30",
                                 "f_result_clause": "\fresult(SHT_rv)",
                                 "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
@@ -4957,7 +4955,7 @@
                     "brief": "String reference function with scalar generic args"
                 },
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "char_copy"
                     ]
                 },
@@ -4997,7 +4995,6 @@
                                 "cxx_type": "std::string",
                                 "cxx_var": "SHC_rv_cxx",
                                 "f_call_function": "c_get_group_name_int64_t_bufferify",
-                                "f_char_len": "len=30",
                                 "f_result_clause": "\fresult(SHT_rv)",
                                 "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
@@ -5151,12 +5148,9 @@
                 "decl": "nested *nested_get_parent(nested *SH_this+intent(in))",
                 "declgen": "nested *nested_get_parent(nested *SH_this +intent(in)) +intent(getter)",
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "array_context",
                         "type_defines"
-                    ],
-                    "f": [
-                        "array_context"
                     ]
                 },
                 "name": "nested_get_parent",
@@ -5563,12 +5557,9 @@
                 "decl": "nested **nested_get_child(nested *SH_this+intent(in))",
                 "declgen": "nested **nested_get_child(nested *SH_this +intent(in)) +dimension(sublevels)+intent(getter)",
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "array_context",
                         "type_defines"
-                    ],
-                    "f": [
-                        "array_context"
                     ]
                 },
                 "name": "nested_get_child",
@@ -6004,12 +5995,9 @@
                 "decl": "nested *nested_get_array(nested *SH_this+intent(in))",
                 "declgen": "nested *nested_get_array(nested *SH_this +intent(in)) +dimension(sublevels)+intent(getter)",
                 "helpers": {
-                    "c": [
+                    "fc": [
                         "array_context",
                         "type_defines"
-                    ],
-                    "f": [
-                        "array_context"
                     ]
                 },
                 "name": "nested_get_array",

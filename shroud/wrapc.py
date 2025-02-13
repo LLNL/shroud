@@ -975,7 +975,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         self.fill_c_result(wlang, cls, node, CXX_ast, r_bind)
 
-        self.c_helper.update(node.helpers.get("c", {}))
+        self.c_helper.update(node.helpers.get("fc", {}))
         
         stmts_comments = []
         if options.debug:
@@ -1083,7 +1083,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 stmt_indexes.append(wlang)
             
             self.fill_c_arg(wlang, cls, node, arg, arg_bind, pre_call)
-            self.c_helper.update(node.helpers.get("c", {}))
+            self.c_helper.update(node.helpers.get("fc", {}))
 
             notimplemented = notimplemented or arg_stmt.notimplemented
             if options.debug:
