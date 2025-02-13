@@ -2152,6 +2152,7 @@
                         "helpers": {
                             "fc": [
                                 "array_context",
+                                "capsule_data_helper",
                                 "string_to_cdesc",
                                 "copy_string",
                                 "capsule_dtor"
@@ -2240,6 +2241,7 @@
                                         "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                                         "f_deref_attr": ", allocatable",
                                         "f_helper_array_context": "CLA_SHROUD_array",
+                                        "f_helper_capsule_data_helper": "CLA_SHROUD_capsule_data",
                                         "f_helper_capsule_dtor": "CLA_SHROUD_capsule_dtor",
                                         "f_helper_copy_string": "CLA_SHROUD_copy_string",
                                         "f_result_clause": "\fresult(SHT_rv)",
@@ -3852,6 +3854,7 @@
                         "helpers": {
                             "fc": [
                                 "array_context",
+                                "capsule_data_helper",
                                 "string_to_cdesc",
                                 "copy_string",
                                 "capsule_dtor"
@@ -3940,6 +3943,7 @@
                                         "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                                         "f_deref_attr": ", allocatable",
                                         "f_helper_array_context": "CLA_SHROUD_array",
+                                        "f_helper_capsule_data_helper": "CLA_SHROUD_capsule_data",
                                         "f_helper_capsule_dtor": "CLA_SHROUD_capsule_dtor",
                                         "f_helper_copy_string": "CLA_SHROUD_copy_string",
                                         "f_result_clause": "\fresult(SHT_rv)",
@@ -9166,7 +9170,6 @@
                                 "cxx_rv_decl": "const std::string &SHCXX_rv",
                                 "cxx_type": "std::string",
                                 "cxx_var": "SHCXX_rv",
-                                "f_char_len": "len=30",
                                 "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
                                 "i_arguments": "",
@@ -9218,7 +9221,6 @@
                                 "cxx_type": "std::string",
                                 "cxx_var": "SHC_rv_cxx",
                                 "f_call_function": "c_last_function_called_bufferify",
-                                "f_char_len": "len=30",
                                 "f_result_clause": "\fresult(SHT_rv)",
                                 "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",

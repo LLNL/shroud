@@ -374,6 +374,13 @@ Fixed
   From example, ``tutorial.yaml`` declaration ``typedef int EnumTypeID``
   changes from  ``int({f_var}, C_INT)`` to ``int({f_var}, enum_type_id)``.
 
+* Changed Fortran wrapper with argument similar to
+  ``char **arg+deref(allocatable)+dimension(nstrs)+intent(out)+len(20)``.
+  The actual argument must now be declared as ``CHARACTER(len=:)`` instead of
+  ``CHARACTER(len=20)``. This is required to pass the argument directly to
+  C using CFI which will allocate the argument.
+  Removed the need for the *f_char_len* format field.
+
 v0.13.0
 -------
 

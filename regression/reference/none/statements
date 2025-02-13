@@ -1163,6 +1163,8 @@ c_function_string:
   - cxx
   fmtdict:
     cxx_addr: ''
+  helper:
+  - capsule_data_helper
   owner: caller
 c_function_string&:
   name: c_function_string&
@@ -3814,6 +3816,8 @@ c_mixin_capsule_pass:
   - '{C_capsule_data_type} *{c_var_capsule}'
   c_temps:
   - capsule
+  helper:
+  - capsule_data_helper
   owner: library
 c_mixin_cast-argument:
   name: c_mixin_cast-argument
@@ -4078,6 +4082,25 @@ c_mixin_cfi_native_pointer:
   - cdesc
   - err
   owner: library
+c_mixin_cfi_string**_allocatable:
+  name: c_mixin_cfi_string**_allocatable
+  intent: mixin
+  comments:
+  - Allocate for character (requires +dimension).
+  c_post_call:
+  - if ({cxx_var} != {nullptr}) {{+
+  - "{c_temp_lower_decl}{c_temp_extents_decl}int SH_ret = CFI_allocate({c_var_cfi},\
+    \ \t{c_temp_lower_use}, \t{c_temp_extents_use}, \t{c_var_len});"
+  - if (SH_ret == CFI_SUCCESS) {{+
+  - '{c_helper_cfi_array_string_out}({c_var_cfi}, {cxx_var}, {c_array_size2});'
+  - -}}
+  - -}}
+  c_temps:
+  - extents
+  - lower
+  helper:
+  - cfi_array_string_out
+  owner: library
 c_mixin_char-alloc:
   name: c_mixin_char-alloc
   intent: mixin
@@ -4193,7 +4216,7 @@ c_mixin_character-deferred-length:
   name: c_mixin_character-deferred-length
   intent: mixin
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   owner: library
 c_mixin_declare-arg:
   name: c_mixin_declare-arg
@@ -4621,6 +4644,21 @@ c_mixin_string-strcpy-out:
   - std::strcpy({c_var}, {c_local_cxx}.c_str());
   impl_header:
   - <cstring>
+  owner: library
+c_mixin_string_max_len:
+  name: c_mixin_string_max_len
+  intent: mixin
+  comments:
+  - Compute maximum length of array of std::string.
+  c_post_call:
+  - size_t {c_var_len} = {c_char_len};
+  - if ({c_var_len} <= 0) {{+
+  - '{c_var_len} = {c_helper_array_string_out_len}({cxx_var}, {c_array_size2});'
+  - -}}
+  c_temps:
+  - len
+  helper:
+  - array_string_out_len
   owner: library
 c_mixin_unknown:
   name: c_mixin_unknown
@@ -5726,6 +5764,7 @@ c_out_vector<string>&_cdesc_allocatable:
   - cxx
   helper:
   - array_context
+  - capsule_data_helper
   - array_context
   - cdesc_vector_string_allocatable
   - vector_string_out_len
@@ -6516,7 +6555,7 @@ f_function_char*_cfi_allocatable:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -6696,7 +6735,7 @@ f_function_char*_cfi_pointer:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -6940,7 +6979,7 @@ f_function_char_cfi_allocatable:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -6986,7 +7025,7 @@ f_function_char_cfi_pointer:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -7233,6 +7272,7 @@ f_function_native*_cdesc_allocatable:
   helper:
   - array_context
   - copy_array
+  - capsule_data_helper
   - array_context
   - capsule_dtor
   owner: library
@@ -7368,6 +7408,7 @@ f_function_native*_cdesc_pointer_caller:
     f_var_capsule: Crv
   helper:
   - array_context
+  - capsule_data_helper
   - array_context
   - capsule_helper
   owner: library
@@ -8547,6 +8588,7 @@ f_function_string&_cdesc_allocatable:
     i_intent_attr: ', intent(OUT)'
   helper:
   - array_context
+  - capsule_data_helper
   - array_context
   - string_to_cdesc
   - copy_string
@@ -8619,6 +8661,7 @@ f_function_string&_cdesc_allocatable_caller:
     i_intent_attr: ', intent(OUT)'
   helper:
   - array_context
+  - capsule_data_helper
   - array_context
   - string_to_cdesc
   - copy_string
@@ -8691,6 +8734,7 @@ f_function_string&_cdesc_allocatable_library:
     i_intent_attr: ', intent(OUT)'
   helper:
   - array_context
+  - capsule_data_helper
   - array_context
   - string_to_cdesc
   - copy_string
@@ -8877,7 +8921,7 @@ f_function_string&_cfi_allocatable:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -8922,7 +8966,7 @@ f_function_string&_cfi_allocatable_caller:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -8967,7 +9011,7 @@ f_function_string&_cfi_allocatable_library:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -9146,7 +9190,7 @@ f_function_string&_cfi_pointer:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -9207,7 +9251,7 @@ f_function_string&_cfi_pointer_caller:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -9268,7 +9312,7 @@ f_function_string&_cfi_pointer_library:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -9651,6 +9695,7 @@ f_function_string*_cdesc_allocatable:
     i_intent_attr: ', intent(OUT)'
   helper:
   - array_context
+  - capsule_data_helper
   - array_context
   - string_to_cdesc
   - copy_string
@@ -9723,6 +9768,7 @@ f_function_string*_cdesc_allocatable_caller:
     i_intent_attr: ', intent(OUT)'
   helper:
   - array_context
+  - capsule_data_helper
   - array_context
   - string_to_cdesc
   - copy_string
@@ -9795,6 +9841,7 @@ f_function_string*_cdesc_allocatable_library:
     i_intent_attr: ', intent(OUT)'
   helper:
   - array_context
+  - capsule_data_helper
   - array_context
   - string_to_cdesc
   - copy_string
@@ -9981,7 +10028,7 @@ f_function_string*_cfi_allocatable:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -10026,7 +10073,7 @@ f_function_string*_cfi_allocatable_caller:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -10071,7 +10118,7 @@ f_function_string*_cfi_allocatable_library:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -10181,7 +10228,7 @@ f_function_string*_cfi_pointer:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -10242,7 +10289,7 @@ f_function_string*_cfi_pointer_caller:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -10303,7 +10350,7 @@ f_function_string*_cfi_pointer_library:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -10782,6 +10829,7 @@ f_function_string_cdesc_allocatable:
   - array_context
   - string_to_cdesc
   - copy_string
+  - capsule_data_helper
   - array_context
   - capsule_dtor
   destructor_name: new_string
@@ -10869,6 +10917,7 @@ f_function_string_cdesc_allocatable_caller:
   - array_context
   - string_to_cdesc
   - copy_string
+  - capsule_data_helper
   - array_context
   - capsule_dtor
   destructor_name: new_string
@@ -10956,6 +11005,7 @@ f_function_string_cdesc_allocatable_library:
   - array_context
   - string_to_cdesc
   - copy_string
+  - capsule_data_helper
   - array_context
   - capsule_dtor
   destructor_name: new_string
@@ -10989,7 +11039,7 @@ f_function_string_cfi_allocatable:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -11032,7 +11082,7 @@ f_function_string_cfi_allocatable_caller:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -11077,7 +11127,7 @@ f_function_string_cfi_allocatable_library:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -11256,7 +11306,7 @@ f_function_string_cfi_pointer:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -11317,7 +11367,7 @@ f_function_string_cfi_pointer_caller:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -11378,7 +11428,7 @@ f_function_string_cfi_pointer_library:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
@@ -15141,6 +15191,7 @@ f_mixin_capsule_arg:
   fmtdict:
     f_var_capsule: Crv
   helper:
+  - capsule_data_helper
   - array_context
   - capsule_helper
   owner: library
@@ -15191,6 +15242,7 @@ f_mixin_capsule_pass:
   c_temps:
   - capsule
   helper:
+  - capsule_data_helper
   - array_context
   owner: library
 f_mixin_capsule_use:
@@ -15229,6 +15281,7 @@ f_mixin_capsule_use:
   c_temps:
   - capsule
   helper:
+  - capsule_data_helper
   - array_context
   - capsule_dtor
   owner: library
@@ -15354,7 +15407,7 @@ f_mixin_cdesc_out_char_array_allocatable:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - 'character({f_char_len}){f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}'
+  - 'character(len=:){f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}'
   f_post_call:
   - allocate({f_char_type}{f_var}({f_var_cdesc}%size))
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
@@ -15461,7 +15514,7 @@ f_mixin_cfi_character-deferred-length:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
   c_temps:
@@ -16432,7 +16485,7 @@ f_out_char**_cfi_pointer:
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
@@ -16942,6 +16995,7 @@ f_out_native**_cdesc_allocatable:
   helper:
   - array_context
   - copy_array
+  - capsule_data_helper
   - array_context
   - capsule_dtor
   owner: library
@@ -17380,7 +17434,7 @@ f_out_string**_cdesc_allocatable:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - 'character({f_char_len}){f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}'
+  - 'character(len=:){f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
@@ -17440,6 +17494,7 @@ f_out_string**_cdesc_allocatable:
   - capsule
   helper:
   - array_context
+  - capsule_data_helper
   - array_context
   - array_string_allocatable
   - array_string_out_len
@@ -17508,6 +17563,8 @@ f_out_string**_cfi_allocatable:
   - Make the C wrapper argument a CFI_desc_t.
   - Create local std::string pointer.
   - Pass address of cxx variable to library.
+  - Compute maximum length of array of std::string.
+  - Allocate for character (requires +dimension).
   notes:
   - std::string **strs +intent(out)+dimension(nstrs)+deref(allocatable),
   - int *nstrs+intent(out)+hidden
@@ -17520,13 +17577,17 @@ f_out_string**_cfi_allocatable:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
+  - '  c_mixin_character-deferred-length'
+  - '  c_mixin_dummy_arg'
   - '  c_mixin_cfi_arg'
   - '  c_mixin_local-string*'
   - '  c_mixin_arg-call-cvar-address'
+  - '  c_mixin_string_max_len'
+  - '  c_mixin_cfi_string**_allocatable'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
-  - 'character(*){i_intent_attr} :: {i_var}{f_assumed_shape}'
+  - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
@@ -17534,9 +17595,25 @@ f_out_string**_cfi_allocatable:
   c_arg_call:
   - '&{cxx_var}'
   c_post_call:
-  - // Allocate and copy into {c_var}
+  - size_t {c_var_len} = {c_char_len};
+  - if ({c_var_len} <= 0) {{+
+  - '{c_var_len} = {c_helper_array_string_out_len}({cxx_var}, {c_array_size2});'
+  - -}}
+  - if ({cxx_var} != {nullptr}) {{+
+  - "{c_temp_lower_decl}{c_temp_extents_decl}int SH_ret = CFI_allocate({c_var_cfi},\
+    \ \t{c_temp_lower_use}, \t{c_temp_extents_use}, \t{c_var_len});"
+  - if (SH_ret == CFI_SUCCESS) {{+
+  - '{c_helper_cfi_array_string_out}({c_var_cfi}, {cxx_var}, {c_array_size2});'
+  - -}}
+  - -}}
   c_temps:
   - cfi
+  - len
+  - extents
+  - lower
+  helper:
+  - array_string_out_len
+  - cfi_array_string_out
   iface_header:
   - ISO_Fortran_binding.h
   owner: library
@@ -17570,9 +17647,11 @@ f_out_string**_cfi_copy:
   c_arg_call:
   - '&{cxx_var}'
   c_post_call:
-  - // Copy results into {c_var}
+  - '{c_helper_cfi_array_string_out}({c_var_cfi}, {cxx_var}, {c_array_size2});'
   c_temps:
   - cfi
+  helper:
+  - cfi_array_string_out
   iface_header:
   - ISO_Fortran_binding.h
   owner: library
@@ -18114,7 +18193,7 @@ f_out_vector<string>&_cdesc_allocatable:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - 'character({f_char_len}){f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}'
+  - 'character(len=:){f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
@@ -18174,6 +18253,7 @@ f_out_vector<string>&_cdesc_allocatable:
   - cxx
   helper:
   - array_context
+  - capsule_data_helper
   - array_context
   - cdesc_vector_string_allocatable
   - vector_string_out_len
@@ -18711,7 +18791,6 @@ h_helper_array_string_out_len:
   c_fmtname: LIB_ShroudArrayStringOutSize
   proto_include:
   - <string>
-  - <vector>
   scope: cwrap_impl
   proto: size_t LIB_ShroudArrayStringOutSize(std::string *in, size_t nsize);
   source:
@@ -18783,6 +18862,8 @@ h_helper_capsule_dtor:
 h_helper_capsule_helper:
   name: h_helper_capsule_helper
   notes:
+  - Used when the user owns C++ memory.
+  - Allows the memory to be deleted from Fortran.
   - Fortran cannot be declared with both PRIVATE and BIND(C) attributes
   derived_type:
   - ''
@@ -18944,6 +19025,47 @@ h_helper_cdesc_vector_string_out:
   - -}
   dependent_helpers:
   - array_context
+h_helper_cfi_array_string_out:
+  name: h_helper_cfi_array_string_out
+  notes:
+  - Only used with std::string and thus C++.
+  fmtdict:
+    cnamefunc: '{C_prefix}ShroudCFIArrayStringOut'
+    cnamefunc_cfi_array_string_out: '{cnamefunc}'
+    cnameproto: void {cnamefunc}(CFI_cdesc_t *outdesc, std::string *src, size_t srcsize)
+  api: cxx
+  c_fmtname: LIB_ShroudCFIArrayStringOut
+  cxx_include:
+  - <cstring>
+  - <cstddef>
+  proto_include:
+  - <string>
+  - <ISO_Fortran_binding.h>
+  scope: cwrap_impl
+  proto: void LIB_ShroudCFIArrayStringOut(CFI_cdesc_t *outdesc, std::string *src,
+    size_t srcsize);
+  source:
+  - ''
+  - // helper cfi_array_string_out
+  - // Copy the array of std::string into array described by LIB_SHROUD_array.
+  - // Called by C++.
+  - //  CHARACTER(len=destlen) dest(destsize)
+  - void LIB_ShroudCFIArrayStringOut(CFI_cdesc_t *outdesc, std::string *src, size_t
+    srcsize)
+  - '{+'
+  - size_t destsize = outdesc->dim[0].extent;
+  - size_t destlen = outdesc->elem_len;
+  - char *dest = static_cast<char *>(outdesc->base_addr);
+  - // Clear user memory
+  - std::memset(dest, ' ', destsize*destlen);
+  - ''
+  - // Copy into user memory
+  - srcsize = std::min(destsize, srcsize);
+  - for (size_t i = 0; i < srcsize; ++i) {+
+  - std::memcpy(dest, src[i].data(), std::min(destlen, src[i].length()));
+  - dest += destlen;
+  - -}
+  - -}
 h_helper_char_alloc:
   name: h_helper_char_alloc
   notes:
@@ -19571,6 +19693,8 @@ root
         native
           allocatable -- c_mixin_cfi_native_allocatable
           pointer -- c_mixin_cfi_native_pointer
+        string**
+          allocatable -- c_mixin_cfi_string**_allocatable
       cfi-unpack-base-addr -- c_mixin_cfi-unpack-base-addr
       cfi-unpack-base-addr-cxx -- c_mixin_cfi-unpack-base-addr-cxx
       cfi-unpack-len -- c_mixin_cfi-unpack-len
@@ -19626,6 +19750,9 @@ root
           buf
             malloc -- c_mixin_out_vector_buf_malloc
       shadow -- c_mixin_shadow
+      string
+        max
+          len -- c_mixin_string_max_len
       string-char-copy-to-arg -- c_mixin_string-char-copy-to-arg
       string-copy-out -- c_mixin_string-copy-out
       string-strcpy-out -- c_mixin_string-strcpy-out
@@ -20141,6 +20268,10 @@ root
           string
             allocatable -- h_helper_cdesc_vector_string_allocatable
             out -- h_helper_cdesc_vector_string_out
+      cfi
+        array
+          string
+            out -- h_helper_cfi_array_string_out
       char
         alloc -- h_helper_char_alloc
         array

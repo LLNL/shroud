@@ -123,6 +123,11 @@
                 "doxygen": {
                     "description": "Return an ALLOCATABLE CHARACTER from std::string.\nThe language=C wrapper will return a const char *\n"
                 },
+                "helpers": {
+                    "fc": [
+                        "capsule_data_helper"
+                    ]
+                },
                 "name": "getConstStringResult",
                 "options": {},
                 "wrap": {
@@ -152,6 +157,7 @@
                                 "cxx_rv_decl": "const std::string SHCXX_rv",
                                 "cxx_type": "std::string",
                                 "cxx_var": "SHC_rv_cxx",
+                                "f_helper_capsule_data_helper": "STR_SHROUD_capsule_data",
                                 "f_type": "character(len=*)",
                                 "f_var": "SHT_rv",
                                 "i_arguments": "SHT_rv_capsule",
@@ -319,7 +325,6 @@
                                 "cxx_type": "std::string",
                                 "cxx_var": "SHC_rv_cxx",
                                 "f_call_function": "c_get_const_string_len_CFI",
-                                "f_char_len": "len=30",
                                 "f_result_clause": "\fresult(SHT_rv)",
                                 "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
@@ -803,7 +808,6 @@
                                 "cxx_rv_decl": "const std::string &SHCXX_rv",
                                 "cxx_type": "std::string",
                                 "cxx_var": "SHCXX_rv",
-                                "f_char_len": "len=30",
                                 "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
                                 "i_arguments": "",
@@ -855,7 +859,6 @@
                                 "cxx_type": "std::string",
                                 "cxx_var": "SHC_rv_cxx",
                                 "f_call_function": "c_get_const_string_ref_len_CFI",
-                                "f_char_len": "len=30",
                                 "f_result_clause": "\fresult(SHT_rv)",
                                 "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
@@ -1137,7 +1140,6 @@
                                 "cxx_rv_decl": "const std::string &SHCXX_rv",
                                 "cxx_type": "std::string",
                                 "cxx_var": "SHCXX_rv",
-                                "f_char_len": "len=30",
                                 "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
                                 "i_arguments": "",
@@ -1189,7 +1191,6 @@
                                 "cxx_type": "std::string",
                                 "cxx_var": "SHC_rv_cxx",
                                 "f_call_function": "c_get_const_string_ref_len_empty_CFI",
-                                "f_char_len": "len=30",
                                 "f_result_clause": "\fresult(SHT_rv)",
                                 "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
@@ -1463,7 +1464,6 @@
                                 "cxx_rv_decl": "const std::string *SHCXX_rv",
                                 "cxx_type": "std::string",
                                 "cxx_var": "SHCXX_rv",
-                                "f_char_len": "len=30",
                                 "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
                                 "i_arguments": "",
@@ -1515,7 +1515,6 @@
                                 "cxx_type": "std::string",
                                 "cxx_var": "SHC_rv_cxx",
                                 "f_call_function": "c_get_const_string_ptr_len_CFI",
-                                "f_char_len": "len=30",
                                 "f_result_clause": "\fresult(SHT_rv)",
                                 "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
@@ -4560,6 +4559,11 @@
                 "doxygen": {
                     "description": "Copy output into argument strs which must be large enough\nto hold values.  Excess values will be truncated.\nThe nstrs argument is the length of the array.\nIt is associated with strs via the dimension(nstrs) attribute.\n+hidden indicates that it is not part of the Fortran API.\n"
                 },
+                "helpers": {
+                    "fc": [
+                        "cfi_array_string_out"
+                    ]
+                },
                 "name": "fetchArrayStringArg",
                 "options": {
                     "wrap_python": false
@@ -4750,6 +4754,7 @@
                                 "c_array_size2": "nstrs",
                                 "c_const": "",
                                 "c_deref": "*",
+                                "c_helper_cfi_array_string_out": "STR_ShroudCFIArrayStringOut",
                                 "c_member": "->",
                                 "c_type": "char",
                                 "c_var": "strs",
@@ -4904,6 +4909,12 @@
                 "declgen": "void fetchArrayStringAlloc(std::string **strs +deref(allocatable)+dimension(nstrs)+intent(out), int *nstrs +hidden+intent(out))",
                 "doxygen": {
                     "description": "Copy output into argument strs which must be large enough\nto hold values.  Excess values will be truncated.\nThe nstrs argument is the length of the array.\nIt is associated with strs via the dimension(nstrs) attribute.\n+hidden indicates that it is not part of the Fortran API.\nThe defered length is set to the maximum string length.\n"
+                },
+                "helpers": {
+                    "fc": [
+                        "array_string_out_len",
+                        "cfi_array_string_out"
+                    ]
                 },
                 "name": "fetchArrayStringAlloc",
                 "options": {
@@ -5095,10 +5106,19 @@
                                 "c_array_size2": "nstrs",
                                 "c_const": "",
                                 "c_deref": "*",
+                                "c_helper_array_string_out_len": "STR_ShroudArrayStringOutSize",
+                                "c_helper_cfi_array_string_out": "STR_ShroudCFIArrayStringOut",
                                 "c_member": "->",
+                                "c_temp_extents_decl": "CFI_index_t SHT_strs_extents[1];\nSHT_strs_extents[0] = nstrs;\n",
+                                "c_temp_extents_use": "SHT_strs_extents",
+                                "c_temp_lower_decl": "CFI_index_t SHT_strs_lower[1] = {1};\n",
+                                "c_temp_lower_use": "SHT_strs_lower",
                                 "c_type": "char",
                                 "c_var": "strs",
                                 "c_var_cfi": "SHT_strs_cfi",
+                                "c_var_extents": "SHT_strs_extents",
+                                "c_var_len": "SHT_strs_len",
+                                "c_var_lower": "SHT_strs_lower",
                                 "cfi_type": "CFI_type_other",
                                 "cxx_abstract_decl": "std::string **",
                                 "cxx_addr": "",
@@ -5123,6 +5143,9 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "strs",
                                 "i_var_cfi": "SHT_strs_cfi",
+                                "i_var_extents": "SHT_strs_extents",
+                                "i_var_len": "SHT_strs_len",
+                                "i_var_lower": "SHT_strs_lower",
                                 "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_OTHER",
@@ -5252,6 +5275,12 @@
                 "doxygen": {
                     "description": "Copy output into argument strs which must be large enough\nto hold values.  Excess values will be truncated.\nThe nstrs argument is the length of the array.\nIt is associated with strs via the dimension(nstrs) attribute.\n+hidden indicates that it is not part of the Fortran API.\nThe defered length is set to the len attribute.\n"
                 },
+                "helpers": {
+                    "fc": [
+                        "array_string_out_len",
+                        "cfi_array_string_out"
+                    ]
+                },
                 "name": "fetchArrayStringAllocLen",
                 "options": {
                     "wrap_python": false
@@ -5340,7 +5369,6 @@
                                 "cxx_var": "strs",
                                 "f_array_allocate": "(nstrs)",
                                 "f_assumed_shape": "(:)",
-                                "f_char_len": "len=20",
                                 "f_dimension": "(nstrs)",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
@@ -5446,10 +5474,19 @@
                                 "c_char_len": "20",
                                 "c_const": "",
                                 "c_deref": "*",
+                                "c_helper_array_string_out_len": "STR_ShroudArrayStringOutSize",
+                                "c_helper_cfi_array_string_out": "STR_ShroudCFIArrayStringOut",
                                 "c_member": "->",
+                                "c_temp_extents_decl": "CFI_index_t SHT_strs_extents[1];\nSHT_strs_extents[0] = nstrs;\n",
+                                "c_temp_extents_use": "SHT_strs_extents",
+                                "c_temp_lower_decl": "CFI_index_t SHT_strs_lower[1] = {1};\n",
+                                "c_temp_lower_use": "SHT_strs_lower",
                                 "c_type": "char",
                                 "c_var": "strs",
                                 "c_var_cfi": "SHT_strs_cfi",
+                                "c_var_extents": "SHT_strs_extents",
+                                "c_var_len": "SHT_strs_len",
+                                "c_var_lower": "SHT_strs_lower",
                                 "cfi_type": "CFI_type_other",
                                 "cxx_abstract_decl": "std::string **",
                                 "cxx_addr": "",
@@ -5459,7 +5496,6 @@
                                 "cxx_var": "strs",
                                 "f_array_allocate": "(nstrs)",
                                 "f_assumed_shape": "(:)",
-                                "f_char_len": "len=20",
                                 "f_deref_attr": ", allocatable",
                                 "f_dimension": "(:)",
                                 "f_intent": "OUT",
@@ -5475,6 +5511,9 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "strs",
                                 "i_var_cfi": "SHT_strs_cfi",
+                                "i_var_extents": "SHT_strs_extents",
+                                "i_var_len": "SHT_strs_len",
+                                "i_var_lower": "SHT_strs_lower",
                                 "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_OTHER",

@@ -149,6 +149,7 @@
                 },
                 "helpers": {
                     "fc": [
+                        "capsule_data_helper",
                         "array_context",
                         "string_to_cdesc",
                         "copy_string",
@@ -185,6 +186,7 @@
                                 "cxx_rv_decl": "const std::string SHCXX_rv",
                                 "cxx_type": "std::string",
                                 "cxx_var": "SHC_rv_cxx",
+                                "f_helper_capsule_data_helper": "STR_SHROUD_capsule_data",
                                 "f_type": "character(len=*)",
                                 "f_var": "SHT_rv",
                                 "i_arguments": "SHT_rv_capsule",
@@ -243,6 +245,7 @@
                                 "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                                 "f_deref_attr": ", allocatable",
                                 "f_helper_array_context": "STR_SHROUD_array",
+                                "f_helper_capsule_data_helper": "STR_SHROUD_capsule_data",
                                 "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                                 "f_helper_copy_string": "STR_SHROUD_copy_string",
                                 "f_result_clause": "\fresult(SHT_rv)",
@@ -403,7 +406,6 @@
                                 "cxx_type": "std::string",
                                 "cxx_var": "SHC_rv_cxx",
                                 "f_call_function": "c_get_const_string_len_bufferify",
-                                "f_char_len": "len=30",
                                 "f_result_clause": "\fresult(SHT_rv)",
                                 "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
@@ -669,6 +671,7 @@
                         "array_context",
                         "string_to_cdesc",
                         "copy_string",
+                        "capsule_data_helper",
                         "capsule_dtor"
                     ]
                 },
@@ -714,6 +717,7 @@
                                 "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                                 "f_deref_attr": ", allocatable",
                                 "f_helper_array_context": "STR_SHROUD_array",
+                                "f_helper_capsule_data_helper": "STR_SHROUD_capsule_data",
                                 "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                                 "f_helper_copy_string": "STR_SHROUD_copy_string",
                                 "f_result_clause": "\fresult(SHT_rv)",
@@ -834,6 +838,7 @@
                 "helpers": {
                     "fc": [
                         "array_context",
+                        "capsule_data_helper",
                         "string_to_cdesc",
                         "copy_string",
                         "capsule_dtor"
@@ -923,6 +928,7 @@
                                 "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                                 "f_deref_attr": ", allocatable",
                                 "f_helper_array_context": "STR_SHROUD_array",
+                                "f_helper_capsule_data_helper": "STR_SHROUD_capsule_data",
                                 "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                                 "f_helper_copy_string": "STR_SHROUD_copy_string",
                                 "f_result_clause": "\fresult(SHT_rv)",
@@ -1081,7 +1087,6 @@
                                 "cxx_rv_decl": "const std::string &SHCXX_rv",
                                 "cxx_type": "std::string",
                                 "cxx_var": "SHCXX_rv",
-                                "f_char_len": "len=30",
                                 "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
                                 "i_arguments": "",
@@ -1133,7 +1138,6 @@
                                 "cxx_type": "std::string",
                                 "cxx_var": "SHC_rv_cxx",
                                 "f_call_function": "c_get_const_string_ref_len_bufferify",
-                                "f_char_len": "len=30",
                                 "f_result_clause": "\fresult(SHT_rv)",
                                 "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
@@ -1494,7 +1498,6 @@
                                 "cxx_rv_decl": "const std::string &SHCXX_rv",
                                 "cxx_type": "std::string",
                                 "cxx_var": "SHCXX_rv",
-                                "f_char_len": "len=30",
                                 "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
                                 "i_arguments": "",
@@ -1546,7 +1549,6 @@
                                 "cxx_type": "std::string",
                                 "cxx_var": "SHC_rv_cxx",
                                 "f_call_function": "c_get_const_string_ref_len_empty_bufferify",
-                                "f_char_len": "len=30",
                                 "f_result_clause": "\fresult(SHT_rv)",
                                 "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
@@ -1667,6 +1669,7 @@
                 "helpers": {
                     "fc": [
                         "array_context",
+                        "capsule_data_helper",
                         "string_to_cdesc",
                         "copy_string",
                         "capsule_dtor"
@@ -1754,6 +1757,7 @@
                                 "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                                 "f_deref_attr": ", allocatable",
                                 "f_helper_array_context": "STR_SHROUD_array",
+                                "f_helper_capsule_data_helper": "STR_SHROUD_capsule_data",
                                 "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                                 "f_helper_copy_string": "STR_SHROUD_copy_string",
                                 "f_result_clause": "\fresult(SHT_rv)",
@@ -1918,7 +1922,6 @@
                                 "cxx_rv_decl": "const std::string *SHCXX_rv",
                                 "cxx_type": "std::string",
                                 "cxx_var": "SHCXX_rv",
-                                "f_char_len": "len=30",
                                 "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
                                 "i_arguments": "",
@@ -1970,7 +1973,6 @@
                                 "cxx_type": "std::string",
                                 "cxx_var": "SHC_rv_cxx",
                                 "f_call_function": "c_get_const_string_ptr_len_bufferify",
-                                "f_char_len": "len=30",
                                 "f_result_clause": "\fresult(SHT_rv)",
                                 "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
@@ -2095,6 +2097,7 @@
                 "helpers": {
                     "fc": [
                         "array_context",
+                        "capsule_data_helper",
                         "string_to_cdesc",
                         "copy_string",
                         "capsule_dtor"
@@ -2183,6 +2186,7 @@
                                 "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                                 "f_deref_attr": ", allocatable",
                                 "f_helper_array_context": "STR_SHROUD_array",
+                                "f_helper_capsule_data_helper": "STR_SHROUD_capsule_data",
                                 "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                                 "f_helper_copy_string": "STR_SHROUD_copy_string",
                                 "f_result_clause": "\fresult(SHT_rv)",
@@ -2312,6 +2316,7 @@
                 "helpers": {
                     "fc": [
                         "array_context",
+                        "capsule_data_helper",
                         "string_to_cdesc",
                         "copy_string",
                         "capsule_dtor"
@@ -2400,6 +2405,7 @@
                                 "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                                 "f_deref_attr": ", allocatable",
                                 "f_helper_array_context": "STR_SHROUD_array",
+                                "f_helper_capsule_data_helper": "STR_SHROUD_capsule_data",
                                 "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                                 "f_helper_copy_string": "STR_SHROUD_copy_string",
                                 "f_result_clause": "\fresult(SHT_rv)",
@@ -2530,6 +2536,7 @@
                 "helpers": {
                     "fc": [
                         "array_context",
+                        "capsule_data_helper",
                         "string_to_cdesc",
                         "copy_string",
                         "capsule_dtor"
@@ -2619,6 +2626,7 @@
                                 "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                                 "f_deref_attr": ", allocatable",
                                 "f_helper_array_context": "STR_SHROUD_array",
+                                "f_helper_capsule_data_helper": "STR_SHROUD_capsule_data",
                                 "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                                 "f_helper_copy_string": "STR_SHROUD_copy_string",
                                 "f_result_clause": "\fresult(SHT_rv)",
@@ -6213,6 +6221,7 @@
                 "helpers": {
                     "fc": [
                         "array_context",
+                        "capsule_data_helper",
                         "array_string_allocatable",
                         "array_string_out_len",
                         "capsule_dtor"
@@ -6435,6 +6444,7 @@
                                 "f_dimension": "(:)",
                                 "f_helper_array_context": "STR_SHROUD_array",
                                 "f_helper_array_string_allocatable": "STR_SHROUD_cdesc_array_string_allocatable",
+                                "f_helper_capsule_data_helper": "STR_SHROUD_capsule_data",
                                 "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
@@ -6584,6 +6594,7 @@
                 "helpers": {
                     "fc": [
                         "array_context",
+                        "capsule_data_helper",
                         "array_string_allocatable",
                         "array_string_out_len",
                         "capsule_dtor"
@@ -6677,7 +6688,6 @@
                                 "cxx_var": "strs",
                                 "f_array_allocate": "(nstrs)",
                                 "f_assumed_shape": "(:)",
-                                "f_char_len": "len=20",
                                 "f_dimension": "(nstrs)",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
@@ -6805,11 +6815,12 @@
                                 "f_array_shape": ",\t SHT_strs_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
                                 "f_cdesc_shape": "\nSHT_strs_cdesc%shape(1:1) = shape(strs)",
-                                "f_char_len": "len=20",
+                                "f_char_type": "character(len=SHT_strs_cdesc%elem_len) ::\t ",
                                 "f_deref_attr": ", allocatable",
                                 "f_dimension": "(:)",
                                 "f_helper_array_context": "STR_SHROUD_array",
                                 "f_helper_array_string_allocatable": "STR_SHROUD_cdesc_array_string_allocatable",
+                                "f_helper_capsule_data_helper": "STR_SHROUD_capsule_data",
                                 "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",

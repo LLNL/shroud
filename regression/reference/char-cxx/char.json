@@ -1660,7 +1660,6 @@
                                 "cxx_rv_decl": "const char *SHC_rv",
                                 "cxx_type": "char",
                                 "cxx_var": "SHC_rv",
-                                "f_char_len": "len=30",
                                 "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
                                 "i_arguments": "",
@@ -1710,7 +1709,6 @@
                                 "cxx_type": "char",
                                 "cxx_var": "SHC_rv_cxx",
                                 "f_call_function": "c_get_const_char_ptr_len_bufferify",
-                                "f_char_len": "len=30",
                                 "f_result_clause": "\fresult(SHT_rv)",
                                 "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
@@ -2710,7 +2708,6 @@
                                 "cxx_nonconst_ptr": "name",
                                 "cxx_type": "char",
                                 "cxx_var": "name",
-                                "f_char_len": "len=AAtrim",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
                                 "f_type": "character(len=*)",
@@ -2779,7 +2776,6 @@
                                 "cxx_nonconst_ptr": "name",
                                 "cxx_type": "char",
                                 "cxx_var": "name",
-                                "f_char_len": "len=AAtrim",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
                                 "f_type": "character(len=*)",
@@ -4938,8 +4934,6 @@
                                 "cxx_nonconst_ptr": "names",
                                 "cxx_type": "char",
                                 "cxx_var": "names",
-                                "f_assumed_shape": "(:)",
-                                "f_dimension": "(:)",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
                                 "f_type": "character(len=*)",
@@ -4952,16 +4946,13 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "names",
                                 "idtor": "0",
-                                "rank": "1",
                                 "sh_type": "SH_TYPE_CHAR",
-                                "size": "size(names)",
                                 "stmt_name": "c_in_char**",
                                 "typemap_name": "char"
                             },
                             "meta": {
                                 "abstract": "char**",
-                                "intent": "in",
-                                "rank": 1
+                                "intent": "in"
                             },
                             "stmt": "c_in_char**"
                         }
@@ -5036,8 +5027,6 @@
                                 "cxx_nonconst_ptr": "names",
                                 "cxx_type": "char",
                                 "cxx_var": "SHC_names_cxx",
-                                "f_assumed_shape": "(:)",
-                                "f_dimension": "(:)",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
                                 "f_type": "character(len=*)",
@@ -5054,17 +5043,14 @@
                                 "i_var_len": "SHT_names_len",
                                 "i_var_size": "SHT_names_size",
                                 "idtor": "0",
-                                "rank": "1",
                                 "sh_type": "SH_TYPE_CHAR",
-                                "size": "size(names)",
                                 "stmt_name": "f_in_char**_buf",
                                 "typemap_name": "char"
                             },
                             "meta": {
                                 "abstract": "char**",
                                 "api": "buf",
-                                "intent": "in",
-                                "rank": 1
+                                "intent": "in"
                             },
                             "stmt": "f_in_char**_buf"
                         }
@@ -5094,6 +5080,7 @@
                         },
                         "names": {
                             "fmtdict": {
+                                "array_size": "1",
                                 "c_const": "",
                                 "c_helper_get_from_object_charptr": "SHROUD_get_from_object_charptr",
                                 "c_type": "char",
@@ -5108,15 +5095,13 @@
                                 "numpy_type": "NPY_INTP",
                                 "py_var": "SHPy_names",
                                 "pytmp_var": "SHTPy_names",
-                                "rank": "1",
                                 "size_var": "SHSize_names",
                                 "stmt": "py_in_char**",
                                 "value_var": "SHValue_names"
                             },
                             "meta": {
                                 "abstract": "char**",
-                                "intent": "in",
-                                "rank": 1
+                                "intent": "in"
                             },
                             "stmt": "py_in_char**"
                         }
@@ -5131,8 +5116,7 @@
                         "names": {
                             "meta": {
                                 "abstract": "char**",
-                                "intent": "in",
-                                "rank": 1
+                                "intent": "in"
                             }
                         }
                     }
@@ -5262,8 +5246,6 @@
                                 "cxx_nonconst_ptr": "outstr",
                                 "cxx_type": "char",
                                 "cxx_var": "outstr",
-                                "f_assumed_shape": "(:)",
-                                "f_dimension": "(:)",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
                                 "f_type": "character(len=*)",
@@ -5276,16 +5258,13 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "outstr",
                                 "idtor": "0",
-                                "rank": "1",
                                 "sh_type": "SH_TYPE_CHAR",
-                                "size": "size(outstr)",
                                 "stmt_name": "c_out_char**",
                                 "typemap_name": "char"
                             },
                             "meta": {
                                 "abstract": "char**",
-                                "intent": "out",
-                                "rank": 1
+                                "intent": "out"
                             },
                             "stmt": "c_out_char**"
                         }
@@ -5333,10 +5312,7 @@
                                 "cxx_nonconst_ptr": "outstr",
                                 "cxx_type": "char",
                                 "cxx_var": "outstr",
-                                "f_assumed_shape": "(:)",
-                                "f_cdesc_shape": "\nSHT_outstr_cdesc%shape(1:1) = shape(outstr)",
                                 "f_deref_attr": ", pointer",
-                                "f_dimension": "(:)",
                                 "f_helper_array_context": "CHA_SHROUD_array",
                                 "f_helper_pointer_string": "CHA_SHROUD_pointer_string",
                                 "f_intent": "OUT",
@@ -5354,9 +5330,7 @@
                                 "i_var": "outstr",
                                 "i_var_cdesc": "SHT_outstr_cdesc",
                                 "idtor": "0",
-                                "rank": "1",
                                 "sh_type": "SH_TYPE_CHAR",
-                                "size": "size(outstr)",
                                 "stmt_name": "f_out_char**_cdesc_pointer",
                                 "typemap_name": "char"
                             },
@@ -5364,8 +5338,7 @@
                                 "abstract": "char**",
                                 "api": "cdesc",
                                 "deref": "pointer",
-                                "intent": "out",
-                                "rank": 1
+                                "intent": "out"
                             },
                             "stmt": "f_out_char**_cdesc_pointer"
                         }
@@ -5383,6 +5356,7 @@
                         },
                         "outstr": {
                             "fmtdict": {
+                                "array_size": "1",
                                 "c_const": "",
                                 "c_type": "char",
                                 "c_var": "outstr",
@@ -5395,15 +5369,13 @@
                                 "data_var": "SHData_outstr",
                                 "numpy_type": "NPY_INTP",
                                 "py_var": "SHPy_outstr",
-                                "rank": "1",
                                 "size_var": "SHSize_outstr",
                                 "stmt": "py_out_char**",
                                 "value_var": "SHValue_outstr"
                             },
                             "meta": {
                                 "abstract": "char**",
-                                "intent": "out",
-                                "rank": 1
+                                "intent": "out"
                             },
                             "stmt": "py_out_char**"
                         }
@@ -5418,8 +5390,7 @@
                         "outstr": {
                             "meta": {
                                 "abstract": "char**",
-                                "intent": "out",
-                                "rank": 1
+                                "intent": "out"
                             }
                         }
                     }
@@ -5566,8 +5537,6 @@
                                 "cxx_nonconst_ptr": "outstr",
                                 "cxx_type": "char",
                                 "cxx_var": "outstr",
-                                "f_assumed_shape": "(:)",
-                                "f_dimension": "(:)",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
                                 "f_type": "character(len=*)",
@@ -5580,16 +5549,13 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "outstr",
                                 "idtor": "0",
-                                "rank": "1",
                                 "sh_type": "SH_TYPE_CHAR",
-                                "size": "size(outstr)",
                                 "stmt_name": "c_out_char**",
                                 "typemap_name": "char"
                             },
                             "meta": {
                                 "abstract": "char**",
-                                "intent": "out",
-                                "rank": 1
+                                "intent": "out"
                             },
                             "stmt": "c_out_char**"
                         }
@@ -5661,10 +5627,7 @@
                                 "cxx_nonconst_ptr": "outstr",
                                 "cxx_type": "char",
                                 "cxx_var": "outstr",
-                                "f_assumed_shape": "(:)",
-                                "f_cdesc_shape": "\nSHT_outstr_cdesc%shape(1:1) = shape(outstr)",
                                 "f_deref_attr": ", pointer",
-                                "f_dimension": "(:)",
                                 "f_helper_array_context": "CHA_SHROUD_array",
                                 "f_helper_pointer_string": "CHA_SHROUD_pointer_string",
                                 "f_intent": "OUT",
@@ -5682,9 +5645,7 @@
                                 "i_var": "outstr",
                                 "i_var_cdesc": "SHT_outstr_cdesc",
                                 "idtor": "0",
-                                "rank": "1",
                                 "sh_type": "SH_TYPE_CHAR",
-                                "size": "size(outstr)",
                                 "stmt_name": "f_out_char**_cdesc_pointer",
                                 "typemap_name": "char"
                             },
@@ -5692,8 +5653,7 @@
                                 "abstract": "char**",
                                 "api": "cdesc",
                                 "deref": "pointer",
-                                "intent": "out",
-                                "rank": 1
+                                "intent": "out"
                             },
                             "stmt": "f_out_char**_cdesc_pointer"
                         }
@@ -5723,6 +5683,7 @@
                         },
                         "outstr": {
                             "fmtdict": {
+                                "array_size": "1",
                                 "c_const": "",
                                 "c_type": "char",
                                 "c_var": "outstr",
@@ -5735,15 +5696,13 @@
                                 "data_var": "SHData_outstr",
                                 "numpy_type": "NPY_INTP",
                                 "py_var": "SHPy_outstr",
-                                "rank": "1",
                                 "size_var": "SHSize_outstr",
                                 "stmt": "py_out_char**",
                                 "value_var": "SHValue_outstr"
                             },
                             "meta": {
                                 "abstract": "char**",
-                                "intent": "out",
-                                "rank": 1
+                                "intent": "out"
                             },
                             "stmt": "py_out_char**"
                         }
@@ -5758,8 +5717,7 @@
                         "outstr": {
                             "meta": {
                                 "abstract": "char**",
-                                "intent": "out",
-                                "rank": 1
+                                "intent": "out"
                             }
                         }
                     }

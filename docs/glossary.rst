@@ -33,7 +33,12 @@ cdesc
    The address, type, shape, element size.
    Similar to ``CFI_desc_t`` from Fortran's
    *Further Interoperability with C*.
-   
+
+CFI
+
+   C Fortran Interface defined by the *Further interoperability of Fortran with C*
+   features of TS29113 and Fortran 2018.
+
 Fortran wrapper
 
    Fortran functions which call the C wrapper functions.

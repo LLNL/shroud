@@ -189,40 +189,43 @@ contains
   subroutine test_string_array
     character(20) :: strs(5)
     character(:), allocatable :: stralloc(:)
-    character(20), allocatable :: strlen(:)
 
     call set_case_name("test_string_array")
 
-    ! copy into argument
+    ! Copy into argument.
     strs = "xxx"
     call fetch_array_string_arg(strs)
-    call assert_true(strs(1) == "apple",  "fetch_array_string_copy(1)")
-    call assert_true(strs(2) == "pear",   "fetch_array_string_copy(2)")
-    call assert_true(strs(3) == "peach",  "fetch_array_string_copy(3)")
-    call assert_true(strs(4) == "cherry", "fetch_array_string_copy(4)")
-    call assert_true(strs(5) == " ",      "fetch_array_string_copy(5)")
+    call assert_equals("apple",  strs(1), "fetchArrayStringArg(1)")
+    call assert_equals("pear",   strs(2), "fetchArrayStringArg(2)")
+    call assert_equals("peach",  strs(3), "fetchArrayStringArg(3)")
+    call assert_equals("cherry", strs(4), "fetchArrayStringArg(4)")
+    call assert_equals(" ",      strs(5), "fetchArrayStringArg(5)")
 
-    ! allocate the argument
+    ! Allocate the argument.
     call assert_false(allocated(stralloc), "stralloc not allocated")
     call fetch_array_string_alloc(stralloc)
     call assert_true(allocated(stralloc), "stralloc is allocated")
     call assert_equals(4, size(stralloc), "size of stralloc")
     call assert_equals(6, len(stralloc), "len of stralloc")
-    call assert_true(stralloc(1) == "apple",  "fetch_array_string_alloc(1)")
-    call assert_true(stralloc(2) == "pear",   "fetch_array_string_alloc(2)")
-    call assert_true(stralloc(3) == "peach",  "fetch_array_string_alloc(3)")
-    call assert_true(stralloc(4) == "cherry", "fetch_array_string_alloc(4)")
+!    print *, "XXXX", len(stralloc), size(stralloc)
+!    print *, "XXXX", stralloc
+    call assert_equals("apple",  stralloc(1), "fetchArrayStringAlloc(1)")
+    call assert_equals("pear",   stralloc(2), "fetchArrayStringAlloc(2)")
+    call assert_equals("peach",  stralloc(3), "fetchArrayStringAlloc(3)")
+    call assert_equals("cherry", stralloc(4), "fetchArrayStringAlloc(4)")
+    deallocate(stralloc)
     
-    ! allocate the argument with a predefined len
-    call assert_false(allocated(strlen), "strlen not allocated")
-    call fetch_array_string_alloc_len(strlen)
-    call assert_true(allocated(strlen), "strlen is allocated")
-    call assert_equals(4, size(strlen), "size of strlen")
-    call assert_equals(20, len(strlen), "len of strlen")
-    call assert_true(strlen(1) == "apple",  "fetch_array_string_alloc(1)")
-    call assert_true(strlen(2) == "pear",   "fetch_array_string_alloc(2)")
-    call assert_true(strlen(3) == "peach",  "fetch_array_string_alloc(3)")
-    call assert_true(strlen(4) == "cherry", "fetch_array_string_alloc(4)")
+    ! Allocate the argument with a predefined len.
+    ! The allocate uses a fixed size of 20.
+    call assert_false(allocated(stralloc), "stralloc not allocated")
+    call fetch_array_string_alloc_len(stralloc)
+    call assert_true(allocated(stralloc), "stralloc is allocated")
+    call assert_equals(4, size(stralloc), "size of stralloc")
+    call assert_equals(20, len(stralloc), "len of stralloc")
+    call assert_equals("apple",  stralloc(1), "fetchArrayStringAllocLen(1)")
+    call assert_equals("pear",   stralloc(2), "fetchArrayStringAllocLen(2)")
+    call assert_equals("peach",  stralloc(3), "fetchArrayStringAllocLen(3)")
+    call assert_equals("cherry", stralloc(4), "fetchArrayStringAllocLen(4)")
     
   end subroutine test_string_array
   

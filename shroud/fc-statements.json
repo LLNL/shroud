@@ -139,7 +139,7 @@
     {
         "name": "c_mixin_dummy_arg",
         "notes": [
-            "Pass the library argument to the interface."
+            "Pass the Fortran wrapper argument to the interface."
         ],
         "i_dummy_arg": [
             "{i_var}"
@@ -635,8 +635,8 @@
         "c_temps": [
             "capsule"
         ],
-        "xhelper": [
-            "capsule_helper"
+        "helper": [
+            "capsule_data_helper"
         ]
     },
     {
@@ -1948,7 +1948,7 @@
     {
         "name": "c_mixin_character-deferred-length",
         "i_dummy_decl": [
-            "character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}"
+            "character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}"
         ]
     },
     {
@@ -2155,7 +2155,7 @@
             "{f_var}"
         ],
         "f_dummy_decl": [
-            "character({f_char_len}){f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}"
+            "character(len=:){f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}"
         ],
         "f_post_call": [
             "allocate({f_char_type}{f_var}({f_var_cdesc}%size))",
@@ -2702,6 +2702,27 @@
         ],
         "helper": [
             "array_string_allocatable",
+            "array_string_out_len"
+        ]
+    },
+    {
+        "name": "c_mixin_string_max_len",
+        "comments": [
+            "Compute maximum length of array of std::string."
+        ],
+        "notes": [
+            "c_char_len is defined from attribute +len(x)"
+        ],
+        "c_post_call": [
+            "size_t {c_var_len} = {c_char_len};",
+            "if ({c_var_len} <= 0) {{+",
+            "{c_var_len} = {c_helper_array_string_out_len}({cxx_var}, {c_array_size2});",
+            "-}}"
+        ],
+        "c_temps": [
+            "len"
+        ],
+        "helper": [
             "array_string_out_len"
         ]
     },
@@ -4601,6 +4622,27 @@
         ]
     },
     {
+        "name": "c_mixin_cfi_string**_allocatable",
+        "comments": [
+            "Allocate for character (requires +dimension)."
+        ],
+        "c_post_call": [
+            "if ({cxx_var} != {nullptr}) {{+",
+            "{c_temp_lower_decl}{c_temp_extents_decl}int SH_ret = CFI_allocate({c_var_cfi}, \t{c_temp_lower_use}, \t{c_temp_extents_use}, \t{c_var_len});",
+            "if (SH_ret == CFI_SUCCESS) {{+",
+            "{c_helper_cfi_array_string_out}({c_var_cfi}, {cxx_var}, {c_array_size2});",
+            "-}}",
+            "-}}"
+        ],
+        "c_temps": [
+            "extents",
+            "lower"
+        ],
+        "helper": [
+            "cfi_array_string_out"
+        ]
+    },
+    {
         "name": "c_mixin_cfi_arg_native",
         "comments": [
             "Native argument which use CFI_desc_t."
@@ -5070,18 +5112,13 @@
         ],
         "mixin": [
             "f_mixin_declare-fortran-arg",
+            "c_mixin_character-deferred-length",
+            "c_mixin_dummy_arg",
             "c_mixin_cfi_arg",
             "c_mixin_local-string*",
-            "c_mixin_arg-call-cvar-address"
-        ],
-        "i_dummy_arg": [
-            "{i_var}"
-        ],
-        "i_dummy_decl": [
-            "character(*){i_intent_attr} :: {i_var}{f_assumed_shape}"
-        ],
-        "c_post_call": [
-            "// Allocate and copy into {c_var}"
+            "c_mixin_arg-call-cvar-address",
+            "c_mixin_string_max_len",
+            "c_mixin_cfi_string**_allocatable"
         ]
     },
     {
@@ -5099,7 +5136,10 @@
             "character(*){i_intent_attr} :: {i_var}{f_assumed_shape}"
         ],
         "c_post_call": [
-            "// Copy results into {c_var}"
+            "{c_helper_cfi_array_string_out}({c_var_cfi}, {cxx_var}, {c_array_size2});"
+        ],
+        "helper": [
+            "cfi_array_string_out"
         ]
     },
     {
@@ -5864,7 +5904,9 @@
         "c_fmtname": "{cnamefunc}",
         "api": "cxx",
         "scope": "cwrap_impl",
-        "proto_include": ["<string>", "<vector>"],
+        "proto_include": [
+            "<string>"
+        ],
         "proto": "{cnameproto};",
         "source": [
             "",
@@ -5996,6 +6038,45 @@
         ]
     },
     {
+        "name": "h_helper_cfi_array_string_out",
+        "notes": [
+            "Only used with std::string and thus C++."
+        ],
+        "fmtdict": {
+            "cnamefunc": "{C_prefix}ShroudCFIArrayStringOut",
+            "cnamefunc_cfi_array_string_out": "{cnamefunc}",
+            "cnameproto":  "void {cnamefunc}(CFI_cdesc_t *outdesc, std::string *src, size_t srcsize)"
+        },
+        "c_fmtname": "{cnamefunc}",
+        "api": "cxx",
+        "scope": "cwrap_impl",
+        "proto_include": ["<string>", "<ISO_Fortran_binding.h>"],
+        "proto": "{cnameproto};",
+        "cxx_include": ["<cstring>", "<cstddef>"],
+        "source": [
+            "",
+            "{c_lstart}// helper {hname}",
+            "// Copy the array of std::string into array described by {C_array_type}.",
+            "// Called by C++.",
+            "//  CHARACTER(len=destlen) dest(destsize)",
+            "{cnameproto}",
+            "{{+",
+            "size_t destsize = outdesc->dim[0].extent;",
+            "size_t destlen = outdesc->elem_len;",
+            "char *dest = static_cast<char *>(outdesc->base_addr);",
+            "// Clear user memory",
+            "std::memset(dest, ' ', destsize*destlen);",
+            "",
+            "// Copy into user memory",
+            "srcsize = std::min(destsize, srcsize);",
+            "for (size_t i = 0; i < srcsize; ++i) {{+",
+            "std::memcpy(dest, src[i].data(), std::min(destlen, src[i].length()));",
+            "dest += destlen;",
+            "-}}",
+            "-}}{c_lend}"
+        ]
+    },
+    {
         "name":"############################################################"
     },
     {
@@ -6084,6 +6165,8 @@
     {
         "name": "h_helper_capsule_helper",
         "notes": [
+            "Used when the user owns C++ memory.",
+            "Allows the memory to be deleted from Fortran.",
             "Fortran cannot be declared with both PRIVATE and BIND(C) attributes"
         ],
         "dependent_helpers": ["capsule_data_helper", "capsule_dtor"],

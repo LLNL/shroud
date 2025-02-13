@@ -1509,7 +1509,7 @@ contains
     !<
     subroutine fetch_array_string_alloc(strs)
         use iso_c_binding, only : C_LOC
-        character(:), intent(OUT), allocatable, target :: strs(:)
+        character(len=:), intent(OUT), allocatable, target :: strs(:)
         ! splicer begin function.fetch_array_string_alloc
         type(STR_SHROUD_array) :: SHT_strs_cdesc
         type(STR_SHROUD_capsule_data) :: SHT_strs_capsule
@@ -1539,13 +1539,14 @@ contains
     !<
     subroutine fetch_array_string_alloc_len(strs)
         use iso_c_binding, only : C_LOC
-        character(len=20), intent(OUT), allocatable, target :: strs(:)
+        character(len=:), intent(OUT), allocatable, target :: strs(:)
         ! splicer begin function.fetch_array_string_alloc_len
         type(STR_SHROUD_array) :: SHT_strs_cdesc
         type(STR_SHROUD_capsule_data) :: SHT_strs_capsule
         call c_fetch_array_string_alloc_len_bufferify(SHT_strs_cdesc, &
             SHT_strs_capsule)
-        allocate(strs(SHT_strs_cdesc%size))
+        allocate(character(len=SHT_strs_cdesc%elem_len) :: &
+            strs(SHT_strs_cdesc%size))
         SHT_strs_cdesc%base_addr = C_LOC(strs)
         call STR_SHROUD_cdesc_array_string_allocatable(SHT_strs_cdesc, SHT_strs_capsule)
         call STR_SHROUD_capsule_dtor(SHT_strs_capsule)

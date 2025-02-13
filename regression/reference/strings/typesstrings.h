@@ -91,7 +91,6 @@ void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap);
 #ifdef __cplusplus
 }
 #include <string>
-#include <vector>
 
 // C++ implementation prototypes
 void STR_ShroudCdescArrayStringOut(STR_SHROUD_array *outdesc, std::string *src, size_t srcsize);

@@ -14,12 +14,21 @@
 ! splicer begin file_top
 ! splicer end file_top
 module strings_mod
+    use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
 
     ! splicer begin module_top
     ! splicer end module_top
+
+    ! start helper capsule_data_helper
+    ! helper capsule_data_helper
+    type, bind(C) :: STR_SHROUD_capsule_data
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type STR_SHROUD_capsule_data
+    ! end helper capsule_data_helper
 
     ! ----------------------------------------
     ! Function:  void init_test
@@ -694,7 +703,7 @@ module strings_mod
         subroutine fetch_array_string_alloc(strs) &
                 bind(C, name="STR_fetchArrayStringAlloc_CFI")
             implicit none
-            character(*), intent(OUT) :: strs(:)
+            character(len=:), intent(OUT), allocatable :: strs(:)
         end subroutine fetch_array_string_alloc
     end interface
 
@@ -730,7 +739,7 @@ module strings_mod
         subroutine fetch_array_string_alloc_len(strs) &
                 bind(C, name="STR_fetchArrayStringAllocLen_CFI")
             implicit none
-            character(*), intent(OUT) :: strs(:)
+            character(len=:), intent(OUT), allocatable :: strs(:)
         end subroutine fetch_array_string_alloc_len
     end interface
 

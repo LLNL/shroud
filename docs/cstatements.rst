@@ -266,8 +266,8 @@ variables.  This allows creating names without conflicting with
 
 The format field is named *c_local_{name}*.
    
-c_helper
-^^^^^^^^
+helper
+^^^^^^
 
 A list of helper functions which will be added to the wrapper file.
 The format dictionary will be applied to the list for additional
@@ -275,15 +275,17 @@ flexibility.
 
 .. code-block:: yaml
 
-    c_helper:
+    helper:
     - capsule_data_helper
     - vector_context
     - vector_copy_{cxx_T}
 
 Each helper will add an entry into the format dictionary with
-the name of the function or type created by the helper.
+the name of the function or type created by the helper
+defined in the helper's *c_fmtname* field.
 The format value is the helper name prefixed by *c_helper_*.
-For example, format field *c_helper_capsule_data_helper* may be ``TEM_SHROUD_capsule_data``.
+For example, format field *c_helper_capsule_data_helper* may be
+``TEM_SHROUD_capsule_data``.
 
 See :ref:`HelpersAnchor` for a description of helper functions.
 

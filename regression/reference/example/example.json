@@ -1162,6 +1162,7 @@
                                         "helpers": {
                                             "fc": [
                                                 "array_context",
+                                                "capsule_data_helper",
                                                 "string_to_cdesc",
                                                 "copy_string",
                                                 "capsule_dtor"
@@ -1251,6 +1252,7 @@
                                                         "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                                                         "f_deref_attr": ", allocatable",
                                                         "f_helper_array_context": "AA_SHROUD_array",
+                                                        "f_helper_capsule_data_helper": "AA_SHROUD_capsule_data",
                                                         "f_helper_capsule_dtor": "AA_SHROUD_capsule_dtor",
                                                         "f_helper_copy_string": "AA_SHROUD_copy_string",
                                                         "f_result_clause": "\fresult(SHT_rv)",
@@ -3477,7 +3479,6 @@
                                                         "cxx_rv_decl": "const std::string &SHCXX_rv",
                                                         "cxx_type": "std::string",
                                                         "cxx_var": "SHCXX_rv",
-                                                        "f_char_len": "len=aa_exclass2_get_name_length({F_this}%{F_derived_member})",
                                                         "f_type": "character(len=aa_exclass2_get_name_length({F_this}%{F_derived_member}))",
                                                         "f_var": "SHT_rv",
                                                         "i_arguments": "self",
@@ -3530,7 +3531,6 @@
                                                         "cxx_type": "std::string",
                                                         "cxx_var": "SHC_rv_cxx",
                                                         "f_call_function": "c_ex_class2_get_name_bufferify",
-                                                        "f_char_len": "len=aa_exclass2_get_name_length({F_this}%{F_derived_member})",
                                                         "f_result_clause": "\fresult(SHT_rv)",
                                                         "f_type": "character(len=aa_exclass2_get_name_length({F_this}%{F_derived_member}))",
                                                         "f_var": "SHT_rv",
@@ -3686,6 +3686,7 @@
                                         "helpers": {
                                             "fc": [
                                                 "array_context",
+                                                "capsule_data_helper",
                                                 "string_to_cdesc",
                                                 "copy_string",
                                                 "capsule_dtor"
@@ -3774,6 +3775,7 @@
                                                         "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                                                         "f_deref_attr": ", allocatable",
                                                         "f_helper_array_context": "AA_SHROUD_array",
+                                                        "f_helper_capsule_data_helper": "AA_SHROUD_capsule_data",
                                                         "f_helper_capsule_dtor": "AA_SHROUD_capsule_dtor",
                                                         "f_helper_copy_string": "AA_SHROUD_copy_string",
                                                         "f_result_clause": "\fresult(SHT_rv)",
@@ -3928,6 +3930,7 @@
                                         "helpers": {
                                             "fc": [
                                                 "array_context",
+                                                "capsule_data_helper",
                                                 "string_to_cdesc",
                                                 "copy_string",
                                                 "capsule_dtor"
@@ -4017,6 +4020,7 @@
                                                         "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                                                         "f_deref_attr": ", allocatable",
                                                         "f_helper_array_context": "AA_SHROUD_array",
+                                                        "f_helper_capsule_data_helper": "AA_SHROUD_capsule_data",
                                                         "f_helper_capsule_dtor": "AA_SHROUD_capsule_dtor",
                                                         "f_helper_copy_string": "AA_SHROUD_copy_string",
                                                         "f_result_clause": "\fresult(SHT_rv)",
@@ -4170,6 +4174,7 @@
                                         "helpers": {
                                             "fc": [
                                                 "array_context",
+                                                "capsule_data_helper",
                                                 "string_to_cdesc",
                                                 "copy_string",
                                                 "capsule_dtor"
@@ -4258,6 +4263,7 @@
                                                         "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                                                         "f_deref_attr": ", allocatable",
                                                         "f_helper_array_context": "AA_SHROUD_array",
+                                                        "f_helper_capsule_data_helper": "AA_SHROUD_capsule_data",
                                                         "f_helper_capsule_dtor": "AA_SHROUD_capsule_dtor",
                                                         "f_helper_copy_string": "AA_SHROUD_copy_string",
                                                         "f_result_clause": "\fresult(SHT_rv)",

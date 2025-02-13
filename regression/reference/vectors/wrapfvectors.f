@@ -863,7 +863,7 @@ contains
     ! Statement: f_out_vector<string>&_cdesc_allocatable
     subroutine vector_string_fill_allocatable(arg)
         use iso_c_binding, only : C_LOC
-        character(:), intent(OUT), allocatable, target :: arg(:)
+        character(len=:), intent(OUT), allocatable, target :: arg(:)
         ! splicer begin function.vector_string_fill_allocatable
         type(VEC_SHROUD_array) :: SHT_arg_cdesc
         type(VEC_SHROUD_capsule_data) :: SHT_arg_capsule
@@ -885,13 +885,14 @@ contains
     ! Statement: f_out_vector<string>&_cdesc_allocatable
     subroutine vector_string_fill_allocatable_len(arg)
         use iso_c_binding, only : C_LOC
-        character(len=20), intent(OUT), allocatable, target :: arg(:)
+        character(len=:), intent(OUT), allocatable, target :: arg(:)
         ! splicer begin function.vector_string_fill_allocatable_len
         type(VEC_SHROUD_array) :: SHT_arg_cdesc
         type(VEC_SHROUD_capsule_data) :: SHT_arg_capsule
         call c_vector_string_fill_allocatable_len_bufferify(SHT_arg_cdesc, &
             SHT_arg_capsule)
-        allocate(arg(SHT_arg_cdesc%size))
+        allocate(character(len=SHT_arg_cdesc%elem_len) :: &
+            arg(SHT_arg_cdesc%size))
         SHT_arg_cdesc%base_addr = C_LOC(arg)
         call VEC_SHROUD_cdesc_vector_string_allocatable(SHT_arg_cdesc, SHT_arg_capsule)
         call VEC_SHROUD_capsule_dtor(SHT_arg_capsule)

@@ -1455,7 +1455,6 @@
                                 "cxx_type": "char",
                                 "cxx_var": "SHC_rv_cxx",
                                 "f_call_function": "c_function4a_bufferify",
-                                "f_char_len": "len=30",
                                 "f_result_clause": "\fresult(SHT_rv)",
                                 "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",

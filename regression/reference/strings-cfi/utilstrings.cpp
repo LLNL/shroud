@@ -11,6 +11,8 @@
 #include <string>
 // shroud
 #include "typesstrings.h"
+#include <cstddef>
+#include <cstring>
 
 
 #ifdef __cplusplus
@@ -56,3 +58,38 @@ void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap)
 #ifdef __cplusplus
 }
 #endif
+
+// start helper array_string_out_len
+// helper array_string_out_len
+// Return the maximum string length in a std::vector<std::string>.
+size_t STR_ShroudArrayStringOutSize(std::string *in, size_t nsize)
+{
+    size_t len = 0;
+    for (size_t i = 0; i < nsize; ++i) {
+        len = std::max(len, in[i].length());
+    }
+    return len;
+}
+// end helper array_string_out_len
+
+// start helper cfi_array_string_out
+// helper cfi_array_string_out
+// Copy the array of std::string into array described by STR_SHROUD_array.
+// Called by C++.
+//  CHARACTER(len=destlen) dest(destsize)
+void STR_ShroudCFIArrayStringOut(CFI_cdesc_t *outdesc, std::string *src, size_t srcsize)
+{
+    size_t destsize = outdesc->dim[0].extent;
+    size_t destlen = outdesc->elem_len;
+    char *dest = static_cast<char *>(outdesc->base_addr);
+    // Clear user memory
+    std::memset(dest, ' ', destsize*destlen);
+
+    // Copy into user memory
+    srcsize = std::min(destsize, srcsize);
+    for (size_t i = 0; i < srcsize; ++i) {
+        std::memcpy(dest, src[i].data(), std::min(destlen, src[i].length()));
+        dest += destlen;
+    }
+}
+// end helper cfi_array_string_out
