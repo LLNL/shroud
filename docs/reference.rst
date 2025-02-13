@@ -1682,16 +1682,6 @@ f_cdesc_shape
     It will be blank for a scalar.
     ex: ``\nSHT_arg_cdesc%shape(1:1) = shape(arg)``
 
-f_char_type
-    Character type used in ``ALLOCATE`` statements.
-    Based on *len* attributes.
-    Defaults to blank for ``CHARACTER`` types which have an explicit length
-    in the type declaration - ``CHARACTER(20)``..
-    Otherwise set to ``character(len={c_var_cdesc}%elem_len) :: `` which
-    uses the length computed by the C wrapper and stored in elem_len.
-    For example, find the maximum length of strings in a ``char **`` argument.
-    Used in statements as ``allocate({f_char_type}(f_var})``.
-    
 f_declare_shape_prefix
 
 f_declare_shape_array

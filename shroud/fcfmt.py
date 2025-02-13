@@ -727,14 +727,6 @@ class FillFormat(object):
                          for r in range(1, rank+1)]) + ")"
                     fmt.f_array_shape = wformat(
                         ",\t {f_var_cdesc}%shape(1:{rank})", fmt)
-        elif f_ast.typemap.sgroup in ["char", "string"]:
-            # A string becomes an array of CHARACTER.
-            fmt.i_dimension = "(*)"
-
-        if hasattr(fmt, "f_var_cdesc"):
-            if meta["deref"] == "allocatable":
-                # Use elem_len from the C wrapper.
-                fmt.f_char_type = wformat("character(len={f_var_cdesc}%elem_len) ::\t ", fmt)
 
     def apply_helpers_from_stmts(self, node, bind):
         """
