@@ -630,7 +630,7 @@ contains
         type(VEC_SHROUD_array) :: SHT_arg_cdesc
         call c_vector_iota_out_bufferify(SHT_arg_cdesc)
         call VEC_SHROUD_copy_array(SHT_arg_cdesc, C_LOC(arg), &
-            size(arg,kind=C_SIZE_T))
+            size(arg, kind=C_SIZE_T))
         ! splicer end function.vector_iota_out
     end subroutine vector_iota_out
     ! end vector_iota_out
@@ -658,7 +658,7 @@ contains
         type(VEC_SHROUD_array) :: SHT_arg_cdesc
         num = c_vector_iota_out_with_num_bufferify(SHT_arg_cdesc)
         call VEC_SHROUD_copy_array(SHT_arg_cdesc, C_LOC(arg), &
-            size(arg,kind=C_SIZE_T))
+            size(arg, kind=C_SIZE_T))
         ! splicer end function.vector_iota_out_with_num
     end function vector_iota_out_with_num
     ! end vector_iota_out_with_num
@@ -686,7 +686,7 @@ contains
         type(VEC_SHROUD_array) :: SHT_arg_cdesc
         call c_vector_iota_out_with_num2_bufferify(SHT_arg_cdesc)
         call VEC_SHROUD_copy_array(SHT_arg_cdesc, C_LOC(arg), &
-            size(arg,kind=C_SIZE_T))
+            size(arg, kind=C_SIZE_T))
         num = SHT_arg_cdesc%size
         ! splicer end function.vector_iota_out_with_num2
     end function vector_iota_out_with_num2
@@ -711,7 +711,7 @@ contains
         call c_vector_iota_out_alloc_bufferify(SHT_arg_cdesc)
         allocate(arg(SHT_arg_cdesc%size))
         call VEC_SHROUD_copy_array(SHT_arg_cdesc, C_LOC(arg), &
-            size(arg,kind=C_SIZE_T))
+            size(arg, kind=C_SIZE_T))
         ! splicer end function.vector_iota_out_alloc
     end subroutine vector_iota_out_alloc
     ! end vector_iota_out_alloc
@@ -756,7 +756,7 @@ contains
         call c_vector_increment_bufferify(arg, size(arg, kind=C_SIZE_T), &
             SHT_arg_cdesc)
         call VEC_SHROUD_copy_array(SHT_arg_cdesc, C_LOC(arg), &
-            size(arg,kind=C_SIZE_T))
+            size(arg, kind=C_SIZE_T))
         ! splicer end function.vector_increment
     end subroutine vector_increment
 
@@ -777,7 +777,7 @@ contains
         type(VEC_SHROUD_array) :: SHT_arg_cdesc
         call c_vector_iota_out_d_bufferify(SHT_arg_cdesc)
         call VEC_SHROUD_copy_array(SHT_arg_cdesc, C_LOC(arg), &
-            size(arg,kind=C_SIZE_T))
+            size(arg, kind=C_SIZE_T))
         ! splicer end function.vector_iota_out_d
     end subroutine vector_iota_out_d
 

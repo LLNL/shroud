@@ -4496,7 +4496,6 @@ c_mixin_inout_vector<native>_cdesc:
   - array_context
   - array_context
   - type_defines
-  - copy_array
   destructor_name: std_vector_{cxx_T}
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
@@ -5425,7 +5424,7 @@ c_out_vector<native>&_cdesc:
   intent: out
   comments:
   - Pass cdesc as argument to C wrapper.
-  - Copy std::vector into user's memory.
+  - Copy into Fortran argument.
   - Fill cdesc with vector information.
   - Return address and size of vector data.
   - Create a local std::vector.
@@ -5436,7 +5435,7 @@ c_out_vector<native>&_cdesc:
   - '  f_mixin_dummy_arg'
   - '  f_mixin_template_native_arg1'
   - '  f_mixin_cdesc_pass'
-  - '  f_mixin_out_vector<native>_copy'
+  - '  f_mixin_cdesc_copy_array'
   - '  c_mixin_new_vector<native>'
   - '    c_mixin_destructor_new-vector'
   - '    c_mixin_cdesc_vector_fill'
@@ -5469,7 +5468,6 @@ c_out_vector<native>&_cdesc:
   helper:
   - array_context
   - copy_array
-  - type_defines
   - type_defines
   destructor_name: std_vector_{cxx_T}
   destructor:
@@ -5566,7 +5564,7 @@ c_out_vector<native>*_cdesc:
   intent: out
   comments:
   - Pass cdesc as argument to C wrapper.
-  - Copy std::vector into user's memory.
+  - Copy into Fortran argument.
   - Fill cdesc with vector information.
   - Return address and size of vector data.
   - Create a local std::vector.
@@ -5577,7 +5575,7 @@ c_out_vector<native>*_cdesc:
   - '  f_mixin_dummy_arg'
   - '  f_mixin_template_native_arg1'
   - '  f_mixin_cdesc_pass'
-  - '  f_mixin_out_vector<native>_copy'
+  - '  f_mixin_cdesc_copy_array'
   - '  c_mixin_new_vector<native>'
   - '    c_mixin_destructor_new-vector'
   - '    c_mixin_cdesc_vector_fill'
@@ -5610,7 +5608,6 @@ c_out_vector<native>*_cdesc:
   helper:
   - array_context
   - copy_array
-  - type_defines
   - type_defines
   destructor_name: std_vector_{cxx_T}
   destructor:
@@ -7271,8 +7268,7 @@ f_function_native*_cdesc_allocatable:
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from native in the C wrapper.
   - Allocate Fortran variable.
-  - Allocate Fortran native array, then fill from cdesc
-  - using helper copy_array.
+  - Copy into Fortran argument.
   - Pass capsule as argument to C wrapper.
   - Create a local Fortran capsule.
   - Assign to local capsule variable in C wrapper.
@@ -7310,7 +7306,7 @@ f_function_native*_cdesc_allocatable:
   - '  f_mixin_cdesc_pass'
   - '  c_mixin_cdesc_native_fill'
   - '  f_mixin_allocate'
-  - '  f_mixin_cdesc_native_allocate'
+  - '  f_mixin_cdesc_copy_array'
   - '  f_mixin_capsule_use'
   - '    f_mixin_capsule_pass'
   - '      c_mixin_capsule_pass'
@@ -11686,10 +11682,9 @@ f_function_vector<native>_cdesc_allocatable:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
   - Allocate 1-D Fortran variable.
-  - Allocate Fortran native array, then fill from cdesc
-  - using helper copy_array.
   - Fill cdesc with vector information.
   - Return address and size of vector data.
+  - Copy into Fortran argument.
   notes:
   - Almost same as intent_out_buf.
   - Similar to f_vector_out_allocatable but must declare result variable.
@@ -11720,9 +11715,9 @@ f_function_vector<native>_cdesc_allocatable:
   - '  f_mixin_template_native_arg1'
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_cdesc_allocate_1d'
-  - '  f_mixin_cdesc_native_allocate'
   - '  c_mixin_destructor_new-vector'
   - '  c_mixin_cdesc_vector_fill'
+  - '  f_mixin_cdesc_copy_array'
   i_dummy_arg:
   - '{i_var_cdesc}'
   i_dummy_decl:
@@ -11753,30 +11748,12 @@ f_function_vector<native>_cdesc_allocatable:
     f_target_attr: ', target'
   helper:
   - array_context
-  - copy_array
   - type_defines
+  - copy_array
   destructor_name: std_vector_{cxx_T}
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
-  owner: library
-f_function_vector_scalar_cdesc:
-  name: f_function_vector_scalar_cdesc
-  intent: function
-  f_dummy_decl:
-  - '{targs[0].f_type}{f_intent_attr}{f_deref_attr}{f_target_attr} :: {f_var}{f_assumed_shape}'
-  f_post_call:
-  - "call {f_helper_copy_array}(\t{temp0},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
-  f_module:
-    iso_c_binding:
-    - C_LOC
-    - C_SIZE_T
-  mixin_names:
-  - '  f_mixin_template_native_arg1'
-  fmtdict:
-    f_target_attr: ', target'
-  helper:
-  - copy_array
   owner: library
 f_function_void*:
   name: f_function_void*
@@ -15003,6 +14980,7 @@ f_inout_vector<native>&_cdesc:
   - Fill cdesc with vector information.
   - Return address and size of vector data.
   - Pass dereference of local cxx variable to library.
+  - Copy into Fortran argument.
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
@@ -15014,12 +14992,14 @@ f_inout_vector<native>&_cdesc:
   - size({f_var}, kind=C_SIZE_T)
   - '{f_var_cdesc}'
   f_post_call:
-  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\
+    \ kind=C_SIZE_T))"
   f_module:
     iso_c_binding:
     - '{targs[0].f_kind}'
     - C_SIZE_T
     - C_LOC
+    - C_SIZE_T
   f_temps:
   - cdesc
   mixin_names:
@@ -15031,6 +15011,7 @@ f_inout_vector<native>&_cdesc:
   - '    c_mixin_destructor_new-vector'
   - '    c_mixin_cdesc_vector_fill'
   - '  c_mixin_arg-call-cxx-deref'
+  - '  f_mixin_cdesc_copy_array'
   i_dummy_arg:
   - '{i_var}'
   - '{i_var_size}'
@@ -15083,13 +15064,12 @@ f_inout_vector<native>&_cdesc_allocatable:
   intent: inout
   comments:
   - Allocate 1-D Fortran variable.
-  - Allocate Fortran native array, then fill from cdesc
-  - using helper copy_array.
   - Declare local Fortran array_type argument.
   - Accept array_type in C wrapper.
   - Fill cdesc with vector information.
   - Return address and size of vector data.
   - Pass dereference of local cxx variable to library.
+  - Copy into Fortran argument.
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
@@ -15108,8 +15088,8 @@ f_inout_vector<native>&_cdesc_allocatable:
   f_module:
     iso_c_binding:
     - '{targs[0].f_kind}'
-    - C_LOC
     - C_SIZE_T
+    - C_LOC
     - C_SIZE_T
   f_temps:
   - cdesc
@@ -15118,13 +15098,13 @@ f_inout_vector<native>&_cdesc_allocatable:
   - '  f_mixin_template_native_arg1'
   - '  f_mixin_deallocate'
   - '  f_mixin_cdesc_allocate_1d'
-  - '  f_mixin_cdesc_native_allocate'
   - '  c_mixin_inout_vector<native>_cdesc'
   - '    f_mixin_cdesc_inout_array'
   - '    c_mixin_cdesc_inout_vector'
   - '    c_mixin_destructor_new-vector'
   - '    c_mixin_cdesc_vector_fill'
   - '  c_mixin_arg-call-cxx-deref'
+  - '  f_mixin_cdesc_copy_array'
   i_dummy_arg:
   - '{i_var}'
   - '{i_var_size}'
@@ -15163,7 +15143,6 @@ f_inout_vector<native>&_cdesc_allocatable:
   fmtdict:
     f_target_attr: ', target'
   helper:
-  - copy_array
   - array_context
   - array_context
   - type_defines
@@ -15539,6 +15518,23 @@ f_mixin_cdesc_char_pointer:
   helper:
   - pointer_string
   owner: library
+f_mixin_cdesc_copy_array:
+  name: f_mixin_cdesc_copy_array
+  intent: mixin
+  comments:
+  - Copy into Fortran argument.
+  f_post_call:
+  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\
+    \ kind=C_SIZE_T))"
+  f_module:
+    iso_c_binding:
+    - C_LOC
+    - C_SIZE_T
+  fmtdict:
+    f_target_attr: ', target'
+  helper:
+  - copy_array
+  owner: library
 f_mixin_cdesc_getter:
   name: f_mixin_cdesc_getter
   intent: mixin
@@ -15572,24 +15568,6 @@ f_mixin_cdesc_inout_array:
   - cdesc
   helper:
   - array_context
-  owner: library
-f_mixin_cdesc_native_allocate:
-  name: f_mixin_cdesc_native_allocate
-  intent: mixin
-  comments:
-  - Allocate Fortran native array, then fill from cdesc
-  - using helper copy_array.
-  f_post_call:
-  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\
-    \ kind=C_SIZE_T))"
-  f_module:
-    iso_c_binding:
-    - C_LOC
-    - C_SIZE_T
-  fmtdict:
-    f_target_attr: ', target'
-  helper:
-  - copy_array
   owner: library
 f_mixin_cdesc_native_fill:
   name: f_mixin_cdesc_native_fill
@@ -15652,24 +15630,6 @@ f_mixin_cdesc_out_char_array_allocatable:
     - C_LOC
   fmtdict:
     f_target_attr: ', target'
-  owner: library
-f_mixin_cdesc_out_native_allocate:
-  name: f_mixin_cdesc_out_native_allocate
-  intent: mixin
-  comments:
-  - Allocate Fortran native array for argument
-  - then fill from cdesc using helper copy_array.
-  f_post_call:
-  - allocate({f_var}{f_array_allocate})
-  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t {f_var_cdesc}%size)"
-  f_module:
-    iso_c_binding:
-    - C_LOC
-  fmtdict:
-    f_deref_attr: ', allocatable'
-    f_target_attr: ', target'
-  helper:
-  - copy_array
   owner: library
 f_mixin_cdesc_out_native_pointer:
   name: f_mixin_cdesc_out_native_pointer
@@ -16198,23 +16158,6 @@ f_mixin_logical-out:
   intent: mixin
   f_post_call:
   - '{f_var} = {f_var_cxx}  ! coerce to logical'
-  owner: library
-f_mixin_out_vector<native>_copy:
-  name: f_mixin_out_vector<native>_copy
-  intent: mixin
-  comments:
-  - Copy std::vector into user's memory.
-  f_post_call:
-  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
-  f_module:
-    iso_c_binding:
-    - C_SIZE_T
-    - C_LOC
-  fmtdict:
-    f_target_attr: ', target'
-  helper:
-  - copy_array
-  - type_defines
   owner: library
 f_mixin_out_vector_buf:
   name: f_mixin_out_vector_buf
@@ -17180,8 +17123,8 @@ f_out_native**_cdesc_allocatable:
   - Fill cdesc from native in the C wrapper.
   - Declare a local C pointer.
   - Pass address of cxx variable to library.
-  - Allocate Fortran native array for argument
-  - then fill from cdesc using helper copy_array.
+  - Allocate Fortran variable.
+  - Copy into Fortran argument.
   - Pass capsule as argument to C wrapper.
   - Create a local Fortran capsule.
   - Assign to local capsule variable in C wrapper.
@@ -17203,13 +17146,15 @@ f_out_native**_cdesc_allocatable:
   - '{f_var_capsule}'
   f_post_call:
   - allocate({f_var}{f_array_allocate})
-  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t {f_var_cdesc}%size)"
+  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\
+    \ kind=C_SIZE_T))"
   - call {f_helper_capsule_dtor}({f_var_capsule})
   f_module:
     '{f_module_name}':
     - '{f_kind}'
     iso_c_binding:
     - C_LOC
+    - C_SIZE_T
   f_temps:
   - cdesc
   - capsule
@@ -17220,7 +17165,8 @@ f_out_native**_cdesc_allocatable:
   - '  c_mixin_cdesc_native_fill'
   - '  c_mixin_out_native**'
   - '  c_mixin_arg-call-cvar-address'
-  - '  f_mixin_cdesc_out_native_allocate'
+  - '  f_mixin_allocate'
+  - '  f_mixin_cdesc_copy_array'
   - '  f_mixin_capsule_use'
   - '    f_mixin_capsule_pass'
   - '      c_mixin_capsule_pass'
@@ -17254,7 +17200,6 @@ f_out_native**_cdesc_allocatable:
   - cdesc
   - capsule
   fmtdict:
-    f_deref_attr: ', allocatable'
     f_target_attr: ', target'
   helper:
   - array_context
@@ -18147,7 +18092,7 @@ f_out_vector<native>&_cdesc:
   intent: out
   comments:
   - Pass cdesc as argument to C wrapper.
-  - Copy std::vector into user's memory.
+  - Copy into Fortran argument.
   - Fill cdesc with vector information.
   - Return address and size of vector data.
   - Create a local std::vector.
@@ -18163,12 +18108,13 @@ f_out_vector<native>&_cdesc:
   f_arg_call:
   - '{f_var_cdesc}'
   f_post_call:
-  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\
+    \ kind=C_SIZE_T))"
   f_module:
     iso_c_binding:
     - '{targs[0].f_kind}'
-    - C_SIZE_T
     - C_LOC
+    - C_SIZE_T
   f_temps:
   - cdesc
   f_need_wrapper: true
@@ -18176,7 +18122,7 @@ f_out_vector<native>&_cdesc:
   - '  f_mixin_dummy_arg'
   - '  f_mixin_template_native_arg1'
   - '  f_mixin_cdesc_pass'
-  - '  f_mixin_out_vector<native>_copy'
+  - '  f_mixin_cdesc_copy_array'
   - '  c_mixin_new_vector<native>'
   - '    c_mixin_destructor_new-vector'
   - '    c_mixin_cdesc_vector_fill'
@@ -18210,7 +18156,6 @@ f_out_vector<native>&_cdesc:
   - array_context
   - copy_array
   - type_defines
-  - type_defines
   destructor_name: std_vector_{cxx_T}
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
@@ -18221,6 +18166,8 @@ f_out_vector<native>&_cdesc_allocatable:
   intent: out
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Allocate 1-D Fortran variable.
+  - Copy into Fortran argument.
   - Fill cdesc with vector information.
   - Return address and size of vector data.
   - Create a local std::vector.
@@ -18237,7 +18184,8 @@ f_out_vector<native>&_cdesc_allocatable:
   - '{f_var_cdesc}'
   f_post_call:
   - allocate({f_var}({f_var_cdesc}%size))
-  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\
+    \ kind=C_SIZE_T))"
   f_module:
     iso_c_binding:
     - '{targs[0].f_kind}'
@@ -18250,6 +18198,8 @@ f_out_vector<native>&_cdesc_allocatable:
   - '  f_mixin_dummy_arg'
   - '  f_mixin_template_native_arg1'
   - '  f_mixin_cdesc_pass'
+  - '  f_mixin_cdesc_allocate_1d'
+  - '  f_mixin_cdesc_copy_array'
   - '  c_mixin_new_vector<native>'
   - '    c_mixin_destructor_new-vector'
   - '    c_mixin_cdesc_vector_fill'
@@ -18280,7 +18230,9 @@ f_out_vector<native>&_cdesc_allocatable:
   fmtdict:
     f_target_attr: ', target'
   helper:
+  - array_context
   - copy_array
+  - type_defines
   destructor_name: std_vector_{cxx_T}
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
@@ -18291,7 +18243,7 @@ f_out_vector<native>*_cdesc:
   intent: out
   comments:
   - Pass cdesc as argument to C wrapper.
-  - Copy std::vector into user's memory.
+  - Copy into Fortran argument.
   - Fill cdesc with vector information.
   - Return address and size of vector data.
   - Create a local std::vector.
@@ -18307,12 +18259,13 @@ f_out_vector<native>*_cdesc:
   f_arg_call:
   - '{f_var_cdesc}'
   f_post_call:
-  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\
+    \ kind=C_SIZE_T))"
   f_module:
     iso_c_binding:
     - '{targs[0].f_kind}'
-    - C_SIZE_T
     - C_LOC
+    - C_SIZE_T
   f_temps:
   - cdesc
   f_need_wrapper: true
@@ -18320,7 +18273,7 @@ f_out_vector<native>*_cdesc:
   - '  f_mixin_dummy_arg'
   - '  f_mixin_template_native_arg1'
   - '  f_mixin_cdesc_pass'
-  - '  f_mixin_out_vector<native>_copy'
+  - '  f_mixin_cdesc_copy_array'
   - '  c_mixin_new_vector<native>'
   - '    c_mixin_destructor_new-vector'
   - '    c_mixin_cdesc_vector_fill'
@@ -18354,7 +18307,6 @@ f_out_vector<native>*_cdesc:
   - array_context
   - copy_array
   - type_defines
-  - type_defines
   destructor_name: std_vector_{cxx_T}
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
@@ -18365,6 +18317,8 @@ f_out_vector<native>*_cdesc_allocatable:
   intent: out
   comments:
   - Pass cdesc as argument to C wrapper.
+  - Allocate 1-D Fortran variable.
+  - Copy into Fortran argument.
   - Fill cdesc with vector information.
   - Return address and size of vector data.
   - Create a local std::vector.
@@ -18381,7 +18335,8 @@ f_out_vector<native>*_cdesc_allocatable:
   - '{f_var_cdesc}'
   f_post_call:
   - allocate({f_var}({f_var_cdesc}%size))
-  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\
+    \ kind=C_SIZE_T))"
   f_module:
     iso_c_binding:
     - '{targs[0].f_kind}'
@@ -18394,6 +18349,8 @@ f_out_vector<native>*_cdesc_allocatable:
   - '  f_mixin_dummy_arg'
   - '  f_mixin_template_native_arg1'
   - '  f_mixin_cdesc_pass'
+  - '  f_mixin_cdesc_allocate_1d'
+  - '  f_mixin_cdesc_copy_array'
   - '  c_mixin_new_vector<native>'
   - '    c_mixin_destructor_new-vector'
   - '    c_mixin_cdesc_vector_fill'
@@ -18424,7 +18381,9 @@ f_out_vector<native>*_cdesc_allocatable:
   fmtdict:
     f_target_attr: ', target'
   helper:
+  - array_context
   - copy_array
+  - type_defines
   destructor_name: std_vector_{cxx_T}
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
@@ -20283,9 +20242,6 @@ root
         cdesc
           pointer -- f_function_struct*_cdesc_pointer
         pointer -- f_function_struct*_pointer
-      vector
-        scalar
-          cdesc -- f_function_vector_scalar_cdesc
       vector<native>
         cdesc
           allocatable -- f_function_vector<native>_cdesc_allocatable
@@ -20417,11 +20373,12 @@ root
           allocate -- f_mixin_cdesc_char_allocate
           fill -- f_mixin_cdesc_char_fill
           pointer -- f_mixin_cdesc_char_pointer
+        copy
+          array -- f_mixin_cdesc_copy_array
         getter -- f_mixin_cdesc_getter
         inout
           array -- f_mixin_cdesc_inout_array
         native
-          allocate -- f_mixin_cdesc_native_allocate
           fill -- f_mixin_cdesc_native_fill
           pointer -- f_mixin_cdesc_native_pointer
           raw -- f_mixin_cdesc_native_raw
@@ -20430,7 +20387,6 @@ root
             array
               allocatable -- f_mixin_cdesc_out_char_array_allocatable
           native
-            allocate -- f_mixin_cdesc_out_native_allocate
             pointer -- f_mixin_cdesc_out_native_pointer
         pass -- f_mixin_cdesc_pass
       cfi
@@ -20482,8 +20438,6 @@ root
       out
         vector
           buf -- f_mixin_out_vector_buf
-        vector<native>
-          copy -- f_mixin_out_vector<native>_copy
       pass
         character
           buf -- f_mixin_pass_character_buf
