@@ -2694,8 +2694,8 @@
         "c_post_call": [
             "{c_var_cdesc}->rank = {rank};{c_array_shape}",
             "{c_var_cdesc}->size     = {c_array_size};",
-            "if ({c_char_len} > 0) {{+",
-            "{c_var_cdesc}->elem_len = {c_char_len};",
+            "if ({attr_len} > 0) {{+",
+            "{c_var_cdesc}->elem_len = {attr_len};",
             "-}} else {{+",
             "{c_var_cdesc}->elem_len = {c_helper_array_string_out_len}({cxx_var}, {c_var_cdesc}->size);",
             "-}}"
@@ -2711,10 +2711,10 @@
             "Compute maximum length of array of std::string."
         ],
         "notes": [
-            "c_char_len is defined from attribute +len(x)"
+            "attr_len is defined from attribute +len(x)"
         ],
         "c_post_call": [
-            "size_t {c_var_len} = {c_char_len};",
+            "size_t {c_var_len} = {attr_len};",
             "if ({c_var_len} <= 0) {{+",
             "{c_var_len} = {c_helper_array_string_out_len}({cxx_var}, {c_array_size2});",
             "-}}"
@@ -3553,8 +3553,8 @@
             "std::vector<std::string> *{c_local_cxx} = new std::vector<std::string>;"
         ],
         "c_post_call": [
-            "if ({c_char_len} > 0) {{+",
-            "{c_var_cdesc}->elem_len = {c_char_len};",
+            "if ({attr_len} > 0) {{+",
+            "{c_var_cdesc}->elem_len = {attr_len};",
             "-}} else {{+",
             "{c_var_cdesc}->elem_len = {c_helper_vector_string_out_len}(*{c_local_cxx});",
             "-}}",

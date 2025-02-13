@@ -570,7 +570,7 @@ class FillFormat(object):
                     fmt.c_temp_lower_use = fmt.c_var_lower
 
         if meta["len"]:
-            fmt.c_char_len = meta["len"]
+            fmt.attr_len = meta["len"]
                 
     def set_fmt_fields_iface(self, ast, bind, ntypemap):
         """Set format fields for interface.

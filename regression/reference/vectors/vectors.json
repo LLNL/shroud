@@ -3401,9 +3401,9 @@
                         },
                         "arg": {
                             "fmtdict": {
+                                "attr_len": "20",
                                 "c_abstract_decl": "char *",
                                 "c_addr": "",
-                                "c_char_len": "20",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -3477,9 +3477,9 @@
                         },
                         "arg": {
                             "fmtdict": {
+                                "attr_len": "20",
                                 "c_abstract_decl": "char *",
                                 "c_addr": "",
-                                "c_char_len": "20",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_helper_array_context": "VEC_SHROUD_array",

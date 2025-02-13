@@ -1648,7 +1648,7 @@
                                 "C_name": "CHA_getConstCharPtrLen",
                                 "C_prototype": "void",
                                 "C_return_type": "const char *",
-                                "c_char_len": "30",
+                                "attr_len": "30",
                                 "c_const": "const ",
                                 "c_get_value": "",
                                 "c_type": "char",
@@ -1694,7 +1694,7 @@
                                 "F_arg_c_call": "SHT_rv,\t SHT_rv_len",
                                 "F_arguments": "",
                                 "F_subprogram": "function",
-                                "c_char_len": "30",
+                                "attr_len": "30",
                                 "c_const": "const ",
                                 "c_helper_char_copy": "ShroudCharCopy",
                                 "c_local_cxx": "SHC_rv_cxx",
@@ -2693,9 +2693,9 @@
                         },
                         "name": {
                             "fmtdict": {
+                                "attr_len": "AAtrim",
                                 "c_abstract_decl": "char *",
                                 "c_addr": "",
-                                "c_char_len": "AAtrim",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -2759,9 +2759,9 @@
                         },
                         "name": {
                             "fmtdict": {
+                                "attr_len": "AAtrim",
                                 "c_abstract_decl": "char *",
                                 "c_addr": "",
-                                "c_char_len": "AAtrim",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_helper_char_blank_fill": "ShroudCharBlankFill",
