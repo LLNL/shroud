@@ -5205,6 +5205,7 @@ c_out_string**_cdesc_copy:
   intent: out
   comments:
   - Collect information about a string argument.
+  - Fill cdesc from char in the Fortran wrapper.
   - Pass cdesc as argument to C wrapper.
   - Create local std::string pointer.
   - Pass address of cxx variable to library.
@@ -5214,6 +5215,7 @@ c_out_string**_cdesc_copy:
   - '[see also f_out_vector_&_cdesc_allocatable_targ_string_scalar]'
   mixin_names:
   - '  f_mixin_str_array'
+  - '  f_mixin_cdesc_char_fill'
   - '  f_mixin_cdesc_pass'
   - '  c_mixin_local-string*'
   - '  c_mixin_arg-call-cvar-address'
@@ -5233,6 +5235,8 @@ c_out_string**_cdesc_copy:
   - "{c_helper_cdesc_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});"
   c_temps:
   - cdesc
+  fmtdict:
+    f_target_attr: ', target'
   helper:
   - cdesc_array_string_out
   owner: library
@@ -5723,6 +5727,7 @@ c_out_vector<string>&_cdesc:
   intent: out
   comments:
   - Collect information about a string argument.
+  - Fill cdesc from char in the Fortran wrapper.
   - Pass cdesc as argument to C wrapper.
   - Pass cxx variable to library.
   notes:
@@ -5730,6 +5735,7 @@ c_out_vector<string>&_cdesc:
   - This one needs to use targs.
   mixin_names:
   - '  f_mixin_str_array'
+  - '  f_mixin_cdesc_char_fill'
   - '  f_mixin_cdesc_pass'
   - '  c_mixin_arg-call-cvar'
   i_dummy_arg:
@@ -5748,6 +5754,8 @@ c_out_vector<string>&_cdesc:
   - "{c_helper_cdesc_vector_string_out}(\t{c_var_cdesc},\t {cxx_var});"
   c_temps:
   - cdesc
+  fmtdict:
+    f_target_attr: ', target'
   helper:
   - type_defines
   - array_context
@@ -15437,6 +15445,25 @@ f_mixin_cdesc_char_allocate:
   helper:
   - copy_string
   owner: library
+f_mixin_cdesc_char_fill:
+  name: f_mixin_cdesc_char_fill
+  intent: mixin
+  comments:
+  - Fill cdesc from char in the Fortran wrapper.
+  f_pre_call:
+  - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
+  - '{f_var_cdesc}%type = SH_TYPE_CHAR'
+  - '{f_var_cdesc}%elem_len = len({f_var})'
+  - '{f_var_cdesc}%size = size({f_var})'
+  - '{f_var_cdesc}%rank = rank({f_var}){f_cdesc_shape}'
+  f_module:
+    iso_c_binding:
+    - C_LOC
+  fmtdict:
+    f_target_attr: ', target'
+  helper:
+  - type_defines
+  owner: library
 f_mixin_cdesc_char_pointer:
   name: f_mixin_cdesc_char_pointer
   intent: mixin
@@ -16225,19 +16252,7 @@ f_mixin_str_array:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
-  f_pre_call:
-  - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
-  - '{f_var_cdesc}%type = SH_TYPE_CHAR'
-  - '{f_var_cdesc}%elem_len = len({f_var})'
-  - '{f_var_cdesc}%size = size({f_var})'
-  - '{f_var_cdesc}%rank = rank({f_var}){f_cdesc_shape}'
-  f_module:
-    iso_c_binding:
-    - C_LOC
-  helper:
-  - type_defines
-  - array_context
+  - '{f_type}{f_intent_attr}{f_target_attr} :: {f_var}{f_assumed_shape}'
   owner: library
 f_mixin_unknown:
   name: f_mixin_unknown
@@ -17688,6 +17703,7 @@ f_out_string**_cdesc_copy:
   intent: out
   comments:
   - Collect information about a string argument.
+  - Fill cdesc from char in the Fortran wrapper.
   - Pass cdesc as argument to C wrapper.
   - Create local std::string pointer.
   - Pass address of cxx variable to library.
@@ -17698,7 +17714,7 @@ f_out_string**_cdesc_copy:
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}'
+  - '{f_type}{f_intent_attr}{f_target_attr} :: {f_var}{f_assumed_shape}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_pre_call:
@@ -17717,6 +17733,7 @@ f_out_string**_cdesc_copy:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_str_array'
+  - '  f_mixin_cdesc_char_fill'
   - '  f_mixin_cdesc_pass'
   - '  c_mixin_local-string*'
   - '  c_mixin_arg-call-cvar-address'
@@ -17736,6 +17753,8 @@ f_out_string**_cdesc_copy:
   - "{c_helper_cdesc_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});"
   c_temps:
   - cdesc
+  fmtdict:
+    f_target_attr: ', target'
   helper:
   - cdesc_array_string_out
   owner: library
@@ -18317,6 +18336,7 @@ f_out_vector<string>&_cdesc:
   intent: out
   comments:
   - Collect information about a string argument.
+  - Fill cdesc from char in the Fortran wrapper.
   - Pass cdesc as argument to C wrapper.
   - Pass cxx variable to library.
   notes:
@@ -18344,6 +18364,7 @@ f_out_vector<string>&_cdesc:
   f_need_wrapper: true
   mixin_names:
   - '  f_mixin_str_array'
+  - '  f_mixin_cdesc_char_fill'
   - '  f_mixin_cdesc_pass'
   - '  c_mixin_arg-call-cvar'
   i_dummy_arg:
@@ -18362,6 +18383,8 @@ f_out_vector<string>&_cdesc:
   - "{c_helper_cdesc_vector_string_out}(\t{c_var_cdesc},\t {cxx_var});"
   c_temps:
   - cdesc
+  fmtdict:
+    f_target_attr: ', target'
   helper:
   - type_defines
   - array_context
@@ -20289,6 +20312,7 @@ root
       cdesc
         char
           allocate -- f_mixin_cdesc_char_allocate
+          fill -- f_mixin_cdesc_char_fill
           pointer -- f_mixin_cdesc_char_pointer
         getter -- f_mixin_cdesc_getter
         inout

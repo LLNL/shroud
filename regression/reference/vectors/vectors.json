@@ -2989,6 +2989,7 @@
                                 "f_helper_array_context": "VEC_SHROUD_array",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
+                                "f_target_attr": ", target",
                                 "f_var": "arg",
                                 "f_var_cdesc": "SHT_arg_cdesc",
                                 "fc_var": "arg",

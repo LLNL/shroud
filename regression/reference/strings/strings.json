@@ -6078,6 +6078,7 @@
                                 "f_dimension": "(nstrs)",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
+                                "f_target_attr": ", target",
                                 "f_type": "character(len=*)",
                                 "f_var": "strs",
                                 "f_var_cdesc": "SHT_strs_cdesc",

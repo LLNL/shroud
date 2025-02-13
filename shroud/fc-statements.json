@@ -867,6 +867,33 @@
         ]
     },
     {
+        "name": "f_mixin_cdesc_char_fill",
+        "comments": [
+            "Fill cdesc from char in the Fortran wrapper."
+        ],
+        "notes": [
+            "The Fortran variable needs the TARGET attribute to use C_LOC."
+        ],
+        "f_pre_call": [
+            "{f_var_cdesc}%base_addr = C_LOC({f_var})",
+            "{f_var_cdesc}%type = SH_TYPE_CHAR",
+            "{f_var_cdesc}%elem_len = len({f_var})",
+            "{f_var_cdesc}%size = size({f_var})",
+            "{f_var_cdesc}%rank = rank({f_var}){f_cdesc_shape}"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_LOC"
+            ]
+        },
+        "fmtdict": {
+            "f_target_attr": ", target"
+        },
+        "helper": [
+            "type_defines"
+        ]
+    },
+    {
         "name": "c_mixin_cdesc_native_fill",
         "comments": [
             "Fill cdesc from native in the C wrapper."
@@ -2647,23 +2674,7 @@
             "{f_var}"
         ],
         "f_dummy_decl": [
-            "{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}"
-        ],
-        "f_pre_call": [
-            "{f_var_cdesc}%base_addr = C_LOC({f_var})",
-            "{f_var_cdesc}%type = SH_TYPE_CHAR",
-            "{f_var_cdesc}%elem_len = len({f_var})",
-            "{f_var_cdesc}%size = size({f_var})",
-            "{f_var_cdesc}%rank = rank({f_var}){f_cdesc_shape}"
-        ],
-        "f_module": {
-            "iso_c_binding": [
-                "C_LOC"
-            ]
-        },
-        "helper": [
-            "type_defines",
-            "array_context"
+            "{f_type}{f_intent_attr}{f_target_attr} :: {f_var}{f_assumed_shape}"
         ]
     },
     {
@@ -3119,6 +3130,7 @@
         ],
         "mixin": [
             "f_mixin_str_array",
+            "f_mixin_cdesc_char_fill",
             "f_mixin_cdesc_pass",
             "c_mixin_local-string*",
             "c_mixin_arg-call-cvar-address"
@@ -3734,6 +3746,7 @@
         ],
         "mixin": [
             "f_mixin_str_array",
+            "f_mixin_cdesc_char_fill",
             "f_mixin_cdesc_pass",
             "c_mixin_arg-call-cvar"
         ],
