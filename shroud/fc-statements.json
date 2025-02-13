@@ -5495,8 +5495,12 @@
     {
         "name": "h_helper_char_copy",
         "c_fmtname": "ShroudCharCopy",
-        "c_include": ["<string.h>"],
-        "cxx_include": ["<cstring>"],
+        "c_include": [
+            "<string.h>"
+        ],
+        "cxx_include": [
+            "<cstring>"
+        ],
         "source": [
             "",
             "// helper ShroudCharCopy",
@@ -5519,8 +5523,12 @@
     {
         "name": "h_helper_char_blank_fill",
         "c_fmtname": "ShroudCharBlankFill",
-        "c_include": ["<string.h>"],
-        "cxx_include": ["<cstring>"],
+        "c_include": [
+            "<string.h>"
+        ],
+        "cxx_include": [
+            "<cstring>"
+        ],
         "source": [
             "",
             "// helper char_blank_fill",
@@ -5539,8 +5547,15 @@
             "in the C wrapper."
         ],
         "c_fmtname": "ShroudCharAlloc",
-        "c_include": ["<string.h>", "<stdlib.h>", "<stddef.h>"],
-        "cxx_include": ["<cstring>", "<cstdlib>"],
+        "c_include": [
+            "<string.h>",
+            "<stdlib.h>",
+            "<stddef.h>"
+        ],
+        "cxx_include": [
+            "<cstring>",
+            "<cstdlib>"
+        ],
         "source": [
             "",
             "// helper char_alloc",
@@ -5561,13 +5576,19 @@
             "return rv;",
             "-}}"
         ],
-        "dependent_helpers": ["char_len_trim"]
+        "dependent_helpers": [
+            "char_len_trim"
+        ]
     },
     {
         "name": "h_helper_char_free",
         "c_fmtname": "ShroudCharFree",
-        "c_include": ["<stdlib.h>"],
-        "cxx_include": ["<cstdlib>"],
+        "c_include": [
+            "<stdlib.h>"
+        ],
+        "cxx_include": [
+            "<cstdlib>"
+        ],
         "source": [
             "",
             "// helper char_free",
@@ -5610,9 +5631,17 @@
             "an array of of char * pointers to NULL terminated strings."
         ],
         "c_fmtname": "ShroudStrArrayAlloc",
-        "dependent_helpers": ["char_len_trim"],
-        "c_include": ["<string.h>", "<stdlib.h>"],
-        "cxx_include": ["<cstring>", "<cstdlib>"],
+        "dependent_helpers": [
+            "char_len_trim"
+        ],
+        "c_include": [
+            "<string.h>",
+            "<stdlib.h>"
+        ],
+        "cxx_include": [
+            "<cstring>",
+            "<cstdlib>"
+        ],
         "source": [
             "",
             "{c_lstart}// helper char_array_alloc",
@@ -5638,8 +5667,12 @@
     {
         "name": "h_helper_char_array_free",
         "c_fmtname": "ShroudStrArrayFree",
-        "c_include": ["<stdlib.h>"],
-        "cxx_include": ["<cstdlib>"],
+        "c_include": [
+            "<stdlib.h>"
+        ],
+        "cxx_include": [
+            "<cstdlib>"
+        ],
         "source": [
             "",
             "// helper char_array_free",
@@ -5658,8 +5691,12 @@
         "notes": [
             "Find size of CFI array."
         ],
-        "c_include": ["<stddef.h>"],
-        "cxx_include": ["<cstddef>"],
+        "c_include": [
+            "<stddef.h>"
+        ],
+        "cxx_include": [
+            "<cstddef>"
+        ],
         "source": [
             "",
             "// helper size_CFI",
@@ -5687,7 +5724,9 @@
         },
         "c_fmtname": "{cnamefunc}",
         "api": "c",
-        "dependent_helpers": ["capsule_data_helper"],
+        "dependent_helpers": [
+            "capsule_data_helper"
+        ],
         "proto": "{cnameproto};",
         
         "f_fmtname": "{fnamefunc}",
@@ -5722,9 +5761,17 @@
         },
         "c_fmtname": "{cnamefunc}",
         "scope": "cwrap_impl",
-        "dependent_helpers": ["array_context"],
-        "c_include": ["<string.h>", "<stddef.h>"],
-        "cxx_include": ["<cstring>", "<cstddef>"],
+        "dependent_helpers": [
+            "array_context"
+        ],
+        "c_include": [
+            "<string.h>",
+            "<stddef.h>"
+        ],
+        "cxx_include": [
+            "<cstring>",
+            "<cstddef>"
+        ],
         "source": [
             "",
             "{c_lstart}// helper {hname}",
@@ -5767,8 +5814,13 @@
         },
         "c_fmtname": "{cnamefunc}",
         "scope": "cwrap_impl",
-        "dependent_helpers": ["array_context"],
-        "cxx_include": ["<cstring>", "<cstddef>"],
+        "dependent_helpers": [
+            "array_context"
+        ],
+        "cxx_include": [
+            "<cstring>",
+            "<cstddef>"
+        ],
         "source": [
             "",
             "{c_lstart}// helper {hname}",
@@ -5819,10 +5871,17 @@
         "c_fmtname": "{cnamefunc}",
         "api": "cxx",
         "scope": "cwrap_impl",
-        "dependent_helpers": ["array_context"],
-        "proto_include": ["<string>"],
+        "dependent_helpers": [
+            "array_context"
+        ],
+        "proto_include": [
+            "<string>"
+        ],
         "proto": "{cnameproto};",
-        "cxx_include": ["<cstring>", "<cstddef>"],
+        "cxx_include": [
+            "<cstring>",
+            "<cstddef>"
+        ],
         "source": [
             "",
             "{c_lstart}// helper {hname}",
@@ -5936,10 +5995,18 @@
         "c_fmtname": "{cnamefunc}",
         "api": "cxx",
         "scope": "cwrap_impl",
-        "dependent_helpers": ["array_context"],
-        "proto_include": ["<string>", "<vector>"],
+        "dependent_helpers": [
+            "array_context"
+        ],
+        "proto_include": [
+            "<string>",
+            "<vector>"
+        ],
         "proto": "{cnameproto};",
-        "cxx_include": ["<cstring>", "<cstddef>"],
+        "cxx_include": [
+            "<cstring>",
+            "<cstddef>"
+        ],
         "source": [
             "",
             "{c_lstart}// helper {hname}",
@@ -6020,7 +6087,10 @@
         "c_fmtname": "{cnamefunc}",
         "api": "cxx",
         "scope": "cwrap_impl",
-        "proto_include": ["<string>", "<vector>"],
+        "proto_include": [
+            "<string>",
+            "<vector>"
+        ],
         "proto": "{cnameproto};",
         "source": [
             "",
@@ -6050,9 +6120,15 @@
         "c_fmtname": "{cnamefunc}",
         "api": "cxx",
         "scope": "cwrap_impl",
-        "proto_include": ["<string>", "<ISO_Fortran_binding.h>"],
+        "proto_include": [
+            "<string>",
+            "<ISO_Fortran_binding.h>"
+        ],
         "proto": "{cnameproto};",
-        "cxx_include": ["<cstring>", "<cstddef>"],
+        "cxx_include": [
+            "<cstring>",
+            "<cstddef>"
+        ],
         "source": [
             "",
             "{c_lstart}// helper {hname}",
@@ -6089,7 +6165,9 @@
         "fmtdict": {
             "fnamefunc": "{C_prefix}SHROUD_pointer_string"
         },
-        "dependent_helpers": ["array_context"],
+        "dependent_helpers": [
+            "array_context"
+        ],
         "f_fmtname": "{fnamefunc}",
         "f_source": [
             "",
@@ -6112,8 +6190,13 @@
             "cnamefunc": "ShroudStringToCdesc"
         },
         "c_fmtname": "{cnamefunc}",
-        "dependent_helpers": ["array_context"],
-        "cxx_include": ["<cstring>", "<cstddef>"],
+        "dependent_helpers": [
+            "array_context"
+        ],
+        "cxx_include": [
+            "<cstring>",
+            "<cstddef>"
+        ],
         "source": [
             "",
             "{c_lstart}// helper {hname}",
@@ -6169,7 +6252,10 @@
             "Allows the memory to be deleted from Fortran.",
             "Fortran cannot be declared with both PRIVATE and BIND(C) attributes"
         ],
-        "dependent_helpers": ["capsule_data_helper", "capsule_dtor"],
+        "dependent_helpers": [
+            "capsule_data_helper",
+            "capsule_dtor"
+        ],
         "derived_type": [
             "",
             "! helper {hname}",
@@ -6208,7 +6294,9 @@
         ],
         "c_fmtname": "{C_array_type}",
         "scope": "cwrap_include",
-        "include": ["<stddef.h>"],
+        "include": [
+            "<stddef.h>"
+        ],
         "source": [
             "",
             "{c_lstart}// helper {hname}",
@@ -6222,7 +6310,9 @@
             "-}};",
             "typedef struct s_{C_array_type} {C_array_type};{c_lend}"
         ],
-        "dependent_helpers": ["type_defines"],
+        "dependent_helpers": [
+            "type_defines"
+        ],
         "f_fmtname": "{F_array_type}",
         "derived_type": [
             "",
