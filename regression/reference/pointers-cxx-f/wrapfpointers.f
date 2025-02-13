@@ -1618,7 +1618,7 @@ contains
     !<
     ! start get_alloc_to_fixed_array
     subroutine get_alloc_to_fixed_array(count)
-        use iso_c_binding, only : C_INT, C_LOC
+        use iso_c_binding, only : C_INT, C_LOC, C_SIZE_T
         integer(C_INT), intent(OUT), allocatable, target :: count(:)
         ! splicer begin function.get_alloc_to_fixed_array
         type(POI_SHROUD_array) :: SHT_count_cdesc
@@ -1627,7 +1627,7 @@ contains
             SHT_count_capsule)
         allocate(count(SHT_count_cdesc%shape(1)))
         call POI_SHROUD_copy_array(SHT_count_cdesc, C_LOC(count), &
-            SHT_count_cdesc%size)
+            size(count, kind=C_SIZE_T))
         call POI_SHROUD_capsule_dtor(SHT_count_capsule)
         ! splicer end function.get_alloc_to_fixed_array
     end subroutine get_alloc_to_fixed_array

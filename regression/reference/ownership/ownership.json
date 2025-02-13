@@ -1589,6 +1589,7 @@
                                 "f_kind": "C_INT",
                                 "f_module_name": "iso_c_binding",
                                 "f_result_clause": "\fresult(SHT_rv)",
+                                "f_target_attr": ", target",
                                 "f_type": "integer(C_INT)",
                                 "f_var": "SHT_rv",
                                 "f_var_capsule": "SHT_rv_capsule",

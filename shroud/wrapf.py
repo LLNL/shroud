@@ -807,7 +807,8 @@ rv = .false.
                 if only:  # Empty list means no ONLY clause
                     for oname in only:
                         wname = wformat(oname, fmt)
-                        module[wname] = True
+                        if wname:
+                            module[wname] = True
 
     def update_f_module_helper(self, modules, f_module):
         """Aggragate the information from helper["modules"] into modules.

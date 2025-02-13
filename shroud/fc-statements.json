@@ -66,7 +66,7 @@
             "Used with function results."
         ],
         "f_dummy_decl": [
-            "{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}"
+            "{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr} :: {f_var}{f_dimension}"
         ],
         "f_module": {
             "{f_module_name}": [
@@ -84,7 +84,7 @@
             "{f_var}"
         ],
         "f_dummy_decl": [
-            "{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}"
+            "{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr} :: {f_var}{f_dimension}"
         ],
         "f_module": {
             "{f_module_name}": [
@@ -92,6 +92,20 @@
             ]
         },
         "sphinx-end-before": "f_mixin_declare-fortran-arg"
+    },
+    {
+        "name": "f_mixin_declare-character-arg",
+        "notes": [
+            "Fortran wrapper argument.",
+            "Used with allocatable.",
+            "No need for f_module."
+        ],
+        "f_dummy_arg": [
+            "{f_var}"
+        ],
+        "f_dummy_decl": [
+            "character(len=:){f_intent_attr}{f_deref_attr}{f_target_attr} :: {f_var}{f_assumed_shape}"
+        ]
     },
     {
         "name": "f_mixin_declare-as-cptr",
@@ -564,6 +578,24 @@
         "name":"#### memory mixin ##########################################"
     },
     {
+        "name": "f_mixin_allocate",
+        "comments": [
+            "Allocate Fortran variable."
+        ],
+        "f_post_call": [
+            "allocate({f_var}{f_array_allocate})"
+        ]
+    },
+    {
+        "name": "f_mixin_deallocate",
+        "notes": [
+            "Use before an allocate with intent(inout)."
+        ],
+        "f_post_call": [
+            "if (allocated({f_var})) deallocate({f_var})"
+        ]
+    },
+    {
         "name": "c_mixin_delete-cxx-variable",
         "comments": [
             "Delete the cxx variable."
@@ -840,6 +872,60 @@
         ]
     },
     {
+        "name": "f_mixin_cdesc_native_fill",
+        "comments": [
+            "Fill cdesc from native in the Fortran wrapper."
+        ],
+        "notes": [
+            "The Fortran variable needs the TARGET attribute to use C_LOC."
+        ],
+        "f_pre_call": [
+            "{f_var_cdesc}%base_addr = C_LOC({f_var})",
+            "{f_var_cdesc}%type = {sh_type}",
+            "! {f_var_cdesc}%elem_len = C_SIZEOF()",
+            "{f_var_cdesc}%size = {size}",
+            "{f_var_cdesc}%rank = {rank}{f_cdesc_shape}"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_LOC"
+            ]
+        },
+        "fmtdict": {
+            "f_target_attr": ", target"
+        },
+        "helper": [
+            "type_defines"
+        ]
+    },
+    {
+        "name": "f_mixin_cdesc_char_fill",
+        "comments": [
+            "Fill cdesc from char in the Fortran wrapper."
+        ],
+        "notes": [
+            "The Fortran variable needs the TARGET attribute to use C_LOC."
+        ],
+        "f_pre_call": [
+            "{f_var_cdesc}%base_addr = C_LOC({f_var})",
+            "{f_var_cdesc}%type = SH_TYPE_CHAR",
+            "{f_var_cdesc}%elem_len = len({f_var})",
+            "{f_var_cdesc}%size = size({f_var})",
+            "{f_var_cdesc}%rank = rank({f_var}){f_cdesc_shape}"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_LOC"
+            ]
+        },
+        "fmtdict": {
+            "f_target_attr": ", target"
+        },
+        "helper": [
+            "type_defines"
+        ]
+    },
+    {
         "name": "c_mixin_cdesc_native_fill",
         "comments": [
             "Fill cdesc from native in the C wrapper."
@@ -882,55 +968,34 @@
         ]
     },
     {
-        "name": "f_mixin_cdesc_native_allocate",
+        "name": "f_mixin_cdesc_allocate_1d",
         "comments": [
-            "Allocate Fortran native array, then fill from cdesc",
-            "using helper copy_array."
-        ],
-        "f_dummy_decl": [
-            "{f_type}{f_intent_attr}{f_deref_attr}, target :: {f_var}{f_dimension}"
+            "Allocate 1-D Fortran variable."
         ],
         "f_post_call": [
-            "allocate({f_var}{f_array_allocate})",
-            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\t kind=C_SIZE_T))"
+            "allocate({f_var}({f_var_cdesc}%size))"
+        ]
+    },
+    {
+        "name": "f_mixin_cdesc_copy_array",
+        "comments": [
+            "Copy into Fortran argument."
+        ],
+        "f_post_call": [
+            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var}, kind=C_SIZE_T))"
         ],
         "f_module": {
-            "{f_module_name}": [
-                "{f_kind}"
-            ],
             "iso_c_binding": [
                 "C_LOC",
                 "C_SIZE_T"
             ]
         },
-        "helper": [
-            "copy_array"
-        ]
-    },
-    {
-        "name": "f_mixin_cdesc_out_native_allocate",
-        "comments": [
-            "Allocate Fortran native array for argument",
-            "then fill from cdesc using helper copy_array."
-        ],
-        "notes": [
-            "f_var must have the TARGET attribute for C_LOC."
-        ],
-        "f_post_call": [
-            "allocate({f_var}{f_array_allocate})",
-            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t {f_var_cdesc}%size)"
-        ],
-        "f_module": {
-            "iso_c_binding": [
-                "C_LOC"
-            ]
+        "fmtdict": {
+            "f_target_attr": ", target"
         },
         "helper": [
             "copy_array"
-        ],
-        "fmtdict": {
-            "f_deref_attr": ", allocatable, target"
-        }
+        ]
     },
     {
         "name": "f_mixin_cdesc_native_pointer",
@@ -1047,9 +1112,27 @@
             "{c_var_cdesc}->size = {c_array_size};"
         ],
         "helper": [
-            "type_defines",
-            "array_context"
+            "type_defines"
         ]
+    },
+    {
+        "name": "c_mixin_cdesc_unpack-base-addr",
+        "notes": [
+            "Unpack the base_addr from the cdesc variable."
+        ],
+        "#c_pre_call": [
+            "{c_type} *{c_var} = {cast_static}{c_type} *{cast1}{c_var_cdesc}->base_addr{cast2};"
+        ],
+        "lang_c": {
+            "c_pre_call": [
+                "{cxx_type} *{c_var} = {c_var_cdesc}->base_addr;"
+            ]
+        },
+        "lang_cxx": {
+            "c_pre_call": [
+                "{cxx_type} *{c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
+            ]
+        }
     },
     {
         "name":"#### template mixin ########################################",
@@ -1058,6 +1141,20 @@
             "but may work with std::span as well",
             "since they deal with the template argument in an abstract manner."
         ]
+    },
+    {
+        "name": "f_mixin_template_native_arg1",
+        "notes": [
+            "Declare an dummy argument for the first template argument."
+        ],
+        "f_dummy_decl": [
+            "{targs[0].f_type}{f_intent_attr}{f_deref_attr}{f_target_attr} :: {f_var}{f_assumed_shape}"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "{targs[0].f_kind}"
+            ]
+        }
     },
     {
         "name": "f_mixin_in_vector_buf",
@@ -1464,7 +1561,8 @@
             "c_mixin_cdesc_native_fill",
             "c_mixin_out_native**",
             "c_mixin_arg-call-cvar-address",
-            "f_mixin_cdesc_out_native_allocate",
+            "f_mixin_allocate",
+            "f_mixin_cdesc_copy_array",
             "f_mixin_capsule_use"
         ]
     },
@@ -1499,44 +1597,12 @@
             "f_inout_void*_cdesc"
         ],
         "mixin": [
+            "f_mixin_declare-fortran-arg",
             "f_mixin_cdesc_pass",
+            "f_mixin_cdesc_native_fill",
+            "c_mixin_cdesc_unpack-base-addr",
             "c_mixin_arg-call-cvar"
-        ],
-        "f_dummy_arg": [
-            "{f_var}"
-        ],
-        "f_dummy_decl": [
-            "{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}"
-        ],
-        "f_pre_call": [
-            "{f_var_cdesc}%base_addr = C_LOC({f_var})",
-            "{f_var_cdesc}%type = {sh_type}",
-            "! {f_var_cdesc}%elem_len = C_SIZEOF()",
-            "{f_var_cdesc}%size = {size}",
-            "{f_var_cdesc}%rank = {rank}{f_cdesc_shape}"
-        ],
-        "f_module": {
-            "{f_module_name}": [
-                "{f_kind}"
-            ],
-            "iso_c_binding": [
-                "C_LOC"
-            ]
-        },
-        "helper": [
-            "type_defines",
-            "array_context"
-        ],
-        "lang_c": {
-            "c_pre_call": [
-                "{cxx_type} *{c_var} = {c_var_cdesc}->base_addr;"
-            ]
-        },
-        "lang_cxx": {
-            "c_pre_call": [
-                "{cxx_type} *{c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
-            ]
-        }
+        ]
     },
     {
         "alias": [
@@ -1587,9 +1653,11 @@
         "name": "f_function_native*_cdesc_allocatable",
         "mixin": [
             "f_mixin_function-to-subroutine",
+            "f_mixin_declare-local-variable",
             "f_mixin_cdesc_pass",
             "c_mixin_cdesc_native_fill",
-            "f_mixin_cdesc_native_allocate",
+            "f_mixin_allocate",
+            "f_mixin_cdesc_copy_array",
             "f_mixin_capsule_use"
         ]
     },
@@ -2151,12 +2219,6 @@
         "comments": [
             "Allocate Fortran array from cdesc."
         ],
-        "f_dummy_arg": [
-            "{f_var}"
-        ],
-        "f_dummy_decl": [
-            "character(len=:){f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}"
-        ],
         "f_post_call": [
             "allocate({f_char_type}{f_var}({f_var_cdesc}%size))",
             "{f_var_cdesc}%base_addr = C_LOC({f_var})"
@@ -2165,6 +2227,9 @@
             "iso_c_binding": [
                 "C_LOC"
             ]
+        },
+        "fmtdict": {
+            "f_target_attr": ", target"
         }
     },
     {
@@ -2634,23 +2699,7 @@
             "{f_var}"
         ],
         "f_dummy_decl": [
-            "{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}"
-        ],
-        "f_pre_call": [
-            "{f_var_cdesc}%base_addr = C_LOC({f_var})",
-            "{f_var_cdesc}%type = SH_TYPE_CHAR",
-            "{f_var_cdesc}%elem_len = len({f_var})",
-            "{f_var_cdesc}%size = size({f_var})",
-            "{f_var_cdesc}%rank = rank({f_var}){f_cdesc_shape}"
-        ],
-        "f_module": {
-            "iso_c_binding": [
-                "C_LOC"
-            ]
-        },
-        "helper": [
-            "type_defines",
-            "array_context"
+            "{f_type}{f_intent_attr}{f_target_attr} :: {f_var}{f_assumed_shape}"
         ]
     },
     {
@@ -3106,6 +3155,7 @@
         ],
         "mixin": [
             "f_mixin_str_array",
+            "f_mixin_cdesc_char_fill",
             "f_mixin_cdesc_pass",
             "c_mixin_local-string*",
             "c_mixin_arg-call-cvar-address"
@@ -3137,6 +3187,7 @@
     {
         "name": "f_out_string**_cdesc_allocatable",
         "mixin": [
+            "f_mixin_declare-fortran-arg",
             "f_mixin_cdesc_pass",
             "f_mixin_capsule_pass",
             "f_mixin_cdesc_out_char_array_allocatable",
@@ -3309,32 +3360,6 @@
         ]
     },
     {
-        "name": "f_mixin_out_vector<native>_copy",
-        "comments": [
-            "Copy std::vector into user's memory."
-        ],
-        "f_dummy_arg": [
-            "{f_var}"
-        ],
-        "f_dummy_decl": [
-            "{targs[0].f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}"
-        ],
-        "f_post_call": [
-            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
-        ],
-        "f_module": {
-            "iso_c_binding": [
-                "{targs[0].f_kind}",
-                "C_SIZE_T",
-                "C_LOC"
-            ]
-        },
-        "helper": [
-            "copy_array",
-            "type_defines"
-        ]
-    },
-    {
         "name": "c_mixin_cdesc_vector_fill",
         "comments": [
             "Fill cdesc with vector information.",
@@ -3374,8 +3399,10 @@
             "c_out_vector<native>*_cdesc"
         ],
         "mixin": [
+            "f_mixin_dummy_arg",
+            "f_mixin_template_native_arg1",
             "f_mixin_cdesc_pass",
-            "f_mixin_out_vector<native>_copy",
+            "f_mixin_cdesc_copy_array",
             "c_mixin_new_vector<native>",
             "c_mixin_arg-call-cxx"
         ],
@@ -3389,8 +3416,10 @@
             "c_out_vector<native>&_cdesc"
         ],
         "mixin": [
+            "f_mixin_dummy_arg",
+            "f_mixin_template_native_arg1",
             "f_mixin_cdesc_pass",
-            "f_mixin_out_vector<native>_copy",
+            "f_mixin_cdesc_copy_array",
             "c_mixin_new_vector<native>",
             "c_mixin_arg-call-cxx-deref"
         ],
@@ -3411,9 +3440,6 @@
         ],
         "c_local": [
             "cxx"
-        ],
-        "helper": [
-            "copy_array"
         ]
     },
     {
@@ -3425,24 +3451,13 @@
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
+            "f_mixin_template_native_arg1",
             "f_mixin_cdesc_pass",
+            "f_mixin_cdesc_allocate_1d",
             "c_mixin_destructor_new-vector",
-            "c_mixin_cdesc_vector_fill"
+            "c_mixin_cdesc_vector_fill",
+            "f_mixin_cdesc_copy_array"
         ],
-        "f_dummy_decl": [
-            "{targs[0].f_type}{f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}"
-        ],
-        "f_post_call": [
-            "allocate({f_var}({f_var_cdesc}%size))",
-            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
-        ],
-        "f_module": {
-            "iso_c_binding": [
-                "{targs[0].f_kind}",
-                "C_LOC",
-                "C_SIZE_T"
-            ]
-        },
         "c_pre_call": [
             "{c_const}std::vector<{cxx_T}>\t *{c_local_cxx} = new std::vector<{cxx_T}>;"
         ],
@@ -3451,10 +3466,6 @@
         ],
         "c_local": [
             "cxx"
-        ],
-        "helper": [
-            "copy_array",
-            "type_defines"
         ]
     },
     {
@@ -3514,27 +3525,13 @@
     {
         "name": "f_inout_vector<native>&_cdesc_allocatable",
         "mixin": [
+            "f_mixin_dummy_arg",
+            "f_mixin_template_native_arg1",
+            "f_mixin_deallocate",
+            "f_mixin_cdesc_allocate_1d",
             "c_mixin_inout_vector<native>_cdesc",
-            "c_mixin_arg-call-cxx-deref"
-        ],
-        "append": {
-            "f_module": {
-                "iso_c_binding": [
-                    "{targs[0].f_kind}",
-                    "C_LOC"
-                ]
-            }
-        },
-        "f_dummy_arg": [
-            "{f_var}"
-        ],
-        "f_dummy_decl": [
-            "{targs[0].f_type}{f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}"
-        ],
-        "f_post_call": [
-            "if (allocated({f_var})) deallocate({f_var})",
-            "allocate({f_var}({f_var_cdesc}%size))",
-            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+            "c_mixin_arg-call-cxx-deref",
+            "f_mixin_cdesc_copy_array"
         ]
     },
     {
@@ -3715,17 +3712,12 @@
             "f_out_vector<string>&_cdesc",
             "c_out_vector<string>&_cdesc"
         ],
-        "notes": [
-            "f_dummy_decl replaces values from f_mixin_str_array.",
-            "This one needs to use targs."
-        ],
         "mixin": [
-            "f_mixin_str_array",
+            "f_mixin_dummy_arg",
+            "f_mixin_template_native_arg1",
+            "f_mixin_cdesc_char_fill",
             "f_mixin_cdesc_pass",
             "c_mixin_arg-call-cvar"
-        ],
-        "f_dummy_decl": [
-            "{targs[0].f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}"
         ],
         "c_pre_call": [
             "{c_const}std::vector<std::string> {cxx_var};"
@@ -3745,6 +3737,7 @@
             "c_out_vector<string>&_cdesc_allocatable"
         ],
         "mixin": [
+            "f_mixin_declare-character-arg",
             "f_mixin_cdesc_pass",
             "f_mixin_capsule_pass",
             "f_mixin_cdesc_out_char_array_allocatable",
@@ -3756,43 +3749,11 @@
     {
         "name": "f_inout_vector<native>&_cdesc",
         "mixin": [
+            "f_mixin_dummy_arg",
+            "f_mixin_template_native_arg1",
             "c_mixin_inout_vector<native>_cdesc",
-            "c_mixin_arg-call-cxx-deref"
-        ],
-        "append": {
-            "f_module": {
-                "iso_c_binding": [
-                    "{targs[0].f_kind}",
-                    "C_LOC"
-                ]
-            }
-        },
-        "f_dummy_arg": [
-            "{f_var}"
-        ],
-        "f_dummy_decl": [
-            "{targs[0].f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}"
-        ],
-        "f_post_call": [
-            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
-        ]
-    },
-    {
-        "name": "f_function_vector_scalar_cdesc",
-        "f_dummy_decl": [
-            "{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}"
-        ],
-        "f_post_call": [
-            "call {f_helper_copy_array}(\t{temp0},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
-        ],
-        "f_module": {
-            "iso_c_binding": [
-                "C_LOC",
-                "C_SIZE_T"
-            ]
-        },
-        "helper": [
-            "copy_array"
+            "c_mixin_arg-call-cxx-deref",
+            "f_mixin_cdesc_copy_array"
         ]
     },
     {
@@ -3804,29 +3765,13 @@
             "Copy into allocated array."
         ],
         "mixin": [
+            "f_mixin_dummy_arg",
+            "f_mixin_template_native_arg1",
             "f_mixin_cdesc_pass",
+            "f_mixin_cdesc_allocate_1d",
+            "f_mixin_cdesc_copy_array",
             "c_mixin_new_vector<native>",
             "c_mixin_arg-call-cxx-deref"
-        ],
-        "f_dummy_arg": [
-            "{f_var}"
-        ],
-        "f_dummy_decl": [
-            "{targs[0].f_type}{f_intent_attr}{f_deref_attr}, target :: {f_var}{f_assumed_shape}"
-        ],
-        "f_post_call": [
-            "allocate({f_var}({f_var_cdesc}%size))",
-            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
-        ],
-        "f_module": {
-            "iso_c_binding": [
-                "{targs[0].f_kind}",
-                "C_LOC",
-                "C_SIZE_T"
-            ]
-        },
-        "helper": [
-            "copy_array"
         ]
     },
     {
