@@ -4935,6 +4935,11 @@
                 },
                 "decl": "void getPtrToScalar(int **nitems+intent(out))",
                 "declgen": "void getPtrToScalar(int **nitems +intent(out))",
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "getPtrToScalar",
                 "options": {
                     "wrap_python": false
@@ -5035,6 +5040,7 @@
                                 "c_addr": "",
                                 "c_const": "",
                                 "c_deref": "*",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_local_cdesc": "SHC_nitems_cdesc",
                                 "c_local_cptr": "SHC_nitems_cptr",
                                 "c_local_cxx": "SHC_nitems_cxx",
@@ -5162,6 +5168,11 @@
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is always the same length.\n"
                 },
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "getPtrToFixedArray",
                 "options": {},
                 "wrap": {
@@ -5275,6 +5286,7 @@
                                 "c_array_size2": "10",
                                 "c_const": "",
                                 "c_deref": "*",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_local_cdesc": "SHC_count_cdesc",
                                 "c_local_cptr": "SHC_count_cptr",
                                 "c_local_cxx": "SHC_count_cxx",
@@ -5283,8 +5295,7 @@
                                 "c_member": "->",
                                 "c_temp_extents_decl": "CFI_index_t SHT_count_extents[1];\nSHT_count_extents[0] = 10;\n",
                                 "c_temp_extents_use": "SHT_count_extents",
-                                "c_temp_lower_decl": "CFI_index_t SHT_count_lower[1] = {1};\n",
-                                "c_temp_lower_use": "SHT_count_lower",
+                                "c_temp_lower_use": "SHT_lower_CFI",
                                 "c_type": "int",
                                 "c_var": "count",
                                 "c_var_cfi": "SHT_count_cfi",
@@ -5444,6 +5455,11 @@
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is the length of\nthe argument ncount.\n"
                 },
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "getPtrToDynamicArray",
                 "options": {},
                 "wrap": {
@@ -5596,6 +5612,7 @@
                                 "c_array_size2": "ncount",
                                 "c_const": "",
                                 "c_deref": "*",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_local_cdesc": "SHC_count_cdesc",
                                 "c_local_cptr": "SHC_count_cptr",
                                 "c_local_cxx": "SHC_count_cxx",
@@ -5604,8 +5621,7 @@
                                 "c_member": "->",
                                 "c_temp_extents_decl": "CFI_index_t SHT_count_extents[1];\nSHT_count_extents[0] = ncount;\n",
                                 "c_temp_extents_use": "SHT_count_extents",
-                                "c_temp_lower_decl": "CFI_index_t SHT_count_lower[1] = {1};\n",
-                                "c_temp_lower_use": "SHT_count_lower",
+                                "c_temp_lower_use": "SHT_lower_CFI",
                                 "c_type": "int",
                                 "c_var": "count",
                                 "c_var_cfi": "SHT_count_cfi",
@@ -5794,6 +5810,11 @@
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\n"
                 },
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "getPtrToFuncArray",
                 "options": {},
                 "wrap": {
@@ -5908,6 +5929,7 @@
                                 "c_array_size2": "getLen()",
                                 "c_const": "",
                                 "c_deref": "*",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_local_cdesc": "SHC_count_cdesc",
                                 "c_local_cptr": "SHC_count_cptr",
                                 "c_local_cxx": "SHC_count_cxx",
@@ -5916,8 +5938,7 @@
                                 "c_member": "->",
                                 "c_temp_extents_decl": "CFI_index_t SHT_count_extents[1];\nSHT_count_extents[0] = getLen();\n",
                                 "c_temp_extents_use": "SHT_count_extents",
-                                "c_temp_lower_decl": "CFI_index_t SHT_count_lower[1] = {1};\n",
-                                "c_temp_lower_use": "SHT_count_lower",
+                                "c_temp_lower_use": "SHT_lower_CFI",
                                 "c_type": "int",
                                 "c_var": "count",
                                 "c_var_cfi": "SHT_count_cfi",
@@ -6057,6 +6078,11 @@
                 },
                 "decl": "void getPtrToConstScalar( const int **nitems+intent(out))",
                 "declgen": "void getPtrToConstScalar(const int **nitems +intent(out))",
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "getPtrToConstScalar",
                 "options": {
                     "wrap_python": false
@@ -6157,6 +6183,7 @@
                                 "c_addr": "",
                                 "c_const": "const ",
                                 "c_deref": "*",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_local_cdesc": "SHC_nitems_cdesc",
                                 "c_local_cptr": "SHC_nitems_cptr",
                                 "c_local_cxx": "SHC_nitems_cxx",
@@ -6282,6 +6309,11 @@
                 },
                 "decl": "void getPtrToFixedConstArray( const int **count+intent(out)+dimension(10));",
                 "declgen": "void getPtrToFixedConstArray(const int **count +dimension(10)+intent(out))",
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "getPtrToFixedConstArray",
                 "options": {},
                 "wrap": {
@@ -6395,6 +6427,7 @@
                                 "c_array_size2": "10",
                                 "c_const": "const ",
                                 "c_deref": "*",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_local_cdesc": "SHC_count_cdesc",
                                 "c_local_cptr": "SHC_count_cptr",
                                 "c_local_cxx": "SHC_count_cxx",
@@ -6403,8 +6436,7 @@
                                 "c_member": "->",
                                 "c_temp_extents_decl": "CFI_index_t SHT_count_extents[1];\nSHT_count_extents[0] = 10;\n",
                                 "c_temp_extents_use": "SHT_count_extents",
-                                "c_temp_lower_decl": "CFI_index_t SHT_count_lower[1] = {1};\n",
-                                "c_temp_lower_use": "SHT_count_lower",
+                                "c_temp_lower_use": "SHT_lower_CFI",
                                 "c_type": "int",
                                 "c_var": "count",
                                 "c_var_cfi": "SHT_count_cfi",
@@ -6562,6 +6594,11 @@
                 },
                 "decl": "void getPtrToDynamicConstArray( const int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
                 "declgen": "void getPtrToDynamicConstArray(const int **count +dimension(ncount)+intent(out), int *ncount +hidden+intent(out))",
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "getPtrToDynamicConstArray",
                 "options": {},
                 "wrap": {
@@ -6714,6 +6751,7 @@
                                 "c_array_size2": "ncount",
                                 "c_const": "const ",
                                 "c_deref": "*",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_local_cdesc": "SHC_count_cdesc",
                                 "c_local_cptr": "SHC_count_cptr",
                                 "c_local_cxx": "SHC_count_cxx",
@@ -6722,8 +6760,7 @@
                                 "c_member": "->",
                                 "c_temp_extents_decl": "CFI_index_t SHT_count_extents[1];\nSHT_count_extents[0] = ncount;\n",
                                 "c_temp_extents_use": "SHT_count_extents",
-                                "c_temp_lower_decl": "CFI_index_t SHT_count_lower[1] = {1};\n",
-                                "c_temp_lower_use": "SHT_count_lower",
+                                "c_temp_lower_use": "SHT_lower_CFI",
                                 "c_type": "int",
                                 "c_var": "count",
                                 "c_var_cfi": "SHT_count_cfi",
@@ -8372,6 +8409,11 @@
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is always the same length.\n"
                 },
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "getAllocToFixedArray",
                 "options": {
                     "wrap_python": false
@@ -8487,12 +8529,12 @@
                                 "c_array_size2": "10",
                                 "c_const": "",
                                 "c_deref": "*",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_local_cxx": "SHC_count_cxx",
                                 "c_member": "->",
                                 "c_temp_extents_decl": "CFI_index_t SHT_count_extents[1];\nSHT_count_extents[0] = 10;\n",
                                 "c_temp_extents_use": "SHT_count_extents",
-                                "c_temp_lower_decl": "CFI_index_t SHT_count_lower[1] = {1};\n",
-                                "c_temp_lower_use": "SHT_count_lower",
+                                "c_temp_lower_use": "SHT_lower_CFI",
                                 "c_type": "int",
                                 "c_var": "count",
                                 "c_var_cfi": "SHT_count_cfi",
@@ -9689,6 +9731,11 @@
                 },
                 "decl": "int *returnIntPtrToScalar(void)",
                 "declgen": "int *returnIntPtrToScalar(void)",
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "returnIntPtrToScalar",
                 "options": {},
                 "wrap": {
@@ -9749,6 +9796,7 @@
                                 "F_arguments": "",
                                 "F_subprogram": "function",
                                 "c_const": "",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_local_cdesc": "SHC_rv_cdesc",
                                 "c_local_cptr": "SHC_rv_cptr",
                                 "c_local_cxx": "SHC_rv_cxx",
@@ -9853,6 +9901,11 @@
                 },
                 "decl": "int *returnIntPtrToFixedArray(void) +dimension(10)",
                 "declgen": "int *returnIntPtrToFixedArray(void) +dimension(10)",
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "returnIntPtrToFixedArray",
                 "options": {},
                 "wrap": {
@@ -9928,6 +9981,7 @@
                                 "F_subprogram": "function",
                                 "c_array_size2": "10",
                                 "c_const": "",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_local_cdesc": "SHC_rv_cdesc",
                                 "c_local_cptr": "SHC_rv_cptr",
                                 "c_local_cxx": "SHC_rv_cxx",
@@ -9935,8 +9989,7 @@
                                 "c_local_fptr": "SHC_rv_fptr",
                                 "c_temp_extents_decl": "CFI_index_t SHT_rv_extents[1];\nSHT_rv_extents[0] = 10;\n",
                                 "c_temp_extents_use": "SHT_rv_extents",
-                                "c_temp_lower_decl": "CFI_index_t SHT_rv_lower[1] = {1};\n",
-                                "c_temp_lower_use": "SHT_rv_lower",
+                                "c_temp_lower_use": "SHT_lower_CFI",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
                                 "c_var_cfi": "SHT_rv_cfi",
@@ -10053,6 +10106,11 @@
                 },
                 "decl": "const int *returnIntPtrToConstScalar(void)",
                 "declgen": "const int *returnIntPtrToConstScalar(void)",
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "returnIntPtrToConstScalar",
                 "options": {},
                 "wrap": {
@@ -10113,6 +10171,7 @@
                                 "F_arguments": "",
                                 "F_subprogram": "function",
                                 "c_const": "const ",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_local_cdesc": "SHC_rv_cdesc",
                                 "c_local_cptr": "SHC_rv_cptr",
                                 "c_local_cxx": "SHC_rv_cxx",
@@ -10218,6 +10277,11 @@
                 },
                 "decl": "const int *returnIntPtrToFixedConstArray(void) +dimension(10)",
                 "declgen": "const int *returnIntPtrToFixedConstArray(void) +dimension(10)",
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "returnIntPtrToFixedConstArray",
                 "options": {},
                 "wrap": {
@@ -10293,6 +10357,7 @@
                                 "F_subprogram": "function",
                                 "c_array_size2": "10",
                                 "c_const": "const ",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_local_cdesc": "SHC_rv_cdesc",
                                 "c_local_cptr": "SHC_rv_cptr",
                                 "c_local_cxx": "SHC_rv_cxx",
@@ -10300,8 +10365,7 @@
                                 "c_local_fptr": "SHC_rv_fptr",
                                 "c_temp_extents_decl": "CFI_index_t SHT_rv_extents[1];\nSHT_rv_extents[0] = 10;\n",
                                 "c_temp_extents_use": "SHT_rv_extents",
-                                "c_temp_lower_decl": "CFI_index_t SHT_rv_lower[1] = {1};\n",
-                                "c_temp_lower_use": "SHT_rv_lower",
+                                "c_temp_lower_use": "SHT_lower_CFI",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
                                 "c_var_cfi": "SHT_rv_cfi",
@@ -11109,6 +11173,11 @@
                 },
                 "decl": "int *returnIntAllocToFixedArray(void) +dimension(10)+deref(allocatable)",
                 "declgen": "int *returnIntAllocToFixedArray(void) +deref(allocatable)+dimension(10)",
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "returnIntAllocToFixedArray",
                 "options": {
                     "wrap_python": false
@@ -11186,11 +11255,11 @@
                                 "F_subprogram": "function",
                                 "c_array_size2": "10",
                                 "c_const": "",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_local_cxx": "SHC_rv_cxx",
                                 "c_temp_extents_decl": "CFI_index_t SHT_rv_extents[1];\nSHT_rv_extents[0] = 10;\n",
                                 "c_temp_extents_use": "SHT_rv_extents",
-                                "c_temp_lower_decl": "CFI_index_t SHT_rv_lower[1] = {1};\n",
-                                "c_temp_lower_use": "SHT_rv_lower",
+                                "c_temp_lower_use": "SHT_lower_CFI",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
                                 "c_var_cfi": "SHT_rv_cfi",

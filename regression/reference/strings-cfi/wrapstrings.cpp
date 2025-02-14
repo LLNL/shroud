@@ -54,6 +54,10 @@ static int ShroudCharLenTrim(const char *src, int nsrc) {
 }
 
 
+// Lower bounds of CFI arrays.
+static CFI_index_t SHT_lower_CFI[CFI_MAX_RANK] =
+    {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+
 // splicer begin C_definitions
 // splicer end C_definitions
 
@@ -1103,10 +1107,9 @@ void STR_fetchArrayStringAlloc_CFI(CFI_cdesc_t *SHT_strs_cfi)
         SHT_strs_len = STR_ShroudArrayStringOutSize(strs, nstrs);
     }
     if (strs != nullptr) {
-        CFI_index_t SHT_strs_lower[1] = {1};
         CFI_index_t SHT_strs_extents[1];
         SHT_strs_extents[0] = nstrs;
-        int SH_ret = CFI_allocate(SHT_strs_cfi, SHT_strs_lower, 
+        int SH_ret = CFI_allocate(SHT_strs_cfi, SHT_lower_CFI, 
             SHT_strs_extents, SHT_strs_len);
         if (SH_ret == CFI_SUCCESS) {
             STR_ShroudCFIArrayStringOut(SHT_strs_cfi, strs, nstrs);
@@ -1170,10 +1173,9 @@ void STR_fetchArrayStringAllocLen_CFI(CFI_cdesc_t *SHT_strs_cfi)
         SHT_strs_len = STR_ShroudArrayStringOutSize(strs, nstrs);
     }
     if (strs != nullptr) {
-        CFI_index_t SHT_strs_lower[1] = {1};
         CFI_index_t SHT_strs_extents[1];
         SHT_strs_extents[0] = nstrs;
-        int SH_ret = CFI_allocate(SHT_strs_cfi, SHT_strs_lower, 
+        int SH_ret = CFI_allocate(SHT_strs_cfi, SHT_lower_CFI, 
             SHT_strs_extents, SHT_strs_len);
         if (SH_ret == CFI_SUCCESS) {
             STR_ShroudCFIArrayStringOut(SHT_strs_cfi, strs, nstrs);

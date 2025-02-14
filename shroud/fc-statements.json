@@ -4566,7 +4566,7 @@
         ],
         "c_post_call": [
             "if ({cxx_var} != {nullptr}) {{+",
-            "{c_temp_lower_decl}{c_temp_extents_decl}int SH_ret = CFI_allocate({c_var_cfi}, \t{c_temp_lower_use}, \t{c_temp_extents_use}, \t{c_var_len});",
+            "{c_temp_extents_decl}int SH_ret = CFI_allocate({c_var_cfi}, \t{c_temp_lower_use}, \t{c_temp_extents_use}, \t{c_var_len});",
             "if (SH_ret == CFI_SUCCESS) {{+",
             "{c_helper_cfi_array_string_out}({c_var_cfi}, {cxx_var}, {c_array_size2});",
             "-}}",
@@ -4577,6 +4577,7 @@
             "lower"
         ],
         "helper": [
+            "lower_bounds_CFI",
             "cfi_array_string_out"
         ]
     },
@@ -4607,7 +4608,7 @@
         ],
         "c_post_call": [
             "if ({c_local_cxx} != {nullptr}) {{+",
-            "{c_temp_lower_decl}{c_temp_extents_decl}int SH_ret = CFI_allocate({c_var_cfi}, \t{c_temp_lower_use}, \t{c_temp_extents_use}, \t0);",
+            "{c_temp_extents_decl}int SH_ret = CFI_allocate({c_var_cfi}, \t{c_temp_lower_use}, \t{c_temp_extents_use}, \t0);",
             "if (SH_ret == CFI_SUCCESS) {{+",
             "{stdlib}memcpy({c_var_cfi}->base_addr, \t{c_local_cxx}, \t{c_var_cfi}->elem_len);",
             "-}}",
@@ -4616,6 +4617,9 @@
         "c_temps": [
             "extents",
             "lower"
+        ],
+        "helper": [
+            "lower_bounds_CFI"
         ]
     },
     {
@@ -4628,7 +4632,7 @@
             "CFI_CDESC_T({rank}) {c_local_fptr};",
             "CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};",
             "void *{c_local_cptr} = const_cast<{c_type} *>({c_local_cxx});",
-            "{c_temp_extents_decl}{c_temp_lower_decl}int {c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t {cfi_type},\t 0,\t {rank},\t {c_temp_extents_use});",
+            "{c_temp_extents_decl}int {c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t {cfi_type},\t 0,\t {rank},\t {c_temp_extents_use});",
             "if ({c_local_err} == CFI_SUCCESS) {{+",
             "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {c_temp_lower_use});",
             "-}}",
@@ -4643,6 +4647,9 @@
             "fptr",
             "cdesc",
             "err"
+        ],
+        "helper": [
+            "lower_bounds_CFI"
         ]
     },
     {
@@ -5622,6 +5629,23 @@
             "-}}",
             "{stdlib}free(src);",
             "-}}"
+        ]
+    },
+    {
+        "name": "h_helper_lower_bounds_CFI",
+        "notes": [
+            "Lower bounds for 1 for arrays.",
+            "No need to include ISO_Fortran_binding.h since it is already",
+            "included in the C wrapper header."
+        ],
+        "c_fmtname": "SHT_lower_CFI",
+        "#include": [
+            "ISO_Fortran_binding.h"
+        ],
+        "source": [
+            "",
+            "// Lower bounds of CFI arrays.",
+            "static CFI_index_t SHT_lower_CFI[CFI_MAX_RANK] =\t {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};"
         ]
     },
     {

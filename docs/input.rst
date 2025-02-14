@@ -576,7 +576,7 @@ function will be created for each rank requested by options
 .. info is passed to statements via fmt fields.
    cdesc - c_array_shape, c_array_size
    CFI - c_temp_extents_decl, c_temp_extents_use
-         c_temp_lower_decl, c_temp_lower_use
+         c_temp_lower_use
 
 
 external

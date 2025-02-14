@@ -4874,6 +4874,7 @@
                 "helpers": {
                     "fc": [
                         "array_string_out_len",
+                        "lower_bounds_CFI",
                         "cfi_array_string_out"
                     ]
                 },
@@ -5071,11 +5072,11 @@
                                 "c_deref": "*",
                                 "c_helper_array_string_out_len": "STR_ShroudArrayStringOutSize",
                                 "c_helper_cfi_array_string_out": "STR_ShroudCFIArrayStringOut",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_member": "->",
                                 "c_temp_extents_decl": "CFI_index_t SHT_strs_extents[1];\nSHT_strs_extents[0] = nstrs;\n",
                                 "c_temp_extents_use": "SHT_strs_extents",
-                                "c_temp_lower_decl": "CFI_index_t SHT_strs_lower[1] = {1};\n",
-                                "c_temp_lower_use": "SHT_strs_lower",
+                                "c_temp_lower_use": "SHT_lower_CFI",
                                 "c_type": "char",
                                 "c_var": "strs",
                                 "c_var_cfi": "SHT_strs_cfi",
@@ -5243,6 +5244,7 @@
                 "helpers": {
                     "fc": [
                         "array_string_out_len",
+                        "lower_bounds_CFI",
                         "cfi_array_string_out"
                     ]
                 },
@@ -5443,11 +5445,11 @@
                                 "c_deref": "*",
                                 "c_helper_array_string_out_len": "STR_ShroudArrayStringOutSize",
                                 "c_helper_cfi_array_string_out": "STR_ShroudCFIArrayStringOut",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_member": "->",
                                 "c_temp_extents_decl": "CFI_index_t SHT_strs_extents[1];\nSHT_strs_extents[0] = nstrs;\n",
                                 "c_temp_extents_use": "SHT_strs_extents",
-                                "c_temp_lower_decl": "CFI_index_t SHT_strs_lower[1] = {1};\n",
-                                "c_temp_lower_use": "SHT_strs_lower",
+                                "c_temp_lower_use": "SHT_lower_CFI",
                                 "c_type": "char",
                                 "c_var": "strs",
                                 "c_var_cfi": "SHT_strs_cfi",

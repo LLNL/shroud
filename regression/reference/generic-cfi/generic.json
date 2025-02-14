@@ -5202,6 +5202,11 @@
                         "generic": "(float **addr+intent(out)+rank(2)+deref(pointer))"
                     }
                 ],
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "GetPointerAsPointer",
                 "options": {},
                 "wrap": {},
@@ -5324,6 +5329,11 @@
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
                 "declgen": "void GetPointerAsPointer(float **addr +deref(pointer)+intent(out)+rank(1), int *type +hidden+intent(out), size_t *size +hidden+intent(out))",
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "GetPointerAsPointer",
                 "options": {},
                 "wrap": {
@@ -5361,6 +5371,7 @@
                                 "c_addr": "",
                                 "c_const": "",
                                 "c_deref": "*",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_local_cdesc": "SHC_addr_cdesc",
                                 "c_local_cptr": "SHC_addr_cptr",
                                 "c_local_cxx": "SHC_addr_cxx",
@@ -5630,6 +5641,11 @@
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
                 "declgen": "void GetPointerAsPointer(float **addr +deref(pointer)+intent(out)+rank(2), int *type +hidden+intent(out), size_t *size +hidden+intent(out))",
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "GetPointerAsPointer",
                 "options": {},
                 "wrap": {
@@ -5667,6 +5683,7 @@
                                 "c_addr": "",
                                 "c_const": "",
                                 "c_deref": "*",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_local_cdesc": "SHC_addr_cdesc",
                                 "c_local_cptr": "SHC_addr_cptr",
                                 "c_local_cxx": "SHC_addr_cxx",

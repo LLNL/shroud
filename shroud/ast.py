@@ -745,7 +745,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             c_temp_extents_decl="",
             c_temp_extents_use="NULL",
             # Assume scalar in CFI_setpointer
-            c_temp_lower_decl="",    # Assume scalar.
             c_temp_lower_use="NULL",   # Assume scalar in CFI_setpointer.
 
             f_abstract_interface="",

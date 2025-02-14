@@ -562,17 +562,12 @@ class FillFormat(object):
                         "CFI_index_t {0}[{1}];\n{2}".
                         format(fmt.c_var_extents, fmt.rank,
                                "".join(fmtextent)))
-                    # Used with CFI_setpointer to set lower bound to 1.
-                    fmt.c_temp_lower_decl = (
-                        "CFI_index_t {0}[{1}] = {{{2}}};\n".
-                        format(fmt.c_var_lower, fmt.rank,
-                               ",".join(["1" for x in range(visitor.rank)])))
                     fmt.c_temp_extents_use = fmt.c_var_extents
-                    fmt.c_temp_lower_use = fmt.c_var_lower
+                    fmt.c_temp_lower_use = "SHT_lower_CFI" # From h_helper_lower_bounds_CFI
 
         if meta["len"]:
             fmt.attr_len = meta["len"]
-                
+
     def set_fmt_fields_iface(self, ast, bind, ntypemap):
         """Set format fields for interface.
 
