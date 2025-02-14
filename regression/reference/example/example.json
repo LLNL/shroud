@@ -18758,6 +18758,9 @@
                                                         "name": "shape"
                                                     }
                                                 ],
+                                                "dim_shape": [
+                                                    "shape(*in)"
+                                                ],
                                                 "dimension": "shape(in)",
                                                 "intent": "out"
                                             },
@@ -18917,6 +18920,9 @@
                                                         ],
                                                         "name": "shape"
                                                     }
+                                                ],
+                                                "dim_shape": [
+                                                    "shape(*in)"
                                                 ],
                                                 "dimension": "shape(in)",
                                                 "intent": "out"

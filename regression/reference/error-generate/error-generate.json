@@ -3242,6 +3242,9 @@
                                         "name": "narg2"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "SH_this->narg2"
+                                ],
                                 "dimension": "narg2",
                                 "intent": "getter"
                             },

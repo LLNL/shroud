@@ -1095,6 +1095,9 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "len"
+                                ],
                                 "dimension": "len",
                                 "intent": "function"
                             },
@@ -1204,6 +1207,9 @@
                                     {
                                         "name": "len"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "len"
                                 ],
                                 "dimension": "len",
                                 "intent": "function"
@@ -1495,6 +1501,9 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "len"
+                                ],
                                 "dimension": "len",
                                 "intent": "function"
                             },
@@ -1613,6 +1622,9 @@
                                     {
                                         "name": "len"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "len"
                                 ],
                                 "dimension": "len",
                                 "intent": "function"
@@ -1899,6 +1911,9 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "len"
+                                ],
                                 "dimension": "len",
                                 "intent": "function"
                             },
@@ -2008,6 +2023,9 @@
                                     {
                                         "name": "len"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "len"
                                 ],
                                 "dimension": "len",
                                 "intent": "function"
@@ -2290,6 +2308,9 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "len"
+                                ],
                                 "dimension": "len",
                                 "intent": "function",
                                 "owner": "caller"
@@ -2478,6 +2499,9 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "len"
+                                ],
                                 "dimension": "len",
                                 "intent": "function",
                                 "owner": "caller"
@@ -2592,6 +2616,9 @@
                                     {
                                         "name": "len"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "len"
                                 ],
                                 "dimension": "len",
                                 "intent": "function",
@@ -2879,6 +2906,9 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "len"
+                                ],
                                 "dimension": "len",
                                 "intent": "function",
                                 "owner": "caller"
@@ -3163,6 +3193,9 @@
                                         "name": "len"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "len"
+                                ],
                                 "dimension": "len",
                                 "intent": "function",
                                 "owner": "caller"
@@ -3277,6 +3310,9 @@
                                     {
                                         "name": "len"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "len"
                                 ],
                                 "dimension": "len",
                                 "intent": "function",

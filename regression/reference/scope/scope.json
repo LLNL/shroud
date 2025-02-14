@@ -658,6 +658,9 @@
                                         "name": "nitems"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "SH_this->nitems"
+                                ],
                                 "dimension": "nitems",
                                 "intent": "getter"
                             },
@@ -1282,6 +1285,9 @@
                                             {
                                                 "name": "nitems"
                                             }
+                                        ],
+                                        "dim_shape": [
+                                            "SH_this->nitems"
                                         ],
                                         "dimension": "nitems",
                                         "intent": "getter"
@@ -1934,6 +1940,9 @@
                                             {
                                                 "name": "nitems"
                                             }
+                                        ],
+                                        "dim_shape": [
+                                            "SH_this->nitems"
                                         ],
                                         "dimension": "nitems",
                                         "intent": "getter"

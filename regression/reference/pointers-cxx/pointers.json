@@ -1125,6 +1125,9 @@
                                         "name": "size"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "size(*in)"
+                                ],
                                 "dimension": "size(in)",
                                 "intent": "out"
                             },
@@ -1284,6 +1287,9 @@
                                         ],
                                         "name": "size"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "size(*in)"
                                 ],
                                 "dimension": "size(in)",
                                 "intent": "out"
@@ -1562,6 +1568,9 @@
                                         "name": "size"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "size(*in)"
+                                ],
                                 "dimension": "size(in)",
                                 "intent": "out"
                             },
@@ -1721,6 +1730,9 @@
                                         ],
                                         "name": "size"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "size(*in)"
                                 ],
                                 "dimension": "size(in)",
                                 "intent": "out"
@@ -1979,6 +1991,9 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "3"
+                                ],
                                 "dimension": "3",
                                 "intent": "out"
                             },
@@ -2094,6 +2109,9 @@
                                     {
                                         "constant": "3"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "3"
                                 ],
                                 "dimension": "3",
                                 "intent": "out"
@@ -2264,6 +2282,9 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "3"
+                                ],
                                 "dimension": "3",
                                 "intent": "out"
                             },
@@ -2302,6 +2323,9 @@
                                     {
                                         "constant": "3"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "3"
                                 ],
                                 "dimension": "3",
                                 "intent": "out"
@@ -2379,6 +2403,9 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "3"
+                                ],
                                 "dimension": "3",
                                 "intent": "out"
                             },
@@ -2429,6 +2456,9 @@
                                     {
                                         "constant": "3"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "3"
                                 ],
                                 "dimension": "3",
                                 "intent": "out"
@@ -2625,6 +2655,9 @@
                                         "name": "nvar"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "nvar"
+                                ],
                                 "dimension": "nvar",
                                 "intent": "out"
                             },
@@ -2742,6 +2775,9 @@
                                     {
                                         "name": "nvar"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "nvar"
                                 ],
                                 "dimension": "nvar",
                                 "intent": "out"
@@ -3287,6 +3323,9 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "3"
+                                ],
                                 "dimension": "3",
                                 "intent": "out"
                             },
@@ -3362,6 +3401,9 @@
                                     {
                                         "constant": "3"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "3"
                                 ],
                                 "dimension": "3",
                                 "intent": "out"
@@ -4978,6 +5020,9 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "10"
+                                ],
                                 "dimension": "10",
                                 "intent": "out"
                             },
@@ -5064,6 +5109,9 @@
                                     {
                                         "constant": "10"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10"
                                 ],
                                 "dimension": "10",
                                 "intent": "out"
@@ -5246,6 +5294,9 @@
                                         "name": "ncount"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "ncount"
+                                ],
                                 "dimension": "ncount",
                                 "intent": "out"
                             },
@@ -5371,6 +5422,9 @@
                                     {
                                         "name": "ncount"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "ncount"
                                 ],
                                 "dimension": "ncount",
                                 "intent": "out"
@@ -5583,6 +5637,9 @@
                                         "name": "getLen"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "getLen()"
+                                ],
                                 "dimension": "getLen()",
                                 "intent": "out"
                             },
@@ -5670,6 +5727,9 @@
                                         "args": [],
                                         "name": "getLen"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "getLen()"
                                 ],
                                 "dimension": "getLen()",
                                 "intent": "out"
@@ -6050,6 +6110,9 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "10"
+                                ],
                                 "dimension": "10",
                                 "intent": "out"
                             },
@@ -6136,6 +6199,9 @@
                                     {
                                         "constant": "10"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10"
                                 ],
                                 "dimension": "10",
                                 "intent": "out"
@@ -6316,6 +6382,9 @@
                                         "name": "ncount"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "ncount"
+                                ],
                                 "dimension": "ncount",
                                 "intent": "out"
                             },
@@ -6441,6 +6510,9 @@
                                     {
                                         "name": "ncount"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "ncount"
                                 ],
                                 "dimension": "ncount",
                                 "intent": "out"
@@ -7859,6 +7931,10 @@
                                         "constant": "20"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "10",
+                                    "20"
+                                ],
                                 "dimension": "10,20",
                                 "intent": "in"
                             },
@@ -7937,6 +8013,10 @@
                                     {
                                         "constant": "20"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10",
+                                    "20"
                                 ],
                                 "dimension": "10,20",
                                 "intent": "in"
@@ -8109,6 +8189,9 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "10"
+                                ],
                                 "dimension": "10",
                                 "intent": "out"
                             },
@@ -8204,6 +8287,9 @@
                                     {
                                         "constant": "10"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10"
                                 ],
                                 "dimension": "10",
                                 "intent": "out"
@@ -9555,6 +9641,9 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "10"
+                                ],
                                 "dimension": "10",
                                 "intent": "function"
                             },
@@ -9624,6 +9713,9 @@
                                     {
                                         "constant": "10"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10"
                                 ],
                                 "dimension": "10",
                                 "intent": "function"
@@ -9889,6 +9981,9 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "10"
+                                ],
                                 "dimension": "10",
                                 "intent": "function"
                             },
@@ -9958,6 +10053,9 @@
                                     {
                                         "constant": "10"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10"
                                 ],
                                 "dimension": "10",
                                 "intent": "function"
@@ -10739,6 +10837,9 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "10"
+                                ],
                                 "dimension": "10",
                                 "intent": "function"
                             },
@@ -10817,6 +10918,9 @@
                                     {
                                         "constant": "10"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10"
                                 ],
                                 "dimension": "10",
                                 "intent": "function"

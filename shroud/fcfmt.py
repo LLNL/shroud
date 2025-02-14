@@ -530,6 +530,7 @@ class FillFormat(object):
             visitor.visit(meta["dim_ast"])
             fmt.rank = str(visitor.rank)
             if fmt.rank != "assumed":
+                meta["dim_shape"] = visitor.shape
                 fmtdim = []
                 for dim in visitor.shape:
                     fmtdim.append(dim)

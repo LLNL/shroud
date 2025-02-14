@@ -5217,6 +5217,9 @@
                                         "constant": "2"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "2"
+                                ],
                                 "dimension": "2",
                                 "intent": "function"
                             },
@@ -5287,6 +5290,9 @@
                                     {
                                         "constant": "2"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "2"
                                 ],
                                 "dimension": "2",
                                 "intent": "function"
@@ -8158,6 +8164,9 @@
                                         }
                                     }
                                 ],
+                                "dim_shape": [
+                                    "SH_this->nitems+SH_this->nitems"
+                                ],
                                 "dimension": "nitems+nitems",
                                 "intent": "getter"
                             },
@@ -8600,6 +8609,9 @@
                                             "name": "TWO"
                                         }
                                     }
+                                ],
+                                "dim_shape": [
+                                    "SH_this->nitems*TWO"
                                 ],
                                 "dimension": "nitems*TWO",
                                 "intent": "getter"

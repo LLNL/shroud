@@ -5928,6 +5928,9 @@
                                         "name": "nstrs"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "nstrs"
+                                ],
                                 "dimension": "nstrs",
                                 "intent": "out"
                             },
@@ -6051,6 +6054,9 @@
                                     {
                                         "name": "nstrs"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "nstrs"
                                 ],
                                 "dimension": "nstrs",
                                 "intent": "out"
@@ -6285,6 +6291,9 @@
                                         "name": "nstrs"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "nstrs"
+                                ],
                                 "dimension": "nstrs",
                                 "intent": "out"
                             },
@@ -6419,6 +6428,9 @@
                                     {
                                         "name": "nstrs"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "nstrs"
                                 ],
                                 "dimension": "nstrs",
                                 "intent": "out"
@@ -6655,6 +6667,9 @@
                                         "name": "nstrs"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "nstrs"
+                                ],
                                 "dimension": "nstrs",
                                 "intent": "out",
                                 "len": "20"
@@ -6791,6 +6806,9 @@
                                     {
                                         "name": "nstrs"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "nstrs"
                                 ],
                                 "dimension": "nstrs",
                                 "intent": "out",

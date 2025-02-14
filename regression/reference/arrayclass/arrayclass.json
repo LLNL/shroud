@@ -1067,6 +1067,9 @@
                                                 "name": "getSize"
                                             }
                                         ],
+                                        "dim_shape": [
+                                            "SH_this->getSize()"
+                                        ],
                                         "dimension": "getSize()",
                                         "intent": "function"
                                     },
@@ -1137,6 +1140,9 @@
                                                 "args": [],
                                                 "name": "getSize"
                                             }
+                                        ],
+                                        "dim_shape": [
+                                            "SH_this->getSize()"
                                         ],
                                         "dimension": "getSize()",
                                         "intent": "function"
@@ -1316,6 +1322,9 @@
                                                 "name": "getSize"
                                             }
                                         ],
+                                        "dim_shape": [
+                                            "SH_this->getSize()"
+                                        ],
                                         "dimension": "getSize()",
                                         "intent": "function"
                                     },
@@ -1386,6 +1395,9 @@
                                                 "args": [],
                                                 "name": "getSize"
                                             }
+                                        ],
+                                        "dim_shape": [
+                                            "SH_this->getSize()"
                                         ],
                                         "dimension": "getSize()",
                                         "intent": "function"
@@ -1564,6 +1576,9 @@
                                                 "name": "getSize"
                                             }
                                         ],
+                                        "dim_shape": [
+                                            "SH_this->getSize()"
+                                        ],
                                         "dimension": "getSize()",
                                         "intent": "function"
                                     },
@@ -1634,6 +1649,9 @@
                                                 "args": [],
                                                 "name": "getSize"
                                             }
+                                        ],
+                                        "dim_shape": [
+                                            "SH_this->getSize()"
                                         ],
                                         "dimension": "getSize()",
                                         "intent": "function"
@@ -1814,6 +1832,9 @@
                                                 "name": "getSize"
                                             }
                                         ],
+                                        "dim_shape": [
+                                            "SH_this->getSize()"
+                                        ],
                                         "dimension": "getSize()",
                                         "intent": "function"
                                     },
@@ -1884,6 +1905,9 @@
                                                 "args": [],
                                                 "name": "getSize"
                                             }
+                                        ],
+                                        "dim_shape": [
+                                            "SH_this->getSize()"
                                         ],
                                         "dimension": "getSize()",
                                         "intent": "function"
@@ -2111,6 +2135,9 @@
                                                 "name": "isize"
                                             }
                                         ],
+                                        "dim_shape": [
+                                            "isize"
+                                        ],
                                         "dimension": "isize",
                                         "intent": "out"
                                     },
@@ -2236,6 +2263,9 @@
                                             {
                                                 "name": "isize"
                                             }
+                                        ],
+                                        "dim_shape": [
+                                            "isize"
                                         ],
                                         "dimension": "isize",
                                         "intent": "out"
@@ -2554,6 +2584,9 @@
                                                 "name": "isize"
                                             }
                                         ],
+                                        "dim_shape": [
+                                            "isize"
+                                        ],
                                         "dimension": "isize",
                                         "intent": "out"
                                     },
@@ -2679,6 +2712,9 @@
                                             {
                                                 "name": "isize"
                                             }
+                                        ],
+                                        "dim_shape": [
+                                            "isize"
                                         ],
                                         "dimension": "isize",
                                         "intent": "out"
@@ -2998,6 +3034,9 @@
                                                 "name": "isize"
                                             }
                                         ],
+                                        "dim_shape": [
+                                            "isize"
+                                        ],
                                         "dimension": "isize",
                                         "intent": "out"
                                     },
@@ -3123,6 +3162,9 @@
                                             {
                                                 "name": "isize"
                                             }
+                                        ],
+                                        "dim_shape": [
+                                            "isize"
                                         ],
                                         "dimension": "isize",
                                         "intent": "out"
@@ -3442,6 +3484,9 @@
                                                 "name": "isize"
                                             }
                                         ],
+                                        "dim_shape": [
+                                            "isize"
+                                        ],
                                         "dimension": "isize",
                                         "intent": "out"
                                     },
@@ -3567,6 +3612,9 @@
                                             {
                                                 "name": "isize"
                                             }
+                                        ],
+                                        "dim_shape": [
+                                            "isize"
                                         ],
                                         "dimension": "isize",
                                         "intent": "out"
