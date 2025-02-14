@@ -19686,8 +19686,7 @@ h_helper_lower_bounds_CFI:
   source:
   - ''
   - // Lower bounds of CFI arrays.
-  - "static CFI_index_t SHT_lower_CFI[CFI_MAX_RANK] =\t {1, 1, 1, 1, 1, 1, 1, 1, 1,\
-    \ 1, 1, 1, 1, 1, 1};"
+  - static CFI_index_t SHT_lower_CFI[CFI_MAX_RANK] = {1};
 h_helper_pointer_string:
   name: h_helper_pointer_string
   notes:
