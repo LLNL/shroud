@@ -10,6 +10,7 @@ from __future__ import print_function
 from shroud import ast
 from shroud import error
 from shroud import fcfmt
+from shroud import statements
 from shroud import util
 
 import unittest
@@ -214,6 +215,46 @@ class WFormat(unittest.TestCase):
                          fmtarg.c_f_pointer_shape)
         self.assertEqual("\nSHT_arg_cdesc%shape(1:2) = shape(===>f_var<===)",
                          fmtarg.f_cdesc_shape)
+
+    def test_arg_c_dimension(self):
+        library = ast.LibraryNode()
+        func = library.add_function(
+            "void DimensionIn(const int *arg +dimension(10,20))")
+
+        arg = func.ast.declarator.params[0]
+        bind = statements.fetch_arg_bind(func, arg, "c")
+        meta = bind.meta
+
+        # Scalar
+        fmt_var = util.Scope(None)
+        fmtarg = fcfmt.FormatGen(func, arg, fmt_var, "c")
+        self.assertEqual("",
+                         fmtarg.c_array_shape)
+        self.assertEqual("",
+                         fmtarg.c_array_size)
+        
+        # No c_var_cdesc
+        fmt_var = util.Scope(
+            None,
+        )
+        meta["dim_shape"] = [10]
+        fmtarg = fcfmt.FormatGen(func, arg, fmt_var, "c")
+        self.assertEqual("\n===>c_var_cdesc<===->shape[0] = 10;",
+                         fmtarg.c_array_shape)
+        self.assertEqual("===>c_var_cdesc<===->shape[0]",
+                         fmtarg.c_array_size)
+
+        # 2-d array
+        fmt_var = util.Scope(
+            None,
+            c_var_cdesc="SHT",
+        )
+        meta["dim_shape"] = [10,20]
+        fmtarg = fcfmt.FormatGen(func, arg, fmt_var, "c")
+        self.assertEqual("\nSHT->shape[0] = 10;\nSHT->shape[1] = 20;",
+                         fmtarg.c_array_shape)
+        self.assertEqual("SHT->shape[0]*\tSHT->shape[1]",
+                         fmtarg.c_array_size)
 
 if __name__ == "__main__":
     unittest.main()

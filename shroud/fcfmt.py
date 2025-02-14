@@ -1069,7 +1069,7 @@ def find_result_converter(wlang, language, ntypemap):
 
 ######################################################################
 
-StateTuple = collections.namedtuple("StateType", "ast fmtdict language wlang")
+StateTuple = collections.namedtuple("StateType", "node ast fmtdict language wlang")
 
 class NonConst(object):
     """Return a non-const pointer to argument"""
@@ -1177,10 +1177,14 @@ class FormatGen(object):
     """
 
     def __init__(self, func, ast, fmtdict, wlang):
+        """
+        func - ast.FunctionNode
+        ast  - declast.Declaration
+        """
         self.language = func.get_language()
         self.ast     = ast
         self.fmtdict = fmtdict
-        state = self.state = StateTuple(ast, fmtdict, self.language, wlang)
+        state = self.state = StateTuple(func, ast, fmtdict, self.language, wlang)
         self._cache = {}
 
         self.nonconst_addr = NonConst(state)
@@ -1200,6 +1204,7 @@ class FormatGen(object):
     def name(self):
         return self.state.ast.declarator.user_name
 
+    ##########
     @property
     def f_allocate_shape(self):
         """Shape to use with ALLOCATE statement.
@@ -1244,6 +1249,45 @@ class FormatGen(object):
             value = "\n{0}%shape(1:{1}) = shape({2})".format(f_var_cdesc, rank, f_var)
         return value
 
+    ##########
+    @property
+    def c_array_shape(self):
+        """Assign array shape to a cdesc variable in C.
+        Blank if scalar.
+        """
+        state = self.state
+        bind = statements.get_arg_bind(state.node, state.ast, state.wlang)
+        shape = bind.meta.get("dim_shape")
+        if shape is None:
+            return ""
+        c_var_cdesc = self.state.fmtdict.get("c_var_cdesc", "===>c_var_cdesc<===")
+        fmtshape = []
+        for i, dim in enumerate(shape):
+            fmtshape.append("{}->shape[{}] = {};".format(
+                c_var_cdesc, i, dim))
+        value = "\n" + "\n".join(fmtshape)
+        return value
+
+    @property
+    def c_array_size(self):
+        """Return expression to compute the size of an array.
+        c_array_shape must be used first to define c_var_cdesc->shape.
+        Blank if scalar.
+        """
+        state = self.state
+        bind = statements.get_arg_bind(state.node, state.ast, state.wlang)
+        shape = bind.meta.get("dim_shape")
+        if shape is None:
+            return ""
+        c_var_cdesc = self.state.fmtdict.get("c_var_cdesc", "===>c_var_cdesc<===")
+        fmtsize = []
+        for i, dim in enumerate(shape):
+            fmtsize.append("{}->shape[{}]".format(
+                c_var_cdesc, i, dim))
+        value = "*\t".join(fmtsize)
+        return value
+
+    ##########
     def __str__(self):
         """  "{gen}" returns the name"""
         return self.name
