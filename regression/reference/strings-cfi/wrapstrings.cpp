@@ -1107,8 +1107,7 @@ void STR_fetchArrayStringAlloc_CFI(CFI_cdesc_t *SHT_strs_cfi)
         SHT_strs_len = STR_ShroudArrayStringOutSize(strs, nstrs);
     }
     if (strs != nullptr) {
-        CFI_index_t SHT_strs_extents[1];
-        SHT_strs_extents[0] = nstrs;
+        CFI_index_t SHT_strs_extents[] = {nstrs};
         int SH_ret = CFI_allocate(SHT_strs_cfi, SHT_lower_CFI, 
             SHT_strs_extents, SHT_strs_len);
         if (SH_ret == CFI_SUCCESS) {
@@ -1173,8 +1172,7 @@ void STR_fetchArrayStringAllocLen_CFI(CFI_cdesc_t *SHT_strs_cfi)
         SHT_strs_len = STR_ShroudArrayStringOutSize(strs, nstrs);
     }
     if (strs != nullptr) {
-        CFI_index_t SHT_strs_extents[1];
-        SHT_strs_extents[0] = nstrs;
+        CFI_index_t SHT_strs_extents[] = {nstrs};
         int SH_ret = CFI_allocate(SHT_strs_cfi, SHT_lower_CFI, 
             SHT_strs_extents, SHT_strs_len);
         if (SH_ret == CFI_SUCCESS) {

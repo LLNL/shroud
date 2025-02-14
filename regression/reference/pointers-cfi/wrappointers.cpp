@@ -610,8 +610,7 @@ void POI_getPtrToFixedArray_CFI(CFI_cdesc_t *SHT_count_cfi)
         CFI_cdesc_t *SHC_count_cdesc = reinterpret_cast<CFI_cdesc_t *>
             (&SHC_count_fptr);
         void *SHC_count_cptr = const_cast<int *>(SHC_count_cxx);
-        CFI_index_t SHT_count_extents[1];
-        SHT_count_extents[0] = 10;
+        CFI_index_t SHT_count_extents[] = {10};
         int SHC_count_err = CFI_establish(SHC_count_cdesc,
             SHC_count_cptr, CFI_attribute_pointer, CFI_type_int, 0, 1,
             SHT_count_extents);
@@ -671,8 +670,7 @@ void POI_getPtrToDynamicArray_CFI(CFI_cdesc_t *SHT_count_cfi)
         CFI_cdesc_t *SHC_count_cdesc = reinterpret_cast<CFI_cdesc_t *>
             (&SHC_count_fptr);
         void *SHC_count_cptr = const_cast<int *>(SHC_count_cxx);
-        CFI_index_t SHT_count_extents[1];
-        SHT_count_extents[0] = ncount;
+        CFI_index_t SHT_count_extents[] = {ncount};
         int SHC_count_err = CFI_establish(SHC_count_cdesc,
             SHC_count_cptr, CFI_attribute_pointer, CFI_type_int, 0, 1,
             SHT_count_extents);
@@ -727,8 +725,7 @@ void POI_getPtrToFuncArray_CFI(CFI_cdesc_t *SHT_count_cfi)
         CFI_cdesc_t *SHC_count_cdesc = reinterpret_cast<CFI_cdesc_t *>
             (&SHC_count_fptr);
         void *SHC_count_cptr = const_cast<int *>(SHC_count_cxx);
-        CFI_index_t SHT_count_extents[1];
-        SHT_count_extents[0] = getLen();
+        CFI_index_t SHT_count_extents[] = {getLen()};
         int SHC_count_err = CFI_establish(SHC_count_cdesc,
             SHC_count_cptr, CFI_attribute_pointer, CFI_type_int, 0, 1,
             SHT_count_extents);
@@ -817,8 +814,7 @@ void POI_getPtrToFixedConstArray_CFI(CFI_cdesc_t *SHT_count_cfi)
         CFI_cdesc_t *SHC_count_cdesc = reinterpret_cast<CFI_cdesc_t *>
             (&SHC_count_fptr);
         void *SHC_count_cptr = const_cast<int *>(SHC_count_cxx);
-        CFI_index_t SHT_count_extents[1];
-        SHT_count_extents[0] = 10;
+        CFI_index_t SHT_count_extents[] = {10};
         int SHC_count_err = CFI_establish(SHC_count_cdesc,
             SHC_count_cptr, CFI_attribute_pointer, CFI_type_int, 0, 1,
             SHT_count_extents);
@@ -870,8 +866,7 @@ void POI_getPtrToDynamicConstArray_CFI(CFI_cdesc_t *SHT_count_cfi)
         CFI_cdesc_t *SHC_count_cdesc = reinterpret_cast<CFI_cdesc_t *>
             (&SHC_count_fptr);
         void *SHC_count_cptr = const_cast<int *>(SHC_count_cxx);
-        CFI_index_t SHT_count_extents[1];
-        SHT_count_extents[0] = ncount;
+        CFI_index_t SHT_count_extents[] = {ncount};
         int SHC_count_err = CFI_establish(SHC_count_cdesc,
             SHC_count_cptr, CFI_attribute_pointer, CFI_type_int, 0, 1,
             SHT_count_extents);
@@ -1049,8 +1044,7 @@ void POI_getAllocToFixedArray_CFI(CFI_cdesc_t *SHT_count_cfi)
     int *SHC_count_cxx;
     getAllocToFixedArray(&SHC_count_cxx);
     if (SHC_count_cxx != nullptr) {
-        CFI_index_t SHT_count_extents[1];
-        SHT_count_extents[0] = 10;
+        CFI_index_t SHT_count_extents[] = {10};
         int SH_ret = CFI_allocate(SHT_count_cfi, SHT_lower_CFI, 
             SHT_count_extents, 0);
         if (SH_ret == CFI_SUCCESS) {
@@ -1202,8 +1196,7 @@ void POI_returnIntPtrToFixedArray_CFI(CFI_cdesc_t *SHT_rv_cfi)
         CFI_cdesc_t *SHC_rv_cdesc = reinterpret_cast<CFI_cdesc_t *>
             (&SHC_rv_fptr);
         void *SHC_rv_cptr = const_cast<int *>(SHC_rv_cxx);
-        CFI_index_t SHT_rv_extents[1];
-        SHT_rv_extents[0] = 10;
+        CFI_index_t SHT_rv_extents[] = {10};
         int SHC_rv_err = CFI_establish(SHC_rv_cdesc, SHC_rv_cptr,
             CFI_attribute_pointer, CFI_type_int, 0, 1, SHT_rv_extents);
         if (SHC_rv_err == CFI_SUCCESS) {
@@ -1277,8 +1270,7 @@ void POI_returnIntPtrToFixedConstArray_CFI(CFI_cdesc_t *SHT_rv_cfi)
         CFI_cdesc_t *SHC_rv_cdesc = reinterpret_cast<CFI_cdesc_t *>
             (&SHC_rv_fptr);
         void *SHC_rv_cptr = const_cast<int *>(SHC_rv_cxx);
-        CFI_index_t SHT_rv_extents[1];
-        SHT_rv_extents[0] = 10;
+        CFI_index_t SHT_rv_extents[] = {10};
         int SHC_rv_err = CFI_establish(SHC_rv_cdesc, SHC_rv_cptr,
             CFI_attribute_pointer, CFI_type_int, 0, 1, SHT_rv_extents);
         if (SHC_rv_err == CFI_SUCCESS) {
@@ -1415,8 +1407,7 @@ void POI_returnIntAllocToFixedArray_CFI(CFI_cdesc_t *SHT_rv_cfi)
     // splicer begin function.returnIntAllocToFixedArray_CFI
     int *SHC_rv_cxx = returnIntAllocToFixedArray();
     if (SHC_rv_cxx != nullptr) {
-        CFI_index_t SHT_rv_extents[1];
-        SHT_rv_extents[0] = 10;
+        CFI_index_t SHT_rv_extents[] = {10};
         int SH_ret = CFI_allocate(SHT_rv_cfi, SHT_lower_CFI, 
             SHT_rv_extents, 0);
         if (SH_ret == CFI_SUCCESS) {
