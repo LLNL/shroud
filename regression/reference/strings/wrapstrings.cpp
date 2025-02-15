@@ -1021,7 +1021,7 @@ void STR_fetchArrayStringArg_bufferify(STR_SHROUD_array *SHT_strs_cdesc)
     std::string *strs;
     int nstrs;
     fetchArrayStringArg(&strs, &nstrs);
-    STR_ShroudCdescArrayStringOut(SHT_strs_cdesc, strs, nstrs);
+    STR_ShroudCdescArrayStringOut(SHT_strs_cdesc, strs, (nstrs));
     // splicer end function.fetchArrayStringArg_bufferify
 }
 

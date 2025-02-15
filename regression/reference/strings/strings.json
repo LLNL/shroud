@@ -5889,7 +5889,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "char **",
                                 "c_addr": "",
-                                "c_array_size2": "nstrs",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -6006,7 +6005,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "char **",
                                 "c_addr": "",
-                                "c_array_size2": "nstrs",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_helper_cdesc_array_string_out": "STR_ShroudCdescArrayStringOut",
@@ -6250,7 +6248,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "char **",
                                 "c_addr": "",
-                                "c_array_size2": "nstrs",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -6367,7 +6364,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "char **",
                                 "c_addr": "",
-                                "c_array_size2": "nstrs",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_helper_array_context": "STR_SHROUD_array",
@@ -6624,7 +6620,6 @@
                                 "attr_len": "20",
                                 "c_abstract_decl": "char **",
                                 "c_addr": "",
-                                "c_array_size2": "nstrs",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -6743,7 +6738,6 @@
                                 "attr_len": "20",
                                 "c_abstract_decl": "char **",
                                 "c_addr": "",
-                                "c_array_size2": "nstrs",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_helper_array_context": "STR_SHROUD_array",

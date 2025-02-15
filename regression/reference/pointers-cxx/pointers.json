@@ -1090,7 +1090,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "double *",
                                 "c_addr": "",
-                                "c_array_size2": "size(*in)",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -1241,7 +1240,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "double *",
                                 "c_addr": "",
-                                "c_array_size2": "size(*in)",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -1533,7 +1531,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "size(*in)",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -1684,7 +1681,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "size(*in)",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -1961,7 +1957,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "3",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -2068,7 +2063,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "3",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -2252,7 +2246,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "3",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -2294,7 +2287,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "3",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -2361,7 +2353,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "3",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -2415,7 +2406,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "3",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -2625,7 +2615,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "nvar",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -2734,7 +2723,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "nvar",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -3293,7 +3281,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "3",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -3360,7 +3347,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "3",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -4979,7 +4965,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int **",
                                 "c_addr": "",
-                                "c_array_size2": "10",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -5058,7 +5043,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int **",
                                 "c_addr": "",
-                                "c_array_size2": "10",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_helper_array_context": "POI_SHROUD_array",
@@ -5251,7 +5235,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int **",
                                 "c_addr": "",
-                                "c_array_size2": "ncount",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -5369,7 +5352,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int **",
                                 "c_addr": "",
-                                "c_array_size2": "ncount",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_helper_array_context": "POI_SHROUD_array",
@@ -5591,7 +5573,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int **",
                                 "c_addr": "",
-                                "c_array_size2": "getLen()",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -5671,7 +5652,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int **",
                                 "c_addr": "",
-                                "c_array_size2": "getLen()",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_helper_array_context": "POI_SHROUD_array",
@@ -6063,7 +6043,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "const int **",
                                 "c_addr": "",
-                                "c_array_size2": "10",
                                 "c_const": "const ",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -6142,7 +6121,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "const int **",
                                 "c_addr": "",
-                                "c_array_size2": "10",
                                 "c_const": "const ",
                                 "c_deref": "*",
                                 "c_helper_array_context": "POI_SHROUD_array",
@@ -6333,7 +6311,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "const int **",
                                 "c_addr": "",
-                                "c_array_size2": "ncount",
                                 "c_const": "const ",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -6451,7 +6428,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "const int **",
                                 "c_addr": "",
-                                "c_array_size2": "ncount",
                                 "c_const": "const ",
                                 "c_deref": "*",
                                 "c_helper_array_context": "POI_SHROUD_array",
@@ -7888,7 +7864,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "const int *",
                                 "c_addr": "",
-                                "c_array_size2": "10*\t20",
                                 "c_const": "const ",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -7959,7 +7934,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "const int *",
                                 "c_addr": "",
-                                "c_array_size2": "10*\t20",
                                 "c_const": "const ",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -8138,7 +8112,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int **",
                                 "c_addr": "",
-                                "c_array_size2": "10",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -8217,7 +8190,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int **",
                                 "c_addr": "",
-                                "c_array_size2": "10",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_helper_array_context": "POI_SHROUD_array",
@@ -9589,7 +9561,6 @@
                                 "C_name": "POI_returnIntPtrToFixedArray",
                                 "C_prototype": "void",
                                 "C_return_type": "int *",
-                                "c_array_size2": "10",
                                 "c_const": "",
                                 "c_get_value": "",
                                 "c_type": "int",
@@ -9648,7 +9619,6 @@
                                 "F_arg_c_call": "SHT_rv_cdesc",
                                 "F_arguments": "",
                                 "F_subprogram": "function",
-                                "c_array_size2": "10",
                                 "c_const": "",
                                 "c_helper_array_context": "POI_SHROUD_array",
                                 "c_type": "int",
@@ -9927,7 +9897,6 @@
                                 "C_name": "POI_returnIntPtrToFixedConstArray",
                                 "C_prototype": "void",
                                 "C_return_type": "const int *",
-                                "c_array_size2": "10",
                                 "c_const": "const ",
                                 "c_get_value": "",
                                 "c_type": "int",
@@ -9986,7 +9955,6 @@
                                 "F_arg_c_call": "SHT_rv_cdesc",
                                 "F_arguments": "",
                                 "F_subprogram": "function",
-                                "c_array_size2": "10",
                                 "c_const": "const ",
                                 "c_helper_array_context": "POI_SHROUD_array",
                                 "c_type": "int",
@@ -10781,7 +10749,6 @@
                                 "C_name": "POI_returnIntAllocToFixedArray",
                                 "C_prototype": "void",
                                 "C_return_type": "int *",
-                                "c_array_size2": "10",
                                 "c_const": "",
                                 "c_get_value": "",
                                 "c_type": "int",
@@ -10840,7 +10807,6 @@
                                 "F_arg_c_call": "SHT_rv_cdesc,\t SHT_rv_capsule",
                                 "F_arguments": "",
                                 "F_subprogram": "function",
-                                "c_array_size2": "10",
                                 "c_const": "",
                                 "c_helper_array_context": "POI_SHROUD_array",
                                 "c_helper_capsule_dtor": "POI_SHROUD_memory_destructor",

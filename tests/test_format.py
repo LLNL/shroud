@@ -226,6 +226,8 @@ class WFormat(unittest.TestCase):
 
         # Scalar
         fmtarg = fcfmt.FormatGen(func, arg, bind, "c")
+        self.assertEqual("1",
+                         fmtarg.c_dimension_size)
         self.assertEqual("",
                          fmtarg.c_array_shape)
         self.assertEqual("1",
@@ -240,6 +242,8 @@ class WFormat(unittest.TestCase):
         # No c_var_cdesc
         meta["dim_shape"] = ["10"]
         fmtarg = fcfmt.FormatGen(func, arg, bind, "c")
+        self.assertEqual("(10)",
+                         fmtarg.c_dimension_size)
         self.assertEqual("\n===>c_var_cdesc<===->shape[0] = 10;",
                          fmtarg.c_array_shape)
         self.assertEqual("===>c_var_cdesc<===->shape[0]",
@@ -257,6 +261,8 @@ class WFormat(unittest.TestCase):
         fmt_var.c_helper_lower_bounds_CFI = "SHT_lower"
         meta["dim_shape"] = ["10", "20"]
         fmtarg = fcfmt.FormatGen(func, arg, bind, "c")
+        self.assertEqual("(10)*(20)",
+                         fmtarg.c_dimension_size)
         self.assertEqual("\nSHT->shape[0] = 10;\nSHT->shape[1] = 20;",
                          fmtarg.c_array_shape)
         self.assertEqual("SHT->shape[0]*\tSHT->shape[1]",

@@ -531,12 +531,6 @@ class FillFormat(object):
             fmt.rank = str(visitor.rank)
             if fmt.rank != "assumed":
                 meta["dim_shape"] = visitor.shape
-                fmtdim = []
-                for dim in visitor.shape:
-                    fmtdim.append(dim)
-                if fmtdim:
-                    # Multiply dimensions together to get size.
-                    fmt.c_array_size2 = "*\t".join(fmtdim)
 
         if meta["len"]:
             fmt.attr_len = meta["len"]
@@ -1220,6 +1214,18 @@ class FormatGen(object):
 
     ##########
     @property
+    def c_dimension_size(self):
+        """Compute size of array from dimensions.
+        "1" if scalar.
+        """
+        shape = self.bind.meta.get("dim_shape")
+        if shape is None:
+            return "1"
+        fmtdim = ["({})".format(dim) for dim in shape]
+        value = "*".join(fmtdim)
+        return value
+
+    @property
     def c_array_shape(self):
         """Assign array shape to a cdesc variable in C.
         Blank if scalar.
@@ -1240,7 +1246,7 @@ class FormatGen(object):
     def c_array_size(self):
         """Return expression to compute the size of an array.
         c_array_shape must be used first to define c_var_cdesc->shape.
-        Blank if scalar.
+        "1" if scalar.
         """
         shape = self.bind.meta.get("dim_shape")
         if shape is None:

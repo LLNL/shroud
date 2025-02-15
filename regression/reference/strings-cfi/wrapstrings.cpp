@@ -1047,7 +1047,7 @@ void STR_fetchArrayStringArg_CFI(CFI_cdesc_t *SHT_strs_cfi)
     std::string *strs;
     int nstrs;
     fetchArrayStringArg(&strs, &nstrs);
-    STR_ShroudCFIArrayStringOut(SHT_strs_cfi, strs, nstrs);
+    STR_ShroudCFIArrayStringOut(SHT_strs_cfi, strs, (nstrs));
     // splicer end function.fetchArrayStringArg_CFI
 }
 
@@ -1103,14 +1103,14 @@ void STR_fetchArrayStringAlloc_CFI(CFI_cdesc_t *SHT_strs_cfi)
     fetchArrayStringAlloc(&strs, &nstrs);
     size_t SHT_strs_len = 0;
     if (SHT_strs_len <= 0) {
-        SHT_strs_len = STR_ShroudArrayStringOutSize(strs, nstrs);
+        SHT_strs_len = STR_ShroudArrayStringOutSize(strs, (nstrs));
     }
     if (strs != nullptr) {
         CFI_index_t SHC_strs_extents[] = {nstrs};
         int SH_ret = CFI_allocate(SHT_strs_cfi, SHT_lower_CFI, 
             SHC_strs_extents, SHT_strs_len);
         if (SH_ret == CFI_SUCCESS) {
-            STR_ShroudCFIArrayStringOut(SHT_strs_cfi, strs, nstrs);
+            STR_ShroudCFIArrayStringOut(SHT_strs_cfi, strs, (nstrs));
         }
     }
     // splicer end function.fetchArrayStringAlloc_CFI
@@ -1168,14 +1168,14 @@ void STR_fetchArrayStringAllocLen_CFI(CFI_cdesc_t *SHT_strs_cfi)
     fetchArrayStringAllocLen(&strs, &nstrs);
     size_t SHT_strs_len = 20;
     if (SHT_strs_len <= 0) {
-        SHT_strs_len = STR_ShroudArrayStringOutSize(strs, nstrs);
+        SHT_strs_len = STR_ShroudArrayStringOutSize(strs, (nstrs));
     }
     if (strs != nullptr) {
         CFI_index_t SHC_strs_extents[] = {nstrs};
         int SH_ret = CFI_allocate(SHT_strs_cfi, SHT_lower_CFI, 
             SHC_strs_extents, SHT_strs_len);
         if (SH_ret == CFI_SUCCESS) {
-            STR_ShroudCFIArrayStringOut(SHT_strs_cfi, strs, nstrs);
+            STR_ShroudCFIArrayStringOut(SHT_strs_cfi, strs, (nstrs));
         }
     }
     // splicer end function.fetchArrayStringAllocLen_CFI

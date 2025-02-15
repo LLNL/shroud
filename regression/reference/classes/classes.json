@@ -5987,7 +5987,6 @@
                                         "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
                                         "F_arguments": "obj",
                                         "F_subprogram": "function",
-                                        "c_array_size2": "SH_this->nitems",
                                         "c_const": "",
                                         "c_helper_array_context": "CLA_SHROUD_array",
                                         "c_type": "int",

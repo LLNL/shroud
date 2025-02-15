@@ -4148,7 +4148,7 @@ c_mixin_cfi_string**_allocatable:
   - "{gen.c_extents_decl}int SH_ret = CFI_allocate({c_var_cfi}, \t{gen.c_lower_use},\
     \ \t{gen.c_extents_use}, \t{c_var_len});"
   - if (SH_ret == CFI_SUCCESS) {{+
-  - '{c_helper_cfi_array_string_out}({c_var_cfi}, {cxx_var}, {c_array_size2});'
+  - '{c_helper_cfi_array_string_out}({c_var_cfi}, {cxx_var}, {gen.c_dimension_size});'
   - -}}
   - -}}
   c_local:
@@ -4709,7 +4709,7 @@ c_mixin_string_max_len:
   c_post_call:
   - size_t {c_var_len} = {attr_len};
   - if ({c_var_len} <= 0) {{+
-  - '{c_var_len} = {c_helper_array_string_out_len}({cxx_var}, {c_array_size2});'
+  - '{c_var_len} = {c_helper_array_string_out_len}({cxx_var}, {gen.c_dimension_size});'
   - -}}
   c_temps:
   - len
@@ -5254,7 +5254,7 @@ c_out_string**_cdesc_copy:
   c_arg_call:
   - '&{cxx_var}'
   c_post_call:
-  - "{c_helper_cdesc_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});"
+  - "{c_helper_cdesc_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {gen.c_dimension_size});"
   c_temps:
   - cdesc
   fmtdict:
@@ -17842,7 +17842,7 @@ f_out_string**_cdesc_copy:
   c_arg_call:
   - '&{cxx_var}'
   c_post_call:
-  - "{c_helper_cdesc_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});"
+  - "{c_helper_cdesc_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {gen.c_dimension_size});"
   c_temps:
   - cdesc
   fmtdict:
@@ -17892,13 +17892,13 @@ f_out_string**_cfi_allocatable:
   c_post_call:
   - size_t {c_var_len} = {attr_len};
   - if ({c_var_len} <= 0) {{+
-  - '{c_var_len} = {c_helper_array_string_out_len}({cxx_var}, {c_array_size2});'
+  - '{c_var_len} = {c_helper_array_string_out_len}({cxx_var}, {gen.c_dimension_size});'
   - -}}
   - if ({cxx_var} != {nullptr}) {{+
   - "{gen.c_extents_decl}int SH_ret = CFI_allocate({c_var_cfi}, \t{gen.c_lower_use},\
     \ \t{gen.c_extents_use}, \t{c_var_len});"
   - if (SH_ret == CFI_SUCCESS) {{+
-  - '{c_helper_cfi_array_string_out}({c_var_cfi}, {cxx_var}, {c_array_size2});'
+  - '{c_helper_cfi_array_string_out}({c_var_cfi}, {cxx_var}, {gen.c_dimension_size});'
   - -}}
   - -}}
   c_temps:
@@ -17945,7 +17945,7 @@ f_out_string**_cfi_copy:
   c_arg_call:
   - '&{cxx_var}'
   c_post_call:
-  - '{c_helper_cfi_array_string_out}({c_var_cfi}, {cxx_var}, {c_array_size2});'
+  - '{c_helper_cfi_array_string_out}({c_var_cfi}, {cxx_var}, {gen.c_dimension_size});'
   c_temps:
   - cfi
   helper:

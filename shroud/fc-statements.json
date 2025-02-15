@@ -2765,7 +2765,7 @@
         "c_post_call": [
             "size_t {c_var_len} = {attr_len};",
             "if ({c_var_len} <= 0) {{+",
-            "{c_var_len} = {c_helper_array_string_out_len}({cxx_var}, {c_array_size2});",
+            "{c_var_len} = {c_helper_array_string_out_len}({cxx_var}, {gen.c_dimension_size});",
             "-}}"
         ],
         "c_temps": [
@@ -3164,7 +3164,7 @@
             "c_mixin_arg-call-cvar-address"
         ],
         "c_post_call": [
-            "{c_helper_cdesc_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});"
+            "{c_helper_cdesc_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {gen.c_dimension_size});"
         ],
         "helper": [
             "cdesc_array_string_out"
@@ -4568,7 +4568,7 @@
             "if ({cxx_var} != {nullptr}) {{+",
             "{gen.c_extents_decl}int SH_ret = CFI_allocate({c_var_cfi}, \t{gen.c_lower_use}, \t{gen.c_extents_use}, \t{c_var_len});",
             "if (SH_ret == CFI_SUCCESS) {{+",
-            "{c_helper_cfi_array_string_out}({c_var_cfi}, {cxx_var}, {c_array_size2});",
+            "{c_helper_cfi_array_string_out}({c_var_cfi}, {cxx_var}, {gen.c_dimension_size});",
             "-}}",
             "-}}"
         ],
@@ -5079,7 +5079,7 @@
             "character(*){i_intent_attr} :: {i_var}{f_assumed_shape}"
         ],
         "c_post_call": [
-            "{c_helper_cfi_array_string_out}({c_var_cfi}, {cxx_var}, {c_array_size2});"
+            "{c_helper_cfi_array_string_out}({c_var_cfi}, {cxx_var}, {gen.c_dimension_size});"
         ],
         "helper": [
             "cfi_array_string_out"

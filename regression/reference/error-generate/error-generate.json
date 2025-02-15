@@ -3199,7 +3199,6 @@
                                 "F_arg_c_call": "SH_this,\t ===>SHT_rv f_arg_call<===",
                                 "F_arguments": "SH_this,\t ===>SHT_rv f_dummy_arg<===",
                                 "F_subprogram": "function",
-                                "c_array_size2": "SH_this->narg2",
                                 "c_const": "",
                                 "c_get_value": "",
                                 "c_type": "int",
