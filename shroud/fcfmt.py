@@ -1267,7 +1267,7 @@ class FormatGen(object):
         """
         shape = self.bind.meta.get("dim_shape")
         if shape is None:
-            return ""
+            return "1"
         c_var_cdesc = self.fmtdict.get("c_var_cdesc",
                                        "===>c_var_cdesc<===")
         fmtsize = []

@@ -3933,8 +3933,8 @@ c_mixin_cdesc_native_fill:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
   owner: library
 c_mixin_cdesc_unpack-base-addr:
   name: c_mixin_cdesc_unpack-base-addr
@@ -7360,8 +7360,8 @@ f_function_native*_cdesc_allocatable:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
   c_temps:
@@ -7423,8 +7423,8 @@ f_function_native*_cdesc_pointer:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
   c_temps:
   - cdesc
   fmtdict:
@@ -7497,8 +7497,8 @@ f_function_native*_cdesc_pointer_caller:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
   c_temps:
@@ -11682,8 +11682,8 @@ f_function_struct*_cdesc_pointer:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
   c_temps:
   - cdesc
   fmtdict:
@@ -11921,8 +11921,8 @@ f_getter_native*_cdesc_pointer:
   - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
   c_temps:
   - cdesc
   fmtdict:
@@ -12053,8 +12053,8 @@ f_getter_struct**_cdesc_raw:
   - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
   c_temps:
   - cdesc
   fmtdict:
@@ -12112,8 +12112,8 @@ f_getter_struct*_cdesc_pointer:
   - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
   c_temps:
   - cdesc
   fmtdict:
@@ -15617,8 +15617,8 @@ f_mixin_cdesc_getter:
   - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
   helper:
   - type_defines
   owner: library
@@ -16012,8 +16012,8 @@ f_mixin_helper_array_string_allocatable:
   c_pre_call:
   - std::string *{cxx_var};
   c_post_call:
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size     = {c_array_size};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size     = {gen.c_array_size};'
   - if ({attr_len} > 0) {{+
   - '{c_var_cdesc}->elem_len = {attr_len};'
   - -}} else {{+
@@ -17082,8 +17082,8 @@ f_out_native*&_cdesc:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
   c_temps:
   - cdesc
   helper:
@@ -17138,8 +17138,8 @@ f_out_native*&_cdesc_pointer:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
   c_temps:
   - cdesc
   helper:
@@ -17251,8 +17251,8 @@ f_out_native**_cdesc_allocatable:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
   c_temps:
@@ -17320,8 +17320,8 @@ f_out_native**_cdesc_pointer:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
   c_temps:
   - cdesc
   helper:
@@ -17768,8 +17768,8 @@ f_out_string**_cdesc_allocatable:
   c_arg_call:
   - '&{cxx_var}'
   c_post_call:
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size     = {c_array_size};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size     = {gen.c_array_size};'
   - if ({attr_len} > 0) {{+
   - '{c_var_cdesc}->elem_len = {attr_len};'
   - -}} else {{+

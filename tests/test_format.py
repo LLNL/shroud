@@ -228,7 +228,7 @@ class WFormat(unittest.TestCase):
         fmtarg = fcfmt.FormatGen(func, arg, bind, "c")
         self.assertEqual("",
                          fmtarg.c_array_shape)
-        self.assertEqual("",
+        self.assertEqual("1",
                          fmtarg.c_array_size)
         self.assertEqual("",
                          fmtarg.c_extents_decl)

@@ -934,8 +934,8 @@
             "{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};",
             "{c_var_cdesc}->type = {sh_type};",
             "{c_var_cdesc}->elem_len = sizeof({cxx_type});",
-            "{c_var_cdesc}->rank = {rank};{c_array_shape}",
-            "{c_var_cdesc}->size = {c_array_size};"
+            "{c_var_cdesc}->rank = {rank};{gen.c_array_shape}",
+            "{c_var_cdesc}->size = {gen.c_array_size};"
         ]
     },
     {
@@ -1108,8 +1108,8 @@
             "{c_var_cdesc}->base_addr = {CXX_this}->{field_name};",
             "{c_var_cdesc}->type = {sh_type};",
             "{c_var_cdesc}->elem_len = sizeof({cxx_type});",
-            "{c_var_cdesc}->rank = {rank};{c_array_shape}",
-            "{c_var_cdesc}->size = {c_array_size};"
+            "{c_var_cdesc}->rank = {rank};{gen.c_array_shape}",
+            "{c_var_cdesc}->size = {gen.c_array_size};"
         ],
         "helper": [
             "type_defines"
@@ -2741,8 +2741,8 @@
             "call {f_helper_array_string_allocatable}({f_var_cdesc}, {f_var_capsule})"
         ],
         "c_post_call": [
-            "{c_var_cdesc}->rank = {rank};{c_array_shape}",
-            "{c_var_cdesc}->size     = {c_array_size};",
+            "{c_var_cdesc}->rank = {rank};{gen.c_array_shape}",
+            "{c_var_cdesc}->size     = {gen.c_array_size};",
             "if ({attr_len} > 0) {{+",
             "{c_var_cdesc}->elem_len = {attr_len};",
             "-}} else {{+",
