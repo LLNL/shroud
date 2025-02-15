@@ -1278,6 +1278,49 @@ class FormatGen(object):
         value = "*\t".join(fmtsize)
         return value
 
+    @property
+    def c_extents_decl(self):
+        """Define the shape in local variable extents.
+        Blank if scalar.
+        """
+        state = self.state
+        bind = statements.get_arg_bind(state.node, state.ast, state.wlang)
+        shape = bind.meta.get("dim_shape")
+        if shape is None:
+            return ""
+        c_local_extents = self.state.fmtdict.get("c_local_extents", "===>c_local_extents<===")
+        value = "CFI_index_t {0}[] = {{{1}}};\n".format(
+            c_local_extents, ",\t ".join(shape))
+        return value
+
+    @property
+    def c_extents_use(self):
+        """Return variabale name of extents of CFI array.
+        NULL if scalar.
+        """
+        state = self.state
+        bind = statements.get_arg_bind(state.node, state.ast, state.wlang)
+        shape = bind.meta.get("dim_shape")
+        if shape is None:
+            return "NULL"
+        c_local_extents = self.state.fmtdict.get("c_local_extents", "===>c_local_extents<===")
+        return c_local_extents
+
+    @property
+    def c_lower_use(self):
+        """Return variable name of lower bounds of CFI array
+        from helper lower_bounds_CFI.
+        NULL if scalar.
+        """
+        state = self.state
+        bind = statements.get_arg_bind(state.node, state.ast, state.wlang)
+        shape = bind.meta.get("dim_shape")
+        if shape is None:
+            return "NULL"
+        helper = self.state.fmtdict.get("c_helper_lower_bounds_CFI",
+                                        "===>c_helper_lower_bounds_CFI<===")
+        return helper
+
     ##########
     def __str__(self):
         """  "{gen}" returns the name"""

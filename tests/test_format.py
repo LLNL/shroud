@@ -232,29 +232,49 @@ class WFormat(unittest.TestCase):
                          fmtarg.c_array_shape)
         self.assertEqual("",
                          fmtarg.c_array_size)
+        self.assertEqual("",
+                         fmtarg.c_extents_decl)
+        self.assertEqual("NULL",
+                         fmtarg.c_extents_use)
+        self.assertEqual("NULL",
+                         fmtarg.c_lower_use)
         
         # No c_var_cdesc
         fmt_var = util.Scope(
             None,
         )
-        meta["dim_shape"] = [10]
+        meta["dim_shape"] = ["10"]
         fmtarg = fcfmt.FormatGen(func, arg, fmt_var, "c")
         self.assertEqual("\n===>c_var_cdesc<===->shape[0] = 10;",
                          fmtarg.c_array_shape)
         self.assertEqual("===>c_var_cdesc<===->shape[0]",
                          fmtarg.c_array_size)
+        self.assertEqual("CFI_index_t ===>c_local_extents<===[] = {10};\n",
+                         fmtarg.c_extents_decl)
+        self.assertEqual("===>c_local_extents<===",
+                         fmtarg.c_extents_use)
+        self.assertEqual("===>c_helper_lower_bounds_CFI<===",
+                         fmtarg.c_lower_use)
 
         # 2-d array
         fmt_var = util.Scope(
             None,
             c_var_cdesc="SHT",
+            c_local_extents="SHT_extents",
+            c_helper_lower_bounds_CFI="SHT_lower",
         )
-        meta["dim_shape"] = [10,20]
+        meta["dim_shape"] = ["10", "20"]
         fmtarg = fcfmt.FormatGen(func, arg, fmt_var, "c")
         self.assertEqual("\nSHT->shape[0] = 10;\nSHT->shape[1] = 20;",
                          fmtarg.c_array_shape)
         self.assertEqual("SHT->shape[0]*\tSHT->shape[1]",
                          fmtarg.c_array_size)
+        self.assertEqual("CFI_index_t SHT_extents[] = {10,\t 20};\n",
+                         fmtarg.c_extents_decl)
+        self.assertEqual("SHT_extents",
+                         fmtarg.c_extents_use)
+        self.assertEqual("SHT_lower",
+                         fmtarg.c_lower_use)
 
 if __name__ == "__main__":
     unittest.main()
