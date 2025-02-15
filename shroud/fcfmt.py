@@ -538,29 +538,6 @@ class FillFormat(object):
                     # Multiply dimensions together to get size.
                     fmt.c_array_size2 = "*\t".join(fmtdim)
 
-                if hasattr(fmt, "c_var_cdesc"):
-                    # array_type is assumed to be c_var_cdesc.
-                    # Assign each rank of dimension.
-                    fmtshape = []
-                    fmtsize = []
-                    for i, dim in enumerate(visitor.shape):
-                        fmtshape.append("{}->shape[{}] = {};".format(
-                            fmt.c_var_cdesc, i, dim))
-                        fmtsize.append("{}->shape[{}]".format(
-                            fmt.c_var_cdesc, i, dim))
-                    fmt.c_array_shape = "\n" + "\n".join(fmtshape)
-                    if fmtsize:
-                        # Multiply extents together to get size.
-                        fmt.c_array_size = "*\t".join(fmtsize)
-                if hasattr(fmt, "c_var_extents"):
-                    # Used with CFI_establish
-                    fmt.c_temp_extents_decl = (
-                        "CFI_index_t {0}[] = {{{1}}};\n".
-                        format(fmt.c_var_extents,
-                               ",\t ".join(visitor.shape)))
-                    fmt.c_temp_extents_use = fmt.c_var_extents
-                    fmt.c_temp_lower_use = "SHT_lower_CFI" # From h_helper_lower_bounds_CFI
-
         if meta["len"]:
             fmt.attr_len = meta["len"]
 

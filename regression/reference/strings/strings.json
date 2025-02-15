@@ -6006,8 +6006,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "char **",
                                 "c_addr": "",
-                                "c_array_shape": "\nSHT_strs_cdesc->shape[0] = nstrs;",
-                                "c_array_size": "SHT_strs_cdesc->shape[0]",
                                 "c_array_size2": "nstrs",
                                 "c_const": "",
                                 "c_deref": "*",
@@ -6369,8 +6367,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "char **",
                                 "c_addr": "",
-                                "c_array_shape": "\nSHT_strs_cdesc->shape[0] = nstrs;",
-                                "c_array_size": "SHT_strs_cdesc->shape[0]",
                                 "c_array_size2": "nstrs",
                                 "c_const": "",
                                 "c_deref": "*",
@@ -6747,8 +6743,6 @@
                                 "attr_len": "20",
                                 "c_abstract_decl": "char **",
                                 "c_addr": "",
-                                "c_array_shape": "\nSHT_strs_cdesc->shape[0] = nstrs;",
-                                "c_array_size": "SHT_strs_cdesc->shape[0]",
                                 "c_array_size2": "nstrs",
                                 "c_const": "",
                                 "c_deref": "*",

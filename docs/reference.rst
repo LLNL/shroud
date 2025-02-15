@@ -1424,13 +1424,6 @@ c_abstract_decl
 
 .. used with cxx_to_c static_cast
 
-c_array_shape
-
-c_array_size
-
-c_array_size2
-  The *dimension* attributes multiplied together.
-
 c_blanknull
    Used as argument to ``ShroudStrAlloc`` to determine if a
    blank string, trimmed length is 0, should be a NULL pointer
@@ -1475,15 +1468,6 @@ c_var
     Function argument generated from the *len_trim* annotation.
     Used with char/string arguments.
     Set from option **C_var_trim_template**.
-
-c_var_cdesc
-    Name of variable of type ....
-
-c_var_cdesc2
-    
-c_var_extents
-
-c_var_lower
 
 ci_type
     The C type of the argument for the Fortran interface.

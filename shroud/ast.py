@@ -739,13 +739,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_capsule_delete_function="SHROUD_capsule_delete",
 
             c_blanknull="0",     # Argument to helper ShroudStrAlloc.
-            c_array_shape="",
-            c_array_size="1",
-            # Assume scalar in CFI_establish
-            c_temp_extents_decl="",
-            c_temp_extents_use="NULL",
-            # Assume scalar in CFI_setpointer
-            c_temp_lower_use="NULL",   # Assume scalar in CFI_setpointer.
 
             f_abstract_interface="",
             f_assumed_shape="",  # scalar
