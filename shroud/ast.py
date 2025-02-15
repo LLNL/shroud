@@ -739,21 +739,9 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_capsule_delete_function="SHROUD_capsule_delete",
 
             c_blanknull="0",     # Argument to helper ShroudStrAlloc.
-            c_array_shape="",
-            c_array_size="1",
-            # Assume scalar in CFI_establish
-            c_temp_extents_decl="",
-            c_temp_extents_use="NULL",
-            # Assume scalar in CFI_setpointer
-            c_temp_lower_decl="",    # Assume scalar.
-            c_temp_lower_use="NULL",   # Assume scalar in CFI_setpointer.
 
             f_abstract_interface="",
-            f_array_allocate="",
-            f_array_shape="",
             f_assumed_shape="",  # scalar
-            f_declare_shape_prefix="SHAPE_",
-            f_declare_shape_array="",
             f_deref_attr="",
             f_get_shape_array="",
             f_dimension="",
@@ -832,7 +820,6 @@ class LibraryNode(AstNode, NamespaceMixin):
 #                cxx_T="short",   # Needs to be a actual type to find helper.
                 f_abstract_interface="XXXf_abstract_interface=",
                 f_capsule_data_type="XXXf_capsule_data_type",
-                f_cdesc_shape="XXXf_cdesc_shape",
                 f_intent="XXXf_intent",
                 f_type="XXXf_type",
                 f_var="XXXf_var",

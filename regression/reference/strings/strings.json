@@ -5889,7 +5889,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "char **",
                                 "c_addr": "",
-                                "c_array_size2": "nstrs",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -5902,7 +5901,6 @@
                                 "cxx_nonconst_ptr": "strs",
                                 "cxx_type": "std::string",
                                 "cxx_var": "strs",
-                                "f_array_allocate": "(nstrs)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(nstrs)",
                                 "f_intent": "OUT",
@@ -5928,6 +5926,9 @@
                                     {
                                         "name": "nstrs"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "nstrs"
                                 ],
                                 "dimension": "nstrs",
                                 "intent": "out"
@@ -6004,9 +6005,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "char **",
                                 "c_addr": "",
-                                "c_array_shape": "\nSHT_strs_cdesc->shape[0] = nstrs;",
-                                "c_array_size": "SHT_strs_cdesc->shape[0]",
-                                "c_array_size2": "nstrs",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_helper_cdesc_array_string_out": "STR_ShroudCdescArrayStringOut",
@@ -6021,10 +6019,7 @@
                                 "cxx_nonconst_ptr": "strs",
                                 "cxx_type": "std::string",
                                 "cxx_var": "strs",
-                                "f_array_allocate": "(SHT_strs_cdesc%shape(1))",
-                                "f_array_shape": ",\t SHT_strs_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
-                                "f_cdesc_shape": "\nSHT_strs_cdesc%shape(1:1) = shape(strs)",
                                 "f_dimension": "(nstrs)",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
@@ -6055,6 +6050,9 @@
                                     {
                                         "name": "nstrs"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "nstrs"
                                 ],
                                 "dimension": "nstrs",
                                 "intent": "out"
@@ -6250,7 +6248,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "char **",
                                 "c_addr": "",
-                                "c_array_size2": "nstrs",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -6263,7 +6260,6 @@
                                 "cxx_nonconst_ptr": "strs",
                                 "cxx_type": "std::string",
                                 "cxx_var": "strs",
-                                "f_array_allocate": "(nstrs)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(nstrs)",
                                 "f_intent": "OUT",
@@ -6289,6 +6285,9 @@
                                     {
                                         "name": "nstrs"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "nstrs"
                                 ],
                                 "dimension": "nstrs",
                                 "intent": "out"
@@ -6365,9 +6364,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "char **",
                                 "c_addr": "",
-                                "c_array_shape": "\nSHT_strs_cdesc->shape[0] = nstrs;",
-                                "c_array_size": "SHT_strs_cdesc->shape[0]",
-                                "c_array_size2": "nstrs",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_helper_array_context": "STR_SHROUD_array",
@@ -6386,10 +6382,7 @@
                                 "cxx_nonconst_ptr": "strs",
                                 "cxx_type": "std::string",
                                 "cxx_var": "strs",
-                                "f_array_allocate": "(SHT_strs_cdesc%shape(1))",
-                                "f_array_shape": ",\t SHT_strs_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
-                                "f_cdesc_shape": "\nSHT_strs_cdesc%shape(1:1) = shape(strs)",
                                 "f_deref_attr": ", allocatable",
                                 "f_dimension": "(:)",
                                 "f_helper_array_context": "STR_SHROUD_array",
@@ -6427,6 +6420,9 @@
                                     {
                                         "name": "nstrs"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "nstrs"
                                 ],
                                 "dimension": "nstrs",
                                 "intent": "out"
@@ -6624,7 +6620,6 @@
                                 "attr_len": "20",
                                 "c_abstract_decl": "char **",
                                 "c_addr": "",
-                                "c_array_size2": "nstrs",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -6637,7 +6632,6 @@
                                 "cxx_nonconst_ptr": "strs",
                                 "cxx_type": "std::string",
                                 "cxx_var": "strs",
-                                "f_array_allocate": "(nstrs)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(nstrs)",
                                 "f_intent": "OUT",
@@ -6663,6 +6657,9 @@
                                     {
                                         "name": "nstrs"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "nstrs"
                                 ],
                                 "dimension": "nstrs",
                                 "intent": "out",
@@ -6741,9 +6738,6 @@
                                 "attr_len": "20",
                                 "c_abstract_decl": "char **",
                                 "c_addr": "",
-                                "c_array_shape": "\nSHT_strs_cdesc->shape[0] = nstrs;",
-                                "c_array_size": "SHT_strs_cdesc->shape[0]",
-                                "c_array_size2": "nstrs",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_helper_array_context": "STR_SHROUD_array",
@@ -6762,10 +6756,7 @@
                                 "cxx_nonconst_ptr": "strs",
                                 "cxx_type": "std::string",
                                 "cxx_var": "strs",
-                                "f_array_allocate": "(SHT_strs_cdesc%shape(1))",
-                                "f_array_shape": ",\t SHT_strs_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
-                                "f_cdesc_shape": "\nSHT_strs_cdesc%shape(1:1) = shape(strs)",
                                 "f_deref_attr": ", allocatable",
                                 "f_dimension": "(:)",
                                 "f_helper_array_context": "STR_SHROUD_array",
@@ -6803,6 +6794,9 @@
                                     {
                                         "name": "nstrs"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "nstrs"
                                 ],
                                 "dimension": "nstrs",
                                 "intent": "out",

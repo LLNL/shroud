@@ -1026,7 +1026,6 @@
                                         "C_name": "ARR_ArrayWrapper_getArray",
                                         "C_prototype": "ARR_ArrayWrapper * self",
                                         "C_return_type": "double *",
-                                        "c_array_size2": "SH_this->getSize()",
                                         "c_const": "",
                                         "c_get_value": "",
                                         "c_type": "double",
@@ -1038,7 +1037,6 @@
                                         "cxx_rv_decl": "double *SHC_rv",
                                         "cxx_type": "double",
                                         "cxx_var": "SHC_rv",
-                                        "f_array_allocate": "(obj->getSize())",
                                         "f_assumed_shape": "(:)",
                                         "f_dimension": "(:)",
                                         "f_kind": "C_DOUBLE",
@@ -1068,6 +1066,9 @@
                                                 "name": "getSize"
                                             }
                                         ],
+                                        "dim_shape": [
+                                            "SH_this->getSize()"
+                                        ],
                                         "dimension": "getSize()",
                                         "intent": "function"
                                     },
@@ -1084,9 +1085,6 @@
                                         "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
                                         "F_arguments": "obj",
                                         "F_subprogram": "function",
-                                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->getSize();",
-                                        "c_array_size": "SHT_rv_cdesc->shape[0]",
-                                        "c_array_size2": "SH_this->getSize()",
                                         "c_const": "",
                                         "c_helper_array_context": "ARR_SHROUD_array",
                                         "c_type": "double",
@@ -1099,11 +1097,8 @@
                                         "cxx_rv_decl": "double *SHC_rv",
                                         "cxx_type": "double",
                                         "cxx_var": "SHC_rv",
-                                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                        "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                         "f_assumed_shape": "(:)",
                                         "f_call_function": "c_ArrayWrapper_getArray_bufferify",
-                                        "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                         "f_deref_attr": ", pointer",
                                         "f_dimension": "(:)",
                                         "f_helper_array_context": "ARR_SHROUD_array",
@@ -1141,6 +1136,9 @@
                                                 "args": [],
                                                 "name": "getSize"
                                             }
+                                        ],
+                                        "dim_shape": [
+                                            "SH_this->getSize()"
                                         ],
                                         "dimension": "getSize()",
                                         "intent": "function"
@@ -1278,7 +1276,6 @@
                                         "C_name": "ARR_ArrayWrapper_getArrayConst",
                                         "C_prototype": "const ARR_ArrayWrapper * self",
                                         "C_return_type": "double *",
-                                        "c_array_size2": "SH_this->getSize()",
                                         "c_const": "",
                                         "c_get_value": "",
                                         "c_type": "double",
@@ -1290,7 +1287,6 @@
                                         "cxx_rv_decl": "double *SHC_rv",
                                         "cxx_type": "double",
                                         "cxx_var": "SHC_rv",
-                                        "f_array_allocate": "(obj->getSize())",
                                         "f_assumed_shape": "(:)",
                                         "f_dimension": "(:)",
                                         "f_kind": "C_DOUBLE",
@@ -1321,6 +1317,9 @@
                                                 "name": "getSize"
                                             }
                                         ],
+                                        "dim_shape": [
+                                            "SH_this->getSize()"
+                                        ],
                                         "dimension": "getSize()",
                                         "intent": "function"
                                     },
@@ -1337,9 +1336,6 @@
                                         "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
                                         "F_arguments": "obj",
                                         "F_subprogram": "function",
-                                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->getSize();",
-                                        "c_array_size": "SHT_rv_cdesc->shape[0]",
-                                        "c_array_size2": "SH_this->getSize()",
                                         "c_const": "",
                                         "c_helper_array_context": "ARR_SHROUD_array",
                                         "c_type": "double",
@@ -1352,11 +1348,8 @@
                                         "cxx_rv_decl": "double *SHC_rv",
                                         "cxx_type": "double",
                                         "cxx_var": "SHC_rv",
-                                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                        "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                         "f_assumed_shape": "(:)",
                                         "f_call_function": "c_ArrayWrapper_getArrayConst_bufferify",
-                                        "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                         "f_deref_attr": ", pointer",
                                         "f_dimension": "(:)",
                                         "f_helper_array_context": "ARR_SHROUD_array",
@@ -1394,6 +1387,9 @@
                                                 "args": [],
                                                 "name": "getSize"
                                             }
+                                        ],
+                                        "dim_shape": [
+                                            "SH_this->getSize()"
                                         ],
                                         "dimension": "getSize()",
                                         "intent": "function"
@@ -1531,7 +1527,6 @@
                                         "C_name": "ARR_ArrayWrapper_getArrayC",
                                         "C_prototype": "ARR_ArrayWrapper * self",
                                         "C_return_type": "const double *",
-                                        "c_array_size2": "SH_this->getSize()",
                                         "c_const": "const ",
                                         "c_get_value": "",
                                         "c_type": "double",
@@ -1543,7 +1538,6 @@
                                         "cxx_rv_decl": "const double *SHC_rv",
                                         "cxx_type": "double",
                                         "cxx_var": "SHC_rv",
-                                        "f_array_allocate": "(obj->getSize())",
                                         "f_assumed_shape": "(:)",
                                         "f_dimension": "(:)",
                                         "f_kind": "C_DOUBLE",
@@ -1573,6 +1567,9 @@
                                                 "name": "getSize"
                                             }
                                         ],
+                                        "dim_shape": [
+                                            "SH_this->getSize()"
+                                        ],
                                         "dimension": "getSize()",
                                         "intent": "function"
                                     },
@@ -1589,9 +1586,6 @@
                                         "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
                                         "F_arguments": "obj",
                                         "F_subprogram": "function",
-                                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->getSize();",
-                                        "c_array_size": "SHT_rv_cdesc->shape[0]",
-                                        "c_array_size2": "SH_this->getSize()",
                                         "c_const": "const ",
                                         "c_helper_array_context": "ARR_SHROUD_array",
                                         "c_type": "double",
@@ -1604,11 +1598,8 @@
                                         "cxx_rv_decl": "const double *SHC_rv",
                                         "cxx_type": "double",
                                         "cxx_var": "SHC_rv",
-                                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                        "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                         "f_assumed_shape": "(:)",
                                         "f_call_function": "c_ArrayWrapper_getArrayC_bufferify",
-                                        "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                         "f_deref_attr": ", pointer",
                                         "f_dimension": "(:)",
                                         "f_helper_array_context": "ARR_SHROUD_array",
@@ -1646,6 +1637,9 @@
                                                 "args": [],
                                                 "name": "getSize"
                                             }
+                                        ],
+                                        "dim_shape": [
+                                            "SH_this->getSize()"
                                         ],
                                         "dimension": "getSize()",
                                         "intent": "function"
@@ -1784,7 +1778,6 @@
                                         "C_name": "ARR_ArrayWrapper_getArrayConstC",
                                         "C_prototype": "const ARR_ArrayWrapper * self",
                                         "C_return_type": "const double *",
-                                        "c_array_size2": "SH_this->getSize()",
                                         "c_const": "const ",
                                         "c_get_value": "",
                                         "c_type": "double",
@@ -1796,7 +1789,6 @@
                                         "cxx_rv_decl": "const double *SHC_rv",
                                         "cxx_type": "double",
                                         "cxx_var": "SHC_rv",
-                                        "f_array_allocate": "(obj->getSize())",
                                         "f_assumed_shape": "(:)",
                                         "f_dimension": "(:)",
                                         "f_kind": "C_DOUBLE",
@@ -1827,6 +1819,9 @@
                                                 "name": "getSize"
                                             }
                                         ],
+                                        "dim_shape": [
+                                            "SH_this->getSize()"
+                                        ],
                                         "dimension": "getSize()",
                                         "intent": "function"
                                     },
@@ -1843,9 +1838,6 @@
                                         "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
                                         "F_arguments": "obj",
                                         "F_subprogram": "function",
-                                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->getSize();",
-                                        "c_array_size": "SHT_rv_cdesc->shape[0]",
-                                        "c_array_size2": "SH_this->getSize()",
                                         "c_const": "const ",
                                         "c_helper_array_context": "ARR_SHROUD_array",
                                         "c_type": "double",
@@ -1858,11 +1850,8 @@
                                         "cxx_rv_decl": "const double *SHC_rv",
                                         "cxx_type": "double",
                                         "cxx_var": "SHC_rv",
-                                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                        "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                         "f_assumed_shape": "(:)",
                                         "f_call_function": "c_ArrayWrapper_getArrayConstC_bufferify",
-                                        "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                         "f_deref_attr": ", pointer",
                                         "f_dimension": "(:)",
                                         "f_helper_array_context": "ARR_SHROUD_array",
@@ -1900,6 +1889,9 @@
                                                 "args": [],
                                                 "name": "getSize"
                                             }
+                                        ],
+                                        "dim_shape": [
+                                            "SH_this->getSize()"
                                         ],
                                         "dimension": "getSize()",
                                         "intent": "function"
@@ -2086,7 +2078,6 @@
                                     "fmtdict": {
                                         "c_abstract_decl": "double **",
                                         "c_addr": "",
-                                        "c_array_size2": "isize",
                                         "c_const": "",
                                         "c_deref": "*",
                                         "c_member": "->",
@@ -2099,7 +2090,6 @@
                                         "cxx_nonconst_ptr": "array",
                                         "cxx_type": "double",
                                         "cxx_var": "array",
-                                        "f_array_allocate": "(isize)",
                                         "f_assumed_shape": "(:)",
                                         "f_dimension": "(isize)",
                                         "f_intent": "OUT",
@@ -2127,6 +2117,9 @@
                                             {
                                                 "name": "isize"
                                             }
+                                        ],
+                                        "dim_shape": [
+                                            "isize"
                                         ],
                                         "dimension": "isize",
                                         "intent": "out"
@@ -2202,9 +2195,6 @@
                                     "fmtdict": {
                                         "c_abstract_decl": "double **",
                                         "c_addr": "",
-                                        "c_array_shape": "\nSHT_array_cdesc->shape[0] = isize;",
-                                        "c_array_size": "SHT_array_cdesc->shape[0]",
-                                        "c_array_size2": "isize",
                                         "c_const": "",
                                         "c_deref": "*",
                                         "c_helper_array_context": "ARR_SHROUD_array",
@@ -2219,10 +2209,7 @@
                                         "cxx_nonconst_ptr": "array",
                                         "cxx_type": "double",
                                         "cxx_var": "array",
-                                        "f_array_allocate": "(SHT_array_cdesc%shape(1))",
-                                        "f_array_shape": ",\t SHT_array_cdesc%shape(1:1)",
                                         "f_assumed_shape": "(:)",
-                                        "f_cdesc_shape": "\nSHT_array_cdesc%shape(1:1) = shape(array)",
                                         "f_deref_attr": ", pointer",
                                         "f_dimension": "(:)",
                                         "f_helper_array_context": "ARR_SHROUD_array",
@@ -2256,6 +2243,9 @@
                                             {
                                                 "name": "isize"
                                             }
+                                        ],
+                                        "dim_shape": [
+                                            "isize"
                                         ],
                                         "dimension": "isize",
                                         "intent": "out"
@@ -2533,7 +2523,6 @@
                                     "fmtdict": {
                                         "c_abstract_decl": "double **",
                                         "c_addr": "",
-                                        "c_array_size2": "isize",
                                         "c_const": "",
                                         "c_deref": "*",
                                         "c_member": "->",
@@ -2546,7 +2535,6 @@
                                         "cxx_nonconst_ptr": "array",
                                         "cxx_type": "double",
                                         "cxx_var": "array",
-                                        "f_array_allocate": "(isize)",
                                         "f_assumed_shape": "(:)",
                                         "f_dimension": "(isize)",
                                         "f_intent": "OUT",
@@ -2574,6 +2562,9 @@
                                             {
                                                 "name": "isize"
                                             }
+                                        ],
+                                        "dim_shape": [
+                                            "isize"
                                         ],
                                         "dimension": "isize",
                                         "intent": "out"
@@ -2649,9 +2640,6 @@
                                     "fmtdict": {
                                         "c_abstract_decl": "double **",
                                         "c_addr": "",
-                                        "c_array_shape": "\nSHT_array_cdesc->shape[0] = isize;",
-                                        "c_array_size": "SHT_array_cdesc->shape[0]",
-                                        "c_array_size2": "isize",
                                         "c_const": "",
                                         "c_deref": "*",
                                         "c_helper_array_context": "ARR_SHROUD_array",
@@ -2666,10 +2654,7 @@
                                         "cxx_nonconst_ptr": "array",
                                         "cxx_type": "double",
                                         "cxx_var": "array",
-                                        "f_array_allocate": "(SHT_array_cdesc%shape(1))",
-                                        "f_array_shape": ",\t SHT_array_cdesc%shape(1:1)",
                                         "f_assumed_shape": "(:)",
-                                        "f_cdesc_shape": "\nSHT_array_cdesc%shape(1:1) = shape(array)",
                                         "f_deref_attr": ", pointer",
                                         "f_dimension": "(:)",
                                         "f_helper_array_context": "ARR_SHROUD_array",
@@ -2703,6 +2688,9 @@
                                             {
                                                 "name": "isize"
                                             }
+                                        ],
+                                        "dim_shape": [
+                                            "isize"
                                         ],
                                         "dimension": "isize",
                                         "intent": "out"
@@ -2981,7 +2969,6 @@
                                     "fmtdict": {
                                         "c_abstract_decl": "const double **",
                                         "c_addr": "",
-                                        "c_array_size2": "isize",
                                         "c_const": "const ",
                                         "c_deref": "*",
                                         "c_member": "->",
@@ -2994,7 +2981,6 @@
                                         "cxx_nonconst_ptr": "const_cast<double *>\t(array)",
                                         "cxx_type": "double",
                                         "cxx_var": "array",
-                                        "f_array_allocate": "(isize)",
                                         "f_assumed_shape": "(:)",
                                         "f_dimension": "(isize)",
                                         "f_intent": "OUT",
@@ -3022,6 +3008,9 @@
                                             {
                                                 "name": "isize"
                                             }
+                                        ],
+                                        "dim_shape": [
+                                            "isize"
                                         ],
                                         "dimension": "isize",
                                         "intent": "out"
@@ -3097,9 +3086,6 @@
                                     "fmtdict": {
                                         "c_abstract_decl": "const double **",
                                         "c_addr": "",
-                                        "c_array_shape": "\nSHT_array_cdesc->shape[0] = isize;",
-                                        "c_array_size": "SHT_array_cdesc->shape[0]",
-                                        "c_array_size2": "isize",
                                         "c_const": "const ",
                                         "c_deref": "*",
                                         "c_helper_array_context": "ARR_SHROUD_array",
@@ -3114,10 +3100,7 @@
                                         "cxx_nonconst_ptr": "const_cast<double *>\t(array)",
                                         "cxx_type": "double",
                                         "cxx_var": "array",
-                                        "f_array_allocate": "(SHT_array_cdesc%shape(1))",
-                                        "f_array_shape": ",\t SHT_array_cdesc%shape(1:1)",
                                         "f_assumed_shape": "(:)",
-                                        "f_cdesc_shape": "\nSHT_array_cdesc%shape(1:1) = shape(array)",
                                         "f_deref_attr": ", pointer",
                                         "f_dimension": "(:)",
                                         "f_helper_array_context": "ARR_SHROUD_array",
@@ -3151,6 +3134,9 @@
                                             {
                                                 "name": "isize"
                                             }
+                                        ],
+                                        "dim_shape": [
+                                            "isize"
                                         ],
                                         "dimension": "isize",
                                         "intent": "out"
@@ -3429,7 +3415,6 @@
                                     "fmtdict": {
                                         "c_abstract_decl": "const double **",
                                         "c_addr": "",
-                                        "c_array_size2": "isize",
                                         "c_const": "const ",
                                         "c_deref": "*",
                                         "c_member": "->",
@@ -3442,7 +3427,6 @@
                                         "cxx_nonconst_ptr": "const_cast<double *>\t(array)",
                                         "cxx_type": "double",
                                         "cxx_var": "array",
-                                        "f_array_allocate": "(isize)",
                                         "f_assumed_shape": "(:)",
                                         "f_dimension": "(isize)",
                                         "f_intent": "OUT",
@@ -3470,6 +3454,9 @@
                                             {
                                                 "name": "isize"
                                             }
+                                        ],
+                                        "dim_shape": [
+                                            "isize"
                                         ],
                                         "dimension": "isize",
                                         "intent": "out"
@@ -3545,9 +3532,6 @@
                                     "fmtdict": {
                                         "c_abstract_decl": "const double **",
                                         "c_addr": "",
-                                        "c_array_shape": "\nSHT_array_cdesc->shape[0] = isize;",
-                                        "c_array_size": "SHT_array_cdesc->shape[0]",
-                                        "c_array_size2": "isize",
                                         "c_const": "const ",
                                         "c_deref": "*",
                                         "c_helper_array_context": "ARR_SHROUD_array",
@@ -3562,10 +3546,7 @@
                                         "cxx_nonconst_ptr": "const_cast<double *>\t(array)",
                                         "cxx_type": "double",
                                         "cxx_var": "array",
-                                        "f_array_allocate": "(SHT_array_cdesc%shape(1))",
-                                        "f_array_shape": ",\t SHT_array_cdesc%shape(1:1)",
                                         "f_assumed_shape": "(:)",
-                                        "f_cdesc_shape": "\nSHT_array_cdesc%shape(1:1) = shape(array)",
                                         "f_deref_attr": ", pointer",
                                         "f_dimension": "(:)",
                                         "f_helper_array_context": "ARR_SHROUD_array",
@@ -3599,6 +3580,9 @@
                                             {
                                                 "name": "isize"
                                             }
+                                        ],
+                                        "dim_shape": [
+                                            "isize"
                                         ],
                                         "dimension": "isize",
                                         "intent": "out"

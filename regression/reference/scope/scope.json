@@ -606,9 +606,6 @@
                                 "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
                                 "F_arguments": "SH_this",
                                 "F_subprogram": "function",
-                                "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->nitems;",
-                                "c_array_size": "SHT_rv_cdesc->shape[0]",
-                                "c_array_size2": "SH_this->nitems",
                                 "c_const": "",
                                 "c_helper_array_context": "SCO_SHROUD_array",
                                 "c_type": "int",
@@ -620,11 +617,8 @@
                                 "cxx_rv_decl": "int *SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
                                 "f_call_function": "c_data_pointer_get_items",
-                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                 "f_deref_attr": ", pointer",
                                 "f_dimension": "(:)",
                                 "f_helper_array_context": "SCO_SHROUD_array",
@@ -660,6 +654,9 @@
                                     {
                                         "name": "nitems"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "SH_this->nitems"
                                 ],
                                 "dimension": "nitems",
                                 "intent": "getter"
@@ -1234,9 +1231,6 @@
                                         "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
                                         "F_arguments": "SH_this",
                                         "F_subprogram": "function",
-                                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->nitems;",
-                                        "c_array_size": "SHT_rv_cdesc->shape[0]",
-                                        "c_array_size2": "SH_this->nitems",
                                         "c_const": "",
                                         "c_helper_array_context": "SCO_SHROUD_array",
                                         "c_type": "int",
@@ -1248,11 +1242,8 @@
                                         "cxx_rv_decl": "int *SHC_rv",
                                         "cxx_type": "int",
                                         "cxx_var": "SHC_rv",
-                                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                        "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                         "f_assumed_shape": "(:)",
                                         "f_call_function": "c_data_pointer_get_items",
-                                        "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                         "f_deref_attr": ", pointer",
                                         "f_dimension": "(:)",
                                         "f_helper_array_context": "SCO_SHROUD_array",
@@ -1288,6 +1279,9 @@
                                             {
                                                 "name": "nitems"
                                             }
+                                        ],
+                                        "dim_shape": [
+                                            "SH_this->nitems"
                                         ],
                                         "dimension": "nitems",
                                         "intent": "getter"
@@ -1889,9 +1883,6 @@
                                         "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
                                         "F_arguments": "SH_this",
                                         "F_subprogram": "function",
-                                        "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->nitems;",
-                                        "c_array_size": "SHT_rv_cdesc->shape[0]",
-                                        "c_array_size2": "SH_this->nitems",
                                         "c_const": "",
                                         "c_helper_array_context": "SCO_SHROUD_array",
                                         "c_type": "int",
@@ -1903,11 +1894,8 @@
                                         "cxx_rv_decl": "int *SHC_rv",
                                         "cxx_type": "int",
                                         "cxx_var": "SHC_rv",
-                                        "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                        "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                         "f_assumed_shape": "(:)",
                                         "f_call_function": "c_data_pointer_get_items",
-                                        "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                         "f_deref_attr": ", pointer",
                                         "f_dimension": "(:)",
                                         "f_helper_array_context": "SCO_SHROUD_array",
@@ -1943,6 +1931,9 @@
                                             {
                                                 "name": "nitems"
                                             }
+                                        ],
+                                        "dim_shape": [
+                                            "SH_this->nitems"
                                         ],
                                         "dimension": "nitems",
                                         "intent": "getter"

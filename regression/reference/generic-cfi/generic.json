@@ -5202,6 +5202,11 @@
                         "generic": "(float **addr+intent(out)+rank(2)+deref(pointer))"
                     }
                 ],
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "GetPointerAsPointer",
                 "options": {},
                 "wrap": {},
@@ -5324,6 +5329,11 @@
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
                 "declgen": "void GetPointerAsPointer(float **addr +deref(pointer)+intent(out)+rank(1), int *type +hidden+intent(out), size_t *size +hidden+intent(out))",
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "GetPointerAsPointer",
                 "options": {},
                 "wrap": {
@@ -5361,17 +5371,18 @@
                                 "c_addr": "",
                                 "c_const": "",
                                 "c_deref": "*",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_local_cdesc": "SHC_addr_cdesc",
                                 "c_local_cptr": "SHC_addr_cptr",
                                 "c_local_cxx": "SHC_addr_cxx",
                                 "c_local_err": "SHC_addr_err",
+                                "c_local_extents": "SHC_addr_extents",
                                 "c_local_fptr": "SHC_addr_fptr",
+                                "c_local_lower": "SHC_addr_lower",
                                 "c_member": "->",
                                 "c_type": "float",
                                 "c_var": "addr",
                                 "c_var_cfi": "SHT_addr_cfi",
-                                "c_var_extents": "SHT_addr_extents",
-                                "c_var_lower": "SHT_addr_lower",
                                 "cfi_type": "CFI_type_float",
                                 "cxx_abstract_decl": "float **",
                                 "cxx_addr": "",
@@ -5397,13 +5408,13 @@
                                 "i_local_cptr": "SHC_addr_cptr",
                                 "i_local_cxx": "SHC_addr_cxx",
                                 "i_local_err": "SHC_addr_err",
+                                "i_local_extents": "SHC_addr_extents",
                                 "i_local_fptr": "SHC_addr_fptr",
+                                "i_local_lower": "SHC_addr_lower",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "real(C_FLOAT)",
                                 "i_var": "addr",
                                 "i_var_cfi": "SHT_addr_cfi",
-                                "i_var_extents": "SHT_addr_extents",
-                                "i_var_lower": "SHT_addr_lower",
                                 "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_FLOAT",
@@ -5630,6 +5641,11 @@
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
                 "declgen": "void GetPointerAsPointer(float **addr +deref(pointer)+intent(out)+rank(2), int *type +hidden+intent(out), size_t *size +hidden+intent(out))",
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "GetPointerAsPointer",
                 "options": {},
                 "wrap": {
@@ -5667,17 +5683,18 @@
                                 "c_addr": "",
                                 "c_const": "",
                                 "c_deref": "*",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_local_cdesc": "SHC_addr_cdesc",
                                 "c_local_cptr": "SHC_addr_cptr",
                                 "c_local_cxx": "SHC_addr_cxx",
                                 "c_local_err": "SHC_addr_err",
+                                "c_local_extents": "SHC_addr_extents",
                                 "c_local_fptr": "SHC_addr_fptr",
+                                "c_local_lower": "SHC_addr_lower",
                                 "c_member": "->",
                                 "c_type": "float",
                                 "c_var": "addr",
                                 "c_var_cfi": "SHT_addr_cfi",
-                                "c_var_extents": "SHT_addr_extents",
-                                "c_var_lower": "SHT_addr_lower",
                                 "cfi_type": "CFI_type_float",
                                 "cxx_abstract_decl": "float **",
                                 "cxx_addr": "",
@@ -5703,13 +5720,13 @@
                                 "i_local_cptr": "SHC_addr_cptr",
                                 "i_local_cxx": "SHC_addr_cxx",
                                 "i_local_err": "SHC_addr_err",
+                                "i_local_extents": "SHC_addr_extents",
                                 "i_local_fptr": "SHC_addr_fptr",
+                                "i_local_lower": "SHC_addr_lower",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "real(C_FLOAT)",
                                 "i_var": "addr",
                                 "i_var_cfi": "SHT_addr_cfi",
-                                "i_var_extents": "SHT_addr_extents",
-                                "i_var_lower": "SHT_addr_lower",
                                 "idtor": "0",
                                 "rank": "2",
                                 "sh_type": "SH_TYPE_FLOAT",

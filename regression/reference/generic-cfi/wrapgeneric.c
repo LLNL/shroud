@@ -13,6 +13,10 @@
 // shroud
 #include "wrapgeneric.h"
 
+
+// Lower bounds of CFI arrays.
+static CFI_index_t SHT_lower_CFI[CFI_MAX_RANK] = {1};
+
 // splicer begin C_definitions
 // splicer end C_definitions
 

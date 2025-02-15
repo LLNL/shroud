@@ -823,7 +823,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "double *",
                                 "c_addr": "",
-                                "c_array_size2": "size(*in)",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -836,7 +835,6 @@
                                 "cxx_nonconst_ptr": "out",
                                 "cxx_type": "double",
                                 "cxx_var": "out",
-                                "f_array_allocate": "(size(in))",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(:)",
                                 "f_intent": "OUT",
@@ -870,6 +868,9 @@
                                         ],
                                         "name": "size"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "size(*in)"
                                 ],
                                 "dimension": "size(in)",
                                 "intent": "out"
@@ -1126,7 +1127,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "size(*in)",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -1139,7 +1139,6 @@
                                 "cxx_nonconst_ptr": "out",
                                 "cxx_type": "int",
                                 "cxx_var": "out",
-                                "f_array_allocate": "(size(in))",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(:)",
                                 "f_intent": "OUT",
@@ -1173,6 +1172,9 @@
                                         ],
                                         "name": "size"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "size(*in)"
                                 ],
                                 "dimension": "size(in)",
                                 "intent": "out"
@@ -1409,7 +1411,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "3",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -1422,7 +1423,6 @@
                                 "cxx_nonconst_ptr": "values",
                                 "cxx_type": "int",
                                 "cxx_var": "values",
-                                "f_array_allocate": "(3)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(3)",
                                 "f_intent": "OUT",
@@ -1451,6 +1451,9 @@
                                     {
                                         "constant": "3"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "3"
                                 ],
                                 "dimension": "3",
                                 "intent": "out"
@@ -1591,7 +1594,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "3",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -1604,7 +1606,6 @@
                                 "cxx_nonconst_ptr": "arg1",
                                 "cxx_type": "int",
                                 "cxx_var": "arg1",
-                                "f_array_allocate": "(3)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(3)",
                                 "f_intent": "OUT",
@@ -1634,6 +1635,9 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "3"
+                                ],
                                 "dimension": "3",
                                 "intent": "out"
                             },
@@ -1643,7 +1647,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "3",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -1656,7 +1659,6 @@
                                 "cxx_nonconst_ptr": "arg2",
                                 "cxx_type": "int",
                                 "cxx_var": "arg2",
-                                "f_array_allocate": "(3)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(3)",
                                 "f_intent": "OUT",
@@ -1685,6 +1687,9 @@
                                     {
                                         "constant": "3"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "3"
                                 ],
                                 "dimension": "3",
                                 "intent": "out"
@@ -1860,7 +1865,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "nvar",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -1873,7 +1877,6 @@
                                 "cxx_nonconst_ptr": "values",
                                 "cxx_type": "int",
                                 "cxx_var": "values",
-                                "f_array_allocate": "(nvar)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(nvar)",
                                 "f_intent": "OUT",
@@ -1902,6 +1905,9 @@
                                     {
                                         "name": "nvar"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "nvar"
                                 ],
                                 "dimension": "nvar",
                                 "intent": "out"
@@ -2295,7 +2301,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "3",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -2308,7 +2313,6 @@
                                 "cxx_nonconst_ptr": "out",
                                 "cxx_type": "int",
                                 "cxx_var": "out",
-                                "f_array_allocate": "(3)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(3)",
                                 "f_intent": "OUT",
@@ -2337,6 +2341,9 @@
                                     {
                                         "constant": "3"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "3"
                                 ],
                                 "dimension": "3",
                                 "intent": "out"
@@ -3472,9 +3479,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int **",
                                 "c_addr": "",
-                                "c_array_shape": "\nSHT_count_cdesc->shape[0] = 10;",
-                                "c_array_size": "SHT_count_cdesc->shape[0]",
-                                "c_array_size2": "10",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_helper_array_context": "POI_SHROUD_array",
@@ -3489,10 +3493,7 @@
                                 "cxx_nonconst_ptr": "count",
                                 "cxx_type": "int",
                                 "cxx_var": "count",
-                                "f_array_allocate": "(SHT_count_cdesc%shape(1))",
-                                "f_array_shape": ",\t SHT_count_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
-                                "f_cdesc_shape": "\nSHT_count_cdesc%shape(1:1) = shape(count)",
                                 "f_deref_attr": ", pointer",
                                 "f_dimension": "(:)",
                                 "f_helper_array_context": "POI_SHROUD_array",
@@ -3526,6 +3527,9 @@
                                     {
                                         "constant": "10"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10"
                                 ],
                                 "dimension": "10",
                                 "intent": "out"
@@ -3667,9 +3671,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int **",
                                 "c_addr": "",
-                                "c_array_shape": "\nSHT_count_cdesc->shape[0] = ncount;",
-                                "c_array_size": "SHT_count_cdesc->shape[0]",
-                                "c_array_size2": "ncount",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_helper_array_context": "POI_SHROUD_array",
@@ -3684,10 +3685,7 @@
                                 "cxx_nonconst_ptr": "count",
                                 "cxx_type": "int",
                                 "cxx_var": "count",
-                                "f_array_allocate": "(SHT_count_cdesc%shape(1))",
-                                "f_array_shape": ",\t SHT_count_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
-                                "f_cdesc_shape": "\nSHT_count_cdesc%shape(1:1) = shape(count)",
                                 "f_deref_attr": ", pointer",
                                 "f_dimension": "(:)",
                                 "f_helper_array_context": "POI_SHROUD_array",
@@ -3721,6 +3719,9 @@
                                     {
                                         "name": "ncount"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "ncount"
                                 ],
                                 "dimension": "ncount",
                                 "intent": "out"
@@ -3890,9 +3891,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int **",
                                 "c_addr": "",
-                                "c_array_shape": "\nSHT_count_cdesc->shape[0] = getLen();",
-                                "c_array_size": "SHT_count_cdesc->shape[0]",
-                                "c_array_size2": "getLen()",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_helper_array_context": "POI_SHROUD_array",
@@ -3907,10 +3905,7 @@
                                 "cxx_nonconst_ptr": "count",
                                 "cxx_type": "int",
                                 "cxx_var": "count",
-                                "f_array_allocate": "(SHT_count_cdesc%shape(1))",
-                                "f_array_shape": ",\t SHT_count_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
-                                "f_cdesc_shape": "\nSHT_count_cdesc%shape(1:1) = shape(count)",
                                 "f_deref_attr": ", pointer",
                                 "f_dimension": "(:)",
                                 "f_helper_array_context": "POI_SHROUD_array",
@@ -3945,6 +3940,9 @@
                                         "args": [],
                                         "name": "getLen"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "getLen()"
                                 ],
                                 "dimension": "getLen()",
                                 "intent": "out"
@@ -4219,9 +4217,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "const int **",
                                 "c_addr": "",
-                                "c_array_shape": "\nSHT_count_cdesc->shape[0] = 10;",
-                                "c_array_size": "SHT_count_cdesc->shape[0]",
-                                "c_array_size2": "10",
                                 "c_const": "const ",
                                 "c_deref": "*",
                                 "c_helper_array_context": "POI_SHROUD_array",
@@ -4236,10 +4231,7 @@
                                 "cxx_nonconst_ptr": "(int *) count",
                                 "cxx_type": "int",
                                 "cxx_var": "count",
-                                "f_array_allocate": "(SHT_count_cdesc%shape(1))",
-                                "f_array_shape": ",\t SHT_count_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
-                                "f_cdesc_shape": "\nSHT_count_cdesc%shape(1:1) = shape(count)",
                                 "f_deref_attr": ", pointer",
                                 "f_dimension": "(:)",
                                 "f_helper_array_context": "POI_SHROUD_array",
@@ -4273,6 +4265,9 @@
                                     {
                                         "constant": "10"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10"
                                 ],
                                 "dimension": "10",
                                 "intent": "out"
@@ -4412,9 +4407,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "const int **",
                                 "c_addr": "",
-                                "c_array_shape": "\nSHT_count_cdesc->shape[0] = ncount;",
-                                "c_array_size": "SHT_count_cdesc->shape[0]",
-                                "c_array_size2": "ncount",
                                 "c_const": "const ",
                                 "c_deref": "*",
                                 "c_helper_array_context": "POI_SHROUD_array",
@@ -4429,10 +4421,7 @@
                                 "cxx_nonconst_ptr": "(int *) count",
                                 "cxx_type": "int",
                                 "cxx_var": "count",
-                                "f_array_allocate": "(SHT_count_cdesc%shape(1))",
-                                "f_array_shape": ",\t SHT_count_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
-                                "f_cdesc_shape": "\nSHT_count_cdesc%shape(1:1) = shape(count)",
                                 "f_deref_attr": ", pointer",
                                 "f_dimension": "(:)",
                                 "f_helper_array_context": "POI_SHROUD_array",
@@ -4466,6 +4455,9 @@
                                     {
                                         "name": "ncount"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "ncount"
                                 ],
                                 "dimension": "ncount",
                                 "intent": "out"
@@ -5508,7 +5500,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "const int *",
                                 "c_addr": "",
-                                "c_array_size2": "10*\t20",
                                 "c_const": "const ",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -5521,7 +5512,6 @@
                                 "cxx_nonconst_ptr": "(int *) arg",
                                 "cxx_type": "int",
                                 "cxx_var": "arg",
-                                "f_array_allocate": "(10,20)",
                                 "f_assumed_shape": "(:,:)",
                                 "f_dimension": "(10,20)",
                                 "f_intent": "IN",
@@ -5553,6 +5543,10 @@
                                     {
                                         "constant": "20"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10",
+                                    "20"
                                 ],
                                 "dimension": "10,20",
                                 "intent": "in"
@@ -5684,9 +5678,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int **",
                                 "c_addr": "",
-                                "c_array_shape": "\nSHT_count_cdesc->shape[0] = 10;",
-                                "c_array_size": "SHT_count_cdesc->shape[0]",
-                                "c_array_size2": "10",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_helper_array_context": "POI_SHROUD_array",
@@ -5704,10 +5695,7 @@
                                 "cxx_nonconst_ptr": "count",
                                 "cxx_type": "int",
                                 "cxx_var": "count",
-                                "f_array_allocate": "(SHT_count_cdesc%shape(1))",
-                                "f_array_shape": ",\t SHT_count_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
-                                "f_cdesc_shape": "\nSHT_count_cdesc%shape(1:1) = shape(count)",
                                 "f_deref_attr": ", allocatable",
                                 "f_dimension": "(:)",
                                 "f_helper_array_context": "POI_SHROUD_array",
@@ -5747,6 +5735,9 @@
                                     {
                                         "constant": "10"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10"
                                 ],
                                 "dimension": "10",
                                 "intent": "out"
@@ -6691,9 +6682,6 @@
                                 "F_arg_c_call": "SHT_rv_cdesc",
                                 "F_arguments": "",
                                 "F_subprogram": "function",
-                                "c_array_shape": "\nSHT_rv_cdesc->shape[0] = 10;",
-                                "c_array_size": "SHT_rv_cdesc->shape[0]",
-                                "c_array_size2": "10",
                                 "c_const": "",
                                 "c_helper_array_context": "POI_SHROUD_array",
                                 "c_type": "int",
@@ -6706,11 +6694,8 @@
                                 "cxx_rv_decl": "int *SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
                                 "f_call_function": "c_return_int_ptr_to_fixed_array_bufferify",
-                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                 "f_deref_attr": ", pointer",
                                 "f_dimension": "(:)",
                                 "f_helper_array_context": "POI_SHROUD_array",
@@ -6747,6 +6732,9 @@
                                     {
                                         "constant": "10"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10"
                                 ],
                                 "dimension": "10",
                                 "intent": "function"
@@ -6925,9 +6913,6 @@
                                 "F_arg_c_call": "SHT_rv_cdesc",
                                 "F_arguments": "",
                                 "F_subprogram": "function",
-                                "c_array_shape": "\nSHT_rv_cdesc->shape[0] = 10;",
-                                "c_array_size": "SHT_rv_cdesc->shape[0]",
-                                "c_array_size2": "10",
                                 "c_const": "const ",
                                 "c_helper_array_context": "POI_SHROUD_array",
                                 "c_type": "int",
@@ -6940,11 +6925,8 @@
                                 "cxx_rv_decl": "const int *SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
                                 "f_call_function": "c_return_int_ptr_to_fixed_const_array_bufferify",
-                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                 "f_deref_attr": ", pointer",
                                 "f_dimension": "(:)",
                                 "f_helper_array_context": "POI_SHROUD_array",
@@ -6981,6 +6963,9 @@
                                     {
                                         "constant": "10"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10"
                                 ],
                                 "dimension": "10",
                                 "intent": "function"
@@ -7537,9 +7522,6 @@
                                 "F_arg_c_call": "SHT_rv_cdesc,\t SHT_rv_capsule",
                                 "F_arguments": "",
                                 "F_subprogram": "function",
-                                "c_array_shape": "\nSHT_rv_cdesc->shape[0] = 10;",
-                                "c_array_size": "SHT_rv_cdesc->shape[0]",
-                                "c_array_size2": "10",
                                 "c_const": "",
                                 "c_helper_array_context": "POI_SHROUD_array",
                                 "c_helper_capsule_dtor": "POI_SHROUD_memory_destructor",
@@ -7555,11 +7537,8 @@
                                 "cxx_rv_decl": "int *SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
                                 "f_call_function": "c_return_int_alloc_to_fixed_array_bufferify",
-                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                 "f_deref_attr": ", allocatable",
                                 "f_dimension": "(:)",
                                 "f_helper_array_context": "POI_SHROUD_array",
@@ -7602,6 +7581,9 @@
                                     {
                                         "constant": "10"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10"
                                 ],
                                 "dimension": "10",
                                 "intent": "function"

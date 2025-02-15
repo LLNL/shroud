@@ -713,7 +713,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "double *",
                                 "c_addr": "",
-                                "c_array_size2": "size(*in)",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -747,6 +746,9 @@
                                         ],
                                         "name": "size"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "size(*in)"
                                 ],
                                 "dimension": "size(in)",
                                 "intent": "out"
@@ -970,7 +972,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "size(*in)",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -1004,6 +1005,9 @@
                                         ],
                                         "name": "size"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "size(*in)"
                                 ],
                                 "dimension": "size(in)",
                                 "intent": "out"
@@ -1212,7 +1216,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "3",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -1241,6 +1244,9 @@
                                     {
                                         "constant": "3"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "3"
                                 ],
                                 "dimension": "3",
                                 "intent": "out"
@@ -1372,7 +1378,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "3",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -1402,6 +1407,9 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "3"
+                                ],
                                 "dimension": "3",
                                 "intent": "out"
                             },
@@ -1411,7 +1419,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "3",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -1440,6 +1447,9 @@
                                     {
                                         "constant": "3"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "3"
                                 ],
                                 "dimension": "3",
                                 "intent": "out"
@@ -1597,7 +1607,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "nvar",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -1626,6 +1635,9 @@
                                     {
                                         "name": "nvar"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "nvar"
                                 ],
                                 "dimension": "nvar",
                                 "intent": "out"
@@ -1968,7 +1980,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "3",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -1997,6 +2008,9 @@
                                     {
                                         "constant": "3"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "3"
                                 ],
                                 "dimension": "3",
                                 "intent": "out"
@@ -2938,7 +2952,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int **",
                                 "c_addr": "",
-                                "c_array_size2": "10",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -2967,6 +2980,9 @@
                                     {
                                         "constant": "10"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10"
                                 ],
                                 "dimension": "10",
                                 "intent": "out"
@@ -3093,7 +3109,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int **",
                                 "c_addr": "",
-                                "c_array_size2": "ncount",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -3122,6 +3137,9 @@
                                     {
                                         "name": "ncount"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "ncount"
                                 ],
                                 "dimension": "ncount",
                                 "intent": "out"
@@ -3267,7 +3285,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int **",
                                 "c_addr": "",
-                                "c_array_size2": "getLen()",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -3297,6 +3314,9 @@
                                         "args": [],
                                         "name": "getLen"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "getLen()"
                                 ],
                                 "dimension": "getLen()",
                                 "intent": "out"
@@ -3524,7 +3544,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "const int **",
                                 "c_addr": "",
-                                "c_array_size2": "10",
                                 "c_const": "const ",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -3553,6 +3572,9 @@
                                     {
                                         "constant": "10"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10"
                                 ],
                                 "dimension": "10",
                                 "intent": "out"
@@ -3677,7 +3699,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "const int **",
                                 "c_addr": "",
-                                "c_array_size2": "ncount",
                                 "c_const": "const ",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -3706,6 +3727,9 @@
                                     {
                                         "name": "ncount"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "ncount"
                                 ],
                                 "dimension": "ncount",
                                 "intent": "out"
@@ -4607,7 +4631,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "const int *",
                                 "c_addr": "",
-                                "c_array_size2": "10*\t20",
                                 "c_const": "const ",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -4639,6 +4662,10 @@
                                     {
                                         "constant": "20"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10",
+                                    "20"
                                 ],
                                 "dimension": "10,20",
                                 "intent": "in"
@@ -4752,7 +4779,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int **",
                                 "c_addr": "",
-                                "c_array_size2": "10",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -4781,6 +4807,9 @@
                                     {
                                         "constant": "10"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10"
                                 ],
                                 "dimension": "10",
                                 "intent": "out"
@@ -5563,7 +5592,6 @@
                                 "C_name": "POI_returnIntPtrToFixedArray",
                                 "C_prototype": "void",
                                 "C_return_type": "int *",
-                                "c_array_size2": "10",
                                 "c_const": "",
                                 "c_get_value": "",
                                 "c_type": "int",
@@ -5588,6 +5616,9 @@
                                     {
                                         "constant": "10"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10"
                                 ],
                                 "dimension": "10",
                                 "intent": "function"
@@ -5732,7 +5763,6 @@
                                 "C_name": "POI_returnIntPtrToFixedConstArray",
                                 "C_prototype": "void",
                                 "C_return_type": "const int *",
-                                "c_array_size2": "10",
                                 "c_const": "const ",
                                 "c_get_value": "",
                                 "c_type": "int",
@@ -5757,6 +5787,9 @@
                                     {
                                         "constant": "10"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10"
                                 ],
                                 "dimension": "10",
                                 "intent": "function"
@@ -6211,7 +6244,6 @@
                                 "C_name": "POI_returnIntAllocToFixedArray",
                                 "C_prototype": "void",
                                 "C_return_type": "int *",
-                                "c_array_size2": "10",
                                 "c_const": "",
                                 "c_get_value": "",
                                 "c_type": "int",
@@ -6236,6 +6268,9 @@
                                     {
                                         "constant": "10"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10"
                                 ],
                                 "dimension": "10",
                                 "intent": "function"

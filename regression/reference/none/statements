@@ -3933,8 +3933,8 @@ c_mixin_cdesc_native_fill:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
   owner: library
 c_mixin_cdesc_unpack-base-addr:
   name: c_mixin_cdesc_unpack-base-addr
@@ -4100,15 +4100,17 @@ c_mixin_cfi_native_allocatable:
   - Allocate copy of C pointer (requires +dimension).
   c_post_call:
   - if ({c_local_cxx} != {nullptr}) {{+
-  - "{c_temp_lower_decl}{c_temp_extents_decl}int SH_ret = CFI_allocate({c_var_cfi},\
-    \ \t{c_temp_lower_use}, \t{c_temp_extents_use}, \t0);"
+  - "{gen.c_extents_decl}int SH_ret = CFI_allocate({c_var_cfi}, \t{gen.c_lower_use},\
+    \ \t{gen.c_extents_use}, \t0);"
   - if (SH_ret == CFI_SUCCESS) {{+
   - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{c_local_cxx}, \t{c_var_cfi}->elem_len);"
   - -}}
   - -}}
-  c_temps:
+  c_local:
   - extents
   - lower
+  helper:
+  - lower_bounds_CFI
   owner: library
 c_mixin_cfi_native_pointer:
   name: c_mixin_cfi_native_pointer
@@ -4120,20 +4122,21 @@ c_mixin_cfi_native_pointer:
   - CFI_CDESC_T({rank}) {c_local_fptr};
   - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
   - void *{c_local_cptr} = const_cast<{c_type} *>({c_local_cxx});
-  - "{c_temp_extents_decl}{c_temp_lower_decl}int {c_local_err} = CFI_establish({c_local_cdesc},\t\
-    \ {c_local_cptr},\t CFI_attribute_pointer,\t {cfi_type},\t 0,\t {rank},\t {c_temp_extents_use});"
+  - "{gen.c_extents_decl}int {c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t\
+    \ CFI_attribute_pointer,\t {cfi_type},\t 0,\t {rank},\t {gen.c_extents_use});"
   - if ({c_local_err} == CFI_SUCCESS) {{+
-  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {c_temp_lower_use});"
+  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {gen.c_lower_use});"
   - -}}
   - -}}
-  c_temps:
+  c_local:
   - extents
   - lower
-  c_local:
   - cptr
   - fptr
   - cdesc
   - err
+  helper:
+  - lower_bounds_CFI
   owner: library
 c_mixin_cfi_string**_allocatable:
   name: c_mixin_cfi_string**_allocatable
@@ -4142,16 +4145,17 @@ c_mixin_cfi_string**_allocatable:
   - Allocate for character (requires +dimension).
   c_post_call:
   - if ({cxx_var} != {nullptr}) {{+
-  - "{c_temp_lower_decl}{c_temp_extents_decl}int SH_ret = CFI_allocate({c_var_cfi},\
-    \ \t{c_temp_lower_use}, \t{c_temp_extents_use}, \t{c_var_len});"
+  - "{gen.c_extents_decl}int SH_ret = CFI_allocate({c_var_cfi}, \t{gen.c_lower_use},\
+    \ \t{gen.c_extents_use}, \t{c_var_len});"
   - if (SH_ret == CFI_SUCCESS) {{+
-  - '{c_helper_cfi_array_string_out}({c_var_cfi}, {cxx_var}, {c_array_size2});'
+  - '{c_helper_cfi_array_string_out}({c_var_cfi}, {cxx_var}, {gen.c_dimension_size});'
   - -}}
   - -}}
-  c_temps:
+  c_local:
   - extents
   - lower
   helper:
+  - lower_bounds_CFI
   - cfi_array_string_out
   owner: library
 c_mixin_char-alloc:
@@ -4705,7 +4709,7 @@ c_mixin_string_max_len:
   c_post_call:
   - size_t {c_var_len} = {attr_len};
   - if ({c_var_len} <= 0) {{+
-  - '{c_var_len} = {c_helper_array_string_out_len}({cxx_var}, {c_array_size2});'
+  - '{c_var_len} = {c_helper_array_string_out_len}({cxx_var}, {gen.c_dimension_size});'
   - -}}
   c_temps:
   - len
@@ -5250,7 +5254,7 @@ c_out_string**_cdesc_copy:
   c_arg_call:
   - '&{cxx_var}'
   c_post_call:
-  - "{c_helper_cdesc_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});"
+  - "{c_helper_cdesc_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {gen.c_dimension_size});"
   c_temps:
   - cdesc
   fmtdict:
@@ -7312,7 +7316,7 @@ f_function_native*_cdesc_allocatable:
   f_call:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
-  - allocate({f_var}{f_array_allocate})
+  - allocate({f_var}{gen.f_allocate_shape})
   - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\
     \ kind=C_SIZE_T))"
   - call {f_helper_capsule_dtor}({f_var_capsule})
@@ -7356,8 +7360,8 @@ f_function_native*_cdesc_allocatable:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
   c_temps:
@@ -7391,7 +7395,7 @@ f_function_native*_cdesc_pointer:
   f_call:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
-  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{gen.c_f_pointer_shape})"
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -7419,8 +7423,8 @@ f_function_native*_cdesc_pointer:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
   c_temps:
   - cdesc
   fmtdict:
@@ -7457,7 +7461,7 @@ f_function_native*_cdesc_pointer_caller:
   f_call:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
-  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{gen.c_f_pointer_shape})"
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -7493,8 +7497,8 @@ f_function_native*_cdesc_pointer_caller:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
   c_temps:
@@ -7562,21 +7566,23 @@ f_function_native*_cfi_allocatable:
   - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({c_local_cxx} != {nullptr}) {{+
-  - "{c_temp_lower_decl}{c_temp_extents_decl}int SH_ret = CFI_allocate({c_var_cfi},\
-    \ \t{c_temp_lower_use}, \t{c_temp_extents_use}, \t0);"
+  - "{gen.c_extents_decl}int SH_ret = CFI_allocate({c_var_cfi}, \t{gen.c_lower_use},\
+    \ \t{gen.c_extents_use}, \t0);"
   - if (SH_ret == CFI_SUCCESS) {{+
   - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{c_local_cxx}, \t{c_var_cfi}->elem_len);"
   - -}}
   - -}}
   c_temps:
   - cfi
-  - extents
-  - lower
   c_local:
   - cxx
+  - extents
+  - lower
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - lower_bounds_CFI
   iface_header:
   - ISO_Fortran_binding.h
   owner: library
@@ -7637,18 +7643,18 @@ f_function_native*_cfi_pointer:
   - CFI_CDESC_T({rank}) {c_local_fptr};
   - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
   - void *{c_local_cptr} = const_cast<{c_type} *>({c_local_cxx});
-  - "{c_temp_extents_decl}{c_temp_lower_decl}int {c_local_err} = CFI_establish({c_local_cdesc},\t\
-    \ {c_local_cptr},\t CFI_attribute_pointer,\t {cfi_type},\t 0,\t {rank},\t {c_temp_extents_use});"
+  - "{gen.c_extents_decl}int {c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t\
+    \ CFI_attribute_pointer,\t {cfi_type},\t 0,\t {rank},\t {gen.c_extents_use});"
   - if ({c_local_err} == CFI_SUCCESS) {{+
-  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {c_temp_lower_use});"
+  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {gen.c_lower_use});"
   - -}}
   - -}}
   c_temps:
   - cfi
-  - extents
-  - lower
   c_local:
   - cxx
+  - extents
+  - lower
   - cptr
   - fptr
   - cdesc
@@ -7656,6 +7662,8 @@ f_function_native*_cfi_pointer:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - lower_bounds_CFI
   iface_header:
   - ISO_Fortran_binding.h
   owner: library
@@ -11646,7 +11654,7 @@ f_function_struct*_cdesc_pointer:
   f_call:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
-  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{gen.c_f_pointer_shape})"
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -11674,8 +11682,8 @@ f_function_struct*_cdesc_pointer:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
   c_temps:
   - cdesc
   fmtdict:
@@ -11885,7 +11893,7 @@ f_getter_native*_cdesc_pointer:
   f_call:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
-  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{gen.c_f_pointer_shape})"
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -11913,8 +11921,8 @@ f_getter_native*_cdesc_pointer:
   - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
   c_temps:
   - cdesc
   fmtdict:
@@ -12018,7 +12026,7 @@ f_getter_struct**_cdesc_raw:
   f_call:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
-  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{gen.c_f_pointer_shape})"
   f_module:
     iso_c_binding:
     - C_PTR
@@ -12045,8 +12053,8 @@ f_getter_struct**_cdesc_raw:
   - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
   c_temps:
   - cdesc
   fmtdict:
@@ -12076,7 +12084,7 @@ f_getter_struct*_cdesc_pointer:
   f_call:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
-  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{gen.c_f_pointer_shape})"
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -12104,8 +12112,8 @@ f_getter_struct*_cdesc_pointer:
   - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
   c_temps:
   - cdesc
   fmtdict:
@@ -12680,7 +12688,7 @@ f_in_native*_cdesc:
   - '{f_var_cdesc}%type = {sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
   - '{f_var_cdesc}%size = {size}'
-  - '{f_var_cdesc}%rank = {rank}{f_cdesc_shape}'
+  - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
   f_arg_call:
   - '{f_var_cdesc}'
   f_module:
@@ -14027,7 +14035,7 @@ f_in_void*_cdesc:
   - '{f_var_cdesc}%type = {sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
   - '{f_var_cdesc}%size = {size}'
-  - '{f_var_cdesc}%rank = {rank}{f_cdesc_shape}'
+  - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
   f_arg_call:
   - '{f_var_cdesc}'
   f_module:
@@ -14415,7 +14423,7 @@ f_inout_native*_cdesc:
   - '{f_var_cdesc}%type = {sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
   - '{f_var_cdesc}%size = {size}'
-  - '{f_var_cdesc}%rank = {rank}{f_cdesc_shape}'
+  - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
   f_arg_call:
   - '{f_var_cdesc}'
   f_module:
@@ -15327,7 +15335,7 @@ f_inout_void*_cdesc:
   - '{f_var_cdesc}%type = {sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
   - '{f_var_cdesc}%size = {size}'
-  - '{f_var_cdesc}%rank = {rank}{f_cdesc_shape}'
+  - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
   f_arg_call:
   - '{f_var_cdesc}'
   f_module:
@@ -15370,7 +15378,7 @@ f_mixin_allocate:
   comments:
   - Allocate Fortran variable.
   f_post_call:
-  - allocate({f_var}{f_array_allocate})
+  - allocate({f_var}{gen.f_allocate_shape})
   owner: library
 f_mixin_arg-call-fvar:
   name: f_mixin_arg-call-fvar
@@ -15558,7 +15566,7 @@ f_mixin_cdesc_char_fill:
   - '{f_var_cdesc}%type = SH_TYPE_CHAR'
   - '{f_var_cdesc}%elem_len = len({f_var})'
   - '{f_var_cdesc}%size = size({f_var})'
-  - '{f_var_cdesc}%rank = rank({f_var}){f_cdesc_shape}'
+  - '{f_var_cdesc}%rank = rank({f_var}){gen.f_cdesc_shape}'
   f_module:
     iso_c_binding:
     - C_LOC
@@ -15609,8 +15617,8 @@ f_mixin_cdesc_getter:
   - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
   helper:
   - type_defines
   owner: library
@@ -15643,7 +15651,7 @@ f_mixin_cdesc_native_fill:
   - '{f_var_cdesc}%type = {sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
   - '{f_var_cdesc}%size = {size}'
-  - '{f_var_cdesc}%rank = {rank}{f_cdesc_shape}'
+  - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
   f_module:
     iso_c_binding:
     - C_LOC
@@ -15660,7 +15668,7 @@ f_mixin_cdesc_native_pointer:
   f_dummy_decl:
   - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
   f_post_call:
-  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{gen.c_f_pointer_shape})"
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -15675,7 +15683,7 @@ f_mixin_cdesc_native_raw:
   f_dummy_decl:
   - 'type(C_PTR), pointer :: {f_var}{f_assumed_shape}'
   f_post_call:
-  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{gen.c_f_pointer_shape})"
   f_module:
     iso_c_binding:
     - C_PTR
@@ -15691,7 +15699,7 @@ f_mixin_cdesc_out_native_pointer:
   f_dummy_decl:
   - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
   f_post_call:
-  - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})
+  - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{gen.c_f_pointer_shape})
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -16004,8 +16012,8 @@ f_mixin_helper_array_string_allocatable:
   c_pre_call:
   - std::string *{cxx_var};
   c_post_call:
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size     = {c_array_size};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
   - if ({attr_len} > 0) {{+
   - '{c_var_cdesc}->elem_len = {attr_len};'
   - -}} else {{+
@@ -17043,7 +17051,7 @@ f_out_native*&_cdesc:
   f_arg_call:
   - '{f_var_cdesc}'
   f_post_call:
-  - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})
+  - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{gen.c_f_pointer_shape})
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -17074,8 +17082,8 @@ f_out_native*&_cdesc:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
   c_temps:
   - cdesc
   helper:
@@ -17099,7 +17107,7 @@ f_out_native*&_cdesc_pointer:
   f_arg_call:
   - '{f_var_cdesc}'
   f_post_call:
-  - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})
+  - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{gen.c_f_pointer_shape})
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -17130,8 +17138,8 @@ f_out_native*&_cdesc_pointer:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
   c_temps:
   - cdesc
   helper:
@@ -17196,7 +17204,7 @@ f_out_native**_cdesc_allocatable:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
   f_post_call:
-  - allocate({f_var}{f_array_allocate})
+  - allocate({f_var}{gen.f_allocate_shape})
   - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\
     \ kind=C_SIZE_T))"
   - call {f_helper_capsule_dtor}({f_var_capsule})
@@ -17243,8 +17251,8 @@ f_out_native**_cdesc_allocatable:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
   c_temps:
@@ -17281,7 +17289,7 @@ f_out_native**_cdesc_pointer:
   f_arg_call:
   - '{f_var_cdesc}'
   f_post_call:
-  - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})
+  - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{gen.c_f_pointer_shape})
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -17312,8 +17320,8 @@ f_out_native**_cdesc_pointer:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size = {c_array_size};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
   c_temps:
   - cdesc
   helper:
@@ -17358,18 +17366,20 @@ f_out_native**_cfi_allocatable:
   - '&{c_local_cxx}'
   c_post_call:
   - if ({c_local_cxx} != {nullptr}) {{+
-  - "{c_temp_lower_decl}{c_temp_extents_decl}int SH_ret = CFI_allocate({c_var_cfi},\
-    \ \t{c_temp_lower_use}, \t{c_temp_extents_use}, \t0);"
+  - "{gen.c_extents_decl}int SH_ret = CFI_allocate({c_var_cfi}, \t{gen.c_lower_use},\
+    \ \t{gen.c_extents_use}, \t0);"
   - if (SH_ret == CFI_SUCCESS) {{+
   - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{c_local_cxx}, \t{c_var_cfi}->elem_len);"
   - -}}
   - -}}
   c_temps:
   - cfi
-  - extents
-  - lower
   c_local:
   - cxx
+  - extents
+  - lower
+  helper:
+  - lower_bounds_CFI
   iface_header:
   - ISO_Fortran_binding.h
   owner: library
@@ -17417,22 +17427,24 @@ f_out_native**_cfi_pointer:
   - CFI_CDESC_T({rank}) {c_local_fptr};
   - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
   - void *{c_local_cptr} = const_cast<{c_type} *>({c_local_cxx});
-  - "{c_temp_extents_decl}{c_temp_lower_decl}int {c_local_err} = CFI_establish({c_local_cdesc},\t\
-    \ {c_local_cptr},\t CFI_attribute_pointer,\t {cfi_type},\t 0,\t {rank},\t {c_temp_extents_use});"
+  - "{gen.c_extents_decl}int {c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t\
+    \ CFI_attribute_pointer,\t {cfi_type},\t 0,\t {rank},\t {gen.c_extents_use});"
   - if ({c_local_err} == CFI_SUCCESS) {{+
-  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {c_temp_lower_use});"
+  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {gen.c_lower_use});"
   - -}}
   - -}}
   c_temps:
   - cfi
-  - extents
-  - lower
   c_local:
   - cxx
+  - extents
+  - lower
   - cptr
   - fptr
   - cdesc
   - err
+  helper:
+  - lower_bounds_CFI
   iface_header:
   - ISO_Fortran_binding.h
   owner: library
@@ -17486,7 +17498,7 @@ f_out_native*_cdesc:
   - '{f_var_cdesc}%type = {sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
   - '{f_var_cdesc}%size = {size}'
-  - '{f_var_cdesc}%rank = {rank}{f_cdesc_shape}'
+  - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
   f_arg_call:
   - '{f_var_cdesc}'
   f_module:
@@ -17756,8 +17768,8 @@ f_out_string**_cdesc_allocatable:
   c_arg_call:
   - '&{cxx_var}'
   c_post_call:
-  - '{c_var_cdesc}->rank = {rank};{c_array_shape}'
-  - '{c_var_cdesc}->size     = {c_array_size};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
   - if ({attr_len} > 0) {{+
   - '{c_var_cdesc}->elem_len = {attr_len};'
   - -}} else {{+
@@ -17802,7 +17814,7 @@ f_out_string**_cdesc_copy:
   - '{f_var_cdesc}%type = SH_TYPE_CHAR'
   - '{f_var_cdesc}%elem_len = len({f_var})'
   - '{f_var_cdesc}%size = size({f_var})'
-  - '{f_var_cdesc}%rank = rank({f_var}){f_cdesc_shape}'
+  - '{f_var_cdesc}%rank = rank({f_var}){gen.f_cdesc_shape}'
   f_arg_call:
   - '{f_var_cdesc}'
   f_module:
@@ -17830,7 +17842,7 @@ f_out_string**_cdesc_copy:
   c_arg_call:
   - '&{cxx_var}'
   c_post_call:
-  - "{c_helper_cdesc_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});"
+  - "{c_helper_cdesc_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {gen.c_dimension_size});"
   c_temps:
   - cdesc
   fmtdict:
@@ -17880,22 +17892,24 @@ f_out_string**_cfi_allocatable:
   c_post_call:
   - size_t {c_var_len} = {attr_len};
   - if ({c_var_len} <= 0) {{+
-  - '{c_var_len} = {c_helper_array_string_out_len}({cxx_var}, {c_array_size2});'
+  - '{c_var_len} = {c_helper_array_string_out_len}({cxx_var}, {gen.c_dimension_size});'
   - -}}
   - if ({cxx_var} != {nullptr}) {{+
-  - "{c_temp_lower_decl}{c_temp_extents_decl}int SH_ret = CFI_allocate({c_var_cfi},\
-    \ \t{c_temp_lower_use}, \t{c_temp_extents_use}, \t{c_var_len});"
+  - "{gen.c_extents_decl}int SH_ret = CFI_allocate({c_var_cfi}, \t{gen.c_lower_use},\
+    \ \t{gen.c_extents_use}, \t{c_var_len});"
   - if (SH_ret == CFI_SUCCESS) {{+
-  - '{c_helper_cfi_array_string_out}({c_var_cfi}, {cxx_var}, {c_array_size2});'
+  - '{c_helper_cfi_array_string_out}({c_var_cfi}, {cxx_var}, {gen.c_dimension_size});'
   - -}}
   - -}}
   c_temps:
   - cfi
   - len
+  c_local:
   - extents
   - lower
   helper:
   - array_string_out_len
+  - lower_bounds_CFI
   - cfi_array_string_out
   iface_header:
   - ISO_Fortran_binding.h
@@ -17931,7 +17945,7 @@ f_out_string**_cfi_copy:
   c_arg_call:
   - '&{cxx_var}'
   c_post_call:
-  - '{c_helper_cfi_array_string_out}({c_var_cfi}, {cxx_var}, {c_array_size2});'
+  - '{c_helper_cfi_array_string_out}({c_var_cfi}, {cxx_var}, {gen.c_dimension_size});'
   c_temps:
   - cfi
   helper:
@@ -18460,7 +18474,7 @@ f_out_vector<string>&_cdesc:
   - '{f_var_cdesc}%type = SH_TYPE_CHAR'
   - '{f_var_cdesc}%elem_len = len({f_var})'
   - '{f_var_cdesc}%size = size({f_var})'
-  - '{f_var_cdesc}%rank = rank({f_var}){f_cdesc_shape}'
+  - '{f_var_cdesc}%rank = rank({f_var}){gen.f_cdesc_shape}'
   f_arg_call:
   - '{f_var_cdesc}'
   f_module:
@@ -18727,7 +18741,7 @@ f_out_void*_cdesc:
   - '{f_var_cdesc}%type = {sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
   - '{f_var_cdesc}%size = {size}'
-  - '{f_var_cdesc}%rank = {rank}{f_cdesc_shape}'
+  - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
   f_arg_call:
   - '{f_var_cdesc}'
   f_module:
@@ -19662,6 +19676,17 @@ h_helper_copy_string:
   - -end interface
   dependent_helpers:
   - array_context
+h_helper_lower_bounds_CFI:
+  name: h_helper_lower_bounds_CFI
+  notes:
+  - Lower bounds for 1 for arrays.
+  - No need to include ISO_Fortran_binding.h since it is already
+  - included in the C wrapper header.
+  c_fmtname: SHT_lower_CFI
+  source:
+  - ''
+  - // Lower bounds of CFI arrays.
+  - static CFI_index_t SHT_lower_CFI[CFI_MAX_RANK] = {1};
 h_helper_pointer_string:
   name: h_helper_pointer_string
   notes:
@@ -20629,6 +20654,9 @@ root
       copy
         array -- h_helper_copy_array
         string -- h_helper_copy_string
+      lower
+        bounds
+          CFI -- h_helper_lower_bounds_CFI
       pointer
         string -- h_helper_pointer_string
       size

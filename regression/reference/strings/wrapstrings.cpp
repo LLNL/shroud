@@ -1021,7 +1021,7 @@ void STR_fetchArrayStringArg_bufferify(STR_SHROUD_array *SHT_strs_cdesc)
     std::string *strs;
     int nstrs;
     fetchArrayStringArg(&strs, &nstrs);
-    STR_ShroudCdescArrayStringOut(SHT_strs_cdesc, strs, nstrs);
+    STR_ShroudCdescArrayStringOut(SHT_strs_cdesc, strs, (nstrs));
     // splicer end function.fetchArrayStringArg_bufferify
 }
 
@@ -1079,7 +1079,7 @@ void STR_fetchArrayStringAlloc_bufferify(
     fetchArrayStringAlloc(&strs, &nstrs);
     SHT_strs_cdesc->rank = 1;
     SHT_strs_cdesc->shape[0] = nstrs;
-    SHT_strs_cdesc->size     = SHT_strs_cdesc->shape[0];
+    SHT_strs_cdesc->size = SHT_strs_cdesc->shape[0];
     if (0 > 0) {
         SHT_strs_cdesc->elem_len = 0;
     } else {
@@ -1144,7 +1144,7 @@ void STR_fetchArrayStringAllocLen_bufferify(
     fetchArrayStringAllocLen(&strs, &nstrs);
     SHT_strs_cdesc->rank = 1;
     SHT_strs_cdesc->shape[0] = nstrs;
-    SHT_strs_cdesc->size     = SHT_strs_cdesc->shape[0];
+    SHT_strs_cdesc->size = SHT_strs_cdesc->shape[0];
     if (20 > 0) {
         SHT_strs_cdesc->elem_len = 20;
     } else {

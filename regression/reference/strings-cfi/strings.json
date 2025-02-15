@@ -4593,7 +4593,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "char **",
                                 "c_addr": "",
-                                "c_array_size2": "nstrs",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -4606,7 +4605,6 @@
                                 "cxx_nonconst_ptr": "strs",
                                 "cxx_type": "std::string",
                                 "cxx_var": "strs",
-                                "f_array_allocate": "(nstrs)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(nstrs)",
                                 "f_intent": "OUT",
@@ -4632,6 +4630,9 @@
                                     {
                                         "name": "nstrs"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "nstrs"
                                 ],
                                 "dimension": "nstrs",
                                 "intent": "out"
@@ -4708,7 +4709,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "char **",
                                 "c_addr": "",
-                                "c_array_size2": "nstrs",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_helper_cfi_array_string_out": "STR_ShroudCFIArrayStringOut",
@@ -4723,7 +4723,6 @@
                                 "cxx_nonconst_ptr": "strs",
                                 "cxx_type": "std::string",
                                 "cxx_var": "strs",
-                                "f_array_allocate": "(nstrs)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(nstrs)",
                                 "f_intent": "OUT",
@@ -4753,6 +4752,9 @@
                                     {
                                         "name": "nstrs"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "nstrs"
                                 ],
                                 "dimension": "nstrs",
                                 "intent": "out"
@@ -4870,6 +4872,7 @@
                 "helpers": {
                     "fc": [
                         "array_string_out_len",
+                        "lower_bounds_CFI",
                         "cfi_array_string_out"
                     ]
                 },
@@ -4945,7 +4948,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "char **",
                                 "c_addr": "",
-                                "c_array_size2": "nstrs",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -4958,7 +4960,6 @@
                                 "cxx_nonconst_ptr": "strs",
                                 "cxx_type": "std::string",
                                 "cxx_var": "strs",
-                                "f_array_allocate": "(nstrs)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(nstrs)",
                                 "f_intent": "OUT",
@@ -4984,6 +4985,9 @@
                                     {
                                         "name": "nstrs"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "nstrs"
                                 ],
                                 "dimension": "nstrs",
                                 "intent": "out"
@@ -5060,22 +5064,18 @@
                             "fmtdict": {
                                 "c_abstract_decl": "char **",
                                 "c_addr": "",
-                                "c_array_size2": "nstrs",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_helper_array_string_out_len": "STR_ShroudArrayStringOutSize",
                                 "c_helper_cfi_array_string_out": "STR_ShroudCFIArrayStringOut",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
+                                "c_local_extents": "SHC_strs_extents",
+                                "c_local_lower": "SHC_strs_lower",
                                 "c_member": "->",
-                                "c_temp_extents_decl": "CFI_index_t SHT_strs_extents[1];\nSHT_strs_extents[0] = nstrs;\n",
-                                "c_temp_extents_use": "SHT_strs_extents",
-                                "c_temp_lower_decl": "CFI_index_t SHT_strs_lower[1] = {1};\n",
-                                "c_temp_lower_use": "SHT_strs_lower",
                                 "c_type": "char",
                                 "c_var": "strs",
                                 "c_var_cfi": "SHT_strs_cfi",
-                                "c_var_extents": "SHT_strs_extents",
                                 "c_var_len": "SHT_strs_len",
-                                "c_var_lower": "SHT_strs_lower",
                                 "cfi_type": "CFI_type_other",
                                 "cxx_abstract_decl": "std::string **",
                                 "cxx_addr": "",
@@ -5083,7 +5083,6 @@
                                 "cxx_nonconst_ptr": "strs",
                                 "cxx_type": "std::string",
                                 "cxx_var": "strs",
-                                "f_array_allocate": "(nstrs)",
                                 "f_assumed_shape": "(:)",
                                 "f_deref_attr": ", allocatable",
                                 "f_dimension": "(:)",
@@ -5096,13 +5095,13 @@
                                 "i_intent": "OUT",
                                 "i_intent_attr": ", intent(OUT)",
                                 "i_kind": "C_CHAR",
+                                "i_local_extents": "SHC_strs_extents",
+                                "i_local_lower": "SHC_strs_lower",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "strs",
                                 "i_var_cfi": "SHT_strs_cfi",
-                                "i_var_extents": "SHT_strs_extents",
                                 "i_var_len": "SHT_strs_len",
-                                "i_var_lower": "SHT_strs_lower",
                                 "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_OTHER",
@@ -5117,6 +5116,9 @@
                                     {
                                         "name": "nstrs"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "nstrs"
                                 ],
                                 "dimension": "nstrs",
                                 "intent": "out"
@@ -5235,6 +5237,7 @@
                 "helpers": {
                     "fc": [
                         "array_string_out_len",
+                        "lower_bounds_CFI",
                         "cfi_array_string_out"
                     ]
                 },
@@ -5311,7 +5314,6 @@
                                 "attr_len": "20",
                                 "c_abstract_decl": "char **",
                                 "c_addr": "",
-                                "c_array_size2": "nstrs",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -5324,7 +5326,6 @@
                                 "cxx_nonconst_ptr": "strs",
                                 "cxx_type": "std::string",
                                 "cxx_var": "strs",
-                                "f_array_allocate": "(nstrs)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(nstrs)",
                                 "f_intent": "OUT",
@@ -5350,6 +5351,9 @@
                                     {
                                         "name": "nstrs"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "nstrs"
                                 ],
                                 "dimension": "nstrs",
                                 "intent": "out",
@@ -5428,22 +5432,18 @@
                                 "attr_len": "20",
                                 "c_abstract_decl": "char **",
                                 "c_addr": "",
-                                "c_array_size2": "nstrs",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_helper_array_string_out_len": "STR_ShroudArrayStringOutSize",
                                 "c_helper_cfi_array_string_out": "STR_ShroudCFIArrayStringOut",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
+                                "c_local_extents": "SHC_strs_extents",
+                                "c_local_lower": "SHC_strs_lower",
                                 "c_member": "->",
-                                "c_temp_extents_decl": "CFI_index_t SHT_strs_extents[1];\nSHT_strs_extents[0] = nstrs;\n",
-                                "c_temp_extents_use": "SHT_strs_extents",
-                                "c_temp_lower_decl": "CFI_index_t SHT_strs_lower[1] = {1};\n",
-                                "c_temp_lower_use": "SHT_strs_lower",
                                 "c_type": "char",
                                 "c_var": "strs",
                                 "c_var_cfi": "SHT_strs_cfi",
-                                "c_var_extents": "SHT_strs_extents",
                                 "c_var_len": "SHT_strs_len",
-                                "c_var_lower": "SHT_strs_lower",
                                 "cfi_type": "CFI_type_other",
                                 "cxx_abstract_decl": "std::string **",
                                 "cxx_addr": "",
@@ -5451,7 +5451,6 @@
                                 "cxx_nonconst_ptr": "strs",
                                 "cxx_type": "std::string",
                                 "cxx_var": "strs",
-                                "f_array_allocate": "(nstrs)",
                                 "f_assumed_shape": "(:)",
                                 "f_deref_attr": ", allocatable",
                                 "f_dimension": "(:)",
@@ -5464,13 +5463,13 @@
                                 "i_intent": "OUT",
                                 "i_intent_attr": ", intent(OUT)",
                                 "i_kind": "C_CHAR",
+                                "i_local_extents": "SHC_strs_extents",
+                                "i_local_lower": "SHC_strs_lower",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "strs",
                                 "i_var_cfi": "SHT_strs_cfi",
-                                "i_var_extents": "SHT_strs_extents",
                                 "i_var_len": "SHT_strs_len",
-                                "i_var_lower": "SHT_strs_lower",
                                 "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_OTHER",
@@ -5485,6 +5484,9 @@
                                     {
                                         "name": "nstrs"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "nstrs"
                                 ],
                                 "dimension": "nstrs",
                                 "intent": "out",

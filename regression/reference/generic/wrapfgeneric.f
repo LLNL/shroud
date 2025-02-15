@@ -1096,7 +1096,8 @@ contains
         ! splicer begin function.get_pointer_as_pointer_float1d
         type(GEN_SHROUD_array) :: SHT_addr_cdesc
         call c_get_pointer_as_pointer_float1d_bufferify(SHT_addr_cdesc)
-        call c_f_pointer(SHT_addr_cdesc%base_addr, addr)
+        call c_f_pointer(SHT_addr_cdesc%base_addr, addr, &
+            SHT_addr_cdesc%shape(1:1))
         ! splicer end function.get_pointer_as_pointer_float1d
     end subroutine get_pointer_as_pointer_float1d
 #endif
@@ -1115,7 +1116,8 @@ contains
         ! splicer begin function.get_pointer_as_pointer_float2d
         type(GEN_SHROUD_array) :: SHT_addr_cdesc
         call c_get_pointer_as_pointer_float2d_bufferify(SHT_addr_cdesc)
-        call c_f_pointer(SHT_addr_cdesc%base_addr, addr)
+        call c_f_pointer(SHT_addr_cdesc%base_addr, addr, &
+            SHT_addr_cdesc%shape(1:2))
         ! splicer end function.get_pointer_as_pointer_float2d
     end subroutine get_pointer_as_pointer_float2d
 #endif

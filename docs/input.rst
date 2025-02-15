@@ -574,9 +574,9 @@ function will be created for each rank requested by options
 .. XXX - See Fortran.rst
 
 .. info is passed to statements via fmt fields.
-   cdesc - c_array_shape, c_array_size
-   CFI - c_temp_extents_decl, c_temp_extents_use
-         c_temp_lower_decl, c_temp_lower_use
+   cdesc - gen.c_array_shape, gen.c_array_size
+   CFI - gen.c_extents_decl, gen.c_extents_use
+         gen.c_lower_use
 
 
 external
@@ -629,7 +629,7 @@ pointer arguments.  This value is save in the *F_array_type* argument
 or the CFI_cdesc_t struct.
 
 .. statements for native pointer and reference.
-   See c_out_native_*_hidden
+   See c_out_native*_hidden
    Used in the Fortran wrapper when fmt.c_var_cdesc is defined.
 
 For example, setting the shape of a pointer function:

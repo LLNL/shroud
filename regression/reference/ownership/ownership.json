@@ -1055,7 +1055,6 @@
                                 "C_name": "OWN_ReturnIntPtrDimPointer",
                                 "C_prototype": "int *len",
                                 "C_return_type": "int *",
-                                "c_array_size2": "len",
                                 "c_const": "",
                                 "c_get_value": "",
                                 "c_type": "int",
@@ -1067,7 +1066,6 @@
                                 "cxx_rv_decl": "int *SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "f_array_allocate": "(len)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(len)",
                                 "f_kind": "C_INT",
@@ -1095,6 +1093,9 @@
                                     {
                                         "name": "len"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "len"
                                 ],
                                 "dimension": "len",
                                 "intent": "function"
@@ -1152,9 +1153,6 @@
                                 "F_arg_c_call": "SHT_rv_cdesc",
                                 "F_arguments": "",
                                 "F_subprogram": "function",
-                                "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
-                                "c_array_size": "SHT_rv_cdesc->shape[0]",
-                                "c_array_size2": "len",
                                 "c_const": "",
                                 "c_helper_array_context": "OWN_SHROUD_array",
                                 "c_type": "int",
@@ -1167,11 +1165,8 @@
                                 "cxx_rv_decl": "int *SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
                                 "f_call_function": "c_return_int_ptr_dim_pointer_bufferify",
-                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                 "f_deref_attr": ", pointer",
                                 "f_dimension": "(:)",
                                 "f_helper_array_context": "OWN_SHROUD_array",
@@ -1208,6 +1203,9 @@
                                     {
                                         "name": "len"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "len"
                                 ],
                                 "dimension": "len",
                                 "intent": "function"
@@ -1459,7 +1457,6 @@
                                 "C_name": "OWN_ReturnIntPtrDimAlloc",
                                 "C_prototype": "int *len",
                                 "C_return_type": "int *",
-                                "c_array_size2": "len",
                                 "c_const": "",
                                 "c_get_value": "",
                                 "c_type": "int",
@@ -1471,7 +1468,6 @@
                                 "cxx_rv_decl": "int *SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "f_array_allocate": "(len)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(len)",
                                 "f_kind": "C_INT",
@@ -1499,6 +1495,9 @@
                                     {
                                         "name": "len"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "len"
                                 ],
                                 "dimension": "len",
                                 "intent": "function"
@@ -1556,9 +1555,6 @@
                                 "F_arg_c_call": "SHT_rv_cdesc,\t SHT_rv_capsule",
                                 "F_arguments": "",
                                 "F_subprogram": "function",
-                                "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
-                                "c_array_size": "SHT_rv_cdesc->shape[0]",
-                                "c_array_size2": "len",
                                 "c_const": "",
                                 "c_helper_array_context": "OWN_SHROUD_array",
                                 "c_helper_capsule_dtor": "OWN_SHROUD_memory_destructor",
@@ -1574,11 +1570,8 @@
                                 "cxx_rv_decl": "int *SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
                                 "f_call_function": "c_return_int_ptr_dim_alloc_bufferify",
-                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                 "f_deref_attr": ", allocatable",
                                 "f_dimension": "(:)",
                                 "f_helper_array_context": "OWN_SHROUD_array",
@@ -1621,6 +1614,9 @@
                                     {
                                         "name": "len"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "len"
                                 ],
                                 "dimension": "len",
                                 "intent": "function"
@@ -1867,7 +1863,6 @@
                                 "C_name": "OWN_ReturnIntPtrDimDefault",
                                 "C_prototype": "int *len",
                                 "C_return_type": "int *",
-                                "c_array_size2": "len",
                                 "c_const": "",
                                 "c_get_value": "",
                                 "c_type": "int",
@@ -1879,7 +1874,6 @@
                                 "cxx_rv_decl": "int *SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "f_array_allocate": "(len)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(len)",
                                 "f_kind": "C_INT",
@@ -1907,6 +1901,9 @@
                                     {
                                         "name": "len"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "len"
                                 ],
                                 "dimension": "len",
                                 "intent": "function"
@@ -1964,9 +1961,6 @@
                                 "F_arg_c_call": "SHT_rv_cdesc",
                                 "F_arguments": "",
                                 "F_subprogram": "function",
-                                "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
-                                "c_array_size": "SHT_rv_cdesc->shape[0]",
-                                "c_array_size2": "len",
                                 "c_const": "",
                                 "c_helper_array_context": "OWN_SHROUD_array",
                                 "c_type": "int",
@@ -1979,11 +1973,8 @@
                                 "cxx_rv_decl": "int *SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
                                 "f_call_function": "c_return_int_ptr_dim_default_bufferify",
-                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                 "f_deref_attr": ", pointer",
                                 "f_dimension": "(:)",
                                 "f_helper_array_context": "OWN_SHROUD_array",
@@ -2020,6 +2011,9 @@
                                     {
                                         "name": "len"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "len"
                                 ],
                                 "dimension": "len",
                                 "intent": "function"
@@ -2262,7 +2256,6 @@
                                 "C_name": "OWN_ReturnIntPtrDimRawNew",
                                 "C_prototype": "int *len",
                                 "C_return_type": "int *",
-                                "c_array_size2": "len",
                                 "c_const": "",
                                 "c_get_value": "",
                                 "c_type": "int",
@@ -2274,7 +2267,6 @@
                                 "cxx_rv_decl": "int *SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "f_array_allocate": "(len)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(len)",
                                 "f_kind": "C_INT",
@@ -2302,6 +2294,9 @@
                                     {
                                         "name": "len"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "len"
                                 ],
                                 "dimension": "len",
                                 "intent": "function",
@@ -2451,7 +2446,6 @@
                                 "C_name": "OWN_ReturnIntPtrDimPointerNew",
                                 "C_prototype": "int *len",
                                 "C_return_type": "int *",
-                                "c_array_size2": "len",
                                 "c_const": "",
                                 "c_get_value": "",
                                 "c_type": "int",
@@ -2463,7 +2457,6 @@
                                 "cxx_rv_decl": "int *SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "f_array_allocate": "(len)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(len)",
                                 "f_kind": "C_INT",
@@ -2491,6 +2484,9 @@
                                     {
                                         "name": "len"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "len"
                                 ],
                                 "dimension": "len",
                                 "intent": "function",
@@ -2549,9 +2545,6 @@
                                 "F_arg_c_call": "SHT_rv_cdesc,\t Crv%mem",
                                 "F_arguments": "Crv",
                                 "F_subprogram": "function",
-                                "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
-                                "c_array_size": "SHT_rv_cdesc->shape[0]",
-                                "c_array_size2": "len",
                                 "c_const": "",
                                 "c_helper_array_context": "OWN_SHROUD_array",
                                 "c_type": "int",
@@ -2565,11 +2558,8 @@
                                 "cxx_rv_decl": "int *SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
                                 "f_call_function": "c_return_int_ptr_dim_pointer_new_bufferify",
-                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                 "f_deref_attr": ", pointer",
                                 "f_dimension": "(:)",
                                 "f_helper_array_context": "OWN_SHROUD_array",
@@ -2609,6 +2599,9 @@
                                     {
                                         "name": "len"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "len"
                                 ],
                                 "dimension": "len",
                                 "intent": "function",
@@ -2856,7 +2849,6 @@
                                 "C_name": "OWN_ReturnIntPtrDimAllocNew",
                                 "C_prototype": "int *len",
                                 "C_return_type": "int *",
-                                "c_array_size2": "len",
                                 "c_const": "",
                                 "c_get_value": "",
                                 "c_type": "int",
@@ -2868,7 +2860,6 @@
                                 "cxx_rv_decl": "int *SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "f_array_allocate": "(len)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(len)",
                                 "f_kind": "C_INT",
@@ -2896,6 +2887,9 @@
                                     {
                                         "name": "len"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "len"
                                 ],
                                 "dimension": "len",
                                 "intent": "function",
@@ -3141,7 +3135,6 @@
                                 "C_name": "OWN_ReturnIntPtrDimDefaultNew",
                                 "C_prototype": "int *len",
                                 "C_return_type": "int *",
-                                "c_array_size2": "len",
                                 "c_const": "",
                                 "c_get_value": "",
                                 "c_type": "int",
@@ -3153,7 +3146,6 @@
                                 "cxx_rv_decl": "int *SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "f_array_allocate": "(len)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(len)",
                                 "f_kind": "C_INT",
@@ -3181,6 +3173,9 @@
                                     {
                                         "name": "len"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "len"
                                 ],
                                 "dimension": "len",
                                 "intent": "function",
@@ -3239,9 +3234,6 @@
                                 "F_arg_c_call": "SHT_rv_cdesc,\t Crv%mem",
                                 "F_arguments": "Crv",
                                 "F_subprogram": "function",
-                                "c_array_shape": "\nSHT_rv_cdesc->shape[0] = len;",
-                                "c_array_size": "SHT_rv_cdesc->shape[0]",
-                                "c_array_size2": "len",
                                 "c_const": "",
                                 "c_helper_array_context": "OWN_SHROUD_array",
                                 "c_type": "int",
@@ -3255,11 +3247,8 @@
                                 "cxx_rv_decl": "int *SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
                                 "f_call_function": "c_return_int_ptr_dim_default_new_bufferify",
-                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                 "f_deref_attr": ", pointer",
                                 "f_dimension": "(:)",
                                 "f_helper_array_context": "OWN_SHROUD_array",
@@ -3299,6 +3288,9 @@
                                     {
                                         "name": "len"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "len"
                                 ],
                                 "dimension": "len",
                                 "intent": "function",

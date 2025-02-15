@@ -117,6 +117,10 @@ def get_func_bind(node, wlang):
     return node._bind[wlang]["+result"]
 
 def get_arg_bind(node, arg, wlang):
+    """
+    node - ast.FunctionNode
+    arg  - declast.Declaration
+    """
     name = arg.declarator.user_name or arg.declarator.arg_name
     return node._bind[wlang][name]
 

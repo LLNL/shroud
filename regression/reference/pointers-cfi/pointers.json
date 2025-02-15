@@ -1105,7 +1105,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "double *",
                                 "c_addr": "",
-                                "c_array_size2": "size(*in)",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -1118,7 +1117,6 @@
                                 "cxx_nonconst_ptr": "out",
                                 "cxx_type": "double",
                                 "cxx_var": "out",
-                                "f_array_allocate": "(size(in))",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(:)",
                                 "f_intent": "OUT",
@@ -1151,6 +1149,9 @@
                                         ],
                                         "name": "size"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "size(*in)"
                                 ],
                                 "dimension": "size(in)",
                                 "intent": "out"
@@ -1279,7 +1280,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "double *",
                                 "c_addr": "",
-                                "c_array_size2": "size(*in)",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -1292,7 +1292,6 @@
                                 "cxx_nonconst_ptr": "out",
                                 "cxx_type": "double",
                                 "cxx_var": "out",
-                                "f_array_allocate": "(size(in))",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(:)",
                                 "f_intent": "OUT",
@@ -1326,6 +1325,9 @@
                                         ],
                                         "name": "size"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "size(*in)"
                                 ],
                                 "dimension": "size(in)",
                                 "intent": "out"
@@ -1584,7 +1586,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "size(*in)",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -1597,7 +1598,6 @@
                                 "cxx_nonconst_ptr": "out",
                                 "cxx_type": "int",
                                 "cxx_var": "out",
-                                "f_array_allocate": "(size(in))",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(:)",
                                 "f_intent": "OUT",
@@ -1630,6 +1630,9 @@
                                         ],
                                         "name": "size"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "size(*in)"
                                 ],
                                 "dimension": "size(in)",
                                 "intent": "out"
@@ -1758,7 +1761,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "size(*in)",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -1771,7 +1773,6 @@
                                 "cxx_nonconst_ptr": "out",
                                 "cxx_type": "int",
                                 "cxx_var": "out",
-                                "f_array_allocate": "(size(in))",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(:)",
                                 "f_intent": "OUT",
@@ -1805,6 +1806,9 @@
                                         ],
                                         "name": "size"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "size(*in)"
                                 ],
                                 "dimension": "size(in)",
                                 "intent": "out"
@@ -2033,7 +2037,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "3",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -2062,6 +2065,9 @@
                                     {
                                         "constant": "3"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "3"
                                 ],
                                 "dimension": "3",
                                 "intent": "out"
@@ -2137,7 +2143,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "3",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -2150,7 +2155,6 @@
                                 "cxx_nonconst_ptr": "values",
                                 "cxx_type": "int",
                                 "cxx_var": "values",
-                                "f_array_allocate": "(3)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(3)",
                                 "f_intent": "OUT",
@@ -2179,6 +2183,9 @@
                                     {
                                         "constant": "3"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "3"
                                 ],
                                 "dimension": "3",
                                 "intent": "out"
@@ -2319,7 +2326,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "3",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -2349,6 +2355,9 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "3"
+                                ],
                                 "dimension": "3",
                                 "intent": "out"
                             },
@@ -2358,7 +2367,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "3",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -2387,6 +2395,9 @@
                                     {
                                         "constant": "3"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "3"
                                 ],
                                 "dimension": "3",
                                 "intent": "out"
@@ -2422,7 +2433,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "3",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -2435,7 +2445,6 @@
                                 "cxx_nonconst_ptr": "arg1",
                                 "cxx_type": "int",
                                 "cxx_var": "arg1",
-                                "f_array_allocate": "(3)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(3)",
                                 "f_intent": "OUT",
@@ -2465,6 +2474,9 @@
                                         "constant": "3"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "3"
+                                ],
                                 "dimension": "3",
                                 "intent": "out"
                             },
@@ -2474,7 +2486,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "3",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -2487,7 +2498,6 @@
                                 "cxx_nonconst_ptr": "arg2",
                                 "cxx_type": "int",
                                 "cxx_var": "arg2",
-                                "f_array_allocate": "(3)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(3)",
                                 "f_intent": "OUT",
@@ -2516,6 +2526,9 @@
                                     {
                                         "constant": "3"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "3"
                                 ],
                                 "dimension": "3",
                                 "intent": "out"
@@ -2682,7 +2695,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "nvar",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -2711,6 +2723,9 @@
                                     {
                                         "name": "nvar"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "nvar"
                                 ],
                                 "dimension": "nvar",
                                 "intent": "out"
@@ -2788,7 +2803,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "nvar",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -2801,7 +2815,6 @@
                                 "cxx_nonconst_ptr": "values",
                                 "cxx_type": "int",
                                 "cxx_var": "values",
-                                "f_array_allocate": "(nvar)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(nvar)",
                                 "f_intent": "OUT",
@@ -2830,6 +2843,9 @@
                                     {
                                         "name": "nvar"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "nvar"
                                 ],
                                 "dimension": "nvar",
                                 "intent": "out"
@@ -3382,7 +3398,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "3",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -3411,6 +3426,9 @@
                                     {
                                         "constant": "3"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "3"
                                 ],
                                 "dimension": "3",
                                 "intent": "out"
@@ -3446,7 +3464,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int *",
                                 "c_addr": "",
-                                "c_array_size2": "3",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -3459,7 +3476,6 @@
                                 "cxx_nonconst_ptr": "out",
                                 "cxx_type": "int",
                                 "cxx_var": "out",
-                                "f_array_allocate": "(3)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(3)",
                                 "f_intent": "OUT",
@@ -3488,6 +3504,9 @@
                                     {
                                         "constant": "3"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "3"
                                 ],
                                 "dimension": "3",
                                 "intent": "out"
@@ -4902,6 +4921,11 @@
                 },
                 "decl": "void getPtrToScalar(int **nitems+intent(out))",
                 "declgen": "void getPtrToScalar(int **nitems +intent(out))",
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "getPtrToScalar",
                 "options": {
                     "wrap_python": false
@@ -5002,17 +5026,18 @@
                                 "c_addr": "",
                                 "c_const": "",
                                 "c_deref": "*",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_local_cdesc": "SHC_nitems_cdesc",
                                 "c_local_cptr": "SHC_nitems_cptr",
                                 "c_local_cxx": "SHC_nitems_cxx",
                                 "c_local_err": "SHC_nitems_err",
+                                "c_local_extents": "SHC_nitems_extents",
                                 "c_local_fptr": "SHC_nitems_fptr",
+                                "c_local_lower": "SHC_nitems_lower",
                                 "c_member": "->",
                                 "c_type": "int",
                                 "c_var": "nitems",
                                 "c_var_cfi": "SHT_nitems_cfi",
-                                "c_var_extents": "SHT_nitems_extents",
-                                "c_var_lower": "SHT_nitems_lower",
                                 "cfi_type": "CFI_type_int",
                                 "cxx_abstract_decl": "int **",
                                 "cxx_addr": "",
@@ -5035,13 +5060,13 @@
                                 "i_local_cptr": "SHC_nitems_cptr",
                                 "i_local_cxx": "SHC_nitems_cxx",
                                 "i_local_err": "SHC_nitems_err",
+                                "i_local_extents": "SHC_nitems_extents",
                                 "i_local_fptr": "SHC_nitems_fptr",
+                                "i_local_lower": "SHC_nitems_lower",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "integer(C_INT)",
                                 "i_var": "nitems",
                                 "i_var_cfi": "SHT_nitems_cfi",
-                                "i_var_extents": "SHT_nitems_extents",
-                                "i_var_lower": "SHT_nitems_lower",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
                                 "stmt_name": "f_out_native**_cfi_pointer",
@@ -5129,6 +5154,11 @@
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is always the same length.\n"
                 },
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "getPtrToFixedArray",
                 "options": {},
                 "wrap": {
@@ -5160,7 +5190,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int **",
                                 "c_addr": "",
-                                "c_array_size2": "10",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -5173,7 +5202,6 @@
                                 "cxx_nonconst_ptr": "count",
                                 "cxx_type": "int",
                                 "cxx_var": "count",
-                                "f_array_allocate": "(10)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(10)",
                                 "f_intent": "OUT",
@@ -5201,6 +5229,9 @@
                                     {
                                         "constant": "10"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10"
                                 ],
                                 "dimension": "10",
                                 "intent": "out"
@@ -5237,24 +5268,20 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int **",
                                 "c_addr": "",
-                                "c_array_size2": "10",
                                 "c_const": "",
                                 "c_deref": "*",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_local_cdesc": "SHC_count_cdesc",
                                 "c_local_cptr": "SHC_count_cptr",
                                 "c_local_cxx": "SHC_count_cxx",
                                 "c_local_err": "SHC_count_err",
+                                "c_local_extents": "SHC_count_extents",
                                 "c_local_fptr": "SHC_count_fptr",
+                                "c_local_lower": "SHC_count_lower",
                                 "c_member": "->",
-                                "c_temp_extents_decl": "CFI_index_t SHT_count_extents[1];\nSHT_count_extents[0] = 10;\n",
-                                "c_temp_extents_use": "SHT_count_extents",
-                                "c_temp_lower_decl": "CFI_index_t SHT_count_lower[1] = {1};\n",
-                                "c_temp_lower_use": "SHT_count_lower",
                                 "c_type": "int",
                                 "c_var": "count",
                                 "c_var_cfi": "SHT_count_cfi",
-                                "c_var_extents": "SHT_count_extents",
-                                "c_var_lower": "SHT_count_lower",
                                 "cfi_type": "CFI_type_int",
                                 "cxx_abstract_decl": "int **",
                                 "cxx_addr": "",
@@ -5262,7 +5289,6 @@
                                 "cxx_nonconst_ptr": "count",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_count_cxx",
-                                "f_array_allocate": "(10)",
                                 "f_assumed_shape": "(:)",
                                 "f_deref_attr": ", pointer",
                                 "f_dimension": "(:)",
@@ -5281,13 +5307,13 @@
                                 "i_local_cptr": "SHC_count_cptr",
                                 "i_local_cxx": "SHC_count_cxx",
                                 "i_local_err": "SHC_count_err",
+                                "i_local_extents": "SHC_count_extents",
                                 "i_local_fptr": "SHC_count_fptr",
+                                "i_local_lower": "SHC_count_lower",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "integer(C_INT)",
                                 "i_var": "count",
                                 "i_var_cfi": "SHT_count_cfi",
-                                "i_var_extents": "SHT_count_extents",
-                                "i_var_lower": "SHT_count_lower",
                                 "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_INT",
@@ -5302,6 +5328,9 @@
                                     {
                                         "constant": "10"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10"
                                 ],
                                 "dimension": "10",
                                 "intent": "out"
@@ -5407,6 +5436,11 @@
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is the length of\nthe argument ncount.\n"
                 },
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "getPtrToDynamicArray",
                 "options": {},
                 "wrap": {
@@ -5438,7 +5472,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int **",
                                 "c_addr": "",
-                                "c_array_size2": "ncount",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -5451,7 +5484,6 @@
                                 "cxx_nonconst_ptr": "count",
                                 "cxx_type": "int",
                                 "cxx_var": "count",
-                                "f_array_allocate": "(ncount)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(ncount)",
                                 "f_intent": "OUT",
@@ -5479,6 +5511,9 @@
                                     {
                                         "name": "ncount"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "ncount"
                                 ],
                                 "dimension": "ncount",
                                 "intent": "out"
@@ -5554,24 +5589,20 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int **",
                                 "c_addr": "",
-                                "c_array_size2": "ncount",
                                 "c_const": "",
                                 "c_deref": "*",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_local_cdesc": "SHC_count_cdesc",
                                 "c_local_cptr": "SHC_count_cptr",
                                 "c_local_cxx": "SHC_count_cxx",
                                 "c_local_err": "SHC_count_err",
+                                "c_local_extents": "SHC_count_extents",
                                 "c_local_fptr": "SHC_count_fptr",
+                                "c_local_lower": "SHC_count_lower",
                                 "c_member": "->",
-                                "c_temp_extents_decl": "CFI_index_t SHT_count_extents[1];\nSHT_count_extents[0] = ncount;\n",
-                                "c_temp_extents_use": "SHT_count_extents",
-                                "c_temp_lower_decl": "CFI_index_t SHT_count_lower[1] = {1};\n",
-                                "c_temp_lower_use": "SHT_count_lower",
                                 "c_type": "int",
                                 "c_var": "count",
                                 "c_var_cfi": "SHT_count_cfi",
-                                "c_var_extents": "SHT_count_extents",
-                                "c_var_lower": "SHT_count_lower",
                                 "cfi_type": "CFI_type_int",
                                 "cxx_abstract_decl": "int **",
                                 "cxx_addr": "",
@@ -5579,7 +5610,6 @@
                                 "cxx_nonconst_ptr": "count",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_count_cxx",
-                                "f_array_allocate": "(ncount)",
                                 "f_assumed_shape": "(:)",
                                 "f_deref_attr": ", pointer",
                                 "f_dimension": "(:)",
@@ -5598,13 +5628,13 @@
                                 "i_local_cptr": "SHC_count_cptr",
                                 "i_local_cxx": "SHC_count_cxx",
                                 "i_local_err": "SHC_count_err",
+                                "i_local_extents": "SHC_count_extents",
                                 "i_local_fptr": "SHC_count_fptr",
+                                "i_local_lower": "SHC_count_lower",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "integer(C_INT)",
                                 "i_var": "count",
                                 "i_var_cfi": "SHT_count_cfi",
-                                "i_var_extents": "SHT_count_extents",
-                                "i_var_lower": "SHT_count_lower",
                                 "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_INT",
@@ -5619,6 +5649,9 @@
                                     {
                                         "name": "ncount"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "ncount"
                                 ],
                                 "dimension": "ncount",
                                 "intent": "out"
@@ -5753,6 +5786,11 @@
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\n"
                 },
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "getPtrToFuncArray",
                 "options": {},
                 "wrap": {
@@ -5784,7 +5822,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int **",
                                 "c_addr": "",
-                                "c_array_size2": "getLen()",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -5797,7 +5834,6 @@
                                 "cxx_nonconst_ptr": "count",
                                 "cxx_type": "int",
                                 "cxx_var": "count",
-                                "f_array_allocate": "(getLen())",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(:)",
                                 "f_intent": "OUT",
@@ -5826,6 +5862,9 @@
                                         "args": [],
                                         "name": "getLen"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "getLen()"
                                 ],
                                 "dimension": "getLen()",
                                 "intent": "out"
@@ -5862,24 +5901,20 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int **",
                                 "c_addr": "",
-                                "c_array_size2": "getLen()",
                                 "c_const": "",
                                 "c_deref": "*",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_local_cdesc": "SHC_count_cdesc",
                                 "c_local_cptr": "SHC_count_cptr",
                                 "c_local_cxx": "SHC_count_cxx",
                                 "c_local_err": "SHC_count_err",
+                                "c_local_extents": "SHC_count_extents",
                                 "c_local_fptr": "SHC_count_fptr",
+                                "c_local_lower": "SHC_count_lower",
                                 "c_member": "->",
-                                "c_temp_extents_decl": "CFI_index_t SHT_count_extents[1];\nSHT_count_extents[0] = getLen();\n",
-                                "c_temp_extents_use": "SHT_count_extents",
-                                "c_temp_lower_decl": "CFI_index_t SHT_count_lower[1] = {1};\n",
-                                "c_temp_lower_use": "SHT_count_lower",
                                 "c_type": "int",
                                 "c_var": "count",
                                 "c_var_cfi": "SHT_count_cfi",
-                                "c_var_extents": "SHT_count_extents",
-                                "c_var_lower": "SHT_count_lower",
                                 "cfi_type": "CFI_type_int",
                                 "cxx_abstract_decl": "int **",
                                 "cxx_addr": "",
@@ -5887,7 +5922,6 @@
                                 "cxx_nonconst_ptr": "count",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_count_cxx",
-                                "f_array_allocate": "(getLen())",
                                 "f_assumed_shape": "(:)",
                                 "f_deref_attr": ", pointer",
                                 "f_dimension": "(:)",
@@ -5906,13 +5940,13 @@
                                 "i_local_cptr": "SHC_count_cptr",
                                 "i_local_cxx": "SHC_count_cxx",
                                 "i_local_err": "SHC_count_err",
+                                "i_local_extents": "SHC_count_extents",
                                 "i_local_fptr": "SHC_count_fptr",
+                                "i_local_lower": "SHC_count_lower",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "integer(C_INT)",
                                 "i_var": "count",
                                 "i_var_cfi": "SHT_count_cfi",
-                                "i_var_extents": "SHT_count_extents",
-                                "i_var_lower": "SHT_count_lower",
                                 "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_INT",
@@ -5928,6 +5962,9 @@
                                         "args": [],
                                         "name": "getLen"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "getLen()"
                                 ],
                                 "dimension": "getLen()",
                                 "intent": "out"
@@ -6012,6 +6049,11 @@
                 },
                 "decl": "void getPtrToConstScalar( const int **nitems+intent(out))",
                 "declgen": "void getPtrToConstScalar(const int **nitems +intent(out))",
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "getPtrToConstScalar",
                 "options": {
                     "wrap_python": false
@@ -6112,17 +6154,18 @@
                                 "c_addr": "",
                                 "c_const": "const ",
                                 "c_deref": "*",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_local_cdesc": "SHC_nitems_cdesc",
                                 "c_local_cptr": "SHC_nitems_cptr",
                                 "c_local_cxx": "SHC_nitems_cxx",
                                 "c_local_err": "SHC_nitems_err",
+                                "c_local_extents": "SHC_nitems_extents",
                                 "c_local_fptr": "SHC_nitems_fptr",
+                                "c_local_lower": "SHC_nitems_lower",
                                 "c_member": "->",
                                 "c_type": "int",
                                 "c_var": "nitems",
                                 "c_var_cfi": "SHT_nitems_cfi",
-                                "c_var_extents": "SHT_nitems_extents",
-                                "c_var_lower": "SHT_nitems_lower",
                                 "cfi_type": "CFI_type_int",
                                 "cxx_abstract_decl": "const int **",
                                 "cxx_addr": "",
@@ -6145,13 +6188,13 @@
                                 "i_local_cptr": "SHC_nitems_cptr",
                                 "i_local_cxx": "SHC_nitems_cxx",
                                 "i_local_err": "SHC_nitems_err",
+                                "i_local_extents": "SHC_nitems_extents",
                                 "i_local_fptr": "SHC_nitems_fptr",
+                                "i_local_lower": "SHC_nitems_lower",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "integer(C_INT)",
                                 "i_var": "nitems",
                                 "i_var_cfi": "SHT_nitems_cfi",
-                                "i_var_extents": "SHT_nitems_extents",
-                                "i_var_lower": "SHT_nitems_lower",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
                                 "stmt_name": "f_out_native**_cfi_pointer",
@@ -6237,6 +6280,11 @@
                 },
                 "decl": "void getPtrToFixedConstArray( const int **count+intent(out)+dimension(10));",
                 "declgen": "void getPtrToFixedConstArray(const int **count +dimension(10)+intent(out))",
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "getPtrToFixedConstArray",
                 "options": {},
                 "wrap": {
@@ -6268,7 +6316,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "const int **",
                                 "c_addr": "",
-                                "c_array_size2": "10",
                                 "c_const": "const ",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -6281,7 +6328,6 @@
                                 "cxx_nonconst_ptr": "const_cast<int *>\t(count)",
                                 "cxx_type": "int",
                                 "cxx_var": "count",
-                                "f_array_allocate": "(10)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(10)",
                                 "f_intent": "OUT",
@@ -6309,6 +6355,9 @@
                                     {
                                         "constant": "10"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10"
                                 ],
                                 "dimension": "10",
                                 "intent": "out"
@@ -6345,24 +6394,20 @@
                             "fmtdict": {
                                 "c_abstract_decl": "const int **",
                                 "c_addr": "",
-                                "c_array_size2": "10",
                                 "c_const": "const ",
                                 "c_deref": "*",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_local_cdesc": "SHC_count_cdesc",
                                 "c_local_cptr": "SHC_count_cptr",
                                 "c_local_cxx": "SHC_count_cxx",
                                 "c_local_err": "SHC_count_err",
+                                "c_local_extents": "SHC_count_extents",
                                 "c_local_fptr": "SHC_count_fptr",
+                                "c_local_lower": "SHC_count_lower",
                                 "c_member": "->",
-                                "c_temp_extents_decl": "CFI_index_t SHT_count_extents[1];\nSHT_count_extents[0] = 10;\n",
-                                "c_temp_extents_use": "SHT_count_extents",
-                                "c_temp_lower_decl": "CFI_index_t SHT_count_lower[1] = {1};\n",
-                                "c_temp_lower_use": "SHT_count_lower",
                                 "c_type": "int",
                                 "c_var": "count",
                                 "c_var_cfi": "SHT_count_cfi",
-                                "c_var_extents": "SHT_count_extents",
-                                "c_var_lower": "SHT_count_lower",
                                 "cfi_type": "CFI_type_int",
                                 "cxx_abstract_decl": "const int **",
                                 "cxx_addr": "",
@@ -6370,7 +6415,6 @@
                                 "cxx_nonconst_ptr": "const_cast<int *>\t(count)",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_count_cxx",
-                                "f_array_allocate": "(10)",
                                 "f_assumed_shape": "(:)",
                                 "f_deref_attr": ", pointer",
                                 "f_dimension": "(:)",
@@ -6389,13 +6433,13 @@
                                 "i_local_cptr": "SHC_count_cptr",
                                 "i_local_cxx": "SHC_count_cxx",
                                 "i_local_err": "SHC_count_err",
+                                "i_local_extents": "SHC_count_extents",
                                 "i_local_fptr": "SHC_count_fptr",
+                                "i_local_lower": "SHC_count_lower",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "integer(C_INT)",
                                 "i_var": "count",
                                 "i_var_cfi": "SHT_count_cfi",
-                                "i_var_extents": "SHT_count_extents",
-                                "i_var_lower": "SHT_count_lower",
                                 "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_INT",
@@ -6410,6 +6454,9 @@
                                     {
                                         "constant": "10"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10"
                                 ],
                                 "dimension": "10",
                                 "intent": "out"
@@ -6513,6 +6560,11 @@
                 },
                 "decl": "void getPtrToDynamicConstArray( const int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
                 "declgen": "void getPtrToDynamicConstArray(const int **count +dimension(ncount)+intent(out), int *ncount +hidden+intent(out))",
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "getPtrToDynamicConstArray",
                 "options": {},
                 "wrap": {
@@ -6544,7 +6596,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "const int **",
                                 "c_addr": "",
-                                "c_array_size2": "ncount",
                                 "c_const": "const ",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -6557,7 +6608,6 @@
                                 "cxx_nonconst_ptr": "const_cast<int *>\t(count)",
                                 "cxx_type": "int",
                                 "cxx_var": "count",
-                                "f_array_allocate": "(ncount)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(ncount)",
                                 "f_intent": "OUT",
@@ -6585,6 +6635,9 @@
                                     {
                                         "name": "ncount"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "ncount"
                                 ],
                                 "dimension": "ncount",
                                 "intent": "out"
@@ -6660,24 +6713,20 @@
                             "fmtdict": {
                                 "c_abstract_decl": "const int **",
                                 "c_addr": "",
-                                "c_array_size2": "ncount",
                                 "c_const": "const ",
                                 "c_deref": "*",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_local_cdesc": "SHC_count_cdesc",
                                 "c_local_cptr": "SHC_count_cptr",
                                 "c_local_cxx": "SHC_count_cxx",
                                 "c_local_err": "SHC_count_err",
+                                "c_local_extents": "SHC_count_extents",
                                 "c_local_fptr": "SHC_count_fptr",
+                                "c_local_lower": "SHC_count_lower",
                                 "c_member": "->",
-                                "c_temp_extents_decl": "CFI_index_t SHT_count_extents[1];\nSHT_count_extents[0] = ncount;\n",
-                                "c_temp_extents_use": "SHT_count_extents",
-                                "c_temp_lower_decl": "CFI_index_t SHT_count_lower[1] = {1};\n",
-                                "c_temp_lower_use": "SHT_count_lower",
                                 "c_type": "int",
                                 "c_var": "count",
                                 "c_var_cfi": "SHT_count_cfi",
-                                "c_var_extents": "SHT_count_extents",
-                                "c_var_lower": "SHT_count_lower",
                                 "cfi_type": "CFI_type_int",
                                 "cxx_abstract_decl": "const int **",
                                 "cxx_addr": "",
@@ -6685,7 +6734,6 @@
                                 "cxx_nonconst_ptr": "const_cast<int *>\t(count)",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_count_cxx",
-                                "f_array_allocate": "(ncount)",
                                 "f_assumed_shape": "(:)",
                                 "f_deref_attr": ", pointer",
                                 "f_dimension": "(:)",
@@ -6704,13 +6752,13 @@
                                 "i_local_cptr": "SHC_count_cptr",
                                 "i_local_cxx": "SHC_count_cxx",
                                 "i_local_err": "SHC_count_err",
+                                "i_local_extents": "SHC_count_extents",
                                 "i_local_fptr": "SHC_count_fptr",
+                                "i_local_lower": "SHC_count_lower",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "integer(C_INT)",
                                 "i_var": "count",
                                 "i_var_cfi": "SHT_count_cfi",
-                                "i_var_extents": "SHT_count_extents",
-                                "i_var_lower": "SHT_count_lower",
                                 "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_INT",
@@ -6725,6 +6773,9 @@
                                     {
                                         "name": "ncount"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "ncount"
                                 ],
                                 "dimension": "ncount",
                                 "intent": "out"
@@ -8110,7 +8161,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "const int *",
                                 "c_addr": "",
-                                "c_array_size2": "10*\t20",
                                 "c_const": "const ",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -8142,6 +8192,10 @@
                                     {
                                         "constant": "20"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10",
+                                    "20"
                                 ],
                                 "dimension": "10,20",
                                 "intent": "in"
@@ -8177,7 +8231,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "const int *",
                                 "c_addr": "",
-                                "c_array_size2": "10*\t20",
                                 "c_const": "const ",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -8190,7 +8243,6 @@
                                 "cxx_nonconst_ptr": "const_cast<int *>\t(arg)",
                                 "cxx_type": "int",
                                 "cxx_var": "arg",
-                                "f_array_allocate": "(10,20)",
                                 "f_assumed_shape": "(:,:)",
                                 "f_dimension": "(10,20)",
                                 "f_intent": "IN",
@@ -8222,6 +8274,10 @@
                                     {
                                         "constant": "20"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10",
+                                    "20"
                                 ],
                                 "dimension": "10,20",
                                 "intent": "in"
@@ -8312,6 +8368,11 @@
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is always the same length.\n"
                 },
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "getAllocToFixedArray",
                 "options": {
                     "wrap_python": false
@@ -8345,7 +8406,6 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int **",
                                 "c_addr": "",
-                                "c_array_size2": "10",
                                 "c_const": "",
                                 "c_deref": "*",
                                 "c_member": "->",
@@ -8358,7 +8418,6 @@
                                 "cxx_nonconst_ptr": "count",
                                 "cxx_type": "int",
                                 "cxx_var": "count",
-                                "f_array_allocate": "(10)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(10)",
                                 "f_intent": "OUT",
@@ -8386,6 +8445,9 @@
                                     {
                                         "constant": "10"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10"
                                 ],
                                 "dimension": "10",
                                 "intent": "out"
@@ -8422,20 +8484,16 @@
                             "fmtdict": {
                                 "c_abstract_decl": "int **",
                                 "c_addr": "",
-                                "c_array_size2": "10",
                                 "c_const": "",
                                 "c_deref": "*",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_local_cxx": "SHC_count_cxx",
+                                "c_local_extents": "SHC_count_extents",
+                                "c_local_lower": "SHC_count_lower",
                                 "c_member": "->",
-                                "c_temp_extents_decl": "CFI_index_t SHT_count_extents[1];\nSHT_count_extents[0] = 10;\n",
-                                "c_temp_extents_use": "SHT_count_extents",
-                                "c_temp_lower_decl": "CFI_index_t SHT_count_lower[1] = {1};\n",
-                                "c_temp_lower_use": "SHT_count_lower",
                                 "c_type": "int",
                                 "c_var": "count",
                                 "c_var_cfi": "SHT_count_cfi",
-                                "c_var_extents": "SHT_count_extents",
-                                "c_var_lower": "SHT_count_lower",
                                 "cfi_type": "CFI_type_int",
                                 "cxx_abstract_decl": "int **",
                                 "cxx_addr": "",
@@ -8443,7 +8501,6 @@
                                 "cxx_nonconst_ptr": "count",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_count_cxx",
-                                "f_array_allocate": "(10)",
                                 "f_assumed_shape": "(:)",
                                 "f_deref_attr": ", allocatable",
                                 "f_dimension": "(:)",
@@ -8459,12 +8516,12 @@
                                 "i_intent_attr": ", intent(OUT)",
                                 "i_kind": "C_INT",
                                 "i_local_cxx": "SHC_count_cxx",
+                                "i_local_extents": "SHC_count_extents",
+                                "i_local_lower": "SHC_count_lower",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "integer(C_INT)",
                                 "i_var": "count",
                                 "i_var_cfi": "SHT_count_cfi",
-                                "i_var_extents": "SHT_count_extents",
-                                "i_var_lower": "SHT_count_lower",
                                 "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_INT",
@@ -8479,6 +8536,9 @@
                                     {
                                         "constant": "10"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10"
                                 ],
                                 "dimension": "10",
                                 "intent": "out"
@@ -9625,6 +9685,11 @@
                 },
                 "decl": "int *returnIntPtrToScalar(void)",
                 "declgen": "int *returnIntPtrToScalar(void)",
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "returnIntPtrToScalar",
                 "options": {},
                 "wrap": {
@@ -9685,16 +9750,17 @@
                                 "F_arguments": "",
                                 "F_subprogram": "function",
                                 "c_const": "",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_local_cdesc": "SHC_rv_cdesc",
                                 "c_local_cptr": "SHC_rv_cptr",
                                 "c_local_cxx": "SHC_rv_cxx",
                                 "c_local_err": "SHC_rv_err",
+                                "c_local_extents": "SHC_rv_extents",
                                 "c_local_fptr": "SHC_rv_fptr",
+                                "c_local_lower": "SHC_rv_lower",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
                                 "c_var_cfi": "SHT_rv_cfi",
-                                "c_var_extents": "SHT_rv_extents",
-                                "c_var_lower": "SHT_rv_lower",
                                 "cfi_type": "CFI_type_int",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
@@ -9718,7 +9784,9 @@
                                 "i_local_cptr": "SHC_rv_cptr",
                                 "i_local_cxx": "SHC_rv_cxx",
                                 "i_local_err": "SHC_rv_err",
+                                "i_local_extents": "SHC_rv_extents",
                                 "i_local_fptr": "SHC_rv_fptr",
+                                "i_local_lower": "SHC_rv_lower",
                                 "i_module_name": "iso_c_binding",
                                 "i_name_function": "c_return_int_ptr_to_scalar_CFI",
                                 "i_subprogram": "subroutine",
@@ -9726,8 +9794,6 @@
                                 "i_type": "integer(C_INT)",
                                 "i_var": "SHT_rv",
                                 "i_var_cfi": "SHT_rv_cfi",
-                                "i_var_extents": "SHT_rv_extents",
-                                "i_var_lower": "SHT_rv_lower",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
                                 "stmt_name": "f_function_native*_cfi_pointer",
@@ -9789,6 +9855,11 @@
                 },
                 "decl": "int *returnIntPtrToFixedArray(void) +dimension(10)",
                 "declgen": "int *returnIntPtrToFixedArray(void) +dimension(10)",
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "returnIntPtrToFixedArray",
                 "options": {},
                 "wrap": {
@@ -9803,7 +9874,6 @@
                                 "C_name": "POI_returnIntPtrToFixedArray",
                                 "C_prototype": "void",
                                 "C_return_type": "int *",
-                                "c_array_size2": "10",
                                 "c_const": "",
                                 "c_get_value": "",
                                 "c_type": "int",
@@ -9815,7 +9885,6 @@
                                 "cxx_rv_decl": "int *SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "f_array_allocate": "(10)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(10)",
                                 "f_kind": "C_INT",
@@ -9844,6 +9913,9 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "10"
+                                ],
                                 "dimension": "10",
                                 "intent": "function"
                             },
@@ -9860,22 +9932,18 @@
                                 "F_arg_c_call": "SHT_rv",
                                 "F_arguments": "",
                                 "F_subprogram": "function",
-                                "c_array_size2": "10",
                                 "c_const": "",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_local_cdesc": "SHC_rv_cdesc",
                                 "c_local_cptr": "SHC_rv_cptr",
                                 "c_local_cxx": "SHC_rv_cxx",
                                 "c_local_err": "SHC_rv_err",
+                                "c_local_extents": "SHC_rv_extents",
                                 "c_local_fptr": "SHC_rv_fptr",
-                                "c_temp_extents_decl": "CFI_index_t SHT_rv_extents[1];\nSHT_rv_extents[0] = 10;\n",
-                                "c_temp_extents_use": "SHT_rv_extents",
-                                "c_temp_lower_decl": "CFI_index_t SHT_rv_lower[1] = {1};\n",
-                                "c_temp_lower_use": "SHT_rv_lower",
+                                "c_local_lower": "SHC_rv_lower",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
                                 "c_var_cfi": "SHT_rv_cfi",
-                                "c_var_extents": "SHT_rv_extents",
-                                "c_var_lower": "SHT_rv_lower",
                                 "cfi_type": "CFI_type_int",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
@@ -9883,7 +9951,6 @@
                                 "cxx_rv_decl": "int *SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv_cxx",
-                                "f_array_allocate": "(10)",
                                 "f_assumed_shape": "(:)",
                                 "f_call_function": "c_return_int_ptr_to_fixed_array_CFI",
                                 "f_deref_attr": ", pointer",
@@ -9903,7 +9970,9 @@
                                 "i_local_cptr": "SHC_rv_cptr",
                                 "i_local_cxx": "SHC_rv_cxx",
                                 "i_local_err": "SHC_rv_err",
+                                "i_local_extents": "SHC_rv_extents",
                                 "i_local_fptr": "SHC_rv_fptr",
+                                "i_local_lower": "SHC_rv_lower",
                                 "i_module_name": "iso_c_binding",
                                 "i_name_function": "c_return_int_ptr_to_fixed_array_CFI",
                                 "i_subprogram": "subroutine",
@@ -9911,8 +9980,6 @@
                                 "i_type": "integer(C_INT)",
                                 "i_var": "SHT_rv",
                                 "i_var_cfi": "SHT_rv_cfi",
-                                "i_var_extents": "SHT_rv_extents",
-                                "i_var_lower": "SHT_rv_lower",
                                 "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_INT",
@@ -9927,6 +9994,9 @@
                                     {
                                         "constant": "10"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10"
                                 ],
                                 "dimension": "10",
                                 "intent": "function"
@@ -9985,6 +10055,11 @@
                 },
                 "decl": "const int *returnIntPtrToConstScalar(void)",
                 "declgen": "const int *returnIntPtrToConstScalar(void)",
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "returnIntPtrToConstScalar",
                 "options": {},
                 "wrap": {
@@ -10045,16 +10120,17 @@
                                 "F_arguments": "",
                                 "F_subprogram": "function",
                                 "c_const": "const ",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_local_cdesc": "SHC_rv_cdesc",
                                 "c_local_cptr": "SHC_rv_cptr",
                                 "c_local_cxx": "SHC_rv_cxx",
                                 "c_local_err": "SHC_rv_err",
+                                "c_local_extents": "SHC_rv_extents",
                                 "c_local_fptr": "SHC_rv_fptr",
+                                "c_local_lower": "SHC_rv_lower",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
                                 "c_var_cfi": "SHT_rv_cfi",
-                                "c_var_extents": "SHT_rv_extents",
-                                "c_var_lower": "SHT_rv_lower",
                                 "cfi_type": "CFI_type_int",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
@@ -10078,7 +10154,9 @@
                                 "i_local_cptr": "SHC_rv_cptr",
                                 "i_local_cxx": "SHC_rv_cxx",
                                 "i_local_err": "SHC_rv_err",
+                                "i_local_extents": "SHC_rv_extents",
                                 "i_local_fptr": "SHC_rv_fptr",
+                                "i_local_lower": "SHC_rv_lower",
                                 "i_module_name": "iso_c_binding",
                                 "i_name_function": "c_return_int_ptr_to_const_scalar_CFI",
                                 "i_subprogram": "subroutine",
@@ -10086,8 +10164,6 @@
                                 "i_type": "integer(C_INT)",
                                 "i_var": "SHT_rv",
                                 "i_var_cfi": "SHT_rv_cfi",
-                                "i_var_extents": "SHT_rv_extents",
-                                "i_var_lower": "SHT_rv_lower",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
                                 "stmt_name": "f_function_native*_cfi_pointer",
@@ -10150,6 +10226,11 @@
                 },
                 "decl": "const int *returnIntPtrToFixedConstArray(void) +dimension(10)",
                 "declgen": "const int *returnIntPtrToFixedConstArray(void) +dimension(10)",
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "returnIntPtrToFixedConstArray",
                 "options": {},
                 "wrap": {
@@ -10164,7 +10245,6 @@
                                 "C_name": "POI_returnIntPtrToFixedConstArray",
                                 "C_prototype": "void",
                                 "C_return_type": "const int *",
-                                "c_array_size2": "10",
                                 "c_const": "const ",
                                 "c_get_value": "",
                                 "c_type": "int",
@@ -10176,7 +10256,6 @@
                                 "cxx_rv_decl": "const int *SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "f_array_allocate": "(10)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(10)",
                                 "f_kind": "C_INT",
@@ -10205,6 +10284,9 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "10"
+                                ],
                                 "dimension": "10",
                                 "intent": "function"
                             },
@@ -10221,22 +10303,18 @@
                                 "F_arg_c_call": "SHT_rv",
                                 "F_arguments": "",
                                 "F_subprogram": "function",
-                                "c_array_size2": "10",
                                 "c_const": "const ",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_local_cdesc": "SHC_rv_cdesc",
                                 "c_local_cptr": "SHC_rv_cptr",
                                 "c_local_cxx": "SHC_rv_cxx",
                                 "c_local_err": "SHC_rv_err",
+                                "c_local_extents": "SHC_rv_extents",
                                 "c_local_fptr": "SHC_rv_fptr",
-                                "c_temp_extents_decl": "CFI_index_t SHT_rv_extents[1];\nSHT_rv_extents[0] = 10;\n",
-                                "c_temp_extents_use": "SHT_rv_extents",
-                                "c_temp_lower_decl": "CFI_index_t SHT_rv_lower[1] = {1};\n",
-                                "c_temp_lower_use": "SHT_rv_lower",
+                                "c_local_lower": "SHC_rv_lower",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
                                 "c_var_cfi": "SHT_rv_cfi",
-                                "c_var_extents": "SHT_rv_extents",
-                                "c_var_lower": "SHT_rv_lower",
                                 "cfi_type": "CFI_type_int",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
@@ -10244,7 +10322,6 @@
                                 "cxx_rv_decl": "const int *SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv_cxx",
-                                "f_array_allocate": "(10)",
                                 "f_assumed_shape": "(:)",
                                 "f_call_function": "c_return_int_ptr_to_fixed_const_array_CFI",
                                 "f_deref_attr": ", pointer",
@@ -10264,7 +10341,9 @@
                                 "i_local_cptr": "SHC_rv_cptr",
                                 "i_local_cxx": "SHC_rv_cxx",
                                 "i_local_err": "SHC_rv_err",
+                                "i_local_extents": "SHC_rv_extents",
                                 "i_local_fptr": "SHC_rv_fptr",
+                                "i_local_lower": "SHC_rv_lower",
                                 "i_module_name": "iso_c_binding",
                                 "i_name_function": "c_return_int_ptr_to_fixed_const_array_CFI",
                                 "i_subprogram": "subroutine",
@@ -10272,8 +10351,6 @@
                                 "i_type": "integer(C_INT)",
                                 "i_var": "SHT_rv",
                                 "i_var_cfi": "SHT_rv_cfi",
-                                "i_var_extents": "SHT_rv_extents",
-                                "i_var_lower": "SHT_rv_lower",
                                 "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_INT",
@@ -10288,6 +10365,9 @@
                                     {
                                         "constant": "10"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10"
                                 ],
                                 "dimension": "10",
                                 "intent": "function"
@@ -11037,6 +11117,11 @@
                 },
                 "decl": "int *returnIntAllocToFixedArray(void) +dimension(10)+deref(allocatable)",
                 "declgen": "int *returnIntAllocToFixedArray(void) +deref(allocatable)+dimension(10)",
+                "helpers": {
+                    "fc": [
+                        "lower_bounds_CFI"
+                    ]
+                },
                 "name": "returnIntAllocToFixedArray",
                 "options": {
                     "wrap_python": false
@@ -11053,7 +11138,6 @@
                                 "C_name": "POI_returnIntAllocToFixedArray",
                                 "C_prototype": "void",
                                 "C_return_type": "int *",
-                                "c_array_size2": "10",
                                 "c_const": "",
                                 "c_get_value": "",
                                 "c_type": "int",
@@ -11065,7 +11149,6 @@
                                 "cxx_rv_decl": "int *SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "f_array_allocate": "(10)",
                                 "f_assumed_shape": "(:)",
                                 "f_dimension": "(10)",
                                 "f_kind": "C_INT",
@@ -11094,6 +11177,9 @@
                                         "constant": "10"
                                     }
                                 ],
+                                "dim_shape": [
+                                    "10"
+                                ],
                                 "dimension": "10",
                                 "intent": "function"
                             },
@@ -11110,18 +11196,14 @@
                                 "F_arg_c_call": "SHT_rv",
                                 "F_arguments": "",
                                 "F_subprogram": "function",
-                                "c_array_size2": "10",
                                 "c_const": "",
+                                "c_helper_lower_bounds_CFI": "SHT_lower_CFI",
                                 "c_local_cxx": "SHC_rv_cxx",
-                                "c_temp_extents_decl": "CFI_index_t SHT_rv_extents[1];\nSHT_rv_extents[0] = 10;\n",
-                                "c_temp_extents_use": "SHT_rv_extents",
-                                "c_temp_lower_decl": "CFI_index_t SHT_rv_lower[1] = {1};\n",
-                                "c_temp_lower_use": "SHT_rv_lower",
+                                "c_local_extents": "SHC_rv_extents",
+                                "c_local_lower": "SHC_rv_lower",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
                                 "c_var_cfi": "SHT_rv_cfi",
-                                "c_var_extents": "SHT_rv_extents",
-                                "c_var_lower": "SHT_rv_lower",
                                 "cfi_type": "CFI_type_int",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
@@ -11129,7 +11211,6 @@
                                 "cxx_rv_decl": "int *SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv_cxx",
-                                "f_array_allocate": "(10)",
                                 "f_assumed_shape": "(:)",
                                 "f_call_function": "c_return_int_alloc_to_fixed_array_CFI",
                                 "f_deref_attr": ", allocatable",
@@ -11146,6 +11227,8 @@
                                 "i_intent_attr": ", intent(OUT)",
                                 "i_kind": "C_INT",
                                 "i_local_cxx": "SHC_rv_cxx",
+                                "i_local_extents": "SHC_rv_extents",
+                                "i_local_lower": "SHC_rv_lower",
                                 "i_module_name": "iso_c_binding",
                                 "i_name_function": "c_return_int_alloc_to_fixed_array_CFI",
                                 "i_subprogram": "subroutine",
@@ -11153,8 +11236,6 @@
                                 "i_type": "integer(C_INT)",
                                 "i_var": "SHT_rv",
                                 "i_var_cfi": "SHT_rv_cfi",
-                                "i_var_extents": "SHT_rv_extents",
-                                "i_var_lower": "SHT_rv_lower",
                                 "idtor": "0",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_INT",
@@ -11169,6 +11250,9 @@
                                     {
                                         "constant": "10"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "10"
                                 ],
                                 "dimension": "10",
                                 "intent": "function"

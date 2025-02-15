@@ -4235,9 +4235,6 @@
                                 "F_arg_c_call": "SHT_rv_cdesc",
                                 "F_arguments": "",
                                 "F_subprogram": "function",
-                                "c_array_shape": "\nSHT_rv_cdesc->shape[0] = 2;",
-                                "c_array_size": "SHT_rv_cdesc->shape[0]",
-                                "c_array_size2": "2",
                                 "c_const": "",
                                 "c_helper_array_context": "STR_SHROUD_array",
                                 "c_type": "Cstruct1",
@@ -4250,11 +4247,8 @@
                                 "cxx_rv_decl": "Cstruct1 *SHC_rv",
                                 "cxx_type": "Cstruct1",
                                 "cxx_var": "SHC_rv",
-                                "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
                                 "f_call_function": "c_return_struct_ptr_array_bufferify",
-                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                 "f_deref_attr": ", pointer",
                                 "f_derived_type": "cstruct1",
                                 "f_dimension": "(:)",
@@ -4292,6 +4286,9 @@
                                     {
                                         "constant": "2"
                                     }
+                                ],
+                                "dim_shape": [
+                                    "2"
                                 ],
                                 "dimension": "2",
                                 "intent": "function"
@@ -6321,9 +6318,6 @@
                                 "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
                                 "F_arguments": "SH_this",
                                 "F_subprogram": "function",
-                                "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->nitems+SH_this->nitems;",
-                                "c_array_size": "SHT_rv_cdesc->shape[0]",
-                                "c_array_size2": "SH_this->nitems+SH_this->nitems",
                                 "c_const": "",
                                 "c_helper_array_context": "STR_SHROUD_array",
                                 "c_type": "int",
@@ -6335,11 +6329,8 @@
                                 "cxx_rv_decl": "int *SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
                                 "f_call_function": "c_cstruct_list_get_ivalue",
-                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                 "f_deref_attr": ", pointer",
                                 "f_dimension": "(:)",
                                 "f_helper_array_context": "STR_SHROUD_array",
@@ -6381,6 +6372,9 @@
                                             "name": "nitems"
                                         }
                                     }
+                                ],
+                                "dim_shape": [
+                                    "SH_this->nitems+SH_this->nitems"
                                 ],
                                 "dimension": "nitems+nitems",
                                 "intent": "getter"
@@ -6767,9 +6761,6 @@
                                 "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
                                 "F_arguments": "SH_this",
                                 "F_subprogram": "function",
-                                "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->nitems*TWO;",
-                                "c_array_size": "SHT_rv_cdesc->shape[0]",
-                                "c_array_size2": "SH_this->nitems*TWO",
                                 "c_const": "",
                                 "c_helper_array_context": "STR_SHROUD_array",
                                 "c_type": "double",
@@ -6781,11 +6772,8 @@
                                 "cxx_rv_decl": "double *SHC_rv",
                                 "cxx_type": "double",
                                 "cxx_var": "SHC_rv",
-                                "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
                                 "f_call_function": "c_cstruct_list_get_dvalue",
-                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                 "f_deref_attr": ", pointer",
                                 "f_dimension": "(:)",
                                 "f_helper_array_context": "STR_SHROUD_array",
@@ -6827,6 +6815,9 @@
                                             "name": "TWO"
                                         }
                                     }
+                                ],
+                                "dim_shape": [
+                                    "SH_this->nitems*TWO"
                                 ],
                                 "dimension": "nitems*TWO",
                                 "intent": "getter"

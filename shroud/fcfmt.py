@@ -530,48 +530,11 @@ class FillFormat(object):
             visitor.visit(meta["dim_ast"])
             fmt.rank = str(visitor.rank)
             if fmt.rank != "assumed":
-                fmtdim = []
-                for dim in visitor.shape:
-                    fmtdim.append(dim)
-                if fmtdim:
-                    # Multiply dimensions together to get size.
-                    fmt.c_array_size2 = "*\t".join(fmtdim)
-
-                if hasattr(fmt, "c_var_cdesc"):
-                    # array_type is assumed to be c_var_cdesc.
-                    # Assign each rank of dimension.
-                    fmtshape = []
-                    fmtsize = []
-                    for i, dim in enumerate(visitor.shape):
-                        fmtshape.append("{}->shape[{}] = {};".format(
-                            fmt.c_var_cdesc, i, dim))
-                        fmtsize.append("{}->shape[{}]".format(
-                            fmt.c_var_cdesc, i, dim))
-                    fmt.c_array_shape = "\n" + "\n".join(fmtshape)
-                    if fmtsize:
-                        # Multiply extents together to get size.
-                        fmt.c_array_size = "*\t".join(fmtsize)
-                if hasattr(fmt, "c_var_extents"):
-                    # Used with CFI_establish
-                    fmtextent = []
-                    for i, dim in enumerate(visitor.shape):
-                        fmtextent.append("{}[{}] = {};\n".format(
-                            fmt.c_var_extents, i, dim))
-                    fmt.c_temp_extents_decl = (
-                        "CFI_index_t {0}[{1}];\n{2}".
-                        format(fmt.c_var_extents, fmt.rank,
-                               "".join(fmtextent)))
-                    # Used with CFI_setpointer to set lower bound to 1.
-                    fmt.c_temp_lower_decl = (
-                        "CFI_index_t {0}[{1}] = {{{2}}};\n".
-                        format(fmt.c_var_lower, fmt.rank,
-                               ",".join(["1" for x in range(visitor.rank)])))
-                    fmt.c_temp_extents_use = fmt.c_var_extents
-                    fmt.c_temp_lower_use = fmt.c_var_lower
+                meta["dim_shape"] = visitor.shape
 
         if meta["len"]:
             fmt.attr_len = meta["len"]
-                
+
     def set_fmt_fields_iface(self, ast, bind, ntypemap):
         """Set format fields for interface.
 
@@ -693,15 +656,11 @@ class FillFormat(object):
             if rank == 0:
                 # Assigned to cdesc to pass metadata to C wrapper.
                 fmt.size = "1"
-                if hasattr(fmt, "f_var_cdesc"):
-                    fmt.f_cdesc_shape = ""
             else:
                 fmt.size = wformat("size({f_var})", fmt)
                 fmt.f_assumed_shape = fortran_ranks[rank]
                 fmt.f_dimension = fortran_ranks[rank]
                 fmt.i_dimension = "(*)"
-                if hasattr(fmt, "f_var_cdesc"):
-                    fmt.f_cdesc_shape = wformat("\n{f_var_cdesc}%shape(1:{rank}) = shape({f_var})", fmt)
         elif dim:
             visitor = ToDimension(cls, fcn, fmt)
             visitor.visit(dim)
@@ -710,23 +669,12 @@ class FillFormat(object):
             if rank != "assumed" and rank > 0:
                 fmt.f_assumed_shape = fortran_ranks[rank]
                 fmt.i_dimension = "(*)"
-                # XXX use f_var_cdesc since shape is assigned in C
-                fmt.f_array_allocate = "(" + ",".join(visitor.shape) + ")"
                 if meta["deref"] in ["allocatable","pointer"]:
                     fmt.f_dimension = fmt.f_assumed_shape
                 elif visitor.compute_shape:
                     fmt.f_dimension = fmt.f_assumed_shape
                 else:
-                    fmt.f_dimension = fmt.f_array_allocate
-                if hasattr(fmt, "f_var_cdesc"):
-                    # XXX kludge, name is assumed to be f_var_cdesc.
-                    fmt.f_cdesc_shape = wformat("\n{f_var_cdesc}%shape(1:{rank}) = shape({f_var})", fmt)
-                    # XXX - maybe avoid {rank} with: {f_var_cdes}(:rank({f_var})) = shape({f_var})
-                    fmt.f_array_allocate = "(" + ",".join(
-                        ["{0}%shape({1})".format(fmt.f_var_cdesc, r)
-                         for r in range(1, rank+1)]) + ")"
-                    fmt.f_array_shape = wformat(
-                        ",\t {f_var_cdesc}%shape(1:{rank})", fmt)
+                    fmt.f_dimension = "(" + ",".join(visitor.shape) + ")"
 
     def apply_helpers_from_stmts(self, node, bind):
         """
@@ -931,7 +879,7 @@ def set_share_function_format(node, bind, wlang):
 
     fmt.stmt_name = bind.stmt.name
     fmt.typemap = node.ast.typemap
-    fmt.gen = FormatGen(node, node.ast, fmt, wlang)
+    fmt.gen = FormatGen(node, node.ast, bind, wlang)
     
 def set_f_function_format(node, bind, subprogram):
     fmt = bind.fmtdict
@@ -954,7 +902,7 @@ def set_f_arg_format(node, arg, bind, wlang):
 
     fmt.stmt_name = bind.stmt.name
     fmt.typemap = arg.declarator.typemap
-    fmt.gen = FormatGen(node, arg, fmt, wlang)
+    fmt.gen = FormatGen(node, arg, bind, wlang)
     
     intent = meta["intent"].upper()
     if intent == "SETTER":
@@ -1161,7 +1109,7 @@ class FormatCXXdecl(object):
     def __str__(self):
         decl = self.state.ast.to_string_declarator(abstract=True)
         return decl
-            
+
 class FormatCIdecl(object):
     """
     Return a declaration used by the C interface.
@@ -1190,11 +1138,16 @@ class FormatGen(object):
       "{gen.cdecl}"
     """
 
-    def __init__(self, func, ast, fmtdict, wlang):
+    def __init__(self, func, ast, bind, wlang):
+        """
+        func - ast.FunctionNode
+        ast  - declast.Declaration
+        """
         self.language = func.get_language()
         self.ast     = ast
-        self.fmtdict = fmtdict
-        state = self.state = StateTuple(ast, fmtdict, self.language, wlang)
+        self.bind    = bind
+        self.fmtdict = bind.fmtdict
+        state = self.state = StateTuple(ast, bind.fmtdict, self.language, wlang)
         self._cache = {}
 
         self.nonconst_addr = NonConst(state)
@@ -1214,6 +1167,140 @@ class FormatGen(object):
     def name(self):
         return self.state.ast.declarator.user_name
 
+    ##########
+    @property
+    def f_allocate_shape(self):
+        """Shape to use with ALLOCATE statement from cdesc variable.
+        Blank if scalar.
+        """
+        f_var_cdesc = self.fmtdict.get("f_var_cdesc", "===>f_var_cdesc<===")
+        rank = int(self.fmtdict.get("rank", 0))
+        if rank == 0:
+            value = ""
+        else:
+            value = "(" + ",".join(
+                ["{0}%shape({1})".format(f_var_cdesc, r)
+                 for r in range(1, rank+1)]) + ")"
+        return value
+
+    @property
+    def c_f_pointer_shape(self):
+        """Shape for C_F_POINTER intrinsic from cdesc variable.
+        Blank for scalars.
+        """
+        f_var_cdesc = self.fmtdict.get("f_var_cdesc", "===>f_var_cdesc<===")
+        rank = self.fmtdict.get("rank", "0")
+        if int(rank) == 0:
+            value = ""
+        else:
+            value = ",\t {0}%shape(1:{1})".format(f_var_cdesc, rank)
+        return value
+
+    @property
+    def f_cdesc_shape(self):
+        """Assign variable shape to cdesc in Fortran using SHAPE intrinsic.
+        This will be passed to C wrapper.
+        Blank for scalars.
+        """
+        fmtdict = self.fmtdict
+        f_var = fmtdict.get("f_var", "===>f_var<===")
+        f_var_cdesc = fmtdict.get("f_var_cdesc", "===>f_var_cdesc<===")
+        rank = fmtdict.get("rank", "0")
+        if int(rank) == 0:
+            value = ""
+        else:
+            value = "\n{0}%shape(1:{1}) = shape({2})".format(f_var_cdesc, rank, f_var)
+        return value
+
+    ##########
+    @property
+    def c_dimension_size(self):
+        """Compute size of array from dimension attribute.
+        "1" if scalar.
+        """
+        shape = self.bind.meta.get("dim_shape")
+        if shape is None:
+            return "1"
+        fmtdim = ["({})".format(dim) for dim in shape]
+        value = "*".join(fmtdim)
+        return value
+
+    @property
+    def c_array_shape(self):
+        """Assign array shape to a cdesc variable in C.
+        Blank if scalar.
+        """
+        shape = self.bind.meta.get("dim_shape")
+        if shape is None:
+            return ""
+        c_var_cdesc = self.fmtdict.get("c_var_cdesc",
+                                       "===>c_var_cdesc<===")
+        fmtshape = []
+        for i, dim in enumerate(shape):
+            fmtshape.append("{}->shape[{}] = {};".format(
+                c_var_cdesc, i, dim))
+        value = "\n" + "\n".join(fmtshape)
+        return value
+
+    @property
+    def c_array_size(self):
+        """Return expression to compute the size of an array.
+        c_array_shape must be used first to define c_var_cdesc->shape.
+        "1" if scalar.
+        """
+        shape = self.bind.meta.get("dim_shape")
+        if shape is None:
+            return "1"
+        c_var_cdesc = self.fmtdict.get("c_var_cdesc",
+                                       "===>c_var_cdesc<===")
+        fmtsize = []
+        for i, dim in enumerate(shape):
+            fmtsize.append("{}->shape[{}]".format(
+                c_var_cdesc, i, dim))
+        value = "*\t".join(fmtsize)
+        return value
+
+    @property
+    def c_extents_decl(self):
+        """Define the shape in local variable extents
+        in a CFI_index_t variable.
+        Blank if scalar.
+        """
+        shape = self.bind.meta.get("dim_shape")
+        if shape is None:
+            return ""
+        c_local_extents = self.fmtdict.get("c_local_extents",
+                                           "===>c_local_extents<===")
+        value = "CFI_index_t {0}[] = {{{1}}};\n".format(
+            c_local_extents, ",\t ".join(shape))
+        return value
+
+    @property
+    def c_extents_use(self):
+        """Return variable name of extents of CFI array.
+        NULL if scalar.
+        """
+        shape = self.bind.meta.get("dim_shape")
+        if shape is None:
+            return "NULL"
+        c_local_extents = self.fmtdict.get("c_local_extents",
+                                           "===>c_local_extents<===")
+        return c_local_extents
+
+    @property
+    def c_lower_use(self):
+        """Return variable name of lower bounds of CFI array
+        from helper lower_bounds_CFI.
+        NULL if scalar.
+        """
+        shape = self.bind.meta.get("dim_shape")
+        if shape is None:
+            return "NULL"
+        helper = self.fmtdict.get("c_helper_lower_bounds_CFI",
+                                  "===>c_helper_lower_bounds_CFI<===")
+        return helper
+
+    ##########
     def __str__(self):
         """  "{gen}" returns the name"""
         return self.name
