@@ -908,7 +908,7 @@ def set_share_function_format(node, bind, wlang):
 
     fmt.stmt_name = bind.stmt.name
     fmt.typemap = node.ast.typemap
-    fmt.gen = FormatGen(node, node.ast, fmt, wlang)
+    fmt.gen = FormatGen(node, node.ast, bind, wlang)
     
 def set_f_function_format(node, bind, subprogram):
     fmt = bind.fmtdict
@@ -931,7 +931,7 @@ def set_f_arg_format(node, arg, bind, wlang):
 
     fmt.stmt_name = bind.stmt.name
     fmt.typemap = arg.declarator.typemap
-    fmt.gen = FormatGen(node, arg, fmt, wlang)
+    fmt.gen = FormatGen(node, arg, bind, wlang)
     
     intent = meta["intent"].upper()
     if intent == "SETTER":
@@ -1060,7 +1060,7 @@ def find_result_converter(wlang, language, ntypemap):
 
 ######################################################################
 
-StateTuple = collections.namedtuple("StateType", "node ast fmtdict language wlang")
+StateTuple = collections.namedtuple("StateType", "ast fmtdict language wlang")
 
 class NonConst(object):
     """Return a non-const pointer to argument"""
@@ -1167,15 +1167,16 @@ class FormatGen(object):
       "{gen.cdecl}"
     """
 
-    def __init__(self, func, ast, fmtdict, wlang):
+    def __init__(self, func, ast, bind, wlang):
         """
         func - ast.FunctionNode
         ast  - declast.Declaration
         """
         self.language = func.get_language()
         self.ast     = ast
-        self.fmtdict = fmtdict
-        state = self.state = StateTuple(func, ast, fmtdict, self.language, wlang)
+        self.bind    = bind
+        self.fmtdict = bind.fmtdict
+        state = self.state = StateTuple(ast, bind.fmtdict, self.language, wlang)
         self._cache = {}
 
         self.nonconst_addr = NonConst(state)
@@ -1201,8 +1202,8 @@ class FormatGen(object):
         """Shape to use with ALLOCATE statement.
         Blank if scalar.
         """
-        f_var_cdesc = self.state.fmtdict.get("f_var_cdesc", "===>f_var_cdesc<===")
-        rank = int(self.state.fmtdict.get("rank", 0))
+        f_var_cdesc = self.fmtdict.get("f_var_cdesc", "===>f_var_cdesc<===")
+        rank = int(self.fmtdict.get("rank", 0))
         if rank == 0:
             value = ""
         else:
@@ -1216,8 +1217,8 @@ class FormatGen(object):
         """Shape for C_F_POINTER intrinsic.
         Blank for scalars.
         """
-        f_var_cdesc = self.state.fmtdict.get("f_var_cdesc", "===>f_var_cdesc<===")
-        rank = self.state.fmtdict.get("rank", "0")
+        f_var_cdesc = self.fmtdict.get("f_var_cdesc", "===>f_var_cdesc<===")
+        rank = self.fmtdict.get("rank", "0")
         if int(rank) == 0:
             value = ""
         else:
@@ -1230,7 +1231,7 @@ class FormatGen(object):
         This will be passed to C wrapper.
         Blank for scalars.
         """
-        fmtdict = self.state.fmtdict
+        fmtdict = self.fmtdict
         f_var = fmtdict.get("f_var", "===>f_var<===")
         f_var_cdesc = fmtdict.get("f_var_cdesc", "===>f_var_cdesc<===")
         rank = fmtdict.get("rank", "0")
@@ -1246,12 +1247,11 @@ class FormatGen(object):
         """Assign array shape to a cdesc variable in C.
         Blank if scalar.
         """
-        state = self.state
-        bind = statements.get_arg_bind(state.node, state.ast, state.wlang)
-        shape = bind.meta.get("dim_shape")
+        shape = self.bind.meta.get("dim_shape")
         if shape is None:
             return ""
-        c_var_cdesc = self.state.fmtdict.get("c_var_cdesc", "===>c_var_cdesc<===")
+        c_var_cdesc = self.fmtdict.get("c_var_cdesc",
+                                       "===>c_var_cdesc<===")
         fmtshape = []
         for i, dim in enumerate(shape):
             fmtshape.append("{}->shape[{}] = {};".format(
@@ -1265,12 +1265,11 @@ class FormatGen(object):
         c_array_shape must be used first to define c_var_cdesc->shape.
         Blank if scalar.
         """
-        state = self.state
-        bind = statements.get_arg_bind(state.node, state.ast, state.wlang)
-        shape = bind.meta.get("dim_shape")
+        shape = self.bind.meta.get("dim_shape")
         if shape is None:
             return ""
-        c_var_cdesc = self.state.fmtdict.get("c_var_cdesc", "===>c_var_cdesc<===")
+        c_var_cdesc = self.fmtdict.get("c_var_cdesc",
+                                       "===>c_var_cdesc<===")
         fmtsize = []
         for i, dim in enumerate(shape):
             fmtsize.append("{}->shape[{}]".format(
@@ -1283,12 +1282,11 @@ class FormatGen(object):
         """Define the shape in local variable extents.
         Blank if scalar.
         """
-        state = self.state
-        bind = statements.get_arg_bind(state.node, state.ast, state.wlang)
-        shape = bind.meta.get("dim_shape")
+        shape = self.bind.meta.get("dim_shape")
         if shape is None:
             return ""
-        c_local_extents = self.state.fmtdict.get("c_local_extents", "===>c_local_extents<===")
+        c_local_extents = self.fmtdict.get("c_local_extents",
+                                           "===>c_local_extents<===")
         value = "CFI_index_t {0}[] = {{{1}}};\n".format(
             c_local_extents, ",\t ".join(shape))
         return value
@@ -1298,12 +1296,11 @@ class FormatGen(object):
         """Return variabale name of extents of CFI array.
         NULL if scalar.
         """
-        state = self.state
-        bind = statements.get_arg_bind(state.node, state.ast, state.wlang)
-        shape = bind.meta.get("dim_shape")
+        shape = self.bind.meta.get("dim_shape")
         if shape is None:
             return "NULL"
-        c_local_extents = self.state.fmtdict.get("c_local_extents", "===>c_local_extents<===")
+        c_local_extents = self.fmtdict.get("c_local_extents",
+                                           "===>c_local_extents<===")
         return c_local_extents
 
     @property
@@ -1312,13 +1309,11 @@ class FormatGen(object):
         from helper lower_bounds_CFI.
         NULL if scalar.
         """
-        state = self.state
-        bind = statements.get_arg_bind(state.node, state.ast, state.wlang)
-        shape = bind.meta.get("dim_shape")
+        shape = self.bind.meta.get("dim_shape")
         if shape is None:
             return "NULL"
-        helper = self.state.fmtdict.get("c_helper_lower_bounds_CFI",
-                                        "===>c_helper_lower_bounds_CFI<===")
+        helper = self.fmtdict.get("c_helper_lower_bounds_CFI",
+                                  "===>c_helper_lower_bounds_CFI<===")
         return helper
 
     ##########
