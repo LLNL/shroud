@@ -1170,7 +1170,7 @@ class FormatGen(object):
     ##########
     @property
     def f_allocate_shape(self):
-        """Shape to use with ALLOCATE statement.
+        """Shape to use with ALLOCATE statement from cdesc variable.
         Blank if scalar.
         """
         f_var_cdesc = self.fmtdict.get("f_var_cdesc", "===>f_var_cdesc<===")
@@ -1185,7 +1185,7 @@ class FormatGen(object):
 
     @property
     def c_f_pointer_shape(self):
-        """Shape for C_F_POINTER intrinsic.
+        """Shape for C_F_POINTER intrinsic from cdesc variable.
         Blank for scalars.
         """
         f_var_cdesc = self.fmtdict.get("f_var_cdesc", "===>f_var_cdesc<===")
@@ -1215,7 +1215,7 @@ class FormatGen(object):
     ##########
     @property
     def c_dimension_size(self):
-        """Compute size of array from dimensions.
+        """Compute size of array from dimension attribute.
         "1" if scalar.
         """
         shape = self.bind.meta.get("dim_shape")
@@ -1262,7 +1262,8 @@ class FormatGen(object):
 
     @property
     def c_extents_decl(self):
-        """Define the shape in local variable extents.
+        """Define the shape in local variable extents
+        in a CFI_index_t variable.
         Blank if scalar.
         """
         shape = self.bind.meta.get("dim_shape")
@@ -1276,7 +1277,7 @@ class FormatGen(object):
 
     @property
     def c_extents_use(self):
-        """Return variabale name of extents of CFI array.
+        """Return variable name of extents of CFI array.
         NULL if scalar.
         """
         shape = self.bind.meta.get("dim_shape")

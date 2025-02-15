@@ -4602,6 +4602,7 @@
         }
     },
     {
+        "sphinx-start-after": "c_mixin_cfi_native_allocatable",
         "name": "c_mixin_cfi_native_allocatable",
         "comments": [
             "Allocate copy of C pointer (requires +dimension)."
@@ -4620,7 +4621,8 @@
         ],
         "helper": [
             "lower_bounds_CFI"
-        ]
+        ],
+        "sphinx-end-before": "c_mixin_cfi_native_allocatable"
     },
     {
         "name": "c_mixin_cfi_native_pointer",

@@ -327,6 +327,74 @@ pointers and references.
 
 
 
+Some attributes can be used to generate strings based on the declaration and attributes.
+
+.. defined in fcfmt.py
+
+Dimension
+^^^^^^^^^
+
+Since the rank of arrays can vary, the attribute can create a varying number of lines.
+
+.. Move these into section talking about cdesc or CFI.
+
+* gen.f_allocate_shape
+
+  Shape to use with ``ALLOCATE`` statement from ``cdesc`` variable.
+  Blank if scalar.
+
+* gen.c_f_pointer
+
+  Shape for ``C_F_POINTER`` intrinsic from ``cdesc`` variable.
+  Blank for scalars.
+
+* gen.f_cdesc_shape
+
+  Assign variable shape to ``cdesc`` in Fortran using ``SHAPE`` intrinsic.
+  This will be passed to C wrapper.
+  Blank for scalars.
+  
+* gen.c_dimension_size
+
+  Compute size of array from *dimension* attribute.
+  ``1`` if scalar.
+  
+* gen.c_array_shape
+
+  Assign array shape to a *cdesc* variable in C.
+  Blank if scalar.
+  
+* gen.c_array_size
+  
+  Return expression to compute the size of an array.
+  `*c_array_shape* must be used first to define ``c_var_cdesc->shape``.
+  ``1`` if scalar.
+
+* gen.c_extents_decl
+
+  Define the shape in local variable extents
+  in a ``CFI_index_t`` variable.
+  Blank if scalar.
+  
+* gen.c_extents_use
+  
+  Return variable name of extents of CFI array.
+  ``NULL`` if scalar.
+
+* gen.c_lower_use
+  
+  Return variable name of lower bounds of CFI array
+  from helper *lower_bounds_CFI*.
+  ``NULL`` if scalar.
+
+Examle with CFI arrays.
+  
+.. literalinclude:: ../shroud/fc-statements.json
+   :language: json
+   :start-after: "sphinx-start-after": "c_mixin_cfi_native_allocatable"
+   :end-before: "sphinx-end-before": "c_mixin_cfi_native_allocatable"
+   :dedent: 8
+
 .. mixin naming conventions
    Must start with c_mixin_ or f_mixin_
    Group together by adding cdesc_  or capsule_ or _cfi.
