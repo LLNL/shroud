@@ -1666,10 +1666,6 @@ gen.f_cdesc_shape
     It will be blank for a scalar.
     ex: ``\nSHT_arg_cdesc%shape(1:1) = shape(arg)``
 
-f_declare_shape_prefix
-
-f_declare_shape_array
-
 f_derived_type
    Derived type name for shadow class.
 

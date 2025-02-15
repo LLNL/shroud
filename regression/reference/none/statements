@@ -16013,7 +16013,7 @@ f_mixin_helper_array_string_allocatable:
   - std::string *{cxx_var};
   c_post_call:
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
-  - '{c_var_cdesc}->size     = {gen.c_array_size};'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
   - if ({attr_len} > 0) {{+
   - '{c_var_cdesc}->elem_len = {attr_len};'
   - -}} else {{+
@@ -17769,7 +17769,7 @@ f_out_string**_cdesc_allocatable:
   - '&{cxx_var}'
   c_post_call:
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
-  - '{c_var_cdesc}->size     = {gen.c_array_size};'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
   - if ({attr_len} > 0) {{+
   - '{c_var_cdesc}->elem_len = {attr_len};'
   - -}} else {{+
