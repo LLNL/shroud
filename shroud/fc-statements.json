@@ -356,7 +356,7 @@
             "Call function and assign to a local C++ variable."
         ],
         "c_call": [
-            "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+            "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
         ],
         "c_local": [
             "cxx"

@@ -1102,6 +1102,25 @@ class FormatCXXdecl(object):
         varname = self.state.fmtdict.get(name) or "===>{}<===".format(name)
         decl = gen_arg_as_cxx(self.state.ast,
                               with_template_args=True,
+                              name=varname)
+        return decl
+
+    def __str__(self):
+        decl = self.state.ast.to_string_declarator(abstract=True)
+        return decl
+
+class FormatCXXresult(object):
+    """
+    Return the original declaration from the ast without function parameters.
+    """
+    def __init__(self, state):
+        self.state = state
+
+    def __getattr__(self, name):
+        """If name is in fmtdict, use it. Else use name directly"""
+        varname = self.state.fmtdict.get(name) or "===>{}<===".format(name)
+        decl = gen_arg_as_cxx(self.state.ast,
+                              with_template_args=True,
                               add_params=False,  # Required for function results
                               name=varname)
         return decl
@@ -1153,6 +1172,7 @@ class FormatGen(object):
         self.nonconst_addr = NonConst(state)
         self.cdecl = FormatCdecl(state)
         self.cxxdecl = FormatCXXdecl(state)
+        self.cxxresult = FormatCXXresult(state)
         self.cidecl = FormatCIdecl(state)
 
     @property

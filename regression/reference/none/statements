@@ -230,7 +230,7 @@ c_function_char*_arg:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   c_temps:
@@ -290,7 +290,7 @@ c_function_char*_buf_arg:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   c_temps:
@@ -350,7 +350,7 @@ c_function_char*_buf_copy:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   c_temps:
@@ -481,7 +481,7 @@ c_function_shadow&_capptr:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -528,7 +528,7 @@ c_function_shadow&_capptr_caller:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -575,7 +575,7 @@ c_function_shadow&_capptr_library:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -617,7 +617,7 @@ c_function_shadow&_capsule:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -655,7 +655,7 @@ c_function_shadow&_capsule_caller:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -693,7 +693,7 @@ c_function_shadow&_capsule_library:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -736,7 +736,7 @@ c_function_shadow*_capptr:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -783,7 +783,7 @@ c_function_shadow*_capptr_caller:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -830,7 +830,7 @@ c_function_shadow*_capptr_library:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -877,7 +877,7 @@ c_function_shadow*_capptr_shared:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -919,7 +919,7 @@ c_function_shadow*_capsule:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -1084,7 +1084,7 @@ c_function_smartptr<shadow>*_capptr:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -1252,7 +1252,7 @@ c_function_string&_buf_arg:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -1312,7 +1312,7 @@ c_function_string&_buf_copy:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -1398,7 +1398,7 @@ c_function_string*_buf_copy:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -1504,7 +1504,7 @@ c_function_string_buf_arg:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -1564,7 +1564,7 @@ c_function_string_buf_copy:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -4426,7 +4426,7 @@ c_mixin_function-assign-to-local:
   comments:
   - Call function and assign to a local C++ variable.
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_local:
   - cxx
   owner: library
@@ -6470,7 +6470,7 @@ f_function_char*_arg:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   c_temps:
@@ -6550,7 +6550,7 @@ f_function_char*_buf_arg:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   c_temps:
@@ -6630,7 +6630,7 @@ f_function_char*_buf_copy:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   c_temps:
@@ -6851,7 +6851,7 @@ f_function_char*_cfi_arg:
   c_arg_call:
   - '{c_local_cxx}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   c_temps:
@@ -6920,7 +6920,7 @@ f_function_char*_cfi_copy:
   c_arg_call:
   - '{c_local_cxx}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   c_temps:
@@ -7699,7 +7699,7 @@ f_function_native*_cfi_allocatable:
   c_arg_call:
   - '{c_local_cxx}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({c_local_cxx} != {nullptr}) {{+
   - "{gen.c_extents_decl}int SH_ret = CFI_allocate({c_var_cfi}, \t{gen.c_lower_use},\
@@ -7775,7 +7775,7 @@ f_function_native*_cfi_pointer:
   c_arg_call:
   - '{c_local_cxx}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{{+'
   - CFI_CDESC_T({rank}) {c_local_fptr};
@@ -7954,7 +7954,7 @@ f_function_shadow&_capsule:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -7999,7 +7999,7 @@ f_function_shadow&_capsule_caller:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -8044,7 +8044,7 @@ f_function_shadow&_capsule_library:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -8089,7 +8089,7 @@ f_function_shadow*_capsule:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -8134,7 +8134,7 @@ f_function_shadow*_capsule_caller:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -8179,7 +8179,7 @@ f_function_shadow*_capsule_library:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -8345,7 +8345,7 @@ f_function_smartptr<shadow>*_capsule:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -8460,7 +8460,7 @@ f_function_string&_buf:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -8538,7 +8538,7 @@ f_function_string&_buf_arg:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -8689,7 +8689,7 @@ f_function_string&_buf_copy:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -9332,7 +9332,7 @@ f_function_string&_cfi_arg:
   c_arg_call:
   - '{c_local_cxx}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   - if ({c_local_cxx}{cxx_member}empty()) {{+
@@ -9399,7 +9399,7 @@ f_function_string&_cfi_copy:
   c_arg_call:
   - '{c_local_cxx}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   - if ({c_local_cxx}{cxx_member}empty()) {{+
@@ -9660,7 +9660,7 @@ f_function_string*_buf:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -9805,7 +9805,7 @@ f_function_string*_buf_copy:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -10446,7 +10446,7 @@ f_function_string*_cfi_copy:
   c_arg_call:
   - '{c_local_cxx}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   - if ({c_local_cxx}{cxx_member}empty()) {{+
@@ -10707,7 +10707,7 @@ f_function_string_buf:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -10785,7 +10785,7 @@ f_function_string_buf_arg:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -10936,7 +10936,7 @@ f_function_string_buf_copy:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -11470,7 +11470,7 @@ f_function_string_cfi_arg:
   c_arg_call:
   - '{c_local_cxx}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   - if ({c_local_cxx}{cxx_member}empty()) {{+
@@ -11537,7 +11537,7 @@ f_function_string_cfi_copy:
   c_arg_call:
   - '{c_local_cxx}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   - if ({c_local_cxx}{cxx_member}empty()) {{+
@@ -21360,14 +21360,14 @@ py_function_bool:
   declare:
   - '{PyObject} * {py_var} = {nullptr};'
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   post_call:
   - '{py_var} = PyBool_FromLong({c_var});'
   - if ({py_var} == {nullptr}) goto fail;
   fail:
   - Py_XDECREF({py_var});
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
@@ -21378,11 +21378,11 @@ py_function_char:
   declare:
   - '{PyObject} * {py_var} = {nullptr};'
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   post_call:
   - '{py_var} = PyString_FromStringAndSize(&{cxx_var}, 1);'
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
 py_function_char*:
@@ -21391,27 +21391,27 @@ py_function_char*:
   fmtdict:
     ctor_expr: '{c_var}'
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
 py_function_enum:
   name: py_function_enum
   intent: function
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
 py_function_native:
   name: py_function_native
   intent: function
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
 py_function_native&_numpy:
@@ -21422,7 +21422,7 @@ py_function_native&_numpy:
   declare:
   - '{npy_intp_decl}PyObject * {py_var} = {nullptr};'
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   post_call:
   - "{npy_intp_asgn}{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t\
     \ {numpy_type},\t {cxx_nonconst_ptr});"
@@ -21430,7 +21430,7 @@ py_function_native&_numpy:
   fail:
   - Py_XDECREF({py_var});
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
@@ -21443,14 +21443,14 @@ py_function_native*_list:
   declare:
   - PyObject *{py_var} = {nullptr};
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   post_call:
   - "{py_var} = {c_helper_to_PyList}\t({cxx_var},\t {array_size});"
   - if ({py_var} == {nullptr}) goto fail;
   fail:
   - Py_XDECREF({py_var});
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
@@ -21462,7 +21462,7 @@ py_function_native*_numpy:
   declare:
   - '{npy_intp_decl}PyObject * {py_var} = {nullptr};'
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   post_call:
   - "{npy_intp_asgn}{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t\
     \ {numpy_type},\t {cxx_nonconst_ptr});"
@@ -21470,7 +21470,7 @@ py_function_native*_numpy:
   fail:
   - Py_XDECREF({py_var});
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
@@ -21478,9 +21478,9 @@ py_function_native*_scalar:
   name: py_function_native*_scalar
   intent: function
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
 py_function_shadow:
@@ -21512,12 +21512,12 @@ py_function_shadow&:
   intent: function
   object_created: true
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   post_call:
   - "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});"
   - '{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};'
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
 py_function_shadow*:
@@ -21525,12 +21525,12 @@ py_function_shadow*:
   intent: function
   object_created: true
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   post_call:
   - "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});"
   - '{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};'
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
 py_function_string:
@@ -21539,9 +21539,9 @@ py_function_string:
   fmtdict:
     ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
 py_function_string&:
@@ -21550,9 +21550,9 @@ py_function_string&:
   fmtdict:
     ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
 py_function_string*:
@@ -21561,9 +21561,9 @@ py_function_string*:
   fmtdict:
     ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
 py_function_struct*_class:
@@ -21573,14 +21573,14 @@ py_function_struct*_class:
   declare:
   - PyObject *{py_var} = {nullptr};  // struct_class
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   post_call:
   - "{py_var} = {PY_to_object_idtor_func}({cxx_addr}{cxx_var},\t {capsule_order});"
   - if ({py_var} == {nullptr}) goto fail;
   fail:
   - Py_XDECREF({py_var});
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
@@ -21588,9 +21588,9 @@ py_function_struct*_list:
   name: py_function_struct*_list
   intent: function
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
 py_function_struct*_numpy:
@@ -21601,7 +21601,7 @@ py_function_struct*_numpy:
   declare:
   - '{npy_intp_decl}PyObject * {py_var} = {nullptr};'
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   post_call:
   - '{npy_intp_asgn}Py_INCREF({PYN_descr});'
   - "{py_var} = PyArray_NewFromDescr(&PyArray_Type, \t{PYN_descr},\t {npy_rank}, {npy_dims_var},\
@@ -21610,7 +21610,7 @@ py_function_struct*_numpy:
   fail:
   - Py_XDECREF({py_var});
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
@@ -21662,9 +21662,9 @@ py_function_struct_list:
   name: py_function_struct_list
   intent: function
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
 py_function_struct_numpy:
@@ -21728,14 +21728,14 @@ py_function_vector<native>_list:
   declare:
   - PyObject * {py_var} = {nullptr};
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   post_call:
   - "{py_var} = SHROUD_to_PyList_vector_{cxx_T}\t({cxx_var});"
   - if ({py_var} == {nullptr}) goto fail;
   fail:
   - Py_XDECREF({py_var});
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
@@ -21800,14 +21800,14 @@ py_function_vector_list:
   declare:
   - PyObject * {py_var} = {nullptr};
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   post_call:
   - "{py_var} = SHROUD_to_PyList_vector_{cxx_T}\t({cxx_var});"
   - if ({py_var} == {nullptr}) goto fail;
   fail:
   - Py_XDECREF({py_var});
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
@@ -21871,9 +21871,9 @@ py_function_void*:
   fmtdict:
     ctor_expr: '{cxx_var}'
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
 py_implied_bool:
@@ -22780,9 +22780,9 @@ py_mixin_function-declare:
   name: py_mixin_function-declare
   intent: mixin
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
 py_mixin_function-struct-class:
@@ -22970,7 +22970,7 @@ py_out_native*&_numpy:
   declare:
   - '{npy_intp_decl}PyObject *{py_var} = {nullptr};'
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   post_call:
   - "{npy_intp_asgn}{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t\
     \ {numpy_type},\t {cxx_nonconst_ptr});"
@@ -22978,7 +22978,7 @@ py_out_native*&_numpy:
   fail:
   - Py_XDECREF({py_var});
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
@@ -22995,14 +22995,14 @@ py_out_native**_list:
   declare:
   - PyObject *{py_var} = {nullptr};
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   post_call:
   - "{py_var} = {c_helper_to_PyList}\t({cxx_var},\t {array_size});"
   - if ({py_var} == {nullptr}) goto fail;
   fail:
   - Py_XDECREF({py_var});
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
@@ -23018,7 +23018,7 @@ py_out_native**_numpy:
   declare:
   - '{npy_intp_decl}PyObject *{py_var} = {nullptr};'
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   post_call:
   - "{npy_intp_asgn}{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t\
     \ {numpy_type},\t {cxx_nonconst_ptr});"
@@ -23026,7 +23026,7 @@ py_out_native**_numpy:
   fail:
   - Py_XDECREF({py_var});
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
