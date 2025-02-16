@@ -182,6 +182,8 @@ none                          i_suffix
 f_array_allocate              gen.f_allocate_shape
 f_array_shape                 gen.c_f_pointer_shape
 f_cdesc_shape                 gen.f_cdesc_shape
+cfi_type                      typemap.cfi_type
+sh_type                       typemap.sh_type
 ===========================   ===========================
   
 * Renamed option fields

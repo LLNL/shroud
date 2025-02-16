@@ -1612,7 +1612,8 @@ targs
     For ``user_type<int, long *>`` the values *cxx_T* would be
     ``targs[0].cxx_T=int`` and ``targs[1].cxx_T=long *``.
 
-    Other fields are *cxx_type*, *f_type*, and *f_kind*.
+    Other names are looked up in the typemap for the template argument.
+    For example, ``targs[0].cxx_type`` and ``targs[0].f_kind``.
 
     
 fmtc

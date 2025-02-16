@@ -139,7 +139,6 @@
                                 "c_member": ".",
                                 "c_type": "SGR_twostruct",
                                 "c_var": "arg",
-                                "cfi_type": "CFI_type_struct",
                                 "cxx_T": "int,long",
                                 "cxx_abstract_decl": "int",
                                 "cxx_addr": "&",
@@ -163,7 +162,6 @@
                                 "i_type": "type(twostruct)",
                                 "i_var": "arg",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_STRUCT",
                                 "stmt_name": "f_in_twostruct<native,native>",
                                 "targs": [
                                     {

@@ -135,7 +135,6 @@
                                 "c_get_value": "",
                                 "c_type": "double",
                                 "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_double",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
                                 "cxx_nonconst_ptr": "&SHC_rv",
@@ -158,7 +157,6 @@
                                 "i_type": "real(C_DOUBLE)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_DOUBLE",
                                 "stmt_name": "f_function_native",
                                 "typemap_name": "double"
                             },
@@ -177,7 +175,6 @@
                                 "c_member": ".",
                                 "c_type": "double",
                                 "c_var": "arg1",
-                                "cfi_type": "CFI_type_double",
                                 "cxx_abstract_decl": "double",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
@@ -199,7 +196,6 @@
                                 "i_type": "real(C_DOUBLE)",
                                 "i_var": "arg1",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_DOUBLE",
                                 "stmt_name": "f_in_native",
                                 "typemap_name": "double"
                             },
@@ -219,7 +215,6 @@
                                 "c_member": ".",
                                 "c_type": "int",
                                 "c_var": "arg2",
-                                "cfi_type": "CFI_type_int",
                                 "cxx_abstract_decl": "int",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
@@ -241,7 +236,6 @@
                                 "i_type": "integer(C_INT)",
                                 "i_var": "arg2",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_INT",
                                 "stmt_name": "f_in_native",
                                 "typemap_name": "int"
                             },

@@ -57,7 +57,6 @@
                                 "c_get_value": "",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_int",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
                                 "cxx_nonconst_ptr": "&SHC_rv",
@@ -66,7 +65,6 @@
                                 "cxx_var": "SHC_rv",
                                 "i_name_function": "c_get_name_length",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_INT",
                                 "stmt_name": "c_function_native",
                                 "typemap_name": "int"
                             },
@@ -90,7 +88,6 @@
                                 "c_get_value": "",
                                 "c_type": "int",
                                 "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_int",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
                                 "cxx_nonconst_ptr": "&SHC_rv",
@@ -114,7 +111,6 @@
                                 "i_type": "integer(C_INT)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_INT",
                                 "stmt_name": "f_function_native",
                                 "typemap_name": "int"
                             },
@@ -199,7 +195,6 @@
                                 "c_const": "const ",
                                 "c_type": "char",
                                 "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_other",
                                 "cxx_abstract_decl": "const std::string *",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
@@ -218,7 +213,6 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_OTHER",
                                 "stmt_name": "c_function_string&",
                                 "typemap_name": "std::string"
                             },
@@ -248,7 +242,6 @@
                                 "c_type": "char",
                                 "c_var": "SHC_rv",
                                 "c_var_len": "SHT_rv_len",
-                                "cfi_type": "CFI_type_other",
                                 "cxx_abstract_decl": "const std::string *",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
@@ -274,7 +267,6 @@
                                 "i_var": "SHT_rv",
                                 "i_var_len": "SHT_rv_len",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_OTHER",
                                 "stmt_name": "f_function_string&_buf_copy",
                                 "typemap_name": "std::string"
                             },
@@ -379,7 +371,6 @@
                                 "c_get_value": "",
                                 "c_type": "bool",
                                 "c_var": "SHC_rv",
-                                "cfi_type": "CFI_type_Bool",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
                                 "cxx_nonconst_ptr": "&SHC_rv",
@@ -397,7 +388,6 @@
                                 "i_type": "logical(C_BOOL)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_BOOL",
                                 "stmt_name": "c_function_bool",
                                 "typemap_name": "bool"
                             },
@@ -417,7 +407,6 @@
                                 "c_member": "->",
                                 "c_type": "char",
                                 "c_var": "name",
-                                "cfi_type": "CFI_type_other",
                                 "cxx_abstract_decl": "const std::string *",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
@@ -435,7 +424,6 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "name",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_OTHER",
                                 "stmt_name": "c_in_string&",
                                 "typemap_name": "std::string"
                             },
@@ -460,7 +448,6 @@
                                 "i_kind": "C_BOOL",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "logical(C_BOOL)",
-                                "sh_type": "SH_TYPE_BOOL",
                                 "stmt_name": "f_function_bool",
                                 "typemap_name": "bool"
                             },
@@ -484,7 +471,6 @@
                                 "i_kind": "C_CHAR",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "character(kind=C_CHAR)",
-                                "sh_type": "SH_TYPE_OTHER",
                                 "stmt_name": "f_in_string&_buf",
                                 "typemap_name": "std::string"
                             },

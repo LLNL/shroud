@@ -3903,7 +3903,7 @@ c_mixin_cdesc_char_fill_cvar:
   - Fill cdesc from char * in the C wrapper.
   c_post_call:
   - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
   - '{c_var_cdesc}->size = 1;'
   - '{c_var_cdesc}->rank = 0;'
@@ -3957,7 +3957,7 @@ c_mixin_cdesc_native_fill:
   - Fill cdesc from native in the C wrapper.
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
   - '{c_var_cdesc}->size = {gen.c_array_size};'
@@ -4149,7 +4149,7 @@ c_mixin_cfi_native_pointer:
   - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
   - void *{c_local_cptr} = const_cast<{c_type} *>({c_local_cxx});
   - "{gen.c_extents_decl}int {c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t\
-    \ CFI_attribute_pointer,\t {cfi_type},\t 0,\t {rank},\t {gen.c_extents_use});"
+    \ CFI_attribute_pointer,\t {typemap.cfi_type},\t 0,\t {rank},\t {gen.c_extents_use});"
   - if ({c_local_err} == CFI_SUCCESS) {{+
   - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {gen.c_lower_use});"
   - -}}
@@ -6582,7 +6582,7 @@ f_function_char*_cdesc_allocatable:
   - '{C_array_type} *{c_var_cdesc}'
   c_post_call:
   - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
   - '{c_var_cdesc}->size = 1;'
   - '{c_var_cdesc}->rank = 0;'
@@ -6637,7 +6637,7 @@ f_function_char*_cdesc_pointer:
   - '{C_array_type} *{c_var_cdesc}'
   c_post_call:
   - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
   - '{c_var_cdesc}->size = 1;'
   - '{c_var_cdesc}->rank = 0;'
@@ -7007,7 +7007,7 @@ f_function_char_cdesc_allocatable:
   - '{C_array_type} *{c_var_cdesc}'
   c_post_call:
   - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
   - '{c_var_cdesc}->size = 1;'
   - '{c_var_cdesc}->rank = 0;'
@@ -7062,7 +7062,7 @@ f_function_char_cdesc_pointer:
   - '{C_array_type} *{c_var_cdesc}'
   c_post_call:
   - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
   - '{c_var_cdesc}->size = 1;'
   - '{c_var_cdesc}->rank = 0;'
@@ -7386,7 +7386,7 @@ f_function_native*_cdesc_allocatable:
   - '{C_capsule_data_type} *{c_var_capsule}'
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
   - '{c_var_cdesc}->size = {gen.c_array_size};'
@@ -7449,7 +7449,7 @@ f_function_native*_cdesc_pointer:
   - '{C_array_type} *{c_var_cdesc}'
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
   - '{c_var_cdesc}->size = {gen.c_array_size};'
@@ -7523,7 +7523,7 @@ f_function_native*_cdesc_pointer_caller:
   - '{C_capsule_data_type} *{c_var_capsule}'
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
   - '{c_var_cdesc}->size = {gen.c_array_size};'
@@ -7672,7 +7672,7 @@ f_function_native*_cfi_pointer:
   - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
   - void *{c_local_cptr} = const_cast<{c_type} *>({c_local_cxx});
   - "{gen.c_extents_decl}int {c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t\
-    \ CFI_attribute_pointer,\t {cfi_type},\t 0,\t {rank},\t {gen.c_extents_use});"
+    \ CFI_attribute_pointer,\t {typemap.cfi_type},\t 0,\t {rank},\t {gen.c_extents_use});"
   - if ({c_local_err} == CFI_SUCCESS) {{+
   - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {gen.c_lower_use});"
   - -}}
@@ -11708,7 +11708,7 @@ f_function_struct*_cdesc_pointer:
   - '{C_array_type} *{c_var_cdesc}'
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
   - '{c_var_cdesc}->size = {gen.c_array_size};'
@@ -11947,7 +11947,7 @@ f_getter_native*_cdesc_pointer:
   - '{C_array_type} *{c_var_cdesc}'
   c_call:
   - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
   - '{c_var_cdesc}->size = {gen.c_array_size};'
@@ -12079,7 +12079,7 @@ f_getter_struct**_cdesc_raw:
   - '{C_array_type} *{c_var_cdesc}'
   c_call:
   - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
   - '{c_var_cdesc}->size = {gen.c_array_size};'
@@ -12138,7 +12138,7 @@ f_getter_struct*_cdesc_pointer:
   - '{C_array_type} *{c_var_cdesc}'
   c_call:
   - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
   - '{c_var_cdesc}->size = {gen.c_array_size};'
@@ -12713,7 +12713,7 @@ f_in_native*_cdesc:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
-  - '{f_var_cdesc}%type = {sh_type}'
+  - '{f_var_cdesc}%type = {typemap.sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
   - '{f_var_cdesc}%size = {size}'
   - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
@@ -14060,7 +14060,7 @@ f_in_void*_cdesc:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
-  - '{f_var_cdesc}%type = {sh_type}'
+  - '{f_var_cdesc}%type = {typemap.sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
   - '{f_var_cdesc}%size = {size}'
   - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
@@ -14448,7 +14448,7 @@ f_inout_native*_cdesc:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
-  - '{f_var_cdesc}%type = {sh_type}'
+  - '{f_var_cdesc}%type = {typemap.sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
   - '{f_var_cdesc}%size = {size}'
   - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
@@ -15360,7 +15360,7 @@ f_inout_void*_cdesc:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
-  - '{f_var_cdesc}%type = {sh_type}'
+  - '{f_var_cdesc}%type = {typemap.sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
   - '{f_var_cdesc}%size = {size}'
   - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
@@ -15643,7 +15643,7 @@ f_mixin_cdesc_getter:
   - along with shape information.
   c_call:
   - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
   - '{c_var_cdesc}->size = {gen.c_array_size};'
@@ -15676,7 +15676,7 @@ f_mixin_cdesc_native_fill:
   - Fill cdesc from native in the Fortran wrapper.
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
-  - '{f_var_cdesc}%type = {sh_type}'
+  - '{f_var_cdesc}%type = {typemap.sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
   - '{f_var_cdesc}%size = {size}'
   - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
@@ -16733,7 +16733,7 @@ f_out_char**_cdesc_pointer:
   - '&{cxx_var}'
   c_post_call:
   - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
   - '{c_var_cdesc}->size = 1;'
   - '{c_var_cdesc}->rank = 0;'
@@ -17108,7 +17108,7 @@ f_out_native*&_cdesc:
   - '{cxx_var}'
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
   - '{c_var_cdesc}->size = {gen.c_array_size};'
@@ -17164,7 +17164,7 @@ f_out_native*&_cdesc_pointer:
   - '{cxx_var}'
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
   - '{c_var_cdesc}->size = {gen.c_array_size};'
@@ -17277,7 +17277,7 @@ f_out_native**_cdesc_allocatable:
   - '&{cxx_var}'
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
   - '{c_var_cdesc}->size = {gen.c_array_size};'
@@ -17346,7 +17346,7 @@ f_out_native**_cdesc_pointer:
   - '&{cxx_var}'
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
   - '{c_var_cdesc}->size = {gen.c_array_size};'
@@ -17456,7 +17456,7 @@ f_out_native**_cfi_pointer:
   - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
   - void *{c_local_cptr} = const_cast<{c_type} *>({c_local_cxx});
   - "{gen.c_extents_decl}int {c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t\
-    \ CFI_attribute_pointer,\t {cfi_type},\t 0,\t {rank},\t {gen.c_extents_use});"
+    \ CFI_attribute_pointer,\t {typemap.cfi_type},\t 0,\t {rank},\t {gen.c_extents_use});"
   - if ({c_local_err} == CFI_SUCCESS) {{+
   - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {gen.c_lower_use});"
   - -}}
@@ -17523,7 +17523,7 @@ f_out_native*_cdesc:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
-  - '{f_var_cdesc}%type = {sh_type}'
+  - '{f_var_cdesc}%type = {typemap.sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
   - '{f_var_cdesc}%size = {size}'
   - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
@@ -18766,7 +18766,7 @@ f_out_void*_cdesc:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
-  - '{f_var_cdesc}%type = {sh_type}'
+  - '{f_var_cdesc}%type = {typemap.sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
   - '{f_var_cdesc}%size = {size}'
   - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'

@@ -51,7 +51,6 @@
                                         "c_type": "SHA_Object",
                                         "c_var": "SHC_rv",
                                         "c_var_ptr": "SHT_rv_ptr",
-                                        "cfi_type": "CFI_type_other",
                                         "cxx_abstract_decl": "Object",
                                         "cxx_addr": "&",
                                         "cxx_member": ".",
@@ -77,7 +76,6 @@
                                         "i_var": "SHT_rv",
                                         "i_var_ptr": "SHT_rv_ptr",
                                         "idtor": "1",
-                                        "sh_type": "SH_TYPE_OTHER",
                                         "stmt_name": "c_ctor_shadow_capptr",
                                         "typemap_name": "Object"
                                     },
@@ -103,7 +101,6 @@
                                         "c_const": "",
                                         "c_type": "SHA_Object",
                                         "c_var": "SHC_rv",
-                                        "cfi_type": "CFI_type_other",
                                         "cxx_abstract_decl": "Object",
                                         "cxx_addr": "&",
                                         "cxx_member": ".",
@@ -132,7 +129,6 @@
                                         "i_type": "type(SHA_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
                                         "idtor": "1",
-                                        "sh_type": "SH_TYPE_OTHER",
                                         "stmt_name": "f_ctor_shadow_capsule",
                                         "typemap_name": "Object"
                                     },
@@ -313,7 +309,6 @@
                                         "c_type": "SHA_Object_shared",
                                         "c_var": "SHC_rv",
                                         "c_var_ptr": "SHT_rv_ptr",
-                                        "cfi_type": "CFI_type_other",
                                         "cxx_T": "Object",
                                         "cxx_abstract_decl": "Object *",
                                         "cxx_addr": "",
@@ -341,7 +336,6 @@
                                         "i_var": "SHT_rv",
                                         "i_var_ptr": "SHT_rv_ptr",
                                         "idtor": "0",
-                                        "sh_type": "SH_TYPE_OTHER",
                                         "stmt_name": "c_function_smartptr<shadow>*_capptr",
                                         "targs": [
                                             {
@@ -374,7 +368,6 @@
                                         "c_local_cxx": "SHC_rv_cxx",
                                         "c_type": "SHA_Object_shared",
                                         "c_var": "SHC_rv",
-                                        "cfi_type": "CFI_type_other",
                                         "cxx_T": "Object",
                                         "cxx_abstract_decl": "Object *",
                                         "cxx_addr": "",
@@ -403,7 +396,6 @@
                                         "i_type": "type(SHA_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
                                         "idtor": "0",
-                                        "sh_type": "SH_TYPE_OTHER",
                                         "stmt_name": "f_function_smartptr<shadow>*_capsule",
                                         "targs": [
                                             {
@@ -500,7 +492,6 @@
                                         "c_type": "SHA_Object_shared",
                                         "c_var": "SHC_rv",
                                         "c_var_ptr": "SHT_rv_ptr",
-                                        "cfi_type": "CFI_type_other",
                                         "cxx_T": "Object",
                                         "cxx_abstract_decl": "Object *",
                                         "cxx_addr": "",
@@ -528,7 +519,6 @@
                                         "i_var": "SHT_rv",
                                         "i_var_ptr": "SHT_rv_ptr",
                                         "idtor": "0",
-                                        "sh_type": "SH_TYPE_OTHER",
                                         "stmt_name": "c_function_smartptr<shadow>*_capptr",
                                         "targs": [
                                             {
@@ -561,7 +551,6 @@
                                         "c_local_cxx": "SHC_rv_cxx",
                                         "c_type": "SHA_Object_shared",
                                         "c_var": "SHC_rv",
-                                        "cfi_type": "CFI_type_other",
                                         "cxx_T": "Object",
                                         "cxx_abstract_decl": "Object *",
                                         "cxx_addr": "",
@@ -590,7 +579,6 @@
                                         "i_type": "type(SHA_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
                                         "idtor": "0",
-                                        "sh_type": "SH_TYPE_OTHER",
                                         "stmt_name": "f_function_smartptr<shadow>*_capsule",
                                         "targs": [
                                             {
@@ -713,7 +701,6 @@
                                         "c_member": "->",
                                         "c_type": "SHA_Object_shared",
                                         "c_var": "child",
-                                        "cfi_type": "CFI_type_other",
                                         "cxx_T": "Object",
                                         "cxx_abstract_decl": "Object *",
                                         "cxx_addr": "",
@@ -726,7 +713,6 @@
                                         "i_intent": "INOUT",
                                         "i_intent_attr": ", intent(INOUT)",
                                         "idtor": "0",
-                                        "sh_type": "SH_TYPE_OTHER",
                                         "stmt_name": "c_inout_smartptr<shadow>*",
                                         "targs": [
                                             {
@@ -777,7 +763,6 @@
                                         "c_member": "->",
                                         "c_type": "SHA_Object_shared",
                                         "c_var": "child",
-                                        "cfi_type": "CFI_type_other",
                                         "cxx_T": "Object",
                                         "cxx_abstract_decl": "Object *",
                                         "cxx_addr": "",
@@ -801,7 +786,6 @@
                                         "i_type": "type(SHA_SHROUD_capsule_data)",
                                         "i_var": "child",
                                         "idtor": "0",
-                                        "sh_type": "SH_TYPE_OTHER",
                                         "stmt_name": "f_inout_smartptr<shadow>*",
                                         "targs": [
                                             {
@@ -946,7 +930,6 @@
                                         "c_type": "SHA_Object_shared",
                                         "c_var": "SHC_rv",
                                         "c_var_ptr": "SHT_rv_ptr",
-                                        "cfi_type": "CFI_type_other",
                                         "cxx_abstract_decl": "std::shared_ptr<Object>",
                                         "cxx_addr": "&",
                                         "cxx_member": ".",
@@ -972,7 +955,6 @@
                                         "i_var": "SHT_rv",
                                         "i_var_ptr": "SHT_rv_ptr",
                                         "idtor": "3",
-                                        "sh_type": "SH_TYPE_OTHER",
                                         "stmt_name": "c_ctor_shadow_capptr_shared",
                                         "typemap_name": "std::shared_ptr<Object>"
                                     },
@@ -1000,7 +982,6 @@
                                         "c_local_shared": "SHC_rv_shared",
                                         "c_type": "SHA_Object_shared",
                                         "c_var": "SHC_rv",
-                                        "cfi_type": "CFI_type_other",
                                         "cxx_abstract_decl": "std::shared_ptr<Object>",
                                         "cxx_addr": "&",
                                         "cxx_member": ".",
@@ -1027,7 +1008,6 @@
                                         "i_type": "type(SHA_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
                                         "idtor": "3",
-                                        "sh_type": "SH_TYPE_OTHER",
                                         "stmt_name": "f_ctor_shadow_capsule_shared",
                                         "typemap_name": "std::shared_ptr<Object>"
                                     },
@@ -1213,7 +1193,6 @@
                                         "c_type": "SHA_Object_shared",
                                         "c_var": "SHC_rv",
                                         "c_var_ptr": "SHT_rv_ptr",
-                                        "cfi_type": "CFI_type_other",
                                         "cxx_T": "Object",
                                         "cxx_abstract_decl": "Object *",
                                         "cxx_addr": "",
@@ -1241,7 +1220,6 @@
                                         "i_var": "SHT_rv",
                                         "i_var_ptr": "SHT_rv_ptr",
                                         "idtor": "0",
-                                        "sh_type": "SH_TYPE_OTHER",
                                         "stmt_name": "c_function_smartptr<shadow>*_capptr",
                                         "targs": [
                                             {
@@ -1274,7 +1252,6 @@
                                         "c_local_cxx": "SHC_rv_cxx",
                                         "c_type": "SHA_Object_shared",
                                         "c_var": "SHC_rv",
-                                        "cfi_type": "CFI_type_other",
                                         "cxx_T": "Object",
                                         "cxx_abstract_decl": "Object *",
                                         "cxx_addr": "",
@@ -1303,7 +1280,6 @@
                                         "i_type": "type(SHA_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
                                         "idtor": "0",
-                                        "sh_type": "SH_TYPE_OTHER",
                                         "stmt_name": "f_function_smartptr<shadow>*_capsule",
                                         "targs": [
                                             {
@@ -1401,7 +1377,6 @@
                                         "c_type": "SHA_Object_shared",
                                         "c_var": "SHC_rv",
                                         "c_var_ptr": "SHT_rv_ptr",
-                                        "cfi_type": "CFI_type_other",
                                         "cxx_T": "Object",
                                         "cxx_abstract_decl": "Object *",
                                         "cxx_addr": "",
@@ -1429,7 +1404,6 @@
                                         "i_var": "SHT_rv",
                                         "i_var_ptr": "SHT_rv_ptr",
                                         "idtor": "0",
-                                        "sh_type": "SH_TYPE_OTHER",
                                         "stmt_name": "c_function_smartptr<shadow>*_capptr",
                                         "targs": [
                                             {
@@ -1462,7 +1436,6 @@
                                         "c_local_cxx": "SHC_rv_cxx",
                                         "c_type": "SHA_Object_shared",
                                         "c_var": "SHC_rv",
-                                        "cfi_type": "CFI_type_other",
                                         "cxx_T": "Object",
                                         "cxx_abstract_decl": "Object *",
                                         "cxx_addr": "",
@@ -1491,7 +1464,6 @@
                                         "i_type": "type(SHA_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
                                         "idtor": "0",
-                                        "sh_type": "SH_TYPE_OTHER",
                                         "stmt_name": "f_function_smartptr<shadow>*_capsule",
                                         "targs": [
                                             {
@@ -1615,7 +1587,6 @@
                                         "c_member": "->",
                                         "c_type": "SHA_Object_shared",
                                         "c_var": "child",
-                                        "cfi_type": "CFI_type_other",
                                         "cxx_T": "Object",
                                         "cxx_abstract_decl": "Object *",
                                         "cxx_addr": "",
@@ -1628,7 +1599,6 @@
                                         "i_intent": "INOUT",
                                         "i_intent_attr": ", intent(INOUT)",
                                         "idtor": "0",
-                                        "sh_type": "SH_TYPE_OTHER",
                                         "stmt_name": "c_inout_smartptr<shadow>*",
                                         "targs": [
                                             {
@@ -1679,7 +1649,6 @@
                                         "c_member": "->",
                                         "c_type": "SHA_Object_shared",
                                         "c_var": "child",
-                                        "cfi_type": "CFI_type_other",
                                         "cxx_T": "Object",
                                         "cxx_abstract_decl": "Object *",
                                         "cxx_addr": "",
@@ -1703,7 +1672,6 @@
                                         "i_type": "type(SHA_SHROUD_capsule_data)",
                                         "i_var": "child",
                                         "idtor": "0",
-                                        "sh_type": "SH_TYPE_OTHER",
                                         "stmt_name": "f_inout_smartptr<shadow>*",
                                         "targs": [
                                             {
@@ -1793,7 +1761,6 @@
                                         "c_get_value": "",
                                         "c_type": "long",
                                         "c_var": "SHC_rv",
-                                        "cfi_type": "CFI_type_long",
                                         "cxx_addr": "&",
                                         "cxx_member": ".",
                                         "cxx_nonconst_ptr": "&SHC_rv",
@@ -1802,7 +1769,6 @@
                                         "cxx_var": "SHC_rv",
                                         "i_name_function": "c_object_shared_use_count",
                                         "idtor": "0",
-                                        "sh_type": "SH_TYPE_LONG",
                                         "stmt_name": "c_function_native",
                                         "typemap_name": "long"
                                     },
@@ -1828,7 +1794,6 @@
                                         "c_get_value": "",
                                         "c_type": "long",
                                         "c_var": "SHC_rv",
-                                        "cfi_type": "CFI_type_long",
                                         "cxx_addr": "&",
                                         "cxx_member": ".",
                                         "cxx_nonconst_ptr": "&SHC_rv",
@@ -1851,7 +1816,6 @@
                                         "i_type": "integer(C_LONG)",
                                         "i_var": "SHT_rv",
                                         "idtor": "0",
-                                        "sh_type": "SH_TYPE_LONG",
                                         "stmt_name": "f_function_native",
                                         "typemap_name": "long"
                                     },
@@ -2024,7 +1988,6 @@
                                         "c_member": "->",
                                         "c_type": "SHA_Object_shared",
                                         "c_var": "from",
-                                        "cfi_type": "CFI_type_other",
                                         "cxx_T": "Object",
                                         "cxx_abstract_decl": "Object *",
                                         "cxx_addr": "",
@@ -2037,7 +2000,6 @@
                                         "i_intent": "IN",
                                         "i_intent_attr": ", intent(IN)",
                                         "idtor": "0",
-                                        "sh_type": "SH_TYPE_OTHER",
                                         "stmt_name": "c_in_smartptr<shadow>*",
                                         "targs": [
                                             {
@@ -2092,7 +2054,6 @@
                                         "c_member": "->",
                                         "c_type": "SHA_Object_shared",
                                         "c_var": "from",
-                                        "cfi_type": "CFI_type_other",
                                         "cxx_T": "Object",
                                         "cxx_abstract_decl": "Object *",
                                         "cxx_addr": "",
@@ -2116,7 +2077,6 @@
                                         "i_type": "type(SHA_SHROUD_capsule_data)",
                                         "i_var": "from",
                                         "idtor": "0",
-                                        "sh_type": "SH_TYPE_OTHER",
                                         "stmt_name": "f_in_smartptr<shadow>*",
                                         "targs": [
                                             {
@@ -2208,7 +2168,6 @@
                                         "c_get_value": "",
                                         "c_type": "long",
                                         "c_var": "SHC_rv",
-                                        "cfi_type": "CFI_type_long",
                                         "cxx_addr": "&",
                                         "cxx_member": ".",
                                         "cxx_nonconst_ptr": "&SHC_rv",
@@ -2217,7 +2176,6 @@
                                         "cxx_var": "SHC_rv",
                                         "i_name_function": "c_object_weak_use_count",
                                         "idtor": "0",
-                                        "sh_type": "SH_TYPE_LONG",
                                         "stmt_name": "c_function_native",
                                         "typemap_name": "long"
                                     },
@@ -2243,7 +2201,6 @@
                                         "c_get_value": "",
                                         "c_type": "long",
                                         "c_var": "SHC_rv",
-                                        "cfi_type": "CFI_type_long",
                                         "cxx_addr": "&",
                                         "cxx_member": ".",
                                         "cxx_nonconst_ptr": "&SHC_rv",
@@ -2266,7 +2223,6 @@
                                         "i_type": "integer(C_LONG)",
                                         "i_var": "SHT_rv",
                                         "idtor": "0",
-                                        "sh_type": "SH_TYPE_LONG",
                                         "stmt_name": "f_function_native",
                                         "typemap_name": "long"
                                     },

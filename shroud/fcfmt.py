@@ -245,8 +245,6 @@ class FillFormat(object):
             fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
             fmt_result.c_type = result_typemap.c_type
             fmt_result.cxx_type = result_typemap.cxx_type
-            fmt_result.sh_type = result_typemap.sh_type
-            fmt_result.cfi_type = result_typemap.cfi_type
             if result_typemap.ci_type:
                 fmt_result.ci_type = result_typemap.ci_type
             converter, lang = find_result_converter(
@@ -507,8 +505,6 @@ class FillFormat(object):
             compute_c_deref(ast, fmt)
             fmt.c_type = find_arg_type(wlang, ntypemap) #ntypemap.c_type + "xxx"
             fmt.cxx_type = ntypemap.cxx_type
-            fmt.sh_type = ntypemap.sh_type
-            fmt.cfi_type = ntypemap.cfi_type
             if ntypemap.ci_type:
                 fmt.ci_type = ntypemap.ci_type
             fmt.idtor = "0"
@@ -576,7 +572,6 @@ class FillFormat(object):
             i_type = ntypemap.i_type or ntypemap.f_type
             if i_type:
                 fmt.i_type = i_type
-        fmt.sh_type = ntypemap.sh_type
         if ntypemap.i_module_name:
             fmt.i_module_name = ntypemap.i_module_name
             if ntypemap.i_kind:
@@ -619,7 +614,7 @@ class FillFormat(object):
         fmt = bind.fmtdict
 
         if subprogram == "subroutine":
-            # XXX - no need to set f_type and sh_type
+            # XXX - no need to set f_type
             pass
         elif subprogram == "function":
             # XXX this also gets set for subroutines

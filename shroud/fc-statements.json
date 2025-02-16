@@ -884,7 +884,7 @@
         ],
         "f_pre_call": [
             "{f_var_cdesc}%base_addr = C_LOC({f_var})",
-            "{f_var_cdesc}%type = {sh_type}",
+            "{f_var_cdesc}%type = {typemap.sh_type}",
             "! {f_var_cdesc}%elem_len = C_SIZEOF()",
             "{f_var_cdesc}%size = {size}",
             "{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}"
@@ -935,7 +935,7 @@
         ],
         "c_post_call": [
             "{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};",
-            "{c_var_cdesc}->type = {sh_type};",
+            "{c_var_cdesc}->type = {typemap.sh_type};",
             "{c_var_cdesc}->elem_len = sizeof({cxx_type});",
             "{c_var_cdesc}->rank = {rank};{gen.c_array_shape}",
             "{c_var_cdesc}->size = {gen.c_array_size};"
@@ -948,7 +948,7 @@
         ],
         "c_post_call": [
             "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});",
-            "{c_var_cdesc}->type = {sh_type};",
+            "{c_var_cdesc}->type = {typemap.sh_type};",
             "{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});",
             "{c_var_cdesc}->size = 1;",
             "{c_var_cdesc}->rank = 0;"
@@ -1109,7 +1109,7 @@
         ],
         "c_call": [
             "{c_var_cdesc}->base_addr = {CXX_this}->{field_name};",
-            "{c_var_cdesc}->type = {sh_type};",
+            "{c_var_cdesc}->type = {typemap.sh_type};",
             "{c_var_cdesc}->elem_len = sizeof({cxx_type});",
             "{c_var_cdesc}->rank = {rank};{gen.c_array_shape}",
             "{c_var_cdesc}->size = {gen.c_array_size};"
@@ -4636,7 +4636,7 @@
             "CFI_CDESC_T({rank}) {c_local_fptr};",
             "CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};",
             "void *{c_local_cptr} = const_cast<{c_type} *>({c_local_cxx});",
-            "{gen.c_extents_decl}int {c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t {cfi_type},\t 0,\t {rank},\t {gen.c_extents_use});",
+            "{gen.c_extents_decl}int {c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t {typemap.cfi_type},\t 0,\t {rank},\t {gen.c_extents_use});",
             "if ({c_local_err} == CFI_SUCCESS) {{+",
             "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {gen.c_lower_use});",
             "-}}",
