@@ -96,12 +96,12 @@ class WFormat(unittest.TestCase):
         arg = func.ast.declarator.params[0]
         bind = statements.fetch_arg_bind(func, arg, "c")
         statements.set_bind_fmtdict(bind, None)
-        fmt_var = bind.fmtdict
+        fmtdict = bind.fmtdict
 
-        fmt_var.typemap = arg.typemap
-        fmt_var.c_var = "arg1"
-        fmt_var.cxx_var = "cxx_var_name"
-        fmt_var.other = "other_name"
+        fmtdict.typemap = arg.typemap
+        fmtdict.c_var = "arg1"
+        fmtdict.cxx_var = "cxx_var_name"
+        fmtdict.other = "other_name"
 
         fmtarg = fcfmt.FormatGen(func, arg, bind, "c")
         self.assertEqual("array", str(fmtarg))
@@ -143,12 +143,12 @@ class WFormat(unittest.TestCase):
         arg = func.ast.declarator.params[0]
         bind = statements.fetch_arg_bind(func, arg, "c")
         statements.set_bind_fmtdict(bind, None)
-        fmt_var = bind.fmtdict
+        fmtdict = bind.fmtdict
 
-        fmt_var.typemap = arg.typemap
-        fmt_var.c_var = "arg1"
-        fmt_var.cxx_var = "cxx_var_name"
-        fmt_var.other = "other_name"
+        fmtdict.typemap = arg.typemap
+        fmtdict.c_var = "arg1"
+        fmtdict.cxx_var = "cxx_var_name"
+        fmtdict.other = "other_name"
 
         fmtarg = fcfmt.FormatGen(func, arg, bind, "c")
         self.assertEqual("array", str(fmtarg))
@@ -212,12 +212,12 @@ class WFormat(unittest.TestCase):
         arg = func.ast.declarator.params[0]
         bind = statements.fetch_arg_bind(func, arg, "c")
         statements.set_bind_fmtdict(bind, None)
-        fmt_var = bind.fmtdict
+        fmtdict = bind.fmtdict
 
-        fmt_var.typemap = arg.typemap
-        fmt_var.c_var = "arg1"
-        fmt_var.cxx_var = "cxx_var_name"
-        fmt_var.other = "other_name"
+        fmtdict.typemap = arg.typemap
+        fmtdict.c_var = "arg1"
+        fmtdict.cxx_var = "cxx_var_name"
+        fmtdict.other = "other_name"
 
         fmtarg = fcfmt.FormatGen(func, arg, bind, "c")
         self.assertEqual("arg1", str(fmtarg))
@@ -248,12 +248,12 @@ class WFormat(unittest.TestCase):
         arg = func.ast.declarator.params[0]
         bind = statements.fetch_arg_bind(func, arg, "c")
         statements.set_bind_fmtdict(bind, None)
-        fmt_var = bind.fmtdict
+        fmtdict = bind.fmtdict
 
-        fmt_var.typemap = arg.typemap
-        fmt_var.c_var = "arg1"
-        fmt_var.cxx_var = "cxx_var_name"
-        fmt_var.other = "other_name"
+        fmtdict.typemap = arg.typemap
+        fmtdict.c_var = "arg1"
+        fmtdict.cxx_var = "cxx_var_name"
+        fmtdict.other = "other_name"
 
         fmtarg = fcfmt.FormatGen(func, arg, bind, "c")
         self.assertEqual("array", str(fmtarg))
@@ -279,7 +279,7 @@ class WFormat(unittest.TestCase):
         arg = func.ast.declarator.params[0]
         bind = statements.fetch_arg_bind(func, arg, "c")
         statements.set_bind_fmtdict(bind, None)
-        fmt_var = bind.fmtdict
+        fmtdict = bind.fmtdict
 
         # Empty fmtdict
         fmtarg = fcfmt.FormatGen(func, arg, bind, "c")
@@ -291,7 +291,7 @@ class WFormat(unittest.TestCase):
                          fmtarg.f_cdesc_shape)
 
         # No f_var_cdesc
-        fmt_var.rank = 1
+        fmtdict.rank = 1
         fmtarg = fcfmt.FormatGen(func, arg, bind, "c")
         self.assertEqual("(===>f_var_cdesc<===%shape(1))",
                          fmtarg.f_allocate_shape)
@@ -301,7 +301,7 @@ class WFormat(unittest.TestCase):
                          fmtarg.f_cdesc_shape)
 
         # scalar
-        fmt_var.rank = 0
+        fmtdict.rank = 0
         fmtarg = fcfmt.FormatGen(func, arg, bind, "c")
         self.assertEqual("",
                          fmtarg.f_allocate_shape)
@@ -311,8 +311,8 @@ class WFormat(unittest.TestCase):
                          fmtarg.f_cdesc_shape)
 
         # 2-d array
-        fmt_var.rank = 2
-        fmt_var.f_var_cdesc = "SHT_arg_cdesc"
+        fmtdict.rank = 2
+        fmtdict.f_var_cdesc = "SHT_arg_cdesc"
         fmtarg = fcfmt.FormatGen(func, arg, bind, "c")
         self.assertEqual("(SHT_arg_cdesc%shape(1),SHT_arg_cdesc%shape(2))",
                          fmtarg.f_allocate_shape)
@@ -330,7 +330,7 @@ class WFormat(unittest.TestCase):
         bind = statements.fetch_arg_bind(func, arg, "c")
         statements.set_bind_fmtdict(bind, None)
         meta = bind.meta
-        fmt_var = bind.fmtdict
+        fmtdict = bind.fmtdict
 
         # Scalar
         fmtarg = fcfmt.FormatGen(func, arg, bind, "c")
@@ -364,9 +364,9 @@ class WFormat(unittest.TestCase):
                          fmtarg.c_lower_use)
 
         # 2-d array
-        fmt_var.c_var_cdesc = "SHT"
-        fmt_var.c_local_extents = "SHT_extents"
-        fmt_var.c_helper_lower_bounds_CFI = "SHT_lower"
+        fmtdict.c_var_cdesc = "SHT"
+        fmtdict.c_local_extents = "SHT_extents"
+        fmtdict.c_helper_lower_bounds_CFI = "SHT_lower"
         meta["dim_shape"] = ["10", "20"]
         fmtarg = fcfmt.FormatGen(func, arg, bind, "c")
         self.assertEqual("(10)*(20)",
