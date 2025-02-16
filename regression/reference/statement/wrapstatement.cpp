@@ -66,7 +66,7 @@ const char * STMT_getNameErrorPattern(void)
         return NULL;
     }
 
-    const char * SHC_rv = SHCXX_rv.c_str();
+    const char *SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
     // splicer end function.getNameErrorPattern
 }

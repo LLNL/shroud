@@ -317,7 +317,7 @@ const char * CLA_Class1_getName(CLA_Class1 * self)
         (self->addr);
     // splicer begin class.Class1.method.getName
     const std::string &SHCXX_rv = SH_this->getName();
-    const char * SHC_rv = SHCXX_rv.c_str();
+    const char *SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
     // splicer end class.Class1.method.getName
 }

@@ -200,7 +200,7 @@ const char * STR_getConstStringRefPure(void)
 {
     // splicer begin function.getConstStringRefPure
     const std::string &SHCXX_rv = getConstStringRefPure();
-    const char * SHC_rv = SHCXX_rv.c_str();
+    const char *SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
     // splicer end function.getConstStringRefPure
 }
@@ -245,7 +245,7 @@ const char * STR_getConstStringRefLen(void)
         return NULL;
     }
 
-    const char * SHC_rv = SHCXX_rv.c_str();
+    const char *SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
     // splicer end function.getConstStringRefLen
 }
@@ -294,7 +294,7 @@ const char * STR_getConstStringRefAsArg(void)
         return NULL;
     }
 
-    const char * SHC_rv = SHCXX_rv.c_str();
+    const char *SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
     // splicer end function.getConstStringRefAsArg
 }
@@ -340,7 +340,7 @@ const char * STR_getConstStringRefLenEmpty(void)
         return NULL;
     }
 
-    const char * SHC_rv = SHCXX_rv.c_str();
+    const char *SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
     // splicer end function.getConstStringRefLenEmpty
 }
@@ -376,7 +376,7 @@ const char * STR_getConstStringRefAlloc(void)
 {
     // splicer begin function.getConstStringRefAlloc
     const std::string &SHCXX_rv = getConstStringRefAlloc();
-    const char * SHC_rv = SHCXX_rv.c_str();
+    const char *SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
     // splicer end function.getConstStringRefAlloc
 }
@@ -411,7 +411,7 @@ const char * STR_getConstStringPtrLen(void)
 {
     // splicer begin function.getConstStringPtrLen
     const std::string *SHCXX_rv = getConstStringPtrLen();
-    const char * SHC_rv = SHCXX_rv->c_str();
+    const char *SHC_rv = SHCXX_rv->c_str();
     return SHC_rv;
     // splicer end function.getConstStringPtrLen
 }
@@ -451,7 +451,7 @@ const char * STR_getConstStringPtrAlloc(void)
 {
     // splicer begin function.getConstStringPtrAlloc
     const std::string *SHCXX_rv = getConstStringPtrAlloc();
-    const char * SHC_rv = SHCXX_rv->c_str();
+    const char *SHC_rv = SHCXX_rv->c_str();
     return SHC_rv;
     // splicer end function.getConstStringPtrAlloc
 }
@@ -485,7 +485,7 @@ const char * STR_getConstStringPtrOwnsAlloc(void)
 {
     // splicer begin function.getConstStringPtrOwnsAlloc
     const std::string *SHCXX_rv = getConstStringPtrOwnsAlloc();
-    const char * SHC_rv = SHCXX_rv->c_str();
+    const char *SHC_rv = SHCXX_rv->c_str();
     return SHC_rv;
     // splicer end function.getConstStringPtrOwnsAlloc
 }
@@ -522,7 +522,7 @@ const char * STR_getConstStringPtrOwnsAllocPattern(void)
 {
     // splicer begin function.getConstStringPtrOwnsAllocPattern
     const std::string *SHCXX_rv = getConstStringPtrOwnsAllocPattern();
-    const char * SHC_rv = SHCXX_rv->c_str();
+    const char *SHC_rv = SHCXX_rv->c_str();
     return SHC_rv;
     // splicer end function.getConstStringPtrOwnsAllocPattern
 }
@@ -553,7 +553,7 @@ const char * STR_getConstStringPtrPointer(void)
 {
     // splicer begin function.getConstStringPtrPointer
     const std::string *SHCXX_rv = getConstStringPtrPointer();
-    const char * SHC_rv = SHCXX_rv->c_str();
+    const char *SHC_rv = SHCXX_rv->c_str();
     return SHC_rv;
     // splicer end function.getConstStringPtrPointer
 }

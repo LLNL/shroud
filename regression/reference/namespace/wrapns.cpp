@@ -49,7 +49,7 @@ const char * NS_LastFunctionCalled(void)
 {
     // splicer begin function.LastFunctionCalled
     const std::string &SHCXX_rv = LastFunctionCalled();
-    const char * SHC_rv = SHCXX_rv.c_str();
+    const char *SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
     // splicer end function.LastFunctionCalled
 }

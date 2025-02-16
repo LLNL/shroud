@@ -322,7 +322,7 @@ pointers and references.
 .. code-block:: yaml
 
     "c_post_call": [
-        "{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();"
+        "{c_const}char *{c_var} = {cxx_var}{cxx_member}c_str();"
     ]
 
 

@@ -1418,12 +1418,6 @@ attr_len
   It willl be evalued in the C wrapper.
   Defaults to 0 to indicate no length given.
 
-c_abstract_decl
-  Includes the declaration and any declarators.
-  For example, ``double *``.
-
-.. used with cxx_to_c static_cast
-
 c_blanknull
    Used as argument to ``ShroudStrAlloc`` to determine if a
    blank string, trimmed length is 0, should be a NULL pointer

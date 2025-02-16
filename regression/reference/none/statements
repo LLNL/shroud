@@ -369,7 +369,7 @@ c_function_enum:
   i_result_decl:
   - '{i_type} :: {i_var}'
   c_post_call:
-  - "{c_abstract_decl} {c_var} =\t {cast_static}{c_type}{cast1}{cxx_var}{cast2};"
+  - "{c_type} {c_var} =\t {cast_static}{c_type}{cast1}{cxx_var}{cast2};"
   owner: library
 c_function_native:
   name: c_function_native
@@ -1207,7 +1207,7 @@ c_function_string&:
     iso_c_binding:
     - C_PTR
   c_post_call:
-  - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
+  - '{c_const}char *{c_var} = {cxx_var}{cxx_member}c_str();'
   c_return:
   - return {c_var};
   owner: library
@@ -1341,7 +1341,7 @@ c_function_string&_copy:
     iso_c_binding:
     - C_PTR
   c_post_call:
-  - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
+  - '{c_const}char *{c_var} = {cxx_var}{cxx_member}c_str();'
   c_return:
   - return {c_var};
   owner: library
@@ -1357,7 +1357,7 @@ c_function_string*:
     iso_c_binding:
     - C_PTR
   c_post_call:
-  - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
+  - '{c_const}char *{c_var} = {cxx_var}{cxx_member}c_str();'
   c_return:
   - return {c_var};
   owner: library
@@ -1427,7 +1427,7 @@ c_function_string*_caller:
     iso_c_binding:
     - C_PTR
   c_post_call:
-  - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
+  - '{c_const}char *{c_var} = {cxx_var}{cxx_member}c_str();'
   c_return:
   - return {c_var};
   owner: library
@@ -1443,7 +1443,7 @@ c_function_string*_copy:
     iso_c_binding:
     - C_PTR
   c_post_call:
-  - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
+  - '{c_const}char *{c_var} = {cxx_var}{cxx_member}c_str();'
   c_return:
   - return {c_var};
   owner: library
@@ -1459,7 +1459,7 @@ c_function_string*_library:
     iso_c_binding:
     - C_PTR
   c_post_call:
-  - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
+  - '{c_const}char *{c_var} = {cxx_var}{cxx_member}c_str();'
   c_return:
   - return {c_var};
   owner: library

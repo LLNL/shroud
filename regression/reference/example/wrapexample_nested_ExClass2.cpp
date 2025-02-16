@@ -149,7 +149,7 @@ const char * AA_example_nested_ExClass2_getName(
         static_cast<const example::nested::ExClass2 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass2.method.getName
     const std::string &SHCXX_rv = SH_this->getName();
-    const char * SHC_rv = SHCXX_rv.c_str();
+    const char *SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
     // splicer end namespace.example::nested.class.ExClass2.method.getName
 }
@@ -184,7 +184,7 @@ const char * AA_example_nested_ExClass2_getName2(
         static_cast<example::nested::ExClass2 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass2.method.getName2
     const std::string &SHCXX_rv = SH_this->getName2();
-    const char * SHC_rv = SHCXX_rv.c_str();
+    const char *SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
     // splicer end namespace.example::nested.class.ExClass2.method.getName2
 }
@@ -216,7 +216,7 @@ char * AA_example_nested_ExClass2_getName3(
         static_cast<const example::nested::ExClass2 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass2.method.getName3
     std::string &SHCXX_rv = SH_this->getName3();
-    char * SHC_rv = SHCXX_rv.c_str();
+    char *SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
     // splicer end namespace.example::nested.class.ExClass2.method.getName3
 }
@@ -249,7 +249,7 @@ char * AA_example_nested_ExClass2_getName4(
         static_cast<example::nested::ExClass2 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass2.method.getName4
     std::string &SHCXX_rv = SH_this->getName4();
-    char * SHC_rv = SHCXX_rv.c_str();
+    char *SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
     // splicer end namespace.example::nested.class.ExClass2.method.getName4
 }

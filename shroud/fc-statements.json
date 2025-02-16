@@ -2004,7 +2004,7 @@
             "{i_type} :: {i_var}"
         ],
         "c_post_call": [
-            "{c_abstract_decl} {c_var} =\t {cast_static}{c_type}{cast1}{cxx_var}{cast2};"
+            "{c_type} {c_var} =\t {cast_static}{c_type}{cast1}{cxx_var}{cast2};"
         ]
     },
     {
@@ -2709,7 +2709,6 @@
         "name": "c_mixin_c-str",
         "notes": [
             "Always return a const ptr since c_str is const.",
-            "//{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();",
             "The Fortran interface returns a type(C_PTR)."
         ],
         "i_result_decl": [
@@ -2987,7 +2986,7 @@
             ]
         },
         "c_post_call": [
-            "{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();"
+            "{c_const}char *{c_var} = {cxx_var}{cxx_member}c_str();"
         ],
         "c_return": [
             "return {c_var};"

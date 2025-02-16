@@ -122,7 +122,7 @@ const char * CXX_getGroupName(long idx)
 {
     // splicer begin function.getGroupName
     const std::string &SHCXX_rv = getGroupName(idx);
-    const char * SHC_rv = SHCXX_rv.c_str();
+    const char *SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
     // splicer end function.getGroupName
 }

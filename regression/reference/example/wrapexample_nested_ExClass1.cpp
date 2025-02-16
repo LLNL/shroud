@@ -203,7 +203,7 @@ const char * AA_example_nested_ExClass1_getNameErrorCheck(
         static_cast<const example::nested::ExClass1 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass1.method.getNameErrorCheck
     const std::string &SHCXX_rv = SH_this->getNameErrorCheck();
-    const char * SHC_rv = SHCXX_rv.c_str();
+    const char *SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
     // splicer end namespace.example::nested.class.ExClass1.method.getNameErrorCheck
 }
@@ -236,7 +236,7 @@ const char * AA_example_nested_ExClass1_getNameArg(
         static_cast<const example::nested::ExClass1 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass1.method.getNameArg
     const std::string &SHCXX_rv = SH_this->getNameArg();
-    const char * SHC_rv = SHCXX_rv.c_str();
+    const char *SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
     // splicer end namespace.example::nested.class.ExClass1.method.getNameArg
 }

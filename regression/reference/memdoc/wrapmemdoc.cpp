@@ -50,7 +50,7 @@ const char * STR_getConstStringPtrAlloc(void)
 {
     // splicer begin function.getConstStringPtrAlloc
     const std::string *SHCXX_rv = getConstStringPtrAlloc();
-    const char * SHC_rv = SHCXX_rv->c_str();
+    const char *SHC_rv = SHCXX_rv->c_str();
     return SHC_rv;
     // splicer end function.getConstStringPtrAlloc
 }
