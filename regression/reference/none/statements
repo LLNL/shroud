@@ -366,10 +366,18 @@ c_function_char*_buf_copy:
 c_function_enum:
   name: c_function_enum
   intent: function
+  comments:
+  - Call function and assign to a local C++ variable.
+  mixin_names:
+  - '  c_mixin_function-assign-to-local'
   i_result_decl:
   - '{i_type} :: {i_var}'
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
-  - "{c_type} {c_var} =\t {cast_static}{c_type}{cast1}{cxx_var}{cast2};"
+  - "{c_type} {c_var} =\t {cast_static}{c_type}{cast1}{c_local_cxx}{cast2};"
+  c_local:
+  - cxx
   owner: library
 c_function_native:
   name: c_function_native

@@ -520,8 +520,8 @@ enum TUT_Color TUT_colorfunc(enum TUT_Color arg)
 {
     // splicer begin function.colorfunc
     tutorial::Color SHCXX_arg = static_cast<tutorial::Color>(arg);
-    tutorial::Color SHCXX_rv = tutorial::colorfunc(SHCXX_arg);
-    enum TUT_Color SHC_rv = static_cast<enum TUT_Color>(SHCXX_rv);
+    tutorial::Color SHC_rv_cxx = tutorial::colorfunc(SHCXX_arg);
+    enum TUT_Color SHC_rv = static_cast<enum TUT_Color>(SHC_rv_cxx);
     return SHC_rv;
     // splicer end function.colorfunc
 }

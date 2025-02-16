@@ -2016,11 +2016,12 @@
         "alias": [
             "c_function_enum"
         ],
-        "i_result_decl": [
-            "{i_type} :: {i_var}"
+        "mixin": [
+            "c_mixin_declare-fortran-result",
+            "c_mixin_function-assign-to-local"
         ],
         "c_post_call": [
-            "{c_type} {c_var} =\t {cast_static}{c_type}{cast1}{cxx_var}{cast2};"
+            "{c_type} {c_var} =\t {cast_static}{c_type}{cast1}{c_local_cxx}{cast2};"
         ]
     },
     {

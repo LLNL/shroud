@@ -52,10 +52,10 @@ enum CLA_Class1_DIRECTION CLA_directionFunc(
     // splicer begin function.directionFunc
     classes::Class1::DIRECTION SHCXX_arg =
         static_cast<classes::Class1::DIRECTION>(arg);
-    classes::Class1::DIRECTION SHCXX_rv = classes::directionFunc(
+    classes::Class1::DIRECTION SHC_rv_cxx = classes::directionFunc(
         SHCXX_arg);
     enum CLA_Class1_DIRECTION SHC_rv =
-        static_cast<enum CLA_Class1_DIRECTION>(SHCXX_rv);
+        static_cast<enum CLA_Class1_DIRECTION>(SHC_rv_cxx);
     return SHC_rv;
     // splicer end function.directionFunc
 }
