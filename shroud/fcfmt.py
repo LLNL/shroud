@@ -447,7 +447,7 @@ class FillFormat(object):
     def name_temp_vars(self, rootname, bind, lang, prefix=None):
         """Compute names of temporary C variables.
 
-        Create stmts.temps and stmts.local variables.
+        Create statements c_temps/c_local and f_temps/f_local variables.
 
         lang - "c", "f"
         prefix - "c", "f", "i"
@@ -464,6 +464,11 @@ class FillFormat(object):
                 setattr(fmt,
                         "{}_var_{}".format(prefix, name),
                         "{}{}_{}".format(fmt.c_temp, rootname, name))
+
+        if prefix == "i":
+            # Interfaces have no local variables
+            return
+
         names = stmts.get(lang + "_local", None)
         if names is not None:
             for name in names:

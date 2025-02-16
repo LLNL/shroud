@@ -265,7 +265,10 @@ variables.  This allows creating names without conflicting with
 *temps* from a *mixin* group.
 
 The format field is named *c_local_{name}*.
-   
+
+*local* format fields are not created for Fortran interfaces which
+have no executable code and do not require local variables.
+
 helper
 ^^^^^^
 

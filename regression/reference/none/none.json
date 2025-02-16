@@ -248,7 +248,6 @@
             "i_prefix": "c_",
             "i_pure_clause": "",
             "i_result_clause": "",
-            "i_result_ptr": "SHT_prv",
             "i_result_var": "SHT_rv",
             "i_suffix": "",
             "library": "library",

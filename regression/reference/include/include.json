@@ -347,7 +347,6 @@
                                         "i_intent": "INOUT",
                                         "i_intent_attr": ", intent(INOUT)",
                                         "i_kind": "class1",
-                                        "i_local_cxx": "SHC_c2_cxx",
                                         "i_module_name": "library_three_mod",
                                         "i_type": "type(LIB_SHROUD_capsule_data)",
                                         "i_var": "c2",
