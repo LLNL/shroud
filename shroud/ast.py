@@ -763,7 +763,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             i_name_function="-i_name_function-",
             i_prefix="c_",
             i_result_var = "SHT_rv",
-            i_result_ptr = "SHT_prv",
             i_suffix="",
 
             rank="0",            # scalar

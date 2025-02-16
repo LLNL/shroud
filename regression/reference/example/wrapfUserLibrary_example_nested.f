@@ -250,13 +250,13 @@ module userlibrary_example_nested_mod
         ! Function:  ExClass1
         ! Statement: c_ctor_shadow_capptr
         function c_ex_class1_ctor_0(SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="AA_example_nested_ExClass1_ctor_0")
             use iso_c_binding, only : C_PTR
             import :: AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_ex_class1_ctor_0
 
         ! ----------------------------------------
@@ -276,14 +276,14 @@ module userlibrary_example_nested_mod
         ! Argument:  const string *name
         ! Statement: c_in_string*
         function c_ex_class1_ctor_1(name, SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="AA_example_nested_ExClass1_ctor_1")
             use iso_c_binding, only : C_CHAR, C_PTR
             import :: AA_SHROUD_capsule_data
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
             type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_ex_class1_ctor_1
 
         ! ----------------------------------------
@@ -450,14 +450,14 @@ module userlibrary_example_nested_mod
         ! Argument:  const string *name +len_trim(trim_name)
         ! Statement: c_in_string*
         function c_ex_class2_ctor(name, SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="AA_example_nested_ExClass2_ctor")
             use iso_c_binding, only : C_CHAR, C_PTR
             import :: AA_SHROUD_capsule_data
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
             type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_ex_class2_ctor
 
         ! ----------------------------------------
@@ -612,7 +612,7 @@ module userlibrary_example_nested_mod
         ! Argument:  const ExClass1 *in
         ! Statement: c_in_shadow*
         function c_ex_class2_get_class1(self, in, SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="AA_example_nested_ExClass2_get_class1")
             use iso_c_binding, only : C_PTR
             import :: AA_SHROUD_capsule_data
@@ -620,7 +620,7 @@ module userlibrary_example_nested_mod
             type(AA_SHROUD_capsule_data), intent(IN) :: self
             type(AA_SHROUD_capsule_data), intent(IN) :: in
             type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_ex_class2_get_class1
 
         ! ----------------------------------------

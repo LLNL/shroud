@@ -77,14 +77,14 @@ module defaultarg_mod
     ! Statement: c_in_native
     interface
         function c_class1_new_0(arg1, SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="DEF_Class1_new_0")
             use iso_c_binding, only : C_INT, C_PTR
             import :: DEF_SHROUD_capsule_data
             implicit none
             integer(C_INT), value, intent(IN) :: arg1
             type(DEF_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_class1_new_0
     end interface
 
@@ -118,7 +118,7 @@ module defaultarg_mod
     ! Statement: c_in_native
     interface
         function c_class1_new_1(arg1, arg2, SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="DEF_Class1_new_1")
             use iso_c_binding, only : C_INT, C_PTR
             import :: DEF_SHROUD_capsule_data
@@ -126,7 +126,7 @@ module defaultarg_mod
             integer(C_INT), value, intent(IN) :: arg1
             integer(C_INT), value, intent(IN) :: arg2
             type(DEF_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_class1_new_1
     end interface
 
@@ -166,7 +166,7 @@ module defaultarg_mod
     ! Statement: c_in_native
     interface
         function c_class1_new_2(arg1, arg2, arg3, SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="DEF_Class1_new_2")
             use iso_c_binding, only : C_INT, C_PTR
             import :: DEF_SHROUD_capsule_data
@@ -175,7 +175,7 @@ module defaultarg_mod
             integer(C_INT), value, intent(IN) :: arg2
             integer(C_INT), value, intent(IN) :: arg3
             type(DEF_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_class1_new_2
     end interface
 

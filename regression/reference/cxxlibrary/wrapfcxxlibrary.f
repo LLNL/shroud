@@ -125,13 +125,13 @@ module cxxlibrary_mod
         ! Function:  Class1
         ! Statement: c_ctor_shadow_capptr
         function c_class1_ctor(SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="CXX_Class1_ctor")
             use iso_c_binding, only : C_PTR
             import :: CXX_SHROUD_capsule_data
             implicit none
             type(CXX_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_class1_ctor
 
         ! ----------------------------------------

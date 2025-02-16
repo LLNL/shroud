@@ -70,13 +70,13 @@ module forward_mod
         ! Function:  Class2
         ! Statement: c_ctor_shadow_capptr
         function c_class2_ctor(SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="FOR_Class2_ctor")
             use iso_c_binding, only : C_PTR
             import :: FOR_SHROUD_capsule_data
             implicit none
             type(FOR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_class2_ctor
 
         ! ----------------------------------------

@@ -785,14 +785,17 @@
             "from Fortran to C."
         ],
         "i_result_decl": [
-            "type(C_PTR) :: {i_result_ptr}"
+            "type(C_PTR) :: {i_var_ptr}"
         ],
-        "i_result_var": "{i_result_ptr}",
+        "i_result_var": "{i_var_ptr}",
         "i_module": {
             "iso_c_binding": [
                 "C_PTR"
             ]
-        }
+        },
+        "c_temps": [
+            "ptr"
+        ]
     },
     {
         "name": "f_mixin_capsule_use",

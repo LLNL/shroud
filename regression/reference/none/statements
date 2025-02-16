@@ -14,8 +14,8 @@ c_ctor_shadow_capptr:
   i_dummy_decl:
   - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
+  - 'type(C_PTR) :: {i_var_ptr}'
+  i_result_var: '{i_var_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -27,6 +27,8 @@ c_ctor_shadow_capptr:
   - "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});"
   - "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
   - '{c_var}->idtor = {idtor};'
+  c_temps:
+  - ptr
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -49,8 +51,8 @@ c_ctor_shadow_capptr_shared:
   i_dummy_decl:
   - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
+  - 'type(C_PTR) :: {i_var_ptr}'
+  i_result_var: '{i_var_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -63,6 +65,8 @@ c_ctor_shadow_capptr_shared:
   - "*{c_local_shared} = \t std::make_shared<{baseclass.cxx_type}>({C_call_list});"
   - "{c_var}->addr = static_cast<{c_const}void *>(\t{c_local_shared});"
   - '{c_var}->idtor = {idtor};'
+  c_temps:
+  - ptr
   c_local:
   - shared
   fmtdict:
@@ -466,8 +470,8 @@ c_function_shadow&_capptr:
   i_dummy_decl:
   - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
+  - 'type(C_PTR) :: {i_var_ptr}'
+  i_result_var: '{i_var_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -483,6 +487,8 @@ c_function_shadow&_capptr:
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
+  c_temps:
+  - ptr
   c_local:
   - cxx
   fmtdict:
@@ -511,8 +517,8 @@ c_function_shadow&_capptr_caller:
   i_dummy_decl:
   - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
+  - 'type(C_PTR) :: {i_var_ptr}'
+  i_result_var: '{i_var_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -528,6 +534,8 @@ c_function_shadow&_capptr_caller:
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
+  c_temps:
+  - ptr
   c_local:
   - cxx
   fmtdict:
@@ -556,8 +564,8 @@ c_function_shadow&_capptr_library:
   i_dummy_decl:
   - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
+  - 'type(C_PTR) :: {i_var_ptr}'
+  i_result_var: '{i_var_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -573,6 +581,8 @@ c_function_shadow&_capptr_library:
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
+  c_temps:
+  - ptr
   c_local:
   - cxx
   fmtdict:
@@ -715,8 +725,8 @@ c_function_shadow*_capptr:
   i_dummy_decl:
   - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
+  - 'type(C_PTR) :: {i_var_ptr}'
+  i_result_var: '{i_var_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -732,6 +742,8 @@ c_function_shadow*_capptr:
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
+  c_temps:
+  - ptr
   c_local:
   - cxx
   fmtdict:
@@ -760,8 +772,8 @@ c_function_shadow*_capptr_caller:
   i_dummy_decl:
   - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
+  - 'type(C_PTR) :: {i_var_ptr}'
+  i_result_var: '{i_var_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -777,6 +789,8 @@ c_function_shadow*_capptr_caller:
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
+  c_temps:
+  - ptr
   c_local:
   - cxx
   fmtdict:
@@ -805,8 +819,8 @@ c_function_shadow*_capptr_library:
   i_dummy_decl:
   - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
+  - 'type(C_PTR) :: {i_var_ptr}'
+  i_result_var: '{i_var_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -822,6 +836,8 @@ c_function_shadow*_capptr_library:
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
+  c_temps:
+  - ptr
   c_local:
   - cxx
   fmtdict:
@@ -850,8 +866,8 @@ c_function_shadow*_capptr_shared:
   i_dummy_decl:
   - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
+  - 'type(C_PTR) :: {i_var_ptr}'
+  i_result_var: '{i_var_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -867,6 +883,8 @@ c_function_shadow*_capptr_shared:
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
+  c_temps:
+  - ptr
   c_local:
   - cxx
   fmtdict:
@@ -954,8 +972,8 @@ c_function_shadow<native>_capptr:
   i_dummy_decl:
   - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
+  - 'type(C_PTR) :: {i_var_ptr}'
+  i_result_var: '{i_var_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -973,6 +991,8 @@ c_function_shadow<native>_capptr:
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
+  c_temps:
+  - ptr
   c_local:
   - cxx
   fmtdict:
@@ -1005,8 +1025,8 @@ c_function_shadow_capptr:
   i_dummy_decl:
   - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
+  - 'type(C_PTR) :: {i_var_ptr}'
+  i_result_var: '{i_var_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1024,6 +1044,8 @@ c_function_shadow_capptr:
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
+  c_temps:
+  - ptr
   c_local:
   - cxx
   fmtdict:
@@ -1051,8 +1073,8 @@ c_function_smartptr<shadow>*_capptr:
   i_dummy_decl:
   - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
+  - 'type(C_PTR) :: {i_var_ptr}'
+  i_result_var: '{i_var_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1068,6 +1090,8 @@ c_function_smartptr<shadow>*_capptr:
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
+  c_temps:
+  - ptr
   c_local:
   - cxx
   fmtdict:
@@ -1096,8 +1120,8 @@ c_function_smartptr<shadow>_capptr:
   i_dummy_decl:
   - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
+  - 'type(C_PTR) :: {i_var_ptr}'
+  i_result_var: '{i_var_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1115,6 +1139,8 @@ c_function_smartptr<shadow>_capptr:
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
+  c_temps:
+  - ptr
   c_local:
   - cxx
   fmtdict:
@@ -4382,11 +4408,13 @@ c_mixin_function_shadow_capptr:
   - Pass function result as a capsule field of shadow class
   - from Fortran to C.
   i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
+  - 'type(C_PTR) :: {i_var_ptr}'
+  i_result_var: '{i_var_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_temps:
+  - ptr
   owner: library
 c_mixin_function_vector_malloc:
   name: c_mixin_function_vector_malloc

@@ -1600,8 +1600,6 @@ i_result_clause
     Added at the end of a function declaration to
     define the result variable.
 
-i_result_ptr
-
 i_result_var
     Use in the *i_result_clause* for functions as
     ``result({i_result_var})``

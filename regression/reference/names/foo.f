@@ -55,13 +55,13 @@ module name_module
         ! Function:  Names +name(defaultctor)
         ! Statement: c_ctor_shadow_capptr
         function XXX_TES_names_defaultctor(SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="XXX_TES_ns0_Names_defaultctor")
             use iso_c_binding, only : C_PTR
             import :: TES_SHROUD_capsule_data
             implicit none
             type(TES_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function XXX_TES_names_defaultctor
 
         ! ----------------------------------------

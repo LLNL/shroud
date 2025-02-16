@@ -610,13 +610,13 @@ module struct_mod
         ! Statement: c_function_shadow*_capptr
         ! start c_create_cstruct_as_class
         function c_create_cstruct_as_class(SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="STR_Create_Cstruct_as_class")
             use iso_c_binding, only : C_PTR
             import :: STR_SHROUD_capsule_data
             implicit none
             type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_create_cstruct_as_class
         ! end c_create_cstruct_as_class
 
@@ -642,7 +642,7 @@ module struct_mod
         ! Argument:  int y
         ! Statement: c_in_native
         function c_create_cstruct_as_class_args(x, y, SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="STR_Create_Cstruct_as_class_args")
             use iso_c_binding, only : C_INT, C_PTR
             import :: STR_SHROUD_capsule_data
@@ -650,7 +650,7 @@ module struct_mod
             integer(C_INT), value, intent(IN) :: x
             integer(C_INT), value, intent(IN) :: y
             type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_create_cstruct_as_class_args
 
         ! ----------------------------------------
@@ -731,7 +731,7 @@ module struct_mod
         ! Argument:  int z
         ! Statement: c_in_native
         function c_create_cstruct_as_subclass_args(x, y, z, SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="STR_Create_Cstruct_as_subclass_args")
             use iso_c_binding, only : C_INT, C_PTR
             import :: STR_SHROUD_capsule_data
@@ -740,7 +740,7 @@ module struct_mod
             integer(C_INT), value, intent(IN) :: y
             integer(C_INT), value, intent(IN) :: z
             type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_create_cstruct_as_subclass_args
 
         ! ----------------------------------------

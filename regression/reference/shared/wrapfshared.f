@@ -87,13 +87,13 @@ module shared_mod
         ! Function:  Object
         ! Statement: c_ctor_shadow_capptr
         function c_object_ctor(SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="SHA_Object_ctor")
             use iso_c_binding, only : C_PTR
             import :: SHA_SHROUD_capsule_data
             implicit none
             type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_object_ctor
 
         ! ----------------------------------------
@@ -120,14 +120,14 @@ module shared_mod
         ! Function:  std::shared_ptr<Object> *createChildA
         ! Statement: c_function_smartptr<shadow>*_capptr
         function c_object_create_child_a(self, SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="SHA_Object_createChildA")
             use iso_c_binding, only : C_PTR
             import :: SHA_SHROUD_capsule_data
             implicit none
             type(SHA_SHROUD_capsule_data), intent(IN) :: self
             type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_object_create_child_a
 
         ! ----------------------------------------
@@ -145,14 +145,14 @@ module shared_mod
         ! Function:  std::shared_ptr<Object> *createChildB
         ! Statement: c_function_smartptr<shadow>*_capptr
         function c_object_create_child_b(self, SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="SHA_Object_createChildB")
             use iso_c_binding, only : C_PTR
             import :: SHA_SHROUD_capsule_data
             implicit none
             type(SHA_SHROUD_capsule_data), intent(IN) :: self
             type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_object_create_child_b
 
         ! ----------------------------------------
@@ -184,13 +184,13 @@ module shared_mod
         ! Function:  Object
         ! Statement: c_ctor_shadow_capptr_shared
         function c_object_shared_ctor(SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="SHA_Object_shared_ctor")
             use iso_c_binding, only : C_PTR
             import :: SHA_SHROUD_capsule_data
             implicit none
             type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_object_shared_ctor
 
         ! ----------------------------------------
@@ -217,14 +217,14 @@ module shared_mod
         ! Function:  std::shared_ptr<Object> *createChildA
         ! Statement: c_function_smartptr<shadow>*_capptr
         function c_object_shared_create_child_a(self, SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="SHA_Object_shared_createChildA")
             use iso_c_binding, only : C_PTR
             import :: SHA_SHROUD_capsule_data
             implicit none
             type(SHA_SHROUD_capsule_data), intent(IN) :: self
             type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_object_shared_create_child_a
 
         ! ----------------------------------------
@@ -243,14 +243,14 @@ module shared_mod
         ! Function:  std::shared_ptr<Object> *createChildB
         ! Statement: c_function_smartptr<shadow>*_capptr
         function c_object_shared_create_child_b(self, SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="SHA_Object_shared_createChildB")
             use iso_c_binding, only : C_PTR
             import :: SHA_SHROUD_capsule_data
             implicit none
             type(SHA_SHROUD_capsule_data), intent(IN) :: self
             type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_object_shared_create_child_b
 
         ! ----------------------------------------
