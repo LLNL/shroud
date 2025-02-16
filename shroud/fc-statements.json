@@ -351,18 +351,6 @@
     },
     
     {
-        "name": "c_mixin_function-assign-to-local",
-        "comments": [
-            "Call function and assign to a local C++ variable."
-        ],
-        "c_call": [
-            "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
-        ],
-        "c_local": [
-            "cxx"
-        ]
-    },
-    {
         "name":"##### subprogram mixin #####################################"
     },
     {
@@ -372,15 +360,6 @@
         ],
         "f_call": [
             "{f_result_var} = {f_call_function}({F_arg_c_call})"
-        ]
-    },
-    {
-        "name": "c_mixin_call_function",
-        "comments": [
-            "Call a void function in C wrapper."
-        ],
-        "c_call": [
-            "{C_call_function};"
         ]
     },
     {
@@ -509,6 +488,36 @@
             ]
         },
         "c_need_wrapper": true
+    },
+    {
+        "name": "c_mixin_call_function",
+        "comments": [
+            "Call a void function in C wrapper."
+        ],
+        "c_call": [
+            "{C_call_function};"
+        ]
+    },
+    {
+        "name": "c_mixin_function-assign-to-cvar",
+        "comments": [
+            "Call function and assign to a c variable."
+        ],
+        "c_call": [
+            "{gen.cxxresult.c_var} =\t {C_call_function};"
+        ]
+    },
+    {
+        "name": "c_mixin_function-assign-to-local",
+        "comments": [
+            "Call function and assign to a local C++ variable."
+        ],
+        "c_call": [
+            "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
+        ],
+        "c_local": [
+            "cxx"
+        ]
     },
     {
         "name": "c_mixin_function-assign-to-new",
@@ -1428,7 +1437,8 @@
         "mixin": [
             "f_mixin_function",
             "f_mixin_declare-local-variable",
-            "c_mixin_declare-fortran-result"
+            "c_mixin_declare-fortran-result",
+            "c_mixin_function-assign-to-cvar"
         ]
     },
     {
@@ -2007,10 +2017,11 @@
         "mixin": [
             "f_mixin_function",
             "f_mixin_declare-local-variable",
-            "c_mixin_declare-fortran-result"
+            "c_mixin_declare-fortran-result",
+            "c_mixin_function-assign-to-local"
         ],
         "c_post_call": [
-            "{ci_type} {c_var} =\t {cast_static}{ci_type}{cast1}{cxx_var}{cast2};"
+            "{ci_type} {c_var} =\t {cast_static}{ci_type}{cast1}{c_local_cxx}{cast2};"
         ]
     },
     {

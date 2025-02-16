@@ -76,8 +76,8 @@ short ENU_returnEnum_bufferify(short in)
 {
     // splicer begin function.returnEnum_bufferify
     Color SHCXX_in = static_cast<Color>(in);
-    Color SHCXX_rv = returnEnum(SHCXX_in);
-    short SHC_rv = static_cast<short>(SHCXX_rv);
+    Color SHC_rv_cxx = returnEnum(SHCXX_in);
+    short SHC_rv = static_cast<short>(SHC_rv_cxx);
     return SHC_rv;
     // splicer end function.returnEnum_bufferify
 }
@@ -139,9 +139,9 @@ short ENU_returnEnumInOutArg_bufferify(short *inout)
 {
     // splicer begin function.returnEnumInOutArg_bufferify
     Color SHC_inout_cxx = static_cast<Color>(*inout);
-    Color SHCXX_rv = returnEnumInOutArg(&SHC_inout_cxx);
+    Color SHC_rv_cxx = returnEnumInOutArg(&SHC_inout_cxx);
     *inout = static_cast<short>(SHC_inout_cxx);
-    short SHC_rv = static_cast<short>(SHCXX_rv);
+    short SHC_rv = static_cast<short>(SHC_rv_cxx);
     return SHC_rv;
     // splicer end function.returnEnumInOutArg_bufferify
 }

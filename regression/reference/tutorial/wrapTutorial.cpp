@@ -536,8 +536,8 @@ int TUT_colorfunc_bufferify(int arg)
 {
     // splicer begin function.colorfunc_bufferify
     tutorial::Color SHCXX_arg = static_cast<tutorial::Color>(arg);
-    tutorial::Color SHCXX_rv = tutorial::colorfunc(SHCXX_arg);
-    int SHC_rv = static_cast<int>(SHCXX_rv);
+    tutorial::Color SHC_rv_cxx = tutorial::colorfunc(SHCXX_arg);
+    int SHC_rv = static_cast<int>(SHC_rv_cxx);
     return SHC_rv;
     // splicer end function.colorfunc_bufferify
 }

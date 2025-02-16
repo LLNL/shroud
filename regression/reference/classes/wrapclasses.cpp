@@ -71,9 +71,9 @@ int CLA_directionFunc_bufferify(int arg)
     // splicer begin function.directionFunc_bufferify
     classes::Class1::DIRECTION SHCXX_arg =
         static_cast<classes::Class1::DIRECTION>(arg);
-    classes::Class1::DIRECTION SHCXX_rv = classes::directionFunc(
+    classes::Class1::DIRECTION SHC_rv_cxx = classes::directionFunc(
         SHCXX_arg);
-    int SHC_rv = static_cast<int>(SHCXX_rv);
+    int SHC_rv = static_cast<int>(SHC_rv_cxx);
     return SHC_rv;
     // splicer end function.directionFunc_bufferify
 }
