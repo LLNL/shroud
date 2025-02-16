@@ -9,8 +9,6 @@
 
 // cxx_header
 #include "cxxlibrary.hpp"
-// typemap
-#include <string>
 // shroud
 #include <cstring>
 #include "wrapcxxlibrary.h"
@@ -121,8 +119,8 @@ void CXX_defaultArgsInOut_1(int in1, int *out1, int *out2, bool flag)
 const char * CXX_getGroupName(long idx)
 {
     // splicer begin function.getGroupName
-    const std::string &SHCXX_rv = getGroupName(idx);
-    const char *SHC_rv = SHCXX_rv.c_str();
+    const std::string &SHC_rv_cxx = getGroupName(idx);
+    const char *SHC_rv = SHC_rv_cxx.c_str();
     return SHC_rv;
     // splicer end function.getGroupName
 }

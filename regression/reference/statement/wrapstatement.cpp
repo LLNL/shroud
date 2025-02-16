@@ -60,13 +60,13 @@ int STMT_GetNameLength(void)
 const char * STMT_getNameErrorPattern(void)
 {
     // splicer begin function.getNameErrorPattern
-    const std::string &SHCXX_rv = getNameErrorPattern();
+    const std::string &SHC_rv_cxx = getNameErrorPattern();
     // C_error_pattern
-    if (! isNameValid(SHCXX_rv)) {
+    if (! isNameValid(SHC_rv_cxx)) {
         return NULL;
     }
 
-    const char *SHC_rv = SHCXX_rv.c_str();
+    const char *SHC_rv = SHC_rv_cxx.c_str();
     return SHC_rv;
     // splicer end function.getNameErrorPattern
 }

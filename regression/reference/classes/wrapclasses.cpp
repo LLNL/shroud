@@ -9,8 +9,6 @@
 
 // cxx_header
 #include "classes.hpp"
-// typemap
-#include <string>
 // shroud
 #include <cstring>
 #include "wrapclasses.h"
@@ -334,8 +332,8 @@ int CLA_get_global_flag(void)
 const char * CLA_LastFunctionCalled(void)
 {
     // splicer begin function.LastFunctionCalled
-    const std::string &SHCXX_rv = classes::LastFunctionCalled();
-    const char *SHC_rv = SHCXX_rv.c_str();
+    const std::string &SHC_rv_cxx = classes::LastFunctionCalled();
+    const char *SHC_rv = SHC_rv_cxx.c_str();
     return SHC_rv;
     // splicer end function.LastFunctionCalled
 }

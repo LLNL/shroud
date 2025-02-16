@@ -362,8 +362,8 @@ int TUT_callback1(int in, int (*incr)(int))
 const char * TUT_LastFunctionCalled(void)
 {
     // splicer begin function.LastFunctionCalled
-    const std::string &SHCXX_rv = tutorial::LastFunctionCalled();
-    const char *SHC_rv = SHCXX_rv.c_str();
+    const std::string &SHC_rv_cxx = tutorial::LastFunctionCalled();
+    const char *SHC_rv = SHC_rv_cxx.c_str();
     return SHC_rv;
     // splicer end function.LastFunctionCalled
 }

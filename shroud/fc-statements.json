@@ -2822,6 +2822,7 @@
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_cdesc_pass",
+            "c_mixin_function-assign-to-local",
             "c_mixin_cdesc_function_string",
             "f_mixin_cdesc_char_pointer"
         ]
@@ -3007,6 +3008,9 @@
             "Fortran calling a C function without",
             "any api argument - is this useful?"
         ],
+        "mixin": [
+            "c_mixin_function-assign-to-local"
+        ],
         "i_result_decl": [
             "type(C_PTR) :: {i_var}"
         ],
@@ -3016,7 +3020,7 @@
             ]
         },
         "c_post_call": [
-            "{c_const}char *{c_var} = {cxx_var}{cxx_member}c_str();"
+            "{c_const}char *{c_var} = {c_local_cxx}{cxx_member}c_str();"
         ],
         "c_return": [
             "return {c_var};"
@@ -3088,6 +3092,7 @@
             "f_mixin_function-to-subroutine",
             "f_mixin_cdesc_pass",
             "f_mixin_capsule_pass",
+            "c_mixin_function-assign-to-local",
             "c_mixin_cdesc_function_string",
             "c_mixin_capsule_fill_native",
             "f_mixin_cdesc_char_allocate",
@@ -5006,23 +5011,25 @@
         ],
         "notes": [
             "XXX - consolidate with c_function*_cfi_pointer?",
-            "XXX - via a helper to get address and length of string"
+            "XXX - via a helper to get address and length of string",
+            "XXX - c_local cxx is in c_mixin_function-assign-to-local"
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
-            "f_mixin_cfi_character-deferred-length"
+            "f_mixin_cfi_character-deferred-length",
+            "c_mixin_function-assign-to-local"
         ],
         "f_need_wrapper": true,
         "c_pre_call": [],
         "c_post_call": [
             "int {c_local_err};",
-            "if ({cxx_var} == {nullptr}) {{+",
+            "if ({c_local_cxx} == {nullptr}) {{+",
             "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});",
             "-}} else {{+",
             "CFI_CDESC_T(0) {c_local_fptr};",
             "CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};",
-            "void *{c_local_cptr} = const_cast<char *>({cxx_var}{cxx_member}data());",
-            "size_t {c_local_len} = {cxx_var}{cxx_member}length();",
+            "void *{c_local_cptr} = const_cast<char *>({c_local_cxx}{cxx_member}data());",
+            "size_t {c_local_len} = {c_local_cxx}{cxx_member}length();",
             "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});",
             "if ({c_local_err} == CFI_SUCCESS) {{+",
             "{c_var_cfi}->elem_len = {c_local_cdesc}->elem_len;",
@@ -5031,6 +5038,7 @@
             "-}}"
         ],
         "c_local": [
+            "cxx",
             "cptr",
             "fptr",
             "cdesc",
@@ -5052,13 +5060,14 @@
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_cfi_character-deferred-length",
-            "c_mixin_header_cstring"
+            "c_mixin_header_cstring",
+            "c_mixin_function-assign-to-local"
         ],
         "f_need_wrapper": true,
         "c_post_call": [
-            "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *) 0, \t{cxx_var}{cxx_member}length());",
+            "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *) 0, \t{c_local_cxx}{cxx_member}length());",
             "if (SH_ret == CFI_SUCCESS) {{+",
-            "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}{cxx_member}data(), \t{cxx_var}{cxx_member}length());",
+            "{stdlib}memcpy({c_var_cfi}->base_addr, \t{c_local_cxx}{cxx_member}data(), \t{c_local_cxx}{cxx_member}length());",
             "-}}"
         ]
     },
@@ -5070,13 +5079,14 @@
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_cfi_character-deferred-length",
-            "c_mixin_header_cstring"
+            "c_mixin_header_cstring",
+            "c_mixin_function-assign-to-local"
         ],
         "f_need_wrapper": true,
         "c_post_call": [
-            "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *) 0, \t{cxx_var}.length());",
+            "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *) 0, \t{c_local_cxx}.length());",
             "if (SH_ret == CFI_SUCCESS) {{+",
-            "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}.data(), \t{c_var_cfi}->elem_len);",
+            "{stdlib}memcpy({c_var_cfi}->base_addr, \t{c_local_cxx}.data(), \t{c_var_cfi}->elem_len);",
             "-}}"
         ]
     },
