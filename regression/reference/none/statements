@@ -133,7 +133,7 @@ c_function_bool:
   name: c_function_bool
   intent: function
   comments:
-  - Call a function.
+  - Call a function in Fortran wrapper.
   - Declare a Fortran variable.
   mixin_names:
   - '  f_mixin_function'
@@ -175,7 +175,7 @@ c_function_char*:
   name: c_function_char*
   intent: function
   comments:
-  - Call a function.
+  - Call a function in Fortran wrapper.
   - Declare function result as a type(C_PTR).
   notes:
   - Return a type(C_PTR) from Fortran.
@@ -375,7 +375,7 @@ c_function_native:
   name: c_function_native
   intent: function
   comments:
-  - Call a function.
+  - Call a function in Fortran wrapper.
   - Declare a Fortran variable.
   mixin_names:
   - '  f_mixin_function'
@@ -3890,6 +3890,14 @@ c_mixin_c-str:
   - const char *{c_var} = NULL;
   - if (!{c_local_cxx}->empty()) {c_var} = {c_local_cxx}->c_str();
   owner: library
+c_mixin_call_function:
+  name: c_mixin_call_function
+  intent: mixin
+  comments:
+  - Call a void function in C wrapper.
+  c_call:
+  - '{C_call_function};'
+  owner: library
 c_mixin_capsule_fill_cvar:
   name: c_mixin_capsule_fill_cvar
   intent: mixin
@@ -6182,6 +6190,9 @@ c_setter_string_scalar_buf:
 c_subroutine:
   name: c_subroutine
   intent: subroutine
+  notes:
+  - XXX - when using the mixin, a wrapper is created when it is not
+  - needed when wrapping C instead of C++.
   owner: library
 c_subroutine_assignment_weakptr:
   name: c_subroutine_assignment_weakptr
@@ -6306,7 +6317,7 @@ f_function_bool:
   name: f_function_bool
   intent: function
   comments:
-  - Call a function.
+  - Call a function in Fortran wrapper.
   - Declare a Fortran variable.
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
@@ -6363,7 +6374,7 @@ f_function_char*:
   name: f_function_char*
   intent: function
   comments:
-  - Call a function.
+  - Call a function in Fortran wrapper.
   - Declare function result as a type(C_PTR).
   notes:
   - Return a type(C_PTR) from Fortran.
@@ -6388,7 +6399,7 @@ f_function_char*_allocatable:
   name: f_function_char*_allocatable
   intent: function
   comments:
-  - Call a function.
+  - Call a function in Fortran wrapper.
   - Declare function result as a type(C_PTR).
   notes:
   - Return a type(C_PTR) from Fortran.
@@ -7000,7 +7011,7 @@ f_function_char*_copy:
   name: f_function_char*_copy
   intent: function
   comments:
-  - Call a function.
+  - Call a function in Fortran wrapper.
   - Declare function result as a type(C_PTR).
   notes:
   - Return a type(C_PTR) from Fortran.
@@ -7025,7 +7036,7 @@ f_function_char*_pointer:
   name: f_function_char*_pointer
   intent: function
   comments:
-  - Call a function.
+  - Call a function in Fortran wrapper.
   - Declare function result as a type(C_PTR).
   notes:
   - Return a type(C_PTR) from Fortran.
@@ -7050,7 +7061,7 @@ f_function_char*_raw:
   name: f_function_char*_raw
   intent: function
   comments:
-  - Call a function.
+  - Call a function in Fortran wrapper.
   - Declare function result as a type(C_PTR).
   notes:
   - Return a type(C_PTR) from Fortran.
@@ -7293,7 +7304,7 @@ f_function_enum:
   name: f_function_enum
   intent: function
   comments:
-  - Call a function.
+  - Call a function in Fortran wrapper.
   - Declare a Fortran variable.
   notes:
   - Return as the Fortran bind(C) type.
@@ -7321,7 +7332,7 @@ f_function_native:
   name: f_function_native
   intent: function
   comments:
-  - Call a function.
+  - Call a function in Fortran wrapper.
   - Declare a Fortran variable.
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
@@ -7893,7 +7904,7 @@ f_function_native*_scalar:
   name: f_function_native*_scalar
   intent: function
   comments:
-  - Call a function.
+  - Call a function in Fortran wrapper.
   - Declare a Fortran variable.
   notes:
   - Return a scalar to avoid doing the deref in Fortran.
@@ -16015,7 +16026,7 @@ f_mixin_function:
   name: f_mixin_function
   intent: mixin
   comments:
-  - Call a function.
+  - Call a function in Fortran wrapper.
   f_call:
   - '{f_result_var} = {f_call_function}({F_arg_c_call})'
   owner: library
@@ -19157,6 +19168,9 @@ f_setter_struct*_pointer:
 f_subroutine:
   name: f_subroutine
   intent: subroutine
+  notes:
+  - XXX - when using the mixin, a wrapper is created when it is not
+  - needed when wrapping C instead of C++.
   f_call:
   - call {f_call_function}({F_arg_c_call})
   owner: library
@@ -20173,6 +20187,8 @@ root
       arg-call-cxx-deref -- c_mixin_arg-call-cxx-deref
       as-intent-out -- c_mixin_as-intent-out
       c-str -- c_mixin_c-str
+      call
+        function -- c_mixin_call_function
       capsule
         fill
           cvar -- c_mixin_capsule_fill_cvar

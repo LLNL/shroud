@@ -368,10 +368,19 @@
     {
         "name": "f_mixin_function",
         "comments": [
-            "Call a function."
+            "Call a function in Fortran wrapper."
         ],
         "f_call": [
             "{f_result_var} = {f_call_function}({F_arg_c_call})"
+        ]
+    },
+    {
+        "name": "c_mixin_call_function",
+        "comments": [
+            "Call a void function in C wrapper."
+        ],
+        "c_call": [
+            "{C_call_function};"
         ]
     },
     {
@@ -538,6 +547,13 @@
         "alias": [
             "f_subroutine",
             "c_subroutine"
+        ],
+        "notes": [
+            "XXX - when using the mixin, a wrapper is created when it is not",
+            "needed when wrapping C instead of C++."
+        ],
+        "mixin": [
+            "#c_mixin_call_function"
         ],
         "f_call": [
             "call {f_call_function}({F_arg_c_call})"
