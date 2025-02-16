@@ -1130,6 +1130,7 @@
             "{c_var_cdesc}->rank = {rank};{gen.c_array_shape}",
             "{c_var_cdesc}->size = {gen.c_array_size};"
         ],
+        "c_need_wrapper": true,
         "helper": [
             "type_defines"
         ]
@@ -2387,7 +2388,8 @@
         ],
         "c_call": [
             "*{c_var} = {C_call_function};"
-        ]
+        ],
+        "c_need_wrapper": true
     },
     {
         "name":"##### char #################################################"
@@ -4210,6 +4212,7 @@
         "c_call": [
             "*{c_var} = {C_call_function};"
         ],
+        "c_need_wrapper": true,
         "end-before": "end function_struct_scalar"
     },
     {
@@ -4326,7 +4329,8 @@
         ],
         "c_return": [
             "return {CXX_this}->{field_name};"
-        ]
+        ],
+        "c_need_wrapper": true
     },
     {
         "alias": [

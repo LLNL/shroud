@@ -167,6 +167,7 @@ c_function_char:
   - char *{c_var}
   c_call:
   - '*{c_var} = {C_call_function};'
+  c_need_wrapper: true
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -369,9 +370,13 @@ c_function_enum:
   comments:
   - Call function and assign to a local C++ variable.
   mixin_names:
+  - '  c_mixin_declare-fortran-result'
   - '  c_mixin_function-assign-to-local'
   i_result_decl:
   - '{i_type} :: {i_var}'
+  i_module:
+    '{i_module_name}':
+    - '{i_kind}'
   c_call:
   - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -1612,6 +1617,7 @@ c_function_struct:
   - '{c_type} *{c_var}'
   c_call:
   - '*{c_var} = {C_call_function};'
+  c_need_wrapper: true
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -1724,6 +1730,7 @@ c_getter_native:
   - // skip call c_getter
   c_return:
   - return {CXX_this}->{field_name};
+  c_need_wrapper: true
   owner: library
 c_getter_native*:
   name: c_getter_native*
@@ -1742,6 +1749,7 @@ c_getter_native*:
   - // skip call c_getter
   c_return:
   - return {CXX_this}->{field_name};
+  c_need_wrapper: true
   owner: library
 c_in_bool:
   name: c_in_bool
@@ -6374,6 +6382,7 @@ f_function_char:
   - char *{c_var}
   c_call:
   - '*{c_var} = {C_call_function};'
+  c_need_wrapper: true
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -11793,6 +11802,7 @@ f_function_struct:
   - '{c_type} *{c_var}'
   c_call:
   - '*{c_var} = {C_call_function};'
+  c_need_wrapper: true
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -12032,6 +12042,7 @@ f_getter_native:
   - // skip call c_getter
   c_return:
   - return {CXX_this}->{field_name};
+  c_need_wrapper: true
   owner: library
 f_getter_native*_cdesc_pointer:
   name: f_getter_native*_cdesc_pointer
@@ -12085,6 +12096,7 @@ f_getter_native*_cdesc_pointer:
   - '{c_var_cdesc}->size = {gen.c_array_size};'
   c_temps:
   - cdesc
+  c_need_wrapper: true
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -12115,6 +12127,7 @@ f_getter_native*_pointer:
   - // skip call c_getter
   c_return:
   - return {CXX_this}->{field_name};
+  c_need_wrapper: true
   owner: library
 f_getter_string_cdesc_allocatable:
   name: f_getter_string_cdesc_allocatable
@@ -12217,6 +12230,7 @@ f_getter_struct**_cdesc_raw:
   - '{c_var_cdesc}->size = {gen.c_array_size};'
   c_temps:
   - cdesc
+  c_need_wrapper: true
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -12276,6 +12290,7 @@ f_getter_struct*_cdesc_pointer:
   - '{c_var_cdesc}->size = {gen.c_array_size};'
   c_temps:
   - cdesc
+  c_need_wrapper: true
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -15779,6 +15794,7 @@ f_mixin_cdesc_getter:
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
   - '{c_var_cdesc}->size = {gen.c_array_size};'
+  c_need_wrapper: true
   helper:
   - type_defines
   owner: library
@@ -16141,6 +16157,7 @@ f_mixin_function_char:
   - char *{c_var}
   c_call:
   - '*{c_var} = {C_call_function};'
+  c_need_wrapper: true
   owner: library
 f_mixin_function_ptr:
   name: f_mixin_function_ptr
