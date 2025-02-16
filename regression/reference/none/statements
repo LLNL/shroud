@@ -409,52 +409,68 @@ c_function_native&:
   intent: function
   comments:
   - Return a C pointer directly as type(C_PTR).
+  - Call function and assign to a c variable.
   mixin_names:
   - '  f_mixin_function_ptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 c_function_native*:
   name: c_function_native*
   intent: function
   comments:
   - Return a C pointer directly as type(C_PTR).
+  - Call function and assign to a c variable.
   mixin_names:
   - '  f_mixin_function_ptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 c_function_native**:
   name: c_function_native**
   intent: function
   comments:
   - Return a C pointer directly as type(C_PTR).
+  - Call function and assign to a c variable.
   mixin_names:
   - '  f_mixin_function_ptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 c_function_native*_caller:
   name: c_function_native*_caller
   intent: function
   comments:
   - Return a C pointer directly as type(C_PTR).
+  - Call function and assign to a c variable.
   mixin_names:
   - '  f_mixin_function_ptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 c_function_native*_scalar:
   name: c_function_native*_scalar
@@ -1755,15 +1771,19 @@ c_function_void*:
   intent: function
   comments:
   - Declare a Fortran variable.
+  - Call function and assign to a c variable.
   notes:
   - XXX - f entries are the same as the i entries, share?
   mixin_names:
   - '  f_mixin_declare-local-variable'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 c_getter_native:
   name: c_getter_native
@@ -7444,6 +7464,7 @@ f_function_native&:
   intent: function
   comments:
   - Return a C pointer as a type(C_PTR).
+  - Call function and assign to a c variable.
   notes:
   - Pointer to scalar.
   - type(C_PTR) is returned instead of a cdesc argument.
@@ -7465,11 +7486,14 @@ f_function_native&:
   - ptr
   mixin_names:
   - '  f_mixin_function_c-ptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_need_wrapper: true
   owner: library
 f_function_native&_pointer:
@@ -7477,6 +7501,7 @@ f_function_native&_pointer:
   intent: function
   comments:
   - Return a C pointer as a type(C_PTR).
+  - Call function and assign to a c variable.
   notes:
   - Pointer to scalar.
   - type(C_PTR) is returned instead of a cdesc argument.
@@ -7498,11 +7523,14 @@ f_function_native&_pointer:
   - ptr
   mixin_names:
   - '  f_mixin_function_c-ptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_need_wrapper: true
   owner: library
 f_function_native**:
@@ -7510,6 +7538,7 @@ f_function_native**:
   intent: function
   comments:
   - Return a C pointer directly as type(C_PTR).
+  - Call function and assign to a c variable.
   f_dummy_decl:
   - 'type(C_PTR) :: {f_var}'
   f_module:
@@ -7517,11 +7546,14 @@ f_function_native**:
     - C_PTR
   mixin_names:
   - '  f_mixin_function_ptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 f_function_native*_cdesc_allocatable:
   name: f_function_native*_cdesc_allocatable
@@ -7530,6 +7562,7 @@ f_function_native*_cdesc_allocatable:
   - Call the C wrapper as a subroutine.
   - Declare a Fortran variable.
   - Pass cdesc as argument to C wrapper.
+  - Call function and assign to a c variable.
   - Fill cdesc from native in the C wrapper.
   - Allocate Fortran variable.
   - Copy into Fortran argument.
@@ -7568,6 +7601,7 @@ f_function_native*_cdesc_allocatable:
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-local-variable'
   - '  f_mixin_cdesc_pass'
+  - '  c_mixin_function-assign-to-cvar'
   - '  c_mixin_cdesc_native_fill'
   - '  f_mixin_allocate'
   - '  f_mixin_cdesc_copy_array'
@@ -7589,6 +7623,8 @@ f_function_native*_cdesc_allocatable:
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
   - '{C_capsule_data_type} *{c_var_capsule}'
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {typemap.sh_type};'
@@ -7617,6 +7653,7 @@ f_function_native*_cdesc_pointer:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
+  - Call function and assign to a c variable.
   - Fill cdesc from native in the C wrapper.
   - Set Fortran pointer to native array.
   f_dummy_decl:
@@ -7641,6 +7678,7 @@ f_function_native*_cdesc_pointer:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
+  - '  c_mixin_function-assign-to-cvar'
   - '  c_mixin_cdesc_native_fill'
   - '  f_mixin_cdesc_native_pointer'
   i_dummy_arg:
@@ -7652,6 +7690,8 @@ f_function_native*_cdesc_pointer:
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {typemap.sh_type};'
@@ -7908,6 +7948,7 @@ f_function_native*_pointer:
   intent: function
   comments:
   - Return a C pointer as a type(C_PTR).
+  - Call function and assign to a c variable.
   notes:
   - Pointer to scalar.
   - type(C_PTR) is returned instead of a cdesc argument.
@@ -7929,11 +7970,14 @@ f_function_native*_pointer:
   - ptr
   mixin_names:
   - '  f_mixin_function_c-ptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_need_wrapper: true
   owner: library
 f_function_native*_pointer_caller:
@@ -7941,6 +7985,7 @@ f_function_native*_pointer_caller:
   intent: function
   comments:
   - Return a C pointer as a type(C_PTR).
+  - Call function and assign to a c variable.
   notes:
   - Pointer to scalar.
   - type(C_PTR) is returned instead of a cdesc argument.
@@ -7962,11 +8007,14 @@ f_function_native*_pointer_caller:
   - ptr
   mixin_names:
   - '  f_mixin_function_c-ptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_need_wrapper: true
   owner: library
 f_function_native*_raw:
@@ -7974,6 +8022,7 @@ f_function_native*_raw:
   intent: function
   comments:
   - Return a C pointer directly as type(C_PTR).
+  - Call function and assign to a c variable.
   f_dummy_decl:
   - 'type(C_PTR) :: {f_var}'
   f_module:
@@ -7981,11 +8030,14 @@ f_function_native*_raw:
     - C_PTR
   mixin_names:
   - '  f_mixin_function_ptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 f_function_native*_scalar:
   name: f_function_native*_scalar
@@ -7993,6 +8045,7 @@ f_function_native*_scalar:
   comments:
   - Call a function in Fortran wrapper.
   - Declare a Fortran variable.
+  - Call function and assign to a c variable.
   notes:
   - Return a scalar to avoid doing the deref in Fortran.
   f_dummy_decl:
@@ -8007,12 +8060,15 @@ f_function_native*_scalar:
   - '  f_mixin_function'
   - '  f_mixin_declare-local-variable'
   - '  c_mixin_declare-fortran-result'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - '{i_type} :: {i_var}'
   i_module:
     '{i_module_name}':
     - '{i_kind}'
   c_return_type: '{c_type}'
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_return:
   - return *{cxx_var};
   c_need_wrapper: true
@@ -12071,6 +12127,7 @@ f_function_struct*_cdesc_pointer:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
+  - Call function and assign to a c variable.
   - Fill cdesc from native in the C wrapper.
   - Set Fortran pointer to native array.
   f_dummy_decl:
@@ -12095,6 +12152,7 @@ f_function_struct*_cdesc_pointer:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
+  - '  c_mixin_function-assign-to-cvar'
   - '  c_mixin_cdesc_native_fill'
   - '  f_mixin_cdesc_native_pointer'
   i_dummy_arg:
@@ -12106,6 +12164,8 @@ f_function_struct*_cdesc_pointer:
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {typemap.sh_type};'
@@ -12237,6 +12297,7 @@ f_function_void*:
   intent: function
   comments:
   - Declare a Fortran variable.
+  - Call function and assign to a c variable.
   notes:
   - XXX - f entries are the same as the i entries, share?
   f_dummy_decl:
@@ -12247,11 +12308,14 @@ f_function_void*:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_declare-local-variable'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 f_getter_bool:
   name: f_getter_bool

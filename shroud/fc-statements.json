@@ -1449,7 +1449,8 @@
         "mixin": [
             "f_mixin_function",
             "f_mixin_declare-local-variable",
-            "c_mixin_declare-fortran-result"
+            "c_mixin_declare-fortran-result",
+            "c_mixin_function-assign-to-cvar"
         ],
         "c_return_type": "{c_type}",
         "c_return": [
@@ -1685,6 +1686,7 @@
             "f_mixin_function-to-subroutine",
             "f_mixin_declare-local-variable",
             "f_mixin_cdesc_pass",
+            "c_mixin_function-assign-to-cvar",
             "c_mixin_cdesc_native_fill",
             "f_mixin_allocate",
             "f_mixin_cdesc_copy_array",
@@ -1703,7 +1705,8 @@
             "type(C_PTR) is returned instead of a cdesc argument."
         ],
         "mixin": [
-            "f_mixin_function_c-ptr"
+            "f_mixin_function_c-ptr",
+            "c_mixin_function-assign-to-cvar"
         ]
     },
     {
@@ -1714,6 +1717,7 @@
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_cdesc_pass",
+            "c_mixin_function-assign-to-cvar",
             "c_mixin_cdesc_native_fill",
             "f_mixin_cdesc_native_pointer"
         ]
@@ -1743,7 +1747,8 @@
             "f_function_native**"
         ],
         "mixin": [
-            "f_mixin_function_ptr"
+            "f_mixin_function_ptr",
+            "c_mixin_function-assign-to-cvar"
         ]
     },
     {
@@ -1884,7 +1889,8 @@
             "XXX - f entries are the same as the i entries, share?"
         ],
         "mixin": [
-            "f_mixin_declare-local-variable"
+            "f_mixin_declare-local-variable",
+            "c_mixin_function-assign-to-cvar"
         ],
         "i_module": {
             "iso_c_binding": [
