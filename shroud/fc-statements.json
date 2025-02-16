@@ -33,7 +33,7 @@
         }
     },
     {
-        "name": "c_mixin_header_string",
+        "name": "c_mixin_header_cstring",
         "lang_c": {
             "impl_header": [
                 "<string.h>"
@@ -3260,6 +3260,7 @@
         ],
         "mixin": [
             "f_mixin_out_vector_buf",
+            "c_mixin_header_cstring",
             "c_mixin_arg-call-cxx"
         ],
         "c_pre_call": [
@@ -3273,9 +3274,6 @@
         "c_local": [
             "cxx",
             "size"
-        ],
-        "impl_header": [
-            "<cstring>"
         ]
     },
     {
@@ -3311,6 +3309,8 @@
             "XXX - need to test scalar and pointer versions"
         ],
         "mixin": [
+            "c_mixin_header_stdlib",
+            "c_mixin_header_cstring",
             "c_mixin_out_vector_buf_malloc",
             "c_mixin_arg-call-cxx"
         ],
@@ -3326,10 +3326,6 @@
         "c_local": [
             "cxx",
             "bytes"
-        ],
-        "impl_header": [
-            "<cstdlib>",
-            "<cstring>"
         ]
     },
     {
@@ -3343,6 +3339,8 @@
             "malloc allocated array."
         ],
         "mixin": [
+            "c_mixin_header_stdlib",
+            "c_mixin_header_cstring",
             "c_mixin_out_vector_buf_malloc",
             "c_mixin_arg-call-cxx"
         ],
@@ -3358,10 +3356,6 @@
         "c_local": [
             "cxx",
             "bytes"
-        ],
-        "impl_header": [
-            "<cstdlib>",
-            "<cstring>"
         ]
     },
     {
@@ -3481,6 +3475,8 @@
             "Add an argument with the length of the array."
         ],
         "mixin": [
+            "c_mixin_header_stdlib",
+            "c_mixin_header_cstring",
             "c_mixin_function_vector_malloc"
         ],
         "c_pre_call": [
@@ -3498,10 +3494,6 @@
         "c_local": [
             "cxx",
             "bytes"
-        ],
-        "impl_header": [
-            "<cstdlib>",
-            "<cstring>"
         ]
     },
     {
@@ -4609,6 +4601,9 @@
         "comments": [
             "Allocate copy of C pointer (requires +dimension)."
         ],
+        "mixin": [
+            "c_mixin_header_cstring"
+        ],
         "c_post_call": [
             "if ({c_local_cxx} != {nullptr}) {{+",
             "{gen.c_extents_decl}int SH_ret = CFI_allocate({c_var_cfi}, \t{gen.c_lower_use}, \t{gen.c_extents_use}, \t0);",
@@ -4696,7 +4691,8 @@
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
-            "f_mixin_cfi_character-deferred-length"
+            "f_mixin_cfi_character-deferred-length",
+            "c_mixin_header_cstring"
         ],
         "f_need_wrapper": true,
         "c_post_call": [
@@ -5024,7 +5020,7 @@
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_cfi_character-deferred-length",
-            "c_mixin_header_string"
+            "c_mixin_header_cstring"
         ],
         "f_need_wrapper": true,
         "c_post_call": [
@@ -5041,7 +5037,8 @@
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
-            "f_mixin_cfi_character-deferred-length"
+            "f_mixin_cfi_character-deferred-length",
+            "c_mixin_header_cstring"
         ],
         "f_need_wrapper": true,
         "c_post_call": [

@@ -1642,6 +1642,8 @@ c_function_vector<native>_malloc:
   - malloc allocated array.
   - Add an argument with the length of the array.
   mixin_names:
+  - '  c_mixin_header_stdlib'
+  - '  c_mixin_header_cstring'
   - '  c_mixin_function_vector_malloc'
   i_dummy_arg:
   - '{i_var_size}'
@@ -1674,6 +1676,14 @@ c_function_vector<native>_malloc:
   - <cstdlib>
   - <cstring>
   owner: library
+  lang_c:
+    impl_header:
+    - <stdlib.h>
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstdlib>
+    - <cstring>
 c_function_void*:
   name: c_function_void*
   intent: function
@@ -3528,6 +3538,8 @@ c_inout_vector<native>&_buf_malloc:
   - Create local vector from arguments then copy result to
   - malloc allocated array.
   mixin_names:
+  - '  c_mixin_header_stdlib'
+  - '  c_mixin_header_cstring'
   - '  c_mixin_out_vector_buf_malloc'
   - '  c_mixin_arg-call-cxx'
   i_dummy_arg:
@@ -3561,6 +3573,14 @@ c_inout_vector<native>&_buf_malloc:
   - <cstdlib>
   - <cstring>
   owner: library
+  lang_c:
+    impl_header:
+    - <stdlib.h>
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstdlib>
+    - <cstring>
 c_inout_vector<native>*_buf_copy:
   name: c_inout_vector<native>*_buf_copy
   intent: inout
@@ -3605,6 +3625,8 @@ c_inout_vector<native>*_buf_malloc:
   - Create local vector from arguments then copy result to
   - malloc allocated array.
   mixin_names:
+  - '  c_mixin_header_stdlib'
+  - '  c_mixin_header_cstring'
   - '  c_mixin_out_vector_buf_malloc'
   - '  c_mixin_arg-call-cxx'
   i_dummy_arg:
@@ -3638,6 +3660,14 @@ c_inout_vector<native>*_buf_malloc:
   - <cstdlib>
   - <cstring>
   owner: library
+  lang_c:
+    impl_header:
+    - <stdlib.h>
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstdlib>
+    - <cstring>
 c_inout_vector<native>_buf_copy:
   name: c_inout_vector<native>_buf_copy
   intent: inout
@@ -3682,6 +3712,8 @@ c_inout_vector<native>_buf_malloc:
   - Create local vector from arguments then copy result to
   - malloc allocated array.
   mixin_names:
+  - '  c_mixin_header_stdlib'
+  - '  c_mixin_header_cstring'
   - '  c_mixin_out_vector_buf_malloc'
   - '  c_mixin_arg-call-cxx'
   i_dummy_arg:
@@ -3715,6 +3747,14 @@ c_inout_vector<native>_buf_malloc:
   - <cstdlib>
   - <cstring>
   owner: library
+  lang_c:
+    impl_header:
+    - <stdlib.h>
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstdlib>
+    - <cstring>
 c_inout_vector<scalar>&:
   name: c_inout_vector<scalar>&
   intent: inout
@@ -4124,6 +4164,8 @@ c_mixin_cfi_native_allocatable:
   intent: mixin
   comments:
   - Allocate copy of C pointer (requires +dimension).
+  mixin_names:
+  - '  c_mixin_header_cstring'
   c_post_call:
   - if ({c_local_cxx} != {nullptr}) {{+
   - "{gen.c_extents_decl}int SH_ret = CFI_allocate({c_var_cfi}, \t{gen.c_lower_use},\
@@ -4137,7 +4179,15 @@ c_mixin_cfi_native_allocatable:
   - lower
   helper:
   - lower_bounds_CFI
+  impl_header:
+  - <cstring>
   owner: library
+  lang_c:
+    impl_header:
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstring>
 c_mixin_cfi_native_pointer:
   name: c_mixin_cfi_native_pointer
   intent: mixin
@@ -4438,6 +4488,18 @@ c_mixin_function_vector_malloc:
   c_temps:
   - size
   owner: library
+c_mixin_header_cstring:
+  name: c_mixin_header_cstring
+  intent: mixin
+  impl_header:
+  - <cstring>
+  owner: library
+  lang_c:
+    impl_header:
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstring>
 c_mixin_header_stddef:
   name: c_mixin_header_stddef
   intent: mixin
@@ -4462,18 +4524,6 @@ c_mixin_header_stdlib:
   lang_cxx:
     impl_header:
     - <cstdlib>
-c_mixin_header_string:
-  name: c_mixin_header_string
-  intent: mixin
-  impl_header:
-  - <cstring>
-  owner: library
-  lang_c:
-    impl_header:
-    - <string.h>
-  lang_cxx:
-    impl_header:
-    - <cstring>
 c_mixin_in_character_buf:
   name: c_mixin_in_character_buf
   intent: mixin
@@ -5396,6 +5446,7 @@ c_out_vector<native>&_buf_copy:
   - XXX - need to test scalar and pointer versions
   mixin_names:
   - '  f_mixin_out_vector_buf'
+  - '  c_mixin_header_cstring'
   - '  c_mixin_arg-call-cxx'
   i_dummy_arg:
   - '{i_var}'
@@ -5427,6 +5478,12 @@ c_out_vector<native>&_buf_copy:
   impl_header:
   - <cstring>
   owner: library
+  lang_c:
+    impl_header:
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstring>
 c_out_vector<native>&_buf_malloc:
   name: c_out_vector<native>&_buf_malloc
   intent: out
@@ -5438,6 +5495,8 @@ c_out_vector<native>&_buf_malloc:
   - malloc allocated array.
   - XXX - need to test scalar and pointer versions
   mixin_names:
+  - '  c_mixin_header_stdlib'
+  - '  c_mixin_header_cstring'
   - '  c_mixin_out_vector_buf_malloc'
   - '  c_mixin_arg-call-cxx'
   i_dummy_arg:
@@ -5471,6 +5530,14 @@ c_out_vector<native>&_buf_malloc:
   - <cstdlib>
   - <cstring>
   owner: library
+  lang_c:
+    impl_header:
+    - <stdlib.h>
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstdlib>
+    - <cstring>
 c_out_vector<native>&_cdesc:
   name: c_out_vector<native>&_cdesc
   intent: out
@@ -5536,6 +5603,7 @@ c_out_vector<native>*_buf_copy:
   - XXX - need to test scalar and pointer versions
   mixin_names:
   - '  f_mixin_out_vector_buf'
+  - '  c_mixin_header_cstring'
   - '  c_mixin_arg-call-cxx'
   i_dummy_arg:
   - '{i_var}'
@@ -5567,6 +5635,12 @@ c_out_vector<native>*_buf_copy:
   impl_header:
   - <cstring>
   owner: library
+  lang_c:
+    impl_header:
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstring>
 c_out_vector<native>*_buf_malloc:
   name: c_out_vector<native>*_buf_malloc
   intent: out
@@ -5578,6 +5652,8 @@ c_out_vector<native>*_buf_malloc:
   - malloc allocated array.
   - XXX - need to test scalar and pointer versions
   mixin_names:
+  - '  c_mixin_header_stdlib'
+  - '  c_mixin_header_cstring'
   - '  c_mixin_out_vector_buf_malloc'
   - '  c_mixin_arg-call-cxx'
   i_dummy_arg:
@@ -5611,6 +5687,14 @@ c_out_vector<native>*_buf_malloc:
   - <cstdlib>
   - <cstring>
   owner: library
+  lang_c:
+    impl_header:
+    - <stdlib.h>
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstdlib>
+    - <cstring>
 c_out_vector<native>*_cdesc:
   name: c_out_vector<native>*_cdesc
   intent: out
@@ -5676,6 +5760,7 @@ c_out_vector<native>_buf_copy:
   - XXX - need to test scalar and pointer versions
   mixin_names:
   - '  f_mixin_out_vector_buf'
+  - '  c_mixin_header_cstring'
   - '  c_mixin_arg-call-cxx'
   i_dummy_arg:
   - '{i_var}'
@@ -5707,6 +5792,12 @@ c_out_vector<native>_buf_copy:
   impl_header:
   - <cstring>
   owner: library
+  lang_c:
+    impl_header:
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstring>
 c_out_vector<native>_buf_malloc:
   name: c_out_vector<native>_buf_malloc
   intent: out
@@ -5718,6 +5809,8 @@ c_out_vector<native>_buf_malloc:
   - malloc allocated array.
   - XXX - need to test scalar and pointer versions
   mixin_names:
+  - '  c_mixin_header_stdlib'
+  - '  c_mixin_header_cstring'
   - '  c_mixin_out_vector_buf_malloc'
   - '  c_mixin_arg-call-cxx'
   i_dummy_arg:
@@ -5751,6 +5844,14 @@ c_out_vector<native>_buf_malloc:
   - <cstdlib>
   - <cstring>
   owner: library
+  lang_c:
+    impl_header:
+    - <stdlib.h>
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstdlib>
+    - <cstring>
 c_out_vector<string>&:
   name: c_out_vector<string>&
   intent: out
@@ -6674,6 +6775,7 @@ f_function_char*_cfi_allocatable:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
+  - '  c_mixin_header_cstring'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -6696,6 +6798,8 @@ f_function_char*_cfi_allocatable:
     i_intent_attr: ', intent(OUT)'
   iface_header:
   - ISO_Fortran_binding.h
+  impl_header:
+  - <cstring>
   owner: library
 f_function_char*_cfi_arg:
   name: f_function_char*_cfi_arg
@@ -7099,6 +7203,7 @@ f_function_char_cfi_allocatable:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
+  - '  c_mixin_header_cstring'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -7121,6 +7226,8 @@ f_function_char_cfi_allocatable:
     i_intent_attr: ', intent(OUT)'
   iface_header:
   - ISO_Fortran_binding.h
+  impl_header:
+  - <cstring>
   owner: library
 f_function_char_cfi_pointer:
   name: f_function_char_cfi_pointer
@@ -7578,6 +7685,7 @@ f_function_native*_cfi_allocatable:
   - '  c_mixin_arg-call-cxx'
   - '  c_mixin_function-assign-to-local'
   - '  c_mixin_cfi_native_allocatable'
+  - '    c_mixin_header_cstring'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -7613,6 +7721,8 @@ f_function_native*_cfi_allocatable:
   - lower_bounds_CFI
   iface_header:
   - ISO_Fortran_binding.h
+  impl_header:
+  - <cstring>
   owner: library
 f_function_native*_cfi_pointer:
   name: f_function_native*_cfi_pointer
@@ -9063,7 +9173,7 @@ f_function_string&_cfi_allocatable:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
-  - '  c_mixin_header_string'
+  - '  c_mixin_header_cstring'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -9108,7 +9218,7 @@ f_function_string&_cfi_allocatable_caller:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
-  - '  c_mixin_header_string'
+  - '  c_mixin_header_cstring'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -9153,7 +9263,7 @@ f_function_string&_cfi_allocatable_library:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
-  - '  c_mixin_header_string'
+  - '  c_mixin_header_cstring'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -10179,7 +10289,7 @@ f_function_string*_cfi_allocatable:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
-  - '  c_mixin_header_string'
+  - '  c_mixin_header_cstring'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -10224,7 +10334,7 @@ f_function_string*_cfi_allocatable_caller:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
-  - '  c_mixin_header_string'
+  - '  c_mixin_header_cstring'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -10269,7 +10379,7 @@ f_function_string*_cfi_allocatable_library:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
-  - '  c_mixin_header_string'
+  - '  c_mixin_header_cstring'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -11201,6 +11311,7 @@ f_function_string_cfi_allocatable:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
+  - '  c_mixin_header_cstring'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -11221,6 +11332,8 @@ f_function_string_cfi_allocatable:
     i_intent_attr: ', intent(OUT)'
   iface_header:
   - ISO_Fortran_binding.h
+  impl_header:
+  - <cstring>
   owner: library
 f_function_string_cfi_allocatable_caller:
   name: f_function_string_cfi_allocatable_caller
@@ -11243,7 +11356,7 @@ f_function_string_cfi_allocatable_caller:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
-  - '  c_mixin_header_string'
+  - '  c_mixin_header_cstring'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -11288,7 +11401,7 @@ f_function_string_cfi_allocatable_library:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
-  - '  c_mixin_header_string'
+  - '  c_mixin_header_cstring'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -17379,6 +17492,7 @@ f_out_native**_cfi_allocatable:
   - '  c_mixin_local-cxx-ptr'
   - '  c_mixin_arg-call-cxx-address'
   - '  c_mixin_cfi_native_allocatable'
+  - '    c_mixin_header_cstring'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -17410,6 +17524,8 @@ f_out_native**_cfi_allocatable:
   - lower_bounds_CFI
   iface_header:
   - ISO_Fortran_binding.h
+  impl_header:
+  - <cstring>
   owner: library
 f_out_native**_cfi_pointer:
   name: f_out_native**_cfi_pointer
@@ -20119,9 +20235,9 @@ root
       function-assign-to-new -- c_mixin_function-assign-to-new
       function-return-cvar -- c_mixin_function-return-cvar
       header
+        cstring -- c_mixin_header_cstring
         stddef -- c_mixin_header_stddef
         stdlib -- c_mixin_header_stdlib
-        string -- c_mixin_header_string
       in
         character
           buf -- c_mixin_in_character_buf
