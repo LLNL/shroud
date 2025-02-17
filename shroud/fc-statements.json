@@ -5015,7 +5015,6 @@
             "c_mixin_function-assign-to-local"
         ],
         "f_need_wrapper": true,
-        "c_pre_call": [],
         "c_post_call": [
             "int {c_local_err};",
             "if ({c_local_cxx} == {nullptr}) {{+",
