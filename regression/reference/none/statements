@@ -3990,14 +3990,6 @@ c_mixin_c-str:
   - const char *{c_var} = NULL;
   - if (!{c_local_cxx}->empty()) {c_var} = {c_local_cxx}->c_str();
   owner: library
-c_mixin_call_function:
-  name: c_mixin_call_function
-  intent: mixin
-  comments:
-  - Call a void function in C wrapper.
-  c_call:
-  - '{C_call_function};'
-  owner: library
 c_mixin_capsule_fill_cvar:
   name: c_mixin_capsule_fill_cvar
   intent: mixin
@@ -6298,9 +6290,10 @@ c_setter_string_scalar_buf:
 c_subroutine:
   name: c_subroutine
   intent: subroutine
-  notes:
-  - XXX - when using the mixin, a wrapper is created when it is not
-  - needed when wrapping C instead of C++.
+  comments:
+  - Call subroutine/void C function.
+  c_call:
+  - '{C_call_function};'
   owner: library
 c_subroutine_assignment_weakptr:
   name: c_subroutine_assignment_weakptr
@@ -19593,11 +19586,12 @@ f_setter_struct*_pointer:
 f_subroutine:
   name: f_subroutine
   intent: subroutine
-  notes:
-  - XXX - when using the mixin, a wrapper is created when it is not
-  - needed when wrapping C instead of C++.
+  comments:
+  - Call subroutine/void C function.
   f_call:
   - call {f_call_function}({F_arg_c_call})
+  c_call:
+  - '{C_call_function};'
   owner: library
 f_subroutine_assignment_weakptr:
   name: f_subroutine_assignment_weakptr
@@ -20612,8 +20606,6 @@ root
       arg-call-cxx-deref -- c_mixin_arg-call-cxx-deref
       as-intent-out -- c_mixin_as-intent-out
       c-str -- c_mixin_c-str
-      call
-        function -- c_mixin_call_function
       capsule
         fill
           cvar -- c_mixin_capsule_fill_cvar

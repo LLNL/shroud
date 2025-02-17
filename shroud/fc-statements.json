@@ -490,15 +490,6 @@
         "c_need_wrapper": true
     },
     {
-        "name": "c_mixin_call_function",
-        "comments": [
-            "Call a void function in C wrapper."
-        ],
-        "c_call": [
-            "{C_call_function};"
-        ]
-    },
-    {
         "name": "c_mixin_function-assign-to-cvar",
         "comments": [
             "Call function and assign to a c variable."
@@ -557,15 +548,14 @@
             "f_subroutine",
             "c_subroutine"
         ],
-        "notes": [
-            "XXX - when using the mixin, a wrapper is created when it is not",
-            "needed when wrapping C instead of C++."
-        ],
-        "mixin": [
-            "#c_mixin_call_function"
+        "comments": [
+            "Call subroutine/void C function."
         ],
         "f_call": [
             "call {f_call_function}({F_arg_c_call})"
+        ],
+        "c_call": [
+            "{C_call_function};"
         ]
     },
     {
