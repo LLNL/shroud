@@ -9,8 +9,6 @@
 # run/pointers-c-f
 # Fortran wrappers only for a C library
 #
-include $(top)/regression/run/defaults.mk
-
 testdir = pointers-c-f
 
 INCLUDE = \
@@ -22,18 +20,15 @@ VPATH = \
     $(top)/regression/run/pointers \
     $(top)/regression/run/fruit
 
-OBJS = \
-    main.o \
-    fruit.o \
-    wrapfpointers.o \
+C_OBJS = \
     pointers.o \
     wrappointers.o \
     utilpointers.o
+F_OBJS = \
+    main.o \
+    fruit.o \
+    wrapfpointers.o
 
-$(testdir) : $(OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(CLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod $(testdir)
+include $(top)/regression/run/defaults.mk
 
 main.o : fruit.o wrapfpointers.o

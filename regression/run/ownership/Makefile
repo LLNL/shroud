@@ -12,7 +12,7 @@ ifndef top
 top = ../..
 endif
 
-include $(top)/regression/run/defaults.mk
+testdir = ownership
 
 INCLUDE = \
     -I$(top)/regression/reference/ownership \
@@ -23,20 +23,17 @@ VPATH = \
     $(top)/regression/run/ownership \
     $(top)/regression/run/fruit
 
-OBJS = \
+C_OBJS = \
     ownership.o \
     utilownership.o \
-    wrapfownership.o \
     wrapownership.o \
-    wrapClass1.o \
+    wrapClass1.o
+F_OBJS = \
+    main.o \
     fruit.o \
-    main.o
+    wrapfownership.o
 
-ownership : $(OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod ownership maincpp maincpp.o
+include $(top)/regression/run/defaults.mk
 
 ownership.o : ownership.hpp
 wrapOwnership.o : wrapownership.h ownership.hpp

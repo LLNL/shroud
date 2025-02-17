@@ -8,7 +8,7 @@
 #
 # run/preprocess
 #
-include $(top)/regression/run/defaults.mk
+testdir = preprocess
 
 INCLUDE = \
     -I$(top)/regression/reference/preprocess \
@@ -19,19 +19,16 @@ VPATH = \
     $(top)/regression/run/preprocess \
     $(top)/regression/run/fruit
 
-OBJS = \
-    wrapfpreprocess.o \
+C_OBJS = \
     wrapUser1.o \
     wrapUser2.o \
-    utilpreprocess.o \
+    utilpreprocess.o
+F_OBJS = \
+    main.o \
     fruit.o \
-    main.o
+    wrapfpreprocess.o
 
-preprocess : $(OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod preprocess
+include $(top)/regression/run/defaults.mk
 
 wrappreprocess.o : preprocess.hpp
 wrapUser1.o : wrapUser1.h preprocess.hpp wrapUser1.h

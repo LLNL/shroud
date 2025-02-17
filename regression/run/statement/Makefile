@@ -11,7 +11,7 @@ ifeq ($(top),)
 top := ../../..
 endif 
 
-include $(top)/regression/run/defaults.mk
+testdir = statement
 
 INCLUDE = \
     -I$(top)/regression/reference/statement \
@@ -26,15 +26,11 @@ C_OBJS = \
     statement.o \
     wrapstatement.o
 F_OBJS = \
-    wrapfstatement.o \
+    main.o \
     fruit.o \
-    main.o
+    wrapfstatement.o
 
-statement : $(C_OBJS) $(F_OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod statement
+include $(top)/regression/run/defaults.mk
 
 statement.o : statement.hpp
 wrapstatement.o : wrapstatement.h statement.hpp
@@ -45,5 +41,3 @@ maincpp : maincpp.o wrapStatement.o wrapClass1.o wrapSingleton.o statement.o
 	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@ $(CXXLIBS)
 
 testc.o : testc.c wrapstatement.h
-testc : testc.o $(C_OBJS)
-	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)

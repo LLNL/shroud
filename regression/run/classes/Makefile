@@ -9,9 +9,9 @@
 #
 ifeq ($(top),)
 top := ../../..
-endif 
+endif
 
-include $(top)/regression/run/defaults.mk
+testdir = classes
 
 INCLUDE = \
     -I$(top)/regression/reference/classes \
@@ -37,11 +37,7 @@ F_OBJS = \
     fruit.o \
     main.o
 
-classes : $(C_OBJS) $(F_OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod classes
+include $(top)/regression/run/defaults.mk
 
 classes.o : classes.hpp
 wrapClasses.o : wrapClasses.h classes.hpp
@@ -56,5 +52,3 @@ maincpp : maincpp.o wrapclasses.o wrapClass1.o wrapSingleton.o classes.o
 	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@ $(CXXLIBS)
 
 testc.o : testc.c wrapclasses.h wrapClass1.h classes.hpp
-testc : testc.o $(C_OBJS)
-	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)

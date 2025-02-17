@@ -132,6 +132,42 @@ to the VPATH.  For the Python tests, there is an explicit run to force
 the use of CXX.  The VPATH finds both the C and C++ files since they
 have the same stem.
 
+Sample Fortran Makefile to allow TEST_FFLAGS to be in every compile for a specific test.
+
+```
+testdir = xxx
+TEST_FFLAGS = -DTEST_C_WRAPPER
+
+C_OBJS = \
+    xxx.o \
+    wrapxxx.o
+F_OBJS = \
+    main.o \
+    fruit.o \
+    wrapfxxx.o
+
+include $(top)/regression/run/defaults.mk
+
+# dependencies
+```
+
+Sample Python makefile
+
+```
+testdir = xxx
+pymodule = xxx.so
+
+AS_SHARED := TRUE
+include $(top)/regression/run/defaults.mk
+
+PY_OBJS = \
+    xxx.o
+    pyxxxmodule.o
+
+# dependencies
+
+```
+
 reference counting
 ------------------
 

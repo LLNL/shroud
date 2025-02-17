@@ -12,8 +12,11 @@
 # TEST_CFLAGS   - Test specific C flags.
 # TEST_CXXFLAGS - Test specific C++ flags.
 # TEST_FFLAGS   - Test specific Fortran flags.
+# TEST_LDFLAGS  - Test specific load flags.
 
 # The fortran flags turn on preprocessing.
+
+#cwrapper := valgrind
 
 #compiler = gcc
 #compiler = intel
@@ -173,11 +176,18 @@ SHARED = -fPIC
 LD_SHARED = -shared
 endif
 
-# Prefix local flags to user flags from the command line.
-LOCAL_CFLAGS += $(CFLAGS)
-LOCAL_CXXFLAGS += $(CXXFLAGS)
-LOCAL_FFLAGS += $(FFLAGS)
-override LDFLAGS := $(LOCAL_LDFLAGS) $(ASAN) $(LDFLAGS)
+ifeq ($(AS_SHARED),TRUE)
+LOCAL_CFLAGS += $(SHARED)
+LOCAL_CXXFLAGS += $(SHARED)
+LOCAL_FFLAGS += $(SHARED)
+LOCAL_LDFLAGS += $(LD_SHARED)
+endif
+
+# Prefix required local flags to user flags from the command line.
+override CFLAGS   := $(LOCAL_CFLAGS) $(ASAN) $(TEST_CFLAGS) $(CFLAGS)
+override CXXFLAGS := $(LOCAL_CXXFLAGS) $(ASAN) $(TEST_CXXFLAGS) $(CXXFLAGS)
+override FFLAGS   := $(LOCAL_FFLAGS) $(ASAN) $(TEST_FFLAGS) $(FFLAGS)
+override LDFLAGS  := $(LOCAL_LDFLAGS) $(ASAN) $(LDFLAGS)
 
 ifdef PYTHON
 # Simple string functions, to reduce the clutter below.
@@ -215,6 +225,12 @@ PYTHON_INC := -I$(python.incdir) -I$(PYTHON_NUMPY)
 PYTHON_LIB := -L$(python.libpl) $(python.ldflags) $(python.bldlibrary) $(python.libs)
 endif
 
+python-print-debug:
+	@echo PYTHON=$(PYTHON)
+	@echo PYTHON_PREFIX=$(PYTHON_PREFIX)
+	@echo PYTHON_VER=$(PYTHON_VER)
+.PHONY : print-debug
+
 ifdef LUA
 LUA_PREFIX = $(abspath $(dir $(LUA))/..)
 LUA_BIN = $(LUA)
@@ -222,17 +238,40 @@ LUA_INC = -I$(LUA_PREFIX)/include
 LUA_LIB = -L$(LUA_PREFIX)/lib -llua -ldl
 endif
 
+lua-print-debug:
+	@echo LUA=$(LUA)
+	@echo LUA_PREFIX=$(LUA_PREFIX)
+	@echo LUA_INC=$(LUA_INC)
+	@echo LUA_LIB=$(LUA_LIB)
+
 %.o : %.c
-	$(CC) $(LOCAL_CFLAGS) $(TEST_CFLAGS) $(INCLUDE) -c -o $*.o $<
+	$(CC) $(CFLAGS) $(INCLUDE) -c -o $*.o $<
 
 %.o : %.cpp
-	$(CXX) $(LOCAL_CXXFLAGS) $(TEST_CXXFLAGS) $(INCLUDE) -c -o $*.o $<
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -c -o $*.o $<
 
 %.o : %.cxx
-	$(CXX) $(LOCAL_CXXFLAGS) $(TEST_CXXFLAGS) $(INCLUDE) -c -o $*.o $<
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -c -o $*.o $<
 
 %.o %.mod  : %.f
-	$(FC) $(LOCAL_FFLAGS) $(TEST_FFLAGS) $(INCLUDE) -c -o $*.o $<
+	$(FC) $(FFLAGS) $(INCLUDE) -c -o $*.o $<
 
 %.o %.mod  : %.f90
-	$(FC) $(LOCAL_FFLAGS) $(TEST_FFLAGS) $(INCLUDE) -c -o $*.o $<
+	$(FC) $(FFLAGS) $(INCLUDE) -c -o $*.o $<
+
+# Fortran test
+$(testdir) : $(F_OBJS) $(C_OBJS)
+	$(FC) $(LDFLAGS) $^ -o $@ $(CLIBS)
+
+# C test
+testc : testc.o $(C_OBJS)
+	$(CC) $(LDFLAGS) $^ -o $@ $(CLIBS) -lm
+
+# Python module
+#$(testdir).so : $(PY_OBJS)
+#	$(CXX) $(LDFLAGS) -o $@ $^ $(LIBS)
+
+clean :
+	rm -f $(F_OBJS) $(C_OBJS)  *.mod *.so $(testdir) testc
+.PHONY : clean
+

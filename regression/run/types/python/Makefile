@@ -7,6 +7,10 @@
 #
 #  Compile the python types module
 #
+testdir = types
+pymodule = shtypes.so
+
+AS_SHARED := TRUE
 include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
@@ -19,29 +23,19 @@ VPATH = \
     $(top)/regression/run/types \
     $(top)/regression/run/types/python
 
-OBJS = \
+PY_OBJS = \
     types.o \
     pytypesmodule.o
 
-LOCAL_CXXFLAGS += $(SHARED)
-
 all : shtypes.so #simple
 
-shtypes.so : $(OBJS)
-	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
+shtypes.so : $(PY_OBJS)
+	$(CXX) $(LDFLAGS) -o $@ $^ $(LIBS)
 
-simple : testpython.o $(OBJS)
+simple : testpython.o $(PY_OBJS)
 	$(CXX) -pthread -o $@ $^ $(PYTHON_LIB)
 #	g++ -pthread -o $@ $^ $(PYTHON_LIB)
 
-clean :
-	rm -f *.so *.o simple
-.PHONY : clean
-
-print-debug:
-	@echo PYTHON=$(PYTHON)
-	@echo PYTHON_PREFIX=$(PYTHON_PREFIX)
-	@echo PYTHON_VER=$(PYTHON_VER)
 
 pytypesmodule.o : pytypesmodule.hpp
 pytypesutil.o : pytypesmodule.hpp

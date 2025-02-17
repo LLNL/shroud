@@ -8,7 +8,7 @@
 #
 # run/sgroup
 #
-include $(top)/regression/run/defaults.mk
+testdir = sgroup
 
 INCLUDE = \
     -I$(top)/regression/reference/sgroup \
@@ -23,16 +23,11 @@ C_OBJS = \
     sgroup.o \
     wrapsgroup.o
 F_OBJS = \
-    wrapfsgroup.o \
+    main.o \
     fruit.o \
-    main.o
+    wrapfsgroup.o
 
-
-sgroup : $(C_OBJS) $(F_OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod sgroup
+include $(top)/regression/run/defaults.mk
 
 #sgroup.o : sgroup.cpp sgroup.hpp
 sgroup.o : sgroup.hpp
@@ -44,5 +39,4 @@ maincpp : maincpp.o
 	$(CXX) $(CXXFLAGS) $^ -o $@ $(CXXLIBS)
 
 testc.o : testc.c wrapstd_vector_int.h
-testc : testc.o $(C_OBJS)
-	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)
+

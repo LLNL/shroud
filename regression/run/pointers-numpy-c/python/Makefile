@@ -9,6 +9,10 @@
 #  Compile the python pointers module
 #  regression/run/pointers-numpy-c/python
 #
+testdir = pointers-numpy-c
+pymodule = pointers.so
+
+AS_SHARED := TRUE
 include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
@@ -20,27 +24,16 @@ VPATH = \
     $(top)/regression/reference/pointers-numpy-c \
     $(top)/regression/run/pointers
 
-OBJS = \
+PY_OBJS = \
     pointers.o \
     pypointersmodule.o
 
-LOCAL_CFLAGS += $(SHARED)
-
 all : pointers.so
 
-pointers.so : $(OBJS)
-	$(CC) $(LD_SHARED) $^ -o $@ $(LIBS)
+pointers.so : $(PY_OBJS)
+	$(CC) $(LDFLAGS) $^ -o $@ $(LIBS)
 
-simple : testpython.o $(OBJS)
+simple : testpython.o $(PY_OBJS)
 	$(CC) -pthread -o $@ $^ $(PYTHON_LIB)
 #	g++ -pthread -o $@ $^ $(PYTHON_LIB)
-
-clean :
-	rm -f *.so *.o simple
-.PHONY : clean
-
-print-debug:
-	@echo PYTHON=$(PYTHON)
-	@echo PYTHON_PREFIX=$(PYTHON_PREFIX)
-	@echo PYTHON_VER=$(PYTHON_VER)
 

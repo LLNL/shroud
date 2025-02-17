@@ -6,7 +6,7 @@
 #
 # run/funptr-cxx
 #
-include $(top)/regression/run/defaults.mk
+testdir = funptr-cxx
 
 INCLUDE = \
     -I$(top)/regression/reference/funptr-cxx \
@@ -23,19 +23,13 @@ C_OBJS = \
     funptr.o \
     wrapfunptr.o
 F_OBJS = \
-    wrapffunptr.o \
+    main.o \
     fruit.o \
-    main.o
+    wrapffunptr.o
 
-funptr-cxx : $(C_OBJS) $(F_OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(CLIBS)
+include $(top)/regression/run/defaults.mk
 
 testc.o : testc.c wrapfunptr.h
-testc : testc.o $(C_OBJS)
-	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS) -lm
-
-clean :
-	rm -f $(C_OBJS) $(F_OBJS) *.mod funptr-cxx
 
 main.o : fruit.o wrapffunptr.o
 

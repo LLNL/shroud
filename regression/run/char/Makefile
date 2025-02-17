@@ -6,9 +6,9 @@
 #
 # #######################################################################
 #
-# run/strings
+# run/char
 #
-include $(top)/regression/run/defaults.mk
+testdir = char
 
 #TEST_FFLAGS = -DTEST_C_WRAPPER
 
@@ -31,14 +31,8 @@ F_OBJS = \
     fruit.o \
     main.o
 
-strings : $(C_OBJS) $(F_OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod strings
+include $(top)/regression/run/defaults.mk
 
 main.o : fruit.o wrapfstrings.o
 
 testc.o : testc.c wrapstrings.h
-testc : testc.o $(C_OBJS)
-	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)

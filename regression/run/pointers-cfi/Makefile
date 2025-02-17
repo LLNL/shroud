@@ -8,8 +8,6 @@
 #
 # run/pointers-cfi
 #
-include $(top)/regression/run/defaults.mk
-
 testdir = pointers-cfi
 
 INCLUDE = \
@@ -22,22 +20,19 @@ VPATH = \
     $(top)/regression/run/pointers \
     $(top)/regression/run/fruit
 
-OBJS = \
-    main.o \
-    fruit.o \
-    wrapfpointers.o \
+C_OBJS = \
     pointers.o \
     wrappointers.o \
     utilpointers.o
+F_OBJS = \
+    main.o \
+    fruit.o \
+    wrapfpointers.o
 
-$(testdir) : $(OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(CLIBS)
+include $(top)/regression/run/defaults.mk
 
 main.o : main.f fruit.o wrapfpointers.o
 pointers.o : pointers.cpp pointers.h
 	$(CXX) $(CXXFLAGS) $(INCLUDE) -c -o $*.o $<
-
-clean :
-	rm -f $(OBJS) *.mod $(testdir)
 
 main.o : wrapfpointers.o

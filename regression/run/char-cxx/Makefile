@@ -8,8 +8,6 @@
 #
 # run/char-cxx
 #
-include $(top)/regression/run/defaults.mk
-
 testdir = char-cxx
 #TEST_FFLAGS = -DTEST_C_WRAPPER
 
@@ -33,17 +31,10 @@ F_OBJS = \
     fruit.o \
     wrapfchar.o
 
-$(testdir) : $(F_OBJS) $(C_OBJS)
-	$(FC) $(LDFLAGS) $^ -o $@ $(CLIBS)
+include $(top)/regression/run/defaults.mk
 
 main.o : main.f fruit.o wrapfchar.o
 char.o : char.cpp char.h
 	$(CXX) $(CXXFLAGS) $(INCLUDE) -c -o $*.o $<
 
 testc.o : testc.c wrapchar.h
-testc : testc.o $(C_OBJS)
-	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS) -lm
-clean :
-	rm -f $(C_OBJS) $(F_OBJS) *.mod $(testdir) testc
-
-main.o : wrapfchar.o

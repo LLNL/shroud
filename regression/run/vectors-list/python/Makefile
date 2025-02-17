@@ -8,6 +8,10 @@
 #
 #  Compile the python vectors module
 #
+testdir = vectors-list
+pymodule = vectors.so
+
+AS_SHARED := TRUE
 include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
@@ -20,30 +24,18 @@ VPATH = \
     $(top)/regression/run/vectors \
     $(top)/regression/run/vectors-list/python
 
-OBJS = \
+PY_OBJS = \
     vectors.o \
     pyvectorsmodule.o
 
-LOCAL_CXXFLAGS += $(SHARED)
-
 all : vectors.so #simple
 
-vectors.so : $(OBJS)
-	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
+vectors.so : $(PY_OBJS)
+	$(CXX) $(LDFLAGS) -o $@ $^ $(LIBS)
 
-simple : testpython.o $(OBJS)
+simple : testpython.o $(PY_OBJS)
 	$(CXX) -pthread -o $@ $^ $(PYTHON_LIB)
 #	g++ -pthread -o $@ $^ $(PYTHON_LIB)
-
-clean :
-	rm -f *.so *.o simple
-.PHONY : clean
-
-print-debug:
-	@echo PYTHON=$(PYTHON)
-	@echo PYTHON_PREFIX=$(PYTHON_PREFIX)
-	@echo PYTHON_VER=$(PYTHON_VER)
-
 
 vectors.o : vectors.hpp
 pyvectorsmodule.o : pyvectorsmodule.hpp

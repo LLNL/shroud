@@ -8,6 +8,10 @@
 #
 #  Compile the python classes module
 #
+testdir = classes
+pymodule = classes.so
+
+AS_SHARED := TRUE
 include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
@@ -20,7 +24,7 @@ VPATH = \
     $(top)/regression/run/classes \
     $(top)/regression/run/classes/python
 
-OBJS = \
+PY_OBJS = \
     classes.o \
     pyclassesmodule.o \
     pyClass1type.o \
@@ -30,23 +34,11 @@ OBJS = \
     pyCircletype.o \
     pyclassesutil.o
 
-LOCAL_CXXFLAGS += $(SHARED)
-
 all : classes.so simple
 
-classes.so : $(OBJS)
-	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
+classes.so : $(PY_OBJS)
+	$(CXX) $(LDFLAGS) -o $@ $^ $(LIBS)
 
-simple : testpython.o $(OBJS)
+simple : testpython.o $(PY_OBJS)
 	$(CXX) -pthread -o $@ $^ $(PYTHON_LIB)
 #	g++ -pthread -o $@ $^ $(PYTHON_LIB)
-
-clean :
-	rm -f *.so *.o simple
-.PHONY : clean
-
-print-debug:
-	@echo PYTHON=$(PYTHON)
-	@echo PYTHON_PREFIX=$(PYTHON_PREFIX)
-	@echo PYTHON_VER=$(PYTHON_VER)
-

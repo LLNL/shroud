@@ -9,9 +9,9 @@
 #
 ifeq ($(top),)
 top := ../../..
-endif 
+endif
 
-include $(top)/regression/run/defaults.mk
+testdir = cdesc
 
 INCLUDE = \
     -I$(top)/regression/reference/cdesc \
@@ -24,18 +24,14 @@ VPATH = \
 
 C_OBJS = \
     cdesc.o \
-    wrapcdesc.o
+    wrapcdesc.o \
+    utilcdesc.o
 F_OBJS = \
-    wrapfcdesc.o \
-    utilcdesc.o \
+    main.o \
     fruit.o \
-    main.o
+    wrapfcdesc.o
 
-cdesc : $(C_OBJS) $(F_OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod cdesc
+include $(top)/regression/run/defaults.mk
 
 cdesc.o : cdesc.hpp
 wrapcdesc.o : wrapcdesc.h cdesc.hpp
@@ -46,5 +42,3 @@ maincpp : maincpp.o wrapcdesc.o cdesc.o
 	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@ $(CXXLIBS)
 
 testc.o : testc.c wrapcdesc.h cdesc.hpp
-testc : testc.o $(C_OBJS)
-	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)

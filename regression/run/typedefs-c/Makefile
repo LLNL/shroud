@@ -8,7 +8,7 @@
 #
 # run/typedefs-c
 #
-include $(top)/regression/run/defaults.mk
+testdir = typedefs-c
 
 INCLUDE = \
     -I$(top)/regression/reference/typedefs-c \
@@ -28,13 +28,9 @@ F_OBJS = \
     fruit.o \
     wrapftypedefs.o
 
-typedefs-c : $(F_OBJS) $(C_OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(CLIBS)
+include $(top)/regression/run/defaults.mk
 
 main.o : main.f fruit.o wrapftypedefs.o
 typedefs.o : typedefs.c typedefs.h
-
-clean :
-	rm -f $(OBJS) *.mod typedefs
 
 main.o : fruit.o wrapftypedefs.o

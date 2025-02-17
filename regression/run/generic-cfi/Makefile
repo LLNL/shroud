@@ -7,7 +7,7 @@
 # run/generic-cfi - Futher Interoperability with C.
 # Use test from run/generic.
 #
-include $(top)/regression/run/defaults.mk
+testdir = generic-cfi
 
 INCLUDE = \
     -I$(top)/regression/reference/generic-cfi \
@@ -18,19 +18,16 @@ VPATH = \
     $(top)/regression/run/generic \
     $(top)/regression/run/fruit
 
-OBJS = \
+C_OBJS = \
     generic.o \
     helper.o \
-    wrapfgeneric.o \
-    wrapgeneric.o \
+    wrapgeneric.o
+F_OBJS = \
+    main.o \
     fruit.o \
-    main.o
+    wrapfgeneric.o
 
-generic-cfi : $(OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod generic
+include $(top)/regression/run/defaults.mk
 
 helper.o : generic.h typesgeneric.h
 generic.o : generic.h

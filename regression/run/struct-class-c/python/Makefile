@@ -8,6 +8,10 @@
 #
 #  Compile the python struct module
 #
+testdir = struct-class-c
+pymodule = cstruct.so
+
+AS_SHARED := TRUE
 include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
@@ -19,7 +23,7 @@ VPATH = \
     $(top)/regression/reference/struct-class-c \
     $(top)/regression/run/struct
 
-OBJS = \
+PY_OBJS = \
     struct.o \
     pystructmodule.o \
     pystructutil.o \
@@ -29,19 +33,8 @@ OBJS = \
     pyCstruct_numpytype.o \
     pyArrays1type.o
 
-LOCAL_CFLAGS += $(SHARED)
-
 all : cstruct.so
 
-cstruct.so : $(OBJS)
-	$(CC) $(LD_SHARED) -o $@ $^ $(LIBS)
-
-clean :
-	rm -f *.so *.o
-.PHONY : clean
-
-print-debug:
-	@echo PYTHON=$(PYTHON)
-	@echo PYTHON_PREFIX=$(PYTHON_PREFIX)
-	@echo PYTHON_VER=$(PYTHON_VER)
+cstruct.so : $(PY_OBJS)
+	$(CC) $(LDFLAGS) -o $@ $^ $(LIBS)
 

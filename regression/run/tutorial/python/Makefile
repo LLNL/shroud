@@ -8,6 +8,10 @@
 #
 #  Compile the python tutorial module
 #
+testdir = tutorial
+pymodule = tutorial.so
+
+AS_SHARED := TRUE
 include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
@@ -20,27 +24,16 @@ VPATH = \
     $(top)/regression/run/tutorial \
     $(top)/regression/run/tutorial/python
 
-OBJS = \
+PY_OBJS = \
     tutorial.o \
     pyTutorialmodule.o
 
-LOCAL_CXXFLAGS += $(SHARED)
-
 all : tutorial.so simple
 
-tutorial.so : $(OBJS)
-	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
+tutorial.so : $(PY_OBJS)
+	$(CXX) $(LDFLAGS) -o $@ $^ $(LIBS)
 
-simple : testpython.o $(OBJS)
+simple : testpython.o $(PY_OBJS)
 	$(CXX) -pthread -o $@ $^ $(PYTHON_LIB)
 #	g++ -pthread -o $@ $^ $(PYTHON_LIB)
-
-clean :
-	rm -f *.so *.o simple
-.PHONY : clean
-
-print-debug:
-	@echo PYTHON=$(PYTHON)
-	@echo PYTHON_PREFIX=$(PYTHON_PREFIX)
-	@echo PYTHON_VER=$(PYTHON_VER)
 

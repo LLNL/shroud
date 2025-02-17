@@ -12,7 +12,7 @@ ifeq ($(top),)
 top := ../../..
 endif 
 
-include $(top)/regression/run/defaults.mk
+testdir = scope
 
 INCLUDE = \
     -I$(top)/regression/reference/scope \
@@ -23,18 +23,15 @@ VPATH = \
     $(top)/regression/run/scope \
     $(top)/regression/run/fruit
 
-OBJS = \
+C_OBJS = \
     scope.o \
-    wrapfscope.o \
-    wrapscope.o \
+    wrapscope.o
+F_OBJS = \
+    main.o \
     fruit.o \
-    main.o
+    wrapfscope.o
 
-scope : $(OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod scope
+include $(top)/regression/run/defaults.mk
 
 scope.o : scope.hpp
 wrapscope.o : wrapscope.h scope.hpp
@@ -45,5 +42,3 @@ maincpp : maincpp.o #wrapscope.o
 	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@ $(CXXLIBS)
 
 testc.o : testc.c wrapscope.h scope.hpp
-testc : testc.o wrapscope.o scope.o
-	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)

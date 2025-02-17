@@ -11,17 +11,15 @@ ifeq ($(top),)
 top := ../../..
 endif 
 
-refname = enum-cxx
+testdir = enum-cxx
 runname = enum
 
-include $(top)/regression/run/defaults.mk
-
 INCLUDE = \
-    -I$(top)/regression/reference/$(refname) \
+    -I$(top)/regression/reference/$(testdir) \
     -I$(top)/regression/run/$(runname)
 
 VPATH = \
-    $(top)/regression/reference/$(refname) \
+    $(top)/regression/reference/$(testdir) \
     ../cxx \
     $(top)/regression/run/$(runname) \
     $(top)/regression/run/fruit
@@ -31,15 +29,11 @@ C_OBJS = \
     wrapenum.o \
     utilenum.o
 F_OBJS = \
-    wrapfenum.o \
+    main.o \
     fruit.o \
-    main.o
+    wrapfenum.o
 
-$(refname) : $(C_OBJS) $(F_OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod enum-c
+include $(top)/regression/run/defaults.mk
 
 main.o : fruit.o wrapfenum.o
 enum.o : enum.cpp enum.h
@@ -51,5 +45,3 @@ maincpp : maincpp.o
 	(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@ $(CXXLIBS)
 
 testc.o : testc.c enum.h
-testc : testc.o $(C_OBJS)
-	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)

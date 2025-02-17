@@ -8,7 +8,7 @@
 #
 # run/vectors
 #
-include $(top)/regression/run/defaults.mk
+testdir = vectors
 
 INCLUDE = \
     -I$(top)/regression/reference/vectors \
@@ -28,11 +28,7 @@ F_OBJS = \
     fruit.o \
     main.o
 
-vectors : $(C_OBJS) $(F_OBJS)
-	$(FC) $(FFLAGS)  $^ -o $@ $(FLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod vectors
+include $(top)/regression/run/defaults.mk
 
 vectors.o : vectors.hpp
 wrapvectors.o : wrapvectors.h vectors.hpp
@@ -43,5 +39,4 @@ maincpp : maincpp.o wrapvectors.o vectors.o
 	$(CXX) $(CXXFLAGS) $^ -o $@ $(CLIBS)
 
 testc.o : testc.c wrapvectors.h vectors.hpp
-testc : testc.o $(C_OBJS)
-	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)
+
