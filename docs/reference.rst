@@ -1739,9 +1739,6 @@ rank
 Result
 ^^^^^^
 
-cxx_rv_decl
-    Declaration of variable to hold return value for function.
-
 
 Typedef
 ^^^^^^^

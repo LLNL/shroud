@@ -266,10 +266,6 @@ class FillFormat(object):
             else:
                 fmt_result.c_const = ""
 
-            fmt_result.cxx_rv_decl = gen_arg_as_cxx(CXX_ast,
-                name=fmt_result.cxx_var, add_params=False
-            )
-
             compute_cxx_deref(CXX_ast, fmt_result)
 
         if result_stmt.c_return_type:

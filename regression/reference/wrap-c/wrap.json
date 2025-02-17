@@ -49,7 +49,6 @@
                                         "cxx_addr": "&",
                                         "cxx_member": ".",
                                         "cxx_nonconst_ptr": "&SHC_rv",
-                                        "cxx_rv_decl": "int SHC_rv",
                                         "cxx_type": "int",
                                         "cxx_var": "SHC_rv",
                                         "f_call_function": "c_class1_func_in_class_bufferify",

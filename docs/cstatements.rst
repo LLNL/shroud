@@ -170,9 +170,9 @@ Code used with *intent(in)* arguments to convert from C to C++.
 c_call
 ^^^^^^
 
-Code to call function.  This is usually defaulted.
-For ``void`` functions ``{C_call_function};`` and for other functions
-``{cxx_rv_decl} = {C_call_function}``.
+Code to call function.
+Typically, for ``void`` functions ``{C_call_function};`` and for other functions
+``{gen.cxxresult.c_var} = {C_call_function}``.
 
 An example of explicit *c_call* code are constructors and destructors
 for shadow types.

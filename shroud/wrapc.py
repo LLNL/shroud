@@ -1151,12 +1151,6 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         if result_stmt.c_call:
             raw_call_code = result_stmt.c_call
-        elif C_subprogram == "subroutine":
-            raw_call_code = ["{C_call_function};"]
-        else:
-            # Return result from function
-            raw_call_code = ["{cxx_rv_decl} =\t {C_call_function};"]
-            self.header_impl.add_typemap_list(result_typemap.impl_header)
         if result_stmt.intent == "function":
             self.set_cxx_nonconst_ptr(ast, fmt_result)
 
