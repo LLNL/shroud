@@ -60,8 +60,8 @@ enum ENU_Color ENU_returnEnum(enum ENU_Color in)
 {
     // splicer begin function.returnEnum
     Color SHCXX_in = static_cast<Color>(in);
-    Color SHCXX_rv = returnEnum(SHCXX_in);
-    enum ENU_Color SHC_rv = static_cast<enum ENU_Color>(SHCXX_rv);
+    Color SHC_rv_cxx = returnEnum(SHCXX_in);
+    enum ENU_Color SHC_rv = static_cast<enum ENU_Color>(SHC_rv_cxx);
     return SHC_rv;
     // splicer end function.returnEnum
 }
@@ -76,8 +76,8 @@ short ENU_returnEnum_bufferify(short in)
 {
     // splicer begin function.returnEnum_bufferify
     Color SHCXX_in = static_cast<Color>(in);
-    Color SHCXX_rv = returnEnum(SHCXX_in);
-    short SHC_rv = static_cast<short>(SHCXX_rv);
+    Color SHC_rv_cxx = returnEnum(SHCXX_in);
+    short SHC_rv = static_cast<short>(SHC_rv_cxx);
     return SHC_rv;
     // splicer end function.returnEnum_bufferify
 }
@@ -122,9 +122,9 @@ enum ENU_Color ENU_returnEnumInOutArg(enum ENU_Color *inout)
 {
     // splicer begin function.returnEnumInOutArg
     Color SHC_inout_cxx = static_cast<Color>(*inout);
-    Color SHCXX_rv = returnEnumInOutArg(&SHC_inout_cxx);
+    Color SHC_rv_cxx = returnEnumInOutArg(&SHC_inout_cxx);
     *inout = static_cast<enum ENU_Color>(SHC_inout_cxx);
-    enum ENU_Color SHC_rv = static_cast<enum ENU_Color>(SHCXX_rv);
+    enum ENU_Color SHC_rv = static_cast<enum ENU_Color>(SHC_rv_cxx);
     return SHC_rv;
     // splicer end function.returnEnumInOutArg
 }
@@ -139,9 +139,9 @@ short ENU_returnEnumInOutArg_bufferify(short *inout)
 {
     // splicer begin function.returnEnumInOutArg_bufferify
     Color SHC_inout_cxx = static_cast<Color>(*inout);
-    Color SHCXX_rv = returnEnumInOutArg(&SHC_inout_cxx);
+    Color SHC_rv_cxx = returnEnumInOutArg(&SHC_inout_cxx);
     *inout = static_cast<short>(SHC_inout_cxx);
-    short SHC_rv = static_cast<short>(SHCXX_rv);
+    short SHC_rv = static_cast<short>(SHC_rv_cxx);
     return SHC_rv;
     // splicer end function.returnEnumInOutArg_bufferify
 }

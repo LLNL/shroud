@@ -3575,10 +3575,10 @@ py_statements = [
             "the statement to avoid declaring the variable after the goto."
         ],
         call=[
-            "{gen.cxxdecl.cxx_var} =\t {C_call_function};",
+            "{gen.cxxresult.cxx_var} =\t {C_call_function};",
         ],
         fail_declare=[
-            "{gen.cxxdecl.cxx_var};",
+            "{gen.cxxresult.cxx_var};",
         ],
         fail_call=[
             "{cxx_var} =\t {C_call_function};",

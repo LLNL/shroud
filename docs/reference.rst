@@ -1418,12 +1418,6 @@ attr_len
   It willl be evalued in the C wrapper.
   Defaults to 0 to indicate no length given.
 
-c_abstract_decl
-  Includes the declaration and any declarators.
-  For example, ``double *``.
-
-.. used with cxx_to_c static_cast
-
 c_blanknull
    Used as argument to ``ShroudStrAlloc`` to determine if a
    blank string, trimmed length is 0, should be a NULL pointer
@@ -1600,8 +1594,6 @@ i_result_clause
     Added at the end of a function declaration to
     define the result variable.
 
-i_result_ptr
-
 i_result_var
     Use in the *i_result_clause* for functions as
     ``result({i_result_var})``
@@ -1620,7 +1612,8 @@ targs
     For ``user_type<int, long *>`` the values *cxx_T* would be
     ``targs[0].cxx_T=int`` and ``targs[1].cxx_T=long *``.
 
-    Other fields are *cxx_type*, *f_type*, and *f_kind*.
+    Other names are looked up in the typemap for the template argument.
+    For example, ``targs[0].cxx_type`` and ``targs[0].f_kind``.
 
     
 fmtc
@@ -1745,9 +1738,6 @@ rank
 
 Result
 ^^^^^^
-
-cxx_rv_decl
-    Declaration of variable to hold return value for function.
 
 
 Typedef

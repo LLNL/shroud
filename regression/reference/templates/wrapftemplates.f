@@ -124,13 +124,13 @@ module templates_mod
         ! Function:  structAsClass
         ! Statement: c_ctor_shadow_capptr
         function c_struct_as_class_int_ctor(SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="TEM_structAsClass_int_ctor")
             use iso_c_binding, only : C_PTR
             import :: TEM_SHROUD_capsule_data
             implicit none
             type(TEM_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_struct_as_class_int_ctor
 
         ! ----------------------------------------
@@ -205,13 +205,13 @@ module templates_mod
         ! Function:  structAsClass
         ! Statement: c_ctor_shadow_capptr
         function c_struct_as_class_double_ctor(SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="TEM_structAsClass_double_ctor")
             use iso_c_binding, only : C_PTR
             import :: TEM_SHROUD_capsule_data
             implicit none
             type(TEM_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_struct_as_class_double_ctor
 
         ! ----------------------------------------
@@ -286,13 +286,13 @@ module templates_mod
         ! Function:  user<int> returnUserType
         ! Statement: c_function_shadow<native>_capptr
         function c_return_user_type(SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="TEM_returnUserType")
             use iso_c_binding, only : C_PTR
             import :: TEM_SHROUD_capsule_data
             implicit none
             type(TEM_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_return_user_type
 
         ! ----------------------------------------

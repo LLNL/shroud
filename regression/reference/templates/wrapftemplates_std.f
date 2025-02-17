@@ -83,13 +83,13 @@ module templates_std_mod
         ! Function:  vector
         ! Statement: c_ctor_shadow_capptr
         function c_vector_int_ctor(SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="TEM_vector_int_ctor")
             use iso_c_binding, only : C_PTR
             import :: TEM_SHROUD_capsule_data
             implicit none
             type(TEM_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_vector_int_ctor
 
         ! ----------------------------------------
@@ -168,13 +168,13 @@ module templates_std_mod
         ! Function:  vector
         ! Statement: c_ctor_shadow_capptr
         function c_vector_double_ctor(SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="TEM_vector_double_ctor")
             use iso_c_binding, only : C_PTR
             import :: TEM_SHROUD_capsule_data
             implicit none
             type(TEM_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_vector_double_ctor
 
         ! ----------------------------------------

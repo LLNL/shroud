@@ -202,8 +202,8 @@ const char * AA_example_nested_ExClass1_getNameErrorCheck(
     const example::nested::ExClass1 *SH_this =
         static_cast<const example::nested::ExClass1 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass1.method.getNameErrorCheck
-    const std::string &SHCXX_rv = SH_this->getNameErrorCheck();
-    const char * SHC_rv = SHCXX_rv.c_str();
+    const std::string &SHC_rv_cxx = SH_this->getNameErrorCheck();
+    const char *SHC_rv = SHC_rv_cxx.c_str();
     return SHC_rv;
     // splicer end namespace.example::nested.class.ExClass1.method.getNameErrorCheck
 }
@@ -219,9 +219,9 @@ void AA_example_nested_ExClass1_getNameErrorCheck_bufferify(
     const example::nested::ExClass1 *SH_this =
         static_cast<const example::nested::ExClass1 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass1.method.getNameErrorCheck_bufferify
-    const std::string &SHCXX_rv = SH_this->getNameErrorCheck();
-    ShroudStringToCdesc(SHT_rv_cdesc, &SHCXX_rv);
-    SHT_rv_capsule->addr  = const_cast<std::string *>(&SHCXX_rv);
+    const std::string &SHC_rv_cxx = SH_this->getNameErrorCheck();
+    ShroudStringToCdesc(SHT_rv_cdesc, &SHC_rv_cxx);
+    SHT_rv_capsule->addr  = const_cast<std::string *>(&SHC_rv_cxx);
     SHT_rv_capsule->idtor = 0;
     // splicer end namespace.example::nested.class.ExClass1.method.getNameErrorCheck_bufferify
 }
@@ -235,8 +235,8 @@ const char * AA_example_nested_ExClass1_getNameArg(
     const example::nested::ExClass1 *SH_this =
         static_cast<const example::nested::ExClass1 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass1.method.getNameArg
-    const std::string &SHCXX_rv = SH_this->getNameArg();
-    const char * SHC_rv = SHCXX_rv.c_str();
+    const std::string &SHC_rv_cxx = SH_this->getNameArg();
+    const char *SHC_rv = SHC_rv_cxx.c_str();
     return SHC_rv;
     // splicer end namespace.example::nested.class.ExClass1.method.getNameArg
 }

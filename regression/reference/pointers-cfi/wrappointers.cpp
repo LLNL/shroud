@@ -10,8 +10,8 @@
 // cxx_header
 #include "pointers.h"
 // shroud
-#include <cstdlib>
 #include <cstring>
+#include <cstdlib>
 #include "wrappointers.h"
 
 // splicer begin CXX_definitions

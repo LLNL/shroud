@@ -316,8 +316,8 @@ const char * CLA_Class1_getName(CLA_Class1 * self)
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
     // splicer begin class.Class1.method.getName
-    const std::string &SHCXX_rv = SH_this->getName();
-    const char * SHC_rv = SHCXX_rv.c_str();
+    const std::string &SHC_rv_cxx = SH_this->getName();
+    const char *SHC_rv = SHC_rv_cxx.c_str();
     return SHC_rv;
     // splicer end class.Class1.method.getName
 }
@@ -338,9 +338,9 @@ void CLA_Class1_getName_bufferify(CLA_Class1 * self,
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
     // splicer begin class.Class1.method.getName_bufferify
-    const std::string &SHCXX_rv = SH_this->getName();
-    ShroudStringToCdesc(SHT_rv_cdesc, &SHCXX_rv);
-    SHT_rv_capsule->addr  = const_cast<std::string *>(&SHCXX_rv);
+    const std::string &SHC_rv_cxx = SH_this->getName();
+    ShroudStringToCdesc(SHT_rv_cdesc, &SHC_rv_cxx);
+    SHT_rv_capsule->addr  = const_cast<std::string *>(&SHC_rv_cxx);
     SHT_rv_capsule->idtor = 0;
     // splicer end class.Class1.method.getName_bufferify
 }
@@ -361,10 +361,10 @@ enum CLA_Class1_DIRECTION CLA_Class1_directionFunc(CLA_Class1 * self,
     // splicer begin class.Class1.method.directionFunc
     classes::Class1::DIRECTION SHCXX_arg =
         static_cast<classes::Class1::DIRECTION>(arg);
-    classes::Class1::DIRECTION SHCXX_rv = SH_this->directionFunc(
+    classes::Class1::DIRECTION SHC_rv_cxx = SH_this->directionFunc(
         SHCXX_arg);
     enum CLA_Class1_DIRECTION SHC_rv =
-        static_cast<enum CLA_Class1_DIRECTION>(SHCXX_rv);
+        static_cast<enum CLA_Class1_DIRECTION>(SHC_rv_cxx);
     return SHC_rv;
     // splicer end class.Class1.method.directionFunc
 }
@@ -384,9 +384,9 @@ int CLA_Class1_directionFunc_bufferify(CLA_Class1 * self, int arg)
     // splicer begin class.Class1.method.directionFunc_bufferify
     classes::Class1::DIRECTION SHCXX_arg =
         static_cast<classes::Class1::DIRECTION>(arg);
-    classes::Class1::DIRECTION SHCXX_rv = SH_this->directionFunc(
+    classes::Class1::DIRECTION SHC_rv_cxx = SH_this->directionFunc(
         SHCXX_arg);
-    int SHC_rv = static_cast<int>(SHCXX_rv);
+    int SHC_rv = static_cast<int>(SHC_rv_cxx);
     return SHC_rv;
     // splicer end class.Class1.method.directionFunc_bufferify
 }

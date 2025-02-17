@@ -48,8 +48,8 @@ int TYP_returnEnum_bufferify(int in)
 {
     // splicer begin function.returnEnum_bufferify
     iColor SHCXX_in = (iColor) in;
-    iColor SHCXX_rv = returnEnum(SHCXX_in);
-    int SHC_rv = (int) SHCXX_rv;
+    iColor SHC_rv_cxx = returnEnum(SHCXX_in);
+    int SHC_rv = (int) SHC_rv_cxx;
     return SHC_rv;
     // splicer end function.returnEnum_bufferify
 }
@@ -66,8 +66,8 @@ int TYP_returnTypeID_bufferify(int in)
 {
     // splicer begin function.returnTypeID_bufferify
     TypeID SHCXX_in = (TypeID) in;
-    TypeID SHCXX_rv = returnTypeID(SHCXX_in);
-    int SHC_rv = (int) SHCXX_rv;
+    TypeID SHC_rv_cxx = returnTypeID(SHCXX_in);
+    int SHC_rv = (int) SHC_rv_cxx;
     return SHC_rv;
     // splicer end function.returnTypeID_bufferify
 }

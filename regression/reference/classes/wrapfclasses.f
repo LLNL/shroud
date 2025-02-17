@@ -205,13 +205,13 @@ module classes_mod
     ! start c_class1_ctor_default
     interface
         function c_class1_ctor_default(SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="CLA_Class1_ctor_default")
             use iso_c_binding, only : C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_class1_ctor_default
     end interface
     ! end c_class1_ctor_default
@@ -239,14 +239,14 @@ module classes_mod
     ! start c_class1_ctor_flag
     interface
         function c_class1_ctor_flag(flag, SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="CLA_Class1_ctor_flag")
             use iso_c_binding, only : C_INT, C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
             integer(C_INT), value, intent(IN) :: flag
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_class1_ctor_flag
     end interface
     ! end c_class1_ctor_flag
@@ -348,7 +348,7 @@ module classes_mod
     ! start c_class1_return_this_buffer
     interface
         function c_class1_return_this_buffer(self, name, flag, SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="CLA_Class1_returnThisBuffer")
             use iso_c_binding, only : C_BOOL, C_CHAR, C_PTR
             import :: CLA_SHROUD_capsule_data
@@ -357,7 +357,7 @@ module classes_mod
             character(kind=C_CHAR), intent(IN) :: name(*)
             logical(C_BOOL), value, intent(IN) :: flag
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_class1_return_this_buffer
     end interface
     ! end c_class1_return_this_buffer
@@ -394,14 +394,14 @@ module classes_mod
     ! start c_class1_getclass3
     interface
         function c_class1_getclass3(self, SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="CLA_Class1_getclass3")
             use iso_c_binding, only : C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(IN) :: self
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_class1_getclass3
     end interface
     ! end c_class1_getclass3
@@ -664,13 +664,13 @@ module classes_mod
     ! start c_singleton_get_reference
     interface
         function c_singleton_get_reference(SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="CLA_Singleton_getReference")
             use iso_c_binding, only : C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_singleton_get_reference
     end interface
     ! end c_singleton_get_reference
@@ -694,13 +694,13 @@ module classes_mod
     ! Statement: c_ctor_shadow_capptr
     interface
         function c_shape_ctor(SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="CLA_Shape_ctor")
             use iso_c_binding, only : C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_shape_ctor
     end interface
 
@@ -736,13 +736,13 @@ module classes_mod
     ! Statement: c_ctor_shadow_capptr
     interface
         function c_circle_ctor(SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="CLA_Circle_ctor")
             use iso_c_binding, only : C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_circle_ctor
     end interface
 
@@ -797,13 +797,13 @@ module classes_mod
     ! start c_data_ctor
     interface
         function c_data_ctor(SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="CLA_Data_ctor")
             use iso_c_binding, only : C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_data_ctor
     end interface
     ! end c_data_ctor
@@ -982,13 +982,13 @@ module classes_mod
     ! Statement: c_function_shadow*_capptr
     interface
         function c_getclass2(SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="CLA_getclass2")
             use iso_c_binding, only : C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_getclass2
     end interface
 
@@ -1009,13 +1009,13 @@ module classes_mod
     ! Statement: c_function_shadow*_capptr
     interface
         function c_getclass3(SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="CLA_getclass3")
             use iso_c_binding, only : C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_getclass3
     end interface
 
@@ -1060,13 +1060,13 @@ module classes_mod
     ! Statement: c_function_shadow&_capptr
     interface
         function c_get_const_class_reference(SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="CLA_getConstClassReference")
             use iso_c_binding, only : C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_get_const_class_reference
     end interface
 
@@ -1087,13 +1087,13 @@ module classes_mod
     ! Statement: c_function_shadow&_capptr
     interface
         function c_get_class_reference(SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="CLA_getClassReference")
             use iso_c_binding, only : C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_get_class_reference
     end interface
 
@@ -1117,14 +1117,14 @@ module classes_mod
     ! Statement: c_in_native
     interface
         function c_get_class_copy(flag, SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="CLA_getClassCopy")
             use iso_c_binding, only : C_INT, C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
             integer(C_INT), value, intent(IN) :: flag
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_get_class_copy
     end interface
 

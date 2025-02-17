@@ -18,6 +18,77 @@ import unittest
 error.get_cursor()
 
 class WFormat(unittest.TestCase):
+    def test_func_void(self):
+        library = ast.LibraryNode()
+        func = library.add_function("void func1(void)")
+
+        bind = statements.fetch_func_bind(func, "c")
+        statements.set_bind_fmtdict(bind, None)
+        fmtdict = bind.fmtdict
+
+        fmtdict.typemap = func.ast.typemap
+        fmtdict.c_var = "rv"
+        fmtdict.cxx_var = "rv_cxx"
+        fmtdict.other = "other_name"
+
+        gen = fcfmt.FormatGen(func, func.ast, bind, "c")
+        self.assertEqual("func1", str(gen))
+        self.assertEqual("func1", gen.name)
+        self.assertEqual("cxx", gen.language)
+
+        self.assertEqual("void(\tvoid)",
+                         str(gen.cdecl))
+        self.assertEqual("void rv(\tvoid)",
+                         str(gen.cdecl.c_var))
+        self.assertEqual("void other_name(\tvoid)",
+                         str(gen.cdecl.other))
+
+        self.assertEqual("void (void)",
+                         str(gen.cxxdecl))
+        self.assertEqual("void other_name(\tvoid)",
+                         str(gen.cxxdecl.other))
+        self.assertEqual("void ===>xxx<===(\tvoid)",
+                         gen.cxxdecl.xxx)
+
+        self.assertEqual("void (void)",
+                         str(gen.cxxresult))
+        self.assertEqual("void other_name",
+                         str(gen.cxxresult.other))
+
+    def test_func_voidptr(self):
+        library = ast.LibraryNode()
+        func = library.add_function("void *func1(void)")
+
+        bind = statements.fetch_func_bind(func, "c")
+        statements.set_bind_fmtdict(bind, None)
+        fmtdict = bind.fmtdict
+
+        fmtdict.typemap = func.ast.typemap
+        fmtdict.c_var = "rv"
+        fmtdict.cxx_var = "rv_cxx"
+        fmtdict.other = "other_name"
+
+        gen = fcfmt.FormatGen(func, func.ast, bind, "c")
+
+        self.assertEqual("void *(\tvoid)",
+                         str(gen.cdecl))
+        self.assertEqual("void *rv(\tvoid)",
+                         str(gen.cdecl.c_var))
+        self.assertEqual("void *other_name(\tvoid)",
+                         str(gen.cdecl.other))
+
+        self.assertEqual("void *(void)",
+                         str(gen.cxxdecl))
+        self.assertEqual("void *other_name(\tvoid)",
+                         str(gen.cxxdecl.other))
+        self.assertEqual("void *===>xxx<===(\tvoid)",
+                         gen.cxxdecl.xxx)
+
+        self.assertEqual("void *(void)",
+                         str(gen.cxxresult))
+        self.assertEqual("void *other_name",
+                         str(gen.cxxresult.other))
+        
     def test_arg_cxx_int(self):
         library = ast.LibraryNode()
         func = library.add_function("void func1(int *array)")
@@ -25,12 +96,12 @@ class WFormat(unittest.TestCase):
         arg = func.ast.declarator.params[0]
         bind = statements.fetch_arg_bind(func, arg, "c")
         statements.set_bind_fmtdict(bind, None)
-        fmt_var = bind.fmtdict
+        fmtdict = bind.fmtdict
 
-        fmt_var.typemap = arg.typemap
-        fmt_var.c_var = "arg1"
-        fmt_var.cxx_var = "cxx_var_name"
-        fmt_var.other = "other_name"
+        fmtdict.typemap = arg.typemap
+        fmtdict.c_var = "arg1"
+        fmtdict.cxx_var = "cxx_var_name"
+        fmtdict.other = "other_name"
 
         fmtarg = fcfmt.FormatGen(func, arg, bind, "c")
         self.assertEqual("array", str(fmtarg))
@@ -72,12 +143,12 @@ class WFormat(unittest.TestCase):
         arg = func.ast.declarator.params[0]
         bind = statements.fetch_arg_bind(func, arg, "c")
         statements.set_bind_fmtdict(bind, None)
-        fmt_var = bind.fmtdict
+        fmtdict = bind.fmtdict
 
-        fmt_var.typemap = arg.typemap
-        fmt_var.c_var = "arg1"
-        fmt_var.cxx_var = "cxx_var_name"
-        fmt_var.other = "other_name"
+        fmtdict.typemap = arg.typemap
+        fmtdict.c_var = "arg1"
+        fmtdict.cxx_var = "cxx_var_name"
+        fmtdict.other = "other_name"
 
         fmtarg = fcfmt.FormatGen(func, arg, bind, "c")
         self.assertEqual("array", str(fmtarg))
@@ -95,6 +166,43 @@ class WFormat(unittest.TestCase):
         self.assertEqual("const int *===>xxx<===",
                          fmtarg.cxxdecl.xxx)
 
+    def test_arg_funptr(self):
+        library = ast.LibraryNode()
+        func = library.add_function("int callback1(int (*incr)(int))")
+
+        arg = func.ast.declarator.params[0]
+        bind = statements.fetch_arg_bind(func, arg, "c")
+        statements.set_bind_fmtdict(bind, None)
+        fmtdict = bind.fmtdict
+
+        fmtdict.typemap = arg.typemap
+        fmtdict.c_var = "arg1"
+        fmtdict.cxx_var = "cxx_var_name"
+        fmtdict.other = "other_name"
+
+        gen = fcfmt.FormatGen(func, arg, bind, "c")
+        self.assertEqual("incr", str(gen))
+        self.assertEqual("incr", gen.name)
+
+        self.assertEqual("int (*)(\tint)",
+                         str(gen.cdecl))
+        self.assertEqual("int (*arg1)(\tint)",
+                         str(gen.cdecl.c_var))
+        self.assertEqual("int (*other_name)(\tint)",
+                         str(gen.cdecl.other))
+
+        self.assertEqual("int (*)(int)",
+                         str(gen.cxxdecl))
+        self.assertEqual("int (*cxx_var_name)(\tint)",
+                         gen.cxxdecl.cxx_var)
+        self.assertEqual("int (*===>xxx<===)(\tint)",
+                         gen.cxxdecl.xxx)
+
+        self.assertEqual("int (*)(int)",
+                         str(gen.cxxresult))
+        self.assertEqual("int (*cxx_var_name)",
+                         gen.cxxresult.cxx_var)
+        
     def test_arg_cxx_enum(self):
         library = ast.LibraryNode()
         enum = library.add_enum("enum Color {RED}",
@@ -104,12 +212,12 @@ class WFormat(unittest.TestCase):
         arg = func.ast.declarator.params[0]
         bind = statements.fetch_arg_bind(func, arg, "c")
         statements.set_bind_fmtdict(bind, None)
-        fmt_var = bind.fmtdict
+        fmtdict = bind.fmtdict
 
-        fmt_var.typemap = arg.typemap,
-        fmt_var.c_var = "arg1"
-        fmt_var.cxx_var = "cxx_var_name"
-        fmt_var.other = "other_name"
+        fmtdict.typemap = arg.typemap
+        fmtdict.c_var = "arg1"
+        fmtdict.cxx_var = "cxx_var_name"
+        fmtdict.other = "other_name"
 
         fmtarg = fcfmt.FormatGen(func, arg, bind, "c")
         self.assertEqual("arg1", str(fmtarg))
@@ -140,12 +248,12 @@ class WFormat(unittest.TestCase):
         arg = func.ast.declarator.params[0]
         bind = statements.fetch_arg_bind(func, arg, "c")
         statements.set_bind_fmtdict(bind, None)
-        fmt_var = bind.fmtdict
+        fmtdict = bind.fmtdict
 
-        fmt_var.typemap = arg.typemap
-        fmt_var.c_var = "arg1"
-        fmt_var.cxx_var = "cxx_var_name"
-        fmt_var.other = "other_name"
+        fmtdict.typemap = arg.typemap
+        fmtdict.c_var = "arg1"
+        fmtdict.cxx_var = "cxx_var_name"
+        fmtdict.other = "other_name"
 
         fmtarg = fcfmt.FormatGen(func, arg, bind, "c")
         self.assertEqual("array", str(fmtarg))
@@ -171,7 +279,7 @@ class WFormat(unittest.TestCase):
         arg = func.ast.declarator.params[0]
         bind = statements.fetch_arg_bind(func, arg, "c")
         statements.set_bind_fmtdict(bind, None)
-        fmt_var = bind.fmtdict
+        fmtdict = bind.fmtdict
 
         # Empty fmtdict
         fmtarg = fcfmt.FormatGen(func, arg, bind, "c")
@@ -183,7 +291,7 @@ class WFormat(unittest.TestCase):
                          fmtarg.f_cdesc_shape)
 
         # No f_var_cdesc
-        fmt_var.rank = 1
+        fmtdict.rank = 1
         fmtarg = fcfmt.FormatGen(func, arg, bind, "c")
         self.assertEqual("(===>f_var_cdesc<===%shape(1))",
                          fmtarg.f_allocate_shape)
@@ -193,7 +301,7 @@ class WFormat(unittest.TestCase):
                          fmtarg.f_cdesc_shape)
 
         # scalar
-        fmt_var.rank = 0
+        fmtdict.rank = 0
         fmtarg = fcfmt.FormatGen(func, arg, bind, "c")
         self.assertEqual("",
                          fmtarg.f_allocate_shape)
@@ -203,8 +311,8 @@ class WFormat(unittest.TestCase):
                          fmtarg.f_cdesc_shape)
 
         # 2-d array
-        fmt_var.rank = 2
-        fmt_var.f_var_cdesc = "SHT_arg_cdesc"
+        fmtdict.rank = 2
+        fmtdict.f_var_cdesc = "SHT_arg_cdesc"
         fmtarg = fcfmt.FormatGen(func, arg, bind, "c")
         self.assertEqual("(SHT_arg_cdesc%shape(1),SHT_arg_cdesc%shape(2))",
                          fmtarg.f_allocate_shape)
@@ -222,7 +330,7 @@ class WFormat(unittest.TestCase):
         bind = statements.fetch_arg_bind(func, arg, "c")
         statements.set_bind_fmtdict(bind, None)
         meta = bind.meta
-        fmt_var = bind.fmtdict
+        fmtdict = bind.fmtdict
 
         # Scalar
         fmtarg = fcfmt.FormatGen(func, arg, bind, "c")
@@ -256,9 +364,9 @@ class WFormat(unittest.TestCase):
                          fmtarg.c_lower_use)
 
         # 2-d array
-        fmt_var.c_var_cdesc = "SHT"
-        fmt_var.c_local_extents = "SHT_extents"
-        fmt_var.c_helper_lower_bounds_CFI = "SHT_lower"
+        fmtdict.c_var_cdesc = "SHT"
+        fmtdict.c_local_extents = "SHT_extents"
+        fmtdict.c_helper_lower_bounds_CFI = "SHT_lower"
         meta["dim_shape"] = ["10", "20"]
         fmtarg = fcfmt.FormatGen(func, arg, bind, "c")
         self.assertEqual("(10)*(20)",

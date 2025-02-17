@@ -9,8 +9,6 @@
 
 // cxx_header
 #include "namespace.hpp"
-// typemap
-#include <string>
 // shroud
 #include <cstddef>
 #include <cstring>
@@ -48,8 +46,8 @@ static void ShroudStringToCdesc(NS_SHROUD_array *cdesc,
 const char * NS_LastFunctionCalled(void)
 {
     // splicer begin function.LastFunctionCalled
-    const std::string &SHCXX_rv = LastFunctionCalled();
-    const char * SHC_rv = SHCXX_rv.c_str();
+    const std::string &SHC_rv_cxx = LastFunctionCalled();
+    const char *SHC_rv = SHC_rv_cxx.c_str();
     return SHC_rv;
     // splicer end function.LastFunctionCalled
 }
@@ -61,9 +59,9 @@ void NS_LastFunctionCalled_bufferify(NS_SHROUD_array *SHT_rv_cdesc,
     NS_SHROUD_capsule_data *SHT_rv_capsule)
 {
     // splicer begin function.LastFunctionCalled_bufferify
-    const std::string &SHCXX_rv = LastFunctionCalled();
-    ShroudStringToCdesc(SHT_rv_cdesc, &SHCXX_rv);
-    SHT_rv_capsule->addr  = const_cast<std::string *>(&SHCXX_rv);
+    const std::string &SHC_rv_cxx = LastFunctionCalled();
+    ShroudStringToCdesc(SHT_rv_cdesc, &SHC_rv_cxx);
+    SHT_rv_capsule->addr  = const_cast<std::string *>(&SHC_rv_cxx);
     SHT_rv_capsule->idtor = 0;
     // splicer end function.LastFunctionCalled_bufferify
 }

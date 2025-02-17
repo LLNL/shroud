@@ -31,7 +31,7 @@ int * ERR_struct1_get_arg2(ERR_struct1 *SH_this,
     ===>SHC_rv c_prototype<===)
 {
     // splicer begin function.struct1_get_arg2
-    int *SHC_rv = struct1_get_arg2(SH_this);
+    ===>SHC_rv c_call<===
     return SHC_rv;
     // splicer end function.struct1_get_arg2
 }

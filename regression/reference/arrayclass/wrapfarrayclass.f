@@ -117,13 +117,13 @@ module arrayclass_mod
         ! Function:  ArrayWrapper
         ! Statement: c_ctor_shadow_capptr
         function c_ArrayWrapper_ctor(SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="ARR_ArrayWrapper_ctor")
             use iso_c_binding, only : C_PTR
             import :: ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_ArrayWrapper_ctor
 
         ! ----------------------------------------

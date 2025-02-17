@@ -9,8 +9,6 @@
 
 // cxx_header
 #include "classes.hpp"
-// typemap
-#include <string>
 // shroud
 #include <cstring>
 #include "wrapclasses.h"
@@ -52,10 +50,10 @@ enum CLA_Class1_DIRECTION CLA_directionFunc(
     // splicer begin function.directionFunc
     classes::Class1::DIRECTION SHCXX_arg =
         static_cast<classes::Class1::DIRECTION>(arg);
-    classes::Class1::DIRECTION SHCXX_rv = classes::directionFunc(
+    classes::Class1::DIRECTION SHC_rv_cxx = classes::directionFunc(
         SHCXX_arg);
     enum CLA_Class1_DIRECTION SHC_rv =
-        static_cast<enum CLA_Class1_DIRECTION>(SHCXX_rv);
+        static_cast<enum CLA_Class1_DIRECTION>(SHC_rv_cxx);
     return SHC_rv;
     // splicer end function.directionFunc
 }
@@ -71,9 +69,9 @@ int CLA_directionFunc_bufferify(int arg)
     // splicer begin function.directionFunc_bufferify
     classes::Class1::DIRECTION SHCXX_arg =
         static_cast<classes::Class1::DIRECTION>(arg);
-    classes::Class1::DIRECTION SHCXX_rv = classes::directionFunc(
+    classes::Class1::DIRECTION SHC_rv_cxx = classes::directionFunc(
         SHCXX_arg);
-    int SHC_rv = static_cast<int>(SHCXX_rv);
+    int SHC_rv = static_cast<int>(SHC_rv_cxx);
     return SHC_rv;
     // splicer end function.directionFunc_bufferify
 }
@@ -334,8 +332,8 @@ int CLA_get_global_flag(void)
 const char * CLA_LastFunctionCalled(void)
 {
     // splicer begin function.LastFunctionCalled
-    const std::string &SHCXX_rv = classes::LastFunctionCalled();
-    const char * SHC_rv = SHCXX_rv.c_str();
+    const std::string &SHC_rv_cxx = classes::LastFunctionCalled();
+    const char *SHC_rv = SHC_rv_cxx.c_str();
     return SHC_rv;
     // splicer end function.LastFunctionCalled
 }

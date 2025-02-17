@@ -520,8 +520,8 @@ enum TUT_Color TUT_colorfunc(enum TUT_Color arg)
 {
     // splicer begin function.colorfunc
     tutorial::Color SHCXX_arg = static_cast<tutorial::Color>(arg);
-    tutorial::Color SHCXX_rv = tutorial::colorfunc(SHCXX_arg);
-    enum TUT_Color SHC_rv = static_cast<enum TUT_Color>(SHCXX_rv);
+    tutorial::Color SHC_rv_cxx = tutorial::colorfunc(SHCXX_arg);
+    enum TUT_Color SHC_rv = static_cast<enum TUT_Color>(SHC_rv_cxx);
     return SHC_rv;
     // splicer end function.colorfunc
 }
@@ -536,8 +536,8 @@ int TUT_colorfunc_bufferify(int arg)
 {
     // splicer begin function.colorfunc_bufferify
     tutorial::Color SHCXX_arg = static_cast<tutorial::Color>(arg);
-    tutorial::Color SHCXX_rv = tutorial::colorfunc(SHCXX_arg);
-    int SHC_rv = static_cast<int>(SHCXX_rv);
+    tutorial::Color SHC_rv_cxx = tutorial::colorfunc(SHCXX_arg);
+    int SHC_rv = static_cast<int>(SHC_rv_cxx);
     return SHC_rv;
     // splicer end function.colorfunc_bufferify
 }
@@ -593,8 +593,8 @@ int TUT_callback1(int in, int (*incr)(int))
 const char * TUT_LastFunctionCalled(void)
 {
     // splicer begin function.LastFunctionCalled
-    const std::string &SHCXX_rv = tutorial::LastFunctionCalled();
-    const char * SHC_rv = SHCXX_rv.c_str();
+    const std::string &SHC_rv_cxx = tutorial::LastFunctionCalled();
+    const char *SHC_rv = SHC_rv_cxx.c_str();
     return SHC_rv;
     // splicer end function.LastFunctionCalled
 }

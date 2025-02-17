@@ -245,8 +245,6 @@ class FillFormat(object):
             fmt_result.c_var = fmt_result.C_local + fmt_result.C_result
             fmt_result.c_type = result_typemap.c_type
             fmt_result.cxx_type = result_typemap.cxx_type
-            fmt_result.sh_type = result_typemap.sh_type
-            fmt_result.cfi_type = result_typemap.cfi_type
             if result_typemap.ci_type:
                 fmt_result.ci_type = result_typemap.ci_type
             converter, lang = find_result_converter(
@@ -267,10 +265,6 @@ class FillFormat(object):
                 fmt_result.c_const = "const "
             else:
                 fmt_result.c_const = ""
-
-            fmt_result.cxx_rv_decl = gen_arg_as_cxx(CXX_ast,
-                name=fmt_result.cxx_var, add_params=False
-            )
 
             compute_cxx_deref(CXX_ast, fmt_result)
 
@@ -447,7 +441,7 @@ class FillFormat(object):
     def name_temp_vars(self, rootname, bind, lang, prefix=None):
         """Compute names of temporary C variables.
 
-        Create stmts.temps and stmts.local variables.
+        Create statements c_temps/c_local and f_temps/f_local variables.
 
         lang - "c", "f"
         prefix - "c", "f", "i"
@@ -464,6 +458,11 @@ class FillFormat(object):
                 setattr(fmt,
                         "{}_var_{}".format(prefix, name),
                         "{}{}_{}".format(fmt.c_temp, rootname, name))
+
+        if prefix == "i":
+            # Interfaces have no local variables
+            return
+
         names = stmts.get(lang + "_local", None)
         if names is not None:
             for name in names:
@@ -502,8 +501,6 @@ class FillFormat(object):
             compute_c_deref(ast, fmt)
             fmt.c_type = find_arg_type(wlang, ntypemap) #ntypemap.c_type + "xxx"
             fmt.cxx_type = ntypemap.cxx_type
-            fmt.sh_type = ntypemap.sh_type
-            fmt.cfi_type = ntypemap.cfi_type
             if ntypemap.ci_type:
                 fmt.ci_type = ntypemap.ci_type
             fmt.idtor = "0"
@@ -571,7 +568,6 @@ class FillFormat(object):
             i_type = ntypemap.i_type or ntypemap.f_type
             if i_type:
                 fmt.i_type = i_type
-        fmt.sh_type = ntypemap.sh_type
         if ntypemap.i_module_name:
             fmt.i_module_name = ntypemap.i_module_name
             if ntypemap.i_kind:
@@ -614,7 +610,7 @@ class FillFormat(object):
         fmt = bind.fmtdict
 
         if subprogram == "subroutine":
-            # XXX - no need to set f_type and sh_type
+            # XXX - no need to set f_type
             pass
         elif subprogram == "function":
             # XXX this also gets set for subroutines
@@ -1102,6 +1098,25 @@ class FormatCXXdecl(object):
         varname = self.state.fmtdict.get(name) or "===>{}<===".format(name)
         decl = gen_arg_as_cxx(self.state.ast,
                               with_template_args=True,
+                              name=varname)
+        return decl
+
+    def __str__(self):
+        decl = self.state.ast.to_string_declarator(abstract=True)
+        return decl
+
+class FormatCXXresult(object):
+    """
+    Return the original declaration from the ast without function parameters.
+    """
+    def __init__(self, state):
+        self.state = state
+
+    def __getattr__(self, name):
+        """If name is in fmtdict, use it. Else use name directly"""
+        varname = self.state.fmtdict.get(name) or "===>{}<===".format(name)
+        decl = gen_arg_as_cxx(self.state.ast,
+                              with_template_args=True,
                               add_params=False,  # Required for function results
                               name=varname)
         return decl
@@ -1153,6 +1168,7 @@ class FormatGen(object):
         self.nonconst_addr = NonConst(state)
         self.cdecl = FormatCdecl(state)
         self.cxxdecl = FormatCXXdecl(state)
+        self.cxxresult = FormatCXXresult(state)
         self.cidecl = FormatCIdecl(state)
 
     @property

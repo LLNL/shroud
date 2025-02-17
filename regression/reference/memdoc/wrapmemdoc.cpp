@@ -7,8 +7,6 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 
-// typemap
-#include <string>
 // shroud
 #include <cstddef>
 #include <cstring>
@@ -49,8 +47,8 @@ static void ShroudStringToCdesc(STR_SHROUD_array *cdesc,
 const char * STR_getConstStringPtrAlloc(void)
 {
     // splicer begin function.getConstStringPtrAlloc
-    const std::string *SHCXX_rv = getConstStringPtrAlloc();
-    const char * SHC_rv = SHCXX_rv->c_str();
+    const std::string *SHC_rv_cxx = getConstStringPtrAlloc();
+    const char *SHC_rv = SHC_rv_cxx->c_str();
     return SHC_rv;
     // splicer end function.getConstStringPtrAlloc
 }
@@ -65,9 +63,9 @@ void STR_getConstStringPtrAlloc_bufferify(
     STR_SHROUD_capsule_data *SHT_rv_capsule)
 {
     // splicer begin function.getConstStringPtrAlloc_bufferify
-    const std::string *SHCXX_rv = getConstStringPtrAlloc();
-    ShroudStringToCdesc(SHT_rv_cdesc, SHCXX_rv);
-    SHT_rv_capsule->addr  = const_cast<std::string *>(SHCXX_rv);
+    const std::string *SHC_rv_cxx = getConstStringPtrAlloc();
+    ShroudStringToCdesc(SHT_rv_cdesc, SHC_rv_cxx);
+    SHT_rv_capsule->addr  = const_cast<std::string *>(SHC_rv_cxx);
     SHT_rv_capsule->idtor = 0;
     // splicer end function.getConstStringPtrAlloc_bufferify
 }

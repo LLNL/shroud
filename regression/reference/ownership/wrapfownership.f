@@ -388,13 +388,13 @@ module ownership_mod
         ! Function:  Class1 *getClassStatic +owner(library)
         ! Statement: c_function_shadow*_capptr_library
         function c_get_class_static(SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="OWN_getClassStatic")
             use iso_c_binding, only : C_PTR
             import :: OWN_SHROUD_capsule_data
             implicit none
             type(OWN_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_get_class_static
 
         ! ----------------------------------------
@@ -414,14 +414,14 @@ module ownership_mod
         ! Argument:  int flag
         ! Statement: c_in_native
         function c_get_class_new(flag, SHT_rv) &
-                result(SHT_prv) &
+                result(SHT_rv_ptr) &
                 bind(C, name="OWN_getClassNew")
             use iso_c_binding, only : C_INT, C_PTR
             import :: OWN_SHROUD_capsule_data
             implicit none
             integer(C_INT), value, intent(IN) :: flag
             type(OWN_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
+            type(C_PTR) :: SHT_rv_ptr
         end function c_get_class_new
 
         ! ----------------------------------------

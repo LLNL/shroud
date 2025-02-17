@@ -14,8 +14,8 @@ c_ctor_shadow_capptr:
   i_dummy_decl:
   - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
+  - 'type(C_PTR) :: {i_var_ptr}'
+  i_result_var: '{i_var_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -27,6 +27,8 @@ c_ctor_shadow_capptr:
   - "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});"
   - "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
   - '{c_var}->idtor = {idtor};'
+  c_temps:
+  - ptr
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -49,8 +51,8 @@ c_ctor_shadow_capptr_shared:
   i_dummy_decl:
   - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
+  - 'type(C_PTR) :: {i_var_ptr}'
+  i_result_var: '{i_var_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -63,6 +65,8 @@ c_ctor_shadow_capptr_shared:
   - "*{c_local_shared} = \t std::make_shared<{baseclass.cxx_type}>({C_call_list});"
   - "{c_var}->addr = static_cast<{c_const}void *>(\t{c_local_shared});"
   - '{c_var}->idtor = {idtor};'
+  c_temps:
+  - ptr
   c_local:
   - shared
   fmtdict:
@@ -129,17 +133,21 @@ c_function_bool:
   name: c_function_bool
   intent: function
   comments:
-  - Call a function.
+  - Call a function in Fortran wrapper.
   - Declare a Fortran variable.
+  - Call function and assign to a c variable.
   mixin_names:
   - '  f_mixin_function'
   - '  f_mixin_declare-local-variable'
   - '  c_mixin_declare-fortran-result'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - '{i_type} :: {i_var}'
   i_module:
     '{i_module_name}':
     - '{i_kind}'
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 c_function_char:
   name: c_function_char
@@ -163,6 +171,7 @@ c_function_char:
   - char *{c_var}
   c_call:
   - '*{c_var} = {C_call_function};'
+  c_need_wrapper: true
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -171,19 +180,23 @@ c_function_char*:
   name: c_function_char*
   intent: function
   comments:
-  - Call a function.
+  - Call a function in Fortran wrapper.
   - Declare function result as a type(C_PTR).
+  - Call function and assign to a c variable.
   notes:
   - Return a type(C_PTR) from Fortran.
   mixin_names:
   - '  f_mixin_function'
   - '  f_mixin_function-as-cptr'
   - '  f_mixin_function-interface-as-cptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 c_function_char*_arg:
   name: c_function_char*_arg
@@ -226,7 +239,7 @@ c_function_char*_arg:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   c_temps:
@@ -286,7 +299,7 @@ c_function_char*_buf_arg:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   c_temps:
@@ -346,7 +359,7 @@ c_function_char*_buf_copy:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   c_temps:
@@ -362,78 +375,110 @@ c_function_char*_buf_copy:
 c_function_enum:
   name: c_function_enum
   intent: function
-  i_result_decl:
-  - '{i_type} :: {i_var}'
-  c_post_call:
-  - "{c_abstract_decl} {c_var} =\t {cast_static}{c_type}{cast1}{cxx_var}{cast2};"
-  owner: library
-c_function_native:
-  name: c_function_native
-  intent: function
   comments:
-  - Call a function.
-  - Declare a Fortran variable.
+  - Call function and assign to a local C++ variable.
   mixin_names:
-  - '  f_mixin_function'
-  - '  f_mixin_declare-local-variable'
   - '  c_mixin_declare-fortran-result'
+  - '  c_mixin_function-assign-to-local'
   i_result_decl:
   - '{i_type} :: {i_var}'
   i_module:
     '{i_module_name}':
     - '{i_kind}'
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
+  c_post_call:
+  - "{c_type} {c_var} =\t {cast_static}{c_type}{cast1}{c_local_cxx}{cast2};"
+  c_local:
+  - cxx
+  owner: library
+c_function_native:
+  name: c_function_native
+  intent: function
+  comments:
+  - Call a function in Fortran wrapper.
+  - Declare a Fortran variable.
+  - Call function and assign to a c variable.
+  mixin_names:
+  - '  f_mixin_function'
+  - '  f_mixin_declare-local-variable'
+  - '  c_mixin_declare-fortran-result'
+  - '  c_mixin_function-assign-to-cvar'
+  i_result_decl:
+  - '{i_type} :: {i_var}'
+  i_module:
+    '{i_module_name}':
+    - '{i_kind}'
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 c_function_native&:
   name: c_function_native&
   intent: function
   comments:
   - Return a C pointer directly as type(C_PTR).
+  - Call function and assign to a c variable.
   mixin_names:
   - '  f_mixin_function_ptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 c_function_native*:
   name: c_function_native*
   intent: function
   comments:
   - Return a C pointer directly as type(C_PTR).
+  - Call function and assign to a c variable.
   mixin_names:
   - '  f_mixin_function_ptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 c_function_native**:
   name: c_function_native**
   intent: function
   comments:
   - Return a C pointer directly as type(C_PTR).
+  - Call function and assign to a c variable.
   mixin_names:
   - '  f_mixin_function_ptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 c_function_native*_caller:
   name: c_function_native*_caller
   intent: function
   comments:
   - Return a C pointer directly as type(C_PTR).
+  - Call function and assign to a c variable.
   mixin_names:
   - '  f_mixin_function_ptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 c_function_native*_scalar:
   name: c_function_native*_scalar
@@ -466,8 +511,8 @@ c_function_shadow&_capptr:
   i_dummy_decl:
   - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
+  - 'type(C_PTR) :: {i_var_ptr}'
+  i_result_var: '{i_var_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -477,12 +522,14 @@ c_function_shadow&_capptr:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
+  c_temps:
+  - ptr
   c_local:
   - cxx
   fmtdict:
@@ -511,8 +558,8 @@ c_function_shadow&_capptr_caller:
   i_dummy_decl:
   - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
+  - 'type(C_PTR) :: {i_var_ptr}'
+  i_result_var: '{i_var_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -522,12 +569,14 @@ c_function_shadow&_capptr_caller:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
+  c_temps:
+  - ptr
   c_local:
   - cxx
   fmtdict:
@@ -556,8 +605,8 @@ c_function_shadow&_capptr_library:
   i_dummy_decl:
   - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
+  - 'type(C_PTR) :: {i_var_ptr}'
+  i_result_var: '{i_var_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -567,12 +616,14 @@ c_function_shadow&_capptr_library:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
+  c_temps:
+  - ptr
   c_local:
   - cxx
   fmtdict:
@@ -607,7 +658,7 @@ c_function_shadow&_capsule:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -645,7 +696,7 @@ c_function_shadow&_capsule_caller:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -683,7 +734,7 @@ c_function_shadow&_capsule_library:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -715,8 +766,8 @@ c_function_shadow*_capptr:
   i_dummy_decl:
   - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
+  - 'type(C_PTR) :: {i_var_ptr}'
+  i_result_var: '{i_var_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -726,12 +777,14 @@ c_function_shadow*_capptr:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
+  c_temps:
+  - ptr
   c_local:
   - cxx
   fmtdict:
@@ -760,8 +813,8 @@ c_function_shadow*_capptr_caller:
   i_dummy_decl:
   - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
+  - 'type(C_PTR) :: {i_var_ptr}'
+  i_result_var: '{i_var_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -771,12 +824,14 @@ c_function_shadow*_capptr_caller:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
+  c_temps:
+  - ptr
   c_local:
   - cxx
   fmtdict:
@@ -805,8 +860,8 @@ c_function_shadow*_capptr_library:
   i_dummy_decl:
   - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
+  - 'type(C_PTR) :: {i_var_ptr}'
+  i_result_var: '{i_var_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -816,12 +871,14 @@ c_function_shadow*_capptr_library:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
+  c_temps:
+  - ptr
   c_local:
   - cxx
   fmtdict:
@@ -850,8 +907,8 @@ c_function_shadow*_capptr_shared:
   i_dummy_decl:
   - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
+  - 'type(C_PTR) :: {i_var_ptr}'
+  i_result_var: '{i_var_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -861,12 +918,14 @@ c_function_shadow*_capptr_shared:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
+  c_temps:
+  - ptr
   c_local:
   - cxx
   fmtdict:
@@ -901,7 +960,7 @@ c_function_shadow*_capsule:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -954,8 +1013,8 @@ c_function_shadow<native>_capptr:
   i_dummy_decl:
   - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
+  - 'type(C_PTR) :: {i_var_ptr}'
+  i_result_var: '{i_var_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -973,6 +1032,8 @@ c_function_shadow<native>_capptr:
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
+  c_temps:
+  - ptr
   c_local:
   - cxx
   fmtdict:
@@ -1005,8 +1066,8 @@ c_function_shadow_capptr:
   i_dummy_decl:
   - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
+  - 'type(C_PTR) :: {i_var_ptr}'
+  i_result_var: '{i_var_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1024,6 +1085,8 @@ c_function_shadow_capptr:
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
+  c_temps:
+  - ptr
   c_local:
   - cxx
   fmtdict:
@@ -1051,8 +1114,8 @@ c_function_smartptr<shadow>*_capptr:
   i_dummy_decl:
   - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
+  - 'type(C_PTR) :: {i_var_ptr}'
+  i_result_var: '{i_var_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1062,12 +1125,14 @@ c_function_smartptr<shadow>*_capptr:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
+  c_temps:
+  - ptr
   c_local:
   - cxx
   fmtdict:
@@ -1096,8 +1161,8 @@ c_function_smartptr<shadow>_capptr:
   i_dummy_decl:
   - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
+  - 'type(C_PTR) :: {i_var_ptr}'
+  i_result_var: '{i_var_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1115,6 +1180,8 @@ c_function_smartptr<shadow>_capptr:
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
+  c_temps:
+  - ptr
   c_local:
   - cxx
   fmtdict:
@@ -1172,18 +1239,26 @@ c_function_string:
 c_function_string&:
   name: c_function_string&
   intent: function
+  comments:
+  - Call function and assign to a local C++ variable.
   notes:
   - Fortran calling a C function without
   - any api argument - is this useful?
+  mixin_names:
+  - '  c_mixin_function-assign-to-local'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
-  - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
+  - '{c_const}char *{c_var} = {c_local_cxx}{cxx_member}c_str();'
   c_return:
   - return {c_var};
+  c_local:
+  - cxx
   owner: library
 c_function_string&_buf_arg:
   name: c_function_string&_buf_arg
@@ -1226,7 +1301,7 @@ c_function_string&_buf_arg:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -1286,7 +1361,7 @@ c_function_string&_buf_copy:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -1306,34 +1381,50 @@ c_function_string&_buf_copy:
 c_function_string&_copy:
   name: c_function_string&_copy
   intent: function
+  comments:
+  - Call function and assign to a local C++ variable.
   notes:
   - Fortran calling a C function without
   - any api argument - is this useful?
+  mixin_names:
+  - '  c_mixin_function-assign-to-local'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
-  - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
+  - '{c_const}char *{c_var} = {c_local_cxx}{cxx_member}c_str();'
   c_return:
   - return {c_var};
+  c_local:
+  - cxx
   owner: library
 c_function_string*:
   name: c_function_string*
   intent: function
+  comments:
+  - Call function and assign to a local C++ variable.
   notes:
   - Fortran calling a C function without
   - any api argument - is this useful?
+  mixin_names:
+  - '  c_mixin_function-assign-to-local'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
-  - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
+  - '{c_const}char *{c_var} = {c_local_cxx}{cxx_member}c_str();'
   c_return:
   - return {c_var};
+  c_local:
+  - cxx
   owner: library
 c_function_string*_buf_copy:
   name: c_function_string*_buf_copy
@@ -1372,7 +1463,7 @@ c_function_string*_buf_copy:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -1392,50 +1483,74 @@ c_function_string*_buf_copy:
 c_function_string*_caller:
   name: c_function_string*_caller
   intent: function
+  comments:
+  - Call function and assign to a local C++ variable.
   notes:
   - Fortran calling a C function without
   - any api argument - is this useful?
+  mixin_names:
+  - '  c_mixin_function-assign-to-local'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
-  - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
+  - '{c_const}char *{c_var} = {c_local_cxx}{cxx_member}c_str();'
   c_return:
   - return {c_var};
+  c_local:
+  - cxx
   owner: library
 c_function_string*_copy:
   name: c_function_string*_copy
   intent: function
+  comments:
+  - Call function and assign to a local C++ variable.
   notes:
   - Fortran calling a C function without
   - any api argument - is this useful?
+  mixin_names:
+  - '  c_mixin_function-assign-to-local'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
-  - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
+  - '{c_const}char *{c_var} = {c_local_cxx}{cxx_member}c_str();'
   c_return:
   - return {c_var};
+  c_local:
+  - cxx
   owner: library
 c_function_string*_library:
   name: c_function_string*_library
   intent: function
+  comments:
+  - Call function and assign to a local C++ variable.
   notes:
   - Fortran calling a C function without
   - any api argument - is this useful?
+  mixin_names:
+  - '  c_mixin_function-assign-to-local'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
-  - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
+  - '{c_const}char *{c_var} = {c_local_cxx}{cxx_member}c_str();'
   c_return:
   - return {c_var};
+  c_local:
+  - cxx
   owner: library
 c_function_string_buf_arg:
   name: c_function_string_buf_arg
@@ -1478,7 +1593,7 @@ c_function_string_buf_arg:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -1538,7 +1653,7 @@ c_function_string_buf_copy:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -1578,6 +1693,7 @@ c_function_struct:
   - '{c_type} *{c_var}'
   c_call:
   - '*{c_var} = {C_call_function};'
+  c_need_wrapper: true
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -1587,15 +1703,19 @@ c_function_struct*:
   intent: function
   comments:
   - Return a C pointer as a type(C_PTR).
+  - Call function and assign to a c variable.
   notes:
   - C++ pointer -> void pointer -> C pointer.
   mixin_names:
   - '  f_mixin_function_c-ptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_need_wrapper: true
   owner: library
 c_function_vector<native>:
@@ -1616,6 +1736,8 @@ c_function_vector<native>_malloc:
   - malloc allocated array.
   - Add an argument with the length of the array.
   mixin_names:
+  - '  c_mixin_header_stdlib'
+  - '  c_mixin_header_cstring'
   - '  c_mixin_function_vector_malloc'
   i_dummy_arg:
   - '{i_var_size}'
@@ -1648,20 +1770,32 @@ c_function_vector<native>_malloc:
   - <cstdlib>
   - <cstring>
   owner: library
+  lang_c:
+    impl_header:
+    - <stdlib.h>
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstdlib>
+    - <cstring>
 c_function_void*:
   name: c_function_void*
   intent: function
   comments:
   - Declare a Fortran variable.
+  - Call function and assign to a c variable.
   notes:
   - XXX - f entries are the same as the i entries, share?
   mixin_names:
   - '  f_mixin_declare-local-variable'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 c_getter_native:
   name: c_getter_native
@@ -1680,6 +1814,7 @@ c_getter_native:
   - // skip call c_getter
   c_return:
   - return {CXX_this}->{field_name};
+  c_need_wrapper: true
   owner: library
 c_getter_native*:
   name: c_getter_native*
@@ -1698,6 +1833,7 @@ c_getter_native*:
   - // skip call c_getter
   c_return:
   - return {CXX_this}->{field_name};
+  c_need_wrapper: true
   owner: library
 c_in_bool:
   name: c_in_bool
@@ -3502,6 +3638,8 @@ c_inout_vector<native>&_buf_malloc:
   - Create local vector from arguments then copy result to
   - malloc allocated array.
   mixin_names:
+  - '  c_mixin_header_stdlib'
+  - '  c_mixin_header_cstring'
   - '  c_mixin_out_vector_buf_malloc'
   - '  c_mixin_arg-call-cxx'
   i_dummy_arg:
@@ -3535,6 +3673,14 @@ c_inout_vector<native>&_buf_malloc:
   - <cstdlib>
   - <cstring>
   owner: library
+  lang_c:
+    impl_header:
+    - <stdlib.h>
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstdlib>
+    - <cstring>
 c_inout_vector<native>*_buf_copy:
   name: c_inout_vector<native>*_buf_copy
   intent: inout
@@ -3579,6 +3725,8 @@ c_inout_vector<native>*_buf_malloc:
   - Create local vector from arguments then copy result to
   - malloc allocated array.
   mixin_names:
+  - '  c_mixin_header_stdlib'
+  - '  c_mixin_header_cstring'
   - '  c_mixin_out_vector_buf_malloc'
   - '  c_mixin_arg-call-cxx'
   i_dummy_arg:
@@ -3612,6 +3760,14 @@ c_inout_vector<native>*_buf_malloc:
   - <cstdlib>
   - <cstring>
   owner: library
+  lang_c:
+    impl_header:
+    - <stdlib.h>
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstdlib>
+    - <cstring>
 c_inout_vector<native>_buf_copy:
   name: c_inout_vector<native>_buf_copy
   intent: inout
@@ -3656,6 +3812,8 @@ c_inout_vector<native>_buf_malloc:
   - Create local vector from arguments then copy result to
   - malloc allocated array.
   mixin_names:
+  - '  c_mixin_header_stdlib'
+  - '  c_mixin_header_cstring'
   - '  c_mixin_out_vector_buf_malloc'
   - '  c_mixin_arg-call-cxx'
   i_dummy_arg:
@@ -3689,6 +3847,14 @@ c_inout_vector<native>_buf_malloc:
   - <cstdlib>
   - <cstring>
   owner: library
+  lang_c:
+    impl_header:
+    - <stdlib.h>
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstdlib>
+    - <cstring>
 c_inout_vector<scalar>&:
   name: c_inout_vector<scalar>&
   intent: inout
@@ -3877,7 +4043,7 @@ c_mixin_cdesc_char_fill_cvar:
   - Fill cdesc from char * in the C wrapper.
   c_post_call:
   - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
   - '{c_var_cdesc}->size = 1;'
   - '{c_var_cdesc}->rank = 0;'
@@ -3931,7 +4097,7 @@ c_mixin_cdesc_native_fill:
   - Fill cdesc from native in the C wrapper.
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
   - '{c_var_cdesc}->size = {gen.c_array_size};'
@@ -4098,6 +4264,8 @@ c_mixin_cfi_native_allocatable:
   intent: mixin
   comments:
   - Allocate copy of C pointer (requires +dimension).
+  mixin_names:
+  - '  c_mixin_header_cstring'
   c_post_call:
   - if ({c_local_cxx} != {nullptr}) {{+
   - "{gen.c_extents_decl}int SH_ret = CFI_allocate({c_var_cfi}, \t{gen.c_lower_use},\
@@ -4111,7 +4279,15 @@ c_mixin_cfi_native_allocatable:
   - lower
   helper:
   - lower_bounds_CFI
+  impl_header:
+  - <cstring>
   owner: library
+  lang_c:
+    impl_header:
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstring>
 c_mixin_cfi_native_pointer:
   name: c_mixin_cfi_native_pointer
   intent: mixin
@@ -4123,7 +4299,7 @@ c_mixin_cfi_native_pointer:
   - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
   - void *{c_local_cptr} = const_cast<{c_type} *>({c_local_cxx});
   - "{gen.c_extents_decl}int {c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t\
-    \ CFI_attribute_pointer,\t {cfi_type},\t 0,\t {rank},\t {gen.c_extents_use});"
+    \ CFI_attribute_pointer,\t {typemap.cfi_type},\t 0,\t {rank},\t {gen.c_extents_use});"
   - if ({c_local_err} == CFI_SUCCESS) {{+
   - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {gen.c_lower_use});"
   - -}}
@@ -4344,13 +4520,21 @@ c_mixin_dummy_arg:
   i_dummy_arg:
   - '{i_var}'
   owner: library
+c_mixin_function-assign-to-cvar:
+  name: c_mixin_function-assign-to-cvar
+  intent: mixin
+  comments:
+  - Call function and assign to a c variable.
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
+  owner: library
 c_mixin_function-assign-to-local:
   name: c_mixin_function-assign-to-local
   intent: mixin
   comments:
   - Call function and assign to a local C++ variable.
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_local:
   - cxx
   owner: library
@@ -4382,11 +4566,13 @@ c_mixin_function_shadow_capptr:
   - Pass function result as a capsule field of shadow class
   - from Fortran to C.
   i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
+  - 'type(C_PTR) :: {i_var_ptr}'
+  i_result_var: '{i_var_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_temps:
+  - ptr
   owner: library
 c_mixin_function_vector_malloc:
   name: c_mixin_function_vector_malloc
@@ -4410,6 +4596,18 @@ c_mixin_function_vector_malloc:
   c_temps:
   - size
   owner: library
+c_mixin_header_cstring:
+  name: c_mixin_header_cstring
+  intent: mixin
+  impl_header:
+  - <cstring>
+  owner: library
+  lang_c:
+    impl_header:
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstring>
 c_mixin_header_stddef:
   name: c_mixin_header_stddef
   intent: mixin
@@ -4434,18 +4632,6 @@ c_mixin_header_stdlib:
   lang_cxx:
     impl_header:
     - <cstdlib>
-c_mixin_header_string:
-  name: c_mixin_header_string
-  intent: mixin
-  impl_header:
-  - <cstring>
-  owner: library
-  lang_c:
-    impl_header:
-    - <string.h>
-  lang_cxx:
-    impl_header:
-    - <cstring>
 c_mixin_in_character_buf:
   name: c_mixin_in_character_buf
   intent: mixin
@@ -5368,6 +5554,7 @@ c_out_vector<native>&_buf_copy:
   - XXX - need to test scalar and pointer versions
   mixin_names:
   - '  f_mixin_out_vector_buf'
+  - '  c_mixin_header_cstring'
   - '  c_mixin_arg-call-cxx'
   i_dummy_arg:
   - '{i_var}'
@@ -5399,6 +5586,12 @@ c_out_vector<native>&_buf_copy:
   impl_header:
   - <cstring>
   owner: library
+  lang_c:
+    impl_header:
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstring>
 c_out_vector<native>&_buf_malloc:
   name: c_out_vector<native>&_buf_malloc
   intent: out
@@ -5410,6 +5603,8 @@ c_out_vector<native>&_buf_malloc:
   - malloc allocated array.
   - XXX - need to test scalar and pointer versions
   mixin_names:
+  - '  c_mixin_header_stdlib'
+  - '  c_mixin_header_cstring'
   - '  c_mixin_out_vector_buf_malloc'
   - '  c_mixin_arg-call-cxx'
   i_dummy_arg:
@@ -5443,6 +5638,14 @@ c_out_vector<native>&_buf_malloc:
   - <cstdlib>
   - <cstring>
   owner: library
+  lang_c:
+    impl_header:
+    - <stdlib.h>
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstdlib>
+    - <cstring>
 c_out_vector<native>&_cdesc:
   name: c_out_vector<native>&_cdesc
   intent: out
@@ -5508,6 +5711,7 @@ c_out_vector<native>*_buf_copy:
   - XXX - need to test scalar and pointer versions
   mixin_names:
   - '  f_mixin_out_vector_buf'
+  - '  c_mixin_header_cstring'
   - '  c_mixin_arg-call-cxx'
   i_dummy_arg:
   - '{i_var}'
@@ -5539,6 +5743,12 @@ c_out_vector<native>*_buf_copy:
   impl_header:
   - <cstring>
   owner: library
+  lang_c:
+    impl_header:
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstring>
 c_out_vector<native>*_buf_malloc:
   name: c_out_vector<native>*_buf_malloc
   intent: out
@@ -5550,6 +5760,8 @@ c_out_vector<native>*_buf_malloc:
   - malloc allocated array.
   - XXX - need to test scalar and pointer versions
   mixin_names:
+  - '  c_mixin_header_stdlib'
+  - '  c_mixin_header_cstring'
   - '  c_mixin_out_vector_buf_malloc'
   - '  c_mixin_arg-call-cxx'
   i_dummy_arg:
@@ -5583,6 +5795,14 @@ c_out_vector<native>*_buf_malloc:
   - <cstdlib>
   - <cstring>
   owner: library
+  lang_c:
+    impl_header:
+    - <stdlib.h>
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstdlib>
+    - <cstring>
 c_out_vector<native>*_cdesc:
   name: c_out_vector<native>*_cdesc
   intent: out
@@ -5648,6 +5868,7 @@ c_out_vector<native>_buf_copy:
   - XXX - need to test scalar and pointer versions
   mixin_names:
   - '  f_mixin_out_vector_buf'
+  - '  c_mixin_header_cstring'
   - '  c_mixin_arg-call-cxx'
   i_dummy_arg:
   - '{i_var}'
@@ -5679,6 +5900,12 @@ c_out_vector<native>_buf_copy:
   impl_header:
   - <cstring>
   owner: library
+  lang_c:
+    impl_header:
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstring>
 c_out_vector<native>_buf_malloc:
   name: c_out_vector<native>_buf_malloc
   intent: out
@@ -5690,6 +5917,8 @@ c_out_vector<native>_buf_malloc:
   - malloc allocated array.
   - XXX - need to test scalar and pointer versions
   mixin_names:
+  - '  c_mixin_header_stdlib'
+  - '  c_mixin_header_cstring'
   - '  c_mixin_out_vector_buf_malloc'
   - '  c_mixin_arg-call-cxx'
   i_dummy_arg:
@@ -5723,6 +5952,14 @@ c_out_vector<native>_buf_malloc:
   - <cstdlib>
   - <cstring>
   owner: library
+  lang_c:
+    impl_header:
+    - <stdlib.h>
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstdlib>
+    - <cstring>
 c_out_vector<string>&:
   name: c_out_vector<string>&
   intent: out
@@ -6053,6 +6290,10 @@ c_setter_string_scalar_buf:
 c_subroutine:
   name: c_subroutine
   intent: subroutine
+  comments:
+  - Call subroutine/void C function.
+  c_call:
+  - '{C_call_function};'
   owner: library
 c_subroutine_assignment_weakptr:
   name: c_subroutine_assignment_weakptr
@@ -6177,8 +6418,9 @@ f_function_bool:
   name: f_function_bool
   intent: function
   comments:
-  - Call a function.
+  - Call a function in Fortran wrapper.
   - Declare a Fortran variable.
+  - Call function and assign to a c variable.
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
     :: {f_var}{f_dimension}'
@@ -6192,11 +6434,14 @@ f_function_bool:
   - '  f_mixin_function'
   - '  f_mixin_declare-local-variable'
   - '  c_mixin_declare-fortran-result'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - '{i_type} :: {i_var}'
   i_module:
     '{i_module_name}':
     - '{i_kind}'
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 f_function_char:
   name: f_function_char
@@ -6226,6 +6471,7 @@ f_function_char:
   - char *{c_var}
   c_call:
   - '*{c_var} = {C_call_function};'
+  c_need_wrapper: true
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -6234,8 +6480,9 @@ f_function_char*:
   name: f_function_char*
   intent: function
   comments:
-  - Call a function.
+  - Call a function in Fortran wrapper.
   - Declare function result as a type(C_PTR).
+  - Call function and assign to a c variable.
   notes:
   - Return a type(C_PTR) from Fortran.
   f_dummy_decl:
@@ -6249,18 +6496,22 @@ f_function_char*:
   - '  f_mixin_function'
   - '  f_mixin_function-as-cptr'
   - '  f_mixin_function-interface-as-cptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 f_function_char*_allocatable:
   name: f_function_char*_allocatable
   intent: function
   comments:
-  - Call a function.
+  - Call a function in Fortran wrapper.
   - Declare function result as a type(C_PTR).
+  - Call function and assign to a c variable.
   notes:
   - Return a type(C_PTR) from Fortran.
   f_dummy_decl:
@@ -6274,11 +6525,14 @@ f_function_char*_allocatable:
   - '  f_mixin_function'
   - '  f_mixin_function-as-cptr'
   - '  f_mixin_function-interface-as-cptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 f_function_char*_arg:
   name: f_function_char*_arg
@@ -6341,7 +6595,7 @@ f_function_char*_arg:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   c_temps:
@@ -6421,7 +6675,7 @@ f_function_char*_buf_arg:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   c_temps:
@@ -6501,7 +6755,7 @@ f_function_char*_buf_copy:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   c_temps:
@@ -6522,6 +6776,7 @@ f_function_char*_cdesc_allocatable:
   - Pass cdesc as argument to C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
+  - Call function and assign to a c variable.
   - Fill cdesc from char * in the C wrapper.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
@@ -6542,6 +6797,7 @@ f_function_char*_cdesc_allocatable:
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_cdesc_char_allocate'
+  - '  c_mixin_function-assign-to-cvar'
   - '  c_mixin_cdesc_char_fill_cvar'
   i_dummy_arg:
   - '{i_var_cdesc}'
@@ -6552,9 +6808,11 @@ f_function_char*_cdesc_allocatable:
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_post_call:
   - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
   - '{c_var_cdesc}->size = 1;'
   - '{c_var_cdesc}->rank = 0;'
@@ -6574,6 +6832,7 @@ f_function_char*_cdesc_pointer:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
+  - Call function and assign to a c variable.
   - Fill cdesc from char * in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
   f_dummy_decl:
@@ -6596,6 +6855,7 @@ f_function_char*_cdesc_pointer:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
+  - '  c_mixin_function-assign-to-cvar'
   - '  c_mixin_cdesc_char_fill_cvar'
   - '  f_mixin_cdesc_char_pointer'
   i_dummy_arg:
@@ -6607,9 +6867,11 @@ f_function_char*_cdesc_pointer:
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_post_call:
   - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
   - '{c_var_cdesc}->size = 1;'
   - '{c_var_cdesc}->rank = 0;'
@@ -6629,6 +6891,7 @@ f_function_char*_cfi_allocatable:
   comments:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
+  - Call function and assign to a c variable.
   notes:
   - Add allocatable attribute to declaration.
   f_dummy_decl:
@@ -6646,6 +6909,8 @@ f_function_char*_cfi_allocatable:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
+  - '  c_mixin_header_cstring'
+  - '  c_mixin_function-assign-to-cvar'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -6653,6 +6918,8 @@ f_function_char*_cfi_allocatable:
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var} != {nullptr}) {{+
   - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
@@ -6668,6 +6935,8 @@ f_function_char*_cfi_allocatable:
     i_intent_attr: ', intent(OUT)'
   iface_header:
   - ISO_Fortran_binding.h
+  impl_header:
+  - <cstring>
   owner: library
 f_function_char*_cfi_arg:
   name: f_function_char*_cfi_arg
@@ -6719,7 +6988,7 @@ f_function_char*_cfi_arg:
   c_arg_call:
   - '{c_local_cxx}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   c_temps:
@@ -6788,7 +7057,7 @@ f_function_char*_cfi_copy:
   c_arg_call:
   - '{c_local_cxx}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   c_temps:
@@ -6810,6 +7079,7 @@ f_function_char*_cfi_pointer:
   comments:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
+  - Call function and assign to a c variable.
   - Convert C pointer to deferred-length CHARACTER Fortran scalar pointer.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
@@ -6826,6 +7096,7 @@ f_function_char*_cfi_pointer:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
+  - '  c_mixin_function-assign-to-cvar'
   - '  c_mixin_cfi_character_pointer'
   i_dummy_arg:
   - '{i_var}'
@@ -6834,6 +7105,8 @@ f_function_char*_cfi_pointer:
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_post_call:
   - int {c_local_err};
   - if ({cxx_var} == {nullptr}) {{+
@@ -6868,8 +7141,9 @@ f_function_char*_copy:
   name: f_function_char*_copy
   intent: function
   comments:
-  - Call a function.
+  - Call a function in Fortran wrapper.
   - Declare function result as a type(C_PTR).
+  - Call function and assign to a c variable.
   notes:
   - Return a type(C_PTR) from Fortran.
   f_dummy_decl:
@@ -6883,18 +7157,22 @@ f_function_char*_copy:
   - '  f_mixin_function'
   - '  f_mixin_function-as-cptr'
   - '  f_mixin_function-interface-as-cptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 f_function_char*_pointer:
   name: f_function_char*_pointer
   intent: function
   comments:
-  - Call a function.
+  - Call a function in Fortran wrapper.
   - Declare function result as a type(C_PTR).
+  - Call function and assign to a c variable.
   notes:
   - Return a type(C_PTR) from Fortran.
   f_dummy_decl:
@@ -6908,18 +7186,22 @@ f_function_char*_pointer:
   - '  f_mixin_function'
   - '  f_mixin_function-as-cptr'
   - '  f_mixin_function-interface-as-cptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 f_function_char*_raw:
   name: f_function_char*_raw
   intent: function
   comments:
-  - Call a function.
+  - Call a function in Fortran wrapper.
   - Declare function result as a type(C_PTR).
+  - Call function and assign to a c variable.
   notes:
   - Return a type(C_PTR) from Fortran.
   f_dummy_decl:
@@ -6933,11 +7215,14 @@ f_function_char*_raw:
   - '  f_mixin_function'
   - '  f_mixin_function-as-cptr'
   - '  f_mixin_function-interface-as-cptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 f_function_char_cdesc_allocatable:
   name: f_function_char_cdesc_allocatable
@@ -6947,6 +7232,7 @@ f_function_char_cdesc_allocatable:
   - Pass cdesc as argument to C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
+  - Call function and assign to a c variable.
   - Fill cdesc from char * in the C wrapper.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
@@ -6967,6 +7253,7 @@ f_function_char_cdesc_allocatable:
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_cdesc_char_allocate'
+  - '  c_mixin_function-assign-to-cvar'
   - '  c_mixin_cdesc_char_fill_cvar'
   i_dummy_arg:
   - '{i_var_cdesc}'
@@ -6977,9 +7264,11 @@ f_function_char_cdesc_allocatable:
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_post_call:
   - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
   - '{c_var_cdesc}->size = 1;'
   - '{c_var_cdesc}->rank = 0;'
@@ -6999,6 +7288,7 @@ f_function_char_cdesc_pointer:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
+  - Call function and assign to a c variable.
   - Fill cdesc from char * in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
   f_dummy_decl:
@@ -7021,6 +7311,7 @@ f_function_char_cdesc_pointer:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
+  - '  c_mixin_function-assign-to-cvar'
   - '  c_mixin_cdesc_char_fill_cvar'
   - '  f_mixin_cdesc_char_pointer'
   i_dummy_arg:
@@ -7032,9 +7323,11 @@ f_function_char_cdesc_pointer:
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_post_call:
   - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
   - '{c_var_cdesc}->size = 1;'
   - '{c_var_cdesc}->rank = 0;'
@@ -7054,6 +7347,7 @@ f_function_char_cfi_allocatable:
   comments:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
+  - Call function and assign to a c variable.
   notes:
   - Add allocatable attribute to declaration.
   f_dummy_decl:
@@ -7071,6 +7365,8 @@ f_function_char_cfi_allocatable:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
+  - '  c_mixin_header_cstring'
+  - '  c_mixin_function-assign-to-cvar'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -7078,6 +7374,8 @@ f_function_char_cfi_allocatable:
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var} != {nullptr}) {{+
   - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
@@ -7093,6 +7391,8 @@ f_function_char_cfi_allocatable:
     i_intent_attr: ', intent(OUT)'
   iface_header:
   - ISO_Fortran_binding.h
+  impl_header:
+  - <cstring>
   owner: library
 f_function_char_cfi_pointer:
   name: f_function_char_cfi_pointer
@@ -7100,6 +7400,7 @@ f_function_char_cfi_pointer:
   comments:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
+  - Call function and assign to a c variable.
   - Convert C pointer to deferred-length CHARACTER Fortran scalar pointer.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
@@ -7116,6 +7417,7 @@ f_function_char_cfi_pointer:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
+  - '  c_mixin_function-assign-to-cvar'
   - '  c_mixin_cfi_character_pointer'
   i_dummy_arg:
   - '{i_var}'
@@ -7124,6 +7426,8 @@ f_function_char_cfi_pointer:
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_post_call:
   - int {c_local_err};
   - if ({cxx_var} == {nullptr}) {{+
@@ -7158,8 +7462,9 @@ f_function_enum:
   name: f_function_enum
   intent: function
   comments:
-  - Call a function.
+  - Call a function in Fortran wrapper.
   - Declare a Fortran variable.
+  - Call function and assign to a local C++ variable.
   notes:
   - Return as the Fortran bind(C) type.
   f_dummy_decl:
@@ -7174,20 +7479,26 @@ f_function_enum:
   - '  f_mixin_function'
   - '  f_mixin_declare-local-variable'
   - '  c_mixin_declare-fortran-result'
+  - '  c_mixin_function-assign-to-local'
   i_result_decl:
   - '{i_type} :: {i_var}'
   i_module:
     '{i_module_name}':
     - '{i_kind}'
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
-  - "{ci_type} {c_var} =\t {cast_static}{ci_type}{cast1}{cxx_var}{cast2};"
+  - "{ci_type} {c_var} =\t {cast_static}{ci_type}{cast1}{c_local_cxx}{cast2};"
+  c_local:
+  - cxx
   owner: library
 f_function_native:
   name: f_function_native
   intent: function
   comments:
-  - Call a function.
+  - Call a function in Fortran wrapper.
   - Declare a Fortran variable.
+  - Call function and assign to a c variable.
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
     :: {f_var}{f_dimension}'
@@ -7200,17 +7511,21 @@ f_function_native:
   - '  f_mixin_function'
   - '  f_mixin_declare-local-variable'
   - '  c_mixin_declare-fortran-result'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - '{i_type} :: {i_var}'
   i_module:
     '{i_module_name}':
     - '{i_kind}'
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 f_function_native&:
   name: f_function_native&
   intent: function
   comments:
   - Return a C pointer as a type(C_PTR).
+  - Call function and assign to a c variable.
   notes:
   - Pointer to scalar.
   - type(C_PTR) is returned instead of a cdesc argument.
@@ -7232,11 +7547,14 @@ f_function_native&:
   - ptr
   mixin_names:
   - '  f_mixin_function_c-ptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_need_wrapper: true
   owner: library
 f_function_native&_pointer:
@@ -7244,6 +7562,7 @@ f_function_native&_pointer:
   intent: function
   comments:
   - Return a C pointer as a type(C_PTR).
+  - Call function and assign to a c variable.
   notes:
   - Pointer to scalar.
   - type(C_PTR) is returned instead of a cdesc argument.
@@ -7265,11 +7584,14 @@ f_function_native&_pointer:
   - ptr
   mixin_names:
   - '  f_mixin_function_c-ptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_need_wrapper: true
   owner: library
 f_function_native**:
@@ -7277,6 +7599,7 @@ f_function_native**:
   intent: function
   comments:
   - Return a C pointer directly as type(C_PTR).
+  - Call function and assign to a c variable.
   f_dummy_decl:
   - 'type(C_PTR) :: {f_var}'
   f_module:
@@ -7284,11 +7607,14 @@ f_function_native**:
     - C_PTR
   mixin_names:
   - '  f_mixin_function_ptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 f_function_native*_cdesc_allocatable:
   name: f_function_native*_cdesc_allocatable
@@ -7297,6 +7623,7 @@ f_function_native*_cdesc_allocatable:
   - Call the C wrapper as a subroutine.
   - Declare a Fortran variable.
   - Pass cdesc as argument to C wrapper.
+  - Call function and assign to a c variable.
   - Fill cdesc from native in the C wrapper.
   - Allocate Fortran variable.
   - Copy into Fortran argument.
@@ -7335,6 +7662,7 @@ f_function_native*_cdesc_allocatable:
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-local-variable'
   - '  f_mixin_cdesc_pass'
+  - '  c_mixin_function-assign-to-cvar'
   - '  c_mixin_cdesc_native_fill'
   - '  f_mixin_allocate'
   - '  f_mixin_cdesc_copy_array'
@@ -7356,9 +7684,11 @@ f_function_native*_cdesc_allocatable:
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
   - '{C_capsule_data_type} *{c_var_capsule}'
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
   - '{c_var_cdesc}->size = {gen.c_array_size};'
@@ -7384,6 +7714,7 @@ f_function_native*_cdesc_pointer:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
+  - Call function and assign to a c variable.
   - Fill cdesc from native in the C wrapper.
   - Set Fortran pointer to native array.
   f_dummy_decl:
@@ -7408,6 +7739,7 @@ f_function_native*_cdesc_pointer:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
+  - '  c_mixin_function-assign-to-cvar'
   - '  c_mixin_cdesc_native_fill'
   - '  f_mixin_cdesc_native_pointer'
   i_dummy_arg:
@@ -7419,9 +7751,11 @@ f_function_native*_cdesc_pointer:
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
   - '{c_var_cdesc}->size = {gen.c_array_size};'
@@ -7442,6 +7776,7 @@ f_function_native*_cdesc_pointer_caller:
   - Pass capsule as argument to C wrapper.
   - Add a capsule argument to the Fortran wrapper.
   - Pass the capsule as argument to C wrapper.
+  - Call function and assign to a c variable.
   - Fill cdesc from native in the C wrapper.
   - Assign to local capsule variable in C wrapper.
   - Set Fortran pointer to native array.
@@ -7477,6 +7812,7 @@ f_function_native*_cdesc_pointer_caller:
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_capsule_arg'
   - '    c_mixin_capsule_pass'
+  - '  c_mixin_function-assign-to-cvar'
   - '  c_mixin_cdesc_native_fill'
   - '  c_mixin_capsule_fill_native'
   - '  f_mixin_cdesc_native_pointer'
@@ -7493,9 +7829,11 @@ f_function_native*_cdesc_pointer_caller:
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
   - '{C_capsule_data_type} *{c_var_capsule}'
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
   - '{c_var_cdesc}->size = {gen.c_array_size};'
@@ -7550,6 +7888,7 @@ f_function_native*_cfi_allocatable:
   - '  c_mixin_arg-call-cxx'
   - '  c_mixin_function-assign-to-local'
   - '  c_mixin_cfi_native_allocatable'
+  - '    c_mixin_header_cstring'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -7563,7 +7902,7 @@ f_function_native*_cfi_allocatable:
   c_arg_call:
   - '{c_local_cxx}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({c_local_cxx} != {nullptr}) {{+
   - "{gen.c_extents_decl}int SH_ret = CFI_allocate({c_var_cfi}, \t{gen.c_lower_use},\
@@ -7585,6 +7924,8 @@ f_function_native*_cfi_allocatable:
   - lower_bounds_CFI
   iface_header:
   - ISO_Fortran_binding.h
+  impl_header:
+  - <cstring>
   owner: library
 f_function_native*_cfi_pointer:
   name: f_function_native*_cfi_pointer
@@ -7637,14 +7978,14 @@ f_function_native*_cfi_pointer:
   c_arg_call:
   - '{c_local_cxx}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{{+'
   - CFI_CDESC_T({rank}) {c_local_fptr};
   - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
   - void *{c_local_cptr} = const_cast<{c_type} *>({c_local_cxx});
   - "{gen.c_extents_decl}int {c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t\
-    \ CFI_attribute_pointer,\t {cfi_type},\t 0,\t {rank},\t {gen.c_extents_use});"
+    \ CFI_attribute_pointer,\t {typemap.cfi_type},\t 0,\t {rank},\t {gen.c_extents_use});"
   - if ({c_local_err} == CFI_SUCCESS) {{+
   - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {gen.c_lower_use});"
   - -}}
@@ -7672,6 +8013,7 @@ f_function_native*_pointer:
   intent: function
   comments:
   - Return a C pointer as a type(C_PTR).
+  - Call function and assign to a c variable.
   notes:
   - Pointer to scalar.
   - type(C_PTR) is returned instead of a cdesc argument.
@@ -7693,11 +8035,14 @@ f_function_native*_pointer:
   - ptr
   mixin_names:
   - '  f_mixin_function_c-ptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_need_wrapper: true
   owner: library
 f_function_native*_pointer_caller:
@@ -7705,6 +8050,7 @@ f_function_native*_pointer_caller:
   intent: function
   comments:
   - Return a C pointer as a type(C_PTR).
+  - Call function and assign to a c variable.
   notes:
   - Pointer to scalar.
   - type(C_PTR) is returned instead of a cdesc argument.
@@ -7726,11 +8072,14 @@ f_function_native*_pointer_caller:
   - ptr
   mixin_names:
   - '  f_mixin_function_c-ptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_need_wrapper: true
   owner: library
 f_function_native*_raw:
@@ -7738,6 +8087,7 @@ f_function_native*_raw:
   intent: function
   comments:
   - Return a C pointer directly as type(C_PTR).
+  - Call function and assign to a c variable.
   f_dummy_decl:
   - 'type(C_PTR) :: {f_var}'
   f_module:
@@ -7745,18 +8095,22 @@ f_function_native*_raw:
     - C_PTR
   mixin_names:
   - '  f_mixin_function_ptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 f_function_native*_scalar:
   name: f_function_native*_scalar
   intent: function
   comments:
-  - Call a function.
+  - Call a function in Fortran wrapper.
   - Declare a Fortran variable.
+  - Call function and assign to a c variable.
   notes:
   - Return a scalar to avoid doing the deref in Fortran.
   f_dummy_decl:
@@ -7771,12 +8125,15 @@ f_function_native*_scalar:
   - '  f_mixin_function'
   - '  f_mixin_declare-local-variable'
   - '  c_mixin_declare-fortran-result'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - '{i_type} :: {i_var}'
   i_module:
     '{i_module_name}':
     - '{i_kind}'
   c_return_type: '{c_type}'
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_return:
   - return *{cxx_var};
   c_need_wrapper: true
@@ -7816,7 +8173,7 @@ f_function_shadow&_capsule:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -7861,7 +8218,7 @@ f_function_shadow&_capsule_caller:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -7906,7 +8263,7 @@ f_function_shadow&_capsule_library:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -7951,7 +8308,7 @@ f_function_shadow*_capsule:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -7996,7 +8353,7 @@ f_function_shadow*_capsule_caller:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -8041,7 +8398,7 @@ f_function_shadow*_capsule_library:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -8207,7 +8564,7 @@ f_function_smartptr<shadow>*_capsule:
   c_prototype:
   - '{c_type} *{c_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
@@ -8322,7 +8679,7 @@ f_function_string&_buf:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -8400,7 +8757,7 @@ f_function_string&_buf_arg:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -8551,7 +8908,7 @@ f_function_string&_buf_copy:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -8647,6 +9004,7 @@ f_function_string&_cdesc_allocatable:
   - Pass cdesc as argument to C wrapper.
   - Pass capsule as argument to C wrapper.
   - Create a local Fortran capsule.
+  - Call function and assign to a local C++ variable.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign to local capsule variable in C wrapper.
@@ -8677,6 +9035,7 @@ f_function_string&_cdesc_allocatable:
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_capsule_pass'
   - '    c_mixin_capsule_pass'
+  - '  c_mixin_function-assign-to-local'
   - '  c_mixin_cdesc_function_string'
   - '  c_mixin_capsule_fill_native'
   - '  f_mixin_cdesc_char_allocate'
@@ -8694,6 +9053,8 @@ f_function_string&_cdesc_allocatable:
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
   - '{C_capsule_data_type} *{c_var_capsule}'
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
@@ -8701,6 +9062,8 @@ f_function_string&_cdesc_allocatable:
   c_temps:
   - cdesc
   - capsule
+  c_local:
+  - cxx
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -8720,6 +9083,7 @@ f_function_string&_cdesc_allocatable_caller:
   - Pass cdesc as argument to C wrapper.
   - Pass capsule as argument to C wrapper.
   - Create a local Fortran capsule.
+  - Call function and assign to a local C++ variable.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign to local capsule variable in C wrapper.
@@ -8750,6 +9114,7 @@ f_function_string&_cdesc_allocatable_caller:
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_capsule_pass'
   - '    c_mixin_capsule_pass'
+  - '  c_mixin_function-assign-to-local'
   - '  c_mixin_cdesc_function_string'
   - '  c_mixin_capsule_fill_native'
   - '  f_mixin_cdesc_char_allocate'
@@ -8767,6 +9132,8 @@ f_function_string&_cdesc_allocatable_caller:
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
   - '{C_capsule_data_type} *{c_var_capsule}'
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
@@ -8774,6 +9141,8 @@ f_function_string&_cdesc_allocatable_caller:
   c_temps:
   - cdesc
   - capsule
+  c_local:
+  - cxx
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -8793,6 +9162,7 @@ f_function_string&_cdesc_allocatable_library:
   - Pass cdesc as argument to C wrapper.
   - Pass capsule as argument to C wrapper.
   - Create a local Fortran capsule.
+  - Call function and assign to a local C++ variable.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign to local capsule variable in C wrapper.
@@ -8823,6 +9193,7 @@ f_function_string&_cdesc_allocatable_library:
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_capsule_pass'
   - '    c_mixin_capsule_pass'
+  - '  c_mixin_function-assign-to-local'
   - '  c_mixin_cdesc_function_string'
   - '  c_mixin_capsule_fill_native'
   - '  f_mixin_cdesc_char_allocate'
@@ -8840,6 +9211,8 @@ f_function_string&_cdesc_allocatable_library:
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
   - '{C_capsule_data_type} *{c_var_capsule}'
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
@@ -8847,6 +9220,8 @@ f_function_string&_cdesc_allocatable_library:
   c_temps:
   - cdesc
   - capsule
+  c_local:
+  - cxx
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -8864,6 +9239,7 @@ f_function_string&_cdesc_pointer:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
+  - Call function and assign to a local C++ variable.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
@@ -8887,6 +9263,7 @@ f_function_string&_cdesc_pointer:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
+  - '  c_mixin_function-assign-to-local'
   - '  c_mixin_cdesc_function_string'
   - '  f_mixin_cdesc_char_pointer'
   i_dummy_arg:
@@ -8898,10 +9275,14 @@ f_function_string&_cdesc_pointer:
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_temps:
   - cdesc
+  c_local:
+  - cxx
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -8916,6 +9297,7 @@ f_function_string&_cdesc_pointer_caller:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
+  - Call function and assign to a local C++ variable.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
@@ -8939,6 +9321,7 @@ f_function_string&_cdesc_pointer_caller:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
+  - '  c_mixin_function-assign-to-local'
   - '  c_mixin_cdesc_function_string'
   - '  f_mixin_cdesc_char_pointer'
   i_dummy_arg:
@@ -8950,10 +9333,14 @@ f_function_string&_cdesc_pointer_caller:
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_temps:
   - cdesc
+  c_local:
+  - cxx
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -8968,6 +9355,7 @@ f_function_string&_cdesc_pointer_library:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
+  - Call function and assign to a local C++ variable.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
@@ -8991,6 +9379,7 @@ f_function_string&_cdesc_pointer_library:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
+  - '  c_mixin_function-assign-to-local'
   - '  c_mixin_cdesc_function_string'
   - '  f_mixin_cdesc_char_pointer'
   i_dummy_arg:
@@ -9002,10 +9391,14 @@ f_function_string&_cdesc_pointer_library:
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_temps:
   - cdesc
+  c_local:
+  - cxx
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -9020,6 +9413,7 @@ f_function_string&_cfi_allocatable:
   comments:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
+  - Call function and assign to a local C++ variable.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_arg_call:
@@ -9035,7 +9429,8 @@ f_function_string&_cfi_allocatable:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
-  - '  c_mixin_header_string'
+  - '  c_mixin_header_cstring'
+  - '  c_mixin_function-assign-to-local'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -9043,14 +9438,19 @@ f_function_string&_cfi_allocatable:
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
-    \ 0, \t{cxx_var}{cxx_member}length());"
+    \ 0, \t{c_local_cxx}{cxx_member}length());"
   - if (SH_ret == CFI_SUCCESS) {{+
-  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}{cxx_member}data(), \t{cxx_var}{cxx_member}length());"
+  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{c_local_cxx}{cxx_member}data(), \t\
+    {c_local_cxx}{cxx_member}length());"
   - -}}
   c_temps:
   - cfi
+  c_local:
+  - cxx
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -9065,6 +9465,7 @@ f_function_string&_cfi_allocatable_caller:
   comments:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
+  - Call function and assign to a local C++ variable.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_arg_call:
@@ -9080,7 +9481,8 @@ f_function_string&_cfi_allocatable_caller:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
-  - '  c_mixin_header_string'
+  - '  c_mixin_header_cstring'
+  - '  c_mixin_function-assign-to-local'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -9088,14 +9490,19 @@ f_function_string&_cfi_allocatable_caller:
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
-    \ 0, \t{cxx_var}{cxx_member}length());"
+    \ 0, \t{c_local_cxx}{cxx_member}length());"
   - if (SH_ret == CFI_SUCCESS) {{+
-  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}{cxx_member}data(), \t{cxx_var}{cxx_member}length());"
+  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{c_local_cxx}{cxx_member}data(), \t\
+    {c_local_cxx}{cxx_member}length());"
   - -}}
   c_temps:
   - cfi
+  c_local:
+  - cxx
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -9110,6 +9517,7 @@ f_function_string&_cfi_allocatable_library:
   comments:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
+  - Call function and assign to a local C++ variable.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_arg_call:
@@ -9125,7 +9533,8 @@ f_function_string&_cfi_allocatable_library:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
-  - '  c_mixin_header_string'
+  - '  c_mixin_header_cstring'
+  - '  c_mixin_function-assign-to-local'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -9133,14 +9542,19 @@ f_function_string&_cfi_allocatable_library:
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
-    \ 0, \t{cxx_var}{cxx_member}length());"
+    \ 0, \t{c_local_cxx}{cxx_member}length());"
   - if (SH_ret == CFI_SUCCESS) {{+
-  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}{cxx_member}data(), \t{cxx_var}{cxx_member}length());"
+  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{c_local_cxx}{cxx_member}data(), \t\
+    {c_local_cxx}{cxx_member}length());"
   - -}}
   c_temps:
   - cfi
+  c_local:
+  - cxx
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -9194,7 +9608,7 @@ f_function_string&_cfi_arg:
   c_arg_call:
   - '{c_local_cxx}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   - if ({c_local_cxx}{cxx_member}empty()) {{+
@@ -9261,7 +9675,7 @@ f_function_string&_cfi_copy:
   c_arg_call:
   - '{c_local_cxx}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   - if ({c_local_cxx}{cxx_member}empty()) {{+
@@ -9288,9 +9702,11 @@ f_function_string&_cfi_pointer:
   comments:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
+  - Call function and assign to a local C++ variable.
   notes:
   - XXX - consolidate with c_function*_cfi_pointer?
   - XXX - via a helper to get address and length of string
+  - XXX - c_local cxx is in c_mixin_function-assign-to-local
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_arg_call:
@@ -9306,6 +9722,7 @@ f_function_string&_cfi_pointer:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
+  - '  c_mixin_function-assign-to-local'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -9313,15 +9730,17 @@ f_function_string&_cfi_pointer:
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - int {c_local_err};
-  - if ({cxx_var} == {nullptr}) {{+
+  - if ({c_local_cxx} == {nullptr}) {{+
   - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});"
   - -}} else {{+
   - CFI_CDESC_T(0) {c_local_fptr};
   - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
-  - void *{c_local_cptr} = const_cast<char *>({cxx_var}{cxx_member}data());
-  - size_t {c_local_len} = {cxx_var}{cxx_member}length();
+  - void *{c_local_cptr} = const_cast<char *>({c_local_cxx}{cxx_member}data());
+  - size_t {c_local_len} = {c_local_cxx}{cxx_member}length();
   - "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t\
     \ CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});"
   - if ({c_local_err} == CFI_SUCCESS) {{+
@@ -9332,6 +9751,7 @@ f_function_string&_cfi_pointer:
   c_temps:
   - cfi
   c_local:
+  - cxx
   - cptr
   - fptr
   - cdesc
@@ -9349,9 +9769,11 @@ f_function_string&_cfi_pointer_caller:
   comments:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
+  - Call function and assign to a local C++ variable.
   notes:
   - XXX - consolidate with c_function*_cfi_pointer?
   - XXX - via a helper to get address and length of string
+  - XXX - c_local cxx is in c_mixin_function-assign-to-local
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_arg_call:
@@ -9367,6 +9789,7 @@ f_function_string&_cfi_pointer_caller:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
+  - '  c_mixin_function-assign-to-local'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -9374,15 +9797,17 @@ f_function_string&_cfi_pointer_caller:
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - int {c_local_err};
-  - if ({cxx_var} == {nullptr}) {{+
+  - if ({c_local_cxx} == {nullptr}) {{+
   - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});"
   - -}} else {{+
   - CFI_CDESC_T(0) {c_local_fptr};
   - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
-  - void *{c_local_cptr} = const_cast<char *>({cxx_var}{cxx_member}data());
-  - size_t {c_local_len} = {cxx_var}{cxx_member}length();
+  - void *{c_local_cptr} = const_cast<char *>({c_local_cxx}{cxx_member}data());
+  - size_t {c_local_len} = {c_local_cxx}{cxx_member}length();
   - "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t\
     \ CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});"
   - if ({c_local_err} == CFI_SUCCESS) {{+
@@ -9393,6 +9818,7 @@ f_function_string&_cfi_pointer_caller:
   c_temps:
   - cfi
   c_local:
+  - cxx
   - cptr
   - fptr
   - cdesc
@@ -9410,9 +9836,11 @@ f_function_string&_cfi_pointer_library:
   comments:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
+  - Call function and assign to a local C++ variable.
   notes:
   - XXX - consolidate with c_function*_cfi_pointer?
   - XXX - via a helper to get address and length of string
+  - XXX - c_local cxx is in c_mixin_function-assign-to-local
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_arg_call:
@@ -9428,6 +9856,7 @@ f_function_string&_cfi_pointer_library:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
+  - '  c_mixin_function-assign-to-local'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -9435,15 +9864,17 @@ f_function_string&_cfi_pointer_library:
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - int {c_local_err};
-  - if ({cxx_var} == {nullptr}) {{+
+  - if ({c_local_cxx} == {nullptr}) {{+
   - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});"
   - -}} else {{+
   - CFI_CDESC_T(0) {c_local_fptr};
   - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
-  - void *{c_local_cptr} = const_cast<char *>({cxx_var}{cxx_member}data());
-  - size_t {c_local_len} = {cxx_var}{cxx_member}length();
+  - void *{c_local_cptr} = const_cast<char *>({c_local_cxx}{cxx_member}data());
+  - size_t {c_local_len} = {c_local_cxx}{cxx_member}length();
   - "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t\
     \ CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});"
   - if ({c_local_err} == CFI_SUCCESS) {{+
@@ -9454,6 +9885,7 @@ f_function_string&_cfi_pointer_library:
   c_temps:
   - cfi
   c_local:
+  - cxx
   - cptr
   - fptr
   - cdesc
@@ -9522,7 +9954,7 @@ f_function_string*_buf:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -9667,7 +10099,7 @@ f_function_string*_buf_copy:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -9763,6 +10195,7 @@ f_function_string*_cdesc_allocatable:
   - Pass cdesc as argument to C wrapper.
   - Pass capsule as argument to C wrapper.
   - Create a local Fortran capsule.
+  - Call function and assign to a local C++ variable.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign to local capsule variable in C wrapper.
@@ -9793,6 +10226,7 @@ f_function_string*_cdesc_allocatable:
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_capsule_pass'
   - '    c_mixin_capsule_pass'
+  - '  c_mixin_function-assign-to-local'
   - '  c_mixin_cdesc_function_string'
   - '  c_mixin_capsule_fill_native'
   - '  f_mixin_cdesc_char_allocate'
@@ -9810,6 +10244,8 @@ f_function_string*_cdesc_allocatable:
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
   - '{C_capsule_data_type} *{c_var_capsule}'
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
@@ -9817,6 +10253,8 @@ f_function_string*_cdesc_allocatable:
   c_temps:
   - cdesc
   - capsule
+  c_local:
+  - cxx
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -9836,6 +10274,7 @@ f_function_string*_cdesc_allocatable_caller:
   - Pass cdesc as argument to C wrapper.
   - Pass capsule as argument to C wrapper.
   - Create a local Fortran capsule.
+  - Call function and assign to a local C++ variable.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign to local capsule variable in C wrapper.
@@ -9866,6 +10305,7 @@ f_function_string*_cdesc_allocatable_caller:
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_capsule_pass'
   - '    c_mixin_capsule_pass'
+  - '  c_mixin_function-assign-to-local'
   - '  c_mixin_cdesc_function_string'
   - '  c_mixin_capsule_fill_native'
   - '  f_mixin_cdesc_char_allocate'
@@ -9883,6 +10323,8 @@ f_function_string*_cdesc_allocatable_caller:
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
   - '{C_capsule_data_type} *{c_var_capsule}'
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
@@ -9890,6 +10332,8 @@ f_function_string*_cdesc_allocatable_caller:
   c_temps:
   - cdesc
   - capsule
+  c_local:
+  - cxx
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -9909,6 +10353,7 @@ f_function_string*_cdesc_allocatable_library:
   - Pass cdesc as argument to C wrapper.
   - Pass capsule as argument to C wrapper.
   - Create a local Fortran capsule.
+  - Call function and assign to a local C++ variable.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign to local capsule variable in C wrapper.
@@ -9939,6 +10384,7 @@ f_function_string*_cdesc_allocatable_library:
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_capsule_pass'
   - '    c_mixin_capsule_pass'
+  - '  c_mixin_function-assign-to-local'
   - '  c_mixin_cdesc_function_string'
   - '  c_mixin_capsule_fill_native'
   - '  f_mixin_cdesc_char_allocate'
@@ -9956,6 +10402,8 @@ f_function_string*_cdesc_allocatable_library:
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
   - '{C_capsule_data_type} *{c_var_capsule}'
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
@@ -9963,6 +10411,8 @@ f_function_string*_cdesc_allocatable_library:
   c_temps:
   - cdesc
   - capsule
+  c_local:
+  - cxx
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -9980,6 +10430,7 @@ f_function_string*_cdesc_pointer:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
+  - Call function and assign to a local C++ variable.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
@@ -10003,6 +10454,7 @@ f_function_string*_cdesc_pointer:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
+  - '  c_mixin_function-assign-to-local'
   - '  c_mixin_cdesc_function_string'
   - '  f_mixin_cdesc_char_pointer'
   i_dummy_arg:
@@ -10014,10 +10466,14 @@ f_function_string*_cdesc_pointer:
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_temps:
   - cdesc
+  c_local:
+  - cxx
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -10032,6 +10488,7 @@ f_function_string*_cdesc_pointer_caller:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
+  - Call function and assign to a local C++ variable.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
@@ -10055,6 +10512,7 @@ f_function_string*_cdesc_pointer_caller:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
+  - '  c_mixin_function-assign-to-local'
   - '  c_mixin_cdesc_function_string'
   - '  f_mixin_cdesc_char_pointer'
   i_dummy_arg:
@@ -10066,10 +10524,14 @@ f_function_string*_cdesc_pointer_caller:
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_temps:
   - cdesc
+  c_local:
+  - cxx
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -10084,6 +10546,7 @@ f_function_string*_cdesc_pointer_library:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
+  - Call function and assign to a local C++ variable.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
@@ -10107,6 +10570,7 @@ f_function_string*_cdesc_pointer_library:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
+  - '  c_mixin_function-assign-to-local'
   - '  c_mixin_cdesc_function_string'
   - '  f_mixin_cdesc_char_pointer'
   i_dummy_arg:
@@ -10118,10 +10582,14 @@ f_function_string*_cdesc_pointer_library:
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_temps:
   - cdesc
+  c_local:
+  - cxx
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -10136,6 +10604,7 @@ f_function_string*_cfi_allocatable:
   comments:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
+  - Call function and assign to a local C++ variable.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_arg_call:
@@ -10151,7 +10620,8 @@ f_function_string*_cfi_allocatable:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
-  - '  c_mixin_header_string'
+  - '  c_mixin_header_cstring'
+  - '  c_mixin_function-assign-to-local'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -10159,14 +10629,19 @@ f_function_string*_cfi_allocatable:
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
-    \ 0, \t{cxx_var}{cxx_member}length());"
+    \ 0, \t{c_local_cxx}{cxx_member}length());"
   - if (SH_ret == CFI_SUCCESS) {{+
-  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}{cxx_member}data(), \t{cxx_var}{cxx_member}length());"
+  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{c_local_cxx}{cxx_member}data(), \t\
+    {c_local_cxx}{cxx_member}length());"
   - -}}
   c_temps:
   - cfi
+  c_local:
+  - cxx
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -10181,6 +10656,7 @@ f_function_string*_cfi_allocatable_caller:
   comments:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
+  - Call function and assign to a local C++ variable.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_arg_call:
@@ -10196,7 +10672,8 @@ f_function_string*_cfi_allocatable_caller:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
-  - '  c_mixin_header_string'
+  - '  c_mixin_header_cstring'
+  - '  c_mixin_function-assign-to-local'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -10204,14 +10681,19 @@ f_function_string*_cfi_allocatable_caller:
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
-    \ 0, \t{cxx_var}{cxx_member}length());"
+    \ 0, \t{c_local_cxx}{cxx_member}length());"
   - if (SH_ret == CFI_SUCCESS) {{+
-  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}{cxx_member}data(), \t{cxx_var}{cxx_member}length());"
+  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{c_local_cxx}{cxx_member}data(), \t\
+    {c_local_cxx}{cxx_member}length());"
   - -}}
   c_temps:
   - cfi
+  c_local:
+  - cxx
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -10226,6 +10708,7 @@ f_function_string*_cfi_allocatable_library:
   comments:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
+  - Call function and assign to a local C++ variable.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_arg_call:
@@ -10241,7 +10724,8 @@ f_function_string*_cfi_allocatable_library:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
-  - '  c_mixin_header_string'
+  - '  c_mixin_header_cstring'
+  - '  c_mixin_function-assign-to-local'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -10249,14 +10733,19 @@ f_function_string*_cfi_allocatable_library:
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
-    \ 0, \t{cxx_var}{cxx_member}length());"
+    \ 0, \t{c_local_cxx}{cxx_member}length());"
   - if (SH_ret == CFI_SUCCESS) {{+
-  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}{cxx_member}data(), \t{cxx_var}{cxx_member}length());"
+  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{c_local_cxx}{cxx_member}data(), \t\
+    {c_local_cxx}{cxx_member}length());"
   - -}}
   c_temps:
   - cfi
+  c_local:
+  - cxx
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -10308,7 +10797,7 @@ f_function_string*_cfi_copy:
   c_arg_call:
   - '{c_local_cxx}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   - if ({c_local_cxx}{cxx_member}empty()) {{+
@@ -10335,9 +10824,11 @@ f_function_string*_cfi_pointer:
   comments:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
+  - Call function and assign to a local C++ variable.
   notes:
   - XXX - consolidate with c_function*_cfi_pointer?
   - XXX - via a helper to get address and length of string
+  - XXX - c_local cxx is in c_mixin_function-assign-to-local
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_arg_call:
@@ -10353,6 +10844,7 @@ f_function_string*_cfi_pointer:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
+  - '  c_mixin_function-assign-to-local'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -10360,15 +10852,17 @@ f_function_string*_cfi_pointer:
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - int {c_local_err};
-  - if ({cxx_var} == {nullptr}) {{+
+  - if ({c_local_cxx} == {nullptr}) {{+
   - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});"
   - -}} else {{+
   - CFI_CDESC_T(0) {c_local_fptr};
   - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
-  - void *{c_local_cptr} = const_cast<char *>({cxx_var}{cxx_member}data());
-  - size_t {c_local_len} = {cxx_var}{cxx_member}length();
+  - void *{c_local_cptr} = const_cast<char *>({c_local_cxx}{cxx_member}data());
+  - size_t {c_local_len} = {c_local_cxx}{cxx_member}length();
   - "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t\
     \ CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});"
   - if ({c_local_err} == CFI_SUCCESS) {{+
@@ -10379,6 +10873,7 @@ f_function_string*_cfi_pointer:
   c_temps:
   - cfi
   c_local:
+  - cxx
   - cptr
   - fptr
   - cdesc
@@ -10396,9 +10891,11 @@ f_function_string*_cfi_pointer_caller:
   comments:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
+  - Call function and assign to a local C++ variable.
   notes:
   - XXX - consolidate with c_function*_cfi_pointer?
   - XXX - via a helper to get address and length of string
+  - XXX - c_local cxx is in c_mixin_function-assign-to-local
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_arg_call:
@@ -10414,6 +10911,7 @@ f_function_string*_cfi_pointer_caller:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
+  - '  c_mixin_function-assign-to-local'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -10421,15 +10919,17 @@ f_function_string*_cfi_pointer_caller:
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - int {c_local_err};
-  - if ({cxx_var} == {nullptr}) {{+
+  - if ({c_local_cxx} == {nullptr}) {{+
   - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});"
   - -}} else {{+
   - CFI_CDESC_T(0) {c_local_fptr};
   - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
-  - void *{c_local_cptr} = const_cast<char *>({cxx_var}{cxx_member}data());
-  - size_t {c_local_len} = {cxx_var}{cxx_member}length();
+  - void *{c_local_cptr} = const_cast<char *>({c_local_cxx}{cxx_member}data());
+  - size_t {c_local_len} = {c_local_cxx}{cxx_member}length();
   - "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t\
     \ CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});"
   - if ({c_local_err} == CFI_SUCCESS) {{+
@@ -10440,6 +10940,7 @@ f_function_string*_cfi_pointer_caller:
   c_temps:
   - cfi
   c_local:
+  - cxx
   - cptr
   - fptr
   - cdesc
@@ -10457,9 +10958,11 @@ f_function_string*_cfi_pointer_library:
   comments:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
+  - Call function and assign to a local C++ variable.
   notes:
   - XXX - consolidate with c_function*_cfi_pointer?
   - XXX - via a helper to get address and length of string
+  - XXX - c_local cxx is in c_mixin_function-assign-to-local
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_arg_call:
@@ -10475,6 +10978,7 @@ f_function_string*_cfi_pointer_library:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
+  - '  c_mixin_function-assign-to-local'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -10482,15 +10986,17 @@ f_function_string*_cfi_pointer_library:
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - int {c_local_err};
-  - if ({cxx_var} == {nullptr}) {{+
+  - if ({c_local_cxx} == {nullptr}) {{+
   - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});"
   - -}} else {{+
   - CFI_CDESC_T(0) {c_local_fptr};
   - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
-  - void *{c_local_cptr} = const_cast<char *>({cxx_var}{cxx_member}data());
-  - size_t {c_local_len} = {cxx_var}{cxx_member}length();
+  - void *{c_local_cptr} = const_cast<char *>({c_local_cxx}{cxx_member}data());
+  - size_t {c_local_len} = {c_local_cxx}{cxx_member}length();
   - "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t\
     \ CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});"
   - if ({c_local_err} == CFI_SUCCESS) {{+
@@ -10501,6 +11007,7 @@ f_function_string*_cfi_pointer_library:
   c_temps:
   - cfi
   c_local:
+  - cxx
   - cptr
   - fptr
   - cdesc
@@ -10569,7 +11076,7 @@ f_function_string_buf:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -10647,7 +11154,7 @@ f_function_string_buf_arg:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -10798,7 +11305,7 @@ f_function_string_buf_copy:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -11156,6 +11663,7 @@ f_function_string_cfi_allocatable:
   comments:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
+  - Call function and assign to a local C++ variable.
   notes:
   - std::string & function()
   f_dummy_decl:
@@ -11173,6 +11681,8 @@ f_function_string_cfi_allocatable:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
+  - '  c_mixin_header_cstring'
+  - '  c_mixin_function-assign-to-local'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -11180,19 +11690,25 @@ f_function_string_cfi_allocatable:
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
-    \ 0, \t{cxx_var}.length());"
+    \ 0, \t{c_local_cxx}.length());"
   - if (SH_ret == CFI_SUCCESS) {{+
-  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}.data(), \t{c_var_cfi}->elem_len);"
+  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{c_local_cxx}.data(), \t{c_var_cfi}->elem_len);"
   - -}}
   c_temps:
   - cfi
+  c_local:
+  - cxx
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
   iface_header:
   - ISO_Fortran_binding.h
+  impl_header:
+  - <cstring>
   owner: library
 f_function_string_cfi_allocatable_caller:
   name: f_function_string_cfi_allocatable_caller
@@ -11200,6 +11716,7 @@ f_function_string_cfi_allocatable_caller:
   comments:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
+  - Call function and assign to a local C++ variable.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_arg_call:
@@ -11215,7 +11732,8 @@ f_function_string_cfi_allocatable_caller:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
-  - '  c_mixin_header_string'
+  - '  c_mixin_header_cstring'
+  - '  c_mixin_function-assign-to-local'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -11223,14 +11741,19 @@ f_function_string_cfi_allocatable_caller:
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
-    \ 0, \t{cxx_var}{cxx_member}length());"
+    \ 0, \t{c_local_cxx}{cxx_member}length());"
   - if (SH_ret == CFI_SUCCESS) {{+
-  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}{cxx_member}data(), \t{cxx_var}{cxx_member}length());"
+  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{c_local_cxx}{cxx_member}data(), \t\
+    {c_local_cxx}{cxx_member}length());"
   - -}}
   c_temps:
   - cfi
+  c_local:
+  - cxx
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -11245,6 +11768,7 @@ f_function_string_cfi_allocatable_library:
   comments:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
+  - Call function and assign to a local C++ variable.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_arg_call:
@@ -11260,7 +11784,8 @@ f_function_string_cfi_allocatable_library:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
-  - '  c_mixin_header_string'
+  - '  c_mixin_header_cstring'
+  - '  c_mixin_function-assign-to-local'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -11268,14 +11793,19 @@ f_function_string_cfi_allocatable_library:
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
-    \ 0, \t{cxx_var}{cxx_member}length());"
+    \ 0, \t{c_local_cxx}{cxx_member}length());"
   - if (SH_ret == CFI_SUCCESS) {{+
-  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}{cxx_member}data(), \t{cxx_var}{cxx_member}length());"
+  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{c_local_cxx}{cxx_member}data(), \t\
+    {c_local_cxx}{cxx_member}length());"
   - -}}
   c_temps:
   - cfi
+  c_local:
+  - cxx
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -11329,7 +11859,7 @@ f_function_string_cfi_arg:
   c_arg_call:
   - '{c_local_cxx}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   - if ({c_local_cxx}{cxx_member}empty()) {{+
@@ -11396,7 +11926,7 @@ f_function_string_cfi_copy:
   c_arg_call:
   - '{c_local_cxx}'
   c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   - if ({c_local_cxx}{cxx_member}empty()) {{+
@@ -11423,9 +11953,11 @@ f_function_string_cfi_pointer:
   comments:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
+  - Call function and assign to a local C++ variable.
   notes:
   - XXX - consolidate with c_function*_cfi_pointer?
   - XXX - via a helper to get address and length of string
+  - XXX - c_local cxx is in c_mixin_function-assign-to-local
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_arg_call:
@@ -11441,6 +11973,7 @@ f_function_string_cfi_pointer:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
+  - '  c_mixin_function-assign-to-local'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -11448,15 +11981,17 @@ f_function_string_cfi_pointer:
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - int {c_local_err};
-  - if ({cxx_var} == {nullptr}) {{+
+  - if ({c_local_cxx} == {nullptr}) {{+
   - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});"
   - -}} else {{+
   - CFI_CDESC_T(0) {c_local_fptr};
   - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
-  - void *{c_local_cptr} = const_cast<char *>({cxx_var}{cxx_member}data());
-  - size_t {c_local_len} = {cxx_var}{cxx_member}length();
+  - void *{c_local_cptr} = const_cast<char *>({c_local_cxx}{cxx_member}data());
+  - size_t {c_local_len} = {c_local_cxx}{cxx_member}length();
   - "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t\
     \ CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});"
   - if ({c_local_err} == CFI_SUCCESS) {{+
@@ -11467,6 +12002,7 @@ f_function_string_cfi_pointer:
   c_temps:
   - cfi
   c_local:
+  - cxx
   - cptr
   - fptr
   - cdesc
@@ -11484,9 +12020,11 @@ f_function_string_cfi_pointer_caller:
   comments:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
+  - Call function and assign to a local C++ variable.
   notes:
   - XXX - consolidate with c_function*_cfi_pointer?
   - XXX - via a helper to get address and length of string
+  - XXX - c_local cxx is in c_mixin_function-assign-to-local
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_arg_call:
@@ -11502,6 +12040,7 @@ f_function_string_cfi_pointer_caller:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
+  - '  c_mixin_function-assign-to-local'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -11509,15 +12048,17 @@ f_function_string_cfi_pointer_caller:
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - int {c_local_err};
-  - if ({cxx_var} == {nullptr}) {{+
+  - if ({c_local_cxx} == {nullptr}) {{+
   - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});"
   - -}} else {{+
   - CFI_CDESC_T(0) {c_local_fptr};
   - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
-  - void *{c_local_cptr} = const_cast<char *>({cxx_var}{cxx_member}data());
-  - size_t {c_local_len} = {cxx_var}{cxx_member}length();
+  - void *{c_local_cptr} = const_cast<char *>({c_local_cxx}{cxx_member}data());
+  - size_t {c_local_len} = {c_local_cxx}{cxx_member}length();
   - "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t\
     \ CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});"
   - if ({c_local_err} == CFI_SUCCESS) {{+
@@ -11528,6 +12069,7 @@ f_function_string_cfi_pointer_caller:
   c_temps:
   - cfi
   c_local:
+  - cxx
   - cptr
   - fptr
   - cdesc
@@ -11545,9 +12087,11 @@ f_function_string_cfi_pointer_library:
   comments:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
+  - Call function and assign to a local C++ variable.
   notes:
   - XXX - consolidate with c_function*_cfi_pointer?
   - XXX - via a helper to get address and length of string
+  - XXX - c_local cxx is in c_mixin_function-assign-to-local
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_arg_call:
@@ -11563,6 +12107,7 @@ f_function_string_cfi_pointer_library:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
+  - '  c_mixin_function-assign-to-local'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -11570,15 +12115,17 @@ f_function_string_cfi_pointer_library:
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - int {c_local_err};
-  - if ({cxx_var} == {nullptr}) {{+
+  - if ({c_local_cxx} == {nullptr}) {{+
   - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});"
   - -}} else {{+
   - CFI_CDESC_T(0) {c_local_fptr};
   - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
-  - void *{c_local_cptr} = const_cast<char *>({cxx_var}{cxx_member}data());
-  - size_t {c_local_len} = {cxx_var}{cxx_member}length();
+  - void *{c_local_cptr} = const_cast<char *>({c_local_cxx}{cxx_member}data());
+  - size_t {c_local_len} = {c_local_cxx}{cxx_member}length();
   - "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t\
     \ CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});"
   - if ({c_local_err} == CFI_SUCCESS) {{+
@@ -11589,6 +12136,7 @@ f_function_string_cfi_pointer_library:
   c_temps:
   - cfi
   c_local:
+  - cxx
   - cptr
   - fptr
   - cdesc
@@ -11633,6 +12181,7 @@ f_function_struct:
   - '{c_type} *{c_var}'
   c_call:
   - '*{c_var} = {C_call_function};'
+  c_need_wrapper: true
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -11643,6 +12192,7 @@ f_function_struct*_cdesc_pointer:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
+  - Call function and assign to a c variable.
   - Fill cdesc from native in the C wrapper.
   - Set Fortran pointer to native array.
   f_dummy_decl:
@@ -11667,6 +12217,7 @@ f_function_struct*_cdesc_pointer:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
+  - '  c_mixin_function-assign-to-cvar'
   - '  c_mixin_cdesc_native_fill'
   - '  f_mixin_cdesc_native_pointer'
   i_dummy_arg:
@@ -11678,9 +12229,11 @@ f_function_struct*_cdesc_pointer:
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
   - '{c_var_cdesc}->size = {gen.c_array_size};'
@@ -11697,6 +12250,7 @@ f_function_struct*_pointer:
   intent: function
   comments:
   - Return a C pointer as a type(C_PTR).
+  - Call function and assign to a c variable.
   notes:
   - C++ pointer -> void pointer -> C pointer.
   f_dummy_decl:
@@ -11717,11 +12271,14 @@ f_function_struct*_pointer:
   - ptr
   mixin_names:
   - '  f_mixin_function_c-ptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_need_wrapper: true
   owner: library
 f_function_vector<native>_cdesc_allocatable:
@@ -11809,6 +12366,7 @@ f_function_void*:
   intent: function
   comments:
   - Declare a Fortran variable.
+  - Call function and assign to a c variable.
   notes:
   - XXX - f entries are the same as the i entries, share?
   f_dummy_decl:
@@ -11819,11 +12377,14 @@ f_function_void*:
     - '{f_kind}'
   mixin_names:
   - '  f_mixin_declare-local-variable'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 f_getter_bool:
   name: f_getter_bool
@@ -11872,6 +12433,7 @@ f_getter_native:
   - // skip call c_getter
   c_return:
   - return {CXX_this}->{field_name};
+  c_need_wrapper: true
   owner: library
 f_getter_native*_cdesc_pointer:
   name: f_getter_native*_cdesc_pointer
@@ -11919,12 +12481,13 @@ f_getter_native*_cdesc_pointer:
   - '{C_array_type} *{c_var_cdesc}'
   c_call:
   - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
   - '{c_var_cdesc}->size = {gen.c_array_size};'
   c_temps:
   - cdesc
+  c_need_wrapper: true
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -11955,6 +12518,7 @@ f_getter_native*_pointer:
   - // skip call c_getter
   c_return:
   - return {CXX_this}->{field_name};
+  c_need_wrapper: true
   owner: library
 f_getter_string_cdesc_allocatable:
   name: f_getter_string_cdesc_allocatable
@@ -12051,12 +12615,13 @@ f_getter_struct**_cdesc_raw:
   - '{C_array_type} *{c_var_cdesc}'
   c_call:
   - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
   - '{c_var_cdesc}->size = {gen.c_array_size};'
   c_temps:
   - cdesc
+  c_need_wrapper: true
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -12110,12 +12675,13 @@ f_getter_struct*_cdesc_pointer:
   - '{C_array_type} *{c_var_cdesc}'
   c_call:
   - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
   - '{c_var_cdesc}->size = {gen.c_array_size};'
   c_temps:
   - cdesc
+  c_need_wrapper: true
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -12685,7 +13251,7 @@ f_in_native*_cdesc:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
-  - '{f_var_cdesc}%type = {sh_type}'
+  - '{f_var_cdesc}%type = {typemap.sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
   - '{f_var_cdesc}%size = {size}'
   - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
@@ -14032,7 +14598,7 @@ f_in_void*_cdesc:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
-  - '{f_var_cdesc}%type = {sh_type}'
+  - '{f_var_cdesc}%type = {typemap.sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
   - '{f_var_cdesc}%size = {size}'
   - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
@@ -14420,7 +14986,7 @@ f_inout_native*_cdesc:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
-  - '{f_var_cdesc}%type = {sh_type}'
+  - '{f_var_cdesc}%type = {typemap.sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
   - '{f_var_cdesc}%size = {size}'
   - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
@@ -15332,7 +15898,7 @@ f_inout_void*_cdesc:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
-  - '{f_var_cdesc}%type = {sh_type}'
+  - '{f_var_cdesc}%type = {typemap.sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
   - '{f_var_cdesc}%size = {size}'
   - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
@@ -15615,10 +16181,11 @@ f_mixin_cdesc_getter:
   - along with shape information.
   c_call:
   - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
   - '{c_var_cdesc}->size = {gen.c_array_size};'
+  c_need_wrapper: true
   helper:
   - type_defines
   owner: library
@@ -15648,7 +16215,7 @@ f_mixin_cdesc_native_fill:
   - Fill cdesc from native in the Fortran wrapper.
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
-  - '{f_var_cdesc}%type = {sh_type}'
+  - '{f_var_cdesc}%type = {typemap.sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
   - '{f_var_cdesc}%size = {size}'
   - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
@@ -15874,7 +16441,7 @@ f_mixin_function:
   name: f_mixin_function
   intent: mixin
   comments:
-  - Call a function.
+  - Call a function in Fortran wrapper.
   f_call:
   - '{f_result_var} = {f_call_function}({F_arg_c_call})'
   owner: library
@@ -15981,6 +16548,7 @@ f_mixin_function_char:
   - char *{c_var}
   c_call:
   - '*{c_var} = {C_call_function};'
+  c_need_wrapper: true
   owner: library
 f_mixin_function_ptr:
   name: f_mixin_function_ptr
@@ -16352,6 +16920,8 @@ f_mixin_unknown:
   - ===>{i_var} i_result_decl<===
   c_prototype:
   - ===>{c_var} c_prototype<===
+  c_call:
+  - ===>{c_var} c_call<===
   owner: library
 f_none_bool:
   name: f_none_bool
@@ -16705,7 +17275,7 @@ f_out_char**_cdesc_pointer:
   - '&{cxx_var}'
   c_post_call:
   - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
   - '{c_var_cdesc}->size = 1;'
   - '{c_var_cdesc}->rank = 0;'
@@ -17080,7 +17650,7 @@ f_out_native*&_cdesc:
   - '{cxx_var}'
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
   - '{c_var_cdesc}->size = {gen.c_array_size};'
@@ -17136,7 +17706,7 @@ f_out_native*&_cdesc_pointer:
   - '{cxx_var}'
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
   - '{c_var_cdesc}->size = {gen.c_array_size};'
@@ -17249,7 +17819,7 @@ f_out_native**_cdesc_allocatable:
   - '&{cxx_var}'
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
   - '{c_var_cdesc}->size = {gen.c_array_size};'
@@ -17318,7 +17888,7 @@ f_out_native**_cdesc_pointer:
   - '&{cxx_var}'
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
   - '{c_var_cdesc}->size = {gen.c_array_size};'
@@ -17351,6 +17921,7 @@ f_out_native**_cfi_allocatable:
   - '  c_mixin_local-cxx-ptr'
   - '  c_mixin_arg-call-cxx-address'
   - '  c_mixin_cfi_native_allocatable'
+  - '    c_mixin_header_cstring'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -17382,6 +17953,8 @@ f_out_native**_cfi_allocatable:
   - lower_bounds_CFI
   iface_header:
   - ISO_Fortran_binding.h
+  impl_header:
+  - <cstring>
   owner: library
 f_out_native**_cfi_pointer:
   name: f_out_native**_cfi_pointer
@@ -17428,7 +18001,7 @@ f_out_native**_cfi_pointer:
   - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
   - void *{c_local_cptr} = const_cast<{c_type} *>({c_local_cxx});
   - "{gen.c_extents_decl}int {c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t\
-    \ CFI_attribute_pointer,\t {cfi_type},\t 0,\t {rank},\t {gen.c_extents_use});"
+    \ CFI_attribute_pointer,\t {typemap.cfi_type},\t 0,\t {rank},\t {gen.c_extents_use});"
   - if ({c_local_err} == CFI_SUCCESS) {{+
   - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {gen.c_lower_use});"
   - -}}
@@ -17495,7 +18068,7 @@ f_out_native*_cdesc:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
-  - '{f_var_cdesc}%type = {sh_type}'
+  - '{f_var_cdesc}%type = {typemap.sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
   - '{f_var_cdesc}%size = {size}'
   - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
@@ -18738,7 +19311,7 @@ f_out_void*_cdesc:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_pre_call:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
-  - '{f_var_cdesc}%type = {sh_type}'
+  - '{f_var_cdesc}%type = {typemap.sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
   - '{f_var_cdesc}%size = {size}'
   - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
@@ -19013,8 +19586,12 @@ f_setter_struct*_pointer:
 f_subroutine:
   name: f_subroutine
   intent: subroutine
+  comments:
+  - Call subroutine/void C function.
   f_call:
   - call {f_call_function}({F_arg_c_call})
+  c_call:
+  - '{C_call_function};'
   owner: library
 f_subroutine_assignment_weakptr:
   name: f_subroutine_assignment_weakptr
@@ -20087,13 +20664,14 @@ root
           capptr -- c_mixin_function_shadow_capptr
         vector
           malloc -- c_mixin_function_vector_malloc
+      function-assign-to-cvar -- c_mixin_function-assign-to-cvar
       function-assign-to-local -- c_mixin_function-assign-to-local
       function-assign-to-new -- c_mixin_function-assign-to-new
       function-return-cvar -- c_mixin_function-return-cvar
       header
+        cstring -- c_mixin_header_cstring
         stddef -- c_mixin_header_stddef
         stdlib -- c_mixin_header_stdlib
-        string -- c_mixin_header_string
       in
         character
           buf -- c_mixin_in_character_buf
@@ -21216,14 +21794,14 @@ py_function_bool:
   declare:
   - '{PyObject} * {py_var} = {nullptr};'
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   post_call:
   - '{py_var} = PyBool_FromLong({c_var});'
   - if ({py_var} == {nullptr}) goto fail;
   fail:
   - Py_XDECREF({py_var});
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
@@ -21234,11 +21812,11 @@ py_function_char:
   declare:
   - '{PyObject} * {py_var} = {nullptr};'
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   post_call:
   - '{py_var} = PyString_FromStringAndSize(&{cxx_var}, 1);'
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
 py_function_char*:
@@ -21247,27 +21825,27 @@ py_function_char*:
   fmtdict:
     ctor_expr: '{c_var}'
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
 py_function_enum:
   name: py_function_enum
   intent: function
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
 py_function_native:
   name: py_function_native
   intent: function
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
 py_function_native&_numpy:
@@ -21278,7 +21856,7 @@ py_function_native&_numpy:
   declare:
   - '{npy_intp_decl}PyObject * {py_var} = {nullptr};'
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   post_call:
   - "{npy_intp_asgn}{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t\
     \ {numpy_type},\t {cxx_nonconst_ptr});"
@@ -21286,7 +21864,7 @@ py_function_native&_numpy:
   fail:
   - Py_XDECREF({py_var});
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
@@ -21299,14 +21877,14 @@ py_function_native*_list:
   declare:
   - PyObject *{py_var} = {nullptr};
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   post_call:
   - "{py_var} = {c_helper_to_PyList}\t({cxx_var},\t {array_size});"
   - if ({py_var} == {nullptr}) goto fail;
   fail:
   - Py_XDECREF({py_var});
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
@@ -21318,7 +21896,7 @@ py_function_native*_numpy:
   declare:
   - '{npy_intp_decl}PyObject * {py_var} = {nullptr};'
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   post_call:
   - "{npy_intp_asgn}{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t\
     \ {numpy_type},\t {cxx_nonconst_ptr});"
@@ -21326,7 +21904,7 @@ py_function_native*_numpy:
   fail:
   - Py_XDECREF({py_var});
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
@@ -21334,9 +21912,9 @@ py_function_native*_scalar:
   name: py_function_native*_scalar
   intent: function
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
 py_function_shadow:
@@ -21368,12 +21946,12 @@ py_function_shadow&:
   intent: function
   object_created: true
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   post_call:
   - "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});"
   - '{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};'
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
 py_function_shadow*:
@@ -21381,12 +21959,12 @@ py_function_shadow*:
   intent: function
   object_created: true
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   post_call:
   - "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});"
   - '{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};'
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
 py_function_string:
@@ -21395,9 +21973,9 @@ py_function_string:
   fmtdict:
     ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
 py_function_string&:
@@ -21406,9 +21984,9 @@ py_function_string&:
   fmtdict:
     ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
 py_function_string*:
@@ -21417,9 +21995,9 @@ py_function_string*:
   fmtdict:
     ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
 py_function_struct*_class:
@@ -21429,14 +22007,14 @@ py_function_struct*_class:
   declare:
   - PyObject *{py_var} = {nullptr};  // struct_class
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   post_call:
   - "{py_var} = {PY_to_object_idtor_func}({cxx_addr}{cxx_var},\t {capsule_order});"
   - if ({py_var} == {nullptr}) goto fail;
   fail:
   - Py_XDECREF({py_var});
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
@@ -21444,9 +22022,9 @@ py_function_struct*_list:
   name: py_function_struct*_list
   intent: function
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
 py_function_struct*_numpy:
@@ -21457,7 +22035,7 @@ py_function_struct*_numpy:
   declare:
   - '{npy_intp_decl}PyObject * {py_var} = {nullptr};'
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   post_call:
   - '{npy_intp_asgn}Py_INCREF({PYN_descr});'
   - "{py_var} = PyArray_NewFromDescr(&PyArray_Type, \t{PYN_descr},\t {npy_rank}, {npy_dims_var},\
@@ -21466,7 +22044,7 @@ py_function_struct*_numpy:
   fail:
   - Py_XDECREF({py_var});
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
@@ -21518,9 +22096,9 @@ py_function_struct_list:
   name: py_function_struct_list
   intent: function
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
 py_function_struct_numpy:
@@ -21584,14 +22162,14 @@ py_function_vector<native>_list:
   declare:
   - PyObject * {py_var} = {nullptr};
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   post_call:
   - "{py_var} = SHROUD_to_PyList_vector_{cxx_T}\t({cxx_var});"
   - if ({py_var} == {nullptr}) goto fail;
   fail:
   - Py_XDECREF({py_var});
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
@@ -21656,14 +22234,14 @@ py_function_vector_list:
   declare:
   - PyObject * {py_var} = {nullptr};
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   post_call:
   - "{py_var} = SHROUD_to_PyList_vector_{cxx_T}\t({cxx_var});"
   - if ({py_var} == {nullptr}) goto fail;
   fail:
   - Py_XDECREF({py_var});
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
@@ -21727,9 +22305,9 @@ py_function_void*:
   fmtdict:
     ctor_expr: '{cxx_var}'
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
 py_implied_bool:
@@ -22636,9 +23214,9 @@ py_mixin_function-declare:
   name: py_mixin_function-declare
   intent: mixin
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
 py_mixin_function-struct-class:
@@ -22826,7 +23404,7 @@ py_out_native*&_numpy:
   declare:
   - '{npy_intp_decl}PyObject *{py_var} = {nullptr};'
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   post_call:
   - "{npy_intp_asgn}{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t\
     \ {numpy_type},\t {cxx_nonconst_ptr});"
@@ -22834,7 +23412,7 @@ py_out_native*&_numpy:
   fail:
   - Py_XDECREF({py_var});
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
@@ -22851,14 +23429,14 @@ py_out_native**_list:
   declare:
   - PyObject *{py_var} = {nullptr};
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   post_call:
   - "{py_var} = {c_helper_to_PyList}\t({cxx_var},\t {array_size});"
   - if ({py_var} == {nullptr}) goto fail;
   fail:
   - Py_XDECREF({py_var});
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
@@ -22874,7 +23452,7 @@ py_out_native**_numpy:
   declare:
   - '{npy_intp_decl}PyObject *{py_var} = {nullptr};'
   call:
-  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  - "{gen.cxxresult.cxx_var} =\t {C_call_function};"
   post_call:
   - "{npy_intp_asgn}{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t\
     \ {numpy_type},\t {cxx_nonconst_ptr});"
@@ -22882,7 +23460,7 @@ py_out_native**_numpy:
   fail:
   - Py_XDECREF({py_var});
   fail_declare:
-  - '{gen.cxxdecl.cxx_var};'
+  - '{gen.cxxresult.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
   goto_fail: true

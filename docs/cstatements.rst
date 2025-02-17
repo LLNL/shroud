@@ -170,9 +170,9 @@ Code used with *intent(in)* arguments to convert from C to C++.
 c_call
 ^^^^^^
 
-Code to call function.  This is usually defaulted.
-For ``void`` functions ``{C_call_function};`` and for other functions
-``{cxx_rv_decl} = {C_call_function}``.
+Code to call function.
+Typically, for ``void`` functions ``{C_call_function};`` and for other functions
+``{gen.cxxresult.c_var} = {C_call_function}``.
 
 An example of explicit *c_call* code are constructors and destructors
 for shadow types.
@@ -265,7 +265,10 @@ variables.  This allows creating names without conflicting with
 *temps* from a *mixin* group.
 
 The format field is named *c_local_{name}*.
-   
+
+*local* format fields are not created for Fortran interfaces which
+have no executable code and do not require local variables.
+
 helper
 ^^^^^^
 
