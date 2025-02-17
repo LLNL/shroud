@@ -135,15 +135,19 @@ c_function_bool:
   comments:
   - Call a function in Fortran wrapper.
   - Declare a Fortran variable.
+  - Call function and assign to a c variable.
   mixin_names:
   - '  f_mixin_function'
   - '  f_mixin_declare-local-variable'
   - '  c_mixin_declare-fortran-result'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - '{i_type} :: {i_var}'
   i_module:
     '{i_module_name}':
     - '{i_kind}'
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 c_function_char:
   name: c_function_char
@@ -178,17 +182,21 @@ c_function_char*:
   comments:
   - Call a function in Fortran wrapper.
   - Declare function result as a type(C_PTR).
+  - Call function and assign to a c variable.
   notes:
   - Return a type(C_PTR) from Fortran.
   mixin_names:
   - '  f_mixin_function'
   - '  f_mixin_function-as-cptr'
   - '  f_mixin_function-interface-as-cptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 c_function_char*_arg:
   name: c_function_char*_arg
@@ -1695,15 +1703,19 @@ c_function_struct*:
   intent: function
   comments:
   - Return a C pointer as a type(C_PTR).
+  - Call function and assign to a c variable.
   notes:
   - C++ pointer -> void pointer -> C pointer.
   mixin_names:
   - '  f_mixin_function_c-ptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_need_wrapper: true
   owner: library
 c_function_vector<native>:
@@ -6415,6 +6427,7 @@ f_function_bool:
   comments:
   - Call a function in Fortran wrapper.
   - Declare a Fortran variable.
+  - Call function and assign to a c variable.
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
     :: {f_var}{f_dimension}'
@@ -6428,11 +6441,14 @@ f_function_bool:
   - '  f_mixin_function'
   - '  f_mixin_declare-local-variable'
   - '  c_mixin_declare-fortran-result'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - '{i_type} :: {i_var}'
   i_module:
     '{i_module_name}':
     - '{i_kind}'
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 f_function_char:
   name: f_function_char
@@ -6473,6 +6489,7 @@ f_function_char*:
   comments:
   - Call a function in Fortran wrapper.
   - Declare function result as a type(C_PTR).
+  - Call function and assign to a c variable.
   notes:
   - Return a type(C_PTR) from Fortran.
   f_dummy_decl:
@@ -6486,11 +6503,14 @@ f_function_char*:
   - '  f_mixin_function'
   - '  f_mixin_function-as-cptr'
   - '  f_mixin_function-interface-as-cptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 f_function_char*_allocatable:
   name: f_function_char*_allocatable
@@ -6498,6 +6518,7 @@ f_function_char*_allocatable:
   comments:
   - Call a function in Fortran wrapper.
   - Declare function result as a type(C_PTR).
+  - Call function and assign to a c variable.
   notes:
   - Return a type(C_PTR) from Fortran.
   f_dummy_decl:
@@ -6511,11 +6532,14 @@ f_function_char*_allocatable:
   - '  f_mixin_function'
   - '  f_mixin_function-as-cptr'
   - '  f_mixin_function-interface-as-cptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 f_function_char*_arg:
   name: f_function_char*_arg
@@ -6759,6 +6783,7 @@ f_function_char*_cdesc_allocatable:
   - Pass cdesc as argument to C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
+  - Call function and assign to a c variable.
   - Fill cdesc from char * in the C wrapper.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
@@ -6779,6 +6804,7 @@ f_function_char*_cdesc_allocatable:
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_cdesc_char_allocate'
+  - '  c_mixin_function-assign-to-cvar'
   - '  c_mixin_cdesc_char_fill_cvar'
   i_dummy_arg:
   - '{i_var_cdesc}'
@@ -6789,6 +6815,8 @@ f_function_char*_cdesc_allocatable:
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_post_call:
   - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
   - '{c_var_cdesc}->type = {typemap.sh_type};'
@@ -6811,6 +6839,7 @@ f_function_char*_cdesc_pointer:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
+  - Call function and assign to a c variable.
   - Fill cdesc from char * in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
   f_dummy_decl:
@@ -6833,6 +6862,7 @@ f_function_char*_cdesc_pointer:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
+  - '  c_mixin_function-assign-to-cvar'
   - '  c_mixin_cdesc_char_fill_cvar'
   - '  f_mixin_cdesc_char_pointer'
   i_dummy_arg:
@@ -6844,6 +6874,8 @@ f_function_char*_cdesc_pointer:
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_post_call:
   - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
   - '{c_var_cdesc}->type = {typemap.sh_type};'
@@ -6866,6 +6898,7 @@ f_function_char*_cfi_allocatable:
   comments:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
+  - Call function and assign to a c variable.
   notes:
   - Add allocatable attribute to declaration.
   f_dummy_decl:
@@ -6884,6 +6917,7 @@ f_function_char*_cfi_allocatable:
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
   - '  c_mixin_header_cstring'
+  - '  c_mixin_function-assign-to-cvar'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -6891,6 +6925,8 @@ f_function_char*_cfi_allocatable:
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var} != {nullptr}) {{+
   - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
@@ -7050,6 +7086,7 @@ f_function_char*_cfi_pointer:
   comments:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
+  - Call function and assign to a c variable.
   - Convert C pointer to deferred-length CHARACTER Fortran scalar pointer.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
@@ -7066,6 +7103,7 @@ f_function_char*_cfi_pointer:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
+  - '  c_mixin_function-assign-to-cvar'
   - '  c_mixin_cfi_character_pointer'
   i_dummy_arg:
   - '{i_var}'
@@ -7074,6 +7112,8 @@ f_function_char*_cfi_pointer:
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_post_call:
   - int {c_local_err};
   - if ({cxx_var} == {nullptr}) {{+
@@ -7110,6 +7150,7 @@ f_function_char*_copy:
   comments:
   - Call a function in Fortran wrapper.
   - Declare function result as a type(C_PTR).
+  - Call function and assign to a c variable.
   notes:
   - Return a type(C_PTR) from Fortran.
   f_dummy_decl:
@@ -7123,11 +7164,14 @@ f_function_char*_copy:
   - '  f_mixin_function'
   - '  f_mixin_function-as-cptr'
   - '  f_mixin_function-interface-as-cptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 f_function_char*_pointer:
   name: f_function_char*_pointer
@@ -7135,6 +7179,7 @@ f_function_char*_pointer:
   comments:
   - Call a function in Fortran wrapper.
   - Declare function result as a type(C_PTR).
+  - Call function and assign to a c variable.
   notes:
   - Return a type(C_PTR) from Fortran.
   f_dummy_decl:
@@ -7148,11 +7193,14 @@ f_function_char*_pointer:
   - '  f_mixin_function'
   - '  f_mixin_function-as-cptr'
   - '  f_mixin_function-interface-as-cptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 f_function_char*_raw:
   name: f_function_char*_raw
@@ -7160,6 +7208,7 @@ f_function_char*_raw:
   comments:
   - Call a function in Fortran wrapper.
   - Declare function result as a type(C_PTR).
+  - Call function and assign to a c variable.
   notes:
   - Return a type(C_PTR) from Fortran.
   f_dummy_decl:
@@ -7173,11 +7222,14 @@ f_function_char*_raw:
   - '  f_mixin_function'
   - '  f_mixin_function-as-cptr'
   - '  f_mixin_function-interface-as-cptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   owner: library
 f_function_char_cdesc_allocatable:
   name: f_function_char_cdesc_allocatable
@@ -7187,6 +7239,7 @@ f_function_char_cdesc_allocatable:
   - Pass cdesc as argument to C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
+  - Call function and assign to a c variable.
   - Fill cdesc from char * in the C wrapper.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
@@ -7207,6 +7260,7 @@ f_function_char_cdesc_allocatable:
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_cdesc_char_allocate'
+  - '  c_mixin_function-assign-to-cvar'
   - '  c_mixin_cdesc_char_fill_cvar'
   i_dummy_arg:
   - '{i_var_cdesc}'
@@ -7217,6 +7271,8 @@ f_function_char_cdesc_allocatable:
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_post_call:
   - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
   - '{c_var_cdesc}->type = {typemap.sh_type};'
@@ -7239,6 +7295,7 @@ f_function_char_cdesc_pointer:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
+  - Call function and assign to a c variable.
   - Fill cdesc from char * in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
   f_dummy_decl:
@@ -7261,6 +7318,7 @@ f_function_char_cdesc_pointer:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
+  - '  c_mixin_function-assign-to-cvar'
   - '  c_mixin_cdesc_char_fill_cvar'
   - '  f_mixin_cdesc_char_pointer'
   i_dummy_arg:
@@ -7272,6 +7330,8 @@ f_function_char_cdesc_pointer:
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_post_call:
   - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
   - '{c_var_cdesc}->type = {typemap.sh_type};'
@@ -7294,6 +7354,7 @@ f_function_char_cfi_allocatable:
   comments:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
+  - Call function and assign to a c variable.
   notes:
   - Add allocatable attribute to declaration.
   f_dummy_decl:
@@ -7312,6 +7373,7 @@ f_function_char_cfi_allocatable:
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
   - '  c_mixin_header_cstring'
+  - '  c_mixin_function-assign-to-cvar'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -7319,6 +7381,8 @@ f_function_char_cfi_allocatable:
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_post_call:
   - if ({cxx_var} != {nullptr}) {{+
   - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
@@ -7343,6 +7407,7 @@ f_function_char_cfi_pointer:
   comments:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
+  - Call function and assign to a c variable.
   - Convert C pointer to deferred-length CHARACTER Fortran scalar pointer.
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
@@ -7359,6 +7424,7 @@ f_function_char_cfi_pointer:
   - '    c_mixin_dummy_arg'
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
+  - '  c_mixin_function-assign-to-cvar'
   - '  c_mixin_cfi_character_pointer'
   i_dummy_arg:
   - '{i_var}'
@@ -7367,6 +7433,8 @@ f_function_char_cfi_pointer:
   c_return_type: void
   c_prototype:
   - CFI_cdesc_t *{c_var_cfi}
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_post_call:
   - int {c_local_err};
   - if ({cxx_var} == {nullptr}) {{+
@@ -7715,6 +7783,7 @@ f_function_native*_cdesc_pointer_caller:
   - Pass capsule as argument to C wrapper.
   - Add a capsule argument to the Fortran wrapper.
   - Pass the capsule as argument to C wrapper.
+  - Call function and assign to a c variable.
   - Fill cdesc from native in the C wrapper.
   - Assign to local capsule variable in C wrapper.
   - Set Fortran pointer to native array.
@@ -7750,6 +7819,7 @@ f_function_native*_cdesc_pointer_caller:
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_capsule_arg'
   - '    c_mixin_capsule_pass'
+  - '  c_mixin_function-assign-to-cvar'
   - '  c_mixin_cdesc_native_fill'
   - '  c_mixin_capsule_fill_native'
   - '  f_mixin_cdesc_native_pointer'
@@ -7766,6 +7836,8 @@ f_function_native*_cdesc_pointer_caller:
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
   - '{C_capsule_data_type} *{c_var_capsule}'
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {typemap.sh_type};'
@@ -12185,6 +12257,7 @@ f_function_struct*_pointer:
   intent: function
   comments:
   - Return a C pointer as a type(C_PTR).
+  - Call function and assign to a c variable.
   notes:
   - C++ pointer -> void pointer -> C pointer.
   f_dummy_decl:
@@ -12205,11 +12278,14 @@ f_function_struct*_pointer:
   - ptr
   mixin_names:
   - '  f_mixin_function_c-ptr'
+  - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_need_wrapper: true
   owner: library
 f_function_vector<native>_cdesc_allocatable:
@@ -16851,6 +16927,8 @@ f_mixin_unknown:
   - ===>{i_var} i_result_decl<===
   c_prototype:
   - ===>{c_var} c_prototype<===
+  c_call:
+  - ===>{c_var} c_call<===
   owner: library
 f_none_bool:
   name: f_none_bool

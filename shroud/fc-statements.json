@@ -1732,6 +1732,7 @@
             "f_mixin_function-to-subroutine",
             "f_mixin_cdesc_pass",
             "f_mixin_capsule_arg",
+            "c_mixin_function-assign-to-cvar",
             "c_mixin_cdesc_native_fill",
             "c_mixin_capsule_fill_native",
             "f_mixin_cdesc_native_pointer"
@@ -1854,7 +1855,8 @@
         "mixin": [
             "f_mixin_function",
             "f_mixin_declare-local-variable",
-            "c_mixin_declare-fortran-result"
+            "c_mixin_declare-fortran-result",
+            "c_mixin_function-assign-to-cvar"
         ],
         "f_need_wrapper": true
     },
@@ -2448,7 +2450,8 @@
         "mixin": [
             "f_mixin_function",
             "f_mixin_function-as-cptr",
-            "f_mixin_function-interface-as-cptr"
+            "f_mixin_function-interface-as-cptr",
+            "c_mixin_function-assign-to-cvar"
         ]
     },
     {
@@ -2618,6 +2621,7 @@
             "f_mixin_function-to-subroutine",
             "f_mixin_cdesc_pass",
             "f_mixin_cdesc_char_allocate",
+            "c_mixin_function-assign-to-cvar",
             "c_mixin_cdesc_char_fill_cvar"
         ]
     },
@@ -2629,6 +2633,7 @@
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_cdesc_pass",
+            "c_mixin_function-assign-to-cvar",
             "c_mixin_cdesc_char_fill_cvar",
             "f_mixin_cdesc_char_pointer"
         ]
@@ -4246,7 +4251,8 @@
             "C++ pointer -> void pointer -> C pointer."
         ],
         "mixin": [
-            "f_mixin_function_c-ptr"
+            "f_mixin_function_c-ptr",
+            "c_mixin_function-assign-to-cvar"
         ]
     },
     {
@@ -4735,7 +4741,8 @@
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_cfi_character-deferred-length",
-            "c_mixin_header_cstring"
+            "c_mixin_header_cstring",
+            "c_mixin_function-assign-to-cvar"
         ],
         "f_need_wrapper": true,
         "c_post_call": [
@@ -4755,6 +4762,7 @@
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_cfi_character-deferred-length",
+            "c_mixin_function-assign-to-cvar",
             "c_mixin_cfi_character_pointer"
         ],
         "f_need_wrapper": true
@@ -5355,6 +5363,9 @@
         ],
         "c_prototype": [
             "===>{c_var} c_prototype<==="
+        ],
+        "c_call": [
+            "===>{c_var} c_call<==="
         ]
     },
     {
