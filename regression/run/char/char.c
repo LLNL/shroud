@@ -116,10 +116,12 @@ void explicit1(char * name)
 }
 
 // Assigning to a char* without knowing the length can result in an overwrite.
+// The wrapper expects a NULL terminated string.
 
 void explicit2(char * name)
 {
-    *name = 'a';
+    name[0] = 'a';
+    name[1] = '\0';
 }
 
 //----------------------------------------

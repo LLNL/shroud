@@ -43,7 +43,7 @@ LOCAL_FFLAGS = -g -cpp -Wall -ffree-form -fbounds-check $(ASAN)
 #FFLAGS += -std=f2003
 FLIBS = -lstdc++
 SHARED = -fPIC
-LDFLAGS = $(ASAN)
+#LOCAL_LDFLAGS := -local
 LD_SHARED = -shared
 endif
 
@@ -173,10 +173,11 @@ SHARED = -fPIC
 LD_SHARED = -shared
 endif
 
-# Prefix local flags to user flags.
+# Prefix local flags to user flags from the command line.
 LOCAL_CFLAGS += $(CFLAGS)
 LOCAL_CXXFLAGS += $(CXXFLAGS)
 LOCAL_FFLAGS += $(FFLAGS)
+override LDFLAGS := $(LOCAL_LDFLAGS) $(ASAN) $(LDFLAGS)
 
 ifdef PYTHON
 # Simple string functions, to reduce the clutter below.
