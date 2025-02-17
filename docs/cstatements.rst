@@ -177,7 +177,9 @@ Typically, for ``void`` functions ``{C_call_function};`` and for other functions
 An example of explicit *c_call* code are constructors and destructors
 for shadow types.
 
-.. sets need_wrapper
+*getter* and *setter* functions will not need this as well
+since the wrapper operates directly on the struct and not a function.
+
 
 c_post_call
 ^^^^^^^^^^^

@@ -184,6 +184,7 @@ f_array_shape                 gen.c_f_pointer_shape
 f_cdesc_shape                 gen.f_cdesc_shape
 cfi_type                      typemap.cfi_type
 sh_type                       typemap.sh_type
+size                          f_size
 ===========================   ===========================
   
 * Renamed option fields

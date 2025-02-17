@@ -2133,6 +2133,7 @@
                                 "f_intent_attr": ", intent(IN)",
                                 "f_kind": "index_type",
                                 "f_module_name": "typedefs_mod",
+                                "f_size": "size(shape)",
                                 "f_type": "integer(index_type)",
                                 "f_var": "shape",
                                 "fc_var": "shape",
@@ -2145,7 +2146,6 @@
                                 "i_var": "shape",
                                 "idtor": "0",
                                 "rank": "1",
-                                "size": "size(shape)",
                                 "stmt_name": "f_in_native*",
                                 "typemap_name": "IndexType"
                             },
@@ -2664,6 +2664,7 @@
                                 "f_intent_attr": ", intent(IN)",
                                 "f_kind": "LOCAL_Index_Type",
                                 "f_module_name": "typedefs_mod",
+                                "f_size": "size(shape)",
                                 "f_type": "integer(LOCAL_Index_Type)",
                                 "f_var": "shape",
                                 "fc_var": "shape",
@@ -2676,7 +2677,6 @@
                                 "i_var": "shape",
                                 "idtor": "0",
                                 "rank": "1",
-                                "size": "size(shape)",
                                 "stmt_name": "f_in_native*",
                                 "typemap_name": "IndexType2"
                             },

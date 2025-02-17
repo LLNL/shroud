@@ -24,7 +24,6 @@ int STR_Cstruct_as_class_get_x1(STR_Cstruct_as_class * self)
 {
     Cstruct_as_class *SH_this = (Cstruct_as_class *) self->addr;
     // splicer begin class.Cstruct_as_class.method.get_x1
-    // skip call c_getter
     return SH_this->x1;
     // splicer end class.Cstruct_as_class.method.get_x1
 }
@@ -42,7 +41,6 @@ void STR_Cstruct_as_class_set_x1(STR_Cstruct_as_class * self, int val)
 {
     Cstruct_as_class *SH_this = (Cstruct_as_class *) self->addr;
     // splicer begin class.Cstruct_as_class.method.set_x1
-    // skip call c_setter
     SH_this->x1 = val;
     // splicer end class.Cstruct_as_class.method.set_x1
 }
@@ -57,7 +55,6 @@ int STR_Cstruct_as_class_get_y1(STR_Cstruct_as_class * self)
 {
     Cstruct_as_class *SH_this = (Cstruct_as_class *) self->addr;
     // splicer begin class.Cstruct_as_class.method.get_y1
-    // skip call c_getter
     return SH_this->y1;
     // splicer end class.Cstruct_as_class.method.get_y1
 }
@@ -75,7 +72,6 @@ void STR_Cstruct_as_class_set_y1(STR_Cstruct_as_class * self, int val)
 {
     Cstruct_as_class *SH_this = (Cstruct_as_class *) self->addr;
     // splicer begin class.Cstruct_as_class.method.set_y1
-    // skip call c_setter
     SH_this->y1 = val;
     // splicer end class.Cstruct_as_class.method.set_y1
 }

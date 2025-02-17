@@ -207,7 +207,6 @@ void CXX_nested_get_parent(CXX_nested *SH_this,
 void CXX_nested_set_parent(CXX_nested *SH_this, CXX_nested *val)
 {
     // splicer begin function.nested_set_parent
-    // skip call c_setter
     SH_this->parent = val;
     // splicer end function.nested_set_parent
 }
@@ -245,7 +244,6 @@ void CXX_nested_get_child(CXX_nested *SH_this,
 void CXX_nested_set_child(CXX_nested *SH_this, CXX_nested **val)
 {
     // splicer begin function.nested_set_child
-    // skip call c_setter
     SH_this->child = val;
     // splicer end function.nested_set_child
 }
@@ -283,7 +281,6 @@ void CXX_nested_get_array(CXX_nested *SH_this,
 void CXX_nested_set_array(CXX_nested *SH_this, CXX_nested *val)
 {
     // splicer begin function.nested_set_array
-    // skip call c_setter
     SH_this->array = val;
     // splicer end function.nested_set_array
 }

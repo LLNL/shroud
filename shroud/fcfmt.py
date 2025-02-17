@@ -651,9 +651,9 @@ class FillFormat(object):
             fmt.rank = str(rank)
             if rank == 0:
                 # Assigned to cdesc to pass metadata to C wrapper.
-                fmt.size = "1"
+                fmt.f_size = "1"
             else:
-                fmt.size = wformat("size({f_var})", fmt)
+                fmt.f_size = wformat("size({f_var})", fmt)
                 fmt.f_assumed_shape = fortran_ranks[rank]
                 fmt.f_dimension = fortran_ranks[rank]
                 fmt.i_dimension = "(*)"

@@ -7197,6 +7197,7 @@
                                 "f_intent_attr": ", intent(IN)",
                                 "f_kind": "C_INT",
                                 "f_module_name": "iso_c_binding",
+                                "f_size": "size(count)",
                                 "f_type": "integer(C_INT)",
                                 "f_var": "count",
                                 "i_dimension": "(*)",
@@ -7208,7 +7209,6 @@
                                 "i_var": "count",
                                 "idtor": "0",
                                 "rank": "1",
-                                "size": "size(count)",
                                 "stmt_name": "c_in_native*",
                                 "typemap_name": "int"
                             },
@@ -7302,6 +7302,7 @@
                                 "f_intent_attr": ", intent(IN)",
                                 "f_kind": "C_INT",
                                 "f_module_name": "iso_c_binding",
+                                "f_size": "size(count)",
                                 "f_type": "integer(C_INT)",
                                 "f_var": "count",
                                 "fc_var": "count",
@@ -7314,7 +7315,6 @@
                                 "i_var": "count",
                                 "idtor": "0",
                                 "rank": "1",
-                                "size": "size(count)",
                                 "stmt_name": "f_in_native*",
                                 "typemap_name": "int"
                             },

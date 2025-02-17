@@ -29,7 +29,6 @@ int ERR_Cstruct_as_subclass_get_x1(ERR_Cstruct_as_subclass * self)
     Cstruct_as_subclass *SH_this = static_cast<Cstruct_as_subclass *>
         (self->addr);
     // splicer begin class.Cstruct_as_subclass.method.get_x1
-    // skip call c_getter
     return SH_this->x1;
     // splicer end class.Cstruct_as_subclass.method.get_x1
 }
@@ -47,7 +46,6 @@ void ERR_Cstruct_as_subclass_set_x1(ERR_Cstruct_as_subclass * self,
     Cstruct_as_subclass *SH_this = static_cast<Cstruct_as_subclass *>
         (self->addr);
     // splicer begin class.Cstruct_as_subclass.method.set_x1
-    // skip call c_setter
     SH_this->x1 = val;
     // splicer end class.Cstruct_as_subclass.method.set_x1
 }
@@ -61,7 +59,6 @@ int ERR_Cstruct_as_subclass_get_y1(ERR_Cstruct_as_subclass * self)
     Cstruct_as_subclass *SH_this = static_cast<Cstruct_as_subclass *>
         (self->addr);
     // splicer begin class.Cstruct_as_subclass.method.get_y1
-    // skip call c_getter
     return SH_this->y1;
     // splicer end class.Cstruct_as_subclass.method.get_y1
 }
@@ -79,7 +76,6 @@ void ERR_Cstruct_as_subclass_set_y1(ERR_Cstruct_as_subclass * self,
     Cstruct_as_subclass *SH_this = static_cast<Cstruct_as_subclass *>
         (self->addr);
     // splicer begin class.Cstruct_as_subclass.method.set_y1
-    // skip call c_setter
     SH_this->y1 = val;
     // splicer end class.Cstruct_as_subclass.method.set_y1
 }
@@ -93,7 +89,6 @@ int ERR_Cstruct_as_subclass_get_z1(ERR_Cstruct_as_subclass * self)
     Cstruct_as_subclass *SH_this = static_cast<Cstruct_as_subclass *>
         (self->addr);
     // splicer begin class.Cstruct_as_subclass.method.get_z1
-    // skip call c_getter
     return SH_this->z1;
     // splicer end class.Cstruct_as_subclass.method.get_z1
 }
@@ -111,7 +106,6 @@ void ERR_Cstruct_as_subclass_set_z1(ERR_Cstruct_as_subclass * self,
     Cstruct_as_subclass *SH_this = static_cast<Cstruct_as_subclass *>
         (self->addr);
     // splicer begin class.Cstruct_as_subclass.method.set_z1
-    // skip call c_setter
     SH_this->z1 = val;
     // splicer end class.Cstruct_as_subclass.method.set_z1
 }

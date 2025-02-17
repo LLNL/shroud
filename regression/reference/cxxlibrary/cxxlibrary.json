@@ -3311,6 +3311,7 @@
                                 "f_intent_attr": ", intent(IN)",
                                 "f_kind": "C_DOUBLE",
                                 "f_module_name": "iso_c_binding",
+                                "f_size": "size(data)",
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "data",
                                 "fc_var": "data",
@@ -3323,7 +3324,6 @@
                                 "i_var": "data",
                                 "idtor": "0",
                                 "rank": "1",
-                                "size": "size(data)",
                                 "stmt_name": "f_in_native*",
                                 "typemap_name": "double"
                             },
@@ -5741,6 +5741,7 @@
                                 "f_intent_attr": ", intent(IN)",
                                 "f_kind": "nested",
                                 "f_module_name": "cxxlibrary_mod",
+                                "f_size": "size(val)",
                                 "f_type": "type(nested)",
                                 "f_var": "val",
                                 "fc_var": "val",
@@ -5753,7 +5754,6 @@
                                 "i_var": "val",
                                 "idtor": "0",
                                 "rank": "1",
-                                "size": "size(val)",
                                 "stmt_name": "f_setter_struct**",
                                 "typemap_name": "nested"
                             },
@@ -6165,6 +6165,7 @@
                                 "f_intent_attr": ", intent(IN)",
                                 "f_kind": "nested",
                                 "f_module_name": "cxxlibrary_mod",
+                                "f_size": "size(val)",
                                 "f_type": "type(nested)",
                                 "f_var": "val",
                                 "fc_var": "val",
@@ -6177,7 +6178,6 @@
                                 "i_var": "val",
                                 "idtor": "0",
                                 "rank": "1",
-                                "size": "size(val)",
                                 "stmt_name": "f_setter_struct*",
                                 "typemap_name": "nested"
                             },

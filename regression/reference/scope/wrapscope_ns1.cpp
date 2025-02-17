@@ -51,7 +51,6 @@ void SCO_ns1_DataPointer_get_items(SCO_datapointer *SH_this,
 void SCO_ns1_DataPointer_set_items(SCO_datapointer *SH_this, int *val)
 {
     // splicer begin namespace.ns1.function.DataPointer_set_items
-    // skip call c_setter
     SH_this->items = val;
     // splicer end namespace.ns1.function.DataPointer_set_items
 }
