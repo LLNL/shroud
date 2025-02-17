@@ -789,6 +789,8 @@ library
 
 .. steal  intent(in)
 
+.. shared  weak
+
 pass
 ^^^^
 

@@ -1449,23 +1449,11 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             return
 
         declarator = ast.declarator
-        from_stmt = False
-        if meta["owner"]:
-            owner = meta["owner"]
-        elif intent_blk.owner:
-            owner = intent_blk.owner
-            from_stmt = True
-        else:
-            owner = default_owner
+        owner = meta["owner"] or intent_blk.owner or default_owner
 
         free_pattern = meta["free_pattern"]
-        if owner == "library":
-            # Library owns memory, do not let user release.
-            pass
-        elif not declarator.is_pointer() and not from_stmt:
-            # Non-pointers do not return dynamic memory.
-            # Unless it is a function which returns memory
-            # by value. (like a class instance.)
+        if owner != "caller":
+            # library, shared, weak. Do not let user release.
             pass
         elif free_pattern is not None:
             # free_pattern attribute.

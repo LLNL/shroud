@@ -122,7 +122,6 @@ c_dtor:
   - '{C_this}->addr = {nullptr};'
   impl_header:
   - <cstddef>
-  owner: library
   lang_c:
     impl_header:
     - <stddef.h>
@@ -148,7 +147,6 @@ c_function_bool:
     - '{i_kind}'
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
-  owner: library
 c_function_char:
   name: c_function_char
   intent: function
@@ -175,7 +173,6 @@ c_function_char:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
-  owner: library
 c_function_char*:
   name: c_function_char*
   intent: function
@@ -197,7 +194,6 @@ c_function_char*:
     - C_PTR
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
-  owner: library
 c_function_char*_arg:
   name: c_function_char*_arg
   intent: function
@@ -257,7 +253,6 @@ c_function_char*_arg:
     c_var_len: n{F_string_result_as_arg}
   helper:
   - char_copy
-  owner: library
 c_function_char*_buf_arg:
   name: c_function_char*_buf_arg
   intent: function
@@ -317,7 +312,6 @@ c_function_char*_buf_arg:
     c_var_len: n{F_string_result_as_arg}
   helper:
   - char_copy
-  owner: library
 c_function_char*_buf_copy:
   name: c_function_char*_buf_copy
   intent: function
@@ -371,7 +365,6 @@ c_function_char*_buf_copy:
     i_intent_attr: ', intent(OUT)'
   helper:
   - char_copy
-  owner: library
 c_function_enum:
   name: c_function_enum
   intent: function
@@ -391,7 +384,6 @@ c_function_enum:
   - "{c_type} {c_var} =\t {cast_static}{c_type}{cast1}{c_local_cxx}{cast2};"
   c_local:
   - cxx
-  owner: library
 c_function_native:
   name: c_function_native
   intent: function
@@ -411,7 +403,6 @@ c_function_native:
     - '{i_kind}'
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
-  owner: library
 c_function_native&:
   name: c_function_native&
   intent: function
@@ -428,7 +419,6 @@ c_function_native&:
     - C_PTR
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
-  owner: library
 c_function_native*:
   name: c_function_native*
   intent: function
@@ -445,7 +435,6 @@ c_function_native*:
     - C_PTR
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
-  owner: library
 c_function_native**:
   name: c_function_native**
   intent: function
@@ -462,7 +451,6 @@ c_function_native**:
     - C_PTR
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
-  owner: library
 c_function_native*_caller:
   name: c_function_native*_caller
   intent: function
@@ -479,7 +467,6 @@ c_function_native*_caller:
     - C_PTR
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
-  owner: library
 c_function_native*_scalar:
   name: c_function_native*_scalar
   intent: function
@@ -488,7 +475,6 @@ c_function_native*_scalar:
   i_module:
     '{f_module_name}':
     - '{i_kind}'
-  owner: library
 c_function_shadow&_capptr:
   name: c_function_shadow&_capptr
   intent: function
@@ -535,7 +521,6 @@ c_function_shadow&_capptr:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
-  owner: library
 c_function_shadow&_capptr_caller:
   name: c_function_shadow&_capptr_caller
   intent: function
@@ -582,7 +567,6 @@ c_function_shadow&_capptr_caller:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
-  owner: library
 c_function_shadow&_capptr_library:
   name: c_function_shadow&_capptr_library
   intent: function
@@ -629,7 +613,6 @@ c_function_shadow&_capptr_library:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
-  owner: library
 c_function_shadow&_capsule:
   name: c_function_shadow&_capsule
   intent: function
@@ -667,7 +650,6 @@ c_function_shadow&_capsule:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
-  owner: library
 c_function_shadow&_capsule_caller:
   name: c_function_shadow&_capsule_caller
   intent: function
@@ -705,7 +687,6 @@ c_function_shadow&_capsule_caller:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
-  owner: library
 c_function_shadow&_capsule_library:
   name: c_function_shadow&_capsule_library
   intent: function
@@ -743,7 +724,6 @@ c_function_shadow&_capsule_library:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
-  owner: library
 c_function_shadow*_capptr:
   name: c_function_shadow*_capptr
   intent: function
@@ -790,7 +770,6 @@ c_function_shadow*_capptr:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
-  owner: library
 c_function_shadow*_capptr_caller:
   name: c_function_shadow*_capptr_caller
   intent: function
@@ -837,7 +816,6 @@ c_function_shadow*_capptr_caller:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
-  owner: library
 c_function_shadow*_capptr_library:
   name: c_function_shadow*_capptr_library
   intent: function
@@ -884,7 +862,6 @@ c_function_shadow*_capptr_library:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
-  owner: library
 c_function_shadow*_capptr_shared:
   name: c_function_shadow*_capptr_shared
   intent: function
@@ -931,7 +908,6 @@ c_function_shadow*_capptr_shared:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
-  owner: library
 c_function_shadow*_capsule:
   name: c_function_shadow*_capsule
   intent: function
@@ -969,7 +945,6 @@ c_function_shadow*_capsule:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
-  owner: library
 c_function_shadow*_this:
   name: c_function_shadow*_this
   intent: function
@@ -987,7 +962,6 @@ c_function_shadow*_this:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
-  owner: library
 c_function_shadow<native>_capptr:
   name: c_function_shadow<native>_capptr
   intent: function
@@ -1138,7 +1112,6 @@ c_function_smartptr<shadow>*_capptr:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
-  owner: library
 c_function_smartptr<shadow>_capptr:
   name: c_function_smartptr<shadow>_capptr
   intent: function
@@ -1259,7 +1232,6 @@ c_function_string&:
   - return {c_var};
   c_local:
   - cxx
-  owner: library
 c_function_string&_buf_arg:
   name: c_function_string&_buf_arg
   intent: function
@@ -1323,7 +1295,6 @@ c_function_string&_buf_arg:
     c_var_len: n{F_string_result_as_arg}
   helper:
   - char_copy
-  owner: library
 c_function_string&_buf_copy:
   name: c_function_string&_buf_copy
   intent: function
@@ -1377,7 +1348,6 @@ c_function_string&_buf_copy:
     i_intent_attr: ', intent(OUT)'
   helper:
   - char_copy
-  owner: library
 c_function_string&_copy:
   name: c_function_string&_copy
   intent: function
@@ -1401,7 +1371,6 @@ c_function_string&_copy:
   - return {c_var};
   c_local:
   - cxx
-  owner: library
 c_function_string*:
   name: c_function_string*
   intent: function
@@ -1425,7 +1394,6 @@ c_function_string*:
   - return {c_var};
   c_local:
   - cxx
-  owner: library
 c_function_string*_buf_copy:
   name: c_function_string*_buf_copy
   intent: function
@@ -1479,7 +1447,6 @@ c_function_string*_buf_copy:
     i_intent_attr: ', intent(OUT)'
   helper:
   - char_copy
-  owner: library
 c_function_string*_caller:
   name: c_function_string*_caller
   intent: function
@@ -1503,7 +1470,6 @@ c_function_string*_caller:
   - return {c_var};
   c_local:
   - cxx
-  owner: library
 c_function_string*_copy:
   name: c_function_string*_copy
   intent: function
@@ -1527,7 +1493,6 @@ c_function_string*_copy:
   - return {c_var};
   c_local:
   - cxx
-  owner: library
 c_function_string*_library:
   name: c_function_string*_library
   intent: function
@@ -1551,7 +1516,6 @@ c_function_string*_library:
   - return {c_var};
   c_local:
   - cxx
-  owner: library
 c_function_string_buf_arg:
   name: c_function_string_buf_arg
   intent: function
@@ -1615,7 +1579,6 @@ c_function_string_buf_arg:
     c_var_len: n{F_string_result_as_arg}
   helper:
   - char_copy
-  owner: library
 c_function_string_buf_copy:
   name: c_function_string_buf_copy
   intent: function
@@ -1669,7 +1632,6 @@ c_function_string_buf_copy:
     i_intent_attr: ', intent(OUT)'
   helper:
   - char_copy
-  owner: library
 c_function_struct:
   name: c_function_struct
   intent: function
@@ -1697,7 +1659,6 @@ c_function_struct:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
-  owner: library
 c_function_struct*:
   name: c_function_struct*
   intent: function
@@ -1717,13 +1678,11 @@ c_function_struct*:
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_need_wrapper: true
-  owner: library
 c_function_vector<native>:
   name: c_function_vector<native>
   intent: function
   notes:
   - Cannot return a std::vector<native> by value.
-  owner: library
   notimplemented: true
 c_function_vector<native>_malloc:
   name: c_function_vector<native>_malloc
@@ -1769,7 +1728,6 @@ c_function_vector<native>_malloc:
   impl_header:
   - <cstdlib>
   - <cstring>
-  owner: library
   lang_c:
     impl_header:
     - <stdlib.h>
@@ -1796,7 +1754,6 @@ c_function_void*:
     - C_PTR
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
-  owner: library
 c_getter_native:
   name: c_getter_native
   intent: getter
@@ -1813,7 +1770,6 @@ c_getter_native:
   c_return:
   - return {CXX_this}->{field_name};
   c_need_wrapper: true
-  owner: library
 c_getter_native*:
   name: c_getter_native*
   intent: getter
@@ -1830,7 +1786,6 @@ c_getter_native*:
   c_return:
   - return {CXX_this}->{field_name};
   c_need_wrapper: true
-  owner: library
 c_in_bool:
   name: c_in_bool
   intent: in
@@ -1854,7 +1809,6 @@ c_in_bool:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_in_char:
   name: c_in_char
   intent: in
@@ -1877,7 +1831,6 @@ c_in_char:
   - char {c_var}
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_in_char*:
   name: c_in_char*
   intent: in
@@ -1899,7 +1852,6 @@ c_in_char*:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_in_char**:
   name: c_in_char**
   intent: in
@@ -1924,7 +1876,6 @@ c_in_char**:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_in_char**_buf:
   name: c_in_char**_buf
   intent: in
@@ -1969,7 +1920,6 @@ c_in_char**_buf:
   helper:
   - char_array_alloc
   - char_array_free
-  owner: library
 c_in_char*_buf:
   name: c_in_char*_buf
   intent: in
@@ -2010,7 +1960,6 @@ c_in_char*_buf:
   helper:
   - char_alloc
   - char_free
-  owner: library
 c_in_enum:
   name: c_in_enum
   intent: in
@@ -2037,7 +1986,6 @@ c_in_enum:
   - '{cxx_var}'
   fmtdict:
     cxx_var: '{CXX_local}{c_var}'
-  owner: library
 c_in_native:
   name: c_in_native
   intent: in
@@ -2061,7 +2009,6 @@ c_in_native:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_in_native&:
   name: c_in_native&
   intent: in
@@ -2083,7 +2030,6 @@ c_in_native&:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
-  owner: library
 c_in_native*:
   name: c_in_native*
   intent: in
@@ -2105,7 +2051,6 @@ c_in_native*:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_in_native**:
   name: c_in_native**
   intent: in
@@ -2130,7 +2075,6 @@ c_in_native**:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_in_native*_cdesc:
   name: c_in_native*_cdesc
   intent: in
@@ -2163,7 +2107,6 @@ c_in_native*_cdesc:
   helper:
   - array_context
   - type_defines
-  owner: library
   lang_c:
     c_pre_call:
     - '{cxx_type} *{c_var} = {c_var_cdesc}->base_addr;'
@@ -2188,7 +2131,6 @@ c_in_procedure:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_in_procedure_external:
   name: c_in_procedure_external
   intent: in
@@ -2209,7 +2151,6 @@ c_in_procedure_external:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_in_procedure_funptr:
   name: c_in_procedure_funptr
   intent: in
@@ -2234,7 +2175,6 @@ c_in_procedure_funptr:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_in_shadow:
   name: c_in_shadow
   intent: in
@@ -2260,7 +2200,6 @@ c_in_shadow:
   - '*{c_local_cxx}'
   c_local:
   - cxx
-  owner: library
 c_in_shadow&:
   name: c_in_shadow&
   intent: in
@@ -2286,7 +2225,6 @@ c_in_shadow&:
   - '*{c_local_cxx}'
   c_local:
   - cxx
-  owner: library
 c_in_shadow*:
   name: c_in_shadow*
   intent: in
@@ -2314,7 +2252,6 @@ c_in_shadow*:
   - '{c_local_cxx}'
   c_local:
   - cxx
-  owner: library
 c_in_smartptr<shadow>*:
   name: c_in_smartptr<shadow>*
   intent: in
@@ -2342,7 +2279,6 @@ c_in_smartptr<shadow>*:
   - '{c_local_cxx}'
   c_local:
   - cxx
-  owner: library
 c_in_string:
   name: c_in_string
   intent: in
@@ -2366,7 +2302,6 @@ c_in_string:
   - char *{c_var}
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_in_string&:
   name: c_in_string&
   intent: in
@@ -2395,7 +2330,6 @@ c_in_string&:
   - '{c_local_cxx}'
   c_local:
   - cxx
-  owner: library
 c_in_string&_buf:
   name: c_in_string&_buf
   intent: in
@@ -2435,7 +2369,6 @@ c_in_string&_buf:
   - trim
   helper:
   - char_len_trim
-  owner: library
 c_in_string*:
   name: c_in_string*
   intent: in
@@ -2462,7 +2395,6 @@ c_in_string*:
   - '&{c_local_cxx}'
   c_local:
   - cxx
-  owner: library
 c_in_string*_buf:
   name: c_in_string*_buf
   intent: in
@@ -2502,7 +2434,6 @@ c_in_string*_buf:
   - trim
   helper:
   - char_len_trim
-  owner: library
 c_in_string_buf:
   name: c_in_string_buf
   intent: in
@@ -2542,7 +2473,6 @@ c_in_string_buf:
   - trim
   helper:
   - char_len_trim
-  owner: library
 c_in_struct:
   name: c_in_struct
   intent: in
@@ -2567,7 +2497,6 @@ c_in_struct:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_in_struct&:
   name: c_in_struct&
   intent: in
@@ -2589,7 +2518,6 @@ c_in_struct&:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
-  owner: library
 c_in_struct*:
   name: c_in_struct*
   intent: in
@@ -2614,7 +2542,6 @@ c_in_struct*:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_in_unknown:
   name: c_in_unknown
   intent: in
@@ -2638,13 +2565,11 @@ c_in_unknown:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_in_vector<native*>&:
   name: c_in_vector<native*>&
   intent: in
   notes:
   - Need to know the length of the vector from C.
-  owner: library
   notimplemented: true
 c_in_vector<native*>&_buf:
   name: c_in_vector<native*>&_buf
@@ -2686,13 +2611,11 @@ c_in_vector<native*>&_buf:
   - size
   c_local:
   - cxx
-  owner: library
 c_in_vector<native>&:
   name: c_in_vector<native>&
   intent: in
   notes:
   - Need to know the length of the vector from C.
-  owner: library
   notimplemented: true
 c_in_vector<native>&_buf:
   name: c_in_vector<native>&_buf
@@ -2726,7 +2649,6 @@ c_in_vector<native>&_buf:
   - size
   c_local:
   - cxx
-  owner: library
 c_in_vector<native>*_buf:
   name: c_in_vector<native>*_buf
   intent: in
@@ -2759,7 +2681,6 @@ c_in_vector<native>*_buf:
   - size
   c_local:
   - cxx
-  owner: library
 c_in_vector<native>_buf:
   name: c_in_vector<native>_buf
   intent: in
@@ -2792,13 +2713,11 @@ c_in_vector<native>_buf:
   - size
   c_local:
   - cxx
-  owner: library
 c_in_vector<string>&:
   name: c_in_vector<string>&
   intent: in
   notes:
   - Need to know the length of the vector from C.
-  owner: library
   notimplemented: true
 c_in_vector<string>&_buf:
   name: c_in_vector<string>&_buf
@@ -2853,7 +2772,6 @@ c_in_vector<string>&_buf:
   - s
   helper:
   - char_len_trim
-  owner: library
 c_in_vector<string>*_buf:
   name: c_in_vector<string>*_buf
   intent: in
@@ -2907,7 +2825,6 @@ c_in_vector<string>*_buf:
   - s
   helper:
   - char_len_trim
-  owner: library
 c_in_vector<string>_buf:
   name: c_in_vector<string>_buf
   intent: in
@@ -2961,7 +2878,6 @@ c_in_vector<string>_buf:
   - s
   helper:
   - char_len_trim
-  owner: library
 c_in_void:
   name: c_in_void
   intent: in
@@ -2983,7 +2899,6 @@ c_in_void:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_in_void*:
   name: c_in_void*
   intent: in
@@ -3005,7 +2920,6 @@ c_in_void*:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_in_void**:
   name: c_in_void**
   intent: in
@@ -3026,7 +2940,6 @@ c_in_void**:
   - void **{c_var}
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_in_void*_cdesc:
   name: c_in_void*_cdesc
   intent: in
@@ -3059,7 +2972,6 @@ c_in_void*_cdesc:
   helper:
   - array_context
   - type_defines
-  owner: library
   lang_c:
     c_pre_call:
     - '{cxx_type} *{c_var} = {c_var_cdesc}->base_addr;'
@@ -3090,7 +3002,6 @@ c_inout_bool_*:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_inout_char*:
   name: c_inout_char*
   intent: inout
@@ -3112,7 +3023,6 @@ c_inout_char*:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_inout_char*_buf:
   name: c_inout_char*_buf
   intent: inout
@@ -3157,7 +3067,6 @@ c_inout_char*_buf:
   - char_copy
   - char_alloc
   - char_free
-  owner: library
 c_inout_enum*:
   name: c_inout_enum*
   intent: inout
@@ -3184,7 +3093,6 @@ c_inout_enum*:
   - '*{c_var} = {cast_static}{c_type}{cast1}{cxx_var}{cast2};'
   c_local:
   - cxx
-  owner: library
 c_inout_native&:
   name: c_inout_native&
   intent: inout
@@ -3206,7 +3114,6 @@ c_inout_native&:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
-  owner: library
 c_inout_native&_hidden:
   name: c_inout_native&_hidden
   intent: inout
@@ -3220,7 +3127,6 @@ c_inout_native&_hidden:
   - '{cxx_type} {cxx_var};'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_inout_native*:
   name: c_inout_native*
   intent: inout
@@ -3242,7 +3148,6 @@ c_inout_native*:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_inout_native*_cdesc:
   name: c_inout_native*_cdesc
   intent: inout
@@ -3275,7 +3180,6 @@ c_inout_native*_cdesc:
   helper:
   - array_context
   - type_defines
-  owner: library
   lang_c:
     c_pre_call:
     - '{cxx_type} *{c_var} = {c_var_cdesc}->base_addr;'
@@ -3295,7 +3199,6 @@ c_inout_native*_hidden:
   - '{cxx_type} {cxx_var};'
   c_arg_call:
   - '&{cxx_var}'
-  owner: library
 c_inout_shadow&:
   name: c_inout_shadow&
   intent: inout
@@ -3323,7 +3226,6 @@ c_inout_shadow&:
   - '{c_local_cxx}'
   c_local:
   - cxx
-  owner: library
 c_inout_shadow*:
   name: c_inout_shadow*
   intent: inout
@@ -3351,7 +3253,6 @@ c_inout_shadow*:
   - '{c_local_cxx}'
   c_local:
   - cxx
-  owner: library
 c_inout_smartptr<shadow>*:
   name: c_inout_smartptr<shadow>*
   intent: inout
@@ -3379,7 +3280,6 @@ c_inout_smartptr<shadow>*:
   - '{c_local_cxx}'
   c_local:
   - cxx
-  owner: library
 c_inout_string&:
   name: c_inout_string&
   intent: inout
@@ -3414,7 +3314,6 @@ c_inout_string&:
   - cxx
   impl_header:
   - <cstring>
-  owner: library
 c_inout_string&_buf:
   name: c_inout_string&_buf
   intent: inout
@@ -3459,7 +3358,6 @@ c_inout_string&_buf:
   helper:
   - char_len_trim
   - char_copy
-  owner: library
 c_inout_string*:
   name: c_inout_string*
   intent: inout
@@ -3497,7 +3395,6 @@ c_inout_string*:
   - cxx
   impl_header:
   - <cstring>
-  owner: library
 c_inout_string*_buf:
   name: c_inout_string*_buf
   intent: inout
@@ -3542,7 +3439,6 @@ c_inout_string*_buf:
   helper:
   - char_len_trim
   - char_copy
-  owner: library
 c_inout_struct&:
   name: c_inout_struct&
   intent: inout
@@ -3564,7 +3460,6 @@ c_inout_struct&:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
-  owner: library
 c_inout_struct*:
   name: c_inout_struct*
   intent: inout
@@ -3589,7 +3484,6 @@ c_inout_struct*:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_inout_vector<native>&_buf_copy:
   name: c_inout_vector<native>&_buf_copy
   intent: inout
@@ -3622,7 +3516,6 @@ c_inout_vector<native>&_buf_copy:
   - size
   c_local:
   - cxx
-  owner: library
   notimplemented: true
 c_inout_vector<native>&_buf_malloc:
   name: c_inout_vector<native>&_buf_malloc
@@ -3668,7 +3561,6 @@ c_inout_vector<native>&_buf_malloc:
   impl_header:
   - <cstdlib>
   - <cstring>
-  owner: library
   lang_c:
     impl_header:
     - <stdlib.h>
@@ -3709,7 +3601,6 @@ c_inout_vector<native>*_buf_copy:
   - size
   c_local:
   - cxx
-  owner: library
   notimplemented: true
 c_inout_vector<native>*_buf_malloc:
   name: c_inout_vector<native>*_buf_malloc
@@ -3755,7 +3646,6 @@ c_inout_vector<native>*_buf_malloc:
   impl_header:
   - <cstdlib>
   - <cstring>
-  owner: library
   lang_c:
     impl_header:
     - <stdlib.h>
@@ -3796,7 +3686,6 @@ c_inout_vector<native>_buf_copy:
   - size
   c_local:
   - cxx
-  owner: library
   notimplemented: true
 c_inout_vector<native>_buf_malloc:
   name: c_inout_vector<native>_buf_malloc
@@ -3842,7 +3731,6 @@ c_inout_vector<native>_buf_malloc:
   impl_header:
   - <cstdlib>
   - <cstring>
-  owner: library
   lang_c:
     impl_header:
     - <stdlib.h>
@@ -3856,7 +3744,6 @@ c_inout_vector<scalar>&:
   intent: inout
   notes:
   - Need to know the length of the vector from C.
-  owner: library
   notimplemented: true
 c_inout_void**:
   name: c_inout_void**
@@ -3878,7 +3765,6 @@ c_inout_void**:
   - void **{c_var}
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_inout_void*_cdesc:
   name: c_inout_void*_cdesc
   intent: inout
@@ -3911,7 +3797,6 @@ c_inout_void*_cdesc:
   helper:
   - array_context
   - type_defines
-  owner: library
   lang_c:
     c_pre_call:
     - '{cxx_type} *{c_var} = {c_var_cdesc}->base_addr;'
@@ -3925,7 +3810,6 @@ c_mixin_arg-call-cvar:
   - Pass cxx variable to library.
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_mixin_arg-call-cvar-address:
   name: c_mixin_arg-call-cvar-address
   intent: mixin
@@ -3933,7 +3817,6 @@ c_mixin_arg-call-cvar-address:
   - Pass address of cxx variable to library.
   c_arg_call:
   - '&{cxx_var}'
-  owner: library
 c_mixin_arg-call-cvar-deref:
   name: c_mixin_arg-call-cvar-deref
   intent: mixin
@@ -3941,7 +3824,6 @@ c_mixin_arg-call-cvar-deref:
   - Pass dereference of cxx variable to library.
   c_arg_call:
   - '*{cxx_var}'
-  owner: library
 c_mixin_arg-call-cxx:
   name: c_mixin_arg-call-cxx
   intent: mixin
@@ -3949,7 +3831,6 @@ c_mixin_arg-call-cxx:
   - Pass cxx local variable to library.
   c_arg_call:
   - '{c_local_cxx}'
-  owner: library
 c_mixin_arg-call-cxx-address:
   name: c_mixin_arg-call-cxx-address
   intent: mixin
@@ -3957,7 +3838,6 @@ c_mixin_arg-call-cxx-address:
   - Pass address of local cxx variable to library.
   c_arg_call:
   - '&{c_local_cxx}'
-  owner: library
 c_mixin_arg-call-cxx-deref:
   name: c_mixin_arg-call-cxx-deref
   intent: mixin
@@ -3965,14 +3845,12 @@ c_mixin_arg-call-cxx-deref:
   - Pass dereference of local cxx variable to library.
   c_arg_call:
   - '*{c_local_cxx}'
-  owner: library
 c_mixin_as-intent-out:
   name: c_mixin_as-intent-out
   intent: mixin
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
-  owner: library
 c_mixin_c-str:
   name: c_mixin_c-str
   intent: mixin
@@ -3985,7 +3863,6 @@ c_mixin_c-str:
   c_post_call:
   - const char *{c_var} = NULL;
   - if (!{c_local_cxx}->empty()) {c_var} = {c_local_cxx}->c_str();
-  owner: library
 c_mixin_capsule_fill_cvar:
   name: c_mixin_capsule_fill_cvar
   intent: mixin
@@ -3994,7 +3871,6 @@ c_mixin_capsule_fill_cvar:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
-  owner: library
 c_mixin_capsule_fill_native:
   name: c_mixin_capsule_fill_native
   intent: mixin
@@ -4003,7 +3879,6 @@ c_mixin_capsule_fill_native:
   c_post_call:
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
-  owner: library
 c_mixin_capsule_pass:
   name: c_mixin_capsule_pass
   intent: mixin
@@ -4021,7 +3896,6 @@ c_mixin_capsule_pass:
   - capsule
   helper:
   - capsule_data_helper
-  owner: library
 c_mixin_cast-argument:
   name: c_mixin_cast-argument
   intent: mixin
@@ -4031,7 +3905,6 @@ c_mixin_cast-argument:
   - "{c_const}{cxx_type} *{c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
   c_local:
   - cxx
-  owner: library
 c_mixin_cdesc_char_fill_cvar:
   name: c_mixin_cdesc_char_fill_cvar
   intent: mixin
@@ -4045,7 +3918,6 @@ c_mixin_cdesc_char_fill_cvar:
   - '{c_var_cdesc}->rank = 0;'
   helper:
   - type_defines
-  owner: library
 c_mixin_cdesc_function_string:
   name: c_mixin_cdesc_function_string
   intent: mixin
@@ -4056,7 +3928,6 @@ c_mixin_cdesc_function_string:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   helper:
   - string_to_cdesc
-  owner: library
 c_mixin_cdesc_inout_vector:
   name: c_mixin_cdesc_inout_vector
   intent: mixin
@@ -4085,7 +3956,6 @@ c_mixin_cdesc_inout_vector:
   - cdesc
   helper:
   - array_context
-  owner: library
 c_mixin_cdesc_native_fill:
   name: c_mixin_cdesc_native_fill
   intent: mixin
@@ -4097,13 +3967,11 @@ c_mixin_cdesc_native_fill:
   - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
   - '{c_var_cdesc}->size = {gen.c_array_size};'
-  owner: library
 c_mixin_cdesc_unpack-base-addr:
   name: c_mixin_cdesc_unpack-base-addr
   intent: mixin
   c_pre_call:
   - "{cxx_type} *{c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
-  owner: library
   lang_c:
     c_pre_call:
     - '{cxx_type} *{c_var} = {c_var_cdesc}->base_addr;'
@@ -4125,13 +3993,11 @@ c_mixin_cdesc_vector_fill:
   - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
   helper:
   - type_defines
-  owner: library
 c_mixin_cfi-unpack-base-addr:
   name: c_mixin_cfi-unpack-base-addr
   intent: mixin
   c_pre_call:
   - '{c_type} *{c_var} = {cast_static}{c_type} *{cast1}{c_var_cfi}->base_addr{cast2};'
-  owner: library
 c_mixin_cfi-unpack-base-addr-cxx:
   name: c_mixin_cfi-unpack-base-addr-cxx
   intent: mixin
@@ -4139,7 +4005,6 @@ c_mixin_cfi-unpack-base-addr-cxx:
   - '{cxx_type} *{c_local_cxx} = {cast_static}{cxx_type} *{cast1}{c_var_cfi}->base_addr{cast2};'
   c_local:
   - cxx
-  owner: library
 c_mixin_cfi-unpack-len:
   name: c_mixin_cfi-unpack-len
   intent: mixin
@@ -4147,7 +4012,6 @@ c_mixin_cfi-unpack-len:
   - size_t {c_var_len} = {c_var_cfi}->elem_len;
   c_temps:
   - len
-  owner: library
 c_mixin_cfi-unpack-len-size:
   name: c_mixin_cfi-unpack-len-size
   intent: mixin
@@ -4157,7 +4021,6 @@ c_mixin_cfi-unpack-len-size:
   c_temps:
   - len
   - size
-  owner: library
 c_mixin_cfi_arg:
   name: c_mixin_cfi_arg
   intent: mixin
@@ -4169,7 +4032,6 @@ c_mixin_cfi_arg:
   - cfi
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 c_mixin_cfi_arg_character:
   name: c_mixin_cfi_arg_character
   intent: mixin
@@ -4188,7 +4050,6 @@ c_mixin_cfi_arg_character:
   - cfi
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 c_mixin_cfi_arg_native:
   name: c_mixin_cfi_arg_native
   intent: mixin
@@ -4210,7 +4071,6 @@ c_mixin_cfi_arg_native:
   - cfi
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 c_mixin_cfi_character_pointer:
   name: c_mixin_cfi_character_pointer
   intent: mixin
@@ -4238,7 +4098,6 @@ c_mixin_cfi_character_pointer:
   - cdesc
   - len
   - err
-  owner: library
 c_mixin_cfi_copy-to-arg:
   name: c_mixin_cfi_copy-to-arg
   intent: mixin
@@ -4254,7 +4113,6 @@ c_mixin_cfi_copy-to-arg:
   - -}}
   helper:
   - char_copy
-  owner: library
 c_mixin_cfi_native_allocatable:
   name: c_mixin_cfi_native_allocatable
   intent: mixin
@@ -4277,7 +4135,6 @@ c_mixin_cfi_native_allocatable:
   - lower_bounds_CFI
   impl_header:
   - <cstring>
-  owner: library
   lang_c:
     impl_header:
     - <string.h>
@@ -4309,7 +4166,6 @@ c_mixin_cfi_native_pointer:
   - err
   helper:
   - lower_bounds_CFI
-  owner: library
 c_mixin_cfi_string**_allocatable:
   name: c_mixin_cfi_string**_allocatable
   intent: mixin
@@ -4329,7 +4185,6 @@ c_mixin_cfi_string**_allocatable:
   helper:
   - lower_bounds_CFI
   - cfi_array_string_out
-  owner: library
 c_mixin_char-alloc:
   name: c_mixin_char-alloc
   intent: mixin
@@ -4344,7 +4199,6 @@ c_mixin_char-alloc:
   helper:
   - char_alloc
   - char_free
-  owner: library
 c_mixin_char-array-alloc:
   name: c_mixin_char-array-alloc
   intent: mixin
@@ -4361,7 +4215,6 @@ c_mixin_char-array-alloc:
   helper:
   - char_array_alloc
   - char_array_free
-  owner: library
 c_mixin_char-blank-fill:
   name: c_mixin_char-blank-fill
   intent: mixin
@@ -4371,7 +4224,6 @@ c_mixin_char-blank-fill:
   - '{c_helper_char_blank_fill}({c_var}, {c_var_len});'
   helper:
   - char_blank_fill
-  owner: library
 c_mixin_char-copy:
   name: c_mixin_char-copy
   intent: mixin
@@ -4381,7 +4233,6 @@ c_mixin_char-copy:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   helper:
   - char_copy
-  owner: library
 c_mixin_char-free:
   name: c_mixin_char-free
   intent: mixin
@@ -4393,7 +4244,6 @@ c_mixin_char-free:
   - delete[] {c_local_cxx};
   impl_header:
   - <cstdlib>
-  owner: library
   lang_c:
     impl_header:
     - <stdlib.h>
@@ -4417,7 +4267,6 @@ c_mixin_char-malloc:
   - cxx
   impl_header:
   - <cstdlib>
-  owner: library
   lang_c:
     impl_header:
     - <stdlib.h>
@@ -4438,19 +4287,16 @@ c_mixin_character-assumed-length:
   i_module:
     iso_c_binding:
     - C_CHAR
-  owner: library
 c_mixin_character-deferred-length:
   name: c_mixin_character-deferred-length
   intent: mixin
   i_dummy_decl:
   - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
-  owner: library
 c_mixin_declare-arg:
   name: c_mixin_declare-arg
   intent: mixin
   c_prototype:
   - '{gen.cdecl.c_var}'
-  owner: library
 c_mixin_declare-arg-char:
   name: c_mixin_declare-arg-char
   intent: mixin
@@ -4465,7 +4311,6 @@ c_mixin_declare-arg-char:
     - C_CHAR
   c_prototype:
   - char {c_var}
-  owner: library
 c_mixin_declare-fortran-result:
   name: c_mixin_declare-fortran-result
   intent: mixin
@@ -4474,7 +4319,6 @@ c_mixin_declare-fortran-result:
   i_module:
     '{i_module_name}':
     - '{i_kind}'
-  owner: library
 c_mixin_delete-cxx-variable:
   name: c_mixin_delete-cxx-variable
   intent: mixin
@@ -4482,7 +4326,6 @@ c_mixin_delete-cxx-variable:
   - Delete the cxx variable.
   c_post_call:
   - delete {cxx_var};
-  owner: library
 c_mixin_destructor_new-shadow-shared:
   name: c_mixin_destructor_new-shadow-shared
   intent: mixin
@@ -4493,7 +4336,6 @@ c_mixin_destructor_new-shadow-shared:
   - "{cxx_type} *shared =\t reinterpret_cast<{cxx_type} *>(ptr);"
   - shared->reset();
   - delete shared;
-  owner: library
 c_mixin_destructor_new-string:
   name: c_mixin_destructor_new-string
   intent: mixin
@@ -4501,7 +4343,6 @@ c_mixin_destructor_new-string:
   destructor:
   - "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);"
   - delete cxx_ptr;
-  owner: library
 c_mixin_destructor_new-vector:
   name: c_mixin_destructor_new-vector
   intent: mixin
@@ -4509,13 +4350,11 @@ c_mixin_destructor_new-vector:
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
-  owner: library
 c_mixin_dummy_arg:
   name: c_mixin_dummy_arg
   intent: mixin
   i_dummy_arg:
   - '{i_var}'
-  owner: library
 c_mixin_function-assign-to-cvar:
   name: c_mixin_function-assign-to-cvar
   intent: mixin
@@ -4523,7 +4362,6 @@ c_mixin_function-assign-to-cvar:
   - Call function and assign to a c variable.
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
-  owner: library
 c_mixin_function-assign-to-local:
   name: c_mixin_function-assign-to-local
   intent: mixin
@@ -4533,7 +4371,6 @@ c_mixin_function-assign-to-local:
   - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_local:
   - cxx
-  owner: library
 c_mixin_function-assign-to-new:
   name: c_mixin_function-assign-to-new
   intent: mixin
@@ -4554,7 +4391,6 @@ c_mixin_function-return-cvar:
   c_return_type: '{c_type} *'
   c_return:
   - return {c_var};
-  owner: library
 c_mixin_function_shadow_capptr:
   name: c_mixin_function_shadow_capptr
   intent: mixin
@@ -4569,7 +4405,6 @@ c_mixin_function_shadow_capptr:
     - C_PTR
   c_temps:
   - ptr
-  owner: library
 c_mixin_function_vector_malloc:
   name: c_mixin_function_vector_malloc
   intent: mixin
@@ -4591,13 +4426,11 @@ c_mixin_function_vector_malloc:
   - size_t *{c_var_size}
   c_temps:
   - size
-  owner: library
 c_mixin_header_cstring:
   name: c_mixin_header_cstring
   intent: mixin
   impl_header:
   - <cstring>
-  owner: library
   lang_c:
     impl_header:
     - <string.h>
@@ -4609,7 +4442,6 @@ c_mixin_header_stddef:
   intent: mixin
   impl_header:
   - <cstddef>
-  owner: library
   lang_c:
     impl_header:
     - <stddef.h>
@@ -4621,7 +4453,6 @@ c_mixin_header_stdlib:
   intent: mixin
   impl_header:
   - <cstdlib>
-  owner: library
   lang_c:
     impl_header:
     - <stdlib.h>
@@ -4648,7 +4479,6 @@ c_mixin_in_character_buf:
   - int {c_var_len}
   c_temps:
   - len
-  owner: library
 c_mixin_inout_vector<native>_cdesc:
   name: c_mixin_inout_vector<native>_cdesc
   intent: mixin
@@ -4703,7 +4533,6 @@ c_mixin_inout_vector<native>_cdesc:
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
-  owner: library
 c_mixin_local-cvar-ptr:
   name: c_mixin_local-cvar-ptr
   intent: mixin
@@ -4711,7 +4540,6 @@ c_mixin_local-cvar-ptr:
   - Declare a local pointer variable in the C wrapper.
   c_pre_call:
   - '{c_const}{c_type} *{c_var};'
-  owner: library
 c_mixin_local-cxx-ptr:
   name: c_mixin_local-cxx-ptr
   intent: mixin
@@ -4721,7 +4549,6 @@ c_mixin_local-cxx-ptr:
   - '{c_const}{c_type} *{c_local_cxx};'
   c_local:
   - cxx
-  owner: library
 c_mixin_local-string:
   name: c_mixin_local-string
   intent: mixin
@@ -4731,7 +4558,6 @@ c_mixin_local-string:
   - '{c_const}std::string {c_local_cxx};'
   c_local:
   - cxx
-  owner: library
 c_mixin_local-string*:
   name: c_mixin_local-string*
   intent: mixin
@@ -4739,7 +4565,6 @@ c_mixin_local-string*:
   - Create local std::string pointer.
   c_pre_call:
   - std::string *{cxx_var};
-  owner: library
 c_mixin_local-string-init:
   name: c_mixin_local-string-init
   intent: mixin
@@ -4749,7 +4574,6 @@ c_mixin_local-string-init:
   - '{c_const}std::string {c_local_cxx}({c_var});'
   c_local:
   - cxx
-  owner: library
 c_mixin_local-string-init-trim:
   name: c_mixin_local-string-init-trim
   intent: mixin
@@ -4763,7 +4587,6 @@ c_mixin_local-string-init-trim:
   - trim
   helper:
   - char_len_trim
-  owner: library
 c_mixin_make-shared:
   name: c_mixin_make-shared
   intent: mixin
@@ -4806,7 +4629,6 @@ c_mixin_new_vector<native>:
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
-  owner: library
 c_mixin_out_native**:
   name: c_mixin_out_native**
   intent: mixin
@@ -4814,7 +4636,6 @@ c_mixin_out_native**:
   - Declare a local C pointer.
   c_pre_call:
   - '{c_const}{cxx_type} *{cxx_var};'
-  owner: library
 c_mixin_out_vector_buf_malloc:
   name: c_mixin_out_vector_buf_malloc
   intent: mixin
@@ -4835,7 +4656,6 @@ c_mixin_out_vector_buf_malloc:
   - size_t *{c_var_size}
   c_temps:
   - size
-  owner: library
 c_mixin_shadow:
   name: c_mixin_shadow
   intent: mixin
@@ -4848,7 +4668,6 @@ c_mixin_shadow:
     - '{f_capsule_data_type}'
   c_prototype:
   - '{c_type} *{c_var}'
-  owner: library
 c_mixin_string-char-copy-to-arg:
   name: c_mixin_string-char-copy-to-arg
   intent: mixin
@@ -4862,7 +4681,6 @@ c_mixin_string-char-copy-to-arg:
   - -}}
   helper:
   - char_copy
-  owner: library
 c_mixin_string-copy-out:
   name: c_mixin_string-copy-out
   intent: mixin
@@ -4872,7 +4690,6 @@ c_mixin_string-copy-out:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx}.data(),\t {c_local_cxx}.size());"
   helper:
   - char_copy
-  owner: library
 c_mixin_string-strcpy-out:
   name: c_mixin_string-strcpy-out
   intent: mixin
@@ -4882,7 +4699,6 @@ c_mixin_string-strcpy-out:
   - std::strcpy({c_var}, {c_local_cxx}.c_str());
   impl_header:
   - <cstring>
-  owner: library
 c_mixin_string_max_len:
   name: c_mixin_string_max_len
   intent: mixin
@@ -4897,7 +4713,6 @@ c_mixin_string_max_len:
   - len
   helper:
   - array_string_out_len
-  owner: library
 c_mixin_unknown:
   name: c_mixin_unknown
   intent: mixin
@@ -4909,7 +4724,6 @@ c_mixin_unknown:
   - ===>{i_var} i_dummy_decl<===
   c_prototype:
   - ===>{c_var} c_prototype<===
-  owner: library
 c_out_bool_*:
   name: c_out_bool_*
   intent: out
@@ -4933,7 +4747,6 @@ c_out_bool_*:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_out_char*:
   name: c_out_char*
   intent: out
@@ -4955,7 +4768,6 @@ c_out_char*:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_out_char**:
   name: c_out_char**
   intent: out
@@ -4976,7 +4788,6 @@ c_out_char**:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_out_char_*_buf:
   name: c_out_char_*_buf
   intent: out
@@ -5012,7 +4823,6 @@ c_out_char_*_buf:
   - len
   helper:
   - char_blank_fill
-  owner: library
 c_out_enum*:
   name: c_out_enum*
   intent: out
@@ -5039,7 +4849,6 @@ c_out_enum*:
   - '*{c_var} = {cast_static}{c_type}{cast1}{cxx_var}{cast2};'
   c_local:
   - cxx
-  owner: library
 c_out_native&:
   name: c_out_native&
   intent: out
@@ -5061,7 +4870,6 @@ c_out_native&:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
-  owner: library
 c_out_native&_hidden:
   name: c_out_native&_hidden
   intent: out
@@ -5075,7 +4883,6 @@ c_out_native&_hidden:
   - '{cxx_type} {cxx_var};'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_out_native*:
   name: c_out_native*
   intent: out
@@ -5097,7 +4904,6 @@ c_out_native*:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_out_native*&:
   name: c_out_native*&
   intent: out
@@ -5119,7 +4925,6 @@ c_out_native*&:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
-  owner: library
 c_out_native**:
   name: c_out_native**
   intent: out
@@ -5143,7 +4948,6 @@ c_out_native**:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_out_native***:
   name: c_out_native***
   intent: out
@@ -5165,7 +4969,6 @@ c_out_native***:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_out_native**_raw:
   name: c_out_native**_raw
   intent: out
@@ -5189,7 +4992,6 @@ c_out_native**_raw:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_out_native*_cdesc:
   name: c_out_native*_cdesc
   intent: out
@@ -5222,7 +5024,6 @@ c_out_native*_cdesc:
   helper:
   - array_context
   - type_defines
-  owner: library
   lang_c:
     c_pre_call:
     - '{cxx_type} *{c_var} = {c_var_cdesc}->base_addr;'
@@ -5242,7 +5043,6 @@ c_out_native*_hidden:
   - '{cxx_type} {cxx_var};'
   c_arg_call:
   - '&{cxx_var}'
-  owner: library
 c_out_procedure*_funptr:
   name: c_out_procedure*_funptr
   intent: out
@@ -5267,7 +5067,6 @@ c_out_procedure*_funptr:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_out_string&:
   name: c_out_string&
   intent: out
@@ -5302,7 +5101,6 @@ c_out_string&:
   - cxx
   impl_header:
   - <cstring>
-  owner: library
 c_out_string&_buf:
   name: c_out_string&_buf
   intent: out
@@ -5344,7 +5142,6 @@ c_out_string&_buf:
   - cxx
   helper:
   - char_copy
-  owner: library
 c_out_string*:
   name: c_out_string*
   intent: out
@@ -5377,7 +5174,6 @@ c_out_string*:
   - cxx
   impl_header:
   - <cstring>
-  owner: library
 c_out_string**:
   name: c_out_string**
   intent: out
@@ -5402,7 +5198,6 @@ c_out_string**:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
   notimplemented: true
 c_out_string**_cdesc_copy:
   name: c_out_string**_cdesc_copy
@@ -5443,7 +5238,6 @@ c_out_string**_cdesc_copy:
     f_target_attr: ', target'
   helper:
   - cdesc_array_string_out
-  owner: library
 c_out_string*_buf:
   name: c_out_string*_buf
   intent: out
@@ -5485,7 +5279,6 @@ c_out_string*_buf:
   - cxx
   helper:
   - char_copy
-  owner: library
 c_out_struct&:
   name: c_out_struct&
   intent: out
@@ -5507,7 +5300,6 @@ c_out_struct&:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
-  owner: library
 c_out_struct*:
   name: c_out_struct*
   intent: out
@@ -5532,13 +5324,11 @@ c_out_struct*:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_out_vector<native>&:
   name: c_out_vector<native>&
   intent: out
   notes:
   - Need to know the length of the vector from C.
-  owner: library
   notimplemented: true
 c_out_vector<native>&_buf_copy:
   name: c_out_vector<native>&_buf_copy
@@ -5581,7 +5371,6 @@ c_out_vector<native>&_buf_copy:
   - size
   impl_header:
   - <cstring>
-  owner: library
   lang_c:
     impl_header:
     - <string.h>
@@ -5633,7 +5422,6 @@ c_out_vector<native>&_buf_malloc:
   impl_header:
   - <cstdlib>
   - <cstring>
-  owner: library
   lang_c:
     impl_header:
     - <stdlib.h>
@@ -5696,7 +5484,6 @@ c_out_vector<native>&_cdesc:
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
-  owner: library
 c_out_vector<native>*_buf_copy:
   name: c_out_vector<native>*_buf_copy
   intent: out
@@ -5738,7 +5525,6 @@ c_out_vector<native>*_buf_copy:
   - size
   impl_header:
   - <cstring>
-  owner: library
   lang_c:
     impl_header:
     - <string.h>
@@ -5790,7 +5576,6 @@ c_out_vector<native>*_buf_malloc:
   impl_header:
   - <cstdlib>
   - <cstring>
-  owner: library
   lang_c:
     impl_header:
     - <stdlib.h>
@@ -5853,7 +5638,6 @@ c_out_vector<native>*_cdesc:
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
-  owner: library
 c_out_vector<native>_buf_copy:
   name: c_out_vector<native>_buf_copy
   intent: out
@@ -5895,7 +5679,6 @@ c_out_vector<native>_buf_copy:
   - size
   impl_header:
   - <cstring>
-  owner: library
   lang_c:
     impl_header:
     - <string.h>
@@ -5947,7 +5730,6 @@ c_out_vector<native>_buf_malloc:
   impl_header:
   - <cstdlib>
   - <cstring>
-  owner: library
   lang_c:
     impl_header:
     - <stdlib.h>
@@ -5961,7 +5743,6 @@ c_out_vector<string>&:
   intent: out
   notes:
   - Need to know the length of the vector from C.
-  owner: library
   notimplemented: true
 c_out_vector<string>&_buf_copy:
   name: c_out_vector<string>&_buf_copy
@@ -5983,7 +5764,6 @@ c_out_vector<string>&_buf_copy:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
-  owner: library
   notimplemented: true
 c_out_vector<string>&_cdesc:
   name: c_out_vector<string>&_cdesc
@@ -6020,7 +5800,6 @@ c_out_vector<string>&_cdesc:
   - type_defines
   - array_context
   - cdesc_vector_string_out
-  owner: library
 c_out_vector<string>&_cdesc_allocatable:
   name: c_out_vector<string>&_cdesc_allocatable
   intent: out
@@ -6082,7 +5861,6 @@ c_out_vector<string>&_cdesc_allocatable:
   - cdesc_vector_string_allocatable
   - vector_string_out_len
   - capsule_dtor
-  owner: library
 c_out_vector<string>*_buf_copy:
   name: c_out_vector<string>*_buf_copy
   intent: out
@@ -6103,7 +5881,6 @@ c_out_vector<string>*_buf_copy:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
-  owner: library
   notimplemented: true
 c_out_vector<string>_buf_copy:
   name: c_out_vector<string>_buf_copy
@@ -6125,7 +5902,6 @@ c_out_vector<string>_buf_copy:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
-  owner: library
   notimplemented: true
 c_out_void*&:
   name: c_out_void*&
@@ -6148,7 +5924,6 @@ c_out_void*&:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
-  owner: library
 c_out_void**:
   name: c_out_void**
   intent: out
@@ -6169,7 +5944,6 @@ c_out_void**:
   - void **{c_var}
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 c_out_void*_cdesc:
   name: c_out_void*_cdesc
   intent: out
@@ -6202,7 +5976,6 @@ c_out_void*_cdesc:
   helper:
   - array_context
   - type_defines
-  owner: library
   lang_c:
     c_pre_call:
     - '{cxx_type} *{c_var} = {c_var_cdesc}->base_addr;'
@@ -6212,7 +5985,6 @@ c_out_void*_cdesc:
 c_setter:
   name: c_setter
   intent: setter
-  owner: library
 c_setter_native:
   name: c_setter_native
   intent: setter
@@ -6231,7 +6003,6 @@ c_setter_native:
   - '{gen.cdecl.c_var}'
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
-  owner: library
 c_setter_native*:
   name: c_setter_native*
   intent: setter
@@ -6250,7 +6021,6 @@ c_setter_native*:
   - '{gen.cdecl.c_var}'
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
-  owner: library
 c_setter_string_scalar_buf:
   name: c_setter_string_scalar_buf
   intent: setter
@@ -6280,7 +6050,6 @@ c_setter_string_scalar_buf:
   - "{CXX_this}->{field_name} = std::string({c_var},\t {c_var_len});"
   c_temps:
   - len
-  owner: library
 c_subroutine:
   name: c_subroutine
   intent: subroutine
@@ -6288,7 +6057,6 @@ c_subroutine:
   - Call subroutine/void C function.
   c_call:
   - '{C_call_function};'
-  owner: library
 c_subroutine_assignment_weakptr:
   name: c_subroutine_assignment_weakptr
   intent: subroutine
@@ -6310,7 +6078,6 @@ c_subroutine_assignment_weakptr:
   destructor:
   - "auto cxx_ptr =\t reinterpret_cast<{cxx_type}*>(ptr);"
   - delete cxx_ptr;
-  owner: library
 f_ctor_shadow_capsule:
   name: f_ctor_shadow_capsule
   intent: ctor
@@ -6407,7 +6174,6 @@ f_dtor:
   - '{C_this}->addr = {nullptr};'
   impl_header:
   - <cstddef>
-  owner: library
 f_function_bool:
   name: f_function_bool
   intent: function
@@ -6436,7 +6202,6 @@ f_function_bool:
     - '{i_kind}'
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
-  owner: library
 f_function_char:
   name: f_function_char
   intent: function
@@ -6469,7 +6234,6 @@ f_function_char:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
-  owner: library
 f_function_char*:
   name: f_function_char*
   intent: function
@@ -6498,7 +6262,6 @@ f_function_char*:
     - C_PTR
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
-  owner: library
 f_function_char*_allocatable:
   name: f_function_char*_allocatable
   intent: function
@@ -6527,7 +6290,6 @@ f_function_char*_allocatable:
     - C_PTR
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
-  owner: library
 f_function_char*_arg:
   name: f_function_char*_arg
   intent: function
@@ -6607,7 +6369,6 @@ f_function_char*_arg:
     c_var_len: n{F_string_result_as_arg}
   helper:
   - char_copy
-  owner: library
 f_function_char*_buf_arg:
   name: f_function_char*_buf_arg
   intent: function
@@ -6687,7 +6448,6 @@ f_function_char*_buf_arg:
     c_var_len: n{F_string_result_as_arg}
   helper:
   - char_copy
-  owner: library
 f_function_char*_buf_copy:
   name: f_function_char*_buf_copy
   intent: function
@@ -6761,7 +6521,6 @@ f_function_char*_buf_copy:
     i_intent_attr: ', intent(OUT)'
   helper:
   - char_copy
-  owner: library
 f_function_char*_cdesc_allocatable:
   name: f_function_char*_cdesc_allocatable
   intent: function
@@ -6819,7 +6578,6 @@ f_function_char*_cdesc_allocatable:
   - array_context
   - copy_string
   - type_defines
-  owner: library
 f_function_char*_cdesc_pointer:
   name: f_function_char*_cdesc_pointer
   intent: function
@@ -6878,7 +6636,6 @@ f_function_char*_cdesc_pointer:
   - array_context
   - type_defines
   - pointer_string
-  owner: library
 f_function_char*_cfi_allocatable:
   name: f_function_char*_cfi_allocatable
   intent: function
@@ -6931,7 +6688,6 @@ f_function_char*_cfi_allocatable:
   - ISO_Fortran_binding.h
   impl_header:
   - <cstring>
-  owner: library
 f_function_char*_cfi_arg:
   name: f_function_char*_cfi_arg
   intent: function
@@ -7000,7 +6756,6 @@ f_function_char*_cfi_arg:
   - char_copy
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_function_char*_cfi_copy:
   name: f_function_char*_cfi_copy
   intent: function
@@ -7066,7 +6821,6 @@ f_function_char*_cfi_copy:
   - char_copy
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_function_char*_cfi_pointer:
   name: f_function_char*_cfi_pointer
   intent: function
@@ -7130,7 +6884,6 @@ f_function_char*_cfi_pointer:
     i_intent_attr: ', intent(OUT)'
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_function_char*_copy:
   name: f_function_char*_copy
   intent: function
@@ -7159,7 +6912,6 @@ f_function_char*_copy:
     - C_PTR
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
-  owner: library
 f_function_char*_pointer:
   name: f_function_char*_pointer
   intent: function
@@ -7188,7 +6940,6 @@ f_function_char*_pointer:
     - C_PTR
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
-  owner: library
 f_function_char*_raw:
   name: f_function_char*_raw
   intent: function
@@ -7217,7 +6968,6 @@ f_function_char*_raw:
     - C_PTR
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
-  owner: library
 f_function_char_cdesc_allocatable:
   name: f_function_char_cdesc_allocatable
   intent: function
@@ -7275,7 +7025,6 @@ f_function_char_cdesc_allocatable:
   - array_context
   - copy_string
   - type_defines
-  owner: library
 f_function_char_cdesc_pointer:
   name: f_function_char_cdesc_pointer
   intent: function
@@ -7334,7 +7083,6 @@ f_function_char_cdesc_pointer:
   - array_context
   - type_defines
   - pointer_string
-  owner: library
 f_function_char_cfi_allocatable:
   name: f_function_char_cfi_allocatable
   intent: function
@@ -7387,7 +7135,6 @@ f_function_char_cfi_allocatable:
   - ISO_Fortran_binding.h
   impl_header:
   - <cstring>
-  owner: library
 f_function_char_cfi_pointer:
   name: f_function_char_cfi_pointer
   intent: function
@@ -7451,7 +7198,6 @@ f_function_char_cfi_pointer:
     i_intent_attr: ', intent(OUT)'
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_function_enum:
   name: f_function_enum
   intent: function
@@ -7485,7 +7231,6 @@ f_function_enum:
   - "{ci_type} {c_var} =\t {cast_static}{ci_type}{cast1}{c_local_cxx}{cast2};"
   c_local:
   - cxx
-  owner: library
 f_function_native:
   name: f_function_native
   intent: function
@@ -7513,7 +7258,6 @@ f_function_native:
     - '{i_kind}'
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
-  owner: library
 f_function_native&:
   name: f_function_native&
   intent: function
@@ -7550,7 +7294,6 @@ f_function_native&:
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_need_wrapper: true
-  owner: library
 f_function_native&_pointer:
   name: f_function_native&_pointer
   intent: function
@@ -7587,7 +7330,6 @@ f_function_native&_pointer:
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_need_wrapper: true
-  owner: library
 f_function_native**:
   name: f_function_native**
   intent: function
@@ -7609,7 +7351,6 @@ f_function_native**:
     - C_PTR
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
-  owner: library
 f_function_native*_cdesc_allocatable:
   name: f_function_native*_cdesc_allocatable
   intent: function
@@ -7701,7 +7442,6 @@ f_function_native*_cdesc_allocatable:
   - capsule_data_helper
   - array_context
   - capsule_dtor
-  owner: library
 f_function_native*_cdesc_pointer:
   name: f_function_native*_cdesc_pointer
   intent: function
@@ -7760,7 +7500,6 @@ f_function_native*_cdesc_pointer:
     i_intent_attr: ', intent(OUT)'
   helper:
   - array_context
-  owner: library
 f_function_native*_cdesc_pointer_caller:
   name: f_function_native*_cdesc_pointer_caller
   intent: function
@@ -7845,7 +7584,6 @@ f_function_native*_cdesc_pointer_caller:
   - capsule_data_helper
   - array_context
   - capsule_helper
-  owner: library
 f_function_native*_cfi_allocatable:
   name: f_function_native*_cfi_allocatable
   intent: function
@@ -7920,7 +7658,6 @@ f_function_native*_cfi_allocatable:
   - ISO_Fortran_binding.h
   impl_header:
   - <cstring>
-  owner: library
 f_function_native*_cfi_pointer:
   name: f_function_native*_cfi_pointer
   intent: function
@@ -8001,7 +7738,6 @@ f_function_native*_cfi_pointer:
   - lower_bounds_CFI
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_function_native*_pointer:
   name: f_function_native*_pointer
   intent: function
@@ -8038,7 +7774,6 @@ f_function_native*_pointer:
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_need_wrapper: true
-  owner: library
 f_function_native*_pointer_caller:
   name: f_function_native*_pointer_caller
   intent: function
@@ -8075,7 +7810,6 @@ f_function_native*_pointer_caller:
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_need_wrapper: true
-  owner: library
 f_function_native*_raw:
   name: f_function_native*_raw
   intent: function
@@ -8097,7 +7831,6 @@ f_function_native*_raw:
     - C_PTR
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
-  owner: library
 f_function_native*_scalar:
   name: f_function_native*_scalar
   intent: function
@@ -8131,7 +7864,6 @@ f_function_native*_scalar:
   c_return:
   - return *{cxx_var};
   c_need_wrapper: true
-  owner: library
 f_function_shadow&_capsule:
   name: f_function_shadow&_capsule
   intent: function
@@ -8176,7 +7908,6 @@ f_function_shadow&_capsule:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
-  owner: library
 f_function_shadow&_capsule_caller:
   name: f_function_shadow&_capsule_caller
   intent: function
@@ -8221,7 +7952,6 @@ f_function_shadow&_capsule_caller:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
-  owner: library
 f_function_shadow&_capsule_library:
   name: f_function_shadow&_capsule_library
   intent: function
@@ -8266,7 +7996,6 @@ f_function_shadow&_capsule_library:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
-  owner: library
 f_function_shadow*_capsule:
   name: f_function_shadow*_capsule
   intent: function
@@ -8311,7 +8040,6 @@ f_function_shadow*_capsule:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
-  owner: library
 f_function_shadow*_capsule_caller:
   name: f_function_shadow*_capsule_caller
   intent: function
@@ -8356,7 +8084,6 @@ f_function_shadow*_capsule_caller:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
-  owner: library
 f_function_shadow*_capsule_library:
   name: f_function_shadow*_capsule_library
   intent: function
@@ -8401,7 +8128,6 @@ f_function_shadow*_capsule_library:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
-  owner: library
 f_function_shadow*_this:
   name: f_function_shadow*_this
   intent: function
@@ -8422,7 +8148,6 @@ f_function_shadow*_this:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
-  owner: library
 f_function_shadow<native>_capsule:
   name: f_function_shadow<native>_capsule
   intent: function
@@ -8567,7 +8292,6 @@ f_function_smartptr<shadow>*_capsule:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
-  owner: library
 f_function_smartptr<shadow>_capsule:
   name: f_function_smartptr<shadow>_capsule
   intent: function
@@ -8689,7 +8413,6 @@ f_function_string&_buf:
     i_intent_attr: ', intent(OUT)'
   helper:
   - char_copy
-  owner: library
 f_function_string&_buf_arg:
   name: f_function_string&_buf_arg
   intent: function
@@ -8773,7 +8496,6 @@ f_function_string&_buf_arg:
     c_var_len: n{F_string_result_as_arg}
   helper:
   - char_copy
-  owner: library
 f_function_string&_buf_caller:
   name: f_function_string&_buf_caller
   intent: function
@@ -8844,7 +8566,6 @@ f_function_string&_buf_caller:
     i_intent_attr: ', intent(OUT)'
   helper:
   - char_copy
-  owner: library
 f_function_string&_buf_copy:
   name: f_function_string&_buf_copy
   intent: function
@@ -8918,7 +8639,6 @@ f_function_string&_buf_copy:
     i_intent_attr: ', intent(OUT)'
   helper:
   - char_copy
-  owner: library
 f_function_string&_buf_copy_caller:
   name: f_function_string&_buf_copy_caller
   intent: function
@@ -8989,7 +8709,6 @@ f_function_string&_buf_copy_caller:
     i_intent_attr: ', intent(OUT)'
   helper:
   - char_copy
-  owner: library
 f_function_string&_cdesc_allocatable:
   name: f_function_string&_cdesc_allocatable
   intent: function
@@ -9068,7 +8787,6 @@ f_function_string&_cdesc_allocatable:
   - string_to_cdesc
   - copy_string
   - capsule_dtor
-  owner: library
 f_function_string&_cdesc_allocatable_caller:
   name: f_function_string&_cdesc_allocatable_caller
   intent: function
@@ -9147,7 +8865,6 @@ f_function_string&_cdesc_allocatable_caller:
   - string_to_cdesc
   - copy_string
   - capsule_dtor
-  owner: library
 f_function_string&_cdesc_allocatable_library:
   name: f_function_string&_cdesc_allocatable_library
   intent: function
@@ -9226,7 +8943,6 @@ f_function_string&_cdesc_allocatable_library:
   - string_to_cdesc
   - copy_string
   - capsule_dtor
-  owner: library
 f_function_string&_cdesc_pointer:
   name: f_function_string&_cdesc_pointer
   intent: function
@@ -9284,7 +9000,6 @@ f_function_string&_cdesc_pointer:
   - array_context
   - string_to_cdesc
   - pointer_string
-  owner: library
 f_function_string&_cdesc_pointer_caller:
   name: f_function_string&_cdesc_pointer_caller
   intent: function
@@ -9342,7 +9057,6 @@ f_function_string&_cdesc_pointer_caller:
   - array_context
   - string_to_cdesc
   - pointer_string
-  owner: library
 f_function_string&_cdesc_pointer_library:
   name: f_function_string&_cdesc_pointer_library
   intent: function
@@ -9400,7 +9114,6 @@ f_function_string&_cdesc_pointer_library:
   - array_context
   - string_to_cdesc
   - pointer_string
-  owner: library
 f_function_string&_cfi_allocatable:
   name: f_function_string&_cfi_allocatable
   intent: function
@@ -9452,7 +9165,6 @@ f_function_string&_cfi_allocatable:
   - ISO_Fortran_binding.h
   impl_header:
   - <cstring>
-  owner: library
 f_function_string&_cfi_allocatable_caller:
   name: f_function_string&_cfi_allocatable_caller
   intent: function
@@ -9504,7 +9216,6 @@ f_function_string&_cfi_allocatable_caller:
   - ISO_Fortran_binding.h
   impl_header:
   - <cstring>
-  owner: library
 f_function_string&_cfi_allocatable_library:
   name: f_function_string&_cfi_allocatable_library
   intent: function
@@ -9556,7 +9267,6 @@ f_function_string&_cfi_allocatable_library:
   - ISO_Fortran_binding.h
   impl_header:
   - <cstring>
-  owner: library
 f_function_string&_cfi_arg:
   name: f_function_string&_cfi_arg
   intent: function
@@ -9625,7 +9335,6 @@ f_function_string&_cfi_arg:
   - char_copy
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_function_string&_cfi_copy:
   name: f_function_string&_cfi_copy
   intent: function
@@ -9689,7 +9398,6 @@ f_function_string&_cfi_copy:
   - char_copy
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_function_string&_cfi_pointer:
   name: f_function_string&_cfi_pointer
   intent: function
@@ -9756,7 +9464,6 @@ f_function_string&_cfi_pointer:
     i_intent_attr: ', intent(OUT)'
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_function_string&_cfi_pointer_caller:
   name: f_function_string&_cfi_pointer_caller
   intent: function
@@ -9823,7 +9530,6 @@ f_function_string&_cfi_pointer_caller:
     i_intent_attr: ', intent(OUT)'
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_function_string&_cfi_pointer_library:
   name: f_function_string&_cfi_pointer_library
   intent: function
@@ -9890,7 +9596,6 @@ f_function_string&_cfi_pointer_library:
     i_intent_attr: ', intent(OUT)'
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_function_string*_buf:
   name: f_function_string*_buf
   intent: function
@@ -9964,7 +9669,6 @@ f_function_string*_buf:
     i_intent_attr: ', intent(OUT)'
   helper:
   - char_copy
-  owner: library
 f_function_string*_buf_caller:
   name: f_function_string*_buf_caller
   intent: function
@@ -10035,7 +9739,6 @@ f_function_string*_buf_caller:
     i_intent_attr: ', intent(OUT)'
   helper:
   - char_copy
-  owner: library
 f_function_string*_buf_copy:
   name: f_function_string*_buf_copy
   intent: function
@@ -10109,7 +9812,6 @@ f_function_string*_buf_copy:
     i_intent_attr: ', intent(OUT)'
   helper:
   - char_copy
-  owner: library
 f_function_string*_buf_copy_caller:
   name: f_function_string*_buf_copy_caller
   intent: function
@@ -10180,7 +9882,6 @@ f_function_string*_buf_copy_caller:
     i_intent_attr: ', intent(OUT)'
   helper:
   - char_copy
-  owner: library
 f_function_string*_cdesc_allocatable:
   name: f_function_string*_cdesc_allocatable
   intent: function
@@ -10259,7 +9960,6 @@ f_function_string*_cdesc_allocatable:
   - string_to_cdesc
   - copy_string
   - capsule_dtor
-  owner: library
 f_function_string*_cdesc_allocatable_caller:
   name: f_function_string*_cdesc_allocatable_caller
   intent: function
@@ -10338,7 +10038,6 @@ f_function_string*_cdesc_allocatable_caller:
   - string_to_cdesc
   - copy_string
   - capsule_dtor
-  owner: library
 f_function_string*_cdesc_allocatable_library:
   name: f_function_string*_cdesc_allocatable_library
   intent: function
@@ -10417,7 +10116,6 @@ f_function_string*_cdesc_allocatable_library:
   - string_to_cdesc
   - copy_string
   - capsule_dtor
-  owner: library
 f_function_string*_cdesc_pointer:
   name: f_function_string*_cdesc_pointer
   intent: function
@@ -10475,7 +10173,6 @@ f_function_string*_cdesc_pointer:
   - array_context
   - string_to_cdesc
   - pointer_string
-  owner: library
 f_function_string*_cdesc_pointer_caller:
   name: f_function_string*_cdesc_pointer_caller
   intent: function
@@ -10533,7 +10230,6 @@ f_function_string*_cdesc_pointer_caller:
   - array_context
   - string_to_cdesc
   - pointer_string
-  owner: library
 f_function_string*_cdesc_pointer_library:
   name: f_function_string*_cdesc_pointer_library
   intent: function
@@ -10591,7 +10287,6 @@ f_function_string*_cdesc_pointer_library:
   - array_context
   - string_to_cdesc
   - pointer_string
-  owner: library
 f_function_string*_cfi_allocatable:
   name: f_function_string*_cfi_allocatable
   intent: function
@@ -10643,7 +10338,6 @@ f_function_string*_cfi_allocatable:
   - ISO_Fortran_binding.h
   impl_header:
   - <cstring>
-  owner: library
 f_function_string*_cfi_allocatable_caller:
   name: f_function_string*_cfi_allocatable_caller
   intent: function
@@ -10695,7 +10389,6 @@ f_function_string*_cfi_allocatable_caller:
   - ISO_Fortran_binding.h
   impl_header:
   - <cstring>
-  owner: library
 f_function_string*_cfi_allocatable_library:
   name: f_function_string*_cfi_allocatable_library
   intent: function
@@ -10747,7 +10440,6 @@ f_function_string*_cfi_allocatable_library:
   - ISO_Fortran_binding.h
   impl_header:
   - <cstring>
-  owner: library
 f_function_string*_cfi_copy:
   name: f_function_string*_cfi_copy
   intent: function
@@ -10811,7 +10503,6 @@ f_function_string*_cfi_copy:
   - char_copy
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_function_string*_cfi_pointer:
   name: f_function_string*_cfi_pointer
   intent: function
@@ -10878,7 +10569,6 @@ f_function_string*_cfi_pointer:
     i_intent_attr: ', intent(OUT)'
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_function_string*_cfi_pointer_caller:
   name: f_function_string*_cfi_pointer_caller
   intent: function
@@ -10945,7 +10635,6 @@ f_function_string*_cfi_pointer_caller:
     i_intent_attr: ', intent(OUT)'
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_function_string*_cfi_pointer_library:
   name: f_function_string*_cfi_pointer_library
   intent: function
@@ -11012,7 +10701,6 @@ f_function_string*_cfi_pointer_library:
     i_intent_attr: ', intent(OUT)'
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_function_string_buf:
   name: f_function_string_buf
   intent: function
@@ -11086,7 +10774,6 @@ f_function_string_buf:
     i_intent_attr: ', intent(OUT)'
   helper:
   - char_copy
-  owner: library
 f_function_string_buf_arg:
   name: f_function_string_buf_arg
   intent: function
@@ -11170,7 +10857,6 @@ f_function_string_buf_arg:
     c_var_len: n{F_string_result_as_arg}
   helper:
   - char_copy
-  owner: library
 f_function_string_buf_caller:
   name: f_function_string_buf_caller
   intent: function
@@ -11241,7 +10927,6 @@ f_function_string_buf_caller:
     i_intent_attr: ', intent(OUT)'
   helper:
   - char_copy
-  owner: library
 f_function_string_buf_copy:
   name: f_function_string_buf_copy
   intent: function
@@ -11315,7 +11000,6 @@ f_function_string_buf_copy:
     i_intent_attr: ', intent(OUT)'
   helper:
   - char_copy
-  owner: library
 f_function_string_buf_copy_caller:
   name: f_function_string_buf_copy_caller
   intent: function
@@ -11386,7 +11070,6 @@ f_function_string_buf_copy_caller:
     i_intent_attr: ', intent(OUT)'
   helper:
   - char_copy
-  owner: library
 f_function_string_cdesc_allocatable:
   name: f_function_string_cdesc_allocatable
   intent: function
@@ -11703,7 +11386,6 @@ f_function_string_cfi_allocatable:
   - ISO_Fortran_binding.h
   impl_header:
   - <cstring>
-  owner: library
 f_function_string_cfi_allocatable_caller:
   name: f_function_string_cfi_allocatable_caller
   intent: function
@@ -11755,7 +11437,6 @@ f_function_string_cfi_allocatable_caller:
   - ISO_Fortran_binding.h
   impl_header:
   - <cstring>
-  owner: library
 f_function_string_cfi_allocatable_library:
   name: f_function_string_cfi_allocatable_library
   intent: function
@@ -11807,7 +11488,6 @@ f_function_string_cfi_allocatable_library:
   - ISO_Fortran_binding.h
   impl_header:
   - <cstring>
-  owner: library
 f_function_string_cfi_arg:
   name: f_function_string_cfi_arg
   intent: function
@@ -11876,7 +11556,6 @@ f_function_string_cfi_arg:
   - char_copy
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_function_string_cfi_copy:
   name: f_function_string_cfi_copy
   intent: function
@@ -11940,7 +11619,6 @@ f_function_string_cfi_copy:
   - char_copy
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_function_string_cfi_pointer:
   name: f_function_string_cfi_pointer
   intent: function
@@ -12007,7 +11685,6 @@ f_function_string_cfi_pointer:
     i_intent_attr: ', intent(OUT)'
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_function_string_cfi_pointer_caller:
   name: f_function_string_cfi_pointer_caller
   intent: function
@@ -12074,7 +11751,6 @@ f_function_string_cfi_pointer_caller:
     i_intent_attr: ', intent(OUT)'
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_function_string_cfi_pointer_library:
   name: f_function_string_cfi_pointer_library
   intent: function
@@ -12141,7 +11817,6 @@ f_function_string_cfi_pointer_library:
     i_intent_attr: ', intent(OUT)'
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_function_struct:
   name: f_function_struct
   intent: function
@@ -12179,7 +11854,6 @@ f_function_struct:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
-  owner: library
 f_function_struct*_cdesc_pointer:
   name: f_function_struct*_cdesc_pointer
   intent: function
@@ -12238,7 +11912,6 @@ f_function_struct*_cdesc_pointer:
     i_intent_attr: ', intent(OUT)'
   helper:
   - array_context
-  owner: library
 f_function_struct*_pointer:
   name: f_function_struct*_pointer
   intent: function
@@ -12274,7 +11947,6 @@ f_function_struct*_pointer:
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_need_wrapper: true
-  owner: library
 f_function_vector<native>_cdesc_allocatable:
   name: f_function_vector<native>_cdesc_allocatable
   intent: function
@@ -12354,7 +12026,6 @@ f_function_vector<native>_cdesc_allocatable:
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
-  owner: library
 f_function_void*:
   name: f_function_void*
   intent: function
@@ -12379,7 +12050,6 @@ f_function_void*:
     - C_PTR
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
-  owner: library
 f_getter_bool:
   name: f_getter_bool
   intent: getter
@@ -12401,7 +12071,6 @@ f_getter_bool:
     - '{i_kind}'
   c_return:
   - return {CXX_this}->{field_name};
-  owner: library
 f_getter_native:
   name: f_getter_native
   intent: getter
@@ -12424,7 +12093,6 @@ f_getter_native:
   c_return:
   - return {CXX_this}->{field_name};
   c_need_wrapper: true
-  owner: library
 f_getter_native*_cdesc_pointer:
   name: f_getter_native*_cdesc_pointer
   intent: getter
@@ -12484,7 +12152,6 @@ f_getter_native*_cdesc_pointer:
   helper:
   - array_context
   - type_defines
-  owner: library
 f_getter_native*_pointer:
   name: f_getter_native*_pointer
   intent: getter
@@ -12507,7 +12174,6 @@ f_getter_native*_pointer:
   c_return:
   - return {CXX_this}->{field_name};
   c_need_wrapper: true
-  owner: library
 f_getter_string_cdesc_allocatable:
   name: f_getter_string_cdesc_allocatable
   intent: getter
@@ -12559,7 +12225,6 @@ f_getter_string_cdesc_allocatable:
   helper:
   - array_context
   - copy_string
-  owner: library
 f_getter_struct**_cdesc_raw:
   name: f_getter_struct**_cdesc_raw
   intent: getter
@@ -12616,7 +12281,6 @@ f_getter_struct**_cdesc_raw:
   helper:
   - array_context
   - type_defines
-  owner: library
 f_getter_struct*_cdesc_pointer:
   name: f_getter_struct*_cdesc_pointer
   intent: getter
@@ -12676,7 +12340,6 @@ f_getter_struct*_cdesc_pointer:
   helper:
   - array_context
   - type_defines
-  owner: library
 f_getter_struct*_fapi_pointer:
   name: f_getter_struct*_fapi_pointer
   intent: getter
@@ -12692,7 +12355,6 @@ f_getter_struct*_fapi_pointer:
     iso_c_binding:
     - c_f_pointer
   f_need_wrapper: true
-  owner: library
 f_in_bool:
   name: f_in_bool
   intent: in
@@ -12734,7 +12396,6 @@ f_in_bool:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_in_char:
   name: f_in_char
   intent: in
@@ -12761,7 +12422,6 @@ f_in_char:
   - char {c_var}
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_in_char*:
   name: f_in_char*
   intent: in
@@ -12791,7 +12451,6 @@ f_in_char*:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_in_char**:
   name: f_in_char**
   intent: in
@@ -12816,7 +12475,6 @@ f_in_char**:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_in_char**_buf:
   name: f_in_char**_buf
   intent: in
@@ -12874,7 +12532,6 @@ f_in_char**_buf:
   helper:
   - char_array_alloc
   - char_array_free
-  owner: library
 f_in_char**_cfi:
   name: f_in_char**_cfi
   intent: in
@@ -12922,7 +12579,6 @@ f_in_char**_cfi:
   - char_array_free
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_in_char*_buf:
   name: f_in_char*_buf
   intent: in
@@ -12983,7 +12639,6 @@ f_in_char*_buf:
   helper:
   - char_alloc
   - char_free
-  owner: library
 f_in_char*_capi:
   name: f_in_char*_capi
   intent: in
@@ -13013,7 +12668,6 @@ f_in_char*_capi:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_in_char*_cfi:
   name: f_in_char*_cfi
   intent: in
@@ -13062,7 +12716,6 @@ f_in_char*_cfi:
   - char_free
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_in_enum:
   name: f_in_enum
   intent: in
@@ -13097,7 +12750,6 @@ f_in_enum:
   - '{cxx_var}'
   fmtdict:
     cxx_var: '{CXX_local}{c_var}'
-  owner: library
 f_in_native:
   name: f_in_native
   intent: in
@@ -13129,7 +12781,6 @@ f_in_native:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_in_native&:
   name: f_in_native&
   intent: in
@@ -13159,7 +12810,6 @@ f_in_native&:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
-  owner: library
 f_in_native*:
   name: f_in_native*
   intent: in
@@ -13189,7 +12839,6 @@ f_in_native*:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_in_native**:
   name: f_in_native**
   intent: in
@@ -13222,7 +12871,6 @@ f_in_native**:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_in_native*_cdesc:
   name: f_in_native*_cdesc
   intent: in
@@ -13278,7 +12926,6 @@ f_in_native*_cdesc:
   helper:
   - array_context
   - type_defines
-  owner: library
 f_in_native*_cfi:
   name: f_in_native*_cfi
   intent: in
@@ -13319,7 +12966,6 @@ f_in_native*_cfi:
   - cxx
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_in_procedure:
   name: f_in_procedure
   intent: in
@@ -13344,7 +12990,6 @@ f_in_procedure:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_in_procedure_external:
   name: f_in_procedure_external
   intent: in
@@ -13372,7 +13017,6 @@ f_in_procedure_external:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_in_procedure_funptr:
   name: f_in_procedure_funptr
   intent: in
@@ -13406,7 +13050,6 @@ f_in_procedure_funptr:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_in_shadow:
   name: f_in_shadow
   intent: in
@@ -13442,7 +13085,6 @@ f_in_shadow:
   - '*{c_local_cxx}'
   c_local:
   - cxx
-  owner: library
 f_in_shadow&:
   name: f_in_shadow&
   intent: in
@@ -13478,7 +13120,6 @@ f_in_shadow&:
   - '*{c_local_cxx}'
   c_local:
   - cxx
-  owner: library
 f_in_shadow*:
   name: f_in_shadow*
   intent: in
@@ -13516,7 +13157,6 @@ f_in_shadow*:
   - '{c_local_cxx}'
   c_local:
   - cxx
-  owner: library
 f_in_smartptr<shadow>*:
   name: f_in_smartptr<shadow>*
   intent: in
@@ -13554,7 +13194,6 @@ f_in_smartptr<shadow>*:
   - '{c_local_cxx}'
   c_local:
   - cxx
-  owner: library
 f_in_string&:
   name: f_in_string&
   intent: in
@@ -13583,7 +13222,6 @@ f_in_string&:
   - '{c_local_cxx}'
   c_local:
   - cxx
-  owner: library
 f_in_string&_buf:
   name: f_in_string&_buf
   intent: in
@@ -13643,7 +13281,6 @@ f_in_string&_buf:
   - trim
   helper:
   - char_len_trim
-  owner: library
 f_in_string&_cfi:
   name: f_in_string&_cfi
   intent: in
@@ -13691,7 +13328,6 @@ f_in_string&_cfi:
   - char_len_trim
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_in_string*:
   name: f_in_string*
   intent: in
@@ -13718,7 +13354,6 @@ f_in_string*:
   - '&{c_local_cxx}'
   c_local:
   - cxx
-  owner: library
 f_in_string*_buf:
   name: f_in_string*_buf
   intent: in
@@ -13778,7 +13413,6 @@ f_in_string*_buf:
   - trim
   helper:
   - char_len_trim
-  owner: library
 f_in_string*_cfi:
   name: f_in_string*_cfi
   intent: in
@@ -13828,7 +13462,6 @@ f_in_string*_cfi:
   - char_len_trim
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_in_string_buf:
   name: f_in_string_buf
   intent: in
@@ -13888,7 +13521,6 @@ f_in_string_buf:
   - trim
   helper:
   - char_len_trim
-  owner: library
 f_in_string_cfi:
   name: f_in_string_cfi
   intent: in
@@ -13936,7 +13568,6 @@ f_in_string_cfi:
   - char_len_trim
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_in_struct:
   name: f_in_struct
   intent: in
@@ -13969,7 +13600,6 @@ f_in_struct:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_in_struct&:
   name: f_in_struct&
   intent: in
@@ -13999,7 +13629,6 @@ f_in_struct&:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
-  owner: library
 f_in_struct*:
   name: f_in_struct*
   intent: in
@@ -14032,7 +13661,6 @@ f_in_struct*:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_in_unknown:
   name: f_in_unknown
   intent: in
@@ -14064,7 +13692,6 @@ f_in_unknown:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_in_vector<native*>&_buf:
   name: f_in_vector<native*>&_buf
   intent: in
@@ -14118,7 +13745,6 @@ f_in_vector<native*>&_buf:
   - size
   c_local:
   - cxx
-  owner: library
 f_in_vector<native>&_buf:
   name: f_in_vector<native>&_buf
   intent: in
@@ -14163,7 +13789,6 @@ f_in_vector<native>&_buf:
   - size
   c_local:
   - cxx
-  owner: library
 f_in_vector<native>*_buf:
   name: f_in_vector<native>*_buf
   intent: in
@@ -14208,7 +13833,6 @@ f_in_vector<native>*_buf:
   - size
   c_local:
   - cxx
-  owner: library
 f_in_vector<native>_buf:
   name: f_in_vector<native>_buf
   intent: in
@@ -14253,7 +13877,6 @@ f_in_vector<native>_buf:
   - size
   c_local:
   - cxx
-  owner: library
 f_in_vector<string>&_buf:
   name: f_in_vector<string>&_buf
   intent: in
@@ -14320,7 +13943,6 @@ f_in_vector<string>&_buf:
   - s
   helper:
   - char_len_trim
-  owner: library
 f_in_vector<string>*_buf:
   name: f_in_vector<string>*_buf
   intent: in
@@ -14387,7 +14009,6 @@ f_in_vector<string>*_buf:
   - s
   helper:
   - char_len_trim
-  owner: library
 f_in_vector<string>_buf:
   name: f_in_vector<string>_buf
   intent: in
@@ -14454,7 +14075,6 @@ f_in_vector<string>_buf:
   - s
   helper:
   - char_len_trim
-  owner: library
 f_in_void:
   name: f_in_void
   intent: in
@@ -14484,7 +14104,6 @@ f_in_void:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_in_void*:
   name: f_in_void*
   intent: in
@@ -14513,7 +14132,6 @@ f_in_void*:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_in_void**:
   name: f_in_void**
   intent: in
@@ -14541,7 +14159,6 @@ f_in_void**:
   - void **{c_var}
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_in_void**_cfi:
   name: f_in_void**_cfi
   intent: in
@@ -14569,7 +14186,6 @@ f_in_void**_cfi:
   - void **{c_var}
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_in_void*_cdesc:
   name: f_in_void*_cdesc
   intent: in
@@ -14625,7 +14241,6 @@ f_in_void*_cdesc:
   helper:
   - array_context
   - type_defines
-  owner: library
 f_inout_bool*:
   name: f_inout_bool*
   intent: inout
@@ -14670,7 +14285,6 @@ f_inout_bool*:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_inout_char*:
   name: f_inout_char*
   intent: inout
@@ -14700,7 +14314,6 @@ f_inout_char*:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_inout_char*_buf:
   name: f_inout_char*_buf
   intent: inout
@@ -14765,7 +14378,6 @@ f_inout_char*_buf:
   - char_copy
   - char_alloc
   - char_free
-  owner: library
 f_inout_char*_capi:
   name: f_inout_char*_capi
   intent: inout
@@ -14795,7 +14407,6 @@ f_inout_char*_capi:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_inout_char*_cfi:
   name: f_inout_char*_cfi
   intent: inout
@@ -14848,7 +14459,6 @@ f_inout_char*_cfi:
   - char_free
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_inout_enum*:
   name: f_inout_enum*
   intent: inout
@@ -14883,7 +14493,6 @@ f_inout_enum*:
   - '*{c_var} = {cast_static}{c_type}{cast1}{cxx_var}{cast2};'
   c_local:
   - cxx
-  owner: library
 f_inout_native&:
   name: f_inout_native&
   intent: inout
@@ -14913,7 +14522,6 @@ f_inout_native&:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
-  owner: library
 f_inout_native&_hidden:
   name: f_inout_native&_hidden
   intent: inout
@@ -14927,7 +14535,6 @@ f_inout_native&_hidden:
   - '{cxx_type} {cxx_var};'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_inout_native*:
   name: f_inout_native*
   intent: inout
@@ -14957,7 +14564,6 @@ f_inout_native*:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_inout_native*_cdesc:
   name: f_inout_native*_cdesc
   intent: inout
@@ -15013,7 +14619,6 @@ f_inout_native*_cdesc:
   helper:
   - array_context
   - type_defines
-  owner: library
 f_inout_native*_cfi:
   name: f_inout_native*_cfi
   intent: inout
@@ -15054,7 +14659,6 @@ f_inout_native*_cfi:
   - cxx
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_inout_native*_hidden:
   name: f_inout_native*_hidden
   intent: inout
@@ -15068,7 +14672,6 @@ f_inout_native*_hidden:
   - '{cxx_type} {cxx_var};'
   c_arg_call:
   - '&{cxx_var}'
-  owner: library
 f_inout_shadow&:
   name: f_inout_shadow&
   intent: inout
@@ -15106,7 +14709,6 @@ f_inout_shadow&:
   - '{c_local_cxx}'
   c_local:
   - cxx
-  owner: library
 f_inout_shadow*:
   name: f_inout_shadow*
   intent: inout
@@ -15144,7 +14746,6 @@ f_inout_shadow*:
   - '{c_local_cxx}'
   c_local:
   - cxx
-  owner: library
 f_inout_smartptr<shadow>*:
   name: f_inout_smartptr<shadow>*
   intent: inout
@@ -15182,7 +14783,6 @@ f_inout_smartptr<shadow>*:
   - '{c_local_cxx}'
   c_local:
   - cxx
-  owner: library
 f_inout_string&:
   name: f_inout_string&
   intent: inout
@@ -15230,7 +14830,6 @@ f_inout_string&:
   - cxx
   impl_header:
   - <cstring>
-  owner: library
 f_inout_string&_buf:
   name: f_inout_string&_buf
   intent: inout
@@ -15295,7 +14894,6 @@ f_inout_string&_buf:
   helper:
   - char_len_trim
   - char_copy
-  owner: library
 f_inout_string&_cfi:
   name: f_inout_string&_cfi
   intent: inout
@@ -15350,7 +14948,6 @@ f_inout_string&_cfi:
   - char_copy
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_inout_string*:
   name: f_inout_string*
   intent: inout
@@ -15401,7 +14998,6 @@ f_inout_string*:
   - cxx
   impl_header:
   - <cstring>
-  owner: library
 f_inout_string*_buf:
   name: f_inout_string*_buf
   intent: inout
@@ -15466,7 +15062,6 @@ f_inout_string*_buf:
   helper:
   - char_len_trim
   - char_copy
-  owner: library
 f_inout_string*_cfi:
   name: f_inout_string*_cfi
   intent: inout
@@ -15519,7 +15114,6 @@ f_inout_string*_cfi:
   - char_copy
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_inout_struct&:
   name: f_inout_struct&
   intent: inout
@@ -15549,7 +15143,6 @@ f_inout_struct&:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
-  owner: library
 f_inout_struct*:
   name: f_inout_struct*
   intent: inout
@@ -15582,7 +15175,6 @@ f_inout_struct*:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_inout_vector<native>&_cdesc:
   name: f_inout_vector<native>&_cdesc
   intent: inout
@@ -15670,7 +15262,6 @@ f_inout_vector<native>&_cdesc:
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
-  owner: library
 f_inout_vector<native>&_cdesc_allocatable:
   name: f_inout_vector<native>&_cdesc_allocatable
   intent: inout
@@ -15763,7 +15354,6 @@ f_inout_vector<native>&_cdesc_allocatable:
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
-  owner: library
 f_inout_vector_buf_targ_string_scalar:
   name: f_inout_vector_buf_targ_string_scalar
   intent: inout
@@ -15841,7 +15431,6 @@ f_inout_vector_buf_targ_string_scalar:
   - s
   helper:
   - char_len_trim
-  owner: library
 f_inout_void**:
   name: f_inout_void**
   intent: inout
@@ -15869,7 +15458,6 @@ f_inout_void**:
   - void **{c_var}
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_inout_void*_cdesc:
   name: f_inout_void*_cdesc
   intent: inout
@@ -15925,7 +15513,6 @@ f_inout_void*_cdesc:
   helper:
   - array_context
   - type_defines
-  owner: library
 f_mixin_allocate:
   name: f_mixin_allocate
   intent: mixin
@@ -15933,7 +15520,6 @@ f_mixin_allocate:
   - Allocate Fortran variable.
   f_post_call:
   - allocate({f_var}{gen.f_allocate_shape})
-  owner: library
 f_mixin_arg-call-fvar:
   name: f_mixin_arg-call-fvar
   intent: mixin
@@ -15941,14 +15527,12 @@ f_mixin_arg-call-fvar:
   - Pass Fortran variable to C wrapper.
   f_arg_call:
   - '{f_var}'
-  owner: library
 f_mixin_as-intent-out:
   name: f_mixin_as-intent-out
   intent: mixin
   fmtdict:
     f_intent: OUT
     f_intent_attr: ', intent(OUT)'
-  owner: library
 f_mixin_capsule_arg:
   name: f_mixin_capsule_arg
   intent: mixin
@@ -15983,7 +15567,6 @@ f_mixin_capsule_arg:
   - capsule_data_helper
   - array_context
   - capsule_helper
-  owner: library
 f_mixin_capsule_dtor:
   name: f_mixin_capsule_dtor
   intent: mixin
@@ -15993,7 +15576,6 @@ f_mixin_capsule_dtor:
   - call {f_helper_capsule_dtor}({f_var_capsule})
   helper:
   - capsule_dtor
-  owner: library
 f_mixin_capsule_function_shadow:
   name: f_mixin_capsule_function_shadow
   intent: mixin
@@ -16004,7 +15586,6 @@ f_mixin_capsule_function_shadow:
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_need_wrapper: true
-  owner: library
 f_mixin_capsule_pass:
   name: f_mixin_capsule_pass
   intent: mixin
@@ -16033,7 +15614,6 @@ f_mixin_capsule_pass:
   helper:
   - capsule_data_helper
   - array_context
-  owner: library
 f_mixin_capsule_use:
   name: f_mixin_capsule_use
   intent: mixin
@@ -16073,7 +15653,6 @@ f_mixin_capsule_use:
   - capsule_data_helper
   - array_context
   - capsule_dtor
-  owner: library
 f_mixin_cdesc_allocate_1d:
   name: f_mixin_cdesc_allocate_1d
   intent: mixin
@@ -16081,7 +15660,6 @@ f_mixin_cdesc_allocate_1d:
   - Allocate 1-D Fortran variable.
   f_post_call:
   - allocate({f_var}({f_var_cdesc}%size))
-  owner: library
 f_mixin_cdesc_allocate_1d_character:
   name: f_mixin_cdesc_allocate_1d_character
   intent: mixin
@@ -16095,7 +15673,6 @@ f_mixin_cdesc_allocate_1d_character:
     - C_LOC
   fmtdict:
     f_target_attr: ', target'
-  owner: library
 f_mixin_cdesc_char_allocate:
   name: f_mixin_cdesc_char_allocate
   intent: mixin
@@ -16109,7 +15686,6 @@ f_mixin_cdesc_char_allocate:
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
   helper:
   - copy_string
-  owner: library
 f_mixin_cdesc_char_fill:
   name: f_mixin_cdesc_char_fill
   intent: mixin
@@ -16128,7 +15704,6 @@ f_mixin_cdesc_char_fill:
     f_target_attr: ', target'
   helper:
   - type_defines
-  owner: library
 f_mixin_cdesc_char_pointer:
   name: f_mixin_cdesc_char_pointer
   intent: mixin
@@ -16143,7 +15718,6 @@ f_mixin_cdesc_char_pointer:
     - c_f_pointer
   helper:
   - pointer_string
-  owner: library
 f_mixin_cdesc_copy_array:
   name: f_mixin_cdesc_copy_array
   intent: mixin
@@ -16160,7 +15734,6 @@ f_mixin_cdesc_copy_array:
     f_target_attr: ', target'
   helper:
   - copy_array
-  owner: library
 f_mixin_cdesc_getter:
   name: f_mixin_cdesc_getter
   intent: mixin
@@ -16176,7 +15749,6 @@ f_mixin_cdesc_getter:
   c_need_wrapper: true
   helper:
   - type_defines
-  owner: library
 f_mixin_cdesc_inout_array:
   name: f_mixin_cdesc_inout_array
   intent: mixin
@@ -16195,7 +15767,6 @@ f_mixin_cdesc_inout_array:
   - cdesc
   helper:
   - array_context
-  owner: library
 f_mixin_cdesc_native_fill:
   name: f_mixin_cdesc_native_fill
   intent: mixin
@@ -16214,7 +15785,6 @@ f_mixin_cdesc_native_fill:
     f_target_attr: ', target'
   helper:
   - type_defines
-  owner: library
 f_mixin_cdesc_native_pointer:
   name: f_mixin_cdesc_native_pointer
   intent: mixin
@@ -16229,7 +15799,6 @@ f_mixin_cdesc_native_pointer:
     - '{f_kind}'
     iso_c_binding:
     - c_f_pointer
-  owner: library
 f_mixin_cdesc_native_raw:
   name: f_mixin_cdesc_native_raw
   intent: mixin
@@ -16243,7 +15812,6 @@ f_mixin_cdesc_native_raw:
     iso_c_binding:
     - C_PTR
     - c_f_pointer
-  owner: library
 f_mixin_cdesc_out_native_pointer:
   name: f_mixin_cdesc_out_native_pointer
   intent: mixin
@@ -16260,7 +15828,6 @@ f_mixin_cdesc_out_native_pointer:
     - '{f_kind}'
     iso_c_binding:
     - c_f_pointer
-  owner: library
 f_mixin_cdesc_pass:
   name: f_mixin_cdesc_pass
   intent: mixin
@@ -16285,7 +15852,6 @@ f_mixin_cdesc_pass:
   - cdesc
   helper:
   - array_context
-  owner: library
 f_mixin_cfi_arg-character-array:
   name: f_mixin_cfi_arg-character-array
   intent: mixin
@@ -16308,7 +15874,6 @@ f_mixin_cfi_arg-character-array:
   - cfi
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_mixin_cfi_character-deferred-length:
   name: f_mixin_cfi_character-deferred-length
   intent: mixin
@@ -16333,7 +15898,6 @@ f_mixin_cfi_character-deferred-length:
   - cfi
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_mixin_cfi_pass_character:
   name: f_mixin_cfi_pass_character
   intent: mixin
@@ -16342,19 +15906,16 @@ f_mixin_cfi_pass_character:
   f_arg_call:
   - '{f_var}'
   f_need_wrapper: true
-  owner: library
 f_mixin_character-deferred-length:
   name: f_mixin_character-deferred-length
   intent: mixin
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
-  owner: library
 f_mixin_deallocate:
   name: f_mixin_deallocate
   intent: mixin
   f_post_call:
   - if (allocated({f_var})) deallocate({f_var})
-  owner: library
 f_mixin_declare-arg-char:
   name: f_mixin_declare-arg-char
   intent: mixin
@@ -16364,7 +15925,6 @@ f_mixin_declare-arg-char:
   - '{f_var}'
   f_dummy_decl:
   - 'character, value{f_intent_attr} :: {f_var}'
-  owner: library
 f_mixin_declare-as-cptr:
   name: f_mixin_declare-as-cptr
   intent: mixin
@@ -16375,7 +15935,6 @@ f_mixin_declare-as-cptr:
   f_module:
     iso_c_binding:
     - C_PTR
-  owner: library
 f_mixin_declare-character-arg:
   name: f_mixin_declare-character-arg
   intent: mixin
@@ -16383,7 +15942,6 @@ f_mixin_declare-character-arg:
   - '{f_var}'
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr}{f_target_attr} :: {f_var}{f_assumed_shape}'
-  owner: library
 f_mixin_declare-fortran-arg:
   name: f_mixin_declare-fortran-arg
   intent: mixin
@@ -16395,7 +15953,6 @@ f_mixin_declare-fortran-arg:
   f_module:
     '{f_module_name}':
     - '{f_kind}'
-  owner: library
 f_mixin_declare-interface-arg:
   name: f_mixin_declare-interface-arg
   intent: mixin
@@ -16406,7 +15963,6 @@ f_mixin_declare-interface-arg:
   i_module:
     '{i_module_name}':
     - '{i_kind}'
-  owner: library
 f_mixin_declare-local-variable:
   name: f_mixin_declare-local-variable
   intent: mixin
@@ -16418,13 +15974,11 @@ f_mixin_declare-local-variable:
   f_module:
     '{f_module_name}':
     - '{f_kind}'
-  owner: library
 f_mixin_dummy_arg:
   name: f_mixin_dummy_arg
   intent: mixin
   f_dummy_arg:
   - '{f_var}'
-  owner: library
 f_mixin_function:
   name: f_mixin_function
   intent: mixin
@@ -16432,7 +15986,6 @@ f_mixin_function:
   - Call a function in Fortran wrapper.
   f_call:
   - '{f_result_var} = {f_call_function}({F_arg_c_call})'
-  owner: library
 f_mixin_function-as-character-arg:
   name: f_mixin_function-as-character-arg
   intent: mixin
@@ -16445,7 +15998,6 @@ f_mixin_function-as-character-arg:
     f_var: '{F_string_result_as_arg}'
     i_var: '{F_string_result_as_arg}'
     c_var: '{F_string_result_as_arg}'
-  owner: library
 f_mixin_function-as-character-arg-var-len:
   name: f_mixin_function-as-character-arg-var-len
   intent: mixin
@@ -16453,7 +16005,6 @@ f_mixin_function-as-character-arg-var-len:
     f_var_len: n{F_string_result_as_arg}
     i_var_len: n{F_string_result_as_arg}
     c_var_len: n{F_string_result_as_arg}
-  owner: library
 f_mixin_function-as-cptr:
   name: f_mixin_function-as-cptr
   intent: mixin
@@ -16464,7 +16015,6 @@ f_mixin_function-as-cptr:
   f_module:
     iso_c_binding:
     - C_PTR
-  owner: library
 f_mixin_function-interface-as-cptr:
   name: f_mixin_function-interface-as-cptr
   intent: mixin
@@ -16473,7 +16023,6 @@ f_mixin_function-interface-as-cptr:
   i_module:
     iso_c_binding:
     - C_PTR
-  owner: library
 f_mixin_function-to-subroutine:
   name: f_mixin_function-to-subroutine
   intent: mixin
@@ -16487,7 +16036,6 @@ f_mixin_function-to-subroutine:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
-  owner: library
 f_mixin_function_c-ptr:
   name: f_mixin_function_c-ptr
   intent: mixin
@@ -16515,7 +16063,6 @@ f_mixin_function_c-ptr:
     iso_c_binding:
     - C_PTR
   c_need_wrapper: true
-  owner: library
 f_mixin_function_char:
   name: f_mixin_function_char
   intent: mixin
@@ -16537,7 +16084,6 @@ f_mixin_function_char:
   c_call:
   - '*{c_var} = {C_call_function};'
   c_need_wrapper: true
-  owner: library
 f_mixin_function_ptr:
   name: f_mixin_function_ptr
   intent: mixin
@@ -16553,7 +16099,6 @@ f_mixin_function_ptr:
   i_module:
     iso_c_binding:
     - C_PTR
-  owner: library
 f_mixin_helper_array_string_allocatable:
   name: f_mixin_helper_array_string_allocatable
   intent: mixin
@@ -16578,7 +16123,6 @@ f_mixin_helper_array_string_allocatable:
   helper:
   - array_string_allocatable
   - array_string_out_len
-  owner: library
 f_mixin_helper_vector_string_allocatable:
   name: f_mixin_helper_vector_string_allocatable
   intent: mixin
@@ -16604,7 +16148,6 @@ f_mixin_helper_vector_string_allocatable:
   helper:
   - cdesc_vector_string_allocatable
   - vector_string_out_len
-  owner: library
 f_mixin_in_2d_vector_buf:
   name: f_mixin_in_2d_vector_buf
   intent: mixin
@@ -16642,7 +16185,6 @@ f_mixin_in_2d_vector_buf:
   c_temps:
   - len
   - size
-  owner: library
 f_mixin_in_string_array_buf:
   name: f_mixin_in_string_array_buf
   intent: mixin
@@ -16681,7 +16223,6 @@ f_mixin_in_string_array_buf:
   c_temps:
   - size
   - len
-  owner: library
 f_mixin_in_vector_buf:
   name: f_mixin_in_vector_buf
   intent: mixin
@@ -16714,7 +16255,6 @@ f_mixin_in_vector_buf:
   - size_t {c_var_size}
   c_temps:
   - size
-  owner: library
 f_mixin_interface-as-cptr:
   name: f_mixin_interface-as-cptr
   intent: mixin
@@ -16725,7 +16265,6 @@ f_mixin_interface-as-cptr:
   i_module:
     iso_c_binding:
     - C_PTR
-  owner: library
 f_mixin_interface-as-cptr-array:
   name: f_mixin_interface-as-cptr-array
   intent: mixin
@@ -16736,7 +16275,6 @@ f_mixin_interface-as-cptr-array:
   i_module:
     iso_c_binding:
     - C_PTR
-  owner: library
 f_mixin_interface-as-cptr-value:
   name: f_mixin_interface-as-cptr-value
   intent: mixin
@@ -16747,13 +16285,11 @@ f_mixin_interface-as-cptr-value:
   i_module:
     iso_c_binding:
     - C_PTR
-  owner: library
 f_mixin_logical-in:
   name: f_mixin_logical-in
   intent: mixin
   f_pre_call:
   - '{f_var_cxx} = {f_var}  ! coerce to C_BOOL'
-  owner: library
 f_mixin_logical-local-var:
   name: f_mixin_logical-local-var
   intent: mixin
@@ -16766,13 +16302,11 @@ f_mixin_logical-local-var:
     - C_BOOL
   f_temps:
   - cxx
-  owner: library
 f_mixin_logical-out:
   name: f_mixin_logical-out
   intent: mixin
   f_post_call:
   - '{f_var} = {f_var_cxx}  ! coerce to logical'
-  owner: library
 f_mixin_out_vector_buf:
   name: f_mixin_out_vector_buf
   intent: mixin
@@ -16800,7 +16334,6 @@ f_mixin_out_vector_buf:
   - size_t *{c_var_size}
   c_temps:
   - size
-  owner: library
 f_mixin_pass_character_buf:
   name: f_mixin_pass_character_buf
   intent: mixin
@@ -16819,7 +16352,6 @@ f_mixin_pass_character_buf:
   f_temps:
   - len
   f_need_wrapper: true
-  owner: library
 f_mixin_procedure-as-funptr:
   name: f_mixin_procedure-as-funptr
   intent: mixin
@@ -16839,19 +16371,16 @@ f_mixin_procedure-as-funptr:
   i_module:
     iso_c_binding:
     - C_FUNPTR
-  owner: library
 f_mixin_procedure-as-funptr-byreference:
   name: f_mixin_procedure-as-funptr-byreference
   intent: mixin
   i_dummy_decl:
   - 'type(C_FUNPTR) :: {i_var}'
-  owner: library
 f_mixin_procedure-as-funptr-byvalue:
   name: f_mixin_procedure-as-funptr-byvalue
   intent: mixin
   i_dummy_decl:
   - 'type(C_FUNPTR), value :: {i_var}'
-  owner: library
 f_mixin_shadow-arg:
   name: f_mixin_shadow-arg
   intent: mixin
@@ -16867,7 +16396,6 @@ f_mixin_shadow-arg:
     '{f_module_name}':
     - '{f_kind}'
   f_need_wrapper: true
-  owner: library
 f_mixin_str_array:
   name: f_mixin_str_array
   intent: mixin
@@ -16877,7 +16405,6 @@ f_mixin_str_array:
   - '{f_var}'
   f_dummy_decl:
   - '{f_type}{f_intent_attr}{f_target_attr} :: {f_var}{f_assumed_shape}'
-  owner: library
 f_mixin_template_native_arg1:
   name: f_mixin_template_native_arg1
   intent: mixin
@@ -16886,7 +16413,6 @@ f_mixin_template_native_arg1:
   f_module:
     iso_c_binding:
     - '{targs[0].f_kind}'
-  owner: library
 f_mixin_unknown:
   name: f_mixin_unknown
   intent: mixin
@@ -16910,7 +16436,6 @@ f_mixin_unknown:
   - ===>{c_var} c_prototype<===
   c_call:
   - ===>{c_var} c_call<===
-  owner: library
 f_none_bool:
   name: f_none_bool
   intent: none
@@ -16952,7 +16477,6 @@ f_none_bool:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_none_bool*:
   name: f_none_bool*
   intent: none
@@ -16994,7 +16518,6 @@ f_none_bool*:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_none_char:
   name: f_none_char
   intent: none
@@ -17021,7 +16544,6 @@ f_none_char:
   - char {c_var}
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_none_char*:
   name: f_none_char*
   intent: none
@@ -17051,7 +16573,6 @@ f_none_char*:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_none_native:
   name: f_none_native
   intent: none
@@ -17083,7 +16604,6 @@ f_none_native:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_none_native*:
   name: f_none_native*
   intent: none
@@ -17113,7 +16633,6 @@ f_none_native*:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_none_void*:
   name: f_none_void*
   intent: none
@@ -17142,7 +16661,6 @@ f_none_void*:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_out_bool*:
   name: f_out_bool*
   intent: out
@@ -17184,7 +16702,6 @@ f_out_bool*:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_out_char*:
   name: f_out_char*
   intent: out
@@ -17214,7 +16731,6 @@ f_out_char*:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_out_char**_cdesc_pointer:
   name: f_out_char**_cdesc_pointer
   intent: out
@@ -17273,7 +16789,6 @@ f_out_char**_cdesc_pointer:
   - pointer_string
   - array_context
   - type_defines
-  owner: library
 f_out_char**_cfi_pointer:
   name: f_out_char**_cfi_pointer
   intent: out
@@ -17333,7 +16848,6 @@ f_out_char**_cfi_pointer:
   - err
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_out_char*_buf:
   name: f_out_char*_buf
   intent: out
@@ -17389,7 +16903,6 @@ f_out_char*_buf:
   - len
   helper:
   - char_blank_fill
-  owner: library
 f_out_char*_capi:
   name: f_out_char*_capi
   intent: out
@@ -17419,7 +16932,6 @@ f_out_char*_capi:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_out_char*_cfi:
   name: f_out_char*_cfi
   intent: out
@@ -17481,7 +16993,6 @@ f_out_char*_cfi:
   impl_header:
   - <cstdlib>
   - <cstdlib>
-  owner: library
 f_out_enum*:
   name: f_out_enum*
   intent: out
@@ -17516,7 +17027,6 @@ f_out_enum*:
   - '*{c_var} = {cast_static}{c_type}{cast1}{cxx_var}{cast2};'
   c_local:
   - cxx
-  owner: library
 f_out_native&:
   name: f_out_native&
   intent: out
@@ -17546,7 +17056,6 @@ f_out_native&:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
-  owner: library
 f_out_native&_hidden:
   name: f_out_native&_hidden
   intent: out
@@ -17560,7 +17069,6 @@ f_out_native&_hidden:
   - '{cxx_type} {cxx_var};'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_out_native*:
   name: f_out_native*
   intent: out
@@ -17590,7 +17098,6 @@ f_out_native*:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_out_native*&_cdesc:
   name: f_out_native*&_cdesc
   intent: out
@@ -17646,7 +17153,6 @@ f_out_native*&_cdesc:
   - cdesc
   helper:
   - array_context
-  owner: library
 f_out_native*&_cdesc_pointer:
   name: f_out_native*&_cdesc_pointer
   intent: out
@@ -17702,7 +17208,6 @@ f_out_native*&_cdesc_pointer:
   - cdesc
   helper:
   - array_context
-  owner: library
 f_out_native***:
   name: f_out_native***
   intent: out
@@ -17731,7 +17236,6 @@ f_out_native***:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_out_native**_cdesc_allocatable:
   name: f_out_native**_cdesc_allocatable
   intent: out
@@ -17824,7 +17328,6 @@ f_out_native**_cdesc_allocatable:
   - capsule_data_helper
   - array_context
   - capsule_dtor
-  owner: library
 f_out_native**_cdesc_pointer:
   name: f_out_native**_cdesc_pointer
   intent: out
@@ -17884,7 +17387,6 @@ f_out_native**_cdesc_pointer:
   - cdesc
   helper:
   - array_context
-  owner: library
 f_out_native**_cfi_allocatable:
   name: f_out_native**_cfi_allocatable
   intent: out
@@ -17943,7 +17445,6 @@ f_out_native**_cfi_allocatable:
   - ISO_Fortran_binding.h
   impl_header:
   - <cstring>
-  owner: library
 f_out_native**_cfi_pointer:
   name: f_out_native**_cfi_pointer
   intent: out
@@ -18008,7 +17509,6 @@ f_out_native**_cfi_pointer:
   - lower_bounds_CFI
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_out_native**_raw:
   name: f_out_native**_raw
   intent: out
@@ -18039,7 +17539,6 @@ f_out_native**_raw:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_out_native*_cdesc:
   name: f_out_native*_cdesc
   intent: out
@@ -18095,11 +17594,9 @@ f_out_native*_cdesc:
   helper:
   - array_context
   - type_defines
-  owner: library
 f_out_native*_cfi_allocatable:
   name: f_out_native*_cfi_allocatable
   intent: out
-  owner: library
 f_out_native*_hidden:
   name: f_out_native*_hidden
   intent: out
@@ -18113,7 +17610,6 @@ f_out_native*_hidden:
   - '{cxx_type} {cxx_var};'
   c_arg_call:
   - '&{cxx_var}'
-  owner: library
 f_out_procedure*_funptr:
   name: f_out_procedure*_funptr
   intent: out
@@ -18147,7 +17643,6 @@ f_out_procedure*_funptr:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_out_string&_buf:
   name: f_out_string&_buf
   intent: out
@@ -18209,7 +17704,6 @@ f_out_string&_buf:
   - cxx
   helper:
   - char_copy
-  owner: library
 f_out_string&_cfi:
   name: f_out_string&_cfi
   intent: out
@@ -18261,7 +17755,6 @@ f_out_string&_cfi:
   - char_copy
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_out_string**_cdesc_allocatable:
   name: f_out_string**_cdesc_allocatable
   intent: out
@@ -18350,7 +17843,6 @@ f_out_string**_cdesc_allocatable:
   - array_string_allocatable
   - array_string_out_len
   - capsule_dtor
-  owner: library
 f_out_string**_cdesc_copy:
   name: f_out_string**_cdesc_copy
   intent: out
@@ -18410,7 +17902,6 @@ f_out_string**_cdesc_copy:
     f_target_attr: ', target'
   helper:
   - cdesc_array_string_out
-  owner: library
 f_out_string**_cfi_allocatable:
   name: f_out_string**_cfi_allocatable
   intent: out
@@ -18474,7 +17965,6 @@ f_out_string**_cfi_allocatable:
   - cfi_array_string_out
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_out_string**_cfi_copy:
   name: f_out_string**_cfi_copy
   intent: out
@@ -18513,7 +18003,6 @@ f_out_string**_cfi_copy:
   - cfi_array_string_out
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_out_string**_copy:
   name: f_out_string**_copy
   intent: out
@@ -18538,7 +18027,6 @@ f_out_string**_copy:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
   notimplemented: true
 f_out_string*_buf:
   name: f_out_string*_buf
@@ -18601,7 +18089,6 @@ f_out_string*_buf:
   - cxx
   helper:
   - char_copy
-  owner: library
 f_out_string*_cfi:
   name: f_out_string*_cfi
   intent: out
@@ -18651,7 +18138,6 @@ f_out_string*_cfi:
   - char_copy
   iface_header:
   - ISO_Fortran_binding.h
-  owner: library
 f_out_struct&:
   name: f_out_struct&
   intent: out
@@ -18681,7 +18167,6 @@ f_out_struct&:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
-  owner: library
 f_out_struct*:
   name: f_out_struct*
   intent: out
@@ -18714,7 +18199,6 @@ f_out_struct*:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_out_vector<native>&_cdesc:
   name: f_out_vector<native>&_cdesc
   intent: out
@@ -18788,7 +18272,6 @@ f_out_vector<native>&_cdesc:
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
-  owner: library
 f_out_vector<native>&_cdesc_allocatable:
   name: f_out_vector<native>&_cdesc_allocatable
   intent: out
@@ -18865,7 +18348,6 @@ f_out_vector<native>&_cdesc_allocatable:
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
-  owner: library
 f_out_vector<native>*_cdesc:
   name: f_out_vector<native>*_cdesc
   intent: out
@@ -18939,7 +18421,6 @@ f_out_vector<native>*_cdesc:
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
-  owner: library
 f_out_vector<native>*_cdesc_allocatable:
   name: f_out_vector<native>*_cdesc_allocatable
   intent: out
@@ -19016,7 +18497,6 @@ f_out_vector<native>*_cdesc_allocatable:
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
-  owner: library
 f_out_vector<string>&_cdesc:
   name: f_out_vector<string>&_cdesc
   intent: out
@@ -19073,7 +18553,6 @@ f_out_vector<string>&_cdesc:
   - type_defines
   - array_context
   - cdesc_vector_string_out
-  owner: library
 f_out_vector<string>&_cdesc_allocatable:
   name: f_out_vector<string>&_cdesc_allocatable
   intent: out
@@ -19157,7 +18636,6 @@ f_out_vector<string>&_cdesc_allocatable:
   - cdesc_vector_string_allocatable
   - vector_string_out_len
   - capsule_dtor
-  owner: library
 f_out_vector_buf_targ_string_scalar:
   name: f_out_vector_buf_targ_string_scalar
   intent: out
@@ -19224,7 +18702,6 @@ f_out_vector_buf_targ_string_scalar:
   - s
   helper:
   - char_copy
-  owner: library
 f_out_void*&:
   name: f_out_void*&
   intent: out
@@ -19254,7 +18731,6 @@ f_out_void*&:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
-  owner: library
 f_out_void**:
   name: f_out_void**
   intent: out
@@ -19282,7 +18758,6 @@ f_out_void**:
   - void **{c_var}
   c_arg_call:
   - '{cxx_var}'
-  owner: library
 f_out_void*_cdesc:
   name: f_out_void*_cdesc
   intent: out
@@ -19338,13 +18813,11 @@ f_out_void*_cdesc:
   helper:
   - array_context
   - type_defines
-  owner: library
 f_setter:
   name: f_setter
   intent: setter
   f_call:
   - call {f_call_function}({F_arg_c_call})
-  owner: library
 f_setter_bool:
   name: f_setter_bool
   intent: setter
@@ -19383,7 +18856,6 @@ f_setter_bool:
   - '{gen.cdecl.c_var}'
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
-  owner: library
 f_setter_native:
   name: f_setter_native
   intent: setter
@@ -19412,7 +18884,6 @@ f_setter_native:
   - '{gen.cdecl.c_var}'
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
-  owner: library
 f_setter_native*:
   name: f_setter_native*
   intent: setter
@@ -19441,7 +18912,6 @@ f_setter_native*:
   - '{gen.cdecl.c_var}'
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
-  owner: library
 f_setter_string_buf:
   name: f_setter_string_buf
   intent: setter
@@ -19488,7 +18958,6 @@ f_setter_string_buf:
   - "{CXX_this}->{field_name} = std::string({c_var},\t {c_var_len});"
   c_temps:
   - len
-  owner: library
 f_setter_struct*:
   name: f_setter_struct*
   intent: setter
@@ -19515,7 +18984,6 @@ f_setter_struct*:
   - '{gen.cdecl.c_var}'
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
-  owner: library
 f_setter_struct**:
   name: f_setter_struct**
   intent: setter
@@ -19541,7 +19009,6 @@ f_setter_struct**:
   - '{gen.cdecl.c_var}'
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
-  owner: library
 f_setter_struct*_pointer:
   name: f_setter_struct*_pointer
   intent: setter
@@ -19568,7 +19035,6 @@ f_setter_struct*_pointer:
   - '{gen.cdecl.c_var}'
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
-  owner: library
 f_subroutine:
   name: f_subroutine
   intent: subroutine
@@ -19578,7 +19044,6 @@ f_subroutine:
   - call {f_call_function}({F_arg_c_call})
   c_call:
   - '{C_call_function};'
-  owner: library
 f_subroutine_assignment_weakptr:
   name: f_subroutine_assignment_weakptr
   intent: subroutine
@@ -19602,7 +19067,6 @@ f_subroutine_assignment_weakptr:
   destructor:
   - "auto cxx_ptr =\t reinterpret_cast<{cxx_type}*>(ptr);"
   - delete cxx_ptr;
-  owner: library
 h_helper_array_context:
   name: h_helper_array_context
   notes:

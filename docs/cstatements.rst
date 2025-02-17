@@ -374,7 +374,7 @@ must explicitly allocate a class instance which will hold the value
 from the C++ library function.  The Fortran shadow class must keep
 this copy until the shadow class is deleted.
 
-Defaults to *library*.
+Defaults to *None*.
 
 
 lang_c and lang_cxx
