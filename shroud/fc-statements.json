@@ -901,7 +901,7 @@
             "{f_var_cdesc}%base_addr = C_LOC({f_var})",
             "{f_var_cdesc}%type = {typemap.sh_type}",
             "! {f_var_cdesc}%elem_len = C_SIZEOF()",
-            "{f_var_cdesc}%size = {size}",
+            "{f_var_cdesc}%size = {f_size}",
             "{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}"
         ],
         "f_module": {

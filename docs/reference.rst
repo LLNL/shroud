@@ -1684,9 +1684,8 @@ f_kind
     Value from typemap.  ex ``C_INT``.
     Can be used in *CStmts.f_module*.
 
-f_pointer_shape
-
-f_shape_var
+f_size
+    Expression to compute size of array argument using ``SIZE`` intrinsic.
 
 f_type
     Value from typemap.  ex ``integer(C_INT)``.
@@ -1714,9 +1713,6 @@ i_type
 i_var
     Fortran variable name for argument in interface.
     Used with statement fields *i_result_decl*, *i_dummy_arg* and *i_dummy_decl*.
-
-size
-    Expression to compute size of array argument using ``SIZE`` intrinsic.
 
 fmtl
 """"

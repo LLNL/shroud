@@ -18454,6 +18454,7 @@
                                                 "f_intent_attr": ", intent(IN)",
                                                 "f_kind": "C_DOUBLE",
                                                 "f_module_name": "iso_c_binding",
+                                                "f_size": "size(in)",
                                                 "f_type": "real(C_DOUBLE)",
                                                 "f_var": "in",
                                                 "fc_var": "in",
@@ -18466,7 +18467,6 @@
                                                 "i_var": "in",
                                                 "idtor": "0",
                                                 "rank": "2",
-                                                "size": "size(in)",
                                                 "stmt_name": "f_in_native*",
                                                 "typemap_name": "double"
                                             },

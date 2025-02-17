@@ -13241,7 +13241,7 @@ f_in_native*_cdesc:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
   - '{f_var_cdesc}%type = {typemap.sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
-  - '{f_var_cdesc}%size = {size}'
+  - '{f_var_cdesc}%size = {f_size}'
   - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -14588,7 +14588,7 @@ f_in_void*_cdesc:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
   - '{f_var_cdesc}%type = {typemap.sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
-  - '{f_var_cdesc}%size = {size}'
+  - '{f_var_cdesc}%size = {f_size}'
   - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -14976,7 +14976,7 @@ f_inout_native*_cdesc:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
   - '{f_var_cdesc}%type = {typemap.sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
-  - '{f_var_cdesc}%size = {size}'
+  - '{f_var_cdesc}%size = {f_size}'
   - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -15888,7 +15888,7 @@ f_inout_void*_cdesc:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
   - '{f_var_cdesc}%type = {typemap.sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
-  - '{f_var_cdesc}%size = {size}'
+  - '{f_var_cdesc}%size = {f_size}'
   - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -16205,7 +16205,7 @@ f_mixin_cdesc_native_fill:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
   - '{f_var_cdesc}%type = {typemap.sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
-  - '{f_var_cdesc}%size = {size}'
+  - '{f_var_cdesc}%size = {f_size}'
   - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
   f_module:
     iso_c_binding:
@@ -18058,7 +18058,7 @@ f_out_native*_cdesc:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
   - '{f_var_cdesc}%type = {typemap.sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
-  - '{f_var_cdesc}%size = {size}'
+  - '{f_var_cdesc}%size = {f_size}'
   - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
   f_arg_call:
   - '{f_var_cdesc}'
@@ -19301,7 +19301,7 @@ f_out_void*_cdesc:
   - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
   - '{f_var_cdesc}%type = {typemap.sh_type}'
   - '! {f_var_cdesc}%elem_len = C_SIZEOF()'
-  - '{f_var_cdesc}%size = {size}'
+  - '{f_var_cdesc}%size = {f_size}'
   - '{f_var_cdesc}%rank = {rank}{gen.f_cdesc_shape}'
   f_arg_call:
   - '{f_var_cdesc}'

@@ -5011,6 +5011,7 @@
                                 "f_intent_attr": ", intent(IN)",
                                 "f_kind": "C_PTR",
                                 "f_module_name": "iso_c_binding",
+                                "f_size": "size(arg)",
                                 "f_type": "type(*)",
                                 "f_var": "arg",
                                 "fc_var": "arg",
@@ -5023,7 +5024,6 @@
                                 "i_var": "arg",
                                 "idtor": "0",
                                 "rank": "1",
-                                "size": "size(arg)",
                                 "stmt_name": "f_in_void*",
                                 "typemap_name": "void"
                             },

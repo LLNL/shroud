@@ -1387,6 +1387,7 @@
                                 "f_intent_attr": ", intent(INOUT)",
                                 "f_kind": "C_INT",
                                 "f_module_name": "iso_c_binding",
+                                "f_size": "1",
                                 "f_type": "integer(C_INT)",
                                 "f_var": "data",
                                 "fc_var": "data",
@@ -1398,7 +1399,6 @@
                                 "i_var": "data",
                                 "idtor": "0",
                                 "rank": "0",
-                                "size": "1",
                                 "stmt_name": "f_inout_native*",
                                 "typemap_name": "int"
                             },
@@ -1535,6 +1535,7 @@
                                 "f_intent_attr": ", intent(INOUT)",
                                 "f_kind": "C_INT",
                                 "f_module_name": "iso_c_binding",
+                                "f_size": "size(data)",
                                 "f_type": "integer(C_INT)",
                                 "f_var": "data",
                                 "fc_var": "data",
@@ -1547,7 +1548,6 @@
                                 "i_var": "data",
                                 "idtor": "0",
                                 "rank": "1",
-                                "size": "size(data)",
                                 "stmt_name": "f_inout_native*",
                                 "typemap_name": "int"
                             },
@@ -1684,6 +1684,7 @@
                                 "f_intent_attr": ", intent(INOUT)",
                                 "f_kind": "C_INT",
                                 "f_module_name": "iso_c_binding",
+                                "f_size": "size(data)",
                                 "f_type": "integer(C_INT)",
                                 "f_var": "data",
                                 "fc_var": "data",
@@ -1696,7 +1697,6 @@
                                 "i_var": "data",
                                 "idtor": "0",
                                 "rank": "2",
-                                "size": "size(data)",
                                 "stmt_name": "f_inout_native*",
                                 "typemap_name": "int"
                             },

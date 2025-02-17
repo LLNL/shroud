@@ -889,6 +889,7 @@
                                 "f_intent_attr": ", intent(IN)",
                                 "f_kind": "C_INT",
                                 "f_module_name": "iso_c_binding",
+                                "f_size": "size(val)",
                                 "f_type": "integer(C_INT)",
                                 "f_var": "val",
                                 "fc_var": "val",
@@ -901,7 +902,6 @@
                                 "i_var": "val",
                                 "idtor": "0",
                                 "rank": "1",
-                                "size": "size(val)",
                                 "stmt_name": "f_setter_native*",
                                 "typemap_name": "int"
                             },
@@ -1505,6 +1505,7 @@
                                         "f_intent_attr": ", intent(IN)",
                                         "f_kind": "C_INT",
                                         "f_module_name": "iso_c_binding",
+                                        "f_size": "size(val)",
                                         "f_type": "integer(C_INT)",
                                         "f_var": "val",
                                         "fc_var": "val",
@@ -1517,7 +1518,6 @@
                                         "i_var": "val",
                                         "idtor": "0",
                                         "rank": "1",
-                                        "size": "size(val)",
                                         "stmt_name": "f_setter_native*",
                                         "typemap_name": "int"
                                     },
@@ -2148,6 +2148,7 @@
                                         "f_intent_attr": ", intent(IN)",
                                         "f_kind": "C_INT",
                                         "f_module_name": "iso_c_binding",
+                                        "f_size": "size(val)",
                                         "f_type": "integer(C_INT)",
                                         "f_var": "val",
                                         "fc_var": "val",
@@ -2160,7 +2161,6 @@
                                         "i_var": "val",
                                         "idtor": "0",
                                         "rank": "1",
-                                        "size": "size(val)",
                                         "stmt_name": "f_setter_native*",
                                         "typemap_name": "int"
                                     },
