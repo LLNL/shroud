@@ -249,7 +249,6 @@ int DEF_Class1_get_field1(DEF_Class1 * self)
 {
     Class1 *SH_this = static_cast<Class1 *>(self->addr);
     // splicer begin class.Class1.method.get_field1
-    // skip call c_getter
     return SH_this->m_field1;
     // splicer end class.Class1.method.get_field1
 }
@@ -262,7 +261,6 @@ int DEF_Class1_get_field2(DEF_Class1 * self)
 {
     Class1 *SH_this = static_cast<Class1 *>(self->addr);
     // splicer begin class.Class1.method.get_field2
-    // skip call c_getter
     return SH_this->m_field2;
     // splicer end class.Class1.method.get_field2
 }
@@ -275,7 +273,6 @@ int DEF_Class1_get_field3(DEF_Class1 * self)
 {
     Class1 *SH_this = static_cast<Class1 *>(self->addr);
     // splicer begin class.Class1.method.get_field3
-    // skip call c_getter
     return SH_this->m_field3;
     // splicer end class.Class1.method.get_field3
 }

@@ -402,7 +402,6 @@ int CLA_Class1_get_m_flag(CLA_Class1 * self)
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
     // splicer begin class.Class1.method.get_m_flag
-    // skip call c_getter
     return SH_this->m_flag;
     // splicer end class.Class1.method.get_m_flag
 }
@@ -418,7 +417,6 @@ int CLA_Class1_get_test(CLA_Class1 * self)
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
     // splicer begin class.Class1.method.get_test
-    // skip call c_getter
     return SH_this->m_test;
     // splicer end class.Class1.method.get_test
 }
@@ -437,7 +435,6 @@ void CLA_Class1_set_test(CLA_Class1 * self, int val)
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
     // splicer begin class.Class1.method.set_test
-    // skip call c_setter
     SH_this->m_test = val;
     // splicer end class.Class1.method.set_test
 }
@@ -453,7 +450,6 @@ bool CLA_Class1_get_m_bool(CLA_Class1 * self)
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
     // splicer begin class.Class1.method.get_m_bool
-    // skip call c_getter
     return SH_this->m_bool;
     // splicer end class.Class1.method.get_m_bool
 }
@@ -472,7 +468,6 @@ void CLA_Class1_set_m_bool(CLA_Class1 * self, bool val)
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
     // splicer begin class.Class1.method.set_m_bool
-    // skip call c_setter
     SH_this->m_bool = val;
     // splicer end class.Class1.method.set_m_bool
 }
@@ -512,7 +507,6 @@ void CLA_Class1_set_m_name(CLA_Class1 * self, char *val,
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
     // splicer begin class.Class1.method.set_m_name
-    // skip call c_setter
     SH_this->m_name = std::string(val, SHT_val_len);
     // splicer end class.Class1.method.set_m_name
 }

@@ -1810,8 +1810,6 @@ c_getter_native:
   i_module:
     '{i_module_name}':
     - '{i_kind}'
-  c_call:
-  - // skip call c_getter
   c_return:
   - return {CXX_this}->{field_name};
   c_need_wrapper: true
@@ -1829,8 +1827,6 @@ c_getter_native*:
   i_module:
     '{i_module_name}':
     - '{i_kind}'
-  c_call:
-  - // skip call c_getter
   c_return:
   - return {CXX_this}->{field_name};
   c_need_wrapper: true
@@ -6216,8 +6212,6 @@ c_out_void*_cdesc:
 c_setter:
   name: c_setter
   intent: setter
-  c_call:
-  - // skip call c_setter
   owner: library
 c_setter_native:
   name: c_setter_native
@@ -12405,8 +12399,6 @@ f_getter_bool:
   i_module:
     '{i_module_name}':
     - '{i_kind}'
-  c_call:
-  - // skip call c_getter
   c_return:
   - return {CXX_this}->{field_name};
   owner: library
@@ -12429,8 +12421,6 @@ f_getter_native:
   i_module:
     '{i_module_name}':
     - '{i_kind}'
-  c_call:
-  - // skip call c_getter
   c_return:
   - return {CXX_this}->{field_name};
   c_need_wrapper: true
@@ -12514,8 +12504,6 @@ f_getter_native*_pointer:
   i_module:
     '{i_module_name}':
     - '{i_kind}'
-  c_call:
-  - // skip call c_getter
   c_return:
   - return {CXX_this}->{field_name};
   c_need_wrapper: true
@@ -19356,8 +19344,6 @@ f_setter:
   intent: setter
   f_call:
   - call {f_call_function}({F_arg_c_call})
-  c_call:
-  - // skip call c_setter
   owner: library
 f_setter_bool:
   name: f_setter_bool

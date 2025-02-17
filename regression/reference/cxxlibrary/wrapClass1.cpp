@@ -122,7 +122,6 @@ int CXX_Class1_get_length(CXX_Class1 * self)
 {
     Class1 *SH_this = static_cast<Class1 *>(self->addr);
     // splicer begin class.Class1.method.get_length
-    // skip call c_getter
     return SH_this->m_length;
     // splicer end class.Class1.method.get_length
 }

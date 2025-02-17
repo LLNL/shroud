@@ -533,7 +533,6 @@ const double * STR_Cstruct_ptr_get_const_dvalue(
     STR_cstruct_ptr *SH_this)
 {
     // splicer begin function.Cstruct_ptr_get_const_dvalue
-    // skip call c_getter
     return SH_this->const_dvalue;
     // splicer end function.Cstruct_ptr_get_const_dvalue
 }
@@ -552,7 +551,6 @@ void STR_Cstruct_ptr_set_const_dvalue(STR_cstruct_ptr *SH_this,
     const double *val)
 {
     // splicer begin function.Cstruct_ptr_set_const_dvalue
-    // skip call c_setter
     SH_this->const_dvalue = val;
     // splicer end function.Cstruct_ptr_set_const_dvalue
 }
@@ -590,7 +588,6 @@ void STR_Cstruct_list_get_ivalue(STR_cstruct_list *SH_this,
 void STR_Cstruct_list_set_ivalue(STR_cstruct_list *SH_this, int *val)
 {
     // splicer begin function.Cstruct_list_set_ivalue
-    // skip call c_setter
     SH_this->ivalue = val;
     // splicer end function.Cstruct_list_set_ivalue
 }
@@ -628,7 +625,6 @@ void STR_Cstruct_list_get_dvalue(STR_cstruct_list *SH_this,
 void STR_Cstruct_list_set_dvalue(STR_cstruct_list *SH_this, double *val)
 {
     // splicer begin function.Cstruct_list_set_dvalue
-    // skip call c_setter
     SH_this->dvalue = val;
     // splicer end function.Cstruct_list_set_dvalue
 }

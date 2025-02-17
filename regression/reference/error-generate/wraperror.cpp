@@ -49,7 +49,6 @@ int * ERR_struct1_get_arg2(ERR_struct1 *SH_this,
 void ERR_struct1_set_arg2(ERR_struct1 *SH_this, int *val)
 {
     // splicer begin function.struct1_set_arg2
-    // skip call c_setter
     SH_this->arg2 = val;
     // splicer end function.struct1_set_arg2
 }

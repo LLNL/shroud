@@ -1149,18 +1149,17 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                     fmt_result,
                 )
 
+        call_code = []
         if result_stmt.c_call:
-            raw_call_code = result_stmt.c_call
+            for line in result_stmt.c_call:
+                append_format(call_code, line, fmt_result)
+
         if result_stmt.intent == "function":
             self.set_cxx_nonconst_ptr(ast, fmt_result)
 
         need_wrapper = self.add_code_from_statements(
             fmt_result, result_stmt, pre_call, post_call, need_wrapper
         )
-
-        call_code = []
-        for line in raw_call_code:
-            append_format(call_code, line, fmt_result)
 
         if result_stmt.c_final:
             need_wrapper = True

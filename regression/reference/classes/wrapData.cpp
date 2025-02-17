@@ -102,7 +102,6 @@ int CLA_Data_get_nitems(CLA_Data * self)
 {
     classes::Data *SH_this = static_cast<classes::Data *>(self->addr);
     // splicer begin class.Data.method.get_nitems
-    // skip call c_getter
     return SH_this->nitems;
     // splicer end class.Data.method.get_nitems
 }
@@ -120,7 +119,6 @@ void CLA_Data_set_nitems(CLA_Data * self, int val)
 {
     classes::Data *SH_this = static_cast<classes::Data *>(self->addr);
     // splicer begin class.Data.method.set_nitems
-    // skip call c_setter
     SH_this->nitems = val;
     // splicer end class.Data.method.set_nitems
 }
@@ -157,7 +155,6 @@ void CLA_Data_set_items(CLA_Data * self, int *val)
 {
     classes::Data *SH_this = static_cast<classes::Data *>(self->addr);
     // splicer begin class.Data.method.set_items
-    // skip call c_setter
     SH_this->items = val;
     // splicer end class.Data.method.set_items
 }
