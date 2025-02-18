@@ -11,7 +11,7 @@ ifeq ($(top),)
 top := ../../..
 endif 
 
-include $(top)/regression/run/defaults.mk
+testdir = shared
 
 INCLUDE = \
     -I$(top)/regression/reference/shared \
@@ -28,15 +28,11 @@ C_OBJS = \
     wrapObject_shared.o \
     wrapObject_weak.o
 F_OBJS = \
-    wrapfshared.o \
+    main.o \
     fruit.o \
-    main.o
+    wrapfshared.o
 
-shared : $(C_OBJS) $(F_OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod shared
+include $(top)/regression/run/defaults.mk
 
 #shared.o : shared.cpp shared.hpp
 utilShared.o : utilShared.cpp shared.hpp typesShared.h
@@ -50,5 +46,3 @@ maincpp : maincpp.o
 	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@ $(CXXLIBS)
 
 testc.o : testc.c wrapShared.h shared.hpp
-testc : testc.o $(C_OBJS)
-	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)

@@ -8,8 +8,6 @@
 #
 # run/pointers-cxx
 #
-include $(top)/regression/run/defaults.mk
-
 testdir = pointers-cxx
 #TEST_FFLAGS = -DTEST_C_WRAPPER
 
@@ -32,17 +30,10 @@ F_OBJS = \
     fruit.o \
     wrapfpointers.o
 
-$(testdir) : $(F_OBJS) $(C_OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(CLIBS)
+include $(top)/regression/run/defaults.mk
 
 main.o : main.f fruit.o wrapfpointers.o
 pointers.o : pointers.cpp pointers.h
 	$(CXX) $(CXXFLAGS) $(INCLUDE) -c -o $*.o $<
 
 testc.o : testc.c wrappointers.h
-testc : testc.o $(C_OBJS)
-	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS) -lm
-clean :
-	rm -f $(C_OBJS) $(F_OBJS) *.mod $(testdir) testc
-
-main.o : wrapfpointers.o

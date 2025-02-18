@@ -147,6 +147,7 @@ module classes_mod
         ! splicer begin class.Shape.component_part
         ! splicer end class.Shape.component_part
     contains
+        procedure :: dtor => shape_dtor
         procedure :: get_ivar => shape_get_ivar
         procedure :: get_instance => shape_get_instance
         procedure :: set_instance => shape_set_instance
@@ -159,6 +160,7 @@ module classes_mod
         ! splicer begin class.Circle.component_part
         ! splicer end class.Circle.component_part
     contains
+        procedure :: dtor => circle_dtor
         ! splicer begin class.Circle.type_bound_procedure_part
         ! splicer end class.Circle.type_bound_procedure_part
     end type circle
@@ -717,6 +719,18 @@ module classes_mod
     end interface
 
     ! ----------------------------------------
+    ! Function:  ~Shape
+    ! Statement: f_dtor
+    interface
+        subroutine c_shape_dtor(self) &
+                bind(C, name="CLA_Shape_dtor")
+            import :: CLA_SHROUD_capsule_data
+            implicit none
+            type(CLA_SHROUD_capsule_data), intent(INOUT) :: self
+        end subroutine c_shape_dtor
+    end interface
+
+    ! ----------------------------------------
     ! Function:  int get_ivar
     ! Statement: f_function_native
     interface
@@ -756,6 +770,18 @@ module classes_mod
             implicit none
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
         end subroutine c_circle_ctor_bufferify
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  ~Circle
+    ! Statement: f_dtor
+    interface
+        subroutine c_circle_dtor(self) &
+                bind(C, name="CLA_Circle_dtor")
+            import :: CLA_SHROUD_capsule_data
+            implicit none
+            type(CLA_SHROUD_capsule_data), intent(INOUT) :: self
+        end subroutine c_circle_dtor
     end interface
 
     ! ----------------------------------------
@@ -1670,6 +1696,16 @@ contains
     end function shape_ctor
 
     ! ----------------------------------------
+    ! Function:  ~Shape
+    ! Statement: f_dtor
+    subroutine shape_dtor(obj)
+        class(shape), intent(INOUT) :: obj
+        ! splicer begin class.Shape.method.dtor
+        call c_shape_dtor(obj%cxxmem)
+        ! splicer end class.Shape.method.dtor
+    end subroutine shape_dtor
+
+    ! ----------------------------------------
     ! Function:  int get_ivar
     ! Statement: f_function_native
     function shape_get_ivar(obj) &
@@ -1718,6 +1754,16 @@ contains
         call c_circle_ctor_bufferify(SHT_rv%cxxmem)
         ! splicer end class.Circle.method.ctor
     end function circle_ctor
+
+    ! ----------------------------------------
+    ! Function:  ~Circle
+    ! Statement: f_dtor
+    subroutine circle_dtor(obj)
+        class(circle), intent(INOUT) :: obj
+        ! splicer begin class.Circle.method.dtor
+        call c_circle_dtor(obj%cxxmem)
+        ! splicer end class.Circle.method.dtor
+    end subroutine circle_dtor
 
     ! splicer begin class.Circle.additional_functions
     ! splicer end class.Circle.additional_functions

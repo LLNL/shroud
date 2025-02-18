@@ -9,7 +9,7 @@
 # run/strings-cfi - Futher Interoperability with C.
 # Use test from run/strings.
 #
-include $(top)/regression/run/defaults.mk
+testdir = strings-cfi
 
 INCLUDE = \
     -I$(top)/regression/reference/strings-cfi \
@@ -26,14 +26,10 @@ C_OBJS = \
     utilstrings.o \
     wrapstrings.o
 F_OBJS = \
-    wrapfstrings.o \
+    main.o \
     fruit.o \
-    main.o
+    wrapfstrings.o
 
-strings-cfi : $(C_OBJS) $(F_OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod strings
+include $(top)/regression/run/defaults.mk
 
 main.o : fruit.o wrapfstrings.o

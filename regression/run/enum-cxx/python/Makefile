@@ -7,6 +7,10 @@
 #
 #  Compile the python enum C++ module
 #
+testdir = enum-cxx
+pymodule = cenum.so
+
+AS_SHARED := TRUE
 include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
@@ -19,32 +23,20 @@ VPATH = \
     ../../cxx \
     $(top)/regression/run/enum
 
-OBJS = \
+PY_OBJS = \
     enum.o \
     pyenummodule.o
-
-LOCAL_CXXFLAGS += $(SHARED)
 
 all : cenum.so
 
 enum.o : enum.cpp enum.h
-	$(CXX) $(LOCAL_CXXFLAGS) $(INCLUDE) -c -o $*.o $<
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -c -o $*.o $<
 
-cenum.so : $(OBJS)
-	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
+cenum.so : $(PY_OBJS)
+	$(CXX) $(LDFLAGS) -o $@ $^ $(LIBS)
 
-simple : testpython.o $(OBJS)
+simple : testpython.o $(PY_OBJS)
 	$(CXX) -pthread -o $@ $^ $(PYTHON_LIB)
 #	g++ -pthread -o $@ $^ $(PYTHON_LIB)
 
 pyenummodule.o : pyenummodule.hpp
-
-clean :
-	rm -f *.so *.o simple
-.PHONY : clean
-
-print-debug:
-	@echo PYTHON=$(PYTHON)
-	@echo PYTHON_PREFIX=$(PYTHON_PREFIX)
-	@echo PYTHON_VER=$(PYTHON_VER)
-

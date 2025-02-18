@@ -8,7 +8,7 @@
 #
 # run/struct-c
 #
-include $(top)/regression/run/defaults.mk
+testdir = struct-c
 
 INCLUDE = \
     -I$(top)/regression/reference/struct-c \
@@ -19,20 +19,17 @@ VPATH = \
     $(top)/regression/run/struct \
     $(top)/regression/run/fruit
 
-OBJS = \
+C_OBJS = \
     struct.o \
-    wrapfstruct.o \
     wrapstruct.o \
     wrapCstruct_as_class.o \
-    wrapCstruct_as_subclass.o \
+    wrapCstruct_as_subclass.o
+F_OBJS = \
+    main.o \
     fruit.o \
-    main.o
+    wrapfstruct.o
 
-struct-c : $(OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod struct-c
+include $(top)/regression/run/defaults.mk
 
 struct.o : struct.h
 wrapstruct.o : wrapstruct.h struct.h

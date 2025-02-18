@@ -6,7 +6,7 @@
 #
 # run/funptr-c
 #
-include $(top)/regression/run/defaults.mk
+testdir = funptr-c
 
 INCLUDE = \
     -I$(top)/regression/reference/funptr-c \
@@ -17,17 +17,14 @@ VPATH = \
     $(top)/regression/run/funptr \
     $(top)/regression/run/fruit
 
-OBJS = \
-    funptr.o \
-    wrapffunptr.o \
+C_OBJS = \
+    funptr.o
+F_OBJS = \
+    main.o \
     fruit.o \
-    main.o
+    wrapffunptr.o
 
-funptr-c : $(OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(CLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod funptr-c
+include $(top)/regression/run/defaults.mk
 
 main.o : fruit.o wrapffunptr.o
 funptr.o : funptr.c funptr.h

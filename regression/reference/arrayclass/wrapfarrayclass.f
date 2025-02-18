@@ -80,6 +80,7 @@ module arrayclass_mod
         ! splicer begin class.ArrayWrapper.component_part
         ! splicer end class.ArrayWrapper.component_part
     contains
+        procedure :: dtor => ArrayWrapper_dtor
         procedure :: setSize => ArrayWrapper_setSize
         procedure :: getSize => ArrayWrapper_getSize
         procedure :: fillSize => ArrayWrapper_fillSize
@@ -135,6 +136,16 @@ module arrayclass_mod
             implicit none
             type(ARR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
         end subroutine c_ArrayWrapper_ctor_bufferify
+
+        ! ----------------------------------------
+        ! Function:  ~ArrayWrapper
+        ! Statement: f_dtor
+        subroutine c_ArrayWrapper_dtor(self) &
+                bind(C, name="ARR_ArrayWrapper_dtor")
+            import :: ARR_SHROUD_capsule_data
+            implicit none
+            type(ARR_SHROUD_capsule_data), intent(INOUT) :: self
+        end subroutine c_ArrayWrapper_dtor
 
         ! ----------------------------------------
         ! Function:  void setSize
@@ -504,6 +515,16 @@ contains
         call c_ArrayWrapper_ctor_bufferify(SHT_rv%cxxmem)
         ! splicer end class.ArrayWrapper.method.ctor
     end function ArrayWrapper_ctor
+
+    ! ----------------------------------------
+    ! Function:  ~ArrayWrapper
+    ! Statement: f_dtor
+    subroutine ArrayWrapper_dtor(obj)
+        class(ArrayWrapper), intent(INOUT) :: obj
+        ! splicer begin class.ArrayWrapper.method.dtor
+        call c_ArrayWrapper_dtor(obj%cxxmem)
+        ! splicer end class.ArrayWrapper.method.dtor
+    end subroutine ArrayWrapper_dtor
 
     ! ----------------------------------------
     ! Function:  void setSize

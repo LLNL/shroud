@@ -11,7 +11,7 @@ ifeq ($(top),)
 top := ../../..
 endif 
 
-include $(top)/regression/run/defaults.mk
+testdir = defaultarg32
 
 TEST_CFLAGS   = -DINDEXTYPE_SIZE=32
 TEST_CXXFLAGS = -DINDEXTYPE_SIZE=32
@@ -36,11 +36,7 @@ F_OBJS = \
     fruit.o \
     main.o
 
-defaultarg32 : $(C_OBJS) $(F_OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod defaultarg
+include $(top)/regression/run/defaults.mk
 
 defaultarg.o : defaultarg.cpp defaultarg.hpp
 wrapdefaultarg.o : wrapdefaultarg.h defaultarg.hpp
@@ -52,5 +48,3 @@ maincpp : maincpp.o defaultarg.o
 	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@ $(CXXLIBS)
 
 testc.o : testc.c wrapdefaultarg.h defaultarg.hpp
-testc : testc.o $(C_OBJS)
-	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)

@@ -10,6 +10,7 @@
 // cxx_header
 #include "arrayclass.hpp"
 // shroud
+#include <cstddef>
 #include "wrapArrayWrapper.h"
 
 // splicer begin class.ArrayWrapper.CXX_definitions
@@ -43,6 +44,18 @@ void ARR_ArrayWrapper_ctor_bufferify(ARR_ArrayWrapper *SHC_rv)
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 1;
     // splicer end class.ArrayWrapper.method.ctor_bufferify
+}
+
+// ----------------------------------------
+// Function:  ~ArrayWrapper
+// Statement: c_dtor
+void ARR_ArrayWrapper_dtor(ARR_ArrayWrapper * self)
+{
+    ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
+    // splicer begin class.ArrayWrapper.method.dtor
+    delete SH_this;
+    self->addr = nullptr;
+    // splicer end class.ArrayWrapper.method.dtor
 }
 
 // ----------------------------------------

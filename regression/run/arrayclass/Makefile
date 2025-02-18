@@ -8,7 +8,7 @@
 #
 # run/arrayclass
 #
-include $(top)/regression/run/defaults.mk
+testdir = arrayclass
 
 INCLUDE = \
     -I$(top)/regression/reference/arrayclass \
@@ -20,17 +20,14 @@ VPATH = \
     $(top)/regression/run/fruit
 
 #    arrayclass.o   # This file is not created
-OBJS = \
-    wrapfarrayclass.o \
+C_OBJS = \
     wrapArrayWrapper.o \
-    utilarrayclass.o \
+    utilarrayclass.o
+F_OBJS = \
+    main.o \
     fruit.o \
-    main.o
+    wrapfarrayclass.o
 
-arrayclass : $(OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(CLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod arrayclass
+include $(top)/regression/run/defaults.mk
 
 main.o : fruit.o wrapfarrayclass.o

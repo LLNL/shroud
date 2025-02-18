@@ -52,14 +52,14 @@ void CLA_SHROUD_memory_destructor(CLA_SHROUD_capsule_data *cap)
     }
     case 2:   // classes::Shape
     {
-        classes::Shape *cxx_ptr =
+        classes::Shape *cxx_ptr = 
             reinterpret_cast<classes::Shape *>(ptr);
         delete cxx_ptr;
         break;
     }
     case 3:   // classes::Circle
     {
-        classes::Circle *cxx_ptr =
+        classes::Circle *cxx_ptr = 
             reinterpret_cast<classes::Circle *>(ptr);
         delete cxx_ptr;
         break;

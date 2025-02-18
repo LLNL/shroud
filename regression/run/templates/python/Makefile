@@ -8,6 +8,10 @@
 #
 #  Compile the python templates module
 #
+testdir = templates
+pymodule = templates.so
+
+AS_SHARED := TRUE
 include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
@@ -20,7 +24,7 @@ VPATH = \
     $(top)/regression/run/templates \
     $(top)/regression/run/templates/python
 
-OBJS = \
+PY_OBJS = \
     templates.o \
     pyinternal_ImplWorker1type.o \
     pyinternal_ImplWorker2type.o \
@@ -33,24 +37,12 @@ OBJS = \
     pystd_vector_doubletype.o \
     pystd_vector_inttype.o
 
-
-LOCAL_CXXFLAGS += $(SHARED)
-
 all : templates.so simple
 
-templates.so : $(OBJS)
-	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
+templates.so : $(PY_OBJS)
+	$(CXX) $(LDFLAGS) -o $@ $^ $(LIBS)
 
-simple : testpython.o $(OBJS)
+simple : testpython.o $(PY_OBJS)
 	$(CXX) -pthread -o $@ $^ $(PYTHON_LIB)
 #	g++ -pthread -o $@ $^ $(PYTHON_LIB)
-
-clean :
-	rm -f *.so *.o simple
-.PHONY : clean
-
-print-debug:
-	@echo PYTHON=$(PYTHON)
-	@echo PYTHON_PREFIX=$(PYTHON_PREFIX)
-	@echo PYTHON_VER=$(PYTHON_VER)
 

@@ -9,8 +9,6 @@
 # run/pointers-cxx-c
 # C wrappers only for a C++ library
 #
-include $(top)/regression/run/defaults.mk
-
 testdir = pointers-cxx-c
 
 INCLUDE = \
@@ -28,11 +26,9 @@ C_OBJS = \
     wrappointers.o \
     utilpointers.o
 
+include $(top)/regression/run/defaults.mk
+
 pointers.o : pointers.cpp pointers.h
 	$(CXX) $(CXXFLAGS) $(INCLUDE) -c -o $*.o $<
 
 testc.o : testc.c wrappointers.h
-testc : testc.o $(C_OBJS)
-	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS) -lm
-clean :
-	rm -f $(C_OBJS) testc

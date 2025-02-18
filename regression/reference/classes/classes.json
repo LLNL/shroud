@@ -4509,7 +4509,139 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "get_ivar  20 ****************************************",
+                        "<FUNCTION>": "dtor  20 ****************************************",
+                        "ast": {
+                            "declarator": {
+                                "default_name": "dtor",
+                                "is_dtor": true,
+                                "params": [],
+                                "typemap_name": "void"
+                            },
+                            "is_dtor": "Shape",
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "~Shape()",
+                        "declgen": "~Shape(void)",
+                        "name": "dtor",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "lua": true,
+                            "python": true
+                        },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->dtor(\t)",
+                                        "C_name": "CLA_Shape_dtor",
+                                        "C_prototype": "CLA_Shape * self",
+                                        "C_return_type": "void",
+                                        "i_name_function": "c_shape_dtor",
+                                        "stmt_name": "c_dtor",
+                                        "typemap_name": "void"
+                                    },
+                                    "meta": {
+                                        "abstract": "void",
+                                        "intent": "dtor"
+                                    },
+                                    "stmt": "c_dtor"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->dtor(\t)",
+                                        "C_name": "CLA_Shape_dtor",
+                                        "C_prototype": "CLA_Shape * self",
+                                        "C_return_type": "void",
+                                        "F_arg_c_call": "obj%cxxmem",
+                                        "F_arguments": "obj",
+                                        "F_subprogram": "subroutine",
+                                        "f_call_function": "c_shape_dtor",
+                                        "i_arguments": "self",
+                                        "i_name_function": "c_shape_dtor",
+                                        "i_subprogram": "subroutine",
+                                        "stmt_name": "f_dtor",
+                                        "typemap_name": "void"
+                                    },
+                                    "meta": {
+                                        "abstract": "void",
+                                        "intent": "dtor"
+                                    },
+                                    "stmt": "f_dtor"
+                                }
+                            },
+                            "lua": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "stmt": "lua_dtor"
+                                    },
+                                    "meta": {
+                                        "abstract": "void",
+                                        "intent": "dtor"
+                                    }
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "abstract": "void",
+                                        "intent": "dtor"
+                                    }
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "abstract": "void",
+                                        "intent": "dtor"
+                                    }
+                                }
+                            }
+                        },
+                        "zz_fmtdict": {
+                            "C_name_api": "dtor",
+                            "F_name_api": "dtor",
+                            "F_name_function": "dtor",
+                            "F_name_generic": "dtor",
+                            "F_name_impl": "shape_dtor",
+                            "LUA_name": "dtor",
+                            "LUA_name_api": "dtor",
+                            "LUA_name_impl": "l_Shape_dtor",
+                            "c_arglist": [
+                                "self"
+                            ],
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "f_arglist": [
+                                "f_var"
+                            ],
+                            "function_name": "dtor"
+                        },
+                        "zz_fmtlang": {
+                            "lua": {
+                                "LUA_name": "__gc",
+                                "LUA_used_param_state": true,
+                                "c_var": "\t(l_Shape_Type *)\t luaL_checkudata(\tL, 1, \"Shape.metatable\")",
+                                "cxx_call_list": "",
+                                "nresults": 0
+                            },
+                            "py": {
+                                "PY_array_arg": "numpy",
+                                "PY_doc_string": "documentation",
+                                "PY_used_param_self": true
+                            }
+                        }
+                    },
+                    {
+                        "<FUNCTION>": "get_ivar  21 ****************************************",
                         "ast": {
                             "declarator": {
                                 "func_const": true,
@@ -4758,7 +4890,7 @@
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "ctor  21 ****************************************",
+                        "<FUNCTION>": "ctor  22 ****************************************",
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -4980,6 +5112,138 @@
                                 "PY_used_param_self": true
                             }
                         }
+                    },
+                    {
+                        "<FUNCTION>": "dtor  23 ****************************************",
+                        "ast": {
+                            "declarator": {
+                                "default_name": "dtor",
+                                "is_dtor": true,
+                                "params": [],
+                                "typemap_name": "void"
+                            },
+                            "is_dtor": "Circle",
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "~Circle()",
+                        "declgen": "~Circle(void)",
+                        "name": "dtor",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "lua": true,
+                            "python": true
+                        },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->dtor(\t)",
+                                        "C_name": "CLA_Circle_dtor",
+                                        "C_prototype": "CLA_Circle * self",
+                                        "C_return_type": "void",
+                                        "i_name_function": "c_circle_dtor",
+                                        "stmt_name": "c_dtor",
+                                        "typemap_name": "void"
+                                    },
+                                    "meta": {
+                                        "abstract": "void",
+                                        "intent": "dtor"
+                                    },
+                                    "stmt": "c_dtor"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->dtor(\t)",
+                                        "C_name": "CLA_Circle_dtor",
+                                        "C_prototype": "CLA_Circle * self",
+                                        "C_return_type": "void",
+                                        "F_arg_c_call": "obj%cxxmem",
+                                        "F_arguments": "obj",
+                                        "F_subprogram": "subroutine",
+                                        "f_call_function": "c_circle_dtor",
+                                        "i_arguments": "self",
+                                        "i_name_function": "c_circle_dtor",
+                                        "i_subprogram": "subroutine",
+                                        "stmt_name": "f_dtor",
+                                        "typemap_name": "void"
+                                    },
+                                    "meta": {
+                                        "abstract": "void",
+                                        "intent": "dtor"
+                                    },
+                                    "stmt": "f_dtor"
+                                }
+                            },
+                            "lua": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "stmt": "lua_dtor"
+                                    },
+                                    "meta": {
+                                        "abstract": "void",
+                                        "intent": "dtor"
+                                    }
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "abstract": "void",
+                                        "intent": "dtor"
+                                    }
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "abstract": "void",
+                                        "intent": "dtor"
+                                    }
+                                }
+                            }
+                        },
+                        "zz_fmtdict": {
+                            "C_name_api": "dtor",
+                            "F_name_api": "dtor",
+                            "F_name_function": "dtor",
+                            "F_name_generic": "dtor",
+                            "F_name_impl": "circle_dtor",
+                            "LUA_name": "dtor",
+                            "LUA_name_api": "dtor",
+                            "LUA_name_impl": "l_Circle_dtor",
+                            "c_arglist": [
+                                "self"
+                            ],
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "f_arglist": [
+                                "f_var"
+                            ],
+                            "function_name": "dtor"
+                        },
+                        "zz_fmtlang": {
+                            "lua": {
+                                "LUA_name": "__gc",
+                                "LUA_used_param_state": true,
+                                "c_var": "\t(l_Circle_Type *)\t luaL_checkudata(\tL, 1, \"Circle.metatable\")",
+                                "cxx_call_list": "",
+                                "nresults": 0
+                            },
+                            "py": {
+                                "PY_array_arg": "numpy",
+                                "PY_doc_string": "documentation",
+                                "PY_used_param_self": true
+                            }
+                        }
                     }
                 ],
                 "name": "Circle",
@@ -5035,7 +5299,7 @@
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "allocate  22 ****************************************",
+                        "<FUNCTION>": "allocate  24 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "allocate",
@@ -5220,7 +5484,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "free  23 ****************************************",
+                        "<FUNCTION>": "free  25 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "free",
@@ -5312,7 +5576,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "ctor  24 ****************************************",
+                        "<FUNCTION>": "ctor  26 ****************************************",
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -5463,7 +5727,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "dtor  25 ****************************************",
+                        "<FUNCTION>": "dtor  27 ****************************************",
                         "ast": {
                             "declarator": {
                                 "default_name": "dtor",
@@ -5557,7 +5821,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "get_nitems  26 ****************************************",
+                        "<FUNCTION>": "get_nitems  28 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -5661,7 +5925,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "set_nitems  27 ****************************************",
+                        "<FUNCTION>": "set_nitems  29 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -5808,7 +6072,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "get_items  28 ****************************************",
+                        "<FUNCTION>": "get_items  30 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -5952,7 +6216,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "set_items  29 ****************************************",
+                        "<FUNCTION>": "set_items  31 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -6237,7 +6501,7 @@
         ],
         "functions": [
             {
-                "<FUNCTION>": "directionFunc  30 ****************************************",
+                "<FUNCTION>": "directionFunc  32 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "directionFunc",
@@ -6597,7 +6861,7 @@
                 }
             },
             {
-                "<FUNCTION>": "passClassByValue  31 ****************************************",
+                "<FUNCTION>": "passClassByValue  33 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "passClassByValue",
@@ -6860,7 +7124,7 @@
                 }
             },
             {
-                "<FUNCTION>": "useclass  32 ****************************************",
+                "<FUNCTION>": "useclass  34 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "useclass",
@@ -7164,7 +7428,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getclass2  33 ****************************************",
+                "<FUNCTION>": "getclass2  35 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -7323,7 +7587,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getclass3  34 ****************************************",
+                "<FUNCTION>": "getclass3  36 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getclass3",
@@ -7530,7 +7794,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getclass2_void  35 ****************************************",
+                "<FUNCTION>": "getclass2_void  37 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -7673,7 +7937,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getclass3_void  36 ****************************************",
+                "<FUNCTION>": "getclass3_void  38 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getclass3_void",
@@ -7815,7 +8079,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getConstClassReference  37 ****************************************",
+                "<FUNCTION>": "getConstClassReference  39 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -7971,7 +8235,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getClassReference  38 ****************************************",
+                "<FUNCTION>": "getClassReference  40 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getClassReference",
@@ -8175,7 +8439,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getClassCopy  39 ****************************************",
+                "<FUNCTION>": "getClassCopy  41 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getClassCopy",
@@ -8429,7 +8693,7 @@
                 }
             },
             {
-                "<FUNCTION>": "set_global_flag  40 ****************************************",
+                "<FUNCTION>": "set_global_flag  42 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "set_global_flag",
@@ -8704,7 +8968,7 @@
                 }
             },
             {
-                "<FUNCTION>": "get_global_flag  41 ****************************************",
+                "<FUNCTION>": "get_global_flag  43 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "get_global_flag",
@@ -8887,7 +9151,7 @@
                 }
             },
             {
-                "<FUNCTION>": "LastFunctionCalled  42 ****************************************",
+                "<FUNCTION>": "LastFunctionCalled  44 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {

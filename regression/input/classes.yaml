@@ -187,11 +187,13 @@ declarations:
 - decl: class Shape
   declarations:
   - decl: Shape()
+  - decl: ~Shape()
   - decl: int get_ivar() const
 
 - decl: "class Circle : public Shape"
   declarations:
   - decl: Circle()
+  - decl: ~Circle()
 
 ##################################################
 # test getters with pointers

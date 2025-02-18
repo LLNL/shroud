@@ -11,7 +11,7 @@ ifeq ($(top),)
 top := ../../..
 endif 
 
-include $(top)/regression/run/defaults.mk
+testdir = typemap64
 
 TEST_CFLAGS   = -DUSE_64BIT_INDEXTYPE -DUSE_64BIT_FLOAT
 TEST_CXXFLAGS = -DUSE_64BIT_INDEXTYPE -DUSE_64BIT_FLOAT
@@ -31,15 +31,11 @@ C_OBJS = \
     utiltypemap.o \
     wraptypemap.o
 F_OBJS = \
-    wrapftypemap.o \
+    main.o \
     fruit.o \
-    main.o
+    wrapftypemap.o
 
-typemap64 : $(C_OBJS) $(F_OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod typemap
+include $(top)/regression/run/defaults.mk
 
 typemap.o : typemap.hpp
 wraptypemap.o : wraptypemap.h typemap.hpp
@@ -50,5 +46,3 @@ maincpp : maincpp.o wraptypemap.o typemap.o
 	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@ $(CXXLIBS) -lm
 
 testc.o : testc.c wraptypemap.h typemap.hpp
-testc : testc.o $(C_OBJS)
-	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS) -lm

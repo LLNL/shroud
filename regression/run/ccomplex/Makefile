@@ -6,7 +6,7 @@
 #
 # run/ccomplex
 #
-include $(top)/regression/run/defaults.mk
+testdir = ccomplex
 
 INCLUDE = \
     -I$(top)/regression/reference/ccomplex \
@@ -17,17 +17,14 @@ VPATH = \
     $(top)/regression/run/ccomplex \
     $(top)/regression/run/fruit
 
-OBJS = \
+C_OBJS = \
     ccomplex.o \
-    wrapfccomplex.o \
-    utilccomplex.o \
+    utilccomplex.o
+F_OBJS = \
+    main.o \
     fruit.o \
-    main.o
+    wrapfccomplex.o
 
-ccomplex : $(OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(CLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod ccomplex
+include $(top)/regression/run/defaults.mk
 
 main.o : fruit.o wrapfccomplex.o

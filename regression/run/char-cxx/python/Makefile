@@ -8,6 +8,10 @@
 #
 #  Compile the python char module
 #
+testdir = char-cxx
+pymodule = char.so
+
+AS_SHARED := TRUE
 include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
@@ -21,30 +25,18 @@ VPATH = \
     $(top)/regression/run/char \
     ../../cxx
 
-OBJS = \
+PY_OBJS = \
     char.o \
     pycharmodule.o
-
-LOCAL_CXXFLAGS += $(SHARED)
 
 all : char.so
 
 char.o : char.cpp char.h
-	$(CXX) $(LOCAL_CXXFLAGS) $(INCLUDE) -c -o $*.o $<
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -c -o $*.o $<
 
-char.so : $(OBJS)
-	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
+char.so : $(PY_OBJS)
+	$(CXX) $(LDFLAGS) -o $@ $^ $(LIBS)
 
-simple : testpython.o $(OBJS)
+simple : testpython.o $(PY_OBJS)
 	$(CXX) -pthread -o $@ $^ $(PYTHON_LIB)
 #	g++ -pthread -o $@ $^ $(PYTHON_LIB)
-
-clean :
-	rm -f *.so *.o simple
-.PHONY : clean
-
-print-debug:
-	@echo PYTHON=$(PYTHON)
-	@echo PYTHON_PREFIX=$(PYTHON_PREFIX)
-	@echo PYTHON_VER=$(PYTHON_VER)
-

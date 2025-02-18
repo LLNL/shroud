@@ -251,6 +251,7 @@ contains
     base = Shape()
     ivar = base%get_ivar()
     call assert_equals(ivar, 0, "get_ivar")
+    call base%dtor
 
     circle1 = Circle()
     ivar = circle1%get_ivar()
@@ -260,7 +261,8 @@ contains
     cxxptr = circle1%get_instance()
     call assert_true(c_associated(cxxptr), "subclass instance c_associated")
     call assert_true(circle1%associated(), "subclass instance associated")
-    
+    call circle1%dtor
+
   end subroutine test_subclass
 
   subroutine test_getter

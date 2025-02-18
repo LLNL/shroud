@@ -11,7 +11,7 @@ ifeq ($(top),)
 top := ../../..
 endif 
 
-include $(top)/regression/run/defaults.mk
+testdir = typemap32
 
 INCLUDE = \
     -I$(top)/regression/reference/typemap \
@@ -27,15 +27,11 @@ C_OBJS = \
     utiltypemap.o \
     wraptypemap.o
 F_OBJS = \
-    wrapftypemap.o \
+    main.o \
     fruit.o \
-    main.o
+    wrapftypemap.o
 
-typemap32 : $(C_OBJS) $(F_OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod typemap
+include $(top)/regression/run/defaults.mk
 
 typemap.o : typemap.hpp
 wraptypemap.o : wraptypemap.h typemap.hpp
@@ -46,5 +42,3 @@ maincpp : maincpp.o wraptypemap.o typemap.o
 	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@ $(CXXLIBS)
 
 testc.o : testc.c wraptypemap.h typemap.hpp
-testc : testc.o $(C_OBJS)
-	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)

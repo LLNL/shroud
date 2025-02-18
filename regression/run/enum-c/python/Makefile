@@ -7,6 +7,10 @@
 #
 #  Compile the python enum C module
 #
+testdir = enum-c
+pymodule = cenum.so
+
+AS_SHARED := TRUE
 include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
@@ -18,29 +22,17 @@ VPATH = \
     $(top)/regression/reference/enum-c \
     $(top)/regression/run/enum
 
-OBJS = \
+PY_OBJS = \
     enum.o \
     pyenummodule.o
 
-LOCAL_CFLAGS += $(SHARED)
-
 all : cenum.so
 
-cenum.so : $(OBJS)
-	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
+cenum.so : $(PY_OBJS)
+	$(CXX) $(LDFLAGS) -o $@ $^ $(LIBS)
 
-simple : testpython.o $(OBJS)
+simple : testpython.o $(PY_OBJS)
 	$(CXX) -pthread -o $@ $^ $(PYTHON_LIB)
 #	g++ -pthread -o $@ $^ $(PYTHON_LIB)
 
 pyenummodule.o : pyenummodule.h
-
-clean :
-	rm -f *.so *.o simple
-.PHONY : clean
-
-print-debug:
-	@echo PYTHON=$(PYTHON)
-	@echo PYTHON_PREFIX=$(PYTHON_PREFIX)
-	@echo PYTHON_VER=$(PYTHON_VER)
-

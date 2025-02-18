@@ -11,7 +11,7 @@ ifeq ($(top),)
 top := ../../..
 endif 
 
-include $(top)/regression/run/defaults.mk
+testdir = namespace
 
 INCLUDE = \
     -I$(top)/regression/reference/namespace \
@@ -29,15 +29,11 @@ C_OBJS = \
     wrapns.o \
     wrapns_outer.o
 F_OBJS= \
-    wrapfns.o \
+    main.o \
     fruit.o \
-    main.o
+    wrapfns.o
 
-namespace : $(C_OBJS) $(F_OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod namespace
+include $(top)/regression/run/defaults.mk
 
 namespace.o : namespace.hpp
 wrapns.o : namespace.hpp
@@ -45,5 +41,4 @@ wrapns_outer.o : namespace.hpp
 main.o : fruit.o wrapfns.o wrapfns_outer.o
 
 testc.o : testc.c wrapns.h wrapns_outer.h
-testc : testc.o $(C_OBJS)
-	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)
+
