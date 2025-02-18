@@ -97,6 +97,8 @@ contains
     call assert_true(c_associated(voidptr, c_loc(arr)), "fetchVoidRef")
     call assert_true(arrinst%checkPtr(voidptr), "checkPtr")
 
+    call arrinst%dtor
+    
   end subroutine test_arraywrapper
     
 end program tester

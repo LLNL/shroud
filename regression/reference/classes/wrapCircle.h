@@ -32,6 +32,8 @@ CLA_Circle * CLA_Circle_ctor(CLA_Circle *SHC_rv);
 
 void CLA_Circle_ctor_bufferify(CLA_Circle *SHC_rv);
 
+void CLA_Circle_dtor(CLA_Circle * self);
+
 #ifdef __cplusplus
 }
 #endif

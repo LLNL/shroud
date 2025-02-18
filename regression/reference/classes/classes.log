@@ -43,6 +43,8 @@ Close wrapSingleton.cpp
 class Shape
 C c Shape(void)
 C f Shape(void)
+C c ~Shape(void)
+C f ~Shape(void)
 C c int get_ivar(void) const
 C f int get_ivar(void) const
 Close wrapShape.h
@@ -50,6 +52,8 @@ Close wrapShape.cpp
 class Circle
 C c Circle(void)
 C f Circle(void)
+C c ~Circle(void)
+C f ~Circle(void)
 Close wrapCircle.h
 Close wrapCircle.cpp
 class Data
@@ -146,14 +150,18 @@ C-interface c static Singleton &getReference(void)
 C-interface f static Singleton &getReference(void)
 class Shape
 Fortran Shape(void)
+Fortran ~Shape(void)
 Fortran int get_ivar(void) const
 C-interface c Shape(void)
 C-interface f Shape(void)
+C-interface f ~Shape(void)
 C-interface f int get_ivar(void) const
 class Circle
 Fortran Circle(void)
+Fortran ~Circle(void)
 C-interface c Circle(void)
 C-interface f Circle(void)
+C-interface f ~Circle(void)
 class Data
 Fortran void allocate(int n)
 Fortran void free(void)
@@ -226,10 +234,12 @@ Python method static Singleton &getReference(void)
 Close pySingletontype.cpp
 class Shape
 Python method Shape(void)
+Python method ~Shape(void)
 Python method int get_ivar(void) const
 Close pyShapetype.cpp
 class Circle
 Python method Circle(void)
+Python method ~Circle(void)
 Close pyCircletype.cpp
 Python function Class1::DIRECTION directionFunc(Class1::DIRECTION arg)
 Python function void passClassByValue(Class1 arg)
@@ -251,8 +261,10 @@ Lua method const std::string &getName(void)
 Lua method DIRECTION directionFunc(DIRECTION arg)
 Lua method const std::string &getName(void)
 Lua method Shape(void)
+Lua method ~Shape(void)
 Lua method int get_ivar(void) const
 Lua method Circle(void)
+Lua method ~Circle(void)
 Lua function Class1::DIRECTION directionFunc(Class1::DIRECTION arg)
 Lua function void set_global_flag(int arg)
 Lua function int get_global_flag(void)

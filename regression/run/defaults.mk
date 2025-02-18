@@ -40,9 +40,9 @@ LOCAL_CFLAGS = -g -Wall -Wstrict-prototypes -fno-strict-aliasing -std=c99
 LOCAL_CFLAGS += -Wno-enum-compare
 CLIBS = -lstdc++
 CXX = g++
-LOCAL_CXXFLAGS = -g $(CXXWARNINGS) -Wall -std=c++11 -fno-strict-aliasing $(ASAN)
+LOCAL_CXXFLAGS = -g $(CXXWARNINGS) -Wall -std=c++11 -fno-strict-aliasing
 FC = gfortran
-LOCAL_FFLAGS = -g -cpp -Wall -ffree-form -fbounds-check $(ASAN)
+LOCAL_FFLAGS = -g -cpp -Wall -ffree-form -fbounds-check
 #FFLAGS += -std=f2003
 FLIBS = -lstdc++
 SHARED = -fPIC

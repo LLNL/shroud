@@ -22,6 +22,7 @@ declarations:
 - decl: class ArrayWrapper
   declarations:
   - decl: ArrayWrapper()
+  - decl: ~ArrayWrapper()
   - decl: void setSize(int size)
   - decl: int getSize() const
   - decl: void fillSize(int &size +intent(out))

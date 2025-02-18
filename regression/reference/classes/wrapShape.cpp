@@ -10,6 +10,7 @@
 // cxx_header
 #include "classes.hpp"
 // shroud
+#include <cstddef>
 #include "wrapShape.h"
 
 // splicer begin class.Shape.CXX_definitions
@@ -43,6 +44,18 @@ void CLA_Shape_ctor_bufferify(CLA_Shape *SHC_rv)
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 2;
     // splicer end class.Shape.method.ctor_bufferify
+}
+
+// ----------------------------------------
+// Function:  ~Shape
+// Statement: c_dtor
+void CLA_Shape_dtor(CLA_Shape * self)
+{
+    classes::Shape *SH_this = static_cast<classes::Shape *>(self->addr);
+    // splicer begin class.Shape.method.dtor
+    delete SH_this;
+    self->addr = nullptr;
+    // splicer end class.Shape.method.dtor
 }
 
 // ----------------------------------------

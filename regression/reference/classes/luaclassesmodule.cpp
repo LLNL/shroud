@@ -213,6 +213,21 @@ static int l_Shape_ctor(lua_State *L)
     // splicer end class.Shape.method.ctor
 }
 
+// ~Shape(void)
+// ----------------------------------------
+// Function:  ~Shape
+// Statement: lua_dtor
+static int l_Shape_dtor(lua_State *L)
+{
+    // splicer begin class.Shape.method.__gc
+    l_Shape_Type * SH_this = (l_Shape_Type *) luaL_checkudata(
+        L, 1, "Shape.metatable");
+    delete SH_this->self;
+    SH_this->self = NULL;
+    return 0;
+    // splicer end class.Shape.method.__gc
+}
+
 // int get_ivar(void) const
 // ----------------------------------------
 // Function:  int get_ivar
@@ -232,6 +247,7 @@ static int l_Shape_get_ivar(lua_State *L)
 // splicer end class.Shape.additional_functions
 
 static const struct luaL_Reg l_Shape_Reg [] = {
+    {"__gc", l_Shape_dtor},
     {"get_ivar", l_Shape_get_ivar},
     // splicer begin class.Shape.register
     // splicer end class.Shape.register
@@ -256,10 +272,26 @@ static int l_Circle_ctor(lua_State *L)
     // splicer end class.Circle.method.ctor
 }
 
+// ~Circle(void)
+// ----------------------------------------
+// Function:  ~Circle
+// Statement: lua_dtor
+static int l_Circle_dtor(lua_State *L)
+{
+    // splicer begin class.Circle.method.__gc
+    l_Circle_Type * SH_this = (l_Circle_Type *) luaL_checkudata(
+        L, 1, "Circle.metatable");
+    delete SH_this->self;
+    SH_this->self = NULL;
+    return 0;
+    // splicer end class.Circle.method.__gc
+}
+
 // splicer begin class.Circle.additional_functions
 // splicer end class.Circle.additional_functions
 
 static const struct luaL_Reg l_Circle_Reg [] = {
+    {"__gc", l_Circle_dtor},
     // splicer begin class.Circle.register
     // splicer end class.Circle.register
     {NULL, NULL}   /*sentinel */

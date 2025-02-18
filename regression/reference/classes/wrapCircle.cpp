@@ -10,6 +10,7 @@
 // cxx_header
 #include "classes.hpp"
 // shroud
+#include <cstddef>
 #include "wrapCircle.h"
 
 // splicer begin class.Circle.CXX_definitions
@@ -43,6 +44,19 @@ void CLA_Circle_ctor_bufferify(CLA_Circle *SHC_rv)
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 3;
     // splicer end class.Circle.method.ctor_bufferify
+}
+
+// ----------------------------------------
+// Function:  ~Circle
+// Statement: c_dtor
+void CLA_Circle_dtor(CLA_Circle * self)
+{
+    classes::Circle *SH_this = static_cast<classes::Circle *>
+        (self->addr);
+    // splicer begin class.Circle.method.dtor
+    delete SH_this;
+    self->addr = nullptr;
+    // splicer end class.Circle.method.dtor
 }
 
 }  // extern "C"

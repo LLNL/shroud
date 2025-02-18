@@ -207,7 +207,117 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "setSize  1 ****************************************",
+                        "<FUNCTION>": "dtor  1 ****************************************",
+                        "ast": {
+                            "declarator": {
+                                "default_name": "dtor",
+                                "is_dtor": true,
+                                "params": [],
+                                "typemap_name": "void"
+                            },
+                            "is_dtor": "ArrayWrapper",
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "~ArrayWrapper()",
+                        "declgen": "~ArrayWrapper(void)",
+                        "name": "dtor",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->dtor(\t)",
+                                        "C_name": "ARR_ArrayWrapper_dtor",
+                                        "C_prototype": "ARR_ArrayWrapper * self",
+                                        "C_return_type": "void",
+                                        "i_name_function": "c_ArrayWrapper_dtor",
+                                        "stmt_name": "c_dtor",
+                                        "typemap_name": "void"
+                                    },
+                                    "meta": {
+                                        "abstract": "void",
+                                        "intent": "dtor"
+                                    },
+                                    "stmt": "c_dtor"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->dtor(\t)",
+                                        "C_name": "ARR_ArrayWrapper_dtor",
+                                        "C_prototype": "ARR_ArrayWrapper * self",
+                                        "C_return_type": "void",
+                                        "F_arg_c_call": "obj%cxxmem",
+                                        "F_arguments": "obj",
+                                        "F_subprogram": "subroutine",
+                                        "f_call_function": "c_ArrayWrapper_dtor",
+                                        "i_arguments": "self",
+                                        "i_name_function": "c_ArrayWrapper_dtor",
+                                        "i_subprogram": "subroutine",
+                                        "stmt_name": "f_dtor",
+                                        "typemap_name": "void"
+                                    },
+                                    "meta": {
+                                        "abstract": "void",
+                                        "intent": "dtor"
+                                    },
+                                    "stmt": "f_dtor"
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "abstract": "void",
+                                        "intent": "dtor"
+                                    }
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "abstract": "void",
+                                        "intent": "dtor"
+                                    }
+                                }
+                            }
+                        },
+                        "zz_fmtdict": {
+                            "C_name_api": "dtor",
+                            "F_name_api": "dtor",
+                            "F_name_function": "dtor",
+                            "F_name_generic": "dtor",
+                            "F_name_impl": "ArrayWrapper_dtor",
+                            "c_arglist": [
+                                "self"
+                            ],
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "f_arglist": [
+                                "f_var"
+                            ],
+                            "function_name": "dtor"
+                        },
+                        "zz_fmtlang": {
+                            "py": {
+                                "PY_array_arg": "numpy",
+                                "PY_doc_string": "documentation",
+                                "PY_used_param_self": true
+                            }
+                        }
+                    },
+                    {
+                        "<FUNCTION>": "setSize  2 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "setSize",
@@ -447,7 +557,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "getSize  2 ****************************************",
+                        "<FUNCTION>": "getSize  3 ****************************************",
                         "ast": {
                             "declarator": {
                                 "func_const": true,
@@ -610,7 +720,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "fillSize  3 ****************************************",
+                        "<FUNCTION>": "fillSize  4 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "fillSize",
@@ -849,7 +959,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "allocate  4 ****************************************",
+                        "<FUNCTION>": "allocate  5 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "allocate",
@@ -966,7 +1076,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "getArray  5 ****************************************",
+                        "<FUNCTION>": "getArray  6 ****************************************",
                         "ast": {
                             "declarator": {
                                 "attrs": {
@@ -1209,7 +1319,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "getArrayConst  6 ****************************************",
+                        "<FUNCTION>": "getArrayConst  7 ****************************************",
                         "ast": {
                             "declarator": {
                                 "attrs": {
@@ -1454,7 +1564,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "getArrayC  7 ****************************************",
+                        "<FUNCTION>": "getArrayC  8 ****************************************",
                         "ast": {
                             "const": true,
                             "declarator": {
@@ -1698,7 +1808,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "getArrayConstC  8 ****************************************",
+                        "<FUNCTION>": "getArrayConstC  9 ****************************************",
                         "ast": {
                             "const": true,
                             "declarator": {
@@ -1944,7 +2054,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "fetchArrayPtr  9 ****************************************",
+                        "<FUNCTION>": "fetchArrayPtr  10 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "fetchArrayPtr",
@@ -2381,7 +2491,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "fetchArrayRef  10 ****************************************",
+                        "<FUNCTION>": "fetchArrayRef  11 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "fetchArrayRef",
@@ -2818,7 +2928,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "fetchArrayPtrConst  11 ****************************************",
+                        "<FUNCTION>": "fetchArrayPtrConst  12 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "fetchArrayPtrConst",
@@ -3256,7 +3366,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "fetchArrayRefConst  12 ****************************************",
+                        "<FUNCTION>": "fetchArrayRefConst  13 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "fetchArrayRefConst",
@@ -3694,7 +3804,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "fetchVoidPtr  13 ****************************************",
+                        "<FUNCTION>": "fetchVoidPtr  14 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "fetchVoidPtr",
@@ -3936,7 +4046,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "fetchVoidRef  14 ****************************************",
+                        "<FUNCTION>": "fetchVoidRef  15 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "fetchVoidRef",
@@ -4178,7 +4288,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "checkPtr  15 ****************************************",
+                        "<FUNCTION>": "checkPtr  16 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "checkPtr",
@@ -4469,7 +4579,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "sumArray  16 ****************************************",
+                        "<FUNCTION>": "sumArray  17 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "sumArray",
