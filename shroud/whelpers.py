@@ -49,8 +49,10 @@ the conversion has failed.
 #
 # This also applies to derived types which are bind(C).
 
+from __future__ import print_function
+from __future__ import absolute_import
 
-from . import statements
+#from . import statements  # This is recursive
 from . import typemap
 from . import util
 
@@ -69,7 +71,7 @@ literalinclude = False
 PYHelpers = {}
 
 
-def add_all_helpers(library):
+def add_all_helpers(library, statements):
     """Create helper functions.
     Create helpers for all types.
     """

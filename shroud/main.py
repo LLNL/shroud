@@ -603,7 +603,7 @@ def main_with_args(args):
     try:
         statements.update_fc_statements_for_language(
             newlibrary.language, user_statements.get("fc", {}))
-        whelpers.add_all_helpers(newlibrary)
+        whelpers.add_all_helpers(newlibrary, statements)
         wrap = newlibrary.wrap
 
         metaattrs.process_metaattrs(newlibrary, "share")

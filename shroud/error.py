@@ -9,6 +9,8 @@
 Keep track of the current state of the application so that
 errors can be reported with a context.
 """
+from __future__ import print_function
+from __future__ import absolute_import
 
 from .declstr import gen_decl
 

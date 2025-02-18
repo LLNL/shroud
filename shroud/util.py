@@ -24,6 +24,11 @@ except AttributeError:
     Sequence = collections.Sequence
 OrderedDict = collections.OrderedDict
 
+try:
+    from collections.abc import Mapping  # For Python 3.10+
+except ImportError:
+    from collections import Mapping  # For Python 3.9 and earlier
+
 fmt = string.Formatter()
 
 # See AstNode.eval_template for updating AST node fmtdict.
@@ -102,7 +107,7 @@ def un_camel(name):
 # http://stackoverflow.com/questions/3232943/update-value-of-a-nested-dictionary-of-varying-depth
 def update(d, u):
     for k, v in u.items():
-        if isinstance(v, collections.Mapping):
+        if isinstance(v, Mapping):
             r = update(d.get(k, {}), v)
             d[k] = r
         else:
