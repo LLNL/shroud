@@ -47,6 +47,10 @@ info:
 
 ########################################################################
 # For development:
+# module load python/2.7.18
+# module load python/3.10.8
+# module load python/3.12.2
+
 # make virtualenv
 # make develop
 # module load gcc/6.1.0   or newer

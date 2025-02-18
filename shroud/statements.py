@@ -6,6 +6,9 @@
 
 """
 """
+from __future__ import print_function
+from __future__ import absolute_import
+
 from . import error
 from . import whelpers
 from .util import wformat
@@ -29,7 +32,9 @@ except ImportError:
     from pkg_resources import resource_filename
     def read_json_resource(name):
         fp = open(resource_filename('shroud', name), 'rb')
-        stmts = json._load(fp)
+        #stmts = json._load(fp)
+        # Use pyYAML to load json to avoid unicode issues.
+        stmts = yaml.safe_load(fp)
         return stmts
     def read_yaml_resource(name):
         fp = open(resource_filename('shroud', name), 'rb')

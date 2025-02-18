@@ -185,7 +185,7 @@ class FillMeta(object):
                     # This causes Fortran to dereference the C_PTR
                     # Otherwise a void * argument becomes void **
                     if meta["assumedtype"]:
-                        # assumed-type interoperates with a C argument declared as “void *”
+                        # assumed-type interoperates with a C argument declared as "void *"
                         pass
                     elif len(arg.declarator.pointer) == 1:
                         meta["value"] = True  # void *
