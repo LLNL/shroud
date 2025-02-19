@@ -1,0 +1,37 @@
+name: Shroud Tests
+
+on:
+  push:
+    branches:
+      - actions
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+#        python-version: [3.7, 3.8, 3.9, 3.10, 3.11]
+        python-version: [3.9]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      # You can test your matrix by printing the current Python version
+      - name: Display Python version
+        run: python -c "import sys; print(sys.version)"
+
+      - name: Install Shroud
+        run: |
+           make virtualenv
+           make develop
+
+      - name: unittest
+        run: |
+           make test
