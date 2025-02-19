@@ -49,7 +49,10 @@ jobs:
         g++ --version
         gfortran --version
 
-
+    - name: Python module
+      run: |
+        make test-python
+        
   fortran-tests:
     runs-on: ubuntu-latest
 
@@ -68,7 +71,7 @@ jobs:
         sudo apt-get install -y gcc-${{ matrix.gcc-version }} g++-${{ matrix.gcc-version }}  gfortran-${{ matrix.gcc-version }}
         sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${{ matrix.gcc-version }} 100
         sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${{ matrix.gcc-version }} 100
-        sudo update-alternatives --install /usr/bin/gfortran g++ /usr/bin/gfortran-${{ matrix.gcc-version }} 100
+        sudo update-alternatives --install /usr/bin/gfortran gfortran /usr/bin/gfortran-${{ matrix.gcc-version }} 100
         gcc --version
         g++ --version
         gfortran --version
@@ -79,3 +82,4 @@ jobs:
         echo "Running tests with GCC-${{ matrix.gcc-version }}"
         make test-c
         make test-fortran
+        
