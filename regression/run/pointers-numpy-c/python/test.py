@@ -109,7 +109,7 @@ class Pointers(unittest.TestCase):
 
         # Call with incorrect argument type
         with self.assertRaises(ValueError) as context:
-            array = np.array([2,4,6,8], dtype=np.float)
+            array = np.array([2,4,6,8], dtype=np.float64)
             out = pointers.incrementIntArray(array)
         self.assertTrue('array must be' in str(context.exception))
 
