@@ -26,7 +26,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install numpy
+        pip install "numpy<2"
 
     # You can test your matrix by printing the current Python version
     - name: Display Python version
@@ -72,6 +72,9 @@ jobs:
         sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${{ matrix.gcc-version }} 100
         sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${{ matrix.gcc-version }} 100
         sudo update-alternatives --install /usr/bin/gfortran gfortran /usr/bin/gfortran-${{ matrix.gcc-version }} 100
+
+    - name: Compiler version
+      run: |
         gcc --version
         g++ --version
         gfortran --version
