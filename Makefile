@@ -246,7 +246,7 @@ decl_ref = $(testsdir)/$(decl_file)
 .PHONY : test-decl-work
 test-decl-work :
 	rm -f $(decl_path) && \
-	$(PYTHON) $(testsdir)/check_decl.py >& $(decl_path)
+	$(PYTHON) $(testsdir)/check_decl.py > $(decl_path) 2>&1
 
 test-decl : test-decl-work
 	diff $(decl_ref) $(decl_path)
