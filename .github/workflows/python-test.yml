@@ -3,8 +3,11 @@ name: Shroud Tests
 on:
   push:
     branches:
-      - actions
+      - master
+      - develop
   pull_request:
+      - master
+      - develop
 
 jobs:
   python-tests:
