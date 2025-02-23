@@ -14,12 +14,14 @@
 extern "C" {
 #endif
 
+// start release allocated memory
 // Release library allocated memory.
 void LIB_SHROUD_memory_destructor(LIB_SHROUD_capsule_data *cap)
 {
     cap->addr = nullptr;
     cap->idtor = 0;  // avoid deleting again
 }
+// end release allocated memory
 
 #ifdef __cplusplus
 }

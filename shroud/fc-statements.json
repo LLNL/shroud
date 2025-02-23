@@ -2586,6 +2586,7 @@
         ]
     },
     {
+        "sphinx-start-after": "f_out_char**_cdesc_pointer",
         "name": "f_out_char**_cdesc_pointer",
         "usage": [
             "char **arg +intent(out)"
@@ -2600,7 +2601,8 @@
             "c_mixin_cdesc_char_fill_cvar",
             "c_mixin_local-cvar-ptr",
             "c_mixin_arg-call-cvar-address"
-        ]
+        ],
+        "sphinx-end-before": "f_out_char**_cdesc_pointer"
     },
     {
         "alias": [

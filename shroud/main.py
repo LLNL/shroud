@@ -663,14 +663,15 @@ def main_with_args(args):
         lang = newlibrary.language
         wrapp.update_statements_for_language(lang)
         wrapl.update_statements_for_language(lang)
+        options = newlibrary.options
 
         with open(hfile, "w") as fp:
             fp.write("***** Fortran/C\n")
-            statements.write_cf_tree(fp)
+            statements.write_cf_tree(fp, options)
             fp.write("***** Python\n")
-            wrapp.write_stmts_tree(fp)
+            wrapp.write_stmts_tree(fp, options)
             fp.write("***** Lua\n")
-            wrapl.write_stmts_tree(fp)
+            wrapl.write_stmts_tree(fp, options)
             
     log.close()
 

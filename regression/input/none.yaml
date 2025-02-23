@@ -6,5 +6,7 @@ copyright:
 - "SPDX-License-Identifier: (BSD-3-Clause)"
 -
 #
-#  Try totally empty file to check defaults
+#  Try totally (mostly) empty file to check defaults
 #
+options:
+  literalinclude: True

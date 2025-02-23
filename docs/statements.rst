@@ -195,6 +195,18 @@ Notes are not mixed into groups.
         fmtdict:
            copy_allocate: "call {f_helper_array_string_allocatable}({f_var_alloc}, {f_var_cdesc})"
 
+usage
+^^^^^
+
+Documents a typical declarion which will use this group.
+
+.. code-block:: yaml
+
+        name: "f_out_char**_cdesc_pointer"
+        usage: [
+            "char **arg +intent(out)"
+        ]
+                
 fmtdict
 ^^^^^^^
 
