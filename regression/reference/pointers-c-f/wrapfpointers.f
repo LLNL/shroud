@@ -1577,8 +1577,8 @@ contains
     ! start check_int2d
     function check_int2d(arg) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT
-        integer(C_INT), intent(IN) :: arg
+        use iso_c_binding, only : C_INT, C_PTR
+        type(C_PTR), intent(IN) :: arg
         integer(C_INT) :: SHT_rv
         ! splicer begin function.check_int2d
         SHT_rv = c_check_int2d(arg)

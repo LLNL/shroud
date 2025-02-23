@@ -2195,7 +2195,7 @@ c_in_native**:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar'
   - '  f_mixin_interface-as-cptr-value'
-  - '  f_mixin_declare-fortran-arg'
+  - '  f_mixin_declare-as-cptr'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -13619,15 +13619,14 @@ f_in_native**:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar'
   - '  f_mixin_interface-as-cptr-value'
-  - '  f_mixin_declare-fortran-arg'
+  - '  f_mixin_declare-as-cptr'
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
-    :: {f_var}{f_dimension}'
+  - 'type(C_PTR){f_intent_attr} :: {f_var}'
   f_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    iso_c_binding:
+    - C_PTR
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:

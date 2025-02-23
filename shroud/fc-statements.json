@@ -1531,7 +1531,7 @@
             "c_mixin_declare-arg",
             "c_mixin_arg-call-cvar",
             "f_mixin_interface-as-cptr-value",
-            "f_mixin_declare-fortran-arg"
+            "f_mixin_declare-as-cptr"
         ]
     },
     {
