@@ -421,7 +421,7 @@ deref
 Define how to dereference function results and pointers
 which are returned via an argument.
 It's also used with objects which represent an array such
-as std::string or std::vector.
+as ``std::string`` or ``std::vector``.
 This may be used in conjunction with *dimension* to create arrays.
 For example, ``int **out +intent(out)+deref(pointer)+dimension(10)``.
 
@@ -606,11 +606,13 @@ funptr
 ^^^^^^
 
 This attribute is only valid with function pointers.
-Create a ``type(C_FUNPTR)`` argument for the function pointer.
+Create a ``type(C_FUNPTR)`` argument for the function pointer
+instead of an abstract interface.
 The caller is required to use ``C_FUNLOC`` to get the address
 of the function.
-The advantage is that this will work with any function and does
-not require an abstract interface.
+The advantage is that this will allow any function to be passed.
+Like ``void`` pointers, the user is responsible to ensure the function
+pointer is called with the correct arguments.
 
 See also the *external* attribute.
 See :ref:`DeclAnchor_Function_Pointers`.

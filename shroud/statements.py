@@ -921,6 +921,7 @@ CStmts = util.Scope(
     intent=None,
     comments=[],
     notes=[],      # implementation notes
+    usage=[],
     mixin_names=[],
     index="X",
 
@@ -966,6 +967,8 @@ FStmts = util.Scope(
     intent=None,
     comments=[],
     notes=[],      # implementation notes
+    usage=[],
+    mixin_names=[],
     index="X",
 
     # code fields
