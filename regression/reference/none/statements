@@ -414,6 +414,8 @@ c_function_native:
   - Call a function in Fortran wrapper.
   - Declare a Fortran variable.
   - Call function and assign to a c variable.
+  usage:
+  - int func()
   mixin_names:
   - '  f_mixin_function'
   - '  f_mixin_declare-local-variable'
@@ -2158,6 +2160,9 @@ c_in_native*:
   intent: in
   comments:
   - Pass cxx variable to library.
+  usage:
+  - const int *arg
+  - int *arg +intent(in)+rank(1)
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar'
@@ -2184,6 +2189,8 @@ c_in_native**:
   notes:
   - Any array of pointers.  Assumed to be non-contiguous memory.
   - All Fortran can do is treat as a type(C_PTR).
+  usage:
+  - int **arg +intent(in)
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar'
@@ -3066,6 +3073,9 @@ c_in_void:
   intent: in
   comments:
   - Pass cxx variable to library.
+  usage:
+  - const int *arg
+  - int *arg +intent(in)+rank(1)
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar'
@@ -3335,6 +3345,9 @@ c_inout_native*:
   intent: inout
   comments:
   - Pass cxx variable to library.
+  usage:
+  - const int *arg
+  - int *arg +intent(in)+rank(1)
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar'
@@ -5295,6 +5308,9 @@ c_out_native*:
   intent: out
   comments:
   - Pass cxx variable to library.
+  usage:
+  - const int *arg
+  - int *arg +intent(in)+rank(1)
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar'
@@ -6538,6 +6554,8 @@ c_subroutine:
   intent: subroutine
   comments:
   - Call subroutine/void C function.
+  usage:
+  - void func(void)
   c_call:
   - '{C_call_function};'
   sphinx-end-before: c_subroutine
@@ -6549,6 +6567,8 @@ c_subroutine_assignment_weakptr:
   - std::weak_ptr has no wrapped constructor.
   - It must be made from a std::shared_ptr with an assignment.
   - arglist[1] is the 'from' argument.
+  usage:
+  - void func +custom(weakptr)+operator(assignment)
   c_call:
   - if (SH_this == nullptr) {{+
   - SH_this = new {cxx_type}(*SHC_from_cxx);
@@ -7773,6 +7793,8 @@ f_function_native:
   - Call a function in Fortran wrapper.
   - Declare a Fortran variable.
   - Call function and assign to a c variable.
+  usage:
+  - int func()
   mixin_names:
   - '  f_mixin_function'
   - '  f_mixin_declare-local-variable'
@@ -8399,6 +8421,8 @@ f_function_native*_scalar:
   - Call function and assign to a c variable.
   notes:
   - Return a scalar to avoid doing the deref in Fortran.
+  usage:
+  - int *func(void) +deref(scalar)
   mixin_names:
   - '  f_mixin_function'
   - '  f_mixin_declare-local-variable'
@@ -13552,6 +13576,9 @@ f_in_native*:
   intent: in
   comments:
   - Pass cxx variable to library.
+  usage:
+  - const int *arg
+  - int *arg +intent(in)+rank(1)
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar'
@@ -13586,6 +13613,8 @@ f_in_native**:
   notes:
   - Any array of pointers.  Assumed to be non-contiguous memory.
   - All Fortran can do is treat as a type(C_PTR).
+  usage:
+  - int **arg +intent(in)
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar'
@@ -14877,6 +14906,9 @@ f_in_void:
   intent: in
   comments:
   - Pass cxx variable to library.
+  usage:
+  - const int *arg
+  - int *arg +intent(in)+rank(1)
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar'
@@ -15363,6 +15395,9 @@ f_inout_native*:
   intent: inout
   comments:
   - Pass cxx variable to library.
+  usage:
+  - const int *arg
+  - int *arg +intent(in)+rank(1)
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar'
@@ -17606,6 +17641,9 @@ f_none_native*:
   intent: none
   comments:
   - Pass cxx variable to library.
+  usage:
+  - const int *arg
+  - int *arg +intent(in)+rank(1)
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar'
@@ -18097,6 +18135,9 @@ f_out_native*:
   intent: out
   comments:
   - Pass cxx variable to library.
+  usage:
+  - const int *arg
+  - int *arg +intent(in)+rank(1)
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar'
@@ -20147,6 +20188,8 @@ f_subroutine:
   intent: subroutine
   comments:
   - Call subroutine/void C function.
+  usage:
+  - void func(void)
   f_call:
   - call {f_call_function}({F_arg_c_call})
   c_call:
@@ -20160,6 +20203,8 @@ f_subroutine_assignment_weakptr:
   - std::weak_ptr has no wrapped constructor.
   - It must be made from a std::shared_ptr with an assignment.
   - arglist[1] is the 'from' argument.
+  usage:
+  - void func +custom(weakptr)+operator(assignment)
   f_call:
   - call {f_call_function}({F_arg_c_call})
   c_call:

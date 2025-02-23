@@ -551,6 +551,9 @@
         "comments": [
             "Call subroutine/void C function."
         ],
+        "usage": [
+            "void func(void)"
+        ],
         "f_call": [
             "call {f_call_function}({F_arg_c_call})"
         ],
@@ -567,6 +570,9 @@
             "std::weak_ptr has no wrapped constructor.",
             "It must be made from a std::shared_ptr with an assignment.",
             "arglist[1] is the 'from' argument."
+        ],
+        "usage": [
+            "void func +custom(weakptr)+operator(assignment)"
         ],
         "f_call": [
             "call {f_call_function}({F_arg_c_call})"
@@ -1424,6 +1430,9 @@
             "f_function_native",
             "c_function_native"
         ],
+        "usage": [
+            "int func()"
+        ],
         "mixin": [
             "f_mixin_function",
             "f_mixin_declare-local-variable",
@@ -1435,6 +1444,9 @@
         "name": "f_function_native*_scalar",
         "notes": [
             "Return a scalar to avoid doing the deref in Fortran."
+        ],
+        "usage": [
+            "int *func(void) +deref(scalar)"
         ],
         "mixin": [
             "f_mixin_function",
@@ -1459,6 +1471,10 @@
             "f_in_void",
             "c_in_void",
             "f_none_native*"
+        ],
+        "usage": [
+            "const int *arg",
+            "int *arg +intent(in)+rank(1)"
         ],
         "mixin": [
             "c_mixin_declare-arg",
@@ -1507,6 +1523,9 @@
         "notes": [
             "Any array of pointers.  Assumed to be non-contiguous memory.",
             "All Fortran can do is treat as a type(C_PTR)."
+        ],
+        "usage": [
+            "int **arg +intent(in)"
         ],
         "mixin": [
             "c_mixin_declare-arg",
