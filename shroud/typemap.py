@@ -151,6 +151,7 @@ class Typemap(object):
         ("sgroup", "unknown"),  # statement group. ex. native, string, vector
         ("sh_type", "SH_TYPE_OTHER"),
         ("cfi_type", "CFI_type_other"),
+        ("implied_array", False),  # ex. std::vector
         ("is_enum", False),
         ("export", False),      # If True, export to YAML file.
         ("smart_pointer", None), # Used to generated names
@@ -920,6 +921,7 @@ def default_typemap():
             #            LUA_pop='lua_tostring({LUA_state_var}, {LUA_index})',
             #            LUA_push='lua_pushstring({LUA_state_var}, {push_arg})',
             impl_header=["<vector>"],
+            implied_array=True,
             base="vector",
             sgroup="vector",
         ),

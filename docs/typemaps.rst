@@ -80,6 +80,14 @@ type names. The *flat_name* is always ``double_complex`` while
 
 One use of this name is as the **function_suffix** for templated functions.
 
+implied_array
+^^^^^^^^^^^^^
+
+The type is an implied array. For example, ``std::vector``.
+It is not a pointer type but is considered to be an array.
+This will set the default *deref* attribute based on the option
+**F_implied_array**.
+
 idtor
 ^^^^^
 

@@ -46,6 +46,8 @@
             "F_create_bufferify_function": true,
             "F_create_generic": true,
             "F_default_args": "generic",
+            "F_deref_character": "allocatable",
+            "F_deref_implied_array": "allocatable",
             "F_derived_name_template": "{F_name_api}",
             "F_enum_member_template": "{F_name_scope}{F_name_api}",
             "F_enum_type": "int",
@@ -771,6 +773,7 @@
             "impl_header": [
                 "<vector>"
             ],
+            "implied_array": true,
             "ntemplate_args": 1,
             "sgroup": "vector"
         },
