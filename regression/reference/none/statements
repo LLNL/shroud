@@ -436,6 +436,8 @@ c_function_native&:
   comments:
   - Return a C pointer directly as type(C_PTR).
   - Call function and assign to a c variable.
+  usage:
+  - int **func()
   mixin_names:
   - '  f_mixin_function_ptr'
   - '  c_mixin_function-assign-to-cvar'
@@ -454,6 +456,8 @@ c_function_native*:
   comments:
   - Return a C pointer directly as type(C_PTR).
   - Call function and assign to a c variable.
+  usage:
+  - int **func()
   mixin_names:
   - '  f_mixin_function_ptr'
   - '  c_mixin_function-assign-to-cvar'
@@ -472,6 +476,8 @@ c_function_native**:
   comments:
   - Return a C pointer directly as type(C_PTR).
   - Call function and assign to a c variable.
+  usage:
+  - int **func()
   mixin_names:
   - '  f_mixin_function_ptr'
   - '  c_mixin_function-assign-to-cvar'
@@ -490,6 +496,8 @@ c_function_native*_caller:
   comments:
   - Return a C pointer directly as type(C_PTR).
   - Call function and assign to a c variable.
+  usage:
+  - int **func()
   mixin_names:
   - '  f_mixin_function_ptr'
   - '  c_mixin_function-assign-to-cvar'
@@ -505,10 +513,14 @@ c_function_native*_scalar:
   sphinx-start-after: c_function_native*_scalar
   name: c_function_native*_scalar
   intent: function
+  notes:
+  - XXX - not tested
+  mixin_names:
+  - '  c_mixin_declare-fortran-result'
   i_result_decl:
-  - '{f_type} :: {i_var}'
+  - '{i_type} :: {i_var}'
   i_module:
-    '{f_module_name}':
+    '{i_module_name}':
     - '{i_kind}'
   sphinx-end-before: c_function_native*_scalar
 c_function_shadow&_capptr:
@@ -1758,12 +1770,13 @@ c_function_struct*:
   name: c_function_struct*
   intent: function
   comments:
-  - Return a C pointer as a type(C_PTR).
+  - Return a C pointer as a Fortran pointer.
   - Call function and assign to a c variable.
   notes:
   - C++ pointer -> void pointer -> C pointer.
   mixin_names:
   - '  f_mixin_function_c-ptr'
+  - '    f_mixin_function-interface-as-cptr'
   - '  c_mixin_function-assign-to-cvar'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
@@ -6605,7 +6618,7 @@ c_subroutine:
   comments:
   - Call subroutine/void C function.
   usage:
-  - void func(void)
+  - void func()
   c_call:
   - '{C_call_function};'
   sphinx-end-before: c_subroutine
@@ -6618,7 +6631,7 @@ c_subroutine_assignment_weakptr:
   - It must be made from a std::shared_ptr with an assignment.
   - arglist[1] is the 'from' argument.
   usage:
-  - void func +custom(weakptr)+operator(assignment)
+  - void func() +custom(weakptr)+operator(assignment)
   c_call:
   - if (SH_this == nullptr) {{+
   - SH_this = new {cxx_type}(*SHC_from_cxx);
@@ -7871,13 +7884,16 @@ f_function_native&:
   name: f_function_native&
   intent: function
   comments:
-  - Return a C pointer as a type(C_PTR).
+  - Return a C pointer as a Fortran pointer.
   - Call function and assign to a c variable.
   notes:
   - Pointer to scalar.
   - type(C_PTR) is returned instead of a cdesc argument.
+  usage:
+  - int &func()
   mixin_names:
   - '  f_mixin_function_c-ptr'
+  - '    f_mixin_function-interface-as-cptr'
   - '  c_mixin_function-assign-to-cvar'
   f_dummy_decl:
   - '{f_type}, pointer :: {f_var}'
@@ -7909,13 +7925,16 @@ f_function_native&_pointer:
   name: f_function_native&_pointer
   intent: function
   comments:
-  - Return a C pointer as a type(C_PTR).
+  - Return a C pointer as a Fortran pointer.
   - Call function and assign to a c variable.
   notes:
   - Pointer to scalar.
   - type(C_PTR) is returned instead of a cdesc argument.
+  usage:
+  - int &func()
   mixin_names:
   - '  f_mixin_function_c-ptr'
+  - '    f_mixin_function-interface-as-cptr'
   - '  c_mixin_function-assign-to-cvar'
   f_dummy_decl:
   - '{f_type}, pointer :: {f_var}'
@@ -7949,6 +7968,8 @@ f_function_native**:
   comments:
   - Return a C pointer directly as type(C_PTR).
   - Call function and assign to a c variable.
+  usage:
+  - int **func()
   mixin_names:
   - '  f_mixin_function_ptr'
   - '  c_mixin_function-assign-to-cvar'
@@ -8133,8 +8154,10 @@ f_function_native*_cdesc_pointer_caller:
   - Assign to local capsule variable in C wrapper.
   - Set Fortran pointer to native array.
   notes:
-  - +deref(pointer) +owner(caller)
-  - The capsule contains information used to delete the memory.
+  - A capsule argument is added which contains information used to
+  - delete the memory.
+  usage:
+  - int *func() +deref(pointer)+dimension(len)+owner(caller)
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
@@ -8367,13 +8390,16 @@ f_function_native*_pointer:
   name: f_function_native*_pointer
   intent: function
   comments:
-  - Return a C pointer as a type(C_PTR).
+  - Return a C pointer as a Fortran pointer.
   - Call function and assign to a c variable.
   notes:
   - Pointer to scalar.
   - type(C_PTR) is returned instead of a cdesc argument.
+  usage:
+  - int &func()
   mixin_names:
   - '  f_mixin_function_c-ptr'
+  - '    f_mixin_function-interface-as-cptr'
   - '  c_mixin_function-assign-to-cvar'
   f_dummy_decl:
   - '{f_type}, pointer :: {f_var}'
@@ -8405,13 +8431,16 @@ f_function_native*_pointer_caller:
   name: f_function_native*_pointer_caller
   intent: function
   comments:
-  - Return a C pointer as a type(C_PTR).
+  - Return a C pointer as a Fortran pointer.
   - Call function and assign to a c variable.
   notes:
   - Pointer to scalar.
   - type(C_PTR) is returned instead of a cdesc argument.
+  usage:
+  - int &func()
   mixin_names:
   - '  f_mixin_function_c-ptr'
+  - '    f_mixin_function-interface-as-cptr'
   - '  c_mixin_function-assign-to-cvar'
   f_dummy_decl:
   - '{f_type}, pointer :: {f_var}'
@@ -8445,6 +8474,8 @@ f_function_native*_raw:
   comments:
   - Return a C pointer directly as type(C_PTR).
   - Call function and assign to a c variable.
+  usage:
+  - int **func()
   mixin_names:
   - '  f_mixin_function_ptr'
   - '  c_mixin_function-assign-to-cvar'
@@ -8472,7 +8503,7 @@ f_function_native*_scalar:
   notes:
   - Return a scalar to avoid doing the deref in Fortran.
   usage:
-  - int *func(void) +deref(scalar)
+  - int *func() +deref(scalar)
   mixin_names:
   - '  f_mixin_function'
   - '  f_mixin_declare-local-variable'
@@ -12681,12 +12712,13 @@ f_function_struct*_pointer:
   name: f_function_struct*_pointer
   intent: function
   comments:
-  - Return a C pointer as a type(C_PTR).
+  - Return a C pointer as a Fortran pointer.
   - Call function and assign to a c variable.
   notes:
   - C++ pointer -> void pointer -> C pointer.
   mixin_names:
   - '  f_mixin_function_c-ptr'
+  - '    f_mixin_function-interface-as-cptr'
   - '  c_mixin_function-assign-to-cvar'
   f_dummy_decl:
   - '{f_type}, pointer :: {f_var}'
@@ -17087,7 +17119,9 @@ f_mixin_function_c-ptr:
   name: f_mixin_function_c-ptr
   intent: mixin
   comments:
-  - Return a C pointer as a type(C_PTR).
+  - Return a C pointer as a Fortran pointer.
+  mixin_names:
+  - '  f_mixin_function-interface-as-cptr'
   f_dummy_decl:
   - '{f_type}, pointer :: {f_var}'
   f_local_decl:
@@ -18501,7 +18535,7 @@ f_out_native**_cdesc_pointer:
   - Argument returns a pointer to an array which is associated with a
   - Fortran pointer.
   usage:
-  - int **nitems +intent(out)+deref(pointer)
+  - int **arg +intent(out)+deref(pointer)
   mixin_names:
   - '  f_mixin_cdesc_pass'
   - '  c_mixin_out_native**'
@@ -20290,7 +20324,7 @@ f_subroutine:
   comments:
   - Call subroutine/void C function.
   usage:
-  - void func(void)
+  - void func()
   f_call:
   - call {f_call_function}({F_arg_c_call})
   c_call:
@@ -20305,7 +20339,7 @@ f_subroutine_assignment_weakptr:
   - It must be made from a std::shared_ptr with an assignment.
   - arglist[1] is the 'from' argument.
   usage:
-  - void func +custom(weakptr)+operator(assignment)
+  - void func() +custom(weakptr)+operator(assignment)
   f_call:
   - call {f_call_function}({F_arg_c_call})
   c_call:

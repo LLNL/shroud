@@ -453,7 +453,10 @@
     {
         "name": "f_mixin_function_c-ptr",
         "comments": [
-            "Return a C pointer as a type(C_PTR)."
+            "Return a C pointer as a Fortran pointer."
+        ],
+        "mixin": [
+            "f_mixin_function-interface-as-cptr"
         ],
         "f_dummy_decl": [
             "{f_type}, pointer :: {f_var}"
@@ -479,14 +482,6 @@
         "f_local": [
             "ptr"
         ],
-        "i_result_decl": [
-            "type(C_PTR) :: {i_var}"
-        ],
-        "i_module": {
-            "iso_c_binding": [
-                "C_PTR"
-            ]
-        },
         "c_need_wrapper": true
     },
     {
@@ -552,7 +547,7 @@
             "Call subroutine/void C function."
         ],
         "usage": [
-            "void func(void)"
+            "void func()"
         ],
         "f_call": [
             "call {f_call_function}({F_arg_c_call})"
@@ -572,7 +567,7 @@
             "arglist[1] is the 'from' argument."
         ],
         "usage": [
-            "void func +custom(weakptr)+operator(assignment)"
+            "void func() +custom(weakptr)+operator(assignment)"
         ],
         "f_call": [
             "call {f_call_function}({F_arg_c_call})"
@@ -1446,7 +1441,7 @@
             "Return a scalar to avoid doing the deref in Fortran."
         ],
         "usage": [
-            "int *func(void) +deref(scalar)"
+            "int *func() +deref(scalar)"
         ],
         "mixin": [
             "f_mixin_function",
@@ -1623,7 +1618,7 @@
             "Fortran pointer."
         ],
         "usage": [
-            "int **nitems +intent(out)+deref(pointer)"
+            "int **arg +intent(out)+deref(pointer)"
         ],
         "mixin": [
             "f_mixin_cdesc_pass",
@@ -1697,14 +1692,12 @@
     },
     {
         "name": "c_function_native*_scalar",
-        "i_result_decl": [
-            "{f_type} :: {i_var}"
+        "notes": [
+            "XXX - not tested"
         ],
-        "i_module": {
-            "{f_module_name}": [
-                "{i_kind}"
-            ]
-        }
+        "mixin": [
+            "c_mixin_declare-fortran-result"
+        ]
     },
     {
         "name": "f_function_native*_cdesc_allocatable",
@@ -1730,6 +1723,9 @@
             "Pointer to scalar.",
             "type(C_PTR) is returned instead of a cdesc argument."
         ],
+        "usage": [
+            "int &func()"
+        ],
         "mixin": [
             "f_mixin_function_c-ptr",
             "c_mixin_function-assign-to-cvar"
@@ -1751,8 +1747,11 @@
     {
         "name": "f_function_native*_cdesc_pointer_caller",
         "notes": [
-            "+deref(pointer) +owner(caller)",
-            "The capsule contains information used to delete the memory."
+            "A capsule argument is added which contains information used to",
+            "delete the memory."
+        ],
+        "usage": [
+            "int *func() +deref(pointer)+dimension(len)+owner(caller)"
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
@@ -1772,6 +1771,9 @@
             "c_function_native*_caller",
             "c_function_native**",
             "f_function_native**"
+        ],
+        "usage": [
+            "int **func()"
         ],
         "mixin": [
             "f_mixin_function_ptr",
