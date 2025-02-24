@@ -10,62 +10,78 @@ Reference
 Command Line Options
 --------------------
 
-help
-       Show this help message and exit.
+.. option:: --help
 
-version
-       Show program's version number and exit.
+   Show this help message and exit.
 
-outdir OUTDIR
-       Directory for output files.
-       Defaults to current directory.
+.. option:: --version
 
-outdir-c-fortran OUTDIR_C_FORTRAN
-       Directory for C/Fortran wrapper output files, overrides *--outdir*.
+   Show program's version number and exit.
 
-outdir-python OUTDIR_PYTHON
-       Directory for Python wrapper output files, overrides *--outdir*.
+.. option:: --outdir OUTDIR
 
-outdir-lua OUTDIR_LUA
-       Directory for Lua wrapper output files, overrides *--outdir*.
+   Directory for output files.
+   Defaults to current directory.
 
-outdir-yaml OUTDIR_YAML
-       Directory for YAML output files, overrides *--outdir*.
+.. option:: --outdir-c-fortran OUTDIR_C_FORTRAN
 
-logdir LOGDIR
-       Directory for log files.
-       Defaults to current directory.
+   Directory for C/Fortran wrapper output files, overrides ``--outdir``.
 
-cfiles CFILES
-       Output file with list of C and C++ files created.
+.. option:: --outdir-python OUTDIR_PYTHON
 
-ffiles FFILES
-       Output file with list of Fortran created.
+   Directory for Python wrapper output files, overrides ``--outdir``.
 
-path PATH
-       Colon delimited paths to search for splicer files, may
-       be supplied multiple times to append to path.
+.. option:: --outdir-lua OUTDIR_LUA
 
-sitedir
-       Return the installation directory of shroud and exit.
-       This path can be used to find cmake/SetupShroud.cmake.
+   Directory for Lua wrapper output files, overrides ``--outdir``.
 
-write-helpers BASE
-       Write files which contain the available helper functions
-       into the files BASE.c and BASE.f.
+.. option:: --outdir-yaml OUTDIR_YAML
 
-write-statements BASE
-       Write a file which contain the statements tree.
-       Used for debugging.
+   Directory for YAML output files, overrides ``--outdir``.
 
-write-version
-       Write Shroud version into generated files.
-       ``--nowrite-version`` will not write the version and is used
-       by the testsuite to avoid changing every reference file when
-       the version changes.
+.. option:: --logdir LOGDIR
 
-yaml-types FILE
-       Write a YAML file with the default types.
+   Directory for log files.
+   Defaults to current directory.
+
+.. option:: --cfiles CFILES
+
+   Output file with list of C and C++ files created.
+
+.. option:: --ffiles FFILES
+
+   Output file with list of Fortran created.
+
+.. option:: --path PATH
+
+   Colon delimited paths to search for splicer files, may
+   be supplied multiple times to append to path.
+
+.. option:: --sitedir
+
+   Return the installation directory of shroud and exit.
+   This path can be used to find cmake/SetupShroud.cmake.
+
+.. option:: --write-helpers BASE
+
+   Write files which contain the available helper functions
+   into the files BASE.c and BASE.f.
+
+.. option:: --write-statements BASE
+
+   Write a file which contain the statements tree.
+   Used for debugging.
+
+.. option:: --write-version, --nowrite-version
+
+   Write Shroud version into generated files.
+   ``--nowrite-version`` will not write the version and is used
+   by the testsuite to avoid changing every reference file when
+   the version changes.
+
+.. option:: --yaml-types FILE
+
+   Write a YAML file with the default types.
 
 
 Global Fields

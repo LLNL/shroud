@@ -375,6 +375,14 @@ if __name__ == "__main__":
                      # Create literal blocks for documentation
                      "--option", "literalinclude2=true",
                  ]),
+        TestDesc("pointers-cxx-force", yaml="pointers",
+                 cmdline=[
+                     "--option", "wrap_python=false",
+                     # Create literal blocks for documentation
+                     "--option", "literalinclude2=true",
+                     "--option", "C_force_wrapper=True",
+                     "--option", "F_force_wrapper=True",
+                 ]),
 
         TestDesc("pointers-c-c", yaml="pointers",
                  cmdline=[

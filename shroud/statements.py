@@ -790,14 +790,15 @@ def update_stmt_tree(stmts):
     return tree
 
 
-def write_cf_tree(fp):
+def write_cf_tree(fp, options):
     """Write out statements tree.
 
     Parameters
     ----------
     fp : file
+    options : Dict
     """
-    print_tree_statements(fp, fc_dict, default_stmts)
+    print_tree_statements(fp, fc_dict, default_stmts, options)
     tree = update_stmt_tree(fc_dict)
     lines = []
     print_tree_index(tree, lines)
@@ -837,7 +838,7 @@ def print_tree_index(tree, lines, indent=""):
             print_tree_index(value, lines, indent)
 
 
-def print_tree_statements(fp, statements, defaults):
+def print_tree_statements(fp, statements, defaults, options):
     """Print expanded statements.
 
     Statements may not have all values directly defined since 'base'
@@ -849,8 +850,10 @@ def print_tree_statements(fp, statements, defaults):
     fp : file
     statements : dict
     defaults : dict
+    options : dict
 
     """
+    literalinclude = options["literalinclude"]
     # Convert Scope into a dictionary for YAML.
     # Add all non-null values from the default dict.
     yaml.SafeDumper.ignore_aliases = lambda *args : True
@@ -860,6 +863,8 @@ def print_tree_statements(fp, statements, defaults):
         base = defaults[root]
         value = statements[name]
         all = {}
+        if literalinclude:
+            all["sphinx-start-after"] = name
         for key in base.__dict__.keys():
             if key[0] == "_":
                 continue
@@ -878,6 +883,8 @@ def print_tree_statements(fp, statements, defaults):
 #            val = value.get(key, None)
 #            if val:
 #                all[key] = val
+        if literalinclude:
+            all["sphinx-end-before"] = name
         complete[name] = all
     yaml.safe_dump(complete, fp, sort_keys=False)
 
@@ -914,6 +921,7 @@ CStmts = util.Scope(
     intent=None,
     comments=[],
     notes=[],      # implementation notes
+    usage=[],
     mixin_names=[],
     index="X",
 
@@ -959,6 +967,8 @@ FStmts = util.Scope(
     intent=None,
     comments=[],
     notes=[],      # implementation notes
+    usage=[],
+    mixin_names=[],
     index="X",
 
     # code fields

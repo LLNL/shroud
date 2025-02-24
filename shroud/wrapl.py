@@ -980,14 +980,15 @@ def update_statements_for_language(language):
     default_scope = default_stmts["lua"]
 
 
-def write_stmts_tree(fp):
+def write_stmts_tree(fp, options):
     """Write out statements tree.
 
     Parameters
     ----------
     fp : file
+    options : Dict
     """
-    statements.print_tree_statements(fp, lua_dict, default_stmts)
+    statements.print_tree_statements(fp, lua_dict, default_stmts, options)
     tree = statements.update_stmt_tree(lua_dict)
     lines = []
     statements.print_tree_index(tree, lines)
