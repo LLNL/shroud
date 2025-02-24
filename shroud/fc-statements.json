@@ -1492,6 +1492,9 @@
         "notes": [
             "An intent of 'none' is used with function pointers."
         ],
+        "usage": [
+            "int arg"
+        ],
         "mixin": [
             "c_mixin_declare-arg",
             "c_mixin_arg-call-cvar",
@@ -1507,6 +1510,9 @@
             "c_out_native&",
             "f_inout_native&",
             "c_inout_native&"
+        ],
+        "usage": [
+            "const int &value +intent(in)"            
         ],
         "mixin": [
             "c_mixin_declare-arg",
@@ -1538,10 +1544,17 @@
         "alias": [
             "f_out_native**_raw",
             "c_out_native**_raw",
-            "c_out_native**"
+            "c_out_native**",
+            "f_out_native***",
+            "c_out_native***"
         ],
         "notes": [
-            "Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'."
+            "Too much indirection for Fortran.",
+            "Make argument a type(C_PTR)."
+        ],
+        "usage": [
+            "int ** +intent(out)+deref(raw)",
+            "int ***arg +intent(out)"
         ],
         "mixin": [
             "c_mixin_declare-arg",
@@ -1561,19 +1574,11 @@
             "c_mixin_arg-call-cvar-deref",
             "f_mixin_interface-as-cptr",
             "f_mixin_declare-fortran-arg"
-        ]
-    },
-    {
-        "alias": [
-            "f_out_native***",
-            "c_out_native***"
         ],
-        "mixin": [
-            "c_mixin_declare-arg",
-            "c_mixin_arg-call-cvar",
-            "f_mixin_interface-as-cptr",
-            "f_mixin_declare-as-cptr"
+        "usage": [
+            "void *&arg +intent(out)"
         ]
+
     },
     {
         "alias": [
@@ -1586,14 +1591,19 @@
             "c_mixin_arg-call-cvar",
             "c_mixin_cdesc_native_fill",
             "f_mixin_cdesc_out_native_pointer"
+        ],
+        "usage": [
+            "double *&arg +dimension(isize)+intent(out)"
         ]
     },
     {
         "name": "f_out_native**_cdesc_allocatable",
         "notes": [
-            "deref(allocatable)",
-            "A C function with a 'int **' argument associates it",
-            "with a Fortran pointer."
+            "Argument returns a pointer to an array which is copied into a",
+            "Fortran allocatable."
+        ],
+        "usage": [
+            "int **arg +deref(allocatable)+dimension(10)+intent(out)"
         ],
         "mixin": [
             "f_mixin_declare-fortran-arg",
@@ -1609,9 +1619,11 @@
     {
         "name": "f_out_native**_cdesc_pointer",
         "notes": [
-            "deref(pointer)",
-            "A C function with a 'int **' argument associates it",
-            "with a Fortran pointer."
+            "Argument returns a pointer to an array which is associated with a",
+            "Fortran pointer."
+        ],
+        "usage": [
+            "int **nitems +intent(out)+deref(pointer)"
         ],
         "mixin": [
             "f_mixin_cdesc_pass",
@@ -1635,6 +1647,11 @@
             "f_in_void*_cdesc",
             "f_out_void*_cdesc",
             "f_inout_void*_cdesc"
+        ],
+        "notes": [
+            "Passing a cdesc to C wrapper which may have splicer code to process it.",
+            "Perhaps using a fortran_generic to deal with a void * pointer.",
+            "See cdesc.yaml test GetScalar1."
         ],
         "mixin": [
             "f_mixin_declare-fortran-arg",

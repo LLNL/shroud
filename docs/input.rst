@@ -488,6 +488,10 @@ pointer
 
 raw
 
+    Treat the pointer as a ``void *``.
+    Required when there are several layers of indirection that do not
+    map directly to the wrapper language.
+
     For Fortran, return a ``type(C_PTR)``.
 
     For Python, return a ``PyCapsule``.

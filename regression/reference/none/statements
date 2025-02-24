@@ -2114,6 +2114,8 @@ c_in_native:
   - Pass cxx variable to library.
   notes:
   - An intent of 'none' is used with function pointers.
+  usage:
+  - int arg
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar'
@@ -2137,6 +2139,8 @@ c_in_native&:
   intent: in
   comments:
   - Pass dereference of cxx variable to library.
+  usage:
+  - const int &value +intent(in)
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar-deref'
@@ -2216,6 +2220,10 @@ c_in_native*_cdesc:
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from native in the Fortran wrapper.
   - Pass cxx variable to library.
+  notes:
+  - Passing a cdesc to C wrapper which may have splicer code to process it.
+  - Perhaps using a fortran_generic to deal with a void * pointer.
+  - See cdesc.yaml test GetScalar1.
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
   - '  f_mixin_cdesc_pass'
@@ -3146,6 +3154,10 @@ c_in_void*_cdesc:
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from native in the Fortran wrapper.
   - Pass cxx variable to library.
+  notes:
+  - Passing a cdesc to C wrapper which may have splicer code to process it.
+  - Perhaps using a fortran_generic to deal with a void * pointer.
+  - See cdesc.yaml test GetScalar1.
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
   - '  f_mixin_cdesc_pass'
@@ -3307,6 +3319,8 @@ c_inout_native&:
   intent: inout
   comments:
   - Pass dereference of cxx variable to library.
+  usage:
+  - const int &value +intent(in)
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar-deref'
@@ -3373,6 +3387,10 @@ c_inout_native*_cdesc:
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from native in the Fortran wrapper.
   - Pass cxx variable to library.
+  notes:
+  - Passing a cdesc to C wrapper which may have splicer code to process it.
+  - Perhaps using a fortran_generic to deal with a void * pointer.
+  - See cdesc.yaml test GetScalar1.
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
   - '  f_mixin_cdesc_pass'
@@ -4028,6 +4046,10 @@ c_inout_void*_cdesc:
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from native in the Fortran wrapper.
   - Pass cxx variable to library.
+  notes:
+  - Passing a cdesc to C wrapper which may have splicer code to process it.
+  - Perhaps using a fortran_generic to deal with a void * pointer.
+  - See cdesc.yaml test GetScalar1.
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
   - '  f_mixin_cdesc_pass'
@@ -5270,6 +5292,8 @@ c_out_native&:
   intent: out
   comments:
   - Pass dereference of cxx variable to library.
+  usage:
+  - const int &value +intent(in)
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar-deref'
@@ -5334,6 +5358,8 @@ c_out_native*&:
   intent: out
   comments:
   - Pass dereference of cxx variable to library.
+  usage:
+  - void *&arg +intent(out)
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar-deref'
@@ -5358,7 +5384,11 @@ c_out_native**:
   comments:
   - Pass cxx variable to library.
   notes:
-  - Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'.
+  - Too much indirection for Fortran.
+  - Make argument a type(C_PTR).
+  usage:
+  - int ** +intent(out)+deref(raw)
+  - int ***arg +intent(out)
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar'
@@ -5382,6 +5412,12 @@ c_out_native***:
   intent: out
   comments:
   - Pass cxx variable to library.
+  notes:
+  - Too much indirection for Fortran.
+  - Make argument a type(C_PTR).
+  usage:
+  - int ** +intent(out)+deref(raw)
+  - int ***arg +intent(out)
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar'
@@ -5406,7 +5442,11 @@ c_out_native**_raw:
   comments:
   - Pass cxx variable to library.
   notes:
-  - Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'.
+  - Too much indirection for Fortran.
+  - Make argument a type(C_PTR).
+  usage:
+  - int ** +intent(out)+deref(raw)
+  - int ***arg +intent(out)
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar'
@@ -5432,6 +5472,10 @@ c_out_native*_cdesc:
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from native in the Fortran wrapper.
   - Pass cxx variable to library.
+  notes:
+  - Passing a cdesc to C wrapper which may have splicer code to process it.
+  - Perhaps using a fortran_generic to deal with a void * pointer.
+  - See cdesc.yaml test GetScalar1.
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
   - '  f_mixin_cdesc_pass'
@@ -6393,6 +6437,8 @@ c_out_void*&:
   intent: out
   comments:
   - Pass dereference of cxx variable to library.
+  usage:
+  - void *&arg +intent(out)
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar-deref'
@@ -6440,6 +6486,10 @@ c_out_void*_cdesc:
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from native in the Fortran wrapper.
   - Pass cxx variable to library.
+  notes:
+  - Passing a cdesc to C wrapper which may have splicer code to process it.
+  - Perhaps using a fortran_generic to deal with a void * pointer.
+  - See cdesc.yaml test GetScalar1.
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
   - '  f_mixin_cdesc_pass'
@@ -13514,6 +13564,8 @@ f_in_native:
   - Pass cxx variable to library.
   notes:
   - An intent of 'none' is used with function pointers.
+  usage:
+  - int arg
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar'
@@ -13545,6 +13597,8 @@ f_in_native&:
   intent: in
   comments:
   - Pass dereference of cxx variable to library.
+  usage:
+  - const int &value +intent(in)
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar-deref'
@@ -13647,6 +13701,10 @@ f_in_native*_cdesc:
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from native in the Fortran wrapper.
   - Pass cxx variable to library.
+  notes:
+  - Passing a cdesc to C wrapper which may have splicer code to process it.
+  - Perhaps using a fortran_generic to deal with a void * pointer.
+  - See cdesc.yaml test GetScalar1.
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
   - '  f_mixin_cdesc_pass'
@@ -15029,6 +15087,10 @@ f_in_void*_cdesc:
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from native in the Fortran wrapper.
   - Pass cxx variable to library.
+  notes:
+  - Passing a cdesc to C wrapper which may have splicer code to process it.
+  - Perhaps using a fortran_generic to deal with a void * pointer.
+  - See cdesc.yaml test GetScalar1.
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
   - '  f_mixin_cdesc_pass'
@@ -15348,6 +15410,8 @@ f_inout_native&:
   intent: inout
   comments:
   - Pass dereference of cxx variable to library.
+  usage:
+  - const int &value +intent(in)
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar-deref'
@@ -15430,6 +15494,10 @@ f_inout_native*_cdesc:
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from native in the Fortran wrapper.
   - Pass cxx variable to library.
+  notes:
+  - Passing a cdesc to C wrapper which may have splicer code to process it.
+  - Perhaps using a fortran_generic to deal with a void * pointer.
+  - See cdesc.yaml test GetScalar1.
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
   - '  f_mixin_cdesc_pass'
@@ -16360,6 +16428,10 @@ f_inout_void*_cdesc:
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from native in the Fortran wrapper.
   - Pass cxx variable to library.
+  notes:
+  - Passing a cdesc to C wrapper which may have splicer code to process it.
+  - Perhaps using a fortran_generic to deal with a void * pointer.
+  - See cdesc.yaml test GetScalar1.
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
   - '  f_mixin_cdesc_pass'
@@ -17609,6 +17681,8 @@ f_none_native:
   - Pass cxx variable to library.
   notes:
   - An intent of 'none' is used with function pointers.
+  usage:
+  - int arg
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar'
@@ -18088,6 +18162,8 @@ f_out_native&:
   intent: out
   comments:
   - Pass dereference of cxx variable to library.
+  usage:
+  - const int &value +intent(in)
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar-deref'
@@ -18172,6 +18248,8 @@ f_out_native*&_cdesc:
   - Pass cxx variable to library.
   - Fill cdesc from native in the C wrapper.
   - Set Fortran pointer to native array.
+  usage:
+  - double *&arg +dimension(isize)+intent(out)
   mixin_names:
   - '  f_mixin_cdesc_pass'
   - '  c_mixin_out_native**'
@@ -18229,6 +18307,8 @@ f_out_native*&_cdesc_pointer:
   - Pass cxx variable to library.
   - Fill cdesc from native in the C wrapper.
   - Set Fortran pointer to native array.
+  usage:
+  - double *&arg +dimension(isize)+intent(out)
   mixin_names:
   - '  f_mixin_cdesc_pass'
   - '  c_mixin_out_native**'
@@ -18282,6 +18362,12 @@ f_out_native***:
   intent: out
   comments:
   - Pass cxx variable to library.
+  notes:
+  - Too much indirection for Fortran.
+  - Make argument a type(C_PTR).
+  usage:
+  - int ** +intent(out)+deref(raw)
+  - int ***arg +intent(out)
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar'
@@ -18322,9 +18408,10 @@ f_out_native**_cdesc_allocatable:
   - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   notes:
-  - deref(allocatable)
-  - A C function with a 'int **' argument associates it
-  - with a Fortran pointer.
+  - Argument returns a pointer to an array which is copied into a
+  - Fortran allocatable.
+  usage:
+  - int **arg +deref(allocatable)+dimension(10)+intent(out)
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
   - '  f_mixin_cdesc_pass'
@@ -18411,9 +18498,10 @@ f_out_native**_cdesc_pointer:
   - Fill cdesc from native in the C wrapper.
   - Set Fortran pointer to native array.
   notes:
-  - deref(pointer)
-  - A C function with a 'int **' argument associates it
-  - with a Fortran pointer.
+  - Argument returns a pointer to an array which is associated with a
+  - Fortran pointer.
+  usage:
+  - int **nitems +intent(out)+deref(pointer)
   mixin_names:
   - '  f_mixin_cdesc_pass'
   - '  c_mixin_out_native**'
@@ -18594,7 +18682,11 @@ f_out_native**_raw:
   comments:
   - Pass cxx variable to library.
   notes:
-  - Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'.
+  - Too much indirection for Fortran.
+  - Make argument a type(C_PTR).
+  usage:
+  - int ** +intent(out)+deref(raw)
+  - int ***arg +intent(out)
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar'
@@ -18627,6 +18719,10 @@ f_out_native*_cdesc:
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from native in the Fortran wrapper.
   - Pass cxx variable to library.
+  notes:
+  - Passing a cdesc to C wrapper which may have splicer code to process it.
+  - Perhaps using a fortran_generic to deal with a void * pointer.
+  - See cdesc.yaml test GetScalar1.
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
   - '  f_mixin_cdesc_pass'
@@ -19832,6 +19928,8 @@ f_out_void*&:
   intent: out
   comments:
   - Pass dereference of cxx variable to library.
+  usage:
+  - void *&arg +intent(out)
   mixin_names:
   - '  c_mixin_declare-arg'
   - '  c_mixin_arg-call-cvar-deref'
@@ -19894,6 +19992,10 @@ f_out_void*_cdesc:
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from native in the Fortran wrapper.
   - Pass cxx variable to library.
+  notes:
+  - Passing a cdesc to C wrapper which may have splicer code to process it.
+  - Perhaps using a fortran_generic to deal with a void * pointer.
+  - See cdesc.yaml test GetScalar1.
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
   - '  f_mixin_cdesc_pass'
