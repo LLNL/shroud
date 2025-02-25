@@ -283,7 +283,7 @@ class FillMeta(object):
                 if "len" in attrs:
                     mderef = "copy"
                 else:
-                    mderef = options.F_deref_character
+                    mderef = options.F_deref_func_character
             elif nindirect > 1:
                 mderef = "raw"
         elif ntypemap.sgroup == "string":
@@ -292,12 +292,12 @@ class FillMeta(object):
             elif "len" in attrs:
                 mderef = "copy"
             else:
-                mderef = options.F_deref_character
+                mderef = options.F_deref_func_character
         elif ntypemap.implied_array:
             if deref is not missing:
                 mderef = deref
             else:
-                mderef = options.F_deref_implied_array
+                mderef = options.F_deref_func_implied_array
         elif nindirect > 1:
             if deref is missing:
                 deref = "raw"
@@ -310,9 +310,9 @@ class FillMeta(object):
             if deref is not missing:
                 mderef = deref
             elif "dimension" in attrs:  # XXX - or rank?
-                mderef = "pointer"
+                mderef = options.F_deref_func_array
             else:
-                mderef = node.options.return_scalar_pointer
+                mderef = options.return_scalar_pointer  # options.F_deref_func_scalar
         elif deref is not missing:
             self.cursor.generate("Cannot have attribute 'deref' on non-pointer function")
         meta["deref"] = mderef

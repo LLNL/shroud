@@ -161,7 +161,7 @@ caller never needs to release the memory.
 
 .. XXX - std::vector defaults to deref(allocatable) to copy data out of vector.
    The typemap field implied_array is set for std::vector.
-   This causes the option *F_deref_implied_array* to determine the default
+   This causes the option *F_deref_func_implied_array* to determine the default
    *deref* attribute.
    
 
@@ -288,7 +288,7 @@ A typical destructor function would look like:
 Character and Arrays
 ^^^^^^^^^^^^^^^^^^^^
 
-.. The option **F_deref_character** decides the default value of the *deref* attribute.
+.. The option **F_deref_func_character** decides the default value of the *deref* attribute.
 
 In order to create an allocatable copy of a C++ pointer, an additional
 structure is involved.  For example, ``getConstStringPtrAlloc``

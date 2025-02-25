@@ -528,8 +528,10 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_assumed_rank_max=7,
             F_blanknull=False,
             F_create_bufferify_function=True,
-            F_deref_implied_array="allocatable",
-            F_deref_character="allocatable",
+            F_deref_func_array="pointer",
+            F_deref_func_character="allocatable",
+            F_deref_func_implied_array="allocatable",
+            F_deref_func_scalar="pointer",
             F_default_args="generic",  # "generic", "optional", "require"
             F_enum_type="int",
             F_flatten_namespace=False,
