@@ -5192,6 +5192,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
+                                        "deref": "pointer",
                                         "intent": "out"
                                     },
                                     "name": "outstr",
@@ -5218,8 +5219,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void fetchCharPtrLibrary(char **outstr+intent(out))",
-                "declgen": "void fetchCharPtrLibrary(char **outstr +intent(out))",
+                "decl": "void fetchCharPtrLibrary(char **outstr+intent(out)+deref(pointer))",
+                "declgen": "void fetchCharPtrLibrary(char **outstr +deref(pointer)+intent(out))",
                 "doxygen": {
                     "description": "Fetch a pointer to a char array owned by the library.\n"
                 },
@@ -5455,6 +5456,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
+                                        "deref": "pointer",
                                         "intent": "out"
                                     },
                                     "name": "outstr",
@@ -5481,8 +5483,8 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int fetchCharPtrLibraryNULL(char **outstr+intent(out))",
-                "declgen": "int fetchCharPtrLibraryNULL(char **outstr +intent(out))",
+                "decl": "int fetchCharPtrLibraryNULL(char **outstr+intent(out)+deref(pointer))",
+                "declgen": "int fetchCharPtrLibraryNULL(char **outstr +deref(pointer)+intent(out))",
                 "doxygen": {
                     "description": "Fetch a NULL pointer to a char array owned by the library.\nReturn a value to test Python returning a tuple.\n"
                 },

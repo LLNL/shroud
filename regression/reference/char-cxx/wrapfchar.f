@@ -688,7 +688,7 @@ module char_mod
     ! Function:  void fetchCharPtrLibrary
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  char **outstr +intent(out)
+    ! Argument:  char **outstr +deref(pointer)+intent(out)
     ! Statement: c_out_char**
     ! start c_fetch_char_ptr_library
     interface
@@ -705,7 +705,7 @@ module char_mod
     ! Function:  void fetchCharPtrLibrary
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char **outstr +intent(out)
+    ! Argument:  char **outstr +deref(pointer)+intent(out)
     ! Statement: f_out_char**_cdesc_pointer
     ! start c_fetch_char_ptr_library_bufferify
     interface
@@ -722,7 +722,7 @@ module char_mod
     ! Function:  int fetchCharPtrLibraryNULL
     ! Statement: c_function_native
     ! ----------------------------------------
-    ! Argument:  char **outstr +intent(out)
+    ! Argument:  char **outstr +deref(pointer)+intent(out)
     ! Statement: c_out_char**
     ! start c_fetch_char_ptr_library_null
     interface
@@ -741,7 +741,7 @@ module char_mod
     ! Function:  int fetchCharPtrLibraryNULL
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  char **outstr +intent(out)
+    ! Argument:  char **outstr +deref(pointer)+intent(out)
     ! Statement: f_out_char**_cdesc_pointer
     ! start c_fetch_char_ptr_library_null_bufferify
     interface
@@ -1274,7 +1274,7 @@ contains
     ! Function:  void fetchCharPtrLibrary
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char **outstr +intent(out)
+    ! Argument:  char **outstr +deref(pointer)+intent(out)
     ! Statement: f_out_char**_cdesc_pointer
     !>
     !! Fetch a pointer to a char array owned by the library.
@@ -1295,7 +1295,7 @@ contains
     ! Function:  int fetchCharPtrLibraryNULL
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  char **outstr +intent(out)
+    ! Argument:  char **outstr +deref(pointer)+intent(out)
     ! Statement: f_out_char**_cdesc_pointer
     !>
     !! Fetch a NULL pointer to a char array owned by the library.

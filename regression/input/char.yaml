@@ -213,12 +213,12 @@ declarations:
   options:
     wrap_python: False
 
-- decl: void fetchCharPtrLibrary(char **outstr+intent(out))
+- decl: void fetchCharPtrLibrary(char **outstr+intent(out)+deref(pointer))
   doxygen:
     description: |
       Fetch a pointer to a char array owned by the library.
 
-- decl: int fetchCharPtrLibraryNULL(char **outstr+intent(out))
+- decl: int fetchCharPtrLibraryNULL(char **outstr+intent(out)+deref(pointer))
   doxygen:
     description: |
       Fetch a NULL pointer to a char array owned by the library.

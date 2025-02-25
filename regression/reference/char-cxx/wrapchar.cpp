@@ -791,7 +791,7 @@ void CHA_fetchCharPtrCopyLibrary_bufferify(char *outstr,
 // Function:  void fetchCharPtrLibrary
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  char **outstr +intent(out)
+// Argument:  char **outstr +deref(pointer)+intent(out)
 // Statement: c_out_char**
 // start CHA_fetchCharPtrLibrary
 void CHA_fetchCharPtrLibrary(char **outstr)
@@ -809,7 +809,7 @@ void CHA_fetchCharPtrLibrary(char **outstr)
 // Function:  void fetchCharPtrLibrary
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  char **outstr +intent(out)
+// Argument:  char **outstr +deref(pointer)+intent(out)
 // Statement: f_out_char**_cdesc_pointer
 // start CHA_fetchCharPtrLibrary_bufferify
 void CHA_fetchCharPtrLibrary_bufferify(
@@ -835,7 +835,7 @@ void CHA_fetchCharPtrLibrary_bufferify(
 // Function:  int fetchCharPtrLibraryNULL
 // Statement: c_function_native
 // ----------------------------------------
-// Argument:  char **outstr +intent(out)
+// Argument:  char **outstr +deref(pointer)+intent(out)
 // Statement: c_out_char**
 // start CHA_fetchCharPtrLibraryNULL
 int CHA_fetchCharPtrLibraryNULL(char **outstr)
@@ -855,7 +855,7 @@ int CHA_fetchCharPtrLibraryNULL(char **outstr)
 // Function:  int fetchCharPtrLibraryNULL
 // Statement: f_function_native
 // ----------------------------------------
-// Argument:  char **outstr +intent(out)
+// Argument:  char **outstr +deref(pointer)+intent(out)
 // Statement: f_out_char**_cdesc_pointer
 // start CHA_fetchCharPtrLibraryNULL_bufferify
 int CHA_fetchCharPtrLibraryNULL_bufferify(

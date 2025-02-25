@@ -443,7 +443,6 @@ class FillMeta(object):
         elif spointer in ["**", "*&"]:
             if ntypemap.sgroup == "char":
                 meta["deref"] = options.F_deref_arg_character
-                meta["deref"] = "pointer"
             elif ntypemap.sgroup == "string":
                 meta["deref"] = options.F_deref_arg_character
             elif "dimension" in attrs:  # XXX - or rank?
