@@ -276,6 +276,16 @@ class FillMeta(object):
                 mderef = "pointer"
             elif nindirect > 1:
                 mderef = "raw"
+        elif ntypemap.sgroup == "char":
+            if deref is not missing:
+                mderef = deref
+            elif nindirect == 1:
+                if "len" in attrs:
+                    mderef = "copy"
+                else:
+                    mderef = options.F_deref_character
+            elif nindirect > 1:
+                mderef = "raw"
         elif ntypemap.sgroup == "string":
             if deref is not missing:
                 mderef = deref
@@ -305,11 +315,6 @@ class FillMeta(object):
             # pointer to a POD  e.g. int *
             if deref is not missing:
                 mderef = deref
-            elif ntypemap.sgroup == "char":  # char *
-                if "len" in attrs:
-                    mderef = "copy"
-                else:
-                    mderef = "allocatable"
             elif "dimension" in attrs:  # XXX - or rank?
                 mderef = "pointer"
             else:
