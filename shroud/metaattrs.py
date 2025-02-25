@@ -303,7 +303,7 @@ class FillMeta(object):
                 deref = "raw"
             elif deref != "raw":
                 self.cursor.generate(
-                    "Multiple indirections only supports 'deref(raw)', not '{}'".
+                    "Multiple function indirections only supports 'deref(raw)', not '{}'".
                     format(deref))
         elif nindirect == 1:
             # pointer to a POD  e.g. int *
@@ -405,6 +405,11 @@ class FillMeta(object):
 #                # void cannot be dereferenced.
             if ntypemap.implied_array:
                 pass
+            elif nindirect > 2:
+                if deref != "raw":
+                    self.cursor.generate(
+                        "Multiple argument indirections only supports 'deref(raw)', not '{}'".
+                        format(deref))
             elif nindirect != 2:
                 self.cursor.generate(
                     "Can only have attribute 'deref' on arguments which"

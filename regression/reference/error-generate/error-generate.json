@@ -1606,7 +1606,104 @@
                 }
             },
             {
-                "<FUNCTION>": "func10  21 ****************************************",
+                "<FUNCTION>": "func9d  21 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "func9d",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "deref": "pointer",
+                                        "intent": "out"
+                                    },
+                                    "name": "arg1",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        },
+                                        {
+                                            "ptr": "*"
+                                        },
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void func9d(int ***arg1+deref(pointer)+intent(out))",
+                "declgen": "void func9d(int ***arg1 +deref(pointer)+intent(out))",
+                "name": "func9d",
+                "options": {},
+                "wrap": {},
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "arg1": {
+                            "meta": {
+                                "abstract": "native***",
+                                "intent": "out"
+                            },
+                            "stmt": "c_out_native***"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "abstract": "native***",
+                                "deref": "pointer",
+                                "intent": "out"
+                            }
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "abstract": "native***",
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "func9d",
+                    "F_name_api": "func9d",
+                    "function_name": "func9d"
+                }
+            },
+            {
+                "<FUNCTION>": "func10  22 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func10",
@@ -1693,7 +1790,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func10b  22 ****************************************",
+                "<FUNCTION>": "func10b  23 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func10b",
@@ -1748,7 +1845,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func10c  23 ****************************************",
+                "<FUNCTION>": "func10c  24 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1809,7 +1906,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func10c  24 ****************************************",
+                "<FUNCTION>": "func10c  25 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1871,7 +1968,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func11  25 ****************************************",
+                "<FUNCTION>": "func11  26 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1928,7 +2025,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func11  26 ****************************************",
+                "<FUNCTION>": "func11  27 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1986,7 +2083,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func11  27 ****************************************",
+                "<FUNCTION>": "func11  28 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2045,7 +2142,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func12  28 ****************************************",
+                "<FUNCTION>": "func12  29 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func12",
@@ -2109,7 +2206,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func13  29 ****************************************",
+                "<FUNCTION>": "func13  30 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func13",
@@ -2190,7 +2287,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func13b  30 ****************************************",
+                "<FUNCTION>": "func13b  31 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func13b",
@@ -2271,7 +2368,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func13c  31 ****************************************",
+                "<FUNCTION>": "func13c  32 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func13c",
@@ -2368,7 +2465,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func13d  32 ****************************************",
+                "<FUNCTION>": "func13d  33 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func13d",
@@ -2465,7 +2562,7 @@
                 }
             },
             {
-                "<FUNCTION>": "callback_set_alloc  33 ****************************************",
+                "<FUNCTION>": "callback_set_alloc  34 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "callback_set_alloc",
@@ -2599,7 +2696,7 @@
                 }
             },
             {
-                "<FUNCTION>": "AssignValues  34 ****************************************",
+                "<FUNCTION>": "AssignValues  35 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2840,14 +2937,14 @@
                 }
             },
             {
-                "<FUNCTION>": "AssignValues  37 ****************************************",
+                "<FUNCTION>": "AssignValues  38 ****************************************",
                 "C_force_wrapper": true,
-                "_PTR_C_CXX_index": 34,
+                "_PTR_C_CXX_index": 35,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
                 ],
-                "_orig_node_index": 34,
+                "_orig_node_index": 35,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2968,14 +3065,14 @@
                 }
             },
             {
-                "<FUNCTION>": "AssignValues  38 ****************************************",
+                "<FUNCTION>": "AssignValues  39 ****************************************",
                 "C_force_wrapper": true,
-                "_PTR_C_CXX_index": 34,
+                "_PTR_C_CXX_index": 35,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
                 ],
-                "_orig_node_index": 34,
+                "_orig_node_index": 35,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -3129,7 +3226,7 @@
                 }
             },
             {
-                "<FUNCTION>": "struct1_get_arg2  35 ****************************************",
+                "<FUNCTION>": "struct1_get_arg2  36 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -3324,7 +3421,7 @@
                 }
             },
             {
-                "<FUNCTION>": "struct1_set_arg2  36 ****************************************",
+                "<FUNCTION>": "struct1_set_arg2  37 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"

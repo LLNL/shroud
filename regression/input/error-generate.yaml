@@ -53,6 +53,7 @@ declarations:
 - decl: void func9(int *arg1+deref(none))
 - decl: void func9b(int *arg1+deref(pointer))
 - decl: void func9c(int **arg1+deref(pointer)+intent(in))
+- decl: void func9d(int ***arg1+deref(pointer)+intent(out))
 
 # check_common_attrs
 - decl: void func10(int arg1 +api(none))
