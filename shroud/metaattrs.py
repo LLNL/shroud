@@ -393,10 +393,10 @@ class FillMeta(object):
 
         deref = attrs.get("deref", missing)
         if deref is not missing:
-            if deref not in ["allocatable", "pointer", "raw", "scalar"]:
+            if deref not in ["allocatable", "pointer", "copy", "raw", "scalar"]:
                 self.cursor.generate(
                     "Illegal value '{}' for deref attribute. "
-                    "Must be 'allocatable', 'pointer', 'raw', "
+                    "Must be 'allocatable', 'pointer', 'copy', 'raw', "
                     "or 'scalar'.".format(deref)
                 )
                 return
@@ -441,7 +441,10 @@ class FillMeta(object):
         elif declarator.is_indirect() > 2:
             meta["deref"] = "raw"
         elif spointer in ["**", "*&"]:
-            if ntypemap.sgroup == "string":
+            if ntypemap.sgroup == "char":
+                meta["deref"] = options.F_deref_arg_character
+                meta["deref"] = "pointer"
+            elif ntypemap.sgroup == "string":
                 meta["deref"] = options.F_deref_arg_character
             elif "dimension" in attrs:  # XXX - or rank?
                 meta["deref"] = options.F_deref_arg_array
@@ -623,7 +626,10 @@ class FillMeta(object):
             elif ntypemap.sgroup == "string":
                 cfi_arg = True
             elif ntypemap.sgroup == "char":
-                if declarator.is_indirect():
+                if meta["deref"] == "copy":
+                    # Copying into a CHARACTER argument.
+                    pass
+                elif declarator.is_indirect():
                     cfi_arg = True
             elif meta["deref"] in ["allocatable", "pointer"]:
                 cfi_arg = True

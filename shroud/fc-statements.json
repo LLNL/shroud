@@ -2624,10 +2624,28 @@
         ]
     },
     {
+        "name": "f_out_char**_buf_copy",
+        "usage": [
+            "char **arg +intent(out)+deref(copy)"
+        ],
+        "notes": [
+            "Copy char array into Fortran argument.",
+            "Also used with CFI."
+        ],
+        "mixin": [
+            "f_mixin_declare-fortran-arg",
+            "f_mixin_pass_character_buf",
+            "c_mixin_in_character_buf",
+            "c_mixin_local-cxx-ptr",
+            "c_mixin_arg-call-cxx-address",
+            "c_mixin_char-copy"
+        ]
+    },
+    {
         "sphinx-start-after": "f_out_char**_cdesc_pointer",
         "name": "f_out_char**_cdesc_pointer",
         "usage": [
-            "char **arg +intent(out)"
+            "char **arg +intent(out)+deref(pointer)"
         ],
         "notes": [
             "Return a Fortran pointer to C memory."

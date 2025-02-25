@@ -746,6 +746,45 @@ int CHA_acceptCharArrayIn_bufferify(const char *names,
 // end CHA_acceptCharArrayIn_bufferify
 
 /**
+ * Copy a char array owned by the library.
+ */
+// ----------------------------------------
+// Function:  void fetchCharPtrCopyLibrary
+// Statement: c_subroutine
+// ----------------------------------------
+// Argument:  char **outstr +deref(copy)+intent(out)
+// Statement: c_out_char**
+// start CHA_fetchCharPtrCopyLibrary
+void CHA_fetchCharPtrCopyLibrary(char **outstr)
+{
+    // splicer begin function.fetchCharPtrCopyLibrary
+    fetchCharPtrCopyLibrary(outstr);
+    // splicer end function.fetchCharPtrCopyLibrary
+}
+// end CHA_fetchCharPtrCopyLibrary
+
+/**
+ * Copy a char array owned by the library.
+ */
+// ----------------------------------------
+// Function:  void fetchCharPtrCopyLibrary
+// Statement: f_subroutine
+// ----------------------------------------
+// Argument:  char **outstr +deref(copy)+intent(out)
+// Statement: f_out_char**_buf_copy
+// start CHA_fetchCharPtrCopyLibrary_bufferify
+void CHA_fetchCharPtrCopyLibrary_bufferify(char *outstr,
+    int SHT_outstr_len)
+{
+    // splicer begin function.fetchCharPtrCopyLibrary_bufferify
+    char *SHC_outstr_cxx;
+    fetchCharPtrCopyLibrary(&SHC_outstr_cxx);
+    ShroudCharCopy(outstr, SHT_outstr_len, SHC_outstr_cxx, -1);
+    // splicer end function.fetchCharPtrCopyLibrary_bufferify
+}
+// end CHA_fetchCharPtrCopyLibrary_bufferify
+
+/**
  * Fetch a pointer to a char array owned by the library.
  */
 // ----------------------------------------

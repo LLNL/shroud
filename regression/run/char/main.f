@@ -244,10 +244,19 @@ contains
 
   subroutine test_char_ptr_out
     integer irv;
+    character(len=20) :: outstr
+    character(len=6) :: outstrshort
     character(len=:), pointer :: outptr
     character(8), target :: nonnull = "Non-null"
 
     call set_case_name("test_char_ptr_out")
+
+    call fetch_char_ptr_copy_library(outstr)
+    call assert_equals("static_char_array", outstr, "fetchCharPtrCopyLibrary")
+
+    ! Make sure it does not overrun the argument.
+    call fetch_char_ptr_copy_library(outstrshort)
+    call assert_equals("static", outstrshort, "fetchCharPtrCopyLibrary short")
 
     nullify(outptr)
     call fetch_char_ptr_library(outptr)

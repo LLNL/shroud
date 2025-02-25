@@ -235,7 +235,7 @@ blanknull attribute can only be used on intent(in) 'char *'
 Node: func9
 line 53
 void func9(int *arg1 +deref(none))
-Illegal value 'none' for deref attribute. Must be 'allocatable', 'pointer', 'raw', or 'scalar'.
+Illegal value 'none' for deref attribute. Must be 'allocatable', 'pointer', 'copy', 'raw', or 'scalar'.
 --------------------
 Node: func9b
 line 54
@@ -260,7 +260,7 @@ void func10(int arg1 +api(none))
 Node: AssignValues
 line 110
 void AssignValues(const int *from, int nfrom, int *to +deref(allocatable2), int nto)
-Illegal value 'allocatable2' for deref attribute. Must be 'allocatable', 'pointer', 'raw', or 'scalar'.
+Illegal value 'allocatable2' for deref attribute. Must be 'allocatable', 'pointer', 'copy', 'raw', or 'scalar'.
 --------------------
 Node: struct1_get_arg2
 Unknown statement: f_getter_native*_pointerxx

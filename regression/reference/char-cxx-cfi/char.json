@@ -4453,7 +4453,219 @@
                 }
             },
             {
-                "<FUNCTION>": "fetchCharPtrLibrary  22 ****************************************",
+                "<FUNCTION>": "fetchCharPtrCopyLibrary  22 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "fetchCharPtrCopyLibrary",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "deref": "copy",
+                                        "intent": "out"
+                                    },
+                                    "name": "outstr",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        },
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void fetchCharPtrCopyLibrary(char **outstr+intent(out)+deref(copy))",
+                "declgen": "void fetchCharPtrCopyLibrary(char **outstr +deref(copy)+intent(out))",
+                "doxygen": {
+                    "description": "Copy a char array owned by the library.\n"
+                },
+                "helpers": {
+                    "fc": [
+                        "char_copy"
+                    ]
+                },
+                "name": "fetchCharPtrCopyLibrary",
+                "options": {
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "fetchCharPtrCopyLibrary(\toutstr)",
+                                "C_call_list": "outstr",
+                                "C_name": "CHA_fetchCharPtrCopyLibrary",
+                                "C_prototype": "char **outstr",
+                                "C_return_type": "void",
+                                "i_arguments": "outstr",
+                                "i_name_function": "c_fetch_char_ptr_copy_library",
+                                "i_subprogram": "subroutine",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "outstr": {
+                            "fmtdict": {
+                                "c_abstract_decl": "char **",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "char",
+                                "c_var": "outstr",
+                                "cxx_abstract_decl": "char **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "outstr",
+                                "cxx_type": "char",
+                                "cxx_var": "outstr",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_type": "character(len=*)",
+                                "f_var": "outstr",
+                                "i_intent": "OUT",
+                                "i_intent_attr": ", intent(OUT)",
+                                "i_kind": "C_CHAR",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "character(kind=C_CHAR)",
+                                "i_var": "outstr",
+                                "idtor": "0",
+                                "stmt_name": "c_out_char**",
+                                "typemap_name": "char"
+                            },
+                            "meta": {
+                                "abstract": "char**",
+                                "intent": "out"
+                            },
+                            "stmt": "c_out_char**"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "fetchCharPtrCopyLibrary(\t&SHC_outstr_cxx)",
+                                "C_call_list": "&SHC_outstr_cxx",
+                                "C_name": "CHA_fetchCharPtrCopyLibrary_bufferify",
+                                "C_prototype": "char *outstr,\t int SHT_outstr_len",
+                                "C_return_type": "void",
+                                "F_arg_c_call": "outstr,\t SHT_outstr_len",
+                                "F_arguments": "outstr",
+                                "F_subprogram": "subroutine",
+                                "f_call_function": "c_fetch_char_ptr_copy_library_bufferify",
+                                "i_arguments": "outstr,\t SHT_outstr_len",
+                                "i_name_function": "c_fetch_char_ptr_copy_library_bufferify",
+                                "i_subprogram": "subroutine",
+                                "i_suffix": "_bufferify",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "outstr": {
+                            "fmtdict": {
+                                "c_abstract_decl": "char **",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_helper_char_copy": "ShroudCharCopy",
+                                "c_local_cxx": "SHC_outstr_cxx",
+                                "c_member": "->",
+                                "c_type": "char",
+                                "c_var": "outstr",
+                                "c_var_len": "SHT_outstr_len",
+                                "cxx_abstract_decl": "char **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "outstr",
+                                "cxx_type": "char",
+                                "cxx_var": "outstr",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_type": "character(len=*)",
+                                "f_var": "outstr",
+                                "f_var_len": "SHT_outstr_len",
+                                "fc_var": "outstr",
+                                "i_intent": "OUT",
+                                "i_intent_attr": ", intent(OUT)",
+                                "i_kind": "C_CHAR",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "character(kind=C_CHAR)",
+                                "i_var": "outstr",
+                                "i_var_len": "SHT_outstr_len",
+                                "idtor": "0",
+                                "stmt_name": "f_out_char**_buf_copy",
+                                "typemap_name": "char"
+                            },
+                            "meta": {
+                                "abstract": "char**",
+                                "api": "buf",
+                                "deref": "copy",
+                                "intent": "out"
+                            },
+                            "stmt": "f_out_char**_buf_copy"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            }
+                        },
+                        "outstr": {
+                            "meta": {
+                                "abstract": "char**",
+                                "intent": "out"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "fetchCharPtrCopyLibrary",
+                    "F_name_api": "fetch_char_ptr_copy_library",
+                    "F_name_function": "fetch_char_ptr_copy_library",
+                    "F_name_generic": "fetch_char_ptr_copy_library",
+                    "F_name_impl": "fetch_char_ptr_copy_library",
+                    "c_arglist": [
+                        "c_var",
+                        "outstr"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "outstr"
+                    ],
+                    "function_name": "fetchCharPtrCopyLibrary"
+                }
+            },
+            {
+                "<FUNCTION>": "fetchCharPtrLibrary  23 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "fetchCharPtrLibrary",
@@ -4660,7 +4872,7 @@
                 }
             },
             {
-                "<FUNCTION>": "fetchCharPtrLibraryNULL  23 ****************************************",
+                "<FUNCTION>": "fetchCharPtrLibraryNULL  24 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "fetchCharPtrLibraryNULL",
