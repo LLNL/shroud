@@ -18390,9 +18390,9 @@ f_out_native*&_cdesc_pointer:
   helper:
   - array_context
   sphinx-end-before: f_out_native*&_cdesc_pointer
-f_out_native***:
-  sphinx-start-after: f_out_native***
-  name: f_out_native***
+f_out_native***_raw:
+  sphinx-start-after: f_out_native***_raw
+  name: f_out_native***_raw
   intent: out
   comments:
   - Pass cxx variable to library.
@@ -18425,7 +18425,7 @@ f_out_native***:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  sphinx-end-before: f_out_native***
+  sphinx-end-before: f_out_native***_raw
 f_out_native**_cdesc_allocatable:
   sphinx-start-after: f_out_native**_cdesc_allocatable
   name: f_out_native**_cdesc_allocatable
@@ -21996,7 +21996,8 @@ root
           allocatable -- f_out_native**_cfi_allocatable
           pointer -- f_out_native**_cfi_pointer
         raw -- f_out_native**_raw
-      native*** -- f_out_native***
+      native***
+        raw -- f_out_native***_raw
       procedure*
         funptr -- f_out_procedure*_funptr
       string&

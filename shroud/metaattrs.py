@@ -430,6 +430,8 @@ class FillMeta(object):
             pass
         elif intent not in ["out", "inout"]:
             pass
+        elif declarator.is_indirect() > 2:
+            meta["deref"] = "raw"
         elif spointer in ["**", "*&"]:
             if ntypemap.sgroup == "string":
                 # strings are not contiguous, so copy into argument.

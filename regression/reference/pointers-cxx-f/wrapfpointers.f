@@ -601,7 +601,7 @@ module pointers_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int ***arg +intent(out)
-    ! Statement: f_out_native***
+    ! Statement: f_out_native***_raw
     ! start get_raw_ptr_to_int2d
     interface
         subroutine get_raw_ptr_to_int2d(arg) &
@@ -1548,7 +1548,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int ***arg +intent(out)
-    ! Statement: f_out_native***
+    ! Statement: f_out_native***_raw
     !>
     !! Test multiple layers of indirection.
     !<

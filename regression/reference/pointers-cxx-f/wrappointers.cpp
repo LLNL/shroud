@@ -597,7 +597,7 @@ void POI_getRawPtrToFixedArrayForce_bufferify(int **count)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int ***arg +intent(out)
-// Statement: f_out_native***
+// Statement: f_out_native***_raw
 // start POI_getRawPtrToInt2d_bufferify
 void POI_getRawPtrToInt2d_bufferify(int ***arg)
 {

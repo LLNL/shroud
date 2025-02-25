@@ -7577,14 +7577,15 @@
                                 "i_type": "integer(C_INT)",
                                 "i_var": "arg",
                                 "idtor": "0",
-                                "stmt_name": "f_out_native***",
+                                "stmt_name": "f_out_native***_raw",
                                 "typemap_name": "int"
                             },
                             "meta": {
                                 "abstract": "native***",
+                                "deref": "raw",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native***"
+                            "stmt": "f_out_native***_raw"
                         }
                     },
                     "share": {
