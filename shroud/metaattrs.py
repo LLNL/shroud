@@ -298,14 +298,13 @@ class FillMeta(object):
                 mderef = deref
             else:
                 mderef = options.F_deref_implied_array
-        elif nindirect > 2:
-            if deref is not missing:
-                self.cursor.generate(
-                    "Cannot have attribute 'deref' on function which returns multiple indirections")
         elif nindirect > 1:
-            if deref is not missing:
+            if deref is missing:
+                deref = "raw"
+            elif deref != "raw":
                 self.cursor.generate(
-                    "Cannot have attribute 'deref' on function which returns multiple indirections")
+                    "Multiple indirections only supports 'deref(raw)', not '{}'".
+                    format(deref))
         elif nindirect == 1:
             # pointer to a POD  e.g. int *
             if deref is not missing:

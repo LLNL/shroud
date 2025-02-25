@@ -220,7 +220,7 @@ Unknown statement: c_function_native***
 Node: func0b
 line 26
 int ***func0b(void) +deref(pointer)
-Cannot have attribute 'deref' on function which returns multiple indirections
+Multiple indirections only supports 'deref(raw)', not 'pointer'
 --------------------
 Node: func0c
 line 27
