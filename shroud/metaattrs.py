@@ -304,13 +304,8 @@ class FillMeta(object):
                     "Cannot have attribute 'deref' on function which returns multiple indirections")
         elif nindirect > 1:
             if deref is not missing:
-                if deref == "pointer":
-                    # XXX - this is a kludge to get cxxlibrary.yaml to pass
-                    #       get_nested_child getter
-                    mderef = deref
-                else:
-                    self.cursor.generate(
-                        "Cannot have attribute 'deref' on function which returns multiple indirections")
+                self.cursor.generate(
+                    "Cannot have attribute 'deref' on function which returns multiple indirections")
         elif nindirect == 1:
             # pointer to a POD  e.g. int *
             if deref is not missing:
