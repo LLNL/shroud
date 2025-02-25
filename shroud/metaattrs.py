@@ -377,7 +377,7 @@ class FillMeta(object):
 #            else:
 #                meta["deref"] = "copy"
 
-    def set_arg_deref_fortran(self, arg, meta):
+    def set_arg_deref_fortran(self, node, arg, meta):
         """Check deref attr and set default for variable.
 
         Pointer variables set the default deref meta attribute.
@@ -435,6 +435,8 @@ class FillMeta(object):
             pass
         elif intent not in ["out", "inout"]:
             pass
+        elif ntypemap.implied_array:
+            meta["deref"] = node.options.F_deref_arg_implied_array
         elif declarator.is_indirect() > 2:
             meta["deref"] = "raw"
         elif spointer in ["**", "*&"]:
@@ -1105,7 +1107,7 @@ class FillMetaFortran(FillMeta):
 
             self.set_arg_share(node, arg, meta)
             self.set_arg_fortran(node, arg, meta)
-            self.set_arg_deref_fortran(arg, meta)
+            self.set_arg_deref_fortran(node, arg, meta)
             self.set_arg_api_fortran(node, arg, meta, fptr_arg)
             self.set_arg_hidden(arg, meta)
 

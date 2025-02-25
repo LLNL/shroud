@@ -122,7 +122,7 @@ module vectors_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> &arg +intent(out)
-    ! Statement: f_out_vector<native>&_cdesc
+    ! Statement: f_out_vector<native>&_cdesc_copy
     ! start c_vector_iota_out_bufferify
     interface
         subroutine c_vector_iota_out_bufferify(SHT_arg_cdesc) &
@@ -159,7 +159,7 @@ module vectors_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> &arg +intent(out)
-    ! Statement: f_out_vector<native>&_cdesc
+    ! Statement: f_out_vector<native>&_cdesc_copy
     ! start c_vector_iota_out_with_num_bufferify
     interface
         function c_vector_iota_out_with_num_bufferify(SHT_arg_cdesc) &
@@ -197,7 +197,7 @@ module vectors_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> &arg +intent(out)
-    ! Statement: f_out_vector<native>&_cdesc
+    ! Statement: f_out_vector<native>&_cdesc_copy
     ! start c_vector_iota_out_with_num2_bufferify
     interface
         subroutine c_vector_iota_out_with_num2_bufferify(SHT_arg_cdesc) &
@@ -307,7 +307,7 @@ module vectors_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> &arg
-    ! Statement: f_inout_vector<native>&_cdesc
+    ! Statement: f_inout_vector<native>&_cdesc_copy
     interface
         subroutine c_vector_increment_bufferify(arg, SHT_arg_size, &
                 SHT_arg_cdesc) &
@@ -342,7 +342,7 @@ module vectors_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<double> &arg +intent(out)
-    ! Statement: f_out_vector<native>&_cdesc
+    ! Statement: f_out_vector<native>&_cdesc_copy
     interface
         subroutine c_vector_iota_out_d_bufferify(SHT_arg_cdesc) &
                 bind(C, name="VEC_vector_iota_out_d_bufferify")
@@ -418,7 +418,7 @@ module vectors_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<std::string> &arg +intent(out)
-    ! Statement: f_out_vector<string>&_cdesc
+    ! Statement: f_out_vector<string>&_cdesc_copy
     interface
         subroutine c_vector_string_fill_bufferify(SHT_arg_cdesc) &
                 bind(C, name="VEC_vector_string_fill_bufferify")
@@ -617,7 +617,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> &arg +intent(out)
-    ! Statement: f_out_vector<native>&_cdesc
+    ! Statement: f_out_vector<native>&_cdesc_copy
     !>
     !! \brief Copy vector into Fortran input array
     !!
@@ -640,7 +640,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> &arg +intent(out)
-    ! Statement: f_out_vector<native>&_cdesc
+    ! Statement: f_out_vector<native>&_cdesc_copy
     !>
     !! \brief Copy vector into Fortran input array
     !!
@@ -668,7 +668,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> &arg +intent(out)
-    ! Statement: f_out_vector<native>&_cdesc
+    ! Statement: f_out_vector<native>&_cdesc_copy
     !>
     !! \brief Copy vector into Fortran input array
     !!
@@ -747,7 +747,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<int> &arg
-    ! Statement: f_inout_vector<native>&_cdesc
+    ! Statement: f_inout_vector<native>&_cdesc_copy
     subroutine vector_increment(arg)
         use iso_c_binding, only : C_INT, C_LOC, C_SIZE_T
         integer(C_INT), intent(INOUT), target :: arg(:)
@@ -765,7 +765,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<double> &arg +intent(out)
-    ! Statement: f_out_vector<native>&_cdesc
+    ! Statement: f_out_vector<native>&_cdesc_copy
     !>
     !! \brief Copy vector into Fortran input array
     !!
@@ -833,7 +833,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::vector<std::string> &arg +intent(out)
-    ! Statement: f_out_vector<string>&_cdesc
+    ! Statement: f_out_vector<string>&_cdesc_copy
     !>
     !! \brief Fill in arg with some animal names
     !!

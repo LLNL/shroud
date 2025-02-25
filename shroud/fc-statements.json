@@ -3470,7 +3470,7 @@
     },
     {
         "alias": [
-            "f_out_vector<native>*_cdesc",
+            "f_out_vector<native>*_cdesc_copy",
             "c_out_vector<native>*_cdesc"
         ],
         "mixin": [
@@ -3487,7 +3487,7 @@
     },
     {
         "alias": [
-            "f_out_vector<native>&_cdesc",
+            "f_out_vector<native>&_cdesc_copy",
             "c_out_vector<native>&_cdesc"
         ],
         "mixin": [
@@ -3772,7 +3772,7 @@
     },
     {
         "alias": [
-            "f_out_vector<string>&_cdesc",
+            "f_out_vector<string>&_cdesc_copy",
             "c_out_vector<string>&_cdesc"
         ],
         "mixin": [
@@ -3810,7 +3810,7 @@
         ]
     },
     {
-        "name": "f_inout_vector<native>&_cdesc",
+        "name": "f_inout_vector<native>&_cdesc_copy",
         "mixin": [
             "f_mixin_dummy_arg",
             "f_mixin_template_native_arg1",
