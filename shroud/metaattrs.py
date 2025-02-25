@@ -425,6 +425,7 @@ class FillMeta(object):
         # Set deref attribute for arguments which return values.
         intent = meta["intent"]
         spointer = declarator.get_indirect_stmt()
+        options = node.options
         if declarator.is_function_pointer() or ntypemap.base == "procedure":
             if attrs.get("external"):
                 meta["deref"] = "external"
@@ -436,15 +437,16 @@ class FillMeta(object):
         elif intent not in ["out", "inout"]:
             pass
         elif ntypemap.implied_array:
-            meta["deref"] = node.options.F_deref_arg_implied_array
+            meta["deref"] = options.F_deref_arg_implied_array
         elif declarator.is_indirect() > 2:
             meta["deref"] = "raw"
         elif spointer in ["**", "*&"]:
             if ntypemap.sgroup == "string":
-                # strings are not contiguous, so copy into argument.
-                meta["deref"] = "copy"
+                meta["deref"] = options.F_deref_arg_character
+            elif "dimension" in attrs:  # XXX - or rank?
+                meta["deref"] = options.F_deref_arg_array
             else:
-                meta["deref"] = "pointer"
+                meta["deref"] = options.F_deref_arg_scalar
 
     def set_func_api_c(self, node, meta):
         """
