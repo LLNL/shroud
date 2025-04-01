@@ -518,6 +518,7 @@ typemap:
       sgroup: vector
       sh_type: SH_TYPE_OTHER
       cfi_type: CFI_type_other
+      implied_array: True
   - type: std::weak_ptr
     fields:
       flat_name: std_weak_ptr_{cxx_T}

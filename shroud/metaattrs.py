@@ -248,6 +248,7 @@ class FillMeta(object):
         if meta["deref"]:
             return
         # check_deref_attr_func
+        options = node.options
         ast = node.ast
         declarator = ast.declarator
         attrs = declarator.attrs
@@ -275,44 +276,43 @@ class FillMeta(object):
                 mderef = "pointer"
             elif nindirect > 1:
                 mderef = "raw"
+        elif ntypemap.sgroup == "char":
+            if deref is not missing:
+                mderef = deref
+            elif nindirect == 1:
+                if "len" in attrs:
+                    mderef = "copy"
+                else:
+                    mderef = options.F_deref_func_character
+            elif nindirect > 1:
+                mderef = "raw"
         elif ntypemap.sgroup == "string":
             if deref is not missing:
                 mderef = deref
             elif "len" in attrs:
                 mderef = "copy"
             else:
-                mderef = "allocatable"
-        elif ntypemap.sgroup == "vector":
+                mderef = options.F_deref_func_character
+        elif ntypemap.implied_array:
             if deref is not missing:
                 mderef = deref
             else:
-                mderef = "allocatable"
-        elif nindirect > 2:
-            if deref is not missing:
-                self.cursor.generate(
-                    "Cannot have attribute 'deref' on function which returns multiple indirections")
+                mderef = options.F_deref_func_implied_array
         elif nindirect > 1:
-            if deref is not missing:
-                if deref == "pointer":
-                    # XXX - this is a kludge to get cxxlibrary.yaml to pass
-                    #       get_nested_child getter
-                    mderef = deref
-                else:
-                    self.cursor.generate(
-                        "Cannot have attribute 'deref' on function which returns multiple indirections")
+            if deref is missing:
+                deref = "raw"
+            elif deref != "raw":
+                self.cursor.generate(
+                    "Multiple function indirections only supports 'deref(raw)', not '{}'".
+                    format(deref))
         elif nindirect == 1:
             # pointer to a POD  e.g. int *
             if deref is not missing:
                 mderef = deref
-            elif ntypemap.sgroup == "char":  # char *
-                if "len" in attrs:
-                    mderef = "copy"
-                else:
-                    mderef = "allocatable"
             elif "dimension" in attrs:  # XXX - or rank?
-                mderef = "pointer"
+                mderef = options.F_deref_func_array
             else:
-                mderef = node.options.return_scalar_pointer
+                mderef = options.return_scalar_pointer  # options.F_deref_func_scalar
         elif deref is not missing:
             self.cursor.generate("Cannot have attribute 'deref' on non-pointer function")
         meta["deref"] = mderef
@@ -342,7 +342,7 @@ class FillMeta(object):
                 )
                 return
             nindirect = declarator.is_indirect()
-            if ntypemap.sgroup == "vector":
+            if ntypemap.implied_array:
                 pass
             elif nindirect != 2:
                 self.cursor.generate(
@@ -368,7 +368,7 @@ class FillMeta(object):
             pass
         elif intent not in ["out", "inout"]:
             pass
-        elif ntypemap.sgroup == "vector":
+        elif ntypemap.implied_array:
             meta["deref"] = "copy"
 #        elif spointer in ["**", "*&"]:
 #            if ntypemap.sgroup == "string":
@@ -377,7 +377,7 @@ class FillMeta(object):
 #            else:
 #                meta["deref"] = "copy"
 
-    def set_arg_deref_fortran(self, arg, meta):
+    def set_arg_deref_fortran(self, node, arg, meta):
         """Check deref attr and set default for variable.
 
         Pointer variables set the default deref meta attribute.
@@ -393,18 +393,23 @@ class FillMeta(object):
 
         deref = attrs.get("deref", missing)
         if deref is not missing:
-            if deref not in ["allocatable", "pointer", "raw", "scalar"]:
+            if deref not in ["allocatable", "pointer", "copy", "raw", "scalar"]:
                 self.cursor.generate(
                     "Illegal value '{}' for deref attribute. "
-                    "Must be 'allocatable', 'pointer', 'raw', "
+                    "Must be 'allocatable', 'pointer', 'copy', 'raw', "
                     "or 'scalar'.".format(deref)
                 )
                 return
             nindirect = declarator.is_indirect()
 #            if ntypemap.name == "void":
 #                # void cannot be dereferenced.
-            if ntypemap.sgroup == "vector":
+            if ntypemap.implied_array:
                 pass
+            elif nindirect > 2:
+                if deref != "raw":
+                    self.cursor.generate(
+                        "Multiple argument indirections only supports 'deref(raw)', not '{}'".
+                        format(deref))
             elif nindirect != 2:
                 self.cursor.generate(
                     "Can only have attribute 'deref' on arguments which"
@@ -420,6 +425,7 @@ class FillMeta(object):
         # Set deref attribute for arguments which return values.
         intent = meta["intent"]
         spointer = declarator.get_indirect_stmt()
+        options = node.options
         if declarator.is_function_pointer() or ntypemap.base == "procedure":
             if attrs.get("external"):
                 meta["deref"] = "external"
@@ -430,12 +436,19 @@ class FillMeta(object):
             pass
         elif intent not in ["out", "inout"]:
             pass
+        elif ntypemap.implied_array:
+            meta["deref"] = options.F_deref_arg_implied_array
+        elif declarator.is_indirect() > 2:
+            meta["deref"] = "raw"
         elif spointer in ["**", "*&"]:
-            if ntypemap.sgroup == "string":
-                # strings are not contiguous, so copy into argument.
-                meta["deref"] = "copy"
+            if ntypemap.sgroup == "char":
+                meta["deref"] = options.F_deref_arg_character
+            elif ntypemap.sgroup == "string":
+                meta["deref"] = options.F_deref_arg_character
+            elif "dimension" in attrs:  # XXX - or rank?
+                meta["deref"] = options.F_deref_arg_array
             else:
-                meta["deref"] = "pointer"
+                meta["deref"] = options.F_deref_arg_scalar
 
     def set_func_api_c(self, node, meta):
         """
@@ -526,7 +539,7 @@ class FillMeta(object):
         elif ntypemap.base == "struct":
             if is_ptr:
                 need_buf_result = "cdesc"
-        elif ntypemap.base == "vector":
+        elif ntypemap.implied_array:
             need_buf_result = "cdesc"
         elif is_ptr:
             if meta["deref"] in ["allocatable", "pointer"]:
@@ -578,7 +591,7 @@ class FillMeta(object):
             # API explicitly set by user.
             return
 
-        if ntypemap.sgroup == "vector":
+        if ntypemap.implied_array:
             meta["api"] = "buf"
         
     def set_arg_api_fortran(self, node, arg, meta, fptr_arg):
@@ -612,7 +625,10 @@ class FillMeta(object):
             elif ntypemap.sgroup == "string":
                 cfi_arg = True
             elif ntypemap.sgroup == "char":
-                if declarator.is_indirect():
+                if meta["deref"] == "copy":
+                    # Copying into a CHARACTER argument.
+                    pass
+                elif declarator.is_indirect():
                     cfi_arg = True
             elif meta["deref"] in ["allocatable", "pointer"]:
                 cfi_arg = True
@@ -639,7 +655,7 @@ class FillMeta(object):
                     has_buf_arg = "cdesc"
                 else:
                     has_buf_arg = "buf"
-        elif ntypemap.sgroup == "vector":
+        elif ntypemap.implied_array:
             if meta["intent"] == "in":
                 # Pass SIZE.
                 has_buf_arg = "buf"
@@ -931,7 +947,7 @@ class FillMetaShare(FillMeta):
                 )
             self.parse_dim_attrs(dimension, meta)
         elif ntypemap:
-            if ntypemap.base == "vector":
+            if ntypemap.implied_array:
                 # default to 1-d assumed shape
                 meta["rank"] = 1
 
@@ -1098,7 +1114,7 @@ class FillMetaFortran(FillMeta):
 
             self.set_arg_share(node, arg, meta)
             self.set_arg_fortran(node, arg, meta)
-            self.set_arg_deref_fortran(arg, meta)
+            self.set_arg_deref_fortran(node, arg, meta)
             self.set_arg_api_fortran(node, arg, meta, fptr_arg)
             self.set_arg_hidden(arg, meta)
 

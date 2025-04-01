@@ -210,6 +210,15 @@ int acceptCharArrayIn(char **names)
 
 //----------------------------------------------------------------------
 // Fetch a pointer to a char array owned by the library.
+// Fortran will copy into it's own memory.
+
+void fetchCharPtrCopyLibrary(char **outstr)
+{
+    *outstr = static_char_array;
+}
+
+//----------------------------------------------------------------------
+// Fetch a pointer to a char array owned by the library.
 
 void fetchCharPtrLibrary(char **outstr)
 {

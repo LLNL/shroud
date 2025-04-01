@@ -92,7 +92,7 @@ void VEC_vector_iota_out(int *arg, size_t *SHT_arg_size)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> &arg +intent(out)
-// Statement: f_out_vector<native>&_cdesc
+// Statement: f_out_vector<native>&_cdesc_copy
 // start VEC_vector_iota_out_bufferify
 void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 {
@@ -150,7 +150,7 @@ long VEC_vector_iota_out_with_num(int *arg, size_t *SHT_arg_size)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> &arg +intent(out)
-// Statement: f_out_vector<native>&_cdesc
+// Statement: f_out_vector<native>&_cdesc_copy
 // start VEC_vector_iota_out_with_num_bufferify
 long VEC_vector_iota_out_with_num_bufferify(
     VEC_SHROUD_array *SHT_arg_cdesc)
@@ -209,7 +209,7 @@ void VEC_vector_iota_out_with_num2(int *arg, size_t *SHT_arg_size)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> &arg +intent(out)
-// Statement: f_out_vector<native>&_cdesc
+// Statement: f_out_vector<native>&_cdesc_copy
 // start VEC_vector_iota_out_with_num2_bufferify
 void VEC_vector_iota_out_with_num2_bufferify(
     VEC_SHROUD_array *SHT_arg_cdesc)
@@ -353,7 +353,7 @@ void VEC_vector_increment(int *arg, size_t *SHT_arg_size)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> &arg
-// Statement: f_inout_vector<native>&_cdesc
+// Statement: f_inout_vector<native>&_cdesc_copy
 void VEC_vector_increment_bufferify(int *arg, size_t SHT_arg_size,
     VEC_SHROUD_array *SHT_arg_cdesc)
 {
@@ -402,7 +402,7 @@ void VEC_vector_iota_out_d(double *arg, size_t *SHT_arg_size)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  std::vector<double> &arg +intent(out)
-// Statement: f_out_vector<native>&_cdesc
+// Statement: f_out_vector<native>&_cdesc_copy
 void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 {
     // splicer begin function.vector_iota_out_d_bufferify
@@ -507,7 +507,7 @@ void VEC_vector_string_fill(char *arg)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  std::vector<std::string> &arg +intent(out)
-// Statement: f_out_vector<string>&_cdesc
+// Statement: f_out_vector<string>&_cdesc_copy
 void VEC_vector_string_fill_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
 {
     // splicer begin function.vector_string_fill_bufferify

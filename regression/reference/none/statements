@@ -16161,95 +16161,6 @@ f_inout_struct*:
   c_arg_call:
   - '{cxx_var}'
   sphinx-end-before: f_inout_struct*
-f_inout_vector<native>&_cdesc:
-  sphinx-start-after: f_inout_vector<native>&_cdesc
-  name: f_inout_vector<native>&_cdesc
-  intent: inout
-  comments:
-  - Declare local Fortran array_type argument.
-  - Accept array_type in C wrapper.
-  - Fill cdesc with vector information.
-  - Return address and size of vector data.
-  - Pass dereference of local cxx variable to library.
-  - Copy into Fortran argument.
-  mixin_names:
-  - '  f_mixin_dummy_arg'
-  - '  f_mixin_template_native_arg1'
-  - '  c_mixin_inout_vector<native>_cdesc'
-  - '    f_mixin_cdesc_inout_array'
-  - '    c_mixin_cdesc_inout_vector'
-  - '    c_mixin_destructor_new-vector'
-  - '    c_mixin_cdesc_vector_fill'
-  - '  c_mixin_arg-call-cxx-deref'
-  - '  f_mixin_cdesc_copy_array'
-  f_dummy_arg:
-  - '{f_var}'
-  f_dummy_decl:
-  - '{targs[0].f_type}{f_intent_attr}{f_deref_attr}{f_target_attr} :: {f_var}{f_assumed_shape}'
-  f_local_decl:
-  - 'type({F_array_type}) :: {f_var_cdesc}'
-  f_arg_call:
-  - '{f_var}'
-  - size({f_var}, kind=C_SIZE_T)
-  - '{f_var_cdesc}'
-  f_post_call:
-  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\
-    \ kind=C_SIZE_T))"
-  f_module:
-    iso_c_binding:
-    - '{targs[0].f_kind}'
-    - C_SIZE_T
-    - C_LOC
-    - C_SIZE_T
-  f_temps:
-  - cdesc
-  i_dummy_arg:
-  - '{i_var}'
-  - '{i_var_size}'
-  - '{i_var_cdesc}'
-  i_dummy_decl:
-  - '{targs[0].f_type}, intent(IN) :: {i_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  i_module:
-    iso_c_binding:
-    - '{targs[0].f_kind}'
-    - C_SIZE_T
-  c_prototype:
-  - '{targs[0].cxx_type} *{c_var}'
-  - size_t {c_var_size}
-  - '{C_array_type} *{c_var_cdesc}'
-  c_pre_call:
-  - "std::vector<{cxx_T}> *{c_local_cxx} = \tnew std::vector<{cxx_T}>\t(\t{c_var},\
-    \ {c_var} + {c_var_size});"
-  c_arg_call:
-  - '*{c_local_cxx}'
-  c_post_call:
-  - '{c_var_cdesc}->base_addr = {c_local_cxx}->empty() ? {nullptr} : &{c_local_cxx}->front();'
-  - '{c_var_cdesc}->type = {targs[0].sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
-  - '{c_var_cdesc}->size = {c_local_cxx}->size();'
-  - '{c_var_cdesc}->rank = 1;'
-  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
-  c_temps:
-  - size
-  - cdesc
-  c_local:
-  - cxx
-  fmtdict:
-    f_target_attr: ', target'
-  helper:
-  - array_context
-  - array_context
-  - type_defines
-  - copy_array
-  destructor_name: std_vector_{cxx_T}
-  destructor:
-  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
-  - delete cxx_ptr;
-  sphinx-end-before: f_inout_vector<native>&_cdesc
 f_inout_vector<native>&_cdesc_allocatable:
   sphinx-start-after: f_inout_vector<native>&_cdesc_allocatable
   name: f_inout_vector<native>&_cdesc_allocatable
@@ -16344,6 +16255,95 @@ f_inout_vector<native>&_cdesc_allocatable:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
   sphinx-end-before: f_inout_vector<native>&_cdesc_allocatable
+f_inout_vector<native>&_cdesc_copy:
+  sphinx-start-after: f_inout_vector<native>&_cdesc_copy
+  name: f_inout_vector<native>&_cdesc_copy
+  intent: inout
+  comments:
+  - Declare local Fortran array_type argument.
+  - Accept array_type in C wrapper.
+  - Fill cdesc with vector information.
+  - Return address and size of vector data.
+  - Pass dereference of local cxx variable to library.
+  - Copy into Fortran argument.
+  mixin_names:
+  - '  f_mixin_dummy_arg'
+  - '  f_mixin_template_native_arg1'
+  - '  c_mixin_inout_vector<native>_cdesc'
+  - '    f_mixin_cdesc_inout_array'
+  - '    c_mixin_cdesc_inout_vector'
+  - '    c_mixin_destructor_new-vector'
+  - '    c_mixin_cdesc_vector_fill'
+  - '  c_mixin_arg-call-cxx-deref'
+  - '  f_mixin_cdesc_copy_array'
+  f_dummy_arg:
+  - '{f_var}'
+  f_dummy_decl:
+  - '{targs[0].f_type}{f_intent_attr}{f_deref_attr}{f_target_attr} :: {f_var}{f_assumed_shape}'
+  f_local_decl:
+  - 'type({F_array_type}) :: {f_var_cdesc}'
+  f_arg_call:
+  - '{f_var}'
+  - size({f_var}, kind=C_SIZE_T)
+  - '{f_var_cdesc}'
+  f_post_call:
+  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\
+    \ kind=C_SIZE_T))"
+  f_module:
+    iso_c_binding:
+    - '{targs[0].f_kind}'
+    - C_SIZE_T
+    - C_LOC
+    - C_SIZE_T
+  f_temps:
+  - cdesc
+  i_dummy_arg:
+  - '{i_var}'
+  - '{i_var_size}'
+  - '{i_var_cdesc}'
+  i_dummy_decl:
+  - '{targs[0].f_type}, intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  i_module:
+    iso_c_binding:
+    - '{targs[0].f_kind}'
+    - C_SIZE_T
+  c_prototype:
+  - '{targs[0].cxx_type} *{c_var}'
+  - size_t {c_var_size}
+  - '{C_array_type} *{c_var_cdesc}'
+  c_pre_call:
+  - "std::vector<{cxx_T}> *{c_local_cxx} = \tnew std::vector<{cxx_T}>\t(\t{c_var},\
+    \ {c_var} + {c_var_size});"
+  c_arg_call:
+  - '*{c_local_cxx}'
+  c_post_call:
+  - '{c_var_cdesc}->base_addr = {c_local_cxx}->empty() ? {nullptr} : &{c_local_cxx}->front();'
+  - '{c_var_cdesc}->type = {targs[0].sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
+  - '{c_var_cdesc}->size = {c_local_cxx}->size();'
+  - '{c_var_cdesc}->rank = 1;'
+  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
+  c_temps:
+  - size
+  - cdesc
+  c_local:
+  - cxx
+  fmtdict:
+    f_target_attr: ', target'
+  helper:
+  - array_context
+  - array_context
+  - type_defines
+  - copy_array
+  destructor_name: std_vector_{cxx_T}
+  destructor:
+  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
+  - delete cxx_ptr;
+  sphinx-end-before: f_inout_vector<native>&_cdesc_copy
 f_inout_vector_buf_targ_string_scalar:
   sphinx-start-after: f_inout_vector_buf_targ_string_scalar
   name: f_inout_vector_buf_targ_string_scalar
@@ -17880,6 +17880,74 @@ f_out_char*:
   c_arg_call:
   - '{cxx_var}'
   sphinx-end-before: f_out_char*
+f_out_char**_buf_copy:
+  sphinx-start-after: f_out_char**_buf_copy
+  name: f_out_char**_buf_copy
+  intent: out
+  comments:
+  - Pass CHARACTER and LEN to C wrapper.
+  - Declare a local_cxx pointer variable in the C wrapper.
+  - Pass address of local cxx variable to library.
+  - Copy cxx variable to c argument.
+  notes:
+  - Copy char array into Fortran argument.
+  - Also used with CFI.
+  usage:
+  - char **arg +intent(out)+deref(copy)
+  mixin_names:
+  - '  f_mixin_declare-fortran-arg'
+  - '  f_mixin_pass_character_buf'
+  - '  c_mixin_in_character_buf'
+  - '    c_mixin_character-assumed-length'
+  - '  c_mixin_local-cxx-ptr'
+  - '  c_mixin_arg-call-cxx-address'
+  - '  c_mixin_char-copy'
+  f_dummy_arg:
+  - '{f_var}'
+  f_dummy_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
+  f_local_decl:
+  - integer(C_INT) {f_var_len}
+  f_pre_call:
+  - '{f_var_len} = len({f_var}, kind=C_INT)'
+  f_arg_call:
+  - '{f_var}'
+  - '{f_var_len}'
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
+    iso_c_binding:
+    - C_INT
+  f_temps:
+  - len
+  f_need_wrapper: true
+  i_dummy_arg:
+  - '{i_var}'
+  - '{i_var_len}'
+  i_dummy_decl:
+  - 'character(kind=C_CHAR){i_intent_attr} :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  c_prototype:
+  - char *{c_var}
+  - int {c_var_len}
+  c_pre_call:
+  - '{c_const}{c_type} *{c_local_cxx};'
+  c_arg_call:
+  - '&{c_local_cxx}'
+  c_post_call:
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
+  c_temps:
+  - len
+  c_local:
+  - cxx
+  helper:
+  - char_copy
+  sphinx-end-before: f_out_char**_buf_copy
 f_out_char**_cdesc_pointer:
   sphinx-start-after: f_out_char**_cdesc_pointer
   name: f_out_char**_cdesc_pointer
@@ -17893,7 +17961,7 @@ f_out_char**_cdesc_pointer:
   notes:
   - Return a Fortran pointer to C memory.
   usage:
-  - char **arg +intent(out)
+  - char **arg +intent(out)+deref(pointer)
   mixin_names:
   - '  f_mixin_dummy_arg'
   - '  f_mixin_cdesc_char_pointer'
@@ -18390,9 +18458,9 @@ f_out_native*&_cdesc_pointer:
   helper:
   - array_context
   sphinx-end-before: f_out_native*&_cdesc_pointer
-f_out_native***:
-  sphinx-start-after: f_out_native***
-  name: f_out_native***
+f_out_native***_raw:
+  sphinx-start-after: f_out_native***_raw
+  name: f_out_native***_raw
   intent: out
   comments:
   - Pass cxx variable to library.
@@ -18425,7 +18493,7 @@ f_out_native***:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  sphinx-end-before: f_out_native***
+  sphinx-end-before: f_out_native***_raw
 f_out_native**_cdesc_allocatable:
   sphinx-start-after: f_out_native**_cdesc_allocatable
   name: f_out_native**_cdesc_allocatable
@@ -19439,81 +19507,6 @@ f_out_struct*:
   c_arg_call:
   - '{cxx_var}'
   sphinx-end-before: f_out_struct*
-f_out_vector<native>&_cdesc:
-  sphinx-start-after: f_out_vector<native>&_cdesc
-  name: f_out_vector<native>&_cdesc
-  intent: out
-  comments:
-  - Pass cdesc as argument to C wrapper.
-  - Copy into Fortran argument.
-  - Fill cdesc with vector information.
-  - Return address and size of vector data.
-  - Create a local std::vector.
-  - Pass dereference of local cxx variable to library.
-  notes:
-  - Not supported for C wrappers.
-  mixin_names:
-  - '  f_mixin_dummy_arg'
-  - '  f_mixin_template_native_arg1'
-  - '  f_mixin_cdesc_pass'
-  - '  f_mixin_cdesc_copy_array'
-  - '  c_mixin_new_vector<native>'
-  - '    c_mixin_destructor_new-vector'
-  - '    c_mixin_cdesc_vector_fill'
-  - '  c_mixin_arg-call-cxx-deref'
-  f_dummy_arg:
-  - '{f_var}'
-  f_dummy_decl:
-  - '{targs[0].f_type}{f_intent_attr}{f_deref_attr}{f_target_attr} :: {f_var}{f_assumed_shape}'
-  f_local_decl:
-  - 'type({F_array_type}) :: {f_var_cdesc}'
-  f_arg_call:
-  - '{f_var_cdesc}'
-  f_post_call:
-  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\
-    \ kind=C_SIZE_T))"
-  f_module:
-    iso_c_binding:
-    - '{targs[0].f_kind}'
-    - C_LOC
-    - C_SIZE_T
-  f_temps:
-  - cdesc
-  f_need_wrapper: true
-  i_dummy_arg:
-  - '{i_var_cdesc}'
-  i_dummy_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  c_prototype:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_pre_call:
-  - "{c_const}std::vector<{cxx_T}>\t *{c_local_cxx} = new std::vector<{cxx_T}>;"
-  c_arg_call:
-  - '*{c_local_cxx}'
-  c_post_call:
-  - '{c_var_cdesc}->base_addr = {c_local_cxx}->empty() ? {nullptr} : &{c_local_cxx}->front();'
-  - '{c_var_cdesc}->type = {targs[0].sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
-  - '{c_var_cdesc}->size = {c_local_cxx}->size();'
-  - '{c_var_cdesc}->rank = 1;'
-  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
-  c_temps:
-  - cdesc
-  c_local:
-  - cxx
-  fmtdict:
-    f_target_attr: ', target'
-  helper:
-  - array_context
-  - copy_array
-  - type_defines
-  destructor_name: std_vector_{cxx_T}
-  destructor:
-  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
-  - delete cxx_ptr;
-  sphinx-end-before: f_out_vector<native>&_cdesc
 f_out_vector<native>&_cdesc_allocatable:
   sphinx-start-after: f_out_vector<native>&_cdesc_allocatable
   name: f_out_vector<native>&_cdesc_allocatable
@@ -19592,9 +19585,9 @@ f_out_vector<native>&_cdesc_allocatable:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
   sphinx-end-before: f_out_vector<native>&_cdesc_allocatable
-f_out_vector<native>*_cdesc:
-  sphinx-start-after: f_out_vector<native>*_cdesc
-  name: f_out_vector<native>*_cdesc
+f_out_vector<native>&_cdesc_copy:
+  sphinx-start-after: f_out_vector<native>&_cdesc_copy
+  name: f_out_vector<native>&_cdesc_copy
   intent: out
   comments:
   - Pass cdesc as argument to C wrapper.
@@ -19602,7 +19595,7 @@ f_out_vector<native>*_cdesc:
   - Fill cdesc with vector information.
   - Return address and size of vector data.
   - Create a local std::vector.
-  - Pass cxx local variable to library.
+  - Pass dereference of local cxx variable to library.
   notes:
   - Not supported for C wrappers.
   mixin_names:
@@ -19613,7 +19606,7 @@ f_out_vector<native>*_cdesc:
   - '  c_mixin_new_vector<native>'
   - '    c_mixin_destructor_new-vector'
   - '    c_mixin_cdesc_vector_fill'
-  - '  c_mixin_arg-call-cxx'
+  - '  c_mixin_arg-call-cxx-deref'
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
@@ -19644,7 +19637,7 @@ f_out_vector<native>*_cdesc:
   c_pre_call:
   - "{c_const}std::vector<{cxx_T}>\t *{c_local_cxx} = new std::vector<{cxx_T}>;"
   c_arg_call:
-  - '{c_local_cxx}'
+  - '*{c_local_cxx}'
   c_post_call:
   - '{c_var_cdesc}->base_addr = {c_local_cxx}->empty() ? {nullptr} : &{c_local_cxx}->front();'
   - '{c_var_cdesc}->type = {targs[0].sh_type};'
@@ -19666,7 +19659,7 @@ f_out_vector<native>*_cdesc:
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
-  sphinx-end-before: f_out_vector<native>*_cdesc
+  sphinx-end-before: f_out_vector<native>&_cdesc_copy
 f_out_vector<native>*_cdesc_allocatable:
   sphinx-start-after: f_out_vector<native>*_cdesc_allocatable
   name: f_out_vector<native>*_cdesc_allocatable
@@ -19745,38 +19738,44 @@ f_out_vector<native>*_cdesc_allocatable:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
   sphinx-end-before: f_out_vector<native>*_cdesc_allocatable
-f_out_vector<string>&_cdesc:
-  sphinx-start-after: f_out_vector<string>&_cdesc
-  name: f_out_vector<string>&_cdesc
+f_out_vector<native>*_cdesc_copy:
+  sphinx-start-after: f_out_vector<native>*_cdesc_copy
+  name: f_out_vector<native>*_cdesc_copy
   intent: out
   comments:
-  - Fill cdesc from char in the Fortran wrapper.
   - Pass cdesc as argument to C wrapper.
-  - Pass cxx variable to library.
+  - Copy into Fortran argument.
+  - Fill cdesc with vector information.
+  - Return address and size of vector data.
+  - Create a local std::vector.
+  - Pass cxx local variable to library.
+  notes:
+  - Not supported for C wrappers.
   mixin_names:
   - '  f_mixin_dummy_arg'
   - '  f_mixin_template_native_arg1'
-  - '  f_mixin_cdesc_char_fill'
   - '  f_mixin_cdesc_pass'
-  - '  c_mixin_arg-call-cvar'
+  - '  f_mixin_cdesc_copy_array'
+  - '  c_mixin_new_vector<native>'
+  - '    c_mixin_destructor_new-vector'
+  - '    c_mixin_cdesc_vector_fill'
+  - '  c_mixin_arg-call-cxx'
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
   - '{targs[0].f_type}{f_intent_attr}{f_deref_attr}{f_target_attr} :: {f_var}{f_assumed_shape}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  f_pre_call:
-  - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
-  - '{f_var_cdesc}%type = SH_TYPE_CHAR'
-  - '{f_var_cdesc}%elem_len = len({f_var})'
-  - '{f_var_cdesc}%size = size({f_var})'
-  - '{f_var_cdesc}%rank = rank({f_var}){gen.f_cdesc_shape}'
   f_arg_call:
   - '{f_var_cdesc}'
+  f_post_call:
+  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\
+    \ kind=C_SIZE_T))"
   f_module:
     iso_c_binding:
     - '{targs[0].f_kind}'
     - C_LOC
+    - C_SIZE_T
   f_temps:
   - cdesc
   f_need_wrapper: true
@@ -19789,20 +19788,31 @@ f_out_vector<string>&_cdesc:
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
   c_pre_call:
-  - '{c_const}std::vector<std::string> {cxx_var};'
+  - "{c_const}std::vector<{cxx_T}>\t *{c_local_cxx} = new std::vector<{cxx_T}>;"
   c_arg_call:
-  - '{cxx_var}'
+  - '{c_local_cxx}'
   c_post_call:
-  - "{c_helper_cdesc_vector_string_out}(\t{c_var_cdesc},\t {cxx_var});"
+  - '{c_var_cdesc}->base_addr = {c_local_cxx}->empty() ? {nullptr} : &{c_local_cxx}->front();'
+  - '{c_var_cdesc}->type = {targs[0].sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
+  - '{c_var_cdesc}->size = {c_local_cxx}->size();'
+  - '{c_var_cdesc}->rank = 1;'
+  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
   c_temps:
   - cdesc
+  c_local:
+  - cxx
   fmtdict:
     f_target_attr: ', target'
   helper:
-  - type_defines
   - array_context
-  - cdesc_vector_string_out
-  sphinx-end-before: f_out_vector<string>&_cdesc
+  - copy_array
+  - type_defines
+  destructor_name: std_vector_{cxx_T}
+  destructor:
+  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
+  - delete cxx_ptr;
+  sphinx-end-before: f_out_vector<native>*_cdesc_copy
 f_out_vector<string>&_cdesc_allocatable:
   sphinx-start-after: f_out_vector<string>&_cdesc_allocatable
   name: f_out_vector<string>&_cdesc_allocatable
@@ -19888,6 +19898,64 @@ f_out_vector<string>&_cdesc_allocatable:
   - vector_string_out_len
   - capsule_dtor
   sphinx-end-before: f_out_vector<string>&_cdesc_allocatable
+f_out_vector<string>&_cdesc_copy:
+  sphinx-start-after: f_out_vector<string>&_cdesc_copy
+  name: f_out_vector<string>&_cdesc_copy
+  intent: out
+  comments:
+  - Fill cdesc from char in the Fortran wrapper.
+  - Pass cdesc as argument to C wrapper.
+  - Pass cxx variable to library.
+  mixin_names:
+  - '  f_mixin_dummy_arg'
+  - '  f_mixin_template_native_arg1'
+  - '  f_mixin_cdesc_char_fill'
+  - '  f_mixin_cdesc_pass'
+  - '  c_mixin_arg-call-cvar'
+  f_dummy_arg:
+  - '{f_var}'
+  f_dummy_decl:
+  - '{targs[0].f_type}{f_intent_attr}{f_deref_attr}{f_target_attr} :: {f_var}{f_assumed_shape}'
+  f_local_decl:
+  - 'type({F_array_type}) :: {f_var_cdesc}'
+  f_pre_call:
+  - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
+  - '{f_var_cdesc}%type = SH_TYPE_CHAR'
+  - '{f_var_cdesc}%elem_len = len({f_var})'
+  - '{f_var_cdesc}%size = size({f_var})'
+  - '{f_var_cdesc}%rank = rank({f_var}){gen.f_cdesc_shape}'
+  f_arg_call:
+  - '{f_var_cdesc}'
+  f_module:
+    iso_c_binding:
+    - '{targs[0].f_kind}'
+    - C_LOC
+  f_temps:
+  - cdesc
+  f_need_wrapper: true
+  i_dummy_arg:
+  - '{i_var_cdesc}'
+  i_dummy_decl:
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  c_prototype:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_pre_call:
+  - '{c_const}std::vector<std::string> {cxx_var};'
+  c_arg_call:
+  - '{cxx_var}'
+  c_post_call:
+  - "{c_helper_cdesc_vector_string_out}(\t{c_var_cdesc},\t {cxx_var});"
+  c_temps:
+  - cdesc
+  fmtdict:
+    f_target_attr: ', target'
+  helper:
+  - type_defines
+  - array_context
+  - cdesc_vector_string_out
+  sphinx-end-before: f_out_vector<string>&_cdesc_copy
 f_out_vector_buf_targ_string_scalar:
   sphinx-start-after: f_out_vector_buf_targ_string_scalar
   name: f_out_vector_buf_targ_string_scalar
@@ -21859,8 +21927,9 @@ root
             string
               scalar -- f_inout_vector_buf_targ_string_scalar
       vector<native>&
-        cdesc -- f_inout_vector<native>&_cdesc
+        cdesc
           allocatable -- f_inout_vector<native>&_cdesc_allocatable
+          copy -- f_inout_vector<native>&_cdesc_copy
       void*
         cdesc -- f_inout_void*_cdesc
       void** -- f_inout_void**
@@ -21973,6 +22042,8 @@ root
         capi -- f_out_char*_capi
         cfi -- f_out_char*_cfi
       char**
+        buf
+          copy -- f_out_char**_buf_copy
         cdesc
           pointer -- f_out_char**_cdesc_pointer
         cfi
@@ -21996,7 +22067,8 @@ root
           allocatable -- f_out_native**_cfi_allocatable
           pointer -- f_out_native**_cfi_pointer
         raw -- f_out_native**_raw
-      native*** -- f_out_native***
+      native***
+        raw -- f_out_native***_raw
       procedure*
         funptr -- f_out_procedure*_funptr
       string&
@@ -22021,14 +22093,17 @@ root
             string
               scalar -- f_out_vector_buf_targ_string_scalar
       vector<native>&
-        cdesc -- f_out_vector<native>&_cdesc
+        cdesc
           allocatable -- f_out_vector<native>&_cdesc_allocatable
+          copy -- f_out_vector<native>&_cdesc_copy
       vector<native>*
-        cdesc -- f_out_vector<native>*_cdesc
+        cdesc
           allocatable -- f_out_vector<native>*_cdesc_allocatable
+          copy -- f_out_vector<native>*_cdesc_copy
       vector<string>&
-        cdesc -- f_out_vector<string>&_cdesc
+        cdesc
           allocatable -- f_out_vector<string>&_cdesc_allocatable
+          copy -- f_out_vector<string>&_cdesc_copy
       void*
         cdesc -- f_out_void*_cdesc
       void*& -- f_out_void*&

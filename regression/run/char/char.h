@@ -43,6 +43,7 @@ int CpassCharPtrCAPI2(const char *in, const char *src);
 
 int acceptCharArrayIn(char **names);
 
+void fetchCharPtrCopyLibrary(char **outstr);
 void fetchCharPtrLibrary(char **outstr);
 int fetchCharPtrLibraryNULL(char **outstr);
 

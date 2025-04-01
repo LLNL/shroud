@@ -746,13 +746,52 @@ int CHA_acceptCharArrayIn_bufferify(const char *names,
 // end CHA_acceptCharArrayIn_bufferify
 
 /**
+ * Copy a char array owned by the library.
+ */
+// ----------------------------------------
+// Function:  void fetchCharPtrCopyLibrary
+// Statement: c_subroutine
+// ----------------------------------------
+// Argument:  char **outstr +deref(copy)+intent(out)
+// Statement: c_out_char**
+// start CHA_fetchCharPtrCopyLibrary
+void CHA_fetchCharPtrCopyLibrary(char **outstr)
+{
+    // splicer begin function.fetchCharPtrCopyLibrary
+    fetchCharPtrCopyLibrary(outstr);
+    // splicer end function.fetchCharPtrCopyLibrary
+}
+// end CHA_fetchCharPtrCopyLibrary
+
+/**
+ * Copy a char array owned by the library.
+ */
+// ----------------------------------------
+// Function:  void fetchCharPtrCopyLibrary
+// Statement: f_subroutine
+// ----------------------------------------
+// Argument:  char **outstr +deref(copy)+intent(out)
+// Statement: f_out_char**_buf_copy
+// start CHA_fetchCharPtrCopyLibrary_bufferify
+void CHA_fetchCharPtrCopyLibrary_bufferify(char *outstr,
+    int SHT_outstr_len)
+{
+    // splicer begin function.fetchCharPtrCopyLibrary_bufferify
+    char *SHC_outstr_cxx;
+    fetchCharPtrCopyLibrary(&SHC_outstr_cxx);
+    ShroudCharCopy(outstr, SHT_outstr_len, SHC_outstr_cxx, -1);
+    // splicer end function.fetchCharPtrCopyLibrary_bufferify
+}
+// end CHA_fetchCharPtrCopyLibrary_bufferify
+
+/**
  * Fetch a pointer to a char array owned by the library.
  */
 // ----------------------------------------
 // Function:  void fetchCharPtrLibrary
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  char **outstr +intent(out)
+// Argument:  char **outstr +deref(pointer)+intent(out)
 // Statement: c_out_char**
 // start CHA_fetchCharPtrLibrary
 void CHA_fetchCharPtrLibrary(char **outstr)
@@ -770,7 +809,7 @@ void CHA_fetchCharPtrLibrary(char **outstr)
 // Function:  void fetchCharPtrLibrary
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  char **outstr +intent(out)
+// Argument:  char **outstr +deref(pointer)+intent(out)
 // Statement: f_out_char**_cdesc_pointer
 // start CHA_fetchCharPtrLibrary_bufferify
 void CHA_fetchCharPtrLibrary_bufferify(
@@ -796,7 +835,7 @@ void CHA_fetchCharPtrLibrary_bufferify(
 // Function:  int fetchCharPtrLibraryNULL
 // Statement: c_function_native
 // ----------------------------------------
-// Argument:  char **outstr +intent(out)
+// Argument:  char **outstr +deref(pointer)+intent(out)
 // Statement: c_out_char**
 // start CHA_fetchCharPtrLibraryNULL
 int CHA_fetchCharPtrLibraryNULL(char **outstr)
@@ -816,7 +855,7 @@ int CHA_fetchCharPtrLibraryNULL(char **outstr)
 // Function:  int fetchCharPtrLibraryNULL
 // Statement: f_function_native
 // ----------------------------------------
-// Argument:  char **outstr +intent(out)
+// Argument:  char **outstr +deref(pointer)+intent(out)
 // Statement: f_out_char**_cdesc_pointer
 // start CHA_fetchCharPtrLibraryNULL_bufferify
 int CHA_fetchCharPtrLibraryNULL_bufferify(

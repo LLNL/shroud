@@ -15,14 +15,14 @@ call-by-reference feature of Fortran provides most of the features
 necessary to pass arrays to C++ libraries. Shroud can also provide
 additional semantic information.  Adding the *rank* attribute
 will declare the argument as an assumed-shape array with the given
-rank: ``+rank(2)`` creates ``arg(:,:)``.  The ``+dimension(n)`` attribute
+rank: **+rank(2)** creates ``arg(:,:)``.  The **+dimension(n)** attribute
 will instead give an explicit dimension: ``+dimension(10,20)`` creates
 ``arg(10,20)``.
 
-Using *dimension* on *intent(in)* arguments will use the dimension
+Using **+dimension** on **+intent(in)** arguments will use the dimension
 shape in the Fortran wrapper instead of assumed-shape. This adds some
 additional safety since many compiler will warn if the actual argument
-is too small.  This is useful when the C++ function has an assumed shape.
+is too small.  This is useful when the C++ function has an defined shape.
 For example, it expects a pointer to 16 elements.
 The Fortran wrapper will pass a pointer to contiguous memory with
 no explicit shape information.
@@ -32,7 +32,7 @@ no explicit shape information.
 When a function returns a pointer, the default behavior of Shroud
 is to convert it into a Fortran variable with the ``POINTER`` attribute
 using ``c_f_pointer``. This can be made explicit by adding
-``+deref(pointer)`` to the function declaration in the YAML file.
+**+deref(pointer)** to the function declaration in the YAML file.
 For example, ``int *getData(void) +deref(pointer)`` creates the Fortran
 function interface
 
@@ -45,12 +45,14 @@ function interface
 The result of the the Fortran function directly accesses the memory
 returned from the C++ library.
 
-An array can be returned by adding the *dimension* attribute to
+An array can be returned by adding the **+dimension** attribute to
 the function.  The dimension expression will be used to provide the
-``shape`` argument to ``c_f_pointer``.  The arguments to *dimension*
+``shape`` argument to ``c_f_pointer``.  The arguments to **+dimension**
 are C++ expressions which are evaluated after the C++ function is
 called and can be the name of another argument to the function or a call
-another C++ function.  As a simple example, this declaration returns a
+another C++ function.
+
+As a simple example, this declaration returns a
 pointer to a constant sized array.
 
 .. code-block:: yaml
@@ -61,29 +63,36 @@ Example :ref:`returnIntPtrToFixedArray <example_returnIntPtrToFixedArray>`
 shows the generated code.
 
 If the dimension is unknown when the function returns, a ``type(C_PTR)``
-can be returned with ``+deref(raw)``.  This will allow the user
+can be returned with **+deref(raw)**.  This will allow the user
 to call ``c_f_pointer`` once the shape is known.
 Instead of a Fortran pointer to a scalar, a scalar can be returned
-by adding ``+deref(scalar)``.
+by adding **+deref(scalar)**.
 
 A common idiom for C++ is to return pointers to memory via arguments.
 This would be declared as ``int **arg +intent(out)``.  By default,
 Shroud treats the argument similar to a function which returns a
 pointer: it adds the *deref(pointer)* attribute to treats it as a
-``POINTER`` to a scalar.  The *dimension* attribute can be used to
+``POINTER`` to a scalar.  The **+dimension** attribute can be used to
 create an array similar to a function result.
-If the *deref(allocatable)* attribute is added, then a Fortran array
-will be allocated to the size of *dimension* attribute and the
+If the **+deref(allocatable)** attribute is added, then a Fortran array
+will be allocated to the size of **+dimension** attribute and the
 argument will be copied into the Fortran memory.
 
 .. If *owner(caller)*, then the memory will be released.
    The Fortran ``ALLOCATABLE`` array will need to be released by the user.
 
-A function which returns multiple layers of indirection will return
-a ``type(C_PTR)``.  This is also true for function arguments beyond
-``int **arg +intent(out)``.
+A function which returns multiple layers of indirection uses
+*deref(raw)* and will return a ``type(C_PTR)``.  This is also true for
+function arguments beyond ``int **arg +intent(out)``.
 This pointer can represent non-contiguous memory and Shroud
 has no way to know the extend of each pointer in the array.
+
+The default behavior of Shroud for *intent(out)* and *intent(inout)*
+arguments can be modifed by setting options **F_deref_arg_array**,
+**F_deref_arg_character**, **F_deref_arg_implied_array**,
+**F_deref_arg_scalar**.  For function results the options are
+**F_deref_func_array**, **F_deref_func_character**,
+**F_deref_func_implied_array** ** **F_deref_func_scalar**.
 
 A special case is provided for arrays of `NULL` terminated strings,
 ``char **``.  While this also represents non-contiguous memory, it is a
@@ -91,14 +100,14 @@ common idiom and can be processed since the length of each string can
 be found with ``strlen``.
 See example :ref:`acceptCharArrayIn <example_acceptCharArrayIn>`.
 
-In Python wrappers, Shroud will allocate *intent(out)* arguments
+In Python wrappers, Shroud will allocate **+intent(out)** arguments
 before calling the function. This requires the dimension attribute
 which defines the shape and must be known before the function is
 called.  The argument will then be returned by the function along with
-the function result and other *intent(out)* arguments.  For example,
-``int **arg +intent(out)+dimension(n)``.  The value of the *dimension*
+the function result and other **+intent(out)** arguments.  For example,
+``int **arg +intent(out)+dimension(n)``.  The value of the **+dimension**
 attribute is used to define the shape of the array and must be known
-before the library function is called.  The *dimension* attribute can
+before the library function is called.  The **+dimension** attribute can
 include the Fortran intrinsic ``size`` to define the shape in terms of
 another array.
 
@@ -112,12 +121,12 @@ another array.
    before calling the C++ function.  For example, using
    ``+intent(out)+rank(1)`` will have problems.
 
-``char *`` functions are treated differently.  By default *deref*
+``char *`` functions are treated differently.  By default **+deref**
 attribute will be set to *allocatable*.  After the C++ function
 returns, a ``CHARACTER`` variable will be allocated and the contents
 copied.  This will convert a ``NULL`` terminated string into the
 proper length of Fortran variable.
-For very long strings or strings with embedded ``NULL``, ``deref(raw)``
+For very long strings or strings with embedded ``NULL``, **+deref(raw)**
 will return a ``type(C_PTR)``.
 
 .. deref(allocatable) allocate before or after call...
@@ -130,7 +139,7 @@ will return a ``type(C_PTR)``.
 
 
 ``void *`` functions return a ``type(C_PTR)`` argument and cannot
-have *deref*, *dimension*, or *rank* attributes.
+have **deref**, **dimension**, or **rank** attributes.
 A ``type(C_PTR)`` argument will be passed by value.  For a ``void **`` argument,
 the ``type(C_PTR)`` will be passed by reference (the default).  This
 will allow the C wrapper to assign a value to the argument.
@@ -148,7 +157,7 @@ If the C++ library function can also provide the length of the
 pointer, then its possible to return a Fortran ``POINTER`` or
 ``ALLOCATABLE`` variable.  This allows the caller to directly use the
 returned value of the C++ function.  However, there is a price; the
-user will have to release the memory if *owner(caller)* is set.  To
+user will have to release the memory if **owner(caller)** is set.  To
 accomplish this with ``POINTER`` arguments, an additional argument is
 added to the function which contains information about how to delete
 the array.  If the argument is declared Fortran ``ALLOCATABLE``, then
@@ -156,16 +165,20 @@ the value of the C++ pointer are copied into a newly allocated Fortran
 array. The C++ memory is deleted by the wrapper and it is the callers
 responsibility to ``deallocate`` the Fortran array. However, Fortran
 will release the array automatically under some conditions when the
-caller function returns. If *owner(library)* is set, the Fortran
+caller function returns. If **owner(library)** is set, the Fortran
 caller never needs to release the memory.
 
 .. XXX - std::vector defaults to deref(allocatable) to copy data out of vector.
+   The typemap field implied_array is set for std::vector.
+   This causes the option *F_deref_func_implied_array* to determine the default
+   *deref* attribute.
+   
 
 See :ref:`MemoryManagementAnchor` for details of the implementation.
 
 
 A void pointer may also be used in a C function when any type may be
-passed in.  The attribute *assumedtype* can be used to declare a
+passed in.  The attribute **assumedtype** can be used to declare a
 Fortran argument as assumed-type: ``type(*)``.
 
 .. code-block:: yaml
@@ -283,6 +296,8 @@ A typical destructor function would look like:
 
 Character and Arrays
 ^^^^^^^^^^^^^^^^^^^^
+
+.. The option **F_deref_func_character** decides the default value of the *deref* attribute.
 
 In order to create an allocatable copy of a C++ pointer, an additional
 structure is involved.  For example, ``getConstStringPtrAlloc``

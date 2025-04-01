@@ -611,10 +611,46 @@ module char_mod
     ! end accept_char_array_in
 
     ! ----------------------------------------
+    ! Function:  void fetchCharPtrCopyLibrary
+    ! Statement: c_subroutine
+    ! ----------------------------------------
+    ! Argument:  char **outstr +deref(copy)+intent(out)
+    ! Statement: c_out_char**
+    ! start c_fetch_char_ptr_copy_library
+    interface
+        subroutine c_fetch_char_ptr_copy_library(outstr) &
+                bind(C, name="CHA_fetchCharPtrCopyLibrary")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR), intent(OUT) :: outstr
+        end subroutine c_fetch_char_ptr_copy_library
+    end interface
+    ! end c_fetch_char_ptr_copy_library
+
+    ! ----------------------------------------
+    ! Function:  void fetchCharPtrCopyLibrary
+    ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  char **outstr +deref(copy)+intent(out)
+    ! Statement: f_out_char**_buf_copy
+    ! start c_fetch_char_ptr_copy_library_bufferify
+    interface
+        subroutine c_fetch_char_ptr_copy_library_bufferify(outstr, &
+                SHT_outstr_len) &
+                bind(C, name="CHA_fetchCharPtrCopyLibrary_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(OUT) :: outstr(*)
+            integer(C_INT), value, intent(IN) :: SHT_outstr_len
+        end subroutine c_fetch_char_ptr_copy_library_bufferify
+    end interface
+    ! end c_fetch_char_ptr_copy_library_bufferify
+
+    ! ----------------------------------------
     ! Function:  void fetchCharPtrLibrary
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  char **outstr +intent(out)
+    ! Argument:  char **outstr +deref(pointer)+intent(out)
     ! Statement: c_out_char**
     ! start c_fetch_char_ptr_library
     interface
@@ -631,7 +667,7 @@ module char_mod
     ! Function:  void fetchCharPtrLibrary
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char **outstr +intent(out)
+    ! Argument:  char **outstr +deref(pointer)+intent(out)
     ! Statement: f_out_char**_cfi_pointer
     ! start fetch_char_ptr_library
     interface
@@ -647,7 +683,7 @@ module char_mod
     ! Function:  int fetchCharPtrLibraryNULL
     ! Statement: c_function_native
     ! ----------------------------------------
-    ! Argument:  char **outstr +intent(out)
+    ! Argument:  char **outstr +deref(pointer)+intent(out)
     ! Statement: c_out_char**
     ! start c_fetch_char_ptr_library_null
     interface
@@ -666,7 +702,7 @@ module char_mod
     ! Function:  int fetchCharPtrLibraryNULL
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  char **outstr +intent(out)
+    ! Argument:  char **outstr +deref(pointer)+intent(out)
     ! Statement: f_out_char**_cfi_pointer
     ! start fetch_char_ptr_library_null
     interface
@@ -1146,13 +1182,35 @@ contains
     ! end accept_char_array_in
 #endif
 
+    ! ----------------------------------------
+    ! Function:  void fetchCharPtrCopyLibrary
+    ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  char **outstr +deref(copy)+intent(out)
+    ! Statement: f_out_char**_buf_copy
+    !>
+    !! Copy a char array owned by the library.
+    !<
+    ! start fetch_char_ptr_copy_library
+    subroutine fetch_char_ptr_copy_library(outstr)
+        use iso_c_binding, only : C_INT
+        character(len=*), intent(OUT) :: outstr
+        ! splicer begin function.fetch_char_ptr_copy_library
+        integer(C_INT) SHT_outstr_len
+        SHT_outstr_len = len(outstr, kind=C_INT)
+        call c_fetch_char_ptr_copy_library_bufferify(outstr, &
+            SHT_outstr_len)
+        ! splicer end function.fetch_char_ptr_copy_library
+    end subroutine fetch_char_ptr_copy_library
+    ! end fetch_char_ptr_copy_library
+
 #if 0
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void fetchCharPtrLibrary
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char **outstr +intent(out)
+    ! Argument:  char **outstr +deref(pointer)+intent(out)
     ! Statement: f_out_char**_cfi_pointer
     !>
     !! Fetch a pointer to a char array owned by the library.
@@ -1173,7 +1231,7 @@ contains
     ! Function:  int fetchCharPtrLibraryNULL
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  char **outstr +intent(out)
+    ! Argument:  char **outstr +deref(pointer)+intent(out)
     ! Statement: f_out_char**_cfi_pointer
     !>
     !! Fetch a NULL pointer to a char array owned by the library.

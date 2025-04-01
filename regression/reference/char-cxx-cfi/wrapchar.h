@@ -104,6 +104,11 @@ int CHA_acceptCharArrayIn(char **names);
 
 int CHA_acceptCharArrayIn_CFI(CFI_cdesc_t *SHT_names_cfi);
 
+void CHA_fetchCharPtrCopyLibrary(char **outstr);
+
+void CHA_fetchCharPtrCopyLibrary_bufferify(char *outstr,
+    int SHT_outstr_len);
+
 void CHA_fetchCharPtrLibrary(char **outstr);
 
 void CHA_fetchCharPtrLibrary_CFI(CFI_cdesc_t *SHT_outstr_cfi);

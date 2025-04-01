@@ -98,6 +98,11 @@ int CHA_acceptCharArrayIn(char **names);
 int CHA_acceptCharArrayIn_bufferify(const char *names,
     size_t SHT_names_size, int SHT_names_len);
 
+void CHA_fetchCharPtrCopyLibrary(char **outstr);
+
+void CHA_fetchCharPtrCopyLibrary_bufferify(char *outstr,
+    int SHT_outstr_len);
+
 void CHA_fetchCharPtrLibrary(char **outstr);
 
 void CHA_fetchCharPtrLibrary_bufferify(

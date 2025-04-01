@@ -206,12 +206,19 @@ declarations:
     description: |
       Return strlen of the first index as a check.
 
-- decl: void fetchCharPtrLibrary(char **outstr+intent(out))
+- decl: void fetchCharPtrCopyLibrary(char **outstr+intent(out)+deref(copy))
+  doxygen:
+    description: |
+      Copy a char array owned by the library.
+  options:
+    wrap_python: False
+
+- decl: void fetchCharPtrLibrary(char **outstr+intent(out)+deref(pointer))
   doxygen:
     description: |
       Fetch a pointer to a char array owned by the library.
 
-- decl: int fetchCharPtrLibraryNULL(char **outstr+intent(out))
+- decl: int fetchCharPtrLibraryNULL(char **outstr+intent(out)+deref(pointer))
   doxygen:
     description: |
       Fetch a NULL pointer to a char array owned by the library.

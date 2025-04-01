@@ -366,6 +366,15 @@ New Features
 
 * Added attribute *+operator(assignment)* to add a Fortran assignment overload.
 
+* Added options to control default behavior for dereferencing
+  pointers. These options can be used instead of explicitly setting
+  *deref* attribute to change the default on each ``decl`` lines:
+  **F_deref_arg_array**, **F_deref_arg_character**,
+  **F_deref_arg_implied_array**, **F_deref_arg_scalar**,
+  **F_deref_func_array**, **F_deref_func_character**,
+  **F_deref_func_implied_array**, **F_deref_func_scalar**.
+
+
 Fixed
 ^^^^^
 

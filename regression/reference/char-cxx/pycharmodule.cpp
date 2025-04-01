@@ -573,7 +573,7 @@ fail:
 // Function:  void fetchCharPtrLibrary
 // Statement: py_subroutine
 // ----------------------------------------
-// Argument:  char **outstr +intent(out)
+// Argument:  char **outstr +deref(pointer)+intent(out)
 // Statement: py_out_char**
 static char PY_fetchCharPtrLibrary__doc__[] =
 "documentation"
@@ -610,7 +610,7 @@ PY_fetchCharPtrLibrary(
 // Function:  int fetchCharPtrLibraryNULL
 // Statement: py_function_native
 // ----------------------------------------
-// Argument:  char **outstr +intent(out)
+// Argument:  char **outstr +deref(pointer)+intent(out)
 // Statement: py_out_char**
 static char PY_fetchCharPtrLibraryNULL__doc__[] =
 "documentation"
