@@ -50,7 +50,9 @@ the function.  The dimension expression will be used to provide the
 ``shape`` argument to ``c_f_pointer``.  The arguments to **+dimension**
 are C++ expressions which are evaluated after the C++ function is
 called and can be the name of another argument to the function or a call
-another C++ function.  As a simple example, this declaration returns a
+another C++ function.
+
+As a simple example, this declaration returns a
 pointer to a constant sized array.
 
 .. code-block:: yaml
@@ -79,11 +81,18 @@ argument will be copied into the Fortran memory.
 .. If *owner(caller)*, then the memory will be released.
    The Fortran ``ALLOCATABLE`` array will need to be released by the user.
 
-A function which returns multiple layers of indirection will return
-a ``type(C_PTR)``.  This is also true for function arguments beyond
-``int **arg +intent(out)``.
+A function which returns multiple layers of indirection uses
+*deref(raw)* and will return a ``type(C_PTR)``.  This is also true for
+function arguments beyond ``int **arg +intent(out)``.
 This pointer can represent non-contiguous memory and Shroud
 has no way to know the extend of each pointer in the array.
+
+The default behavior of Shroud for *intent(out)* and *intent(inout)*
+arguments can be modifed by setting options **F_deref_arg_array**,
+**F_deref_arg_character**, **F_deref_arg_implied_array**,
+**F_deref_arg_scalar**.  For function results the options are
+**F_deref_func_array**, **F_deref_func_character**,
+**F_deref_func_implied_array** ** **F_deref_func_scalar**.
 
 A special case is provided for arrays of `NULL` terminated strings,
 ``char **``.  While this also represents non-contiguous memory, it is a

@@ -414,6 +414,50 @@ F_default_args
   require
       Require all arguments to be provided to the wrapper.
 
+F_deref_arg_array
+    Used with *intent(out)* or *intent(inout)* arguments
+    which return a pointer to a pointer or a reference
+    ex ``int**`` or ``int*&``.
+    And where the *dimension* attribute is set.
+    Defaults to ``pointer``.
+
+F_deref_arg_character
+    Used with *intent(out)* or *intent(inout)* arguments
+    which return a pointer to a pointer or a reference
+    ex ``char **`` or ``std::string*&``.
+    Defaults to ``copy``.
+
+F_deref_arg_implied_array
+    Used with *intent(out)* or *intent(inout)* arguments
+    of types such as ``std::vector``.
+    Defaults to ``copy``.
+
+F_deref_arg_scalar
+  Used with *intent(out)* or *intent(inout)* arguments
+  which return a pointer to a pointer or a reference
+  ex ``int**`` or ``int*&``.
+  And where *dimension* attribute is not set.
+  Defaults to ``pointer``.
+      
+F_deref_func_array
+  Used with single indirection to a POD type, ex ``int *``
+  where *dimension* attribute is set.
+  Defaults to ``pointer``.
+
+F_deref_func_character
+  Used with ``char *`` and ``std::string`` function results.
+  Multiple indirections default to ``raw``.
+  Defaults to ``allocatable``.
+
+F_deref_func_implied_array
+  Used with types such as ``std::vector``.
+  Defaults to ``allocatable``
+
+F_deref_func_scalar
+  Used with single indirection to a POD type, ex ``int *``
+  where *dimension* attribute is not set.
+  Defaults to ``pointer``.
+      
 F_enum_type
   C type used to represent enumerations in the Fortran wrapper.
   Defaults to ``int``.
@@ -1515,7 +1559,9 @@ f_abstract_interface
 
 f_deref_attr
     The Fortran attribute when the *deref* attribute is *alloctable* or *pointer*.
+    It is used in declaration of Fortran arguments.
     Possible values are ``, allocatable`` or ``, pointer``.
+    Used as ``{f_type}{f_deref_attr} ::``.
 
 f_intent
     The value of the intent metaattribute. Converted to uppercase.
@@ -1527,7 +1573,7 @@ f_intent
 f_intent_attr
     The value of the *intent* metaattribute
     converted into a Fortran attribute
-    to be used with the Fortran wrapper.
+    to be used in the Fortran wrapper.
     ex ``, intent(IN)``.
     Used with argument declarations:
     ``{f_type}{f_intent_attr} ::``.

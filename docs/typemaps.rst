@@ -86,7 +86,7 @@ implied_array
 The type is an implied array. For example, ``std::vector``.
 It is not a pointer type but is considered to be an array.
 This will set the default *deref* attribute based on the option
-**F_implied_array**.
+**F_deref_arg_implied_array** and **F_deref_func_implied_array**.
 
 idtor
 ^^^^^
