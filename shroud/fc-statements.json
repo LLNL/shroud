@@ -21,12 +21,16 @@
     },
     {
         "name": "c_mixin_header_stdlib",
+        "notes": [
+            "malloc, free.",
+            "C++ will use new and delete."
+        ],
         "lang_c": {
             "impl_header": [
                 "<stdlib.h>"
             ]
         },
-        "lang_cxx": {
+        "##lang_cxx": {
             "impl_header": [
                 "<cstdlib>"
             ]
@@ -964,6 +968,9 @@
         "name": "c_mixin_cdesc_char_fill_cvar",
         "comments": [
             "Fill cdesc from char * in the C wrapper."
+        ],
+        "mixin": [
+            "c_mixin_header_cstring"
         ],
         "c_post_call": [
             "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});",
@@ -2207,7 +2214,7 @@
         ],
         "lang_c": {
             "c_pre_call": [
-                "char *{c_local_cxx} = {stdlib}malloc({c_var_len}+1);"
+                "char *{c_local_cxx} = malloc({c_var_len}+1);"
             ]
         },
         "lang_cxx": {
@@ -2229,7 +2236,7 @@
         ],
         "lang_c": {
             "c_post_call": [
-                "{stdlib}free({c_local_cxx});"
+                "free({c_local_cxx});"
             ]
         },
         "lang_cxx": {
@@ -3425,7 +3432,6 @@
             "XXX - need to test scalar and pointer versions"
         ],
         "mixin": [
-            "c_mixin_header_stdlib",
             "c_mixin_header_cstring",
             "c_mixin_out_vector_buf_malloc",
             "c_mixin_arg-call-cxx"
@@ -3455,7 +3461,6 @@
             "malloc allocated array."
         ],
         "mixin": [
-            "c_mixin_header_stdlib",
             "c_mixin_header_cstring",
             "c_mixin_out_vector_buf_malloc",
             "c_mixin_arg-call-cxx"
@@ -3591,7 +3596,6 @@
             "Add an argument with the length of the array."
         ],
         "mixin": [
-            "c_mixin_header_stdlib",
             "c_mixin_header_cstring",
             "c_mixin_function_vector_malloc"
         ],
@@ -4776,6 +4780,9 @@
         "name": "c_mixin_cfi_character_pointer",
         "comments": [
             "Convert C pointer to deferred-length CHARACTER Fortran scalar pointer."
+        ],
+        "mixin": [
+            "c_mixin_header_cstring"
         ],
         "c_post_call": [
             "int {c_local_err};",
