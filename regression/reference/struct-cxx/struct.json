@@ -2530,6 +2530,279 @@
                             "struct_name": "Cstruct_as_class2",
                             "wrapped_name": "name"
                         }
+                    },
+                    {
+                        "<FUNCTION>": "get_name_ptr  12 ****************************************",
+                        "_generated": "getter/setter",
+                        "_generated_path": [
+                            "getter/setter"
+                        ],
+                        "ast": {
+                            "declarator": {
+                                "attrs": {
+                                    "deref": "pointer",
+                                    "intent": "getter"
+                                },
+                                "name": "get_name_ptr",
+                                "params": [],
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ],
+                                "typemap_name": "char"
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        },
+                        "decl": "char *get_name_ptr()",
+                        "declgen": "char *get_name_ptr(void) +deref(pointer)+intent(getter)",
+                        "helpers": {
+                            "fc": [
+                                "array_context",
+                                "pointer_string",
+                                "type_defines"
+                            ]
+                        },
+                        "name": "get_name_ptr",
+                        "options": {},
+                        "user_fmt": {
+                            "field_name": "name_ptr",
+                            "struct_name": "Cstruct_as_class2",
+                            "wrapped_name": "name_ptr"
+                        },
+                        "wrap": {
+                            "fortran": true
+                        },
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->get_name_ptr(\t)",
+                                        "C_name": "STR_Cstruct_as_class2_get_name_ptr",
+                                        "C_prototype": "STR_Cstruct_as_class2 * self,\t STR_SHROUD_array *SHT_rv_cdesc",
+                                        "C_return_type": "void",
+                                        "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
+                                        "F_arguments": "obj",
+                                        "F_subprogram": "function",
+                                        "c_const": "",
+                                        "c_helper_array_context": "STR_SHROUD_array",
+                                        "c_type": "char",
+                                        "c_var": "SHC_rv",
+                                        "c_var_cdesc": "SHT_rv_cdesc",
+                                        "cxx_addr": "",
+                                        "cxx_member": "->",
+                                        "cxx_type": "char",
+                                        "cxx_var": "SHC_rv",
+                                        "f_call_function": "c_cstruct_as_class2_get_name_ptr",
+                                        "f_deref_attr": ", pointer",
+                                        "f_helper_array_context": "STR_SHROUD_array",
+                                        "f_helper_pointer_string": "STR_SHROUD_pointer_string",
+                                        "f_result_clause": "\fresult(SHT_rv)",
+                                        "f_type": "character(len=*)",
+                                        "f_var": "SHT_rv",
+                                        "f_var_cdesc": "SHT_rv_cdesc",
+                                        "fc_var": "SHT_rv",
+                                        "i_arguments": "self,\t SHT_rv_cdesc",
+                                        "i_intent": "OUT",
+                                        "i_intent_attr": ", intent(OUT)",
+                                        "i_kind": "C_CHAR",
+                                        "i_module_name": "iso_c_binding",
+                                        "i_name_function": "c_cstruct_as_class2_get_name_ptr",
+                                        "i_subprogram": "subroutine",
+                                        "i_type": "character(kind=C_CHAR)",
+                                        "i_var": "SHT_rv",
+                                        "i_var_cdesc": "SHT_rv_cdesc",
+                                        "idtor": "0",
+                                        "stmt_name": "f_getter_char*_cdesc_pointer",
+                                        "typemap_name": "char"
+                                    },
+                                    "meta": {
+                                        "abstract": "char*",
+                                        "api": "cdesc",
+                                        "deref": "pointer",
+                                        "intent": "getter"
+                                    },
+                                    "stmt": "f_getter_char*_cdesc_pointer"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "abstract": "char*",
+                                        "intent": "getter"
+                                    }
+                                }
+                            }
+                        },
+                        "zz_fmtdict": {
+                            "C_name_api": "get_name_ptr",
+                            "F_name_api": "get_name_ptr",
+                            "F_name_function": "get_name_ptr",
+                            "F_name_generic": "get_name_ptr",
+                            "F_name_impl": "cstruct_as_class2_get_name_ptr",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
+                            "field_name": "name_ptr",
+                            "function_name": "get_name_ptr",
+                            "struct_name": "Cstruct_as_class2",
+                            "wrapped_name": "name_ptr"
+                        }
+                    },
+                    {
+                        "<FUNCTION>": "set_name_ptr  13 ****************************************",
+                        "_generated": "getter/setter",
+                        "_generated_path": [
+                            "getter/setter"
+                        ],
+                        "ast": {
+                            "declarator": {
+                                "attrs": {
+                                    "intent": "setter"
+                                },
+                                "name": "set_name_ptr",
+                                "params": [
+                                    {
+                                        "declarator": {
+                                            "attrs": {
+                                                "intent": "setter"
+                                            },
+                                            "name": "val",
+                                            "pointer": [
+                                                {
+                                                    "ptr": "*"
+                                                }
+                                            ],
+                                            "typemap_name": "char"
+                                        },
+                                        "specifier": [
+                                            "char"
+                                        ],
+                                        "typemap_name": "char"
+                                    }
+                                ],
+                                "typemap_name": "void"
+                            },
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void set_name_ptr(char *val)",
+                        "declgen": "void set_name_ptr(char *val +intent(setter)) +intent(setter)",
+                        "name": "set_name_ptr",
+                        "options": {},
+                        "user_fmt": {
+                            "field_name": "name_ptr",
+                            "struct_name": "Cstruct_as_class2",
+                            "wrapped_name": "name_ptr"
+                        },
+                        "wrap": {
+                            "fortran": true
+                        },
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->set_name_ptr(\t)",
+                                        "C_name": "STR_Cstruct_as_class2_set_name_ptr",
+                                        "C_prototype": "STR_Cstruct_as_class2 * self,\t char *val",
+                                        "C_return_type": "void",
+                                        "F_arg_c_call": "obj%cxxmem,\t val",
+                                        "F_arguments": "obj,\t val",
+                                        "F_subprogram": "subroutine",
+                                        "f_call_function": "c_cstruct_as_class2_set_name_ptr",
+                                        "i_arguments": "self,\t val",
+                                        "i_name_function": "c_cstruct_as_class2_set_name_ptr",
+                                        "i_subprogram": "subroutine",
+                                        "stmt_name": "f_setter",
+                                        "typemap_name": "void"
+                                    },
+                                    "meta": {
+                                        "abstract": "void",
+                                        "intent": "setter"
+                                    },
+                                    "stmt": "f_setter"
+                                },
+                                "val": {
+                                    "fmtdict": {
+                                        "c_abstract_decl": "char *",
+                                        "c_addr": "",
+                                        "c_const": "",
+                                        "c_deref": "*",
+                                        "c_member": "->",
+                                        "c_type": "char",
+                                        "c_var": "val",
+                                        "cxx_abstract_decl": "char *",
+                                        "cxx_addr": "",
+                                        "cxx_member": "->",
+                                        "cxx_nonconst_ptr": "val",
+                                        "cxx_type": "char",
+                                        "cxx_var": "val",
+                                        "f_intent": "IN",
+                                        "f_intent_attr": ", intent(IN)",
+                                        "f_type": "character(len=*)",
+                                        "f_var": "val",
+                                        "fc_var": "val",
+                                        "i_intent": "IN",
+                                        "i_intent_attr": ", intent(IN)",
+                                        "i_kind": "C_CHAR",
+                                        "i_module_name": "iso_c_binding",
+                                        "i_type": "character(kind=C_CHAR)",
+                                        "i_var": "val",
+                                        "idtor": "0",
+                                        "stmt_name": "f_setter_char*_buf",
+                                        "typemap_name": "char"
+                                    },
+                                    "meta": {
+                                        "abstract": "char*",
+                                        "api": "buf",
+                                        "intent": "setter"
+                                    },
+                                    "stmt": "f_setter_char*_buf"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "abstract": "void",
+                                        "intent": "setter"
+                                    }
+                                },
+                                "val": {
+                                    "meta": {
+                                        "abstract": "char*",
+                                        "intent": "setter"
+                                    }
+                                }
+                            }
+                        },
+                        "zz_fmtdict": {
+                            "C_name_api": "set_name_ptr",
+                            "F_name_api": "set_name_ptr",
+                            "F_name_function": "set_name_ptr",
+                            "F_name_generic": "set_name_ptr",
+                            "F_name_impl": "cstruct_as_class2_set_name_ptr",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "f_arglist": [
+                                "f_var",
+                                "val"
+                            ],
+                            "field_name": "name_ptr",
+                            "function_name": "set_name_ptr",
+                            "struct_name": "Cstruct_as_class2",
+                            "wrapped_name": "name_ptr"
+                        }
                     }
                 ],
                 "name": "Cstruct_as_class2",
@@ -2575,6 +2848,42 @@
                             "cxx_type": "char",
                             "field_name": "name",
                             "variable_name": "name"
+                        }
+                    },
+                    {
+                        "<VARIABLE>": "name_ptr ****************************************",
+                        "ast": {
+                            "declarator": {
+                                "attrs": {
+                                    "deref": "pointer"
+                                },
+                                "name": "name_ptr",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ],
+                                "typemap_name": "char"
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        },
+                        "name": "name_ptr",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        },
+                        "zz_bind": {
+                            "share": {}
+                        },
+                        "zz_fmtdict": {
+                            "c_type": "char",
+                            "cxx_type": "char",
+                            "field_name": "name_ptr",
+                            "variable_name": "name_ptr"
                         }
                     }
                 ],
@@ -2689,7 +2998,7 @@
         ],
         "functions": [
             {
-                "<FUNCTION>": "passStructByValue  12 ****************************************",
+                "<FUNCTION>": "passStructByValue  14 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "passStructByValue",
@@ -2904,7 +3213,7 @@
                 }
             },
             {
-                "<FUNCTION>": "passStruct1  13 ****************************************",
+                "<FUNCTION>": "passStruct1  15 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "passStruct1",
@@ -3120,7 +3429,7 @@
                 }
             },
             {
-                "<FUNCTION>": "passStruct2  14 ****************************************",
+                "<FUNCTION>": "passStruct2  16 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "passStruct2",
@@ -3467,7 +3776,7 @@
                 }
             },
             {
-                "<FUNCTION>": "acceptStructInPtr  15 ****************************************",
+                "<FUNCTION>": "acceptStructInPtr  17 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "acceptStructInPtr",
@@ -3683,7 +3992,7 @@
                 }
             },
             {
-                "<FUNCTION>": "acceptStructOutPtr  16 ****************************************",
+                "<FUNCTION>": "acceptStructOutPtr  18 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "acceptStructOutPtr",
@@ -4051,7 +4360,7 @@
                 }
             },
             {
-                "<FUNCTION>": "acceptStructInOutPtr  17 ****************************************",
+                "<FUNCTION>": "acceptStructInOutPtr  19 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "acceptStructInOutPtr",
@@ -4236,7 +4545,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnStructByValue  18 ****************************************",
+                "<FUNCTION>": "returnStructByValue  20 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnStructByValue",
@@ -4540,7 +4849,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnStructPtr1  19 ****************************************",
+                "<FUNCTION>": "returnStructPtr1  21 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnStructPtr1",
@@ -4894,7 +5203,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnStructPtr2  20 ****************************************",
+                "<FUNCTION>": "returnStructPtr2  22 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnStructPtr2",
@@ -5353,7 +5662,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnStructPtrArray  21 ****************************************",
+                "<FUNCTION>": "returnStructPtrArray  23 ****************************************",
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -5542,7 +5851,7 @@
                 }
             },
             {
-                "<FUNCTION>": "get_global_struct_list  22 ****************************************",
+                "<FUNCTION>": "get_global_struct_list  24 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "get_global_struct_list",
@@ -5693,7 +6002,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Create_Cstruct_as_class  23 ****************************************",
+                "<FUNCTION>": "Create_Cstruct_as_class  25 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "Create_Cstruct_as_class",
@@ -5850,7 +6159,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Create_Cstruct_as_class_args  24 ****************************************",
+                "<FUNCTION>": "Create_Cstruct_as_class_args  26 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "Create_Cstruct_as_class_args",
@@ -6205,7 +6514,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Return_Cstruct_as_class  25 ****************************************",
+                "<FUNCTION>": "Return_Cstruct_as_class  27 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "Return_Cstruct_as_class",
@@ -6343,7 +6652,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Return_Cstruct_as_class_args  26 ****************************************",
+                "<FUNCTION>": "Return_Cstruct_as_class_args  28 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "Return_Cstruct_as_class_args",
@@ -6664,7 +6973,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Cstruct_as_class_sum  27 ****************************************",
+                "<FUNCTION>": "Cstruct_as_class_sum  29 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "Cstruct_as_class_sum",
@@ -6890,7 +7199,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Create_Cstruct_as_subclass_args  28 ****************************************",
+                "<FUNCTION>": "Create_Cstruct_as_subclass_args  30 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "Create_Cstruct_as_subclass_args",
@@ -7343,7 +7652,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Return_Cstruct_as_subclass_args  29 ****************************************",
+                "<FUNCTION>": "Return_Cstruct_as_subclass_args  31 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "Return_Cstruct_as_subclass_args",
@@ -7754,7 +8063,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Cstruct_ptr_get_const_dvalue  30 ****************************************",
+                "<FUNCTION>": "Cstruct_ptr_get_const_dvalue  32 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -7929,7 +8238,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Cstruct_ptr_set_const_dvalue  31 ****************************************",
+                "<FUNCTION>": "Cstruct_ptr_set_const_dvalue  33 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -8137,7 +8446,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Cstruct_list_get_ivalue  32 ****************************************",
+                "<FUNCTION>": "Cstruct_list_get_ivalue  34 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -8356,7 +8665,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Cstruct_list_set_ivalue  33 ****************************************",
+                "<FUNCTION>": "Cstruct_list_set_ivalue  35 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -8571,7 +8880,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Cstruct_list_get_dvalue  34 ****************************************",
+                "<FUNCTION>": "Cstruct_list_get_dvalue  36 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -8790,7 +9099,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Cstruct_list_set_dvalue  35 ****************************************",
+                "<FUNCTION>": "Cstruct_list_set_dvalue  37 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"

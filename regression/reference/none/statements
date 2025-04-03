@@ -12904,7 +12904,7 @@ f_getter_char*_cdesc_allocatable:
   - Save char *struct members in a cdesc
   - along with shape information.
   notes:
-  - Get a char* member of a class.
+  - Get a char* member of a class as a Fortran allocatable.
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
@@ -12954,6 +12954,66 @@ f_getter_char*_cdesc_allocatable:
   impl_header:
   - <cstring>
   sphinx-end-before: f_getter_char*_cdesc_allocatable
+f_getter_char*_cdesc_pointer:
+  sphinx-start-after: f_getter_char*_cdesc_pointer
+  name: f_getter_char*_cdesc_pointer
+  intent: getter
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
+  - Save char *struct members in a cdesc
+  - along with shape information.
+  notes:
+  - Get a char* member of a class as a Fortran pointer.
+  mixin_names:
+  - '  f_mixin_function-to-subroutine'
+  - '    c_mixin_as-intent-out'
+  - '  f_mixin_cdesc_pass'
+  - '  f_mixin_cdesc_char_pointer'
+  - '  c_mixin_cdesc_getter_char*'
+  - '    c_mixin_header_cstring'
+  f_dummy_decl:
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
+  f_local_decl:
+  - 'type({F_array_type}) :: {f_var_cdesc}'
+  f_arg_call:
+  - '{f_var_cdesc}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  f_post_call:
+  - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
+  f_temps:
+  - cdesc
+  f_need_wrapper: true
+  i_dummy_arg:
+  - '{i_var_cdesc}'
+  i_dummy_decl:
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  c_return_type: void
+  c_prototype:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_call:
+  - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
+  - '{c_var_cdesc}->elem_len = {CXX_this}->{field_name} == {nullptr} ? 0 : {stdlib}strlen({CXX_this}->{field_name});'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
+  c_temps:
+  - cdesc
+  c_need_wrapper: true
+  fmtdict:
+    i_intent: OUT
+    i_intent_attr: ', intent(OUT)'
+  helper:
+  - array_context
+  - pointer_string
+  - type_defines
+  impl_header:
+  - <cstring>
+  sphinx-end-before: f_getter_char*_cdesc_pointer
 f_getter_native:
   sphinx-start-after: f_getter_native
   name: f_getter_native
@@ -21920,6 +21980,7 @@ root
       char*
         cdesc
           allocatable -- f_getter_char*_cdesc_allocatable
+          pointer -- f_getter_char*_cdesc_pointer
       native -- f_getter_native
       native*
         cdesc

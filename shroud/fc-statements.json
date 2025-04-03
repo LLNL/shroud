@@ -4476,12 +4476,24 @@
     {
         "name": "f_getter_char*_cdesc_allocatable",
         "notes": [
-            "Get a char* member of a class."
+            "Get a char* member of a class as a Fortran allocatable."
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_cdesc_pass",
             "f_mixin_cdesc_char_allocate",
+            "c_mixin_cdesc_getter_char*"
+        ]
+    },
+    {
+        "name": "f_getter_char*_cdesc_pointer",
+        "notes": [
+            "Get a char* member of a class as a Fortran pointer."
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_cdesc_pass",
+            "f_mixin_cdesc_char_pointer",
             "c_mixin_cdesc_getter_char*"
         ]
     },

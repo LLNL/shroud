@@ -19,6 +19,8 @@ Close wrapCstruct_as_subclass.c
 class Cstruct_as_class2
 C f char *get_name(void) +intent(getter)
 C f void set_name(char *val +intent(setter)) +intent(setter)
+C f char *get_name_ptr(void) +deref(pointer)+intent(getter)
+C f void set_name_ptr(char *val +intent(setter)) +intent(setter)
 Close wrapCstruct_as_class2.h
 Close wrapCstruct_as_class2.c
 C f int passStructByValue(Cstruct1 arg)
@@ -77,8 +79,12 @@ C-interface f void set_z1(int val +intent(setter)) +intent(setter)
 class Cstruct_as_class2
 Fortran char *get_name(void) +intent(getter)
 Fortran void set_name(char *val +intent(setter)) +intent(setter)
+Fortran char *get_name_ptr(void) +deref(pointer)+intent(getter)
+Fortran void set_name_ptr(char *val +intent(setter)) +intent(setter)
 C-interface f char *get_name(void) +intent(getter)
 C-interface f void set_name(char *val +intent(setter)) +intent(setter)
+C-interface f char *get_name_ptr(void) +deref(pointer)+intent(getter)
+C-interface f void set_name_ptr(char *val +intent(setter)) +intent(setter)
 class s_nested
 Fortran int passStructByValue(Cstruct1 arg)
 Fortran int passStruct1(const Cstruct1 *arg)

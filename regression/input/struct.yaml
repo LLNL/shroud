@@ -225,6 +225,7 @@ declarations:
     F_name_instance_set: set_instance
   declarations:
   - decl: char *name
+  - decl: char *name_ptr +deref(pointer)
 
 
 ######################################################################

@@ -912,6 +912,39 @@
                             "field_name": "name",
                             "variable_name": "name"
                         }
+                    },
+                    {
+                        "<VARIABLE>": "name_ptr ****************************************",
+                        "ast": {
+                            "declarator": {
+                                "attrs": {
+                                    "deref": "pointer"
+                                },
+                                "name": "name_ptr",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ],
+                                "typemap_name": "char"
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        },
+                        "name": "name_ptr",
+                        "options": {},
+                        "wrap": {},
+                        "zz_bind": {
+                            "share": {}
+                        },
+                        "zz_fmtdict": {
+                            "c_type": "char",
+                            "cxx_type": "char",
+                            "field_name": "name_ptr",
+                            "variable_name": "name_ptr"
+                        }
                     }
                 ],
                 "wrap": {},

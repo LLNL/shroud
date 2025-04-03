@@ -220,12 +220,15 @@ contains
     type, bind(C) :: struct_names
        type(C_PTR) :: name = C_NULL_PTR
        type(C_PTR) :: private_name = C_NULL_PTR
+       type(C_PTR) :: xname_ptr = C_NULL_PTR
     end type struct_names
 
     type(struct_names), target :: local1
 
     character(4), target :: name_dog = "dog "
+    character(4), target :: name_cat = "cat "
     character(:), allocatable :: name_alloc
+    character(:), pointer :: name_ptr
 
     call set_case_name("test_struct_class2")
 
@@ -244,13 +247,20 @@ contains
     ! A terminating NULL is required to compute the length later.
     ! The address of name_dog is saved in the struct
     name_dog(4:4) = C_NULL_CHAR
+    name_cat(4:4) = C_NULL_CHAR
     call group1%set_name(name_dog)
+    call group1%set_name_ptr(name_cat)
     call assert_true(c_associated(local1%name, c_loc(name_dog)))
 
     name_alloc = group1%get_name()
     call assert_true(allocated(name_alloc), "get_name allocated")
     call assert_equals(3, len(name_alloc), "get_name len")
-    call assert_equals(name_dog(1:3), name_alloc, "get_name")
+    call assert_equals(name_dog(1:3), name_alloc, "get_name value")
+    
+    name_ptr => group1%get_name_ptr()
+    call assert_true(associated(name_ptr, name_cat), "get_ptr associated")
+    call assert_equals(3, len(name_ptr), "get_ptr len")
+    call assert_equals(name_ptr(1:3), name_ptr, "get_ptr value")
     
   end subroutine test_struct_class2
 

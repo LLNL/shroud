@@ -27,4 +27,10 @@ void STR_Cstruct_as_class2_get_name(STR_Cstruct_as_class2 * self,
 void STR_Cstruct_as_class2_set_name(STR_Cstruct_as_class2 * self,
     char *val);
 
+void STR_Cstruct_as_class2_get_name_ptr(STR_Cstruct_as_class2 * self,
+    STR_SHROUD_array *SHT_rv_cdesc);
+
+void STR_Cstruct_as_class2_set_name_ptr(STR_Cstruct_as_class2 * self,
+    char *val);
+
 #endif  // WRAPCSTRUCT_AS_CLASS2_H
