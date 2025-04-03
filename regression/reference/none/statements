@@ -21232,7 +21232,6 @@ h_helper_copy_string:
   - <string.h>
   cxx_include:
   - <cstring>
-  - <cstddef>
   scope: cwrap_impl
   source:
   - ''

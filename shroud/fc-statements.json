@@ -5919,8 +5919,7 @@
             "<string.h>"
         ],
         "cxx_include": [
-            "<cstring>",
-            "<cstddef>"
+            "<cstring>"
         ],
         "source": [
             "",

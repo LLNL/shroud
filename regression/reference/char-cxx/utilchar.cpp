@@ -9,7 +9,6 @@
 
 // shroud
 #include "typeschar.h"
-#include <cstddef>
 #include <cstring>
 
 
