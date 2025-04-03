@@ -214,6 +214,20 @@ declarations:
     wrap_python: False
 
 ######################################################################
+# char * members in struct
+# Create a f_name_instance_set to aid in testing.
+
+- decl: struct Cstruct_as_class2
+  options:
+    wrap_struct_as: class
+    wrap_python: False
+  format:
+    F_name_instance_set: set_instance
+  declarations:
+  - decl: char *name
+
+
+######################################################################
 # recursive struct
 # This wraps both a C and C++ library, so must use 'struct s_nested'
 

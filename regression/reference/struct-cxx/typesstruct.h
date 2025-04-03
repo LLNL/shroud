@@ -101,6 +101,13 @@ struct s_STR_Cstruct_as_subclass {
 };
 typedef struct s_STR_Cstruct_as_subclass STR_Cstruct_as_subclass;
 // end C++ capsule STR_Cstruct_as_subclass
+
+// C++ capsule STR_Cstruct_as_class2
+struct s_STR_Cstruct_as_class2 {
+    Cstruct_as_class2 *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_STR_Cstruct_as_class2 STR_Cstruct_as_class2;
 #endif
 
 // start C capsule STR_Cstruct_as_class
@@ -120,6 +127,13 @@ struct s_STR_Cstruct_as_subclass {
 };
 typedef struct s_STR_Cstruct_as_subclass STR_Cstruct_as_subclass;
 // end C capsule STR_Cstruct_as_subclass
+
+// C capsule STR_Cstruct_as_class2
+struct s_STR_Cstruct_as_class2 {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_STR_Cstruct_as_class2 STR_Cstruct_as_class2;
 
 void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap);
 

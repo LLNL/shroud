@@ -72,22 +72,26 @@ endif
 
 ifeq ($(compiler),oneapi)
 CC = icx
-LOCAL_CFLAGS = -g -std=c99
+LOCAL_CFLAGS = -g -O0 -std=c99
 CLIBS = -lstdc++
 CXX = icpx
-LOCAL_CXXFLAGS = -g -std=c++11
+LOCAL_CXXFLAGS = -g -O0 -std=c++11
 #LOCAL_CXXFLAGS += 
 FC = ifx
-LOCAL_FFLAGS = -g -fpp -free
+LOCAL_FFLAGS = -g -O0 -fpp -free
 # test-fortran-pointers-cfi
 # forrtl: severe (194): Run-Time Check Failure.
 # The variable 'test_out_ptrs$ISCALAR$_276' is being used in 'main.f(177,10)' without being defined
 # This runtime check seems wrong since iscalar is passed as intent(OUT), pointer
 # which will nullify the pointer in the subroutine.
-LOCAL_FFLAGS += -check all,nopointers
+# XXX - Using check is triggering a msan error in fruit.
+oneapi_check = -check all,nopointers
+oneapi_check =
+LOCAL_FFLAGS += $(oneapi_check)
 FLIBS = -lstdc++
 SHARED = -fPIC
 LD_SHARED = -shared
+LD_FC = $(oneapi_check)
 endif
 
 ifeq ($(compiler),pgi)
@@ -261,7 +265,7 @@ lua-print-debug:
 
 # Fortran test
 $(testdir) : $(F_OBJS) $(C_OBJS)
-	$(FC) $(LDFLAGS) $^ -o $@ $(CLIBS)
+	$(FC) $(LD_FC) $(LDFLAGS) $^ -o $@ $(CLIBS)
 
 # C test
 testc : testc.o $(C_OBJS)

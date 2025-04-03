@@ -4248,6 +4248,33 @@ c_mixin_cdesc_function_string:
   helper:
   - string_to_cdesc
   sphinx-end-before: c_mixin_cdesc_function_string
+c_mixin_cdesc_getter_char*:
+  sphinx-start-after: c_mixin_cdesc_getter_char*
+  name: c_mixin_cdesc_getter_char*
+  intent: mixin
+  comments:
+  - Save char *struct members in a cdesc
+  - along with shape information.
+  mixin_names:
+  - '  c_mixin_header_cstring'
+  c_call:
+  - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
+  - '{c_var_cdesc}->elem_len = {CXX_this}->{field_name} == {nullptr} ? 0 : {stdlib}strlen({CXX_this}->{field_name});'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
+  c_need_wrapper: true
+  helper:
+  - type_defines
+  impl_header:
+  - <cstring>
+  lang_c:
+    impl_header:
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstring>
+  sphinx-end-before: c_mixin_cdesc_getter_char*
 c_mixin_cdesc_inout_vector:
   sphinx-start-after: c_mixin_cdesc_inout_vector
   name: c_mixin_cdesc_inout_vector
@@ -12875,6 +12902,68 @@ f_getter_bool:
   c_return:
   - return {CXX_this}->{field_name};
   sphinx-end-before: f_getter_bool
+f_getter_char*_cdesc_allocatable:
+  sphinx-start-after: f_getter_char*_cdesc_allocatable
+  name: f_getter_char*_cdesc_allocatable
+  intent: getter
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc
+  - using helper copy_string.
+  - Save char *struct members in a cdesc
+  - along with shape information.
+  notes:
+  - Get a char* member of a class.
+  mixin_names:
+  - '  f_mixin_function-to-subroutine'
+  - '    c_mixin_as-intent-out'
+  - '  f_mixin_cdesc_pass'
+  - '  f_mixin_cdesc_char_allocate'
+  - '  c_mixin_cdesc_getter_char*'
+  - '    c_mixin_header_cstring'
+  f_dummy_decl:
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
+  f_local_decl:
+  - 'type({F_array_type}) :: {f_var_cdesc}'
+  f_arg_call:
+  - '{f_var_cdesc}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  f_post_call:
+  - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
+  - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
+  f_temps:
+  - cdesc
+  f_need_wrapper: true
+  i_dummy_arg:
+  - '{i_var_cdesc}'
+  i_dummy_decl:
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  c_return_type: void
+  c_prototype:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_call:
+  - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
+  - '{c_var_cdesc}->elem_len = {CXX_this}->{field_name} == {nullptr} ? 0 : {stdlib}strlen({CXX_this}->{field_name});'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
+  c_temps:
+  - cdesc
+  c_need_wrapper: true
+  fmtdict:
+    i_intent: OUT
+    i_intent_attr: ', intent(OUT)'
+  helper:
+  - array_context
+  - copy_string
+  - type_defines
+  impl_header:
+  - <cstring>
+  sphinx-end-before: f_getter_char*_cdesc_allocatable
 f_getter_native:
   sphinx-start-after: f_getter_native
   name: f_getter_native
@@ -20194,6 +20283,36 @@ f_setter_bool:
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   sphinx-end-before: f_setter_bool
+f_setter_char*_buf:
+  sphinx-start-after: f_setter_char*_buf
+  name: f_setter_char*_buf
+  intent: setter
+  mixin_names:
+  - '  c_mixin_declare-arg'
+  - '  f_mixin_declare-interface-arg'
+  - '  f_mixin_declare-fortran-arg'
+  f_dummy_arg:
+  - '{f_var}'
+  f_dummy_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
+  f_arg_call:
+  - '{fc_var}'
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
+  i_dummy_arg:
+  - '{i_var}'
+  i_dummy_decl:
+  - '{i_type}{f_value_attr}{i_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{i_module_name}':
+    - '{i_kind}'
+  c_prototype:
+  - '{gen.cdecl.c_var}'
+  c_post_call:
+  - '{CXX_this}->{field_name} = val;'
+  sphinx-end-before: f_setter_char*_buf
 f_setter_native:
   sphinx-start-after: f_setter_native
   name: f_setter_native
@@ -21109,6 +21228,8 @@ h_helper_copy_string:
     cnamefunc: '{C_prefix}ShroudCopyString'
     fnamefunc: '{C_prefix}SHROUD_copy_string'
   c_fmtname: LIB_ShroudCopyString
+  c_include:
+  - <string.h>
   cxx_include:
   - <cstring>
   - <cstddef>
@@ -21538,6 +21659,8 @@ root
             cvar -- c_mixin_cdesc_char_fill_cvar
         function
           string -- c_mixin_cdesc_function_string
+        getter
+          char* -- c_mixin_cdesc_getter_char*
         inout
           vector -- c_mixin_cdesc_inout_vector
         native
@@ -21825,6 +21948,9 @@ root
       void* -- f_function_void*
     getter
       bool -- f_getter_bool
+      char*
+        cdesc
+          allocatable -- f_getter_char*_cdesc_allocatable
       native -- f_getter_native
       native*
         cdesc
@@ -22110,6 +22236,8 @@ root
       void** -- f_out_void**
     setter -- f_setter
       bool -- f_setter_bool
+      char*
+        buf -- f_setter_char*_buf
       native -- f_setter_native
       native* -- f_setter_native*
       string

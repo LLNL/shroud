@@ -5,6 +5,7 @@
             "Arrays1",
             "Cstruct1",
             "Cstruct_as_class",
+            "Cstruct_as_class2",
             "Cstruct_as_subclass",
             "Cstruct_list",
             "Cstruct_numpy",
@@ -2228,6 +2229,73 @@
                     "cxx_class": "Cstruct_as_subclass",
                     "cxx_type": "Cstruct_as_subclass",
                     "file_scope": "Cstruct_as_subclass"
+                }
+            },
+            {
+                "<CLASS>": "Cstruct_as_class2 ****************************************",
+                "cxx_header": [],
+                "name": "Cstruct_as_class2",
+                "options": {
+                    "wrap_python": false,
+                    "wrap_struct_as": "class"
+                },
+                "parse_keyword": "struct",
+                "scope": "Cstruct_as_class2::",
+                "typemap_name": "Cstruct_as_class2",
+                "user_fmt": {
+                    "F_name_instance_set": "set_instance"
+                },
+                "variables": [
+                    {
+                        "<VARIABLE>": "name ****************************************",
+                        "ast": {
+                            "declarator": {
+                                "name": "name",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ],
+                                "typemap_name": "char"
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        },
+                        "name": "name",
+                        "options": {},
+                        "wrap": {},
+                        "zz_bind": {
+                            "share": {}
+                        },
+                        "zz_fmtdict": {
+                            "c_type": "char",
+                            "cxx_type": "char",
+                            "field_name": "name",
+                            "variable_name": "name"
+                        }
+                    }
+                ],
+                "wrap": {},
+                "wrap_as": "class",
+                "zz_fmtdict": {
+                    "C_header_filename": "wrapCstruct_as_class2.h",
+                    "C_impl_filename": "wrapCstruct_as_class2.c",
+                    "C_name_api": "Cstruct_as_class2",
+                    "C_name_scope": "Cstruct_as_class2_",
+                    "C_type_name": "STR_Cstruct_as_class2",
+                    "F_derived_name": "cstruct_as_class2",
+                    "F_name_api": "cstruct_as_class2",
+                    "F_name_instance_set": "set_instance",
+                    "F_name_scope": "cstruct_as_class2_",
+                    "PY_struct_array_descr_create": "PY_Cstruct_as_class2_create_array_descr",
+                    "PY_struct_array_descr_name": "Cstruct_as_class2_dtype",
+                    "PY_struct_array_descr_variable": "PY_Cstruct_as_class2_array_descr",
+                    "class_scope": "Cstruct_as_class2::",
+                    "cxx_class": "Cstruct_as_class2",
+                    "cxx_type": "Cstruct_as_class2",
+                    "file_scope": "Cstruct_as_class2"
                 }
             },
             {
@@ -4480,6 +4548,7 @@
         "Arrays1": "struct-Arrays1",
         "Cstruct1": "struct-Cstruct1",
         "Cstruct_as_class": "struct-Cstruct_as_class",
+        "Cstruct_as_class2": "struct-Cstruct_as_class2",
         "Cstruct_as_subclass": "struct-Cstruct_as_subclass",
         "Cstruct_list": "struct-Cstruct_list",
         "Cstruct_numpy": "struct-Cstruct_numpy",
@@ -4488,6 +4557,7 @@
         "struct-Arrays1": "Arrays1",
         "struct-Cstruct1": "Cstruct1",
         "struct-Cstruct_as_class": "Cstruct_as_class",
+        "struct-Cstruct_as_class2": "Cstruct_as_class2",
         "struct-Cstruct_as_subclass": "Cstruct_as_subclass",
         "struct-Cstruct_list": "Cstruct_list",
         "struct-Cstruct_numpy": "Cstruct_numpy",
@@ -4586,6 +4656,41 @@
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(cstruct_as_class)",
             "flat_name": "Cstruct_as_class",
+            "i_module": {
+                "struct_mod": [
+                    "STR_SHROUD_capsule_data"
+                ]
+            },
+            "i_type": "type(STR_SHROUD_capsule_data)",
+            "impl_header": [
+                "struct.h"
+            ],
+            "sgroup": "shadow",
+            "wrap_header": [
+                "typesstruct.h"
+            ]
+        },
+        "Cstruct_as_class2": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "base": "shadow",
+            "c_to_cxx": "static_cast<{c_const}Cstruct_as_class2 *>\t({c_var}->addr)",
+            "c_type": "STR_Cstruct_as_class2",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "Cstruct_as_class2",
+            "f_capsule_data_type": "STR_SHROUD_capsule_data",
+            "f_class": "class(cstruct_as_class2)",
+            "f_derived_type": "cstruct_as_class2",
+            "f_kind": "cstruct_as_class2",
+            "f_module": {
+                "struct_mod": [
+                    "cstruct_as_class2"
+                ]
+            },
+            "f_module_name": "struct_mod",
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(cstruct_as_class2)",
+            "flat_name": "Cstruct_as_class2",
             "i_module": {
                 "struct_mod": [
                     "STR_SHROUD_capsule_data"

@@ -29,7 +29,9 @@ C_OBJS = \
     struct.o \
     wrapstruct.o \
     wrapCstruct_as_class.o \
-    wrapCstruct_as_subclass.o
+    wrapCstruct_as_subclass.o \
+    wrapCstruct_as_class2.o \
+    utilstruct.o
 F_OBJS = \
     main.o \
     fruit.o \

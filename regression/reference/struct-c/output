@@ -4,6 +4,8 @@ Wrote wrapCstruct_as_class.h
 Wrote wrapCstruct_as_class.c
 Wrote wrapCstruct_as_subclass.h
 Wrote wrapCstruct_as_subclass.c
+Wrote wrapCstruct_as_class2.h
+Wrote wrapCstruct_as_class2.c
 Wrote wrapstruct.h
 Wrote wrapstruct.c
 Wrote wrapfstruct.f

@@ -34,6 +34,9 @@
     },
     {
         "name": "c_mixin_header_cstring",
+        "notes": [
+            "strlen, memcpy"
+        ],
         "lang_c": {
             "impl_header": [
                 "<string.h>"
@@ -1127,6 +1130,30 @@
             "{c_var_cdesc}->base_addr = {CXX_this}->{field_name};",
             "{c_var_cdesc}->type = {typemap.sh_type};",
             "{c_var_cdesc}->elem_len = sizeof({cxx_type});",
+            "{c_var_cdesc}->rank = {rank};{gen.c_array_shape}",
+            "{c_var_cdesc}->size = {gen.c_array_size};"
+        ],
+        "c_need_wrapper": true,
+        "helper": [
+            "type_defines"
+        ]
+    },
+    {
+        "name": "c_mixin_cdesc_getter_char*",
+        "comments": [
+            "Save char *struct members in a cdesc",
+            "along with shape information."
+        ],
+        "notes": [
+            "The char* member may be NULL or the string must be NULL terminated."
+        ],
+        "mixin": [
+            "c_mixin_header_cstring"
+        ],
+        "c_call": [
+            "{c_var_cdesc}->base_addr = {CXX_this}->{field_name};",
+            "{c_var_cdesc}->type = {typemap.sh_type};",
+            "{c_var_cdesc}->elem_len = {CXX_this}->{field_name} == {nullptr} ? 0 : {stdlib}strlen({CXX_this}->{field_name});",
             "{c_var_cdesc}->rank = {rank};{gen.c_array_shape}",
             "{c_var_cdesc}->size = {gen.c_array_size};"
         ],
@@ -4417,6 +4444,7 @@
             "f_setter_native",
             "f_setter_native*",
             "c_setter_native",
+            "f_setter_char*_buf",
             "c_setter_native*"
         ],
         "mixin": [
@@ -4444,6 +4472,18 @@
             "f_mixin_cdesc_pass",
             "f_mixin_cdesc_native_pointer",
             "f_mixin_cdesc_getter"
+        ]
+    },
+    {
+        "name": "f_getter_char*_cdesc_allocatable",
+        "notes": [
+            "Get a char* member of a class."
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_cdesc_pass",
+            "f_mixin_cdesc_char_allocate",
+            "c_mixin_cdesc_getter_char*"
         ]
     },
     {
@@ -5874,6 +5914,9 @@
         "scope": "cwrap_impl",
         "dependent_helpers": [
             "array_context"
+        ],
+        "c_include": [
+            "<string.h>"
         ],
         "cxx_include": [
             "<cstring>",
