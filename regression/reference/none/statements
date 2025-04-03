@@ -4248,6 +4248,23 @@ c_mixin_cdesc_function_string:
   helper:
   - string_to_cdesc
   sphinx-end-before: c_mixin_cdesc_function_string
+c_mixin_cdesc_getter:
+  sphinx-start-after: c_mixin_cdesc_getter
+  name: c_mixin_cdesc_getter
+  intent: mixin
+  comments:
+  - Save pointer struct members in a cdesc
+  - along with shape information.
+  c_call:
+  - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
+  c_need_wrapper: true
+  helper:
+  - type_defines
+  sphinx-end-before: c_mixin_cdesc_getter
 c_mixin_cdesc_getter_char*:
   sphinx-start-after: c_mixin_cdesc_getter_char*
   name: c_mixin_cdesc_getter_char*
@@ -12981,7 +12998,7 @@ f_getter_native*_cdesc_pointer:
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_cdesc_native_pointer'
-  - '  f_mixin_cdesc_getter'
+  - '  c_mixin_cdesc_getter'
   f_dummy_decl:
   - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
   f_local_decl:
@@ -13117,7 +13134,7 @@ f_getter_struct**_cdesc_raw:
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_cdesc_native_raw'
-  - '  f_mixin_cdesc_getter'
+  - '  c_mixin_cdesc_getter'
   f_dummy_decl:
   - 'type(C_PTR), pointer :: {f_var}{f_assumed_shape}'
   f_local_decl:
@@ -13177,7 +13194,7 @@ f_getter_struct*_cdesc_pointer:
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_cdesc_native_pointer'
-  - '  f_mixin_cdesc_getter'
+  - '  c_mixin_cdesc_getter'
   f_dummy_decl:
   - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
   f_local_decl:
@@ -16824,23 +16841,6 @@ f_mixin_cdesc_copy_array:
   helper:
   - copy_array
   sphinx-end-before: f_mixin_cdesc_copy_array
-f_mixin_cdesc_getter:
-  sphinx-start-after: f_mixin_cdesc_getter
-  name: f_mixin_cdesc_getter
-  intent: mixin
-  comments:
-  - Save pointer struct members in a cdesc
-  - along with shape information.
-  c_call:
-  - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
-  - '{c_var_cdesc}->type = {typemap.sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
-  - '{c_var_cdesc}->size = {gen.c_array_size};'
-  c_need_wrapper: true
-  helper:
-  - type_defines
-  sphinx-end-before: f_mixin_cdesc_getter
 f_mixin_cdesc_inout_array:
   sphinx-start-after: f_mixin_cdesc_inout_array
   name: f_mixin_cdesc_inout_array
@@ -21628,7 +21628,7 @@ root
             cvar -- c_mixin_cdesc_char_fill_cvar
         function
           string -- c_mixin_cdesc_function_string
-        getter
+        getter -- c_mixin_cdesc_getter
           char* -- c_mixin_cdesc_getter_char*
         inout
           vector -- c_mixin_cdesc_inout_vector
@@ -22049,7 +22049,6 @@ root
           pointer -- f_mixin_cdesc_char_pointer
         copy
           array -- f_mixin_cdesc_copy_array
-        getter -- f_mixin_cdesc_getter
         inout
           array -- f_mixin_cdesc_inout_array
         native

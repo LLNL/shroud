@@ -1116,7 +1116,7 @@
         ]
     },
     {
-        "name": "f_mixin_cdesc_getter",
+        "name": "c_mixin_cdesc_getter",
         "comments": [
             "Save pointer struct members in a cdesc",
             "along with shape information."
@@ -4466,7 +4466,7 @@
             "f_mixin_function-to-subroutine",
             "f_mixin_cdesc_pass",
             "f_mixin_cdesc_native_pointer",
-            "f_mixin_cdesc_getter"
+            "c_mixin_cdesc_getter"
         ]
     },
     {
@@ -4487,7 +4487,7 @@
             "f_mixin_function-to-subroutine",
             "f_mixin_cdesc_pass",
             "f_mixin_cdesc_native_raw",
-            "f_mixin_cdesc_getter"
+            "c_mixin_cdesc_getter"
         ]
     },
     {
