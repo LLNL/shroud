@@ -1111,11 +1111,6 @@
         "f_post_call": [
             "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
         ],
-        "f_module": {
-            "iso_c_binding": [
-                "c_f_pointer"
-            ]
-        },
         "helper": [
             "pointer_string"
         ]

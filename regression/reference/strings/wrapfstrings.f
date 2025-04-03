@@ -1245,7 +1245,6 @@ contains
     ! Statement: f_function_string*_cdesc_pointer_library
     function get_const_string_ptr_pointer() &
             result(SHT_rv)
-        use iso_c_binding, only : c_f_pointer
         character(len=:), pointer :: SHT_rv
         ! splicer begin function.get_const_string_ptr_pointer
         type(STR_SHROUD_array) :: SHT_rv_cdesc

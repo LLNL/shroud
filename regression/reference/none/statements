@@ -7223,9 +7223,6 @@ f_function_char*_cdesc_pointer:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
-  f_module:
-    iso_c_binding:
-    - c_f_pointer
   f_temps:
   - cdesc
   f_need_wrapper: true
@@ -7688,9 +7685,6 @@ f_function_char_cdesc_pointer:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
-  f_module:
-    iso_c_binding:
-    - c_f_pointer
   f_temps:
   - cdesc
   f_need_wrapper: true
@@ -9701,9 +9695,6 @@ f_function_string&_cdesc_pointer:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
-  f_module:
-    iso_c_binding:
-    - c_f_pointer
   f_temps:
   - cdesc
   f_need_wrapper: true
@@ -9760,9 +9751,6 @@ f_function_string&_cdesc_pointer_caller:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
-  f_module:
-    iso_c_binding:
-    - c_f_pointer
   f_temps:
   - cdesc
   f_need_wrapper: true
@@ -9819,9 +9807,6 @@ f_function_string&_cdesc_pointer_library:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
-  f_module:
-    iso_c_binding:
-    - c_f_pointer
   f_temps:
   - cdesc
   f_need_wrapper: true
@@ -10910,9 +10895,6 @@ f_function_string*_cdesc_pointer:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
-  f_module:
-    iso_c_binding:
-    - c_f_pointer
   f_temps:
   - cdesc
   f_need_wrapper: true
@@ -10969,9 +10951,6 @@ f_function_string*_cdesc_pointer_caller:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
-  f_module:
-    iso_c_binding:
-    - c_f_pointer
   f_temps:
   - cdesc
   f_need_wrapper: true
@@ -11028,9 +11007,6 @@ f_function_string*_cdesc_pointer_library:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
-  f_module:
-    iso_c_binding:
-    - c_f_pointer
   f_temps:
   - cdesc
   f_need_wrapper: true
@@ -16827,9 +16803,6 @@ f_mixin_cdesc_char_pointer:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_post_call:
   - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
-  f_module:
-    iso_c_binding:
-    - c_f_pointer
   helper:
   - pointer_string
   sphinx-end-before: f_mixin_cdesc_char_pointer
@@ -18068,9 +18041,6 @@ f_out_char**_cdesc_pointer:
   - '{f_var_cdesc}'
   f_post_call:
   - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
-  f_module:
-    iso_c_binding:
-    - c_f_pointer
   f_temps:
   - cdesc
   f_need_wrapper: true
