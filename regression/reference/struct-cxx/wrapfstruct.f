@@ -1849,13 +1849,17 @@ contains
     ! helper pointer_string
     ! Assign context to an assumed-length character pointer
     subroutine STR_SHROUD_pointer_string(context, var)
-        use iso_c_binding, only : c_f_pointer, C_PTR
+        use iso_c_binding, only : c_associated, c_f_pointer, C_PTR
         implicit none
         type(STR_SHROUD_array), intent(IN) :: context
         character(len=:), pointer, intent(OUT) :: var
         character(len=context%elem_len), pointer :: fptr
-        call c_f_pointer(context%base_addr, fptr)
-        var => fptr
+        if (c_associated(context%base_addr)) then
+            call c_f_pointer(context%base_addr, fptr)
+            var => fptr
+        else
+            nullify(var)
+        endif
     end subroutine STR_SHROUD_pointer_string
 
 end module struct_mod
