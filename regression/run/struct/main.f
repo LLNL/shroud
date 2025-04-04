@@ -220,15 +220,18 @@ contains
     type, bind(C) :: struct_names
        type(C_PTR) :: name = C_NULL_PTR
        type(C_PTR) :: private_name = C_NULL_PTR
-       type(C_PTR) :: xname_ptr = C_NULL_PTR
+       type(C_PTR) :: name_ptr = C_NULL_PTR
+       type(C_PTR) :: name_copy = C_NULL_PTR
     end type struct_names
 
     type(struct_names), target :: local1
 
     character(4), target :: name_dog = "dog "
     character(4), target :: name_cat = "cat "
+    character(4), target :: name_rat = "rat "
     character(:), allocatable :: name_alloc
     character(:), pointer :: name_ptr
+    character(10) :: name_copy
 
     call set_case_name("test_struct_class2")
 
@@ -248,9 +251,12 @@ contains
     ! The address of name_dog is saved in the struct
     name_dog(4:4) = C_NULL_CHAR
     name_cat(4:4) = C_NULL_CHAR
+    name_rat(4:4) = C_NULL_CHAR
     call group1%set_name(name_dog)
     call group1%set_name_ptr(name_cat)
     call assert_true(c_associated(local1%name, c_loc(name_dog)))
+    ! The name_copy field is readonly, so set directly.
+    local1%name_copy = c_loc(name_rat)
 
     name_alloc = group1%get_name()
     call assert_true(allocated(name_alloc), "get_name allocated")
@@ -260,7 +266,11 @@ contains
     name_ptr => group1%get_name_ptr()
     call assert_true(associated(name_ptr, name_cat), "get_ptr associated")
     call assert_equals(3, len(name_ptr), "get_ptr len")
-    call assert_equals(name_ptr(1:3), name_ptr, "get_ptr value")
+    call assert_equals(name_cat(1:3), name_ptr, "get_ptr value")
+
+    name_copy = " "
+    call group1%get_name_copy(name_copy)
+    call assert_equals(name_rat(1:3), name_copy, "get_ptr value")
     
   end subroutine test_struct_class2
 

@@ -4333,6 +4333,34 @@
         "name":"##### getter ###############################################"
     },
     {
+        "name": "c_mixin_getter_char*",
+        "notes": [
+            "Extract char* field from struct."
+        ],
+        "mixin": [
+            "c_mixin_header_cstring"
+        ],
+        "c_pre_call": [
+            "char *{c_local_cxx} = {CXX_this}->{field_name};"
+        ],
+        "c_local": [
+            "cxx"
+        ]
+    },
+    {
+        "name": "f_mixin_getter_argname",
+        "notes": [
+            "Name of getter result as an argument.",
+            "Since Shroud creates the getter function,",
+            "we know this name will not conflict."
+        ],
+        "fmtdict": {
+            "f_var": "val",
+            "i_var": "val",
+            "c_var": "val"
+        }
+    },
+    {
         "name": "f_getter_struct*_fapi_pointer",
         "notes": [
             "XXX - unused - the getter does not need a C wrapper if api(fapi)",
@@ -4495,6 +4523,21 @@
             "f_mixin_cdesc_pass",
             "f_mixin_cdesc_char_pointer",
             "c_mixin_cdesc_getter_char*"
+        ]
+    },
+    {
+        "name": "f_getter_char*_buf_copy",
+        "notes": [
+            "Get a char* member of a class as a Fortran pointer.ABC"
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_function-as-character-arg",
+            "f_mixin_pass_character_buf",
+            "c_mixin_in_character_buf",
+            "c_mixin_getter_char*",
+            "c_mixin_char-copyout",
+            "f_mixin_getter_argname"
         ]
     },
     {

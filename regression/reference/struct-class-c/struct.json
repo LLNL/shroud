@@ -2308,6 +2308,40 @@
                             "field_name": "name_ptr",
                             "variable_name": "name_ptr"
                         }
+                    },
+                    {
+                        "<VARIABLE>": "name_copy ****************************************",
+                        "ast": {
+                            "declarator": {
+                                "attrs": {
+                                    "deref": "copy",
+                                    "readonly": true
+                                },
+                                "name": "name_copy",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ],
+                                "typemap_name": "char"
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        },
+                        "name": "name_copy",
+                        "options": {},
+                        "wrap": {},
+                        "zz_bind": {
+                            "share": {}
+                        },
+                        "zz_fmtdict": {
+                            "c_type": "char",
+                            "cxx_type": "char",
+                            "field_name": "name_copy",
+                            "variable_name": "name_copy"
+                        }
                     }
                 ],
                 "wrap": {},

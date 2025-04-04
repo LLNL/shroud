@@ -97,6 +97,7 @@ struct Cstruct_as_class2 {
     char *name;          // get a Fortran allocatable
     char *private_name;  // not wrapped
     char *name_ptr;      // get as Fortran pointer
+    char *name_copy;     // get a copy of the field
 };
 typedef struct Cstruct_as_class2 Cstruct_as_class2;
 

@@ -33,4 +33,7 @@ void STR_Cstruct_as_class2_get_name_ptr(STR_Cstruct_as_class2 * self,
 void STR_Cstruct_as_class2_set_name_ptr(STR_Cstruct_as_class2 * self,
     char *val);
 
+void STR_Cstruct_as_class2_get_name_copy(STR_Cstruct_as_class2 * self,
+    char *val, int SHT_rv_len);
+
 #endif  // WRAPCSTRUCT_AS_CLASS2_H

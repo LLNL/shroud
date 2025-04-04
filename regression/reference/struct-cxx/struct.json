@@ -2803,6 +2803,126 @@
                             "struct_name": "Cstruct_as_class2",
                             "wrapped_name": "name_ptr"
                         }
+                    },
+                    {
+                        "<FUNCTION>": "get_name_copy  14 ****************************************",
+                        "_generated": "getter/setter",
+                        "_generated_path": [
+                            "getter/setter"
+                        ],
+                        "ast": {
+                            "declarator": {
+                                "attrs": {
+                                    "deref": "copy",
+                                    "intent": "getter"
+                                },
+                                "name": "get_name_copy",
+                                "params": [],
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ],
+                                "typemap_name": "char"
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        },
+                        "decl": "char *get_name_copy()",
+                        "declgen": "char *get_name_copy(void) +deref(copy)+intent(getter)",
+                        "helpers": {
+                            "fc": [
+                                "char_copy"
+                            ]
+                        },
+                        "name": "get_name_copy",
+                        "options": {},
+                        "user_fmt": {
+                            "field_name": "name_copy",
+                            "struct_name": "Cstruct_as_class2",
+                            "wrapped_name": "name_copy"
+                        },
+                        "wrap": {
+                            "fortran": true
+                        },
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->get_name_copy(\t)",
+                                        "C_name": "STR_Cstruct_as_class2_get_name_copy",
+                                        "C_prototype": "STR_Cstruct_as_class2 * self,\t char *val,\t int SHT_rv_len",
+                                        "C_return_type": "void",
+                                        "F_arg_c_call": "obj%cxxmem,\t val,\t SHT_rv_len",
+                                        "F_arguments": "obj,\t val",
+                                        "F_subprogram": "subroutine",
+                                        "c_const": "",
+                                        "c_helper_char_copy": "ShroudCharCopy",
+                                        "c_local_cxx": "SHC_rv_cxx",
+                                        "c_type": "char",
+                                        "c_var": "val",
+                                        "c_var_len": "SHT_rv_len",
+                                        "cxx_addr": "",
+                                        "cxx_member": "->",
+                                        "cxx_type": "char",
+                                        "cxx_var": "SHC_rv_cxx",
+                                        "f_call_function": "c_cstruct_as_class2_get_name_copy",
+                                        "f_type": "character(len=*)",
+                                        "f_var": "val",
+                                        "f_var_len": "SHT_rv_len",
+                                        "fc_var": "SHT_rv",
+                                        "i_arguments": "self,\t val,\t SHT_rv_len",
+                                        "i_intent": "OUT",
+                                        "i_intent_attr": ", intent(OUT)",
+                                        "i_kind": "C_CHAR",
+                                        "i_module_name": "iso_c_binding",
+                                        "i_name_function": "c_cstruct_as_class2_get_name_copy",
+                                        "i_subprogram": "subroutine",
+                                        "i_type": "character(kind=C_CHAR)",
+                                        "i_var": "val",
+                                        "i_var_len": "SHT_rv_len",
+                                        "idtor": "0",
+                                        "stmt_name": "f_getter_char*_buf_copy",
+                                        "typemap_name": "char"
+                                    },
+                                    "meta": {
+                                        "abstract": "char*",
+                                        "api": "buf",
+                                        "deref": "copy",
+                                        "intent": "getter"
+                                    },
+                                    "stmt": "f_getter_char*_buf_copy"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "abstract": "char*",
+                                        "intent": "getter"
+                                    }
+                                }
+                            }
+                        },
+                        "zz_fmtdict": {
+                            "C_name_api": "get_name_copy",
+                            "F_name_api": "get_name_copy",
+                            "F_name_function": "get_name_copy",
+                            "F_name_generic": "get_name_copy",
+                            "F_name_impl": "cstruct_as_class2_get_name_copy",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "f_arglist": [
+                                "val"
+                            ],
+                            "field_name": "name_copy",
+                            "function_name": "get_name_copy",
+                            "struct_name": "Cstruct_as_class2",
+                            "wrapped_name": "name_copy"
+                        }
                     }
                 ],
                 "name": "Cstruct_as_class2",
@@ -2884,6 +3004,43 @@
                             "cxx_type": "char",
                             "field_name": "name_ptr",
                             "variable_name": "name_ptr"
+                        }
+                    },
+                    {
+                        "<VARIABLE>": "name_copy ****************************************",
+                        "ast": {
+                            "declarator": {
+                                "attrs": {
+                                    "deref": "copy",
+                                    "readonly": true
+                                },
+                                "name": "name_copy",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ],
+                                "typemap_name": "char"
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        },
+                        "name": "name_copy",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        },
+                        "zz_bind": {
+                            "share": {}
+                        },
+                        "zz_fmtdict": {
+                            "c_type": "char",
+                            "cxx_type": "char",
+                            "field_name": "name_copy",
+                            "variable_name": "name_copy"
                         }
                     }
                 ],
@@ -2998,7 +3155,7 @@
         ],
         "functions": [
             {
-                "<FUNCTION>": "passStructByValue  14 ****************************************",
+                "<FUNCTION>": "passStructByValue  15 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "passStructByValue",
@@ -3213,7 +3370,7 @@
                 }
             },
             {
-                "<FUNCTION>": "passStruct1  15 ****************************************",
+                "<FUNCTION>": "passStruct1  16 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "passStruct1",
@@ -3429,7 +3586,7 @@
                 }
             },
             {
-                "<FUNCTION>": "passStruct2  16 ****************************************",
+                "<FUNCTION>": "passStruct2  17 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "passStruct2",
@@ -3776,7 +3933,7 @@
                 }
             },
             {
-                "<FUNCTION>": "acceptStructInPtr  17 ****************************************",
+                "<FUNCTION>": "acceptStructInPtr  18 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "acceptStructInPtr",
@@ -3992,7 +4149,7 @@
                 }
             },
             {
-                "<FUNCTION>": "acceptStructOutPtr  18 ****************************************",
+                "<FUNCTION>": "acceptStructOutPtr  19 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "acceptStructOutPtr",
@@ -4360,7 +4517,7 @@
                 }
             },
             {
-                "<FUNCTION>": "acceptStructInOutPtr  19 ****************************************",
+                "<FUNCTION>": "acceptStructInOutPtr  20 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "acceptStructInOutPtr",
@@ -4545,7 +4702,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnStructByValue  20 ****************************************",
+                "<FUNCTION>": "returnStructByValue  21 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnStructByValue",
@@ -4849,7 +5006,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnStructPtr1  21 ****************************************",
+                "<FUNCTION>": "returnStructPtr1  22 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnStructPtr1",
@@ -5203,7 +5360,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnStructPtr2  22 ****************************************",
+                "<FUNCTION>": "returnStructPtr2  23 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnStructPtr2",
@@ -5662,7 +5819,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnStructPtrArray  23 ****************************************",
+                "<FUNCTION>": "returnStructPtrArray  24 ****************************************",
                 "ast": {
                     "declarator": {
                         "attrs": {
@@ -5851,7 +6008,7 @@
                 }
             },
             {
-                "<FUNCTION>": "get_global_struct_list  24 ****************************************",
+                "<FUNCTION>": "get_global_struct_list  25 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "get_global_struct_list",
@@ -6002,7 +6159,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Create_Cstruct_as_class  25 ****************************************",
+                "<FUNCTION>": "Create_Cstruct_as_class  26 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "Create_Cstruct_as_class",
@@ -6159,7 +6316,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Create_Cstruct_as_class_args  26 ****************************************",
+                "<FUNCTION>": "Create_Cstruct_as_class_args  27 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "Create_Cstruct_as_class_args",
@@ -6514,7 +6671,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Return_Cstruct_as_class  27 ****************************************",
+                "<FUNCTION>": "Return_Cstruct_as_class  28 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "Return_Cstruct_as_class",
@@ -6652,7 +6809,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Return_Cstruct_as_class_args  28 ****************************************",
+                "<FUNCTION>": "Return_Cstruct_as_class_args  29 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "Return_Cstruct_as_class_args",
@@ -6973,7 +7130,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Cstruct_as_class_sum  29 ****************************************",
+                "<FUNCTION>": "Cstruct_as_class_sum  30 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "Cstruct_as_class_sum",
@@ -7199,7 +7356,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Create_Cstruct_as_subclass_args  30 ****************************************",
+                "<FUNCTION>": "Create_Cstruct_as_subclass_args  31 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "Create_Cstruct_as_subclass_args",
@@ -7652,7 +7809,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Return_Cstruct_as_subclass_args  31 ****************************************",
+                "<FUNCTION>": "Return_Cstruct_as_subclass_args  32 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "Return_Cstruct_as_subclass_args",
@@ -8063,7 +8220,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Cstruct_ptr_get_const_dvalue  32 ****************************************",
+                "<FUNCTION>": "Cstruct_ptr_get_const_dvalue  33 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -8238,7 +8395,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Cstruct_ptr_set_const_dvalue  33 ****************************************",
+                "<FUNCTION>": "Cstruct_ptr_set_const_dvalue  34 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -8446,7 +8603,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Cstruct_list_get_ivalue  34 ****************************************",
+                "<FUNCTION>": "Cstruct_list_get_ivalue  35 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -8665,7 +8822,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Cstruct_list_set_ivalue  35 ****************************************",
+                "<FUNCTION>": "Cstruct_list_set_ivalue  36 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -8880,7 +9037,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Cstruct_list_get_dvalue  36 ****************************************",
+                "<FUNCTION>": "Cstruct_list_get_dvalue  37 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -9099,7 +9256,7 @@
                 }
             },
             {
-                "<FUNCTION>": "Cstruct_list_set_dvalue  37 ****************************************",
+                "<FUNCTION>": "Cstruct_list_set_dvalue  38 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"

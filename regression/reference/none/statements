@@ -4862,6 +4862,25 @@ c_mixin_function_vector_malloc:
   c_temps:
   - size
   sphinx-end-before: c_mixin_function_vector_malloc
+c_mixin_getter_char*:
+  sphinx-start-after: c_mixin_getter_char*
+  name: c_mixin_getter_char*
+  intent: mixin
+  mixin_names:
+  - '  c_mixin_header_cstring'
+  c_pre_call:
+  - char *{c_local_cxx} = {CXX_this}->{field_name};
+  c_local:
+  - cxx
+  impl_header:
+  - <cstring>
+  lang_c:
+    impl_header:
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstring>
+  sphinx-end-before: c_mixin_getter_char*
 c_mixin_header_cstring:
   sphinx-start-after: c_mixin_header_cstring
   name: c_mixin_header_cstring
@@ -12892,6 +12911,80 @@ f_getter_bool:
   c_return:
   - return {CXX_this}->{field_name};
   sphinx-end-before: f_getter_bool
+f_getter_char*_buf_copy:
+  sphinx-start-after: f_getter_char*_buf_copy
+  name: f_getter_char*_buf_copy
+  intent: getter
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass CHARACTER and LEN to C wrapper.
+  - Copy cxx variable to c argument for output.
+  notes:
+  - Get a char* member of a class as a Fortran pointer.ABC
+  mixin_names:
+  - '  f_mixin_function-to-subroutine'
+  - '    c_mixin_as-intent-out'
+  - '  f_mixin_function-as-character-arg'
+  - '  f_mixin_pass_character_buf'
+  - '  c_mixin_in_character_buf'
+  - '    c_mixin_character-assumed-length'
+  - '  c_mixin_getter_char*'
+  - '    c_mixin_header_cstring'
+  - '  c_mixin_char-copyout'
+  - '  f_mixin_getter_argname'
+  f_dummy_arg:
+  - '{f_var}'
+  f_dummy_decl:
+  - 'character(len=*), intent(OUT) :: {f_var}'
+  f_local_decl:
+  - integer(C_INT) {f_var_len}
+  f_pre_call:
+  - '{f_var_len} = len({f_var}, kind=C_INT)'
+  f_arg_call:
+  - '{f_var}'
+  - '{f_var_len}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  f_result_var: as-subroutine
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_temps:
+  - len
+  f_need_wrapper: true
+  i_dummy_arg:
+  - '{i_var}'
+  - '{i_var_len}'
+  i_dummy_decl:
+  - 'character(kind=C_CHAR){i_intent_attr} :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  c_return_type: void
+  c_prototype:
+  - char *{c_var}
+  - int {c_var_len}
+  c_pre_call:
+  - char *{c_local_cxx} = {CXX_this}->{field_name};
+  c_post_call:
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
+  c_temps:
+  - len
+  c_local:
+  - cxx
+  fmtdict:
+    i_intent: OUT
+    i_intent_attr: ', intent(OUT)'
+    f_var: val
+    i_var: val
+    c_var: val
+  helper:
+  - char_copy
+  impl_header:
+  - <cstring>
+  sphinx-end-before: f_getter_char*_buf_copy
 f_getter_char*_cdesc_allocatable:
   sphinx-start-after: f_getter_char*_cdesc_allocatable
   name: f_getter_char*_cdesc_allocatable
@@ -17304,6 +17397,15 @@ f_mixin_function_ptr:
     iso_c_binding:
     - C_PTR
   sphinx-end-before: f_mixin_function_ptr
+f_mixin_getter_argname:
+  sphinx-start-after: f_mixin_getter_argname
+  name: f_mixin_getter_argname
+  intent: mixin
+  fmtdict:
+    f_var: val
+    i_var: val
+    c_var: val
+  sphinx-end-before: f_mixin_getter_argname
 f_mixin_helper_array_string_allocatable:
   sphinx-start-after: f_mixin_helper_array_string_allocatable
   name: f_mixin_helper_array_string_allocatable
@@ -21740,6 +21842,8 @@ root
       function-assign-to-local -- c_mixin_function-assign-to-local
       function-assign-to-new -- c_mixin_function-assign-to-new
       function-return-cvar -- c_mixin_function-return-cvar
+      getter
+        char* -- c_mixin_getter_char*
       header
         cstring -- c_mixin_header_cstring
         stddef -- c_mixin_header_stddef
@@ -21978,6 +22082,8 @@ root
     getter
       bool -- f_getter_bool
       char*
+        buf
+          copy -- f_getter_char*_buf_copy
         cdesc
           allocatable -- f_getter_char*_cdesc_allocatable
           pointer -- f_getter_char*_cdesc_pointer
@@ -22144,6 +22250,8 @@ root
       function-as-cptr -- f_mixin_function-as-cptr
       function-interface-as-cptr -- f_mixin_function-interface-as-cptr
       function-to-subroutine -- f_mixin_function-to-subroutine
+      getter
+        argname -- f_mixin_getter_argname
       helper
         array
           string
