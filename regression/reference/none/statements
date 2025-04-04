@@ -4880,6 +4880,20 @@ c_mixin_getter_char*_len:
     impl_header:
     - <cstring>
   sphinx-end-before: c_mixin_getter_char*_len
+c_mixin_getter_string:
+  sphinx-start-after: c_mixin_getter_string
+  name: c_mixin_getter_string
+  intent: mixin
+  c_pre_call:
+  - void *{c_local_cxx} = {nullptr};
+  - size_t {c_local_len} = {CXX_this}->{field_name}.size();
+  - if ({c_local_len} != 0) {{+
+  - "{c_local_cxx} =\t const_cast<char *>({CXX_this}->{field_name}.data());"
+  - -}}
+  c_local:
+  - cxx
+  - len
+  sphinx-end-before: c_mixin_getter_string
 c_mixin_header_cstring:
   sphinx-start-after: c_mixin_header_cstring
   name: c_mixin_header_cstring
@@ -13239,11 +13253,13 @@ f_getter_string_cdesc_allocatable:
   - using helper copy_string.
   notes:
   - Return argument meta data to Fortran.
+  - XXX - check for array of std::string
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_cdesc_char_allocate'
+  - '  c_mixin_getter_string'
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_local_decl:
@@ -13267,13 +13283,22 @@ f_getter_string_cdesc_allocatable:
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
+  c_pre_call:
+  - void *{c_local_cxx} = {nullptr};
+  - size_t {c_local_len} = {CXX_this}->{field_name}.size();
+  - if ({c_local_len} != 0) {{+
+  - "{c_local_cxx} =\t const_cast<char *>({CXX_this}->{field_name}.data());"
+  - -}}
   c_call:
-  - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{CXX_this}->{field_name}.data());"
+  - '{c_var_cdesc}->base_addr = {c_local_cxx};'
   - '{c_var_cdesc}->type = 0; // SH_CHAR;'
-  - '{c_var_cdesc}->elem_len = {CXX_this}->{field_name}.size();'
+  - '{c_var_cdesc}->elem_len = {c_local_len};'
   - '{c_var_cdesc}->rank = 0;'
   c_temps:
   - cdesc
+  c_local:
+  - cxx
+  - len
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -21857,6 +21882,7 @@ root
       getter
         char* -- c_mixin_getter_char*
           len -- c_mixin_getter_char*_len
+        string -- c_mixin_getter_string
       header
         cstring -- c_mixin_header_cstring
         stddef -- c_mixin_header_stddef

@@ -4355,6 +4355,24 @@
         ]
     },
     {
+        "name": "c_mixin_getter_string",
+        "notes": [
+            "Extract std::string field from struct."
+        ],
+        "c_pre_call": [
+            "void *{c_local_cxx} = {nullptr};",
+            "size_t {c_local_len} = {CXX_this}->{field_name}.size();",
+            "if ({c_local_len} != 0) {{+",
+            "{c_local_cxx} =\t const_cast<char *>({CXX_this}->{field_name}.data());",
+            "-}}"
+
+        ],
+        "c_local": [
+            "cxx",
+            "len"
+        ]
+    },
+    {
         "name": "f_mixin_getter_argname",
         "notes": [
             "Name of getter result as an argument.",
@@ -4563,17 +4581,19 @@
     {
         "name": "f_getter_string_cdesc_allocatable",
         "notes": [
-            "Return argument meta data to Fortran."
+            "Return argument meta data to Fortran.",
+            "XXX - check for array of std::string"
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_cdesc_pass",
-            "f_mixin_cdesc_char_allocate"
+            "f_mixin_cdesc_char_allocate",
+            "c_mixin_getter_string"
         ],
         "c_call": [
-            "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{CXX_this}->{field_name}.data());",
+            "{c_var_cdesc}->base_addr = {c_local_cxx};",
             "{c_var_cdesc}->type = 0; // SH_CHAR;",
-            "{c_var_cdesc}->elem_len = {CXX_this}->{field_name}.size();",
+            "{c_var_cdesc}->elem_len = {c_local_len};",
             "{c_var_cdesc}->rank = 0;"
         ]
     },
