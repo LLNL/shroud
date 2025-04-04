@@ -1146,16 +1146,10 @@
             "Save char *struct members in a cdesc",
             "along with shape information."
         ],
-        "notes": [
-            "The char* member may be NULL or the string must be NULL terminated."
-        ],
-        "mixin": [
-            "c_mixin_header_cstring"
-        ],
         "c_call": [
-            "{c_var_cdesc}->base_addr = {CXX_this}->{field_name};",
+            "{c_var_cdesc}->base_addr = {c_local_cxx};",
             "{c_var_cdesc}->type = {typemap.sh_type};",
-            "{c_var_cdesc}->elem_len = {CXX_this}->{field_name} == {nullptr} ? 0 : {stdlib}strlen({CXX_this}->{field_name});",
+            "{c_var_cdesc}->elem_len = {c_local_len};",
             "{c_var_cdesc}->rank = {rank};{gen.c_array_shape}",
             "{c_var_cdesc}->size = {gen.c_array_size};"
         ],
@@ -4337,14 +4331,27 @@
         "notes": [
             "Extract char* field from struct."
         ],
-        "mixin": [
-            "c_mixin_header_cstring"
-        ],
         "c_pre_call": [
             "char *{c_local_cxx} = {CXX_this}->{field_name};"
         ],
         "c_local": [
             "cxx"
+        ]
+    },
+    {
+        "name": "c_mixin_getter_char*_len",
+        "notes": [
+            "Extract char* len.",
+            "The char* member may be NULL or the string must be NULL terminated."
+        ],
+        "mixin": [
+            "c_mixin_header_cstring"
+        ],
+        "c_pre_call": [
+            "size_t {c_local_len} = {c_local_cxx} == {nullptr} ? 0 : {stdlib}strlen({c_local_cxx});"
+        ],
+        "c_local": [
+            "len"
         ]
     },
     {
@@ -4510,6 +4517,8 @@
             "f_mixin_function-to-subroutine",
             "f_mixin_cdesc_pass",
             "f_mixin_cdesc_char_allocate",
+            "c_mixin_getter_char*",
+            "c_mixin_getter_char*_len",
             "c_mixin_cdesc_getter_char*"
         ]
     },
@@ -4522,6 +4531,8 @@
             "f_mixin_function-to-subroutine",
             "f_mixin_cdesc_pass",
             "f_mixin_cdesc_char_pointer",
+            "c_mixin_getter_char*",
+            "c_mixin_getter_char*_len",
             "c_mixin_cdesc_getter_char*"
         ]
     },

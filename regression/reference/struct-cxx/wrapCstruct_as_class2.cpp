@@ -48,9 +48,11 @@ void STR_Cstruct_as_class2_get_name(STR_Cstruct_as_class2 * self,
     Cstruct_as_class2 *SH_this = static_cast<Cstruct_as_class2 *>
         (self->addr);
     // splicer begin class.Cstruct_as_class2.method.get_name
-    SHT_rv_cdesc->base_addr = SH_this->name;
+    char *SHC_rv_cxx = SH_this->name;
+    size_t SHC_rv_len = SHC_rv_cxx == nullptr ? 0 : std::strlen(SHC_rv_cxx);
+    SHT_rv_cdesc->base_addr = SHC_rv_cxx;
     SHT_rv_cdesc->type = SH_TYPE_CHAR;
-    SHT_rv_cdesc->elem_len = SH_this->name == nullptr ? 0 : std::strlen(SH_this->name);
+    SHT_rv_cdesc->elem_len = SHC_rv_len;
     SHT_rv_cdesc->rank = 0;
     SHT_rv_cdesc->size = 1;
     // splicer end class.Cstruct_as_class2.method.get_name
@@ -83,9 +85,11 @@ void STR_Cstruct_as_class2_get_name_ptr(STR_Cstruct_as_class2 * self,
     Cstruct_as_class2 *SH_this = static_cast<Cstruct_as_class2 *>
         (self->addr);
     // splicer begin class.Cstruct_as_class2.method.get_name_ptr
-    SHT_rv_cdesc->base_addr = SH_this->name_ptr;
+    char *SHC_rv_cxx = SH_this->name_ptr;
+    size_t SHC_rv_len = SHC_rv_cxx == nullptr ? 0 : std::strlen(SHC_rv_cxx);
+    SHT_rv_cdesc->base_addr = SHC_rv_cxx;
     SHT_rv_cdesc->type = SH_TYPE_CHAR;
-    SHT_rv_cdesc->elem_len = SH_this->name_ptr == nullptr ? 0 : std::strlen(SH_this->name_ptr);
+    SHT_rv_cdesc->elem_len = SHC_rv_len;
     SHT_rv_cdesc->rank = 0;
     SHT_rv_cdesc->size = 1;
     // splicer end class.Cstruct_as_class2.method.get_name_ptr

@@ -4266,25 +4266,15 @@ c_mixin_cdesc_getter_char*:
   comments:
   - Save char *struct members in a cdesc
   - along with shape information.
-  mixin_names:
-  - '  c_mixin_header_cstring'
   c_call:
-  - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
+  - '{c_var_cdesc}->base_addr = {c_local_cxx};'
   - '{c_var_cdesc}->type = {typemap.sh_type};'
-  - '{c_var_cdesc}->elem_len = {CXX_this}->{field_name} == {nullptr} ? 0 : {stdlib}strlen({CXX_this}->{field_name});'
+  - '{c_var_cdesc}->elem_len = {c_local_len};'
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
   - '{c_var_cdesc}->size = {gen.c_array_size};'
   c_need_wrapper: true
   helper:
   - type_defines
-  impl_header:
-  - <cstring>
-  lang_c:
-    impl_header:
-    - <string.h>
-  lang_cxx:
-    impl_header:
-    - <cstring>
   sphinx-end-before: c_mixin_cdesc_getter_char*
 c_mixin_cdesc_inout_vector:
   sphinx-start-after: c_mixin_cdesc_inout_vector
@@ -4866,12 +4856,21 @@ c_mixin_getter_char*:
   sphinx-start-after: c_mixin_getter_char*
   name: c_mixin_getter_char*
   intent: mixin
-  mixin_names:
-  - '  c_mixin_header_cstring'
   c_pre_call:
   - char *{c_local_cxx} = {CXX_this}->{field_name};
   c_local:
   - cxx
+  sphinx-end-before: c_mixin_getter_char*
+c_mixin_getter_char*_len:
+  sphinx-start-after: c_mixin_getter_char*_len
+  name: c_mixin_getter_char*_len
+  intent: mixin
+  mixin_names:
+  - '  c_mixin_header_cstring'
+  c_pre_call:
+  - 'size_t {c_local_len} = {c_local_cxx} == {nullptr} ? 0 : {stdlib}strlen({c_local_cxx});'
+  c_local:
+  - len
   impl_header:
   - <cstring>
   lang_c:
@@ -4880,7 +4879,7 @@ c_mixin_getter_char*:
   lang_cxx:
     impl_header:
     - <cstring>
-  sphinx-end-before: c_mixin_getter_char*
+  sphinx-end-before: c_mixin_getter_char*_len
 c_mixin_header_cstring:
   sphinx-start-after: c_mixin_header_cstring
   name: c_mixin_header_cstring
@@ -12929,7 +12928,6 @@ f_getter_char*_buf_copy:
   - '  c_mixin_in_character_buf'
   - '    c_mixin_character-assumed-length'
   - '  c_mixin_getter_char*'
-  - '    c_mixin_header_cstring'
   - '  c_mixin_char-copyout'
   - '  f_mixin_getter_argname'
   f_dummy_arg:
@@ -12982,8 +12980,6 @@ f_getter_char*_buf_copy:
     c_var: val
   helper:
   - char_copy
-  impl_header:
-  - <cstring>
   sphinx-end-before: f_getter_char*_buf_copy
 f_getter_char*_cdesc_allocatable:
   sphinx-start-after: f_getter_char*_cdesc_allocatable
@@ -13003,8 +12999,10 @@ f_getter_char*_cdesc_allocatable:
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_cdesc_char_allocate'
-  - '  c_mixin_cdesc_getter_char*'
+  - '  c_mixin_getter_char*'
+  - '  c_mixin_getter_char*_len'
   - '    c_mixin_header_cstring'
+  - '  c_mixin_cdesc_getter_char*'
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_local_decl:
@@ -13028,14 +13026,20 @@ f_getter_char*_cdesc_allocatable:
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
+  c_pre_call:
+  - char *{c_local_cxx} = {CXX_this}->{field_name};
+  - 'size_t {c_local_len} = {c_local_cxx} == {nullptr} ? 0 : {stdlib}strlen({c_local_cxx});'
   c_call:
-  - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
+  - '{c_var_cdesc}->base_addr = {c_local_cxx};'
   - '{c_var_cdesc}->type = {typemap.sh_type};'
-  - '{c_var_cdesc}->elem_len = {CXX_this}->{field_name} == {nullptr} ? 0 : {stdlib}strlen({CXX_this}->{field_name});'
+  - '{c_var_cdesc}->elem_len = {c_local_len};'
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
   - '{c_var_cdesc}->size = {gen.c_array_size};'
   c_temps:
   - cdesc
+  c_local:
+  - cxx
+  - len
   c_need_wrapper: true
   fmtdict:
     i_intent: OUT
@@ -13064,8 +13068,10 @@ f_getter_char*_cdesc_pointer:
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_cdesc_char_pointer'
-  - '  c_mixin_cdesc_getter_char*'
+  - '  c_mixin_getter_char*'
+  - '  c_mixin_getter_char*_len'
   - '    c_mixin_header_cstring'
+  - '  c_mixin_cdesc_getter_char*'
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_local_decl:
@@ -13088,14 +13094,20 @@ f_getter_char*_cdesc_pointer:
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
+  c_pre_call:
+  - char *{c_local_cxx} = {CXX_this}->{field_name};
+  - 'size_t {c_local_len} = {c_local_cxx} == {nullptr} ? 0 : {stdlib}strlen({c_local_cxx});'
   c_call:
-  - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
+  - '{c_var_cdesc}->base_addr = {c_local_cxx};'
   - '{c_var_cdesc}->type = {typemap.sh_type};'
-  - '{c_var_cdesc}->elem_len = {CXX_this}->{field_name} == {nullptr} ? 0 : {stdlib}strlen({CXX_this}->{field_name});'
+  - '{c_var_cdesc}->elem_len = {c_local_len};'
   - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
   - '{c_var_cdesc}->size = {gen.c_array_size};'
   c_temps:
   - cdesc
+  c_local:
+  - cxx
+  - len
   c_need_wrapper: true
   fmtdict:
     i_intent: OUT
@@ -21844,6 +21856,7 @@ root
       function-return-cvar -- c_mixin_function-return-cvar
       getter
         char* -- c_mixin_getter_char*
+          len -- c_mixin_getter_char*_len
       header
         cstring -- c_mixin_header_cstring
         stddef -- c_mixin_header_stddef
