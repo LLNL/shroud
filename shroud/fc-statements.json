@@ -2277,12 +2277,12 @@
         ]
     },
     {
-        "name": "c_mixin_char-copy",
+        "name": "c_mixin_char-copyout",
         "comments": [
-            "Copy cxx variable to c argument."
+            "Copy cxx variable to c argument for output."
         ],
         "notes": [
-            "Used to NULL terminated an input Fortran string."
+            "Used to copy and blank fill an output Fortran string."
         ],
         "c_post_call": [
             "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
@@ -2567,7 +2567,7 @@
             "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf",
             "c_mixin_arg-call-cxx",
-            "c_mixin_char-copy",
+            "c_mixin_char-copyout",
             "c_mixin_char-alloc"
         ]
     },
@@ -2588,7 +2588,7 @@
             "c_mixin_in_character_buf",
             "c_mixin_arg-call-cvar",
             "c_mixin_function-assign-to-local",
-            "c_mixin_char-copy"
+            "c_mixin_char-copyout"
         ]
     },
     {
@@ -2611,7 +2611,7 @@
             "c_mixin_in_character_buf",
             "c_mixin_arg-call-cvar",
             "c_mixin_function-assign-to-local",
-            "c_mixin_char-copy"
+            "c_mixin_char-copyout"
         ]
     },
     {
@@ -2667,7 +2667,7 @@
             "c_mixin_in_character_buf",
             "c_mixin_local-cxx-ptr",
             "c_mixin_arg-call-cxx-address",
-            "c_mixin_char-copy"
+            "c_mixin_char-copyout"
         ]
     },
     {
@@ -4897,7 +4897,7 @@
             "c_mixin_cfi-unpack-len",
             "c_mixin_char-malloc",
             "c_mixin_arg-call-cxx",
-            "c_mixin_char-copy",
+            "c_mixin_char-copyout",
             "c_mixin_char-free"
         ]
     },
@@ -4908,7 +4908,7 @@
             "c_mixin_cfi_arg_character",
             "c_mixin_cfi-unpack-base-addr",
             "c_mixin_cfi-unpack-len",
-            "c_mixin_char-copy",
+            "c_mixin_char-copyout",
             "c_mixin_char-alloc",
             "c_mixin_arg-call-cxx"
         ]
@@ -4927,7 +4927,7 @@
             "c_mixin_cfi-unpack-len",
             "c_mixin_arg-call-cxx",
             "c_mixin_function-assign-to-local",
-            "c_mixin_char-copy"
+            "c_mixin_char-copyout"
         ]
     },
     {
@@ -4946,7 +4946,7 @@
             "c_mixin_cfi-unpack-len",
             "c_mixin_arg-call-cxx",
             "c_mixin_function-assign-to-local",
-            "c_mixin_char-copy"
+            "c_mixin_char-copyout"
         ]
     },
     {
