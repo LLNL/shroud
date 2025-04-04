@@ -13,7 +13,6 @@
 #include <vector>
 // shroud
 #include <cstring>
-#include <cstdlib>
 #include "wrapvectors.h"
 
 // splicer begin CXX_definitions

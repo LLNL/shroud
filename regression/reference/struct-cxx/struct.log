@@ -16,6 +16,14 @@ C f int get_z1(void) +intent(getter)
 C f void set_z1(int val +intent(setter)) +intent(setter)
 Close wrapCstruct_as_subclass.h
 Close wrapCstruct_as_subclass.cpp
+class Cstruct_as_class2
+C f char *get_name(void) +intent(getter)
+C f void set_name(char *val +intent(setter)) +intent(setter)
+C f char *get_name_ptr(void) +deref(pointer)+intent(getter)
+C f void set_name_ptr(char *val +intent(setter)) +intent(setter)
+C f char *get_name_copy(void) +deref(copy)+intent(getter)
+Close wrapCstruct_as_class2.h
+Close wrapCstruct_as_class2.cpp
 struct Cstruct1
 struct Cstruct_ptr
 struct Cstruct_list
@@ -93,6 +101,17 @@ C-interface f int get_y1(void) +intent(getter)
 C-interface f void set_y1(int val +intent(setter)) +intent(setter)
 C-interface f int get_z1(void) +intent(getter)
 C-interface f void set_z1(int val +intent(setter)) +intent(setter)
+class Cstruct_as_class2
+Fortran char *get_name(void) +intent(getter)
+Fortran void set_name(char *val +intent(setter)) +intent(setter)
+Fortran char *get_name_ptr(void) +deref(pointer)+intent(getter)
+Fortran void set_name_ptr(char *val +intent(setter)) +intent(setter)
+Fortran char *get_name_copy(void) +deref(copy)+intent(getter)
+C-interface f char *get_name(void) +intent(getter)
+C-interface f void set_name(char *val +intent(setter)) +intent(setter)
+C-interface f char *get_name_ptr(void) +deref(pointer)+intent(getter)
+C-interface f void set_name_ptr(char *val +intent(setter)) +intent(setter)
+C-interface f char *get_name_copy(void) +deref(copy)+intent(getter)
 class s_nested
 Fortran int passStructByValue(Cstruct1 arg)
 Fortran int passStruct1(const Cstruct1 *arg)

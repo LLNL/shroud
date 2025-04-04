@@ -64,8 +64,12 @@ name mangling
 
 native type
 
-   numeric type, intrinsic
+   numeric type, intrinsic.
    Integer or real of any size.
+
+POD
+
+   Plain Old Data.
 
 shadow class
 

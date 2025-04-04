@@ -21,12 +21,16 @@
     },
     {
         "name": "c_mixin_header_stdlib",
+        "notes": [
+            "malloc, free.",
+            "C++ will use new and delete."
+        ],
         "lang_c": {
             "impl_header": [
                 "<stdlib.h>"
             ]
         },
-        "lang_cxx": {
+        "##lang_cxx": {
             "impl_header": [
                 "<cstdlib>"
             ]
@@ -34,6 +38,9 @@
     },
     {
         "name": "c_mixin_header_cstring",
+        "notes": [
+            "strlen, memcpy"
+        ],
         "lang_c": {
             "impl_header": [
                 "<string.h>"
@@ -962,6 +969,9 @@
         "comments": [
             "Fill cdesc from char * in the C wrapper."
         ],
+        "mixin": [
+            "c_mixin_header_cstring"
+        ],
         "c_post_call": [
             "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});",
             "{c_var_cdesc}->type = {typemap.sh_type};",
@@ -1108,17 +1118,12 @@
         "f_post_call": [
             "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
         ],
-        "f_module": {
-            "iso_c_binding": [
-                "c_f_pointer"
-            ]
-        },
         "helper": [
             "pointer_string"
         ]
     },
     {
-        "name": "f_mixin_cdesc_getter",
+        "name": "c_mixin_cdesc_getter",
         "comments": [
             "Save pointer struct members in a cdesc",
             "along with shape information."
@@ -1127,6 +1132,24 @@
             "{c_var_cdesc}->base_addr = {CXX_this}->{field_name};",
             "{c_var_cdesc}->type = {typemap.sh_type};",
             "{c_var_cdesc}->elem_len = sizeof({cxx_type});",
+            "{c_var_cdesc}->rank = {rank};{gen.c_array_shape}",
+            "{c_var_cdesc}->size = {gen.c_array_size};"
+        ],
+        "c_need_wrapper": true,
+        "helper": [
+            "type_defines"
+        ]
+    },
+    {
+        "name": "c_mixin_cdesc_getter_char*",
+        "comments": [
+            "Save char *struct members in a cdesc",
+            "along with shape information."
+        ],
+        "c_call": [
+            "{c_var_cdesc}->base_addr = {c_local_cxx};",
+            "{c_var_cdesc}->type = {typemap.sh_type};",
+            "{c_var_cdesc}->elem_len = {c_local_len};",
             "{c_var_cdesc}->rank = {rank};{gen.c_array_shape}",
             "{c_var_cdesc}->size = {gen.c_array_size};"
         ],
@@ -2185,7 +2208,7 @@
         ],
         "lang_c": {
             "c_pre_call": [
-                "char *{c_local_cxx} = {stdlib}malloc({c_var_len}+1);"
+                "char *{c_local_cxx} = malloc({c_var_len}+1);"
             ]
         },
         "lang_cxx": {
@@ -2207,7 +2230,7 @@
         ],
         "lang_c": {
             "c_post_call": [
-                "{stdlib}free({c_local_cxx});"
+                "free({c_local_cxx});"
             ]
         },
         "lang_cxx": {
@@ -2248,15 +2271,31 @@
         ]
     },
     {
-        "name": "c_mixin_char-copy",
+        "name": "c_mixin_char-copyout",
         "comments": [
-            "Copy cxx variable to c argument."
+            "Copy cxx variable to c argument for output."
         ],
         "notes": [
-            "Used to NULL terminated an input Fortran string."
+            "Used to copy and blank fill an output Fortran string."
         ],
         "c_post_call": [
             "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
+        ],
+        "helper": [
+            "char_copy"
+        ]
+    },
+    {
+        "name": "c_mixin_char-copyout-len",
+        "comments": [
+            "Copy cxx variable to c argument for output."
+        ],
+        "notes": [
+            "Used to copy and blank fill an output Fortran string.",
+            "The input length is explicit since it may not be NULL terminated."
+        ],
+        "c_post_call": [
+            "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t {c_local_len});"
         ],
         "helper": [
             "char_copy"
@@ -2538,7 +2577,7 @@
             "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf",
             "c_mixin_arg-call-cxx",
-            "c_mixin_char-copy",
+            "c_mixin_char-copyout",
             "c_mixin_char-alloc"
         ]
     },
@@ -2559,7 +2598,7 @@
             "c_mixin_in_character_buf",
             "c_mixin_arg-call-cvar",
             "c_mixin_function-assign-to-local",
-            "c_mixin_char-copy"
+            "c_mixin_char-copyout"
         ]
     },
     {
@@ -2582,7 +2621,7 @@
             "c_mixin_in_character_buf",
             "c_mixin_arg-call-cvar",
             "c_mixin_function-assign-to-local",
-            "c_mixin_char-copy"
+            "c_mixin_char-copyout"
         ]
     },
     {
@@ -2638,7 +2677,7 @@
             "c_mixin_in_character_buf",
             "c_mixin_local-cxx-ptr",
             "c_mixin_arg-call-cxx-address",
-            "c_mixin_char-copy"
+            "c_mixin_char-copyout"
         ]
     },
     {
@@ -3403,7 +3442,6 @@
             "XXX - need to test scalar and pointer versions"
         ],
         "mixin": [
-            "c_mixin_header_stdlib",
             "c_mixin_header_cstring",
             "c_mixin_out_vector_buf_malloc",
             "c_mixin_arg-call-cxx"
@@ -3433,7 +3471,6 @@
             "malloc allocated array."
         ],
         "mixin": [
-            "c_mixin_header_stdlib",
             "c_mixin_header_cstring",
             "c_mixin_out_vector_buf_malloc",
             "c_mixin_arg-call-cxx"
@@ -3569,7 +3606,6 @@
             "Add an argument with the length of the array."
         ],
         "mixin": [
-            "c_mixin_header_stdlib",
             "c_mixin_header_cstring",
             "c_mixin_function_vector_malloc"
         ],
@@ -4307,6 +4343,65 @@
         "name":"##### getter ###############################################"
     },
     {
+        "name": "c_mixin_getter_char*",
+        "notes": [
+            "Extract char* field from struct."
+        ],
+        "c_pre_call": [
+            "char *{c_local_cxx} = {CXX_this}->{field_name};"
+        ],
+        "c_local": [
+            "cxx"
+        ]
+    },
+    {
+        "name": "c_mixin_getter_char*_len",
+        "notes": [
+            "Extract char* len.",
+            "The char* member may be NULL or the string must be NULL terminated."
+        ],
+        "mixin": [
+            "c_mixin_header_cstring"
+        ],
+        "c_pre_call": [
+            "size_t {c_local_len} = {c_local_cxx} == {nullptr} ? 0 : {stdlib}strlen({c_local_cxx});"
+        ],
+        "c_local": [
+            "len"
+        ]
+    },
+    {
+        "name": "c_mixin_getter_string",
+        "notes": [
+            "Extract std::string field from struct."
+        ],
+        "c_pre_call": [
+            "const char *{c_local_cxx} = {nullptr};",
+            "size_t {c_local_len} = {CXX_this}->{field_name}.size();",
+            "if ({c_local_len} != 0) {{+",
+            "{c_local_cxx} =\t {CXX_this}->{field_name}.data();",
+            "-}}"
+
+        ],
+        "c_local": [
+            "cxx",
+            "len"
+        ]
+    },
+    {
+        "name": "f_mixin_getter_argname",
+        "notes": [
+            "Name of getter result as an argument.",
+            "Since Shroud creates the getter function,",
+            "we know this name will not conflict."
+        ],
+        "fmtdict": {
+            "f_var": "val",
+            "i_var": "val",
+            "c_var": "val"
+        }
+    },
+    {
         "name": "f_getter_struct*_fapi_pointer",
         "notes": [
             "XXX - unused - the getter does not need a C wrapper if api(fapi)",
@@ -4417,6 +4512,7 @@
             "f_setter_native",
             "f_setter_native*",
             "c_setter_native",
+            "f_setter_char*_buf",
             "c_setter_native*"
         ],
         "mixin": [
@@ -4443,7 +4539,50 @@
             "f_mixin_function-to-subroutine",
             "f_mixin_cdesc_pass",
             "f_mixin_cdesc_native_pointer",
-            "f_mixin_cdesc_getter"
+            "c_mixin_cdesc_getter"
+        ]
+    },
+    {
+        "name": "f_getter_char*_cdesc_allocatable",
+        "notes": [
+            "Get a char* member of a class as a Fortran allocatable."
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_cdesc_pass",
+            "f_mixin_cdesc_char_allocate",
+            "c_mixin_getter_char*",
+            "c_mixin_getter_char*_len",
+            "c_mixin_cdesc_getter_char*"
+        ]
+    },
+    {
+        "name": "f_getter_char*_cdesc_pointer",
+        "notes": [
+            "Get a char* member of a class as a Fortran pointer."
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_cdesc_pass",
+            "f_mixin_cdesc_char_pointer",
+            "c_mixin_getter_char*",
+            "c_mixin_getter_char*_len",
+            "c_mixin_cdesc_getter_char*"
+        ]
+    },
+    {
+        "name": "f_getter_char*_buf_copy",
+        "notes": [
+            "Get a char* member of a class as a Fortran pointer."
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_function-as-character-arg",
+            "f_mixin_pass_character_buf",
+            "c_mixin_in_character_buf",
+            "c_mixin_getter_char*",
+            "c_mixin_char-copyout",
+            "f_mixin_getter_argname"
         ]
     },
     {
@@ -4452,24 +4591,60 @@
             "f_mixin_function-to-subroutine",
             "f_mixin_cdesc_pass",
             "f_mixin_cdesc_native_raw",
-            "f_mixin_cdesc_getter"
+            "c_mixin_cdesc_getter"
         ]
     },
     {
         "name": "f_getter_string_cdesc_allocatable",
         "notes": [
-            "Return argument meta data to Fortran."
+            "Get a std::string member of a class as a Fortran allocatable.",
+            "XXX - check for array of std::string"
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_cdesc_pass",
-            "f_mixin_cdesc_char_allocate"
+            "f_mixin_cdesc_char_allocate",
+            "c_mixin_getter_string"
         ],
         "c_call": [
-            "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{CXX_this}->{field_name}.data());",
+            "{c_var_cdesc}->base_addr = const_cast<char *>({c_local_cxx});",
             "{c_var_cdesc}->type = 0; // SH_CHAR;",
-            "{c_var_cdesc}->elem_len = {CXX_this}->{field_name}.size();",
+            "{c_var_cdesc}->elem_len = {c_local_len};",
             "{c_var_cdesc}->rank = 0;"
+        ]
+    },
+    {
+        "name": "f_getter_string_cdesc_pointer",
+        "notes": [
+            "Get a std__string member of a class as a Fortran pointer.",
+            "XXX - check for array of std::string"
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_cdesc_pass",
+            "f_mixin_cdesc_char_pointer",
+            "c_mixin_getter_string"
+        ],
+        "c_call": [
+            "{c_var_cdesc}->base_addr = const_cast<char *>({c_local_cxx});",
+            "{c_var_cdesc}->type = 0; // SH_CHAR;",
+            "{c_var_cdesc}->elem_len = {c_local_len};",
+            "{c_var_cdesc}->rank = 0;"
+        ]
+    },
+    {
+        "name": "f_getter_string_buf_copy",
+        "notes": [
+            "Get a char* member of a class as a Fortran pointer."
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_function-as-character-arg",
+            "f_mixin_pass_character_buf",
+            "c_mixin_in_character_buf",
+            "c_mixin_getter_string",
+            "c_mixin_char-copyout-len",
+            "f_mixin_getter_argname"
         ]
     },
     {
@@ -4742,6 +4917,9 @@
         "comments": [
             "Convert C pointer to deferred-length CHARACTER Fortran scalar pointer."
         ],
+        "mixin": [
+            "c_mixin_header_cstring"
+        ],
         "c_post_call": [
             "int {c_local_err};",
             "if ({cxx_var} == {nullptr}) {{+",
@@ -4843,7 +5021,7 @@
             "c_mixin_cfi-unpack-len",
             "c_mixin_char-malloc",
             "c_mixin_arg-call-cxx",
-            "c_mixin_char-copy",
+            "c_mixin_char-copyout",
             "c_mixin_char-free"
         ]
     },
@@ -4854,7 +5032,7 @@
             "c_mixin_cfi_arg_character",
             "c_mixin_cfi-unpack-base-addr",
             "c_mixin_cfi-unpack-len",
-            "c_mixin_char-copy",
+            "c_mixin_char-copyout",
             "c_mixin_char-alloc",
             "c_mixin_arg-call-cxx"
         ]
@@ -4873,7 +5051,7 @@
             "c_mixin_cfi-unpack-len",
             "c_mixin_arg-call-cxx",
             "c_mixin_function-assign-to-local",
-            "c_mixin_char-copy"
+            "c_mixin_char-copyout"
         ]
     },
     {
@@ -4892,7 +5070,7 @@
             "c_mixin_cfi-unpack-len",
             "c_mixin_arg-call-cxx",
             "c_mixin_function-assign-to-local",
-            "c_mixin_char-copy"
+            "c_mixin_char-copyout"
         ]
     },
     {
@@ -5875,9 +6053,11 @@
         "dependent_helpers": [
             "array_context"
         ],
+        "c_include": [
+            "<string.h>"
+        ],
         "cxx_include": [
-            "<cstring>",
-            "<cstddef>"
+            "<cstring>"
         ],
         "source": [
             "",
@@ -6232,13 +6412,17 @@
             "{f_lstart}! helper {hname}",
             "! Assign context to an assumed-length character pointer",
             "subroutine {fnamefunc}(context, var)+",
-            "use iso_c_binding, only : c_f_pointer, C_PTR",
+            "use iso_c_binding, only : c_associated, c_f_pointer, C_PTR",
             "implicit none",
             "type({F_array_type}), intent(IN) :: context",
             "character(len=:), pointer, intent(OUT) :: var",
             "character(len=context%elem_len), pointer :: fptr",
+            "if (c_associated(context%base_addr)) then+",
             "call c_f_pointer(context%base_addr, fptr)",
             "var => fptr",
+            "-else+",
+            "nullify(var)",
+            "-endif",
             "-end subroutine {fnamefunc}{f_lend}"
         ]
     },

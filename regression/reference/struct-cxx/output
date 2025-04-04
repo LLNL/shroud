@@ -3,6 +3,8 @@ Wrote wrapCstruct_as_class.h
 Wrote wrapCstruct_as_class.cpp
 Wrote wrapCstruct_as_subclass.h
 Wrote wrapCstruct_as_subclass.cpp
+Wrote wrapCstruct_as_class2.h
+Wrote wrapCstruct_as_class2.cpp
 Wrote wrapstruct.h
 Wrote wrapstruct.cpp
 Wrote wrapfstruct.f

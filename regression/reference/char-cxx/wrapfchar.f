@@ -993,7 +993,6 @@ contains
     ! start get_char_ptr5
     function get_char_ptr5() &
             result(SHT_rv)
-        use iso_c_binding, only : c_f_pointer
         character(len=:), pointer :: SHT_rv
         ! splicer begin function.get_char_ptr5
         type(CHA_SHROUD_array) :: SHT_rv_cdesc
@@ -1281,7 +1280,6 @@ contains
     !<
     ! start fetch_char_ptr_library
     subroutine fetch_char_ptr_library(outstr)
-        use iso_c_binding, only : c_f_pointer
         character(len=:), intent(OUT), pointer :: outstr
         ! splicer begin function.fetch_char_ptr_library
         type(CHA_SHROUD_array) :: SHT_outstr_cdesc
@@ -1304,7 +1302,7 @@ contains
     ! start fetch_char_ptr_library_null
     function fetch_char_ptr_library_null(outstr) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, c_f_pointer
+        use iso_c_binding, only : C_INT
         character(len=:), intent(OUT), pointer :: outstr
         integer(C_INT) :: SHT_rv
         ! splicer begin function.fetch_char_ptr_library_null
@@ -1322,13 +1320,17 @@ contains
     ! helper pointer_string
     ! Assign context to an assumed-length character pointer
     subroutine CHA_SHROUD_pointer_string(context, var)
-        use iso_c_binding, only : c_f_pointer, C_PTR
+        use iso_c_binding, only : c_associated, c_f_pointer, C_PTR
         implicit none
         type(CHA_SHROUD_array), intent(IN) :: context
         character(len=:), pointer, intent(OUT) :: var
         character(len=context%elem_len), pointer :: fptr
-        call c_f_pointer(context%base_addr, fptr)
-        var => fptr
+        if (c_associated(context%base_addr)) then
+            call c_f_pointer(context%base_addr, fptr)
+            var => fptr
+        else
+            nullify(var)
+        endif
     end subroutine CHA_SHROUD_pointer_string
     ! end helper pointer_string
 

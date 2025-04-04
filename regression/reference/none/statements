@@ -217,7 +217,7 @@ c_function_char*_arg:
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
-  - Copy cxx variable to c argument.
+  - Copy cxx variable to c argument for output.
   notes:
   - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
@@ -232,7 +232,7 @@ c_function_char*_arg:
   - '    c_mixin_character-assumed-length'
   - '  c_mixin_arg-call-cvar'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_char-copy'
+  - '  c_mixin_char-copyout'
   i_dummy_arg:
   - '{i_var}'
   - '{i_var_len}'
@@ -278,7 +278,7 @@ c_function_char*_buf_arg:
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
-  - Copy cxx variable to c argument.
+  - Copy cxx variable to c argument for output.
   notes:
   - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
@@ -293,7 +293,7 @@ c_function_char*_buf_arg:
   - '    c_mixin_character-assumed-length'
   - '  c_mixin_arg-call-cvar'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_char-copy'
+  - '  c_mixin_char-copyout'
   i_dummy_arg:
   - '{i_var}'
   - '{i_var_len}'
@@ -340,7 +340,7 @@ c_function_char*_buf_copy:
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
-  - Copy cxx variable to c argument.
+  - Copy cxx variable to c argument for output.
   notes:
   - char *getname() +len(30)
   - Copy result into caller's buffer.
@@ -354,7 +354,7 @@ c_function_char*_buf_copy:
   - '    c_mixin_character-assumed-length'
   - '  c_mixin_arg-call-cvar'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_char-copy'
+  - '  c_mixin_char-copyout'
   i_dummy_arg:
   - '{i_var}'
   - '{i_var_len}'
@@ -1807,7 +1807,6 @@ c_function_vector<native>_malloc:
   - malloc allocated array.
   - Add an argument with the length of the array.
   mixin_names:
-  - '  c_mixin_header_stdlib'
   - '  c_mixin_header_cstring'
   - '  c_mixin_function_vector_malloc'
   i_dummy_arg:
@@ -1838,15 +1837,12 @@ c_function_vector<native>_malloc:
   - cxx
   - bytes
   impl_header:
-  - <cstdlib>
   - <cstring>
   lang_c:
     impl_header:
-    - <stdlib.h>
     - <string.h>
   lang_cxx:
     impl_header:
-    - <cstdlib>
     - <cstring>
   sphinx-end-before: c_function_vector<native>_malloc
 c_function_void*:
@@ -3259,7 +3255,7 @@ c_inout_char*_buf:
   comments:
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx local variable to library.
-  - Copy cxx variable to c argument.
+  - Copy cxx variable to c argument for output.
   - Allocate a local char variable in C wrapper.
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
@@ -3267,7 +3263,7 @@ c_inout_char*_buf:
   - '  c_mixin_in_character_buf'
   - '    c_mixin_character-assumed-length'
   - '  c_mixin_arg-call-cxx'
-  - '  c_mixin_char-copy'
+  - '  c_mixin_char-copyout'
   - '  c_mixin_char-alloc'
   i_dummy_arg:
   - '{i_var}'
@@ -3800,7 +3796,6 @@ c_inout_vector<native>&_buf_malloc:
   - Create local vector from arguments then copy result to
   - malloc allocated array.
   mixin_names:
-  - '  c_mixin_header_stdlib'
   - '  c_mixin_header_cstring'
   - '  c_mixin_out_vector_buf_malloc'
   - '  c_mixin_arg-call-cxx'
@@ -3832,15 +3827,12 @@ c_inout_vector<native>&_buf_malloc:
   - cxx
   - bytes
   impl_header:
-  - <cstdlib>
   - <cstring>
   lang_c:
     impl_header:
-    - <stdlib.h>
     - <string.h>
   lang_cxx:
     impl_header:
-    - <cstdlib>
     - <cstring>
   sphinx-end-before: c_inout_vector<native>&_buf_malloc
 c_inout_vector<native>*_buf_copy:
@@ -3889,7 +3881,6 @@ c_inout_vector<native>*_buf_malloc:
   - Create local vector from arguments then copy result to
   - malloc allocated array.
   mixin_names:
-  - '  c_mixin_header_stdlib'
   - '  c_mixin_header_cstring'
   - '  c_mixin_out_vector_buf_malloc'
   - '  c_mixin_arg-call-cxx'
@@ -3921,15 +3912,12 @@ c_inout_vector<native>*_buf_malloc:
   - cxx
   - bytes
   impl_header:
-  - <cstdlib>
   - <cstring>
   lang_c:
     impl_header:
-    - <stdlib.h>
     - <string.h>
   lang_cxx:
     impl_header:
-    - <cstdlib>
     - <cstring>
   sphinx-end-before: c_inout_vector<native>*_buf_malloc
 c_inout_vector<native>_buf_copy:
@@ -3978,7 +3966,6 @@ c_inout_vector<native>_buf_malloc:
   - Create local vector from arguments then copy result to
   - malloc allocated array.
   mixin_names:
-  - '  c_mixin_header_stdlib'
   - '  c_mixin_header_cstring'
   - '  c_mixin_out_vector_buf_malloc'
   - '  c_mixin_arg-call-cxx'
@@ -4010,15 +3997,12 @@ c_inout_vector<native>_buf_malloc:
   - cxx
   - bytes
   impl_header:
-  - <cstdlib>
   - <cstring>
   lang_c:
     impl_header:
-    - <stdlib.h>
     - <string.h>
   lang_cxx:
     impl_header:
-    - <cstdlib>
     - <cstring>
   sphinx-end-before: c_inout_vector<native>_buf_malloc
 c_inout_vector<scalar>&:
@@ -4227,6 +4211,8 @@ c_mixin_cdesc_char_fill_cvar:
   intent: mixin
   comments:
   - Fill cdesc from char * in the C wrapper.
+  mixin_names:
+  - '  c_mixin_header_cstring'
   c_post_call:
   - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
   - '{c_var_cdesc}->type = {typemap.sh_type};'
@@ -4235,6 +4221,14 @@ c_mixin_cdesc_char_fill_cvar:
   - '{c_var_cdesc}->rank = 0;'
   helper:
   - type_defines
+  impl_header:
+  - <cstring>
+  lang_c:
+    impl_header:
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstring>
   sphinx-end-before: c_mixin_cdesc_char_fill_cvar
 c_mixin_cdesc_function_string:
   sphinx-start-after: c_mixin_cdesc_function_string
@@ -4248,6 +4242,40 @@ c_mixin_cdesc_function_string:
   helper:
   - string_to_cdesc
   sphinx-end-before: c_mixin_cdesc_function_string
+c_mixin_cdesc_getter:
+  sphinx-start-after: c_mixin_cdesc_getter
+  name: c_mixin_cdesc_getter
+  intent: mixin
+  comments:
+  - Save pointer struct members in a cdesc
+  - along with shape information.
+  c_call:
+  - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
+  c_need_wrapper: true
+  helper:
+  - type_defines
+  sphinx-end-before: c_mixin_cdesc_getter
+c_mixin_cdesc_getter_char*:
+  sphinx-start-after: c_mixin_cdesc_getter_char*
+  name: c_mixin_cdesc_getter_char*
+  intent: mixin
+  comments:
+  - Save char *struct members in a cdesc
+  - along with shape information.
+  c_call:
+  - '{c_var_cdesc}->base_addr = {c_local_cxx};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
+  - '{c_var_cdesc}->elem_len = {c_local_len};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
+  c_need_wrapper: true
+  helper:
+  - type_defines
+  sphinx-end-before: c_mixin_cdesc_getter_char*
 c_mixin_cdesc_inout_vector:
   sphinx-start-after: c_mixin_cdesc_inout_vector
   name: c_mixin_cdesc_inout_vector
@@ -4419,6 +4447,8 @@ c_mixin_cfi_character_pointer:
   intent: mixin
   comments:
   - Convert C pointer to deferred-length CHARACTER Fortran scalar pointer.
+  mixin_names:
+  - '  c_mixin_header_cstring'
   c_post_call:
   - int {c_local_err};
   - if ({cxx_var} == {nullptr}) {{+
@@ -4441,6 +4471,14 @@ c_mixin_cfi_character_pointer:
   - cdesc
   - len
   - err
+  impl_header:
+  - <cstring>
+  lang_c:
+    impl_header:
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstring>
   sphinx-end-before: c_mixin_cfi_character_pointer
 c_mixin_cfi_copy-to-arg:
   sphinx-start-after: c_mixin_cfi_copy-to-arg
@@ -4582,17 +4620,28 @@ c_mixin_char-blank-fill:
   helper:
   - char_blank_fill
   sphinx-end-before: c_mixin_char-blank-fill
-c_mixin_char-copy:
-  sphinx-start-after: c_mixin_char-copy
-  name: c_mixin_char-copy
+c_mixin_char-copyout:
+  sphinx-start-after: c_mixin_char-copyout
+  name: c_mixin_char-copyout
   intent: mixin
   comments:
-  - Copy cxx variable to c argument.
+  - Copy cxx variable to c argument for output.
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   helper:
   - char_copy
-  sphinx-end-before: c_mixin_char-copy
+  sphinx-end-before: c_mixin_char-copyout
+c_mixin_char-copyout-len:
+  sphinx-start-after: c_mixin_char-copyout-len
+  name: c_mixin_char-copyout-len
+  intent: mixin
+  comments:
+  - Copy cxx variable to c argument for output.
+  c_post_call:
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t {c_local_len});"
+  helper:
+  - char_copy
+  sphinx-end-before: c_mixin_char-copyout-len
 c_mixin_char-free:
   sphinx-start-after: c_mixin_char-free
   name: c_mixin_char-free
@@ -4603,16 +4652,12 @@ c_mixin_char-free:
   - '  c_mixin_header_stdlib'
   c_post_call:
   - delete[] {c_local_cxx};
-  impl_header:
-  - <cstdlib>
   lang_c:
     impl_header:
     - <stdlib.h>
     c_post_call:
-    - '{stdlib}free({c_local_cxx});'
+    - free({c_local_cxx});
   lang_cxx:
-    impl_header:
-    - <cstdlib>
     c_post_call:
     - delete[] {c_local_cxx};
   sphinx-end-before: c_mixin_char-free
@@ -4628,16 +4673,12 @@ c_mixin_char-malloc:
   - char *{c_local_cxx} = new char[{c_var_len}+1];
   c_local:
   - cxx
-  impl_header:
-  - <cstdlib>
   lang_c:
     impl_header:
     - <stdlib.h>
     c_pre_call:
-    - char *{c_local_cxx} = {stdlib}malloc({c_var_len}+1);
+    - char *{c_local_cxx} = malloc({c_var_len}+1);
   lang_cxx:
-    impl_header:
-    - <cstdlib>
     c_pre_call:
     - char *{c_local_cxx} = new char[{c_var_len}+1];
   sphinx-end-before: c_mixin_char-malloc
@@ -4822,6 +4863,48 @@ c_mixin_function_vector_malloc:
   c_temps:
   - size
   sphinx-end-before: c_mixin_function_vector_malloc
+c_mixin_getter_char*:
+  sphinx-start-after: c_mixin_getter_char*
+  name: c_mixin_getter_char*
+  intent: mixin
+  c_pre_call:
+  - char *{c_local_cxx} = {CXX_this}->{field_name};
+  c_local:
+  - cxx
+  sphinx-end-before: c_mixin_getter_char*
+c_mixin_getter_char*_len:
+  sphinx-start-after: c_mixin_getter_char*_len
+  name: c_mixin_getter_char*_len
+  intent: mixin
+  mixin_names:
+  - '  c_mixin_header_cstring'
+  c_pre_call:
+  - 'size_t {c_local_len} = {c_local_cxx} == {nullptr} ? 0 : {stdlib}strlen({c_local_cxx});'
+  c_local:
+  - len
+  impl_header:
+  - <cstring>
+  lang_c:
+    impl_header:
+    - <string.h>
+  lang_cxx:
+    impl_header:
+    - <cstring>
+  sphinx-end-before: c_mixin_getter_char*_len
+c_mixin_getter_string:
+  sphinx-start-after: c_mixin_getter_string
+  name: c_mixin_getter_string
+  intent: mixin
+  c_pre_call:
+  - const char *{c_local_cxx} = {nullptr};
+  - size_t {c_local_len} = {CXX_this}->{field_name}.size();
+  - if ({c_local_len} != 0) {{+
+  - "{c_local_cxx} =\t {CXX_this}->{field_name}.data();"
+  - -}}
+  c_local:
+  - cxx
+  - len
+  sphinx-end-before: c_mixin_getter_string
 c_mixin_header_cstring:
   sphinx-start-after: c_mixin_header_cstring
   name: c_mixin_header_cstring
@@ -4852,14 +4935,9 @@ c_mixin_header_stdlib:
   sphinx-start-after: c_mixin_header_stdlib
   name: c_mixin_header_stdlib
   intent: mixin
-  impl_header:
-  - <cstdlib>
   lang_c:
     impl_header:
     - <stdlib.h>
-  lang_cxx:
-    impl_header:
-    - <cstdlib>
   sphinx-end-before: c_mixin_header_stdlib
 c_mixin_in_character_buf:
   sphinx-start-after: c_mixin_in_character_buf
@@ -5904,7 +5982,6 @@ c_out_vector<native>&_buf_malloc:
   - malloc allocated array.
   - XXX - need to test scalar and pointer versions
   mixin_names:
-  - '  c_mixin_header_stdlib'
   - '  c_mixin_header_cstring'
   - '  c_mixin_out_vector_buf_malloc'
   - '  c_mixin_arg-call-cxx'
@@ -5936,15 +6013,12 @@ c_out_vector<native>&_buf_malloc:
   - cxx
   - bytes
   impl_header:
-  - <cstdlib>
   - <cstring>
   lang_c:
     impl_header:
-    - <stdlib.h>
     - <string.h>
   lang_cxx:
     impl_header:
-    - <cstdlib>
     - <cstring>
   sphinx-end-before: c_out_vector<native>&_buf_malloc
 c_out_vector<native>&_cdesc:
@@ -6064,7 +6138,6 @@ c_out_vector<native>*_buf_malloc:
   - malloc allocated array.
   - XXX - need to test scalar and pointer versions
   mixin_names:
-  - '  c_mixin_header_stdlib'
   - '  c_mixin_header_cstring'
   - '  c_mixin_out_vector_buf_malloc'
   - '  c_mixin_arg-call-cxx'
@@ -6096,15 +6169,12 @@ c_out_vector<native>*_buf_malloc:
   - cxx
   - bytes
   impl_header:
-  - <cstdlib>
   - <cstring>
   lang_c:
     impl_header:
-    - <stdlib.h>
     - <string.h>
   lang_cxx:
     impl_header:
-    - <cstdlib>
     - <cstring>
   sphinx-end-before: c_out_vector<native>*_buf_malloc
 c_out_vector<native>*_cdesc:
@@ -6224,7 +6294,6 @@ c_out_vector<native>_buf_malloc:
   - malloc allocated array.
   - XXX - need to test scalar and pointer versions
   mixin_names:
-  - '  c_mixin_header_stdlib'
   - '  c_mixin_header_cstring'
   - '  c_mixin_out_vector_buf_malloc'
   - '  c_mixin_arg-call-cxx'
@@ -6256,15 +6325,12 @@ c_out_vector<native>_buf_malloc:
   - cxx
   - bytes
   impl_header:
-  - <cstdlib>
   - <cstring>
   lang_c:
     impl_header:
-    - <stdlib.h>
     - <string.h>
   lang_cxx:
     impl_header:
-    - <cstdlib>
     - <cstring>
   sphinx-end-before: c_out_vector<native>_buf_malloc
 c_out_vector<string>&:
@@ -6882,7 +6948,7 @@ f_function_char*_arg:
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
-  - Copy cxx variable to c argument.
+  - Copy cxx variable to c argument for output.
   notes:
   - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
@@ -6897,7 +6963,7 @@ f_function_char*_arg:
   - '    c_mixin_character-assumed-length'
   - '  c_mixin_arg-call-cvar'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_char-copy'
+  - '  c_mixin_char-copyout'
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
@@ -6963,7 +7029,7 @@ f_function_char*_buf_arg:
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
-  - Copy cxx variable to c argument.
+  - Copy cxx variable to c argument for output.
   notes:
   - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
@@ -6978,7 +7044,7 @@ f_function_char*_buf_arg:
   - '    c_mixin_character-assumed-length'
   - '  c_mixin_arg-call-cvar'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_char-copy'
+  - '  c_mixin_char-copyout'
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
@@ -7045,7 +7111,7 @@ f_function_char*_buf_copy:
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx variable to library.
   - Call function and assign to a local C++ variable.
-  - Copy cxx variable to c argument.
+  - Copy cxx variable to c argument for output.
   notes:
   - char *getname() +len(30)
   - Copy result into caller's buffer.
@@ -7059,7 +7125,7 @@ f_function_char*_buf_copy:
   - '    c_mixin_character-assumed-length'
   - '  c_mixin_arg-call-cvar'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_char-copy'
+  - '  c_mixin_char-copyout'
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
     :: {f_var}{f_dimension}'
@@ -7128,6 +7194,7 @@ f_function_char*_cdesc_allocatable:
   - '  f_mixin_cdesc_char_allocate'
   - '  c_mixin_function-assign-to-cvar'
   - '  c_mixin_cdesc_char_fill_cvar'
+  - '    c_mixin_header_cstring'
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_local_decl:
@@ -7168,6 +7235,8 @@ f_function_char*_cdesc_allocatable:
   - array_context
   - copy_string
   - type_defines
+  impl_header:
+  - <cstring>
   sphinx-end-before: f_function_char*_cdesc_allocatable
 f_function_char*_cdesc_pointer:
   sphinx-start-after: f_function_char*_cdesc_pointer
@@ -7185,6 +7254,7 @@ f_function_char*_cdesc_pointer:
   - '  f_mixin_cdesc_pass'
   - '  c_mixin_function-assign-to-cvar'
   - '  c_mixin_cdesc_char_fill_cvar'
+  - '    c_mixin_header_cstring'
   - '  f_mixin_cdesc_char_pointer'
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
@@ -7196,9 +7266,6 @@ f_function_char*_cdesc_pointer:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
-  f_module:
-    iso_c_binding:
-    - c_f_pointer
   f_temps:
   - cdesc
   f_need_wrapper: true
@@ -7228,6 +7295,8 @@ f_function_char*_cdesc_pointer:
   - array_context
   - type_defines
   - pointer_string
+  impl_header:
+  - <cstring>
   sphinx-end-before: f_function_char*_cdesc_pointer
 f_function_char*_cfi_allocatable:
   sphinx-start-after: f_function_char*_cfi_allocatable
@@ -7294,7 +7363,7 @@ f_function_char*_cfi_arg:
   - Character argument passed as CFI_desc_t.
   - Pass cxx local variable to library.
   - Call function and assign to a local C++ variable.
-  - Copy cxx variable to c argument.
+  - Copy cxx variable to c argument for output.
   notes:
   - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
@@ -7310,7 +7379,7 @@ f_function_char*_cfi_arg:
   - '  c_mixin_cfi-unpack-len'
   - '  c_mixin_arg-call-cxx'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_char-copy'
+  - '  c_mixin_char-copyout'
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
@@ -7365,7 +7434,7 @@ f_function_char*_cfi_copy:
   - Character argument passed as CFI_desc_t.
   - Pass cxx local variable to library.
   - Call function and assign to a local C++ variable.
-  - Copy cxx variable to c argument.
+  - Copy cxx variable to c argument for output.
   notes:
   - Copy result into caller's buffer.
   mixin_names:
@@ -7379,7 +7448,7 @@ f_function_char*_cfi_copy:
   - '  c_mixin_cfi-unpack-len'
   - '  c_mixin_arg-call-cxx'
   - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_char-copy'
+  - '  c_mixin_char-copyout'
   f_dummy_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
     :: {f_var}{f_dimension}'
@@ -7439,6 +7508,7 @@ f_function_char*_cfi_pointer:
   - '    c_mixin_cfi_arg'
   - '  c_mixin_function-assign-to-cvar'
   - '  c_mixin_cfi_character_pointer'
+  - '    c_mixin_header_cstring'
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_arg_call:
@@ -7484,6 +7554,8 @@ f_function_char*_cfi_pointer:
     i_intent_attr: ', intent(OUT)'
   iface_header:
   - ISO_Fortran_binding.h
+  impl_header:
+  - <cstring>
   sphinx-end-before: f_function_char*_cfi_pointer
 f_function_char*_copy:
   sphinx-start-after: f_function_char*_copy
@@ -7593,6 +7665,7 @@ f_function_char_cdesc_allocatable:
   - '  f_mixin_cdesc_char_allocate'
   - '  c_mixin_function-assign-to-cvar'
   - '  c_mixin_cdesc_char_fill_cvar'
+  - '    c_mixin_header_cstring'
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_local_decl:
@@ -7633,6 +7706,8 @@ f_function_char_cdesc_allocatable:
   - array_context
   - copy_string
   - type_defines
+  impl_header:
+  - <cstring>
   sphinx-end-before: f_function_char_cdesc_allocatable
 f_function_char_cdesc_pointer:
   sphinx-start-after: f_function_char_cdesc_pointer
@@ -7650,6 +7725,7 @@ f_function_char_cdesc_pointer:
   - '  f_mixin_cdesc_pass'
   - '  c_mixin_function-assign-to-cvar'
   - '  c_mixin_cdesc_char_fill_cvar'
+  - '    c_mixin_header_cstring'
   - '  f_mixin_cdesc_char_pointer'
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
@@ -7661,9 +7737,6 @@ f_function_char_cdesc_pointer:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
-  f_module:
-    iso_c_binding:
-    - c_f_pointer
   f_temps:
   - cdesc
   f_need_wrapper: true
@@ -7693,6 +7766,8 @@ f_function_char_cdesc_pointer:
   - array_context
   - type_defines
   - pointer_string
+  impl_header:
+  - <cstring>
   sphinx-end-before: f_function_char_cdesc_pointer
 f_function_char_cfi_allocatable:
   sphinx-start-after: f_function_char_cfi_allocatable
@@ -7767,6 +7842,7 @@ f_function_char_cfi_pointer:
   - '    c_mixin_cfi_arg'
   - '  c_mixin_function-assign-to-cvar'
   - '  c_mixin_cfi_character_pointer'
+  - '    c_mixin_header_cstring'
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_arg_call:
@@ -7812,6 +7888,8 @@ f_function_char_cfi_pointer:
     i_intent_attr: ', intent(OUT)'
   iface_header:
   - ISO_Fortran_binding.h
+  impl_header:
+  - <cstring>
   sphinx-end-before: f_function_char_cfi_pointer
 f_function_enum:
   sphinx-start-after: f_function_enum
@@ -9674,9 +9752,6 @@ f_function_string&_cdesc_pointer:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
-  f_module:
-    iso_c_binding:
-    - c_f_pointer
   f_temps:
   - cdesc
   f_need_wrapper: true
@@ -9733,9 +9808,6 @@ f_function_string&_cdesc_pointer_caller:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
-  f_module:
-    iso_c_binding:
-    - c_f_pointer
   f_temps:
   - cdesc
   f_need_wrapper: true
@@ -9792,9 +9864,6 @@ f_function_string&_cdesc_pointer_library:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
-  f_module:
-    iso_c_binding:
-    - c_f_pointer
   f_temps:
   - cdesc
   f_need_wrapper: true
@@ -10883,9 +10952,6 @@ f_function_string*_cdesc_pointer:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
-  f_module:
-    iso_c_binding:
-    - c_f_pointer
   f_temps:
   - cdesc
   f_need_wrapper: true
@@ -10942,9 +11008,6 @@ f_function_string*_cdesc_pointer_caller:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
-  f_module:
-    iso_c_binding:
-    - c_f_pointer
   f_temps:
   - cdesc
   f_need_wrapper: true
@@ -11001,9 +11064,6 @@ f_function_string*_cdesc_pointer_library:
   - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
-  f_module:
-    iso_c_binding:
-    - c_f_pointer
   f_temps:
   - cdesc
   f_need_wrapper: true
@@ -12875,6 +12935,215 @@ f_getter_bool:
   c_return:
   - return {CXX_this}->{field_name};
   sphinx-end-before: f_getter_bool
+f_getter_char*_buf_copy:
+  sphinx-start-after: f_getter_char*_buf_copy
+  name: f_getter_char*_buf_copy
+  intent: getter
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass CHARACTER and LEN to C wrapper.
+  - Copy cxx variable to c argument for output.
+  notes:
+  - Get a char* member of a class as a Fortran pointer.
+  mixin_names:
+  - '  f_mixin_function-to-subroutine'
+  - '    c_mixin_as-intent-out'
+  - '  f_mixin_function-as-character-arg'
+  - '  f_mixin_pass_character_buf'
+  - '  c_mixin_in_character_buf'
+  - '    c_mixin_character-assumed-length'
+  - '  c_mixin_getter_char*'
+  - '  c_mixin_char-copyout'
+  - '  f_mixin_getter_argname'
+  f_dummy_arg:
+  - '{f_var}'
+  f_dummy_decl:
+  - 'character(len=*), intent(OUT) :: {f_var}'
+  f_local_decl:
+  - integer(C_INT) {f_var_len}
+  f_pre_call:
+  - '{f_var_len} = len({f_var}, kind=C_INT)'
+  f_arg_call:
+  - '{f_var}'
+  - '{f_var_len}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  f_result_var: as-subroutine
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_temps:
+  - len
+  f_need_wrapper: true
+  i_dummy_arg:
+  - '{i_var}'
+  - '{i_var_len}'
+  i_dummy_decl:
+  - 'character(kind=C_CHAR){i_intent_attr} :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  c_return_type: void
+  c_prototype:
+  - char *{c_var}
+  - int {c_var_len}
+  c_pre_call:
+  - char *{c_local_cxx} = {CXX_this}->{field_name};
+  c_post_call:
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
+  c_temps:
+  - len
+  c_local:
+  - cxx
+  fmtdict:
+    i_intent: OUT
+    i_intent_attr: ', intent(OUT)'
+    f_var: val
+    i_var: val
+    c_var: val
+  helper:
+  - char_copy
+  sphinx-end-before: f_getter_char*_buf_copy
+f_getter_char*_cdesc_allocatable:
+  sphinx-start-after: f_getter_char*_cdesc_allocatable
+  name: f_getter_char*_cdesc_allocatable
+  intent: getter
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc
+  - using helper copy_string.
+  - Save char *struct members in a cdesc
+  - along with shape information.
+  notes:
+  - Get a char* member of a class as a Fortran allocatable.
+  mixin_names:
+  - '  f_mixin_function-to-subroutine'
+  - '    c_mixin_as-intent-out'
+  - '  f_mixin_cdesc_pass'
+  - '  f_mixin_cdesc_char_allocate'
+  - '  c_mixin_getter_char*'
+  - '  c_mixin_getter_char*_len'
+  - '    c_mixin_header_cstring'
+  - '  c_mixin_cdesc_getter_char*'
+  f_dummy_decl:
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
+  f_local_decl:
+  - 'type({F_array_type}) :: {f_var_cdesc}'
+  f_arg_call:
+  - '{f_var_cdesc}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  f_post_call:
+  - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
+  - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
+  f_temps:
+  - cdesc
+  f_need_wrapper: true
+  i_dummy_arg:
+  - '{i_var_cdesc}'
+  i_dummy_decl:
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  c_return_type: void
+  c_prototype:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_pre_call:
+  - char *{c_local_cxx} = {CXX_this}->{field_name};
+  - 'size_t {c_local_len} = {c_local_cxx} == {nullptr} ? 0 : {stdlib}strlen({c_local_cxx});'
+  c_call:
+  - '{c_var_cdesc}->base_addr = {c_local_cxx};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
+  - '{c_var_cdesc}->elem_len = {c_local_len};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
+  c_temps:
+  - cdesc
+  c_local:
+  - cxx
+  - len
+  c_need_wrapper: true
+  fmtdict:
+    i_intent: OUT
+    i_intent_attr: ', intent(OUT)'
+  helper:
+  - array_context
+  - copy_string
+  - type_defines
+  impl_header:
+  - <cstring>
+  sphinx-end-before: f_getter_char*_cdesc_allocatable
+f_getter_char*_cdesc_pointer:
+  sphinx-start-after: f_getter_char*_cdesc_pointer
+  name: f_getter_char*_cdesc_pointer
+  intent: getter
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
+  - Save char *struct members in a cdesc
+  - along with shape information.
+  notes:
+  - Get a char* member of a class as a Fortran pointer.
+  mixin_names:
+  - '  f_mixin_function-to-subroutine'
+  - '    c_mixin_as-intent-out'
+  - '  f_mixin_cdesc_pass'
+  - '  f_mixin_cdesc_char_pointer'
+  - '  c_mixin_getter_char*'
+  - '  c_mixin_getter_char*_len'
+  - '    c_mixin_header_cstring'
+  - '  c_mixin_cdesc_getter_char*'
+  f_dummy_decl:
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
+  f_local_decl:
+  - 'type({F_array_type}) :: {f_var_cdesc}'
+  f_arg_call:
+  - '{f_var_cdesc}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  f_post_call:
+  - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
+  f_temps:
+  - cdesc
+  f_need_wrapper: true
+  i_dummy_arg:
+  - '{i_var_cdesc}'
+  i_dummy_decl:
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  c_return_type: void
+  c_prototype:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_pre_call:
+  - char *{c_local_cxx} = {CXX_this}->{field_name};
+  - 'size_t {c_local_len} = {c_local_cxx} == {nullptr} ? 0 : {stdlib}strlen({c_local_cxx});'
+  c_call:
+  - '{c_var_cdesc}->base_addr = {c_local_cxx};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
+  - '{c_var_cdesc}->elem_len = {c_local_len};'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
+  c_temps:
+  - cdesc
+  c_local:
+  - cxx
+  - len
+  c_need_wrapper: true
+  fmtdict:
+    i_intent: OUT
+    i_intent_attr: ', intent(OUT)'
+  helper:
+  - array_context
+  - pointer_string
+  - type_defines
+  impl_header:
+  - <cstring>
+  sphinx-end-before: f_getter_char*_cdesc_pointer
 f_getter_native:
   sphinx-start-after: f_getter_native
   name: f_getter_native
@@ -12916,7 +13185,7 @@ f_getter_native*_cdesc_pointer:
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_cdesc_native_pointer'
-  - '  f_mixin_cdesc_getter'
+  - '  c_mixin_cdesc_getter'
   f_dummy_decl:
   - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
   f_local_decl:
@@ -12984,6 +13253,82 @@ f_getter_native*_pointer:
   - return {CXX_this}->{field_name};
   c_need_wrapper: true
   sphinx-end-before: f_getter_native*_pointer
+f_getter_string_buf_copy:
+  sphinx-start-after: f_getter_string_buf_copy
+  name: f_getter_string_buf_copy
+  intent: getter
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass CHARACTER and LEN to C wrapper.
+  - Copy cxx variable to c argument for output.
+  notes:
+  - Get a char* member of a class as a Fortran pointer.
+  mixin_names:
+  - '  f_mixin_function-to-subroutine'
+  - '    c_mixin_as-intent-out'
+  - '  f_mixin_function-as-character-arg'
+  - '  f_mixin_pass_character_buf'
+  - '  c_mixin_in_character_buf'
+  - '    c_mixin_character-assumed-length'
+  - '  c_mixin_getter_string'
+  - '  c_mixin_char-copyout-len'
+  - '  f_mixin_getter_argname'
+  f_dummy_arg:
+  - '{f_var}'
+  f_dummy_decl:
+  - 'character(len=*), intent(OUT) :: {f_var}'
+  f_local_decl:
+  - integer(C_INT) {f_var_len}
+  f_pre_call:
+  - '{f_var_len} = len({f_var}, kind=C_INT)'
+  f_arg_call:
+  - '{f_var}'
+  - '{f_var_len}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  f_result_var: as-subroutine
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_temps:
+  - len
+  f_need_wrapper: true
+  i_dummy_arg:
+  - '{i_var}'
+  - '{i_var_len}'
+  i_dummy_decl:
+  - 'character(kind=C_CHAR){i_intent_attr} :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  c_return_type: void
+  c_prototype:
+  - char *{c_var}
+  - int {c_var_len}
+  c_pre_call:
+  - const char *{c_local_cxx} = {nullptr};
+  - size_t {c_local_len} = {CXX_this}->{field_name}.size();
+  - if ({c_local_len} != 0) {{+
+  - "{c_local_cxx} =\t {CXX_this}->{field_name}.data();"
+  - -}}
+  c_post_call:
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t {c_local_len});"
+  c_temps:
+  - len
+  c_local:
+  - cxx
+  - len
+  fmtdict:
+    i_intent: OUT
+    i_intent_attr: ', intent(OUT)'
+    f_var: val
+    i_var: val
+    c_var: val
+  helper:
+  - char_copy
+  sphinx-end-before: f_getter_string_buf_copy
 f_getter_string_cdesc_allocatable:
   sphinx-start-after: f_getter_string_cdesc_allocatable
   name: f_getter_string_cdesc_allocatable
@@ -12994,12 +13339,14 @@ f_getter_string_cdesc_allocatable:
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   notes:
-  - Return argument meta data to Fortran.
+  - Get a std::string member of a class as a Fortran allocatable.
+  - XXX - check for array of std::string
   mixin_names:
   - '  f_mixin_function-to-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_cdesc_char_allocate'
+  - '  c_mixin_getter_string'
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_local_decl:
@@ -13023,13 +13370,22 @@ f_getter_string_cdesc_allocatable:
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
+  c_pre_call:
+  - const char *{c_local_cxx} = {nullptr};
+  - size_t {c_local_len} = {CXX_this}->{field_name}.size();
+  - if ({c_local_len} != 0) {{+
+  - "{c_local_cxx} =\t {CXX_this}->{field_name}.data();"
+  - -}}
   c_call:
-  - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{CXX_this}->{field_name}.data());"
+  - '{c_var_cdesc}->base_addr = const_cast<char *>({c_local_cxx});'
   - '{c_var_cdesc}->type = 0; // SH_CHAR;'
-  - '{c_var_cdesc}->elem_len = {CXX_this}->{field_name}.size();'
+  - '{c_var_cdesc}->elem_len = {c_local_len};'
   - '{c_var_cdesc}->rank = 0;'
   c_temps:
   - cdesc
+  c_local:
+  - cxx
+  - len
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
@@ -13037,6 +13393,68 @@ f_getter_string_cdesc_allocatable:
   - array_context
   - copy_string
   sphinx-end-before: f_getter_string_cdesc_allocatable
+f_getter_string_cdesc_pointer:
+  sphinx-start-after: f_getter_string_cdesc_pointer
+  name: f_getter_string_cdesc_pointer
+  intent: getter
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
+  notes:
+  - Get a std__string member of a class as a Fortran pointer.
+  - XXX - check for array of std::string
+  mixin_names:
+  - '  f_mixin_function-to-subroutine'
+  - '    c_mixin_as-intent-out'
+  - '  f_mixin_cdesc_pass'
+  - '  f_mixin_cdesc_char_pointer'
+  - '  c_mixin_getter_string'
+  f_dummy_decl:
+  - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
+  f_local_decl:
+  - 'type({F_array_type}) :: {f_var_cdesc}'
+  f_arg_call:
+  - '{f_var_cdesc}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  f_post_call:
+  - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
+  f_temps:
+  - cdesc
+  f_need_wrapper: true
+  i_dummy_arg:
+  - '{i_var_cdesc}'
+  i_dummy_decl:
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  c_return_type: void
+  c_prototype:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_pre_call:
+  - const char *{c_local_cxx} = {nullptr};
+  - size_t {c_local_len} = {CXX_this}->{field_name}.size();
+  - if ({c_local_len} != 0) {{+
+  - "{c_local_cxx} =\t {CXX_this}->{field_name}.data();"
+  - -}}
+  c_call:
+  - '{c_var_cdesc}->base_addr = const_cast<char *>({c_local_cxx});'
+  - '{c_var_cdesc}->type = 0; // SH_CHAR;'
+  - '{c_var_cdesc}->elem_len = {c_local_len};'
+  - '{c_var_cdesc}->rank = 0;'
+  c_temps:
+  - cdesc
+  c_local:
+  - cxx
+  - len
+  fmtdict:
+    i_intent: OUT
+    i_intent_attr: ', intent(OUT)'
+  helper:
+  - array_context
+  - pointer_string
+  sphinx-end-before: f_getter_string_cdesc_pointer
 f_getter_struct**_cdesc_raw:
   sphinx-start-after: f_getter_struct**_cdesc_raw
   name: f_getter_struct**_cdesc_raw
@@ -13052,7 +13470,7 @@ f_getter_struct**_cdesc_raw:
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_cdesc_native_raw'
-  - '  f_mixin_cdesc_getter'
+  - '  c_mixin_cdesc_getter'
   f_dummy_decl:
   - 'type(C_PTR), pointer :: {f_var}{f_assumed_shape}'
   f_local_decl:
@@ -13112,7 +13530,7 @@ f_getter_struct*_cdesc_pointer:
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_cdesc_native_pointer'
-  - '  f_mixin_cdesc_getter'
+  - '  c_mixin_cdesc_getter'
   f_dummy_decl:
   - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
   f_local_decl:
@@ -15256,7 +15674,7 @@ f_inout_char*_buf:
   comments:
   - Pass CHARACTER and LEN to C wrapper.
   - Pass cxx local variable to library.
-  - Copy cxx variable to c argument.
+  - Copy cxx variable to c argument for output.
   - Allocate a local char variable in C wrapper.
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
@@ -15264,7 +15682,7 @@ f_inout_char*_buf:
   - '  c_mixin_in_character_buf'
   - '    c_mixin_character-assumed-length'
   - '  c_mixin_arg-call-cxx'
-  - '  c_mixin_char-copy'
+  - '  c_mixin_char-copyout'
   - '  c_mixin_char-alloc'
   f_dummy_arg:
   - '{f_var}'
@@ -15353,7 +15771,7 @@ f_inout_char*_cfi:
   comments:
   - Make the C wrapper argument a CFI_desc_t.
   - Character argument passed as CFI_desc_t.
-  - Copy cxx variable to c argument.
+  - Copy cxx variable to c argument for output.
   - Allocate a local char variable in C wrapper.
   - Pass cxx local variable to library.
   mixin_names:
@@ -15362,7 +15780,7 @@ f_inout_char*_cfi:
   - '    c_mixin_cfi_arg'
   - '  c_mixin_cfi-unpack-base-addr'
   - '  c_mixin_cfi-unpack-len'
-  - '  c_mixin_char-copy'
+  - '  c_mixin_char-copyout'
   - '  c_mixin_char-alloc'
   - '  c_mixin_arg-call-cxx'
   f_dummy_arg:
@@ -16738,9 +17156,6 @@ f_mixin_cdesc_char_pointer:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_post_call:
   - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
-  f_module:
-    iso_c_binding:
-    - c_f_pointer
   helper:
   - pointer_string
   sphinx-end-before: f_mixin_cdesc_char_pointer
@@ -16762,23 +17177,6 @@ f_mixin_cdesc_copy_array:
   helper:
   - copy_array
   sphinx-end-before: f_mixin_cdesc_copy_array
-f_mixin_cdesc_getter:
-  sphinx-start-after: f_mixin_cdesc_getter
-  name: f_mixin_cdesc_getter
-  intent: mixin
-  comments:
-  - Save pointer struct members in a cdesc
-  - along with shape information.
-  c_call:
-  - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
-  - '{c_var_cdesc}->type = {typemap.sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
-  - '{c_var_cdesc}->size = {gen.c_array_size};'
-  c_need_wrapper: true
-  helper:
-  - type_defines
-  sphinx-end-before: f_mixin_cdesc_getter
 f_mixin_cdesc_inout_array:
   sphinx-start-after: f_mixin_cdesc_inout_array
   name: f_mixin_cdesc_inout_array
@@ -17185,6 +17583,15 @@ f_mixin_function_ptr:
     iso_c_binding:
     - C_PTR
   sphinx-end-before: f_mixin_function_ptr
+f_mixin_getter_argname:
+  sphinx-start-after: f_mixin_getter_argname
+  name: f_mixin_getter_argname
+  intent: mixin
+  fmtdict:
+    f_var: val
+    i_var: val
+    c_var: val
+  sphinx-end-before: f_mixin_getter_argname
 f_mixin_helper_array_string_allocatable:
   sphinx-start-after: f_mixin_helper_array_string_allocatable
   name: f_mixin_helper_array_string_allocatable
@@ -17888,7 +18295,7 @@ f_out_char**_buf_copy:
   - Pass CHARACTER and LEN to C wrapper.
   - Declare a local_cxx pointer variable in the C wrapper.
   - Pass address of local cxx variable to library.
-  - Copy cxx variable to c argument.
+  - Copy cxx variable to c argument for output.
   notes:
   - Copy char array into Fortran argument.
   - Also used with CFI.
@@ -17901,7 +18308,7 @@ f_out_char**_buf_copy:
   - '    c_mixin_character-assumed-length'
   - '  c_mixin_local-cxx-ptr'
   - '  c_mixin_arg-call-cxx-address'
-  - '  c_mixin_char-copy'
+  - '  c_mixin_char-copyout'
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
@@ -17967,6 +18374,7 @@ f_out_char**_cdesc_pointer:
   - '  f_mixin_cdesc_char_pointer'
   - '  f_mixin_cdesc_pass'
   - '  c_mixin_cdesc_char_fill_cvar'
+  - '    c_mixin_header_cstring'
   - '  c_mixin_local-cvar-ptr'
   - '  c_mixin_arg-call-cvar-address'
   f_dummy_arg:
@@ -17979,9 +18387,6 @@ f_out_char**_cdesc_pointer:
   - '{f_var_cdesc}'
   f_post_call:
   - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
-  f_module:
-    iso_c_binding:
-    - c_f_pointer
   f_temps:
   - cdesc
   f_need_wrapper: true
@@ -18009,6 +18414,8 @@ f_out_char**_cdesc_pointer:
   - pointer_string
   - array_context
   - type_defines
+  impl_header:
+  - <cstring>
   sphinx-end-before: f_out_char**_cdesc_pointer
 f_out_char**_cfi_pointer:
   sphinx-start-after: f_out_char**_cfi_pointer
@@ -18030,6 +18437,7 @@ f_out_char**_cfi_pointer:
   - '  c_mixin_local-cvar-ptr'
   - '  c_mixin_arg-call-cvar-address'
   - '  c_mixin_cfi_character_pointer'
+  - '    c_mixin_header_cstring'
   f_dummy_arg:
   - '{f_var}'
   f_dummy_decl:
@@ -18070,6 +18478,8 @@ f_out_char**_cfi_pointer:
   - err
   iface_header:
   - ISO_Fortran_binding.h
+  impl_header:
+  - <cstring>
   sphinx-end-before: f_out_char**_cfi_pointer
 f_out_char*_buf:
   sphinx-start-after: f_out_char*_buf
@@ -18168,7 +18578,7 @@ f_out_char*_cfi:
   - Character argument passed as CFI_desc_t.
   - Allocate a local char array in C wrapper.
   - Pass cxx local variable to library.
-  - Copy cxx variable to c argument.
+  - Copy cxx variable to c argument for output.
   - Free a local char array in C wrapper.
   notes:
   - Allocate a local array as large as input argument plus 1.
@@ -18183,7 +18593,7 @@ f_out_char*_cfi:
   - '  c_mixin_char-malloc'
   - '    c_mixin_header_stdlib'
   - '  c_mixin_arg-call-cxx'
-  - '  c_mixin_char-copy'
+  - '  c_mixin_char-copyout'
   - '  c_mixin_char-free'
   - '    c_mixin_header_stdlib'
   f_dummy_arg:
@@ -18218,9 +18628,6 @@ f_out_char*_cfi:
   - char_copy
   iface_header:
   - ISO_Fortran_binding.h
-  impl_header:
-  - <cstdlib>
-  - <cstdlib>
   sphinx-end-before: f_out_char*_cfi
 f_out_enum*:
   sphinx-start-after: f_out_enum*
@@ -20194,6 +20601,36 @@ f_setter_bool:
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   sphinx-end-before: f_setter_bool
+f_setter_char*_buf:
+  sphinx-start-after: f_setter_char*_buf
+  name: f_setter_char*_buf
+  intent: setter
+  mixin_names:
+  - '  c_mixin_declare-arg'
+  - '  f_mixin_declare-interface-arg'
+  - '  f_mixin_declare-fortran-arg'
+  f_dummy_arg:
+  - '{f_var}'
+  f_dummy_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
+  f_arg_call:
+  - '{fc_var}'
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
+  i_dummy_arg:
+  - '{i_var}'
+  i_dummy_decl:
+  - '{i_type}{f_value_attr}{i_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{i_module_name}':
+    - '{i_kind}'
+  c_prototype:
+  - '{gen.cdecl.c_var}'
+  c_post_call:
+  - '{CXX_this}->{field_name} = val;'
+  sphinx-end-before: f_setter_char*_buf
 f_setter_native:
   sphinx-start-after: f_setter_native
   name: f_setter_native
@@ -21109,9 +21546,10 @@ h_helper_copy_string:
     cnamefunc: '{C_prefix}ShroudCopyString'
     fnamefunc: '{C_prefix}SHROUD_copy_string'
   c_fmtname: LIB_ShroudCopyString
+  c_include:
+  - <string.h>
   cxx_include:
   - <cstring>
-  - <cstddef>
   scope: cwrap_impl
   source:
   - ''
@@ -21177,13 +21615,17 @@ h_helper_pointer_string:
     ! helper pointer_string'
   - '! Assign context to an assumed-length character pointer'
   - subroutine LIB_SHROUD_pointer_string(context, var)+
-  - 'use iso_c_binding, only : c_f_pointer, C_PTR'
+  - 'use iso_c_binding, only : c_associated, c_f_pointer, C_PTR'
   - implicit none
   - 'type(LIB_SHROUD_array), intent(IN) :: context'
   - 'character(len=:), pointer, intent(OUT) :: var'
   - 'character(len=context%elem_len), pointer :: fptr'
+  - if (c_associated(context%base_addr)) then+
   - call c_f_pointer(context%base_addr, fptr)
   - var => fptr
+  - -else+
+  - nullify(var)
+  - -endif
   - '-end subroutine LIB_SHROUD_pointer_string
 
     ! end helper pointer_string'
@@ -21538,6 +21980,8 @@ root
             cvar -- c_mixin_cdesc_char_fill_cvar
         function
           string -- c_mixin_cdesc_function_string
+        getter -- c_mixin_cdesc_getter
+          char* -- c_mixin_cdesc_getter_char*
         inout
           vector -- c_mixin_cdesc_inout_vector
         native
@@ -21564,7 +22008,8 @@ root
       char-alloc -- c_mixin_char-alloc
       char-array-alloc -- c_mixin_char-array-alloc
       char-blank-fill -- c_mixin_char-blank-fill
-      char-copy -- c_mixin_char-copy
+      char-copyout -- c_mixin_char-copyout
+      char-copyout-len -- c_mixin_char-copyout-len
       char-free -- c_mixin_char-free
       char-malloc -- c_mixin_char-malloc
       character-assumed-length -- c_mixin_character-assumed-length
@@ -21588,6 +22033,10 @@ root
       function-assign-to-local -- c_mixin_function-assign-to-local
       function-assign-to-new -- c_mixin_function-assign-to-new
       function-return-cvar -- c_mixin_function-return-cvar
+      getter
+        char* -- c_mixin_getter_char*
+          len -- c_mixin_getter_char*_len
+        string -- c_mixin_getter_string
       header
         cstring -- c_mixin_header_cstring
         stddef -- c_mixin_header_stddef
@@ -21825,14 +22274,23 @@ root
       void* -- f_function_void*
     getter
       bool -- f_getter_bool
+      char*
+        buf
+          copy -- f_getter_char*_buf_copy
+        cdesc
+          allocatable -- f_getter_char*_cdesc_allocatable
+          pointer -- f_getter_char*_cdesc_pointer
       native -- f_getter_native
       native*
         cdesc
           pointer -- f_getter_native*_cdesc_pointer
         pointer -- f_getter_native*_pointer
       string
+        buf
+          copy -- f_getter_string_buf_copy
         cdesc
           allocatable -- f_getter_string_cdesc_allocatable
+          pointer -- f_getter_string_cdesc_pointer
       struct*
         cdesc
           pointer -- f_getter_struct*_cdesc_pointer
@@ -21954,7 +22412,6 @@ root
           pointer -- f_mixin_cdesc_char_pointer
         copy
           array -- f_mixin_cdesc_copy_array
-        getter -- f_mixin_cdesc_getter
         inout
           array -- f_mixin_cdesc_inout_array
         native
@@ -21989,6 +22446,8 @@ root
       function-as-cptr -- f_mixin_function-as-cptr
       function-interface-as-cptr -- f_mixin_function-interface-as-cptr
       function-to-subroutine -- f_mixin_function-to-subroutine
+      getter
+        argname -- f_mixin_getter_argname
       helper
         array
           string
@@ -22110,6 +22569,8 @@ root
       void** -- f_out_void**
     setter -- f_setter
       bool -- f_setter_bool
+      char*
+        buf -- f_setter_char*_buf
       native -- f_setter_native
       native* -- f_setter_native*
       string

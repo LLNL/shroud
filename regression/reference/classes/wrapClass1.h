@@ -98,6 +98,12 @@ void CLA_Class1_get_m_name(CLA_Class1 * self,
 void CLA_Class1_set_m_name(CLA_Class1 * self, char *val,
     int SHT_val_len);
 
+void CLA_Class1_get_m_name_ptr(CLA_Class1 * self,
+    CLA_SHROUD_array *SHT_rv_cdesc);
+
+void CLA_Class1_get_m_name_copy(CLA_Class1 * self, char *val,
+    int SHT_rv_len);
+
 #ifdef __cplusplus
 }
 #endif

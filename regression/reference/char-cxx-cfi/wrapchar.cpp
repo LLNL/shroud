@@ -11,8 +11,8 @@
 #include "char.h"
 #include "shroud/features.h"
 // shroud
-#include <cstdlib>
 #include <cstring>
+#include <cstdlib>
 #include "wrapchar.h"
 
 // splicer begin CXX_definitions

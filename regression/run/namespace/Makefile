@@ -25,13 +25,13 @@ VPATH = \
 C_OBJS = \
     namespace.o \
     utilns.o \
-    wrapfns_outer.o \
     wrapns.o \
     wrapns_outer.o
 F_OBJS= \
     main.o \
     fruit.o \
-    wrapfns.o
+    wrapfns.o \
+    wrapfns_outer.o
 
 include $(top)/regression/run/defaults.mk
 
