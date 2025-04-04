@@ -24,8 +24,18 @@ public:
     int m_test;
     bool m_bool;
     std::string m_name;
-    Class1()         : m_flag(0), m_test(0), m_bool(true), m_name("ctor_name")     {};
-    Class1(int flag) : m_flag(flag), m_test(0), m_bool(false), m_name("alt_name")  {};
+    std::string m_name_ptr;
+    std::string m_name_copy;
+    Class1()         : m_flag(0), m_test(0), m_bool(true),
+                       m_name("ctor_name"),
+                       m_name_ptr("ptr_name"),
+                       m_name_copy("copy_name")
+    {};
+    Class1(int flag) : m_flag(flag), m_test(0), m_bool(false),
+                       m_name("alt_name"),
+                       m_name_ptr("alt_ptr_name"),
+                       m_name_copy("alt_copy_name")
+    {};
     int Method1();
     bool equivalent(Class1 const &obj2) const;
     Class1 * returnThis();

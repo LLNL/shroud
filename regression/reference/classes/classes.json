@@ -3542,6 +3542,247 @@
                             "struct_name": "Class1",
                             "wrapped_name": "m_name"
                         }
+                    },
+                    {
+                        "<FUNCTION>": "get_m_name_ptr  17 ****************************************",
+                        "_generated": "getter/setter",
+                        "_generated_path": [
+                            "getter/setter"
+                        ],
+                        "ast": {
+                            "declarator": {
+                                "attrs": {
+                                    "deref": "pointer",
+                                    "intent": "getter"
+                                },
+                                "name": "get_m_name_ptr",
+                                "params": [],
+                                "typemap_name": "std::string"
+                            },
+                            "specifier": [
+                                "std::string"
+                            ],
+                            "typemap_name": "std::string"
+                        },
+                        "decl": "std::string get_m_name_ptr()",
+                        "declgen": "std::string get_m_name_ptr(void) +deref(pointer)+intent(getter)",
+                        "helpers": {
+                            "fc": [
+                                "array_context",
+                                "pointer_string"
+                            ]
+                        },
+                        "name": "get_m_name_ptr",
+                        "options": {},
+                        "user_fmt": {
+                            "field_name": "m_name_ptr",
+                            "struct_name": "Class1",
+                            "wrapped_name": "m_name_ptr"
+                        },
+                        "wrap": {
+                            "fortran": true
+                        },
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->get_m_name_ptr(\t)",
+                                        "C_name": "CLA_Class1_get_m_name_ptr",
+                                        "C_prototype": "CLA_Class1 * self,\t CLA_SHROUD_array *SHT_rv_cdesc",
+                                        "C_return_type": "void",
+                                        "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
+                                        "F_arguments": "obj",
+                                        "F_subprogram": "function",
+                                        "c_abstract_decl": "char",
+                                        "c_const": "",
+                                        "c_helper_array_context": "CLA_SHROUD_array",
+                                        "c_local_cxx": "SHC_rv_cxx",
+                                        "c_local_len": "SHC_rv_len",
+                                        "c_type": "char",
+                                        "c_var": "SHC_rv",
+                                        "c_var_cdesc": "SHT_rv_cdesc",
+                                        "cxx_abstract_decl": "std::string",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_type": "std::string",
+                                        "cxx_var": "SHC_rv_cxx",
+                                        "f_call_function": "c_class1_get_m_name_ptr",
+                                        "f_deref_attr": ", pointer",
+                                        "f_helper_array_context": "CLA_SHROUD_array",
+                                        "f_helper_pointer_string": "CLA_SHROUD_pointer_string",
+                                        "f_result_clause": "\fresult(SHT_rv)",
+                                        "f_type": "character(len=*)",
+                                        "f_var": "SHT_rv",
+                                        "f_var_cdesc": "SHT_rv_cdesc",
+                                        "fc_var": "SHT_rv",
+                                        "i_arguments": "self,\t SHT_rv_cdesc",
+                                        "i_intent": "OUT",
+                                        "i_intent_attr": ", intent(OUT)",
+                                        "i_kind": "C_CHAR",
+                                        "i_module_name": "iso_c_binding",
+                                        "i_name_function": "c_class1_get_m_name_ptr",
+                                        "i_subprogram": "subroutine",
+                                        "i_type": "character(kind=C_CHAR)",
+                                        "i_var": "SHT_rv",
+                                        "i_var_cdesc": "SHT_rv_cdesc",
+                                        "idtor": "0",
+                                        "stmt_name": "f_getter_string_cdesc_pointer",
+                                        "typemap_name": "std::string"
+                                    },
+                                    "meta": {
+                                        "abstract": "string",
+                                        "api": "cdesc",
+                                        "deref": "pointer",
+                                        "intent": "getter"
+                                    },
+                                    "stmt": "f_getter_string_cdesc_pointer"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "abstract": "string",
+                                        "intent": "getter"
+                                    }
+                                }
+                            }
+                        },
+                        "zz_fmtdict": {
+                            "C_name_api": "get_m_name_ptr",
+                            "F_name_api": "get_m_name_ptr",
+                            "F_name_function": "get_m_name_ptr",
+                            "F_name_generic": "get_m_name_ptr",
+                            "F_name_impl": "class1_get_m_name_ptr",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
+                            "field_name": "m_name_ptr",
+                            "function_name": "get_m_name_ptr",
+                            "struct_name": "Class1",
+                            "wrapped_name": "m_name_ptr"
+                        }
+                    },
+                    {
+                        "<FUNCTION>": "get_m_name_copy  18 ****************************************",
+                        "_generated": "getter/setter",
+                        "_generated_path": [
+                            "getter/setter"
+                        ],
+                        "ast": {
+                            "declarator": {
+                                "attrs": {
+                                    "deref": "copy",
+                                    "intent": "getter"
+                                },
+                                "name": "get_m_name_copy",
+                                "params": [],
+                                "typemap_name": "std::string"
+                            },
+                            "specifier": [
+                                "std::string"
+                            ],
+                            "typemap_name": "std::string"
+                        },
+                        "decl": "std::string get_m_name_copy()",
+                        "declgen": "std::string get_m_name_copy(void) +deref(copy)+intent(getter)",
+                        "helpers": {
+                            "fc": [
+                                "char_copy"
+                            ]
+                        },
+                        "name": "get_m_name_copy",
+                        "options": {},
+                        "user_fmt": {
+                            "field_name": "m_name_copy",
+                            "struct_name": "Class1",
+                            "wrapped_name": "m_name_copy"
+                        },
+                        "wrap": {
+                            "fortran": true
+                        },
+                        "zz_bind": {
+                            "f": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->get_m_name_copy(\t)",
+                                        "C_name": "CLA_Class1_get_m_name_copy",
+                                        "C_prototype": "CLA_Class1 * self,\t char *val,\t int SHT_rv_len",
+                                        "C_return_type": "void",
+                                        "F_arg_c_call": "obj%cxxmem,\t val,\t SHT_rv_len",
+                                        "F_arguments": "obj,\t val",
+                                        "F_subprogram": "subroutine",
+                                        "c_abstract_decl": "char",
+                                        "c_const": "",
+                                        "c_helper_char_copy": "ShroudCharCopy",
+                                        "c_local_cxx": "SHC_rv_cxx",
+                                        "c_local_len": "SHC_rv_len",
+                                        "c_type": "char",
+                                        "c_var": "val",
+                                        "c_var_len": "SHT_rv_len",
+                                        "cxx_abstract_decl": "std::string",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_type": "std::string",
+                                        "cxx_var": "SHC_rv_cxx",
+                                        "f_call_function": "c_class1_get_m_name_copy",
+                                        "f_type": "character(len=*)",
+                                        "f_var": "val",
+                                        "f_var_len": "SHT_rv_len",
+                                        "fc_var": "SHT_rv",
+                                        "i_arguments": "self,\t val,\t SHT_rv_len",
+                                        "i_intent": "OUT",
+                                        "i_intent_attr": ", intent(OUT)",
+                                        "i_kind": "C_CHAR",
+                                        "i_module_name": "iso_c_binding",
+                                        "i_name_function": "c_class1_get_m_name_copy",
+                                        "i_subprogram": "subroutine",
+                                        "i_type": "character(kind=C_CHAR)",
+                                        "i_var": "val",
+                                        "i_var_len": "SHT_rv_len",
+                                        "idtor": "0",
+                                        "stmt_name": "f_getter_string_buf_copy",
+                                        "typemap_name": "std::string"
+                                    },
+                                    "meta": {
+                                        "abstract": "string",
+                                        "api": "buf",
+                                        "deref": "copy",
+                                        "intent": "getter"
+                                    },
+                                    "stmt": "f_getter_string_buf_copy"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "abstract": "string",
+                                        "intent": "getter"
+                                    }
+                                }
+                            }
+                        },
+                        "zz_fmtdict": {
+                            "C_name_api": "get_m_name_copy",
+                            "F_name_api": "get_m_name_copy",
+                            "F_name_function": "get_m_name_copy",
+                            "F_name_generic": "get_m_name_copy",
+                            "F_name_impl": "class1_get_m_name_copy",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "f_arglist": [
+                                "val"
+                            ],
+                            "field_name": "m_name_copy",
+                            "function_name": "get_m_name_copy",
+                            "struct_name": "Class1",
+                            "wrapped_name": "m_name_copy"
+                        }
                     }
                 ],
                 "name": "Class1",
@@ -3687,6 +3928,76 @@
                             "field_name": "m_name",
                             "variable_name": "m_name"
                         }
+                    },
+                    {
+                        "<VARIABLE>": "m_name_ptr ****************************************",
+                        "ast": {
+                            "declarator": {
+                                "attrs": {
+                                    "deref": "pointer",
+                                    "readonly": true
+                                },
+                                "name": "m_name_ptr",
+                                "typemap_name": "std::string"
+                            },
+                            "specifier": [
+                                "std::string"
+                            ],
+                            "typemap_name": "std::string"
+                        },
+                        "name": "m_name_ptr",
+                        "options": {
+                            "wrap_python": false
+                        },
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "lua": true
+                        },
+                        "zz_bind": {
+                            "share": {}
+                        },
+                        "zz_fmtdict": {
+                            "c_type": "char",
+                            "cxx_type": "std::string",
+                            "field_name": "m_name_ptr",
+                            "variable_name": "m_name_ptr"
+                        }
+                    },
+                    {
+                        "<VARIABLE>": "m_name_copy ****************************************",
+                        "ast": {
+                            "declarator": {
+                                "attrs": {
+                                    "deref": "copy",
+                                    "readonly": true
+                                },
+                                "name": "m_name_copy",
+                                "typemap_name": "std::string"
+                            },
+                            "specifier": [
+                                "std::string"
+                            ],
+                            "typemap_name": "std::string"
+                        },
+                        "name": "m_name_copy",
+                        "options": {
+                            "wrap_python": false
+                        },
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "lua": true
+                        },
+                        "zz_bind": {
+                            "share": {}
+                        },
+                        "zz_fmtdict": {
+                            "c_type": "char",
+                            "cxx_type": "std::string",
+                            "field_name": "m_name_copy",
+                            "variable_name": "m_name_copy"
+                        }
                     }
                 ],
                 "wrap": {
@@ -3734,7 +4045,7 @@
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "getName  17 ****************************************",
+                        "<FUNCTION>": "getName  19 ****************************************",
                         "ast": {
                             "const": true,
                             "declarator": {
@@ -4024,7 +4335,7 @@
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "getReference  18 ****************************************",
+                        "<FUNCTION>": "getReference  20 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "getReference",
@@ -4287,7 +4598,7 @@
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "ctor  19 ****************************************",
+                        "<FUNCTION>": "ctor  21 ****************************************",
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -4511,7 +4822,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "dtor  20 ****************************************",
+                        "<FUNCTION>": "dtor  22 ****************************************",
                         "ast": {
                             "declarator": {
                                 "default_name": "dtor",
@@ -4643,7 +4954,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "get_ivar  21 ****************************************",
+                        "<FUNCTION>": "get_ivar  23 ****************************************",
                         "ast": {
                             "declarator": {
                                 "func_const": true,
@@ -4892,7 +5203,7 @@
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "ctor  22 ****************************************",
+                        "<FUNCTION>": "ctor  24 ****************************************",
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -5116,7 +5427,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "dtor  23 ****************************************",
+                        "<FUNCTION>": "dtor  25 ****************************************",
                         "ast": {
                             "declarator": {
                                 "default_name": "dtor",
@@ -5301,7 +5612,7 @@
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "allocate  24 ****************************************",
+                        "<FUNCTION>": "allocate  26 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "allocate",
@@ -5486,7 +5797,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "free  25 ****************************************",
+                        "<FUNCTION>": "free  27 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "free",
@@ -5578,7 +5889,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "ctor  26 ****************************************",
+                        "<FUNCTION>": "ctor  28 ****************************************",
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -5729,7 +6040,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "dtor  27 ****************************************",
+                        "<FUNCTION>": "dtor  29 ****************************************",
                         "ast": {
                             "declarator": {
                                 "default_name": "dtor",
@@ -5823,7 +6134,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "get_nitems  28 ****************************************",
+                        "<FUNCTION>": "get_nitems  30 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -5927,7 +6238,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "set_nitems  29 ****************************************",
+                        "<FUNCTION>": "set_nitems  31 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -6074,7 +6385,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "get_items  30 ****************************************",
+                        "<FUNCTION>": "get_items  32 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -6218,7 +6529,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "set_items  31 ****************************************",
+                        "<FUNCTION>": "set_items  33 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -6503,7 +6814,7 @@
         ],
         "functions": [
             {
-                "<FUNCTION>": "directionFunc  32 ****************************************",
+                "<FUNCTION>": "directionFunc  34 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "directionFunc",
@@ -6863,7 +7174,7 @@
                 }
             },
             {
-                "<FUNCTION>": "passClassByValue  33 ****************************************",
+                "<FUNCTION>": "passClassByValue  35 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "passClassByValue",
@@ -7126,7 +7437,7 @@
                 }
             },
             {
-                "<FUNCTION>": "useclass  34 ****************************************",
+                "<FUNCTION>": "useclass  36 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "useclass",
@@ -7430,7 +7741,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getclass2  35 ****************************************",
+                "<FUNCTION>": "getclass2  37 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -7589,7 +7900,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getclass3  36 ****************************************",
+                "<FUNCTION>": "getclass3  38 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getclass3",
@@ -7796,7 +8107,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getclass2_void  37 ****************************************",
+                "<FUNCTION>": "getclass2_void  39 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -7939,7 +8250,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getclass3_void  38 ****************************************",
+                "<FUNCTION>": "getclass3_void  40 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getclass3_void",
@@ -8081,7 +8392,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getConstClassReference  39 ****************************************",
+                "<FUNCTION>": "getConstClassReference  41 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -8237,7 +8548,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getClassReference  40 ****************************************",
+                "<FUNCTION>": "getClassReference  42 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getClassReference",
@@ -8441,7 +8752,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getClassCopy  41 ****************************************",
+                "<FUNCTION>": "getClassCopy  43 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getClassCopy",
@@ -8695,7 +9006,7 @@
                 }
             },
             {
-                "<FUNCTION>": "set_global_flag  42 ****************************************",
+                "<FUNCTION>": "set_global_flag  44 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "set_global_flag",
@@ -8970,7 +9281,7 @@
                 }
             },
             {
-                "<FUNCTION>": "get_global_flag  43 ****************************************",
+                "<FUNCTION>": "get_global_flag  45 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "get_global_flag",
@@ -9153,7 +9464,7 @@
                 }
             },
             {
-                "<FUNCTION>": "LastFunctionCalled  44 ****************************************",
+                "<FUNCTION>": "LastFunctionCalled  46 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {

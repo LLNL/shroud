@@ -27,6 +27,12 @@ declarations:
   - decl: std::string m_name
     options:
       wrap_python: False
+  - decl: std::string m_name_ptr +deref(pointer) +readonly
+    options:
+       wrap_python: False
+  - decl: std::string m_name_copy +deref(copy) +readonly
+    options:
+       wrap_python: False
   - decl: Class1()
     format:
       function_suffix: _default

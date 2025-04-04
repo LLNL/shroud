@@ -100,6 +100,8 @@ contains
     type(class1) obj0a
     type(c_ptr) ptr
     character(:), allocatable :: name
+    character(:), pointer :: name_ptr
+    character(20) :: name_copy
 
     call set_case_name("test_class1")
 
@@ -128,8 +130,19 @@ contains
     ! Get default name from constructor
     name = obj0%get_m_name()
     call assert_true(allocated(name), "get_m_name")
-    call assert_equals(len(name), 9, "get_m_name len")
-    call assert_equals(name, "ctor_name", "get_m_name value")
+    call assert_equals(9, len(name), "get_m_name len")
+    call assert_equals("ctor_name", name, "get_m_name value")
+
+    nullify(name_ptr)
+    name_ptr => obj0%get_m_name_ptr()
+    call assert_true(associated(name_ptr), "get_m_name_ptr")
+    call assert_equals(8, len(name_ptr), "get_m_name_ptr len")
+    call assert_equals("ptr_name", name_ptr, "get_m_name_ptr value")
+
+    name_copy = " "
+    call obj0%get_m_name_copy(name_copy)
+    call assert_equals(9, len_trim(name_copy), "get_m_name_copy len")
+    call assert_equals("copy_name", name_copy, "get_m_name_copy value")
 
     ! Set new name then get.
     call obj0%set_m_name("changed_name")

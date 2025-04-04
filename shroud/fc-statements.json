@@ -2286,6 +2286,22 @@
         ]
     },
     {
+        "name": "c_mixin_char-copyout-len",
+        "comments": [
+            "Copy cxx variable to c argument for output."
+        ],
+        "notes": [
+            "Used to copy and blank fill an output Fortran string.",
+            "The input length is explicit since it may not be NULL terminated."
+        ],
+        "c_post_call": [
+            "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t {c_local_len});"
+        ],
+        "helper": [
+            "char_copy"
+        ]
+    },
+    {
         "name": "c_mixin_char-array-alloc",
         "comments": [
             "Converts a contiguous Fortran array of characters into",
@@ -4360,10 +4376,10 @@
             "Extract std::string field from struct."
         ],
         "c_pre_call": [
-            "void *{c_local_cxx} = {nullptr};",
+            "const char *{c_local_cxx} = {nullptr};",
             "size_t {c_local_len} = {CXX_this}->{field_name}.size();",
             "if ({c_local_len} != 0) {{+",
-            "{c_local_cxx} =\t const_cast<char *>({CXX_this}->{field_name}.data());",
+            "{c_local_cxx} =\t {CXX_this}->{field_name}.data();",
             "-}}"
 
         ],
@@ -4557,7 +4573,7 @@
     {
         "name": "f_getter_char*_buf_copy",
         "notes": [
-            "Get a char* member of a class as a Fortran pointer.ABC"
+            "Get a char* member of a class as a Fortran pointer."
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
@@ -4581,7 +4597,7 @@
     {
         "name": "f_getter_string_cdesc_allocatable",
         "notes": [
-            "Return argument meta data to Fortran.",
+            "Get a std::string member of a class as a Fortran allocatable.",
             "XXX - check for array of std::string"
         ],
         "mixin": [
@@ -4591,10 +4607,44 @@
             "c_mixin_getter_string"
         ],
         "c_call": [
-            "{c_var_cdesc}->base_addr = {c_local_cxx};",
+            "{c_var_cdesc}->base_addr = const_cast<char *>({c_local_cxx});",
             "{c_var_cdesc}->type = 0; // SH_CHAR;",
             "{c_var_cdesc}->elem_len = {c_local_len};",
             "{c_var_cdesc}->rank = 0;"
+        ]
+    },
+    {
+        "name": "f_getter_string_cdesc_pointer",
+        "notes": [
+            "Get a std__string member of a class as a Fortran pointer.",
+            "XXX - check for array of std::string"
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_cdesc_pass",
+            "f_mixin_cdesc_char_pointer",
+            "c_mixin_getter_string"
+        ],
+        "c_call": [
+            "{c_var_cdesc}->base_addr = const_cast<char *>({c_local_cxx});",
+            "{c_var_cdesc}->type = 0; // SH_CHAR;",
+            "{c_var_cdesc}->elem_len = {c_local_len};",
+            "{c_var_cdesc}->rank = 0;"
+        ]
+    },
+    {
+        "name": "f_getter_string_buf_copy",
+        "notes": [
+            "Get a char* member of a class as a Fortran pointer."
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_function-as-character-arg",
+            "f_mixin_pass_character_buf",
+            "c_mixin_in_character_buf",
+            "c_mixin_getter_string",
+            "c_mixin_char-copyout-len",
+            "f_mixin_getter_argname"
         ]
     },
     {
