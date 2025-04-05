@@ -165,7 +165,7 @@ c_function_char:
   - Call the C wrapper as a subroutine.
   - Return a single char from a function.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_function_char'
   i_dummy_arg:
@@ -223,7 +223,7 @@ c_function_char*_arg:
   - Use F_string_result_as_arg as the argument name.
   - was base:f_function_char*_buf_copy
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_function-as-character-arg'
   - '  f_mixin_function-as-character-arg-var-len'
@@ -284,7 +284,7 @@ c_function_char*_buf_arg:
   - Use F_string_result_as_arg as the argument name.
   - was base:f_function_char*_buf_copy
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_function-as-character-arg'
   - '  f_mixin_function-as-character-arg-var-len'
@@ -346,7 +346,7 @@ c_function_char*_buf_copy:
   - Copy result into caller's buffer.
   - XXX - maybe fmtdict to rename c_local_cxx as output
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
@@ -679,7 +679,7 @@ c_function_shadow&_capsule:
   notes:
   - Return a C_capsule_data_type.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
@@ -718,7 +718,7 @@ c_function_shadow&_capsule_caller:
   notes:
   - Return a C_capsule_data_type.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
@@ -757,7 +757,7 @@ c_function_shadow&_capsule_library:
   notes:
   - Return a C_capsule_data_type.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
@@ -988,7 +988,7 @@ c_function_shadow*_capsule:
   notes:
   - Return a C_capsule_data_type.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
@@ -1025,7 +1025,7 @@ c_function_shadow*_this:
   - Input set return_this.
   - Do not return anything.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   c_return_type: void
   c_call:
@@ -1331,7 +1331,7 @@ c_function_string&_buf_arg:
   - Use F_string_result_as_arg as the argument name.
   - was base:f_function_string_buf
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_function-as-character-arg'
   - '  f_mixin_function-as-character-arg-var-len'
@@ -1393,7 +1393,7 @@ c_function_string&_buf_copy:
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
@@ -1498,7 +1498,7 @@ c_function_string*_buf_copy:
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
@@ -1631,7 +1631,7 @@ c_function_string_buf_arg:
   - Use F_string_result_as_arg as the argument name.
   - was base:f_function_string_buf
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_function-as-character-arg'
   - '  f_mixin_function-as-character-arg-var-len'
@@ -1693,7 +1693,7 @@ c_function_string_buf_copy:
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
@@ -1744,7 +1744,7 @@ c_function_struct:
   - Call the C wrapper as a subroutine.
   - Declare a Fortran variable.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-interface-arg'
   - '  f_mixin_declare-local-variable'
@@ -6759,7 +6759,7 @@ f_ctor_shadow_capsule_shared:
   - Pass function result as a capsule argument from Fortran to C.
   - Create a std::shared_pointer on the heap to hold the pointer to the instance.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
@@ -6853,7 +6853,7 @@ f_function_char:
   - Call the C wrapper as a subroutine.
   - Return a single char from a function.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_function_char'
   f_dummy_decl:
@@ -6954,7 +6954,7 @@ f_function_char*_arg:
   - Use F_string_result_as_arg as the argument name.
   - was base:f_function_char*_buf_copy
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_function-as-character-arg'
   - '  f_mixin_function-as-character-arg-var-len'
@@ -7035,7 +7035,7 @@ f_function_char*_buf_arg:
   - Use F_string_result_as_arg as the argument name.
   - was base:f_function_char*_buf_copy
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_function-as-character-arg'
   - '  f_mixin_function-as-character-arg-var-len'
@@ -7117,7 +7117,7 @@ f_function_char*_buf_copy:
   - Copy result into caller's buffer.
   - XXX - maybe fmtdict to rename c_local_cxx as output
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
@@ -7188,7 +7188,7 @@ f_function_char*_cdesc_allocatable:
   - Call function and assign to a c variable.
   - Fill cdesc from char * in the C wrapper.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_cdesc_char_allocate'
@@ -7249,7 +7249,7 @@ f_function_char*_cdesc_pointer:
   - Fill cdesc from char * in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  c_mixin_function-assign-to-cvar'
@@ -7309,7 +7309,7 @@ f_function_char*_cfi_allocatable:
   notes:
   - Add allocatable attribute to declaration.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cfi_character-deferred-length'
   - '    f_mixin_character-deferred-length'
@@ -7369,7 +7369,7 @@ f_function_char*_cfi_arg:
   - Use F_string_result_as_arg as the argument name.
   - was base:f_function_char*_cfi_copy
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_function-as-character-arg'
   - '  f_mixin_cfi_pass_character'
@@ -7438,7 +7438,7 @@ f_function_char*_cfi_copy:
   notes:
   - Copy result into caller's buffer.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-local-variable'
   - '  f_mixin_cfi_pass_character'
@@ -7499,7 +7499,7 @@ f_function_char*_cfi_pointer:
   - Call function and assign to a c variable.
   - Convert C pointer to deferred-length CHARACTER Fortran scalar pointer.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cfi_character-deferred-length'
   - '    f_mixin_character-deferred-length'
@@ -7659,7 +7659,7 @@ f_function_char_cdesc_allocatable:
   - Call function and assign to a c variable.
   - Fill cdesc from char * in the C wrapper.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_cdesc_char_allocate'
@@ -7720,7 +7720,7 @@ f_function_char_cdesc_pointer:
   - Fill cdesc from char * in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  c_mixin_function-assign-to-cvar'
@@ -7780,7 +7780,7 @@ f_function_char_cfi_allocatable:
   notes:
   - Add allocatable attribute to declaration.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cfi_character-deferred-length'
   - '    f_mixin_character-deferred-length'
@@ -7833,7 +7833,7 @@ f_function_char_cfi_pointer:
   - Call function and assign to a c variable.
   - Convert C pointer to deferred-length CHARACTER Fortran scalar pointer.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cfi_character-deferred-length'
   - '    f_mixin_character-deferred-length'
@@ -8081,7 +8081,7 @@ f_function_native*_cdesc_allocatable:
   - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-local-variable'
   - '  f_mixin_cdesc_pass'
@@ -8168,7 +8168,7 @@ f_function_native*_cdesc_pointer:
   - Fill cdesc from native in the C wrapper.
   - Set Fortran pointer to native array.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  c_mixin_function-assign-to-cvar'
@@ -8237,7 +8237,7 @@ f_function_native*_cdesc_pointer_caller:
   usage:
   - int *func() +deref(pointer)+dimension(len)+owner(caller)
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_capsule_arg'
@@ -8323,7 +8323,7 @@ f_function_native*_cfi_allocatable:
   - Convert to subroutine and pass result as an argument.
   - Return an allocated copy of data.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-local-variable'
   - '  f_mixin_arg-call-fvar'
@@ -8399,7 +8399,7 @@ f_function_native*_cfi_pointer:
   - Convert to subroutine and pass result as an argument.
   - Return Fortran pointer to data.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-local-variable'
   - '  f_mixin_arg-call-fvar'
@@ -8619,7 +8619,7 @@ f_function_shadow&_capsule:
   notes:
   - Return a C_capsule_data_type.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
@@ -8665,7 +8665,7 @@ f_function_shadow&_capsule_caller:
   notes:
   - Return a C_capsule_data_type.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
@@ -8711,7 +8711,7 @@ f_function_shadow&_capsule_library:
   notes:
   - Return a C_capsule_data_type.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
@@ -8757,7 +8757,7 @@ f_function_shadow*_capsule:
   notes:
   - Return a C_capsule_data_type.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
@@ -8803,7 +8803,7 @@ f_function_shadow*_capsule_caller:
   notes:
   - Return a C_capsule_data_type.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
@@ -8849,7 +8849,7 @@ f_function_shadow*_capsule_library:
   notes:
   - Return a C_capsule_data_type.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
@@ -8893,7 +8893,7 @@ f_function_shadow*_this:
   - Input set return_this.
   - Do not return anything.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   f_call:
   - call {f_call_function}({F_arg_c_call})
@@ -8920,7 +8920,7 @@ f_function_shadow<native>_capsule:
   - owner=caller sets idtor flag to release the memory.
   - c_local_var is passed in as argument.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
@@ -8973,7 +8973,7 @@ f_function_shadow_capsule:
   - owner=caller sets idtor flag to release the memory.
   - c_local_var is passed in as argument.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
@@ -9021,7 +9021,7 @@ f_function_smartptr<shadow>*_capsule:
   - Call function and assign to a local C++ variable.
   - Assign to capsule in C wrapper.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
@@ -9067,7 +9067,7 @@ f_function_smartptr<shadow>_capsule:
   notes:
   - Used with std::shared_ptr<Object>* createChildA(void)
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
@@ -9117,7 +9117,7 @@ f_function_string&_buf:
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
@@ -9195,7 +9195,7 @@ f_function_string&_buf_arg:
   - Use F_string_result_as_arg as the argument name.
   - was base:f_function_string_buf
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_function-as-character-arg'
   - '  f_mixin_function-as-character-arg-var-len'
@@ -9277,7 +9277,7 @@ f_function_string&_buf_caller:
   - Pass cxx variable to library.
   - Delete the cxx variable.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
@@ -9349,7 +9349,7 @@ f_function_string&_buf_copy:
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
@@ -9424,7 +9424,7 @@ f_function_string&_buf_copy_caller:
   - Pass cxx variable to library.
   - Delete the cxx variable.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
@@ -9501,7 +9501,7 @@ f_function_string&_cdesc_allocatable:
   - using helper copy_string.
   - Release memory from capsule.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_capsule_pass'
@@ -9581,7 +9581,7 @@ f_function_string&_cdesc_allocatable_caller:
   - using helper copy_string.
   - Release memory from capsule.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_capsule_pass'
@@ -9661,7 +9661,7 @@ f_function_string&_cdesc_allocatable_library:
   - using helper copy_string.
   - Release memory from capsule.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_capsule_pass'
@@ -9736,7 +9736,7 @@ f_function_string&_cdesc_pointer:
   - in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  c_mixin_function-assign-to-local'
@@ -9792,7 +9792,7 @@ f_function_string&_cdesc_pointer_caller:
   - in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  c_mixin_function-assign-to-local'
@@ -9848,7 +9848,7 @@ f_function_string&_cdesc_pointer_library:
   - in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  c_mixin_function-assign-to-local'
@@ -9901,7 +9901,7 @@ f_function_string&_cfi_allocatable:
   - Make the C wrapper argument a CFI_desc_t.
   - Call function and assign to a local C++ variable.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cfi_character-deferred-length'
   - '    f_mixin_character-deferred-length'
@@ -9954,7 +9954,7 @@ f_function_string&_cfi_allocatable_caller:
   - Make the C wrapper argument a CFI_desc_t.
   - Call function and assign to a local C++ variable.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cfi_character-deferred-length'
   - '    f_mixin_character-deferred-length'
@@ -10007,7 +10007,7 @@ f_function_string&_cfi_allocatable_library:
   - Make the C wrapper argument a CFI_desc_t.
   - Call function and assign to a local C++ variable.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cfi_character-deferred-length'
   - '    f_mixin_character-deferred-length'
@@ -10068,7 +10068,7 @@ f_function_string&_cfi_arg:
   - Use F_string_result_as_arg as the argument name.
   - was base:f_function_string_cfi_copy
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_function-as-character-arg'
   - '  f_mixin_cfi_pass_character'
@@ -10135,7 +10135,7 @@ f_function_string&_cfi_copy:
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-local-variable'
   - '  f_mixin_cfi_pass_character'
@@ -10199,7 +10199,7 @@ f_function_string&_cfi_pointer:
   - XXX - via a helper to get address and length of string
   - XXX - c_local cxx is in c_mixin_function-assign-to-local
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cfi_character-deferred-length'
   - '    f_mixin_character-deferred-length'
@@ -10267,7 +10267,7 @@ f_function_string&_cfi_pointer_caller:
   - XXX - via a helper to get address and length of string
   - XXX - c_local cxx is in c_mixin_function-assign-to-local
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cfi_character-deferred-length'
   - '    f_mixin_character-deferred-length'
@@ -10335,7 +10335,7 @@ f_function_string&_cfi_pointer_library:
   - XXX - via a helper to get address and length of string
   - XXX - c_local cxx is in c_mixin_function-assign-to-local
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cfi_character-deferred-length'
   - '    f_mixin_character-deferred-length'
@@ -10402,7 +10402,7 @@ f_function_string*_buf:
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
@@ -10477,7 +10477,7 @@ f_function_string*_buf_caller:
   - Pass cxx variable to library.
   - Delete the cxx variable.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
@@ -10549,7 +10549,7 @@ f_function_string*_buf_copy:
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
@@ -10624,7 +10624,7 @@ f_function_string*_buf_copy_caller:
   - Pass cxx variable to library.
   - Delete the cxx variable.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
@@ -10701,7 +10701,7 @@ f_function_string*_cdesc_allocatable:
   - using helper copy_string.
   - Release memory from capsule.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_capsule_pass'
@@ -10781,7 +10781,7 @@ f_function_string*_cdesc_allocatable_caller:
   - using helper copy_string.
   - Release memory from capsule.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_capsule_pass'
@@ -10861,7 +10861,7 @@ f_function_string*_cdesc_allocatable_library:
   - using helper copy_string.
   - Release memory from capsule.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_capsule_pass'
@@ -10936,7 +10936,7 @@ f_function_string*_cdesc_pointer:
   - in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  c_mixin_function-assign-to-local'
@@ -10992,7 +10992,7 @@ f_function_string*_cdesc_pointer_caller:
   - in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  c_mixin_function-assign-to-local'
@@ -11048,7 +11048,7 @@ f_function_string*_cdesc_pointer_library:
   - in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  c_mixin_function-assign-to-local'
@@ -11101,7 +11101,7 @@ f_function_string*_cfi_allocatable:
   - Make the C wrapper argument a CFI_desc_t.
   - Call function and assign to a local C++ variable.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cfi_character-deferred-length'
   - '    f_mixin_character-deferred-length'
@@ -11154,7 +11154,7 @@ f_function_string*_cfi_allocatable_caller:
   - Make the C wrapper argument a CFI_desc_t.
   - Call function and assign to a local C++ variable.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cfi_character-deferred-length'
   - '    f_mixin_character-deferred-length'
@@ -11207,7 +11207,7 @@ f_function_string*_cfi_allocatable_library:
   - Make the C wrapper argument a CFI_desc_t.
   - Call function and assign to a local C++ variable.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cfi_character-deferred-length'
   - '    f_mixin_character-deferred-length'
@@ -11265,7 +11265,7 @@ f_function_string*_cfi_copy:
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-local-variable'
   - '  f_mixin_cfi_pass_character'
@@ -11329,7 +11329,7 @@ f_function_string*_cfi_pointer:
   - XXX - via a helper to get address and length of string
   - XXX - c_local cxx is in c_mixin_function-assign-to-local
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cfi_character-deferred-length'
   - '    f_mixin_character-deferred-length'
@@ -11397,7 +11397,7 @@ f_function_string*_cfi_pointer_caller:
   - XXX - via a helper to get address and length of string
   - XXX - c_local cxx is in c_mixin_function-assign-to-local
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cfi_character-deferred-length'
   - '    f_mixin_character-deferred-length'
@@ -11465,7 +11465,7 @@ f_function_string*_cfi_pointer_library:
   - XXX - via a helper to get address and length of string
   - XXX - c_local cxx is in c_mixin_function-assign-to-local
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cfi_character-deferred-length'
   - '    f_mixin_character-deferred-length'
@@ -11532,7 +11532,7 @@ f_function_string_buf:
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
@@ -11610,7 +11610,7 @@ f_function_string_buf_arg:
   - Use F_string_result_as_arg as the argument name.
   - was base:f_function_string_buf
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_function-as-character-arg'
   - '  f_mixin_function-as-character-arg-var-len'
@@ -11692,7 +11692,7 @@ f_function_string_buf_caller:
   - Pass cxx variable to library.
   - Delete the cxx variable.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
@@ -11764,7 +11764,7 @@ f_function_string_buf_copy:
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
@@ -11839,7 +11839,7 @@ f_function_string_buf_copy_caller:
   - Pass cxx variable to library.
   - Delete the cxx variable.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-local-variable'
   - '  f_mixin_pass_character_buf'
@@ -11916,7 +11916,7 @@ f_function_string_cdesc_allocatable:
   - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  c_mixin_function-assign-to-new'
@@ -12006,7 +12006,7 @@ f_function_string_cdesc_allocatable_caller:
   - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  c_mixin_function-assign-to-new'
@@ -12096,7 +12096,7 @@ f_function_string_cdesc_allocatable_library:
   - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  c_mixin_function-assign-to-new'
@@ -12180,7 +12180,7 @@ f_function_string_cfi_allocatable:
   notes:
   - std::string & function()
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cfi_character-deferred-length'
   - '    f_mixin_character-deferred-length'
@@ -12232,7 +12232,7 @@ f_function_string_cfi_allocatable_caller:
   - Make the C wrapper argument a CFI_desc_t.
   - Call function and assign to a local C++ variable.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cfi_character-deferred-length'
   - '    f_mixin_character-deferred-length'
@@ -12285,7 +12285,7 @@ f_function_string_cfi_allocatable_library:
   - Make the C wrapper argument a CFI_desc_t.
   - Call function and assign to a local C++ variable.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cfi_character-deferred-length'
   - '    f_mixin_character-deferred-length'
@@ -12346,7 +12346,7 @@ f_function_string_cfi_arg:
   - Use F_string_result_as_arg as the argument name.
   - was base:f_function_string_cfi_copy
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_function-as-character-arg'
   - '  f_mixin_cfi_pass_character'
@@ -12413,7 +12413,7 @@ f_function_string_cfi_copy:
   - Call function and assign to a local C++ variable.
   - Copy cxx variable into c variable.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-local-variable'
   - '  f_mixin_cfi_pass_character'
@@ -12477,7 +12477,7 @@ f_function_string_cfi_pointer:
   - XXX - via a helper to get address and length of string
   - XXX - c_local cxx is in c_mixin_function-assign-to-local
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cfi_character-deferred-length'
   - '    f_mixin_character-deferred-length'
@@ -12545,7 +12545,7 @@ f_function_string_cfi_pointer_caller:
   - XXX - via a helper to get address and length of string
   - XXX - c_local cxx is in c_mixin_function-assign-to-local
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cfi_character-deferred-length'
   - '    f_mixin_character-deferred-length'
@@ -12613,7 +12613,7 @@ f_function_string_cfi_pointer_library:
   - XXX - via a helper to get address and length of string
   - XXX - c_local cxx is in c_mixin_function-assign-to-local
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cfi_character-deferred-length'
   - '    f_mixin_character-deferred-length'
@@ -12676,7 +12676,7 @@ f_function_struct:
   - Call the C wrapper as a subroutine.
   - Declare a Fortran variable.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_declare-interface-arg'
   - '  f_mixin_declare-local-variable'
@@ -12718,7 +12718,7 @@ f_function_struct*_cdesc_pointer:
   - Fill cdesc from native in the C wrapper.
   - Set Fortran pointer to native array.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  c_mixin_function-assign-to-cvar'
@@ -12821,7 +12821,7 @@ f_function_vector<native>_cdesc_allocatable:
   - Similar to f_vector_out_allocatable but must declare result variable.
   - Always return a 1-d array.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_template_native_arg1'
   - '  f_mixin_cdesc_pass'
@@ -12946,7 +12946,7 @@ f_getter_char*_buf_copy:
   notes:
   - Get a char* member of a class as a Fortran pointer.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_function-as-character-arg'
   - '  f_mixin_pass_character_buf'
@@ -13020,7 +13020,7 @@ f_getter_char*_cdesc_allocatable:
   notes:
   - Get a char* member of a class as a Fortran allocatable.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_cdesc_char_allocate'
@@ -13089,7 +13089,7 @@ f_getter_char*_cdesc_pointer:
   notes:
   - Get a char* member of a class as a Fortran pointer.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_cdesc_char_pointer'
@@ -13181,7 +13181,7 @@ f_getter_native*_cdesc_pointer:
   notes:
   - Similar to calling a function, but save field pointer instead.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_cdesc_native_pointer'
@@ -13264,7 +13264,7 @@ f_getter_string_buf_copy:
   notes:
   - Get a char* member of a class as a Fortran pointer.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_function-as-character-arg'
   - '  f_mixin_pass_character_buf'
@@ -13342,7 +13342,7 @@ f_getter_string_cdesc_allocatable:
   - Get a std::string member of a class as a Fortran allocatable.
   - XXX - check for array of std::string
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_cdesc_char_allocate'
@@ -13405,7 +13405,7 @@ f_getter_string_cdesc_pointer:
   - Get a std__string member of a class as a Fortran pointer.
   - XXX - check for array of std::string
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_cdesc_char_pointer'
@@ -13466,7 +13466,7 @@ f_getter_struct**_cdesc_raw:
   - Save pointer struct members in a cdesc
   - along with shape information.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_cdesc_native_raw'
@@ -13526,7 +13526,7 @@ f_getter_struct*_cdesc_pointer:
   notes:
   - Similar to calling a function, but save field pointer instead.
   mixin_names:
-  - '  f_mixin_function-to-subroutine'
+  - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_cdesc_pass'
   - '  f_mixin_cdesc_native_pointer'
@@ -16957,6 +16957,21 @@ f_mixin_as-intent-out:
     f_intent: OUT
     f_intent_attr: ', intent(OUT)'
   sphinx-end-before: f_mixin_as-intent-out
+f_mixin_call-cwrapper-as-subroutine:
+  sphinx-start-after: f_mixin_call-cwrapper-as-subroutine
+  name: f_mixin_call-cwrapper-as-subroutine
+  intent: mixin
+  comments:
+  - Call the C wrapper as a subroutine.
+  mixin_names:
+  - '  c_mixin_as-intent-out'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  c_return_type: void
+  fmtdict:
+    i_intent: OUT
+    i_intent_attr: ', intent(OUT)'
+  sphinx-end-before: f_mixin_call-cwrapper-as-subroutine
 f_mixin_capsule_arg:
   sphinx-start-after: f_mixin_capsule_arg
   name: f_mixin_capsule_arg
@@ -17497,21 +17512,6 @@ f_mixin_function-interface-as-cptr:
     iso_c_binding:
     - C_PTR
   sphinx-end-before: f_mixin_function-interface-as-cptr
-f_mixin_function-to-subroutine:
-  sphinx-start-after: f_mixin_function-to-subroutine
-  name: f_mixin_function-to-subroutine
-  intent: mixin
-  comments:
-  - Call the C wrapper as a subroutine.
-  mixin_names:
-  - '  c_mixin_as-intent-out'
-  f_call:
-  - call {f_call_function}({F_arg_c_call})
-  c_return_type: void
-  fmtdict:
-    i_intent: OUT
-    i_intent_attr: ', intent(OUT)'
-  sphinx-end-before: f_mixin_function-to-subroutine
 f_mixin_function_c-ptr:
   sphinx-start-after: f_mixin_function_c-ptr
   name: f_mixin_function_c-ptr
@@ -22395,6 +22395,7 @@ root
       allocate -- f_mixin_allocate
       arg-call-fvar -- f_mixin_arg-call-fvar
       as-intent-out -- f_mixin_as-intent-out
+      call-cwrapper-as-subroutine -- f_mixin_call-cwrapper-as-subroutine
       capsule
         arg -- f_mixin_capsule_arg
         dtor -- f_mixin_capsule_dtor
@@ -22445,7 +22446,6 @@ root
       function-as-character-arg-var-len -- f_mixin_function-as-character-arg-var-len
       function-as-cptr -- f_mixin_function-as-cptr
       function-interface-as-cptr -- f_mixin_function-interface-as-cptr
-      function-to-subroutine -- f_mixin_function-to-subroutine
       getter
         argname -- f_mixin_getter_argname
       helper

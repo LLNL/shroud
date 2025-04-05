@@ -391,11 +391,12 @@
         }
     },
     {
-        "name": "f_mixin_function-to-subroutine",
+        "name": "f_mixin_call-cwrapper-as-subroutine",
         "comments": [
             "Call the C wrapper as a subroutine."
         ],
         "notes": [
+            "Needed to return some meta data.",
             "Other groups must be used to pass argument to the C wrapper."
         ],
         "mixin": [
@@ -1725,7 +1726,7 @@
     {
         "name": "f_function_native*_cdesc_allocatable",
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_declare-local-variable",
             "f_mixin_cdesc_pass",
             "c_mixin_function-assign-to-cvar",
@@ -1760,7 +1761,7 @@
             "f_function_struct*_cdesc_pointer"
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_cdesc_pass",
             "c_mixin_function-assign-to-cvar",
             "c_mixin_cdesc_native_fill",
@@ -1777,7 +1778,7 @@
             "int *func() +deref(pointer)+dimension(len)+owner(caller)"
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_cdesc_pass",
             "f_mixin_capsule_arg",
             "c_mixin_function-assign-to-cvar",
@@ -2498,7 +2499,7 @@
             "c_function_char"
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_function_char"
         ]
     },
@@ -2592,7 +2593,7 @@
             "XXX - maybe fmtdict to rename c_local_cxx as output"
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_declare-local-variable",
             "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf",
@@ -2614,7 +2615,7 @@
             "was base:f_function_char*_buf_copy"
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_function-as-character-arg",
             "f_mixin_function-as-character-arg-var-len",
             "f_mixin_pass_character_buf",
@@ -2705,7 +2706,7 @@
             "f_function_char*_cdesc_allocatable"
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_cdesc_pass",
             "f_mixin_cdesc_char_allocate",
             "c_mixin_function-assign-to-cvar",
@@ -2718,7 +2719,7 @@
             "f_function_char*_cdesc_pointer"
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_cdesc_pass",
             "c_mixin_function-assign-to-cvar",
             "c_mixin_cdesc_char_fill_cvar",
@@ -2918,7 +2919,7 @@
             "f_function_string&_cdesc_pointer_library"
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_cdesc_pass",
             "c_mixin_function-assign-to-local",
             "c_mixin_cdesc_function_string",
@@ -3187,7 +3188,7 @@
             "f_function_string&_cdesc_allocatable_library"
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_cdesc_pass",
             "f_mixin_capsule_pass",
             "c_mixin_function-assign-to-local",
@@ -3210,7 +3211,7 @@
             "c_function_string&_buf_copy"
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_declare-local-variable",
             "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf",
@@ -3232,7 +3233,7 @@
             "#c_function_string&_buf_copy"
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_declare-local-variable",
             "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf",
@@ -3254,7 +3255,7 @@
             "was base:f_function_string_buf"
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_function-as-character-arg",
             "f_mixin_function-as-character-arg-var-len",
             "f_mixin_pass_character_buf",
@@ -3271,7 +3272,7 @@
             "f_function_string_cdesc_allocatable_library"
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_cdesc_pass",
             "c_mixin_function-assign-to-new",
             "c_mixin_destructor_new-string",
@@ -3580,7 +3581,7 @@
             "Always return a 1-d array."
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_template_native_arg1",
             "f_mixin_cdesc_pass",
             "f_mixin_cdesc_allocate_1d",
@@ -3997,7 +3998,7 @@
             "Return a C_capsule_data_type."
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_capsule_function_shadow",
             "c_mixin_shadow",
             "c_mixin_function-assign-to-local",
@@ -4014,7 +4015,7 @@
             "Do not return anything."
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine"
+            "f_mixin_call-cwrapper-as-subroutine"
         ],
         "f_result_var": "as-subroutine",
         "c_call": [
@@ -4081,7 +4082,7 @@
             "c_local_var is passed in as argument."
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_capsule_function_shadow",
             "c_mixin_shadow",
             "c_mixin_function-assign-to-new",
@@ -4170,7 +4171,7 @@
             "f_ctor_shadow_capsule_shared"
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_capsule_function_shadow",
             "c_mixin_shadow",
             "c_mixin_destructor_new-shadow-shared",
@@ -4197,7 +4198,7 @@
             "Used with std::shared_ptr<Object>* createChildA(void)"
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_capsule_function_shadow",
             "c_mixin_shadow",
             "c_mixin_function-assign-to-new",
@@ -4209,7 +4210,7 @@
             "f_function_smartptr<shadow>*_capsule"
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_capsule_function_shadow",
             "c_mixin_shadow",
             "c_mixin_function-assign-to-local",
@@ -4310,7 +4311,7 @@
             "c_function_struct"
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_declare-interface-arg",
             "f_mixin_declare-local-variable"
         ],
@@ -4536,7 +4537,7 @@
             "Similar to calling a function, but save field pointer instead."
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_cdesc_pass",
             "f_mixin_cdesc_native_pointer",
             "c_mixin_cdesc_getter"
@@ -4548,7 +4549,7 @@
             "Get a char* member of a class as a Fortran allocatable."
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_cdesc_pass",
             "f_mixin_cdesc_char_allocate",
             "c_mixin_getter_char*",
@@ -4562,7 +4563,7 @@
             "Get a char* member of a class as a Fortran pointer."
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_cdesc_pass",
             "f_mixin_cdesc_char_pointer",
             "c_mixin_getter_char*",
@@ -4576,7 +4577,7 @@
             "Get a char* member of a class as a Fortran pointer."
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_function-as-character-arg",
             "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf",
@@ -4588,7 +4589,7 @@
     {
         "name": "f_getter_struct**_cdesc_raw",
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_cdesc_pass",
             "f_mixin_cdesc_native_raw",
             "c_mixin_cdesc_getter"
@@ -4601,7 +4602,7 @@
             "XXX - check for array of std::string"
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_cdesc_pass",
             "f_mixin_cdesc_char_allocate",
             "c_mixin_getter_string"
@@ -4620,7 +4621,7 @@
             "XXX - check for array of std::string"
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_cdesc_pass",
             "f_mixin_cdesc_char_pointer",
             "c_mixin_getter_string"
@@ -4638,7 +4639,7 @@
             "Get a char* member of a class as a Fortran pointer."
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_function-as-character-arg",
             "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf",
@@ -4956,7 +4957,7 @@
             "Add allocatable attribute to declaration."
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_cfi_character-deferred-length",
             "c_mixin_header_cstring",
             "c_mixin_function-assign-to-cvar"
@@ -4977,7 +4978,7 @@
             "f_function_char*_cfi_pointer"
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_cfi_character-deferred-length",
             "c_mixin_function-assign-to-cvar",
             "c_mixin_cfi_character_pointer"
@@ -5043,7 +5044,7 @@
             "Copy result into caller's buffer."
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_declare-local-variable",
             "f_mixin_cfi_pass_character",
             "c_mixin_cfi_arg_character",
@@ -5062,7 +5063,7 @@
             "was base:f_function_char*_cfi_copy"
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_function-as-character-arg",
             "f_mixin_cfi_pass_character",
             "c_mixin_cfi_arg_character",
@@ -5198,7 +5199,7 @@
             "f_function_string&_cfi_copy"
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_declare-local-variable",
             "f_mixin_cfi_pass_character",
             "c_mixin_cfi_arg_character",
@@ -5219,7 +5220,7 @@
             "was base:f_function_string_cfi_copy"
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_function-as-character-arg",
             "f_mixin_cfi_pass_character",
             "c_mixin_cfi_arg_character",
@@ -5246,7 +5247,7 @@
             "XXX - c_local cxx is in c_mixin_function-assign-to-local"
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_cfi_character-deferred-length",
             "c_mixin_function-assign-to-local"
         ],
@@ -5288,7 +5289,7 @@
             "f_function_string&_cfi_allocatable_library"
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_cfi_character-deferred-length",
             "c_mixin_header_cstring",
             "c_mixin_function-assign-to-local"
@@ -5307,7 +5308,7 @@
             "std::string & function()"
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_cfi_character-deferred-length",
             "c_mixin_header_cstring",
             "c_mixin_function-assign-to-local"
@@ -5392,7 +5393,7 @@
             "Return an allocated copy of data."
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_declare-local-variable",
             "f_mixin_arg-call-fvar",
             "c_mixin_cfi_arg_native",
@@ -5409,7 +5410,7 @@
             "Return Fortran pointer to data."
         ],
         "mixin": [
-            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_declare-local-variable",
             "f_mixin_arg-call-fvar",
             "c_mixin_cfi_arg_native",
