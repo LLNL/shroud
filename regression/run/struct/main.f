@@ -244,9 +244,18 @@ contains
     call assert_false(allocated(name_alloc), "get_name NULL allocated initial")
     name_alloc = group1%get_name()
 ! XXX - This is returning an allocated name
-!    call assert_false(allocated(name_alloc), "get_name NULL allocated")
+    call assert_true(allocated(name_alloc), "get_name NULL allocated")
     call assert_equals(0, len(name_alloc), "get_name NULL len")
 
+    nullify(name_ptr)
+    name_ptr => group1%get_name_ptr()
+    call assert_false(associated(name_ptr), "get_ptr NULL associated")
+
+    name_copy = " "
+    call group1%get_name_copy(name_copy)
+    call assert_equals(" ", name_copy, "get_ptr NULL value")
+
+    !----------
     ! A terminating NULL is required to compute the length later.
     ! The address of name_dog is saved in the struct
     name_dog(4:4) = C_NULL_CHAR
@@ -258,11 +267,14 @@ contains
     ! The name_copy field is readonly, so set directly.
     local1%name_copy = c_loc(name_rat)
 
+    deallocate(name_alloc)
+    call assert_false(allocated(name_alloc), "get_name allocated initial")
     name_alloc = group1%get_name()
     call assert_true(allocated(name_alloc), "get_name allocated")
     call assert_equals(3, len(name_alloc), "get_name len")
     call assert_equals(name_dog(1:3), name_alloc, "get_name value")
-    
+
+    nullify(name_ptr)
     name_ptr => group1%get_name_ptr()
     call assert_true(associated(name_ptr, name_cat), "get_ptr associated")
     call assert_equals(3, len(name_ptr), "get_ptr len")
