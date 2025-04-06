@@ -70,11 +70,9 @@ const char * CHA_getCharPtr5(void);
 void CHA_getCharPtr5_CFI(CFI_cdesc_t *SHT_rv_cfi);
 #endif
 
-const char * CHA_getConstCharPtrAsAllocArg_CFI(
-    ===>SHC_rv c_prototype<===);
+void CHA_getConstCharPtrAsAllocArg_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
-const char * CHA_getConstCharPtrAsPointerArg_CFI(
-    ===>SHC_rv c_prototype<===);
+void CHA_getConstCharPtrAsPointerArg_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 void CHA_explicit1(char *name);
 

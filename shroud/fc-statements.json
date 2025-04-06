@@ -395,13 +395,18 @@
         "comments": [
             "Return function result as an argument."
         ],
+        "notes": [
+            "This group does not add the declaration for the argument",
+            "to allow it to be used with character and other types."
+        ],
         "mixin": [
             "f_mixin_as-intent-out"
         ],
         "f_dummy_arg": [
             "{f_var}"
         ],
-        "f_result_var": "as-subroutine"
+        "f_result_var": "as-subroutine",
+        "c_return_type": "void"
     },
     {
         "name": "f_mixin_call-cwrapper-as-subroutine",
@@ -409,7 +414,8 @@
             "Call the C wrapper as a subroutine."
         ],
         "notes": [
-            "Needed to return some meta data.",
+            "Used when wrapping library functions.",
+            "Add an argument to return some meta data.",
             "Other groups must be used to pass argument to the C wrapper."
         ],
         "mixin": [
@@ -2742,6 +2748,9 @@
             "f_function_char_cdesc_funcarg_allocatable",
             "f_function_char*_cdesc_funcarg_allocatable"
         ],
+        "usage": [
+            "char *func(void) +deref(allocatable)+funcarg"
+        ],
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_call-cwrapper-as-subroutine",
@@ -2755,6 +2764,9 @@
         "alias": [
             "f_function_char_cdesc_funcarg_pointer",
             "f_function_char*_cdesc_funcarg_pointer"
+        ],
+        "usage": [
+            "char *func(void) +deref(pointer)+funcarg"
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
@@ -4857,9 +4869,23 @@
         ]
     },
     {
+        "name": "c_mixin_cfi_char*_allocatable",
+        "comments": [
+            "Allocate CFI_desc_t for character."
+        ],
+        "c_post_call": [
+            "if ({cxx_var} != {nullptr}) {{+",
+            "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *) 0, \tstrlen({cxx_var}));",
+            "if (SH_ret == CFI_SUCCESS) {{+",
+            "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}, \t{c_var_cfi}->elem_len);",
+            "-}}",
+            "-}}"
+        ]
+    },
+    {
         "name": "c_mixin_cfi_string**_allocatable",
         "comments": [
-            "Allocate for character (requires +dimension)."
+            "Allocate CFI_desc_t for character (requires +dimension)."
         ],
         "c_post_call": [
             "if ({cxx_var} != {nullptr}) {{+",
@@ -4995,26 +5021,25 @@
         "notes": [
             "Add allocatable attribute to declaration."
         ],
+        "usage": [
+            "char *func(void) +deref(allocatable)"
+        ],
         "mixin": [
             "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_cfi_character-deferred-length",
             "c_mixin_header_cstring",
-            "c_mixin_function-assign-to-cvar"
+            "c_mixin_function-assign-to-cvar",
+            "c_mixin_cfi_char*_allocatable"
         ],
-        "f_need_wrapper": true,
-        "c_post_call": [
-            "if ({cxx_var} != {nullptr}) {{+",
-            "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *) 0, \tstrlen({cxx_var}));",
-            "if (SH_ret == CFI_SUCCESS) {{+",
-            "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}, \t{c_var_cfi}->elem_len);",
-            "-}}",
-            "-}}"
-        ]
+        "f_need_wrapper": true
     },
     {
         "alias": [
             "f_function_char_cfi_pointer",
             "f_function_char*_cfi_pointer"
+        ],
+        "usage": [
+            "char *func(void) +deref(pointer)"
         ],
         "mixin": [
             "f_mixin_call-cwrapper-as-subroutine",
@@ -5023,6 +5048,41 @@
             "c_mixin_cfi_character_pointer"
         ],
         "f_need_wrapper": true
+    },
+    {
+        "alias": [
+            "f_function_char*_cfi_funcarg_allocatable",
+            "f_function_char_cfi_funcarg_allocatable"
+        ],
+        "notes": [
+            "Add allocatable attribute to declaration."
+        ],
+        "usage": [
+            "char *func(void) +deref(allocatable)+funcarg"
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
+            "f_mixin_cfi_character-deferred-length",
+            "c_mixin_header_cstring",
+            "c_mixin_function-assign-to-cvar",
+            "c_mixin_cfi_char*_allocatable"
+        ]
+    },
+    {
+        "alias": [
+            "f_function_char_cfi_funcarg_pointer",
+            "f_function_char*_cfi_funcarg_pointer"
+        ],
+        "usage": [
+            "char *func(void) +deref(pointer)+funcarg"
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_cfi_character-deferred-length",
+            "c_mixin_function-assign-to-cvar",
+            "c_mixin_cfi_character_pointer"
+        ]
     },
     {
         "alias": [

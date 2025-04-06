@@ -476,14 +476,20 @@ void CHA_getCharPtr5_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const char *getConstCharPtrAsAllocArg +deref(allocatable)+funcarg
-// Statement: f_mixin_unknown
+// Statement: f_function_char*_cfi_funcarg_allocatable
 // start CHA_getConstCharPtrAsAllocArg_CFI
-const char * CHA_getConstCharPtrAsAllocArg_CFI(
-    ===>SHC_rv c_prototype<===)
+void CHA_getConstCharPtrAsAllocArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstCharPtrAsAllocArg_CFI
-    ===>SHC_rv c_call<===
-    return SHC_rv;
+    const char *SHC_rv = getConstCharPtrAsAllocArg();
+    if (SHC_rv != nullptr) {
+        int SH_ret = CFI_allocate(SHT_rv_cfi, (CFI_index_t *) 0, 
+            (CFI_index_t *) 0, strlen(SHC_rv));
+        if (SH_ret == CFI_SUCCESS) {
+            std::memcpy(SHT_rv_cfi->base_addr, SHC_rv, 
+                SHT_rv_cfi->elem_len);
+        }
+    }
     // splicer end function.getConstCharPtrAsAllocArg_CFI
 }
 // end CHA_getConstCharPtrAsAllocArg_CFI
@@ -494,14 +500,30 @@ const char * CHA_getConstCharPtrAsAllocArg_CFI(
  */
 // ----------------------------------------
 // Function:  const char *getConstCharPtrAsPointerArg +deref(pointer)+funcarg
-// Statement: f_mixin_unknown
+// Statement: f_function_char*_cfi_funcarg_pointer
 // start CHA_getConstCharPtrAsPointerArg_CFI
-const char * CHA_getConstCharPtrAsPointerArg_CFI(
-    ===>SHC_rv c_prototype<===)
+void CHA_getConstCharPtrAsPointerArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstCharPtrAsPointerArg_CFI
-    ===>SHC_rv c_call<===
-    return SHC_rv;
+    const char *SHC_rv = getConstCharPtrAsPointerArg();
+    int SHC_rv_err;
+    if (SHC_rv == nullptr) {
+        SHC_rv_err = CFI_setpointer(SHT_rv_cfi, nullptr, nullptr);
+    } else {
+        CFI_CDESC_T(0) SHC_rv_fptr;
+        CFI_cdesc_t *SHC_rv_cdesc = reinterpret_cast<CFI_cdesc_t *>
+            (&SHC_rv_fptr);
+        void *SHC_rv_cptr = const_cast<char *>(SHC_rv);
+        size_t SHC_rv_len = std::strlen(SHC_rv);
+        SHC_rv_err = CFI_establish(SHC_rv_cdesc, SHC_rv_cptr,
+            CFI_attribute_pointer, CFI_type_char, SHC_rv_len, 0,
+            nullptr);
+        if (SHC_rv_err == CFI_SUCCESS) {
+            SHT_rv_cfi->elem_len = SHC_rv_cdesc->elem_len;
+            SHC_rv_err = CFI_setpointer(SHT_rv_cfi, SHC_rv_cdesc,
+                nullptr);
+        }
+    }
     // splicer end function.getConstCharPtrAsPointerArg_CFI
 }
 // end CHA_getConstCharPtrAsPointerArg_CFI

@@ -1395,7 +1395,10 @@ rv = .false.
 
         subprogram = fmt_result.F_subprogram
         C_subprogram = subprogram
-        if result_stmt.c_return_type == "void":
+        if r_meta["funcarg"]:
+            # Fortran and C api both convert result to argument.
+            pass
+        elif result_stmt.c_return_type == "void":
             # Convert C wrapper from function to subroutine.
             C_subprogram = "subroutine"
             need_wrapper = True
