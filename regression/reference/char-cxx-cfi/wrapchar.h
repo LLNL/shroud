@@ -73,6 +73,9 @@ void CHA_getCharPtr5_CFI(CFI_cdesc_t *SHT_rv_cfi);
 const char * CHA_getConstCharPtrAsAllocArg_CFI(
     ===>SHC_rv c_prototype<===);
 
+const char * CHA_getConstCharPtrAsPointerArg_CFI(
+    ===>SHC_rv c_prototype<===);
+
 void CHA_explicit1(char *name);
 
 void CHA_explicit1_CFI(CFI_cdesc_t *SHT_name_cfi);

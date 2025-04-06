@@ -113,6 +113,14 @@ declarations:
     wrap_c: False
     wrap_python: False
 
+- decl: const char *getConstCharPtrAsPointerArg(void) +funcarg+deref(pointer)
+  doxygen:
+    brief: return a 'const char *' as an pointer argument
+  options:
+    literalinclude: True
+    wrap_c: False
+    wrap_python: False
+
 #####
 - decl: char returnMany(int *arg1 +intent(out))
   doxygen:

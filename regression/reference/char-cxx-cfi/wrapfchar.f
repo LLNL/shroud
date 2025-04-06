@@ -303,6 +303,22 @@ module char_mod
     ! end get_const_char_ptr_as_alloc_arg
 
     ! ----------------------------------------
+    ! Function:  const char *getConstCharPtrAsPointerArg +deref(pointer)+funcarg
+    ! Statement: f_mixin_unknown
+    ! start get_const_char_ptr_as_pointer_arg
+    interface
+        function get_const_char_ptr_as_pointer_arg( &
+                ===>SHT_rv i_dummy_arg<===) &
+                result(SHT_rv) &
+                bind(C, name="CHA_getConstCharPtrAsPointerArg_CFI")
+            implicit none
+            ===>SHT_rv i_dummy_decl<===
+            ===>SHT_rv i_result_decl<===
+        end function get_const_char_ptr_as_pointer_arg
+    end interface
+    ! end get_const_char_ptr_as_pointer_arg
+
+    ! ----------------------------------------
     ! Function:  void explicit1
     ! Statement: c_subroutine
     ! ----------------------------------------
@@ -970,6 +986,27 @@ contains
         ! splicer end function.get_const_char_ptr_as_alloc_arg
     end function get_const_char_ptr_as_alloc_arg
     ! end get_const_char_ptr_as_alloc_arg
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  const char *getConstCharPtrAsPointerArg +deref(pointer)+funcarg
+    ! Statement: f_mixin_unknown
+    !>
+    !! \brief return a 'const char *' as an pointer argument
+    !!
+    !<
+    ! start get_const_char_ptr_as_pointer_arg
+    function get_const_char_ptr_as_pointer_arg( &
+            ===>SHT_rv f_dummy_arg<===) &
+            result(SHT_rv)
+        ===>SHT_rv f_dummy_decl<===
+        ! splicer begin function.get_const_char_ptr_as_pointer_arg
+        SHT_rv = c_get_const_char_ptr_as_pointer_arg_CFI(===>SHT_rv f_arg_call<===)
+        ! splicer end function.get_const_char_ptr_as_pointer_arg
+    end function get_const_char_ptr_as_pointer_arg
+    ! end get_const_char_ptr_as_pointer_arg
 #endif
 
 #if 0

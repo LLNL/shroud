@@ -2757,9 +2757,7 @@
             "f_function_char*_cdesc_funcarg_pointer"
         ],
         "mixin": [
-            "f_mixin_function-as-character-arg",
-            "#f_mixin_dummy_arg",
-            "#f_mixin_declare-local-variable",
+            "f_mixin_function-to-subroutine",
             "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_cdesc_pass",
             "c_mixin_function-assign-to-cvar",

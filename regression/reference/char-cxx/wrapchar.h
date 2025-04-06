@@ -70,6 +70,9 @@ void CHA_getCharPtr5_bufferify(CHA_SHROUD_array *SHT_rv_cdesc);
 void CHA_getConstCharPtrAsAllocArg_bufferify(
     CHA_SHROUD_array *SHT_rv_cdesc);
 
+void CHA_getConstCharPtrAsPointerArg_bufferify(
+    CHA_SHROUD_array *SHT_rv_cdesc);
+
 void CHA_explicit1(char *name);
 
 void CHA_explicit2(char *name);

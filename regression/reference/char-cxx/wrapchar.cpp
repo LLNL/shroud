@@ -470,6 +470,28 @@ void CHA_getConstCharPtrAsAllocArg_bufferify(
 }
 // end CHA_getConstCharPtrAsAllocArg_bufferify
 
+/**
+ * \brief return a 'const char *' as an pointer argument
+ *
+ */
+// ----------------------------------------
+// Function:  const char *getConstCharPtrAsPointerArg +deref(pointer)+funcarg
+// Statement: f_function_char*_cdesc_funcarg_pointer
+// start CHA_getConstCharPtrAsPointerArg_bufferify
+void CHA_getConstCharPtrAsPointerArg_bufferify(
+    CHA_SHROUD_array *SHT_rv_cdesc)
+{
+    // splicer begin function.getConstCharPtrAsPointerArg_bufferify
+    const char *SHC_rv = getConstCharPtrAsPointerArg();
+    SHT_rv_cdesc->base_addr = const_cast<char *>(SHC_rv);
+    SHT_rv_cdesc->type = SH_TYPE_CHAR;
+    SHT_rv_cdesc->elem_len = SHC_rv == nullptr ? 0 : std::strlen(SHC_rv);
+    SHT_rv_cdesc->size = 1;
+    SHT_rv_cdesc->rank = 0;
+    // splicer end function.getConstCharPtrAsPointerArg_bufferify
+}
+// end CHA_getConstCharPtrAsPointerArg_bufferify
+
 // ----------------------------------------
 // Function:  void explicit1
 // Statement: c_subroutine

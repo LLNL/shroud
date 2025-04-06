@@ -5,6 +5,10 @@ Phase: FillMeta function
 Node: getConstCharPtrAsAllocArg
 line 108
 Unknown statement: f_function_char*_cfi_funcarg_allocatable
+--------------------
+Node: getConstCharPtrAsPointerArg
+line 116
+Unknown statement: f_function_char*_cfi_funcarg_pointer
 Wrote wrapchar.h
 Wrote wrapchar.cpp
 Wrote wrapfchar.f

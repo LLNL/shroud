@@ -365,6 +365,21 @@ module char_mod
     ! end c_get_const_char_ptr_as_alloc_arg_bufferify
 
     ! ----------------------------------------
+    ! Function:  const char *getConstCharPtrAsPointerArg +deref(pointer)+funcarg
+    ! Statement: f_function_char*_cdesc_funcarg_pointer
+    ! start c_get_const_char_ptr_as_pointer_arg_bufferify
+    interface
+        subroutine c_get_const_char_ptr_as_pointer_arg_bufferify( &
+                SHT_rv_cdesc) &
+                bind(C, name="CHA_getConstCharPtrAsPointerArg_bufferify")
+            import :: CHA_SHROUD_array
+            implicit none
+            type(CHA_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
+        end subroutine c_get_const_char_ptr_as_pointer_arg_bufferify
+    end interface
+    ! end c_get_const_char_ptr_as_pointer_arg_bufferify
+
+    ! ----------------------------------------
     ! Function:  void explicit1
     ! Statement: f_subroutine
     ! ----------------------------------------
@@ -1037,6 +1052,24 @@ contains
         ! splicer end function.get_const_char_ptr_as_alloc_arg
     end subroutine get_const_char_ptr_as_alloc_arg
     ! end get_const_char_ptr_as_alloc_arg
+
+    ! ----------------------------------------
+    ! Function:  const char *getConstCharPtrAsPointerArg +deref(pointer)+funcarg
+    ! Statement: f_function_char*_cdesc_funcarg_pointer
+    !>
+    !! \brief return a 'const char *' as an pointer argument
+    !!
+    !<
+    ! start get_const_char_ptr_as_pointer_arg
+    subroutine get_const_char_ptr_as_pointer_arg(output)
+        character(len=:), intent(OUT), pointer :: output
+        ! splicer begin function.get_const_char_ptr_as_pointer_arg
+        type(CHA_SHROUD_array) :: SHT_rv_cdesc
+        call c_get_const_char_ptr_as_pointer_arg_bufferify(SHT_rv_cdesc)
+        call CHA_SHROUD_pointer_string(SHT_rv_cdesc, output)
+        ! splicer end function.get_const_char_ptr_as_pointer_arg
+    end subroutine get_const_char_ptr_as_pointer_arg
+    ! end get_const_char_ptr_as_pointer_arg
 
     ! ----------------------------------------
     ! Function:  void explicit1

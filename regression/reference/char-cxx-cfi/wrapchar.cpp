@@ -488,6 +488,24 @@ const char * CHA_getConstCharPtrAsAllocArg_CFI(
 }
 // end CHA_getConstCharPtrAsAllocArg_CFI
 
+/**
+ * \brief return a 'const char *' as an pointer argument
+ *
+ */
+// ----------------------------------------
+// Function:  const char *getConstCharPtrAsPointerArg +deref(pointer)+funcarg
+// Statement: f_mixin_unknown
+// start CHA_getConstCharPtrAsPointerArg_CFI
+const char * CHA_getConstCharPtrAsPointerArg_CFI(
+    ===>SHC_rv c_prototype<===)
+{
+    // splicer begin function.getConstCharPtrAsPointerArg_CFI
+    ===>SHC_rv c_call<===
+    return SHC_rv;
+    // splicer end function.getConstCharPtrAsPointerArg_CFI
+}
+// end CHA_getConstCharPtrAsPointerArg_CFI
+
 // ----------------------------------------
 // Function:  void explicit1
 // Statement: c_subroutine

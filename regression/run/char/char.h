@@ -27,6 +27,7 @@ const char *getCharPtr5(void);
 
 const char *getConstCharPtrAsArg(void);
 const char *getConstCharPtrAsAllocArg(void);
+const char *getConstCharPtrAsPointerArg(void);
 
 char returnMany(int * arg1);
 
