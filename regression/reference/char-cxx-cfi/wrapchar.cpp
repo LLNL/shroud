@@ -470,6 +470,24 @@ void CHA_getCharPtr5_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // end CHA_getCharPtr5_CFI
 #endif  // ifdef HAVE_CHARACTER_POINTER_FUNCTION
 
+/**
+ * \brief return a 'const char *' as an allocatable argument
+ *
+ */
+// ----------------------------------------
+// Function:  const char *getConstCharPtrAsAllocArg +deref(allocatable)+funcarg
+// Statement: f_mixin_unknown
+// start CHA_getConstCharPtrAsAllocArg_CFI
+const char * CHA_getConstCharPtrAsAllocArg_CFI(
+    ===>SHC_rv c_prototype<===)
+{
+    // splicer begin function.getConstCharPtrAsAllocArg_CFI
+    ===>SHC_rv c_call<===
+    return SHC_rv;
+    // splicer end function.getConstCharPtrAsAllocArg_CFI
+}
+// end CHA_getConstCharPtrAsAllocArg_CFI
+
 // ----------------------------------------
 // Function:  void explicit1
 // Statement: c_subroutine

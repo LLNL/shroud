@@ -78,13 +78,6 @@ const char *getConstCharPtrLen(void)
 }
 // end getConstCharPtrLen
 
-// start getConstCharPtrAsArg
-const char *getConstCharPtrAsArg(void)
-{
-    return static_char;
-}
-// end getConstCharPtrAsArg
-
 // +deref(raw)
 // start getCharPtr4
 const char * getCharPtr4(void)
@@ -98,6 +91,23 @@ const char * getCharPtr5(void)
 {
     return static_char;
 }
+
+//----------------------------------------
+// Return as argument in Fortran wrapper
+
+// start getConstCharPtrAsArg
+const char *getConstCharPtrAsArg(void)
+{
+    return static_char;
+}
+// end getConstCharPtrAsArg
+
+// start getConstCharPtrAllocAsArg
+const char *getConstCharPtrAsAllocArg(void)
+{
+    return static_char;
+}
+// end getConstCharPtrAllocAsArg
 
 //----------------------------------------
 

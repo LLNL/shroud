@@ -693,7 +693,8 @@ class FillMeta(object):
         for attr in [
                 "abstract", "assumedtype",
                 "custom", "dimension", "dim_ast",
-                "free_pattern", "hidden", "len", "operator", "owner", "rank",
+                "free_pattern", "funcarg", "hidden",
+                "len", "operator", "owner", "rank",
         ]:
             meta[attr] = share_meta[attr]
 
@@ -804,6 +805,7 @@ class FillMetaShare(FillMeta):
                 "deref",  # How to dereference pointer
                 "dimension",
                 "free_pattern",
+                "funcarg",
                 "intent",    # getter/setter
                 "len",
                 "name",
@@ -823,6 +825,13 @@ class FillMetaShare(FillMeta):
                 )
 
         self.check_common_attrs(node.ast, meta)
+
+        funcarg = attrs.get("funcarg", missing)
+        if funcarg is not missing:
+            if funcarg is True:
+                meta["funcarg"] = node.options.F_result_as_arg
+            else:
+                meta["funcarg"] = funcarg
 
     def check_arg_attrs(self, node, arg, meta):
         cursor = self.cursor

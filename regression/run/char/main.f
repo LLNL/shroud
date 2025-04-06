@@ -22,6 +22,7 @@ program tester
   call test_charargs
   call test_charargs_c
   call test_functions
+  call test_functions_as_arg
   call test_explicit
   call char_functions
 #ifdef TEST_C_WRAPPER
@@ -129,10 +130,10 @@ contains
     str = get_const_char_ptr_len()
     call assert_true( str == "bird", "getConstCharPtrLen")
 
-    ! string_result_as_arg
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    call get_const_char_ptr_as_arg(str)
-    call assert_true( str == "bird", "getConstCharPtrAsArg")
+!    ! string_result_as_arg
+!    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+!    call get_const_char_ptr_as_arg(str)
+!    call assert_true( str == "bird", "getConstCharPtrAsArg")
 
     strptr = get_char_ptr4()
     call c_f_pointer(strptr, raw_str, [4])
@@ -151,6 +152,50 @@ contains
 #endif
 
   end subroutine test_functions
+
+! Return function result as an argument
+  subroutine test_functions_as_arg
+
+!    type(C_PTR) :: strptr
+    character(len=:), allocatable :: astr
+!    character(len=:), pointer :: pstr
+    character(30) str
+    character(30), parameter :: static_str = "dog                         "
+!    character, pointer :: raw_str(:)
+
+    call set_case_name("test_functions_as_arg")
+
+    call  get_const_char_ptr_as_alloc_arg(astr)
+    call assert_true(astr == "bird", "GetConstCharPtrAsAllocArg")
+    deallocate(astr)
+
+    ! character(30) function
+!    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+!    str = get_const_char_ptr_len()
+!    call assert_true( str == "bird", "getConstCharPtrLen")
+
+    ! string_result_as_arg
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    call get_const_char_ptr_as_arg(str)
+    call assert_true( str == "bird", "getConstCharPtrAsArg")
+
+!    strptr = get_char_ptr4()
+!    call c_f_pointer(strptr, raw_str, [4])
+!    call assert_true( &
+!         raw_str(1) == "b" .and. &
+!         raw_str(2) == "i" .and. &
+!         raw_str(3) == "r" .and. &
+!         raw_str(4) == "d", "get_char_ptr4")
+
+!#ifdef HAVE_CHARACTER_POINTER_FUNCTION
+!    nullify(pstr)
+!    pstr => get_char_ptr5()
+!    call assert_true(associated(pstr), "get_char_ptr5 associated")
+!    call assert_true(len(pstr) == 4, "get_char_ptr5 len")
+!    call assert_true(pstr == "bird", "get_char_ptr5")
+!#endif
+
+  end subroutine test_functions_as_arg
 
   subroutine test_explicit
     character(10) name

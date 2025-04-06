@@ -885,6 +885,8 @@ def set_f_function_format(node, bind, subprogram):
         fmt.f_deref_attr = ", allocatable"
     elif meta["deref"] == "pointer":
         fmt.f_deref_attr = ", pointer"
+    if meta["funcarg"]:
+        fmt.f_var = meta["funcarg"]
     
 def set_f_arg_format(node, arg, bind, wlang):
     """

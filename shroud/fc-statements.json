@@ -391,6 +391,19 @@
         }
     },
     {
+        "name": "f_mixin_function-to-subroutine",
+        "comments": [
+            "Return function result as an argument."
+        ],
+        "mixin": [
+            "f_mixin_as-intent-out"
+        ],
+        "f_dummy_arg": [
+            "{f_var}"
+        ],
+        "f_result_var": "as-subroutine"
+    },
+    {
         "name": "f_mixin_call-cwrapper-as-subroutine",
         "comments": [
             "Call the C wrapper as a subroutine."
@@ -2179,7 +2192,7 @@
             "{f_var}"
         ],
         "f_dummy_decl": [
-            "character(len=*), intent(OUT) :: {f_var}"
+            "character(len=*), intent(OUT){f_deref_attr} :: {f_var}"
         ],
         "f_result_var": "as-subroutine",
         "fmtdict": {
@@ -2604,8 +2617,6 @@
     },
     {
         "alias": [
-            "f_function_char*_arg",
-            "c_function_char*_arg",
             "f_function_char*_buf_arg",
             "c_function_char*_buf_arg"
         ],
@@ -2719,6 +2730,36 @@
             "f_function_char*_cdesc_pointer"
         ],
         "mixin": [
+            "f_mixin_call-cwrapper-as-subroutine",
+            "f_mixin_cdesc_pass",
+            "c_mixin_function-assign-to-cvar",
+            "c_mixin_cdesc_char_fill_cvar",
+            "f_mixin_cdesc_char_pointer"
+        ]
+    },
+    {
+        "alias": [
+            "f_function_char_cdesc_funcarg_allocatable",
+            "f_function_char*_cdesc_funcarg_allocatable"
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_call-cwrapper-as-subroutine",
+            "f_mixin_cdesc_pass",
+            "f_mixin_cdesc_char_allocate",
+            "c_mixin_function-assign-to-cvar",
+            "c_mixin_cdesc_char_fill_cvar"
+        ]
+    },
+    {
+        "alias": [
+            "f_function_char_cdesc_funcarg_pointer",
+            "f_function_char*_cdesc_funcarg_pointer"
+        ],
+        "mixin": [
+            "f_mixin_function-as-character-arg",
+            "#f_mixin_dummy_arg",
+            "#f_mixin_declare-local-variable",
             "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_cdesc_pass",
             "c_mixin_function-assign-to-cvar",

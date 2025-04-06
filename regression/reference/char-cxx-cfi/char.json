@@ -1859,7 +1859,114 @@
                 }
             },
             {
-                "<FUNCTION>": "returnMany  11 ****************************************",
+                "<FUNCTION>": "getConstCharPtrAsAllocArg  11 ****************************************",
+                "ast": {
+                    "const": true,
+                    "declarator": {
+                        "attrs": {
+                            "deref": "allocatable",
+                            "funcarg": true
+                        },
+                        "name": "getConstCharPtrAsAllocArg",
+                        "params": [],
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ],
+                        "typemap_name": "char"
+                    },
+                    "specifier": [
+                        "char"
+                    ],
+                    "typemap_name": "char"
+                },
+                "decl": "const char *getConstCharPtrAsAllocArg(void) +funcarg+deref(allocatable)",
+                "declgen": "const char *getConstCharPtrAsAllocArg(void) +deref(allocatable)+funcarg",
+                "doxygen": {
+                    "brief": "return a 'const char *' as an allocatable argument"
+                },
+                "name": "getConstCharPtrAsAllocArg",
+                "options": {
+                    "literalinclude": true,
+                    "wrap_c": false,
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstCharPtrAsAllocArg(\t)",
+                                "C_name": "CHA_getConstCharPtrAsAllocArg_CFI",
+                                "C_prototype": "===>SHC_rv c_prototype<===",
+                                "C_return_type": "const char *",
+                                "F_arg_c_call": "===>SHT_rv f_arg_call<===",
+                                "F_arguments": "===>SHT_rv f_dummy_arg<===",
+                                "F_subprogram": "function",
+                                "c_const": "const ",
+                                "c_get_value": "",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_type": "char",
+                                "cxx_var": "SHC_rv",
+                                "f_call_function": "c_get_const_char_ptr_as_alloc_arg_CFI",
+                                "f_deref_attr": ", allocatable",
+                                "f_result_clause": "\fresult(SHT_rv)",
+                                "f_type": "character(len=:)",
+                                "f_var": "output",
+                                "fc_var": "SHT_rv",
+                                "i_arguments": "===>SHT_rv i_dummy_arg<===",
+                                "i_kind": "C_CHAR",
+                                "i_module_name": "iso_c_binding",
+                                "i_name_function": "get_const_char_ptr_as_alloc_arg",
+                                "i_result_clause": "\fresult(SHT_rv)",
+                                "i_subprogram": "function",
+                                "i_suffix": "_CFI",
+                                "i_type": "character(kind=C_CHAR)",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "stmt_name": "f_mixin_unknown",
+                                "typemap_name": "char"
+                            },
+                            "meta": {
+                                "abstract": "char*",
+                                "api": "cfi",
+                                "deref": "allocatable",
+                                "funcarg": "output",
+                                "intent": "function"
+                            },
+                            "stmt": "f_mixin_unknown"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "abstract": "char*",
+                                "funcarg": "output",
+                                "intent": "function"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "getConstCharPtrAsAllocArg",
+                    "F_name_api": "get_const_char_ptr_as_alloc_arg",
+                    "F_name_function": "get_const_char_ptr_as_alloc_arg",
+                    "F_name_generic": "get_const_char_ptr_as_alloc_arg",
+                    "F_name_impl": "get_const_char_ptr_as_alloc_arg",
+                    "f_arglist": [
+                        "output"
+                    ],
+                    "function_name": "getConstCharPtrAsAllocArg"
+                }
+            },
+            {
+                "<FUNCTION>": "returnMany  12 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnMany",
@@ -1925,7 +2032,7 @@
                 }
             },
             {
-                "<FUNCTION>": "explicit1  12 ****************************************",
+                "<FUNCTION>": "explicit1  13 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "explicit1",
@@ -2135,7 +2242,7 @@
                 }
             },
             {
-                "<FUNCTION>": "explicit2  13 ****************************************",
+                "<FUNCTION>": "explicit2  14 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "explicit2",
@@ -2347,7 +2454,7 @@
                 }
             },
             {
-                "<FUNCTION>": "CpassChar  14 ****************************************",
+                "<FUNCTION>": "CpassChar  15 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "CpassChar",
@@ -2529,7 +2636,7 @@
                 }
             },
             {
-                "<FUNCTION>": "CreturnChar  15 ****************************************",
+                "<FUNCTION>": "CreturnChar  16 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "CreturnChar",
@@ -2650,7 +2757,7 @@
                 }
             },
             {
-                "<FUNCTION>": "CpassCharPtr  16 ****************************************",
+                "<FUNCTION>": "CpassCharPtr  17 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "CpassCharPtr",
@@ -2971,7 +3078,7 @@
                 }
             },
             {
-                "<FUNCTION>": "CpassCharPtrBlank  17 ****************************************",
+                "<FUNCTION>": "CpassCharPtrBlank  18 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "CpassCharPtrBlank",
@@ -3288,7 +3395,7 @@
                 }
             },
             {
-                "<FUNCTION>": "CpassCharPtrNotrim  18 ****************************************",
+                "<FUNCTION>": "CpassCharPtrNotrim  19 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "CpassCharPtrNotrim",
@@ -3537,7 +3644,7 @@
                 }
             },
             {
-                "<FUNCTION>": "CpassCharPtrCAPI  19 ****************************************",
+                "<FUNCTION>": "CpassCharPtrCAPI  20 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "CpassCharPtrCAPI",
@@ -3853,7 +3960,7 @@
                 }
             },
             {
-                "<FUNCTION>": "CpassCharPtrCAPI2  20 ****************************************",
+                "<FUNCTION>": "CpassCharPtrCAPI2  21 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "CpassCharPtrCAPI2",
@@ -4200,7 +4307,7 @@
                 }
             },
             {
-                "<FUNCTION>": "acceptCharArrayIn  21 ****************************************",
+                "<FUNCTION>": "acceptCharArrayIn  22 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "acceptCharArrayIn",
@@ -4453,7 +4560,7 @@
                 }
             },
             {
-                "<FUNCTION>": "fetchCharPtrCopyLibrary  22 ****************************************",
+                "<FUNCTION>": "fetchCharPtrCopyLibrary  23 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "fetchCharPtrCopyLibrary",
@@ -4665,7 +4772,7 @@
                 }
             },
             {
-                "<FUNCTION>": "fetchCharPtrLibrary  23 ****************************************",
+                "<FUNCTION>": "fetchCharPtrLibrary  24 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "fetchCharPtrLibrary",
@@ -4873,7 +4980,7 @@
                 }
             },
             {
-                "<FUNCTION>": "fetchCharPtrLibraryNULL  24 ****************************************",
+                "<FUNCTION>": "fetchCharPtrLibraryNULL  25 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "fetchCharPtrLibraryNULL",

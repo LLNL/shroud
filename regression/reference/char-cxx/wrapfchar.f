@@ -350,6 +350,21 @@ module char_mod
 #endif
 
     ! ----------------------------------------
+    ! Function:  const char *getConstCharPtrAsAllocArg +deref(allocatable)+funcarg
+    ! Statement: f_function_char*_cdesc_funcarg_allocatable
+    ! start c_get_const_char_ptr_as_alloc_arg_bufferify
+    interface
+        subroutine c_get_const_char_ptr_as_alloc_arg_bufferify( &
+                SHT_rv_cdesc) &
+                bind(C, name="CHA_getConstCharPtrAsAllocArg_bufferify")
+            import :: CHA_SHROUD_array
+            implicit none
+            type(CHA_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
+        end subroutine c_get_const_char_ptr_as_alloc_arg_bufferify
+    end interface
+    ! end c_get_const_char_ptr_as_alloc_arg_bufferify
+
+    ! ----------------------------------------
     ! Function:  void explicit1
     ! Statement: f_subroutine
     ! ----------------------------------------
@@ -1002,6 +1017,26 @@ contains
     end function get_char_ptr5
     ! end get_char_ptr5
 #endif
+
+    ! ----------------------------------------
+    ! Function:  const char *getConstCharPtrAsAllocArg +deref(allocatable)+funcarg
+    ! Statement: f_function_char*_cdesc_funcarg_allocatable
+    !>
+    !! \brief return a 'const char *' as an allocatable argument
+    !!
+    !<
+    ! start get_const_char_ptr_as_alloc_arg
+    subroutine get_const_char_ptr_as_alloc_arg(output)
+        character(len=:), intent(OUT), allocatable :: output
+        ! splicer begin function.get_const_char_ptr_as_alloc_arg
+        type(CHA_SHROUD_array) :: SHT_rv_cdesc
+        call c_get_const_char_ptr_as_alloc_arg_bufferify(SHT_rv_cdesc)
+        allocate(character(len=SHT_rv_cdesc%elem_len):: output)
+        call CHA_SHROUD_copy_string(SHT_rv_cdesc, output, &
+            SHT_rv_cdesc%elem_len)
+        ! splicer end function.get_const_char_ptr_as_alloc_arg
+    end subroutine get_const_char_ptr_as_alloc_arg
+    ! end get_const_char_ptr_as_alloc_arg
 
     ! ----------------------------------------
     ! Function:  void explicit1

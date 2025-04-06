@@ -1,3 +1,10 @@
+
+----------------------------------------
+Phase: FillMeta function
+----------------------------------------
+Node: getConstCharPtrAsAllocArg
+line 108
+Unknown statement: f_function_char*_cfi_funcarg_allocatable
 Wrote wrapchar.h
 Wrote wrapchar.cpp
 Wrote wrapfchar.f

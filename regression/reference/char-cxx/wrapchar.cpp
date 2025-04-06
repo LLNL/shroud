@@ -448,6 +448,28 @@ void CHA_getCharPtr5_bufferify(CHA_SHROUD_array *SHT_rv_cdesc)
 // end CHA_getCharPtr5_bufferify
 #endif  // ifdef HAVE_CHARACTER_POINTER_FUNCTION
 
+/**
+ * \brief return a 'const char *' as an allocatable argument
+ *
+ */
+// ----------------------------------------
+// Function:  const char *getConstCharPtrAsAllocArg +deref(allocatable)+funcarg
+// Statement: f_function_char*_cdesc_funcarg_allocatable
+// start CHA_getConstCharPtrAsAllocArg_bufferify
+void CHA_getConstCharPtrAsAllocArg_bufferify(
+    CHA_SHROUD_array *SHT_rv_cdesc)
+{
+    // splicer begin function.getConstCharPtrAsAllocArg_bufferify
+    const char *SHC_rv = getConstCharPtrAsAllocArg();
+    SHT_rv_cdesc->base_addr = const_cast<char *>(SHC_rv);
+    SHT_rv_cdesc->type = SH_TYPE_CHAR;
+    SHT_rv_cdesc->elem_len = SHC_rv == nullptr ? 0 : std::strlen(SHC_rv);
+    SHT_rv_cdesc->size = 1;
+    SHT_rv_cdesc->rank = 0;
+    // splicer end function.getConstCharPtrAsAllocArg_bufferify
+}
+// end CHA_getConstCharPtrAsAllocArg_bufferify
+
 // ----------------------------------------
 // Function:  void explicit1
 // Statement: c_subroutine

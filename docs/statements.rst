@@ -260,6 +260,9 @@ and attributes into an underscore delimited string.
 * api - from attribute
   ``buf``, ``capsule``, ``capptr``, ``cdesc`` and ``cfi``.
 
+* funcarg - from attribute.
+  Uses ``funcarg`` and not the value of the attribute.
+  
 * deref - from attribute
   ``allocatable``, ``pointer``, ``raw``, ``scalar``
 

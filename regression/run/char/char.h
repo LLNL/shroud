@@ -22,9 +22,11 @@ void passCharPtrInOut(char * s);
 
 const char *getCharPtr1(void);
 const char *getConstCharPtrLen(void);
-const char *getConstCharPtrAsArg(void);
 const char *getCharPtr4(void);
 const char *getCharPtr5(void);
+
+const char *getConstCharPtrAsArg(void);
+const char *getConstCharPtrAsAllocArg(void);
 
 char returnMany(int * arg1);
 
