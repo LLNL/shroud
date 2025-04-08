@@ -1305,15 +1305,15 @@ char functions
 
 .. ############################################################
 
-.. _example_getCharPtr1:
+.. _example_getConstCharPtrAlloc:
 
-getCharPtr1
-^^^^^^^^^^^
+getConstCharPtrAlloc
+^^^^^^^^^^^^^^^^^^^^
 
 .. fc_statememnt f_char_scalar_result_allocatable
 
 Return a pointer and convert into an ``ALLOCATABLE`` ``CHARACTER``
-variable.  The Fortran application is responsible to release the
+variable.  The Fortran application is responsible for releasing the
 memory.  However, this may be done automatically by the Fortran
 runtime.
 
@@ -1321,29 +1321,29 @@ C++ library function in :file:`char.c`:
 
 .. literalinclude:: ../regression/run/char/char.c
    :language: c
-   :start-after: start getCharPtr1
-   :end-before: end getCharPtr1
+   :start-after: start getConstCharPtrAlloc
+   :end-before: end getConstCharPtrAlloc
 
 :file:`strings.yaml`:
 
 .. code-block:: yaml
 
-    - decl: const char * getCharPtr1()
+    - decl: const char *getConstCharPtrAlloc()
 
 The C wrapper copies all of the metadata into a ``SHROUD_array``
 struct which is used by the Fortran wrapper:
 
 .. literalinclude:: ../regression/reference/char-cxx/wrapchar.cpp
    :language: c
-   :start-after: start CHA_getCharPtr1_bufferify
-   :end-before: end CHA_getCharPtr1_bufferify
+   :start-after: start CHA_getConstCharPtrAlloc_bufferify
+   :end-before: end CHA_getConstCharPtrAlloc_bufferify
 
 Fortran calls C via the following interface:
 
 .. literalinclude:: ../regression/reference/char-cxx/wrapfchar.f
    :language: fortran
-   :start-after: start c_get_char_ptr1_bufferify
-   :end-before: end c_get_char_ptr1_bufferify
+   :start-after: start c_get_const_char_ptr_alloc_bufferify
+   :end-before: end c_get_const_char_ptr_alloc_bufferify
    :dedent: 4
 
 The Fortran wrapper uses the metadata in ``SHT_rv_cdesc`` to allocate
@@ -1353,8 +1353,8 @@ the results of the C++ function into the return variable:
 
 .. literalinclude:: ../regression/reference/char-cxx/wrapfchar.f
    :language: fortran
-   :start-after: start get_char_ptr1
-   :end-before: end get_char_ptr1
+   :start-after: start get_const_char_ptr_alloc
+   :end-before: end get_const_char_ptr_alloc
    :dedent: 4
 
 Fortran usage:
@@ -1362,7 +1362,7 @@ Fortran usage:
 .. code-block:: fortran
 
     character(len=:), allocatable :: str
-    str = get_char_ptr1()
+    str = get_const_char_ptr_alloc()
 
 .. ############################################################
 
@@ -1474,7 +1474,7 @@ Fortran usage:
 .. code-block:: fortran
 
     character(30) str
-    call get_const_char_ptr_as_arg(str)
+    call get_const_char_ptr_as_copy_arg(str)
 
 string functions
 ----------------

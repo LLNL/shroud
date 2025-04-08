@@ -67,32 +67,32 @@ declarations:
 ########################################
 # char * function
 
-- decl: const char * getCharPtr1()
-  doxygen:
-    description: |
-      Return an ALLOCATABLE CHARACTER from char *.
-  options:
-    literalinclude: True
-
 - decl: const char *getConstCharPtrLen() +len(30)
   doxygen:
     brief: return 'const char *' with fixed size (len=30)
   options:
     literalinclude: True
 
-- decl: const char * getCharPtr4() +deref(raw)
+- decl: const char * getConstCharPtrAlloc() +deref(allocatable)
   doxygen:
-    brief: return a 'const char *' as type(C_PTR)
+    description: |
+      Return an ALLOCATABLE CHARACTER from char *.
   options:
-    wrap_python: False
+    literalinclude: True
 
-- decl: const char * getCharPtr5() +deref(pointer)
+- decl: const char * getConstCharPtrPointer() +deref(pointer)
   doxygen:
     brief: return a 'const char *' as character(:) pointer
   options:
     wrap_python: False
   cpp_if: ifdef HAVE_CHARACTER_POINTER_FUNCTION
 #    literalinclude: True
+
+- decl: const char * getConstCharPtrRaw() +deref(raw)
+  doxygen:
+    brief: return a 'const char *' as type(C_PTR)
+  options:
+    wrap_python: False
 
 #####
 # Return function result in an argument.

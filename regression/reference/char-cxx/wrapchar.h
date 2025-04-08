@@ -45,23 +45,24 @@ void CHA_passCharPtrInOut(char *s);
 
 void CHA_passCharPtrInOut_bufferify(char *s, int SHT_s_len);
 
-const char * CHA_getCharPtr1(void);
-
-void CHA_getCharPtr1_bufferify(CHA_SHROUD_array *SHT_rv_cdesc);
-
 const char * CHA_getConstCharPtrLen(void);
 
 void CHA_getConstCharPtrLen_bufferify(char *SHC_rv, int SHT_rv_len);
 
-const char * CHA_getCharPtr4(void);
+const char * CHA_getConstCharPtrAlloc(void);
+
+void CHA_getConstCharPtrAlloc_bufferify(CHA_SHROUD_array *SHT_rv_cdesc);
 
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
-const char * CHA_getCharPtr5(void);
+const char * CHA_getConstCharPtrPointer(void);
 #endif
 
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
-void CHA_getCharPtr5_bufferify(CHA_SHROUD_array *SHT_rv_cdesc);
+void CHA_getConstCharPtrPointer_bufferify(
+    CHA_SHROUD_array *SHT_rv_cdesc);
 #endif
+
+const char * CHA_getConstCharPtrRaw(void);
 
 const char * CHA_getConstCharPtrAsCopyArg(void);
 

@@ -64,13 +64,6 @@ void passCharPtrInOut(char *s)
 
 //----------------------------------------
 
-// start getCharPtr1
-const char * getCharPtr1(void)
-{
-    return static_char;
-}
-// end getCharPtr1
-
 // start getConstCharPtrLen
 const char *getConstCharPtrLen(void)
 {
@@ -78,16 +71,22 @@ const char *getConstCharPtrLen(void)
 }
 // end getConstCharPtrLen
 
-// +deref(raw)
-// start getCharPtr4
-const char * getCharPtr4(void)
+// start getConstCharPtrAlloc
+const char *getConstCharPtrAlloc(void)
 {
     return static_char;
 }
-// end getCharPtr4
+// end getConstCharPtrAlloc
 
+// start getConstCharPtrPointer
+const char *getConstCharPtrPointer(void)
+{
+    return static_char;
+}
+// end getConstCharPtrPointer
 
-const char * getCharPtr5(void)
+// +deref(raw)
+const char * getConstCharPtrRaw(void)
 {
     return static_char;
 }

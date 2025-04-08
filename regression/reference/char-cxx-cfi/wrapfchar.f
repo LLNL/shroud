@@ -156,34 +156,6 @@ module char_mod
     ! end pass_char_ptr_in_out
 
     ! ----------------------------------------
-    ! Function:  const char *getCharPtr1
-    ! Statement: c_function_char*
-    ! start c_get_char_ptr1
-    interface
-        function c_get_char_ptr1() &
-                result(SHT_rv) &
-                bind(C, name="CHA_getCharPtr1")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR) :: SHT_rv
-        end function c_get_char_ptr1
-    end interface
-    ! end c_get_char_ptr1
-
-    ! ----------------------------------------
-    ! Function:  const char *getCharPtr1
-    ! Statement: f_function_char*_cfi_allocatable
-    ! start c_get_char_ptr1_CFI
-    interface
-        subroutine c_get_char_ptr1_CFI(SHT_rv) &
-                bind(C, name="CHA_getCharPtr1_CFI")
-            implicit none
-            character(len=:), intent(OUT), allocatable :: SHT_rv
-        end subroutine c_get_char_ptr1_CFI
-    end interface
-    ! end c_get_char_ptr1_CFI
-
-    ! ----------------------------------------
     ! Function:  const char *getConstCharPtrLen +len(30)
     ! Statement: c_function_char*
     ! start c_get_const_char_ptr_len
@@ -212,51 +184,79 @@ module char_mod
     ! end c_get_const_char_ptr_len_CFI
 
     ! ----------------------------------------
-    ! Function:  const char *getCharPtr4 +deref(raw)
-    ! Statement: f_function_char*_raw
-    ! start get_char_ptr4
+    ! Function:  const char *getConstCharPtrAlloc +deref(allocatable)
+    ! Statement: c_function_char*
+    ! start c_get_const_char_ptr_alloc
     interface
-        function get_char_ptr4() &
+        function c_get_const_char_ptr_alloc() &
                 result(SHT_rv) &
-                bind(C, name="CHA_getCharPtr4")
+                bind(C, name="CHA_getConstCharPtrAlloc")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) :: SHT_rv
-        end function get_char_ptr4
+        end function c_get_const_char_ptr_alloc
     end interface
-    ! end get_char_ptr4
+    ! end c_get_const_char_ptr_alloc
+
+    ! ----------------------------------------
+    ! Function:  const char *getConstCharPtrAlloc +deref(allocatable)
+    ! Statement: f_function_char*_cfi_allocatable
+    ! start c_get_const_char_ptr_alloc_CFI
+    interface
+        subroutine c_get_const_char_ptr_alloc_CFI(SHT_rv) &
+                bind(C, name="CHA_getConstCharPtrAlloc_CFI")
+            implicit none
+            character(len=:), intent(OUT), allocatable :: SHT_rv
+        end subroutine c_get_const_char_ptr_alloc_CFI
+    end interface
+    ! end c_get_const_char_ptr_alloc_CFI
 
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
     ! ----------------------------------------
-    ! Function:  const char *getCharPtr5 +deref(pointer)
+    ! Function:  const char *getConstCharPtrPointer +deref(pointer)
     ! Statement: c_function_char*
-    ! start c_get_char_ptr5
+    ! start c_get_const_char_ptr_pointer
     interface
-        function c_get_char_ptr5() &
+        function c_get_const_char_ptr_pointer() &
                 result(SHT_rv) &
-                bind(C, name="CHA_getCharPtr5")
+                bind(C, name="CHA_getConstCharPtrPointer")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) :: SHT_rv
-        end function c_get_char_ptr5
+        end function c_get_const_char_ptr_pointer
     end interface
-    ! end c_get_char_ptr5
+    ! end c_get_const_char_ptr_pointer
 #endif
 
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
     ! ----------------------------------------
-    ! Function:  const char *getCharPtr5 +deref(pointer)
+    ! Function:  const char *getConstCharPtrPointer +deref(pointer)
     ! Statement: f_function_char*_cfi_pointer
-    ! start c_get_char_ptr5_CFI
+    ! start c_get_const_char_ptr_pointer_CFI
     interface
-        subroutine c_get_char_ptr5_CFI(SHT_rv) &
-                bind(C, name="CHA_getCharPtr5_CFI")
+        subroutine c_get_const_char_ptr_pointer_CFI(SHT_rv) &
+                bind(C, name="CHA_getConstCharPtrPointer_CFI")
             implicit none
             character(len=:), intent(OUT), pointer :: SHT_rv
-        end subroutine c_get_char_ptr5_CFI
+        end subroutine c_get_const_char_ptr_pointer_CFI
     end interface
-    ! end c_get_char_ptr5_CFI
+    ! end c_get_const_char_ptr_pointer_CFI
 #endif
+
+    ! ----------------------------------------
+    ! Function:  const char *getConstCharPtrRaw +deref(raw)
+    ! Statement: f_function_char*_raw
+    ! start get_const_char_ptr_raw
+    interface
+        function get_const_char_ptr_raw() &
+                result(SHT_rv) &
+                bind(C, name="CHA_getConstCharPtrRaw")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) :: SHT_rv
+        end function get_const_char_ptr_raw
+    end interface
+    ! end get_const_char_ptr_raw
 
     ! ----------------------------------------
     ! Function:  const char *getConstCharPtrAsCopyArg
@@ -888,22 +888,6 @@ contains
 #endif
 
     ! ----------------------------------------
-    ! Function:  const char *getCharPtr1
-    ! Statement: f_function_char*_cfi_allocatable
-    !>
-    !! Return an ALLOCATABLE CHARACTER from char *.
-    !<
-    ! start get_char_ptr1
-    function get_char_ptr1() &
-            result(SHT_rv)
-        character(len=:), allocatable :: SHT_rv
-        ! splicer begin function.get_char_ptr1
-        call c_get_char_ptr1_CFI(SHT_rv)
-        ! splicer end function.get_char_ptr1
-    end function get_char_ptr1
-    ! end get_char_ptr1
-
-    ! ----------------------------------------
     ! Function:  const char *getConstCharPtrLen +len(30)
     ! Statement: f_function_char*_cfi_copy
     !>
@@ -920,44 +904,60 @@ contains
     end function get_const_char_ptr_len
     ! end get_const_char_ptr_len
 
-#if 0
-    ! Only the interface is needed
     ! ----------------------------------------
-    ! Function:  const char *getCharPtr4 +deref(raw)
-    ! Statement: f_function_char*_raw
+    ! Function:  const char *getConstCharPtrAlloc +deref(allocatable)
+    ! Statement: f_function_char*_cfi_allocatable
     !>
-    !! \brief return a 'const char *' as type(C_PTR)
-    !!
+    !! Return an ALLOCATABLE CHARACTER from char *.
     !<
-    ! start get_char_ptr4
-    function get_char_ptr4() &
+    ! start get_const_char_ptr_alloc
+    function get_const_char_ptr_alloc() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
-        type(C_PTR) :: SHT_rv
-        ! splicer begin function.get_char_ptr4
-        SHT_rv = c_get_char_ptr4()
-        ! splicer end function.get_char_ptr4
-    end function get_char_ptr4
-    ! end get_char_ptr4
-#endif
+        character(len=:), allocatable :: SHT_rv
+        ! splicer begin function.get_const_char_ptr_alloc
+        call c_get_const_char_ptr_alloc_CFI(SHT_rv)
+        ! splicer end function.get_const_char_ptr_alloc
+    end function get_const_char_ptr_alloc
+    ! end get_const_char_ptr_alloc
 
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
     ! ----------------------------------------
-    ! Function:  const char *getCharPtr5 +deref(pointer)
+    ! Function:  const char *getConstCharPtrPointer +deref(pointer)
     ! Statement: f_function_char*_cfi_pointer
     !>
     !! \brief return a 'const char *' as character(:) pointer
     !!
     !<
-    ! start get_char_ptr5
-    function get_char_ptr5() &
+    ! start get_const_char_ptr_pointer
+    function get_const_char_ptr_pointer() &
             result(SHT_rv)
         character(len=:), pointer :: SHT_rv
-        ! splicer begin function.get_char_ptr5
-        call c_get_char_ptr5_CFI(SHT_rv)
-        ! splicer end function.get_char_ptr5
-    end function get_char_ptr5
-    ! end get_char_ptr5
+        ! splicer begin function.get_const_char_ptr_pointer
+        call c_get_const_char_ptr_pointer_CFI(SHT_rv)
+        ! splicer end function.get_const_char_ptr_pointer
+    end function get_const_char_ptr_pointer
+    ! end get_const_char_ptr_pointer
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  const char *getConstCharPtrRaw +deref(raw)
+    ! Statement: f_function_char*_raw
+    !>
+    !! \brief return a 'const char *' as type(C_PTR)
+    !!
+    !<
+    ! start get_const_char_ptr_raw
+    function get_const_char_ptr_raw() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_PTR
+        type(C_PTR) :: SHT_rv
+        ! splicer begin function.get_const_char_ptr_raw
+        SHT_rv = c_get_const_char_ptr_raw()
+        ! splicer end function.get_const_char_ptr_raw
+    end function get_const_char_ptr_raw
+    ! end get_const_char_ptr_raw
 #endif
 
     ! ----------------------------------------

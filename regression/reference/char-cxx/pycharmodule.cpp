@@ -334,34 +334,6 @@ PY_passCharPtrInOut(
 }
 
 // ----------------------------------------
-// Function:  const char *getCharPtr1
-// Statement: py_function_char*
-static char PY_getCharPtr1__doc__[] =
-"documentation"
-;
-
-/**
- * Return an ALLOCATABLE CHARACTER from char *.
- */
-static PyObject *
-PY_getCharPtr1(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *SHROUD_UNUSED(args),
-  PyObject *SHROUD_UNUSED(kwds))
-{
-// splicer begin function.getCharPtr1
-    PyObject * SHTPy_rv = nullptr;
-
-    const char *SHCXX_rv = getCharPtr1();
-
-    // post_call
-    SHTPy_rv = PyString_FromString(SHCXX_rv);
-
-    return (PyObject *) SHTPy_rv;
-// splicer end function.getCharPtr1
-}
-
-// ----------------------------------------
 // Function:  const char *getConstCharPtrLen +len(30)
 // Statement: py_function_char*
 static char PY_getConstCharPtrLen__doc__[] =
@@ -388,6 +360,34 @@ PY_getConstCharPtrLen(
 
     return (PyObject *) SHTPy_rv;
 // splicer end function.getConstCharPtrLen
+}
+
+// ----------------------------------------
+// Function:  const char *getConstCharPtrAlloc +deref(allocatable)
+// Statement: py_function_char*
+static char PY_getConstCharPtrAlloc__doc__[] =
+"documentation"
+;
+
+/**
+ * Return an ALLOCATABLE CHARACTER from char *.
+ */
+static PyObject *
+PY_getConstCharPtrAlloc(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.getConstCharPtrAlloc
+    PyObject * SHTPy_rv = nullptr;
+
+    const char *SHCXX_rv = getConstCharPtrAlloc();
+
+    // post_call
+    SHTPy_rv = PyString_FromString(SHCXX_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.getConstCharPtrAlloc
 }
 
 // ----------------------------------------
@@ -656,10 +656,10 @@ static PyMethodDef PY_methods[] = {
     PY_passCharPtr__doc__},
 {"passCharPtrInOut", (PyCFunction)PY_passCharPtrInOut,
     METH_VARARGS|METH_KEYWORDS, PY_passCharPtrInOut__doc__},
-{"getCharPtr1", (PyCFunction)PY_getCharPtr1, METH_NOARGS,
-    PY_getCharPtr1__doc__},
 {"getConstCharPtrLen", (PyCFunction)PY_getConstCharPtrLen, METH_NOARGS,
     PY_getConstCharPtrLen__doc__},
+{"getConstCharPtrAlloc", (PyCFunction)PY_getConstCharPtrAlloc,
+    METH_NOARGS, PY_getConstCharPtrAlloc__doc__},
 {"getConstCharPtrAsCopyArg", (PyCFunction)PY_getConstCharPtrAsCopyArg,
     METH_NOARGS, PY_getConstCharPtrAsCopyArg__doc__},
 {"explicit1", (PyCFunction)PY_explicit1, METH_VARARGS|METH_KEYWORDS,

@@ -119,39 +119,38 @@ contains
 
     call set_case_name("test_functions")
 
-    ! problem with pgi
-    ! character(*) function
-    astr = get_char_ptr1()
-    call assert_true(astr == "bird", "get_char_ptr1 value")
-    deallocate(astr)
-
     ! character(30) function
+    ! +len(30)
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_const_char_ptr_len()
-    call assert_true( str == "bird", "getConstCharPtrLen")
+    call assert_true(str == "bird", "getConstCharPtrLen value")
 
-!    ! string_result_as_arg
-!    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-!    call get_const_char_ptr_as_arg(str)
-!    call assert_true(str == "bird", "getConstCharPtrAsArg value")
+    ! problem with pgi
+    ! character(*) function
+    ! +deref(allocatable)
+    astr = get_const_char_ptr_alloc()
+    call assert_true(astr == "bird", "getConstCharPtrAlloc value")
+    deallocate(astr)
 
+#ifdef HAVE_CHARACTER_POINTER_FUNCTION
+    ! +deref(pointer)
+    nullify(pstr)
+    pstr => get_const_char_ptr_pointer()
+    call assert_true(associated(pstr), "getConstCharPtrPointer associated")
+    call assert_true(len(pstr) == 4, "getConstCharPtrPointer len")
+    call assert_true(pstr == "bird", "getConstCharPtrPointer value")
+#endif
+
+    ! +deref(raw)
     raw_ptr = C_NULL_PTR
-    raw_ptr = get_char_ptr4()
-    call assert_true(c_associated(raw_ptr), "get_char_ptr4 associated")
+    raw_ptr = get_const_char_ptr_raw()
+    call assert_true(c_associated(raw_ptr), "getConstCharPtrRaw associated")
     call c_f_pointer(raw_ptr, raw_str, [4])
     call assert_true( &
          raw_str(1) == "b" .and. &
          raw_str(2) == "i" .and. &
          raw_str(3) == "r" .and. &
-         raw_str(4) == "d", "get_char_ptr4 value")
-
-#ifdef HAVE_CHARACTER_POINTER_FUNCTION
-    nullify(pstr)
-    pstr => get_char_ptr5()
-    call assert_true(associated(pstr), "get_char_ptr5 associated")
-    call assert_true(len(pstr) == 4, "get_char_ptr5 len")
-    call assert_true(pstr == "bird", "get_char_ptr5 value")
-#endif
+         raw_str(4) == "d", "getConstCharPtrRaw value")
 
   end subroutine test_functions
 
@@ -168,20 +167,24 @@ contains
     call set_case_name("test_functions_as_arg")
 
     ! string_result_as_arg
+    ! +deref(copy)
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     call get_const_char_ptr_as_copy_arg(str)
-    call assert_true( str == "bird", "getConstCharPtrAsCopyArg value")
+    call assert_true(str == "bird", "getConstCharPtrAsCopyArg value")
 
+    ! +deref(allocatable)
     call  get_const_char_ptr_as_alloc_arg(astr)
     call assert_true(astr == "bird", "GetConstCharPtrAsAllocArg value")
     deallocate(astr)
 
+    ! +deref(pointer)
     nullify(pstr)
     call get_const_char_ptr_as_pointer_arg(pstr)
     call assert_true(associated(pstr), "getConstCharPtrAsPointerArg associated")
     call assert_true(len(pstr) == 4, "getConstCharPtrAsPointerArg len")
     call assert_true(pstr == "bird", "getConstCharPtrAsPointerArg value")
 
+    ! +deref(raw)
     raw_ptr = C_NULL_PTR
     call get_const_char_ptr_as_raw_arg(raw_ptr)
     call assert_true(c_associated(raw_ptr), "getConstCharPtrAsRawArg associated")

@@ -48,23 +48,23 @@ void CHA_passCharPtrInOut(char *s);
 
 void CHA_passCharPtrInOut_CFI(CFI_cdesc_t *SHT_s_cfi);
 
-const char * CHA_getCharPtr1(void);
-
-void CHA_getCharPtr1_CFI(CFI_cdesc_t *SHT_rv_cfi);
-
 const char * CHA_getConstCharPtrLen(void);
 
 void CHA_getConstCharPtrLen_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
-const char * CHA_getCharPtr4(void);
+const char * CHA_getConstCharPtrAlloc(void);
+
+void CHA_getConstCharPtrAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
-const char * CHA_getCharPtr5(void);
+const char * CHA_getConstCharPtrPointer(void);
 #endif
 
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
-void CHA_getCharPtr5_CFI(CFI_cdesc_t *SHT_rv_cfi);
+void CHA_getConstCharPtrPointer_CFI(CFI_cdesc_t *SHT_rv_cfi);
 #endif
+
+const char * CHA_getConstCharPtrRaw(void);
 
 const char * CHA_getConstCharPtrAsCopyArg(void);
 
