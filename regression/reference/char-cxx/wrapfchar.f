@@ -380,6 +380,20 @@ module char_mod
     ! end c_get_const_char_ptr_as_pointer_arg_bufferify
 
     ! ----------------------------------------
+    ! Function:  const char *getConstCharPtrAsRawArg +deref(raw)+funcarg
+    ! Statement: f_function_char*_funcarg_raw
+    ! start get_const_char_ptr_as_raw_arg
+    interface
+        subroutine get_const_char_ptr_as_raw_arg(output) &
+                bind(C, name="CHA_getConstCharPtrAsRawArg_bufferify")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR), intent(OUT) :: output
+        end subroutine get_const_char_ptr_as_raw_arg
+    end interface
+    ! end get_const_char_ptr_as_raw_arg
+
+    ! ----------------------------------------
     ! Function:  void explicit1
     ! Statement: f_subroutine
     ! ----------------------------------------
@@ -1070,6 +1084,26 @@ contains
         ! splicer end function.get_const_char_ptr_as_pointer_arg
     end subroutine get_const_char_ptr_as_pointer_arg
     ! end get_const_char_ptr_as_pointer_arg
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  const char *getConstCharPtrAsRawArg +deref(raw)+funcarg
+    ! Statement: f_function_char*_funcarg_raw
+    !>
+    !! \brief return a 'const char *' as a type(C_PTR) argument
+    !!
+    !<
+    ! start get_const_char_ptr_as_raw_arg
+    subroutine get_const_char_ptr_as_raw_arg(output)
+        use iso_c_binding, only : C_PTR
+        type(C_PTR), intent(OUT) :: output
+        ! splicer begin function.get_const_char_ptr_as_raw_arg
+        call c_get_const_char_ptr_as_raw_arg_bufferify(output)
+        ! splicer end function.get_const_char_ptr_as_raw_arg
+    end subroutine get_const_char_ptr_as_raw_arg
+    ! end get_const_char_ptr_as_raw_arg
+#endif
 
     ! ----------------------------------------
     ! Function:  void explicit1

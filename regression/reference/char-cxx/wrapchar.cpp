@@ -492,6 +492,23 @@ void CHA_getConstCharPtrAsPointerArg_bufferify(
 }
 // end CHA_getConstCharPtrAsPointerArg_bufferify
 
+/**
+ * \brief return a 'const char *' as a type(C_PTR) argument
+ *
+ */
+// ----------------------------------------
+// Function:  const char *getConstCharPtrAsRawArg +deref(raw)+funcarg
+// Statement: f_function_char*_funcarg_raw
+// start CHA_getConstCharPtrAsRawArg_bufferify
+void CHA_getConstCharPtrAsRawArg_bufferify(void **SHC_rv)
+{
+    // splicer begin function.getConstCharPtrAsRawArg_bufferify
+    const char *SHC_rv_cxx = getConstCharPtrAsRawArg();
+    *SHC_rv = const_cast<char *>(SHC_rv_cxx);
+    // splicer end function.getConstCharPtrAsRawArg_bufferify
+}
+// end CHA_getConstCharPtrAsRawArg_bufferify
+
 // ----------------------------------------
 // Function:  void explicit1
 // Statement: c_subroutine

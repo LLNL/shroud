@@ -110,7 +110,7 @@ contains
 
   subroutine test_functions
 
-    type(C_PTR) :: strptr
+    type(C_PTR) :: raw_ptr
     character(len=:), allocatable :: astr
     character(len=:), pointer :: pstr
     character(30) str
@@ -135,13 +135,15 @@ contains
 !    call get_const_char_ptr_as_arg(str)
 !    call assert_true(str == "bird", "getConstCharPtrAsArg value")
 
-    strptr = get_char_ptr4()
-    call c_f_pointer(strptr, raw_str, [4])
+    raw_ptr = C_NULL_PTR
+    raw_ptr = get_char_ptr4()
+    call assert_true(c_associated(raw_ptr), "get_char_ptr4 associated")
+    call c_f_pointer(raw_ptr, raw_str, [4])
     call assert_true( &
          raw_str(1) == "b" .and. &
          raw_str(2) == "i" .and. &
          raw_str(3) == "r" .and. &
-         raw_str(4) == "d", "get_char_ptr4")
+         raw_str(4) == "d", "get_char_ptr4 value")
 
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
     nullify(pstr)
@@ -156,12 +158,12 @@ contains
 ! Return function result as an argument
   subroutine test_functions_as_arg
 
-!    type(C_PTR) :: strptr
+    type(C_PTR) :: raw_ptr
     character(len=:), allocatable :: astr
     character(len=:), pointer :: pstr
     character(30) str
     character(30), parameter :: static_str = "dog                         "
-!    character, pointer :: raw_str(:)
+    character, pointer :: raw_str(:)
 
     call set_case_name("test_functions_as_arg")
 
@@ -179,13 +181,15 @@ contains
     call get_const_char_ptr_as_arg(str)
     call assert_true( str == "bird", "getConstCharPtrAsArg value")
 
-!    strptr = get_char_ptr4()
-!    call c_f_pointer(strptr, raw_str, [4])
-!    call assert_true( &
-!         raw_str(1) == "b" .and. &
-!         raw_str(2) == "i" .and. &
-!         raw_str(3) == "r" .and. &
-!         raw_str(4) == "d", "get_char_ptr4")
+    raw_ptr = C_NULL_PTR
+    call get_const_char_ptr_as_raw_arg(raw_ptr)
+    call assert_true(c_associated(raw_ptr), "getConstCharPtrAsRawArg associated")
+    call c_f_pointer(raw_ptr, raw_str, [4])
+    call assert_true( &
+         raw_str(1) == "b" .and. &
+         raw_str(2) == "i" .and. &
+         raw_str(3) == "r" .and. &
+         raw_str(4) == "d", "getConstCharPtrAsRawArg value")
 
     nullify(pstr)
     call get_const_char_ptr_as_pointer_arg(pstr)

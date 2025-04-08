@@ -132,6 +132,21 @@
         }
     },
     {
+        "name": "f_mixin_declare-arg-as-cptr",
+        "notes": [
+            "Used when there is no direct mapping to Fortran.",
+            "C argument maps to void **."
+        ],
+        "f_dummy_decl": [
+            "type(C_PTR){f_intent_attr} :: {f_var}"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        }
+    },
+    {
         "name": "f_mixin_function-as-cptr",
         "comments": [
             "Declare function result as a type(C_PTR)."
@@ -268,6 +283,17 @@
             "{gen.cdecl.c_var}"
         ],
         "sphinx-end-before": "c_mixin_declare-arg"
+    },
+    {
+        "name": "c_mixin_declare-arg-void**",
+        "notes": [
+            "Used to return a void * in an argument.",
+            "For example, with deref(raw).",
+            "Works with c_mixin_assign-to-void**."
+        ],
+        "c_prototype": [
+            "void **{c_var}"
+        ]
     },
     {
         "name": "c_mixin_local-cvar-ptr",
@@ -530,6 +556,15 @@
         ],
         "c_local": [
             "cxx"
+        ]
+    },
+    {
+        "name": "c_mixin_assign-to-void**",
+        "comments": [
+            "Assign a pointer to the c_variable after dereferencing."
+        ],
+        "c_call": [
+            "*{c_var} =\t {gen.nonconst_addr.c_local_cxx};"
         ]
     },
     {
@@ -2775,6 +2810,25 @@
             "c_mixin_function-assign-to-cvar",
             "c_mixin_cdesc_char_fill_cvar",
             "f_mixin_cdesc_char_pointer"
+        ]
+    },
+    {
+        "alias": [
+            "#f_function_char_funcarg_raw",
+            "f_function_char*_funcarg_raw"
+        ],
+        "usage": [
+            "char *func(void) +deref(raw)+funcarg"
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_declare-arg-as-cptr",
+            "f_mixin_interface-as-cptr",
+            "f_mixin_arg-call-fvar",
+            "c_mixin_as-intent-out",
+            "c_mixin_declare-arg-void**",
+            "c_mixin_function-assign-to-local",
+            "c_mixin_assign-to-void**"
         ]
     },
     {

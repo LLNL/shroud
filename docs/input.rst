@@ -618,7 +618,8 @@ also use the *deref* attribute to create an ``ALLOCATABLE`` or
 
 The attribute value can contain the name for the argument. If no name
 is given then the option **F_result_as_arg** will be used to name the
-argument. The attribute value is assigned to format field *f_var*.
+argument. The attribute value is assigned to format fields *f_var* and
+*i_var*.
    
 funptr
 ^^^^^^

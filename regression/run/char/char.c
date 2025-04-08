@@ -116,6 +116,13 @@ const char *getConstCharPtrAsPointerArg(void)
 }
 // end getConstCharPtrAsPointerArg
 
+// start getConstCharPtrAsRawArg
+const char *getConstCharPtrAsRawArg(void)
+{
+    return static_char;
+}
+// end getConstCharPtrAsRawArg
+
 //----------------------------------------
 
 char returnMany(int * arg1)

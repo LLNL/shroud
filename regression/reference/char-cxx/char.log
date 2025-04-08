@@ -23,6 +23,7 @@ C c const char *getCharPtr5(void) +deref(pointer)
 C f const char *getCharPtr5(void) +deref(pointer)
 C f const char *getConstCharPtrAsAllocArg(void) +deref(allocatable)+funcarg
 C f const char *getConstCharPtrAsPointerArg(void) +deref(pointer)+funcarg
+C f const char *getConstCharPtrAsRawArg(void) +deref(raw)+funcarg
 C c void explicit1(char *name +intent(in)+len_trim(AAlen))
 C f void explicit1(char *name +intent(in)+len_trim(AAlen))
 C c void explicit2(char *name +intent(out)+len(AAtrim))
@@ -64,6 +65,7 @@ Fortran const char *getCharPtr4(void) +deref(raw)
 Fortran const char *getCharPtr5(void) +deref(pointer)
 Fortran const char *getConstCharPtrAsAllocArg(void) +deref(allocatable)+funcarg
 Fortran const char *getConstCharPtrAsPointerArg(void) +deref(pointer)+funcarg
+Fortran const char *getConstCharPtrAsRawArg(void) +deref(raw)+funcarg
 Fortran void explicit1(char *name +intent(in)+len_trim(AAlen))
 Fortran void explicit2(char *name +intent(out)+len(AAtrim))
 Fortran void CpassChar(char status)
@@ -96,6 +98,7 @@ C-interface c const char *getCharPtr5(void) +deref(pointer)
 C-interface f const char *getCharPtr5(void) +deref(pointer)
 C-interface f const char *getConstCharPtrAsAllocArg(void) +deref(allocatable)+funcarg
 C-interface f const char *getConstCharPtrAsPointerArg(void) +deref(pointer)+funcarg
+C-interface f const char *getConstCharPtrAsRawArg(void) +deref(raw)+funcarg
 C-interface f void explicit1(char *name +intent(in)+len_trim(AAlen))
 C-interface c void explicit2(char *name +intent(out)+len(AAtrim))
 C-interface f void explicit2(char *name +intent(out)+len(AAtrim))
