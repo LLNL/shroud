@@ -212,34 +212,6 @@ module char_mod
     ! end c_get_const_char_ptr_len_CFI
 
     ! ----------------------------------------
-    ! Function:  const char *getConstCharPtrAsArg
-    ! Statement: c_function_char*
-    ! start c_get_const_char_ptr_as_arg
-    interface
-        function c_get_const_char_ptr_as_arg() &
-                result(SHT_rv) &
-                bind(C, name="CHA_getConstCharPtrAsArg")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR) :: SHT_rv
-        end function c_get_const_char_ptr_as_arg
-    end interface
-    ! end c_get_const_char_ptr_as_arg
-
-    ! ----------------------------------------
-    ! Function:  const char *getConstCharPtrAsArg
-    ! Statement: f_function_char*_cfi_arg
-    ! start c_get_const_char_ptr_as_arg_CFI
-    interface
-        subroutine c_get_const_char_ptr_as_arg_CFI(output) &
-                bind(C, name="CHA_getConstCharPtrAsArg_CFI")
-            implicit none
-            character(len=*), intent(OUT) :: output
-        end subroutine c_get_const_char_ptr_as_arg_CFI
-    end interface
-    ! end c_get_const_char_ptr_as_arg_CFI
-
-    ! ----------------------------------------
     ! Function:  const char *getCharPtr4 +deref(raw)
     ! Statement: f_function_char*_raw
     ! start get_char_ptr4
@@ -285,6 +257,34 @@ module char_mod
     end interface
     ! end c_get_char_ptr5_CFI
 #endif
+
+    ! ----------------------------------------
+    ! Function:  const char *getConstCharPtrAsCopyArg
+    ! Statement: c_function_char*
+    ! start c_get_const_char_ptr_as_copy_arg
+    interface
+        function c_get_const_char_ptr_as_copy_arg() &
+                result(SHT_rv) &
+                bind(C, name="CHA_getConstCharPtrAsCopyArg")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) :: SHT_rv
+        end function c_get_const_char_ptr_as_copy_arg
+    end interface
+    ! end c_get_const_char_ptr_as_copy_arg
+
+    ! ----------------------------------------
+    ! Function:  const char *getConstCharPtrAsCopyArg
+    ! Statement: f_function_char*_cfi_arg
+    ! start c_get_const_char_ptr_as_copy_arg_CFI
+    interface
+        subroutine c_get_const_char_ptr_as_copy_arg_CFI(output) &
+                bind(C, name="CHA_getConstCharPtrAsCopyArg_CFI")
+            implicit none
+            character(len=*), intent(OUT) :: output
+        end subroutine c_get_const_char_ptr_as_copy_arg_CFI
+    end interface
+    ! end c_get_const_char_ptr_as_copy_arg_CFI
 
     ! ----------------------------------------
     ! Function:  const char *getConstCharPtrAsAllocArg +deref(allocatable)+funcarg
@@ -920,22 +920,6 @@ contains
     end function get_const_char_ptr_len
     ! end get_const_char_ptr_len
 
-    ! ----------------------------------------
-    ! Function:  const char *getConstCharPtrAsArg
-    ! Statement: f_function_char*_cfi_arg
-    !>
-    !! \brief return a 'const char *' as argument
-    !!
-    !<
-    ! start get_const_char_ptr_as_arg
-    subroutine get_const_char_ptr_as_arg(output)
-        character(len=*), intent(OUT) :: output
-        ! splicer begin function.get_const_char_ptr_as_arg
-        call c_get_const_char_ptr_as_arg_CFI(output)
-        ! splicer end function.get_const_char_ptr_as_arg
-    end subroutine get_const_char_ptr_as_arg
-    ! end get_const_char_ptr_as_arg
-
 #if 0
     ! Only the interface is needed
     ! ----------------------------------------
@@ -975,6 +959,22 @@ contains
     end function get_char_ptr5
     ! end get_char_ptr5
 #endif
+
+    ! ----------------------------------------
+    ! Function:  const char *getConstCharPtrAsCopyArg
+    ! Statement: f_function_char*_cfi_arg
+    !>
+    !! \brief return a 'const char *' as argument
+    !!
+    !<
+    ! start get_const_char_ptr_as_copy_arg
+    subroutine get_const_char_ptr_as_copy_arg(output)
+        character(len=*), intent(OUT) :: output
+        ! splicer begin function.get_const_char_ptr_as_copy_arg
+        call c_get_const_char_ptr_as_copy_arg_CFI(output)
+        ! splicer end function.get_const_char_ptr_as_copy_arg
+    end subroutine get_const_char_ptr_as_copy_arg
+    ! end get_const_char_ptr_as_copy_arg
 
 #if 0
     ! Only the interface is needed

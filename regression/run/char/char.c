@@ -95,12 +95,12 @@ const char * getCharPtr5(void)
 //----------------------------------------
 // Return as argument in Fortran wrapper
 
-// start getConstCharPtrAsArg
-const char *getConstCharPtrAsArg(void)
+// start getConstCharPtrAsCopyArg
+const char *getConstCharPtrAsCopyArg(void)
 {
     return static_char;
 }
-// end getConstCharPtrAsArg
+// end getConstCharPtrAsCopyArg
 
 // start getConstCharPtrAllocAsArg
 const char *getConstCharPtrAsAllocArg(void)

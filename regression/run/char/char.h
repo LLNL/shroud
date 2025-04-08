@@ -25,7 +25,7 @@ const char *getConstCharPtrLen(void);
 const char *getCharPtr4(void);
 const char *getCharPtr5(void);
 
-const char *getConstCharPtrAsArg(void);
+const char *getConstCharPtrAsCopyArg(void);
 const char *getConstCharPtrAsAllocArg(void);
 const char *getConstCharPtrAsPointerArg(void);
 const char *getConstCharPtrAsRawArg(void);

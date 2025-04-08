@@ -53,10 +53,6 @@ const char * CHA_getConstCharPtrLen(void);
 
 void CHA_getConstCharPtrLen_bufferify(char *SHC_rv, int SHT_rv_len);
 
-const char * CHA_getConstCharPtrAsArg(void);
-
-void CHA_getConstCharPtrAsArg_bufferify(char *output, int noutput);
-
 const char * CHA_getCharPtr4(void);
 
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
@@ -66,6 +62,10 @@ const char * CHA_getCharPtr5(void);
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
 void CHA_getCharPtr5_bufferify(CHA_SHROUD_array *SHT_rv_cdesc);
 #endif
+
+const char * CHA_getConstCharPtrAsCopyArg(void);
+
+void CHA_getConstCharPtrAsCopyArg_bufferify(char *output, int noutput);
 
 void CHA_getConstCharPtrAsAllocArg_bufferify(
     CHA_SHROUD_array *SHT_rv_cdesc);

@@ -363,42 +363,6 @@ void CHA_getConstCharPtrLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // end CHA_getConstCharPtrLen_CFI
 
 /**
- * \brief return a 'const char *' as argument
- *
- */
-// ----------------------------------------
-// Function:  const char *getConstCharPtrAsArg
-// Statement: c_function_char*
-// start CHA_getConstCharPtrAsArg
-const char * CHA_getConstCharPtrAsArg(void)
-{
-    // splicer begin function.getConstCharPtrAsArg
-    const char *SHC_rv = getConstCharPtrAsArg();
-    return SHC_rv;
-    // splicer end function.getConstCharPtrAsArg
-}
-// end CHA_getConstCharPtrAsArg
-
-/**
- * \brief return a 'const char *' as argument
- *
- */
-// ----------------------------------------
-// Function:  const char *getConstCharPtrAsArg
-// Statement: f_function_char*_cfi_arg
-// start CHA_getConstCharPtrAsArg_CFI
-void CHA_getConstCharPtrAsArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
-{
-    // splicer begin function.getConstCharPtrAsArg_CFI
-    char *output = static_cast<char *>(SHT_rv_cfi->base_addr);
-    size_t SHT_rv_len = SHT_rv_cfi->elem_len;
-    const char *SHC_rv_cxx = getConstCharPtrAsArg();
-    ShroudCharCopy(output, SHT_rv_len, SHC_rv_cxx, -1);
-    // splicer end function.getConstCharPtrAsArg_CFI
-}
-// end CHA_getConstCharPtrAsArg_CFI
-
-/**
  * \brief return a 'const char *' as type(C_PTR)
  *
  */
@@ -469,6 +433,42 @@ void CHA_getCharPtr5_CFI(CFI_cdesc_t *SHT_rv_cfi)
 }
 // end CHA_getCharPtr5_CFI
 #endif  // ifdef HAVE_CHARACTER_POINTER_FUNCTION
+
+/**
+ * \brief return a 'const char *' as argument
+ *
+ */
+// ----------------------------------------
+// Function:  const char *getConstCharPtrAsCopyArg
+// Statement: c_function_char*
+// start CHA_getConstCharPtrAsCopyArg
+const char * CHA_getConstCharPtrAsCopyArg(void)
+{
+    // splicer begin function.getConstCharPtrAsCopyArg
+    const char *SHC_rv = getConstCharPtrAsCopyArg();
+    return SHC_rv;
+    // splicer end function.getConstCharPtrAsCopyArg
+}
+// end CHA_getConstCharPtrAsCopyArg
+
+/**
+ * \brief return a 'const char *' as argument
+ *
+ */
+// ----------------------------------------
+// Function:  const char *getConstCharPtrAsCopyArg
+// Statement: f_function_char*_cfi_arg
+// start CHA_getConstCharPtrAsCopyArg_CFI
+void CHA_getConstCharPtrAsCopyArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
+{
+    // splicer begin function.getConstCharPtrAsCopyArg_CFI
+    char *output = static_cast<char *>(SHT_rv_cfi->base_addr);
+    size_t SHT_rv_len = SHT_rv_cfi->elem_len;
+    const char *SHC_rv_cxx = getConstCharPtrAsCopyArg();
+    ShroudCharCopy(output, SHT_rv_len, SHC_rv_cxx, -1);
+    // splicer end function.getConstCharPtrAsCopyArg_CFI
+}
+// end CHA_getConstCharPtrAsCopyArg_CFI
 
 /**
  * \brief return a 'const char *' as an allocatable argument

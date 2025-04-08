@@ -1421,10 +1421,10 @@ Fortran usage:
 
 .. ############################################################
 
-.. _example_getConstCharPtrAsArg:
+.. _example_getConstCharPtrAsCopyArg:
 
-getConstCharPtrAsArg
-^^^^^^^^^^^^^^^^^^^^
+getConstCharPtrAsCopyArg
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Create a Fortran subroutine with an additional ``CHARACTER``
 argument for the C function result. Any size character string can
@@ -1435,14 +1435,14 @@ C++ library function in :file:`char.c`:
 
 .. literalinclude:: ../regression/run/char/char.c
    :language: c
-   :start-after: start getConstCharPtrAsArg
-   :end-before: end getConstCharPtrAsArg
+   :start-after: start getConstCharPtrAsCopyArg
+   :end-before: end getConstCharPtrAsCopyArg
 
 :file:`strings.yaml`:
 
 .. code-block:: yaml
 
-    - decl: const char *getConstCharPtrAsArg()
+    - decl: const char *getConstCharPtrAsCopyArg()
       format:
         F_string_result_as_arg: output
 
@@ -1450,23 +1450,23 @@ The C wrapper:
 
 .. literalinclude:: ../regression/reference/char-cxx/wrapchar.cpp
    :language: c
-   :start-after: start CHA_getConstCharPtrAsArg_bufferify
-   :end-before: end CHA_getConstCharPtrAsArg_bufferify
+   :start-after: start CHA_getConstCharPtrAsCopyArg_bufferify
+   :end-before: end CHA_getConstCharPtrAsCopyArg_bufferify
 
 Fortran calls C via the following interface:
 
 .. literalinclude:: ../regression/reference/char-cxx/wrapfchar.f
    :language: fortran
-   :start-after: start c_get_const_char_ptr_as_arg_bufferify
-   :end-before: end c_get_const_char_ptr_as_arg_bufferify
+   :start-after: start c_get_const_char_ptr_as_copy_arg_bufferify
+   :end-before: end c_get_const_char_ptr_as_copy_arg_bufferify
    :dedent: 4
 
 The Fortran wrapper:
 
 .. literalinclude:: ../regression/reference/char-cxx/wrapfchar.f
    :language: fortran
-   :start-after: start get_const_char_ptr_as_arg
-   :end-before: end get_const_char_ptr_as_arg
+   :start-after: start get_const_char_ptr_as_copy_arg
+   :end-before: end get_const_char_ptr_as_copy_arg
    :dedent: 4
 
 Fortran usage:

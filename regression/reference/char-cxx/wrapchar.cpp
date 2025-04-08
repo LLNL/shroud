@@ -356,40 +356,6 @@ void CHA_getConstCharPtrLen_bufferify(char *SHC_rv, int SHT_rv_len)
 // end CHA_getConstCharPtrLen_bufferify
 
 /**
- * \brief return a 'const char *' as argument
- *
- */
-// ----------------------------------------
-// Function:  const char *getConstCharPtrAsArg
-// Statement: c_function_char*
-// start CHA_getConstCharPtrAsArg
-const char * CHA_getConstCharPtrAsArg(void)
-{
-    // splicer begin function.getConstCharPtrAsArg
-    const char *SHC_rv = getConstCharPtrAsArg();
-    return SHC_rv;
-    // splicer end function.getConstCharPtrAsArg
-}
-// end CHA_getConstCharPtrAsArg
-
-/**
- * \brief return a 'const char *' as argument
- *
- */
-// ----------------------------------------
-// Function:  const char *getConstCharPtrAsArg
-// Statement: f_function_char*_buf_arg
-// start CHA_getConstCharPtrAsArg_bufferify
-void CHA_getConstCharPtrAsArg_bufferify(char *output, int noutput)
-{
-    // splicer begin function.getConstCharPtrAsArg_bufferify
-    const char *SHC_rv_cxx = getConstCharPtrAsArg();
-    ShroudCharCopy(output, noutput, SHC_rv_cxx, -1);
-    // splicer end function.getConstCharPtrAsArg_bufferify
-}
-// end CHA_getConstCharPtrAsArg_bufferify
-
-/**
  * \brief return a 'const char *' as type(C_PTR)
  *
  */
@@ -447,6 +413,40 @@ void CHA_getCharPtr5_bufferify(CHA_SHROUD_array *SHT_rv_cdesc)
 }
 // end CHA_getCharPtr5_bufferify
 #endif  // ifdef HAVE_CHARACTER_POINTER_FUNCTION
+
+/**
+ * \brief return a 'const char *' as argument
+ *
+ */
+// ----------------------------------------
+// Function:  const char *getConstCharPtrAsCopyArg
+// Statement: c_function_char*
+// start CHA_getConstCharPtrAsCopyArg
+const char * CHA_getConstCharPtrAsCopyArg(void)
+{
+    // splicer begin function.getConstCharPtrAsCopyArg
+    const char *SHC_rv = getConstCharPtrAsCopyArg();
+    return SHC_rv;
+    // splicer end function.getConstCharPtrAsCopyArg
+}
+// end CHA_getConstCharPtrAsCopyArg
+
+/**
+ * \brief return a 'const char *' as argument
+ *
+ */
+// ----------------------------------------
+// Function:  const char *getConstCharPtrAsCopyArg
+// Statement: f_function_char*_buf_arg
+// start CHA_getConstCharPtrAsCopyArg_bufferify
+void CHA_getConstCharPtrAsCopyArg_bufferify(char *output, int noutput)
+{
+    // splicer begin function.getConstCharPtrAsCopyArg_bufferify
+    const char *SHC_rv_cxx = getConstCharPtrAsCopyArg();
+    ShroudCharCopy(output, noutput, SHC_rv_cxx, -1);
+    // splicer end function.getConstCharPtrAsCopyArg_bufferify
+}
+// end CHA_getConstCharPtrAsCopyArg_bufferify
 
 /**
  * \brief return a 'const char *' as an allocatable argument

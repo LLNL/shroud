@@ -80,14 +80,6 @@ declarations:
   options:
     literalinclude: True
 
-- decl: const char *getConstCharPtrAsArg()
-  doxygen:
-    brief: return a 'const char *' as argument
-  options:
-    literalinclude: True
-  format:
-    F_string_result_as_arg: output
-
 - decl: const char * getCharPtr4() +deref(raw)
   doxygen:
     brief: return a 'const char *' as type(C_PTR)
@@ -103,7 +95,15 @@ declarations:
 #    literalinclude: True
 
 #####
-# Return function result as an argument
+# Return function result in an argument.
+
+- decl: const char *getConstCharPtrAsCopyArg()
+  doxygen:
+    brief: return a 'const char *' as argument
+  options:
+    literalinclude: True
+  format:
+    F_string_result_as_arg: output
 
 - decl: const char *getConstCharPtrAsAllocArg(void) +funcarg+deref(allocatable)
   doxygen:

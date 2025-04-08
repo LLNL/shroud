@@ -1752,198 +1752,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getConstCharPtrAsArg  8 ****************************************",
-                "ast": {
-                    "const": true,
-                    "declarator": {
-                        "name": "getConstCharPtrAsArg",
-                        "params": [],
-                        "pointer": [
-                            {
-                                "ptr": "*"
-                            }
-                        ],
-                        "typemap_name": "char"
-                    },
-                    "specifier": [
-                        "char"
-                    ],
-                    "typemap_name": "char"
-                },
-                "decl": "const char *getConstCharPtrAsArg()",
-                "declgen": "const char *getConstCharPtrAsArg(void)",
-                "doxygen": {
-                    "brief": "return a 'const char *' as argument"
-                },
-                "helpers": {
-                    "fc": [
-                        "char_copy"
-                    ]
-                },
-                "name": "getConstCharPtrAsArg",
-                "options": {
-                    "literalinclude": true
-                },
-                "user_fmt": {
-                    "F_string_result_as_arg": "output"
-                },
-                "wrap": {
-                    "c": true,
-                    "fortran": true,
-                    "python": true
-                },
-                "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "fmtdict": {
-                                "C_call_function": "getConstCharPtrAsArg(\t)",
-                                "C_name": "CHA_getConstCharPtrAsArg",
-                                "C_prototype": "void",
-                                "C_return_type": "const char *",
-                                "c_const": "const ",
-                                "c_get_value": "",
-                                "c_type": "char",
-                                "c_var": "SHC_rv",
-                                "cxx_addr": "",
-                                "cxx_member": "->",
-                                "cxx_nonconst_ptr": "const_cast<char *>\t(SHC_rv)",
-                                "cxx_type": "char",
-                                "cxx_var": "SHC_rv",
-                                "f_type": "character(len=*)",
-                                "f_var": "SHT_rv",
-                                "i_arguments": "",
-                                "i_kind": "C_CHAR",
-                                "i_module_name": "iso_c_binding",
-                                "i_name_function": "c_get_const_char_ptr_as_arg",
-                                "i_result_clause": "\fresult(SHT_rv)",
-                                "i_subprogram": "function",
-                                "i_type": "character(kind=C_CHAR)",
-                                "i_var": "SHT_rv",
-                                "idtor": "0",
-                                "stmt_name": "c_function_char*",
-                                "typemap_name": "char"
-                            },
-                            "meta": {
-                                "abstract": "char*",
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_char*"
-                        }
-                    },
-                    "f": {
-                        "+result": {
-                            "fmtdict": {
-                                "C_call_function": "getConstCharPtrAsArg(\t)",
-                                "C_name": "CHA_getConstCharPtrAsArg_bufferify",
-                                "C_prototype": "char *output,\t int noutput",
-                                "C_return_type": "void",
-                                "F_arg_c_call": "output,\t noutput",
-                                "F_arguments": "output",
-                                "F_subprogram": "subroutine",
-                                "c_const": "const ",
-                                "c_helper_char_copy": "ShroudCharCopy",
-                                "c_local_cxx": "SHC_rv_cxx",
-                                "c_type": "char",
-                                "c_var": "output",
-                                "c_var_len": "noutput",
-                                "cxx_addr": "",
-                                "cxx_member": "->",
-                                "cxx_nonconst_ptr": "const_cast<char *>\t(SHC_rv_cxx)",
-                                "cxx_type": "char",
-                                "cxx_var": "SHC_rv_cxx",
-                                "f_call_function": "c_get_const_char_ptr_as_arg_bufferify",
-                                "f_type": "character(len=*)",
-                                "f_var": "output",
-                                "f_var_len": "noutput",
-                                "fc_var": "SHT_rv",
-                                "i_arguments": "output,\t noutput",
-                                "i_intent": "OUT",
-                                "i_intent_attr": ", intent(OUT)",
-                                "i_kind": "C_CHAR",
-                                "i_module_name": "iso_c_binding",
-                                "i_name_function": "c_get_const_char_ptr_as_arg_bufferify",
-                                "i_subprogram": "subroutine",
-                                "i_suffix": "_bufferify",
-                                "i_type": "character(kind=C_CHAR)",
-                                "i_var": "output",
-                                "i_var_len": "noutput",
-                                "idtor": "0",
-                                "stmt_name": "f_function_char*_buf_arg",
-                                "typemap_name": "char"
-                            },
-                            "meta": {
-                                "abstract": "char*",
-                                "api": "buf",
-                                "deref": "arg",
-                                "intent": "function"
-                            },
-                            "stmt": "f_function_char*_buf_arg"
-                        }
-                    },
-                    "py": {
-                        "+result": {
-                            "fmtdict": {
-                                "array_size": "1",
-                                "c_var": "SHCXX_rv",
-                                "ctor_expr": "SHCXX_rv",
-                                "cxx_addr": "",
-                                "cxx_member": "->",
-                                "cxx_nonconst_ptr": "const_cast<char *>\t(SHCXX_rv)",
-                                "cxx_type": "char",
-                                "cxx_var": "SHCXX_rv",
-                                "data_var": "SHData_rv",
-                                "numpy_type": "NPY_INTP",
-                                "py_var": "SHTPy_rv",
-                                "size_var": "SHSize_rv",
-                                "stmt": "py_function_char*",
-                                "value_var": "SHValue_rv"
-                            },
-                            "meta": {
-                                "abstract": "char*",
-                                "intent": "function"
-                            },
-                            "stmt": "py_function_char*"
-                        }
-                    },
-                    "share": {
-                        "+result": {
-                            "meta": {
-                                "abstract": "char*",
-                                "intent": "function"
-                            }
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_name_api": "getConstCharPtrAsArg",
-                    "F_name_api": "get_const_char_ptr_as_arg",
-                    "F_name_function": "get_const_char_ptr_as_arg",
-                    "F_name_generic": "get_const_char_ptr_as_arg",
-                    "F_name_impl": "get_const_char_ptr_as_arg",
-                    "F_string_result_as_arg": "output",
-                    "PY_name_impl": "PY_getConstCharPtrAsArg",
-                    "c_arglist": [
-                        "SHC_rv"
-                    ],
-                    "f_arglist": [
-                        "output"
-                    ],
-                    "function_name": "getConstCharPtrAsArg"
-                },
-                "zz_fmtlang": {
-                    "py": {
-                        "C_call_function": "getConstCharPtrAsArg()",
-                        "PY_array_arg": "numpy",
-                        "PY_call_list": "",
-                        "PY_doc_string": "documentation",
-                        "PY_error_return": "nullptr",
-                        "PY_ml_flags": "METH_NOARGS",
-                        "py_var": "SHTPy_rv"
-                    }
-                }
-            },
-            {
-                "<FUNCTION>": "getCharPtr4  9 ****************************************",
+                "<FUNCTION>": "getCharPtr4  8 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -2074,7 +1883,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getCharPtr5  10 ****************************************",
+                "<FUNCTION>": "getCharPtr5  9 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -2228,6 +2037,197 @@
                         "SHT_rv"
                     ],
                     "function_name": "getCharPtr5"
+                }
+            },
+            {
+                "<FUNCTION>": "getConstCharPtrAsCopyArg  10 ****************************************",
+                "ast": {
+                    "const": true,
+                    "declarator": {
+                        "name": "getConstCharPtrAsCopyArg",
+                        "params": [],
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ],
+                        "typemap_name": "char"
+                    },
+                    "specifier": [
+                        "char"
+                    ],
+                    "typemap_name": "char"
+                },
+                "decl": "const char *getConstCharPtrAsCopyArg()",
+                "declgen": "const char *getConstCharPtrAsCopyArg(void)",
+                "doxygen": {
+                    "brief": "return a 'const char *' as argument"
+                },
+                "helpers": {
+                    "fc": [
+                        "char_copy"
+                    ]
+                },
+                "name": "getConstCharPtrAsCopyArg",
+                "options": {
+                    "literalinclude": true
+                },
+                "user_fmt": {
+                    "F_string_result_as_arg": "output"
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstCharPtrAsCopyArg(\t)",
+                                "C_name": "CHA_getConstCharPtrAsCopyArg",
+                                "C_prototype": "void",
+                                "C_return_type": "const char *",
+                                "c_const": "const ",
+                                "c_get_value": "",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<char *>\t(SHC_rv)",
+                                "cxx_type": "char",
+                                "cxx_var": "SHC_rv",
+                                "f_type": "character(len=*)",
+                                "f_var": "SHT_rv",
+                                "i_arguments": "",
+                                "i_kind": "C_CHAR",
+                                "i_module_name": "iso_c_binding",
+                                "i_name_function": "c_get_const_char_ptr_as_copy_arg",
+                                "i_result_clause": "\fresult(SHT_rv)",
+                                "i_subprogram": "function",
+                                "i_type": "character(kind=C_CHAR)",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "stmt_name": "c_function_char*",
+                                "typemap_name": "char"
+                            },
+                            "meta": {
+                                "abstract": "char*",
+                                "intent": "function"
+                            },
+                            "stmt": "c_function_char*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstCharPtrAsCopyArg(\t)",
+                                "C_name": "CHA_getConstCharPtrAsCopyArg_bufferify",
+                                "C_prototype": "char *output,\t int noutput",
+                                "C_return_type": "void",
+                                "F_arg_c_call": "output,\t noutput",
+                                "F_arguments": "output",
+                                "F_subprogram": "subroutine",
+                                "c_const": "const ",
+                                "c_helper_char_copy": "ShroudCharCopy",
+                                "c_local_cxx": "SHC_rv_cxx",
+                                "c_type": "char",
+                                "c_var": "output",
+                                "c_var_len": "noutput",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<char *>\t(SHC_rv_cxx)",
+                                "cxx_type": "char",
+                                "cxx_var": "SHC_rv_cxx",
+                                "f_call_function": "c_get_const_char_ptr_as_copy_arg_bufferify",
+                                "f_type": "character(len=*)",
+                                "f_var": "output",
+                                "f_var_len": "noutput",
+                                "fc_var": "SHT_rv",
+                                "i_arguments": "output,\t noutput",
+                                "i_intent": "OUT",
+                                "i_intent_attr": ", intent(OUT)",
+                                "i_kind": "C_CHAR",
+                                "i_module_name": "iso_c_binding",
+                                "i_name_function": "c_get_const_char_ptr_as_copy_arg_bufferify",
+                                "i_subprogram": "subroutine",
+                                "i_suffix": "_bufferify",
+                                "i_type": "character(kind=C_CHAR)",
+                                "i_var": "output",
+                                "i_var_len": "noutput",
+                                "idtor": "0",
+                                "stmt_name": "f_function_char*_buf_arg",
+                                "typemap_name": "char"
+                            },
+                            "meta": {
+                                "abstract": "char*",
+                                "api": "buf",
+                                "deref": "arg",
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_char*_buf_arg"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "fmtdict": {
+                                "array_size": "1",
+                                "c_var": "SHCXX_rv",
+                                "ctor_expr": "SHCXX_rv",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<char *>\t(SHCXX_rv)",
+                                "cxx_type": "char",
+                                "cxx_var": "SHCXX_rv",
+                                "data_var": "SHData_rv",
+                                "numpy_type": "NPY_INTP",
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv",
+                                "stmt": "py_function_char*",
+                                "value_var": "SHValue_rv"
+                            },
+                            "meta": {
+                                "abstract": "char*",
+                                "intent": "function"
+                            },
+                            "stmt": "py_function_char*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "abstract": "char*",
+                                "intent": "function"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "getConstCharPtrAsCopyArg",
+                    "F_name_api": "get_const_char_ptr_as_copy_arg",
+                    "F_name_function": "get_const_char_ptr_as_copy_arg",
+                    "F_name_generic": "get_const_char_ptr_as_copy_arg",
+                    "F_name_impl": "get_const_char_ptr_as_copy_arg",
+                    "F_string_result_as_arg": "output",
+                    "PY_name_impl": "PY_getConstCharPtrAsCopyArg",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "output"
+                    ],
+                    "function_name": "getConstCharPtrAsCopyArg"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_call_function": "getConstCharPtrAsCopyArg()",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {

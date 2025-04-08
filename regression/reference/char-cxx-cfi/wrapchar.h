@@ -56,10 +56,6 @@ const char * CHA_getConstCharPtrLen(void);
 
 void CHA_getConstCharPtrLen_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
-const char * CHA_getConstCharPtrAsArg(void);
-
-void CHA_getConstCharPtrAsArg_CFI(CFI_cdesc_t *SHT_rv_cfi);
-
 const char * CHA_getCharPtr4(void);
 
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
@@ -69,6 +65,10 @@ const char * CHA_getCharPtr5(void);
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
 void CHA_getCharPtr5_CFI(CFI_cdesc_t *SHT_rv_cfi);
 #endif
+
+const char * CHA_getConstCharPtrAsCopyArg(void);
+
+void CHA_getConstCharPtrAsCopyArg_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 void CHA_getConstCharPtrAsAllocArg_CFI(CFI_cdesc_t *SHT_rv_cfi);
 

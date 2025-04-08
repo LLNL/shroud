@@ -15,12 +15,12 @@ C c const char *getCharPtr1(void)
 C f const char *getCharPtr1(void)
 C c const char *getConstCharPtrLen(void) +len(30)
 C f const char *getConstCharPtrLen(void) +len(30)
-C c const char *getConstCharPtrAsArg(void)
-C f const char *getConstCharPtrAsArg(void)
 C c const char *getCharPtr4(void) +deref(raw)
 C f const char *getCharPtr4(void) +deref(raw)
 C c const char *getCharPtr5(void) +deref(pointer)
 C f const char *getCharPtr5(void) +deref(pointer)
+C c const char *getConstCharPtrAsCopyArg(void)
+C f const char *getConstCharPtrAsCopyArg(void)
 C f const char *getConstCharPtrAsAllocArg(void) +deref(allocatable)+funcarg
 C f const char *getConstCharPtrAsPointerArg(void) +deref(pointer)+funcarg
 C f const char *getConstCharPtrAsRawArg(void) +deref(raw)+funcarg
@@ -60,9 +60,9 @@ Fortran void passCharPtr(char *dest +charlen(40)+intent(out), const char *src)
 Fortran void passCharPtrInOut(char *s +intent(inout))
 Fortran const char *getCharPtr1(void)
 Fortran const char *getConstCharPtrLen(void) +len(30)
-Fortran const char *getConstCharPtrAsArg(void)
 Fortran const char *getCharPtr4(void) +deref(raw)
 Fortran const char *getCharPtr5(void) +deref(pointer)
+Fortran const char *getConstCharPtrAsCopyArg(void)
 Fortran const char *getConstCharPtrAsAllocArg(void) +deref(allocatable)+funcarg
 Fortran const char *getConstCharPtrAsPointerArg(void) +deref(pointer)+funcarg
 Fortran const char *getConstCharPtrAsRawArg(void) +deref(raw)+funcarg
@@ -91,11 +91,11 @@ C-interface c const char *getCharPtr1(void)
 C-interface f const char *getCharPtr1(void)
 C-interface c const char *getConstCharPtrLen(void) +len(30)
 C-interface f const char *getConstCharPtrLen(void) +len(30)
-C-interface c const char *getConstCharPtrAsArg(void)
-C-interface f const char *getConstCharPtrAsArg(void)
 C-interface f const char *getCharPtr4(void) +deref(raw)
 C-interface c const char *getCharPtr5(void) +deref(pointer)
 C-interface f const char *getCharPtr5(void) +deref(pointer)
+C-interface c const char *getConstCharPtrAsCopyArg(void)
+C-interface f const char *getConstCharPtrAsCopyArg(void)
 C-interface f const char *getConstCharPtrAsAllocArg(void) +deref(allocatable)+funcarg
 C-interface f const char *getConstCharPtrAsPointerArg(void) +deref(pointer)+funcarg
 C-interface f const char *getConstCharPtrAsRawArg(void) +deref(raw)+funcarg
@@ -130,7 +130,7 @@ Python function void passCharPtr(char *dest +charlen(40)+intent(out), const char
 Python function void passCharPtrInOut(char *s +intent(inout))
 Python function const char *getCharPtr1(void)
 Python function const char *getConstCharPtrLen(void) +len(30)
-Python function const char *getConstCharPtrAsArg(void)
+Python function const char *getConstCharPtrAsCopyArg(void)
 Python function void explicit1(char *name +intent(in)+len_trim(AAlen))
 Python function void CpassChar(char status)
 Python function char CreturnChar(void)

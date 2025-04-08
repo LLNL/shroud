@@ -279,13 +279,13 @@ wrapped differently.
     Works with Fortran 90.
     See example :ref:`getConstCharPtrLen <example_getConstCharPtrLen>`.
 
-``char *getConstCharPtrAsArg``
+``char *getConstCharPtrAsCopyArg``
     Create a Fortran subroutine with an additional ``CHARACTER``
     argument for the C function result. Any size character string can
     be returned limited by the size of the Fortran argument.  The
     argument is defined by the *F_string_result_as_arg* format string.
     Works with Fortran 90.
-    See example :ref:`getConstCharPtrAsArg <example_getConstCharPtrAsArg>`.
+    See example :ref:`getConstCharPtrAsCopyArg <example_getConstCharPtrAsCopyArg>`.
 
 
 .. XXX returning a scalar char will pass the result to the C wrapper
