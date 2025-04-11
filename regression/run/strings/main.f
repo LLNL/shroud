@@ -59,26 +59,36 @@ contains
 
     call set_case_name("test_functions")
 
-    ! character(:), allocatable function
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_const_string_result()
-    call assert_true(str == "getConstStringResult", "getConstStringResult")
-
+    !--------------------------------------------------
+    ! return std::string
+    
     ! character(30) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_const_string_len()
     call assert_true(str == static_str, "getConstStringLen")
 
-    ! string_result_as_arg
+    ! character(:), allocatable function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    call get_const_string_as_arg(str)
-    call assert_true(str == static_str, "getConstStringAsArg")
+    str = get_const_string_result()
+    call assert_true(str == "getConstStringResult", "getConstStringResult")
 
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_const_string_alloc()
     call assert_true(str == "getConstStringAlloc", "getConstStringAlloc")
  
+    !----------
+    ! string_result_as_arg
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    call get_const_string_as_arg(str)
+    call assert_true(str == static_str, "getConstStringAsArg")
+
     !--------------------------------------------------
+    ! return std::string reference
+
+    ! character(30) function
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    str = get_const_string_ref_len()
+    call assert_true( str == static_str, "getConstStringRefLen")
 
     ! problem with pgi
     ! character(*) function
@@ -88,16 +98,6 @@ contains
 
     ! character(30) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_const_string_ref_len()
-    call assert_true( str == static_str, "getConstStringRefLen")
-
-    ! string_result_as_arg
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    call get_const_string_ref_as_arg(str)
-    call assert_true( str == static_str, "getConstStringRefAsArg")
- 
-    ! character(30) function
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_const_string_ref_len_empty()
     call assert_true( str == " ", "getConstStringRefLenEmpty")
 
@@ -105,7 +105,15 @@ contains
     str = get_const_string_ref_alloc()
     call assert_true( str == static_str, "getConstStringRefAlloc")
 
+    !----------
+
+    ! string_result_as_arg
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    call get_const_string_ref_as_arg(str)
+    call assert_true( str == static_str, "getConstStringRefAsArg")
+ 
     !--------------------------------------------------
+    ! return std::string pointer
 
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_const_string_ptr_len()
@@ -127,10 +135,8 @@ contains
     call assert_true( str == "getConstStringPtrOwnsAllocPatt", &
          "getConstStringPtrOwnsAllocPattern")
 
-    !--------------------------------------------------
-    ! POINTER result
-
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
+    ! POINTER result
     nullify(pstr)
     pstr => get_const_string_ptr_pointer()
     call assert_true(associated(pstr), "getConstStringPtrPointer associate")
@@ -142,6 +148,7 @@ contains
 !         "getConstStringPtrOwnsPointer")
     
     !--------------------------------------------------
+    ! std::string argument
 
     call accept_string_const_reference("cat")
 !    check global_str == "cat"

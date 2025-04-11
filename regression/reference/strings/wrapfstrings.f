@@ -91,6 +91,19 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
+    ! Function:  const string getConstStringLen +len(30)
+    ! Statement: f_function_string_buf_copy
+    interface
+        subroutine c_get_const_string_len_bufferify(SHT_rv, SHT_rv_len) &
+                bind(C, name="STR_getConstStringLen_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
+            integer(C_INT), value, intent(IN) :: SHT_rv_len
+        end subroutine c_get_const_string_len_bufferify
+    end interface
+
+    ! ----------------------------------------
     ! Function:  const string getConstStringResult
     ! Statement: c_function_string
     interface
@@ -120,16 +133,17 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const string getConstStringLen +len(30)
-    ! Statement: f_function_string_buf_copy
+    ! Function:  const std::string getConstStringAlloc
+    ! Statement: f_function_string_cdesc_allocatable
     interface
-        subroutine c_get_const_string_len_bufferify(SHT_rv, SHT_rv_len) &
-                bind(C, name="STR_getConstStringLen_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
+        subroutine c_get_const_string_alloc_bufferify(SHT_rv_cdesc, &
+                SHT_rv_capsule) &
+                bind(C, name="STR_getConstStringAlloc_bufferify")
+            import :: STR_SHROUD_array, STR_SHROUD_capsule_data
             implicit none
-            character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
-            integer(C_INT), value, intent(IN) :: SHT_rv_len
-        end subroutine c_get_const_string_len_bufferify
+            type(STR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
+        end subroutine c_get_const_string_alloc_bufferify
     end interface
 
     ! ----------------------------------------
@@ -146,17 +160,57 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const std::string getConstStringAlloc
-    ! Statement: f_function_string_cdesc_allocatable
+    ! Function:  const string &getConstStringRefLen +len(30)
+    ! Statement: c_function_string&
     interface
-        subroutine c_get_const_string_alloc_bufferify(SHT_rv_cdesc, &
-                SHT_rv_capsule) &
-                bind(C, name="STR_getConstStringAlloc_bufferify")
-            import :: STR_SHROUD_array, STR_SHROUD_capsule_data
+        function c_get_const_string_ref_len() &
+                result(SHT_rv) &
+                bind(C, name="STR_getConstStringRefLen")
+            use iso_c_binding, only : C_PTR
             implicit none
-            type(STR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
-            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
-        end subroutine c_get_const_string_alloc_bufferify
+            type(C_PTR) :: SHT_rv
+        end function c_get_const_string_ref_len
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  const string &getConstStringRefLen +len(30)
+    ! Statement: f_function_string&_buf_copy
+    interface
+        subroutine c_get_const_string_ref_len_bufferify(SHT_rv, &
+                SHT_rv_len) &
+                bind(C, name="STR_getConstStringRefLen_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
+            integer(C_INT), value, intent(IN) :: SHT_rv_len
+        end subroutine c_get_const_string_ref_len_bufferify
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  const string &getConstStringRefLenEmpty +len(30)
+    ! Statement: c_function_string&
+    interface
+        function c_get_const_string_ref_len_empty() &
+                result(SHT_rv) &
+                bind(C, name="STR_getConstStringRefLenEmpty")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) :: SHT_rv
+        end function c_get_const_string_ref_len_empty
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  const string &getConstStringRefLenEmpty +len(30)
+    ! Statement: f_function_string&_buf_copy
+    interface
+        subroutine c_get_const_string_ref_len_empty_bufferify(SHT_rv, &
+                SHT_rv_len) &
+                bind(C, name="STR_getConstStringRefLenEmpty_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
+            integer(C_INT), value, intent(IN) :: SHT_rv_len
+        end subroutine c_get_const_string_ref_len_empty_bufferify
     end interface
 
     ! ----------------------------------------
@@ -191,30 +245,30 @@ module strings_mod
     ! end c_get_const_string_ref_pure_bufferify
 
     ! ----------------------------------------
-    ! Function:  const string &getConstStringRefLen +len(30)
+    ! Function:  const std::string &getConstStringRefAlloc
     ! Statement: c_function_string&
     interface
-        function c_get_const_string_ref_len() &
+        function c_get_const_string_ref_alloc() &
                 result(SHT_rv) &
-                bind(C, name="STR_getConstStringRefLen")
+                bind(C, name="STR_getConstStringRefAlloc")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) :: SHT_rv
-        end function c_get_const_string_ref_len
+        end function c_get_const_string_ref_alloc
     end interface
 
     ! ----------------------------------------
-    ! Function:  const string &getConstStringRefLen +len(30)
-    ! Statement: f_function_string&_buf_copy
+    ! Function:  const std::string &getConstStringRefAlloc
+    ! Statement: f_function_string&_cdesc_allocatable
     interface
-        subroutine c_get_const_string_ref_len_bufferify(SHT_rv, &
-                SHT_rv_len) &
-                bind(C, name="STR_getConstStringRefLen_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
+        subroutine c_get_const_string_ref_alloc_bufferify(SHT_rv_cdesc, &
+                SHT_rv_capsule) &
+                bind(C, name="STR_getConstStringRefAlloc_bufferify")
+            import :: STR_SHROUD_array, STR_SHROUD_capsule_data
             implicit none
-            character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
-            integer(C_INT), value, intent(IN) :: SHT_rv_len
-        end subroutine c_get_const_string_ref_len_bufferify
+            type(STR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
+        end subroutine c_get_const_string_ref_alloc_bufferify
     end interface
 
     ! ----------------------------------------
@@ -242,60 +296,6 @@ module strings_mod
             character(kind=C_CHAR), intent(OUT) :: output(*)
             integer(C_INT), value, intent(IN) :: noutput
         end subroutine c_get_const_string_ref_as_arg_bufferify
-    end interface
-
-    ! ----------------------------------------
-    ! Function:  const string &getConstStringRefLenEmpty +len(30)
-    ! Statement: c_function_string&
-    interface
-        function c_get_const_string_ref_len_empty() &
-                result(SHT_rv) &
-                bind(C, name="STR_getConstStringRefLenEmpty")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR) :: SHT_rv
-        end function c_get_const_string_ref_len_empty
-    end interface
-
-    ! ----------------------------------------
-    ! Function:  const string &getConstStringRefLenEmpty +len(30)
-    ! Statement: f_function_string&_buf_copy
-    interface
-        subroutine c_get_const_string_ref_len_empty_bufferify(SHT_rv, &
-                SHT_rv_len) &
-                bind(C, name="STR_getConstStringRefLenEmpty_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
-            implicit none
-            character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
-            integer(C_INT), value, intent(IN) :: SHT_rv_len
-        end subroutine c_get_const_string_ref_len_empty_bufferify
-    end interface
-
-    ! ----------------------------------------
-    ! Function:  const std::string &getConstStringRefAlloc
-    ! Statement: c_function_string&
-    interface
-        function c_get_const_string_ref_alloc() &
-                result(SHT_rv) &
-                bind(C, name="STR_getConstStringRefAlloc")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR) :: SHT_rv
-        end function c_get_const_string_ref_alloc
-    end interface
-
-    ! ----------------------------------------
-    ! Function:  const std::string &getConstStringRefAlloc
-    ! Statement: f_function_string&_cdesc_allocatable
-    interface
-        subroutine c_get_const_string_ref_alloc_bufferify(SHT_rv_cdesc, &
-                SHT_rv_capsule) &
-                bind(C, name="STR_getConstStringRefAlloc_bufferify")
-            import :: STR_SHROUD_array, STR_SHROUD_capsule_data
-            implicit none
-            type(STR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
-            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
-        end subroutine c_get_const_string_ref_alloc_bufferify
     end interface
 
     ! ----------------------------------------
@@ -978,6 +978,24 @@ contains
 #endif
 
     ! ----------------------------------------
+    ! Function:  const string getConstStringLen +len(30)
+    ! Statement: f_function_string_buf_copy
+    !>
+    !! \brief return a 'const string' as argument
+    !!
+    !<
+    function get_const_string_len() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        character(len=30) :: SHT_rv
+        ! splicer begin function.get_const_string_len
+        integer(C_INT) SHT_rv_len
+        SHT_rv_len = len(SHT_rv, kind=C_INT)
+        call c_get_const_string_len_bufferify(SHT_rv, SHT_rv_len)
+        ! splicer end function.get_const_string_len
+    end function get_const_string_len
+
+    ! ----------------------------------------
     ! Function:  const string getConstStringResult
     ! Statement: f_function_string_cdesc_allocatable
     !>
@@ -1000,22 +1018,22 @@ contains
     end function get_const_string_result
 
     ! ----------------------------------------
-    ! Function:  const string getConstStringLen +len(30)
-    ! Statement: f_function_string_buf_copy
-    !>
-    !! \brief return a 'const string' as argument
-    !!
-    !<
-    function get_const_string_len() &
+    ! Function:  const std::string getConstStringAlloc
+    ! Statement: f_function_string_cdesc_allocatable
+    function get_const_string_alloc() &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT
-        character(len=30) :: SHT_rv
-        ! splicer begin function.get_const_string_len
-        integer(C_INT) SHT_rv_len
-        SHT_rv_len = len(SHT_rv, kind=C_INT)
-        call c_get_const_string_len_bufferify(SHT_rv, SHT_rv_len)
-        ! splicer end function.get_const_string_len
-    end function get_const_string_len
+        character(len=:), allocatable :: SHT_rv
+        ! splicer begin function.get_const_string_alloc
+        type(STR_SHROUD_array) :: SHT_rv_cdesc
+        type(STR_SHROUD_capsule_data) :: SHT_rv_capsule
+        call c_get_const_string_alloc_bufferify(SHT_rv_cdesc, &
+            SHT_rv_capsule)
+        allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
+        call STR_SHROUD_copy_string(SHT_rv_cdesc, SHT_rv, &
+            SHT_rv_cdesc%elem_len)
+        call STR_SHROUD_capsule_dtor(SHT_rv_capsule)
+        ! splicer end function.get_const_string_alloc
+    end function get_const_string_alloc
 
     ! ----------------------------------------
     ! Function:  const string getConstStringAsArg +deref(copy)+funcarg
@@ -1035,22 +1053,44 @@ contains
     end subroutine get_const_string_as_arg
 
     ! ----------------------------------------
-    ! Function:  const std::string getConstStringAlloc
-    ! Statement: f_function_string_cdesc_allocatable
-    function get_const_string_alloc() &
+    ! Function:  const string &getConstStringRefLen +len(30)
+    ! Statement: f_function_string&_buf_copy
+    !>
+    !! \brief return 'const string&' with fixed size (len=30)
+    !!
+    !! Since +len(30) is provided, the result of the function
+    !! will be copied directly into memory provided by Fortran.
+    !! The function will not be ALLOCATABLE.
+    !<
+    function get_const_string_ref_len() &
             result(SHT_rv)
-        character(len=:), allocatable :: SHT_rv
-        ! splicer begin function.get_const_string_alloc
-        type(STR_SHROUD_array) :: SHT_rv_cdesc
-        type(STR_SHROUD_capsule_data) :: SHT_rv_capsule
-        call c_get_const_string_alloc_bufferify(SHT_rv_cdesc, &
-            SHT_rv_capsule)
-        allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string(SHT_rv_cdesc, SHT_rv, &
-            SHT_rv_cdesc%elem_len)
-        call STR_SHROUD_capsule_dtor(SHT_rv_capsule)
-        ! splicer end function.get_const_string_alloc
-    end function get_const_string_alloc
+        use iso_c_binding, only : C_INT
+        character(len=30) :: SHT_rv
+        ! splicer begin function.get_const_string_ref_len
+        integer(C_INT) SHT_rv_len
+        SHT_rv_len = len(SHT_rv, kind=C_INT)
+        call c_get_const_string_ref_len_bufferify(SHT_rv, SHT_rv_len)
+        ! splicer end function.get_const_string_ref_len
+    end function get_const_string_ref_len
+
+    ! ----------------------------------------
+    ! Function:  const string &getConstStringRefLenEmpty +len(30)
+    ! Statement: f_function_string&_buf_copy
+    !>
+    !! \brief Test returning empty string reference
+    !!
+    !<
+    function get_const_string_ref_len_empty() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        character(len=30) :: SHT_rv
+        ! splicer begin function.get_const_string_ref_len_empty
+        integer(C_INT) SHT_rv_len
+        SHT_rv_len = len(SHT_rv, kind=C_INT)
+        call c_get_const_string_ref_len_empty_bufferify(SHT_rv, &
+            SHT_rv_len)
+        ! splicer end function.get_const_string_ref_len_empty
+    end function get_const_string_ref_len_empty
 
     ! ----------------------------------------
     ! Function:  const string &getConstStringRefPure
@@ -1077,25 +1117,22 @@ contains
     ! end get_const_string_ref_pure
 
     ! ----------------------------------------
-    ! Function:  const string &getConstStringRefLen +len(30)
-    ! Statement: f_function_string&_buf_copy
-    !>
-    !! \brief return 'const string&' with fixed size (len=30)
-    !!
-    !! Since +len(30) is provided, the result of the function
-    !! will be copied directly into memory provided by Fortran.
-    !! The function will not be ALLOCATABLE.
-    !<
-    function get_const_string_ref_len() &
+    ! Function:  const std::string &getConstStringRefAlloc
+    ! Statement: f_function_string&_cdesc_allocatable
+    function get_const_string_ref_alloc() &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT
-        character(len=30) :: SHT_rv
-        ! splicer begin function.get_const_string_ref_len
-        integer(C_INT) SHT_rv_len
-        SHT_rv_len = len(SHT_rv, kind=C_INT)
-        call c_get_const_string_ref_len_bufferify(SHT_rv, SHT_rv_len)
-        ! splicer end function.get_const_string_ref_len
-    end function get_const_string_ref_len
+        character(len=:), allocatable :: SHT_rv
+        ! splicer begin function.get_const_string_ref_alloc
+        type(STR_SHROUD_array) :: SHT_rv_cdesc
+        type(STR_SHROUD_capsule_data) :: SHT_rv_capsule
+        call c_get_const_string_ref_alloc_bufferify(SHT_rv_cdesc, &
+            SHT_rv_capsule)
+        allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
+        call STR_SHROUD_copy_string(SHT_rv_cdesc, SHT_rv, &
+            SHT_rv_cdesc%elem_len)
+        call STR_SHROUD_capsule_dtor(SHT_rv_capsule)
+        ! splicer end function.get_const_string_ref_alloc
+    end function get_const_string_ref_alloc
 
     ! ----------------------------------------
     ! Function:  const string &getConstStringRefAsArg +deref(copy)+funcarg
@@ -1115,43 +1152,6 @@ contains
         call c_get_const_string_ref_as_arg_bufferify(output, noutput)
         ! splicer end function.get_const_string_ref_as_arg
     end subroutine get_const_string_ref_as_arg
-
-    ! ----------------------------------------
-    ! Function:  const string &getConstStringRefLenEmpty +len(30)
-    ! Statement: f_function_string&_buf_copy
-    !>
-    !! \brief Test returning empty string reference
-    !!
-    !<
-    function get_const_string_ref_len_empty() &
-            result(SHT_rv)
-        use iso_c_binding, only : C_INT
-        character(len=30) :: SHT_rv
-        ! splicer begin function.get_const_string_ref_len_empty
-        integer(C_INT) SHT_rv_len
-        SHT_rv_len = len(SHT_rv, kind=C_INT)
-        call c_get_const_string_ref_len_empty_bufferify(SHT_rv, &
-            SHT_rv_len)
-        ! splicer end function.get_const_string_ref_len_empty
-    end function get_const_string_ref_len_empty
-
-    ! ----------------------------------------
-    ! Function:  const std::string &getConstStringRefAlloc
-    ! Statement: f_function_string&_cdesc_allocatable
-    function get_const_string_ref_alloc() &
-            result(SHT_rv)
-        character(len=:), allocatable :: SHT_rv
-        ! splicer begin function.get_const_string_ref_alloc
-        type(STR_SHROUD_array) :: SHT_rv_cdesc
-        type(STR_SHROUD_capsule_data) :: SHT_rv_capsule
-        call c_get_const_string_ref_alloc_bufferify(SHT_rv_cdesc, &
-            SHT_rv_capsule)
-        allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string(SHT_rv_cdesc, SHT_rv, &
-            SHT_rv_cdesc%elem_len)
-        call STR_SHROUD_capsule_dtor(SHT_rv_capsule)
-        ! splicer end function.get_const_string_ref_alloc
-    end function get_const_string_ref_alloc
 
     ! ----------------------------------------
     ! Function:  const string *getConstStringPtrLen +len(30)

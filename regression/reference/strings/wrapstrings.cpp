@@ -88,6 +88,29 @@ void STR_init_test(void)
 }
 
 /**
+ * \brief return a 'const string' as argument
+ *
+ */
+// ----------------------------------------
+// Function:  const string getConstStringLen +len(30)
+// Statement: f_function_string_buf_copy
+void STR_getConstStringLen_bufferify(char *SHC_rv, int SHT_rv_len)
+{
+    // splicer begin function.getConstStringLen_bufferify
+    const std::string SHC_rv_cxx = getConstStringLen();
+    // C_error_pattern
+    // Some error code for buf
+
+    if (SHC_rv_cxx.empty()) {
+        ShroudCharCopy(SHC_rv, SHT_rv_len, nullptr, 0);
+    } else {
+        ShroudCharCopy(SHC_rv, SHT_rv_len, SHC_rv_cxx.data(),
+            SHC_rv_cxx.size());
+    }
+    // splicer end function.getConstStringLen_bufferify
+}
+
+/**
  * Return an ALLOCATABLE CHARACTER from std::string.
  * The language=C wrapper will return a const char *
  */
@@ -127,27 +150,19 @@ void STR_getConstStringResult_bufferify(STR_SHROUD_array *SHT_rv_cdesc,
     // splicer end function.getConstStringResult_bufferify
 }
 
-/**
- * \brief return a 'const string' as argument
- *
- */
 // ----------------------------------------
-// Function:  const string getConstStringLen +len(30)
-// Statement: f_function_string_buf_copy
-void STR_getConstStringLen_bufferify(char *SHC_rv, int SHT_rv_len)
+// Function:  const std::string getConstStringAlloc
+// Statement: f_function_string_cdesc_allocatable
+void STR_getConstStringAlloc_bufferify(STR_SHROUD_array *SHT_rv_cdesc,
+    STR_SHROUD_capsule_data *SHT_rv_capsule)
 {
-    // splicer begin function.getConstStringLen_bufferify
-    const std::string SHC_rv_cxx = getConstStringLen();
-    // C_error_pattern
-    // Some error code for buf
-
-    if (SHC_rv_cxx.empty()) {
-        ShroudCharCopy(SHC_rv, SHT_rv_len, nullptr, 0);
-    } else {
-        ShroudCharCopy(SHC_rv, SHT_rv_len, SHC_rv_cxx.data(),
-            SHC_rv_cxx.size());
-    }
-    // splicer end function.getConstStringLen_bufferify
+    // splicer begin function.getConstStringAlloc_bufferify
+    std::string *SHC_rv_cxx = new std::string;
+    *SHC_rv_cxx = getConstStringAlloc();
+    ShroudStringToCdesc(SHT_rv_cdesc, SHC_rv_cxx);
+    SHT_rv_capsule->addr  = const_cast<std::string *>(SHC_rv_cxx);
+    SHT_rv_capsule->idtor = 2;
+    // splicer end function.getConstStringAlloc_bufferify
 }
 
 /**
@@ -172,59 +187,6 @@ void STR_getConstStringAsArg_bufferify(char *SHC_rv, int nSHC_rv)
     }
     // splicer end function.getConstStringAsArg_bufferify
 }
-
-// ----------------------------------------
-// Function:  const std::string getConstStringAlloc
-// Statement: f_function_string_cdesc_allocatable
-void STR_getConstStringAlloc_bufferify(STR_SHROUD_array *SHT_rv_cdesc,
-    STR_SHROUD_capsule_data *SHT_rv_capsule)
-{
-    // splicer begin function.getConstStringAlloc_bufferify
-    std::string *SHC_rv_cxx = new std::string;
-    *SHC_rv_cxx = getConstStringAlloc();
-    ShroudStringToCdesc(SHT_rv_cdesc, SHC_rv_cxx);
-    SHT_rv_capsule->addr  = const_cast<std::string *>(SHC_rv_cxx);
-    SHT_rv_capsule->idtor = 2;
-    // splicer end function.getConstStringAlloc_bufferify
-}
-
-/**
- * \brief return a 'const string&' as ALLOCATABLE character
- *
- */
-// ----------------------------------------
-// Function:  const string &getConstStringRefPure
-// Statement: c_function_string&
-// start STR_getConstStringRefPure
-const char * STR_getConstStringRefPure(void)
-{
-    // splicer begin function.getConstStringRefPure
-    const std::string &SHC_rv_cxx = getConstStringRefPure();
-    const char *SHC_rv = SHC_rv_cxx.c_str();
-    return SHC_rv;
-    // splicer end function.getConstStringRefPure
-}
-// end STR_getConstStringRefPure
-
-/**
- * \brief return a 'const string&' as ALLOCATABLE character
- *
- */
-// ----------------------------------------
-// Function:  const string &getConstStringRefPure
-// Statement: f_function_string&_cdesc_allocatable
-// start STR_getConstStringRefPure_bufferify
-void STR_getConstStringRefPure_bufferify(STR_SHROUD_array *SHT_rv_cdesc,
-    STR_SHROUD_capsule_data *SHT_rv_capsule)
-{
-    // splicer begin function.getConstStringRefPure_bufferify
-    const std::string &SHC_rv_cxx = getConstStringRefPure();
-    ShroudStringToCdesc(SHT_rv_cdesc, &SHC_rv_cxx);
-    SHT_rv_capsule->addr  = const_cast<std::string *>(&SHC_rv_cxx);
-    SHT_rv_capsule->idtor = 0;
-    // splicer end function.getConstStringRefPure_bufferify
-}
-// end STR_getConstStringRefPure_bufferify
 
 /**
  * \brief return 'const string&' with fixed size (len=30)
@@ -277,6 +239,116 @@ void STR_getConstStringRefLen_bufferify(char *SHC_rv, int SHT_rv_len)
 }
 
 /**
+ * \brief Test returning empty string reference
+ *
+ */
+// ----------------------------------------
+// Function:  const string &getConstStringRefLenEmpty +len(30)
+// Statement: c_function_string&
+const char * STR_getConstStringRefLenEmpty(void)
+{
+    // splicer begin function.getConstStringRefLenEmpty
+    const std::string &SHC_rv_cxx = getConstStringRefLenEmpty();
+    // C_error_pattern
+    if (SHC_rv_cxx.empty()) {
+        return NULL;
+    }
+
+    const char *SHC_rv = SHC_rv_cxx.c_str();
+    return SHC_rv;
+    // splicer end function.getConstStringRefLenEmpty
+}
+
+/**
+ * \brief Test returning empty string reference
+ *
+ */
+// ----------------------------------------
+// Function:  const string &getConstStringRefLenEmpty +len(30)
+// Statement: f_function_string&_buf_copy
+void STR_getConstStringRefLenEmpty_bufferify(char *SHC_rv,
+    int SHT_rv_len)
+{
+    // splicer begin function.getConstStringRefLenEmpty_bufferify
+    const std::string &SHC_rv_cxx = getConstStringRefLenEmpty();
+    // C_error_pattern
+    // Some error code for buf
+
+    if (SHC_rv_cxx.empty()) {
+        ShroudCharCopy(SHC_rv, SHT_rv_len, nullptr, 0);
+    } else {
+        ShroudCharCopy(SHC_rv, SHT_rv_len, SHC_rv_cxx.data(),
+            SHC_rv_cxx.size());
+    }
+    // splicer end function.getConstStringRefLenEmpty_bufferify
+}
+
+/**
+ * \brief return a 'const string&' as ALLOCATABLE character
+ *
+ */
+// ----------------------------------------
+// Function:  const string &getConstStringRefPure
+// Statement: c_function_string&
+// start STR_getConstStringRefPure
+const char * STR_getConstStringRefPure(void)
+{
+    // splicer begin function.getConstStringRefPure
+    const std::string &SHC_rv_cxx = getConstStringRefPure();
+    const char *SHC_rv = SHC_rv_cxx.c_str();
+    return SHC_rv;
+    // splicer end function.getConstStringRefPure
+}
+// end STR_getConstStringRefPure
+
+/**
+ * \brief return a 'const string&' as ALLOCATABLE character
+ *
+ */
+// ----------------------------------------
+// Function:  const string &getConstStringRefPure
+// Statement: f_function_string&_cdesc_allocatable
+// start STR_getConstStringRefPure_bufferify
+void STR_getConstStringRefPure_bufferify(STR_SHROUD_array *SHT_rv_cdesc,
+    STR_SHROUD_capsule_data *SHT_rv_capsule)
+{
+    // splicer begin function.getConstStringRefPure_bufferify
+    const std::string &SHC_rv_cxx = getConstStringRefPure();
+    ShroudStringToCdesc(SHT_rv_cdesc, &SHC_rv_cxx);
+    SHT_rv_capsule->addr  = const_cast<std::string *>(&SHC_rv_cxx);
+    SHT_rv_capsule->idtor = 0;
+    // splicer end function.getConstStringRefPure_bufferify
+}
+// end STR_getConstStringRefPure_bufferify
+
+// ----------------------------------------
+// Function:  const std::string &getConstStringRefAlloc
+// Statement: c_function_string&
+const char * STR_getConstStringRefAlloc(void)
+{
+    // splicer begin function.getConstStringRefAlloc
+    const std::string &SHC_rv_cxx = getConstStringRefAlloc();
+    const char *SHC_rv = SHC_rv_cxx.c_str();
+    return SHC_rv;
+    // splicer end function.getConstStringRefAlloc
+}
+
+// ----------------------------------------
+// Function:  const std::string &getConstStringRefAlloc
+// Statement: f_function_string&_cdesc_allocatable
+void STR_getConstStringRefAlloc_bufferify(
+    STR_SHROUD_array *SHT_rv_cdesc,
+    STR_SHROUD_capsule_data *SHT_rv_capsule)
+{
+    // splicer begin function.getConstStringRefAlloc_bufferify
+    const std::string &SHC_rv_cxx = getConstStringRefAlloc();
+    ShroudStringToCdesc(SHT_rv_cdesc, &SHC_rv_cxx);
+    SHT_rv_capsule->addr  = const_cast<std::string *>(&SHC_rv_cxx);
+    SHT_rv_capsule->idtor = 0;
+    // splicer end function.getConstStringRefAlloc_bufferify
+}
+
+/**
  * \brief return a 'const string&' as argument
  *
  * Pass an additional argument which will be used as the return value.
@@ -322,78 +394,6 @@ void STR_getConstStringRefAsArg_bufferify(char *SHC_rv, int nSHC_rv)
             SHC_rv_cxx.size());
     }
     // splicer end function.getConstStringRefAsArg_bufferify
-}
-
-/**
- * \brief Test returning empty string reference
- *
- */
-// ----------------------------------------
-// Function:  const string &getConstStringRefLenEmpty +len(30)
-// Statement: c_function_string&
-const char * STR_getConstStringRefLenEmpty(void)
-{
-    // splicer begin function.getConstStringRefLenEmpty
-    const std::string &SHC_rv_cxx = getConstStringRefLenEmpty();
-    // C_error_pattern
-    if (SHC_rv_cxx.empty()) {
-        return NULL;
-    }
-
-    const char *SHC_rv = SHC_rv_cxx.c_str();
-    return SHC_rv;
-    // splicer end function.getConstStringRefLenEmpty
-}
-
-/**
- * \brief Test returning empty string reference
- *
- */
-// ----------------------------------------
-// Function:  const string &getConstStringRefLenEmpty +len(30)
-// Statement: f_function_string&_buf_copy
-void STR_getConstStringRefLenEmpty_bufferify(char *SHC_rv,
-    int SHT_rv_len)
-{
-    // splicer begin function.getConstStringRefLenEmpty_bufferify
-    const std::string &SHC_rv_cxx = getConstStringRefLenEmpty();
-    // C_error_pattern
-    // Some error code for buf
-
-    if (SHC_rv_cxx.empty()) {
-        ShroudCharCopy(SHC_rv, SHT_rv_len, nullptr, 0);
-    } else {
-        ShroudCharCopy(SHC_rv, SHT_rv_len, SHC_rv_cxx.data(),
-            SHC_rv_cxx.size());
-    }
-    // splicer end function.getConstStringRefLenEmpty_bufferify
-}
-
-// ----------------------------------------
-// Function:  const std::string &getConstStringRefAlloc
-// Statement: c_function_string&
-const char * STR_getConstStringRefAlloc(void)
-{
-    // splicer begin function.getConstStringRefAlloc
-    const std::string &SHC_rv_cxx = getConstStringRefAlloc();
-    const char *SHC_rv = SHC_rv_cxx.c_str();
-    return SHC_rv;
-    // splicer end function.getConstStringRefAlloc
-}
-
-// ----------------------------------------
-// Function:  const std::string &getConstStringRefAlloc
-// Statement: f_function_string&_cdesc_allocatable
-void STR_getConstStringRefAlloc_bufferify(
-    STR_SHROUD_array *SHT_rv_cdesc,
-    STR_SHROUD_capsule_data *SHT_rv_capsule)
-{
-    // splicer begin function.getConstStringRefAlloc_bufferify
-    const std::string &SHC_rv_cxx = getConstStringRefAlloc();
-    ShroudStringToCdesc(SHT_rv_cdesc, &SHC_rv_cxx);
-    SHT_rv_capsule->addr  = const_cast<std::string *>(&SHC_rv_cxx);
-    SHT_rv_capsule->idtor = 0;
-    // splicer end function.getConstStringRefAlloc_bufferify
 }
 
 /**

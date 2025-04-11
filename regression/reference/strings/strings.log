@@ -1,21 +1,21 @@
 Read yaml strings.yaml
 C c void init_test(void)
 C f void init_test(void)
+C f const string getConstStringLen(void) +len(30)
 C c const string getConstStringResult(void)
 C f const string getConstStringResult(void)
-C f const string getConstStringLen(void) +len(30)
-C f const string getConstStringAsArg(void) +deref(copy)+funcarg
 C f const std::string getConstStringAlloc(void)
-C c const string &getConstStringRefPure(void)
-C f const string &getConstStringRefPure(void)
+C f const string getConstStringAsArg(void) +deref(copy)+funcarg
 C c const string &getConstStringRefLen(void) +len(30)
 C f const string &getConstStringRefLen(void) +len(30)
-C c const string &getConstStringRefAsArg(void) +deref(copy)+funcarg
-C f const string &getConstStringRefAsArg(void) +deref(copy)+funcarg
 C c const string &getConstStringRefLenEmpty(void) +len(30)
 C f const string &getConstStringRefLenEmpty(void) +len(30)
+C c const string &getConstStringRefPure(void)
+C f const string &getConstStringRefPure(void)
 C c const std::string &getConstStringRefAlloc(void)
 C f const std::string &getConstStringRefAlloc(void)
+C c const string &getConstStringRefAsArg(void) +deref(copy)+funcarg
+C f const string &getConstStringRefAsArg(void) +deref(copy)+funcarg
 C c const string *getConstStringPtrLen(void) +len(30)
 C f const string *getConstStringPtrLen(void) +len(30)
 C c const std::string *getConstStringPtrAlloc(void) +owner(library)
@@ -59,15 +59,15 @@ C f void PostDeclare(int *count +intent(in)+rank(1), std::string &name)
 Close wrapstrings.h
 Close wrapstrings.cpp
 Fortran void init_test(void)
-Fortran const string getConstStringResult(void)
 Fortran const string getConstStringLen(void) +len(30)
-Fortran const string getConstStringAsArg(void) +deref(copy)+funcarg
+Fortran const string getConstStringResult(void)
 Fortran const std::string getConstStringAlloc(void)
-Fortran const string &getConstStringRefPure(void)
+Fortran const string getConstStringAsArg(void) +deref(copy)+funcarg
 Fortran const string &getConstStringRefLen(void) +len(30)
-Fortran const string &getConstStringRefAsArg(void) +deref(copy)+funcarg
 Fortran const string &getConstStringRefLenEmpty(void) +len(30)
+Fortran const string &getConstStringRefPure(void)
 Fortran const std::string &getConstStringRefAlloc(void)
+Fortran const string &getConstStringRefAsArg(void) +deref(copy)+funcarg
 Fortran const string *getConstStringPtrLen(void) +len(30)
 Fortran const std::string *getConstStringPtrAlloc(void) +owner(library)
 Fortran const std::string *getConstStringPtrOwnsAlloc(void) +owner(caller)
@@ -89,21 +89,21 @@ Fortran void CpassChar(char status)
 Fortran char CreturnChar(void)
 Fortran void PostDeclare(int *count +intent(in)+rank(1), std::string &name)
 C-interface f void init_test(void)
+C-interface f const string getConstStringLen(void) +len(30)
 C-interface c const string getConstStringResult(void)
 C-interface f const string getConstStringResult(void)
-C-interface f const string getConstStringLen(void) +len(30)
-C-interface f const string getConstStringAsArg(void) +deref(copy)+funcarg
 C-interface f const std::string getConstStringAlloc(void)
-C-interface c const string &getConstStringRefPure(void)
-C-interface f const string &getConstStringRefPure(void)
+C-interface f const string getConstStringAsArg(void) +deref(copy)+funcarg
 C-interface c const string &getConstStringRefLen(void) +len(30)
 C-interface f const string &getConstStringRefLen(void) +len(30)
-C-interface c const string &getConstStringRefAsArg(void) +deref(copy)+funcarg
-C-interface f const string &getConstStringRefAsArg(void) +deref(copy)+funcarg
 C-interface c const string &getConstStringRefLenEmpty(void) +len(30)
 C-interface f const string &getConstStringRefLenEmpty(void) +len(30)
+C-interface c const string &getConstStringRefPure(void)
+C-interface f const string &getConstStringRefPure(void)
 C-interface c const std::string &getConstStringRefAlloc(void)
 C-interface f const std::string &getConstStringRefAlloc(void)
+C-interface c const string &getConstStringRefAsArg(void) +deref(copy)+funcarg
+C-interface f const string &getConstStringRefAsArg(void) +deref(copy)+funcarg
 C-interface c const string *getConstStringPtrLen(void) +len(30)
 C-interface f const string *getConstStringPtrLen(void) +len(30)
 C-interface c const std::string *getConstStringPtrAlloc(void) +owner(library)
@@ -146,15 +146,15 @@ Close wrapfstrings.f
 Close utilstrings.cpp
 Close typesstrings.h
 Python function void init_test(void)
-Python function const string getConstStringResult(void)
 Python function const string getConstStringLen(void) +len(30)
-Python function const string getConstStringAsArg(void) +deref(copy)+funcarg
+Python function const string getConstStringResult(void)
 Python function const std::string getConstStringAlloc(void)
-Python function const string &getConstStringRefPure(void)
+Python function const string getConstStringAsArg(void) +deref(copy)+funcarg
 Python function const string &getConstStringRefLen(void) +len(30)
-Python function const string &getConstStringRefAsArg(void) +deref(copy)+funcarg
 Python function const string &getConstStringRefLenEmpty(void) +len(30)
+Python function const string &getConstStringRefPure(void)
 Python function const std::string &getConstStringRefAlloc(void)
+Python function const string &getConstStringRefAsArg(void) +deref(copy)+funcarg
 Python function const string *getConstStringPtrLen(void) +len(30)
 Python function const std::string *getConstStringPtrAlloc(void) +owner(library)
 Python function const std::string *getConstStringPtrOwnsAlloc(void) +owner(caller)
