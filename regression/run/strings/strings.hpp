@@ -16,14 +16,12 @@
 void init_test(void);
 
 const std::string getConstStringLen();
-const std::string getConstStringResult();
 const std::string getConstStringAlloc();
 
 const std::string getConstStringAsArg();
 
 const std::string &getConstStringRefLen();
 const std::string &getConstStringRefLenEmpty();
-const std::string &getConstStringRefPure();
 const std::string &getConstStringRefAlloc();
 
 const std::string &getConstStringRefAsArg();

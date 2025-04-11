@@ -39,12 +39,6 @@ const std::string getConstStringLen()
     return static_str;
 }
 
-const std::string getConstStringResult()
-{
-    const std::string rv("getConstStringResult");
-    return rv;
-}
-
 const std::string getConstStringAlloc()
 {
     return std::string("getConstStringAlloc");
@@ -67,17 +61,12 @@ const std::string& getConstStringRefLenEmpty()
     return static_str_empty;
 }
 
-// start getConstStringRefPure
-const std::string& getConstStringRefPure()
-{
-    return static_str;
-}
-// end getConstStringRefPure
-
+// start getConstStringRefAlloc
 const std::string& getConstStringRefAlloc()
 {
     return static_str;
 }
+// end getConstStringRefAlloc
 
 const std::string& getConstStringRefAsArg()
 {

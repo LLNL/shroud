@@ -99,20 +99,20 @@ void STR_getConstStringLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
  * The language=C wrapper will return a const char *
  */
 // ----------------------------------------
-// Function:  const string getConstStringResult
+// Function:  const string getConstStringAlloc
 // Statement: c_function_string
-const char * STR_getConstStringResult(
+const char * STR_getConstStringAlloc(
     STR_SHROUD_capsule_data *SHT_rv_capsule)
 {
-    // splicer begin function.getConstStringResult
+    // splicer begin function.getConstStringAlloc
     std::string *SHC_rv_cxx = new std::string;
-    *SHC_rv_cxx = getConstStringResult();
+    *SHC_rv_cxx = getConstStringAlloc();
     const char *SHC_rv = NULL;
     if (!SHC_rv_cxx->empty()) SHC_rv = SHC_rv_cxx->c_str();
     SHT_rv_capsule->addr  = const_cast<std::string *>(SHC_rv_cxx);
     SHT_rv_capsule->idtor = 1;
     return SHC_rv;
-    // splicer end function.getConstStringResult
+    // splicer end function.getConstStringAlloc
 }
 
 /**
@@ -120,23 +120,7 @@ const char * STR_getConstStringResult(
  * The language=C wrapper will return a const char *
  */
 // ----------------------------------------
-// Function:  const string getConstStringResult
-// Statement: f_function_string_cfi_allocatable
-void STR_getConstStringResult_CFI(CFI_cdesc_t *SHT_rv_cfi)
-{
-    // splicer begin function.getConstStringResult_CFI
-    const std::string SHC_rv_cxx = getConstStringResult();
-    int SH_ret = CFI_allocate(SHT_rv_cfi, (CFI_index_t *) 0, 
-        (CFI_index_t *) 0, SHC_rv_cxx.length());
-    if (SH_ret == CFI_SUCCESS) {
-        std::memcpy(SHT_rv_cfi->base_addr, SHC_rv_cxx.data(), 
-            SHT_rv_cfi->elem_len);
-    }
-    // splicer end function.getConstStringResult_CFI
-}
-
-// ----------------------------------------
-// Function:  const std::string getConstStringAlloc
+// Function:  const string getConstStringAlloc
 // Statement: f_function_string_cfi_allocatable
 void STR_getConstStringAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
@@ -276,44 +260,9 @@ void STR_getConstStringRefLenEmpty_CFI(CFI_cdesc_t *SHT_rv_cfi)
  *
  */
 // ----------------------------------------
-// Function:  const string &getConstStringRefPure
-// Statement: c_function_string&
-// start STR_getConstStringRefPure
-const char * STR_getConstStringRefPure(void)
-{
-    // splicer begin function.getConstStringRefPure
-    const std::string &SHC_rv_cxx = getConstStringRefPure();
-    const char *SHC_rv = SHC_rv_cxx.c_str();
-    return SHC_rv;
-    // splicer end function.getConstStringRefPure
-}
-// end STR_getConstStringRefPure
-
-/**
- * \brief return a 'const string&' as ALLOCATABLE character
- *
- */
-// ----------------------------------------
-// Function:  const string &getConstStringRefPure
-// Statement: f_function_string&_cfi_allocatable
-// start STR_getConstStringRefPure_CFI
-void STR_getConstStringRefPure_CFI(CFI_cdesc_t *SHT_rv_cfi)
-{
-    // splicer begin function.getConstStringRefPure_CFI
-    const std::string &SHC_rv_cxx = getConstStringRefPure();
-    int SH_ret = CFI_allocate(SHT_rv_cfi, (CFI_index_t *) 0, 
-        (CFI_index_t *) 0, SHC_rv_cxx.length());
-    if (SH_ret == CFI_SUCCESS) {
-        std::memcpy(SHT_rv_cfi->base_addr, SHC_rv_cxx.data(), 
-            SHC_rv_cxx.length());
-    }
-    // splicer end function.getConstStringRefPure_CFI
-}
-// end STR_getConstStringRefPure_CFI
-
-// ----------------------------------------
 // Function:  const std::string &getConstStringRefAlloc
 // Statement: c_function_string&
+// start STR_getConstStringRefAlloc
 const char * STR_getConstStringRefAlloc(void)
 {
     // splicer begin function.getConstStringRefAlloc
@@ -322,10 +271,16 @@ const char * STR_getConstStringRefAlloc(void)
     return SHC_rv;
     // splicer end function.getConstStringRefAlloc
 }
+// end STR_getConstStringRefAlloc
 
+/**
+ * \brief return a 'const string&' as ALLOCATABLE character
+ *
+ */
 // ----------------------------------------
 // Function:  const std::string &getConstStringRefAlloc
 // Statement: f_function_string&_cfi_allocatable
+// start STR_getConstStringRefAlloc_CFI
 void STR_getConstStringRefAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringRefAlloc_CFI
@@ -338,6 +293,7 @@ void STR_getConstStringRefAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
     }
     // splicer end function.getConstStringRefAlloc_CFI
 }
+// end STR_getConstStringRefAlloc_CFI
 
 /**
  * \brief return a 'const string&' as argument

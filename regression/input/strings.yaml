@@ -36,15 +36,11 @@ declarations:
   options:
     wrap_c: False
 
-- decl: const string getConstStringResult()
+- decl: const string getConstStringAlloc()
   doxygen:
     description: |
       Return an ALLOCATABLE CHARACTER from std::string.
       The language=C wrapper will return a const char *
-
-- decl: const std::string getConstStringAlloc()
-  options:
-    wrap_c: False
 
 #####
 # Return function result in an argument.
@@ -76,14 +72,12 @@ declarations:
   doxygen:
     brief: Test returning empty string reference
 
-- decl: const string& getConstStringRefPure()
+- decl: const std::string& getConstStringRefAlloc()
 #  C_error_pattern: C_invalid_name
   doxygen:
     brief: return a 'const string&' as ALLOCATABLE character
   options:
     literalinclude: True
-
-- decl: const std::string& getConstStringRefAlloc()
 
 #####
 # Return function result in an argument.

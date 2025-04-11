@@ -104,36 +104,22 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const string getConstStringResult
+    ! Function:  const string getConstStringAlloc
     ! Statement: c_function_string
     interface
-        function c_get_const_string_result(SHT_rv_capsule) &
+        function c_get_const_string_alloc(SHT_rv_capsule) &
                 result(SHT_rv) &
-                bind(C, name="STR_getConstStringResult")
+                bind(C, name="STR_getConstStringAlloc")
             use iso_c_binding, only : C_PTR
             import :: STR_SHROUD_capsule_data
             implicit none
             type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
             type(C_PTR) :: SHT_rv
-        end function c_get_const_string_result
+        end function c_get_const_string_alloc
     end interface
 
     ! ----------------------------------------
-    ! Function:  const string getConstStringResult
-    ! Statement: f_function_string_cdesc_allocatable
-    interface
-        subroutine c_get_const_string_result_bufferify(SHT_rv_cdesc, &
-                SHT_rv_capsule) &
-                bind(C, name="STR_getConstStringResult_bufferify")
-            import :: STR_SHROUD_array, STR_SHROUD_capsule_data
-            implicit none
-            type(STR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
-            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
-        end subroutine c_get_const_string_result_bufferify
-    end interface
-
-    ! ----------------------------------------
-    ! Function:  const std::string getConstStringAlloc
+    ! Function:  const string getConstStringAlloc
     ! Statement: f_function_string_cdesc_allocatable
     interface
         subroutine c_get_const_string_alloc_bufferify(SHT_rv_cdesc, &
@@ -214,39 +200,9 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const string &getConstStringRefPure
-    ! Statement: c_function_string&
-    ! start c_get_const_string_ref_pure
-    interface
-        function c_get_const_string_ref_pure() &
-                result(SHT_rv) &
-                bind(C, name="STR_getConstStringRefPure")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR) :: SHT_rv
-        end function c_get_const_string_ref_pure
-    end interface
-    ! end c_get_const_string_ref_pure
-
-    ! ----------------------------------------
-    ! Function:  const string &getConstStringRefPure
-    ! Statement: f_function_string&_cdesc_allocatable
-    ! start c_get_const_string_ref_pure_bufferify
-    interface
-        subroutine c_get_const_string_ref_pure_bufferify(SHT_rv_cdesc, &
-                SHT_rv_capsule) &
-                bind(C, name="STR_getConstStringRefPure_bufferify")
-            import :: STR_SHROUD_array, STR_SHROUD_capsule_data
-            implicit none
-            type(STR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
-            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
-        end subroutine c_get_const_string_ref_pure_bufferify
-    end interface
-    ! end c_get_const_string_ref_pure_bufferify
-
-    ! ----------------------------------------
     ! Function:  const std::string &getConstStringRefAlloc
     ! Statement: c_function_string&
+    ! start c_get_const_string_ref_alloc
     interface
         function c_get_const_string_ref_alloc() &
                 result(SHT_rv) &
@@ -256,10 +212,12 @@ module strings_mod
             type(C_PTR) :: SHT_rv
         end function c_get_const_string_ref_alloc
     end interface
+    ! end c_get_const_string_ref_alloc
 
     ! ----------------------------------------
     ! Function:  const std::string &getConstStringRefAlloc
     ! Statement: f_function_string&_cdesc_allocatable
+    ! start c_get_const_string_ref_alloc_bufferify
     interface
         subroutine c_get_const_string_ref_alloc_bufferify(SHT_rv_cdesc, &
                 SHT_rv_capsule) &
@@ -270,6 +228,7 @@ module strings_mod
             type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
         end subroutine c_get_const_string_ref_alloc_bufferify
     end interface
+    ! end c_get_const_string_ref_alloc_bufferify
 
     ! ----------------------------------------
     ! Function:  const string &getConstStringRefAsArg +deref(copy)+funcarg
@@ -996,30 +955,12 @@ contains
     end function get_const_string_len
 
     ! ----------------------------------------
-    ! Function:  const string getConstStringResult
+    ! Function:  const string getConstStringAlloc
     ! Statement: f_function_string_cdesc_allocatable
     !>
     !! Return an ALLOCATABLE CHARACTER from std::string.
     !! The language=C wrapper will return a const char *
     !<
-    function get_const_string_result() &
-            result(SHT_rv)
-        character(len=:), allocatable :: SHT_rv
-        ! splicer begin function.get_const_string_result
-        type(STR_SHROUD_array) :: SHT_rv_cdesc
-        type(STR_SHROUD_capsule_data) :: SHT_rv_capsule
-        call c_get_const_string_result_bufferify(SHT_rv_cdesc, &
-            SHT_rv_capsule)
-        allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string(SHT_rv_cdesc, SHT_rv, &
-            SHT_rv_cdesc%elem_len)
-        call STR_SHROUD_capsule_dtor(SHT_rv_capsule)
-        ! splicer end function.get_const_string_result
-    end function get_const_string_result
-
-    ! ----------------------------------------
-    ! Function:  const std::string getConstStringAlloc
-    ! Statement: f_function_string_cdesc_allocatable
     function get_const_string_alloc() &
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
@@ -1093,32 +1034,13 @@ contains
     end function get_const_string_ref_len_empty
 
     ! ----------------------------------------
-    ! Function:  const string &getConstStringRefPure
+    ! Function:  const std::string &getConstStringRefAlloc
     ! Statement: f_function_string&_cdesc_allocatable
     !>
     !! \brief return a 'const string&' as ALLOCATABLE character
     !!
     !<
-    ! start get_const_string_ref_pure
-    function get_const_string_ref_pure() &
-            result(SHT_rv)
-        character(len=:), allocatable :: SHT_rv
-        ! splicer begin function.get_const_string_ref_pure
-        type(STR_SHROUD_array) :: SHT_rv_cdesc
-        type(STR_SHROUD_capsule_data) :: SHT_rv_capsule
-        call c_get_const_string_ref_pure_bufferify(SHT_rv_cdesc, &
-            SHT_rv_capsule)
-        allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string(SHT_rv_cdesc, SHT_rv, &
-            SHT_rv_cdesc%elem_len)
-        call STR_SHROUD_capsule_dtor(SHT_rv_capsule)
-        ! splicer end function.get_const_string_ref_pure
-    end function get_const_string_ref_pure
-    ! end get_const_string_ref_pure
-
-    ! ----------------------------------------
-    ! Function:  const std::string &getConstStringRefAlloc
-    ! Statement: f_function_string&_cdesc_allocatable
+    ! start get_const_string_ref_alloc
     function get_const_string_ref_alloc() &
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
@@ -1133,6 +1055,7 @@ contains
         call STR_SHROUD_capsule_dtor(SHT_rv_capsule)
         ! splicer end function.get_const_string_ref_alloc
     end function get_const_string_ref_alloc
+    ! end get_const_string_ref_alloc
 
     ! ----------------------------------------
     ! Function:  const string &getConstStringRefAsArg +deref(copy)+funcarg

@@ -35,10 +35,8 @@ void STR_init_test(void);
 
 void STR_getConstStringLen_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
-const char * STR_getConstStringResult(
+const char * STR_getConstStringAlloc(
     STR_SHROUD_capsule_data *SHT_rv_capsule);
-
-void STR_getConstStringResult_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 void STR_getConstStringAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
@@ -51,10 +49,6 @@ void STR_getConstStringRefLen_CFI(CFI_cdesc_t *SHT_rv_cfi);
 const char * STR_getConstStringRefLenEmpty(void);
 
 void STR_getConstStringRefLenEmpty_CFI(CFI_cdesc_t *SHT_rv_cfi);
-
-const char * STR_getConstStringRefPure(void);
-
-void STR_getConstStringRefPure_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 const char * STR_getConstStringRefAlloc(void);
 

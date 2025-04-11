@@ -52,33 +52,22 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const string getConstStringResult
+    ! Function:  const string getConstStringAlloc
     ! Statement: c_function_string
     interface
-        function c_get_const_string_result(SHT_rv_capsule) &
+        function c_get_const_string_alloc(SHT_rv_capsule) &
                 result(SHT_rv) &
-                bind(C, name="STR_getConstStringResult")
+                bind(C, name="STR_getConstStringAlloc")
             use iso_c_binding, only : C_PTR
             import :: STR_SHROUD_capsule_data
             implicit none
             type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
             type(C_PTR) :: SHT_rv
-        end function c_get_const_string_result
+        end function c_get_const_string_alloc
     end interface
 
     ! ----------------------------------------
-    ! Function:  const string getConstStringResult
-    ! Statement: f_function_string_cfi_allocatable
-    interface
-        subroutine c_get_const_string_result_CFI(SHT_rv) &
-                bind(C, name="STR_getConstStringResult_CFI")
-            implicit none
-            character(len=:), intent(OUT), allocatable :: SHT_rv
-        end subroutine c_get_const_string_result_CFI
-    end interface
-
-    ! ----------------------------------------
-    ! Function:  const std::string getConstStringAlloc
+    ! Function:  const string getConstStringAlloc
     ! Statement: f_function_string_cfi_allocatable
     interface
         subroutine c_get_const_string_alloc_CFI(SHT_rv) &
@@ -148,36 +137,9 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const string &getConstStringRefPure
-    ! Statement: c_function_string&
-    ! start c_get_const_string_ref_pure
-    interface
-        function c_get_const_string_ref_pure() &
-                result(SHT_rv) &
-                bind(C, name="STR_getConstStringRefPure")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR) :: SHT_rv
-        end function c_get_const_string_ref_pure
-    end interface
-    ! end c_get_const_string_ref_pure
-
-    ! ----------------------------------------
-    ! Function:  const string &getConstStringRefPure
-    ! Statement: f_function_string&_cfi_allocatable
-    ! start c_get_const_string_ref_pure_CFI
-    interface
-        subroutine c_get_const_string_ref_pure_CFI(SHT_rv) &
-                bind(C, name="STR_getConstStringRefPure_CFI")
-            implicit none
-            character(len=:), intent(OUT), allocatable :: SHT_rv
-        end subroutine c_get_const_string_ref_pure_CFI
-    end interface
-    ! end c_get_const_string_ref_pure_CFI
-
-    ! ----------------------------------------
     ! Function:  const std::string &getConstStringRefAlloc
     ! Statement: c_function_string&
+    ! start c_get_const_string_ref_alloc
     interface
         function c_get_const_string_ref_alloc() &
                 result(SHT_rv) &
@@ -187,10 +149,12 @@ module strings_mod
             type(C_PTR) :: SHT_rv
         end function c_get_const_string_ref_alloc
     end interface
+    ! end c_get_const_string_ref_alloc
 
     ! ----------------------------------------
     ! Function:  const std::string &getConstStringRefAlloc
     ! Statement: f_function_string&_cfi_allocatable
+    ! start c_get_const_string_ref_alloc_CFI
     interface
         subroutine c_get_const_string_ref_alloc_CFI(SHT_rv) &
                 bind(C, name="STR_getConstStringRefAlloc_CFI")
@@ -198,6 +162,7 @@ module strings_mod
             character(len=:), intent(OUT), allocatable :: SHT_rv
         end subroutine c_get_const_string_ref_alloc_CFI
     end interface
+    ! end c_get_const_string_ref_alloc_CFI
 
     ! ----------------------------------------
     ! Function:  const string &getConstStringRefAsArg +deref(copy)+funcarg
@@ -841,23 +806,12 @@ contains
     end function get_const_string_len
 
     ! ----------------------------------------
-    ! Function:  const string getConstStringResult
+    ! Function:  const string getConstStringAlloc
     ! Statement: f_function_string_cfi_allocatable
     !>
     !! Return an ALLOCATABLE CHARACTER from std::string.
     !! The language=C wrapper will return a const char *
     !<
-    function get_const_string_result() &
-            result(SHT_rv)
-        character(len=:), allocatable :: SHT_rv
-        ! splicer begin function.get_const_string_result
-        call c_get_const_string_result_CFI(SHT_rv)
-        ! splicer end function.get_const_string_result
-    end function get_const_string_result
-
-    ! ----------------------------------------
-    ! Function:  const std::string getConstStringAlloc
-    ! Statement: f_function_string_cfi_allocatable
     function get_const_string_alloc() &
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
@@ -914,25 +868,13 @@ contains
     end function get_const_string_ref_len_empty
 
     ! ----------------------------------------
-    ! Function:  const string &getConstStringRefPure
+    ! Function:  const std::string &getConstStringRefAlloc
     ! Statement: f_function_string&_cfi_allocatable
     !>
     !! \brief return a 'const string&' as ALLOCATABLE character
     !!
     !<
-    ! start get_const_string_ref_pure
-    function get_const_string_ref_pure() &
-            result(SHT_rv)
-        character(len=:), allocatable :: SHT_rv
-        ! splicer begin function.get_const_string_ref_pure
-        call c_get_const_string_ref_pure_CFI(SHT_rv)
-        ! splicer end function.get_const_string_ref_pure
-    end function get_const_string_ref_pure
-    ! end get_const_string_ref_pure
-
-    ! ----------------------------------------
-    ! Function:  const std::string &getConstStringRefAlloc
-    ! Statement: f_function_string&_cfi_allocatable
+    ! start get_const_string_ref_alloc
     function get_const_string_ref_alloc() &
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
@@ -940,6 +882,7 @@ contains
         call c_get_const_string_ref_alloc_CFI(SHT_rv)
         ! splicer end function.get_const_string_ref_alloc
     end function get_const_string_ref_alloc
+    ! end get_const_string_ref_alloc
 
     ! ----------------------------------------
     ! Function:  const string &getConstStringRefAsArg +deref(copy)+funcarg

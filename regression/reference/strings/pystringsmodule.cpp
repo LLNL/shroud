@@ -133,9 +133,9 @@ PY_getConstStringLen(
 }
 
 // ----------------------------------------
-// Function:  const string getConstStringResult
+// Function:  const string getConstStringAlloc
 // Statement: py_function_string
-static char PY_getConstStringResult__doc__[] =
+static char PY_getConstStringAlloc__doc__[] =
 "documentation"
 ;
 
@@ -143,32 +143,6 @@ static char PY_getConstStringResult__doc__[] =
  * Return an ALLOCATABLE CHARACTER from std::string.
  * The language=C wrapper will return a const char *
  */
-static PyObject *
-PY_getConstStringResult(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *SHROUD_UNUSED(args),
-  PyObject *SHROUD_UNUSED(kwds))
-{
-// splicer begin function.getConstStringResult
-    PyObject * SHTPy_rv = nullptr;
-
-    const std::string SHCXX_rv = getConstStringResult();
-
-    // post_call
-    SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
-        SHCXX_rv.size());
-
-    return (PyObject *) SHTPy_rv;
-// splicer end function.getConstStringResult
-}
-
-// ----------------------------------------
-// Function:  const std::string getConstStringAlloc
-// Statement: py_function_string
-static char PY_getConstStringAlloc__doc__[] =
-"documentation"
-;
-
 static PyObject *
 PY_getConstStringAlloc(
   PyObject *SHROUD_UNUSED(self),
@@ -282,9 +256,9 @@ PY_getConstStringRefLenEmpty(
 }
 
 // ----------------------------------------
-// Function:  const string &getConstStringRefPure
+// Function:  const std::string &getConstStringRefAlloc
 // Statement: py_function_string&
-static char PY_getConstStringRefPure__doc__[] =
+static char PY_getConstStringRefAlloc__doc__[] =
 "documentation"
 ;
 
@@ -292,32 +266,6 @@ static char PY_getConstStringRefPure__doc__[] =
  * \brief return a 'const string&' as ALLOCATABLE character
  *
  */
-static PyObject *
-PY_getConstStringRefPure(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *SHROUD_UNUSED(args),
-  PyObject *SHROUD_UNUSED(kwds))
-{
-// splicer begin function.getConstStringRefPure
-    PyObject * SHTPy_rv = nullptr;
-
-    const std::string &SHCXX_rv = getConstStringRefPure();
-
-    // post_call
-    SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
-        SHCXX_rv.size());
-
-    return (PyObject *) SHTPy_rv;
-// splicer end function.getConstStringRefPure
-}
-
-// ----------------------------------------
-// Function:  const std::string &getConstStringRefAlloc
-// Statement: py_function_string&
-static char PY_getConstStringRefAlloc__doc__[] =
-"documentation"
-;
-
 static PyObject *
 PY_getConstStringRefAlloc(
   PyObject *SHROUD_UNUSED(self),
@@ -1056,8 +1004,6 @@ static PyMethodDef PY_methods[] = {
     PY_init_test__doc__},
 {"getConstStringLen", (PyCFunction)PY_getConstStringLen, METH_NOARGS,
     PY_getConstStringLen__doc__},
-{"getConstStringResult", (PyCFunction)PY_getConstStringResult,
-    METH_NOARGS, PY_getConstStringResult__doc__},
 {"getConstStringAlloc", (PyCFunction)PY_getConstStringAlloc,
     METH_NOARGS, PY_getConstStringAlloc__doc__},
 {"getConstStringAsArg", (PyCFunction)PY_getConstStringAsArg,
@@ -1066,8 +1012,6 @@ static PyMethodDef PY_methods[] = {
     METH_NOARGS, PY_getConstStringRefLen__doc__},
 {"getConstStringRefLenEmpty", (PyCFunction)PY_getConstStringRefLenEmpty,
     METH_NOARGS, PY_getConstStringRefLenEmpty__doc__},
-{"getConstStringRefPure", (PyCFunction)PY_getConstStringRefPure,
-    METH_NOARGS, PY_getConstStringRefPure__doc__},
 {"getConstStringRefAlloc", (PyCFunction)PY_getConstStringRefAlloc,
     METH_NOARGS, PY_getConstStringRefAlloc__doc__},
 {"getConstStringRefAsArg", (PyCFunction)PY_getConstStringRefAsArg,

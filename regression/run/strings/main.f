@@ -52,6 +52,7 @@ contains
 
   subroutine test_functions
 
+    character(len=:), allocatable :: astr
     character(len=:), pointer :: pstr
     character(30) str
     character(30), parameter :: static_str = "dog                         "
@@ -68,62 +69,50 @@ contains
     call assert_true(str == static_str, "getConstStringLen")
 
     ! character(:), allocatable function
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_const_string_result()
-    call assert_true(str == "getConstStringResult", "getConstStringResult")
-
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_const_string_alloc()
-    call assert_true(str == "getConstStringAlloc", "getConstStringAlloc")
+    astr = get_const_string_alloc()
+    call assert_true(astr == "getConstStringAlloc", "getConstStringAlloc")
+    deallocate(astr)
  
     !----------
-    ! string_result_as_arg
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     call get_const_string_as_arg(str)
     call assert_true(str == static_str, "getConstStringAsArg")
 
     !--------------------------------------------------
-    ! return std::string reference
+    ! return std::string &
 
     ! character(30) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_const_string_ref_len()
     call assert_true( str == static_str, "getConstStringRefLen")
 
-    ! problem with pgi
-    ! character(*) function
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_const_string_ref_pure()
-    call assert_true( str == static_str, "getConstStringRefPure")
-
     ! character(30) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_const_string_ref_len_empty()
     call assert_true( str == " ", "getConstStringRefLenEmpty")
 
+    ! character(:), allocatable function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_const_string_ref_alloc()
-    call assert_true( str == static_str, "getConstStringRefAlloc")
-
+    astr = get_const_string_ref_alloc()
+    call assert_true( astr == static_str, "getConstStringRefAlloc")
+    deallocate(astr)
+    
     !----------
 
-    ! string_result_as_arg
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     call get_const_string_ref_as_arg(str)
     call assert_true( str == static_str, "getConstStringRefAsArg")
  
     !--------------------------------------------------
-    ! return std::string pointer
+    ! return std::string *
 
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_const_string_ptr_len()
     call assert_true(str == "getConstStringPtrLen", "getConstStringPtrLen")
 
-    ! string_result_as_arg
- 
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_const_string_ptr_alloc()
-    call assert_true( str == static_str, "getConstStringPtrAlloc")
+    astr = get_const_string_ptr_alloc()
+    call assert_true( astr == static_str, "getConstStringPtrAlloc")
+    deallocate(astr)
 
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_const_string_ptr_owns_alloc()

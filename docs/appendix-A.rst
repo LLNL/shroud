@@ -1482,61 +1482,61 @@ string functions
 
 .. ############################################################
 
-.. _example_getConstStringRefPure:
+.. _example_getConstStringRefAlloc:
 
-getConstStringRefPure
-^^^^^^^^^^^^^^^^^^^^^
+getConstStringRefAlloc
+^^^^^^^^^^^^^^^^^^^^^^
 
 C++ library function in :file:`strings.cpp`:
 
 .. literalinclude:: ../regression/run/strings/strings.cpp
    :language: c
-   :start-after: start getConstStringRefPure
-   :end-before: end getConstStringRefPure
+   :start-after: start getConstStringRefAlloc
+   :end-before: end getConstStringRefAlloc
 
 :file:`strings.yaml`:
 
 .. code-block:: yaml
 
-    - decl: const string& getConstStringRefPure()
+    - decl: const string& getConstStringRefAlloc()
 
 The C wrapper:
 
 .. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
    :language: c
-   :start-after: start STR_getConstStringRefPure_bufferify
-   :end-before: end STR_getConstStringRefPure_bufferify
+   :start-after: start STR_getConstStringRefAlloc_bufferify
+   :end-before: end STR_getConstStringRefAlloc_bufferify
 
 The native C wrapper:
 
 .. literalinclude:: ../regression/reference/strings/wrapstrings.cpp
    :language: c
-   :start-after: start STR_getConstStringRefPure
-   :end-before: end STR_getConstStringRefPure
+   :start-after: start STR_getConstStringRefAlloc
+   :end-before: end STR_getConstStringRefAlloc
 
 Fortran calls C via the following interface:
 
 .. literalinclude:: ../regression/reference/strings/wrapfstrings.f
    :language: fortran
-   :start-after: start c_get_const_string_ref_pure_bufferify
-   :end-before: end c_get_const_string_ref_pure_bufferify
+   :start-after: start c_get_const_string_ref_alloc_bufferify
+   :end-before: end c_get_const_string_ref_alloc_bufferify
    :dedent: 4
 
 The Fortran wrapper:
 
 .. literalinclude:: ../regression/reference/strings/wrapfstrings.f
    :language: fortran
-   :start-after: start get_const_string_ref_pure
-   :end-before: end get_const_string_ref_pure
+   :start-after: start get_const_string_ref_alloc
+   :end-before: end get_const_string_ref_alloc
    :dedent: 4
 
 Fortran usage:
 
 .. code-block:: fortran
 
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_const_string_ref_pure()
-    call assert_true( str == static_str, "getConstStringRefPure")
+    character(:), allocatable :: astr
+    astr = get_const_string_ref_pure()
+    call assert_true(astr == static_str, "getConstStringRefAlloc")
 
 
 std::vector

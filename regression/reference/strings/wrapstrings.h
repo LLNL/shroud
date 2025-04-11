@@ -32,10 +32,7 @@ void STR_init_test(void);
 
 void STR_getConstStringLen_bufferify(char *SHC_rv, int SHT_rv_len);
 
-const char * STR_getConstStringResult(
-    STR_SHROUD_capsule_data *SHT_rv_capsule);
-
-void STR_getConstStringResult_bufferify(STR_SHROUD_array *SHT_rv_cdesc,
+const char * STR_getConstStringAlloc(
     STR_SHROUD_capsule_data *SHT_rv_capsule);
 
 void STR_getConstStringAlloc_bufferify(STR_SHROUD_array *SHT_rv_cdesc,
@@ -51,11 +48,6 @@ const char * STR_getConstStringRefLenEmpty(void);
 
 void STR_getConstStringRefLenEmpty_bufferify(char *SHC_rv,
     int SHT_rv_len);
-
-const char * STR_getConstStringRefPure(void);
-
-void STR_getConstStringRefPure_bufferify(STR_SHROUD_array *SHT_rv_cdesc,
-    STR_SHROUD_capsule_data *SHT_rv_capsule);
 
 const char * STR_getConstStringRefAlloc(void);
 

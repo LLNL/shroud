@@ -302,7 +302,7 @@ Functions which return ``std::string`` values are similar but must provide the
 extra step of converting the result into a ``char *``.
 
 ``const string &``
-    See example :ref:`getConstStringRefPure <example_getConstStringRefPure>`.
+    See example :ref:`getConstStringRefAlloc <example_getConstStringRefAlloc>`.
 
 std::vector
 -----------
