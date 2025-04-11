@@ -229,8 +229,9 @@ def lookup_f_function_stmt(node):
         result_stmt = lookup_fc_stmts(stmts)
     else:
         # intent will be "function", "ctor", "getter"
-        stmts = ["f", sintent, r_meta["abstract"],
-                 r_meta["api"], r_meta["deref"], r_meta["owner"],
+        stmts = ["f", sintent, r_meta["abstract"], r_meta["api"],
+                 "funcarg" if r_meta["funcarg"] else None,
+                 r_meta["deref"], r_meta["owner"],
                  r_meta["operator"], r_meta["custom"]]
     result_stmt = lookup_fc_stmts(stmts)
     return result_stmt

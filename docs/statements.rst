@@ -214,11 +214,11 @@ A dictionary to replace default values
 
 .. code-block:: yaml
 
-        name: f_function_char_*_cfi_arg
-        base: f_function_char_*_cfi_copy
+        name: f_mixin_getter_argname
         fmtdict:
-            f_var: "{F_string_result_as_arg}"
-            c_var: "{F_string_result_as_arg}"
+            f_var: "val"
+            i_var: "val"
+            c_var: "val"
 
 Examples
 --------
@@ -260,6 +260,9 @@ and attributes into an underscore delimited string.
 * api - from attribute
   ``buf``, ``capsule``, ``capptr``, ``cdesc`` and ``cfi``.
 
+* funcarg - from attribute.
+  Uses ``funcarg`` and not the value of the attribute.
+  
 * deref - from attribute
   ``allocatable``, ``pointer``, ``raw``, ``scalar``
 

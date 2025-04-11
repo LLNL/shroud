@@ -434,11 +434,6 @@ allocatable
 
     For Python, create a NumPy array (same as *pointer* attribute)
 
-arg
-
-   Added by Shroud when a function result needs to be passed as an
-   additional argument from the Fortran wrapper to the C wrapper.
-
 copy
 
     Copy results into the Fortran argument.
@@ -606,6 +601,21 @@ See :ref:`MemoryManagementAnchor` for details.
 
 ..  and *intent(out)* arguments.
 
+funcarg
+^^^^^^^
+
+Used with functions to convert it to a subroutine and to treat the
+result as an additional argument. This is helpful with functions that
+return a pointer.  Instead, the Fortran wrapper accepts an argument
+from the user which will contain a copy of the result. The result may
+also use the *deref* attribute to create an ``ALLOCATABLE`` or
+``POINTER`` result similar to an *intent(out)* argument.
+
+The attribute value can contain the name for the argument. If no name
+is given then the option **F_result_as_arg** will be used to name the
+argument. The attribute value is assigned to format fields *f_var* and
+*i_var*.
+   
 funptr
 ^^^^^^
 

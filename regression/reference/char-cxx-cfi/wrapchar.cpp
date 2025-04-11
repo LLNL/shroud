@@ -288,45 +288,6 @@ void CHA_passCharPtrInOut_CFI(CFI_cdesc_t *SHT_s_cfi)
 // end CHA_passCharPtrInOut_CFI
 
 /**
- * Return an ALLOCATABLE CHARACTER from char *.
- */
-// ----------------------------------------
-// Function:  const char *getCharPtr1
-// Statement: c_function_char*
-// start CHA_getCharPtr1
-const char * CHA_getCharPtr1(void)
-{
-    // splicer begin function.getCharPtr1
-    const char *SHC_rv = getCharPtr1();
-    return SHC_rv;
-    // splicer end function.getCharPtr1
-}
-// end CHA_getCharPtr1
-
-/**
- * Return an ALLOCATABLE CHARACTER from char *.
- */
-// ----------------------------------------
-// Function:  const char *getCharPtr1
-// Statement: f_function_char*_cfi_allocatable
-// start CHA_getCharPtr1_CFI
-void CHA_getCharPtr1_CFI(CFI_cdesc_t *SHT_rv_cfi)
-{
-    // splicer begin function.getCharPtr1_CFI
-    const char *SHC_rv = getCharPtr1();
-    if (SHC_rv != nullptr) {
-        int SH_ret = CFI_allocate(SHT_rv_cfi, (CFI_index_t *) 0, 
-            (CFI_index_t *) 0, strlen(SHC_rv));
-        if (SH_ret == CFI_SUCCESS) {
-            std::memcpy(SHT_rv_cfi->base_addr, SHC_rv, 
-                SHT_rv_cfi->elem_len);
-        }
-    }
-    // splicer end function.getCharPtr1_CFI
-}
-// end CHA_getCharPtr1_CFI
-
-/**
  * \brief return 'const char *' with fixed size (len=30)
  *
  */
@@ -363,57 +324,43 @@ void CHA_getConstCharPtrLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // end CHA_getConstCharPtrLen_CFI
 
 /**
- * \brief return a 'const char *' as argument
- *
+ * Return an ALLOCATABLE CHARACTER from char *.
  */
 // ----------------------------------------
-// Function:  const char *getConstCharPtrAsArg
+// Function:  const char *getConstCharPtrAlloc +deref(allocatable)
 // Statement: c_function_char*
-// start CHA_getConstCharPtrAsArg
-const char * CHA_getConstCharPtrAsArg(void)
+// start CHA_getConstCharPtrAlloc
+const char * CHA_getConstCharPtrAlloc(void)
 {
-    // splicer begin function.getConstCharPtrAsArg
-    const char *SHC_rv = getConstCharPtrAsArg();
+    // splicer begin function.getConstCharPtrAlloc
+    const char *SHC_rv = getConstCharPtrAlloc();
     return SHC_rv;
-    // splicer end function.getConstCharPtrAsArg
+    // splicer end function.getConstCharPtrAlloc
 }
-// end CHA_getConstCharPtrAsArg
+// end CHA_getConstCharPtrAlloc
 
 /**
- * \brief return a 'const char *' as argument
- *
+ * Return an ALLOCATABLE CHARACTER from char *.
  */
 // ----------------------------------------
-// Function:  const char *getConstCharPtrAsArg
-// Statement: f_function_char*_cfi_arg
-// start CHA_getConstCharPtrAsArg_CFI
-void CHA_getConstCharPtrAsArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
+// Function:  const char *getConstCharPtrAlloc +deref(allocatable)
+// Statement: f_function_char*_cfi_allocatable
+// start CHA_getConstCharPtrAlloc_CFI
+void CHA_getConstCharPtrAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
-    // splicer begin function.getConstCharPtrAsArg_CFI
-    char *output = static_cast<char *>(SHT_rv_cfi->base_addr);
-    size_t SHT_rv_len = SHT_rv_cfi->elem_len;
-    const char *SHC_rv_cxx = getConstCharPtrAsArg();
-    ShroudCharCopy(output, SHT_rv_len, SHC_rv_cxx, -1);
-    // splicer end function.getConstCharPtrAsArg_CFI
+    // splicer begin function.getConstCharPtrAlloc_CFI
+    const char *SHC_rv = getConstCharPtrAlloc();
+    if (SHC_rv != nullptr) {
+        int SH_ret = CFI_allocate(SHT_rv_cfi, (CFI_index_t *) 0, 
+            (CFI_index_t *) 0, strlen(SHC_rv));
+        if (SH_ret == CFI_SUCCESS) {
+            std::memcpy(SHT_rv_cfi->base_addr, SHC_rv, 
+                SHT_rv_cfi->elem_len);
+        }
+    }
+    // splicer end function.getConstCharPtrAlloc_CFI
 }
-// end CHA_getConstCharPtrAsArg_CFI
-
-/**
- * \brief return a 'const char *' as type(C_PTR)
- *
- */
-// ----------------------------------------
-// Function:  const char *getCharPtr4 +deref(raw)
-// Statement: c_function_char*
-// start CHA_getCharPtr4
-const char * CHA_getCharPtr4(void)
-{
-    // splicer begin function.getCharPtr4
-    const char *SHC_rv = getCharPtr4();
-    return SHC_rv;
-    // splicer end function.getCharPtr4
-}
-// end CHA_getCharPtr4
+// end CHA_getConstCharPtrAlloc_CFI
 
 /**
  * \brief return a 'const char *' as character(:) pointer
@@ -421,17 +368,17 @@ const char * CHA_getCharPtr4(void)
  */
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
 // ----------------------------------------
-// Function:  const char *getCharPtr5 +deref(pointer)
+// Function:  const char *getConstCharPtrPointer +deref(pointer)
 // Statement: c_function_char*
-// start CHA_getCharPtr5
-const char * CHA_getCharPtr5(void)
+// start CHA_getConstCharPtrPointer
+const char * CHA_getConstCharPtrPointer(void)
 {
-    // splicer begin function.getCharPtr5
-    const char *SHC_rv = getCharPtr5();
+    // splicer begin function.getConstCharPtrPointer
+    const char *SHC_rv = getConstCharPtrPointer();
     return SHC_rv;
-    // splicer end function.getCharPtr5
+    // splicer end function.getConstCharPtrPointer
 }
-// end CHA_getCharPtr5
+// end CHA_getConstCharPtrPointer
 #endif  // ifdef HAVE_CHARACTER_POINTER_FUNCTION
 
 /**
@@ -440,13 +387,13 @@ const char * CHA_getCharPtr5(void)
  */
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
 // ----------------------------------------
-// Function:  const char *getCharPtr5 +deref(pointer)
+// Function:  const char *getConstCharPtrPointer +deref(pointer)
 // Statement: f_function_char*_cfi_pointer
-// start CHA_getCharPtr5_CFI
-void CHA_getCharPtr5_CFI(CFI_cdesc_t *SHT_rv_cfi)
+// start CHA_getConstCharPtrPointer_CFI
+void CHA_getConstCharPtrPointer_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
-    // splicer begin function.getCharPtr5_CFI
-    const char *SHC_rv = getCharPtr5();
+    // splicer begin function.getConstCharPtrPointer_CFI
+    const char *SHC_rv = getConstCharPtrPointer();
     int SHC_rv_err;
     if (SHC_rv == nullptr) {
         SHC_rv_err = CFI_setpointer(SHT_rv_cfi, nullptr, nullptr);
@@ -465,10 +412,138 @@ void CHA_getCharPtr5_CFI(CFI_cdesc_t *SHT_rv_cfi)
                 nullptr);
         }
     }
-    // splicer end function.getCharPtr5_CFI
+    // splicer end function.getConstCharPtrPointer_CFI
 }
-// end CHA_getCharPtr5_CFI
+// end CHA_getConstCharPtrPointer_CFI
 #endif  // ifdef HAVE_CHARACTER_POINTER_FUNCTION
+
+/**
+ * \brief return a 'const char *' as type(C_PTR)
+ *
+ */
+// ----------------------------------------
+// Function:  const char *getConstCharPtrRaw +deref(raw)
+// Statement: c_function_char*
+// start CHA_getConstCharPtrRaw
+const char * CHA_getConstCharPtrRaw(void)
+{
+    // splicer begin function.getConstCharPtrRaw
+    const char *SHC_rv = getConstCharPtrRaw();
+    return SHC_rv;
+    // splicer end function.getConstCharPtrRaw
+}
+// end CHA_getConstCharPtrRaw
+
+/**
+ * \brief return a 'const char *' as argument
+ *
+ */
+// ----------------------------------------
+// Function:  const char *getConstCharPtrAsCopyArg +deref(copy)+funcarg
+// Statement: c_function_char*
+// start CHA_getConstCharPtrAsCopyArg
+const char * CHA_getConstCharPtrAsCopyArg(void)
+{
+    // splicer begin function.getConstCharPtrAsCopyArg
+    const char *SHC_rv = getConstCharPtrAsCopyArg();
+    return SHC_rv;
+    // splicer end function.getConstCharPtrAsCopyArg
+}
+// end CHA_getConstCharPtrAsCopyArg
+
+/**
+ * \brief return a 'const char *' as argument
+ *
+ */
+// ----------------------------------------
+// Function:  const char *getConstCharPtrAsCopyArg +deref(copy)+funcarg
+// Statement: f_function_char*_cfi_funcarg_copy
+// start CHA_getConstCharPtrAsCopyArg_CFI
+void CHA_getConstCharPtrAsCopyArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
+{
+    // splicer begin function.getConstCharPtrAsCopyArg_CFI
+    char *SHC_rv = static_cast<char *>(SHT_rv_cfi->base_addr);
+    size_t SHT_rv_len = SHT_rv_cfi->elem_len;
+    const char *SHC_rv_cxx = getConstCharPtrAsCopyArg();
+    ShroudCharCopy(SHC_rv, SHT_rv_len, SHC_rv_cxx, -1);
+    // splicer end function.getConstCharPtrAsCopyArg_CFI
+}
+// end CHA_getConstCharPtrAsCopyArg_CFI
+
+/**
+ * \brief return a 'const char *' as an allocatable argument
+ *
+ */
+// ----------------------------------------
+// Function:  const char *getConstCharPtrAsAllocArg +deref(allocatable)+funcarg
+// Statement: f_function_char*_cfi_funcarg_allocatable
+// start CHA_getConstCharPtrAsAllocArg_CFI
+void CHA_getConstCharPtrAsAllocArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
+{
+    // splicer begin function.getConstCharPtrAsAllocArg_CFI
+    const char *SHC_rv = getConstCharPtrAsAllocArg();
+    if (SHC_rv != nullptr) {
+        int SH_ret = CFI_allocate(SHT_rv_cfi, (CFI_index_t *) 0, 
+            (CFI_index_t *) 0, strlen(SHC_rv));
+        if (SH_ret == CFI_SUCCESS) {
+            std::memcpy(SHT_rv_cfi->base_addr, SHC_rv, 
+                SHT_rv_cfi->elem_len);
+        }
+    }
+    // splicer end function.getConstCharPtrAsAllocArg_CFI
+}
+// end CHA_getConstCharPtrAsAllocArg_CFI
+
+/**
+ * \brief return a 'const char *' as an pointer argument
+ *
+ */
+// ----------------------------------------
+// Function:  const char *getConstCharPtrAsPointerArg +deref(pointer)+funcarg
+// Statement: f_function_char*_cfi_funcarg_pointer
+// start CHA_getConstCharPtrAsPointerArg_CFI
+void CHA_getConstCharPtrAsPointerArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
+{
+    // splicer begin function.getConstCharPtrAsPointerArg_CFI
+    const char *SHC_rv = getConstCharPtrAsPointerArg();
+    int SHC_rv_err;
+    if (SHC_rv == nullptr) {
+        SHC_rv_err = CFI_setpointer(SHT_rv_cfi, nullptr, nullptr);
+    } else {
+        CFI_CDESC_T(0) SHC_rv_fptr;
+        CFI_cdesc_t *SHC_rv_cdesc = reinterpret_cast<CFI_cdesc_t *>
+            (&SHC_rv_fptr);
+        void *SHC_rv_cptr = const_cast<char *>(SHC_rv);
+        size_t SHC_rv_len = std::strlen(SHC_rv);
+        SHC_rv_err = CFI_establish(SHC_rv_cdesc, SHC_rv_cptr,
+            CFI_attribute_pointer, CFI_type_char, SHC_rv_len, 0,
+            nullptr);
+        if (SHC_rv_err == CFI_SUCCESS) {
+            SHT_rv_cfi->elem_len = SHC_rv_cdesc->elem_len;
+            SHC_rv_err = CFI_setpointer(SHT_rv_cfi, SHC_rv_cdesc,
+                nullptr);
+        }
+    }
+    // splicer end function.getConstCharPtrAsPointerArg_CFI
+}
+// end CHA_getConstCharPtrAsPointerArg_CFI
+
+/**
+ * \brief return a 'const char *' as a type(C_PTR) argument
+ *
+ */
+// ----------------------------------------
+// Function:  const char *getConstCharPtrAsRawArg +deref(raw)+funcarg
+// Statement: f_function_char*_funcarg_raw
+// start CHA_getConstCharPtrAsRawArg_bufferify
+void CHA_getConstCharPtrAsRawArg_bufferify(void **SHC_rv)
+{
+    // splicer begin function.getConstCharPtrAsRawArg_bufferify
+    const char *SHC_rv_cxx = getConstCharPtrAsRawArg();
+    *SHC_rv = const_cast<char *>(SHC_rv_cxx);
+    // splicer end function.getConstCharPtrAsRawArg_bufferify
+}
+// end CHA_getConstCharPtrAsRawArg_bufferify
 
 // ----------------------------------------
 // Function:  void explicit1

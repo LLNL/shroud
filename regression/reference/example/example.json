@@ -1350,234 +1350,7 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "getNameArg  5 ****************************************",
-                                        "ast": {
-                                            "const": true,
-                                            "declarator": {
-                                                "func_const": true,
-                                                "name": "getNameArg",
-                                                "params": [],
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "&"
-                                                    }
-                                                ],
-                                                "typemap_name": "std::string"
-                                            },
-                                            "specifier": [
-                                                "string"
-                                            ],
-                                            "typemap_name": "std::string"
-                                        },
-                                        "decl": "const string& getNameArg() const",
-                                        "declgen": "const string &getNameArg(void) const",
-                                        "helpers": {
-                                            "fc": [
-                                                "char_copy"
-                                            ]
-                                        },
-                                        "name": "getNameArg",
-                                        "options": {},
-                                        "user_fmt": {
-                                            "F_string_result_as_arg": "name"
-                                        },
-                                        "wrap": {
-                                            "c": true,
-                                            "fortran": true,
-                                            "lua": true,
-                                            "python": true
-                                        },
-                                        "zz_bind": {
-                                            "c": {
-                                                "+result": {
-                                                    "fmtdict": {
-                                                        "C_call_function": "SH_this->getNameArg(\t)",
-                                                        "C_name": "AA_example_nested_ExClass1_getNameArg",
-                                                        "C_prototype": "const AA_example_nested_ExClass1 * self",
-                                                        "C_return_type": "const char *",
-                                                        "c_abstract_decl": "const char *",
-                                                        "c_const": "const ",
-                                                        "c_local_cxx": "SHC_rv_cxx",
-                                                        "c_type": "char",
-                                                        "c_var": "SHC_rv",
-                                                        "cxx_abstract_decl": "const std::string *",
-                                                        "cxx_addr": "&",
-                                                        "cxx_member": ".",
-                                                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHC_rv_cxx)",
-                                                        "cxx_type": "std::string",
-                                                        "cxx_var": "SHC_rv_cxx",
-                                                        "f_type": "character(len=*)",
-                                                        "f_var": "SHT_rv",
-                                                        "i_arguments": "self",
-                                                        "i_kind": "C_CHAR",
-                                                        "i_module_name": "iso_c_binding",
-                                                        "i_name_function": "c_ex_class1_get_name_arg",
-                                                        "i_pure_clause": "pure ",
-                                                        "i_result_clause": "\fresult(SHT_rv)",
-                                                        "i_subprogram": "function",
-                                                        "i_type": "character(kind=C_CHAR)",
-                                                        "i_var": "SHT_rv",
-                                                        "idtor": "0",
-                                                        "stmt_name": "c_function_string&",
-                                                        "typemap_name": "std::string"
-                                                    },
-                                                    "meta": {
-                                                        "abstract": "string&",
-                                                        "intent": "function"
-                                                    },
-                                                    "stmt": "c_function_string&"
-                                                }
-                                            },
-                                            "f": {
-                                                "+result": {
-                                                    "fmtdict": {
-                                                        "C_call_function": "SH_this->getNameArg(\t)",
-                                                        "C_name": "AA_example_nested_ExClass1_getNameArg_bufferify",
-                                                        "C_prototype": "const AA_example_nested_ExClass1 * self,\t char *name,\t int nname",
-                                                        "C_return_type": "void",
-                                                        "F_arg_c_call": "obj%cxxmem,\t name,\t nname",
-                                                        "F_arguments": "obj,\t name",
-                                                        "F_subprogram": "subroutine",
-                                                        "c_abstract_decl": "const char *",
-                                                        "c_const": "const ",
-                                                        "c_helper_char_copy": "ShroudCharCopy",
-                                                        "c_local_cxx": "SHC_rv_cxx",
-                                                        "c_type": "char",
-                                                        "c_var": "name",
-                                                        "c_var_len": "nname",
-                                                        "cxx_abstract_decl": "const std::string *",
-                                                        "cxx_addr": "&",
-                                                        "cxx_member": ".",
-                                                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHC_rv_cxx)",
-                                                        "cxx_type": "std::string",
-                                                        "cxx_var": "SHC_rv_cxx",
-                                                        "f_call_function": "c_ex_class1_get_name_arg_bufferify",
-                                                        "f_type": "character(len=*)",
-                                                        "f_var": "name",
-                                                        "f_var_len": "nname",
-                                                        "fc_var": "SHT_rv",
-                                                        "i_arguments": "self,\t name,\t nname",
-                                                        "i_intent": "OUT",
-                                                        "i_intent_attr": ", intent(OUT)",
-                                                        "i_kind": "C_CHAR",
-                                                        "i_module_name": "iso_c_binding",
-                                                        "i_name_function": "c_ex_class1_get_name_arg_bufferify",
-                                                        "i_subprogram": "subroutine",
-                                                        "i_suffix": "_bufferify",
-                                                        "i_type": "character(kind=C_CHAR)",
-                                                        "i_var": "name",
-                                                        "i_var_len": "nname",
-                                                        "idtor": "0",
-                                                        "stmt_name": "f_function_string&_buf_arg",
-                                                        "typemap_name": "std::string"
-                                                    },
-                                                    "meta": {
-                                                        "abstract": "string&",
-                                                        "api": "buf",
-                                                        "deref": "arg",
-                                                        "intent": "function"
-                                                    },
-                                                    "stmt": "f_function_string&_buf_arg"
-                                                }
-                                            },
-                                            "lua": {
-                                                "+result": {
-                                                    "fmtdict": {
-                                                        "c_abstract_decl": "const char *",
-                                                        "c_var": "SHCXX_rv.c_str()",
-                                                        "cxx_addr": "&",
-                                                        "cxx_member": ".",
-                                                        "cxx_var": "SHCXX_rv",
-                                                        "push_arg": "SHCXX_rv.c_str()",
-                                                        "push_expr": "lua_pushstring(L, SHCXX_rv.c_str())",
-                                                        "stmt": "lua_function_string&"
-                                                    },
-                                                    "meta": {
-                                                        "abstract": "string&",
-                                                        "intent": "function"
-                                                    }
-                                                }
-                                            },
-                                            "py": {
-                                                "+result": {
-                                                    "fmtdict": {
-                                                        "array_size": "1",
-                                                        "c_var": "SHCXX_rv",
-                                                        "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
-                                                        "cxx_addr": "&",
-                                                        "cxx_member": ".",
-                                                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
-                                                        "cxx_type": "std::string",
-                                                        "cxx_var": "SHCXX_rv",
-                                                        "data_var": "SHData_rv",
-                                                        "numpy_type": null,
-                                                        "py_var": "SHTPy_rv",
-                                                        "size_var": "SHSize_rv",
-                                                        "stmt": "py_function_string&",
-                                                        "value_var": "SHValue_rv"
-                                                    },
-                                                    "meta": {
-                                                        "abstract": "string&",
-                                                        "intent": "function"
-                                                    },
-                                                    "stmt": "py_function_string&"
-                                                }
-                                            },
-                                            "share": {
-                                                "+result": {
-                                                    "meta": {
-                                                        "abstract": "string&",
-                                                        "intent": "function"
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        "zz_fmtdict": {
-                                            "C_name_api": "getNameArg",
-                                            "F_name_api": "get_name_arg",
-                                            "F_name_function": "get_name_arg",
-                                            "F_name_generic": "get_name_arg",
-                                            "F_name_impl": "ex_class1_get_name_arg",
-                                            "F_string_result_as_arg": "name",
-                                            "LUA_name": "getNameArg",
-                                            "LUA_name_api": "getNameArg",
-                                            "LUA_name_impl": "l_example_nested_ExClass1_getNameArg",
-                                            "PY_name_impl": "PP_getNameArg",
-                                            "c_arglist": [
-                                                "SHC_rv"
-                                            ],
-                                            "c_const": "const ",
-                                            "c_deref": "*",
-                                            "c_member": "->",
-                                            "c_var": "self",
-                                            "f_arglist": [
-                                                "name"
-                                            ],
-                                            "function_name": "getNameArg"
-                                        },
-                                        "zz_fmtlang": {
-                                            "lua": {
-                                                "LUA_used_param_state": true,
-                                                "c_var": "\t(l_ExClass1_Type *)\t luaL_checkudata(\tL, 1, \"ExClass1.metatable\")",
-                                                "cxx_call_list": "",
-                                                "nresults": 1,
-                                                "rv_asgn": "const std::string &SHCXX_rv =\t ",
-                                                "rv_decl": "const std::string &SHCXX_rv"
-                                            },
-                                            "py": {
-                                                "C_call_function": "self->obj->getNameArg()",
-                                                "PY_array_arg": "numpy",
-                                                "PY_call_list": "",
-                                                "PY_doc_string": "documentation",
-                                                "PY_error_return": "nullptr",
-                                                "PY_ml_flags": "METH_NOARGS",
-                                                "PY_used_param_self": true,
-                                                "py_var": "SHTPy_rv"
-                                            }
-                                        }
-                                    },
-                                    {
-                                        "<FUNCTION>": "getValue  6 ****************************************",
+                                        "<FUNCTION>": "getValue  5 ****************************************",
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -1918,7 +1691,7 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "getValue  7 ****************************************",
+                                        "<FUNCTION>": "getValue  6 ****************************************",
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -2242,7 +2015,7 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "hasAddr  8 ****************************************",
+                                        "<FUNCTION>": "hasAddr  7 ****************************************",
                                         "ast": {
                                             "declarator": {
                                                 "name": "hasAddr",
@@ -2576,7 +2349,7 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "SplicerSpecial  9 ****************************************",
+                                        "<FUNCTION>": "SplicerSpecial  8 ****************************************",
                                         "ast": {
                                             "declarator": {
                                                 "name": "SplicerSpecial",
@@ -2807,7 +2580,7 @@
                                 ],
                                 "functions": [
                                     {
-                                        "<FUNCTION>": "ctor  10 ****************************************",
+                                        "<FUNCTION>": "ctor  9 ****************************************",
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -3198,7 +2971,7 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "dtor  11 ****************************************",
+                                        "<FUNCTION>": "dtor  10 ****************************************",
                                         "ast": {
                                             "declarator": {
                                                 "default_name": "dtor",
@@ -3336,7 +3109,7 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "getName  12 ****************************************",
+                                        "<FUNCTION>": "getName  11 ****************************************",
                                         "ast": {
                                             "const": true,
                                             "declarator": {
@@ -3570,7 +3343,7 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "getName2  13 ****************************************",
+                                        "<FUNCTION>": "getName2  12 ****************************************",
                                         "ast": {
                                             "const": true,
                                             "declarator": {
@@ -3807,7 +3580,7 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "getName3  14 ****************************************",
+                                        "<FUNCTION>": "getName3  13 ****************************************",
                                         "ast": {
                                             "declarator": {
                                                 "func_const": true,
@@ -4045,7 +3818,7 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "getName4  15 ****************************************",
+                                        "<FUNCTION>": "getName4  14 ****************************************",
                                         "ast": {
                                             "declarator": {
                                                 "name": "getName4",
@@ -4281,7 +4054,7 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "GetNameLength  16 ****************************************",
+                                        "<FUNCTION>": "GetNameLength  15 ****************************************",
                                         "ast": {
                                             "declarator": {
                                                 "func_const": true,
@@ -4481,7 +4254,7 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "get_class1  17 ****************************************",
+                                        "<FUNCTION>": "get_class1  16 ****************************************",
                                         "ast": {
                                             "declarator": {
                                                 "name": "get_class1",
@@ -4872,7 +4645,7 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "destroyall  18 ****************************************",
+                                        "<FUNCTION>": "destroyall  17 ****************************************",
                                         "ast": {
                                             "declarator": {
                                                 "name": "destroyall",
@@ -5010,7 +4783,7 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "setValue  19 ****************************************",
+                                        "<FUNCTION>": "setValue  18 ****************************************",
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -5121,12 +4894,12 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "setValue  21 ****************************************",
+                                        "<FUNCTION>": "setValue  20 ****************************************",
                                         "_generated": "cxx_template",
                                         "_generated_path": [
                                             "cxx_template"
                                         ],
-                                        "_orig_node_index": 19,
+                                        "_orig_node_index": 18,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -5464,12 +5237,12 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "setValue  22 ****************************************",
+                                        "<FUNCTION>": "setValue  21 ****************************************",
                                         "_generated": "cxx_template",
                                         "_generated_path": [
                                             "cxx_template"
                                         ],
-                                        "_orig_node_index": 19,
+                                        "_orig_node_index": 18,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -5795,12 +5568,12 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "setValue  23 ****************************************",
+                                        "<FUNCTION>": "setValue  22 ****************************************",
                                         "_generated": "cxx_template",
                                         "_generated_path": [
                                             "cxx_template"
                                         ],
-                                        "_orig_node_index": 19,
+                                        "_orig_node_index": 18,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -6126,12 +5899,12 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "setValue  24 ****************************************",
+                                        "<FUNCTION>": "setValue  23 ****************************************",
                                         "_generated": "cxx_template",
                                         "_generated_path": [
                                             "cxx_template"
                                         ],
-                                        "_orig_node_index": 19,
+                                        "_orig_node_index": 18,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -6463,7 +6236,7 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "getValue  20 ****************************************",
+                                        "<FUNCTION>": "getValue  19 ****************************************",
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -6532,12 +6305,12 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "getValue  25 ****************************************",
+                                        "<FUNCTION>": "getValue  24 ****************************************",
                                         "_generated": "cxx_template",
                                         "_generated_path": [
                                             "cxx_template"
                                         ],
-                                        "_orig_node_index": 20,
+                                        "_orig_node_index": 19,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -6761,12 +6534,12 @@
                                         }
                                     },
                                     {
-                                        "<FUNCTION>": "getValue  26 ****************************************",
+                                        "<FUNCTION>": "getValue  25 ****************************************",
                                         "_generated": "cxx_template",
                                         "_generated_path": [
                                             "cxx_template"
                                         ],
-                                        "_orig_node_index": 20,
+                                        "_orig_node_index": 19,
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
@@ -7051,7 +6824,7 @@
                         ],
                         "functions": [
                             {
-                                "<FUNCTION>": "local_function1  27 ****************************************",
+                                "<FUNCTION>": "local_function1  26 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "name": "local_function1",
@@ -7181,7 +6954,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "isNameValid  28 ****************************************",
+                                "<FUNCTION>": "isNameValid  27 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "name": "isNameValid",
@@ -7547,7 +7320,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "isInitialized  29 ****************************************",
+                                "<FUNCTION>": "isInitialized  28 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "name": "isInitialized",
@@ -7730,7 +7503,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "test_names  30 ****************************************",
+                                "<FUNCTION>": "test_names  29 ****************************************",
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
@@ -8034,7 +7807,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "test_names  31 ****************************************",
+                                "<FUNCTION>": "test_names  30 ****************************************",
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
@@ -8470,12 +8243,12 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "testoptional  45 ****************************************",
+                                "<FUNCTION>": "testoptional  44 ****************************************",
                                 "_generated": "has_default_arg",
                                 "_generated_path": [
                                     "has_default_arg"
                                 ],
-                                "_orig_node_index": 32,
+                                "_orig_node_index": 31,
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
@@ -8564,12 +8337,12 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "testoptional  46 ****************************************",
+                                "<FUNCTION>": "testoptional  45 ****************************************",
                                 "_generated": "has_default_arg",
                                 "_generated_path": [
                                     "has_default_arg"
                                 ],
-                                "_orig_node_index": 32,
+                                "_orig_node_index": 31,
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
@@ -8753,10 +8526,10 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "testoptional  32 ****************************************",
+                                "<FUNCTION>": "testoptional  31 ****************************************",
                                 "_default_funcs": [
-                                    45,
-                                    46
+                                    44,
+                                    45
                                 ],
                                 "_has_default_arg": true,
                                 "_nargs": [
@@ -9179,7 +8952,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "test_size_t  33 ****************************************",
+                                "<FUNCTION>": "test_size_t  32 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "name": "test_size_t",
@@ -9362,7 +9135,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "testmpi  34 ****************************************",
+                                "<FUNCTION>": "testmpi  33 ****************************************",
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
@@ -9654,7 +9427,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "testmpi  35 ****************************************",
+                                "<FUNCTION>": "testmpi  34 ****************************************",
                                 "_overloaded": true,
                                 "ast": {
                                     "declarator": {
@@ -9782,7 +9555,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "FuncPtr1  36 ****************************************",
+                                "<FUNCTION>": "FuncPtr1  35 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "name": "FuncPtr1",
@@ -10320,7 +10093,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "FuncPtr2  37 ****************************************",
+                                "<FUNCTION>": "FuncPtr2  36 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "name": "FuncPtr2",
@@ -10937,7 +10710,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "FuncPtr3  38 ****************************************",
+                                "<FUNCTION>": "FuncPtr3  37 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "name": "FuncPtr3",
@@ -11932,7 +11705,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "FuncPtr4  39 ****************************************",
+                                "<FUNCTION>": "FuncPtr4  38 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "name": "FuncPtr4",
@@ -12554,7 +12327,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "FuncPtr5  40 ****************************************",
+                                "<FUNCTION>": "FuncPtr5  39 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "name": "FuncPtr5",
@@ -15145,7 +14918,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "verylongfunctionname1  41 ****************************************",
+                                "<FUNCTION>": "verylongfunctionname1  40 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "name": "verylongfunctionname1",
@@ -16659,7 +16432,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "verylongfunctionname2  42 ****************************************",
+                                "<FUNCTION>": "verylongfunctionname2  41 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "name": "verylongfunctionname2",
@@ -18205,7 +17978,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "cos_doubles  43 ****************************************",
+                                "<FUNCTION>": "cos_doubles  42 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "name": "cos_doubles",
@@ -18849,7 +18622,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "pass_voidstartstar  44 ****************************************",
+                                "<FUNCTION>": "pass_voidstartstar  43 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "name": "pass_voidstartstar",

@@ -64,13 +64,6 @@ void passCharPtrInOut(char *s)
 
 //----------------------------------------
 
-// start getCharPtr1
-const char * getCharPtr1(void)
-{
-    return static_char;
-}
-// end getCharPtr1
-
 // start getConstCharPtrLen
 const char *getConstCharPtrLen(void)
 {
@@ -78,26 +71,56 @@ const char *getConstCharPtrLen(void)
 }
 // end getConstCharPtrLen
 
-// start getConstCharPtrAsArg
-const char *getConstCharPtrAsArg(void)
+// start getConstCharPtrAlloc
+const char *getConstCharPtrAlloc(void)
 {
     return static_char;
 }
-// end getConstCharPtrAsArg
+// end getConstCharPtrAlloc
+
+// start getConstCharPtrPointer
+const char *getConstCharPtrPointer(void)
+{
+    return static_char;
+}
+// end getConstCharPtrPointer
 
 // +deref(raw)
-// start getCharPtr4
-const char * getCharPtr4(void)
+const char * getConstCharPtrRaw(void)
 {
     return static_char;
 }
-// end getCharPtr4
 
+//----------------------------------------
+// Return as argument in Fortran wrapper
 
-const char * getCharPtr5(void)
+// start getConstCharPtrAsCopyArg
+const char *getConstCharPtrAsCopyArg(void)
 {
     return static_char;
 }
+// end getConstCharPtrAsCopyArg
+
+// start getConstCharPtrAllocAsArg
+const char *getConstCharPtrAsAllocArg(void)
+{
+    return static_char;
+}
+// end getConstCharPtrAllocAsArg
+
+// start getConstCharPtrAsPointerArg
+const char *getConstCharPtrAsPointerArg(void)
+{
+    return static_char;
+}
+// end getConstCharPtrAsPointerArg
+
+// start getConstCharPtrAsRawArg
+const char *getConstCharPtrAsRawArg(void)
+{
+    return static_char;
+}
+// end getConstCharPtrAsRawArg
 
 //----------------------------------------
 

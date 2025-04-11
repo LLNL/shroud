@@ -121,13 +121,33 @@ another array.
    before calling the C++ function.  For example, using
    ``+intent(out)+rank(1)`` will have problems.
 
-``char *`` functions are treated differently.  By default **+deref**
+Function results
+----------------
+
+``char *`` functions have several options.  By default **+deref**
 attribute will be set to *allocatable*.  After the C++ function
 returns, a ``CHARACTER`` variable will be allocated and the contents
 copied.  This will convert a ``NULL`` terminated string into the
-proper length of Fortran variable.
-For very long strings or strings with embedded ``NULL``, **+deref(raw)**
-will return a ``type(C_PTR)``.
+proper length of Fortran variable. *+deref(pointer)* returns a pointer
+to the library's memory.
+
+For very long strings or strings with embedded ``NULL``,
+**+deref(raw)** will return a ``type(C_PTR)``. It is the caller's
+responsiblity to dereference the ``C_PTR``, typically by using the
+Fortran intrinsic ``c_f_pointer``.
+
+The default value of the *deref* attribute for ``char *`` and
+``std::string`` functions is controlled by the option
+**F_deref_func_character**.
+
+When the function has the *+funcarg* attribute, the function result
+will be returned in a function argument. Adding the *+deref(copy)*
+will use the type ``CHARACTER(*)`` for the argument. The C++ function
+return value will be copied into the argument. This avoid any issues
+with memory management since the caller provides the memory and works
+with any version of Fortran. However, if it is too short the result
+will be truncated.
+See example :ref:`getConstCharPtrAsCopyArg <example_getConstCharPtrAsCopyArg>`.
 
 .. deref(allocatable) allocate before or after call...
 
@@ -306,7 +326,7 @@ returns a pointer to a new string. From :file:`strings.yaml`:
 .. code-block:: yaml
 
     declarations:
-    - decl: const std::string * getConstStringPtrAlloc() +owner(library)
+    - decl: const std::string *getConstStringPtrAlloc() +owner(library)
 
 The C wrapper calls the function and saves the result along with
 metadata consisting of the address of the data within the

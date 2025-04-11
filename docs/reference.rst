@@ -957,12 +957,6 @@ C_result
     It must not be the same as any of the routines arguments.
     It defaults to *rv*.
 
-C_string_result_as_arg
-    The name of the output argument for string results.
-    Function which return ``char`` or ``std::string`` values return
-    the result in an additional argument in the C wrapper.
-    See also *F_string_result_as_arg*.
-
 c_temp
     Prefix for wrapper temporary working variables.
     Defaults to *SHT_*.
@@ -1061,12 +1055,6 @@ F_result
     The name of the Fortran wrapper's result variable.
     It must not be the same as any of the routines arguments.
     It defaults to *SHT_rv*  (Shroud temporary return value).
-
-F_string_result_as_arg
-    The name of the output argument.
-    Function which return a ``char *`` will instead be converted to a
-    subroutine which require an additional argument for the result.
-    See also *C_string_result_as_arg*.
 
 F_this
    Name of the Fortran argument which is the derived type
@@ -1368,8 +1356,7 @@ C_name
 
 C_prototype
     C prototype for the function.
-    This will include any arguments required by annotations or options,
-    such as length or **F_string_result_as_arg**.  
+    Take from the statements field *c_prototype*.
 
 .. uses tabs
 

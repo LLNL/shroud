@@ -67,40 +67,65 @@ declarations:
 ########################################
 # char * function
 
-- decl: const char * getCharPtr1()
-  doxygen:
-    description: |
-      Return an ALLOCATABLE CHARACTER from char *.
-  options:
-    literalinclude: True
-
 - decl: const char *getConstCharPtrLen() +len(30)
   doxygen:
     brief: return 'const char *' with fixed size (len=30)
   options:
     literalinclude: True
 
-- decl: const char *getConstCharPtrAsArg()
+- decl: const char * getConstCharPtrAlloc() +deref(allocatable)
   doxygen:
-    brief: return a 'const char *' as argument
+    description: |
+      Return an ALLOCATABLE CHARACTER from char *.
   options:
     literalinclude: True
-  format:
-    F_string_result_as_arg: output
 
-- decl: const char * getCharPtr4() +deref(raw)
-  doxygen:
-    brief: return a 'const char *' as type(C_PTR)
-  options:
-    wrap_python: False
-
-- decl: const char * getCharPtr5() +deref(pointer)
+- decl: const char * getConstCharPtrPointer() +deref(pointer)
   doxygen:
     brief: return a 'const char *' as character(:) pointer
   options:
     wrap_python: False
   cpp_if: ifdef HAVE_CHARACTER_POINTER_FUNCTION
 #    literalinclude: True
+
+- decl: const char * getConstCharPtrRaw() +deref(raw)
+  doxygen:
+    brief: return a 'const char *' as type(C_PTR)
+  options:
+    wrap_python: False
+
+#####
+# Return function result in an argument.
+
+- decl: const char *getConstCharPtrAsCopyArg() +funcarg+deref(copy)
+  doxygen:
+    brief: return a 'const char *' as argument
+  options:
+    literalinclude: True
+
+- decl: const char *getConstCharPtrAsAllocArg(void) +funcarg+deref(allocatable)
+  doxygen:
+    brief: return a 'const char *' as an allocatable argument
+  options:
+    literalinclude: True
+    wrap_c: False
+    wrap_python: False
+
+- decl: const char *getConstCharPtrAsPointerArg(void) +funcarg+deref(pointer)
+  doxygen:
+    brief: return a 'const char *' as an pointer argument
+  options:
+    literalinclude: True
+    wrap_c: False
+    wrap_python: False
+
+- decl: const char *getConstCharPtrAsRawArg(void) +funcarg+deref(raw)
+  doxygen:
+    brief: return a 'const char *' as a type(C_PTR) argument
+  options:
+    literalinclude: True
+    wrap_c: False
+    wrap_python: False
 
 #####
 - decl: char returnMany(int *arg1 +intent(out))

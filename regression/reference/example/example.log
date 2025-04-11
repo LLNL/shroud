@@ -14,8 +14,6 @@ C c int incrementCount(int incr)
 C f int incrementCount(int incr)
 C c const string &getNameErrorCheck(void) const
 C f const string &getNameErrorCheck(void) const
-C c const string &getNameArg(void) const
-C f const string &getNameArg(void) const
 C c int getValue(int value)
 C f int getValue(int value)
 C c long getValue(long value)
@@ -110,7 +108,6 @@ Fortran ExClass1(const string *name)
 Fortran ~ExClass1(void)
 Fortran int incrementCount(int incr)
 Fortran const string &getNameErrorCheck(void) const
-Fortran const string &getNameArg(void) const
 Fortran int getValue(int value)
 Fortran long getValue(long value)
 Fortran bool hasAddr(bool in)
@@ -123,8 +120,6 @@ C-interface f ~ExClass1(void)
 C-interface f int incrementCount(int incr)
 C-interface c const string &getNameErrorCheck(void) const
 C-interface f const string &getNameErrorCheck(void) const
-C-interface c const string &getNameArg(void) const
-C-interface f const string &getNameArg(void) const
 C-interface f int getValue(int value)
 C-interface f long getValue(long value)
 C-interface f bool hasAddr(bool in)
@@ -220,7 +215,6 @@ Python method ExClass1(const string *name)
 Python method ~ExClass1(void)
 Python method int incrementCount(int incr)
 Python method const string &getNameErrorCheck(void) const
-Python method const string &getNameArg(void) const
 Python method int getValue(int value)
 Python method long getValue(long value)
 Python method bool hasAddr(bool in)
@@ -270,7 +264,6 @@ Lua method ExClass1(const string *name)
 Lua method ~ExClass1(void)
 Lua method int incrementCount(int incr)
 Lua method const string &getNameErrorCheck(void) const
-Lua method const string &getNameArg(void) const
 Lua method int getValue(int value)
 Lua method long getValue(long value)
 Lua method bool hasAddr(bool in)

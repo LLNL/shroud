@@ -15,6 +15,9 @@ options:
   debug: True
   wrap_python: True
 
+format:
+  F_string_result_as_arg: output
+
 typemap:
 - typename: should-be-type
 - type: IndexType
@@ -144,4 +147,11 @@ declarations:
 - decl: void process_twostruct(twostruct<int, long> arg)
   cxx_template:
   - instantiation: <int, long>
-  
+
+####
+#
+
+# From char.yaml
+- decl: const char *getConstCharPtrAsCopyArg()
+  format:
+    F_string_result_as_arg: output

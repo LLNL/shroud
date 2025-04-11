@@ -211,35 +211,6 @@ module char_mod
     ! end c_pass_char_ptr_in_out_bufferify
 
     ! ----------------------------------------
-    ! Function:  const char *getCharPtr1
-    ! Statement: c_function_char*
-    ! start c_get_char_ptr1
-    interface
-        function c_get_char_ptr1() &
-                result(SHT_rv) &
-                bind(C, name="CHA_getCharPtr1")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR) :: SHT_rv
-        end function c_get_char_ptr1
-    end interface
-    ! end c_get_char_ptr1
-
-    ! ----------------------------------------
-    ! Function:  const char *getCharPtr1
-    ! Statement: f_function_char*_cdesc_allocatable
-    ! start c_get_char_ptr1_bufferify
-    interface
-        subroutine c_get_char_ptr1_bufferify(SHT_rv_cdesc) &
-                bind(C, name="CHA_getCharPtr1_bufferify")
-            import :: CHA_SHROUD_array
-            implicit none
-            type(CHA_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
-        end subroutine c_get_char_ptr1_bufferify
-    end interface
-    ! end c_get_char_ptr1_bufferify
-
-    ! ----------------------------------------
     ! Function:  const char *getConstCharPtrLen +len(30)
     ! Statement: c_function_char*
     ! start c_get_const_char_ptr_len
@@ -271,83 +242,156 @@ module char_mod
     ! end c_get_const_char_ptr_len_bufferify
 
     ! ----------------------------------------
-    ! Function:  const char *getConstCharPtrAsArg
+    ! Function:  const char *getConstCharPtrAlloc +deref(allocatable)
     ! Statement: c_function_char*
-    ! start c_get_const_char_ptr_as_arg
+    ! start c_get_const_char_ptr_alloc
     interface
-        function c_get_const_char_ptr_as_arg() &
+        function c_get_const_char_ptr_alloc() &
                 result(SHT_rv) &
-                bind(C, name="CHA_getConstCharPtrAsArg")
+                bind(C, name="CHA_getConstCharPtrAlloc")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) :: SHT_rv
-        end function c_get_const_char_ptr_as_arg
+        end function c_get_const_char_ptr_alloc
     end interface
-    ! end c_get_const_char_ptr_as_arg
+    ! end c_get_const_char_ptr_alloc
 
     ! ----------------------------------------
-    ! Function:  const char *getConstCharPtrAsArg
-    ! Statement: f_function_char*_buf_arg
-    ! start c_get_const_char_ptr_as_arg_bufferify
+    ! Function:  const char *getConstCharPtrAlloc +deref(allocatable)
+    ! Statement: f_function_char*_cdesc_allocatable
+    ! start c_get_const_char_ptr_alloc_bufferify
     interface
-        subroutine c_get_const_char_ptr_as_arg_bufferify(output, &
+        subroutine c_get_const_char_ptr_alloc_bufferify(SHT_rv_cdesc) &
+                bind(C, name="CHA_getConstCharPtrAlloc_bufferify")
+            import :: CHA_SHROUD_array
+            implicit none
+            type(CHA_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
+        end subroutine c_get_const_char_ptr_alloc_bufferify
+    end interface
+    ! end c_get_const_char_ptr_alloc_bufferify
+
+#ifdef HAVE_CHARACTER_POINTER_FUNCTION
+    ! ----------------------------------------
+    ! Function:  const char *getConstCharPtrPointer +deref(pointer)
+    ! Statement: c_function_char*
+    ! start c_get_const_char_ptr_pointer
+    interface
+        function c_get_const_char_ptr_pointer() &
+                result(SHT_rv) &
+                bind(C, name="CHA_getConstCharPtrPointer")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) :: SHT_rv
+        end function c_get_const_char_ptr_pointer
+    end interface
+    ! end c_get_const_char_ptr_pointer
+#endif
+
+#ifdef HAVE_CHARACTER_POINTER_FUNCTION
+    ! ----------------------------------------
+    ! Function:  const char *getConstCharPtrPointer +deref(pointer)
+    ! Statement: f_function_char*_cdesc_pointer
+    ! start c_get_const_char_ptr_pointer_bufferify
+    interface
+        subroutine c_get_const_char_ptr_pointer_bufferify(SHT_rv_cdesc) &
+                bind(C, name="CHA_getConstCharPtrPointer_bufferify")
+            import :: CHA_SHROUD_array
+            implicit none
+            type(CHA_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
+        end subroutine c_get_const_char_ptr_pointer_bufferify
+    end interface
+    ! end c_get_const_char_ptr_pointer_bufferify
+#endif
+
+    ! ----------------------------------------
+    ! Function:  const char *getConstCharPtrRaw +deref(raw)
+    ! Statement: f_function_char*_raw
+    ! start get_const_char_ptr_raw
+    interface
+        function get_const_char_ptr_raw() &
+                result(SHT_rv) &
+                bind(C, name="CHA_getConstCharPtrRaw")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) :: SHT_rv
+        end function get_const_char_ptr_raw
+    end interface
+    ! end get_const_char_ptr_raw
+
+    ! ----------------------------------------
+    ! Function:  const char *getConstCharPtrAsCopyArg +deref(copy)+funcarg
+    ! Statement: c_function_char*
+    ! start c_get_const_char_ptr_as_copy_arg
+    interface
+        function c_get_const_char_ptr_as_copy_arg() &
+                result(output) &
+                bind(C, name="CHA_getConstCharPtrAsCopyArg")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) :: output
+        end function c_get_const_char_ptr_as_copy_arg
+    end interface
+    ! end c_get_const_char_ptr_as_copy_arg
+
+    ! ----------------------------------------
+    ! Function:  const char *getConstCharPtrAsCopyArg +deref(copy)+funcarg
+    ! Statement: f_function_char*_buf_funcarg_copy
+    ! start c_get_const_char_ptr_as_copy_arg_bufferify
+    interface
+        subroutine c_get_const_char_ptr_as_copy_arg_bufferify(output, &
                 noutput) &
-                bind(C, name="CHA_getConstCharPtrAsArg_bufferify")
+                bind(C, name="CHA_getConstCharPtrAsCopyArg_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             character(kind=C_CHAR), intent(OUT) :: output(*)
             integer(C_INT), value, intent(IN) :: noutput
-        end subroutine c_get_const_char_ptr_as_arg_bufferify
+        end subroutine c_get_const_char_ptr_as_copy_arg_bufferify
     end interface
-    ! end c_get_const_char_ptr_as_arg_bufferify
+    ! end c_get_const_char_ptr_as_copy_arg_bufferify
 
     ! ----------------------------------------
-    ! Function:  const char *getCharPtr4 +deref(raw)
-    ! Statement: f_function_char*_raw
-    ! start get_char_ptr4
+    ! Function:  const char *getConstCharPtrAsAllocArg +deref(allocatable)+funcarg
+    ! Statement: f_function_char*_cdesc_funcarg_allocatable
+    ! start c_get_const_char_ptr_as_alloc_arg_bufferify
     interface
-        function get_char_ptr4() &
-                result(SHT_rv) &
-                bind(C, name="CHA_getCharPtr4")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR) :: SHT_rv
-        end function get_char_ptr4
-    end interface
-    ! end get_char_ptr4
-
-#ifdef HAVE_CHARACTER_POINTER_FUNCTION
-    ! ----------------------------------------
-    ! Function:  const char *getCharPtr5 +deref(pointer)
-    ! Statement: c_function_char*
-    ! start c_get_char_ptr5
-    interface
-        function c_get_char_ptr5() &
-                result(SHT_rv) &
-                bind(C, name="CHA_getCharPtr5")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR) :: SHT_rv
-        end function c_get_char_ptr5
-    end interface
-    ! end c_get_char_ptr5
-#endif
-
-#ifdef HAVE_CHARACTER_POINTER_FUNCTION
-    ! ----------------------------------------
-    ! Function:  const char *getCharPtr5 +deref(pointer)
-    ! Statement: f_function_char*_cdesc_pointer
-    ! start c_get_char_ptr5_bufferify
-    interface
-        subroutine c_get_char_ptr5_bufferify(SHT_rv_cdesc) &
-                bind(C, name="CHA_getCharPtr5_bufferify")
+        subroutine c_get_const_char_ptr_as_alloc_arg_bufferify( &
+                SHT_rv_cdesc) &
+                bind(C, name="CHA_getConstCharPtrAsAllocArg_bufferify")
             import :: CHA_SHROUD_array
             implicit none
             type(CHA_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
-        end subroutine c_get_char_ptr5_bufferify
+        end subroutine c_get_const_char_ptr_as_alloc_arg_bufferify
     end interface
-    ! end c_get_char_ptr5_bufferify
-#endif
+    ! end c_get_const_char_ptr_as_alloc_arg_bufferify
+
+    ! ----------------------------------------
+    ! Function:  const char *getConstCharPtrAsPointerArg +deref(pointer)+funcarg
+    ! Statement: f_function_char*_cdesc_funcarg_pointer
+    ! start c_get_const_char_ptr_as_pointer_arg_bufferify
+    interface
+        subroutine c_get_const_char_ptr_as_pointer_arg_bufferify( &
+                SHT_rv_cdesc) &
+                bind(C, name="CHA_getConstCharPtrAsPointerArg_bufferify")
+            import :: CHA_SHROUD_array
+            implicit none
+            type(CHA_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
+        end subroutine c_get_const_char_ptr_as_pointer_arg_bufferify
+    end interface
+    ! end c_get_const_char_ptr_as_pointer_arg_bufferify
+
+    ! ----------------------------------------
+    ! Function:  const char *getConstCharPtrAsRawArg +deref(raw)+funcarg
+    ! Statement: f_function_char*_funcarg_raw
+    ! start get_const_char_ptr_as_raw_arg
+    interface
+        subroutine get_const_char_ptr_as_raw_arg(output) &
+                bind(C, name="CHA_getConstCharPtrAsRawArg_bufferify")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR), intent(OUT) :: output
+        end subroutine get_const_char_ptr_as_raw_arg
+    end interface
+    ! end get_const_char_ptr_as_raw_arg
 
     ! ----------------------------------------
     ! Function:  void explicit1
@@ -903,26 +947,6 @@ contains
     ! end pass_char_ptr_in_out
 
     ! ----------------------------------------
-    ! Function:  const char *getCharPtr1
-    ! Statement: f_function_char*_cdesc_allocatable
-    !>
-    !! Return an ALLOCATABLE CHARACTER from char *.
-    !<
-    ! start get_char_ptr1
-    function get_char_ptr1() &
-            result(SHT_rv)
-        character(len=:), allocatable :: SHT_rv
-        ! splicer begin function.get_char_ptr1
-        type(CHA_SHROUD_array) :: SHT_rv_cdesc
-        call c_get_char_ptr1_bufferify(SHT_rv_cdesc)
-        allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
-        call CHA_SHROUD_copy_string(SHT_rv_cdesc, SHT_rv, &
-            SHT_rv_cdesc%elem_len)
-        ! splicer end function.get_char_ptr1
-    end function get_char_ptr1
-    ! end get_char_ptr1
-
-    ! ----------------------------------------
     ! Function:  const char *getConstCharPtrLen +len(30)
     ! Statement: f_function_char*_buf_copy
     !>
@@ -943,64 +967,142 @@ contains
     ! end get_const_char_ptr_len
 
     ! ----------------------------------------
-    ! Function:  const char *getConstCharPtrAsArg
-    ! Statement: f_function_char*_buf_arg
+    ! Function:  const char *getConstCharPtrAlloc +deref(allocatable)
+    ! Statement: f_function_char*_cdesc_allocatable
     !>
-    !! \brief return a 'const char *' as argument
-    !!
+    !! Return an ALLOCATABLE CHARACTER from char *.
     !<
-    ! start get_const_char_ptr_as_arg
-    subroutine get_const_char_ptr_as_arg(output)
-        use iso_c_binding, only : C_INT
-        character(len=*), intent(OUT) :: output
-        ! splicer begin function.get_const_char_ptr_as_arg
-        integer(C_INT) noutput
-        noutput = len(output, kind=C_INT)
-        call c_get_const_char_ptr_as_arg_bufferify(output, noutput)
-        ! splicer end function.get_const_char_ptr_as_arg
-    end subroutine get_const_char_ptr_as_arg
-    ! end get_const_char_ptr_as_arg
-
-#if 0
-    ! Only the interface is needed
-    ! ----------------------------------------
-    ! Function:  const char *getCharPtr4 +deref(raw)
-    ! Statement: f_function_char*_raw
-    !>
-    !! \brief return a 'const char *' as type(C_PTR)
-    !!
-    !<
-    ! start get_char_ptr4
-    function get_char_ptr4() &
+    ! start get_const_char_ptr_alloc
+    function get_const_char_ptr_alloc() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
-        type(C_PTR) :: SHT_rv
-        ! splicer begin function.get_char_ptr4
-        SHT_rv = c_get_char_ptr4()
-        ! splicer end function.get_char_ptr4
-    end function get_char_ptr4
-    ! end get_char_ptr4
-#endif
+        character(len=:), allocatable :: SHT_rv
+        ! splicer begin function.get_const_char_ptr_alloc
+        type(CHA_SHROUD_array) :: SHT_rv_cdesc
+        call c_get_const_char_ptr_alloc_bufferify(SHT_rv_cdesc)
+        allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
+        call CHA_SHROUD_copy_string(SHT_rv_cdesc, SHT_rv, &
+            SHT_rv_cdesc%elem_len)
+        ! splicer end function.get_const_char_ptr_alloc
+    end function get_const_char_ptr_alloc
+    ! end get_const_char_ptr_alloc
 
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
     ! ----------------------------------------
-    ! Function:  const char *getCharPtr5 +deref(pointer)
+    ! Function:  const char *getConstCharPtrPointer +deref(pointer)
     ! Statement: f_function_char*_cdesc_pointer
     !>
     !! \brief return a 'const char *' as character(:) pointer
     !!
     !<
-    ! start get_char_ptr5
-    function get_char_ptr5() &
+    ! start get_const_char_ptr_pointer
+    function get_const_char_ptr_pointer() &
             result(SHT_rv)
         character(len=:), pointer :: SHT_rv
-        ! splicer begin function.get_char_ptr5
+        ! splicer begin function.get_const_char_ptr_pointer
         type(CHA_SHROUD_array) :: SHT_rv_cdesc
-        call c_get_char_ptr5_bufferify(SHT_rv_cdesc)
+        call c_get_const_char_ptr_pointer_bufferify(SHT_rv_cdesc)
         call CHA_SHROUD_pointer_string(SHT_rv_cdesc, SHT_rv)
-        ! splicer end function.get_char_ptr5
-    end function get_char_ptr5
-    ! end get_char_ptr5
+        ! splicer end function.get_const_char_ptr_pointer
+    end function get_const_char_ptr_pointer
+    ! end get_const_char_ptr_pointer
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  const char *getConstCharPtrRaw +deref(raw)
+    ! Statement: f_function_char*_raw
+    !>
+    !! \brief return a 'const char *' as type(C_PTR)
+    !!
+    !<
+    ! start get_const_char_ptr_raw
+    function get_const_char_ptr_raw() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_PTR
+        type(C_PTR) :: SHT_rv
+        ! splicer begin function.get_const_char_ptr_raw
+        SHT_rv = c_get_const_char_ptr_raw()
+        ! splicer end function.get_const_char_ptr_raw
+    end function get_const_char_ptr_raw
+    ! end get_const_char_ptr_raw
+#endif
+
+    ! ----------------------------------------
+    ! Function:  const char *getConstCharPtrAsCopyArg +deref(copy)+funcarg
+    ! Statement: f_function_char*_buf_funcarg_copy
+    !>
+    !! \brief return a 'const char *' as argument
+    !!
+    !<
+    ! start get_const_char_ptr_as_copy_arg
+    subroutine get_const_char_ptr_as_copy_arg(output)
+        use iso_c_binding, only : C_INT
+        character(len=*), intent(OUT) :: output
+        ! splicer begin function.get_const_char_ptr_as_copy_arg
+        integer(C_INT) noutput
+        noutput = len(output, kind=C_INT)
+        call c_get_const_char_ptr_as_copy_arg_bufferify(output, noutput)
+        ! splicer end function.get_const_char_ptr_as_copy_arg
+    end subroutine get_const_char_ptr_as_copy_arg
+    ! end get_const_char_ptr_as_copy_arg
+
+    ! ----------------------------------------
+    ! Function:  const char *getConstCharPtrAsAllocArg +deref(allocatable)+funcarg
+    ! Statement: f_function_char*_cdesc_funcarg_allocatable
+    !>
+    !! \brief return a 'const char *' as an allocatable argument
+    !!
+    !<
+    ! start get_const_char_ptr_as_alloc_arg
+    subroutine get_const_char_ptr_as_alloc_arg(output)
+        character(len=:), intent(OUT), allocatable :: output
+        ! splicer begin function.get_const_char_ptr_as_alloc_arg
+        type(CHA_SHROUD_array) :: SHT_rv_cdesc
+        call c_get_const_char_ptr_as_alloc_arg_bufferify(SHT_rv_cdesc)
+        allocate(character(len=SHT_rv_cdesc%elem_len):: output)
+        call CHA_SHROUD_copy_string(SHT_rv_cdesc, output, &
+            SHT_rv_cdesc%elem_len)
+        ! splicer end function.get_const_char_ptr_as_alloc_arg
+    end subroutine get_const_char_ptr_as_alloc_arg
+    ! end get_const_char_ptr_as_alloc_arg
+
+    ! ----------------------------------------
+    ! Function:  const char *getConstCharPtrAsPointerArg +deref(pointer)+funcarg
+    ! Statement: f_function_char*_cdesc_funcarg_pointer
+    !>
+    !! \brief return a 'const char *' as an pointer argument
+    !!
+    !<
+    ! start get_const_char_ptr_as_pointer_arg
+    subroutine get_const_char_ptr_as_pointer_arg(output)
+        character(len=:), intent(OUT), pointer :: output
+        ! splicer begin function.get_const_char_ptr_as_pointer_arg
+        type(CHA_SHROUD_array) :: SHT_rv_cdesc
+        call c_get_const_char_ptr_as_pointer_arg_bufferify(SHT_rv_cdesc)
+        call CHA_SHROUD_pointer_string(SHT_rv_cdesc, output)
+        ! splicer end function.get_const_char_ptr_as_pointer_arg
+    end subroutine get_const_char_ptr_as_pointer_arg
+    ! end get_const_char_ptr_as_pointer_arg
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  const char *getConstCharPtrAsRawArg +deref(raw)+funcarg
+    ! Statement: f_function_char*_funcarg_raw
+    !>
+    !! \brief return a 'const char *' as a type(C_PTR) argument
+    !!
+    !<
+    ! start get_const_char_ptr_as_raw_arg
+    subroutine get_const_char_ptr_as_raw_arg(output)
+        use iso_c_binding, only : C_PTR
+        type(C_PTR), intent(OUT) :: output
+        ! splicer begin function.get_const_char_ptr_as_raw_arg
+        call c_get_const_char_ptr_as_raw_arg_bufferify(output)
+        ! splicer end function.get_const_char_ptr_as_raw_arg
+    end subroutine get_const_char_ptr_as_raw_arg
+    ! end get_const_char_ptr_as_raw_arg
 #endif
 
     ! ----------------------------------------

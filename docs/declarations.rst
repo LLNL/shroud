@@ -265,27 +265,28 @@ Shroud provides several options to provide a more idiomatic usage.
 Each of these declaration call identical C++ functions but they are
 wrapped differently.
 
-``char *getCharPtr1``
-    Return a pointer and convert into an ``ALLOCATABLE`` ``CHARACTER``
-    variable.  Fortran 2003 is required. The Fortran application is
-    responsible to release the memory.  However, this may be done
-    automatically by the Fortran runtime.
-    See example :ref:`getCharPtr1 <example_getCharPtr1>`.
-
-``char *getConstCharPtrLen``
+``char *getConstCharPtrLen(void)  +len(30)``
     Create a Fortran function which returns a predefined ``CHARACTER`` 
     value.  The size is determined by the *len* argument on the function.
     This is useful when the maximum size is already known.
     Works with Fortran 90.
     See example :ref:`getConstCharPtrLen <example_getConstCharPtrLen>`.
 
-``char *getConstCharPtrAsArg``
+``char *getConstCharPtrAlloc(void)``
+    Return a pointer and convert into an ``ALLOCATABLE`` ``CHARACTER``
+    variable.  Fortran 2003 is required. The Fortran application is
+    responsible to release the memory.  However, this may be done
+    automatically by the Fortran runtime.
+    See example :ref:`getConstCharPtrAlloc <example_getConstCharPtrAlloc>`.
+
+``char *getConstCharPtrAsCopyArg(void) +funcarg+deref(copy)``
     Create a Fortran subroutine with an additional ``CHARACTER``
     argument for the C function result. Any size character string can
-    be returned limited by the size of the Fortran argument.  The
-    argument is defined by the *F_string_result_as_arg* format string.
-    Works with Fortran 90.
-    See example :ref:`getConstCharPtrAsArg <example_getConstCharPtrAsArg>`.
+    be returned limited by the size of the Fortran argument. The
+    argument is defined by the *+funcarg(output)* format string.
+    If no name is provided with *+funcarg* then option **F_result_as_arg**
+    is used.
+    See example :ref:`getConstCharPtrAsCopyArg <example_getConstCharPtrAsCopyArg>`.
 
 
 .. XXX returning a scalar char will pass the result to the C wrapper

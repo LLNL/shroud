@@ -23,22 +23,6 @@
 extern "C" {
 
 
-// helper ShroudCharCopy
-// Copy src into dest, blank fill to ndest characters
-// Truncate if dest is too short.
-// dest will not be NULL terminated.
-static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
-{
-    if (src == NULL) {
-        std::memset(dest,' ',ndest); // convert NULL pointer to blank filled string
-    } else {
-        if (nsrc < 0) nsrc = std::strlen(src);
-        int nm = nsrc < ndest ? nsrc : ndest;
-        std::memcpy(dest,src,nm);
-        if(ndest > nm) std::memset(dest+nm,' ',ndest-nm); // blank fill
-    }
-}
-
 // helper char_len_trim
 // Returns the length of character string src with length nsrc,
 // ignoring any trailing blanks.
@@ -224,40 +208,6 @@ void AA_example_nested_ExClass1_getNameErrorCheck_bufferify(
     SHT_rv_capsule->addr  = const_cast<std::string *>(&SHC_rv_cxx);
     SHT_rv_capsule->idtor = 0;
     // splicer end namespace.example::nested.class.ExClass1.method.getNameErrorCheck_bufferify
-}
-
-// ----------------------------------------
-// Function:  const string &getNameArg
-// Statement: c_function_string&
-const char * AA_example_nested_ExClass1_getNameArg(
-    const AA_example_nested_ExClass1 * self)
-{
-    const example::nested::ExClass1 *SH_this =
-        static_cast<const example::nested::ExClass1 *>(self->addr);
-    // splicer begin namespace.example::nested.class.ExClass1.method.getNameArg
-    const std::string &SHC_rv_cxx = SH_this->getNameArg();
-    const char *SHC_rv = SHC_rv_cxx.c_str();
-    return SHC_rv;
-    // splicer end namespace.example::nested.class.ExClass1.method.getNameArg
-}
-
-// ----------------------------------------
-// Function:  const string &getNameArg
-// Statement: f_function_string&_buf_arg
-void AA_example_nested_ExClass1_getNameArg_bufferify(
-    const AA_example_nested_ExClass1 * self, char *name, int nname)
-{
-    const example::nested::ExClass1 *SH_this =
-        static_cast<const example::nested::ExClass1 *>(self->addr);
-    // splicer begin namespace.example::nested.class.ExClass1.method.getNameArg_bufferify
-    const std::string &SHC_rv_cxx = SH_this->getNameArg();
-    if (SHC_rv_cxx.empty()) {
-        ShroudCharCopy(name, nname, nullptr, 0);
-    } else {
-        ShroudCharCopy(name, nname, SHC_rv_cxx.data(),
-            SHC_rv_cxx.size());
-    }
-    // splicer end namespace.example::nested.class.ExClass1.method.getNameArg_bufferify
 }
 
 // ----------------------------------------

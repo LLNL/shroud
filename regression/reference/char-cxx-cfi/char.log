@@ -11,16 +11,19 @@ C c void passCharPtr(char *dest +charlen(40)+intent(out), const char *src)
 C f void passCharPtr(char *dest +charlen(40)+intent(out), const char *src)
 C c void passCharPtrInOut(char *s +intent(inout))
 C f void passCharPtrInOut(char *s +intent(inout))
-C c const char *getCharPtr1(void)
-C f const char *getCharPtr1(void)
 C c const char *getConstCharPtrLen(void) +len(30)
 C f const char *getConstCharPtrLen(void) +len(30)
-C c const char *getConstCharPtrAsArg(void)
-C f const char *getConstCharPtrAsArg(void)
-C c const char *getCharPtr4(void) +deref(raw)
-C f const char *getCharPtr4(void) +deref(raw)
-C c const char *getCharPtr5(void) +deref(pointer)
-C f const char *getCharPtr5(void) +deref(pointer)
+C c const char *getConstCharPtrAlloc(void) +deref(allocatable)
+C f const char *getConstCharPtrAlloc(void) +deref(allocatable)
+C c const char *getConstCharPtrPointer(void) +deref(pointer)
+C f const char *getConstCharPtrPointer(void) +deref(pointer)
+C c const char *getConstCharPtrRaw(void) +deref(raw)
+C f const char *getConstCharPtrRaw(void) +deref(raw)
+C c const char *getConstCharPtrAsCopyArg(void) +deref(copy)+funcarg
+C f const char *getConstCharPtrAsCopyArg(void) +deref(copy)+funcarg
+C f const char *getConstCharPtrAsAllocArg(void) +deref(allocatable)+funcarg
+C f const char *getConstCharPtrAsPointerArg(void) +deref(pointer)+funcarg
+C f const char *getConstCharPtrAsRawArg(void) +deref(raw)+funcarg
 C c void explicit1(char *name +intent(in)+len_trim(AAlen))
 C f void explicit1(char *name +intent(in)+len_trim(AAlen))
 C c void explicit2(char *name +intent(out)+len(AAtrim))
@@ -55,11 +58,14 @@ Fortran void passCharForce(char status)
 Fortran char returnChar(void)
 Fortran void passCharPtr(char *dest +charlen(40)+intent(out), const char *src)
 Fortran void passCharPtrInOut(char *s +intent(inout))
-Fortran const char *getCharPtr1(void)
 Fortran const char *getConstCharPtrLen(void) +len(30)
-Fortran const char *getConstCharPtrAsArg(void)
-Fortran const char *getCharPtr4(void) +deref(raw)
-Fortran const char *getCharPtr5(void) +deref(pointer)
+Fortran const char *getConstCharPtrAlloc(void) +deref(allocatable)
+Fortran const char *getConstCharPtrPointer(void) +deref(pointer)
+Fortran const char *getConstCharPtrRaw(void) +deref(raw)
+Fortran const char *getConstCharPtrAsCopyArg(void) +deref(copy)+funcarg
+Fortran const char *getConstCharPtrAsAllocArg(void) +deref(allocatable)+funcarg
+Fortran const char *getConstCharPtrAsPointerArg(void) +deref(pointer)+funcarg
+Fortran const char *getConstCharPtrAsRawArg(void) +deref(raw)+funcarg
 Fortran void explicit1(char *name +intent(in)+len_trim(AAlen))
 Fortran void explicit2(char *name +intent(out)+len(AAtrim))
 Fortran void CpassChar(char status)
@@ -81,15 +87,18 @@ C-interface c void passCharPtr(char *dest +charlen(40)+intent(out), const char *
 C-interface f void passCharPtr(char *dest +charlen(40)+intent(out), const char *src)
 C-interface c void passCharPtrInOut(char *s +intent(inout))
 C-interface f void passCharPtrInOut(char *s +intent(inout))
-C-interface c const char *getCharPtr1(void)
-C-interface f const char *getCharPtr1(void)
 C-interface c const char *getConstCharPtrLen(void) +len(30)
 C-interface f const char *getConstCharPtrLen(void) +len(30)
-C-interface c const char *getConstCharPtrAsArg(void)
-C-interface f const char *getConstCharPtrAsArg(void)
-C-interface f const char *getCharPtr4(void) +deref(raw)
-C-interface c const char *getCharPtr5(void) +deref(pointer)
-C-interface f const char *getCharPtr5(void) +deref(pointer)
+C-interface c const char *getConstCharPtrAlloc(void) +deref(allocatable)
+C-interface f const char *getConstCharPtrAlloc(void) +deref(allocatable)
+C-interface c const char *getConstCharPtrPointer(void) +deref(pointer)
+C-interface f const char *getConstCharPtrPointer(void) +deref(pointer)
+C-interface f const char *getConstCharPtrRaw(void) +deref(raw)
+C-interface c const char *getConstCharPtrAsCopyArg(void) +deref(copy)+funcarg
+C-interface f const char *getConstCharPtrAsCopyArg(void) +deref(copy)+funcarg
+C-interface f const char *getConstCharPtrAsAllocArg(void) +deref(allocatable)+funcarg
+C-interface f const char *getConstCharPtrAsPointerArg(void) +deref(pointer)+funcarg
+C-interface f const char *getConstCharPtrAsRawArg(void) +deref(raw)+funcarg
 C-interface c void explicit1(char *name +intent(in)+len_trim(AAlen))
 C-interface f void explicit1(char *name +intent(in)+len_trim(AAlen))
 C-interface c void explicit2(char *name +intent(out)+len(AAtrim))

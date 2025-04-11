@@ -86,7 +86,6 @@ module userlibrary_example_nested_mod
         procedure :: delete => ex_class1_dtor
         procedure :: increment_count => ex_class1_increment_count
         procedure :: get_name_error_check => ex_class1_get_name_error_check
-        procedure :: get_name_arg => ex_class1_get_name_arg
         procedure :: get_value_from_int => ex_class1_get_value_from_int
         procedure :: get_value_1 => ex_class1_get_value_1
         procedure :: has_addr => ex_class1_has_addr
@@ -355,32 +354,6 @@ module userlibrary_example_nested_mod
             type(AA_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
             type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
         end subroutine c_ex_class1_get_name_error_check_bufferify
-
-        ! ----------------------------------------
-        ! Function:  const string &getNameArg
-        ! Statement: c_function_string&
-        pure function c_ex_class1_get_name_arg(self) &
-                result(SHT_rv) &
-                bind(C, name="AA_example_nested_ExClass1_getNameArg")
-            use iso_c_binding, only : C_PTR
-            import :: AA_SHROUD_capsule_data
-            implicit none
-            type(AA_SHROUD_capsule_data), intent(IN) :: self
-            type(C_PTR) :: SHT_rv
-        end function c_ex_class1_get_name_arg
-
-        ! ----------------------------------------
-        ! Function:  const string &getNameArg
-        ! Statement: f_function_string&_buf_arg
-        subroutine c_ex_class1_get_name_arg_bufferify(self, name, nname) &
-                bind(C, name="AA_example_nested_ExClass1_getNameArg_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
-            import :: AA_SHROUD_capsule_data
-            implicit none
-            type(AA_SHROUD_capsule_data), intent(IN) :: self
-            character(kind=C_CHAR), intent(OUT) :: name(*)
-            integer(C_INT), value, intent(IN) :: nname
-        end subroutine c_ex_class1_get_name_arg_bufferify
 
         ! ----------------------------------------
         ! Function:  int getValue
@@ -1292,20 +1265,6 @@ contains
         call AA_SHROUD_capsule_dtor(SHT_rv_capsule)
         ! splicer end namespace.example::nested.class.ExClass1.method.get_name_error_check
     end function ex_class1_get_name_error_check
-
-    ! ----------------------------------------
-    ! Function:  const string &getNameArg
-    ! Statement: f_function_string&_buf_arg
-    subroutine ex_class1_get_name_arg(obj, name)
-        use iso_c_binding, only : C_INT
-        class(ex_class1), intent(IN) :: obj
-        character(len=*), intent(OUT) :: name
-        ! splicer begin namespace.example::nested.class.ExClass1.method.get_name_arg
-        integer(C_INT) nname
-        nname = len(name, kind=C_INT)
-        call c_ex_class1_get_name_arg_bufferify(obj%cxxmem, name, nname)
-        ! splicer end namespace.example::nested.class.ExClass1.method.get_name_arg
-    end subroutine ex_class1_get_name_arg
 
     ! ----------------------------------------
     ! Function:  int getValue

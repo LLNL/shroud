@@ -140,8 +140,8 @@ void STR_getConstStringLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
  *
  */
 // ----------------------------------------
-// Function:  const string getConstStringAsArg
-// Statement: f_function_string_cfi_arg
+// Function:  const string getConstStringAsArg +deref(copy)+funcarg
+// Statement: f_function_string_cfi_funcarg_copy
 void STR_getConstStringAsArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringAsArg_CFI
@@ -149,11 +149,11 @@ void STR_getConstStringAsArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
     // C_error_pattern
     // Some error code for buf
 
-    char *output = static_cast<char *>(SHT_rv_cfi->base_addr);
+    char *SHC_rv = static_cast<char *>(SHT_rv_cfi->base_addr);
     if (SHC_rv_cxx.empty()) {
-        ShroudCharCopy(output, SHT_rv_cfi->elem_len, nullptr, 0);
+        ShroudCharCopy(SHC_rv, SHT_rv_cfi->elem_len, nullptr, 0);
     } else {
-        ShroudCharCopy(output, SHT_rv_cfi->elem_len, SHC_rv_cxx.data(),
+        ShroudCharCopy(SHC_rv, SHT_rv_cfi->elem_len, SHC_rv_cxx.data(),
             SHC_rv_cxx.size());
     }
     // splicer end function.getConstStringAsArg_CFI
@@ -273,7 +273,7 @@ void STR_getConstStringRefLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
  * The length of the output variable is declared by the caller.
  */
 // ----------------------------------------
-// Function:  const string &getConstStringRefAsArg
+// Function:  const string &getConstStringRefAsArg +deref(copy)+funcarg
 // Statement: c_function_string&
 const char * STR_getConstStringRefAsArg(void)
 {
@@ -296,8 +296,8 @@ const char * STR_getConstStringRefAsArg(void)
  * The length of the output variable is declared by the caller.
  */
 // ----------------------------------------
-// Function:  const string &getConstStringRefAsArg
-// Statement: f_function_string&_cfi_arg
+// Function:  const string &getConstStringRefAsArg +deref(copy)+funcarg
+// Statement: f_function_string&_cfi_funcarg_copy
 void STR_getConstStringRefAsArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringRefAsArg_CFI
@@ -305,11 +305,11 @@ void STR_getConstStringRefAsArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
     // C_error_pattern
     // Some error code for buf
 
-    char *output = static_cast<char *>(SHT_rv_cfi->base_addr);
+    char *SHC_rv = static_cast<char *>(SHT_rv_cfi->base_addr);
     if (SHC_rv_cxx.empty()) {
-        ShroudCharCopy(output, SHT_rv_cfi->elem_len, nullptr, 0);
+        ShroudCharCopy(SHC_rv, SHT_rv_cfi->elem_len, nullptr, 0);
     } else {
-        ShroudCharCopy(output, SHT_rv_cfi->elem_len, SHC_rv_cxx.data(),
+        ShroudCharCopy(SHC_rv, SHT_rv_cfi->elem_len, SHC_rv_cxx.data(),
             SHC_rv_cxx.size());
     }
     // splicer end function.getConstStringRefAsArg_CFI

@@ -87,11 +87,6 @@ declarations:
 
       - decl: const string& getNameErrorCheck() const
 
-      - decl: const string& getNameArg() const
-      # This function will convert the return value into a argument
-        format:
-           F_string_result_as_arg: name
-
       - decl: int  getValue(int value)
         format:
           function_suffix: _from_int
