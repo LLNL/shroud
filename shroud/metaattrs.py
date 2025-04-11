@@ -505,37 +505,29 @@ class FillMeta(object):
         # Check if result needs to be an argument.
 
         if node.options.F_CFI:
-            result_as_arg = ""  # Only applies to string functions
             cfi_result = False
             if ntypemap.sgroup == "string":
                 cfi_result   = "cfi"
-                result_as_arg = fmt_func.F_string_result_as_arg
             elif ntypemap.sgroup == "char" and is_ptr:
                 cfi_result   = "cfi"
-                result_as_arg = fmt_func.F_string_result_as_arg
             elif meta["deref"] in ["allocatable", "pointer"]:
                 cfi_result   = "cfi"
             if cfi_result:
-                if result_as_arg:
-                    meta["deref"] = "arg"
                 meta["api"] = "cfi"
                 return
         
-        result_as_arg = ""  # Only applies to string functions
         need_buf_result = None
         if ntypemap.sgroup == "string":
             if meta["deref"] in ["allocatable", "pointer", "scalar"]:
                 need_buf_result = "cdesc"
             else:
                 need_buf_result = "buf"
-            result_as_arg = fmt_func.F_string_result_as_arg
         elif ntypemap.sgroup == "char" and is_ptr:
             if meta["deref"] in ["allocatable", "pointer"]:
                 # Result default to "allocatable".
                 need_buf_result = "cdesc"
             else:
                 need_buf_result = "buf"
-            result_as_arg = fmt_func.F_string_result_as_arg
         elif ntypemap.base == "struct":
             if is_ptr:
                 need_buf_result = "cdesc"
@@ -548,9 +540,6 @@ class FillMeta(object):
                     need_buf_result = "cdesc"
         if need_buf_result:
             meta["api"] = need_buf_result
-        if result_as_arg:
-            meta["deref"] = "arg"
-            meta["api"] = "buf"
 
     def set_func_post_c(self, cls, node, meta):
         """Final check on metaattributes for C.

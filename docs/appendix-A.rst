@@ -1429,7 +1429,9 @@ getConstCharPtrAsCopyArg
 Create a Fortran subroutine with an additional ``CHARACTER``
 argument for the C function result. Any size character string can
 be returned limited by the size of the Fortran argument.  The
-argument is defined by the *F_string_result_as_arg* format string.
+argument is defined by the *+funcarg(output)* format string.
+If no name is provided with *+funcarg* then option **F_result_as_arg**
+is used.
 
 C++ library function in :file:`char.c`:
 
@@ -1443,8 +1445,7 @@ C++ library function in :file:`char.c`:
 .. code-block:: yaml
 
     - decl: const char *getConstCharPtrAsCopyArg()
-      format:
-        F_string_result_as_arg: output
+               +funcarg(output)+deref(copy)
 
 The C wrapper:
 

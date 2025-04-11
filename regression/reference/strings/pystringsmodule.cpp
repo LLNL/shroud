@@ -163,7 +163,7 @@ PY_getConstStringLen(
 }
 
 // ----------------------------------------
-// Function:  const string getConstStringAsArg
+// Function:  const string getConstStringAsArg +deref(copy)+funcarg
 // Statement: py_function_string
 static char PY_getConstStringAsArg__doc__[] =
 "documentation"
@@ -282,7 +282,7 @@ PY_getConstStringRefLen(
 }
 
 // ----------------------------------------
-// Function:  const string &getConstStringRefAsArg
+// Function:  const string &getConstStringRefAsArg +deref(copy)+funcarg
 // Statement: py_function_string&
 static char PY_getConstStringRefAsArg__doc__[] =
 "documentation"

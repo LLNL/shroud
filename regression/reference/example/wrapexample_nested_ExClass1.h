@@ -57,12 +57,6 @@ void AA_example_nested_ExClass1_getNameErrorCheck_bufferify(
     AA_SHROUD_array *SHT_rv_cdesc,
     AA_SHROUD_capsule_data *SHT_rv_capsule);
 
-const char * AA_example_nested_ExClass1_getNameArg(
-    const AA_example_nested_ExClass1 * self);
-
-void AA_example_nested_ExClass1_getNameArg_bufferify(
-    const AA_example_nested_ExClass1 * self, char *name, int nname);
-
 int AA_example_nested_ExClass1_getValue_from_int(
     AA_example_nested_ExClass1 * self, int value);
 

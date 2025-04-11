@@ -420,7 +420,7 @@ const char * CHA_getConstCharPtrRaw(void)
  *
  */
 // ----------------------------------------
-// Function:  const char *getConstCharPtrAsCopyArg
+// Function:  const char *getConstCharPtrAsCopyArg +deref(copy)+funcarg
 // Statement: c_function_char*
 // start CHA_getConstCharPtrAsCopyArg
 const char * CHA_getConstCharPtrAsCopyArg(void)
@@ -437,14 +437,14 @@ const char * CHA_getConstCharPtrAsCopyArg(void)
  *
  */
 // ----------------------------------------
-// Function:  const char *getConstCharPtrAsCopyArg
-// Statement: f_function_char*_buf_arg
+// Function:  const char *getConstCharPtrAsCopyArg +deref(copy)+funcarg
+// Statement: f_function_char*_buf_funcarg_copy
 // start CHA_getConstCharPtrAsCopyArg_bufferify
-void CHA_getConstCharPtrAsCopyArg_bufferify(char *output, int noutput)
+void CHA_getConstCharPtrAsCopyArg_bufferify(char *SHC_rv, int nSHC_rv)
 {
     // splicer begin function.getConstCharPtrAsCopyArg_bufferify
     const char *SHC_rv_cxx = getConstCharPtrAsCopyArg();
-    ShroudCharCopy(output, noutput, SHC_rv_cxx, -1);
+    ShroudCharCopy(SHC_rv, nSHC_rv, SHC_rv_cxx, -1);
     // splicer end function.getConstCharPtrAsCopyArg_bufferify
 }
 // end CHA_getConstCharPtrAsCopyArg_bufferify

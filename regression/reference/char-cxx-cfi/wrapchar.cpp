@@ -439,7 +439,7 @@ const char * CHA_getConstCharPtrRaw(void)
  *
  */
 // ----------------------------------------
-// Function:  const char *getConstCharPtrAsCopyArg
+// Function:  const char *getConstCharPtrAsCopyArg +deref(copy)+funcarg
 // Statement: c_function_char*
 // start CHA_getConstCharPtrAsCopyArg
 const char * CHA_getConstCharPtrAsCopyArg(void)
@@ -456,16 +456,16 @@ const char * CHA_getConstCharPtrAsCopyArg(void)
  *
  */
 // ----------------------------------------
-// Function:  const char *getConstCharPtrAsCopyArg
-// Statement: f_function_char*_cfi_arg
+// Function:  const char *getConstCharPtrAsCopyArg +deref(copy)+funcarg
+// Statement: f_function_char*_cfi_funcarg_copy
 // start CHA_getConstCharPtrAsCopyArg_CFI
 void CHA_getConstCharPtrAsCopyArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstCharPtrAsCopyArg_CFI
-    char *output = static_cast<char *>(SHT_rv_cfi->base_addr);
+    char *SHC_rv = static_cast<char *>(SHT_rv_cfi->base_addr);
     size_t SHT_rv_len = SHT_rv_cfi->elem_len;
     const char *SHC_rv_cxx = getConstCharPtrAsCopyArg();
-    ShroudCharCopy(output, SHT_rv_len, SHC_rv_cxx, -1);
+    ShroudCharCopy(SHC_rv, SHT_rv_len, SHC_rv_cxx, -1);
     // splicer end function.getConstCharPtrAsCopyArg_CFI
 }
 // end CHA_getConstCharPtrAsCopyArg_CFI

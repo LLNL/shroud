@@ -139,21 +139,6 @@ static int l_example_nested_ExClass1_getNameErrorCheck(lua_State *L)
     // splicer end class.ExClass1.method.getNameErrorCheck
 }
 
-// const string &getNameArg(void) const
-// ----------------------------------------
-// Function:  const string &getNameArg
-// Statement: lua_function_string&
-static int l_example_nested_ExClass1_getNameArg(lua_State *L)
-{
-    // splicer begin class.ExClass1.method.getNameArg
-    l_ExClass1_Type * SH_this = (l_ExClass1_Type *) luaL_checkudata(
-        L, 1, "ExClass1.metatable");
-    const std::string &SHCXX_rv = SH_this->self->getNameArg();
-    lua_pushstring(L, SHCXX_rv.c_str());
-    return 1;
-    // splicer end class.ExClass1.method.getNameArg
-}
-
 // int getValue(int value)
 // long getValue(long value)
 // ----------------------------------------
@@ -244,7 +229,6 @@ static const struct luaL_Reg l_ExClass1_Reg [] = {
     {"__gc", l_example_nested_ExClass1_dtor},
     {"incrementCount", l_example_nested_ExClass1_incrementCount},
     {"getNameErrorCheck", l_example_nested_ExClass1_getNameErrorCheck},
-    {"getNameArg", l_example_nested_ExClass1_getNameArg},
     {"getValue", l_example_nested_ExClass1_getValue},
     {"hasAddr", l_example_nested_ExClass1_hasAddr},
     {"SplicerSpecial", l_example_nested_ExClass1_SplicerSpecial},

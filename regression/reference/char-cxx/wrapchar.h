@@ -66,7 +66,7 @@ const char * CHA_getConstCharPtrRaw(void);
 
 const char * CHA_getConstCharPtrAsCopyArg(void);
 
-void CHA_getConstCharPtrAsCopyArg_bufferify(char *output, int noutput);
+void CHA_getConstCharPtrAsCopyArg_bufferify(char *SHC_rv, int nSHC_rv);
 
 void CHA_getConstCharPtrAsAllocArg_bufferify(
     CHA_SHROUD_array *SHT_rv_cdesc);

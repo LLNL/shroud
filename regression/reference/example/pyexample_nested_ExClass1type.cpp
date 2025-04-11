@@ -181,32 +181,6 @@ PP_getNameErrorCheck(
 }
 
 // ----------------------------------------
-// Function:  const string &getNameArg
-// Statement: py_function_string&
-static char PP_getNameArg__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PP_getNameArg(
-  PP_ExClass1 *self,
-  PyObject *SHROUD_UNUSED(args),
-  PyObject *SHROUD_UNUSED(kwds))
-{
-// splicer begin namespace.example::nested.class.ExClass1.method.getNameArg
-    PyObject * SHTPy_rv = nullptr;
-
-    const std::string &SHCXX_rv = self->obj->getNameArg();
-
-    // post_call
-    SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
-        SHCXX_rv.size());
-
-    return (PyObject *) SHTPy_rv;
-// splicer end namespace.example::nested.class.ExClass1.method.getNameArg
-}
-
-// ----------------------------------------
 // Function:  int getValue
 // Statement: py_function_native
 // ----------------------------------------
@@ -412,8 +386,6 @@ static PyMethodDef PP_ExClass1_methods[] = {
         METH_VARARGS|METH_KEYWORDS, PP_incrementCount__doc__},
     {"getNameErrorCheck", (PyCFunction)PP_getNameErrorCheck,
         METH_NOARGS, PP_getNameErrorCheck__doc__},
-    {"getNameArg", (PyCFunction)PP_getNameArg, METH_NOARGS,
-        PP_getNameArg__doc__},
     {"hasAddr", (PyCFunction)PP_hasAddr, METH_VARARGS|METH_KEYWORDS,
         PP_hasAddr__doc__},
     {"SplicerSpecial", (PyCFunction)PP_SplicerSpecial, METH_NOARGS,

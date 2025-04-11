@@ -1712,6 +1712,10 @@
                 "ast": {
                     "const": true,
                     "declarator": {
+                        "attrs": {
+                            "deref": "copy",
+                            "funcarg": true
+                        },
                         "name": "getConstCharPtrAsCopyArg",
                         "params": [],
                         "pointer": [
@@ -1726,8 +1730,8 @@
                     ],
                     "typemap_name": "char"
                 },
-                "decl": "const char *getConstCharPtrAsCopyArg()",
-                "declgen": "const char *getConstCharPtrAsCopyArg(void)",
+                "decl": "const char *getConstCharPtrAsCopyArg() +funcarg+deref(copy)",
+                "declgen": "const char *getConstCharPtrAsCopyArg(void) +deref(copy)+funcarg",
                 "doxygen": {
                     "brief": "return a 'const char *' as argument"
                 },
@@ -1739,9 +1743,6 @@
                 "name": "getConstCharPtrAsCopyArg",
                 "options": {
                     "literalinclude": true
-                },
-                "user_fmt": {
-                    "F_string_result_as_arg": "output"
                 },
                 "wrap": {
                     "c": true,
@@ -1765,21 +1766,23 @@
                                 "cxx_type": "char",
                                 "cxx_var": "SHC_rv",
                                 "f_type": "character(len=*)",
-                                "f_var": "SHT_rv",
+                                "f_var": "output",
                                 "i_arguments": "",
                                 "i_kind": "C_CHAR",
                                 "i_module_name": "iso_c_binding",
                                 "i_name_function": "c_get_const_char_ptr_as_copy_arg",
-                                "i_result_clause": "\fresult(SHT_rv)",
+                                "i_result_clause": "\fresult(output)",
+                                "i_result_var": "output",
                                 "i_subprogram": "function",
                                 "i_type": "character(kind=C_CHAR)",
-                                "i_var": "SHT_rv",
+                                "i_var": "output",
                                 "idtor": "0",
                                 "stmt_name": "c_function_char*",
                                 "typemap_name": "char"
                             },
                             "meta": {
                                 "abstract": "char*",
+                                "funcarg": "output",
                                 "intent": "function"
                             },
                             "stmt": "c_function_char*"
@@ -1799,7 +1802,7 @@
                                 "c_helper_char_copy": "ShroudCharCopy",
                                 "c_local_cxx": "SHC_rv_cxx",
                                 "c_type": "char",
-                                "c_var": "output",
+                                "c_var": "SHC_rv",
                                 "c_var_cfi": "SHT_rv_cfi",
                                 "c_var_len": "SHT_rv_len",
                                 "cxx_addr": "",
@@ -1817,6 +1820,7 @@
                                 "i_kind": "C_CHAR",
                                 "i_module_name": "iso_c_binding",
                                 "i_name_function": "c_get_const_char_ptr_as_copy_arg_CFI",
+                                "i_result_var": "output",
                                 "i_subprogram": "subroutine",
                                 "i_suffix": "_CFI",
                                 "i_type": "character(kind=C_CHAR)",
@@ -1824,22 +1828,24 @@
                                 "i_var_cfi": "SHT_rv_cfi",
                                 "i_var_len": "SHT_rv_len",
                                 "idtor": "0",
-                                "stmt_name": "f_function_char*_cfi_arg",
+                                "stmt_name": "f_function_char*_cfi_funcarg_copy",
                                 "typemap_name": "char"
                             },
                             "meta": {
                                 "abstract": "char*",
                                 "api": "cfi",
-                                "deref": "arg",
+                                "deref": "copy",
+                                "funcarg": "output",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_char*_cfi_arg"
+                            "stmt": "f_function_char*_cfi_funcarg_copy"
                         }
                     },
                     "share": {
                         "+result": {
                             "meta": {
                                 "abstract": "char*",
+                                "funcarg": "output",
                                 "intent": "function"
                             }
                         }
@@ -1851,7 +1857,6 @@
                     "F_name_function": "get_const_char_ptr_as_copy_arg",
                     "F_name_generic": "get_const_char_ptr_as_copy_arg",
                     "F_name_impl": "get_const_char_ptr_as_copy_arg",
-                    "F_string_result_as_arg": "output",
                     "c_arglist": [
                         "SHC_rv"
                     ],
@@ -1931,6 +1936,7 @@
                                 "i_kind": "C_CHAR",
                                 "i_module_name": "iso_c_binding",
                                 "i_name_function": "get_const_char_ptr_as_alloc_arg",
+                                "i_result_var": "output",
                                 "i_subprogram": "subroutine",
                                 "i_suffix": "_CFI",
                                 "i_type": "character(kind=C_CHAR)",
@@ -2045,6 +2051,7 @@
                                 "i_kind": "C_CHAR",
                                 "i_module_name": "iso_c_binding",
                                 "i_name_function": "get_const_char_ptr_as_pointer_arg",
+                                "i_result_var": "output",
                                 "i_subprogram": "subroutine",
                                 "i_suffix": "_CFI",
                                 "i_type": "character(kind=C_CHAR)",
@@ -2155,6 +2162,7 @@
                                 "i_kind": "C_CHAR",
                                 "i_module_name": "iso_c_binding",
                                 "i_name_function": "get_const_char_ptr_as_raw_arg",
+                                "i_result_var": "output",
                                 "i_subprogram": "subroutine",
                                 "i_suffix": "_bufferify",
                                 "i_type": "character(kind=C_CHAR)",

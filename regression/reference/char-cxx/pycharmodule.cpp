@@ -391,7 +391,7 @@ PY_getConstCharPtrAlloc(
 }
 
 // ----------------------------------------
-// Function:  const char *getConstCharPtrAsCopyArg
+// Function:  const char *getConstCharPtrAsCopyArg +deref(copy)+funcarg
 // Statement: py_function_char*
 static char PY_getConstCharPtrAsCopyArg__doc__[] =
 "documentation"

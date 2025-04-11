@@ -38,7 +38,7 @@ void STR_getConstStringResult_bufferify(STR_SHROUD_array *SHT_rv_cdesc,
 
 void STR_getConstStringLen_bufferify(char *SHC_rv, int SHT_rv_len);
 
-void STR_getConstStringAsArg_bufferify(char *output, int noutput);
+void STR_getConstStringAsArg_bufferify(char *SHC_rv, int nSHC_rv);
 
 void STR_getConstStringAlloc_bufferify(STR_SHROUD_array *SHT_rv_cdesc,
     STR_SHROUD_capsule_data *SHT_rv_capsule);
@@ -54,7 +54,7 @@ void STR_getConstStringRefLen_bufferify(char *SHC_rv, int SHT_rv_len);
 
 const char * STR_getConstStringRefAsArg(void);
 
-void STR_getConstStringRefAsArg_bufferify(char *output, int noutput);
+void STR_getConstStringRefAsArg_bufferify(char *SHC_rv, int nSHC_rv);
 
 const char * STR_getConstStringRefLenEmpty(void);
 

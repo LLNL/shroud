@@ -422,11 +422,6 @@ inout
     Code to add after call when ``intent(INOUT)``.
     Used to implement copy-out semantics.
 
-result
-    Result of function.
-    Including when it is passed as an argument, *F_string_result_as_arg*.
-
-
 Each intent is then broken down into code to be added into
 specific sections of the wrapper.  For example, **declaration**,
 **pre_call** and **post_call**.

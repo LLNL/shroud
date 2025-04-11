@@ -2235,19 +2235,14 @@
         "f_dummy_decl": [
             "character(len=*), intent(OUT){f_deref_attr} :: {f_var}"
         ],
-        "f_result_var": "as-subroutine",
-        "fmtdict": {
-            "f_var": "{F_string_result_as_arg}",
-            "i_var": "{F_string_result_as_arg}",
-            "c_var": "{F_string_result_as_arg}"
-        }
+        "f_result_var": "as-subroutine"
     },
     {
         "name": "f_mixin_function-as-character-arg-var-len",
         "fmtdict": {
-            "f_var_len": "n{F_string_result_as_arg}",
-            "i_var_len": "n{F_string_result_as_arg}",
-            "c_var_len": "n{F_string_result_as_arg}"
+            "f_var_len": "n{f_var}",
+            "i_var_len": "n{i_var}",
+            "c_var_len": "n{c_var}"
         }
     },
     {
@@ -2658,8 +2653,7 @@
     },
     {
         "alias": [
-            "f_function_char*_buf_arg",
-            "c_function_char*_buf_arg"
+            "f_function_char*_buf_funcarg_copy"
         ],
         "notes": [
             "Change function result into an argument.",
@@ -3349,10 +3343,8 @@
     },
     {
         "alias": [
-            "f_function_string_buf_arg",
-            "c_function_string_buf_arg",
-            "f_function_string&_buf_arg",
-            "c_function_string&_buf_arg"
+            "f_function_string_buf_funcarg_copy",
+            "f_function_string&_buf_funcarg_copy"
         ],
         "notes": [
             "Change function result into an argument.",
@@ -5209,7 +5201,7 @@
         ]
     },
     {
-        "name": "f_function_char*_cfi_arg",
+        "name": "f_function_char*_cfi_funcarg_copy",
         "notes": [
             "Change function result into an argument.",
             "Use F_string_result_as_arg as the argument name.",
@@ -5363,9 +5355,8 @@
     },
     {
         "alias": [
-            "f_function_string_cfi_arg",
-            "#f_function_string&_cfi_arg  XXX needs a test",
-            "f_function_string&_cfi_arg"
+            "f_function_string_cfi_funcarg_copy",
+            "f_function_string&_cfi_funcarg_copy"
         ],
         "notes": [
             "Change function result into an argument.",

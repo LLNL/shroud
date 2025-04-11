@@ -259,23 +259,23 @@ module char_mod
     ! end get_const_char_ptr_raw
 
     ! ----------------------------------------
-    ! Function:  const char *getConstCharPtrAsCopyArg
+    ! Function:  const char *getConstCharPtrAsCopyArg +deref(copy)+funcarg
     ! Statement: c_function_char*
     ! start c_get_const_char_ptr_as_copy_arg
     interface
         function c_get_const_char_ptr_as_copy_arg() &
-                result(SHT_rv) &
+                result(output) &
                 bind(C, name="CHA_getConstCharPtrAsCopyArg")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) :: SHT_rv
+            type(C_PTR) :: output
         end function c_get_const_char_ptr_as_copy_arg
     end interface
     ! end c_get_const_char_ptr_as_copy_arg
 
     ! ----------------------------------------
-    ! Function:  const char *getConstCharPtrAsCopyArg
-    ! Statement: f_function_char*_cfi_arg
+    ! Function:  const char *getConstCharPtrAsCopyArg +deref(copy)+funcarg
+    ! Statement: f_function_char*_cfi_funcarg_copy
     ! start c_get_const_char_ptr_as_copy_arg_CFI
     interface
         subroutine c_get_const_char_ptr_as_copy_arg_CFI(output) &
@@ -961,8 +961,8 @@ contains
 #endif
 
     ! ----------------------------------------
-    ! Function:  const char *getConstCharPtrAsCopyArg
-    ! Statement: f_function_char*_cfi_arg
+    ! Function:  const char *getConstCharPtrAsCopyArg +deref(copy)+funcarg
+    ! Statement: f_function_char*_cfi_funcarg_copy
     !>
     !! \brief return a 'const char *' as argument
     !!

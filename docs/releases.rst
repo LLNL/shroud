@@ -205,6 +205,33 @@ F_C_name_template             i_name_function_template
 
 .. See names.yaml
 
+* Removed format field *F_string_result_as_arg*. This modified the
+  wrapper to treat the ``char *`` function result as an argument. The
+  wrapper would then copy into the ``CHARACTER`` argument provided in
+  the call. This functionality has been expanded to support the
+  *deref* attribute. The argument may now be a ``ALLOCATABLE``,
+  ``POINTER`` or ``type(C_PTR)`` using *+deref(allocatable)*,
+  *+deref(pointer), or *+deref(raw)*.  The option **F_result_as_arg**
+  is the name of the argument if none is provided with the *funcarg*
+  attribute.  The original YAML needs to be changed to the second
+  block.
+   
+.. code-block:: yaml
+
+     - decl: const char *getConstCharPtrAsCopyArg()
+       format:
+         F_string_result_as_arg: output
+
+.. code-block:: yaml
+
+     - decl: const char *getConstCharPtrAsCopyArg() +funcarg(output)+deref(copy)
+   
+.. code-block:: yaml
+
+     option:
+       F_result_as_arg: output
+     - decl: const char *getConstCharPtrAsCopyArg() +funcarg+deref(copy)
+   
 * The **c_helper** and **f_helper** statement fields are merged into **helper**.
   A helper may have a C and Fortran part. This required the helper to
   be listed twice. Now it only needs to be listed once.

@@ -155,9 +155,9 @@ void STR_getConstStringLen_bufferify(char *SHC_rv, int SHT_rv_len)
  *
  */
 // ----------------------------------------
-// Function:  const string getConstStringAsArg
-// Statement: f_function_string_buf_arg
-void STR_getConstStringAsArg_bufferify(char *output, int noutput)
+// Function:  const string getConstStringAsArg +deref(copy)+funcarg
+// Statement: f_function_string_buf_funcarg_copy
+void STR_getConstStringAsArg_bufferify(char *SHC_rv, int nSHC_rv)
 {
     // splicer begin function.getConstStringAsArg_bufferify
     const std::string SHC_rv_cxx = getConstStringAsArg();
@@ -165,9 +165,9 @@ void STR_getConstStringAsArg_bufferify(char *output, int noutput)
     // Some error code for buf
 
     if (SHC_rv_cxx.empty()) {
-        ShroudCharCopy(output, noutput, nullptr, 0);
+        ShroudCharCopy(SHC_rv, nSHC_rv, nullptr, 0);
     } else {
-        ShroudCharCopy(output, noutput, SHC_rv_cxx.data(),
+        ShroudCharCopy(SHC_rv, nSHC_rv, SHC_rv_cxx.data(),
             SHC_rv_cxx.size());
     }
     // splicer end function.getConstStringAsArg_bufferify
@@ -283,7 +283,7 @@ void STR_getConstStringRefLen_bufferify(char *SHC_rv, int SHT_rv_len)
  * The length of the output variable is declared by the caller.
  */
 // ----------------------------------------
-// Function:  const string &getConstStringRefAsArg
+// Function:  const string &getConstStringRefAsArg +deref(copy)+funcarg
 // Statement: c_function_string&
 const char * STR_getConstStringRefAsArg(void)
 {
@@ -306,9 +306,9 @@ const char * STR_getConstStringRefAsArg(void)
  * The length of the output variable is declared by the caller.
  */
 // ----------------------------------------
-// Function:  const string &getConstStringRefAsArg
-// Statement: f_function_string&_buf_arg
-void STR_getConstStringRefAsArg_bufferify(char *output, int noutput)
+// Function:  const string &getConstStringRefAsArg +deref(copy)+funcarg
+// Statement: f_function_string&_buf_funcarg_copy
+void STR_getConstStringRefAsArg_bufferify(char *SHC_rv, int nSHC_rv)
 {
     // splicer begin function.getConstStringRefAsArg_bufferify
     const std::string &SHC_rv_cxx = getConstStringRefAsArg();
@@ -316,9 +316,9 @@ void STR_getConstStringRefAsArg_bufferify(char *output, int noutput)
     // Some error code for buf
 
     if (SHC_rv_cxx.empty()) {
-        ShroudCharCopy(output, noutput, nullptr, 0);
+        ShroudCharCopy(SHC_rv, nSHC_rv, nullptr, 0);
     } else {
-        ShroudCharCopy(output, noutput, SHC_rv_cxx.data(),
+        ShroudCharCopy(SHC_rv, nSHC_rv, SHC_rv_cxx.data(),
             SHC_rv_cxx.size());
     }
     // splicer end function.getConstStringRefAsArg_bufferify

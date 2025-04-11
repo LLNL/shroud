@@ -133,8 +133,8 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const string getConstStringAsArg
-    ! Statement: f_function_string_buf_arg
+    ! Function:  const string getConstStringAsArg +deref(copy)+funcarg
+    ! Statement: f_function_string_buf_funcarg_copy
     interface
         subroutine c_get_const_string_as_arg_bufferify(output, noutput) &
                 bind(C, name="STR_getConstStringAsArg_bufferify")
@@ -218,21 +218,21 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const string &getConstStringRefAsArg
+    ! Function:  const string &getConstStringRefAsArg +deref(copy)+funcarg
     ! Statement: c_function_string&
     interface
         function c_get_const_string_ref_as_arg() &
-                result(SHT_rv) &
+                result(output) &
                 bind(C, name="STR_getConstStringRefAsArg")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) :: SHT_rv
+            type(C_PTR) :: output
         end function c_get_const_string_ref_as_arg
     end interface
 
     ! ----------------------------------------
-    ! Function:  const string &getConstStringRefAsArg
-    ! Statement: f_function_string&_buf_arg
+    ! Function:  const string &getConstStringRefAsArg +deref(copy)+funcarg
+    ! Statement: f_function_string&_buf_funcarg_copy
     interface
         subroutine c_get_const_string_ref_as_arg_bufferify(output, &
                 noutput) &
@@ -1018,8 +1018,8 @@ contains
     end function get_const_string_len
 
     ! ----------------------------------------
-    ! Function:  const string getConstStringAsArg
-    ! Statement: f_function_string_buf_arg
+    ! Function:  const string getConstStringAsArg +deref(copy)+funcarg
+    ! Statement: f_function_string_buf_funcarg_copy
     !>
     !! \brief return a 'const string' as argument
     !!
@@ -1098,8 +1098,8 @@ contains
     end function get_const_string_ref_len
 
     ! ----------------------------------------
-    ! Function:  const string &getConstStringRefAsArg
-    ! Statement: f_function_string&_buf_arg
+    ! Function:  const string &getConstStringRefAsArg +deref(copy)+funcarg
+    ! Statement: f_function_string&_buf_funcarg_copy
     !>
     !! \brief return a 'const string&' as argument
     !!

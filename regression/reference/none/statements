@@ -208,67 +208,6 @@ c_function_char*:
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   sphinx-end-before: c_function_char*
-c_function_char*_buf_arg:
-  sphinx-start-after: c_function_char*_buf_arg
-  name: c_function_char*_buf_arg
-  intent: function
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass CHARACTER and LEN to C wrapper.
-  - Pass cxx variable to library.
-  - Call function and assign to a local C++ variable.
-  - Copy cxx variable to c argument for output.
-  notes:
-  - Change function result into an argument.
-  - Use F_string_result_as_arg as the argument name.
-  - was base:f_function_char*_buf_copy
-  mixin_names:
-  - '  f_mixin_call-cwrapper-as-subroutine'
-  - '    c_mixin_as-intent-out'
-  - '  f_mixin_function-as-character-arg'
-  - '  f_mixin_function-as-character-arg-var-len'
-  - '  f_mixin_pass_character_buf'
-  - '  c_mixin_in_character_buf'
-  - '    c_mixin_character-assumed-length'
-  - '  c_mixin_arg-call-cvar'
-  - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_char-copyout'
-  i_dummy_arg:
-  - '{i_var}'
-  - '{i_var_len}'
-  i_dummy_decl:
-  - 'character(kind=C_CHAR){i_intent_attr} :: {i_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
-  i_module:
-    iso_c_binding:
-    - C_CHAR
-    - C_INT
-  c_return_type: void
-  c_prototype:
-  - char *{c_var}
-  - int {c_var_len}
-  c_arg_call:
-  - '{cxx_var}'
-  c_call:
-  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
-  c_post_call:
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
-  c_temps:
-  - len
-  c_local:
-  - cxx
-  fmtdict:
-    i_intent: OUT
-    i_intent_attr: ', intent(OUT)'
-    f_var: '{F_string_result_as_arg}'
-    i_var: '{F_string_result_as_arg}'
-    c_var: '{F_string_result_as_arg}'
-    f_var_len: n{F_string_result_as_arg}
-    i_var_len: n{F_string_result_as_arg}
-    c_var_len: n{F_string_result_as_arg}
-  helper:
-  - char_copy
-  sphinx-end-before: c_function_char*_buf_arg
 c_function_char*_buf_copy:
   sphinx-start-after: c_function_char*_buf_copy
   name: c_function_char*_buf_copy
@@ -1255,71 +1194,6 @@ c_function_string&:
   c_local:
   - cxx
   sphinx-end-before: c_function_string&
-c_function_string&_buf_arg:
-  sphinx-start-after: c_function_string&_buf_arg
-  name: c_function_string&_buf_arg
-  intent: function
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass CHARACTER and LEN to C wrapper.
-  - Pass cxx variable to library.
-  - Call function and assign to a local C++ variable.
-  - Copy cxx variable into c variable.
-  notes:
-  - Change function result into an argument.
-  - Use F_string_result_as_arg as the argument name.
-  - was base:f_function_string_buf
-  mixin_names:
-  - '  f_mixin_call-cwrapper-as-subroutine'
-  - '    c_mixin_as-intent-out'
-  - '  f_mixin_function-as-character-arg'
-  - '  f_mixin_function-as-character-arg-var-len'
-  - '  f_mixin_pass_character_buf'
-  - '  c_mixin_in_character_buf'
-  - '    c_mixin_character-assumed-length'
-  - '  c_mixin_arg-call-cvar'
-  - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_string-char-copy-to-arg'
-  i_dummy_arg:
-  - '{i_var}'
-  - '{i_var_len}'
-  i_dummy_decl:
-  - 'character(kind=C_CHAR){i_intent_attr} :: {i_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
-  i_module:
-    iso_c_binding:
-    - C_CHAR
-    - C_INT
-  c_return_type: void
-  c_prototype:
-  - char *{c_var}
-  - int {c_var_len}
-  c_arg_call:
-  - '{cxx_var}'
-  c_call:
-  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
-  c_post_call:
-  - if ({cxx_var}{cxx_member}empty()) {{+
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
-  - -}} else {{+
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
-  - -}}
-  c_temps:
-  - len
-  c_local:
-  - cxx
-  fmtdict:
-    i_intent: OUT
-    i_intent_attr: ', intent(OUT)'
-    f_var: '{F_string_result_as_arg}'
-    i_var: '{F_string_result_as_arg}'
-    c_var: '{F_string_result_as_arg}'
-    f_var_len: n{F_string_result_as_arg}
-    i_var_len: n{F_string_result_as_arg}
-    c_var_len: n{F_string_result_as_arg}
-  helper:
-  - char_copy
-  sphinx-end-before: c_function_string&_buf_arg
 c_function_string&_buf_copy:
   sphinx-start-after: c_function_string&_buf_copy
   name: c_function_string&_buf_copy
@@ -1555,71 +1429,6 @@ c_function_string*_library:
   c_local:
   - cxx
   sphinx-end-before: c_function_string*_library
-c_function_string_buf_arg:
-  sphinx-start-after: c_function_string_buf_arg
-  name: c_function_string_buf_arg
-  intent: function
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass CHARACTER and LEN to C wrapper.
-  - Pass cxx variable to library.
-  - Call function and assign to a local C++ variable.
-  - Copy cxx variable into c variable.
-  notes:
-  - Change function result into an argument.
-  - Use F_string_result_as_arg as the argument name.
-  - was base:f_function_string_buf
-  mixin_names:
-  - '  f_mixin_call-cwrapper-as-subroutine'
-  - '    c_mixin_as-intent-out'
-  - '  f_mixin_function-as-character-arg'
-  - '  f_mixin_function-as-character-arg-var-len'
-  - '  f_mixin_pass_character_buf'
-  - '  c_mixin_in_character_buf'
-  - '    c_mixin_character-assumed-length'
-  - '  c_mixin_arg-call-cvar'
-  - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_string-char-copy-to-arg'
-  i_dummy_arg:
-  - '{i_var}'
-  - '{i_var_len}'
-  i_dummy_decl:
-  - 'character(kind=C_CHAR){i_intent_attr} :: {i_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
-  i_module:
-    iso_c_binding:
-    - C_CHAR
-    - C_INT
-  c_return_type: void
-  c_prototype:
-  - char *{c_var}
-  - int {c_var_len}
-  c_arg_call:
-  - '{cxx_var}'
-  c_call:
-  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
-  c_post_call:
-  - if ({cxx_var}{cxx_member}empty()) {{+
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
-  - -}} else {{+
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
-  - -}}
-  c_temps:
-  - len
-  c_local:
-  - cxx
-  fmtdict:
-    i_intent: OUT
-    i_intent_attr: ', intent(OUT)'
-    f_var: '{F_string_result_as_arg}'
-    i_var: '{F_string_result_as_arg}'
-    c_var: '{F_string_result_as_arg}'
-    f_var_len: n{F_string_result_as_arg}
-    i_var_len: n{F_string_result_as_arg}
-    c_var_len: n{F_string_result_as_arg}
-  helper:
-  - char_copy
-  sphinx-end-before: c_function_string_buf_arg
 c_function_string_buf_copy:
   sphinx-start-after: c_function_string_buf_copy
   name: c_function_string_buf_copy
@@ -6909,87 +6718,6 @@ f_function_char*_allocatable:
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   sphinx-end-before: f_function_char*_allocatable
-f_function_char*_buf_arg:
-  sphinx-start-after: f_function_char*_buf_arg
-  name: f_function_char*_buf_arg
-  intent: function
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass CHARACTER and LEN to C wrapper.
-  - Pass cxx variable to library.
-  - Call function and assign to a local C++ variable.
-  - Copy cxx variable to c argument for output.
-  notes:
-  - Change function result into an argument.
-  - Use F_string_result_as_arg as the argument name.
-  - was base:f_function_char*_buf_copy
-  mixin_names:
-  - '  f_mixin_call-cwrapper-as-subroutine'
-  - '    c_mixin_as-intent-out'
-  - '  f_mixin_function-as-character-arg'
-  - '  f_mixin_function-as-character-arg-var-len'
-  - '  f_mixin_pass_character_buf'
-  - '  c_mixin_in_character_buf'
-  - '    c_mixin_character-assumed-length'
-  - '  c_mixin_arg-call-cvar'
-  - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_char-copyout'
-  f_dummy_arg:
-  - '{f_var}'
-  f_dummy_decl:
-  - 'character(len=*), intent(OUT){f_deref_attr} :: {f_var}'
-  f_local_decl:
-  - integer(C_INT) {f_var_len}
-  f_pre_call:
-  - '{f_var_len} = len({f_var}, kind=C_INT)'
-  f_arg_call:
-  - '{f_var}'
-  - '{f_var_len}'
-  f_call:
-  - call {f_call_function}({F_arg_c_call})
-  f_result_var: as-subroutine
-  f_module:
-    iso_c_binding:
-    - C_INT
-  f_temps:
-  - len
-  f_need_wrapper: true
-  i_dummy_arg:
-  - '{i_var}'
-  - '{i_var_len}'
-  i_dummy_decl:
-  - 'character(kind=C_CHAR){i_intent_attr} :: {i_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
-  i_module:
-    iso_c_binding:
-    - C_CHAR
-    - C_INT
-  c_return_type: void
-  c_prototype:
-  - char *{c_var}
-  - int {c_var_len}
-  c_arg_call:
-  - '{cxx_var}'
-  c_call:
-  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
-  c_post_call:
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
-  c_temps:
-  - len
-  c_local:
-  - cxx
-  fmtdict:
-    i_intent: OUT
-    i_intent_attr: ', intent(OUT)'
-    f_var: '{F_string_result_as_arg}'
-    i_var: '{F_string_result_as_arg}'
-    c_var: '{F_string_result_as_arg}'
-    f_var_len: n{F_string_result_as_arg}
-    i_var_len: n{F_string_result_as_arg}
-    c_var_len: n{F_string_result_as_arg}
-  helper:
-  - char_copy
-  sphinx-end-before: f_function_char*_buf_arg
 f_function_char*_buf_copy:
   sphinx-start-after: f_function_char*_buf_copy
   name: f_function_char*_buf_copy
@@ -7065,6 +6793,84 @@ f_function_char*_buf_copy:
   helper:
   - char_copy
   sphinx-end-before: f_function_char*_buf_copy
+f_function_char*_buf_funcarg_copy:
+  sphinx-start-after: f_function_char*_buf_funcarg_copy
+  name: f_function_char*_buf_funcarg_copy
+  intent: function
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
+  - Call function and assign to a local C++ variable.
+  - Copy cxx variable to c argument for output.
+  notes:
+  - Change function result into an argument.
+  - Use F_string_result_as_arg as the argument name.
+  - was base:f_function_char*_buf_copy
+  mixin_names:
+  - '  f_mixin_call-cwrapper-as-subroutine'
+  - '    c_mixin_as-intent-out'
+  - '  f_mixin_function-as-character-arg'
+  - '  f_mixin_function-as-character-arg-var-len'
+  - '  f_mixin_pass_character_buf'
+  - '  c_mixin_in_character_buf'
+  - '    c_mixin_character-assumed-length'
+  - '  c_mixin_arg-call-cvar'
+  - '  c_mixin_function-assign-to-local'
+  - '  c_mixin_char-copyout'
+  f_dummy_arg:
+  - '{f_var}'
+  f_dummy_decl:
+  - 'character(len=*), intent(OUT){f_deref_attr} :: {f_var}'
+  f_local_decl:
+  - integer(C_INT) {f_var_len}
+  f_pre_call:
+  - '{f_var_len} = len({f_var}, kind=C_INT)'
+  f_arg_call:
+  - '{f_var}'
+  - '{f_var_len}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  f_result_var: as-subroutine
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_temps:
+  - len
+  f_need_wrapper: true
+  i_dummy_arg:
+  - '{i_var}'
+  - '{i_var_len}'
+  i_dummy_decl:
+  - 'character(kind=C_CHAR){i_intent_attr} :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  c_return_type: void
+  c_prototype:
+  - char *{c_var}
+  - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
+  c_post_call:
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
+  c_temps:
+  - len
+  c_local:
+  - cxx
+  fmtdict:
+    i_intent: OUT
+    i_intent_attr: ', intent(OUT)'
+    f_var_len: n{f_var}
+    i_var_len: n{i_var}
+    c_var_len: n{c_var}
+  helper:
+  - char_copy
+  sphinx-end-before: f_function_char*_buf_funcarg_copy
 f_function_char*_cdesc_allocatable:
   sphinx-start-after: f_function_char*_cdesc_allocatable
   name: f_function_char*_cdesc_allocatable
@@ -7387,76 +7193,6 @@ f_function_char*_cfi_allocatable:
   impl_header:
   - <cstring>
   sphinx-end-before: f_function_char*_cfi_allocatable
-f_function_char*_cfi_arg:
-  sphinx-start-after: f_function_char*_cfi_arg
-  name: f_function_char*_cfi_arg
-  intent: function
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass argument to C wrapper
-  - Make the C wrapper argument a CFI_desc_t.
-  - Character argument passed as CFI_desc_t.
-  - Pass cxx local variable to library.
-  - Call function and assign to a local C++ variable.
-  - Copy cxx variable to c argument for output.
-  notes:
-  - Change function result into an argument.
-  - Use F_string_result_as_arg as the argument name.
-  - was base:f_function_char*_cfi_copy
-  mixin_names:
-  - '  f_mixin_call-cwrapper-as-subroutine'
-  - '    c_mixin_as-intent-out'
-  - '  f_mixin_function-as-character-arg'
-  - '  f_mixin_cfi_pass_character'
-  - '  c_mixin_cfi_arg_character'
-  - '    c_mixin_cfi_arg'
-  - '  c_mixin_cfi-unpack-base-addr'
-  - '  c_mixin_cfi-unpack-len'
-  - '  c_mixin_arg-call-cxx'
-  - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_char-copyout'
-  f_dummy_arg:
-  - '{f_var}'
-  f_dummy_decl:
-  - 'character(len=*), intent(OUT){f_deref_attr} :: {f_var}'
-  f_arg_call:
-  - '{f_var}'
-  f_call:
-  - call {f_call_function}({F_arg_c_call})
-  f_result_var: as-subroutine
-  f_need_wrapper: true
-  i_dummy_arg:
-  - '{i_var}'
-  i_dummy_decl:
-  - 'character(len=*){i_intent_attr} :: {i_var}'
-  c_return_type: void
-  c_prototype:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_pre_call:
-  - '{c_type} *{c_var} = {cast_static}{c_type} *{cast1}{c_var_cfi}->base_addr{cast2};'
-  - size_t {c_var_len} = {c_var_cfi}->elem_len;
-  c_arg_call:
-  - '{c_local_cxx}'
-  c_call:
-  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
-  c_post_call:
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
-  c_temps:
-  - cfi
-  - len
-  c_local:
-  - cxx
-  fmtdict:
-    i_intent: OUT
-    i_intent_attr: ', intent(OUT)'
-    f_var: '{F_string_result_as_arg}'
-    i_var: '{F_string_result_as_arg}'
-    c_var: '{F_string_result_as_arg}'
-  helper:
-  - char_copy
-  iface_header:
-  - ISO_Fortran_binding.h
-  sphinx-end-before: f_function_char*_cfi_arg
 f_function_char*_cfi_copy:
   sphinx-start-after: f_function_char*_cfi_copy
   name: f_function_char*_cfi_copy
@@ -7589,6 +7325,73 @@ f_function_char*_cfi_funcarg_allocatable:
   impl_header:
   - <cstring>
   sphinx-end-before: f_function_char*_cfi_funcarg_allocatable
+f_function_char*_cfi_funcarg_copy:
+  sphinx-start-after: f_function_char*_cfi_funcarg_copy
+  name: f_function_char*_cfi_funcarg_copy
+  intent: function
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass argument to C wrapper
+  - Make the C wrapper argument a CFI_desc_t.
+  - Character argument passed as CFI_desc_t.
+  - Pass cxx local variable to library.
+  - Call function and assign to a local C++ variable.
+  - Copy cxx variable to c argument for output.
+  notes:
+  - Change function result into an argument.
+  - Use F_string_result_as_arg as the argument name.
+  - was base:f_function_char*_cfi_copy
+  mixin_names:
+  - '  f_mixin_call-cwrapper-as-subroutine'
+  - '    c_mixin_as-intent-out'
+  - '  f_mixin_function-as-character-arg'
+  - '  f_mixin_cfi_pass_character'
+  - '  c_mixin_cfi_arg_character'
+  - '    c_mixin_cfi_arg'
+  - '  c_mixin_cfi-unpack-base-addr'
+  - '  c_mixin_cfi-unpack-len'
+  - '  c_mixin_arg-call-cxx'
+  - '  c_mixin_function-assign-to-local'
+  - '  c_mixin_char-copyout'
+  f_dummy_arg:
+  - '{f_var}'
+  f_dummy_decl:
+  - 'character(len=*), intent(OUT){f_deref_attr} :: {f_var}'
+  f_arg_call:
+  - '{f_var}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  f_result_var: as-subroutine
+  f_need_wrapper: true
+  i_dummy_arg:
+  - '{i_var}'
+  i_dummy_decl:
+  - 'character(len=*){i_intent_attr} :: {i_var}'
+  c_return_type: void
+  c_prototype:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_pre_call:
+  - '{c_type} *{c_var} = {cast_static}{c_type} *{cast1}{c_var_cfi}->base_addr{cast2};'
+  - size_t {c_var_len} = {c_var_cfi}->elem_len;
+  c_arg_call:
+  - '{c_local_cxx}'
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
+  c_post_call:
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
+  c_temps:
+  - cfi
+  - len
+  c_local:
+  - cxx
+  fmtdict:
+    i_intent: OUT
+    i_intent_attr: ', intent(OUT)'
+  helper:
+  - char_copy
+  iface_header:
+  - ISO_Fortran_binding.h
+  sphinx-end-before: f_function_char*_cfi_funcarg_copy
 f_function_char*_cfi_funcarg_pointer:
   sphinx-start-after: f_function_char*_cfi_funcarg_pointer
   name: f_function_char*_cfi_funcarg_pointer
@@ -9687,91 +9490,6 @@ f_function_string&_buf:
   helper:
   - char_copy
   sphinx-end-before: f_function_string&_buf
-f_function_string&_buf_arg:
-  sphinx-start-after: f_function_string&_buf_arg
-  name: f_function_string&_buf_arg
-  intent: function
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass CHARACTER and LEN to C wrapper.
-  - Pass cxx variable to library.
-  - Call function and assign to a local C++ variable.
-  - Copy cxx variable into c variable.
-  notes:
-  - Change function result into an argument.
-  - Use F_string_result_as_arg as the argument name.
-  - was base:f_function_string_buf
-  mixin_names:
-  - '  f_mixin_call-cwrapper-as-subroutine'
-  - '    c_mixin_as-intent-out'
-  - '  f_mixin_function-as-character-arg'
-  - '  f_mixin_function-as-character-arg-var-len'
-  - '  f_mixin_pass_character_buf'
-  - '  c_mixin_in_character_buf'
-  - '    c_mixin_character-assumed-length'
-  - '  c_mixin_arg-call-cvar'
-  - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_string-char-copy-to-arg'
-  f_dummy_arg:
-  - '{f_var}'
-  f_dummy_decl:
-  - 'character(len=*), intent(OUT){f_deref_attr} :: {f_var}'
-  f_local_decl:
-  - integer(C_INT) {f_var_len}
-  f_pre_call:
-  - '{f_var_len} = len({f_var}, kind=C_INT)'
-  f_arg_call:
-  - '{f_var}'
-  - '{f_var_len}'
-  f_call:
-  - call {f_call_function}({F_arg_c_call})
-  f_result_var: as-subroutine
-  f_module:
-    iso_c_binding:
-    - C_INT
-  f_temps:
-  - len
-  f_need_wrapper: true
-  i_dummy_arg:
-  - '{i_var}'
-  - '{i_var_len}'
-  i_dummy_decl:
-  - 'character(kind=C_CHAR){i_intent_attr} :: {i_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
-  i_module:
-    iso_c_binding:
-    - C_CHAR
-    - C_INT
-  c_return_type: void
-  c_prototype:
-  - char *{c_var}
-  - int {c_var_len}
-  c_arg_call:
-  - '{cxx_var}'
-  c_call:
-  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
-  c_post_call:
-  - if ({cxx_var}{cxx_member}empty()) {{+
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
-  - -}} else {{+
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
-  - -}}
-  c_temps:
-  - len
-  c_local:
-  - cxx
-  fmtdict:
-    i_intent: OUT
-    i_intent_attr: ', intent(OUT)'
-    f_var: '{F_string_result_as_arg}'
-    i_var: '{F_string_result_as_arg}'
-    c_var: '{F_string_result_as_arg}'
-    f_var_len: n{F_string_result_as_arg}
-    i_var_len: n{F_string_result_as_arg}
-    c_var_len: n{F_string_result_as_arg}
-  helper:
-  - char_copy
-  sphinx-end-before: f_function_string&_buf_arg
 f_function_string&_buf_caller:
   sphinx-start-after: f_function_string&_buf_caller
   name: f_function_string&_buf_caller
@@ -9991,6 +9709,88 @@ f_function_string&_buf_copy_caller:
   helper:
   - char_copy
   sphinx-end-before: f_function_string&_buf_copy_caller
+f_function_string&_buf_funcarg_copy:
+  sphinx-start-after: f_function_string&_buf_funcarg_copy
+  name: f_function_string&_buf_funcarg_copy
+  intent: function
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
+  - Call function and assign to a local C++ variable.
+  - Copy cxx variable into c variable.
+  notes:
+  - Change function result into an argument.
+  - Use F_string_result_as_arg as the argument name.
+  - was base:f_function_string_buf
+  mixin_names:
+  - '  f_mixin_call-cwrapper-as-subroutine'
+  - '    c_mixin_as-intent-out'
+  - '  f_mixin_function-as-character-arg'
+  - '  f_mixin_function-as-character-arg-var-len'
+  - '  f_mixin_pass_character_buf'
+  - '  c_mixin_in_character_buf'
+  - '    c_mixin_character-assumed-length'
+  - '  c_mixin_arg-call-cvar'
+  - '  c_mixin_function-assign-to-local'
+  - '  c_mixin_string-char-copy-to-arg'
+  f_dummy_arg:
+  - '{f_var}'
+  f_dummy_decl:
+  - 'character(len=*), intent(OUT){f_deref_attr} :: {f_var}'
+  f_local_decl:
+  - integer(C_INT) {f_var_len}
+  f_pre_call:
+  - '{f_var_len} = len({f_var}, kind=C_INT)'
+  f_arg_call:
+  - '{f_var}'
+  - '{f_var_len}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  f_result_var: as-subroutine
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_temps:
+  - len
+  f_need_wrapper: true
+  i_dummy_arg:
+  - '{i_var}'
+  - '{i_var_len}'
+  i_dummy_decl:
+  - 'character(kind=C_CHAR){i_intent_attr} :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  c_return_type: void
+  c_prototype:
+  - char *{c_var}
+  - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
+  c_post_call:
+  - if ({cxx_var}{cxx_member}empty()) {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
+  - -}} else {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
+  - -}}
+  c_temps:
+  - len
+  c_local:
+  - cxx
+  fmtdict:
+    i_intent: OUT
+    i_intent_attr: ', intent(OUT)'
+    f_var_len: n{f_var}
+    i_var_len: n{i_var}
+    c_var_len: n{c_var}
+  helper:
+  - char_copy
+  sphinx-end-before: f_function_string&_buf_funcarg_copy
 f_function_string&_cdesc_allocatable:
   sphinx-start-after: f_function_string&_cdesc_allocatable
   name: f_function_string&_cdesc_allocatable
@@ -10558,76 +10358,6 @@ f_function_string&_cfi_allocatable_library:
   impl_header:
   - <cstring>
   sphinx-end-before: f_function_string&_cfi_allocatable_library
-f_function_string&_cfi_arg:
-  sphinx-start-after: f_function_string&_cfi_arg
-  name: f_function_string&_cfi_arg
-  intent: function
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass argument to C wrapper
-  - Make the C wrapper argument a CFI_desc_t.
-  - Character argument passed as CFI_desc_t.
-  - Pass cxx local variable to library.
-  - Call function and assign to a local C++ variable.
-  - Copy cxx variable into c variable.
-  notes:
-  - Change function result into an argument.
-  - Use F_string_result_as_arg as the argument name.
-  - was base:f_function_string_cfi_copy
-  mixin_names:
-  - '  f_mixin_call-cwrapper-as-subroutine'
-  - '    c_mixin_as-intent-out'
-  - '  f_mixin_function-as-character-arg'
-  - '  f_mixin_cfi_pass_character'
-  - '  c_mixin_cfi_arg_character'
-  - '    c_mixin_cfi_arg'
-  - '  c_mixin_arg-call-cxx'
-  - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_cfi_copy-to-arg'
-  f_dummy_arg:
-  - '{f_var}'
-  f_dummy_decl:
-  - 'character(len=*), intent(OUT){f_deref_attr} :: {f_var}'
-  f_arg_call:
-  - '{f_var}'
-  f_call:
-  - call {f_call_function}({F_arg_c_call})
-  f_result_var: as-subroutine
-  f_need_wrapper: true
-  i_dummy_arg:
-  - '{i_var}'
-  i_dummy_decl:
-  - 'character(len=*){i_intent_attr} :: {i_var}'
-  c_return_type: void
-  c_prototype:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_arg_call:
-  - '{c_local_cxx}'
-  c_call:
-  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
-  c_post_call:
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
-  - if ({c_local_cxx}{cxx_member}empty()) {{+
-  - "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {nullptr},\t 0);"
-  - -}} else {{+
-  - "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {c_local_cxx}{cxx_member}data(),\t\
-    \ {c_local_cxx}{cxx_member}size());"
-  - -}}
-  c_temps:
-  - cfi
-  c_local:
-  - cxx
-  fmtdict:
-    i_intent: OUT
-    i_intent_attr: ', intent(OUT)'
-    f_var: '{F_string_result_as_arg}'
-    i_var: '{F_string_result_as_arg}'
-    c_var: '{F_string_result_as_arg}'
-  helper:
-  - char_copy
-  iface_header:
-  - ISO_Fortran_binding.h
-  sphinx-end-before: f_function_string&_cfi_arg
 f_function_string&_cfi_copy:
   sphinx-start-after: f_function_string&_cfi_copy
   name: f_function_string&_cfi_copy
@@ -10693,6 +10423,73 @@ f_function_string&_cfi_copy:
   iface_header:
   - ISO_Fortran_binding.h
   sphinx-end-before: f_function_string&_cfi_copy
+f_function_string&_cfi_funcarg_copy:
+  sphinx-start-after: f_function_string&_cfi_funcarg_copy
+  name: f_function_string&_cfi_funcarg_copy
+  intent: function
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass argument to C wrapper
+  - Make the C wrapper argument a CFI_desc_t.
+  - Character argument passed as CFI_desc_t.
+  - Pass cxx local variable to library.
+  - Call function and assign to a local C++ variable.
+  - Copy cxx variable into c variable.
+  notes:
+  - Change function result into an argument.
+  - Use F_string_result_as_arg as the argument name.
+  - was base:f_function_string_cfi_copy
+  mixin_names:
+  - '  f_mixin_call-cwrapper-as-subroutine'
+  - '    c_mixin_as-intent-out'
+  - '  f_mixin_function-as-character-arg'
+  - '  f_mixin_cfi_pass_character'
+  - '  c_mixin_cfi_arg_character'
+  - '    c_mixin_cfi_arg'
+  - '  c_mixin_arg-call-cxx'
+  - '  c_mixin_function-assign-to-local'
+  - '  c_mixin_cfi_copy-to-arg'
+  f_dummy_arg:
+  - '{f_var}'
+  f_dummy_decl:
+  - 'character(len=*), intent(OUT){f_deref_attr} :: {f_var}'
+  f_arg_call:
+  - '{f_var}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  f_result_var: as-subroutine
+  f_need_wrapper: true
+  i_dummy_arg:
+  - '{i_var}'
+  i_dummy_decl:
+  - 'character(len=*){i_intent_attr} :: {i_var}'
+  c_return_type: void
+  c_prototype:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_arg_call:
+  - '{c_local_cxx}'
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
+  c_post_call:
+  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - if ({c_local_cxx}{cxx_member}empty()) {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {nullptr},\t 0);"
+  - -}} else {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {c_local_cxx}{cxx_member}data(),\t\
+    \ {c_local_cxx}{cxx_member}size());"
+  - -}}
+  c_temps:
+  - cfi
+  c_local:
+  - cxx
+  fmtdict:
+    i_intent: OUT
+    i_intent_attr: ', intent(OUT)'
+  helper:
+  - char_copy
+  iface_header:
+  - ISO_Fortran_binding.h
+  sphinx-end-before: f_function_string&_cfi_funcarg_copy
 f_function_string&_cfi_pointer:
   sphinx-start-after: f_function_string&_cfi_pointer
   name: f_function_string&_cfi_pointer
@@ -12102,91 +11899,6 @@ f_function_string_buf:
   helper:
   - char_copy
   sphinx-end-before: f_function_string_buf
-f_function_string_buf_arg:
-  sphinx-start-after: f_function_string_buf_arg
-  name: f_function_string_buf_arg
-  intent: function
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass CHARACTER and LEN to C wrapper.
-  - Pass cxx variable to library.
-  - Call function and assign to a local C++ variable.
-  - Copy cxx variable into c variable.
-  notes:
-  - Change function result into an argument.
-  - Use F_string_result_as_arg as the argument name.
-  - was base:f_function_string_buf
-  mixin_names:
-  - '  f_mixin_call-cwrapper-as-subroutine'
-  - '    c_mixin_as-intent-out'
-  - '  f_mixin_function-as-character-arg'
-  - '  f_mixin_function-as-character-arg-var-len'
-  - '  f_mixin_pass_character_buf'
-  - '  c_mixin_in_character_buf'
-  - '    c_mixin_character-assumed-length'
-  - '  c_mixin_arg-call-cvar'
-  - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_string-char-copy-to-arg'
-  f_dummy_arg:
-  - '{f_var}'
-  f_dummy_decl:
-  - 'character(len=*), intent(OUT){f_deref_attr} :: {f_var}'
-  f_local_decl:
-  - integer(C_INT) {f_var_len}
-  f_pre_call:
-  - '{f_var_len} = len({f_var}, kind=C_INT)'
-  f_arg_call:
-  - '{f_var}'
-  - '{f_var_len}'
-  f_call:
-  - call {f_call_function}({F_arg_c_call})
-  f_result_var: as-subroutine
-  f_module:
-    iso_c_binding:
-    - C_INT
-  f_temps:
-  - len
-  f_need_wrapper: true
-  i_dummy_arg:
-  - '{i_var}'
-  - '{i_var_len}'
-  i_dummy_decl:
-  - 'character(kind=C_CHAR){i_intent_attr} :: {i_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
-  i_module:
-    iso_c_binding:
-    - C_CHAR
-    - C_INT
-  c_return_type: void
-  c_prototype:
-  - char *{c_var}
-  - int {c_var_len}
-  c_arg_call:
-  - '{cxx_var}'
-  c_call:
-  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
-  c_post_call:
-  - if ({cxx_var}{cxx_member}empty()) {{+
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
-  - -}} else {{+
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
-  - -}}
-  c_temps:
-  - len
-  c_local:
-  - cxx
-  fmtdict:
-    i_intent: OUT
-    i_intent_attr: ', intent(OUT)'
-    f_var: '{F_string_result_as_arg}'
-    i_var: '{F_string_result_as_arg}'
-    c_var: '{F_string_result_as_arg}'
-    f_var_len: n{F_string_result_as_arg}
-    i_var_len: n{F_string_result_as_arg}
-    c_var_len: n{F_string_result_as_arg}
-  helper:
-  - char_copy
-  sphinx-end-before: f_function_string_buf_arg
 f_function_string_buf_caller:
   sphinx-start-after: f_function_string_buf_caller
   name: f_function_string_buf_caller
@@ -12406,6 +12118,88 @@ f_function_string_buf_copy_caller:
   helper:
   - char_copy
   sphinx-end-before: f_function_string_buf_copy_caller
+f_function_string_buf_funcarg_copy:
+  sphinx-start-after: f_function_string_buf_funcarg_copy
+  name: f_function_string_buf_funcarg_copy
+  intent: function
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
+  - Call function and assign to a local C++ variable.
+  - Copy cxx variable into c variable.
+  notes:
+  - Change function result into an argument.
+  - Use F_string_result_as_arg as the argument name.
+  - was base:f_function_string_buf
+  mixin_names:
+  - '  f_mixin_call-cwrapper-as-subroutine'
+  - '    c_mixin_as-intent-out'
+  - '  f_mixin_function-as-character-arg'
+  - '  f_mixin_function-as-character-arg-var-len'
+  - '  f_mixin_pass_character_buf'
+  - '  c_mixin_in_character_buf'
+  - '    c_mixin_character-assumed-length'
+  - '  c_mixin_arg-call-cvar'
+  - '  c_mixin_function-assign-to-local'
+  - '  c_mixin_string-char-copy-to-arg'
+  f_dummy_arg:
+  - '{f_var}'
+  f_dummy_decl:
+  - 'character(len=*), intent(OUT){f_deref_attr} :: {f_var}'
+  f_local_decl:
+  - integer(C_INT) {f_var_len}
+  f_pre_call:
+  - '{f_var_len} = len({f_var}, kind=C_INT)'
+  f_arg_call:
+  - '{f_var}'
+  - '{f_var_len}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  f_result_var: as-subroutine
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_temps:
+  - len
+  f_need_wrapper: true
+  i_dummy_arg:
+  - '{i_var}'
+  - '{i_var_len}'
+  i_dummy_decl:
+  - 'character(kind=C_CHAR){i_intent_attr} :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  c_return_type: void
+  c_prototype:
+  - char *{c_var}
+  - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
+  c_post_call:
+  - if ({cxx_var}{cxx_member}empty()) {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
+  - -}} else {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
+  - -}}
+  c_temps:
+  - len
+  c_local:
+  - cxx
+  fmtdict:
+    i_intent: OUT
+    i_intent_attr: ', intent(OUT)'
+    f_var_len: n{f_var}
+    i_var_len: n{i_var}
+    c_var_len: n{c_var}
+  helper:
+  - char_copy
+  sphinx-end-before: f_function_string_buf_funcarg_copy
 f_function_string_cdesc_allocatable:
   sphinx-start-after: f_function_string_cdesc_allocatable
   name: f_function_string_cdesc_allocatable
@@ -12836,76 +12630,6 @@ f_function_string_cfi_allocatable_library:
   impl_header:
   - <cstring>
   sphinx-end-before: f_function_string_cfi_allocatable_library
-f_function_string_cfi_arg:
-  sphinx-start-after: f_function_string_cfi_arg
-  name: f_function_string_cfi_arg
-  intent: function
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass argument to C wrapper
-  - Make the C wrapper argument a CFI_desc_t.
-  - Character argument passed as CFI_desc_t.
-  - Pass cxx local variable to library.
-  - Call function and assign to a local C++ variable.
-  - Copy cxx variable into c variable.
-  notes:
-  - Change function result into an argument.
-  - Use F_string_result_as_arg as the argument name.
-  - was base:f_function_string_cfi_copy
-  mixin_names:
-  - '  f_mixin_call-cwrapper-as-subroutine'
-  - '    c_mixin_as-intent-out'
-  - '  f_mixin_function-as-character-arg'
-  - '  f_mixin_cfi_pass_character'
-  - '  c_mixin_cfi_arg_character'
-  - '    c_mixin_cfi_arg'
-  - '  c_mixin_arg-call-cxx'
-  - '  c_mixin_function-assign-to-local'
-  - '  c_mixin_cfi_copy-to-arg'
-  f_dummy_arg:
-  - '{f_var}'
-  f_dummy_decl:
-  - 'character(len=*), intent(OUT){f_deref_attr} :: {f_var}'
-  f_arg_call:
-  - '{f_var}'
-  f_call:
-  - call {f_call_function}({F_arg_c_call})
-  f_result_var: as-subroutine
-  f_need_wrapper: true
-  i_dummy_arg:
-  - '{i_var}'
-  i_dummy_decl:
-  - 'character(len=*){i_intent_attr} :: {i_var}'
-  c_return_type: void
-  c_prototype:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_arg_call:
-  - '{c_local_cxx}'
-  c_call:
-  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
-  c_post_call:
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
-  - if ({c_local_cxx}{cxx_member}empty()) {{+
-  - "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {nullptr},\t 0);"
-  - -}} else {{+
-  - "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {c_local_cxx}{cxx_member}data(),\t\
-    \ {c_local_cxx}{cxx_member}size());"
-  - -}}
-  c_temps:
-  - cfi
-  c_local:
-  - cxx
-  fmtdict:
-    i_intent: OUT
-    i_intent_attr: ', intent(OUT)'
-    f_var: '{F_string_result_as_arg}'
-    i_var: '{F_string_result_as_arg}'
-    c_var: '{F_string_result_as_arg}'
-  helper:
-  - char_copy
-  iface_header:
-  - ISO_Fortran_binding.h
-  sphinx-end-before: f_function_string_cfi_arg
 f_function_string_cfi_copy:
   sphinx-start-after: f_function_string_cfi_copy
   name: f_function_string_cfi_copy
@@ -12971,6 +12695,73 @@ f_function_string_cfi_copy:
   iface_header:
   - ISO_Fortran_binding.h
   sphinx-end-before: f_function_string_cfi_copy
+f_function_string_cfi_funcarg_copy:
+  sphinx-start-after: f_function_string_cfi_funcarg_copy
+  name: f_function_string_cfi_funcarg_copy
+  intent: function
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass argument to C wrapper
+  - Make the C wrapper argument a CFI_desc_t.
+  - Character argument passed as CFI_desc_t.
+  - Pass cxx local variable to library.
+  - Call function and assign to a local C++ variable.
+  - Copy cxx variable into c variable.
+  notes:
+  - Change function result into an argument.
+  - Use F_string_result_as_arg as the argument name.
+  - was base:f_function_string_cfi_copy
+  mixin_names:
+  - '  f_mixin_call-cwrapper-as-subroutine'
+  - '    c_mixin_as-intent-out'
+  - '  f_mixin_function-as-character-arg'
+  - '  f_mixin_cfi_pass_character'
+  - '  c_mixin_cfi_arg_character'
+  - '    c_mixin_cfi_arg'
+  - '  c_mixin_arg-call-cxx'
+  - '  c_mixin_function-assign-to-local'
+  - '  c_mixin_cfi_copy-to-arg'
+  f_dummy_arg:
+  - '{f_var}'
+  f_dummy_decl:
+  - 'character(len=*), intent(OUT){f_deref_attr} :: {f_var}'
+  f_arg_call:
+  - '{f_var}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  f_result_var: as-subroutine
+  f_need_wrapper: true
+  i_dummy_arg:
+  - '{i_var}'
+  i_dummy_decl:
+  - 'character(len=*){i_intent_attr} :: {i_var}'
+  c_return_type: void
+  c_prototype:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_arg_call:
+  - '{c_local_cxx}'
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
+  c_post_call:
+  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - if ({c_local_cxx}{cxx_member}empty()) {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {nullptr},\t 0);"
+  - -}} else {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {c_local_cxx}{cxx_member}data(),\t\
+    \ {c_local_cxx}{cxx_member}size());"
+  - -}}
+  c_temps:
+  - cfi
+  c_local:
+  - cxx
+  fmtdict:
+    i_intent: OUT
+    i_intent_attr: ', intent(OUT)'
+  helper:
+  - char_copy
+  iface_header:
+  - ISO_Fortran_binding.h
+  sphinx-end-before: f_function_string_cfi_funcarg_copy
 f_function_string_cfi_pointer:
   sphinx-start-after: f_function_string_cfi_pointer
   name: f_function_string_cfi_pointer
@@ -17993,19 +17784,15 @@ f_mixin_function-as-character-arg:
   f_dummy_decl:
   - 'character(len=*), intent(OUT){f_deref_attr} :: {f_var}'
   f_result_var: as-subroutine
-  fmtdict:
-    f_var: '{F_string_result_as_arg}'
-    i_var: '{F_string_result_as_arg}'
-    c_var: '{F_string_result_as_arg}'
   sphinx-end-before: f_mixin_function-as-character-arg
 f_mixin_function-as-character-arg-var-len:
   sphinx-start-after: f_mixin_function-as-character-arg-var-len
   name: f_mixin_function-as-character-arg-var-len
   intent: mixin
   fmtdict:
-    f_var_len: n{F_string_result_as_arg}
-    i_var_len: n{F_string_result_as_arg}
-    c_var_len: n{F_string_result_as_arg}
+    f_var_len: n{f_var}
+    i_var_len: n{i_var}
+    c_var_len: n{c_var}
   sphinx-end-before: f_mixin_function-as-character-arg-var-len
 f_mixin_function-as-cptr:
   sphinx-start-after: f_mixin_function-as-cptr
@@ -22353,7 +22140,6 @@ root
       char -- c_function_char
       char* -- c_function_char*
         buf
-          arg -- c_function_char*_buf_arg
           copy -- c_function_char*_buf_copy
       enum -- c_function_enum
       native -- c_function_native
@@ -22386,11 +22172,9 @@ root
         capptr -- c_function_smartptr<shadow>*_capptr
       string -- c_function_string
         buf
-          arg -- c_function_string_buf_arg
           copy -- c_function_string_buf_copy
       string& -- c_function_string&
         buf
-          arg -- c_function_string&_buf_arg
           copy -- c_function_string&_buf_copy
         copy -- c_function_string&_copy
       string* -- c_function_string*
@@ -22696,8 +22480,9 @@ root
       char* -- f_function_char*
         allocatable -- f_function_char*_allocatable
         buf
-          arg -- f_function_char*_buf_arg
           copy -- f_function_char*_buf_copy
+          funcarg
+            copy -- f_function_char*_buf_funcarg_copy
         cdesc
           allocatable -- f_function_char*_cdesc_allocatable
           funcarg
@@ -22706,10 +22491,10 @@ root
           pointer -- f_function_char*_cdesc_pointer
         cfi
           allocatable -- f_function_char*_cfi_allocatable
-          arg -- f_function_char*_cfi_arg
           copy -- f_function_char*_cfi_copy
           funcarg
             allocatable -- f_function_char*_cfi_funcarg_allocatable
+            copy -- f_function_char*_cfi_funcarg_copy
             pointer -- f_function_char*_cfi_funcarg_pointer
           pointer -- f_function_char*_cfi_pointer
         copy -- f_function_char*_copy
@@ -22753,10 +22538,11 @@ root
         capsule -- f_function_smartptr<shadow>*_capsule
       string
         buf -- f_function_string_buf
-          arg -- f_function_string_buf_arg
           caller -- f_function_string_buf_caller
           copy -- f_function_string_buf_copy
             caller -- f_function_string_buf_copy_caller
+          funcarg
+            copy -- f_function_string_buf_funcarg_copy
         cdesc
           allocatable -- f_function_string_cdesc_allocatable
             caller -- f_function_string_cdesc_allocatable_caller
@@ -22765,17 +22551,19 @@ root
           allocatable -- f_function_string_cfi_allocatable
             caller -- f_function_string_cfi_allocatable_caller
             library -- f_function_string_cfi_allocatable_library
-          arg -- f_function_string_cfi_arg
           copy -- f_function_string_cfi_copy
+          funcarg
+            copy -- f_function_string_cfi_funcarg_copy
           pointer -- f_function_string_cfi_pointer
             caller -- f_function_string_cfi_pointer_caller
             library -- f_function_string_cfi_pointer_library
       string&
         buf -- f_function_string&_buf
-          arg -- f_function_string&_buf_arg
           caller -- f_function_string&_buf_caller
           copy -- f_function_string&_buf_copy
             caller -- f_function_string&_buf_copy_caller
+          funcarg
+            copy -- f_function_string&_buf_funcarg_copy
         cdesc
           allocatable -- f_function_string&_cdesc_allocatable
             caller -- f_function_string&_cdesc_allocatable_caller
@@ -22787,8 +22575,9 @@ root
           allocatable -- f_function_string&_cfi_allocatable
             caller -- f_function_string&_cfi_allocatable_caller
             library -- f_function_string&_cfi_allocatable_library
-          arg -- f_function_string&_cfi_arg
           copy -- f_function_string&_cfi_copy
+          funcarg
+            copy -- f_function_string&_cfi_funcarg_copy
           pointer -- f_function_string&_cfi_pointer
             caller -- f_function_string&_cfi_pointer_caller
             library -- f_function_string&_cfi_pointer_library

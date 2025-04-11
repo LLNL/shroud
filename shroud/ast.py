@@ -742,8 +742,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_name_typedef="",
             f_result_var="SHT_rv",
             F_this="obj",
-            C_string_result_as_arg="SHF_rv",
-            F_string_result_as_arg="",
             F_capsule_final_function="SHROUD_capsule_final",
             F_capsule_delete_function="SHROUD_capsule_delete",
 
@@ -909,6 +907,7 @@ class LibraryNode(AstNode, NamespaceMixin):
                 )
 
         if fmtdict:
+            check_deprecated_format(fmtdict)
             fmt_library.update(fmtdict, replace=True)
 
         self.fmtdict = fmt_library
@@ -1717,6 +1716,8 @@ class FunctionNode(AstNode):
                     )
                 )
 
+        check_deprecated_format(fmtdict)
+            
         # Move fields from kwargs into instance
         for name in ["C_error_pattern", "PY_error_pattern"]:
             setattr(self, name, kwargs.get(name, None))
@@ -2588,3 +2589,28 @@ def create_library_from_dictionary(node, symtab):
     cursor.check_for_warnings()
     
     return library
+
+
+# Report changes in format fields.
+# Show the new name and add some optional details.
+
+deprecated_formats = dict(
+    F_string_result_as_arg=dict(
+        new="option.F_result_as_arg",
+        details=[
+            "Instead add attribute +funcarg(name)+deref(copy) to decl.",
+            "Option F_result_as_arg is the default name when not specified in +funcarg."
+        ]
+    )
+)
+
+def check_deprecated_format(fmtdict):
+    for fmt in fmtdict:
+        if fmt in deprecated_formats:
+            info = deprecated_formats[fmt]
+            msg = "format {} is deprecated, changed to {}".format(
+                fmt, info["new"])
+            details = info.get("details")
+            if details:
+                msg += "\n" + "\n".join(details)
+            error.cursor.warning(msg)

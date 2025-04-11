@@ -267,6 +267,7 @@ class FillFormat(object):
                 fmt_result.c_const = ""
 
             compute_cxx_deref(CXX_ast, fmt_result)
+            set_c_function_format(node, bind)
 
         if result_stmt.c_return_type:
             # Override return type.
@@ -877,6 +878,18 @@ def set_share_function_format(node, bind, wlang):
     fmt.typemap = node.ast.typemap
     fmt.gen = FormatGen(node, node.ast, bind, wlang)
     
+def set_c_function_format(node, bind):
+    fmt = bind.fmtdict
+    meta = bind.meta
+
+    if meta["funcarg"]:
+        name = meta["funcarg"]
+        fmt.f_var = name
+        fmt.i_var = name
+        fmt.i_result_var = name
+#        fmt.c_var = name  # not being propagated to other uses of result
+#        fmt.c_result_var = name
+    
 def set_f_function_format(node, bind, subprogram):
     fmt = bind.fmtdict
     meta = bind.meta
@@ -886,8 +899,12 @@ def set_f_function_format(node, bind, subprogram):
     elif meta["deref"] == "pointer":
         fmt.f_deref_attr = ", pointer"
     if meta["funcarg"]:
-        fmt.f_var = meta["funcarg"]
-        fmt.i_var = meta["funcarg"]
+        name = meta["funcarg"]
+        fmt.f_var = name
+        fmt.i_var = name
+        fmt.i_result_var = name
+#        fmt.c_var = name
+#        fmt.c_result_var = name
     
 def set_f_arg_format(node, arg, bind, wlang):
     """

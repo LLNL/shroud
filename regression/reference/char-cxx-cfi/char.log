@@ -19,8 +19,8 @@ C c const char *getConstCharPtrPointer(void) +deref(pointer)
 C f const char *getConstCharPtrPointer(void) +deref(pointer)
 C c const char *getConstCharPtrRaw(void) +deref(raw)
 C f const char *getConstCharPtrRaw(void) +deref(raw)
-C c const char *getConstCharPtrAsCopyArg(void)
-C f const char *getConstCharPtrAsCopyArg(void)
+C c const char *getConstCharPtrAsCopyArg(void) +deref(copy)+funcarg
+C f const char *getConstCharPtrAsCopyArg(void) +deref(copy)+funcarg
 C f const char *getConstCharPtrAsAllocArg(void) +deref(allocatable)+funcarg
 C f const char *getConstCharPtrAsPointerArg(void) +deref(pointer)+funcarg
 C f const char *getConstCharPtrAsRawArg(void) +deref(raw)+funcarg
@@ -62,7 +62,7 @@ Fortran const char *getConstCharPtrLen(void) +len(30)
 Fortran const char *getConstCharPtrAlloc(void) +deref(allocatable)
 Fortran const char *getConstCharPtrPointer(void) +deref(pointer)
 Fortran const char *getConstCharPtrRaw(void) +deref(raw)
-Fortran const char *getConstCharPtrAsCopyArg(void)
+Fortran const char *getConstCharPtrAsCopyArg(void) +deref(copy)+funcarg
 Fortran const char *getConstCharPtrAsAllocArg(void) +deref(allocatable)+funcarg
 Fortran const char *getConstCharPtrAsPointerArg(void) +deref(pointer)+funcarg
 Fortran const char *getConstCharPtrAsRawArg(void) +deref(raw)+funcarg
@@ -94,8 +94,8 @@ C-interface f const char *getConstCharPtrAlloc(void) +deref(allocatable)
 C-interface c const char *getConstCharPtrPointer(void) +deref(pointer)
 C-interface f const char *getConstCharPtrPointer(void) +deref(pointer)
 C-interface f const char *getConstCharPtrRaw(void) +deref(raw)
-C-interface c const char *getConstCharPtrAsCopyArg(void)
-C-interface f const char *getConstCharPtrAsCopyArg(void)
+C-interface c const char *getConstCharPtrAsCopyArg(void) +deref(copy)+funcarg
+C-interface f const char *getConstCharPtrAsCopyArg(void) +deref(copy)+funcarg
 C-interface f const char *getConstCharPtrAsAllocArg(void) +deref(allocatable)+funcarg
 C-interface f const char *getConstCharPtrAsPointerArg(void) +deref(pointer)+funcarg
 C-interface f const char *getConstCharPtrAsRawArg(void) +deref(raw)+funcarg

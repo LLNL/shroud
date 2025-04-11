@@ -97,13 +97,11 @@ declarations:
 #####
 # Return function result in an argument.
 
-- decl: const char *getConstCharPtrAsCopyArg()
+- decl: const char *getConstCharPtrAsCopyArg() +funcarg+deref(copy)
   doxygen:
     brief: return a 'const char *' as argument
   options:
     literalinclude: True
-  format:
-    F_string_result_as_arg: output
 
 - decl: const char *getConstCharPtrAsAllocArg(void) +funcarg+deref(allocatable)
   doxygen:
