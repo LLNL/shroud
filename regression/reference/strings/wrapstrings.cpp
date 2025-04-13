@@ -151,6 +151,30 @@ void STR_getConstStringAlloc_bufferify(STR_SHROUD_array *SHT_rv_cdesc,
 }
 
 /**
+ * Return an POINTER CHARACTER from std::string.
+ * The language=C wrapper will return a const char *
+ */
+// ----------------------------------------
+// Function:  const string getConstStringPointer +deref(pointer)
+// Statement: f_function_string_cdesc_pointer
+void STR_getConstStringPointer_bufferify(
+    STR_SHROUD_capsule_data *SHT_rv_capsule,
+    STR_SHROUD_array *SHT_rv_cdesc)
+{
+    // splicer begin function.getConstStringPointer_bufferify
+    std::string *SHC_rv_cxx = new std::string;
+    *SHC_rv_cxx = getConstStringPointer();
+    SHT_rv_capsule->addr  = const_cast<std::string *>(SHC_rv_cxx);
+    SHT_rv_capsule->idtor = 1;
+    SHT_rv_cdesc->base_addr = const_cast<char *>(SHC_rv_cxx->data());
+    SHT_rv_cdesc->type = SH_TYPE_OTHER;
+    SHT_rv_cdesc->elem_len = SHC_rv_cxx->size();
+    SHT_rv_cdesc->size = 1;
+    SHT_rv_cdesc->rank = 0;
+    // splicer end function.getConstStringPointer_bufferify
+}
+
+/**
  * \brief return a 'const string' as argument
  *
  */

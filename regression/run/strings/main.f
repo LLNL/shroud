@@ -57,21 +57,28 @@ contains
     character(30) str
     character(30), parameter :: static_str = "dog                         "
     integer(C_INT) :: nlen
+    type(STR_SHROUD_capsule) :: capsule_str
 
     call set_case_name("test_functions")
 
     !--------------------------------------------------
     ! return std::string
     
-    ! character(30) function
+    ! character(30)
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_const_string_len()
     call assert_true(str == static_str, "getConstStringLen")
 
-    ! character(:), allocatable function
+    ! character(:), allocatable
     astr = get_const_string_alloc()
     call assert_true(astr == "getConstStringAlloc", "getConstStringAlloc")
     deallocate(astr)
+ 
+    ! character(:), pointer
+    nullify(pstr)
+    pstr => get_const_string_pointer(capsule_str)
+    call assert_true(pstr == "getConstStringPointer", "getConstStringPointer")
+    call capsule_str%delete
  
     !----------
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'

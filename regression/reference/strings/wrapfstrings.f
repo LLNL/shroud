@@ -80,6 +80,15 @@ module strings_mod
     end type STR_SHROUD_capsule_data
     ! end helper capsule_data_helper
 
+    ! helper capsule_helper
+    type :: STR_SHROUD_capsule
+        private
+        type(STR_SHROUD_capsule_data) :: mem
+    contains
+        final :: SHROUD_capsule_final
+        procedure :: delete => SHROUD_capsule_delete
+    end type STR_SHROUD_capsule
+
     ! ----------------------------------------
     ! Function:  void init_test
     ! Statement: f_subroutine
@@ -130,6 +139,20 @@ module strings_mod
             type(STR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
             type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
         end subroutine c_get_const_string_alloc_bufferify
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  const string getConstStringPointer +deref(pointer)
+    ! Statement: f_function_string_cdesc_pointer
+    interface
+        subroutine c_get_const_string_pointer_bufferify(SHT_rv_capsule, &
+                SHT_rv_cdesc) &
+                bind(C, name="STR_getConstStringPointer_bufferify")
+            import :: STR_SHROUD_array, STR_SHROUD_capsule_data
+            implicit none
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
+            type(STR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
+        end subroutine c_get_const_string_pointer_bufferify
     end interface
 
     ! ----------------------------------------
@@ -977,6 +1000,24 @@ contains
     end function get_const_string_alloc
 
     ! ----------------------------------------
+    ! Function:  const string getConstStringPointer +deref(pointer)
+    ! Statement: f_function_string_cdesc_pointer
+    !>
+    !! Return an POINTER CHARACTER from std::string.
+    !! The language=C wrapper will return a const char *
+    !<
+    function get_const_string_pointer(Crv) &
+            result(SHT_rv)
+        type(STR_SHROUD_capsule), intent(OUT) :: Crv
+        character(len=:), pointer :: SHT_rv
+        ! splicer begin function.get_const_string_pointer
+        type(STR_SHROUD_array) :: SHT_rv_cdesc
+        call c_get_const_string_pointer_bufferify(Crv%mem, SHT_rv_cdesc)
+        call STR_SHROUD_pointer_string(SHT_rv_cdesc, SHT_rv)
+        ! splicer end function.get_const_string_pointer
+    end function get_const_string_pointer
+
+    ! ----------------------------------------
     ! Function:  const string getConstStringAsArg +deref(copy)+funcarg
     ! Statement: f_function_string_buf_funcarg_copy
     !>
@@ -1538,6 +1579,18 @@ contains
 
     ! splicer begin additional_functions
     ! splicer end additional_functions
+
+    ! helper capsule_helper
+    ! finalize a static STR_SHROUD_capsule_data
+    subroutine SHROUD_capsule_final(cap)
+        type(STR_SHROUD_capsule), intent(INOUT) :: cap
+        call STR_SHROUD_capsule_dtor(cap%mem)
+    end subroutine SHROUD_capsule_final
+
+    subroutine SHROUD_capsule_delete(cap)
+        class(STR_SHROUD_capsule) :: cap
+        call STR_SHROUD_capsule_dtor(cap%mem)
+    end subroutine SHROUD_capsule_delete
 
     ! start helper pointer_string
     ! helper pointer_string

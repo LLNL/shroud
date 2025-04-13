@@ -582,7 +582,8 @@
             "cxx"
         ],
         "fmtdict": {
-            "cxx_addr": ""
+            "cxx_addr": "",
+            "cxx_member": "->"
         },
         "owner": "caller"
     },
@@ -1031,6 +1032,28 @@
             "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});",
             "{c_var_cdesc}->type = {typemap.sh_type};",
             "{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});",
+            "{c_var_cdesc}->size = 1;",
+            "{c_var_cdesc}->rank = 0;"
+        ],
+        "helper": [
+            "type_defines"
+        ]
+    },
+    {
+        "name": "c_mixin_cdesc_fill_string_local",
+        "comments": [
+            "Fill cdesc from local std::string variable in the C wrapper."
+        ],
+        "usage": [
+            "Also used with std::string* via cxx_member."
+        ],
+        "mixin": [
+            "c_mixin_header_cstring"
+        ],
+        "c_post_call": [
+            "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{c_local_cxx}{cxx_member}data());",
+            "{c_var_cdesc}->type = {typemap.sh_type};",
+            "{c_var_cdesc}->elem_len = {c_local_cxx}{cxx_member}size();",
             "{c_var_cdesc}->size = 1;",
             "{c_var_cdesc}->rank = 0;"
         ],
@@ -3368,6 +3391,9 @@
             "f_function_string_cdesc_allocatable_caller",
             "f_function_string_cdesc_allocatable_library"
         ],
+        "usage": [
+            "std::string func() +deref(allocatable)"
+        ],
         "mixin": [
             "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_cdesc_pass",
@@ -3376,6 +3402,23 @@
             "c_mixin_cdesc_function_string",
             "f_mixin_cdesc_char_allocate",
             "f_mixin_capsule_use"
+        ]
+    },
+    {
+        "alias": [
+            "f_function_string_cdesc_pointer"
+        ],
+        "usage": [
+            "std::string func() +deref(pointer)+owner(caller)"
+        ],
+        "mixin": [
+            "f_mixin_capsule_arg",
+            "f_mixin_call-cwrapper-as-subroutine",
+            "f_mixin_cdesc_pass",
+            "c_mixin_function-assign-to-new",
+            "c_mixin_capsule_fill_native",
+            "c_mixin_cdesc_fill_string_local",
+            "f_mixin_cdesc_char_pointer"
         ]
     },
     {

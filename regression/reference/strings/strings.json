@@ -331,7 +331,7 @@
                                 "c_var_capsule": "SHT_rv_capsule",
                                 "cxx_abstract_decl": "const std::string",
                                 "cxx_addr": "",
-                                "cxx_member": ".",
+                                "cxx_member": "->",
                                 "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHC_rv_cxx)",
                                 "cxx_type": "std::string",
                                 "cxx_var": "SHC_rv_cxx",
@@ -381,7 +381,7 @@
                                 "c_var_cdesc": "SHT_rv_cdesc",
                                 "cxx_abstract_decl": "const std::string",
                                 "cxx_addr": "",
-                                "cxx_member": ".",
+                                "cxx_member": "->",
                                 "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHC_rv_cxx)",
                                 "cxx_type": "std::string",
                                 "cxx_var": "SHC_rv_cxx",
@@ -483,7 +483,128 @@
                 }
             },
             {
-                "<FUNCTION>": "getConstStringAsArg  3 ****************************************",
+                "<FUNCTION>": "getConstStringPointer  3 ****************************************",
+                "ast": {
+                    "const": true,
+                    "declarator": {
+                        "attrs": {
+                            "deref": "pointer"
+                        },
+                        "name": "getConstStringPointer",
+                        "params": [],
+                        "typemap_name": "std::string"
+                    },
+                    "specifier": [
+                        "string"
+                    ],
+                    "typemap_name": "std::string"
+                },
+                "decl": "const string getConstStringPointer() +deref(pointer)",
+                "declgen": "const string getConstStringPointer(void) +deref(pointer)",
+                "doxygen": {
+                    "description": "Return an POINTER CHARACTER from std::string.\nThe language=C wrapper will return a const char *\n"
+                },
+                "helpers": {
+                    "fc": [
+                        "capsule_data_helper",
+                        "array_context",
+                        "capsule_helper",
+                        "type_defines",
+                        "pointer_string"
+                    ]
+                },
+                "name": "getConstStringPointer",
+                "options": {
+                    "wrap_c": false,
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstStringPointer(\t)",
+                                "C_name": "STR_getConstStringPointer_bufferify",
+                                "C_prototype": "STR_SHROUD_capsule_data *SHT_rv_capsule,\t STR_SHROUD_array *SHT_rv_cdesc",
+                                "C_return_type": "void",
+                                "F_arg_c_call": "Crv%mem,\t SHT_rv_cdesc",
+                                "F_arguments": "Crv",
+                                "F_subprogram": "function",
+                                "c_abstract_decl": "const char",
+                                "c_const": "const ",
+                                "c_helper_array_context": "STR_SHROUD_array",
+                                "c_local_cxx": "SHC_rv_cxx",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "c_var_capsule": "SHT_rv_capsule",
+                                "c_var_cdesc": "SHT_rv_cdesc",
+                                "cxx_abstract_decl": "const std::string",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHC_rv_cxx)",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHC_rv_cxx",
+                                "f_call_function": "c_get_const_string_pointer_bufferify",
+                                "f_deref_attr": ", pointer",
+                                "f_helper_array_context": "STR_SHROUD_array",
+                                "f_helper_capsule_data_helper": "STR_SHROUD_capsule_data",
+                                "f_helper_pointer_string": "STR_SHROUD_pointer_string",
+                                "f_result_clause": "\fresult(SHT_rv)",
+                                "f_type": "character(len=*)",
+                                "f_var": "SHT_rv",
+                                "f_var_capsule": "Crv",
+                                "f_var_cdesc": "SHT_rv_cdesc",
+                                "fc_var": "SHT_rv",
+                                "i_arguments": "SHT_rv_capsule,\t SHT_rv_cdesc",
+                                "i_intent": "OUT",
+                                "i_intent_attr": ", intent(OUT)",
+                                "i_kind": "C_CHAR",
+                                "i_module_name": "iso_c_binding",
+                                "i_name_function": "c_get_const_string_pointer_bufferify",
+                                "i_subprogram": "subroutine",
+                                "i_suffix": "_bufferify",
+                                "i_type": "character(kind=C_CHAR)",
+                                "i_var": "SHT_rv",
+                                "i_var_capsule": "SHT_rv_capsule",
+                                "i_var_cdesc": "SHT_rv_cdesc",
+                                "idtor": "1",
+                                "stmt_name": "f_function_string_cdesc_pointer",
+                                "typemap_name": "std::string"
+                            },
+                            "meta": {
+                                "abstract": "string",
+                                "api": "cdesc",
+                                "deref": "pointer",
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_string_cdesc_pointer"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "abstract": "string",
+                                "intent": "function"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "getConstStringPointer",
+                    "F_name_api": "get_const_string_pointer",
+                    "F_name_function": "get_const_string_pointer",
+                    "F_name_generic": "get_const_string_pointer",
+                    "F_name_impl": "get_const_string_pointer",
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
+                    "function_name": "getConstStringPointer"
+                }
+            },
+            {
+                "<FUNCTION>": "getConstStringAsArg  4 ****************************************",
                 "C_error_pattern": "C_invalid_name",
                 "ast": {
                     "const": true,
@@ -634,7 +755,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getConstStringRefLen  4 ****************************************",
+                "<FUNCTION>": "getConstStringRefLen  5 ****************************************",
                 "C_error_pattern": "C_invalid_name",
                 "ast": {
                     "const": true,
@@ -835,7 +956,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getConstStringRefLenEmpty  5 ****************************************",
+                "<FUNCTION>": "getConstStringRefLenEmpty  6 ****************************************",
                 "C_error_pattern": "C_invalid_name",
                 "ast": {
                     "const": true,
@@ -1035,7 +1156,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getConstStringRefAlloc  6 ****************************************",
+                "<FUNCTION>": "getConstStringRefAlloc  7 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -1242,7 +1363,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getConstStringRefAsArg  7 ****************************************",
+                "<FUNCTION>": "getConstStringRefAsArg  8 ****************************************",
                 "C_error_pattern": "C_invalid_name",
                 "ast": {
                     "const": true,
@@ -1443,7 +1564,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getConstStringPtrLen  8 ****************************************",
+                "<FUNCTION>": "getConstStringPtrLen  9 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -1651,7 +1772,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getConstStringPtrAlloc  9 ****************************************",
+                "<FUNCTION>": "getConstStringPtrAlloc  10 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -1860,7 +1981,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getConstStringPtrOwnsAlloc  10 ****************************************",
+                "<FUNCTION>": "getConstStringPtrOwnsAlloc  11 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -2072,7 +2193,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getConstStringPtrOwnsAllocPattern  11 ****************************************",
+                "<FUNCTION>": "getConstStringPtrOwnsAllocPattern  12 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -2289,7 +2410,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getConstStringPtrPointer  12 ****************************************",
+                "<FUNCTION>": "getConstStringPtrPointer  13 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -2453,7 +2574,7 @@
                 }
             },
             {
-                "<FUNCTION>": "acceptStringConstReference  13 ****************************************",
+                "<FUNCTION>": "acceptStringConstReference  14 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "acceptStringConstReference",
@@ -2714,7 +2835,7 @@
                 }
             },
             {
-                "<FUNCTION>": "acceptStringReferenceOut  14 ****************************************",
+                "<FUNCTION>": "acceptStringReferenceOut  15 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "acceptStringReferenceOut",
@@ -2972,7 +3093,7 @@
                 }
             },
             {
-                "<FUNCTION>": "acceptStringReference  15 ****************************************",
+                "<FUNCTION>": "acceptStringReference  16 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "acceptStringReference",
@@ -3237,7 +3358,7 @@
                 }
             },
             {
-                "<FUNCTION>": "acceptStringPointerConst  16 ****************************************",
+                "<FUNCTION>": "acceptStringPointerConst  17 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "acceptStringPointerConst",
@@ -3497,7 +3618,7 @@
                 }
             },
             {
-                "<FUNCTION>": "acceptStringPointer  17 ****************************************",
+                "<FUNCTION>": "acceptStringPointer  18 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "acceptStringPointer",
@@ -3759,7 +3880,7 @@
                 }
             },
             {
-                "<FUNCTION>": "fetchStringPointer  18 ****************************************",
+                "<FUNCTION>": "fetchStringPointer  19 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "fetchStringPointer",
@@ -4017,7 +4138,7 @@
                 }
             },
             {
-                "<FUNCTION>": "acceptStringPointerLen  19 ****************************************",
+                "<FUNCTION>": "acceptStringPointerLen  20 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "acceptStringPointerLen",
@@ -4407,7 +4528,7 @@
                 }
             },
             {
-                "<FUNCTION>": "fetchStringPointerLen  20 ****************************************",
+                "<FUNCTION>": "fetchStringPointerLen  21 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "fetchStringPointerLen",
@@ -4792,7 +4913,7 @@
                 }
             },
             {
-                "<FUNCTION>": "acceptStringInstance  21 ****************************************",
+                "<FUNCTION>": "acceptStringInstance  22 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "acceptStringInstance",
@@ -5097,7 +5218,7 @@
                 }
             },
             {
-                "<FUNCTION>": "returnStrings  22 ****************************************",
+                "<FUNCTION>": "returnStrings  23 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "returnStrings",
@@ -5265,7 +5386,7 @@
                 }
             },
             {
-                "<FUNCTION>": "fetchArrayStringArg  23 ****************************************",
+                "<FUNCTION>": "fetchArrayStringArg  24 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "fetchArrayStringArg",
@@ -5611,7 +5732,7 @@
                 }
             },
             {
-                "<FUNCTION>": "fetchArrayStringAlloc  24 ****************************************",
+                "<FUNCTION>": "fetchArrayStringAlloc  25 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "fetchArrayStringAlloc",
@@ -5973,7 +6094,7 @@
                 }
             },
             {
-                "<FUNCTION>": "fetchArrayStringAllocLen  25 ****************************************",
+                "<FUNCTION>": "fetchArrayStringAllocLen  26 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "fetchArrayStringAllocLen",
@@ -6341,7 +6462,7 @@
                 }
             },
             {
-                "<FUNCTION>": "CpassChar  26 ****************************************",
+                "<FUNCTION>": "CpassChar  27 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "CpassChar",
@@ -6580,7 +6701,7 @@
                 }
             },
             {
-                "<FUNCTION>": "CreturnChar  27 ****************************************",
+                "<FUNCTION>": "CreturnChar  28 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "CreturnChar",
@@ -6741,7 +6862,7 @@
                 }
             },
             {
-                "<FUNCTION>": "PostDeclare  28 ****************************************",
+                "<FUNCTION>": "PostDeclare  29 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "PostDeclare",

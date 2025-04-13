@@ -42,6 +42,15 @@ declarations:
       Return an ALLOCATABLE CHARACTER from std::string.
       The language=C wrapper will return a const char *
 
+- decl: const string getConstStringPointer() +deref(pointer)
+  doxygen:
+    description: |
+      Return an POINTER CHARACTER from std::string.
+      The language=C wrapper will return a const char *
+  options:
+    wrap_c: False
+    wrap_python: False
+
 #####
 # Return function result in an argument.
 

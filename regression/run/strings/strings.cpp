@@ -44,6 +44,11 @@ const std::string getConstStringAlloc()
     return std::string("getConstStringAlloc");
 }
 
+const std::string getConstStringPointer()
+{
+    return std::string("getConstStringPointer");
+}
+
 const std::string getConstStringAsArg()
 {
     return static_str;

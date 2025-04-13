@@ -78,6 +78,17 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
+    ! Function:  const string getConstStringPointer +deref(pointer)
+    ! Statement: f_function_string_cfi_pointer
+    interface
+        subroutine c_get_const_string_pointer_CFI(SHT_rv) &
+                bind(C, name="STR_getConstStringPointer_CFI")
+            implicit none
+            character(len=:), intent(OUT), pointer :: SHT_rv
+        end subroutine c_get_const_string_pointer_CFI
+    end interface
+
+    ! ----------------------------------------
     ! Function:  const string getConstStringAsArg +deref(copy)+funcarg
     ! Statement: f_function_string_cfi_funcarg_copy
     interface
@@ -819,6 +830,21 @@ contains
         call c_get_const_string_alloc_CFI(SHT_rv)
         ! splicer end function.get_const_string_alloc
     end function get_const_string_alloc
+
+    ! ----------------------------------------
+    ! Function:  const string getConstStringPointer +deref(pointer)
+    ! Statement: f_function_string_cfi_pointer
+    !>
+    !! Return an POINTER CHARACTER from std::string.
+    !! The language=C wrapper will return a const char *
+    !<
+    function get_const_string_pointer() &
+            result(SHT_rv)
+        character(len=:), pointer :: SHT_rv
+        ! splicer begin function.get_const_string_pointer
+        call c_get_const_string_pointer_CFI(SHT_rv)
+        ! splicer end function.get_const_string_pointer
+    end function get_const_string_pointer
 
     ! ----------------------------------------
     ! Function:  const string getConstStringAsArg +deref(copy)+funcarg

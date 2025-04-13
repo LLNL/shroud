@@ -220,6 +220,13 @@ A dictionary to replace default values
             i_var: "val"
             c_var: "val"
 
+.. code-block:: yaml
+
+        name: c_mixin_function-assign-to-new
+        fmtdict:
+            cxx_addr: ""
+            cxx_member: "->"
+                
 Examples
 --------
 

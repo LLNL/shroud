@@ -38,6 +38,10 @@ const char * STR_getConstStringAlloc(
 void STR_getConstStringAlloc_bufferify(STR_SHROUD_array *SHT_rv_cdesc,
     STR_SHROUD_capsule_data *SHT_rv_capsule);
 
+void STR_getConstStringPointer_bufferify(
+    STR_SHROUD_capsule_data *SHT_rv_capsule,
+    STR_SHROUD_array *SHT_rv_cdesc);
+
 void STR_getConstStringAsArg_bufferify(char *SHC_rv, int nSHC_rv);
 
 const char * STR_getConstStringRefLen(void);
