@@ -4378,6 +4378,33 @@ c_mixin_cfi_string**_allocatable:
   - lower_bounds_CFI
   - cfi_array_string_out
   sphinx-end-before: c_mixin_cfi_string**_allocatable
+c_mixin_cfi_string*_pointer:
+  sphinx-start-after: c_mixin_cfi_string*_pointer
+  name: c_mixin_cfi_string*_pointer
+  intent: mixin
+  c_post_call:
+  - int {c_local_err};
+  - if ({c_local_cxx} == {nullptr}) {{+
+  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});"
+  - -}} else {{+
+  - CFI_CDESC_T(0) {c_local_fptr};
+  - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
+  - void *{c_local_cptr} = const_cast<char *>({c_local_cxx}{cxx_member}data());
+  - size_t {c_local_len} = {c_local_cxx}{cxx_member}length();
+  - "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t\
+    \ CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});"
+  - if ({c_local_err} == CFI_SUCCESS) {{+
+  - '{c_var_cfi}->elem_len = {c_local_cdesc}->elem_len;'
+  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {nullptr});"
+  - -}}
+  - -}}
+  c_local:
+  - cptr
+  - fptr
+  - cdesc
+  - len
+  - err
+  sphinx-end-before: c_mixin_cfi_string*_pointer
 c_mixin_char-alloc:
   sphinx-start-after: c_mixin_char-alloc
   name: c_mixin_char-alloc
@@ -10546,6 +10573,7 @@ f_function_string&_cfi_pointer:
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
   - '  c_mixin_function-assign-to-local'
+  - '  c_mixin_cfi_string*_pointer'
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_arg_call:
@@ -10614,6 +10642,7 @@ f_function_string&_cfi_pointer_caller:
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
   - '  c_mixin_function-assign-to-local'
+  - '  c_mixin_cfi_string*_pointer'
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_arg_call:
@@ -10682,6 +10711,7 @@ f_function_string&_cfi_pointer_library:
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
   - '  c_mixin_function-assign-to-local'
+  - '  c_mixin_cfi_string*_pointer'
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_arg_call:
@@ -11676,6 +11706,7 @@ f_function_string*_cfi_pointer:
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
   - '  c_mixin_function-assign-to-local'
+  - '  c_mixin_cfi_string*_pointer'
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_arg_call:
@@ -11744,6 +11775,7 @@ f_function_string*_cfi_pointer_caller:
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
   - '  c_mixin_function-assign-to-local'
+  - '  c_mixin_cfi_string*_pointer'
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_arg_call:
@@ -11812,6 +11844,7 @@ f_function_string*_cfi_pointer_library:
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
   - '  c_mixin_function-assign-to-local'
+  - '  c_mixin_cfi_string*_pointer'
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_arg_call:
@@ -12919,6 +12952,7 @@ f_function_string_cfi_pointer:
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
   - '  c_mixin_function-assign-to-local'
+  - '  c_mixin_cfi_string*_pointer'
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_arg_call:
@@ -12987,6 +13021,7 @@ f_function_string_cfi_pointer_caller:
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
   - '  c_mixin_function-assign-to-local'
+  - '  c_mixin_cfi_string*_pointer'
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_arg_call:
@@ -13055,6 +13090,7 @@ f_function_string_cfi_pointer_library:
   - '    c_mixin_character-deferred-length'
   - '    c_mixin_cfi_arg'
   - '  c_mixin_function-assign-to-local'
+  - '  c_mixin_cfi_string*_pointer'
   f_dummy_decl:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_arg_call:
@@ -22457,6 +22493,8 @@ root
         native
           allocatable -- c_mixin_cfi_native_allocatable
           pointer -- c_mixin_cfi_native_pointer
+        string*
+          pointer -- c_mixin_cfi_string*_pointer
         string**
           allocatable -- c_mixin_cfi_string**_allocatable
       cfi-unpack-base-addr -- c_mixin_cfi-unpack-base-addr
