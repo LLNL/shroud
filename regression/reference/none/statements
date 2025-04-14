@@ -418,7 +418,7 @@ c_function_shadow&_capptr:
   - '  c_mixin_as-intent-out'
   - '  c_mixin_function-assign-to-local'
   - '  c_mixin_capsule_fill_cvar'
-  - '  c_mixin_function-return-cvar'
+  - '  c_mixin_function-return-capptr'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -466,7 +466,7 @@ c_function_shadow&_capptr_caller:
   - '  c_mixin_as-intent-out'
   - '  c_mixin_function-assign-to-local'
   - '  c_mixin_capsule_fill_cvar'
-  - '  c_mixin_function-return-cvar'
+  - '  c_mixin_function-return-capptr'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -514,7 +514,7 @@ c_function_shadow&_capptr_library:
   - '  c_mixin_as-intent-out'
   - '  c_mixin_function-assign-to-local'
   - '  c_mixin_capsule_fill_cvar'
-  - '  c_mixin_function-return-cvar'
+  - '  c_mixin_function-return-capptr'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -679,7 +679,7 @@ c_function_shadow*_capptr:
   - '  c_mixin_as-intent-out'
   - '  c_mixin_function-assign-to-local'
   - '  c_mixin_capsule_fill_cvar'
-  - '  c_mixin_function-return-cvar'
+  - '  c_mixin_function-return-capptr'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -727,7 +727,7 @@ c_function_shadow*_capptr_caller:
   - '  c_mixin_as-intent-out'
   - '  c_mixin_function-assign-to-local'
   - '  c_mixin_capsule_fill_cvar'
-  - '  c_mixin_function-return-cvar'
+  - '  c_mixin_function-return-capptr'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -775,7 +775,7 @@ c_function_shadow*_capptr_library:
   - '  c_mixin_as-intent-out'
   - '  c_mixin_function-assign-to-local'
   - '  c_mixin_capsule_fill_cvar'
-  - '  c_mixin_function-return-cvar'
+  - '  c_mixin_function-return-capptr'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -823,7 +823,7 @@ c_function_shadow*_capptr_shared:
   - '  c_mixin_as-intent-out'
   - '  c_mixin_function-assign-to-local'
   - '  c_mixin_capsule_fill_cvar'
-  - '  c_mixin_function-return-cvar'
+  - '  c_mixin_function-return-capptr'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -932,7 +932,7 @@ c_function_shadow<native>_capptr:
   - '  c_mixin_as-intent-out'
   - '  c_mixin_function-assign-to-new'
   - '  c_mixin_capsule_fill_cvar'
-  - '  c_mixin_function-return-cvar'
+  - '  c_mixin_function-return-capptr'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -988,7 +988,7 @@ c_function_shadow_capptr:
   - '  c_mixin_as-intent-out'
   - '  c_mixin_function-assign-to-new'
   - '  c_mixin_capsule_fill_cvar'
-  - '  c_mixin_function-return-cvar'
+  - '  c_mixin_function-return-capptr'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -1039,7 +1039,7 @@ c_function_smartptr<shadow>*_capptr:
   - '  c_mixin_as-intent-out'
   - '  c_mixin_function-assign-to-local'
   - '  c_mixin_capsule_fill_cvar'
-  - '  c_mixin_function-return-cvar'
+  - '  c_mixin_function-return-capptr'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -1087,7 +1087,7 @@ c_function_smartptr<shadow>_capptr:
   - '  c_mixin_as-intent-out'
   - '  c_mixin_function-assign-to-new'
   - '  c_mixin_capsule_fill_cvar'
-  - '  c_mixin_function-return-cvar'
+  - '  c_mixin_function-return-capptr'
   i_dummy_arg:
   - '{i_var}'
   i_dummy_decl:
@@ -4654,11 +4654,19 @@ c_mixin_function-assign-to-new:
     cxx_member: ->
   owner: caller
   sphinx-end-before: c_mixin_function-assign-to-new
+c_mixin_function-return-capptr:
+  sphinx-start-after: c_mixin_function-return-capptr
+  name: c_mixin_function-return-capptr
+  intent: mixin
+  c_return_type: '{c_type} *'
+  c_return:
+  - return {c_var};
+  sphinx-end-before: c_mixin_function-return-capptr
 c_mixin_function-return-cvar:
   sphinx-start-after: c_mixin_function-return-cvar
   name: c_mixin_function-return-cvar
   intent: mixin
-  c_return_type: '{c_type} *'
+  c_return_type: '{c_const}{c_type} *'
   c_return:
   - return {c_var};
   sphinx-end-before: c_mixin_function-return-cvar
@@ -22641,6 +22649,7 @@ root
       function-assign-to-cvar -- c_mixin_function-assign-to-cvar
       function-assign-to-local -- c_mixin_function-assign-to-local
       function-assign-to-new -- c_mixin_function-assign-to-new
+      function-return-capptr -- c_mixin_function-return-capptr
       function-return-cvar -- c_mixin_function-return-cvar
       getter
         char* -- c_mixin_getter_char*

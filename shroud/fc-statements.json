@@ -593,7 +593,7 @@
             "Return a pointer to a heap variable.",
             "Used when a function returns a value."
         ],
-        "c_return_type": "{c_type} *",
+        "c_return_type": "{c_const}{c_type} *",
         "c_return": [
             "return {c_var};"
         ]
@@ -822,6 +822,17 @@
         ],
         "helper": [
             "capsule_dtor"
+        ]
+    },
+    {
+        "name": "c_mixin_function-return-capptr",
+        "notes": [
+            "Return the capsule argument.",
+            "Note that the capsule is not const, but the pointer inside should be."
+        ],
+        "c_return_type": "{c_type} *",
+        "c_return": [
+            "return {c_var};"
         ]
     },
     {
@@ -4198,7 +4209,7 @@
             "c_mixin_as-intent-out",
             "c_mixin_function-assign-to-local",
             "c_mixin_capsule_fill_cvar",
-            "c_mixin_function-return-cvar"
+            "c_mixin_function-return-capptr"
         ]
     },
     {
@@ -4246,7 +4257,7 @@
             "c_mixin_as-intent-out",
             "c_mixin_function-assign-to-new",
             "c_mixin_capsule_fill_cvar",
-            "c_mixin_function-return-cvar"
+            "c_mixin_function-return-capptr"
         ]
     },
     {
@@ -4370,7 +4381,7 @@
             "c_mixin_as-intent-out",
             "c_mixin_function-assign-to-new",
             "c_mixin_capsule_fill_cvar",
-            "c_mixin_function-return-cvar"
+            "c_mixin_function-return-capptr"
         ]
     },
     {
@@ -4383,7 +4394,7 @@
             "c_mixin_as-intent-out",
             "c_mixin_function-assign-to-local",
             "c_mixin_capsule_fill_cvar",
-            "c_mixin_function-return-cvar"
+            "c_mixin_function-return-capptr"
         ]
     },
     {
