@@ -14,13 +14,63 @@
 ! splicer begin file_top
 ! splicer end file_top
 module strings_mod
-    use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR
+    use iso_c_binding, only : C_INT, C_LONG, C_NULL_PTR, C_PTR, C_SIZE_T
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
 
     ! splicer begin module_top
     ! splicer end module_top
+
+    ! helper type_defines
+    ! Shroud type defines from helper type_defines
+    integer, parameter, private :: &
+        SH_TYPE_SIGNED_CHAR= 1, &
+        SH_TYPE_SHORT      = 2, &
+        SH_TYPE_INT        = 3, &
+        SH_TYPE_LONG       = 4, &
+        SH_TYPE_LONG_LONG  = 5, &
+        SH_TYPE_SIZE_T     = 6, &
+        SH_TYPE_UNSIGNED_SHORT      = SH_TYPE_SHORT + 100, &
+        SH_TYPE_UNSIGNED_INT        = SH_TYPE_INT + 100, &
+        SH_TYPE_UNSIGNED_LONG       = SH_TYPE_LONG + 100, &
+        SH_TYPE_UNSIGNED_LONG_LONG  = SH_TYPE_LONG_LONG + 100, &
+        SH_TYPE_INT8_T    =  7, &
+        SH_TYPE_INT16_T   =  8, &
+        SH_TYPE_INT32_T   =  9, &
+        SH_TYPE_INT64_T   = 10, &
+        SH_TYPE_UINT8_T  =  SH_TYPE_INT8_T + 100, &
+        SH_TYPE_UINT16_T =  SH_TYPE_INT16_T + 100, &
+        SH_TYPE_UINT32_T =  SH_TYPE_INT32_T + 100, &
+        SH_TYPE_UINT64_T =  SH_TYPE_INT64_T + 100, &
+        SH_TYPE_FLOAT       = 22, &
+        SH_TYPE_DOUBLE      = 23, &
+        SH_TYPE_LONG_DOUBLE = 24, &
+        SH_TYPE_FLOAT_COMPLEX      = 25, &
+        SH_TYPE_DOUBLE_COMPLEX     = 26, &
+        SH_TYPE_LONG_DOUBLE_COMPLEX= 27, &
+        SH_TYPE_BOOL      = 28, &
+        SH_TYPE_CHAR      = 29, &
+        SH_TYPE_CPTR      = 30, &
+        SH_TYPE_STRUCT    = 31, &
+        SH_TYPE_OTHER     = 32
+
+    ! start helper array_context
+    ! helper array_context
+    type, bind(C) :: STR_SHROUD_array
+        ! address of data
+        type(C_PTR) :: base_addr = C_NULL_PTR
+        ! type of element
+        integer(C_INT) :: type
+        ! bytes-per-item or character len of data in cxx
+        integer(C_SIZE_T) :: elem_len = 0_C_SIZE_T
+        ! size of data in cxx
+        integer(C_SIZE_T) :: size = 0_C_SIZE_T
+        ! number of dimensions
+        integer(C_INT) :: rank = -1
+        integer(C_LONG) :: shape(7) = 0
+    end type STR_SHROUD_array
+    ! end helper array_context
 
     ! start helper capsule_data_helper
     ! helper capsule_data_helper
@@ -29,6 +79,15 @@ module strings_mod
         integer(C_INT) :: idtor = 0       ! index of destructor
     end type STR_SHROUD_capsule_data
     ! end helper capsule_data_helper
+
+    ! helper capsule_helper
+    type :: STR_SHROUD_capsule
+        private
+        type(STR_SHROUD_capsule_data) :: mem
+    contains
+        final :: SHROUD_capsule_final
+        procedure :: delete => SHROUD_capsule_delete
+    end type STR_SHROUD_capsule
 
     ! ----------------------------------------
     ! Function:  void init_test
@@ -81,9 +140,12 @@ module strings_mod
     ! Function:  const string getConstStringPointer +deref(pointer)
     ! Statement: f_function_string_cfi_pointer
     interface
-        subroutine c_get_const_string_pointer_CFI(SHT_rv) &
+        subroutine c_get_const_string_pointer_CFI(SHT_rv_capsule, &
+                SHT_rv) &
                 bind(C, name="STR_getConstStringPointer_CFI")
+            import :: STR_SHROUD_capsule_data
             implicit none
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
             character(len=:), intent(OUT), pointer :: SHT_rv
         end subroutine c_get_const_string_pointer_CFI
     end interface
@@ -784,6 +846,17 @@ module strings_mod
         end subroutine post_declare
     end interface
 
+    interface
+        ! helper capsule_dtor
+        ! Delete memory in a capsule.
+        subroutine STR_SHROUD_capsule_dtor(ptr) &
+            bind(C, name="STR_SHROUD_memory_destructor")
+            import STR_SHROUD_capsule_data
+            implicit none
+            type(STR_SHROUD_capsule_data), intent(INOUT) :: ptr
+        end subroutine STR_SHROUD_capsule_dtor
+    end interface
+
     ! splicer begin additional_declarations
     ! splicer end additional_declarations
 
@@ -838,11 +911,12 @@ contains
     !! Return an POINTER CHARACTER from std::string.
     !! The language=C wrapper will return a const char *
     !<
-    function get_const_string_pointer() &
+    function get_const_string_pointer(Crv) &
             result(SHT_rv)
+        type(STR_SHROUD_capsule), intent(OUT) :: Crv
         character(len=:), pointer :: SHT_rv
         ! splicer begin function.get_const_string_pointer
-        call c_get_const_string_pointer_CFI(SHT_rv)
+        call c_get_const_string_pointer_CFI(Crv%mem, SHT_rv)
         ! splicer end function.get_const_string_pointer
     end function get_const_string_pointer
 
@@ -1346,5 +1420,17 @@ contains
 
     ! splicer begin additional_functions
     ! splicer end additional_functions
+
+    ! helper capsule_helper
+    ! finalize a static STR_SHROUD_capsule_data
+    subroutine SHROUD_capsule_final(cap)
+        type(STR_SHROUD_capsule), intent(INOUT) :: cap
+        call STR_SHROUD_capsule_dtor(cap%mem)
+    end subroutine SHROUD_capsule_final
+
+    subroutine SHROUD_capsule_delete(cap)
+        class(STR_SHROUD_capsule) :: cap
+        call STR_SHROUD_capsule_dtor(cap%mem)
+    end subroutine SHROUD_capsule_delete
 
 end module strings_mod

@@ -5445,10 +5445,30 @@
     {
         "alias": [
             "f_function_string_cfi_pointer",
+            "f_function_string_cfi_pointer_caller",
+            "f_function_string_cfi_pointer_library"
+        ],
+        "notes": [
+            "Return a pointer to a new variable",
+            "which the caller must release via the capsule."
+        ],
+        "usage": [
+            "std::string func() +deref(allocatable)"
+        ],
+        "mixin": [
+            "f_mixin_capsule_arg",
+            "f_mixin_call-cwrapper-as-subroutine",
+            "f_mixin_cfi_character-deferred-length",
+            "c_mixin_function-assign-to-new",
+            "c_mixin_cfi_string*_pointer",
+            "c_mixin_capsule_fill_native"
+        ],
+        "f_need_wrapper": true
+    },
+    {
+        "alias": [
             "f_function_string*_cfi_pointer",
             "f_function_string&_cfi_pointer",
-            "f_function_string_cfi_pointer_caller",
-            "f_function_string_cfi_pointer_library",
             "f_function_string*_cfi_pointer_caller",
             "f_function_string*_cfi_pointer_library",
             "f_function_string&_cfi_pointer_caller",
@@ -5477,6 +5497,9 @@
             "f_function_string*_cfi_allocatable_library",
             "f_function_string&_cfi_allocatable_caller",
             "f_function_string&_cfi_allocatable_library"
+        ],
+        "usage": [
+            "std::string func() +deref(allocatable)"
         ],
         "mixin": [
             "f_mixin_call-cwrapper-as-subroutine",

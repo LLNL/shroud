@@ -142,10 +142,12 @@ void STR_getConstStringAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // ----------------------------------------
 // Function:  const string getConstStringPointer +deref(pointer)
 // Statement: f_function_string_cfi_pointer
-void STR_getConstStringPointer_CFI(CFI_cdesc_t *SHT_rv_cfi)
+void STR_getConstStringPointer_CFI(
+    STR_SHROUD_capsule_data *SHT_rv_capsule, CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringPointer_CFI
-    const std::string SHC_rv_cxx = getConstStringPointer();
+    std::string *SHC_rv_cxx = new std::string;
+    *SHC_rv_cxx = getConstStringPointer();
     int SHC_rv_err;
     if (SHC_rv_cxx == nullptr) {
         SHC_rv_err = CFI_setpointer(SHT_rv_cfi, nullptr, nullptr);
@@ -153,8 +155,8 @@ void STR_getConstStringPointer_CFI(CFI_cdesc_t *SHT_rv_cfi)
         CFI_CDESC_T(0) SHC_rv_fptr;
         CFI_cdesc_t *SHC_rv_cdesc = reinterpret_cast<CFI_cdesc_t *>
             (&SHC_rv_fptr);
-        void *SHC_rv_cptr = const_cast<char *>(SHC_rv_cxx.data());
-        size_t SHC_rv_len = SHC_rv_cxx.length();
+        void *SHC_rv_cptr = const_cast<char *>(SHC_rv_cxx->data());
+        size_t SHC_rv_len = SHC_rv_cxx->length();
         SHC_rv_err = CFI_establish(SHC_rv_cdesc, SHC_rv_cptr,
             CFI_attribute_pointer, CFI_type_char, SHC_rv_len, 0,
             nullptr);
@@ -164,6 +166,8 @@ void STR_getConstStringPointer_CFI(CFI_cdesc_t *SHT_rv_cfi)
                 nullptr);
         }
     }
+    SHT_rv_capsule->addr  = const_cast<std::string *>(SHC_rv_cxx);
+    SHT_rv_capsule->idtor = 1;
     // splicer end function.getConstStringPointer_CFI
 }
 

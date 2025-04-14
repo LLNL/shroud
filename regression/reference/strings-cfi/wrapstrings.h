@@ -40,7 +40,8 @@ const char * STR_getConstStringAlloc(
 
 void STR_getConstStringAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
-void STR_getConstStringPointer_CFI(CFI_cdesc_t *SHT_rv_cfi);
+void STR_getConstStringPointer_CFI(
+    STR_SHROUD_capsule_data *SHT_rv_capsule, CFI_cdesc_t *SHT_rv_cfi);
 
 void STR_getConstStringAsArg_CFI(CFI_cdesc_t *SHT_rv_cfi);
 

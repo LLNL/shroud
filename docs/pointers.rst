@@ -238,6 +238,19 @@ memory.  Fortran and Python can both hold on to the memory and then
 provide ways to release it using a C++ callback when it is no longer
 needed.
 
+When a library function returns a C++ object such as ``std::string``
+or ``std::vector`` by value and the Fortran wrapper is returning a
+``POINTER`` via *+deref(pointer)* or uses *+deref(raw)*, the C wrapper
+must allocate a new instance. In addition to the ``POINTER``, a
+*capsule* variable is added as a argument. The caller is responsible
+to release the memory via ``call capsule%delete``.  Otherwise the
+memory will leak. The ``FINAL`` subroutine of the capsule will be
+called when it goes out of scope, so an explicit call to ``delete``
+may not be needed.  If the declaration uses *+deref(allocatable)* or
+*+deref(copy)*, the wrapper will release the memory before returning
+to the caller. At this point the returned varible is owned by Fortran
+and released via ``DEALLOCATE`` or going out of scope.
+
 For shadow classes with a destructor defined, the destructor will 
 be used to release the memory.
 
