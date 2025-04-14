@@ -2913,6 +2913,32 @@
         ]
     },
     {
+        "name": "c_mixin_declare-string-cstr-cvar",
+        "comments": [
+            "Assign std::string.data to cvar."
+        ],
+        "usage": [
+            "Declares a function result.",
+            "Always uses const."
+        ],
+        "c_post_call": [
+            "const char *{c_var} = {c_local_cxx}{cxx_member}c_str();"
+        ]
+    },
+    {
+        "name": "c_mixin_declare-string-data-cvar",
+        "comments": [
+            "Assign std::string.data to cvar.",
+            "Always uses const."
+        ],
+        "usage": [
+            "Declares a function result."
+        ],
+        "c_post_call": [
+            "const char *{c_var} = {c_local_cxx}{cxx_member}data();"
+        ]
+    },
+    {
         "name": "c_mixin_string-strcpy-out",
         "comments": [
             "Strcpy std::string into argument."
@@ -3430,6 +3456,20 @@
             "c_mixin_capsule_fill_native",
             "c_mixin_cdesc_fill_string_local",
             "f_mixin_cdesc_char_pointer"
+        ]
+    },
+    {
+        "name": "f_function_string_raw",
+        "usage": [
+            "std::string func() +deref(raw)"
+        ],
+        "mixin": [
+            "f_mixin_function_ptr",
+            "f_mixin_capsule_arg",
+            "c_mixin_function-return-cvar",
+            "c_mixin_function-assign-to-new",
+            "c_mixin_declare-string-data-cvar",
+            "c_mixin_capsule_fill_native"
         ]
     },
     {

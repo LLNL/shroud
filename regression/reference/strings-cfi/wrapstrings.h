@@ -43,6 +43,9 @@ void STR_getConstStringAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi);
 void STR_getConstStringPointer_CFI(
     STR_SHROUD_capsule_data *SHT_rv_capsule, CFI_cdesc_t *SHT_rv_cfi);
 
+const char * STR_getConstStringRaw_bufferify(
+    STR_SHROUD_capsule_data *SHT_rv_capsule);
+
 void STR_getConstStringAsArg_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 const char * STR_getConstStringRefLen(void);

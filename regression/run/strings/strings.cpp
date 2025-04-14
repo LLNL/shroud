@@ -49,6 +49,11 @@ const std::string getConstStringPointer()
     return std::string("getConstStringPointer");
 }
 
+const std::string getConstStringRaw()
+{
+    return std::string("bird");
+}
+
 const std::string getConstStringAsArg()
 {
     return static_str;

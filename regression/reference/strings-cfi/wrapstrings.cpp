@@ -172,6 +172,26 @@ void STR_getConstStringPointer_CFI(
 }
 
 /**
+ * Return an type(C_PTR) from std::string.
+ * The language=C wrapper will return a const char *
+ */
+// ----------------------------------------
+// Function:  const string getConstStringRaw +deref(raw)
+// Statement: f_function_string_raw
+const char * STR_getConstStringRaw_bufferify(
+    STR_SHROUD_capsule_data *SHT_rv_capsule)
+{
+    // splicer begin function.getConstStringRaw_bufferify
+    std::string *SHC_rv_cxx = new std::string;
+    *SHC_rv_cxx = getConstStringRaw();
+    const char *SHC_rv = SHC_rv_cxx->data();
+    SHT_rv_capsule->addr  = const_cast<std::string *>(SHC_rv_cxx);
+    SHT_rv_capsule->idtor = 1;
+    return SHC_rv;
+    // splicer end function.getConstStringRaw_bufferify
+}
+
+/**
  * \brief return a 'const string' as argument
  *
  */

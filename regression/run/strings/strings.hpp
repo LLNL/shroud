@@ -18,6 +18,7 @@ void init_test(void);
 const std::string getConstStringLen();
 const std::string getConstStringAlloc();
 const std::string getConstStringPointer();
+const std::string getConstStringRaw();
 
 const std::string getConstStringAsArg();
 

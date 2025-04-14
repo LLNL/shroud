@@ -156,6 +156,21 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
+    ! Function:  const string getConstStringRaw +deref(raw)
+    ! Statement: f_function_string_raw
+    interface
+        function c_get_const_string_raw_bufferify(SHT_rv_capsule) &
+                result(SHT_rv) &
+                bind(C, name="STR_getConstStringRaw_bufferify")
+            use iso_c_binding, only : C_PTR
+            import :: STR_SHROUD_capsule_data
+            implicit none
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
+            type(C_PTR) :: SHT_rv
+        end function c_get_const_string_raw_bufferify
+    end interface
+
+    ! ----------------------------------------
     ! Function:  const string getConstStringAsArg +deref(copy)+funcarg
     ! Statement: f_function_string_buf_funcarg_copy
     interface
@@ -1016,6 +1031,23 @@ contains
         call STR_SHROUD_pointer_string(SHT_rv_cdesc, SHT_rv)
         ! splicer end function.get_const_string_pointer
     end function get_const_string_pointer
+
+    ! ----------------------------------------
+    ! Function:  const string getConstStringRaw +deref(raw)
+    ! Statement: f_function_string_raw
+    !>
+    !! Return an type(C_PTR) from std::string.
+    !! The language=C wrapper will return a const char *
+    !<
+    function get_const_string_raw(Crv) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_PTR
+        type(C_PTR) :: SHT_rv
+        type(STR_SHROUD_capsule), intent(OUT) :: Crv
+        ! splicer begin function.get_const_string_raw
+        SHT_rv = c_get_const_string_raw_bufferify(Crv%mem)
+        ! splicer end function.get_const_string_raw
+    end function get_const_string_raw
 
     ! ----------------------------------------
     ! Function:  const string getConstStringAsArg +deref(copy)+funcarg

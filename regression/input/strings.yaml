@@ -51,6 +51,15 @@ declarations:
     wrap_c: False
     wrap_python: False
 
+- decl: const string getConstStringRaw() +deref(raw)
+  doxygen:
+    description: |
+      Return an type(C_PTR) from std::string.
+      The language=C wrapper will return a const char *
+  options:
+    wrap_c: False
+    wrap_python: False
+
 #####
 # Return function result in an argument.
 

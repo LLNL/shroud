@@ -58,6 +58,8 @@ contains
     character(30), parameter :: static_str = "dog                         "
     integer(C_INT) :: nlen
     type(STR_SHROUD_capsule) :: capsule_str
+    character, pointer :: raw_str(:)
+    type(C_PTR) :: raw_ptr
 
     call set_case_name("test_functions")
 
@@ -78,6 +80,18 @@ contains
     nullify(pstr)
     pstr => get_const_string_pointer(capsule_str)
     call assert_true(pstr == "getConstStringPointer", "getConstStringPointer")
+    call capsule_str%delete
+
+    ! +deref(raw)
+    raw_ptr = C_NULL_PTR
+    raw_ptr = get_const_string_raw(capsule_str)
+    call assert_true(c_associated(raw_ptr), "getConstStringRaw associated")
+    call c_f_pointer(raw_ptr, raw_str, [4])
+    call assert_true( &
+         raw_str(1) == "b" .and. &
+         raw_str(2) == "i" .and. &
+         raw_str(3) == "r" .and. &
+         raw_str(4) == "d", "getConstStringRaw value")
     call capsule_str%delete
  
     !----------

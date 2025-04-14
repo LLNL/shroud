@@ -4571,6 +4571,30 @@ c_mixin_declare-fortran-result:
     '{i_module_name}':
     - '{i_kind}'
   sphinx-end-before: c_mixin_declare-fortran-result
+c_mixin_declare-string-cstr-cvar:
+  sphinx-start-after: c_mixin_declare-string-cstr-cvar
+  name: c_mixin_declare-string-cstr-cvar
+  intent: mixin
+  comments:
+  - Assign std::string.data to cvar.
+  usage:
+  - Declares a function result.
+  - Always uses const.
+  c_post_call:
+  - const char *{c_var} = {c_local_cxx}{cxx_member}c_str();
+  sphinx-end-before: c_mixin_declare-string-cstr-cvar
+c_mixin_declare-string-data-cvar:
+  sphinx-start-after: c_mixin_declare-string-data-cvar
+  name: c_mixin_declare-string-data-cvar
+  intent: mixin
+  comments:
+  - Assign std::string.data to cvar.
+  - Always uses const.
+  usage:
+  - Declares a function result.
+  c_post_call:
+  - const char *{c_var} = {c_local_cxx}{cxx_member}data();
+  sphinx-end-before: c_mixin_declare-string-data-cvar
 c_mixin_delete-cxx-variable:
   sphinx-start-after: c_mixin_delete-cxx-variable
   name: c_mixin_delete-cxx-variable
@@ -13258,6 +13282,80 @@ f_function_string_cfi_pointer_library:
   - ISO_Fortran_binding.h
   owner: caller
   sphinx-end-before: f_function_string_cfi_pointer_library
+f_function_string_raw:
+  sphinx-start-after: f_function_string_raw
+  name: f_function_string_raw
+  intent: function
+  comments:
+  - Return a C pointer directly as type(C_PTR).
+  - Pass capsule as argument to C wrapper.
+  - Add a capsule argument to the Fortran wrapper.
+  - Pass the capsule as argument to C wrapper.
+  - Allocate a C wrapper result on the heap.
+  - Assign std::string.data to cvar.
+  - Always uses const.
+  - Assign to local capsule variable in C wrapper.
+  usage:
+  - std::string func() +deref(raw)
+  mixin_names:
+  - '  f_mixin_function_ptr'
+  - '  f_mixin_capsule_arg'
+  - '    c_mixin_capsule_pass'
+  - '  c_mixin_function-return-cvar'
+  - '  c_mixin_function-assign-to-new'
+  - '  c_mixin_declare-string-data-cvar'
+  - '  c_mixin_capsule_fill_native'
+  f_dummy_arg:
+  - '{f_var_capsule}'
+  f_dummy_decl:
+  - 'type(C_PTR) :: {f_var}'
+  - 'type({F_capsule_type}), intent(OUT) :: {f_var_capsule}'
+  f_arg_call:
+  - '{f_var_capsule}%mem'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  f_temps:
+  - capsule
+  f_need_wrapper: true
+  i_dummy_arg:
+  - '{i_var_capsule}'
+  i_dummy_decl:
+  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  i_result_decl:
+  - 'type(C_PTR) :: {i_var}'
+  i_import:
+  - '{F_capsule_data_type}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  c_return_type: '{c_const}{c_type} *'
+  c_prototype:
+  - '{C_capsule_data_type} *{c_var_capsule}'
+  c_pre_call:
+  - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
+  c_call:
+  - '*{c_local_cxx} = {C_call_function};'
+  c_post_call:
+  - const char *{c_var} = {c_local_cxx}{cxx_member}data();
+  - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var_capsule}->idtor = {idtor};'
+  c_return:
+  - return {c_var};
+  c_temps:
+  - capsule
+  c_local:
+  - cxx
+  fmtdict:
+    f_var_capsule: Crv
+    cxx_addr: ''
+    cxx_member: ->
+  helper:
+  - capsule_data_helper
+  - array_context
+  - capsule_helper
+  owner: caller
+  sphinx-end-before: f_function_string_raw
 f_function_struct:
   sphinx-start-after: f_function_struct
   name: f_function_struct
@@ -22634,6 +22732,8 @@ root
       declare-arg-char -- c_mixin_declare-arg-char
       declare-arg-void** -- c_mixin_declare-arg-void**
       declare-fortran-result -- c_mixin_declare-fortran-result
+      declare-string-cstr-cvar -- c_mixin_declare-string-cstr-cvar
+      declare-string-data-cvar -- c_mixin_declare-string-data-cvar
       delete-cxx-variable -- c_mixin_delete-cxx-variable
       destructor
         new-shadow-shared -- c_mixin_destructor_new-shadow-shared
@@ -22856,6 +22956,7 @@ root
           pointer -- f_function_string_cfi_pointer
             caller -- f_function_string_cfi_pointer_caller
             library -- f_function_string_cfi_pointer_library
+        raw -- f_function_string_raw
       string&
         buf -- f_function_string&_buf
           caller -- f_function_string&_buf_caller

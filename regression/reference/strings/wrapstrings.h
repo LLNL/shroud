@@ -42,6 +42,9 @@ void STR_getConstStringPointer_bufferify(
     STR_SHROUD_capsule_data *SHT_rv_capsule,
     STR_SHROUD_array *SHT_rv_cdesc);
 
+const char * STR_getConstStringRaw_bufferify(
+    STR_SHROUD_capsule_data *SHT_rv_capsule);
+
 void STR_getConstStringAsArg_bufferify(char *SHC_rv, int nSHC_rv);
 
 const char * STR_getConstStringRefLen(void);
