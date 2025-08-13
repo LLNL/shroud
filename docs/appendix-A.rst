@@ -1535,9 +1535,15 @@ Fortran usage:
 .. code-block:: fortran
 
     character(:), allocatable :: astr
-    astr = get_const_string_ref_pure()
+    astr = get_const_string_ref_alloc()
     call assert_true(astr == static_str, "getConstStringRefAlloc")
 
+The wrappers use the statement group ``f_function_string&_cdesc_allocatable``.
+
+.. literalinclude:: ../regression/reference/none/statements
+   :language: yaml
+   :start-after: sphinx-start-after: f_function_string&_cdesc_allocatable
+   :end-before: sphinx-end-before: f_function_string&_cdesc_allocatable
 
 std::vector
 -----------
