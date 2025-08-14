@@ -73,11 +73,13 @@ Any C++ function which has ``char`` or ``std::string`` arguments or
 result will create an additional C function which include additional
 arguments for the length of the strings.  Most Fortran compiler use
 this convention when passing ``CHARACTER`` arguments. Shroud makes
-this convention explicit for two reasons:
+this convention explicit for two reasons
 
-* It allows an interface to be used.  Functions with an interface will
-  not pass the hidden, non-standard length argument, depending on compiler.
-* Returning character argument from C to Fortran is non-portable.
+    * It allows an interface to be used.  Functions with an interface will
+      not pass the hidden, non-standard length argument, depending on compiler.
+
+    * Returning character argument from C to Fortran is non-portable.
+      Often an additional argument is added for the function result.
 
 The C wrapper will create a NULL terminated copy a string with the
 *intent(in)* attribute.  The assumption is that the trailing blanks
