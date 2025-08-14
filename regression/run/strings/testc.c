@@ -17,8 +17,8 @@ void test_functions(void)
 {
     {
         STR_SHROUD_capsule_data capsule = {0};
-        const char *rv = STR_getConstStringResult(&capsule);
-        assert(strcmp(rv, "getConstStringResult") == 0 && "getConstStringResult");
+        const char *rv = STR_getConstStringAlloc(&capsule);
+        assert(strcmp(rv, "getConstStringAlloc") == 0 && "getConstStringAlloc");
         STR_SHROUD_memory_destructor(&capsule);
     }
 

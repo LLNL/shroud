@@ -80,6 +80,15 @@ module strings_mod
     end type STR_SHROUD_capsule_data
     ! end helper capsule_data_helper
 
+    ! helper capsule_helper
+    type :: STR_SHROUD_capsule
+        private
+        type(STR_SHROUD_capsule_data) :: mem
+    contains
+        final :: SHROUD_capsule_final
+        procedure :: delete => SHROUD_capsule_delete
+    end type STR_SHROUD_capsule
+
     ! ----------------------------------------
     ! Function:  void init_test
     ! Statement: f_subroutine
@@ -88,35 +97,6 @@ module strings_mod
                 bind(C, name="STR_init_test")
             implicit none
         end subroutine init_test
-    end interface
-
-    ! ----------------------------------------
-    ! Function:  const string getConstStringResult
-    ! Statement: c_function_string
-    interface
-        function c_get_const_string_result(SHT_rv_capsule) &
-                result(SHT_rv) &
-                bind(C, name="STR_getConstStringResult")
-            use iso_c_binding, only : C_PTR
-            import :: STR_SHROUD_capsule_data
-            implicit none
-            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
-            type(C_PTR) :: SHT_rv
-        end function c_get_const_string_result
-    end interface
-
-    ! ----------------------------------------
-    ! Function:  const string getConstStringResult
-    ! Statement: f_function_string_cdesc_allocatable
-    interface
-        subroutine c_get_const_string_result_bufferify(SHT_rv_cdesc, &
-                SHT_rv_capsule) &
-                bind(C, name="STR_getConstStringResult_bufferify")
-            import :: STR_SHROUD_array, STR_SHROUD_capsule_data
-            implicit none
-            type(STR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
-            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
-        end subroutine c_get_const_string_result_bufferify
     end interface
 
     ! ----------------------------------------
@@ -133,20 +113,22 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const string getConstStringAsArg +deref(copy)+funcarg
-    ! Statement: f_function_string_buf_funcarg_copy
+    ! Function:  const string getConstStringAlloc
+    ! Statement: c_function_string
     interface
-        subroutine c_get_const_string_as_arg_bufferify(output, noutput) &
-                bind(C, name="STR_getConstStringAsArg_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
+        function c_get_const_string_alloc(SHT_rv_capsule) &
+                result(SHT_rv) &
+                bind(C, name="STR_getConstStringAlloc")
+            use iso_c_binding, only : C_PTR
+            import :: STR_SHROUD_capsule_data
             implicit none
-            character(kind=C_CHAR), intent(OUT) :: output(*)
-            integer(C_INT), value, intent(IN) :: noutput
-        end subroutine c_get_const_string_as_arg_bufferify
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
+            type(C_PTR) :: SHT_rv
+        end function c_get_const_string_alloc
     end interface
 
     ! ----------------------------------------
-    ! Function:  const std::string getConstStringAlloc
+    ! Function:  const string getConstStringAlloc
     ! Statement: f_function_string_cdesc_allocatable
     interface
         subroutine c_get_const_string_alloc_bufferify(SHT_rv_cdesc, &
@@ -160,35 +142,46 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const string &getConstStringRefPure
-    ! Statement: c_function_string&
-    ! start c_get_const_string_ref_pure
+    ! Function:  const string getConstStringPointer +deref(pointer)
+    ! Statement: f_function_string_cdesc_pointer
     interface
-        function c_get_const_string_ref_pure() &
-                result(SHT_rv) &
-                bind(C, name="STR_getConstStringRefPure")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR) :: SHT_rv
-        end function c_get_const_string_ref_pure
-    end interface
-    ! end c_get_const_string_ref_pure
-
-    ! ----------------------------------------
-    ! Function:  const string &getConstStringRefPure
-    ! Statement: f_function_string&_cdesc_allocatable
-    ! start c_get_const_string_ref_pure_bufferify
-    interface
-        subroutine c_get_const_string_ref_pure_bufferify(SHT_rv_cdesc, &
-                SHT_rv_capsule) &
-                bind(C, name="STR_getConstStringRefPure_bufferify")
+        subroutine c_get_const_string_pointer_bufferify(SHT_rv_capsule, &
+                SHT_rv_cdesc) &
+                bind(C, name="STR_getConstStringPointer_bufferify")
             import :: STR_SHROUD_array, STR_SHROUD_capsule_data
             implicit none
-            type(STR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
             type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
-        end subroutine c_get_const_string_ref_pure_bufferify
+            type(STR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
+        end subroutine c_get_const_string_pointer_bufferify
     end interface
-    ! end c_get_const_string_ref_pure_bufferify
+
+    ! ----------------------------------------
+    ! Function:  const string getConstStringRaw +deref(raw)
+    ! Statement: f_function_string_raw
+    interface
+        function c_get_const_string_raw_bufferify(SHT_rv_capsule) &
+                result(SHT_rv) &
+                bind(C, name="STR_getConstStringRaw_bufferify")
+            use iso_c_binding, only : C_PTR
+            import :: STR_SHROUD_capsule_data
+            implicit none
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
+            type(C_PTR) :: SHT_rv
+        end function c_get_const_string_raw_bufferify
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  const string getConstStringAsArg +deref(copy)+funcarg
+    ! Statement: f_function_string_buf_funcarg_copy
+    interface
+        subroutine c_get_const_string_as_arg_bufferify(output, noutput) &
+                bind(C, name="STR_getConstStringAsArg_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(OUT) :: output(*)
+            integer(C_INT), value, intent(IN) :: noutput
+        end subroutine c_get_const_string_as_arg_bufferify
+    end interface
 
     ! ----------------------------------------
     ! Function:  const string &getConstStringRefLen +len(30)
@@ -215,33 +208,6 @@ module strings_mod
             character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
             integer(C_INT), value, intent(IN) :: SHT_rv_len
         end subroutine c_get_const_string_ref_len_bufferify
-    end interface
-
-    ! ----------------------------------------
-    ! Function:  const string &getConstStringRefAsArg +deref(copy)+funcarg
-    ! Statement: c_function_string&
-    interface
-        function c_get_const_string_ref_as_arg() &
-                result(output) &
-                bind(C, name="STR_getConstStringRefAsArg")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR) :: output
-        end function c_get_const_string_ref_as_arg
-    end interface
-
-    ! ----------------------------------------
-    ! Function:  const string &getConstStringRefAsArg +deref(copy)+funcarg
-    ! Statement: f_function_string&_buf_funcarg_copy
-    interface
-        subroutine c_get_const_string_ref_as_arg_bufferify(output, &
-                noutput) &
-                bind(C, name="STR_getConstStringRefAsArg_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
-            implicit none
-            character(kind=C_CHAR), intent(OUT) :: output(*)
-            integer(C_INT), value, intent(IN) :: noutput
-        end subroutine c_get_const_string_ref_as_arg_bufferify
     end interface
 
     ! ----------------------------------------
@@ -274,6 +240,7 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const std::string &getConstStringRefAlloc
     ! Statement: c_function_string&
+    ! start c_get_const_string_ref_alloc
     interface
         function c_get_const_string_ref_alloc() &
                 result(SHT_rv) &
@@ -283,10 +250,12 @@ module strings_mod
             type(C_PTR) :: SHT_rv
         end function c_get_const_string_ref_alloc
     end interface
+    ! end c_get_const_string_ref_alloc
 
     ! ----------------------------------------
     ! Function:  const std::string &getConstStringRefAlloc
     ! Statement: f_function_string&_cdesc_allocatable
+    ! start c_get_const_string_ref_alloc_bufferify
     interface
         subroutine c_get_const_string_ref_alloc_bufferify(SHT_rv_cdesc, &
                 SHT_rv_capsule) &
@@ -296,6 +265,34 @@ module strings_mod
             type(STR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
             type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
         end subroutine c_get_const_string_ref_alloc_bufferify
+    end interface
+    ! end c_get_const_string_ref_alloc_bufferify
+
+    ! ----------------------------------------
+    ! Function:  const string &getConstStringRefAsArg +deref(copy)+funcarg
+    ! Statement: c_function_string&
+    interface
+        function c_get_const_string_ref_as_arg() &
+                result(output) &
+                bind(C, name="STR_getConstStringRefAsArg")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) :: output
+        end function c_get_const_string_ref_as_arg
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  const string &getConstStringRefAsArg +deref(copy)+funcarg
+    ! Statement: f_function_string&_buf_funcarg_copy
+    interface
+        subroutine c_get_const_string_ref_as_arg_bufferify(output, &
+                noutput) &
+                bind(C, name="STR_getConstStringRefAsArg_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(OUT) :: output(*)
+            integer(C_INT), value, intent(IN) :: noutput
+        end subroutine c_get_const_string_ref_as_arg_bufferify
     end interface
 
     ! ----------------------------------------
@@ -978,28 +975,6 @@ contains
 #endif
 
     ! ----------------------------------------
-    ! Function:  const string getConstStringResult
-    ! Statement: f_function_string_cdesc_allocatable
-    !>
-    !! Return an ALLOCATABLE CHARACTER from std::string.
-    !! The language=C wrapper will return a const char *
-    !<
-    function get_const_string_result() &
-            result(SHT_rv)
-        character(len=:), allocatable :: SHT_rv
-        ! splicer begin function.get_const_string_result
-        type(STR_SHROUD_array) :: SHT_rv_cdesc
-        type(STR_SHROUD_capsule_data) :: SHT_rv_capsule
-        call c_get_const_string_result_bufferify(SHT_rv_cdesc, &
-            SHT_rv_capsule)
-        allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string(SHT_rv_cdesc, SHT_rv, &
-            SHT_rv_cdesc%elem_len)
-        call STR_SHROUD_capsule_dtor(SHT_rv_capsule)
-        ! splicer end function.get_const_string_result
-    end function get_const_string_result
-
-    ! ----------------------------------------
     ! Function:  const string getConstStringLen +len(30)
     ! Statement: f_function_string_buf_copy
     !>
@@ -1018,25 +993,12 @@ contains
     end function get_const_string_len
 
     ! ----------------------------------------
-    ! Function:  const string getConstStringAsArg +deref(copy)+funcarg
-    ! Statement: f_function_string_buf_funcarg_copy
-    !>
-    !! \brief return a 'const string' as argument
-    !!
-    !<
-    subroutine get_const_string_as_arg(output)
-        use iso_c_binding, only : C_INT
-        character(len=*), intent(OUT) :: output
-        ! splicer begin function.get_const_string_as_arg
-        integer(C_INT) noutput
-        noutput = len(output, kind=C_INT)
-        call c_get_const_string_as_arg_bufferify(output, noutput)
-        ! splicer end function.get_const_string_as_arg
-    end subroutine get_const_string_as_arg
-
-    ! ----------------------------------------
-    ! Function:  const std::string getConstStringAlloc
+    ! Function:  const string getConstStringAlloc
     ! Statement: f_function_string_cdesc_allocatable
+    !>
+    !! Return an ALLOCATABLE CHARACTER from std::string.
+    !! The language=C wrapper will return a const char *
+    !<
     function get_const_string_alloc() &
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
@@ -1053,28 +1015,56 @@ contains
     end function get_const_string_alloc
 
     ! ----------------------------------------
-    ! Function:  const string &getConstStringRefPure
-    ! Statement: f_function_string&_cdesc_allocatable
+    ! Function:  const string getConstStringPointer +deref(pointer)
+    ! Statement: f_function_string_cdesc_pointer
     !>
-    !! \brief return a 'const string&' as ALLOCATABLE character
+    !! Return an POINTER CHARACTER from std::string.
+    !! The language=C wrapper will return a const char *
+    !<
+    function get_const_string_pointer(Crv) &
+            result(SHT_rv)
+        type(STR_SHROUD_capsule), intent(OUT) :: Crv
+        character(len=:), pointer :: SHT_rv
+        ! splicer begin function.get_const_string_pointer
+        type(STR_SHROUD_array) :: SHT_rv_cdesc
+        call c_get_const_string_pointer_bufferify(Crv%mem, SHT_rv_cdesc)
+        call STR_SHROUD_pointer_string(SHT_rv_cdesc, SHT_rv)
+        ! splicer end function.get_const_string_pointer
+    end function get_const_string_pointer
+
+    ! ----------------------------------------
+    ! Function:  const string getConstStringRaw +deref(raw)
+    ! Statement: f_function_string_raw
+    !>
+    !! Return an type(C_PTR) from std::string.
+    !! The language=C wrapper will return a const char *
+    !<
+    function get_const_string_raw(Crv) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_PTR
+        type(C_PTR) :: SHT_rv
+        type(STR_SHROUD_capsule), intent(OUT) :: Crv
+        ! splicer begin function.get_const_string_raw
+        SHT_rv = c_get_const_string_raw_bufferify(Crv%mem)
+        ! splicer end function.get_const_string_raw
+    end function get_const_string_raw
+
+    ! ----------------------------------------
+    ! Function:  const string getConstStringAsArg +deref(copy)+funcarg
+    ! Statement: f_function_string_buf_funcarg_copy
+    !>
+    !! \brief return a 'const string' as argument
     !!
     !<
-    ! start get_const_string_ref_pure
-    function get_const_string_ref_pure() &
-            result(SHT_rv)
-        character(len=:), allocatable :: SHT_rv
-        ! splicer begin function.get_const_string_ref_pure
-        type(STR_SHROUD_array) :: SHT_rv_cdesc
-        type(STR_SHROUD_capsule_data) :: SHT_rv_capsule
-        call c_get_const_string_ref_pure_bufferify(SHT_rv_cdesc, &
-            SHT_rv_capsule)
-        allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string(SHT_rv_cdesc, SHT_rv, &
-            SHT_rv_cdesc%elem_len)
-        call STR_SHROUD_capsule_dtor(SHT_rv_capsule)
-        ! splicer end function.get_const_string_ref_pure
-    end function get_const_string_ref_pure
-    ! end get_const_string_ref_pure
+    subroutine get_const_string_as_arg(output)
+        use iso_c_binding, only : C_INT
+        character(len=*), intent(OUT) :: output
+        ! splicer begin function.get_const_string_as_arg
+        integer(C_INT) noutput
+        noutput = len(output, kind=C_INT)
+        call c_get_const_string_as_arg_bufferify(output, noutput)
+        ! splicer end function.get_const_string_as_arg
+    end subroutine get_const_string_as_arg
 
     ! ----------------------------------------
     ! Function:  const string &getConstStringRefLen +len(30)
@@ -1098,25 +1088,6 @@ contains
     end function get_const_string_ref_len
 
     ! ----------------------------------------
-    ! Function:  const string &getConstStringRefAsArg +deref(copy)+funcarg
-    ! Statement: f_function_string&_buf_funcarg_copy
-    !>
-    !! \brief return a 'const string&' as argument
-    !!
-    !! Pass an additional argument which will be used as the return value.
-    !! The length of the output variable is declared by the caller.
-    !<
-    subroutine get_const_string_ref_as_arg(output)
-        use iso_c_binding, only : C_INT
-        character(len=*), intent(OUT) :: output
-        ! splicer begin function.get_const_string_ref_as_arg
-        integer(C_INT) noutput
-        noutput = len(output, kind=C_INT)
-        call c_get_const_string_ref_as_arg_bufferify(output, noutput)
-        ! splicer end function.get_const_string_ref_as_arg
-    end subroutine get_const_string_ref_as_arg
-
-    ! ----------------------------------------
     ! Function:  const string &getConstStringRefLenEmpty +len(30)
     ! Statement: f_function_string&_buf_copy
     !>
@@ -1138,6 +1109,11 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string &getConstStringRefAlloc
     ! Statement: f_function_string&_cdesc_allocatable
+    !>
+    !! \brief return a 'const string&' as ALLOCATABLE character
+    !!
+    !<
+    ! start get_const_string_ref_alloc
     function get_const_string_ref_alloc() &
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
@@ -1152,6 +1128,26 @@ contains
         call STR_SHROUD_capsule_dtor(SHT_rv_capsule)
         ! splicer end function.get_const_string_ref_alloc
     end function get_const_string_ref_alloc
+    ! end get_const_string_ref_alloc
+
+    ! ----------------------------------------
+    ! Function:  const string &getConstStringRefAsArg +deref(copy)+funcarg
+    ! Statement: f_function_string&_buf_funcarg_copy
+    !>
+    !! \brief return a 'const string&' as argument
+    !!
+    !! Pass an additional argument which will be used as the return value.
+    !! The length of the output variable is declared by the caller.
+    !<
+    subroutine get_const_string_ref_as_arg(output)
+        use iso_c_binding, only : C_INT
+        character(len=*), intent(OUT) :: output
+        ! splicer begin function.get_const_string_ref_as_arg
+        integer(C_INT) noutput
+        noutput = len(output, kind=C_INT)
+        call c_get_const_string_ref_as_arg_bufferify(output, noutput)
+        ! splicer end function.get_const_string_ref_as_arg
+    end subroutine get_const_string_ref_as_arg
 
     ! ----------------------------------------
     ! Function:  const string *getConstStringPtrLen +len(30)
@@ -1615,6 +1611,18 @@ contains
 
     ! splicer begin additional_functions
     ! splicer end additional_functions
+
+    ! helper capsule_helper
+    ! finalize a static STR_SHROUD_capsule_data
+    subroutine SHROUD_capsule_final(cap)
+        type(STR_SHROUD_capsule), intent(INOUT) :: cap
+        call STR_SHROUD_capsule_dtor(cap%mem)
+    end subroutine SHROUD_capsule_final
+
+    subroutine SHROUD_capsule_delete(cap)
+        class(STR_SHROUD_capsule) :: cap
+        call STR_SHROUD_capsule_dtor(cap%mem)
+    end subroutine SHROUD_capsule_delete
 
     ! start helper pointer_string
     ! helper pointer_string

@@ -33,28 +33,24 @@ extern "C" {
 
 void STR_init_test(void);
 
-const char * STR_getConstStringResult(
-    STR_SHROUD_capsule_data *SHT_rv_capsule);
-
-void STR_getConstStringResult_CFI(CFI_cdesc_t *SHT_rv_cfi);
-
 void STR_getConstStringLen_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
-void STR_getConstStringAsArg_CFI(CFI_cdesc_t *SHT_rv_cfi);
+const char * STR_getConstStringAlloc(
+    STR_SHROUD_capsule_data *SHT_rv_capsule);
 
 void STR_getConstStringAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
-const char * STR_getConstStringRefPure(void);
+void STR_getConstStringPointer_CFI(
+    STR_SHROUD_capsule_data *SHT_rv_capsule, CFI_cdesc_t *SHT_rv_cfi);
 
-void STR_getConstStringRefPure_CFI(CFI_cdesc_t *SHT_rv_cfi);
+const char * STR_getConstStringRaw_bufferify(
+    STR_SHROUD_capsule_data *SHT_rv_capsule);
+
+void STR_getConstStringAsArg_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 const char * STR_getConstStringRefLen(void);
 
 void STR_getConstStringRefLen_CFI(CFI_cdesc_t *SHT_rv_cfi);
-
-const char * STR_getConstStringRefAsArg(void);
-
-void STR_getConstStringRefAsArg_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 const char * STR_getConstStringRefLenEmpty(void);
 
@@ -63,6 +59,10 @@ void STR_getConstStringRefLenEmpty_CFI(CFI_cdesc_t *SHT_rv_cfi);
 const char * STR_getConstStringRefAlloc(void);
 
 void STR_getConstStringRefAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi);
+
+const char * STR_getConstStringRefAsArg(void);
+
+void STR_getConstStringRefAsArg_CFI(CFI_cdesc_t *SHT_rv_cfi);
 
 const char * STR_getConstStringPtrLen(void);
 

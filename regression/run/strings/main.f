@@ -52,70 +52,88 @@ contains
 
   subroutine test_functions
 
+    character(len=:), allocatable :: astr
     character(len=:), pointer :: pstr
     character(30) str
     character(30), parameter :: static_str = "dog                         "
     integer(C_INT) :: nlen
+    type(STR_SHROUD_capsule) :: capsule_str
+    character, pointer :: raw_str(:)
+    type(C_PTR) :: raw_ptr
 
     call set_case_name("test_functions")
 
-    ! character(:), allocatable function
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_const_string_result()
-    call assert_true(str == "getConstStringResult", "getConstStringResult")
-
-    ! character(30) function
+    !--------------------------------------------------
+    ! return std::string
+    
+    ! character(30)
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_const_string_len()
     call assert_true(str == static_str, "getConstStringLen")
 
-    ! string_result_as_arg
+    ! character(:), allocatable
+    astr = get_const_string_alloc()
+    call assert_true(astr == "getConstStringAlloc", "getConstStringAlloc")
+    deallocate(astr)
+ 
+    ! character(:), pointer
+    nullify(pstr)
+    pstr => get_const_string_pointer(capsule_str)
+    call assert_true(pstr == "getConstStringPointer", "getConstStringPointer")
+    call capsule_str%delete
+
+    ! +deref(raw)
+    raw_ptr = C_NULL_PTR
+    raw_ptr = get_const_string_raw(capsule_str)
+    call assert_true(c_associated(raw_ptr), "getConstStringRaw associated")
+    call c_f_pointer(raw_ptr, raw_str, [4])
+    call assert_true( &
+         raw_str(1) == "b" .and. &
+         raw_str(2) == "i" .and. &
+         raw_str(3) == "r" .and. &
+         raw_str(4) == "d", "getConstStringRaw value")
+    call capsule_str%delete
+ 
+    !----------
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     call get_const_string_as_arg(str)
     call assert_true(str == static_str, "getConstStringAsArg")
 
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_const_string_alloc()
-    call assert_true(str == "getConstStringAlloc", "getConstStringAlloc")
- 
     !--------------------------------------------------
-
-    ! problem with pgi
-    ! character(*) function
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_const_string_ref_pure()
-    call assert_true( str == static_str, "getConstStringRefPure")
+    ! return std::string &
 
     ! character(30) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_const_string_ref_len()
     call assert_true( str == static_str, "getConstStringRefLen")
 
-    ! string_result_as_arg
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    call get_const_string_ref_as_arg(str)
-    call assert_true( str == static_str, "getConstStringRefAsArg")
- 
     ! character(30) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_const_string_ref_len_empty()
     call assert_true( str == " ", "getConstStringRefLenEmpty")
 
+    ! character(:), allocatable function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_const_string_ref_alloc()
-    call assert_true( str == static_str, "getConstStringRefAlloc")
+    astr = get_const_string_ref_alloc()
+    call assert_true( astr == static_str, "getConstStringRefAlloc")
+    deallocate(astr)
+    
+    !----------
 
+    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    call get_const_string_ref_as_arg(str)
+    call assert_true( str == static_str, "getConstStringRefAsArg")
+ 
     !--------------------------------------------------
+    ! return std::string *
 
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_const_string_ptr_len()
     call assert_true(str == "getConstStringPtrLen", "getConstStringPtrLen")
 
-    ! string_result_as_arg
- 
-    str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    str = get_const_string_ptr_alloc()
-    call assert_true( str == static_str, "getConstStringPtrAlloc")
+    astr = get_const_string_ptr_alloc()
+    call assert_true( astr == static_str, "getConstStringPtrAlloc")
+    deallocate(astr)
 
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     str = get_const_string_ptr_owns_alloc()
@@ -127,10 +145,8 @@ contains
     call assert_true( str == "getConstStringPtrOwnsAllocPatt", &
          "getConstStringPtrOwnsAllocPattern")
 
-    !--------------------------------------------------
-    ! POINTER result
-
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
+    ! POINTER result
     nullify(pstr)
     pstr => get_const_string_ptr_pointer()
     call assert_true(associated(pstr), "getConstStringPtrPointer associate")
@@ -142,6 +158,7 @@ contains
 !         "getConstStringPtrOwnsPointer")
     
     !--------------------------------------------------
+    ! std::string argument
 
     call accept_string_const_reference("cat")
 !    check global_str == "cat"

@@ -41,21 +41,20 @@ class Strings(unittest.TestCase):
      
     def testgetConstString(self):
         """return std::string"""
-        self.assertEqual('getConstStringResult', strings.getConstStringResult())
         self.assertEqual(static_str, strings.getConstStringLen())
-        self.assertEqual(static_str, strings.getConstStringAsArg())
         self.assertEqual('getConstStringAlloc', strings.getConstStringAlloc())
+
+        self.assertEqual(static_str, strings.getConstStringAsArg())
 
     def testgetConstStringRef(self):
         """return std::string reference"""
         # The variations are useful for the Fortran API,
         # but really no difference in the Python API.
-        self.assertEqual(static_str, strings.getConstStringRefPure())
         self.assertEqual(static_str, strings.getConstStringRefLen())
-        self.assertEqual(static_str, strings.getConstStringRefAsArg())
-
         self.assertEqual('', strings.getConstStringRefLenEmpty())
         self.assertEqual(static_str, strings.getConstStringRefAlloc())
+
+        self.assertEqual(static_str, strings.getConstStringRefAsArg())
 
     def testgetConstStringPtr(self):
         """return std::string pointer"""

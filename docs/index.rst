@@ -35,9 +35,9 @@ Contents
    installing
    tutorial
    input
+   types
    pointers
    shared_ptr
-   types
    namespaces
    struct
    defaultargs

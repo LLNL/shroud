@@ -165,8 +165,9 @@ provides additional information specific to a group.
 notes
 ^^^^^
 
-Notes are used provide usage notes for a group.
-Notes are not mixed into groups.
+Notes are for information about how the group works or when it should
+be used.  Unlike comments, the notes are not mixed into groups and are
+intended to be more detailed than comments.
 
 .. base - must be single name.
           Applied after all of the others mixins as parent of Scope.
@@ -198,7 +199,7 @@ Notes are not mixed into groups.
 usage
 ^^^^^
 
-Documents a typical declarion which will use this group.
+Documents a typical declaration which will use this group.
 
 .. code-block:: yaml
 
@@ -220,6 +221,13 @@ A dictionary to replace default values
             i_var: "val"
             c_var: "val"
 
+.. code-block:: yaml
+
+        name: c_mixin_function-assign-to-new
+        fmtdict:
+            cxx_addr: ""
+            cxx_member: "->"
+                
 Examples
 --------
 

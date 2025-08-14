@@ -34,47 +34,7 @@ void init_test(void)
 
 //----------------------------------------
 
-// start getConstStringRefPure
-const std::string& getConstStringRefPure()
-{
-    return static_str;
-}
-// end getConstStringRefPure
-
-const std::string& getConstStringRefLen()
-{
-    return static_str;
-}
-
-const std::string& getConstStringRefAsArg()
-{
-    return static_str;
-}
-
-const std::string& getConstStringRefLenEmpty()
-{
-    return static_str_empty;
-}
-
-const std::string& getConstStringRefAlloc()
-{
-    return static_str;
-}
-
-// -----
-
-const std::string getConstStringResult()
-{
-    const std::string rv("getConstStringResult");
-    return rv;
-}
-
 const std::string getConstStringLen()
-{
-    return static_str;
-}
-
-const std::string getConstStringAsArg()
 {
     return static_str;
 }
@@ -84,42 +44,81 @@ const std::string getConstStringAlloc()
     return std::string("getConstStringAlloc");
 }
 
+const std::string getConstStringPointer()
+{
+    return std::string("getConstStringPointer");
+}
+
+const std::string getConstStringRaw()
+{
+    return std::string("bird");
+}
+
+const std::string getConstStringAsArg()
+{
+    return static_str;
+}
+
 // -----
 
-const std::string * getConstStringPtrLen()
+const std::string& getConstStringRefLen()
+{
+    return static_str;
+}
+
+const std::string& getConstStringRefLenEmpty()
+{
+    return static_str_empty;
+}
+
+// start getConstStringRefAlloc
+const std::string& getConstStringRefAlloc()
+{
+    return static_str;
+}
+// end getConstStringRefAlloc
+
+const std::string& getConstStringRefAsArg()
+{
+    return static_str;
+}
+
+// -----
+
+const std::string *getConstStringPtrLen()
 {
     // +owner(caller)
     std::string * rv = new std::string("getConstStringPtrLen");
     return rv;
 }
 
-const std::string * getConstStringPtrAlloc()
+const std::string *getConstStringPtrAlloc()
 {
     // +owner(library)
     return &static_str;
 }
 
-const std::string * getConstStringPtrOwnsAlloc()
+const std::string *getConstStringPtrOwnsAlloc()
 {
     // +owner(caller)
     std::string * rv = new std::string("getConstStringPtrOwnsAlloc");
     return rv;
 }
 
-const std::string * getConstStringPtrOwnsAllocPattern()
+const std::string *getConstStringPtrOwnsAllocPattern()
 {
     // +owner(caller) +pattern
     std::string * rv = new std::string("getConstStringPtrOwnsAllocPattern");
     return rv;
 }
 
-const std::string * getConstStringPtrPointer()
+const std::string *getConstStringPtrPointer()
 {
     // +deref(pointer) +owner(library)
     return &static_str;
 }
 
-const std::string * getConstStringPtrOwnsPointer()
+const std::string *getConstStringPtrOwnsPointer()
 {
     // +deref(pointer) +owner(caller)
     std::string * rv = new std::string("getConstStringPtrOwnsPointer");

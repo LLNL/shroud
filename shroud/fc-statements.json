@@ -582,7 +582,8 @@
             "cxx"
         ],
         "fmtdict": {
-            "cxx_addr": ""
+            "cxx_addr": "",
+            "cxx_member": "->"
         },
         "owner": "caller"
     },
@@ -592,7 +593,7 @@
             "Return a pointer to a heap variable.",
             "Used when a function returns a value."
         ],
-        "c_return_type": "{c_type} *",
+        "c_return_type": "{c_const}{c_type} *",
         "c_return": [
             "return {c_var};"
         ]
@@ -824,6 +825,17 @@
         ]
     },
     {
+        "name": "c_mixin_function-return-capptr",
+        "notes": [
+            "Return the capsule argument.",
+            "Note that the capsule is not const, but the pointer inside should be."
+        ],
+        "c_return_type": "{c_type} *",
+        "c_return": [
+            "return {c_var};"
+        ]
+    },
+    {
         "name": "c_mixin_capsule_fill_cvar",
         "comments": [
             "Assign to capsule in C wrapper."
@@ -1031,6 +1043,28 @@
             "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});",
             "{c_var_cdesc}->type = {typemap.sh_type};",
             "{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});",
+            "{c_var_cdesc}->size = 1;",
+            "{c_var_cdesc}->rank = 0;"
+        ],
+        "helper": [
+            "type_defines"
+        ]
+    },
+    {
+        "name": "c_mixin_cdesc_fill_string_local",
+        "comments": [
+            "Fill cdesc from local std::string variable in the C wrapper."
+        ],
+        "usage": [
+            "Also used with std::string* via cxx_member."
+        ],
+        "mixin": [
+            "c_mixin_header_cstring"
+        ],
+        "c_post_call": [
+            "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{c_local_cxx}{cxx_member}data());",
+            "{c_var_cdesc}->type = {typemap.sh_type};",
+            "{c_var_cdesc}->elem_len = {c_local_cxx}{cxx_member}size();",
             "{c_var_cdesc}->size = 1;",
             "{c_var_cdesc}->rank = 0;"
         ],
@@ -2879,6 +2913,32 @@
         ]
     },
     {
+        "name": "c_mixin_declare-string-cstr-cvar",
+        "comments": [
+            "Assign std::string.data to cvar."
+        ],
+        "usage": [
+            "Declares a function result.",
+            "Always uses const."
+        ],
+        "c_post_call": [
+            "const char *{c_var} = {c_local_cxx}{cxx_member}c_str();"
+        ]
+    },
+    {
+        "name": "c_mixin_declare-string-data-cvar",
+        "comments": [
+            "Assign std::string.data to cvar.",
+            "Always uses const."
+        ],
+        "usage": [
+            "Declares a function result."
+        ],
+        "c_post_call": [
+            "const char *{c_var} = {c_local_cxx}{cxx_member}data();"
+        ]
+    },
+    {
         "name": "c_mixin_string-strcpy-out",
         "comments": [
             "Strcpy std::string into argument."
@@ -3368,6 +3428,9 @@
             "f_function_string_cdesc_allocatable_caller",
             "f_function_string_cdesc_allocatable_library"
         ],
+        "usage": [
+            "std::string func() +deref(allocatable)"
+        ],
         "mixin": [
             "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_cdesc_pass",
@@ -3376,6 +3439,37 @@
             "c_mixin_cdesc_function_string",
             "f_mixin_cdesc_char_allocate",
             "f_mixin_capsule_use"
+        ]
+    },
+    {
+        "alias": [
+            "f_function_string_cdesc_pointer"
+        ],
+        "usage": [
+            "std::string func() +deref(pointer)+owner(caller)"
+        ],
+        "mixin": [
+            "f_mixin_capsule_arg",
+            "f_mixin_call-cwrapper-as-subroutine",
+            "f_mixin_cdesc_pass",
+            "c_mixin_function-assign-to-new",
+            "c_mixin_capsule_fill_native",
+            "c_mixin_cdesc_fill_string_local",
+            "f_mixin_cdesc_char_pointer"
+        ]
+    },
+    {
+        "name": "f_function_string_raw",
+        "usage": [
+            "std::string func() +deref(raw)"
+        ],
+        "mixin": [
+            "f_mixin_function_ptr",
+            "f_mixin_capsule_arg",
+            "c_mixin_function-return-cvar",
+            "c_mixin_function-assign-to-new",
+            "c_mixin_declare-string-data-cvar",
+            "c_mixin_capsule_fill_native"
         ]
     },
     {
@@ -4155,7 +4249,7 @@
             "c_mixin_as-intent-out",
             "c_mixin_function-assign-to-local",
             "c_mixin_capsule_fill_cvar",
-            "c_mixin_function-return-cvar"
+            "c_mixin_function-return-capptr"
         ]
     },
     {
@@ -4203,7 +4297,7 @@
             "c_mixin_as-intent-out",
             "c_mixin_function-assign-to-new",
             "c_mixin_capsule_fill_cvar",
-            "c_mixin_function-return-cvar"
+            "c_mixin_function-return-capptr"
         ]
     },
     {
@@ -4327,7 +4421,7 @@
             "c_mixin_as-intent-out",
             "c_mixin_function-assign-to-new",
             "c_mixin_capsule_fill_cvar",
-            "c_mixin_function-return-cvar"
+            "c_mixin_function-return-capptr"
         ]
     },
     {
@@ -4340,7 +4434,7 @@
             "c_mixin_as-intent-out",
             "c_mixin_function-assign-to-local",
             "c_mixin_capsule_fill_cvar",
-            "c_mixin_function-return-cvar"
+            "c_mixin_function-return-capptr"
         ]
     },
     {
@@ -4929,6 +5023,32 @@
         ]
     },
     {
+        "name": "c_mixin_cfi_string*_pointer",
+        "c_post_call": [
+            "int {c_local_err};",
+            "if ({c_local_cxx} == {nullptr}) {{+",
+            "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});",
+            "-}} else {{+",
+            "CFI_CDESC_T(0) {c_local_fptr};",
+            "CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};",
+            "void *{c_local_cptr} = const_cast<char *>({c_local_cxx}{cxx_member}data());",
+            "size_t {c_local_len} = {c_local_cxx}{cxx_member}length();",
+            "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});",
+            "if ({c_local_err} == CFI_SUCCESS) {{+",
+            "{c_var_cfi}->elem_len = {c_local_cdesc}->elem_len;",
+            "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {nullptr});",
+            "-}}",
+            "-}}"
+        ],
+        "c_local": [
+            "cptr",
+            "fptr",
+            "cdesc",
+            "len",
+            "err"
+        ]
+    },
+    {
         "name": "c_mixin_cfi_string**_allocatable",
         "comments": [
             "Allocate CFI_desc_t for character (requires +dimension)."
@@ -5376,10 +5496,30 @@
     {
         "alias": [
             "f_function_string_cfi_pointer",
+            "f_function_string_cfi_pointer_caller",
+            "f_function_string_cfi_pointer_library"
+        ],
+        "notes": [
+            "Return a pointer to a new variable",
+            "which the caller must release via the capsule."
+        ],
+        "usage": [
+            "std::string func() +deref(allocatable)"
+        ],
+        "mixin": [
+            "f_mixin_capsule_arg",
+            "f_mixin_call-cwrapper-as-subroutine",
+            "f_mixin_cfi_character-deferred-length",
+            "c_mixin_function-assign-to-new",
+            "c_mixin_cfi_string*_pointer",
+            "c_mixin_capsule_fill_native"
+        ],
+        "f_need_wrapper": true
+    },
+    {
+        "alias": [
             "f_function_string*_cfi_pointer",
             "f_function_string&_cfi_pointer",
-            "f_function_string_cfi_pointer_caller",
-            "f_function_string_cfi_pointer_library",
             "f_function_string*_cfi_pointer_caller",
             "f_function_string*_cfi_pointer_library",
             "f_function_string&_cfi_pointer_caller",
@@ -5393,33 +5533,10 @@
         "mixin": [
             "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_cfi_character-deferred-length",
-            "c_mixin_function-assign-to-local"
+            "c_mixin_function-assign-to-local",
+            "c_mixin_cfi_string*_pointer"
         ],
-        "f_need_wrapper": true,
-        "c_post_call": [
-            "int {c_local_err};",
-            "if ({c_local_cxx} == {nullptr}) {{+",
-            "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});",
-            "-}} else {{+",
-            "CFI_CDESC_T(0) {c_local_fptr};",
-            "CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};",
-            "void *{c_local_cptr} = const_cast<char *>({c_local_cxx}{cxx_member}data());",
-            "size_t {c_local_len} = {c_local_cxx}{cxx_member}length();",
-            "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});",
-            "if ({c_local_err} == CFI_SUCCESS) {{+",
-            "{c_var_cfi}->elem_len = {c_local_cdesc}->elem_len;",
-            "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {nullptr});",
-            "-}}",
-            "-}}"
-        ],
-        "c_local": [
-            "cxx",
-            "cptr",
-            "fptr",
-            "cdesc",
-            "len",
-            "err"
-        ]
+        "f_need_wrapper": true
     },
     {
         "alias": [
@@ -5431,6 +5548,9 @@
             "f_function_string*_cfi_allocatable_library",
             "f_function_string&_cfi_allocatable_caller",
             "f_function_string&_cfi_allocatable_library"
+        ],
+        "usage": [
+            "std::string func() +deref(allocatable)"
         ],
         "mixin": [
             "f_mixin_call-cwrapper-as-subroutine",

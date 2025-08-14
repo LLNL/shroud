@@ -29,18 +29,39 @@ declarations:
 # Do not wrap the variants of this test for C.
 # They would all be the same.
 
-- decl: const string getConstStringResult()
-  doxygen:
-    description: |
-      Return an ALLOCATABLE CHARACTER from std::string.
-      The language=C wrapper will return a const char *
-
 - decl: const string getConstStringLen() +len=30
   C_error_pattern: C_invalid_name
   doxygen:
     brief: return a 'const string' as argument
   options:
     wrap_c: False
+
+- decl: const string getConstStringAlloc()
+  doxygen:
+    description: |
+      Return an ALLOCATABLE CHARACTER from std::string.
+      The language=C wrapper will return a const char *
+
+- decl: const string getConstStringPointer() +deref(pointer)
+  doxygen:
+    description: |
+      Return an POINTER CHARACTER from std::string.
+      The language=C wrapper will return a const char *
+  options:
+    wrap_c: False
+    wrap_python: False
+
+- decl: const string getConstStringRaw() +deref(raw)
+  doxygen:
+    description: |
+      Return an type(C_PTR) from std::string.
+      The language=C wrapper will return a const char *
+  options:
+    wrap_c: False
+    wrap_python: False
+
+#####
+# Return function result in an argument.
 
 - decl: const string getConstStringAsArg() +deref(copy)+funcarg
   C_error_pattern: C_invalid_name
@@ -49,19 +70,8 @@ declarations:
   options:
     wrap_c: False
 
-- decl: const std::string getConstStringAlloc()
-  options:
-    wrap_c: False
-
 ########################################
 # return std::string reference
-
-- decl: const string& getConstStringRefPure()
-#  C_error_pattern: C_invalid_name
-  doxygen:
-    brief: return a 'const string&' as ALLOCATABLE character
-  options:
-    literalinclude: True
 
 - decl: const string& getConstStringRefLen() +len=30
   C_error_pattern: C_invalid_name
@@ -75,6 +85,21 @@ declarations:
 #    result:
 #      len: 30
 
+- decl: const string& getConstStringRefLenEmpty() +len=30
+  C_error_pattern: C_invalid_name
+  doxygen:
+    brief: Test returning empty string reference
+
+- decl: const std::string& getConstStringRefAlloc()
+#  C_error_pattern: C_invalid_name
+  doxygen:
+    brief: return a 'const string&' as ALLOCATABLE character
+  options:
+    literalinclude: True
+
+#####
+# Return function result in an argument.
+
 - decl: const string& getConstStringRefAsArg() +deref(copy)+funcarg
   C_error_pattern: C_invalid_name
   doxygen:
@@ -82,13 +107,6 @@ declarations:
     description: |
       Pass an additional argument which will be used as the return value.
       The length of the output variable is declared by the caller.
-
-- decl: const string& getConstStringRefLenEmpty() +len=30
-  C_error_pattern: C_invalid_name
-  doxygen:
-    brief: Test returning empty string reference
-
-- decl: const std::string& getConstStringRefAlloc()
 
 ########################################
 # return std::string pointer

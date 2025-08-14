@@ -15,24 +15,26 @@
 
 void init_test(void);
 
-const std::string getConstStringResult();
 const std::string getConstStringLen();
-const std::string getConstStringAsArg();
 const std::string getConstStringAlloc();
+const std::string getConstStringPointer();
+const std::string getConstStringRaw();
 
-const std::string& getConstStringRefPure();
-const std::string& getConstStringRefLen();
-const std::string& getConstStringRefAsArg();
-const std::string& getConstStringRefLenEmpty();
-const std::string& getConstStringRefAlloc();
+const std::string getConstStringAsArg();
 
-const std::string * getConstStringPtrLen();
-const std::string * getConstStringPtrAlloc();
-const std::string * getConstStringPtrOwnsAlloc();
-const std::string * getConstStringPtrOwnsAllocPattern();
+const std::string &getConstStringRefLen();
+const std::string &getConstStringRefLenEmpty();
+const std::string &getConstStringRefAlloc();
 
-const std::string * getConstStringPtrPointer();
-const std::string * getConstStringPtrOwnsPointer();
+const std::string &getConstStringRefAsArg();
+
+const std::string *getConstStringPtrLen();
+const std::string *getConstStringPtrAlloc();
+const std::string *getConstStringPtrOwnsAlloc();
+const std::string *getConstStringPtrOwnsAllocPattern();
+
+const std::string *getConstStringPtrPointer();
+const std::string *getConstStringPtrOwnsPointer();
 
 void acceptName_instance(std::string arg1);
 
