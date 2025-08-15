@@ -6131,6 +6131,11 @@
             }
         ],
         "language": "cxx",
+        "patterns": {
+            "C_invalid_name": "if ({cxx_var}.empty()) {{\n    return NULL;\n}}\n",
+            "C_invalid_name_buf": "// Some error code for buf\n",
+            "C_string_free": "// Used with +free_pattern(C_string_free)\nstd::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);\ndelete cxx_ptr;\n"
+        },
         "scope_file": [
             "char"
         ],

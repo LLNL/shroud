@@ -464,8 +464,9 @@ class LibraryNode(AstNode, NamespaceMixin):
 
         self.F_module_dependencies = []  # unused
 
-        self.copyright = kwargs.get("copyright", [])
-        self.patterns = kwargs.get("patterns", [])
+        self.copyright = kwargs.get("copyright", {})
+        self.patterns = kwargs.get("patterns", {})
+        self.destructor = kwargs.get("destructor", {})
 
         # Convert file_code into typemaps to use in class util.Headers.
         # This feels like a kludge and should be refined.

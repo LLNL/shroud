@@ -512,6 +512,10 @@
             }
         ],
         "language": "cxx",
+        "patterns": {
+            "C_invalid_name": "if (! isNameValid({cxx_var})) {{\n    return NULL;\n}}\n",
+            "PY_invalid_name": "if (! isNameValid({cxx_var})) {{\n    PyErr_SetString(PyExc_KeyError, \"XXX need value of name\");\n    return NULL;\n}}\n"
+        },
         "scope_file": [
             "statement"
         ],
