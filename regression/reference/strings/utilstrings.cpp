@@ -69,7 +69,7 @@ void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap)
     }
     case 3:   // C_string_free
     {
-        // Used with +free_pattern(C_string_free)
+        // Used with +destrucor_name(C_string_free)
         std::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);
         delete cxx_ptr;
 

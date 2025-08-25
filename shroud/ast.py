@@ -465,7 +465,8 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.F_module_dependencies = []  # unused
 
         self.copyright = kwargs.get("copyright", [])
-        self.patterns = kwargs.get("patterns", [])
+        self.patterns = kwargs.get("patterns", {})
+        self.destructors = kwargs.get("destructors", {})
 
         # Convert file_code into typemaps to use in class util.Headers.
         # This feels like a kludge and should be refined.
@@ -1944,6 +1945,7 @@ class TypedefNode(AstNode):
         self.linenumber = kwargs.get("__line__", "?")
         self.splicer = splicer
 
+        error.cursor.push_node(self)
         self.options = util.Scope(parent=parent.options)
         if options:
             self.options.update(options, replace=True)
@@ -1969,6 +1971,7 @@ class TypedefNode(AstNode):
         typemap.fill_typedef_typemap(self)
         if fields:
             ntypemap.update(fields)
+        error.cursor.pop_node(self)
 
     def get_typename(self):
         return self.typemap.name

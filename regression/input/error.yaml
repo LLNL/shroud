@@ -59,3 +59,16 @@ declarations:
     PY_array_arg: none
     PY_struct_arg: none
 
+
+#####
+# Report on old usage for free_pattern
+
+- decl: const std::string * getConstStringPtrOwnsAllocPattern() +owner(caller)
+  options:
+    wrap_python: False
+  fattrs:
+    free_pattern: C_string_free
+
+patterns:
+    C_string_free: |
+        // Used with +free_pattern(C_string_free)

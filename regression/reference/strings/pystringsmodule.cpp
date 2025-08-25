@@ -411,7 +411,7 @@ PY_getConstStringPtrOwnsAlloc(
 }
 
 // ----------------------------------------
-// Function:  const std::string *getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
+// Function:  const std::string *getConstStringPtrOwnsAllocPattern +destructor_name(C_string_free)+owner(caller)
 // Statement: py_function_string*
 static char PY_getConstStringPtrOwnsAllocPattern__doc__[] =
 "documentation"

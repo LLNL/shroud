@@ -54,6 +54,7 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
             splicers -
         """
         self.newlibrary = newlibrary
+        self.destructors = newlibrary.destructors
         self.patterns = newlibrary.patterns
         self.language = newlibrary.language
         self.config = config
@@ -1451,14 +1452,14 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         declarator = ast.declarator
         owner = meta["owner"] or intent_blk.owner or default_owner
 
-        free_pattern = meta["free_pattern"]
+        destructor_name = meta["destructor_name"]
         if owner != "caller":
             # library, shared, weak. Do not let user release.
             pass
-        elif free_pattern is not None:
-            # free_pattern attribute.
+        elif destructor_name is not None:
+            # destructor_name attribute.
             fmt.idtor = self.add_destructor(
-                fmt, free_pattern, [self.patterns[free_pattern]], None
+                fmt, destructor_name, [self.destructors[destructor_name]], None
             )
         elif ntypemap.idtor != "0":
             # Return cached value.

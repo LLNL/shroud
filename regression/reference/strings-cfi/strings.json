@@ -13,6 +13,9 @@
             "strings.hpp",
             "shroud/features.h"
         ],
+        "destructors": {
+            "C_string_free": "// Used with +destrucor_name(C_string_free)\nstd::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);\ndelete cxx_ptr;\n"
+        },
         "fortran_header": [
             "shroud/features.h"
         ],
@@ -1817,7 +1820,7 @@
                     "const": true,
                     "declarator": {
                         "attrs": {
-                            "free_pattern": "C_string_free",
+                            "destructor_name": "C_string_free",
                             "owner": "caller"
                         },
                         "name": "getConstStringPtrOwnsAllocPattern",
@@ -1835,7 +1838,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string * getConstStringPtrOwnsAllocPattern() +owner(caller)",
-                "declgen": "const std::string *getConstStringPtrOwnsAllocPattern(void) +free_pattern(C_string_free)+owner(caller)",
+                "declgen": "const std::string *getConstStringPtrOwnsAllocPattern(void) +destructor_name(C_string_free)+owner(caller)",
                 "doxygen": {
                     "description": "Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.\n"
                 },
@@ -1880,7 +1883,7 @@
                             },
                             "meta": {
                                 "abstract": "string*",
-                                "free_pattern": "C_string_free",
+                                "destructor_name": "C_string_free",
                                 "intent": "function",
                                 "owner": "caller"
                             },
@@ -1934,7 +1937,7 @@
                                 "abstract": "string*",
                                 "api": "cfi",
                                 "deref": "allocatable",
-                                "free_pattern": "C_string_free",
+                                "destructor_name": "C_string_free",
                                 "intent": "function",
                                 "owner": "caller"
                             },
@@ -1945,7 +1948,7 @@
                         "+result": {
                             "meta": {
                                 "abstract": "string*",
-                                "free_pattern": "C_string_free",
+                                "destructor_name": "C_string_free",
                                 "intent": "function",
                                 "owner": "caller"
                             }
@@ -6011,6 +6014,10 @@
             }
         ],
         "language": "cxx",
+        "patterns": {
+            "C_invalid_name": "if ({cxx_var}.empty()) {{\n    return NULL;\n}}\n",
+            "C_invalid_name_buf": "// Some error code for buf\n"
+        },
         "scope_file": [
             "strings"
         ],

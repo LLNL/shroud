@@ -5010,6 +5010,9 @@
             }
         ],
         "language": "cxx",
+        "patterns": {
+            "delete_int_array": "int * cxx_ptr = reinterpret_cast<int *>(ptr);\ndelete [] cxx_ptr;\n"
+        },
         "scope_file": [
             "ownership"
         ],

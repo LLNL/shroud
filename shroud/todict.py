@@ -369,6 +369,10 @@ class ToDict(visitor.Visitor):
 #                "scope_file",
             ],
         )
+        # These fields are not in NamespaceNode
+        for key in ["patterns", "destructors"]:
+            if hasattr(node, key):
+                self.add_visit_fields(node, d, [key])
         return d
 
     def visit_ClassNode(self, node):

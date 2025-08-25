@@ -142,7 +142,7 @@ declarations:
     description: |
       Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.
   fattrs:
-    free_pattern: C_string_free
+    destructor_name: C_string_free
 
 - decl: const std::string * getConstStringPtrPointer()
             +deref(pointer)+owner(library)
@@ -310,9 +310,11 @@ patterns:
     C_invalid_name_buf: |
         // Some error code for buf
 
+destructors:
      # This pattern is added to C_memory_dtor_function
      # XXX - \t is not dealt with properly
     C_string_free: |
-        // Used with +free_pattern(C_string_free)
+        // Used with +destrucor_name(C_string_free)
         std::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);
         delete cxx_ptr;
+

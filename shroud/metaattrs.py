@@ -681,7 +681,7 @@ class FillMeta(object):
             meta["intent"] = share_meta["intent"]
         for attr in [
                 "abstract", "assumedtype",
-                "custom", "dimension", "dim_ast",
+                "custom", "destructor_name", "dimension", "dim_ast",
                 "free_pattern", "funcarg", "hidden",
                 "len", "operator", "owner", "rank",
         ]:
@@ -695,7 +695,7 @@ class FillMeta(object):
             meta["intent"] = share_meta["intent"]
         for attr in [
                 "abstract", "assumedtype",
-                "dimension", "dim_ast",
+                "destructor_name", "dimension", "dim_ast",
                 "fptr", "free_pattern", "hidden", "len", "owner", "rank",
                 "value", "optional",
         ]:
@@ -792,6 +792,7 @@ class FillMetaShare(FillMeta):
                 "allocatable",  # return a Fortran ALLOCATABLE
                 "custom",
                 "deref",  # How to dereference pointer
+                "destructor_name",
                 "dimension",
                 "free_pattern",
                 "funcarg",
@@ -884,7 +885,7 @@ class FillMetaShare(FillMeta):
             
     def check_common_attrs(self, ast, meta):
         """Check attributes which are common to function and argument AST
-        This includes: dimension, free_pattern, owner, rank
+        This includes: destructor_name, dimension, owner, rank
 
         Parameters
         ----------
@@ -960,14 +961,27 @@ class FillMetaShare(FillMeta):
                 )
             meta["owner"] = owner
 
-        free_pattern = attrs.get("free_pattern", missing)
-        if free_pattern is not missing:
-            if free_pattern not in self.newlibrary.patterns:
-                raise RuntimeError(
-                    "Illegal value '{}' for free_pattern attribute. "
-                    "Must be defined in patterns section.".format(free_pattern)
+        destructor_name = attrs.get("destructor_name", missing)
+        if destructor_name is missing:
+            # Code to help migrate to destructor_name
+            destructor_name = attrs.get("free_pattern", missing)
+            if destructor_name is not missing:
+                self.cursor.deprecated(
+                    "free_pattern is deprecated. Replace with destructor_name.")
+        if destructor_name is not missing:
+            if destructor_name in self.newlibrary.patterns:
+                self.cursor.deprecated(
+                    "destructor_name must now be in destructor group instead patterns.")
+                if destructor_name not in self.newlibrary.destructors:
+                    self.newlibrary.destructors[destructor_name] = \
+                        self.newlibrary.patterns[destructor_name]
+
+            elif destructor_name not in self.newlibrary.destructors:
+                self.cursor.generate(
+                    "destructor_name={}' for destructor_name attribute"
+                    " must be defined in patterns section.".format(destructor_name)
                 )
-            meta["free_pattern"] = free_pattern
+            meta["destructor_name"] = destructor_name
 
         lenattr = attrs.get("len", missing)
         if lenattr is not missing:

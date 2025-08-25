@@ -40,6 +40,12 @@ void ERR_AssumedRank_1d_bufferify(int *data);
 
 void ERR_AssumedRank_2d_bufferify(int *data);
 
+const char * ERR_getConstStringPtrOwnsAllocPattern(void);
+
+void ERR_getConstStringPtrOwnsAllocPattern_bufferify(
+    ERR_SHROUD_array *SHT_rv_cdesc,
+    ERR_SHROUD_capsule_data *SHT_rv_capsule);
+
 #ifdef __cplusplus
 }
 #endif

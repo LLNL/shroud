@@ -15,6 +15,8 @@ C c void AssumedRank(int *data)
 C f void AssumedRank(int *data +rank(0))
 C f void AssumedRank(int *data +rank(1))
 C f void AssumedRank(int *data +rank(2))
+C c const std::string *getConstStringPtrOwnsAllocPattern(void) +free_pattern(C_string_free)+owner(caller)
+C f const std::string *getConstStringPtrOwnsAllocPattern(void) +free_pattern(C_string_free)+owner(caller)
 Close wraperror.h
 Close wraperror.cpp
 class Cstruct_as_subclass
@@ -34,12 +36,15 @@ Fortran void BadFstatements(void)
 Fortran void AssumedRank(int *data +rank(0))
 Fortran void AssumedRank(int *data +rank(1))
 Fortran void AssumedRank(int *data +rank(2))
+Fortran const std::string *getConstStringPtrOwnsAllocPattern(void) +free_pattern(C_string_free)+owner(caller)
 C-interface c void BadFstatements(void)
 C-interface f void BadFstatements(void)
 C-interface c void AssumedRank(int *data)
 C-interface f void AssumedRank(int *data +rank(0))
 C-interface f void AssumedRank(int *data +rank(1))
 C-interface f void AssumedRank(int *data +rank(2))
+C-interface c const std::string *getConstStringPtrOwnsAllocPattern(void) +free_pattern(C_string_free)+owner(caller)
+C-interface f const std::string *getConstStringPtrOwnsAllocPattern(void) +free_pattern(C_string_free)+owner(caller)
 Close wrapferror.f
 Close utilerror.cpp
 Close typeserror.h

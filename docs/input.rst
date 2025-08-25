@@ -294,49 +294,66 @@ a default argument may include a plus symbol:
 api
 ^^^
 
-Controls the API used by the C wrapper.  The values are *capi*,
-*buf*, *capsule*, *capptr*, *cdesc* and *cfi*.
-Normally, this attribute is determined by Shroud
-internally.  Scalar native types such as ``int`` and ``double`` will
-use *capi* since the argument can be passed directly to C using the
-*interoperability with C* feature of Fortran.
+Controls the API used by the C wrapper.
+Normally, this attribute is determined by Shroud internally based on the
+argument type and attributes.
+But in some cases it's helpful if the user defines it.
 
-Otherwise a 'bufferify' wrapper will also be created.  Pointers to native and
-``char`` use additional metadata extracted by the Fortran wrapper via
-intrinsics ``LEN`` and ``SIZE``.  In addition, *intent(in)* strings
-will be copied and null-terminated.  This uses *api(buf)*.
+buf
 
-*cdesc* will pass down a pointer to a struct which contains metadata
-for the argument instead of passing additional fields. The advantage
-is the struct can also be used to return metadata from the C wrapper
-to the Fortran wrapper.
-The metadata includes shape information from a *dimension* attribute
-and is used on *intent(OUT)* arguments and function results to set
-Fortran ``POINTER`` shapes.
-The struct is named by the format fields
-*C_array_type* and *F_array_type*.
+   Pass a pointer to a string along with meta data about the length
+   or size.
+   Pointers to native and
+   ``char`` use additional metadata extracted by the Fortran wrapper via
+   intrinsics ``LEN`` and ``SIZE``.  In addition, *intent(in)* strings
+   will be copied and null-terminated.
 
-The option *F_CFI*, will use the *Further interoperability with C*
-features and pass ``CFI_cdesc_t`` arguments to the C where where the
-metadata is extracted.  This uses *api(cfi)*.
+capi
 
-The *capsule* and *capptr* APIs are used by the capsule created by
-shadow types created for C++ classes.  In both cases the result is
-passed from Fortran to C as an extra argument for function which
-return a class. With *capptr*, the C wrapper will return a pointer to
-the capsule argument while *capsule* will not return a value for
-the function. This is controlled by the *C_shadow_result* option.
-
-There is currently one useful case where the user would want to set
-this attribute. To avoid creating a wrapper which copies and null
-terminates a ``char *`` argument the user can set *api(capi)*.  The
-address of the formal parameter will be passed to the user's library.
-This is useful when null termination does not make sense. For example,
-when the argument is a large buffer to be written to a file.  The C
-library must have some other way of determining the length of the
-argument such as another argument with the explicit length.
+    There is currently one useful case where the user would want to set
+    this attribute. To avoid creating a wrapper which copies and null
+    terminates a ``char *`` argument the user can set *api(capi)*.  The
+    address of the formal parameter will be passed to the user's library.
+    This is useful when null termination does not make sense. For example,
+    when the argument is a large buffer to be written to a file.  The C
+    library must have some other way of determining the length of the
+    argument such as another argument with the explicit length.
 
 .. tested by strings.yaml CpassCharPtrCAPI
+    
+capptr
+capsule
+
+    The *capsule* and *capptr* APIs are used by the capsule created by
+    shadow types created for C++ classes.  In both cases the result is
+    passed from Fortran to C as an extra argument for function which
+    return a class. With *capptr*, the C wrapper will return a pointer to
+    the capsule argument while *capsule* will not return a value for
+    the function. This is controlled by the **C_shadow_result** option.
+
+cdesc
+
+    Uses a struct to pass the metadata between Fortran and C.
+    This struct contains additional metadata beyond
+    the length and size used by *api(buf)*.
+    It is also used to return metadata from the C wrapper to the Fortran wrapper.
+    The metadata includes shape information from a *dimension* attribute
+    and is used on *intent(OUT)* arguments and function results to set the
+    shape of Fortran ``POINTER`` variables.
+    The struct is named by the format fields *C_array_type* and *F_array_type*.
+    It is similar to the ``CFI_cdesc_t`` struct provied by Fortran 2018.
+
+cfi
+
+    Use *Further interoperability with C* features and pass
+    ``CFI_cdesc_t`` arguments to the C wrapper which will extract the
+    metadata.  Using option *F_CFI* will make this the default
+    behavior.
+
+this
+
+    Used when the *return_this* field is *True*.
+    The C++ function returns a pointer to the **this** variable.
 
 .. In the future a user settable api might be useful to do custom
    actions in the wrappers.
@@ -510,6 +527,18 @@ scalar
 
 .. function pointers meta[deref] for both the +external and +funptr.
 
+destructor_name
+^^^^^^^^^^^^^^^
+
+Specifies a name in the **destructors** section which lists code to be used to 
+release memory.  Used with function results.
+It is used in the *C_memory_dtor_function* and will have the 
+variable ``void *ptr`` available as the pointer to the memory
+to be released.
+See :ref:`MemoryManagementAnchor` for details.
+
+..  and *intent(out)* arguments.
+
 dimension
 ^^^^^^^^^
 
@@ -588,18 +617,6 @@ as the dummy argument for the function pointer.
 
 See also the *funptr* attribute.
 See :ref:`DeclAnchor_Function_Pointers`.
-
-free_pattern
-^^^^^^^^^^^^
-
-A name in the **patterns** section which lists code to be used to 
-release memory.  Used with function results.
-It is used in the *C_memory_dtor_function* and will have the 
-variable ``void *ptr`` available as the pointer to the memory
-to be released.
-See :ref:`MemoryManagementAnchor` for details.
-
-..  and *intent(out)* arguments.
 
 funcarg
 ^^^^^^^

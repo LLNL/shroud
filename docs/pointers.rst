@@ -265,20 +265,24 @@ is used with ``std::vector`` and provides the lines:
     -  std::vector<{cxx_T}> *cxx_ptr = reinterpret_cast<std::vector<{cxx_T}> *>(ptr);
     -  delete cxx_ptr;
 
-Patterns can be used to provide code to free memory for a wrapped
-function.  The address of the memory to free will be in the variable
+Destructor code can be defined without creating a new statement group
+by defining it in the **destructors** section of the YAML file.  Then
+use the *+destructor_name* attribute in the declaration.
+This allows custom destructor code to be used more easily.
+
+The address of the memory to free will be in the variable
 ``void *ptr``, which should be referenced in the pattern:
 
 .. code-block:: yaml
 
     declarations:
-    - decl: char * getName() +free_pattern(free_getName)
+    - decl: char *getName() +destructor_name(free_getName)
 
-    patterns:
+    destructors:
        free_getName: |
           decref(ptr);
 
-Without any explicit *destructor_name* or pattern, ``free`` will be
+Without any explicit *destructor_name*, ``free`` will be
 used to release POD pointers; otherwise, ``delete`` will be used.
 
 .. When to use ``delete[] ptr``?
@@ -310,7 +314,8 @@ And :file:`wrapftutorial.f`:
 
 *addr* is the address of the C or C++ variable, such as a ``char *``
 or ``std::string *``.  *idtor* is a Shroud generated index of the
-destructor code defined by *destructor_name* or the *free_pattern* attribute.
+destructor code defined by *destructor_name* in the statement group
+or the *destructor_name* attribute.
 These code segments are collected and written to function
 *C_memory_dtor_function*.  A value of 0 indicated the memory will not
 be released and is used with the **owner(library)** attribute.
