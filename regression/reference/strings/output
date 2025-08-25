@@ -1,16 +1,3 @@
-
-----------------------------------------
-Phase: FillMeta function
-----------------------------------------
-Node: getConstStringPtrOwnsAllocPattern
-line 140
-const std::string *getConstStringPtrOwnsAllocPattern(void) +free_pattern(C_string_free)+owner(caller)
-Deprecated: free_pattern is deprecated. Replace with destructor_name.
---------------------
-Node: getConstStringPtrOwnsAllocPattern
-line 140
-const std::string *getConstStringPtrOwnsAllocPattern(void) +free_pattern(C_string_free)+owner(caller)
-Deprecated: destructor_name must now be in destructor group instead patterns.
 Wrote wrapstrings.h
 Wrote wrapstrings.cpp
 Wrote wrapfstrings.f

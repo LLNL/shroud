@@ -377,7 +377,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const std::string *getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
+    ! Function:  const std::string *getConstStringPtrOwnsAllocPattern +destructor_name(C_string_free)+owner(caller)
     ! Statement: c_function_string*_caller
     interface
         function c_get_const_string_ptr_owns_alloc_pattern() &
@@ -390,7 +390,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const std::string *getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
+    ! Function:  const std::string *getConstStringPtrOwnsAllocPattern +destructor_name(C_string_free)+owner(caller)
     ! Statement: f_function_string*_cdesc_allocatable_caller
     interface
         subroutine c_get_const_string_ptr_owns_alloc_pattern_bufferify( &
@@ -1215,7 +1215,7 @@ contains
     end function get_const_string_ptr_owns_alloc
 
     ! ----------------------------------------
-    ! Function:  const std::string *getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
+    ! Function:  const std::string *getConstStringPtrOwnsAllocPattern +destructor_name(C_string_free)+owner(caller)
     ! Statement: f_function_string*_cdesc_allocatable_caller
     !>
     !! Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.

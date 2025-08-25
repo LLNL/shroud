@@ -519,7 +519,7 @@ void STR_getConstStringPtrOwnsAlloc_bufferify(
  * Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.
  */
 // ----------------------------------------
-// Function:  const std::string *getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
+// Function:  const std::string *getConstStringPtrOwnsAllocPattern +destructor_name(C_string_free)+owner(caller)
 // Statement: c_function_string*_caller
 const char * STR_getConstStringPtrOwnsAllocPattern(void)
 {
@@ -534,7 +534,7 @@ const char * STR_getConstStringPtrOwnsAllocPattern(void)
  * Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.
  */
 // ----------------------------------------
-// Function:  const std::string *getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
+// Function:  const std::string *getConstStringPtrOwnsAllocPattern +destructor_name(C_string_free)+owner(caller)
 // Statement: f_function_string*_cdesc_allocatable_caller
 void STR_getConstStringPtrOwnsAllocPattern_bufferify(
     STR_SHROUD_array *SHT_rv_cdesc,
