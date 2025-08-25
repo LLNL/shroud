@@ -527,6 +527,18 @@ scalar
 
 .. function pointers meta[deref] for both the +external and +funptr.
 
+destructor_name
+^^^^^^^^^^^^^^^
+
+Specifies a name in the **destructors** section which lists code to be used to 
+release memory.  Used with function results.
+It is used in the *C_memory_dtor_function* and will have the 
+variable ``void *ptr`` available as the pointer to the memory
+to be released.
+See :ref:`MemoryManagementAnchor` for details.
+
+..  and *intent(out)* arguments.
+
 dimension
 ^^^^^^^^^
 
@@ -605,18 +617,6 @@ as the dummy argument for the function pointer.
 
 See also the *funptr* attribute.
 See :ref:`DeclAnchor_Function_Pointers`.
-
-free_pattern
-^^^^^^^^^^^^
-
-A name in the **patterns** section which lists code to be used to 
-release memory.  Used with function results.
-It is used in the *C_memory_dtor_function* and will have the 
-variable ``void *ptr`` available as the pointer to the memory
-to be released.
-See :ref:`MemoryManagementAnchor` for details.
-
-..  and *intent(out)* arguments.
 
 funcarg
 ^^^^^^^

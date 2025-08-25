@@ -18,6 +18,13 @@ Changes to YAML input
 * Added attribute *+funptr*. Uses ``type(C_FUNPTR)`` for
   function pointer arguments.
 
+* Renamed the *+free_pattern* attribute to *+destructor_name*.
+  The values is looked up in the new **destructors** section of
+  the YAML file instead of the **patterns** section.
+  Current use of *+free_pattern* is still supported but will
+  create a warning message in the logfile. The old usage will be
+  removed in a future version.
+  
 * Create an abstract interface for typedef statements which
   are function pointers. Previously, only function pointers
   arguments were supported.

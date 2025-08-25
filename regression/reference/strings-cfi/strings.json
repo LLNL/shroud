@@ -13,6 +13,9 @@
             "strings.hpp",
             "shroud/features.h"
         ],
+        "destructors": {
+            "C_string_free": "// Used with +free_pattern(C_string_free)\nstd::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);\ndelete cxx_ptr;\n"
+        },
         "fortran_header": [
             "shroud/features.h"
         ],
@@ -1880,7 +1883,7 @@
                             },
                             "meta": {
                                 "abstract": "string*",
-                                "free_pattern": "C_string_free",
+                                "destructor_name": "C_string_free",
                                 "intent": "function",
                                 "owner": "caller"
                             },
@@ -1934,7 +1937,7 @@
                                 "abstract": "string*",
                                 "api": "cfi",
                                 "deref": "allocatable",
-                                "free_pattern": "C_string_free",
+                                "destructor_name": "C_string_free",
                                 "intent": "function",
                                 "owner": "caller"
                             },
@@ -1945,7 +1948,7 @@
                         "+result": {
                             "meta": {
                                 "abstract": "string*",
-                                "free_pattern": "C_string_free",
+                                "destructor_name": "C_string_free",
                                 "intent": "function",
                                 "owner": "caller"
                             }

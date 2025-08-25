@@ -8,7 +8,13 @@
 """
 Keep track of the current state of the application so that
 errors can be reported with a context.
+
+Usage:
+   from . import error
+   cursor = error.get_cursor()
+   cursor.generate("message")
 """
+
 from __future__ import print_function
 from __future__ import absolute_import
 
@@ -119,9 +125,14 @@ class Cursor(object):
         print(gen_decl(node.ast))
         
     def deprecated(self, message):
-        """Report message to help user move to newer syntax"""
+        """
+        Report message to help user move to newer syntax.
+        Still create a wrapper for the node.
+        """
+        node = self.node_list[-1].node
         self.context()
-        print(message)
+        self.decl_line(node)
+        print("Deprecated: " + message)
 
     def warning(self, message):
         self.nwarning += 1
@@ -130,8 +141,8 @@ class Cursor(object):
 
     def generate(self, message):
         """
-        If there is a generate error,
-        do not create a wrapper for the node.
+        If there is a generate error.
+        Do not create a wrapper for the node.
         """
         node = self.node_list[-1].node
         self.nwarning += 1

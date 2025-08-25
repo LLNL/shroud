@@ -370,7 +370,7 @@ class ToDict(visitor.Visitor):
             ],
         )
         # These fields are not in NamespaceNode
-        for key in ["patterns", "destructor"]:
+        for key in ["patterns", "destructors"]:
             if hasattr(node, key):
                 self.add_visit_fields(node, d, [key])
         return d

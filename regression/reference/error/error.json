@@ -905,6 +905,9 @@
         "cxx_header": [
             "error.hpp"
         ],
+        "destructors": {
+            "C_string_free": "// Used with +free_pattern(C_string_free)\n"
+        },
         "functions": [
             {
                 "<FUNCTION>": "BadFstatements  6 ****************************************",
@@ -1295,7 +1298,7 @@
                 }
             },
             {
-                "<FUNCTION>": "AssumedRank  9 ****************************************",
+                "<FUNCTION>": "AssumedRank  10 ****************************************",
                 "C_force_wrapper": true,
                 "_PTR_C_CXX_index": 7,
                 "_gen_fortran_generic": true,
@@ -1441,7 +1444,7 @@
                 }
             },
             {
-                "<FUNCTION>": "AssumedRank  10 ****************************************",
+                "<FUNCTION>": "AssumedRank  11 ****************************************",
                 "C_force_wrapper": true,
                 "_PTR_C_CXX_index": 7,
                 "_gen_fortran_generic": true,
@@ -1590,7 +1593,7 @@
                 }
             },
             {
-                "<FUNCTION>": "AssumedRank  11 ****************************************",
+                "<FUNCTION>": "AssumedRank  12 ****************************************",
                 "C_force_wrapper": true,
                 "_PTR_C_CXX_index": 7,
                 "_gen_fortran_generic": true,
@@ -1801,9 +1804,188 @@
                         "PY_ml_flags": "METH_NOARGS"
                     }
                 }
+            },
+            {
+                "<FUNCTION>": "getConstStringPtrOwnsAllocPattern  9 ****************************************",
+                "ast": {
+                    "const": true,
+                    "declarator": {
+                        "attrs": {
+                            "free_pattern": "C_string_free",
+                            "owner": "caller"
+                        },
+                        "name": "getConstStringPtrOwnsAllocPattern",
+                        "params": [],
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ],
+                        "typemap_name": "std::string"
+                    },
+                    "specifier": [
+                        "std::string"
+                    ],
+                    "typemap_name": "std::string"
+                },
+                "decl": "const std::string * getConstStringPtrOwnsAllocPattern() +owner(caller)",
+                "declgen": "const std::string *getConstStringPtrOwnsAllocPattern(void) +free_pattern(C_string_free)+owner(caller)",
+                "helpers": {
+                    "fc": [
+                        "array_context",
+                        "capsule_data_helper",
+                        "string_to_cdesc",
+                        "copy_string",
+                        "capsule_dtor"
+                    ]
+                },
+                "name": "getConstStringPtrOwnsAllocPattern",
+                "options": {
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstStringPtrOwnsAllocPattern(\t)",
+                                "C_name": "ERR_getConstStringPtrOwnsAllocPattern",
+                                "C_prototype": "void",
+                                "C_return_type": "const char *",
+                                "c_abstract_decl": "const char *",
+                                "c_const": "const ",
+                                "c_local_cxx": "SHC_rv_cxx",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHC_rv_cxx)",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHC_rv_cxx",
+                                "f_type": "character(len=*)",
+                                "f_var": "SHT_rv",
+                                "i_arguments": "",
+                                "i_kind": "C_CHAR",
+                                "i_module_name": "iso_c_binding",
+                                "i_name_function": "c_get_const_string_ptr_owns_alloc_pattern",
+                                "i_result_clause": "\fresult(SHT_rv)",
+                                "i_subprogram": "function",
+                                "i_type": "character(kind=C_CHAR)",
+                                "i_var": "SHT_rv",
+                                "idtor": "1",
+                                "stmt_name": "c_function_string*_caller",
+                                "typemap_name": "std::string"
+                            },
+                            "meta": {
+                                "abstract": "string*",
+                                "destructor_name": "C_string_free",
+                                "intent": "function",
+                                "owner": "caller"
+                            },
+                            "stmt": "c_function_string*_caller"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstStringPtrOwnsAllocPattern(\t)",
+                                "C_name": "ERR_getConstStringPtrOwnsAllocPattern_bufferify",
+                                "C_prototype": "ERR_SHROUD_array *SHT_rv_cdesc,\t ERR_SHROUD_capsule_data *SHT_rv_capsule",
+                                "C_return_type": "void",
+                                "F_arg_c_call": "SHT_rv_cdesc,\t SHT_rv_capsule",
+                                "F_arguments": "",
+                                "F_subprogram": "function",
+                                "c_abstract_decl": "const char *",
+                                "c_const": "const ",
+                                "c_helper_array_context": "ERR_SHROUD_array",
+                                "c_helper_capsule_dtor": "ERR_SHROUD_memory_destructor",
+                                "c_helper_copy_string": "ERR_ShroudCopyString",
+                                "c_helper_string_to_cdesc": "ShroudStringToCdesc",
+                                "c_local_cxx": "SHC_rv_cxx",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "c_var_capsule": "SHT_rv_capsule",
+                                "c_var_cdesc": "SHT_rv_cdesc",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHC_rv_cxx)",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHC_rv_cxx",
+                                "f_call_function": "c_get_const_string_ptr_owns_alloc_pattern_bufferify",
+                                "f_deref_attr": ", allocatable",
+                                "f_helper_array_context": "ERR_SHROUD_array",
+                                "f_helper_capsule_data_helper": "ERR_SHROUD_capsule_data",
+                                "f_helper_capsule_dtor": "ERR_SHROUD_capsule_dtor",
+                                "f_helper_copy_string": "ERR_SHROUD_copy_string",
+                                "f_result_clause": "\fresult(SHT_rv)",
+                                "f_type": "character(len=:)",
+                                "f_var": "SHT_rv",
+                                "f_var_capsule": "SHT_rv_capsule",
+                                "f_var_cdesc": "SHT_rv_cdesc",
+                                "fc_var": "SHT_rv",
+                                "i_arguments": "SHT_rv_cdesc,\t SHT_rv_capsule",
+                                "i_intent": "OUT",
+                                "i_intent_attr": ", intent(OUT)",
+                                "i_kind": "C_CHAR",
+                                "i_module_name": "iso_c_binding",
+                                "i_name_function": "c_get_const_string_ptr_owns_alloc_pattern_bufferify",
+                                "i_subprogram": "subroutine",
+                                "i_suffix": "_bufferify",
+                                "i_type": "character(kind=C_CHAR)",
+                                "i_var": "SHT_rv",
+                                "i_var_capsule": "SHT_rv_capsule",
+                                "i_var_cdesc": "SHT_rv_cdesc",
+                                "idtor": "1",
+                                "stmt_name": "f_function_string*_cdesc_allocatable_caller",
+                                "typemap_name": "std::string"
+                            },
+                            "meta": {
+                                "abstract": "string*",
+                                "api": "cdesc",
+                                "deref": "allocatable",
+                                "destructor_name": "C_string_free",
+                                "intent": "function",
+                                "owner": "caller"
+                            },
+                            "stmt": "f_function_string*_cdesc_allocatable_caller"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "abstract": "string*",
+                                "destructor_name": "C_string_free",
+                                "intent": "function",
+                                "owner": "caller"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "getConstStringPtrOwnsAllocPattern",
+                    "F_name_api": "get_const_string_ptr_owns_alloc_pattern",
+                    "F_name_function": "get_const_string_ptr_owns_alloc_pattern",
+                    "F_name_generic": "get_const_string_ptr_owns_alloc_pattern",
+                    "F_name_impl": "get_const_string_ptr_owns_alloc_pattern",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
+                    "function_name": "getConstStringPtrOwnsAllocPattern"
+                }
             }
         ],
         "language": "cxx",
+        "patterns": {
+            "C_string_free": "// Used with +free_pattern(C_string_free)\n"
+        },
         "scope_file": [
             "error"
         ],

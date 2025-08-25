@@ -10,12 +10,32 @@
 // cxx_header
 #include "error.hpp"
 // shroud
+#include <cstddef>
+#include <cstring>
 #include "wraperror.h"
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions
 
 extern "C" {
+
+
+// helper string_to_cdesc
+// Save std::string metadata into array to allow Fortran to access values.
+// CHARACTER(len=elem_size) src
+static void ShroudStringToCdesc(ERR_SHROUD_array *cdesc,
+    const std::string *src)
+{
+    if (src->empty()) {
+        cdesc->base_addr = NULL;
+        cdesc->elem_len = 0;
+    } else {
+        cdesc->base_addr = const_cast<char *>(src->data());
+        cdesc->elem_len = src->length();
+    }
+    cdesc->size = 1;
+    cdesc->rank = 0;  // scalar
+}
 
 // splicer begin C_definitions
 // splicer end C_definitions
@@ -95,6 +115,33 @@ void ERR_AssumedRank_2d_bufferify(int *data)
     // splicer begin function.AssumedRank_2d_bufferify
     AssumedRank(data);
     // splicer end function.AssumedRank_2d_bufferify
+}
+
+// ----------------------------------------
+// Function:  const std::string *getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
+// Statement: c_function_string*_caller
+const char * ERR_getConstStringPtrOwnsAllocPattern(void)
+{
+    // splicer begin function.getConstStringPtrOwnsAllocPattern
+    const std::string *SHC_rv_cxx = getConstStringPtrOwnsAllocPattern();
+    const char *SHC_rv = SHC_rv_cxx->c_str();
+    return SHC_rv;
+    // splicer end function.getConstStringPtrOwnsAllocPattern
+}
+
+// ----------------------------------------
+// Function:  const std::string *getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
+// Statement: f_function_string*_cdesc_allocatable_caller
+void ERR_getConstStringPtrOwnsAllocPattern_bufferify(
+    ERR_SHROUD_array *SHT_rv_cdesc,
+    ERR_SHROUD_capsule_data *SHT_rv_capsule)
+{
+    // splicer begin function.getConstStringPtrOwnsAllocPattern_bufferify
+    const std::string *SHC_rv_cxx = getConstStringPtrOwnsAllocPattern();
+    ShroudStringToCdesc(SHT_rv_cdesc, SHC_rv_cxx);
+    SHT_rv_capsule->addr  = const_cast<std::string *>(SHC_rv_cxx);
+    SHT_rv_capsule->idtor = 1;
+    // splicer end function.getConstStringPtrOwnsAllocPattern_bufferify
 }
 
 }  // extern "C"

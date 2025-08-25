@@ -108,13 +108,12 @@ Error in 'decl' field
    ^
 Expected EOF, found ID
 --------------------
-Node: testattrs4
-line 117
+Node: IndexType
 Typemap IndexType: Unknown key 'no_such_keyword'
 --------------------
-Node: testattrs4
-line 117
-Typemap IndexType: Replacing deprecated field 'f_c_module' with 'i_module'
+Node: IndexType
+typedef int64_t IndexType
+Deprecated: Typemap IndexType: Replacing deprecated field 'f_c_module' with 'i_module'
 --------------------
 Node: process_twostruct
 line 139

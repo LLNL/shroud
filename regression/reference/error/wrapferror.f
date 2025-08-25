@@ -13,13 +13,61 @@
 ! splicer begin file_top
 ! splicer end file_top
 module error_mod
-    use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR
+    use iso_c_binding, only : C_INT, C_LONG, C_NULL_PTR, C_PTR, C_SIZE_T
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
 
     ! splicer begin module_top
     ! splicer end module_top
+
+    ! helper type_defines
+    ! Shroud type defines from helper type_defines
+    integer, parameter, private :: &
+        SH_TYPE_SIGNED_CHAR= 1, &
+        SH_TYPE_SHORT      = 2, &
+        SH_TYPE_INT        = 3, &
+        SH_TYPE_LONG       = 4, &
+        SH_TYPE_LONG_LONG  = 5, &
+        SH_TYPE_SIZE_T     = 6, &
+        SH_TYPE_UNSIGNED_SHORT      = SH_TYPE_SHORT + 100, &
+        SH_TYPE_UNSIGNED_INT        = SH_TYPE_INT + 100, &
+        SH_TYPE_UNSIGNED_LONG       = SH_TYPE_LONG + 100, &
+        SH_TYPE_UNSIGNED_LONG_LONG  = SH_TYPE_LONG_LONG + 100, &
+        SH_TYPE_INT8_T    =  7, &
+        SH_TYPE_INT16_T   =  8, &
+        SH_TYPE_INT32_T   =  9, &
+        SH_TYPE_INT64_T   = 10, &
+        SH_TYPE_UINT8_T  =  SH_TYPE_INT8_T + 100, &
+        SH_TYPE_UINT16_T =  SH_TYPE_INT16_T + 100, &
+        SH_TYPE_UINT32_T =  SH_TYPE_INT32_T + 100, &
+        SH_TYPE_UINT64_T =  SH_TYPE_INT64_T + 100, &
+        SH_TYPE_FLOAT       = 22, &
+        SH_TYPE_DOUBLE      = 23, &
+        SH_TYPE_LONG_DOUBLE = 24, &
+        SH_TYPE_FLOAT_COMPLEX      = 25, &
+        SH_TYPE_DOUBLE_COMPLEX     = 26, &
+        SH_TYPE_LONG_DOUBLE_COMPLEX= 27, &
+        SH_TYPE_BOOL      = 28, &
+        SH_TYPE_CHAR      = 29, &
+        SH_TYPE_CPTR      = 30, &
+        SH_TYPE_STRUCT    = 31, &
+        SH_TYPE_OTHER     = 32
+
+    ! helper array_context
+    type, bind(C) :: ERR_SHROUD_array
+        ! address of data
+        type(C_PTR) :: base_addr = C_NULL_PTR
+        ! type of element
+        integer(C_INT) :: type
+        ! bytes-per-item or character len of data in cxx
+        integer(C_SIZE_T) :: elem_len = 0_C_SIZE_T
+        ! size of data in cxx
+        integer(C_SIZE_T) :: size = 0_C_SIZE_T
+        ! number of dimensions
+        integer(C_INT) :: rank = -1
+        integer(C_LONG) :: shape(7) = 0
+    end type ERR_SHROUD_array
 
     ! helper capsule_data_helper
     type, bind(C) :: ERR_SHROUD_capsule_data
@@ -215,6 +263,29 @@ module error_mod
             implicit none
             integer(C_INT), intent(INOUT) :: data(*)
         end subroutine c_assumed_rank_2d_bufferify
+
+        ! ----------------------------------------
+        ! Function:  const std::string *getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
+        ! Statement: c_function_string*_caller
+        function c_get_const_string_ptr_owns_alloc_pattern() &
+                result(SHT_rv) &
+                bind(C, name="ERR_getConstStringPtrOwnsAllocPattern")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) :: SHT_rv
+        end function c_get_const_string_ptr_owns_alloc_pattern
+
+        ! ----------------------------------------
+        ! Function:  const std::string *getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
+        ! Statement: f_function_string*_cdesc_allocatable_caller
+        subroutine c_get_const_string_ptr_owns_alloc_pattern_bufferify( &
+                SHT_rv_cdesc, SHT_rv_capsule) &
+                bind(C, name="ERR_getConstStringPtrOwnsAllocPattern_bufferify")
+            import :: ERR_SHROUD_array, ERR_SHROUD_capsule_data
+            implicit none
+            type(ERR_SHROUD_array), intent(OUT) :: SHT_rv_cdesc
+            type(ERR_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
+        end subroutine c_get_const_string_ptr_owns_alloc_pattern_bufferify
     end interface
 
     interface assumed_rank
@@ -222,6 +293,30 @@ module error_mod
         module procedure assumed_rank_1d
         module procedure assumed_rank_2d
     end interface assumed_rank
+
+    interface
+        ! helper capsule_dtor
+        ! Delete memory in a capsule.
+        subroutine ERR_SHROUD_capsule_dtor(ptr) &
+            bind(C, name="ERR_SHROUD_memory_destructor")
+            import ERR_SHROUD_capsule_data
+            implicit none
+            type(ERR_SHROUD_capsule_data), intent(INOUT) :: ptr
+        end subroutine ERR_SHROUD_capsule_dtor
+    end interface
+
+    interface
+        ! helper copy_string
+        ! Copy the char* or std::string in context into c_var.
+        subroutine ERR_SHROUD_copy_string(context, c_var, c_var_size) &
+             bind(c,name="ERR_ShroudCopyString")
+            use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
+            import ERR_SHROUD_array
+            type(ERR_SHROUD_array), intent(IN) :: context
+            character(kind=C_CHAR), intent(OUT) :: c_var(*)
+            integer(C_SIZE_T), value :: c_var_size
+        end subroutine ERR_SHROUD_copy_string
+    end interface
 
     ! splicer begin additional_declarations
     ! splicer end additional_declarations
@@ -398,6 +493,24 @@ contains
         call c_assumed_rank_2d_bufferify(data)
         ! splicer end function.assumed_rank_2d
     end subroutine assumed_rank_2d
+
+    ! ----------------------------------------
+    ! Function:  const std::string *getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
+    ! Statement: f_function_string*_cdesc_allocatable_caller
+    function get_const_string_ptr_owns_alloc_pattern() &
+            result(SHT_rv)
+        character(len=:), allocatable :: SHT_rv
+        ! splicer begin function.get_const_string_ptr_owns_alloc_pattern
+        type(ERR_SHROUD_array) :: SHT_rv_cdesc
+        type(ERR_SHROUD_capsule_data) :: SHT_rv_capsule
+        call c_get_const_string_ptr_owns_alloc_pattern_bufferify(SHT_rv_cdesc, &
+            SHT_rv_capsule)
+        allocate(character(len=SHT_rv_cdesc%elem_len):: SHT_rv)
+        call ERR_SHROUD_copy_string(SHT_rv_cdesc, SHT_rv, &
+            SHT_rv_cdesc%elem_len)
+        call ERR_SHROUD_capsule_dtor(SHT_rv_capsule)
+        ! splicer end function.get_const_string_ptr_owns_alloc_pattern
+    end function get_const_string_ptr_owns_alloc_pattern
 
     ! splicer begin additional_functions
     ! splicer end additional_functions
