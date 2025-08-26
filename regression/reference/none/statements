@@ -409,7 +409,7 @@ c_function_shadow&_capptr:
   - Pass function result as a capsule field of shadow class
   - from Fortran to C.
   - Call function and assign to a local C++ variable.
-  - Assign to capsule in C wrapper.
+  - Assign capsule values to argument in C wrapper.
   notes:
   - Return a C_capsule_data_type.
   mixin_names:
@@ -457,7 +457,7 @@ c_function_shadow&_capptr_caller:
   - Pass function result as a capsule field of shadow class
   - from Fortran to C.
   - Call function and assign to a local C++ variable.
-  - Assign to capsule in C wrapper.
+  - Assign capsule values to argument in C wrapper.
   notes:
   - Return a C_capsule_data_type.
   mixin_names:
@@ -505,7 +505,7 @@ c_function_shadow&_capptr_library:
   - Pass function result as a capsule field of shadow class
   - from Fortran to C.
   - Call function and assign to a local C++ variable.
-  - Assign to capsule in C wrapper.
+  - Assign capsule values to argument in C wrapper.
   notes:
   - Return a C_capsule_data_type.
   mixin_names:
@@ -553,7 +553,7 @@ c_function_shadow&_capsule:
   - Call the C wrapper as a subroutine.
   - Pass function result as a capsule argument from Fortran to C.
   - Call function and assign to a local C++ variable.
-  - Assign to capsule in C wrapper.
+  - Assign capsule values to argument in C wrapper.
   notes:
   - Return a C_capsule_data_type.
   mixin_names:
@@ -592,7 +592,7 @@ c_function_shadow&_capsule_caller:
   - Call the C wrapper as a subroutine.
   - Pass function result as a capsule argument from Fortran to C.
   - Call function and assign to a local C++ variable.
-  - Assign to capsule in C wrapper.
+  - Assign capsule values to argument in C wrapper.
   notes:
   - Return a C_capsule_data_type.
   mixin_names:
@@ -631,7 +631,7 @@ c_function_shadow&_capsule_library:
   - Call the C wrapper as a subroutine.
   - Pass function result as a capsule argument from Fortran to C.
   - Call function and assign to a local C++ variable.
-  - Assign to capsule in C wrapper.
+  - Assign capsule values to argument in C wrapper.
   notes:
   - Return a C_capsule_data_type.
   mixin_names:
@@ -670,7 +670,7 @@ c_function_shadow*_capptr:
   - Pass function result as a capsule field of shadow class
   - from Fortran to C.
   - Call function and assign to a local C++ variable.
-  - Assign to capsule in C wrapper.
+  - Assign capsule values to argument in C wrapper.
   notes:
   - Return a C_capsule_data_type.
   mixin_names:
@@ -718,7 +718,7 @@ c_function_shadow*_capptr_caller:
   - Pass function result as a capsule field of shadow class
   - from Fortran to C.
   - Call function and assign to a local C++ variable.
-  - Assign to capsule in C wrapper.
+  - Assign capsule values to argument in C wrapper.
   notes:
   - Return a C_capsule_data_type.
   mixin_names:
@@ -766,7 +766,7 @@ c_function_shadow*_capptr_library:
   - Pass function result as a capsule field of shadow class
   - from Fortran to C.
   - Call function and assign to a local C++ variable.
-  - Assign to capsule in C wrapper.
+  - Assign capsule values to argument in C wrapper.
   notes:
   - Return a C_capsule_data_type.
   mixin_names:
@@ -814,7 +814,7 @@ c_function_shadow*_capptr_shared:
   - Pass function result as a capsule field of shadow class
   - from Fortran to C.
   - Call function and assign to a local C++ variable.
-  - Assign to capsule in C wrapper.
+  - Assign capsule values to argument in C wrapper.
   notes:
   - std::shared_ptr with a shadow class.
   mixin_names:
@@ -862,7 +862,7 @@ c_function_shadow*_capsule:
   - Call the C wrapper as a subroutine.
   - Pass function result as a capsule argument from Fortran to C.
   - Call function and assign to a local C++ variable.
-  - Assign to capsule in C wrapper.
+  - Assign capsule values to argument in C wrapper.
   notes:
   - Return a C_capsule_data_type.
   mixin_names:
@@ -920,7 +920,7 @@ c_function_shadow<native>_capptr:
   - Pass function result as a capsule field of shadow class
   - from Fortran to C.
   - Allocate a C wrapper result on the heap.
-  - Assign to capsule in C wrapper.
+  - Assign capsule values to argument in C wrapper.
   notes:
   - Return an instance by value.
   - Create memory in c_pre_call so it will survive the return.
@@ -976,7 +976,7 @@ c_function_shadow_capptr:
   - Pass function result as a capsule field of shadow class
   - from Fortran to C.
   - Allocate a C wrapper result on the heap.
-  - Assign to capsule in C wrapper.
+  - Assign capsule values to argument in C wrapper.
   notes:
   - Return an instance by value.
   - Create memory in c_pre_call so it will survive the return.
@@ -1032,7 +1032,7 @@ c_function_smartptr<shadow>*_capptr:
   - Pass function result as a capsule field of shadow class
   - from Fortran to C.
   - Call function and assign to a local C++ variable.
-  - Assign to capsule in C wrapper.
+  - Assign capsule values to argument in C wrapper.
   mixin_names:
   - '  c_mixin_function_shadow_capptr'
   - '  c_mixin_shadow'
@@ -1078,7 +1078,7 @@ c_function_smartptr<shadow>_capptr:
   - Pass function result as a capsule field of shadow class
   - from Fortran to C.
   - Allocate a C wrapper result on the heap.
-  - Assign to capsule in C wrapper.
+  - Assign capsule values to argument in C wrapper.
   notes:
   - Used with std::shared_ptr<Object>* createChildA(void)
   mixin_names:
@@ -1130,7 +1130,7 @@ c_function_string:
   comments:
   - Pass capsule as argument to C wrapper.
   - Allocate a C wrapper result on the heap.
-  - Assign to local capsule variable in C wrapper.
+  - Assign capsule values to capsule argument in C wrapper.
   notes:
   - Cannot return a char array by value.
   - Return a const pointer to std::string data.
@@ -3921,7 +3921,7 @@ c_mixin_capsule_fill_arg:
   name: c_mixin_capsule_fill_arg
   intent: mixin
   comments:
-  - Assign to local capsule variable in C wrapper.
+  - Assign capsule values to capsule argument in C wrapper.
   c_post_call:
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
@@ -3931,11 +3931,21 @@ c_mixin_capsule_fill_cvar:
   name: c_mixin_capsule_fill_cvar
   intent: mixin
   comments:
-  - Assign to capsule in C wrapper.
+  - Assign capsule values to argument in C wrapper.
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   sphinx-end-before: c_mixin_capsule_fill_cvar
+c_mixin_capsule_fill_local:
+  sphinx-start-after: c_mixin_capsule_fill_local
+  name: c_mixin_capsule_fill_local
+  intent: mixin
+  comments:
+  - Assign local variable's capsule values to capsule argument in C wrapper.
+  c_post_call:
+  - '{c_var_capsule}->addr  = {c_local_cxx};'
+  - '{c_var_capsule}->idtor = {idtor};'
+  sphinx-end-before: c_mixin_capsule_fill_local
 c_mixin_capsule_pass:
   sphinx-start-after: c_mixin_capsule_pass
   name: c_mixin_capsule_pass
@@ -6282,6 +6292,7 @@ c_out_vector<string>&_cdesc_allocatable:
   - Allocate Fortran character array from cdesc.
   - Allocate a vector<string> variable.
   - Copy into Fortran allocated memory.
+  - Assign local variable's capsule values to capsule argument in C wrapper.
   - Release memory from capsule.
   - Pass dereference of local cxx variable to library.
   mixin_names:
@@ -6291,6 +6302,7 @@ c_out_vector<string>&_cdesc_allocatable:
   - '    c_mixin_capsule_pass'
   - '  f_mixin_cdesc_allocate_1d_character'
   - '  f_mixin_helper_vector_string_allocatable'
+  - '  c_mixin_capsule_fill_local'
   - '  f_mixin_capsule_dtor'
   - '  c_mixin_arg-call-cxx-deref'
   i_dummy_arg:
@@ -6316,7 +6328,6 @@ c_out_vector<string>&_cdesc_allocatable:
   - '{c_var_cdesc}->elem_len = {c_helper_vector_string_out_len}(*{c_local_cxx});'
   - -}}
   - '{c_var_cdesc}->size      = {c_local_cxx}->size();'
-  - // XXX - Use code from c_mixin_capsule_fill_arg
   - '{c_var_capsule}->addr  = {c_local_cxx};'
   - '{c_var_capsule}->idtor = {idtor};'
   c_temps:
@@ -8479,7 +8490,7 @@ f_function_native*_cdesc_allocatable:
   - Copy into Fortran argument.
   - Pass capsule as argument to C wrapper.
   - Create a local Fortran capsule.
-  - Assign to local capsule variable in C wrapper.
+  - Assign capsule values to capsule argument in C wrapper.
   - Release memory from capsule.
   mixin_names:
   - '  f_mixin_call-cwrapper-as-subroutine'
@@ -8630,7 +8641,7 @@ f_function_native*_cdesc_pointer_caller:
   - Pass the capsule as argument to C wrapper.
   - Call function and assign to a c variable.
   - Fill cdesc from native in the C wrapper.
-  - Assign to local capsule variable in C wrapper.
+  - Assign capsule values to capsule argument in C wrapper.
   - Set Fortran pointer to native array.
   notes:
   - A capsule argument is added which contains information used to
@@ -9016,7 +9027,7 @@ f_function_shadow&_capsule:
   - Call the C wrapper as a subroutine.
   - Pass function result as a capsule argument from Fortran to C.
   - Call function and assign to a local C++ variable.
-  - Assign to capsule in C wrapper.
+  - Assign capsule values to argument in C wrapper.
   notes:
   - Return a C_capsule_data_type.
   mixin_names:
@@ -9062,7 +9073,7 @@ f_function_shadow&_capsule_caller:
   - Call the C wrapper as a subroutine.
   - Pass function result as a capsule argument from Fortran to C.
   - Call function and assign to a local C++ variable.
-  - Assign to capsule in C wrapper.
+  - Assign capsule values to argument in C wrapper.
   notes:
   - Return a C_capsule_data_type.
   mixin_names:
@@ -9108,7 +9119,7 @@ f_function_shadow&_capsule_library:
   - Call the C wrapper as a subroutine.
   - Pass function result as a capsule argument from Fortran to C.
   - Call function and assign to a local C++ variable.
-  - Assign to capsule in C wrapper.
+  - Assign capsule values to argument in C wrapper.
   notes:
   - Return a C_capsule_data_type.
   mixin_names:
@@ -9154,7 +9165,7 @@ f_function_shadow*_capsule:
   - Call the C wrapper as a subroutine.
   - Pass function result as a capsule argument from Fortran to C.
   - Call function and assign to a local C++ variable.
-  - Assign to capsule in C wrapper.
+  - Assign capsule values to argument in C wrapper.
   notes:
   - Return a C_capsule_data_type.
   mixin_names:
@@ -9200,7 +9211,7 @@ f_function_shadow*_capsule_caller:
   - Call the C wrapper as a subroutine.
   - Pass function result as a capsule argument from Fortran to C.
   - Call function and assign to a local C++ variable.
-  - Assign to capsule in C wrapper.
+  - Assign capsule values to argument in C wrapper.
   notes:
   - Return a C_capsule_data_type.
   mixin_names:
@@ -9246,7 +9257,7 @@ f_function_shadow*_capsule_library:
   - Call the C wrapper as a subroutine.
   - Pass function result as a capsule argument from Fortran to C.
   - Call function and assign to a local C++ variable.
-  - Assign to capsule in C wrapper.
+  - Assign capsule values to argument in C wrapper.
   notes:
   - Return a C_capsule_data_type.
   mixin_names:
@@ -9314,7 +9325,7 @@ f_function_shadow<native>_capsule:
   - Call the C wrapper as a subroutine.
   - Pass function result as a capsule argument from Fortran to C.
   - Allocate a C wrapper result on the heap.
-  - Assign to capsule in C wrapper.
+  - Assign capsule values to argument in C wrapper.
   notes:
   - Return an instance by value.
   - Create memory in c_pre_call so it will survive the return.
@@ -9368,7 +9379,7 @@ f_function_shadow_capsule:
   - Call the C wrapper as a subroutine.
   - Pass function result as a capsule argument from Fortran to C.
   - Allocate a C wrapper result on the heap.
-  - Assign to capsule in C wrapper.
+  - Assign capsule values to argument in C wrapper.
   notes:
   - Return an instance by value.
   - Create memory in c_pre_call so it will survive the return.
@@ -9422,7 +9433,7 @@ f_function_smartptr<shadow>*_capsule:
   - Call the C wrapper as a subroutine.
   - Pass function result as a capsule argument from Fortran to C.
   - Call function and assign to a local C++ variable.
-  - Assign to capsule in C wrapper.
+  - Assign capsule values to argument in C wrapper.
   mixin_names:
   - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
@@ -9466,7 +9477,7 @@ f_function_smartptr<shadow>_capsule:
   - Call the C wrapper as a subroutine.
   - Pass function result as a capsule argument from Fortran to C.
   - Allocate a C wrapper result on the heap.
-  - Assign to capsule in C wrapper.
+  - Assign capsule values to argument in C wrapper.
   notes:
   - Used with std::shared_ptr<Object>* createChildA(void)
   mixin_names:
@@ -9897,7 +9908,7 @@ f_function_string&_cdesc_allocatable:
   - Call function and assign to a local C++ variable.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
-  - Assign to local capsule variable in C wrapper.
+  - Assign capsule values to capsule argument in C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Release memory from capsule.
@@ -9977,7 +9988,7 @@ f_function_string&_cdesc_allocatable_caller:
   - Call function and assign to a local C++ variable.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
-  - Assign to local capsule variable in C wrapper.
+  - Assign capsule values to capsule argument in C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Release memory from capsule.
@@ -10057,7 +10068,7 @@ f_function_string&_cdesc_allocatable_library:
   - Call function and assign to a local C++ variable.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
-  - Assign to local capsule variable in C wrapper.
+  - Assign capsule values to capsule argument in C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Release memory from capsule.
@@ -11103,7 +11114,7 @@ f_function_string*_cdesc_allocatable:
   - Call function and assign to a local C++ variable.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
-  - Assign to local capsule variable in C wrapper.
+  - Assign capsule values to capsule argument in C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Release memory from capsule.
@@ -11183,7 +11194,7 @@ f_function_string*_cdesc_allocatable_caller:
   - Call function and assign to a local C++ variable.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
-  - Assign to local capsule variable in C wrapper.
+  - Assign capsule values to capsule argument in C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Release memory from capsule.
@@ -11263,7 +11274,7 @@ f_function_string*_cdesc_allocatable_library:
   - Call function and assign to a local C++ variable.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
-  - Assign to local capsule variable in C wrapper.
+  - Assign capsule values to capsule argument in C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Release memory from capsule.
@@ -12326,7 +12337,7 @@ f_function_string_cdesc_allocatable:
   - using helper copy_string.
   - Pass capsule as argument to C wrapper.
   - Create a local Fortran capsule.
-  - Assign to local capsule variable in C wrapper.
+  - Assign capsule values to capsule argument in C wrapper.
   - Release memory from capsule.
   usage:
   - std::string func() +deref(allocatable)
@@ -12419,7 +12430,7 @@ f_function_string_cdesc_allocatable_caller:
   - using helper copy_string.
   - Pass capsule as argument to C wrapper.
   - Create a local Fortran capsule.
-  - Assign to local capsule variable in C wrapper.
+  - Assign capsule values to capsule argument in C wrapper.
   - Release memory from capsule.
   usage:
   - std::string func() +deref(allocatable)
@@ -12512,7 +12523,7 @@ f_function_string_cdesc_allocatable_library:
   - using helper copy_string.
   - Pass capsule as argument to C wrapper.
   - Create a local Fortran capsule.
-  - Assign to local capsule variable in C wrapper.
+  - Assign capsule values to capsule argument in C wrapper.
   - Release memory from capsule.
   usage:
   - std::string func() +deref(allocatable)
@@ -12602,7 +12613,7 @@ f_function_string_cdesc_pointer:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
   - Allocate a C wrapper result on the heap.
-  - Assign to local capsule variable in C wrapper.
+  - Assign capsule values to capsule argument in C wrapper.
   - Fill cdesc from local std::string variable in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
   usage:
@@ -12990,7 +13001,7 @@ f_function_string_cfi_pointer:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
   - Allocate a C wrapper result on the heap.
-  - Assign to local capsule variable in C wrapper.
+  - Assign capsule values to capsule argument in C wrapper.
   notes:
   - Return a pointer to a new variable
   - which the caller must release via the capsule.
@@ -13091,7 +13102,7 @@ f_function_string_cfi_pointer_caller:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
   - Allocate a C wrapper result on the heap.
-  - Assign to local capsule variable in C wrapper.
+  - Assign capsule values to capsule argument in C wrapper.
   notes:
   - Return a pointer to a new variable
   - which the caller must release via the capsule.
@@ -13192,7 +13203,7 @@ f_function_string_cfi_pointer_library:
   - Call the C wrapper as a subroutine.
   - Make the C wrapper argument a CFI_desc_t.
   - Allocate a C wrapper result on the heap.
-  - Assign to local capsule variable in C wrapper.
+  - Assign capsule values to capsule argument in C wrapper.
   notes:
   - Return a pointer to a new variable
   - which the caller must release via the capsule.
@@ -13294,7 +13305,7 @@ f_function_string_raw:
   - Allocate a C wrapper result on the heap.
   - Assign std::string.data to cvar.
   - Always uses const.
-  - Assign to local capsule variable in C wrapper.
+  - Assign capsule values to capsule argument in C wrapper.
   usage:
   - std::string func() +deref(raw)
   mixin_names:
@@ -17756,7 +17767,7 @@ f_mixin_capsule_use:
   comments:
   - Pass capsule as argument to C wrapper.
   - Create a local Fortran capsule.
-  - Assign to local capsule variable in C wrapper.
+  - Assign capsule values to capsule argument in C wrapper.
   - Release memory from capsule.
   mixin_names:
   - '  f_mixin_capsule_pass'
@@ -18346,9 +18357,6 @@ f_mixin_helper_vector_string_allocatable:
   - '{c_var_cdesc}->elem_len = {c_helper_vector_string_out_len}(*{c_local_cxx});'
   - -}}
   - '{c_var_cdesc}->size      = {c_local_cxx}->size();'
-  - // XXX - Use code from c_mixin_capsule_fill_arg
-  - '{c_var_capsule}->addr  = {c_local_cxx};'
-  - '{c_var_capsule}->idtor = {idtor};'
   c_local:
   - cxx
   helper:
@@ -19624,7 +19632,7 @@ f_out_native**_cdesc_allocatable:
   - Copy into Fortran argument.
   - Pass capsule as argument to C wrapper.
   - Create a local Fortran capsule.
-  - Assign to local capsule variable in C wrapper.
+  - Assign capsule values to capsule argument in C wrapper.
   - Release memory from capsule.
   notes:
   - Argument returns a pointer to an array which is copied into a
@@ -20175,7 +20183,7 @@ f_out_string**_cdesc_allocatable:
   - Assign to std::string pointer from C++ function.
   - Copy into Fortran allocated memory.
   - Pass address of cxx variable to library.
-  - Assign to local capsule variable in C wrapper.
+  - Assign capsule values to capsule argument in C wrapper.
   - Release memory from capsule.
   mixin_names:
   - '  f_mixin_declare-fortran-arg'
@@ -20941,6 +20949,7 @@ f_out_vector<string>&_cdesc_allocatable:
   - Allocate Fortran character array from cdesc.
   - Allocate a vector<string> variable.
   - Copy into Fortran allocated memory.
+  - Assign local variable's capsule values to capsule argument in C wrapper.
   - Release memory from capsule.
   - Pass dereference of local cxx variable to library.
   mixin_names:
@@ -20950,6 +20959,7 @@ f_out_vector<string>&_cdesc_allocatable:
   - '    c_mixin_capsule_pass'
   - '  f_mixin_cdesc_allocate_1d_character'
   - '  f_mixin_helper_vector_string_allocatable'
+  - '  c_mixin_capsule_fill_local'
   - '  f_mixin_capsule_dtor'
   - '  c_mixin_arg-call-cxx-deref'
   f_dummy_arg:
@@ -20997,7 +21007,6 @@ f_out_vector<string>&_cdesc_allocatable:
   - '{c_var_cdesc}->elem_len = {c_helper_vector_string_out_len}(*{c_local_cxx});'
   - -}}
   - '{c_var_cdesc}->size      = {c_local_cxx}->size();'
-  - // XXX - Use code from c_mixin_capsule_fill_arg
   - '{c_var_capsule}->addr  = {c_local_cxx};'
   - '{c_var_capsule}->idtor = {idtor};'
   c_temps:
@@ -22679,6 +22688,7 @@ root
         fill
           arg -- c_mixin_capsule_fill_arg
           cvar -- c_mixin_capsule_fill_cvar
+          local -- c_mixin_capsule_fill_local
         pass -- c_mixin_capsule_pass
       cast-argument -- c_mixin_cast-argument
       cdesc

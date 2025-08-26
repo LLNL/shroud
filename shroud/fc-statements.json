@@ -838,7 +838,10 @@
     {
         "name": "c_mixin_capsule_fill_cvar",
         "comments": [
-            "Assign to capsule in C wrapper."
+            "Assign capsule values to argument in C wrapper."
+        ],
+        "notes": [
+            "The argument may be a capulse or a class struct."
         ],
         "c_post_call": [
             "{c_var}->addr  = {cxx_nonconst_ptr};",
@@ -848,10 +851,20 @@
     {
         "name": "c_mixin_capsule_fill_arg",
         "comments": [
-            "Assign to local capsule variable in C wrapper."
+            "Assign capsule values to capsule argument in C wrapper."
         ],
         "c_post_call": [
             "{c_var_capsule}->addr  = {cxx_nonconst_ptr};",
+            "{c_var_capsule}->idtor = {idtor};"
+        ]
+    },
+    {
+        "name": "c_mixin_capsule_fill_local",
+        "comments": [
+            "Assign local variable's capsule values to capsule argument in C wrapper."
+        ],
+        "c_post_call": [
+            "{c_var_capsule}->addr  = {c_local_cxx};",
             "{c_var_capsule}->idtor = {idtor};"
         ]
     },
@@ -3874,10 +3887,7 @@
             "-}} else {{+",
             "{c_var_cdesc}->elem_len = {c_helper_vector_string_out_len}(*{c_local_cxx});",
             "-}}",
-            "{c_var_cdesc}->size      = {c_local_cxx}->size();",
-            "// XXX - Use code from c_mixin_capsule_fill_arg",
-            "{c_var_capsule}->addr  = {c_local_cxx};",
-            "{c_var_capsule}->idtor = {idtor};"
+            "{c_var_cdesc}->size      = {c_local_cxx}->size();"
         ],
         "c_local": [
             "cxx"
@@ -4051,6 +4061,7 @@
             "f_mixin_capsule_pass",
             "f_mixin_cdesc_allocate_1d_character",
             "f_mixin_helper_vector_string_allocatable",
+            "c_mixin_capsule_fill_local",
             "f_mixin_capsule_dtor",
             "c_mixin_arg-call-cxx-deref"
         ]
