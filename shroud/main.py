@@ -1,7 +1,5 @@
 #!/bin/env python3
-# Copyright (c) 2017-2025, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 ########################################################################
@@ -143,9 +141,7 @@ class TypeOut(util.WrapperMixin):
         # Dummy out the library for the copyright.
         class Dummy:
             copyright = ["""
-# Copyright (c) 2017-2025, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)"""]
         self.newlibrary = Dummy()
