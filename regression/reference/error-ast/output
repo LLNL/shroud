@@ -6,103 +6,103 @@ format F_string_result_as_arg is deprecated, changed to option.F_result_as_arg
 Instead add attribute +funcarg(name)+deref(copy) to decl.
 Option F_result_as_arg is the default name when not specified in +funcarg.
 --------------------
-line 22
+line 20
 typemap must have 'type' member
 --------------------
-line 23
+line 21
 typemap must have 'fields' member
 --------------------
-line 25
+line 23
 Unknown value for 'base' in 'typemap'
 --------------------
-line 31
+line 29
 Error in 'decl' field
 func99()
 ^
 Expected TYPE_SPECIFIER, found ID 'func99'
 --------------------
-line 33
+line 31
 Expected 'block' or 'decl' in group
 --------------------
-line 36
+line 34
 field 'default_arg_suffix' must be a list
 --------------------
-line 39
+line 37
 field 'cxx_template' must be a list
 --------------------
-line 43
+line 41
 field 'cxx_template' must be a list of dictionaries
 --------------------
-line 48
+line 46
 'instantation' must be defined for each dictionary in 'cxx_template'
 --------------------
-line 48
+line 46
 'fields' must be a dictionary
 --------------------
-line 53
+line 51
 field 'fortran_generic' must be a list
 --------------------
-line 56
+line 54
 field 'fortran_generic' must be a list of dictionaries
 --------------------
-line 59
+line 57
 'decl' must be defined for each dictionary in 'fortran_generic'
 --------------------
 Node: FortranGenericOverloaded3
-line 61
+line 59
 Error in 'fortran_generic', argument 'arg3' not found
 --------------------
 Node: FortranGenericOverloaded3
-line 61
+line 59
 Error in 'fortran_generic', argument 'arg3' not found
 --------------------
 Node: GoodFunction
-line 69
+line 67
 void GoodFunction(void)
 Unexpected value of option C_API_case: none
 --------------------
 Node: returnThis
-line 75
+line 73
 void *returnThis(void)
 return_this can only be set for class methods
 --------------------
 Node: returnThis
-line 85
+line 83
 void *returnThis(void)
 return_this must return a pointer to the class
 --------------------
 Node: returnThis2
-line 88
+line 86
 Class1 returnThis2(void)
 return_this must return a pointer to the class
 --------------------
 Node: Color
-line 93
+line 91
 Unknown type in F_enum_type: shorter
 --------------------
 Node: testattrs1
-line 105
+line 103
 Error in 'decl' field
 (+attr)
 ^
 Expected ID, found PLUS
 --------------------
 Node: testattrs2
-line 109
+line 107
 Error in 'decl' field
 ( name, )
        ^
 Expected ID, found RPAREN
 --------------------
 Node: testattrs3
-line 113
+line 111
 Error in 'decl' field
 ( name
 ^
 Expected RPAREN, found EOF
 --------------------
 Node: testattrs4
-line 117
+line 115
 Error in 'decl' field
 ( ) name
    ^
@@ -116,19 +116,19 @@ typedef int64_t IndexType
 Deprecated: Typemap IndexType: Replacing deprecated field 'f_c_module' with 'i_module'
 --------------------
 Node: process_twostruct
-line 139
+line 137
 Templated function requires the 'cxx_template' field
 --------------------
 Node: process_twostruct
-line 139
+line 137
 field f_arg_decl is deprecated, changed to f_dummy_decl
 --------------------
 Node: process_twostruct
-line 147
+line 145
 'cxx_template' field only used with a templated function
 --------------------
 Node: getConstCharPtrAsCopyArg
-line 155
+line 153
 format F_string_result_as_arg is deprecated, changed to option.F_result_as_arg
 Instead add attribute +funcarg(name)+deref(copy) to decl.
 Option F_result_as_arg is the default name when not specified in +funcarg.
