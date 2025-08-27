@@ -549,7 +549,6 @@ void VEC_vector_string_fill_allocatable_bufferify(
         SHT_arg_cdesc->elem_len = VEC_ShroudVectorStringOutSize(*SHC_arg_cxx);
     }
     SHT_arg_cdesc->size      = SHC_arg_cxx->size();
-    // XXX - Use code from c_mixin_capsule_fill_native
     SHT_arg_capsule->addr  = SHC_arg_cxx;
     SHT_arg_capsule->idtor = 0;
     // splicer end function.vector_string_fill_allocatable_bufferify
@@ -590,7 +589,6 @@ void VEC_vector_string_fill_allocatable_len_bufferify(
         SHT_arg_cdesc->elem_len = VEC_ShroudVectorStringOutSize(*SHC_arg_cxx);
     }
     SHT_arg_cdesc->size      = SHC_arg_cxx->size();
-    // XXX - Use code from c_mixin_capsule_fill_native
     SHT_arg_capsule->addr  = SHC_arg_cxx;
     SHT_arg_capsule->idtor = 0;
     // splicer end function.vector_string_fill_allocatable_len_bufferify
