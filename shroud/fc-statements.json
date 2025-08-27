@@ -115,23 +115,6 @@
         ]
     },
     {
-        "name": "f_mixin_declare-as-cptr",
-        "notes": [
-            "Used when there is no direct mapping to Fortran."
-        ],
-        "f_dummy_arg": [
-            "{f_var}"
-        ],
-        "f_dummy_decl": [
-            "type(C_PTR){f_intent_attr} :: {f_var}"
-        ],
-        "f_module": {
-            "iso_c_binding": [
-                "C_PTR"
-            ]
-        }
-    },
-    {
         "name": "f_mixin_declare-arg-as-cptr",
         "notes": [
             "Used when there is no direct mapping to Fortran.",
@@ -1657,7 +1640,8 @@
             "c_mixin_declare-arg",
             "c_mixin_arg-call-cvar",
             "f_mixin_interface-as-cptr-value",
-            "f_mixin_declare-as-cptr"
+            "f_mixin_dummy_arg",
+            "f_mixin_declare-arg-as-cptr"
         ]
     },
     {
@@ -1680,7 +1664,8 @@
             "c_mixin_declare-arg",
             "c_mixin_arg-call-cvar",
             "f_mixin_interface-as-cptr",
-            "f_mixin_declare-as-cptr"
+            "f_mixin_dummy_arg",
+            "f_mixin_declare-arg-as-cptr"
         ]
     },
     {
