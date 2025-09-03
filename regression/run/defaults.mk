@@ -128,6 +128,7 @@ LOCAL_FFLAGS += -qlanglvl=ts
 #LOCAL_FFLAGS += -qlanglvl=2003std
 LOCAL_FFLAGS += -qxlf2003=polymorphic
 LOCAL_FFLAGS += -qcheck=all
+LOCAL_FFLAGS += -qflag=w:w -qsource
 # The #line directive is not permitted by the Fortran TS29113 standard.
 # -P  Inhibit generation of linemarkers 
 LOCAL_FFLAGS += -qpreprocess -WF,-P
@@ -166,6 +167,7 @@ CXX = CC
 LOCAL_CXXFLAGS = -g -std=c++11
 #LOCAL_CXXFLAGS += 
 FC = ftn
+# -e F preprocessor
 LOCAL_FFLAGS = -g -e F -f free
 # test-fortran-pointers-cfi
 # forrtl: severe (194): Run-Time Check Failure.
