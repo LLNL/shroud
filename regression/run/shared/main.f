@@ -37,6 +37,9 @@ contains
     objectPtr = object()
     call assert_true(objectPtr%associated())
 
+    call objectPtr%dtor
+    call assert_false(objectPtr%associated())
+
   end subroutine test_object
 
   subroutine test_object_shared
