@@ -583,7 +583,7 @@ class({F_derived_name}), intent(IN) :: rhs
 
 lhs%{F_derived_member} = rhs%{F_derived_member}
 if (c_associated(lhs%{F_derived_member}%addr)) then+
-call c_f_pointer(lhs%{F_derived_ptr}, lhs%{F_derived_member})
+call c_f_pointer(lhs%{F_derived_member}%addr, lhs%{F_derived_member})
 lhs%{F_derived_member}%refcount = lhs%{F_derived_member}%refcount + 1
 -else+
 nullify(lhs%{F_derived_member}%addr)
