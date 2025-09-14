@@ -3,35 +3,34 @@
 # SPDX-License-Identifier: (BSD-3-Clause)
 #
 
-testdir = classes
+testdir = shared
 tester : $(testdir)
 .PHONY : tester
 
 INCLUDE = \
-    -I$(rundir)/classes \
+    -I$(rundir)/shared \
     -I$(rundir)/fruit
 
 VPATH = \
-    $(rundir)/classes \
+    $(rundir)/shared \
     $(rundir)/fruit
 
 F_OBJS = \
-    classes_mod.o \
+    shared_mod.o \
     fruit.o \
     main.o
 
 C_OBJS = \
-    classes.o \
-    classes_wrap.o
+    shared_wrap.o
 
 include ../../defaults.mk
 include $(rundir)/defaults.mk
 
 swig:
-#	swig -fortran -o swigclasses_module.c classes.i
-	$(swig-fortran)  -fortran -c++ classes.i
+#	swig -fortran -o swigshared_module.c shared.i
+	$(swig-fortran) -I$(rundir)/$(testdir) -fortran -c++ $(testdir).i
 
 test:
-	./classes
+	./shared
 
 .PHONY : swig test tester
