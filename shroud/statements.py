@@ -531,6 +531,7 @@ valid_intents = [
     "function", "subroutine",
     "getter", "setter",
     "ctor", "dtor",
+    "operator",
     "descr",
     "helper",
 ]

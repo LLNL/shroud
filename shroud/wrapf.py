@@ -562,35 +562,14 @@ rv = c_associated({F_this}%{F_derived_member}%addr)
                 fmt,
             )
 
-        if options.F_auto_reference_count:
+        if options.F_assignment_api != "none":
+            asgn_stmt = statements.lookup_fc_stmts([
+                "f", "operator", "assignment", "shadow", options.F_assignment_api])
             fmt.F_name_api = fmt_class.F_name_assign
-            fmt.F_name_function = wformat(options.F_name_function_template, fmt)
-            fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
-
-            append_format(type_bound_part,
-                          "procedure :: {F_name_impl}",
-                          fmt)
-            append_format(type_bound_part,
-                          "generic :: assignment(=) => {F_name_impl}",
-                          fmt)
-            append_format(
-                impl,
-                """
-subroutine {F_name_impl}(lhs, rhs)+
-use iso_c_binding, only : c_associated, c_f_pointer
-class({F_derived_name}), intent(INOUT) :: lhs
-class({F_derived_name}), intent(IN) :: rhs
-
-lhs%{F_derived_member} = rhs%{F_derived_member}
-if (c_associated(lhs%{F_derived_member}%addr)) then+
-call c_f_pointer(lhs%{F_derived_member}%addr, lhs%{F_derived_member})
-lhs%{F_derived_member}%refcount = lhs%{F_derived_member}%refcount + 1
--else+
-nullify(lhs%{F_derived_member}%addr)
--endif
--end subroutine {F_name_impl}""",
-                fmt,
-            )
+            fmt_class.F_name_assign_api = wformat(options.F_name_impl_template, fmt)
+            util.append_format_cmds(type_bound_part, asgn_stmt, "f_type_bound", fmt)
+            impl.append("")
+            util.append_format_cmds(impl, asgn_stmt, "f_body", fmt)
 
     def write_object_final(self, node, fileinfo):
 #        if options.F_auto_reference_count or smart_pointer:

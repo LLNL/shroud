@@ -18924,6 +18924,22 @@ f_none_void*:
   c_arg_call:
   - '{cxx_var}'
   sphinx-end-before: f_none_void*
+f_operator_assignment_shadow_orig:
+  sphinx-start-after: f_operator_assignment_shadow_orig
+  name: f_operator_assignment_shadow_orig
+  intent: operator
+  notes:
+  - Used with options.F_assignment_api == 'orig'
+  - Originally attached to options.F_auto_reference_count
+  - but never worked. Included for reference.
+  sphinx-end-before: f_operator_assignment_shadow_orig
+f_operator_assignment_shadow_swig:
+  sphinx-start-after: f_operator_assignment_shadow_swig
+  name: f_operator_assignment_shadow_swig
+  intent: operator
+  notes:
+  - Used with options.F_assignment_api == 'swig'
+  sphinx-end-before: f_operator_assignment_shadow_swig
 f_out_bool*:
   sphinx-start-after: f_out_bool*
   name: f_out_bool*
@@ -23242,6 +23258,11 @@ root
       native -- f_none_native
       native* -- f_none_native*
       void* -- f_none_void*
+    operator
+      assignment
+        shadow
+          orig -- f_operator_assignment_shadow_orig
+          swig -- f_operator_assignment_shadow_swig
     out
       bool* -- f_out_bool*
       char* -- f_out_char*

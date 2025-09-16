@@ -4332,6 +4332,50 @@
         "owner": "caller"
     },
     {
+        "name": "f_operator_assignment_shadow_swig",
+        "notes": [
+            "Used with options.F_assignment_api == 'swig'"
+        ],
+        "f_type_bound": [
+            "procedure :: {F_name_assign_api}",
+            "generic :: assignment(=) => {F_name_assign_api}"
+        ],
+        "f_body": [
+            "subroutine {F_name_assign_api}(lhs, rhs)+",
+            "use iso_c_binding, only : c_associated, c_f_pointer",
+            "class({F_derived_name}), intent(INOUT) :: lhs",
+            "class({F_derived_name}), intent(IN) :: rhs",
+            "-end subroutine {F_name_assign_api}"
+        ]
+    },
+    {
+        "name": "f_operator_assignment_shadow_orig",
+        "notes": [
+            "Used with options.F_assignment_api == 'orig'",
+            "Originally attached to options.F_auto_reference_count",
+            "but never worked. Included for reference."
+        ],
+        "f_type_bound": [
+            "procedure :: {F_name_assign_api}",
+            "generic :: assignment(=) => {F_name_assign_api}"
+        ],
+        "f_body": [
+            "subroutine {F_name_assign_api}(lhs, rhs)+",
+            "use iso_c_binding, only : c_associated, c_f_pointer",
+            "class({F_derived_name}), intent(INOUT) :: lhs",
+            "class({F_derived_name}), intent(IN) :: rhs",
+            "",
+            "lhs%{F_derived_member} = rhs%{F_derived_member}",
+            "if (c_associated(lhs%{F_derived_member}%addr)) then+",
+            "call c_f_pointer(lhs%{F_derived_member}%addr, lhs%{F_derived_member})",
+            "lhs%{F_derived_member}%refcount = lhs%{F_derived_member}%refcount + 1",
+            "-else+",
+            "nullify(lhs%{F_derived_member}%addr)",
+            "-endif",
+            "-end subroutine {F_name_assign_api}"
+        ]
+    },
+    {
         "name":"#### smartptr ##############################################"
     },
     {

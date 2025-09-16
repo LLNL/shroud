@@ -35,6 +35,7 @@
             "F_abstract_interface_argument_template": "arg{index}",
             "F_abstract_interface_subprogram_template": "{F_name_api}_{argname}",
             "F_array_type_template": "{C_prefix}SHROUD_array",
+            "F_assignment_api": "none",
             "F_assumed_rank_max": 7,
             "F_assumed_rank_min": 0,
             "F_auto_reference_count": false,

@@ -382,6 +382,20 @@ F_CFI
   Use the C Fortran Interface provided by *Futher Interoperability with C*
   from Fortran 2018 (initially defined in TS29113 2012).
 
+F_assignment_api
+  Declare the API to be used when creating a function which overloads
+  the assignment operator.
+
+  none
+      The assignment operator will not be overloaded.
+
+  swig
+      Use code derived from :program:`swig`.
+
+  rca
+      Reference counting architecture.
+      Reqires a Fortran compiler which fully supports ``FINAL``.
+  
 F_create_bufferify_function
   Defaults to *true* which will create a C wrapper if necessary for the
   Fortran wrapper to call.
