@@ -260,6 +260,7 @@
             "library_upper": "LIBRARY",
             "namespace_scope": "",
             "nullptr": "nullptr",
+            "option_F_assignment_api": "none",
             "rank": "0",
             "stdlib": "std::",
             "template_suffix": "",

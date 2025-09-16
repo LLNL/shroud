@@ -395,7 +395,10 @@ F_assignment_api
   rca
       Reference counting architecture.
       Reqires a Fortran compiler which fully supports ``FINAL``.
-  
+
+   Added as a format field with a prefix of *option_*.
+   To be used to help select helpers.
+      
 F_create_bufferify_function
   Defaults to *true* which will create a C wrapper if necessary for the
   Fortran wrapper to call.
