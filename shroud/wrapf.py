@@ -258,7 +258,7 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
         f_type_decl.append("")
         if node.cpp_if:
             f_type_decl.append("#" + node.cpp_if)
-        fileinfo.add_f_helper(["capsule_data_helper"], fmt_class)
+        fileinfo.add_f_helper(["capsule_data_basic"], fmt_class)
 
         if options.literalinclude:
             f_type_decl.append("! start derived-type " +
@@ -562,14 +562,14 @@ rv = c_associated({F_this}%{F_derived_member}%addr)
                 fmt,
             )
 
-        if options.F_assignment_api != "none":
-            asgn_stmt = statements.lookup_fc_stmts([
-                "f", "operator", "assignment", "shadow", options.F_assignment_api])
+        asgn_stmt = statements.lookup_fc_stmts([
+            "f", "operator", "assignment", "shadow", options.F_assignment_api])
+        if asgn_stmt.f_operator:
             fmt.F_name_api = fmt_class.F_name_assign
             fmt_class.F_name_assign_api = wformat(options.F_name_impl_template, fmt)
             util.append_format_cmds(type_bound_part, asgn_stmt, "f_type_bound", fmt)
             impl.append("")
-            util.append_format_cmds(impl, asgn_stmt, "f_body", fmt)
+            util.append_format_cmds(impl, asgn_stmt, "f_operator", fmt)
 
     def write_object_final(self, node, fileinfo):
 #        if options.F_auto_reference_count or smart_pointer:

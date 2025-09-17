@@ -68,7 +68,7 @@ module struct_mod
         integer(C_LONG) :: shape(7) = 0
     end type STR_SHROUD_array
 
-    ! helper capsule_data_helper
+    ! helper capsule_data_basic
     type, bind(C) :: STR_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor

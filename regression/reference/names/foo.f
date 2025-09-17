@@ -19,7 +19,7 @@ module name_module
     ! splicer begin namespace.ns0.module_top
     ! splicer end namespace.ns0.module_top
 
-    ! helper capsule_data_helper
+    ! helper capsule_data_basic
     type, bind(C) :: TES_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor

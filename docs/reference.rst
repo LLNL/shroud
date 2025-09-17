@@ -386,7 +386,7 @@ F_assignment_api
   Declare the API to be used when creating a function which overloads
   the assignment operator.
 
-  none
+  basic
       The assignment operator will not be overloaded.
 
   swig

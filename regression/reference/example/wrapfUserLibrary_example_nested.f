@@ -68,7 +68,7 @@ module userlibrary_example_nested_mod
         integer(C_LONG) :: shape(7) = 0
     end type AA_SHROUD_array
 
-    ! helper capsule_data_helper
+    ! helper capsule_data_basic
     type, bind(C) :: AA_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor

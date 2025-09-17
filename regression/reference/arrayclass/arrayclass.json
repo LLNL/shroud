@@ -4772,7 +4772,7 @@
                     "cxx_class": "ArrayWrapper",
                     "cxx_type": "ArrayWrapper",
                     "f_capsule_data_type": "ARR_SHROUD_capsule_data",
-                    "f_helper_capsule_data_helper": "ARR_SHROUD_capsule_data",
+                    "f_helper_capsule_data_basic": "ARR_SHROUD_capsule_data",
                     "file_scope": "ArrayWrapper"
                 }
             }

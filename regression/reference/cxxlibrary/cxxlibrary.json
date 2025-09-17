@@ -2498,7 +2498,7 @@
                     "cxx_class": "Class1",
                     "cxx_type": "Class1",
                     "f_capsule_data_type": "CXX_SHROUD_capsule_data",
-                    "f_helper_capsule_data_helper": "CXX_SHROUD_capsule_data",
+                    "f_helper_capsule_data_basic": "CXX_SHROUD_capsule_data",
                     "file_scope": "Class1"
                 }
             }

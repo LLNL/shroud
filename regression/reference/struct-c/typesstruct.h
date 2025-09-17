@@ -69,7 +69,7 @@ struct s_STR_SHROUD_array {
 typedef struct s_STR_SHROUD_array STR_SHROUD_array;
 // end helper array_context
 
-// helper capsule_data_helper
+// helper capsule_data_basic
 struct s_STR_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */

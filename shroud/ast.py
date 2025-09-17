@@ -516,7 +516,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_force_wrapper=False,
             C_line_length=72,
             F_CFI=False,    # TS29113 C Fortran Interoperability
-            F_assignment_api="none",  # none, swig, rca
+            F_assignment_api="basic",  # basic, swig, rca
             F_assumed_rank_min=0,
             F_assumed_rank_max=7,
             F_blanknull=False,

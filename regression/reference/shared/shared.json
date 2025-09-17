@@ -867,7 +867,7 @@
                     "cxx_class": "Object",
                     "cxx_type": "Object",
                     "f_capsule_data_type": "SHA_SHROUD_capsule_data",
-                    "f_helper_capsule_data_helper": "SHA_SHROUD_capsule_data",
+                    "f_helper_capsule_data_basic": "SHA_SHROUD_capsule_data",
                     "file_scope": "Object"
                 }
             },
@@ -1870,7 +1870,7 @@
                     "cxx_class": "Object_shared",
                     "cxx_type": "std::shared_ptr<Object>",
                     "f_capsule_data_type": "SHA_SHROUD_capsule_data",
-                    "f_helper_capsule_data_helper": "SHA_SHROUD_capsule_data",
+                    "f_helper_capsule_data_basic": "SHA_SHROUD_capsule_data",
                     "file_scope": "Object_shared",
                     "smart_pointer": "shared"
                 }
@@ -2274,7 +2274,7 @@
                     "cxx_class": "Object_weak",
                     "cxx_type": "std::weak_ptr<Object>",
                     "f_capsule_data_type": "SHA_SHROUD_capsule_data",
-                    "f_helper_capsule_data_helper": "SHA_SHROUD_capsule_data",
+                    "f_helper_capsule_data_basic": "SHA_SHROUD_capsule_data",
                     "file_scope": "Object_weak",
                     "smart_pointer": "weak"
                 }

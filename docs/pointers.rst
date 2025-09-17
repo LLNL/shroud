@@ -306,8 +306,8 @@ And :file:`wrapftutorial.f`:
 
 .. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
-   :start-after: start helper capsule_data_helper
-   :end-before: end helper capsule_data_helper
+   :start-after: start helper capsule_data_basic
+   :end-before: end helper capsule_data_basic
    :dedent: 4
 
 *addr* is the address of the C or C++ variable, such as a ``char *``

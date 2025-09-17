@@ -74,7 +74,7 @@ struct s_SCO_SHROUD_array {
 };
 typedef struct s_SCO_SHROUD_array SCO_SHROUD_array;
 
-// helper capsule_data_helper
+// helper capsule_data_basic
 struct s_SCO_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */

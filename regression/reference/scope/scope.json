@@ -222,7 +222,7 @@
                     "cxx_class": "Class1",
                     "cxx_type": "Class1",
                     "f_capsule_data_type": "SCO_SHROUD_capsule_data",
-                    "f_helper_capsule_data_helper": "SCO_SHROUD_capsule_data",
+                    "f_helper_capsule_data_basic": "SCO_SHROUD_capsule_data",
                     "file_scope": "Class1"
                 }
             },
@@ -318,7 +318,7 @@
                     "cxx_class": "Class2",
                     "cxx_type": "Class2",
                     "f_capsule_data_type": "SCO_SHROUD_capsule_data",
-                    "f_helper_capsule_data_helper": "SCO_SHROUD_capsule_data",
+                    "f_helper_capsule_data_basic": "SCO_SHROUD_capsule_data",
                     "file_scope": "Class2"
                 }
             }

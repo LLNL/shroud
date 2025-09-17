@@ -1170,7 +1170,7 @@ c_function_string:
     cxx_addr: ''
     cxx_member: ->
   helper:
-  - capsule_data_helper
+  - capsule_data_basic
   owner: caller
   sphinx-end-before: c_function_string
 c_function_string&:
@@ -3964,7 +3964,7 @@ c_mixin_capsule_pass:
   c_temps:
   - capsule
   helper:
-  - capsule_data_helper
+  - capsule_data_basic
   sphinx-end-before: c_mixin_capsule_pass
 c_mixin_cast-argument:
   sphinx-start-after: c_mixin_cast-argument
@@ -6343,7 +6343,7 @@ c_out_vector<string>&_cdesc_allocatable:
     f_target_attr: ', target'
   helper:
   - array_context
-  - capsule_data_helper
+  - capsule_data_basic
   - array_context
   - cdesc_vector_string_allocatable
   - vector_string_out_len
@@ -8569,7 +8569,7 @@ f_function_native*_cdesc_allocatable:
   helper:
   - array_context
   - copy_array
-  - capsule_data_helper
+  - capsule_data_basic
   - array_context
   - capsule_dtor
   sphinx-end-before: f_function_native*_cdesc_allocatable
@@ -8717,7 +8717,7 @@ f_function_native*_cdesc_pointer_caller:
     f_var_capsule: Crv
   helper:
   - array_context
-  - capsule_data_helper
+  - capsule_data_basic
   - array_context
   - capsule_helper
   sphinx-end-before: f_function_native*_cdesc_pointer_caller
@@ -9974,7 +9974,7 @@ f_function_string&_cdesc_allocatable:
     i_intent_attr: ', intent(OUT)'
   helper:
   - array_context
-  - capsule_data_helper
+  - capsule_data_basic
   - array_context
   - string_to_cdesc
   - copy_string
@@ -10054,7 +10054,7 @@ f_function_string&_cdesc_allocatable_caller:
     i_intent_attr: ', intent(OUT)'
   helper:
   - array_context
-  - capsule_data_helper
+  - capsule_data_basic
   - array_context
   - string_to_cdesc
   - copy_string
@@ -10134,7 +10134,7 @@ f_function_string&_cdesc_allocatable_library:
     i_intent_attr: ', intent(OUT)'
   helper:
   - array_context
-  - capsule_data_helper
+  - capsule_data_basic
   - array_context
   - string_to_cdesc
   - copy_string
@@ -11180,7 +11180,7 @@ f_function_string*_cdesc_allocatable:
     i_intent_attr: ', intent(OUT)'
   helper:
   - array_context
-  - capsule_data_helper
+  - capsule_data_basic
   - array_context
   - string_to_cdesc
   - copy_string
@@ -11260,7 +11260,7 @@ f_function_string*_cdesc_allocatable_caller:
     i_intent_attr: ', intent(OUT)'
   helper:
   - array_context
-  - capsule_data_helper
+  - capsule_data_basic
   - array_context
   - string_to_cdesc
   - copy_string
@@ -11340,7 +11340,7 @@ f_function_string*_cdesc_allocatable_library:
     i_intent_attr: ', intent(OUT)'
   helper:
   - array_context
-  - capsule_data_helper
+  - capsule_data_basic
   - array_context
   - string_to_cdesc
   - copy_string
@@ -12411,7 +12411,7 @@ f_function_string_cdesc_allocatable:
   - array_context
   - string_to_cdesc
   - copy_string
-  - capsule_data_helper
+  - capsule_data_basic
   - array_context
   - capsule_dtor
   destructor_name: new_string
@@ -12504,7 +12504,7 @@ f_function_string_cdesc_allocatable_caller:
   - array_context
   - string_to_cdesc
   - copy_string
-  - capsule_data_helper
+  - capsule_data_basic
   - array_context
   - capsule_dtor
   destructor_name: new_string
@@ -12597,7 +12597,7 @@ f_function_string_cdesc_allocatable_library:
   - array_context
   - string_to_cdesc
   - copy_string
-  - capsule_data_helper
+  - capsule_data_basic
   - array_context
   - capsule_dtor
   destructor_name: new_string
@@ -12688,7 +12688,7 @@ f_function_string_cdesc_pointer:
     cxx_addr: ''
     cxx_member: ->
   helper:
-  - capsule_data_helper
+  - capsule_data_basic
   - array_context
   - capsule_helper
   - array_context
@@ -13088,7 +13088,7 @@ f_function_string_cfi_pointer:
     cxx_addr: ''
     cxx_member: ->
   helper:
-  - capsule_data_helper
+  - capsule_data_basic
   - array_context
   - capsule_helper
   iface_header:
@@ -13189,7 +13189,7 @@ f_function_string_cfi_pointer_caller:
     cxx_addr: ''
     cxx_member: ->
   helper:
-  - capsule_data_helper
+  - capsule_data_basic
   - array_context
   - capsule_helper
   iface_header:
@@ -13290,7 +13290,7 @@ f_function_string_cfi_pointer_library:
     cxx_addr: ''
     cxx_member: ->
   helper:
-  - capsule_data_helper
+  - capsule_data_basic
   - array_context
   - capsule_helper
   iface_header:
@@ -13366,7 +13366,7 @@ f_function_string_raw:
     cxx_addr: ''
     cxx_member: ->
   helper:
-  - capsule_data_helper
+  - capsule_data_basic
   - array_context
   - capsule_helper
   owner: caller
@@ -17667,7 +17667,7 @@ f_mixin_add_capsule_arg_to_fwrapper:
   fmtdict:
     f_var_capsule: Crv
   helper:
-  - capsule_data_helper
+  - capsule_data_basic
   - array_context
   - capsule_helper
   sphinx-end-before: f_mixin_add_capsule_arg_to_fwrapper
@@ -17762,7 +17762,7 @@ f_mixin_capsule_pass:
   c_temps:
   - capsule
   helper:
-  - capsule_data_helper
+  - capsule_data_basic
   - array_context
   sphinx-end-before: f_mixin_capsule_pass
 f_mixin_capsule_use:
@@ -17802,7 +17802,7 @@ f_mixin_capsule_use:
   c_temps:
   - capsule
   helper:
-  - capsule_data_helper
+  - capsule_data_basic
   - array_context
   - capsule_dtor
   sphinx-end-before: f_mixin_capsule_use
@@ -18924,6 +18924,13 @@ f_none_void*:
   c_arg_call:
   - '{cxx_var}'
   sphinx-end-before: f_none_void*
+f_operator_assignment_shadow_basic:
+  sphinx-start-after: f_operator_assignment_shadow_basic
+  name: f_operator_assignment_shadow_basic
+  intent: operator
+  notes:
+  - Used with options.F_assignment_api == 'basic'
+  sphinx-end-before: f_operator_assignment_shadow_basic
 f_operator_assignment_shadow_orig:
   sphinx-start-after: f_operator_assignment_shadow_orig
   name: f_operator_assignment_shadow_orig
@@ -18932,6 +18939,23 @@ f_operator_assignment_shadow_orig:
   - Used with options.F_assignment_api == 'orig'
   - Originally attached to options.F_auto_reference_count
   - but never worked. Included for reference.
+  f_type_bound:
+  - 'procedure :: {F_name_assign_api}'
+  - 'generic :: assignment(=) => {F_name_assign_api}'
+  f_operator:
+  - subroutine {F_name_assign_api}(lhs, rhs)+
+  - 'use iso_c_binding, only : c_associated, c_f_pointer'
+  - 'class({F_derived_name}), intent(INOUT) :: lhs'
+  - 'class({F_derived_name}), intent(IN) :: rhs'
+  - ''
+  - lhs%{F_derived_member} = rhs%{F_derived_member}
+  - if (c_associated(lhs%{F_derived_member}%addr)) then+
+  - call c_f_pointer(lhs%{F_derived_member}%addr, lhs%{F_derived_member})
+  - lhs%{F_derived_member}%refcount = lhs%{F_derived_member}%refcount + 1
+  - -else+
+  - nullify(lhs%{F_derived_member}%addr)
+  - -endif
+  - -end subroutine {F_name_assign_api}
   sphinx-end-before: f_operator_assignment_shadow_orig
 f_operator_assignment_shadow_swig:
   sphinx-start-after: f_operator_assignment_shadow_swig
@@ -18939,6 +18963,15 @@ f_operator_assignment_shadow_swig:
   intent: operator
   notes:
   - Used with options.F_assignment_api == 'swig'
+  f_type_bound:
+  - 'procedure :: {F_name_assign_api}'
+  - 'generic :: assignment(=) => {F_name_assign_api}'
+  f_operator:
+  - subroutine {F_name_assign_api}(lhs, rhs)+
+  - 'use iso_c_binding, only : c_associated, c_f_pointer'
+  - 'class({F_derived_name}), intent(INOUT) :: lhs'
+  - 'class({F_derived_name}), intent(IN) :: rhs'
+  - -end subroutine {F_name_assign_api}
   sphinx-end-before: f_operator_assignment_shadow_swig
 f_out_bool*:
   sphinx-start-after: f_out_bool*
@@ -19720,7 +19753,7 @@ f_out_native**_cdesc_allocatable:
   helper:
   - array_context
   - copy_array
-  - capsule_data_helper
+  - capsule_data_basic
   - array_context
   - capsule_dtor
   sphinx-end-before: f_out_native**_cdesc_allocatable
@@ -20265,7 +20298,7 @@ f_out_string**_cdesc_allocatable:
     f_target_attr: ', target'
   helper:
   - array_context
-  - capsule_data_helper
+  - capsule_data_basic
   - array_context
   - array_string_allocatable
   - array_string_out_len
@@ -21029,7 +21062,7 @@ f_out_vector<string>&_cdesc_allocatable:
     f_target_attr: ', target'
   helper:
   - array_context
-  - capsule_data_helper
+  - capsule_data_basic
   - array_context
   - cdesc_vector_string_allocatable
   - vector_string_out_len
@@ -21699,7 +21732,7 @@ h_helper_array_string_allocatable:
   - -end subroutine LIB_SHROUD_cdesc_array_string_allocatable
   - -end interface
   dependent_helpers:
-  - capsule_data_helper
+  - capsule_data_basic
   - array_context
   - cdesc_array_string_out
   sphinx-end-before: h_helper_array_string_allocatable
@@ -21732,16 +21765,17 @@ h_helper_array_string_out_len:
 
     // end helper array_string_out_len'
   sphinx-end-before: h_helper_array_string_out_len
-h_helper_capsule_data_helper:
-  sphinx-start-after: h_helper_capsule_data_helper
-  name: h_helper_capsule_data_helper
+h_helper_capsule_data_basic:
+  sphinx-start-after: h_helper_capsule_data_basic
+  name: h_helper_capsule_data_basic
   notes:
   - Share info with C++ to allow Fortran to release memory.
   - Used with shadow classes and std::vector.
+  - Used when option.F_assignment_api=basic.
   scope: cwrap_include
   source:
   - ''
-  - // helper capsule_data_helper
+  - // helper capsule_data_basic
   - struct s_LIB_SHROUD_capsule_data {+
   - void *addr;     /* address of C++ memory */
   - int idtor;      /* index of destructor */
@@ -21750,21 +21784,21 @@ h_helper_capsule_data_helper:
   f_fmtname: LIB_SHROUD_capsule_data
   derived_type:
   - ''
-  - '! start helper capsule_data_helper
+  - '! start helper capsule_data_basic
 
-    ! helper capsule_data_helper'
+    ! helper capsule_data_basic'
   - 'type, bind(C) :: LIB_SHROUD_capsule_data+'
   - 'type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory'
   - 'integer(C_INT) :: idtor = 0       ! index of destructor'
   - '-end type LIB_SHROUD_capsule_data
 
-    ! end helper capsule_data_helper'
+    ! end helper capsule_data_basic'
   modules:
     iso_c_binding:
     - C_PTR
     - C_INT
     - C_NULL_PTR
-  sphinx-end-before: h_helper_capsule_data_helper
+  sphinx-end-before: h_helper_capsule_data_basic
 h_helper_capsule_dtor:
   sphinx-start-after: h_helper_capsule_dtor
   name: h_helper_capsule_dtor
@@ -21792,7 +21826,7 @@ h_helper_capsule_dtor:
   - -end subroutine LIB_SHROUD_capsule_dtor
   - -end interface
   dependent_helpers:
-  - capsule_data_helper
+  - capsule_data_basic
   sphinx-end-before: h_helper_capsule_dtor
 h_helper_capsule_helper:
   sphinx-start-after: h_helper_capsule_helper
@@ -21825,7 +21859,7 @@ h_helper_capsule_helper:
   - call LIB_SHROUD_capsule_dtor(cap%mem)
   - -end subroutine SHROUD_capsule_delete
   dependent_helpers:
-  - capsule_data_helper
+  - capsule_data_basic
   - capsule_dtor
   sphinx-end-before: h_helper_capsule_helper
 h_helper_cdesc_array_string_out:
@@ -21925,7 +21959,7 @@ h_helper_cdesc_vector_string_allocatable:
   - -end subroutine LIB_SHROUD_cdesc_vector_string_allocatable
   - -end interface
   dependent_helpers:
-  - capsule_data_helper
+  - capsule_data_basic
   - array_context
   - cdesc_vector_string_out
   sphinx-end-before: h_helper_cdesc_vector_string_allocatable
@@ -23261,6 +23295,7 @@ root
     operator
       assignment
         shadow
+          basic -- f_operator_assignment_shadow_basic
           orig -- f_operator_assignment_shadow_orig
           swig -- f_operator_assignment_shadow_swig
     out
@@ -23360,7 +23395,7 @@ root
             len -- h_helper_array_string_out_len
       capsule
         data
-          helper -- h_helper_capsule_data_helper
+          basic -- h_helper_capsule_data_basic
         dtor -- h_helper_capsule_dtor
         helper -- h_helper_capsule_helper
       cdesc

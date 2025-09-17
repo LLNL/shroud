@@ -5537,7 +5537,7 @@
                     "fc": [
                         "array_context",
                         "copy_array",
-                        "capsule_data_helper",
+                        "capsule_data_basic",
                         "capsule_dtor"
                     ]
                 },
@@ -5598,7 +5598,7 @@
                                 "f_deref_attr": ", allocatable",
                                 "f_dimension": "(:)",
                                 "f_helper_array_context": "POI_SHROUD_array",
-                                "f_helper_capsule_data_helper": "POI_SHROUD_capsule_data",
+                                "f_helper_capsule_data_basic": "POI_SHROUD_capsule_data",
                                 "f_helper_capsule_dtor": "POI_SHROUD_capsule_dtor",
                                 "f_helper_copy_array": "POI_SHROUD_copy_array",
                                 "f_intent": "OUT",
@@ -7353,7 +7353,7 @@
                     "fc": [
                         "array_context",
                         "copy_array",
-                        "capsule_data_helper",
+                        "capsule_data_basic",
                         "capsule_dtor"
                     ]
                 },
@@ -7393,7 +7393,7 @@
                                 "f_deref_attr": ", allocatable",
                                 "f_dimension": "(:)",
                                 "f_helper_array_context": "POI_SHROUD_array",
-                                "f_helper_capsule_data_helper": "POI_SHROUD_capsule_data",
+                                "f_helper_capsule_data_basic": "POI_SHROUD_capsule_data",
                                 "f_helper_capsule_dtor": "POI_SHROUD_capsule_dtor",
                                 "f_helper_copy_array": "POI_SHROUD_copy_array",
                                 "f_kind": "C_INT",

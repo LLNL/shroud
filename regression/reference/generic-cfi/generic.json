@@ -36,7 +36,7 @@
                     "cxx_class": "StructAsClass",
                     "cxx_type": "StructAsClass",
                     "f_capsule_data_type": "GEN_SHROUD_capsule_data",
-                    "f_helper_capsule_data_helper": "GEN_SHROUD_capsule_data",
+                    "f_helper_capsule_data_basic": "GEN_SHROUD_capsule_data",
                     "file_scope": "StructAsClass"
                 }
             }

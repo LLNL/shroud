@@ -141,8 +141,8 @@ procedures associated with it.
 
 .. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
-   :start-after: start helper capsule_data_helper
-   :end-before: end helper capsule_data_helper
+   :start-after: start helper capsule_data_basic
+   :end-before: end helper capsule_data_basic
    :dedent: 4
 
 The capsule is added to the Fortran shadow class.  This derived type

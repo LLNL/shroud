@@ -69,13 +69,13 @@ module classes_mod
     end type CLA_SHROUD_array
     ! end helper array_context
 
-    ! start helper capsule_data_helper
-    ! helper capsule_data_helper
+    ! start helper capsule_data_basic
+    ! helper capsule_data_basic
     type, bind(C) :: CLA_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
     end type CLA_SHROUD_capsule_data
-    ! end helper capsule_data_helper
+    ! end helper capsule_data_basic
 
     !  enum classes::Class1::DIRECTION
     integer, parameter :: class1_direction = C_INT

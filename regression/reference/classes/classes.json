@@ -2092,7 +2092,7 @@
                         "helpers": {
                             "fc": [
                                 "array_context",
-                                "capsule_data_helper",
+                                "capsule_data_basic",
                                 "string_to_cdesc",
                                 "copy_string",
                                 "capsule_dtor"
@@ -2176,7 +2176,7 @@
                                         "f_call_function": "c_class1_get_name_bufferify",
                                         "f_deref_attr": ", allocatable",
                                         "f_helper_array_context": "CLA_SHROUD_array",
-                                        "f_helper_capsule_data_helper": "CLA_SHROUD_capsule_data",
+                                        "f_helper_capsule_data_basic": "CLA_SHROUD_capsule_data",
                                         "f_helper_capsule_dtor": "CLA_SHROUD_capsule_dtor",
                                         "f_helper_copy_string": "CLA_SHROUD_copy_string",
                                         "f_result_clause": "\fresult(SHT_rv)",
@@ -4036,7 +4036,7 @@
                     "cxx_class": "Class1",
                     "cxx_type": "Class1",
                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
-                    "f_helper_capsule_data_helper": "CLA_SHROUD_capsule_data",
+                    "f_helper_capsule_data_basic": "CLA_SHROUD_capsule_data",
                     "file_scope": "Class1"
                 }
             },
@@ -4071,7 +4071,7 @@
                         "helpers": {
                             "fc": [
                                 "array_context",
-                                "capsule_data_helper",
+                                "capsule_data_basic",
                                 "string_to_cdesc",
                                 "copy_string",
                                 "capsule_dtor"
@@ -4155,7 +4155,7 @@
                                         "f_call_function": "c_class2_get_name_bufferify",
                                         "f_deref_attr": ", allocatable",
                                         "f_helper_array_context": "CLA_SHROUD_array",
-                                        "f_helper_capsule_data_helper": "CLA_SHROUD_capsule_data",
+                                        "f_helper_capsule_data_basic": "CLA_SHROUD_capsule_data",
                                         "f_helper_capsule_dtor": "CLA_SHROUD_capsule_dtor",
                                         "f_helper_copy_string": "CLA_SHROUD_copy_string",
                                         "f_result_clause": "\fresult(SHT_rv)",
@@ -4326,7 +4326,7 @@
                     "cxx_class": "Class2",
                     "cxx_type": "Class2",
                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
-                    "f_helper_capsule_data_helper": "CLA_SHROUD_capsule_data",
+                    "f_helper_capsule_data_basic": "CLA_SHROUD_capsule_data",
                     "file_scope": "Class2"
                 }
             },
@@ -4589,7 +4589,7 @@
                     "cxx_class": "Singleton",
                     "cxx_type": "Singleton",
                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
-                    "f_helper_capsule_data_helper": "CLA_SHROUD_capsule_data",
+                    "f_helper_capsule_data_basic": "CLA_SHROUD_capsule_data",
                     "file_scope": "Singleton"
                 }
             },
@@ -5187,7 +5187,7 @@
                     "cxx_class": "Shape",
                     "cxx_type": "Shape",
                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
-                    "f_helper_capsule_data_helper": "CLA_SHROUD_capsule_data",
+                    "f_helper_capsule_data_basic": "CLA_SHROUD_capsule_data",
                     "file_scope": "Shape"
                 }
             },
@@ -5603,7 +5603,7 @@
                     "cxx_class": "Circle",
                     "cxx_type": "Circle",
                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
-                    "f_helper_capsule_data_helper": "CLA_SHROUD_capsule_data",
+                    "f_helper_capsule_data_basic": "CLA_SHROUD_capsule_data",
                     "file_scope": "Circle"
                 }
             },
@@ -6796,7 +6796,7 @@
                     "cxx_class": "Data",
                     "cxx_type": "Data",
                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
-                    "f_helper_capsule_data_helper": "CLA_SHROUD_capsule_data",
+                    "f_helper_capsule_data_basic": "CLA_SHROUD_capsule_data",
                     "file_scope": "Data"
                 }
             }

@@ -730,7 +730,7 @@
             "capsule"
         ],
         "helper": [
-            "capsule_data_helper"
+            "capsule_data_basic"
         ]
     },
     {
@@ -4332,6 +4332,12 @@
         "owner": "caller"
     },
     {
+        "name": "f_operator_assignment_shadow_basic",
+        "notes": [
+            "Used with options.F_assignment_api == 'basic'"
+        ]
+    },
+    {
         "name": "f_operator_assignment_shadow_swig",
         "notes": [
             "Used with options.F_assignment_api == 'swig'"
@@ -4340,7 +4346,7 @@
             "procedure :: {F_name_assign_api}",
             "generic :: assignment(=) => {F_name_assign_api}"
         ],
-        "f_body": [
+        "f_operator": [
             "subroutine {F_name_assign_api}(lhs, rhs)+",
             "use iso_c_binding, only : c_associated, c_f_pointer",
             "class({F_derived_name}), intent(INOUT) :: lhs",
@@ -4359,7 +4365,7 @@
             "procedure :: {F_name_assign_api}",
             "generic :: assignment(=) => {F_name_assign_api}"
         ],
-        "f_body": [
+        "f_operator": [
             "subroutine {F_name_assign_api}(lhs, rhs)+",
             "use iso_c_binding, only : c_associated, c_f_pointer",
             "class({F_derived_name}), intent(INOUT) :: lhs",
@@ -6266,7 +6272,7 @@
         "c_fmtname": "{cnamefunc}",
         "api": "c",
         "dependent_helpers": [
-            "capsule_data_helper"
+            "capsule_data_basic"
         ],
         "proto": "{cnameproto};",
         
@@ -6465,7 +6471,7 @@
         "api": "c",
         "scope": "cwrap_impl",
         "dependent_helpers": [
-            "capsule_data_helper",
+            "capsule_data_basic",
             "array_context",
             "cdesc_array_string_out"
         ],
@@ -6590,7 +6596,7 @@
         "api": "c",
         "scope": "cwrap_impl",
         "dependent_helpers": [
-            "capsule_data_helper",
+            "capsule_data_basic",
             "array_context",
             "cdesc_vector_string_out"],
         "proto": "{cnameproto};",
@@ -6764,10 +6770,11 @@
         ]
     },
     {
-        "name": "h_helper_capsule_data_helper",
+        "name": "h_helper_capsule_data_basic",
         "notes": [
             "Share info with C++ to allow Fortran to release memory.",
-            "Used with shadow classes and std::vector."
+            "Used with shadow classes and std::vector.",
+            "Used when option.F_assignment_api=basic."
         ],
         "scope": "cwrap_include",
         "source": [
@@ -6800,7 +6807,7 @@
             "Fortran cannot be declared with both PRIVATE and BIND(C) attributes"
         ],
         "dependent_helpers": [
-            "capsule_data_helper",
+            "capsule_data_basic",
             "capsule_dtor"
         ],
         "derived_type": [

@@ -51,7 +51,7 @@
                     "cxx_class": "Names2",
                     "cxx_type": "Names2",
                     "f_capsule_data_type": "TES_SHROUD_capsule_data",
-                    "f_helper_capsule_data_helper": "TES_SHROUD_capsule_data",
+                    "f_helper_capsule_data_basic": "TES_SHROUD_capsule_data",
                     "file_scope": "Names2"
                 }
             },
@@ -135,7 +135,7 @@
                     "cxx_class": "twoTs_0",
                     "cxx_type": "twoTs<int, long>",
                     "f_capsule_data_type": "TES_SHROUD_capsule_data",
-                    "f_helper_capsule_data_helper": "TES_SHROUD_capsule_data",
+                    "f_helper_capsule_data_basic": "TES_SHROUD_capsule_data",
                     "file_scope": "twoTs_0"
                 }
             },
@@ -222,7 +222,7 @@
                     "cxx_class": "twoTs_instantiation4",
                     "cxx_type": "twoTs<float, double>",
                     "f_capsule_data_type": "TES_SHROUD_capsule_data",
-                    "f_helper_capsule_data_helper": "TES_SHROUD_capsule_data",
+                    "f_helper_capsule_data_basic": "TES_SHROUD_capsule_data",
                     "file_scope": "twoTs_instantiation4",
                     "template_suffix": "_instantiation4"
                 }
@@ -268,7 +268,7 @@
                     "cxx_class": "Cstruct_as_class",
                     "cxx_type": "Cstruct_as_class",
                     "f_capsule_data_type": "TES_SHROUD_capsule_data",
-                    "f_helper_capsule_data_helper": "TES_SHROUD_capsule_data",
+                    "f_helper_capsule_data_basic": "TES_SHROUD_capsule_data",
                     "file_scope": "Cstruct_as_class"
                 }
             },
@@ -315,7 +315,7 @@
                     "cxx_class": "Cstruct_as_subclass",
                     "cxx_type": "Cstruct_as_subclass",
                     "f_capsule_data_type": "TES_SHROUD_capsule_data",
-                    "f_helper_capsule_data_helper": "TES_SHROUD_capsule_data",
+                    "f_helper_capsule_data_basic": "TES_SHROUD_capsule_data",
                     "file_scope": "Cstruct_as_subclass"
                 }
             }
@@ -6323,7 +6323,7 @@
                             "cxx_class": "Names",
                             "cxx_type": "Names",
                             "f_capsule_data_type": "TES_SHROUD_capsule_data",
-                            "f_helper_capsule_data_helper": "TES_SHROUD_capsule_data",
+                            "f_helper_capsule_data_basic": "TES_SHROUD_capsule_data",
                             "file_scope": "ns0_Names"
                         }
                     }
@@ -6786,7 +6786,7 @@
                             "cxx_class": "Vvv1",
                             "cxx_type": "vector<int>",
                             "f_capsule_data_type": "TES_SHROUD_capsule_data",
-                            "f_helper_capsule_data_helper": "TES_SHROUD_capsule_data",
+                            "f_helper_capsule_data_basic": "TES_SHROUD_capsule_data",
                             "file_scope": "std_vector_int"
                         }
                     },
@@ -6885,7 +6885,7 @@
                             "cxx_class": "vector_double",
                             "cxx_type": "vector<double>",
                             "f_capsule_data_type": "TES_SHROUD_capsule_data",
-                            "f_helper_capsule_data_helper": "TES_SHROUD_capsule_data",
+                            "f_helper_capsule_data_basic": "TES_SHROUD_capsule_data",
                             "file_scope": "std_vector_double"
                         }
                     },
@@ -6987,7 +6987,7 @@
                             "cxx_class": "vector_instantiation5",
                             "cxx_type": "vector<long>",
                             "f_capsule_data_type": "TES_SHROUD_capsule_data",
-                            "f_helper_capsule_data_helper": "TES_SHROUD_capsule_data",
+                            "f_helper_capsule_data_basic": "TES_SHROUD_capsule_data",
                             "file_scope": "std_vector_instantiation5",
                             "template_suffix": "_instantiation5"
                         }
@@ -7087,7 +7087,7 @@
                             "cxx_class": "vector_instantiation3",
                             "cxx_type": "vector<internal::ImplWorker1>",
                             "f_capsule_data_type": "TES_SHROUD_capsule_data",
-                            "f_helper_capsule_data_helper": "TES_SHROUD_capsule_data",
+                            "f_helper_capsule_data_basic": "TES_SHROUD_capsule_data",
                             "file_scope": "std_vector_instantiation3"
                         }
                     }
@@ -7247,7 +7247,7 @@
                             "cxx_class": "Class1",
                             "cxx_type": "Class1",
                             "f_capsule_data_type": "TES_SHROUD_capsule_data",
-                            "f_helper_capsule_data_helper": "TES_SHROUD_capsule_data",
+                            "f_helper_capsule_data_basic": "TES_SHROUD_capsule_data",
                             "file_scope": "CAPI_Class1"
                         }
                     }

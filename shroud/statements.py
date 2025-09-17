@@ -980,6 +980,8 @@ FStmts = util.Scope(
     f_call=[],
     f_post_call=[],
     f_result_var=None,
+    f_type_bound=None,
+    f_operator=None,
     # bookkeeping fields
     f_module=None,
     f_temps=None,
