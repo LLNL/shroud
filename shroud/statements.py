@@ -724,9 +724,13 @@ def lookup_fc_helper(name, scope="helper"):
 
 def add_json_fc_helpers(fmt):
     """Format helper entries in JSON file."""
+    cursor = error.get_cursor()
+    stmt_cursor = cursor.push_statement()
     for key, stmt in fc_dict.items():
         if key.startswith("h_helper"):
+            stmt_cursor.stmt = stmt
             whelpers.apply_fmtdict_from_helpers(stmt, fmt)
+    cursor.pop_statement()
 
 def add_statement_to_tree(tree, node):
     """Add node to tree.
