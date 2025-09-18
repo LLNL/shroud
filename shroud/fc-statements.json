@@ -6800,6 +6800,38 @@
         }
     },
     {
+        "name": "h_helper_capsule_data_swig",
+        "notes": [
+            "Share info with C++ to allow Fortran to release memory.",
+            "Used with shadow classes and std::vector.",
+            "Used when option.F_assignment_api=swig."
+        ],
+        "scope": "cwrap_include",
+        "source": [
+            "",
+            "// helper {hname}",
+            "struct s_{C_capsule_data_type} {{+",
+            "void *addr;     /* address of C++ memory */",
+            "int idtor;      /* index of destructor */",
+            "int cmemflags;  /* memory flags */",
+            "-}};",
+            "typedef struct s_{C_capsule_data_type} {C_capsule_data_type};"
+        ],
+        "f_fmtname": "{F_capsule_data_type_swig}",
+        "derived_type": [
+            "",
+            "{f_lstart}! helper {hname}",
+            "type, bind(C) :: {F_capsule_data_type_swig}+",
+            "type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory",
+            "integer(C_INT) :: idtor = 0       ! index of destructor",
+            "integer(C_INT) :: cmemflags = 0   ! memory flags",
+            "-end type {F_capsule_data_type_swig}{f_lend}"
+        ],
+        "modules": {
+            "iso_c_binding": ["C_PTR", "C_INT", "C_NULL_PTR"]
+        }
+    },
+    {
         "name": "h_helper_capsule_helper",
         "notes": [
             "Used when the user owns C++ memory.",

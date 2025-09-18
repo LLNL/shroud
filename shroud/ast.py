@@ -20,6 +20,25 @@ from . import visitor
 from .util import wformat
 
 
+def set_library_default_capsule_data_type(node):
+    """
+    F_capsule_data_type is always set from one of the variants.
+    """
+    options = node.options
+    fmt = node.fmtdict
+    fmt.F_capsule_data_type = getattr(fmt, "F_capsule_data_type_" + options.F_assignment_api)
+
+def set_class_default_capsule_data_type(node):
+    """
+    The class may explicitly set the name or set the option which implies the name.
+    """
+    options = node.options
+    fmt = node.fmtdict
+    if fmt.inlocal("F_capsule_data_type"):
+        pass
+    elif options.inlocal("F_assignment_api"):
+        fmt.F_capsule_data_type = getattr(fmt, "F_capsule_data_type_" + options.F_assignment_api)
+
 class WrapFlags(object):
     """Keep track of which languages to wrap.
     """
@@ -516,6 +535,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_force_wrapper=False,
             C_line_length=72,
             F_CFI=False,    # TS29113 C Fortran Interoperability
+            F_capsule_variants="basic swig rca",
             F_assignment_api="basic",  # basic, swig, rca
             F_assumed_rank_min=0,
             F_assumed_rank_max=7,
@@ -601,7 +621,9 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_impl_filename_library_template="wrapf{library_lower}.{F_filename_suffix}",
             F_impl_filename_namespace_template="wrapf{file_scope}.{F_filename_suffix}",
             F_array_type_template="{C_prefix}SHROUD_array",
-            F_capsule_data_type_template="{C_prefix}SHROUD_capsule_data",
+            F_capsule_data_type_basic_template="{C_prefix}SHROUD_capsule_data",
+            F_capsule_data_type_swig_template="{C_prefix}SHROUD_capsule_data_swig",
+            F_capsule_data_type_rca_template="{C_prefix}SHROUD_capsule_data_rca",
             F_capsule_type_template="{C_prefix}SHROUD_capsule",
             F_abstract_interface_subprogram_template="{F_name_api}_{argname}",
             F_abstract_interface_argument_template="arg{index}",
@@ -907,6 +929,10 @@ class LibraryNode(AstNode, NamespaceMixin):
 
         self.fmtdict = fmt_library
 
+        for variant in options.F_capsule_variants.split():
+            self.eval_template("F_capsule_data_type_" + variant)
+        set_library_default_capsule_data_type(self)
+        
         # default some format strings based on other format strings
         self.set_fmt_default("C_array_type",
                              fmt_library.C_prefix + "SHROUD_array")
@@ -927,7 +953,6 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.eval_template("F_module_name", "_library")
         fmt_library.F_module_name = fmt_library.F_module_name.lower()
         self.eval_template("F_impl_filename", "_library")
-        self.eval_template("F_capsule_data_type")
 
         # If user changes PY_module_name, reflect change in PY_module_scope.
         self.set_fmt_default(
@@ -1196,6 +1221,8 @@ class ClassNode(AstNode, NamespaceMixin):
         self.fmtdict = util.Scope(parent.fmtdict)
         self.default_format()
 
+        set_class_default_capsule_data_type(self)
+        
         if self.parse_keyword == "struct":
             self.wrap_as = self.options.wrap_struct_as
         elif self.parse_keyword == "class":

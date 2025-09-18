@@ -285,6 +285,23 @@ used to release POD pointers; otherwise, ``delete`` will be used.
 
 .. When to use ``delete[] ptr``?
 
+.. There are variants of a capsule based on option.F_assignment_api
+
+   options.F_capsule_variants is a list of variants.
+   
+   options which set format fields
+     F_capsule_data_type_basic_template
+     F_capsule_data_type_swig_template
+     F_capsule_data_type_rca_template
+   These are used by helpers which are evaluted outside the context of a
+   class.
+   basis does not supply a suffix to make current generated code to be
+   unchanged. The other add swig and rca as a suffix.
+   
+
+   fmt.F_capsule_data_type set based on options.F_assignment_api
+   
+
 C and Fortran
 -------------
 

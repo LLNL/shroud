@@ -690,11 +690,13 @@ F_abstract_interface_subprogram_template
 F_array_type_template
    ``{C_prefix}SHROUD_array``
    
-F_capsule_data_type_template
+F_capsule_data_type_template_{variant}
     Name of the derived type which is the ``BIND(C)`` equivalent of the
     struct used to implement a shadow class (**C_capsule_data_type**).
     All classes use the same derived type.
     Defaults to ``{C_prefix}SHROUD_capsule_data``.
+
+    The variants are listed in option **F_capsule_variants**.
 
 F_capsule_type_template
     ``{C_prefix}SHROUD_capsule``

@@ -21799,6 +21799,42 @@ h_helper_capsule_data_basic:
     - C_INT
     - C_NULL_PTR
   sphinx-end-before: h_helper_capsule_data_basic
+h_helper_capsule_data_swig:
+  sphinx-start-after: h_helper_capsule_data_swig
+  name: h_helper_capsule_data_swig
+  notes:
+  - Share info with C++ to allow Fortran to release memory.
+  - Used with shadow classes and std::vector.
+  - Used when option.F_assignment_api=swig.
+  scope: cwrap_include
+  source:
+  - ''
+  - // helper capsule_data_swig
+  - struct s_LIB_SHROUD_capsule_data {+
+  - void *addr;     /* address of C++ memory */
+  - int idtor;      /* index of destructor */
+  - int cmemflags;  /* memory flags */
+  - -};
+  - typedef struct s_LIB_SHROUD_capsule_data LIB_SHROUD_capsule_data;
+  f_fmtname: LIB_SHROUD_capsule_data_swig
+  derived_type:
+  - ''
+  - '! start helper capsule_data_swig
+
+    ! helper capsule_data_swig'
+  - 'type, bind(C) :: LIB_SHROUD_capsule_data_swig+'
+  - 'type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory'
+  - 'integer(C_INT) :: idtor = 0       ! index of destructor'
+  - 'integer(C_INT) :: cmemflags = 0   ! memory flags'
+  - '-end type LIB_SHROUD_capsule_data_swig
+
+    ! end helper capsule_data_swig'
+  modules:
+    iso_c_binding:
+    - C_PTR
+    - C_INT
+    - C_NULL_PTR
+  sphinx-end-before: h_helper_capsule_data_swig
 h_helper_capsule_dtor:
   sphinx-start-after: h_helper_capsule_dtor
   name: h_helper_capsule_dtor
@@ -23396,6 +23432,7 @@ root
       capsule
         data
           basic -- h_helper_capsule_data_basic
+          swig -- h_helper_capsule_data_swig
         dtor -- h_helper_capsule_dtor
         helper -- h_helper_capsule_helper
       cdesc

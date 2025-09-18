@@ -30,16 +30,6 @@ fortran_ranks = [
 
 maplang = dict(f="ci_type", c="c_type")
 
-def option_to_format(node, names):
-    """Convert option value into a fmt string.
-    Used to lookup statements. ex helper = "aaa_{option_F_assignment_api}"
-    """
-    options = node.options
-    fmt = node.fmtdict
-    for name in names:
-        if options.inlocal(name):
-            setattr(fmt, "option_%s" % name, getattr(options, name))
-
 class FillFormat(object):
     """Loop over Nodes and fill fmt dictionaries.
     Used for Fortran and C wrappers.
@@ -60,7 +50,6 @@ class FillFormat(object):
         self.cursor = error.get_cursor()
 
     def fmt_library(self):
-        option_to_format(self.newlibrary, ["F_assignment_api"])
         self.fmt_namespace(self.newlibrary.wrap_namespace)
 
     def fmt_namespace(self, node):
@@ -106,7 +95,7 @@ class FillFormat(object):
         for typ in node.typedefs:
             self.fmt_typedefs(typ)
 
-        option_to_format(node, ["F_assignment_api"])
+        option_to_format(node, ["F_assignment_api"])# YYY
         if node.baseclass:
             # Only single inheritance supported.
             # Base class already contains F_derived_member.
