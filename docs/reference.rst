@@ -631,6 +631,8 @@ Option Templates
 Templates are set in options then expanded to assign to the format 
 dictionary to create names in the generated code.
 
+C_capsule_data_type_template_{variant}
+
 C_enum_type_template
     Name of enumeration in C wrapper.
     ``{C_prefix}{C_name_scope}{enum_name}``

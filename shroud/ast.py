@@ -26,6 +26,7 @@ def set_library_default_capsule_data_type(node):
     """
     options = node.options
     fmt = node.fmtdict
+    fmt.C_capsule_data_type = getattr(fmt, "C_capsule_data_type_" + options.F_assignment_api)
     fmt.F_capsule_data_type = getattr(fmt, "F_capsule_data_type_" + options.F_assignment_api)
 
 def set_class_default_capsule_data_type(node):
@@ -34,6 +35,10 @@ def set_class_default_capsule_data_type(node):
     """
     options = node.options
     fmt = node.fmtdict
+    if fmt.inlocal("C_capsule_data_type"):
+        pass
+    elif options.inlocal("F_assignment_api"):
+        fmt.C_capsule_data_type = getattr(fmt, "C_capsule_data_type_" + options.F_assignment_api)
     if fmt.inlocal("F_capsule_data_type"):
         pass
     elif options.inlocal("F_assignment_api"):
@@ -575,6 +580,9 @@ class LibraryNode(AstNode, NamespaceMixin):
             YAML_type_filename_template="{library_lower}_types.yaml",
 
             C_API_case="preserve",
+            C_capsule_data_type_basic_template="{C_prefix}SHROUD_capsule_data",
+            C_capsule_data_type_swig_template="{C_prefix}SHROUD_capsule_data_swig",
+            C_capsule_data_type_rca_template="{C_prefix}SHROUD_capsule_data_rca",
             C_header_filename_library_template="wrap{library}.{C_header_filename_suffix}",
             C_impl_filename_library_template="wrap{library}.{C_impl_filename_suffix}",
 
@@ -930,14 +938,13 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.fmtdict = fmt_library
 
         for variant in options.F_capsule_variants.split():
+            self.eval_template("C_capsule_data_type_" + variant)
             self.eval_template("F_capsule_data_type_" + variant)
         set_library_default_capsule_data_type(self)
         
         # default some format strings based on other format strings
         self.set_fmt_default("C_array_type",
                              fmt_library.C_prefix + "SHROUD_array")
-        self.set_fmt_default("C_capsule_data_type",
-                             fmt_library.C_prefix + "SHROUD_capsule_data")
 
         self.eval_template("C_header_filename", "_library")
         self.eval_template("C_impl_filename", "_library")
