@@ -1519,10 +1519,9 @@ class FunctionNode(AstNode):
 
     A list of helpers for the function derived from statements.
     helpers = {
-      'c': {
+      'fc': {
             name = True,
            }
-      'f': {},
     }
 
     C_signature - statement.index signature of C wrapper.

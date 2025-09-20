@@ -258,7 +258,7 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
         f_type_decl.append("")
         if node.cpp_if:
             f_type_decl.append("#" + node.cpp_if)
-        fileinfo.add_f_helper(["capsule_data_%s" % options.F_assignment_api], fmt_class)
+        fileinfo.add_fc_helper(["capsule_data_%s" % options.F_assignment_api], fmt_class)
 
         if options.literalinclude:
             f_type_decl.append("! start derived-type " +
@@ -1497,7 +1497,7 @@ rv = .false.
                 else:
                     arg_stmt.f_arg_call = ["{pre_call_intent}"]
                 for helper in f_helper.split():
-                    fileinfo.f_helper[helper] = True
+                    fileinfo.fc_helper[helper] = True
                 self.update_f_module(modules, f_arg.typemap.f_module, fmt_arg)
                 need_wrapper = True
 
@@ -1786,11 +1786,11 @@ rv = .false.
             fileinfo - ModuleInfo
         """
         done = {}  # Avoid duplicates by keeping track of what's been gathered.
-        for name in sorted(fileinfo.f_helper.keys()):
+        for name in sorted(fileinfo.fc_helper.keys()):
             self._gather_helper_code(name, done, fileinfo)
 
-        # Accumulate all C helpers for later processing.
-        self.shared_helper.update(fileinfo.c_helper)
+        # Accumulate all C helpers for processing when writing C wrapper.
+        self.shared_helper.update(fileinfo.fc_helper)
 
     def write_module(self, fileinfo):
         """ Write Fortran wrapper module.
@@ -1990,8 +1990,7 @@ class ModuleInfo(object):
         self.f_function_generic = {}  # look for generic functions
         self.f_abstract_interface = {}
 
-        self.c_helper = {}
-        self.f_helper = {}
+        self.fc_helper = {}
         self.helper_derived_type = []
         self.helper_source = []
         self.private_lines = []
@@ -2039,12 +2038,11 @@ class ModuleInfo(object):
         Parameters:
           node - ast.FunctionNode
         """
-        self.c_helper.update(node.helpers.get("fc", {}))
-        self.f_helper.update(node.helpers.get("fc", {}))
+        self.fc_helper.update(node.helpers.get("fc", {}))
 
-    def add_f_helper(self, helpers, fmt):
-        """Add a list of Fortran helpers"""
-        fcfmt.add_fc_helper(self.f_helper, helpers, fmt)
+    def add_fc_helper(self, helpers, fmt):
+        """Add a list of helpers"""
+        fcfmt.add_fc_helper(self.fc_helper, helpers, fmt)
         
 ######################################################################
 

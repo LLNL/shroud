@@ -16,7 +16,7 @@ C helper functions which may be added to a implementation file.
 
 Methods in wrappers to deal with helpers.
   add_helper - Build up a list of helpers from statements.
-    - wrapf.ModuleInfo.add_f_helper and add_c_helper
+    - wrapf.ModuleInfo.add_fc_helper
     - wrapc.Wrapc.add_c_helper
     - wrapp.Wrapp.add_helper
   gather_helper_code - Write helpers in a sorted order (so the generated

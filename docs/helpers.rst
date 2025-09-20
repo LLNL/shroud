@@ -73,7 +73,7 @@ Helper code can be inserted in several files and several locations.
                 
     ! derived_type
 
-    ! interface_lines
+    ! interface
 
     contains
 
