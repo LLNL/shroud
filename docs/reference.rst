@@ -694,7 +694,7 @@ F_array_type_template
    
 F_capsule_data_type_template_{variant}
     Name of the derived type which is the ``BIND(C)`` equivalent of the
-    struct used to implement a shadow class (**C_capsule_data_type**).
+    struct used to implement a shadow class (**c_capsule_data_type**).
     All classes use the same derived type.
     Defaults to ``{C_prefix}SHROUD_capsule_data``.
 
@@ -911,7 +911,7 @@ C_bufferify_suffix
   with explicit lengths.
   Defaults to *_bufferify*
 
-C_capsule_data_type
+c_capsule_data_type
     Name of struct used to share memory information with Fortran.
     Defaults to *SHROUD_capsule_data*.
 
@@ -1001,11 +1001,7 @@ F_array_type
     Default value from option *F_array_type_template* which 
     defaults to *{C_prefix}SHROUD_array*.
 
-F_C_prefix
-    Prefix added to name of generated Fortran interface for C routines.
-    Defaults to **c_**.
-
-F_capsule_data_type
+f_capsule_data_type
     Name of derived type used to share memory information with C or C++.
     Member of *F_array_type*.
     Default value from option *F_capsule_data_type_template* which 
@@ -1083,6 +1079,10 @@ F_this
 
 file_scope
    Used in filename creation to identify library, namespace, class.
+
+i_prefix
+    Prefix added to name of generated Fortran interface for C routines.
+    Defaults to **c_**.
 
 library
     The value of global **field** *library*.

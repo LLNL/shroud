@@ -1231,7 +1231,7 @@ def fill_class_typemap(node, fields={}):
         f_module_name=fmt_class.F_module_name,
         f_derived_type=fmt_class.F_derived_name,
         f_kind=fmt_class.F_derived_name,
-        f_capsule_data_type=fmt_class.F_capsule_data_type,
+        f_capsule_data_type=fmt_class.f_capsule_data_type,
         # #- f_to_c='{f_var}%%%s()' % fmt_class.F_name_instance_get, # XXX - develop test
         sh_type="SH_TYPE_OTHER",
         cfi_type="CFI_type_other",
@@ -1492,7 +1492,7 @@ def fill_typedef_typemap(node, fields={}):
         #XXX f_cast  using f_name
         f_module_name=fmtdict.F_module_name,
 #        f_derived_type=fmtdict.F_derived_name,
-#        f_capsule_data_type=fmtdict.F_capsule_data_type,
+#        f_capsule_data_type=fmtdict.f_capsule_data_type,
 #        f_module={fmtdict.F_module_name: [fmtdict.F_derived_name]},
         # #- f_to_c='{f_var}%%%s()' % fmtdict.F_name_instance_get, # XXX - develop test
 #        f_to_c="{f_var}%%%s" % fmtdict.F_derived_member,

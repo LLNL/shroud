@@ -411,7 +411,7 @@ c_function_shadow&_capptr:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  c_mixin_function_shadow_capptr'
   - '  c_mixin_shadow'
@@ -459,7 +459,7 @@ c_function_shadow&_capptr_caller:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  c_mixin_function_shadow_capptr'
   - '  c_mixin_shadow'
@@ -507,7 +507,7 @@ c_function_shadow&_capptr_library:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  c_mixin_function_shadow_capptr'
   - '  c_mixin_shadow'
@@ -555,7 +555,7 @@ c_function_shadow&_capsule:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
@@ -594,7 +594,7 @@ c_function_shadow&_capsule_caller:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
@@ -633,7 +633,7 @@ c_function_shadow&_capsule_library:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
@@ -672,7 +672,7 @@ c_function_shadow*_capptr:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  c_mixin_function_shadow_capptr'
   - '  c_mixin_shadow'
@@ -720,7 +720,7 @@ c_function_shadow*_capptr_caller:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  c_mixin_function_shadow_capptr'
   - '  c_mixin_shadow'
@@ -768,7 +768,7 @@ c_function_shadow*_capptr_library:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  c_mixin_function_shadow_capptr'
   - '  c_mixin_shadow'
@@ -864,7 +864,7 @@ c_function_shadow*_capsule:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
@@ -1142,17 +1142,17 @@ c_function_string:
   i_dummy_arg:
   - '{i_var_capsule}'
   i_dummy_decl:
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_import:
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   i_module:
     iso_c_binding:
     - C_PTR
   c_return_type: const char *
   c_prototype:
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_pre_call:
   - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
@@ -3956,11 +3956,11 @@ c_mixin_capsule_pass:
   i_dummy_arg:
   - '{i_var_capsule}'
   i_dummy_decl:
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_prototype:
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_temps:
   - capsule
   helper:
@@ -6314,13 +6314,13 @@ c_out_vector<string>&_cdesc_allocatable:
   - '{i_var_capsule}'
   i_dummy_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_pre_call:
   - std::vector<std::string> *{c_local_cxx} = new std::vector<std::string>;
   c_arg_call:
@@ -8515,7 +8515,7 @@ f_function_native*_cdesc_allocatable:
     :: {f_var}{f_dimension}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  - 'type({f_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
@@ -8541,14 +8541,14 @@ f_function_native*_cdesc_allocatable:
   - '{i_var_capsule}'
   i_dummy_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_post_call:
@@ -8690,14 +8690,14 @@ f_function_native*_cdesc_pointer_caller:
   - '{i_var_capsule}'
   i_dummy_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_post_call:
@@ -9033,7 +9033,7 @@ f_function_shadow&_capsule:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
@@ -9079,7 +9079,7 @@ f_function_shadow&_capsule_caller:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
@@ -9125,7 +9125,7 @@ f_function_shadow&_capsule_library:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
@@ -9171,7 +9171,7 @@ f_function_shadow*_capsule:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
@@ -9217,7 +9217,7 @@ f_function_shadow*_capsule_caller:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
@@ -9263,7 +9263,7 @@ f_function_shadow*_capsule_library:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
@@ -9931,7 +9931,7 @@ f_function_string&_cdesc_allocatable:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  - 'type({f_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
@@ -9950,14 +9950,14 @@ f_function_string&_cdesc_allocatable:
   - '{i_var_capsule}'
   i_dummy_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_call:
   - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -10011,7 +10011,7 @@ f_function_string&_cdesc_allocatable_caller:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  - 'type({f_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
@@ -10030,14 +10030,14 @@ f_function_string&_cdesc_allocatable_caller:
   - '{i_var_capsule}'
   i_dummy_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_call:
   - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -10091,7 +10091,7 @@ f_function_string&_cdesc_allocatable_library:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  - 'type({f_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
@@ -10110,14 +10110,14 @@ f_function_string&_cdesc_allocatable_library:
   - '{i_var_capsule}'
   i_dummy_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_call:
   - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -11137,7 +11137,7 @@ f_function_string*_cdesc_allocatable:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  - 'type({f_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
@@ -11156,14 +11156,14 @@ f_function_string*_cdesc_allocatable:
   - '{i_var_capsule}'
   i_dummy_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_call:
   - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -11217,7 +11217,7 @@ f_function_string*_cdesc_allocatable_caller:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  - 'type({f_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
@@ -11236,14 +11236,14 @@ f_function_string*_cdesc_allocatable_caller:
   - '{i_var_capsule}'
   i_dummy_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_call:
   - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -11297,7 +11297,7 @@ f_function_string*_cdesc_allocatable_library:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  - 'type({f_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
@@ -11316,14 +11316,14 @@ f_function_string*_cdesc_allocatable_library:
   - '{i_var_capsule}'
   i_dummy_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_call:
   - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -12362,7 +12362,7 @@ f_function_string_cdesc_allocatable:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  - 'type({f_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
@@ -12381,14 +12381,14 @@ f_function_string_cdesc_allocatable:
   - '{i_var_capsule}'
   i_dummy_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_pre_call:
   - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
@@ -12455,7 +12455,7 @@ f_function_string_cdesc_allocatable_caller:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  - 'type({f_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
@@ -12474,14 +12474,14 @@ f_function_string_cdesc_allocatable_caller:
   - '{i_var_capsule}'
   i_dummy_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_pre_call:
   - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
@@ -12548,7 +12548,7 @@ f_function_string_cdesc_allocatable_library:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  - 'type({f_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
@@ -12567,14 +12567,14 @@ f_function_string_cdesc_allocatable_library:
   - '{i_var_capsule}'
   i_dummy_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_pre_call:
   - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
@@ -12655,14 +12655,14 @@ f_function_string_cdesc_pointer:
   - '{i_var_capsule}'
   - '{i_var_cdesc}'
   i_dummy_decl:
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_import:
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   - '{F_array_type}'
   c_return_type: void
   c_prototype:
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   - '{C_array_type} *{c_var_cdesc}'
   c_pre_call:
   - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
@@ -13041,13 +13041,13 @@ f_function_string_cfi_pointer:
   - '{i_var_capsule}'
   - '{i_var}'
   i_dummy_decl:
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   i_import:
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_return_type: void
   c_prototype:
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
   - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
@@ -13142,13 +13142,13 @@ f_function_string_cfi_pointer_caller:
   - '{i_var_capsule}'
   - '{i_var}'
   i_dummy_decl:
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   i_import:
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_return_type: void
   c_prototype:
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
   - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
@@ -13243,13 +13243,13 @@ f_function_string_cfi_pointer_library:
   - '{i_var_capsule}'
   - '{i_var}'
   i_dummy_decl:
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   i_import:
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_return_type: void
   c_prototype:
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
   - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
@@ -13336,17 +13336,17 @@ f_function_string_raw:
   i_dummy_arg:
   - '{i_var_capsule}'
   i_dummy_decl:
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_import:
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   i_module:
     iso_c_binding:
     - C_PTR
   c_return_type: '{c_const}{c_type} *'
   c_prototype:
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_pre_call:
   - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
@@ -17657,11 +17657,11 @@ f_mixin_add_capsule_arg_to_fwrapper:
   i_dummy_arg:
   - '{i_var_capsule}'
   i_dummy_decl:
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_prototype:
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_temps:
   - capsule
   fmtdict:
@@ -17745,7 +17745,7 @@ f_mixin_capsule_pass:
   mixin_names:
   - '  c_mixin_capsule_pass'
   f_local_decl:
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  - 'type({f_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_capsule}'
   f_temps:
@@ -17754,11 +17754,11 @@ f_mixin_capsule_pass:
   i_dummy_arg:
   - '{i_var_capsule}'
   i_dummy_decl:
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_prototype:
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_temps:
   - capsule
   helper:
@@ -17780,7 +17780,7 @@ f_mixin_capsule_use:
   - '  c_mixin_capsule_fill_arg'
   - '  f_mixin_capsule_dtor'
   f_local_decl:
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  - 'type({f_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_capsule}'
   f_post_call:
@@ -17791,11 +17791,11 @@ f_mixin_capsule_use:
   i_dummy_arg:
   - '{i_var_capsule}'
   i_dummy_decl:
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_prototype:
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_post_call:
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
@@ -19702,7 +19702,7 @@ f_out_native**_cdesc_allocatable:
     :: {f_var}{f_dimension}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  - 'type({f_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
@@ -19726,13 +19726,13 @@ f_out_native**_cdesc_allocatable:
   - '{i_var_capsule}'
   i_dummy_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_pre_call:
   - '{c_const}{cxx_type} *{cxx_var};'
   c_arg_call:
@@ -20247,7 +20247,7 @@ f_out_string**_cdesc_allocatable:
     :: {f_var}{f_dimension}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  - 'type({f_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
@@ -20270,13 +20270,13 @@ f_out_string**_cdesc_allocatable:
   - '{i_var_capsule}'
   i_dummy_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_pre_call:
   - std::string *{cxx_var};
   c_arg_call:
@@ -21012,7 +21012,7 @@ f_out_vector<string>&_cdesc_allocatable:
   - 'character(len=:){f_intent_attr}{f_deref_attr}{f_target_attr} :: {f_var}{f_assumed_shape}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  - 'type({f_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
@@ -21033,13 +21033,13 @@ f_out_vector<string>&_cdesc_allocatable:
   - '{i_var_capsule}'
   i_dummy_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_pre_call:
   - std::vector<std::string> *{c_local_cxx} = new std::vector<std::string>;
   c_arg_call:
@@ -21697,7 +21697,7 @@ h_helper_array_string_allocatable:
   fmtdict:
     cnamefunc: '{C_prefix}ShroudCDescArrayStringAllocatable'
     fnamefunc: '{C_prefix}SHROUD_cdesc_array_string_allocatable'
-    cnameproto: void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)
+    cnameproto: void {cnamefunc}({C_array_type} *dest, {c_capsule_data_type} *src)
   api: c
   c_fmtname: LIB_ShroudCDescArrayStringAllocatable
   scope: cwrap_impl
@@ -21842,7 +21842,7 @@ h_helper_capsule_dtor:
   - Add the C prototype. The body is created Wrapc.write_capsule_code.
   fmtdict:
     cnamefunc: '{C_memory_dtor_function}'
-    cnameproto: "void {cnamefunc}\t({C_capsule_data_type} *cap)"
+    cnameproto: "void {cnamefunc}\t({c_capsule_data_type} *cap)"
     fnamefunc: '{C_prefix}SHROUD_capsule_dtor'
     fnamefunc_capsule_dtor: '{fnamefunc}'
   api: c
@@ -21958,7 +21958,7 @@ h_helper_cdesc_vector_string_allocatable:
   fmtdict:
     cnamefunc: '{C_prefix}CDescShroudVectorStringAllocatable'
     fnamefunc: '{C_prefix}SHROUD_cdesc_vector_string_allocatable'
-    cnameproto: void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)
+    cnameproto: void {cnamefunc}({C_array_type} *dest, {c_capsule_data_type} *src)
   api: c
   c_fmtname: LIB_CDescShroudVectorStringAllocatable
   scope: cwrap_impl

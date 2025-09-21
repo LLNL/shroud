@@ -718,13 +718,13 @@
             "{i_var_capsule}"
         ],
         "i_dummy_decl": [
-            "type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}"
+            "type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}"
         ],
         "i_import": [
-            "{F_capsule_data_type}"
+            "{f_capsule_data_type}"
         ],
         "c_prototype": [
-            "{C_capsule_data_type} *{c_var_capsule}"
+            "{c_capsule_data_type} *{c_var_capsule}"
         ],
         "c_temps": [
             "capsule"
@@ -746,7 +746,7 @@
             "c_mixin_capsule_pass"
         ],
         "f_local_decl": [
-            "type({F_capsule_data_type}) :: {f_var_capsule}"
+            "type({f_capsule_data_type}) :: {f_var_capsule}"
         ],
         "f_arg_call": [
             "{f_var_capsule}"
@@ -4182,7 +4182,7 @@
             "c_function_shadow&_capsule_library"
         ],
         "notes": [
-            "Return a C_capsule_data_type."
+            "Return a c_capsule_data_type."
         ],
         "mixin": [
             "f_mixin_call-cwrapper-as-subroutine",
@@ -4237,7 +4237,7 @@
             "c_function_shadow&_capptr_library"
         ],
         "notes": [
-            "Return a C_capsule_data_type."
+            "Return a c_capsule_data_type."
         ],
         "mixin": [
             "c_mixin_function_shadow_capptr",
@@ -6265,7 +6265,7 @@
         ],
         "fmtdict": {
             "cnamefunc":  "{C_memory_dtor_function}",
-            "cnameproto":  "void {cnamefunc}\t({C_capsule_data_type} *cap)",
+            "cnameproto":  "void {cnamefunc}\t({c_capsule_data_type} *cap)",
             "fnamefunc":  "{C_prefix}SHROUD_capsule_dtor",
             "fnamefunc_capsule_dtor": "{fnamefunc}"
         },
@@ -6283,9 +6283,9 @@
             "! helper {hname}",
             "! Delete memory in a capsule.",
             "subroutine {fnamefunc}(ptr)\tbind(C, name=\"{cnamefunc}\")+",
-            "import {F_capsule_data_type}",
+            "import {f_capsule_data_type}",
             "implicit none",
-            "type({F_capsule_data_type}), intent(INOUT) :: ptr",
+            "type({f_capsule_data_type}), intent(INOUT) :: ptr",
             "-end subroutine {fnamefunc}",
             "-end interface"
         ]
@@ -6465,7 +6465,7 @@
         "fmtdict": {
             "cnamefunc": "{C_prefix}ShroudCDescArrayStringAllocatable",
             "fnamefunc": "{C_prefix}SHROUD_cdesc_array_string_allocatable",
-            "cnameproto": "void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)"
+            "cnameproto": "void {cnamefunc}({C_array_type} *dest, {c_capsule_data_type} *src)"
         },
         "c_fmtname": "{cnamefunc}",
         "api": "c",
@@ -6496,9 +6496,9 @@
             "! helper {hname}",
             "subroutine {fnamefunc}(dest, src) &",
             "     bind(c,name=\"{cnamefunc}\")+",
-            "import {F_array_type}, {F_capsule_data_type}",
+            "import {F_array_type}, {f_capsule_data_type}",
             "type({F_array_type}), intent(IN) :: dest",
-            "type({F_capsule_data_type}), intent(IN) :: src",
+            "type({f_capsule_data_type}), intent(IN) :: src",
             "-end subroutine {fnamefunc}",
             "-end interface"
         ]
@@ -6590,7 +6590,7 @@
         "fmtdict": {
             "cnamefunc": "{C_prefix}CDescShroudVectorStringAllocatable",
             "fnamefunc": "{C_prefix}SHROUD_cdesc_vector_string_allocatable",
-            "cnameproto": "void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)"
+            "cnameproto": "void {cnamefunc}({C_array_type} *dest, {c_capsule_data_type} *src)"
         },
         "c_fmtname": "{cnamefunc}",
         "api": "c",
@@ -6620,9 +6620,9 @@
             "! Copy the char* or std::string in context into c_var.",
             "subroutine {fnamefunc}(dest, src) &",
             "     bind(c,name=\"{cnamefunc}\")+",
-            "import {F_capsule_data_type}, {F_array_type}",
+            "import {f_capsule_data_type}, {F_array_type}",
             "type({F_array_type}), intent(IN) :: dest",
-            "type({F_capsule_data_type}), intent(IN) :: src",
+            "type({f_capsule_data_type}), intent(IN) :: src",
             "-end subroutine {fnamefunc}",
             "-end interface"
         ]
@@ -6780,20 +6780,20 @@
         "source": [
             "",
             "// helper {hname}",
-            "struct s_{C_capsule_data_type} {{+",
+            "struct s_{c_capsule_data_type} {{+",
             "void *addr;     /* address of C++ memory */",
             "int idtor;      /* index of destructor */",
             "-}};",
-            "typedef struct s_{C_capsule_data_type} {C_capsule_data_type};"
+            "typedef struct s_{c_capsule_data_type} {c_capsule_data_type};"
         ],
-        "f_fmtname": "{F_capsule_data_type}",
+        "f_fmtname": "{f_capsule_data_type}",
         "derived_type": [
             "",
             "{f_lstart}! helper {hname}",
-            "type, bind(C) :: {F_capsule_data_type}+",
+            "type, bind(C) :: {f_capsule_data_type}+",
             "type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory",
             "integer(C_INT) :: idtor = 0       ! index of destructor",
-            "-end type {F_capsule_data_type}{f_lend}"
+            "-end type {f_capsule_data_type}{f_lend}"
         ],
         "modules": {
             "iso_c_binding": ["C_PTR", "C_INT", "C_NULL_PTR"]
@@ -6810,22 +6810,22 @@
         "source": [
             "",
             "// helper {hname}",
-            "struct s_{C_capsule_data_type} {{+",
+            "struct s_{c_capsule_data_type} {{+",
             "void *addr;     /* address of C++ memory */",
             "int idtor;      /* index of destructor */",
             "int cmemflags;  /* memory flags */",
             "-}};",
-            "typedef struct s_{C_capsule_data_type} {C_capsule_data_type};"
+            "typedef struct s_{c_capsule_data_type} {c_capsule_data_type};"
         ],
-        "f_fmtname": "{F_capsule_data_type_swig}",
+        "f_fmtname": "{f_capsule_data_type_swig}",
         "derived_type": [
             "",
             "{f_lstart}! helper {hname}",
-            "type, bind(C) :: {F_capsule_data_type_swig}+",
+            "type, bind(C) :: {f_capsule_data_type_swig}+",
             "type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory",
             "integer(C_INT) :: idtor = 0       ! index of destructor",
             "integer(C_INT) :: cmemflags = 0   ! memory flags",
-            "-end type {F_capsule_data_type_swig}{f_lend}"
+            "-end type {f_capsule_data_type_swig}{f_lend}"
         ],
         "modules": {
             "iso_c_binding": ["C_PTR", "C_INT", "C_NULL_PTR"]
@@ -6847,7 +6847,7 @@
             "! helper {hname}",
             "type :: {F_capsule_type}+",
             "private",
-            "type({F_capsule_data_type}) :: mem",
+            "type({f_capsule_data_type}) :: mem",
             "-contains",
             "+final :: {F_capsule_final_function}",
             "procedure :: delete => {F_capsule_delete_function}",
@@ -6856,7 +6856,7 @@
         "f_source": [
             "",
             "! helper {hname}",
-            "! finalize a static {F_capsule_data_type}",
+            "! finalize a static {f_capsule_data_type}",
             "subroutine {F_capsule_final_function}(cap)+",
             "type({F_capsule_type}), intent(INOUT) :: cap",
             "call {fnamefunc_capsule_dtor}(cap%mem)",

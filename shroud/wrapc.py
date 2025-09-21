@@ -1321,7 +1321,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         append_format(
             output,
             "// Release library allocated memory.\n"
-            "void {C_memory_dtor_function}\t({C_capsule_data_type} *cap)\n"
+            "void {C_memory_dtor_function}\t({c_capsule_data_type} *cap)\n"
             "{{+",
             fmt,
         )

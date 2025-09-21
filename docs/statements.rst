@@ -257,7 +257,7 @@ and attributes into an underscore delimited string.
 
 * language - ``c``
 
-* intent - ``in``, ``out``, ``inout``, ``function``, ``subroutine``, ``ctor``, ``dtor``, ``getter``, ``setter``
+* intent - ``in``, ``out``, ``inout``, ``function``, ``subroutine``, ``ctor``, ``dtor``, ``getter``, ``setter``, ``operator``
 
 * Abstract declaration. For example, ``native``, ``native*`` or ``native**``.
   May include template arguments ``vector<native>``.

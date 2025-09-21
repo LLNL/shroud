@@ -26,8 +26,8 @@ def set_library_default_capsule_data_type(node):
     """
     options = node.options
     fmt = node.fmtdict
-    fmt.C_capsule_data_type = getattr(fmt, "C_capsule_data_type_" + options.F_assignment_api)
-    fmt.F_capsule_data_type = getattr(fmt, "F_capsule_data_type_" + options.F_assignment_api)
+    fmt.c_capsule_data_type = getattr(fmt, "c_capsule_data_type_" + options.F_assignment_api)
+    fmt.f_capsule_data_type = getattr(fmt, "f_capsule_data_type_" + options.F_assignment_api)
 
 def set_class_default_capsule_data_type(node):
     """
@@ -35,14 +35,14 @@ def set_class_default_capsule_data_type(node):
     """
     options = node.options
     fmt = node.fmtdict
-    if fmt.inlocal("C_capsule_data_type"):
+    if fmt.inlocal("c_capsule_data_type"):
         pass
     elif options.inlocal("F_assignment_api"):
-        fmt.C_capsule_data_type = getattr(fmt, "C_capsule_data_type_" + options.F_assignment_api)
-    if fmt.inlocal("F_capsule_data_type"):
+        fmt.c_capsule_data_type = getattr(fmt, "c_capsule_data_type_" + options.F_assignment_api)
+    if fmt.inlocal("f_capsule_data_type"):
         pass
     elif options.inlocal("F_assignment_api"):
-        fmt.F_capsule_data_type = getattr(fmt, "F_capsule_data_type_" + options.F_assignment_api)
+        fmt.f_capsule_data_type = getattr(fmt, "f_capsule_data_type_" + options.F_assignment_api)
 
 class WrapFlags(object):
     """Keep track of which languages to wrap.
@@ -102,6 +102,18 @@ class WrapFlags(object):
         aflags = ",".join(flags)
         return "WrapFlags({})".format(aflags)
 
+# Migrate upper case options to lower case format fields
+mapcase = dict(
+    C_capsule_data_type="c_capsule_data_type",
+    C_capsule_data_type_basic="c_capsule_data_type_basic",
+    C_capsule_data_type_swig="c_capsule_data_type_swig",
+    C_capsule_data_type_rca="c_capsule_data_type_rca",
+    F_capsule_data_type="f_capsule_data_type",
+    F_capsule_data_type_basic="f_capsule_data_type_basic",
+    F_capsule_data_type_swig="f_capsule_data_type_swig",
+    F_capsule_data_type_rca="f_capsule_data_type_rca",
+)
+    
 
 class AstNode(object):
     is_class = False
@@ -112,14 +124,16 @@ class AstNode(object):
             fmt = self.fmtdict
         if not fmt.inlocal(name):
             tname = name + tname + "_template"
-            setattr(fmt, name, wformat(self.options[tname], fmt))
+            lowername = mapcase.get(name, name)
+            setattr(fmt, lowername, wformat(self.options[tname], fmt))
 
     def reeval_template(self, name, tname="", fmt=None):
         """Always evaluate template."""
         if fmt is None:
             fmt = self.fmtdict
         tname = name + tname + "_template"
-        setattr(fmt, name, util.wformat(self.options[tname], fmt))
+        lowername = mapcase.get(name, name)
+        setattr(fmt, lowername, util.wformat(self.options[tname], fmt))
 
     def set_fmt_default(self, name, value, fmt=None):
         """Set a fmt value unless already set."""

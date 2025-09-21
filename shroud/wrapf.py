@@ -273,7 +273,7 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
             append_format(
                 f_type_decl,
                 "type {F_derived_name}\n+"
-                "type({F_capsule_data_type}) :: {F_derived_member}",
+                "type({f_capsule_data_type}) :: {F_derived_member}",
                 fmt_class,
             )
         self.set_f_module(
@@ -1103,12 +1103,12 @@ rv = .false.
                 dummy_arg_list.append(fmt_result.C_this)
                 if sintent == "dtor":
                     # dtor will modify C_this to set addr to nullptr.
-#                    line = "type({F_capsule_data_type}){f_intent_attr} :: {C_this}"
-                    line = "type({F_capsule_data_type}), intent(INOUT) :: {C_this}"
+#                    line = "type({f_capsule_data_type}){f_intent_attr} :: {C_this}"
+                    line = "type({f_capsule_data_type}), intent(INOUT) :: {C_this}"
                 else:
-                    line = "type({F_capsule_data_type}), intent(IN) :: {C_this}"
+                    line = "type({f_capsule_data_type}), intent(IN) :: {C_this}"
                 append_format(dummy_decl_list, line, fmt_func)
-                imports[fmt_result.F_capsule_data_type] = True
+                imports[fmt_result.f_capsule_data_type] = True
 
         args_all_in = True  # assume all arguments are intent(in)
         for arg in ast.declarator.params:
