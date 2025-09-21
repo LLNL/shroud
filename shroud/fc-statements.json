@@ -6810,12 +6810,12 @@
         "source": [
             "",
             "// helper {hname}",
-            "struct s_{c_capsule_data_type} {{+",
+            "struct s_{c_capsule_data_type_swig} {{+",
             "void *addr;     /* address of C++ memory */",
             "int idtor;      /* index of destructor */",
             "int cmemflags;  /* memory flags */",
             "-}};",
-            "typedef struct s_{c_capsule_data_type} {c_capsule_data_type};"
+            "typedef struct s_{c_capsule_data_type_swig} {c_capsule_data_type_swig};"
         ],
         "f_fmtname": "{f_capsule_data_type_swig}",
         "derived_type": [
