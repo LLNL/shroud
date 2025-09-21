@@ -494,9 +494,9 @@ class ToDict(visitor.Visitor):
             # to avoid a huge dump.
             d["struct_members"] = list(node.struct_members.keys())
 
-        if node.helpers:
+        if node.fcn_helpers:
             helpers = {}
-            for key, values in node.helpers.items():
+            for key, values in node.fcn_helpers.items():
                 if values:
                     helpers[key] = list(values.keys())
             if helpers:

@@ -708,7 +708,7 @@ class FillFormat(object):
         """
         stmt = bind.stmt
         fmt = bind.fmtdict
-        node_helpers = node.helpers.setdefault("fc", {})
+        node_helpers = node.fcn_helpers.setdefault("fc", {})
         add_fc_helper(node_helpers, stmt.helper, fmt)
         
 def add_fc_helper(node_helpers, helpers, fmt):

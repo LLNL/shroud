@@ -1518,7 +1518,7 @@ class FunctionNode(AstNode):
                         FortranGeneric('float arg') ]
 
     A list of helpers for the function derived from statements.
-    helpers = {
+    fcn_helpers = {
       'fc': {
             name = True,
            }
@@ -1584,7 +1584,7 @@ class FunctionNode(AstNode):
         self.doxygen = kwargs.get("doxygen", {})
         self.fortran_generic = kwargs.get("fortran_generic", [])
         self.return_this = kwargs.get("return_this", False)
-        self.helpers = {}
+        self.fcn_helpers = {}
 
         # Headers required by template arguments.
         self.gen_headers_typedef = {}

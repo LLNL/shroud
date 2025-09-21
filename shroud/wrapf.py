@@ -2038,7 +2038,7 @@ class ModuleInfo(object):
         Parameters:
           node - ast.FunctionNode
         """
-        self.fc_helper.update(node.helpers.get("fc", {}))
+        self.fc_helper.update(node.fcn_helpers.get("fc", {}))
 
     def add_fc_helper(self, helpers, fmt):
         """Add a list of helpers"""
