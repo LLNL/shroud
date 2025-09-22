@@ -43,4 +43,13 @@ main.o : fruit.o wrapfshared.o
 maincpp : maincpp.o
 	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@ $(CXXLIBS)
 
+# Check overloading assignment(=) overload with subclasses
+testmod : testmod.f
+	$(FC) $(FFLAGS) $^ -o $@
+
 testc.o : testc.c wrapShared.h shared.hpp
+
+
+clean_local :
+	rm -f maincpp maincpp.o testmod test_mod.mod
+.PHONY : clean_local
