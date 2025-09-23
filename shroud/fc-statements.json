@@ -4350,7 +4350,7 @@
             "subroutine {F_name_assign_api}(lhs, rhs)+",
             "use iso_c_binding, only : c_associated, c_f_pointer",
             "class({F_derived_name}), intent(INOUT) :: lhs",
-            "class({F_derived_name}), intent(IN) :: rhs",
+            "type({F_derived_name}), intent(IN) :: rhs",
             "-end subroutine {F_name_assign_api}"
         ]
     },

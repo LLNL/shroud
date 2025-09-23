@@ -26,26 +26,21 @@
 module test_mod
 
     type object
-    contains
-        procedure :: object_assign
-        generic :: assignment(=) => object_assign
     end type object
 
     type, extends(object) :: object_shared
-    contains
-        procedure :: object_shared_assign_shared
-        procedure :: object_shared_assign_weak
-        generic :: assignment(=) => object_shared_assign_shared
-        generic :: assignment(=) => object_shared_assign_weak
     end type object_shared
 
     type, extends(object) :: object_weak
-    contains
-        procedure :: object_weak_assign_shared
-        procedure :: object_weak_assign_weak
-        generic :: assignment(=) => object_weak_assign_shared
-        generic :: assignment(=) => object_weak_assign_weak
     end type object_weak
+
+    interface assignment(=)
+       module procedure object_assign
+       module procedure object_shared_assign_shared
+       module procedure object_shared_assign_weak
+       module procedure object_weak_assign_shared
+       module procedure object_weak_assign_weak
+    end interface assignment(=)
 
 contains
 
