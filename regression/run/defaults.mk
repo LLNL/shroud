@@ -107,13 +107,13 @@ endif
 
 ifeq ($(compiler),ibm)
 # rzansel
-TCE = /usr/tce/packages/xl/xl-2019.08.20
-TCE = /usr/tce/packages/xl/xl-2020.11.12
-TCE = /usr/tce/packages/xl/xl-2021.03.11
-TCE = /usr/tce/packages/xl/xl-2021.12.22
-TCE = /usr/tce/packages/xl/xl-2022.08.19
-TCE = /usr/tce/packages/xl/xl-2023.03.13
-CFI_INCLUDE = -I$(TCE)/xlf/16.1.1/include
+#TCE = /usr/tce/packages/xl/xl-2019.08.20
+#TCE = /usr/tce/packages/xl/xl-2020.11.12
+#TCE = /usr/tce/packages/xl/xl-2021.03.11
+#TCE = /usr/tce/packages/xl/xl-2021.12.22
+#TCE = /usr/tce/packages/xl/xl-2022.08.19
+#TCE = /usr/tce/packages/xl/xl-2023.03.13
+#CFI_INCLUDE = -I$(TCE)/xlf/16.1.1/include
 CC = xlc
 LOCAL_CFLAGS = -g
 LOCAL_CFLAGS += $(CFI_INCLUDE)
@@ -135,8 +135,8 @@ LOCAL_FFLAGS += -qpreprocess -WF,-P
 # keep preprocessor output
 #LOCAL_FFLAGS += -d
 # -qsuffix=cpp=f
-CLIBS = -lstdc++ -L$(TCE)/alllibs -libmc++ -lstdc++
-FLIBS = -lstdc++ -L$(TCE)/alllibs -libmc++ -lstdc++
+CLIBS = -lstdc++ -Lalllibs -libmc++ -lstdc++
+FLIBS = -lstdc++ -Lalllibs -libmc++ -lstdc++
 SHARED = -fPIC
 LD_SHARED = -shared
 endif
