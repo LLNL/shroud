@@ -4342,11 +4342,7 @@
         "notes": [
             "Used with options.F_assignment_api == 'swig'"
         ],
-        "f_type_bound": [
-            "procedure :: {F_name_assign_api}",
-            "generic :: assignment(=) => {F_name_assign_api}"
-        ],
-        "f_operator": [
+        "f_operator_body": [
             "subroutine {F_name_assign_api}(lhs, rhs)+",
             "use iso_c_binding, only : c_associated, c_f_pointer",
             "class({F_derived_name}), intent(INOUT) :: lhs",
@@ -4365,7 +4361,7 @@
             "procedure :: {F_name_assign_api}",
             "generic :: assignment(=) => {F_name_assign_api}"
         ],
-        "f_operator": [
+        "f_operator_body": [
             "subroutine {F_name_assign_api}(lhs, rhs)+",
             "use iso_c_binding, only : c_associated, c_f_pointer",
             "class({F_derived_name}), intent(INOUT) :: lhs",

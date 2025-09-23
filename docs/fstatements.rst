@@ -280,12 +280,14 @@ For example,format field *f_helper_array_context* may be ``VEC_SHROUD_array``.
 
 See :ref:`HelpersAnchor` for a description of helper functions.
 
-f_operator
-^^^^^^^^^^
+f_operator_body
+^^^^^^^^^^^^^^^
 
-Code used to overload an operator.
-Also uses *f_type_bound* to add the operator function to the
-derived type functions.
+Function code used to overload an operator.
+An interface block for the operator will also be created.
+
+.. Also uses *f_type_bound* to add the operator function to the
+   derived type functions.
 
 f_need_wrapper
 ^^^^^^^^^^^^^^

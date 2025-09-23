@@ -564,12 +564,17 @@ rv = c_associated({F_this}%{F_derived_member}%addr)
 
         asgn_stmt = statements.lookup_fc_stmts([
             "f", "operator", "assignment", "shadow", options.F_assignment_api])
-        if asgn_stmt.f_operator:
+        if asgn_stmt.f_operator_body:
             fmt.F_name_api = fmt_class.F_name_assign
-            fmt_class.F_name_assign_api = wformat(options.F_name_impl_template, fmt)
-            util.append_format_cmds(type_bound_part, asgn_stmt, "f_type_bound", fmt)
+            fmt.F_name_assign_api = wformat(options.F_name_impl_template, fmt)
+            # interface assignment
+            operator = "="
+            procedure = fmt.F_name_assign_api
+            ops = fileinfo.operator_map.setdefault(operator, [])
+            ops.append((node, procedure))
+            # body
             impl.append("")
-            util.append_format_cmds(impl, asgn_stmt, "f_operator", fmt)
+            util.append_format_cmds(impl, asgn_stmt, "f_operator_body", fmt)
 
     def write_object_final(self, node, fileinfo):
 #        if options.F_auto_reference_count or smart_pointer:
@@ -613,10 +618,10 @@ call array_destructor({F_this}%{F_derived_member})
         Args:
             node - ast.ClassNode
             fileinfo - ModuleInfo
-            fmt_class -
+            fmt_class - format dictionary for the class
             operator - ".eq.", ".ne."
-            procedure -
-            predicate -
+            procedure - procedure name
+            predicate - comparison predicate  ex. c_associated(a,b)
         """
         fmt = util.Scope(fmt_class)
         fmt.procedure = procedure
@@ -1849,8 +1854,9 @@ rv = .false.
         if fileinfo.operator_map:
             ops = sorted(fileinfo.operator_map)
             for op in ops:
+                operator = "assignment" if op == "=" else "operator"
                 output.append("")
-                output.append("interface operator (%s)" % op)
+                output.append("interface %s (%s)" % (operator, op))
                 output.append(1)
                 for fcn, opfcn in fileinfo.operator_map[op]:
                     if fcn.cpp_if:

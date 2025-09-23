@@ -18942,7 +18942,7 @@ f_operator_assignment_shadow_orig:
   f_type_bound:
   - 'procedure :: {F_name_assign_api}'
   - 'generic :: assignment(=) => {F_name_assign_api}'
-  f_operator:
+  f_operator_body:
   - subroutine {F_name_assign_api}(lhs, rhs)+
   - 'use iso_c_binding, only : c_associated, c_f_pointer'
   - 'class({F_derived_name}), intent(INOUT) :: lhs'
@@ -18963,14 +18963,11 @@ f_operator_assignment_shadow_swig:
   intent: operator
   notes:
   - Used with options.F_assignment_api == 'swig'
-  f_type_bound:
-  - 'procedure :: {F_name_assign_api}'
-  - 'generic :: assignment(=) => {F_name_assign_api}'
-  f_operator:
+  f_operator_body:
   - subroutine {F_name_assign_api}(lhs, rhs)+
   - 'use iso_c_binding, only : c_associated, c_f_pointer'
   - 'class({F_derived_name}), intent(INOUT) :: lhs'
-  - 'class({F_derived_name}), intent(IN) :: rhs'
+  - 'type({F_derived_name}), intent(IN) :: rhs'
   - -end subroutine {F_name_assign_api}
   sphinx-end-before: f_operator_assignment_shadow_swig
 f_out_bool*:
