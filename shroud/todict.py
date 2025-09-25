@@ -371,6 +371,10 @@ class ToDict(visitor.Visitor):
         for key in ["patterns", "destructors"]:
             if hasattr(node, key):
                 self.add_visit_fields(node, d, [key])
+        if hasattr(node, "assign_operators") and node.assign_operators:
+            # Sometimes this is a NameSpaceNode
+            names = [ oper.name for oper in node.assign_operators]
+            d["assign_operators"] = names
         return d
 
     def visit_ClassNode(self, node):

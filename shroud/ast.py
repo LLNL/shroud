@@ -483,6 +483,8 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.scope = ""
         self.scope_file = [library]
 
+        self.assign_operators = []
+
         self.options = self.default_options()
         if options:
             self.options.update(options, replace=True)

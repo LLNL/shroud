@@ -152,7 +152,7 @@ class Typemap(object):
         ("implied_array", False),  # ex. std::vector
         ("is_enum", False),
         ("export", False),      # If True, export to YAML file.
-        ("smart_pointer", None), # Used to generated names
+        ("smart_pointer", None), # Used to generated names, ex shared, weak
         ("__line__", None),
     )
 

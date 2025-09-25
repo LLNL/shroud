@@ -501,9 +501,12 @@ class GenFunctions(object):
     def share_class(self, cls, smart):
         """Create a subclass for use with std::shared.
 
-        smart is a dictionary with fields
-          type   - std::shared_ptr, std::weak_ptr
-          format
+        Parameters
+        ----------
+          cls   - ast.ClassNode
+          smart - is a dictionary with fields from YAML file (for smart pointers)
+              type   - std::shared_ptr, std::weak_ptr
+              format -
         """
         newcls = cls.clone()
         newcls.smart_pointer = []
