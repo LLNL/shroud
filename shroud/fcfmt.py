@@ -139,6 +139,7 @@ class FillFormat(object):
         cursor = self.cursor
         func_cursor = cursor.push_node(node)
 
+        options = node.options
         fmt_func = node.fmtdict
         arglist = []
         setattr(fmt_func, "{}_arglist".format(wlang), arglist)
@@ -151,11 +152,14 @@ class FillFormat(object):
                 # Generic constructor for C "class" (wrap_struct_as=class).
                 clsnode = node.lookup_class(node.options.class_ctor)
                 fmt_func.F_name_generic = clsnode.fmtdict.F_derived_name
-            elif node.ast.declarator.is_ctor:
-                fmt_func.F_name_generic = fmt_func.F_derived_name
+            elif options.F_create_generic:
+                if node.ast.declarator.is_ctor:
+                    fmt_func.F_name_generic = fmt_func.F_derived_name
+                else:
+                    node.reeval_template("F_name_generic")
             node.eval_template("F_name_impl")
             node.eval_template("F_name_function")
-            node.eval_template("F_name_generic")
+        fmt_func.update(node.user_fmt)
 
         result_stmt = bind_result.stmt
         func_cursor.stmt = result_stmt

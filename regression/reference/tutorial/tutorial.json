@@ -3560,7 +3560,6 @@
                     "C_name_api": "TemplateReturn",
                     "F_name_api": "template_return",
                     "F_name_function": "template_return_int",
-                    "F_name_generic": "template_return",
                     "F_name_impl": "template_return_int",
                     "c_arglist": [
                         "SHC_rv"
@@ -3723,7 +3722,6 @@
                     "C_name_api": "TemplateReturn",
                     "F_name_api": "template_return",
                     "F_name_function": "template_return_double",
-                    "F_name_generic": "template_return",
                     "F_name_impl": "template_return_double",
                     "c_arglist": [
                         "SHC_rv"
