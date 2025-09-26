@@ -157,8 +157,8 @@ class FillFormat(object):
                     fmt_func.F_name_generic = fmt_func.F_derived_name
                 else:
                     node.reeval_template("F_name_generic")
-            node.eval_template("F_name_impl")
-            node.eval_template("F_name_function")
+            node.reeval_template("F_name_impl")
+            node.reeval_template("F_name_function")
         fmt_func.update(node.user_fmt)
 
         result_stmt = bind_result.stmt
