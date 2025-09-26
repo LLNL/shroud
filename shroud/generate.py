@@ -759,7 +759,6 @@ class GenFunctions(object):
                 overloaded_functions.setdefault(name, []).append(
                     function)
                 function.options.F_create_generic = True
-                fmt.F_name_generic = name
                 function._overloaded = True
             else:
                 overloaded_functions.setdefault(function.name, []).append(

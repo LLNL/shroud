@@ -147,7 +147,9 @@ class FillFormat(object):
         fmt_result = statements.set_bind_fmtdict(bind_result, fmt_func)
 
         if wlang == "f":
-            if node.options.class_ctor:
+            if node.ast.declarator.is_ctor:
+                fmt_func.F_name_generic = fmt_func.F_derived_name
+            elif node.options.class_ctor:
                 # Generic constructor for C "class" (wrap_struct_as=class).
                 clsnode = node.lookup_class(node.options.class_ctor)
                 fmt_func.F_name_generic = clsnode.fmtdict.F_derived_name
