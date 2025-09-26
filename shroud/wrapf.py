@@ -1603,10 +1603,8 @@ rv = .false.
 
         if node.options.class_ctor:
             # Generic constructor for C "class" (wrap_struct_as=class).
-            clsnode = node.lookup_class(node.options.class_ctor)
-            fmt_result.F_name_generic = clsnode.fmtdict.F_derived_name
             fileinfo.f_function_generic.setdefault(
-                fmt_result.F_name_generic, GenericFunction(True, cls, [])
+                fmt_func.F_name_generic, GenericFunction(True, cls, [])
             ).functions.append(node)
         elif options.F_create_generic:
             # if return type is templated in C++,

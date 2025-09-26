@@ -1416,6 +1416,8 @@ F_name_function
     Defaults to evaluation of option *F_name_function_template*.
 
 F_name_generic
+    The generic name for a function.
+    Set with option **class_ctor* or *F_create_generic*.
     Defaults to evaluation of option *F_name_generic_template*.
 
 F_name_impl

@@ -5204,7 +5204,6 @@
                                 "C_return_type": "void",
                                 "F_arg_c_call": "SHT_rv%cxxmem",
                                 "F_arguments": "",
-                                "F_name_generic": "cstruct_as_class",
                                 "F_subprogram": "function",
                                 "c_abstract_decl": "STR_Cstruct_as_class *",
                                 "c_const": "",
@@ -5261,7 +5260,7 @@
                     "C_name_api": "Create_Cstruct_as_class",
                     "F_name_api": "create_cstruct_as_class",
                     "F_name_function": "create_cstruct_as_class",
-                    "F_name_generic": "create_cstruct_as_class",
+                    "F_name_generic": "cstruct_as_class",
                     "F_name_impl": "create_cstruct_as_class",
                     "f_arglist": [
                         "SHT_rv"
@@ -5329,7 +5328,6 @@
                                 "C_return_type": "void",
                                 "F_arg_c_call": "x,\t y,\t SHT_rv%cxxmem",
                                 "F_arguments": "x,\t y",
-                                "F_name_generic": "cstruct_as_class",
                                 "F_subprogram": "function",
                                 "c_abstract_decl": "STR_Cstruct_as_class *",
                                 "c_const": "",
@@ -5480,7 +5478,7 @@
                     "C_name_api": "Create_Cstruct_as_class_args",
                     "F_name_api": "create_cstruct_as_class_args",
                     "F_name_function": "create_cstruct_as_class_args",
-                    "F_name_generic": "create_cstruct_as_class_args",
+                    "F_name_generic": "cstruct_as_class",
                     "F_name_impl": "create_cstruct_as_class_args",
                     "f_arglist": [
                         "SHT_rv",
@@ -6045,7 +6043,6 @@
                                 "C_return_type": "void",
                                 "F_arg_c_call": "x,\t y,\t z,\t SHT_rv%cxxmem",
                                 "F_arguments": "x,\t y,\t z",
-                                "F_name_generic": "cstruct_as_subclass",
                                 "F_subprogram": "function",
                                 "c_abstract_decl": "STR_Cstruct_as_subclass *",
                                 "c_const": "",
@@ -6243,7 +6240,7 @@
                     "C_name_api": "Create_Cstruct_as_subclass_args",
                     "F_name_api": "create_cstruct_as_subclass_args",
                     "F_name_function": "create_cstruct_as_subclass_args",
-                    "F_name_generic": "create_cstruct_as_subclass_args",
+                    "F_name_generic": "cstruct_as_subclass",
                     "F_name_impl": "create_cstruct_as_subclass_args",
                     "f_arglist": [
                         "SHT_rv",
