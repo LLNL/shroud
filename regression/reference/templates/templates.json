@@ -6601,25 +6601,25 @@
             "c_header": [
                 "<stddef.h>"
             ],
-            "c_type": "TEM_vector_size_type",
+            "c_type": "",
             "cfi_type": "CFI_type_size_t",
             "cxx_header": [
                 "<cstddef>"
             ],
             "cxx_type": "std::vector::size_type",
-            "f_cast": "int({f_var}, vector_size_type)",
-            "f_kind": "vector_size_type",
+            "f_cast": "int({f_var}, )",
+            "f_kind": "",
             "f_module": {
                 "templates_std_mod": [
-                    "vector_size_type"
+                    ""
                 ]
             },
             "f_module_name": "templates_std_mod",
-            "f_type": "integer(vector_size_type)",
+            "f_type": "integer()",
             "flat_name": "size_t",
             "i_module": {
                 "templates_std_mod": [
-                    "vector_size_type"
+                    ""
                 ]
             },
             "sgroup": "native",

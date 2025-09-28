@@ -2297,7 +2297,7 @@
                         "arg": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_type": "TypeID",
+                                "c_type": "",
                                 "c_var": "arg",
                                 "ctor_expr": "arg",
                                 "cxx_addr": "&",
@@ -2915,7 +2915,6 @@
                 },
                 "zz_fmtdict": {
                     "C_name_api": "TypeID",
-                    "C_name_typedef": "TypeID",
                     "F_name_api": "type_id",
                     "cxx_type": "TypeID",
                     "typedef_name": "TypeID"
@@ -3039,7 +3038,7 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
-            "c_type": "TypeID",
+            "c_type": "",
             "cfi_type": "CFI_type_int",
             "cxx_type": "tutorial::TypeID",
             "f_cast": "int({f_var}, )",

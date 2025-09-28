@@ -10,6 +10,7 @@ from . import error
 from .declstr import gen_arg_as_c, gen_arg_as_cxx
 from . import todict
 from . import statements
+from . import typemap
 from . import util
 from .util import wformat, append_format
 
@@ -91,6 +92,9 @@ class FillFormat(object):
         fmt_class = node.fmtdict
         cls_cursor = self.cursor.push_node(node)
 
+        for typ in node.typedefs:
+            self.fmt_typedefs(typ)
+
         if node.baseclass:
             # Only single inheritance supported.
             # Base class already contains F_derived_member.
@@ -108,6 +112,18 @@ class FillFormat(object):
         self.cursor.pop_node(node)
             
     def fmt_typedefs(self, node):
+        fmt = node.fmtdict
+        if node.wrap.c:
+            node.reeval_template("C_name_typedef")
+        else:
+            # language=c, use original name.
+            fmt.C_name_typedef = fmt.typedef_name
+        if node.wrap.fortran:
+            node.reeval_template("F_name_typedef")
+        
+        fmt.update(node.user_fmt)
+        typemap.fill_typedef_typemap(node, node.user_fields)
+
         if node.wrap.fortran:
             if node.ast.declarator.is_function_pointer():
                 meta = statements.fetch_typedef_bind(node, "f").meta
