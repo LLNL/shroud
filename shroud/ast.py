@@ -174,13 +174,6 @@ class AstNode(object):
         case = self.options.LUA_API_case
         return self.apply_API_option(name, case, "LUA_API_case")
 
-    def update_names(self):
-        """Update C and Fortran names.
-        Necessary after templates are instantiated which
-        defines fmt.function_suffix.
-        """
-        raise NotImplementedError("update_names for {}".format(self.__class__.__name__))
-
 ######################################################################
 
 class NamespaceMixin(object):
@@ -1986,13 +1979,6 @@ class TypedefNode(AstNode):
             C_name_api = self.apply_C_API_option(self.name),
             F_name_api = self.apply_F_API_option(self.name),
         )
-
-    def update_names(self):
-        """Update C and Fortran names.
-
-        Called when reading declaration and
-        when instantiation a class in GenFunctions.template_typedef.
-        """
 
     def clone(self):
         """Create a copy of a TypedefNode to use with C++ template.
