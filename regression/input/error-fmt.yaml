@@ -1,0 +1,27 @@
+copyright:
+- Copyright Shroud Project Developers. See LICENSE file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+# Test error messages from fcfmt.py.
+
+library: error
+cxx_header: error.hpp
+
+options:
+  debug: True
+  wrap_python: True
+
+declarations:
+
+####
+#
+
+- decl: typedef int64_t IndexType
+  fields:
+    # Unknown key for Typemap 'no_such_keyword'
+    no_such_keyword: True
+    f_c_module:
+      "--import--":
+      -  LIB_IndexType

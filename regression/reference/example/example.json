@@ -6491,7 +6491,6 @@
                                             "C_name_api": "getValue",
                                             "F_name_api": "get_value",
                                             "F_name_function": "get_value_int",
-                                            "F_name_generic": "get_value",
                                             "F_name_impl": "ex_class2_get_value_int",
                                             "LUA_name": "getValue",
                                             "LUA_name_api": "getValue",
@@ -6724,7 +6723,6 @@
                                             "C_name_api": "getValue",
                                             "F_name_api": "get_value",
                                             "F_name_function": "get_value_double",
-                                            "F_name_generic": "get_value",
                                             "F_name_impl": "ex_class2_get_value_double",
                                             "PY_name_impl": "PP_getValue_double",
                                             "c_arglist": [

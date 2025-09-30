@@ -120,17 +120,6 @@ declarations:
 ####
 #
 
-- decl: typedef int64_t IndexType
-  fields:
-    # Unknown key for Typemap 'no_such_keyword'
-    no_such_keyword: True
-    f_c_module:
-      "--import--":
-      -  LIB_IndexType
-
-####
-#
-
 - decl: template<typename T, typename U>
        struct twostruct
 

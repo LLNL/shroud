@@ -1603,10 +1603,8 @@ rv = .false.
 
         if node.options.class_ctor:
             # Generic constructor for C "class" (wrap_struct_as=class).
-            clsnode = node.lookup_class(node.options.class_ctor)
-            fmt_result.F_name_generic = clsnode.fmtdict.F_derived_name
             fileinfo.f_function_generic.setdefault(
-                fmt_result.F_name_generic, GenericFunction(True, cls, [])
+                fmt_func.F_name_generic, GenericFunction(True, cls, [])
             ).functions.append(node)
         elif options.F_create_generic:
             # if return type is templated in C++,
@@ -1616,12 +1614,12 @@ rv = .false.
                 # ctor generic do not get added as derived type generic.
                 # Always create a generic, even if only one function.
                 fileinfo.f_function_generic.setdefault(
-                    fmt_result.F_name_generic, GenericFunction(True, cls, [])
+                    fmt_func.F_name_generic, GenericFunction(True, cls, [])
                 ).functions.append(node)
             else:
                 if cls:
                     fileinfo.f_type_generic.setdefault(
-                        fmt_result.F_name_generic, GenericFunction(False, cls, [])
+                        fmt_func.F_name_generic, GenericFunction(False, cls, [])
                     ).functions.append(node)
                 # If from a fortran_generic list, create generic interface.
                 if node._generated == "fortran_generic":
@@ -1629,7 +1627,7 @@ rv = .false.
                 else:
                     force = False
                 fileinfo.f_function_generic.setdefault(
-                    fmt_result.F_name_scope + fmt_result.F_name_generic,
+                    fmt_func.F_name_scope + fmt_func.F_name_generic,
                     GenericFunction(force, cls, [])).functions.append(node)
         if cls:
             # Add procedure to derived type

@@ -1281,7 +1281,6 @@
                     "C_name_api": "getData",
                     "F_name_api": "get_data",
                     "F_name_function": "get_data_int",
-                    "F_name_generic": "get_data",
                     "F_name_impl": "get_data_int",
                     "c_arglist": [
                         "SHC_rv"
@@ -1445,7 +1444,6 @@
                     "C_name_api": "getData",
                     "F_name_api": "get_data",
                     "F_name_function": "get_data_double",
-                    "F_name_generic": "get_data",
                     "F_name_impl": "get_data_double",
                     "c_arglist": [
                         "SHC_rv"

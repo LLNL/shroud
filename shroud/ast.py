@@ -174,13 +174,6 @@ class AstNode(object):
         case = self.options.LUA_API_case
         return self.apply_API_option(name, case, "LUA_API_case")
 
-    def update_names(self):
-        """Update C and Fortran names.
-        Necessary after templates are instantiated which
-        defines fmt.function_suffix.
-        """
-        raise NotImplementedError("update_names for {}".format(self.__class__.__name__))
-
 ######################################################################
 
 class NamespaceMixin(object):
@@ -806,6 +799,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             # Add default values to format to aid debugging.
             # Avoids exception from wformat for non-existent fields.
             fmt_library.update(dict(
+                C_name_typedef="XXXC_name_typedef",
                 c_get_value="XXXc_get_value",
                 c_type="XXXc_type",
                 c_var="XXXc_var",
@@ -821,6 +815,7 @@ class LibraryNode(AstNode, NamespaceMixin):
                 cxx_type="XXXcxx_type",
                 cxx_var="XXXcxx_var",
 #                cxx_T="short",   # Needs to be a actual type to find helper.
+                F_name_typedef="XXXF_name_typedef",
                 f_abstract_interface="XXXf_abstract_interface=",
                 f_capsule_data_type="XXXf_capsule_data_type",
                 f_intent="XXXf_intent",
@@ -1914,6 +1909,12 @@ class TypedefNode(AstNode):
     Typedef.
     Includes builtin typedefs and from declarations.
 
+    YAML file
+    - decl: typedef long SidreLength
+      fields:
+        c_header : sidre/SidreTypes.h
+        c_type   : SIDRE_SidreLength
+
     type name must be in a typemap.
 
     - decl: typedef int IndexType
@@ -1952,9 +1953,6 @@ class TypedefNode(AstNode):
         self.fmtdict = util.Scope(parent.fmtdict)
         self.user_fmt = format
         self.default_format(parent, format)
-        if self.user_fmt:
-            self.fmtdict.update(self.user_fmt, replace=True)
-        self.update_names()
 
         self.ast = ast
         self.user_fields = fields
@@ -1966,9 +1964,6 @@ class TypedefNode(AstNode):
         self.f_module = ntypemap.f_module
         self.typemap = ntypemap
             
-        typemap.fill_typedef_typemap(self)
-        if fields:
-            ntypemap.update(fields)
         error.cursor.pop_node(self)
 
     def get_typename(self):
@@ -1983,23 +1978,6 @@ class TypedefNode(AstNode):
             C_name_api = self.apply_C_API_option(self.name),
             F_name_api = self.apply_F_API_option(self.name),
         )
-
-    def update_names(self):
-        """Update C and Fortran names.
-
-        Called when reading declaration and
-        when instantiation a class in GenFunctions.template_typedef.
-        """
-        fmt = self.fmtdict
-        if self.wrap.c:
-            if "C_name_typedef" not in self.user_fmt:
-                self.reeval_template("C_name_typedef")
-        else:
-            # language=c, use original name.
-            fmt.C_name_typedef = fmt.typedef_name
-        if self.wrap.fortran:
-            if "F_name_typedef" not in self.user_fmt:
-                self.reeval_template("F_name_typedef")
 
     def clone(self):
         """Create a copy of a TypedefNode to use with C++ template.
@@ -2018,14 +1996,12 @@ class TypedefNode(AstNode):
 
         Need to create a new typemap for typedefs within a templated class.
         """
-        self.update_names()
         type_name = util.wformat("{namespace_scope}{class_scope}{cxx_type}", self.fmtdict)
 
         ntypemap = self.typemap.clone_as(type_name)
         self.typemap = ntypemap
         self.parent.symtab.register_typemap(type_name, ntypemap)
         ntypemap.is_typedef = True
-        typemap.fill_typedef_typemap(self)
 
 
 ######################################################################

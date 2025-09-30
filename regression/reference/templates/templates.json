@@ -1453,7 +1453,6 @@
                             "C_name_api": "get_value",
                             "F_name_api": "get_value",
                             "F_name_function": "get_value",
-                            "F_name_generic": "get_value",
                             "F_name_impl": "struct_as_class_int_get_value",
                             "c_arglist": [
                                 "SHC_rv"
@@ -2397,7 +2396,6 @@
                             "C_name_api": "get_value",
                             "F_name_api": "get_value",
                             "F_name_function": "get_value",
-                            "F_name_generic": "get_value",
                             "F_name_impl": "struct_as_class_double_get_value",
                             "c_arglist": [
                                 "SHC_rv"
@@ -3841,7 +3839,6 @@
                     "C_name_api": "UseImplWorker",
                     "F_name_api": "use_impl_worker",
                     "F_name_function": "use_impl_worker_internal_ImplWorker1",
-                    "F_name_generic": "use_impl_worker",
                     "F_name_impl": "use_impl_worker_internal_ImplWorker1",
                     "PY_name_impl": "PY_UseImplWorker_internal_ImplWorker1",
                     "c_arglist": [
@@ -4041,7 +4038,6 @@
                     "C_name_api": "UseImplWorker",
                     "F_name_api": "use_impl_worker",
                     "F_name_function": "use_impl_worker_internal_ImplWorker2",
-                    "F_name_generic": "use_impl_worker",
                     "F_name_impl": "use_impl_worker_internal_ImplWorker2",
                     "PY_name_impl": "PY_UseImplWorker_internal_ImplWorker2",
                     "c_arglist": [
@@ -5045,7 +5041,6 @@
                                     "C_name_api": "at",
                                     "F_name_api": "at",
                                     "F_name_function": "at",
-                                    "F_name_generic": "at",
                                     "F_name_impl": "vector_int_at",
                                     "PY_name_impl": "PY_at",
                                     "c_arglist": [
@@ -6141,7 +6136,6 @@
                                     "C_name_api": "at",
                                     "F_name_api": "at",
                                     "F_name_function": "at",
-                                    "F_name_generic": "at",
                                     "F_name_impl": "vector_double_at",
                                     "PY_name_impl": "PY_at",
                                     "c_arglist": [
@@ -6607,33 +6601,25 @@
             "c_header": [
                 "<stddef.h>"
             ],
-            "c_type": "TEM_vector_size_type",
+            "c_type": "size_t",
             "cfi_type": "CFI_type_size_t",
             "cxx_header": [
                 "<cstddef>"
             ],
             "cxx_type": "std::vector::size_type",
-            "f_cast": "int({f_var}, vector_size_type)",
-            "f_kind": "vector_size_type",
+            "f_cast": "int({f_var}, C_SIZE_T)",
+            "f_kind": "C_SIZE_T",
             "f_module": {
-                "templates_std_mod": [
-                    "vector_size_type"
+                "iso_c_binding": [
+                    "C_SIZE_T"
                 ]
             },
-            "f_module_name": "templates_std_mod",
-            "f_type": "integer(vector_size_type)",
+            "f_module_name": "iso_c_binding",
+            "f_type": "integer(C_SIZE_T)",
             "flat_name": "size_t",
-            "i_module": {
-                "templates_std_mod": [
-                    "vector_size_type"
-                ]
-            },
             "sgroup": "native",
             "sh_type": "SH_TYPE_SIZE_T",
-            "typedef": "size_t",
-            "wrap_header": [
-                "wrapstd_vector.h"
-            ]
+            "typedef": "size_t"
         },
         "std::vector<double>::size_type": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",

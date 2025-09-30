@@ -108,28 +108,21 @@ Error in 'decl' field
    ^
 Expected EOF, found ID
 --------------------
-Node: IndexType
-Typemap IndexType: Unknown key 'no_such_keyword'
---------------------
-Node: IndexType
-typedef int64_t IndexType
-Deprecated: Typemap IndexType: Replacing deprecated field 'f_c_module' with 'i_module'
---------------------
 Node: process_twostruct
-line 137
+line 126
 Templated function requires the 'cxx_template' field
 --------------------
 Node: process_twostruct
-line 137
+line 126
 field f_arg_decl is deprecated, changed to f_dummy_decl
 --------------------
 Node: process_twostruct
-line 145
+line 134
 'cxx_template' field only used with a templated function
 --------------------
 Node: getConstCharPtrAsCopyArg
-line 153
+line 142
 format F_string_result_as_arg is deprecated, changed to option.F_result_as_arg
 Instead add attribute +funcarg(name)+deref(copy) to decl.
 Option F_result_as_arg is the default name when not specified in +funcarg.
-Too many warnings: 30
+Too many warnings: 29

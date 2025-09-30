@@ -10,6 +10,7 @@ from . import error
 from .declstr import gen_arg_as_c, gen_arg_as_cxx
 from . import todict
 from . import statements
+from . import typemap
 from . import util
 from .util import wformat, append_format
 
@@ -91,6 +92,9 @@ class FillFormat(object):
         fmt_class = node.fmtdict
         cls_cursor = self.cursor.push_node(node)
 
+        for typ in node.typedefs:
+            self.fmt_typedefs(typ)
+
         if node.baseclass:
             # Only single inheritance supported.
             # Base class already contains F_derived_member.
@@ -108,6 +112,19 @@ class FillFormat(object):
         self.cursor.pop_node(node)
             
     def fmt_typedefs(self, node):
+        self.cursor.push_node(node)
+        fmt = node.fmtdict
+        if node.wrap.c:
+            node.reeval_template("C_name_typedef")
+        else:
+            # language=c, use original name.
+            fmt.C_name_typedef = fmt.typedef_name
+        if node.wrap.fortran:
+            node.reeval_template("F_name_typedef")
+        
+        fmt.update(node.user_fmt)
+        typemap.fill_typedef_typemap(node, node.user_fields)
+
         if node.wrap.fortran:
             if node.ast.declarator.is_function_pointer():
                 meta = statements.fetch_typedef_bind(node, "f").meta
@@ -127,6 +144,7 @@ class FillFormat(object):
                     # XXX - To be changed to i_module, i_kind
                     fmt.i_module_name = ntypemap.f_module_name
                     fmt.i_kind = ntypemap.f_kind
+        self.cursor.pop_node(node)
 
     def fmt_functions(self, cls, functions):
         for node in functions:
@@ -139,6 +157,7 @@ class FillFormat(object):
         cursor = self.cursor
         func_cursor = cursor.push_node(node)
 
+        options = node.options
         fmt_func = node.fmtdict
         arglist = []
         setattr(fmt_func, "{}_arglist".format(wlang), arglist)
@@ -147,9 +166,18 @@ class FillFormat(object):
         fmt_result = statements.set_bind_fmtdict(bind_result, fmt_func)
 
         if wlang == "f":
-            node.eval_template("F_name_impl")
-            node.eval_template("F_name_function")
-            node.eval_template("F_name_generic")
+            if node.options.class_ctor:
+                # Generic constructor for C "class" (wrap_struct_as=class).
+                clsnode = node.lookup_class(node.options.class_ctor)
+                fmt_func.F_name_generic = clsnode.fmtdict.F_derived_name
+            elif options.F_create_generic:
+                if node.ast.declarator.is_ctor:
+                    fmt_func.F_name_generic = fmt_func.F_derived_name
+                else:
+                    node.reeval_template("F_name_generic")
+            node.reeval_template("F_name_impl")
+            node.reeval_template("F_name_function")
+        fmt_func.update(node.user_fmt)
 
         result_stmt = bind_result.stmt
         func_cursor.stmt = result_stmt

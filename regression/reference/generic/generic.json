@@ -6389,7 +6389,6 @@
                                 "C_return_type": "void",
                                 "F_arg_c_call": "SHT_rv%cxxmem",
                                 "F_arguments": "",
-                                "F_name_generic": "struct_as_class",
                                 "F_subprogram": "function",
                                 "c_abstract_decl": "GEN_StructAsClass *",
                                 "c_const": "",
@@ -6446,7 +6445,7 @@
                     "C_name_api": "CreateStructAsClass",
                     "F_name_api": "create_struct_as_class",
                     "F_name_function": "create_struct_as_class",
-                    "F_name_generic": "create_struct_as_class",
+                    "F_name_generic": "struct_as_class",
                     "F_name_impl": "create_struct_as_class",
                     "f_arglist": [
                         "SHT_rv"

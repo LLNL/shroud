@@ -1711,7 +1711,7 @@
                                 "C_call_function": "returnBytesForIndexType2(\targ)",
                                 "C_call_list": "arg",
                                 "C_name": "returnBytesForIndexType2",
-                                "C_prototype": "IndexType2 arg",
+                                "C_prototype": "LOCAL_IndexType arg",
                                 "C_return_type": "int",
                                 "F_arg_c_call": "arg",
                                 "F_arguments": "arg",
@@ -1752,12 +1752,12 @@
                         },
                         "arg": {
                             "fmtdict": {
-                                "c_abstract_decl": "IndexType2",
+                                "c_abstract_decl": "LOCAL_IndexType",
                                 "c_addr": "&",
                                 "c_const": "",
                                 "c_deref": "",
                                 "c_member": ".",
-                                "c_type": "IndexType2",
+                                "c_type": "LOCAL_IndexType",
                                 "c_var": "arg",
                                 "cxx_abstract_decl": "IndexType2",
                                 "cxx_addr": "&",
@@ -1880,14 +1880,14 @@
                                 "C_call_function": "returnShapeSize2(\tndims,\t shape)",
                                 "C_call_list": "ndims,\t shape",
                                 "C_name": "returnShapeSize2",
-                                "C_prototype": "int ndims,\t const IndexType2 *shape",
-                                "C_return_type": "IndexType2",
+                                "C_prototype": "int ndims,\t const LOCAL_IndexType *shape",
+                                "C_return_type": "LOCAL_IndexType",
                                 "F_arg_c_call": "ndims,\t shape",
                                 "F_arguments": "ndims,\t shape",
                                 "F_subprogram": "function",
                                 "c_const": "",
                                 "c_get_value": "",
-                                "c_type": "IndexType2",
+                                "c_type": "LOCAL_IndexType",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
@@ -1961,12 +1961,12 @@
                         },
                         "shape": {
                             "fmtdict": {
-                                "c_abstract_decl": "const IndexType2 *",
+                                "c_abstract_decl": "const LOCAL_IndexType *",
                                 "c_addr": "",
                                 "c_const": "const ",
                                 "c_deref": "*",
                                 "c_member": "->",
-                                "c_type": "IndexType2",
+                                "c_type": "LOCAL_IndexType",
                                 "c_var": "shape",
                                 "cxx_abstract_decl": "const IndexType2 *",
                                 "cxx_addr": "",
@@ -2340,7 +2340,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name_api": "IndexType2",
-                    "C_name_typedef": "IndexType2",
+                    "C_name_typedef": "LOCAL_IndexType",
                     "F_name_api": "index_type2",
                     "F_name_typedef": "LOCAL_Index_Type",
                     "cxx_type": "IndexType2",
@@ -2523,7 +2523,7 @@
             "c_header": [
                 "<stdint.h>"
             ],
-            "c_type": "IndexType2",
+            "c_type": "LOCAL_IndexType",
             "cfi_type": "CFI_type_int32_t",
             "cxx_header": [
                 "<cstdint>"
