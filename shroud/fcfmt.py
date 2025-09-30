@@ -95,7 +95,6 @@ class FillFormat(object):
         for typ in node.typedefs:
             self.fmt_typedefs(typ)
 
-        option_to_format(node, ["F_assignment_api"])# YYY
         if node.baseclass:
             # Only single inheritance supported.
             # Base class already contains F_derived_member.
