@@ -112,6 +112,7 @@ class FillFormat(object):
         self.cursor.pop_node(node)
             
     def fmt_typedefs(self, node):
+        self.cursor.push_node(node)
         fmt = node.fmtdict
         if node.wrap.c:
             node.reeval_template("C_name_typedef")
@@ -143,6 +144,7 @@ class FillFormat(object):
                     # XXX - To be changed to i_module, i_kind
                     fmt.i_module_name = ntypemap.f_module_name
                     fmt.i_kind = ntypemap.f_kind
+        self.cursor.pop_node(node)
 
     def fmt_functions(self, cls, functions):
         for node in functions:

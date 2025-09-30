@@ -2297,7 +2297,7 @@
                         "arg": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_type": "",
+                                "c_type": "int",
                                 "c_var": "arg",
                                 "ctor_expr": "arg",
                                 "cxx_addr": "&",
@@ -3038,30 +3038,22 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
-            "c_type": "",
+            "c_type": "int",
             "cfi_type": "CFI_type_int",
             "cxx_type": "tutorial::TypeID",
-            "f_cast": "int({f_var}, )",
-            "f_kind": "",
+            "f_cast": "int({f_var}, C_INT)",
+            "f_kind": "C_INT",
             "f_module": {
-                "tutorial_mod": [
-                    ""
+                "iso_c_binding": [
+                    "C_INT"
                 ]
             },
-            "f_module_name": "tutorial_mod",
-            "f_type": "integer()",
+            "f_module_name": "iso_c_binding",
+            "f_type": "integer(C_INT)",
             "flat_name": "int",
-            "i_module": {
-                "tutorial_mod": [
-                    ""
-                ]
-            },
             "sgroup": "native",
             "sh_type": "SH_TYPE_INT",
-            "typedef": "int",
-            "wrap_header": [
-                "wrapTutorial.h"
-            ]
+            "typedef": "int"
         }
     }
 }

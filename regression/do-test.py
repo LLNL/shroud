@@ -612,6 +612,8 @@ if __name__ == "__main__":
                  keywords=["err"]),
         TestDesc("error-ast",
                  keywords=["err"]),
+        TestDesc("error-fmt",
+                 keywords=["err"]),
         TestDesc("error-generate",
                  keywords=["err"]),
     ]

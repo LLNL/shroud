@@ -6601,33 +6601,25 @@
             "c_header": [
                 "<stddef.h>"
             ],
-            "c_type": "",
+            "c_type": "size_t",
             "cfi_type": "CFI_type_size_t",
             "cxx_header": [
                 "<cstddef>"
             ],
             "cxx_type": "std::vector::size_type",
-            "f_cast": "int({f_var}, )",
-            "f_kind": "",
+            "f_cast": "int({f_var}, C_SIZE_T)",
+            "f_kind": "C_SIZE_T",
             "f_module": {
-                "templates_std_mod": [
-                    ""
+                "iso_c_binding": [
+                    "C_SIZE_T"
                 ]
             },
-            "f_module_name": "templates_std_mod",
-            "f_type": "integer()",
+            "f_module_name": "iso_c_binding",
+            "f_type": "integer(C_SIZE_T)",
             "flat_name": "size_t",
-            "i_module": {
-                "templates_std_mod": [
-                    ""
-                ]
-            },
             "sgroup": "native",
             "sh_type": "SH_TYPE_SIZE_T",
-            "typedef": "size_t",
-            "wrap_header": [
-                "wrapstd_vector.h"
-            ]
+            "typedef": "size_t"
         },
         "std::vector<double>::size_type": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",

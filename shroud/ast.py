@@ -799,6 +799,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             # Add default values to format to aid debugging.
             # Avoids exception from wformat for non-existent fields.
             fmt_library.update(dict(
+                C_name_typedef="XXXC_name_typedef",
                 c_get_value="XXXc_get_value",
                 c_type="XXXc_type",
                 c_var="XXXc_var",
@@ -814,6 +815,7 @@ class LibraryNode(AstNode, NamespaceMixin):
                 cxx_type="XXXcxx_type",
                 cxx_var="XXXcxx_var",
 #                cxx_T="short",   # Needs to be a actual type to find helper.
+                F_name_typedef="XXXF_name_typedef",
                 f_abstract_interface="XXXf_abstract_interface=",
                 f_capsule_data_type="XXXf_capsule_data_type",
                 f_intent="XXXf_intent",
@@ -1962,9 +1964,6 @@ class TypedefNode(AstNode):
         self.f_module = ntypemap.f_module
         self.typemap = ntypemap
             
-        typemap.fill_typedef_typemap(self)
-        if fields:
-            ntypemap.update(fields)
         error.cursor.pop_node(self)
 
     def get_typename(self):
