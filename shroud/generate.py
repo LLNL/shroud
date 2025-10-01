@@ -499,7 +499,7 @@ class GenFunctions(object):
             self.pop_instantiate_scope()
 
     def share_class(self, cls, smart):
-        """Create a subclass for use with std::shared.
+        """Create a subclass for use with smart pointers like std::shared.
 
         Parameters
         ----------
@@ -530,12 +530,6 @@ class GenFunctions(object):
         newcls.name_api = fmt_class.C_name_shared_api
         newcls.name_instantiation = "{}<{}>".format(name_type, fmt_class.cxx_type)
         newcls.scope_file[-1] = newcls.name_api
-
-        if ntypemap.smart_pointer == "weak":
-            newcls.functions = []
-            self.add_weak_smart_methods(newcls)
-
-        self.add_share_smart_methods(newcls)
 
         newcls.C_shared_class = True
         # Remove defaulted attributes then reset with current values.
@@ -579,6 +573,18 @@ class GenFunctions(object):
         decl = "void assign_weak(std::shared_ptr<Object> *from +intent(in)) +operator(assignment)+custom(weakptr)"
         fcn = cls.add_function(decl)
         fcn.C_shared_method = True
+
+    def add_smart_ptr_methods(self, smart_ptrs):
+        """
+        smart_ptrs - index of smart pointer subclasses, indexed by type name.
+        """
+        for cls in smart_ptrs.values():
+            ntypemap = cls.typemap
+            if ntypemap.smart_pointer == "weak":
+                cls.functions = []
+                self.add_weak_smart_methods(cls)
+
+            self.add_share_smart_methods(cls)
         
     def instantiate_classes(self, node):
         """Instantate any template_arguments.
@@ -605,10 +611,16 @@ class GenFunctions(object):
             else:
                 clslist.append(cls)
                 self.process_class(cls, cls)
+                smart_ptrs = {}
+                # cls.smart_pointer is a dict from YAML file.
                 for smart in cls.smart_pointer:
                     shared = self.share_class(cls, smart)
                     clslist.append(shared)
+                    smart_ptrs[smart["type"]] = shared
+                self.add_smart_ptr_methods(smart_ptrs)
+                for shared in smart_ptrs.values():
                     self.process_class(shared, shared)
+                
             self.cursor.pop_node(cls)
 
         node.classes = clslist
