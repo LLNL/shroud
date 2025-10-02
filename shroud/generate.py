@@ -576,13 +576,27 @@ class GenFunctions(object):
 
     def add_smart_ptr_methods(self, smart_ptrs):
         """
+        Subclasses for smart pointers have been created.
+        This allows one smart pointer to reference another.
+
+        Parameters
+        ----------
         smart_ptrs - index of smart pointer subclasses, indexed by type name.
         """
+        assign_operators = self.newlibrary.assign_operators
+
+        clsmap = {}
+        for cls in smart_ptrs.values():
+            clsmap[cls.typemap.smart_pointer] = cls
+            
         for cls in smart_ptrs.values():
             ntypemap = cls.typemap
             if ntypemap.smart_pointer == "weak":
                 cls.functions = []
                 self.add_weak_smart_methods(cls)
+                if 'shared' in clsmap:
+                    # assign a shared_ptr to a weak_ptr
+                    assign_operators.append(AssignOperator(cls, clsmap['shared']))
 
             self.add_share_smart_methods(cls)
         
@@ -1369,3 +1383,14 @@ def gen_decl(ast):
     else:
         # int (*)(void)  -- add blank after declaration
         return s + " " + s2
+
+######################################################################
+
+class AssignOperator(object):
+    """
+    Used to create an assignment operator overload between two classes.
+    """
+    def __init__(self, lhs, rhs):
+        self.lhs = lhs
+        self.rhs = rhs
+        self.name = "%s = %s" % (lhs.typemap.name, rhs.typemap.name)
