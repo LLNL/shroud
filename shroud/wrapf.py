@@ -117,6 +117,8 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
             self.wrap_functions(None, node.functions, fileinfo)
             self._pop_splicer("function")
 
+        self.wrap_assignment(fileinfo)
+            
         do_write = top or not node.options.F_flatten_namespace
         if do_write:
             self._create_splicer("additional_functions", fileinfo.impl, blank=True)
@@ -562,20 +564,6 @@ rv = c_associated({F_this}%{F_derived_member}%addr)
                 fmt,
             )
 
-        asgn_stmt = statements.lookup_fc_stmts([
-            "f", "operator", "assignment", "shadow", options.F_assignment_api])
-        if asgn_stmt.f_operator_body:
-            fmt.F_name_api = fmt_class.F_name_assign
-            fmt.F_name_assign_api = wformat(options.F_name_impl_template, fmt)
-            # interface assignment
-            operator = "="
-            procedure = fmt.F_name_assign_api
-            ops = fileinfo.operator_map.setdefault(operator, [])
-            ops.append((node, procedure))
-            # body
-            impl.append("")
-            util.append_format_cmds(impl, asgn_stmt, "f_operator_body", fmt)
-
     def write_object_final(self, node, fileinfo):
 #        if options.F_auto_reference_count or smart_pointer:
         if not node.C_shared_class:
@@ -1016,6 +1004,29 @@ rv = .false.
                 iface.append("")
                 iface.append("end interface")
         self._pop_splicer("abstract")
+
+    def wrap_assignment(self, fileinfo):
+        """
+        Write the functions for assignment overloads.
+        """
+        impl = fileinfo.impl
+        for assign in self.newlibrary.assign_operators:
+            node = assign.lhs
+            options = assign.lhs.options
+            fmt = assign.fmtdict
+            
+            asgn_stmt = statements.lookup_fc_stmts([
+                "f", "operator", "assignment", "shadow", options.F_assignment_api])
+            if asgn_stmt.f_operator_body:
+                # interface assignment
+                operator = "="
+                procedure = fmt.F_name_assign_api
+                ops = fileinfo.operator_map.setdefault(operator, [])
+                ops.append((node, procedure))
+                # body
+                impl.append("")
+                impl.append("! " + assign.name)
+                util.append_format_cmds(impl, asgn_stmt, "f_operator_body", fmt)
 
     def build_arg_list_interface(
             self, bind, modules, imports, dummy_arg_list, dummy_decl_list):

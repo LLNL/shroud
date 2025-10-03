@@ -47,12 +47,6 @@ void SHA_SHROUD_memory_destructor(SHA_SHROUD_capsule_data *cap)
         delete shared;
         break;
     }
-    case 4:   // assignment-std::weak_ptr<Object>
-    {
-        auto cxx_ptr = reinterpret_cast<std::weak_ptr<Object>*>(ptr);
-        delete cxx_ptr;
-        break;
-    }
     default:
     {
         // Unexpected case in destructor
@@ -61,6 +55,23 @@ void SHA_SHROUD_memory_destructor(SHA_SHROUD_capsule_data *cap)
     }
     cap->addr = nullptr;
     cap->idtor = 0;  // avoid deleting again
+}
+
+// std::weak_ptr<Object> = std::shared_ptr<Object>
+void SHA_Object_weak_assign_Object_shared(SHA_Object_weak *lhs_capsule,
+    SHA_Object_shared *rhs_capsule)
+{
+    std::weak_ptr<Object> *lhs =
+        static_cast<std::weak_ptr<Object> *>(lhs_capsule->addr);
+    std::shared_ptr<Object> *rhs =
+        static_cast<std::shared_ptr<Object> *>(rhs_capsule->addr);
+    if (lhs == nullptr) {
+        lhs = new std::weak_ptr<Object>(*rhs);
+        lhs_capsule->addr = lhs;
+        lhs_capsule->idtor = 0;
+    } else {
+        *lhs = *rhs;
+    }
 }
 
 #ifdef __cplusplus

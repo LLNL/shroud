@@ -368,15 +368,23 @@ class ToDict(visitor.Visitor):
             ],
         )
         # These fields are not in NamespaceNode
-        for key in ["patterns", "destructors"]:
+        for key in ["patterns", "destructors", "assign_operators"]:
             if hasattr(node, key):
                 self.add_visit_fields(node, d, [key])
-        if hasattr(node, "assign_operators") and node.assign_operators:
-            # Sometimes this is a NameSpaceNode
-            names = [ oper.name for oper in node.assign_operators]
-            d["assign_operators"] = names
         return d
 
+    def visit_AssignOperator(self, node):
+        d = dict()
+        self.add_visit_fields(
+            node,
+            d,
+            [
+                "name",
+                "fmtdict",
+                ]
+            )
+        return d
+        
     def visit_ClassNode(self, node):
         d = dict(
             cxx_header=node.cxx_header,

@@ -51,6 +51,7 @@ class FillFormat(object):
 
     def fmt_library(self):
         self.fmt_namespace(self.newlibrary.wrap_namespace)
+        fmt_assignment(self.newlibrary)
 
     def fmt_namespace(self, node):
         cursor = self.cursor
@@ -709,6 +710,42 @@ class FillFormat(object):
         fmt = bind.fmtdict
         node_helpers = node.fcn_helpers.setdefault("fc", {})
         add_fc_helper(node_helpers, stmt.helper, fmt)
+
+def fmt_assignment(library):
+    """
+    Create fmtdict for assignment overloads.
+    """
+    for assign in library.assign_operators:
+        lhs = assign.lhs
+        rhs = assign.rhs
+        options = assign.lhs.options
+        fmt_lhs = assign.lhs.fmtdict
+        fmt_rhs = assign.rhs.fmtdict
+        fmt = util.Scope(fmt_lhs)
+        assign.fmtdict = fmt
+        iface_import = {}
+
+        fmt.cxx_type_lhs = lhs.typemap.cxx_type
+        fmt.cxx_type_rhs = rhs.typemap.cxx_type
+        fmt.c_type_lhs = lhs.typemap.c_type
+        fmt.c_type_rhs = rhs.typemap.c_type
+        fmt.f_derived_type_lhs = lhs.typemap.f_derived_type
+        fmt.f_derived_type_rhs = rhs.typemap.f_derived_type
+        fmt.f_capsule_data_type_lhs = lhs.typemap.f_capsule_data_type
+        fmt.f_capsule_data_type_rhs = rhs.typemap.f_capsule_data_type
+        iface_import[fmt.f_capsule_data_type_lhs] = True
+        iface_import[fmt.f_capsule_data_type_rhs] = True
+
+        fmt.function_suffix = "_" + fmt_rhs.cxx_class
+        fmt.F_name_api = fmt_lhs.F_name_assign
+        fmt.F_name_assign_api = wformat(options.F_name_impl_template, fmt)
+        fmt.f_interface_import = ",\t ".join(iface_import.keys())
+
+        fmt.C_name_api = fmt_lhs.C_name_assign
+        fmt.C_name_assign_api = wformat(options.C_name_template, fmt)
+
+        # XXX - Need to compute, otherwise it will leak.
+        fmt.idtor = "0"
         
 def add_fc_helper(node_helpers, helpers, fmt):
     """Add a list of Fortran and C helpers.

@@ -757,6 +757,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_result="rv",  # return value
             c_temp="SHT_",
             C_local="SHC_",
+            C_name_assign="assign",
             C_name_scope = "",
             C_name_typedef="",
             C_this="self",

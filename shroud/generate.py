@@ -563,17 +563,6 @@ class GenFunctions(object):
             fcn = cls.add_function(decl, format=fmt_func)
             fcn.C_shared_method = True
         
-    def add_weak_smart_methods(self, cls):
-        """A methods to a std::weak_ptr class.
-
-        Assignment functions
-        """
-        fmt_class = cls.fmtdict
-
-        decl = "void assign_weak(std::shared_ptr<Object> *from +intent(in)) +operator(assignment)+custom(weakptr)"
-        fcn = cls.add_function(decl)
-        fcn.C_shared_method = True
-
     def add_smart_ptr_methods(self, smart_ptrs):
         """
         Subclasses for smart pointers have been created.
@@ -593,7 +582,6 @@ class GenFunctions(object):
             ntypemap = cls.typemap
             if ntypemap.smart_pointer == "weak":
                 cls.functions = []
-                self.add_weak_smart_methods(cls)
                 if 'shared' in clsmap:
                     # assign a shared_ptr to a weak_ptr
                     assign_operators.append(AssignOperator(cls, clsmap['shared']))
@@ -1394,3 +1382,4 @@ class AssignOperator(object):
         self.lhs = lhs
         self.rhs = rhs
         self.name = "%s = %s" % (lhs.typemap.name, rhs.typemap.name)
+        self.fmtdict = None

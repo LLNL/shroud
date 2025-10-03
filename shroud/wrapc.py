@@ -21,7 +21,7 @@ from . import statements
 from . import typemap
 from . import util
 from .statements import get_func_bind, get_arg_bind
-from .util import append_format, wformat
+from .util import append_format, wformat, append_format_lst
 
 default_owner = "library"
 
@@ -326,6 +326,8 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
 
         output = []
         headers = util.Header(self.newlibrary)
+
+        assign_code = self.wrap_assignment()
         
         capsule_code = []
         self.write_capsule_code(capsule_code)
@@ -354,6 +356,8 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
             write_file = True
             output.extend(capsule_code)
 
+        output.extend(assign_code)
+            
         output.extend(cplusplus.end_extern_c)
 
         source = self.helper_summary["cxx"]["cwrap_impl"]
@@ -432,6 +436,34 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
             os.path.join(self.config.c_fortran_dir, fname)
         )
         self.write_output_file(fname, self.config.c_fortran_dir, output)
+
+    def wrap_assignment(self):
+        """
+        Write the functions for assignment overloads.
+        """
+        output = []
+
+        for assign in self.newlibrary.assign_operators:
+            node = assign.lhs
+            options = assign.lhs.options
+            fmt = assign.fmtdict
+
+            asgn_stmt = statements.lookup_fc_stmts([
+                "c", "subroutine", "assignment", "weakptr"])
+            if asgn_stmt.c_call:
+                output.append("")
+                output.append("// " + assign.name)
+                append_format_lst(
+                    output, [
+                        "void {C_name_assign_api}({c_type_lhs} *lhs_capsule,\t {c_type_rhs} *rhs_capsule)",
+                        "{{+",
+                        "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs} *>(lhs_capsule->addr);",
+                        "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs} *>(rhs_capsule->addr);"],
+                    fmt)
+                util.append_format_cmds(output, asgn_stmt, "c_call", fmt)
+                output.append("-}")
+            
+        return output
 
     def write_header(self, library, cls, fname):
         """ Write header file for a library or class node.

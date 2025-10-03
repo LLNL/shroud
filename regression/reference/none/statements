@@ -6580,16 +6580,15 @@ c_subroutine_assignment_weakptr:
   notes:
   - std::weak_ptr has no wrapped constructor.
   - It must be made from a std::shared_ptr with an assignment.
-  - arglist[1] is the 'from' argument.
   usage:
   - void func() +custom(weakptr)+operator(assignment)
   c_call:
-  - if (SH_this == nullptr) {{+
-  - SH_this = new {cxx_type}(*SHC_from_cxx);
-  - self->addr = SH_this;
-  - self->idtor = {idtor};
+  - if (lhs == nullptr) {{+
+  - lhs = new {cxx_type}(*rhs);
+  - lhs_capsule->addr = lhs;
+  - lhs_capsule->idtor = {idtor};
   - -}} else {{+
-  - '*{CXX_this} = *{c_arglist[1].c_local_cxx};'
+  - '*lhs = *rhs;'
   - -}}
   destructor_header:
   - <memory>
@@ -18929,7 +18928,21 @@ f_operator_assignment_shadow_basic:
   name: f_operator_assignment_shadow_basic
   intent: operator
   notes:
-  - Used with options.F_assignment_api == 'basic'
+  - Used with options.F_assignment_api == 'swig'
+  f_operator_body:
+  - subroutine {F_name_assign_api}(lhs, rhs)+
+  - 'use iso_c_binding, only : c_associated, c_f_pointer'
+  - 'class({f_derived_type_lhs}), intent(OUT) :: lhs'
+  - 'type({f_derived_type_rhs}), intent(IN) :: rhs'
+  - interface+
+  - "subroutine do_assign(lhs, rhs)\t bind(C,\t name=\"{C_name_assign_api}\")+"
+  - 'import :: {f_interface_import}'
+  - 'type({f_capsule_data_type_lhs}), intent(INOUT) :: lhs'
+  - 'type({f_capsule_data_type_rhs}), intent(IN) :: rhs'
+  - -end subroutine do_assign
+  - -end interface
+  - "call do_assign(lhs%{F_derived_member},\t rhs%{F_derived_member})"
+  - -end subroutine {F_name_assign_api}
   sphinx-end-before: f_operator_assignment_shadow_basic
 f_operator_assignment_shadow_orig:
   sphinx-start-after: f_operator_assignment_shadow_orig
@@ -18966,8 +18979,16 @@ f_operator_assignment_shadow_swig:
   f_operator_body:
   - subroutine {F_name_assign_api}(lhs, rhs)+
   - 'use iso_c_binding, only : c_associated, c_f_pointer'
-  - 'class({F_derived_name}), intent(INOUT) :: lhs'
-  - 'type({F_derived_name}), intent(IN) :: rhs'
+  - 'class({f_derived_type_lhs}), intent(OUT) :: lhs'
+  - 'type({f_derived_type_rhs}), intent(IN) :: rhs'
+  - interface+
+  - "subroutine do_assign(lhs, rhs)\t bind(C,\t name=\"{C_name_assign_api}\")+"
+  - 'import :: {f_interface_import}'
+  - 'type({f_capsule_data_type_lhs}), intent(INOUT) :: lhs'
+  - 'type({f_capsule_data_type_rhs}), intent(IN) :: rhs'
+  - -end subroutine do_assign
+  - -end interface
+  - "call do_assign(lhs%{F_derived_member},\t rhs%{F_derived_member})"
   - -end subroutine {F_name_assign_api}
   sphinx-end-before: f_operator_assignment_shadow_swig
 f_out_bool*:
@@ -21602,18 +21623,15 @@ f_subroutine_assignment_weakptr:
   notes:
   - std::weak_ptr has no wrapped constructor.
   - It must be made from a std::shared_ptr with an assignment.
-  - arglist[1] is the 'from' argument.
   usage:
   - void func() +custom(weakptr)+operator(assignment)
-  f_call:
-  - call {f_call_function}({F_arg_c_call})
   c_call:
-  - if (SH_this == nullptr) {{+
-  - SH_this = new {cxx_type}(*SHC_from_cxx);
-  - self->addr = SH_this;
-  - self->idtor = {idtor};
+  - if (lhs == nullptr) {{+
+  - lhs = new {cxx_type}(*rhs);
+  - lhs_capsule->addr = lhs;
+  - lhs_capsule->idtor = {idtor};
   - -}} else {{+
-  - '*{CXX_this} = *{c_arglist[1].c_local_cxx};'
+  - '*lhs = *rhs;'
   - -}}
   destructor_header:
   - <memory>

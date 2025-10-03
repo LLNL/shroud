@@ -59,8 +59,6 @@ module shared_mod
         ! splicer begin class.Object_weak.component_part
         ! splicer end class.Object_weak.component_part
     contains
-        procedure :: assign_weak => object_weak_assign_weak
-        generic :: assignment(=) => assign_weak
         procedure :: use_count => object_weak_use_count
         final :: object_weak_final
         ! splicer begin class.Object_weak.type_bound_procedure_part
@@ -77,6 +75,10 @@ module shared_mod
         module procedure object_ne
         module procedure object_shared_ne
         module procedure object_weak_ne
+    end interface
+
+    interface assignment (=)
+        module procedure object_weak_assign_Object_shared
     end interface
 
     interface
@@ -291,20 +293,6 @@ module shared_mod
         end function c_object_shared_use_count
 
         ! ----------------------------------------
-        ! Function:  void assign_weak +custom(weakptr)+operator(assignment)
-        ! Statement: f_subroutine_assignment_weakptr
-        ! ----------------------------------------
-        ! Argument:  std::shared_ptr<Object> *from +intent(in)
-        ! Statement: f_in_smartptr<shadow>*
-        subroutine c_object_weak_assign_weak(self, from) &
-                bind(C, name="SHA_Object_weak_assign_weak")
-            import :: SHA_SHROUD_capsule_data
-            implicit none
-            type(SHA_SHROUD_capsule_data), intent(IN) :: self
-            type(SHA_SHROUD_capsule_data), intent(IN) :: from
-        end subroutine c_object_weak_assign_weak
-
-        ! ----------------------------------------
         ! Function:  long use_count
         ! Statement: f_function_native
         function c_object_weak_use_count(self) &
@@ -512,20 +500,6 @@ contains
     ! splicer end class.Object_shared.additional_functions
 
     ! ----------------------------------------
-    ! Function:  void assign_weak +custom(weakptr)+operator(assignment)
-    ! Statement: f_subroutine_assignment_weakptr
-    ! ----------------------------------------
-    ! Argument:  std::shared_ptr<Object> *from +intent(in)
-    ! Statement: f_in_smartptr<shadow>*
-    subroutine object_weak_assign_weak(obj, from)
-        class(object_weak), intent(INOUT) :: obj
-        type(object_shared), intent(IN) :: from
-        ! splicer begin class.Object_weak.method.assign_weak
-        call c_object_weak_assign_weak(obj%cxxmem, from%cxxmem)
-        ! splicer end class.Object_weak.method.assign_weak
-    end subroutine object_weak_assign_weak
-
-    ! ----------------------------------------
     ! Function:  long use_count
     ! Statement: f_function_native
     function object_weak_use_count(obj) &
@@ -556,6 +530,22 @@ contains
 
     ! splicer begin class.Object_weak.additional_functions
     ! splicer end class.Object_weak.additional_functions
+
+    ! std::weak_ptr<Object> = std::shared_ptr<Object>
+    subroutine object_weak_assign_Object_shared(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(object_weak), intent(OUT) :: lhs
+        type(object_shared), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="SHA_Object_weak_assign_Object_shared")
+                import :: SHA_SHROUD_capsule_data
+                type(SHA_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(SHA_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine object_weak_assign_Object_shared
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

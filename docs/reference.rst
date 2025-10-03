@@ -959,6 +959,10 @@ C_name_api
     May be blank for namespaces to avoid adding the name to
     *C_name_scope*.
 
+C_name_assign
+    Name of method that controls assignment of shadow types.
+    Used to help with reference counting.
+
 C_name_scope
     Underscore delimited name of namespace, class, enumeration.
     Used to 'flatten' nested C++ names into global C identifiers.
@@ -1053,6 +1057,10 @@ F_name_api
     **F_name_function_template**, **F_name_generic_template**,
     **F_abstract_interface_subprogram_template**, **F_derived_name_template**,
     **F_name_enum_template**, **F_name_typedef_template**.
+
+F_name_assign
+    Name of method that controls assignment of shadow types.
+    Used to help with reference counting.
 
 F_name_scope
     Underscore delimited name of namespace, class, enumeration.
@@ -1282,10 +1290,6 @@ f_arglist
 F_derived_name
     Name of Fortran derived type for this class.
     Computed from option *F_derived_name_template*.
-
-F_name_assign
-    Name of method that controls assignment of shadow types.
-    Used to help with reference counting.
 
 F_name_associated
     Name of method to report if shadow type is associated.

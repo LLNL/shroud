@@ -168,6 +168,7 @@
             "C_impl_utility": "utillibrary.cpp",
             "C_local": "SHC_",
             "C_memory_dtor_function": "LIB_SHROUD_memory_destructor",
+            "C_name_assign": "assign",
             "C_name_scope": "",
             "C_name_typedef": "",
             "C_post_call": "",
