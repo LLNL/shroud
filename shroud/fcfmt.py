@@ -721,8 +721,10 @@ def fmt_assignment(library):
         options = assign.lhs.options
         fmt_lhs = assign.lhs.fmtdict
         fmt_rhs = assign.rhs.fmtdict
-        fmt = util.Scope(fmt_lhs)
-        assign.fmtdict = fmt
+
+        bind = assign.bind = statements.BindArg()
+        bind.create_meta()
+        fmt = bind.set_bind_fmtdict(fmt_lhs)
         iface_import = {}
 
         fmt.cxx_type_lhs = lhs.typemap.cxx_type

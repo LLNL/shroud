@@ -1013,7 +1013,7 @@ rv = .false.
         for assign in self.newlibrary.assign_operators:
             node = assign.lhs
             options = assign.lhs.options
-            fmt = assign.fmtdict
+            fmt = assign.bind.fmtdict
             
             asgn_stmt = statements.lookup_fc_stmts([
                 "f", "operator", "assignment", "shadow", options.F_assignment_api])

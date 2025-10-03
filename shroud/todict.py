@@ -380,7 +380,7 @@ class ToDict(visitor.Visitor):
             d,
             [
                 "name",
-                "fmtdict",
+                "bind",
                 ]
             )
         return d

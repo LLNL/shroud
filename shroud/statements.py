@@ -64,6 +64,15 @@ class BindArg(object):
         self.fmtdict = None
         self.fstmts = None  # fstatements from YAML file
 
+    def create_meta(self):
+        self.meta = collections.defaultdict(lambda: None)
+
+    def set_bind_fmtdict(self, parent):
+        """Set the BindArg.fmtdict field."""
+        if not self.fmtdict:
+            self.fmtdict = util.Scope(parent)
+        return self.fmtdict
+        
 def fetch_var_bind(node, wlang):
     bindarg = node._bind.setdefault(wlang, BindArg())
     if bindarg.meta is None:

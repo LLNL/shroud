@@ -3,24 +3,26 @@
     "library": {
         "assign_operators": [
             {
-                "name": "std::weak_ptr<Object> = std::shared_ptr<Object>",
-                "zz_fmtdict": {
-                    "C_name_api": "assign",
-                    "C_name_assign_api": "SHA_Object_weak_assign_Object_shared",
-                    "F_name_api": "assign",
-                    "F_name_assign_api": "object_weak_assign_Object_shared",
-                    "c_type_lhs": "SHA_Object_weak",
-                    "c_type_rhs": "SHA_Object_shared",
-                    "cxx_type_lhs": "std::weak_ptr<Object>",
-                    "cxx_type_rhs": "std::shared_ptr<Object>",
-                    "f_capsule_data_type_lhs": "SHA_SHROUD_capsule_data",
-                    "f_capsule_data_type_rhs": "SHA_SHROUD_capsule_data",
-                    "f_derived_type_lhs": "object_weak",
-                    "f_derived_type_rhs": "object_shared",
-                    "f_interface_import": "SHA_SHROUD_capsule_data",
-                    "function_suffix": "_Object_shared",
-                    "idtor": "0"
-                }
+                "bind": {
+                    "fmtdict": {
+                        "C_name_api": "assign",
+                        "C_name_assign_api": "SHA_Object_weak_assign_Object_shared",
+                        "F_name_api": "assign",
+                        "F_name_assign_api": "object_weak_assign_Object_shared",
+                        "c_type_lhs": "SHA_Object_weak",
+                        "c_type_rhs": "SHA_Object_shared",
+                        "cxx_type_lhs": "std::weak_ptr<Object>",
+                        "cxx_type_rhs": "std::shared_ptr<Object>",
+                        "f_capsule_data_type_lhs": "SHA_SHROUD_capsule_data",
+                        "f_capsule_data_type_rhs": "SHA_SHROUD_capsule_data",
+                        "f_derived_type_lhs": "object_weak",
+                        "f_derived_type_rhs": "object_shared",
+                        "f_interface_import": "SHA_SHROUD_capsule_data",
+                        "function_suffix": "_Object_shared",
+                        "idtor": "0"
+                    }
+                },
+                "name": "std::weak_ptr<Object> = std::shared_ptr<Object>"
             }
         ],
         "class_map": [

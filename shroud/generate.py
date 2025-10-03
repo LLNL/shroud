@@ -1382,4 +1382,4 @@ class AssignOperator(object):
         self.lhs = lhs
         self.rhs = rhs
         self.name = "%s = %s" % (lhs.typemap.name, rhs.typemap.name)
-        self.fmtdict = None
+        self.bind = None
