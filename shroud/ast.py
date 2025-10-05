@@ -12,6 +12,7 @@ import copy
 
 from . import error
 from . import declast
+from . import fcmem
 from . import statements
 from . import todict
 from . import typemap
@@ -498,6 +499,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.copyright = kwargs.get("copyright", [])
         self.patterns = kwargs.get("patterns", {})
         self.destructors = kwargs.get("destructors", {})
+        self.capsule_format = fcmem.CapsuleFmt(self)
 
         # Convert file_code into typemaps to use in class util.Headers.
         # This feels like a kludge and should be refined.

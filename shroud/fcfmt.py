@@ -48,6 +48,7 @@ class FillFormat(object):
         self.newlibrary = newlibrary
         self.language = newlibrary.language
         self.cursor = error.get_cursor()
+        self.capsule_format = newlibrary.capsule_format
 
     def fmt_library(self):
         self.fmt_namespace(self.newlibrary.wrap_namespace)
@@ -306,7 +307,7 @@ class FillFormat(object):
         self.name_temp_vars(fmt_result.C_result, bind, "c")
         self.apply_helpers_from_stmts(node, bind)
         statements.apply_fmtdict_from_stmts(bind)
-        self.find_idtor(result_typemap, bind)
+        self.capsule_format.find_idtor(result_typemap, bind)
         self.set_fmt_fields_c(wlang, cls, node, ast, result_typemap, bind, True)
 
     def fill_c_arg(self, wlang, cls, node, arg, bind, pre_call):
@@ -353,7 +354,7 @@ class FillFormat(object):
 
         compute_cxx_deref(arg, fmt_arg)
         self.set_cxx_nonconst_ptr(arg, fmt_arg)
-        self.find_idtor(arg_typemap, bind)
+        self.capsule_format.find_idtor(arg_typemap, bind)
 
     def fill_interface_result(self, cls, node, bind):
         ast = node.ast

@@ -188,7 +188,7 @@ main.py
 wrapX.py  generate.py
 fcfmt.py  metaattrs.py
 ast.py
-declast.py declstr.py
+declast.py declstr.py fcmem.py
 typemap.py statements.py todict.py
 whelpers.py
 util.py visitor.py
