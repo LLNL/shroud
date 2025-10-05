@@ -430,6 +430,7 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
     def wrap_assignment(self):
         """
         Write the functions for assignment overloads.
+        These C++ functions are called by Fortran assignment overloads.
         """
         output = []
 
@@ -437,7 +438,7 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
             node = assign.lhs
             options = assign.lhs.options
             fmt = assign.bind.fmtdict
-            asgn_stmt = assign.cstmt
+            asgn_stmt = assign.bind.stmt
             if asgn_stmt.c_call:
                 output.append("")
                 output.append("// " + assign.name)

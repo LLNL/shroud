@@ -1014,7 +1014,7 @@ rv = .false.
             node = assign.lhs
             fmt = assign.bind.fmtdict
             
-            asgn_stmt = assign.fstmt
+            asgn_stmt = assign.bind.stmt
             if asgn_stmt.f_operator_body:
                 # interface assignment
                 operator = "="

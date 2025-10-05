@@ -1383,5 +1383,3 @@ class AssignOperator(object):
         self.rhs = rhs
         self.name = "%s = %s" % (lhs.typemap.name, rhs.typemap.name)
         self.bind = None
-        self.cstmt = None
-        self.fstmt = None

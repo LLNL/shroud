@@ -5010,6 +5010,25 @@ c_mixin_new_vector<native>:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
   sphinx-end-before: c_mixin_new_vector<native>
+c_mixin_operator_assignment:
+  sphinx-start-after: c_mixin_operator_assignment
+  name: c_mixin_operator_assignment
+  intent: mixin
+  c_call:
+  - if (lhs == nullptr) {{+
+  - lhs = new {cxx_type}(*rhs);
+  - lhs_capsule->addr = lhs;
+  - lhs_capsule->idtor = {idtor};
+  - -}} else {{+
+  - '*lhs = *rhs;'
+  - -}}
+  destructor_header:
+  - <memory>
+  destructor_name: assignment-{cxx_type}
+  destructor:
+  - "auto cxx_ptr =\t reinterpret_cast<{cxx_type}*>(ptr);"
+  - delete cxx_ptr;
+  sphinx-end-before: c_mixin_operator_assignment
 c_mixin_out_native**:
   sphinx-start-after: c_mixin_out_native**
   name: c_mixin_out_native**
@@ -6573,30 +6592,6 @@ c_subroutine:
   c_call:
   - '{C_call_function};'
   sphinx-end-before: c_subroutine
-c_subroutine_assignment_weakptr:
-  sphinx-start-after: c_subroutine_assignment_weakptr
-  name: c_subroutine_assignment_weakptr
-  intent: subroutine
-  notes:
-  - std::weak_ptr has no wrapped constructor.
-  - It must be made from a std::shared_ptr with an assignment.
-  usage:
-  - void func() +custom(weakptr)+operator(assignment)
-  c_call:
-  - if (lhs == nullptr) {{+
-  - lhs = new {cxx_type}(*rhs);
-  - lhs_capsule->addr = lhs;
-  - lhs_capsule->idtor = {idtor};
-  - -}} else {{+
-  - '*lhs = *rhs;'
-  - -}}
-  destructor_header:
-  - <memory>
-  destructor_name: assignment-{cxx_type}
-  destructor:
-  - "auto cxx_ptr =\t reinterpret_cast<{cxx_type}*>(ptr);"
-  - delete cxx_ptr;
-  sphinx-end-before: c_subroutine_assignment_weakptr
 f_ctor_shadow_capsule:
   sphinx-start-after: f_ctor_shadow_capsule
   name: f_ctor_shadow_capsule
@@ -18532,6 +18527,25 @@ f_mixin_logical-out:
   f_post_call:
   - '{f_var} = {f_var_cxx}  ! coerce to logical'
   sphinx-end-before: f_mixin_logical-out
+f_mixin_operator_assignment:
+  sphinx-start-after: f_mixin_operator_assignment
+  name: f_mixin_operator_assignment
+  intent: mixin
+  f_operator_body:
+  - subroutine {F_name_assign_api}(lhs, rhs)+
+  - 'use iso_c_binding, only : c_associated, c_f_pointer'
+  - 'class({f_derived_type_lhs}), intent(OUT) :: lhs'
+  - 'type({f_derived_type_rhs}), intent(IN) :: rhs'
+  - interface+
+  - "subroutine do_assign(lhs, rhs)\t bind(C,\t name=\"{C_name_assign_api}\")+"
+  - 'import :: {f_interface_import}'
+  - 'type({f_capsule_data_type_lhs}), intent(INOUT) :: lhs'
+  - 'type({f_capsule_data_type_rhs}), intent(IN) :: rhs'
+  - -end subroutine do_assign
+  - -end interface
+  - "call do_assign(lhs%{F_derived_member},\t rhs%{F_derived_member})"
+  - -end subroutine {F_name_assign_api}
+  sphinx-end-before: f_mixin_operator_assignment
 f_mixin_out_vector_buf:
   sphinx-start-after: f_mixin_out_vector_buf
   name: f_mixin_out_vector_buf
@@ -18927,8 +18941,9 @@ f_operator_assignment_shadow_basic:
   sphinx-start-after: f_operator_assignment_shadow_basic
   name: f_operator_assignment_shadow_basic
   intent: operator
-  notes:
-  - Used with options.F_assignment_api == 'swig'
+  mixin_names:
+  - '  f_mixin_operator_assignment'
+  - '  c_mixin_operator_assignment'
   f_operator_body:
   - subroutine {F_name_assign_api}(lhs, rhs)+
   - 'use iso_c_binding, only : c_associated, c_f_pointer'
@@ -18943,6 +18958,20 @@ f_operator_assignment_shadow_basic:
   - -end interface
   - "call do_assign(lhs%{F_derived_member},\t rhs%{F_derived_member})"
   - -end subroutine {F_name_assign_api}
+  c_call:
+  - if (lhs == nullptr) {{+
+  - lhs = new {cxx_type}(*rhs);
+  - lhs_capsule->addr = lhs;
+  - lhs_capsule->idtor = {idtor};
+  - -}} else {{+
+  - '*lhs = *rhs;'
+  - -}}
+  destructor_header:
+  - <memory>
+  destructor_name: assignment-{cxx_type}
+  destructor:
+  - "auto cxx_ptr =\t reinterpret_cast<{cxx_type}*>(ptr);"
+  - delete cxx_ptr;
   sphinx-end-before: f_operator_assignment_shadow_basic
 f_operator_assignment_shadow_orig:
   sphinx-start-after: f_operator_assignment_shadow_orig
@@ -18974,8 +19003,9 @@ f_operator_assignment_shadow_swig:
   sphinx-start-after: f_operator_assignment_shadow_swig
   name: f_operator_assignment_shadow_swig
   intent: operator
-  notes:
-  - Used with options.F_assignment_api == 'swig'
+  mixin_names:
+  - '  f_mixin_operator_assignment'
+  - '  c_mixin_operator_assignment'
   f_operator_body:
   - subroutine {F_name_assign_api}(lhs, rhs)+
   - 'use iso_c_binding, only : c_associated, c_f_pointer'
@@ -18990,6 +19020,20 @@ f_operator_assignment_shadow_swig:
   - -end interface
   - "call do_assign(lhs%{F_derived_member},\t rhs%{F_derived_member})"
   - -end subroutine {F_name_assign_api}
+  c_call:
+  - if (lhs == nullptr) {{+
+  - lhs = new {cxx_type}(*rhs);
+  - lhs_capsule->addr = lhs;
+  - lhs_capsule->idtor = {idtor};
+  - -}} else {{+
+  - '*lhs = *rhs;'
+  - -}}
+  destructor_header:
+  - <memory>
+  destructor_name: assignment-{cxx_type}
+  destructor:
+  - "auto cxx_ptr =\t reinterpret_cast<{cxx_type}*>(ptr);"
+  - delete cxx_ptr;
   sphinx-end-before: f_operator_assignment_shadow_swig
 f_out_bool*:
   sphinx-start-after: f_out_bool*
@@ -21616,30 +21660,6 @@ f_subroutine:
   c_call:
   - '{C_call_function};'
   sphinx-end-before: f_subroutine
-f_subroutine_assignment_weakptr:
-  sphinx-start-after: f_subroutine_assignment_weakptr
-  name: f_subroutine_assignment_weakptr
-  intent: subroutine
-  notes:
-  - std::weak_ptr has no wrapped constructor.
-  - It must be made from a std::shared_ptr with an assignment.
-  usage:
-  - void func() +custom(weakptr)+operator(assignment)
-  c_call:
-  - if (lhs == nullptr) {{+
-  - lhs = new {cxx_type}(*rhs);
-  - lhs_capsule->addr = lhs;
-  - lhs_capsule->idtor = {idtor};
-  - -}} else {{+
-  - '*lhs = *rhs;'
-  - -}}
-  destructor_header:
-  - <memory>
-  destructor_name: assignment-{cxx_type}
-  destructor:
-  - "auto cxx_ptr =\t reinterpret_cast<{cxx_type}*>(ptr);"
-  - delete cxx_ptr;
-  sphinx-end-before: f_subroutine_assignment_weakptr
 h_helper_array_context:
   sphinx-start-after: h_helper_array_context
   name: h_helper_array_context
@@ -22878,6 +22898,8 @@ root
       make-shared -- c_mixin_make-shared
       new
         vector<native> -- c_mixin_new_vector<native>
+      operator
+        assignment -- c_mixin_operator_assignment
       out
         native** -- c_mixin_out_native**
         vector
@@ -22956,8 +22978,6 @@ root
         scalar
           buf -- c_setter_string_scalar_buf
     subroutine -- c_subroutine
-      assignment
-        weakptr -- c_subroutine_assignment_weakptr
   f
     ctor
       shadow
@@ -23319,6 +23339,8 @@ root
       logical-in -- f_mixin_logical-in
       logical-local-var -- f_mixin_logical-local-var
       logical-out -- f_mixin_logical-out
+      operator
+        assignment -- f_mixin_operator_assignment
       out
         vector
           buf -- f_mixin_out_vector_buf
@@ -23434,8 +23456,6 @@ root
         pointer -- f_setter_struct*_pointer
       struct** -- f_setter_struct**
     subroutine -- f_subroutine
-      assignment
-        weakptr -- f_subroutine_assignment_weakptr
   h
     helper
       array

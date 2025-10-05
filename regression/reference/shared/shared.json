@@ -21,10 +21,8 @@
                         "function_suffix": "_Object_shared",
                         "idtor": "1"
                     },
-                    "stmt": "c_subroutine_assignment_weakptr"
+                    "stmt": "f_operator_assignment_shadow_basic"
                 },
-                "cstmt": "c_subroutine_assignment_weakptr",
-                "fstmt": "f_operator_assignment_shadow_basic",
                 "name": "std::weak_ptr<Object> = std::shared_ptr<Object>"
             }
         ],
