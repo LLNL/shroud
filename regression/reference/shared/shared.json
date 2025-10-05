@@ -19,9 +19,12 @@
                         "f_derived_type_rhs": "object_shared",
                         "f_interface_import": "SHA_SHROUD_capsule_data",
                         "function_suffix": "_Object_shared",
-                        "idtor": "0"
-                    }
+                        "idtor": "1"
+                    },
+                    "stmt": "c_subroutine_assignment_weakptr"
                 },
+                "cstmt": "c_subroutine_assignment_weakptr",
+                "fstmt": "f_operator_assignment_shadow_basic",
                 "name": "std::weak_ptr<Object> = std::shared_ptr<Object>"
             }
         ],
@@ -98,7 +101,7 @@
                                         "i_type": "type(SHA_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
                                         "i_var_ptr": "SHT_rv_ptr",
-                                        "idtor": "1",
+                                        "idtor": "2",
                                         "stmt_name": "c_ctor_shadow_capptr",
                                         "typemap_name": "Object"
                                     },
@@ -150,7 +153,7 @@
                                         "i_suffix": "_bufferify",
                                         "i_type": "type(SHA_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
-                                        "idtor": "1",
+                                        "idtor": "2",
                                         "stmt_name": "f_ctor_shadow_capsule",
                                         "typemap_name": "Object"
                                     },
@@ -971,7 +974,7 @@
                                         "i_type": "type(SHA_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
                                         "i_var_ptr": "SHT_rv_ptr",
-                                        "idtor": "3",
+                                        "idtor": "4",
                                         "stmt_name": "c_ctor_shadow_capptr_shared",
                                         "typemap_name": "std::shared_ptr<Object>"
                                     },
@@ -1023,7 +1026,7 @@
                                         "i_suffix": "_bufferify",
                                         "i_type": "type(SHA_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
-                                        "idtor": "3",
+                                        "idtor": "4",
                                         "stmt_name": "f_ctor_shadow_capsule_shared",
                                         "typemap_name": "std::shared_ptr<Object>"
                                     },
@@ -2122,7 +2125,7 @@
                 ]
             },
             "i_type": "type(SHA_SHROUD_capsule_data)",
-            "idtor": "1",
+            "idtor": "2",
             "impl_header": [
                 "shared.hpp"
             ],
@@ -2159,7 +2162,7 @@
                 ]
             },
             "i_type": "type(SHA_SHROUD_capsule_data)",
-            "idtor": "2",
+            "idtor": "3",
             "impl_header": [
                 "shared.hpp"
             ],

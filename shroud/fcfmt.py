@@ -747,8 +747,15 @@ def fmt_assignment(library):
         fmt.C_name_api = fmt_lhs.C_name_assign
         fmt.C_name_assign_api = wformat(options.C_name_template, fmt)
 
-        # XXX - Need to compute, otherwise it will leak.
-        fmt.idtor = "0"
+        f_asgn_stmt = statements.lookup_fc_stmts([
+            "f", "operator", "assignment", "shadow", options.F_assignment_api])
+        c_asgn_stmt = statements.lookup_fc_stmts([
+            "c", "subroutine", "assignment", "weakptr"])
+        bind.stmt = c_asgn_stmt
+        assign.cstmt = c_asgn_stmt
+        assign.fstmt = f_asgn_stmt
+        
+        library.capsule_format.find_idtor(lhs.typemap, bind)
         
 def add_fc_helper(node_helpers, helpers, fmt):
     """Add a list of Fortran and C helpers.

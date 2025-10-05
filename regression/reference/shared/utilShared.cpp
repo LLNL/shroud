@@ -26,20 +26,26 @@ void SHA_SHROUD_memory_destructor(SHA_SHROUD_capsule_data *cap)
         // Nothing to delete
         break;
     }
-    case 1:   // Object
+    case 1:   // assignment-std::weak_ptr<Object>
+    {
+        auto cxx_ptr = reinterpret_cast<std::weak_ptr<Object>*>(ptr);
+        delete cxx_ptr;
+        break;
+    }
+    case 2:   // Object
     {
         Object *cxx_ptr = reinterpret_cast<Object *>(ptr);
         delete cxx_ptr;
         break;
     }
-    case 2:   // std::shared_ptr<Object>
+    case 3:   // std::shared_ptr<Object>
     {
         std::shared_ptr<Object> *cxx_ptr = 
             reinterpret_cast<std::shared_ptr<Object> *>(ptr);
         delete cxx_ptr;
         break;
     }
-    case 3:   // shadow-std::shared_ptr<Object>
+    case 4:   // shadow-std::shared_ptr<Object>
     {
         std::shared_ptr<Object> *shared =
             reinterpret_cast<std::shared_ptr<Object> *>(ptr);
@@ -68,7 +74,7 @@ void SHA_Object_weak_assign_Object_shared(SHA_Object_weak *lhs_capsule,
     if (lhs == nullptr) {
         lhs = new std::weak_ptr<Object>(*rhs);
         lhs_capsule->addr = lhs;
-        lhs_capsule->idtor = 0;
+        lhs_capsule->idtor = 1;
     } else {
         *lhs = *rhs;
     }

@@ -1012,11 +1012,9 @@ rv = .false.
         impl = fileinfo.impl
         for assign in self.newlibrary.assign_operators:
             node = assign.lhs
-            options = assign.lhs.options
             fmt = assign.bind.fmtdict
             
-            asgn_stmt = statements.lookup_fc_stmts([
-                "f", "operator", "assignment", "shadow", options.F_assignment_api])
+            asgn_stmt = assign.fstmt
             if asgn_stmt.f_operator_body:
                 # interface assignment
                 operator = "="

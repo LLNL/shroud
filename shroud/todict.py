@@ -383,6 +383,10 @@ class ToDict(visitor.Visitor):
                 "bind",
                 ]
             )
+        if node.cstmt:
+            d["cstmt"] = node.cstmt.name
+        if node.fstmt:
+            d["fstmt"] = node.fstmt.name
         return d
         
     def visit_ClassNode(self, node):

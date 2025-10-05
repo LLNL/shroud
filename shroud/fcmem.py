@@ -26,6 +26,8 @@ class CapsuleFmt(object):
         self.capsule_order = []
         self.capsule_include = {}  # includes needed by C_memory_dtor_function
         self.destructors = newlibrary.destructors
+        # reserved the 0 slot of capsule_order
+        self.add_capsule_code("--none--", None, ["// Nothing to delete"])
 
     def compute_idtor(self, node):
         """Create a capsule destructor for type.

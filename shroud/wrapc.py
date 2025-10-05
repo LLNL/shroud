@@ -92,8 +92,6 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
     def wrap_library(self):
         newlibrary = self.newlibrary
         fmt_library = newlibrary.fmtdict
-        # reserved the 0 slot of capsule_order
-        self.capsule_format.add_capsule_code("--none--", None, ["// Nothing to delete"])
         self.wrap_namespace(newlibrary.wrap_namespace, True)
 
         self.gather_helper_code(self.shared_helper)
@@ -439,9 +437,7 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
             node = assign.lhs
             options = assign.lhs.options
             fmt = assign.bind.fmtdict
-
-            asgn_stmt = statements.lookup_fc_stmts([
-                "c", "subroutine", "assignment", "weakptr"])
+            asgn_stmt = assign.cstmt
             if asgn_stmt.c_call:
                 output.append("")
                 output.append("// " + assign.name)
