@@ -6,6 +6,28 @@
                 "bind": {
                     "fmtdict": {
                         "C_name_api": "assign",
+                        "C_name_assign_api": "SHA_Object_assign_Object",
+                        "F_name_api": "assign",
+                        "F_name_assign_api": "object_assign_Object",
+                        "c_type_lhs": "SHA_Object",
+                        "c_type_rhs": "SHA_Object",
+                        "cxx_type_lhs": "Object",
+                        "cxx_type_rhs": "Object",
+                        "f_capsule_data_type_lhs": "SHA_SHROUD_capsule_data",
+                        "f_capsule_data_type_rhs": "SHA_SHROUD_capsule_data",
+                        "f_derived_type_lhs": "object",
+                        "f_derived_type_rhs": "object",
+                        "f_interface_import": "SHA_SHROUD_capsule_data",
+                        "function_suffix": "_Object"
+                    },
+                    "stmt": "f_operator_assignment_shadow_basic"
+                },
+                "name": "Object = Object"
+            },
+            {
+                "bind": {
+                    "fmtdict": {
+                        "C_name_api": "assign",
                         "C_name_assign_api": "SHA_Object_weak_assign_Object_shared",
                         "F_name_api": "assign",
                         "F_name_assign_api": "object_weak_assign_Object_shared",
@@ -21,7 +43,7 @@
                         "function_suffix": "_Object_shared",
                         "idtor": "1"
                     },
-                    "stmt": "f_operator_assignment_shadow_basic"
+                    "stmt": "f_operator_assignment_shadow_basic_weak"
                 },
                 "name": "std::weak_ptr<Object> = std::shared_ptr<Object>"
             }

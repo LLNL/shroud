@@ -748,7 +748,8 @@ def fmt_assignment(library):
         fmt.C_name_assign_api = wformat(options.C_name_template, fmt)
 
         f_asgn_stmt = statements.lookup_fc_stmts([
-            "f", "operator", "assignment", "shadow", options.F_assignment_api])
+            "f", "operator", "assignment", "shadow",
+            options.F_assignment_api, assign.specialization])
         bind.stmt = f_asgn_stmt
         library.capsule_format.find_idtor(lhs.typemap, bind)
         

@@ -4344,8 +4344,18 @@
     },
     {
         "alias": [
-            "f_operator_assignment_shadow_basic",
-            "f_operator_assignment_shadow_swig"
+            "f_operator_assignment_shadow_basic"
+        ],
+        "notes": [
+            "The original operator overload only worked with weak_ptr.",
+            "This is for all the others which do nothing."
+        ]
+    },
+    {
+        "alias": [
+            "f_operator_assignment_shadow_basic_weak",
+            "f_operator_assignment_shadow_swig",
+            "f_operator_assignment_shadow_swig_weak"
         ],
         "mixin": [
             "f_mixin_operator_assignment",

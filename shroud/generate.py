@@ -584,7 +584,7 @@ class GenFunctions(object):
                 cls.functions = []
                 if 'shared' in clsmap:
                     # assign a shared_ptr to a weak_ptr
-                    assign_operators.append(AssignOperator(cls, clsmap['shared']))
+                    assign_operators.append(AssignOperator(cls, clsmap['shared'], 'weak'))
 
             self.add_share_smart_methods(cls)
         
@@ -599,6 +599,7 @@ class GenFunctions(object):
         ----------
         node : ast.LibraryNode, ast.NamespaceNode, ast.ClassNode
         """
+        assign_operators = self.newlibrary.assign_operators
         clslist = []
         for cls in node.classes:
             self.cursor.push_node(cls)
@@ -613,6 +614,7 @@ class GenFunctions(object):
             else:
                 clslist.append(cls)
                 self.process_class(cls, cls)
+                assign_operators.append(AssignOperator(cls, cls))
                 smart_ptrs = {}
                 # cls.smart_pointer is a dict from YAML file.
                 for smart in cls.smart_pointer:
@@ -1378,8 +1380,9 @@ class AssignOperator(object):
     """
     Used to create an assignment operator overload between two classes.
     """
-    def __init__(self, lhs, rhs):
+    def __init__(self, lhs, rhs, specialization=None):
         self.lhs = lhs
         self.rhs = rhs
         self.name = "%s = %s" % (lhs.typemap.name, rhs.typemap.name)
         self.bind = None
+        self.specialization = specialization
