@@ -531,6 +531,7 @@ contains
     ! splicer begin class.Object_weak.additional_functions
     ! splicer end class.Object_weak.additional_functions
 
+    ! Statement: f_operator_assignment_shadow_basic_weak
     ! std::weak_ptr<Object> = std::shared_ptr<Object>
     subroutine object_weak_assign_Object_shared(lhs, rhs)
         use iso_c_binding, only : c_associated, c_f_pointer

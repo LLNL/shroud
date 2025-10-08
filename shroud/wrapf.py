@@ -1017,14 +1017,21 @@ rv = .false.
             asgn_stmt = assign.bind.stmt
             if asgn_stmt.f_operator_body:
                 # interface assignment
+                options = node.options
                 operator = "="
                 procedure = fmt.F_name_assign_api
                 ops = fileinfo.operator_map.setdefault(operator, [])
                 ops.append((node, procedure))
                 # body
                 impl.append("")
+                if options.debug:
+                    impl.append("! Statement: " + asgn_stmt.name)
+                if options.literalinclude:
+                    append_format(impl, "! start {F_name_assign_api}", fmt)
                 impl.append("! " + assign.name)
                 util.append_format_cmds(impl, asgn_stmt, "f_operator_body", fmt)
+                if options.literalinclude:
+                    append_format(impl, "! end {F_name_assign_api}", fmt)
 
     def build_arg_list_interface(
             self, bind, modules, imports, dummy_arg_list, dummy_decl_list):
