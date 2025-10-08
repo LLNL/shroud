@@ -86,6 +86,43 @@ c_ctor_shadow_capptr_shared:
   - delete shared;
   owner: shared
   sphinx-end-before: c_ctor_shadow_capptr_shared
+c_ctor_shadow_capptrswig:
+  sphinx-start-after: c_ctor_shadow_capptrswig
+  name: c_ctor_shadow_capptrswig
+  intent: ctor
+  comments:
+  - Pass function result as a capsule field of shadow class
+  - from Fortran to C.
+  mixin_names:
+  - '  c_mixin_function_shadow_capptr'
+  - '  c_mixin_shadow'
+  - '  c_mixin_as-intent-out'
+  i_dummy_arg:
+  - '{i_var}'
+  i_dummy_decl:
+  - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
+  i_result_decl:
+  - 'type(C_PTR) :: {i_var_ptr}'
+  i_result_var: '{i_var_ptr}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
+  c_prototype:
+  - '{c_type} *{c_var}'
+  c_call:
+  - "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});"
+  - "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
+  - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = 0;'
+  c_temps:
+  - ptr
+  fmtdict:
+    i_intent: OUT
+    i_intent_attr: ', intent(OUT)'
+  owner: caller
+  sphinx-end-before: c_ctor_shadow_capptrswig
 c_ctor_shadow_capsule:
   sphinx-start-after: c_ctor_shadow_capsule
   name: c_ctor_shadow_capsule
@@ -6682,6 +6719,46 @@ f_ctor_shadow_capsule_shared:
   - delete shared;
   owner: shared
   sphinx-end-before: f_ctor_shadow_capsule_shared
+f_ctor_shadow_capsuleswig:
+  sphinx-start-after: f_ctor_shadow_capsuleswig
+  name: f_ctor_shadow_capsuleswig
+  intent: ctor
+  comments:
+  - Pass function result as a capsule argument from Fortran to C.
+  notes:
+  - Set cmemflags
+  mixin_names:
+  - '  f_mixin_as-intent-out'
+  - '  f_mixin_capsule_function_shadow'
+  - '  c_mixin_shadow'
+  - '  c_mixin_as-intent-out'
+  f_dummy_decl:
+  - '{f_type} :: {f_var}'
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_need_wrapper: true
+  i_dummy_arg:
+  - '{i_var}'
+  i_dummy_decl:
+  - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
+  i_module:
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
+  c_return_type: void
+  c_prototype:
+  - '{c_type} *{c_var}'
+  c_call:
+  - "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});"
+  - "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
+  - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = 0;'
+  fmtdict:
+    f_intent: OUT
+    f_intent_attr: ', intent(OUT)'
+    i_intent: OUT
+    i_intent_attr: ', intent(OUT)'
+  owner: caller
+  sphinx-end-before: f_ctor_shadow_capsuleswig
 f_dtor:
   sphinx-start-after: f_dtor
   name: f_dtor
@@ -22692,6 +22769,7 @@ root
       shadow
         capptr -- c_ctor_shadow_capptr
           shared -- c_ctor_shadow_capptr_shared
+        capptrswig -- c_ctor_shadow_capptrswig
         capsule -- c_ctor_shadow_capsule
     dtor -- c_dtor
     function
@@ -23027,6 +23105,7 @@ root
       shadow
         capsule -- f_ctor_shadow_capsule
           shared -- f_ctor_shadow_capsule_shared
+        capsuleswig -- f_ctor_shadow_capsuleswig
     dtor -- f_dtor
     function
       bool -- f_function_bool

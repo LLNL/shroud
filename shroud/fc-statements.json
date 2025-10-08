@@ -4298,6 +4298,43 @@
         "owner": "caller"
     },
     {
+        "name": "f_ctor_shadow_capsuleswig",
+        "mixin": [
+            "f_mixin_as-intent-out",
+            "f_mixin_capsule_function_shadow",
+            "c_mixin_shadow",
+            "c_mixin_as-intent-out"
+        ],
+        "notes": [
+            "Set cmemflags"
+        ],
+        "c_return_type": "void",
+        "c_call": [
+            "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});",
+            "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});",
+            "{c_var}->idtor = {idtor};",
+            "{c_var}->cmemflags = 0;"
+        ],
+        "owner": "caller"
+    },
+    {
+        "alias": [
+            "c_ctor_shadow_capptrswig"
+        ],
+        "mixin": [
+            "c_mixin_function_shadow_capptr",
+            "c_mixin_shadow",
+            "c_mixin_as-intent-out"
+        ],
+        "c_call": [
+            "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});",
+            "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});",
+            "{c_var}->idtor = {idtor};",
+            "{c_var}->cmemflags = 0;"
+        ],
+        "owner": "caller"
+    },
+    {
         "name": "c_mixin_operator_assignment",
         "notes": [
             "std::weak_ptr has no wrapped constructor.",

@@ -664,6 +664,9 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
             )
 
     def add_class_capsule_worker(self, output, fmt, literalinclude):
+        """
+        fmt.cmemflags is used to add an additional field to the struct.
+        """
         output.append("")
         if literalinclude:
             append_format(output, "// start {lang} capsule {cname}", fmt)
@@ -672,7 +675,7 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
             """// {lang} capsule {cname}
 {cpp_if}struct s_{C_type_name} {{+
 {capsule_type} *addr;     /* address of C++ memory */
-int idtor;      /* index of destructor */
+int idtor;      /* index of destructor */{cmemflags}
 -}};
 typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             fmt)
@@ -695,6 +698,11 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         else:
             fmt.cpp_if = ""
             fmt.cpp_endif = ""
+
+        if node.options.F_assignment_api == "swig":
+            fmt.cmemflags = "\nint cmemflags;"
+        else:
+            fmt.cmemflags = "";
 
         fmt.lang = "C"
         fmt.capsule_type = "void"
