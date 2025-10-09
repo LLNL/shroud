@@ -18673,6 +18673,25 @@ f_mixin_operator_assignment:
   - "call do_assign(lhs%{F_derived_member},\t rhs%{F_derived_member})"
   - -end subroutine {F_name_assign_api}
   sphinx-end-before: f_mixin_operator_assignment
+f_mixin_operator_assignment_swig:
+  sphinx-start-after: f_mixin_operator_assignment_swig
+  name: f_mixin_operator_assignment_swig
+  intent: mixin
+  f_operator_body:
+  - subroutine {F_name_assign_api}(lhs, rhs)+
+  - 'use iso_c_binding, only : c_associated, c_f_pointer'
+  - 'class({f_derived_type_lhs}), intent(INOUT) :: lhs'
+  - 'type({f_derived_type_rhs}), intent(IN) :: rhs'
+  - interface+
+  - "subroutine do_assign(lhs, rhs)\t bind(C,\t name=\"{C_name_assign_api}\")+"
+  - 'import :: {f_interface_import}'
+  - 'type({f_capsule_data_type_lhs}), intent(INOUT) :: lhs'
+  - 'type({f_capsule_data_type_rhs}), intent(IN) :: rhs'
+  - -end subroutine do_assign
+  - -end interface
+  - "call do_assign(lhs%{F_derived_member},\t rhs%{F_derived_member})"
+  - -end subroutine {F_name_assign_api}
+  sphinx-end-before: f_mixin_operator_assignment_swig
 f_mixin_out_vector_buf:
   sphinx-start-after: f_mixin_out_vector_buf
   name: f_mixin_out_vector_buf
@@ -19139,12 +19158,12 @@ f_operator_assignment_shadow_swig:
   name: f_operator_assignment_shadow_swig
   intent: operator
   mixin_names:
-  - '  f_mixin_operator_assignment'
+  - '  f_mixin_operator_assignment_swig'
   - '  c_mixin_operator_assignment_swig'
   f_operator_body:
   - subroutine {F_name_assign_api}(lhs, rhs)+
   - 'use iso_c_binding, only : c_associated, c_f_pointer'
-  - 'class({f_derived_type_lhs}), intent(OUT) :: lhs'
+  - 'class({f_derived_type_lhs}), intent(INOUT) :: lhs'
   - 'type({f_derived_type_rhs}), intent(IN) :: rhs'
   - interface+
   - "subroutine do_assign(lhs, rhs)\t bind(C,\t name=\"{C_name_assign_api}\")+"
@@ -19204,12 +19223,12 @@ f_operator_assignment_shadow_swig_weak:
   name: f_operator_assignment_shadow_swig_weak
   intent: operator
   mixin_names:
-  - '  f_mixin_operator_assignment'
+  - '  f_mixin_operator_assignment_swig'
   - '  c_mixin_operator_assignment_swig'
   f_operator_body:
   - subroutine {F_name_assign_api}(lhs, rhs)+
   - 'use iso_c_binding, only : c_associated, c_f_pointer'
-  - 'class({f_derived_type_lhs}), intent(OUT) :: lhs'
+  - 'class({f_derived_type_lhs}), intent(INOUT) :: lhs'
   - 'type({f_derived_type_rhs}), intent(IN) :: rhs'
   - interface+
   - "subroutine do_assign(lhs, rhs)\t bind(C,\t name=\"{C_name_assign_api}\")+"
@@ -23586,6 +23605,7 @@ root
       logical-out -- f_mixin_logical-out
       operator
         assignment -- f_mixin_operator_assignment
+          swig -- f_mixin_operator_assignment_swig
       out
         vector
           buf -- f_mixin_out_vector_buf

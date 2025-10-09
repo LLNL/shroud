@@ -4362,6 +4362,27 @@
         ]
     },
     {
+        "name": "f_mixin_operator_assignment",
+        "notes": [
+            "Used with options.F_assignment_api == 'basic'"
+        ],
+        "f_operator_body": [
+            "subroutine {F_name_assign_api}(lhs, rhs)+",
+            "use iso_c_binding, only : c_associated, c_f_pointer",
+            "class({f_derived_type_lhs}), intent(OUT) :: lhs",
+            "type({f_derived_type_rhs}), intent(IN) :: rhs",
+            "interface+",
+            "subroutine do_assign(lhs, rhs)\t bind(C,\t name=\"{C_name_assign_api}\")+",
+            "import :: {f_interface_import}",
+            "type({f_capsule_data_type_lhs}), intent(INOUT) :: lhs",
+            "type({f_capsule_data_type_rhs}), intent(IN) :: rhs",
+            "-end subroutine do_assign",
+            "-end interface",
+            "call do_assign(lhs%{F_derived_member},\t rhs%{F_derived_member})",
+            "-end subroutine {F_name_assign_api}"
+        ]
+    },
+    {
         "name": "c_mixin_operator_assignment_swig",
         "notes": [
             "std::weak_ptr has no wrapped constructor.",
@@ -4416,14 +4437,16 @@
         ]
     },
     {
-        "name": "f_mixin_operator_assignment",
+        "name": "f_mixin_operator_assignment_swig",
         "notes": [
-            "Used with options.F_assignment_api == 'swig'"
+            "Used with options.F_assignment_api == 'swig'",
+            "lhs is intent(INOUT) so the initial value is preserved",
+            "and can be deleted if necessary."
         ],
         "f_operator_body": [
             "subroutine {F_name_assign_api}(lhs, rhs)+",
             "use iso_c_binding, only : c_associated, c_f_pointer",
-            "class({f_derived_type_lhs}), intent(OUT) :: lhs",
+            "class({f_derived_type_lhs}), intent(INOUT) :: lhs",
             "type({f_derived_type_rhs}), intent(IN) :: rhs",
             "interface+",
             "subroutine do_assign(lhs, rhs)\t bind(C,\t name=\"{C_name_assign_api}\")+",
@@ -4460,7 +4483,7 @@
             "f_operator_assignment_shadow_swig_weak"
         ],
         "mixin": [
-            "f_mixin_operator_assignment",
+            "f_mixin_operator_assignment_swig",
             "c_mixin_operator_assignment_swig"
         ]
     },
