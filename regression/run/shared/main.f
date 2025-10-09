@@ -62,7 +62,7 @@ contains
 !    call objectPtr2%dtor
     !    call assert_false(objectPtr%associated())
 
-    ! A no-op since the same
+    ! A no-op since the same.
     objectPtr = objectPtr2
 
     ! Delete original object.
@@ -98,7 +98,18 @@ contains
   end subroutine test_object_move_alias
 
   subroutine test_object_copy_alias
+    type(object) objectPtr, objectPtr2
+
     call set_case_name("test_object_copy_alias")
+
+    objectPtr = object()
+    call assert_true(objectPtr%associated())
+
+    objectPtr2 = object()
+    call assert_true(objectPtr%associated())
+
+    objectPtr = objectPtr2
+    
   end subroutine test_object_copy_alias
 
   subroutine test_object_shared
