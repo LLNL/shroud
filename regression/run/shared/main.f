@@ -17,6 +17,10 @@ program tester
   call init_fruit
 
   call test_object
+  call test_object_alias
+  call test_object_assign_null
+  call test_object_move_alias
+  call test_object_copy_alias
   call test_object_shared
 
   call fruit_summary
@@ -41,6 +45,61 @@ contains
     call assert_false(objectPtr%associated())
 
   end subroutine test_object
+
+  subroutine test_object_alias
+    type(object) objectPtr, objectPtr2
+
+    call set_case_name("test_object_alias")
+
+    objectPtr = object()
+    call assert_true(objectPtr%associated())
+
+    ! Create an alias.
+    objectPtr2 = objectPtr 
+    call assert_true(objectPtr2%associated())
+    call assert_true(objectPtr .eq. objectPtr2, "Aliased object")
+    ! alias will not be deleted.
+!    call objectPtr2%dtor
+    !    call assert_false(objectPtr%associated())
+
+    ! A no-op since the same
+    objectPtr = objectPtr2
+
+    ! Delete original object.
+    call objectPtr%dtor
+    call assert_false(objectPtr%associated())
+
+  end subroutine test_object_alias
+
+  subroutine test_object_assign_null
+    type(object) objectPtr, objectNULL
+
+    call set_case_name("test_object_assign_null")
+
+    objectPtr = object()
+    call assert_true(objectPtr%associated())
+
+    ! Assign empty object will delete LHS.
+    objectPtr = objectNULL
+
+  end subroutine test_object_assign_null
+
+  subroutine test_object_move_alias
+    type(object) objectPtr
+
+    call set_case_name("test_object_move_alias")
+
+    objectPtr = object()
+    call assert_true(objectPtr%associated())
+
+    objectPtr = object()
+    call assert_true(objectPtr%associated())
+
+  end subroutine test_object_move_alias
+
+  subroutine test_object_copy_alias
+    call set_case_name("test_object_copy_alias")
+  end subroutine test_object_copy_alias
 
   subroutine test_object_shared
     type(object_shared) objectSharedPtr
