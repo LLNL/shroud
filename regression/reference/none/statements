@@ -5066,6 +5066,26 @@ c_mixin_operator_assignment:
   - "auto cxx_ptr =\t reinterpret_cast<{cxx_type}*>(ptr);"
   - delete cxx_ptr;
   sphinx-end-before: c_mixin_operator_assignment
+c_mixin_operator_assignment_swig:
+  sphinx-start-after: c_mixin_operator_assignment_swig
+  name: c_mixin_operator_assignment_swig
+  intent: mixin
+  c_call:
+  - // new code
+  - if (lhs == nullptr) {{+
+  - lhs = new {cxx_type}(*rhs);
+  - lhs_capsule->addr = lhs;
+  - lhs_capsule->idtor = {idtor};
+  - -}} else {{+
+  - '*lhs = *rhs;'
+  - -}}
+  destructor_header:
+  - <memory>
+  destructor_name: assignment-{cxx_type}
+  destructor:
+  - "auto cxx_ptr =\t reinterpret_cast<{cxx_type}*>(ptr);"
+  - delete cxx_ptr;
+  sphinx-end-before: c_mixin_operator_assignment_swig
 c_mixin_out_native**:
   sphinx-start-after: c_mixin_out_native**
   name: c_mixin_out_native**
@@ -19092,7 +19112,7 @@ f_operator_assignment_shadow_swig:
   intent: operator
   mixin_names:
   - '  f_mixin_operator_assignment'
-  - '  c_mixin_operator_assignment'
+  - '  c_mixin_operator_assignment_swig'
   f_operator_body:
   - subroutine {F_name_assign_api}(lhs, rhs)+
   - 'use iso_c_binding, only : c_associated, c_f_pointer'
@@ -19108,6 +19128,7 @@ f_operator_assignment_shadow_swig:
   - "call do_assign(lhs%{F_derived_member},\t rhs%{F_derived_member})"
   - -end subroutine {F_name_assign_api}
   c_call:
+  - // new code
   - if (lhs == nullptr) {{+
   - lhs = new {cxx_type}(*rhs);
   - lhs_capsule->addr = lhs;
@@ -19128,7 +19149,7 @@ f_operator_assignment_shadow_swig_weak:
   intent: operator
   mixin_names:
   - '  f_mixin_operator_assignment'
-  - '  c_mixin_operator_assignment'
+  - '  c_mixin_operator_assignment_swig'
   f_operator_body:
   - subroutine {F_name_assign_api}(lhs, rhs)+
   - 'use iso_c_binding, only : c_associated, c_f_pointer'
@@ -19144,6 +19165,7 @@ f_operator_assignment_shadow_swig_weak:
   - "call do_assign(lhs%{F_derived_member},\t rhs%{F_derived_member})"
   - -end subroutine {F_name_assign_api}
   c_call:
+  - // new code
   - if (lhs == nullptr) {{+
   - lhs = new {cxx_type}(*rhs);
   - lhs_capsule->addr = lhs;
@@ -23037,6 +23059,7 @@ root
         vector<native> -- c_mixin_new_vector<native>
       operator
         assignment -- c_mixin_operator_assignment
+          swig -- c_mixin_operator_assignment_swig
       out
         native** -- c_mixin_out_native**
         vector

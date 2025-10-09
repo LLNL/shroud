@@ -4362,6 +4362,31 @@
         ]
     },
     {
+        "name": "c_mixin_operator_assignment_swig",
+        "notes": [
+            "std::weak_ptr has no wrapped constructor.",
+            "It must be made from a std::shared_ptr with an assignment."
+        ],
+        "c_call": [
+            "// new code",
+            "if (lhs == nullptr) {{+",
+            "lhs = new {cxx_type}(*rhs);",
+            "lhs_capsule->addr = lhs;",
+            "lhs_capsule->idtor = {idtor};",
+            "-}} else {{+",
+            "*lhs = *rhs;",
+            "-}}"
+        ],
+        "destructor_name": "assignment-{cxx_type}",
+        "destructor_header": [
+            "<memory>"
+        ],
+        "destructor": [
+            "auto cxx_ptr =\t reinterpret_cast<{cxx_type}*>(ptr);",
+            "delete cxx_ptr;"
+        ]
+    },
+    {
         "name": "f_mixin_operator_assignment",
         "notes": [
             "Used with options.F_assignment_api == 'swig'"
@@ -4393,13 +4418,21 @@
     },
     {
         "alias": [
-            "f_operator_assignment_shadow_basic_weak",
+            "f_operator_assignment_shadow_basic_weak"
+        ],
+        "mixin": [
+            "f_mixin_operator_assignment",
+            "c_mixin_operator_assignment"
+        ]
+    },
+    {
+        "alias": [
             "f_operator_assignment_shadow_swig",
             "f_operator_assignment_shadow_swig_weak"
         ],
         "mixin": [
             "f_mixin_operator_assignment",
-            "c_mixin_operator_assignment"
+            "c_mixin_operator_assignment_swig"
         ]
     },
     {
