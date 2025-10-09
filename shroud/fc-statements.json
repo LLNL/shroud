@@ -4313,9 +4313,12 @@
             "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});",
             "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});",
             "{c_var}->idtor = {idtor};",
-            "{c_var}->cmemflags = 0;"
+            "{c_var}->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;"
         ],
-        "owner": "caller"
+        "owner": "caller",
+        "helper": [
+            "capsule_swigmemflags"
+        ]
     },
     {
         "alias": [
@@ -4330,7 +4333,7 @@
             "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});",
             "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});",
             "{c_var}->idtor = {idtor};",
-            "{c_var}->cmemflags = 0;"
+            "{c_var}->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;"
         ],
         "owner": "caller"
     },
@@ -6911,6 +6914,20 @@
             "class({F_capsule_type}) :: cap",
             "call {fnamefunc_capsule_dtor}(cap%mem)",
             "-end subroutine {F_capsule_delete_function}"
+        ]
+    },
+    {
+        "name": "h_helper_capsule_swigmemflags",
+        "notes": [
+            "Flags used to give properties to the addr field."
+        ],
+        "scope": "cwrap_include",
+        "source": [
+            "",
+            "enum SwigMemFlags {{+",
+            "SWIG_MEM_OWN = 0x01,",
+            "SWIG_MEM_RVALUE = 0x02,",
+            "-}};"
         ]
     },
     {

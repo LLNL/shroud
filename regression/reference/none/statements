@@ -115,7 +115,7 @@ c_ctor_shadow_capptrswig:
   - "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});"
   - "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
   - '{c_var}->idtor = {idtor};'
-  - '{c_var}->cmemflags = 0;'
+  - '{c_var}->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;'
   c_temps:
   - ptr
   fmtdict:
@@ -6751,12 +6751,14 @@ f_ctor_shadow_capsuleswig:
   - "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});"
   - "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
   - '{c_var}->idtor = {idtor};'
-  - '{c_var}->cmemflags = 0;'
+  - '{c_var}->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;'
   fmtdict:
     f_intent: OUT
     f_intent_attr: ', intent(OUT)'
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - capsule_swigmemflags
   owner: caller
   sphinx-end-before: f_ctor_shadow_capsuleswig
 f_dtor:
@@ -22054,6 +22056,19 @@ h_helper_capsule_helper:
   - capsule_data_basic
   - capsule_dtor
   sphinx-end-before: h_helper_capsule_helper
+h_helper_capsule_swigmemflags:
+  sphinx-start-after: h_helper_capsule_swigmemflags
+  name: h_helper_capsule_swigmemflags
+  notes:
+  - Flags used to give properties to the addr field.
+  scope: cwrap_include
+  source:
+  - ''
+  - enum SwigMemFlags {+
+  - SWIG_MEM_OWN = 0x01,
+  - SWIG_MEM_RVALUE = 0x02,
+  - -};
+  sphinx-end-before: h_helper_capsule_swigmemflags
 h_helper_cdesc_array_string_out:
   sphinx-start-after: h_helper_cdesc_array_string_out
   name: h_helper_cdesc_array_string_out
@@ -23595,6 +23610,7 @@ root
           swig -- h_helper_capsule_data_swig
         dtor -- h_helper_capsule_dtor
         helper -- h_helper_capsule_helper
+        swigmemflags -- h_helper_capsule_swigmemflags
       cdesc
         array
           string
