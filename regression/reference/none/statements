@@ -5200,6 +5200,62 @@ c_mixin_operator_assignment_swig:
   - "auto cxx_ptr =\t reinterpret_cast<{cxx_type}*>(ptr);"
   - delete cxx_ptr;
   sphinx-end-before: c_mixin_operator_assignment_swig
+c_mixin_operator_assignment_swig_weak:
+  sphinx-start-after: c_mixin_operator_assignment_swig_weak
+  name: c_mixin_operator_assignment_swig_weak
+  intent: mixin
+  c_body:
+  - "void {C_name_assign_api}({c_type_lhs} *lhs_capsule,\t {c_type_rhs} *rhs_capsule)"
+  - '{{+'
+  - if (lhs_capsule->addr == {nullptr}) {{+
+  - /* LHS is unassigned */
+  - if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {{+
+  - // Capture pointer from RHS, clear 'moving' flag.
+  - lhs_capsule->addr = rhs_capsule->addr;
+  - lhs_capsule->idtor = {idtor};
+  - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+  - -}} else {{+
+  - // Aliasing another class; clear ownership or copy smart pointer.
+  - lhs_capsule->addr = rhs_capsule->addr;
+  - lhs_capsule->idtor = {idtor};
+  - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_OWN;
+  - -}}
+  - -}} else if (rhs_capsule->addr == {nullptr}) {{+
+  - // Replace LHS with a null pointer.
+  - if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+
+  - "{C_memory_dtor_function}(\t({c_capsule_data_type_basic} *) lhs_capsule);"
+  - -}}
+  - lhs_capsule->addr = {nullptr};
+  - lhs_capsule->idtor = 0;
+  - lhs_capsule->cmemflags = 0;
+  - -}} else if (lhs_capsule->addr == rhs_capsule->addr) {{+
+  - '// Lhs-assignment: ignore.'
+  - -}} else if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {{+
+  - // Transferred ownership from a variable that's about to be lost.
+  - // Move-assign and delete the transient data.
+  - if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+
+  - "{C_memory_dtor_function}(\t({c_capsule_data_type_basic} *) lhs_capsule);"
+  - -}}
+  - lhs_capsule->addr = rhs_capsule->addr;
+  - lhs_capsule->idtor = {idtor};
+  - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+  - -}} else {{+
+  - // RHS shouldn't be deleted, alias to LHS.
+  - if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+
+  - "{C_memory_dtor_function}(\t({c_capsule_data_type_basic} *) lhs_capsule);"
+  - -}}
+  - lhs_capsule->addr = rhs_capsule->addr;
+  - lhs_capsule->idtor = {idtor};
+  - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+  - -}}
+  - -}}
+  destructor_header:
+  - <memory>
+  destructor_name: assignment-{cxx_type}
+  destructor:
+  - "auto cxx_ptr =\t reinterpret_cast<{cxx_type}*>(ptr);"
+  - delete cxx_ptr;
+  sphinx-end-before: c_mixin_operator_assignment_swig_weak
 c_mixin_out_native**:
   sphinx-start-after: c_mixin_out_native**
   name: c_mixin_out_native**
@@ -19392,7 +19448,7 @@ f_operator_assignment_shadow_swig_weak:
   intent: operator
   mixin_names:
   - '  f_mixin_operator_assignment_swig'
-  - '  c_mixin_operator_assignment_swig'
+  - '  c_mixin_operator_assignment_swig_weak'
   f_operator_body:
   - subroutine {F_name_assign_api}(lhs, rhs)+
   - 'use iso_c_binding, only : c_associated, c_f_pointer'
@@ -23341,6 +23397,7 @@ root
       operator
         assignment -- c_mixin_operator_assignment
           swig -- c_mixin_operator_assignment_swig
+            weak -- c_mixin_operator_assignment_swig_weak
       out
         native** -- c_mixin_out_native**
         vector

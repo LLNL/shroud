@@ -4390,6 +4390,66 @@
     {
         "name": "c_mixin_operator_assignment_swig",
         "notes": [
+            "Adapts code from SWIG_assign."
+        ],
+        "c_body": [
+            "void {C_name_assign_api}({c_type_lhs} *lhs_capsule,\t {c_type_rhs} *rhs_capsule)",
+            "{{+",
+            "if (lhs_capsule->addr == {nullptr}) {{+",
+              "/* LHS is unassigned */",
+              "if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {{+",
+                "// Capture pointer from RHS, clear 'moving' flag.",
+                "lhs_capsule->addr = rhs_capsule->addr;",
+                "lhs_capsule->idtor = {idtor};",
+                "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
+              "-}} else {{+",
+                "// Aliasing another class; clear ownership or copy smart pointer.",
+                "lhs_capsule->addr = rhs_capsule->addr;",
+                "lhs_capsule->idtor = {idtor};",
+                "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_OWN;",
+              "-}}",
+            "-}} else if (rhs_capsule->addr == {nullptr}) {{+",
+              "// Replace LHS with a null pointer.",
+              "if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+",
+                "{C_memory_dtor_function}(\t({c_capsule_data_type_basic} *) lhs_capsule);",
+              "-}}",
+              "lhs_capsule->addr = {nullptr};",
+              "lhs_capsule->idtor = 0;",
+              "lhs_capsule->cmemflags = 0;",
+            "-}} else if (lhs_capsule->addr == rhs_capsule->addr) {{+",
+              "// Lhs-assignment: ignore.",
+            "-}} else if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {{+",
+              "// Transferred ownership from a variable that's about to be lost.",
+              "// Move-assign and delete the transient data.",
+              "if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+",
+                "{C_memory_dtor_function}(\t({c_capsule_data_type_basic} *) lhs_capsule);",
+              "-}}",
+              "lhs_capsule->addr = rhs_capsule->addr;",
+              "lhs_capsule->idtor = {idtor};",
+              "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
+            "-}} else {{+",
+              "// RHS shouldn't be deleted, alias to LHS.",
+              "if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+",
+                "{C_memory_dtor_function}(\t({c_capsule_data_type_basic} *) lhs_capsule);",
+              "-}}",
+              "lhs_capsule->addr = rhs_capsule->addr;",
+              "lhs_capsule->idtor = {idtor};",
+              "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
+            "-}}",
+            "-}}"
+        ],
+        "destructor_name": "assignment-{cxx_type}",
+        "destructor_header": [
+            "<memory>"
+        ],
+        "destructor": [
+            "auto cxx_ptr =\t reinterpret_cast<{cxx_type}*>(ptr);",
+            "delete cxx_ptr;"
+        ]
+    },
+    {
+        "name": "c_mixin_operator_assignment_swig_weak",
+        "notes": [
             "std::weak_ptr has no wrapped constructor.",
             "It must be made from a std::shared_ptr with an assignment.",
             "Adapts code from SWIG_assign."
@@ -4492,12 +4552,20 @@
     },
     {
         "alias": [
-            "f_operator_assignment_shadow_swig",
-            "f_operator_assignment_shadow_swig_weak"
+            "f_operator_assignment_shadow_swig"
         ],
         "mixin": [
             "f_mixin_operator_assignment_swig",
             "c_mixin_operator_assignment_swig"
+        ]
+    },
+    {
+        "alias": [
+            "f_operator_assignment_shadow_swig_weak"
+        ],
+        "mixin": [
+            "f_mixin_operator_assignment_swig",
+            "c_mixin_operator_assignment_swig_weak"
         ]
     },
     {
