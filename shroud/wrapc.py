@@ -439,7 +439,7 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
             options = assign.lhs.options
             fmt = assign.bind.fmtdict
             asgn_stmt = assign.bind.stmt
-            if asgn_stmt.c_call:
+            if asgn_stmt.c_body:
                 options = node.options
                 output.append("")
                 if options.debug:
@@ -447,15 +447,7 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
                 if options.literalinclude:
                     append_format(impl, "// start {F_name_assign_api}", fmt)
                 output.append("// " + assign.name)
-                append_format_lst(
-                    output, [
-                        "void {C_name_assign_api}({c_type_lhs} *lhs_capsule,\t {c_type_rhs} *rhs_capsule)",
-                        "{{+",
-                        "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs} *>(lhs_capsule->addr);",
-                        "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs} *>(rhs_capsule->addr);"],
-                    fmt)
-                util.append_format_cmds(output, asgn_stmt, "c_call", fmt)
-                output.append("-}")
+                util.append_format_cmds(output, asgn_stmt, "c_body", fmt)
                 if options.literalinclude:
                     append_format(impl, "// end {F_name_assign_api}", fmt)
             

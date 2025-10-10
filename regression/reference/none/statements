@@ -5124,13 +5124,18 @@ c_mixin_operator_assignment:
   sphinx-start-after: c_mixin_operator_assignment
   name: c_mixin_operator_assignment
   intent: mixin
-  c_call:
+  c_body:
+  - "void {C_name_assign_api}({c_type_lhs} *lhs_capsule,\t {c_type_rhs} *rhs_capsule)"
+  - '{{+'
+  - "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs} *>(lhs_capsule->addr);"
+  - "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs} *>(rhs_capsule->addr);"
   - if (lhs == nullptr) {{+
   - lhs = new {cxx_type}(*rhs);
   - lhs_capsule->addr = lhs;
   - lhs_capsule->idtor = {idtor};
   - -}} else {{+
   - '*lhs = *rhs;'
+  - -}}
   - -}}
   destructor_header:
   - <memory>
@@ -5143,7 +5148,9 @@ c_mixin_operator_assignment_swig:
   sphinx-start-after: c_mixin_operator_assignment_swig
   name: c_mixin_operator_assignment_swig
   intent: mixin
-  c_call:
+  c_body:
+  - "void {C_name_assign_api}({c_type_lhs} *lhs_capsule,\t {c_type_rhs} *rhs_capsule)"
+  - '{{+'
   - if (lhs_capsule->addr == {nullptr}) {{+
   - /* LHS is unassigned */
   - if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {{+
@@ -5184,6 +5191,7 @@ c_mixin_operator_assignment_swig:
   - lhs_capsule->addr = rhs_capsule->addr;
   - lhs_capsule->idtor = {idtor};
   - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+  - -}}
   - -}}
   destructor_header:
   - <memory>
@@ -19259,13 +19267,18 @@ f_operator_assignment_shadow_basic_weak:
   - -end interface
   - "call do_assign(lhs%{F_derived_member},\t rhs%{F_derived_member})"
   - -end subroutine {F_name_assign_api}
-  c_call:
+  c_body:
+  - "void {C_name_assign_api}({c_type_lhs} *lhs_capsule,\t {c_type_rhs} *rhs_capsule)"
+  - '{{+'
+  - "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs} *>(lhs_capsule->addr);"
+  - "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs} *>(rhs_capsule->addr);"
   - if (lhs == nullptr) {{+
   - lhs = new {cxx_type}(*rhs);
   - lhs_capsule->addr = lhs;
   - lhs_capsule->idtor = {idtor};
   - -}} else {{+
   - '*lhs = *rhs;'
+  - -}}
   - -}}
   destructor_header:
   - <memory>
@@ -19321,7 +19334,9 @@ f_operator_assignment_shadow_swig:
   - -end interface
   - "call do_assign(lhs%{F_derived_member},\t rhs%{F_derived_member})"
   - -end subroutine {F_name_assign_api}
-  c_call:
+  c_body:
+  - "void {C_name_assign_api}({c_type_lhs} *lhs_capsule,\t {c_type_rhs} *rhs_capsule)"
+  - '{{+'
   - if (lhs_capsule->addr == {nullptr}) {{+
   - /* LHS is unassigned */
   - if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {{+
@@ -19362,6 +19377,7 @@ f_operator_assignment_shadow_swig:
   - lhs_capsule->addr = rhs_capsule->addr;
   - lhs_capsule->idtor = {idtor};
   - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+  - -}}
   - -}}
   destructor_header:
   - <memory>
@@ -19391,7 +19407,9 @@ f_operator_assignment_shadow_swig_weak:
   - -end interface
   - "call do_assign(lhs%{F_derived_member},\t rhs%{F_derived_member})"
   - -end subroutine {F_name_assign_api}
-  c_call:
+  c_body:
+  - "void {C_name_assign_api}({c_type_lhs} *lhs_capsule,\t {c_type_rhs} *rhs_capsule)"
+  - '{{+'
   - if (lhs_capsule->addr == {nullptr}) {{+
   - /* LHS is unassigned */
   - if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {{+
@@ -19432,6 +19450,7 @@ f_operator_assignment_shadow_swig_weak:
   - lhs_capsule->addr = rhs_capsule->addr;
   - lhs_capsule->idtor = {idtor};
   - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+  - -}}
   - -}}
   destructor_header:
   - <memory>

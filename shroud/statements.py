@@ -960,6 +960,7 @@ CStmts = util.Scope(
     c_temps=None,
     c_local=None,
     c_need_wrapper=False,
+    c_body=None,
 
     fmtdict=None,
     helper=[],

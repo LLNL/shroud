@@ -4343,13 +4343,18 @@
             "std::weak_ptr has no wrapped constructor.",
             "It must be made from a std::shared_ptr with an assignment."
         ],
-        "c_call": [
+        "c_body": [
+            "void {C_name_assign_api}({c_type_lhs} *lhs_capsule,\t {c_type_rhs} *rhs_capsule)",
+            "{{+",
+            "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs} *>(lhs_capsule->addr);",
+            "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs} *>(rhs_capsule->addr);",
             "if (lhs == nullptr) {{+",
             "lhs = new {cxx_type}(*rhs);",
             "lhs_capsule->addr = lhs;",
             "lhs_capsule->idtor = {idtor};",
             "-}} else {{+",
             "*lhs = *rhs;",
+            "-}}",
             "-}}"
         ],
         "destructor_name": "assignment-{cxx_type}",
@@ -4389,7 +4394,9 @@
             "It must be made from a std::shared_ptr with an assignment.",
             "Adapts code from SWIG_assign."
         ],
-        "c_call": [
+        "c_body": [
+            "void {C_name_assign_api}({c_type_lhs} *lhs_capsule,\t {c_type_rhs} *rhs_capsule)",
+            "{{+",
             "if (lhs_capsule->addr == {nullptr}) {{+",
               "/* LHS is unassigned */",
               "if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {{+",
@@ -4430,6 +4437,7 @@
               "lhs_capsule->addr = rhs_capsule->addr;",
               "lhs_capsule->idtor = {idtor};",
               "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
+            "-}}",
             "-}}"
         ],
         "destructor_name": "assignment-{cxx_type}",
