@@ -466,9 +466,13 @@ class FillMeta(object):
                 meta["api"] = "capptr"
             else:
                 meta["api"] = "capsule"
-            if node.ast.declarator.is_ctor and \
+            if ast.declarator.is_ctor and \
                  node.options.F_assignment_api != 'basic':
                 meta["api"] += node.options.F_assignment_api
+        elif ast.declarator.is_dtor:
+            # dtor is of type 'void'.
+            if node.options.F_assignment_api != 'basic':
+                meta["custom"] = node.options.F_assignment_api
 
     def set_func_api_fortran(self, node, meta):
         """
@@ -489,9 +493,12 @@ class FillMeta(object):
                 meta["api"] = "this"
             else:
                 meta["api"] = "capsule"
-            if node.ast.declarator.is_ctor and \
-                 node.options.F_assignment_api != 'basic':
+            if ast.declarator.is_ctor and \
+               node.options.F_assignment_api != 'basic':
                 meta["api"] += node.options.F_assignment_api
+        elif ast.declarator.is_dtor:
+            if node.options.F_assignment_api != 'basic':
+                meta["custom"] = node.options.F_assignment_api
 
         if meta["api"]:
             return

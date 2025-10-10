@@ -173,6 +173,28 @@ c_dtor:
     impl_header:
     - <cstddef>
   sphinx-end-before: c_dtor
+c_dtor_swig:
+  sphinx-start-after: c_dtor_swig
+  name: c_dtor_swig
+  intent: dtor
+  mixin_names:
+  - '  c_mixin_header_stddef'
+  c_call:
+  - if ({C_this}->cmemflags & SWIG_MEM_OWN) {{+
+  - delete {CXX_this};
+  - -}}
+  - '{C_this}->addr = {nullptr};'
+  - '{C_this}->idtor = 0;'
+  - '{C_this}->cmemflags = 0;'
+  impl_header:
+  - <cstddef>
+  lang_c:
+    impl_header:
+    - <stddef.h>
+  lang_cxx:
+    impl_header:
+    - <cstddef>
+  sphinx-end-before: c_dtor_swig
 c_function_bool:
   sphinx-start-after: c_function_bool
   name: c_function_bool
@@ -6826,6 +6848,22 @@ f_dtor:
   impl_header:
   - <cstddef>
   sphinx-end-before: f_dtor
+f_dtor_swig:
+  sphinx-start-after: f_dtor_swig
+  name: f_dtor_swig
+  intent: dtor
+  mixin_names:
+  - '  c_mixin_header_stddef'
+  c_call:
+  - if ({C_this}->cmemflags & SWIG_MEM_OWN) {{+
+  - delete {CXX_this};
+  - -}}
+  - '{C_this}->addr = {nullptr};'
+  - '{C_this}->idtor = 0;'
+  - '{C_this}->cmemflags = 0;'
+  impl_header:
+  - <cstddef>
+  sphinx-end-before: f_dtor_swig
 f_function_bool:
   sphinx-start-after: f_function_bool
   name: f_function_bool
@@ -22927,6 +22965,7 @@ root
         capptrswig -- c_ctor_shadow_capptrswig
         capsule -- c_ctor_shadow_capsule
     dtor -- c_dtor
+      swig -- c_dtor_swig
     function
       bool -- c_function_bool
       char -- c_function_char
@@ -23263,6 +23302,7 @@ root
           shared -- f_ctor_shadow_capsule_shared
         capsuleswig -- f_ctor_shadow_capsuleswig
     dtor -- f_dtor
+      swig -- f_dtor_swig
     function
       bool -- f_function_bool
       char -- f_function_char

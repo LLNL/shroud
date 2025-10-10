@@ -4639,6 +4639,24 @@
         ]
     },
     {
+        "alias": [
+            "f_dtor_swig",
+            "c_dtor_swig"
+        ],
+        "mixin": [
+            "c_mixin_header_stddef"
+        ],
+        "f_arg_call": [],
+        "c_call": [
+            "if ({C_this}->cmemflags & SWIG_MEM_OWN) {{+",
+            "delete {CXX_this};",
+            "-}}",
+            "{C_this}->addr = {nullptr};",
+            "{C_this}->idtor = 0;",
+            "{C_this}->cmemflags = 0;"
+        ]
+    },
+    {
         "name":"##### struct ###############################################"
     },
     {
