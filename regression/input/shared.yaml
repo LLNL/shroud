@@ -15,8 +15,8 @@ options:
 
 declarations:
 - decl: class Object
-#  options:
-#    F_assignment_api: swig
+  options:
+    F_assignment_api: swig
   smart_pointer:
   - type: std::shared_ptr
     format:

@@ -14,7 +14,7 @@ typemap:
       c_type: SHA_Object
       f_module_name: shared_mod
       f_derived_type: object
-      f_capsule_data_type: SHA_SHROUD_capsule_data
+      f_capsule_data_type: SHA_SHROUD_capsule_data_swig
       f_to_c: "{f_var}%cxxmem"
   - type: shared_ptr<Object>
     fields:
@@ -24,7 +24,7 @@ typemap:
       c_type: SHA_Object_shared
       f_module_name: shared_mod
       f_derived_type: object_shared
-      f_capsule_data_type: SHA_SHROUD_capsule_data
+      f_capsule_data_type: SHA_SHROUD_capsule_data_swig
       f_to_c: "{f_var}%cxxmem"
   - type: weak_ptr<Object>
     fields:
@@ -34,5 +34,5 @@ typemap:
       c_type: SHA_Object_weak
       f_module_name: shared_mod
       f_derived_type: object_weak
-      f_capsule_data_type: SHA_SHROUD_capsule_data
+      f_capsule_data_type: SHA_SHROUD_capsule_data_swig
       f_to_c: "{f_var}%cxxmem"

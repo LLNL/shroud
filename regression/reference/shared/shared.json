@@ -13,14 +13,15 @@
                         "c_type_rhs": "SHA_Object",
                         "cxx_type_lhs": "Object",
                         "cxx_type_rhs": "Object",
-                        "f_capsule_data_type_lhs": "SHA_SHROUD_capsule_data",
-                        "f_capsule_data_type_rhs": "SHA_SHROUD_capsule_data",
+                        "f_capsule_data_type_lhs": "SHA_SHROUD_capsule_data_swig",
+                        "f_capsule_data_type_rhs": "SHA_SHROUD_capsule_data_swig",
                         "f_derived_type_lhs": "object",
                         "f_derived_type_rhs": "object",
-                        "f_interface_import": "SHA_SHROUD_capsule_data",
-                        "function_suffix": "_Object"
+                        "f_interface_import": "SHA_SHROUD_capsule_data_swig",
+                        "function_suffix": "_Object",
+                        "idtor": "1"
                     },
-                    "stmt": "f_operator_assignment_shadow_basic"
+                    "stmt": "f_operator_assignment_shadow_swig"
                 },
                 "name": "Object = Object"
             },
@@ -35,15 +36,15 @@
                         "c_type_rhs": "SHA_Object_shared",
                         "cxx_type_lhs": "std::weak_ptr<Object>",
                         "cxx_type_rhs": "std::shared_ptr<Object>",
-                        "f_capsule_data_type_lhs": "SHA_SHROUD_capsule_data",
-                        "f_capsule_data_type_rhs": "SHA_SHROUD_capsule_data",
+                        "f_capsule_data_type_lhs": "SHA_SHROUD_capsule_data_swig",
+                        "f_capsule_data_type_rhs": "SHA_SHROUD_capsule_data_swig",
                         "f_derived_type_lhs": "object_weak",
                         "f_derived_type_rhs": "object_shared",
-                        "f_interface_import": "SHA_SHROUD_capsule_data",
+                        "f_interface_import": "SHA_SHROUD_capsule_data_swig",
                         "function_suffix": "_Object_shared",
-                        "idtor": "1"
+                        "idtor": "2"
                     },
-                    "stmt": "f_operator_assignment_shadow_basic_weak"
+                    "stmt": "f_operator_assignment_shadow_swig_weak"
                 },
                 "name": "std::weak_ptr<Object> = std::shared_ptr<Object>"
             }
@@ -76,6 +77,11 @@
                         },
                         "decl": "Object()",
                         "declgen": "Object(void)",
+                        "helpers": {
+                            "fc": [
+                                "capsule_swigmemflags"
+                            ]
+                        },
                         "name": "ctor",
                         "options": {
                             "F_create_generic": true
@@ -103,7 +109,7 @@
                                         "cxx_member": ".",
                                         "cxx_type": "Object",
                                         "cxx_var": "SHCXX_rv",
-                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data",
+                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data_swig",
                                         "f_derived_type": "object",
                                         "f_kind": "object",
                                         "f_module_name": "shared_mod",
@@ -118,19 +124,20 @@
                                         "i_result_clause": "\fresult(SHT_rv_ptr)",
                                         "i_result_var": "SHT_rv_ptr",
                                         "i_subprogram": "function",
-                                        "i_type": "type(SHA_SHROUD_capsule_data)",
+                                        "i_type": "type(SHA_SHROUD_capsule_data_swig)",
                                         "i_var": "SHT_rv",
                                         "i_var_ptr": "SHT_rv_ptr",
-                                        "idtor": "2",
-                                        "stmt_name": "c_ctor_shadow_capptr",
+                                        "idtor": "3",
+                                        "stmt_name": "c_ctor_shadow_capptr_swig",
                                         "typemap_name": "Object"
                                     },
                                     "meta": {
                                         "abstract": "shadow",
                                         "api": "capptr",
+                                        "custom": "swig",
                                         "intent": "ctor"
                                     },
-                                    "stmt": "c_ctor_shadow_capptr"
+                                    "stmt": "c_ctor_shadow_capptr_swig"
                                 }
                             },
                             "f": {
@@ -153,7 +160,7 @@
                                         "cxx_type": "Object",
                                         "cxx_var": "SHCXX_rv",
                                         "f_call_function": "c_object_ctor_bufferify",
-                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data",
+                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data_swig",
                                         "f_derived_type": "object",
                                         "f_intent": "OUT",
                                         "f_intent_attr": ", intent(OUT)",
@@ -171,18 +178,19 @@
                                         "i_name_function": "c_object_ctor_bufferify",
                                         "i_subprogram": "subroutine",
                                         "i_suffix": "_bufferify",
-                                        "i_type": "type(SHA_SHROUD_capsule_data)",
+                                        "i_type": "type(SHA_SHROUD_capsule_data_swig)",
                                         "i_var": "SHT_rv",
-                                        "idtor": "2",
-                                        "stmt_name": "f_ctor_shadow_capsule",
+                                        "idtor": "3",
+                                        "stmt_name": "f_ctor_shadow_capsule_swig",
                                         "typemap_name": "Object"
                                     },
                                     "meta": {
                                         "abstract": "shadow",
                                         "api": "capsule",
+                                        "custom": "swig",
                                         "intent": "ctor"
                                     },
-                                    "stmt": "f_ctor_shadow_capsule"
+                                    "stmt": "f_ctor_shadow_capsule_swig"
                                 }
                             },
                             "share": {
@@ -241,14 +249,15 @@
                                         "C_prototype": "SHA_Object * self",
                                         "C_return_type": "void",
                                         "i_name_function": "c_object_dtor",
-                                        "stmt_name": "c_dtor",
+                                        "stmt_name": "c_dtor_swig",
                                         "typemap_name": "void"
                                     },
                                     "meta": {
                                         "abstract": "void",
+                                        "custom": "swig",
                                         "intent": "dtor"
                                     },
-                                    "stmt": "c_dtor"
+                                    "stmt": "c_dtor_swig"
                                 }
                             },
                             "f": {
@@ -265,14 +274,15 @@
                                         "i_arguments": "self",
                                         "i_name_function": "c_object_dtor",
                                         "i_subprogram": "subroutine",
-                                        "stmt_name": "f_dtor",
+                                        "stmt_name": "f_dtor_swig",
                                         "typemap_name": "void"
                                     },
                                     "meta": {
                                         "abstract": "void",
+                                        "custom": "swig",
                                         "intent": "dtor"
                                     },
-                                    "stmt": "f_dtor"
+                                    "stmt": "f_dtor_swig"
                                 }
                             },
                             "share": {
@@ -361,7 +371,7 @@
                                         "cxx_nonconst_ptr": "SHC_rv_cxx",
                                         "cxx_type": "std::shared_ptr<Object>",
                                         "cxx_var": "SHC_rv_cxx",
-                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data",
+                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data_swig",
                                         "f_derived_type": "object_shared",
                                         "f_kind": "object_shared",
                                         "f_module_name": "shared_mod",
@@ -376,7 +386,7 @@
                                         "i_result_clause": "\fresult(SHT_rv_ptr)",
                                         "i_result_var": "SHT_rv_ptr",
                                         "i_subprogram": "function",
-                                        "i_type": "type(SHA_SHROUD_capsule_data)",
+                                        "i_type": "type(SHA_SHROUD_capsule_data_swig)",
                                         "i_var": "SHT_rv",
                                         "i_var_ptr": "SHT_rv_ptr",
                                         "idtor": "0",
@@ -420,7 +430,7 @@
                                         "cxx_type": "std::shared_ptr<Object>",
                                         "cxx_var": "SHC_rv_cxx",
                                         "f_call_function": "c_object_create_child_a_bufferify",
-                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data",
+                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data_swig",
                                         "f_derived_type": "object_shared",
                                         "f_kind": "object_shared",
                                         "f_module_name": "shared_mod",
@@ -436,7 +446,7 @@
                                         "i_name_function": "c_object_create_child_a_bufferify",
                                         "i_subprogram": "subroutine",
                                         "i_suffix": "_bufferify",
-                                        "i_type": "type(SHA_SHROUD_capsule_data)",
+                                        "i_type": "type(SHA_SHROUD_capsule_data_swig)",
                                         "i_var": "SHT_rv",
                                         "idtor": "0",
                                         "stmt_name": "f_function_smartptr<shadow>*_capsule",
@@ -542,7 +552,7 @@
                                         "cxx_nonconst_ptr": "SHC_rv_cxx",
                                         "cxx_type": "std::shared_ptr<Object>",
                                         "cxx_var": "SHC_rv_cxx",
-                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data",
+                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data_swig",
                                         "f_derived_type": "object_shared",
                                         "f_kind": "object_shared",
                                         "f_module_name": "shared_mod",
@@ -557,7 +567,7 @@
                                         "i_result_clause": "\fresult(SHT_rv_ptr)",
                                         "i_result_var": "SHT_rv_ptr",
                                         "i_subprogram": "function",
-                                        "i_type": "type(SHA_SHROUD_capsule_data)",
+                                        "i_type": "type(SHA_SHROUD_capsule_data_swig)",
                                         "i_var": "SHT_rv",
                                         "i_var_ptr": "SHT_rv_ptr",
                                         "idtor": "0",
@@ -601,7 +611,7 @@
                                         "cxx_type": "std::shared_ptr<Object>",
                                         "cxx_var": "SHC_rv_cxx",
                                         "f_call_function": "c_object_create_child_b_bufferify",
-                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data",
+                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data_swig",
                                         "f_derived_type": "object_shared",
                                         "f_kind": "object_shared",
                                         "f_module_name": "shared_mod",
@@ -617,7 +627,7 @@
                                         "i_name_function": "c_object_create_child_b_bufferify",
                                         "i_subprogram": "subroutine",
                                         "i_suffix": "_bufferify",
-                                        "i_type": "type(SHA_SHROUD_capsule_data)",
+                                        "i_type": "type(SHA_SHROUD_capsule_data_swig)",
                                         "i_var": "SHT_rv",
                                         "idtor": "0",
                                         "stmt_name": "f_function_smartptr<shadow>*_capsule",
@@ -811,7 +821,7 @@
                                         "cxx_nonconst_ptr": "SHC_child_cxx",
                                         "cxx_type": "std::shared_ptr<Object>",
                                         "cxx_var": "SHC_child_cxx",
-                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data",
+                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data_swig",
                                         "f_derived_type": "object_shared",
                                         "f_intent": "INOUT",
                                         "f_intent_attr": ", intent(INOUT)",
@@ -824,7 +834,7 @@
                                         "i_intent_attr": ", intent(INOUT)",
                                         "i_kind": "object_shared",
                                         "i_module_name": "shared_mod",
-                                        "i_type": "type(SHA_SHROUD_capsule_data)",
+                                        "i_type": "type(SHA_SHROUD_capsule_data_swig)",
                                         "i_var": "child",
                                         "idtor": "0",
                                         "stmt_name": "f_inout_smartptr<shadow>*",
@@ -881,7 +891,9 @@
                     }
                 ],
                 "name": "Object",
-                "options": {},
+                "options": {
+                    "F_assignment_api": "swig"
+                },
                 "parse_keyword": "class",
                 "scope": "Object::",
                 "smart_pointer": [
@@ -910,11 +922,12 @@
                     "F_derived_name": "object",
                     "F_name_api": "object",
                     "F_name_scope": "object_",
+                    "c_capsule_data_type": "SHA_SHROUD_capsule_data_swig",
                     "class_scope": "Object::",
                     "cxx_class": "Object",
                     "cxx_type": "Object",
-                    "f_capsule_data_type": "SHA_SHROUD_capsule_data",
-                    "f_helper_capsule_data_basic": "SHA_SHROUD_capsule_data",
+                    "f_capsule_data_type": "SHA_SHROUD_capsule_data_swig",
+                    "f_helper_capsule_data_swig": "SHA_SHROUD_capsule_data_swig",
                     "file_scope": "Object"
                 }
             },
@@ -948,6 +961,11 @@
                         },
                         "decl": "Object()",
                         "declgen": "Object(void)",
+                        "helpers": {
+                            "fc": [
+                                "capsule_swigmemflags"
+                            ]
+                        },
                         "name": "ctor",
                         "options": {
                             "F_create_generic": true
@@ -976,7 +994,7 @@
                                         "cxx_member": ".",
                                         "cxx_type": "std::shared_ptr<Object>",
                                         "cxx_var": "SHCXX_rv",
-                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data",
+                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data_swig",
                                         "f_derived_type": "object_shared",
                                         "f_kind": "object_shared",
                                         "f_module_name": "shared_mod",
@@ -991,20 +1009,21 @@
                                         "i_result_clause": "\fresult(SHT_rv_ptr)",
                                         "i_result_var": "SHT_rv_ptr",
                                         "i_subprogram": "function",
-                                        "i_type": "type(SHA_SHROUD_capsule_data)",
+                                        "i_type": "type(SHA_SHROUD_capsule_data_swig)",
                                         "i_var": "SHT_rv",
                                         "i_var_ptr": "SHT_rv_ptr",
-                                        "idtor": "4",
-                                        "stmt_name": "c_ctor_shadow_capptr_shared",
+                                        "idtor": "5",
+                                        "stmt_name": "c_ctor_shadow_capptr_shared_swig",
                                         "typemap_name": "std::shared_ptr<Object>"
                                     },
                                     "meta": {
                                         "abstract": "shadow",
                                         "api": "capptr",
+                                        "custom": "swig",
                                         "intent": "ctor",
                                         "owner": "shared"
                                     },
-                                    "stmt": "c_ctor_shadow_capptr_shared"
+                                    "stmt": "c_ctor_shadow_capptr_shared_swig"
                                 }
                             },
                             "f": {
@@ -1028,7 +1047,7 @@
                                         "cxx_type": "std::shared_ptr<Object>",
                                         "cxx_var": "SHCXX_rv",
                                         "f_call_function": "c_object_shared_ctor_bufferify",
-                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data",
+                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data_swig",
                                         "f_derived_type": "object_shared",
                                         "f_kind": "object_shared",
                                         "f_module_name": "shared_mod",
@@ -1044,19 +1063,20 @@
                                         "i_name_function": "c_object_shared_ctor_bufferify",
                                         "i_subprogram": "subroutine",
                                         "i_suffix": "_bufferify",
-                                        "i_type": "type(SHA_SHROUD_capsule_data)",
+                                        "i_type": "type(SHA_SHROUD_capsule_data_swig)",
                                         "i_var": "SHT_rv",
-                                        "idtor": "4",
-                                        "stmt_name": "f_ctor_shadow_capsule_shared",
+                                        "idtor": "5",
+                                        "stmt_name": "f_ctor_shadow_capsule_shared_swig",
                                         "typemap_name": "std::shared_ptr<Object>"
                                     },
                                     "meta": {
                                         "abstract": "shadow",
                                         "api": "capsule",
+                                        "custom": "swig",
                                         "intent": "ctor",
                                         "owner": "shared"
                                     },
-                                    "stmt": "f_ctor_shadow_capsule_shared"
+                                    "stmt": "f_ctor_shadow_capsule_shared_swig"
                                 }
                             },
                             "share": {
@@ -1116,15 +1136,16 @@
                                         "C_prototype": "SHA_Object_shared * self",
                                         "C_return_type": "void",
                                         "i_name_function": "c_object_shared_dtor",
-                                        "stmt_name": "c_dtor",
+                                        "stmt_name": "c_dtor_swig",
                                         "typemap_name": "void"
                                     },
                                     "meta": {
                                         "abstract": "void",
+                                        "custom": "swig",
                                         "intent": "dtor",
                                         "owner": "shared"
                                     },
-                                    "stmt": "c_dtor"
+                                    "stmt": "c_dtor_swig"
                                 }
                             },
                             "f": {
@@ -1141,15 +1162,16 @@
                                         "i_arguments": "self",
                                         "i_name_function": "c_object_shared_dtor",
                                         "i_subprogram": "subroutine",
-                                        "stmt_name": "f_dtor",
+                                        "stmt_name": "f_dtor_swig",
                                         "typemap_name": "void"
                                     },
                                     "meta": {
                                         "abstract": "void",
+                                        "custom": "swig",
                                         "intent": "dtor",
                                         "owner": "shared"
                                     },
-                                    "stmt": "f_dtor"
+                                    "stmt": "f_dtor_swig"
                                 }
                             },
                             "share": {
@@ -1239,7 +1261,7 @@
                                         "cxx_nonconst_ptr": "SHC_rv_cxx",
                                         "cxx_type": "std::shared_ptr<Object>",
                                         "cxx_var": "SHC_rv_cxx",
-                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data",
+                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data_swig",
                                         "f_derived_type": "object_shared",
                                         "f_kind": "object_shared",
                                         "f_module_name": "shared_mod",
@@ -1254,7 +1276,7 @@
                                         "i_result_clause": "\fresult(SHT_rv_ptr)",
                                         "i_result_var": "SHT_rv_ptr",
                                         "i_subprogram": "function",
-                                        "i_type": "type(SHA_SHROUD_capsule_data)",
+                                        "i_type": "type(SHA_SHROUD_capsule_data_swig)",
                                         "i_var": "SHT_rv",
                                         "i_var_ptr": "SHT_rv_ptr",
                                         "idtor": "0",
@@ -1298,7 +1320,7 @@
                                         "cxx_type": "std::shared_ptr<Object>",
                                         "cxx_var": "SHC_rv_cxx",
                                         "f_call_function": "c_object_shared_create_child_a_bufferify",
-                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data",
+                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data_swig",
                                         "f_derived_type": "object_shared",
                                         "f_kind": "object_shared",
                                         "f_module_name": "shared_mod",
@@ -1314,7 +1336,7 @@
                                         "i_name_function": "c_object_shared_create_child_a_bufferify",
                                         "i_subprogram": "subroutine",
                                         "i_suffix": "_bufferify",
-                                        "i_type": "type(SHA_SHROUD_capsule_data)",
+                                        "i_type": "type(SHA_SHROUD_capsule_data_swig)",
                                         "i_var": "SHT_rv",
                                         "idtor": "0",
                                         "stmt_name": "f_function_smartptr<shadow>*_capsule",
@@ -1421,7 +1443,7 @@
                                         "cxx_nonconst_ptr": "SHC_rv_cxx",
                                         "cxx_type": "std::shared_ptr<Object>",
                                         "cxx_var": "SHC_rv_cxx",
-                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data",
+                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data_swig",
                                         "f_derived_type": "object_shared",
                                         "f_kind": "object_shared",
                                         "f_module_name": "shared_mod",
@@ -1436,7 +1458,7 @@
                                         "i_result_clause": "\fresult(SHT_rv_ptr)",
                                         "i_result_var": "SHT_rv_ptr",
                                         "i_subprogram": "function",
-                                        "i_type": "type(SHA_SHROUD_capsule_data)",
+                                        "i_type": "type(SHA_SHROUD_capsule_data_swig)",
                                         "i_var": "SHT_rv",
                                         "i_var_ptr": "SHT_rv_ptr",
                                         "idtor": "0",
@@ -1480,7 +1502,7 @@
                                         "cxx_type": "std::shared_ptr<Object>",
                                         "cxx_var": "SHC_rv_cxx",
                                         "f_call_function": "c_object_shared_create_child_b_bufferify",
-                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data",
+                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data_swig",
                                         "f_derived_type": "object_shared",
                                         "f_kind": "object_shared",
                                         "f_module_name": "shared_mod",
@@ -1496,7 +1518,7 @@
                                         "i_name_function": "c_object_shared_create_child_b_bufferify",
                                         "i_subprogram": "subroutine",
                                         "i_suffix": "_bufferify",
-                                        "i_type": "type(SHA_SHROUD_capsule_data)",
+                                        "i_type": "type(SHA_SHROUD_capsule_data_swig)",
                                         "i_var": "SHT_rv",
                                         "idtor": "0",
                                         "stmt_name": "f_function_smartptr<shadow>*_capsule",
@@ -1691,7 +1713,7 @@
                                         "cxx_nonconst_ptr": "SHC_child_cxx",
                                         "cxx_type": "std::shared_ptr<Object>",
                                         "cxx_var": "SHC_child_cxx",
-                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data",
+                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data_swig",
                                         "f_derived_type": "object_shared",
                                         "f_intent": "INOUT",
                                         "f_intent_attr": ", intent(INOUT)",
@@ -1704,7 +1726,7 @@
                                         "i_intent_attr": ", intent(INOUT)",
                                         "i_kind": "object_shared",
                                         "i_module_name": "shared_mod",
-                                        "i_type": "type(SHA_SHROUD_capsule_data)",
+                                        "i_type": "type(SHA_SHROUD_capsule_data_swig)",
                                         "i_var": "child",
                                         "idtor": "0",
                                         "stmt_name": "f_inout_smartptr<shadow>*",
@@ -1891,7 +1913,9 @@
                 "name": "Object",
                 "name_api": "Object_shared",
                 "name_instantiation": "std::shared_ptr<Object>",
-                "options": {},
+                "options": {
+                    "F_assignment_api": "swig"
+                },
                 "parse_keyword": "class",
                 "scope": "Object::",
                 "typemap_name": "std::shared_ptr<Object>",
@@ -1913,11 +1937,12 @@
                     "F_name_scope": "object_shared_",
                     "YAML_test": "smart_pointer",
                     "baseclass": "<BasesClassFormat Object>",
+                    "c_capsule_data_type": "SHA_SHROUD_capsule_data_swig",
                     "class_scope": "std::shared_ptr<Object>::",
                     "cxx_class": "Object_shared",
                     "cxx_type": "std::shared_ptr<Object>",
-                    "f_capsule_data_type": "SHA_SHROUD_capsule_data",
-                    "f_helper_capsule_data_basic": "SHA_SHROUD_capsule_data",
+                    "f_capsule_data_type": "SHA_SHROUD_capsule_data_swig",
+                    "f_helper_capsule_data_swig": "SHA_SHROUD_capsule_data_swig",
                     "file_scope": "Object_shared",
                     "smart_pointer": "shared"
                 }
@@ -2065,7 +2090,9 @@
                 "name": "Object",
                 "name_api": "Object_weak",
                 "name_instantiation": "std::weak_ptr<Object>",
-                "options": {},
+                "options": {
+                    "F_assignment_api": "swig"
+                },
                 "parse_keyword": "class",
                 "scope": "Object::",
                 "typemap_name": "std::weak_ptr<Object>",
@@ -2086,11 +2113,12 @@
                     "F_name_api": "object_weak",
                     "F_name_scope": "object_weak_",
                     "baseclass": "<BasesClassFormat Object>",
+                    "c_capsule_data_type": "SHA_SHROUD_capsule_data_swig",
                     "class_scope": "std::weak_ptr<Object>::",
                     "cxx_class": "Object_weak",
                     "cxx_type": "std::weak_ptr<Object>",
-                    "f_capsule_data_type": "SHA_SHROUD_capsule_data",
-                    "f_helper_capsule_data_basic": "SHA_SHROUD_capsule_data",
+                    "f_capsule_data_type": "SHA_SHROUD_capsule_data_swig",
+                    "f_helper_capsule_data_swig": "SHA_SHROUD_capsule_data_swig",
                     "file_scope": "Object_weak",
                     "smart_pointer": "weak"
                 }
@@ -2126,7 +2154,7 @@
             "c_type": "SHA_Object",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "Object",
-            "f_capsule_data_type": "SHA_SHROUD_capsule_data",
+            "f_capsule_data_type": "SHA_SHROUD_capsule_data_swig",
             "f_class": "class(object)",
             "f_derived_type": "object",
             "f_kind": "object",
@@ -2141,11 +2169,11 @@
             "flat_name": "Object",
             "i_module": {
                 "shared_mod": [
-                    "SHA_SHROUD_capsule_data"
+                    "SHA_SHROUD_capsule_data_swig"
                 ]
             },
-            "i_type": "type(SHA_SHROUD_capsule_data)",
-            "idtor": "2",
+            "i_type": "type(SHA_SHROUD_capsule_data_swig)",
+            "idtor": "3",
             "impl_header": [
                 "shared.hpp"
             ],
@@ -2163,7 +2191,7 @@
             "c_type": "SHA_Object_shared",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "std::shared_ptr<Object>",
-            "f_capsule_data_type": "SHA_SHROUD_capsule_data",
+            "f_capsule_data_type": "SHA_SHROUD_capsule_data_swig",
             "f_class": "class(object_shared)",
             "f_derived_type": "object_shared",
             "f_kind": "object_shared",
@@ -2178,11 +2206,11 @@
             "flat_name": "std_shared_ptr_Object",
             "i_module": {
                 "shared_mod": [
-                    "SHA_SHROUD_capsule_data"
+                    "SHA_SHROUD_capsule_data_swig"
                 ]
             },
-            "i_type": "type(SHA_SHROUD_capsule_data)",
-            "idtor": "3",
+            "i_type": "type(SHA_SHROUD_capsule_data_swig)",
+            "idtor": "4",
             "impl_header": [
                 "shared.hpp"
             ],
@@ -2202,7 +2230,7 @@
             "c_type": "SHA_Object_weak",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "std::weak_ptr<Object>",
-            "f_capsule_data_type": "SHA_SHROUD_capsule_data",
+            "f_capsule_data_type": "SHA_SHROUD_capsule_data_swig",
             "f_class": "class(object_weak)",
             "f_derived_type": "object_weak",
             "f_kind": "object_weak",
@@ -2217,10 +2245,10 @@
             "flat_name": "std_weak_ptr_Object",
             "i_module": {
                 "shared_mod": [
-                    "SHA_SHROUD_capsule_data"
+                    "SHA_SHROUD_capsule_data_swig"
                 ]
             },
-            "i_type": "type(SHA_SHROUD_capsule_data)",
+            "i_type": "type(SHA_SHROUD_capsule_data_swig)",
             "impl_header": [
                 "shared.hpp"
             ],

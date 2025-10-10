@@ -22,7 +22,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  Object
-// Statement: c_ctor_shadow_capptr_shared
+// Statement: c_ctor_shadow_capptr_shared_swig
 SHA_Object_shared * SHA_Object_shared_ctor(SHA_Object_shared *SHC_rv)
 {
     // splicer begin class.Object.method.ctor
@@ -30,14 +30,14 @@ SHA_Object_shared * SHA_Object_shared_ctor(SHA_Object_shared *SHC_rv)
         new std::shared_ptr<Object>;
     *SHC_rv_shared =  std::make_shared<Object>();
     SHC_rv->addr = static_cast<void *>(SHC_rv_shared);
-    SHC_rv->idtor = 4;
+    SHC_rv->idtor = 5;
     return SHC_rv;
     // splicer end class.Object.method.ctor
 }
 
 // ----------------------------------------
 // Function:  Object
-// Statement: f_ctor_shadow_capsule_shared
+// Statement: f_ctor_shadow_capsule_shared_swig
 void SHA_Object_shared_ctor_bufferify(SHA_Object_shared *SHC_rv)
 {
     // splicer begin class.Object.method.ctor_bufferify
@@ -45,20 +45,24 @@ void SHA_Object_shared_ctor_bufferify(SHA_Object_shared *SHC_rv)
         new std::shared_ptr<Object>;
     *SHC_rv_shared =  std::make_shared<Object>();
     SHC_rv->addr = static_cast<void *>(SHC_rv_shared);
-    SHC_rv->idtor = 4;
+    SHC_rv->idtor = 5;
     // splicer end class.Object.method.ctor_bufferify
 }
 
 // ----------------------------------------
 // Function:  ~Object
-// Statement: c_dtor
+// Statement: c_dtor_swig
 void SHA_Object_shared_dtor(SHA_Object_shared * self)
 {
     std::shared_ptr<Object> *SH_this =
         static_cast<std::shared_ptr<Object> *>(self->addr);
     // splicer begin class.Object.method.dtor
-    delete SH_this;
+    if (self->cmemflags & SWIG_MEM_OWN) {
+        delete SH_this;
+    }
     self->addr = nullptr;
+    self->idtor = 0;
+    self->cmemflags = 0;
     // splicer end class.Object.method.dtor
 }
 

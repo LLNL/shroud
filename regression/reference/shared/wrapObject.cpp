@@ -21,38 +21,44 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  Object
-// Statement: c_ctor_shadow_capptr
+// Statement: c_ctor_shadow_capptr_swig
 SHA_Object * SHA_Object_ctor(SHA_Object *SHC_rv)
 {
     // splicer begin class.Object.method.ctor
     Object *SHCXX_rv = new Object();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv->idtor = 2;
+    SHC_rv->idtor = 3;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     return SHC_rv;
     // splicer end class.Object.method.ctor
 }
 
 // ----------------------------------------
 // Function:  Object
-// Statement: f_ctor_shadow_capsule
+// Statement: f_ctor_shadow_capsule_swig
 void SHA_Object_ctor_bufferify(SHA_Object *SHC_rv)
 {
     // splicer begin class.Object.method.ctor_bufferify
     Object *SHCXX_rv = new Object();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv->idtor = 2;
+    SHC_rv->idtor = 3;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     // splicer end class.Object.method.ctor_bufferify
 }
 
 // ----------------------------------------
 // Function:  ~Object
-// Statement: c_dtor
+// Statement: c_dtor_swig
 void SHA_Object_dtor(SHA_Object * self)
 {
     Object *SH_this = static_cast<Object *>(self->addr);
     // splicer begin class.Object.method.dtor
-    delete SH_this;
+    if (self->cmemflags & SWIG_MEM_OWN) {
+        delete SH_this;
+    }
     self->addr = nullptr;
+    self->idtor = 0;
+    self->cmemflags = 0;
     // splicer end class.Object.method.dtor
 }
 
