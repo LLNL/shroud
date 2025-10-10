@@ -78,6 +78,8 @@ module shared_mod
 
     interface assignment (=)
         module procedure object_assign_Object
+        module procedure object_shared_assign_Object_shared
+        module procedure object_weak_assign_Object_weak
         module procedure object_weak_assign_Object_shared
     end interface
 
@@ -515,6 +517,40 @@ contains
         end interface
         call do_assign(lhs%cxxmem, rhs%cxxmem)
     end subroutine object_assign_Object
+
+    ! Statement: f_operator_assignment_shadow_swig_shared
+    ! std::shared_ptr<Object> = std::shared_ptr<Object>
+    subroutine object_shared_assign_Object_shared(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(object_shared), intent(INOUT) :: lhs
+        type(object_shared), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="SHA_Object_shared_assign_Object_shared")
+                import :: SHA_SHROUD_capsule_data_swig
+                type(SHA_SHROUD_capsule_data_swig), intent(INOUT) :: lhs
+                type(SHA_SHROUD_capsule_data_swig), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine object_shared_assign_Object_shared
+
+    ! Statement: f_operator_assignment_shadow_swig_weak
+    ! std::weak_ptr<Object> = std::weak_ptr<Object>
+    subroutine object_weak_assign_Object_weak(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(object_weak), intent(INOUT) :: lhs
+        type(object_weak), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="SHA_Object_weak_assign_Object_weak")
+                import :: SHA_SHROUD_capsule_data_swig
+                type(SHA_SHROUD_capsule_data_swig), intent(INOUT) :: lhs
+                type(SHA_SHROUD_capsule_data_swig), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine object_weak_assign_Object_weak
 
     ! Statement: f_operator_assignment_shadow_swig_weak
     ! std::weak_ptr<Object> = std::shared_ptr<Object>

@@ -29,6 +29,52 @@
                 "bind": {
                     "fmtdict": {
                         "C_name_api": "assign",
+                        "C_name_assign_api": "SHA_Object_shared_assign_Object_shared",
+                        "F_name_api": "assign",
+                        "F_name_assign_api": "object_shared_assign_Object_shared",
+                        "c_type_lhs": "SHA_Object_shared",
+                        "c_type_rhs": "SHA_Object_shared",
+                        "cxx_type_lhs": "std::shared_ptr<Object>",
+                        "cxx_type_rhs": "std::shared_ptr<Object>",
+                        "f_capsule_data_type_lhs": "SHA_SHROUD_capsule_data_swig",
+                        "f_capsule_data_type_rhs": "SHA_SHROUD_capsule_data_swig",
+                        "f_derived_type_lhs": "object_shared",
+                        "f_derived_type_rhs": "object_shared",
+                        "f_interface_import": "SHA_SHROUD_capsule_data_swig",
+                        "function_suffix": "_Object_shared",
+                        "idtor": "2"
+                    },
+                    "stmt": "f_operator_assignment_shadow_swig_shared"
+                },
+                "name": "std::shared_ptr<Object> = std::shared_ptr<Object>"
+            },
+            {
+                "bind": {
+                    "fmtdict": {
+                        "C_name_api": "assign",
+                        "C_name_assign_api": "SHA_Object_weak_assign_Object_weak",
+                        "F_name_api": "assign",
+                        "F_name_assign_api": "object_weak_assign_Object_weak",
+                        "c_type_lhs": "SHA_Object_weak",
+                        "c_type_rhs": "SHA_Object_weak",
+                        "cxx_type_lhs": "std::weak_ptr<Object>",
+                        "cxx_type_rhs": "std::weak_ptr<Object>",
+                        "f_capsule_data_type_lhs": "SHA_SHROUD_capsule_data_swig",
+                        "f_capsule_data_type_rhs": "SHA_SHROUD_capsule_data_swig",
+                        "f_derived_type_lhs": "object_weak",
+                        "f_derived_type_rhs": "object_weak",
+                        "f_interface_import": "SHA_SHROUD_capsule_data_swig",
+                        "function_suffix": "_Object_weak",
+                        "idtor": "3"
+                    },
+                    "stmt": "f_operator_assignment_shadow_swig_weak"
+                },
+                "name": "std::weak_ptr<Object> = std::weak_ptr<Object>"
+            },
+            {
+                "bind": {
+                    "fmtdict": {
+                        "C_name_api": "assign",
                         "C_name_assign_api": "SHA_Object_weak_assign_Object_shared",
                         "F_name_api": "assign",
                         "F_name_assign_api": "object_weak_assign_Object_shared",
@@ -42,7 +88,7 @@
                         "f_derived_type_rhs": "object_shared",
                         "f_interface_import": "SHA_SHROUD_capsule_data_swig",
                         "function_suffix": "_Object_shared",
-                        "idtor": "2"
+                        "idtor": "3"
                     },
                     "stmt": "f_operator_assignment_shadow_swig_weak"
                 },
@@ -127,7 +173,7 @@
                                         "i_type": "type(SHA_SHROUD_capsule_data_swig)",
                                         "i_var": "SHT_rv",
                                         "i_var_ptr": "SHT_rv_ptr",
-                                        "idtor": "3",
+                                        "idtor": "4",
                                         "stmt_name": "c_ctor_shadow_capptr_swig",
                                         "typemap_name": "Object"
                                     },
@@ -180,7 +226,7 @@
                                         "i_suffix": "_bufferify",
                                         "i_type": "type(SHA_SHROUD_capsule_data_swig)",
                                         "i_var": "SHT_rv",
-                                        "idtor": "3",
+                                        "idtor": "4",
                                         "stmt_name": "f_ctor_shadow_capsule_swig",
                                         "typemap_name": "Object"
                                     },
@@ -1012,7 +1058,7 @@
                                         "i_type": "type(SHA_SHROUD_capsule_data_swig)",
                                         "i_var": "SHT_rv",
                                         "i_var_ptr": "SHT_rv_ptr",
-                                        "idtor": "5",
+                                        "idtor": "6",
                                         "stmt_name": "c_ctor_shadow_capptr_shared_swig",
                                         "typemap_name": "std::shared_ptr<Object>"
                                     },
@@ -1065,7 +1111,7 @@
                                         "i_suffix": "_bufferify",
                                         "i_type": "type(SHA_SHROUD_capsule_data_swig)",
                                         "i_var": "SHT_rv",
-                                        "idtor": "5",
+                                        "idtor": "6",
                                         "stmt_name": "f_ctor_shadow_capsule_shared_swig",
                                         "typemap_name": "std::shared_ptr<Object>"
                                     },
@@ -2173,7 +2219,7 @@
                 ]
             },
             "i_type": "type(SHA_SHROUD_capsule_data_swig)",
-            "idtor": "3",
+            "idtor": "4",
             "impl_header": [
                 "shared.hpp"
             ],
@@ -2210,7 +2256,7 @@
                 ]
             },
             "i_type": "type(SHA_SHROUD_capsule_data_swig)",
-            "idtor": "4",
+            "idtor": "5",
             "impl_header": [
                 "shared.hpp"
             ],

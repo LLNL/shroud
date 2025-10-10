@@ -27,7 +27,7 @@ SHA_Object * SHA_Object_ctor(SHA_Object *SHC_rv)
     // splicer begin class.Object.method.ctor
     Object *SHCXX_rv = new Object();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv->idtor = 3;
+    SHC_rv->idtor = 4;
     SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     return SHC_rv;
     // splicer end class.Object.method.ctor
@@ -41,7 +41,7 @@ void SHA_Object_ctor_bufferify(SHA_Object *SHC_rv)
     // splicer begin class.Object.method.ctor_bufferify
     Object *SHCXX_rv = new Object();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv->idtor = 3;
+    SHC_rv->idtor = 4;
     SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     // splicer end class.Object.method.ctor_bufferify
 }

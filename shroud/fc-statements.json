@@ -4561,6 +4561,7 @@
     },
     {
         "alias": [
+            "f_operator_assignment_shadow_swig_shared",
             "f_operator_assignment_shadow_swig_weak"
         ],
         "mixin": [

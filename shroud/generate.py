@@ -579,11 +579,12 @@ class GenFunctions(object):
             clsmap[cls.typemap.smart_pointer] = cls
             
         for cls in smart_ptrs.values():
-            ntypemap = cls.typemap
-            if ntypemap.smart_pointer == "weak":
+            smart_pointer =  cls.typemap.smart_pointer
+            assign_operators.append(AssignOperator(cls, cls, smart_pointer))
+            if smart_pointer == "weak":
                 cls.functions = []
                 if 'shared' in clsmap:
-                    # assign a shared_ptr to a weak_ptr
+                    # weak_ptr = shared_ptr
                     assign_operators.append(AssignOperator(cls, clsmap['shared'], 'weak'))
 
             self.add_share_smart_methods(cls)
