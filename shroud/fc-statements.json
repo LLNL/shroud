@@ -4298,7 +4298,7 @@
         "owner": "caller"
     },
     {
-        "name": "f_ctor_shadow_capsuleswig",
+        "name": "f_ctor_shadow_capsule_swig",
         "mixin": [
             "f_mixin_as-intent-out",
             "f_mixin_capsule_function_shadow",
@@ -4322,7 +4322,7 @@
     },
     {
         "alias": [
-            "c_ctor_shadow_capptrswig"
+            "c_ctor_shadow_capptr_swig"
         ],
         "mixin": [
             "c_mixin_function_shadow_capptr",
@@ -4543,7 +4543,8 @@
     },
     {
         "alias": [
-            "f_ctor_shadow_capsule_shared"
+            "f_ctor_shadow_capsule_shared",
+            "f_ctor_shadow_capsule_shared_swig"
         ],
         "mixin": [
             "f_mixin_call-cwrapper-as-subroutine",
@@ -4555,7 +4556,8 @@
     },
     {
         "alias": [
-            "c_ctor_shadow_capptr_shared"
+            "c_ctor_shadow_capptr_shared",
+            "c_ctor_shadow_capptr_shared_swig"
         ],
         "mixin": [
             "c_mixin_function_shadow_capptr",

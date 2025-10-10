@@ -468,7 +468,7 @@ class FillMeta(object):
                 meta["api"] = "capsule"
             if ast.declarator.is_ctor and \
                  node.options.F_assignment_api != 'basic':
-                meta["api"] += node.options.F_assignment_api
+                meta["custom"] = node.options.F_assignment_api
         elif ast.declarator.is_dtor:
             # dtor is of type 'void'.
             if node.options.F_assignment_api != 'basic':
@@ -495,7 +495,7 @@ class FillMeta(object):
                 meta["api"] = "capsule"
             if ast.declarator.is_ctor and \
                node.options.F_assignment_api != 'basic':
-                meta["api"] += node.options.F_assignment_api
+                meta["custom"] = node.options.F_assignment_api
         elif ast.declarator.is_dtor:
             if node.options.F_assignment_api != 'basic':
                 meta["custom"] = node.options.F_assignment_api

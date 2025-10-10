@@ -820,7 +820,7 @@ library
 
 .. steal  intent(in)
 
-.. shared  weak
+.. shared  weak     from typemap.smart_pointer
 
 pass
 ^^^^
