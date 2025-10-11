@@ -139,11 +139,13 @@ contains
       ! Create an alias.
       objectPtr2 = objectPtr 
       call assert_true(objectPtr2%associated(), "objectPtr2 associated after assignment")
-      call assert_true(objectPtr .eq. objectPtr2, "Aliased object")
+      ! The shared_ptr are different, but the Object pointers are the same.
+      !call assert_true(objectPtr .eq. objectPtr2, "Aliased object")
       
       ! A no-op since the same.
       objectPtr = objectPtr2
-      
+
+      ! reference count will be decremented.
       ! alias will not be deleted, it has no ownership.
       call objectPtr2%dtor
       call assert_false(objectPtr2%associated(), "objectPtr2 associated after dtor")

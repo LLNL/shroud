@@ -4466,9 +4466,9 @@
                 "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
               "-}} else {{+",
                 "// Aliasing another class; clear ownership or copy smart pointer.",
-                "lhs_capsule->addr = rhs_capsule->addr;",
+                "lhs_capsule->addr = new {cxx_type_lhs}\t (*static_cast<{cxx_type_lhs}*>\t(rhs_capsule->addr));",
                 "lhs_capsule->idtor = {idtor};",
-                "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_OWN;",
+                "lhs_capsule->cmemflags = rhs_capsule->cmemflags | SWIG_MEM_OWN;",
               "-}}",
             "-}} else if (rhs_capsule->addr == {nullptr}) {{+",
               "// Replace LHS with a null pointer.",
@@ -4483,20 +4483,22 @@
             "-}} else if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {{+",
               "// Transferred ownership from a variable that's about to be lost.",
               "// Move-assign and delete the transient data.",
-              "if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+",
-                "{C_memory_dtor_function}(\t({c_capsule_data_type_basic} *) lhs_capsule);",
-              "-}}",
+              "// LHS and RHS should both 'own' their shared pointers.",
+              "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs}*>\t(lhs_capsule->addr);",
+              "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs}*>\t(rhs_capsule->addr);",
+              "*lhs = *rhs;",
               "lhs_capsule->addr = rhs_capsule->addr;",
               "lhs_capsule->idtor = {idtor};",
               "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
+              "if (rhs_capsule->cmemflags & SWIG_MEM_OWN) {{+",
+                "{C_memory_dtor_function}(\t({c_capsule_data_type_basic} *) rhs_capsule);",
+              "-}}",
             "-}} else {{+",
               "// RHS shouldn't be deleted, alias to LHS.",
-              "if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+",
-                "{C_memory_dtor_function}(\t({c_capsule_data_type_basic} *) lhs_capsule);",
-              "-}}",
-              "lhs_capsule->addr = rhs_capsule->addr;",
-              "lhs_capsule->idtor = {idtor};",
-              "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
+              "// LHS and RHS should both 'own' their shared pointers.",
+              "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs}*>\t(lhs_capsule->addr);",
+              "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs}*>\t(rhs_capsule->addr);",
+              "*lhs = *rhs;",
             "-}}",
             "-}}"
         ],
@@ -4616,12 +4618,34 @@
         "impl_header": [
             "<memory>"
         ],
+        "owner": "shared",
+        "helper": [
+            "capsule_swigmemflags"
+        ]
+    },
+    {
+        "name": "c_mixin_make-shared_swig",
+        "comments": [
+            "Create a std::shared_pointer on the heap to hold the pointer to the instance."
+        ],
+        "c_call": [
+            "std::shared_ptr<{baseclass.cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{baseclass.cxx_type}>;",
+            "*{c_local_shared} = \t std::make_shared<{baseclass.cxx_type}>({C_call_list});",
+            "{c_var}->addr = static_cast<{c_const}void *>(\t{c_local_shared});",
+            "{c_var}->idtor = {idtor};",
+            "{c_var}->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;"
+        ],
+        "c_local": [
+            "shared"
+        ],
+        "impl_header": [
+            "<memory>"
+        ],
         "owner": "shared"
     },
     {
         "alias": [
-            "f_ctor_shadow_capsule_shared",
-            "f_ctor_shadow_capsule_shared_swig"
+            "f_ctor_shadow_capsule_shared"
         ],
         "mixin": [
             "f_mixin_call-cwrapper-as-subroutine",
@@ -4633,8 +4657,7 @@
     },
     {
         "alias": [
-            "c_ctor_shadow_capptr_shared",
-            "c_ctor_shadow_capptr_shared_swig"
+            "c_ctor_shadow_capptr_shared"
         ],
         "mixin": [
             "c_mixin_function_shadow_capptr",
@@ -4642,6 +4665,30 @@
             "c_mixin_as-intent-out",
             "c_mixin_destructor_new-shadow-shared",
             "c_mixin_make-shared"
+        ]
+    },
+    {
+        "alias": [
+            "f_ctor_shadow_capsule_shared_swig"
+        ],
+        "mixin": [
+            "f_mixin_call-cwrapper-as-subroutine",
+            "f_mixin_capsule_function_shadow",
+            "c_mixin_shadow",
+            "c_mixin_destructor_new-shadow-shared",
+            "c_mixin_make-shared_swig"
+        ]
+    },
+    {
+        "alias": [
+            "c_ctor_shadow_capptr_shared_swig"
+        ],
+        "mixin": [
+            "c_mixin_function_shadow_capptr",
+            "c_mixin_shadow",
+            "c_mixin_as-intent-out",
+            "c_mixin_destructor_new-shadow-shared",
+            "c_mixin_make-shared_swig"
         ]
     },
     {
