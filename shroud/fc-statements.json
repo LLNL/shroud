@@ -4618,30 +4618,19 @@
         "impl_header": [
             "<memory>"
         ],
-        "owner": "shared",
-        "helper": [
-            "capsule_swigmemflags"
-        ]
+        "owner": "shared"
     },
     {
         "name": "c_mixin_make-shared_swig",
         "comments": [
-            "Create a std::shared_pointer on the heap to hold the pointer to the instance."
+            "Set cmemflags to be used with assignment overload."
         ],
         "c_call": [
-            "std::shared_ptr<{baseclass.cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{baseclass.cxx_type}>;",
-            "*{c_local_shared} = \t std::make_shared<{baseclass.cxx_type}>({C_call_list});",
-            "{c_var}->addr = static_cast<{c_const}void *>(\t{c_local_shared});",
-            "{c_var}->idtor = {idtor};",
             "{c_var}->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;"
         ],
-        "c_local": [
-            "shared"
-        ],
-        "impl_header": [
-            "<memory>"
-        ],
-        "owner": "shared"
+        "helper": [
+            "capsule_swigmemflags"
+        ]
     },
     {
         "alias": [
@@ -4676,6 +4665,7 @@
             "f_mixin_capsule_function_shadow",
             "c_mixin_shadow",
             "c_mixin_destructor_new-shadow-shared",
+            "c_mixin_make-shared",
             "c_mixin_make-shared_swig"
         ]
     },
@@ -4688,6 +4678,7 @@
             "c_mixin_shadow",
             "c_mixin_as-intent-out",
             "c_mixin_destructor_new-shadow-shared",
+            "c_mixin_make-shared",
             "c_mixin_make-shared_swig"
         ]
     },

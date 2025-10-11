@@ -75,8 +75,6 @@ c_ctor_shadow_capptr_shared:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
-  helper:
-  - capsule_swigmemflags
   impl_header:
   - <memory>
   destructor_header:
@@ -96,11 +94,13 @@ c_ctor_shadow_capptr_shared_swig:
   - Pass function result as a capsule field of shadow class
   - from Fortran to C.
   - Create a std::shared_pointer on the heap to hold the pointer to the instance.
+  - Set cmemflags to be used with assignment overload.
   mixin_names:
   - '  c_mixin_function_shadow_capptr'
   - '  c_mixin_shadow'
   - '  c_mixin_as-intent-out'
   - '  c_mixin_destructor_new-shadow-shared'
+  - '  c_mixin_make-shared'
   - '  c_mixin_make-shared_swig'
   i_dummy_arg:
   - '{i_var}'
@@ -129,6 +129,8 @@ c_ctor_shadow_capptr_shared_swig:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - capsule_swigmemflags
   impl_header:
   - <memory>
   destructor_header:
@@ -5090,8 +5092,6 @@ c_mixin_make-shared:
   - '{c_var}->idtor = {idtor};'
   c_local:
   - shared
-  helper:
-  - capsule_swigmemflags
   impl_header:
   - <memory>
   owner: shared
@@ -5101,18 +5101,11 @@ c_mixin_make-shared_swig:
   name: c_mixin_make-shared_swig
   intent: mixin
   comments:
-  - Create a std::shared_pointer on the heap to hold the pointer to the instance.
+  - Set cmemflags to be used with assignment overload.
   c_call:
-  - "std::shared_ptr<{baseclass.cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{baseclass.cxx_type}>;"
-  - "*{c_local_shared} = \t std::make_shared<{baseclass.cxx_type}>({C_call_list});"
-  - "{c_var}->addr = static_cast<{c_const}void *>(\t{c_local_shared});"
-  - '{c_var}->idtor = {idtor};'
   - '{c_var}->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;'
-  c_local:
-  - shared
-  impl_header:
-  - <memory>
-  owner: shared
+  helper:
+  - capsule_swigmemflags
   sphinx-end-before: c_mixin_make-shared_swig
 c_mixin_new_vector<native>:
   sphinx-start-after: c_mixin_new_vector<native>
@@ -6923,8 +6916,6 @@ f_ctor_shadow_capsule_shared:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
-  helper:
-  - capsule_swigmemflags
   impl_header:
   - <memory>
   destructor_header:
@@ -6944,12 +6935,14 @@ f_ctor_shadow_capsule_shared_swig:
   - Call the C wrapper as a subroutine.
   - Pass function result as a capsule argument from Fortran to C.
   - Create a std::shared_pointer on the heap to hold the pointer to the instance.
+  - Set cmemflags to be used with assignment overload.
   mixin_names:
   - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
   - '  f_mixin_capsule_function_shadow'
   - '  c_mixin_shadow'
   - '  c_mixin_destructor_new-shadow-shared'
+  - '  c_mixin_make-shared'
   - '  c_mixin_make-shared_swig'
   f_dummy_decl:
   - '{f_type} :: {f_var}'
@@ -6979,6 +6972,8 @@ f_ctor_shadow_capsule_shared_swig:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - capsule_swigmemflags
   impl_header:
   - <memory>
   destructor_header:
