@@ -28,7 +28,9 @@ C_OBJS = \
 F_OBJS = \
     main.o \
     fruit.o \
-    wrapfshared.o
+    wrapfshared.o \
+    test_object.o \
+    test_shared.o
 
 include $(top)/regression/run/defaults.mk
 
@@ -37,7 +39,9 @@ utilShared.o : utilShared.cpp shared.hpp typesShared.h
 wrapObject.o : wrapObject.cpp shared.hpp wrapObject.h
 wrapObject_shared.o : wrapObject_shared.cpp shared.hpp wrapObject_shared.h
 wrapObject_weak.o : wrapObject_weak.cpp shared.hpp wrapObject_weak.h
-main.o : fruit.o wrapfshared.o
+test_object.o : test_object.f wrapfshared.o
+test_shared.o : test_shared.f wrapfshared.o
+main.o : fruit.o wrapfshared.o test_object.o test_shared.o
 
 # useful to isolate load error with just C++ code
 maincpp : maincpp.o
