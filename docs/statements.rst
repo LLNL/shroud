@@ -210,6 +210,9 @@ fmtdict
 ^^^^^^^
 
 A dictionary to replace default values
+An entry may be list. It will be joined with newlines into
+a single string before being used. This allows several lines
+to be used in a more natural manner.
 
 .. code-block:: yaml
 
@@ -225,7 +228,18 @@ A dictionary to replace default values
         fmtdict:
             cxx_addr: ""
             cxx_member: "->"
-                
+
+.. code-block:: yaml
+
+        name: "c_mixin_operator_assignment_fmtdict_swig",
+        "fmtdict": {
+            "capture_code": [
+                "// Capture pointer from RHS, clear 'moving' flag.",
+                "additional line here"
+             ]
+        }
+        
+   
 Examples
 --------
 

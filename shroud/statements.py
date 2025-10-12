@@ -305,12 +305,17 @@ def apply_fmtdict_from_stmts(bind):
        f_var: "{F_string_result_as_arg}"
        i_var: "{F_string_result_as_arg}"
        c_var: "{F_string_result_as_arg}"
+       code:
+       - line 1
+       - line 2
     """
     stmts = bind.stmt
     fmt = bind.fmtdict
     
     if stmts.fmtdict is not None:
         for key, value in stmts.fmtdict.items():
+            if isinstance(value, list):
+                value = "\n".join(value)
             setattr(fmt, key, wformat(value, fmt))
     
 def compute_return_prefix(arg):
