@@ -752,6 +752,7 @@ def fmt_assignment(library):
             options.F_assignment_api, assign.specialization])
         bind.stmt = f_asgn_stmt
         library.capsule_format.find_idtor(lhs.typemap, bind)
+        statements.apply_fmtdict_from_stmts(bind)
         
 def add_fc_helper(node_helpers, helpers, fmt):
     """Add a list of Fortran and C helpers.
