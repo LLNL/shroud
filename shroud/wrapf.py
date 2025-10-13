@@ -565,7 +565,7 @@ rv = c_associated({F_this}%{F_derived_member}%addr)
             )
 
     def write_object_final(self, node, fileinfo):
-#        if options.F_auto_reference_count or smart_pointer:
+#        if smart_pointer:
         if not node.C_shared_class:
             return
         if node.options.F_assignment_api == "swig":

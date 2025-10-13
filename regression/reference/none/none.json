@@ -39,7 +39,6 @@
             "F_assignment_api": "basic",
             "F_assumed_rank_max": 7,
             "F_assumed_rank_min": 0,
-            "F_auto_reference_count": false,
             "F_blanknull": false,
             "F_capsule_data_type_template": "{C_prefix}SHROUD_capsule_data",
             "F_capsule_type_template": "{C_prefix}SHROUD_capsule",

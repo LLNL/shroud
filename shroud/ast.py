@@ -551,7 +551,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_standard=2003,
             F_struct_getter_setter=True,
             F_trim_char_in=True,
-            F_auto_reference_count=False,
             F_create_generic=True,
             # wrap options are set in by command line options in main.py
 #            wrap_c=True,

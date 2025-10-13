@@ -97,17 +97,6 @@ class CapsuleFmt(object):
             fmt,
         )
 
-        if options.F_auto_reference_count:
-            # check refererence before deleting
-            append_format(
-                output,
-                "@--cap->refcount;\n"
-                "if (cap->refcount > 0) {{+\n"
-                "return;\n"
-                "-}}",
-                fmt,
-            )
-
         if len(self.capsule_order) > 1:
             # If more than slot 0 is added, create switch statement
             append_format(

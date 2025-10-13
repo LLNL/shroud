@@ -19171,32 +19171,6 @@ f_operator_assignment_shadow_basic_weak:
   - "auto cxx_ptr =\t reinterpret_cast<{cxx_type}*>(ptr);"
   - delete cxx_ptr;
   sphinx-end-before: f_operator_assignment_shadow_basic_weak
-f_operator_assignment_shadow_orig:
-  sphinx-start-after: f_operator_assignment_shadow_orig
-  name: f_operator_assignment_shadow_orig
-  intent: operator
-  notes:
-  - Used with options.F_assignment_api == 'orig'
-  - Originally attached to options.F_auto_reference_count
-  - but never worked. Included for reference.
-  f_type_bound:
-  - 'procedure :: {F_name_assign_api}'
-  - 'generic :: assignment(=) => {F_name_assign_api}'
-  f_operator_body:
-  - subroutine {F_name_assign_api}(lhs, rhs)+
-  - 'use iso_c_binding, only : c_associated, c_f_pointer'
-  - 'class({F_derived_name}), intent(INOUT) :: lhs'
-  - 'class({F_derived_name}), intent(IN) :: rhs'
-  - ''
-  - lhs%{F_derived_member} = rhs%{F_derived_member}
-  - if (c_associated(lhs%{F_derived_member}%addr)) then+
-  - call c_f_pointer(lhs%{F_derived_member}%addr, lhs%{F_derived_member})
-  - lhs%{F_derived_member}%refcount = lhs%{F_derived_member}%refcount + 1
-  - -else+
-  - nullify(lhs%{F_derived_member}%addr)
-  - -endif
-  - -end subroutine {F_name_assign_api}
-  sphinx-end-before: f_operator_assignment_shadow_orig
 f_operator_assignment_shadow_swig:
   sphinx-start-after: f_operator_assignment_shadow_swig
   name: f_operator_assignment_shadow_swig
@@ -23807,7 +23781,6 @@ root
         shadow
           basic -- f_operator_assignment_shadow_basic
             weak -- f_operator_assignment_shadow_basic_weak
-          orig -- f_operator_assignment_shadow_orig
           swig -- f_operator_assignment_shadow_swig
             shared -- f_operator_assignment_shadow_swig_shared
             weak -- f_operator_assignment_shadow_swig_weak

@@ -4548,7 +4548,7 @@
         ]
     },
     {
-        "name": "f_operator_assignment_shadow_orig",
+        "name": "#f_operator_assignment_shadow_orig",
         "notes": [
             "Used with options.F_assignment_api == 'orig'",
             "Originally attached to options.F_auto_reference_count",
