@@ -63,7 +63,7 @@
                 "helpers": {
                     "fc": [
                         "array_context",
-                        "capsule_data_basic",
+                        "capsule_data",
                         "string_to_cdesc",
                         "copy_string",
                         "capsule_dtor"
@@ -146,7 +146,7 @@
                                 "f_call_function": "c_last_function_called_bufferify",
                                 "f_deref_attr": ", allocatable",
                                 "f_helper_array_context": "NS_SHROUD_array",
-                                "f_helper_capsule_data_basic": "NS_SHROUD_capsule_data",
+                                "f_helper_capsule_data": "NS_SHROUD_capsule_data",
                                 "f_helper_capsule_dtor": "NS_SHROUD_capsule_dtor",
                                 "f_helper_copy_string": "NS_SHROUD_copy_string",
                                 "f_result_clause": "\fresult(SHT_rv)",
@@ -938,7 +938,7 @@
                             "cxx_class": "ClassWork",
                             "cxx_type": "ClassWork",
                             "f_capsule_data_type": "NS_SHROUD_capsule_data",
-                            "f_helper_capsule_data_basic": "NS_SHROUD_capsule_data",
+                            "f_helper_capsule_data": "NS_SHROUD_capsule_data",
                             "file_scope": "nswork_ClassWork"
                         }
                     }

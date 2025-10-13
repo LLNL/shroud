@@ -12,10 +12,11 @@
 // splicer begin types.CXX_declarations
 // splicer end types.CXX_declarations
 
-// helper capsule_data_basic
+// helper capsule_data
 struct s_TYP_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
+    int cmemflags;  /* memory flags */
 };
 typedef struct s_TYP_SHROUD_capsule_data TYP_SHROUD_capsule_data;
 

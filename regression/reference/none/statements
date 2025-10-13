@@ -554,6 +554,7 @@ c_function_shadow&_capptr:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_return:
   - return {c_var};
   c_temps:
@@ -602,6 +603,7 @@ c_function_shadow&_capptr_caller:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_return:
   - return {c_var};
   c_temps:
@@ -650,6 +652,7 @@ c_function_shadow&_capptr_library:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_return:
   - return {c_var};
   c_temps:
@@ -693,6 +696,7 @@ c_function_shadow&_capsule:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_local:
   - cxx
   fmtdict:
@@ -732,6 +736,7 @@ c_function_shadow&_capsule_caller:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_local:
   - cxx
   fmtdict:
@@ -771,6 +776,7 @@ c_function_shadow&_capsule_library:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_local:
   - cxx
   fmtdict:
@@ -815,6 +821,7 @@ c_function_shadow*_capptr:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_return:
   - return {c_var};
   c_temps:
@@ -863,6 +870,7 @@ c_function_shadow*_capptr_caller:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_return:
   - return {c_var};
   c_temps:
@@ -911,6 +919,7 @@ c_function_shadow*_capptr_library:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_return:
   - return {c_var};
   c_temps:
@@ -959,6 +968,7 @@ c_function_shadow*_capptr_shared:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_return:
   - return {c_var};
   c_temps:
@@ -1002,6 +1012,7 @@ c_function_shadow*_capsule:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_local:
   - cxx
   fmtdict:
@@ -1070,6 +1081,7 @@ c_function_shadow<native>_capptr:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_return:
   - return {c_var};
   c_temps:
@@ -1126,6 +1138,7 @@ c_function_shadow_capptr:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_return:
   - return {c_var};
   c_temps:
@@ -1175,6 +1188,7 @@ c_function_smartptr<shadow>*_capptr:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_return:
   - return {c_var};
   c_temps:
@@ -1225,6 +1239,7 @@ c_function_smartptr<shadow>_capptr:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_return:
   - return {c_var};
   c_temps:
@@ -1285,7 +1300,7 @@ c_function_string:
     cxx_addr: ''
     cxx_member: ->
   helper:
-  - capsule_data_basic
+  - capsule_data
   owner: caller
   sphinx-end-before: c_function_string
 c_function_string&:
@@ -4051,6 +4066,7 @@ c_mixin_capsule_fill_cvar:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   sphinx-end-before: c_mixin_capsule_fill_cvar
 c_mixin_capsule_fill_local:
   sphinx-start-after: c_mixin_capsule_fill_local
@@ -4079,7 +4095,7 @@ c_mixin_capsule_pass:
   c_temps:
   - capsule
   helper:
-  - capsule_data_basic
+  - capsule_data
   sphinx-end-before: c_mixin_capsule_pass
 c_mixin_cast-argument:
   sphinx-start-after: c_mixin_cast-argument
@@ -5178,7 +5194,7 @@ c_mixin_operator_assignment_fmtdict_swig:
     destroy_code:
     - // Replace LHS with a null pointer.
     - if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+
-    - "{C_memory_dtor_function}(\t({c_capsule_data_type_basic} *) lhs_capsule);"
+    - "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);"
     - -}}
     - lhs_capsule->addr = {nullptr};
     - lhs_capsule->idtor = 0;
@@ -5187,7 +5203,7 @@ c_mixin_operator_assignment_fmtdict_swig:
     - // Transferred ownership from a variable that's about to be lost.
     - // Move-assign and delete the transient data.
     - if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+
-    - "{C_memory_dtor_function}(\t({c_capsule_data_type_basic} *) lhs_capsule);"
+    - "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);"
     - -}}
     - lhs_capsule->addr = rhs_capsule->addr;
     - lhs_capsule->idtor = {idtor};
@@ -5195,7 +5211,7 @@ c_mixin_operator_assignment_fmtdict_swig:
     copy_alias_code:
     - // RHS shouldn't be deleted, alias to LHS.
     - if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+
-    - "{C_memory_dtor_function}(\t({c_capsule_data_type_basic} *) lhs_capsule);"
+    - "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);"
     - -}}
     - lhs_capsule->addr = rhs_capsule->addr;
     - lhs_capsule->idtor = {idtor};
@@ -5219,7 +5235,7 @@ c_mixin_operator_assignment_fmtdict_swig_weak:
     destroy_code:
     - // Replace LHS with a null pointer.
     - if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+
-    - "{C_memory_dtor_function}(\t({c_capsule_data_type_basic} *) lhs_capsule);"
+    - "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);"
     - -}}
     - lhs_capsule->addr = {nullptr};
     - lhs_capsule->idtor = 0;
@@ -5235,7 +5251,7 @@ c_mixin_operator_assignment_fmtdict_swig_weak:
     - lhs_capsule->idtor = {idtor};
     - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
     - if (rhs_capsule->cmemflags & SWIG_MEM_OWN) {{+
-    - "{C_memory_dtor_function}(\t({c_capsule_data_type_basic} *) rhs_capsule);"
+    - "{C_memory_dtor_function}(\t({c_capsule_data_type} *) rhs_capsule);"
     - -}}
     copy_alias_code:
     - // RHS shouldn't be deleted, alias to LHS.
@@ -6608,7 +6624,7 @@ c_out_vector<string>&_cdesc_allocatable:
     f_target_attr: ', target'
   helper:
   - array_context
-  - capsule_data_basic
+  - capsule_data
   - array_context
   - cdesc_vector_string_allocatable
   - vector_string_out_len
@@ -8925,7 +8941,7 @@ f_function_native*_cdesc_allocatable:
   helper:
   - array_context
   - copy_array
-  - capsule_data_basic
+  - capsule_data
   - array_context
   - capsule_dtor
   sphinx-end-before: f_function_native*_cdesc_allocatable
@@ -9073,7 +9089,7 @@ f_function_native*_cdesc_pointer_caller:
     f_var_capsule: Crv
   helper:
   - array_context
-  - capsule_data_basic
+  - capsule_data
   - array_context
   - capsule_helper
   sphinx-end-before: f_function_native*_cdesc_pointer_caller
@@ -9419,6 +9435,7 @@ f_function_shadow&_capsule:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_local:
   - cxx
   fmtdict:
@@ -9465,6 +9482,7 @@ f_function_shadow&_capsule_caller:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_local:
   - cxx
   fmtdict:
@@ -9511,6 +9529,7 @@ f_function_shadow&_capsule_library:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_local:
   - cxx
   fmtdict:
@@ -9557,6 +9576,7 @@ f_function_shadow*_capsule:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_local:
   - cxx
   fmtdict:
@@ -9603,6 +9623,7 @@ f_function_shadow*_capsule_caller:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_local:
   - cxx
   fmtdict:
@@ -9649,6 +9670,7 @@ f_function_shadow*_capsule_library:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_local:
   - cxx
   fmtdict:
@@ -9722,6 +9744,7 @@ f_function_shadow<native>_capsule:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_local:
   - cxx
   fmtdict:
@@ -9776,6 +9799,7 @@ f_function_shadow_capsule:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_local:
   - cxx
   fmtdict:
@@ -9823,6 +9847,7 @@ f_function_smartptr<shadow>*_capsule:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_local:
   - cxx
   fmtdict:
@@ -9871,6 +9896,7 @@ f_function_smartptr<shadow>_capsule:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_local:
   - cxx
   fmtdict:
@@ -10330,7 +10356,7 @@ f_function_string&_cdesc_allocatable:
     i_intent_attr: ', intent(OUT)'
   helper:
   - array_context
-  - capsule_data_basic
+  - capsule_data
   - array_context
   - string_to_cdesc
   - copy_string
@@ -10410,7 +10436,7 @@ f_function_string&_cdesc_allocatable_caller:
     i_intent_attr: ', intent(OUT)'
   helper:
   - array_context
-  - capsule_data_basic
+  - capsule_data
   - array_context
   - string_to_cdesc
   - copy_string
@@ -10490,7 +10516,7 @@ f_function_string&_cdesc_allocatable_library:
     i_intent_attr: ', intent(OUT)'
   helper:
   - array_context
-  - capsule_data_basic
+  - capsule_data
   - array_context
   - string_to_cdesc
   - copy_string
@@ -11536,7 +11562,7 @@ f_function_string*_cdesc_allocatable:
     i_intent_attr: ', intent(OUT)'
   helper:
   - array_context
-  - capsule_data_basic
+  - capsule_data
   - array_context
   - string_to_cdesc
   - copy_string
@@ -11616,7 +11642,7 @@ f_function_string*_cdesc_allocatable_caller:
     i_intent_attr: ', intent(OUT)'
   helper:
   - array_context
-  - capsule_data_basic
+  - capsule_data
   - array_context
   - string_to_cdesc
   - copy_string
@@ -11696,7 +11722,7 @@ f_function_string*_cdesc_allocatable_library:
     i_intent_attr: ', intent(OUT)'
   helper:
   - array_context
-  - capsule_data_basic
+  - capsule_data
   - array_context
   - string_to_cdesc
   - copy_string
@@ -12767,7 +12793,7 @@ f_function_string_cdesc_allocatable:
   - array_context
   - string_to_cdesc
   - copy_string
-  - capsule_data_basic
+  - capsule_data
   - array_context
   - capsule_dtor
   destructor_name: new_string
@@ -12860,7 +12886,7 @@ f_function_string_cdesc_allocatable_caller:
   - array_context
   - string_to_cdesc
   - copy_string
-  - capsule_data_basic
+  - capsule_data
   - array_context
   - capsule_dtor
   destructor_name: new_string
@@ -12953,7 +12979,7 @@ f_function_string_cdesc_allocatable_library:
   - array_context
   - string_to_cdesc
   - copy_string
-  - capsule_data_basic
+  - capsule_data
   - array_context
   - capsule_dtor
   destructor_name: new_string
@@ -13044,7 +13070,7 @@ f_function_string_cdesc_pointer:
     cxx_addr: ''
     cxx_member: ->
   helper:
-  - capsule_data_basic
+  - capsule_data
   - array_context
   - capsule_helper
   - array_context
@@ -13444,7 +13470,7 @@ f_function_string_cfi_pointer:
     cxx_addr: ''
     cxx_member: ->
   helper:
-  - capsule_data_basic
+  - capsule_data
   - array_context
   - capsule_helper
   iface_header:
@@ -13545,7 +13571,7 @@ f_function_string_cfi_pointer_caller:
     cxx_addr: ''
     cxx_member: ->
   helper:
-  - capsule_data_basic
+  - capsule_data
   - array_context
   - capsule_helper
   iface_header:
@@ -13646,7 +13672,7 @@ f_function_string_cfi_pointer_library:
     cxx_addr: ''
     cxx_member: ->
   helper:
-  - capsule_data_basic
+  - capsule_data
   - array_context
   - capsule_helper
   iface_header:
@@ -13722,7 +13748,7 @@ f_function_string_raw:
     cxx_addr: ''
     cxx_member: ->
   helper:
-  - capsule_data_basic
+  - capsule_data
   - array_context
   - capsule_helper
   owner: caller
@@ -18023,7 +18049,7 @@ f_mixin_add_capsule_arg_to_fwrapper:
   fmtdict:
     f_var_capsule: Crv
   helper:
-  - capsule_data_basic
+  - capsule_data
   - array_context
   - capsule_helper
   sphinx-end-before: f_mixin_add_capsule_arg_to_fwrapper
@@ -18118,7 +18144,7 @@ f_mixin_capsule_pass:
   c_temps:
   - capsule
   helper:
-  - capsule_data_basic
+  - capsule_data
   - array_context
   sphinx-end-before: f_mixin_capsule_pass
 f_mixin_capsule_use:
@@ -18158,7 +18184,7 @@ f_mixin_capsule_use:
   c_temps:
   - capsule
   helper:
-  - capsule_data_basic
+  - capsule_data
   - array_context
   - capsule_dtor
   sphinx-end-before: f_mixin_capsule_use
@@ -19449,7 +19475,7 @@ f_operator_assignment_shadow_swig:
     destroy_code:
     - // Replace LHS with a null pointer.
     - if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+
-    - "{C_memory_dtor_function}(\t({c_capsule_data_type_basic} *) lhs_capsule);"
+    - "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);"
     - -}}
     - lhs_capsule->addr = {nullptr};
     - lhs_capsule->idtor = 0;
@@ -19458,7 +19484,7 @@ f_operator_assignment_shadow_swig:
     - // Transferred ownership from a variable that's about to be lost.
     - // Move-assign and delete the transient data.
     - if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+
-    - "{C_memory_dtor_function}(\t({c_capsule_data_type_basic} *) lhs_capsule);"
+    - "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);"
     - -}}
     - lhs_capsule->addr = rhs_capsule->addr;
     - lhs_capsule->idtor = {idtor};
@@ -19466,7 +19492,7 @@ f_operator_assignment_shadow_swig:
     copy_alias_code:
     - // RHS shouldn't be deleted, alias to LHS.
     - if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+
-    - "{C_memory_dtor_function}(\t({c_capsule_data_type_basic} *) lhs_capsule);"
+    - "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);"
     - -}}
     - lhs_capsule->addr = rhs_capsule->addr;
     - lhs_capsule->idtor = {idtor};
@@ -19534,7 +19560,7 @@ f_operator_assignment_shadow_swig_shared:
     destroy_code:
     - // Replace LHS with a null pointer.
     - if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+
-    - "{C_memory_dtor_function}(\t({c_capsule_data_type_basic} *) lhs_capsule);"
+    - "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);"
     - -}}
     - lhs_capsule->addr = {nullptr};
     - lhs_capsule->idtor = 0;
@@ -19550,7 +19576,7 @@ f_operator_assignment_shadow_swig_shared:
     - lhs_capsule->idtor = {idtor};
     - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
     - if (rhs_capsule->cmemflags & SWIG_MEM_OWN) {{+
-    - "{C_memory_dtor_function}(\t({c_capsule_data_type_basic} *) rhs_capsule);"
+    - "{C_memory_dtor_function}(\t({c_capsule_data_type} *) rhs_capsule);"
     - -}}
     copy_alias_code:
     - // RHS shouldn't be deleted, alias to LHS.
@@ -19621,7 +19647,7 @@ f_operator_assignment_shadow_swig_weak:
     destroy_code:
     - // Replace LHS with a null pointer.
     - if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+
-    - "{C_memory_dtor_function}(\t({c_capsule_data_type_basic} *) lhs_capsule);"
+    - "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);"
     - -}}
     - lhs_capsule->addr = {nullptr};
     - lhs_capsule->idtor = 0;
@@ -19637,7 +19663,7 @@ f_operator_assignment_shadow_swig_weak:
     - lhs_capsule->idtor = {idtor};
     - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
     - if (rhs_capsule->cmemflags & SWIG_MEM_OWN) {{+
-    - "{C_memory_dtor_function}(\t({c_capsule_data_type_basic} *) rhs_capsule);"
+    - "{C_memory_dtor_function}(\t({c_capsule_data_type} *) rhs_capsule);"
     - -}}
     copy_alias_code:
     - // RHS shouldn't be deleted, alias to LHS.
@@ -20432,7 +20458,7 @@ f_out_native**_cdesc_allocatable:
   helper:
   - array_context
   - copy_array
-  - capsule_data_basic
+  - capsule_data
   - array_context
   - capsule_dtor
   sphinx-end-before: f_out_native**_cdesc_allocatable
@@ -20977,7 +21003,7 @@ f_out_string**_cdesc_allocatable:
     f_target_attr: ', target'
   helper:
   - array_context
-  - capsule_data_basic
+  - capsule_data
   - array_context
   - array_string_allocatable
   - array_string_out_len
@@ -21741,7 +21767,7 @@ f_out_vector<string>&_cdesc_allocatable:
     f_target_attr: ', target'
   helper:
   - array_context
-  - capsule_data_basic
+  - capsule_data
   - array_context
   - cdesc_vector_string_allocatable
   - vector_string_out_len
@@ -22384,7 +22410,7 @@ h_helper_array_string_allocatable:
   - -end subroutine LIB_SHROUD_cdesc_array_string_allocatable
   - -end interface
   dependent_helpers:
-  - capsule_data_basic
+  - capsule_data
   - array_context
   - cdesc_array_string_out
   sphinx-end-before: h_helper_array_string_allocatable
@@ -22417,6 +22443,41 @@ h_helper_array_string_out_len:
 
     // end helper array_string_out_len'
   sphinx-end-before: h_helper_array_string_out_len
+h_helper_capsule_data:
+  sphinx-start-after: h_helper_capsule_data
+  name: h_helper_capsule_data
+  notes:
+  - Share info with C++ to allow Fortran to release memory.
+  - Used with shadow classes and std::vector.
+  scope: cwrap_include
+  source:
+  - ''
+  - // helper capsule_data
+  - struct s_LIB_SHROUD_capsule_data {+
+  - void *addr;     /* address of C++ memory */
+  - int idtor;      /* index of destructor */
+  - int cmemflags;  /* memory flags */
+  - -};
+  - typedef struct s_LIB_SHROUD_capsule_data LIB_SHROUD_capsule_data;
+  f_fmtname: LIB_SHROUD_capsule_data
+  derived_type:
+  - ''
+  - '! start helper capsule_data
+
+    ! helper capsule_data'
+  - 'type, bind(C) :: LIB_SHROUD_capsule_data+'
+  - 'type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory'
+  - 'integer(C_INT) :: idtor = 0       ! index of destructor'
+  - 'integer(C_INT) :: cmemflags = 0   ! memory flags'
+  - '-end type LIB_SHROUD_capsule_data
+
+    ! end helper capsule_data'
+  modules:
+    iso_c_binding:
+    - C_PTR
+    - C_INT
+    - C_NULL_PTR
+  sphinx-end-before: h_helper_capsule_data
 h_helper_capsule_data_basic:
   sphinx-start-after: h_helper_capsule_data_basic
   name: h_helper_capsule_data_basic
@@ -22451,42 +22512,6 @@ h_helper_capsule_data_basic:
     - C_INT
     - C_NULL_PTR
   sphinx-end-before: h_helper_capsule_data_basic
-h_helper_capsule_data_swig:
-  sphinx-start-after: h_helper_capsule_data_swig
-  name: h_helper_capsule_data_swig
-  notes:
-  - Share info with C++ to allow Fortran to release memory.
-  - Used with shadow classes and std::vector.
-  - Used when option.F_assignment_api=swig.
-  scope: cwrap_include
-  source:
-  - ''
-  - // helper capsule_data_swig
-  - struct s_LIB_SHROUD_capsule_data_swig {+
-  - void *addr;     /* address of C++ memory */
-  - int idtor;      /* index of destructor */
-  - int cmemflags;  /* memory flags */
-  - -};
-  - typedef struct s_LIB_SHROUD_capsule_data_swig LIB_SHROUD_capsule_data_swig;
-  f_fmtname: LIB_SHROUD_capsule_data_swig
-  derived_type:
-  - ''
-  - '! start helper capsule_data_swig
-
-    ! helper capsule_data_swig'
-  - 'type, bind(C) :: LIB_SHROUD_capsule_data_swig+'
-  - 'type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory'
-  - 'integer(C_INT) :: idtor = 0       ! index of destructor'
-  - 'integer(C_INT) :: cmemflags = 0   ! memory flags'
-  - '-end type LIB_SHROUD_capsule_data_swig
-
-    ! end helper capsule_data_swig'
-  modules:
-    iso_c_binding:
-    - C_PTR
-    - C_INT
-    - C_NULL_PTR
-  sphinx-end-before: h_helper_capsule_data_swig
 h_helper_capsule_dtor:
   sphinx-start-after: h_helper_capsule_dtor
   name: h_helper_capsule_dtor
@@ -22514,7 +22539,7 @@ h_helper_capsule_dtor:
   - -end subroutine LIB_SHROUD_capsule_dtor
   - -end interface
   dependent_helpers:
-  - capsule_data_basic
+  - capsule_data
   sphinx-end-before: h_helper_capsule_dtor
 h_helper_capsule_helper:
   sphinx-start-after: h_helper_capsule_helper
@@ -22547,7 +22572,7 @@ h_helper_capsule_helper:
   - call LIB_SHROUD_capsule_dtor(cap%mem)
   - -end subroutine SHROUD_capsule_delete
   dependent_helpers:
-  - capsule_data_basic
+  - capsule_data
   - capsule_dtor
   sphinx-end-before: h_helper_capsule_helper
 h_helper_capsule_swigmemflags:
@@ -22660,7 +22685,7 @@ h_helper_cdesc_vector_string_allocatable:
   - -end subroutine LIB_SHROUD_cdesc_vector_string_allocatable
   - -end interface
   dependent_helpers:
-  - capsule_data_basic
+  - capsule_data
   - array_context
   - cdesc_vector_string_out
   sphinx-end-before: h_helper_cdesc_vector_string_allocatable
@@ -24110,9 +24135,8 @@ root
           out
             len -- h_helper_array_string_out_len
       capsule
-        data
+        data -- h_helper_capsule_data
           basic -- h_helper_capsule_data_basic
-          swig -- h_helper_capsule_data_swig
         dtor -- h_helper_capsule_dtor
         helper -- h_helper_capsule_helper
         swigmemflags -- h_helper_capsule_swigmemflags

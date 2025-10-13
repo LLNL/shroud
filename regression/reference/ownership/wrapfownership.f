@@ -67,10 +67,11 @@ module ownership_mod
         integer(C_LONG) :: shape(7) = 0
     end type OWN_SHROUD_array
 
-    ! helper capsule_data_basic
+    ! helper capsule_data
     type, bind(C) :: OWN_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: cmemflags = 0   ! memory flags
     end type OWN_SHROUD_capsule_data
 
     ! helper capsule_helper

@@ -28,6 +28,7 @@ CLA_Singleton * CLA_Singleton_getReference(CLA_Singleton *SHC_rv)
     classes::Singleton &SHC_rv_cxx = classes::Singleton::getReference();
     SHC_rv->addr  = &SHC_rv_cxx;
     SHC_rv->idtor = 0;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     return SHC_rv;
     // splicer end class.Singleton.method.getReference
 }
@@ -43,6 +44,7 @@ void CLA_Singleton_getReference_bufferify(CLA_Singleton *SHC_rv)
     classes::Singleton &SHC_rv_cxx = classes::Singleton::getReference();
     SHC_rv->addr  = &SHC_rv_cxx;
     SHC_rv->idtor = 0;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     // splicer end class.Singleton.method.getReference_bufferify
 }
 // end CLA_Singleton_getReference_bufferify

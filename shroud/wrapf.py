@@ -260,7 +260,7 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
         f_type_decl.append("")
         if node.cpp_if:
             f_type_decl.append("#" + node.cpp_if)
-        fileinfo.add_fc_helper(["capsule_data_%s" % options.F_assignment_api], fmt_class)
+        fileinfo.add_fc_helper(["capsule_data", "capsule_swigmemflags"], fmt_class)
 
         if options.literalinclude:
             f_type_decl.append("! start derived-type " +

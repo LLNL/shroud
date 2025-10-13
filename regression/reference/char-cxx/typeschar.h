@@ -76,10 +76,11 @@ struct s_CHA_SHROUD_array {
 typedef struct s_CHA_SHROUD_array CHA_SHROUD_array;
 // end helper array_context
 
-// helper capsule_data_basic
+// helper capsule_data
 struct s_CHA_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
+    int cmemflags;  /* memory flags */
 };
 typedef struct s_CHA_SHROUD_capsule_data CHA_SHROUD_capsule_data;
 

@@ -12,10 +12,11 @@ module library_outer1_mod
     use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR
     implicit none
 
-    ! helper capsule_data_basic
+    ! helper capsule_data
     type, bind(C) :: LIB_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: cmemflags = 0   ! memory flags
     end type LIB_SHROUD_capsule_data
 
     type class0

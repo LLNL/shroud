@@ -696,7 +696,7 @@
             "capsule"
         ],
         "helper": [
-            "capsule_data_basic"
+            "capsule_data"
         ]
     },
     {
@@ -794,7 +794,8 @@
         ],
         "c_post_call": [
             "{c_var}->addr  = {cxx_nonconst_ptr};",
-            "{c_var}->idtor = {idtor};"
+            "{c_var}->idtor = {idtor};",
+            "{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;"
         ]
     },
     {
@@ -4443,7 +4444,7 @@
             "destroy_code": [
                 "// Replace LHS with a null pointer.",
                 "if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+",
-                "{C_memory_dtor_function}(\t({c_capsule_data_type_basic} *) lhs_capsule);",
+                "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);",
                 "-}}",
                 "lhs_capsule->addr = {nullptr};",
                 "lhs_capsule->idtor = 0;",
@@ -4453,7 +4454,7 @@
                 "// Transferred ownership from a variable that's about to be lost.",
                 "// Move-assign and delete the transient data.",
                 "if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+",
-                "{C_memory_dtor_function}(\t({c_capsule_data_type_basic} *) lhs_capsule);",
+                "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);",
                 "-}}",
                 "lhs_capsule->addr = rhs_capsule->addr;",
                 "lhs_capsule->idtor = {idtor};",
@@ -4462,7 +4463,7 @@
             "copy_alias_code": [
                 "// RHS shouldn't be deleted, alias to LHS.",
                 "if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+",
-                "{C_memory_dtor_function}(\t({c_capsule_data_type_basic} *) lhs_capsule);",
+                "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);",
                 "-}}",
                 "lhs_capsule->addr = rhs_capsule->addr;",
                 "lhs_capsule->idtor = {idtor};",
@@ -4493,7 +4494,7 @@
             "destroy_code": [
                 "// Replace LHS with a null pointer.",
                 "if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+",
-                "{C_memory_dtor_function}(\t({c_capsule_data_type_basic} *) lhs_capsule);",
+                "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);",
                 "-}}",
                 "lhs_capsule->addr = {nullptr};",
                 "lhs_capsule->idtor = 0;",
@@ -4510,7 +4511,7 @@
               "lhs_capsule->idtor = {idtor};",
               "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
               "if (rhs_capsule->cmemflags & SWIG_MEM_OWN) {{+",
-                "{C_memory_dtor_function}(\t({c_capsule_data_type_basic} *) rhs_capsule);",
+                "{C_memory_dtor_function}(\t({c_capsule_data_type} *) rhs_capsule);",
                 "-}}"
             ],
             "copy_alias_code": [
@@ -6558,7 +6559,7 @@
         "c_fmtname": "{cnamefunc}",
         "api": "c",
         "dependent_helpers": [
-            "capsule_data_basic"
+            "capsule_data"
         ],
         "proto": "{cnameproto};",
         
@@ -6757,7 +6758,7 @@
         "api": "c",
         "scope": "cwrap_impl",
         "dependent_helpers": [
-            "capsule_data_basic",
+            "capsule_data",
             "array_context",
             "cdesc_array_string_out"
         ],
@@ -6882,7 +6883,7 @@
         "api": "c",
         "scope": "cwrap_impl",
         "dependent_helpers": [
-            "capsule_data_basic",
+            "capsule_data",
             "array_context",
             "cdesc_vector_string_out"],
         "proto": "{cnameproto};",
@@ -7086,32 +7087,31 @@
         }
     },
     {
-        "name": "h_helper_capsule_data_swig",
+        "name": "h_helper_capsule_data",
         "notes": [
             "Share info with C++ to allow Fortran to release memory.",
-            "Used with shadow classes and std::vector.",
-            "Used when option.F_assignment_api=swig."
+            "Used with shadow classes and std::vector."
         ],
         "scope": "cwrap_include",
         "source": [
             "",
             "// helper {hname}",
-            "struct s_{c_capsule_data_type_swig} {{+",
+            "struct s_{c_capsule_data_type} {{+",
             "void *addr;     /* address of C++ memory */",
             "int idtor;      /* index of destructor */",
             "int cmemflags;  /* memory flags */",
             "-}};",
-            "typedef struct s_{c_capsule_data_type_swig} {c_capsule_data_type_swig};"
+            "typedef struct s_{c_capsule_data_type} {c_capsule_data_type};"
         ],
-        "f_fmtname": "{f_capsule_data_type_swig}",
+        "f_fmtname": "{f_capsule_data_type}",
         "derived_type": [
             "",
             "{f_lstart}! helper {hname}",
-            "type, bind(C) :: {f_capsule_data_type_swig}+",
+            "type, bind(C) :: {f_capsule_data_type}+",
             "type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory",
             "integer(C_INT) :: idtor = 0       ! index of destructor",
             "integer(C_INT) :: cmemflags = 0   ! memory flags",
-            "-end type {f_capsule_data_type_swig}{f_lend}"
+            "-end type {f_capsule_data_type}{f_lend}"
         ],
         "modules": {
             "iso_c_binding": ["C_PTR", "C_INT", "C_NULL_PTR"]
@@ -7125,7 +7125,7 @@
             "Fortran cannot be declared with both PRIVATE and BIND(C) attributes"
         ],
         "dependent_helpers": [
-            "capsule_data_basic",
+            "capsule_data",
             "capsule_dtor"
         ],
         "derived_type": [

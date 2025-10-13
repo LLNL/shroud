@@ -21,30 +21,6 @@ from . import visitor
 from .util import wformat
 
 
-def set_library_default_capsule_data_type(node):
-    """
-    F_capsule_data_type is always set from one of the variants.
-    """
-    options = node.options
-    fmt = node.fmtdict
-    fmt.c_capsule_data_type = getattr(fmt, "c_capsule_data_type_" + options.F_assignment_api)
-    fmt.f_capsule_data_type = getattr(fmt, "f_capsule_data_type_" + options.F_assignment_api)
-
-def set_class_default_capsule_data_type(node):
-    """
-    The class may explicitly set the name or set the option which implies the name.
-    """
-    options = node.options
-    fmt = node.fmtdict
-    if fmt.inlocal("c_capsule_data_type"):
-        pass
-    elif options.inlocal("F_assignment_api"):
-        fmt.c_capsule_data_type = getattr(fmt, "c_capsule_data_type_" + options.F_assignment_api)
-    if fmt.inlocal("f_capsule_data_type"):
-        pass
-    elif options.inlocal("F_assignment_api"):
-        fmt.f_capsule_data_type = getattr(fmt, "f_capsule_data_type_" + options.F_assignment_api)
-
 class WrapFlags(object):
     """Keep track of which languages to wrap.
     """
@@ -599,8 +575,8 @@ class LibraryNode(AstNode, NamespaceMixin):
 
             C_API_case="preserve",
             C_capsule_data_type_basic_template="{C_prefix}SHROUD_capsule_data",
-            C_capsule_data_type_swig_template="{C_prefix}SHROUD_capsule_data_swig",
-            C_capsule_data_type_rca_template="{C_prefix}SHROUD_capsule_data_rca",
+            C_capsule_data_type_swig_template="{C_prefix}SHROUD_capsule_data",
+            C_capsule_data_type_rca_template="{C_prefix}SHROUD_capsule_data",
             C_header_filename_library_template="wrap{library}.{C_header_filename_suffix}",
             C_impl_filename_library_template="wrap{library}.{C_impl_filename_suffix}",
 
@@ -959,7 +935,8 @@ class LibraryNode(AstNode, NamespaceMixin):
         for variant in options.F_capsule_variants.split():
             self.eval_template("C_capsule_data_type_" + variant)
             self.eval_template("F_capsule_data_type_" + variant)
-        set_library_default_capsule_data_type(self)
+        fmt_library.c_capsule_data_type = getattr(fmt_library, "c_capsule_data_type_" + options.F_assignment_api)
+        fmt_library.f_capsule_data_type = getattr(fmt_library, "f_capsule_data_type_" + options.F_assignment_api)
         
         # default some format strings based on other format strings
         self.set_fmt_default("C_array_type",
@@ -1247,8 +1224,6 @@ class ClassNode(AstNode, NamespaceMixin):
         self.fmtdict = util.Scope(parent.fmtdict)
         self.default_format()
 
-        set_class_default_capsule_data_type(self)
-        
         if self.parse_keyword == "struct":
             self.wrap_as = self.options.wrap_struct_as
         elif self.parse_keyword == "class":

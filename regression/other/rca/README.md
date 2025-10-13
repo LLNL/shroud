@@ -9,7 +9,7 @@ It includes some debug functions to trace the flow.
 The gfortran 13 included improvements to FINAL over gfortran 12 did
 not call FINAL in the same sequence.
 (The shared regression test passes with gcc12 but not gcc13. gcc13
-releases the C++ object as part of the assignment.)
+releases the C++ object as part of the assignment due to the FINAL clause.)
 
 OneAPI 2025.2.0 run the same as gfortran 13.
 

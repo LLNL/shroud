@@ -1201,7 +1201,7 @@
                                         "helpers": {
                                             "fc": [
                                                 "array_context",
-                                                "capsule_data_basic",
+                                                "capsule_data",
                                                 "string_to_cdesc",
                                                 "copy_string",
                                                 "capsule_dtor"
@@ -1286,7 +1286,7 @@
                                                         "f_call_function": "c_ex_class1_get_name_error_check_bufferify",
                                                         "f_deref_attr": ", allocatable",
                                                         "f_helper_array_context": "AA_SHROUD_array",
-                                                        "f_helper_capsule_data_basic": "AA_SHROUD_capsule_data",
+                                                        "f_helper_capsule_data": "AA_SHROUD_capsule_data",
                                                         "f_helper_capsule_dtor": "AA_SHROUD_capsule_dtor",
                                                         "f_helper_copy_string": "AA_SHROUD_copy_string",
                                                         "f_result_clause": "\fresult(SHT_rv)",
@@ -2604,7 +2604,7 @@
                                     "cxx_class": "ExClass1",
                                     "cxx_type": "ExClass1",
                                     "f_capsule_data_type": "AA_SHROUD_capsule_data",
-                                    "f_helper_capsule_data_basic": "AA_SHROUD_capsule_data",
+                                    "f_helper_capsule_data": "AA_SHROUD_capsule_data",
                                     "file_scope": "example_nested_ExClass1"
                                 }
                             },
@@ -3432,7 +3432,7 @@
                                         "helpers": {
                                             "fc": [
                                                 "array_context",
-                                                "capsule_data_basic",
+                                                "capsule_data",
                                                 "string_to_cdesc",
                                                 "copy_string",
                                                 "capsule_dtor"
@@ -3516,7 +3516,7 @@
                                                         "f_call_function": "c_ex_class2_get_name2_bufferify",
                                                         "f_deref_attr": ", allocatable",
                                                         "f_helper_array_context": "AA_SHROUD_array",
-                                                        "f_helper_capsule_data_basic": "AA_SHROUD_capsule_data",
+                                                        "f_helper_capsule_data": "AA_SHROUD_capsule_data",
                                                         "f_helper_capsule_dtor": "AA_SHROUD_capsule_dtor",
                                                         "f_helper_copy_string": "AA_SHROUD_copy_string",
                                                         "f_result_clause": "\fresult(SHT_rv)",
@@ -3669,7 +3669,7 @@
                                         "helpers": {
                                             "fc": [
                                                 "array_context",
-                                                "capsule_data_basic",
+                                                "capsule_data",
                                                 "string_to_cdesc",
                                                 "copy_string",
                                                 "capsule_dtor"
@@ -3754,7 +3754,7 @@
                                                         "f_call_function": "c_ex_class2_get_name3_bufferify",
                                                         "f_deref_attr": ", allocatable",
                                                         "f_helper_array_context": "AA_SHROUD_array",
-                                                        "f_helper_capsule_data_basic": "AA_SHROUD_capsule_data",
+                                                        "f_helper_capsule_data": "AA_SHROUD_capsule_data",
                                                         "f_helper_capsule_dtor": "AA_SHROUD_capsule_dtor",
                                                         "f_helper_copy_string": "AA_SHROUD_copy_string",
                                                         "f_result_clause": "\fresult(SHT_rv)",
@@ -3906,7 +3906,7 @@
                                         "helpers": {
                                             "fc": [
                                                 "array_context",
-                                                "capsule_data_basic",
+                                                "capsule_data",
                                                 "string_to_cdesc",
                                                 "copy_string",
                                                 "capsule_dtor"
@@ -3990,7 +3990,7 @@
                                                         "f_call_function": "c_ex_class2_get_name4_bufferify",
                                                         "f_deref_attr": ", allocatable",
                                                         "f_helper_array_context": "AA_SHROUD_array",
-                                                        "f_helper_capsule_data_basic": "AA_SHROUD_capsule_data",
+                                                        "f_helper_capsule_data": "AA_SHROUD_capsule_data",
                                                         "f_helper_capsule_dtor": "AA_SHROUD_capsule_dtor",
                                                         "f_helper_copy_string": "AA_SHROUD_copy_string",
                                                         "f_result_clause": "\fresult(SHT_rv)",
@@ -6881,7 +6881,7 @@
                                     "cxx_class": "ExClass2",
                                     "cxx_type": "ExClass2",
                                     "f_capsule_data_type": "AA_SHROUD_capsule_data",
-                                    "f_helper_capsule_data_basic": "AA_SHROUD_capsule_data",
+                                    "f_helper_capsule_data": "AA_SHROUD_capsule_data",
                                     "file_scope": "example_nested_ExClass2"
                                 }
                             }

@@ -239,6 +239,7 @@ CLA_Class1 * CLA_Class1_returnThisBuffer(CLA_Class1 * self, char *name,
         SHC_name_cxx, flag);
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     return SHC_rv;
     // splicer end class.Class1.method.returnThisBuffer
 }
@@ -270,6 +271,7 @@ void CLA_Class1_returnThisBuffer_bufferify(CLA_Class1 * self,
         SHC_name_cxx, flag);
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     // splicer end class.Class1.method.returnThisBuffer_bufferify
 }
 // end CLA_Class1_returnThisBuffer_bufferify
@@ -291,6 +293,7 @@ CLA_Class1 * CLA_Class1_getclass3(const CLA_Class1 * self,
     classes::Class1 *SHC_rv_cxx = SH_this->getclass3();
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     return SHC_rv;
     // splicer end class.Class1.method.getclass3
 }
@@ -313,6 +316,7 @@ void CLA_Class1_getclass3_bufferify(const CLA_Class1 * self,
     classes::Class1 *SHC_rv_cxx = SH_this->getclass3();
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     // splicer end class.Class1.method.getclass3_bufferify
 }
 // end CLA_Class1_getclass3_bufferify

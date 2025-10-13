@@ -19,26 +19,34 @@ extern "C" {
 // splicer begin types.C_declarations
 // splicer end types.C_declarations
 
-// helper capsule_data_basic
+// helper capsule_data
 struct s_WRA_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
+    int cmemflags;  /* memory flags */
 };
 typedef struct s_WRA_SHROUD_capsule_data WRA_SHROUD_capsule_data;
+
+enum SwigMemFlags {
+    SWIG_MEM_OWN = 0x01,
+    SWIG_MEM_RVALUE = 0x02,
+};
 #if 0
 
 // C++ capsule WRA_Class1
 struct s_WRA_Class1 {
-    Class1 *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    Class1 *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_WRA_Class1 WRA_Class1;
 #endif
 
 // C capsule WRA_Class1
 struct s_WRA_Class1 {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    void *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_WRA_Class1 WRA_Class1;
 

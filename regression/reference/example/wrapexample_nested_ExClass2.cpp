@@ -305,6 +305,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass2_get_class1(
         SHC_in_cxx);
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     return SHC_rv;
     // splicer end namespace.example::nested.class.ExClass2.method.get_class1
 }
@@ -328,6 +329,7 @@ void AA_example_nested_ExClass2_get_class1_bufferify(
         SHC_in_cxx);
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     // splicer end namespace.example::nested.class.ExClass2.method.get_class1_bufferify
 }
 

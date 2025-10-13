@@ -76,10 +76,11 @@ struct s_TUT_SHROUD_array {
 typedef struct s_TUT_SHROUD_array TUT_SHROUD_array;
 // end helper array_context
 
-// helper capsule_data_basic
+// helper capsule_data
 struct s_TUT_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
+    int cmemflags;  /* memory flags */
 };
 typedef struct s_TUT_SHROUD_capsule_data TUT_SHROUD_capsule_data;
 

@@ -957,9 +957,7 @@
                     }
                 ],
                 "name": "Object",
-                "options": {
-                    "F_assignment_api": "swig"
-                },
+                "options": {},
                 "parse_keyword": "class",
                 "scope": "Object::",
                 "smart_pointer": [
@@ -988,12 +986,11 @@
                     "F_derived_name": "object",
                     "F_name_api": "object",
                     "F_name_scope": "object_",
-                    "c_capsule_data_type": "SHA_SHROUD_capsule_data_swig",
                     "class_scope": "Object::",
                     "cxx_class": "Object",
                     "cxx_type": "Object",
                     "f_capsule_data_type": "SHA_SHROUD_capsule_data_swig",
-                    "f_helper_capsule_data_swig": "SHA_SHROUD_capsule_data_swig",
+                    "f_helper_capsule_data": "SHA_SHROUD_capsule_data_swig",
                     "file_scope": "Object"
                 }
             },
@@ -1979,9 +1976,7 @@
                 "name": "Object",
                 "name_api": "Object_shared",
                 "name_instantiation": "std::shared_ptr<Object>",
-                "options": {
-                    "F_assignment_api": "swig"
-                },
+                "options": {},
                 "parse_keyword": "class",
                 "scope": "Object::",
                 "typemap_name": "std::shared_ptr<Object>",
@@ -2003,12 +1998,11 @@
                     "F_name_scope": "object_shared_",
                     "YAML_test": "smart_pointer",
                     "baseclass": "<BasesClassFormat Object>",
-                    "c_capsule_data_type": "SHA_SHROUD_capsule_data_swig",
                     "class_scope": "std::shared_ptr<Object>::",
                     "cxx_class": "Object_shared",
                     "cxx_type": "std::shared_ptr<Object>",
                     "f_capsule_data_type": "SHA_SHROUD_capsule_data_swig",
-                    "f_helper_capsule_data_swig": "SHA_SHROUD_capsule_data_swig",
+                    "f_helper_capsule_data": "SHA_SHROUD_capsule_data_swig",
                     "file_scope": "Object_shared",
                     "smart_pointer": "shared"
                 }
@@ -2156,9 +2150,7 @@
                 "name": "Object",
                 "name_api": "Object_weak",
                 "name_instantiation": "std::weak_ptr<Object>",
-                "options": {
-                    "F_assignment_api": "swig"
-                },
+                "options": {},
                 "parse_keyword": "class",
                 "scope": "Object::",
                 "typemap_name": "std::weak_ptr<Object>",
@@ -2179,12 +2171,11 @@
                     "F_name_api": "object_weak",
                     "F_name_scope": "object_weak_",
                     "baseclass": "<BasesClassFormat Object>",
-                    "c_capsule_data_type": "SHA_SHROUD_capsule_data_swig",
                     "class_scope": "std::weak_ptr<Object>::",
                     "cxx_class": "Object_weak",
                     "cxx_type": "std::weak_ptr<Object>",
                     "f_capsule_data_type": "SHA_SHROUD_capsule_data_swig",
-                    "f_helper_capsule_data_swig": "SHA_SHROUD_capsule_data_swig",
+                    "f_helper_capsule_data": "SHA_SHROUD_capsule_data_swig",
                     "file_scope": "Object_weak",
                     "smart_pointer": "weak"
                 }

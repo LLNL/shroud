@@ -74,40 +74,50 @@ struct s_SCO_SHROUD_array {
 };
 typedef struct s_SCO_SHROUD_array SCO_SHROUD_array;
 
-// helper capsule_data_basic
+// helper capsule_data
 struct s_SCO_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
+    int cmemflags;  /* memory flags */
 };
 typedef struct s_SCO_SHROUD_capsule_data SCO_SHROUD_capsule_data;
+
+enum SwigMemFlags {
+    SWIG_MEM_OWN = 0x01,
+    SWIG_MEM_RVALUE = 0x02,
+};
 #if 0
 
 // C++ capsule SCO_Class1
 struct s_SCO_Class1 {
-    Class1 *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    Class1 *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_SCO_Class1 SCO_Class1;
 
 // C++ capsule SCO_Class2
 struct s_SCO_Class2 {
-    Class2 *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    Class2 *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_SCO_Class2 SCO_Class2;
 #endif
 
 // C capsule SCO_Class1
 struct s_SCO_Class1 {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    void *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_SCO_Class1 SCO_Class1;
 
 // C capsule SCO_Class2
 struct s_SCO_Class2 {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    void *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_SCO_Class2 SCO_Class2;
 

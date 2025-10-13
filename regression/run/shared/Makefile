@@ -39,8 +39,8 @@ utilShared.o : utilShared.cpp shared.hpp typesShared.h
 wrapObject.o : wrapObject.cpp shared.hpp wrapObject.h
 wrapObject_shared.o : wrapObject_shared.cpp shared.hpp wrapObject_shared.h
 wrapObject_weak.o : wrapObject_weak.cpp shared.hpp wrapObject_weak.h
-test_object.o : test_object.f wrapfshared.o
-test_shared.o : test_shared.f wrapfshared.o
+test_object.o : fruit.o wrapfshared.o test_object.f
+test_shared.o : fruit.o wrapfshared.o test_shared.f
 main.o : fruit.o wrapfshared.o test_object.o test_shared.o
 
 # useful to isolate load error with just C++ code

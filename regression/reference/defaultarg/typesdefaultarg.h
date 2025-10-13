@@ -26,26 +26,34 @@ typedef int32_t IndexType;
 #endif
 // splicer end types.C_declarations
 
-// helper capsule_data_basic
+// helper capsule_data
 struct s_DEF_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
+    int cmemflags;  /* memory flags */
 };
 typedef struct s_DEF_SHROUD_capsule_data DEF_SHROUD_capsule_data;
+
+enum SwigMemFlags {
+    SWIG_MEM_OWN = 0x01,
+    SWIG_MEM_RVALUE = 0x02,
+};
 #if 0
 
 // C++ capsule DEF_Class1
 struct s_DEF_Class1 {
-    Class1 *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    Class1 *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_DEF_Class1 DEF_Class1;
 #endif
 
 // C capsule DEF_Class1
 struct s_DEF_Class1 {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    void *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_DEF_Class1 DEF_Class1;
 

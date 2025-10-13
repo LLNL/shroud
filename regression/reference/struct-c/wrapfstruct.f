@@ -70,13 +70,14 @@ module struct_mod
     end type STR_SHROUD_array
     ! end helper array_context
 
-    ! start helper capsule_data_basic
-    ! helper capsule_data_basic
+    ! start helper capsule_data
+    ! helper capsule_data
     type, bind(C) :: STR_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: cmemflags = 0   ! memory flags
     end type STR_SHROUD_capsule_data
-    ! end helper capsule_data_basic
+    ! end helper capsule_data
 
 
     ! start derived-type cstruct1

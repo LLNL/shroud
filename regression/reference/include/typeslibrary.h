@@ -13,68 +13,82 @@
 extern "C" {
 #endif
 
-// helper capsule_data_basic
+// helper capsule_data
 struct s_LIB_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
+    int cmemflags;  /* memory flags */
 };
 typedef struct s_LIB_SHROUD_capsule_data LIB_SHROUD_capsule_data;
+
+enum SwigMemFlags {
+    SWIG_MEM_OWN = 0x01,
+    SWIG_MEM_RVALUE = 0x02,
+};
 #if 0
 
 // C++ capsule LIB_three_Class1
 struct s_LIB_three_Class1 {
-    three::Class1 *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    three::Class1 *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_LIB_three_Class1 LIB_three_Class1;
 
 // C++ capsule LIB_outer1_class0
 struct s_LIB_outer1_class0 {
-    outer1::class0 *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    outer1::class0 *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_LIB_outer1_class0 LIB_outer1_class0;
 
 // C++ capsule LIB_outer2_class0
 struct s_LIB_outer2_class0 {
-    outer2::class0 *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    outer2::class0 *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_LIB_outer2_class0 LIB_outer2_class0;
 
 // C++ capsule LIB_Class2
 struct s_LIB_Class2 {
-    Class2 *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    Class2 *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_LIB_Class2 LIB_Class2;
 #endif
 
 // C capsule LIB_three_Class1
 struct s_LIB_three_Class1 {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    void *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_LIB_three_Class1 LIB_three_Class1;
 
 // C capsule LIB_outer1_class0
 struct s_LIB_outer1_class0 {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    void *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_LIB_outer1_class0 LIB_outer1_class0;
 
 // C capsule LIB_outer2_class0
 struct s_LIB_outer2_class0 {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    void *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_LIB_outer2_class0 LIB_outer2_class0;
 
 // C capsule LIB_Class2
 struct s_LIB_Class2 {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    void *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_LIB_Class2 LIB_Class2;
 

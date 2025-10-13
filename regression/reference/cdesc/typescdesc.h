@@ -74,10 +74,11 @@ struct s_CDE_SHROUD_array {
 };
 typedef struct s_CDE_SHROUD_array CDE_SHROUD_array;
 
-// helper capsule_data_basic
+// helper capsule_data
 struct s_CDE_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
+    int cmemflags;  /* memory flags */
 };
 typedef struct s_CDE_SHROUD_capsule_data CDE_SHROUD_capsule_data;
 

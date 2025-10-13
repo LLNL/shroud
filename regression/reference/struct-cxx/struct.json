@@ -1437,7 +1437,7 @@
                     "cxx_class": "Cstruct_as_class",
                     "cxx_type": "Cstruct_as_class",
                     "f_capsule_data_type": "STR_SHROUD_capsule_data",
-                    "f_helper_capsule_data_basic": "STR_SHROUD_capsule_data",
+                    "f_helper_capsule_data": "STR_SHROUD_capsule_data",
                     "file_scope": "Cstruct_as_class"
                 }
             },
@@ -2318,7 +2318,7 @@
                     "cxx_class": "Cstruct_as_subclass",
                     "cxx_type": "Cstruct_as_subclass",
                     "f_capsule_data_type": "STR_SHROUD_capsule_data",
-                    "f_helper_capsule_data_basic": "STR_SHROUD_capsule_data",
+                    "f_helper_capsule_data": "STR_SHROUD_capsule_data",
                     "file_scope": "Cstruct_as_subclass"
                 }
             },
@@ -3139,7 +3139,7 @@
                     "cxx_class": "Cstruct_as_class2",
                     "cxx_type": "Cstruct_as_class2",
                     "f_capsule_data_type": "STR_SHROUD_capsule_data",
-                    "f_helper_capsule_data_basic": "STR_SHROUD_capsule_data",
+                    "f_helper_capsule_data": "STR_SHROUD_capsule_data",
                     "file_scope": "Cstruct_as_class2"
                 }
             },

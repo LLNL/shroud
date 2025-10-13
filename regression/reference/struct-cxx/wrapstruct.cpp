@@ -345,6 +345,7 @@ STR_Cstruct_as_class * STR_Create_Cstruct_as_class(
     Cstruct_as_class *SHC_rv_cxx = Create_Cstruct_as_class();
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     return SHC_rv;
     // splicer end function.Create_Cstruct_as_class
 }
@@ -360,6 +361,7 @@ void STR_Create_Cstruct_as_class_bufferify(STR_Cstruct_as_class *SHC_rv)
     Cstruct_as_class *SHC_rv_cxx = Create_Cstruct_as_class();
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     // splicer end function.Create_Cstruct_as_class_bufferify
 }
 // end STR_Create_Cstruct_as_class_bufferify
@@ -380,6 +382,7 @@ STR_Cstruct_as_class * STR_Create_Cstruct_as_class_args(int x, int y,
     Cstruct_as_class *SHC_rv_cxx = Create_Cstruct_as_class_args(x, y);
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     return SHC_rv;
     // splicer end function.Create_Cstruct_as_class_args
 }
@@ -400,6 +403,7 @@ void STR_Create_Cstruct_as_class_args_bufferify(int x, int y,
     Cstruct_as_class *SHC_rv_cxx = Create_Cstruct_as_class_args(x, y);
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     // splicer end function.Create_Cstruct_as_class_args_bufferify
 }
 
@@ -412,6 +416,7 @@ void STR_Return_Cstruct_as_class(STR_Cstruct_as_class *SHC_rv)
     Cstruct_as_class *SHC_rv_cxx = Return_Cstruct_as_class();
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     // splicer end function.Return_Cstruct_as_class
 }
 
@@ -431,6 +436,7 @@ void STR_Return_Cstruct_as_class_args(int x, int y,
     Cstruct_as_class *SHC_rv_cxx = Return_Cstruct_as_class_args(x, y);
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     // splicer end function.Return_Cstruct_as_class_args
 }
 
@@ -470,6 +476,7 @@ STR_Cstruct_as_subclass * STR_Create_Cstruct_as_subclass_args(int x,
         y, z);
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     return SHC_rv;
     // splicer end function.Create_Cstruct_as_subclass_args
 }
@@ -494,6 +501,7 @@ void STR_Create_Cstruct_as_subclass_args_bufferify(int x, int y, int z,
         y, z);
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     // splicer end function.Create_Cstruct_as_subclass_args_bufferify
 }
 
@@ -517,6 +525,7 @@ void STR_Return_Cstruct_as_subclass_args(int x, int y, int z,
         y, z);
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     // splicer end function.Return_Cstruct_as_subclass_args
 }
 

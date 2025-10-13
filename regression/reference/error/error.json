@@ -913,7 +913,7 @@
                     "cxx_class": "Cstruct_as_subclass",
                     "cxx_type": "Cstruct_as_subclass",
                     "f_capsule_data_type": "ERR_SHROUD_capsule_data",
-                    "f_helper_capsule_data_basic": "ERR_SHROUD_capsule_data",
+                    "f_helper_capsule_data": "ERR_SHROUD_capsule_data",
                     "file_scope": "Cstruct_as_subclass"
                 }
             }
@@ -1855,7 +1855,7 @@
                 "helpers": {
                     "fc": [
                         "array_context",
-                        "capsule_data_basic",
+                        "capsule_data",
                         "string_to_cdesc",
                         "copy_string",
                         "capsule_dtor"
@@ -1941,7 +1941,7 @@
                                 "f_call_function": "c_get_const_string_ptr_owns_alloc_pattern_bufferify",
                                 "f_deref_attr": ", allocatable",
                                 "f_helper_array_context": "ERR_SHROUD_array",
-                                "f_helper_capsule_data_basic": "ERR_SHROUD_capsule_data",
+                                "f_helper_capsule_data": "ERR_SHROUD_capsule_data",
                                 "f_helper_capsule_dtor": "ERR_SHROUD_capsule_dtor",
                                 "f_helper_copy_string": "ERR_SHROUD_copy_string",
                                 "f_result_clause": "\fresult(SHT_rv)",

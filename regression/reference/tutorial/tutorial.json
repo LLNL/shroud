@@ -727,7 +727,7 @@
                 },
                 "helpers": {
                     "fc": [
-                        "capsule_data_basic",
+                        "capsule_data",
                         "array_context",
                         "string_to_cdesc",
                         "copy_string",
@@ -765,7 +765,7 @@
                                 "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHC_rv_cxx)",
                                 "cxx_type": "std::string",
                                 "cxx_var": "SHC_rv_cxx",
-                                "f_helper_capsule_data_basic": "TUT_SHROUD_capsule_data",
+                                "f_helper_capsule_data": "TUT_SHROUD_capsule_data",
                                 "f_type": "character(len=*)",
                                 "f_var": "SHT_rv",
                                 "i_arguments": "arg1,\t arg2,\t SHT_rv_capsule",
@@ -891,7 +891,7 @@
                                 "f_call_function": "c_concatenate_strings_bufferify",
                                 "f_deref_attr": ", allocatable",
                                 "f_helper_array_context": "TUT_SHROUD_array",
-                                "f_helper_capsule_data_basic": "TUT_SHROUD_capsule_data",
+                                "f_helper_capsule_data": "TUT_SHROUD_capsule_data",
                                 "f_helper_capsule_dtor": "TUT_SHROUD_capsule_dtor",
                                 "f_helper_copy_string": "TUT_SHROUD_copy_string",
                                 "f_result_clause": "\fresult(SHT_rv)",
