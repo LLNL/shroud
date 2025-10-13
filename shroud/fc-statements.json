@@ -4278,52 +4278,14 @@
         "c_call": [
             "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});",
             "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});",
-            "{c_var}->idtor = {idtor};"
+            "{c_var}->idtor = {idtor};",
+            "{c_var}->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;"
         ],
         "owner": "caller"
     },
     {
         "alias": [
             "c_ctor_shadow_capptr"
-        ],
-        "mixin": [
-            "c_mixin_function_shadow_capptr",
-            "c_mixin_shadow",
-            "c_mixin_as-intent-out"
-        ],
-        "c_call": [
-            "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});",
-            "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});",
-            "{c_var}->idtor = {idtor};"
-        ],
-        "owner": "caller"
-    },
-    {
-        "name": "f_ctor_shadow_capsule_swig",
-        "mixin": [
-            "f_mixin_as-intent-out",
-            "f_mixin_capsule_function_shadow",
-            "c_mixin_shadow",
-            "c_mixin_as-intent-out"
-        ],
-        "notes": [
-            "Set cmemflags"
-        ],
-        "c_return_type": "void",
-        "c_call": [
-            "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});",
-            "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});",
-            "{c_var}->idtor = {idtor};",
-            "{c_var}->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;"
-        ],
-        "owner": "caller",
-        "helper": [
-            "capsule_swigmemflags"
-        ]
-    },
-    {
-        "alias": [
-            "c_ctor_shadow_capptr_swig"
         ],
         "mixin": [
             "c_mixin_function_shadow_capptr",
@@ -4424,7 +4386,7 @@
         ]
     },
     {
-        "name": "c_mixin_operator_assignment_fmtdict_swig",
+        "name": "c_mixin_operator_assignment_fmtdict",
         "notes": [
             "Adapts code from SWIG AssignmentPolicy."
         ],
@@ -4472,7 +4434,7 @@
         }
     },
     {
-        "name": "c_mixin_operator_assignment_fmtdict_swig_weak",
+        "name": "c_mixin_operator_assignment_fmtdict_weak",
         "notes": [
             "std::weak_ptr has no wrapped constructor.",
             "It must be made from a std::shared_ptr with an assignment.",
@@ -4571,7 +4533,7 @@
         "mixin": [
             "f_mixin_operator_assignment_swig",
             "c_mixin_operator_assignment_swig",
-            "c_mixin_operator_assignment_fmtdict_swig"
+            "c_mixin_operator_assignment_fmtdict"
         ]
     },
     {
@@ -4582,7 +4544,7 @@
         "mixin": [
             "f_mixin_operator_assignment_swig",
             "c_mixin_operator_assignment_swig",
-            "c_mixin_operator_assignment_fmtdict_swig_weak"
+            "c_mixin_operator_assignment_fmtdict_weak"
         ]
     },
     {
@@ -4624,7 +4586,8 @@
             "std::shared_ptr<{baseclass.cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{baseclass.cxx_type}>;",
             "*{c_local_shared} = \t std::make_shared<{baseclass.cxx_type}>({C_call_list});",
             "{c_var}->addr = static_cast<{c_const}void *>(\t{c_local_shared});",
-            "{c_var}->idtor = {idtor};"
+            "{c_var}->idtor = {idtor};",
+            "{c_var}->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;"
         ],
         "c_local": [
             "shared"
@@ -4632,16 +4595,7 @@
         "impl_header": [
             "<memory>"
         ],
-        "owner": "shared"
-    },
-    {
-        "name": "c_mixin_make-shared_swig",
-        "comments": [
-            "Set cmemflags to be used with assignment overload."
-        ],
-        "c_call": [
-            "{c_var}->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;"
-        ],
+        "owner": "shared",
         "helper": [
             "capsule_swigmemflags"
         ]
@@ -4668,32 +4622,6 @@
             "c_mixin_as-intent-out",
             "c_mixin_destructor_new-shadow-shared",
             "c_mixin_make-shared"
-        ]
-    },
-    {
-        "alias": [
-            "f_ctor_shadow_capsule_shared_swig"
-        ],
-        "mixin": [
-            "f_mixin_call-cwrapper-as-subroutine",
-            "f_mixin_capsule_function_shadow",
-            "c_mixin_shadow",
-            "c_mixin_destructor_new-shadow-shared",
-            "c_mixin_make-shared",
-            "c_mixin_make-shared_swig"
-        ]
-    },
-    {
-        "alias": [
-            "c_ctor_shadow_capptr_shared_swig"
-        ],
-        "mixin": [
-            "c_mixin_function_shadow_capptr",
-            "c_mixin_shadow",
-            "c_mixin_as-intent-out",
-            "c_mixin_destructor_new-shadow-shared",
-            "c_mixin_make-shared",
-            "c_mixin_make-shared_swig"
         ]
     },
     {
@@ -4759,20 +4687,6 @@
         "alias": [
             "f_dtor",
             "c_dtor"
-        ],
-        "mixin": [
-            "c_mixin_header_stddef"
-        ],
-        "f_arg_call": [],
-        "c_call": [
-            "delete {CXX_this};",
-            "{C_this}->addr = {nullptr};"
-        ]
-    },
-    {
-        "alias": [
-            "f_dtor_swig",
-            "c_dtor_swig"
         ],
         "mixin": [
             "c_mixin_header_stddef"

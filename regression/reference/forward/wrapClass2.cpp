@@ -31,6 +31,7 @@ FOR_Class2 * FOR_Class2_ctor(FOR_Class2 *SHC_rv)
     forward::Class2 *SHCXX_rv = new forward::Class2();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 1;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     return SHC_rv;
     // splicer end class.Class2.method.ctor
 }
@@ -44,6 +45,7 @@ void FOR_Class2_ctor_bufferify(FOR_Class2 *SHC_rv)
     forward::Class2 *SHCXX_rv = new forward::Class2();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 1;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     // splicer end class.Class2.method.ctor_bufferify
 }
 
@@ -55,8 +57,12 @@ void FOR_Class2_dtor(FOR_Class2 * self)
     forward::Class2 *SH_this = static_cast<forward::Class2 *>
         (self->addr);
     // splicer begin class.Class2.method.dtor
-    delete SH_this;
+    if (self->cmemflags & SWIG_MEM_OWN) {
+        delete SH_this;
+    }
     self->addr = nullptr;
+    self->idtor = 0;
+    self->cmemflags = 0;
     // splicer end class.Class2.method.dtor
 }
 

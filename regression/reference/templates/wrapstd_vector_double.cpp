@@ -28,6 +28,7 @@ TEM_vector_double * TEM_vector_double_ctor(TEM_vector_double *SHC_rv)
     std::vector<double> *SHCXX_rv = new std::vector<double>();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 2;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     return SHC_rv;
     // splicer end namespace.std.class.vector.method.ctor
 }
@@ -41,6 +42,7 @@ void TEM_vector_double_ctor_bufferify(TEM_vector_double *SHC_rv)
     std::vector<double> *SHCXX_rv = new std::vector<double>();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 2;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     // splicer end namespace.std.class.vector.method.ctor_bufferify
 }
 
@@ -52,8 +54,12 @@ void TEM_vector_double_dtor(TEM_vector_double * self)
     std::vector<double> *SH_this = static_cast<std::vector<double> *>
         (self->addr);
     // splicer begin namespace.std.class.vector.method.dtor
-    delete SH_this;
+    if (self->cmemflags & SWIG_MEM_OWN) {
+        delete SH_this;
+    }
     self->addr = nullptr;
+    self->idtor = 0;
+    self->cmemflags = 0;
     // splicer end namespace.std.class.vector.method.dtor
 }
 

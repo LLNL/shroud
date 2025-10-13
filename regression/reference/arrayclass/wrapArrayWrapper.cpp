@@ -28,6 +28,7 @@ ARR_ArrayWrapper * ARR_ArrayWrapper_ctor(ARR_ArrayWrapper *SHC_rv)
     ArrayWrapper *SHCXX_rv = new ArrayWrapper();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 1;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     return SHC_rv;
     // splicer end class.ArrayWrapper.method.ctor
 }
@@ -41,6 +42,7 @@ void ARR_ArrayWrapper_ctor_bufferify(ARR_ArrayWrapper *SHC_rv)
     ArrayWrapper *SHCXX_rv = new ArrayWrapper();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 1;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     // splicer end class.ArrayWrapper.method.ctor_bufferify
 }
 
@@ -51,8 +53,12 @@ void ARR_ArrayWrapper_dtor(ARR_ArrayWrapper * self)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
     // splicer begin class.ArrayWrapper.method.dtor
-    delete SH_this;
+    if (self->cmemflags & SWIG_MEM_OWN) {
+        delete SH_this;
+    }
     self->addr = nullptr;
+    self->idtor = 0;
+    self->cmemflags = 0;
     // splicer end class.ArrayWrapper.method.dtor
 }
 

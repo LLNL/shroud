@@ -93,6 +93,7 @@ AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor(
         new example::nested::ExClass2(&SHC_name_cxx);
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 2;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     return SHC_rv;
     // splicer end namespace.example::nested.class.ExClass2.method.ctor
 }
@@ -117,6 +118,7 @@ void AA_example_nested_ExClass2_ctor_bufferify(char *name,
         new example::nested::ExClass2(&SHC_name_cxx);
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 2;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     // splicer end namespace.example::nested.class.ExClass2.method.ctor_bufferify
 }
 
@@ -132,8 +134,12 @@ void AA_example_nested_ExClass2_dtor(AA_example_nested_ExClass2 * self)
     example::nested::ExClass2 *SH_this =
         static_cast<example::nested::ExClass2 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass2.method.dtor
-    delete SH_this;
+    if (self->cmemflags & SWIG_MEM_OWN) {
+        delete SH_this;
+    }
     self->addr = nullptr;
+    self->idtor = 0;
+    self->cmemflags = 0;
     // splicer end namespace.example::nested.class.ExClass2.method.dtor
 }
 

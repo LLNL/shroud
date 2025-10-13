@@ -68,6 +68,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_0(
         new example::nested::ExClass1();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 1;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     return SHC_rv;
     // splicer end namespace.example::nested.class.ExClass1.method.ctor_0
 }
@@ -83,6 +84,7 @@ void AA_example_nested_ExClass1_ctor_0_bufferify(
         new example::nested::ExClass1();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 1;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     // splicer end namespace.example::nested.class.ExClass1.method.ctor_0_bufferify
 }
 
@@ -109,6 +111,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1(
         new example::nested::ExClass1(&SHC_name_cxx);
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 1;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     return SHC_rv;
     // splicer end namespace.example::nested.class.ExClass1.method.ctor_1
 }
@@ -137,6 +140,7 @@ void AA_example_nested_ExClass1_ctor_1_bufferify(char *name,
         new example::nested::ExClass1(&SHC_name_cxx);
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 1;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     // splicer end namespace.example::nested.class.ExClass1.method.ctor_1_bufferify
 }
 
@@ -153,8 +157,12 @@ void AA_example_nested_ExClass1_dtor(AA_example_nested_ExClass1 * self)
     example::nested::ExClass1 *SH_this =
         static_cast<example::nested::ExClass1 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass1.method.dtor
-    delete SH_this;
+    if (self->cmemflags & SWIG_MEM_OWN) {
+        delete SH_this;
+    }
     self->addr = nullptr;
+    self->idtor = 0;
+    self->cmemflags = 0;
     // splicer end namespace.example::nested.class.ExClass1.method.dtor
 }
 

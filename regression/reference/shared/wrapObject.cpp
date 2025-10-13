@@ -21,7 +21,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  Object
-// Statement: c_ctor_shadow_capptr_swig
+// Statement: c_ctor_shadow_capptr
 SHA_Object * SHA_Object_ctor(SHA_Object *SHC_rv)
 {
     // splicer begin class.Object.method.ctor
@@ -35,7 +35,7 @@ SHA_Object * SHA_Object_ctor(SHA_Object *SHC_rv)
 
 // ----------------------------------------
 // Function:  Object
-// Statement: f_ctor_shadow_capsule_swig
+// Statement: f_ctor_shadow_capsule
 void SHA_Object_ctor_bufferify(SHA_Object *SHC_rv)
 {
     // splicer begin class.Object.method.ctor_bufferify
@@ -48,7 +48,7 @@ void SHA_Object_ctor_bufferify(SHA_Object *SHC_rv)
 
 // ----------------------------------------
 // Function:  ~Object
-// Statement: c_dtor_swig
+// Statement: c_dtor
 void SHA_Object_dtor(SHA_Object * self)
 {
     Object *SH_this = static_cast<Object *>(self->addr);

@@ -194,16 +194,15 @@
                                         "i_var": "SHT_rv",
                                         "i_var_ptr": "SHT_rv_ptr",
                                         "idtor": "4",
-                                        "stmt_name": "c_ctor_shadow_capptr_swig",
+                                        "stmt_name": "c_ctor_shadow_capptr",
                                         "typemap_name": "Object"
                                     },
                                     "meta": {
                                         "abstract": "shadow",
                                         "api": "capptr",
-                                        "custom": "swig",
                                         "intent": "ctor"
                                     },
-                                    "stmt": "c_ctor_shadow_capptr_swig"
+                                    "stmt": "c_ctor_shadow_capptr"
                                 }
                             },
                             "f": {
@@ -247,16 +246,15 @@
                                         "i_type": "type(SHA_SHROUD_capsule_data_swig)",
                                         "i_var": "SHT_rv",
                                         "idtor": "4",
-                                        "stmt_name": "f_ctor_shadow_capsule_swig",
+                                        "stmt_name": "f_ctor_shadow_capsule",
                                         "typemap_name": "Object"
                                     },
                                     "meta": {
                                         "abstract": "shadow",
                                         "api": "capsule",
-                                        "custom": "swig",
                                         "intent": "ctor"
                                     },
-                                    "stmt": "f_ctor_shadow_capsule_swig"
+                                    "stmt": "f_ctor_shadow_capsule"
                                 }
                             },
                             "share": {
@@ -315,15 +313,14 @@
                                         "C_prototype": "SHA_Object * self",
                                         "C_return_type": "void",
                                         "i_name_function": "c_object_dtor",
-                                        "stmt_name": "c_dtor_swig",
+                                        "stmt_name": "c_dtor",
                                         "typemap_name": "void"
                                     },
                                     "meta": {
                                         "abstract": "void",
-                                        "custom": "swig",
                                         "intent": "dtor"
                                     },
-                                    "stmt": "c_dtor_swig"
+                                    "stmt": "c_dtor"
                                 }
                             },
                             "f": {
@@ -340,15 +337,14 @@
                                         "i_arguments": "self",
                                         "i_name_function": "c_object_dtor",
                                         "i_subprogram": "subroutine",
-                                        "stmt_name": "f_dtor_swig",
+                                        "stmt_name": "f_dtor",
                                         "typemap_name": "void"
                                     },
                                     "meta": {
                                         "abstract": "void",
-                                        "custom": "swig",
                                         "intent": "dtor"
                                     },
-                                    "stmt": "f_dtor_swig"
+                                    "stmt": "f_dtor"
                                 }
                             },
                             "share": {
@@ -1076,17 +1072,16 @@
                                         "i_var": "SHT_rv",
                                         "i_var_ptr": "SHT_rv_ptr",
                                         "idtor": "6",
-                                        "stmt_name": "c_ctor_shadow_capptr_shared_swig",
+                                        "stmt_name": "c_ctor_shadow_capptr_shared",
                                         "typemap_name": "std::shared_ptr<Object>"
                                     },
                                     "meta": {
                                         "abstract": "shadow",
                                         "api": "capptr",
-                                        "custom": "swig",
                                         "intent": "ctor",
                                         "owner": "shared"
                                     },
-                                    "stmt": "c_ctor_shadow_capptr_shared_swig"
+                                    "stmt": "c_ctor_shadow_capptr_shared"
                                 }
                             },
                             "f": {
@@ -1129,17 +1124,16 @@
                                         "i_type": "type(SHA_SHROUD_capsule_data_swig)",
                                         "i_var": "SHT_rv",
                                         "idtor": "6",
-                                        "stmt_name": "f_ctor_shadow_capsule_shared_swig",
+                                        "stmt_name": "f_ctor_shadow_capsule_shared",
                                         "typemap_name": "std::shared_ptr<Object>"
                                     },
                                     "meta": {
                                         "abstract": "shadow",
                                         "api": "capsule",
-                                        "custom": "swig",
                                         "intent": "ctor",
                                         "owner": "shared"
                                     },
-                                    "stmt": "f_ctor_shadow_capsule_shared_swig"
+                                    "stmt": "f_ctor_shadow_capsule_shared"
                                 }
                             },
                             "share": {
@@ -1199,16 +1193,15 @@
                                         "C_prototype": "SHA_Object_shared * self",
                                         "C_return_type": "void",
                                         "i_name_function": "c_object_shared_dtor",
-                                        "stmt_name": "c_dtor_swig",
+                                        "stmt_name": "c_dtor",
                                         "typemap_name": "void"
                                     },
                                     "meta": {
                                         "abstract": "void",
-                                        "custom": "swig",
                                         "intent": "dtor",
                                         "owner": "shared"
                                     },
-                                    "stmt": "c_dtor_swig"
+                                    "stmt": "c_dtor"
                                 }
                             },
                             "f": {
@@ -1225,16 +1218,15 @@
                                         "i_arguments": "self",
                                         "i_name_function": "c_object_shared_dtor",
                                         "i_subprogram": "subroutine",
-                                        "stmt_name": "f_dtor_swig",
+                                        "stmt_name": "f_dtor",
                                         "typemap_name": "void"
                                     },
                                     "meta": {
                                         "abstract": "void",
-                                        "custom": "swig",
                                         "intent": "dtor",
                                         "owner": "shared"
                                     },
-                                    "stmt": "f_dtor_swig"
+                                    "stmt": "f_dtor"
                                 }
                             },
                             "share": {

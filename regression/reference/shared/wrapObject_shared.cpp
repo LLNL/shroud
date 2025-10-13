@@ -22,7 +22,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  Object
-// Statement: c_ctor_shadow_capptr_shared_swig
+// Statement: c_ctor_shadow_capptr_shared
 SHA_Object_shared * SHA_Object_shared_ctor(SHA_Object_shared *SHC_rv)
 {
     // splicer begin class.Object.method.ctor
@@ -38,7 +38,7 @@ SHA_Object_shared * SHA_Object_shared_ctor(SHA_Object_shared *SHC_rv)
 
 // ----------------------------------------
 // Function:  Object
-// Statement: f_ctor_shadow_capsule_shared_swig
+// Statement: f_ctor_shadow_capsule_shared
 void SHA_Object_shared_ctor_bufferify(SHA_Object_shared *SHC_rv)
 {
     // splicer begin class.Object.method.ctor_bufferify
@@ -53,7 +53,7 @@ void SHA_Object_shared_ctor_bufferify(SHA_Object_shared *SHC_rv)
 
 // ----------------------------------------
 // Function:  ~Object
-// Statement: c_dtor_swig
+// Statement: c_dtor
 void SHA_Object_shared_dtor(SHA_Object_shared * self)
 {
     std::shared_ptr<Object> *SH_this =

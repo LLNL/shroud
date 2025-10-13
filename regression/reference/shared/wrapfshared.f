@@ -87,7 +87,7 @@ module shared_mod
 
         ! ----------------------------------------
         ! Function:  Object
-        ! Statement: c_ctor_shadow_capptr_swig
+        ! Statement: c_ctor_shadow_capptr
         function c_object_ctor(SHT_rv) &
                 result(SHT_rv_ptr) &
                 bind(C, name="SHA_Object_ctor")
@@ -100,7 +100,7 @@ module shared_mod
 
         ! ----------------------------------------
         ! Function:  Object
-        ! Statement: f_ctor_shadow_capsule_swig
+        ! Statement: f_ctor_shadow_capsule
         subroutine c_object_ctor_bufferify(SHT_rv) &
                 bind(C, name="SHA_Object_ctor_bufferify")
             import :: SHA_SHROUD_capsule_data_swig
@@ -110,7 +110,7 @@ module shared_mod
 
         ! ----------------------------------------
         ! Function:  ~Object
-        ! Statement: f_dtor_swig
+        ! Statement: f_dtor
         subroutine c_object_dtor(self) &
                 bind(C, name="SHA_Object_dtor")
             import :: SHA_SHROUD_capsule_data_swig
@@ -184,7 +184,7 @@ module shared_mod
 
         ! ----------------------------------------
         ! Function:  Object
-        ! Statement: c_ctor_shadow_capptr_shared_swig
+        ! Statement: c_ctor_shadow_capptr_shared
         function c_object_shared_ctor(SHT_rv) &
                 result(SHT_rv_ptr) &
                 bind(C, name="SHA_Object_shared_ctor")
@@ -197,7 +197,7 @@ module shared_mod
 
         ! ----------------------------------------
         ! Function:  Object
-        ! Statement: f_ctor_shadow_capsule_shared_swig
+        ! Statement: f_ctor_shadow_capsule_shared
         subroutine c_object_shared_ctor_bufferify(SHT_rv) &
                 bind(C, name="SHA_Object_shared_ctor_bufferify")
             import :: SHA_SHROUD_capsule_data_swig
@@ -207,7 +207,7 @@ module shared_mod
 
         ! ----------------------------------------
         ! Function:  ~Object
-        ! Statement: f_dtor_swig
+        ! Statement: f_dtor
         subroutine c_object_shared_dtor(self) &
                 bind(C, name="SHA_Object_shared_dtor")
             import :: SHA_SHROUD_capsule_data_swig
@@ -323,7 +323,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Object
-    ! Statement: f_ctor_shadow_capsule_swig
+    ! Statement: f_ctor_shadow_capsule
     function object_ctor() &
             result(SHT_rv)
         type(object) :: SHT_rv
@@ -334,7 +334,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  ~Object
-    ! Statement: f_dtor_swig
+    ! Statement: f_dtor
     subroutine object_dtor(obj)
         class(object), intent(INOUT) :: obj
         ! splicer begin class.Object.method.dtor
@@ -410,7 +410,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Object
-    ! Statement: f_ctor_shadow_capsule_shared_swig
+    ! Statement: f_ctor_shadow_capsule_shared
     function object_shared_ctor() &
             result(SHT_rv)
         type(object_shared) :: SHT_rv
@@ -421,7 +421,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  ~Object
-    ! Statement: f_dtor_swig
+    ! Statement: f_dtor
     subroutine object_shared_dtor(obj)
         class(object_shared), intent(INOUT) :: obj
         ! splicer begin class.Object_shared.method.dtor
