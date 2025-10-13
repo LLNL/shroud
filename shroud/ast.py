@@ -82,13 +82,7 @@ class WrapFlags(object):
 # Migrate upper case options to lower case format fields
 mapcase = dict(
     C_capsule_data_type="c_capsule_data_type",
-    C_capsule_data_type_basic="c_capsule_data_type_basic",
-    C_capsule_data_type_swig="c_capsule_data_type_swig",
-    C_capsule_data_type_rca="c_capsule_data_type_rca",
     F_capsule_data_type="f_capsule_data_type",
-    F_capsule_data_type_basic="f_capsule_data_type_basic",
-    F_capsule_data_type_swig="f_capsule_data_type_swig",
-    F_capsule_data_type_rca="f_capsule_data_type_rca",
 )
     
 
@@ -534,7 +528,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_force_wrapper=False,
             C_line_length=72,
             F_CFI=False,    # TS29113 C Fortran Interoperability
-            F_capsule_variants="basic swig rca",
             F_assignment_api="basic",  # basic, swig, rca
             F_assumed_rank_min=0,
             F_assumed_rank_max=7,
@@ -574,9 +567,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             YAML_type_filename_template="{library_lower}_types.yaml",
 
             C_API_case="preserve",
-            C_capsule_data_type_basic_template="{C_prefix}SHROUD_capsule_data",
-            C_capsule_data_type_swig_template="{C_prefix}SHROUD_capsule_data",
-            C_capsule_data_type_rca_template="{C_prefix}SHROUD_capsule_data",
+            C_capsule_data_type_template="{C_prefix}SHROUD_capsule_data",
             C_header_filename_library_template="wrap{library}.{C_header_filename_suffix}",
             C_impl_filename_library_template="wrap{library}.{C_impl_filename_suffix}",
 
@@ -623,9 +614,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_impl_filename_library_template="wrapf{library_lower}.{F_filename_suffix}",
             F_impl_filename_namespace_template="wrapf{file_scope}.{F_filename_suffix}",
             F_array_type_template="{C_prefix}SHROUD_array",
-            F_capsule_data_type_basic_template="{C_prefix}SHROUD_capsule_data",
-            F_capsule_data_type_swig_template="{C_prefix}SHROUD_capsule_data_swig",
-            F_capsule_data_type_rca_template="{C_prefix}SHROUD_capsule_data_rca",
+            F_capsule_data_type_template="{C_prefix}SHROUD_capsule_data",
             F_capsule_type_template="{C_prefix}SHROUD_capsule",
             F_abstract_interface_subprogram_template="{F_name_api}_{argname}",
             F_abstract_interface_argument_template="arg{index}",
@@ -932,11 +921,8 @@ class LibraryNode(AstNode, NamespaceMixin):
 
         self.fmtdict = fmt_library
 
-        for variant in options.F_capsule_variants.split():
-            self.eval_template("C_capsule_data_type_" + variant)
-            self.eval_template("F_capsule_data_type_" + variant)
-        fmt_library.c_capsule_data_type = getattr(fmt_library, "c_capsule_data_type_" + options.F_assignment_api)
-        fmt_library.f_capsule_data_type = getattr(fmt_library, "f_capsule_data_type_" + options.F_assignment_api)
+        self.eval_template("C_capsule_data_type")
+        self.eval_template("F_capsule_data_type")
         
         # default some format strings based on other format strings
         self.set_fmt_default("C_array_type",

@@ -20,14 +20,14 @@ module shared_mod
     ! splicer end module_top
 
     ! helper capsule_data
-    type, bind(C) :: SHA_SHROUD_capsule_data_swig
+    type, bind(C) :: SHA_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
         integer(C_INT) :: cmemflags = 0   ! memory flags
-    end type SHA_SHROUD_capsule_data_swig
+    end type SHA_SHROUD_capsule_data
 
     type object
-        type(SHA_SHROUD_capsule_data_swig) :: cxxmem
+        type(SHA_SHROUD_capsule_data) :: cxxmem
         ! splicer begin class.Object.component_part
         ! splicer end class.Object.component_part
     contains
@@ -92,9 +92,9 @@ module shared_mod
                 result(SHT_rv_ptr) &
                 bind(C, name="SHA_Object_ctor")
             use iso_c_binding, only : C_PTR
-            import :: SHA_SHROUD_capsule_data_swig
+            import :: SHA_SHROUD_capsule_data
             implicit none
-            type(SHA_SHROUD_capsule_data_swig), intent(OUT) :: SHT_rv
+            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) :: SHT_rv_ptr
         end function c_object_ctor
 
@@ -103,9 +103,9 @@ module shared_mod
         ! Statement: f_ctor_shadow_capsule
         subroutine c_object_ctor_bufferify(SHT_rv) &
                 bind(C, name="SHA_Object_ctor_bufferify")
-            import :: SHA_SHROUD_capsule_data_swig
+            import :: SHA_SHROUD_capsule_data
             implicit none
-            type(SHA_SHROUD_capsule_data_swig), intent(OUT) :: SHT_rv
+            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
         end subroutine c_object_ctor_bufferify
 
         ! ----------------------------------------
@@ -113,9 +113,9 @@ module shared_mod
         ! Statement: f_dtor
         subroutine c_object_dtor(self) &
                 bind(C, name="SHA_Object_dtor")
-            import :: SHA_SHROUD_capsule_data_swig
+            import :: SHA_SHROUD_capsule_data
             implicit none
-            type(SHA_SHROUD_capsule_data_swig), intent(INOUT) :: self
+            type(SHA_SHROUD_capsule_data), intent(INOUT) :: self
         end subroutine c_object_dtor
 
         ! ----------------------------------------
@@ -125,10 +125,10 @@ module shared_mod
                 result(SHT_rv_ptr) &
                 bind(C, name="SHA_Object_createChildA")
             use iso_c_binding, only : C_PTR
-            import :: SHA_SHROUD_capsule_data_swig
+            import :: SHA_SHROUD_capsule_data
             implicit none
-            type(SHA_SHROUD_capsule_data_swig), intent(IN) :: self
-            type(SHA_SHROUD_capsule_data_swig), intent(OUT) :: SHT_rv
+            type(SHA_SHROUD_capsule_data), intent(IN) :: self
+            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) :: SHT_rv_ptr
         end function c_object_create_child_a
 
@@ -137,10 +137,10 @@ module shared_mod
         ! Statement: f_function_smartptr<shadow>*_capsule
         subroutine c_object_create_child_a_bufferify(self, SHT_rv) &
                 bind(C, name="SHA_Object_createChildA_bufferify")
-            import :: SHA_SHROUD_capsule_data_swig
+            import :: SHA_SHROUD_capsule_data
             implicit none
-            type(SHA_SHROUD_capsule_data_swig), intent(IN) :: self
-            type(SHA_SHROUD_capsule_data_swig), intent(OUT) :: SHT_rv
+            type(SHA_SHROUD_capsule_data), intent(IN) :: self
+            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
         end subroutine c_object_create_child_a_bufferify
 
         ! ----------------------------------------
@@ -150,10 +150,10 @@ module shared_mod
                 result(SHT_rv_ptr) &
                 bind(C, name="SHA_Object_createChildB")
             use iso_c_binding, only : C_PTR
-            import :: SHA_SHROUD_capsule_data_swig
+            import :: SHA_SHROUD_capsule_data
             implicit none
-            type(SHA_SHROUD_capsule_data_swig), intent(IN) :: self
-            type(SHA_SHROUD_capsule_data_swig), intent(OUT) :: SHT_rv
+            type(SHA_SHROUD_capsule_data), intent(IN) :: self
+            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) :: SHT_rv_ptr
         end function c_object_create_child_b
 
@@ -162,10 +162,10 @@ module shared_mod
         ! Statement: f_function_smartptr<shadow>*_capsule
         subroutine c_object_create_child_b_bufferify(self, SHT_rv) &
                 bind(C, name="SHA_Object_createChildB_bufferify")
-            import :: SHA_SHROUD_capsule_data_swig
+            import :: SHA_SHROUD_capsule_data
             implicit none
-            type(SHA_SHROUD_capsule_data_swig), intent(IN) :: self
-            type(SHA_SHROUD_capsule_data_swig), intent(OUT) :: SHT_rv
+            type(SHA_SHROUD_capsule_data), intent(IN) :: self
+            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
         end subroutine c_object_create_child_b_bufferify
 
         ! ----------------------------------------
@@ -176,10 +176,10 @@ module shared_mod
         ! Statement: f_inout_smartptr<shadow>*
         subroutine c_object_replace_child_b(self, child) &
                 bind(C, name="SHA_Object_replaceChildB")
-            import :: SHA_SHROUD_capsule_data_swig
+            import :: SHA_SHROUD_capsule_data
             implicit none
-            type(SHA_SHROUD_capsule_data_swig), intent(IN) :: self
-            type(SHA_SHROUD_capsule_data_swig), intent(INOUT) :: child
+            type(SHA_SHROUD_capsule_data), intent(IN) :: self
+            type(SHA_SHROUD_capsule_data), intent(INOUT) :: child
         end subroutine c_object_replace_child_b
 
         ! ----------------------------------------
@@ -189,9 +189,9 @@ module shared_mod
                 result(SHT_rv_ptr) &
                 bind(C, name="SHA_Object_shared_ctor")
             use iso_c_binding, only : C_PTR
-            import :: SHA_SHROUD_capsule_data_swig
+            import :: SHA_SHROUD_capsule_data
             implicit none
-            type(SHA_SHROUD_capsule_data_swig), intent(OUT) :: SHT_rv
+            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) :: SHT_rv_ptr
         end function c_object_shared_ctor
 
@@ -200,9 +200,9 @@ module shared_mod
         ! Statement: f_ctor_shadow_capsule_shared
         subroutine c_object_shared_ctor_bufferify(SHT_rv) &
                 bind(C, name="SHA_Object_shared_ctor_bufferify")
-            import :: SHA_SHROUD_capsule_data_swig
+            import :: SHA_SHROUD_capsule_data
             implicit none
-            type(SHA_SHROUD_capsule_data_swig), intent(OUT) :: SHT_rv
+            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
         end subroutine c_object_shared_ctor_bufferify
 
         ! ----------------------------------------
@@ -210,9 +210,9 @@ module shared_mod
         ! Statement: f_dtor
         subroutine c_object_shared_dtor(self) &
                 bind(C, name="SHA_Object_shared_dtor")
-            import :: SHA_SHROUD_capsule_data_swig
+            import :: SHA_SHROUD_capsule_data
             implicit none
-            type(SHA_SHROUD_capsule_data_swig), intent(INOUT) :: self
+            type(SHA_SHROUD_capsule_data), intent(INOUT) :: self
         end subroutine c_object_shared_dtor
 
         ! ----------------------------------------
@@ -222,10 +222,10 @@ module shared_mod
                 result(SHT_rv_ptr) &
                 bind(C, name="SHA_Object_shared_createChildA")
             use iso_c_binding, only : C_PTR
-            import :: SHA_SHROUD_capsule_data_swig
+            import :: SHA_SHROUD_capsule_data
             implicit none
-            type(SHA_SHROUD_capsule_data_swig), intent(IN) :: self
-            type(SHA_SHROUD_capsule_data_swig), intent(OUT) :: SHT_rv
+            type(SHA_SHROUD_capsule_data), intent(IN) :: self
+            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) :: SHT_rv_ptr
         end function c_object_shared_create_child_a
 
@@ -235,10 +235,10 @@ module shared_mod
         subroutine c_object_shared_create_child_a_bufferify(self, &
                 SHT_rv) &
                 bind(C, name="SHA_Object_shared_createChildA_bufferify")
-            import :: SHA_SHROUD_capsule_data_swig
+            import :: SHA_SHROUD_capsule_data
             implicit none
-            type(SHA_SHROUD_capsule_data_swig), intent(IN) :: self
-            type(SHA_SHROUD_capsule_data_swig), intent(OUT) :: SHT_rv
+            type(SHA_SHROUD_capsule_data), intent(IN) :: self
+            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
         end subroutine c_object_shared_create_child_a_bufferify
 
         ! ----------------------------------------
@@ -248,10 +248,10 @@ module shared_mod
                 result(SHT_rv_ptr) &
                 bind(C, name="SHA_Object_shared_createChildB")
             use iso_c_binding, only : C_PTR
-            import :: SHA_SHROUD_capsule_data_swig
+            import :: SHA_SHROUD_capsule_data
             implicit none
-            type(SHA_SHROUD_capsule_data_swig), intent(IN) :: self
-            type(SHA_SHROUD_capsule_data_swig), intent(OUT) :: SHT_rv
+            type(SHA_SHROUD_capsule_data), intent(IN) :: self
+            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) :: SHT_rv_ptr
         end function c_object_shared_create_child_b
 
@@ -261,10 +261,10 @@ module shared_mod
         subroutine c_object_shared_create_child_b_bufferify(self, &
                 SHT_rv) &
                 bind(C, name="SHA_Object_shared_createChildB_bufferify")
-            import :: SHA_SHROUD_capsule_data_swig
+            import :: SHA_SHROUD_capsule_data
             implicit none
-            type(SHA_SHROUD_capsule_data_swig), intent(IN) :: self
-            type(SHA_SHROUD_capsule_data_swig), intent(OUT) :: SHT_rv
+            type(SHA_SHROUD_capsule_data), intent(IN) :: self
+            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
         end subroutine c_object_shared_create_child_b_bufferify
 
         ! ----------------------------------------
@@ -275,10 +275,10 @@ module shared_mod
         ! Statement: f_inout_smartptr<shadow>*
         subroutine c_object_shared_replace_child_b(self, child) &
                 bind(C, name="SHA_Object_shared_replaceChildB")
-            import :: SHA_SHROUD_capsule_data_swig
+            import :: SHA_SHROUD_capsule_data
             implicit none
-            type(SHA_SHROUD_capsule_data_swig), intent(IN) :: self
-            type(SHA_SHROUD_capsule_data_swig), intent(INOUT) :: child
+            type(SHA_SHROUD_capsule_data), intent(IN) :: self
+            type(SHA_SHROUD_capsule_data), intent(INOUT) :: child
         end subroutine c_object_shared_replace_child_b
 
         ! ----------------------------------------
@@ -288,9 +288,9 @@ module shared_mod
                 result(SHT_rv) &
                 bind(C, name="SHA_Object_shared_use_count")
             use iso_c_binding, only : C_LONG
-            import :: SHA_SHROUD_capsule_data_swig
+            import :: SHA_SHROUD_capsule_data
             implicit none
-            type(SHA_SHROUD_capsule_data_swig), intent(IN) :: self
+            type(SHA_SHROUD_capsule_data), intent(IN) :: self
             integer(C_LONG) :: SHT_rv
         end function c_object_shared_use_count
 
@@ -301,9 +301,9 @@ module shared_mod
                 result(SHT_rv) &
                 bind(C, name="SHA_Object_weak_use_count")
             use iso_c_binding, only : C_LONG
-            import :: SHA_SHROUD_capsule_data_swig
+            import :: SHA_SHROUD_capsule_data
             implicit none
-            type(SHA_SHROUD_capsule_data_swig), intent(IN) :: self
+            type(SHA_SHROUD_capsule_data), intent(IN) :: self
             integer(C_LONG) :: SHT_rv
         end function c_object_weak_use_count
     end interface
@@ -510,9 +510,9 @@ contains
         interface
             subroutine do_assign(lhs, rhs) bind(C, &
                 name="SHA_Object_assign_Object")
-                import :: SHA_SHROUD_capsule_data_swig
-                type(SHA_SHROUD_capsule_data_swig), intent(INOUT) :: lhs
-                type(SHA_SHROUD_capsule_data_swig), intent(IN) :: rhs
+                import :: SHA_SHROUD_capsule_data
+                type(SHA_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(SHA_SHROUD_capsule_data), intent(IN) :: rhs
             end subroutine do_assign
         end interface
         call do_assign(lhs%cxxmem, rhs%cxxmem)
@@ -527,9 +527,9 @@ contains
         interface
             subroutine do_assign(lhs, rhs) bind(C, &
                 name="SHA_Object_shared_assign_Object_shared")
-                import :: SHA_SHROUD_capsule_data_swig
-                type(SHA_SHROUD_capsule_data_swig), intent(INOUT) :: lhs
-                type(SHA_SHROUD_capsule_data_swig), intent(IN) :: rhs
+                import :: SHA_SHROUD_capsule_data
+                type(SHA_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(SHA_SHROUD_capsule_data), intent(IN) :: rhs
             end subroutine do_assign
         end interface
         call do_assign(lhs%cxxmem, rhs%cxxmem)
@@ -544,9 +544,9 @@ contains
         interface
             subroutine do_assign(lhs, rhs) bind(C, &
                 name="SHA_Object_weak_assign_Object_weak")
-                import :: SHA_SHROUD_capsule_data_swig
-                type(SHA_SHROUD_capsule_data_swig), intent(INOUT) :: lhs
-                type(SHA_SHROUD_capsule_data_swig), intent(IN) :: rhs
+                import :: SHA_SHROUD_capsule_data
+                type(SHA_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(SHA_SHROUD_capsule_data), intent(IN) :: rhs
             end subroutine do_assign
         end interface
         call do_assign(lhs%cxxmem, rhs%cxxmem)
@@ -561,9 +561,9 @@ contains
         interface
             subroutine do_assign(lhs, rhs) bind(C, &
                 name="SHA_Object_weak_assign_Object_shared")
-                import :: SHA_SHROUD_capsule_data_swig
-                type(SHA_SHROUD_capsule_data_swig), intent(INOUT) :: lhs
-                type(SHA_SHROUD_capsule_data_swig), intent(IN) :: rhs
+                import :: SHA_SHROUD_capsule_data
+                type(SHA_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(SHA_SHROUD_capsule_data), intent(IN) :: rhs
             end subroutine do_assign
         end interface
         call do_assign(lhs%cxxmem, rhs%cxxmem)
