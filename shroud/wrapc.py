@@ -445,11 +445,11 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
                 if options.debug:
                     output.append("// Statement: " + asgn_stmt.name)
                 if options.literalinclude:
-                    append_format(impl, "// start {F_name_assign_api}", fmt)
+                    append_format(output, "// start {F_name_assign_api}", fmt)
                 output.append("// " + assign.name)
                 util.append_format_cmds(output, asgn_stmt, "c_body", fmt)
                 if options.literalinclude:
-                    append_format(impl, "// end {F_name_assign_api}", fmt)
+                    append_format(output, "// end {F_name_assign_api}", fmt)
             
         return output
 
