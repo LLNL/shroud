@@ -35,6 +35,34 @@ void test_make_shared(void)
     std::cout << "test_make_shared: " << obj2->use_count() << std::endl;
 }
 
+void test_weak_ptr(void)
+{
+    // Cannot create a weak_ptr which observes an Object,
+    // Can only assign another weak_ptr or a shared_ptr.
+    Object obj;
+    ObjectWeak wp1;
+    ObjectWeak wp2 = wp1;
+
+    ObjectShared sp1 = std::make_shared<Object>();
+    ObjectWeak wp3 = sp1;
+
+    std::cout << "test_weak_ptr: A use_count = " << sp1.use_count() << std::endl;
+    std::cout << "test_weak_ptr: A count = " << sp1->count << std::endl;
+    std::cout << "test_weak_ptr: A use_count = " << wp3.use_count() << std::endl;
+    // std::weak_ptr cannot be dereferenced
+//    std::cout << "test_weak_ptr: A count = " << wp3->count << std::endl;
+
+    Object *obj10 = new Object();
+    ObjectShared *sp10 = new std::shared_ptr<Object>(obj10);
+    ObjectWeak   *wp10 = new std::weak_ptr<Object>(*sp10);
+
+    std::cout << "test_weak_ptr: B use_count = " << sp10->use_count() << std::endl;
+    std::cout << "test_weak_ptr: B count = " << sp1->count << std::endl;
+    std::cout << "test_weak_ptr: B use_count = " << wp10->use_count() << std::endl;
+    // std::weak_ptr cannot be dereferenced - has no member named ‘count’
+    //    std::cout << "test_weak_ptr: B count = " << wp10->count << std::endl;
+}
+
 //----------------------------------------------------------------------
 
 ObjectShared *object_shared(void)
@@ -158,6 +186,7 @@ void test_object_methods(void) {
 int main(int argc, char *argv[])
 {
     test_make_shared();
+    test_weak_ptr();
     test_shared();
     test_object_methods();
     return 0;

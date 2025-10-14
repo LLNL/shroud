@@ -59,6 +59,7 @@ module shared_mod
         ! splicer begin class.Object_weak.component_part
         ! splicer end class.Object_weak.component_part
     contains
+        procedure :: dtor => object_weak_dtor
         procedure :: use_count => object_weak_use_count
         ! splicer begin class.Object_weak.type_bound_procedure_part
         ! splicer end class.Object_weak.type_bound_procedure_part
@@ -295,6 +296,39 @@ module shared_mod
         end function c_object_shared_use_count
 
         ! ----------------------------------------
+        ! Function:  Object
+        ! Statement: c_ctor_shadow_capptr_weak
+        function c_object_weak_ctor(SHT_rv) &
+                result(SHT_rv_ptr) &
+                bind(C, name="SHA_Object_weak_ctor")
+            use iso_c_binding, only : C_PTR
+            import :: SHA_SHROUD_capsule_data
+            implicit none
+            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+            type(C_PTR) :: SHT_rv_ptr
+        end function c_object_weak_ctor
+
+        ! ----------------------------------------
+        ! Function:  Object
+        ! Statement: f_ctor_shadow_capsule_weak
+        subroutine c_object_weak_ctor_bufferify(SHT_rv) &
+                bind(C, name="SHA_Object_weak_ctor_bufferify")
+            import :: SHA_SHROUD_capsule_data
+            implicit none
+            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_object_weak_ctor_bufferify
+
+        ! ----------------------------------------
+        ! Function:  ~Object
+        ! Statement: f_dtor
+        subroutine c_object_weak_dtor(self) &
+                bind(C, name="SHA_Object_weak_dtor")
+            import :: SHA_SHROUD_capsule_data
+            implicit none
+            type(SHA_SHROUD_capsule_data), intent(INOUT) :: self
+        end subroutine c_object_weak_dtor
+
+        ! ----------------------------------------
         ! Function:  long use_count
         ! Statement: f_function_native
         function c_object_weak_use_count(self) &
@@ -315,6 +349,10 @@ module shared_mod
     interface object_shared
         module procedure object_shared_ctor
     end interface object_shared
+
+    interface object_weak
+        module procedure object_weak_ctor
+    end interface object_weak
 
     ! splicer begin additional_declarations
     ! splicer end additional_declarations
@@ -484,6 +522,27 @@ contains
 
     ! splicer begin class.Object_shared.additional_functions
     ! splicer end class.Object_shared.additional_functions
+
+    ! ----------------------------------------
+    ! Function:  Object
+    ! Statement: f_ctor_shadow_capsule_weak
+    function object_weak_ctor() &
+            result(SHT_rv)
+        type(object_weak) :: SHT_rv
+        ! splicer begin class.Object_weak.method.ctor
+        call c_object_weak_ctor_bufferify(SHT_rv%cxxmem)
+        ! splicer end class.Object_weak.method.ctor
+    end function object_weak_ctor
+
+    ! ----------------------------------------
+    ! Function:  ~Object
+    ! Statement: f_dtor
+    subroutine object_weak_dtor(obj)
+        class(object_weak), intent(INOUT) :: obj
+        ! splicer begin class.Object_weak.method.dtor
+        call c_object_weak_dtor(obj%cxxmem)
+        ! splicer end class.Object_weak.method.dtor
+    end subroutine object_weak_dtor
 
     ! ----------------------------------------
     ! Function:  long use_count

@@ -8,6 +8,8 @@
 // cxx_header
 #include "shared.hpp"
 // shroud
+#include <memory>
+#include <cstddef>
 #include "wrapObject_weak.h"
 
 // splicer begin class.Object.CXX_definitions
@@ -17,6 +19,54 @@ extern "C" {
 
 // splicer begin class.Object.C_definitions
 // splicer end class.Object.C_definitions
+
+// ----------------------------------------
+// Function:  Object
+// Statement: c_ctor_shadow_capptr_weak
+SHA_Object_weak * SHA_Object_weak_ctor(SHA_Object_weak *SHC_rv)
+{
+    // splicer begin class.Object.method.ctor
+    std::shared_ptr<Object> *SHC_rv_shared =
+        new std::shared_ptr<Object>;
+    *SHC_rv_shared =  std::make_shared<Object>();
+    SHC_rv->addr = static_cast<void *>(SHC_rv_shared);
+    SHC_rv->idtor = 8;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
+    return SHC_rv;
+    // splicer end class.Object.method.ctor
+}
+
+// ----------------------------------------
+// Function:  Object
+// Statement: f_ctor_shadow_capsule_weak
+void SHA_Object_weak_ctor_bufferify(SHA_Object_weak *SHC_rv)
+{
+    // splicer begin class.Object.method.ctor_bufferify
+    std::shared_ptr<Object> *SHC_rv_shared =
+        new std::shared_ptr<Object>;
+    *SHC_rv_shared =  std::make_shared<Object>();
+    SHC_rv->addr = static_cast<void *>(SHC_rv_shared);
+    SHC_rv->idtor = 8;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
+    // splicer end class.Object.method.ctor_bufferify
+}
+
+// ----------------------------------------
+// Function:  ~Object
+// Statement: c_dtor
+void SHA_Object_weak_dtor(SHA_Object_weak * self)
+{
+    std::weak_ptr<Object> *SH_this =
+        static_cast<std::weak_ptr<Object> *>(self->addr);
+    // splicer begin class.Object.method.dtor
+    if (self->cmemflags & SWIG_MEM_OWN) {
+        delete SH_this;
+    }
+    self->addr = nullptr;
+    self->idtor = 0;
+    self->cmemflags = 0;
+    // splicer end class.Object.method.dtor
+}
 
 // ----------------------------------------
 // Function:  long use_count

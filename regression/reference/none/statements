@@ -90,6 +90,60 @@ c_ctor_shadow_capptr_shared:
   - delete shared;
   owner: shared
   sphinx-end-before: c_ctor_shadow_capptr_shared
+c_ctor_shadow_capptr_weak:
+  sphinx-start-after: c_ctor_shadow_capptr_weak
+  name: c_ctor_shadow_capptr_weak
+  intent: ctor
+  comments:
+  - Pass function result as a capsule field of shadow class
+  - from Fortran to C.
+  - Create a std::shared_pointer on the heap to hold the pointer to the instance.
+  mixin_names:
+  - '  c_mixin_function_shadow_capptr'
+  - '  c_mixin_shadow'
+  - '  c_mixin_as-intent-out'
+  - '  c_mixin_destructor_new-shadow-shared'
+  - '  c_mixin_make-shared'
+  i_dummy_arg:
+  - '{i_var}'
+  i_dummy_decl:
+  - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
+  i_result_decl:
+  - 'type(C_PTR) :: {i_var_ptr}'
+  i_result_var: '{i_var_ptr}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
+  c_prototype:
+  - '{c_type} *{c_var}'
+  c_call:
+  - "std::shared_ptr<{baseclass.cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{baseclass.cxx_type}>;"
+  - "*{c_local_shared} = \t std::make_shared<{baseclass.cxx_type}>({C_call_list});"
+  - "{c_var}->addr = static_cast<{c_const}void *>(\t{c_local_shared});"
+  - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;'
+  c_temps:
+  - ptr
+  c_local:
+  - shared
+  fmtdict:
+    i_intent: OUT
+    i_intent_attr: ', intent(OUT)'
+  helper:
+  - capsule_swigmemflags
+  impl_header:
+  - <memory>
+  destructor_header:
+  - <memory>
+  destructor_name: shadow-{cxx_type}
+  destructor:
+  - "{cxx_type} *shared =\t reinterpret_cast<{cxx_type} *>(ptr);"
+  - shared->reset();
+  - delete shared;
+  owner: shared
+  sphinx-end-before: c_ctor_shadow_capptr_weak
 c_ctor_shadow_capsule:
   sphinx-start-after: c_ctor_shadow_capsule
   name: c_ctor_shadow_capsule
@@ -6834,6 +6888,62 @@ f_ctor_shadow_capsule_shared:
   - delete shared;
   owner: shared
   sphinx-end-before: f_ctor_shadow_capsule_shared
+f_ctor_shadow_capsule_weak:
+  sphinx-start-after: f_ctor_shadow_capsule_weak
+  name: f_ctor_shadow_capsule_weak
+  intent: ctor
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass function result as a capsule argument from Fortran to C.
+  - Create a std::shared_pointer on the heap to hold the pointer to the instance.
+  mixin_names:
+  - '  f_mixin_call-cwrapper-as-subroutine'
+  - '    c_mixin_as-intent-out'
+  - '  f_mixin_capsule_function_shadow'
+  - '  c_mixin_shadow'
+  - '  c_mixin_destructor_new-shadow-shared'
+  - '  c_mixin_make-shared'
+  f_dummy_decl:
+  - '{f_type} :: {f_var}'
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  f_need_wrapper: true
+  i_dummy_arg:
+  - '{i_var}'
+  i_dummy_decl:
+  - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
+  i_module:
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
+  c_return_type: void
+  c_prototype:
+  - '{c_type} *{c_var}'
+  c_call:
+  - "std::shared_ptr<{baseclass.cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{baseclass.cxx_type}>;"
+  - "*{c_local_shared} = \t std::make_shared<{baseclass.cxx_type}>({C_call_list});"
+  - "{c_var}->addr = static_cast<{c_const}void *>(\t{c_local_shared});"
+  - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;'
+  c_local:
+  - shared
+  fmtdict:
+    i_intent: OUT
+    i_intent_attr: ', intent(OUT)'
+  helper:
+  - capsule_swigmemflags
+  impl_header:
+  - <memory>
+  destructor_header:
+  - <memory>
+  destructor_name: shadow-{cxx_type}
+  destructor:
+  - "{cxx_type} *shared =\t reinterpret_cast<{cxx_type} *>(ptr);"
+  - shared->reset();
+  - delete shared;
+  owner: shared
+  sphinx-end-before: f_ctor_shadow_capsule_weak
 f_dtor:
   sphinx-start-after: f_dtor
   name: f_dtor
@@ -23055,6 +23165,7 @@ root
       shadow
         capptr -- c_ctor_shadow_capptr
           shared -- c_ctor_shadow_capptr_shared
+          weak -- c_ctor_shadow_capptr_weak
         capsule -- c_ctor_shadow_capsule
     dtor -- c_dtor
     function
@@ -23393,6 +23504,7 @@ root
       shadow
         capsule -- f_ctor_shadow_capsule
           shared -- f_ctor_shadow_capsule_shared
+          weak -- f_ctor_shadow_capsule_weak
     dtor -- f_dtor
     function
       bool -- f_function_bool

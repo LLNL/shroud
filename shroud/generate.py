@@ -562,11 +562,29 @@ class GenFunctions(object):
             )
             fcn = cls.add_function(decl, format=fmt_func)
             fcn.C_shared_method = True
+
+    def remove_function_ctors(self, cls):
+        """
+        Remove existing constructor methods.
+        To be replace by class specific methods.
+        A smart pointer ctor my have different arguments than the class
+        it points to.
+        For now, replace with a ctor which accepts no arguments.
+        """
+        functions = []
+        for function in cls.functions:
+            if function.ast.is_ctor:
+                pass
+            elif function.ast.is_dtor:
+                pass
+            else:
+                functions.append(function)
+        return functions
         
     def add_smart_ptr_methods(self, smart_ptrs):
         """
         Subclasses for smart pointers have been created.
-        This allows one smart pointer to reference another.
+        This allows one type of smart pointer to reference another.
 
         Parameters
         ----------
@@ -581,8 +599,18 @@ class GenFunctions(object):
         for cls in smart_ptrs.values():
             smart_pointer =  cls.typemap.smart_pointer
             assign_operators.append(AssignOperator(cls, cls, smart_pointer))
-            if smart_pointer == "weak":
-                cls.functions = []
+            if smart_pointer == "shared":
+                pass
+            elif smart_pointer == "weak":
+                # weak_ptr cannot call methods directly.
+                # TODO: Add constructor from shared.
+                functions = []
+                for function in cls.functions:
+                    if function.ast.is_ctor:
+                        functions.append(function)
+                    if function.ast.is_dtor:
+                        functions.append(function)
+                cls.functions = functions
                 if 'shared' in clsmap:
                     # weak_ptr = shared_ptr
                     assign_operators.append(AssignOperator(cls, clsmap['shared'], 'weak'))

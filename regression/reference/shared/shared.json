@@ -2011,7 +2011,263 @@
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "use_count  11 ****************************************",
+                        "<FUNCTION>": "ctor  11 ****************************************",
+                        "_orig_node_index": 0,
+                        "_overloaded": true,
+                        "ast": {
+                            "declarator": {
+                                "default_name": "ctor",
+                                "is_ctor": true,
+                                "params": [],
+                                "typemap_name": "Object"
+                            },
+                            "is_ctor": true,
+                            "specifier": [
+                                "Object"
+                            ],
+                            "typemap_name": "std::weak_ptr<Object>"
+                        },
+                        "decl": "Object()",
+                        "declgen": "Object(void)",
+                        "helpers": {
+                            "fc": [
+                                "capsule_swigmemflags"
+                            ]
+                        },
+                        "name": "ctor",
+                        "options": {
+                            "F_create_generic": true
+                        },
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "(*SH_this)->ctor(\t)",
+                                        "C_name": "SHA_Object_weak_ctor",
+                                        "C_prototype": "SHA_Object_weak *SHC_rv",
+                                        "C_return_type": "SHA_Object_weak *",
+                                        "c_abstract_decl": "SHA_Object_weak *",
+                                        "c_const": "",
+                                        "c_get_value": "",
+                                        "c_local_shared": "SHC_rv_shared",
+                                        "c_type": "SHA_Object_weak",
+                                        "c_var": "SHC_rv",
+                                        "c_var_ptr": "SHT_rv_ptr",
+                                        "cxx_abstract_decl": "std::weak_ptr<Object>",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_type": "std::weak_ptr<Object>",
+                                        "cxx_var": "SHCXX_rv",
+                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data",
+                                        "f_derived_type": "object_weak",
+                                        "f_kind": "object_weak",
+                                        "f_module_name": "shared_mod",
+                                        "f_type": "type(object_weak)",
+                                        "f_var": "SHT_rv",
+                                        "i_arguments": "SHT_rv",
+                                        "i_intent": "OUT",
+                                        "i_intent_attr": ", intent(OUT)",
+                                        "i_kind": "object_weak",
+                                        "i_module_name": "shared_mod",
+                                        "i_name_function": "c_object_weak_ctor",
+                                        "i_result_clause": "\fresult(SHT_rv_ptr)",
+                                        "i_result_var": "SHT_rv_ptr",
+                                        "i_subprogram": "function",
+                                        "i_type": "type(SHA_SHROUD_capsule_data)",
+                                        "i_var": "SHT_rv",
+                                        "i_var_ptr": "SHT_rv_ptr",
+                                        "idtor": "8",
+                                        "stmt_name": "c_ctor_shadow_capptr_weak",
+                                        "typemap_name": "std::weak_ptr<Object>"
+                                    },
+                                    "meta": {
+                                        "abstract": "shadow",
+                                        "api": "capptr",
+                                        "intent": "ctor",
+                                        "owner": "weak"
+                                    },
+                                    "stmt": "c_ctor_shadow_capptr_weak"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "(*SH_this)->ctor(\t)",
+                                        "C_name": "SHA_Object_weak_ctor_bufferify",
+                                        "C_prototype": "SHA_Object_weak *SHC_rv",
+                                        "C_return_type": "void",
+                                        "F_arg_c_call": "SHT_rv%cxxmem",
+                                        "F_arguments": "",
+                                        "F_subprogram": "function",
+                                        "c_abstract_decl": "SHA_Object_weak *",
+                                        "c_const": "",
+                                        "c_local_shared": "SHC_rv_shared",
+                                        "c_type": "SHA_Object_weak",
+                                        "c_var": "SHC_rv",
+                                        "cxx_abstract_decl": "std::weak_ptr<Object>",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_type": "std::weak_ptr<Object>",
+                                        "cxx_var": "SHCXX_rv",
+                                        "f_call_function": "c_object_weak_ctor_bufferify",
+                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data",
+                                        "f_derived_type": "object_weak",
+                                        "f_kind": "object_weak",
+                                        "f_module_name": "shared_mod",
+                                        "f_result_clause": "\fresult(SHT_rv)",
+                                        "f_type": "type(object_weak)",
+                                        "f_var": "SHT_rv",
+                                        "fc_var": "SHT_rv",
+                                        "i_arguments": "SHT_rv",
+                                        "i_intent": "OUT",
+                                        "i_intent_attr": ", intent(OUT)",
+                                        "i_kind": "object_weak",
+                                        "i_module_name": "shared_mod",
+                                        "i_name_function": "c_object_weak_ctor_bufferify",
+                                        "i_subprogram": "subroutine",
+                                        "i_suffix": "_bufferify",
+                                        "i_type": "type(SHA_SHROUD_capsule_data)",
+                                        "i_var": "SHT_rv",
+                                        "idtor": "8",
+                                        "stmt_name": "f_ctor_shadow_capsule_weak",
+                                        "typemap_name": "std::weak_ptr<Object>"
+                                    },
+                                    "meta": {
+                                        "abstract": "shadow",
+                                        "api": "capsule",
+                                        "intent": "ctor",
+                                        "owner": "weak"
+                                    },
+                                    "stmt": "f_ctor_shadow_capsule_weak"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "abstract": "shadow",
+                                        "intent": "ctor"
+                                    }
+                                }
+                            }
+                        },
+                        "zz_fmtdict": {
+                            "C_name_api": "ctor",
+                            "F_name_api": "ctor",
+                            "F_name_function": "ctor",
+                            "F_name_generic": "object_weak",
+                            "F_name_impl": "object_weak_ctor",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
+                            "function_name": "ctor"
+                        }
+                    },
+                    {
+                        "<FUNCTION>": "dtor  12 ****************************************",
+                        "_orig_node_index": 1,
+                        "ast": {
+                            "declarator": {
+                                "default_name": "dtor",
+                                "is_dtor": true,
+                                "params": [],
+                                "typemap_name": "void"
+                            },
+                            "is_dtor": "Object",
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "~Object()",
+                        "declgen": "~Object(void)",
+                        "name": "dtor",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "(*SH_this)->dtor(\t)",
+                                        "C_name": "SHA_Object_weak_dtor",
+                                        "C_prototype": "SHA_Object_weak * self",
+                                        "C_return_type": "void",
+                                        "i_name_function": "c_object_weak_dtor",
+                                        "stmt_name": "c_dtor",
+                                        "typemap_name": "void"
+                                    },
+                                    "meta": {
+                                        "abstract": "void",
+                                        "intent": "dtor",
+                                        "owner": "weak"
+                                    },
+                                    "stmt": "c_dtor"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "(*SH_this)->dtor(\t)",
+                                        "C_name": "SHA_Object_weak_dtor",
+                                        "C_prototype": "SHA_Object_weak * self",
+                                        "C_return_type": "void",
+                                        "F_arg_c_call": "obj%cxxmem",
+                                        "F_arguments": "obj",
+                                        "F_subprogram": "subroutine",
+                                        "f_call_function": "c_object_weak_dtor",
+                                        "i_arguments": "self",
+                                        "i_name_function": "c_object_weak_dtor",
+                                        "i_subprogram": "subroutine",
+                                        "stmt_name": "f_dtor",
+                                        "typemap_name": "void"
+                                    },
+                                    "meta": {
+                                        "abstract": "void",
+                                        "intent": "dtor",
+                                        "owner": "weak"
+                                    },
+                                    "stmt": "f_dtor"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "abstract": "void",
+                                        "intent": "dtor"
+                                    }
+                                }
+                            }
+                        },
+                        "zz_fmtdict": {
+                            "C_name_api": "dtor",
+                            "F_name_api": "dtor",
+                            "F_name_function": "dtor",
+                            "F_name_generic": "dtor",
+                            "F_name_impl": "object_weak_dtor",
+                            "c_arglist": [
+                                "self"
+                            ],
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "f_arglist": [
+                                "f_var"
+                            ],
+                            "function_name": "dtor"
+                        }
+                    },
+                    {
+                        "<FUNCTION>": "use_count  13 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "use_count",
@@ -2298,6 +2554,7 @@
                 ]
             },
             "i_type": "type(SHA_SHROUD_capsule_data)",
+            "idtor": "7",
             "impl_header": [
                 "shared.hpp"
             ],

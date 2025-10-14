@@ -12,6 +12,7 @@ program tester
   use shared_mod
   use test_object_mod
   use test_shared_mod
+  use test_weak_mod
   implicit none
   logical ok
 
@@ -19,6 +20,7 @@ program tester
 
   call test_object
   call test_shared
+  call test_weak
   call test_object_methods
 
   call fruit_summary

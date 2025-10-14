@@ -15,6 +15,7 @@ class Object
 public:
     Object() 
     {
+        count = 0;
     }
 
     ~Object()
@@ -35,6 +36,8 @@ public:
     {
         childB = *child;
     }
+
+    int count;
 
 private:
     std::shared_ptr<Object> childA;

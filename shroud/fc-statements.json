@@ -4602,7 +4602,8 @@
     },
     {
         "alias": [
-            "f_ctor_shadow_capsule_shared"
+            "f_ctor_shadow_capsule_shared",
+            "f_ctor_shadow_capsule_weak"
         ],
         "mixin": [
             "f_mixin_call-cwrapper-as-subroutine",
@@ -4614,7 +4615,8 @@
     },
     {
         "alias": [
-            "c_ctor_shadow_capptr_shared"
+            "c_ctor_shadow_capptr_shared",
+            "c_ctor_shadow_capptr_weak"
         ],
         "mixin": [
             "c_mixin_function_shadow_capptr",

@@ -30,7 +30,8 @@ F_OBJS = \
     fruit.o \
     wrapfshared.o \
     test_object.o \
-    test_shared.o
+    test_shared.o \
+    test_weak.o
 
 include $(top)/regression/run/defaults.mk
 
@@ -41,10 +42,11 @@ wrapObject_shared.o : wrapObject_shared.cpp shared.hpp wrapObject_shared.h
 wrapObject_weak.o : wrapObject_weak.cpp shared.hpp wrapObject_weak.h
 test_object.o : fruit.o wrapfshared.o test_object.f
 test_shared.o : fruit.o wrapfshared.o test_shared.f
-main.o : fruit.o wrapfshared.o test_object.o test_shared.o
+test_weak.o : fruit.o wrapfshared.o test_weak.f
+main.o : fruit.o wrapfshared.o test_object.o test_shared.o test_weak.o
 
 # useful to isolate load error with just C++ code
-maincpp : maincpp.o
+maincpp : shared.hpp maincpp.o
 	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@ $(CXXLIBS)
 
 # Check overloading assignment(=) overload with subclasses
