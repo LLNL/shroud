@@ -46,10 +46,10 @@ module shared_mod
         ! splicer begin class.Object_shared.component_part
         ! splicer end class.Object_shared.component_part
     contains
-        procedure :: dtor => object_shared_dtor
         procedure :: create_child_a => object_shared_create_child_a
         procedure :: create_child_b => object_shared_create_child_b
         procedure :: replace_child_b => object_shared_replace_child_b
+        procedure :: dtor => object_shared_dtor
         procedure :: use_count => object_shared_use_count
         ! splicer begin class.Object_shared.type_bound_procedure_part
         ! splicer end class.Object_shared.type_bound_procedure_part
@@ -184,39 +184,6 @@ module shared_mod
         end subroutine c_object_replace_child_b
 
         ! ----------------------------------------
-        ! Function:  Object
-        ! Statement: c_ctor_shadow_capptr_shared
-        function c_object_shared_ctor(SHT_rv) &
-                result(SHT_rv_ptr) &
-                bind(C, name="SHA_Object_shared_ctor")
-            use iso_c_binding, only : C_PTR
-            import :: SHA_SHROUD_capsule_data
-            implicit none
-            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_rv_ptr
-        end function c_object_shared_ctor
-
-        ! ----------------------------------------
-        ! Function:  Object
-        ! Statement: f_ctor_shadow_capsule_shared
-        subroutine c_object_shared_ctor_bufferify(SHT_rv) &
-                bind(C, name="SHA_Object_shared_ctor_bufferify")
-            import :: SHA_SHROUD_capsule_data
-            implicit none
-            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-        end subroutine c_object_shared_ctor_bufferify
-
-        ! ----------------------------------------
-        ! Function:  ~Object
-        ! Statement: f_dtor
-        subroutine c_object_shared_dtor(self) &
-                bind(C, name="SHA_Object_shared_dtor")
-            import :: SHA_SHROUD_capsule_data
-            implicit none
-            type(SHA_SHROUD_capsule_data), intent(INOUT) :: self
-        end subroutine c_object_shared_dtor
-
-        ! ----------------------------------------
         ! Function:  std::shared_ptr<Object> *createChildA
         ! Statement: c_function_smartptr<shadow>*_capptr
         function c_object_shared_create_child_a(self, SHT_rv) &
@@ -281,6 +248,39 @@ module shared_mod
             type(SHA_SHROUD_capsule_data), intent(IN) :: self
             type(SHA_SHROUD_capsule_data), intent(INOUT) :: child
         end subroutine c_object_shared_replace_child_b
+
+        ! ----------------------------------------
+        ! Function:  Object
+        ! Statement: c_ctor_shadow_capptr_shared
+        function c_object_shared_ctor(SHT_rv) &
+                result(SHT_rv_ptr) &
+                bind(C, name="SHA_Object_shared_ctor")
+            use iso_c_binding, only : C_PTR
+            import :: SHA_SHROUD_capsule_data
+            implicit none
+            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+            type(C_PTR) :: SHT_rv_ptr
+        end function c_object_shared_ctor
+
+        ! ----------------------------------------
+        ! Function:  Object
+        ! Statement: f_ctor_shadow_capsule_shared
+        subroutine c_object_shared_ctor_bufferify(SHT_rv) &
+                bind(C, name="SHA_Object_shared_ctor_bufferify")
+            import :: SHA_SHROUD_capsule_data
+            implicit none
+            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_object_shared_ctor_bufferify
+
+        ! ----------------------------------------
+        ! Function:  ~Object
+        ! Statement: f_dtor
+        subroutine c_object_shared_dtor(self) &
+                bind(C, name="SHA_Object_shared_dtor")
+            import :: SHA_SHROUD_capsule_data
+            implicit none
+            type(SHA_SHROUD_capsule_data), intent(INOUT) :: self
+        end subroutine c_object_shared_dtor
 
         ! ----------------------------------------
         ! Function:  long use_count
@@ -447,27 +447,6 @@ contains
     ! splicer end class.Object.additional_functions
 
     ! ----------------------------------------
-    ! Function:  Object
-    ! Statement: f_ctor_shadow_capsule_shared
-    function object_shared_ctor() &
-            result(SHT_rv)
-        type(object_shared) :: SHT_rv
-        ! splicer begin class.Object_shared.method.ctor
-        call c_object_shared_ctor_bufferify(SHT_rv%cxxmem)
-        ! splicer end class.Object_shared.method.ctor
-    end function object_shared_ctor
-
-    ! ----------------------------------------
-    ! Function:  ~Object
-    ! Statement: f_dtor
-    subroutine object_shared_dtor(obj)
-        class(object_shared), intent(INOUT) :: obj
-        ! splicer begin class.Object_shared.method.dtor
-        call c_object_shared_dtor(obj%cxxmem)
-        ! splicer end class.Object_shared.method.dtor
-    end subroutine object_shared_dtor
-
-    ! ----------------------------------------
     ! Function:  std::shared_ptr<Object> *createChildA
     ! Statement: f_function_smartptr<shadow>*_capsule
     function object_shared_create_child_a(obj) &
@@ -506,6 +485,27 @@ contains
         call c_object_shared_replace_child_b(obj%cxxmem, child%cxxmem)
         ! splicer end class.Object_shared.method.replace_child_b
     end subroutine object_shared_replace_child_b
+
+    ! ----------------------------------------
+    ! Function:  Object
+    ! Statement: f_ctor_shadow_capsule_shared
+    function object_shared_ctor() &
+            result(SHT_rv)
+        type(object_shared) :: SHT_rv
+        ! splicer begin class.Object_shared.method.ctor
+        call c_object_shared_ctor_bufferify(SHT_rv%cxxmem)
+        ! splicer end class.Object_shared.method.ctor
+    end function object_shared_ctor
+
+    ! ----------------------------------------
+    ! Function:  ~Object
+    ! Statement: f_dtor
+    subroutine object_shared_dtor(obj)
+        class(object_shared), intent(INOUT) :: obj
+        ! splicer begin class.Object_shared.method.dtor
+        call c_object_shared_dtor(obj%cxxmem)
+        ! splicer end class.Object_shared.method.dtor
+    end subroutine object_shared_dtor
 
     ! ----------------------------------------
     ! Function:  long use_count

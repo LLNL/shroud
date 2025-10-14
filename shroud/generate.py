@@ -563,13 +563,14 @@ class GenFunctions(object):
             fcn = cls.add_function(decl, format=fmt_func)
             fcn.C_shared_method = True
 
-    def remove_function_ctors(self, cls):
+    def add_smart_ptr_ctor_dtor(self, cls):
         """
-        Remove existing constructor methods.
-        To be replace by class specific methods.
-        A smart pointer ctor my have different arguments than the class
-        it points to.
-        For now, replace with a ctor which accepts no arguments.
+        Remove existing constructor methods for Object.
+        Replace with smart_ptr specific methods.
+        The Object ctor may have arguments which do not apply to 
+        the smart pointer.
+        TODO: For now, replace with a ctor which accepts no arguments
+        but it may be meaningful to add ctor like weak_ptr(shared_ptr).
         """
         functions = []
         for function in cls.functions:
@@ -579,6 +580,19 @@ class GenFunctions(object):
                 pass
             else:
                 functions.append(function)
+        cls.functions = functions
+
+        # Set up symtab for parsing
+        cls.symtab.push_scope(cls.ast.class_specifier)
+        
+        decl = "Object()"
+        fcn = cls.add_function(decl)
+                
+        decl = "~Object()"
+        fcn = cls.add_function(decl)
+
+        cls.symtab.pop_scope()
+
         return functions
         
     def add_smart_ptr_methods(self, smart_ptrs):
@@ -600,7 +614,7 @@ class GenFunctions(object):
             smart_pointer =  cls.typemap.smart_pointer
             assign_operators.append(AssignOperator(cls, cls, smart_pointer))
             if smart_pointer == "shared":
-                pass
+                self.add_smart_ptr_ctor_dtor(cls)
             elif smart_pointer == "weak":
                 # weak_ptr cannot call methods directly.
                 # TODO: Add constructor from shared.

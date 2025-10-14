@@ -431,7 +431,7 @@ class Parser(ExprParser):
 
         # destructor
         if self.have("TILDE"):
-            if not hasattr(parent, "has_ctor"):  # CXXClass or Struct
+            if not hasattr(parent, "allow_ctor"):  # CXXClass or Struct
                 raise RuntimeError("Destructor is not in a class")
             tok = self.mustbe("ID")
             if tok.value != parent.name:
@@ -456,7 +456,7 @@ class Parser(ExprParser):
                     node.specifier.append(ns_name)
                     self.parse_template_arguments(node)
                     if (
-                        hasattr(ns, "has_ctor")  # CXXClass or Struct
+                        hasattr(ns, "allow_ctor")  # CXXClass or Struct
                         and parent is ns
                         and self.token.typ == "LPAREN"
                     ):
@@ -1642,7 +1642,7 @@ class CXXClass(Node):
         self.name = name
         self.baseclass = []
         self.members = []
-        self.has_ctor = True
+        self.allow_ctor = True
         self.group = []
 
         forward = self.check_forward_declaration(symtab)
@@ -1768,7 +1768,7 @@ class Struct(Node):
     def __init__(self, name, symtab):
         self.name = name
         self.members = []
-        self.has_ctor = True
+        self.allow_ctor = True
         forward = self.check_forward_declaration(symtab)
 
         if not forward:
@@ -1913,7 +1913,7 @@ class SymbolTable(object):
         """
         node creates a new named scope.
         
-        node = Node subclass: CXXClass, Struct
+        node = Node declast subclass: Namespace, CXXClass, Struct
         """
         # node := Struct
         name = node.name

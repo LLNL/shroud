@@ -12,6 +12,7 @@ import copy
 
 from . import error
 from . import declast
+from .declstr import gen_decl
 from . import fcmem
 from . import statements
 from . import todict
@@ -1603,7 +1604,7 @@ class FunctionNode(AstNode):
             raise RuntimeError("Expected a function declaration")
         if ast.declarator.params is None:
             # 'void foo' instead of 'void foo()'
-            raise RuntimeError("Missing arguments to function:", ast.gen_decl())
+            raise RuntimeError("Missing arguments to function:", gen_decl(ast))
         self.ast = ast
         declarator = ast.declarator
         self.name = declarator.user_name
