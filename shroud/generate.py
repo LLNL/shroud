@@ -572,6 +572,7 @@ class GenFunctions(object):
         TODO: For now, replace with a ctor which accepts no arguments
         but it may be meaningful to add ctor like weak_ptr(shared_ptr).
         """
+        # Filter out current ctor and dtor
         functions = []
         for function in cls.functions:
             if function.ast.is_ctor:
@@ -592,8 +593,6 @@ class GenFunctions(object):
         fcn = cls.add_function(decl)
 
         cls.symtab.pop_scope()
-
-        return functions
         
     def add_smart_ptr_methods(self, smart_ptrs):
         """
@@ -618,13 +617,8 @@ class GenFunctions(object):
             elif smart_pointer == "weak":
                 # weak_ptr cannot call methods directly.
                 # TODO: Add constructor from shared.
-                functions = []
-                for function in cls.functions:
-                    if function.ast.is_ctor:
-                        functions.append(function)
-                    if function.ast.is_dtor:
-                        functions.append(function)
-                cls.functions = functions
+                cls.functions = []
+                self.add_smart_ptr_ctor_dtor(cls)
                 if 'shared' in clsmap:
                     # weak_ptr = shared_ptr
                     assign_operators.append(AssignOperator(cls, clsmap['shared'], 'weak'))

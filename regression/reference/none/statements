@@ -22442,6 +22442,8 @@ h_helper_capsule_swigmemflags:
   name: h_helper_capsule_swigmemflags
   notes:
   - Flags used to give properties to the addr field.
+  - This helper is added in wrapf.py Wrapf.wrap_class
+  - instead of adding to lots of other groups.
   scope: cwrap_include
   source:
   - ''

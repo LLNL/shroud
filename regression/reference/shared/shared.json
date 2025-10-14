@@ -143,11 +143,6 @@
                         },
                         "decl": "Object()",
                         "declgen": "Object(void)",
-                        "helpers": {
-                            "fc": [
-                                "capsule_swigmemflags"
-                            ]
-                        },
                         "name": "ctor",
                         "options": {
                             "F_create_generic": true
@@ -2010,7 +2005,6 @@
                 "functions": [
                     {
                         "<FUNCTION>": "ctor  11 ****************************************",
-                        "_orig_node_index": 0,
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -2169,7 +2163,6 @@
                     },
                     {
                         "<FUNCTION>": "dtor  12 ****************************************",
-                        "_orig_node_index": 1,
                         "ast": {
                             "declarator": {
                                 "default_name": "dtor",
