@@ -4434,11 +4434,67 @@
         }
     },
     {
+        "name": "c_mixin_operator_assignment_fmtdict_makeshared",
+        "notes": [
+            "Create std::shared_ptr and point to the rhs.",
+            "Adapts code from SWIG AssignmentPolicy<T, ASSIGNMENT_SMATPTR>."
+        ],
+        "fmtdict": {
+            "capture_code": [
+                "// Capture pointer from RHS, clear 'moving' flag.",
+                "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs}*>\t(rhs_capsule->addr);",
+                "{cxx_type_lhs} *lhs =\t new {cxx_type_lhs}\t(rhs);",
+                "//lhs_capsule->addr = new {cxx_type_lhs} (*static_cast<{cxx_type_lhs}*>(rhs_capsule->addr));",
+                "lhs_capsule->addr = lhs;",
+                "lhs_capsule->idtor = {idtor};",
+                "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;"
+            ],
+            "alias_code": [
+                "// Aliasing another class; clear ownership or copy smart pointer.",
+                "lhs_capsule->addr = new {cxx_type_lhs}\t (*static_cast<{cxx_type_lhs}*>\t(rhs_capsule->addr));",
+                "lhs_capsule->idtor = {idtor};",
+                "lhs_capsule->cmemflags = rhs_capsule->cmemflags | SWIG_MEM_OWN;"
+            ],
+            "destroy_code": [
+                "// Replace LHS with a null pointer.",
+                "//if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+",
+                "//{C_memory_dtor_function}(({c_capsule_data_type} *) lhs_capsule);",
+                "//-}}",
+                "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs}*>\t(lhs_capsule->addr);",
+                "lhs->reset();",
+                "lhs_capsule->addr = {nullptr};",
+                "lhs_capsule->idtor = 0;",
+                "lhs_capsule->cmemflags = 0;"
+            ],
+            "move_alias_code": [
+                "// Transferred ownership from a variable that's about to be lost.",
+                "// Move-assign and delete the transient data.",
+                "// LHS and RHS should both 'own' their shared pointers.",
+                "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs}*>\t(lhs_capsule->addr);",
+                "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs}*>\t(rhs_capsule->addr);",
+                "lhs->reset(rhs);",
+                "lhs_capsule->addr = rhs_capsule->addr;",
+                "lhs_capsule->idtor = {idtor};",
+                "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
+                "if (rhs_capsule->cmemflags & SWIG_MEM_OWN) {{+",
+                "{C_memory_dtor_function}(\t({c_capsule_data_type} *) rhs_capsule);",
+                "-}}"
+            ],
+            "copy_alias_code": [
+                "// RHS shouldn't be deleted, alias to LHS.",
+                "// LHS and RHS should both 'own' their shared pointers.",
+                "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs}*>\t(lhs_capsule->addr);",
+                "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs}*>\t(rhs_capsule->addr);",
+                "lhs->reset(rhs);"
+            ]
+        }
+    },
+    {
         "name": "c_mixin_operator_assignment_fmtdict_weak",
         "notes": [
             "std::weak_ptr has no wrapped constructor.",
             "It must be made from a std::shared_ptr with an assignment.",
-            "Adapts code from SWIG_assign."
+            "Adapts code from SWIG AssignmentPolicy<T, ASSIGNMENT_SMATPTR>."
         ],
         "fmtdict": {
             "capture_code": [
@@ -4463,16 +4519,16 @@
                 "lhs_capsule->cmemflags = 0;"
             ],
             "move_alias_code": [
-              "// Transferred ownership from a variable that's about to be lost.",
-              "// Move-assign and delete the transient data.",
-              "// LHS and RHS should both 'own' their shared pointers.",
-              "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs}*>\t(lhs_capsule->addr);",
-              "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs}*>\t(rhs_capsule->addr);",
-              "*lhs = *rhs;",
-              "lhs_capsule->addr = rhs_capsule->addr;",
-              "lhs_capsule->idtor = {idtor};",
-              "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
-              "if (rhs_capsule->cmemflags & SWIG_MEM_OWN) {{+",
+                "// Transferred ownership from a variable that's about to be lost.",
+                "// Move-assign and delete the transient data.",
+                "// LHS and RHS should both 'own' their shared pointers.",
+                "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs}*>\t(lhs_capsule->addr);",
+                "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs}*>\t(rhs_capsule->addr);",
+                "*lhs = *rhs;",
+                "lhs_capsule->addr = rhs_capsule->addr;",
+                "lhs_capsule->idtor = {idtor};",
+                "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
+                "if (rhs_capsule->cmemflags & SWIG_MEM_OWN) {{+",
                 "{C_memory_dtor_function}(\t({c_capsule_data_type} *) rhs_capsule);",
                 "-}}"
             ],
@@ -4545,6 +4601,19 @@
             "f_mixin_operator_assignment_swig",
             "c_mixin_operator_assignment_swig",
             "c_mixin_operator_assignment_fmtdict_weak"
+        ]
+    },
+    {
+        "alias": [
+            "f_operator_assignment_shadow_swig_makeshared"
+        ],
+        "notes": [
+            "  shared = object, create shared object, keep object"
+        ],
+        "mixin": [
+            "f_mixin_operator_assignment_swig",
+            "c_mixin_operator_assignment_swig",
+            "c_mixin_operator_assignment_fmtdict_makeshared"
         ]
     },
     {

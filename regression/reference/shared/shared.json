@@ -62,6 +62,34 @@
                 "bind": {
                     "fmtdict": {
                         "C_name_api": "assign",
+                        "C_name_assign_api": "SHA_Object_shared_assign_Object",
+                        "F_name_api": "assign",
+                        "F_name_assign_api": "object_shared_assign_Object",
+                        "alias_code": "// Aliasing another class; clear ownership or copy smart pointer.\nlhs_capsule->addr = new std::shared_ptr<Object>\t (*static_cast<std::shared_ptr<Object>*>\t(rhs_capsule->addr));\nlhs_capsule->idtor = 2;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags | SWIG_MEM_OWN;",
+                        "c_type_lhs": "SHA_Object_shared",
+                        "c_type_rhs": "SHA_Object",
+                        "capture_code": "// Capture pointer from RHS, clear 'moving' flag.\nObject *rhs =\t static_cast<Object*>\t(rhs_capsule->addr);\nstd::shared_ptr<Object> *lhs =\t new std::shared_ptr<Object>\t(rhs);\n//lhs_capsule->addr = new std::shared_ptr<Object> (*static_cast<std::shared_ptr<Object>*>(rhs_capsule->addr));\nlhs_capsule->addr = lhs;\nlhs_capsule->idtor = 2;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
+                        "copy_alias_code": "// RHS shouldn't be deleted, alias to LHS.\n// LHS and RHS should both 'own' their shared pointers.\nstd::shared_ptr<Object> *lhs =\t static_cast<std::shared_ptr<Object>*>\t(lhs_capsule->addr);\nObject *rhs =\t static_cast<Object*>\t(rhs_capsule->addr);\nlhs->reset(rhs);",
+                        "cxx_type_lhs": "std::shared_ptr<Object>",
+                        "cxx_type_rhs": "Object",
+                        "destroy_code": "// Replace LHS with a null pointer.\n//if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\n//SHA_SHROUD_memory_destructor((SHA_SHROUD_capsule_data *) lhs_capsule);\n//-}\nstd::shared_ptr<Object> *lhs =\t static_cast<std::shared_ptr<Object>*>\t(lhs_capsule->addr);\nlhs->reset();\nlhs_capsule->addr = nullptr;\nlhs_capsule->idtor = 0;\nlhs_capsule->cmemflags = 0;",
+                        "f_capsule_data_type_lhs": "SHA_SHROUD_capsule_data",
+                        "f_capsule_data_type_rhs": "SHA_SHROUD_capsule_data",
+                        "f_derived_type_lhs": "object_shared",
+                        "f_derived_type_rhs": "object",
+                        "f_interface_import": "SHA_SHROUD_capsule_data",
+                        "function_suffix": "_Object",
+                        "idtor": "2",
+                        "move_alias_code": "// Transferred ownership from a variable that's about to be lost.\n// Move-assign and delete the transient data.\n// LHS and RHS should both 'own' their shared pointers.\nstd::shared_ptr<Object> *lhs =\t static_cast<std::shared_ptr<Object>*>\t(lhs_capsule->addr);\nObject *rhs =\t static_cast<Object*>\t(rhs_capsule->addr);\nlhs->reset(rhs);\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = 2;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;\nif (rhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nSHA_SHROUD_memory_destructor(\t(SHA_SHROUD_capsule_data *) rhs_capsule);\n-}"
+                    },
+                    "stmt": "f_operator_assignment_shadow_swig_makeshared"
+                },
+                "name": "std::shared_ptr<Object> = Object"
+            },
+            {
+                "bind": {
+                    "fmtdict": {
+                        "C_name_api": "assign",
                         "C_name_assign_api": "SHA_Object_weak_assign_Object_weak",
                         "F_name_api": "assign",
                         "F_name_assign_api": "object_weak_assign_Object_weak",
@@ -987,13 +1015,6 @@
             },
             {
                 "<CLASS>": "Object ****************************************",
-                "baseclass": [
-                    [
-                        "public",
-                        "DDDD",
-                        "Object"
-                    ]
-                ],
                 "cxx_header": [],
                 "functions": [
                     {
@@ -1977,7 +1998,6 @@
                     "C_name_scope": "Object_shared_",
                     "C_name_shared_api": "Object_shared",
                     "C_type_name": "SHA_Object_shared",
-                    "F_derived_member_base": "object",
                     "F_derived_name": "object_shared",
                     "F_name_api": "object_shared",
                     "F_name_scope": "object_shared_",
@@ -1994,13 +2014,6 @@
             },
             {
                 "<CLASS>": "Object ****************************************",
-                "baseclass": [
-                    [
-                        "public",
-                        "DDDD",
-                        "Object"
-                    ]
-                ],
                 "cxx_header": [],
                 "functions": [
                     {
@@ -2405,7 +2418,6 @@
                     "C_name_scope": "Object_weak_",
                     "C_name_shared_api": "Object_weak",
                     "C_type_name": "SHA_Object_weak",
-                    "F_derived_member_base": "object",
                     "F_derived_name": "object_weak",
                     "F_name_api": "object_weak",
                     "F_name_scope": "object_weak_",

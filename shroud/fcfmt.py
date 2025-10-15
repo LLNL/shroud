@@ -111,6 +111,9 @@ class FillFormat(object):
                 fmt_class.F_derived_member_base = "===>F_derived_member_base<==="
             else:
                 fmt_class.F_derived_member_base = baseclass.typemap.f_derived_type
+        if node.shared_baseclass:
+            fmt_class.baseclass = statements.BaseClassFormat(
+                node.shared_baseclass.ast.class_specifier)
         self.cursor.pop_node(node)
             
     def fmt_typedefs(self, node):

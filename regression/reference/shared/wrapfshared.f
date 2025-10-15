@@ -42,7 +42,8 @@ module shared_mod
         ! splicer end class.Object.type_bound_procedure_part
     end type object
 
-    type, extends(object) :: object_shared
+    type object_shared
+        type(SHA_SHROUD_capsule_data) :: cxxmem
         ! splicer begin class.Object_shared.component_part
         ! splicer end class.Object_shared.component_part
     contains
@@ -51,16 +52,23 @@ module shared_mod
         procedure :: replace_child_b => object_shared_replace_child_b
         procedure :: dtor => object_shared_dtor
         procedure :: use_count => object_shared_use_count
+        procedure :: get_instance => object_shared_get_instance
+        procedure :: set_instance => object_shared_set_instance
+        procedure :: associated => object_shared_associated
         ! splicer begin class.Object_shared.type_bound_procedure_part
         ! splicer end class.Object_shared.type_bound_procedure_part
     end type object_shared
 
-    type, extends(object) :: object_weak
+    type object_weak
+        type(SHA_SHROUD_capsule_data) :: cxxmem
         ! splicer begin class.Object_weak.component_part
         ! splicer end class.Object_weak.component_part
     contains
         procedure :: dtor => object_weak_dtor
         procedure :: use_count => object_weak_use_count
+        procedure :: get_instance => object_weak_get_instance
+        procedure :: set_instance => object_weak_set_instance
+        procedure :: associated => object_weak_associated
         ! splicer begin class.Object_weak.type_bound_procedure_part
         ! splicer end class.Object_weak.type_bound_procedure_part
     end type object_weak
@@ -80,6 +88,7 @@ module shared_mod
     interface assignment (=)
         module procedure object_assign_Object
         module procedure object_shared_assign_Object_shared
+        module procedure object_shared_assign_Object
         module procedure object_weak_assign_Object_weak
         module procedure object_weak_assign_Object_shared
     end interface
@@ -520,6 +529,29 @@ contains
         ! splicer end class.Object_shared.method.use_count
     end function object_shared_use_count
 
+    ! Return pointer to C++ memory.
+    function object_shared_get_instance(obj) result (cxxptr)
+        use iso_c_binding, only: C_PTR
+        class(object_shared), intent(IN) :: obj
+        type(C_PTR) :: cxxptr
+        cxxptr = obj%cxxmem%addr
+    end function object_shared_get_instance
+
+    subroutine object_shared_set_instance(obj, cxxmem)
+        use iso_c_binding, only: C_PTR
+        class(object_shared), intent(INOUT) :: obj
+        type(C_PTR), intent(IN) :: cxxmem
+        obj%cxxmem%addr = cxxmem
+        obj%cxxmem%idtor = 0
+    end subroutine object_shared_set_instance
+
+    function object_shared_associated(obj) result (rv)
+        use iso_c_binding, only: c_associated
+        class(object_shared), intent(IN) :: obj
+        logical rv
+        rv = c_associated(obj%cxxmem%addr)
+    end function object_shared_associated
+
     ! splicer begin class.Object_shared.additional_functions
     ! splicer end class.Object_shared.additional_functions
 
@@ -557,6 +589,29 @@ contains
         ! splicer end class.Object_weak.method.use_count
     end function object_weak_use_count
 
+    ! Return pointer to C++ memory.
+    function object_weak_get_instance(obj) result (cxxptr)
+        use iso_c_binding, only: C_PTR
+        class(object_weak), intent(IN) :: obj
+        type(C_PTR) :: cxxptr
+        cxxptr = obj%cxxmem%addr
+    end function object_weak_get_instance
+
+    subroutine object_weak_set_instance(obj, cxxmem)
+        use iso_c_binding, only: C_PTR
+        class(object_weak), intent(INOUT) :: obj
+        type(C_PTR), intent(IN) :: cxxmem
+        obj%cxxmem%addr = cxxmem
+        obj%cxxmem%idtor = 0
+    end subroutine object_weak_set_instance
+
+    function object_weak_associated(obj) result (rv)
+        use iso_c_binding, only: c_associated
+        class(object_weak), intent(IN) :: obj
+        logical rv
+        rv = c_associated(obj%cxxmem%addr)
+    end function object_weak_associated
+
     ! splicer begin class.Object_weak.additional_functions
     ! splicer end class.Object_weak.additional_functions
 
@@ -593,6 +648,23 @@ contains
         end interface
         call do_assign(lhs%cxxmem, rhs%cxxmem)
     end subroutine object_shared_assign_Object_shared
+
+    ! Statement: f_operator_assignment_shadow_swig_makeshared
+    ! std::shared_ptr<Object> = Object
+    subroutine object_shared_assign_Object(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(object_shared), intent(INOUT) :: lhs
+        type(object), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="SHA_Object_shared_assign_Object")
+                import :: SHA_SHROUD_capsule_data
+                type(SHA_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(SHA_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine object_shared_assign_Object
 
     ! Statement: f_operator_assignment_shadow_swig_weak
     ! std::weak_ptr<Object> = std::weak_ptr<Object>

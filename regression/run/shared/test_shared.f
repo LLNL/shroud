@@ -8,6 +8,7 @@
 !
 
 module test_shared_mod
+  use iso_c_binding
   use fruit
   use shared_mod
 contains
@@ -17,6 +18,7 @@ contains
     call test_object_assign_null
     call test_object_move_alias
     call test_object_copy_alias
+    call test_shared_from_object
   contains
     subroutine test_object_assign
       type(object_shared) objectPtr
@@ -100,6 +102,20 @@ contains
       objectPtr = objectPtr2
       
     end subroutine test_object_copy_alias
+
+    subroutine test_shared_from_object
+!      type(object) obj1
+      type(object_shared) sp1
+      integer(C_LONG) count
+      
+      call set_case_name("test_shared_from_object")
+
+      sp1 = object()
+      count = sp1%use_count()
+      call assert_equals(1, int(count), "use_count after assignment")
+
+    end subroutine test_shared_from_object
+
   end subroutine test_shared
 
 end module test_shared_mod

@@ -199,122 +199,189 @@ void SHA_Object_shared_assign_Object_shared(SHA_Object_shared *lhs_capsule,
     }
 }
 
-// Statement: f_operator_assignment_shadow_swig_weak
-// std::weak_ptr<Object> = std::weak_ptr<Object>
-void SHA_Object_weak_assign_Object_weak(SHA_Object_weak *lhs_capsule,
-    SHA_Object_weak *rhs_capsule)
+// Statement: f_operator_assignment_shadow_swig_makeshared
+// std::shared_ptr<Object> = Object
+void SHA_Object_shared_assign_Object(SHA_Object_shared *lhs_capsule,
+    SHA_Object *rhs_capsule)
 {
     if (lhs_capsule->addr == nullptr) {
         /* LHS is unassigned */
         if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {
             // Capture pointer from RHS, clear 'moving' flag.
-            lhs_capsule->addr = rhs_capsule->addr;
-            lhs_capsule->idtor = 3;
+            Object *rhs = static_cast<Object*>(rhs_capsule->addr);
+            std::shared_ptr<Object> *lhs = new std::shared_ptr<Object>
+                (rhs);
+            //lhs_capsule->addr = new std::shared_ptr<Object> (*static_cast<std::shared_ptr<Object>*>(rhs_capsule->addr));
+            lhs_capsule->addr = lhs;
+            lhs_capsule->idtor = 2;
             lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
         } else {
             // Aliasing another class; clear ownership or copy smart pointer.
-            lhs_capsule->addr = new std::weak_ptr<Object>
-                (*static_cast<std::weak_ptr<Object>*>
+            lhs_capsule->addr = new std::shared_ptr<Object>
+                (*static_cast<std::shared_ptr<Object>*>
                 (rhs_capsule->addr));
-            lhs_capsule->idtor = 3;
+            lhs_capsule->idtor = 2;
             lhs_capsule->cmemflags = rhs_capsule->cmemflags | SWIG_MEM_OWN;
         }
     } else if (rhs_capsule->addr == nullptr) {
         // Replace LHS with a null pointer.
-        if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {
-            SHA_SHROUD_memory_destructor(
-                (SHA_SHROUD_capsule_data *) lhs_capsule);
+        //if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {
+            //SHA_SHROUD_memory_destructor((SHA_SHROUD_capsule_data *) lhs_capsule);
+            //-}
+            std::shared_ptr<Object> *lhs =
+                static_cast<std::shared_ptr<Object>*>
+                (lhs_capsule->addr);
+            lhs->reset();
+            lhs_capsule->addr = nullptr;
+            lhs_capsule->idtor = 0;
+            lhs_capsule->cmemflags = 0;
+        } else if (lhs_capsule->addr == rhs_capsule->addr) {
+            // Lhs-assignment: ignore.
+        } else if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {
+            // Transferred ownership from a variable that's about to be lost.
+            // Move-assign and delete the transient data.
+            // LHS and RHS should both 'own' their shared pointers.
+            std::shared_ptr<Object> *lhs =
+                static_cast<std::shared_ptr<Object>*>
+                (lhs_capsule->addr);
+            Object *rhs = static_cast<Object*>(rhs_capsule->addr);
+            lhs->reset(rhs);
+            lhs_capsule->addr = rhs_capsule->addr;
+            lhs_capsule->idtor = 2;
+            lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+            if (rhs_capsule->cmemflags & SWIG_MEM_OWN) {
+                SHA_SHROUD_memory_destructor(
+                    (SHA_SHROUD_capsule_data *) rhs_capsule);
+            }
+        } else {
+            // RHS shouldn't be deleted, alias to LHS.
+            // LHS and RHS should both 'own' their shared pointers.
+            std::shared_ptr<Object> *lhs =
+                static_cast<std::shared_ptr<Object>*>
+                (lhs_capsule->addr);
+            Object *rhs = static_cast<Object*>(rhs_capsule->addr);
+            lhs->reset(rhs);
         }
-        lhs_capsule->addr = nullptr;
-        lhs_capsule->idtor = 0;
-        lhs_capsule->cmemflags = 0;
-    } else if (lhs_capsule->addr == rhs_capsule->addr) {
-        // Lhs-assignment: ignore.
-    } else if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {
-        // Transferred ownership from a variable that's about to be lost.
-        // Move-assign and delete the transient data.
-        // LHS and RHS should both 'own' their shared pointers.
-        std::weak_ptr<Object> *lhs = static_cast<std::weak_ptr<Object>*>
-            (lhs_capsule->addr);
-        std::weak_ptr<Object> *rhs = static_cast<std::weak_ptr<Object>*>
-            (rhs_capsule->addr);
-        *lhs = *rhs;
-        lhs_capsule->addr = rhs_capsule->addr;
-        lhs_capsule->idtor = 3;
-        lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
-        if (rhs_capsule->cmemflags & SWIG_MEM_OWN) {
-            SHA_SHROUD_memory_destructor(
-                (SHA_SHROUD_capsule_data *) rhs_capsule);
-        }
-    } else {
-        // RHS shouldn't be deleted, alias to LHS.
-        // LHS and RHS should both 'own' their shared pointers.
-        std::weak_ptr<Object> *lhs = static_cast<std::weak_ptr<Object>*>
-            (lhs_capsule->addr);
-        std::weak_ptr<Object> *rhs = static_cast<std::weak_ptr<Object>*>
-            (rhs_capsule->addr);
-        *lhs = *rhs;
     }
-}
 
-// Statement: f_operator_assignment_shadow_swig_weak
-// std::weak_ptr<Object> = std::shared_ptr<Object>
-void SHA_Object_weak_assign_Object_shared(SHA_Object_weak *lhs_capsule,
-    SHA_Object_shared *rhs_capsule)
-{
-    if (lhs_capsule->addr == nullptr) {
-        /* LHS is unassigned */
-        if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {
-            // Capture pointer from RHS, clear 'moving' flag.
+    // Statement: f_operator_assignment_shadow_swig_weak
+    // std::weak_ptr<Object> = std::weak_ptr<Object>
+    void SHA_Object_weak_assign_Object_weak(SHA_Object_weak *lhs_capsule,
+        SHA_Object_weak *rhs_capsule)
+    {
+        if (lhs_capsule->addr == nullptr) {
+            /* LHS is unassigned */
+            if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {
+                // Capture pointer from RHS, clear 'moving' flag.
+                lhs_capsule->addr = rhs_capsule->addr;
+                lhs_capsule->idtor = 3;
+                lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+            } else {
+                // Aliasing another class; clear ownership or copy smart pointer.
+                lhs_capsule->addr = new std::weak_ptr<Object>
+                    (*static_cast<std::weak_ptr<Object>*>
+                    (rhs_capsule->addr));
+                lhs_capsule->idtor = 3;
+                lhs_capsule->cmemflags = rhs_capsule->cmemflags | SWIG_MEM_OWN;
+            }
+        } else if (rhs_capsule->addr == nullptr) {
+            // Replace LHS with a null pointer.
+            if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {
+                SHA_SHROUD_memory_destructor(
+                    (SHA_SHROUD_capsule_data *) lhs_capsule);
+            }
+            lhs_capsule->addr = nullptr;
+            lhs_capsule->idtor = 0;
+            lhs_capsule->cmemflags = 0;
+        } else if (lhs_capsule->addr == rhs_capsule->addr) {
+            // Lhs-assignment: ignore.
+        } else if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {
+            // Transferred ownership from a variable that's about to be lost.
+            // Move-assign and delete the transient data.
+            // LHS and RHS should both 'own' their shared pointers.
+            std::weak_ptr<Object> *lhs =
+                static_cast<std::weak_ptr<Object>*>(lhs_capsule->addr);
+            std::weak_ptr<Object> *rhs =
+                static_cast<std::weak_ptr<Object>*>(rhs_capsule->addr);
+            *lhs = *rhs;
             lhs_capsule->addr = rhs_capsule->addr;
             lhs_capsule->idtor = 3;
             lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+            if (rhs_capsule->cmemflags & SWIG_MEM_OWN) {
+                SHA_SHROUD_memory_destructor(
+                    (SHA_SHROUD_capsule_data *) rhs_capsule);
+            }
         } else {
-            // Aliasing another class; clear ownership or copy smart pointer.
-            lhs_capsule->addr = new std::weak_ptr<Object>
-                (*static_cast<std::weak_ptr<Object>*>
-                (rhs_capsule->addr));
-            lhs_capsule->idtor = 3;
-            lhs_capsule->cmemflags = rhs_capsule->cmemflags | SWIG_MEM_OWN;
+            // RHS shouldn't be deleted, alias to LHS.
+            // LHS and RHS should both 'own' their shared pointers.
+            std::weak_ptr<Object> *lhs =
+                static_cast<std::weak_ptr<Object>*>(lhs_capsule->addr);
+            std::weak_ptr<Object> *rhs =
+                static_cast<std::weak_ptr<Object>*>(rhs_capsule->addr);
+            *lhs = *rhs;
         }
-    } else if (rhs_capsule->addr == nullptr) {
-        // Replace LHS with a null pointer.
-        if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {
-            SHA_SHROUD_memory_destructor(
-                (SHA_SHROUD_capsule_data *) lhs_capsule);
-        }
-        lhs_capsule->addr = nullptr;
-        lhs_capsule->idtor = 0;
-        lhs_capsule->cmemflags = 0;
-    } else if (lhs_capsule->addr == rhs_capsule->addr) {
-        // Lhs-assignment: ignore.
-    } else if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {
-        // Transferred ownership from a variable that's about to be lost.
-        // Move-assign and delete the transient data.
-        // LHS and RHS should both 'own' their shared pointers.
-        std::weak_ptr<Object> *lhs = static_cast<std::weak_ptr<Object>*>
-            (lhs_capsule->addr);
-        std::shared_ptr<Object> *rhs =
-            static_cast<std::shared_ptr<Object>*>(rhs_capsule->addr);
-        *lhs = *rhs;
-        lhs_capsule->addr = rhs_capsule->addr;
-        lhs_capsule->idtor = 3;
-        lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
-        if (rhs_capsule->cmemflags & SWIG_MEM_OWN) {
-            SHA_SHROUD_memory_destructor(
-                (SHA_SHROUD_capsule_data *) rhs_capsule);
-        }
-    } else {
-        // RHS shouldn't be deleted, alias to LHS.
-        // LHS and RHS should both 'own' their shared pointers.
-        std::weak_ptr<Object> *lhs = static_cast<std::weak_ptr<Object>*>
-            (lhs_capsule->addr);
-        std::shared_ptr<Object> *rhs =
-            static_cast<std::shared_ptr<Object>*>(rhs_capsule->addr);
-        *lhs = *rhs;
     }
-}
+
+    // Statement: f_operator_assignment_shadow_swig_weak
+    // std::weak_ptr<Object> = std::shared_ptr<Object>
+    void SHA_Object_weak_assign_Object_shared(SHA_Object_weak *lhs_capsule,
+        SHA_Object_shared *rhs_capsule)
+    {
+        if (lhs_capsule->addr == nullptr) {
+            /* LHS is unassigned */
+            if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {
+                // Capture pointer from RHS, clear 'moving' flag.
+                lhs_capsule->addr = rhs_capsule->addr;
+                lhs_capsule->idtor = 3;
+                lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+            } else {
+                // Aliasing another class; clear ownership or copy smart pointer.
+                lhs_capsule->addr = new std::weak_ptr<Object>
+                    (*static_cast<std::weak_ptr<Object>*>
+                    (rhs_capsule->addr));
+                lhs_capsule->idtor = 3;
+                lhs_capsule->cmemflags = rhs_capsule->cmemflags | SWIG_MEM_OWN;
+            }
+        } else if (rhs_capsule->addr == nullptr) {
+            // Replace LHS with a null pointer.
+            if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {
+                SHA_SHROUD_memory_destructor(
+                    (SHA_SHROUD_capsule_data *) lhs_capsule);
+            }
+            lhs_capsule->addr = nullptr;
+            lhs_capsule->idtor = 0;
+            lhs_capsule->cmemflags = 0;
+        } else if (lhs_capsule->addr == rhs_capsule->addr) {
+            // Lhs-assignment: ignore.
+        } else if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {
+            // Transferred ownership from a variable that's about to be lost.
+            // Move-assign and delete the transient data.
+            // LHS and RHS should both 'own' their shared pointers.
+            std::weak_ptr<Object> *lhs =
+                static_cast<std::weak_ptr<Object>*>(lhs_capsule->addr);
+            std::shared_ptr<Object> *rhs =
+                static_cast<std::shared_ptr<Object>*>
+                (rhs_capsule->addr);
+            *lhs = *rhs;
+            lhs_capsule->addr = rhs_capsule->addr;
+            lhs_capsule->idtor = 3;
+            lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+            if (rhs_capsule->cmemflags & SWIG_MEM_OWN) {
+                SHA_SHROUD_memory_destructor(
+                    (SHA_SHROUD_capsule_data *) rhs_capsule);
+            }
+        } else {
+            // RHS shouldn't be deleted, alias to LHS.
+            // LHS and RHS should both 'own' their shared pointers.
+            std::weak_ptr<Object> *lhs =
+                static_cast<std::weak_ptr<Object>*>(lhs_capsule->addr);
+            std::shared_ptr<Object> *rhs =
+                static_cast<std::shared_ptr<Object>*>
+                (rhs_capsule->addr);
+            *lhs = *rhs;
+        }
+    }
 
 #ifdef __cplusplus
-}
+    }
 #endif

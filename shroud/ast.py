@@ -1181,6 +1181,7 @@ class ClassNode(AstNode, NamespaceMixin):
         self.python = kwargs.get("python", {})
         self.cpp_if = kwargs.get("cpp_if", None)
         self.C_shared_class = False        # True if subclass of smart_pointer
+        self.shared_baseclass = None
 
         self.options = util.Scope(parent=parent.options)
         if options:

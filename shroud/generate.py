@@ -499,7 +499,7 @@ class GenFunctions(object):
             self.pop_instantiate_scope()
 
     def share_class(self, cls, smart):
-        """Create a subclass for use with smart pointers like std::shared.
+        """Create additional classes for use with smart pointers like std::shared.
 
         Parameters
         ----------
@@ -530,6 +530,7 @@ class GenFunctions(object):
         newcls.name_api = fmt_class.C_name_shared_api
         newcls.name_instantiation = "{}<{}>".format(name_type, fmt_class.cxx_type)
         newcls.scope_file[-1] = newcls.name_api
+        newcls.shared_baseclass = cls
 
         newcls.C_shared_class = True
         # Remove defaulted attributes then reset with current values.
@@ -545,7 +546,6 @@ class GenFunctions(object):
         newcls.typemap.base = "smartptr"
         newcls.typemap.sgroup = "smartptr"
 
-        newcls.baseclass = [ ( 'public', "DDDD", cls.ast) ]
         return newcls
 
     def add_share_smart_methods(self, cls):
@@ -614,6 +614,7 @@ class GenFunctions(object):
             assign_operators.append(AssignOperator(cls, cls, smart_pointer))
             if smart_pointer == "shared":
                 self.add_smart_ptr_ctor_dtor(cls)
+                assign_operators.append(AssignOperator(cls, cls.shared_baseclass, 'makeshared'))
             elif smart_pointer == "weak":
                 # weak_ptr cannot call methods directly.
                 # TODO: Add constructor from shared.
