@@ -10,16 +10,23 @@
 
 #include <memory>
 
+extern int global_id;
+
 class Object
 {
 public:
-    Object() 
+    Object()  : m_id(global_id)
     {
-        count = 0;
+        global_id += 1;
     }
 
     ~Object()
     {
+    }
+
+    int get_id(void)
+    {
+        return m_id;
     }
 
     std::shared_ptr<Object>* createChildA(void)
@@ -37,11 +44,15 @@ public:
         childB = *child;
     }
 
-    int count;
+    // Used to identify Object instances.
+    int m_id;
 
 private:
     std::shared_ptr<Object> childA;
     std::shared_ptr<Object> childB;
 };
+
+void reset_id(void);
+int use_count(const std::shared_ptr<Object> *f);
 
 #endif // SHARED_HPP

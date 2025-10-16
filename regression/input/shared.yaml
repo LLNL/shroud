@@ -25,10 +25,15 @@ declarations:
 #      F_name_shared_use_count:
   - type: std::weak_ptr
   declarations:
+#  - decl: int id +readonly
   - decl: Object()
   - decl: ~Object()
+  - decl: int get_id(void)
 
 #  - decl: Object* createChildA(void)
   - decl: std::shared_ptr<Object>* createChildA(void)
   - decl: std::shared_ptr<Object>* createChildB(void)
   - decl: void replaceChildB(std::shared_ptr<Object>* child)
+
+- decl: void reset_id(void)
+- decl: int use_count(const std::shared_ptr<Object> *f)

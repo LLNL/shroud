@@ -63,6 +63,18 @@ void SHA_Object_dtor(SHA_Object * self)
 }
 
 // ----------------------------------------
+// Function:  int get_id
+// Statement: c_function_native
+int SHA_Object_get_id(SHA_Object * self)
+{
+    Object *SH_this = static_cast<Object *>(self->addr);
+    // splicer begin class.Object.method.get_id
+    int SHC_rv = SH_this->get_id();
+    return SHC_rv;
+    // splicer end class.Object.method.get_id
+}
+
+// ----------------------------------------
 // Function:  std::shared_ptr<Object> *createChildA
 // Statement: c_function_smartptr<shadow>*_capptr
 SHA_Object_shared * SHA_Object_createChildA(SHA_Object * self,

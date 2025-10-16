@@ -10,6 +10,7 @@
 module test_weak_mod
   use fruit
   use shared_mod
+  implicit none
 contains
   subroutine test_weak
     call test_object_assign
@@ -22,6 +23,7 @@ contains
       type(object_weak) objectPtr
 
       call set_case_name("test_weak")
+      call reset_id
 
       objectPtr = object_weak()
       call assert_true(objectPtr%associated(), "objectPtr associated after ctor")
@@ -35,6 +37,7 @@ contains
       type(object_weak) objectPtr, objectPtr2
 
       call set_case_name("test_weak_alias")
+      call reset_id
       
       objectPtr = object_weak()
       call assert_true(objectPtr%associated(), "objectPtr associated after ctor")
@@ -63,6 +66,7 @@ contains
       type(object_weak) objectPtr, objectNULL
       
       call set_case_name("test_weak_assign_null")
+      call reset_id
       
       objectPtr = object_weak()
       call assert_true(objectPtr%associated(), "objectPtr associated after ctor")
@@ -77,6 +81,7 @@ contains
       type(object_weak) objectPtr
       
       call set_case_name("test_weak_move_alias")
+      call reset_id
       
       objectPtr = object_weak()
       call assert_true(objectPtr%associated(), "objectPtr associated after ctor")
@@ -90,6 +95,7 @@ contains
       type(object_weak) objectPtr, objectPtr2
       
       call set_case_name("test_weak_copy_alias")
+      call reset_id
       
       objectPtr = object_weak()
       call assert_true(objectPtr%associated(), "objectPtr associated after ctor")

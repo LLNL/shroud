@@ -32,6 +32,7 @@ module shared_mod
         ! splicer end class.Object.component_part
     contains
         procedure :: dtor => object_dtor
+        procedure :: get_id => object_get_id
         procedure :: create_child_a => object_create_child_a
         procedure :: create_child_b => object_create_child_b
         procedure :: replace_child_b => object_replace_child_b
@@ -47,6 +48,7 @@ module shared_mod
         ! splicer begin class.Object_shared.component_part
         ! splicer end class.Object_shared.component_part
     contains
+        procedure :: get_id => object_shared_get_id
         procedure :: create_child_a => object_shared_create_child_a
         procedure :: create_child_b => object_shared_create_child_b
         procedure :: replace_child_b => object_shared_replace_child_b
@@ -129,6 +131,19 @@ module shared_mod
         end subroutine c_object_dtor
 
         ! ----------------------------------------
+        ! Function:  int get_id
+        ! Statement: f_function_native
+        function c_object_get_id(self) &
+                result(SHT_rv) &
+                bind(C, name="SHA_Object_get_id")
+            use iso_c_binding, only : C_INT
+            import :: SHA_SHROUD_capsule_data
+            implicit none
+            type(SHA_SHROUD_capsule_data), intent(IN) :: self
+            integer(C_INT) :: SHT_rv
+        end function c_object_get_id
+
+        ! ----------------------------------------
         ! Function:  std::shared_ptr<Object> *createChildA
         ! Statement: c_function_smartptr<shadow>*_capptr
         function c_object_create_child_a(self, SHT_rv) &
@@ -191,6 +206,19 @@ module shared_mod
             type(SHA_SHROUD_capsule_data), intent(IN) :: self
             type(SHA_SHROUD_capsule_data), intent(INOUT) :: child
         end subroutine c_object_replace_child_b
+
+        ! ----------------------------------------
+        ! Function:  int get_id
+        ! Statement: f_function_native
+        function c_object_shared_get_id(self) &
+                result(SHT_rv) &
+                bind(C, name="SHA_Object_shared_get_id")
+            use iso_c_binding, only : C_INT
+            import :: SHA_SHROUD_capsule_data
+            implicit none
+            type(SHA_SHROUD_capsule_data), intent(IN) :: self
+            integer(C_INT) :: SHT_rv
+        end function c_object_shared_get_id
 
         ! ----------------------------------------
         ! Function:  std::shared_ptr<Object> *createChildA
@@ -349,6 +377,30 @@ module shared_mod
             type(SHA_SHROUD_capsule_data), intent(IN) :: self
             integer(C_LONG) :: SHT_rv
         end function c_object_weak_use_count
+
+        ! ----------------------------------------
+        ! Function:  void reset_id
+        ! Statement: f_subroutine
+        subroutine reset_id() &
+                bind(C, name="SHA_reset_id")
+            implicit none
+        end subroutine reset_id
+
+        ! ----------------------------------------
+        ! Function:  int use_count
+        ! Statement: f_function_native
+        ! ----------------------------------------
+        ! Argument:  const std::shared_ptr<Object> *f
+        ! Statement: f_in_smartptr<shadow>*
+        function c_use_count(f) &
+                result(SHT_rv) &
+                bind(C, name="SHA_use_count")
+            use iso_c_binding, only : C_INT
+            import :: SHA_SHROUD_capsule_data
+            implicit none
+            type(SHA_SHROUD_capsule_data), intent(IN) :: f
+            integer(C_INT) :: SHT_rv
+        end function c_use_count
     end interface
 
     interface object
@@ -388,6 +440,19 @@ contains
         call c_object_dtor(obj%cxxmem)
         ! splicer end class.Object.method.dtor
     end subroutine object_dtor
+
+    ! ----------------------------------------
+    ! Function:  int get_id
+    ! Statement: f_function_native
+    function object_get_id(obj) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        class(object), intent(INOUT) :: obj
+        integer(C_INT) :: SHT_rv
+        ! splicer begin class.Object.method.get_id
+        SHT_rv = c_object_get_id(obj%cxxmem)
+        ! splicer end class.Object.method.get_id
+    end function object_get_id
 
     ! ----------------------------------------
     ! Function:  std::shared_ptr<Object> *createChildA
@@ -454,6 +519,19 @@ contains
 
     ! splicer begin class.Object.additional_functions
     ! splicer end class.Object.additional_functions
+
+    ! ----------------------------------------
+    ! Function:  int get_id
+    ! Statement: f_function_native
+    function object_shared_get_id(obj) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        class(object_shared), intent(INOUT) :: obj
+        integer(C_INT) :: SHT_rv
+        ! splicer begin class.Object_shared.method.get_id
+        SHT_rv = c_object_shared_get_id(obj%cxxmem)
+        ! splicer end class.Object_shared.method.get_id
+    end function object_shared_get_id
 
     ! ----------------------------------------
     ! Function:  std::shared_ptr<Object> *createChildA
@@ -614,6 +692,34 @@ contains
 
     ! splicer begin class.Object_weak.additional_functions
     ! splicer end class.Object_weak.additional_functions
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void reset_id
+    ! Statement: f_subroutine
+    subroutine reset_id()
+        ! splicer begin function.reset_id
+        call c_reset_id()
+        ! splicer end function.reset_id
+    end subroutine reset_id
+#endif
+
+    ! ----------------------------------------
+    ! Function:  int use_count
+    ! Statement: f_function_native
+    ! ----------------------------------------
+    ! Argument:  const std::shared_ptr<Object> *f
+    ! Statement: f_in_smartptr<shadow>*
+    function use_count(f) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        type(object_shared), intent(IN) :: f
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.use_count
+        SHT_rv = c_use_count(f%cxxmem)
+        ! splicer end function.use_count
+    end function use_count
 
     ! Statement: f_operator_assignment_shadow_swig
     ! Object = Object

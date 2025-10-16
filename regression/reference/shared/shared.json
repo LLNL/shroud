@@ -399,7 +399,130 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "createChildA  2 ****************************************",
+                        "<FUNCTION>": "get_id  2 ****************************************",
+                        "ast": {
+                            "declarator": {
+                                "name": "get_id",
+                                "params": [],
+                                "typemap_name": "int"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "decl": "int get_id(void)",
+                        "declgen": "int get_id(void)",
+                        "name": "get_id",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->get_id(\t)",
+                                        "C_name": "SHA_Object_get_id",
+                                        "C_prototype": "SHA_Object * self",
+                                        "C_return_type": "int",
+                                        "c_const": "",
+                                        "c_get_value": "",
+                                        "c_type": "int",
+                                        "c_var": "SHC_rv",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHC_rv",
+                                        "cxx_type": "int",
+                                        "cxx_var": "SHC_rv",
+                                        "i_name_function": "c_object_get_id",
+                                        "idtor": "0",
+                                        "stmt_name": "c_function_native",
+                                        "typemap_name": "int"
+                                    },
+                                    "meta": {
+                                        "abstract": "native",
+                                        "intent": "function"
+                                    },
+                                    "stmt": "c_function_native"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->get_id(\t)",
+                                        "C_name": "SHA_Object_get_id",
+                                        "C_prototype": "SHA_Object * self",
+                                        "C_return_type": "int",
+                                        "F_arg_c_call": "obj%cxxmem",
+                                        "F_arguments": "obj",
+                                        "F_subprogram": "function",
+                                        "c_const": "",
+                                        "c_get_value": "",
+                                        "c_type": "int",
+                                        "c_var": "SHC_rv",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHC_rv",
+                                        "cxx_type": "int",
+                                        "cxx_var": "SHC_rv",
+                                        "f_call_function": "c_object_get_id",
+                                        "f_kind": "C_INT",
+                                        "f_module_name": "iso_c_binding",
+                                        "f_result_clause": "\fresult(SHT_rv)",
+                                        "f_type": "integer(C_INT)",
+                                        "f_var": "SHT_rv",
+                                        "fc_var": "SHT_rv",
+                                        "i_arguments": "self",
+                                        "i_kind": "C_INT",
+                                        "i_module_name": "iso_c_binding",
+                                        "i_name_function": "c_object_get_id",
+                                        "i_result_clause": "\fresult(SHT_rv)",
+                                        "i_subprogram": "function",
+                                        "i_type": "integer(C_INT)",
+                                        "i_var": "SHT_rv",
+                                        "idtor": "0",
+                                        "stmt_name": "f_function_native",
+                                        "typemap_name": "int"
+                                    },
+                                    "meta": {
+                                        "abstract": "native",
+                                        "intent": "function"
+                                    },
+                                    "stmt": "f_function_native"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "abstract": "native",
+                                        "intent": "function"
+                                    }
+                                }
+                            }
+                        },
+                        "zz_fmtdict": {
+                            "C_name_api": "get_id",
+                            "F_name_api": "get_id",
+                            "F_name_function": "get_id",
+                            "F_name_generic": "get_id",
+                            "F_name_impl": "object_get_id",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
+                            "function_name": "get_id"
+                        }
+                    },
+                    {
+                        "<FUNCTION>": "createChildA  3 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "createChildA",
@@ -580,7 +703,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "createChildB  3 ****************************************",
+                        "<FUNCTION>": "createChildB  4 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "createChildB",
@@ -761,7 +884,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "replaceChildB  4 ****************************************",
+                        "<FUNCTION>": "replaceChildB  5 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "replaceChildB",
@@ -1018,8 +1141,132 @@
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "createChildA  5 ****************************************",
+                        "<FUNCTION>": "get_id  6 ****************************************",
                         "_orig_node_index": 2,
+                        "ast": {
+                            "declarator": {
+                                "name": "get_id",
+                                "params": [],
+                                "typemap_name": "int"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "decl": "int get_id(void)",
+                        "declgen": "int get_id(void)",
+                        "name": "get_id",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "(*SH_this)->get_id(\t)",
+                                        "C_name": "SHA_Object_shared_get_id",
+                                        "C_prototype": "SHA_Object_shared * self",
+                                        "C_return_type": "int",
+                                        "c_const": "",
+                                        "c_get_value": "",
+                                        "c_type": "int",
+                                        "c_var": "SHC_rv",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHC_rv",
+                                        "cxx_type": "int",
+                                        "cxx_var": "SHC_rv",
+                                        "i_name_function": "c_object_shared_get_id",
+                                        "idtor": "0",
+                                        "stmt_name": "c_function_native",
+                                        "typemap_name": "int"
+                                    },
+                                    "meta": {
+                                        "abstract": "native",
+                                        "intent": "function"
+                                    },
+                                    "stmt": "c_function_native"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "(*SH_this)->get_id(\t)",
+                                        "C_name": "SHA_Object_shared_get_id",
+                                        "C_prototype": "SHA_Object_shared * self",
+                                        "C_return_type": "int",
+                                        "F_arg_c_call": "obj%cxxmem",
+                                        "F_arguments": "obj",
+                                        "F_subprogram": "function",
+                                        "c_const": "",
+                                        "c_get_value": "",
+                                        "c_type": "int",
+                                        "c_var": "SHC_rv",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHC_rv",
+                                        "cxx_type": "int",
+                                        "cxx_var": "SHC_rv",
+                                        "f_call_function": "c_object_shared_get_id",
+                                        "f_kind": "C_INT",
+                                        "f_module_name": "iso_c_binding",
+                                        "f_result_clause": "\fresult(SHT_rv)",
+                                        "f_type": "integer(C_INT)",
+                                        "f_var": "SHT_rv",
+                                        "fc_var": "SHT_rv",
+                                        "i_arguments": "self",
+                                        "i_kind": "C_INT",
+                                        "i_module_name": "iso_c_binding",
+                                        "i_name_function": "c_object_shared_get_id",
+                                        "i_result_clause": "\fresult(SHT_rv)",
+                                        "i_subprogram": "function",
+                                        "i_type": "integer(C_INT)",
+                                        "i_var": "SHT_rv",
+                                        "idtor": "0",
+                                        "stmt_name": "f_function_native",
+                                        "typemap_name": "int"
+                                    },
+                                    "meta": {
+                                        "abstract": "native",
+                                        "intent": "function"
+                                    },
+                                    "stmt": "f_function_native"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "abstract": "native",
+                                        "intent": "function"
+                                    }
+                                }
+                            }
+                        },
+                        "zz_fmtdict": {
+                            "C_name_api": "get_id",
+                            "F_name_api": "get_id",
+                            "F_name_function": "get_id",
+                            "F_name_generic": "get_id",
+                            "F_name_impl": "object_shared_get_id",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
+                            "function_name": "get_id"
+                        }
+                    },
+                    {
+                        "<FUNCTION>": "createChildA  7 ****************************************",
+                        "_orig_node_index": 3,
                         "ast": {
                             "declarator": {
                                 "name": "createChildA",
@@ -1200,8 +1447,8 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "createChildB  6 ****************************************",
-                        "_orig_node_index": 3,
+                        "<FUNCTION>": "createChildB  8 ****************************************",
+                        "_orig_node_index": 4,
                         "ast": {
                             "declarator": {
                                 "name": "createChildB",
@@ -1382,8 +1629,8 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "replaceChildB  7 ****************************************",
-                        "_orig_node_index": 4,
+                        "<FUNCTION>": "replaceChildB  9 ****************************************",
+                        "_orig_node_index": 5,
                         "ast": {
                             "declarator": {
                                 "name": "replaceChildB",
@@ -1597,7 +1844,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "ctor  8 ****************************************",
+                        "<FUNCTION>": "ctor  10 ****************************************",
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -1755,7 +2002,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "dtor  9 ****************************************",
+                        "<FUNCTION>": "dtor  11 ****************************************",
                         "ast": {
                             "declarator": {
                                 "default_name": "dtor",
@@ -1851,7 +2098,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "use_count  10 ****************************************",
+                        "<FUNCTION>": "use_count  12 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "use_count",
@@ -2017,7 +2264,7 @@
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "ctor  11 ****************************************",
+                        "<FUNCTION>": "ctor  13 ****************************************",
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -2175,7 +2422,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "dtor  12 ****************************************",
+                        "<FUNCTION>": "dtor  14 ****************************************",
                         "ast": {
                             "declarator": {
                                 "default_name": "dtor",
@@ -2271,7 +2518,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "use_count  13 ****************************************",
+                        "<FUNCTION>": "use_count  15 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "use_count",
@@ -2440,6 +2687,337 @@
         ],
         "cxx_header": [
             "shared.hpp"
+        ],
+        "functions": [
+            {
+                "<FUNCTION>": "reset_id  16 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "reset_id",
+                        "params": [],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void reset_id(void)",
+                "declgen": "void reset_id(void)",
+                "name": "reset_id",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "reset_id(\t)",
+                                "C_name": "SHA_reset_id",
+                                "C_prototype": "void",
+                                "C_return_type": "void",
+                                "i_name_function": "c_reset_id",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "reset_id(\t)",
+                                "C_name": "SHA_reset_id",
+                                "C_prototype": "void",
+                                "C_return_type": "void",
+                                "F_arguments": "",
+                                "F_subprogram": "subroutine",
+                                "f_call_function": "c_reset_id",
+                                "i_arguments": "",
+                                "i_name_function": "reset_id",
+                                "i_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "reset_id",
+                    "F_name_api": "reset_id",
+                    "F_name_function": "reset_id",
+                    "F_name_generic": "reset_id",
+                    "F_name_impl": "reset_id",
+                    "c_arglist": [
+                        "c_var"
+                    ],
+                    "f_arglist": [
+                        "f_var"
+                    ],
+                    "function_name": "reset_id"
+                }
+            },
+            {
+                "<FUNCTION>": "use_count  17 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "use_count",
+                        "params": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "name": "f",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "std::shared_ptr<Object>"
+                                },
+                                "specifier": [
+                                    "std::shared_ptr"
+                                ],
+                                "template_arguments": [
+                                    {
+                                        "declarator": {
+                                            "typemap_name": "Object"
+                                        },
+                                        "specifier": [
+                                            "Object"
+                                        ],
+                                        "typemap_name": "Object"
+                                    }
+                                ],
+                                "typemap_name": "std::shared_ptr<Object>"
+                            }
+                        ],
+                        "typemap_name": "int"
+                    },
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int use_count(const std::shared_ptr<Object> *f)",
+                "declgen": "int use_count(const std::shared_ptr<Object> *f)",
+                "name": "use_count",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "use_count(\tSHC_f_cxx)",
+                                "C_call_list": "SHC_f_cxx",
+                                "C_name": "SHA_use_count",
+                                "C_prototype": "SHA_Object_shared *f",
+                                "C_return_type": "int",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "i_name_function": "c_use_count",
+                                "idtor": "0",
+                                "stmt_name": "c_function_native",
+                                "typemap_name": "int"
+                            },
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "function"
+                            },
+                            "stmt": "c_function_native"
+                        },
+                        "f": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const SHA_Object *",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_local_cxx": "SHC_f_cxx",
+                                "c_member": "->",
+                                "c_type": "SHA_Object_shared",
+                                "c_var": "f",
+                                "cxx_T": "Object",
+                                "cxx_abstract_decl": "const Object *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<std::shared_ptr<Object> *>\t(SHC_f_cxx)",
+                                "cxx_type": "std::shared_ptr<Object>",
+                                "cxx_var": "SHC_f_cxx",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "idtor": "0",
+                                "stmt_name": "c_in_smartptr<shadow>*",
+                                "targs": [
+                                    {
+                                        "cxx_T": "Object",
+                                        "typemap_name": "Object"
+                                    }
+                                ],
+                                "typemap_name": "std::shared_ptr<Object>"
+                            },
+                            "meta": {
+                                "abstract": "smartptr<shadow>*",
+                                "intent": "in"
+                            },
+                            "stmt": "c_in_smartptr<shadow>*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "use_count(\tSHC_f_cxx)",
+                                "C_call_list": "SHC_f_cxx",
+                                "C_name": "SHA_use_count",
+                                "C_prototype": "SHA_Object_shared *f",
+                                "C_return_type": "int",
+                                "F_arg_c_call": "f%cxxmem",
+                                "F_arguments": "f",
+                                "F_subprogram": "function",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "f_call_function": "c_use_count",
+                                "f_kind": "C_INT",
+                                "f_module_name": "iso_c_binding",
+                                "f_result_clause": "\fresult(SHT_rv)",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_arguments": "f",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
+                                "i_name_function": "c_use_count",
+                                "i_result_clause": "\fresult(SHT_rv)",
+                                "i_subprogram": "function",
+                                "i_type": "integer(C_INT)",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "stmt_name": "f_function_native",
+                                "typemap_name": "int"
+                            },
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_native"
+                        },
+                        "f": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const SHA_Object *",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_local_cxx": "SHC_f_cxx",
+                                "c_member": "->",
+                                "c_type": "SHA_Object_shared",
+                                "c_var": "f",
+                                "cxx_T": "Object",
+                                "cxx_abstract_decl": "const Object *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<std::shared_ptr<Object> *>\t(SHC_f_cxx)",
+                                "cxx_type": "std::shared_ptr<Object>",
+                                "cxx_var": "SHC_f_cxx",
+                                "f_capsule_data_type": "SHA_SHROUD_capsule_data",
+                                "f_derived_type": "object_shared",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "object_shared",
+                                "f_module_name": "shared_mod",
+                                "f_type": "type(object_shared)",
+                                "f_var": "f",
+                                "fc_var": "f",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "object_shared",
+                                "i_module_name": "shared_mod",
+                                "i_type": "type(SHA_SHROUD_capsule_data)",
+                                "i_var": "f",
+                                "idtor": "0",
+                                "stmt_name": "f_in_smartptr<shadow>*",
+                                "targs": [
+                                    {
+                                        "cxx_T": "Object",
+                                        "typemap_name": "Object"
+                                    }
+                                ],
+                                "typemap_name": "std::shared_ptr<Object>"
+                            },
+                            "meta": {
+                                "abstract": "smartptr<shadow>*",
+                                "intent": "in"
+                            },
+                            "stmt": "f_in_smartptr<shadow>*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "function"
+                            }
+                        },
+                        "f": {
+                            "meta": {
+                                "abstract": "smartptr<shadow>*",
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "use_count",
+                    "F_name_api": "use_count",
+                    "F_name_function": "use_count",
+                    "F_name_generic": "use_count",
+                    "F_name_impl": "use_count",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "f"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "f"
+                    ],
+                    "function_name": "use_count"
+                }
+            }
         ],
         "language": "cxx",
         "scope_file": [

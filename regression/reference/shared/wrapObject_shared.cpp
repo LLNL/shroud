@@ -21,6 +21,19 @@ extern "C" {
 // splicer end class.Object.C_definitions
 
 // ----------------------------------------
+// Function:  int get_id
+// Statement: c_function_native
+int SHA_Object_shared_get_id(SHA_Object_shared * self)
+{
+    std::shared_ptr<Object> *SH_this =
+        static_cast<std::shared_ptr<Object> *>(self->addr);
+    // splicer begin class.Object.method.get_id
+    int SHC_rv = (*SH_this)->get_id();
+    return SHC_rv;
+    // splicer end class.Object.method.get_id
+}
+
+// ----------------------------------------
 // Function:  std::shared_ptr<Object> *createChildA
 // Statement: c_function_smartptr<shadow>*_capptr
 SHA_Object_shared * SHA_Object_shared_createChildA(

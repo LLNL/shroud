@@ -21,7 +21,9 @@ VPATH = \
     $(top)/regression/run/fruit
 
 C_OBJS = \
+    shared.o \
     utilShared.o \
+    wrapShared.o \
     wrapObject.o \
     wrapObject_shared.o \
     wrapObject_weak.o
@@ -36,7 +38,9 @@ F_OBJS = \
 include $(top)/regression/run/defaults.mk
 
 #shared.o : shared.cpp shared.hpp
+shared.o : shared.cpp shared.hpp
 utilShared.o : utilShared.cpp shared.hpp typesShared.h
+wrapShared.o : wrapShared.cpp shared.hpp
 wrapObject.o : wrapObject.cpp shared.hpp wrapObject.h
 wrapObject_shared.o : wrapObject_shared.cpp shared.hpp wrapObject_shared.h
 wrapObject_weak.o : wrapObject_weak.cpp shared.hpp wrapObject_weak.h

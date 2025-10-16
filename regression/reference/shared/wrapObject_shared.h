@@ -26,6 +26,8 @@ extern "C" {
 // splicer begin class.Object.C_declarations
 // splicer end class.Object.C_declarations
 
+int SHA_Object_shared_get_id(SHA_Object_shared * self);
+
 SHA_Object_shared * SHA_Object_shared_createChildA(
     SHA_Object_shared * self, SHA_Object_shared *SHC_rv);
 
