@@ -52,7 +52,7 @@
                         "f_interface_import": "SHA_SHROUD_capsule_data",
                         "function_suffix": "_Object_shared",
                         "idtor": "2",
-                        "move_alias_code": "// Transferred ownership from a variable that's about to be lost.\n// Move-assign and delete the transient data.\n// LHS and RHS should both 'own' their shared pointers.\nstd::shared_ptr<Object> *lhs =\t static_cast<std::shared_ptr<Object>*>\t(lhs_capsule->addr);\nstd::shared_ptr<Object> *rhs =\t static_cast<std::shared_ptr<Object>*>\t(rhs_capsule->addr);\n*lhs = *rhs;\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = 2;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;\nif (rhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nSHA_SHROUD_memory_destructor(\t(SHA_SHROUD_capsule_data *) rhs_capsule);\n-}"
+                        "move_alias_code": "// Transferred ownership from a variable that's about to be lost.\n// Move-assign and delete the transient data.\n// LHS and RHS should both 'own' their shared pointers.\nstd::shared_ptr<Object> *lhs =\t static_cast<std::shared_ptr<Object>*>\t(lhs_capsule->addr);\nstd::shared_ptr<Object> *rhs =\t static_cast<std::shared_ptr<Object>*>\t(rhs_capsule->addr);\n*lhs = *rhs;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;\nif (rhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nSHA_SHROUD_memory_destructor(\t(SHA_SHROUD_capsule_data *) rhs_capsule);\n-}"
                     },
                     "stmt": "f_operator_assignment_shadow_swig_shared"
                 },
@@ -108,7 +108,7 @@
                         "f_interface_import": "SHA_SHROUD_capsule_data",
                         "function_suffix": "_Object_weak",
                         "idtor": "3",
-                        "move_alias_code": "// Transferred ownership from a variable that's about to be lost.\n// Move-assign and delete the transient data.\n// LHS and RHS should both 'own' their shared pointers.\nstd::weak_ptr<Object> *lhs =\t static_cast<std::weak_ptr<Object>*>\t(lhs_capsule->addr);\nstd::weak_ptr<Object> *rhs =\t static_cast<std::weak_ptr<Object>*>\t(rhs_capsule->addr);\n*lhs = *rhs;\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = 3;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;\nif (rhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nSHA_SHROUD_memory_destructor(\t(SHA_SHROUD_capsule_data *) rhs_capsule);\n-}"
+                        "move_alias_code": "// Transferred ownership from a variable that's about to be lost.\n// Move-assign and delete the transient data.\n// LHS and RHS should both 'own' their shared pointers.\nstd::weak_ptr<Object> *lhs =\t static_cast<std::weak_ptr<Object>*>\t(lhs_capsule->addr);\nstd::weak_ptr<Object> *rhs =\t static_cast<std::weak_ptr<Object>*>\t(rhs_capsule->addr);\n*lhs = *rhs;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;\nif (rhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nSHA_SHROUD_memory_destructor(\t(SHA_SHROUD_capsule_data *) rhs_capsule);\n-}"
                     },
                     "stmt": "f_operator_assignment_shadow_swig_weak"
                 },
@@ -136,7 +136,7 @@
                         "f_interface_import": "SHA_SHROUD_capsule_data",
                         "function_suffix": "_Object_shared",
                         "idtor": "3",
-                        "move_alias_code": "// Transferred ownership from a variable that's about to be lost.\n// Move-assign and delete the transient data.\n// LHS and RHS should both 'own' their shared pointers.\nstd::weak_ptr<Object> *lhs =\t static_cast<std::weak_ptr<Object>*>\t(lhs_capsule->addr);\nstd::shared_ptr<Object> *rhs =\t static_cast<std::shared_ptr<Object>*>\t(rhs_capsule->addr);\n*lhs = *rhs;\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = 3;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;\nif (rhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nSHA_SHROUD_memory_destructor(\t(SHA_SHROUD_capsule_data *) rhs_capsule);\n-}"
+                        "move_alias_code": "// Transferred ownership from a variable that's about to be lost.\n// Move-assign and delete the transient data.\n// LHS and RHS should both 'own' their shared pointers.\nstd::weak_ptr<Object> *lhs =\t static_cast<std::weak_ptr<Object>*>\t(lhs_capsule->addr);\nstd::shared_ptr<Object> *rhs =\t static_cast<std::shared_ptr<Object>*>\t(rhs_capsule->addr);\n*lhs = *rhs;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;\nif (rhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nSHA_SHROUD_memory_destructor(\t(SHA_SHROUD_capsule_data *) rhs_capsule);\n-}"
                     },
                     "stmt": "f_operator_assignment_shadow_swig_weak"
                 },

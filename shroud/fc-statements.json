@@ -4525,8 +4525,6 @@
                 "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs}*>\t(lhs_capsule->addr);",
                 "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs}*>\t(rhs_capsule->addr);",
                 "*lhs = *rhs;",
-                "lhs_capsule->addr = rhs_capsule->addr;",
-                "lhs_capsule->idtor = {idtor};",
                 "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
                 "if (rhs_capsule->cmemflags & SWIG_MEM_OWN) {{+",
                 "{C_memory_dtor_function}(\t({c_capsule_data_type} *) rhs_capsule);",

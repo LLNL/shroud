@@ -181,8 +181,6 @@ void SHA_Object_shared_assign_Object_shared(SHA_Object_shared *lhs_capsule,
         std::shared_ptr<Object> *rhs =
             static_cast<std::shared_ptr<Object>*>(rhs_capsule->addr);
         *lhs = *rhs;
-        lhs_capsule->addr = rhs_capsule->addr;
-        lhs_capsule->idtor = 2;
         lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
         if (rhs_capsule->cmemflags & SWIG_MEM_OWN) {
             SHA_SHROUD_memory_destructor(
@@ -304,8 +302,6 @@ void SHA_Object_shared_assign_Object(SHA_Object_shared *lhs_capsule,
             std::weak_ptr<Object> *rhs =
                 static_cast<std::weak_ptr<Object>*>(rhs_capsule->addr);
             *lhs = *rhs;
-            lhs_capsule->addr = rhs_capsule->addr;
-            lhs_capsule->idtor = 3;
             lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
             if (rhs_capsule->cmemflags & SWIG_MEM_OWN) {
                 SHA_SHROUD_memory_destructor(
@@ -363,8 +359,6 @@ void SHA_Object_shared_assign_Object(SHA_Object_shared *lhs_capsule,
                 static_cast<std::shared_ptr<Object>*>
                 (rhs_capsule->addr);
             *lhs = *rhs;
-            lhs_capsule->addr = rhs_capsule->addr;
-            lhs_capsule->idtor = 3;
             lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
             if (rhs_capsule->cmemflags & SWIG_MEM_OWN) {
                 SHA_SHROUD_memory_destructor(
