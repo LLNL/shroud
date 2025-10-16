@@ -20,6 +20,7 @@ contains
     call test_object_assign_null
     call test_object_move_alias
     call test_object_copy_alias
+    call test_weak_from_shared
   contains
     subroutine test_object_assign
       type(object_weak) objectPtr
@@ -121,6 +122,25 @@ contains
       call assert_equals(0, int(objectPtr2%use_count()), "objectPtr use_count D")
       
     end subroutine test_object_copy_alias
+
+    subroutine test_weak_from_shared
+      type(object_shared) sp1
+      type(object_weak) wp1
+      
+      call set_case_name("test_shared_from_object")
+      call reset_id
+
+      sp1 = object_shared()
+      call assert_equals(1, int(sp1%use_count()), "use_count A")
+      call assert_equals(1, use_count(sp1), "use_count after assignment")
+      call assert_equals(0, sp1%get_id(), "objectPtr id A")
+
+      wp1 = sp1
+      call assert_equals(1, int(sp1%use_count()), "use_count B")
+      call assert_equals(1, int(wp1%use_count()), "use_count B")
+
+    end subroutine test_weak_from_shared
+    
   end subroutine test_weak
 
 end module test_weak_mod
