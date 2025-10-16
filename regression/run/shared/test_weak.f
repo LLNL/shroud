@@ -6,6 +6,8 @@
 ! Test Fortran API generated from shared.yaml.
 ! Test std::weak_ptr assignment.
 !
+! A object_weak may not have an object associated with it.
+! In that case the use_count will be 0.
 
 module test_weak_mod
   use fruit
@@ -27,9 +29,11 @@ contains
 
       objectPtr = object_weak()
       call assert_true(objectPtr%associated(), "objectPtr associated after ctor")
+      call assert_equals(0, int(objectPtr%use_count()), "objectPtr use_count A")
 
       call objectPtr%dtor
       call assert_false(objectPtr%associated(), "objectPtr associated after dtor")
+      call assert_equals(0, use_count(objectPtr), "objectPtr use_count B")
       
     end subroutine test_object_assign
 
@@ -41,15 +45,20 @@ contains
       
       objectPtr = object_weak()
       call assert_true(objectPtr%associated(), "objectPtr associated after ctor")
+      call assert_equals(0, use_count(objectPtr), "objectPtr use_count A")
+      call assert_equals(0, int(objectPtr%use_count()), "objectPtr use_count A")
       
       ! Create an alias.
       objectPtr2 = objectPtr 
       call assert_true(objectPtr2%associated(), "objectPtr2 associated after assignment")
+      call assert_equals(0, int(objectPtr2%use_count()), "objectPtr2 use_count B")
       ! The weak_ptr are different, but the Object pointers are the same.
       !call assert_true(objectPtr .eq. objectPtr2, "Aliased object")
       
       ! A no-op since the same.
       objectPtr = objectPtr2
+      call assert_equals(0, int(objectPtr%use_count()), "objectPtr use_count C")
+      call assert_equals(0, int(objectPtr2%use_count()), "objectPtr use_count D")
 
       ! reference count will be decremented.
       ! alias will not be deleted, it has no ownership.
@@ -85,9 +94,11 @@ contains
       
       objectPtr = object_weak()
       call assert_true(objectPtr%associated(), "objectPtr associated after ctor")
+      call assert_equals(0, int(objectPtr%use_count()), "objectPtr use_count A")
       
       objectPtr = object_weak()
       call assert_true(objectPtr%associated(), "objectPtr associated after second ctor")
+      call assert_equals(0, int(objectPtr%use_count()), "objectPtr use_count B")
       
     end subroutine test_object_move_alias
     
@@ -99,11 +110,15 @@ contains
       
       objectPtr = object_weak()
       call assert_true(objectPtr%associated(), "objectPtr associated after ctor")
+      call assert_equals(0, int(objectPtr%use_count()), "objectPtr use_count A")
       
       objectPtr2 = object_weak()
       call assert_true(objectPtr%associated(), "objectPtr associated after second ctor")
+      call assert_equals(0, int(objectPtr2%use_count()), "objectPtr use_count B")
       
       objectPtr = objectPtr2
+      call assert_equals(0, int(objectPtr%use_count()), "objectPtr use_count C")
+      call assert_equals(0, int(objectPtr2%use_count()), "objectPtr use_count D")
       
     end subroutine test_object_copy_alias
   end subroutine test_weak

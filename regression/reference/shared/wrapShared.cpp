@@ -34,14 +34,30 @@ void SHA_reset_id(void)
 // ----------------------------------------
 // Argument:  const std::shared_ptr<Object> *f
 // Statement: c_in_smartptr<shadow>*
-int SHA_use_count(SHA_Object_shared *f)
+int SHA_use_count_0(SHA_Object_shared *f)
 {
-    // splicer begin function.use_count
+    // splicer begin function.use_count_0
     const std::shared_ptr<Object> *SHC_f_cxx =
         static_cast<const std::shared_ptr<Object> *>(f->addr);
     int SHC_rv = use_count(SHC_f_cxx);
     return SHC_rv;
-    // splicer end function.use_count
+    // splicer end function.use_count_0
+}
+
+// ----------------------------------------
+// Function:  int use_count
+// Statement: c_function_native
+// ----------------------------------------
+// Argument:  const std::weak_ptr<Object> *f
+// Statement: c_in_smartptr<shadow>*
+int SHA_use_count_1(SHA_Object_weak *f)
+{
+    // splicer begin function.use_count_1
+    const std::weak_ptr<Object> *SHC_f_cxx =
+        static_cast<const std::weak_ptr<Object> *>(f->addr);
+    int SHC_rv = use_count(SHC_f_cxx);
+    return SHC_rv;
+    // splicer end function.use_count_1
 }
 
 }  // extern "C"

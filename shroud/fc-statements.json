@@ -4649,6 +4649,9 @@
         "comments": [
             "Create a std::shared_pointer on the heap to hold the pointer to the instance."
         ],
+        "notes": [
+            "Uses std::make_shared."
+        ],
         "c_call": [
             "std::shared_ptr<{baseclass.cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{baseclass.cxx_type}>;",
             "*{c_local_shared} = \t std::make_shared<{baseclass.cxx_type}>({C_call_list});",
@@ -4668,9 +4671,31 @@
         ]
     },
     {
+        "name": "c_mixin_make-weak",
+        "comments": [
+            "Create a std::weak_pointer on the heap to hold the pointer to the instance."
+        ],
+        "notes": [
+            "This does not use C_call_list since it does not create an Object.",
+            "It only creates the weak_ptr."
+        ],
+        "c_call": [
+            "{cxx_type} *{cxx_var} =\t new {cxx_type};",
+            "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});",
+            "{c_var}->idtor = {idtor};",
+            "{c_var}->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;"
+        ],
+        "impl_header": [
+            "<memory>"
+        ],
+        "owner": "shared",
+        "helper": [
+            "capsule_swigmemflags"
+        ]
+    },
+    {
         "alias": [
-            "f_ctor_shadow_capsule_shared",
-            "f_ctor_shadow_capsule_weak"
+            "f_ctor_shadow_capsule_shared"
         ],
         "mixin": [
             "f_mixin_call-cwrapper-as-subroutine",
@@ -4678,6 +4703,18 @@
             "c_mixin_shadow",
             "c_mixin_destructor_new-shadow-shared",
             "c_mixin_make-shared"
+        ]
+    },
+    {
+        "alias": [
+            "f_ctor_shadow_capsule_weak"
+        ],
+        "mixin": [
+            "f_mixin_call-cwrapper-as-subroutine",
+            "f_mixin_capsule_function_shadow",
+            "c_mixin_shadow",
+            "c_mixin_destructor_new-shadow-shared",
+            "c_mixin_make-weak"
         ]
     },
     {

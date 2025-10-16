@@ -2357,7 +2357,6 @@
                                         "F_subprogram": "function",
                                         "c_abstract_decl": "SHA_Object_weak *",
                                         "c_const": "",
-                                        "c_local_shared": "SHC_rv_shared",
                                         "c_type": "SHA_Object_weak",
                                         "c_var": "SHC_rv",
                                         "cxx_abstract_decl": "std::weak_ptr<Object>",
@@ -2778,6 +2777,7 @@
             },
             {
                 "<FUNCTION>": "use_count  17 ****************************************",
+                "_overloaded": true,
                 "ast": {
                     "declarator": {
                         "name": "use_count",
@@ -2831,7 +2831,7 @@
                             "fmtdict": {
                                 "C_call_function": "use_count(\tSHC_f_cxx)",
                                 "C_call_list": "SHC_f_cxx",
-                                "C_name": "SHA_use_count",
+                                "C_name": "SHA_use_count_0",
                                 "C_prototype": "SHA_Object_shared *f",
                                 "C_return_type": "int",
                                 "c_const": "",
@@ -2843,7 +2843,7 @@
                                 "cxx_nonconst_ptr": "&SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "i_name_function": "c_use_count",
+                                "i_name_function": "c_use_count_0",
                                 "idtor": "0",
                                 "stmt_name": "c_function_native",
                                 "typemap_name": "int"
@@ -2897,7 +2897,7 @@
                             "fmtdict": {
                                 "C_call_function": "use_count(\tSHC_f_cxx)",
                                 "C_call_list": "SHC_f_cxx",
-                                "C_name": "SHA_use_count",
+                                "C_name": "SHA_use_count_0",
                                 "C_prototype": "SHA_Object_shared *f",
                                 "C_return_type": "int",
                                 "F_arg_c_call": "f%cxxmem",
@@ -2912,7 +2912,7 @@
                                 "cxx_nonconst_ptr": "&SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
-                                "f_call_function": "c_use_count",
+                                "f_call_function": "c_use_count_0",
                                 "f_kind": "C_INT",
                                 "f_module_name": "iso_c_binding",
                                 "f_result_clause": "\fresult(SHT_rv)",
@@ -2922,7 +2922,7 @@
                                 "i_arguments": "f",
                                 "i_kind": "C_INT",
                                 "i_module_name": "iso_c_binding",
-                                "i_name_function": "c_use_count",
+                                "i_name_function": "c_use_count_0",
                                 "i_result_clause": "\fresult(SHT_rv)",
                                 "i_subprogram": "function",
                                 "i_type": "integer(C_INT)",
@@ -3004,9 +3004,9 @@
                 "zz_fmtdict": {
                     "C_name_api": "use_count",
                     "F_name_api": "use_count",
-                    "F_name_function": "use_count",
+                    "F_name_function": "use_count_0",
                     "F_name_generic": "use_count",
-                    "F_name_impl": "use_count",
+                    "F_name_impl": "use_count_0",
                     "c_arglist": [
                         "SHC_rv",
                         "f"
@@ -3015,7 +3015,252 @@
                         "SHT_rv",
                         "f"
                     ],
-                    "function_name": "use_count"
+                    "function_name": "use_count",
+                    "function_suffix": "_0"
+                }
+            },
+            {
+                "<FUNCTION>": "use_count  18 ****************************************",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "use_count",
+                        "params": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "name": "f",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "std::weak_ptr<Object>"
+                                },
+                                "specifier": [
+                                    "std::weak_ptr"
+                                ],
+                                "template_arguments": [
+                                    {
+                                        "declarator": {
+                                            "typemap_name": "Object"
+                                        },
+                                        "specifier": [
+                                            "Object"
+                                        ],
+                                        "typemap_name": "Object"
+                                    }
+                                ],
+                                "typemap_name": "std::weak_ptr<Object>"
+                            }
+                        ],
+                        "typemap_name": "int"
+                    },
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int use_count(const std::weak_ptr<Object> *f)",
+                "declgen": "int use_count(const std::weak_ptr<Object> *f)",
+                "name": "use_count",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "use_count(\tSHC_f_cxx)",
+                                "C_call_list": "SHC_f_cxx",
+                                "C_name": "SHA_use_count_1",
+                                "C_prototype": "SHA_Object_weak *f",
+                                "C_return_type": "int",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "i_name_function": "c_use_count_1",
+                                "idtor": "0",
+                                "stmt_name": "c_function_native",
+                                "typemap_name": "int"
+                            },
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "function"
+                            },
+                            "stmt": "c_function_native"
+                        },
+                        "f": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const SHA_Object *",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_local_cxx": "SHC_f_cxx",
+                                "c_member": "->",
+                                "c_type": "SHA_Object_weak",
+                                "c_var": "f",
+                                "cxx_T": "Object",
+                                "cxx_abstract_decl": "const Object *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<std::weak_ptr<Object> *>\t(SHC_f_cxx)",
+                                "cxx_type": "std::weak_ptr<Object>",
+                                "cxx_var": "SHC_f_cxx",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "idtor": "0",
+                                "stmt_name": "c_in_smartptr<shadow>*",
+                                "targs": [
+                                    {
+                                        "cxx_T": "Object",
+                                        "typemap_name": "Object"
+                                    }
+                                ],
+                                "typemap_name": "std::weak_ptr<Object>"
+                            },
+                            "meta": {
+                                "abstract": "smartptr<shadow>*",
+                                "intent": "in"
+                            },
+                            "stmt": "c_in_smartptr<shadow>*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "use_count(\tSHC_f_cxx)",
+                                "C_call_list": "SHC_f_cxx",
+                                "C_name": "SHA_use_count_1",
+                                "C_prototype": "SHA_Object_weak *f",
+                                "C_return_type": "int",
+                                "F_arg_c_call": "f%cxxmem",
+                                "F_arguments": "f",
+                                "F_subprogram": "function",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "f_call_function": "c_use_count_1",
+                                "f_kind": "C_INT",
+                                "f_module_name": "iso_c_binding",
+                                "f_result_clause": "\fresult(SHT_rv)",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_arguments": "f",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
+                                "i_name_function": "c_use_count_1",
+                                "i_result_clause": "\fresult(SHT_rv)",
+                                "i_subprogram": "function",
+                                "i_type": "integer(C_INT)",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "stmt_name": "f_function_native",
+                                "typemap_name": "int"
+                            },
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_native"
+                        },
+                        "f": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const SHA_Object *",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_local_cxx": "SHC_f_cxx",
+                                "c_member": "->",
+                                "c_type": "SHA_Object_weak",
+                                "c_var": "f",
+                                "cxx_T": "Object",
+                                "cxx_abstract_decl": "const Object *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<std::weak_ptr<Object> *>\t(SHC_f_cxx)",
+                                "cxx_type": "std::weak_ptr<Object>",
+                                "cxx_var": "SHC_f_cxx",
+                                "f_capsule_data_type": "SHA_SHROUD_capsule_data",
+                                "f_derived_type": "object_weak",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "object_weak",
+                                "f_module_name": "shared_mod",
+                                "f_type": "type(object_weak)",
+                                "f_var": "f",
+                                "fc_var": "f",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "object_weak",
+                                "i_module_name": "shared_mod",
+                                "i_type": "type(SHA_SHROUD_capsule_data)",
+                                "i_var": "f",
+                                "idtor": "0",
+                                "stmt_name": "f_in_smartptr<shadow>*",
+                                "targs": [
+                                    {
+                                        "cxx_T": "Object",
+                                        "typemap_name": "Object"
+                                    }
+                                ],
+                                "typemap_name": "std::weak_ptr<Object>"
+                            },
+                            "meta": {
+                                "abstract": "smartptr<shadow>*",
+                                "intent": "in"
+                            },
+                            "stmt": "f_in_smartptr<shadow>*"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "function"
+                            }
+                        },
+                        "f": {
+                            "meta": {
+                                "abstract": "smartptr<shadow>*",
+                                "intent": "in"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "use_count",
+                    "F_name_api": "use_count",
+                    "F_name_function": "use_count_1",
+                    "F_name_generic": "use_count",
+                    "F_name_impl": "use_count_1",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "f"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "f"
+                    ],
+                    "function_name": "use_count",
+                    "function_suffix": "_1"
                 }
             }
         ],

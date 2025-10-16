@@ -45,6 +45,8 @@ C c void reset_id(void)
 C f void reset_id(void)
 C c int use_count(const std::shared_ptr<Object> *f)
 C f int use_count(const std::shared_ptr<Object> *f)
+C c int use_count(const std::weak_ptr<Object> *f)
+C f int use_count(const std::weak_ptr<Object> *f)
 Close wrapShared.h
 Close wrapShared.cpp
 class Object
@@ -91,8 +93,10 @@ C-interface f ~Object(void)
 C-interface f long use_count(void)
 Fortran void reset_id(void)
 Fortran int use_count(const std::shared_ptr<Object> *f)
+Fortran int use_count(const std::weak_ptr<Object> *f)
 C-interface f void reset_id(void)
 C-interface f int use_count(const std::shared_ptr<Object> *f)
+C-interface f int use_count(const std::weak_ptr<Object> *f)
 Close wrapfshared.f
 Close utilShared.cpp
 Close typesShared.h

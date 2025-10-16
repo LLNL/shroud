@@ -392,15 +392,31 @@ module shared_mod
         ! ----------------------------------------
         ! Argument:  const std::shared_ptr<Object> *f
         ! Statement: f_in_smartptr<shadow>*
-        function c_use_count(f) &
+        function c_use_count_0(f) &
                 result(SHT_rv) &
-                bind(C, name="SHA_use_count")
+                bind(C, name="SHA_use_count_0")
             use iso_c_binding, only : C_INT
             import :: SHA_SHROUD_capsule_data
             implicit none
             type(SHA_SHROUD_capsule_data), intent(IN) :: f
             integer(C_INT) :: SHT_rv
-        end function c_use_count
+        end function c_use_count_0
+
+        ! ----------------------------------------
+        ! Function:  int use_count
+        ! Statement: f_function_native
+        ! ----------------------------------------
+        ! Argument:  const std::weak_ptr<Object> *f
+        ! Statement: f_in_smartptr<shadow>*
+        function c_use_count_1(f) &
+                result(SHT_rv) &
+                bind(C, name="SHA_use_count_1")
+            use iso_c_binding, only : C_INT
+            import :: SHA_SHROUD_capsule_data
+            implicit none
+            type(SHA_SHROUD_capsule_data), intent(IN) :: f
+            integer(C_INT) :: SHT_rv
+        end function c_use_count_1
     end interface
 
     interface object
@@ -414,6 +430,11 @@ module shared_mod
     interface object_weak
         module procedure object_weak_ctor
     end interface object_weak
+
+    interface use_count
+        module procedure use_count_0
+        module procedure use_count_1
+    end interface use_count
 
     ! splicer begin additional_declarations
     ! splicer end additional_declarations
@@ -711,15 +732,31 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::shared_ptr<Object> *f
     ! Statement: f_in_smartptr<shadow>*
-    function use_count(f) &
+    function use_count_0(f) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         type(object_shared), intent(IN) :: f
         integer(C_INT) :: SHT_rv
-        ! splicer begin function.use_count
-        SHT_rv = c_use_count(f%cxxmem)
-        ! splicer end function.use_count
-    end function use_count
+        ! splicer begin function.use_count_0
+        SHT_rv = c_use_count_0(f%cxxmem)
+        ! splicer end function.use_count_0
+    end function use_count_0
+
+    ! ----------------------------------------
+    ! Function:  int use_count
+    ! Statement: f_function_native
+    ! ----------------------------------------
+    ! Argument:  const std::weak_ptr<Object> *f
+    ! Statement: f_in_smartptr<shadow>*
+    function use_count_1(f) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        type(object_weak), intent(IN) :: f
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.use_count_1
+        SHT_rv = c_use_count_1(f%cxxmem)
+        ! splicer end function.use_count_1
+    end function use_count_1
 
     ! Statement: f_operator_assignment_shadow_swig
     ! Object = Object

@@ -37,3 +37,4 @@ declarations:
 
 - decl: void reset_id(void)
 - decl: int use_count(const std::shared_ptr<Object> *f)
+- decl: int use_count(const std::weak_ptr<Object> *f)

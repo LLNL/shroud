@@ -26,3 +26,9 @@ int use_count(const std::shared_ptr<Object> *f)
     if (!f) return 0;
     return f->use_count();
 }
+
+int use_count(const std::weak_ptr<Object> *f)
+{
+    if (!f) return 0;
+    return f->use_count();
+}

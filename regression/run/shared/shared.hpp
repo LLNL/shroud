@@ -54,5 +54,6 @@ private:
 
 void reset_id(void);
 int use_count(const std::shared_ptr<Object> *f);
+int use_count(const std::weak_ptr<Object> *f);
 
 #endif // SHARED_HPP

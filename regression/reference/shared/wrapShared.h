@@ -28,7 +28,9 @@ extern "C" {
 
 void SHA_reset_id(void);
 
-int SHA_use_count(SHA_Object_shared *f);
+int SHA_use_count_0(SHA_Object_shared *f);
+
+int SHA_use_count_1(SHA_Object_weak *f);
 
 #ifdef __cplusplus
 }
