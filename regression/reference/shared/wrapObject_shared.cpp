@@ -127,7 +127,7 @@ SHA_Object_shared * SHA_Object_shared_ctor(SHA_Object_shared *SHC_rv)
         new std::shared_ptr<Object>;
     *SHC_rv_shared =  std::make_shared<Object>();
     SHC_rv->addr = static_cast<void *>(SHC_rv_shared);
-    SHC_rv->idtor = 6;
+    SHC_rv->idtor = 5;
     SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     return SHC_rv;
     // splicer end class.Object.method.ctor
@@ -143,7 +143,7 @@ void SHA_Object_shared_ctor_bufferify(SHA_Object_shared *SHC_rv)
         new std::shared_ptr<Object>;
     *SHC_rv_shared =  std::make_shared<Object>();
     SHC_rv->addr = static_cast<void *>(SHC_rv_shared);
-    SHC_rv->idtor = 6;
+    SHC_rv->idtor = 5;
     SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     // splicer end class.Object.method.ctor_bufferify
 }

@@ -30,7 +30,7 @@ SHA_Object_weak * SHA_Object_weak_ctor(SHA_Object_weak *SHC_rv)
         new std::shared_ptr<Object>;
     *SHC_rv_shared =  std::make_shared<Object>();
     SHC_rv->addr = static_cast<void *>(SHC_rv_shared);
-    SHC_rv->idtor = 8;
+    SHC_rv->idtor = 7;
     SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     return SHC_rv;
     // splicer end class.Object.method.ctor
@@ -44,7 +44,7 @@ void SHA_Object_weak_ctor_bufferify(SHA_Object_weak *SHC_rv)
     // splicer begin class.Object.method.ctor_bufferify
     std::weak_ptr<Object> *SHCXX_rv = new std::weak_ptr<Object>;
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv->idtor = 8;
+    SHC_rv->idtor = 7;
     SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     // splicer end class.Object.method.ctor_bufferify
 }

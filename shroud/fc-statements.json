@@ -4375,14 +4375,6 @@
             "{copy_alias_code}",
             "-}}",
             "-}}"
-        ],
-        "destructor_name": "assignment-{cxx_type_lhs}",
-        "destructor_header": [
-            "<memory>"
-        ],
-        "destructor": [
-            "auto cxx_ptr =\t reinterpret_cast<{cxx_type_lhs}*>(ptr);",
-            "delete cxx_ptr;"
         ]
     },
     {
@@ -4394,13 +4386,13 @@
             "capture_code": [
                 "// Capture pointer from RHS, clear 'moving' flag.",
                 "lhs_capsule->addr = rhs_capsule->addr;",
-                "lhs_capsule->idtor = {idtor};",
+                "lhs_capsule->idtor = rhs_capsule->idtor;",
                 "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;"
             ],
             "alias_code": [
                 "// Aliasing another class; clear ownership or copy smart pointer.",
                 "lhs_capsule->addr = rhs_capsule->addr;",
-                "lhs_capsule->idtor = {idtor};",
+                "lhs_capsule->idtor = rhs_capsule->idtor;",
                 "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_OWN;"
             ],
             "destroy_code": [
@@ -4419,7 +4411,7 @@
                 "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);",
                 "-}}",
                 "lhs_capsule->addr = rhs_capsule->addr;",
-                "lhs_capsule->idtor = {idtor};",
+                "lhs_capsule->idtor = rhs_capsule->idtor;",
                 "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;"
             ],
             "copy_alias_code": [
@@ -4428,7 +4420,7 @@
                 "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);",
                 "-}}",
                 "lhs_capsule->addr = rhs_capsule->addr;",
-                "lhs_capsule->idtor = {idtor};",
+                "lhs_capsule->idtor = rhs_capsule->idtor;",
                 "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;"
             ]
         }
@@ -4487,7 +4479,15 @@
                 "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs}*>\t(rhs_capsule->addr);",
                 "lhs->reset(rhs);"
             ]
-        }
+        },
+        "destructor_name": "assignment-{cxx_type_lhs}",
+        "destructor_header": [
+            "<memory>"
+        ],
+        "destructor": [
+            "auto cxx_ptr =\t reinterpret_cast<{cxx_type_lhs}*>(ptr);",
+            "delete cxx_ptr;"
+        ]
     },
     {
         "name": "c_mixin_operator_assignment_fmtdict_weak",
@@ -4500,7 +4500,7 @@
             "capture_code": [
                 "// Capture pointer from RHS, clear 'moving' flag.",
                 "lhs_capsule->addr = rhs_capsule->addr;",
-                "lhs_capsule->idtor = {idtor};",
+                "lhs_capsule->idtor = rhs_capsule->idtor;",
                 "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;"
             ],
             "alias_code": [
@@ -4537,7 +4537,15 @@
                 "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs}*>\t(rhs_capsule->addr);",
                 "*lhs = *rhs;"
             ]
-        }
+        },
+        "destructor_name": "assignment-{cxx_type_lhs}",
+        "destructor_header": [
+            "<memory>"
+        ],
+        "destructor": [
+            "auto cxx_ptr =\t reinterpret_cast<{cxx_type_lhs}*>(ptr);",
+            "delete cxx_ptr;"
+        ]
     },
     {
         "name": "f_mixin_operator_assignment_swig",

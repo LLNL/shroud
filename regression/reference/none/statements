@@ -5141,12 +5141,12 @@ c_mixin_operator_assignment_fmtdict:
     capture_code:
     - // Capture pointer from RHS, clear 'moving' flag.
     - lhs_capsule->addr = rhs_capsule->addr;
-    - lhs_capsule->idtor = {idtor};
+    - lhs_capsule->idtor = rhs_capsule->idtor;
     - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
     alias_code:
     - // Aliasing another class; clear ownership or copy smart pointer.
     - lhs_capsule->addr = rhs_capsule->addr;
-    - lhs_capsule->idtor = {idtor};
+    - lhs_capsule->idtor = rhs_capsule->idtor;
     - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_OWN;
     destroy_code:
     - // Replace LHS with a null pointer.
@@ -5163,7 +5163,7 @@ c_mixin_operator_assignment_fmtdict:
     - "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);"
     - -}}
     - lhs_capsule->addr = rhs_capsule->addr;
-    - lhs_capsule->idtor = {idtor};
+    - lhs_capsule->idtor = rhs_capsule->idtor;
     - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
     copy_alias_code:
     - // RHS shouldn't be deleted, alias to LHS.
@@ -5171,7 +5171,7 @@ c_mixin_operator_assignment_fmtdict:
     - "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);"
     - -}}
     - lhs_capsule->addr = rhs_capsule->addr;
-    - lhs_capsule->idtor = {idtor};
+    - lhs_capsule->idtor = rhs_capsule->idtor;
     - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
   sphinx-end-before: c_mixin_operator_assignment_fmtdict
 c_mixin_operator_assignment_fmtdict_makeshared:
@@ -5221,6 +5221,12 @@ c_mixin_operator_assignment_fmtdict_makeshared:
     - "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs}*>\t(lhs_capsule->addr);"
     - "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs}*>\t(rhs_capsule->addr);"
     - lhs->reset(rhs);
+  destructor_header:
+  - <memory>
+  destructor_name: assignment-{cxx_type_lhs}
+  destructor:
+  - "auto cxx_ptr =\t reinterpret_cast<{cxx_type_lhs}*>(ptr);"
+  - delete cxx_ptr;
   sphinx-end-before: c_mixin_operator_assignment_fmtdict_makeshared
 c_mixin_operator_assignment_fmtdict_weak:
   sphinx-start-after: c_mixin_operator_assignment_fmtdict_weak
@@ -5230,7 +5236,7 @@ c_mixin_operator_assignment_fmtdict_weak:
     capture_code:
     - // Capture pointer from RHS, clear 'moving' flag.
     - lhs_capsule->addr = rhs_capsule->addr;
-    - lhs_capsule->idtor = {idtor};
+    - lhs_capsule->idtor = rhs_capsule->idtor;
     - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
     alias_code:
     - // Aliasing another class; clear ownership or copy smart pointer.
@@ -5262,6 +5268,12 @@ c_mixin_operator_assignment_fmtdict_weak:
     - "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs}*>\t(lhs_capsule->addr);"
     - "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs}*>\t(rhs_capsule->addr);"
     - '*lhs = *rhs;'
+  destructor_header:
+  - <memory>
+  destructor_name: assignment-{cxx_type_lhs}
+  destructor:
+  - "auto cxx_ptr =\t reinterpret_cast<{cxx_type_lhs}*>(ptr);"
+  - delete cxx_ptr;
   sphinx-end-before: c_mixin_operator_assignment_fmtdict_weak
 c_mixin_operator_assignment_swig:
   sphinx-start-after: c_mixin_operator_assignment_swig
@@ -5287,12 +5299,6 @@ c_mixin_operator_assignment_swig:
   - '{copy_alias_code}'
   - -}}
   - -}}
-  destructor_header:
-  - <memory>
-  destructor_name: assignment-{cxx_type_lhs}
-  destructor:
-  - "auto cxx_ptr =\t reinterpret_cast<{cxx_type_lhs}*>(ptr);"
-  - delete cxx_ptr;
   sphinx-end-before: c_mixin_operator_assignment_swig
 c_mixin_out_native**:
   sphinx-start-after: c_mixin_out_native**
@@ -19387,12 +19393,12 @@ f_operator_assignment_shadow_swig:
     capture_code:
     - // Capture pointer from RHS, clear 'moving' flag.
     - lhs_capsule->addr = rhs_capsule->addr;
-    - lhs_capsule->idtor = {idtor};
+    - lhs_capsule->idtor = rhs_capsule->idtor;
     - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
     alias_code:
     - // Aliasing another class; clear ownership or copy smart pointer.
     - lhs_capsule->addr = rhs_capsule->addr;
-    - lhs_capsule->idtor = {idtor};
+    - lhs_capsule->idtor = rhs_capsule->idtor;
     - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_OWN;
     destroy_code:
     - // Replace LHS with a null pointer.
@@ -19409,7 +19415,7 @@ f_operator_assignment_shadow_swig:
     - "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);"
     - -}}
     - lhs_capsule->addr = rhs_capsule->addr;
-    - lhs_capsule->idtor = {idtor};
+    - lhs_capsule->idtor = rhs_capsule->idtor;
     - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
     copy_alias_code:
     - // RHS shouldn't be deleted, alias to LHS.
@@ -19417,14 +19423,8 @@ f_operator_assignment_shadow_swig:
     - "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);"
     - -}}
     - lhs_capsule->addr = rhs_capsule->addr;
-    - lhs_capsule->idtor = {idtor};
+    - lhs_capsule->idtor = rhs_capsule->idtor;
     - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
-  destructor_header:
-  - <memory>
-  destructor_name: assignment-{cxx_type_lhs}
-  destructor:
-  - "auto cxx_ptr =\t reinterpret_cast<{cxx_type_lhs}*>(ptr);"
-  - delete cxx_ptr;
   sphinx-end-before: f_operator_assignment_shadow_swig
 f_operator_assignment_shadow_swig_makeshared:
   sphinx-start-after: f_operator_assignment_shadow_swig_makeshared
@@ -19566,7 +19566,7 @@ f_operator_assignment_shadow_swig_shared:
     capture_code:
     - // Capture pointer from RHS, clear 'moving' flag.
     - lhs_capsule->addr = rhs_capsule->addr;
-    - lhs_capsule->idtor = {idtor};
+    - lhs_capsule->idtor = rhs_capsule->idtor;
     - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
     alias_code:
     - // Aliasing another class; clear ownership or copy smart pointer.
@@ -19651,7 +19651,7 @@ f_operator_assignment_shadow_swig_weak:
     capture_code:
     - // Capture pointer from RHS, clear 'moving' flag.
     - lhs_capsule->addr = rhs_capsule->addr;
-    - lhs_capsule->idtor = {idtor};
+    - lhs_capsule->idtor = rhs_capsule->idtor;
     - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
     alias_code:
     - // Aliasing another class; clear ownership or copy smart pointer.
