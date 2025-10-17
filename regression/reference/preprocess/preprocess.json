@@ -18,7 +18,9 @@
                         "f_derived_type_lhs": "user1",
                         "f_derived_type_rhs": "user1",
                         "f_interface_import": "PRE_SHROUD_capsule_data",
-                        "function_suffix": "_User1"
+                        "function_suffix": "_User1",
+                        "typemap_lhs": "User1",
+                        "typemap_rhs": "User1"
                     },
                     "stmt": "f_operator_assignment_shadow_basic"
                 },
@@ -40,7 +42,9 @@
                         "f_derived_type_lhs": "user2",
                         "f_derived_type_rhs": "user2",
                         "f_interface_import": "PRE_SHROUD_capsule_data",
-                        "function_suffix": "_User2"
+                        "function_suffix": "_User2",
+                        "typemap_lhs": "User2",
+                        "typemap_rhs": "User2"
                     },
                     "stmt": "f_operator_assignment_shadow_basic"
                 },

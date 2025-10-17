@@ -731,6 +731,8 @@ def fmt_assignment(library):
         fmt = bind.set_bind_fmtdict(fmt_lhs)
         iface_import = {}
 
+        fmt.typemap_lhs = lhs.typemap
+        fmt.typemap_rhs = rhs.typemap
         fmt.cxx_type_lhs = lhs.typemap.cxx_type
         fmt.cxx_type_rhs = rhs.typemap.cxx_type
         fmt.c_type_lhs = lhs.typemap.c_type

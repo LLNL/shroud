@@ -18,7 +18,9 @@
                         "f_derived_type_lhs": "ex_class1",
                         "f_derived_type_rhs": "ex_class1",
                         "f_interface_import": "AA_SHROUD_capsule_data",
-                        "function_suffix": "_ExClass1"
+                        "function_suffix": "_ExClass1",
+                        "typemap_lhs": "example::nested::ExClass1",
+                        "typemap_rhs": "example::nested::ExClass1"
                     },
                     "stmt": "f_operator_assignment_shadow_basic"
                 },
@@ -40,7 +42,9 @@
                         "f_derived_type_lhs": "ex_class2",
                         "f_derived_type_rhs": "ex_class2",
                         "f_interface_import": "AA_SHROUD_capsule_data",
-                        "function_suffix": "_ExClass2"
+                        "function_suffix": "_ExClass2",
+                        "typemap_lhs": "example::nested::ExClass2",
+                        "typemap_rhs": "example::nested::ExClass2"
                     },
                     "stmt": "f_operator_assignment_shadow_basic"
                 },
@@ -62,7 +66,9 @@
                         "f_derived_type_lhs": "ex_class2_nested",
                         "f_derived_type_rhs": "ex_class2_nested",
                         "f_interface_import": "AA_SHROUD_capsule_data",
-                        "function_suffix": "_ExClass2Nested"
+                        "function_suffix": "_ExClass2Nested",
+                        "typemap_lhs": "example::nested::ExClass2::ExClass2Nested",
+                        "typemap_rhs": "example::nested::ExClass2::ExClass2Nested"
                     },
                     "stmt": "f_operator_assignment_shadow_basic"
                 },

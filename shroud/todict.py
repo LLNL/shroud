@@ -291,6 +291,10 @@ class ToDict(visitor.Visitor):
                 d[key] = self.visit(value)
             elif key == "typemap":
                 d["typemap_name"] = value.name # typemap.Typemap
+            elif key == "typemap_lhs":
+                d["typemap_lhs"] = value.name # typemap.Typemap
+            elif key == "typemap_rhs":
+                d["typemap_rhs"] = value.name # typemap.Typemap
             elif not key.startswith(skip):
                 d[key] = value
         return d

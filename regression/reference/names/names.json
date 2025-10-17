@@ -18,7 +18,9 @@
                         "f_derived_type_lhs": "names2",
                         "f_derived_type_rhs": "names2",
                         "f_interface_import": "TES_SHROUD_capsule_data",
-                        "function_suffix": "_Names2"
+                        "function_suffix": "_Names2",
+                        "typemap_lhs": "Names2",
+                        "typemap_rhs": "Names2"
                     },
                     "stmt": "f_operator_assignment_shadow_basic"
                 },
@@ -40,7 +42,9 @@
                         "f_derived_type_lhs": "Fstruct_as_class",
                         "f_derived_type_rhs": "Fstruct_as_class",
                         "f_interface_import": "TES_SHROUD_capsule_data",
-                        "function_suffix": "_Cstruct_as_class"
+                        "function_suffix": "_Cstruct_as_class",
+                        "typemap_lhs": "Cstruct_as_class",
+                        "typemap_rhs": "Cstruct_as_class"
                     },
                     "stmt": "f_operator_assignment_shadow_basic"
                 },
@@ -62,7 +66,9 @@
                         "f_derived_type_lhs": "Fstruct_as_subclass",
                         "f_derived_type_rhs": "Fstruct_as_subclass",
                         "f_interface_import": "TES_SHROUD_capsule_data",
-                        "function_suffix": "_Cstruct_as_subclass"
+                        "function_suffix": "_Cstruct_as_subclass",
+                        "typemap_lhs": "Cstruct_as_subclass",
+                        "typemap_rhs": "Cstruct_as_subclass"
                     },
                     "stmt": "f_operator_assignment_shadow_basic"
                 },
@@ -84,7 +90,9 @@
                         "f_derived_type_lhs": "FNames",
                         "f_derived_type_rhs": "FNames",
                         "f_interface_import": "TES_SHROUD_capsule_data",
-                        "function_suffix": "_Names"
+                        "function_suffix": "_Names",
+                        "typemap_lhs": "ns0::Names",
+                        "typemap_rhs": "ns0::Names"
                     },
                     "stmt": "f_operator_assignment_shadow_basic"
                 },
@@ -106,7 +114,9 @@
                         "f_derived_type_lhs": "impl_worker1",
                         "f_derived_type_rhs": "impl_worker1",
                         "f_interface_import": "TES_SHROUD_capsule_data",
-                        "function_suffix": "_ImplWorker1"
+                        "function_suffix": "_ImplWorker1",
+                        "typemap_lhs": "internal::ImplWorker1",
+                        "typemap_rhs": "internal::ImplWorker1"
                     },
                     "stmt": "f_operator_assignment_shadow_basic"
                 },
@@ -128,7 +138,9 @@
                         "f_derived_type_lhs": "class1",
                         "f_derived_type_rhs": "class1",
                         "f_interface_import": "TES_SHROUD_capsule_data",
-                        "function_suffix": "_Class1"
+                        "function_suffix": "_Class1",
+                        "typemap_lhs": "CAPI::Class1",
+                        "typemap_rhs": "CAPI::Class1"
                     },
                     "stmt": "f_operator_assignment_shadow_basic"
                 },

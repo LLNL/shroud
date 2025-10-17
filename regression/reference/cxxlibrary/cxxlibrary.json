@@ -18,7 +18,9 @@
                         "f_derived_type_lhs": "class1",
                         "f_derived_type_rhs": "class1",
                         "f_interface_import": "CXX_SHROUD_capsule_data",
-                        "function_suffix": "_Class1"
+                        "function_suffix": "_Class1",
+                        "typemap_lhs": "Class1",
+                        "typemap_rhs": "Class1"
                     },
                     "stmt": "f_operator_assignment_shadow_basic"
                 },

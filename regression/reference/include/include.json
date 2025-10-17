@@ -18,7 +18,9 @@
                         "f_derived_type_lhs": "class2",
                         "f_derived_type_rhs": "class2",
                         "f_interface_import": "LIB_SHROUD_capsule_data",
-                        "function_suffix": "_Class2"
+                        "function_suffix": "_Class2",
+                        "typemap_lhs": "Class2",
+                        "typemap_rhs": "Class2"
                     },
                     "stmt": "f_operator_assignment_shadow_basic"
                 },
@@ -40,7 +42,9 @@
                         "f_derived_type_lhs": "class1",
                         "f_derived_type_rhs": "class1",
                         "f_interface_import": "LIB_SHROUD_capsule_data",
-                        "function_suffix": "_Class1"
+                        "function_suffix": "_Class1",
+                        "typemap_lhs": "three::Class1",
+                        "typemap_rhs": "three::Class1"
                     },
                     "stmt": "f_operator_assignment_shadow_basic"
                 },
@@ -62,7 +66,9 @@
                         "f_derived_type_lhs": "class0",
                         "f_derived_type_rhs": "class0",
                         "f_interface_import": "LIB_SHROUD_capsule_data",
-                        "function_suffix": "_class0"
+                        "function_suffix": "_class0",
+                        "typemap_lhs": "outer1::class0",
+                        "typemap_rhs": "outer1::class0"
                     },
                     "stmt": "f_operator_assignment_shadow_basic"
                 },
@@ -84,7 +90,9 @@
                         "f_derived_type_lhs": "class0",
                         "f_derived_type_rhs": "class0",
                         "f_interface_import": "LIB_SHROUD_capsule_data",
-                        "function_suffix": "_class0"
+                        "function_suffix": "_class0",
+                        "typemap_lhs": "outer2::class0",
+                        "typemap_rhs": "outer2::class0"
                     },
                     "stmt": "f_operator_assignment_shadow_basic"
                 },

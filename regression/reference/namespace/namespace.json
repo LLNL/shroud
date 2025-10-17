@@ -18,7 +18,9 @@
                         "f_derived_type_lhs": "class_work",
                         "f_derived_type_rhs": "class_work",
                         "f_interface_import": "NS_SHROUD_capsule_data",
-                        "function_suffix": "_ClassWork"
+                        "function_suffix": "_ClassWork",
+                        "typemap_lhs": "nswork::ClassWork",
+                        "typemap_rhs": "nswork::ClassWork"
                     },
                     "stmt": "f_operator_assignment_shadow_basic"
                 },

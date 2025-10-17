@@ -18,7 +18,9 @@
                         "f_derived_type_lhs": "cstruct_as_class",
                         "f_derived_type_rhs": "cstruct_as_class",
                         "f_interface_import": "STR_SHROUD_capsule_data",
-                        "function_suffix": "_Cstruct_as_class"
+                        "function_suffix": "_Cstruct_as_class",
+                        "typemap_lhs": "Cstruct_as_class",
+                        "typemap_rhs": "Cstruct_as_class"
                     },
                     "stmt": "f_operator_assignment_shadow_basic"
                 },
@@ -40,7 +42,9 @@
                         "f_derived_type_lhs": "cstruct_as_subclass",
                         "f_derived_type_rhs": "cstruct_as_subclass",
                         "f_interface_import": "STR_SHROUD_capsule_data",
-                        "function_suffix": "_Cstruct_as_subclass"
+                        "function_suffix": "_Cstruct_as_subclass",
+                        "typemap_lhs": "Cstruct_as_subclass",
+                        "typemap_rhs": "Cstruct_as_subclass"
                     },
                     "stmt": "f_operator_assignment_shadow_basic"
                 },
@@ -62,7 +66,9 @@
                         "f_derived_type_lhs": "cstruct_as_class2",
                         "f_derived_type_rhs": "cstruct_as_class2",
                         "f_interface_import": "STR_SHROUD_capsule_data",
-                        "function_suffix": "_Cstruct_as_class2"
+                        "function_suffix": "_Cstruct_as_class2",
+                        "typemap_lhs": "Cstruct_as_class2",
+                        "typemap_rhs": "Cstruct_as_class2"
                     },
                     "stmt": "f_operator_assignment_shadow_basic"
                 },

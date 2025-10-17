@@ -18,7 +18,9 @@
                         "f_derived_type_lhs": "worker",
                         "f_derived_type_rhs": "worker",
                         "f_interface_import": "TEM_SHROUD_capsule_data",
-                        "function_suffix": "_Worker"
+                        "function_suffix": "_Worker",
+                        "typemap_lhs": "Worker",
+                        "typemap_rhs": "Worker"
                     },
                     "stmt": "f_operator_assignment_shadow_basic"
                 },
@@ -40,7 +42,9 @@
                         "f_derived_type_lhs": "impl_worker1",
                         "f_derived_type_rhs": "impl_worker1",
                         "f_interface_import": "TEM_SHROUD_capsule_data",
-                        "function_suffix": "_ImplWorker1"
+                        "function_suffix": "_ImplWorker1",
+                        "typemap_lhs": "internal::ImplWorker1",
+                        "typemap_rhs": "internal::ImplWorker1"
                     },
                     "stmt": "f_operator_assignment_shadow_basic"
                 },
@@ -62,7 +66,9 @@
                         "f_derived_type_lhs": "impl_worker2",
                         "f_derived_type_rhs": "impl_worker2",
                         "f_interface_import": "TEM_SHROUD_capsule_data",
-                        "function_suffix": "_ImplWorker2"
+                        "function_suffix": "_ImplWorker2",
+                        "typemap_lhs": "internal::ImplWorker2",
+                        "typemap_rhs": "internal::ImplWorker2"
                     },
                     "stmt": "f_operator_assignment_shadow_basic"
                 },

@@ -18,7 +18,9 @@
                         "f_derived_type_lhs": "ArrayWrapper",
                         "f_derived_type_rhs": "ArrayWrapper",
                         "f_interface_import": "ARR_SHROUD_capsule_data",
-                        "function_suffix": "_ArrayWrapper"
+                        "function_suffix": "_ArrayWrapper",
+                        "typemap_lhs": "ArrayWrapper",
+                        "typemap_rhs": "ArrayWrapper"
                     },
                     "stmt": "f_operator_assignment_shadow_basic"
                 },

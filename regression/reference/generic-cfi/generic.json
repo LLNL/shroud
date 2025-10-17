@@ -18,7 +18,9 @@
                         "f_derived_type_lhs": "struct_as_class",
                         "f_derived_type_rhs": "struct_as_class",
                         "f_interface_import": "GEN_SHROUD_capsule_data",
-                        "function_suffix": "_StructAsClass"
+                        "function_suffix": "_StructAsClass",
+                        "typemap_lhs": "StructAsClass",
+                        "typemap_rhs": "StructAsClass"
                     },
                     "stmt": "f_operator_assignment_shadow_basic"
                 },
