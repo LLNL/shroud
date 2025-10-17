@@ -72,6 +72,7 @@ ifeq ($(compiler),oneapi)
 CC = icx
 LOCAL_CFLAGS = -g -O0 -std=c99
 CLIBS = -lstdc++
+#CLIBS += -Wl,--verbose
 CXX = icpx
 LOCAL_CXXFLAGS = -g -O0 -std=c++11
 #LOCAL_CXXFLAGS += 
@@ -169,6 +170,13 @@ LOCAL_CXXFLAGS = -g -std=c++11
 FC = ftn
 # -e F preprocessor
 LOCAL_FFLAGS = -g -e F -f free
+# ftn-1077 ftn: This compilation contains OpenMP directives.
+#   -h omp is not active so the directives are ignored.
+LOCAL_FFLAGS += -M 1077
+# Enables support for automatic memory allocation for allocatable
+# variables and arrays that are on the left handside of intrinsic
+# assignment statements.
+#LOCAL_FFLAGS += -ew
 # test-fortran-pointers-cfi
 # forrtl: severe (194): Run-Time Check Failure.
 # The variable 'test_out_ptrs$ISCALAR$_276' is being used in 'main.f(177,10)' without being defined
