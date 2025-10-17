@@ -653,15 +653,16 @@ class GenFunctions(object):
                 clslist.append(cls)
                 self.process_class(cls, cls)
                 assign_operators.append(AssignOperator(cls, cls))
-                smart_ptrs = {}
-                # cls.smart_pointer is a dict from YAML file.
-                for smart in cls.smart_pointer:
-                    shared = self.share_class(cls, smart)
-                    clslist.append(shared)
-                    smart_ptrs[smart["type"]] = shared
-                self.add_smart_ptr_methods(smart_ptrs)
-                for shared in smart_ptrs.values():
-                    self.process_class(shared, shared)
+                if cls.smart_pointer:
+                    smart_ptrs = {}
+                    # cls.smart_pointer is a dict from YAML file.
+                    for smart in cls.smart_pointer:
+                        shared = self.share_class(cls, smart)
+                        clslist.append(shared)
+                        smart_ptrs[smart["type"]] = shared
+                    self.add_smart_ptr_methods(smart_ptrs)
+                    for shared in smart_ptrs.values():
+                        self.process_class(shared, shared)
                 
             self.cursor.pop_node(cls)
 

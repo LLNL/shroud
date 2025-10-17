@@ -21,6 +21,7 @@ VPATH = \
 
 C_OBJS = \
     forward.o \
+    utilforward.o \
     wrapforward.o \
     wrapClass2.o
 F_OBJS = \
