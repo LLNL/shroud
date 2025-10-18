@@ -465,6 +465,7 @@ class GenFunctions(object):
             orig_typemap.cxx_instantiation = {}
         for function in cls.functions:
             self.append_function_index(function)
+        assign_operators = self.current_namespace().assign_operators
         # Replace class with new class for each template instantiation.
         # targs -> ast.TemplateArgument
         for i, targs in enumerate(cls.template_arguments):
@@ -515,6 +516,7 @@ class GenFunctions(object):
 
             self.push_instantiate_scope(newcls, targs)
             self.process_class(newcls, newcls)
+            add_assign_operator(assign_operators, newcls, newcls)
             self.pop_instantiate_scope()
 
     def share_class(self, cls, smart):

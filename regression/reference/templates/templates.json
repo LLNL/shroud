@@ -25,6 +25,78 @@
                     "stmt": "f_operator_assignment_shadow_basic"
                 },
                 "name": "Worker = Worker"
+            },
+            {
+                "bind": {
+                    "fmtdict": {
+                        "C_name_api": "assign",
+                        "C_name_assign_api": "TEM_user_int_assign_user_int",
+                        "F_name_api": "assign",
+                        "F_name_assign_api": "user_int_assign_user_int",
+                        "c_type_lhs": "TEM_user_int",
+                        "c_type_rhs": "TEM_user_int",
+                        "cxx_type_lhs": "user<int>",
+                        "cxx_type_rhs": "user<int>",
+                        "f_capsule_data_type_lhs": "TEM_SHROUD_capsule_data",
+                        "f_capsule_data_type_rhs": "TEM_SHROUD_capsule_data",
+                        "f_derived_type_lhs": "user_int",
+                        "f_derived_type_rhs": "user_int",
+                        "f_interface_import": "TEM_SHROUD_capsule_data",
+                        "function_suffix": "_user_int",
+                        "typemap_lhs": "user_int",
+                        "typemap_rhs": "user_int"
+                    },
+                    "stmt": "f_operator_assignment_shadow_basic"
+                },
+                "name": "user_int = user_int"
+            },
+            {
+                "bind": {
+                    "fmtdict": {
+                        "C_name_api": "assign",
+                        "C_name_assign_api": "TEM_structAsClass_int_assign_structAsClass_int",
+                        "F_name_api": "assign",
+                        "F_name_assign_api": "struct_as_class_int_assign_structAsClass_int",
+                        "c_type_lhs": "TEM_structAsClass_int",
+                        "c_type_rhs": "TEM_structAsClass_int",
+                        "cxx_type_lhs": "structAsClass<int>",
+                        "cxx_type_rhs": "structAsClass<int>",
+                        "f_capsule_data_type_lhs": "TEM_SHROUD_capsule_data",
+                        "f_capsule_data_type_rhs": "TEM_SHROUD_capsule_data",
+                        "f_derived_type_lhs": "struct_as_class_int",
+                        "f_derived_type_rhs": "struct_as_class_int",
+                        "f_interface_import": "TEM_SHROUD_capsule_data",
+                        "function_suffix": "_structAsClass_int",
+                        "typemap_lhs": "structAsClass_int",
+                        "typemap_rhs": "structAsClass_int"
+                    },
+                    "stmt": "f_operator_assignment_shadow_basic"
+                },
+                "name": "structAsClass_int = structAsClass_int"
+            },
+            {
+                "bind": {
+                    "fmtdict": {
+                        "C_name_api": "assign",
+                        "C_name_assign_api": "TEM_structAsClass_double_assign_structAsClass_double",
+                        "F_name_api": "assign",
+                        "F_name_assign_api": "struct_as_class_double_assign_structAsClass_double",
+                        "c_type_lhs": "TEM_structAsClass_double",
+                        "c_type_rhs": "TEM_structAsClass_double",
+                        "cxx_type_lhs": "structAsClass<double>",
+                        "cxx_type_rhs": "structAsClass<double>",
+                        "f_capsule_data_type_lhs": "TEM_SHROUD_capsule_data",
+                        "f_capsule_data_type_rhs": "TEM_SHROUD_capsule_data",
+                        "f_derived_type_lhs": "struct_as_class_double",
+                        "f_derived_type_rhs": "struct_as_class_double",
+                        "f_interface_import": "TEM_SHROUD_capsule_data",
+                        "function_suffix": "_structAsClass_double",
+                        "typemap_lhs": "structAsClass_double",
+                        "typemap_rhs": "structAsClass_double"
+                    },
+                    "stmt": "f_operator_assignment_shadow_basic"
+                },
+                "name": "structAsClass_double = structAsClass_double"
             }
         ],
         "class_map": [
@@ -4092,6 +4164,56 @@
         "namespaces": [
             {
                 "<NAMESPACE>": "std ****************************************",
+                "assign_operators": [
+                    {
+                        "bind": {
+                            "fmtdict": {
+                                "C_name_api": "assign",
+                                "C_name_assign_api": "TEM_vector_int_assign_vector_int",
+                                "F_name_api": "assign",
+                                "F_name_assign_api": "vector_int_assign_vector_int",
+                                "c_type_lhs": "TEM_vector_int",
+                                "c_type_rhs": "TEM_vector_int",
+                                "cxx_type_lhs": "std::vector<int>",
+                                "cxx_type_rhs": "std::vector<int>",
+                                "f_capsule_data_type_lhs": "TEM_SHROUD_capsule_data",
+                                "f_capsule_data_type_rhs": "TEM_SHROUD_capsule_data",
+                                "f_derived_type_lhs": "vector_int",
+                                "f_derived_type_rhs": "vector_int",
+                                "f_interface_import": "TEM_SHROUD_capsule_data",
+                                "function_suffix": "_vector_int",
+                                "typemap_lhs": "std::vector_int",
+                                "typemap_rhs": "std::vector_int"
+                            },
+                            "stmt": "f_operator_assignment_shadow_basic"
+                        },
+                        "name": "std::vector_int = std::vector_int"
+                    },
+                    {
+                        "bind": {
+                            "fmtdict": {
+                                "C_name_api": "assign",
+                                "C_name_assign_api": "TEM_vector_double_assign_vector_double",
+                                "F_name_api": "assign",
+                                "F_name_assign_api": "vector_double_assign_vector_double",
+                                "c_type_lhs": "TEM_vector_double",
+                                "c_type_rhs": "TEM_vector_double",
+                                "cxx_type_lhs": "std::vector<double>",
+                                "cxx_type_rhs": "std::vector<double>",
+                                "f_capsule_data_type_lhs": "TEM_SHROUD_capsule_data",
+                                "f_capsule_data_type_rhs": "TEM_SHROUD_capsule_data",
+                                "f_derived_type_lhs": "vector_double",
+                                "f_derived_type_rhs": "vector_double",
+                                "f_interface_import": "TEM_SHROUD_capsule_data",
+                                "function_suffix": "_vector_double",
+                                "typemap_lhs": "std::vector_double",
+                                "typemap_rhs": "std::vector_double"
+                            },
+                            "stmt": "f_operator_assignment_shadow_basic"
+                        },
+                        "name": "std::vector_double = std::vector_double"
+                    }
+                ],
                 "classes": [
                     {
                         "<CLASS>": "vector ****************************************",

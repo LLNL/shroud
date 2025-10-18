@@ -30,6 +30,54 @@
                 "bind": {
                     "fmtdict": {
                         "C_name_api": "assign",
+                        "C_name_assign_api": "TES_twoTs_0_assign_twoTs_0",
+                        "F_name_api": "assign",
+                        "F_name_assign_api": "two_ts_0_assign_twoTs_0",
+                        "c_type_lhs": "TES_twoTs_0",
+                        "c_type_rhs": "TES_twoTs_0",
+                        "cxx_type_lhs": "twoTs<int, long>",
+                        "cxx_type_rhs": "twoTs<int, long>",
+                        "f_capsule_data_type_lhs": "TES_SHROUD_capsule_data",
+                        "f_capsule_data_type_rhs": "TES_SHROUD_capsule_data",
+                        "f_derived_type_lhs": "two_ts_0",
+                        "f_derived_type_rhs": "two_ts_0",
+                        "f_interface_import": "TES_SHROUD_capsule_data",
+                        "function_suffix": "_twoTs_0",
+                        "typemap_lhs": "twoTs_0",
+                        "typemap_rhs": "twoTs_0"
+                    },
+                    "stmt": "f_operator_assignment_shadow_basic"
+                },
+                "name": "twoTs_0 = twoTs_0"
+            },
+            {
+                "bind": {
+                    "fmtdict": {
+                        "C_name_api": "assign",
+                        "C_name_assign_api": "TES_twoTs_instantiation4_assign_twoTs_instantiation4_instantiation4",
+                        "F_name_api": "assign",
+                        "F_name_assign_api": "two_ts_instantiation4_assign_twoTs_instantiation4_instantiation4",
+                        "c_type_lhs": "TES_twoTs_instantiation4",
+                        "c_type_rhs": "TES_twoTs_instantiation4",
+                        "cxx_type_lhs": "twoTs<float, double>",
+                        "cxx_type_rhs": "twoTs<float, double>",
+                        "f_capsule_data_type_lhs": "TES_SHROUD_capsule_data",
+                        "f_capsule_data_type_rhs": "TES_SHROUD_capsule_data",
+                        "f_derived_type_lhs": "two_ts_instantiation4",
+                        "f_derived_type_rhs": "two_ts_instantiation4",
+                        "f_interface_import": "TES_SHROUD_capsule_data",
+                        "function_suffix": "_twoTs_instantiation4",
+                        "typemap_lhs": "twoTs_instantiation4",
+                        "typemap_rhs": "twoTs_instantiation4"
+                    },
+                    "stmt": "f_operator_assignment_shadow_basic"
+                },
+                "name": "twoTs_instantiation4 = twoTs_instantiation4"
+            },
+            {
+                "bind": {
+                    "fmtdict": {
+                        "C_name_api": "assign",
                         "C_name_assign_api": "TES_Cstruct_as_class_assign_Cstruct_as_class",
                         "F_name_api": "assign",
                         "F_name_assign_api": "cstruct_as_class_assign_Cstruct_as_class",
@@ -6786,6 +6834,104 @@
             },
             {
                 "<NAMESPACE>": "std ****************************************",
+                "assign_operators": [
+                    {
+                        "bind": {
+                            "fmtdict": {
+                                "C_name_api": "assign",
+                                "C_name_assign_api": "TES_std_Vvv1_assign_Vvv1",
+                                "F_name_api": "assign",
+                                "F_name_assign_api": "vvv1_assign_Vvv1",
+                                "c_type_lhs": "TES_std_Vvv1",
+                                "c_type_rhs": "TES_std_Vvv1",
+                                "cxx_type_lhs": "std::vector<int>",
+                                "cxx_type_rhs": "std::vector<int>",
+                                "f_capsule_data_type_lhs": "TES_SHROUD_capsule_data",
+                                "f_capsule_data_type_rhs": "TES_SHROUD_capsule_data",
+                                "f_derived_type_lhs": "FFvvv1",
+                                "f_derived_type_rhs": "FFvvv1",
+                                "f_interface_import": "TES_SHROUD_capsule_data",
+                                "function_suffix": "_Vvv1",
+                                "typemap_lhs": "std::Vvv1",
+                                "typemap_rhs": "std::Vvv1"
+                            },
+                            "stmt": "f_operator_assignment_shadow_basic"
+                        },
+                        "name": "std::Vvv1 = std::Vvv1"
+                    },
+                    {
+                        "bind": {
+                            "fmtdict": {
+                                "C_name_api": "assign",
+                                "C_name_assign_api": "TES_std_vector_double_assign_vector_double",
+                                "F_name_api": "assign",
+                                "F_name_assign_api": "vector_double_assign_vector_double",
+                                "c_type_lhs": "TES_std_vector_double",
+                                "c_type_rhs": "TES_std_vector_double",
+                                "cxx_type_lhs": "std::vector<double>",
+                                "cxx_type_rhs": "std::vector<double>",
+                                "f_capsule_data_type_lhs": "TES_SHROUD_capsule_data",
+                                "f_capsule_data_type_rhs": "TES_SHROUD_capsule_data",
+                                "f_derived_type_lhs": "vector_double",
+                                "f_derived_type_rhs": "vector_double",
+                                "f_interface_import": "TES_SHROUD_capsule_data",
+                                "function_suffix": "_vector_double",
+                                "typemap_lhs": "std::vector_double",
+                                "typemap_rhs": "std::vector_double"
+                            },
+                            "stmt": "f_operator_assignment_shadow_basic"
+                        },
+                        "name": "std::vector_double = std::vector_double"
+                    },
+                    {
+                        "bind": {
+                            "fmtdict": {
+                                "C_name_api": "assign",
+                                "C_name_assign_api": "TES_std_vector_instantiation5_assign_vector_instantiation5_instantiation5",
+                                "F_name_api": "assign",
+                                "F_name_assign_api": "vector_instantiation5_assign_vector_instantiation5_instantiation5",
+                                "c_type_lhs": "TES_std_vector_instantiation5",
+                                "c_type_rhs": "TES_std_vector_instantiation5",
+                                "cxx_type_lhs": "std::vector<long>",
+                                "cxx_type_rhs": "std::vector<long>",
+                                "f_capsule_data_type_lhs": "TES_SHROUD_capsule_data",
+                                "f_capsule_data_type_rhs": "TES_SHROUD_capsule_data",
+                                "f_derived_type_lhs": "vector_instantiation5",
+                                "f_derived_type_rhs": "vector_instantiation5",
+                                "f_interface_import": "TES_SHROUD_capsule_data",
+                                "function_suffix": "_vector_instantiation5",
+                                "typemap_lhs": "std::vector_instantiation5",
+                                "typemap_rhs": "std::vector_instantiation5"
+                            },
+                            "stmt": "f_operator_assignment_shadow_basic"
+                        },
+                        "name": "std::vector_instantiation5 = std::vector_instantiation5"
+                    },
+                    {
+                        "bind": {
+                            "fmtdict": {
+                                "C_name_api": "assign",
+                                "C_name_assign_api": "TES_std_vector_instantiation3_assign_vector_instantiation3",
+                                "F_name_api": "assign",
+                                "F_name_assign_api": "vector_instantiation3_assign_vector_instantiation3",
+                                "c_type_lhs": "TES_std_vector_instantiation3",
+                                "c_type_rhs": "TES_std_vector_instantiation3",
+                                "cxx_type_lhs": "std::vector<internal::ImplWorker1>",
+                                "cxx_type_rhs": "std::vector<internal::ImplWorker1>",
+                                "f_capsule_data_type_lhs": "TES_SHROUD_capsule_data",
+                                "f_capsule_data_type_rhs": "TES_SHROUD_capsule_data",
+                                "f_derived_type_lhs": "vector_instantiation3",
+                                "f_derived_type_rhs": "vector_instantiation3",
+                                "f_interface_import": "TES_SHROUD_capsule_data",
+                                "function_suffix": "_vector_instantiation3",
+                                "typemap_lhs": "std::vector_instantiation3",
+                                "typemap_rhs": "std::vector_instantiation3"
+                            },
+                            "stmt": "f_operator_assignment_shadow_basic"
+                        },
+                        "name": "std::vector_instantiation3 = std::vector_instantiation3"
+                    }
+                ],
                 "classes": [
                     {
                         "<CLASS>": "vector ****************************************",
