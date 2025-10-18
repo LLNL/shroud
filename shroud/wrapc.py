@@ -62,6 +62,7 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         self.capsule_impl_c = []
         self.header_types = util.Header(self.newlibrary) # shared type header
         self.helper_summary = None
+        self.f_assign_code = []   # Fortran assignment overload
         self.capsule_format = newlibrary.capsule_format
         self.cursor = error.get_cursor()
 
@@ -116,6 +117,9 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         Wrap depth first to accumulate destructor information
         which is written at the library level.
         """
+
+        self.wrap_assignment(node)
+        
         if top:
             # have one namespace level, then replace name each time
             self._push_splicer("namespace")
@@ -317,8 +321,6 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         output = []
         headers = util.Header(self.newlibrary)
 
-        assign_code = self.wrap_assignment()
-        
         capsule_code = []
         self.capsule_format.write_capsule_code(capsule_code)
         if capsule_code:
@@ -346,7 +348,7 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
             write_file = True
             output.extend(capsule_code)
 
-        output.extend(assign_code)
+        output.extend(self.f_assign_code)
             
         output.extend(cplusplus.end_extern_c)
 
@@ -427,14 +429,18 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         )
         self.write_output_file(fname, self.config.c_fortran_dir, output)
 
-    def wrap_assignment(self):
+    def wrap_assignment(self, node):
         """
         Write the functions for assignment overloads.
         These C++ functions are called by Fortran assignment overloads.
-        """
-        output = []
 
-        for assign in self.newlibrary.assign_operators:
+        Parameters
+        ----------
+        node - ast.LibraryNode, ast.NamespaceNode
+        """
+        output = self.f_assign_code
+
+        for assign in node.assign_operators:
             node = assign.lhs
             options = assign.lhs.options
             fmt = assign.bind.fmtdict
