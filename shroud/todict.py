@@ -353,11 +353,17 @@ class ToDict(visitor.Visitor):
             node, d, [ "fmtdict", "options", "scope_file", ])
         if node.class_map:
             d["class_map"] = sorted(list(node.class_map.keys()))
+        # These fields are not in NamespaceNode
+        self.add_visit_fields(
+            node, d,
+            ["patterns", "destructors"]
+        )
         node = node.wrap_namespace   # XXXX TEMP kludge
         self.add_visit_fields(
             node,
             d,
             [
+                "assign_operators",
                 "classes",
                 "enums",
                 "functions",
@@ -371,10 +377,6 @@ class ToDict(visitor.Visitor):
 #                "scope_file",
             ],
         )
-        # These fields are not in NamespaceNode
-        for key in ["patterns", "destructors", "assign_operators"]:
-            if hasattr(node, key):
-                self.add_visit_fields(node, d, [key])
         return d
 
     def visit_AssignOperator(self, node):

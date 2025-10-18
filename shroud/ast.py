@@ -1015,6 +1015,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
         self.cxx_header = cxx_header.split()
         self.nodename = "namespace"
         self.linenumber = kwargs.get("__line__", "?")
+        self.assign_operators = []
 
         if not decl:
             raise RuntimeError("NamespaceNode missing decl");

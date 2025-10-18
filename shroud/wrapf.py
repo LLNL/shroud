@@ -1013,7 +1013,7 @@ rv = .false.
         Write the functions for assignment overloads.
         """
         impl = fileinfo.impl
-        for assign in self.newlibrary.assign_operators:
+        for assign in fileinfo.node.assign_operators:
             node = assign.lhs
             fmt = assign.bind.fmtdict
             
@@ -1997,7 +1997,7 @@ class ModuleInfo(object):
     """
     newlibrary = None
     def __init__(self, node):
-        self.node = node
+        self.node = node      # ast.LibraryNode or ast.NamespaceNode
         self.module_use = {}  # Use statements for a module
         self.use_stmts = []
         self.typedef_impl = []

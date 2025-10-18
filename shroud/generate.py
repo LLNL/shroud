@@ -223,6 +223,7 @@ class GenFunctions(object):
         self.instantiate_scope = None
         self.language = newlibrary.language
         self.cursor = error.get_cursor()
+        self.namespace_list = [newlibrary]
 
     def gen_library(self):
         """Entry routine to generate functions for a library.
@@ -244,9 +245,11 @@ class GenFunctions(object):
         Args:
             node - ast.LibraryNode, ast.NamespaceNode
         """
+        self.push_namespace_list(node)
         node.functions = self.define_function_suffix(node.functions)
         for ns in node.namespaces:
             self.gen_namespace(ns)
+        self.pop_namespace_list()
 
     # No longer need this, but keep code for now in case some other dependency checking is needed
     #        for cls in newlibrary.classes:
@@ -267,6 +270,15 @@ class GenFunctions(object):
     def pop_instantiate_scope(self):
         """Remove template arguments from scope"""
         self.instantiate_scope = self.instantiate_scope.get_parent()
+
+    def push_namespace_list(self, node):
+        self.namespace_list.append(node)
+
+    def pop_namespace_list(self):
+        self.namespace_list.pop()
+
+    def current_namespace(self):
+        return self.namespace_list[-1]
 
     def append_function_index(self, node):
         """append to function_index, set index into node.
@@ -603,7 +615,7 @@ class GenFunctions(object):
         ----------
         smart_ptrs - index of smart pointer subclasses, indexed by type name.
         """
-        assign_operators = self.newlibrary.assign_operators
+        assign_operators = self.current_namespace().assign_operators
 
         clsmap = {}
         for cls in smart_ptrs.values():
