@@ -758,7 +758,7 @@ contains
         ! splicer end function.use_count_1
     end function use_count_1
 
-    ! Statement: f_operator_assignment_shadow_swig
+    ! Statement: f_operator_assignment_shadow
     ! Object = Object
     subroutine object_assign_Object(lhs, rhs)
         use iso_c_binding, only : c_associated, c_f_pointer
@@ -775,7 +775,7 @@ contains
         call do_assign(lhs%cxxmem, rhs%cxxmem)
     end subroutine object_assign_Object
 
-    ! Statement: f_operator_assignment_shadow_swig_shared
+    ! Statement: f_operator_assignment_shadow_shared
     ! std::shared_ptr<Object> = std::shared_ptr<Object>
     subroutine object_shared_assign_Object_shared(lhs, rhs)
         use iso_c_binding, only : c_associated, c_f_pointer
@@ -792,7 +792,7 @@ contains
         call do_assign(lhs%cxxmem, rhs%cxxmem)
     end subroutine object_shared_assign_Object_shared
 
-    ! Statement: f_operator_assignment_shadow_swig_makeshared
+    ! Statement: f_operator_assignment_shadow_makeshared
     ! std::shared_ptr<Object> = Object
     subroutine object_shared_assign_Object(lhs, rhs)
         use iso_c_binding, only : c_associated, c_f_pointer
@@ -809,7 +809,7 @@ contains
         call do_assign(lhs%cxxmem, rhs%cxxmem)
     end subroutine object_shared_assign_Object
 
-    ! Statement: f_operator_assignment_shadow_swig_weak
+    ! Statement: f_operator_assignment_shadow_weak
     ! std::weak_ptr<Object> = std::weak_ptr<Object>
     subroutine object_weak_assign_Object_weak(lhs, rhs)
         use iso_c_binding, only : c_associated, c_f_pointer
@@ -826,7 +826,7 @@ contains
         call do_assign(lhs%cxxmem, rhs%cxxmem)
     end subroutine object_weak_assign_Object_weak
 
-    ! Statement: f_operator_assignment_shadow_swig_weak
+    ! Statement: f_operator_assignment_shadow_weak
     ! std::weak_ptr<Object> = std::shared_ptr<Object>
     subroutine object_weak_assign_Object_shared(lhs, rhs)
         use iso_c_binding, only : c_associated, c_f_pointer

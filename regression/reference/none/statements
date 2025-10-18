@@ -78,7 +78,7 @@ c_ctor_shadow_capptr_shared:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
   helper:
-  - capsule_swigmemflags
+  - capsule_memflags
   impl_header:
   - <memory>
   destructor_header:
@@ -132,7 +132,7 @@ c_ctor_shadow_capptr_weak:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
   helper:
-  - capsule_swigmemflags
+  - capsule_memflags
   impl_header:
   - <memory>
   destructor_header:
@@ -5058,7 +5058,7 @@ c_mixin_make-shared:
   c_local:
   - shared
   helper:
-  - capsule_swigmemflags
+  - capsule_memflags
   impl_header:
   - <memory>
   owner: shared
@@ -5075,7 +5075,7 @@ c_mixin_make-weak:
   - '{c_var}->idtor = {idtor};'
   - '{c_var}->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;'
   helper:
-  - capsule_swigmemflags
+  - capsule_memflags
   impl_header:
   - <memory>
   owner: shared
@@ -5116,6 +5116,31 @@ c_mixin_operator_assignment:
   c_body:
   - "void {C_name_assign_api}({c_type_lhs} *lhs_capsule,\t {c_type_rhs} *rhs_capsule)"
   - '{{+'
+  - if (lhs_capsule->addr == {nullptr}) {{+
+  - /* LHS is unassigned */
+  - if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {{+
+  - '{capture_code}'
+  - -}} else {{+
+  - '{alias_code}'
+  - -}}
+  - -}} else if (rhs_capsule->addr == {nullptr}) {{+
+  - '{destroy_code}'
+  - -}} else if (lhs_capsule->addr == rhs_capsule->addr) {{+
+  - '// Lhs-assignment: ignore.'
+  - -}} else if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {{+
+  - '{move_alias_code}'
+  - -}} else {{+
+  - '{copy_alias_code}'
+  - -}}
+  - -}}
+  sphinx-end-before: c_mixin_operator_assignment
+c_mixin_operator_assignment_basic:
+  sphinx-start-after: c_mixin_operator_assignment_basic
+  name: c_mixin_operator_assignment_basic
+  intent: mixin
+  c_body:
+  - "void {C_name_assign_api}({c_type_lhs} *lhs_capsule,\t {c_type_rhs} *rhs_capsule)"
+  - '{{+'
   - "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs} *>(lhs_capsule->addr);"
   - "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs} *>(rhs_capsule->addr);"
   - if (lhs == nullptr) {{+
@@ -5132,7 +5157,7 @@ c_mixin_operator_assignment:
   destructor:
   - "auto cxx_ptr =\t reinterpret_cast<{cxx_type}*>(ptr);"
   - delete cxx_ptr;
-  sphinx-end-before: c_mixin_operator_assignment
+  sphinx-end-before: c_mixin_operator_assignment_basic
 c_mixin_operator_assignment_fmtdict:
   sphinx-start-after: c_mixin_operator_assignment_fmtdict
   name: c_mixin_operator_assignment_fmtdict
@@ -5275,31 +5300,6 @@ c_mixin_operator_assignment_fmtdict_weak:
   - "auto cxx_ptr =\t reinterpret_cast<{cxx_type_lhs}*>(ptr);"
   - delete cxx_ptr;
   sphinx-end-before: c_mixin_operator_assignment_fmtdict_weak
-c_mixin_operator_assignment_swig:
-  sphinx-start-after: c_mixin_operator_assignment_swig
-  name: c_mixin_operator_assignment_swig
-  intent: mixin
-  c_body:
-  - "void {C_name_assign_api}({c_type_lhs} *lhs_capsule,\t {c_type_rhs} *rhs_capsule)"
-  - '{{+'
-  - if (lhs_capsule->addr == {nullptr}) {{+
-  - /* LHS is unassigned */
-  - if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {{+
-  - '{capture_code}'
-  - -}} else {{+
-  - '{alias_code}'
-  - -}}
-  - -}} else if (rhs_capsule->addr == {nullptr}) {{+
-  - '{destroy_code}'
-  - -}} else if (lhs_capsule->addr == rhs_capsule->addr) {{+
-  - '// Lhs-assignment: ignore.'
-  - -}} else if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {{+
-  - '{move_alias_code}'
-  - -}} else {{+
-  - '{copy_alias_code}'
-  - -}}
-  - -}}
-  sphinx-end-before: c_mixin_operator_assignment_swig
 c_mixin_out_native**:
   sphinx-start-after: c_mixin_out_native**
   name: c_mixin_out_native**
@@ -6945,7 +6945,7 @@ f_ctor_shadow_capsule_shared:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
   helper:
-  - capsule_swigmemflags
+  - capsule_memflags
   impl_header:
   - <memory>
   destructor_header:
@@ -6998,7 +6998,7 @@ f_ctor_shadow_capsule_weak:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
   helper:
-  - capsule_swigmemflags
+  - capsule_memflags
   impl_header:
   - <memory>
   destructor_header:
@@ -18876,25 +18876,6 @@ f_mixin_operator_assignment:
   f_operator_body:
   - subroutine {F_name_assign_api}(lhs, rhs)+
   - 'use iso_c_binding, only : c_associated, c_f_pointer'
-  - 'class({f_derived_type_lhs}), intent(OUT) :: lhs'
-  - 'type({f_derived_type_rhs}), intent(IN) :: rhs'
-  - interface+
-  - "subroutine do_assign(lhs, rhs)\t bind(C,\t name=\"{C_name_assign_api}\")+"
-  - 'import :: {f_interface_import}'
-  - 'type({f_capsule_data_type_lhs}), intent(INOUT) :: lhs'
-  - 'type({f_capsule_data_type_rhs}), intent(IN) :: rhs'
-  - -end subroutine do_assign
-  - -end interface
-  - "call do_assign(lhs%{F_derived_member},\t rhs%{F_derived_member})"
-  - -end subroutine {F_name_assign_api}
-  sphinx-end-before: f_mixin_operator_assignment
-f_mixin_operator_assignment_swig:
-  sphinx-start-after: f_mixin_operator_assignment_swig
-  name: f_mixin_operator_assignment_swig
-  intent: mixin
-  f_operator_body:
-  - subroutine {F_name_assign_api}(lhs, rhs)+
-  - 'use iso_c_binding, only : c_associated, c_f_pointer'
   - 'class({f_derived_type_lhs}), intent(INOUT) :: lhs'
   - 'type({f_derived_type_rhs}), intent(IN) :: rhs'
   - interface+
@@ -18906,7 +18887,26 @@ f_mixin_operator_assignment_swig:
   - -end interface
   - "call do_assign(lhs%{F_derived_member},\t rhs%{F_derived_member})"
   - -end subroutine {F_name_assign_api}
-  sphinx-end-before: f_mixin_operator_assignment_swig
+  sphinx-end-before: f_mixin_operator_assignment
+f_mixin_operator_assignment_basic:
+  sphinx-start-after: f_mixin_operator_assignment_basic
+  name: f_mixin_operator_assignment_basic
+  intent: mixin
+  f_operator_body:
+  - subroutine {F_name_assign_api}(lhs, rhs)+
+  - 'use iso_c_binding, only : c_associated, c_f_pointer'
+  - 'class({f_derived_type_lhs}), intent(OUT) :: lhs'
+  - 'type({f_derived_type_rhs}), intent(IN) :: rhs'
+  - interface+
+  - "subroutine do_assign(lhs, rhs)\t bind(C,\t name=\"{C_name_assign_api}\")+"
+  - 'import :: {f_interface_import}'
+  - 'type({f_capsule_data_type_lhs}), intent(INOUT) :: lhs'
+  - 'type({f_capsule_data_type_rhs}), intent(IN) :: rhs'
+  - -end subroutine do_assign
+  - -end interface
+  - "call do_assign(lhs%{F_derived_member},\t rhs%{F_derived_member})"
+  - -end subroutine {F_name_assign_api}
+  sphinx-end-before: f_mixin_operator_assignment_basic
 f_mixin_out_vector_buf:
   sphinx-start-after: f_mixin_out_vector_buf
   name: f_mixin_out_vector_buf
@@ -19298,62 +19298,13 @@ f_none_void*:
   c_arg_call:
   - '{cxx_var}'
   sphinx-end-before: f_none_void*
-f_operator_assignment_shadow_basic:
-  sphinx-start-after: f_operator_assignment_shadow_basic
-  name: f_operator_assignment_shadow_basic
-  intent: operator
-  notes:
-  - The original operator overload only worked with weak_ptr.
-  - This is for all the others which do nothing.
-  sphinx-end-before: f_operator_assignment_shadow_basic
-f_operator_assignment_shadow_basic_weak:
-  sphinx-start-after: f_operator_assignment_shadow_basic_weak
-  name: f_operator_assignment_shadow_basic_weak
+f_operator_assignment_shadow:
+  sphinx-start-after: f_operator_assignment_shadow
+  name: f_operator_assignment_shadow
   intent: operator
   mixin_names:
   - '  f_mixin_operator_assignment'
   - '  c_mixin_operator_assignment'
-  f_operator_body:
-  - subroutine {F_name_assign_api}(lhs, rhs)+
-  - 'use iso_c_binding, only : c_associated, c_f_pointer'
-  - 'class({f_derived_type_lhs}), intent(OUT) :: lhs'
-  - 'type({f_derived_type_rhs}), intent(IN) :: rhs'
-  - interface+
-  - "subroutine do_assign(lhs, rhs)\t bind(C,\t name=\"{C_name_assign_api}\")+"
-  - 'import :: {f_interface_import}'
-  - 'type({f_capsule_data_type_lhs}), intent(INOUT) :: lhs'
-  - 'type({f_capsule_data_type_rhs}), intent(IN) :: rhs'
-  - -end subroutine do_assign
-  - -end interface
-  - "call do_assign(lhs%{F_derived_member},\t rhs%{F_derived_member})"
-  - -end subroutine {F_name_assign_api}
-  c_body:
-  - "void {C_name_assign_api}({c_type_lhs} *lhs_capsule,\t {c_type_rhs} *rhs_capsule)"
-  - '{{+'
-  - "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs} *>(lhs_capsule->addr);"
-  - "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs} *>(rhs_capsule->addr);"
-  - if (lhs == nullptr) {{+
-  - lhs = new {cxx_type}(*rhs);
-  - lhs_capsule->addr = lhs;
-  - lhs_capsule->idtor = {idtor};
-  - -}} else {{+
-  - '*lhs = *rhs;'
-  - -}}
-  - -}}
-  destructor_header:
-  - <memory>
-  destructor_name: assignment-{cxx_type}
-  destructor:
-  - "auto cxx_ptr =\t reinterpret_cast<{cxx_type}*>(ptr);"
-  - delete cxx_ptr;
-  sphinx-end-before: f_operator_assignment_shadow_basic_weak
-f_operator_assignment_shadow_swig:
-  sphinx-start-after: f_operator_assignment_shadow_swig
-  name: f_operator_assignment_shadow_swig
-  intent: operator
-  mixin_names:
-  - '  f_mixin_operator_assignment_swig'
-  - '  c_mixin_operator_assignment_swig'
   - '  c_mixin_operator_assignment_fmtdict'
   f_operator_body:
   - subroutine {F_name_assign_api}(lhs, rhs)+
@@ -19425,16 +19376,65 @@ f_operator_assignment_shadow_swig:
     - lhs_capsule->addr = rhs_capsule->addr;
     - lhs_capsule->idtor = rhs_capsule->idtor;
     - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
-  sphinx-end-before: f_operator_assignment_shadow_swig
-f_operator_assignment_shadow_swig_makeshared:
-  sphinx-start-after: f_operator_assignment_shadow_swig_makeshared
-  name: f_operator_assignment_shadow_swig_makeshared
+  sphinx-end-before: f_operator_assignment_shadow
+f_operator_assignment_shadow_basic:
+  sphinx-start-after: f_operator_assignment_shadow_basic
+  name: f_operator_assignment_shadow_basic
+  intent: operator
+  notes:
+  - The original operator overload only worked with weak_ptr.
+  - This is for all the others which do nothing.
+  sphinx-end-before: f_operator_assignment_shadow_basic
+f_operator_assignment_shadow_basic_weak:
+  sphinx-start-after: f_operator_assignment_shadow_basic_weak
+  name: f_operator_assignment_shadow_basic_weak
+  intent: operator
+  mixin_names:
+  - '  f_mixin_operator_assignment_basic'
+  - '  c_mixin_operator_assignment_basic'
+  f_operator_body:
+  - subroutine {F_name_assign_api}(lhs, rhs)+
+  - 'use iso_c_binding, only : c_associated, c_f_pointer'
+  - 'class({f_derived_type_lhs}), intent(OUT) :: lhs'
+  - 'type({f_derived_type_rhs}), intent(IN) :: rhs'
+  - interface+
+  - "subroutine do_assign(lhs, rhs)\t bind(C,\t name=\"{C_name_assign_api}\")+"
+  - 'import :: {f_interface_import}'
+  - 'type({f_capsule_data_type_lhs}), intent(INOUT) :: lhs'
+  - 'type({f_capsule_data_type_rhs}), intent(IN) :: rhs'
+  - -end subroutine do_assign
+  - -end interface
+  - "call do_assign(lhs%{F_derived_member},\t rhs%{F_derived_member})"
+  - -end subroutine {F_name_assign_api}
+  c_body:
+  - "void {C_name_assign_api}({c_type_lhs} *lhs_capsule,\t {c_type_rhs} *rhs_capsule)"
+  - '{{+'
+  - "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs} *>(lhs_capsule->addr);"
+  - "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs} *>(rhs_capsule->addr);"
+  - if (lhs == nullptr) {{+
+  - lhs = new {cxx_type}(*rhs);
+  - lhs_capsule->addr = lhs;
+  - lhs_capsule->idtor = {idtor};
+  - -}} else {{+
+  - '*lhs = *rhs;'
+  - -}}
+  - -}}
+  destructor_header:
+  - <memory>
+  destructor_name: assignment-{cxx_type}
+  destructor:
+  - "auto cxx_ptr =\t reinterpret_cast<{cxx_type}*>(ptr);"
+  - delete cxx_ptr;
+  sphinx-end-before: f_operator_assignment_shadow_basic_weak
+f_operator_assignment_shadow_makeshared:
+  sphinx-start-after: f_operator_assignment_shadow_makeshared
+  name: f_operator_assignment_shadow_makeshared
   intent: operator
   notes:
   - '  shared = object, create shared object, keep object'
   mixin_names:
-  - '  f_mixin_operator_assignment_swig'
-  - '  c_mixin_operator_assignment_swig'
+  - '  f_mixin_operator_assignment'
+  - '  c_mixin_operator_assignment'
   - '  c_mixin_operator_assignment_fmtdict_makeshared'
   f_operator_body:
   - subroutine {F_name_assign_api}(lhs, rhs)+
@@ -19519,14 +19519,14 @@ f_operator_assignment_shadow_swig_makeshared:
   destructor:
   - "auto cxx_ptr =\t reinterpret_cast<{cxx_type_lhs}*>(ptr);"
   - delete cxx_ptr;
-  sphinx-end-before: f_operator_assignment_shadow_swig_makeshared
-f_operator_assignment_shadow_swig_shared:
-  sphinx-start-after: f_operator_assignment_shadow_swig_shared
-  name: f_operator_assignment_shadow_swig_shared
+  sphinx-end-before: f_operator_assignment_shadow_makeshared
+f_operator_assignment_shadow_shared:
+  sphinx-start-after: f_operator_assignment_shadow_shared
+  name: f_operator_assignment_shadow_shared
   intent: operator
   mixin_names:
-  - '  f_mixin_operator_assignment_swig'
-  - '  c_mixin_operator_assignment_swig'
+  - '  f_mixin_operator_assignment'
+  - '  c_mixin_operator_assignment'
   - '  c_mixin_operator_assignment_fmtdict_weak'
   f_operator_body:
   - subroutine {F_name_assign_api}(lhs, rhs)+
@@ -19604,14 +19604,14 @@ f_operator_assignment_shadow_swig_shared:
   destructor:
   - "auto cxx_ptr =\t reinterpret_cast<{cxx_type_lhs}*>(ptr);"
   - delete cxx_ptr;
-  sphinx-end-before: f_operator_assignment_shadow_swig_shared
-f_operator_assignment_shadow_swig_weak:
-  sphinx-start-after: f_operator_assignment_shadow_swig_weak
-  name: f_operator_assignment_shadow_swig_weak
+  sphinx-end-before: f_operator_assignment_shadow_shared
+f_operator_assignment_shadow_weak:
+  sphinx-start-after: f_operator_assignment_shadow_weak
+  name: f_operator_assignment_shadow_weak
   intent: operator
   mixin_names:
-  - '  f_mixin_operator_assignment_swig'
-  - '  c_mixin_operator_assignment_swig'
+  - '  f_mixin_operator_assignment'
+  - '  c_mixin_operator_assignment'
   - '  c_mixin_operator_assignment_fmtdict_weak'
   f_operator_body:
   - subroutine {F_name_assign_api}(lhs, rhs)+
@@ -19689,7 +19689,7 @@ f_operator_assignment_shadow_swig_weak:
   destructor:
   - "auto cxx_ptr =\t reinterpret_cast<{cxx_type_lhs}*>(ptr);"
   - delete cxx_ptr;
-  sphinx-end-before: f_operator_assignment_shadow_swig_weak
+  sphinx-end-before: f_operator_assignment_shadow_weak
 f_out_bool*:
   sphinx-start-after: f_out_bool*
   name: f_out_bool*
@@ -22587,9 +22587,9 @@ h_helper_capsule_helper:
   - capsule_data
   - capsule_dtor
   sphinx-end-before: h_helper_capsule_helper
-h_helper_capsule_swigmemflags:
-  sphinx-start-after: h_helper_capsule_swigmemflags
-  name: h_helper_capsule_swigmemflags
+h_helper_capsule_memflags:
+  sphinx-start-after: h_helper_capsule_memflags
+  name: h_helper_capsule_memflags
   notes:
   - Flags used to give properties to the addr field.
   - This helper is added in wrapf.py Wrapf.wrap_class
@@ -22601,7 +22601,7 @@ h_helper_capsule_swigmemflags:
   - SWIG_MEM_OWN = 0x01,
   - SWIG_MEM_RVALUE = 0x02,
   - -};
-  sphinx-end-before: h_helper_capsule_swigmemflags
+  sphinx-end-before: h_helper_capsule_memflags
 h_helper_cdesc_array_string_out:
   sphinx-start-after: h_helper_cdesc_array_string_out
   name: h_helper_cdesc_array_string_out
@@ -23571,10 +23571,10 @@ root
         vector<native> -- c_mixin_new_vector<native>
       operator
         assignment -- c_mixin_operator_assignment
+          basic -- c_mixin_operator_assignment_basic
           fmtdict -- c_mixin_operator_assignment_fmtdict
             makeshared -- c_mixin_operator_assignment_fmtdict_makeshared
             weak -- c_mixin_operator_assignment_fmtdict_weak
-          swig -- c_mixin_operator_assignment_swig
       out
         native** -- c_mixin_out_native**
         vector
@@ -24017,7 +24017,7 @@ root
       logical-out -- f_mixin_logical-out
       operator
         assignment -- f_mixin_operator_assignment
-          swig -- f_mixin_operator_assignment_swig
+          basic -- f_mixin_operator_assignment_basic
       out
         vector
           buf -- f_mixin_out_vector_buf
@@ -24044,13 +24044,12 @@ root
       void* -- f_none_void*
     operator
       assignment
-        shadow
+        shadow -- f_operator_assignment_shadow
           basic -- f_operator_assignment_shadow_basic
             weak -- f_operator_assignment_shadow_basic_weak
-          swig -- f_operator_assignment_shadow_swig
-            makeshared -- f_operator_assignment_shadow_swig_makeshared
-            shared -- f_operator_assignment_shadow_swig_shared
-            weak -- f_operator_assignment_shadow_swig_weak
+          makeshared -- f_operator_assignment_shadow_makeshared
+          shared -- f_operator_assignment_shadow_shared
+          weak -- f_operator_assignment_shadow_weak
     out
       bool* -- f_out_bool*
       char* -- f_out_char*
@@ -24149,7 +24148,7 @@ root
           basic -- h_helper_capsule_data_basic
         dtor -- h_helper_capsule_dtor
         helper -- h_helper_capsule_helper
-        swigmemflags -- h_helper_capsule_swigmemflags
+        memflags -- h_helper_capsule_memflags
       cdesc
         array
           string

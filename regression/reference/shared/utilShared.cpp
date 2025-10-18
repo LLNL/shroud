@@ -84,7 +84,7 @@ void SHA_SHROUD_memory_destructor(SHA_SHROUD_capsule_data *cap)
     cap->idtor = 0;  // avoid deleting again
 }
 
-// Statement: f_operator_assignment_shadow_swig
+// Statement: f_operator_assignment_shadow
 // Object = Object
 void SHA_Object_assign_Object(SHA_Object *lhs_capsule,
     SHA_Object *rhs_capsule)
@@ -135,7 +135,7 @@ void SHA_Object_assign_Object(SHA_Object *lhs_capsule,
     }
 }
 
-// Statement: f_operator_assignment_shadow_swig_shared
+// Statement: f_operator_assignment_shadow_shared
 // std::shared_ptr<Object> = std::shared_ptr<Object>
 void SHA_Object_shared_assign_Object_shared(SHA_Object_shared *lhs_capsule,
     SHA_Object_shared *rhs_capsule)
@@ -191,7 +191,7 @@ void SHA_Object_shared_assign_Object_shared(SHA_Object_shared *lhs_capsule,
     }
 }
 
-// Statement: f_operator_assignment_shadow_swig_makeshared
+// Statement: f_operator_assignment_shadow_makeshared
 // std::shared_ptr<Object> = Object
 void SHA_Object_shared_assign_Object(SHA_Object_shared *lhs_capsule,
     SHA_Object *rhs_capsule)
@@ -256,7 +256,7 @@ void SHA_Object_shared_assign_Object(SHA_Object_shared *lhs_capsule,
         }
     }
 
-    // Statement: f_operator_assignment_shadow_swig_weak
+    // Statement: f_operator_assignment_shadow_weak
     // std::weak_ptr<Object> = std::weak_ptr<Object>
     void SHA_Object_weak_assign_Object_weak(SHA_Object_weak *lhs_capsule,
         SHA_Object_weak *rhs_capsule)
@@ -312,7 +312,7 @@ void SHA_Object_shared_assign_Object(SHA_Object_shared *lhs_capsule,
         }
     }
 
-    // Statement: f_operator_assignment_shadow_swig_weak
+    // Statement: f_operator_assignment_shadow_weak
     // std::weak_ptr<Object> = std::shared_ptr<Object>
     void SHA_Object_weak_assign_Object_shared(SHA_Object_weak *lhs_capsule,
         SHA_Object_shared *rhs_capsule)

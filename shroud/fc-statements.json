@@ -4301,7 +4301,7 @@
         "owner": "caller"
     },
     {
-        "name": "c_mixin_operator_assignment",
+        "name": "c_mixin_operator_assignment_basic",
         "notes": [
             "std::weak_ptr has no wrapped constructor.",
             "It must be made from a std::shared_ptr with an assignment."
@@ -4330,7 +4330,7 @@
         ]
     },
     {
-        "name": "f_mixin_operator_assignment",
+        "name": "f_mixin_operator_assignment_basic",
         "notes": [
             "Used with options.F_assignment_api == 'basic'"
         ],
@@ -4351,7 +4351,7 @@
         ]
     },
     {
-        "name": "c_mixin_operator_assignment_swig",
+        "name": "c_mixin_operator_assignment",
         "notes": [
             "Adapts code from SWIG_assign."
         ],
@@ -4548,7 +4548,7 @@
         ]
     },
     {
-        "name": "f_mixin_operator_assignment_swig",
+        "name": "f_mixin_operator_assignment",
         "notes": [
             "Used with options.F_assignment_api == 'swig'",
             "lhs is intent(INOUT) so the initial value is preserved",
@@ -4584,41 +4584,41 @@
             "f_operator_assignment_shadow_basic_weak"
         ],
         "mixin": [
-            "f_mixin_operator_assignment",
-            "c_mixin_operator_assignment"
+            "f_mixin_operator_assignment_basic",
+            "c_mixin_operator_assignment_basic"
         ]
     },
     {
         "alias": [
-            "f_operator_assignment_shadow_swig"
+            "f_operator_assignment_shadow"
         ],
         "mixin": [
-            "f_mixin_operator_assignment_swig",
-            "c_mixin_operator_assignment_swig",
+            "f_mixin_operator_assignment",
+            "c_mixin_operator_assignment",
             "c_mixin_operator_assignment_fmtdict"
         ]
     },
     {
         "alias": [
-            "f_operator_assignment_shadow_swig_shared",
-            "f_operator_assignment_shadow_swig_weak"
+            "f_operator_assignment_shadow_shared",
+            "f_operator_assignment_shadow_weak"
         ],
         "mixin": [
-            "f_mixin_operator_assignment_swig",
-            "c_mixin_operator_assignment_swig",
+            "f_mixin_operator_assignment",
+            "c_mixin_operator_assignment",
             "c_mixin_operator_assignment_fmtdict_weak"
         ]
     },
     {
         "alias": [
-            "f_operator_assignment_shadow_swig_makeshared"
+            "f_operator_assignment_shadow_makeshared"
         ],
         "notes": [
             "  shared = object, create shared object, keep object"
         ],
         "mixin": [
-            "f_mixin_operator_assignment_swig",
-            "c_mixin_operator_assignment_swig",
+            "f_mixin_operator_assignment",
+            "c_mixin_operator_assignment",
             "c_mixin_operator_assignment_fmtdict_makeshared"
         ]
     },
@@ -4675,7 +4675,7 @@
         ],
         "owner": "shared",
         "helper": [
-            "capsule_swigmemflags"
+            "capsule_memflags"
         ]
     },
     {
@@ -4698,7 +4698,7 @@
         ],
         "owner": "shared",
         "helper": [
-            "capsule_swigmemflags"
+            "capsule_memflags"
         ]
     },
     {
@@ -7183,7 +7183,7 @@
         ]
     },
     {
-        "name": "h_helper_capsule_swigmemflags",
+        "name": "h_helper_capsule_memflags",
         "notes": [
             "Flags used to give properties to the addr field.",
             "This helper is added in wrapf.py Wrapf.wrap_class",

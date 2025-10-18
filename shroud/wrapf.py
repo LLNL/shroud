@@ -260,7 +260,7 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
         f_type_decl.append("")
         if node.cpp_if:
             f_type_decl.append("#" + node.cpp_if)
-        fileinfo.add_fc_helper(["capsule_data", "capsule_swigmemflags"], fmt_class)
+        fileinfo.add_fc_helper(["capsule_data", "capsule_memflags"], fmt_class)
 
         if options.literalinclude:
             f_type_decl.append("! start derived-type " +
@@ -568,7 +568,7 @@ rv = c_associated({F_this}%{F_derived_member}%addr)
 #        if smart_pointer:
         if not node.C_shared_class:
             return
-        if node.options.F_assignment_api == "swig":
+        if node.options.F_assignment_api != "basic":
             # Destruction managed by SWIG_MEM_OWN.
             return
         options = node.options

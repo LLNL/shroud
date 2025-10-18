@@ -27,7 +27,7 @@
                         "typemap_lhs": "Object",
                         "typemap_rhs": "Object"
                     },
-                    "stmt": "f_operator_assignment_shadow_swig"
+                    "stmt": "f_operator_assignment_shadow"
                 },
                 "name": "Object = Object"
             },
@@ -57,7 +57,7 @@
                         "typemap_lhs": "std::shared_ptr<Object>",
                         "typemap_rhs": "std::shared_ptr<Object>"
                     },
-                    "stmt": "f_operator_assignment_shadow_swig_shared"
+                    "stmt": "f_operator_assignment_shadow_shared"
                 },
                 "name": "std::shared_ptr<Object> = std::shared_ptr<Object>"
             },
@@ -87,7 +87,7 @@
                         "typemap_lhs": "std::shared_ptr<Object>",
                         "typemap_rhs": "Object"
                     },
-                    "stmt": "f_operator_assignment_shadow_swig_makeshared"
+                    "stmt": "f_operator_assignment_shadow_makeshared"
                 },
                 "name": "std::shared_ptr<Object> = Object"
             },
@@ -117,7 +117,7 @@
                         "typemap_lhs": "std::weak_ptr<Object>",
                         "typemap_rhs": "std::weak_ptr<Object>"
                     },
-                    "stmt": "f_operator_assignment_shadow_swig_weak"
+                    "stmt": "f_operator_assignment_shadow_weak"
                 },
                 "name": "std::weak_ptr<Object> = std::weak_ptr<Object>"
             },
@@ -147,7 +147,7 @@
                         "typemap_lhs": "std::weak_ptr<Object>",
                         "typemap_rhs": "std::shared_ptr<Object>"
                     },
-                    "stmt": "f_operator_assignment_shadow_swig_weak"
+                    "stmt": "f_operator_assignment_shadow_weak"
                 },
                 "name": "std::weak_ptr<Object> = std::shared_ptr<Object>"
             }
@@ -1872,7 +1872,7 @@
                         "declgen": "Object(void)",
                         "helpers": {
                             "fc": [
-                                "capsule_swigmemflags"
+                                "capsule_memflags"
                             ]
                         },
                         "name": "ctor",
@@ -2292,7 +2292,7 @@
                         "declgen": "Object(void)",
                         "helpers": {
                             "fc": [
-                                "capsule_swigmemflags"
+                                "capsule_memflags"
                             ]
                         },
                         "name": "ctor",

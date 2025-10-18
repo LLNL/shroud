@@ -755,9 +755,12 @@ def fmt_assignment(library, node):
         fmt.C_name_api = fmt_lhs.C_name_assign
         fmt.C_name_assign_api = wformat(options.C_name_template, fmt)
 
+        assignment_api = options.F_assignment_api
+        if assignment_api == "swig":
+            assignment_api = None  # This is the default
         f_asgn_stmt = statements.lookup_fc_stmts([
             "f", "operator", "assignment", "shadow",
-            options.F_assignment_api, assign.specialization])
+            assignment_api, assign.specialization])
         bind.stmt = f_asgn_stmt
         library.capsule_format.find_idtor(lhs.typemap, bind)
         statements.apply_fmtdict_from_stmts(bind)
