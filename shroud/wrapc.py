@@ -448,6 +448,8 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
             if asgn_stmt.c_body:
                 options = node.options
                 output.append("")
+                if node.cpp_if:
+                    output.append("#" + node.cpp_if)
                 if options.debug:
                     output.append("// Statement: " + asgn_stmt.name)
                 if options.literalinclude:
@@ -456,6 +458,8 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
                 util.append_format_cmds(output, asgn_stmt, "c_body", fmt)
                 if options.literalinclude:
                     append_format(output, "// end {F_name_assign_api}", fmt)
+                if node.cpp_if:
+                    output.append("#endif")
             
         return output
 

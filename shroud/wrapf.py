@@ -1027,6 +1027,8 @@ rv = .false.
                 ops.append((node, procedure))
                 # body
                 impl.append("")
+                if node.cpp_if:
+                    impl.append("#" + node.cpp_if)
                 if options.debug:
                     impl.append("! Statement: " + asgn_stmt.name)
                 if options.literalinclude:
@@ -1035,6 +1037,8 @@ rv = .false.
                 util.append_format_cmds(impl, asgn_stmt, "f_operator_body", fmt)
                 if options.literalinclude:
                     append_format(impl, "! end {F_name_assign_api}", fmt)
+                if node.cpp_if:
+                    impl.append("#endif")
 
     def build_arg_list_interface(
             self, bind, modules, imports, dummy_arg_list, dummy_decl_list):
