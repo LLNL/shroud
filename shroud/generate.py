@@ -223,7 +223,7 @@ class GenFunctions(object):
         self.instantiate_scope = None
         self.language = newlibrary.language
         self.cursor = error.get_cursor()
-        self.namespace_list = [newlibrary]
+        self.namespace_list = []
 
     def gen_library(self):
         """Entry routine to generate functions for a library.
@@ -234,9 +234,14 @@ class GenFunctions(object):
         self.function_index = newlibrary.function_index
         self.class_map = newlibrary.class_map
 
-        self.instantiate_all_classes(newlibrary.wrap_namespace)
-        self.update_templated_typemaps(newlibrary.wrap_namespace)
-        self.gen_namespace(newlibrary.wrap_namespace)
+        ns = newlibrary.wrap_namespace
+        self.push_namespace_list(ns)
+        self.instantiate_all_classes(ns)
+        self.pop_namespace_list()
+
+        self.update_templated_typemaps(ns)
+
+        self.gen_namespace(ns)
         self.cursor.pop_phase("generate functions")
 
     def gen_namespace(self, node):
@@ -448,7 +453,9 @@ class GenFunctions(object):
             self.instantiate_classes(cls)
 
         for ns in node.namespaces:
+            self.push_namespace_list(ns)
             self.instantiate_all_classes(ns)
+            self.pop_namespace_list()
 
     def template_class(self, cls, clslist):
         """Create a class for each list of template_arguments.
@@ -623,10 +630,10 @@ class GenFunctions(object):
             
         for cls in smart_ptrs.values():
             smart_pointer =  cls.typemap.smart_pointer
-            assign_operators.append(AssignOperator(cls, cls, smart_pointer))
+            add_assign_operator(assign_operators, cls, cls, smart_pointer)
             if smart_pointer == "shared":
                 self.add_smart_ptr_ctor_dtor(cls)
-                assign_operators.append(AssignOperator(cls, cls.shared_baseclass, 'makeshared'))
+                add_assign_operator(assign_operators, cls, cls.shared_baseclass, 'makeshared')
             elif smart_pointer == "weak":
                 # weak_ptr cannot call methods directly.
                 # TODO: Add constructor from shared.
@@ -634,7 +641,7 @@ class GenFunctions(object):
                 self.add_smart_ptr_ctor_dtor(cls)
                 if 'shared' in clsmap:
                     # weak_ptr = shared_ptr
-                    assign_operators.append(AssignOperator(cls, clsmap['shared'], 'weak'))
+                    add_assign_operator(assign_operators, cls, clsmap['shared'], 'weak')
 
             self.add_share_smart_methods(cls)
         
@@ -649,7 +656,7 @@ class GenFunctions(object):
         ----------
         node : ast.LibraryNode, ast.NamespaceNode, ast.ClassNode
         """
-        assign_operators = self.newlibrary.assign_operators
+        assign_operators = self.current_namespace().assign_operators
         clslist = []
         for cls in node.classes:
             self.cursor.push_node(cls)
@@ -664,7 +671,7 @@ class GenFunctions(object):
             else:
                 clslist.append(cls)
                 self.process_class(cls, cls)
-                assign_operators.append(AssignOperator(cls, cls))
+                add_assign_operator(assign_operators, cls, cls)
                 if cls.smart_pointer:
                     smart_ptrs = {}
                     # cls.smart_pointer is a dict from YAML file.
@@ -1426,6 +1433,13 @@ def gen_decl(ast):
         return s + " " + s2
 
 ######################################################################
+
+def add_assign_operator(assign_operators, cls1, cls2, specialize=None):
+    """Add an assignment operator overload for Fortran.
+    """
+    if cls1.options.wrap_fortran:
+        assign_operators.append(AssignOperator(cls1, cls2, specialize))
+        
 
 class AssignOperator(object):
     """

@@ -545,6 +545,7 @@ class ToDict(visitor.Visitor):
         d = dict(name=node.name)
         add_comment(d, "namespace", node.name)
         self.add_visit_fields(node, d, [
+            "assign_operators",
             "classes", "enums", "functions", "namespaces", "typedefs", "variables",
             "user_fmt", "fmtdict", "options", "wrap"])
         add_non_none_fields(node, d, ["linenumber"])

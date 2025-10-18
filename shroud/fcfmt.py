@@ -52,10 +52,11 @@ class FillFormat(object):
 
     def fmt_library(self):
         self.fmt_namespace(self.newlibrary.wrap_namespace)
-        fmt_assignment(self.newlibrary)
 
     def fmt_namespace(self, node):
         cursor = self.cursor
+
+        fmt_assignment(self.newlibrary, node)
         
         cursor.push_phase("FillFormat typedef")
         for typ in node.typedefs:
@@ -715,11 +716,13 @@ class FillFormat(object):
         node_helpers = node.fcn_helpers.setdefault("fc", {})
         add_fc_helper(node_helpers, stmt.helper, fmt)
 
-def fmt_assignment(library):
+def fmt_assignment(library, node):
     """
     Create fmtdict for assignment overloads.
+
+    node - LibraryNode, NamespaceNode
     """
-    for assign in library.assign_operators:
+    for assign in node.assign_operators:
         lhs = assign.lhs
         rhs = assign.rhs
         options = assign.lhs.options

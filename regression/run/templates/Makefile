@@ -19,6 +19,7 @@ VPATH = \
 
 C_OBJS = \
     templates.o \
+    utiltemplates.o \
     wraptemplates.o \
     wrapvectorforint.o \
     wrapuser_int.o \

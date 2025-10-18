@@ -25,54 +25,6 @@
                     "stmt": "f_operator_assignment_shadow_basic"
                 },
                 "name": "Worker = Worker"
-            },
-            {
-                "bind": {
-                    "fmtdict": {
-                        "C_name_api": "assign",
-                        "C_name_assign_api": "TEM_internal_ImplWorker1_assign_ImplWorker1",
-                        "F_name_api": "assign",
-                        "F_name_assign_api": "impl_worker1_assign_ImplWorker1",
-                        "c_type_lhs": "TEM_internal_ImplWorker1",
-                        "c_type_rhs": "TEM_internal_ImplWorker1",
-                        "cxx_type_lhs": "internal::ImplWorker1",
-                        "cxx_type_rhs": "internal::ImplWorker1",
-                        "f_capsule_data_type_lhs": "TEM_SHROUD_capsule_data",
-                        "f_capsule_data_type_rhs": "TEM_SHROUD_capsule_data",
-                        "f_derived_type_lhs": "impl_worker1",
-                        "f_derived_type_rhs": "impl_worker1",
-                        "f_interface_import": "TEM_SHROUD_capsule_data",
-                        "function_suffix": "_ImplWorker1",
-                        "typemap_lhs": "internal::ImplWorker1",
-                        "typemap_rhs": "internal::ImplWorker1"
-                    },
-                    "stmt": "f_operator_assignment_shadow_basic"
-                },
-                "name": "internal::ImplWorker1 = internal::ImplWorker1"
-            },
-            {
-                "bind": {
-                    "fmtdict": {
-                        "C_name_api": "assign",
-                        "C_name_assign_api": "TEM_internal_ImplWorker2_assign_ImplWorker2",
-                        "F_name_api": "assign",
-                        "F_name_assign_api": "impl_worker2_assign_ImplWorker2",
-                        "c_type_lhs": "TEM_internal_ImplWorker2",
-                        "c_type_rhs": "TEM_internal_ImplWorker2",
-                        "cxx_type_lhs": "internal::ImplWorker2",
-                        "cxx_type_rhs": "internal::ImplWorker2",
-                        "f_capsule_data_type_lhs": "TEM_SHROUD_capsule_data",
-                        "f_capsule_data_type_rhs": "TEM_SHROUD_capsule_data",
-                        "f_derived_type_lhs": "impl_worker2",
-                        "f_derived_type_rhs": "impl_worker2",
-                        "f_interface_import": "TEM_SHROUD_capsule_data",
-                        "function_suffix": "_ImplWorker2",
-                        "typemap_lhs": "internal::ImplWorker2",
-                        "typemap_rhs": "internal::ImplWorker2"
-                    },
-                    "stmt": "f_operator_assignment_shadow_basic"
-                },
-                "name": "internal::ImplWorker2 = internal::ImplWorker2"
             }
         ],
         "class_map": [

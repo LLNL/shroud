@@ -73,78 +73,6 @@
                     "stmt": "f_operator_assignment_shadow_basic"
                 },
                 "name": "Cstruct_as_subclass = Cstruct_as_subclass"
-            },
-            {
-                "bind": {
-                    "fmtdict": {
-                        "C_name_api": "assign",
-                        "C_name_assign_api": "XXX_TES_ns0_Names_assign_Names",
-                        "F_name_api": "assign",
-                        "F_name_assign_api": "names_assign_Names",
-                        "c_type_lhs": "TES_ns0_Names",
-                        "c_type_rhs": "TES_ns0_Names",
-                        "cxx_type_lhs": "ns0::Names",
-                        "cxx_type_rhs": "ns0::Names",
-                        "f_capsule_data_type_lhs": "TES_SHROUD_capsule_data",
-                        "f_capsule_data_type_rhs": "TES_SHROUD_capsule_data",
-                        "f_derived_type_lhs": "FNames",
-                        "f_derived_type_rhs": "FNames",
-                        "f_interface_import": "TES_SHROUD_capsule_data",
-                        "function_suffix": "_Names",
-                        "typemap_lhs": "ns0::Names",
-                        "typemap_rhs": "ns0::Names"
-                    },
-                    "stmt": "f_operator_assignment_shadow_basic"
-                },
-                "name": "ns0::Names = ns0::Names"
-            },
-            {
-                "bind": {
-                    "fmtdict": {
-                        "C_name_api": "assign",
-                        "C_name_assign_api": "TES_internal_ImplWorker1_assign_ImplWorker1_instantiation3",
-                        "F_name_api": "assign",
-                        "F_name_assign_api": "impl_worker1_assign_ImplWorker1_instantiation3",
-                        "c_type_lhs": "TES_internal_ImplWorker1",
-                        "c_type_rhs": "TES_internal_ImplWorker1",
-                        "cxx_type_lhs": "internal::ImplWorker1",
-                        "cxx_type_rhs": "internal::ImplWorker1",
-                        "f_capsule_data_type_lhs": "TES_SHROUD_capsule_data",
-                        "f_capsule_data_type_rhs": "TES_SHROUD_capsule_data",
-                        "f_derived_type_lhs": "impl_worker1",
-                        "f_derived_type_rhs": "impl_worker1",
-                        "f_interface_import": "TES_SHROUD_capsule_data",
-                        "function_suffix": "_ImplWorker1",
-                        "typemap_lhs": "internal::ImplWorker1",
-                        "typemap_rhs": "internal::ImplWorker1"
-                    },
-                    "stmt": "f_operator_assignment_shadow_basic"
-                },
-                "name": "internal::ImplWorker1 = internal::ImplWorker1"
-            },
-            {
-                "bind": {
-                    "fmtdict": {
-                        "C_name_api": "assign",
-                        "C_name_assign_api": "TES_capi_class1_assign_Class1",
-                        "F_name_api": "assign",
-                        "F_name_assign_api": "class1_assign_Class1",
-                        "c_type_lhs": "TES_capi_class1",
-                        "c_type_rhs": "TES_capi_class1",
-                        "cxx_type_lhs": "CAPI::Class1",
-                        "cxx_type_rhs": "CAPI::Class1",
-                        "f_capsule_data_type_lhs": "TES_SHROUD_capsule_data",
-                        "f_capsule_data_type_rhs": "TES_SHROUD_capsule_data",
-                        "f_derived_type_lhs": "class1",
-                        "f_derived_type_rhs": "class1",
-                        "f_interface_import": "TES_SHROUD_capsule_data",
-                        "function_suffix": "_Class1",
-                        "typemap_lhs": "CAPI::Class1",
-                        "typemap_rhs": "CAPI::Class1"
-                    },
-                    "stmt": "f_operator_assignment_shadow_basic"
-                },
-                "name": "CAPI::Class1 = CAPI::Class1"
             }
         ],
         "class_map": [
@@ -5977,6 +5905,32 @@
         "namespaces": [
             {
                 "<NAMESPACE>": "ns0 ****************************************",
+                "assign_operators": [
+                    {
+                        "bind": {
+                            "fmtdict": {
+                                "C_name_api": "assign",
+                                "C_name_assign_api": "XXX_TES_ns0_Names_assign_Names",
+                                "F_name_api": "assign",
+                                "F_name_assign_api": "names_assign_Names",
+                                "c_type_lhs": "TES_ns0_Names",
+                                "c_type_rhs": "TES_ns0_Names",
+                                "cxx_type_lhs": "ns0::Names",
+                                "cxx_type_rhs": "ns0::Names",
+                                "f_capsule_data_type_lhs": "TES_SHROUD_capsule_data",
+                                "f_capsule_data_type_rhs": "TES_SHROUD_capsule_data",
+                                "f_derived_type_lhs": "FNames",
+                                "f_derived_type_rhs": "FNames",
+                                "f_interface_import": "TES_SHROUD_capsule_data",
+                                "function_suffix": "_Names",
+                                "typemap_lhs": "ns0::Names",
+                                "typemap_rhs": "ns0::Names"
+                            },
+                            "stmt": "f_operator_assignment_shadow_basic"
+                        },
+                        "name": "ns0::Names = ns0::Names"
+                    }
+                ],
                 "classes": [
                     {
                         "<CLASS>": "Names ****************************************",
@@ -7272,6 +7226,32 @@
             },
             {
                 "<NAMESPACE>": "CAPI ****************************************",
+                "assign_operators": [
+                    {
+                        "bind": {
+                            "fmtdict": {
+                                "C_name_api": "assign",
+                                "C_name_assign_api": "TES_capi_class1_assign_Class1",
+                                "F_name_api": "assign",
+                                "F_name_assign_api": "class1_assign_Class1",
+                                "c_type_lhs": "TES_capi_class1",
+                                "c_type_rhs": "TES_capi_class1",
+                                "cxx_type_lhs": "CAPI::Class1",
+                                "cxx_type_rhs": "CAPI::Class1",
+                                "f_capsule_data_type_lhs": "TES_SHROUD_capsule_data",
+                                "f_capsule_data_type_rhs": "TES_SHROUD_capsule_data",
+                                "f_derived_type_lhs": "class1",
+                                "f_derived_type_rhs": "class1",
+                                "f_interface_import": "TES_SHROUD_capsule_data",
+                                "function_suffix": "_Class1",
+                                "typemap_lhs": "CAPI::Class1",
+                                "typemap_rhs": "CAPI::Class1"
+                            },
+                            "stmt": "f_operator_assignment_shadow_basic"
+                        },
+                        "name": "CAPI::Class1 = CAPI::Class1"
+                    }
+                ],
                 "classes": [
                     {
                         "<CLASS>": "Class1 ****************************************",
