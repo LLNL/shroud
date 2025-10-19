@@ -156,6 +156,21 @@ class FillMeta(object):
         if custom is not missing:
             meta["custom"] = custom
 
+    def set_func_owner(self, node, meta):
+        attrs = node.ast.declarator.attrs
+        owner = attrs.get("owner", missing)
+        if owner is not missing:
+            # XXX - Need to extract smart_poiner from Typemaps
+            if owner not in ["caller", "library", "shared", "weak"]:
+                # XXX - shared is only valued with language=c++
+                self.cursor.generate(
+                    "Illegal value '{}' for owner attribute. "
+                    "Must be 'caller' or 'library'.".format(owner)
+                )
+            meta["owner"] = owner
+#        else:
+#            meta["owner"] = options.default_owner
+
     def check_intent(self, arg):
         intent = arg.declarator.attrs.get("intent", missing)
         if intent is missing:
@@ -228,6 +243,25 @@ class FillMeta(object):
         else:
             intent = intent.lower()
         meta["intent"] = intent
+
+    def set_arg_owner(self, node, arg, meta):
+        """
+        Called after set_arg_intent since ownership only applies
+        to intent(out) or intent(inout).
+        """
+        attrs = arg.declarator.attrs
+        owner = attrs.get("owner", missing)
+        if owner is not missing:
+            # XXX - Need to extract smart_poiner from Typemaps
+            if owner not in ["caller", "library", "shared", "weak"]:
+                # XXX - shared is only valued with language=c++
+                self.cursor.generate(
+                    "Illegal value '{}' for owner attribute. "
+                    "Must be 'caller' or 'library'.".format(owner)
+                )
+            meta["owner"] = owner
+#        else:
+#            meta["owner"] = options.default_owner
 
     def set_func_deref_c(self, node, meta):
         """
@@ -744,6 +778,7 @@ class FillMetaShare(FillMeta):
         self.check_func_attrs(node, r_meta)
         self.set_func_abstract_type(node, r_meta)
         self.set_func_intent(node, r_meta)
+        self.set_func_owner(node, r_meta)
         self.meta_function_params(node, is_fptr)
 
     def meta_function_params(self, node, is_fptr=False):
@@ -762,6 +797,7 @@ class FillMetaShare(FillMeta):
             self.check_arg_attrs(node, arg, meta)
             self.set_arg_abstract_type(node, arg, meta)
             self.set_arg_intent(arg, meta, is_fptr)
+            self.set_arg_owner(node, arg, meta)
             self.check_value(arg, meta)
 
             if node.options.F_default_args == "optional" and arg.declarator.init is not None:
@@ -822,6 +858,13 @@ class FillMetaShare(FillMeta):
                 meta["funcarg"] = funcarg
 
     def check_arg_attrs(self, node, arg, meta):
+        """
+        Parameters
+        ----------
+        node : ast.FunctionNode
+        arg : declast.Declaration
+        meta :
+        """
         cursor = self.cursor
         declarator = arg.declarator
         argname = declarator.user_name
@@ -947,17 +990,6 @@ class FillMetaShare(FillMeta):
             if ntypemap.implied_array:
                 # default to 1-d assumed shape
                 meta["rank"] = 1
-
-        owner = attrs.get("owner", missing)
-        if owner is not missing:
-            # XXX - Need to extract smart_poiner from Typemaps
-            if owner not in ["caller", "library", "shared", "weak"]:
-                # XXX - shared is only valued with language=c++
-                self.cursor.generate(
-                    "Illegal value '{}' for owner attribute. "
-                    "Must be 'caller' or 'library'.".format(owner)
-                )
-            meta["owner"] = owner
 
         destructor_name = attrs.get("destructor_name", missing)
         if destructor_name is missing:
