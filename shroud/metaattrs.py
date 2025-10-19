@@ -157,7 +157,11 @@ class FillMeta(object):
             meta["custom"] = custom
 
     def set_func_owner(self, node, meta):
-        attrs = node.ast.declarator.attrs
+        """
+        If the function returns a pointer, set owner.
+        """
+        declarator = node.ast.declarator
+        attrs = declarator.attrs
         owner = attrs.get("owner", missing)
         if owner is not missing:
             # XXX - Need to extract smart_poiner from Typemaps
@@ -1065,6 +1069,7 @@ class FillMetaC(FillMeta):
 
         self.set_func_share(node, r_meta)
         self.set_func_deref_c(node, r_meta)
+#        self.set_func_owner(node, r_meta) # A no-op for now.
         self.set_func_api_c(node, r_meta)
         self.set_func_post_c(cls, node, r_meta)
 
@@ -1128,6 +1133,7 @@ class FillMetaFortran(FillMeta):
 
         self.set_func_share(node, r_meta)
         self.set_func_deref_fortran(node, r_meta)
+        self.set_func_owner(node, r_meta)
         self.set_func_api_fortran(node, r_meta)
         self.set_func_post_fortran(cls, node, r_meta)
         
