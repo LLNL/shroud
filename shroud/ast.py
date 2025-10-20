@@ -519,6 +519,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             debug=False,  # print additional debug info
             debug_index=False,  # print function indexes. debug must also be True.
             debug_testsuite=False,
+            default_owner="library",
             # They change when a function is inserted.
             flatten_namespace=False,
             wrap_class_as="class",
@@ -720,6 +721,8 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_bufferify_suffix="_bufferify",
             C_cfi_suffix="_CFI",
             C_call_list="",
+            c_cmemflags="SWIG_MEM_OWN",
+            c_cmemflags_or="SWIG_MEM_OWN | ",
             C_prefix=C_prefix,
             C_result="rv",  # return value
             c_temp="SHT_",

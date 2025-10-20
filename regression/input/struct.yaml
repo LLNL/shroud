@@ -150,6 +150,7 @@ declarations:
       Treat a struct as a class, i.e. create a shadow derived type.
 
 # start Create_Cstruct_as_class
+# The option.class_ctor defaults +owner(caller)
 - decl: Cstruct_as_class *Create_Cstruct_as_class(void)
   options:
     class_ctor: Cstruct_as_class
@@ -165,6 +166,7 @@ declarations:
 #####
 #   C_shadow_result: False
 # Return a pointer to static variable.
+# Defaults to +owner(library)
 
 - decl: Cstruct_as_class *Return_Cstruct_as_class(void)
   options:

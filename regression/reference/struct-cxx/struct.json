@@ -2694,16 +2694,17 @@
                                         "i_var": "SHT_rv",
                                         "i_var_cdesc": "SHT_rv_cdesc",
                                         "idtor": "0",
-                                        "stmt_name": "f_getter_char*_cdesc_pointer",
+                                        "stmt_name": "f_getter_char*_cdesc_pointer_library",
                                         "typemap_name": "char"
                                     },
                                     "meta": {
                                         "abstract": "char*",
                                         "api": "cdesc",
                                         "deref": "pointer",
-                                        "intent": "getter"
+                                        "intent": "getter",
+                                        "owner": "library"
                                     },
-                                    "stmt": "f_getter_char*_cdesc_pointer"
+                                    "stmt": "f_getter_char*_cdesc_pointer_library"
                                 }
                             },
                             "share": {
@@ -5301,16 +5302,17 @@
                                 "i_var": "SHT_rv",
                                 "i_var_cdesc": "SHT_rv_cdesc",
                                 "idtor": "0",
-                                "stmt_name": "f_function_struct*_cdesc_pointer",
+                                "stmt_name": "f_function_struct*_cdesc_pointer_library",
                                 "typemap_name": "Cstruct1"
                             },
                             "meta": {
                                 "abstract": "struct*",
                                 "api": "cdesc",
                                 "deref": "pointer",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_struct*_cdesc_pointer"
+                            "stmt": "f_function_struct*_cdesc_pointer_library"
                         },
                         "d": {
                             "fmtdict": {
@@ -5710,16 +5712,17 @@
                                 "i_var": "SHT_rv",
                                 "i_var_cdesc": "SHT_rv_cdesc",
                                 "idtor": "0",
-                                "stmt_name": "f_function_struct*_cdesc_pointer",
+                                "stmt_name": "f_function_struct*_cdesc_pointer_library",
                                 "typemap_name": "Cstruct1"
                             },
                             "meta": {
                                 "abstract": "struct*",
                                 "api": "cdesc",
                                 "deref": "pointer",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_struct*_cdesc_pointer"
+                            "stmt": "f_function_struct*_cdesc_pointer_library"
                         },
                         "d": {
                             "fmtdict": {
@@ -6032,7 +6035,7 @@
                                 "i_var_cdesc": "SHT_rv_cdesc",
                                 "idtor": "0",
                                 "rank": "1",
-                                "stmt_name": "f_function_struct*_cdesc_pointer",
+                                "stmt_name": "f_function_struct*_cdesc_pointer_library",
                                 "typemap_name": "Cstruct1"
                             },
                             "meta": {
@@ -6048,9 +6051,10 @@
                                     "2"
                                 ],
                                 "dimension": "2",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_struct*_cdesc_pointer"
+                            "stmt": "f_function_struct*_cdesc_pointer_library"
                         }
                     },
                     "share": {
@@ -6198,16 +6202,17 @@
                                 "i_var": "SHT_rv",
                                 "i_var_cdesc": "SHT_rv_cdesc",
                                 "idtor": "0",
-                                "stmt_name": "f_function_struct*_cdesc_pointer",
+                                "stmt_name": "f_function_struct*_cdesc_pointer_library",
                                 "typemap_name": "Cstruct_list"
                             },
                             "meta": {
                                 "abstract": "struct*",
                                 "api": "cdesc",
                                 "deref": "pointer",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_struct*_cdesc_pointer"
+                            "stmt": "f_function_struct*_cdesc_pointer_library"
                         }
                     },
                     "share": {
@@ -6354,16 +6359,17 @@
                                 "i_suffix": "_bufferify",
                                 "i_type": "type(STR_SHROUD_capsule_data)",
                                 "i_var": "SHT_rv",
-                                "idtor": "0",
-                                "stmt_name": "f_function_shadow*_capsule",
+                                "idtor": "1",
+                                "stmt_name": "f_function_shadow*_capsule_caller",
                                 "typemap_name": "Cstruct_as_class"
                             },
                             "meta": {
                                 "abstract": "shadow*",
                                 "api": "capsule",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "caller"
                             },
-                            "stmt": "f_function_shadow*_capsule"
+                            "stmt": "f_function_shadow*_capsule_caller"
                         }
                     },
                     "share": {
@@ -6610,16 +6616,17 @@
                                 "i_suffix": "_bufferify",
                                 "i_type": "type(STR_SHROUD_capsule_data)",
                                 "i_var": "SHT_rv",
-                                "idtor": "0",
-                                "stmt_name": "f_function_shadow*_capsule",
+                                "idtor": "1",
+                                "stmt_name": "f_function_shadow*_capsule_caller",
                                 "typemap_name": "Cstruct_as_class"
                             },
                             "meta": {
                                 "abstract": "shadow*",
                                 "api": "capsule",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "caller"
                             },
-                            "stmt": "f_function_shadow*_capsule"
+                            "stmt": "f_function_shadow*_capsule_caller"
                         },
                         "x": {
                             "fmtdict": {
@@ -6847,15 +6854,16 @@
                                 "i_type": "type(STR_SHROUD_capsule_data)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
-                                "stmt_name": "f_function_shadow*_capsule",
+                                "stmt_name": "f_function_shadow*_capsule_library",
                                 "typemap_name": "Cstruct_as_class"
                             },
                             "meta": {
                                 "abstract": "shadow*",
                                 "api": "capsule",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_shadow*_capsule"
+                            "stmt": "f_function_shadow*_capsule_library"
                         }
                     },
                     "share": {
@@ -7070,15 +7078,16 @@
                                 "i_type": "type(STR_SHROUD_capsule_data)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
-                                "stmt_name": "f_function_shadow*_capsule",
+                                "stmt_name": "f_function_shadow*_capsule_library",
                                 "typemap_name": "Cstruct_as_class"
                             },
                             "meta": {
                                 "abstract": "shadow*",
                                 "api": "capsule",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_shadow*_capsule"
+                            "stmt": "f_function_shadow*_capsule_library"
                         },
                         "x": {
                             "fmtdict": {
@@ -7698,16 +7707,17 @@
                                 "i_suffix": "_bufferify",
                                 "i_type": "type(STR_SHROUD_capsule_data)",
                                 "i_var": "SHT_rv",
-                                "idtor": "0",
-                                "stmt_name": "f_function_shadow*_capsule",
+                                "idtor": "2",
+                                "stmt_name": "f_function_shadow*_capsule_caller",
                                 "typemap_name": "Cstruct_as_subclass"
                             },
                             "meta": {
                                 "abstract": "shadow*",
                                 "api": "capsule",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "caller"
                             },
-                            "stmt": "f_function_shadow*_capsule"
+                            "stmt": "f_function_shadow*_capsule_caller"
                         },
                         "x": {
                             "fmtdict": {
@@ -8110,15 +8120,16 @@
                                 "i_type": "type(STR_SHROUD_capsule_data)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
-                                "stmt_name": "f_function_shadow*_capsule",
+                                "stmt_name": "f_function_shadow*_capsule_library",
                                 "typemap_name": "Cstruct_as_subclass"
                             },
                             "meta": {
                                 "abstract": "shadow*",
                                 "api": "capsule",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_shadow*_capsule"
+                            "stmt": "f_function_shadow*_capsule_library"
                         },
                         "x": {
                             "fmtdict": {
@@ -8386,15 +8397,16 @@
                                 "i_type": "real(C_DOUBLE)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
-                                "stmt_name": "f_getter_native*_pointer",
+                                "stmt_name": "f_getter_native*_pointer_library",
                                 "typemap_name": "double"
                             },
                             "meta": {
                                 "abstract": "native*",
                                 "deref": "pointer",
-                                "intent": "getter"
+                                "intent": "getter",
+                                "owner": "library"
                             },
-                            "stmt": "f_getter_native*_pointer"
+                            "stmt": "f_getter_native*_pointer_library"
                         },
                         "SH_this": {
                             "fmtdict": {
@@ -8785,7 +8797,7 @@
                                 "i_var_cdesc": "SHT_rv_cdesc",
                                 "idtor": "0",
                                 "rank": "1",
-                                "stmt_name": "f_getter_native*_cdesc_pointer",
+                                "stmt_name": "f_getter_native*_cdesc_pointer_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
@@ -8807,9 +8819,10 @@
                                     "SH_this->nitems+SH_this->nitems"
                                 ],
                                 "dimension": "nitems+nitems",
-                                "intent": "getter"
+                                "intent": "getter",
+                                "owner": "library"
                             },
-                            "stmt": "f_getter_native*_cdesc_pointer"
+                            "stmt": "f_getter_native*_cdesc_pointer_library"
                         },
                         "SH_this": {
                             "fmtdict": {
@@ -9219,7 +9232,7 @@
                                 "i_var_cdesc": "SHT_rv_cdesc",
                                 "idtor": "0",
                                 "rank": "1",
-                                "stmt_name": "f_getter_native*_cdesc_pointer",
+                                "stmt_name": "f_getter_native*_cdesc_pointer_library",
                                 "typemap_name": "double"
                             },
                             "meta": {
@@ -9241,9 +9254,10 @@
                                     "SH_this->nitems*TWO"
                                 ],
                                 "dimension": "nitems*TWO",
-                                "intent": "getter"
+                                "intent": "getter",
+                                "owner": "library"
                             },
-                            "stmt": "f_getter_native*_cdesc_pointer"
+                            "stmt": "f_getter_native*_cdesc_pointer_library"
                         },
                         "SH_this": {
                             "fmtdict": {
@@ -9661,6 +9675,7 @@
                 ]
             },
             "i_type": "type(STR_SHROUD_capsule_data)",
+            "idtor": "1",
             "impl_header": [
                 "struct.h"
             ],
@@ -9731,6 +9746,7 @@
                 ]
             },
             "i_type": "type(STR_SHROUD_capsule_data)",
+            "idtor": "2",
             "impl_header": [
                 "struct.h"
             ],

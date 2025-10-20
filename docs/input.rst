@@ -471,7 +471,9 @@ pointer
     library is being passed back to the user and will be assigned using
     ``c_f_pointer``.
 
-    If *owner(caller)* is also defined, an additional argument is added
+    
+    Attribute *owner(caller)* will be set to *option.default_owner*
+    if it is not also defined. If *caller* an additional argument is added
     which is used to release the memory.
 
     For Python, create a list or NumPy array.
@@ -502,6 +504,9 @@ raw
     Required when there are several layers of indirection that do not
     map directly to the wrapper language.
 
+    Attribute *owner(caller)* will be set to *option.default_owner*
+    if it is not also defined.
+    
     For Fortran, return a ``type(C_PTR)``.
 
     For Python, return a ``PyCapsule``.

@@ -5109,16 +5109,17 @@
                                 "i_var": "SHT_rv",
                                 "i_var_cdesc": "SHT_rv_cdesc",
                                 "idtor": "0",
-                                "stmt_name": "f_getter_struct*_cdesc_pointer",
+                                "stmt_name": "f_getter_struct*_cdesc_pointer_library",
                                 "typemap_name": "nested"
                             },
                             "meta": {
                                 "abstract": "struct*",
                                 "api": "cdesc",
                                 "deref": "pointer",
-                                "intent": "getter"
+                                "intent": "getter",
+                                "owner": "library"
                             },
-                            "stmt": "f_getter_struct*_cdesc_pointer"
+                            "stmt": "f_getter_struct*_cdesc_pointer_library"
                         },
                         "SH_this": {
                             "fmtdict": {
@@ -5512,7 +5513,7 @@
                                 "i_var_cdesc": "SHT_rv_cdesc",
                                 "idtor": "0",
                                 "rank": "1",
-                                "stmt_name": "f_getter_struct**_cdesc_raw",
+                                "stmt_name": "f_getter_struct**_cdesc_raw_library",
                                 "typemap_name": "nested"
                             },
                             "meta": {
@@ -5528,9 +5529,10 @@
                                     "SH_this->sublevels"
                                 ],
                                 "dimension": "sublevels",
-                                "intent": "getter"
+                                "intent": "getter",
+                                "owner": "library"
                             },
-                            "stmt": "f_getter_struct**_cdesc_raw"
+                            "stmt": "f_getter_struct**_cdesc_raw_library"
                         },
                         "SH_this": {
                             "fmtdict": {
@@ -5939,7 +5941,7 @@
                                 "i_var_cdesc": "SHT_rv_cdesc",
                                 "idtor": "0",
                                 "rank": "1",
-                                "stmt_name": "f_getter_struct*_cdesc_pointer",
+                                "stmt_name": "f_getter_struct*_cdesc_pointer_library",
                                 "typemap_name": "nested"
                             },
                             "meta": {
@@ -5955,9 +5957,10 @@
                                     "SH_this->sublevels"
                                 ],
                                 "dimension": "sublevels",
-                                "intent": "getter"
+                                "intent": "getter",
+                                "owner": "library"
                             },
-                            "stmt": "f_getter_struct*_cdesc_pointer"
+                            "stmt": "f_getter_struct*_cdesc_pointer_library"
                         },
                         "SH_this": {
                             "fmtdict": {

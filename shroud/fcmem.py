@@ -220,6 +220,18 @@ class CapsuleFmt(object):
         elif ntypemap.idtor != "0":
             # Return cached value.
             fmt.idtor = ntypemap.idtor
+        elif self.language == "c":
+            fmt.idtor = self.add_destructor(
+                fmt,
+                ntypemap.cxx_type,
+                [
+                    "{cxx_type} *cxx_ptr =\t ({cxx_type} *) ptr;",
+                    "free(cxx_ptr);",
+                ],
+                ntypemap,
+            )
+            ntypemap.idtor = fmt.idtor
+            self.capsule_typedef_nodes[ntypemap.name] = ntypemap
         elif ntypemap.cxx_to_c:
             # Class instance.
             # A C++ native type (std::string, std::vector)

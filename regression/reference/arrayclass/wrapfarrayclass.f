@@ -214,7 +214,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  double *getArray +dimension(getSize())
-        ! Statement: f_function_native*_cdesc_pointer
+        ! Statement: f_function_native*_cdesc_pointer_library
         subroutine c_ArrayWrapper_getArray_bufferify(self, SHT_rv_cdesc) &
                 bind(C, name="ARR_ArrayWrapper_getArray_bufferify")
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
@@ -238,7 +238,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  double *getArrayConst +dimension(getSize())
-        ! Statement: f_function_native*_cdesc_pointer
+        ! Statement: f_function_native*_cdesc_pointer_library
         subroutine c_ArrayWrapper_getArrayConst_bufferify(self, &
                 SHT_rv_cdesc) &
                 bind(C, name="ARR_ArrayWrapper_getArrayConst_bufferify")
@@ -263,7 +263,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  const double *getArrayC +dimension(getSize())
-        ! Statement: f_function_native*_cdesc_pointer
+        ! Statement: f_function_native*_cdesc_pointer_library
         subroutine c_ArrayWrapper_getArrayC_bufferify(self, &
                 SHT_rv_cdesc) &
                 bind(C, name="ARR_ArrayWrapper_getArrayC_bufferify")
@@ -288,7 +288,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  const double *getArrayConstC +dimension(getSize())
-        ! Statement: f_function_native*_cdesc_pointer
+        ! Statement: f_function_native*_cdesc_pointer_library
         subroutine c_ArrayWrapper_getArrayConstC_bufferify(self, &
                 SHT_rv_cdesc) &
                 bind(C, name="ARR_ArrayWrapper_getArrayConstC_bufferify")
@@ -580,7 +580,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  double *getArray +dimension(getSize())
-    ! Statement: f_function_native*_cdesc_pointer
+    ! Statement: f_function_native*_cdesc_pointer_library
     function ArrayWrapper_getArray(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
@@ -596,7 +596,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  double *getArrayConst +dimension(getSize())
-    ! Statement: f_function_native*_cdesc_pointer
+    ! Statement: f_function_native*_cdesc_pointer_library
     function ArrayWrapper_getArrayConst(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
@@ -613,7 +613,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const double *getArrayC +dimension(getSize())
-    ! Statement: f_function_native*_cdesc_pointer
+    ! Statement: f_function_native*_cdesc_pointer_library
     function ArrayWrapper_getArrayC(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
@@ -630,7 +630,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const double *getArrayConstC +dimension(getSize())
-    ! Statement: f_function_native*_cdesc_pointer
+    ! Statement: f_function_native*_cdesc_pointer_library
     function ArrayWrapper_getArrayConstC(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer

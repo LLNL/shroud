@@ -430,6 +430,26 @@ c_function_native**:
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   sphinx-end-before: c_function_native**
+c_function_native**_library:
+  sphinx-start-after: c_function_native**_library
+  name: c_function_native**_library
+  intent: function
+  comments:
+  - Return a C pointer directly as type(C_PTR).
+  - Call function and assign to a c variable.
+  usage:
+  - int **func()
+  mixin_names:
+  - '  f_mixin_function_ptr'
+  - '  c_mixin_function-assign-to-cvar'
+  i_result_decl:
+  - 'type(C_PTR) :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
+  sphinx-end-before: c_function_native**_library
 c_function_native*_caller:
   sphinx-start-after: c_function_native*_caller
   name: c_function_native*_caller
@@ -450,6 +470,26 @@ c_function_native*_caller:
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   sphinx-end-before: c_function_native*_caller
+c_function_native*_library:
+  sphinx-start-after: c_function_native*_library
+  name: c_function_native*_library
+  intent: function
+  comments:
+  - Return a C pointer directly as type(C_PTR).
+  - Call function and assign to a c variable.
+  usage:
+  - int **func()
+  mixin_names:
+  - '  f_mixin_function_ptr'
+  - '  c_mixin_function-assign-to-cvar'
+  i_result_decl:
+  - 'type(C_PTR) :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
+  sphinx-end-before: c_function_native*_library
 c_function_native*_scalar:
   sphinx-start-after: c_function_native*_scalar
   name: c_function_native*_scalar
@@ -1356,6 +1396,31 @@ c_function_string&_copy:
   c_local:
   - cxx
   sphinx-end-before: c_function_string&_copy
+c_function_string&_library:
+  sphinx-start-after: c_function_string&_library
+  name: c_function_string&_library
+  intent: function
+  comments:
+  - Call function and assign to a local C++ variable.
+  notes:
+  - Fortran calling a C function without
+  - any api argument - is this useful?
+  mixin_names:
+  - '  c_mixin_function-assign-to-local'
+  i_result_decl:
+  - 'type(C_PTR) :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
+  c_post_call:
+  - '{c_const}char *{c_var} = {c_local_cxx}{cxx_member}c_str();'
+  c_return:
+  - return {c_var};
+  c_local:
+  - cxx
+  sphinx-end-before: c_function_string&_library
 c_function_string*:
   sphinx-start-after: c_function_string*
   name: c_function_string*
@@ -1695,6 +1760,26 @@ c_function_void*:
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   sphinx-end-before: c_function_void*
+c_function_void*_library:
+  sphinx-start-after: c_function_void*_library
+  name: c_function_void*_library
+  intent: function
+  comments:
+  - Declare a Fortran variable.
+  - Call function and assign to a c variable.
+  notes:
+  - XXX - f entries are the same as the i entries, share?
+  mixin_names:
+  - '  f_mixin_declare-local-variable'
+  - '  c_mixin_function-assign-to-cvar'
+  i_result_decl:
+  - 'type(C_PTR) :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
+  sphinx-end-before: c_function_void*_library
 c_getter_native:
   sphinx-start-after: c_getter_native
   name: c_getter_native
@@ -7437,9 +7522,9 @@ f_function_char*_cdesc_funcarg_allocatable:
   impl_header:
   - <cstring>
   sphinx-end-before: f_function_char*_cdesc_funcarg_allocatable
-f_function_char*_cdesc_funcarg_pointer:
-  sphinx-start-after: f_function_char*_cdesc_funcarg_pointer
-  name: f_function_char*_cdesc_funcarg_pointer
+f_function_char*_cdesc_funcarg_pointer_library:
+  sphinx-start-after: f_function_char*_cdesc_funcarg_pointer_library
+  name: f_function_char*_cdesc_funcarg_pointer_library
   intent: function
   comments:
   - Return function result as an argument.
@@ -7506,10 +7591,10 @@ f_function_char*_cdesc_funcarg_pointer:
   - pointer_string
   impl_header:
   - <cstring>
-  sphinx-end-before: f_function_char*_cdesc_funcarg_pointer
-f_function_char*_cdesc_pointer:
-  sphinx-start-after: f_function_char*_cdesc_pointer
-  name: f_function_char*_cdesc_pointer
+  sphinx-end-before: f_function_char*_cdesc_funcarg_pointer_library
+f_function_char*_cdesc_pointer_library:
+  sphinx-start-after: f_function_char*_cdesc_pointer_library
+  name: f_function_char*_cdesc_pointer_library
   intent: function
   comments:
   - Call the C wrapper as a subroutine.
@@ -7566,7 +7651,7 @@ f_function_char*_cdesc_pointer:
   - pointer_string
   impl_header:
   - <cstring>
-  sphinx-end-before: f_function_char*_cdesc_pointer
+  sphinx-end-before: f_function_char*_cdesc_pointer_library
 f_function_char*_cfi_allocatable:
   sphinx-start-after: f_function_char*_cfi_allocatable
   name: f_function_char*_cfi_allocatable
@@ -7824,9 +7909,9 @@ f_function_char*_cfi_funcarg_copy:
   iface_header:
   - ISO_Fortran_binding.h
   sphinx-end-before: f_function_char*_cfi_funcarg_copy
-f_function_char*_cfi_funcarg_pointer:
-  sphinx-start-after: f_function_char*_cfi_funcarg_pointer
-  name: f_function_char*_cfi_funcarg_pointer
+f_function_char*_cfi_funcarg_pointer_library:
+  sphinx-start-after: f_function_char*_cfi_funcarg_pointer_library
+  name: f_function_char*_cfi_funcarg_pointer_library
   intent: function
   comments:
   - Return function result as an argument.
@@ -7893,10 +7978,10 @@ f_function_char*_cfi_funcarg_pointer:
   - ISO_Fortran_binding.h
   impl_header:
   - <cstring>
-  sphinx-end-before: f_function_char*_cfi_funcarg_pointer
-f_function_char*_cfi_pointer:
-  sphinx-start-after: f_function_char*_cfi_pointer
-  name: f_function_char*_cfi_pointer
+  sphinx-end-before: f_function_char*_cfi_funcarg_pointer_library
+f_function_char*_cfi_pointer_library:
+  sphinx-start-after: f_function_char*_cfi_pointer_library
+  name: f_function_char*_cfi_pointer_library
   intent: function
   comments:
   - Call the C wrapper as a subroutine.
@@ -7963,7 +8048,7 @@ f_function_char*_cfi_pointer:
   - ISO_Fortran_binding.h
   impl_header:
   - <cstring>
-  sphinx-end-before: f_function_char*_cfi_pointer
+  sphinx-end-before: f_function_char*_cfi_pointer_library
 f_function_char*_copy:
   sphinx-start-after: f_function_char*_copy
   name: f_function_char*_copy
@@ -7994,9 +8079,9 @@ f_function_char*_copy:
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   sphinx-end-before: f_function_char*_copy
-f_function_char*_funcarg_raw:
-  sphinx-start-after: f_function_char*_funcarg_raw
-  name: f_function_char*_funcarg_raw
+f_function_char*_funcarg_raw_library:
+  sphinx-start-after: f_function_char*_funcarg_raw_library
+  name: f_function_char*_funcarg_raw_library
   intent: function
   comments:
   - Return function result as an argument.
@@ -8045,7 +8130,7 @@ f_function_char*_funcarg_raw:
     f_intent_attr: ', intent(OUT)'
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
-  sphinx-end-before: f_function_char*_funcarg_raw
+  sphinx-end-before: f_function_char*_funcarg_raw_library
 f_function_char*_pointer:
   sphinx-start-after: f_function_char*_pointer
   name: f_function_char*_pointer
@@ -8076,9 +8161,9 @@ f_function_char*_pointer:
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   sphinx-end-before: f_function_char*_pointer
-f_function_char*_raw:
-  sphinx-start-after: f_function_char*_raw
-  name: f_function_char*_raw
+f_function_char*_raw_library:
+  sphinx-start-after: f_function_char*_raw_library
+  name: f_function_char*_raw_library
   intent: function
   comments:
   - Call a function in Fortran wrapper.
@@ -8105,7 +8190,7 @@ f_function_char*_raw:
     - C_PTR
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
-  sphinx-end-before: f_function_char*_raw
+  sphinx-end-before: f_function_char*_raw_library
 f_function_char_cdesc_allocatable:
   sphinx-start-after: f_function_char_cdesc_allocatable
   name: f_function_char_cdesc_allocatable
@@ -8740,9 +8825,9 @@ f_function_native&:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_need_wrapper: true
   sphinx-end-before: f_function_native&
-f_function_native&_pointer:
-  sphinx-start-after: f_function_native&_pointer
-  name: f_function_native&_pointer
+f_function_native&_pointer_library:
+  sphinx-start-after: f_function_native&_pointer_library
+  name: f_function_native&_pointer_library
   intent: function
   comments:
   - Return a C pointer as a Fortran pointer.
@@ -8780,7 +8865,7 @@ f_function_native&_pointer:
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_need_wrapper: true
-  sphinx-end-before: f_function_native&_pointer
+  sphinx-end-before: f_function_native&_pointer_library
 f_function_native**:
   sphinx-start-after: f_function_native**
   name: f_function_native**
@@ -8806,6 +8891,31 @@ f_function_native**:
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   sphinx-end-before: f_function_native**
+f_function_native**_library:
+  sphinx-start-after: f_function_native**_library
+  name: f_function_native**_library
+  intent: function
+  comments:
+  - Return a C pointer directly as type(C_PTR).
+  - Call function and assign to a c variable.
+  usage:
+  - int **func()
+  mixin_names:
+  - '  f_mixin_function_ptr'
+  - '  c_mixin_function-assign-to-cvar'
+  f_dummy_decl:
+  - 'type(C_PTR) :: {f_var}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - 'type(C_PTR) :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
+  sphinx-end-before: f_function_native**_library
 f_function_native*_cdesc_allocatable:
   sphinx-start-after: f_function_native*_cdesc_allocatable
   name: f_function_native*_cdesc_allocatable
@@ -8899,66 +9009,6 @@ f_function_native*_cdesc_allocatable:
   - array_context
   - capsule_dtor
   sphinx-end-before: f_function_native*_cdesc_allocatable
-f_function_native*_cdesc_pointer:
-  sphinx-start-after: f_function_native*_cdesc_pointer
-  name: f_function_native*_cdesc_pointer
-  intent: function
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass cdesc as argument to C wrapper.
-  - Call function and assign to a c variable.
-  - Fill cdesc from native in the C wrapper.
-  - Set Fortran pointer to native array.
-  mixin_names:
-  - '  f_mixin_call-cwrapper-as-subroutine'
-  - '    c_mixin_as-intent-out'
-  - '  f_mixin_cdesc_pass_to_cwrapper'
-  - '  c_mixin_function-assign-to-cvar'
-  - '  c_mixin_cdesc_native_fill'
-  - '  f_mixin_cdesc_native_pointer'
-  f_dummy_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
-  f_local_decl:
-  - 'type({F_array_type}) :: {f_var_cdesc}'
-  f_arg_call:
-  - '{f_var_cdesc}'
-  f_call:
-  - call {f_call_function}({F_arg_c_call})
-  f_post_call:
-  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{gen.c_f_pointer_shape})"
-  f_module:
-    '{f_module_name}':
-    - '{f_kind}'
-    iso_c_binding:
-    - c_f_pointer
-  f_temps:
-  - cdesc
-  f_need_wrapper: true
-  i_dummy_arg:
-  - '{i_var_cdesc}'
-  i_dummy_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  c_return_type: void
-  c_prototype:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_call:
-  - "{gen.cxxresult.c_var} =\t {C_call_function};"
-  c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->type = {typemap.sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
-  - '{c_var_cdesc}->size = {gen.c_array_size};'
-  c_temps:
-  - cdesc
-  fmtdict:
-    i_intent: OUT
-    i_intent_attr: ', intent(OUT)'
-  helper:
-  - array_context
-  sphinx-end-before: f_function_native*_cdesc_pointer
 f_function_native*_cdesc_pointer_caller:
   sphinx-start-after: f_function_native*_cdesc_pointer_caller
   name: f_function_native*_cdesc_pointer_caller
@@ -9047,6 +9097,66 @@ f_function_native*_cdesc_pointer_caller:
   - array_context
   - capsule_helper
   sphinx-end-before: f_function_native*_cdesc_pointer_caller
+f_function_native*_cdesc_pointer_library:
+  sphinx-start-after: f_function_native*_cdesc_pointer_library
+  name: f_function_native*_cdesc_pointer_library
+  intent: function
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Call function and assign to a c variable.
+  - Fill cdesc from native in the C wrapper.
+  - Set Fortran pointer to native array.
+  mixin_names:
+  - '  f_mixin_call-cwrapper-as-subroutine'
+  - '    c_mixin_as-intent-out'
+  - '  f_mixin_cdesc_pass_to_cwrapper'
+  - '  c_mixin_function-assign-to-cvar'
+  - '  c_mixin_cdesc_native_fill'
+  - '  f_mixin_cdesc_native_pointer'
+  f_dummy_decl:
+  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
+  f_local_decl:
+  - 'type({F_array_type}) :: {f_var_cdesc}'
+  f_arg_call:
+  - '{f_var_cdesc}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  f_post_call:
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{gen.c_f_pointer_shape})"
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
+    iso_c_binding:
+    - c_f_pointer
+  f_temps:
+  - cdesc
+  f_need_wrapper: true
+  i_dummy_arg:
+  - '{i_var_cdesc}'
+  i_dummy_decl:
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  c_return_type: void
+  c_prototype:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
+  c_post_call:
+  - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
+  c_temps:
+  - cdesc
+  fmtdict:
+    i_intent: OUT
+    i_intent_attr: ', intent(OUT)'
+  helper:
+  - array_context
+  sphinx-end-before: f_function_native*_cdesc_pointer_library
 f_function_native*_cfi_allocatable:
   sphinx-start-after: f_function_native*_cfi_allocatable
   name: f_function_native*_cfi_allocatable
@@ -9123,9 +9233,9 @@ f_function_native*_cfi_allocatable:
   impl_header:
   - <cstring>
   sphinx-end-before: f_function_native*_cfi_allocatable
-f_function_native*_cfi_pointer:
-  sphinx-start-after: f_function_native*_cfi_pointer
-  name: f_function_native*_cfi_pointer
+f_function_native*_cfi_pointer_library:
+  sphinx-start-after: f_function_native*_cfi_pointer_library
+  name: f_function_native*_cfi_pointer_library
   intent: function
   comments:
   - Call the C wrapper as a subroutine.
@@ -9204,7 +9314,7 @@ f_function_native*_cfi_pointer:
   - lower_bounds_CFI
   iface_header:
   - ISO_Fortran_binding.h
-  sphinx-end-before: f_function_native*_cfi_pointer
+  sphinx-end-before: f_function_native*_cfi_pointer_library
 f_function_native*_pointer:
   sphinx-start-after: f_function_native*_pointer
   name: f_function_native*_pointer
@@ -9287,9 +9397,50 @@ f_function_native*_pointer_caller:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_need_wrapper: true
   sphinx-end-before: f_function_native*_pointer_caller
-f_function_native*_raw:
-  sphinx-start-after: f_function_native*_raw
-  name: f_function_native*_raw
+f_function_native*_pointer_library:
+  sphinx-start-after: f_function_native*_pointer_library
+  name: f_function_native*_pointer_library
+  intent: function
+  comments:
+  - Return a C pointer as a Fortran pointer.
+  - Call function and assign to a c variable.
+  notes:
+  - Pointer to scalar.
+  - type(C_PTR) is returned instead of a cdesc argument.
+  usage:
+  - int &func()
+  mixin_names:
+  - '  f_mixin_function_c-ptr'
+  - '    f_mixin_function-interface-as-cptr'
+  - '  c_mixin_function-assign-to-cvar'
+  f_dummy_decl:
+  - '{f_type}, pointer :: {f_var}'
+  f_local_decl:
+  - 'type(C_PTR) :: {f_local_ptr}'
+  f_call:
+  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
+  f_post_call:
+  - call c_f_pointer({f_local_ptr}, {f_result_var})
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
+    iso_c_binding:
+    - C_PTR
+    - c_f_pointer
+  f_local:
+  - ptr
+  i_result_decl:
+  - 'type(C_PTR) :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
+  c_need_wrapper: true
+  sphinx-end-before: f_function_native*_pointer_library
+f_function_native*_raw_library:
+  sphinx-start-after: f_function_native*_raw_library
+  name: f_function_native*_raw_library
   intent: function
   comments:
   - Return a C pointer directly as type(C_PTR).
@@ -9311,7 +9462,7 @@ f_function_native*_raw:
     - C_PTR
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
-  sphinx-end-before: f_function_native*_raw
+  sphinx-end-before: f_function_native*_raw_library
 f_function_native*_scalar:
   sphinx-start-after: f_function_native*_scalar
   name: f_function_native*_scalar
@@ -9772,6 +9923,8 @@ f_function_smartptr<shadow>*_capsule:
   - Pass function result as a capsule argument from Fortran to C.
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
+  notes:
+  - TODO - does ownership make sense here?
   mixin_names:
   - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
@@ -13746,9 +13899,9 @@ f_function_struct:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
   sphinx-end-before: f_function_struct
-f_function_struct*_cdesc_pointer:
-  sphinx-start-after: f_function_struct*_cdesc_pointer
-  name: f_function_struct*_cdesc_pointer
+f_function_struct*_cdesc_pointer_library:
+  sphinx-start-after: f_function_struct*_cdesc_pointer_library
+  name: f_function_struct*_cdesc_pointer_library
   intent: function
   comments:
   - Call the C wrapper as a subroutine.
@@ -13805,7 +13958,7 @@ f_function_struct*_cdesc_pointer:
     i_intent_attr: ', intent(OUT)'
   helper:
   - array_context
-  sphinx-end-before: f_function_struct*_cdesc_pointer
+  sphinx-end-before: f_function_struct*_cdesc_pointer_library
 f_function_struct*_pointer:
   sphinx-start-after: f_function_struct*_pointer
   name: f_function_struct*_pointer
@@ -13951,6 +14104,32 @@ f_function_void*:
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   sphinx-end-before: f_function_void*
+f_function_void*_library:
+  sphinx-start-after: f_function_void*_library
+  name: f_function_void*_library
+  intent: function
+  comments:
+  - Declare a Fortran variable.
+  - Call function and assign to a c variable.
+  notes:
+  - XXX - f entries are the same as the i entries, share?
+  mixin_names:
+  - '  f_mixin_declare-local-variable'
+  - '  c_mixin_function-assign-to-cvar'
+  f_dummy_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
+  i_result_decl:
+  - 'type(C_PTR) :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
+  sphinx-end-before: f_function_void*_library
 f_getter_bool:
   sphinx-start-after: f_getter_bool
   name: f_getter_bool
@@ -14115,9 +14294,9 @@ f_getter_char*_cdesc_allocatable:
   impl_header:
   - <cstring>
   sphinx-end-before: f_getter_char*_cdesc_allocatable
-f_getter_char*_cdesc_pointer:
-  sphinx-start-after: f_getter_char*_cdesc_pointer
-  name: f_getter_char*_cdesc_pointer
+f_getter_char*_cdesc_pointer_library:
+  sphinx-start-after: f_getter_char*_cdesc_pointer_library
+  name: f_getter_char*_cdesc_pointer_library
   intent: getter
   comments:
   - Call the C wrapper as a subroutine.
@@ -14182,7 +14361,7 @@ f_getter_char*_cdesc_pointer:
   - type_defines
   impl_header:
   - <cstring>
-  sphinx-end-before: f_getter_char*_cdesc_pointer
+  sphinx-end-before: f_getter_char*_cdesc_pointer_library
 f_getter_native:
   sphinx-start-after: f_getter_native
   name: f_getter_native
@@ -14207,9 +14386,9 @@ f_getter_native:
   - return {CXX_this}->{field_name};
   c_need_wrapper: true
   sphinx-end-before: f_getter_native
-f_getter_native*_cdesc_pointer:
-  sphinx-start-after: f_getter_native*_cdesc_pointer
-  name: f_getter_native*_cdesc_pointer
+f_getter_native*_cdesc_pointer_library:
+  sphinx-start-after: f_getter_native*_cdesc_pointer_library
+  name: f_getter_native*_cdesc_pointer_library
   intent: getter
   comments:
   - Call the C wrapper as a subroutine.
@@ -14267,10 +14446,10 @@ f_getter_native*_cdesc_pointer:
   helper:
   - array_context
   - type_defines
-  sphinx-end-before: f_getter_native*_cdesc_pointer
-f_getter_native*_pointer:
-  sphinx-start-after: f_getter_native*_pointer
-  name: f_getter_native*_pointer
+  sphinx-end-before: f_getter_native*_cdesc_pointer_library
+f_getter_native*_pointer_library:
+  sphinx-start-after: f_getter_native*_pointer_library
+  name: f_getter_native*_pointer_library
   intent: getter
   comments:
   - Declare a Fortran variable.
@@ -14291,7 +14470,7 @@ f_getter_native*_pointer:
   c_return:
   - return {CXX_this}->{field_name};
   c_need_wrapper: true
-  sphinx-end-before: f_getter_native*_pointer
+  sphinx-end-before: f_getter_native*_pointer_library
 f_getter_string_buf_copy:
   sphinx-start-after: f_getter_string_buf_copy
   name: f_getter_string_buf_copy
@@ -14494,9 +14673,9 @@ f_getter_string_cdesc_pointer:
   - array_context
   - pointer_string
   sphinx-end-before: f_getter_string_cdesc_pointer
-f_getter_struct**_cdesc_raw:
-  sphinx-start-after: f_getter_struct**_cdesc_raw
-  name: f_getter_struct**_cdesc_raw
+f_getter_struct**_cdesc_raw_library:
+  sphinx-start-after: f_getter_struct**_cdesc_raw_library
+  name: f_getter_struct**_cdesc_raw_library
   intent: getter
   comments:
   - Call the C wrapper as a subroutine.
@@ -14551,10 +14730,10 @@ f_getter_struct**_cdesc_raw:
   helper:
   - array_context
   - type_defines
-  sphinx-end-before: f_getter_struct**_cdesc_raw
-f_getter_struct*_cdesc_pointer:
-  sphinx-start-after: f_getter_struct*_cdesc_pointer
-  name: f_getter_struct*_cdesc_pointer
+  sphinx-end-before: f_getter_struct**_cdesc_raw_library
+f_getter_struct*_cdesc_pointer_library:
+  sphinx-start-after: f_getter_struct*_cdesc_pointer_library
+  name: f_getter_struct*_cdesc_pointer_library
   intent: getter
   comments:
   - Call the C wrapper as a subroutine.
@@ -14612,7 +14791,7 @@ f_getter_struct*_cdesc_pointer:
   helper:
   - array_context
   - type_defines
-  sphinx-end-before: f_getter_struct*_cdesc_pointer
+  sphinx-end-before: f_getter_struct*_cdesc_pointer_library
 f_getter_struct*_fapi_pointer:
   sphinx-start-after: f_getter_struct*_fapi_pointer
   name: f_getter_struct*_fapi_pointer
@@ -23331,8 +23510,10 @@ root
       native& -- c_function_native&
       native* -- c_function_native*
         caller -- c_function_native*_caller
+        library -- c_function_native*_library
         scalar -- c_function_native*_scalar
       native** -- c_function_native**
+        library -- c_function_native**_library
       shadow
         capptr -- c_function_shadow_capptr
       shadow&
@@ -23362,6 +23543,7 @@ root
         buf
           copy -- c_function_string&_buf_copy
         copy -- c_function_string&_copy
+        library -- c_function_string&_library
       string* -- c_function_string*
         buf
           copy -- c_function_string*_buf_copy
@@ -23373,6 +23555,7 @@ root
       vector<native> -- c_function_vector<native>
         malloc -- c_function_vector<native>_malloc
       void* -- c_function_void*
+        library -- c_function_void*_library
     getter
       native -- c_getter_native
       native* -- c_getter_native*
@@ -23685,38 +23868,50 @@ root
           allocatable -- f_function_char*_cdesc_allocatable
           funcarg
             allocatable -- f_function_char*_cdesc_funcarg_allocatable
-            pointer -- f_function_char*_cdesc_funcarg_pointer
-          pointer -- f_function_char*_cdesc_pointer
+            pointer
+              library -- f_function_char*_cdesc_funcarg_pointer_library
+          pointer
+            library -- f_function_char*_cdesc_pointer_library
         cfi
           allocatable -- f_function_char*_cfi_allocatable
           copy -- f_function_char*_cfi_copy
           funcarg
             allocatable -- f_function_char*_cfi_funcarg_allocatable
             copy -- f_function_char*_cfi_funcarg_copy
-            pointer -- f_function_char*_cfi_funcarg_pointer
-          pointer -- f_function_char*_cfi_pointer
+            pointer
+              library -- f_function_char*_cfi_funcarg_pointer_library
+          pointer
+            library -- f_function_char*_cfi_pointer_library
         copy -- f_function_char*_copy
         funcarg
-          raw -- f_function_char*_funcarg_raw
+          raw
+            library -- f_function_char*_funcarg_raw_library
         pointer -- f_function_char*_pointer
-        raw -- f_function_char*_raw
+        raw
+          library -- f_function_char*_raw_library
       enum -- f_function_enum
       native -- f_function_native
       native& -- f_function_native&
-        pointer -- f_function_native&_pointer
+        pointer
+          library -- f_function_native&_pointer_library
       native*
         cdesc
           allocatable -- f_function_native*_cdesc_allocatable
-          pointer -- f_function_native*_cdesc_pointer
+          pointer
             caller -- f_function_native*_cdesc_pointer_caller
+            library -- f_function_native*_cdesc_pointer_library
         cfi
           allocatable -- f_function_native*_cfi_allocatable
-          pointer -- f_function_native*_cfi_pointer
+          pointer
+            library -- f_function_native*_cfi_pointer_library
         pointer -- f_function_native*_pointer
           caller -- f_function_native*_pointer_caller
-        raw -- f_function_native*_raw
+          library -- f_function_native*_pointer_library
+        raw
+          library -- f_function_native*_raw_library
         scalar -- f_function_native*_scalar
       native** -- f_function_native**
+        library -- f_function_native**_library
       shadow
         capsule -- f_function_shadow_capsule
       shadow&
@@ -23804,12 +23999,14 @@ root
       struct -- f_function_struct
       struct*
         cdesc
-          pointer -- f_function_struct*_cdesc_pointer
+          pointer
+            library -- f_function_struct*_cdesc_pointer_library
         pointer -- f_function_struct*_pointer
       vector<native>
         cdesc
           allocatable -- f_function_vector<native>_cdesc_allocatable
       void* -- f_function_void*
+        library -- f_function_void*_library
     getter
       bool -- f_getter_bool
       char*
@@ -23817,12 +24014,15 @@ root
           copy -- f_getter_char*_buf_copy
         cdesc
           allocatable -- f_getter_char*_cdesc_allocatable
-          pointer -- f_getter_char*_cdesc_pointer
+          pointer
+            library -- f_getter_char*_cdesc_pointer_library
       native -- f_getter_native
       native*
         cdesc
-          pointer -- f_getter_native*_cdesc_pointer
-        pointer -- f_getter_native*_pointer
+          pointer
+            library -- f_getter_native*_cdesc_pointer_library
+        pointer
+          library -- f_getter_native*_pointer_library
       string
         buf
           copy -- f_getter_string_buf_copy
@@ -23831,12 +24031,14 @@ root
           pointer -- f_getter_string_cdesc_pointer
       struct*
         cdesc
-          pointer -- f_getter_struct*_cdesc_pointer
+          pointer
+            library -- f_getter_struct*_cdesc_pointer_library
         fapi
           pointer -- f_getter_struct*_fapi_pointer
       struct**
         cdesc
-          raw -- f_getter_struct**_cdesc_raw
+          raw
+            library -- f_getter_struct**_cdesc_raw_library
     in
       bool -- f_in_bool
       char -- f_in_char

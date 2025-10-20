@@ -6446,16 +6446,17 @@
                                 "i_suffix": "_bufferify",
                                 "i_type": "type(GEN_SHROUD_capsule_data)",
                                 "i_var": "SHT_rv",
-                                "idtor": "0",
-                                "stmt_name": "f_function_shadow*_capsule",
+                                "idtor": "1",
+                                "stmt_name": "f_function_shadow*_capsule_caller",
                                 "typemap_name": "StructAsClass"
                             },
                             "meta": {
                                 "abstract": "shadow*",
                                 "api": "capsule",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "caller"
                             },
-                            "stmt": "f_function_shadow*_capsule"
+                            "stmt": "f_function_shadow*_capsule_caller"
                         }
                     },
                     "share": {
@@ -7099,6 +7100,7 @@
                 ]
             },
             "i_type": "type(GEN_SHROUD_capsule_data)",
+            "idtor": "1",
             "impl_header": [
                 "generic.h",
                 "helper.h"

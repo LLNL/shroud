@@ -1146,7 +1146,7 @@ int * POI_returnIntPtrToScalar(void)
 
 // ----------------------------------------
 // Function:  int *returnIntPtrToScalar
-// Statement: f_function_native*_cfi_pointer
+// Statement: f_function_native*_cfi_pointer_library
 // start POI_returnIntPtrToScalar_CFI
 void POI_returnIntPtrToScalar_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
@@ -1182,7 +1182,7 @@ int * POI_returnIntPtrToFixedArray(void)
 
 // ----------------------------------------
 // Function:  int *returnIntPtrToFixedArray +dimension(10)
-// Statement: f_function_native*_cfi_pointer
+// Statement: f_function_native*_cfi_pointer_library
 // start POI_returnIntPtrToFixedArray_CFI
 void POI_returnIntPtrToFixedArray_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
@@ -1220,7 +1220,7 @@ const int * POI_returnIntPtrToConstScalar(void)
 
 // ----------------------------------------
 // Function:  const int *returnIntPtrToConstScalar
-// Statement: f_function_native*_cfi_pointer
+// Statement: f_function_native*_cfi_pointer_library
 // start POI_returnIntPtrToConstScalar_CFI
 void POI_returnIntPtrToConstScalar_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
@@ -1256,7 +1256,7 @@ const int * POI_returnIntPtrToFixedConstArray(void)
 
 // ----------------------------------------
 // Function:  const int *returnIntPtrToFixedConstArray +dimension(10)
-// Statement: f_function_native*_cfi_pointer
+// Statement: f_function_native*_cfi_pointer_library
 // start POI_returnIntPtrToFixedConstArray_CFI
 void POI_returnIntPtrToFixedConstArray_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
@@ -1347,7 +1347,7 @@ int * POI_returnIntRawWithArgs(const char *name)
  */
 // ----------------------------------------
 // Function:  int *returnIntRawWithArgs +deref(raw)
-// Statement: f_function_native*_raw
+// Statement: f_function_native*_raw_library
 // ----------------------------------------
 // Argument:  const char *name
 // Statement: f_in_char*_cfi

@@ -64,7 +64,7 @@ int * OWN_ReturnIntPtrPointer(void)
 
 // ----------------------------------------
 // Function:  int *ReturnIntPtrPointer +deref(pointer)
-// Statement: f_function_native*_pointer
+// Statement: f_function_native*_pointer_library
 int * OWN_ReturnIntPtrPointer_bufferify(void)
 {
     // splicer begin function.ReturnIntPtrPointer_bufferify
@@ -105,7 +105,7 @@ int * OWN_ReturnIntPtrDimPointer(int *len)
 
 // ----------------------------------------
 // Function:  int *ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
-// Statement: f_function_native*_cdesc_pointer
+// Statement: f_function_native*_cdesc_pointer_library
 // ----------------------------------------
 // Argument:  int *len +hidden+intent(out)
 // Statement: f_out_native*_hidden
@@ -183,7 +183,7 @@ int * OWN_ReturnIntPtrDimDefault(int *len)
 
 // ----------------------------------------
 // Function:  int *ReturnIntPtrDimDefault +dimension(len)
-// Statement: f_function_native*_cdesc_pointer
+// Statement: f_function_native*_cdesc_pointer_library
 // ----------------------------------------
 // Argument:  int *len +hidden+intent(out)
 // Statement: f_out_native*_hidden

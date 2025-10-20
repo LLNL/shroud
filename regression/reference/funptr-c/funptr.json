@@ -2890,9 +2890,10 @@
                                                 "meta": {
                                                     "abstract": "native*",
                                                     "deref": "pointer",
-                                                    "intent": "function"
+                                                    "intent": "function",
+                                                    "owner": "library"
                                                 },
-                                                "stmt": "f_function_native*_pointer"
+                                                "stmt": "f_function_native*_pointer_library"
                                             }
                                         },
                                         "share": {
@@ -2968,9 +2969,10 @@
                                                 "meta": {
                                                     "abstract": "native*",
                                                     "deref": "pointer",
-                                                    "intent": "function"
+                                                    "intent": "function",
+                                                    "owner": "library"
                                                 },
-                                                "stmt": "f_function_native*_pointer"
+                                                "stmt": "f_function_native*_pointer_library"
                                             }
                                         },
                                         "share": {

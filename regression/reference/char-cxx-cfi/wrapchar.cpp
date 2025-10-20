@@ -386,7 +386,7 @@ const char * CHA_getConstCharPtrPointer(void)
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
 // ----------------------------------------
 // Function:  const char *getConstCharPtrPointer +deref(pointer)
-// Statement: f_function_char*_cfi_pointer
+// Statement: f_function_char*_cfi_pointer_library
 // start CHA_getConstCharPtrPointer_CFI
 void CHA_getConstCharPtrPointer_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
@@ -498,7 +498,7 @@ void CHA_getConstCharPtrAsAllocArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const char *getConstCharPtrAsPointerArg +deref(pointer)+funcarg
-// Statement: f_function_char*_cfi_funcarg_pointer
+// Statement: f_function_char*_cfi_funcarg_pointer_library
 // start CHA_getConstCharPtrAsPointerArg_CFI
 void CHA_getConstCharPtrAsPointerArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
@@ -532,7 +532,7 @@ void CHA_getConstCharPtrAsPointerArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const char *getConstCharPtrAsRawArg +deref(raw)+funcarg
-// Statement: f_function_char*_funcarg_raw
+// Statement: f_function_char*_funcarg_raw_library
 // start CHA_getConstCharPtrAsRawArg_bufferify
 void CHA_getConstCharPtrAsRawArg_bufferify(void **SHC_rv)
 {

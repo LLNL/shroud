@@ -5,6 +5,8 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 
+// typemap
+#include "struct.h"
 // shroud
 #include "typesstruct.h"
 #include <stdlib.h>
@@ -27,6 +29,31 @@ void STR_ShroudCopyString(STR_SHROUD_array *data, char *c_var,
 // Release library allocated memory.
 void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap)
 {
+    void *ptr = cap->addr;
+    switch (cap->idtor) {
+    case 0:   // --none--
+    {
+        // Nothing to delete
+        break;
+    }
+    case 1:   // Cstruct_as_class
+    {
+        Cstruct_as_class *cxx_ptr = (Cstruct_as_class *) ptr;
+        free(cxx_ptr);
+        break;
+    }
+    case 2:   // Cstruct_as_subclass
+    {
+        Cstruct_as_subclass *cxx_ptr = (Cstruct_as_subclass *) ptr;
+        free(cxx_ptr);
+        break;
+    }
+    default:
+    {
+        // Unexpected case in destructor
+        break;
+    }
+    }
     cap->addr = NULL;
     cap->idtor = 0;  // avoid deleting again
 }

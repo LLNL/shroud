@@ -173,7 +173,41 @@ class FillMeta(object):
                 )
             meta["owner"] = owner
 #        else:
-#            meta["owner"] = options.default_owner
+#            meta["owner"] = node.options.default_owner
+
+    def set_func_owner_fortran(self, node, meta):
+        """
+        If the function returns a pointer, set owner.
+        Called after meta[deref] is set.
+        Ownership is only possible with deref pointer or raw.
+        """
+        options = node.options
+        declarator = node.ast.declarator
+        attrs = declarator.attrs
+        owner = attrs.get("owner", missing)
+        if owner is not missing:
+            # XXX - Need to extract smart_poiner from Typemaps
+            if owner not in ["caller", "library", "shared", "weak"]:
+                # XXX - shared is only valued with language=c++
+                self.cursor.generate(
+                    "Illegal value '{}' for owner attribute. "
+                    "Must be 'caller' or 'library'.".format(owner)
+                )
+            meta["owner"] = owner
+        elif node.return_this:
+            # Does not return anything, no need for ownership.
+            pass
+        elif options.class_ctor:
+            meta["owner"] = "caller"
+        elif declarator.is_indirect():
+            ntypemap = node.ast.typemap
+            if ntypemap.sgroup == "shadow":
+                # XXX - deref is not set for shadow in set_func_deref_fortran. why?
+                meta["owner"] = options.default_owner
+            else:
+                deref = meta["deref"]
+                if deref in ["pointer", "raw"]:
+                    meta["owner"] = options.default_owner
 
     def check_intent(self, arg):
         intent = arg.declarator.attrs.get("intent", missing)
@@ -1133,7 +1167,7 @@ class FillMetaFortran(FillMeta):
 
         self.set_func_share(node, r_meta)
         self.set_func_deref_fortran(node, r_meta)
-        self.set_func_owner(node, r_meta)
+        self.set_func_owner_fortran(node, r_meta)
         self.set_func_api_fortran(node, r_meta)
         self.set_func_post_fortran(cls, node, r_meta)
         

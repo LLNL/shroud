@@ -1860,15 +1860,16 @@
                                         "i_type": "type(CLA_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
                                         "idtor": "0",
-                                        "stmt_name": "f_function_shadow*_capsule",
+                                        "stmt_name": "f_function_shadow*_capsule_library",
                                         "typemap_name": "classes::Class1"
                                     },
                                     "meta": {
                                         "abstract": "shadow*",
                                         "api": "capsule",
-                                        "intent": "function"
+                                        "intent": "function",
+                                        "owner": "library"
                                     },
-                                    "stmt": "f_function_shadow*_capsule"
+                                    "stmt": "f_function_shadow*_capsule_library"
                                 },
                                 "flag": {
                                     "fmtdict": {
@@ -2122,15 +2123,16 @@
                                         "i_type": "type(CLA_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
                                         "idtor": "0",
-                                        "stmt_name": "f_function_shadow*_capsule",
+                                        "stmt_name": "f_function_shadow*_capsule_library",
                                         "typemap_name": "classes::Class1"
                                     },
                                     "meta": {
                                         "abstract": "shadow*",
                                         "api": "capsule",
-                                        "intent": "function"
+                                        "intent": "function",
+                                        "owner": "library"
                                     },
-                                    "stmt": "f_function_shadow*_capsule"
+                                    "stmt": "f_function_shadow*_capsule_library"
                                 }
                             },
                             "lua": {
@@ -4601,15 +4603,16 @@
                                         "i_type": "type(CLA_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
                                         "idtor": "0",
-                                        "stmt_name": "f_function_shadow&_capsule",
+                                        "stmt_name": "f_function_shadow&_capsule_library",
                                         "typemap_name": "classes::Singleton"
                                     },
                                     "meta": {
                                         "abstract": "shadow&",
                                         "api": "capsule",
-                                        "intent": "function"
+                                        "intent": "function",
+                                        "owner": "library"
                                     },
-                                    "stmt": "f_function_shadow&_capsule"
+                                    "stmt": "f_function_shadow&_capsule_library"
                                 }
                             },
                             "lua": {
@@ -6619,7 +6622,7 @@
                                         "i_var_cdesc": "SHT_rv_cdesc",
                                         "idtor": "0",
                                         "rank": "1",
-                                        "stmt_name": "f_getter_native*_cdesc_pointer",
+                                        "stmt_name": "f_getter_native*_cdesc_pointer_library",
                                         "typemap_name": "int"
                                     },
                                     "meta": {
@@ -6635,9 +6638,10 @@
                                             "SH_this->nitems"
                                         ],
                                         "dimension": "nitems",
-                                        "intent": "getter"
+                                        "intent": "getter",
+                                        "owner": "library"
                                     },
-                                    "stmt": "f_getter_native*_cdesc_pointer"
+                                    "stmt": "f_getter_native*_cdesc_pointer_library"
                                 }
                             },
                             "share": {
@@ -8008,15 +8012,16 @@
                                 "i_type": "type(CLA_SHROUD_capsule_data)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
-                                "stmt_name": "f_function_shadow*_capsule",
+                                "stmt_name": "f_function_shadow*_capsule_library",
                                 "typemap_name": "classes::Class1"
                             },
                             "meta": {
                                 "abstract": "shadow*",
                                 "api": "capsule",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_shadow*_capsule"
+                            "stmt": "f_function_shadow*_capsule_library"
                         }
                     },
                     "share": {
@@ -8166,15 +8171,16 @@
                                 "i_type": "type(CLA_SHROUD_capsule_data)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
-                                "stmt_name": "f_function_shadow*_capsule",
+                                "stmt_name": "f_function_shadow*_capsule_library",
                                 "typemap_name": "classes::Class1"
                             },
                             "meta": {
                                 "abstract": "shadow*",
                                 "api": "capsule",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_shadow*_capsule"
+                            "stmt": "f_function_shadow*_capsule_library"
                         }
                     },
                     "lua": {
@@ -8358,15 +8364,16 @@
                                 "i_type": "type(CLA_SHROUD_capsule_data)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
-                                "stmt_name": "f_function_shadow*_capsule",
+                                "stmt_name": "f_function_shadow*_capsule_library",
                                 "typemap_name": "classes::Class1"
                             },
                             "meta": {
                                 "abstract": "shadow*",
                                 "api": "capsule",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_shadow*_capsule"
+                            "stmt": "f_function_shadow*_capsule_library"
                         }
                     },
                     "share": {
@@ -8500,15 +8507,16 @@
                                 "i_type": "type(CLA_SHROUD_capsule_data)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
-                                "stmt_name": "f_function_shadow*_capsule",
+                                "stmt_name": "f_function_shadow*_capsule_library",
                                 "typemap_name": "classes::Class1"
                             },
                             "meta": {
                                 "abstract": "shadow*",
                                 "api": "capsule",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_shadow*_capsule"
+                            "stmt": "f_function_shadow*_capsule_library"
                         }
                     },
                     "share": {
@@ -8656,15 +8664,16 @@
                                 "i_type": "type(CLA_SHROUD_capsule_data)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
-                                "stmt_name": "f_function_shadow&_capsule",
+                                "stmt_name": "f_function_shadow&_capsule_library",
                                 "typemap_name": "classes::Class1"
                             },
                             "meta": {
                                 "abstract": "shadow&",
                                 "api": "capsule",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_shadow&_capsule"
+                            "stmt": "f_function_shadow&_capsule_library"
                         }
                     },
                     "share": {
@@ -8811,15 +8820,16 @@
                                 "i_type": "type(CLA_SHROUD_capsule_data)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
-                                "stmt_name": "f_function_shadow&_capsule",
+                                "stmt_name": "f_function_shadow&_capsule_library",
                                 "typemap_name": "classes::Class1"
                             },
                             "meta": {
                                 "abstract": "shadow&",
                                 "api": "capsule",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_shadow&_capsule"
+                            "stmt": "f_function_shadow&_capsule_library"
                         }
                     },
                     "lua": {

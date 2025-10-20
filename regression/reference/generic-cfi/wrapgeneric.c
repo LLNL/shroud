@@ -299,13 +299,13 @@ void GEN_GetPointerAsPointer_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi)
 
 // ----------------------------------------
 // Function:  StructAsClass *CreateStructAsClass
-// Statement: f_function_shadow*_capsule
+// Statement: f_function_shadow*_capsule_caller
 void GEN_CreateStructAsClass_bufferify(GEN_StructAsClass *SHC_rv)
 {
     // splicer begin function.CreateStructAsClass_bufferify
     StructAsClass *SHC_rv_cxx = CreateStructAsClass();
     SHC_rv->addr  = SHC_rv_cxx;
-    SHC_rv->idtor = 0;
+    SHC_rv->idtor = 1;
     SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     // splicer end function.CreateStructAsClass_bufferify
 }

@@ -288,7 +288,7 @@ module char_mod
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
     ! ----------------------------------------
     ! Function:  const char *getConstCharPtrPointer +deref(pointer)
-    ! Statement: f_function_char*_cdesc_pointer
+    ! Statement: f_function_char*_cdesc_pointer_library
     ! start c_get_const_char_ptr_pointer_bufferify
     interface
         subroutine c_get_const_char_ptr_pointer_bufferify(SHT_rv_cdesc) &
@@ -303,7 +303,7 @@ module char_mod
 
     ! ----------------------------------------
     ! Function:  const char *getConstCharPtrRaw +deref(raw)
-    ! Statement: f_function_char*_raw
+    ! Statement: f_function_char*_raw_library
     ! start get_const_char_ptr_raw
     interface
         function get_const_char_ptr_raw() &
@@ -364,7 +364,7 @@ module char_mod
 
     ! ----------------------------------------
     ! Function:  const char *getConstCharPtrAsPointerArg +deref(pointer)+funcarg
-    ! Statement: f_function_char*_cdesc_funcarg_pointer
+    ! Statement: f_function_char*_cdesc_funcarg_pointer_library
     ! start c_get_const_char_ptr_as_pointer_arg_bufferify
     interface
         subroutine c_get_const_char_ptr_as_pointer_arg_bufferify( &
@@ -379,7 +379,7 @@ module char_mod
 
     ! ----------------------------------------
     ! Function:  const char *getConstCharPtrAsRawArg +deref(raw)+funcarg
-    ! Statement: f_function_char*_funcarg_raw
+    ! Statement: f_function_char*_funcarg_raw_library
     ! start get_const_char_ptr_as_raw_arg
     interface
         subroutine get_const_char_ptr_as_raw_arg(output) &
@@ -987,7 +987,7 @@ contains
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
     ! ----------------------------------------
     ! Function:  const char *getConstCharPtrPointer +deref(pointer)
-    ! Statement: f_function_char*_cdesc_pointer
+    ! Statement: f_function_char*_cdesc_pointer_library
     !>
     !! \brief return a 'const char *' as character(:) pointer
     !!
@@ -1009,7 +1009,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  const char *getConstCharPtrRaw +deref(raw)
-    ! Statement: f_function_char*_raw
+    ! Statement: f_function_char*_raw_library
     !>
     !! \brief return a 'const char *' as type(C_PTR)
     !!
@@ -1067,7 +1067,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const char *getConstCharPtrAsPointerArg +deref(pointer)+funcarg
-    ! Statement: f_function_char*_cdesc_funcarg_pointer
+    ! Statement: f_function_char*_cdesc_funcarg_pointer_library
     !>
     !! \brief return a 'const char *' as an pointer argument
     !!
@@ -1087,7 +1087,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  const char *getConstCharPtrAsRawArg +deref(raw)+funcarg
-    ! Statement: f_function_char*_funcarg_raw
+    ! Statement: f_function_char*_funcarg_raw_library
     !>
     !! \brief return a 'const char *' as a type(C_PTR) argument
     !!

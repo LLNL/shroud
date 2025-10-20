@@ -318,7 +318,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass2_get_class1(
 
 // ----------------------------------------
 // Function:  ExClass1 *get_class1
-// Statement: f_function_shadow*_capsule
+// Statement: f_function_shadow*_capsule_library
 // ----------------------------------------
 // Argument:  const ExClass1 *in
 // Statement: f_in_shadow*

@@ -760,7 +760,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int *returnIntPtrToScalar
-    ! Statement: f_function_native*_pointer
+    ! Statement: f_function_native*_pointer_library
     ! start c_return_int_ptr_to_scalar_bufferify
     interface
         function c_return_int_ptr_to_scalar_bufferify() &
@@ -775,7 +775,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int *returnIntPtrToFixedArray +dimension(10)
-    ! Statement: f_function_native*_cdesc_pointer
+    ! Statement: f_function_native*_cdesc_pointer_library
     ! start c_return_int_ptr_to_fixed_array_bufferify
     interface
         subroutine c_return_int_ptr_to_fixed_array_bufferify( &
@@ -790,7 +790,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  const int *returnIntPtrToConstScalar
-    ! Statement: f_function_native*_pointer
+    ! Statement: f_function_native*_pointer_library
     ! start c_return_int_ptr_to_const_scalar_bufferify
     interface
         function c_return_int_ptr_to_const_scalar_bufferify() &
@@ -805,7 +805,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  const int *returnIntPtrToFixedConstArray +dimension(10)
-    ! Statement: f_function_native*_cdesc_pointer
+    ! Statement: f_function_native*_cdesc_pointer_library
     ! start c_return_int_ptr_to_fixed_const_array_bufferify
     interface
         subroutine c_return_int_ptr_to_fixed_const_array_bufferify( &
@@ -835,7 +835,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int *returnIntRaw +deref(raw)
-    ! Statement: f_function_native*_raw
+    ! Statement: f_function_native*_raw_library
     ! start return_int_raw
     interface
         function return_int_raw() &
@@ -850,7 +850,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int *returnIntRawWithArgs +deref(raw)
-    ! Statement: f_function_native*_raw
+    ! Statement: f_function_native*_raw_library
     ! ----------------------------------------
     ! Argument:  const char *name
     ! Statement: f_in_char*
@@ -1726,7 +1726,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  int *returnIntPtrToScalar
-    ! Statement: f_function_native*_pointer
+    ! Statement: f_function_native*_pointer_library
     ! start return_int_ptr_to_scalar
     function return_int_ptr_to_scalar() &
             result(SHT_rv)
@@ -1742,7 +1742,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  int *returnIntPtrToFixedArray +dimension(10)
-    ! Statement: f_function_native*_cdesc_pointer
+    ! Statement: f_function_native*_cdesc_pointer_library
     ! start return_int_ptr_to_fixed_array
     function return_int_ptr_to_fixed_array() &
             result(SHT_rv)
@@ -1759,7 +1759,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const int *returnIntPtrToConstScalar
-    ! Statement: f_function_native*_pointer
+    ! Statement: f_function_native*_pointer_library
     ! start return_int_ptr_to_const_scalar
     function return_int_ptr_to_const_scalar() &
             result(SHT_rv)
@@ -1775,7 +1775,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const int *returnIntPtrToFixedConstArray +dimension(10)
-    ! Statement: f_function_native*_cdesc_pointer
+    ! Statement: f_function_native*_cdesc_pointer_library
     ! start return_int_ptr_to_fixed_const_array
     function return_int_ptr_to_fixed_const_array() &
             result(SHT_rv)
@@ -1811,7 +1811,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int *returnIntRaw +deref(raw)
-    ! Statement: f_function_native*_raw
+    ! Statement: f_function_native*_raw_library
     !>
     !! Call directly via interface.
     !<
@@ -1829,7 +1829,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  int *returnIntRawWithArgs +deref(raw)
-    ! Statement: f_function_native*_raw
+    ! Statement: f_function_native*_raw_library
     ! ----------------------------------------
     ! Argument:  const char *name
     ! Statement: f_in_char*

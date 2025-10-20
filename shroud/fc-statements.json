@@ -1794,7 +1794,8 @@
             "f_function_native&",
             "f_function_native*_pointer",
             "f_function_native*_pointer_caller",
-            "f_function_native&_pointer"
+            "f_function_native*_pointer_library",
+            "f_function_native&_pointer_library"
         ],
         "notes": [
             "Pointer to scalar.",
@@ -1810,8 +1811,8 @@
     },
     {
         "alias": [
-            "f_function_native*_cdesc_pointer",
-            "f_function_struct*_cdesc_pointer"
+            "f_function_native*_cdesc_pointer_library",
+            "f_function_struct*_cdesc_pointer_library"
         ],
         "mixin": [
             "f_mixin_call-cwrapper-as-subroutine",
@@ -1842,12 +1843,15 @@
     },
     {
         "alias": [
-            "f_function_native*_raw",
+            "f_function_native*_raw_library",
             "c_function_native*",
             "c_function_native&",
             "c_function_native*_caller",
+            "c_function_native*_library",
             "c_function_native**",
-            "f_function_native**"
+            "c_function_native**_library",
+            "f_function_native**",
+            "f_function_native**_library"
         ],
         "usage": [
             "int **func()"
@@ -1990,7 +1994,9 @@
     {
         "alias": [
             "f_function_void*",
-            "c_function_void*"
+            "f_function_void*_library",
+            "c_function_void*",
+            "c_function_void*_library"
         ],
         "notes": [
             "XXX - f entries are the same as the i entries, share?"
@@ -2558,7 +2564,7 @@
             "f_function_char*_allocatable",
             "f_function_char*_copy",
             "f_function_char*_pointer",
-            "f_function_char*_raw"
+            "f_function_char*_raw_library"
         ],
         "notes": [
             "Return a type(C_PTR) from Fortran."
@@ -2761,7 +2767,7 @@
     {
         "alias": [
             "f_function_char_cdesc_pointer",
-            "f_function_char*_cdesc_pointer"
+            "f_function_char*_cdesc_pointer_library"
         ],
         "mixin": [
             "f_mixin_call-cwrapper-as-subroutine",
@@ -2791,7 +2797,7 @@
     {
         "alias": [
             "f_function_char_cdesc_funcarg_pointer",
-            "f_function_char*_cdesc_funcarg_pointer"
+            "f_function_char*_cdesc_funcarg_pointer_library"
         ],
         "usage": [
             "char *func(void) +deref(pointer)+funcarg"
@@ -2808,7 +2814,7 @@
     {
         "alias": [
             "#f_function_char_funcarg_raw",
-            "f_function_char*_funcarg_raw"
+            "f_function_char*_funcarg_raw_library"
         ],
         "usage": [
             "char *func(void) +deref(raw)+funcarg"
@@ -3225,7 +3231,8 @@
             "c_function_string*_caller",
             "c_function_string*_library",
             "c_function_string*_copy",
-            "c_function_string&_copy"
+            "c_function_string&_copy",
+            "c_function_string&_library"
         ],
         "notes": [
             "Fortran calling a C function without",
@@ -4757,6 +4764,9 @@
         "alias": [
             "f_function_smartptr<shadow>*_capsule"
         ],
+        "notes": [
+            "TODO - does ownership make sense here?"
+        ],
         "mixin": [
             "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_capsule_function_shadow",
@@ -5037,7 +5047,7 @@
         "alias": [
             "f_getter_native",
             "c_getter_native",
-            "f_getter_native*_pointer",
+            "f_getter_native*_pointer_library",
             "c_getter_native*"
         ],
         "mixin": [
@@ -5082,8 +5092,8 @@
     },
     {
         "alias": [
-            "f_getter_native*_cdesc_pointer",
-            "f_getter_struct*_cdesc_pointer"
+            "f_getter_native*_cdesc_pointer_library",
+            "f_getter_struct*_cdesc_pointer_library"
         ],
         "notes": [
             "Similar to calling a function, but save field pointer instead."
@@ -5110,7 +5120,7 @@
         ]
     },
     {
-        "name": "f_getter_char*_cdesc_pointer",
+        "name": "f_getter_char*_cdesc_pointer_library",
         "notes": [
             "Get a char* member of a class as a Fortran pointer."
         ],
@@ -5139,7 +5149,7 @@
         ]
     },
     {
-        "name": "f_getter_struct**_cdesc_raw",
+        "name": "f_getter_struct**_cdesc_raw_library",
         "mixin": [
             "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_cdesc_pass_to_cwrapper",
@@ -5563,7 +5573,7 @@
     {
         "alias": [
             "f_function_char_cfi_pointer",
-            "f_function_char*_cfi_pointer"
+            "f_function_char*_cfi_pointer_library"
         ],
         "usage": [
             "char *func(void) +deref(pointer)"
@@ -5599,7 +5609,7 @@
     {
         "alias": [
             "f_function_char_cfi_funcarg_pointer",
-            "f_function_char*_cfi_funcarg_pointer"
+            "f_function_char*_cfi_funcarg_pointer_library"
         ],
         "usage": [
             "char *func(void) +deref(pointer)+funcarg"
@@ -6028,7 +6038,7 @@
         ]
     },
     {
-        "name": "f_function_native*_cfi_pointer",
+        "name": "f_function_native*_cfi_pointer_library",
         "notes": [
             "Pass result as an argument to C wrapper.",
             "Convert to subroutine and pass result as an argument.",

@@ -9237,15 +9237,16 @@
                                 "i_type": "integer(C_INT)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
-                                "stmt_name": "f_function_native*_pointer",
+                                "stmt_name": "f_function_native*_pointer_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
                                 "abstract": "native*",
                                 "deref": "pointer",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_native*_pointer"
+                            "stmt": "f_function_native*_pointer_library"
                         }
                     },
                     "share": {
@@ -9405,7 +9406,7 @@
                                 "i_var_cdesc": "SHT_rv_cdesc",
                                 "idtor": "0",
                                 "rank": "1",
-                                "stmt_name": "f_function_native*_cdesc_pointer",
+                                "stmt_name": "f_function_native*_cdesc_pointer_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
@@ -9421,9 +9422,10 @@
                                     "10"
                                 ],
                                 "dimension": "10",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_native*_cdesc_pointer"
+                            "stmt": "f_function_native*_cdesc_pointer_library"
                         }
                     },
                     "share": {
@@ -9560,15 +9562,16 @@
                                 "i_type": "integer(C_INT)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
-                                "stmt_name": "f_function_native*_pointer",
+                                "stmt_name": "f_function_native*_pointer_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
                                 "abstract": "native*",
                                 "deref": "pointer",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_native*_pointer"
+                            "stmt": "f_function_native*_pointer_library"
                         }
                     },
                     "share": {
@@ -9729,7 +9732,7 @@
                                 "i_var_cdesc": "SHT_rv_cdesc",
                                 "idtor": "0",
                                 "rank": "1",
-                                "stmt_name": "f_function_native*_cdesc_pointer",
+                                "stmt_name": "f_function_native*_cdesc_pointer_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
@@ -9745,9 +9748,10 @@
                                     "10"
                                 ],
                                 "dimension": "10",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_native*_cdesc_pointer"
+                            "stmt": "f_function_native*_cdesc_pointer_library"
                         }
                     },
                     "share": {
@@ -10015,15 +10019,16 @@
                                 "i_type": "integer(C_INT)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
-                                "stmt_name": "f_function_native*_raw",
+                                "stmt_name": "f_function_native*_raw_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
                                 "abstract": "native*",
                                 "deref": "raw",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_native*_raw"
+                            "stmt": "f_function_native*_raw_library"
                         }
                     },
                     "share": {
@@ -10196,15 +10201,16 @@
                                 "i_type": "integer(C_INT)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
-                                "stmt_name": "f_function_native*_raw",
+                                "stmt_name": "f_function_native*_raw_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
                                 "abstract": "native*",
                                 "deref": "raw",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_native*_raw"
+                            "stmt": "f_function_native*_raw_library"
                         },
                         "name": {
                             "fmtdict": {

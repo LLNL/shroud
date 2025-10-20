@@ -1538,16 +1538,17 @@
                                 "i_var": "SHT_rv",
                                 "i_var_cfi": "SHT_rv_cfi",
                                 "idtor": "0",
-                                "stmt_name": "f_function_char*_cfi_pointer",
+                                "stmt_name": "f_function_char*_cfi_pointer_library",
                                 "typemap_name": "char"
                             },
                             "meta": {
                                 "abstract": "char*",
                                 "api": "cfi",
                                 "deref": "pointer",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_char*_cfi_pointer"
+                            "stmt": "f_function_char*_cfi_pointer_library"
                         }
                     },
                     "share": {
@@ -1670,15 +1671,16 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
-                                "stmt_name": "f_function_char*_raw",
+                                "stmt_name": "f_function_char*_raw_library",
                                 "typemap_name": "char"
                             },
                             "meta": {
                                 "abstract": "char*",
                                 "deref": "raw",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_char*_raw"
+                            "stmt": "f_function_char*_raw_library"
                         }
                     },
                     "share": {
@@ -2056,7 +2058,7 @@
                                 "i_var": "output",
                                 "i_var_cfi": "SHT_rv_cfi",
                                 "idtor": "0",
-                                "stmt_name": "f_function_char*_cfi_funcarg_pointer",
+                                "stmt_name": "f_function_char*_cfi_funcarg_pointer_library",
                                 "typemap_name": "char"
                             },
                             "meta": {
@@ -2064,9 +2066,10 @@
                                 "api": "cfi",
                                 "deref": "pointer",
                                 "funcarg": "output",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_char*_cfi_funcarg_pointer"
+                            "stmt": "f_function_char*_cfi_funcarg_pointer_library"
                         }
                     },
                     "share": {
@@ -2166,16 +2169,17 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "output",
                                 "idtor": "0",
-                                "stmt_name": "f_function_char*_funcarg_raw",
+                                "stmt_name": "f_function_char*_funcarg_raw_library",
                                 "typemap_name": "char"
                             },
                             "meta": {
                                 "abstract": "char*",
                                 "deref": "raw",
                                 "funcarg": "output",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_char*_funcarg_raw"
+                            "stmt": "f_function_char*_funcarg_raw_library"
                         }
                     },
                     "share": {

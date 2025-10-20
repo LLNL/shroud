@@ -498,7 +498,7 @@ module generic_mod
 
     ! ----------------------------------------
     ! Function:  StructAsClass *CreateStructAsClass
-    ! Statement: f_function_shadow*_capsule
+    ! Statement: f_function_shadow*_capsule_caller
     interface
         subroutine c_create_struct_as_class_bufferify(SHT_rv) &
                 bind(C, name="GEN_CreateStructAsClass_bufferify")
@@ -1123,7 +1123,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  StructAsClass *CreateStructAsClass
-    ! Statement: f_function_shadow*_capsule
+    ! Statement: f_function_shadow*_capsule_caller
     function create_struct_as_class() &
             result(SHT_rv)
         type(struct_as_class) :: SHT_rv

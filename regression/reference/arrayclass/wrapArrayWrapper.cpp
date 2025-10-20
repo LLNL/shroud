@@ -128,7 +128,7 @@ double * ARR_ArrayWrapper_getArray(ARR_ArrayWrapper * self)
 
 // ----------------------------------------
 // Function:  double *getArray +dimension(getSize())
-// Statement: f_function_native*_cdesc_pointer
+// Statement: f_function_native*_cdesc_pointer_library
 void ARR_ArrayWrapper_getArray_bufferify(ARR_ArrayWrapper * self,
     ARR_SHROUD_array *SHT_rv_cdesc)
 {
@@ -159,7 +159,7 @@ double * ARR_ArrayWrapper_getArrayConst(const ARR_ArrayWrapper * self)
 
 // ----------------------------------------
 // Function:  double *getArrayConst +dimension(getSize())
-// Statement: f_function_native*_cdesc_pointer
+// Statement: f_function_native*_cdesc_pointer_library
 void ARR_ArrayWrapper_getArrayConst_bufferify(
     const ARR_ArrayWrapper * self, ARR_SHROUD_array *SHT_rv_cdesc)
 {
@@ -190,7 +190,7 @@ const double * ARR_ArrayWrapper_getArrayC(ARR_ArrayWrapper * self)
 
 // ----------------------------------------
 // Function:  const double *getArrayC +dimension(getSize())
-// Statement: f_function_native*_cdesc_pointer
+// Statement: f_function_native*_cdesc_pointer_library
 void ARR_ArrayWrapper_getArrayC_bufferify(ARR_ArrayWrapper * self,
     ARR_SHROUD_array *SHT_rv_cdesc)
 {
@@ -222,7 +222,7 @@ const double * ARR_ArrayWrapper_getArrayConstC(
 
 // ----------------------------------------
 // Function:  const double *getArrayConstC +dimension(getSize())
-// Statement: f_function_native*_cdesc_pointer
+// Statement: f_function_native*_cdesc_pointer_library
 void ARR_ArrayWrapper_getArrayConstC_bufferify(
     const ARR_ArrayWrapper * self, ARR_SHROUD_array *SHT_rv_cdesc)
 {

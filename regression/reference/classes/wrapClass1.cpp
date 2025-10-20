@@ -259,7 +259,7 @@ CLA_Class1 * CLA_Class1_returnThisBuffer(CLA_Class1 * self, char *name,
  */
 // ----------------------------------------
 // Function:  Class1 *returnThisBuffer
-// Statement: f_function_shadow*_capsule
+// Statement: f_function_shadow*_capsule_library
 // ----------------------------------------
 // Argument:  std::string &name +intent(in)
 // Statement: f_in_string&_buf
@@ -313,7 +313,7 @@ CLA_Class1 * CLA_Class1_getclass3(const CLA_Class1 * self,
  */
 // ----------------------------------------
 // Function:  Class1 *getclass3
-// Statement: f_function_shadow*_capsule
+// Statement: f_function_shadow*_capsule_library
 // start CLA_Class1_getclass3_bufferify
 void CLA_Class1_getclass3_bufferify(const CLA_Class1 * self,
     CLA_Class1 *SHC_rv)

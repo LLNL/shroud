@@ -752,7 +752,7 @@ int POI_VoidPtrArray_bufferify(void **addr)
 
 // ----------------------------------------
 // Function:  int *returnIntPtrToScalar
-// Statement: f_function_native*_pointer
+// Statement: f_function_native*_pointer_library
 // start POI_returnIntPtrToScalar_bufferify
 int * POI_returnIntPtrToScalar_bufferify(void)
 {
@@ -765,7 +765,7 @@ int * POI_returnIntPtrToScalar_bufferify(void)
 
 // ----------------------------------------
 // Function:  int *returnIntPtrToFixedArray +dimension(10)
-// Statement: f_function_native*_cdesc_pointer
+// Statement: f_function_native*_cdesc_pointer_library
 // start POI_returnIntPtrToFixedArray_bufferify
 void POI_returnIntPtrToFixedArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc)
@@ -784,7 +784,7 @@ void POI_returnIntPtrToFixedArray_bufferify(
 
 // ----------------------------------------
 // Function:  const int *returnIntPtrToConstScalar
-// Statement: f_function_native*_pointer
+// Statement: f_function_native*_pointer_library
 // start POI_returnIntPtrToConstScalar_bufferify
 const int * POI_returnIntPtrToConstScalar_bufferify(void)
 {
@@ -797,7 +797,7 @@ const int * POI_returnIntPtrToConstScalar_bufferify(void)
 
 // ----------------------------------------
 // Function:  const int *returnIntPtrToFixedConstArray +dimension(10)
-// Statement: f_function_native*_cdesc_pointer
+// Statement: f_function_native*_cdesc_pointer_library
 // start POI_returnIntPtrToFixedConstArray_bufferify
 void POI_returnIntPtrToFixedConstArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc)
@@ -832,7 +832,7 @@ int POI_returnIntScalar_bufferify(void)
  */
 // ----------------------------------------
 // Function:  int *returnIntRaw +deref(raw)
-// Statement: f_function_native*_raw
+// Statement: f_function_native*_raw_library
 // start POI_returnIntRaw_bufferify
 int * POI_returnIntRaw_bufferify(void)
 {
@@ -849,7 +849,7 @@ int * POI_returnIntRaw_bufferify(void)
  */
 // ----------------------------------------
 // Function:  int *returnIntRawWithArgs +deref(raw)
-// Statement: f_function_native*_raw
+// Statement: f_function_native*_raw_library
 // ----------------------------------------
 // Argument:  const char *name
 // Statement: f_in_char*

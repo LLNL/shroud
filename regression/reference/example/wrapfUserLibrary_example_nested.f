@@ -163,7 +163,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  double *get
-        ! Statement: f_function_native*_pointer
+        ! Statement: f_function_native*_pointer_library
         function func_ptr2_get() &
             result(SHT_rv) bind(C)
             use iso_c_binding, only : C_PTR
@@ -597,7 +597,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass1 *get_class1
-        ! Statement: f_function_shadow*_capsule
+        ! Statement: f_function_shadow*_capsule_library
         ! ----------------------------------------
         ! Argument:  const ExClass1 *in
         ! Statement: f_in_shadow*
@@ -1476,7 +1476,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  ExClass1 *get_class1
-    ! Statement: f_function_shadow*_capsule
+    ! Statement: f_function_shadow*_capsule_library
     ! ----------------------------------------
     ! Argument:  const ExClass1 *in
     ! Statement: f_in_shadow*

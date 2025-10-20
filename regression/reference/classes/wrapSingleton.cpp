@@ -36,7 +36,7 @@ CLA_Singleton * CLA_Singleton_getReference(CLA_Singleton *SHC_rv)
 
 // ----------------------------------------
 // Function:  static Singleton &getReference
-// Statement: f_function_shadow&_capsule
+// Statement: f_function_shadow&_capsule_library
 // start CLA_Singleton_getReference_bufferify
 void CLA_Singleton_getReference_bufferify(CLA_Singleton *SHC_rv)
 {

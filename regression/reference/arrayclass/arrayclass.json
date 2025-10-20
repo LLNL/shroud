@@ -1236,7 +1236,7 @@
                                         "i_var_cdesc": "SHT_rv_cdesc",
                                         "idtor": "0",
                                         "rank": "1",
-                                        "stmt_name": "f_function_native*_cdesc_pointer",
+                                        "stmt_name": "f_function_native*_cdesc_pointer_library",
                                         "typemap_name": "double"
                                     },
                                     "meta": {
@@ -1253,9 +1253,10 @@
                                             "SH_this->getSize()"
                                         ],
                                         "dimension": "getSize()",
-                                        "intent": "function"
+                                        "intent": "function",
+                                        "owner": "library"
                                     },
-                                    "stmt": "f_function_native*_cdesc_pointer"
+                                    "stmt": "f_function_native*_cdesc_pointer_library"
                                 }
                             },
                             "py": {
@@ -1481,7 +1482,7 @@
                                         "i_var_cdesc": "SHT_rv_cdesc",
                                         "idtor": "0",
                                         "rank": "1",
-                                        "stmt_name": "f_function_native*_cdesc_pointer",
+                                        "stmt_name": "f_function_native*_cdesc_pointer_library",
                                         "typemap_name": "double"
                                     },
                                     "meta": {
@@ -1498,9 +1499,10 @@
                                             "SH_this->getSize()"
                                         ],
                                         "dimension": "getSize()",
-                                        "intent": "function"
+                                        "intent": "function",
+                                        "owner": "library"
                                     },
-                                    "stmt": "f_function_native*_cdesc_pointer"
+                                    "stmt": "f_function_native*_cdesc_pointer_library"
                                 }
                             },
                             "py": {
@@ -1725,7 +1727,7 @@
                                         "i_var_cdesc": "SHT_rv_cdesc",
                                         "idtor": "0",
                                         "rank": "1",
-                                        "stmt_name": "f_function_native*_cdesc_pointer",
+                                        "stmt_name": "f_function_native*_cdesc_pointer_library",
                                         "typemap_name": "double"
                                     },
                                     "meta": {
@@ -1742,9 +1744,10 @@
                                             "SH_this->getSize()"
                                         ],
                                         "dimension": "getSize()",
-                                        "intent": "function"
+                                        "intent": "function",
+                                        "owner": "library"
                                     },
-                                    "stmt": "f_function_native*_cdesc_pointer"
+                                    "stmt": "f_function_native*_cdesc_pointer_library"
                                 }
                             },
                             "py": {
@@ -1971,7 +1974,7 @@
                                         "i_var_cdesc": "SHT_rv_cdesc",
                                         "idtor": "0",
                                         "rank": "1",
-                                        "stmt_name": "f_function_native*_cdesc_pointer",
+                                        "stmt_name": "f_function_native*_cdesc_pointer_library",
                                         "typemap_name": "double"
                                     },
                                     "meta": {
@@ -1988,9 +1991,10 @@
                                             "SH_this->getSize()"
                                         ],
                                         "dimension": "getSize()",
-                                        "intent": "function"
+                                        "intent": "function",
+                                        "owner": "library"
                                     },
-                                    "stmt": "f_function_native*_cdesc_pointer"
+                                    "stmt": "f_function_native*_cdesc_pointer_library"
                                 }
                             },
                             "py": {

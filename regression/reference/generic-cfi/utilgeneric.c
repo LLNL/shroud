@@ -5,6 +5,9 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 
+// typemap
+#include "generic.h"
+#include "helper.h"
 // shroud
 #include "typesgeneric.h"
 #include <stdlib.h>
@@ -13,6 +16,25 @@
 // Release library allocated memory.
 void GEN_SHROUD_memory_destructor(GEN_SHROUD_capsule_data *cap)
 {
+    void *ptr = cap->addr;
+    switch (cap->idtor) {
+    case 0:   // --none--
+    {
+        // Nothing to delete
+        break;
+    }
+    case 1:   // StructAsClass
+    {
+        StructAsClass *cxx_ptr = (StructAsClass *) ptr;
+        free(cxx_ptr);
+        break;
+    }
+    default:
+    {
+        // Unexpected case in destructor
+        break;
+    }
+    }
     cap->addr = NULL;
     cap->idtor = 0;  // avoid deleting again
 }

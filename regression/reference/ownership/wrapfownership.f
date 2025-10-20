@@ -177,7 +177,7 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int *ReturnIntPtrPointer +deref(pointer)
-        ! Statement: f_function_native*_pointer
+        ! Statement: f_function_native*_pointer_library
         function c_return_int_ptr_pointer_bufferify() &
                 result(SHT_rv) &
                 bind(C, name="OWN_ReturnIntPtrPointer_bufferify")
@@ -220,7 +220,7 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int *ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
-        ! Statement: f_function_native*_cdesc_pointer
+        ! Statement: f_function_native*_cdesc_pointer_library
         ! start c_return_int_ptr_dim_pointer_bufferify
         subroutine c_return_int_ptr_dim_pointer_bufferify(SHT_rv_cdesc) &
                 bind(C, name="OWN_ReturnIntPtrDimPointer_bufferify")
@@ -278,7 +278,7 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int *ReturnIntPtrDimDefault +dimension(len)
-        ! Statement: f_function_native*_cdesc_pointer
+        ! Statement: f_function_native*_cdesc_pointer_library
         subroutine c_return_int_ptr_dim_default_bufferify(SHT_rv_cdesc) &
                 bind(C, name="OWN_ReturnIntPtrDimDefault_bufferify")
             import :: OWN_SHROUD_array
@@ -535,7 +535,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  int *ReturnIntPtrPointer +deref(pointer)
-    ! Statement: f_function_native*_pointer
+    ! Statement: f_function_native*_pointer_library
     function return_int_ptr_pointer() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -549,7 +549,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  int *ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
-    ! Statement: f_function_native*_cdesc_pointer
+    ! Statement: f_function_native*_cdesc_pointer_library
     ! start return_int_ptr_dim_pointer
     function return_int_ptr_dim_pointer() &
             result(SHT_rv)
@@ -587,7 +587,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  int *ReturnIntPtrDimDefault +dimension(len)
-    ! Statement: f_function_native*_cdesc_pointer
+    ! Statement: f_function_native*_cdesc_pointer_library
     function return_int_ptr_dim_default() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, c_f_pointer

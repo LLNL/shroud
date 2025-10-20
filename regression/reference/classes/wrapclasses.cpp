@@ -133,7 +133,7 @@ CLA_Class1 * CLA_getclass2(CLA_Class1 *SHC_rv)
  */
 // ----------------------------------------
 // Function:  const Class1 *getclass2
-// Statement: f_function_shadow*_capsule
+// Statement: f_function_shadow*_capsule_library
 void CLA_getclass2_bufferify(CLA_Class1 *SHC_rv)
 {
     // splicer begin function.getclass2_bufferify
@@ -168,7 +168,7 @@ CLA_Class1 * CLA_getclass3(CLA_Class1 *SHC_rv)
  */
 // ----------------------------------------
 // Function:  Class1 *getclass3
-// Statement: f_function_shadow*_capsule
+// Statement: f_function_shadow*_capsule_library
 void CLA_getclass3_bufferify(CLA_Class1 *SHC_rv)
 {
     // splicer begin function.getclass3_bufferify
@@ -230,7 +230,7 @@ CLA_Class1 * CLA_getConstClassReference(CLA_Class1 *SHC_rv)
 
 // ----------------------------------------
 // Function:  const Class1 &getConstClassReference
-// Statement: f_function_shadow&_capsule
+// Statement: f_function_shadow&_capsule_library
 void CLA_getConstClassReference_bufferify(CLA_Class1 *SHC_rv)
 {
     // splicer begin function.getConstClassReference_bufferify
@@ -258,7 +258,7 @@ CLA_Class1 * CLA_getClassReference(CLA_Class1 *SHC_rv)
 
 // ----------------------------------------
 // Function:  Class1 &getClassReference
-// Statement: f_function_shadow&_capsule
+// Statement: f_function_shadow&_capsule_library
 void CLA_getClassReference_bufferify(CLA_Class1 *SHC_rv)
 {
     // splicer begin function.getClassReference_bufferify

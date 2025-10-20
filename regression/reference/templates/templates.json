@@ -5068,15 +5068,16 @@
                                                 "i_type": "integer(C_INT)",
                                                 "i_var": "SHT_rv",
                                                 "idtor": "0",
-                                                "stmt_name": "f_function_native&_pointer",
+                                                "stmt_name": "f_function_native&_pointer_library",
                                                 "typemap_name": "int"
                                             },
                                             "meta": {
                                                 "abstract": "native&",
                                                 "deref": "pointer",
-                                                "intent": "function"
+                                                "intent": "function",
+                                                "owner": "library"
                                             },
-                                            "stmt": "f_function_native&_pointer"
+                                            "stmt": "f_function_native&_pointer_library"
                                         },
                                         "n": {
                                             "fmtdict": {
@@ -6163,15 +6164,16 @@
                                                 "i_type": "real(C_DOUBLE)",
                                                 "i_var": "SHT_rv",
                                                 "idtor": "0",
-                                                "stmt_name": "f_function_native&_pointer",
+                                                "stmt_name": "f_function_native&_pointer_library",
                                                 "typemap_name": "double"
                                             },
                                             "meta": {
                                                 "abstract": "native&",
                                                 "deref": "pointer",
-                                                "intent": "function"
+                                                "intent": "function",
+                                                "owner": "library"
                                             },
-                                            "stmt": "f_function_native&_pointer"
+                                            "stmt": "f_function_native&_pointer_library"
                                         },
                                         "n": {
                                             "fmtdict": {

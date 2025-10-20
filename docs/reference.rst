@@ -313,6 +313,7 @@ class_ctor
   Indicates that this function is a constructor for a struct.
   The value is the name of the struct.
   Useful for *wrap_struct_as=class* when used with C.
+  Defaults attribute *+owner(caller)*.
 
 .. code-block:: yaml
 
