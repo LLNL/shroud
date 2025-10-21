@@ -411,7 +411,7 @@ module pointers_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int **nitems +intent(out)
-    ! Statement: f_out_native**_cdesc_pointer
+    ! Statement: f_out_native**_cdesc_pointer_library
     ! start c_get_ptr_to_scalar_bufferify
     interface
         subroutine c_get_ptr_to_scalar_bufferify(SHT_nitems_cdesc) &
@@ -428,7 +428,7 @@ module pointers_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int **count +dimension(10)+intent(out)
-    ! Statement: f_out_native**_cdesc_pointer
+    ! Statement: f_out_native**_cdesc_pointer_library
     ! start c_get_ptr_to_fixed_array_bufferify
     interface
         subroutine c_get_ptr_to_fixed_array_bufferify(SHT_count_cdesc) &
@@ -445,7 +445,7 @@ module pointers_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int **count +dimension(ncount)+intent(out)
-    ! Statement: f_out_native**_cdesc_pointer
+    ! Statement: f_out_native**_cdesc_pointer_library
     ! start c_get_ptr_to_dynamic_array_bufferify
     interface
         subroutine c_get_ptr_to_dynamic_array_bufferify(SHT_count_cdesc) &
@@ -462,7 +462,7 @@ module pointers_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int **count +dimension(getLen())+intent(out)
-    ! Statement: f_out_native**_cdesc_pointer
+    ! Statement: f_out_native**_cdesc_pointer_library
     ! start c_get_ptr_to_func_array_bufferify
     interface
         subroutine c_get_ptr_to_func_array_bufferify(SHT_count_cdesc) &
@@ -479,7 +479,7 @@ module pointers_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int **nitems +intent(out)
-    ! Statement: f_out_native**_cdesc_pointer
+    ! Statement: f_out_native**_cdesc_pointer_library
     ! start c_get_ptr_to_const_scalar_bufferify
     interface
         subroutine c_get_ptr_to_const_scalar_bufferify(SHT_nitems_cdesc) &
@@ -496,7 +496,7 @@ module pointers_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int **count +dimension(10)+intent(out)
-    ! Statement: f_out_native**_cdesc_pointer
+    ! Statement: f_out_native**_cdesc_pointer_library
     ! start c_get_ptr_to_fixed_const_array_bufferify
     interface
         subroutine c_get_ptr_to_fixed_const_array_bufferify( &
@@ -514,7 +514,7 @@ module pointers_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int **count +dimension(ncount)+intent(out)
-    ! Statement: f_out_native**_cdesc_pointer
+    ! Statement: f_out_native**_cdesc_pointer_library
     ! start c_get_ptr_to_dynamic_const_array_bufferify
     interface
         subroutine c_get_ptr_to_dynamic_const_array_bufferify( &
@@ -532,7 +532,7 @@ module pointers_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int **nitems +deref(raw)+intent(out)
-    ! Statement: f_out_native**_raw
+    ! Statement: f_out_native**_raw_library
     ! start get_raw_ptr_to_scalar
     interface
         subroutine get_raw_ptr_to_scalar(nitems) &
@@ -549,7 +549,7 @@ module pointers_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int **nitems +deref(raw)+intent(out)
-    ! Statement: f_out_native**_raw
+    ! Statement: f_out_native**_raw_library
     ! start c_get_raw_ptr_to_scalar_force
     interface
         subroutine c_get_raw_ptr_to_scalar_force(nitems) &
@@ -566,7 +566,7 @@ module pointers_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int **count +deref(raw)+intent(out)
-    ! Statement: f_out_native**_raw
+    ! Statement: f_out_native**_raw_library
     ! start get_raw_ptr_to_fixed_array
     interface
         subroutine get_raw_ptr_to_fixed_array(count) &
@@ -583,7 +583,7 @@ module pointers_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int **count +deref(raw)+intent(out)
-    ! Statement: f_out_native**_raw
+    ! Statement: f_out_native**_raw_library
     ! start c_get_raw_ptr_to_fixed_array_force
     interface
         subroutine c_get_raw_ptr_to_fixed_array_force(count) &
@@ -600,7 +600,7 @@ module pointers_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int ***arg +intent(out)
-    ! Statement: f_out_native***_raw
+    ! Statement: f_out_native***_raw_library
     ! start get_raw_ptr_to_int2d
     interface
         subroutine get_raw_ptr_to_int2d(arg) &
@@ -1317,7 +1317,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int **nitems +intent(out)
-    ! Statement: f_out_native**_cdesc_pointer
+    ! Statement: f_out_native**_cdesc_pointer_library
     ! start get_ptr_to_scalar
     subroutine get_ptr_to_scalar(nitems)
         use iso_c_binding, only : C_INT, c_f_pointer
@@ -1335,7 +1335,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int **count +dimension(10)+intent(out)
-    ! Statement: f_out_native**_cdesc_pointer
+    ! Statement: f_out_native**_cdesc_pointer_library
     !>
     !! Return a Fortran pointer to an array which is always the same length.
     !<
@@ -1357,7 +1357,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int **count +dimension(ncount)+intent(out)
-    ! Statement: f_out_native**_cdesc_pointer
+    ! Statement: f_out_native**_cdesc_pointer_library
     !>
     !! Return a Fortran pointer to an array which is the length of
     !! the argument ncount.
@@ -1380,7 +1380,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int **count +dimension(getLen())+intent(out)
-    ! Statement: f_out_native**_cdesc_pointer
+    ! Statement: f_out_native**_cdesc_pointer_library
     !>
     !! Return a Fortran pointer to an array which is the length
     !! is computed by C++ function getLen.
@@ -1404,7 +1404,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int **nitems +intent(out)
-    ! Statement: f_out_native**_cdesc_pointer
+    ! Statement: f_out_native**_cdesc_pointer_library
     ! start get_ptr_to_const_scalar
     subroutine get_ptr_to_const_scalar(nitems)
         use iso_c_binding, only : C_INT, c_f_pointer
@@ -1422,7 +1422,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int **count +dimension(10)+intent(out)
-    ! Statement: f_out_native**_cdesc_pointer
+    ! Statement: f_out_native**_cdesc_pointer_library
     ! start get_ptr_to_fixed_const_array
     subroutine get_ptr_to_fixed_const_array(count)
         use iso_c_binding, only : C_INT, c_f_pointer
@@ -1441,7 +1441,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int **count +dimension(ncount)+intent(out)
-    ! Statement: f_out_native**_cdesc_pointer
+    ! Statement: f_out_native**_cdesc_pointer_library
     ! start get_ptr_to_dynamic_const_array
     subroutine get_ptr_to_dynamic_const_array(count)
         use iso_c_binding, only : C_INT, c_f_pointer
@@ -1462,7 +1462,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int **nitems +deref(raw)+intent(out)
-    ! Statement: f_out_native**_raw
+    ! Statement: f_out_native**_raw_library
     !>
     !! Called directly via an interface in Fortran.
     !<
@@ -1482,7 +1482,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int **nitems +deref(raw)+intent(out)
-    ! Statement: f_out_native**_raw
+    ! Statement: f_out_native**_raw_library
     !>
     !! Create a Fortran wrapper.
     !<
@@ -1503,7 +1503,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int **count +deref(raw)+intent(out)
-    ! Statement: f_out_native**_raw
+    ! Statement: f_out_native**_raw_library
     !>
     !! Return a type(C_PTR) to an array which is always the same length.
     !! Called directly via an interface in Fortran.
@@ -1525,7 +1525,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int **count +deref(raw)+intent(out)
-    ! Statement: f_out_native**_raw
+    ! Statement: f_out_native**_raw_library
     !>
     !! Return a type(C_PTR) to an array which is always the same length.
     !! Create a Fortran wrapper.
@@ -1547,7 +1547,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int ***arg +intent(out)
-    ! Statement: f_out_native***_raw
+    ! Statement: f_out_native***_raw_library
     !>
     !! Test multiple layers of indirection.
     !<

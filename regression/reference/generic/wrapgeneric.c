@@ -265,7 +265,7 @@ void GEN_SavePointer2_float2d_bufferify(float *addr, int type,
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  float **addr +deref(pointer)+intent(out)+rank(1)
-// Statement: f_out_native**_cdesc_pointer
+// Statement: f_out_native**_cdesc_pointer_library
 // ----------------------------------------
 // Argument:  int *type +hidden+intent(out)
 // Statement: f_out_native*_hidden
@@ -296,7 +296,7 @@ void GEN_GetPointerAsPointer_float1d_bufferify(
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  float **addr +deref(pointer)+intent(out)+rank(2)
-// Statement: f_out_native**_cdesc_pointer
+// Statement: f_out_native**_cdesc_pointer_library
 // ----------------------------------------
 // Argument:  int *type +hidden+intent(out)
 // Statement: f_out_native*_hidden

@@ -262,7 +262,7 @@ void ARR_ArrayWrapper_fetchArrayPtr(ARR_ArrayWrapper * self,
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  double **array +dimension(isize)+intent(out)
-// Statement: f_out_native**_cdesc_pointer
+// Statement: f_out_native**_cdesc_pointer_library
 // ----------------------------------------
 // Argument:  int *isize +hidden
 // Statement: f_inout_native*_hidden
@@ -306,7 +306,7 @@ void ARR_ArrayWrapper_fetchArrayRef(ARR_ArrayWrapper * self,
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  double *&array +dimension(isize)+intent(out)
-// Statement: f_out_native*&_cdesc_pointer
+// Statement: f_out_native*&_cdesc_pointer_library
 // ----------------------------------------
 // Argument:  int &isize +hidden
 // Statement: f_inout_native&_hidden
@@ -350,7 +350,7 @@ void ARR_ArrayWrapper_fetchArrayPtrConst(ARR_ArrayWrapper * self,
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const double **array +dimension(isize)+intent(out)
-// Statement: f_out_native**_cdesc_pointer
+// Statement: f_out_native**_cdesc_pointer_library
 // ----------------------------------------
 // Argument:  int *isize +hidden
 // Statement: f_inout_native*_hidden
@@ -394,7 +394,7 @@ void ARR_ArrayWrapper_fetchArrayRefConst(ARR_ArrayWrapper * self,
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const double *&array +dimension(isize)+intent(out)
-// Statement: f_out_native*&_cdesc_pointer
+// Statement: f_out_native*&_cdesc_pointer_library
 // ----------------------------------------
 // Argument:  int &isize +hidden
 // Statement: f_inout_native&_hidden

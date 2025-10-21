@@ -1675,7 +1675,8 @@
                             "meta": {
                                 "abstract": "native***",
                                 "deref": "pointer",
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             }
                         }
                     },

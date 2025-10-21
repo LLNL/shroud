@@ -1613,10 +1613,10 @@
     },
     {
         "alias": [
-            "f_out_native**_raw",
+            "f_out_native**_raw_library",
             "c_out_native**_raw",
             "c_out_native**",
-            "f_out_native***_raw",
+            "f_out_native***_raw_library",
             "c_out_native***"
         ],
         "notes": [
@@ -1655,7 +1655,7 @@
     {
         "alias": [
             "f_out_native*&_cdesc",
-            "f_out_native*&_cdesc_pointer"
+            "f_out_native*&_cdesc_pointer_library"
         ],
         "mixin": [
             "f_mixin_cdesc_pass_to_cwrapper",
@@ -1689,7 +1689,7 @@
         ]
     },
     {
-        "name": "f_out_native**_cdesc_pointer",
+        "name": "f_out_native**_cdesc_pointer_library",
         "notes": [
             "Argument returns a pointer to an array which is associated with a",
             "Fortran pointer."
@@ -2733,8 +2733,8 @@
         ]
     },
     {
-        "sphinx-start-after": "f_out_char**_cdesc_pointer",
-        "name": "f_out_char**_cdesc_pointer",
+        "sphinx-start-after": "f_out_char**_cdesc_pointer_library",
+        "name": "f_out_char**_cdesc_pointer_library",
         "usage": [
             "char **arg +intent(out)+deref(pointer)"
         ],
@@ -2749,7 +2749,7 @@
             "c_mixin_local-cvar-ptr",
             "c_mixin_arg-call-cvar-address"
         ],
-        "sphinx-end-before": "f_out_char**_cdesc_pointer"
+        "sphinx-end-before": "f_out_char**_cdesc_pointer_library"
     },
     {
         "alias": [
@@ -5721,7 +5721,7 @@
         ]
     },
     {
-        "name": "f_out_char**_cfi_pointer",
+        "name": "f_out_char**_cfi_pointer_library",
         "notes": [
             "Return a Fortran pointer to C memory."
         ],
@@ -6008,7 +6008,7 @@
         ]
     },
     {
-        "name": "f_out_native**_cfi_pointer",
+        "name": "f_out_native**_cfi_pointer_library",
         "notes": [
             "Set Fortran pointer to point to c_local_cxx."
         ],

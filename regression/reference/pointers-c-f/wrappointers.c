@@ -18,7 +18,7 @@
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int **nitems +intent(out)
-// Statement: f_out_native**_cdesc_pointer
+// Statement: f_out_native**_cdesc_pointer_library
 // start POI_getPtrToScalar_bufferify
 void POI_getPtrToScalar_bufferify(POI_SHROUD_array *SHT_nitems_cdesc)
 {
@@ -42,7 +42,7 @@ void POI_getPtrToScalar_bufferify(POI_SHROUD_array *SHT_nitems_cdesc)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int **count +dimension(10)+intent(out)
-// Statement: f_out_native**_cdesc_pointer
+// Statement: f_out_native**_cdesc_pointer_library
 // start POI_getPtrToFixedArray_bufferify
 void POI_getPtrToFixedArray_bufferify(POI_SHROUD_array *SHT_count_cdesc)
 {
@@ -68,7 +68,7 @@ void POI_getPtrToFixedArray_bufferify(POI_SHROUD_array *SHT_count_cdesc)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int **count +dimension(ncount)+intent(out)
-// Statement: f_out_native**_cdesc_pointer
+// Statement: f_out_native**_cdesc_pointer_library
 // ----------------------------------------
 // Argument:  int *ncount +hidden+intent(out)
 // Statement: f_out_native*_hidden
@@ -100,7 +100,7 @@ void POI_getPtrToDynamicArray_bufferify(
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int **count +dimension(getLen())+intent(out)
-// Statement: f_out_native**_cdesc_pointer
+// Statement: f_out_native**_cdesc_pointer_library
 // start POI_getPtrToFuncArray_bufferify
 void POI_getPtrToFuncArray_bufferify(POI_SHROUD_array *SHT_count_cdesc)
 {
@@ -122,7 +122,7 @@ void POI_getPtrToFuncArray_bufferify(POI_SHROUD_array *SHT_count_cdesc)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const int **nitems +intent(out)
-// Statement: f_out_native**_cdesc_pointer
+// Statement: f_out_native**_cdesc_pointer_library
 // start POI_getPtrToConstScalar_bufferify
 void POI_getPtrToConstScalar_bufferify(
     POI_SHROUD_array *SHT_nitems_cdesc)
@@ -144,7 +144,7 @@ void POI_getPtrToConstScalar_bufferify(
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const int **count +dimension(10)+intent(out)
-// Statement: f_out_native**_cdesc_pointer
+// Statement: f_out_native**_cdesc_pointer_library
 // start POI_getPtrToFixedConstArray_bufferify
 void POI_getPtrToFixedConstArray_bufferify(
     POI_SHROUD_array *SHT_count_cdesc)
@@ -167,7 +167,7 @@ void POI_getPtrToFixedConstArray_bufferify(
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const int **count +dimension(ncount)+intent(out)
-// Statement: f_out_native**_cdesc_pointer
+// Statement: f_out_native**_cdesc_pointer_library
 // ----------------------------------------
 // Argument:  int *ncount +hidden+intent(out)
 // Statement: f_out_native*_hidden

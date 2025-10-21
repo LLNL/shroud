@@ -3306,16 +3306,17 @@
                                 "i_var": "nitems",
                                 "i_var_cdesc": "SHT_nitems_cdesc",
                                 "idtor": "0",
-                                "stmt_name": "f_out_native**_cdesc_pointer",
+                                "stmt_name": "f_out_native**_cdesc_pointer_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
                                 "abstract": "native**",
                                 "api": "cdesc",
                                 "deref": "pointer",
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             },
-                            "stmt": "f_out_native**_cdesc_pointer"
+                            "stmt": "f_out_native**_cdesc_pointer_library"
                         }
                     },
                     "share": {
@@ -3462,7 +3463,7 @@
                                 "i_var_cdesc": "SHT_count_cdesc",
                                 "idtor": "0",
                                 "rank": "1",
-                                "stmt_name": "f_out_native**_cdesc_pointer",
+                                "stmt_name": "f_out_native**_cdesc_pointer_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
@@ -3478,9 +3479,10 @@
                                     "10"
                                 ],
                                 "dimension": "10",
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             },
-                            "stmt": "f_out_native**_cdesc_pointer"
+                            "stmt": "f_out_native**_cdesc_pointer_library"
                         }
                     },
                     "share": {
@@ -3652,7 +3654,7 @@
                                 "i_var_cdesc": "SHT_count_cdesc",
                                 "idtor": "0",
                                 "rank": "1",
-                                "stmt_name": "f_out_native**_cdesc_pointer",
+                                "stmt_name": "f_out_native**_cdesc_pointer_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
@@ -3668,9 +3670,10 @@
                                     "ncount"
                                 ],
                                 "dimension": "ncount",
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             },
-                            "stmt": "f_out_native**_cdesc_pointer"
+                            "stmt": "f_out_native**_cdesc_pointer_library"
                         },
                         "ncount": {
                             "fmtdict": {
@@ -3868,7 +3871,7 @@
                                 "i_var_cdesc": "SHT_count_cdesc",
                                 "idtor": "0",
                                 "rank": "1",
-                                "stmt_name": "f_out_native**_cdesc_pointer",
+                                "stmt_name": "f_out_native**_cdesc_pointer_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
@@ -3885,9 +3888,10 @@
                                     "getLen()"
                                 ],
                                 "dimension": "getLen()",
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             },
-                            "stmt": "f_out_native**_cdesc_pointer"
+                            "stmt": "f_out_native**_cdesc_pointer_library"
                         }
                     },
                     "share": {
@@ -4036,16 +4040,17 @@
                                 "i_var": "nitems",
                                 "i_var_cdesc": "SHT_nitems_cdesc",
                                 "idtor": "0",
-                                "stmt_name": "f_out_native**_cdesc_pointer",
+                                "stmt_name": "f_out_native**_cdesc_pointer_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
                                 "abstract": "native**",
                                 "api": "cdesc",
                                 "deref": "pointer",
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             },
-                            "stmt": "f_out_native**_cdesc_pointer"
+                            "stmt": "f_out_native**_cdesc_pointer_library"
                         }
                     },
                     "share": {
@@ -4190,7 +4195,7 @@
                                 "i_var_cdesc": "SHT_count_cdesc",
                                 "idtor": "0",
                                 "rank": "1",
-                                "stmt_name": "f_out_native**_cdesc_pointer",
+                                "stmt_name": "f_out_native**_cdesc_pointer_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
@@ -4206,9 +4211,10 @@
                                     "10"
                                 ],
                                 "dimension": "10",
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             },
-                            "stmt": "f_out_native**_cdesc_pointer"
+                            "stmt": "f_out_native**_cdesc_pointer_library"
                         }
                     },
                     "share": {
@@ -4378,7 +4384,7 @@
                                 "i_var_cdesc": "SHT_count_cdesc",
                                 "idtor": "0",
                                 "rank": "1",
-                                "stmt_name": "f_out_native**_cdesc_pointer",
+                                "stmt_name": "f_out_native**_cdesc_pointer_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
@@ -4394,9 +4400,10 @@
                                     "ncount"
                                 ],
                                 "dimension": "ncount",
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             },
-                            "stmt": "f_out_native**_cdesc_pointer"
+                            "stmt": "f_out_native**_cdesc_pointer_library"
                         },
                         "ncount": {
                             "fmtdict": {
@@ -4579,15 +4586,16 @@
                                 "i_type": "integer(C_INT)",
                                 "i_var": "nitems",
                                 "idtor": "0",
-                                "stmt_name": "f_out_native**_raw",
+                                "stmt_name": "f_out_native**_raw_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
                                 "abstract": "native**",
                                 "deref": "raw",
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             },
-                            "stmt": "f_out_native**_raw"
+                            "stmt": "f_out_native**_raw_library"
                         }
                     },
                     "share": {
@@ -4722,15 +4730,16 @@
                                 "i_type": "integer(C_INT)",
                                 "i_var": "nitems",
                                 "idtor": "0",
-                                "stmt_name": "f_out_native**_raw",
+                                "stmt_name": "f_out_native**_raw_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
                                 "abstract": "native**",
                                 "deref": "raw",
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             },
-                            "stmt": "f_out_native**_raw"
+                            "stmt": "f_out_native**_raw_library"
                         }
                     },
                     "share": {
@@ -4862,15 +4871,16 @@
                                 "i_type": "integer(C_INT)",
                                 "i_var": "count",
                                 "idtor": "0",
-                                "stmt_name": "f_out_native**_raw",
+                                "stmt_name": "f_out_native**_raw_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
                                 "abstract": "native**",
                                 "deref": "raw",
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             },
-                            "stmt": "f_out_native**_raw"
+                            "stmt": "f_out_native**_raw_library"
                         }
                     },
                     "share": {
@@ -5005,15 +5015,16 @@
                                 "i_type": "integer(C_INT)",
                                 "i_var": "count",
                                 "idtor": "0",
-                                "stmt_name": "f_out_native**_raw",
+                                "stmt_name": "f_out_native**_raw_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
                                 "abstract": "native**",
                                 "deref": "raw",
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             },
-                            "stmt": "f_out_native**_raw"
+                            "stmt": "f_out_native**_raw_library"
                         }
                     },
                     "share": {
@@ -5149,15 +5160,16 @@
                                 "i_type": "integer(C_INT)",
                                 "i_var": "arg",
                                 "idtor": "0",
-                                "stmt_name": "f_out_native***_raw",
+                                "stmt_name": "f_out_native***_raw_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
                                 "abstract": "native***",
                                 "deref": "raw",
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             },
-                            "stmt": "f_out_native***_raw"
+                            "stmt": "f_out_native***_raw_library"
                         }
                     },
                     "share": {

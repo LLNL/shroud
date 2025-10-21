@@ -20011,9 +20011,9 @@ f_out_char**_buf_copy:
   helper:
   - char_copy
   sphinx-end-before: f_out_char**_buf_copy
-f_out_char**_cdesc_pointer:
-  sphinx-start-after: f_out_char**_cdesc_pointer
-  name: f_out_char**_cdesc_pointer
+f_out_char**_cdesc_pointer_library:
+  sphinx-start-after: f_out_char**_cdesc_pointer_library
+  name: f_out_char**_cdesc_pointer_library
   intent: out
   comments:
   - Assign Fortran pointer from cdesc using helper pointer_string.
@@ -20072,10 +20072,10 @@ f_out_char**_cdesc_pointer:
   - type_defines
   impl_header:
   - <cstring>
-  sphinx-end-before: f_out_char**_cdesc_pointer
-f_out_char**_cfi_pointer:
-  sphinx-start-after: f_out_char**_cfi_pointer
-  name: f_out_char**_cfi_pointer
+  sphinx-end-before: f_out_char**_cdesc_pointer_library
+f_out_char**_cfi_pointer_library:
+  sphinx-start-after: f_out_char**_cfi_pointer_library
+  name: f_out_char**_cfi_pointer_library
   intent: out
   comments:
   - Make the C wrapper argument a CFI_desc_t.
@@ -20136,7 +20136,7 @@ f_out_char**_cfi_pointer:
   - ISO_Fortran_binding.h
   impl_header:
   - <cstring>
-  sphinx-end-before: f_out_char**_cfi_pointer
+  sphinx-end-before: f_out_char**_cfi_pointer_library
 f_out_char*_buf:
   sphinx-start-after: f_out_char*_buf
   name: f_out_char*_buf
@@ -20462,9 +20462,9 @@ f_out_native*&_cdesc:
   helper:
   - array_context
   sphinx-end-before: f_out_native*&_cdesc
-f_out_native*&_cdesc_pointer:
-  sphinx-start-after: f_out_native*&_cdesc_pointer
-  name: f_out_native*&_cdesc_pointer
+f_out_native*&_cdesc_pointer_library:
+  sphinx-start-after: f_out_native*&_cdesc_pointer_library
+  name: f_out_native*&_cdesc_pointer_library
   intent: out
   comments:
   - Pass cdesc as argument to C wrapper.
@@ -20520,10 +20520,10 @@ f_out_native*&_cdesc_pointer:
   - cdesc
   helper:
   - array_context
-  sphinx-end-before: f_out_native*&_cdesc_pointer
-f_out_native***_raw:
-  sphinx-start-after: f_out_native***_raw
-  name: f_out_native***_raw
+  sphinx-end-before: f_out_native*&_cdesc_pointer_library
+f_out_native***_raw_library:
+  sphinx-start-after: f_out_native***_raw_library
+  name: f_out_native***_raw_library
   intent: out
   comments:
   - Pass cxx variable to library.
@@ -20557,7 +20557,7 @@ f_out_native***_raw:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  sphinx-end-before: f_out_native***_raw
+  sphinx-end-before: f_out_native***_raw_library
 f_out_native**_cdesc_allocatable:
   sphinx-start-after: f_out_native**_cdesc_allocatable
   name: f_out_native**_cdesc_allocatable
@@ -20653,9 +20653,9 @@ f_out_native**_cdesc_allocatable:
   - array_context
   - capsule_dtor
   sphinx-end-before: f_out_native**_cdesc_allocatable
-f_out_native**_cdesc_pointer:
-  sphinx-start-after: f_out_native**_cdesc_pointer
-  name: f_out_native**_cdesc_pointer
+f_out_native**_cdesc_pointer_library:
+  sphinx-start-after: f_out_native**_cdesc_pointer_library
+  name: f_out_native**_cdesc_pointer_library
   intent: out
   comments:
   - Pass cdesc as argument to C wrapper.
@@ -20714,7 +20714,7 @@ f_out_native**_cdesc_pointer:
   - cdesc
   helper:
   - array_context
-  sphinx-end-before: f_out_native**_cdesc_pointer
+  sphinx-end-before: f_out_native**_cdesc_pointer_library
 f_out_native**_cfi_allocatable:
   sphinx-start-after: f_out_native**_cfi_allocatable
   name: f_out_native**_cfi_allocatable
@@ -20775,9 +20775,9 @@ f_out_native**_cfi_allocatable:
   impl_header:
   - <cstring>
   sphinx-end-before: f_out_native**_cfi_allocatable
-f_out_native**_cfi_pointer:
-  sphinx-start-after: f_out_native**_cfi_pointer
-  name: f_out_native**_cfi_pointer
+f_out_native**_cfi_pointer_library:
+  sphinx-start-after: f_out_native**_cfi_pointer_library
+  name: f_out_native**_cfi_pointer_library
   intent: out
   comments:
   - Make the C wrapper argument a CFI_desc_t.
@@ -20840,10 +20840,10 @@ f_out_native**_cfi_pointer:
   - lower_bounds_CFI
   iface_header:
   - ISO_Fortran_binding.h
-  sphinx-end-before: f_out_native**_cfi_pointer
-f_out_native**_raw:
-  sphinx-start-after: f_out_native**_raw
-  name: f_out_native**_raw
+  sphinx-end-before: f_out_native**_cfi_pointer_library
+f_out_native**_raw_library:
+  sphinx-start-after: f_out_native**_raw_library
+  name: f_out_native**_raw_library
   intent: out
   comments:
   - Pass cxx variable to library.
@@ -20877,7 +20877,7 @@ f_out_native**_raw:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  sphinx-end-before: f_out_native**_raw
+  sphinx-end-before: f_out_native**_raw_library
 f_out_native*_cdesc:
   sphinx-start-after: f_out_native*_cdesc
   name: f_out_native*_cdesc
@@ -24262,9 +24262,11 @@ root
         buf
           copy -- f_out_char**_buf_copy
         cdesc
-          pointer -- f_out_char**_cdesc_pointer
+          pointer
+            library -- f_out_char**_cdesc_pointer_library
         cfi
-          pointer -- f_out_char**_cfi_pointer
+          pointer
+            library -- f_out_char**_cfi_pointer_library
       enum* -- f_out_enum*
       native& -- f_out_native&
         hidden -- f_out_native&_hidden
@@ -24275,17 +24277,22 @@ root
         hidden -- f_out_native*_hidden
       native*&
         cdesc -- f_out_native*&_cdesc
-          pointer -- f_out_native*&_cdesc_pointer
+          pointer
+            library -- f_out_native*&_cdesc_pointer_library
       native**
         cdesc
           allocatable -- f_out_native**_cdesc_allocatable
-          pointer -- f_out_native**_cdesc_pointer
+          pointer
+            library -- f_out_native**_cdesc_pointer_library
         cfi
           allocatable -- f_out_native**_cfi_allocatable
-          pointer -- f_out_native**_cfi_pointer
-        raw -- f_out_native**_raw
+          pointer
+            library -- f_out_native**_cfi_pointer_library
+        raw
+          library -- f_out_native**_raw_library
       native***
-        raw -- f_out_native***_raw
+        raw
+          library -- f_out_native***_raw_library
       procedure*
         funptr -- f_out_procedure*_funptr
       string&

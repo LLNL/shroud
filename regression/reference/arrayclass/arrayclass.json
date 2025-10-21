@@ -2324,7 +2324,7 @@
                                         "i_var_cdesc": "SHT_array_cdesc",
                                         "idtor": "0",
                                         "rank": "1",
-                                        "stmt_name": "f_out_native**_cdesc_pointer",
+                                        "stmt_name": "f_out_native**_cdesc_pointer_library",
                                         "typemap_name": "double"
                                     },
                                     "meta": {
@@ -2340,9 +2340,10 @@
                                             "isize"
                                         ],
                                         "dimension": "isize",
-                                        "intent": "out"
+                                        "intent": "out",
+                                        "owner": "library"
                                     },
-                                    "stmt": "f_out_native**_cdesc_pointer"
+                                    "stmt": "f_out_native**_cdesc_pointer_library"
                                 },
                                 "isize": {
                                     "fmtdict": {
@@ -2761,7 +2762,7 @@
                                         "i_var_cdesc": "SHT_array_cdesc",
                                         "idtor": "0",
                                         "rank": "1",
-                                        "stmt_name": "f_out_native*&_cdesc_pointer",
+                                        "stmt_name": "f_out_native*&_cdesc_pointer_library",
                                         "typemap_name": "double"
                                     },
                                     "meta": {
@@ -2777,9 +2778,10 @@
                                             "isize"
                                         ],
                                         "dimension": "isize",
-                                        "intent": "out"
+                                        "intent": "out",
+                                        "owner": "library"
                                     },
-                                    "stmt": "f_out_native*&_cdesc_pointer"
+                                    "stmt": "f_out_native*&_cdesc_pointer_library"
                                 },
                                 "isize": {
                                     "fmtdict": {
@@ -3199,7 +3201,7 @@
                                         "i_var_cdesc": "SHT_array_cdesc",
                                         "idtor": "0",
                                         "rank": "1",
-                                        "stmt_name": "f_out_native**_cdesc_pointer",
+                                        "stmt_name": "f_out_native**_cdesc_pointer_library",
                                         "typemap_name": "double"
                                     },
                                     "meta": {
@@ -3215,9 +3217,10 @@
                                             "isize"
                                         ],
                                         "dimension": "isize",
-                                        "intent": "out"
+                                        "intent": "out",
+                                        "owner": "library"
                                     },
-                                    "stmt": "f_out_native**_cdesc_pointer"
+                                    "stmt": "f_out_native**_cdesc_pointer_library"
                                 },
                                 "isize": {
                                     "fmtdict": {
@@ -3637,7 +3640,7 @@
                                         "i_var_cdesc": "SHT_array_cdesc",
                                         "idtor": "0",
                                         "rank": "1",
-                                        "stmt_name": "f_out_native*&_cdesc_pointer",
+                                        "stmt_name": "f_out_native*&_cdesc_pointer_library",
                                         "typemap_name": "double"
                                     },
                                     "meta": {
@@ -3653,9 +3656,10 @@
                                             "isize"
                                         ],
                                         "dimension": "isize",
-                                        "intent": "out"
+                                        "intent": "out",
+                                        "owner": "library"
                                     },
-                                    "stmt": "f_out_native*&_cdesc_pointer"
+                                    "stmt": "f_out_native*&_cdesc_pointer_library"
                                 },
                                 "isize": {
                                     "fmtdict": {

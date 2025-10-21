@@ -323,8 +323,8 @@ And :file:`wrapftutorial.f`:
 
 .. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
-   :start-after: start helper capsule_data_basic
-   :end-before: end helper capsule_data_basic
+   :start-after: start helper capsule_data
+   :end-before: end helper capsule_data
    :dedent: 4
 
 *addr* is the address of the C or C++ variable, such as a ``char *``
@@ -334,6 +334,7 @@ or the *destructor_name* attribute.
 These code segments are collected and written to function
 *C_memory_dtor_function*.  A value of 0 indicated the memory will not
 be released and is used with the **owner(library)** attribute.
+*cmemflags* contains bit flags to set pointer properties.
 
 Each class creates its own capsule struct for the C wrapper.
 This is to provide a measure of type safety in the C API.

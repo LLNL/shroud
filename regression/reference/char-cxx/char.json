@@ -5721,16 +5721,17 @@
                                 "i_var": "outstr",
                                 "i_var_cdesc": "SHT_outstr_cdesc",
                                 "idtor": "0",
-                                "stmt_name": "f_out_char**_cdesc_pointer",
+                                "stmt_name": "f_out_char**_cdesc_pointer_library",
                                 "typemap_name": "char"
                             },
                             "meta": {
                                 "abstract": "char**",
                                 "api": "cdesc",
                                 "deref": "pointer",
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             },
-                            "stmt": "f_out_char**_cdesc_pointer"
+                            "stmt": "f_out_char**_cdesc_pointer_library"
                         }
                     },
                     "py": {
@@ -6025,16 +6026,17 @@
                                 "i_var": "outstr",
                                 "i_var_cdesc": "SHT_outstr_cdesc",
                                 "idtor": "0",
-                                "stmt_name": "f_out_char**_cdesc_pointer",
+                                "stmt_name": "f_out_char**_cdesc_pointer_library",
                                 "typemap_name": "char"
                             },
                             "meta": {
                                 "abstract": "char**",
                                 "api": "cdesc",
                                 "deref": "pointer",
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             },
-                            "stmt": "f_out_char**_cdesc_pointer"
+                            "stmt": "f_out_char**_cdesc_pointer_library"
                         }
                     },
                     "py": {

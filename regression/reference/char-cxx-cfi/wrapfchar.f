@@ -706,7 +706,7 @@ module char_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char **outstr +deref(pointer)+intent(out)
-    ! Statement: f_out_char**_cfi_pointer
+    ! Statement: f_out_char**_cfi_pointer_library
     ! start fetch_char_ptr_library
     interface
         subroutine fetch_char_ptr_library(outstr) &
@@ -741,7 +741,7 @@ module char_mod
     ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  char **outstr +deref(pointer)+intent(out)
-    ! Statement: f_out_char**_cfi_pointer
+    ! Statement: f_out_char**_cfi_pointer_library
     ! start fetch_char_ptr_library_null
     interface
         function fetch_char_ptr_library_null(outstr) &
@@ -1307,7 +1307,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char **outstr +deref(pointer)+intent(out)
-    ! Statement: f_out_char**_cfi_pointer
+    ! Statement: f_out_char**_cfi_pointer_library
     !>
     !! Fetch a pointer to a char array owned by the library.
     !<
@@ -1328,7 +1328,7 @@ contains
     ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  char **outstr +deref(pointer)+intent(out)
-    ! Statement: f_out_char**_cfi_pointer
+    ! Statement: f_out_char**_cfi_pointer_library
     !>
     !! Fetch a NULL pointer to a char array owned by the library.
     !! Return a value to test Python returning a tuple.

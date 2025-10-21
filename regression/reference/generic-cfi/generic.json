@@ -5331,7 +5331,7 @@
                                 "i_var_cfi": "SHT_addr_cfi",
                                 "idtor": "0",
                                 "rank": "1",
-                                "stmt_name": "f_out_native**_cfi_pointer",
+                                "stmt_name": "f_out_native**_cfi_pointer_library",
                                 "typemap_name": "float"
                             },
                             "meta": {
@@ -5339,9 +5339,10 @@
                                 "api": "cfi",
                                 "deref": "pointer",
                                 "intent": "out",
+                                "owner": "library",
                                 "rank": 1
                             },
-                            "stmt": "f_out_native**_cfi_pointer"
+                            "stmt": "f_out_native**_cfi_pointer_library"
                         },
                         "size": {
                             "fmtdict": {
@@ -5630,7 +5631,7 @@
                                 "i_var_cfi": "SHT_addr_cfi",
                                 "idtor": "0",
                                 "rank": "2",
-                                "stmt_name": "f_out_native**_cfi_pointer",
+                                "stmt_name": "f_out_native**_cfi_pointer_library",
                                 "typemap_name": "float"
                             },
                             "meta": {
@@ -5638,9 +5639,10 @@
                                 "api": "cfi",
                                 "deref": "pointer",
                                 "intent": "out",
+                                "owner": "library",
                                 "rank": 2
                             },
-                            "stmt": "f_out_native**_cfi_pointer"
+                            "stmt": "f_out_native**_cfi_pointer_library"
                         },
                         "size": {
                             "fmtdict": {

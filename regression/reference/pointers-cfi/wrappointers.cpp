@@ -545,7 +545,7 @@ void POI_getPtrToScalar(int **nitems)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int **nitems +intent(out)
-// Statement: f_out_native**_cfi_pointer
+// Statement: f_out_native**_cfi_pointer_library
 // start POI_getPtrToScalar_CFI
 void POI_getPtrToScalar_CFI(CFI_cdesc_t *SHT_nitems_cfi)
 {
@@ -595,7 +595,7 @@ void POI_getPtrToFixedArray(int **count)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int **count +dimension(10)+intent(out)
-// Statement: f_out_native**_cfi_pointer
+// Statement: f_out_native**_cfi_pointer_library
 // start POI_getPtrToFixedArray_CFI
 void POI_getPtrToFixedArray_CFI(CFI_cdesc_t *SHT_count_cfi)
 {
@@ -651,7 +651,7 @@ void POI_getPtrToDynamicArray(int **count, int *ncount)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int **count +dimension(ncount)+intent(out)
-// Statement: f_out_native**_cfi_pointer
+// Statement: f_out_native**_cfi_pointer_library
 // ----------------------------------------
 // Argument:  int *ncount +hidden+intent(out)
 // Statement: f_out_native*_hidden
@@ -710,7 +710,7 @@ void POI_getPtrToFuncArray(int **count)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int **count +dimension(getLen())+intent(out)
-// Statement: f_out_native**_cfi_pointer
+// Statement: f_out_native**_cfi_pointer_library
 // start POI_getPtrToFuncArray_CFI
 void POI_getPtrToFuncArray_CFI(CFI_cdesc_t *SHT_count_cfi)
 {
@@ -755,7 +755,7 @@ void POI_getPtrToConstScalar(const int **nitems)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const int **nitems +intent(out)
-// Statement: f_out_native**_cfi_pointer
+// Statement: f_out_native**_cfi_pointer_library
 // start POI_getPtrToConstScalar_CFI
 void POI_getPtrToConstScalar_CFI(CFI_cdesc_t *SHT_nitems_cfi)
 {
@@ -799,7 +799,7 @@ void POI_getPtrToFixedConstArray(const int **count)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const int **count +dimension(10)+intent(out)
-// Statement: f_out_native**_cfi_pointer
+// Statement: f_out_native**_cfi_pointer_library
 // start POI_getPtrToFixedConstArray_CFI
 void POI_getPtrToFixedConstArray_CFI(CFI_cdesc_t *SHT_count_cfi)
 {
@@ -847,7 +847,7 @@ void POI_getPtrToDynamicConstArray(const int **count, int *ncount)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const int **count +dimension(ncount)+intent(out)
-// Statement: f_out_native**_cfi_pointer
+// Statement: f_out_native**_cfi_pointer_library
 // ----------------------------------------
 // Argument:  int *ncount +hidden+intent(out)
 // Statement: f_out_native*_hidden

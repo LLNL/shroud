@@ -232,7 +232,7 @@ void GEN_SavePointer2_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  float **addr +deref(pointer)+intent(out)+rank(1)
-// Statement: f_out_native**_cfi_pointer
+// Statement: f_out_native**_cfi_pointer_library
 // ----------------------------------------
 // Argument:  int *type +hidden+intent(out)
 // Statement: f_out_native*_hidden
@@ -268,7 +268,7 @@ void GEN_GetPointerAsPointer_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  float **addr +deref(pointer)+intent(out)+rank(2)
-// Statement: f_out_native**_cfi_pointer
+// Statement: f_out_native**_cfi_pointer_library
 // ----------------------------------------
 // Argument:  int *type +hidden+intent(out)
 // Statement: f_out_native*_hidden

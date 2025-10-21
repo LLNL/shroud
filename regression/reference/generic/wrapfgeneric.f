@@ -465,7 +465,7 @@ module generic_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  float **addr +deref(pointer)+intent(out)+rank(1)
-    ! Statement: f_out_native**_cdesc_pointer
+    ! Statement: f_out_native**_cdesc_pointer_library
     interface
         subroutine c_get_pointer_as_pointer_float1d_bufferify( &
                 SHT_addr_cdesc) &
@@ -484,7 +484,7 @@ module generic_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  float **addr +deref(pointer)+intent(out)+rank(2)
-    ! Statement: f_out_native**_cdesc_pointer
+    ! Statement: f_out_native**_cdesc_pointer_library
     interface
         subroutine c_get_pointer_as_pointer_float2d_bufferify( &
                 SHT_addr_cdesc) &
@@ -1088,7 +1088,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  float **addr +deref(pointer)+intent(out)+rank(1)
-    ! Statement: f_out_native**_cdesc_pointer
+    ! Statement: f_out_native**_cdesc_pointer_library
     subroutine get_pointer_as_pointer_float1d(addr)
         use iso_c_binding, only : C_FLOAT, c_f_pointer
         real(C_FLOAT), intent(OUT), pointer :: addr(:)
@@ -1108,7 +1108,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  float **addr +deref(pointer)+intent(out)+rank(2)
-    ! Statement: f_out_native**_cdesc_pointer
+    ! Statement: f_out_native**_cdesc_pointer_library
     subroutine get_pointer_as_pointer_float2d(addr)
         use iso_c_binding, only : C_FLOAT, c_f_pointer
         real(C_FLOAT), intent(OUT), pointer :: addr(:,:)

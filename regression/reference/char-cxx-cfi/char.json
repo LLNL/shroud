@@ -5174,16 +5174,17 @@
                                 "i_var": "outstr",
                                 "i_var_cfi": "SHT_outstr_cfi",
                                 "idtor": "0",
-                                "stmt_name": "f_out_char**_cfi_pointer",
+                                "stmt_name": "f_out_char**_cfi_pointer_library",
                                 "typemap_name": "char"
                             },
                             "meta": {
                                 "abstract": "char**",
                                 "api": "cfi",
                                 "deref": "pointer",
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             },
-                            "stmt": "f_out_char**_cfi_pointer"
+                            "stmt": "f_out_char**_cfi_pointer_library"
                         }
                     },
                     "share": {
@@ -5422,16 +5423,17 @@
                                 "i_var": "outstr",
                                 "i_var_cfi": "SHT_outstr_cfi",
                                 "idtor": "0",
-                                "stmt_name": "f_out_char**_cfi_pointer",
+                                "stmt_name": "f_out_char**_cfi_pointer_library",
                                 "typemap_name": "char"
                             },
                             "meta": {
                                 "abstract": "char**",
                                 "api": "cfi",
                                 "deref": "pointer",
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             },
-                            "stmt": "f_out_char**_cfi_pointer"
+                            "stmt": "f_out_char**_cfi_pointer_library"
                         }
                     },
                     "share": {

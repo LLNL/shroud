@@ -180,6 +180,11 @@ class FillMeta(object):
         If the function returns a pointer, set owner.
         Called after meta[deref] is set.
         Ownership is only possible with deref pointer or raw.
+
+        Parameters
+        ----------
+        node - ast.FunctionNode
+        meta - 
         """
         options = node.options
         declarator = node.ast.declarator
@@ -200,6 +205,45 @@ class FillMeta(object):
         elif options.class_ctor:
             meta["owner"] = "caller"
         elif declarator.is_indirect():
+            ntypemap = node.ast.typemap
+            if ntypemap.sgroup == "shadow":
+                # XXX - deref is not set for shadow in set_func_deref_fortran. why?
+                meta["owner"] = options.default_owner
+            else:
+                deref = meta["deref"]
+                if deref in ["pointer", "raw"]:
+                    meta["owner"] = options.default_owner
+
+    def set_arg_owner_fortran(self, node, arg, meta):
+        """
+        If the function returns a pointer, set owner.
+        Called after meta[deref] is set.
+        Ownership is only possible with deref pointer or raw.
+
+        Parameters
+        ----------
+        node - ast.FunctionNode
+        arg - declast.Declaration
+        meta - 
+        """
+        options = node.options
+        declarator = arg.declarator
+        attrs = declarator.attrs
+        owner = attrs.get("owner", missing)
+        if owner is not missing:
+            # XXX - Need to extract smart_poiner from Typemaps
+            if owner not in ["caller", "library", "shared", "weak"]:
+                # XXX - shared is only valued with language=c++
+                self.cursor.generate(
+                    "Illegal value '{}' for owner attribute. "
+                    "Must be 'caller' or 'library'.".format(owner)
+                )
+            meta["owner"] = owner
+        elif meta["intent"] == "in":
+            # Does not return anything, no need for ownership.
+            pass
+        elif declarator.is_indirect() > 1:
+            # Argument returns a pointer.
             ntypemap = node.ast.typemap
             if ntypemap.sgroup == "shadow":
                 # XXX - deref is not set for shadow in set_func_deref_fortran. why?
@@ -1197,6 +1241,7 @@ class FillMetaFortran(FillMeta):
             self.set_arg_share(node, arg, meta)
             self.set_arg_fortran(node, arg, meta)
             self.set_arg_deref_fortran(node, arg, meta)
+            self.set_arg_owner_fortran(node, arg, meta)
             self.set_arg_api_fortran(node, arg, meta, fptr_arg)
             self.set_arg_hidden(arg, meta)
 
