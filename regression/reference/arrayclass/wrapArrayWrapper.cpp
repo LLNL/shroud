@@ -35,7 +35,7 @@ ARR_ArrayWrapper * ARR_ArrayWrapper_ctor(ARR_ArrayWrapper *SHC_rv)
 
 // ----------------------------------------
 // Function:  ArrayWrapper
-// Statement: f_ctor_shadow_capsule
+// Statement: f_ctor_shadow_capsule_caller
 void ARR_ArrayWrapper_ctor_bufferify(ARR_ArrayWrapper *SHC_rv)
 {
     // splicer begin class.ArrayWrapper.method.ctor_bufferify

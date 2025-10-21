@@ -35,7 +35,7 @@ CLA_Circle * CLA_Circle_ctor(CLA_Circle *SHC_rv)
 
 // ----------------------------------------
 // Function:  Circle
-// Statement: f_ctor_shadow_capsule
+// Statement: f_ctor_shadow_capsule_caller
 void CLA_Circle_ctor_bufferify(CLA_Circle *SHC_rv)
 {
     // splicer begin class.Circle.method.ctor_bufferify

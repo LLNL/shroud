@@ -135,7 +135,7 @@ module cxxlibrary_mod
 
         ! ----------------------------------------
         ! Function:  Class1
-        ! Statement: f_ctor_shadow_capsule
+        ! Statement: f_ctor_shadow_capsule_caller
         subroutine c_class1_ctor_bufferify(SHT_rv) &
                 bind(C, name="CXX_Class1_ctor_bufferify")
             import :: CXX_SHROUD_capsule_data
@@ -485,7 +485,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     function class1_ctor() &
             result(SHT_rv)
         type(class1) :: SHT_rv

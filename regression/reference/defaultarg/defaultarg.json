@@ -184,6 +184,8 @@
                                         "F_arguments": "arg1",
                                         "F_subprogram": "function",
                                         "c_abstract_decl": "DEF_Class1 *",
+                                        "c_cmemflags": "SWIG_MEM_OWN",
+                                        "c_cmemflags_or": "SWIG_MEM_OWN | ",
                                         "c_const": "",
                                         "c_type": "DEF_Class1",
                                         "c_var": "SHC_rv",
@@ -214,15 +216,16 @@
                                         "i_type": "type(DEF_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
                                         "idtor": "1",
-                                        "stmt_name": "f_ctor_shadow_capsule",
+                                        "stmt_name": "f_ctor_shadow_capsule_caller",
                                         "typemap_name": "Class1"
                                     },
                                     "meta": {
                                         "abstract": "shadow",
                                         "api": "capsule",
-                                        "intent": "ctor"
+                                        "intent": "ctor",
+                                        "owner": "caller"
                                     },
-                                    "stmt": "f_ctor_shadow_capsule"
+                                    "stmt": "f_ctor_shadow_capsule_caller"
                                 },
                                 "arg1": {
                                     "fmtdict": {
@@ -498,6 +501,8 @@
                                         "F_arguments": "arg1,\t arg2",
                                         "F_subprogram": "function",
                                         "c_abstract_decl": "DEF_Class1 *",
+                                        "c_cmemflags": "SWIG_MEM_OWN",
+                                        "c_cmemflags_or": "SWIG_MEM_OWN | ",
                                         "c_const": "",
                                         "c_type": "DEF_Class1",
                                         "c_var": "SHC_rv",
@@ -528,15 +533,16 @@
                                         "i_type": "type(DEF_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
                                         "idtor": "1",
-                                        "stmt_name": "f_ctor_shadow_capsule",
+                                        "stmt_name": "f_ctor_shadow_capsule_caller",
                                         "typemap_name": "Class1"
                                     },
                                     "meta": {
                                         "abstract": "shadow",
                                         "api": "capsule",
-                                        "intent": "ctor"
+                                        "intent": "ctor",
+                                        "owner": "caller"
                                     },
-                                    "stmt": "f_ctor_shadow_capsule"
+                                    "stmt": "f_ctor_shadow_capsule_caller"
                                 },
                                 "arg1": {
                                     "fmtdict": {
@@ -915,6 +921,8 @@
                                         "F_arguments": "arg1,\t arg2,\t arg3",
                                         "F_subprogram": "function",
                                         "c_abstract_decl": "DEF_Class1 *",
+                                        "c_cmemflags": "SWIG_MEM_OWN",
+                                        "c_cmemflags_or": "SWIG_MEM_OWN | ",
                                         "c_const": "",
                                         "c_type": "DEF_Class1",
                                         "c_var": "SHC_rv",
@@ -945,15 +953,16 @@
                                         "i_type": "type(DEF_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
                                         "idtor": "1",
-                                        "stmt_name": "f_ctor_shadow_capsule",
+                                        "stmt_name": "f_ctor_shadow_capsule_caller",
                                         "typemap_name": "Class1"
                                     },
                                     "meta": {
                                         "abstract": "shadow",
                                         "api": "capsule",
-                                        "intent": "ctor"
+                                        "intent": "ctor",
+                                        "owner": "caller"
                                     },
-                                    "stmt": "f_ctor_shadow_capsule"
+                                    "stmt": "f_ctor_shadow_capsule_caller"
                                 },
                                 "arg1": {
                                     "fmtdict": {

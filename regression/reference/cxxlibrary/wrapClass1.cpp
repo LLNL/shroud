@@ -34,7 +34,7 @@ CXX_Class1 * CXX_Class1_ctor(CXX_Class1 *SHC_rv)
 
 // ----------------------------------------
 // Function:  Class1
-// Statement: f_ctor_shadow_capsule
+// Statement: f_ctor_shadow_capsule_caller
 void CXX_Class1_ctor_bufferify(CXX_Class1 *SHC_rv)
 {
     // splicer begin class.Class1.method.ctor_bufferify

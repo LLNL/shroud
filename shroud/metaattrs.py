@@ -188,6 +188,7 @@ class FillMeta(object):
         """
         options = node.options
         declarator = node.ast.declarator
+        ntypemap = node.ast.typemap
         attrs = declarator.attrs
         owner = attrs.get("owner", missing)
         if owner is not missing:
@@ -205,7 +206,6 @@ class FillMeta(object):
         elif options.class_ctor:
             meta["owner"] = "caller"
         elif declarator.is_indirect():
-            ntypemap = node.ast.typemap
             if ntypemap.sgroup == "shadow":
                 # XXX - deref is not set for shadow in set_func_deref_fortran. why?
                 meta["owner"] = options.default_owner
@@ -213,6 +213,10 @@ class FillMeta(object):
                 deref = meta["deref"]
                 if deref in ["pointer", "raw"]:
                     meta["owner"] = options.default_owner
+#        elif ntypemap.sgroup in ["string", "vector"]: # XXX - need to handle
+        elif ntypemap.sgroup == "shadow":
+            # Return object by value, a local copy is created which caller must release.
+            meta["owner"] = "caller"
 
     def set_arg_owner_fortran(self, node, arg, meta):
         """

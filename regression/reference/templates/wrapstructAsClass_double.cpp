@@ -35,7 +35,7 @@ TEM_structAsClass_double * TEM_structAsClass_double_ctor(
 
 // ----------------------------------------
 // Function:  structAsClass
-// Statement: f_ctor_shadow_capsule
+// Statement: f_ctor_shadow_capsule_caller
 void TEM_structAsClass_double_ctor_bufferify(
     TEM_structAsClass_double *SHC_rv)
 {

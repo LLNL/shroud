@@ -35,7 +35,7 @@ TEM_vector_int * TEM_vector_int_ctor(TEM_vector_int *SHC_rv)
 
 // ----------------------------------------
 // Function:  vector
-// Statement: f_ctor_shadow_capsule
+// Statement: f_ctor_shadow_capsule_caller
 void TEM_vector_int_ctor_bufferify(TEM_vector_int *SHC_rv)
 {
     // splicer begin namespace.std.class.vector.method.ctor_bufferify

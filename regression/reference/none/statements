@@ -6948,9 +6948,9 @@ c_subroutine:
   c_call:
   - '{C_call_function};'
   sphinx-end-before: c_subroutine
-f_ctor_shadow_capsule:
-  sphinx-start-after: f_ctor_shadow_capsule
-  name: f_ctor_shadow_capsule
+f_ctor_shadow_capsule_caller:
+  sphinx-start-after: f_ctor_shadow_capsule_caller
+  name: f_ctor_shadow_capsule_caller
   intent: ctor
   comments:
   - Pass function result as a capsule argument from Fortran to C.
@@ -6985,7 +6985,7 @@ f_ctor_shadow_capsule:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
   owner: caller
-  sphinx-end-before: f_ctor_shadow_capsule
+  sphinx-end-before: f_ctor_shadow_capsule_caller
 f_ctor_shadow_capsule_shared:
   sphinx-start-after: f_ctor_shadow_capsule_shared
   name: f_ctor_shadow_capsule_shared
@@ -9804,9 +9804,9 @@ f_function_shadow*_this:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
   sphinx-end-before: f_function_shadow*_this
-f_function_shadow<native>_capsule:
-  sphinx-start-after: f_function_shadow<native>_capsule
-  name: f_function_shadow<native>_capsule
+f_function_shadow<native>_capsule_caller:
+  sphinx-start-after: f_function_shadow<native>_capsule_caller
+  name: f_function_shadow<native>_capsule_caller
   intent: function
   comments:
   - Call the C wrapper as a subroutine.
@@ -9858,10 +9858,10 @@ f_function_shadow<native>_capsule:
     cxx_addr: ''
     cxx_member: ->
   owner: caller
-  sphinx-end-before: f_function_shadow<native>_capsule
-f_function_shadow_capsule:
-  sphinx-start-after: f_function_shadow_capsule
-  name: f_function_shadow_capsule
+  sphinx-end-before: f_function_shadow<native>_capsule_caller
+f_function_shadow_capsule_caller:
+  sphinx-start-after: f_function_shadow_capsule_caller
+  name: f_function_shadow_capsule_caller
   intent: function
   comments:
   - Call the C wrapper as a subroutine.
@@ -9913,7 +9913,7 @@ f_function_shadow_capsule:
     cxx_addr: ''
     cxx_member: ->
   owner: caller
-  sphinx-end-before: f_function_shadow_capsule
+  sphinx-end-before: f_function_shadow_capsule_caller
 f_function_smartptr<shadow>*_capsule:
   sphinx-start-after: f_function_smartptr<shadow>*_capsule
   name: f_function_smartptr<shadow>*_capsule
@@ -23839,7 +23839,8 @@ root
   f
     ctor
       shadow
-        capsule -- f_ctor_shadow_capsule
+        capsule
+          caller -- f_ctor_shadow_capsule_caller
           shared -- f_ctor_shadow_capsule_shared
           weak -- f_ctor_shadow_capsule_weak
     dtor -- f_dtor
@@ -23913,7 +23914,8 @@ root
       native** -- f_function_native**
         library -- f_function_native**_library
       shadow
-        capsule -- f_function_shadow_capsule
+        capsule
+          caller -- f_function_shadow_capsule_caller
       shadow&
         capsule -- f_function_shadow&_capsule
           caller -- f_function_shadow&_capsule_caller
@@ -23924,7 +23926,8 @@ root
           library -- f_function_shadow*_capsule_library
         this -- f_function_shadow*_this
       shadow<native>
-        capsule -- f_function_shadow<native>_capsule
+        capsule
+          caller -- f_function_shadow<native>_capsule_caller
       smartptr<shadow>
         capsule -- f_function_smartptr<shadow>_capsule
       smartptr<shadow>*

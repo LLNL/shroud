@@ -35,7 +35,7 @@ CLA_Shape * CLA_Shape_ctor(CLA_Shape *SHC_rv)
 
 // ----------------------------------------
 // Function:  Shape
-// Statement: f_ctor_shadow_capsule
+// Statement: f_ctor_shadow_capsule_caller
 void CLA_Shape_ctor_bufferify(CLA_Shape *SHC_rv)
 {
     // splicer begin class.Shape.method.ctor_bufferify

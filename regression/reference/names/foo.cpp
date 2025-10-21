@@ -34,7 +34,7 @@ TES_ns0_Names * XXX_TES_ns0_Names_defaultctor(TES_ns0_Names *SHC_rv)
 
 // ----------------------------------------
 // Function:  Names +name(defaultctor)
-// Statement: f_ctor_shadow_capsule
+// Statement: f_ctor_shadow_capsule_caller
 void XXX_TES_ns0_Names_defaultctor_bufferify(TES_ns0_Names *SHC_rv)
 {
     // splicer begin namespace.ns0.class.Names.method.defaultctor_bufferify

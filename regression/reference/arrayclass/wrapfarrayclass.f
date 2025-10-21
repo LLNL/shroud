@@ -128,7 +128,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  ArrayWrapper
-        ! Statement: f_ctor_shadow_capsule
+        ! Statement: f_ctor_shadow_capsule_caller
         subroutine c_ArrayWrapper_ctor_bufferify(SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_ctor_bufferify")
             import :: ARR_SHROUD_capsule_data
@@ -506,7 +506,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  ArrayWrapper
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     function ArrayWrapper_ctor() &
             result(SHT_rv)
         type(ArrayWrapper) :: SHT_rv

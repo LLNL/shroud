@@ -75,7 +75,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_0(
 
 // ----------------------------------------
 // Function:  ExClass1
-// Statement: f_ctor_shadow_capsule
+// Statement: f_ctor_shadow_capsule_caller
 void AA_example_nested_ExClass1_ctor_0_bufferify(
     AA_example_nested_ExClass1 *SHC_rv)
 {
@@ -126,7 +126,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1(
  */
 // ----------------------------------------
 // Function:  ExClass1
-// Statement: f_ctor_shadow_capsule
+// Statement: f_ctor_shadow_capsule_caller
 // ----------------------------------------
 // Argument:  const string *name
 // Statement: f_in_string*_buf

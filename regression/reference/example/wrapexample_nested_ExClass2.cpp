@@ -104,7 +104,7 @@ AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor(
  */
 // ----------------------------------------
 // Function:  ExClass2
-// Statement: f_ctor_shadow_capsule
+// Statement: f_ctor_shadow_capsule_caller
 // ----------------------------------------
 // Argument:  const string *name +len_trim(trim_name)
 // Statement: f_in_string*_buf

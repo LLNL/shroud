@@ -35,7 +35,7 @@ TEM_structAsClass_int * TEM_structAsClass_int_ctor(
 
 // ----------------------------------------
 // Function:  structAsClass
-// Statement: f_ctor_shadow_capsule
+// Statement: f_ctor_shadow_capsule_caller
 void TEM_structAsClass_int_ctor_bufferify(TEM_structAsClass_int *SHC_rv)
 {
     // splicer begin class.structAsClass.method.ctor_bufferify

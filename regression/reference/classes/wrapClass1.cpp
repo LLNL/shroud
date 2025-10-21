@@ -92,7 +92,7 @@ CLA_Class1 * CLA_Class1_ctor_default(CLA_Class1 *SHC_rv)
 
 // ----------------------------------------
 // Function:  Class1
-// Statement: f_ctor_shadow_capsule
+// Statement: f_ctor_shadow_capsule_caller
 // start CLA_Class1_ctor_default_bufferify
 void CLA_Class1_ctor_default_bufferify(CLA_Class1 *SHC_rv)
 {
@@ -126,7 +126,7 @@ CLA_Class1 * CLA_Class1_ctor_flag(int flag, CLA_Class1 *SHC_rv)
 
 // ----------------------------------------
 // Function:  Class1
-// Statement: f_ctor_shadow_capsule
+// Statement: f_ctor_shadow_capsule_caller
 // ----------------------------------------
 // Argument:  int flag
 // Statement: f_in_native

@@ -93,7 +93,7 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  vector
-        ! Statement: f_ctor_shadow_capsule
+        ! Statement: f_ctor_shadow_capsule_caller
         subroutine c_vector_int_ctor_bufferify(SHT_rv) &
                 bind(C, name="TEM_vector_int_ctor_bufferify")
             import :: TEM_SHROUD_capsule_data
@@ -178,7 +178,7 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  vector
-        ! Statement: f_ctor_shadow_capsule
+        ! Statement: f_ctor_shadow_capsule_caller
         subroutine c_vector_double_ctor_bufferify(SHT_rv) &
                 bind(C, name="TEM_vector_double_ctor_bufferify")
             import :: TEM_SHROUD_capsule_data
@@ -264,7 +264,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  vector
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     function vector_int_ctor() &
             result(SHT_rv)
         type(vector_int) :: SHT_rv
@@ -347,7 +347,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  vector
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     function vector_double_ctor() &
             result(SHT_rv)
         type(vector_double) :: SHT_rv

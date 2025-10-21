@@ -35,7 +35,7 @@ SHA_Object * SHA_Object_ctor(SHA_Object *SHC_rv)
 
 // ----------------------------------------
 // Function:  Object
-// Statement: f_ctor_shadow_capsule
+// Statement: f_ctor_shadow_capsule_caller
 void SHA_Object_ctor_bufferify(SHA_Object *SHC_rv)
 {
     // splicer begin class.Object.method.ctor_bufferify

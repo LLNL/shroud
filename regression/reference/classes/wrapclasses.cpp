@@ -309,7 +309,7 @@ CLA_Class1 * CLA_getClassCopy(int flag, CLA_Class1 *SHC_rv)
  */
 // ----------------------------------------
 // Function:  Class1 getClassCopy
-// Statement: f_function_shadow_capsule
+// Statement: f_function_shadow_capsule_caller
 // ----------------------------------------
 // Argument:  int flag
 // Statement: f_in_native

@@ -38,7 +38,7 @@ TEM_user_int * TEM_returnUserType(TEM_user_int *SHC_rv)
 
 // ----------------------------------------
 // Function:  user<int> returnUserType
-// Statement: f_function_shadow<native>_capsule
+// Statement: f_function_shadow<native>_capsule_caller
 void TEM_returnUserType_bufferify(TEM_user_int *SHC_rv)
 {
     // splicer begin function.returnUserType_bufferify

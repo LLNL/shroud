@@ -112,7 +112,7 @@ module shared_mod
 
         ! ----------------------------------------
         ! Function:  Object
-        ! Statement: f_ctor_shadow_capsule
+        ! Statement: f_ctor_shadow_capsule_caller
         subroutine c_object_ctor_bufferify(SHT_rv) &
                 bind(C, name="SHA_Object_ctor_bufferify")
             import :: SHA_SHROUD_capsule_data
@@ -443,7 +443,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Object
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     function object_ctor() &
             result(SHT_rv)
         type(object) :: SHT_rv

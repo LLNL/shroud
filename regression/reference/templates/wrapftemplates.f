@@ -134,7 +134,7 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  structAsClass
-        ! Statement: f_ctor_shadow_capsule
+        ! Statement: f_ctor_shadow_capsule_caller
         subroutine c_struct_as_class_int_ctor_bufferify(SHT_rv) &
                 bind(C, name="TEM_structAsClass_int_ctor_bufferify")
             import :: TEM_SHROUD_capsule_data
@@ -215,7 +215,7 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  structAsClass
-        ! Statement: f_ctor_shadow_capsule
+        ! Statement: f_ctor_shadow_capsule_caller
         subroutine c_struct_as_class_double_ctor_bufferify(SHT_rv) &
                 bind(C, name="TEM_structAsClass_double_ctor_bufferify")
             import :: TEM_SHROUD_capsule_data
@@ -296,7 +296,7 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  user<int> returnUserType
-        ! Statement: f_function_shadow<native>_capsule
+        ! Statement: f_function_shadow<native>_capsule_caller
         subroutine c_return_user_type_bufferify(SHT_rv) &
                 bind(C, name="TEM_returnUserType_bufferify")
             import :: TEM_SHROUD_capsule_data
@@ -457,7 +457,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  structAsClass
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     function struct_as_class_int_ctor() &
             result(SHT_rv)
         type(struct_as_class_int) :: SHT_rv
@@ -552,7 +552,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  structAsClass
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     function struct_as_class_double_ctor() &
             result(SHT_rv)
         type(struct_as_class_double) :: SHT_rv
@@ -647,7 +647,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  user<int> returnUserType
-    ! Statement: f_function_shadow<native>_capsule
+    ! Statement: f_function_shadow<native>_capsule_caller
     function return_user_type() &
             result(SHT_rv)
         type(user_int) :: SHT_rv

@@ -777,6 +777,8 @@
                                         "F_arguments": "",
                                         "F_subprogram": "function",
                                         "c_abstract_decl": "TEM_structAsClass_int *",
+                                        "c_cmemflags": "SWIG_MEM_OWN",
+                                        "c_cmemflags_or": "SWIG_MEM_OWN | ",
                                         "c_const": "",
                                         "c_type": "TEM_structAsClass_int",
                                         "c_var": "SHC_rv",
@@ -807,15 +809,16 @@
                                         "i_type": "type(TEM_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
                                         "idtor": "3",
-                                        "stmt_name": "f_ctor_shadow_capsule",
+                                        "stmt_name": "f_ctor_shadow_capsule_caller",
                                         "typemap_name": "structAsClass_int"
                                     },
                                     "meta": {
                                         "abstract": "shadow",
                                         "api": "capsule",
-                                        "intent": "ctor"
+                                        "intent": "ctor",
+                                        "owner": "caller"
                                     },
-                                    "stmt": "f_ctor_shadow_capsule"
+                                    "stmt": "f_ctor_shadow_capsule_caller"
                                 }
                             },
                             "share": {
@@ -1720,6 +1723,8 @@
                                         "F_arguments": "",
                                         "F_subprogram": "function",
                                         "c_abstract_decl": "TEM_structAsClass_double *",
+                                        "c_cmemflags": "SWIG_MEM_OWN",
+                                        "c_cmemflags_or": "SWIG_MEM_OWN | ",
                                         "c_const": "",
                                         "c_type": "TEM_structAsClass_double",
                                         "c_var": "SHC_rv",
@@ -1750,15 +1755,16 @@
                                         "i_type": "type(TEM_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
                                         "idtor": "4",
-                                        "stmt_name": "f_ctor_shadow_capsule",
+                                        "stmt_name": "f_ctor_shadow_capsule_caller",
                                         "typemap_name": "structAsClass_double"
                                     },
                                     "meta": {
                                         "abstract": "shadow",
                                         "api": "capsule",
-                                        "intent": "ctor"
+                                        "intent": "ctor",
+                                        "owner": "caller"
                                     },
-                                    "stmt": "f_ctor_shadow_capsule"
+                                    "stmt": "f_ctor_shadow_capsule_caller"
                                 }
                             },
                             "share": {
@@ -2685,6 +2691,8 @@
                                 "F_arguments": "",
                                 "F_subprogram": "function",
                                 "c_abstract_decl": "int",
+                                "c_cmemflags": "SWIG_MEM_OWN",
+                                "c_cmemflags_or": "SWIG_MEM_OWN | ",
                                 "c_const": "",
                                 "c_local_cxx": "SHC_rv_cxx",
                                 "c_type": "TEM_user_int",
@@ -2716,7 +2724,7 @@
                                 "i_type": "type(TEM_SHROUD_capsule_data)",
                                 "i_var": "SHT_rv",
                                 "idtor": "5",
-                                "stmt_name": "f_function_shadow<native>_capsule",
+                                "stmt_name": "f_function_shadow<native>_capsule_caller",
                                 "targs": [
                                     {
                                         "cxx_T": "int",
@@ -2728,9 +2736,10 @@
                             "meta": {
                                 "abstract": "shadow<native>",
                                 "api": "capsule",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "caller"
                             },
-                            "stmt": "f_function_shadow<native>_capsule"
+                            "stmt": "f_function_shadow<native>_capsule_caller"
                         }
                     },
                     "share": {
@@ -4309,6 +4318,8 @@
                                                 "F_arguments": "",
                                                 "F_subprogram": "function",
                                                 "c_abstract_decl": "TEM_vector_int *",
+                                                "c_cmemflags": "SWIG_MEM_OWN",
+                                                "c_cmemflags_or": "SWIG_MEM_OWN | ",
                                                 "c_const": "",
                                                 "c_type": "TEM_vector_int",
                                                 "c_var": "SHC_rv",
@@ -4339,15 +4350,16 @@
                                                 "i_type": "type(TEM_SHROUD_capsule_data)",
                                                 "i_var": "SHT_rv",
                                                 "idtor": "1",
-                                                "stmt_name": "f_ctor_shadow_capsule",
+                                                "stmt_name": "f_ctor_shadow_capsule_caller",
                                                 "typemap_name": "std::vector_int"
                                             },
                                             "meta": {
                                                 "abstract": "shadow",
                                                 "api": "capsule",
-                                                "intent": "ctor"
+                                                "intent": "ctor",
+                                                "owner": "caller"
                                             },
-                                            "stmt": "f_ctor_shadow_capsule"
+                                            "stmt": "f_ctor_shadow_capsule_caller"
                                         }
                                     },
                                     "py": {
@@ -5405,6 +5417,8 @@
                                                 "F_arguments": "",
                                                 "F_subprogram": "function",
                                                 "c_abstract_decl": "TEM_vector_double *",
+                                                "c_cmemflags": "SWIG_MEM_OWN",
+                                                "c_cmemflags_or": "SWIG_MEM_OWN | ",
                                                 "c_const": "",
                                                 "c_type": "TEM_vector_double",
                                                 "c_var": "SHC_rv",
@@ -5435,15 +5449,16 @@
                                                 "i_type": "type(TEM_SHROUD_capsule_data)",
                                                 "i_var": "SHT_rv",
                                                 "idtor": "2",
-                                                "stmt_name": "f_ctor_shadow_capsule",
+                                                "stmt_name": "f_ctor_shadow_capsule_caller",
                                                 "typemap_name": "std::vector_double"
                                             },
                                             "meta": {
                                                 "abstract": "shadow",
                                                 "api": "capsule",
-                                                "intent": "ctor"
+                                                "intent": "ctor",
+                                                "owner": "caller"
                                             },
-                                            "stmt": "f_ctor_shadow_capsule"
+                                            "stmt": "f_ctor_shadow_capsule_caller"
                                         }
                                     },
                                     "py": {

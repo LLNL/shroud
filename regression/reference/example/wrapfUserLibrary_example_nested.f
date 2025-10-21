@@ -259,7 +259,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass1
-        ! Statement: f_ctor_shadow_capsule
+        ! Statement: f_ctor_shadow_capsule_caller
         subroutine c_ex_class1_ctor_0_bufferify(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_ctor_0_bufferify")
             import :: AA_SHROUD_capsule_data
@@ -286,7 +286,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass1
-        ! Statement: f_ctor_shadow_capsule
+        ! Statement: f_ctor_shadow_capsule_caller
         ! ----------------------------------------
         ! Argument:  const string *name
         ! Statement: f_in_string*_buf
@@ -434,7 +434,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass2
-        ! Statement: f_ctor_shadow_capsule
+        ! Statement: f_ctor_shadow_capsule_caller
         ! ----------------------------------------
         ! Argument:  const string *name +len_trim(trim_name)
         ! Statement: f_in_string*_buf
@@ -1178,7 +1178,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  ExClass1
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     function ex_class1_ctor_0() &
             result(SHT_rv)
         type(ex_class1) :: SHT_rv
@@ -1189,7 +1189,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  ExClass1
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     ! ----------------------------------------
     ! Argument:  const string *name
     ! Statement: f_in_string*_buf
@@ -1349,7 +1349,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  ExClass2
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     ! ----------------------------------------
     ! Argument:  const string *name +len_trim(trim_name)
     ! Statement: f_in_string*_buf

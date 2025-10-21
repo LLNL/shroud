@@ -122,6 +122,8 @@
                                         "F_arguments": "",
                                         "F_subprogram": "function",
                                         "c_abstract_decl": "ARR_ArrayWrapper *",
+                                        "c_cmemflags": "SWIG_MEM_OWN",
+                                        "c_cmemflags_or": "SWIG_MEM_OWN | ",
                                         "c_const": "",
                                         "c_type": "ARR_ArrayWrapper",
                                         "c_var": "SHC_rv",
@@ -152,15 +154,16 @@
                                         "i_type": "type(ARR_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
                                         "idtor": "1",
-                                        "stmt_name": "f_ctor_shadow_capsule",
+                                        "stmt_name": "f_ctor_shadow_capsule_caller",
                                         "typemap_name": "ArrayWrapper"
                                     },
                                     "meta": {
                                         "abstract": "shadow",
                                         "api": "capsule",
-                                        "intent": "ctor"
+                                        "intent": "ctor",
+                                        "owner": "caller"
                                     },
-                                    "stmt": "f_ctor_shadow_capsule"
+                                    "stmt": "f_ctor_shadow_capsule_caller"
                                 }
                             },
                             "py": {

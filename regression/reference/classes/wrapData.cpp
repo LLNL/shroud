@@ -66,7 +66,7 @@ CLA_Data * CLA_Data_ctor(CLA_Data *SHC_rv)
 
 // ----------------------------------------
 // Function:  Data
-// Statement: f_ctor_shadow_capsule
+// Statement: f_ctor_shadow_capsule_caller
 // start CLA_Data_ctor_bufferify
 void CLA_Data_ctor_bufferify(CLA_Data *SHC_rv)
 {

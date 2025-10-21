@@ -4233,8 +4233,8 @@
     },
     {
         "alias": [
-            "f_function_shadow_capsule",
-            "f_function_shadow<native>_capsule"
+            "f_function_shadow_capsule_caller",
+            "f_function_shadow<native>_capsule_caller"
         ],
         "notes": [
             "Return an instance by value.",
@@ -4272,7 +4272,7 @@
     },
     {
         "alias": [
-            "f_ctor_shadow_capsule",
+            "f_ctor_shadow_capsule_caller",
             "c_ctor_shadow_capsule"
         ],
         "mixin": [

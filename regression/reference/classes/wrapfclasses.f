@@ -221,7 +221,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     ! start c_class1_ctor_default_bufferify
     interface
         subroutine c_class1_ctor_default_bufferify(SHT_rv) &
@@ -256,7 +256,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     ! ----------------------------------------
     ! Argument:  int flag
     ! Statement: f_in_native
@@ -743,7 +743,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Shape
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     interface
         subroutine c_shape_ctor_bufferify(SHT_rv) &
                 bind(C, name="CLA_Shape_ctor_bufferify")
@@ -797,7 +797,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Circle
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     interface
         subroutine c_circle_ctor_bufferify(SHT_rv) &
                 bind(C, name="CLA_Circle_ctor_bufferify")
@@ -871,7 +871,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Data
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     ! start c_data_ctor_bufferify
     interface
         subroutine c_data_ctor_bufferify(SHT_rv) &
@@ -1191,7 +1191,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1 getClassCopy
-    ! Statement: f_function_shadow_capsule
+    ! Statement: f_function_shadow_capsule_caller
     ! ----------------------------------------
     ! Argument:  int flag
     ! Statement: f_in_native
@@ -1312,7 +1312,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     ! start class1_ctor_default
     function class1_ctor_default() &
             result(SHT_rv)
@@ -1325,7 +1325,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     ! ----------------------------------------
     ! Argument:  int flag
     ! Statement: f_in_native
@@ -1755,7 +1755,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Shape
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     function shape_ctor() &
             result(SHT_rv)
         type(shape) :: SHT_rv
@@ -1815,7 +1815,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Circle
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     function circle_ctor() &
             result(SHT_rv)
         type(circle) :: SHT_rv
@@ -1868,7 +1868,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Data
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     ! start data_ctor
     function data_ctor() &
             result(SHT_rv)
@@ -2105,7 +2105,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1 getClassCopy
-    ! Statement: f_function_shadow_capsule
+    ! Statement: f_function_shadow_capsule_caller
     ! ----------------------------------------
     ! Argument:  int flag
     ! Statement: f_in_native

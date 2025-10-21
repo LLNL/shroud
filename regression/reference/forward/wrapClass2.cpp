@@ -38,7 +38,7 @@ FOR_Class2 * FOR_Class2_ctor(FOR_Class2 *SHC_rv)
 
 // ----------------------------------------
 // Function:  Class2
-// Statement: f_ctor_shadow_capsule
+// Statement: f_ctor_shadow_capsule_caller
 void FOR_Class2_ctor_bufferify(FOR_Class2 *SHC_rv)
 {
     // splicer begin class.Class2.method.ctor_bufferify

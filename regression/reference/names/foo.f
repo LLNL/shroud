@@ -65,7 +65,7 @@ module name_module
 
         ! ----------------------------------------
         ! Function:  Names +name(defaultctor)
-        ! Statement: f_ctor_shadow_capsule
+        ! Statement: f_ctor_shadow_capsule_caller
         subroutine XXX_TES_names_defaultctor_bufferify(SHT_rv) &
                 bind(C, name="XXX_TES_ns0_Names_defaultctor_bufferify")
             import :: TES_SHROUD_capsule_data
@@ -105,7 +105,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Names +name(defaultctor)
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     function names_defaultctor() &
             result(SHT_rv)
         type(FNames) :: SHT_rv

@@ -334,6 +334,8 @@
                                         "F_arguments": "",
                                         "F_subprogram": "function",
                                         "c_abstract_decl": "CLA_Class1 *",
+                                        "c_cmemflags": "SWIG_MEM_OWN",
+                                        "c_cmemflags_or": "SWIG_MEM_OWN | ",
                                         "c_const": "",
                                         "c_type": "CLA_Class1",
                                         "c_var": "SHC_rv",
@@ -364,15 +366,16 @@
                                         "i_type": "type(CLA_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
                                         "idtor": "1",
-                                        "stmt_name": "f_ctor_shadow_capsule",
+                                        "stmt_name": "f_ctor_shadow_capsule_caller",
                                         "typemap_name": "classes::Class1"
                                     },
                                     "meta": {
                                         "abstract": "shadow",
                                         "api": "capsule",
-                                        "intent": "ctor"
+                                        "intent": "ctor",
+                                        "owner": "caller"
                                     },
-                                    "stmt": "f_ctor_shadow_capsule"
+                                    "stmt": "f_ctor_shadow_capsule_caller"
                                 }
                             },
                             "lua": {
@@ -617,6 +620,8 @@
                                         "F_arguments": "flag",
                                         "F_subprogram": "function",
                                         "c_abstract_decl": "CLA_Class1 *",
+                                        "c_cmemflags": "SWIG_MEM_OWN",
+                                        "c_cmemflags_or": "SWIG_MEM_OWN | ",
                                         "c_const": "",
                                         "c_type": "CLA_Class1",
                                         "c_var": "SHC_rv",
@@ -647,15 +652,16 @@
                                         "i_type": "type(CLA_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
                                         "idtor": "1",
-                                        "stmt_name": "f_ctor_shadow_capsule",
+                                        "stmt_name": "f_ctor_shadow_capsule_caller",
                                         "typemap_name": "classes::Class1"
                                     },
                                     "meta": {
                                         "abstract": "shadow",
                                         "api": "capsule",
-                                        "intent": "ctor"
+                                        "intent": "ctor",
+                                        "owner": "caller"
                                     },
-                                    "stmt": "f_ctor_shadow_capsule"
+                                    "stmt": "f_ctor_shadow_capsule_caller"
                                 },
                                 "flag": {
                                     "fmtdict": {
@@ -4834,6 +4840,8 @@
                                         "F_arguments": "",
                                         "F_subprogram": "function",
                                         "c_abstract_decl": "CLA_Shape *",
+                                        "c_cmemflags": "SWIG_MEM_OWN",
+                                        "c_cmemflags_or": "SWIG_MEM_OWN | ",
                                         "c_const": "",
                                         "c_type": "CLA_Shape",
                                         "c_var": "SHC_rv",
@@ -4864,15 +4872,16 @@
                                         "i_type": "type(CLA_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
                                         "idtor": "2",
-                                        "stmt_name": "f_ctor_shadow_capsule",
+                                        "stmt_name": "f_ctor_shadow_capsule_caller",
                                         "typemap_name": "classes::Shape"
                                     },
                                     "meta": {
                                         "abstract": "shadow",
                                         "api": "capsule",
-                                        "intent": "ctor"
+                                        "intent": "ctor",
+                                        "owner": "caller"
                                     },
-                                    "stmt": "f_ctor_shadow_capsule"
+                                    "stmt": "f_ctor_shadow_capsule_caller"
                                 }
                             },
                             "lua": {
@@ -5439,6 +5448,8 @@
                                         "F_arguments": "",
                                         "F_subprogram": "function",
                                         "c_abstract_decl": "CLA_Circle *",
+                                        "c_cmemflags": "SWIG_MEM_OWN",
+                                        "c_cmemflags_or": "SWIG_MEM_OWN | ",
                                         "c_const": "",
                                         "c_type": "CLA_Circle",
                                         "c_var": "SHC_rv",
@@ -5469,15 +5480,16 @@
                                         "i_type": "type(CLA_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
                                         "idtor": "3",
-                                        "stmt_name": "f_ctor_shadow_capsule",
+                                        "stmt_name": "f_ctor_shadow_capsule_caller",
                                         "typemap_name": "classes::Circle"
                                     },
                                     "meta": {
                                         "abstract": "shadow",
                                         "api": "capsule",
-                                        "intent": "ctor"
+                                        "intent": "ctor",
+                                        "owner": "caller"
                                     },
-                                    "stmt": "f_ctor_shadow_capsule"
+                                    "stmt": "f_ctor_shadow_capsule_caller"
                                 }
                             },
                             "lua": {
@@ -6123,6 +6135,8 @@
                                         "F_arguments": "",
                                         "F_subprogram": "function",
                                         "c_abstract_decl": "CLA_Data *",
+                                        "c_cmemflags": "SWIG_MEM_OWN",
+                                        "c_cmemflags_or": "SWIG_MEM_OWN | ",
                                         "c_const": "",
                                         "c_type": "CLA_Data",
                                         "c_var": "SHC_rv",
@@ -6153,15 +6167,16 @@
                                         "i_type": "type(CLA_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
                                         "idtor": "4",
-                                        "stmt_name": "f_ctor_shadow_capsule",
+                                        "stmt_name": "f_ctor_shadow_capsule_caller",
                                         "typemap_name": "classes::Data"
                                     },
                                     "meta": {
                                         "abstract": "shadow",
                                         "api": "capsule",
-                                        "intent": "ctor"
+                                        "intent": "ctor",
+                                        "owner": "caller"
                                     },
-                                    "stmt": "f_ctor_shadow_capsule"
+                                    "stmt": "f_ctor_shadow_capsule_caller"
                                 }
                             },
                             "share": {
@@ -9049,6 +9064,8 @@
                                 "F_arguments": "flag",
                                 "F_subprogram": "function",
                                 "c_abstract_decl": "CLA_Class1",
+                                "c_cmemflags": "SWIG_MEM_OWN",
+                                "c_cmemflags_or": "SWIG_MEM_OWN | ",
                                 "c_const": "",
                                 "c_local_cxx": "SHC_rv_cxx",
                                 "c_type": "CLA_Class1",
@@ -9079,15 +9096,16 @@
                                 "i_type": "type(CLA_SHROUD_capsule_data)",
                                 "i_var": "SHT_rv",
                                 "idtor": "1",
-                                "stmt_name": "f_function_shadow_capsule",
+                                "stmt_name": "f_function_shadow_capsule_caller",
                                 "typemap_name": "classes::Class1"
                             },
                             "meta": {
                                 "abstract": "shadow",
                                 "api": "capsule",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "caller"
                             },
-                            "stmt": "f_function_shadow_capsule"
+                            "stmt": "f_function_shadow_capsule_caller"
                         },
                         "flag": {
                             "fmtdict": {
