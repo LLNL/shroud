@@ -354,6 +354,10 @@ debug_index
   debugging, then set to *true*.  **debug** must also be *true*.
   Defaults to *false*.
 
+default_owner
+  Used to default the *owner* attribute.
+  Used when *deref* is *pointer* or *raw*.
+
 doxygen
   If True, create doxygen comments.
 
@@ -1441,7 +1445,7 @@ F_name_function
 
 F_name_generic
     The generic name for a function.
-    Set with option **class_ctor* or *F_create_generic*.
+    Set with option *class_ctor* or *F_create_generic*.
     Defaults to evaluation of option *F_name_generic_template*.
 
 F_name_impl

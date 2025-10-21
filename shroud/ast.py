@@ -721,8 +721,9 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_bufferify_suffix="_bufferify",
             C_cfi_suffix="_CFI",
             C_call_list="",
-            c_cmemflags="SWIG_MEM_OWN",
-            c_cmemflags_or="SWIG_MEM_OWN | ",
+            # Default cmemflags to meta[owner]=library - do not release.
+            c_cmemflags="0",    # "SWIG_MEM_OWN",
+            c_cmemflags_or="",  # "SWIG_MEM_OWN | ",
             C_prefix=C_prefix,
             C_result="rv",  # return value
             c_temp="SHT_",

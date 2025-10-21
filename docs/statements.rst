@@ -231,13 +231,11 @@ to be used in a more natural manner.
 
 .. code-block:: yaml
 
-        name: "c_mixin_operator_assignment_fmtdict_swig",
-        "fmtdict": {
-            "capture_code": [
-                "// Capture pointer from RHS, clear 'moving' flag.",
-                "additional line here"
-             ]
-        }
+        name: c_mixin_operator_assignment_fmtdict_swig
+        fmtdict:
+            capture_code:
+            - // Capture pointer from RHS, clear 'moving' flag.
+            - // additional line here
         
    
 Examples
