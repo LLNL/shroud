@@ -416,6 +416,8 @@
                                 "F_arguments": "Crv",
                                 "F_subprogram": "function",
                                 "c_abstract_decl": "const char",
+                                "c_cmemflags": "SWIG_MEM_OWN",
+                                "c_cmemflags_or": "SWIG_MEM_OWN | ",
                                 "c_const": "const ",
                                 "c_helper_array_context": "STR_SHROUD_array",
                                 "c_local_cdesc": "SHC_rv_cdesc",
@@ -456,16 +458,17 @@
                                 "i_var_capsule": "SHT_rv_capsule",
                                 "i_var_cfi": "SHT_rv_cfi",
                                 "idtor": "1",
-                                "stmt_name": "f_function_string_cfi_pointer",
+                                "stmt_name": "f_function_string_cfi_pointer_caller",
                                 "typemap_name": "std::string"
                             },
                             "meta": {
                                 "abstract": "string",
                                 "api": "cfi",
                                 "deref": "pointer",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "caller"
                             },
-                            "stmt": "f_function_string_cfi_pointer"
+                            "stmt": "f_function_string_cfi_pointer_caller"
                         }
                     },
                     "share": {
@@ -538,6 +541,8 @@
                                 "F_arguments": "Crv",
                                 "F_subprogram": "function",
                                 "c_abstract_decl": "const char",
+                                "c_cmemflags": "SWIG_MEM_OWN",
+                                "c_cmemflags_or": "SWIG_MEM_OWN | ",
                                 "c_const": "const ",
                                 "c_helper_array_context": "STR_SHROUD_array",
                                 "c_local_cxx": "SHC_rv_cxx",
@@ -569,15 +574,16 @@
                                 "i_var": "SHT_rv",
                                 "i_var_capsule": "SHT_rv_capsule",
                                 "idtor": "1",
-                                "stmt_name": "f_function_string_raw",
+                                "stmt_name": "f_function_string_raw_caller",
                                 "typemap_name": "std::string"
                             },
                             "meta": {
                                 "abstract": "string",
                                 "deref": "raw",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "caller"
                             },
-                            "stmt": "f_function_string_raw"
+                            "stmt": "f_function_string_raw_caller"
                         }
                     },
                     "share": {

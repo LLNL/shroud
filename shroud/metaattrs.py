@@ -200,6 +200,10 @@ class FillMeta(object):
                     "Must be 'caller' or 'library'.".format(owner)
                 )
             meta["owner"] = owner
+        elif meta["intent"] in ["subroutine", "getter"]:
+            # subroutine does not return anything.
+            # A getter returns memory owned by a class.
+            pass
         elif node.return_this:
             # Does not return anything, no need for ownership.
             pass
@@ -213,10 +217,14 @@ class FillMeta(object):
                 deref = meta["deref"]
                 if deref in ["pointer", "raw"]:
                     meta["owner"] = options.default_owner
-#        elif ntypemap.sgroup in ["string", "vector"]: # XXX - need to handle
         elif ntypemap.sgroup == "shadow":
-            # Return object by value, a local copy is created which caller must release.
+            # call-by-value Always has a pointer to C++ memory which caller must release
+            # Class1 getClassCopy()
             meta["owner"] = "caller"
+        elif ntypemap.sgroup not in ["bool", "enum", "native"]: # XXX - need to handle
+            # Return scalar by value
+            if meta["deref"] in ["pointer", "raw"]:
+                meta["owner"] = "caller"
 
     def set_arg_owner_fortran(self, node, arg, meta):
         """

@@ -6637,7 +6637,7 @@
                                         "i_var_cdesc": "SHT_rv_cdesc",
                                         "idtor": "0",
                                         "rank": "1",
-                                        "stmt_name": "f_getter_native*_cdesc_pointer_library",
+                                        "stmt_name": "f_getter_native*_cdesc_pointer",
                                         "typemap_name": "int"
                                     },
                                     "meta": {
@@ -6653,10 +6653,9 @@
                                             "SH_this->nitems"
                                         ],
                                         "dimension": "nitems",
-                                        "intent": "getter",
-                                        "owner": "library"
+                                        "intent": "getter"
                                     },
-                                    "stmt": "f_getter_native*_cdesc_pointer_library"
+                                    "stmt": "f_getter_native*_cdesc_pointer"
                                 }
                             },
                             "share": {

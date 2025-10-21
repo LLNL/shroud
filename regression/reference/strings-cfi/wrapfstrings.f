@@ -137,7 +137,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const string getConstStringPointer +deref(pointer)
-    ! Statement: f_function_string_cfi_pointer
+    ! Statement: f_function_string_cfi_pointer_caller
     interface
         subroutine c_get_const_string_pointer_CFI(SHT_rv_capsule, &
                 SHT_rv) &
@@ -151,7 +151,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const string getConstStringRaw +deref(raw)
-    ! Statement: f_function_string_raw
+    ! Statement: f_function_string_raw_caller
     interface
         function c_get_const_string_raw_bufferify(SHT_rv_capsule) &
                 result(SHT_rv) &
@@ -920,7 +920,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const string getConstStringPointer +deref(pointer)
-    ! Statement: f_function_string_cfi_pointer
+    ! Statement: f_function_string_cfi_pointer_caller
     !>
     !! Return an POINTER CHARACTER from std::string.
     !! The language=C wrapper will return a const char *
@@ -936,7 +936,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const string getConstStringRaw +deref(raw)
-    ! Statement: f_function_string_raw
+    ! Statement: f_function_string_raw_caller
     !>
     !! Return an type(C_PTR) from std::string.
     !! The language=C wrapper will return a const char *

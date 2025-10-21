@@ -2669,17 +2669,16 @@
                                         "i_var": "SHT_rv",
                                         "i_var_cdesc": "SHT_rv_cdesc",
                                         "idtor": "0",
-                                        "stmt_name": "f_getter_char*_cdesc_pointer_library",
+                                        "stmt_name": "f_getter_char*_cdesc_pointer",
                                         "typemap_name": "char"
                                     },
                                     "meta": {
                                         "abstract": "char*",
                                         "api": "cdesc",
                                         "deref": "pointer",
-                                        "intent": "getter",
-                                        "owner": "library"
+                                        "intent": "getter"
                                     },
-                                    "stmt": "f_getter_char*_cdesc_pointer_library"
+                                    "stmt": "f_getter_char*_cdesc_pointer"
                                 }
                             },
                             "share": {
@@ -6714,16 +6713,15 @@
                                 "i_type": "real(C_DOUBLE)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
-                                "stmt_name": "f_getter_native*_pointer_library",
+                                "stmt_name": "f_getter_native*_pointer",
                                 "typemap_name": "double"
                             },
                             "meta": {
                                 "abstract": "native*",
                                 "deref": "pointer",
-                                "intent": "getter",
-                                "owner": "library"
+                                "intent": "getter"
                             },
-                            "stmt": "f_getter_native*_pointer_library"
+                            "stmt": "f_getter_native*_pointer"
                         },
                         "SH_this": {
                             "fmtdict": {
@@ -7114,7 +7112,7 @@
                                 "i_var_cdesc": "SHT_rv_cdesc",
                                 "idtor": "0",
                                 "rank": "1",
-                                "stmt_name": "f_getter_native*_cdesc_pointer_library",
+                                "stmt_name": "f_getter_native*_cdesc_pointer",
                                 "typemap_name": "int"
                             },
                             "meta": {
@@ -7136,10 +7134,9 @@
                                     "SH_this->nitems+SH_this->nitems"
                                 ],
                                 "dimension": "nitems+nitems",
-                                "intent": "getter",
-                                "owner": "library"
+                                "intent": "getter"
                             },
-                            "stmt": "f_getter_native*_cdesc_pointer_library"
+                            "stmt": "f_getter_native*_cdesc_pointer"
                         },
                         "SH_this": {
                             "fmtdict": {
@@ -7549,7 +7546,7 @@
                                 "i_var_cdesc": "SHT_rv_cdesc",
                                 "idtor": "0",
                                 "rank": "1",
-                                "stmt_name": "f_getter_native*_cdesc_pointer_library",
+                                "stmt_name": "f_getter_native*_cdesc_pointer",
                                 "typemap_name": "double"
                             },
                             "meta": {
@@ -7571,10 +7568,9 @@
                                     "SH_this->nitems*TWO"
                                 ],
                                 "dimension": "nitems*TWO",
-                                "intent": "getter",
-                                "owner": "library"
+                                "intent": "getter"
                             },
-                            "stmt": "f_getter_native*_cdesc_pointer_library"
+                            "stmt": "f_getter_native*_cdesc_pointer"
                         },
                         "SH_this": {
                             "fmtdict": {

@@ -6948,6 +6948,44 @@ c_subroutine:
   c_call:
   - '{C_call_function};'
   sphinx-end-before: c_subroutine
+f_ctor_shadow_capsule:
+  sphinx-start-after: f_ctor_shadow_capsule
+  name: f_ctor_shadow_capsule
+  intent: ctor
+  comments:
+  - Pass function result as a capsule argument from Fortran to C.
+  mixin_names:
+  - '  f_mixin_as-intent-out'
+  - '  f_mixin_capsule_function_shadow'
+  - '  c_mixin_shadow'
+  - '  c_mixin_as-intent-out'
+  f_dummy_decl:
+  - '{f_type} :: {f_var}'
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_need_wrapper: true
+  i_dummy_arg:
+  - '{i_var}'
+  i_dummy_decl:
+  - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
+  i_module:
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
+  c_return_type: void
+  c_prototype:
+  - '{c_type} *{c_var}'
+  c_call:
+  - "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});"
+  - "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
+  - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;'
+  fmtdict:
+    f_intent: OUT
+    f_intent_attr: ', intent(OUT)'
+    i_intent: OUT
+    i_intent_attr: ', intent(OUT)'
+  owner: caller
+  sphinx-end-before: f_ctor_shadow_capsule
 f_ctor_shadow_capsule_caller:
   sphinx-start-after: f_ctor_shadow_capsule_caller
   name: f_ctor_shadow_capsule_caller
@@ -13095,9 +13133,9 @@ f_function_string_cdesc_allocatable_library:
   - delete cxx_ptr;
   owner: caller
   sphinx-end-before: f_function_string_cdesc_allocatable_library
-f_function_string_cdesc_pointer:
-  sphinx-start-after: f_function_string_cdesc_pointer
-  name: f_function_string_cdesc_pointer
+f_function_string_cdesc_pointer_caller:
+  sphinx-start-after: f_function_string_cdesc_pointer_caller
+  name: f_function_string_cdesc_pointer_caller
   intent: function
   comments:
   - Pass capsule as argument to C wrapper.
@@ -13109,8 +13147,10 @@ f_function_string_cdesc_pointer:
   - Assign capsule values to capsule argument in C wrapper.
   - Fill cdesc from local std::string variable in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
+  notes:
+  - Return-by-value will allocate a new std::string
   usage:
-  - std::string func() +deref(pointer)+owner(caller)
+  - std::string func() +deref(pointer)
   mixin_names:
   - '  f_mixin_add_capsule_arg_to_fwrapper'
   - '    c_mixin_capsule_pass'
@@ -13186,7 +13226,7 @@ f_function_string_cdesc_pointer:
   impl_header:
   - <cstring>
   owner: caller
-  sphinx-end-before: f_function_string_cdesc_pointer
+  sphinx-end-before: f_function_string_cdesc_pointer_caller
 f_function_string_cfi_allocatable:
   sphinx-start-after: f_function_string_cfi_allocatable
   name: f_function_string_cfi_allocatable
@@ -13786,9 +13826,9 @@ f_function_string_cfi_pointer_library:
   - ISO_Fortran_binding.h
   owner: caller
   sphinx-end-before: f_function_string_cfi_pointer_library
-f_function_string_raw:
-  sphinx-start-after: f_function_string_raw
-  name: f_function_string_raw
+f_function_string_raw_caller:
+  sphinx-start-after: f_function_string_raw_caller
+  name: f_function_string_raw_caller
   intent: function
   comments:
   - Return a C pointer directly as type(C_PTR).
@@ -13799,6 +13839,8 @@ f_function_string_raw:
   - Assign std::string.data to cvar.
   - Always uses const.
   - Assign capsule values to capsule argument in C wrapper.
+  notes:
+  - Return-by-value will allocate a new std::string
   usage:
   - std::string func() +deref(raw)
   mixin_names:
@@ -13859,7 +13901,7 @@ f_function_string_raw:
   - array_context
   - capsule_helper
   owner: caller
-  sphinx-end-before: f_function_string_raw
+  sphinx-end-before: f_function_string_raw_caller
 f_function_struct:
   sphinx-start-after: f_function_struct
   name: f_function_struct
@@ -14294,9 +14336,9 @@ f_getter_char*_cdesc_allocatable:
   impl_header:
   - <cstring>
   sphinx-end-before: f_getter_char*_cdesc_allocatable
-f_getter_char*_cdesc_pointer_library:
-  sphinx-start-after: f_getter_char*_cdesc_pointer_library
-  name: f_getter_char*_cdesc_pointer_library
+f_getter_char*_cdesc_pointer:
+  sphinx-start-after: f_getter_char*_cdesc_pointer
+  name: f_getter_char*_cdesc_pointer
   intent: getter
   comments:
   - Call the C wrapper as a subroutine.
@@ -14361,7 +14403,7 @@ f_getter_char*_cdesc_pointer_library:
   - type_defines
   impl_header:
   - <cstring>
-  sphinx-end-before: f_getter_char*_cdesc_pointer_library
+  sphinx-end-before: f_getter_char*_cdesc_pointer
 f_getter_native:
   sphinx-start-after: f_getter_native
   name: f_getter_native
@@ -14386,9 +14428,9 @@ f_getter_native:
   - return {CXX_this}->{field_name};
   c_need_wrapper: true
   sphinx-end-before: f_getter_native
-f_getter_native*_cdesc_pointer_library:
-  sphinx-start-after: f_getter_native*_cdesc_pointer_library
-  name: f_getter_native*_cdesc_pointer_library
+f_getter_native*_cdesc_pointer:
+  sphinx-start-after: f_getter_native*_cdesc_pointer
+  name: f_getter_native*_cdesc_pointer
   intent: getter
   comments:
   - Call the C wrapper as a subroutine.
@@ -14446,10 +14488,10 @@ f_getter_native*_cdesc_pointer_library:
   helper:
   - array_context
   - type_defines
-  sphinx-end-before: f_getter_native*_cdesc_pointer_library
-f_getter_native*_pointer_library:
-  sphinx-start-after: f_getter_native*_pointer_library
-  name: f_getter_native*_pointer_library
+  sphinx-end-before: f_getter_native*_cdesc_pointer
+f_getter_native*_pointer:
+  sphinx-start-after: f_getter_native*_pointer
+  name: f_getter_native*_pointer
   intent: getter
   comments:
   - Declare a Fortran variable.
@@ -14470,7 +14512,7 @@ f_getter_native*_pointer_library:
   c_return:
   - return {CXX_this}->{field_name};
   c_need_wrapper: true
-  sphinx-end-before: f_getter_native*_pointer_library
+  sphinx-end-before: f_getter_native*_pointer
 f_getter_string_buf_copy:
   sphinx-start-after: f_getter_string_buf_copy
   name: f_getter_string_buf_copy
@@ -14673,9 +14715,9 @@ f_getter_string_cdesc_pointer:
   - array_context
   - pointer_string
   sphinx-end-before: f_getter_string_cdesc_pointer
-f_getter_struct**_cdesc_raw_library:
-  sphinx-start-after: f_getter_struct**_cdesc_raw_library
-  name: f_getter_struct**_cdesc_raw_library
+f_getter_struct**_cdesc_raw:
+  sphinx-start-after: f_getter_struct**_cdesc_raw
+  name: f_getter_struct**_cdesc_raw
   intent: getter
   comments:
   - Call the C wrapper as a subroutine.
@@ -14730,10 +14772,10 @@ f_getter_struct**_cdesc_raw_library:
   helper:
   - array_context
   - type_defines
-  sphinx-end-before: f_getter_struct**_cdesc_raw_library
-f_getter_struct*_cdesc_pointer_library:
-  sphinx-start-after: f_getter_struct*_cdesc_pointer_library
-  name: f_getter_struct*_cdesc_pointer_library
+  sphinx-end-before: f_getter_struct**_cdesc_raw
+f_getter_struct*_cdesc_pointer:
+  sphinx-start-after: f_getter_struct*_cdesc_pointer
+  name: f_getter_struct*_cdesc_pointer
   intent: getter
   comments:
   - Call the C wrapper as a subroutine.
@@ -14791,7 +14833,7 @@ f_getter_struct*_cdesc_pointer_library:
   helper:
   - array_context
   - type_defines
-  sphinx-end-before: f_getter_struct*_cdesc_pointer_library
+  sphinx-end-before: f_getter_struct*_cdesc_pointer
 f_getter_struct*_fapi_pointer:
   sphinx-start-after: f_getter_struct*_fapi_pointer
   name: f_getter_struct*_fapi_pointer
@@ -23839,7 +23881,7 @@ root
   f
     ctor
       shadow
-        capsule
+        capsule -- f_ctor_shadow_capsule
           caller -- f_ctor_shadow_capsule_caller
           shared -- f_ctor_shadow_capsule_shared
           weak -- f_ctor_shadow_capsule_weak
@@ -23943,7 +23985,8 @@ root
           allocatable -- f_function_string_cdesc_allocatable
             caller -- f_function_string_cdesc_allocatable_caller
             library -- f_function_string_cdesc_allocatable_library
-          pointer -- f_function_string_cdesc_pointer
+          pointer
+            caller -- f_function_string_cdesc_pointer_caller
         cfi
           allocatable -- f_function_string_cfi_allocatable
             caller -- f_function_string_cfi_allocatable_caller
@@ -23954,7 +23997,8 @@ root
           pointer -- f_function_string_cfi_pointer
             caller -- f_function_string_cfi_pointer_caller
             library -- f_function_string_cfi_pointer_library
-        raw -- f_function_string_raw
+        raw
+          caller -- f_function_string_raw_caller
       string&
         buf -- f_function_string&_buf
           caller -- f_function_string&_buf_caller
@@ -24017,15 +24061,12 @@ root
           copy -- f_getter_char*_buf_copy
         cdesc
           allocatable -- f_getter_char*_cdesc_allocatable
-          pointer
-            library -- f_getter_char*_cdesc_pointer_library
+          pointer -- f_getter_char*_cdesc_pointer
       native -- f_getter_native
       native*
         cdesc
-          pointer
-            library -- f_getter_native*_cdesc_pointer_library
-        pointer
-          library -- f_getter_native*_pointer_library
+          pointer -- f_getter_native*_cdesc_pointer
+        pointer -- f_getter_native*_pointer
       string
         buf
           copy -- f_getter_string_buf_copy
@@ -24034,14 +24075,12 @@ root
           pointer -- f_getter_string_cdesc_pointer
       struct*
         cdesc
-          pointer
-            library -- f_getter_struct*_cdesc_pointer_library
+          pointer -- f_getter_struct*_cdesc_pointer
         fapi
           pointer -- f_getter_struct*_fapi_pointer
       struct**
         cdesc
-          raw
-            library -- f_getter_struct**_cdesc_raw_library
+          raw -- f_getter_struct**_cdesc_raw
     in
       bool -- f_in_bool
       char -- f_in_char

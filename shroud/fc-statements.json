@@ -3415,10 +3415,13 @@
     },
     {
         "alias": [
-            "f_function_string_cdesc_pointer"
+            "f_function_string_cdesc_pointer_caller"
+        ],
+        "notes": [
+            "Return-by-value will allocate a new std::string"
         ],
         "usage": [
-            "std::string func() +deref(pointer)+owner(caller)"
+            "std::string func() +deref(pointer)"
         ],
         "mixin": [
             "f_mixin_add_capsule_arg_to_fwrapper",
@@ -3431,7 +3434,10 @@
         ]
     },
     {
-        "name": "f_function_string_raw",
+        "name": "f_function_string_raw_caller",
+        "notes": [
+            "Return-by-value will allocate a new std::string"
+        ],
         "usage": [
             "std::string func() +deref(raw)"
         ],
@@ -4272,6 +4278,7 @@
     },
     {
         "alias": [
+            "f_ctor_shadow_capsule",
             "f_ctor_shadow_capsule_caller",
             "c_ctor_shadow_capsule"
         ],
@@ -5047,7 +5054,7 @@
         "alias": [
             "f_getter_native",
             "c_getter_native",
-            "f_getter_native*_pointer_library",
+            "f_getter_native*_pointer",
             "c_getter_native*"
         ],
         "mixin": [
@@ -5092,8 +5099,8 @@
     },
     {
         "alias": [
-            "f_getter_native*_cdesc_pointer_library",
-            "f_getter_struct*_cdesc_pointer_library"
+            "f_getter_native*_cdesc_pointer",
+            "f_getter_struct*_cdesc_pointer"
         ],
         "notes": [
             "Similar to calling a function, but save field pointer instead."
@@ -5120,7 +5127,7 @@
         ]
     },
     {
-        "name": "f_getter_char*_cdesc_pointer_library",
+        "name": "f_getter_char*_cdesc_pointer",
         "notes": [
             "Get a char* member of a class as a Fortran pointer."
         ],
@@ -5149,7 +5156,7 @@
         ]
     },
     {
-        "name": "f_getter_struct**_cdesc_raw_library",
+        "name": "f_getter_struct**_cdesc_raw",
         "mixin": [
             "f_mixin_call-cwrapper-as-subroutine",
             "f_mixin_cdesc_pass_to_cwrapper",
