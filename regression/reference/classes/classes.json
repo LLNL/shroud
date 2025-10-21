@@ -8564,6 +8564,9 @@
                 },
                 "decl": "const Class1 &getConstClassReference()",
                 "declgen": "const Class1 &getConstClassReference(void)",
+                "doxygen": {
+                    "brief": "Return a pointer to a library owned structure."
+                },
                 "name": "getConstClassReference",
                 "options": {
                     "wrap_lua": false,
@@ -8932,7 +8935,8 @@
                 "decl": "Class1 getClassCopy(int flag)",
                 "declgen": "Class1 getClassCopy(int flag)",
                 "doxygen": {
-                    "brief": "Return Class1 instance by value, uses copy constructor"
+                    "brief": "Return Class1 instance by value, uses copy constructor",
+                    "description": "Return by value causes Shroud to create memory which\nmust be released by the caller.\n"
                 },
                 "name": "getClassCopy",
                 "options": {

@@ -213,6 +213,10 @@ void CLA_getclass3_void(CLA_Class1 *SHC_rv)
     // splicer end function.getclass3_void
 }
 
+/**
+ * \brief Return a pointer to a library owned structure.
+ *
+ */
 // ----------------------------------------
 // Function:  const Class1 &getConstClassReference
 // Statement: c_function_shadow&_capptr
@@ -228,6 +232,10 @@ CLA_Class1 * CLA_getConstClassReference(CLA_Class1 *SHC_rv)
     // splicer end function.getConstClassReference
 }
 
+/**
+ * \brief Return a pointer to a library owned structure.
+ *
+ */
 // ----------------------------------------
 // Function:  const Class1 &getConstClassReference
 // Statement: f_function_shadow&_capsule_library
@@ -272,6 +280,8 @@ void CLA_getClassReference_bufferify(CLA_Class1 *SHC_rv)
 /**
  * \brief Return Class1 instance by value, uses copy constructor
  *
+ * Return by value causes Shroud to create memory which
+ * must be released by the caller.
  */
 // ----------------------------------------
 // Function:  Class1 getClassCopy
@@ -294,6 +304,8 @@ CLA_Class1 * CLA_getClassCopy(int flag, CLA_Class1 *SHC_rv)
 /**
  * \brief Return Class1 instance by value, uses copy constructor
  *
+ * Return by value causes Shroud to create memory which
+ * must be released by the caller.
  */
 // ----------------------------------------
 // Function:  Class1 getClassCopy

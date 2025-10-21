@@ -154,6 +154,8 @@ declarations:
     wrap_lua: False
 
 - decl: const Class1 &getConstClassReference()
+  doxygen:
+    brief: Return a pointer to a library owned structure.
   options:
     # const issues with python
     wrap_python: False
@@ -167,6 +169,9 @@ declarations:
 - decl: Class1 getClassCopy(int flag)
   doxygen:
     brief: Return Class1 instance by value, uses copy constructor
+    description: |
+      Return by value causes Shroud to create memory which
+      must be released by the caller.
   options:
     wrap_python: False
     wrap_lua: False

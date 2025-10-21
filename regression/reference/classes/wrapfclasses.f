@@ -2080,6 +2080,10 @@ contains
     ! ----------------------------------------
     ! Function:  const Class1 &getConstClassReference
     ! Statement: f_function_shadow&_capsule_library
+    !>
+    !! \brief Return a pointer to a library owned structure.
+    !!
+    !<
     function get_const_class_reference() &
             result(SHT_rv)
         type(class1) :: SHT_rv
@@ -2108,6 +2112,8 @@ contains
     !>
     !! \brief Return Class1 instance by value, uses copy constructor
     !!
+    !! Return by value causes Shroud to create memory which
+    !! must be released by the caller.
     !<
     function get_class_copy(flag) &
             result(SHT_rv)
