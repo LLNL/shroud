@@ -286,6 +286,10 @@ and attributes into an underscore delimited string.
 
 * owner
   ``caller``, ``library``
+  If set, it replaces the attribute and any default computed by Shroud.
+  Used with allocating temporary memory.
+  The capsule is allocated in C, returned to Fortran which copies the value,
+  then the Fortran wrapper releases the memory.
 
 * operator
   ex. ``assignment``

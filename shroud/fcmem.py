@@ -11,8 +11,6 @@ from collections import OrderedDict
 from . import util
 from .util import append_format, wformat
 
-default_owner = "library"
-
 class CapsuleFmt(object):
     """
     Methods to compute the destructors for a capsule (shadow) type.
@@ -206,7 +204,7 @@ class CapsuleFmt(object):
                 fmt.idtor = self.capsule_code[destructor_name][0]
             return
 
-        owner = meta["owner"] or intent_blk.owner or default_owner
+        owner = intent_blk.owner or meta["owner"]
 
         destructor_name = meta["destructor_name"]
         if owner != "caller":
