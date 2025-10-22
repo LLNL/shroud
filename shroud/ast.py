@@ -925,9 +925,6 @@ class LibraryNode(AstNode, NamespaceMixin):
 
         self.fmtdict = fmt_library
 
-        self.eval_template("C_capsule_data_type")
-        self.eval_template("F_capsule_data_type")
-        
         # default some format strings based on other format strings
         self.set_fmt_default("C_array_type",
                              fmt_library.C_prefix + "SHROUD_array")
@@ -937,6 +934,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.eval_template("C_header_utility")
         self.eval_template("C_impl_utility")
 
+        self.eval_template("C_capsule_data_type")
         self.eval_template("C_memory_dtor_function")
 
         self.eval_template("F_array_type")
@@ -946,6 +944,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.eval_template("F_module_name", "_library")
         fmt_library.F_module_name = fmt_library.F_module_name.lower()
         self.eval_template("F_impl_filename", "_library")
+        self.eval_template("F_capsule_data_type")
 
         # If user changes PY_module_name, reflect change in PY_module_scope.
         self.set_fmt_default(

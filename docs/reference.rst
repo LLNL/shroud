@@ -357,6 +357,7 @@ debug_index
 default_owner
   Used to default the *owner* attribute.
   Used when *deref* is *pointer* or *raw*.
+  Defaults to *library*.
 
 doxygen
   If True, create doxygen comments.
@@ -963,9 +964,24 @@ C_name_api
     *C_name_scope*.
 
 C_name_assign
-    Name of method that controls assignment of shadow types.
-    Used to help with reference counting.
+    Used to create name of method that controls assignment of shadow types.
+    The assignment overload function created by Shroud is used to
+    help manage C++  memory. This format field is uses as *C_name_api* in the
+    option **C_name_template** while *function_suffix* is set the
+    the right-hand side *cxx_class*.
 
+    This creates names such as:
+
+.. code-block:: fortran
+
+    interface assignment (=)
+        module procedure object_assign_Object
+        module procedure object_shared_assign_Object_shared
+        module procedure object_shared_assign_Object
+        module procedure object_weak_assign_Object_weak
+        module procedure object_weak_assign_Object_shared
+    end interface
+                
 C_name_scope
     Underscore delimited name of namespace, class, enumeration.
     Used to 'flatten' nested C++ names into global C identifiers.

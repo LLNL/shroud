@@ -980,8 +980,8 @@ def set_f_function_format(node, bind, subprogram):
     elif meta["deref"] == "pointer":
         fmt.f_deref_attr = ", pointer"
     if meta["owner"] == "caller":
-            fmt.c_cmemflags = "SWIG_MEM_OWN"
-            fmt.c_cmemflags_or = "SWIG_MEM_OWN | "
+        fmt.c_cmemflags = "SWIG_MEM_OWN"
+        fmt.c_cmemflags_or = "SWIG_MEM_OWN | "
     if meta["funcarg"]:
         name = meta["funcarg"]
         fmt.f_var = name
