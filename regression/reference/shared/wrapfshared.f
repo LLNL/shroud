@@ -27,7 +27,8 @@ module shared_mod
     end type SHA_SHROUD_capsule_data
 
     type object
-        type(SHA_SHROUD_capsule_data) :: cxxmem
+        type(SHA_SHROUD_capsule_data) :: cxxmem = &
+            SHA_SHROUD_capsule_data()
         ! splicer begin class.Object.component_part
         ! splicer end class.Object.component_part
     contains
@@ -44,7 +45,8 @@ module shared_mod
     end type object
 
     type object_shared
-        type(SHA_SHROUD_capsule_data) :: cxxmem
+        type(SHA_SHROUD_capsule_data) :: cxxmem = &
+            SHA_SHROUD_capsule_data()
         ! splicer begin class.Object_shared.component_part
         ! splicer end class.Object_shared.component_part
     contains
@@ -62,7 +64,8 @@ module shared_mod
     end type object_shared
 
     type object_weak
-        type(SHA_SHROUD_capsule_data) :: cxxmem
+        type(SHA_SHROUD_capsule_data) :: cxxmem = &
+            SHA_SHROUD_capsule_data()
         ! splicer begin class.Object_weak.component_part
         ! splicer end class.Object_weak.component_part
     contains

@@ -20,7 +20,8 @@ module library_outer2_mod
     end type LIB_SHROUD_capsule_data
 
     type class0
-        type(LIB_SHROUD_capsule_data) :: cxxmem
+        type(LIB_SHROUD_capsule_data) :: cxxmem = &
+            LIB_SHROUD_capsule_data()
     contains
         procedure :: method => class0_method
         procedure :: get_instance => class0_get_instance

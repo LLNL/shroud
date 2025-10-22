@@ -27,7 +27,8 @@ module testnames_std_mod
     end type TES_SHROUD_capsule_data
 
     type FFvvv1
-        type(TES_SHROUD_capsule_data) :: cxxmem
+        type(TES_SHROUD_capsule_data) :: cxxmem = &
+            TES_SHROUD_capsule_data()
         ! splicer begin namespace.std.class.Vvv1.component_part
         ! splicer end namespace.std.class.Vvv1.component_part
     contains
@@ -39,7 +40,8 @@ module testnames_std_mod
     end type FFvvv1
 
     type vector_double
-        type(TES_SHROUD_capsule_data) :: cxxmem
+        type(TES_SHROUD_capsule_data) :: cxxmem = &
+            TES_SHROUD_capsule_data()
         ! splicer begin namespace.std.class.vector_double.component_part
         ! splicer end namespace.std.class.vector_double.component_part
     contains
@@ -51,7 +53,8 @@ module testnames_std_mod
     end type vector_double
 
     type vector_instantiation5
-        type(TES_SHROUD_capsule_data) :: cxxmem
+        type(TES_SHROUD_capsule_data) :: cxxmem = &
+            TES_SHROUD_capsule_data()
         ! splicer begin namespace.std.class.vector_instantiation5.component_part
         ! splicer end namespace.std.class.vector_instantiation5.component_part
     contains
@@ -63,7 +66,8 @@ module testnames_std_mod
     end type vector_instantiation5
 
     type vector_instantiation3
-        type(TES_SHROUD_capsule_data) :: cxxmem
+        type(TES_SHROUD_capsule_data) :: cxxmem = &
+            TES_SHROUD_capsule_data()
         ! splicer begin namespace.std.class.vector_instantiation3.component_part
         ! splicer end namespace.std.class.vector_instantiation3.component_part
     contains

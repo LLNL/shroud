@@ -272,10 +272,12 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
                 fmt_class,
             )
         else:
+            # Add the default constructor.
+            # If not user constructor provided, then the Cray CCE compile fails.
             append_format(
                 f_type_decl,
                 "type {F_derived_name}\n+"
-                "type({f_capsule_data_type}) :: {F_derived_member}",
+                "type({f_capsule_data_type}) :: {F_derived_member} =\t {f_capsule_data_type}()",
                 fmt_class,
             )
         self.set_f_module(

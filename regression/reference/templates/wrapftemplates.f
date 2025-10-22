@@ -27,7 +27,8 @@ module templates_mod
     end type TEM_SHROUD_capsule_data
 
     type worker
-        type(TEM_SHROUD_capsule_data) :: cxxmem
+        type(TEM_SHROUD_capsule_data) :: cxxmem = &
+            TEM_SHROUD_capsule_data()
         ! splicer begin class.Worker.component_part
         ! splicer end class.Worker.component_part
     contains
@@ -39,7 +40,8 @@ module templates_mod
     end type worker
 
     type user_int
-        type(TEM_SHROUD_capsule_data) :: cxxmem
+        type(TEM_SHROUD_capsule_data) :: cxxmem = &
+            TEM_SHROUD_capsule_data()
         ! splicer begin class.user_int.component_part
         ! splicer end class.user_int.component_part
     contains
@@ -52,7 +54,8 @@ module templates_mod
     end type user_int
 
     type struct_as_class_int
-        type(TEM_SHROUD_capsule_data) :: cxxmem
+        type(TEM_SHROUD_capsule_data) :: cxxmem = &
+            TEM_SHROUD_capsule_data()
         ! splicer begin class.structAsClass_int.component_part
         ! splicer end class.structAsClass_int.component_part
     contains
@@ -68,7 +71,8 @@ module templates_mod
     end type struct_as_class_int
 
     type struct_as_class_double
-        type(TEM_SHROUD_capsule_data) :: cxxmem
+        type(TEM_SHROUD_capsule_data) :: cxxmem = &
+            TEM_SHROUD_capsule_data()
         ! splicer begin class.structAsClass_double.component_part
         ! splicer end class.structAsClass_double.component_part
     contains

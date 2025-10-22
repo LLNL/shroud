@@ -20,7 +20,8 @@ module library_three_mod
     end type LIB_SHROUD_capsule_data
 
     type class1
-        type(LIB_SHROUD_capsule_data) :: cxxmem
+        type(LIB_SHROUD_capsule_data) :: cxxmem = &
+            LIB_SHROUD_capsule_data()
     contains
         procedure :: method1 => class1_method1
         procedure :: get_instance => class1_get_instance

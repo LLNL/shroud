@@ -76,7 +76,8 @@ module userlibrary_example_nested_mod
     end type AA_SHROUD_capsule_data
 
     type ex_class1
-        type(AA_SHROUD_capsule_data) :: cxxmem
+        type(AA_SHROUD_capsule_data) :: cxxmem = &
+            AA_SHROUD_capsule_data()
         ! splicer begin namespace.example::nested.class.ExClass1.component_part
           component part 1a
           component part 1b
@@ -98,7 +99,8 @@ module userlibrary_example_nested_mod
     end type ex_class1
 
     type ex_class2
-        type(AA_SHROUD_capsule_data) :: cxxmem
+        type(AA_SHROUD_capsule_data) :: cxxmem = &
+            AA_SHROUD_capsule_data()
         ! splicer begin namespace.example::nested.class.ExClass2.component_part
         ! splicer end namespace.example::nested.class.ExClass2.component_part
     contains

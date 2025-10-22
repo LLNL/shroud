@@ -37,7 +37,8 @@ module templates_std_mod
     ! splicer end namespace.std.class.vector_double.typedef.size_type
 
     type vector_int
-        type(TEM_SHROUD_capsule_data) :: cxxmem
+        type(TEM_SHROUD_capsule_data) :: cxxmem = &
+            TEM_SHROUD_capsule_data()
         ! splicer begin namespace.std.class.vector_int.component_part
         ! splicer end namespace.std.class.vector_int.component_part
     contains
@@ -52,7 +53,8 @@ module templates_std_mod
     end type vector_int
 
     type vector_double
-        type(TEM_SHROUD_capsule_data) :: cxxmem
+        type(TEM_SHROUD_capsule_data) :: cxxmem = &
+            TEM_SHROUD_capsule_data()
         ! splicer begin namespace.std.class.vector_double.component_part
         ! splicer end namespace.std.class.vector_double.component_part
     contains

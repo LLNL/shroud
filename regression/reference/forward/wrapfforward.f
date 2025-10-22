@@ -27,7 +27,8 @@ module forward_mod
     end type FOR_SHROUD_capsule_data
 
     type class3
-        type(FOR_SHROUD_capsule_data) :: cxxmem
+        type(FOR_SHROUD_capsule_data) :: cxxmem = &
+            FOR_SHROUD_capsule_data()
         ! splicer begin class.Class3.component_part
         ! splicer end class.Class3.component_part
     contains
@@ -39,7 +40,8 @@ module forward_mod
     end type class3
 
     type class2
-        type(FOR_SHROUD_capsule_data) :: cxxmem
+        type(FOR_SHROUD_capsule_data) :: cxxmem = &
+            FOR_SHROUD_capsule_data()
         ! splicer begin class.Class2.component_part
         ! splicer end class.Class2.component_part
     contains

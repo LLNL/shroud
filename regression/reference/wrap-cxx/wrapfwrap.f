@@ -27,7 +27,8 @@ module wrap_mod
     end type WRA_SHROUD_capsule_data
 
     type class1
-        type(WRA_SHROUD_capsule_data) :: cxxmem
+        type(WRA_SHROUD_capsule_data) :: cxxmem = &
+            WRA_SHROUD_capsule_data()
         ! splicer begin class.Class1.component_part
         ! splicer end class.Class1.component_part
     contains

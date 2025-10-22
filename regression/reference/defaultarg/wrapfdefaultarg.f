@@ -39,7 +39,8 @@ module defaultarg_mod
     ! splicer end typedef.TypeID
 
     type class1
-        type(DEF_SHROUD_capsule_data) :: cxxmem
+        type(DEF_SHROUD_capsule_data) :: cxxmem = &
+            DEF_SHROUD_capsule_data()
         ! splicer begin class.Class1.component_part
         ! splicer end class.Class1.component_part
     contains

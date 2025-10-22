@@ -75,7 +75,8 @@ module arrayclass_mod
     end type ARR_SHROUD_capsule_data
 
     type ArrayWrapper
-        type(ARR_SHROUD_capsule_data) :: cxxmem
+        type(ARR_SHROUD_capsule_data) :: cxxmem = &
+            ARR_SHROUD_capsule_data()
         ! splicer begin class.ArrayWrapper.component_part
         ! splicer end class.ArrayWrapper.component_part
     contains

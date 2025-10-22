@@ -23,7 +23,8 @@ module library_mod
     integer, parameter :: custom_type = C_INT
 
     type class2
-        type(LIB_SHROUD_capsule_data) :: cxxmem
+        type(LIB_SHROUD_capsule_data) :: cxxmem = &
+            LIB_SHROUD_capsule_data()
     contains
         procedure :: method1 => class2_method1
         procedure :: method2 => class2_method2

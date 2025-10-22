@@ -84,7 +84,8 @@ module ownership_mod
     end type OWN_SHROUD_capsule
 
     type class1
-        type(OWN_SHROUD_capsule_data) :: cxxmem
+        type(OWN_SHROUD_capsule_data) :: cxxmem = &
+            OWN_SHROUD_capsule_data()
         ! splicer begin class.Class1.component_part
         ! splicer end class.Class1.component_part
     contains

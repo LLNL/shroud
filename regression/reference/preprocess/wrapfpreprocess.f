@@ -27,7 +27,8 @@ module preprocess_mod
     end type PRE_SHROUD_capsule_data
 
     type user1
-        type(PRE_SHROUD_capsule_data) :: cxxmem
+        type(PRE_SHROUD_capsule_data) :: cxxmem = &
+            PRE_SHROUD_capsule_data()
         ! splicer begin class.User1.component_part
         ! splicer end class.User1.component_part
     contains
@@ -56,7 +57,8 @@ module preprocess_mod
 
 #ifdef USE_USER2
     type user2
-        type(PRE_SHROUD_capsule_data) :: cxxmem
+        type(PRE_SHROUD_capsule_data) :: cxxmem = &
+            PRE_SHROUD_capsule_data()
         ! splicer begin class.User2.component_part
         ! splicer end class.User2.component_part
     contains

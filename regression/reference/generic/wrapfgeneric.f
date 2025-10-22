@@ -83,7 +83,8 @@ module generic_mod
     ! end helper capsule_data
 
     type struct_as_class
-        type(GEN_SHROUD_capsule_data) :: cxxmem
+        type(GEN_SHROUD_capsule_data) :: cxxmem = &
+            GEN_SHROUD_capsule_data()
         ! splicer begin class.StructAsClass.component_part
         ! splicer end class.StructAsClass.component_part
     contains

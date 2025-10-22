@@ -89,7 +89,8 @@ module classes_mod
 
     ! start derived-type class1
     type class1
-        type(CLA_SHROUD_capsule_data) :: cxxmem
+        type(CLA_SHROUD_capsule_data) :: cxxmem = &
+            CLA_SHROUD_capsule_data()
         ! splicer begin class.Class1.component_part
         ! splicer end class.Class1.component_part
     contains
@@ -119,7 +120,8 @@ module classes_mod
     ! end derived-type class1
 
     type class2
-        type(CLA_SHROUD_capsule_data) :: cxxmem
+        type(CLA_SHROUD_capsule_data) :: cxxmem = &
+            CLA_SHROUD_capsule_data()
         ! splicer begin class.Class2.component_part
         ! splicer end class.Class2.component_part
     contains
@@ -133,7 +135,8 @@ module classes_mod
 
     ! start derived-type singleton
     type singleton
-        type(CLA_SHROUD_capsule_data) :: cxxmem
+        type(CLA_SHROUD_capsule_data) :: cxxmem = &
+            CLA_SHROUD_capsule_data()
         ! splicer begin class.Singleton.component_part
         ! splicer end class.Singleton.component_part
     contains
@@ -144,7 +147,8 @@ module classes_mod
     ! end derived-type singleton
 
     type shape
-        type(CLA_SHROUD_capsule_data) :: cxxmem
+        type(CLA_SHROUD_capsule_data) :: cxxmem = &
+            CLA_SHROUD_capsule_data()
         ! splicer begin class.Shape.component_part
         ! splicer end class.Shape.component_part
     contains
@@ -168,7 +172,8 @@ module classes_mod
 
     ! start derived-type data
     type data
-        type(CLA_SHROUD_capsule_data) :: cxxmem
+        type(CLA_SHROUD_capsule_data) :: cxxmem = &
+            CLA_SHROUD_capsule_data()
         ! splicer begin class.Data.component_part
         ! splicer end class.Data.component_part
     contains

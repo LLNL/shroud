@@ -120,7 +120,8 @@ module scope_mod
     end type data_pointer
 
     type class1
-        type(SCO_SHROUD_capsule_data) :: cxxmem
+        type(SCO_SHROUD_capsule_data) :: cxxmem = &
+            SCO_SHROUD_capsule_data()
         ! splicer begin class.Class1.component_part
         ! splicer end class.Class1.component_part
     contains
@@ -132,7 +133,8 @@ module scope_mod
     end type class1
 
     type class2
-        type(SCO_SHROUD_capsule_data) :: cxxmem
+        type(SCO_SHROUD_capsule_data) :: cxxmem = &
+            SCO_SHROUD_capsule_data()
         ! splicer begin class.Class2.component_part
         ! splicer end class.Class2.component_part
     contains

@@ -116,7 +116,8 @@ module struct_mod
 
     ! start derived-type cstruct_as_class
     type cstruct_as_class
-        type(STR_SHROUD_capsule_data) :: cxxmem
+        type(STR_SHROUD_capsule_data) :: cxxmem = &
+            STR_SHROUD_capsule_data()
         ! splicer begin class.Cstruct_as_class.component_part
         ! splicer end class.Cstruct_as_class.component_part
     contains
@@ -147,7 +148,8 @@ module struct_mod
     ! end derived-type cstruct_as_subclass
 
     type cstruct_as_class2
-        type(STR_SHROUD_capsule_data) :: cxxmem
+        type(STR_SHROUD_capsule_data) :: cxxmem = &
+            STR_SHROUD_capsule_data()
         ! splicer begin class.Cstruct_as_class2.component_part
         ! splicer end class.Cstruct_as_class2.component_part
     contains

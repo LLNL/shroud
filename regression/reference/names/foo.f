@@ -27,7 +27,8 @@ module name_module
     end type TES_SHROUD_capsule_data
 
     type FNames
-        type(TES_SHROUD_capsule_data) :: cxxmem
+        type(TES_SHROUD_capsule_data) :: cxxmem = &
+            TES_SHROUD_capsule_data()
         ! splicer begin namespace.ns0.class.Names.component_part
         ! splicer end namespace.ns0.class.Names.component_part
     contains

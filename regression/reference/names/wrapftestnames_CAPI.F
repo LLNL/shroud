@@ -27,7 +27,8 @@ module testnames_capi_mod
     end type TES_SHROUD_capsule_data
 
     type class1
-        type(TES_SHROUD_capsule_data) :: cxxmem
+        type(TES_SHROUD_capsule_data) :: cxxmem = &
+            TES_SHROUD_capsule_data()
         ! splicer begin namespace.CAPI.class.Class1.component_part
         ! splicer end namespace.CAPI.class.Class1.component_part
     contains

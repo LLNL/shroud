@@ -82,7 +82,8 @@ module ns_mod
     ! splicer end namespace.XXX.enum.Color
 
     type class_work
-        type(NS_SHROUD_capsule_data) :: cxxmem
+        type(NS_SHROUD_capsule_data) :: cxxmem = &
+            NS_SHROUD_capsule_data()
         ! splicer begin namespace.outer.class.ClassWork.component_part
         ! splicer end namespace.outer.class.ClassWork.component_part
     contains

@@ -35,7 +35,8 @@ module top_module
     ! splicer end enum.Color
 
     type names2
-        type(TES_SHROUD_capsule_data) :: cxxmem
+        type(TES_SHROUD_capsule_data) :: cxxmem = &
+            TES_SHROUD_capsule_data()
         ! splicer begin class.Names2.component_part
         ! splicer end class.Names2.component_part
     contains
@@ -47,7 +48,8 @@ module top_module
     end type names2
 
     type two_ts_0
-        type(TES_SHROUD_capsule_data) :: cxxmem
+        type(TES_SHROUD_capsule_data) :: cxxmem = &
+            TES_SHROUD_capsule_data()
         ! splicer begin class.twoTs_0.component_part
         ! splicer end class.twoTs_0.component_part
     contains
@@ -59,7 +61,8 @@ module top_module
     end type two_ts_0
 
     type two_ts_instantiation4
-        type(TES_SHROUD_capsule_data) :: cxxmem
+        type(TES_SHROUD_capsule_data) :: cxxmem = &
+            TES_SHROUD_capsule_data()
         ! splicer begin class.twoTs_instantiation4.component_part
         ! splicer end class.twoTs_instantiation4.component_part
     contains
@@ -71,7 +74,8 @@ module top_module
     end type two_ts_instantiation4
 
     type Fstruct_as_class
-        type(TES_SHROUD_capsule_data) :: cxxmem
+        type(TES_SHROUD_capsule_data) :: cxxmem = &
+            TES_SHROUD_capsule_data()
         ! splicer begin class.Cstruct_as_class.component_part
         ! splicer end class.Cstruct_as_class.component_part
     contains
