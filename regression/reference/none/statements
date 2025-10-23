@@ -23330,6 +23330,9 @@ h_helper_pointer_string:
   - Set Fortran POINTER to string.
   - Must be a function (or a F2008 BLOCK) since fptr must
   - be declared after the string length is known.
+  - The Fortran standard says both sides of the pointer assignment
+  - must have the same type parameters, including length.
+  - Cray CCE fails a struct-c test with this code.
   fmtdict:
     fnamefunc: '{C_prefix}SHROUD_pointer_string'
   f_fmtname: LIB_SHROUD_pointer_string

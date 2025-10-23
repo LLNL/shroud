@@ -274,13 +274,15 @@ contains
 
     nullify(name_ptr)
     name_ptr => group1%get_name_ptr()
-    call assert_true(associated(name_ptr, name_cat), "get_ptr associated")
-    call assert_equals(3, len(name_ptr), "get_ptr len")
-    call assert_equals(name_cat(1:3), name_ptr, "get_ptr value")
+    call assert_true(associated(name_ptr), "name_ptr associated")
+    call assert_true(associated(name_ptr, name_cat), "name_ptr associated with name_cat")
+    call assert_true(c_associated(c_loc(name_ptr), c_loc(name_cat)), "name_ptr associated with name_cat c_loc")
+    call assert_equals(3, len(name_ptr), "name_ptr len")
+    call assert_equals(name_cat(1:3), name_ptr, "name_ptr value")
 
     name_copy = " "
     call group1%get_name_copy(name_copy)
-    call assert_equals(name_rat(1:3), name_copy, "get_ptr value")
+    call assert_equals(name_rat(1:3), name_copy, "name_copy value")
     
   end subroutine test_struct_class2
 
