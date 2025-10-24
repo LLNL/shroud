@@ -31,6 +31,8 @@ swig:
 #	swig -fortran -o swigclasses_module.c classes.i
 	$(swig-fortran)  -fortran -c++ classes.i
 
+main.o : main.f classes_mod.o
+
 test:
 	./classes
 

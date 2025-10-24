@@ -64,7 +64,7 @@ const Class1 * getclass2_void();
 Class1 * getclass3_void();
 const Class1 &getConstClassReference();
 Class1 &getClassReference();
-Class1 getClassCopy(int flag);
+Class1 getClass1Copy(int flag);
 
 #if 0
 class Singleton {

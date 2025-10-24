@@ -501,6 +501,19 @@ SWIGEXPORT void _wrap_Class1_op_assign__(SwigClassWrapper *farg1, SwigClassWrapp
 }
 
 
+SWIGEXPORT SwigClassWrapper _wrap_getClass1Copy(int const *farg1) {
+  SwigClassWrapper fresult ;
+  int arg1 ;
+  classes::Class1 result;
+  
+  arg1 = (int)(*farg1);
+  result = classes::getClass1Copy(arg1);
+  fresult.cptr = new (classes::Class1)(result);
+  fresult.cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
+  return fresult;
+}
+
+
 SWIGEXPORT int _wrap_Shape_get_ivar(SwigClassWrapper *farg1) {
   int fresult ;
   classes::Shape *arg1 = (classes::Shape *) 0 ;

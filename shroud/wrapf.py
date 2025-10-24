@@ -273,7 +273,7 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
             )
         else:
             # Add the default constructor.
-            # If not user constructor provided, then the Cray CCE compile fails.
+            # If no user constructor provided, then the Cray CCE compile fails.
             append_format(
                 f_type_decl,
                 "type {F_derived_name}\n+"

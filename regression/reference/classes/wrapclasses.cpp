@@ -284,21 +284,21 @@ void CLA_getClassReference_bufferify(CLA_Class1 *SHC_rv)
  * must be released by the caller.
  */
 // ----------------------------------------
-// Function:  Class1 getClassCopy
+// Function:  Class1 getClass1Copy
 // Statement: c_function_shadow_capptr
 // ----------------------------------------
 // Argument:  int flag
 // Statement: c_in_native
-CLA_Class1 * CLA_getClassCopy(int flag, CLA_Class1 *SHC_rv)
+CLA_Class1 * CLA_getClass1Copy(int flag, CLA_Class1 *SHC_rv)
 {
-    // splicer begin function.getClassCopy
+    // splicer begin function.getClass1Copy
     classes::Class1 *SHC_rv_cxx = new classes::Class1;
-    *SHC_rv_cxx = classes::getClassCopy(flag);
+    *SHC_rv_cxx = classes::getClass1Copy(flag);
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 1;
     SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     return SHC_rv;
-    // splicer end function.getClassCopy
+    // splicer end function.getClass1Copy
 }
 
 /**
@@ -308,20 +308,20 @@ CLA_Class1 * CLA_getClassCopy(int flag, CLA_Class1 *SHC_rv)
  * must be released by the caller.
  */
 // ----------------------------------------
-// Function:  Class1 getClassCopy
+// Function:  Class1 getClass1Copy
 // Statement: f_function_shadow_capsule_caller
 // ----------------------------------------
 // Argument:  int flag
 // Statement: f_in_native
-void CLA_getClassCopy_bufferify(int flag, CLA_Class1 *SHC_rv)
+void CLA_getClass1Copy_bufferify(int flag, CLA_Class1 *SHC_rv)
 {
-    // splicer begin function.getClassCopy_bufferify
+    // splicer begin function.getClass1Copy_bufferify
     classes::Class1 *SHC_rv_cxx = new classes::Class1;
-    *SHC_rv_cxx = classes::getClassCopy(flag);
+    *SHC_rv_cxx = classes::getClass1Copy(flag);
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 1;
     SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
-    // splicer end function.getClassCopy_bufferify
+    // splicer end function.getClass1Copy_bufferify
 }
 
 // ----------------------------------------

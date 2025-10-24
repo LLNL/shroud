@@ -51,16 +51,14 @@ contains
 
     call set_case_name("test_class1_final")
 
-    ! Test generic constructor
+    ! Test generic constructor. Allocates new memory.
     obj0 = class1()
-!    call assert_equals(1, obj0%cxxmem%refcount, "reference count after new")
 
+    ! Create alias
     obj1 = obj0
-!    call assert_equals(2, obj0%cxxmem%refcount, "rhs reference count after assign")
-!    call assert_equals(2, obj1%cxxmem%refcount, "lhs reference count after assign")
 
+    call obj1%delete  ! The alias does not release the memory
     call obj0%delete
-!    call assert_equals(1, obj1%cxxmem%refcount, "reference count after delete")
 
     ! should call TUT_SHROUD_array_destructor_function as part of 
     ! FINAL of capsule_data.
@@ -69,24 +67,34 @@ contains
   subroutine test_class1_new_by_value
     integer mflag
     logical mlogical
-    type(class1) obj0
+    type(class1) obj0, obj1
 
     call set_case_name("test_class1_new_by_value")
 
     ! Return a new instance via a copy constructor.
     ! The C wrapper creates an instance then assigns function results into it.
     ! idtor is set to cause it to be released when it goes out of scope.
-    obj0 = get_class_copy(5)
+    obj0 = get_class1_copy(5)
 
+    ! Create an alias
+    obj1 = obj0
+
+    call obj1%set_m_bool(.true.)
+    
     mflag = obj0%get_m_flag()
-    call assert_equals(5, mflag, "m_flag")
+    call assert_equals(5, mflag, "obj0%m_flag")
 
+    ! Both obj0 and obj1 have the same value for m_bool because their aliases
     mlogical = obj0%get_m_bool()
-    call assert_equals(.false., mlogical, "m_bool")
+    call assert_equals(.true., mlogical, "obj0%m_bool")
+
+    mlogical = obj1%get_m_bool()
+    call assert_equals(.true., mlogical, "obj1%m_bool")
 
     ! should call TUT_SHROUD_array_destructor_function as part of 
     ! FINAL of capsule_data.
     call obj0%delete
+    call obj1%delete
 
   end subroutine test_class1_new_by_value
 

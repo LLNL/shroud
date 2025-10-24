@@ -78,7 +78,7 @@ Class1 &getClassReference()
 }
 
 /* Return class instance by value */
-Class1 getClassCopy(int flag)
+Class1 getClass1Copy(int flag)
 {
     Class1 node(flag);
     last_function_called = "getClassCopy";

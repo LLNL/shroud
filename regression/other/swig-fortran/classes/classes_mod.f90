@@ -29,6 +29,7 @@ module classes_mod
   procedure, private :: swigf_Class1_op_assign__
   generic :: assignment(=) => swigf_Class1_op_assign__
  end type Class1
+ public :: getClass1Copy
  ! class classes::Shape
  type, public :: Shape
   type(SwigClassWrapper), public :: swigdata
@@ -133,6 +134,15 @@ import :: swigclasswrapper
 type(SwigClassWrapper), intent(inout) :: farg1
 type(SwigClassWrapper), intent(in) :: farg2
 end subroutine
+
+function swigc_getClass1Copy(farg1) &
+bind(C, name="_wrap_getClass1Copy") &
+result(fresult)
+use, intrinsic :: ISO_C_BINDING
+import :: swigclasswrapper
+integer(C_INT), intent(in) :: farg1
+type(SwigClassWrapper) :: fresult
+end function
 
 function swigc_Shape_get_ivar(farg1) &
 bind(C, name="_wrap_Shape_get_ivar") &
@@ -323,6 +333,19 @@ farg2 = other%swigdata
 call swigc_Class1_op_assign__(farg1, farg2)
 self%swigdata = farg1
 end subroutine
+
+function getClass1Copy(flag) &
+result(swig_result)
+use, intrinsic :: ISO_C_BINDING
+type(Class1) :: swig_result
+integer(C_INT), intent(in) :: flag
+type(SwigClassWrapper) :: fresult 
+integer(C_INT) :: farg1 
+
+farg1 = flag
+fresult = swigc_getClass1Copy(farg1)
+swig_result%swigdata = fresult
+end function
 
 function swigf_Shape_get_ivar(self) &
 result(swig_result)

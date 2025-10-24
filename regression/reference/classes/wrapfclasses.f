@@ -1176,39 +1176,39 @@ module classes_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  Class1 getClassCopy
+    ! Function:  Class1 getClass1Copy
     ! Statement: c_function_shadow_capptr
     ! ----------------------------------------
     ! Argument:  int flag
     ! Statement: c_in_native
     interface
-        function c_get_class_copy(flag, SHT_rv) &
+        function c_get_class1_copy(flag, SHT_rv) &
                 result(SHT_rv_ptr) &
-                bind(C, name="CLA_getClassCopy")
+                bind(C, name="CLA_getClass1Copy")
             use iso_c_binding, only : C_INT, C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
             integer(C_INT), value, intent(IN) :: flag
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) :: SHT_rv_ptr
-        end function c_get_class_copy
+        end function c_get_class1_copy
     end interface
 
     ! ----------------------------------------
-    ! Function:  Class1 getClassCopy
+    ! Function:  Class1 getClass1Copy
     ! Statement: f_function_shadow_capsule_caller
     ! ----------------------------------------
     ! Argument:  int flag
     ! Statement: f_in_native
     interface
-        subroutine c_get_class_copy_bufferify(flag, SHT_rv) &
-                bind(C, name="CLA_getClassCopy_bufferify")
+        subroutine c_get_class1_copy_bufferify(flag, SHT_rv) &
+                bind(C, name="CLA_getClass1Copy_bufferify")
             use iso_c_binding, only : C_INT
             import :: CLA_SHROUD_capsule_data
             implicit none
             integer(C_INT), value, intent(IN) :: flag
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-        end subroutine c_get_class_copy_bufferify
+        end subroutine c_get_class1_copy_bufferify
     end interface
 
     ! ----------------------------------------
@@ -2109,7 +2109,7 @@ contains
     end function get_class_reference
 
     ! ----------------------------------------
-    ! Function:  Class1 getClassCopy
+    ! Function:  Class1 getClass1Copy
     ! Statement: f_function_shadow_capsule_caller
     ! ----------------------------------------
     ! Argument:  int flag
@@ -2120,15 +2120,15 @@ contains
     !! Return by value causes Shroud to create memory which
     !! must be released by the caller.
     !<
-    function get_class_copy(flag) &
+    function get_class1_copy(flag) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: flag
         type(class1) :: SHT_rv
-        ! splicer begin function.get_class_copy
-        call c_get_class_copy_bufferify(flag, SHT_rv%cxxmem)
-        ! splicer end function.get_class_copy
-    end function get_class_copy
+        ! splicer begin function.get_class1_copy
+        call c_get_class1_copy_bufferify(flag, SHT_rv%cxxmem)
+        ! splicer end function.get_class1_copy
+    end function get_class1_copy
 
 #if 0
     ! Only the interface is needed

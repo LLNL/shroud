@@ -8923,10 +8923,10 @@
                 }
             },
             {
-                "<FUNCTION>": "getClassCopy  43 ****************************************",
+                "<FUNCTION>": "getClass1Copy  43 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "getClassCopy",
+                        "name": "getClass1Copy",
                         "params": [
                             {
                                 "declarator": {
@@ -8946,13 +8946,13 @@
                     ],
                     "typemap_name": "classes::Class1"
                 },
-                "decl": "Class1 getClassCopy(int flag)",
-                "declgen": "Class1 getClassCopy(int flag)",
+                "decl": "Class1 getClass1Copy(int flag)",
+                "declgen": "Class1 getClass1Copy(int flag)",
                 "doxygen": {
                     "brief": "Return Class1 instance by value, uses copy constructor",
                     "description": "Return by value causes Shroud to create memory which\nmust be released by the caller.\n"
                 },
-                "name": "getClassCopy",
+                "name": "getClass1Copy",
                 "options": {
                     "wrap_lua": false,
                     "wrap_python": false
@@ -8965,9 +8965,9 @@
                     "c": {
                         "+result": {
                             "fmtdict": {
-                                "C_call_function": "classes::getClassCopy(\tflag)",
+                                "C_call_function": "classes::getClass1Copy(\tflag)",
                                 "C_call_list": "flag",
-                                "C_name": "CLA_getClassCopy",
+                                "C_name": "CLA_getClass1Copy",
                                 "C_prototype": "int flag,\t CLA_Class1 *SHC_rv",
                                 "C_return_type": "CLA_Class1 *",
                                 "c_abstract_decl": "CLA_Class1",
@@ -8993,7 +8993,7 @@
                                 "i_intent_attr": ", intent(OUT)",
                                 "i_kind": "class1",
                                 "i_module_name": "classes_mod",
-                                "i_name_function": "c_get_class_copy",
+                                "i_name_function": "c_get_class1_copy",
                                 "i_result_clause": "\fresult(SHT_rv_ptr)",
                                 "i_result_var": "SHT_rv_ptr",
                                 "i_subprogram": "function",
@@ -9054,9 +9054,9 @@
                     "f": {
                         "+result": {
                             "fmtdict": {
-                                "C_call_function": "classes::getClassCopy(\tflag)",
+                                "C_call_function": "classes::getClass1Copy(\tflag)",
                                 "C_call_list": "flag",
-                                "C_name": "CLA_getClassCopy_bufferify",
+                                "C_name": "CLA_getClass1Copy_bufferify",
                                 "C_prototype": "int flag,\t CLA_Class1 *SHC_rv",
                                 "C_return_type": "void",
                                 "F_arg_c_call": "flag,\t SHT_rv%cxxmem",
@@ -9075,7 +9075,7 @@
                                 "cxx_nonconst_ptr": "SHC_rv_cxx",
                                 "cxx_type": "classes::Class1",
                                 "cxx_var": "SHC_rv_cxx",
-                                "f_call_function": "c_get_class_copy_bufferify",
+                                "f_call_function": "c_get_class1_copy_bufferify",
                                 "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                 "f_derived_type": "class1",
                                 "f_kind": "class1",
@@ -9089,7 +9089,7 @@
                                 "i_intent_attr": ", intent(OUT)",
                                 "i_kind": "class1",
                                 "i_module_name": "classes_mod",
-                                "i_name_function": "c_get_class_copy_bufferify",
+                                "i_name_function": "c_get_class1_copy_bufferify",
                                 "i_subprogram": "subroutine",
                                 "i_suffix": "_bufferify",
                                 "i_type": "type(CLA_SHROUD_capsule_data)",
@@ -9164,11 +9164,11 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name_api": "getClassCopy",
-                    "F_name_api": "get_class_copy",
-                    "F_name_function": "get_class_copy",
-                    "F_name_generic": "get_class_copy",
-                    "F_name_impl": "get_class_copy",
+                    "C_name_api": "getClass1Copy",
+                    "F_name_api": "get_class1_copy",
+                    "F_name_function": "get_class1_copy",
+                    "F_name_generic": "get_class1_copy",
+                    "F_name_impl": "get_class1_copy",
                     "c_arglist": [
                         "SHC_rv",
                         "flag"
@@ -9177,7 +9177,7 @@
                         "SHT_rv",
                         "flag"
                     ],
-                    "function_name": "getClassCopy"
+                    "function_name": "getClass1Copy"
                 }
             },
             {

@@ -4404,9 +4404,9 @@
                 "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;"
             ],
             "alias_code": [
-                "// Aliasing another class; clear ownership or copy smart pointer.",
+                "// Aliasing another class; clear ownership.",
                 "lhs_capsule->addr = rhs_capsule->addr;",
-                "lhs_capsule->idtor = rhs_capsule->idtor;",
+                "lhs_capsule->idtor = 0;",
                 "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_OWN;"
             ],
             "destroy_code": [
@@ -4456,7 +4456,7 @@
                 "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;"
             ],
             "alias_code": [
-                "// Aliasing another class; clear ownership or copy smart pointer.",
+                "// Aliasing another class; copy smart pointer.",
                 "lhs_capsule->addr = new {cxx_type_lhs}\t (*static_cast<{cxx_type_lhs}*>\t(rhs_capsule->addr));",
                 "lhs_capsule->idtor = {idtor};",
                 "lhs_capsule->cmemflags = rhs_capsule->cmemflags | SWIG_MEM_OWN;"
@@ -4518,7 +4518,7 @@
                 "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;"
             ],
             "alias_code": [
-                "// Aliasing another class; clear ownership or copy smart pointer.",
+                "// Aliasing another class; copy smart pointer.",
                 "lhs_capsule->addr = new {cxx_type_lhs}\t (*static_cast<{cxx_type_lhs}*>\t(rhs_capsule->addr));",
                 "lhs_capsule->idtor = {idtor};",
                 "lhs_capsule->cmemflags = rhs_capsule->cmemflags | SWIG_MEM_OWN;"

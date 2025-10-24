@@ -97,9 +97,9 @@ void SHA_Object_assign_Object(SHA_Object *lhs_capsule,
             lhs_capsule->idtor = rhs_capsule->idtor;
             lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
         } else {
-            // Aliasing another class; clear ownership or copy smart pointer.
+            // Aliasing another class; clear ownership.
             lhs_capsule->addr = rhs_capsule->addr;
-            lhs_capsule->idtor = rhs_capsule->idtor;
+            lhs_capsule->idtor = 0;
             lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_OWN;
         }
     } else if (rhs_capsule->addr == nullptr) {
@@ -148,7 +148,7 @@ void SHA_Object_shared_assign_Object_shared(SHA_Object_shared *lhs_capsule,
             lhs_capsule->idtor = rhs_capsule->idtor;
             lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
         } else {
-            // Aliasing another class; clear ownership or copy smart pointer.
+            // Aliasing another class; copy smart pointer.
             lhs_capsule->addr = new std::shared_ptr<Object>
                 (*static_cast<std::shared_ptr<Object>*>
                 (rhs_capsule->addr));
@@ -208,7 +208,7 @@ void SHA_Object_shared_assign_Object(SHA_Object_shared *lhs_capsule,
             lhs_capsule->idtor = 1;
             lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
         } else {
-            // Aliasing another class; clear ownership or copy smart pointer.
+            // Aliasing another class; copy smart pointer.
             lhs_capsule->addr = new std::shared_ptr<Object>
                 (*static_cast<std::shared_ptr<Object>*>
                 (rhs_capsule->addr));
@@ -269,7 +269,7 @@ void SHA_Object_shared_assign_Object(SHA_Object_shared *lhs_capsule,
                 lhs_capsule->idtor = rhs_capsule->idtor;
                 lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
             } else {
-                // Aliasing another class; clear ownership or copy smart pointer.
+                // Aliasing another class; copy smart pointer.
                 lhs_capsule->addr = new std::weak_ptr<Object>
                     (*static_cast<std::weak_ptr<Object>*>
                     (rhs_capsule->addr));
@@ -325,7 +325,7 @@ void SHA_Object_shared_assign_Object(SHA_Object_shared *lhs_capsule,
                 lhs_capsule->idtor = rhs_capsule->idtor;
                 lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
             } else {
-                // Aliasing another class; clear ownership or copy smart pointer.
+                // Aliasing another class; copy smart pointer.
                 lhs_capsule->addr = new std::weak_ptr<Object>
                     (*static_cast<std::weak_ptr<Object>*>
                     (rhs_capsule->addr));
