@@ -11,6 +11,7 @@ class Class1
  public:
     int m_flag;
     int m_test;
+    bool m_bool;
     Class1();
     Class1(int flag);
     ~Class1();

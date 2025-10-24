@@ -445,6 +445,30 @@ SWIGEXPORT int _wrap_Class1_m_test_get(SwigClassWrapper *farg1) {
 }
 
 
+SWIGEXPORT void _wrap_Class1_m_bool_set(SwigClassWrapper *farg1, int const *farg2) {
+  classes::Class1 *arg1 = (classes::Class1 *) 0 ;
+  bool arg2 ;
+  
+  SWIG_check_nonnull(farg1->cptr, "classes::Class1 *", "Class1", "classes::Class1::m_bool", return );
+  arg1 = (classes::Class1 *)farg1->cptr;
+  arg2 = (*farg2 ? true : false);
+  if (arg1) (arg1)->m_bool = arg2;
+}
+
+
+SWIGEXPORT int _wrap_Class1_m_bool_get(SwigClassWrapper *farg1) {
+  int fresult ;
+  classes::Class1 *arg1 = (classes::Class1 *) 0 ;
+  bool result;
+  
+  SWIG_check_nonnull(farg1->cptr, "classes::Class1 *", "Class1", "classes::Class1::m_bool", return 0);
+  arg1 = (classes::Class1 *)farg1->cptr;
+  result = (bool) ((arg1)->m_bool);
+  fresult = (result ? 1 : 0);
+  return fresult;
+}
+
+
 SWIGEXPORT SwigClassWrapper _wrap_new_Class1__SWIG_0() {
   SwigClassWrapper fresult ;
   classes::Class1 *result = 0 ;

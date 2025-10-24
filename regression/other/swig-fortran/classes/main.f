@@ -49,8 +49,8 @@ contains
   end subroutine test_class1_final
 
   subroutine test_class1_new_by_value
-!    integer mflag
-!    logical mlogical
+    integer mflag
+    logical mlogical
     type(class1) obj0, obj1
 
     call set_case_name("test_class1_new_by_value")
@@ -63,16 +63,16 @@ contains
     ! Create an alias
     obj1 = obj0
 
-!    call obj1%set_m_bool(.true.)
+    call obj1%set_m_bool(.true.)
     
-!    mflag = obj0%get_m_flag()
-!    call assert_equals(5, mflag, "obj0%m_flag")
+    mflag = obj0%get_m_flag()
+    call assert_equals(5, mflag, "obj0%m_flag")
 
-!    mlogical = obj0%get_m_bool()
-!    call assert_equals(.false., mlogical, "obj0%m_bool")
+    mlogical = obj0%get_m_bool()
+    call assert_equals(.true., mlogical, "obj0%m_bool")
 
-!    mlogical = obj1%get_m_bool()
-!    call assert_equals(.true., mlogical, "obj1%m_bool")
+    mlogical = obj1%get_m_bool()
+    call assert_equals(.true., mlogical, "obj1%m_bool")
 
     ! should call TUT_SHROUD_array_destructor_function as part of 
     ! FINAL of capsule_data.

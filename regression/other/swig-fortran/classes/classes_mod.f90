@@ -24,6 +24,8 @@ module classes_mod
   procedure :: get_m_flag => swigf_Class1_m_flag_get
   procedure :: set_m_test => swigf_Class1_m_test_set
   procedure :: get_m_test => swigf_Class1_m_test_get
+  procedure :: set_m_bool => swigf_Class1_m_bool_set
+  procedure :: get_m_bool => swigf_Class1_m_bool_get
   procedure :: release => swigf_Class1_release
   procedure :: Method1 => swigf_Class1_Method1
   procedure, private :: swigf_Class1_op_assign__
@@ -87,6 +89,23 @@ end subroutine
 
 function swigc_Class1_m_test_get(farg1) &
 bind(C, name="_wrap_Class1_m_test_get") &
+result(fresult)
+use, intrinsic :: ISO_C_BINDING
+import :: swigclasswrapper
+type(SwigClassWrapper), intent(in) :: farg1
+integer(C_INT) :: fresult
+end function
+
+subroutine swigc_Class1_m_bool_set(farg1, farg2) &
+bind(C, name="_wrap_Class1_m_bool_set")
+use, intrinsic :: ISO_C_BINDING
+import :: swigclasswrapper
+type(SwigClassWrapper), intent(in) :: farg1
+integer(C_INT), intent(in) :: farg2
+end subroutine
+
+function swigc_Class1_m_bool_get(farg1) &
+bind(C, name="_wrap_Class1_m_bool_get") &
 result(fresult)
 use, intrinsic :: ISO_C_BINDING
 import :: swigclasswrapper
@@ -269,6 +288,51 @@ type(SwigClassWrapper) :: farg1
 farg1 = self%swigdata
 fresult = swigc_Class1_m_test_get(farg1)
 swig_result = fresult
+end function
+
+
+subroutine SWIGTM_fin_bool(finp, iminp)
+  use, intrinsic :: ISO_C_BINDING
+  logical, intent(in) :: finp
+  integer(kind=C_INT), intent(out) :: iminp
+  if (finp .eqv. .true.) then
+    iminp = 1
+  else
+    iminp = 0
+  end if
+end subroutine
+
+subroutine swigf_Class1_m_bool_set(self, m_bool)
+use, intrinsic :: ISO_C_BINDING
+class(Class1), intent(in) :: self
+logical, intent(in) :: m_bool
+type(SwigClassWrapper) :: farg1 
+integer(C_INT) :: farg2 
+
+farg1 = self%swigdata
+call SWIGTM_fin_bool(m_bool, farg2)
+call swigc_Class1_m_bool_set(farg1, farg2)
+end subroutine
+
+
+subroutine SWIGTM_fout_bool(imout, fout)
+  use, intrinsic :: ISO_C_BINDING
+  integer(kind=C_INT), intent(in) :: imout
+  logical, intent(out) :: fout
+  fout = (imout /= 0)
+end subroutine
+
+function swigf_Class1_m_bool_get(self) &
+result(swig_result)
+use, intrinsic :: ISO_C_BINDING
+logical :: swig_result
+class(Class1), intent(in) :: self
+integer(C_INT) :: fresult 
+type(SwigClassWrapper) :: farg1 
+
+farg1 = self%swigdata
+fresult = swigc_Class1_m_bool_get(farg1)
+call SWIGTM_fout_bool(fresult, swig_result)
 end function
 
 function swigf_new_Class1__SWIG_0() &
