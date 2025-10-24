@@ -153,8 +153,8 @@ module clibrary_mod
     ! end c_check_bool
 
     ! ----------------------------------------
-    ! Function:  char *Function4a +len(30)
-    ! Statement: f_function_char*_buf_copy
+    ! Function:  char *Function4a +len(30)+owner(caller)
+    ! Statement: f_function_char*_buf_copy_caller
     ! ----------------------------------------
     ! Argument:  const char *arg1
     ! Statement: f_in_char*
@@ -632,14 +632,18 @@ contains
     ! end check_bool
 
     ! ----------------------------------------
-    ! Function:  char *Function4a +len(30)
-    ! Statement: f_function_char*_buf_copy
+    ! Function:  char *Function4a +len(30)+owner(caller)
+    ! Statement: f_function_char*_buf_copy_caller
     ! ----------------------------------------
     ! Argument:  const char *arg1
     ! Statement: f_in_char*
     ! ----------------------------------------
     ! Argument:  const char *arg2
     ! Statement: f_in_char*
+    !>
+    !! The function allocates memory with malloc which is copied into
+    !! the users buffer and must then be freed.
+    !<
     function function4a(arg1, arg2) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_NULL_CHAR

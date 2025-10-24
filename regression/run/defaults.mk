@@ -29,7 +29,7 @@ ifeq ($(compiler),gcc)
 #     ((PyObject*)(op))->ob_refcnt++)
 
 CC = gcc
-#ASAN = -fsanitize=address
+ASAN = -fsanitize=address
 # -Wextra
 # -O3 generates additional warnings, but makes it harder to debug.
 #CXXWARNINGS = -O3
@@ -193,6 +193,11 @@ LOCAL_CFLAGS += $(SHARED)
 LOCAL_CXXFLAGS += $(SHARED)
 LOCAL_FFLAGS += $(SHARED)
 LOCAL_LDFLAGS += $(LD_SHARED)
+endif
+
+# Only use ASAN if requested
+ifndef use_asan
+ASAN :=
 endif
 
 # Prefix required local flags to user flags from the command line.

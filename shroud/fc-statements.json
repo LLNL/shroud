@@ -2285,12 +2285,16 @@
         ],
         "lang_c": {
             "c_post_call": [
-                "free({c_local_cxx});"
+                "if ({c_local_cxx} != NULL) {{+",
+                "{stdlib}free({c_local_cxx});",
+                "-}}"
             ]
         },
         "lang_cxx": {
             "c_post_call": [
-                "delete[] {c_local_cxx};"
+                "if ({c_local_cxx} != {nullptr}) {{+",
+                "delete[] {c_local_cxx};",
+                "-}}"
             ]
         }
     },
@@ -2654,6 +2658,27 @@
             "c_mixin_arg-call-cvar",
             "c_mixin_function-assign-to-local",
             "c_mixin_char-copyout"
+        ]
+    },
+    {
+        "alias": [
+            "f_function_char*_buf_copy_caller",
+            "c_function_char*_buf_copy_caller"
+        ],
+        "notes": [
+            "char *getname() +len(30) +owner(caller)",
+            "Copy result into caller's buffer.",
+            "Then release memory allocated by library."
+        ],
+        "mixin": [
+            "f_mixin_call-cwrapper-as-subroutine",
+            "f_mixin_declare-local-variable",
+            "f_mixin_pass_character_buf",
+            "c_mixin_in_character_buf",
+            "c_mixin_arg-call-cvar",
+            "c_mixin_function-assign-to-local",
+            "c_mixin_char-copyout",
+            "c_mixin_char-free"
         ]
     },
     {

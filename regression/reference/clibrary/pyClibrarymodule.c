@@ -236,7 +236,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  char *Function4a +len(30)
+// Function:  char *Function4a +len(30)+owner(caller)
 // Statement: py_function_char*
 // ----------------------------------------
 // Argument:  const char *arg1
@@ -248,6 +248,10 @@ static char PY_Function4a__doc__[] =
 "documentation"
 ;
 
+/**
+ * The function allocates memory with malloc which is copied into
+ * the users buffer and must then be freed.
+ */
 static PyObject *
 PY_Function4a(
   PyObject *SHROUD_UNUSED(self),

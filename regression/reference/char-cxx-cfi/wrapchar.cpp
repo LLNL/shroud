@@ -232,7 +232,9 @@ void CHA_passCharPtr_CFI(CFI_cdesc_t *SHT_dest_cfi,
     char *SHC_src_cxx = ShroudCharAlloc(src, SHT_src_len, 0);
     passCharPtr(SHC_dest_cxx, SHC_src_cxx);
     ShroudCharCopy(dest, SHT_dest_len, SHC_dest_cxx, -1);
-    delete[] SHC_dest_cxx;
+    if (SHC_dest_cxx != nullptr) {
+        delete[] SHC_dest_cxx;
+    }
     ShroudCharFree(SHC_src_cxx);
     // splicer end function.passCharPtr_CFI
 }
@@ -607,7 +609,9 @@ void CHA_explicit2_CFI(CFI_cdesc_t *SHT_name_cfi)
     char *SHC_name_cxx = new char[SHT_name_len+1];
     explicit2(SHC_name_cxx);
     ShroudCharCopy(name, SHT_name_len, SHC_name_cxx, -1);
-    delete[] SHC_name_cxx;
+    if (SHC_name_cxx != nullptr) {
+        delete[] SHC_name_cxx;
+    }
     // splicer end function.explicit2_CFI
 }
 // end CHA_explicit2_CFI
@@ -677,7 +681,9 @@ void CHA_CpassCharPtr_CFI(CFI_cdesc_t *SHT_dest_cfi,
     char *SHC_src_cxx = ShroudCharAlloc(src, SHT_src_len, 1);
     CpassCharPtr(SHC_dest_cxx, SHC_src_cxx);
     ShroudCharCopy(dest, SHT_dest_len, SHC_dest_cxx, -1);
-    delete[] SHC_dest_cxx;
+    if (SHC_dest_cxx != nullptr) {
+        delete[] SHC_dest_cxx;
+    }
     ShroudCharFree(SHC_src_cxx);
     // splicer end function.CpassCharPtr_CFI
 }
@@ -731,7 +737,9 @@ void CHA_CpassCharPtrBlank_CFI(CFI_cdesc_t *SHT_dest_cfi,
     char *SHC_src_cxx = ShroudCharAlloc(src, SHT_src_len, 1);
     CpassCharPtrBlank(SHC_dest_cxx, SHC_src_cxx);
     ShroudCharCopy(dest, SHT_dest_len, SHC_dest_cxx, -1);
-    delete[] SHC_dest_cxx;
+    if (SHC_dest_cxx != nullptr) {
+        delete[] SHC_dest_cxx;
+    }
     ShroudCharFree(SHC_src_cxx);
     // splicer end function.CpassCharPtrBlank_CFI
 }

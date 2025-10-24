@@ -13,6 +13,25 @@
 // Release library allocated memory.
 void CLI_SHROUD_memory_destructor(CLI_SHROUD_capsule_data *cap)
 {
+    void *ptr = cap->addr;
+    switch (cap->idtor) {
+    case 0:   // --none--
+    {
+        // Nothing to delete
+        break;
+    }
+    case 1:   // char
+    {
+        char *cxx_ptr = (char *) ptr;
+        free(cxx_ptr);
+        break;
+    }
+    default:
+    {
+        // Unexpected case in destructor
+        break;
+    }
+    }
     cap->addr = NULL;
     cap->idtor = 0;  // avoid deleting again
 }
