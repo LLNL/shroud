@@ -19,18 +19,14 @@ If this environment variable is set to a non-empty string, enable
 Python Development Mode, introducing additional runtime checks that
 are too expensive to be enabled by default.  New in version 3.7.
 
-setenv PYTHONDEVMODE 1
+    setenv PYTHONDEVMODE 1
 
-Parse test
-----------
+test-commit
+-----------
 
-Parse some strings in ``tests/check_decl.py`` and compare to reference
-in ``tests/check-decl.output``.
-The parse trees are compared.
+Run several types of tests before a commit.
 
-    make test-decl
-    make test-decl-diff
-    make test-decl-replace
+    make test-commit
 
 Run unittest
 ------------
@@ -59,6 +55,17 @@ Running a single Python unit test.
     $PYTHONEXE -m unittest test.Struct.test_Arrays1
 
 
+Parse test
+----------
+
+Parse some strings in ``tests/check_decl.py`` and compare to reference
+in ``tests/check-decl.output``.
+The parse trees are compared.
+
+    make test-decl
+    make test-decl-diff
+    make test-decl-replace
+
 Regression tests
 ----------------
 
@@ -79,20 +86,25 @@ Running a single test
 
 Running a test manually (with pdb).
 Run the test via do-test.  Extract run line from test.log
+```
 cd $WORK/build/temp.linux-x86_64-3.7/regression/classes
 $WORK/build/temp.linux-x86_64-3.7/venv/bin/shroud ...  $WORK/regression/input/classes.yaml
-
+```
 
 Test generated code
 -------------------
 
+Compile the files in `regression/reference`.
+The Library code which is wrapped is in the `regression/run` directory.
+
     make test-clean
-    make test-all
+    make test-all -k
 
 Compile the generated code (after do-test-replace) and run some unit
 tests.  These tests are in tests/run and contains a small library
 which is wrapped by the corresponding yaml file
 (i.e. tests/tutorial.yaml wraps run/tutorial)
+The `make -k` flag will keep-going if one of the tests fails.
 
 ``regression/run/Makfile`` is top level makefile.
 ``regression/run/default.mk`` has compiler flags.
@@ -168,6 +180,19 @@ PY_OBJS = \
 
 ```
 
+memory debugging
+----------------
+
+Valgrind can be used by setting `valgrind=valgrind` on the Make command line.
+Actually, `valgrind=path-to-valgrind`.
+
+    make -k valgrind=valgrind test-all
+
+Recompile code with address sanitizer.
+
+    make test-clean ; make -k use_asan=1 test-all
+
+
 reference counting
 ------------------
 
@@ -188,7 +213,7 @@ main.py
 wrapX.py  generate.py
 fcfmt.py  metaattrs.py
 ast.py
-declast.py declstr.py
+declast.py declstr.py fcmem.py
 typemap.py statements.py todict.py
 whelpers.py
 util.py visitor.py

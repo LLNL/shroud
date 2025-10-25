@@ -32,6 +32,8 @@ void SHA_Object_ctor_bufferify(SHA_Object *SHC_rv);
 
 void SHA_Object_dtor(SHA_Object * self);
 
+int SHA_Object_get_id(SHA_Object * self);
+
 SHA_Object_shared * SHA_Object_createChildA(SHA_Object * self,
     SHA_Object_shared *SHC_rv);
 

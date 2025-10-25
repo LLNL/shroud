@@ -67,10 +67,11 @@ module ownership_mod
         integer(C_LONG) :: shape(7) = 0
     end type OWN_SHROUD_array
 
-    ! helper capsule_data_helper
+    ! helper capsule_data
     type, bind(C) :: OWN_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: cmemflags = 0   ! memory flags
     end type OWN_SHROUD_capsule_data
 
     ! helper capsule_helper
@@ -83,7 +84,8 @@ module ownership_mod
     end type OWN_SHROUD_capsule
 
     type class1
-        type(OWN_SHROUD_capsule_data) :: cxxmem
+        type(OWN_SHROUD_capsule_data) :: cxxmem = &
+            OWN_SHROUD_capsule_data()
         ! splicer begin class.Class1.component_part
         ! splicer end class.Class1.component_part
     contains
@@ -102,6 +104,10 @@ module ownership_mod
 
     interface operator (.ne.)
         module procedure class1_ne
+    end interface
+
+    interface assignment (=)
+        module procedure class1_assign_Class1
     end interface
 
     interface
@@ -176,7 +182,7 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int *ReturnIntPtrPointer +deref(pointer)
-        ! Statement: f_function_native*_pointer
+        ! Statement: f_function_native*_pointer_library
         function c_return_int_ptr_pointer_bufferify() &
                 result(SHT_rv) &
                 bind(C, name="OWN_ReturnIntPtrPointer_bufferify")
@@ -219,7 +225,7 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int *ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
-        ! Statement: f_function_native*_cdesc_pointer
+        ! Statement: f_function_native*_cdesc_pointer_library
         ! start c_return_int_ptr_dim_pointer_bufferify
         subroutine c_return_int_ptr_dim_pointer_bufferify(SHT_rv_cdesc) &
                 bind(C, name="OWN_ReturnIntPtrDimPointer_bufferify")
@@ -277,7 +283,7 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int *ReturnIntPtrDimDefault +dimension(len)
-        ! Statement: f_function_native*_cdesc_pointer
+        ! Statement: f_function_native*_cdesc_pointer_library
         subroutine c_return_int_ptr_dim_default_bufferify(SHT_rv_cdesc) &
                 bind(C, name="OWN_ReturnIntPtrDimDefault_bufferify")
             import :: OWN_SHROUD_array
@@ -534,7 +540,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  int *ReturnIntPtrPointer +deref(pointer)
-    ! Statement: f_function_native*_pointer
+    ! Statement: f_function_native*_pointer_library
     function return_int_ptr_pointer() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -548,7 +554,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  int *ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
-    ! Statement: f_function_native*_cdesc_pointer
+    ! Statement: f_function_native*_cdesc_pointer_library
     ! start return_int_ptr_dim_pointer
     function return_int_ptr_dim_pointer() &
             result(SHT_rv)
@@ -586,7 +592,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  int *ReturnIntPtrDimDefault +dimension(len)
-    ! Statement: f_function_native*_cdesc_pointer
+    ! Statement: f_function_native*_cdesc_pointer_library
     function return_int_ptr_dim_default() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, c_f_pointer
@@ -680,6 +686,23 @@ contains
         call c_get_class_new_bufferify(flag, SHT_rv%cxxmem)
         ! splicer end function.get_class_new
     end function get_class_new
+
+    ! Statement: f_operator_assignment_shadow
+    ! Class1 = Class1
+    subroutine class1_assign_Class1(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(class1), intent(INOUT) :: lhs
+        type(class1), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="OWN_Class1_assign_Class1")
+                import :: OWN_SHROUD_capsule_data
+                type(OWN_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(OWN_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine class1_assign_Class1
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

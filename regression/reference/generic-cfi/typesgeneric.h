@@ -12,12 +12,18 @@
 // splicer begin types.CXX_declarations
 // splicer end types.CXX_declarations
 
-// helper capsule_data_helper
+// helper capsule_data
 struct s_GEN_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
+    int cmemflags;  /* memory flags */
 };
 typedef struct s_GEN_SHROUD_capsule_data GEN_SHROUD_capsule_data;
+
+enum SwigMemFlags {
+    SWIG_MEM_OWN = 0x01,
+    SWIG_MEM_RVALUE = 0x02,
+};
 
 /* helper type_defines */
 /* Shroud type defines */
@@ -63,16 +69,18 @@ typedef struct s_GEN_SHROUD_capsule_data GEN_SHROUD_capsule_data;
 
 // C++ capsule GEN_StructAsClass
 struct s_GEN_StructAsClass {
-    StructAsClass *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    StructAsClass *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_GEN_StructAsClass GEN_StructAsClass;
 #endif
 
 // C capsule GEN_StructAsClass
 struct s_GEN_StructAsClass {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    void *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_GEN_StructAsClass GEN_StructAsClass;
 

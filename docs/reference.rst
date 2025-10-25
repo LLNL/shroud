@@ -313,6 +313,7 @@ class_ctor
   Indicates that this function is a constructor for a struct.
   The value is the name of the struct.
   Useful for *wrap_struct_as=class* when used with C.
+  Defaults attribute *+owner(caller)*.
 
 .. code-block:: yaml
 
@@ -353,6 +354,11 @@ debug_index
   debugging, then set to *true*.  **debug** must also be *true*.
   Defaults to *false*.
 
+default_owner
+  Used to default the *owner* attribute.
+  Used when *deref* is *pointer* or *raw*.
+  Defaults to *library*.
+
 doxygen
   If True, create doxygen comments.
 
@@ -382,6 +388,23 @@ F_CFI
   Use the C Fortran Interface provided by *Futher Interoperability with C*
   from Fortran 2018 (initially defined in TS29113 2012).
 
+F_assignment_api
+  Declare the API to be used when creating a function which overloads
+  the assignment operator.
+
+  basic
+      The assignment operator will not be overloaded.
+
+  swig
+      Use code derived from :program:`swig`.
+
+  rca
+      Reference counting architecture.
+      Reqires a Fortran compiler which fully supports ``FINAL``.
+
+   Added as a format field with a prefix of *option_*.
+   To be used to help select helpers.
+      
 F_create_bufferify_function
   Defaults to *true* which will create a C wrapper if necessary for the
   Fortran wrapper to call.
@@ -614,6 +637,8 @@ Option Templates
 Templates are set in options then expanded to assign to the format 
 dictionary to create names in the generated code.
 
+C_capsule_data_type_template
+
 C_enum_type_template
     Name of enumeration in C wrapper.
     ``{C_prefix}{C_name_scope}{enum_name}``
@@ -675,7 +700,7 @@ F_array_type_template
    
 F_capsule_data_type_template
     Name of the derived type which is the ``BIND(C)`` equivalent of the
-    struct used to implement a shadow class (**C_capsule_data_type**).
+    struct used to implement a shadow class (**c_capsule_data_type**).
     All classes use the same derived type.
     Defaults to ``{C_prefix}SHROUD_capsule_data``.
 
@@ -890,7 +915,7 @@ C_bufferify_suffix
   with explicit lengths.
   Defaults to *_bufferify*
 
-C_capsule_data_type
+c_capsule_data_type
     Name of struct used to share memory information with Fortran.
     Defaults to *SHROUD_capsule_data*.
 
@@ -938,6 +963,25 @@ C_name_api
     May be blank for namespaces to avoid adding the name to
     *C_name_scope*.
 
+C_name_assign
+    Used to create name of method that controls assignment of shadow types.
+    The assignment overload function created by Shroud is used to
+    help manage C++  memory. This format field is uses as *C_name_api* in the
+    option **C_name_template** while *function_suffix* is set the
+    the right-hand side *cxx_class*.
+
+    This creates names such as:
+
+.. code-block:: fortran
+
+    interface assignment (=)
+        module procedure object_assign_Object
+        module procedure object_shared_assign_Object_shared
+        module procedure object_shared_assign_Object
+        module procedure object_weak_assign_Object_weak
+        module procedure object_weak_assign_Object_shared
+    end interface
+                
 C_name_scope
     Underscore delimited name of namespace, class, enumeration.
     Used to 'flatten' nested C++ names into global C identifiers.
@@ -980,11 +1024,7 @@ F_array_type
     Default value from option *F_array_type_template* which 
     defaults to *{C_prefix}SHROUD_array*.
 
-F_C_prefix
-    Prefix added to name of generated Fortran interface for C routines.
-    Defaults to **c_**.
-
-F_capsule_data_type
+f_capsule_data_type
     Name of derived type used to share memory information with C or C++.
     Member of *F_array_type*.
     Default value from option *F_capsule_data_type_template* which 
@@ -1037,6 +1077,10 @@ F_name_api
     **F_abstract_interface_subprogram_template**, **F_derived_name_template**,
     **F_name_enum_template**, **F_name_typedef_template**.
 
+F_name_assign
+    Name of method that controls assignment of shadow types.
+    Used to help with reference counting.
+
 F_name_scope
     Underscore delimited name of namespace, class, enumeration.
     Used with creating names in Fortran.
@@ -1062,6 +1106,10 @@ F_this
 
 file_scope
    Used in filename creation to identify library, namespace, class.
+
+i_prefix
+    Prefix added to name of generated Fortran interface for C routines.
+    Defaults to **c_**.
 
 library
     The value of global **field** *library*.
@@ -1262,10 +1310,6 @@ F_derived_name
     Name of Fortran derived type for this class.
     Computed from option *F_derived_name_template*.
 
-F_name_assign
-    Name of method that controls assignment of shadow types.
-    Used to help with reference counting.
-
 F_name_associated
     Name of method to report if shadow type is associated.
     If the name is blank, no function is generated.
@@ -1417,7 +1461,7 @@ F_name_function
 
 F_name_generic
     The generic name for a function.
-    Set with option **class_ctor* or *F_create_generic*.
+    Set with option *class_ctor* or *F_create_generic*.
     Defaults to evaluation of option *F_name_generic_template*.
 
 F_name_impl

@@ -19,14 +19,16 @@ module testnames_capi_mod
     ! splicer begin namespace.CAPI.module_top
     ! splicer end namespace.CAPI.module_top
 
-    ! helper capsule_data_helper
+    ! helper capsule_data
     type, bind(C) :: TES_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: cmemflags = 0   ! memory flags
     end type TES_SHROUD_capsule_data
 
     type class1
-        type(TES_SHROUD_capsule_data) :: cxxmem
+        type(TES_SHROUD_capsule_data) :: cxxmem = &
+            TES_SHROUD_capsule_data()
         ! splicer begin namespace.CAPI.class.Class1.component_part
         ! splicer end namespace.CAPI.class.Class1.component_part
     contains
@@ -44,6 +46,10 @@ module testnames_capi_mod
 
     interface operator (.ne.)
         module procedure class1_ne
+    end interface
+
+    interface assignment (=)
+        module procedure class1_assign_Class1
     end interface
 
     interface
@@ -116,6 +122,23 @@ contains
         call c_worker1()
         ! splicer end namespace.CAPI.function.worker1
     end subroutine worker1
+
+    ! Statement: f_operator_assignment_shadow
+    ! CAPI::Class1 = CAPI::Class1
+    subroutine class1_assign_Class1(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(class1), intent(INOUT) :: lhs
+        type(class1), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="TES_capi_class1_assign_Class1")
+                import :: TES_SHROUD_capsule_data
+                type(TES_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(TES_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine class1_assign_Class1
 
     ! splicer begin namespace.CAPI.additional_functions
     ! splicer end namespace.CAPI.additional_functions

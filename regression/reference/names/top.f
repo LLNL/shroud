@@ -19,10 +19,11 @@ module top_module
     ! splicer begin module_top
     ! splicer end module_top
 
-    ! helper capsule_data_helper
+    ! helper capsule_data
     type, bind(C) :: TES_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: cmemflags = 0   ! memory flags
     end type TES_SHROUD_capsule_data
 
     !  enum Color
@@ -34,7 +35,8 @@ module top_module
     ! splicer end enum.Color
 
     type names2
-        type(TES_SHROUD_capsule_data) :: cxxmem
+        type(TES_SHROUD_capsule_data) :: cxxmem = &
+            TES_SHROUD_capsule_data()
         ! splicer begin class.Names2.component_part
         ! splicer end class.Names2.component_part
     contains
@@ -46,7 +48,8 @@ module top_module
     end type names2
 
     type two_ts_0
-        type(TES_SHROUD_capsule_data) :: cxxmem
+        type(TES_SHROUD_capsule_data) :: cxxmem = &
+            TES_SHROUD_capsule_data()
         ! splicer begin class.twoTs_0.component_part
         ! splicer end class.twoTs_0.component_part
     contains
@@ -58,7 +61,8 @@ module top_module
     end type two_ts_0
 
     type two_ts_instantiation4
-        type(TES_SHROUD_capsule_data) :: cxxmem
+        type(TES_SHROUD_capsule_data) :: cxxmem = &
+            TES_SHROUD_capsule_data()
         ! splicer begin class.twoTs_instantiation4.component_part
         ! splicer end class.twoTs_instantiation4.component_part
     contains
@@ -70,7 +74,8 @@ module top_module
     end type two_ts_instantiation4
 
     type Fstruct_as_class
-        type(TES_SHROUD_capsule_data) :: cxxmem
+        type(TES_SHROUD_capsule_data) :: cxxmem = &
+            TES_SHROUD_capsule_data()
         ! splicer begin class.Cstruct_as_class.component_part
         ! splicer end class.Cstruct_as_class.component_part
     contains
@@ -107,6 +112,14 @@ module top_module
         module procedure two_ts_instantiation4_ne
         module procedure cstruct_as_class_ne
         module procedure cstruct_as_subclass_ne
+    end interface
+
+    interface assignment (=)
+        module procedure names2_assign_Names2
+        module procedure two_ts_0_assign_twoTs_0
+        module procedure two_ts_instantiation4_assign_twoTs_instantiation4_instantiation4
+        module procedure cstruct_as_class_assign_Cstruct_as_class
+        module procedure cstruct_as_subclass_assign_Cstruct_as_subclass
     end interface
 
     abstract interface
@@ -801,6 +814,91 @@ contains
         call c_bindtest(arg1)
         ! splicer end function.bindtest
     end subroutine bindtest
+
+    ! Statement: f_operator_assignment_shadow
+    ! Names2 = Names2
+    subroutine names2_assign_Names2(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(names2), intent(INOUT) :: lhs
+        type(names2), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="TES_Names2_assign_Names2")
+                import :: TES_SHROUD_capsule_data
+                type(TES_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(TES_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine names2_assign_Names2
+
+    ! Statement: f_operator_assignment_shadow
+    ! twoTs_0 = twoTs_0
+    subroutine two_ts_0_assign_twoTs_0(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(two_ts_0), intent(INOUT) :: lhs
+        type(two_ts_0), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="TES_twoTs_0_assign_twoTs_0")
+                import :: TES_SHROUD_capsule_data
+                type(TES_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(TES_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine two_ts_0_assign_twoTs_0
+
+    ! Statement: f_operator_assignment_shadow
+    ! twoTs_instantiation4 = twoTs_instantiation4
+    subroutine two_ts_instantiation4_assign_twoTs_instantiation4_instantiation4(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(two_ts_instantiation4), intent(INOUT) :: lhs
+        type(two_ts_instantiation4), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="TES_twoTs_instantiation4_assign_twoTs_instantiation4_instantiation4")
+                import :: TES_SHROUD_capsule_data
+                type(TES_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(TES_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine two_ts_instantiation4_assign_twoTs_instantiation4_instantiation4
+
+    ! Statement: f_operator_assignment_shadow
+    ! Cstruct_as_class = Cstruct_as_class
+    subroutine cstruct_as_class_assign_Cstruct_as_class(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(Fstruct_as_class), intent(INOUT) :: lhs
+        type(Fstruct_as_class), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="TES_Cstruct_as_class_assign_Cstruct_as_class")
+                import :: TES_SHROUD_capsule_data
+                type(TES_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(TES_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine cstruct_as_class_assign_Cstruct_as_class
+
+    ! Statement: f_operator_assignment_shadow
+    ! Cstruct_as_subclass = Cstruct_as_subclass
+    subroutine cstruct_as_subclass_assign_Cstruct_as_subclass(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(Fstruct_as_subclass), intent(INOUT) :: lhs
+        type(Fstruct_as_subclass), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="TES_Cstruct_as_subclass_assign_Cstruct_as_subclass")
+                import :: TES_SHROUD_capsule_data
+                type(TES_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(TES_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine cstruct_as_subclass_assign_Cstruct_as_subclass
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

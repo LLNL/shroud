@@ -93,6 +93,7 @@ AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor(
         new example::nested::ExClass2(&SHC_name_cxx);
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 2;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     return SHC_rv;
     // splicer end namespace.example::nested.class.ExClass2.method.ctor
 }
@@ -103,7 +104,7 @@ AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor(
  */
 // ----------------------------------------
 // Function:  ExClass2
-// Statement: f_ctor_shadow_capsule
+// Statement: f_ctor_shadow_capsule_caller
 // ----------------------------------------
 // Argument:  const string *name +len_trim(trim_name)
 // Statement: f_in_string*_buf
@@ -117,6 +118,7 @@ void AA_example_nested_ExClass2_ctor_bufferify(char *name,
         new example::nested::ExClass2(&SHC_name_cxx);
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 2;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     // splicer end namespace.example::nested.class.ExClass2.method.ctor_bufferify
 }
 
@@ -132,8 +134,12 @@ void AA_example_nested_ExClass2_dtor(AA_example_nested_ExClass2 * self)
     example::nested::ExClass2 *SH_this =
         static_cast<example::nested::ExClass2 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass2.method.dtor
-    delete SH_this;
+    if (self->cmemflags & SWIG_MEM_OWN) {
+        delete SH_this;
+    }
     self->addr = nullptr;
+    self->idtor = 0;
+    self->cmemflags = 0;
     // splicer end namespace.example::nested.class.ExClass2.method.dtor
 }
 
@@ -305,13 +311,14 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass2_get_class1(
         SHC_in_cxx);
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     return SHC_rv;
     // splicer end namespace.example::nested.class.ExClass2.method.get_class1
 }
 
 // ----------------------------------------
 // Function:  ExClass1 *get_class1
-// Statement: f_function_shadow*_capsule
+// Statement: f_function_shadow*_capsule_library
 // ----------------------------------------
 // Argument:  const ExClass1 *in
 // Statement: f_in_shadow*
@@ -328,6 +335,7 @@ void AA_example_nested_ExClass2_get_class1_bufferify(
         SHC_in_cxx);
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     // splicer end namespace.example::nested.class.ExClass2.method.get_class1_bufferify
 }
 

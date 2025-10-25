@@ -68,14 +68,16 @@ module userlibrary_example_nested_mod
         integer(C_LONG) :: shape(7) = 0
     end type AA_SHROUD_array
 
-    ! helper capsule_data_helper
+    ! helper capsule_data
     type, bind(C) :: AA_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: cmemflags = 0   ! memory flags
     end type AA_SHROUD_capsule_data
 
     type ex_class1
-        type(AA_SHROUD_capsule_data) :: cxxmem
+        type(AA_SHROUD_capsule_data) :: cxxmem = &
+            AA_SHROUD_capsule_data()
         ! splicer begin namespace.example::nested.class.ExClass1.component_part
           component part 1a
           component part 1b
@@ -97,7 +99,8 @@ module userlibrary_example_nested_mod
     end type ex_class1
 
     type ex_class2
-        type(AA_SHROUD_capsule_data) :: cxxmem
+        type(AA_SHROUD_capsule_data) :: cxxmem = &
+            AA_SHROUD_capsule_data()
         ! splicer begin namespace.example::nested.class.ExClass2.component_part
         ! splicer end namespace.example::nested.class.ExClass2.component_part
     contains
@@ -133,6 +136,12 @@ module userlibrary_example_nested_mod
         module procedure ex_class2_ne
     end interface
 
+    interface assignment (=)
+        module procedure ex_class1_assign_ExClass1
+        module procedure ex_class2_assign_ExClass2
+        module procedure ex_class2_ex_class2_nested_assign_ExClass2Nested
+    end interface
+
     abstract interface
 
         ! ----------------------------------------
@@ -162,7 +171,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  double *get
-        ! Statement: f_function_native*_pointer
+        ! Statement: f_function_native*_pointer_library
         function func_ptr2_get() &
             result(SHT_rv) bind(C)
             use iso_c_binding, only : C_PTR
@@ -258,7 +267,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass1
-        ! Statement: f_ctor_shadow_capsule
+        ! Statement: f_ctor_shadow_capsule_caller
         subroutine c_ex_class1_ctor_0_bufferify(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_ctor_0_bufferify")
             import :: AA_SHROUD_capsule_data
@@ -285,7 +294,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass1
-        ! Statement: f_ctor_shadow_capsule
+        ! Statement: f_ctor_shadow_capsule_caller
         ! ----------------------------------------
         ! Argument:  const string *name
         ! Statement: f_in_string*_buf
@@ -433,7 +442,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass2
-        ! Statement: f_ctor_shadow_capsule
+        ! Statement: f_ctor_shadow_capsule_caller
         ! ----------------------------------------
         ! Argument:  const string *name +len_trim(trim_name)
         ! Statement: f_in_string*_buf
@@ -596,7 +605,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass1 *get_class1
-        ! Statement: f_function_shadow*_capsule
+        ! Statement: f_function_shadow*_capsule_library
         ! ----------------------------------------
         ! Argument:  const ExClass1 *in
         ! Statement: f_in_shadow*
@@ -1177,7 +1186,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  ExClass1
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     function ex_class1_ctor_0() &
             result(SHT_rv)
         type(ex_class1) :: SHT_rv
@@ -1188,7 +1197,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  ExClass1
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     ! ----------------------------------------
     ! Argument:  const string *name
     ! Statement: f_in_string*_buf
@@ -1348,7 +1357,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  ExClass2
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     ! ----------------------------------------
     ! Argument:  const string *name +len_trim(trim_name)
     ! Statement: f_in_string*_buf
@@ -1475,7 +1484,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  ExClass1 *get_class1
-    ! Statement: f_function_shadow*_capsule
+    ! Statement: f_function_shadow*_capsule_library
     ! ----------------------------------------
     ! Argument:  const ExClass1 *in
     ! Statement: f_in_shadow*
@@ -2013,6 +2022,57 @@ contains
         ! splicer end namespace.example::nested.function.pass_voidstartstar
     end subroutine pass_voidstartstar
 #endif
+
+    ! Statement: f_operator_assignment_shadow
+    ! example::nested::ExClass1 = example::nested::ExClass1
+    subroutine ex_class1_assign_ExClass1(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(ex_class1), intent(INOUT) :: lhs
+        type(ex_class1), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="AA_example_nested_ExClass1_assign_ExClass1")
+                import :: AA_SHROUD_capsule_data
+                type(AA_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(AA_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine ex_class1_assign_ExClass1
+
+    ! Statement: f_operator_assignment_shadow
+    ! example::nested::ExClass2 = example::nested::ExClass2
+    subroutine ex_class2_assign_ExClass2(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(ex_class2), intent(INOUT) :: lhs
+        type(ex_class2), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="AA_example_nested_ExClass2_assign_ExClass2")
+                import :: AA_SHROUD_capsule_data
+                type(AA_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(AA_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine ex_class2_assign_ExClass2
+
+    ! Statement: f_operator_assignment_shadow
+    ! example::nested::ExClass2::ExClass2Nested = example::nested::ExClass2::ExClass2Nested
+    subroutine ex_class2_ex_class2_nested_assign_ExClass2Nested(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(ex_class2_nested), intent(INOUT) :: lhs
+        type(ex_class2_nested), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="AA_example_nested_ExClass2_ExClass2Nested_assign_ExClass2Nested")
+                import :: AA_SHROUD_capsule_data
+                type(AA_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(AA_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine ex_class2_ex_class2_nested_assign_ExClass2Nested
 
     ! splicer begin namespace.example::nested.additional_functions
     ! splicer end namespace.example::nested.additional_functions

@@ -12,14 +12,16 @@ module library_outer2_mod
     use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR
     implicit none
 
-    ! helper capsule_data_helper
+    ! helper capsule_data
     type, bind(C) :: LIB_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: cmemflags = 0   ! memory flags
     end type LIB_SHROUD_capsule_data
 
     type class0
-        type(LIB_SHROUD_capsule_data) :: cxxmem
+        type(LIB_SHROUD_capsule_data) :: cxxmem = &
+            LIB_SHROUD_capsule_data()
     contains
         procedure :: method => class0_method
         procedure :: get_instance => class0_get_instance
@@ -33,6 +35,10 @@ module library_outer2_mod
 
     interface operator (.ne.)
         module procedure class0_ne
+    end interface
+
+    interface assignment (=)
+        module procedure class0_assign_class0
     end interface
 
     interface
@@ -98,6 +104,23 @@ contains
         call c_outer_func()
     end subroutine outer_func
 #endif
+
+    ! Statement: f_operator_assignment_shadow
+    ! outer2::class0 = outer2::class0
+    subroutine class0_assign_class0(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(class0), intent(INOUT) :: lhs
+        type(class0), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="LIB_outer2_class0_assign_class0")
+                import :: LIB_SHROUD_capsule_data
+                type(LIB_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(LIB_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine class0_assign_class0
 
     function class0_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated

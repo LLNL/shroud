@@ -48,12 +48,15 @@ class FillFormat(object):
         self.newlibrary = newlibrary
         self.language = newlibrary.language
         self.cursor = error.get_cursor()
+        self.capsule_format = newlibrary.capsule_format
 
     def fmt_library(self):
         self.fmt_namespace(self.newlibrary.wrap_namespace)
 
     def fmt_namespace(self, node):
         cursor = self.cursor
+
+        fmt_assignment(self.newlibrary, node)
         
         cursor.push_phase("FillFormat typedef")
         for typ in node.typedefs:
@@ -109,6 +112,9 @@ class FillFormat(object):
                 fmt_class.F_derived_member_base = "===>F_derived_member_base<==="
             else:
                 fmt_class.F_derived_member_base = baseclass.typemap.f_derived_type
+        if node.shared_baseclass:
+            fmt_class.baseclass = statements.BaseClassFormat(
+                node.shared_baseclass.ast.class_specifier)
         self.cursor.pop_node(node)
             
     def fmt_typedefs(self, node):
@@ -305,7 +311,7 @@ class FillFormat(object):
         self.name_temp_vars(fmt_result.C_result, bind, "c")
         self.apply_helpers_from_stmts(node, bind)
         statements.apply_fmtdict_from_stmts(bind)
-        self.find_idtor(node.ast, result_typemap, bind)
+        self.capsule_format.find_idtor(result_typemap, bind)
         self.set_fmt_fields_c(wlang, cls, node, ast, result_typemap, bind, True)
 
     def fill_c_arg(self, wlang, cls, node, arg, bind, pre_call):
@@ -352,7 +358,7 @@ class FillFormat(object):
 
         compute_cxx_deref(arg, fmt_arg)
         self.set_cxx_nonconst_ptr(arg, fmt_arg)
-        self.find_idtor(arg, arg_typemap, bind)
+        self.capsule_format.find_idtor(arg_typemap, bind)
 
     def fill_interface_result(self, cls, node, bind):
         ast = node.ast
@@ -707,8 +713,57 @@ class FillFormat(object):
         """
         stmt = bind.stmt
         fmt = bind.fmtdict
-        node_helpers = node.helpers.setdefault("fc", {})
+        node_helpers = node.fcn_helpers.setdefault("fc", {})
         add_fc_helper(node_helpers, stmt.helper, fmt)
+
+def fmt_assignment(library, node):
+    """
+    Create fmtdict for assignment overloads.
+
+    node - LibraryNode, NamespaceNode
+    """
+    for assign in node.assign_operators:
+        lhs = assign.lhs
+        rhs = assign.rhs
+        options = assign.lhs.options
+        fmt_lhs = assign.lhs.fmtdict
+        fmt_rhs = assign.rhs.fmtdict
+
+        bind = assign.bind = statements.BindArg()
+        bind.create_meta()
+        fmt = bind.set_bind_fmtdict(fmt_lhs)
+        iface_import = {}
+
+        fmt.typemap_lhs = lhs.typemap
+        fmt.typemap_rhs = rhs.typemap
+        fmt.cxx_type_lhs = lhs.typemap.cxx_type
+        fmt.cxx_type_rhs = rhs.typemap.cxx_type
+        fmt.c_type_lhs = lhs.typemap.c_type
+        fmt.c_type_rhs = rhs.typemap.c_type
+        fmt.f_derived_type_lhs = lhs.typemap.f_derived_type
+        fmt.f_derived_type_rhs = rhs.typemap.f_derived_type
+        fmt.f_capsule_data_type_lhs = lhs.typemap.f_capsule_data_type
+        fmt.f_capsule_data_type_rhs = rhs.typemap.f_capsule_data_type
+        iface_import[fmt.f_capsule_data_type_lhs] = True
+        iface_import[fmt.f_capsule_data_type_rhs] = True
+
+        fmt.function_suffix = "_" + fmt_rhs.cxx_class
+        fmt.F_name_api = fmt_lhs.F_name_assign
+        fmt.F_name_assign_api = wformat(options.F_name_impl_template, fmt)
+        fmt.f_interface_import = ",\t ".join(iface_import.keys())
+
+        fmt.C_name_api = fmt_lhs.C_name_assign
+        fmt.C_name_assign_api = wformat(options.C_name_template, fmt)
+
+        assignment_api = options.F_assignment_api
+        if assignment_api == "swig":
+            assignment_api = None  # This is the default
+        f_asgn_stmt = statements.lookup_fc_stmts([
+            "f", "operator", "assignment", "shadow",
+            assignment_api, assign.specialization])
+        bind.stmt = f_asgn_stmt
+        library.capsule_format.find_idtor(lhs.typemap, bind)
+        statements.apply_fmtdict_from_stmts(bind)
         
 def add_fc_helper(node_helpers, helpers, fmt):
     """Add a list of Fortran and C helpers.
@@ -924,6 +979,9 @@ def set_f_function_format(node, bind, subprogram):
         fmt.f_deref_attr = ", allocatable"
     elif meta["deref"] == "pointer":
         fmt.f_deref_attr = ", pointer"
+    if meta["owner"] == "caller":
+        fmt.c_cmemflags = "SWIG_MEM_OWN"
+        fmt.c_cmemflags_or = "SWIG_MEM_OWN | "
     if meta["funcarg"]:
         name = meta["funcarg"]
         fmt.f_var = name
@@ -963,6 +1021,9 @@ def set_f_arg_format(node, arg, bind, wlang):
         fmt.f_deref_attr = ", allocatable"
     elif meta["deref"] == "pointer":
         fmt.f_deref_attr = ", pointer"
+    if meta["owner"] == "caller":
+        fmt.c_cmemflags = "SWIG_MEM_OWN"
+        fmt.c_cmemflags_or = "SWIG_MEM_OWN | "
 
 def set_f_var_format(var, bind):
     """Set format fields for variable (in a struct).

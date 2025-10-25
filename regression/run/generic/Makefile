@@ -18,6 +18,7 @@ VPATH = \
 C_OBJS = \
     generic.o \
     helper.o \
+    utilgeneric.o \
     wrapgeneric.o
 F_OBJS = \
     main.o \

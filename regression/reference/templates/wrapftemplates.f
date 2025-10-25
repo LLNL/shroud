@@ -19,14 +19,16 @@ module templates_mod
     ! splicer begin module_top
     ! splicer end module_top
 
-    ! helper capsule_data_helper
+    ! helper capsule_data
     type, bind(C) :: TEM_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: cmemflags = 0   ! memory flags
     end type TEM_SHROUD_capsule_data
 
     type worker
-        type(TEM_SHROUD_capsule_data) :: cxxmem
+        type(TEM_SHROUD_capsule_data) :: cxxmem = &
+            TEM_SHROUD_capsule_data()
         ! splicer begin class.Worker.component_part
         ! splicer end class.Worker.component_part
     contains
@@ -38,7 +40,8 @@ module templates_mod
     end type worker
 
     type user_int
-        type(TEM_SHROUD_capsule_data) :: cxxmem
+        type(TEM_SHROUD_capsule_data) :: cxxmem = &
+            TEM_SHROUD_capsule_data()
         ! splicer begin class.user_int.component_part
         ! splicer end class.user_int.component_part
     contains
@@ -51,7 +54,8 @@ module templates_mod
     end type user_int
 
     type struct_as_class_int
-        type(TEM_SHROUD_capsule_data) :: cxxmem
+        type(TEM_SHROUD_capsule_data) :: cxxmem = &
+            TEM_SHROUD_capsule_data()
         ! splicer begin class.structAsClass_int.component_part
         ! splicer end class.structAsClass_int.component_part
     contains
@@ -67,7 +71,8 @@ module templates_mod
     end type struct_as_class_int
 
     type struct_as_class_double
-        type(TEM_SHROUD_capsule_data) :: cxxmem
+        type(TEM_SHROUD_capsule_data) :: cxxmem = &
+            TEM_SHROUD_capsule_data()
         ! splicer begin class.structAsClass_double.component_part
         ! splicer end class.structAsClass_double.component_part
     contains
@@ -94,6 +99,13 @@ module templates_mod
         module procedure user_int_ne
         module procedure struct_as_class_int_ne
         module procedure struct_as_class_double_ne
+    end interface
+
+    interface assignment (=)
+        module procedure worker_assign_Worker
+        module procedure user_int_assign_user_int
+        module procedure struct_as_class_int_assign_structAsClass_int
+        module procedure struct_as_class_double_assign_structAsClass_double
     end interface
 
     interface
@@ -133,7 +145,7 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  structAsClass
-        ! Statement: f_ctor_shadow_capsule
+        ! Statement: f_ctor_shadow_capsule_caller
         subroutine c_struct_as_class_int_ctor_bufferify(SHT_rv) &
                 bind(C, name="TEM_structAsClass_int_ctor_bufferify")
             import :: TEM_SHROUD_capsule_data
@@ -214,7 +226,7 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  structAsClass
-        ! Statement: f_ctor_shadow_capsule
+        ! Statement: f_ctor_shadow_capsule_caller
         subroutine c_struct_as_class_double_ctor_bufferify(SHT_rv) &
                 bind(C, name="TEM_structAsClass_double_ctor_bufferify")
             import :: TEM_SHROUD_capsule_data
@@ -295,7 +307,7 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  user<int> returnUserType
-        ! Statement: f_function_shadow<native>_capsule
+        ! Statement: f_function_shadow<native>_capsule_caller
         subroutine c_return_user_type_bufferify(SHT_rv) &
                 bind(C, name="TEM_returnUserType_bufferify")
             import :: TEM_SHROUD_capsule_data
@@ -456,7 +468,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  structAsClass
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     function struct_as_class_int_ctor() &
             result(SHT_rv)
         type(struct_as_class_int) :: SHT_rv
@@ -551,7 +563,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  structAsClass
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     function struct_as_class_double_ctor() &
             result(SHT_rv)
         type(struct_as_class_double) :: SHT_rv
@@ -646,7 +658,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  user<int> returnUserType
-    ! Statement: f_function_shadow<native>_capsule
+    ! Statement: f_function_shadow<native>_capsule_caller
     function return_user_type() &
             result(SHT_rv)
         type(user_int) :: SHT_rv
@@ -734,6 +746,74 @@ contains
         SHT_rv = c_use_impl_worker_internal_ImplWorker2()
         ! splicer end function.use_impl_worker_internal_ImplWorker2
     end function use_impl_worker_internal_ImplWorker2
+
+    ! Statement: f_operator_assignment_shadow
+    ! Worker = Worker
+    subroutine worker_assign_Worker(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(worker), intent(INOUT) :: lhs
+        type(worker), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="TEM_Worker_assign_Worker")
+                import :: TEM_SHROUD_capsule_data
+                type(TEM_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(TEM_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine worker_assign_Worker
+
+    ! Statement: f_operator_assignment_shadow
+    ! user_int = user_int
+    subroutine user_int_assign_user_int(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(user_int), intent(INOUT) :: lhs
+        type(user_int), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="TEM_user_int_assign_user_int")
+                import :: TEM_SHROUD_capsule_data
+                type(TEM_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(TEM_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine user_int_assign_user_int
+
+    ! Statement: f_operator_assignment_shadow
+    ! structAsClass_int = structAsClass_int
+    subroutine struct_as_class_int_assign_structAsClass_int(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(struct_as_class_int), intent(INOUT) :: lhs
+        type(struct_as_class_int), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="TEM_structAsClass_int_assign_structAsClass_int")
+                import :: TEM_SHROUD_capsule_data
+                type(TEM_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(TEM_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine struct_as_class_int_assign_structAsClass_int
+
+    ! Statement: f_operator_assignment_shadow
+    ! structAsClass_double = structAsClass_double
+    subroutine struct_as_class_double_assign_structAsClass_double(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(struct_as_class_double), intent(INOUT) :: lhs
+        type(struct_as_class_double), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="TEM_structAsClass_double_assign_structAsClass_double")
+                import :: TEM_SHROUD_capsule_data
+                type(TEM_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(TEM_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine struct_as_class_double_assign_structAsClass_double
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

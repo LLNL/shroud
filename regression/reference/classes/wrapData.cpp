@@ -58,6 +58,7 @@ CLA_Data * CLA_Data_ctor(CLA_Data *SHC_rv)
     classes::Data *SHCXX_rv = new classes::Data();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 4;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     return SHC_rv;
     // splicer end class.Data.method.ctor
 }
@@ -65,7 +66,7 @@ CLA_Data * CLA_Data_ctor(CLA_Data *SHC_rv)
 
 // ----------------------------------------
 // Function:  Data
-// Statement: f_ctor_shadow_capsule
+// Statement: f_ctor_shadow_capsule_caller
 // start CLA_Data_ctor_bufferify
 void CLA_Data_ctor_bufferify(CLA_Data *SHC_rv)
 {
@@ -73,6 +74,7 @@ void CLA_Data_ctor_bufferify(CLA_Data *SHC_rv)
     classes::Data *SHCXX_rv = new classes::Data();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 4;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     // splicer end class.Data.method.ctor_bufferify
 }
 // end CLA_Data_ctor_bufferify
@@ -85,8 +87,12 @@ void CLA_Data_dtor(CLA_Data * self)
 {
     classes::Data *SH_this = static_cast<classes::Data *>(self->addr);
     // splicer begin class.Data.method.dtor
-    delete SH_this;
+    if (self->cmemflags & SWIG_MEM_OWN) {
+        delete SH_this;
+    }
     self->addr = nullptr;
+    self->idtor = 0;
+    self->cmemflags = 0;
     // splicer end class.Data.method.dtor
 }
 // end CLA_Data_dtor

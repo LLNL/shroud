@@ -74,26 +74,34 @@ struct s_ERR_SHROUD_array {
 };
 typedef struct s_ERR_SHROUD_array ERR_SHROUD_array;
 
-// helper capsule_data_helper
+// helper capsule_data
 struct s_ERR_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
+    int cmemflags;  /* memory flags */
 };
 typedef struct s_ERR_SHROUD_capsule_data ERR_SHROUD_capsule_data;
+
+enum SwigMemFlags {
+    SWIG_MEM_OWN = 0x01,
+    SWIG_MEM_RVALUE = 0x02,
+};
 #if 0
 
 // C++ capsule ERR_Cstruct_as_subclass
 struct s_ERR_Cstruct_as_subclass {
-    Cstruct_as_subclass *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    Cstruct_as_subclass *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_ERR_Cstruct_as_subclass ERR_Cstruct_as_subclass;
 #endif
 
 // C capsule ERR_Cstruct_as_subclass
 struct s_ERR_Cstruct_as_subclass {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    void *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_ERR_Cstruct_as_subclass ERR_Cstruct_as_subclass;
 

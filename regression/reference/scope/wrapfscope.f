@@ -67,10 +67,11 @@ module scope_mod
         integer(C_LONG) :: shape(7) = 0
     end type SCO_SHROUD_array
 
-    ! helper capsule_data_helper
+    ! helper capsule_data
     type, bind(C) :: SCO_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: cmemflags = 0   ! memory flags
     end type SCO_SHROUD_capsule_data
 
     !  enum Class1::Color
@@ -119,7 +120,8 @@ module scope_mod
     end type data_pointer
 
     type class1
-        type(SCO_SHROUD_capsule_data) :: cxxmem
+        type(SCO_SHROUD_capsule_data) :: cxxmem = &
+            SCO_SHROUD_capsule_data()
         ! splicer begin class.Class1.component_part
         ! splicer end class.Class1.component_part
     contains
@@ -131,7 +133,8 @@ module scope_mod
     end type class1
 
     type class2
-        type(SCO_SHROUD_capsule_data) :: cxxmem
+        type(SCO_SHROUD_capsule_data) :: cxxmem = &
+            SCO_SHROUD_capsule_data()
         ! splicer begin class.Class2.component_part
         ! splicer end class.Class2.component_part
     contains
@@ -150,6 +153,11 @@ module scope_mod
     interface operator (.ne.)
         module procedure class1_ne
         module procedure class2_ne
+    end interface
+
+    interface assignment (=)
+        module procedure class1_assign_Class1
+        module procedure class2_assign_Class2
     end interface
 
     interface
@@ -290,6 +298,40 @@ contains
         ! splicer end function.data_pointer_set_items
     end subroutine data_pointer_set_items
 #endif
+
+    ! Statement: f_operator_assignment_shadow
+    ! Class1 = Class1
+    subroutine class1_assign_Class1(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(class1), intent(INOUT) :: lhs
+        type(class1), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="SCO_Class1_assign_Class1")
+                import :: SCO_SHROUD_capsule_data
+                type(SCO_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(SCO_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine class1_assign_Class1
+
+    ! Statement: f_operator_assignment_shadow
+    ! Class2 = Class2
+    subroutine class2_assign_Class2(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(class2), intent(INOUT) :: lhs
+        type(class2), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="SCO_Class2_assign_Class2")
+                import :: SCO_SHROUD_capsule_data
+                type(SCO_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(SCO_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine class2_assign_Class2
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

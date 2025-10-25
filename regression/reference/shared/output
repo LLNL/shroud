@@ -5,6 +5,8 @@ Wrote wrapObject_shared.h
 Wrote wrapObject_shared.cpp
 Wrote wrapObject_weak.h
 Wrote wrapObject_weak.cpp
+Wrote wrapShared.h
+Wrote wrapShared.cpp
 Wrote wrapfshared.f
 Wrote utilShared.cpp
 Wrote typesShared.h

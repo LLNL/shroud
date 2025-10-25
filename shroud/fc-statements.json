@@ -603,40 +603,6 @@
         ]
     },
     {
-        "alias": [
-            "f_subroutine_assignment_weakptr",
-            "c_subroutine_assignment_weakptr"
-        ],
-        "notes": [
-            "std::weak_ptr has no wrapped constructor.",
-            "It must be made from a std::shared_ptr with an assignment.",
-            "arglist[1] is the 'from' argument."
-        ],
-        "usage": [
-            "void func() +custom(weakptr)+operator(assignment)"
-        ],
-        "f_call": [
-            "call {f_call_function}({F_arg_c_call})"
-        ],
-        "c_call": [
-            "if (SH_this == nullptr) {{+",
-            "SH_this = new {cxx_type}(*SHC_from_cxx);",
-            "self->addr = SH_this;",
-            "self->idtor = {idtor};",
-            "-}} else {{+",
-            "*{CXX_this} = *{c_arglist[1].c_local_cxx};",
-            "-}}"
-        ],
-        "destructor_name": "assignment-{cxx_type}",
-        "destructor_header": [
-            "<memory>"
-        ],
-        "destructor": [
-            "auto cxx_ptr =\t reinterpret_cast<{cxx_type}*>(ptr);",
-            "delete cxx_ptr;"
-        ]
-    },
-    {
         "name":"#### memory mixin ##########################################"
     },
     {
@@ -718,19 +684,19 @@
             "{i_var_capsule}"
         ],
         "i_dummy_decl": [
-            "type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}"
+            "type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}"
         ],
         "i_import": [
-            "{F_capsule_data_type}"
+            "{f_capsule_data_type}"
         ],
         "c_prototype": [
-            "{C_capsule_data_type} *{c_var_capsule}"
+            "{c_capsule_data_type} *{c_var_capsule}"
         ],
         "c_temps": [
             "capsule"
         ],
         "helper": [
-            "capsule_data_helper"
+            "capsule_data"
         ]
     },
     {
@@ -746,7 +712,7 @@
             "c_mixin_capsule_pass"
         ],
         "f_local_decl": [
-            "type({F_capsule_data_type}) :: {f_var_capsule}"
+            "type({f_capsule_data_type}) :: {f_var_capsule}"
         ],
         "f_arg_call": [
             "{f_var_capsule}"
@@ -828,7 +794,8 @@
         ],
         "c_post_call": [
             "{c_var}->addr  = {cxx_nonconst_ptr};",
-            "{c_var}->idtor = {idtor};"
+            "{c_var}->idtor = {idtor};",
+            "{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;"
         ]
     },
     {
@@ -1646,10 +1613,10 @@
     },
     {
         "alias": [
-            "f_out_native**_raw",
+            "f_out_native**_raw_library",
             "c_out_native**_raw",
             "c_out_native**",
-            "f_out_native***_raw",
+            "f_out_native***_raw_library",
             "c_out_native***"
         ],
         "notes": [
@@ -1688,7 +1655,7 @@
     {
         "alias": [
             "f_out_native*&_cdesc",
-            "f_out_native*&_cdesc_pointer"
+            "f_out_native*&_cdesc_pointer_library"
         ],
         "mixin": [
             "f_mixin_cdesc_pass_to_cwrapper",
@@ -1722,7 +1689,7 @@
         ]
     },
     {
-        "name": "f_out_native**_cdesc_pointer",
+        "name": "f_out_native**_cdesc_pointer_library",
         "notes": [
             "Argument returns a pointer to an array which is associated with a",
             "Fortran pointer."
@@ -1827,7 +1794,8 @@
             "f_function_native&",
             "f_function_native*_pointer",
             "f_function_native*_pointer_caller",
-            "f_function_native&_pointer"
+            "f_function_native*_pointer_library",
+            "f_function_native&_pointer_library"
         ],
         "notes": [
             "Pointer to scalar.",
@@ -1843,8 +1811,8 @@
     },
     {
         "alias": [
-            "f_function_native*_cdesc_pointer",
-            "f_function_struct*_cdesc_pointer"
+            "f_function_native*_cdesc_pointer_library",
+            "f_function_struct*_cdesc_pointer_library"
         ],
         "mixin": [
             "f_mixin_call-cwrapper-as-subroutine",
@@ -1875,12 +1843,15 @@
     },
     {
         "alias": [
-            "f_function_native*_raw",
+            "f_function_native*_raw_library",
             "c_function_native*",
             "c_function_native&",
             "c_function_native*_caller",
+            "c_function_native*_library",
             "c_function_native**",
-            "f_function_native**"
+            "c_function_native**_library",
+            "f_function_native**",
+            "f_function_native**_library"
         ],
         "usage": [
             "int **func()"
@@ -2023,7 +1994,9 @@
     {
         "alias": [
             "f_function_void*",
-            "c_function_void*"
+            "f_function_void*_library",
+            "c_function_void*",
+            "c_function_void*_library"
         ],
         "notes": [
             "XXX - f entries are the same as the i entries, share?"
@@ -2312,12 +2285,16 @@
         ],
         "lang_c": {
             "c_post_call": [
-                "free({c_local_cxx});"
+                "if ({c_local_cxx} != NULL) {{+",
+                "{stdlib}free({c_local_cxx});",
+                "-}}"
             ]
         },
         "lang_cxx": {
             "c_post_call": [
-                "delete[] {c_local_cxx};"
+                "if ({c_local_cxx} != {nullptr}) {{+",
+                "delete[] {c_local_cxx};",
+                "-}}"
             ]
         }
     },
@@ -2591,7 +2568,7 @@
             "f_function_char*_allocatable",
             "f_function_char*_copy",
             "f_function_char*_pointer",
-            "f_function_char*_raw"
+            "f_function_char*_raw_library"
         ],
         "notes": [
             "Return a type(C_PTR) from Fortran."
@@ -2685,6 +2662,27 @@
     },
     {
         "alias": [
+            "f_function_char*_buf_copy_caller",
+            "c_function_char*_buf_copy_caller"
+        ],
+        "notes": [
+            "char *getname() +len(30) +owner(caller)",
+            "Copy result into caller's buffer.",
+            "Then release memory allocated by library."
+        ],
+        "mixin": [
+            "f_mixin_call-cwrapper-as-subroutine",
+            "f_mixin_declare-local-variable",
+            "f_mixin_pass_character_buf",
+            "c_mixin_in_character_buf",
+            "c_mixin_arg-call-cvar",
+            "c_mixin_function-assign-to-local",
+            "c_mixin_char-copyout",
+            "c_mixin_char-free"
+        ]
+    },
+    {
+        "alias": [
             "f_function_char*_buf_funcarg_copy"
         ],
         "notes": [
@@ -2760,8 +2758,8 @@
         ]
     },
     {
-        "sphinx-start-after": "f_out_char**_cdesc_pointer",
-        "name": "f_out_char**_cdesc_pointer",
+        "sphinx-start-after": "f_out_char**_cdesc_pointer_library",
+        "name": "f_out_char**_cdesc_pointer_library",
         "usage": [
             "char **arg +intent(out)+deref(pointer)"
         ],
@@ -2776,7 +2774,7 @@
             "c_mixin_local-cvar-ptr",
             "c_mixin_arg-call-cvar-address"
         ],
-        "sphinx-end-before": "f_out_char**_cdesc_pointer"
+        "sphinx-end-before": "f_out_char**_cdesc_pointer_library"
     },
     {
         "alias": [
@@ -2794,7 +2792,7 @@
     {
         "alias": [
             "f_function_char_cdesc_pointer",
-            "f_function_char*_cdesc_pointer"
+            "f_function_char*_cdesc_pointer_library"
         ],
         "mixin": [
             "f_mixin_call-cwrapper-as-subroutine",
@@ -2824,7 +2822,7 @@
     {
         "alias": [
             "f_function_char_cdesc_funcarg_pointer",
-            "f_function_char*_cdesc_funcarg_pointer"
+            "f_function_char*_cdesc_funcarg_pointer_library"
         ],
         "usage": [
             "char *func(void) +deref(pointer)+funcarg"
@@ -2841,7 +2839,7 @@
     {
         "alias": [
             "#f_function_char_funcarg_raw",
-            "f_function_char*_funcarg_raw"
+            "f_function_char*_funcarg_raw_library"
         ],
         "usage": [
             "char *func(void) +deref(raw)+funcarg"
@@ -3258,7 +3256,8 @@
             "c_function_string*_caller",
             "c_function_string*_library",
             "c_function_string*_copy",
-            "c_function_string&_copy"
+            "c_function_string&_copy",
+            "c_function_string&_library"
         ],
         "notes": [
             "Fortran calling a C function without",
@@ -3441,10 +3440,13 @@
     },
     {
         "alias": [
-            "f_function_string_cdesc_pointer"
+            "f_function_string_cdesc_pointer_caller"
+        ],
+        "notes": [
+            "Return-by-value will allocate a new std::string"
         ],
         "usage": [
-            "std::string func() +deref(pointer)+owner(caller)"
+            "std::string func() +deref(pointer)"
         ],
         "mixin": [
             "f_mixin_add_capsule_arg_to_fwrapper",
@@ -3457,7 +3459,10 @@
         ]
     },
     {
-        "name": "f_function_string_raw",
+        "name": "f_function_string_raw_caller",
+        "notes": [
+            "Return-by-value will allocate a new std::string"
+        ],
         "usage": [
             "std::string func() +deref(raw)"
         ],
@@ -4182,7 +4187,7 @@
             "c_function_shadow&_capsule_library"
         ],
         "notes": [
-            "Return a C_capsule_data_type."
+            "Return a c_capsule_data_type."
         ],
         "mixin": [
             "f_mixin_call-cwrapper-as-subroutine",
@@ -4237,7 +4242,7 @@
             "c_function_shadow&_capptr_library"
         ],
         "notes": [
-            "Return a C_capsule_data_type."
+            "Return a c_capsule_data_type."
         ],
         "mixin": [
             "c_mixin_function_shadow_capptr",
@@ -4259,8 +4264,8 @@
     },
     {
         "alias": [
-            "f_function_shadow_capsule",
-            "f_function_shadow<native>_capsule"
+            "f_function_shadow_capsule_caller",
+            "f_function_shadow<native>_capsule_caller"
         ],
         "notes": [
             "Return an instance by value.",
@@ -4299,6 +4304,7 @@
     {
         "alias": [
             "f_ctor_shadow_capsule",
+            "f_ctor_shadow_capsule_caller",
             "c_ctor_shadow_capsule"
         ],
         "mixin": [
@@ -4311,7 +4317,8 @@
         "c_call": [
             "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});",
             "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});",
-            "{c_var}->idtor = {idtor};"
+            "{c_var}->idtor = {idtor};",
+            "{c_var}->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;"
         ],
         "owner": "caller"
     },
@@ -4327,9 +4334,359 @@
         "c_call": [
             "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});",
             "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});",
-            "{c_var}->idtor = {idtor};"
+            "{c_var}->idtor = {idtor};",
+            "{c_var}->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;"
         ],
         "owner": "caller"
+    },
+    {
+        "name": "c_mixin_operator_assignment_basic",
+        "notes": [
+            "std::weak_ptr has no wrapped constructor.",
+            "It must be made from a std::shared_ptr with an assignment."
+        ],
+        "c_body": [
+            "void {C_name_assign_api}({c_type_lhs} *lhs_capsule,\t {c_type_rhs} *rhs_capsule)",
+            "{{+",
+            "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs} *>(lhs_capsule->addr);",
+            "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs} *>(rhs_capsule->addr);",
+            "if (lhs == nullptr) {{+",
+            "lhs = new {cxx_type}(*rhs);",
+            "lhs_capsule->addr = lhs;",
+            "lhs_capsule->idtor = {idtor};",
+            "-}} else {{+",
+            "*lhs = *rhs;",
+            "-}}",
+            "-}}"
+        ],
+        "destructor_name": "assignment-{cxx_type}",
+        "destructor_header": [
+            "<memory>"
+        ],
+        "destructor": [
+            "auto cxx_ptr =\t reinterpret_cast<{cxx_type}*>(ptr);",
+            "delete cxx_ptr;"
+        ]
+    },
+    {
+        "name": "f_mixin_operator_assignment_basic",
+        "notes": [
+            "Used with options.F_assignment_api == 'basic'"
+        ],
+        "f_operator_body": [
+            "subroutine {F_name_assign_api}(lhs, rhs)+",
+            "use iso_c_binding, only : c_associated, c_f_pointer",
+            "class({f_derived_type_lhs}), intent(OUT) :: lhs",
+            "type({f_derived_type_rhs}), intent(IN) :: rhs",
+            "interface+",
+            "subroutine do_assign(lhs, rhs)\t bind(C,\t name=\"{C_name_assign_api}\")+",
+            "import :: {f_interface_import}",
+            "type({f_capsule_data_type_lhs}), intent(INOUT) :: lhs",
+            "type({f_capsule_data_type_rhs}), intent(IN) :: rhs",
+            "-end subroutine do_assign",
+            "-end interface",
+            "call do_assign(lhs%{F_derived_member},\t rhs%{F_derived_member})",
+            "-end subroutine {F_name_assign_api}"
+        ]
+    },
+    {
+        "name": "c_mixin_operator_assignment",
+        "notes": [
+            "Adapts code from SWIG_assign."
+        ],
+        "c_body": [
+            "void {C_name_assign_api}({c_type_lhs} *lhs_capsule,\t {c_type_rhs} *rhs_capsule)",
+            "{{+",
+            "if (lhs_capsule->addr == {nullptr}) {{+",
+              "/* LHS is unassigned */",
+            "if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {{+",
+            "{capture_code}",
+            "-}} else {{+",
+            "{alias_code}",
+            "-}}",
+            "-}} else if (rhs_capsule->addr == {nullptr}) {{+",
+            "{destroy_code}",
+            "-}} else if (lhs_capsule->addr == rhs_capsule->addr) {{+",
+              "// Lhs-assignment: ignore.",
+            "-}} else if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {{+",
+            "{move_alias_code}",
+            "-}} else {{+",
+            "{copy_alias_code}",
+            "-}}",
+            "-}}"
+        ]
+    },
+    {
+        "name": "c_mixin_operator_assignment_fmtdict",
+        "notes": [
+            "Adapts code from SWIG AssignmentPolicy."
+        ],
+        "fmtdict": {
+            "capture_code": [
+                "// Capture pointer from RHS, clear 'moving' flag.",
+                "lhs_capsule->addr = rhs_capsule->addr;",
+                "lhs_capsule->idtor = rhs_capsule->idtor;",
+                "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;"
+            ],
+            "alias_code": [
+                "// Aliasing another class; clear ownership.",
+                "lhs_capsule->addr = rhs_capsule->addr;",
+                "lhs_capsule->idtor = 0;",
+                "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_OWN;"
+            ],
+            "destroy_code": [
+                "// Replace LHS with a null pointer.",
+                "if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+",
+                "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);",
+                "-}}",
+                "lhs_capsule->addr = {nullptr};",
+                "lhs_capsule->idtor = 0;",
+                "lhs_capsule->cmemflags = 0;"
+            ],
+            "move_alias_code": [
+                "// Transferred ownership from a variable that's about to be lost.",
+                "// Move-assign and delete the transient data.",
+                "if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+",
+                "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);",
+                "-}}",
+                "lhs_capsule->addr = rhs_capsule->addr;",
+                "lhs_capsule->idtor = rhs_capsule->idtor;",
+                "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;"
+            ],
+            "copy_alias_code": [
+                "// RHS shouldn't be deleted, alias to LHS.",
+                "if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+",
+                "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);",
+                "-}}",
+                "lhs_capsule->addr = rhs_capsule->addr;",
+                "lhs_capsule->idtor = rhs_capsule->idtor;",
+                "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;"
+            ]
+        }
+    },
+    {
+        "name": "c_mixin_operator_assignment_fmtdict_makeshared",
+        "notes": [
+            "Create std::shared_ptr and point to the rhs.",
+            "Adapts code from SWIG AssignmentPolicy<T, ASSIGNMENT_SMATPTR>."
+        ],
+        "fmtdict": {
+            "capture_code": [
+                "// Capture pointer from RHS, clear 'moving' flag.",
+                "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs}*>\t(rhs_capsule->addr);",
+                "{cxx_type_lhs} *lhs =\t new {cxx_type_lhs}\t(rhs);",
+                "//lhs_capsule->addr = new {cxx_type_lhs} (*static_cast<{cxx_type_lhs}*>(rhs_capsule->addr));",
+                "lhs_capsule->addr = lhs;",
+                "lhs_capsule->idtor = {idtor};",
+                "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;"
+            ],
+            "alias_code": [
+                "// Aliasing another class; copy smart pointer.",
+                "lhs_capsule->addr = new {cxx_type_lhs}\t (*static_cast<{cxx_type_lhs}*>\t(rhs_capsule->addr));",
+                "lhs_capsule->idtor = {idtor};",
+                "lhs_capsule->cmemflags = rhs_capsule->cmemflags | SWIG_MEM_OWN;"
+            ],
+            "destroy_code": [
+                "// Replace LHS with a null pointer.",
+                "//if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+",
+                "//{C_memory_dtor_function}(({c_capsule_data_type} *) lhs_capsule);",
+                "//-}}",
+                "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs}*>\t(lhs_capsule->addr);",
+                "lhs->reset();",
+                "lhs_capsule->addr = {nullptr};",
+                "lhs_capsule->idtor = 0;",
+                "lhs_capsule->cmemflags = 0;"
+            ],
+            "move_alias_code": [
+                "// Transferred ownership from a variable that's about to be lost.",
+                "// Move-assign and delete the transient data.",
+                "// LHS and RHS should both 'own' their shared pointers.",
+                "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs}*>\t(lhs_capsule->addr);",
+                "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs}*>\t(rhs_capsule->addr);",
+                "lhs->reset(rhs);",
+                "lhs_capsule->addr = rhs_capsule->addr;",
+                "lhs_capsule->idtor = {idtor};",
+                "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
+                "if (rhs_capsule->cmemflags & SWIG_MEM_OWN) {{+",
+                "{C_memory_dtor_function}(\t({c_capsule_data_type} *) rhs_capsule);",
+                "-}}"
+            ],
+            "copy_alias_code": [
+                "// RHS shouldn't be deleted, alias to LHS.",
+                "// LHS and RHS should both 'own' their shared pointers.",
+                "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs}*>\t(lhs_capsule->addr);",
+                "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs}*>\t(rhs_capsule->addr);",
+                "lhs->reset(rhs);"
+            ]
+        },
+        "destructor_name": "assignment-{cxx_type_lhs}",
+        "destructor_header": [
+            "<memory>"
+        ],
+        "destructor": [
+            "auto cxx_ptr =\t reinterpret_cast<{cxx_type_lhs}*>(ptr);",
+            "delete cxx_ptr;"
+        ]
+    },
+    {
+        "name": "c_mixin_operator_assignment_fmtdict_weak",
+        "notes": [
+            "std::weak_ptr has no wrapped constructor.",
+            "It must be made from a std::shared_ptr with an assignment.",
+            "Adapts code from SWIG AssignmentPolicy<T, ASSIGNMENT_SMATPTR>."
+        ],
+        "fmtdict": {
+            "capture_code": [
+                "// Capture pointer from RHS, clear 'moving' flag.",
+                "lhs_capsule->addr = rhs_capsule->addr;",
+                "lhs_capsule->idtor = rhs_capsule->idtor;",
+                "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;"
+            ],
+            "alias_code": [
+                "// Aliasing another class; copy smart pointer.",
+                "lhs_capsule->addr = new {cxx_type_lhs}\t (*static_cast<{cxx_type_lhs}*>\t(rhs_capsule->addr));",
+                "lhs_capsule->idtor = {idtor};",
+                "lhs_capsule->cmemflags = rhs_capsule->cmemflags | SWIG_MEM_OWN;"
+            ],
+            "destroy_code": [
+                "// Replace LHS with a null pointer.",
+                "if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+",
+                "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);",
+                "-}}",
+                "lhs_capsule->addr = {nullptr};",
+                "lhs_capsule->idtor = 0;",
+                "lhs_capsule->cmemflags = 0;"
+            ],
+            "move_alias_code": [
+                "// Transferred ownership from a variable that's about to be lost.",
+                "// Move-assign and delete the transient data.",
+                "// LHS and RHS should both 'own' their shared pointers.",
+                "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs}*>\t(lhs_capsule->addr);",
+                "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs}*>\t(rhs_capsule->addr);",
+                "*lhs = *rhs;",
+                "lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
+                "if (rhs_capsule->cmemflags & SWIG_MEM_OWN) {{+",
+                "{C_memory_dtor_function}(\t({c_capsule_data_type} *) rhs_capsule);",
+                "-}}"
+            ],
+            "copy_alias_code": [
+                "// RHS shouldn't be deleted, alias to LHS.",
+                "// LHS and RHS should both 'own' their shared pointers.",
+                "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs}*>\t(lhs_capsule->addr);",
+                "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs}*>\t(rhs_capsule->addr);",
+                "*lhs = *rhs;"
+            ]
+        },
+        "destructor_name": "assignment-{cxx_type_lhs}",
+        "destructor_header": [
+            "<memory>"
+        ],
+        "destructor": [
+            "auto cxx_ptr =\t reinterpret_cast<{cxx_type_lhs}*>(ptr);",
+            "delete cxx_ptr;"
+        ]
+    },
+    {
+        "name": "f_mixin_operator_assignment",
+        "notes": [
+            "Used with options.F_assignment_api == 'swig'",
+            "lhs is intent(INOUT) so the initial value is preserved",
+            "and can be deleted if necessary."
+        ],
+        "f_operator_body": [
+            "subroutine {F_name_assign_api}(lhs, rhs)+",
+            "use iso_c_binding, only : c_associated, c_f_pointer",
+            "class({f_derived_type_lhs}), intent(INOUT) :: lhs",
+            "type({f_derived_type_rhs}), intent(IN) :: rhs",
+            "interface+",
+            "subroutine do_assign(lhs, rhs)\t bind(C,\t name=\"{C_name_assign_api}\")+",
+            "import :: {f_interface_import}",
+            "type({f_capsule_data_type_lhs}), intent(INOUT) :: lhs",
+            "type({f_capsule_data_type_rhs}), intent(IN) :: rhs",
+            "-end subroutine do_assign",
+            "-end interface",
+            "call do_assign(lhs%{F_derived_member},\t rhs%{F_derived_member})",
+            "-end subroutine {F_name_assign_api}"
+        ]
+    },
+    {
+        "alias": [
+            "f_operator_assignment_shadow_basic"
+        ],
+        "notes": [
+            "The original operator overload only worked with weak_ptr.",
+            "This is for all the others which do nothing."
+        ]
+    },
+    {
+        "alias": [
+            "f_operator_assignment_shadow_basic_weak"
+        ],
+        "mixin": [
+            "f_mixin_operator_assignment_basic",
+            "c_mixin_operator_assignment_basic"
+        ]
+    },
+    {
+        "alias": [
+            "f_operator_assignment_shadow"
+        ],
+        "mixin": [
+            "f_mixin_operator_assignment",
+            "c_mixin_operator_assignment",
+            "c_mixin_operator_assignment_fmtdict"
+        ]
+    },
+    {
+        "alias": [
+            "f_operator_assignment_shadow_shared",
+            "f_operator_assignment_shadow_weak"
+        ],
+        "mixin": [
+            "f_mixin_operator_assignment",
+            "c_mixin_operator_assignment",
+            "c_mixin_operator_assignment_fmtdict_weak"
+        ]
+    },
+    {
+        "alias": [
+            "f_operator_assignment_shadow_makeshared"
+        ],
+        "notes": [
+            "  shared = object, create shared object, keep object"
+        ],
+        "mixin": [
+            "f_mixin_operator_assignment",
+            "c_mixin_operator_assignment",
+            "c_mixin_operator_assignment_fmtdict_makeshared"
+        ]
+    },
+    {
+        "name": "#f_operator_assignment_shadow_orig",
+        "notes": [
+            "Used with options.F_assignment_api == 'orig'",
+            "Originally attached to options.F_auto_reference_count",
+            "but never worked. Included for reference."
+        ],
+        "f_type_bound": [
+            "procedure :: {F_name_assign_api}",
+            "generic :: assignment(=) => {F_name_assign_api}"
+        ],
+        "f_operator_body": [
+            "subroutine {F_name_assign_api}(lhs, rhs)+",
+            "use iso_c_binding, only : c_associated, c_f_pointer",
+            "class({F_derived_name}), intent(INOUT) :: lhs",
+            "class({F_derived_name}), intent(IN) :: rhs",
+            "",
+            "lhs%{F_derived_member} = rhs%{F_derived_member}",
+            "if (c_associated(lhs%{F_derived_member}%addr)) then+",
+            "call c_f_pointer(lhs%{F_derived_member}%addr, lhs%{F_derived_member})",
+            "lhs%{F_derived_member}%refcount = lhs%{F_derived_member}%refcount + 1",
+            "-else+",
+            "nullify(lhs%{F_derived_member}%addr)",
+            "-endif",
+            "-end subroutine {F_name_assign_api}"
+        ]
     },
     {
         "name":"#### smartptr ##############################################"
@@ -4339,11 +4696,15 @@
         "comments": [
             "Create a std::shared_pointer on the heap to hold the pointer to the instance."
         ],
+        "notes": [
+            "Uses std::make_shared."
+        ],
         "c_call": [
             "std::shared_ptr<{baseclass.cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{baseclass.cxx_type}>;",
             "*{c_local_shared} = \t std::make_shared<{baseclass.cxx_type}>({C_call_list});",
             "{c_var}->addr = static_cast<{c_const}void *>(\t{c_local_shared});",
-            "{c_var}->idtor = {idtor};"
+            "{c_var}->idtor = {idtor};",
+            "{c_var}->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;"
         ],
         "c_local": [
             "shared"
@@ -4351,7 +4712,33 @@
         "impl_header": [
             "<memory>"
         ],
-        "owner": "shared"
+        "owner": "shared",
+        "helper": [
+            "capsule_memflags"
+        ]
+    },
+    {
+        "name": "c_mixin_make-weak",
+        "comments": [
+            "Create a std::weak_pointer on the heap to hold the pointer to the instance."
+        ],
+        "notes": [
+            "This does not use C_call_list since it does not create an Object.",
+            "It only creates the weak_ptr."
+        ],
+        "c_call": [
+            "{cxx_type} *{cxx_var} =\t new {cxx_type};",
+            "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});",
+            "{c_var}->idtor = {idtor};",
+            "{c_var}->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;"
+        ],
+        "impl_header": [
+            "<memory>"
+        ],
+        "owner": "shared",
+        "helper": [
+            "capsule_memflags"
+        ]
     },
     {
         "alias": [
@@ -4367,7 +4754,20 @@
     },
     {
         "alias": [
-            "c_ctor_shadow_capptr_shared"
+            "f_ctor_shadow_capsule_weak"
+        ],
+        "mixin": [
+            "f_mixin_call-cwrapper-as-subroutine",
+            "f_mixin_capsule_function_shadow",
+            "c_mixin_shadow",
+            "c_mixin_destructor_new-shadow-shared",
+            "c_mixin_make-weak"
+        ]
+    },
+    {
+        "alias": [
+            "c_ctor_shadow_capptr_shared",
+            "c_ctor_shadow_capptr_weak"
         ],
         "mixin": [
             "c_mixin_function_shadow_capptr",
@@ -4395,6 +4795,9 @@
     {
         "alias": [
             "f_function_smartptr<shadow>*_capsule"
+        ],
+        "notes": [
+            "TODO - does ownership make sense here?"
         ],
         "mixin": [
             "f_mixin_call-cwrapper-as-subroutine",
@@ -4446,8 +4849,12 @@
         ],
         "f_arg_call": [],
         "c_call": [
+            "if ({C_this}->cmemflags & SWIG_MEM_OWN) {{+",
             "delete {CXX_this};",
-            "{C_this}->addr = {nullptr};"
+            "-}}",
+            "{C_this}->addr = {nullptr};",
+            "{C_this}->idtor = 0;",
+            "{C_this}->cmemflags = 0;"
         ]
     },
     {
@@ -5198,7 +5605,7 @@
     {
         "alias": [
             "f_function_char_cfi_pointer",
-            "f_function_char*_cfi_pointer"
+            "f_function_char*_cfi_pointer_library"
         ],
         "usage": [
             "char *func(void) +deref(pointer)"
@@ -5234,7 +5641,7 @@
     {
         "alias": [
             "f_function_char_cfi_funcarg_pointer",
-            "f_function_char*_cfi_funcarg_pointer"
+            "f_function_char*_cfi_funcarg_pointer_library"
         ],
         "usage": [
             "char *func(void) +deref(pointer)+funcarg"
@@ -5346,7 +5753,7 @@
         ]
     },
     {
-        "name": "f_out_char**_cfi_pointer",
+        "name": "f_out_char**_cfi_pointer_library",
         "notes": [
             "Return a Fortran pointer to C memory."
         ],
@@ -5633,7 +6040,7 @@
         ]
     },
     {
-        "name": "f_out_native**_cfi_pointer",
+        "name": "f_out_native**_cfi_pointer_library",
         "notes": [
             "Set Fortran pointer to point to c_local_cxx."
         ],
@@ -5663,7 +6070,7 @@
         ]
     },
     {
-        "name": "f_function_native*_cfi_pointer",
+        "name": "f_function_native*_cfi_pointer_library",
         "notes": [
             "Pass result as an argument to C wrapper.",
             "Convert to subroutine and pass result as an argument.",
@@ -6215,14 +6622,14 @@
         ],
         "fmtdict": {
             "cnamefunc":  "{C_memory_dtor_function}",
-            "cnameproto":  "void {cnamefunc}\t({C_capsule_data_type} *cap)",
+            "cnameproto":  "void {cnamefunc}\t({c_capsule_data_type} *cap)",
             "fnamefunc":  "{C_prefix}SHROUD_capsule_dtor",
             "fnamefunc_capsule_dtor": "{fnamefunc}"
         },
         "c_fmtname": "{cnamefunc}",
         "api": "c",
         "dependent_helpers": [
-            "capsule_data_helper"
+            "capsule_data"
         ],
         "proto": "{cnameproto};",
         
@@ -6233,9 +6640,9 @@
             "! helper {hname}",
             "! Delete memory in a capsule.",
             "subroutine {fnamefunc}(ptr)\tbind(C, name=\"{cnamefunc}\")+",
-            "import {F_capsule_data_type}",
+            "import {f_capsule_data_type}",
             "implicit none",
-            "type({F_capsule_data_type}), intent(INOUT) :: ptr",
+            "type({f_capsule_data_type}), intent(INOUT) :: ptr",
             "-end subroutine {fnamefunc}",
             "-end interface"
         ]
@@ -6415,13 +6822,13 @@
         "fmtdict": {
             "cnamefunc": "{C_prefix}ShroudCDescArrayStringAllocatable",
             "fnamefunc": "{C_prefix}SHROUD_cdesc_array_string_allocatable",
-            "cnameproto": "void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)"
+            "cnameproto": "void {cnamefunc}({C_array_type} *dest, {c_capsule_data_type} *src)"
         },
         "c_fmtname": "{cnamefunc}",
         "api": "c",
         "scope": "cwrap_impl",
         "dependent_helpers": [
-            "capsule_data_helper",
+            "capsule_data",
             "array_context",
             "cdesc_array_string_out"
         ],
@@ -6446,9 +6853,9 @@
             "! helper {hname}",
             "subroutine {fnamefunc}(dest, src) &",
             "     bind(c,name=\"{cnamefunc}\")+",
-            "import {F_array_type}, {F_capsule_data_type}",
+            "import {F_array_type}, {f_capsule_data_type}",
             "type({F_array_type}), intent(IN) :: dest",
-            "type({F_capsule_data_type}), intent(IN) :: src",
+            "type({f_capsule_data_type}), intent(IN) :: src",
             "-end subroutine {fnamefunc}",
             "-end interface"
         ]
@@ -6540,13 +6947,13 @@
         "fmtdict": {
             "cnamefunc": "{C_prefix}CDescShroudVectorStringAllocatable",
             "fnamefunc": "{C_prefix}SHROUD_cdesc_vector_string_allocatable",
-            "cnameproto": "void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)"
+            "cnameproto": "void {cnamefunc}({C_array_type} *dest, {c_capsule_data_type} *src)"
         },
         "c_fmtname": "{cnamefunc}",
         "api": "c",
         "scope": "cwrap_impl",
         "dependent_helpers": [
-            "capsule_data_helper",
+            "capsule_data",
             "array_context",
             "cdesc_vector_string_out"],
         "proto": "{cnameproto};",
@@ -6570,9 +6977,9 @@
             "! Copy the char* or std::string in context into c_var.",
             "subroutine {fnamefunc}(dest, src) &",
             "     bind(c,name=\"{cnamefunc}\")+",
-            "import {F_capsule_data_type}, {F_array_type}",
+            "import {f_capsule_data_type}, {F_array_type}",
             "type({F_array_type}), intent(IN) :: dest",
-            "type({F_capsule_data_type}), intent(IN) :: src",
+            "type({f_capsule_data_type}), intent(IN) :: src",
             "-end subroutine {fnamefunc}",
             "-end interface"
         ]
@@ -6659,7 +7066,10 @@
         "notes": [
             "Set Fortran POINTER to string.",
             "Must be a function (or a F2008 BLOCK) since fptr must",
-            "be declared after the string length is known."
+            "be declared after the string length is known.",
+            "The Fortran standard says both sides of the pointer assignment",
+            "must have the same type parameters, including length.",
+            "Cray CCE fails a struct-c test with this code."
         ],
         "fmtdict": {
             "fnamefunc": "{C_prefix}SHROUD_pointer_string"
@@ -6720,7 +7130,37 @@
         ]
     },
     {
-        "name": "h_helper_capsule_data_helper",
+        "name": "h_helper_capsule_data_basic",
+        "notes": [
+            "Share info with C++ to allow Fortran to release memory.",
+            "Used with shadow classes and std::vector.",
+            "Used when option.F_assignment_api=basic."
+        ],
+        "scope": "cwrap_include",
+        "source": [
+            "",
+            "// helper {hname}",
+            "struct s_{c_capsule_data_type} {{+",
+            "void *addr;     /* address of C++ memory */",
+            "int idtor;      /* index of destructor */",
+            "-}};",
+            "typedef struct s_{c_capsule_data_type} {c_capsule_data_type};"
+        ],
+        "f_fmtname": "{f_capsule_data_type}",
+        "derived_type": [
+            "",
+            "{f_lstart}! helper {hname}",
+            "type, bind(C) :: {f_capsule_data_type}+",
+            "type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory",
+            "integer(C_INT) :: idtor = 0       ! index of destructor",
+            "-end type {f_capsule_data_type}{f_lend}"
+        ],
+        "modules": {
+            "iso_c_binding": ["C_PTR", "C_INT", "C_NULL_PTR"]
+        }
+    },
+    {
+        "name": "h_helper_capsule_data",
         "notes": [
             "Share info with C++ to allow Fortran to release memory.",
             "Used with shadow classes and std::vector."
@@ -6729,20 +7169,22 @@
         "source": [
             "",
             "// helper {hname}",
-            "struct s_{C_capsule_data_type} {{+",
+            "struct s_{c_capsule_data_type} {{+",
             "void *addr;     /* address of C++ memory */",
             "int idtor;      /* index of destructor */",
+            "int cmemflags;  /* memory flags */",
             "-}};",
-            "typedef struct s_{C_capsule_data_type} {C_capsule_data_type};"
+            "typedef struct s_{c_capsule_data_type} {c_capsule_data_type};"
         ],
-        "f_fmtname": "{F_capsule_data_type}",
+        "f_fmtname": "{f_capsule_data_type}",
         "derived_type": [
             "",
             "{f_lstart}! helper {hname}",
-            "type, bind(C) :: {F_capsule_data_type}+",
+            "type, bind(C) :: {f_capsule_data_type}+",
             "type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory",
             "integer(C_INT) :: idtor = 0       ! index of destructor",
-            "-end type {F_capsule_data_type}{f_lend}"
+            "integer(C_INT) :: cmemflags = 0   ! memory flags",
+            "-end type {f_capsule_data_type}{f_lend}"
         ],
         "modules": {
             "iso_c_binding": ["C_PTR", "C_INT", "C_NULL_PTR"]
@@ -6756,7 +7198,7 @@
             "Fortran cannot be declared with both PRIVATE and BIND(C) attributes"
         ],
         "dependent_helpers": [
-            "capsule_data_helper",
+            "capsule_data",
             "capsule_dtor"
         ],
         "derived_type": [
@@ -6764,7 +7206,7 @@
             "! helper {hname}",
             "type :: {F_capsule_type}+",
             "private",
-            "type({F_capsule_data_type}) :: mem",
+            "type({f_capsule_data_type}) :: mem",
             "-contains",
             "+final :: {F_capsule_final_function}",
             "procedure :: delete => {F_capsule_delete_function}",
@@ -6773,7 +7215,7 @@
         "f_source": [
             "",
             "! helper {hname}",
-            "! finalize a static {F_capsule_data_type}",
+            "! finalize a static {f_capsule_data_type}",
             "subroutine {F_capsule_final_function}(cap)+",
             "type({F_capsule_type}), intent(INOUT) :: cap",
             "call {fnamefunc_capsule_dtor}(cap%mem)",
@@ -6783,6 +7225,22 @@
             "class({F_capsule_type}) :: cap",
             "call {fnamefunc_capsule_dtor}(cap%mem)",
             "-end subroutine {F_capsule_delete_function}"
+        ]
+    },
+    {
+        "name": "h_helper_capsule_memflags",
+        "notes": [
+            "Flags used to give properties to the addr field.",
+            "This helper is added in wrapf.py Wrapf.wrap_class",
+            "instead of adding to lots of other groups."
+        ],
+        "scope": "cwrap_include",
+        "source": [
+            "",
+            "enum SwigMemFlags {{+",
+            "SWIG_MEM_OWN = 0x01,",
+            "SWIG_MEM_RVALUE = 0x02,",
+            "-}};"
         ]
     },
     {

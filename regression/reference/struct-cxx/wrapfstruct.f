@@ -68,10 +68,11 @@ module struct_mod
         integer(C_LONG) :: shape(7) = 0
     end type STR_SHROUD_array
 
-    ! helper capsule_data_helper
+    ! helper capsule_data
     type, bind(C) :: STR_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: cmemflags = 0   ! memory flags
     end type STR_SHROUD_capsule_data
 
 
@@ -111,7 +112,8 @@ module struct_mod
 
     ! start derived-type cstruct_as_class
     type cstruct_as_class
-        type(STR_SHROUD_capsule_data) :: cxxmem
+        type(STR_SHROUD_capsule_data) :: cxxmem = &
+            STR_SHROUD_capsule_data()
         ! splicer begin class.Cstruct_as_class.component_part
         ! splicer end class.Cstruct_as_class.component_part
     contains
@@ -142,7 +144,8 @@ module struct_mod
     ! end derived-type cstruct_as_subclass
 
     type cstruct_as_class2
-        type(STR_SHROUD_capsule_data) :: cxxmem
+        type(STR_SHROUD_capsule_data) :: cxxmem = &
+            STR_SHROUD_capsule_data()
         ! splicer begin class.Cstruct_as_class2.component_part
         ! splicer end class.Cstruct_as_class2.component_part
     contains
@@ -171,6 +174,12 @@ module struct_mod
         module procedure cstruct_as_class_ne
         module procedure cstruct_as_subclass_ne
         module procedure cstruct_as_class2_ne
+    end interface
+
+    interface assignment (=)
+        module procedure cstruct_as_class_assign_Cstruct_as_class
+        module procedure cstruct_as_subclass_assign_Cstruct_as_subclass
+        module procedure cstruct_as_class2_assign_Cstruct_as_class2
     end interface
 
     interface
@@ -584,7 +593,7 @@ module struct_mod
 
         ! ----------------------------------------
         ! Function:  Cstruct1 *returnStructPtr1
-        ! Statement: f_function_struct*_cdesc_pointer
+        ! Statement: f_function_struct*_cdesc_pointer_library
         ! ----------------------------------------
         ! Argument:  int i
         ! Statement: f_in_native
@@ -626,7 +635,7 @@ module struct_mod
 
         ! ----------------------------------------
         ! Function:  Cstruct1 *returnStructPtr2
-        ! Statement: f_function_struct*_cdesc_pointer
+        ! Statement: f_function_struct*_cdesc_pointer_library
         ! ----------------------------------------
         ! Argument:  int i
         ! Statement: f_in_native
@@ -662,7 +671,7 @@ module struct_mod
 
         ! ----------------------------------------
         ! Function:  Cstruct1 *returnStructPtrArray +dimension(2)
-        ! Statement: f_function_struct*_cdesc_pointer
+        ! Statement: f_function_struct*_cdesc_pointer_library
         subroutine c_return_struct_ptr_array_bufferify(SHT_rv_cdesc) &
                 bind(C, name="STR_returnStructPtrArray_bufferify")
             import :: STR_SHROUD_array
@@ -683,7 +692,7 @@ module struct_mod
 
         ! ----------------------------------------
         ! Function:  Cstruct_list *get_global_struct_list
-        ! Statement: f_function_struct*_cdesc_pointer
+        ! Statement: f_function_struct*_cdesc_pointer_library
         subroutine c_get_global_struct_list_bufferify(SHT_rv_cdesc) &
                 bind(C, name="STR_get_global_struct_list_bufferify")
             import :: STR_SHROUD_array
@@ -708,7 +717,7 @@ module struct_mod
 
         ! ----------------------------------------
         ! Function:  Cstruct_as_class *Create_Cstruct_as_class
-        ! Statement: f_function_shadow*_capsule
+        ! Statement: f_function_shadow*_capsule_caller
         ! start c_create_cstruct_as_class_bufferify
         subroutine c_create_cstruct_as_class_bufferify(SHT_rv) &
                 bind(C, name="STR_Create_Cstruct_as_class_bufferify")
@@ -741,7 +750,7 @@ module struct_mod
 
         ! ----------------------------------------
         ! Function:  Cstruct_as_class *Create_Cstruct_as_class_args
-        ! Statement: f_function_shadow*_capsule
+        ! Statement: f_function_shadow*_capsule_caller
         ! ----------------------------------------
         ! Argument:  int x
         ! Statement: f_in_native
@@ -761,7 +770,7 @@ module struct_mod
 
         ! ----------------------------------------
         ! Function:  Cstruct_as_class *Return_Cstruct_as_class
-        ! Statement: f_function_shadow*_capsule
+        ! Statement: f_function_shadow*_capsule_library
         subroutine c_return_cstruct_as_class(SHT_rv) &
                 bind(C, name="STR_Return_Cstruct_as_class")
             import :: STR_SHROUD_capsule_data
@@ -771,7 +780,7 @@ module struct_mod
 
         ! ----------------------------------------
         ! Function:  Cstruct_as_class *Return_Cstruct_as_class_args
-        ! Statement: f_function_shadow*_capsule
+        ! Statement: f_function_shadow*_capsule_library
         ! ----------------------------------------
         ! Argument:  int x
         ! Statement: f_in_native
@@ -831,7 +840,7 @@ module struct_mod
 
         ! ----------------------------------------
         ! Function:  Cstruct_as_subclass *Create_Cstruct_as_subclass_args
-        ! Statement: f_function_shadow*_capsule
+        ! Statement: f_function_shadow*_capsule_caller
         ! ----------------------------------------
         ! Argument:  int x
         ! Statement: f_in_native
@@ -855,7 +864,7 @@ module struct_mod
 
         ! ----------------------------------------
         ! Function:  Cstruct_as_subclass *Return_Cstruct_as_subclass_args
-        ! Statement: f_function_shadow*_capsule
+        ! Statement: f_function_shadow*_capsule_library
         ! ----------------------------------------
         ! Argument:  int x
         ! Statement: f_in_native
@@ -1427,7 +1436,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Cstruct1 *returnStructPtr1
-    ! Statement: f_function_struct*_cdesc_pointer
+    ! Statement: f_function_struct*_cdesc_pointer_library
     ! ----------------------------------------
     ! Argument:  int i
     ! Statement: f_in_native
@@ -1454,7 +1463,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Cstruct1 *returnStructPtr2
-    ! Statement: f_function_struct*_cdesc_pointer
+    ! Statement: f_function_struct*_cdesc_pointer_library
     ! ----------------------------------------
     ! Argument:  int i
     ! Statement: f_in_native
@@ -1488,7 +1497,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Cstruct1 *returnStructPtrArray +dimension(2)
-    ! Statement: f_function_struct*_cdesc_pointer
+    ! Statement: f_function_struct*_cdesc_pointer_library
     !>
     !! \brief Return a pointer to an array of structs
     !!
@@ -1507,7 +1516,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Cstruct_list *get_global_struct_list
-    ! Statement: f_function_struct*_cdesc_pointer
+    ! Statement: f_function_struct*_cdesc_pointer_library
     function get_global_struct_list() &
             result(SHT_rv)
         use iso_c_binding, only : c_f_pointer
@@ -1521,7 +1530,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Cstruct_as_class *Create_Cstruct_as_class
-    ! Statement: f_function_shadow*_capsule
+    ! Statement: f_function_shadow*_capsule_caller
     ! start create_cstruct_as_class
     function create_cstruct_as_class() &
             result(SHT_rv)
@@ -1534,7 +1543,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Cstruct_as_class *Create_Cstruct_as_class_args
-    ! Statement: f_function_shadow*_capsule
+    ! Statement: f_function_shadow*_capsule_caller
     ! ----------------------------------------
     ! Argument:  int x
     ! Statement: f_in_native
@@ -1555,7 +1564,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Cstruct_as_class *Return_Cstruct_as_class
-    ! Statement: f_function_shadow*_capsule
+    ! Statement: f_function_shadow*_capsule_library
     function return_cstruct_as_class() &
             result(SHT_rv)
         type(cstruct_as_class) :: SHT_rv
@@ -1566,7 +1575,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Cstruct_as_class *Return_Cstruct_as_class_args
-    ! Statement: f_function_shadow*_capsule
+    ! Statement: f_function_shadow*_capsule_library
     ! ----------------------------------------
     ! Argument:  int x
     ! Statement: f_in_native
@@ -1602,7 +1611,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Cstruct_as_subclass *Create_Cstruct_as_subclass_args
-    ! Statement: f_function_shadow*_capsule
+    ! Statement: f_function_shadow*_capsule_caller
     ! ----------------------------------------
     ! Argument:  int x
     ! Statement: f_in_native
@@ -1627,7 +1636,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Cstruct_as_subclass *Return_Cstruct_as_subclass_args
-    ! Statement: f_function_shadow*_capsule
+    ! Statement: f_function_shadow*_capsule_library
     ! ----------------------------------------
     ! Argument:  int x
     ! Statement: f_in_native
@@ -1774,6 +1783,61 @@ contains
         ! splicer end function.cstruct_list_set_dvalue
     end subroutine cstruct_list_set_dvalue
 #endif
+
+    ! Statement: f_operator_assignment_shadow
+    ! start cstruct_as_class_assign_Cstruct_as_class
+    ! Cstruct_as_class = Cstruct_as_class
+    subroutine cstruct_as_class_assign_Cstruct_as_class(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(cstruct_as_class), intent(INOUT) :: lhs
+        type(cstruct_as_class), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="STR_Cstruct_as_class_assign_Cstruct_as_class")
+                import :: STR_SHROUD_capsule_data
+                type(STR_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(STR_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine cstruct_as_class_assign_Cstruct_as_class
+    ! end cstruct_as_class_assign_Cstruct_as_class
+
+    ! Statement: f_operator_assignment_shadow
+    ! start cstruct_as_subclass_assign_Cstruct_as_subclass
+    ! Cstruct_as_subclass = Cstruct_as_subclass
+    subroutine cstruct_as_subclass_assign_Cstruct_as_subclass(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(cstruct_as_subclass), intent(INOUT) :: lhs
+        type(cstruct_as_subclass), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="STR_Cstruct_as_subclass_assign_Cstruct_as_subclass")
+                import :: STR_SHROUD_capsule_data
+                type(STR_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(STR_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine cstruct_as_subclass_assign_Cstruct_as_subclass
+    ! end cstruct_as_subclass_assign_Cstruct_as_subclass
+
+    ! Statement: f_operator_assignment_shadow
+    ! Cstruct_as_class2 = Cstruct_as_class2
+    subroutine cstruct_as_class2_assign_Cstruct_as_class2(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(cstruct_as_class2), intent(INOUT) :: lhs
+        type(cstruct_as_class2), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="STR_Cstruct_as_class2_assign_Cstruct_as_class2")
+                import :: STR_SHROUD_capsule_data
+                type(STR_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(STR_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine cstruct_as_class2_assign_Cstruct_as_class2
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

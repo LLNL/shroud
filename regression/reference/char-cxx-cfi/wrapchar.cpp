@@ -232,7 +232,9 @@ void CHA_passCharPtr_CFI(CFI_cdesc_t *SHT_dest_cfi,
     char *SHC_src_cxx = ShroudCharAlloc(src, SHT_src_len, 0);
     passCharPtr(SHC_dest_cxx, SHC_src_cxx);
     ShroudCharCopy(dest, SHT_dest_len, SHC_dest_cxx, -1);
-    delete[] SHC_dest_cxx;
+    if (SHC_dest_cxx != nullptr) {
+        delete[] SHC_dest_cxx;
+    }
     ShroudCharFree(SHC_src_cxx);
     // splicer end function.passCharPtr_CFI
 }
@@ -386,7 +388,7 @@ const char * CHA_getConstCharPtrPointer(void)
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
 // ----------------------------------------
 // Function:  const char *getConstCharPtrPointer +deref(pointer)
-// Statement: f_function_char*_cfi_pointer
+// Statement: f_function_char*_cfi_pointer_library
 // start CHA_getConstCharPtrPointer_CFI
 void CHA_getConstCharPtrPointer_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
@@ -498,7 +500,7 @@ void CHA_getConstCharPtrAsAllocArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const char *getConstCharPtrAsPointerArg +deref(pointer)+funcarg
-// Statement: f_function_char*_cfi_funcarg_pointer
+// Statement: f_function_char*_cfi_funcarg_pointer_library
 // start CHA_getConstCharPtrAsPointerArg_CFI
 void CHA_getConstCharPtrAsPointerArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
@@ -532,7 +534,7 @@ void CHA_getConstCharPtrAsPointerArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const char *getConstCharPtrAsRawArg +deref(raw)+funcarg
-// Statement: f_function_char*_funcarg_raw
+// Statement: f_function_char*_funcarg_raw_library
 // start CHA_getConstCharPtrAsRawArg_bufferify
 void CHA_getConstCharPtrAsRawArg_bufferify(void **SHC_rv)
 {
@@ -607,7 +609,9 @@ void CHA_explicit2_CFI(CFI_cdesc_t *SHT_name_cfi)
     char *SHC_name_cxx = new char[SHT_name_len+1];
     explicit2(SHC_name_cxx);
     ShroudCharCopy(name, SHT_name_len, SHC_name_cxx, -1);
-    delete[] SHC_name_cxx;
+    if (SHC_name_cxx != nullptr) {
+        delete[] SHC_name_cxx;
+    }
     // splicer end function.explicit2_CFI
 }
 // end CHA_explicit2_CFI
@@ -677,7 +681,9 @@ void CHA_CpassCharPtr_CFI(CFI_cdesc_t *SHT_dest_cfi,
     char *SHC_src_cxx = ShroudCharAlloc(src, SHT_src_len, 1);
     CpassCharPtr(SHC_dest_cxx, SHC_src_cxx);
     ShroudCharCopy(dest, SHT_dest_len, SHC_dest_cxx, -1);
-    delete[] SHC_dest_cxx;
+    if (SHC_dest_cxx != nullptr) {
+        delete[] SHC_dest_cxx;
+    }
     ShroudCharFree(SHC_src_cxx);
     // splicer end function.CpassCharPtr_CFI
 }
@@ -731,7 +737,9 @@ void CHA_CpassCharPtrBlank_CFI(CFI_cdesc_t *SHT_dest_cfi,
     char *SHC_src_cxx = ShroudCharAlloc(src, SHT_src_len, 1);
     CpassCharPtrBlank(SHC_dest_cxx, SHC_src_cxx);
     ShroudCharCopy(dest, SHT_dest_len, SHC_dest_cxx, -1);
-    delete[] SHC_dest_cxx;
+    if (SHC_dest_cxx != nullptr) {
+        delete[] SHC_dest_cxx;
+    }
     ShroudCharFree(SHC_src_cxx);
     // splicer end function.CpassCharPtrBlank_CFI
 }
@@ -971,7 +979,7 @@ void CHA_fetchCharPtrLibrary(char **outstr)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  char **outstr +deref(pointer)+intent(out)
-// Statement: f_out_char**_cfi_pointer
+// Statement: f_out_char**_cfi_pointer_library
 // start CHA_fetchCharPtrLibrary_CFI
 void CHA_fetchCharPtrLibrary_CFI(CFI_cdesc_t *SHT_outstr_cfi)
 {
@@ -1030,7 +1038,7 @@ int CHA_fetchCharPtrLibraryNULL(char **outstr)
 // Statement: f_function_native
 // ----------------------------------------
 // Argument:  char **outstr +deref(pointer)+intent(out)
-// Statement: f_out_char**_cfi_pointer
+// Statement: f_out_char**_cfi_pointer_library
 // start CHA_fetchCharPtrLibraryNULL_CFI
 int CHA_fetchCharPtrLibraryNULL_CFI(CFI_cdesc_t *SHT_outstr_cfi)
 {

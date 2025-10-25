@@ -76,10 +76,11 @@ struct s_VEC_SHROUD_array {
 typedef struct s_VEC_SHROUD_array VEC_SHROUD_array;
 // end helper array_context
 
-// helper capsule_data_helper
+// helper capsule_data
 struct s_VEC_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
+    int cmemflags;  /* memory flags */
 };
 typedef struct s_VEC_SHROUD_capsule_data VEC_SHROUD_capsule_data;
 

@@ -379,7 +379,7 @@ const char * CHA_getConstCharPtrPointer(void)
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
 // ----------------------------------------
 // Function:  const char *getConstCharPtrPointer +deref(pointer)
-// Statement: f_function_char*_cdesc_pointer
+// Statement: f_function_char*_cdesc_pointer_library
 // start CHA_getConstCharPtrPointer_bufferify
 void CHA_getConstCharPtrPointer_bufferify(
     CHA_SHROUD_array *SHT_rv_cdesc)
@@ -475,7 +475,7 @@ void CHA_getConstCharPtrAsAllocArg_bufferify(
  */
 // ----------------------------------------
 // Function:  const char *getConstCharPtrAsPointerArg +deref(pointer)+funcarg
-// Statement: f_function_char*_cdesc_funcarg_pointer
+// Statement: f_function_char*_cdesc_funcarg_pointer_library
 // start CHA_getConstCharPtrAsPointerArg_bufferify
 void CHA_getConstCharPtrAsPointerArg_bufferify(
     CHA_SHROUD_array *SHT_rv_cdesc)
@@ -497,7 +497,7 @@ void CHA_getConstCharPtrAsPointerArg_bufferify(
  */
 // ----------------------------------------
 // Function:  const char *getConstCharPtrAsRawArg +deref(raw)+funcarg
-// Statement: f_function_char*_funcarg_raw
+// Statement: f_function_char*_funcarg_raw_library
 // start CHA_getConstCharPtrAsRawArg_bufferify
 void CHA_getConstCharPtrAsRawArg_bufferify(void **SHC_rv)
 {
@@ -870,7 +870,7 @@ void CHA_fetchCharPtrLibrary(char **outstr)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  char **outstr +deref(pointer)+intent(out)
-// Statement: f_out_char**_cdesc_pointer
+// Statement: f_out_char**_cdesc_pointer_library
 // start CHA_fetchCharPtrLibrary_bufferify
 void CHA_fetchCharPtrLibrary_bufferify(
     CHA_SHROUD_array *SHT_outstr_cdesc)
@@ -916,7 +916,7 @@ int CHA_fetchCharPtrLibraryNULL(char **outstr)
 // Statement: f_function_native
 // ----------------------------------------
 // Argument:  char **outstr +deref(pointer)+intent(out)
-// Statement: f_out_char**_cdesc_pointer
+// Statement: f_out_char**_cdesc_pointer_library
 // start CHA_fetchCharPtrLibraryNULL_bufferify
 int CHA_fetchCharPtrLibraryNULL_bufferify(
     CHA_SHROUD_array *SHT_outstr_cdesc)

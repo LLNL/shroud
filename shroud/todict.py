@@ -291,6 +291,10 @@ class ToDict(visitor.Visitor):
                 d[key] = self.visit(value)
             elif key == "typemap":
                 d["typemap_name"] = value.name # typemap.Typemap
+            elif key == "typemap_lhs":
+                d["typemap_lhs"] = value.name # typemap.Typemap
+            elif key == "typemap_rhs":
+                d["typemap_rhs"] = value.name # typemap.Typemap
             elif not key.startswith(skip):
                 d[key] = value
         return d
@@ -349,11 +353,17 @@ class ToDict(visitor.Visitor):
             node, d, [ "fmtdict", "options", "scope_file", ])
         if node.class_map:
             d["class_map"] = sorted(list(node.class_map.keys()))
+        # These fields are not in NamespaceNode
+        self.add_visit_fields(
+            node, d,
+            ["patterns", "destructors"]
+        )
         node = node.wrap_namespace   # XXXX TEMP kludge
         self.add_visit_fields(
             node,
             d,
             [
+                "assign_operators",
                 "classes",
                 "enums",
                 "functions",
@@ -367,12 +377,20 @@ class ToDict(visitor.Visitor):
 #                "scope_file",
             ],
         )
-        # These fields are not in NamespaceNode
-        for key in ["patterns", "destructors"]:
-            if hasattr(node, key):
-                self.add_visit_fields(node, d, [key])
         return d
 
+    def visit_AssignOperator(self, node):
+        d = dict()
+        self.add_visit_fields(
+            node,
+            d,
+            [
+                "name",
+                "bind",
+                ]
+            )
+        return d
+        
     def visit_ClassNode(self, node):
         d = dict(
             cxx_header=node.cxx_header,
@@ -494,9 +512,9 @@ class ToDict(visitor.Visitor):
             # to avoid a huge dump.
             d["struct_members"] = list(node.struct_members.keys())
 
-        if node.helpers:
+        if node.fcn_helpers:
             helpers = {}
-            for key, values in node.helpers.items():
+            for key, values in node.fcn_helpers.items():
                 if values:
                     helpers[key] = list(values.keys())
             if helpers:
@@ -527,6 +545,7 @@ class ToDict(visitor.Visitor):
         d = dict(name=node.name)
         add_comment(d, "namespace", node.name)
         self.add_visit_fields(node, d, [
+            "assign_operators",
             "classes", "enums", "functions", "namespaces", "typedefs", "variables",
             "user_fmt", "fmtdict", "options", "wrap"])
         add_non_none_fields(node, d, ["linenumber"])

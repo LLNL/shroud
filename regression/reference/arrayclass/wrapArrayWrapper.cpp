@@ -28,19 +28,21 @@ ARR_ArrayWrapper * ARR_ArrayWrapper_ctor(ARR_ArrayWrapper *SHC_rv)
     ArrayWrapper *SHCXX_rv = new ArrayWrapper();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 1;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     return SHC_rv;
     // splicer end class.ArrayWrapper.method.ctor
 }
 
 // ----------------------------------------
 // Function:  ArrayWrapper
-// Statement: f_ctor_shadow_capsule
+// Statement: f_ctor_shadow_capsule_caller
 void ARR_ArrayWrapper_ctor_bufferify(ARR_ArrayWrapper *SHC_rv)
 {
     // splicer begin class.ArrayWrapper.method.ctor_bufferify
     ArrayWrapper *SHCXX_rv = new ArrayWrapper();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 1;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     // splicer end class.ArrayWrapper.method.ctor_bufferify
 }
 
@@ -51,8 +53,12 @@ void ARR_ArrayWrapper_dtor(ARR_ArrayWrapper * self)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
     // splicer begin class.ArrayWrapper.method.dtor
-    delete SH_this;
+    if (self->cmemflags & SWIG_MEM_OWN) {
+        delete SH_this;
+    }
     self->addr = nullptr;
+    self->idtor = 0;
+    self->cmemflags = 0;
     // splicer end class.ArrayWrapper.method.dtor
 }
 
@@ -122,7 +128,7 @@ double * ARR_ArrayWrapper_getArray(ARR_ArrayWrapper * self)
 
 // ----------------------------------------
 // Function:  double *getArray +dimension(getSize())
-// Statement: f_function_native*_cdesc_pointer
+// Statement: f_function_native*_cdesc_pointer_library
 void ARR_ArrayWrapper_getArray_bufferify(ARR_ArrayWrapper * self,
     ARR_SHROUD_array *SHT_rv_cdesc)
 {
@@ -153,7 +159,7 @@ double * ARR_ArrayWrapper_getArrayConst(const ARR_ArrayWrapper * self)
 
 // ----------------------------------------
 // Function:  double *getArrayConst +dimension(getSize())
-// Statement: f_function_native*_cdesc_pointer
+// Statement: f_function_native*_cdesc_pointer_library
 void ARR_ArrayWrapper_getArrayConst_bufferify(
     const ARR_ArrayWrapper * self, ARR_SHROUD_array *SHT_rv_cdesc)
 {
@@ -184,7 +190,7 @@ const double * ARR_ArrayWrapper_getArrayC(ARR_ArrayWrapper * self)
 
 // ----------------------------------------
 // Function:  const double *getArrayC +dimension(getSize())
-// Statement: f_function_native*_cdesc_pointer
+// Statement: f_function_native*_cdesc_pointer_library
 void ARR_ArrayWrapper_getArrayC_bufferify(ARR_ArrayWrapper * self,
     ARR_SHROUD_array *SHT_rv_cdesc)
 {
@@ -216,7 +222,7 @@ const double * ARR_ArrayWrapper_getArrayConstC(
 
 // ----------------------------------------
 // Function:  const double *getArrayConstC +dimension(getSize())
-// Statement: f_function_native*_cdesc_pointer
+// Statement: f_function_native*_cdesc_pointer_library
 void ARR_ArrayWrapper_getArrayConstC_bufferify(
     const ARR_ArrayWrapper * self, ARR_SHROUD_array *SHT_rv_cdesc)
 {
@@ -256,7 +262,7 @@ void ARR_ArrayWrapper_fetchArrayPtr(ARR_ArrayWrapper * self,
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  double **array +dimension(isize)+intent(out)
-// Statement: f_out_native**_cdesc_pointer
+// Statement: f_out_native**_cdesc_pointer_library
 // ----------------------------------------
 // Argument:  int *isize +hidden
 // Statement: f_inout_native*_hidden
@@ -300,7 +306,7 @@ void ARR_ArrayWrapper_fetchArrayRef(ARR_ArrayWrapper * self,
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  double *&array +dimension(isize)+intent(out)
-// Statement: f_out_native*&_cdesc_pointer
+// Statement: f_out_native*&_cdesc_pointer_library
 // ----------------------------------------
 // Argument:  int &isize +hidden
 // Statement: f_inout_native&_hidden
@@ -344,7 +350,7 @@ void ARR_ArrayWrapper_fetchArrayPtrConst(ARR_ArrayWrapper * self,
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const double **array +dimension(isize)+intent(out)
-// Statement: f_out_native**_cdesc_pointer
+// Statement: f_out_native**_cdesc_pointer_library
 // ----------------------------------------
 // Argument:  int *isize +hidden
 // Statement: f_inout_native*_hidden
@@ -388,7 +394,7 @@ void ARR_ArrayWrapper_fetchArrayRefConst(ARR_ArrayWrapper * self,
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const double *&array +dimension(isize)+intent(out)
-// Statement: f_out_native*&_cdesc_pointer
+// Statement: f_out_native*&_cdesc_pointer_library
 // ----------------------------------------
 // Argument:  int &isize +hidden
 // Statement: f_inout_native&_hidden

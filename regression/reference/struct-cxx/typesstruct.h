@@ -74,19 +74,26 @@ struct s_STR_SHROUD_array {
 };
 typedef struct s_STR_SHROUD_array STR_SHROUD_array;
 
-// helper capsule_data_helper
+// helper capsule_data
 struct s_STR_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
+    int cmemflags;  /* memory flags */
 };
 typedef struct s_STR_SHROUD_capsule_data STR_SHROUD_capsule_data;
+
+enum SwigMemFlags {
+    SWIG_MEM_OWN = 0x01,
+    SWIG_MEM_RVALUE = 0x02,
+};
 #if 0
 
 // start C++ capsule STR_Cstruct_as_class
 // C++ capsule STR_Cstruct_as_class
 struct s_STR_Cstruct_as_class {
-    Cstruct_as_class *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    Cstruct_as_class *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_STR_Cstruct_as_class STR_Cstruct_as_class;
 // end C++ capsule STR_Cstruct_as_class
@@ -94,16 +101,18 @@ typedef struct s_STR_Cstruct_as_class STR_Cstruct_as_class;
 // start C++ capsule STR_Cstruct_as_subclass
 // C++ capsule STR_Cstruct_as_subclass
 struct s_STR_Cstruct_as_subclass {
-    Cstruct_as_subclass *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    Cstruct_as_subclass *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_STR_Cstruct_as_subclass STR_Cstruct_as_subclass;
 // end C++ capsule STR_Cstruct_as_subclass
 
 // C++ capsule STR_Cstruct_as_class2
 struct s_STR_Cstruct_as_class2 {
-    Cstruct_as_class2 *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    Cstruct_as_class2 *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_STR_Cstruct_as_class2 STR_Cstruct_as_class2;
 #endif
@@ -111,8 +120,9 @@ typedef struct s_STR_Cstruct_as_class2 STR_Cstruct_as_class2;
 // start C capsule STR_Cstruct_as_class
 // C capsule STR_Cstruct_as_class
 struct s_STR_Cstruct_as_class {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    void *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_STR_Cstruct_as_class STR_Cstruct_as_class;
 // end C capsule STR_Cstruct_as_class
@@ -120,16 +130,18 @@ typedef struct s_STR_Cstruct_as_class STR_Cstruct_as_class;
 // start C capsule STR_Cstruct_as_subclass
 // C capsule STR_Cstruct_as_subclass
 struct s_STR_Cstruct_as_subclass {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    void *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_STR_Cstruct_as_subclass STR_Cstruct_as_subclass;
 // end C capsule STR_Cstruct_as_subclass
 
 // C capsule STR_Cstruct_as_class2
 struct s_STR_Cstruct_as_class2 {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    void *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_STR_Cstruct_as_class2 STR_Cstruct_as_class2;
 

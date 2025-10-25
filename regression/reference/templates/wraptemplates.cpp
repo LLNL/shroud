@@ -31,13 +31,14 @@ TEM_user_int * TEM_returnUserType(TEM_user_int *SHC_rv)
     *SHC_rv_cxx = returnUserType();
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 5;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     return SHC_rv;
     // splicer end function.returnUserType
 }
 
 // ----------------------------------------
 // Function:  user<int> returnUserType
-// Statement: f_function_shadow<native>_capsule
+// Statement: f_function_shadow<native>_capsule_caller
 void TEM_returnUserType_bufferify(TEM_user_int *SHC_rv)
 {
     // splicer begin function.returnUserType_bufferify
@@ -45,6 +46,7 @@ void TEM_returnUserType_bufferify(TEM_user_int *SHC_rv)
     *SHC_rv_cxx = returnUserType();
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 5;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     // splicer end function.returnUserType_bufferify
 }
 

@@ -74,26 +74,34 @@ struct s_NS_SHROUD_array {
 };
 typedef struct s_NS_SHROUD_array NS_SHROUD_array;
 
-// helper capsule_data_helper
+// helper capsule_data
 struct s_NS_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
+    int cmemflags;  /* memory flags */
 };
 typedef struct s_NS_SHROUD_capsule_data NS_SHROUD_capsule_data;
+
+enum SwigMemFlags {
+    SWIG_MEM_OWN = 0x01,
+    SWIG_MEM_RVALUE = 0x02,
+};
 #if 0
 
 // C++ capsule NS_nswork_ClassWork
 struct s_NS_nswork_ClassWork {
-    nswork::ClassWork *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    nswork::ClassWork *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_NS_nswork_ClassWork NS_nswork_ClassWork;
 #endif
 
 // C capsule NS_nswork_ClassWork
 struct s_NS_nswork_ClassWork {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    void *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_NS_nswork_ClassWork NS_nswork_ClassWork;
 

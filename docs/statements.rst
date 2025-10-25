@@ -210,6 +210,9 @@ fmtdict
 ^^^^^^^
 
 A dictionary to replace default values
+An entry may be list. It will be joined with newlines into
+a single string before being used. This allows several lines
+to be used in a more natural manner.
 
 .. code-block:: yaml
 
@@ -225,7 +228,16 @@ A dictionary to replace default values
         fmtdict:
             cxx_addr: ""
             cxx_member: "->"
-                
+
+.. code-block:: yaml
+
+        name: c_mixin_operator_assignment_fmtdict_swig
+        fmtdict:
+            capture_code:
+            - // Capture pointer from RHS, clear 'moving' flag.
+            - // additional line here
+        
+   
 Examples
 --------
 
@@ -257,7 +269,7 @@ and attributes into an underscore delimited string.
 
 * language - ``c``
 
-* intent - ``in``, ``out``, ``inout``, ``function``, ``subroutine``, ``ctor``, ``dtor``, ``getter``, ``setter``
+* intent - ``in``, ``out``, ``inout``, ``function``, ``subroutine``, ``ctor``, ``dtor``, ``getter``, ``setter``, ``operator``
 
 * Abstract declaration. For example, ``native``, ``native*`` or ``native**``.
   May include template arguments ``vector<native>``.
@@ -274,6 +286,10 @@ and attributes into an underscore delimited string.
 
 * owner
   ``caller``, ``library``
+  If set, it replaces the attribute and any default computed by Shroud.
+  Used with allocating temporary memory.
+  The capsule is allocated in C, returned to Fortran which copies the value,
+  then the Fortran wrapper releases the memory.
 
 * operator
   ex. ``assignment``

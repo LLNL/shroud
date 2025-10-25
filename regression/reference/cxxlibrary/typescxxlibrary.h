@@ -74,26 +74,34 @@ struct s_CXX_SHROUD_array {
 };
 typedef struct s_CXX_SHROUD_array CXX_SHROUD_array;
 
-// helper capsule_data_helper
+// helper capsule_data
 struct s_CXX_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
+    int cmemflags;  /* memory flags */
 };
 typedef struct s_CXX_SHROUD_capsule_data CXX_SHROUD_capsule_data;
+
+enum SwigMemFlags {
+    SWIG_MEM_OWN = 0x01,
+    SWIG_MEM_RVALUE = 0x02,
+};
 #if 0
 
 // C++ capsule CXX_Class1
 struct s_CXX_Class1 {
-    Class1 *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    Class1 *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_CXX_Class1 CXX_Class1;
 #endif
 
 // C capsule CXX_Class1
 struct s_CXX_Class1 {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    void *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_CXX_Class1 CXX_Class1;
 

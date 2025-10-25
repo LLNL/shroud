@@ -19,10 +19,11 @@ extern "C" {
 // splicer begin types.C_declarations
 // splicer end types.C_declarations
 
-// helper capsule_data_helper
+// helper capsule_data
 struct s_POI_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
+    int cmemflags;  /* memory flags */
 };
 typedef struct s_POI_SHROUD_capsule_data POI_SHROUD_capsule_data;
 

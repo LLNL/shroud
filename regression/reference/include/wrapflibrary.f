@@ -12,17 +12,19 @@ module library_mod
     use iso_c_binding, only : C_INT, C_NULL_PTR, C_PTR
     implicit none
 
-    ! helper capsule_data_helper
+    ! helper capsule_data
     type, bind(C) :: LIB_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: cmemflags = 0   ! memory flags
     end type LIB_SHROUD_capsule_data
 
     ! typedef CustomType
     integer, parameter :: custom_type = C_INT
 
     type class2
-        type(LIB_SHROUD_capsule_data) :: cxxmem
+        type(LIB_SHROUD_capsule_data) :: cxxmem = &
+            LIB_SHROUD_capsule_data()
     contains
         procedure :: method1 => class2_method1
         procedure :: method2 => class2_method2
@@ -37,6 +39,10 @@ module library_mod
 
     interface operator (.ne.)
         module procedure class2_ne
+    end interface
+
+    interface assignment (=)
+        module procedure class2_assign_Class2
     end interface
 
     interface
@@ -122,6 +128,23 @@ contains
         logical rv
         rv = c_associated(obj%cxxmem%addr)
     end function class2_associated
+
+    ! Statement: f_operator_assignment_shadow
+    ! Class2 = Class2
+    subroutine class2_assign_Class2(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(class2), intent(INOUT) :: lhs
+        type(class2), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="LIB_Class2_assign_Class2")
+                import :: LIB_SHROUD_capsule_data
+                type(LIB_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(LIB_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine class2_assign_Class2
 
     function class2_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated

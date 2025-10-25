@@ -28,19 +28,21 @@ TEM_structAsClass_int * TEM_structAsClass_int_ctor(
     structAsClass<int> *SHCXX_rv = new structAsClass<int>();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 3;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     return SHC_rv;
     // splicer end class.structAsClass.method.ctor
 }
 
 // ----------------------------------------
 // Function:  structAsClass
-// Statement: f_ctor_shadow_capsule
+// Statement: f_ctor_shadow_capsule_caller
 void TEM_structAsClass_int_ctor_bufferify(TEM_structAsClass_int *SHC_rv)
 {
     // splicer begin class.structAsClass.method.ctor_bufferify
     structAsClass<int> *SHCXX_rv = new structAsClass<int>();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 3;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     // splicer end class.structAsClass.method.ctor_bufferify
 }
 

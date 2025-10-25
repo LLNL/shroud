@@ -70,7 +70,11 @@ declarations:
 
 - decl: char *Function4a(
     const char *arg1,
-    const char *arg2 ) +len(30)
+    const char *arg2 ) +len(30) +owner(caller)
+  doxygen:
+    description: |
+      The function allocates memory with malloc which is copied into
+      the users buffer and must then be freed.
 
 - decl: void acceptName(const char *name)
   options:

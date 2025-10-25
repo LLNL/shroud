@@ -5,6 +5,9 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 
+// typemap
+#include "generic.h"
+#include "helper.h"
 // shroud
 #include "typesgeneric.h"
 #include <stdlib.h>
@@ -13,7 +16,77 @@
 // Release library allocated memory.
 void GEN_SHROUD_memory_destructor(GEN_SHROUD_capsule_data *cap)
 {
+    void *ptr = cap->addr;
+    switch (cap->idtor) {
+    case 0:   // --none--
+    {
+        // Nothing to delete
+        break;
+    }
+    case 1:   // StructAsClass
+    {
+        StructAsClass *cxx_ptr = (StructAsClass *) ptr;
+        free(cxx_ptr);
+        break;
+    }
+    default:
+    {
+        // Unexpected case in destructor
+        break;
+    }
+    }
     cap->addr = NULL;
     cap->idtor = 0;  // avoid deleting again
 }
 // end release allocated memory
+
+// Statement: f_operator_assignment_shadow
+// StructAsClass = StructAsClass
+void GEN_StructAsClass_assign_StructAsClass(GEN_StructAsClass *lhs_capsule,
+    GEN_StructAsClass *rhs_capsule)
+{
+    if (lhs_capsule->addr == NULL) {
+        /* LHS is unassigned */
+        if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {
+            // Capture pointer from RHS, clear 'moving' flag.
+            lhs_capsule->addr = rhs_capsule->addr;
+            lhs_capsule->idtor = rhs_capsule->idtor;
+            lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+        } else {
+            // Aliasing another class; clear ownership.
+            lhs_capsule->addr = rhs_capsule->addr;
+            lhs_capsule->idtor = 0;
+            lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_OWN;
+        }
+    } else if (rhs_capsule->addr == NULL) {
+        // Replace LHS with a null pointer.
+        if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {
+            GEN_SHROUD_memory_destructor(
+                (GEN_SHROUD_capsule_data *) lhs_capsule);
+        }
+        lhs_capsule->addr = NULL;
+        lhs_capsule->idtor = 0;
+        lhs_capsule->cmemflags = 0;
+    } else if (lhs_capsule->addr == rhs_capsule->addr) {
+        // Lhs-assignment: ignore.
+    } else if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {
+        // Transferred ownership from a variable that's about to be lost.
+        // Move-assign and delete the transient data.
+        if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {
+            GEN_SHROUD_memory_destructor(
+                (GEN_SHROUD_capsule_data *) lhs_capsule);
+        }
+        lhs_capsule->addr = rhs_capsule->addr;
+        lhs_capsule->idtor = rhs_capsule->idtor;
+        lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+    } else {
+        // RHS shouldn't be deleted, alias to LHS.
+        if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {
+            GEN_SHROUD_memory_destructor(
+                (GEN_SHROUD_capsule_data *) lhs_capsule);
+        }
+        lhs_capsule->addr = rhs_capsule->addr;
+        lhs_capsule->idtor = rhs_capsule->idtor;
+        lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+    }
+}

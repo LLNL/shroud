@@ -26,8 +26,12 @@ void OWN_Class1_dtor(OWN_Class1 * self)
 {
     Class1 *SH_this = static_cast<Class1 *>(self->addr);
     // splicer begin class.Class1.method.dtor
-    delete SH_this;
+    if (self->cmemflags & SWIG_MEM_OWN) {
+        delete SH_this;
+    }
     self->addr = nullptr;
+    self->idtor = 0;
+    self->cmemflags = 0;
     // splicer end class.Class1.method.dtor
 }
 

@@ -259,8 +259,8 @@ variables.  This allows creating names without conflicting with
 
 The format field is named *f_local_{name}*.
 
-helper
-^^^^^^
+f_helper
+^^^^^^^^
 
 A list of helper function names to add to generated
 Fortran code.
@@ -279,6 +279,15 @@ The format value is the helper name prefixed by *f_helper_*.
 For example,format field *f_helper_array_context* may be ``VEC_SHROUD_array``.
 
 See :ref:`HelpersAnchor` for a description of helper functions.
+
+f_operator_body
+^^^^^^^^^^^^^^^
+
+Function code used to overload an operator.
+An interface block for the operator will also be created.
+
+.. Also uses *f_type_bound* to add the operator function to the
+   derived type functions.
 
 f_need_wrapper
 ^^^^^^^^^^^^^^

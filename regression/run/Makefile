@@ -120,7 +120,7 @@ fortran-% : | $(relrunpath)/%/.. sync-cxx
 # Run a Fortran test
 .PHONY : $(fortran-test-list)
 $(fortran-test-list) : test-fortran-% : fortran-% | $(relrunpath)/%/..
-	$(call run-command,test-f,$(relrunpath)/$*,./$*)
+	$(call run-command,test-f,$(relrunpath)/$*,$(valgrind) ./$*)
 
 # Run the Fortran tests
 .PHONY : test-fortran

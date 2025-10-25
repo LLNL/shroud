@@ -10,14 +10,18 @@ program tester
   use fruit
   use iso_c_binding
   use shared_mod
+  use test_object_mod
+  use test_shared_mod
+  use test_weak_mod
   implicit none
   logical ok
-
 
   call init_fruit
 
   call test_object
-  call test_object_shared
+  call test_shared
+  call test_weak
+  call test_object_methods
 
   call fruit_summary
   call fruit_finalize
@@ -29,17 +33,7 @@ program tester
 
 contains
 
-  subroutine test_object
-    type(object) objectPtr
-
-    call set_case_name("test_object")
-
-    objectPtr = object()
-    call assert_true(objectPtr%associated())
-
-  end subroutine test_object
-
-  subroutine test_object_shared
+  subroutine test_object_methods
     type(object_shared) objectSharedPtr
     type(object_shared) childA, childB
     type(object_weak) wpA, wpB
@@ -47,7 +41,7 @@ contains
     ! use_count returns a LONG but assert_equals does not have generic for LONG.
     ! convert with int(count).
 
-    call set_case_name("test_object_shared")
+    call set_case_name("test_object_methods")
 
     objectSharedPtr = object_shared()
     call assert_true(objectSharedPtr%associated())
@@ -88,6 +82,6 @@ contains
     count = childB%use_count()
     call assert_equals(2, int(count), "childB use_count post replace")
     
-  end subroutine test_object_shared
+  end subroutine test_object_methods
 
 end program tester

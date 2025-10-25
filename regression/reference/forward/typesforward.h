@@ -19,40 +19,50 @@ extern "C" {
 // splicer begin types.C_declarations
 // splicer end types.C_declarations
 
-// helper capsule_data_helper
+// helper capsule_data
 struct s_FOR_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
+    int cmemflags;  /* memory flags */
 };
 typedef struct s_FOR_SHROUD_capsule_data FOR_SHROUD_capsule_data;
+
+enum SwigMemFlags {
+    SWIG_MEM_OWN = 0x01,
+    SWIG_MEM_RVALUE = 0x02,
+};
 #if 0
 
 // C++ capsule FOR_Class3
 struct s_FOR_Class3 {
-    forward::Class3 *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    forward::Class3 *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_FOR_Class3 FOR_Class3;
 
 // C++ capsule FOR_Class2
 struct s_FOR_Class2 {
-    forward::Class2 *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    forward::Class2 *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_FOR_Class2 FOR_Class2;
 #endif
 
 // C capsule FOR_Class3
 struct s_FOR_Class3 {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    void *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_FOR_Class3 FOR_Class3;
 
 // C capsule FOR_Class2
 struct s_FOR_Class2 {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    void *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_FOR_Class2 FOR_Class2;
 

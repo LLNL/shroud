@@ -28,19 +28,21 @@ CLA_Shape * CLA_Shape_ctor(CLA_Shape *SHC_rv)
     classes::Shape *SHCXX_rv = new classes::Shape();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 2;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     return SHC_rv;
     // splicer end class.Shape.method.ctor
 }
 
 // ----------------------------------------
 // Function:  Shape
-// Statement: f_ctor_shadow_capsule
+// Statement: f_ctor_shadow_capsule_caller
 void CLA_Shape_ctor_bufferify(CLA_Shape *SHC_rv)
 {
     // splicer begin class.Shape.method.ctor_bufferify
     classes::Shape *SHCXX_rv = new classes::Shape();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 2;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     // splicer end class.Shape.method.ctor_bufferify
 }
 
@@ -51,8 +53,12 @@ void CLA_Shape_dtor(CLA_Shape * self)
 {
     classes::Shape *SH_this = static_cast<classes::Shape *>(self->addr);
     // splicer begin class.Shape.method.dtor
-    delete SH_this;
+    if (self->cmemflags & SWIG_MEM_OWN) {
+        delete SH_this;
+    }
     self->addr = nullptr;
+    self->idtor = 0;
+    self->cmemflags = 0;
     // splicer end class.Shape.method.dtor
 }
 

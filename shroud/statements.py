@@ -64,6 +64,15 @@ class BindArg(object):
         self.fmtdict = None
         self.fstmts = None  # fstatements from YAML file
 
+    def create_meta(self):
+        self.meta = collections.defaultdict(lambda: None)
+
+    def set_bind_fmtdict(self, parent):
+        """Set the BindArg.fmtdict field."""
+        if not self.fmtdict:
+            self.fmtdict = util.Scope(parent)
+        return self.fmtdict
+        
 def fetch_var_bind(node, wlang):
     bindarg = node._bind.setdefault(wlang, BindArg())
     if bindarg.meta is None:
@@ -296,12 +305,17 @@ def apply_fmtdict_from_stmts(bind):
        f_var: "{F_string_result_as_arg}"
        i_var: "{F_string_result_as_arg}"
        c_var: "{F_string_result_as_arg}"
+       code:
+       - line 1
+       - line 2
     """
     stmts = bind.stmt
     fmt = bind.fmtdict
     
     if stmts.fmtdict is not None:
         for key, value in stmts.fmtdict.items():
+            if isinstance(value, list):
+                value = "\n".join(value)
             setattr(fmt, key, wformat(value, fmt))
     
 def compute_return_prefix(arg):
@@ -531,6 +545,7 @@ valid_intents = [
     "function", "subroutine",
     "getter", "setter",
     "ctor", "dtor",
+    "operator",
     "descr",
     "helper",
 ]
@@ -723,9 +738,13 @@ def lookup_fc_helper(name, scope="helper"):
 
 def add_json_fc_helpers(fmt):
     """Format helper entries in JSON file."""
+    cursor = error.get_cursor()
+    stmt_cursor = cursor.push_statement()
     for key, stmt in fc_dict.items():
         if key.startswith("h_helper"):
+            stmt_cursor.stmt = stmt
             whelpers.apply_fmtdict_from_helpers(stmt, fmt)
+    cursor.pop_statement()
 
 def add_statement_to_tree(tree, node):
     """Add node to tree.
@@ -946,6 +965,7 @@ CStmts = util.Scope(
     c_temps=None,
     c_local=None,
     c_need_wrapper=False,
+    c_body=None,
 
     fmtdict=None,
     helper=[],
@@ -979,6 +999,8 @@ FStmts = util.Scope(
     f_call=[],
     f_post_call=[],
     f_result_var=None,
+    f_type_bound=None,
+    f_operator_body=None,
     # bookkeeping fields
     f_module=None,
     f_temps=None,

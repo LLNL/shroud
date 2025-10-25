@@ -28,19 +28,21 @@ CLA_Circle * CLA_Circle_ctor(CLA_Circle *SHC_rv)
     classes::Circle *SHCXX_rv = new classes::Circle();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 3;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     return SHC_rv;
     // splicer end class.Circle.method.ctor
 }
 
 // ----------------------------------------
 // Function:  Circle
-// Statement: f_ctor_shadow_capsule
+// Statement: f_ctor_shadow_capsule_caller
 void CLA_Circle_ctor_bufferify(CLA_Circle *SHC_rv)
 {
     // splicer begin class.Circle.method.ctor_bufferify
     classes::Circle *SHCXX_rv = new classes::Circle();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 3;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     // splicer end class.Circle.method.ctor_bufferify
 }
 
@@ -52,8 +54,12 @@ void CLA_Circle_dtor(CLA_Circle * self)
     classes::Circle *SH_this = static_cast<classes::Circle *>
         (self->addr);
     // splicer begin class.Circle.method.dtor
-    delete SH_this;
+    if (self->cmemflags & SWIG_MEM_OWN) {
+        delete SH_this;
+    }
     self->addr = nullptr;
+    self->idtor = 0;
+    self->cmemflags = 0;
     // splicer end class.Circle.method.dtor
 }
 

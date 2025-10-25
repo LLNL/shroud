@@ -1342,7 +1342,8 @@
                 "ast": {
                     "declarator": {
                         "attrs": {
-                            "len": "30"
+                            "len": "30",
+                            "owner": "caller"
                         },
                         "name": "Function4a",
                         "params": [
@@ -1391,8 +1392,11 @@
                     ],
                     "typemap_name": "char"
                 },
-                "decl": "char *Function4a( const char *arg1, const char *arg2 ) +len(30)",
-                "declgen": "char *Function4a(const char *arg1, const char *arg2) +len(30)",
+                "decl": "char *Function4a( const char *arg1, const char *arg2 ) +len(30) +owner(caller)",
+                "declgen": "char *Function4a(const char *arg1, const char *arg2) +len(30)+owner(caller)",
+                "doxygen": {
+                    "description": "The function allocates memory with malloc which is copied into\nthe users buffer and must then be freed.\n"
+                },
                 "helpers": {
                     "fc": [
                         "char_copy"
@@ -1417,6 +1421,8 @@
                                 "F_arguments": "arg1,\t arg2",
                                 "F_subprogram": "function",
                                 "attr_len": "30",
+                                "c_cmemflags": "SWIG_MEM_OWN",
+                                "c_cmemflags_or": "SWIG_MEM_OWN | ",
                                 "c_const": "",
                                 "c_helper_char_copy": "ShroudCharCopy",
                                 "c_local_cxx": "SHC_rv_cxx",
@@ -1445,8 +1451,8 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "SHT_rv",
                                 "i_var_len": "SHT_rv_len",
-                                "idtor": "0",
-                                "stmt_name": "f_function_char*_buf_copy",
+                                "idtor": "1",
+                                "stmt_name": "f_function_char*_buf_copy_caller",
                                 "typemap_name": "char"
                             },
                             "meta": {
@@ -1454,9 +1460,10 @@
                                 "api": "buf",
                                 "deref": "copy",
                                 "intent": "function",
-                                "len": "30"
+                                "len": "30",
+                                "owner": "caller"
                             },
-                            "stmt": "f_function_char*_buf_copy"
+                            "stmt": "f_function_char*_buf_copy_caller"
                         },
                         "arg1": {
                             "fmtdict": {
@@ -1554,7 +1561,8 @@
                             "meta": {
                                 "abstract": "char*",
                                 "intent": "function",
-                                "len": "30"
+                                "len": "30",
+                                "owner": "caller"
                             },
                             "stmt": "py_function_char*"
                         },
@@ -1614,7 +1622,8 @@
                             "meta": {
                                 "abstract": "char*",
                                 "intent": "function",
-                                "len": "30"
+                                "len": "30",
+                                "owner": "caller"
                             }
                         },
                         "arg1": {

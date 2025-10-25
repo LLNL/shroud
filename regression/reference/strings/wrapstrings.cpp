@@ -154,7 +154,7 @@ void STR_getConstStringAlloc_bufferify(STR_SHROUD_array *SHT_rv_cdesc,
  */
 // ----------------------------------------
 // Function:  const string getConstStringPointer +deref(pointer)
-// Statement: f_function_string_cdesc_pointer
+// Statement: f_function_string_cdesc_pointer_caller
 void STR_getConstStringPointer_bufferify(
     STR_SHROUD_capsule_data *SHT_rv_capsule,
     STR_SHROUD_array *SHT_rv_cdesc)
@@ -178,7 +178,7 @@ void STR_getConstStringPointer_bufferify(
  */
 // ----------------------------------------
 // Function:  const string getConstStringRaw +deref(raw)
-// Statement: f_function_string_raw
+// Statement: f_function_string_raw_caller
 const char * STR_getConstStringRaw_bufferify(
     STR_SHROUD_capsule_data *SHT_rv_capsule)
 {

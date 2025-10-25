@@ -4922,16 +4922,17 @@
                                 "i_var": "nitems",
                                 "i_var_cfi": "SHT_nitems_cfi",
                                 "idtor": "0",
-                                "stmt_name": "f_out_native**_cfi_pointer",
+                                "stmt_name": "f_out_native**_cfi_pointer_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
                                 "abstract": "native**",
                                 "api": "cfi",
                                 "deref": "pointer",
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             },
-                            "stmt": "f_out_native**_cfi_pointer"
+                            "stmt": "f_out_native**_cfi_pointer_library"
                         }
                     },
                     "share": {
@@ -5159,7 +5160,7 @@
                                 "i_var_cfi": "SHT_count_cfi",
                                 "idtor": "0",
                                 "rank": "1",
-                                "stmt_name": "f_out_native**_cfi_pointer",
+                                "stmt_name": "f_out_native**_cfi_pointer_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
@@ -5175,9 +5176,10 @@
                                     "10"
                                 ],
                                 "dimension": "10",
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             },
-                            "stmt": "f_out_native**_cfi_pointer"
+                            "stmt": "f_out_native**_cfi_pointer_library"
                         }
                     },
                     "share": {
@@ -5467,7 +5469,7 @@
                                 "i_var_cfi": "SHT_count_cfi",
                                 "idtor": "0",
                                 "rank": "1",
-                                "stmt_name": "f_out_native**_cfi_pointer",
+                                "stmt_name": "f_out_native**_cfi_pointer_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
@@ -5483,9 +5485,10 @@
                                     "ncount"
                                 ],
                                 "dimension": "ncount",
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             },
-                            "stmt": "f_out_native**_cfi_pointer"
+                            "stmt": "f_out_native**_cfi_pointer_library"
                         },
                         "ncount": {
                             "fmtdict": {
@@ -5766,7 +5769,7 @@
                                 "i_var_cfi": "SHT_count_cfi",
                                 "idtor": "0",
                                 "rank": "1",
-                                "stmt_name": "f_out_native**_cfi_pointer",
+                                "stmt_name": "f_out_native**_cfi_pointer_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
@@ -5783,9 +5786,10 @@
                                     "getLen()"
                                 ],
                                 "dimension": "getLen()",
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             },
-                            "stmt": "f_out_native**_cfi_pointer"
+                            "stmt": "f_out_native**_cfi_pointer_library"
                         }
                     },
                     "share": {
@@ -6002,16 +6006,17 @@
                                 "i_var": "nitems",
                                 "i_var_cfi": "SHT_nitems_cfi",
                                 "idtor": "0",
-                                "stmt_name": "f_out_native**_cfi_pointer",
+                                "stmt_name": "f_out_native**_cfi_pointer_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
                                 "abstract": "native**",
                                 "api": "cfi",
                                 "deref": "pointer",
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             },
-                            "stmt": "f_out_native**_cfi_pointer"
+                            "stmt": "f_out_native**_cfi_pointer_library"
                         }
                     },
                     "share": {
@@ -6237,7 +6242,7 @@
                                 "i_var_cfi": "SHT_count_cfi",
                                 "idtor": "0",
                                 "rank": "1",
-                                "stmt_name": "f_out_native**_cfi_pointer",
+                                "stmt_name": "f_out_native**_cfi_pointer_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
@@ -6253,9 +6258,10 @@
                                     "10"
                                 ],
                                 "dimension": "10",
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             },
-                            "stmt": "f_out_native**_cfi_pointer"
+                            "stmt": "f_out_native**_cfi_pointer_library"
                         }
                     },
                     "share": {
@@ -6543,7 +6549,7 @@
                                 "i_var_cfi": "SHT_count_cfi",
                                 "idtor": "0",
                                 "rank": "1",
-                                "stmt_name": "f_out_native**_cfi_pointer",
+                                "stmt_name": "f_out_native**_cfi_pointer_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
@@ -6559,9 +6565,10 @@
                                     "ncount"
                                 ],
                                 "dimension": "ncount",
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             },
-                            "stmt": "f_out_native**_cfi_pointer"
+                            "stmt": "f_out_native**_cfi_pointer_library"
                         },
                         "ncount": {
                             "fmtdict": {
@@ -6797,15 +6804,16 @@
                                 "i_type": "integer(C_INT)",
                                 "i_var": "nitems",
                                 "idtor": "0",
-                                "stmt_name": "f_out_native**_raw",
+                                "stmt_name": "f_out_native**_raw_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
                                 "abstract": "native**",
                                 "deref": "raw",
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             },
-                            "stmt": "f_out_native**_raw"
+                            "stmt": "f_out_native**_raw_library"
                         }
                     },
                     "share": {
@@ -6992,15 +7000,16 @@
                                 "i_type": "integer(C_INT)",
                                 "i_var": "nitems",
                                 "idtor": "0",
-                                "stmt_name": "f_out_native**_raw",
+                                "stmt_name": "f_out_native**_raw_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
                                 "abstract": "native**",
                                 "deref": "raw",
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             },
-                            "stmt": "f_out_native**_raw"
+                            "stmt": "f_out_native**_raw_library"
                         }
                     },
                     "share": {
@@ -7184,15 +7193,16 @@
                                 "i_type": "integer(C_INT)",
                                 "i_var": "count",
                                 "idtor": "0",
-                                "stmt_name": "f_out_native**_raw",
+                                "stmt_name": "f_out_native**_raw_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
                                 "abstract": "native**",
                                 "deref": "raw",
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             },
-                            "stmt": "f_out_native**_raw"
+                            "stmt": "f_out_native**_raw_library"
                         }
                     },
                     "share": {
@@ -7379,15 +7389,16 @@
                                 "i_type": "integer(C_INT)",
                                 "i_var": "count",
                                 "idtor": "0",
-                                "stmt_name": "f_out_native**_raw",
+                                "stmt_name": "f_out_native**_raw_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
                                 "abstract": "native**",
                                 "deref": "raw",
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             },
-                            "stmt": "f_out_native**_raw"
+                            "stmt": "f_out_native**_raw_library"
                         }
                     },
                     "share": {
@@ -7575,15 +7586,16 @@
                                 "i_type": "integer(C_INT)",
                                 "i_var": "arg",
                                 "idtor": "0",
-                                "stmt_name": "f_out_native***_raw",
+                                "stmt_name": "f_out_native***_raw_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
                                 "abstract": "native***",
                                 "deref": "raw",
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             },
-                            "stmt": "f_out_native***_raw"
+                            "stmt": "f_out_native***_raw_library"
                         }
                     },
                     "share": {
@@ -9484,16 +9496,17 @@
                                 "i_var": "SHT_rv",
                                 "i_var_cfi": "SHT_rv_cfi",
                                 "idtor": "0",
-                                "stmt_name": "f_function_native*_cfi_pointer",
+                                "stmt_name": "f_function_native*_cfi_pointer_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
                                 "abstract": "native*",
                                 "api": "cfi",
                                 "deref": "pointer",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_native*_cfi_pointer"
+                            "stmt": "f_function_native*_cfi_pointer_library"
                         }
                     },
                     "share": {
@@ -9658,7 +9671,7 @@
                                 "i_var_cfi": "SHT_rv_cfi",
                                 "idtor": "0",
                                 "rank": "1",
-                                "stmt_name": "f_function_native*_cfi_pointer",
+                                "stmt_name": "f_function_native*_cfi_pointer_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
@@ -9674,9 +9687,10 @@
                                     "10"
                                 ],
                                 "dimension": "10",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_native*_cfi_pointer"
+                            "stmt": "f_function_native*_cfi_pointer_library"
                         }
                     },
                     "share": {
@@ -9828,16 +9842,17 @@
                                 "i_var": "SHT_rv",
                                 "i_var_cfi": "SHT_rv_cfi",
                                 "idtor": "0",
-                                "stmt_name": "f_function_native*_cfi_pointer",
+                                "stmt_name": "f_function_native*_cfi_pointer_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
                                 "abstract": "native*",
                                 "api": "cfi",
                                 "deref": "pointer",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_native*_cfi_pointer"
+                            "stmt": "f_function_native*_cfi_pointer_library"
                         }
                     },
                     "share": {
@@ -10003,7 +10018,7 @@
                                 "i_var_cfi": "SHT_rv_cfi",
                                 "idtor": "0",
                                 "rank": "1",
-                                "stmt_name": "f_function_native*_cfi_pointer",
+                                "stmt_name": "f_function_native*_cfi_pointer_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
@@ -10019,9 +10034,10 @@
                                     "10"
                                 ],
                                 "dimension": "10",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_native*_cfi_pointer"
+                            "stmt": "f_function_native*_cfi_pointer_library"
                         }
                     },
                     "share": {
@@ -10289,15 +10305,16 @@
                                 "i_type": "integer(C_INT)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
-                                "stmt_name": "f_function_native*_raw",
+                                "stmt_name": "f_function_native*_raw_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
                                 "abstract": "native*",
                                 "deref": "raw",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_native*_raw"
+                            "stmt": "f_function_native*_raw_library"
                         }
                     },
                     "share": {
@@ -10494,15 +10511,16 @@
                                 "i_type": "integer(C_INT)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
-                                "stmt_name": "f_function_native*_raw",
+                                "stmt_name": "f_function_native*_raw_library",
                                 "typemap_name": "int"
                             },
                             "meta": {
                                 "abstract": "native*",
                                 "deref": "raw",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_native*_raw"
+                            "stmt": "f_function_native*_raw_library"
                         },
                         "name": {
                             "fmtdict": {

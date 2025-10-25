@@ -41,6 +41,57 @@ void CXX_SHROUD_memory_destructor(CXX_SHROUD_capsule_data *cap)
     cap->idtor = 0;  // avoid deleting again
 }
 
+// Statement: f_operator_assignment_shadow
+// Class1 = Class1
+void CXX_Class1_assign_Class1(CXX_Class1 *lhs_capsule,
+    CXX_Class1 *rhs_capsule)
+{
+    if (lhs_capsule->addr == nullptr) {
+        /* LHS is unassigned */
+        if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {
+            // Capture pointer from RHS, clear 'moving' flag.
+            lhs_capsule->addr = rhs_capsule->addr;
+            lhs_capsule->idtor = rhs_capsule->idtor;
+            lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+        } else {
+            // Aliasing another class; clear ownership.
+            lhs_capsule->addr = rhs_capsule->addr;
+            lhs_capsule->idtor = 0;
+            lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_OWN;
+        }
+    } else if (rhs_capsule->addr == nullptr) {
+        // Replace LHS with a null pointer.
+        if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {
+            CXX_SHROUD_memory_destructor(
+                (CXX_SHROUD_capsule_data *) lhs_capsule);
+        }
+        lhs_capsule->addr = nullptr;
+        lhs_capsule->idtor = 0;
+        lhs_capsule->cmemflags = 0;
+    } else if (lhs_capsule->addr == rhs_capsule->addr) {
+        // Lhs-assignment: ignore.
+    } else if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {
+        // Transferred ownership from a variable that's about to be lost.
+        // Move-assign and delete the transient data.
+        if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {
+            CXX_SHROUD_memory_destructor(
+                (CXX_SHROUD_capsule_data *) lhs_capsule);
+        }
+        lhs_capsule->addr = rhs_capsule->addr;
+        lhs_capsule->idtor = rhs_capsule->idtor;
+        lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+    } else {
+        // RHS shouldn't be deleted, alias to LHS.
+        if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {
+            CXX_SHROUD_memory_destructor(
+                (CXX_SHROUD_capsule_data *) lhs_capsule);
+        }
+        lhs_capsule->addr = rhs_capsule->addr;
+        lhs_capsule->idtor = rhs_capsule->idtor;
+        lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+    }
+}
+
 #ifdef __cplusplus
 }
 #endif

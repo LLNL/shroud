@@ -22,6 +22,7 @@ VPATH = \
 
 C_OBJS = \
     classes.o \
+    utilclasses.o \
     wrapclasses.o \
     wrapClass1.o \
     wrapClass2.o \

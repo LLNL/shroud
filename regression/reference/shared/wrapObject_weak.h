@@ -26,8 +26,11 @@ extern "C" {
 // splicer begin class.Object.C_declarations
 // splicer end class.Object.C_declarations
 
-void SHA_Object_weak_assign_weak(SHA_Object_weak * self,
-    SHA_Object_shared *from);
+SHA_Object_weak * SHA_Object_weak_ctor(SHA_Object_weak *SHC_rv);
+
+void SHA_Object_weak_ctor_bufferify(SHA_Object_weak *SHC_rv);
+
+void SHA_Object_weak_dtor(SHA_Object_weak * self);
 
 long SHA_Object_weak_use_count(SHA_Object_weak * self);
 

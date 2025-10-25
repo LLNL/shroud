@@ -12,6 +12,8 @@ import copy
 
 from . import error
 from . import declast
+from .declstr import gen_decl
+from . import fcmem
 from . import statements
 from . import todict
 from . import typemap
@@ -78,6 +80,12 @@ class WrapFlags(object):
         aflags = ",".join(flags)
         return "WrapFlags({})".format(aflags)
 
+# Migrate upper case options to lower case format fields
+mapcase = dict(
+    C_capsule_data_type="c_capsule_data_type",
+    F_capsule_data_type="f_capsule_data_type",
+)
+    
 
 class AstNode(object):
     is_class = False
@@ -88,14 +96,16 @@ class AstNode(object):
             fmt = self.fmtdict
         if not fmt.inlocal(name):
             tname = name + tname + "_template"
-            setattr(fmt, name, wformat(self.options[tname], fmt))
+            lowername = mapcase.get(name, name)
+            setattr(fmt, lowername, wformat(self.options[tname], fmt))
 
     def reeval_template(self, name, tname="", fmt=None):
         """Always evaluate template."""
         if fmt is None:
             fmt = self.fmtdict
         tname = name + tname + "_template"
-        setattr(fmt, name, util.wformat(self.options[tname], fmt))
+        lowername = mapcase.get(name, name)
+        setattr(fmt, lowername, util.wformat(self.options[tname], fmt))
 
     def set_fmt_default(self, name, value, fmt=None):
         """Set a fmt value unless already set."""
@@ -445,6 +455,8 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.scope = ""
         self.scope_file = [library]
 
+        self.assign_operators = []
+
         self.options = self.default_options()
         if options:
             self.options.update(options, replace=True)
@@ -458,6 +470,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.copyright = kwargs.get("copyright", [])
         self.patterns = kwargs.get("patterns", {})
         self.destructors = kwargs.get("destructors", {})
+        self.capsule_format = fcmem.CapsuleFmt(self)
 
         # Convert file_code into typemaps to use in class util.Headers.
         # This feels like a kludge and should be refined.
@@ -506,6 +519,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             debug=False,  # print additional debug info
             debug_index=False,  # print function indexes. debug must also be True.
             debug_testsuite=False,
+            default_owner="library",
             # They change when a function is inserted.
             flatten_namespace=False,
             wrap_class_as="class",
@@ -516,6 +530,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_force_wrapper=False,
             C_line_length=72,
             F_CFI=False,    # TS29113 C Fortran Interoperability
+            F_assignment_api="swig",  # basic, swig, rca
             F_assumed_rank_min=0,
             F_assumed_rank_max=7,
             F_blanknull=False,
@@ -538,7 +553,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_standard=2003,
             F_struct_getter_setter=True,
             F_trim_char_in=True,
-            F_auto_reference_count=False,
             F_create_generic=True,
             # wrap options are set in by command line options in main.py
 #            wrap_c=True,
@@ -554,6 +568,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             YAML_type_filename_template="{library_lower}_types.yaml",
 
             C_API_case="preserve",
+            C_capsule_data_type_template="{C_prefix}SHROUD_capsule_data",
             C_header_filename_library_template="wrap{library}.{C_header_filename_suffix}",
             C_impl_filename_library_template="wrap{library}.{C_impl_filename_suffix}",
 
@@ -706,10 +721,14 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_bufferify_suffix="_bufferify",
             C_cfi_suffix="_CFI",
             C_call_list="",
+            # Default cmemflags to meta[owner]=library - do not release.
+            c_cmemflags="0",    # "SWIG_MEM_OWN",
+            c_cmemflags_or="",  # "SWIG_MEM_OWN | ",
             C_prefix=C_prefix,
             C_result="rv",  # return value
             c_temp="SHT_",
             C_local="SHC_",
+            C_name_assign="assign",
             C_name_scope = "",
             C_name_typedef="",
             C_this="self",
@@ -909,14 +928,13 @@ class LibraryNode(AstNode, NamespaceMixin):
         # default some format strings based on other format strings
         self.set_fmt_default("C_array_type",
                              fmt_library.C_prefix + "SHROUD_array")
-        self.set_fmt_default("C_capsule_data_type",
-                             fmt_library.C_prefix + "SHROUD_capsule_data")
 
         self.eval_template("C_header_filename", "_library")
         self.eval_template("C_impl_filename", "_library")
         self.eval_template("C_header_utility")
         self.eval_template("C_impl_utility")
 
+        self.eval_template("C_capsule_data_type")
         self.eval_template("C_memory_dtor_function")
 
         self.eval_template("F_array_type")
@@ -1000,6 +1018,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
         self.cxx_header = cxx_header.split()
         self.nodename = "namespace"
         self.linenumber = kwargs.get("__line__", "?")
+        self.assign_operators = []
 
         if not decl:
             raise RuntimeError("NamespaceNode missing decl");
@@ -1166,6 +1185,7 @@ class ClassNode(AstNode, NamespaceMixin):
         self.python = kwargs.get("python", {})
         self.cpp_if = kwargs.get("cpp_if", None)
         self.C_shared_class = False        # True if subclass of smart_pointer
+        self.shared_baseclass = None
 
         self.options = util.Scope(parent=parent.options)
         if options:
@@ -1483,11 +1503,10 @@ class FunctionNode(AstNode):
                         FortranGeneric('float arg') ]
 
     A list of helpers for the function derived from statements.
-    helpers = {
-      'c': {
+    fcn_helpers = {
+      'fc': {
             name = True,
            }
-      'f': {},
     }
 
     C_signature - statement.index signature of C wrapper.
@@ -1550,7 +1569,7 @@ class FunctionNode(AstNode):
         self.doxygen = kwargs.get("doxygen", {})
         self.fortran_generic = kwargs.get("fortran_generic", [])
         self.return_this = kwargs.get("return_this", False)
-        self.helpers = {}
+        self.fcn_helpers = {}
 
         # Headers required by template arguments.
         self.gen_headers_typedef = {}
@@ -1590,7 +1609,7 @@ class FunctionNode(AstNode):
             raise RuntimeError("Expected a function declaration")
         if ast.declarator.params is None:
             # 'void foo' instead of 'void foo()'
-            raise RuntimeError("Missing arguments to function:", ast.gen_decl())
+            raise RuntimeError("Missing arguments to function:", gen_decl(ast))
         self.ast = ast
         declarator = ast.declarator
         self.name = declarator.user_name
@@ -2575,7 +2594,7 @@ deprecated_formats = dict(
     F_string_result_as_arg=dict(
         new="option.F_result_as_arg",
         details=[
-            "Instead add attribute +funcarg(name)+deref(copy) to decl.",
+            "Add attribute +funcarg(name)+deref(copy) to decl.",
             "Option F_result_as_arg is the default name when not specified in +funcarg."
         ]
     )

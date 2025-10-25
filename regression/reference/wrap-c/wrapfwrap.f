@@ -19,14 +19,16 @@ module wrap_mod
     ! splicer begin module_top
     ! splicer end module_top
 
-    ! helper capsule_data_helper
+    ! helper capsule_data
     type, bind(C) :: WRA_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: cmemflags = 0   ! memory flags
     end type WRA_SHROUD_capsule_data
 
     type class1
-        type(WRA_SHROUD_capsule_data) :: cxxmem
+        type(WRA_SHROUD_capsule_data) :: cxxmem = &
+            WRA_SHROUD_capsule_data()
         ! splicer begin class.Class1.component_part
         ! splicer end class.Class1.component_part
     contains

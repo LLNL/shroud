@@ -19,14 +19,16 @@ module name_module
     ! splicer begin namespace.ns0.module_top
     ! splicer end namespace.ns0.module_top
 
-    ! helper capsule_data_helper
+    ! helper capsule_data
     type, bind(C) :: TES_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: cmemflags = 0   ! memory flags
     end type TES_SHROUD_capsule_data
 
     type FNames
-        type(TES_SHROUD_capsule_data) :: cxxmem
+        type(TES_SHROUD_capsule_data) :: cxxmem = &
+            TES_SHROUD_capsule_data()
         ! splicer begin namespace.ns0.class.Names.component_part
         ! splicer end namespace.ns0.class.Names.component_part
     contains
@@ -47,6 +49,10 @@ module name_module
         module procedure names_ne
     end interface
 
+    interface assignment (=)
+        module procedure names_assign_Names
+    end interface
+
     interface
 
         ! ----------------------------------------
@@ -64,7 +70,7 @@ module name_module
 
         ! ----------------------------------------
         ! Function:  Names +name(defaultctor)
-        ! Statement: f_ctor_shadow_capsule
+        ! Statement: f_ctor_shadow_capsule_caller
         subroutine XXX_TES_names_defaultctor_bufferify(SHT_rv) &
                 bind(C, name="XXX_TES_ns0_Names_defaultctor_bufferify")
             import :: TES_SHROUD_capsule_data
@@ -104,7 +110,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Names +name(defaultctor)
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     function names_defaultctor() &
             result(SHT_rv)
         type(FNames) :: SHT_rv
@@ -158,6 +164,23 @@ contains
 
     ! splicer begin namespace.ns0.class.Names.additional_functions
     ! splicer end namespace.ns0.class.Names.additional_functions
+
+    ! Statement: f_operator_assignment_shadow
+    ! ns0::Names = ns0::Names
+    subroutine names_assign_Names(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(FNames), intent(INOUT) :: lhs
+        type(FNames), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="XXX_TES_ns0_Names_assign_Names")
+                import :: TES_SHROUD_capsule_data
+                type(TES_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(TES_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine names_assign_Names
 
     ! splicer begin namespace.ns0.additional_functions
     ! splicer end namespace.ns0.additional_functions

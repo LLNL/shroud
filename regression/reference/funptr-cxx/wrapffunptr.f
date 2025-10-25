@@ -118,7 +118,7 @@ module funptr_mod
 
         ! ----------------------------------------
         ! Function:  int *get_ptr
-        ! Statement: f_function_native*_pointer
+        ! Statement: f_function_native*_pointer_library
         function callback_ptr_get_ptr() &
             result(SHT_rv) bind(C)
             use iso_c_binding, only : C_PTR

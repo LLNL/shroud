@@ -67,10 +67,11 @@ module cxxlibrary_mod
         integer(C_LONG) :: shape(7) = 0
     end type CXX_SHROUD_array
 
-    ! helper capsule_data_helper
+    ! helper capsule_data
     type, bind(C) :: CXX_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: cmemflags = 0   ! memory flags
     end type CXX_SHROUD_capsule_data
 
     ! typedef LengthType
@@ -88,7 +89,8 @@ module cxxlibrary_mod
     end type nested
 
     type class1
-        type(CXX_SHROUD_capsule_data) :: cxxmem
+        type(CXX_SHROUD_capsule_data) :: cxxmem = &
+            CXX_SHROUD_capsule_data()
         ! splicer begin class.Class1.component_part
         ! splicer end class.Class1.component_part
     contains
@@ -117,6 +119,10 @@ module cxxlibrary_mod
         module procedure class1_ne
     end interface
 
+    interface assignment (=)
+        module procedure class1_assign_Class1
+    end interface
+
     interface
 
         ! ----------------------------------------
@@ -134,7 +140,7 @@ module cxxlibrary_mod
 
         ! ----------------------------------------
         ! Function:  Class1
-        ! Statement: f_ctor_shadow_capsule
+        ! Statement: f_ctor_shadow_capsule_caller
         subroutine c_class1_ctor_bufferify(SHT_rv) &
                 bind(C, name="CXX_Class1_ctor_bufferify")
             import :: CXX_SHROUD_capsule_data
@@ -484,7 +490,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     function class1_ctor() &
             result(SHT_rv)
         type(class1) :: SHT_rv
@@ -902,6 +908,23 @@ contains
         ! splicer end function.nested_set_array
     end subroutine nested_set_array
 #endif
+
+    ! Statement: f_operator_assignment_shadow
+    ! Class1 = Class1
+    subroutine class1_assign_Class1(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(class1), intent(INOUT) :: lhs
+        type(class1), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="CXX_Class1_assign_Class1")
+                import :: CXX_SHROUD_capsule_data
+                type(CXX_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(CXX_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine class1_assign_Class1
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

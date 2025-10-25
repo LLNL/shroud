@@ -19,18 +19,21 @@ module shared_mod
     ! splicer begin module_top
     ! splicer end module_top
 
-    ! helper capsule_data_helper
+    ! helper capsule_data
     type, bind(C) :: SHA_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: cmemflags = 0   ! memory flags
     end type SHA_SHROUD_capsule_data
 
     type object
-        type(SHA_SHROUD_capsule_data) :: cxxmem
+        type(SHA_SHROUD_capsule_data) :: cxxmem = &
+            SHA_SHROUD_capsule_data()
         ! splicer begin class.Object.component_part
         ! splicer end class.Object.component_part
     contains
         procedure :: dtor => object_dtor
+        procedure :: get_id => object_get_id
         procedure :: create_child_a => object_create_child_a
         procedure :: create_child_b => object_create_child_b
         procedure :: replace_child_b => object_replace_child_b
@@ -41,28 +44,36 @@ module shared_mod
         ! splicer end class.Object.type_bound_procedure_part
     end type object
 
-    type, extends(object) :: object_shared
+    type object_shared
+        type(SHA_SHROUD_capsule_data) :: cxxmem = &
+            SHA_SHROUD_capsule_data()
         ! splicer begin class.Object_shared.component_part
         ! splicer end class.Object_shared.component_part
     contains
-        procedure :: dtor => object_shared_dtor
+        procedure :: get_id => object_shared_get_id
         procedure :: create_child_a => object_shared_create_child_a
         procedure :: create_child_b => object_shared_create_child_b
         procedure :: replace_child_b => object_shared_replace_child_b
+        procedure :: dtor => object_shared_dtor
         procedure :: use_count => object_shared_use_count
-        final :: object_shared_final
+        procedure :: get_instance => object_shared_get_instance
+        procedure :: set_instance => object_shared_set_instance
+        procedure :: associated => object_shared_associated
         ! splicer begin class.Object_shared.type_bound_procedure_part
         ! splicer end class.Object_shared.type_bound_procedure_part
     end type object_shared
 
-    type, extends(object) :: object_weak
+    type object_weak
+        type(SHA_SHROUD_capsule_data) :: cxxmem = &
+            SHA_SHROUD_capsule_data()
         ! splicer begin class.Object_weak.component_part
         ! splicer end class.Object_weak.component_part
     contains
-        procedure :: assign_weak => object_weak_assign_weak
-        generic :: assignment(=) => assign_weak
+        procedure :: dtor => object_weak_dtor
         procedure :: use_count => object_weak_use_count
-        final :: object_weak_final
+        procedure :: get_instance => object_weak_get_instance
+        procedure :: set_instance => object_weak_set_instance
+        procedure :: associated => object_weak_associated
         ! splicer begin class.Object_weak.type_bound_procedure_part
         ! splicer end class.Object_weak.type_bound_procedure_part
     end type object_weak
@@ -77,6 +88,14 @@ module shared_mod
         module procedure object_ne
         module procedure object_shared_ne
         module procedure object_weak_ne
+    end interface
+
+    interface assignment (=)
+        module procedure object_assign_Object
+        module procedure object_shared_assign_Object_shared
+        module procedure object_shared_assign_Object
+        module procedure object_weak_assign_Object_weak
+        module procedure object_weak_assign_Object_shared
     end interface
 
     interface
@@ -96,7 +115,7 @@ module shared_mod
 
         ! ----------------------------------------
         ! Function:  Object
-        ! Statement: f_ctor_shadow_capsule
+        ! Statement: f_ctor_shadow_capsule_caller
         subroutine c_object_ctor_bufferify(SHT_rv) &
                 bind(C, name="SHA_Object_ctor_bufferify")
             import :: SHA_SHROUD_capsule_data
@@ -113,6 +132,19 @@ module shared_mod
             implicit none
             type(SHA_SHROUD_capsule_data), intent(INOUT) :: self
         end subroutine c_object_dtor
+
+        ! ----------------------------------------
+        ! Function:  int get_id
+        ! Statement: f_function_native
+        function c_object_get_id(self) &
+                result(SHT_rv) &
+                bind(C, name="SHA_Object_get_id")
+            use iso_c_binding, only : C_INT
+            import :: SHA_SHROUD_capsule_data
+            implicit none
+            type(SHA_SHROUD_capsule_data), intent(IN) :: self
+            integer(C_INT) :: SHT_rv
+        end function c_object_get_id
 
         ! ----------------------------------------
         ! Function:  std::shared_ptr<Object> *createChildA
@@ -179,37 +211,17 @@ module shared_mod
         end subroutine c_object_replace_child_b
 
         ! ----------------------------------------
-        ! Function:  Object
-        ! Statement: c_ctor_shadow_capptr_shared
-        function c_object_shared_ctor(SHT_rv) &
-                result(SHT_rv_ptr) &
-                bind(C, name="SHA_Object_shared_ctor")
-            use iso_c_binding, only : C_PTR
+        ! Function:  int get_id
+        ! Statement: f_function_native
+        function c_object_shared_get_id(self) &
+                result(SHT_rv) &
+                bind(C, name="SHA_Object_shared_get_id")
+            use iso_c_binding, only : C_INT
             import :: SHA_SHROUD_capsule_data
             implicit none
-            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_rv_ptr
-        end function c_object_shared_ctor
-
-        ! ----------------------------------------
-        ! Function:  Object
-        ! Statement: f_ctor_shadow_capsule_shared
-        subroutine c_object_shared_ctor_bufferify(SHT_rv) &
-                bind(C, name="SHA_Object_shared_ctor_bufferify")
-            import :: SHA_SHROUD_capsule_data
-            implicit none
-            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-        end subroutine c_object_shared_ctor_bufferify
-
-        ! ----------------------------------------
-        ! Function:  ~Object
-        ! Statement: f_dtor
-        subroutine c_object_shared_dtor(self) &
-                bind(C, name="SHA_Object_shared_dtor")
-            import :: SHA_SHROUD_capsule_data
-            implicit none
-            type(SHA_SHROUD_capsule_data), intent(INOUT) :: self
-        end subroutine c_object_shared_dtor
+            type(SHA_SHROUD_capsule_data), intent(IN) :: self
+            integer(C_INT) :: SHT_rv
+        end function c_object_shared_get_id
 
         ! ----------------------------------------
         ! Function:  std::shared_ptr<Object> *createChildA
@@ -278,6 +290,39 @@ module shared_mod
         end subroutine c_object_shared_replace_child_b
 
         ! ----------------------------------------
+        ! Function:  Object
+        ! Statement: c_ctor_shadow_capptr_shared
+        function c_object_shared_ctor(SHT_rv) &
+                result(SHT_rv_ptr) &
+                bind(C, name="SHA_Object_shared_ctor")
+            use iso_c_binding, only : C_PTR
+            import :: SHA_SHROUD_capsule_data
+            implicit none
+            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+            type(C_PTR) :: SHT_rv_ptr
+        end function c_object_shared_ctor
+
+        ! ----------------------------------------
+        ! Function:  Object
+        ! Statement: f_ctor_shadow_capsule_shared
+        subroutine c_object_shared_ctor_bufferify(SHT_rv) &
+                bind(C, name="SHA_Object_shared_ctor_bufferify")
+            import :: SHA_SHROUD_capsule_data
+            implicit none
+            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_object_shared_ctor_bufferify
+
+        ! ----------------------------------------
+        ! Function:  ~Object
+        ! Statement: f_dtor
+        subroutine c_object_shared_dtor(self) &
+                bind(C, name="SHA_Object_shared_dtor")
+            import :: SHA_SHROUD_capsule_data
+            implicit none
+            type(SHA_SHROUD_capsule_data), intent(INOUT) :: self
+        end subroutine c_object_shared_dtor
+
+        ! ----------------------------------------
         ! Function:  long use_count
         ! Statement: f_function_native
         function c_object_shared_use_count(self) &
@@ -291,18 +336,37 @@ module shared_mod
         end function c_object_shared_use_count
 
         ! ----------------------------------------
-        ! Function:  void assign_weak +custom(weakptr)+operator(assignment)
-        ! Statement: f_subroutine_assignment_weakptr
-        ! ----------------------------------------
-        ! Argument:  std::shared_ptr<Object> *from +intent(in)
-        ! Statement: f_in_smartptr<shadow>*
-        subroutine c_object_weak_assign_weak(self, from) &
-                bind(C, name="SHA_Object_weak_assign_weak")
+        ! Function:  Object
+        ! Statement: c_ctor_shadow_capptr_weak
+        function c_object_weak_ctor(SHT_rv) &
+                result(SHT_rv_ptr) &
+                bind(C, name="SHA_Object_weak_ctor")
+            use iso_c_binding, only : C_PTR
             import :: SHA_SHROUD_capsule_data
             implicit none
-            type(SHA_SHROUD_capsule_data), intent(IN) :: self
-            type(SHA_SHROUD_capsule_data), intent(IN) :: from
-        end subroutine c_object_weak_assign_weak
+            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+            type(C_PTR) :: SHT_rv_ptr
+        end function c_object_weak_ctor
+
+        ! ----------------------------------------
+        ! Function:  Object
+        ! Statement: f_ctor_shadow_capsule_weak
+        subroutine c_object_weak_ctor_bufferify(SHT_rv) &
+                bind(C, name="SHA_Object_weak_ctor_bufferify")
+            import :: SHA_SHROUD_capsule_data
+            implicit none
+            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_object_weak_ctor_bufferify
+
+        ! ----------------------------------------
+        ! Function:  ~Object
+        ! Statement: f_dtor
+        subroutine c_object_weak_dtor(self) &
+                bind(C, name="SHA_Object_weak_dtor")
+            import :: SHA_SHROUD_capsule_data
+            implicit none
+            type(SHA_SHROUD_capsule_data), intent(INOUT) :: self
+        end subroutine c_object_weak_dtor
 
         ! ----------------------------------------
         ! Function:  long use_count
@@ -316,6 +380,46 @@ module shared_mod
             type(SHA_SHROUD_capsule_data), intent(IN) :: self
             integer(C_LONG) :: SHT_rv
         end function c_object_weak_use_count
+
+        ! ----------------------------------------
+        ! Function:  void reset_id
+        ! Statement: f_subroutine
+        subroutine reset_id() &
+                bind(C, name="SHA_reset_id")
+            implicit none
+        end subroutine reset_id
+
+        ! ----------------------------------------
+        ! Function:  int use_count
+        ! Statement: f_function_native
+        ! ----------------------------------------
+        ! Argument:  const std::shared_ptr<Object> *f
+        ! Statement: f_in_smartptr<shadow>*
+        function c_use_count_0(f) &
+                result(SHT_rv) &
+                bind(C, name="SHA_use_count_0")
+            use iso_c_binding, only : C_INT
+            import :: SHA_SHROUD_capsule_data
+            implicit none
+            type(SHA_SHROUD_capsule_data), intent(IN) :: f
+            integer(C_INT) :: SHT_rv
+        end function c_use_count_0
+
+        ! ----------------------------------------
+        ! Function:  int use_count
+        ! Statement: f_function_native
+        ! ----------------------------------------
+        ! Argument:  const std::weak_ptr<Object> *f
+        ! Statement: f_in_smartptr<shadow>*
+        function c_use_count_1(f) &
+                result(SHT_rv) &
+                bind(C, name="SHA_use_count_1")
+            use iso_c_binding, only : C_INT
+            import :: SHA_SHROUD_capsule_data
+            implicit none
+            type(SHA_SHROUD_capsule_data), intent(IN) :: f
+            integer(C_INT) :: SHT_rv
+        end function c_use_count_1
     end interface
 
     interface object
@@ -326,6 +430,15 @@ module shared_mod
         module procedure object_shared_ctor
     end interface object_shared
 
+    interface object_weak
+        module procedure object_weak_ctor
+    end interface object_weak
+
+    interface use_count
+        module procedure use_count_0
+        module procedure use_count_1
+    end interface use_count
+
     ! splicer begin additional_declarations
     ! splicer end additional_declarations
 
@@ -333,7 +446,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Object
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     function object_ctor() &
             result(SHT_rv)
         type(object) :: SHT_rv
@@ -351,6 +464,19 @@ contains
         call c_object_dtor(obj%cxxmem)
         ! splicer end class.Object.method.dtor
     end subroutine object_dtor
+
+    ! ----------------------------------------
+    ! Function:  int get_id
+    ! Statement: f_function_native
+    function object_get_id(obj) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        class(object), intent(INOUT) :: obj
+        integer(C_INT) :: SHT_rv
+        ! splicer begin class.Object.method.get_id
+        SHT_rv = c_object_get_id(obj%cxxmem)
+        ! splicer end class.Object.method.get_id
+    end function object_get_id
 
     ! ----------------------------------------
     ! Function:  std::shared_ptr<Object> *createChildA
@@ -419,25 +545,17 @@ contains
     ! splicer end class.Object.additional_functions
 
     ! ----------------------------------------
-    ! Function:  Object
-    ! Statement: f_ctor_shadow_capsule_shared
-    function object_shared_ctor() &
+    ! Function:  int get_id
+    ! Statement: f_function_native
+    function object_shared_get_id(obj) &
             result(SHT_rv)
-        type(object_shared) :: SHT_rv
-        ! splicer begin class.Object_shared.method.ctor
-        call c_object_shared_ctor_bufferify(SHT_rv%cxxmem)
-        ! splicer end class.Object_shared.method.ctor
-    end function object_shared_ctor
-
-    ! ----------------------------------------
-    ! Function:  ~Object
-    ! Statement: f_dtor
-    subroutine object_shared_dtor(obj)
+        use iso_c_binding, only : C_INT
         class(object_shared), intent(INOUT) :: obj
-        ! splicer begin class.Object_shared.method.dtor
-        call c_object_shared_dtor(obj%cxxmem)
-        ! splicer end class.Object_shared.method.dtor
-    end subroutine object_shared_dtor
+        integer(C_INT) :: SHT_rv
+        ! splicer begin class.Object_shared.method.get_id
+        SHT_rv = c_object_shared_get_id(obj%cxxmem)
+        ! splicer end class.Object_shared.method.get_id
+    end function object_shared_get_id
 
     ! ----------------------------------------
     ! Function:  std::shared_ptr<Object> *createChildA
@@ -480,6 +598,27 @@ contains
     end subroutine object_shared_replace_child_b
 
     ! ----------------------------------------
+    ! Function:  Object
+    ! Statement: f_ctor_shadow_capsule_shared
+    function object_shared_ctor() &
+            result(SHT_rv)
+        type(object_shared) :: SHT_rv
+        ! splicer begin class.Object_shared.method.ctor
+        call c_object_shared_ctor_bufferify(SHT_rv%cxxmem)
+        ! splicer end class.Object_shared.method.ctor
+    end function object_shared_ctor
+
+    ! ----------------------------------------
+    ! Function:  ~Object
+    ! Statement: f_dtor
+    subroutine object_shared_dtor(obj)
+        class(object_shared), intent(INOUT) :: obj
+        ! splicer begin class.Object_shared.method.dtor
+        call c_object_shared_dtor(obj%cxxmem)
+        ! splicer end class.Object_shared.method.dtor
+    end subroutine object_shared_dtor
+
+    ! ----------------------------------------
     ! Function:  long use_count
     ! Statement: f_function_native
     function object_shared_use_count(obj) &
@@ -492,38 +631,52 @@ contains
         ! splicer end class.Object_shared.method.use_count
     end function object_shared_use_count
 
-    subroutine object_shared_final(obj)
-        use iso_c_binding, only : c_associated
-        type(object_shared), intent(INOUT) :: obj
-        interface
-            subroutine array_destructor(capsule) &
-                bind(C, name="SHA_SHROUD_memory_destructor")
-                import SHA_SHROUD_capsule_data
-                implicit none
-                type(SHA_SHROUD_capsule_data), intent(INOUT) :: capsule
-            end subroutine array_destructor
-        end interface
-        if (c_associated(obj%cxxmem%addr)) then
-            call array_destructor(obj%cxxmem)
-        endif
-    end subroutine object_shared_final
+    ! Return pointer to C++ memory.
+    function object_shared_get_instance(obj) result (cxxptr)
+        use iso_c_binding, only: C_PTR
+        class(object_shared), intent(IN) :: obj
+        type(C_PTR) :: cxxptr
+        cxxptr = obj%cxxmem%addr
+    end function object_shared_get_instance
+
+    subroutine object_shared_set_instance(obj, cxxmem)
+        use iso_c_binding, only: C_PTR
+        class(object_shared), intent(INOUT) :: obj
+        type(C_PTR), intent(IN) :: cxxmem
+        obj%cxxmem%addr = cxxmem
+        obj%cxxmem%idtor = 0
+    end subroutine object_shared_set_instance
+
+    function object_shared_associated(obj) result (rv)
+        use iso_c_binding, only: c_associated
+        class(object_shared), intent(IN) :: obj
+        logical rv
+        rv = c_associated(obj%cxxmem%addr)
+    end function object_shared_associated
 
     ! splicer begin class.Object_shared.additional_functions
     ! splicer end class.Object_shared.additional_functions
 
     ! ----------------------------------------
-    ! Function:  void assign_weak +custom(weakptr)+operator(assignment)
-    ! Statement: f_subroutine_assignment_weakptr
+    ! Function:  Object
+    ! Statement: f_ctor_shadow_capsule_weak
+    function object_weak_ctor() &
+            result(SHT_rv)
+        type(object_weak) :: SHT_rv
+        ! splicer begin class.Object_weak.method.ctor
+        call c_object_weak_ctor_bufferify(SHT_rv%cxxmem)
+        ! splicer end class.Object_weak.method.ctor
+    end function object_weak_ctor
+
     ! ----------------------------------------
-    ! Argument:  std::shared_ptr<Object> *from +intent(in)
-    ! Statement: f_in_smartptr<shadow>*
-    subroutine object_weak_assign_weak(obj, from)
+    ! Function:  ~Object
+    ! Statement: f_dtor
+    subroutine object_weak_dtor(obj)
         class(object_weak), intent(INOUT) :: obj
-        type(object_shared), intent(IN) :: from
-        ! splicer begin class.Object_weak.method.assign_weak
-        call c_object_weak_assign_weak(obj%cxxmem, from%cxxmem)
-        ! splicer end class.Object_weak.method.assign_weak
-    end subroutine object_weak_assign_weak
+        ! splicer begin class.Object_weak.method.dtor
+        call c_object_weak_dtor(obj%cxxmem)
+        ! splicer end class.Object_weak.method.dtor
+    end subroutine object_weak_dtor
 
     ! ----------------------------------------
     ! Function:  long use_count
@@ -538,24 +691,160 @@ contains
         ! splicer end class.Object_weak.method.use_count
     end function object_weak_use_count
 
-    subroutine object_weak_final(obj)
-        use iso_c_binding, only : c_associated
-        type(object_weak), intent(INOUT) :: obj
-        interface
-            subroutine array_destructor(capsule) &
-                bind(C, name="SHA_SHROUD_memory_destructor")
-                import SHA_SHROUD_capsule_data
-                implicit none
-                type(SHA_SHROUD_capsule_data), intent(INOUT) :: capsule
-            end subroutine array_destructor
-        end interface
-        if (c_associated(obj%cxxmem%addr)) then
-            call array_destructor(obj%cxxmem)
-        endif
-    end subroutine object_weak_final
+    ! Return pointer to C++ memory.
+    function object_weak_get_instance(obj) result (cxxptr)
+        use iso_c_binding, only: C_PTR
+        class(object_weak), intent(IN) :: obj
+        type(C_PTR) :: cxxptr
+        cxxptr = obj%cxxmem%addr
+    end function object_weak_get_instance
+
+    subroutine object_weak_set_instance(obj, cxxmem)
+        use iso_c_binding, only: C_PTR
+        class(object_weak), intent(INOUT) :: obj
+        type(C_PTR), intent(IN) :: cxxmem
+        obj%cxxmem%addr = cxxmem
+        obj%cxxmem%idtor = 0
+    end subroutine object_weak_set_instance
+
+    function object_weak_associated(obj) result (rv)
+        use iso_c_binding, only: c_associated
+        class(object_weak), intent(IN) :: obj
+        logical rv
+        rv = c_associated(obj%cxxmem%addr)
+    end function object_weak_associated
 
     ! splicer begin class.Object_weak.additional_functions
     ! splicer end class.Object_weak.additional_functions
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void reset_id
+    ! Statement: f_subroutine
+    subroutine reset_id()
+        ! splicer begin function.reset_id
+        call c_reset_id()
+        ! splicer end function.reset_id
+    end subroutine reset_id
+#endif
+
+    ! ----------------------------------------
+    ! Function:  int use_count
+    ! Statement: f_function_native
+    ! ----------------------------------------
+    ! Argument:  const std::shared_ptr<Object> *f
+    ! Statement: f_in_smartptr<shadow>*
+    function use_count_0(f) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        type(object_shared), intent(IN) :: f
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.use_count_0
+        SHT_rv = c_use_count_0(f%cxxmem)
+        ! splicer end function.use_count_0
+    end function use_count_0
+
+    ! ----------------------------------------
+    ! Function:  int use_count
+    ! Statement: f_function_native
+    ! ----------------------------------------
+    ! Argument:  const std::weak_ptr<Object> *f
+    ! Statement: f_in_smartptr<shadow>*
+    function use_count_1(f) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        type(object_weak), intent(IN) :: f
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.use_count_1
+        SHT_rv = c_use_count_1(f%cxxmem)
+        ! splicer end function.use_count_1
+    end function use_count_1
+
+    ! Statement: f_operator_assignment_shadow
+    ! Object = Object
+    subroutine object_assign_Object(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(object), intent(INOUT) :: lhs
+        type(object), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="SHA_Object_assign_Object")
+                import :: SHA_SHROUD_capsule_data
+                type(SHA_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(SHA_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine object_assign_Object
+
+    ! Statement: f_operator_assignment_shadow_shared
+    ! std::shared_ptr<Object> = std::shared_ptr<Object>
+    subroutine object_shared_assign_Object_shared(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(object_shared), intent(INOUT) :: lhs
+        type(object_shared), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="SHA_Object_shared_assign_Object_shared")
+                import :: SHA_SHROUD_capsule_data
+                type(SHA_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(SHA_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine object_shared_assign_Object_shared
+
+    ! Statement: f_operator_assignment_shadow_makeshared
+    ! std::shared_ptr<Object> = Object
+    subroutine object_shared_assign_Object(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(object_shared), intent(INOUT) :: lhs
+        type(object), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="SHA_Object_shared_assign_Object")
+                import :: SHA_SHROUD_capsule_data
+                type(SHA_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(SHA_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine object_shared_assign_Object
+
+    ! Statement: f_operator_assignment_shadow_weak
+    ! std::weak_ptr<Object> = std::weak_ptr<Object>
+    subroutine object_weak_assign_Object_weak(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(object_weak), intent(INOUT) :: lhs
+        type(object_weak), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="SHA_Object_weak_assign_Object_weak")
+                import :: SHA_SHROUD_capsule_data
+                type(SHA_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(SHA_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine object_weak_assign_Object_weak
+
+    ! Statement: f_operator_assignment_shadow_weak
+    ! std::weak_ptr<Object> = std::shared_ptr<Object>
+    subroutine object_weak_assign_Object_shared(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(object_weak), intent(INOUT) :: lhs
+        type(object_shared), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="SHA_Object_weak_assign_Object_shared")
+                import :: SHA_SHROUD_capsule_data
+                type(SHA_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(SHA_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine object_weak_assign_Object_shared
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

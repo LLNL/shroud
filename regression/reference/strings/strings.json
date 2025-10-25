@@ -301,7 +301,7 @@
                 },
                 "helpers": {
                     "fc": [
-                        "capsule_data_helper",
+                        "capsule_data",
                         "array_context",
                         "string_to_cdesc",
                         "copy_string",
@@ -336,7 +336,7 @@
                                 "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHC_rv_cxx)",
                                 "cxx_type": "std::string",
                                 "cxx_var": "SHC_rv_cxx",
-                                "f_helper_capsule_data_helper": "STR_SHROUD_capsule_data",
+                                "f_helper_capsule_data": "STR_SHROUD_capsule_data",
                                 "f_type": "character(len=*)",
                                 "f_var": "SHT_rv",
                                 "i_arguments": "SHT_rv_capsule",
@@ -389,7 +389,7 @@
                                 "f_call_function": "c_get_const_string_alloc_bufferify",
                                 "f_deref_attr": ", allocatable",
                                 "f_helper_array_context": "STR_SHROUD_array",
-                                "f_helper_capsule_data_helper": "STR_SHROUD_capsule_data",
+                                "f_helper_capsule_data": "STR_SHROUD_capsule_data",
                                 "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                                 "f_helper_copy_string": "STR_SHROUD_copy_string",
                                 "f_result_clause": "\fresult(SHT_rv)",
@@ -507,7 +507,7 @@
                 },
                 "helpers": {
                     "fc": [
-                        "capsule_data_helper",
+                        "capsule_data",
                         "array_context",
                         "capsule_helper",
                         "type_defines",
@@ -534,6 +534,8 @@
                                 "F_arguments": "Crv",
                                 "F_subprogram": "function",
                                 "c_abstract_decl": "const char",
+                                "c_cmemflags": "SWIG_MEM_OWN",
+                                "c_cmemflags_or": "SWIG_MEM_OWN | ",
                                 "c_const": "const ",
                                 "c_helper_array_context": "STR_SHROUD_array",
                                 "c_local_cxx": "SHC_rv_cxx",
@@ -550,7 +552,7 @@
                                 "f_call_function": "c_get_const_string_pointer_bufferify",
                                 "f_deref_attr": ", pointer",
                                 "f_helper_array_context": "STR_SHROUD_array",
-                                "f_helper_capsule_data_helper": "STR_SHROUD_capsule_data",
+                                "f_helper_capsule_data": "STR_SHROUD_capsule_data",
                                 "f_helper_pointer_string": "STR_SHROUD_pointer_string",
                                 "f_result_clause": "\fresult(SHT_rv)",
                                 "f_type": "character(len=*)",
@@ -571,16 +573,17 @@
                                 "i_var_capsule": "SHT_rv_capsule",
                                 "i_var_cdesc": "SHT_rv_cdesc",
                                 "idtor": "1",
-                                "stmt_name": "f_function_string_cdesc_pointer",
+                                "stmt_name": "f_function_string_cdesc_pointer_caller",
                                 "typemap_name": "std::string"
                             },
                             "meta": {
                                 "abstract": "string",
                                 "api": "cdesc",
                                 "deref": "pointer",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "caller"
                             },
-                            "stmt": "f_function_string_cdesc_pointer"
+                            "stmt": "f_function_string_cdesc_pointer_caller"
                         }
                     },
                     "share": {
@@ -628,7 +631,7 @@
                 },
                 "helpers": {
                     "fc": [
-                        "capsule_data_helper",
+                        "capsule_data",
                         "array_context",
                         "capsule_helper"
                     ]
@@ -653,6 +656,8 @@
                                 "F_arguments": "Crv",
                                 "F_subprogram": "function",
                                 "c_abstract_decl": "const char",
+                                "c_cmemflags": "SWIG_MEM_OWN",
+                                "c_cmemflags_or": "SWIG_MEM_OWN | ",
                                 "c_const": "const ",
                                 "c_helper_array_context": "STR_SHROUD_array",
                                 "c_local_cxx": "SHC_rv_cxx",
@@ -667,7 +672,7 @@
                                 "cxx_var": "SHC_rv_cxx",
                                 "f_call_function": "c_get_const_string_raw_bufferify",
                                 "f_helper_array_context": "STR_SHROUD_array",
-                                "f_helper_capsule_data_helper": "STR_SHROUD_capsule_data",
+                                "f_helper_capsule_data": "STR_SHROUD_capsule_data",
                                 "f_result_clause": "\fresult(SHT_rv)",
                                 "f_type": "character(len=*)",
                                 "f_var": "SHT_rv",
@@ -684,15 +689,16 @@
                                 "i_var": "SHT_rv",
                                 "i_var_capsule": "SHT_rv_capsule",
                                 "idtor": "1",
-                                "stmt_name": "f_function_string_raw",
+                                "stmt_name": "f_function_string_raw_caller",
                                 "typemap_name": "std::string"
                             },
                             "meta": {
                                 "abstract": "string",
                                 "deref": "raw",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "caller"
                             },
-                            "stmt": "f_function_string_raw"
+                            "stmt": "f_function_string_raw_caller"
                         }
                     },
                     "share": {
@@ -1295,7 +1301,7 @@
                 "helpers": {
                     "fc": [
                         "array_context",
-                        "capsule_data_helper",
+                        "capsule_data",
                         "string_to_cdesc",
                         "copy_string",
                         "capsule_dtor"
@@ -1380,7 +1386,7 @@
                                 "f_call_function": "c_get_const_string_ref_alloc_bufferify",
                                 "f_deref_attr": ", allocatable",
                                 "f_helper_array_context": "STR_SHROUD_array",
-                                "f_helper_capsule_data_helper": "STR_SHROUD_capsule_data",
+                                "f_helper_capsule_data": "STR_SHROUD_capsule_data",
                                 "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                                 "f_helper_copy_string": "STR_SHROUD_copy_string",
                                 "f_result_clause": "\fresult(SHT_rv)",
@@ -1911,7 +1917,7 @@
                 "helpers": {
                     "fc": [
                         "array_context",
-                        "capsule_data_helper",
+                        "capsule_data",
                         "string_to_cdesc",
                         "copy_string",
                         "capsule_dtor"
@@ -1995,7 +2001,7 @@
                                 "f_call_function": "c_get_const_string_ptr_alloc_bufferify",
                                 "f_deref_attr": ", allocatable",
                                 "f_helper_array_context": "STR_SHROUD_array",
-                                "f_helper_capsule_data_helper": "STR_SHROUD_capsule_data",
+                                "f_helper_capsule_data": "STR_SHROUD_capsule_data",
                                 "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                                 "f_helper_copy_string": "STR_SHROUD_copy_string",
                                 "f_result_clause": "\fresult(SHT_rv)",
@@ -2123,7 +2129,7 @@
                 "helpers": {
                     "fc": [
                         "array_context",
-                        "capsule_data_helper",
+                        "capsule_data",
                         "string_to_cdesc",
                         "copy_string",
                         "capsule_dtor"
@@ -2145,6 +2151,8 @@
                                 "C_prototype": "void",
                                 "C_return_type": "const char *",
                                 "c_abstract_decl": "const char *",
+                                "c_cmemflags": "SWIG_MEM_OWN",
+                                "c_cmemflags_or": "SWIG_MEM_OWN | ",
                                 "c_const": "const ",
                                 "c_local_cxx": "SHC_rv_cxx",
                                 "c_type": "char",
@@ -2188,6 +2196,8 @@
                                 "F_arguments": "",
                                 "F_subprogram": "function",
                                 "c_abstract_decl": "const char *",
+                                "c_cmemflags": "SWIG_MEM_OWN",
+                                "c_cmemflags_or": "SWIG_MEM_OWN | ",
                                 "c_const": "const ",
                                 "c_helper_array_context": "STR_SHROUD_array",
                                 "c_helper_capsule_dtor": "STR_SHROUD_memory_destructor",
@@ -2207,7 +2217,7 @@
                                 "f_call_function": "c_get_const_string_ptr_owns_alloc_bufferify",
                                 "f_deref_attr": ", allocatable",
                                 "f_helper_array_context": "STR_SHROUD_array",
-                                "f_helper_capsule_data_helper": "STR_SHROUD_capsule_data",
+                                "f_helper_capsule_data": "STR_SHROUD_capsule_data",
                                 "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                                 "f_helper_copy_string": "STR_SHROUD_copy_string",
                                 "f_result_clause": "\fresult(SHT_rv)",
@@ -2336,7 +2346,7 @@
                 "helpers": {
                     "fc": [
                         "array_context",
-                        "capsule_data_helper",
+                        "capsule_data",
                         "string_to_cdesc",
                         "copy_string",
                         "capsule_dtor"
@@ -2358,6 +2368,8 @@
                                 "C_prototype": "void",
                                 "C_return_type": "const char *",
                                 "c_abstract_decl": "const char *",
+                                "c_cmemflags": "SWIG_MEM_OWN",
+                                "c_cmemflags_or": "SWIG_MEM_OWN | ",
                                 "c_const": "const ",
                                 "c_local_cxx": "SHC_rv_cxx",
                                 "c_type": "char",
@@ -2402,6 +2414,8 @@
                                 "F_arguments": "",
                                 "F_subprogram": "function",
                                 "c_abstract_decl": "const char *",
+                                "c_cmemflags": "SWIG_MEM_OWN",
+                                "c_cmemflags_or": "SWIG_MEM_OWN | ",
                                 "c_const": "const ",
                                 "c_helper_array_context": "STR_SHROUD_array",
                                 "c_helper_capsule_dtor": "STR_SHROUD_memory_destructor",
@@ -2421,7 +2435,7 @@
                                 "f_call_function": "c_get_const_string_ptr_owns_alloc_pattern_bufferify",
                                 "f_deref_attr": ", allocatable",
                                 "f_helper_array_context": "STR_SHROUD_array",
-                                "f_helper_capsule_data_helper": "STR_SHROUD_capsule_data",
+                                "f_helper_capsule_data": "STR_SHROUD_capsule_data",
                                 "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                                 "f_helper_copy_string": "STR_SHROUD_copy_string",
                                 "f_result_clause": "\fresult(SHT_rv)",
@@ -5908,7 +5922,7 @@
                 "helpers": {
                     "fc": [
                         "array_context",
-                        "capsule_data_helper",
+                        "capsule_data",
                         "array_string_allocatable",
                         "array_string_out_len",
                         "capsule_dtor"
@@ -6118,7 +6132,7 @@
                                 "f_dimension": "(:)",
                                 "f_helper_array_context": "STR_SHROUD_array",
                                 "f_helper_array_string_allocatable": "STR_SHROUD_cdesc_array_string_allocatable",
-                                "f_helper_capsule_data_helper": "STR_SHROUD_capsule_data",
+                                "f_helper_capsule_data": "STR_SHROUD_capsule_data",
                                 "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
@@ -6271,7 +6285,7 @@
                 "helpers": {
                     "fc": [
                         "array_context",
-                        "capsule_data_helper",
+                        "capsule_data",
                         "array_string_allocatable",
                         "array_string_out_len",
                         "capsule_dtor"
@@ -6484,7 +6498,7 @@
                                 "f_dimension": "(:)",
                                 "f_helper_array_context": "STR_SHROUD_array",
                                 "f_helper_array_string_allocatable": "STR_SHROUD_cdesc_array_string_allocatable",
-                                "f_helper_capsule_data_helper": "STR_SHROUD_capsule_data",
+                                "f_helper_capsule_data": "STR_SHROUD_capsule_data",
                                 "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",

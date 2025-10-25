@@ -19,14 +19,16 @@ module preprocess_mod
     ! splicer begin module_top
     ! splicer end module_top
 
-    ! helper capsule_data_helper
+    ! helper capsule_data
     type, bind(C) :: PRE_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: cmemflags = 0   ! memory flags
     end type PRE_SHROUD_capsule_data
 
     type user1
-        type(PRE_SHROUD_capsule_data) :: cxxmem
+        type(PRE_SHROUD_capsule_data) :: cxxmem = &
+            PRE_SHROUD_capsule_data()
         ! splicer begin class.User1.component_part
         ! splicer end class.User1.component_part
     contains
@@ -55,7 +57,8 @@ module preprocess_mod
 
 #ifdef USE_USER2
     type user2
-        type(PRE_SHROUD_capsule_data) :: cxxmem
+        type(PRE_SHROUD_capsule_data) :: cxxmem = &
+            PRE_SHROUD_capsule_data()
         ! splicer begin class.User2.component_part
         ! splicer end class.User2.component_part
     contains
@@ -90,6 +93,13 @@ module preprocess_mod
         module procedure user1_ne
 #ifdef USE_USER2
         module procedure user2_ne
+#endif
+    end interface
+
+    interface assignment (=)
+        module procedure user1_assign_User1
+#ifdef USE_USER2
+        module procedure user2_assign_User2
 #endif
     end interface
 
@@ -335,6 +345,42 @@ contains
 
     ! splicer begin class.User2.additional_functions
     ! splicer end class.User2.additional_functions
+#endif
+
+    ! Statement: f_operator_assignment_shadow
+    ! User1 = User1
+    subroutine user1_assign_User1(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(user1), intent(INOUT) :: lhs
+        type(user1), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="PRE_User1_assign_User1")
+                import :: PRE_SHROUD_capsule_data
+                type(PRE_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(PRE_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine user1_assign_User1
+
+#ifdef USE_USER2
+    ! Statement: f_operator_assignment_shadow
+    ! User2 = User2
+    subroutine user2_assign_User2(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(user2), intent(INOUT) :: lhs
+        type(user2), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="PRE_User2_assign_User2")
+                import :: PRE_SHROUD_capsule_data
+                type(PRE_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(PRE_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine user2_assign_User2
 #endif
 
     ! splicer begin additional_functions

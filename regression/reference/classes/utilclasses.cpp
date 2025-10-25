@@ -78,6 +78,317 @@ void CLA_SHROUD_memory_destructor(CLA_SHROUD_capsule_data *cap)
 }
 // end release allocated memory
 
+// Statement: f_operator_assignment_shadow
+// start class1_assign_Class1
+// classes::Class1 = classes::Class1
+void CLA_Class1_assign_Class1(CLA_Class1 *lhs_capsule,
+    CLA_Class1 *rhs_capsule)
+{
+    if (lhs_capsule->addr == nullptr) {
+        /* LHS is unassigned */
+        if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {
+            // Capture pointer from RHS, clear 'moving' flag.
+            lhs_capsule->addr = rhs_capsule->addr;
+            lhs_capsule->idtor = rhs_capsule->idtor;
+            lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+        } else {
+            // Aliasing another class; clear ownership.
+            lhs_capsule->addr = rhs_capsule->addr;
+            lhs_capsule->idtor = 0;
+            lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_OWN;
+        }
+    } else if (rhs_capsule->addr == nullptr) {
+        // Replace LHS with a null pointer.
+        if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {
+            CLA_SHROUD_memory_destructor(
+                (CLA_SHROUD_capsule_data *) lhs_capsule);
+        }
+        lhs_capsule->addr = nullptr;
+        lhs_capsule->idtor = 0;
+        lhs_capsule->cmemflags = 0;
+    } else if (lhs_capsule->addr == rhs_capsule->addr) {
+        // Lhs-assignment: ignore.
+    } else if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {
+        // Transferred ownership from a variable that's about to be lost.
+        // Move-assign and delete the transient data.
+        if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {
+            CLA_SHROUD_memory_destructor(
+                (CLA_SHROUD_capsule_data *) lhs_capsule);
+        }
+        lhs_capsule->addr = rhs_capsule->addr;
+        lhs_capsule->idtor = rhs_capsule->idtor;
+        lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+    } else {
+        // RHS shouldn't be deleted, alias to LHS.
+        if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {
+            CLA_SHROUD_memory_destructor(
+                (CLA_SHROUD_capsule_data *) lhs_capsule);
+        }
+        lhs_capsule->addr = rhs_capsule->addr;
+        lhs_capsule->idtor = rhs_capsule->idtor;
+        lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+    }
+}
+// end class1_assign_Class1
+
+// Statement: f_operator_assignment_shadow
+// classes::Class2 = classes::Class2
+void CLA_Class2_assign_Class2(CLA_Class2 *lhs_capsule,
+    CLA_Class2 *rhs_capsule)
+{
+    if (lhs_capsule->addr == nullptr) {
+        /* LHS is unassigned */
+        if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {
+            // Capture pointer from RHS, clear 'moving' flag.
+            lhs_capsule->addr = rhs_capsule->addr;
+            lhs_capsule->idtor = rhs_capsule->idtor;
+            lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+        } else {
+            // Aliasing another class; clear ownership.
+            lhs_capsule->addr = rhs_capsule->addr;
+            lhs_capsule->idtor = 0;
+            lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_OWN;
+        }
+    } else if (rhs_capsule->addr == nullptr) {
+        // Replace LHS with a null pointer.
+        if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {
+            CLA_SHROUD_memory_destructor(
+                (CLA_SHROUD_capsule_data *) lhs_capsule);
+        }
+        lhs_capsule->addr = nullptr;
+        lhs_capsule->idtor = 0;
+        lhs_capsule->cmemflags = 0;
+    } else if (lhs_capsule->addr == rhs_capsule->addr) {
+        // Lhs-assignment: ignore.
+    } else if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {
+        // Transferred ownership from a variable that's about to be lost.
+        // Move-assign and delete the transient data.
+        if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {
+            CLA_SHROUD_memory_destructor(
+                (CLA_SHROUD_capsule_data *) lhs_capsule);
+        }
+        lhs_capsule->addr = rhs_capsule->addr;
+        lhs_capsule->idtor = rhs_capsule->idtor;
+        lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+    } else {
+        // RHS shouldn't be deleted, alias to LHS.
+        if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {
+            CLA_SHROUD_memory_destructor(
+                (CLA_SHROUD_capsule_data *) lhs_capsule);
+        }
+        lhs_capsule->addr = rhs_capsule->addr;
+        lhs_capsule->idtor = rhs_capsule->idtor;
+        lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+    }
+}
+
+// Statement: f_operator_assignment_shadow
+// start singleton_assign_Singleton
+// classes::Singleton = classes::Singleton
+void CLA_Singleton_assign_Singleton(CLA_Singleton *lhs_capsule,
+    CLA_Singleton *rhs_capsule)
+{
+    if (lhs_capsule->addr == nullptr) {
+        /* LHS is unassigned */
+        if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {
+            // Capture pointer from RHS, clear 'moving' flag.
+            lhs_capsule->addr = rhs_capsule->addr;
+            lhs_capsule->idtor = rhs_capsule->idtor;
+            lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+        } else {
+            // Aliasing another class; clear ownership.
+            lhs_capsule->addr = rhs_capsule->addr;
+            lhs_capsule->idtor = 0;
+            lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_OWN;
+        }
+    } else if (rhs_capsule->addr == nullptr) {
+        // Replace LHS with a null pointer.
+        if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {
+            CLA_SHROUD_memory_destructor(
+                (CLA_SHROUD_capsule_data *) lhs_capsule);
+        }
+        lhs_capsule->addr = nullptr;
+        lhs_capsule->idtor = 0;
+        lhs_capsule->cmemflags = 0;
+    } else if (lhs_capsule->addr == rhs_capsule->addr) {
+        // Lhs-assignment: ignore.
+    } else if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {
+        // Transferred ownership from a variable that's about to be lost.
+        // Move-assign and delete the transient data.
+        if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {
+            CLA_SHROUD_memory_destructor(
+                (CLA_SHROUD_capsule_data *) lhs_capsule);
+        }
+        lhs_capsule->addr = rhs_capsule->addr;
+        lhs_capsule->idtor = rhs_capsule->idtor;
+        lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+    } else {
+        // RHS shouldn't be deleted, alias to LHS.
+        if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {
+            CLA_SHROUD_memory_destructor(
+                (CLA_SHROUD_capsule_data *) lhs_capsule);
+        }
+        lhs_capsule->addr = rhs_capsule->addr;
+        lhs_capsule->idtor = rhs_capsule->idtor;
+        lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+    }
+}
+// end singleton_assign_Singleton
+
+// Statement: f_operator_assignment_shadow
+// classes::Shape = classes::Shape
+void CLA_Shape_assign_Shape(CLA_Shape *lhs_capsule,
+    CLA_Shape *rhs_capsule)
+{
+    if (lhs_capsule->addr == nullptr) {
+        /* LHS is unassigned */
+        if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {
+            // Capture pointer from RHS, clear 'moving' flag.
+            lhs_capsule->addr = rhs_capsule->addr;
+            lhs_capsule->idtor = rhs_capsule->idtor;
+            lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+        } else {
+            // Aliasing another class; clear ownership.
+            lhs_capsule->addr = rhs_capsule->addr;
+            lhs_capsule->idtor = 0;
+            lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_OWN;
+        }
+    } else if (rhs_capsule->addr == nullptr) {
+        // Replace LHS with a null pointer.
+        if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {
+            CLA_SHROUD_memory_destructor(
+                (CLA_SHROUD_capsule_data *) lhs_capsule);
+        }
+        lhs_capsule->addr = nullptr;
+        lhs_capsule->idtor = 0;
+        lhs_capsule->cmemflags = 0;
+    } else if (lhs_capsule->addr == rhs_capsule->addr) {
+        // Lhs-assignment: ignore.
+    } else if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {
+        // Transferred ownership from a variable that's about to be lost.
+        // Move-assign and delete the transient data.
+        if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {
+            CLA_SHROUD_memory_destructor(
+                (CLA_SHROUD_capsule_data *) lhs_capsule);
+        }
+        lhs_capsule->addr = rhs_capsule->addr;
+        lhs_capsule->idtor = rhs_capsule->idtor;
+        lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+    } else {
+        // RHS shouldn't be deleted, alias to LHS.
+        if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {
+            CLA_SHROUD_memory_destructor(
+                (CLA_SHROUD_capsule_data *) lhs_capsule);
+        }
+        lhs_capsule->addr = rhs_capsule->addr;
+        lhs_capsule->idtor = rhs_capsule->idtor;
+        lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+    }
+}
+
+// Statement: f_operator_assignment_shadow
+// classes::Circle = classes::Circle
+void CLA_Circle_assign_Circle(CLA_Circle *lhs_capsule,
+    CLA_Circle *rhs_capsule)
+{
+    if (lhs_capsule->addr == nullptr) {
+        /* LHS is unassigned */
+        if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {
+            // Capture pointer from RHS, clear 'moving' flag.
+            lhs_capsule->addr = rhs_capsule->addr;
+            lhs_capsule->idtor = rhs_capsule->idtor;
+            lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+        } else {
+            // Aliasing another class; clear ownership.
+            lhs_capsule->addr = rhs_capsule->addr;
+            lhs_capsule->idtor = 0;
+            lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_OWN;
+        }
+    } else if (rhs_capsule->addr == nullptr) {
+        // Replace LHS with a null pointer.
+        if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {
+            CLA_SHROUD_memory_destructor(
+                (CLA_SHROUD_capsule_data *) lhs_capsule);
+        }
+        lhs_capsule->addr = nullptr;
+        lhs_capsule->idtor = 0;
+        lhs_capsule->cmemflags = 0;
+    } else if (lhs_capsule->addr == rhs_capsule->addr) {
+        // Lhs-assignment: ignore.
+    } else if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {
+        // Transferred ownership from a variable that's about to be lost.
+        // Move-assign and delete the transient data.
+        if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {
+            CLA_SHROUD_memory_destructor(
+                (CLA_SHROUD_capsule_data *) lhs_capsule);
+        }
+        lhs_capsule->addr = rhs_capsule->addr;
+        lhs_capsule->idtor = rhs_capsule->idtor;
+        lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+    } else {
+        // RHS shouldn't be deleted, alias to LHS.
+        if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {
+            CLA_SHROUD_memory_destructor(
+                (CLA_SHROUD_capsule_data *) lhs_capsule);
+        }
+        lhs_capsule->addr = rhs_capsule->addr;
+        lhs_capsule->idtor = rhs_capsule->idtor;
+        lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+    }
+}
+
+// Statement: f_operator_assignment_shadow
+// start data_assign_Data
+// classes::Data = classes::Data
+void CLA_Data_assign_Data(CLA_Data *lhs_capsule, CLA_Data *rhs_capsule)
+{
+    if (lhs_capsule->addr == nullptr) {
+        /* LHS is unassigned */
+        if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {
+            // Capture pointer from RHS, clear 'moving' flag.
+            lhs_capsule->addr = rhs_capsule->addr;
+            lhs_capsule->idtor = rhs_capsule->idtor;
+            lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+        } else {
+            // Aliasing another class; clear ownership.
+            lhs_capsule->addr = rhs_capsule->addr;
+            lhs_capsule->idtor = 0;
+            lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_OWN;
+        }
+    } else if (rhs_capsule->addr == nullptr) {
+        // Replace LHS with a null pointer.
+        if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {
+            CLA_SHROUD_memory_destructor(
+                (CLA_SHROUD_capsule_data *) lhs_capsule);
+        }
+        lhs_capsule->addr = nullptr;
+        lhs_capsule->idtor = 0;
+        lhs_capsule->cmemflags = 0;
+    } else if (lhs_capsule->addr == rhs_capsule->addr) {
+        // Lhs-assignment: ignore.
+    } else if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {
+        // Transferred ownership from a variable that's about to be lost.
+        // Move-assign and delete the transient data.
+        if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {
+            CLA_SHROUD_memory_destructor(
+                (CLA_SHROUD_capsule_data *) lhs_capsule);
+        }
+        lhs_capsule->addr = rhs_capsule->addr;
+        lhs_capsule->idtor = rhs_capsule->idtor;
+        lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+    } else {
+        // RHS shouldn't be deleted, alias to LHS.
+        if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {
+            CLA_SHROUD_memory_destructor(
+                (CLA_SHROUD_capsule_data *) lhs_capsule);
+        }
+        lhs_capsule->addr = rhs_capsule->addr;
+        lhs_capsule->idtor = rhs_capsule->idtor;
+        lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+    }
+}
+// end data_assign_Data
+
 #ifdef __cplusplus
 }
 #endif

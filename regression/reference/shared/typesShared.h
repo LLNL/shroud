@@ -19,54 +19,66 @@ extern "C" {
 // splicer begin types.C_declarations
 // splicer end types.C_declarations
 
-// helper capsule_data_helper
+// helper capsule_data
 struct s_SHA_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
+    int cmemflags;  /* memory flags */
 };
 typedef struct s_SHA_SHROUD_capsule_data SHA_SHROUD_capsule_data;
+
+enum SwigMemFlags {
+    SWIG_MEM_OWN = 0x01,
+    SWIG_MEM_RVALUE = 0x02,
+};
 #if 0
 
 // C++ capsule SHA_Object
 struct s_SHA_Object {
-    Object *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    Object *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_SHA_Object SHA_Object;
 
 // C++ capsule SHA_Object_shared
 struct s_SHA_Object_shared {
-    std::shared_ptr<Object> *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    std::shared_ptr<Object> *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_SHA_Object_shared SHA_Object_shared;
 
 // C++ capsule SHA_Object_weak
 struct s_SHA_Object_weak {
-    std::weak_ptr<Object> *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    std::weak_ptr<Object> *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_SHA_Object_weak SHA_Object_weak;
 #endif
 
 // C capsule SHA_Object
 struct s_SHA_Object {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    void *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_SHA_Object SHA_Object;
 
 // C capsule SHA_Object_shared
 struct s_SHA_Object_shared {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    void *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_SHA_Object_shared SHA_Object_shared;
 
 // C capsule SHA_Object_weak
 struct s_SHA_Object_weak {
-    void *addr;     /* address of C++ memory */
-    int idtor;      /* index of destructor */
+    void *addr;     // address of C++ memory
+    int idtor;      // index of destructor
+    int cmemflags;  // memory flags
 };
 typedef struct s_SHA_Object_weak SHA_Object_weak;
 

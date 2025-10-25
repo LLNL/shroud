@@ -156,6 +156,115 @@ class FillMeta(object):
         if custom is not missing:
             meta["custom"] = custom
 
+    def set_func_owner(self, node, meta):
+        """
+        If the function returns a pointer, set owner.
+        """
+        declarator = node.ast.declarator
+        attrs = declarator.attrs
+        owner = attrs.get("owner", missing)
+        if owner is not missing:
+            # XXX - Need to extract smart_poiner from Typemaps
+            if owner not in ["caller", "library", "shared", "weak"]:
+                # XXX - shared is only valued with language=c++
+                self.cursor.generate(
+                    "Illegal value '{}' for owner attribute. "
+                    "Must be 'caller' or 'library'.".format(owner)
+                )
+            meta["owner"] = owner
+#        else:
+#            meta["owner"] = node.options.default_owner
+
+    def set_func_owner_fortran(self, node, meta):
+        """
+        If the function returns a pointer, set owner.
+        Called after meta[deref] is set.
+        Ownership is only possible with deref pointer or raw.
+
+        Parameters
+        ----------
+        node - ast.FunctionNode
+        meta - 
+        """
+        options = node.options
+        declarator = node.ast.declarator
+        ntypemap = node.ast.typemap
+        attrs = declarator.attrs
+        owner = attrs.get("owner", missing)
+        if owner is not missing:
+            # XXX - Need to extract smart_poiner from Typemaps
+            if owner not in ["caller", "library", "shared", "weak"]:
+                # XXX - shared is only valued with language=c++
+                self.cursor.generate(
+                    "Illegal value '{}' for owner attribute. "
+                    "Must be 'caller' or 'library'.".format(owner)
+                )
+            meta["owner"] = owner
+        elif meta["intent"] in ["subroutine", "getter"]:
+            # subroutine does not return anything.
+            # A getter returns memory owned by a class.
+            pass
+        elif node.return_this:
+            # Does not return anything, no need for ownership.
+            pass
+        elif options.class_ctor:
+            meta["owner"] = "caller"
+        elif declarator.is_indirect():
+            if ntypemap.sgroup == "shadow":
+                # XXX - deref is not set for shadow in set_func_deref_fortran. why?
+                meta["owner"] = options.default_owner
+            else:
+                deref = meta["deref"]
+                if deref in ["pointer", "raw"]:
+                    meta["owner"] = options.default_owner
+        elif ntypemap.sgroup == "shadow":
+            # call-by-value Always has a pointer to C++ memory which caller must release
+            # Class1 getClassCopy()
+            meta["owner"] = "caller"
+        elif ntypemap.sgroup not in ["bool", "enum", "native"]: # XXX - need to handle
+            # Return scalar by value
+            if meta["deref"] in ["pointer", "raw"]:
+                meta["owner"] = "caller"
+
+    def set_arg_owner_fortran(self, node, arg, meta):
+        """
+        If the function returns a pointer, set owner.
+        Called after meta[deref] is set.
+        Ownership is only possible with deref pointer or raw.
+
+        Parameters
+        ----------
+        node - ast.FunctionNode
+        arg - declast.Declaration
+        meta - 
+        """
+        options = node.options
+        declarator = arg.declarator
+        attrs = declarator.attrs
+        owner = attrs.get("owner", missing)
+        if owner is not missing:
+            # XXX - Need to extract smart_poiner from Typemaps
+            if owner not in ["caller", "library", "shared", "weak"]:
+                # XXX - shared is only valued with language=c++
+                self.cursor.generate(
+                    "Illegal value '{}' for owner attribute. "
+                    "Must be 'caller' or 'library'.".format(owner)
+                )
+            meta["owner"] = owner
+        elif meta["intent"] == "in":
+            # Does not return anything, no need for ownership.
+            pass
+        elif declarator.is_indirect() > 1:
+            # Argument returns a pointer.
+            ntypemap = node.ast.typemap
+            if ntypemap.sgroup == "shadow":
+                # XXX - deref is not set for shadow in set_func_deref_fortran. why?
+                meta["owner"] = options.default_owner
+            else:
+                deref = meta["deref"]
+                if deref in ["pointer", "raw"]:
+                    meta["owner"] = options.default_owner
+
     def check_intent(self, arg):
         intent = arg.declarator.attrs.get("intent", missing)
         if intent is missing:
@@ -228,6 +337,25 @@ class FillMeta(object):
         else:
             intent = intent.lower()
         meta["intent"] = intent
+
+    def set_arg_owner(self, node, arg, meta):
+        """
+        Called after set_arg_intent since ownership only applies
+        to intent(out) or intent(inout).
+        """
+        attrs = arg.declarator.attrs
+        owner = attrs.get("owner", missing)
+        if owner is not missing:
+            # XXX - Need to extract smart_poiner from Typemaps
+            if owner not in ["caller", "library", "shared", "weak"]:
+                # XXX - shared is only valued with language=c++
+                self.cursor.generate(
+                    "Illegal value '{}' for owner attribute. "
+                    "Must be 'caller' or 'library'.".format(owner)
+                )
+            meta["owner"] = owner
+#        else:
+#            meta["owner"] = options.default_owner
 
     def set_func_deref_c(self, node, meta):
         """
@@ -744,6 +872,7 @@ class FillMetaShare(FillMeta):
         self.check_func_attrs(node, r_meta)
         self.set_func_abstract_type(node, r_meta)
         self.set_func_intent(node, r_meta)
+        self.set_func_owner(node, r_meta)
         self.meta_function_params(node, is_fptr)
 
     def meta_function_params(self, node, is_fptr=False):
@@ -762,6 +891,7 @@ class FillMetaShare(FillMeta):
             self.check_arg_attrs(node, arg, meta)
             self.set_arg_abstract_type(node, arg, meta)
             self.set_arg_intent(arg, meta, is_fptr)
+            self.set_arg_owner(node, arg, meta)
             self.check_value(arg, meta)
 
             if node.options.F_default_args == "optional" and arg.declarator.init is not None:
@@ -822,6 +952,13 @@ class FillMetaShare(FillMeta):
                 meta["funcarg"] = funcarg
 
     def check_arg_attrs(self, node, arg, meta):
+        """
+        Parameters
+        ----------
+        node : ast.FunctionNode
+        arg : declast.Declaration
+        meta :
+        """
         cursor = self.cursor
         declarator = arg.declarator
         argname = declarator.user_name
@@ -948,17 +1085,6 @@ class FillMetaShare(FillMeta):
                 # default to 1-d assumed shape
                 meta["rank"] = 1
 
-        owner = attrs.get("owner", missing)
-        if owner is not missing:
-            # XXX - Need to extract smart_poiner from Typemaps
-            if owner not in ["caller", "library", "shared", "weak"]:
-                # XXX - shared is only valued with language=c++
-                self.cursor.generate(
-                    "Illegal value '{}' for owner attribute. "
-                    "Must be 'caller' or 'library'.".format(owner)
-                )
-            meta["owner"] = owner
-
         destructor_name = attrs.get("destructor_name", missing)
         if destructor_name is missing:
             # Code to help migrate to destructor_name
@@ -1033,6 +1159,7 @@ class FillMetaC(FillMeta):
 
         self.set_func_share(node, r_meta)
         self.set_func_deref_c(node, r_meta)
+#        self.set_func_owner(node, r_meta) # A no-op for now.
         self.set_func_api_c(node, r_meta)
         self.set_func_post_c(cls, node, r_meta)
 
@@ -1096,6 +1223,7 @@ class FillMetaFortran(FillMeta):
 
         self.set_func_share(node, r_meta)
         self.set_func_deref_fortran(node, r_meta)
+        self.set_func_owner_fortran(node, r_meta)
         self.set_func_api_fortran(node, r_meta)
         self.set_func_post_fortran(cls, node, r_meta)
         
@@ -1125,6 +1253,7 @@ class FillMetaFortran(FillMeta):
             self.set_arg_share(node, arg, meta)
             self.set_arg_fortran(node, arg, meta)
             self.set_arg_deref_fortran(node, arg, meta)
+            self.set_arg_owner_fortran(node, arg, meta)
             self.set_arg_api_fortran(node, arg, meta, fptr_arg)
             self.set_arg_hidden(arg, meta)
 

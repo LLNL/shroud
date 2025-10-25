@@ -67,10 +67,11 @@ module ns_mod
         integer(C_LONG) :: shape(7) = 0
     end type NS_SHROUD_array
 
-    ! helper capsule_data_helper
+    ! helper capsule_data
     type, bind(C) :: NS_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: cmemflags = 0   ! memory flags
     end type NS_SHROUD_capsule_data
 
     !  enum upper::Color
@@ -81,7 +82,8 @@ module ns_mod
     ! splicer end namespace.XXX.enum.Color
 
     type class_work
-        type(NS_SHROUD_capsule_data) :: cxxmem
+        type(NS_SHROUD_capsule_data) :: cxxmem = &
+            NS_SHROUD_capsule_data()
         ! splicer begin namespace.outer.class.ClassWork.component_part
         ! splicer end namespace.outer.class.ClassWork.component_part
     contains

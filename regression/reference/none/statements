@@ -28,6 +28,7 @@ c_ctor_shadow_capptr:
   - "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});"
   - "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;'
   c_temps:
   - ptr
   fmtdict:
@@ -68,6 +69,7 @@ c_ctor_shadow_capptr_shared:
   - "*{c_local_shared} = \t std::make_shared<{baseclass.cxx_type}>({C_call_list});"
   - "{c_var}->addr = static_cast<{c_const}void *>(\t{c_local_shared});"
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;'
   c_temps:
   - ptr
   c_local:
@@ -75,6 +77,8 @@ c_ctor_shadow_capptr_shared:
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - capsule_memflags
   impl_header:
   - <memory>
   destructor_header:
@@ -86,6 +90,60 @@ c_ctor_shadow_capptr_shared:
   - delete shared;
   owner: shared
   sphinx-end-before: c_ctor_shadow_capptr_shared
+c_ctor_shadow_capptr_weak:
+  sphinx-start-after: c_ctor_shadow_capptr_weak
+  name: c_ctor_shadow_capptr_weak
+  intent: ctor
+  comments:
+  - Pass function result as a capsule field of shadow class
+  - from Fortran to C.
+  - Create a std::shared_pointer on the heap to hold the pointer to the instance.
+  mixin_names:
+  - '  c_mixin_function_shadow_capptr'
+  - '  c_mixin_shadow'
+  - '  c_mixin_as-intent-out'
+  - '  c_mixin_destructor_new-shadow-shared'
+  - '  c_mixin_make-shared'
+  i_dummy_arg:
+  - '{i_var}'
+  i_dummy_decl:
+  - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
+  i_result_decl:
+  - 'type(C_PTR) :: {i_var_ptr}'
+  i_result_var: '{i_var_ptr}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
+  c_prototype:
+  - '{c_type} *{c_var}'
+  c_call:
+  - "std::shared_ptr<{baseclass.cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{baseclass.cxx_type}>;"
+  - "*{c_local_shared} = \t std::make_shared<{baseclass.cxx_type}>({C_call_list});"
+  - "{c_var}->addr = static_cast<{c_const}void *>(\t{c_local_shared});"
+  - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;'
+  c_temps:
+  - ptr
+  c_local:
+  - shared
+  fmtdict:
+    i_intent: OUT
+    i_intent_attr: ', intent(OUT)'
+  helper:
+  - capsule_memflags
+  impl_header:
+  - <memory>
+  destructor_header:
+  - <memory>
+  destructor_name: shadow-{cxx_type}
+  destructor:
+  - "{cxx_type} *shared =\t reinterpret_cast<{cxx_type} *>(ptr);"
+  - shared->reset();
+  - delete shared;
+  owner: shared
+  sphinx-end-before: c_ctor_shadow_capptr_weak
 c_ctor_shadow_capsule:
   sphinx-start-after: c_ctor_shadow_capsule
   name: c_ctor_shadow_capsule
@@ -111,6 +169,7 @@ c_ctor_shadow_capsule:
   - "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});"
   - "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;'
   fmtdict:
     f_intent: OUT
     f_intent_attr: ', intent(OUT)'
@@ -125,8 +184,12 @@ c_dtor:
   mixin_names:
   - '  c_mixin_header_stddef'
   c_call:
+  - if ({C_this}->cmemflags & SWIG_MEM_OWN) {{+
   - delete {CXX_this};
+  - -}}
   - '{C_this}->addr = {nullptr};'
+  - '{C_this}->idtor = 0;'
+  - '{C_this}->cmemflags = 0;'
   impl_header:
   - <cstddef>
   lang_c:
@@ -263,6 +326,79 @@ c_function_char*_buf_copy:
   helper:
   - char_copy
   sphinx-end-before: c_function_char*_buf_copy
+c_function_char*_buf_copy_caller:
+  sphinx-start-after: c_function_char*_buf_copy_caller
+  name: c_function_char*_buf_copy_caller
+  intent: function
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
+  - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
+  - Call function and assign to a local C++ variable.
+  - Copy cxx variable to c argument for output.
+  - Free a local char array in C wrapper.
+  notes:
+  - char *getname() +len(30) +owner(caller)
+  - Copy result into caller's buffer.
+  - Then release memory allocated by library.
+  mixin_names:
+  - '  f_mixin_call-cwrapper-as-subroutine'
+  - '    c_mixin_as-intent-out'
+  - '  f_mixin_declare-local-variable'
+  - '  f_mixin_pass_character_buf'
+  - '  c_mixin_in_character_buf'
+  - '    c_mixin_character-assumed-length'
+  - '  c_mixin_arg-call-cvar'
+  - '  c_mixin_function-assign-to-local'
+  - '  c_mixin_char-copyout'
+  - '  c_mixin_char-free'
+  - '    c_mixin_header_stdlib'
+  i_dummy_arg:
+  - '{i_var}'
+  - '{i_var_len}'
+  i_dummy_decl:
+  - 'character(kind=C_CHAR){i_intent_attr} :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  c_return_type: void
+  c_prototype:
+  - char *{c_var}
+  - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
+  c_post_call:
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
+  - if ({c_local_cxx} != {nullptr}) {{+
+  - delete[] {c_local_cxx};
+  - -}}
+  c_temps:
+  - len
+  c_local:
+  - cxx
+  fmtdict:
+    i_intent: OUT
+    i_intent_attr: ', intent(OUT)'
+  helper:
+  - char_copy
+  lang_c:
+    impl_header:
+    - <stdlib.h>
+    c_post_call:
+    - if ({c_local_cxx} != NULL) {{+
+    - '{stdlib}free({c_local_cxx});'
+    - -}}
+  lang_cxx:
+    c_post_call:
+    - if ({c_local_cxx} != {nullptr}) {{+
+    - delete[] {c_local_cxx};
+    - -}}
+  sphinx-end-before: c_function_char*_buf_copy_caller
 c_function_enum:
   sphinx-start-after: c_function_enum
   name: c_function_enum
@@ -367,6 +503,26 @@ c_function_native**:
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   sphinx-end-before: c_function_native**
+c_function_native**_library:
+  sphinx-start-after: c_function_native**_library
+  name: c_function_native**_library
+  intent: function
+  comments:
+  - Return a C pointer directly as type(C_PTR).
+  - Call function and assign to a c variable.
+  usage:
+  - int **func()
+  mixin_names:
+  - '  f_mixin_function_ptr'
+  - '  c_mixin_function-assign-to-cvar'
+  i_result_decl:
+  - 'type(C_PTR) :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
+  sphinx-end-before: c_function_native**_library
 c_function_native*_caller:
   sphinx-start-after: c_function_native*_caller
   name: c_function_native*_caller
@@ -387,6 +543,26 @@ c_function_native*_caller:
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   sphinx-end-before: c_function_native*_caller
+c_function_native*_library:
+  sphinx-start-after: c_function_native*_library
+  name: c_function_native*_library
+  intent: function
+  comments:
+  - Return a C pointer directly as type(C_PTR).
+  - Call function and assign to a c variable.
+  usage:
+  - int **func()
+  mixin_names:
+  - '  f_mixin_function_ptr'
+  - '  c_mixin_function-assign-to-cvar'
+  i_result_decl:
+  - 'type(C_PTR) :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
+  sphinx-end-before: c_function_native*_library
 c_function_native*_scalar:
   sphinx-start-after: c_function_native*_scalar
   name: c_function_native*_scalar
@@ -411,7 +587,7 @@ c_function_shadow&_capptr:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  c_mixin_function_shadow_capptr'
   - '  c_mixin_shadow'
@@ -439,6 +615,7 @@ c_function_shadow&_capptr:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_return:
   - return {c_var};
   c_temps:
@@ -459,7 +636,7 @@ c_function_shadow&_capptr_caller:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  c_mixin_function_shadow_capptr'
   - '  c_mixin_shadow'
@@ -487,6 +664,7 @@ c_function_shadow&_capptr_caller:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_return:
   - return {c_var};
   c_temps:
@@ -507,7 +685,7 @@ c_function_shadow&_capptr_library:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  c_mixin_function_shadow_capptr'
   - '  c_mixin_shadow'
@@ -535,6 +713,7 @@ c_function_shadow&_capptr_library:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_return:
   - return {c_var};
   c_temps:
@@ -555,7 +734,7 @@ c_function_shadow&_capsule:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
@@ -578,6 +757,7 @@ c_function_shadow&_capsule:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_local:
   - cxx
   fmtdict:
@@ -594,7 +774,7 @@ c_function_shadow&_capsule_caller:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
@@ -617,6 +797,7 @@ c_function_shadow&_capsule_caller:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_local:
   - cxx
   fmtdict:
@@ -633,7 +814,7 @@ c_function_shadow&_capsule_library:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
@@ -656,6 +837,7 @@ c_function_shadow&_capsule_library:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_local:
   - cxx
   fmtdict:
@@ -672,7 +854,7 @@ c_function_shadow*_capptr:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  c_mixin_function_shadow_capptr'
   - '  c_mixin_shadow'
@@ -700,6 +882,7 @@ c_function_shadow*_capptr:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_return:
   - return {c_var};
   c_temps:
@@ -720,7 +903,7 @@ c_function_shadow*_capptr_caller:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  c_mixin_function_shadow_capptr'
   - '  c_mixin_shadow'
@@ -748,6 +931,7 @@ c_function_shadow*_capptr_caller:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_return:
   - return {c_var};
   c_temps:
@@ -768,7 +952,7 @@ c_function_shadow*_capptr_library:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  c_mixin_function_shadow_capptr'
   - '  c_mixin_shadow'
@@ -796,6 +980,7 @@ c_function_shadow*_capptr_library:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_return:
   - return {c_var};
   c_temps:
@@ -844,6 +1029,7 @@ c_function_shadow*_capptr_shared:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_return:
   - return {c_var};
   c_temps:
@@ -864,7 +1050,7 @@ c_function_shadow*_capsule:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
@@ -887,6 +1073,7 @@ c_function_shadow*_capsule:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_local:
   - cxx
   fmtdict:
@@ -955,6 +1142,7 @@ c_function_shadow<native>_capptr:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_return:
   - return {c_var};
   c_temps:
@@ -1011,6 +1199,7 @@ c_function_shadow_capptr:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_return:
   - return {c_var};
   c_temps:
@@ -1060,6 +1249,7 @@ c_function_smartptr<shadow>*_capptr:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_return:
   - return {c_var};
   c_temps:
@@ -1110,6 +1300,7 @@ c_function_smartptr<shadow>_capptr:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_return:
   - return {c_var};
   c_temps:
@@ -1142,17 +1333,17 @@ c_function_string:
   i_dummy_arg:
   - '{i_var_capsule}'
   i_dummy_decl:
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_import:
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   i_module:
     iso_c_binding:
     - C_PTR
   c_return_type: const char *
   c_prototype:
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_pre_call:
   - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
@@ -1170,7 +1361,7 @@ c_function_string:
     cxx_addr: ''
     cxx_member: ->
   helper:
-  - capsule_data_helper
+  - capsule_data
   owner: caller
   sphinx-end-before: c_function_string
 c_function_string&:
@@ -1278,6 +1469,31 @@ c_function_string&_copy:
   c_local:
   - cxx
   sphinx-end-before: c_function_string&_copy
+c_function_string&_library:
+  sphinx-start-after: c_function_string&_library
+  name: c_function_string&_library
+  intent: function
+  comments:
+  - Call function and assign to a local C++ variable.
+  notes:
+  - Fortran calling a C function without
+  - any api argument - is this useful?
+  mixin_names:
+  - '  c_mixin_function-assign-to-local'
+  i_result_decl:
+  - 'type(C_PTR) :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
+  c_post_call:
+  - '{c_const}char *{c_var} = {c_local_cxx}{cxx_member}c_str();'
+  c_return:
+  - return {c_var};
+  c_local:
+  - cxx
+  sphinx-end-before: c_function_string&_library
 c_function_string*:
   sphinx-start-after: c_function_string*
   name: c_function_string*
@@ -1617,6 +1833,26 @@ c_function_void*:
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   sphinx-end-before: c_function_void*
+c_function_void*_library:
+  sphinx-start-after: c_function_void*_library
+  name: c_function_void*_library
+  intent: function
+  comments:
+  - Declare a Fortran variable.
+  - Call function and assign to a c variable.
+  notes:
+  - XXX - f entries are the same as the i entries, share?
+  mixin_names:
+  - '  f_mixin_declare-local-variable'
+  - '  c_mixin_function-assign-to-cvar'
+  i_result_decl:
+  - 'type(C_PTR) :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
+  sphinx-end-before: c_function_void*_library
 c_getter_native:
   sphinx-start-after: c_getter_native
   name: c_getter_native
@@ -3936,6 +4172,7 @@ c_mixin_capsule_fill_cvar:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   sphinx-end-before: c_mixin_capsule_fill_cvar
 c_mixin_capsule_fill_local:
   sphinx-start-after: c_mixin_capsule_fill_local
@@ -3956,15 +4193,15 @@ c_mixin_capsule_pass:
   i_dummy_arg:
   - '{i_var_capsule}'
   i_dummy_decl:
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_prototype:
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_temps:
   - capsule
   helper:
-  - capsule_data_helper
+  - capsule_data
   sphinx-end-before: c_mixin_capsule_pass
 c_mixin_cast-argument:
   sphinx-start-after: c_mixin_cast-argument
@@ -4492,15 +4729,21 @@ c_mixin_char-free:
   mixin_names:
   - '  c_mixin_header_stdlib'
   c_post_call:
+  - if ({c_local_cxx} != {nullptr}) {{+
   - delete[] {c_local_cxx};
+  - -}}
   lang_c:
     impl_header:
     - <stdlib.h>
     c_post_call:
-    - free({c_local_cxx});
+    - if ({c_local_cxx} != NULL) {{+
+    - '{stdlib}free({c_local_cxx});'
+    - -}}
   lang_cxx:
     c_post_call:
+    - if ({c_local_cxx} != {nullptr}) {{+
     - delete[] {c_local_cxx};
+    - -}}
   sphinx-end-before: c_mixin_char-free
 c_mixin_char-malloc:
   sphinx-start-after: c_mixin_char-malloc
@@ -4975,12 +5218,32 @@ c_mixin_make-shared:
   - "*{c_local_shared} = \t std::make_shared<{baseclass.cxx_type}>({C_call_list});"
   - "{c_var}->addr = static_cast<{c_const}void *>(\t{c_local_shared});"
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;'
   c_local:
   - shared
+  helper:
+  - capsule_memflags
   impl_header:
   - <memory>
   owner: shared
   sphinx-end-before: c_mixin_make-shared
+c_mixin_make-weak:
+  sphinx-start-after: c_mixin_make-weak
+  name: c_mixin_make-weak
+  intent: mixin
+  comments:
+  - Create a std::weak_pointer on the heap to hold the pointer to the instance.
+  c_call:
+  - "{cxx_type} *{cxx_var} =\t new {cxx_type};"
+  - "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
+  - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;'
+  helper:
+  - capsule_memflags
+  impl_header:
+  - <memory>
+  owner: shared
+  sphinx-end-before: c_mixin_make-weak
 c_mixin_new_vector<native>:
   sphinx-start-after: c_mixin_new_vector<native>
   name: c_mixin_new_vector<native>
@@ -5010,6 +5273,197 @@ c_mixin_new_vector<native>:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
   sphinx-end-before: c_mixin_new_vector<native>
+c_mixin_operator_assignment:
+  sphinx-start-after: c_mixin_operator_assignment
+  name: c_mixin_operator_assignment
+  intent: mixin
+  c_body:
+  - "void {C_name_assign_api}({c_type_lhs} *lhs_capsule,\t {c_type_rhs} *rhs_capsule)"
+  - '{{+'
+  - if (lhs_capsule->addr == {nullptr}) {{+
+  - /* LHS is unassigned */
+  - if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {{+
+  - '{capture_code}'
+  - -}} else {{+
+  - '{alias_code}'
+  - -}}
+  - -}} else if (rhs_capsule->addr == {nullptr}) {{+
+  - '{destroy_code}'
+  - -}} else if (lhs_capsule->addr == rhs_capsule->addr) {{+
+  - '// Lhs-assignment: ignore.'
+  - -}} else if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {{+
+  - '{move_alias_code}'
+  - -}} else {{+
+  - '{copy_alias_code}'
+  - -}}
+  - -}}
+  sphinx-end-before: c_mixin_operator_assignment
+c_mixin_operator_assignment_basic:
+  sphinx-start-after: c_mixin_operator_assignment_basic
+  name: c_mixin_operator_assignment_basic
+  intent: mixin
+  c_body:
+  - "void {C_name_assign_api}({c_type_lhs} *lhs_capsule,\t {c_type_rhs} *rhs_capsule)"
+  - '{{+'
+  - "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs} *>(lhs_capsule->addr);"
+  - "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs} *>(rhs_capsule->addr);"
+  - if (lhs == nullptr) {{+
+  - lhs = new {cxx_type}(*rhs);
+  - lhs_capsule->addr = lhs;
+  - lhs_capsule->idtor = {idtor};
+  - -}} else {{+
+  - '*lhs = *rhs;'
+  - -}}
+  - -}}
+  destructor_header:
+  - <memory>
+  destructor_name: assignment-{cxx_type}
+  destructor:
+  - "auto cxx_ptr =\t reinterpret_cast<{cxx_type}*>(ptr);"
+  - delete cxx_ptr;
+  sphinx-end-before: c_mixin_operator_assignment_basic
+c_mixin_operator_assignment_fmtdict:
+  sphinx-start-after: c_mixin_operator_assignment_fmtdict
+  name: c_mixin_operator_assignment_fmtdict
+  intent: mixin
+  fmtdict:
+    capture_code:
+    - // Capture pointer from RHS, clear 'moving' flag.
+    - lhs_capsule->addr = rhs_capsule->addr;
+    - lhs_capsule->idtor = rhs_capsule->idtor;
+    - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+    alias_code:
+    - // Aliasing another class; clear ownership.
+    - lhs_capsule->addr = rhs_capsule->addr;
+    - lhs_capsule->idtor = 0;
+    - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_OWN;
+    destroy_code:
+    - // Replace LHS with a null pointer.
+    - if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+
+    - "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);"
+    - -}}
+    - lhs_capsule->addr = {nullptr};
+    - lhs_capsule->idtor = 0;
+    - lhs_capsule->cmemflags = 0;
+    move_alias_code:
+    - // Transferred ownership from a variable that's about to be lost.
+    - // Move-assign and delete the transient data.
+    - if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+
+    - "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);"
+    - -}}
+    - lhs_capsule->addr = rhs_capsule->addr;
+    - lhs_capsule->idtor = rhs_capsule->idtor;
+    - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+    copy_alias_code:
+    - // RHS shouldn't be deleted, alias to LHS.
+    - if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+
+    - "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);"
+    - -}}
+    - lhs_capsule->addr = rhs_capsule->addr;
+    - lhs_capsule->idtor = rhs_capsule->idtor;
+    - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+  sphinx-end-before: c_mixin_operator_assignment_fmtdict
+c_mixin_operator_assignment_fmtdict_makeshared:
+  sphinx-start-after: c_mixin_operator_assignment_fmtdict_makeshared
+  name: c_mixin_operator_assignment_fmtdict_makeshared
+  intent: mixin
+  fmtdict:
+    capture_code:
+    - // Capture pointer from RHS, clear 'moving' flag.
+    - "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs}*>\t(rhs_capsule->addr);"
+    - "{cxx_type_lhs} *lhs =\t new {cxx_type_lhs}\t(rhs);"
+    - //lhs_capsule->addr = new {cxx_type_lhs} (*static_cast<{cxx_type_lhs}*>(rhs_capsule->addr));
+    - lhs_capsule->addr = lhs;
+    - lhs_capsule->idtor = {idtor};
+    - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+    alias_code:
+    - // Aliasing another class; copy smart pointer.
+    - "lhs_capsule->addr = new {cxx_type_lhs}\t (*static_cast<{cxx_type_lhs}*>\t(rhs_capsule->addr));"
+    - lhs_capsule->idtor = {idtor};
+    - lhs_capsule->cmemflags = rhs_capsule->cmemflags | SWIG_MEM_OWN;
+    destroy_code:
+    - // Replace LHS with a null pointer.
+    - //if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+
+    - //{C_memory_dtor_function}(({c_capsule_data_type} *) lhs_capsule);
+    - //-}}
+    - "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs}*>\t(lhs_capsule->addr);"
+    - lhs->reset();
+    - lhs_capsule->addr = {nullptr};
+    - lhs_capsule->idtor = 0;
+    - lhs_capsule->cmemflags = 0;
+    move_alias_code:
+    - // Transferred ownership from a variable that's about to be lost.
+    - // Move-assign and delete the transient data.
+    - // LHS and RHS should both 'own' their shared pointers.
+    - "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs}*>\t(lhs_capsule->addr);"
+    - "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs}*>\t(rhs_capsule->addr);"
+    - lhs->reset(rhs);
+    - lhs_capsule->addr = rhs_capsule->addr;
+    - lhs_capsule->idtor = {idtor};
+    - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+    - if (rhs_capsule->cmemflags & SWIG_MEM_OWN) {{+
+    - "{C_memory_dtor_function}(\t({c_capsule_data_type} *) rhs_capsule);"
+    - -}}
+    copy_alias_code:
+    - // RHS shouldn't be deleted, alias to LHS.
+    - // LHS and RHS should both 'own' their shared pointers.
+    - "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs}*>\t(lhs_capsule->addr);"
+    - "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs}*>\t(rhs_capsule->addr);"
+    - lhs->reset(rhs);
+  destructor_header:
+  - <memory>
+  destructor_name: assignment-{cxx_type_lhs}
+  destructor:
+  - "auto cxx_ptr =\t reinterpret_cast<{cxx_type_lhs}*>(ptr);"
+  - delete cxx_ptr;
+  sphinx-end-before: c_mixin_operator_assignment_fmtdict_makeshared
+c_mixin_operator_assignment_fmtdict_weak:
+  sphinx-start-after: c_mixin_operator_assignment_fmtdict_weak
+  name: c_mixin_operator_assignment_fmtdict_weak
+  intent: mixin
+  fmtdict:
+    capture_code:
+    - // Capture pointer from RHS, clear 'moving' flag.
+    - lhs_capsule->addr = rhs_capsule->addr;
+    - lhs_capsule->idtor = rhs_capsule->idtor;
+    - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+    alias_code:
+    - // Aliasing another class; copy smart pointer.
+    - "lhs_capsule->addr = new {cxx_type_lhs}\t (*static_cast<{cxx_type_lhs}*>\t(rhs_capsule->addr));"
+    - lhs_capsule->idtor = {idtor};
+    - lhs_capsule->cmemflags = rhs_capsule->cmemflags | SWIG_MEM_OWN;
+    destroy_code:
+    - // Replace LHS with a null pointer.
+    - if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+
+    - "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);"
+    - -}}
+    - lhs_capsule->addr = {nullptr};
+    - lhs_capsule->idtor = 0;
+    - lhs_capsule->cmemflags = 0;
+    move_alias_code:
+    - // Transferred ownership from a variable that's about to be lost.
+    - // Move-assign and delete the transient data.
+    - // LHS and RHS should both 'own' their shared pointers.
+    - "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs}*>\t(lhs_capsule->addr);"
+    - "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs}*>\t(rhs_capsule->addr);"
+    - '*lhs = *rhs;'
+    - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+    - if (rhs_capsule->cmemflags & SWIG_MEM_OWN) {{+
+    - "{C_memory_dtor_function}(\t({c_capsule_data_type} *) rhs_capsule);"
+    - -}}
+    copy_alias_code:
+    - // RHS shouldn't be deleted, alias to LHS.
+    - // LHS and RHS should both 'own' their shared pointers.
+    - "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs}*>\t(lhs_capsule->addr);"
+    - "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs}*>\t(rhs_capsule->addr);"
+    - '*lhs = *rhs;'
+  destructor_header:
+  - <memory>
+  destructor_name: assignment-{cxx_type_lhs}
+  destructor:
+  - "auto cxx_ptr =\t reinterpret_cast<{cxx_type_lhs}*>(ptr);"
+  - delete cxx_ptr;
+  sphinx-end-before: c_mixin_operator_assignment_fmtdict_weak
 c_mixin_out_native**:
   sphinx-start-after: c_mixin_out_native**
   name: c_mixin_out_native**
@@ -6314,13 +6768,13 @@ c_out_vector<string>&_cdesc_allocatable:
   - '{i_var_capsule}'
   i_dummy_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_pre_call:
   - std::vector<std::string> *{c_local_cxx} = new std::vector<std::string>;
   c_arg_call:
@@ -6343,7 +6797,7 @@ c_out_vector<string>&_cdesc_allocatable:
     f_target_attr: ', target'
   helper:
   - array_context
-  - capsule_data_helper
+  - capsule_data
   - array_context
   - cdesc_vector_string_allocatable
   - vector_string_out_len
@@ -6573,31 +7027,6 @@ c_subroutine:
   c_call:
   - '{C_call_function};'
   sphinx-end-before: c_subroutine
-c_subroutine_assignment_weakptr:
-  sphinx-start-after: c_subroutine_assignment_weakptr
-  name: c_subroutine_assignment_weakptr
-  intent: subroutine
-  notes:
-  - std::weak_ptr has no wrapped constructor.
-  - It must be made from a std::shared_ptr with an assignment.
-  - arglist[1] is the 'from' argument.
-  usage:
-  - void func() +custom(weakptr)+operator(assignment)
-  c_call:
-  - if (SH_this == nullptr) {{+
-  - SH_this = new {cxx_type}(*SHC_from_cxx);
-  - self->addr = SH_this;
-  - self->idtor = {idtor};
-  - -}} else {{+
-  - '*{CXX_this} = *{c_arglist[1].c_local_cxx};'
-  - -}}
-  destructor_header:
-  - <memory>
-  destructor_name: assignment-{cxx_type}
-  destructor:
-  - "auto cxx_ptr =\t reinterpret_cast<{cxx_type}*>(ptr);"
-  - delete cxx_ptr;
-  sphinx-end-before: c_subroutine_assignment_weakptr
 f_ctor_shadow_capsule:
   sphinx-start-after: f_ctor_shadow_capsule
   name: f_ctor_shadow_capsule
@@ -6628,6 +7057,7 @@ f_ctor_shadow_capsule:
   - "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});"
   - "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;'
   fmtdict:
     f_intent: OUT
     f_intent_attr: ', intent(OUT)'
@@ -6635,6 +7065,44 @@ f_ctor_shadow_capsule:
     i_intent_attr: ', intent(OUT)'
   owner: caller
   sphinx-end-before: f_ctor_shadow_capsule
+f_ctor_shadow_capsule_caller:
+  sphinx-start-after: f_ctor_shadow_capsule_caller
+  name: f_ctor_shadow_capsule_caller
+  intent: ctor
+  comments:
+  - Pass function result as a capsule argument from Fortran to C.
+  mixin_names:
+  - '  f_mixin_as-intent-out'
+  - '  f_mixin_capsule_function_shadow'
+  - '  c_mixin_shadow'
+  - '  c_mixin_as-intent-out'
+  f_dummy_decl:
+  - '{f_type} :: {f_var}'
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_need_wrapper: true
+  i_dummy_arg:
+  - '{i_var}'
+  i_dummy_decl:
+  - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
+  i_module:
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
+  c_return_type: void
+  c_prototype:
+  - '{c_type} *{c_var}'
+  c_call:
+  - "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});"
+  - "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
+  - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;'
+  fmtdict:
+    f_intent: OUT
+    f_intent_attr: ', intent(OUT)'
+    i_intent: OUT
+    i_intent_attr: ', intent(OUT)'
+  owner: caller
+  sphinx-end-before: f_ctor_shadow_capsule_caller
 f_ctor_shadow_capsule_shared:
   sphinx-start-after: f_ctor_shadow_capsule_shared
   name: f_ctor_shadow_capsule_shared
@@ -6672,11 +7140,14 @@ f_ctor_shadow_capsule_shared:
   - "*{c_local_shared} = \t std::make_shared<{baseclass.cxx_type}>({C_call_list});"
   - "{c_var}->addr = static_cast<{c_const}void *>(\t{c_local_shared});"
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;'
   c_local:
   - shared
   fmtdict:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
+  helper:
+  - capsule_memflags
   impl_header:
   - <memory>
   destructor_header:
@@ -6688,6 +7159,59 @@ f_ctor_shadow_capsule_shared:
   - delete shared;
   owner: shared
   sphinx-end-before: f_ctor_shadow_capsule_shared
+f_ctor_shadow_capsule_weak:
+  sphinx-start-after: f_ctor_shadow_capsule_weak
+  name: f_ctor_shadow_capsule_weak
+  intent: ctor
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass function result as a capsule argument from Fortran to C.
+  - Create a std::weak_pointer on the heap to hold the pointer to the instance.
+  mixin_names:
+  - '  f_mixin_call-cwrapper-as-subroutine'
+  - '    c_mixin_as-intent-out'
+  - '  f_mixin_capsule_function_shadow'
+  - '  c_mixin_shadow'
+  - '  c_mixin_destructor_new-shadow-shared'
+  - '  c_mixin_make-weak'
+  f_dummy_decl:
+  - '{f_type} :: {f_var}'
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  f_need_wrapper: true
+  i_dummy_arg:
+  - '{i_var}'
+  i_dummy_decl:
+  - 'type({f_capsule_data_type}){i_intent_attr} :: {i_var}'
+  i_module:
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
+  c_return_type: void
+  c_prototype:
+  - '{c_type} *{c_var}'
+  c_call:
+  - "{cxx_type} *{cxx_var} =\t new {cxx_type};"
+  - "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
+  - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;'
+  fmtdict:
+    i_intent: OUT
+    i_intent_attr: ', intent(OUT)'
+  helper:
+  - capsule_memflags
+  impl_header:
+  - <memory>
+  destructor_header:
+  - <memory>
+  destructor_name: shadow-{cxx_type}
+  destructor:
+  - "{cxx_type} *shared =\t reinterpret_cast<{cxx_type} *>(ptr);"
+  - shared->reset();
+  - delete shared;
+  owner: shared
+  sphinx-end-before: f_ctor_shadow_capsule_weak
 f_dtor:
   sphinx-start-after: f_dtor
   name: f_dtor
@@ -6695,8 +7219,12 @@ f_dtor:
   mixin_names:
   - '  c_mixin_header_stddef'
   c_call:
+  - if ({C_this}->cmemflags & SWIG_MEM_OWN) {{+
   - delete {CXX_this};
+  - -}}
   - '{C_this}->addr = {nullptr};'
+  - '{C_this}->idtor = 0;'
+  - '{C_this}->cmemflags = 0;'
   impl_header:
   - <cstddef>
   sphinx-end-before: f_dtor
@@ -6899,6 +7427,87 @@ f_function_char*_buf_copy:
   helper:
   - char_copy
   sphinx-end-before: f_function_char*_buf_copy
+f_function_char*_buf_copy_caller:
+  sphinx-start-after: f_function_char*_buf_copy_caller
+  name: f_function_char*_buf_copy_caller
+  intent: function
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Declare a Fortran variable.
+  - Pass CHARACTER and LEN to C wrapper.
+  - Pass cxx variable to library.
+  - Call function and assign to a local C++ variable.
+  - Copy cxx variable to c argument for output.
+  - Free a local char array in C wrapper.
+  notes:
+  - char *getname() +len(30) +owner(caller)
+  - Copy result into caller's buffer.
+  - Then release memory allocated by library.
+  mixin_names:
+  - '  f_mixin_call-cwrapper-as-subroutine'
+  - '    c_mixin_as-intent-out'
+  - '  f_mixin_declare-local-variable'
+  - '  f_mixin_pass_character_buf'
+  - '  c_mixin_in_character_buf'
+  - '    c_mixin_character-assumed-length'
+  - '  c_mixin_arg-call-cvar'
+  - '  c_mixin_function-assign-to-local'
+  - '  c_mixin_char-copyout'
+  - '  c_mixin_char-free'
+  - '    c_mixin_header_stdlib'
+  f_dummy_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
+  f_local_decl:
+  - integer(C_INT) {f_var_len}
+  f_pre_call:
+  - '{f_var_len} = len({f_var}, kind=C_INT)'
+  f_arg_call:
+  - '{f_var}'
+  - '{f_var_len}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
+    iso_c_binding:
+    - C_INT
+  f_temps:
+  - len
+  f_need_wrapper: true
+  i_dummy_arg:
+  - '{i_var}'
+  - '{i_var_len}'
+  i_dummy_decl:
+  - 'character(kind=C_CHAR){i_intent_attr} :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  c_return_type: void
+  c_prototype:
+  - char *{c_var}
+  - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
+  c_call:
+  - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
+  c_post_call:
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
+  - if ({c_local_cxx} != {nullptr}) {{+
+  - delete[] {c_local_cxx};
+  - -}}
+  c_temps:
+  - len
+  c_local:
+  - cxx
+  fmtdict:
+    i_intent: OUT
+    i_intent_attr: ', intent(OUT)'
+  helper:
+  - char_copy
+  sphinx-end-before: f_function_char*_buf_copy_caller
 f_function_char*_buf_funcarg_copy:
   sphinx-start-after: f_function_char*_buf_funcarg_copy
   name: f_function_char*_buf_funcarg_copy
@@ -7111,9 +7720,9 @@ f_function_char*_cdesc_funcarg_allocatable:
   impl_header:
   - <cstring>
   sphinx-end-before: f_function_char*_cdesc_funcarg_allocatable
-f_function_char*_cdesc_funcarg_pointer:
-  sphinx-start-after: f_function_char*_cdesc_funcarg_pointer
-  name: f_function_char*_cdesc_funcarg_pointer
+f_function_char*_cdesc_funcarg_pointer_library:
+  sphinx-start-after: f_function_char*_cdesc_funcarg_pointer_library
+  name: f_function_char*_cdesc_funcarg_pointer_library
   intent: function
   comments:
   - Return function result as an argument.
@@ -7180,10 +7789,10 @@ f_function_char*_cdesc_funcarg_pointer:
   - pointer_string
   impl_header:
   - <cstring>
-  sphinx-end-before: f_function_char*_cdesc_funcarg_pointer
-f_function_char*_cdesc_pointer:
-  sphinx-start-after: f_function_char*_cdesc_pointer
-  name: f_function_char*_cdesc_pointer
+  sphinx-end-before: f_function_char*_cdesc_funcarg_pointer_library
+f_function_char*_cdesc_pointer_library:
+  sphinx-start-after: f_function_char*_cdesc_pointer_library
+  name: f_function_char*_cdesc_pointer_library
   intent: function
   comments:
   - Call the C wrapper as a subroutine.
@@ -7240,7 +7849,7 @@ f_function_char*_cdesc_pointer:
   - pointer_string
   impl_header:
   - <cstring>
-  sphinx-end-before: f_function_char*_cdesc_pointer
+  sphinx-end-before: f_function_char*_cdesc_pointer_library
 f_function_char*_cfi_allocatable:
   sphinx-start-after: f_function_char*_cfi_allocatable
   name: f_function_char*_cfi_allocatable
@@ -7498,9 +8107,9 @@ f_function_char*_cfi_funcarg_copy:
   iface_header:
   - ISO_Fortran_binding.h
   sphinx-end-before: f_function_char*_cfi_funcarg_copy
-f_function_char*_cfi_funcarg_pointer:
-  sphinx-start-after: f_function_char*_cfi_funcarg_pointer
-  name: f_function_char*_cfi_funcarg_pointer
+f_function_char*_cfi_funcarg_pointer_library:
+  sphinx-start-after: f_function_char*_cfi_funcarg_pointer_library
+  name: f_function_char*_cfi_funcarg_pointer_library
   intent: function
   comments:
   - Return function result as an argument.
@@ -7567,10 +8176,10 @@ f_function_char*_cfi_funcarg_pointer:
   - ISO_Fortran_binding.h
   impl_header:
   - <cstring>
-  sphinx-end-before: f_function_char*_cfi_funcarg_pointer
-f_function_char*_cfi_pointer:
-  sphinx-start-after: f_function_char*_cfi_pointer
-  name: f_function_char*_cfi_pointer
+  sphinx-end-before: f_function_char*_cfi_funcarg_pointer_library
+f_function_char*_cfi_pointer_library:
+  sphinx-start-after: f_function_char*_cfi_pointer_library
+  name: f_function_char*_cfi_pointer_library
   intent: function
   comments:
   - Call the C wrapper as a subroutine.
@@ -7637,7 +8246,7 @@ f_function_char*_cfi_pointer:
   - ISO_Fortran_binding.h
   impl_header:
   - <cstring>
-  sphinx-end-before: f_function_char*_cfi_pointer
+  sphinx-end-before: f_function_char*_cfi_pointer_library
 f_function_char*_copy:
   sphinx-start-after: f_function_char*_copy
   name: f_function_char*_copy
@@ -7668,9 +8277,9 @@ f_function_char*_copy:
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   sphinx-end-before: f_function_char*_copy
-f_function_char*_funcarg_raw:
-  sphinx-start-after: f_function_char*_funcarg_raw
-  name: f_function_char*_funcarg_raw
+f_function_char*_funcarg_raw_library:
+  sphinx-start-after: f_function_char*_funcarg_raw_library
+  name: f_function_char*_funcarg_raw_library
   intent: function
   comments:
   - Return function result as an argument.
@@ -7719,7 +8328,7 @@ f_function_char*_funcarg_raw:
     f_intent_attr: ', intent(OUT)'
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
-  sphinx-end-before: f_function_char*_funcarg_raw
+  sphinx-end-before: f_function_char*_funcarg_raw_library
 f_function_char*_pointer:
   sphinx-start-after: f_function_char*_pointer
   name: f_function_char*_pointer
@@ -7750,9 +8359,9 @@ f_function_char*_pointer:
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   sphinx-end-before: f_function_char*_pointer
-f_function_char*_raw:
-  sphinx-start-after: f_function_char*_raw
-  name: f_function_char*_raw
+f_function_char*_raw_library:
+  sphinx-start-after: f_function_char*_raw_library
+  name: f_function_char*_raw_library
   intent: function
   comments:
   - Call a function in Fortran wrapper.
@@ -7779,7 +8388,7 @@ f_function_char*_raw:
     - C_PTR
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
-  sphinx-end-before: f_function_char*_raw
+  sphinx-end-before: f_function_char*_raw_library
 f_function_char_cdesc_allocatable:
   sphinx-start-after: f_function_char_cdesc_allocatable
   name: f_function_char_cdesc_allocatable
@@ -8414,9 +9023,9 @@ f_function_native&:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_need_wrapper: true
   sphinx-end-before: f_function_native&
-f_function_native&_pointer:
-  sphinx-start-after: f_function_native&_pointer
-  name: f_function_native&_pointer
+f_function_native&_pointer_library:
+  sphinx-start-after: f_function_native&_pointer_library
+  name: f_function_native&_pointer_library
   intent: function
   comments:
   - Return a C pointer as a Fortran pointer.
@@ -8454,7 +9063,7 @@ f_function_native&_pointer:
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_need_wrapper: true
-  sphinx-end-before: f_function_native&_pointer
+  sphinx-end-before: f_function_native&_pointer_library
 f_function_native**:
   sphinx-start-after: f_function_native**
   name: f_function_native**
@@ -8480,6 +9089,31 @@ f_function_native**:
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   sphinx-end-before: f_function_native**
+f_function_native**_library:
+  sphinx-start-after: f_function_native**_library
+  name: f_function_native**_library
+  intent: function
+  comments:
+  - Return a C pointer directly as type(C_PTR).
+  - Call function and assign to a c variable.
+  usage:
+  - int **func()
+  mixin_names:
+  - '  f_mixin_function_ptr'
+  - '  c_mixin_function-assign-to-cvar'
+  f_dummy_decl:
+  - 'type(C_PTR) :: {f_var}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - 'type(C_PTR) :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
+  sphinx-end-before: f_function_native**_library
 f_function_native*_cdesc_allocatable:
   sphinx-start-after: f_function_native*_cdesc_allocatable
   name: f_function_native*_cdesc_allocatable
@@ -8515,7 +9149,7 @@ f_function_native*_cdesc_allocatable:
     :: {f_var}{f_dimension}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  - 'type({f_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
@@ -8541,14 +9175,14 @@ f_function_native*_cdesc_allocatable:
   - '{i_var_capsule}'
   i_dummy_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_post_call:
@@ -8569,70 +9203,10 @@ f_function_native*_cdesc_allocatable:
   helper:
   - array_context
   - copy_array
-  - capsule_data_helper
+  - capsule_data
   - array_context
   - capsule_dtor
   sphinx-end-before: f_function_native*_cdesc_allocatable
-f_function_native*_cdesc_pointer:
-  sphinx-start-after: f_function_native*_cdesc_pointer
-  name: f_function_native*_cdesc_pointer
-  intent: function
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass cdesc as argument to C wrapper.
-  - Call function and assign to a c variable.
-  - Fill cdesc from native in the C wrapper.
-  - Set Fortran pointer to native array.
-  mixin_names:
-  - '  f_mixin_call-cwrapper-as-subroutine'
-  - '    c_mixin_as-intent-out'
-  - '  f_mixin_cdesc_pass_to_cwrapper'
-  - '  c_mixin_function-assign-to-cvar'
-  - '  c_mixin_cdesc_native_fill'
-  - '  f_mixin_cdesc_native_pointer'
-  f_dummy_decl:
-  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
-  f_local_decl:
-  - 'type({F_array_type}) :: {f_var_cdesc}'
-  f_arg_call:
-  - '{f_var_cdesc}'
-  f_call:
-  - call {f_call_function}({F_arg_c_call})
-  f_post_call:
-  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{gen.c_f_pointer_shape})"
-  f_module:
-    '{f_module_name}':
-    - '{f_kind}'
-    iso_c_binding:
-    - c_f_pointer
-  f_temps:
-  - cdesc
-  f_need_wrapper: true
-  i_dummy_arg:
-  - '{i_var_cdesc}'
-  i_dummy_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  c_return_type: void
-  c_prototype:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_call:
-  - "{gen.cxxresult.c_var} =\t {C_call_function};"
-  c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
-  - '{c_var_cdesc}->type = {typemap.sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
-  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
-  - '{c_var_cdesc}->size = {gen.c_array_size};'
-  c_temps:
-  - cdesc
-  fmtdict:
-    i_intent: OUT
-    i_intent_attr: ', intent(OUT)'
-  helper:
-  - array_context
-  sphinx-end-before: f_function_native*_cdesc_pointer
 f_function_native*_cdesc_pointer_caller:
   sphinx-start-after: f_function_native*_cdesc_pointer_caller
   name: f_function_native*_cdesc_pointer_caller
@@ -8690,14 +9264,14 @@ f_function_native*_cdesc_pointer_caller:
   - '{i_var_capsule}'
   i_dummy_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_post_call:
@@ -8717,10 +9291,70 @@ f_function_native*_cdesc_pointer_caller:
     f_var_capsule: Crv
   helper:
   - array_context
-  - capsule_data_helper
+  - capsule_data
   - array_context
   - capsule_helper
   sphinx-end-before: f_function_native*_cdesc_pointer_caller
+f_function_native*_cdesc_pointer_library:
+  sphinx-start-after: f_function_native*_cdesc_pointer_library
+  name: f_function_native*_cdesc_pointer_library
+  intent: function
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Call function and assign to a c variable.
+  - Fill cdesc from native in the C wrapper.
+  - Set Fortran pointer to native array.
+  mixin_names:
+  - '  f_mixin_call-cwrapper-as-subroutine'
+  - '    c_mixin_as-intent-out'
+  - '  f_mixin_cdesc_pass_to_cwrapper'
+  - '  c_mixin_function-assign-to-cvar'
+  - '  c_mixin_cdesc_native_fill'
+  - '  f_mixin_cdesc_native_pointer'
+  f_dummy_decl:
+  - '{f_type}{f_intent_attr}{f_deref_attr} :: {f_var}{f_assumed_shape}'
+  f_local_decl:
+  - 'type({F_array_type}) :: {f_var_cdesc}'
+  f_arg_call:
+  - '{f_var_cdesc}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  f_post_call:
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{gen.c_f_pointer_shape})"
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
+    iso_c_binding:
+    - c_f_pointer
+  f_temps:
+  - cdesc
+  f_need_wrapper: true
+  i_dummy_arg:
+  - '{i_var_cdesc}'
+  i_dummy_decl:
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  c_return_type: void
+  c_prototype:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
+  c_post_call:
+  - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
+  - '{c_var_cdesc}->type = {typemap.sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_type});'
+  - '{c_var_cdesc}->rank = {rank};{gen.c_array_shape}'
+  - '{c_var_cdesc}->size = {gen.c_array_size};'
+  c_temps:
+  - cdesc
+  fmtdict:
+    i_intent: OUT
+    i_intent_attr: ', intent(OUT)'
+  helper:
+  - array_context
+  sphinx-end-before: f_function_native*_cdesc_pointer_library
 f_function_native*_cfi_allocatable:
   sphinx-start-after: f_function_native*_cfi_allocatable
   name: f_function_native*_cfi_allocatable
@@ -8797,9 +9431,9 @@ f_function_native*_cfi_allocatable:
   impl_header:
   - <cstring>
   sphinx-end-before: f_function_native*_cfi_allocatable
-f_function_native*_cfi_pointer:
-  sphinx-start-after: f_function_native*_cfi_pointer
-  name: f_function_native*_cfi_pointer
+f_function_native*_cfi_pointer_library:
+  sphinx-start-after: f_function_native*_cfi_pointer_library
+  name: f_function_native*_cfi_pointer_library
   intent: function
   comments:
   - Call the C wrapper as a subroutine.
@@ -8878,7 +9512,7 @@ f_function_native*_cfi_pointer:
   - lower_bounds_CFI
   iface_header:
   - ISO_Fortran_binding.h
-  sphinx-end-before: f_function_native*_cfi_pointer
+  sphinx-end-before: f_function_native*_cfi_pointer_library
 f_function_native*_pointer:
   sphinx-start-after: f_function_native*_pointer
   name: f_function_native*_pointer
@@ -8961,9 +9595,50 @@ f_function_native*_pointer_caller:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   c_need_wrapper: true
   sphinx-end-before: f_function_native*_pointer_caller
-f_function_native*_raw:
-  sphinx-start-after: f_function_native*_raw
-  name: f_function_native*_raw
+f_function_native*_pointer_library:
+  sphinx-start-after: f_function_native*_pointer_library
+  name: f_function_native*_pointer_library
+  intent: function
+  comments:
+  - Return a C pointer as a Fortran pointer.
+  - Call function and assign to a c variable.
+  notes:
+  - Pointer to scalar.
+  - type(C_PTR) is returned instead of a cdesc argument.
+  usage:
+  - int &func()
+  mixin_names:
+  - '  f_mixin_function_c-ptr'
+  - '    f_mixin_function-interface-as-cptr'
+  - '  c_mixin_function-assign-to-cvar'
+  f_dummy_decl:
+  - '{f_type}, pointer :: {f_var}'
+  f_local_decl:
+  - 'type(C_PTR) :: {f_local_ptr}'
+  f_call:
+  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
+  f_post_call:
+  - call c_f_pointer({f_local_ptr}, {f_result_var})
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
+    iso_c_binding:
+    - C_PTR
+    - c_f_pointer
+  f_local:
+  - ptr
+  i_result_decl:
+  - 'type(C_PTR) :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
+  c_need_wrapper: true
+  sphinx-end-before: f_function_native*_pointer_library
+f_function_native*_raw_library:
+  sphinx-start-after: f_function_native*_raw_library
+  name: f_function_native*_raw_library
   intent: function
   comments:
   - Return a C pointer directly as type(C_PTR).
@@ -8985,7 +9660,7 @@ f_function_native*_raw:
     - C_PTR
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
-  sphinx-end-before: f_function_native*_raw
+  sphinx-end-before: f_function_native*_raw_library
 f_function_native*_scalar:
   sphinx-start-after: f_function_native*_scalar
   name: f_function_native*_scalar
@@ -9033,7 +9708,7 @@ f_function_shadow&_capsule:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
@@ -9063,6 +9738,7 @@ f_function_shadow&_capsule:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_local:
   - cxx
   fmtdict:
@@ -9079,7 +9755,7 @@ f_function_shadow&_capsule_caller:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
@@ -9109,6 +9785,7 @@ f_function_shadow&_capsule_caller:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_local:
   - cxx
   fmtdict:
@@ -9125,7 +9802,7 @@ f_function_shadow&_capsule_library:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
@@ -9155,6 +9832,7 @@ f_function_shadow&_capsule_library:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_local:
   - cxx
   fmtdict:
@@ -9171,7 +9849,7 @@ f_function_shadow*_capsule:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
@@ -9201,6 +9879,7 @@ f_function_shadow*_capsule:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_local:
   - cxx
   fmtdict:
@@ -9217,7 +9896,7 @@ f_function_shadow*_capsule_caller:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
@@ -9247,6 +9926,7 @@ f_function_shadow*_capsule_caller:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_local:
   - cxx
   fmtdict:
@@ -9263,7 +9943,7 @@ f_function_shadow*_capsule_library:
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
   notes:
-  - Return a C_capsule_data_type.
+  - Return a c_capsule_data_type.
   mixin_names:
   - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
@@ -9293,6 +9973,7 @@ f_function_shadow*_capsule_library:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_local:
   - cxx
   fmtdict:
@@ -9321,9 +10002,9 @@ f_function_shadow*_this:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
   sphinx-end-before: f_function_shadow*_this
-f_function_shadow<native>_capsule:
-  sphinx-start-after: f_function_shadow<native>_capsule
-  name: f_function_shadow<native>_capsule
+f_function_shadow<native>_capsule_caller:
+  sphinx-start-after: f_function_shadow<native>_capsule_caller
+  name: f_function_shadow<native>_capsule_caller
   intent: function
   comments:
   - Call the C wrapper as a subroutine.
@@ -9366,6 +10047,7 @@ f_function_shadow<native>_capsule:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_local:
   - cxx
   fmtdict:
@@ -9374,10 +10056,10 @@ f_function_shadow<native>_capsule:
     cxx_addr: ''
     cxx_member: ->
   owner: caller
-  sphinx-end-before: f_function_shadow<native>_capsule
-f_function_shadow_capsule:
-  sphinx-start-after: f_function_shadow_capsule
-  name: f_function_shadow_capsule
+  sphinx-end-before: f_function_shadow<native>_capsule_caller
+f_function_shadow_capsule_caller:
+  sphinx-start-after: f_function_shadow_capsule_caller
+  name: f_function_shadow_capsule_caller
   intent: function
   comments:
   - Call the C wrapper as a subroutine.
@@ -9420,6 +10102,7 @@ f_function_shadow_capsule:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_local:
   - cxx
   fmtdict:
@@ -9428,7 +10111,7 @@ f_function_shadow_capsule:
     cxx_addr: ''
     cxx_member: ->
   owner: caller
-  sphinx-end-before: f_function_shadow_capsule
+  sphinx-end-before: f_function_shadow_capsule_caller
 f_function_smartptr<shadow>*_capsule:
   sphinx-start-after: f_function_smartptr<shadow>*_capsule
   name: f_function_smartptr<shadow>*_capsule
@@ -9438,6 +10121,8 @@ f_function_smartptr<shadow>*_capsule:
   - Pass function result as a capsule argument from Fortran to C.
   - Call function and assign to a local C++ variable.
   - Assign capsule values to argument in C wrapper.
+  notes:
+  - TODO - does ownership make sense here?
   mixin_names:
   - '  f_mixin_call-cwrapper-as-subroutine'
   - '    c_mixin_as-intent-out'
@@ -9467,6 +10152,7 @@ f_function_smartptr<shadow>*_capsule:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_local:
   - cxx
   fmtdict:
@@ -9515,6 +10201,7 @@ f_function_smartptr<shadow>_capsule:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
+  - '{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;'
   c_local:
   - cxx
   fmtdict:
@@ -9931,7 +10618,7 @@ f_function_string&_cdesc_allocatable:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  - 'type({f_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
@@ -9950,14 +10637,14 @@ f_function_string&_cdesc_allocatable:
   - '{i_var_capsule}'
   i_dummy_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_call:
   - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -9974,7 +10661,7 @@ f_function_string&_cdesc_allocatable:
     i_intent_attr: ', intent(OUT)'
   helper:
   - array_context
-  - capsule_data_helper
+  - capsule_data
   - array_context
   - string_to_cdesc
   - copy_string
@@ -10011,7 +10698,7 @@ f_function_string&_cdesc_allocatable_caller:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  - 'type({f_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
@@ -10030,14 +10717,14 @@ f_function_string&_cdesc_allocatable_caller:
   - '{i_var_capsule}'
   i_dummy_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_call:
   - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -10054,7 +10741,7 @@ f_function_string&_cdesc_allocatable_caller:
     i_intent_attr: ', intent(OUT)'
   helper:
   - array_context
-  - capsule_data_helper
+  - capsule_data
   - array_context
   - string_to_cdesc
   - copy_string
@@ -10091,7 +10778,7 @@ f_function_string&_cdesc_allocatable_library:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  - 'type({f_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
@@ -10110,14 +10797,14 @@ f_function_string&_cdesc_allocatable_library:
   - '{i_var_capsule}'
   i_dummy_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_call:
   - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -10134,7 +10821,7 @@ f_function_string&_cdesc_allocatable_library:
     i_intent_attr: ', intent(OUT)'
   helper:
   - array_context
-  - capsule_data_helper
+  - capsule_data
   - array_context
   - string_to_cdesc
   - copy_string
@@ -11137,7 +11824,7 @@ f_function_string*_cdesc_allocatable:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  - 'type({f_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
@@ -11156,14 +11843,14 @@ f_function_string*_cdesc_allocatable:
   - '{i_var_capsule}'
   i_dummy_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_call:
   - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -11180,7 +11867,7 @@ f_function_string*_cdesc_allocatable:
     i_intent_attr: ', intent(OUT)'
   helper:
   - array_context
-  - capsule_data_helper
+  - capsule_data
   - array_context
   - string_to_cdesc
   - copy_string
@@ -11217,7 +11904,7 @@ f_function_string*_cdesc_allocatable_caller:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  - 'type({f_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
@@ -11236,14 +11923,14 @@ f_function_string*_cdesc_allocatable_caller:
   - '{i_var_capsule}'
   i_dummy_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_call:
   - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -11260,7 +11947,7 @@ f_function_string*_cdesc_allocatable_caller:
     i_intent_attr: ', intent(OUT)'
   helper:
   - array_context
-  - capsule_data_helper
+  - capsule_data
   - array_context
   - string_to_cdesc
   - copy_string
@@ -11297,7 +11984,7 @@ f_function_string*_cdesc_allocatable_library:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  - 'type({f_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
@@ -11316,14 +12003,14 @@ f_function_string*_cdesc_allocatable_library:
   - '{i_var_capsule}'
   i_dummy_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_call:
   - "{gen.cxxresult.c_local_cxx} =\t {C_call_function};"
   c_post_call:
@@ -11340,7 +12027,7 @@ f_function_string*_cdesc_allocatable_library:
     i_intent_attr: ', intent(OUT)'
   helper:
   - array_context
-  - capsule_data_helper
+  - capsule_data
   - array_context
   - string_to_cdesc
   - copy_string
@@ -12362,7 +13049,7 @@ f_function_string_cdesc_allocatable:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  - 'type({f_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
@@ -12381,14 +13068,14 @@ f_function_string_cdesc_allocatable:
   - '{i_var_capsule}'
   i_dummy_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_pre_call:
   - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
@@ -12411,7 +13098,7 @@ f_function_string_cdesc_allocatable:
   - array_context
   - string_to_cdesc
   - copy_string
-  - capsule_data_helper
+  - capsule_data
   - array_context
   - capsule_dtor
   destructor_name: new_string
@@ -12455,7 +13142,7 @@ f_function_string_cdesc_allocatable_caller:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  - 'type({f_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
@@ -12474,14 +13161,14 @@ f_function_string_cdesc_allocatable_caller:
   - '{i_var_capsule}'
   i_dummy_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_pre_call:
   - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
@@ -12504,7 +13191,7 @@ f_function_string_cdesc_allocatable_caller:
   - array_context
   - string_to_cdesc
   - copy_string
-  - capsule_data_helper
+  - capsule_data
   - array_context
   - capsule_dtor
   destructor_name: new_string
@@ -12548,7 +13235,7 @@ f_function_string_cdesc_allocatable_library:
   - 'character(len=:){f_intent_attr}{f_deref_attr} :: {f_var}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  - 'type({f_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
@@ -12567,14 +13254,14 @@ f_function_string_cdesc_allocatable_library:
   - '{i_var_capsule}'
   i_dummy_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_return_type: void
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_pre_call:
   - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
@@ -12597,7 +13284,7 @@ f_function_string_cdesc_allocatable_library:
   - array_context
   - string_to_cdesc
   - copy_string
-  - capsule_data_helper
+  - capsule_data
   - array_context
   - capsule_dtor
   destructor_name: new_string
@@ -12606,9 +13293,9 @@ f_function_string_cdesc_allocatable_library:
   - delete cxx_ptr;
   owner: caller
   sphinx-end-before: f_function_string_cdesc_allocatable_library
-f_function_string_cdesc_pointer:
-  sphinx-start-after: f_function_string_cdesc_pointer
-  name: f_function_string_cdesc_pointer
+f_function_string_cdesc_pointer_caller:
+  sphinx-start-after: f_function_string_cdesc_pointer_caller
+  name: f_function_string_cdesc_pointer_caller
   intent: function
   comments:
   - Pass capsule as argument to C wrapper.
@@ -12620,8 +13307,10 @@ f_function_string_cdesc_pointer:
   - Assign capsule values to capsule argument in C wrapper.
   - Fill cdesc from local std::string variable in the C wrapper.
   - Assign Fortran pointer from cdesc using helper pointer_string.
+  notes:
+  - Return-by-value will allocate a new std::string
   usage:
-  - std::string func() +deref(pointer)+owner(caller)
+  - std::string func() +deref(pointer)
   mixin_names:
   - '  f_mixin_add_capsule_arg_to_fwrapper'
   - '    c_mixin_capsule_pass'
@@ -12655,14 +13344,14 @@ f_function_string_cdesc_pointer:
   - '{i_var_capsule}'
   - '{i_var_cdesc}'
   i_dummy_decl:
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_import:
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   - '{F_array_type}'
   c_return_type: void
   c_prototype:
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   - '{C_array_type} *{c_var_cdesc}'
   c_pre_call:
   - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
@@ -12688,7 +13377,7 @@ f_function_string_cdesc_pointer:
     cxx_addr: ''
     cxx_member: ->
   helper:
-  - capsule_data_helper
+  - capsule_data
   - array_context
   - capsule_helper
   - array_context
@@ -12697,7 +13386,7 @@ f_function_string_cdesc_pointer:
   impl_header:
   - <cstring>
   owner: caller
-  sphinx-end-before: f_function_string_cdesc_pointer
+  sphinx-end-before: f_function_string_cdesc_pointer_caller
 f_function_string_cfi_allocatable:
   sphinx-start-after: f_function_string_cfi_allocatable
   name: f_function_string_cfi_allocatable
@@ -13041,13 +13730,13 @@ f_function_string_cfi_pointer:
   - '{i_var_capsule}'
   - '{i_var}'
   i_dummy_decl:
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   i_import:
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_return_type: void
   c_prototype:
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
   - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
@@ -13088,7 +13777,7 @@ f_function_string_cfi_pointer:
     cxx_addr: ''
     cxx_member: ->
   helper:
-  - capsule_data_helper
+  - capsule_data
   - array_context
   - capsule_helper
   iface_header:
@@ -13142,13 +13831,13 @@ f_function_string_cfi_pointer_caller:
   - '{i_var_capsule}'
   - '{i_var}'
   i_dummy_decl:
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   i_import:
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_return_type: void
   c_prototype:
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
   - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
@@ -13189,7 +13878,7 @@ f_function_string_cfi_pointer_caller:
     cxx_addr: ''
     cxx_member: ->
   helper:
-  - capsule_data_helper
+  - capsule_data
   - array_context
   - capsule_helper
   iface_header:
@@ -13243,13 +13932,13 @@ f_function_string_cfi_pointer_library:
   - '{i_var_capsule}'
   - '{i_var}'
   i_dummy_decl:
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   - 'character(len=:){i_intent_attr}{f_deref_attr} :: {i_var}{f_assumed_shape}'
   i_import:
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_return_type: void
   c_prototype:
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
   - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
@@ -13290,16 +13979,16 @@ f_function_string_cfi_pointer_library:
     cxx_addr: ''
     cxx_member: ->
   helper:
-  - capsule_data_helper
+  - capsule_data
   - array_context
   - capsule_helper
   iface_header:
   - ISO_Fortran_binding.h
   owner: caller
   sphinx-end-before: f_function_string_cfi_pointer_library
-f_function_string_raw:
-  sphinx-start-after: f_function_string_raw
-  name: f_function_string_raw
+f_function_string_raw_caller:
+  sphinx-start-after: f_function_string_raw_caller
+  name: f_function_string_raw_caller
   intent: function
   comments:
   - Return a C pointer directly as type(C_PTR).
@@ -13310,6 +13999,8 @@ f_function_string_raw:
   - Assign std::string.data to cvar.
   - Always uses const.
   - Assign capsule values to capsule argument in C wrapper.
+  notes:
+  - Return-by-value will allocate a new std::string
   usage:
   - std::string func() +deref(raw)
   mixin_names:
@@ -13336,17 +14027,17 @@ f_function_string_raw:
   i_dummy_arg:
   - '{i_var_capsule}'
   i_dummy_decl:
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_result_decl:
   - 'type(C_PTR) :: {i_var}'
   i_import:
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   i_module:
     iso_c_binding:
     - C_PTR
   c_return_type: '{c_const}{c_type} *'
   c_prototype:
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_pre_call:
   - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
@@ -13366,11 +14057,11 @@ f_function_string_raw:
     cxx_addr: ''
     cxx_member: ->
   helper:
-  - capsule_data_helper
+  - capsule_data
   - array_context
   - capsule_helper
   owner: caller
-  sphinx-end-before: f_function_string_raw
+  sphinx-end-before: f_function_string_raw_caller
 f_function_struct:
   sphinx-start-after: f_function_struct
   name: f_function_struct
@@ -13410,9 +14101,9 @@ f_function_struct:
     i_intent: OUT
     i_intent_attr: ', intent(OUT)'
   sphinx-end-before: f_function_struct
-f_function_struct*_cdesc_pointer:
-  sphinx-start-after: f_function_struct*_cdesc_pointer
-  name: f_function_struct*_cdesc_pointer
+f_function_struct*_cdesc_pointer_library:
+  sphinx-start-after: f_function_struct*_cdesc_pointer_library
+  name: f_function_struct*_cdesc_pointer_library
   intent: function
   comments:
   - Call the C wrapper as a subroutine.
@@ -13469,7 +14160,7 @@ f_function_struct*_cdesc_pointer:
     i_intent_attr: ', intent(OUT)'
   helper:
   - array_context
-  sphinx-end-before: f_function_struct*_cdesc_pointer
+  sphinx-end-before: f_function_struct*_cdesc_pointer_library
 f_function_struct*_pointer:
   sphinx-start-after: f_function_struct*_pointer
   name: f_function_struct*_pointer
@@ -13615,6 +14306,32 @@ f_function_void*:
   c_call:
   - "{gen.cxxresult.c_var} =\t {C_call_function};"
   sphinx-end-before: f_function_void*
+f_function_void*_library:
+  sphinx-start-after: f_function_void*_library
+  name: f_function_void*_library
+  intent: function
+  comments:
+  - Declare a Fortran variable.
+  - Call function and assign to a c variable.
+  notes:
+  - XXX - f entries are the same as the i entries, share?
+  mixin_names:
+  - '  f_mixin_declare-local-variable'
+  - '  c_mixin_function-assign-to-cvar'
+  f_dummy_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_target_attr}{f_optional_attr}
+    :: {f_var}{f_dimension}'
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
+  i_result_decl:
+  - 'type(C_PTR) :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  c_call:
+  - "{gen.cxxresult.c_var} =\t {C_call_function};"
+  sphinx-end-before: f_function_void*_library
 f_getter_bool:
   sphinx-start-after: f_getter_bool
   name: f_getter_bool
@@ -17657,17 +18374,17 @@ f_mixin_add_capsule_arg_to_fwrapper:
   i_dummy_arg:
   - '{i_var_capsule}'
   i_dummy_decl:
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_prototype:
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_temps:
   - capsule
   fmtdict:
     f_var_capsule: Crv
   helper:
-  - capsule_data_helper
+  - capsule_data
   - array_context
   - capsule_helper
   sphinx-end-before: f_mixin_add_capsule_arg_to_fwrapper
@@ -17745,7 +18462,7 @@ f_mixin_capsule_pass:
   mixin_names:
   - '  c_mixin_capsule_pass'
   f_local_decl:
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  - 'type({f_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_capsule}'
   f_temps:
@@ -17754,15 +18471,15 @@ f_mixin_capsule_pass:
   i_dummy_arg:
   - '{i_var_capsule}'
   i_dummy_decl:
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_prototype:
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_temps:
   - capsule
   helper:
-  - capsule_data_helper
+  - capsule_data
   - array_context
   sphinx-end-before: f_mixin_capsule_pass
 f_mixin_capsule_use:
@@ -17780,7 +18497,7 @@ f_mixin_capsule_use:
   - '  c_mixin_capsule_fill_arg'
   - '  f_mixin_capsule_dtor'
   f_local_decl:
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  - 'type({f_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_capsule}'
   f_post_call:
@@ -17791,18 +18508,18 @@ f_mixin_capsule_use:
   i_dummy_arg:
   - '{i_var_capsule}'
   i_dummy_decl:
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_prototype:
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_post_call:
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
   c_temps:
   - capsule
   helper:
-  - capsule_data_helper
+  - capsule_data
   - array_context
   - capsule_dtor
   sphinx-end-before: f_mixin_capsule_use
@@ -18533,6 +19250,44 @@ f_mixin_logical-out:
   f_post_call:
   - '{f_var} = {f_var_cxx}  ! coerce to logical'
   sphinx-end-before: f_mixin_logical-out
+f_mixin_operator_assignment:
+  sphinx-start-after: f_mixin_operator_assignment
+  name: f_mixin_operator_assignment
+  intent: mixin
+  f_operator_body:
+  - subroutine {F_name_assign_api}(lhs, rhs)+
+  - 'use iso_c_binding, only : c_associated, c_f_pointer'
+  - 'class({f_derived_type_lhs}), intent(INOUT) :: lhs'
+  - 'type({f_derived_type_rhs}), intent(IN) :: rhs'
+  - interface+
+  - "subroutine do_assign(lhs, rhs)\t bind(C,\t name=\"{C_name_assign_api}\")+"
+  - 'import :: {f_interface_import}'
+  - 'type({f_capsule_data_type_lhs}), intent(INOUT) :: lhs'
+  - 'type({f_capsule_data_type_rhs}), intent(IN) :: rhs'
+  - -end subroutine do_assign
+  - -end interface
+  - "call do_assign(lhs%{F_derived_member},\t rhs%{F_derived_member})"
+  - -end subroutine {F_name_assign_api}
+  sphinx-end-before: f_mixin_operator_assignment
+f_mixin_operator_assignment_basic:
+  sphinx-start-after: f_mixin_operator_assignment_basic
+  name: f_mixin_operator_assignment_basic
+  intent: mixin
+  f_operator_body:
+  - subroutine {F_name_assign_api}(lhs, rhs)+
+  - 'use iso_c_binding, only : c_associated, c_f_pointer'
+  - 'class({f_derived_type_lhs}), intent(OUT) :: lhs'
+  - 'type({f_derived_type_rhs}), intent(IN) :: rhs'
+  - interface+
+  - "subroutine do_assign(lhs, rhs)\t bind(C,\t name=\"{C_name_assign_api}\")+"
+  - 'import :: {f_interface_import}'
+  - 'type({f_capsule_data_type_lhs}), intent(INOUT) :: lhs'
+  - 'type({f_capsule_data_type_rhs}), intent(IN) :: rhs'
+  - -end subroutine do_assign
+  - -end interface
+  - "call do_assign(lhs%{F_derived_member},\t rhs%{F_derived_member})"
+  - -end subroutine {F_name_assign_api}
+  sphinx-end-before: f_mixin_operator_assignment_basic
 f_mixin_out_vector_buf:
   sphinx-start-after: f_mixin_out_vector_buf
   name: f_mixin_out_vector_buf
@@ -18924,6 +19679,398 @@ f_none_void*:
   c_arg_call:
   - '{cxx_var}'
   sphinx-end-before: f_none_void*
+f_operator_assignment_shadow:
+  sphinx-start-after: f_operator_assignment_shadow
+  name: f_operator_assignment_shadow
+  intent: operator
+  mixin_names:
+  - '  f_mixin_operator_assignment'
+  - '  c_mixin_operator_assignment'
+  - '  c_mixin_operator_assignment_fmtdict'
+  f_operator_body:
+  - subroutine {F_name_assign_api}(lhs, rhs)+
+  - 'use iso_c_binding, only : c_associated, c_f_pointer'
+  - 'class({f_derived_type_lhs}), intent(INOUT) :: lhs'
+  - 'type({f_derived_type_rhs}), intent(IN) :: rhs'
+  - interface+
+  - "subroutine do_assign(lhs, rhs)\t bind(C,\t name=\"{C_name_assign_api}\")+"
+  - 'import :: {f_interface_import}'
+  - 'type({f_capsule_data_type_lhs}), intent(INOUT) :: lhs'
+  - 'type({f_capsule_data_type_rhs}), intent(IN) :: rhs'
+  - -end subroutine do_assign
+  - -end interface
+  - "call do_assign(lhs%{F_derived_member},\t rhs%{F_derived_member})"
+  - -end subroutine {F_name_assign_api}
+  c_body:
+  - "void {C_name_assign_api}({c_type_lhs} *lhs_capsule,\t {c_type_rhs} *rhs_capsule)"
+  - '{{+'
+  - if (lhs_capsule->addr == {nullptr}) {{+
+  - /* LHS is unassigned */
+  - if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {{+
+  - '{capture_code}'
+  - -}} else {{+
+  - '{alias_code}'
+  - -}}
+  - -}} else if (rhs_capsule->addr == {nullptr}) {{+
+  - '{destroy_code}'
+  - -}} else if (lhs_capsule->addr == rhs_capsule->addr) {{+
+  - '// Lhs-assignment: ignore.'
+  - -}} else if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {{+
+  - '{move_alias_code}'
+  - -}} else {{+
+  - '{copy_alias_code}'
+  - -}}
+  - -}}
+  fmtdict:
+    capture_code:
+    - // Capture pointer from RHS, clear 'moving' flag.
+    - lhs_capsule->addr = rhs_capsule->addr;
+    - lhs_capsule->idtor = rhs_capsule->idtor;
+    - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+    alias_code:
+    - // Aliasing another class; clear ownership.
+    - lhs_capsule->addr = rhs_capsule->addr;
+    - lhs_capsule->idtor = 0;
+    - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_OWN;
+    destroy_code:
+    - // Replace LHS with a null pointer.
+    - if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+
+    - "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);"
+    - -}}
+    - lhs_capsule->addr = {nullptr};
+    - lhs_capsule->idtor = 0;
+    - lhs_capsule->cmemflags = 0;
+    move_alias_code:
+    - // Transferred ownership from a variable that's about to be lost.
+    - // Move-assign and delete the transient data.
+    - if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+
+    - "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);"
+    - -}}
+    - lhs_capsule->addr = rhs_capsule->addr;
+    - lhs_capsule->idtor = rhs_capsule->idtor;
+    - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+    copy_alias_code:
+    - // RHS shouldn't be deleted, alias to LHS.
+    - if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+
+    - "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);"
+    - -}}
+    - lhs_capsule->addr = rhs_capsule->addr;
+    - lhs_capsule->idtor = rhs_capsule->idtor;
+    - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+  sphinx-end-before: f_operator_assignment_shadow
+f_operator_assignment_shadow_basic:
+  sphinx-start-after: f_operator_assignment_shadow_basic
+  name: f_operator_assignment_shadow_basic
+  intent: operator
+  notes:
+  - The original operator overload only worked with weak_ptr.
+  - This is for all the others which do nothing.
+  sphinx-end-before: f_operator_assignment_shadow_basic
+f_operator_assignment_shadow_basic_weak:
+  sphinx-start-after: f_operator_assignment_shadow_basic_weak
+  name: f_operator_assignment_shadow_basic_weak
+  intent: operator
+  mixin_names:
+  - '  f_mixin_operator_assignment_basic'
+  - '  c_mixin_operator_assignment_basic'
+  f_operator_body:
+  - subroutine {F_name_assign_api}(lhs, rhs)+
+  - 'use iso_c_binding, only : c_associated, c_f_pointer'
+  - 'class({f_derived_type_lhs}), intent(OUT) :: lhs'
+  - 'type({f_derived_type_rhs}), intent(IN) :: rhs'
+  - interface+
+  - "subroutine do_assign(lhs, rhs)\t bind(C,\t name=\"{C_name_assign_api}\")+"
+  - 'import :: {f_interface_import}'
+  - 'type({f_capsule_data_type_lhs}), intent(INOUT) :: lhs'
+  - 'type({f_capsule_data_type_rhs}), intent(IN) :: rhs'
+  - -end subroutine do_assign
+  - -end interface
+  - "call do_assign(lhs%{F_derived_member},\t rhs%{F_derived_member})"
+  - -end subroutine {F_name_assign_api}
+  c_body:
+  - "void {C_name_assign_api}({c_type_lhs} *lhs_capsule,\t {c_type_rhs} *rhs_capsule)"
+  - '{{+'
+  - "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs} *>(lhs_capsule->addr);"
+  - "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs} *>(rhs_capsule->addr);"
+  - if (lhs == nullptr) {{+
+  - lhs = new {cxx_type}(*rhs);
+  - lhs_capsule->addr = lhs;
+  - lhs_capsule->idtor = {idtor};
+  - -}} else {{+
+  - '*lhs = *rhs;'
+  - -}}
+  - -}}
+  destructor_header:
+  - <memory>
+  destructor_name: assignment-{cxx_type}
+  destructor:
+  - "auto cxx_ptr =\t reinterpret_cast<{cxx_type}*>(ptr);"
+  - delete cxx_ptr;
+  sphinx-end-before: f_operator_assignment_shadow_basic_weak
+f_operator_assignment_shadow_makeshared:
+  sphinx-start-after: f_operator_assignment_shadow_makeshared
+  name: f_operator_assignment_shadow_makeshared
+  intent: operator
+  notes:
+  - '  shared = object, create shared object, keep object'
+  mixin_names:
+  - '  f_mixin_operator_assignment'
+  - '  c_mixin_operator_assignment'
+  - '  c_mixin_operator_assignment_fmtdict_makeshared'
+  f_operator_body:
+  - subroutine {F_name_assign_api}(lhs, rhs)+
+  - 'use iso_c_binding, only : c_associated, c_f_pointer'
+  - 'class({f_derived_type_lhs}), intent(INOUT) :: lhs'
+  - 'type({f_derived_type_rhs}), intent(IN) :: rhs'
+  - interface+
+  - "subroutine do_assign(lhs, rhs)\t bind(C,\t name=\"{C_name_assign_api}\")+"
+  - 'import :: {f_interface_import}'
+  - 'type({f_capsule_data_type_lhs}), intent(INOUT) :: lhs'
+  - 'type({f_capsule_data_type_rhs}), intent(IN) :: rhs'
+  - -end subroutine do_assign
+  - -end interface
+  - "call do_assign(lhs%{F_derived_member},\t rhs%{F_derived_member})"
+  - -end subroutine {F_name_assign_api}
+  c_body:
+  - "void {C_name_assign_api}({c_type_lhs} *lhs_capsule,\t {c_type_rhs} *rhs_capsule)"
+  - '{{+'
+  - if (lhs_capsule->addr == {nullptr}) {{+
+  - /* LHS is unassigned */
+  - if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {{+
+  - '{capture_code}'
+  - -}} else {{+
+  - '{alias_code}'
+  - -}}
+  - -}} else if (rhs_capsule->addr == {nullptr}) {{+
+  - '{destroy_code}'
+  - -}} else if (lhs_capsule->addr == rhs_capsule->addr) {{+
+  - '// Lhs-assignment: ignore.'
+  - -}} else if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {{+
+  - '{move_alias_code}'
+  - -}} else {{+
+  - '{copy_alias_code}'
+  - -}}
+  - -}}
+  fmtdict:
+    capture_code:
+    - // Capture pointer from RHS, clear 'moving' flag.
+    - "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs}*>\t(rhs_capsule->addr);"
+    - "{cxx_type_lhs} *lhs =\t new {cxx_type_lhs}\t(rhs);"
+    - //lhs_capsule->addr = new {cxx_type_lhs} (*static_cast<{cxx_type_lhs}*>(rhs_capsule->addr));
+    - lhs_capsule->addr = lhs;
+    - lhs_capsule->idtor = {idtor};
+    - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+    alias_code:
+    - // Aliasing another class; copy smart pointer.
+    - "lhs_capsule->addr = new {cxx_type_lhs}\t (*static_cast<{cxx_type_lhs}*>\t(rhs_capsule->addr));"
+    - lhs_capsule->idtor = {idtor};
+    - lhs_capsule->cmemflags = rhs_capsule->cmemflags | SWIG_MEM_OWN;
+    destroy_code:
+    - // Replace LHS with a null pointer.
+    - //if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+
+    - //{C_memory_dtor_function}(({c_capsule_data_type} *) lhs_capsule);
+    - //-}}
+    - "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs}*>\t(lhs_capsule->addr);"
+    - lhs->reset();
+    - lhs_capsule->addr = {nullptr};
+    - lhs_capsule->idtor = 0;
+    - lhs_capsule->cmemflags = 0;
+    move_alias_code:
+    - // Transferred ownership from a variable that's about to be lost.
+    - // Move-assign and delete the transient data.
+    - // LHS and RHS should both 'own' their shared pointers.
+    - "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs}*>\t(lhs_capsule->addr);"
+    - "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs}*>\t(rhs_capsule->addr);"
+    - lhs->reset(rhs);
+    - lhs_capsule->addr = rhs_capsule->addr;
+    - lhs_capsule->idtor = {idtor};
+    - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+    - if (rhs_capsule->cmemflags & SWIG_MEM_OWN) {{+
+    - "{C_memory_dtor_function}(\t({c_capsule_data_type} *) rhs_capsule);"
+    - -}}
+    copy_alias_code:
+    - // RHS shouldn't be deleted, alias to LHS.
+    - // LHS and RHS should both 'own' their shared pointers.
+    - "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs}*>\t(lhs_capsule->addr);"
+    - "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs}*>\t(rhs_capsule->addr);"
+    - lhs->reset(rhs);
+  destructor_header:
+  - <memory>
+  destructor_name: assignment-{cxx_type_lhs}
+  destructor:
+  - "auto cxx_ptr =\t reinterpret_cast<{cxx_type_lhs}*>(ptr);"
+  - delete cxx_ptr;
+  sphinx-end-before: f_operator_assignment_shadow_makeshared
+f_operator_assignment_shadow_shared:
+  sphinx-start-after: f_operator_assignment_shadow_shared
+  name: f_operator_assignment_shadow_shared
+  intent: operator
+  mixin_names:
+  - '  f_mixin_operator_assignment'
+  - '  c_mixin_operator_assignment'
+  - '  c_mixin_operator_assignment_fmtdict_weak'
+  f_operator_body:
+  - subroutine {F_name_assign_api}(lhs, rhs)+
+  - 'use iso_c_binding, only : c_associated, c_f_pointer'
+  - 'class({f_derived_type_lhs}), intent(INOUT) :: lhs'
+  - 'type({f_derived_type_rhs}), intent(IN) :: rhs'
+  - interface+
+  - "subroutine do_assign(lhs, rhs)\t bind(C,\t name=\"{C_name_assign_api}\")+"
+  - 'import :: {f_interface_import}'
+  - 'type({f_capsule_data_type_lhs}), intent(INOUT) :: lhs'
+  - 'type({f_capsule_data_type_rhs}), intent(IN) :: rhs'
+  - -end subroutine do_assign
+  - -end interface
+  - "call do_assign(lhs%{F_derived_member},\t rhs%{F_derived_member})"
+  - -end subroutine {F_name_assign_api}
+  c_body:
+  - "void {C_name_assign_api}({c_type_lhs} *lhs_capsule,\t {c_type_rhs} *rhs_capsule)"
+  - '{{+'
+  - if (lhs_capsule->addr == {nullptr}) {{+
+  - /* LHS is unassigned */
+  - if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {{+
+  - '{capture_code}'
+  - -}} else {{+
+  - '{alias_code}'
+  - -}}
+  - -}} else if (rhs_capsule->addr == {nullptr}) {{+
+  - '{destroy_code}'
+  - -}} else if (lhs_capsule->addr == rhs_capsule->addr) {{+
+  - '// Lhs-assignment: ignore.'
+  - -}} else if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {{+
+  - '{move_alias_code}'
+  - -}} else {{+
+  - '{copy_alias_code}'
+  - -}}
+  - -}}
+  fmtdict:
+    capture_code:
+    - // Capture pointer from RHS, clear 'moving' flag.
+    - lhs_capsule->addr = rhs_capsule->addr;
+    - lhs_capsule->idtor = rhs_capsule->idtor;
+    - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+    alias_code:
+    - // Aliasing another class; copy smart pointer.
+    - "lhs_capsule->addr = new {cxx_type_lhs}\t (*static_cast<{cxx_type_lhs}*>\t(rhs_capsule->addr));"
+    - lhs_capsule->idtor = {idtor};
+    - lhs_capsule->cmemflags = rhs_capsule->cmemflags | SWIG_MEM_OWN;
+    destroy_code:
+    - // Replace LHS with a null pointer.
+    - if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+
+    - "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);"
+    - -}}
+    - lhs_capsule->addr = {nullptr};
+    - lhs_capsule->idtor = 0;
+    - lhs_capsule->cmemflags = 0;
+    move_alias_code:
+    - // Transferred ownership from a variable that's about to be lost.
+    - // Move-assign and delete the transient data.
+    - // LHS and RHS should both 'own' their shared pointers.
+    - "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs}*>\t(lhs_capsule->addr);"
+    - "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs}*>\t(rhs_capsule->addr);"
+    - '*lhs = *rhs;'
+    - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+    - if (rhs_capsule->cmemflags & SWIG_MEM_OWN) {{+
+    - "{C_memory_dtor_function}(\t({c_capsule_data_type} *) rhs_capsule);"
+    - -}}
+    copy_alias_code:
+    - // RHS shouldn't be deleted, alias to LHS.
+    - // LHS and RHS should both 'own' their shared pointers.
+    - "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs}*>\t(lhs_capsule->addr);"
+    - "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs}*>\t(rhs_capsule->addr);"
+    - '*lhs = *rhs;'
+  destructor_header:
+  - <memory>
+  destructor_name: assignment-{cxx_type_lhs}
+  destructor:
+  - "auto cxx_ptr =\t reinterpret_cast<{cxx_type_lhs}*>(ptr);"
+  - delete cxx_ptr;
+  sphinx-end-before: f_operator_assignment_shadow_shared
+f_operator_assignment_shadow_weak:
+  sphinx-start-after: f_operator_assignment_shadow_weak
+  name: f_operator_assignment_shadow_weak
+  intent: operator
+  mixin_names:
+  - '  f_mixin_operator_assignment'
+  - '  c_mixin_operator_assignment'
+  - '  c_mixin_operator_assignment_fmtdict_weak'
+  f_operator_body:
+  - subroutine {F_name_assign_api}(lhs, rhs)+
+  - 'use iso_c_binding, only : c_associated, c_f_pointer'
+  - 'class({f_derived_type_lhs}), intent(INOUT) :: lhs'
+  - 'type({f_derived_type_rhs}), intent(IN) :: rhs'
+  - interface+
+  - "subroutine do_assign(lhs, rhs)\t bind(C,\t name=\"{C_name_assign_api}\")+"
+  - 'import :: {f_interface_import}'
+  - 'type({f_capsule_data_type_lhs}), intent(INOUT) :: lhs'
+  - 'type({f_capsule_data_type_rhs}), intent(IN) :: rhs'
+  - -end subroutine do_assign
+  - -end interface
+  - "call do_assign(lhs%{F_derived_member},\t rhs%{F_derived_member})"
+  - -end subroutine {F_name_assign_api}
+  c_body:
+  - "void {C_name_assign_api}({c_type_lhs} *lhs_capsule,\t {c_type_rhs} *rhs_capsule)"
+  - '{{+'
+  - if (lhs_capsule->addr == {nullptr}) {{+
+  - /* LHS is unassigned */
+  - if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {{+
+  - '{capture_code}'
+  - -}} else {{+
+  - '{alias_code}'
+  - -}}
+  - -}} else if (rhs_capsule->addr == {nullptr}) {{+
+  - '{destroy_code}'
+  - -}} else if (lhs_capsule->addr == rhs_capsule->addr) {{+
+  - '// Lhs-assignment: ignore.'
+  - -}} else if (rhs_capsule->cmemflags & SWIG_MEM_RVALUE) {{+
+  - '{move_alias_code}'
+  - -}} else {{+
+  - '{copy_alias_code}'
+  - -}}
+  - -}}
+  fmtdict:
+    capture_code:
+    - // Capture pointer from RHS, clear 'moving' flag.
+    - lhs_capsule->addr = rhs_capsule->addr;
+    - lhs_capsule->idtor = rhs_capsule->idtor;
+    - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+    alias_code:
+    - // Aliasing another class; copy smart pointer.
+    - "lhs_capsule->addr = new {cxx_type_lhs}\t (*static_cast<{cxx_type_lhs}*>\t(rhs_capsule->addr));"
+    - lhs_capsule->idtor = {idtor};
+    - lhs_capsule->cmemflags = rhs_capsule->cmemflags | SWIG_MEM_OWN;
+    destroy_code:
+    - // Replace LHS with a null pointer.
+    - if (lhs_capsule->cmemflags & SWIG_MEM_OWN) {{+
+    - "{C_memory_dtor_function}(\t({c_capsule_data_type} *) lhs_capsule);"
+    - -}}
+    - lhs_capsule->addr = {nullptr};
+    - lhs_capsule->idtor = 0;
+    - lhs_capsule->cmemflags = 0;
+    move_alias_code:
+    - // Transferred ownership from a variable that's about to be lost.
+    - // Move-assign and delete the transient data.
+    - // LHS and RHS should both 'own' their shared pointers.
+    - "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs}*>\t(lhs_capsule->addr);"
+    - "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs}*>\t(rhs_capsule->addr);"
+    - '*lhs = *rhs;'
+    - lhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;
+    - if (rhs_capsule->cmemflags & SWIG_MEM_OWN) {{+
+    - "{C_memory_dtor_function}(\t({c_capsule_data_type} *) rhs_capsule);"
+    - -}}
+    copy_alias_code:
+    - // RHS shouldn't be deleted, alias to LHS.
+    - // LHS and RHS should both 'own' their shared pointers.
+    - "{cxx_type_lhs} *lhs =\t static_cast<{cxx_type_lhs}*>\t(lhs_capsule->addr);"
+    - "{cxx_type_rhs} *rhs =\t static_cast<{cxx_type_rhs}*>\t(rhs_capsule->addr);"
+    - '*lhs = *rhs;'
+  destructor_header:
+  - <memory>
+  destructor_name: assignment-{cxx_type_lhs}
+  destructor:
+  - "auto cxx_ptr =\t reinterpret_cast<{cxx_type_lhs}*>(ptr);"
+  - delete cxx_ptr;
+  sphinx-end-before: f_operator_assignment_shadow_weak
 f_out_bool*:
   sphinx-start-after: f_out_bool*
   name: f_out_bool*
@@ -19066,9 +20213,9 @@ f_out_char**_buf_copy:
   helper:
   - char_copy
   sphinx-end-before: f_out_char**_buf_copy
-f_out_char**_cdesc_pointer:
-  sphinx-start-after: f_out_char**_cdesc_pointer
-  name: f_out_char**_cdesc_pointer
+f_out_char**_cdesc_pointer_library:
+  sphinx-start-after: f_out_char**_cdesc_pointer_library
+  name: f_out_char**_cdesc_pointer_library
   intent: out
   comments:
   - Assign Fortran pointer from cdesc using helper pointer_string.
@@ -19127,10 +20274,10 @@ f_out_char**_cdesc_pointer:
   - type_defines
   impl_header:
   - <cstring>
-  sphinx-end-before: f_out_char**_cdesc_pointer
-f_out_char**_cfi_pointer:
-  sphinx-start-after: f_out_char**_cfi_pointer
-  name: f_out_char**_cfi_pointer
+  sphinx-end-before: f_out_char**_cdesc_pointer_library
+f_out_char**_cfi_pointer_library:
+  sphinx-start-after: f_out_char**_cfi_pointer_library
+  name: f_out_char**_cfi_pointer_library
   intent: out
   comments:
   - Make the C wrapper argument a CFI_desc_t.
@@ -19191,7 +20338,7 @@ f_out_char**_cfi_pointer:
   - ISO_Fortran_binding.h
   impl_header:
   - <cstring>
-  sphinx-end-before: f_out_char**_cfi_pointer
+  sphinx-end-before: f_out_char**_cfi_pointer_library
 f_out_char*_buf:
   sphinx-start-after: f_out_char*_buf
   name: f_out_char*_buf
@@ -19329,7 +20476,9 @@ f_out_char*_cfi:
   - '{c_local_cxx}'
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
+  - if ({c_local_cxx} != {nullptr}) {{+
   - delete[] {c_local_cxx};
+  - -}}
   c_temps:
   - cfi
   - len
@@ -19517,9 +20666,9 @@ f_out_native*&_cdesc:
   helper:
   - array_context
   sphinx-end-before: f_out_native*&_cdesc
-f_out_native*&_cdesc_pointer:
-  sphinx-start-after: f_out_native*&_cdesc_pointer
-  name: f_out_native*&_cdesc_pointer
+f_out_native*&_cdesc_pointer_library:
+  sphinx-start-after: f_out_native*&_cdesc_pointer_library
+  name: f_out_native*&_cdesc_pointer_library
   intent: out
   comments:
   - Pass cdesc as argument to C wrapper.
@@ -19575,10 +20724,10 @@ f_out_native*&_cdesc_pointer:
   - cdesc
   helper:
   - array_context
-  sphinx-end-before: f_out_native*&_cdesc_pointer
-f_out_native***_raw:
-  sphinx-start-after: f_out_native***_raw
-  name: f_out_native***_raw
+  sphinx-end-before: f_out_native*&_cdesc_pointer_library
+f_out_native***_raw_library:
+  sphinx-start-after: f_out_native***_raw_library
+  name: f_out_native***_raw_library
   intent: out
   comments:
   - Pass cxx variable to library.
@@ -19612,7 +20761,7 @@ f_out_native***_raw:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  sphinx-end-before: f_out_native***_raw
+  sphinx-end-before: f_out_native***_raw_library
 f_out_native**_cdesc_allocatable:
   sphinx-start-after: f_out_native**_cdesc_allocatable
   name: f_out_native**_cdesc_allocatable
@@ -19653,7 +20802,7 @@ f_out_native**_cdesc_allocatable:
     :: {f_var}{f_dimension}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  - 'type({f_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
@@ -19677,13 +20826,13 @@ f_out_native**_cdesc_allocatable:
   - '{i_var_capsule}'
   i_dummy_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_pre_call:
   - '{c_const}{cxx_type} *{cxx_var};'
   c_arg_call:
@@ -19704,13 +20853,13 @@ f_out_native**_cdesc_allocatable:
   helper:
   - array_context
   - copy_array
-  - capsule_data_helper
+  - capsule_data
   - array_context
   - capsule_dtor
   sphinx-end-before: f_out_native**_cdesc_allocatable
-f_out_native**_cdesc_pointer:
-  sphinx-start-after: f_out_native**_cdesc_pointer
-  name: f_out_native**_cdesc_pointer
+f_out_native**_cdesc_pointer_library:
+  sphinx-start-after: f_out_native**_cdesc_pointer_library
+  name: f_out_native**_cdesc_pointer_library
   intent: out
   comments:
   - Pass cdesc as argument to C wrapper.
@@ -19769,7 +20918,7 @@ f_out_native**_cdesc_pointer:
   - cdesc
   helper:
   - array_context
-  sphinx-end-before: f_out_native**_cdesc_pointer
+  sphinx-end-before: f_out_native**_cdesc_pointer_library
 f_out_native**_cfi_allocatable:
   sphinx-start-after: f_out_native**_cfi_allocatable
   name: f_out_native**_cfi_allocatable
@@ -19830,9 +20979,9 @@ f_out_native**_cfi_allocatable:
   impl_header:
   - <cstring>
   sphinx-end-before: f_out_native**_cfi_allocatable
-f_out_native**_cfi_pointer:
-  sphinx-start-after: f_out_native**_cfi_pointer
-  name: f_out_native**_cfi_pointer
+f_out_native**_cfi_pointer_library:
+  sphinx-start-after: f_out_native**_cfi_pointer_library
+  name: f_out_native**_cfi_pointer_library
   intent: out
   comments:
   - Make the C wrapper argument a CFI_desc_t.
@@ -19895,10 +21044,10 @@ f_out_native**_cfi_pointer:
   - lower_bounds_CFI
   iface_header:
   - ISO_Fortran_binding.h
-  sphinx-end-before: f_out_native**_cfi_pointer
-f_out_native**_raw:
-  sphinx-start-after: f_out_native**_raw
-  name: f_out_native**_raw
+  sphinx-end-before: f_out_native**_cfi_pointer_library
+f_out_native**_raw_library:
+  sphinx-start-after: f_out_native**_raw_library
+  name: f_out_native**_raw_library
   intent: out
   comments:
   - Pass cxx variable to library.
@@ -19932,7 +21081,7 @@ f_out_native**_raw:
   - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
-  sphinx-end-before: f_out_native**_raw
+  sphinx-end-before: f_out_native**_raw_library
 f_out_native*_cdesc:
   sphinx-start-after: f_out_native*_cdesc
   name: f_out_native*_cdesc
@@ -20198,7 +21347,7 @@ f_out_string**_cdesc_allocatable:
     :: {f_var}{f_dimension}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  - 'type({f_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
@@ -20221,13 +21370,13 @@ f_out_string**_cdesc_allocatable:
   - '{i_var_capsule}'
   i_dummy_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_pre_call:
   - std::string *{cxx_var};
   c_arg_call:
@@ -20249,7 +21398,7 @@ f_out_string**_cdesc_allocatable:
     f_target_attr: ', target'
   helper:
   - array_context
-  - capsule_data_helper
+  - capsule_data
   - array_context
   - array_string_allocatable
   - array_string_out_len
@@ -20963,7 +22112,7 @@ f_out_vector<string>&_cdesc_allocatable:
   - 'character(len=:){f_intent_attr}{f_deref_attr}{f_target_attr} :: {f_var}{f_assumed_shape}'
   f_local_decl:
   - 'type({F_array_type}) :: {f_var_cdesc}'
-  - 'type({F_capsule_data_type}) :: {f_var_capsule}'
+  - 'type({f_capsule_data_type}) :: {f_var_capsule}'
   f_arg_call:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
@@ -20984,13 +22133,13 @@ f_out_vector<string>&_cdesc_allocatable:
   - '{i_var_capsule}'
   i_dummy_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
+  - 'type({f_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
   i_import:
   - '{F_array_type}'
-  - '{F_capsule_data_type}'
+  - '{f_capsule_data_type}'
   c_prototype:
   - '{C_array_type} *{c_var_cdesc}'
-  - '{C_capsule_data_type} *{c_var_capsule}'
+  - '{c_capsule_data_type} *{c_var_capsule}'
   c_pre_call:
   - std::vector<std::string> *{c_local_cxx} = new std::vector<std::string>;
   c_arg_call:
@@ -21013,7 +22162,7 @@ f_out_vector<string>&_cdesc_allocatable:
     f_target_attr: ', target'
   helper:
   - array_context
-  - capsule_data_helper
+  - capsule_data
   - array_context
   - cdesc_vector_string_allocatable
   - vector_string_out_len
@@ -21549,33 +22698,6 @@ f_subroutine:
   c_call:
   - '{C_call_function};'
   sphinx-end-before: f_subroutine
-f_subroutine_assignment_weakptr:
-  sphinx-start-after: f_subroutine_assignment_weakptr
-  name: f_subroutine_assignment_weakptr
-  intent: subroutine
-  notes:
-  - std::weak_ptr has no wrapped constructor.
-  - It must be made from a std::shared_ptr with an assignment.
-  - arglist[1] is the 'from' argument.
-  usage:
-  - void func() +custom(weakptr)+operator(assignment)
-  f_call:
-  - call {f_call_function}({F_arg_c_call})
-  c_call:
-  - if (SH_this == nullptr) {{+
-  - SH_this = new {cxx_type}(*SHC_from_cxx);
-  - self->addr = SH_this;
-  - self->idtor = {idtor};
-  - -}} else {{+
-  - '*{CXX_this} = *{c_arglist[1].c_local_cxx};'
-  - -}}
-  destructor_header:
-  - <memory>
-  destructor_name: assignment-{cxx_type}
-  destructor:
-  - "auto cxx_ptr =\t reinterpret_cast<{cxx_type}*>(ptr);"
-  - delete cxx_ptr;
-  sphinx-end-before: f_subroutine_assignment_weakptr
 h_helper_array_context:
   sphinx-start-after: h_helper_array_context
   name: h_helper_array_context
@@ -21648,7 +22770,7 @@ h_helper_array_string_allocatable:
   fmtdict:
     cnamefunc: '{C_prefix}ShroudCDescArrayStringAllocatable'
     fnamefunc: '{C_prefix}SHROUD_cdesc_array_string_allocatable'
-    cnameproto: void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)
+    cnameproto: void {cnamefunc}({C_array_type} *dest, {c_capsule_data_type} *src)
   api: c
   c_fmtname: LIB_ShroudCDescArrayStringAllocatable
   scope: cwrap_impl
@@ -21683,7 +22805,7 @@ h_helper_array_string_allocatable:
   - -end subroutine LIB_SHROUD_cdesc_array_string_allocatable
   - -end interface
   dependent_helpers:
-  - capsule_data_helper
+  - capsule_data
   - array_context
   - cdesc_array_string_out
   sphinx-end-before: h_helper_array_string_allocatable
@@ -21716,16 +22838,52 @@ h_helper_array_string_out_len:
 
     // end helper array_string_out_len'
   sphinx-end-before: h_helper_array_string_out_len
-h_helper_capsule_data_helper:
-  sphinx-start-after: h_helper_capsule_data_helper
-  name: h_helper_capsule_data_helper
+h_helper_capsule_data:
+  sphinx-start-after: h_helper_capsule_data
+  name: h_helper_capsule_data
   notes:
   - Share info with C++ to allow Fortran to release memory.
   - Used with shadow classes and std::vector.
   scope: cwrap_include
   source:
   - ''
-  - // helper capsule_data_helper
+  - // helper capsule_data
+  - struct s_LIB_SHROUD_capsule_data {+
+  - void *addr;     /* address of C++ memory */
+  - int idtor;      /* index of destructor */
+  - int cmemflags;  /* memory flags */
+  - -};
+  - typedef struct s_LIB_SHROUD_capsule_data LIB_SHROUD_capsule_data;
+  f_fmtname: LIB_SHROUD_capsule_data
+  derived_type:
+  - ''
+  - '! start helper capsule_data
+
+    ! helper capsule_data'
+  - 'type, bind(C) :: LIB_SHROUD_capsule_data+'
+  - 'type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory'
+  - 'integer(C_INT) :: idtor = 0       ! index of destructor'
+  - 'integer(C_INT) :: cmemflags = 0   ! memory flags'
+  - '-end type LIB_SHROUD_capsule_data
+
+    ! end helper capsule_data'
+  modules:
+    iso_c_binding:
+    - C_PTR
+    - C_INT
+    - C_NULL_PTR
+  sphinx-end-before: h_helper_capsule_data
+h_helper_capsule_data_basic:
+  sphinx-start-after: h_helper_capsule_data_basic
+  name: h_helper_capsule_data_basic
+  notes:
+  - Share info with C++ to allow Fortran to release memory.
+  - Used with shadow classes and std::vector.
+  - Used when option.F_assignment_api=basic.
+  scope: cwrap_include
+  source:
+  - ''
+  - // helper capsule_data_basic
   - struct s_LIB_SHROUD_capsule_data {+
   - void *addr;     /* address of C++ memory */
   - int idtor;      /* index of destructor */
@@ -21734,21 +22892,21 @@ h_helper_capsule_data_helper:
   f_fmtname: LIB_SHROUD_capsule_data
   derived_type:
   - ''
-  - '! start helper capsule_data_helper
+  - '! start helper capsule_data_basic
 
-    ! helper capsule_data_helper'
+    ! helper capsule_data_basic'
   - 'type, bind(C) :: LIB_SHROUD_capsule_data+'
   - 'type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory'
   - 'integer(C_INT) :: idtor = 0       ! index of destructor'
   - '-end type LIB_SHROUD_capsule_data
 
-    ! end helper capsule_data_helper'
+    ! end helper capsule_data_basic'
   modules:
     iso_c_binding:
     - C_PTR
     - C_INT
     - C_NULL_PTR
-  sphinx-end-before: h_helper_capsule_data_helper
+  sphinx-end-before: h_helper_capsule_data_basic
 h_helper_capsule_dtor:
   sphinx-start-after: h_helper_capsule_dtor
   name: h_helper_capsule_dtor
@@ -21756,7 +22914,7 @@ h_helper_capsule_dtor:
   - Add the C prototype. The body is created Wrapc.write_capsule_code.
   fmtdict:
     cnamefunc: '{C_memory_dtor_function}'
-    cnameproto: "void {cnamefunc}\t({C_capsule_data_type} *cap)"
+    cnameproto: "void {cnamefunc}\t({c_capsule_data_type} *cap)"
     fnamefunc: '{C_prefix}SHROUD_capsule_dtor'
     fnamefunc_capsule_dtor: '{fnamefunc}'
   api: c
@@ -21776,7 +22934,7 @@ h_helper_capsule_dtor:
   - -end subroutine LIB_SHROUD_capsule_dtor
   - -end interface
   dependent_helpers:
-  - capsule_data_helper
+  - capsule_data
   sphinx-end-before: h_helper_capsule_dtor
 h_helper_capsule_helper:
   sphinx-start-after: h_helper_capsule_helper
@@ -21809,9 +22967,24 @@ h_helper_capsule_helper:
   - call LIB_SHROUD_capsule_dtor(cap%mem)
   - -end subroutine SHROUD_capsule_delete
   dependent_helpers:
-  - capsule_data_helper
+  - capsule_data
   - capsule_dtor
   sphinx-end-before: h_helper_capsule_helper
+h_helper_capsule_memflags:
+  sphinx-start-after: h_helper_capsule_memflags
+  name: h_helper_capsule_memflags
+  notes:
+  - Flags used to give properties to the addr field.
+  - This helper is added in wrapf.py Wrapf.wrap_class
+  - instead of adding to lots of other groups.
+  scope: cwrap_include
+  source:
+  - ''
+  - enum SwigMemFlags {+
+  - SWIG_MEM_OWN = 0x01,
+  - SWIG_MEM_RVALUE = 0x02,
+  - -};
+  sphinx-end-before: h_helper_capsule_memflags
 h_helper_cdesc_array_string_out:
   sphinx-start-after: h_helper_cdesc_array_string_out
   name: h_helper_cdesc_array_string_out
@@ -21872,7 +23045,7 @@ h_helper_cdesc_vector_string_allocatable:
   fmtdict:
     cnamefunc: '{C_prefix}CDescShroudVectorStringAllocatable'
     fnamefunc: '{C_prefix}SHROUD_cdesc_vector_string_allocatable'
-    cnameproto: void {cnamefunc}({C_array_type} *dest, {C_capsule_data_type} *src)
+    cnameproto: void {cnamefunc}({C_array_type} *dest, {c_capsule_data_type} *src)
   api: c
   c_fmtname: LIB_CDescShroudVectorStringAllocatable
   scope: cwrap_impl
@@ -21909,7 +23082,7 @@ h_helper_cdesc_vector_string_allocatable:
   - -end subroutine LIB_SHROUD_cdesc_vector_string_allocatable
   - -end interface
   dependent_helpers:
-  - capsule_data_helper
+  - capsule_data
   - array_context
   - cdesc_vector_string_out
   sphinx-end-before: h_helper_cdesc_vector_string_allocatable
@@ -22319,6 +23492,9 @@ h_helper_pointer_string:
   - Set Fortran POINTER to string.
   - Must be a function (or a F2008 BLOCK) since fptr must
   - be declared after the string length is known.
+  - The Fortran standard says both sides of the pointer assignment
+  - must have the same type parameters, including length.
+  - Cray CCE fails a struct-c test with this code.
   fmtdict:
     fnamefunc: '{C_prefix}SHROUD_pointer_string'
   f_fmtname: LIB_SHROUD_pointer_string
@@ -22527,6 +23703,7 @@ root
       shadow
         capptr -- c_ctor_shadow_capptr
           shared -- c_ctor_shadow_capptr_shared
+          weak -- c_ctor_shadow_capptr_weak
         capsule -- c_ctor_shadow_capsule
     dtor -- c_dtor
     function
@@ -22535,13 +23712,16 @@ root
       char* -- c_function_char*
         buf
           copy -- c_function_char*_buf_copy
+            caller -- c_function_char*_buf_copy_caller
       enum -- c_function_enum
       native -- c_function_native
       native& -- c_function_native&
       native* -- c_function_native*
         caller -- c_function_native*_caller
+        library -- c_function_native*_library
         scalar -- c_function_native*_scalar
       native** -- c_function_native**
+        library -- c_function_native**_library
       shadow
         capptr -- c_function_shadow_capptr
       shadow&
@@ -22571,6 +23751,7 @@ root
         buf
           copy -- c_function_string&_buf_copy
         copy -- c_function_string&_copy
+        library -- c_function_string&_library
       string* -- c_function_string*
         buf
           copy -- c_function_string*_buf_copy
@@ -22582,6 +23763,7 @@ root
       vector<native> -- c_function_vector<native>
         malloc -- c_function_vector<native>_malloc
       void* -- c_function_void*
+        library -- c_function_void*_library
     getter
       native -- c_getter_native
       native* -- c_getter_native*
@@ -22775,8 +23957,15 @@ root
       local-string-init -- c_mixin_local-string-init
       local-string-init-trim -- c_mixin_local-string-init-trim
       make-shared -- c_mixin_make-shared
+      make-weak -- c_mixin_make-weak
       new
         vector<native> -- c_mixin_new_vector<native>
+      operator
+        assignment -- c_mixin_operator_assignment
+          basic -- c_mixin_operator_assignment_basic
+          fmtdict -- c_mixin_operator_assignment_fmtdict
+            makeshared -- c_mixin_operator_assignment_fmtdict_makeshared
+            weak -- c_mixin_operator_assignment_fmtdict_weak
       out
         native** -- c_mixin_out_native**
         vector
@@ -22855,13 +24044,13 @@ root
         scalar
           buf -- c_setter_string_scalar_buf
     subroutine -- c_subroutine
-      assignment
-        weakptr -- c_subroutine_assignment_weakptr
   f
     ctor
       shadow
         capsule -- f_ctor_shadow_capsule
+          caller -- f_ctor_shadow_capsule_caller
           shared -- f_ctor_shadow_capsule_shared
+          weak -- f_ctor_shadow_capsule_weak
     dtor -- f_dtor
     function
       bool -- f_function_bool
@@ -22882,46 +24071,60 @@ root
         allocatable -- f_function_char*_allocatable
         buf
           copy -- f_function_char*_buf_copy
+            caller -- f_function_char*_buf_copy_caller
           funcarg
             copy -- f_function_char*_buf_funcarg_copy
         cdesc
           allocatable -- f_function_char*_cdesc_allocatable
           funcarg
             allocatable -- f_function_char*_cdesc_funcarg_allocatable
-            pointer -- f_function_char*_cdesc_funcarg_pointer
-          pointer -- f_function_char*_cdesc_pointer
+            pointer
+              library -- f_function_char*_cdesc_funcarg_pointer_library
+          pointer
+            library -- f_function_char*_cdesc_pointer_library
         cfi
           allocatable -- f_function_char*_cfi_allocatable
           copy -- f_function_char*_cfi_copy
           funcarg
             allocatable -- f_function_char*_cfi_funcarg_allocatable
             copy -- f_function_char*_cfi_funcarg_copy
-            pointer -- f_function_char*_cfi_funcarg_pointer
-          pointer -- f_function_char*_cfi_pointer
+            pointer
+              library -- f_function_char*_cfi_funcarg_pointer_library
+          pointer
+            library -- f_function_char*_cfi_pointer_library
         copy -- f_function_char*_copy
         funcarg
-          raw -- f_function_char*_funcarg_raw
+          raw
+            library -- f_function_char*_funcarg_raw_library
         pointer -- f_function_char*_pointer
-        raw -- f_function_char*_raw
+        raw
+          library -- f_function_char*_raw_library
       enum -- f_function_enum
       native -- f_function_native
       native& -- f_function_native&
-        pointer -- f_function_native&_pointer
+        pointer
+          library -- f_function_native&_pointer_library
       native*
         cdesc
           allocatable -- f_function_native*_cdesc_allocatable
-          pointer -- f_function_native*_cdesc_pointer
+          pointer
             caller -- f_function_native*_cdesc_pointer_caller
+            library -- f_function_native*_cdesc_pointer_library
         cfi
           allocatable -- f_function_native*_cfi_allocatable
-          pointer -- f_function_native*_cfi_pointer
+          pointer
+            library -- f_function_native*_cfi_pointer_library
         pointer -- f_function_native*_pointer
           caller -- f_function_native*_pointer_caller
-        raw -- f_function_native*_raw
+          library -- f_function_native*_pointer_library
+        raw
+          library -- f_function_native*_raw_library
         scalar -- f_function_native*_scalar
       native** -- f_function_native**
+        library -- f_function_native**_library
       shadow
-        capsule -- f_function_shadow_capsule
+        capsule
+          caller -- f_function_shadow_capsule_caller
       shadow&
         capsule -- f_function_shadow&_capsule
           caller -- f_function_shadow&_capsule_caller
@@ -22932,7 +24135,8 @@ root
           library -- f_function_shadow*_capsule_library
         this -- f_function_shadow*_this
       shadow<native>
-        capsule -- f_function_shadow<native>_capsule
+        capsule
+          caller -- f_function_shadow<native>_capsule_caller
       smartptr<shadow>
         capsule -- f_function_smartptr<shadow>_capsule
       smartptr<shadow>*
@@ -22948,7 +24152,8 @@ root
           allocatable -- f_function_string_cdesc_allocatable
             caller -- f_function_string_cdesc_allocatable_caller
             library -- f_function_string_cdesc_allocatable_library
-          pointer -- f_function_string_cdesc_pointer
+          pointer
+            caller -- f_function_string_cdesc_pointer_caller
         cfi
           allocatable -- f_function_string_cfi_allocatable
             caller -- f_function_string_cfi_allocatable_caller
@@ -22959,7 +24164,8 @@ root
           pointer -- f_function_string_cfi_pointer
             caller -- f_function_string_cfi_pointer_caller
             library -- f_function_string_cfi_pointer_library
-        raw -- f_function_string_raw
+        raw
+          caller -- f_function_string_raw_caller
       string&
         buf -- f_function_string&_buf
           caller -- f_function_string&_buf_caller
@@ -23007,12 +24213,14 @@ root
       struct -- f_function_struct
       struct*
         cdesc
-          pointer -- f_function_struct*_cdesc_pointer
+          pointer
+            library -- f_function_struct*_cdesc_pointer_library
         pointer -- f_function_struct*_pointer
       vector<native>
         cdesc
           allocatable -- f_function_vector<native>_cdesc_allocatable
       void* -- f_function_void*
+        library -- f_function_void*_library
     getter
       bool -- f_getter_bool
       char*
@@ -23218,6 +24426,9 @@ root
       logical-in -- f_mixin_logical-in
       logical-local-var -- f_mixin_logical-local-var
       logical-out -- f_mixin_logical-out
+      operator
+        assignment -- f_mixin_operator_assignment
+          basic -- f_mixin_operator_assignment_basic
       out
         vector
           buf -- f_mixin_out_vector_buf
@@ -23242,6 +24453,14 @@ root
       native -- f_none_native
       native* -- f_none_native*
       void* -- f_none_void*
+    operator
+      assignment
+        shadow -- f_operator_assignment_shadow
+          basic -- f_operator_assignment_shadow_basic
+            weak -- f_operator_assignment_shadow_basic_weak
+          makeshared -- f_operator_assignment_shadow_makeshared
+          shared -- f_operator_assignment_shadow_shared
+          weak -- f_operator_assignment_shadow_weak
     out
       bool* -- f_out_bool*
       char* -- f_out_char*
@@ -23252,9 +24471,11 @@ root
         buf
           copy -- f_out_char**_buf_copy
         cdesc
-          pointer -- f_out_char**_cdesc_pointer
+          pointer
+            library -- f_out_char**_cdesc_pointer_library
         cfi
-          pointer -- f_out_char**_cfi_pointer
+          pointer
+            library -- f_out_char**_cfi_pointer_library
       enum* -- f_out_enum*
       native& -- f_out_native&
         hidden -- f_out_native&_hidden
@@ -23265,17 +24486,22 @@ root
         hidden -- f_out_native*_hidden
       native*&
         cdesc -- f_out_native*&_cdesc
-          pointer -- f_out_native*&_cdesc_pointer
+          pointer
+            library -- f_out_native*&_cdesc_pointer_library
       native**
         cdesc
           allocatable -- f_out_native**_cdesc_allocatable
-          pointer -- f_out_native**_cdesc_pointer
+          pointer
+            library -- f_out_native**_cdesc_pointer_library
         cfi
           allocatable -- f_out_native**_cfi_allocatable
-          pointer -- f_out_native**_cfi_pointer
-        raw -- f_out_native**_raw
+          pointer
+            library -- f_out_native**_cfi_pointer_library
+        raw
+          library -- f_out_native**_raw_library
       native***
-        raw -- f_out_native***_raw
+        raw
+          library -- f_out_native***_raw_library
       procedure*
         funptr -- f_out_procedure*_funptr
       string&
@@ -23327,8 +24553,6 @@ root
         pointer -- f_setter_struct*_pointer
       struct** -- f_setter_struct**
     subroutine -- f_subroutine
-      assignment
-        weakptr -- f_subroutine_assignment_weakptr
   h
     helper
       array
@@ -23338,10 +24562,11 @@ root
           out
             len -- h_helper_array_string_out_len
       capsule
-        data
-          helper -- h_helper_capsule_data_helper
+        data -- h_helper_capsule_data
+          basic -- h_helper_capsule_data_basic
         dtor -- h_helper_capsule_dtor
         helper -- h_helper_capsule_helper
+        memflags -- h_helper_capsule_memflags
       cdesc
         array
           string

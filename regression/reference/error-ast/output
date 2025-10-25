@@ -3,7 +3,7 @@
 Phase: Create library
 ----------------------------------------
 format F_string_result_as_arg is deprecated, changed to option.F_result_as_arg
-Instead add attribute +funcarg(name)+deref(copy) to decl.
+Add attribute +funcarg(name)+deref(copy) to decl.
 Option F_result_as_arg is the default name when not specified in +funcarg.
 --------------------
 line 20
@@ -123,6 +123,6 @@ line 134
 Node: getConstCharPtrAsCopyArg
 line 142
 format F_string_result_as_arg is deprecated, changed to option.F_result_as_arg
-Instead add attribute +funcarg(name)+deref(copy) to decl.
+Add attribute +funcarg(name)+deref(copy) to decl.
 Option F_result_as_arg is the default name when not specified in +funcarg.
 Too many warnings: 29

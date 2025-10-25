@@ -139,7 +139,7 @@ void STR_getConstStringAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const string getConstStringPointer +deref(pointer)
-// Statement: f_function_string_cfi_pointer
+// Statement: f_function_string_cfi_pointer_caller
 void STR_getConstStringPointer_CFI(
     STR_SHROUD_capsule_data *SHT_rv_capsule, CFI_cdesc_t *SHT_rv_cfi)
 {
@@ -175,7 +175,7 @@ void STR_getConstStringPointer_CFI(
  */
 // ----------------------------------------
 // Function:  const string getConstStringRaw +deref(raw)
-// Statement: f_function_string_raw
+// Statement: f_function_string_raw_caller
 const char * STR_getConstStringRaw_bufferify(
     STR_SHROUD_capsule_data *SHT_rv_capsule)
 {

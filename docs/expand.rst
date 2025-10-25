@@ -61,7 +61,7 @@ Running :code:`Shroud` will initially report that the statment group is not foun
     ----------------------------------------
     Node: fetchCharPtr
     line 15
-    Unknown statement: f_out_char**_cdesc_pointer
+    Unknown statement: f_out_char**_cdesc_pointer_library
 
 The first step is to define the statement group by name.
 Since this is for a builtin statement group, it is added to
@@ -76,7 +76,7 @@ document the intended usage of the group.
 .. code-block:: json
 
     {
-        "name": "f_out_char**_cdesc_pointer",
+        "name": "f_out_char**_cdesc_pointer_library",
         "usage": [
             "char **arg +intent(out)"
         ],
@@ -97,7 +97,7 @@ wrapper and the C wrapper.
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  char **fetch1 +intent(out)
-        ! Statement: f_out_char**_cdesc_pointer
+        ! Statement: f_out_char**_cdesc_pointer_library
         subroutine fetch_char_ptr() &
                 bind(C, name="TES_fetchCharPtr_bufferify")
             implicit none
@@ -117,7 +117,7 @@ wrapper would be created, but it is conditionally compiled out.
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char **fetch1 +intent(out)
-    ! Statement: f_out_char**_cdesc_pointer
+    ! Statement: f_out_char**_cdesc_pointer_library
     subroutine fetch_char_ptr()
         ! splicer begin function.fetch_char_ptr
         call c_fetch_char_ptr_bufferify(fetch1)
@@ -132,7 +132,7 @@ wrapper would be created, but it is conditionally compiled out.
     // Statement: f_subroutine
     // ----------------------------------------
     // Argument:  char **fetch1 +intent(out)
-    // Statement: f_out_char**_cdesc_pointer
+    // Statement: f_out_char**_cdesc_pointer_library
     void TES_fetchCharPtr_bufferify(void)
     {
         // splicer begin function.fetchCharPtr_bufferify
@@ -148,8 +148,8 @@ groups.
                 
 .. literalinclude:: ../shroud/fc-statements.json
    :language: json
-   :start-after: "sphinx-start-after": "f_out_char**_cdesc_pointer"
-   :end-before: "sphinx-end-before": "f_out_char**_cdesc_pointer"
+   :start-after: "sphinx-start-after": "f_out_char**_cdesc_pointer_library"
+   :end-before: "sphinx-end-before": "f_out_char**_cdesc_pointer_library"
    :dedent: 8
 
 The command line option :option:`--write-statements` will create a
@@ -158,8 +158,8 @@ group becomes:
 
 .. literalinclude:: ../regression/reference/none/statements
    :language: yaml
-   :start-after: sphinx-start-after: f_out_char**_cdesc_pointer
-   :end-before: sphinx-end-before: f_out_char**_cdesc_pointer
+   :start-after: sphinx-start-after: f_out_char**_cdesc_pointer_library
+   :end-before: sphinx-end-before: f_out_char**_cdesc_pointer_library
     
 The final Fortran wrapper become:
 

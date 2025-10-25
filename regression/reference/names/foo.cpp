@@ -27,19 +27,21 @@ TES_ns0_Names * XXX_TES_ns0_Names_defaultctor(TES_ns0_Names *SHC_rv)
     ns0::Names *ARG_rv = new ns0::Names();
     SHC_rv->addr = static_cast<void *>(ARG_rv);
     SHC_rv->idtor = 1;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     return SHC_rv;
     // splicer end namespace.ns0.class.Names.method.defaultctor
 }
 
 // ----------------------------------------
 // Function:  Names +name(defaultctor)
-// Statement: f_ctor_shadow_capsule
+// Statement: f_ctor_shadow_capsule_caller
 void XXX_TES_ns0_Names_defaultctor_bufferify(TES_ns0_Names *SHC_rv)
 {
     // splicer begin namespace.ns0.class.Names.method.defaultctor_bufferify
     ns0::Names *ARG_rv = new ns0::Names();
     SHC_rv->addr = static_cast<void *>(ARG_rv);
     SHC_rv->idtor = 1;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     // splicer end namespace.ns0.class.Names.method.defaultctor_bufferify
 }
 

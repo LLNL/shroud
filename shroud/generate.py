@@ -223,6 +223,7 @@ class GenFunctions(object):
         self.instantiate_scope = None
         self.language = newlibrary.language
         self.cursor = error.get_cursor()
+        self.namespace_list = []
 
     def gen_library(self):
         """Entry routine to generate functions for a library.
@@ -233,9 +234,14 @@ class GenFunctions(object):
         self.function_index = newlibrary.function_index
         self.class_map = newlibrary.class_map
 
-        self.instantiate_all_classes(newlibrary.wrap_namespace)
-        self.update_templated_typemaps(newlibrary.wrap_namespace)
-        self.gen_namespace(newlibrary.wrap_namespace)
+        ns = newlibrary.wrap_namespace
+        self.push_namespace_list(ns)
+        self.instantiate_all_classes(ns)
+        self.pop_namespace_list()
+
+        self.update_templated_typemaps(ns)
+
+        self.gen_namespace(ns)
         self.cursor.pop_phase("generate functions")
 
     def gen_namespace(self, node):
@@ -244,9 +250,11 @@ class GenFunctions(object):
         Args:
             node - ast.LibraryNode, ast.NamespaceNode
         """
+        self.push_namespace_list(node)
         node.functions = self.define_function_suffix(node.functions)
         for ns in node.namespaces:
             self.gen_namespace(ns)
+        self.pop_namespace_list()
 
     # No longer need this, but keep code for now in case some other dependency checking is needed
     #        for cls in newlibrary.classes:
@@ -267,6 +275,15 @@ class GenFunctions(object):
     def pop_instantiate_scope(self):
         """Remove template arguments from scope"""
         self.instantiate_scope = self.instantiate_scope.get_parent()
+
+    def push_namespace_list(self, node):
+        self.namespace_list.append(node)
+
+    def pop_namespace_list(self):
+        self.namespace_list.pop()
+
+    def current_namespace(self):
+        return self.namespace_list[-1]
 
     def append_function_index(self, node):
         """append to function_index, set index into node.
@@ -436,7 +453,9 @@ class GenFunctions(object):
             self.instantiate_classes(cls)
 
         for ns in node.namespaces:
+            self.push_namespace_list(ns)
             self.instantiate_all_classes(ns)
+            self.pop_namespace_list()
 
     def template_class(self, cls, clslist):
         """Create a class for each list of template_arguments.
@@ -446,6 +465,7 @@ class GenFunctions(object):
             orig_typemap.cxx_instantiation = {}
         for function in cls.functions:
             self.append_function_index(function)
+        assign_operators = self.current_namespace().assign_operators
         # Replace class with new class for each template instantiation.
         # targs -> ast.TemplateArgument
         for i, targs in enumerate(cls.template_arguments):
@@ -496,14 +516,18 @@ class GenFunctions(object):
 
             self.push_instantiate_scope(newcls, targs)
             self.process_class(newcls, newcls)
+            add_assign_operator(assign_operators, newcls, newcls)
             self.pop_instantiate_scope()
 
     def share_class(self, cls, smart):
-        """Create a subclass for use with std::shared.
+        """Create additional classes for use with smart pointers like std::shared.
 
-        smart is a dictionary with fields
-          type   - std::shared_ptr, std::weak_ptr
-          format
+        Parameters
+        ----------
+          cls   - ast.ClassNode
+          smart - is a dictionary with fields from YAML file (for smart pointers)
+              type   - std::shared_ptr, std::weak_ptr
+              format -
         """
         newcls = cls.clone()
         newcls.smart_pointer = []
@@ -527,12 +551,7 @@ class GenFunctions(object):
         newcls.name_api = fmt_class.C_name_shared_api
         newcls.name_instantiation = "{}<{}>".format(name_type, fmt_class.cxx_type)
         newcls.scope_file[-1] = newcls.name_api
-
-        if ntypemap.smart_pointer == "weak":
-            newcls.functions = []
-            self.add_weak_smart_methods(newcls)
-
-        self.add_share_smart_methods(newcls)
+        newcls.shared_baseclass = cls
 
         newcls.C_shared_class = True
         # Remove defaulted attributes then reset with current values.
@@ -548,7 +567,6 @@ class GenFunctions(object):
         newcls.typemap.base = "smartptr"
         newcls.typemap.sgroup = "smartptr"
 
-        newcls.baseclass = [ ( 'public', "DDDD", cls.ast) ]
         return newcls
 
     def add_share_smart_methods(self, cls):
@@ -565,17 +583,69 @@ class GenFunctions(object):
             )
             fcn = cls.add_function(decl, format=fmt_func)
             fcn.C_shared_method = True
-        
-    def add_weak_smart_methods(self, cls):
-        """A methods to a std::weak_ptr class.
 
-        Assignment functions
+    def add_smart_ptr_ctor_dtor(self, cls):
         """
-        fmt_class = cls.fmtdict
+        Remove existing constructor methods for Object.
+        Replace with smart_ptr specific methods.
+        The Object ctor may have arguments which do not apply to 
+        the smart pointer.
+        TODO: For now, replace with a ctor which accepts no arguments
+        but it may be meaningful to add ctor like weak_ptr(shared_ptr).
+        """
+        # Filter out current ctor and dtor
+        functions = []
+        for function in cls.functions:
+            if function.ast.is_ctor:
+                pass
+            elif function.ast.is_dtor:
+                pass
+            else:
+                functions.append(function)
+        cls.functions = functions
 
-        decl = "void assign_weak(std::shared_ptr<Object> *from +intent(in)) +operator(assignment)+custom(weakptr)"
+        # Set up symtab for parsing
+        cls.symtab.push_scope(cls.ast.class_specifier)
+        
+        decl = "Object()"
         fcn = cls.add_function(decl)
-        fcn.C_shared_method = True
+                
+        decl = "~Object()"
+        fcn = cls.add_function(decl)
+
+        cls.symtab.pop_scope()
+        
+    def add_smart_ptr_methods(self, smart_ptrs):
+        """
+        Subclasses for smart pointers have been created.
+        This allows one type of smart pointer to reference another.
+
+        Parameters
+        ----------
+        smart_ptrs - index of smart pointer subclasses, indexed by type name.
+        """
+        assign_operators = self.current_namespace().assign_operators
+
+        clsmap = {}
+        for cls in smart_ptrs.values():
+            clsmap[cls.typemap.smart_pointer] = cls
+            
+        for cls in smart_ptrs.values():
+            smart_pointer =  cls.typemap.smart_pointer
+            add_assign_operator(assign_operators, cls, cls, smart_pointer)
+            if smart_pointer == "shared":
+                self.add_smart_ptr_ctor_dtor(cls)
+                add_assign_operator(assign_operators, cls, cls.shared_baseclass, 'makeshared')
+            elif smart_pointer == "weak":
+                # weak_ptr cannot call methods directly.
+                # TODO: Add constructor from shared.
+                cls.functions = []
+                self.add_smart_ptr_ctor_dtor(cls)
+                if 'shared' in clsmap:
+                    # weak_ptr = shared_ptr
+                    add_assign_operator(assign_operators, cls, clsmap['shared'], 'weak')
+
+            self.add_share_smart_methods(cls)
         
     def instantiate_classes(self, node):
         """Instantate any template_arguments.
@@ -588,6 +658,7 @@ class GenFunctions(object):
         ----------
         node : ast.LibraryNode, ast.NamespaceNode, ast.ClassNode
         """
+        assign_operators = self.current_namespace().assign_operators
         clslist = []
         for cls in node.classes:
             self.cursor.push_node(cls)
@@ -602,10 +673,18 @@ class GenFunctions(object):
             else:
                 clslist.append(cls)
                 self.process_class(cls, cls)
-                for smart in cls.smart_pointer:
-                    shared = self.share_class(cls, smart)
-                    clslist.append(shared)
-                    self.process_class(shared, shared)
+                add_assign_operator(assign_operators, cls, cls)
+                if cls.smart_pointer:
+                    smart_ptrs = {}
+                    # cls.smart_pointer is a dict from YAML file.
+                    for smart in cls.smart_pointer:
+                        shared = self.share_class(cls, smart)
+                        clslist.append(shared)
+                        smart_ptrs[smart["type"]] = shared
+                    self.add_smart_ptr_methods(smart_ptrs)
+                    for shared in smart_ptrs.values():
+                        self.process_class(shared, shared)
+                
             self.cursor.pop_node(cls)
 
         node.classes = clslist
@@ -1354,3 +1433,23 @@ def gen_decl(ast):
     else:
         # int (*)(void)  -- add blank after declaration
         return s + " " + s2
+
+######################################################################
+
+def add_assign_operator(assign_operators, cls1, cls2, specialize=None):
+    """Add an assignment operator overload for Fortran.
+    """
+    if cls1.options.wrap_fortran:
+        assign_operators.append(AssignOperator(cls1, cls2, specialize))
+        
+
+class AssignOperator(object):
+    """
+    Used to create an assignment operator overload between two classes.
+    """
+    def __init__(self, lhs, rhs, specialization=None):
+        self.lhs = lhs
+        self.rhs = rhs
+        self.name = "%s = %s" % (lhs.typemap.name, rhs.typemap.name)
+        self.bind = None
+        self.specialization = specialization

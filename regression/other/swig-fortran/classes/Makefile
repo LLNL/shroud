@@ -3,8 +3,9 @@
 # SPDX-License-Identifier: (BSD-3-Clause)
 #
 
-include ../../defaults.mk
-include $(rundir)/defaults.mk
+testdir = classes
+tester : $(testdir)
+.PHONY : tester
 
 INCLUDE = \
     -I$(rundir)/classes \
@@ -14,24 +15,25 @@ VPATH = \
     $(rundir)/classes \
     $(rundir)/fruit
 
-OBJS = \
-    classes.o \
+F_OBJS = \
     classes_mod.o \
-    classes_wrap.o \
     fruit.o \
     main.o
 
-classes : $(OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS) $(CXXLIBS)
+C_OBJS = \
+    classes.o \
+    classes_wrap.o
+
+include ../../defaults.mk
+include $(rundir)/defaults.mk
 
 swig:
 #	swig -fortran -o swigclasses_module.c classes.i
 	$(swig-fortran)  -fortran -c++ classes.i
 
+main.o : main.f classes_mod.o
+
 test:
 	./classes
 
-clean :
-	rm -f $(OBJS) *.mod classes *~
-
-.PHONY : swig test clean
+.PHONY : swig test tester

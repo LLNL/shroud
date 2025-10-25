@@ -23,8 +23,6 @@ from . import util
 from .statements import get_func_bind, get_arg_bind
 from .util import append_format, wformat
 
-default_owner = "library"
-
 lang_map = {"c": "C", "cxx": "C++"}
 
 CPlusPlus = namedtuple("CPlusPlus", "start_cxx else_cxx end_cxx start_extern_c end_extern_c")
@@ -40,10 +38,6 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
     """Generate C bindings and Fortran helpers for C++ library.
 
     """
-    capsule_code = {}
-    capsule_order = []
-    capsule_include = {}  # includes needed by C_memory_dtor_function
-
     def __init__(self, newlibrary, config, splicers):
         """
         Args:
@@ -52,7 +46,6 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
             splicers -
         """
         self.newlibrary = newlibrary
-        self.destructors = newlibrary.destructors
         self.patterns = newlibrary.patterns
         self.language = newlibrary.language
         self.config = config
@@ -69,8 +62,8 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         self.capsule_impl_c = []
         self.header_types = util.Header(self.newlibrary) # shared type header
         self.helper_summary = None
-        # Include files required by wrapper implementations.
-        self.capsule_typedef_nodes = OrderedDict()  # [typemap.name] = typemap
+        self.f_assign_code = []   # Fortran assignment overload
+        self.capsule_format = newlibrary.capsule_format
         self.cursor = error.get_cursor()
 
         global cplusplus
@@ -100,8 +93,6 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
     def wrap_library(self):
         newlibrary = self.newlibrary
         fmt_library = newlibrary.fmtdict
-        # reserved the 0 slot of capsule_order
-        self.add_capsule_code("--none--", None, ["// Nothing to delete"])
         self.wrap_namespace(newlibrary.wrap_namespace, True)
 
         self.gather_helper_code(self.shared_helper)
@@ -126,6 +117,9 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         Wrap depth first to accumulate destructor information
         which is written at the library level.
         """
+
+        self.wrap_assignment(node)
+        
         if top:
             # have one namespace level, then replace name each time
             self._push_splicer("namespace")
@@ -326,11 +320,11 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
 
         output = []
         headers = util.Header(self.newlibrary)
-        
+
         capsule_code = []
-        self.write_capsule_code(capsule_code)
+        self.capsule_format.write_capsule_code(capsule_code)
         if capsule_code:
-            self.set_capsule_headers(headers)
+            self.capsule_format.set_capsule_headers(headers)
             self.shared_helper["capsule_dtor"] = True
 
         self.gather_helper_code(self.shared_helper)
@@ -354,6 +348,8 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
             write_file = True
             output.extend(capsule_code)
 
+        output.extend(self.f_assign_code)
+            
         output.extend(cplusplus.end_extern_c)
 
         source = self.helper_summary["cxx"]["cwrap_impl"]
@@ -432,6 +428,40 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
             os.path.join(self.config.c_fortran_dir, fname)
         )
         self.write_output_file(fname, self.config.c_fortran_dir, output)
+
+    def wrap_assignment(self, node):
+        """
+        Write the functions for assignment overloads.
+        These C++ functions are called by Fortran assignment overloads.
+
+        Parameters
+        ----------
+        node - ast.LibraryNode, ast.NamespaceNode
+        """
+        output = self.f_assign_code
+
+        for assign in node.assign_operators:
+            node = assign.lhs
+            options = assign.lhs.options
+            fmt = assign.bind.fmtdict
+            asgn_stmt = assign.bind.stmt
+            if asgn_stmt.c_body:
+                options = node.options
+                output.append("")
+                if node.cpp_if:
+                    output.append("#" + node.cpp_if)
+                if options.debug:
+                    output.append("// Statement: " + asgn_stmt.name)
+                if options.literalinclude:
+                    append_format(output, "// start {F_name_assign_api}", fmt)
+                output.append("// " + assign.name)
+                util.append_format_cmds(output, asgn_stmt, "c_body", fmt)
+                if options.literalinclude:
+                    append_format(output, "// end {F_name_assign_api}", fmt)
+                if node.cpp_if:
+                    output.append("#endif")
+            
+        return output
 
     def write_header(self, library, cls, fname):
         """ Write header file for a library or class node.
@@ -636,6 +666,9 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
             )
 
     def add_class_capsule_worker(self, output, fmt, literalinclude):
+        """
+        fmt.cmemflags is used to add an additional field to the struct.
+        """
         output.append("")
         if literalinclude:
             append_format(output, "// start {lang} capsule {cname}", fmt)
@@ -643,8 +676,9 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
             output,
             """// {lang} capsule {cname}
 {cpp_if}struct s_{C_type_name} {{+
-{capsule_type} *addr;     /* address of C++ memory */
-int idtor;      /* index of destructor */
+{capsule_type} *addr;     // address of C++ memory
+int idtor;      // index of destructor
+int cmemflags;  // memory flags
 -}};
 typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             fmt)
@@ -718,7 +752,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         else:
             fmt_class.CXX_this_call = fmt_class.CXX_this + "->"
 
-        self.compute_idtor(node)
+        self.capsule_format.compute_idtor(node)
         self.add_class_capsule_structs(node)
         if node.wrap.c:
             self.wrap_enums(node)
@@ -732,38 +766,6 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 self.wrap_function("f", node, method)
         self._pop_splicer("method")
         cursor.pop_node(node)
-
-    def compute_idtor(self, node):
-        """Create a capsule destructor for type.
-
-        Only call add_capsule_code if the destructor is wrapped.
-        Otherwise, there is no way to delete the object.
-        i.e. the class has a private destructor.
-
-        Args:
-            node - ast.ClassNode.
-        """
-        has_dtor = False
-        for method in node.functions:
-            if method.ast.is_dtor:
-                has_dtor = True
-                break
-
-        ntypemap = node.typemap
-        if has_dtor:
-            cxx_type = ntypemap.cxx_type
-            del_lines = [
-                "{cxx_type} *cxx_ptr = \treinterpret_cast<{cxx_type} *>(ptr);".format(
-                    cxx_type=cxx_type
-                ),
-                "delete cxx_ptr;",
-            ]
-            ntypemap.idtor = self.add_capsule_code(
-                cxx_type, ntypemap, del_lines
-            )
-            self.capsule_typedef_nodes[ntypemap.name] = ntypemap
-        else:
-            ntypemap.idtor = "0"
 
     def wrap_typedef(self, node):
         """Wrap a typedef declaration.
@@ -974,7 +976,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         self.fill_c_result(wlang, cls, node, CXX_ast, r_bind)
 
-        self.c_helper.update(node.helpers.get("fc", {}))
+        self.c_helper.update(node.fcn_helpers.get("fc", {}))
         
         stmts_comments = []
         if options.debug:
@@ -1082,7 +1084,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 stmt_indexes.append(wlang)
             
             self.fill_c_arg(wlang, cls, node, arg, arg_bind, pre_call)
-            self.c_helper.update(node.helpers.get("fc", {}))
+            self.c_helper.update(node.fcn_helpers.get("fc", {}))
 
             notimplemented = notimplemented or arg_stmt.notimplemented
             if options.debug:
@@ -1289,203 +1291,3 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 fmt_result.i_name_function = node.user_fmt["i_name_function"]
             
         cursor.pop_node(node)
-
-    def set_capsule_headers(self, headers):
-        """Headers used by C_memory_dtor_function.
-        """
-        fmt = self.newlibrary.fmtdict
-        headers.add_shroud_file(fmt.C_header_utility)
-        headers.add_shroud_dict(self.capsule_include)
-        if self.language == "c":
-            # Add header for NULL. C++ uses nullptr.
-            headers.add_shroud_file("<stdlib.h>")
-        for ntypedefs in self.capsule_typedef_nodes.values():
-            headers.add_typemap_list(ntypedefs.impl_header)
-            
-    def write_capsule_code(self, output):
-        """Write a function used to delete C/C++ memory.
-
-        Parameters
-        ----------
-        output : list of str
-            Accumulation of line to file being created.
-        """
-        library = self.newlibrary
-        options = library.options
-
-        fmt = library.fmtdict
-
-        output.append("")
-        if options.literalinclude2:
-            output.append("// start release allocated memory")
-        append_format(
-            output,
-            "// Release library allocated memory.\n"
-            "void {C_memory_dtor_function}\t({C_capsule_data_type} *cap)\n"
-            "{{+",
-            fmt,
-        )
-
-        if options.F_auto_reference_count:
-            # check refererence before deleting
-            append_format(
-                output,
-                "@--cap->refcount;\n"
-                "if (cap->refcount > 0) {{+\n"
-                "return;\n"
-                "-}}",
-                fmt,
-            )
-
-        if len(self.capsule_order) > 1:
-            # If more than slot 0 is added, create switch statement
-            append_format(
-                output, "void *ptr = cap->addr;\n" "switch (cap->idtor) {{", fmt
-            )
-
-            for i, name in enumerate(self.capsule_order):
-                output.append("case {}:   // {}\n{{+".format(i, name))
-                output.extend(self.capsule_code[name][1])
-                output.append("break;\n-}")
-
-            output.append(
-                "default:\n{+\n"
-                "// Unexpected case in destructor\n"
-                "break;\n"
-                "-}\n"
-                "}"
-            )
-
-        append_format(output,
-                      "cap->addr = {nullptr};\n"
-                      "cap->idtor = 0;  // avoid deleting again\n"
-                      "-}}",
-                      fmt
-        )
-        if options.literalinclude2:
-            output.append("// end release allocated memory")
-
-    def add_capsule_code(self, name, var_typemap, lines):
-        """Add unique names to capsule_code.
-        Return index of name.
-
-        Args:
-            name - ex.  std::vector<int>
-            var_typemap - typemap.Typemap.
-            lines -
-        """
-        if name not in self.capsule_code:
-            self.capsule_code[name] = (str(len(self.capsule_code)), lines)
-            self.capsule_order.append(name)
-
-            # include files required by the type
-            if var_typemap:
-                for include in var_typemap.cxx_header:
-                    self.capsule_include[include] = True
-
-        return self.capsule_code[name][0]
-
-    def add_destructor(self, fmt, name, cmd_list, arg_typemap):
-        """Add a capsule destructor with name and commands.
-
-        Args:
-            fmt -
-            name -
-            cmd_list -
-            arg_typemap - typemap.Typemap.
-        """
-        if name not in self.capsule_code:
-            del_lines = []
-            for cmd in cmd_list:
-                del_lines.append(wformat(cmd, fmt))
-            idtor = self.add_capsule_code(name, arg_typemap, del_lines)
-        else:
-            idtor = self.capsule_code[name][0]
-        return idtor
-
-    def find_idtor(self, ast, ntypemap, bind):
-        """Find the destructor name.
-
-        Set fmt.idtor as index of destructor.
-
-        Check stmts.destructor_name
-
-        XXX - no longer true...
-        Only arguments have idtor's.
-        For example,
-            int * foo() +owner(caller)
-        will convert to
-            void foo(context+owner(caller) )
-
-        Args:
-            ast -
-            ntypemap - typemap.Typemap
-            bind - statements.BindArg
-        """
-        intent_blk = bind.stmt
-        meta = bind.meta
-        fmt = bind.fmtdict
-
-        destructor_name = intent_blk.destructor_name
-        if destructor_name:
-            # Custom destructor from statements.
-            # Use destructor in typemap to remove intermediate objects
-            # e.g. std::vector
-            self.capsule_typedef_nodes[ntypemap.name] = ntypemap
-            destructor_name = wformat(destructor_name, fmt)
-            if destructor_name not in self.capsule_code:
-                del_lines = []
-                util.append_format_cmds(
-                    del_lines, intent_blk, "destructor", fmt
-                )
-                fmt.idtor = self.add_capsule_code(
-                    destructor_name, ntypemap, del_lines
-                )
-                for header in intent_blk.destructor_header:
-                    self.capsule_include[header] = True
-            else:
-                fmt.idtor = self.capsule_code[destructor_name][0]
-            return
-
-        declarator = ast.declarator
-        owner = meta["owner"] or intent_blk.owner or default_owner
-
-        destructor_name = meta["destructor_name"]
-        if owner != "caller":
-            # library, shared, weak. Do not let user release.
-            pass
-        elif destructor_name is not None:
-            # destructor_name attribute.
-            fmt.idtor = self.add_destructor(
-                fmt, destructor_name, [self.destructors[destructor_name]], None
-            )
-        elif ntypemap.idtor != "0":
-            # Return cached value.
-            fmt.idtor = ntypemap.idtor
-        elif ntypemap.cxx_to_c:
-            # Class instance.
-            # A C++ native type (std::string, std::vector)
-            # XXX - vector does not assign cxx_to_c
-            fmt.idtor = self.add_destructor(
-                fmt,
-                ntypemap.cxx_type,
-                [
-                    "{cxx_type} *cxx_ptr =\t reinterpret_cast<{cxx_type} *>(ptr);",
-                    "delete cxx_ptr;",
-                ],
-                ntypemap,
-            )
-            ntypemap.idtor = fmt.idtor
-            self.capsule_typedef_nodes[ntypemap.name] = ntypemap
-        else:
-            # A POD type
-            fmt.idtor = self.add_destructor(
-                fmt,
-                ntypemap.cxx_type,
-                [
-                    "{cxx_type} *cxx_ptr =\t reinterpret_cast<{cxx_type} *>(ptr);",
-                    "free(cxx_ptr);",
-                ],
-                ntypemap,
-            )
-            ntypemap.idtor = fmt.idtor

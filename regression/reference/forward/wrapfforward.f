@@ -19,14 +19,16 @@ module forward_mod
     ! splicer begin module_top
     ! splicer end module_top
 
-    ! helper capsule_data_helper
+    ! helper capsule_data
     type, bind(C) :: FOR_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: cmemflags = 0   ! memory flags
     end type FOR_SHROUD_capsule_data
 
     type class3
-        type(FOR_SHROUD_capsule_data) :: cxxmem
+        type(FOR_SHROUD_capsule_data) :: cxxmem = &
+            FOR_SHROUD_capsule_data()
         ! splicer begin class.Class3.component_part
         ! splicer end class.Class3.component_part
     contains
@@ -38,7 +40,8 @@ module forward_mod
     end type class3
 
     type class2
-        type(FOR_SHROUD_capsule_data) :: cxxmem
+        type(FOR_SHROUD_capsule_data) :: cxxmem = &
+            FOR_SHROUD_capsule_data()
         ! splicer begin class.Class2.component_part
         ! splicer end class.Class2.component_part
     contains
@@ -62,6 +65,11 @@ module forward_mod
         module procedure class2_ne
     end interface
 
+    interface assignment (=)
+        module procedure class3_assign_Class3
+        module procedure class2_assign_Class2
+    end interface
+
     interface
 
         ! ----------------------------------------
@@ -79,7 +87,7 @@ module forward_mod
 
         ! ----------------------------------------
         ! Function:  Class2
-        ! Statement: f_ctor_shadow_capsule
+        ! Statement: f_ctor_shadow_capsule_caller
         subroutine c_class2_ctor_bufferify(SHT_rv) &
                 bind(C, name="FOR_Class2_ctor_bufferify")
             import :: FOR_SHROUD_capsule_data
@@ -180,7 +188,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class2
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     function class2_ctor() &
             result(SHT_rv)
         type(class2) :: SHT_rv
@@ -273,6 +281,40 @@ contains
         ! splicer end function.pass_struct1
     end function pass_struct1
 #endif
+
+    ! Statement: f_operator_assignment_shadow
+    ! forward::Class3 = forward::Class3
+    subroutine class3_assign_Class3(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(class3), intent(INOUT) :: lhs
+        type(class3), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="FOR_Class3_assign_Class3")
+                import :: FOR_SHROUD_capsule_data
+                type(FOR_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(FOR_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine class3_assign_Class3
+
+    ! Statement: f_operator_assignment_shadow
+    ! forward::Class2 = forward::Class2
+    subroutine class2_assign_Class2(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(class2), intent(INOUT) :: lhs
+        type(class2), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="FOR_Class2_assign_Class2")
+                import :: FOR_SHROUD_capsule_data
+                type(FOR_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(FOR_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine class2_assign_Class2
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

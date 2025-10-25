@@ -117,6 +117,8 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
             self.wrap_functions(None, node.functions, fileinfo)
             self._pop_splicer("function")
 
+        self.wrap_assignment(fileinfo)
+            
         do_write = top or not node.options.F_flatten_namespace
         if do_write:
             self._create_splicer("additional_functions", fileinfo.impl, blank=True)
@@ -258,7 +260,7 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
         f_type_decl.append("")
         if node.cpp_if:
             f_type_decl.append("#" + node.cpp_if)
-        fileinfo.add_f_helper(["capsule_data_helper"], fmt_class)
+        fileinfo.add_fc_helper(["capsule_data", "capsule_memflags"], fmt_class)
 
         if options.literalinclude:
             f_type_decl.append("! start derived-type " +
@@ -270,10 +272,12 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
                 fmt_class,
             )
         else:
+            # Add the default constructor.
+            # If no user constructor provided, then the Cray CCE compile fails.
             append_format(
                 f_type_decl,
                 "type {F_derived_name}\n+"
-                "type({F_capsule_data_type}) :: {F_derived_member}",
+                "type({f_capsule_data_type}) :: {F_derived_member} =\t {f_capsule_data_type}()",
                 fmt_class,
             )
         self.set_f_module(
@@ -562,39 +566,12 @@ rv = c_associated({F_this}%{F_derived_member}%addr)
                 fmt,
             )
 
-        if options.F_auto_reference_count:
-            fmt.F_name_api = fmt_class.F_name_assign
-            fmt.F_name_function = wformat(options.F_name_function_template, fmt)
-            fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
-
-            append_format(type_bound_part,
-                          "procedure :: {F_name_impl}",
-                          fmt)
-            append_format(type_bound_part,
-                          "generic :: assignment(=) => {F_name_impl}",
-                          fmt)
-            append_format(
-                impl,
-                """
-subroutine {F_name_impl}(lhs, rhs)+
-use iso_c_binding, only : c_associated, c_f_pointer
-class({F_derived_name}), intent(INOUT) :: lhs
-class({F_derived_name}), intent(IN) :: rhs
-
-lhs%{F_derived_member} = rhs%{F_derived_member}
-if (c_associated(lhs%{F_derived_member}%addr)) then+
-call c_f_pointer(lhs%{F_derived_ptr}, lhs%{F_derived_member})
-lhs%{F_derived_member}%refcount = lhs%{F_derived_member}%refcount + 1
--else+
-nullify(lhs%{F_derived_member}%addr)
--endif
--end subroutine {F_name_impl}""",
-                fmt,
-            )
-
     def write_object_final(self, node, fileinfo):
-#        if options.F_auto_reference_count or smart_pointer:
+#        if smart_pointer:
         if not node.C_shared_class:
+            return
+        if node.options.F_assignment_api != "basic":
+            # Destruction managed by SWIG_MEM_OWN.
             return
         options = node.options
         fmt_class = node.fmtdict
@@ -634,10 +611,10 @@ call array_destructor({F_this}%{F_derived_member})
         Args:
             node - ast.ClassNode
             fileinfo - ModuleInfo
-            fmt_class -
+            fmt_class - format dictionary for the class
             operator - ".eq.", ".ne."
-            procedure -
-            predicate -
+            procedure - procedure name
+            predicate - comparison predicate  ex. c_associated(a,b)
         """
         fmt = util.Scope(fmt_class)
         fmt.procedure = procedure
@@ -1033,6 +1010,38 @@ rv = .false.
                 iface.append("end interface")
         self._pop_splicer("abstract")
 
+    def wrap_assignment(self, fileinfo):
+        """
+        Write the functions for assignment overloads.
+        """
+        impl = fileinfo.impl
+        for assign in fileinfo.node.assign_operators:
+            node = assign.lhs
+            fmt = assign.bind.fmtdict
+            
+            asgn_stmt = assign.bind.stmt
+            if asgn_stmt.f_operator_body:
+                # interface assignment
+                options = node.options
+                operator = "="
+                procedure = fmt.F_name_assign_api
+                ops = fileinfo.operator_map.setdefault(operator, [])
+                ops.append((node, procedure))
+                # body
+                impl.append("")
+                if node.cpp_if:
+                    impl.append("#" + node.cpp_if)
+                if options.debug:
+                    impl.append("! Statement: " + asgn_stmt.name)
+                if options.literalinclude:
+                    append_format(impl, "! start {F_name_assign_api}", fmt)
+                impl.append("! " + assign.name)
+                util.append_format_cmds(impl, asgn_stmt, "f_operator_body", fmt)
+                if options.literalinclude:
+                    append_format(impl, "! end {F_name_assign_api}", fmt)
+                if node.cpp_if:
+                    impl.append("#endif")
+
     def build_arg_list_interface(
             self, bind, modules, imports, dummy_arg_list, dummy_decl_list):
         """Build the Fortran interface for a C wrapper function.
@@ -1124,12 +1133,12 @@ rv = .false.
                 dummy_arg_list.append(fmt_result.C_this)
                 if sintent == "dtor":
                     # dtor will modify C_this to set addr to nullptr.
-#                    line = "type({F_capsule_data_type}){f_intent_attr} :: {C_this}"
-                    line = "type({F_capsule_data_type}), intent(INOUT) :: {C_this}"
+#                    line = "type({f_capsule_data_type}){f_intent_attr} :: {C_this}"
+                    line = "type({f_capsule_data_type}), intent(INOUT) :: {C_this}"
                 else:
-                    line = "type({F_capsule_data_type}), intent(IN) :: {C_this}"
+                    line = "type({f_capsule_data_type}), intent(IN) :: {C_this}"
                 append_format(dummy_decl_list, line, fmt_func)
-                imports[fmt_result.F_capsule_data_type] = True
+                imports[fmt_result.f_capsule_data_type] = True
 
         args_all_in = True  # assume all arguments are intent(in)
         for arg in ast.declarator.params:
@@ -1518,7 +1527,7 @@ rv = .false.
                 else:
                     arg_stmt.f_arg_call = ["{pre_call_intent}"]
                 for helper in f_helper.split():
-                    fileinfo.f_helper[helper] = True
+                    fileinfo.fc_helper[helper] = True
                 self.update_f_module(modules, f_arg.typemap.f_module, fmt_arg)
                 need_wrapper = True
 
@@ -1807,11 +1816,11 @@ rv = .false.
             fileinfo - ModuleInfo
         """
         done = {}  # Avoid duplicates by keeping track of what's been gathered.
-        for name in sorted(fileinfo.f_helper.keys()):
+        for name in sorted(fileinfo.fc_helper.keys()):
             self._gather_helper_code(name, done, fileinfo)
 
-        # Accumulate all C helpers for later processing.
-        self.shared_helper.update(fileinfo.c_helper)
+        # Accumulate all C helpers for processing when writing C wrapper.
+        self.shared_helper.update(fileinfo.fc_helper)
 
     def write_module(self, fileinfo):
         """ Write Fortran wrapper module.
@@ -1870,8 +1879,9 @@ rv = .false.
         if fileinfo.operator_map:
             ops = sorted(fileinfo.operator_map)
             for op in ops:
+                operator = "assignment" if op == "=" else "operator"
                 output.append("")
-                output.append("interface operator (%s)" % op)
+                output.append("interface %s (%s)" % (operator, op))
                 output.append(1)
                 for fcn, opfcn in fileinfo.operator_map[op]:
                     if fcn.cpp_if:
@@ -1993,7 +2003,7 @@ class ModuleInfo(object):
     """
     newlibrary = None
     def __init__(self, node):
-        self.node = node
+        self.node = node      # ast.LibraryNode or ast.NamespaceNode
         self.module_use = {}  # Use statements for a module
         self.use_stmts = []
         self.typedef_impl = []
@@ -2011,8 +2021,7 @@ class ModuleInfo(object):
         self.f_function_generic = {}  # look for generic functions
         self.f_abstract_interface = {}
 
-        self.c_helper = {}
-        self.f_helper = {}
+        self.fc_helper = {}
         self.helper_derived_type = []
         self.helper_source = []
         self.private_lines = []
@@ -2060,12 +2069,11 @@ class ModuleInfo(object):
         Parameters:
           node - ast.FunctionNode
         """
-        self.c_helper.update(node.helpers.get("fc", {}))
-        self.f_helper.update(node.helpers.get("fc", {}))
+        self.fc_helper.update(node.fcn_helpers.get("fc", {}))
 
-    def add_f_helper(self, helpers, fmt):
-        """Add a list of Fortran helpers"""
-        fcfmt.add_fc_helper(self.f_helper, helpers, fmt)
+    def add_fc_helper(self, helpers, fmt):
+        """Add a list of helpers"""
+        fcfmt.add_fc_helper(self.fc_helper, helpers, fmt)
         
 ######################################################################
 

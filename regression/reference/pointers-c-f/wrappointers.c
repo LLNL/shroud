@@ -18,7 +18,7 @@
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int **nitems +intent(out)
-// Statement: f_out_native**_cdesc_pointer
+// Statement: f_out_native**_cdesc_pointer_library
 // start POI_getPtrToScalar_bufferify
 void POI_getPtrToScalar_bufferify(POI_SHROUD_array *SHT_nitems_cdesc)
 {
@@ -42,7 +42,7 @@ void POI_getPtrToScalar_bufferify(POI_SHROUD_array *SHT_nitems_cdesc)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int **count +dimension(10)+intent(out)
-// Statement: f_out_native**_cdesc_pointer
+// Statement: f_out_native**_cdesc_pointer_library
 // start POI_getPtrToFixedArray_bufferify
 void POI_getPtrToFixedArray_bufferify(POI_SHROUD_array *SHT_count_cdesc)
 {
@@ -68,7 +68,7 @@ void POI_getPtrToFixedArray_bufferify(POI_SHROUD_array *SHT_count_cdesc)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int **count +dimension(ncount)+intent(out)
-// Statement: f_out_native**_cdesc_pointer
+// Statement: f_out_native**_cdesc_pointer_library
 // ----------------------------------------
 // Argument:  int *ncount +hidden+intent(out)
 // Statement: f_out_native*_hidden
@@ -100,7 +100,7 @@ void POI_getPtrToDynamicArray_bufferify(
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int **count +dimension(getLen())+intent(out)
-// Statement: f_out_native**_cdesc_pointer
+// Statement: f_out_native**_cdesc_pointer_library
 // start POI_getPtrToFuncArray_bufferify
 void POI_getPtrToFuncArray_bufferify(POI_SHROUD_array *SHT_count_cdesc)
 {
@@ -122,7 +122,7 @@ void POI_getPtrToFuncArray_bufferify(POI_SHROUD_array *SHT_count_cdesc)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const int **nitems +intent(out)
-// Statement: f_out_native**_cdesc_pointer
+// Statement: f_out_native**_cdesc_pointer_library
 // start POI_getPtrToConstScalar_bufferify
 void POI_getPtrToConstScalar_bufferify(
     POI_SHROUD_array *SHT_nitems_cdesc)
@@ -144,7 +144,7 @@ void POI_getPtrToConstScalar_bufferify(
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const int **count +dimension(10)+intent(out)
-// Statement: f_out_native**_cdesc_pointer
+// Statement: f_out_native**_cdesc_pointer_library
 // start POI_getPtrToFixedConstArray_bufferify
 void POI_getPtrToFixedConstArray_bufferify(
     POI_SHROUD_array *SHT_count_cdesc)
@@ -167,7 +167,7 @@ void POI_getPtrToFixedConstArray_bufferify(
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const int **count +dimension(ncount)+intent(out)
-// Statement: f_out_native**_cdesc_pointer
+// Statement: f_out_native**_cdesc_pointer_library
 // ----------------------------------------
 // Argument:  int *ncount +hidden+intent(out)
 // Statement: f_out_native*_hidden
@@ -220,7 +220,7 @@ void POI_getAllocToFixedArray_bufferify(
 
 // ----------------------------------------
 // Function:  int *returnIntPtrToScalar
-// Statement: f_function_native*_pointer
+// Statement: f_function_native*_pointer_library
 // start POI_returnIntPtrToScalar_bufferify
 int * POI_returnIntPtrToScalar_bufferify(void)
 {
@@ -233,7 +233,7 @@ int * POI_returnIntPtrToScalar_bufferify(void)
 
 // ----------------------------------------
 // Function:  int *returnIntPtrToFixedArray +dimension(10)
-// Statement: f_function_native*_cdesc_pointer
+// Statement: f_function_native*_cdesc_pointer_library
 // start POI_returnIntPtrToFixedArray_bufferify
 void POI_returnIntPtrToFixedArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc)
@@ -252,7 +252,7 @@ void POI_returnIntPtrToFixedArray_bufferify(
 
 // ----------------------------------------
 // Function:  const int *returnIntPtrToConstScalar
-// Statement: f_function_native*_pointer
+// Statement: f_function_native*_pointer_library
 // start POI_returnIntPtrToConstScalar_bufferify
 const int * POI_returnIntPtrToConstScalar_bufferify(void)
 {
@@ -265,7 +265,7 @@ const int * POI_returnIntPtrToConstScalar_bufferify(void)
 
 // ----------------------------------------
 // Function:  const int *returnIntPtrToFixedConstArray +dimension(10)
-// Statement: f_function_native*_cdesc_pointer
+// Statement: f_function_native*_cdesc_pointer_library
 // start POI_returnIntPtrToFixedConstArray_bufferify
 void POI_returnIntPtrToFixedConstArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc)

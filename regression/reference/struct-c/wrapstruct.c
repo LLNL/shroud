@@ -69,7 +69,7 @@ void STR_returnStructByValue_bufferify(int i, double d,
  */
 // ----------------------------------------
 // Function:  Cstruct1 *returnStructPtr1
-// Statement: f_function_struct*_cdesc_pointer
+// Statement: f_function_struct*_cdesc_pointer_library
 // ----------------------------------------
 // Argument:  int i
 // Statement: f_in_native
@@ -96,7 +96,7 @@ void STR_returnStructPtr1_bufferify(int i, double d,
  */
 // ----------------------------------------
 // Function:  Cstruct1 *returnStructPtr2
-// Statement: f_function_struct*_cdesc_pointer
+// Statement: f_function_struct*_cdesc_pointer_library
 // ----------------------------------------
 // Argument:  int i
 // Statement: f_in_native
@@ -126,7 +126,7 @@ void STR_returnStructPtr2_bufferify(int i, double d, char *outbuf,
  */
 // ----------------------------------------
 // Function:  Cstruct1 *returnStructPtrArray +dimension(2)
-// Statement: f_function_struct*_cdesc_pointer
+// Statement: f_function_struct*_cdesc_pointer_library
 void STR_returnStructPtrArray_bufferify(STR_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.returnStructPtrArray_bufferify
@@ -142,7 +142,7 @@ void STR_returnStructPtrArray_bufferify(STR_SHROUD_array *SHT_rv_cdesc)
 
 // ----------------------------------------
 // Function:  Cstruct_list *get_global_struct_list
-// Statement: f_function_struct*_cdesc_pointer
+// Statement: f_function_struct*_cdesc_pointer_library
 void STR_get_global_struct_list_bufferify(
     STR_SHROUD_array *SHT_rv_cdesc)
 {
@@ -158,21 +158,22 @@ void STR_get_global_struct_list_bufferify(
 
 // ----------------------------------------
 // Function:  Cstruct_as_class *Create_Cstruct_as_class
-// Statement: f_function_shadow*_capsule
+// Statement: f_function_shadow*_capsule_caller
 // start STR_Create_Cstruct_as_class_bufferify
 void STR_Create_Cstruct_as_class_bufferify(STR_Cstruct_as_class *SHC_rv)
 {
     // splicer begin function.Create_Cstruct_as_class_bufferify
     Cstruct_as_class *SHC_rv_cxx = Create_Cstruct_as_class();
     SHC_rv->addr  = SHC_rv_cxx;
-    SHC_rv->idtor = 0;
+    SHC_rv->idtor = 1;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     // splicer end function.Create_Cstruct_as_class_bufferify
 }
 // end STR_Create_Cstruct_as_class_bufferify
 
 // ----------------------------------------
 // Function:  Cstruct_as_class *Create_Cstruct_as_class_args
-// Statement: f_function_shadow*_capsule
+// Statement: f_function_shadow*_capsule_caller
 // ----------------------------------------
 // Argument:  int x
 // Statement: f_in_native
@@ -185,25 +186,27 @@ void STR_Create_Cstruct_as_class_args_bufferify(int x, int y,
     // splicer begin function.Create_Cstruct_as_class_args_bufferify
     Cstruct_as_class *SHC_rv_cxx = Create_Cstruct_as_class_args(x, y);
     SHC_rv->addr  = SHC_rv_cxx;
-    SHC_rv->idtor = 0;
+    SHC_rv->idtor = 1;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     // splicer end function.Create_Cstruct_as_class_args_bufferify
 }
 
 // ----------------------------------------
 // Function:  Cstruct_as_class *Return_Cstruct_as_class
-// Statement: f_function_shadow*_capsule
+// Statement: f_function_shadow*_capsule_library
 void STR_Return_Cstruct_as_class_bufferify(STR_Cstruct_as_class *SHC_rv)
 {
     // splicer begin function.Return_Cstruct_as_class_bufferify
     Cstruct_as_class *SHC_rv_cxx = Return_Cstruct_as_class();
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     // splicer end function.Return_Cstruct_as_class_bufferify
 }
 
 // ----------------------------------------
 // Function:  Cstruct_as_class *Return_Cstruct_as_class_args
-// Statement: f_function_shadow*_capsule
+// Statement: f_function_shadow*_capsule_library
 // ----------------------------------------
 // Argument:  int x
 // Statement: f_in_native
@@ -217,6 +220,7 @@ void STR_Return_Cstruct_as_class_args_bufferify(int x, int y,
     Cstruct_as_class *SHC_rv_cxx = Return_Cstruct_as_class_args(x, y);
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     // splicer end function.Return_Cstruct_as_class_args_bufferify
 }
 
@@ -238,7 +242,7 @@ int STR_Cstruct_as_class_sum_bufferify(STR_Cstruct_as_class *point)
 
 // ----------------------------------------
 // Function:  Cstruct_as_subclass *Create_Cstruct_as_subclass_args
-// Statement: f_function_shadow*_capsule
+// Statement: f_function_shadow*_capsule_caller
 // ----------------------------------------
 // Argument:  int x
 // Statement: f_in_native
@@ -255,13 +259,14 @@ void STR_Create_Cstruct_as_subclass_args_bufferify(int x, int y, int z,
     Cstruct_as_subclass *SHC_rv_cxx = Create_Cstruct_as_subclass_args(x,
         y, z);
     SHC_rv->addr  = SHC_rv_cxx;
-    SHC_rv->idtor = 0;
+    SHC_rv->idtor = 2;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     // splicer end function.Create_Cstruct_as_subclass_args_bufferify
 }
 
 // ----------------------------------------
 // Function:  Cstruct_as_subclass *Return_Cstruct_as_subclass_args
-// Statement: f_function_shadow*_capsule
+// Statement: f_function_shadow*_capsule_library
 // ----------------------------------------
 // Argument:  int x
 // Statement: f_in_native
@@ -279,6 +284,7 @@ void STR_Return_Cstruct_as_subclass_args_bufferify(int x, int y, int z,
         y, z);
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     // splicer end function.Return_Cstruct_as_subclass_args_bufferify
 }
 

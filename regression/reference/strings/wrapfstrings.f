@@ -70,13 +70,14 @@ module strings_mod
     end type STR_SHROUD_array
     ! end helper array_context
 
-    ! start helper capsule_data_helper
-    ! helper capsule_data_helper
+    ! start helper capsule_data
+    ! helper capsule_data
     type, bind(C) :: STR_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: cmemflags = 0   ! memory flags
     end type STR_SHROUD_capsule_data
-    ! end helper capsule_data_helper
+    ! end helper capsule_data
 
     ! helper capsule_helper
     type :: STR_SHROUD_capsule
@@ -141,7 +142,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const string getConstStringPointer +deref(pointer)
-    ! Statement: f_function_string_cdesc_pointer
+    ! Statement: f_function_string_cdesc_pointer_caller
     interface
         subroutine c_get_const_string_pointer_bufferify(SHT_rv_capsule, &
                 SHT_rv_cdesc) &
@@ -155,7 +156,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const string getConstStringRaw +deref(raw)
-    ! Statement: f_function_string_raw
+    ! Statement: f_function_string_raw_caller
     interface
         function c_get_const_string_raw_bufferify(SHT_rv_capsule) &
                 result(SHT_rv) &
@@ -1014,7 +1015,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const string getConstStringPointer +deref(pointer)
-    ! Statement: f_function_string_cdesc_pointer
+    ! Statement: f_function_string_cdesc_pointer_caller
     !>
     !! Return an POINTER CHARACTER from std::string.
     !! The language=C wrapper will return a const char *
@@ -1032,7 +1033,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const string getConstStringRaw +deref(raw)
-    ! Statement: f_function_string_raw
+    ! Statement: f_function_string_raw_caller
     !>
     !! Return an type(C_PTR) from std::string.
     !! The language=C wrapper will return a const char *

@@ -126,7 +126,7 @@
                     "cxx_class": "Class1",
                     "cxx_type": "Class1",
                     "f_capsule_data_type": "WRA_SHROUD_capsule_data",
-                    "f_helper_capsule_data_helper": "WRA_SHROUD_capsule_data",
+                    "f_helper_capsule_data": "WRA_SHROUD_capsule_data",
                     "file_scope": "Class1"
                 }
             }

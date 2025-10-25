@@ -57,9 +57,9 @@ CLA_Class1 * CLA_getClassReference(CLA_Class1 *SHC_rv);
 
 void CLA_getClassReference_bufferify(CLA_Class1 *SHC_rv);
 
-CLA_Class1 * CLA_getClassCopy(int flag, CLA_Class1 *SHC_rv);
+CLA_Class1 * CLA_getClass1Copy(int flag, CLA_Class1 *SHC_rv);
 
-void CLA_getClassCopy_bufferify(int flag, CLA_Class1 *SHC_rv);
+void CLA_getClass1Copy_bufferify(int flag, CLA_Class1 *SHC_rv);
 
 void CLA_set_global_flag(int arg);
 

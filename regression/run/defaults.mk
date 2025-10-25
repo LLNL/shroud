@@ -29,7 +29,7 @@ ifeq ($(compiler),gcc)
 #     ((PyObject*)(op))->ob_refcnt++)
 
 CC = gcc
-#ASAN = -fsanitize=address
+ASAN = -fsanitize=address
 # -Wextra
 # -O3 generates additional warnings, but makes it harder to debug.
 #CXXWARNINGS = -O3
@@ -72,6 +72,7 @@ ifeq ($(compiler),oneapi)
 CC = icx
 LOCAL_CFLAGS = -g -O0 -std=c99
 CLIBS = -lstdc++
+#CLIBS += -Wl,--verbose
 CXX = icpx
 LOCAL_CXXFLAGS = -g -O0 -std=c++11
 #LOCAL_CXXFLAGS += 
@@ -107,13 +108,13 @@ endif
 
 ifeq ($(compiler),ibm)
 # rzansel
-TCE = /usr/tce/packages/xl/xl-2019.08.20
-TCE = /usr/tce/packages/xl/xl-2020.11.12
-TCE = /usr/tce/packages/xl/xl-2021.03.11
-TCE = /usr/tce/packages/xl/xl-2021.12.22
-TCE = /usr/tce/packages/xl/xl-2022.08.19
-TCE = /usr/tce/packages/xl/xl-2023.03.13
-CFI_INCLUDE = -I$(TCE)/xlf/16.1.1/include
+#TCE = /usr/tce/packages/xl/xl-2019.08.20
+#TCE = /usr/tce/packages/xl/xl-2020.11.12
+#TCE = /usr/tce/packages/xl/xl-2021.03.11
+#TCE = /usr/tce/packages/xl/xl-2021.12.22
+#TCE = /usr/tce/packages/xl/xl-2022.08.19
+#TCE = /usr/tce/packages/xl/xl-2023.03.13
+#CFI_INCLUDE = -I$(TCE)/xlf/16.1.1/include
 CC = xlc
 LOCAL_CFLAGS = -g
 LOCAL_CFLAGS += $(CFI_INCLUDE)
@@ -128,14 +129,15 @@ LOCAL_FFLAGS += -qlanglvl=ts
 #LOCAL_FFLAGS += -qlanglvl=2003std
 LOCAL_FFLAGS += -qxlf2003=polymorphic
 LOCAL_FFLAGS += -qcheck=all
+LOCAL_FFLAGS += -qflag=w:w -qsource
 # The #line directive is not permitted by the Fortran TS29113 standard.
 # -P  Inhibit generation of linemarkers 
 LOCAL_FFLAGS += -qpreprocess -WF,-P
 # keep preprocessor output
 #LOCAL_FFLAGS += -d
 # -qsuffix=cpp=f
-CLIBS = -lstdc++ -L$(TCE)/alllibs -libmc++ -lstdc++
-FLIBS = -lstdc++ -L$(TCE)/alllibs -libmc++ -lstdc++
+CLIBS = -lstdc++ -Lalllibs -libmc++ -lstdc++
+FLIBS = -lstdc++ -Lalllibs -libmc++ -lstdc++
 SHARED = -fPIC
 LD_SHARED = -shared
 endif
@@ -166,7 +168,15 @@ CXX = CC
 LOCAL_CXXFLAGS = -g -std=c++11
 #LOCAL_CXXFLAGS += 
 FC = ftn
+# -e F preprocessor
 LOCAL_FFLAGS = -g -e F -f free
+# ftn-1077 ftn: This compilation contains OpenMP directives.
+#   -h omp is not active so the directives are ignored.
+LOCAL_FFLAGS += -M 1077
+# Enables support for automatic memory allocation for allocatable
+# variables and arrays that are on the left handside of intrinsic
+# assignment statements.
+#LOCAL_FFLAGS += -ew
 # test-fortran-pointers-cfi
 # forrtl: severe (194): Run-Time Check Failure.
 # The variable 'test_out_ptrs$ISCALAR$_276' is being used in 'main.f(177,10)' without being defined
@@ -183,6 +193,11 @@ LOCAL_CFLAGS += $(SHARED)
 LOCAL_CXXFLAGS += $(SHARED)
 LOCAL_FFLAGS += $(SHARED)
 LOCAL_LDFLAGS += $(LD_SHARED)
+endif
+
+# Only use ASAN if requested
+ifndef use_asan
+ASAN :=
 endif
 
 # Prefix required local flags to user flags from the command line.

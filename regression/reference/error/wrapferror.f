@@ -67,10 +67,11 @@ module error_mod
         integer(C_LONG) :: shape(7) = 0
     end type ERR_SHROUD_array
 
-    ! helper capsule_data_helper
+    ! helper capsule_data
     type, bind(C) :: ERR_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: cmemflags = 0   ! memory flags
     end type ERR_SHROUD_capsule_data
 
     type, extends(===>F_derived_member_base<===) :: cstruct_as_subclass
@@ -96,6 +97,10 @@ module error_mod
 
     interface operator (.ne.)
         module procedure cstruct_as_subclass_ne
+    end interface
+
+    interface assignment (=)
+        module procedure cstruct_as_subclass_assign_Cstruct_as_subclass
     end interface
 
     interface
@@ -509,6 +514,23 @@ contains
         call ERR_SHROUD_capsule_dtor(SHT_rv_capsule)
         ! splicer end function.get_const_string_ptr_owns_alloc_pattern
     end function get_const_string_ptr_owns_alloc_pattern
+
+    ! Statement: f_operator_assignment_shadow
+    ! Cstruct_as_subclass = Cstruct_as_subclass
+    subroutine cstruct_as_subclass_assign_Cstruct_as_subclass(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(cstruct_as_subclass), intent(INOUT) :: lhs
+        type(cstruct_as_subclass), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="ERR_Cstruct_as_subclass_assign_Cstruct_as_subclass")
+                import :: ERR_SHROUD_capsule_data
+                type(ERR_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(ERR_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine cstruct_as_subclass_assign_Cstruct_as_subclass
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

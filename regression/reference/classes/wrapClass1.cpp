@@ -84,6 +84,7 @@ CLA_Class1 * CLA_Class1_ctor_default(CLA_Class1 *SHC_rv)
     classes::Class1 *SHCXX_rv = new classes::Class1();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 1;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     return SHC_rv;
     // splicer end class.Class1.method.ctor_default
 }
@@ -91,7 +92,7 @@ CLA_Class1 * CLA_Class1_ctor_default(CLA_Class1 *SHC_rv)
 
 // ----------------------------------------
 // Function:  Class1
-// Statement: f_ctor_shadow_capsule
+// Statement: f_ctor_shadow_capsule_caller
 // start CLA_Class1_ctor_default_bufferify
 void CLA_Class1_ctor_default_bufferify(CLA_Class1 *SHC_rv)
 {
@@ -99,6 +100,7 @@ void CLA_Class1_ctor_default_bufferify(CLA_Class1 *SHC_rv)
     classes::Class1 *SHCXX_rv = new classes::Class1();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 1;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     // splicer end class.Class1.method.ctor_default_bufferify
 }
 // end CLA_Class1_ctor_default_bufferify
@@ -116,6 +118,7 @@ CLA_Class1 * CLA_Class1_ctor_flag(int flag, CLA_Class1 *SHC_rv)
     classes::Class1 *SHCXX_rv = new classes::Class1(flag);
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 1;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     return SHC_rv;
     // splicer end class.Class1.method.ctor_flag
 }
@@ -123,7 +126,7 @@ CLA_Class1 * CLA_Class1_ctor_flag(int flag, CLA_Class1 *SHC_rv)
 
 // ----------------------------------------
 // Function:  Class1
-// Statement: f_ctor_shadow_capsule
+// Statement: f_ctor_shadow_capsule_caller
 // ----------------------------------------
 // Argument:  int flag
 // Statement: f_in_native
@@ -134,6 +137,7 @@ void CLA_Class1_ctor_flag_bufferify(int flag, CLA_Class1 *SHC_rv)
     classes::Class1 *SHCXX_rv = new classes::Class1(flag);
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 1;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     // splicer end class.Class1.method.ctor_flag_bufferify
 }
 // end CLA_Class1_ctor_flag_bufferify
@@ -147,8 +151,12 @@ void CLA_Class1_delete(CLA_Class1 * self)
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
     // splicer begin class.Class1.method.delete
-    delete SH_this;
+    if (self->cmemflags & SWIG_MEM_OWN) {
+        delete SH_this;
+    }
     self->addr = nullptr;
+    self->idtor = 0;
+    self->cmemflags = 0;
     // splicer end class.Class1.method.delete
 }
 // end CLA_Class1_delete
@@ -239,6 +247,7 @@ CLA_Class1 * CLA_Class1_returnThisBuffer(CLA_Class1 * self, char *name,
         SHC_name_cxx, flag);
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     return SHC_rv;
     // splicer end class.Class1.method.returnThisBuffer
 }
@@ -250,7 +259,7 @@ CLA_Class1 * CLA_Class1_returnThisBuffer(CLA_Class1 * self, char *name,
  */
 // ----------------------------------------
 // Function:  Class1 *returnThisBuffer
-// Statement: f_function_shadow*_capsule
+// Statement: f_function_shadow*_capsule_library
 // ----------------------------------------
 // Argument:  std::string &name +intent(in)
 // Statement: f_in_string&_buf
@@ -270,6 +279,7 @@ void CLA_Class1_returnThisBuffer_bufferify(CLA_Class1 * self,
         SHC_name_cxx, flag);
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     // splicer end class.Class1.method.returnThisBuffer_bufferify
 }
 // end CLA_Class1_returnThisBuffer_bufferify
@@ -291,6 +301,7 @@ CLA_Class1 * CLA_Class1_getclass3(const CLA_Class1 * self,
     classes::Class1 *SHC_rv_cxx = SH_this->getclass3();
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     return SHC_rv;
     // splicer end class.Class1.method.getclass3
 }
@@ -302,7 +313,7 @@ CLA_Class1 * CLA_Class1_getclass3(const CLA_Class1 * self,
  */
 // ----------------------------------------
 // Function:  Class1 *getclass3
-// Statement: f_function_shadow*_capsule
+// Statement: f_function_shadow*_capsule_library
 // start CLA_Class1_getclass3_bufferify
 void CLA_Class1_getclass3_bufferify(const CLA_Class1 * self,
     CLA_Class1 *SHC_rv)
@@ -313,6 +324,7 @@ void CLA_Class1_getclass3_bufferify(const CLA_Class1 * self,
     classes::Class1 *SHC_rv_cxx = SH_this->getclass3();
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     // splicer end class.Class1.method.getclass3_bufferify
 }
 // end CLA_Class1_getclass3_bufferify

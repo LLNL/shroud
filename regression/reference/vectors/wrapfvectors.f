@@ -69,13 +69,14 @@ module vectors_mod
     end type VEC_SHROUD_array
     ! end helper array_context
 
-    ! start helper capsule_data_helper
-    ! helper capsule_data_helper
+    ! start helper capsule_data
+    ! helper capsule_data
     type, bind(C) :: VEC_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: cmemflags = 0   ! memory flags
     end type VEC_SHROUD_capsule_data
-    ! end helper capsule_data_helper
+    ! end helper capsule_data
 
     ! ----------------------------------------
     ! Function:  int vector_sum

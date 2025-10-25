@@ -69,13 +69,14 @@ module classes_mod
     end type CLA_SHROUD_array
     ! end helper array_context
 
-    ! start helper capsule_data_helper
-    ! helper capsule_data_helper
+    ! start helper capsule_data
+    ! helper capsule_data
     type, bind(C) :: CLA_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: cmemflags = 0   ! memory flags
     end type CLA_SHROUD_capsule_data
-    ! end helper capsule_data_helper
+    ! end helper capsule_data
 
     !  enum classes::Class1::DIRECTION
     integer, parameter :: class1_direction = C_INT
@@ -88,7 +89,8 @@ module classes_mod
 
     ! start derived-type class1
     type class1
-        type(CLA_SHROUD_capsule_data) :: cxxmem
+        type(CLA_SHROUD_capsule_data) :: cxxmem = &
+            CLA_SHROUD_capsule_data()
         ! splicer begin class.Class1.component_part
         ! splicer end class.Class1.component_part
     contains
@@ -118,7 +120,8 @@ module classes_mod
     ! end derived-type class1
 
     type class2
-        type(CLA_SHROUD_capsule_data) :: cxxmem
+        type(CLA_SHROUD_capsule_data) :: cxxmem = &
+            CLA_SHROUD_capsule_data()
         ! splicer begin class.Class2.component_part
         ! splicer end class.Class2.component_part
     contains
@@ -132,7 +135,8 @@ module classes_mod
 
     ! start derived-type singleton
     type singleton
-        type(CLA_SHROUD_capsule_data) :: cxxmem
+        type(CLA_SHROUD_capsule_data) :: cxxmem = &
+            CLA_SHROUD_capsule_data()
         ! splicer begin class.Singleton.component_part
         ! splicer end class.Singleton.component_part
     contains
@@ -143,7 +147,8 @@ module classes_mod
     ! end derived-type singleton
 
     type shape
-        type(CLA_SHROUD_capsule_data) :: cxxmem
+        type(CLA_SHROUD_capsule_data) :: cxxmem = &
+            CLA_SHROUD_capsule_data()
         ! splicer begin class.Shape.component_part
         ! splicer end class.Shape.component_part
     contains
@@ -167,7 +172,8 @@ module classes_mod
 
     ! start derived-type data
     type data
-        type(CLA_SHROUD_capsule_data) :: cxxmem
+        type(CLA_SHROUD_capsule_data) :: cxxmem = &
+            CLA_SHROUD_capsule_data()
         ! splicer begin class.Data.component_part
         ! splicer end class.Data.component_part
     contains
@@ -201,6 +207,15 @@ module classes_mod
         module procedure data_ne
     end interface
 
+    interface assignment (=)
+        module procedure class1_assign_Class1
+        module procedure class2_assign_Class2
+        module procedure singleton_assign_Singleton
+        module procedure shape_assign_Shape
+        module procedure circle_assign_Circle
+        module procedure data_assign_Data
+    end interface
+
     ! ----------------------------------------
     ! Function:  Class1
     ! Statement: c_ctor_shadow_capptr
@@ -220,7 +235,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     ! start c_class1_ctor_default_bufferify
     interface
         subroutine c_class1_ctor_default_bufferify(SHT_rv) &
@@ -255,7 +270,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     ! ----------------------------------------
     ! Argument:  int flag
     ! Statement: f_in_native
@@ -366,7 +381,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1 *returnThisBuffer
-    ! Statement: f_function_shadow*_capsule
+    ! Statement: f_function_shadow*_capsule_library
     ! ----------------------------------------
     ! Argument:  std::string &name +intent(in)
     ! Statement: f_in_string&_buf
@@ -410,7 +425,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1 *getclass3
-    ! Statement: f_function_shadow*_capsule
+    ! Statement: f_function_shadow*_capsule_library
     ! start c_class1_getclass3_bufferify
     interface
         subroutine c_class1_getclass3_bufferify(self, SHT_rv) &
@@ -713,7 +728,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  static Singleton &getReference
-    ! Statement: f_function_shadow&_capsule
+    ! Statement: f_function_shadow&_capsule_library
     ! start c_singleton_get_reference_bufferify
     interface
         subroutine c_singleton_get_reference_bufferify(SHT_rv) &
@@ -742,7 +757,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Shape
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     interface
         subroutine c_shape_ctor_bufferify(SHT_rv) &
                 bind(C, name="CLA_Shape_ctor_bufferify")
@@ -796,7 +811,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Circle
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     interface
         subroutine c_circle_ctor_bufferify(SHT_rv) &
                 bind(C, name="CLA_Circle_ctor_bufferify")
@@ -870,7 +885,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Data
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     ! start c_data_ctor_bufferify
     interface
         subroutine c_data_ctor_bufferify(SHT_rv) &
@@ -1054,7 +1069,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  const Class1 *getclass2
-    ! Statement: f_function_shadow*_capsule
+    ! Statement: f_function_shadow*_capsule_library
     interface
         subroutine c_getclass2_bufferify(SHT_rv) &
                 bind(C, name="CLA_getclass2_bufferify")
@@ -1081,7 +1096,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1 *getclass3
-    ! Statement: f_function_shadow*_capsule
+    ! Statement: f_function_shadow*_capsule_library
     interface
         subroutine c_getclass3_bufferify(SHT_rv) &
                 bind(C, name="CLA_getclass3_bufferify")
@@ -1093,7 +1108,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  const Class1 *getclass2_void
-    ! Statement: f_function_shadow*_capsule
+    ! Statement: f_function_shadow*_capsule_library
     interface
         subroutine c_getclass2_void(SHT_rv) &
                 bind(C, name="CLA_getclass2_void")
@@ -1105,7 +1120,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1 *getclass3_void
-    ! Statement: f_function_shadow*_capsule
+    ! Statement: f_function_shadow*_capsule_library
     interface
         subroutine c_getclass3_void(SHT_rv) &
                 bind(C, name="CLA_getclass3_void")
@@ -1132,7 +1147,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  const Class1 &getConstClassReference
-    ! Statement: f_function_shadow&_capsule
+    ! Statement: f_function_shadow&_capsule_library
     interface
         subroutine c_get_const_class_reference_bufferify(SHT_rv) &
                 bind(C, name="CLA_getConstClassReference_bufferify")
@@ -1159,7 +1174,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1 &getClassReference
-    ! Statement: f_function_shadow&_capsule
+    ! Statement: f_function_shadow&_capsule_library
     interface
         subroutine c_get_class_reference_bufferify(SHT_rv) &
                 bind(C, name="CLA_getClassReference_bufferify")
@@ -1170,39 +1185,39 @@ module classes_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  Class1 getClassCopy
+    ! Function:  Class1 getClass1Copy
     ! Statement: c_function_shadow_capptr
     ! ----------------------------------------
     ! Argument:  int flag
     ! Statement: c_in_native
     interface
-        function c_get_class_copy(flag, SHT_rv) &
+        function c_get_class1_copy(flag, SHT_rv) &
                 result(SHT_rv_ptr) &
-                bind(C, name="CLA_getClassCopy")
+                bind(C, name="CLA_getClass1Copy")
             use iso_c_binding, only : C_INT, C_PTR
             import :: CLA_SHROUD_capsule_data
             implicit none
             integer(C_INT), value, intent(IN) :: flag
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) :: SHT_rv_ptr
-        end function c_get_class_copy
+        end function c_get_class1_copy
     end interface
 
     ! ----------------------------------------
-    ! Function:  Class1 getClassCopy
-    ! Statement: f_function_shadow_capsule
+    ! Function:  Class1 getClass1Copy
+    ! Statement: f_function_shadow_capsule_caller
     ! ----------------------------------------
     ! Argument:  int flag
     ! Statement: f_in_native
     interface
-        subroutine c_get_class_copy_bufferify(flag, SHT_rv) &
-                bind(C, name="CLA_getClassCopy_bufferify")
+        subroutine c_get_class1_copy_bufferify(flag, SHT_rv) &
+                bind(C, name="CLA_getClass1Copy_bufferify")
             use iso_c_binding, only : C_INT
             import :: CLA_SHROUD_capsule_data
             implicit none
             integer(C_INT), value, intent(IN) :: flag
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-        end subroutine c_get_class_copy_bufferify
+        end subroutine c_get_class1_copy_bufferify
     end interface
 
     ! ----------------------------------------
@@ -1311,7 +1326,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     ! start class1_ctor_default
     function class1_ctor_default() &
             result(SHT_rv)
@@ -1324,7 +1339,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     ! ----------------------------------------
     ! Argument:  int flag
     ! Statement: f_in_native
@@ -1411,7 +1426,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1 *returnThisBuffer
-    ! Statement: f_function_shadow*_capsule
+    ! Statement: f_function_shadow*_capsule_library
     ! ----------------------------------------
     ! Argument:  std::string &name +intent(in)
     ! Statement: f_in_string&_buf
@@ -1443,7 +1458,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1 *getclass3
-    ! Statement: f_function_shadow*_capsule
+    ! Statement: f_function_shadow*_capsule_library
     !>
     !! \brief Test const method
     !!
@@ -1738,7 +1753,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  static Singleton &getReference
-    ! Statement: f_function_shadow&_capsule
+    ! Statement: f_function_shadow&_capsule_library
     ! start singleton_get_reference
     function singleton_get_reference() &
             result(SHT_rv)
@@ -1754,7 +1769,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Shape
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     function shape_ctor() &
             result(SHT_rv)
         type(shape) :: SHT_rv
@@ -1814,7 +1829,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Circle
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     function circle_ctor() &
             result(SHT_rv)
         type(circle) :: SHT_rv
@@ -1867,7 +1882,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Data
-    ! Statement: f_ctor_shadow_capsule
+    ! Statement: f_ctor_shadow_capsule_caller
     ! start data_ctor
     function data_ctor() &
             result(SHT_rv)
@@ -2018,7 +2033,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const Class1 *getclass2
-    ! Statement: f_function_shadow*_capsule
+    ! Statement: f_function_shadow*_capsule_library
     !>
     !! \brief Return const class pointer
     !!
@@ -2033,7 +2048,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1 *getclass3
-    ! Statement: f_function_shadow*_capsule
+    ! Statement: f_function_shadow*_capsule_library
     !>
     !! \brief Return class pointer
     !!
@@ -2048,7 +2063,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const Class1 *getclass2_void
-    ! Statement: f_function_shadow*_capsule
+    ! Statement: f_function_shadow*_capsule_library
     !>
     !! \brief C wrapper will return void
     !!
@@ -2063,7 +2078,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1 *getclass3_void
-    ! Statement: f_function_shadow*_capsule
+    ! Statement: f_function_shadow*_capsule_library
     !>
     !! \brief C wrapper will return void
     !!
@@ -2078,7 +2093,11 @@ contains
 
     ! ----------------------------------------
     ! Function:  const Class1 &getConstClassReference
-    ! Statement: f_function_shadow&_capsule
+    ! Statement: f_function_shadow&_capsule_library
+    !>
+    !! \brief Return a pointer to a library owned structure.
+    !!
+    !<
     function get_const_class_reference() &
             result(SHT_rv)
         type(class1) :: SHT_rv
@@ -2089,7 +2108,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1 &getClassReference
-    ! Statement: f_function_shadow&_capsule
+    ! Statement: f_function_shadow&_capsule_library
     function get_class_reference() &
             result(SHT_rv)
         type(class1) :: SHT_rv
@@ -2099,24 +2118,26 @@ contains
     end function get_class_reference
 
     ! ----------------------------------------
-    ! Function:  Class1 getClassCopy
-    ! Statement: f_function_shadow_capsule
+    ! Function:  Class1 getClass1Copy
+    ! Statement: f_function_shadow_capsule_caller
     ! ----------------------------------------
     ! Argument:  int flag
     ! Statement: f_in_native
     !>
     !! \brief Return Class1 instance by value, uses copy constructor
     !!
+    !! Return by value causes Shroud to create memory which
+    !! must be released by the caller.
     !<
-    function get_class_copy(flag) &
+    function get_class1_copy(flag) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: flag
         type(class1) :: SHT_rv
-        ! splicer begin function.get_class_copy
-        call c_get_class_copy_bufferify(flag, SHT_rv%cxxmem)
-        ! splicer end function.get_class_copy
-    end function get_class_copy
+        ! splicer begin function.get_class1_copy
+        call c_get_class1_copy_bufferify(flag, SHT_rv%cxxmem)
+        ! splicer end function.get_class1_copy
+    end function get_class1_copy
 
 #if 0
     ! Only the interface is needed
@@ -2163,6 +2184,114 @@ contains
         call c_last_function_called_bufferify(SHT_rv, SHT_rv_len)
         ! splicer end function.last_function_called
     end function last_function_called
+
+    ! Statement: f_operator_assignment_shadow
+    ! start class1_assign_Class1
+    ! classes::Class1 = classes::Class1
+    subroutine class1_assign_Class1(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(class1), intent(INOUT) :: lhs
+        type(class1), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="CLA_Class1_assign_Class1")
+                import :: CLA_SHROUD_capsule_data
+                type(CLA_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(CLA_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine class1_assign_Class1
+    ! end class1_assign_Class1
+
+    ! Statement: f_operator_assignment_shadow
+    ! classes::Class2 = classes::Class2
+    subroutine class2_assign_Class2(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(class2), intent(INOUT) :: lhs
+        type(class2), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="CLA_Class2_assign_Class2")
+                import :: CLA_SHROUD_capsule_data
+                type(CLA_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(CLA_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine class2_assign_Class2
+
+    ! Statement: f_operator_assignment_shadow
+    ! start singleton_assign_Singleton
+    ! classes::Singleton = classes::Singleton
+    subroutine singleton_assign_Singleton(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(singleton), intent(INOUT) :: lhs
+        type(singleton), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="CLA_Singleton_assign_Singleton")
+                import :: CLA_SHROUD_capsule_data
+                type(CLA_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(CLA_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine singleton_assign_Singleton
+    ! end singleton_assign_Singleton
+
+    ! Statement: f_operator_assignment_shadow
+    ! classes::Shape = classes::Shape
+    subroutine shape_assign_Shape(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(shape), intent(INOUT) :: lhs
+        type(shape), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="CLA_Shape_assign_Shape")
+                import :: CLA_SHROUD_capsule_data
+                type(CLA_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(CLA_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine shape_assign_Shape
+
+    ! Statement: f_operator_assignment_shadow
+    ! classes::Circle = classes::Circle
+    subroutine circle_assign_Circle(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(circle), intent(INOUT) :: lhs
+        type(circle), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="CLA_Circle_assign_Circle")
+                import :: CLA_SHROUD_capsule_data
+                type(CLA_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(CLA_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine circle_assign_Circle
+
+    ! Statement: f_operator_assignment_shadow
+    ! start data_assign_Data
+    ! classes::Data = classes::Data
+    subroutine data_assign_Data(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(data), intent(INOUT) :: lhs
+        type(data), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="CLA_Data_assign_Data")
+                import :: CLA_SHROUD_capsule_data
+                type(CLA_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(CLA_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine data_assign_Data
+    ! end data_assign_Data
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

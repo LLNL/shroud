@@ -8,6 +8,8 @@
 // cxx_header
 #include "shared.hpp"
 // shroud
+#include <memory>
+#include <cstddef>
 #include "wrapObject_weak.h"
 
 // splicer begin class.Object.CXX_definitions
@@ -19,27 +21,49 @@ extern "C" {
 // splicer end class.Object.C_definitions
 
 // ----------------------------------------
-// Function:  void assign_weak +custom(weakptr)+operator(assignment)
-// Statement: c_subroutine_assignment_weakptr
+// Function:  Object
+// Statement: c_ctor_shadow_capptr_weak
+SHA_Object_weak * SHA_Object_weak_ctor(SHA_Object_weak *SHC_rv)
+{
+    // splicer begin class.Object.method.ctor
+    std::shared_ptr<Object> *SHC_rv_shared =
+        new std::shared_ptr<Object>;
+    *SHC_rv_shared =  std::make_shared<Object>();
+    SHC_rv->addr = static_cast<void *>(SHC_rv_shared);
+    SHC_rv->idtor = 7;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
+    return SHC_rv;
+    // splicer end class.Object.method.ctor
+}
+
 // ----------------------------------------
-// Argument:  std::shared_ptr<Object> *from +intent(in)
-// Statement: c_in_smartptr<shadow>*
-void SHA_Object_weak_assign_weak(SHA_Object_weak * self,
-    SHA_Object_shared *from)
+// Function:  Object
+// Statement: f_ctor_shadow_capsule_weak
+void SHA_Object_weak_ctor_bufferify(SHA_Object_weak *SHC_rv)
+{
+    // splicer begin class.Object.method.ctor_bufferify
+    std::weak_ptr<Object> *SHCXX_rv = new std::weak_ptr<Object>;
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 7;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
+    // splicer end class.Object.method.ctor_bufferify
+}
+
+// ----------------------------------------
+// Function:  ~Object
+// Statement: c_dtor
+void SHA_Object_weak_dtor(SHA_Object_weak * self)
 {
     std::weak_ptr<Object> *SH_this =
         static_cast<std::weak_ptr<Object> *>(self->addr);
-    // splicer begin class.Object.method.assign_weak
-    std::shared_ptr<Object> *SHC_from_cxx =
-        static_cast<std::shared_ptr<Object> *>(from->addr);
-    if (SH_this == nullptr) {
-        SH_this = new std::weak_ptr<Object>(*SHC_from_cxx);
-        self->addr = SH_this;
-        self->idtor = 4;
-    } else {
-        *SH_this = *SHC_from_cxx;
+    // splicer begin class.Object.method.dtor
+    if (self->cmemflags & SWIG_MEM_OWN) {
+        delete SH_this;
     }
-    // splicer end class.Object.method.assign_weak
+    self->addr = nullptr;
+    self->idtor = 0;
+    self->cmemflags = 0;
+    // splicer end class.Object.method.dtor
 }
 
 // ----------------------------------------

@@ -8,8 +8,8 @@
 // cxx_header
 #include "clibrary.h"
 // shroud
-#include <stddef.h>
 #include <stdlib.h>
+#include <stddef.h>
 #include <string.h>
 #include "wrapClibrary.h"
 
@@ -102,9 +102,13 @@ double CLI_PassByValueMacro_bufferify(int arg2)
     // splicer end function.PassByValueMacro_bufferify
 }
 
+/**
+ * The function allocates memory with malloc which is copied into
+ * the users buffer and must then be freed.
+ */
 // ----------------------------------------
-// Function:  char *Function4a +len(30)
-// Statement: f_function_char*_buf_copy
+// Function:  char *Function4a +len(30)+owner(caller)
+// Statement: f_function_char*_buf_copy_caller
 // ----------------------------------------
 // Argument:  const char *arg1
 // Statement: f_in_char*
@@ -117,6 +121,9 @@ void CLI_Function4a_bufferify(const char *arg1, const char *arg2,
     // splicer begin function.Function4a_bufferify
     char *SHC_rv_cxx = Function4a(arg1, arg2);
     ShroudCharCopy(SHC_rv, SHT_rv_len, SHC_rv_cxx, -1);
+    if (SHC_rv_cxx != NULL) {
+        free(SHC_rv_cxx);
+    }
     // splicer end function.Function4a_bufferify
 }
 

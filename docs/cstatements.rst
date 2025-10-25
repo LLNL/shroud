@@ -151,6 +151,12 @@ The value of *None* will pass the C argument
 to the C++ function.
 The argument will be converted from C to C++ where required.
 
+c_body
+^^^^^^
+
+The entire declaration of the function.
+Only used with assignment overload.
+
 c_pre_call
 ^^^^^^^^^^
 

@@ -1873,16 +1873,17 @@
                                 "i_var": "SHT_rv",
                                 "i_var_cdesc": "SHT_rv_cdesc",
                                 "idtor": "0",
-                                "stmt_name": "f_function_char*_cdesc_pointer",
+                                "stmt_name": "f_function_char*_cdesc_pointer_library",
                                 "typemap_name": "char"
                             },
                             "meta": {
                                 "abstract": "char*",
                                 "api": "cdesc",
                                 "deref": "pointer",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_char*_cdesc_pointer"
+                            "stmt": "f_function_char*_cdesc_pointer_library"
                         }
                     },
                     "share": {
@@ -2005,15 +2006,16 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
-                                "stmt_name": "f_function_char*_raw",
+                                "stmt_name": "f_function_char*_raw_library",
                                 "typemap_name": "char"
                             },
                             "meta": {
                                 "abstract": "char*",
                                 "deref": "raw",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_char*_raw"
+                            "stmt": "f_function_char*_raw_library"
                         }
                     },
                     "share": {
@@ -2449,7 +2451,7 @@
                                 "i_var": "output",
                                 "i_var_cdesc": "SHT_rv_cdesc",
                                 "idtor": "0",
-                                "stmt_name": "f_function_char*_cdesc_funcarg_pointer",
+                                "stmt_name": "f_function_char*_cdesc_funcarg_pointer_library",
                                 "typemap_name": "char"
                             },
                             "meta": {
@@ -2457,9 +2459,10 @@
                                 "api": "cdesc",
                                 "deref": "pointer",
                                 "funcarg": "output",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_char*_cdesc_funcarg_pointer"
+                            "stmt": "f_function_char*_cdesc_funcarg_pointer_library"
                         }
                     },
                     "share": {
@@ -2559,16 +2562,17 @@
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "output",
                                 "idtor": "0",
-                                "stmt_name": "f_function_char*_funcarg_raw",
+                                "stmt_name": "f_function_char*_funcarg_raw_library",
                                 "typemap_name": "char"
                             },
                             "meta": {
                                 "abstract": "char*",
                                 "deref": "raw",
                                 "funcarg": "output",
-                                "intent": "function"
+                                "intent": "function",
+                                "owner": "library"
                             },
-                            "stmt": "f_function_char*_funcarg_raw"
+                            "stmt": "f_function_char*_funcarg_raw_library"
                         }
                     },
                     "share": {
@@ -5717,16 +5721,17 @@
                                 "i_var": "outstr",
                                 "i_var_cdesc": "SHT_outstr_cdesc",
                                 "idtor": "0",
-                                "stmt_name": "f_out_char**_cdesc_pointer",
+                                "stmt_name": "f_out_char**_cdesc_pointer_library",
                                 "typemap_name": "char"
                             },
                             "meta": {
                                 "abstract": "char**",
                                 "api": "cdesc",
                                 "deref": "pointer",
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             },
-                            "stmt": "f_out_char**_cdesc_pointer"
+                            "stmt": "f_out_char**_cdesc_pointer_library"
                         }
                     },
                     "py": {
@@ -6021,16 +6026,17 @@
                                 "i_var": "outstr",
                                 "i_var_cdesc": "SHT_outstr_cdesc",
                                 "idtor": "0",
-                                "stmt_name": "f_out_char**_cdesc_pointer",
+                                "stmt_name": "f_out_char**_cdesc_pointer_library",
                                 "typemap_name": "char"
                             },
                             "meta": {
                                 "abstract": "char**",
                                 "api": "cdesc",
                                 "deref": "pointer",
-                                "intent": "out"
+                                "intent": "out",
+                                "owner": "library"
                             },
-                            "stmt": "f_out_char**_cdesc_pointer"
+                            "stmt": "f_out_char**_cdesc_pointer_library"
                         }
                     },
                     "py": {

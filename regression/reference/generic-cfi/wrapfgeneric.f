@@ -23,13 +23,14 @@ module generic_mod
     integer, parameter :: T_DOUBLE = 4
     ! splicer end module_top
 
-    ! start helper capsule_data_helper
-    ! helper capsule_data_helper
+    ! start helper capsule_data
+    ! helper capsule_data
     type, bind(C) :: GEN_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
+        integer(C_INT) :: cmemflags = 0   ! memory flags
     end type GEN_SHROUD_capsule_data
-    ! end helper capsule_data_helper
+    ! end helper capsule_data
 
     ! helper type_defines
     ! Shroud type defines from helper type_defines
@@ -65,7 +66,8 @@ module generic_mod
         SH_TYPE_OTHER     = 32
 
     type struct_as_class
-        type(GEN_SHROUD_capsule_data) :: cxxmem
+        type(GEN_SHROUD_capsule_data) :: cxxmem = &
+            GEN_SHROUD_capsule_data()
         ! splicer begin class.StructAsClass.component_part
         ! splicer end class.StructAsClass.component_part
     contains
@@ -82,6 +84,10 @@ module generic_mod
 
     interface operator (.ne.)
         module procedure struct_as_class_ne
+    end interface
+
+    interface assignment (=)
+        module procedure struct_as_class_assign_StructAsClass
     end interface
 
     ! ----------------------------------------
@@ -401,7 +407,7 @@ module generic_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  float **addr +deref(pointer)+intent(out)+rank(1)
-    ! Statement: f_out_native**_cfi_pointer
+    ! Statement: f_out_native**_cfi_pointer_library
     interface
         subroutine c_get_pointer_as_pointer_float1d_CFI(addr) &
                 bind(C, name="GEN_GetPointerAsPointer_float1d_CFI")
@@ -419,7 +425,7 @@ module generic_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  float **addr +deref(pointer)+intent(out)+rank(2)
-    ! Statement: f_out_native**_cfi_pointer
+    ! Statement: f_out_native**_cfi_pointer_library
     interface
         subroutine c_get_pointer_as_pointer_float2d_CFI(addr) &
                 bind(C, name="GEN_GetPointerAsPointer_float2d_CFI")
@@ -432,7 +438,7 @@ module generic_mod
 
     ! ----------------------------------------
     ! Function:  StructAsClass *CreateStructAsClass
-    ! Statement: f_function_shadow*_capsule
+    ! Statement: f_function_shadow*_capsule_caller
     interface
         subroutine c_create_struct_as_class_bufferify(SHT_rv) &
                 bind(C, name="GEN_CreateStructAsClass_bufferify")
@@ -968,7 +974,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  float **addr +deref(pointer)+intent(out)+rank(1)
-    ! Statement: f_out_native**_cfi_pointer
+    ! Statement: f_out_native**_cfi_pointer_library
     subroutine get_pointer_as_pointer_float1d(addr)
         use iso_c_binding, only : C_FLOAT
         real(C_FLOAT), intent(OUT), pointer :: addr(:)
@@ -985,7 +991,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  float **addr +deref(pointer)+intent(out)+rank(2)
-    ! Statement: f_out_native**_cfi_pointer
+    ! Statement: f_out_native**_cfi_pointer_library
     subroutine get_pointer_as_pointer_float2d(addr)
         use iso_c_binding, only : C_FLOAT
         real(C_FLOAT), intent(OUT), pointer :: addr(:,:)
@@ -997,7 +1003,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  StructAsClass *CreateStructAsClass
-    ! Statement: f_function_shadow*_capsule
+    ! Statement: f_function_shadow*_capsule_caller
     function create_struct_as_class() &
             result(SHT_rv)
         type(struct_as_class) :: SHT_rv
@@ -1049,6 +1055,23 @@ contains
             inew)
         ! splicer end function.update_struct_as_class_long
     end function update_struct_as_class_long
+
+    ! Statement: f_operator_assignment_shadow
+    ! StructAsClass = StructAsClass
+    subroutine struct_as_class_assign_StructAsClass(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(struct_as_class), intent(INOUT) :: lhs
+        type(struct_as_class), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="GEN_StructAsClass_assign_StructAsClass")
+                import :: GEN_SHROUD_capsule_data
+                type(GEN_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(GEN_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine struct_as_class_assign_StructAsClass
 
     ! splicer begin additional_functions
     ! splicer end additional_functions
