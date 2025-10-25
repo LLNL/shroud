@@ -112,6 +112,10 @@ module arrayclass_mod
         module procedure ArrayWrapper_ne
     end interface
 
+    interface assignment (=)
+        module procedure ArrayWrapper_assign_ArrayWrapper
+    end interface
+
     interface
 
         ! ----------------------------------------
@@ -807,6 +811,23 @@ contains
 
     ! splicer begin class.ArrayWrapper.additional_functions
     ! splicer end class.ArrayWrapper.additional_functions
+
+    ! Statement: f_operator_assignment_shadow
+    ! ArrayWrapper = ArrayWrapper
+    subroutine ArrayWrapper_assign_ArrayWrapper(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(ArrayWrapper), intent(INOUT) :: lhs
+        type(ArrayWrapper), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="ARR_ArrayWrapper_assign_ArrayWrapper")
+                import :: ARR_SHROUD_capsule_data
+                type(ARR_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(ARR_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine ArrayWrapper_assign_ArrayWrapper
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

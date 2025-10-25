@@ -9,20 +9,25 @@
                         "C_name_assign_api": "PRE_User1_assign_User1",
                         "F_name_api": "assign",
                         "F_name_assign_api": "user1_assign_User1",
+                        "alias_code": "// Aliasing another class; clear ownership.\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = 0;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_OWN;",
                         "c_type_lhs": "PRE_User1",
                         "c_type_rhs": "PRE_User1",
+                        "capture_code": "// Capture pointer from RHS, clear 'moving' flag.\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
+                        "copy_alias_code": "// RHS shouldn't be deleted, alias to LHS.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nPRE_SHROUD_memory_destructor(\t(PRE_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
                         "cxx_type_lhs": "User1",
                         "cxx_type_rhs": "User1",
+                        "destroy_code": "// Replace LHS with a null pointer.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nPRE_SHROUD_memory_destructor(\t(PRE_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = nullptr;\nlhs_capsule->idtor = 0;\nlhs_capsule->cmemflags = 0;",
                         "f_capsule_data_type_lhs": "PRE_SHROUD_capsule_data",
                         "f_capsule_data_type_rhs": "PRE_SHROUD_capsule_data",
                         "f_derived_type_lhs": "user1",
                         "f_derived_type_rhs": "user1",
                         "f_interface_import": "PRE_SHROUD_capsule_data",
                         "function_suffix": "_User1",
+                        "move_alias_code": "// Transferred ownership from a variable that's about to be lost.\n// Move-assign and delete the transient data.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nPRE_SHROUD_memory_destructor(\t(PRE_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
                         "typemap_lhs": "User1",
                         "typemap_rhs": "User1"
                     },
-                    "stmt": "f_operator_assignment_shadow_basic"
+                    "stmt": "f_operator_assignment_shadow"
                 },
                 "name": "User1 = User1"
             },
@@ -33,20 +38,25 @@
                         "C_name_assign_api": "PRE_User2_assign_User2",
                         "F_name_api": "assign",
                         "F_name_assign_api": "user2_assign_User2",
+                        "alias_code": "// Aliasing another class; clear ownership.\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = 0;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_OWN;",
                         "c_type_lhs": "PRE_User2",
                         "c_type_rhs": "PRE_User2",
+                        "capture_code": "// Capture pointer from RHS, clear 'moving' flag.\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
+                        "copy_alias_code": "// RHS shouldn't be deleted, alias to LHS.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nPRE_SHROUD_memory_destructor(\t(PRE_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
                         "cxx_type_lhs": "User2",
                         "cxx_type_rhs": "User2",
+                        "destroy_code": "// Replace LHS with a null pointer.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nPRE_SHROUD_memory_destructor(\t(PRE_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = nullptr;\nlhs_capsule->idtor = 0;\nlhs_capsule->cmemflags = 0;",
                         "f_capsule_data_type_lhs": "PRE_SHROUD_capsule_data",
                         "f_capsule_data_type_rhs": "PRE_SHROUD_capsule_data",
                         "f_derived_type_lhs": "user2",
                         "f_derived_type_rhs": "user2",
                         "f_interface_import": "PRE_SHROUD_capsule_data",
                         "function_suffix": "_User2",
+                        "move_alias_code": "// Transferred ownership from a variable that's about to be lost.\n// Move-assign and delete the transient data.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nPRE_SHROUD_memory_destructor(\t(PRE_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
                         "typemap_lhs": "User2",
                         "typemap_rhs": "User2"
                     },
-                    "stmt": "f_operator_assignment_shadow_basic"
+                    "stmt": "f_operator_assignment_shadow"
                 },
                 "name": "User2 = User2"
             }

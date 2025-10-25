@@ -136,6 +136,12 @@ module userlibrary_example_nested_mod
         module procedure ex_class2_ne
     end interface
 
+    interface assignment (=)
+        module procedure ex_class1_assign_ExClass1
+        module procedure ex_class2_assign_ExClass2
+        module procedure ex_class2_ex_class2_nested_assign_ExClass2Nested
+    end interface
+
     abstract interface
 
         ! ----------------------------------------
@@ -2016,6 +2022,57 @@ contains
         ! splicer end namespace.example::nested.function.pass_voidstartstar
     end subroutine pass_voidstartstar
 #endif
+
+    ! Statement: f_operator_assignment_shadow
+    ! example::nested::ExClass1 = example::nested::ExClass1
+    subroutine ex_class1_assign_ExClass1(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(ex_class1), intent(INOUT) :: lhs
+        type(ex_class1), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="AA_example_nested_ExClass1_assign_ExClass1")
+                import :: AA_SHROUD_capsule_data
+                type(AA_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(AA_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine ex_class1_assign_ExClass1
+
+    ! Statement: f_operator_assignment_shadow
+    ! example::nested::ExClass2 = example::nested::ExClass2
+    subroutine ex_class2_assign_ExClass2(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(ex_class2), intent(INOUT) :: lhs
+        type(ex_class2), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="AA_example_nested_ExClass2_assign_ExClass2")
+                import :: AA_SHROUD_capsule_data
+                type(AA_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(AA_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine ex_class2_assign_ExClass2
+
+    ! Statement: f_operator_assignment_shadow
+    ! example::nested::ExClass2::ExClass2Nested = example::nested::ExClass2::ExClass2Nested
+    subroutine ex_class2_ex_class2_nested_assign_ExClass2Nested(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(ex_class2_nested), intent(INOUT) :: lhs
+        type(ex_class2_nested), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="AA_example_nested_ExClass2_ExClass2Nested_assign_ExClass2Nested")
+                import :: AA_SHROUD_capsule_data
+                type(AA_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(AA_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine ex_class2_ex_class2_nested_assign_ExClass2Nested
 
     ! splicer begin namespace.example::nested.additional_functions
     ! splicer end namespace.example::nested.additional_functions

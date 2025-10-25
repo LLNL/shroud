@@ -41,6 +41,10 @@ module library_mod
         module procedure class2_ne
     end interface
 
+    interface assignment (=)
+        module procedure class2_assign_Class2
+    end interface
+
     interface
 
         ! ----------------------------------------
@@ -124,6 +128,23 @@ contains
         logical rv
         rv = c_associated(obj%cxxmem%addr)
     end function class2_associated
+
+    ! Statement: f_operator_assignment_shadow
+    ! Class2 = Class2
+    subroutine class2_assign_Class2(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(class2), intent(INOUT) :: lhs
+        type(class2), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="LIB_Class2_assign_Class2")
+                import :: LIB_SHROUD_capsule_data
+                type(LIB_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(LIB_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine class2_assign_Class2
 
     function class2_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated

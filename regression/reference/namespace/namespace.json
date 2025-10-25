@@ -886,20 +886,25 @@
                                 "C_name_assign_api": "NS_nswork_ClassWork_assign_ClassWork",
                                 "F_name_api": "assign",
                                 "F_name_assign_api": "nswork_class_work_assign_ClassWork",
+                                "alias_code": "// Aliasing another class; clear ownership.\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = 0;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_OWN;",
                                 "c_type_lhs": "NS_nswork_ClassWork",
                                 "c_type_rhs": "NS_nswork_ClassWork",
+                                "capture_code": "// Capture pointer from RHS, clear 'moving' flag.\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
+                                "copy_alias_code": "// RHS shouldn't be deleted, alias to LHS.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nNS_SHROUD_memory_destructor(\t(NS_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
                                 "cxx_type_lhs": "nswork::ClassWork",
                                 "cxx_type_rhs": "nswork::ClassWork",
+                                "destroy_code": "// Replace LHS with a null pointer.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nNS_SHROUD_memory_destructor(\t(NS_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = nullptr;\nlhs_capsule->idtor = 0;\nlhs_capsule->cmemflags = 0;",
                                 "f_capsule_data_type_lhs": "NS_SHROUD_capsule_data",
                                 "f_capsule_data_type_rhs": "NS_SHROUD_capsule_data",
                                 "f_derived_type_lhs": "class_work",
                                 "f_derived_type_rhs": "class_work",
                                 "f_interface_import": "NS_SHROUD_capsule_data",
                                 "function_suffix": "_ClassWork",
+                                "move_alias_code": "// Transferred ownership from a variable that's about to be lost.\n// Move-assign and delete the transient data.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nNS_SHROUD_memory_destructor(\t(NS_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
                                 "typemap_lhs": "nswork::ClassWork",
                                 "typemap_rhs": "nswork::ClassWork"
                             },
-                            "stmt": "f_operator_assignment_shadow_basic"
+                            "stmt": "f_operator_assignment_shadow"
                         },
                         "name": "nswork::ClassWork = nswork::ClassWork"
                     }

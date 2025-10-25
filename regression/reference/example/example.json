@@ -28,20 +28,25 @@
                                         "C_name_assign_api": "AA_example_nested_ExClass1_assign_ExClass1",
                                         "F_name_api": "assign",
                                         "F_name_assign_api": "ex_class1_assign_ExClass1",
+                                        "alias_code": "// Aliasing another class; clear ownership.\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = 0;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_OWN;",
                                         "c_type_lhs": "AA_example_nested_ExClass1",
                                         "c_type_rhs": "AA_example_nested_ExClass1",
+                                        "capture_code": "// Capture pointer from RHS, clear 'moving' flag.\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
+                                        "copy_alias_code": "// RHS shouldn't be deleted, alias to LHS.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nAA_SHROUD_memory_destructor(\t(AA_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
                                         "cxx_type_lhs": "example::nested::ExClass1",
                                         "cxx_type_rhs": "example::nested::ExClass1",
+                                        "destroy_code": "// Replace LHS with a null pointer.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nAA_SHROUD_memory_destructor(\t(AA_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = nullptr;\nlhs_capsule->idtor = 0;\nlhs_capsule->cmemflags = 0;",
                                         "f_capsule_data_type_lhs": "AA_SHROUD_capsule_data",
                                         "f_capsule_data_type_rhs": "AA_SHROUD_capsule_data",
                                         "f_derived_type_lhs": "ex_class1",
                                         "f_derived_type_rhs": "ex_class1",
                                         "f_interface_import": "AA_SHROUD_capsule_data",
                                         "function_suffix": "_ExClass1",
+                                        "move_alias_code": "// Transferred ownership from a variable that's about to be lost.\n// Move-assign and delete the transient data.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nAA_SHROUD_memory_destructor(\t(AA_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
                                         "typemap_lhs": "example::nested::ExClass1",
                                         "typemap_rhs": "example::nested::ExClass1"
                                     },
-                                    "stmt": "f_operator_assignment_shadow_basic"
+                                    "stmt": "f_operator_assignment_shadow"
                                 },
                                 "name": "example::nested::ExClass1 = example::nested::ExClass1"
                             },
@@ -52,20 +57,25 @@
                                         "C_name_assign_api": "AA_example_nested_ExClass2_assign_ExClass2",
                                         "F_name_api": "assign",
                                         "F_name_assign_api": "ex_class2_assign_ExClass2",
+                                        "alias_code": "// Aliasing another class; clear ownership.\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = 0;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_OWN;",
                                         "c_type_lhs": "AA_example_nested_ExClass2",
                                         "c_type_rhs": "AA_example_nested_ExClass2",
+                                        "capture_code": "// Capture pointer from RHS, clear 'moving' flag.\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
+                                        "copy_alias_code": "// RHS shouldn't be deleted, alias to LHS.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nAA_SHROUD_memory_destructor(\t(AA_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
                                         "cxx_type_lhs": "example::nested::ExClass2",
                                         "cxx_type_rhs": "example::nested::ExClass2",
+                                        "destroy_code": "// Replace LHS with a null pointer.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nAA_SHROUD_memory_destructor(\t(AA_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = nullptr;\nlhs_capsule->idtor = 0;\nlhs_capsule->cmemflags = 0;",
                                         "f_capsule_data_type_lhs": "AA_SHROUD_capsule_data",
                                         "f_capsule_data_type_rhs": "AA_SHROUD_capsule_data",
                                         "f_derived_type_lhs": "ex_class2",
                                         "f_derived_type_rhs": "ex_class2",
                                         "f_interface_import": "AA_SHROUD_capsule_data",
                                         "function_suffix": "_ExClass2",
+                                        "move_alias_code": "// Transferred ownership from a variable that's about to be lost.\n// Move-assign and delete the transient data.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nAA_SHROUD_memory_destructor(\t(AA_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
                                         "typemap_lhs": "example::nested::ExClass2",
                                         "typemap_rhs": "example::nested::ExClass2"
                                     },
-                                    "stmt": "f_operator_assignment_shadow_basic"
+                                    "stmt": "f_operator_assignment_shadow"
                                 },
                                 "name": "example::nested::ExClass2 = example::nested::ExClass2"
                             },
@@ -76,20 +86,25 @@
                                         "C_name_assign_api": "AA_example_nested_ExClass2_ExClass2Nested_assign_ExClass2Nested",
                                         "F_name_api": "assign",
                                         "F_name_assign_api": "ex_class2_ex_class2_nested_assign_ExClass2Nested",
+                                        "alias_code": "// Aliasing another class; clear ownership.\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = 0;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_OWN;",
                                         "c_type_lhs": "AA_example_nested_ExClass2_ExClass2Nested",
                                         "c_type_rhs": "AA_example_nested_ExClass2_ExClass2Nested",
+                                        "capture_code": "// Capture pointer from RHS, clear 'moving' flag.\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
+                                        "copy_alias_code": "// RHS shouldn't be deleted, alias to LHS.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nAA_SHROUD_memory_destructor(\t(AA_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
                                         "cxx_type_lhs": "example::nested::ExClass2Nested",
                                         "cxx_type_rhs": "example::nested::ExClass2Nested",
+                                        "destroy_code": "// Replace LHS with a null pointer.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nAA_SHROUD_memory_destructor(\t(AA_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = nullptr;\nlhs_capsule->idtor = 0;\nlhs_capsule->cmemflags = 0;",
                                         "f_capsule_data_type_lhs": "AA_SHROUD_capsule_data",
                                         "f_capsule_data_type_rhs": "AA_SHROUD_capsule_data",
                                         "f_derived_type_lhs": "ex_class2_nested",
                                         "f_derived_type_rhs": "ex_class2_nested",
                                         "f_interface_import": "AA_SHROUD_capsule_data",
                                         "function_suffix": "_ExClass2Nested",
+                                        "move_alias_code": "// Transferred ownership from a variable that's about to be lost.\n// Move-assign and delete the transient data.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nAA_SHROUD_memory_destructor(\t(AA_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
                                         "typemap_lhs": "example::nested::ExClass2::ExClass2Nested",
                                         "typemap_rhs": "example::nested::ExClass2::ExClass2Nested"
                                     },
-                                    "stmt": "f_operator_assignment_shadow_basic"
+                                    "stmt": "f_operator_assignment_shadow"
                                 },
                                 "name": "example::nested::ExClass2::ExClass2Nested = example::nested::ExClass2::ExClass2Nested"
                             }

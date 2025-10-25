@@ -207,6 +207,15 @@ module classes_mod
         module procedure data_ne
     end interface
 
+    interface assignment (=)
+        module procedure class1_assign_Class1
+        module procedure class2_assign_Class2
+        module procedure singleton_assign_Singleton
+        module procedure shape_assign_Shape
+        module procedure circle_assign_Circle
+        module procedure data_assign_Data
+    end interface
+
     ! ----------------------------------------
     ! Function:  Class1
     ! Statement: c_ctor_shadow_capptr
@@ -2175,6 +2184,114 @@ contains
         call c_last_function_called_bufferify(SHT_rv, SHT_rv_len)
         ! splicer end function.last_function_called
     end function last_function_called
+
+    ! Statement: f_operator_assignment_shadow
+    ! start class1_assign_Class1
+    ! classes::Class1 = classes::Class1
+    subroutine class1_assign_Class1(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(class1), intent(INOUT) :: lhs
+        type(class1), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="CLA_Class1_assign_Class1")
+                import :: CLA_SHROUD_capsule_data
+                type(CLA_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(CLA_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine class1_assign_Class1
+    ! end class1_assign_Class1
+
+    ! Statement: f_operator_assignment_shadow
+    ! classes::Class2 = classes::Class2
+    subroutine class2_assign_Class2(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(class2), intent(INOUT) :: lhs
+        type(class2), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="CLA_Class2_assign_Class2")
+                import :: CLA_SHROUD_capsule_data
+                type(CLA_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(CLA_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine class2_assign_Class2
+
+    ! Statement: f_operator_assignment_shadow
+    ! start singleton_assign_Singleton
+    ! classes::Singleton = classes::Singleton
+    subroutine singleton_assign_Singleton(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(singleton), intent(INOUT) :: lhs
+        type(singleton), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="CLA_Singleton_assign_Singleton")
+                import :: CLA_SHROUD_capsule_data
+                type(CLA_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(CLA_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine singleton_assign_Singleton
+    ! end singleton_assign_Singleton
+
+    ! Statement: f_operator_assignment_shadow
+    ! classes::Shape = classes::Shape
+    subroutine shape_assign_Shape(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(shape), intent(INOUT) :: lhs
+        type(shape), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="CLA_Shape_assign_Shape")
+                import :: CLA_SHROUD_capsule_data
+                type(CLA_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(CLA_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine shape_assign_Shape
+
+    ! Statement: f_operator_assignment_shadow
+    ! classes::Circle = classes::Circle
+    subroutine circle_assign_Circle(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(circle), intent(INOUT) :: lhs
+        type(circle), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="CLA_Circle_assign_Circle")
+                import :: CLA_SHROUD_capsule_data
+                type(CLA_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(CLA_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine circle_assign_Circle
+
+    ! Statement: f_operator_assignment_shadow
+    ! start data_assign_Data
+    ! classes::Data = classes::Data
+    subroutine data_assign_Data(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(data), intent(INOUT) :: lhs
+        type(data), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="CLA_Data_assign_Data")
+                import :: CLA_SHROUD_capsule_data
+                type(CLA_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(CLA_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine data_assign_Data
+    ! end data_assign_Data
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

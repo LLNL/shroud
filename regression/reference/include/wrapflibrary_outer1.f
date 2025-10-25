@@ -37,6 +37,10 @@ module library_outer1_mod
         module procedure class0_ne
     end interface
 
+    interface assignment (=)
+        module procedure class0_assign_class0
+    end interface
+
     interface
 
         ! ----------------------------------------
@@ -100,6 +104,23 @@ contains
         call c_outer_func()
     end subroutine outer_func
 #endif
+
+    ! Statement: f_operator_assignment_shadow
+    ! outer1::class0 = outer1::class0
+    subroutine class0_assign_class0(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(class0), intent(INOUT) :: lhs
+        type(class0), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="LIB_outer1_class0_assign_class0")
+                import :: LIB_SHROUD_capsule_data
+                type(LIB_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(LIB_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine class0_assign_class0
 
     function class0_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated

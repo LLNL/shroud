@@ -37,6 +37,10 @@ module library_three_mod
         module procedure class1_ne
     end interface
 
+    interface assignment (=)
+        module procedure class1_assign_Class1
+    end interface
+
     interface
 
         ! ----------------------------------------
@@ -92,6 +96,23 @@ contains
         logical rv
         rv = c_associated(obj%cxxmem%addr)
     end function class1_associated
+
+    ! Statement: f_operator_assignment_shadow
+    ! three::Class1 = three::Class1
+    subroutine class1_assign_Class1(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(class1), intent(INOUT) :: lhs
+        type(class1), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="LIB_three_Class1_assign_Class1")
+                import :: LIB_SHROUD_capsule_data
+                type(LIB_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(LIB_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine class1_assign_Class1
 
     function class1_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated

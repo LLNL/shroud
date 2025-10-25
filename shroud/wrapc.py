@@ -21,7 +21,7 @@ from . import statements
 from . import typemap
 from . import util
 from .statements import get_func_bind, get_arg_bind
-from .util import append_format, wformat, append_format_lst
+from .util import append_format, wformat
 
 lang_map = {"c": "C", "cxx": "C++"}
 

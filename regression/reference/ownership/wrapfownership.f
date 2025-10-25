@@ -106,6 +106,10 @@ module ownership_mod
         module procedure class1_ne
     end interface
 
+    interface assignment (=)
+        module procedure class1_assign_Class1
+    end interface
+
     interface
 
         ! ----------------------------------------
@@ -682,6 +686,23 @@ contains
         call c_get_class_new_bufferify(flag, SHT_rv%cxxmem)
         ! splicer end function.get_class_new
     end function get_class_new
+
+    ! Statement: f_operator_assignment_shadow
+    ! Class1 = Class1
+    subroutine class1_assign_Class1(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(class1), intent(INOUT) :: lhs
+        type(class1), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="OWN_Class1_assign_Class1")
+                import :: OWN_SHROUD_capsule_data
+                type(OWN_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(OWN_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine class1_assign_Class1
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

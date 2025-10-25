@@ -9,20 +9,25 @@
                         "C_name_assign_api": "DEF_Class1_assign_Class1",
                         "F_name_api": "assign",
                         "F_name_assign_api": "class1_assign_Class1",
+                        "alias_code": "// Aliasing another class; clear ownership.\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = 0;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_OWN;",
                         "c_type_lhs": "DEF_Class1",
                         "c_type_rhs": "DEF_Class1",
+                        "capture_code": "// Capture pointer from RHS, clear 'moving' flag.\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
+                        "copy_alias_code": "// RHS shouldn't be deleted, alias to LHS.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nDEF_SHROUD_memory_destructor(\t(DEF_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
                         "cxx_type_lhs": "Class1",
                         "cxx_type_rhs": "Class1",
+                        "destroy_code": "// Replace LHS with a null pointer.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nDEF_SHROUD_memory_destructor(\t(DEF_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = nullptr;\nlhs_capsule->idtor = 0;\nlhs_capsule->cmemflags = 0;",
                         "f_capsule_data_type_lhs": "DEF_SHROUD_capsule_data",
                         "f_capsule_data_type_rhs": "DEF_SHROUD_capsule_data",
                         "f_derived_type_lhs": "class1",
                         "f_derived_type_rhs": "class1",
                         "f_interface_import": "DEF_SHROUD_capsule_data",
                         "function_suffix": "_Class1",
+                        "move_alias_code": "// Transferred ownership from a variable that's about to be lost.\n// Move-assign and delete the transient data.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nDEF_SHROUD_memory_destructor(\t(DEF_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
                         "typemap_lhs": "Class1",
                         "typemap_rhs": "Class1"
                     },
-                    "stmt": "f_operator_assignment_shadow_basic"
+                    "stmt": "f_operator_assignment_shadow"
                 },
                 "name": "Class1 = Class1"
             }

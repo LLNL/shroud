@@ -86,6 +86,10 @@ module generic_mod
         module procedure struct_as_class_ne
     end interface
 
+    interface assignment (=)
+        module procedure struct_as_class_assign_StructAsClass
+    end interface
+
     ! ----------------------------------------
     ! Function:  void UpdateAsFloat
     ! Statement: f_subroutine
@@ -1051,6 +1055,23 @@ contains
             inew)
         ! splicer end function.update_struct_as_class_long
     end function update_struct_as_class_long
+
+    ! Statement: f_operator_assignment_shadow
+    ! StructAsClass = StructAsClass
+    subroutine struct_as_class_assign_StructAsClass(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(struct_as_class), intent(INOUT) :: lhs
+        type(struct_as_class), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="GEN_StructAsClass_assign_StructAsClass")
+                import :: GEN_SHROUD_capsule_data
+                type(GEN_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(GEN_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine struct_as_class_assign_StructAsClass
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

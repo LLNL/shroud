@@ -9,20 +9,25 @@
                         "C_name_assign_api": "STR_Cstruct_as_class_assign_Cstruct_as_class",
                         "F_name_api": "assign",
                         "F_name_assign_api": "cstruct_as_class_assign_Cstruct_as_class",
+                        "alias_code": "// Aliasing another class; clear ownership.\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = 0;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_OWN;",
                         "c_type_lhs": "STR_Cstruct_as_class",
                         "c_type_rhs": "STR_Cstruct_as_class",
+                        "capture_code": "// Capture pointer from RHS, clear 'moving' flag.\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
+                        "copy_alias_code": "// RHS shouldn't be deleted, alias to LHS.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nSTR_SHROUD_memory_destructor(\t(STR_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
                         "cxx_type_lhs": "Cstruct_as_class",
                         "cxx_type_rhs": "Cstruct_as_class",
+                        "destroy_code": "// Replace LHS with a null pointer.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nSTR_SHROUD_memory_destructor(\t(STR_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = nullptr;\nlhs_capsule->idtor = 0;\nlhs_capsule->cmemflags = 0;",
                         "f_capsule_data_type_lhs": "STR_SHROUD_capsule_data",
                         "f_capsule_data_type_rhs": "STR_SHROUD_capsule_data",
                         "f_derived_type_lhs": "cstruct_as_class",
                         "f_derived_type_rhs": "cstruct_as_class",
                         "f_interface_import": "STR_SHROUD_capsule_data",
                         "function_suffix": "_Cstruct_as_class",
+                        "move_alias_code": "// Transferred ownership from a variable that's about to be lost.\n// Move-assign and delete the transient data.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nSTR_SHROUD_memory_destructor(\t(STR_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
                         "typemap_lhs": "Cstruct_as_class",
                         "typemap_rhs": "Cstruct_as_class"
                     },
-                    "stmt": "f_operator_assignment_shadow_basic"
+                    "stmt": "f_operator_assignment_shadow"
                 },
                 "name": "Cstruct_as_class = Cstruct_as_class"
             },
@@ -33,20 +38,25 @@
                         "C_name_assign_api": "STR_Cstruct_as_subclass_assign_Cstruct_as_subclass",
                         "F_name_api": "assign",
                         "F_name_assign_api": "cstruct_as_subclass_assign_Cstruct_as_subclass",
+                        "alias_code": "// Aliasing another class; clear ownership.\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = 0;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_OWN;",
                         "c_type_lhs": "STR_Cstruct_as_subclass",
                         "c_type_rhs": "STR_Cstruct_as_subclass",
+                        "capture_code": "// Capture pointer from RHS, clear 'moving' flag.\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
+                        "copy_alias_code": "// RHS shouldn't be deleted, alias to LHS.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nSTR_SHROUD_memory_destructor(\t(STR_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
                         "cxx_type_lhs": "Cstruct_as_subclass",
                         "cxx_type_rhs": "Cstruct_as_subclass",
+                        "destroy_code": "// Replace LHS with a null pointer.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nSTR_SHROUD_memory_destructor(\t(STR_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = nullptr;\nlhs_capsule->idtor = 0;\nlhs_capsule->cmemflags = 0;",
                         "f_capsule_data_type_lhs": "STR_SHROUD_capsule_data",
                         "f_capsule_data_type_rhs": "STR_SHROUD_capsule_data",
                         "f_derived_type_lhs": "cstruct_as_subclass",
                         "f_derived_type_rhs": "cstruct_as_subclass",
                         "f_interface_import": "STR_SHROUD_capsule_data",
                         "function_suffix": "_Cstruct_as_subclass",
+                        "move_alias_code": "// Transferred ownership from a variable that's about to be lost.\n// Move-assign and delete the transient data.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nSTR_SHROUD_memory_destructor(\t(STR_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
                         "typemap_lhs": "Cstruct_as_subclass",
                         "typemap_rhs": "Cstruct_as_subclass"
                     },
-                    "stmt": "f_operator_assignment_shadow_basic"
+                    "stmt": "f_operator_assignment_shadow"
                 },
                 "name": "Cstruct_as_subclass = Cstruct_as_subclass"
             },
@@ -57,20 +67,25 @@
                         "C_name_assign_api": "STR_Cstruct_as_class2_assign_Cstruct_as_class2",
                         "F_name_api": "assign",
                         "F_name_assign_api": "cstruct_as_class2_assign_Cstruct_as_class2",
+                        "alias_code": "// Aliasing another class; clear ownership.\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = 0;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_OWN;",
                         "c_type_lhs": "STR_Cstruct_as_class2",
                         "c_type_rhs": "STR_Cstruct_as_class2",
+                        "capture_code": "// Capture pointer from RHS, clear 'moving' flag.\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
+                        "copy_alias_code": "// RHS shouldn't be deleted, alias to LHS.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nSTR_SHROUD_memory_destructor(\t(STR_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
                         "cxx_type_lhs": "Cstruct_as_class2",
                         "cxx_type_rhs": "Cstruct_as_class2",
+                        "destroy_code": "// Replace LHS with a null pointer.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nSTR_SHROUD_memory_destructor(\t(STR_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = nullptr;\nlhs_capsule->idtor = 0;\nlhs_capsule->cmemflags = 0;",
                         "f_capsule_data_type_lhs": "STR_SHROUD_capsule_data",
                         "f_capsule_data_type_rhs": "STR_SHROUD_capsule_data",
                         "f_derived_type_lhs": "cstruct_as_class2",
                         "f_derived_type_rhs": "cstruct_as_class2",
                         "f_interface_import": "STR_SHROUD_capsule_data",
                         "function_suffix": "_Cstruct_as_class2",
+                        "move_alias_code": "// Transferred ownership from a variable that's about to be lost.\n// Move-assign and delete the transient data.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nSTR_SHROUD_memory_destructor(\t(STR_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
                         "typemap_lhs": "Cstruct_as_class2",
                         "typemap_rhs": "Cstruct_as_class2"
                     },
-                    "stmt": "f_operator_assignment_shadow_basic"
+                    "stmt": "f_operator_assignment_shadow"
                 },
                 "name": "Cstruct_as_class2 = Cstruct_as_class2"
             }

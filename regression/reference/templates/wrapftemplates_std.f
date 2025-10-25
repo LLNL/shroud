@@ -78,6 +78,11 @@ module templates_std_mod
         module procedure vector_double_ne
     end interface
 
+    interface assignment (=)
+        module procedure vector_int_assign_vector_int
+        module procedure vector_double_assign_vector_double
+    end interface
+
     interface
 
         ! ----------------------------------------
@@ -429,6 +434,40 @@ contains
 
     ! splicer begin namespace.std.class.vector_double.additional_functions
     ! splicer end namespace.std.class.vector_double.additional_functions
+
+    ! Statement: f_operator_assignment_shadow
+    ! std::vector_int = std::vector_int
+    subroutine vector_int_assign_vector_int(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(vector_int), intent(INOUT) :: lhs
+        type(vector_int), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="TEM_vector_int_assign_vector_int")
+                import :: TEM_SHROUD_capsule_data
+                type(TEM_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(TEM_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine vector_int_assign_vector_int
+
+    ! Statement: f_operator_assignment_shadow
+    ! std::vector_double = std::vector_double
+    subroutine vector_double_assign_vector_double(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(vector_double), intent(INOUT) :: lhs
+        type(vector_double), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="TEM_vector_double_assign_vector_double")
+                import :: TEM_SHROUD_capsule_data
+                type(TEM_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(TEM_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine vector_double_assign_vector_double
 
     ! splicer begin namespace.std.additional_functions
     ! splicer end namespace.std.additional_functions

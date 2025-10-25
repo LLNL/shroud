@@ -65,6 +65,11 @@ module forward_mod
         module procedure class2_ne
     end interface
 
+    interface assignment (=)
+        module procedure class3_assign_Class3
+        module procedure class2_assign_Class2
+    end interface
+
     interface
 
         ! ----------------------------------------
@@ -276,6 +281,40 @@ contains
         ! splicer end function.pass_struct1
     end function pass_struct1
 #endif
+
+    ! Statement: f_operator_assignment_shadow
+    ! forward::Class3 = forward::Class3
+    subroutine class3_assign_Class3(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(class3), intent(INOUT) :: lhs
+        type(class3), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="FOR_Class3_assign_Class3")
+                import :: FOR_SHROUD_capsule_data
+                type(FOR_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(FOR_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine class3_assign_Class3
+
+    ! Statement: f_operator_assignment_shadow
+    ! forward::Class2 = forward::Class2
+    subroutine class2_assign_Class2(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(class2), intent(INOUT) :: lhs
+        type(class2), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="FOR_Class2_assign_Class2")
+                import :: FOR_SHROUD_capsule_data
+                type(FOR_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(FOR_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine class2_assign_Class2
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

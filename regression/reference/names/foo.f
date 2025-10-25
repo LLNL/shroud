@@ -49,6 +49,10 @@ module name_module
         module procedure names_ne
     end interface
 
+    interface assignment (=)
+        module procedure names_assign_Names
+    end interface
+
     interface
 
         ! ----------------------------------------
@@ -160,6 +164,23 @@ contains
 
     ! splicer begin namespace.ns0.class.Names.additional_functions
     ! splicer end namespace.ns0.class.Names.additional_functions
+
+    ! Statement: f_operator_assignment_shadow
+    ! ns0::Names = ns0::Names
+    subroutine names_assign_Names(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(FNames), intent(INOUT) :: lhs
+        type(FNames), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="XXX_TES_ns0_Names_assign_Names")
+                import :: TES_SHROUD_capsule_data
+                type(TES_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(TES_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine names_assign_Names
 
     ! splicer begin namespace.ns0.additional_functions
     ! splicer end namespace.ns0.additional_functions

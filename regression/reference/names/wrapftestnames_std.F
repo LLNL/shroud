@@ -92,6 +92,13 @@ module testnames_std_mod
         module procedure vector_instantiation3_ne
     end interface
 
+    interface assignment (=)
+        module procedure vvv1_assign_Vvv1
+        module procedure vector_double_assign_vector_double
+        module procedure vector_instantiation5_assign_vector_instantiation5_instantiation5
+        module procedure vector_instantiation3_assign_vector_instantiation3
+    end interface
+
     ! splicer begin namespace.std.additional_declarations
     ! splicer end namespace.std.additional_declarations
 
@@ -200,6 +207,74 @@ contains
 
     ! splicer begin namespace.std.class.vector_instantiation3.additional_functions
     ! splicer end namespace.std.class.vector_instantiation3.additional_functions
+
+    ! Statement: f_operator_assignment_shadow
+    ! std::Vvv1 = std::Vvv1
+    subroutine vvv1_assign_Vvv1(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(FFvvv1), intent(INOUT) :: lhs
+        type(FFvvv1), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="TES_std_Vvv1_assign_Vvv1")
+                import :: TES_SHROUD_capsule_data
+                type(TES_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(TES_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine vvv1_assign_Vvv1
+
+    ! Statement: f_operator_assignment_shadow
+    ! std::vector_double = std::vector_double
+    subroutine vector_double_assign_vector_double(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(vector_double), intent(INOUT) :: lhs
+        type(vector_double), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="TES_std_vector_double_assign_vector_double")
+                import :: TES_SHROUD_capsule_data
+                type(TES_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(TES_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine vector_double_assign_vector_double
+
+    ! Statement: f_operator_assignment_shadow
+    ! std::vector_instantiation5 = std::vector_instantiation5
+    subroutine vector_instantiation5_assign_vector_instantiation5_instantiation5(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(vector_instantiation5), intent(INOUT) :: lhs
+        type(vector_instantiation5), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="TES_std_vector_instantiation5_assign_vector_instantiation5_instantiation5")
+                import :: TES_SHROUD_capsule_data
+                type(TES_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(TES_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine vector_instantiation5_assign_vector_instantiation5_instantiation5
+
+    ! Statement: f_operator_assignment_shadow
+    ! std::vector_instantiation3 = std::vector_instantiation3
+    subroutine vector_instantiation3_assign_vector_instantiation3(lhs, rhs)
+        use iso_c_binding, only : c_associated, c_f_pointer
+        class(vector_instantiation3), intent(INOUT) :: lhs
+        type(vector_instantiation3), intent(IN) :: rhs
+        interface
+            subroutine do_assign(lhs, rhs) bind(C, &
+                name="TES_std_vector_instantiation3_assign_vector_instantiation3")
+                import :: TES_SHROUD_capsule_data
+                type(TES_SHROUD_capsule_data), intent(INOUT) :: lhs
+                type(TES_SHROUD_capsule_data), intent(IN) :: rhs
+            end subroutine do_assign
+        end interface
+        call do_assign(lhs%cxxmem, rhs%cxxmem)
+    end subroutine vector_instantiation3_assign_vector_instantiation3
 
     ! splicer begin namespace.std.additional_functions
     ! splicer end namespace.std.additional_functions
