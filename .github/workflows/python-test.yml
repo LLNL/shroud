@@ -71,7 +71,7 @@ jobs:
     strategy:
       matrix:
 #        gcc-version: [9, 10, 11, 12]
-        gcc-version: [12, 15]
+        gcc-version: [12, 13]
 
     steps:
     - name: Check out repository
