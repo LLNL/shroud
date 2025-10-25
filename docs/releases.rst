@@ -10,15 +10,58 @@ Notes to help migrate between releases.
 Unreleased
 ----------
 
-Summary
-^^^^^^^
-
-* Most uses of `RuntimeError` have been replace by error handling which
-  cwill report as many errors as possible before quiting.
+New Features
+^^^^^^^^^^^^
 
 * This is the last version to support Python 2.7.
   Future minimum will be 3.7.
 
+* Move default statements and helpers the file ``fc-statements.json``.
+  See :ref:`StatementsAnchor` and :ref:`HelpersAnchor`.
+  This makes it possible to change wrapper code by editing a JSON file
+  instead of the Python source.
+  
+* Most uses of `RuntimeError` have been replace by error handling which
+  cwill report as many errors as possible before quiting.
+
+* Remove the assumption that there is only one template argument for
+  types.  This worked for ``std::vector`` but is now generalized.
+  This required adding the format field ``targs`` which is a list of
+  objects for template arguments. Used in the format fields as
+  ``{targs[0].cxx_type}`` to access the type of the first template
+  argument. Option *typemap_sgroup* allows futher control of which
+  statement group is selected to use with a type.  Function and class
+  declarations always allowed multiple template arguments.
+
+* Added *fmtdict* field to Fortran and C statement groups. Similar to
+  *fmtdict* already in the Python statement groups. It allows format
+  fields to be set explicitly in the statement group to override the
+  any defaults.
+
+* Support recursive structs. Allows trees to be build in structs.
+* Add getter/setter for ``struct`` pointer fields in a struct.
+* Parse multiple declarators for a declaration in a struct.
+  ex. ``struct name {int i, j;};``
+
+.. Setting *deref* attribute on struct members will be used with the getter.
+   Before only dimension was used.
+
+* Add format fields *F_name_typedef* and *C_name_typedef* to name a typedef
+  for Fortran or C.
+
+* Add intent attribute to a function's ``PASS`` argument. If the C++ function
+  is ``const`` set to ``intent(IN). Otherwise, set to ``intent(INOUT)``.
+
+* Added attribute *+operator(assignment)* to add a Fortran assignment overload.
+
+* Added options to control default behavior for dereferencing
+  pointers. These options can be used instead of explicitly setting
+  *deref* attribute to change the default on each ``decl`` lines:
+  **F_deref_arg_array**, **F_deref_arg_character**,
+  **F_deref_arg_implied_array**, **F_deref_arg_scalar**,
+  **F_deref_func_array**, **F_deref_func_character**,
+  **F_deref_func_implied_array**, **F_deref_func_scalar**.
+  
 Changes to YAML input
 ^^^^^^^^^^^^^^^^^^^^^
 
@@ -373,53 +416,6 @@ F_C_name_template             i_name_function_template
   It was being written before the ``enum`` and ``typedef`` splicers,
   which was too late.
   
-New Features
-^^^^^^^^^^^^
-
-* Move default statements and helpers the file ``fc-statements.json``.
-  See :ref:`StatementsAnchor` and :ref:`HelpersAnchor`.
-  This makes it possible to change wrapper code by editing a JSON file
-  instead of the Python source.
-  
-
-* Remove the assumption that there is only one template argument for
-  types.  This worked for ``std::vector`` but is now generalized.
-  This required adding the format field ``targs`` which is a list of
-  objects for template arguments. Used in the format fields as
-  ``{targs[0].cxx_type}`` to access the type of the first template
-  argument. Option *typemap_sgroup* allows futher control of which
-  statement group is selected to use with a type.  Function and class
-  declarations always allowed multiple template arguments.
-
-* Added *fmtdict* field to Fortran and C statement groups. Similar to
-  *fmtdict* already in the Python statement groups. It allows format
-  fields to be set explicitly in the statement group to override the
-  any defaults.
-
-* Support recursive structs. Allows trees to be build in structs.
-* Add getter/setter for ``struct`` pointer fields in a struct.
-* Parse multiple declarators for a declaration in a struct.
-  ex. ``struct name {int i, j;};``
-
-.. Setting *deref* attribute on struct members will be used with the getter.
-   Before only dimension was used.
-
-* Add format fields *F_name_typedef* and *C_name_typedef* to name a typedef
-  for Fortran or C.
-
-* Add intent attribute to a function's ``PASS`` argument. If the C++ function
-  is ``const`` set to ``intent(IN). Otherwise, set to ``intent(INOUT)``.
-
-* Added attribute *+operator(assignment)* to add a Fortran assignment overload.
-
-* Added options to control default behavior for dereferencing
-  pointers. These options can be used instead of explicitly setting
-  *deref* attribute to change the default on each ``decl`` lines:
-  **F_deref_arg_array**, **F_deref_arg_character**,
-  **F_deref_arg_implied_array**, **F_deref_arg_scalar**,
-  **F_deref_func_array**, **F_deref_func_character**,
-  **F_deref_func_implied_array**, **F_deref_func_scalar**.
-
 
 Fixed
 ^^^^^
@@ -446,8 +442,19 @@ Fixed
   to keep track of memory ownership. Shroud now produced code similar
   what swig-fortran creates. gfortran 13 fixed the use of the `final` subroutine
   to be correct with respect to the standard.
-  The previous scheme relied on the old incorrect behavior.
-  It was only used with ``std::shared_ptr``.
+  The previous scheme relied on the incorrect behavior which caused
+  the ``shared.yaml`` test to fail on the use of ``std::shared_ptr``.
+
+  This also fixes a problem with a possible double free:
+
+.. code-block:: fortran
+                
+    type(class1) obj0, obj1
+    ! Test generic constructor. Allocates new memory.
+    obj0 = class1()
+    obj1 = obj0       ! Create alias
+    call obj1%delete
+    call obj0%delete  ! obj0 has already been released
 
 v0.13.0
 -------
