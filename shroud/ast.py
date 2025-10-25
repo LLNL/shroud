@@ -2594,7 +2594,7 @@ deprecated_formats = dict(
     F_string_result_as_arg=dict(
         new="option.F_result_as_arg",
         details=[
-            "Instead add attribute +funcarg(name)+deref(copy) to decl.",
+            "Add attribute +funcarg(name)+deref(copy) to decl.",
             "Option F_result_as_arg is the default name when not specified in +funcarg."
         ]
     )

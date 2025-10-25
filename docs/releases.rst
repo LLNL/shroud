@@ -10,6 +10,15 @@ Notes to help migrate between releases.
 Unreleased
 ----------
 
+Summary
+^^^^^^^
+
+* Most uses of `RuntimeError` have been replace by error handling which
+  cwill report as many errors as possible before quiting.
+
+* This is the last version to support Python 2.7.
+  Future minimum will be 3.7.
+
 Changes to YAML input
 ^^^^^^^^^^^^^^^^^^^^^
 
@@ -242,6 +251,8 @@ F_C_name_template             i_name_function_template
   be listed twice. Now it only needs to be listed once.
   The helpers may have a **c_fmtname** and **f_fmtname** field that is
   used to identify the C and Fortran functions created by the helper.
+  The format fields are used in the statement group. For example,
+  the statement will call the function added by the helper.
 
 * Renamed format fields *hnamefunc*. These fields were added from the
   statement fields **helper** (was **c_helper** and **f_helper**), each a blank
@@ -365,8 +376,11 @@ F_C_name_template             i_name_function_template
 New Features
 ^^^^^^^^^^^^
 
-* Expose default statements and helpers to users in the file ``fc-statements.json``.
+* Move default statements and helpers the file ``fc-statements.json``.
   See :ref:`StatementsAnchor` and :ref:`HelpersAnchor`.
+  This makes it possible to change wrapper code by editing a JSON file
+  instead of the Python source.
+  
 
 * Remove the assumption that there is only one template argument for
   types.  This worked for ``std::vector`` but is now generalized.
@@ -384,7 +398,7 @@ New Features
 
 * Support recursive structs. Allows trees to be build in structs.
 * Add getter/setter for ``struct`` pointer fields in a struct.
-* Support multiple declarators for a declaration in a struct.
+* Parse multiple declarators for a declaration in a struct.
   ex. ``struct name {int i, j;};``
 
 .. Setting *deref* attribute on struct members will be used with the getter.
@@ -427,6 +441,13 @@ Fixed
   ``CHARACTER(len=20)``. This is required to pass the argument directly to
   C using CFI which will allocate the argument.
   Removed the need for the *f_char_len* format field.
+
+* Fix memory management errors by overloading the assignment operator
+  to keep track of memory ownership. Shroud now produced code similar
+  what swig-fortran creates. gfortran 13 fixed the use of the `final` subroutine
+  to be correct with respect to the standard.
+  The previous scheme relied on the old incorrect behavior.
+  It was only used with ``std::shared_ptr``.
 
 v0.13.0
 -------
