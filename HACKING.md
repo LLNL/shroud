@@ -1,6 +1,5 @@
 
-Directory structure
--------------------
+# Directory structure
 
     build           # created by Makefile
        sphix        # Generated documentation
@@ -24,10 +23,11 @@ Directory structure
     tests
        # unittest python code
 
-Create development environment
-------------------------------
+# Development
 
 All development is driven by the top level `Makefile`.
+
+## Create development environment
 
 A virtual environment is created and the YAML package is installed.
 Defaults to Python 3.
@@ -45,15 +45,15 @@ Defaults to Python 3.
 The tempdir can be verified with `make print-tempdir`. Similar to
 `temp.linux-x86_64-3.9`.
 
-test-commit
------------
+# Testing
+
+## test-commit
 
 Run several types of tests before a commit.
 
     make test-commit
 
-Run unittest
-------------
+## Run unittest
 
     make test
 
@@ -79,8 +79,7 @@ Running a single Python unit test.
     $PYTHONEXE -m unittest test.Struct.test_Arrays1
 
 
-Parse test
-----------
+## Parse test
 
 Parse some strings in ``tests/check_decl.py`` and compare to reference
 in ``tests/check-decl.output``.
@@ -90,8 +89,7 @@ The parse trees are compared.
     make test-decl-diff
     make test-decl-replace
 
-Regression tests
-----------------
+## Regression tests
 
     make do-test
 
@@ -115,8 +113,7 @@ cd $WORK/build/$tempdir/regression/classes
 $WORK/build/$tempdir/venv/bin/shroud ...  $WORK/regression/input/classes.yaml
 ```
 
-Test generated code
--------------------
+## Test generated code
 
 Compile the files in `regression/reference`.
 The Library code which is wrapped is in the `regression/run` directory.
@@ -154,8 +151,7 @@ Targets to compile a single test:
 
 The Fortran tests use `fruit`, C tests `assert`, and Python tests use `unittest`.
 
-Adding a regression test
-------------------------
+## Adding a regression test
 
 * Add a file ``regression/input/newtest.yaml``.
 * Create directory `mkdir regression/reference/newtest`.
@@ -196,7 +192,8 @@ F_OBJS = \
 
 include $(top)/regression/run/defaults.mk
 
-# dependencies
+## dependencies
+
 ```
 
 Sample Python makefile
@@ -216,8 +213,9 @@ PY_OBJS = \
 
 ```
 
-memory debugging
-----------------
+# Debugging
+
+## memory debugging
 
 Valgrind can be used by setting `valgrind=valgrind` on the Make command line.
 Actually, `valgrind=path-to-valgrind`.
@@ -229,8 +227,7 @@ Recompile code with address sanitizer.
     make test-clean ; make -k use_asan=1 test-all
 
 
-reference counting
-------------------
+## reference counting
 
 ``Python-3.9.12/Misc/valgrind-python.supp``
 
@@ -241,9 +238,9 @@ valgrind --tool=memcheck --suppressions=valgrind-python.supp \
 
 Build Python with ``--with-address-sanitizer --with-pydebug``
 
+# Development
 
-file dependency
----------------
+## file dependency
 
 main.py
 wrapX.py  generate.py
@@ -262,8 +259,8 @@ Error with template: 'call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, s
 can be debugged by changing util.wformat to remove comment to provide a backtrace.
 
 
-adding a type
--------------
+
+## adding a type
 
 typemap.py
 
@@ -274,19 +271,16 @@ declast.py  get_canonical_typemap()
   Convert 'long int' into 'long'
 
 
-formatting generated code
--------------------------
+## formatting generated code
 
 Always use `{nullptr}` instead of `NULL`.  Helps C++.
 
-error checking
---------------
+## error checking
 
 Write a `#error` line instead of generating bad code so the
 compiler will point out the error.
 
-debugging
----------
+## debugging
 
 ```
 import yaml
@@ -311,11 +305,15 @@ To start pdb on an exception, uncomment line in main.py
 #sys.excepthook = info
 ```
 
-pythondevmode
--------------
+## pythondevmode
 
 If this environment variable is set to a non-empty string, enable
 Python Development Mode, introducing additional runtime checks that
 are too expensive to be enabled by default.  New in version 3.7.
 
     setenv PYTHONDEVMODE 1
+
+# Release
+
+
+## PyPi
