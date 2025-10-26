@@ -1091,7 +1091,6 @@ class GenFunctions(object):
             self.append_function_index(new)
             new._generated = "fortran_generic"
             new._generated_path.append("fortran_generic")
-            new.wrap.assign(fortran=True)
             fmt = new.fmtdict
             # XXX append to existing suffix
             if generic.fmtdict:
@@ -1123,7 +1122,8 @@ class GenFunctions(object):
                     break
 
             if need_wrapper:
-                # The C wrapper is required to cast constants.
+                # The C wrapper is required to cast constants
+                # and return indirects.
                 # generic.yaml: GenericReal
                 new.C_force_wrapper = True
                 new._PTR_C_CXX_index = node._function_index

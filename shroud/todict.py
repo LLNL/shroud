@@ -469,6 +469,7 @@ class ToDict(visitor.Visitor):
                 "have_template_args",
                 "template_parameters",
                 "C_error_pattern",
+                "C_fortran_generic",
                 "PY_error_pattern",
                 "_default_funcs",
                 "_generated",

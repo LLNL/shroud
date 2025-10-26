@@ -130,3 +130,28 @@ declarations:
        function_suffix: _int
     -  decl: (long length=1)
        function_suffix: _long
+
+########################################
+# Test overloaded function which return a class pointer,
+# uses function_suffix with fortran_generic and
+# which also sets function_suffix
+
+- decl: Class1 *getView( const std::string& path )
+  format:
+    function_suffix: _from_name
+  options:
+    wrap_fortran: False
+    wrap_python: False
+
+- decl: Class1 *getView( const long idx )
+  format:
+    function_suffix: _from_index
+  fortran_generic:
+  - decl: (int32_t idx)
+    function_suffix: _int32_t
+  - decl: (int64_t idx)
+    function_suffix: _int64_t
+  options:
+    wrap_fortran: False
+    wrap_python: False
+
