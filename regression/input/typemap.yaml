@@ -26,7 +26,8 @@ declarations:
 
 - decl: bool passIndex(IndexType i1, IndexType *i2+intent(out))
 # XXX - This does not act the same as passIndex2.
-#   It does the type coercision in C++ instead of using a fortran intrinsic.
+#   It does the type coercision in C++ instead of using a fortran intrinsic
+#   because of the pointer in *i2.
   fortran_generic:
   - decl: (int32_t i1)
     function_suffix: _32
