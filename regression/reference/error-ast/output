@@ -54,75 +54,82 @@ Error in 'fortran_generic', argument 'arg3' not found
 --------------------
 Node: FortranGenericOverloaded3
 line 59
-Error in 'fortran_generic', argument 'arg3' not found
+Error in 'fortran_generic', argument 'arg2' specified more than once
+--------------------
+Node: FortranGenericOverloaded3
+line 59
+Error in 'decl' field
+(doublexx arg2)
+^
+Expected TYPE_SPECIFIER, found ID 'doublexx'
 --------------------
 Node: GoodFunction
-line 67
+line 69
 void GoodFunction(void)
 Unexpected value of option C_API_case: none
 --------------------
 Node: returnThis
-line 73
+line 75
 void *returnThis(void)
 return_this can only be set for class methods
 --------------------
 Node: returnThis
-line 83
+line 85
 void *returnThis(void)
 return_this must return a pointer to the class
 --------------------
 Node: returnThis2
-line 86
+line 88
 Class1 returnThis2(void)
 return_this must return a pointer to the class
 --------------------
 Node: Color
-line 91
+line 93
 Unknown type in F_enum_type: shorter
 --------------------
 Node: testattrs1
-line 103
+line 105
 Error in 'decl' field
 (+attr)
 ^
 Expected ID, found PLUS
 --------------------
 Node: testattrs2
-line 107
+line 109
 Error in 'decl' field
 ( name, )
        ^
 Expected ID, found RPAREN
 --------------------
 Node: testattrs3
-line 111
+line 113
 Error in 'decl' field
 ( name
 ^
 Expected RPAREN, found EOF
 --------------------
 Node: testattrs4
-line 115
+line 117
 Error in 'decl' field
 ( ) name
    ^
 Expected EOF, found ID
 --------------------
 Node: process_twostruct
-line 126
+line 128
 Templated function requires the 'cxx_template' field
 --------------------
 Node: process_twostruct
-line 126
+line 128
 field f_arg_decl is deprecated, changed to f_dummy_decl
 --------------------
 Node: process_twostruct
-line 134
+line 136
 'cxx_template' field only used with a templated function
 --------------------
 Node: getConstCharPtrAsCopyArg
-line 142
+line 144
 format F_string_result_as_arg is deprecated, changed to option.F_result_as_arg
 Add attribute +funcarg(name)+deref(copy) to decl.
 Option F_result_as_arg is the default name when not specified in +funcarg.
-Too many warnings: 29
+Too many warnings: 30

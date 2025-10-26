@@ -1643,7 +1643,14 @@ class FunctionNode(AstNode):
             generic.parse_generic(self.symtab)
             newparams = copy.deepcopy(declarator.params)
             first = len(newparams) + 1
+            found = {}
             for garg in generic.decls:
+                user_name = garg.declarator.user_name
+                if user_name in found:
+                    error.cursor.ast(self.linenumber,
+                                     "Error in 'fortran_generic', argument '{}' specified more than once".format(
+                                        garg.declarator.user_name))
+                found[user_name] = True
                 i = declast.find_arg_index_by_name(newparams, garg.declarator.user_name)
                 if i < 0:
                     # XXX - For default argument, the generic argument may not exist.

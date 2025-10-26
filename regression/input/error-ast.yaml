@@ -60,8 +60,10 @@ declarations:
   fortran_generic:
   - decl: (float arg3)
     function_suffix: _float
-  - decl: (double arg3)
+  - decl: (double arg2, float arg2)
     function_suffix: _double
+  - decl: (doublexx arg2)
+    function_suffix: _doublexx
 
 # Needed to trigger C_API_case error
 - decl: void GoodFunction(void)
