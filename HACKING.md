@@ -42,22 +42,16 @@ Defaults to Python 3.
 
 `make develop` allows changes to be seen without installed the module again.
 
-The tempdir can be verified with `make print-tempdir`. Similar to
-`temp.linux-x86_64-3.9`.
+The *tempdir* can be verified with `make print-tempdir`.
+Similar to `temp.linux-x86_64-3.9`.
 
 # Testing
-
-## test-commit
-
-Run several types of tests before a commit.
-
-    make test-commit
 
 ## Run unittest
 
     make test
 
-The tests are in the ``tests`` directory.
+The unittests are in the `tests` directory.
 
 Run a single unittest:
 
@@ -81,8 +75,8 @@ Running a single Python unit test.
 
 ## Parse test
 
-Parse some strings in ``tests/check_decl.py`` and compare to reference
-in ``tests/check-decl.output``.
+Parse some strings in `tests/check_decl.py` and compare to reference
+in `tests/check-decl.output`.
 The parse trees are compared.
 
     make test-decl
@@ -93,7 +87,7 @@ The parse trees are compared.
 
     make do-test
 
-Run the script `test/do-test.py` over some `regression/input` yaml files.
+Run the script `regression/do-test.py` over some `regression/input` yaml files.
 
 The output is saved in `build/$tempdir/regression`
 
@@ -151,20 +145,25 @@ Targets to compile a single test:
 
 The Fortran tests use `fruit`, C tests `assert`, and Python tests use `unittest`.
 
+## test-commit
+
+Runs `test-clean`, `test`, `test-decl`, and `do-test`. To be used before a commit.
+
+    make test-commit
+
 ## Adding a regression test
 
-* Add a file ``regression/input/newtest.yaml``.
+* Add a file `regression/input/newtest.yaml`.
 * Create directory `mkdir regression/reference/newtest`.
-* Run the test ``make do-test do-test-args=newtest``
-* Look for errors in ``$(tempdir)/regression/log.test``
-  ``make print-tempdir``.
-* Add a call to TestDesc in ``regression/do-test.py`` to run *newtest*.
-* ``mkdir regression/run/newtest``
-* Create files ``Makefile``, ``newtest.cpp`` and ``newtest.hpp``
+* Run the test `make do-test do-test-args=newtest`
+* Look for errors in `$(tempdir)/regression/log.test`
+* Add a call to TestDesc in `regression/do-test.py` to run *newtest*.
+* `mkdir regression/run/newtest`
+* Create files `Makefile`, `newtest.cpp` and `newtest.hpp`
 
 * Add to variable *fortran-test-list-std* in
-  ``regression/run/Makefile`` to run as part of ``test-all`` target.
-  Try ``make -n test-fortran-newtest`` to see commands which will be
+  `regression/run/Makefile` to run as part of `test-all` target.
+  Try `make -n test-fortran-newtest` to see commands which will be
   run.
 
 
@@ -229,14 +228,14 @@ Recompile code with address sanitizer.
 
 ## reference counting
 
-``Python-3.9.12/Misc/valgrind-python.supp``
+`Python-3.9.12/Misc/valgrind-python.supp`
 
 ```
 valgrind --tool=memcheck --suppressions=valgrind-python.supp \
                                           python -E -tt ./my_python_script.py
 ```
 
-Build Python with ``--with-address-sanitizer --with-pydebug``
+Build Python with `--with-address-sanitizer --with-pydebug`
 
 # Development
 
