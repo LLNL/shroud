@@ -78,6 +78,9 @@ void CXX_getGroupName_int64_t_bufferify(int64_t idx, char *SHC_rv,
 CXX_Class1 * CXX_getView_from_name(const char *path,
     CXX_Class1 *SHC_rv);
 
+void CXX_getView_from_name_bufferify(char *path, int SHT_path_len,
+    CXX_Class1 *SHC_rv);
+
 CXX_Class1 * CXX_getView_from_index(const long idx, CXX_Class1 *SHC_rv);
 
 void CXX_nested_get_parent(CXX_nested *SH_this,

@@ -795,7 +795,7 @@
         "c_post_call": [
             "{c_var}->addr  = {cxx_nonconst_ptr};",
             "{c_var}->idtor = {idtor};",
-            "{c_var}->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;"
+            "{c_var}->cmemflags = {c_cmemflags_or}SWIG_MEM_RVALUE;"
         ]
     },
     {

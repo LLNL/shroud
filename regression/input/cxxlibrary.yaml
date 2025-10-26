@@ -140,7 +140,6 @@ declarations:
   format:
     function_suffix: _from_name
   options:
-    wrap_fortran: False
     wrap_python: False
 
 - decl: Class1 *getView( const long idx )

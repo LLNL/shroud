@@ -328,7 +328,7 @@ OWN_Class1 * OWN_getClassStatic(OWN_Class1 *SHC_rv)
     Class1 *SHC_rv_cxx = getClassStatic();
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
-    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE;
     return SHC_rv;
     // splicer end function.getClassStatic
 }
@@ -342,7 +342,7 @@ void OWN_getClassStatic_bufferify(OWN_Class1 *SHC_rv)
     Class1 *SHC_rv_cxx = getClassStatic();
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
-    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE;
     // splicer end function.getClassStatic_bufferify
 }
 
@@ -362,7 +362,7 @@ OWN_Class1 * OWN_getClassNew(int flag, OWN_Class1 *SHC_rv)
     Class1 *SHC_rv_cxx = getClassNew(flag);
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 1;
-    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE;
     return SHC_rv;
     // splicer end function.getClassNew
 }
@@ -383,7 +383,7 @@ void OWN_getClassNew_bufferify(int flag, OWN_Class1 *SHC_rv)
     Class1 *SHC_rv_cxx = getClassNew(flag);
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 1;
-    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE;
     // splicer end function.getClassNew_bufferify
 }
 

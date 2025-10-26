@@ -35,6 +35,22 @@ static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
     }
 }
 
+// helper char_len_trim
+// Returns the length of character string src with length nsrc,
+// ignoring any trailing blanks.
+static int ShroudCharLenTrim(const char *src, int nsrc) {
+    int i;
+
+    for (i = nsrc - 1; i >= 0; i--) {
+        if (src[i] != ' ') {
+            break;
+        }
+    }
+
+    return i + 1;
+}
+
+
 // splicer begin C_definitions
 // splicer end C_definitions
 
@@ -188,9 +204,28 @@ CXX_Class1 * CXX_getView_from_name(const char *path, CXX_Class1 *SHC_rv)
     Class1 *SHC_rv_cxx = getView(SHC_path_cxx);
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
-    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE;
     return SHC_rv;
     // splicer end function.getView_from_name
+}
+
+// ----------------------------------------
+// Function:  Class1 *getView
+// Statement: f_function_shadow*_capsule_library
+// ----------------------------------------
+// Argument:  const std::string &path
+// Statement: f_in_string&_buf
+void CXX_getView_from_name_bufferify(char *path, int SHT_path_len,
+    CXX_Class1 *SHC_rv)
+{
+    // splicer begin function.getView_from_name_bufferify
+    int SHC_path_trim = ShroudCharLenTrim(path, SHT_path_len);
+    const std::string SHC_path_cxx(path, SHC_path_trim);
+    Class1 *SHC_rv_cxx = getView(SHC_path_cxx);
+    SHC_rv->addr  = SHC_rv_cxx;
+    SHC_rv->idtor = 0;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE;
+    // splicer end function.getView_from_name_bufferify
 }
 
 // ----------------------------------------
@@ -205,7 +240,7 @@ CXX_Class1 * CXX_getView_from_index(const long idx, CXX_Class1 *SHC_rv)
     Class1 *SHC_rv_cxx = getView(idx);
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
-    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE;
     return SHC_rv;
     // splicer end function.getView_from_index
 }

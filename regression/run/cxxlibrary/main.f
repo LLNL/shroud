@@ -18,6 +18,7 @@ program tester
   call test_generic
   call test_nested
   call test_return_this
+  call test_fortran_generic
 
   call fruit_summary
   call fruit_finalize
@@ -182,5 +183,14 @@ contains
     
   end subroutine test_return_this
 
-  
+  subroutine test_fortran_generic
+    use cxxlibrary_mod
+    type(class1) obj1
+
+    call set_case_name("fortran_generic")
+
+    obj1 = get_view_from_name("byname")
+
+  end subroutine test_fortran_generic
+    
 end program tester
