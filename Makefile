@@ -299,7 +299,7 @@ distclean:
 #	rm -rf dist
 #	rm -rf .eggs
 
-.PHONY : virtualenv pipinstall develop docs test testdirs
+.PHONY : virtualenv pipinstall develop docs pdf test testdirs
 .PHONY : virtualenv2
 .PHONY : test-clean
 .PHONY : do-test do-test-replace print-debug

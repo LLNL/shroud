@@ -45,6 +45,19 @@ Defaults to Python 3.
 The *tempdir* can be verified with `make print-tempdir`.
 Similar to `temp.linux-x86_64-3.9`.
 
+# Documentation
+
+Sphinx is used the create the documentation.
+The files are in `docs` directory.
+
+    make docs
+
+Creates `build/sphinx/html/index.html`
+
+    make pdf
+
+Creates `build/sphinx/latex/shroud.pdf`
+
 # Testing
 
 ## Run unittest
