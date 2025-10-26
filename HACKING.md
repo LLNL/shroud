@@ -242,6 +242,7 @@ Build Python with ``--with-address-sanitizer --with-pydebug``
 
 ## file dependency
 
+```
 main.py
 wrapX.py  generate.py
 fcfmt.py  metaattrs.py
@@ -252,12 +253,12 @@ whelpers.py
 util.py visitor.py
 error.py  # no dependencies
 metadata.py
+```
 
-
-
+```
 Error with template: 'call SHROUD_copy_array_{cxx_T}({c_var_context}, {f_var}, size({f_var},kind=C_SIZE_T))'
+```
 can be debugged by changing util.wformat to remove comment to provide a backtrace.
-
 
 
 ## adding a type
@@ -315,5 +316,29 @@ are too expensive to be enabled by default.  New in version 3.7.
 
 # Release
 
+## Branches
+
+Update version number in `shroud/metadata.py`.
+
+## Shiv
+
+`shiv` is a command line utility for building fully self-contained
+Python zipapps as outlined in PEP 441, but with all their dependencies
+included!
+shiv's primary goal is making distributing Python applications fast & easy.
+
+https://pypi.org/project/shiv/
+
+    make shiv-file
+    make do-test-pex
 
 ## PyPi
+
+https://pypi.org/project/llnl-shroud/
+
+> You need an account on pypi.org
+
+# Annual
+
+Update copyright in `LICENSE`.
+
