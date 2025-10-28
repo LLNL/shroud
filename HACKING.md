@@ -1,5 +1,12 @@
 
+This file describes the development process for Shroud.
+This includes setting up a development environment, running tests
+and creating a release.
+
 # Directory structure
+
+After cloning the repository, the directories will be as follows.
+Except for the `build` directory which is created by the Makefile.
 
     build           # created by Makefile
        sphix        # Generated documentation
