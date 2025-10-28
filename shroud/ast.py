@@ -1488,7 +1488,7 @@ class FunctionNode(AstNode):
     _generated_path  - list of generated functions
     _orig_node       - Original YAML node for generated functions.
     _PTR_F_C_index   - Used by fortran wrapper to find index of
-                       C function to call
+                       C function to call. Used with fortran_generic.
     _PTR_C_CXX_index - Used by C wrapper to find index of C++ function
                        to call
 
@@ -1511,8 +1511,6 @@ class FunctionNode(AstNode):
 
     C_signature - statement.index signature of C wrapper.
        Used to avoid writing the same function twice. 
-    C_fortran_generic = if True, multiple version of the Fortran
-       wrappers will call a single C wrapper.
     """
 
     def __init__(
@@ -1556,7 +1554,6 @@ class FunctionNode(AstNode):
         self.C_node = None   # C wrapper required by Fortran wrapper
         self.C_force_wrapper = False
         self.C_signature = None
-        self.C_fortran_generic = False
         self.C_shared_method = False      # True if method of a smart pointer (ex. use_count)
 
         # self.function_index = []

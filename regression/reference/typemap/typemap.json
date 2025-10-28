@@ -868,7 +868,6 @@
             },
             {
                 "<FUNCTION>": "passIndex2  5 ****************************************",
-                "C_fortran_generic": true,
                 "_PTR_F_C_index": 1,
                 "_generated": "fortran_generic",
                 "_generated_path": [
@@ -1000,7 +999,6 @@
             },
             {
                 "<FUNCTION>": "passIndex2  6 ****************************************",
-                "C_fortran_generic": true,
                 "_PTR_F_C_index": 1,
                 "_generated": "fortran_generic",
                 "_generated_path": [
@@ -1285,7 +1283,6 @@
             },
             {
                 "<FUNCTION>": "passFloat  7 ****************************************",
-                "C_fortran_generic": true,
                 "_PTR_F_C_index": 2,
                 "_generated": "fortran_generic",
                 "_generated_path": [
@@ -1417,7 +1414,6 @@
             },
             {
                 "<FUNCTION>": "passFloat  8 ****************************************",
-                "C_fortran_generic": true,
                 "_PTR_F_C_index": 2,
                 "_generated": "fortran_generic",
                 "_generated_path": [

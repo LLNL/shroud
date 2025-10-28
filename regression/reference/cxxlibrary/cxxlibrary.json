@@ -1079,7 +1079,6 @@
                     },
                     {
                         "<FUNCTION>": "check_length  7 ****************************************",
-                        "C_fortran_generic": true,
                         "_PTR_F_C_index": 2,
                         "_default_funcs": [
                             5
@@ -1246,7 +1245,6 @@
                     },
                     {
                         "<FUNCTION>": "check_length  8 ****************************************",
-                        "C_fortran_generic": true,
                         "_PTR_F_C_index": 2,
                         "_default_funcs": [
                             5
@@ -1926,7 +1924,6 @@
                     },
                     {
                         "<FUNCTION>": "declare  9 ****************************************",
-                        "C_fortran_generic": true,
                         "_PTR_F_C_index": 3,
                         "_default_funcs": [
                             6
@@ -2150,7 +2147,6 @@
                     },
                     {
                         "<FUNCTION>": "declare  10 ****************************************",
-                        "C_fortran_generic": true,
                         "_PTR_F_C_index": 3,
                         "_default_funcs": [
                             6

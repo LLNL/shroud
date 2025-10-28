@@ -1131,7 +1131,6 @@ class GenFunctions(object):
                 new._PTR_C_CXX_index = node._function_index
                 any_need_wrapper = True
             else:
-                new.C_fortran_generic = True
                 new._PTR_F_C_index = node._function_index
         
         # Do not process templated node, instead process

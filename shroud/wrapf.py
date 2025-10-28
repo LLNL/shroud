@@ -1080,7 +1080,7 @@ rv = .false.
         multiple Fortran wrappers.
         XXX - xlf does not allow this.
         """
-        if node.C_fortran_generic:
+        if node._PTR_F_C_index is not None:
             return
 
         cursor = self.cursor
