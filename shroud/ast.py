@@ -1543,7 +1543,7 @@ class FunctionNode(AstNode):
         self._has_default_arg = False
         self._nargs = None
         self._overloaded = False
-        self._gen_fortran_generic = False # An argument is assumed-rank.
+        self._gen_fortran_assumed_rank = False # An argument is assumed-rank.
         self._bind = {}                   # Access with get_func_bind or get_arg_bind
         self.splicer = {}
         self.fstatements = {}

@@ -476,7 +476,7 @@ class ToDict(visitor.Visitor):
                 "_has_default_arg",
                 "_nargs",
                 "_overloaded",
-                "_gen_fortran_generic",
+                "_gen_fortran_assumed_rank",
             ],
         )
         if node._orig_node is not None:

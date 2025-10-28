@@ -1538,7 +1538,7 @@
             },
             {
                 "<FUNCTION>": "SumValues  5 ****************************************",
-                "_gen_fortran_generic": true,
+                "_gen_fortran_assumed_rank": true,
                 "ast": {
                     "declarator": {
                         "name": "SumValues",

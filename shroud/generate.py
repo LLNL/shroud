@@ -187,7 +187,7 @@ class VerifyAttrs(object):
         # Flag node if any argument is assumed-rank.
         dim = attrs.get("dimension", None)  # assumed-rank
         if dim == "..":   # assumed-rank
-            node._gen_fortran_generic = True
+            node._gen_fortran_assumed_rank = True
 
 
 class GenFunctions(object):
@@ -773,7 +773,7 @@ class GenFunctions(object):
             ordered.append(node)
             if not node.wrap.fortran:
                 continue
-            if node._gen_fortran_generic and not node.options.F_CFI:
+            if node._gen_fortran_assumed_rank and not node.options.F_CFI:
                 self.process_assumed_rank(node)
             if node.fortran_generic:
                 node._overloaded = True
