@@ -802,6 +802,8 @@ contains
     !>
     !! \brief scalar or array argument using assumed rank
     !!
+    !! Create a function for each rank and a generic interface
+    !! to call them by one name.
     !<
     function sum_values_0d(values, nvalues) &
             result(SHT_rv)
@@ -827,6 +829,8 @@ contains
     !>
     !! \brief scalar or array argument using assumed rank
     !!
+    !! Create a function for each rank and a generic interface
+    !! to call them by one name.
     !<
     function sum_values_1d(values, nvalues) &
             result(SHT_rv)
@@ -852,6 +856,8 @@ contains
     !>
     !! \brief scalar or array argument using assumed rank
     !!
+    !! Create a function for each rank and a generic interface
+    !! to call them by one name.
     !<
     function sum_values_2d(values, nvalues) &
             result(SHT_rv)

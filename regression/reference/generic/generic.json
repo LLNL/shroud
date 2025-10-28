@@ -1585,7 +1585,8 @@
                 "decl": "int SumValues(const int *values+dimension(..), int nvalues)",
                 "declgen": "int SumValues(const int *values, int nvalues)",
                 "doxygen": {
-                    "brief": "scalar or array argument using assumed rank"
+                    "brief": "scalar or array argument using assumed rank",
+                    "description": "Create a function for each rank and a generic interface\nto call them by one name.\n"
                 },
                 "fortran_generic": [
                     {
@@ -1783,7 +1784,8 @@
                 "decl": "int SumValues(const int *values+dimension(..), int nvalues)",
                 "declgen": "int SumValues(const int *values +rank(0), int nvalues)",
                 "doxygen": {
-                    "brief": "scalar or array argument using assumed rank"
+                    "brief": "scalar or array argument using assumed rank",
+                    "description": "Create a function for each rank and a generic interface\nto call them by one name.\n"
                 },
                 "name": "SumValues",
                 "options": {
@@ -2014,7 +2016,8 @@
                 "decl": "int SumValues(const int *values+dimension(..), int nvalues)",
                 "declgen": "int SumValues(const int *values +rank(1), int nvalues)",
                 "doxygen": {
-                    "brief": "scalar or array argument using assumed rank"
+                    "brief": "scalar or array argument using assumed rank",
+                    "description": "Create a function for each rank and a generic interface\nto call them by one name.\n"
                 },
                 "name": "SumValues",
                 "options": {
@@ -2248,7 +2251,8 @@
                 "decl": "int SumValues(const int *values+dimension(..), int nvalues)",
                 "declgen": "int SumValues(const int *values +rank(2), int nvalues)",
                 "doxygen": {
-                    "brief": "scalar or array argument using assumed rank"
+                    "brief": "scalar or array argument using assumed rank",
+                    "description": "Create a function for each rank and a generic interface\nto call them by one name.\n"
                 },
                 "name": "SumValues",
                 "options": {

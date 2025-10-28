@@ -21,6 +21,8 @@ static CFI_index_t SHT_lower_CFI[CFI_MAX_RANK] = {1};
 /**
  * \brief scalar or array argument using assumed rank
  *
+ * Create a function for each rank and a generic interface
+ * to call them by one name.
  */
 // ----------------------------------------
 // Function:  int SumValues
