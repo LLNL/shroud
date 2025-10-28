@@ -1538,7 +1538,7 @@
             },
             {
                 "<FUNCTION>": "SumValues  5 ****************************************",
-                "_gen_fortran_generic": true,
+                "_gen_fortran_assumed_rank": true,
                 "ast": {
                     "declarator": {
                         "name": "SumValues",
@@ -1583,7 +1583,8 @@
                 "decl": "int SumValues(const int *values+dimension(..), int nvalues)",
                 "declgen": "int SumValues(const int *values +dimension(..), int nvalues)",
                 "doxygen": {
-                    "brief": "scalar or array argument using assumed rank"
+                    "brief": "scalar or array argument using assumed rank",
+                    "description": "Create a function for each rank and a generic interface\nto call them by one name.\n"
                 },
                 "name": "SumValues",
                 "options": {

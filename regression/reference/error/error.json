@@ -1077,7 +1077,7 @@
             },
             {
                 "<FUNCTION>": "AssumedRank  7 ****************************************",
-                "_gen_fortran_generic": true,
+                "_gen_fortran_assumed_rank": true,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1330,7 +1330,7 @@
                 "<FUNCTION>": "AssumedRank  10 ****************************************",
                 "C_force_wrapper": true,
                 "_PTR_C_CXX_index": 7,
-                "_gen_fortran_generic": true,
+                "_gen_fortran_assumed_rank": true,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -1476,7 +1476,7 @@
                 "<FUNCTION>": "AssumedRank  11 ****************************************",
                 "C_force_wrapper": true,
                 "_PTR_C_CXX_index": 7,
-                "_gen_fortran_generic": true,
+                "_gen_fortran_assumed_rank": true,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -1625,7 +1625,7 @@
                 "<FUNCTION>": "AssumedRank  12 ****************************************",
                 "C_force_wrapper": true,
                 "_PTR_C_CXX_index": 7,
-                "_gen_fortran_generic": true,
+                "_gen_fortran_assumed_rank": true,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"

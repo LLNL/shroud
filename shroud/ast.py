@@ -1488,7 +1488,7 @@ class FunctionNode(AstNode):
     _generated_path  - list of generated functions
     _orig_node       - Original YAML node for generated functions.
     _PTR_F_C_index   - Used by fortran wrapper to find index of
-                       C function to call
+                       C function to call. Used with fortran_generic.
     _PTR_C_CXX_index - Used by C wrapper to find index of C++ function
                        to call
 
@@ -1511,8 +1511,6 @@ class FunctionNode(AstNode):
 
     C_signature - statement.index signature of C wrapper.
        Used to avoid writing the same function twice. 
-    C_fortran_generic = if True, multiple version of the Fortran
-       wrappers will call a single C wrapper.
     """
 
     def __init__(
@@ -1545,7 +1543,7 @@ class FunctionNode(AstNode):
         self._has_default_arg = False
         self._nargs = None
         self._overloaded = False
-        self._gen_fortran_generic = False # An argument is assumed-rank.
+        self._gen_fortran_assumed_rank = False # An argument is assumed-rank.
         self._bind = {}                   # Access with get_func_bind or get_arg_bind
         self.splicer = {}
         self.fstatements = {}
@@ -1556,7 +1554,6 @@ class FunctionNode(AstNode):
         self.C_node = None   # C wrapper required by Fortran wrapper
         self.C_force_wrapper = False
         self.C_signature = None
-        self.C_fortran_generic = False
         self.C_shared_method = False      # True if method of a smart pointer (ex. use_count)
 
         # self.function_index = []
@@ -1643,7 +1640,14 @@ class FunctionNode(AstNode):
             generic.parse_generic(self.symtab)
             newparams = copy.deepcopy(declarator.params)
             first = len(newparams) + 1
+            found = {}
             for garg in generic.decls:
+                user_name = garg.declarator.user_name
+                if user_name in found:
+                    error.cursor.ast(self.linenumber,
+                                     "Error in 'fortran_generic', argument '{}' specified more than once".format(
+                                        garg.declarator.user_name))
+                found[user_name] = True
                 i = declast.find_arg_index_by_name(newparams, garg.declarator.user_name)
                 if i < 0:
                     # XXX - For default argument, the generic argument may not exist.

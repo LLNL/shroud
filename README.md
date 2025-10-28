@@ -66,6 +66,8 @@ Presentation at FortranCon2020
 https://www.youtube.com/watch?v=1mdI-M94vDc
 [Slides](./pdf/Shroud-forcon.pdf)
 
+For development processes see the [HACKING](./HACKING.md) file.
+
 ## Mailing List
 
 shroud-users@groups.io

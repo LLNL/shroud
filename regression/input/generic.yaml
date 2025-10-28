@@ -65,6 +65,9 @@ declarations:
 - decl: int SumValues(const int *values+dimension(..), int nvalues)
   doxygen:
     brief: scalar or array argument using assumed rank
+    description: |
+      Create a function for each rank and a generic interface
+      to call them by one name.
   options:
     F_assumed_rank_max: 2
 

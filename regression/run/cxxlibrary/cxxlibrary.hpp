@@ -89,5 +89,10 @@ public:
     };
 };
 
+//----------------------------------------------------------------------
+
+Class1 *getView(const std::string& path);
+Class1 *getView( const long idx );
+
 #endif // CXXLIBRARY_H
 

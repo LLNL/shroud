@@ -122,7 +122,7 @@ CLA_Class1 * CLA_getclass2(CLA_Class1 *SHC_rv)
     const classes::Class1 *SHC_rv_cxx = classes::getclass2();
     SHC_rv->addr  = const_cast<classes::Class1 *>(SHC_rv_cxx);
     SHC_rv->idtor = 0;
-    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE;
     return SHC_rv;
     // splicer end function.getclass2
 }
@@ -140,7 +140,7 @@ void CLA_getclass2_bufferify(CLA_Class1 *SHC_rv)
     const classes::Class1 *SHC_rv_cxx = classes::getclass2();
     SHC_rv->addr  = const_cast<classes::Class1 *>(SHC_rv_cxx);
     SHC_rv->idtor = 0;
-    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE;
     // splicer end function.getclass2_bufferify
 }
 
@@ -157,7 +157,7 @@ CLA_Class1 * CLA_getclass3(CLA_Class1 *SHC_rv)
     classes::Class1 *SHC_rv_cxx = classes::getclass3();
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
-    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE;
     return SHC_rv;
     // splicer end function.getclass3
 }
@@ -175,7 +175,7 @@ void CLA_getclass3_bufferify(CLA_Class1 *SHC_rv)
     classes::Class1 *SHC_rv_cxx = classes::getclass3();
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
-    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE;
     // splicer end function.getclass3_bufferify
 }
 
@@ -192,7 +192,7 @@ void CLA_getclass2_void(CLA_Class1 *SHC_rv)
     const classes::Class1 *SHC_rv_cxx = classes::getclass2_void();
     SHC_rv->addr  = const_cast<classes::Class1 *>(SHC_rv_cxx);
     SHC_rv->idtor = 0;
-    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE;
     // splicer end function.getclass2_void
 }
 
@@ -209,7 +209,7 @@ void CLA_getclass3_void(CLA_Class1 *SHC_rv)
     classes::Class1 *SHC_rv_cxx = classes::getclass3_void();
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
-    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE;
     // splicer end function.getclass3_void
 }
 
@@ -227,7 +227,7 @@ CLA_Class1 * CLA_getConstClassReference(CLA_Class1 *SHC_rv)
         );
     SHC_rv->addr  = const_cast<classes::Class1 *>(&SHC_rv_cxx);
     SHC_rv->idtor = 0;
-    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE;
     return SHC_rv;
     // splicer end function.getConstClassReference
 }
@@ -246,7 +246,7 @@ void CLA_getConstClassReference_bufferify(CLA_Class1 *SHC_rv)
         );
     SHC_rv->addr  = const_cast<classes::Class1 *>(&SHC_rv_cxx);
     SHC_rv->idtor = 0;
-    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE;
     // splicer end function.getConstClassReference_bufferify
 }
 
@@ -259,7 +259,7 @@ CLA_Class1 * CLA_getClassReference(CLA_Class1 *SHC_rv)
     classes::Class1 &SHC_rv_cxx = classes::getClassReference();
     SHC_rv->addr  = &SHC_rv_cxx;
     SHC_rv->idtor = 0;
-    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE;
     return SHC_rv;
     // splicer end function.getClassReference
 }
@@ -273,7 +273,7 @@ void CLA_getClassReference_bufferify(CLA_Class1 *SHC_rv)
     classes::Class1 &SHC_rv_cxx = classes::getClassReference();
     SHC_rv->addr  = &SHC_rv_cxx;
     SHC_rv->idtor = 0;
-    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE;
     // splicer end function.getClassReference_bufferify
 }
 
@@ -296,7 +296,7 @@ CLA_Class1 * CLA_getClass1Copy(int flag, CLA_Class1 *SHC_rv)
     *SHC_rv_cxx = classes::getClass1Copy(flag);
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 1;
-    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE;
     return SHC_rv;
     // splicer end function.getClass1Copy
 }
@@ -320,7 +320,7 @@ void CLA_getClass1Copy_bufferify(int flag, CLA_Class1 *SHC_rv)
     *SHC_rv_cxx = classes::getClass1Copy(flag);
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 1;
-    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE;
     // splicer end function.getClass1Copy_bufferify
 }
 

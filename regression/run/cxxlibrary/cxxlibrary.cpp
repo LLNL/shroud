@@ -11,6 +11,7 @@
 
 static Cstruct1_cls global_Cstruct1_cls;
 static std::string global_string("global-string");
+static Class1 global_class1;
 
 //----------------------------------------------------------------------
 namespace structns {
@@ -105,4 +106,17 @@ void accept_complex(std::complex<double> *arg1)
 const std::string& getGroupName(long idx)
 {
     return global_string;
+}
+
+//----------------------------------------------------------------------
+// Test overload with fortran_generic for long argument.
+
+Class1 *getView(const std::string& path)
+{
+    return &global_class1;
+}
+
+Class1 *getView( const long idx )
+{
+    return &global_class1;
 }

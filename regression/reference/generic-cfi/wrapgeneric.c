@@ -21,6 +21,8 @@ static CFI_index_t SHT_lower_CFI[CFI_MAX_RANK] = {1};
 /**
  * \brief scalar or array argument using assumed rank
  *
+ * Create a function for each rank and a generic interface
+ * to call them by one name.
  */
 // ----------------------------------------
 // Function:  int SumValues
@@ -306,7 +308,7 @@ void GEN_CreateStructAsClass_bufferify(GEN_StructAsClass *SHC_rv)
     StructAsClass *SHC_rv_cxx = CreateStructAsClass();
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 1;
-    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE;
     // splicer end function.CreateStructAsClass_bufferify
 }
 

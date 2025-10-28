@@ -1538,7 +1538,7 @@
             },
             {
                 "<FUNCTION>": "SumValues  5 ****************************************",
-                "_gen_fortran_generic": true,
+                "_gen_fortran_assumed_rank": true,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1581,7 +1581,8 @@
                 "decl": "int SumValues(const int *values+dimension(..), int nvalues)",
                 "declgen": "int SumValues(const int *values, int nvalues)",
                 "doxygen": {
-                    "brief": "scalar or array argument using assumed rank"
+                    "brief": "scalar or array argument using assumed rank",
+                    "description": "Create a function for each rank and a generic interface\nto call them by one name.\n"
                 },
                 "fortran_generic": [
                     {
@@ -1728,7 +1729,7 @@
                 "<FUNCTION>": "SumValues  17 ****************************************",
                 "C_force_wrapper": true,
                 "_PTR_C_CXX_index": 5,
-                "_gen_fortran_generic": true,
+                "_gen_fortran_assumed_rank": true,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -1779,7 +1780,8 @@
                 "decl": "int SumValues(const int *values+dimension(..), int nvalues)",
                 "declgen": "int SumValues(const int *values +rank(0), int nvalues)",
                 "doxygen": {
-                    "brief": "scalar or array argument using assumed rank"
+                    "brief": "scalar or array argument using assumed rank",
+                    "description": "Create a function for each rank and a generic interface\nto call them by one name.\n"
                 },
                 "name": "SumValues",
                 "options": {
@@ -1959,7 +1961,7 @@
                 "<FUNCTION>": "SumValues  18 ****************************************",
                 "C_force_wrapper": true,
                 "_PTR_C_CXX_index": 5,
-                "_gen_fortran_generic": true,
+                "_gen_fortran_assumed_rank": true,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -2010,7 +2012,8 @@
                 "decl": "int SumValues(const int *values+dimension(..), int nvalues)",
                 "declgen": "int SumValues(const int *values +rank(1), int nvalues)",
                 "doxygen": {
-                    "brief": "scalar or array argument using assumed rank"
+                    "brief": "scalar or array argument using assumed rank",
+                    "description": "Create a function for each rank and a generic interface\nto call them by one name.\n"
                 },
                 "name": "SumValues",
                 "options": {
@@ -2193,7 +2196,7 @@
                 "<FUNCTION>": "SumValues  19 ****************************************",
                 "C_force_wrapper": true,
                 "_PTR_C_CXX_index": 5,
-                "_gen_fortran_generic": true,
+                "_gen_fortran_assumed_rank": true,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -2244,7 +2247,8 @@
                 "decl": "int SumValues(const int *values+dimension(..), int nvalues)",
                 "declgen": "int SumValues(const int *values +rank(2), int nvalues)",
                 "doxygen": {
-                    "brief": "scalar or array argument using assumed rank"
+                    "brief": "scalar or array argument using assumed rank",
+                    "description": "Create a function for each rank and a generic interface\nto call them by one name.\n"
                 },
                 "name": "SumValues",
                 "options": {

@@ -187,7 +187,7 @@ class VerifyAttrs(object):
         # Flag node if any argument is assumed-rank.
         dim = attrs.get("dimension", None)  # assumed-rank
         if dim == "..":   # assumed-rank
-            node._gen_fortran_generic = True
+            node._gen_fortran_assumed_rank = True
 
 
 class GenFunctions(object):
@@ -773,7 +773,7 @@ class GenFunctions(object):
             ordered.append(node)
             if not node.wrap.fortran:
                 continue
-            if node._gen_fortran_generic and not node.options.F_CFI:
+            if node._gen_fortran_assumed_rank and not node.options.F_CFI:
                 self.process_assumed_rank(node)
             if node.fortran_generic:
                 node._overloaded = True
@@ -1091,7 +1091,6 @@ class GenFunctions(object):
             self.append_function_index(new)
             new._generated = "fortran_generic"
             new._generated_path.append("fortran_generic")
-            new.wrap.assign(fortran=True)
             fmt = new.fmtdict
             # XXX append to existing suffix
             if generic.fmtdict:
@@ -1109,6 +1108,8 @@ class GenFunctions(object):
             need_wrapper = False
             if new.return_this:
                 pass
+            elif new.ast.typemap.sgroup == "shadow":
+                pass
             elif new.ast.declarator.is_indirect():
                 need_wrapper = True
             
@@ -1123,13 +1124,13 @@ class GenFunctions(object):
                     break
 
             if need_wrapper:
-                # The C wrapper is required to cast constants.
+                # The C wrapper is required to cast constants
+                # and return indirects.
                 # generic.yaml: GenericReal
                 new.C_force_wrapper = True
                 new._PTR_C_CXX_index = node._function_index
                 any_need_wrapper = True
             else:
-                new.C_fortran_generic = True
                 new._PTR_F_C_index = node._function_index
         
         # Do not process templated node, instead process

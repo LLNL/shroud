@@ -1205,15 +1205,14 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         if options.debug_index:
             stmts_comments.append("// Signature: " + signature)
 
-        if node.C_fortran_generic:
-            # Use a previously generated C wrapper
-            need_wrapper = False
-
         need_wrapper = need_wrapper or stmt_need_wrapper
         if wlang == "c":
             node.wrap.signature_c = signature
         elif wlang == "f":
             node.wrap.signature_f = signature
+            if node._PTR_F_C_index is not None:
+                # Use a previously generated C wrapper
+                need_wrapper = False
 
         if need_wrapper:
             impl = []

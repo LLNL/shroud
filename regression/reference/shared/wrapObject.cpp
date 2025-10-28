@@ -85,7 +85,7 @@ SHA_Object_shared * SHA_Object_createChildA(SHA_Object * self,
     std::shared_ptr<Object> *SHC_rv_cxx = SH_this->createChildA();
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
-    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE;
     return SHC_rv;
     // splicer end class.Object.method.createChildA
 }
@@ -101,7 +101,7 @@ void SHA_Object_createChildA_bufferify(SHA_Object * self,
     std::shared_ptr<Object> *SHC_rv_cxx = SH_this->createChildA();
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
-    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE;
     // splicer end class.Object.method.createChildA_bufferify
 }
 
@@ -116,7 +116,7 @@ SHA_Object_shared * SHA_Object_createChildB(SHA_Object * self,
     std::shared_ptr<Object> *SHC_rv_cxx = SH_this->createChildB();
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
-    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE;
     return SHC_rv;
     // splicer end class.Object.method.createChildB
 }
@@ -132,7 +132,7 @@ void SHA_Object_createChildB_bufferify(SHA_Object * self,
     std::shared_ptr<Object> *SHC_rv_cxx = SH_this->createChildB();
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
-    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
+    SHC_rv->cmemflags = SWIG_MEM_RVALUE;
     // splicer end class.Object.method.createChildB_bufferify
 }
 
