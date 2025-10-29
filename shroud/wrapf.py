@@ -691,7 +691,7 @@ rv = .false.
         cursor.push_phase("Wrapf.wrap_function_interface")
         for node in functions:
             wrap = node.wrap
-            if wrap.c and wrap.signature_c != wrap.signature_f:
+            if wrap.c and wrap.signature_c != wrap.signature_i:
                 self.log.write("C-interface c {0.declgen}\n".format(
                     node))
                 self.wrap_function_interface("c", cls, node, fileinfo)
@@ -1209,6 +1209,9 @@ rv = .false.
             modules, fmt_result.F_module_name, imports
         )
 
+        if options.debug_index and node.wrap.signature_i:
+            stmts_comments.append("! Signature: " + node.wrap.signature_i)
+
         c_interface = []
         if node.cpp_if:
             c_interface.append("#" + node.cpp_if)
@@ -1413,6 +1416,11 @@ rv = .false.
 
         fileinfo.apply_helpers_from_stmts(node)
 
+        stmt_indexes = []
+        stmt_indexes.append(result_stmt.index)
+        if r_bind.fstmts:
+            stmt_indexes.append(r_bind.fstmts)
+        
         stmts_comments = []
         if options.debug:
             if node._generated_path:
@@ -1487,6 +1495,7 @@ rv = .false.
                 continue
             
             func_cursor.stmt = arg_stmt
+            stmt_indexes.append(arg_stmt.index)
             arg_typemap = self.fill_fortran_arg(
                 cls, node, C_node, f_arg, c_arg, arg_bind)
 
@@ -1717,6 +1726,12 @@ rv = .false.
             )
             
         arg_f_use = self.sort_module_info(modules, fmt_result.F_module_name)
+
+        signature = ":".join(stmt_indexes)
+        node.signatures["f"] = signature
+        if options.debug_index:
+            stmts_comments.append("! Signature: " + signature)
+        
 
         if need_wrapper or options.debug:
             impl = []

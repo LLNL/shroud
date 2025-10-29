@@ -32,6 +32,7 @@ class WrapFlags(object):
         self.lua = options.get("wrap_lua", False)
         self.python = options.get("wrap_python", False)
         self.signature_c = None
+        self.signature_i = None  # Fortran interface
         self.signature_f = None
 
     def clear(self):
@@ -1477,9 +1478,14 @@ class FunctionNode(AstNode):
     statements = {
       'c': {
          'result_buf':
-       },
-       'f': {
-       },
+      },
+      'f': {
+      },
+    }
+
+    signatures = {
+      'c': '1:2:3',
+      'f': '4:5',
     }
 
     _function_index  - sequence number function,
@@ -1549,6 +1555,7 @@ class FunctionNode(AstNode):
         self.fstatements = {}
         self.struct_parent = None         # Function is a getter/setter for a struct
         self.struct_members = {}          # VariableNode for class ctor
+        self.signatures = {}
 
         # Fortran wapper variables.
         self.C_node = None   # C wrapper required by Fortran wrapper

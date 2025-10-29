@@ -1208,8 +1208,11 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         need_wrapper = need_wrapper or stmt_need_wrapper
         if wlang == "c":
             node.wrap.signature_c = signature
+            node.signatures["c"] = signature
         elif wlang == "f":
-            node.wrap.signature_f = signature
+            # Fortran interface for C function.
+            node.wrap.signature_i = signature
+            node.signatures["i"] = signature
             if node._PTR_F_C_index is not None:
                 # Use a previously generated C wrapper
                 need_wrapper = False

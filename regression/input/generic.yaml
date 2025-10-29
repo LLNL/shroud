@@ -5,6 +5,7 @@ copyright:
 -
 
 # Test fortran_generic
+# Since language=c, no C wrappers will be generated.
 
 library: generic
 cxx_header: generic.h helper.h
@@ -12,6 +13,7 @@ language: c
 
 options:
   debug: True
+#  debug_index: True
   wrap_python: False
   wrap_lua: False
   literalinclude2: True
