@@ -1113,6 +1113,9 @@ class GenFunctions(object):
             need_wrapper = False
             if new.return_this:
                 pass
+            elif new.ast.typemap.sgroup == "shadow":
+                # cxxlibrary.yaml getView with fortran_generic
+                pass
             elif new.ast.declarator.is_indirect():
                 need_wrapper = True
             

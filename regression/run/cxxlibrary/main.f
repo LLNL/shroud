@@ -185,11 +185,26 @@ contains
 
   subroutine test_fortran_generic
     use cxxlibrary_mod
-    type(class1) obj1
+    type(class1) obj1a, obj2a, obj3a
+    type(class1) obj1b, obj2b, obj3b
 
     call set_case_name("fortran_generic")
 
-    obj1 = get_view_from_name("byname")
+    ! Call specific name
+
+    obj1a = get_view_from_name("byname")
+
+    obj2a = get_view_from_index_int32_t(1_C_INT32_T)
+
+    obj3a = get_view_from_index_int64_t(2_C_INT64_T)
+
+    ! Call generic name
+    
+    obj1b = get_view("byname")
+
+    obj2b = get_view(1_C_INT32_T)
+
+    obj2b = get_view(2_C_INT64_T)
 
   end subroutine test_fortran_generic
     

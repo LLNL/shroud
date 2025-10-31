@@ -83,6 +83,9 @@ void CXX_getView_from_name_bufferify(char *path, int SHT_path_len,
 
 CXX_Class1 * CXX_getView_from_index(const long idx, CXX_Class1 *SHC_rv);
 
+void CXX_getView_from_index_bufferify(const long idx,
+    CXX_Class1 *SHC_rv);
+
 void CXX_nested_get_parent(CXX_nested *SH_this,
     CXX_SHROUD_array *SHT_rv_cdesc);
 

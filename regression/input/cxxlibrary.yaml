@@ -151,6 +151,5 @@ declarations:
   - decl: (int64_t idx)
     function_suffix: _int64_t
   options:
-    wrap_fortran: False
     wrap_python: False
 
