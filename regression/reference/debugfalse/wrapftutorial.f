@@ -268,16 +268,6 @@ module tutorial_mod
     end interface
 
     interface
-        subroutine c_fortran_generic_overloaded_1(name, arg2) &
-                bind(C, name="TUT_FortranGenericOverloaded_1")
-            use iso_c_binding, only : C_CHAR, C_DOUBLE
-            implicit none
-            character(kind=C_CHAR), intent(IN) :: name(*)
-            real(C_DOUBLE), value, intent(IN) :: arg2
-        end subroutine c_fortran_generic_overloaded_1
-    end interface
-
-    interface
         subroutine c_fortran_generic_overloaded_1_float_bufferify(name, &
                 SHT_name_len, arg2) &
                 bind(C, name="TUT_FortranGenericOverloaded_1_float_bufferify")

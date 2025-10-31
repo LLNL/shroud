@@ -256,7 +256,7 @@ Argument Coercion
 ^^^^^^^^^^^^^^^^^
 
 The C compiler will coerce arguments in a function call to the type of
-the argument in the prototype.  This makes it very easy to pass an
+the argument in the prototype.  This makes it very easy to pass a
 ``float`` to a function which is expecting a ``double``.  Fortran,
 which defaults to pass by reference, does not have this feature since
 it is passing the address of the argument. This corresponds to C's
@@ -264,11 +264,12 @@ behavior since it cannot coerce a ``float *`` to a ``double *``. When
 passing a literal ``0.0`` as a ``float`` argument it is necessary to
 use ``0.0_C_DOUBLE``.
 
-Shroud can create a generic interface for function which will
+Shroud can create a generic interface for functions which will
 coerce arguments similar to C's behavior.
-The *fortran_generic* section variations of arguments which will be
+The *fortran_generic* section describes variations of arguments which will be
 used to create a generic interface. For example, when wrapping a function
 which takes a ``double``, the ``float`` variation can also be created.
+But like C, it will not automatically coerce a pointer argument.
 
 .. code-block:: yaml
 
@@ -288,12 +289,16 @@ procedures ``generic_real_float`` and ``generic_real_double``.
    :end-before: end generic interface generic_real
    :dedent: 4
 
-This can be used as
+This can be used as with different scalar constants and the
+wrapper will explicitly convert value before calling the
+library function.
 
 .. code-block:: fortran
                 
     call generic_real(0.0)
     call generic_real(0.0d0)
+    call generic_real(0.0_C_FLOAT)
+    call generic_real(0.0_C_DOUBLE)
     
     call generic_real_float(0.0)
     call generic_real_double(0.0d0)

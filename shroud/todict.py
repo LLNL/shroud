@@ -471,6 +471,7 @@ class ToDict(visitor.Visitor):
                 "C_error_pattern",
                 "PY_error_pattern",
                 "_default_funcs",
+                "_fortran_generic_wrap",
                 "_generated",
                 "_generated_path",
                 "_has_default_arg",

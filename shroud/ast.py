@@ -1572,6 +1572,7 @@ class FunctionNode(AstNode):
         self.template_arguments = kwargs.get("cxx_template", [])
         self.doxygen = kwargs.get("doxygen", {})
         self.fortran_generic = kwargs.get("fortran_generic", [])
+        self._fortran_generic_wrap = False
         self.return_this = kwargs.get("return_this", False)
         self.fcn_helpers = {}
 

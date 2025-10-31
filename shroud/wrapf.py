@@ -665,7 +665,7 @@ rv = .false.
         multiple Fortran wrappers.
 
         Create Fortran wrappers first.  If no real work to do,
-        F_C_name will be updated to call the C function directly.
+        i_name_function will be updated to call the library function directly.
 
         Parameters
         ----------
@@ -1082,6 +1082,8 @@ rv = .false.
         """
         if node._PTR_F_C_index is not None:
             return
+        if node.fortran_generic and node._fortran_generic_wrap is False:
+            return
 
         cursor = self.cursor
         func_cursor = cursor.push_node(node)
@@ -1392,12 +1394,13 @@ rv = .false.
         r_meta = r_bind.meta
         sintent = r_meta["intent"]
         fmt_result = r_bind.fmtdict
-        if C_node is node:
-            fmt_result.f_call_function = C_node._bind["f"]["+result"].fmtdict.i_name_function
+        if node._PTR_F_C_index is not None:
+            CC_node = self.newlibrary.function_index[node._PTR_F_C_index]
+            fmt_result.f_call_function = CC_node._bind["f"]["+result"].fmtdict.i_name_function
         else:
             # node is generated, ex fortran_generic
             # while C_node is the real function
-            fmt_result.f_call_function = C_node._bind["c"]["+result"].fmtdict.i_name_function
+            fmt_result.f_call_function = C_node._bind["f"]["+result"].fmtdict.i_name_function
         result_stmt = r_bind.stmt
         func_cursor.stmt = result_stmt
         self.fill_fortran_function(cls, node)
@@ -1624,6 +1627,10 @@ rv = .false.
             fileinfo.f_function_generic.setdefault(
                 fmt_func.F_name_generic, GenericFunction(True, cls, [])
             ).functions.append(node)
+        elif node._fortran_generic_wrap == True:
+            # Avoid adding to type bound generic functions.
+            # Only called by fortran_generic created functions.
+            pass
         elif options.F_create_generic:
             # if return type is templated in C++,
             # then do not set up generic since only the
@@ -1652,7 +1659,11 @@ rv = .false.
             type_bound_part = fileinfo.type_bound_part
             if node.cpp_if:
                 type_bound_part.append("#" + node.cpp_if)
-            if is_static:
+            if node._fortran_generic_wrap:
+                # Avoid adding to type bound generic functions.
+                # Only called by fortran_generic created functions.
+                pass
+            elif is_static:
                 append_format(type_bound_part,
                               "procedure, nopass :: {F_name_function} => {F_name_impl}",
                               fmt_result)
@@ -1731,7 +1742,10 @@ rv = .false.
         node.signatures["f"] = signature
         if options.debug_index:
             stmts_comments.append("! Signature: " + signature)
-        
+
+        if node._fortran_generic_wrap:
+            # Only called from fortran_generic generated function.
+            need_wrapper = False
 
         if need_wrapper or options.debug:
             impl = []
@@ -1764,11 +1778,17 @@ rv = .false.
         if need_wrapper:
             fileinfo.impl.append("")
             fileinfo.impl.extend(impl)
-        else:            
+        else:
             # Call the C function directly via bind(C)
             # by changing the i_name_function.
-            C_node._bind["f"]["+result"].fmtdict.i_name_function = fmt_result.F_name_impl
-            if options.debug:
+            # If the function is overloaded, use the interface name
+            # to avoid having the implementation name be the same as the generic name.
+            if not node._overloaded:
+                C_node._bind["f"]["+result"].fmtdict.i_name_function = fmt_result.F_name_impl
+            if node._fortran_generic_wrap:
+                # Only called from fortran_generic generated function.
+                pass
+            elif options.debug:
                 # Include wrapper which would of been generated.
                 fileinfo.impl.append("")
                 fileinfo.impl.append("#if 0")

@@ -433,6 +433,7 @@
             },
             {
                 "<FUNCTION>": "GenericReal  3 ****************************************",
+                "_fortran_generic_wrap": true,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -500,10 +501,10 @@
                     "literalinclude": true
                 },
                 "wrap": {
-                    "c": true
+                    "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
+                    "f": {
                         "+result": {
                             "fmtdict": {
                                 "C_call_function": "GenericReal(\targ)",
@@ -511,17 +512,21 @@
                                 "C_name": "GenericReal",
                                 "C_prototype": "double arg",
                                 "C_return_type": "void",
+                                "F_arg_c_call": "arg",
+                                "F_arguments": "arg",
+                                "F_subprogram": "subroutine",
+                                "f_call_function": "c_generic_real",
                                 "i_arguments": "arg",
                                 "i_name_function": "c_generic_real",
                                 "i_subprogram": "subroutine",
-                                "stmt_name": "c_subroutine",
+                                "stmt_name": "f_subroutine",
                                 "typemap_name": "void"
                             },
                             "meta": {
                                 "abstract": "void",
                                 "intent": "subroutine"
                             },
-                            "stmt": "c_subroutine"
+                            "stmt": "f_subroutine"
                         },
                         "arg": {
                             "fmtdict": {
@@ -545,6 +550,7 @@
                                 "f_type": "real(C_DOUBLE)",
                                 "f_value_attr": ", value",
                                 "f_var": "arg",
+                                "fc_var": "arg",
                                 "i_intent": "IN",
                                 "i_intent_attr": ", intent(IN)",
                                 "i_kind": "C_DOUBLE",
@@ -552,7 +558,7 @@
                                 "i_type": "real(C_DOUBLE)",
                                 "i_var": "arg",
                                 "idtor": "0",
-                                "stmt_name": "c_in_native",
+                                "stmt_name": "f_in_native",
                                 "typemap_name": "double"
                             },
                             "meta": {
@@ -560,7 +566,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -582,8 +588,11 @@
                 "zz_fmtdict": {
                     "C_name_api": "GenericReal",
                     "F_name_api": "generic_real",
-                    "c_arglist": [
-                        "c_var",
+                    "F_name_function": "generic_real",
+                    "F_name_generic": "generic_real",
+                    "F_name_impl": "generic_real",
+                    "f_arglist": [
+                        "f_var",
                         "arg"
                     ],
                     "function_name": "GenericReal"
@@ -863,6 +872,7 @@
             },
             {
                 "<FUNCTION>": "GenericReal2  4 ****************************************",
+                "_fortran_generic_wrap": true,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -959,10 +969,10 @@
                 "name": "GenericReal2",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "fortran": true
                 },
                 "zz_bind": {
-                    "c": {
+                    "f": {
                         "+result": {
                             "fmtdict": {
                                 "C_call_function": "GenericReal2(\targ1,\t arg2)",
@@ -970,6 +980,9 @@
                                 "C_name": "GenericReal2",
                                 "C_prototype": "long arg1,\t long arg2",
                                 "C_return_type": "long",
+                                "F_arg_c_call": "arg1,\t arg2",
+                                "F_arguments": "arg1,\t arg2",
+                                "F_subprogram": "function",
                                 "c_const": "",
                                 "c_get_value": "",
                                 "c_type": "long",
@@ -979,10 +992,13 @@
                                 "cxx_nonconst_ptr": "&SHC_rv",
                                 "cxx_type": "long",
                                 "cxx_var": "SHC_rv",
+                                "f_call_function": "c_generic_real2",
                                 "f_kind": "C_LONG",
                                 "f_module_name": "iso_c_binding",
+                                "f_result_clause": "\fresult(SHT_rv)",
                                 "f_type": "integer(C_LONG)",
                                 "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
                                 "i_arguments": "arg1,\t arg2",
                                 "i_kind": "C_LONG",
                                 "i_module_name": "iso_c_binding",
@@ -992,14 +1008,14 @@
                                 "i_type": "integer(C_LONG)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
-                                "stmt_name": "c_function_native",
+                                "stmt_name": "f_function_native",
                                 "typemap_name": "long"
                             },
                             "meta": {
                                 "abstract": "native",
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native"
+                            "stmt": "f_function_native"
                         },
                         "arg1": {
                             "fmtdict": {
@@ -1023,6 +1039,7 @@
                                 "f_type": "integer(C_LONG)",
                                 "f_value_attr": ", value",
                                 "f_var": "arg1",
+                                "fc_var": "arg1",
                                 "i_intent": "IN",
                                 "i_intent_attr": ", intent(IN)",
                                 "i_kind": "C_LONG",
@@ -1030,7 +1047,7 @@
                                 "i_type": "integer(C_LONG)",
                                 "i_var": "arg1",
                                 "idtor": "0",
-                                "stmt_name": "c_in_native",
+                                "stmt_name": "f_in_native",
                                 "typemap_name": "long"
                             },
                             "meta": {
@@ -1038,7 +1055,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native"
+                            "stmt": "f_in_native"
                         },
                         "arg2": {
                             "fmtdict": {
@@ -1062,6 +1079,7 @@
                                 "f_type": "integer(C_LONG)",
                                 "f_value_attr": ", value",
                                 "f_var": "arg2",
+                                "fc_var": "arg2",
                                 "i_intent": "IN",
                                 "i_intent_attr": ", intent(IN)",
                                 "i_kind": "C_LONG",
@@ -1069,7 +1087,7 @@
                                 "i_type": "integer(C_LONG)",
                                 "i_var": "arg2",
                                 "idtor": "0",
-                                "stmt_name": "c_in_native",
+                                "stmt_name": "f_in_native",
                                 "typemap_name": "long"
                             },
                             "meta": {
@@ -1077,7 +1095,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -1106,8 +1124,11 @@
                 "zz_fmtdict": {
                     "C_name_api": "GenericReal2",
                     "F_name_api": "generic_real2",
-                    "c_arglist": [
-                        "SHC_rv",
+                    "F_name_function": "generic_real2",
+                    "F_name_generic": "generic_real2",
+                    "F_name_impl": "generic_real2",
+                    "f_arglist": [
+                        "SHT_rv",
                         "arg1",
                         "arg2"
                     ],
@@ -6459,7 +6480,6 @@
             "generic"
         ],
         "wrap": {
-            "c": true,
             "fortran": true
         }
     },

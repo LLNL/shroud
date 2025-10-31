@@ -891,6 +891,7 @@
                         "_default_funcs": [
                             5
                         ],
+                        "_fortran_generic_wrap": true,
                         "_has_default_arg": true,
                         "_nargs": [
                             0,
@@ -964,7 +965,8 @@
                         "name": "check_length",
                         "options": {},
                         "wrap": {
-                            "c": true
+                            "c": true,
+                            "fortran": true
                         },
                         "zz_bind": {
                             "c": {
@@ -984,18 +986,7 @@
                                         "cxx_nonconst_ptr": "&SHC_rv",
                                         "cxx_type": "int",
                                         "cxx_var": "SHC_rv",
-                                        "f_kind": "C_INT",
-                                        "f_module_name": "iso_c_binding",
-                                        "f_type": "integer(C_INT)",
-                                        "f_var": "SHT_rv",
-                                        "i_arguments": "self,\t length",
-                                        "i_kind": "C_INT",
-                                        "i_module_name": "iso_c_binding",
                                         "i_name_function": "c_class1_check_length_1",
-                                        "i_result_clause": "\fresult(SHT_rv)",
-                                        "i_subprogram": "function",
-                                        "i_type": "integer(C_INT)",
-                                        "i_var": "SHT_rv",
                                         "idtor": "0",
                                         "stmt_name": "c_function_native",
                                         "typemap_name": "int"
@@ -1023,17 +1014,9 @@
                                         "cxx_var": "length",
                                         "f_intent": "IN",
                                         "f_intent_attr": ", intent(IN)",
-                                        "f_kind": "C_INT",
-                                        "f_module_name": "iso_c_binding",
-                                        "f_type": "integer(C_INT)",
                                         "f_value_attr": ", value",
-                                        "f_var": "length",
                                         "i_intent": "IN",
                                         "i_intent_attr": ", intent(IN)",
-                                        "i_kind": "C_INT",
-                                        "i_module_name": "iso_c_binding",
-                                        "i_type": "integer(C_INT)",
-                                        "i_var": "length",
                                         "idtor": "0",
                                         "stmt_name": "c_in_native",
                                         "typemap_name": "int"
@@ -1044,6 +1027,92 @@
                                         "value": true
                                     },
                                     "stmt": "c_in_native"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->check_length(\tlength)",
+                                        "C_call_list": "length",
+                                        "C_name": "CXX_Class1_check_length_1",
+                                        "C_prototype": "CXX_Class1 * self,\t int length",
+                                        "C_return_type": "int",
+                                        "F_arg_c_call": "obj%cxxmem,\t length",
+                                        "F_arguments": "obj,\t length",
+                                        "F_subprogram": "function",
+                                        "c_const": "",
+                                        "c_get_value": "",
+                                        "c_type": "int",
+                                        "c_var": "SHC_rv",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHC_rv",
+                                        "cxx_type": "int",
+                                        "cxx_var": "SHC_rv",
+                                        "f_call_function": "c_class1_check_length_1",
+                                        "f_kind": "C_INT",
+                                        "f_module_name": "iso_c_binding",
+                                        "f_result_clause": "\fresult(SHT_rv)",
+                                        "f_type": "integer(C_INT)",
+                                        "f_var": "SHT_rv",
+                                        "fc_var": "SHT_rv",
+                                        "i_arguments": "self,\t length",
+                                        "i_kind": "C_INT",
+                                        "i_module_name": "iso_c_binding",
+                                        "i_name_function": "c_class1_check_length_1",
+                                        "i_result_clause": "\fresult(SHT_rv)",
+                                        "i_subprogram": "function",
+                                        "i_type": "integer(C_INT)",
+                                        "i_var": "SHT_rv",
+                                        "idtor": "0",
+                                        "stmt_name": "f_function_native",
+                                        "typemap_name": "int"
+                                    },
+                                    "meta": {
+                                        "abstract": "native",
+                                        "intent": "function"
+                                    },
+                                    "stmt": "f_function_native"
+                                },
+                                "length": {
+                                    "fmtdict": {
+                                        "c_abstract_decl": "int",
+                                        "c_addr": "&",
+                                        "c_const": "",
+                                        "c_deref": "",
+                                        "c_member": ".",
+                                        "c_type": "int",
+                                        "c_var": "length",
+                                        "cxx_abstract_decl": "int",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&length",
+                                        "cxx_type": "int",
+                                        "cxx_var": "length",
+                                        "f_intent": "IN",
+                                        "f_intent_attr": ", intent(IN)",
+                                        "f_kind": "C_INT",
+                                        "f_module_name": "iso_c_binding",
+                                        "f_type": "integer(C_INT)",
+                                        "f_value_attr": ", value",
+                                        "f_var": "length",
+                                        "fc_var": "length",
+                                        "i_intent": "IN",
+                                        "i_intent_attr": ", intent(IN)",
+                                        "i_kind": "C_INT",
+                                        "i_module_name": "iso_c_binding",
+                                        "i_type": "integer(C_INT)",
+                                        "i_var": "length",
+                                        "idtor": "0",
+                                        "stmt_name": "f_in_native",
+                                        "typemap_name": "int"
+                                    },
+                                    "meta": {
+                                        "abstract": "native",
+                                        "intent": "in",
+                                        "value": true
+                                    },
+                                    "stmt": "f_in_native"
                                 }
                             },
                             "share": {
@@ -1065,6 +1134,9 @@
                         "zz_fmtdict": {
                             "C_name_api": "check_length",
                             "F_name_api": "check_length",
+                            "F_name_function": "check_length_1",
+                            "F_name_generic": "check_length",
+                            "F_name_impl": "class1_check_length_1",
                             "c_arglist": [
                                 "SHC_rv",
                                 "length"
@@ -1073,6 +1145,10 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv",
+                                "length"
+                            ],
                             "function_name": "check_length",
                             "function_suffix": "_1"
                         }
@@ -1651,6 +1727,7 @@
                         "_default_funcs": [
                             6
                         ],
+                        "_fortran_generic_wrap": true,
                         "_has_default_arg": true,
                         "_nargs": [
                             1,
@@ -1757,7 +1834,8 @@
                         "options": {},
                         "return_this": true,
                         "wrap": {
-                            "c": true
+                            "c": true,
+                            "fortran": true
                         },
                         "zz_bind": {
                             "c": {
@@ -1778,21 +1856,9 @@
                                         "cxx_nonconst_ptr": "SHCXX_rv",
                                         "cxx_type": "Class1",
                                         "cxx_var": "SHCXX_rv",
-                                        "f_capsule_data_type": "CXX_SHROUD_capsule_data",
-                                        "f_derived_type": "class1",
-                                        "f_kind": "class1",
-                                        "f_module_name": "cxxlibrary_mod",
-                                        "f_type": "type(class1)",
-                                        "f_var": "SHT_rv",
-                                        "i_arguments": "self,\t flag,\t length",
                                         "i_intent": "OUT",
                                         "i_intent_attr": ", intent(OUT)",
-                                        "i_kind": "class1",
-                                        "i_module_name": "cxxlibrary_mod",
                                         "i_name_function": "c_class1_declare_1",
-                                        "i_subprogram": "subroutine",
-                                        "i_type": "type(CXX_SHROUD_capsule_data)",
-                                        "i_var": "SHT_rv",
                                         "idtor": "0",
                                         "stmt_name": "c_function_shadow*_this",
                                         "typemap_name": "Class1"
@@ -1821,17 +1887,9 @@
                                         "cxx_var": "flag",
                                         "f_intent": "IN",
                                         "f_intent_attr": ", intent(IN)",
-                                        "f_kind": "C_INT",
-                                        "f_module_name": "iso_c_binding",
-                                        "f_type": "integer(C_INT)",
                                         "f_value_attr": ", value",
-                                        "f_var": "flag",
                                         "i_intent": "IN",
                                         "i_intent_attr": ", intent(IN)",
-                                        "i_kind": "C_INT",
-                                        "i_module_name": "iso_c_binding",
-                                        "i_type": "integer(C_INT)",
-                                        "i_var": "flag",
                                         "idtor": "0",
                                         "stmt_name": "c_in_native",
                                         "typemap_name": "int"
@@ -1860,17 +1918,9 @@
                                         "cxx_var": "length",
                                         "f_intent": "IN",
                                         "f_intent_attr": ", intent(IN)",
-                                        "f_kind": "length_type",
-                                        "f_module_name": "cxxlibrary_mod",
-                                        "f_type": "integer(length_type)",
                                         "f_value_attr": ", value",
-                                        "f_var": "length",
                                         "i_intent": "IN",
                                         "i_intent_attr": ", intent(IN)",
-                                        "i_kind": "length_type",
-                                        "i_module_name": "cxxlibrary_mod",
-                                        "i_type": "integer(length_type)",
-                                        "i_var": "length",
                                         "idtor": "0",
                                         "stmt_name": "c_in_native",
                                         "typemap_name": "LengthType"
@@ -1881,6 +1931,136 @@
                                         "value": true
                                     },
                                     "stmt": "c_in_native"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->declare(\tflag,\t length)",
+                                        "C_call_list": "flag,\t length",
+                                        "C_name": "CXX_Class1_declare_1",
+                                        "C_prototype": "CXX_Class1 * self,\t int flag,\t CXX_LengthType length",
+                                        "C_return_type": "void",
+                                        "F_arg_c_call": "obj%cxxmem,\t flag,\t length",
+                                        "F_arguments": "obj,\t flag,\t length",
+                                        "F_subprogram": "subroutine",
+                                        "c_abstract_decl": "CXX_Class1 *",
+                                        "c_const": "",
+                                        "c_type": "CXX_Class1",
+                                        "c_var": "SHC_rv",
+                                        "cxx_abstract_decl": "Class1 *",
+                                        "cxx_addr": "",
+                                        "cxx_member": "->",
+                                        "cxx_nonconst_ptr": "SHCXX_rv",
+                                        "cxx_type": "Class1",
+                                        "cxx_var": "SHCXX_rv",
+                                        "f_call_function": "c_class1_declare_1",
+                                        "f_capsule_data_type": "CXX_SHROUD_capsule_data",
+                                        "f_derived_type": "class1",
+                                        "f_kind": "class1",
+                                        "f_module_name": "cxxlibrary_mod",
+                                        "f_type": "type(class1)",
+                                        "f_var": "SHT_rv",
+                                        "fc_var": "SHT_rv",
+                                        "i_arguments": "self,\t flag,\t length",
+                                        "i_intent": "OUT",
+                                        "i_intent_attr": ", intent(OUT)",
+                                        "i_kind": "class1",
+                                        "i_module_name": "cxxlibrary_mod",
+                                        "i_name_function": "c_class1_declare_1",
+                                        "i_subprogram": "subroutine",
+                                        "i_type": "type(CXX_SHROUD_capsule_data)",
+                                        "i_var": "SHT_rv",
+                                        "idtor": "0",
+                                        "stmt_name": "f_function_shadow*_this",
+                                        "typemap_name": "Class1"
+                                    },
+                                    "meta": {
+                                        "abstract": "shadow*",
+                                        "api": "this",
+                                        "intent": "function"
+                                    },
+                                    "stmt": "f_function_shadow*_this"
+                                },
+                                "flag": {
+                                    "fmtdict": {
+                                        "c_abstract_decl": "int",
+                                        "c_addr": "&",
+                                        "c_const": "",
+                                        "c_deref": "",
+                                        "c_member": ".",
+                                        "c_type": "int",
+                                        "c_var": "flag",
+                                        "cxx_abstract_decl": "int",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&flag",
+                                        "cxx_type": "int",
+                                        "cxx_var": "flag",
+                                        "f_intent": "IN",
+                                        "f_intent_attr": ", intent(IN)",
+                                        "f_kind": "C_INT",
+                                        "f_module_name": "iso_c_binding",
+                                        "f_type": "integer(C_INT)",
+                                        "f_value_attr": ", value",
+                                        "f_var": "flag",
+                                        "fc_var": "flag",
+                                        "i_intent": "IN",
+                                        "i_intent_attr": ", intent(IN)",
+                                        "i_kind": "C_INT",
+                                        "i_module_name": "iso_c_binding",
+                                        "i_type": "integer(C_INT)",
+                                        "i_var": "flag",
+                                        "idtor": "0",
+                                        "stmt_name": "f_in_native",
+                                        "typemap_name": "int"
+                                    },
+                                    "meta": {
+                                        "abstract": "native",
+                                        "intent": "in",
+                                        "value": true
+                                    },
+                                    "stmt": "f_in_native"
+                                },
+                                "length": {
+                                    "fmtdict": {
+                                        "c_abstract_decl": "CXX_LengthType",
+                                        "c_addr": "&",
+                                        "c_const": "",
+                                        "c_deref": "",
+                                        "c_member": ".",
+                                        "c_type": "CXX_LengthType",
+                                        "c_var": "length",
+                                        "cxx_abstract_decl": "LengthType",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&length",
+                                        "cxx_type": "LengthType",
+                                        "cxx_var": "length",
+                                        "f_intent": "IN",
+                                        "f_intent_attr": ", intent(IN)",
+                                        "f_kind": "length_type",
+                                        "f_module_name": "cxxlibrary_mod",
+                                        "f_type": "integer(length_type)",
+                                        "f_value_attr": ", value",
+                                        "f_var": "length",
+                                        "fc_var": "length",
+                                        "i_intent": "IN",
+                                        "i_intent_attr": ", intent(IN)",
+                                        "i_kind": "length_type",
+                                        "i_module_name": "cxxlibrary_mod",
+                                        "i_type": "integer(length_type)",
+                                        "i_var": "length",
+                                        "idtor": "0",
+                                        "stmt_name": "f_in_native",
+                                        "typemap_name": "LengthType"
+                                    },
+                                    "meta": {
+                                        "abstract": "native",
+                                        "intent": "in",
+                                        "value": true
+                                    },
+                                    "stmt": "f_in_native"
                                 }
                             },
                             "share": {
@@ -1909,6 +2089,9 @@
                         "zz_fmtdict": {
                             "C_name_api": "declare",
                             "F_name_api": "declare",
+                            "F_name_function": "declare_1",
+                            "F_name_generic": "declare",
+                            "F_name_impl": "class1_declare_1",
                             "c_arglist": [
                                 "SHC_rv",
                                 "flag",
@@ -1918,6 +2101,11 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv",
+                                "flag",
+                                "length"
+                            ],
                             "function_name": "declare",
                             "function_suffix": "_1"
                         }
@@ -4551,16 +4739,7 @@
                                 "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHC_rv_cxx)",
                                 "cxx_type": "std::string",
                                 "cxx_var": "SHC_rv_cxx",
-                                "f_type": "character(len=30)",
-                                "f_var": "SHT_rv",
-                                "i_arguments": "idx",
-                                "i_kind": "C_CHAR",
-                                "i_module_name": "iso_c_binding",
                                 "i_name_function": "c_get_group_name",
-                                "i_result_clause": "\fresult(SHT_rv)",
-                                "i_subprogram": "function",
-                                "i_type": "character(kind=C_CHAR)",
-                                "i_var": "SHT_rv",
                                 "idtor": "0",
                                 "stmt_name": "c_function_string&",
                                 "typemap_name": "std::string"
@@ -4589,17 +4768,9 @@
                                 "cxx_var": "idx",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "C_LONG",
-                                "f_module_name": "iso_c_binding",
-                                "f_type": "integer(C_LONG)",
                                 "f_value_attr": ", value",
-                                "f_var": "idx",
                                 "i_intent": "IN",
                                 "i_intent_attr": ", intent(IN)",
-                                "i_kind": "C_LONG",
-                                "i_module_name": "iso_c_binding",
-                                "i_type": "integer(C_LONG)",
-                                "i_var": "idx",
                                 "idtor": "0",
                                 "stmt_name": "c_in_native",
                                 "typemap_name": "long"
@@ -5381,24 +5552,9 @@
                                 "cxx_nonconst_ptr": "SHC_rv_cxx",
                                 "cxx_type": "Class1",
                                 "cxx_var": "SHC_rv_cxx",
-                                "f_capsule_data_type": "CXX_SHROUD_capsule_data",
-                                "f_derived_type": "class1",
-                                "f_kind": "class1",
-                                "f_module_name": "cxxlibrary_mod",
-                                "f_type": "type(class1)",
-                                "f_var": "SHT_rv",
-                                "i_arguments": "idx,\t SHT_rv",
                                 "i_intent": "OUT",
                                 "i_intent_attr": ", intent(OUT)",
-                                "i_kind": "class1",
-                                "i_module_name": "cxxlibrary_mod",
                                 "i_name_function": "c_get_view_from_index",
-                                "i_result_clause": "\fresult(SHT_rv_ptr)",
-                                "i_result_var": "SHT_rv_ptr",
-                                "i_subprogram": "function",
-                                "i_type": "type(CXX_SHROUD_capsule_data)",
-                                "i_var": "SHT_rv",
-                                "i_var_ptr": "SHT_rv_ptr",
                                 "idtor": "0",
                                 "stmt_name": "c_function_shadow*_capptr",
                                 "typemap_name": "Class1"
@@ -5427,17 +5583,9 @@
                                 "cxx_var": "idx",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "C_LONG",
-                                "f_module_name": "iso_c_binding",
-                                "f_type": "integer(C_LONG)",
                                 "f_value_attr": ", value",
-                                "f_var": "idx",
                                 "i_intent": "IN",
                                 "i_intent_attr": ", intent(IN)",
-                                "i_kind": "C_LONG",
-                                "i_module_name": "iso_c_binding",
-                                "i_type": "integer(C_LONG)",
-                                "i_var": "idx",
                                 "idtor": "0",
                                 "stmt_name": "c_in_native",
                                 "typemap_name": "long"

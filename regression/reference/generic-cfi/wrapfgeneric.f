@@ -135,10 +135,10 @@ module generic_mod
 
     ! ----------------------------------------
     ! Function:  void GenericReal
-    ! Statement: c_subroutine
+    ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  double arg
-    ! Statement: c_in_native
+    ! Statement: f_in_native
     ! start c_generic_real
     interface
         subroutine c_generic_real(arg) &
@@ -152,13 +152,13 @@ module generic_mod
 
     ! ----------------------------------------
     ! Function:  long GenericReal2
-    ! Statement: c_function_native
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  long arg1
-    ! Statement: c_in_native
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  long arg2
-    ! Statement: c_in_native
+    ! Statement: f_in_native
     interface
         function c_generic_real2(arg1, arg2) &
                 result(SHT_rv) &

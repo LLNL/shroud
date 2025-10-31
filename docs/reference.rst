@@ -338,6 +338,8 @@ CXX_standard
 debug
   Print additional comments in generated files that may 
   be useful for debugging.
+  Useful to help identify which statement groups Shroud is using
+  to create the wrapper.
   Defaults to *false*.
 
   If a function does not require a Fortran wrapper and can be called
@@ -350,7 +352,8 @@ debug_index
   C and Fortran wrappers in the wrappers and json file.
   The number changes whenever a new function
   is inserted and introduces lots of meaningless differenences in the test
-  answers. This option is used to avoid the clutter.  If needed for 
+  answers. This option is used to avoid the clutter and is intended
+  for developers.  If needed for 
   debugging, then set to *true*.  **debug** must also be *true*.
   Defaults to *false*.
 

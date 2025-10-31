@@ -234,6 +234,35 @@ PY_OBJS = \
 
 # Debugging
 
+## Wrappers
+
+There are a couple of Shroud YAML options that provide useful
+debugging information.
+
+    options:
+      debug: True
+      debug_index: True
+
+The **debug** option writes additional information into the generated
+files.  This includes which statement group was used for each
+argument. This makes it easier to understand how the wrapper is being
+generated.
+
+The **debug_index** requires the **debug* option to also be True.  It
+dump out more information such as the `_function_index` and
+`signature` fields.  `_function_index` is an integer index used to
+uniquely identify each funtion to map between the generated code and
+the internal state dump into the JSON output file.  `signature` is a
+collection of statement group indexes Shroud uses to help identify if
+two possible wrappers are the same.
+
+**debug** is used in the testsuite to help identify when something
+changes.  Using **debug_index** will produce excessive change when a
+function is added to a test or a statement group is added to
+`fc-statement.json`.  The additions can cause indexes to change
+resulting in excessive changes.  **debug_index** is designed for
+debugging by the developer, not the user.
+
 ## memory debugging
 
 Valgrind can be used by setting `valgrind=valgrind` on the Make command line.
@@ -334,6 +363,9 @@ are too expensive to be enabled by default.  New in version 3.7.
     setenv PYTHONDEVMODE 1
 
 # Release
+
+Update `docs/releases.rst` with changes and version number.
+It is best to continually update this file as changes are made.
 
 ## Branches
 
