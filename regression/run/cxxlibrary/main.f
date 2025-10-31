@@ -204,7 +204,7 @@ contains
 
     obj2b = get_view(1_C_INT32_T)
 
-    obj2b = get_view(2_C_INT64_T)
+    obj3b = get_view(2_C_INT64_T)
 
   end subroutine test_fortran_generic
     

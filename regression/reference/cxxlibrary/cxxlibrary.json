@@ -3233,7 +3233,7 @@
                 }
             },
             {
-                "<FUNCTION>": "defaultPtrIsNULL  26 ****************************************",
+                "<FUNCTION>": "defaultPtrIsNULL  27 ****************************************",
                 "_generated": "has_default_arg",
                 "_generated_path": [
                     "has_default_arg"
@@ -3358,7 +3358,7 @@
             {
                 "<FUNCTION>": "defaultPtrIsNULL  15 ****************************************",
                 "_default_funcs": [
-                    26
+                    27
                 ],
                 "_has_default_arg": true,
                 "_nargs": [
@@ -3660,7 +3660,7 @@
                 }
             },
             {
-                "<FUNCTION>": "defaultArgsInOut  27 ****************************************",
+                "<FUNCTION>": "defaultArgsInOut  28 ****************************************",
                 "_generated": "has_default_arg",
                 "_generated_path": [
                     "has_default_arg"
@@ -4036,7 +4036,7 @@
             {
                 "<FUNCTION>": "defaultArgsInOut  16 ****************************************",
                 "_default_funcs": [
-                    27
+                    28
                 ],
                 "_has_default_arg": true,
                 "_nargs": [
@@ -4811,7 +4811,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getGroupName  28 ****************************************",
+                "<FUNCTION>": "getGroupName  29 ****************************************",
                 "C_force_wrapper": true,
                 "_PTR_C_CXX_index": 17,
                 "_generated": "fortran_generic",
@@ -4997,7 +4997,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getGroupName  29 ****************************************",
+                "<FUNCTION>": "getGroupName  30 ****************************************",
                 "C_force_wrapper": true,
                 "_PTR_C_CXX_index": 17,
                 "_generated": "fortran_generic",
@@ -5751,7 +5751,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getView  30 ****************************************",
+                "<FUNCTION>": "getView  31 ****************************************",
                 "_PTR_F_C_index": 19,
                 "_generated": "fortran_generic",
                 "_generated_path": [
@@ -5919,7 +5919,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getView  31 ****************************************",
+                "<FUNCTION>": "getView  32 ****************************************",
                 "_PTR_F_C_index": 19,
                 "_generated": "fortran_generic",
                 "_generated_path": [
@@ -6087,7 +6087,331 @@
                 }
             },
             {
-                "<FUNCTION>": "nested_get_parent  20 ****************************************",
+                "<FUNCTION>": "createView  20 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "createView",
+                        "params": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "name": "path",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
+                                    ],
+                                    "typemap_name": "std::string"
+                                },
+                                "specifier": [
+                                    "std::string"
+                                ],
+                                "typemap_name": "std::string"
+                            },
+                            {
+                                "declarator": {
+                                    "name": "type",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "name": "num_elems",
+                                    "typemap_name": "long"
+                                },
+                                "specifier": [
+                                    "long"
+                                ],
+                                "typemap_name": "long"
+                            }
+                        ],
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ],
+                        "typemap_name": "Class1"
+                    },
+                    "specifier": [
+                        "Class1"
+                    ],
+                    "typemap_name": "Class1"
+                },
+                "decl": "Class1 *createView( const std::string& path, int type, long num_elems )",
+                "declgen": "Class1 *createView(const std::string &path, int type, long num_elems)",
+                "fortran_generic": [
+                    {
+                        "decls": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "name": "path",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
+                                    ],
+                                    "typemap_name": "std::string"
+                                },
+                                "specifier": [
+                                    "std::string"
+                                ],
+                                "typemap_name": "std::string"
+                            },
+                            {
+                                "declarator": {
+                                    "name": "type",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "name": "num_elems",
+                                    "typemap_name": "int32_t"
+                                },
+                                "specifier": [
+                                    "int32_t"
+                                ],
+                                "typemap_name": "int32_t"
+                            }
+                        ],
+                        "function_suffix": "_int32_t",
+                        "generic": "(int32_t num_elems)"
+                    },
+                    {
+                        "decls": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "name": "path",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
+                                    ],
+                                    "typemap_name": "std::string"
+                                },
+                                "specifier": [
+                                    "std::string"
+                                ],
+                                "typemap_name": "std::string"
+                            },
+                            {
+                                "declarator": {
+                                    "name": "type",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "name": "num_elems",
+                                    "typemap_name": "int64_t"
+                                },
+                                "specifier": [
+                                    "int64_t"
+                                ],
+                                "typemap_name": "int64_t"
+                            }
+                        ],
+                        "function_suffix": "_int64_t",
+                        "generic": "(int64_t num_elems)"
+                    }
+                ],
+                "name": "createView",
+                "options": {
+                    "wrap_fortran": false,
+                    "wrap_python": false
+                },
+                "user_fmt": {
+                    "function_suffix": "_from_type"
+                },
+                "wrap": {
+                    "c": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "createView(\tSHC_path_cxx,\t type,\t num_elems)",
+                                "C_call_list": "SHC_path_cxx,\t type,\t num_elems",
+                                "C_name": "CXX_createView_from_type",
+                                "C_prototype": "const char *path,\t int type,\t long num_elems,\t CXX_Class1 *SHC_rv",
+                                "C_return_type": "CXX_Class1 *",
+                                "c_abstract_decl": "CXX_Class1 *",
+                                "c_const": "",
+                                "c_local_cxx": "SHC_rv_cxx",
+                                "c_type": "CXX_Class1",
+                                "c_var": "SHC_rv",
+                                "c_var_ptr": "SHT_rv_ptr",
+                                "cxx_abstract_decl": "Class1 *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "SHC_rv_cxx",
+                                "cxx_type": "Class1",
+                                "cxx_var": "SHC_rv_cxx",
+                                "i_intent": "OUT",
+                                "i_intent_attr": ", intent(OUT)",
+                                "i_name_function": "c_create_view_from_type",
+                                "idtor": "0",
+                                "stmt_name": "c_function_shadow*_capptr",
+                                "typemap_name": "Class1"
+                            },
+                            "meta": {
+                                "abstract": "shadow*",
+                                "api": "capptr",
+                                "intent": "function"
+                            },
+                            "stmt": "c_function_shadow*_capptr"
+                        },
+                        "num_elems": {
+                            "fmtdict": {
+                                "c_abstract_decl": "long",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "long",
+                                "c_var": "num_elems",
+                                "cxx_abstract_decl": "long",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&num_elems",
+                                "cxx_type": "long",
+                                "cxx_var": "num_elems",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "idtor": "0",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "long"
+                            },
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "c_in_native"
+                        },
+                        "path": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const char *",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_local_cxx": "SHC_path_cxx",
+                                "c_member": "->",
+                                "c_type": "char",
+                                "c_var": "path",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&path)",
+                                "cxx_type": "std::string",
+                                "cxx_var": "path",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "idtor": "0",
+                                "stmt_name": "c_in_string&",
+                                "typemap_name": "std::string"
+                            },
+                            "meta": {
+                                "abstract": "string&",
+                                "intent": "in"
+                            },
+                            "stmt": "c_in_string&"
+                        },
+                        "type": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "type",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&type",
+                                "cxx_type": "int",
+                                "cxx_var": "type",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "idtor": "0",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "int"
+                            },
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "c_in_native"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "abstract": "shadow*",
+                                "intent": "function"
+                            }
+                        },
+                        "num_elems": {
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "in",
+                                "value": true
+                            }
+                        },
+                        "path": {
+                            "meta": {
+                                "abstract": "string&",
+                                "intent": "in"
+                            }
+                        },
+                        "type": {
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "in",
+                                "value": true
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "createView",
+                    "F_name_api": "create_view",
+                    "c_arglist": [
+                        "SHC_rv",
+                        "path",
+                        "type",
+                        "num_elems"
+                    ],
+                    "function_name": "createView",
+                    "function_suffix": "_from_type"
+                }
+            },
+            {
+                "<FUNCTION>": "nested_get_parent  21 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -6275,7 +6599,7 @@
                 }
             },
             {
-                "<FUNCTION>": "nested_set_parent  21 ****************************************",
+                "<FUNCTION>": "nested_set_parent  22 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -6483,7 +6807,7 @@
                 }
             },
             {
-                "<FUNCTION>": "nested_get_child  22 ****************************************",
+                "<FUNCTION>": "nested_get_child  23 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -6693,7 +7017,7 @@
                 }
             },
             {
-                "<FUNCTION>": "nested_set_child  23 ****************************************",
+                "<FUNCTION>": "nested_set_child  24 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -6912,7 +7236,7 @@
                 }
             },
             {
-                "<FUNCTION>": "nested_get_array  24 ****************************************",
+                "<FUNCTION>": "nested_get_array  25 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -7120,7 +7444,7 @@
                 }
             },
             {
-                "<FUNCTION>": "nested_set_array  25 ****************************************",
+                "<FUNCTION>": "nested_set_array  26 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -7458,7 +7782,7 @@
                 ],
                 "functions": [
                     {
-                        "<FUNCTION>": "passStructByReference  32 ****************************************",
+                        "<FUNCTION>": "passStructByReference  33 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "passStructByReference",
@@ -7747,7 +8071,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "passStructByReferenceIn  33 ****************************************",
+                        "<FUNCTION>": "passStructByReferenceIn  34 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "passStructByReferenceIn",
@@ -8036,7 +8360,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "passStructByReferenceInout  34 ****************************************",
+                        "<FUNCTION>": "passStructByReferenceInout  35 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "passStructByReferenceInout",
@@ -8281,7 +8605,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "passStructByReferenceOut  35 ****************************************",
+                        "<FUNCTION>": "passStructByReferenceOut  36 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "passStructByReferenceOut",

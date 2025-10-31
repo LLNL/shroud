@@ -92,7 +92,8 @@ public:
 //----------------------------------------------------------------------
 
 Class1 *getView(const std::string& path);
-Class1 *getView( const long idx );
+Class1 *getView(const long idx );
+Class1 *createView(const std::string& path, int type, long num_elems);
 
 #endif // CXXLIBRARY_H
 
