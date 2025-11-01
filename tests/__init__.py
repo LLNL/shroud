@@ -53,9 +53,3 @@ def load_tests(loader, tests, pattern):
         tests = loader.loadTestsFromTestCase(test_class)
         suite.addTests(tests)
     return suite
-
-
-def load_tests2():
-    # used from 'setup.py test'
-    loader = unittest.TestLoader()
-    return load_tests(loader, None, None)
