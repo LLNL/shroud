@@ -125,3 +125,9 @@ Class1 *createView(const std::string& path, int type, long num_elems)
 {
     return &global_class1;
 }
+
+Class1 *createView(const std::string& path, int type,
+                   long num_elems, void *external_ptr)
+{
+    return &global_class1;
+}

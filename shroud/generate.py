@@ -1091,11 +1091,14 @@ class GenFunctions(object):
         """
         need_c_wrapper = False
         wrap_fortran = True
-        for arg in node.ast.declarator.params:
-            if arg.typemap.sgroup == "void":
-                # Will use Fortran intrinsic to convert argument.
-                wrap_fortran = False  # Do not change until after cloning.
-                need_c_wrapper = True
+        # If overloaded, multiple functions may produce the same names
+        # so always make the wrapper.
+        if not node._cxx_overload:
+            for arg in node.ast.declarator.params:
+                if arg.typemap.sgroup == "void":
+                    # Will use Fortran intrinsic to convert argument.
+                    wrap_fortran = False  # Do not change until after cloning.
+                    need_c_wrapper = True
         
         new_functions = []
         for generic in node.fortran_generic:

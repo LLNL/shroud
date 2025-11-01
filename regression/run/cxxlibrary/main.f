@@ -188,6 +188,7 @@ contains
     type(class1) obj1a, obj2a, obj3a
     type(class1) obj1b, obj2b, obj3b
     type(class1) obj1c, obj2c
+    type(class1) obj1d, obj2d
 
     call set_case_name("fortran_generic")
 
@@ -205,6 +206,9 @@ contains
 
     obj1c = create_view("name", 1, 1_C_INT32_T)
     obj2c = create_view("name", 1, 1_C_INT64_T)
+
+    obj1d = create_view("name", 1, 1_C_INT32_T, C_NULL_PTR)
+    obj2d = create_view("name", 1, 1_C_INT64_T, C_NULL_PTR)
 
   end subroutine test_fortran_generic
     

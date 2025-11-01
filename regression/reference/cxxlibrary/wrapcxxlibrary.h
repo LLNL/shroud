@@ -85,6 +85,13 @@ CXX_Class1 * CXX_createView_from_type(const char *path, int type,
 void CXX_createView_from_type_bufferify(char *path, int SHT_path_len,
     int type, long num_elems, CXX_Class1 *SHC_rv);
 
+CXX_Class1 * CXX_createView_from_type_external(const char *path,
+    int type, long num_elems, void *external_ptr, CXX_Class1 *SHC_rv);
+
+void CXX_createView_from_type_external_bufferify(char *path,
+    int SHT_path_len, int type, long num_elems, void *external_ptr,
+    CXX_Class1 *SHC_rv);
+
 void CXX_nested_get_parent(CXX_nested *SH_this,
     CXX_SHROUD_array *SHT_rv_cdesc);
 

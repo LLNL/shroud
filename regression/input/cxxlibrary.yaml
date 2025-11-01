@@ -165,3 +165,17 @@ declarations:
     function_suffix: _int64_t
   options:
     wrap_python: False
+
+- decl: Class1 *createView( const std::string& path,
+                            int type,
+                            long num_elems,
+                            void *external_ptr)
+  format:
+    function_suffix: _from_type_external
+  fortran_generic:
+  - decl: (int32_t num_elems)
+    function_suffix: _int32_t
+  - decl: (int64_t num_elems)
+    function_suffix: _int64_t
+  options:
+    wrap_python: False
