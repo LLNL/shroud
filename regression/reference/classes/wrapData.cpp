@@ -57,7 +57,7 @@ CLA_Data * CLA_Data_ctor(CLA_Data *SHC_rv)
     // splicer begin class.Data.method.ctor
     classes::Data *SHCXX_rv = new classes::Data();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv->idtor = 4;
+    SHC_rv->idtor = 5;
     SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     return SHC_rv;
     // splicer end class.Data.method.ctor
@@ -73,7 +73,7 @@ void CLA_Data_ctor_bufferify(CLA_Data *SHC_rv)
     // splicer begin class.Data.method.ctor_bufferify
     classes::Data *SHCXX_rv = new classes::Data();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv->idtor = 4;
+    SHC_rv->idtor = 5;
     SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     // splicer end class.Data.method.ctor_bufferify
 }

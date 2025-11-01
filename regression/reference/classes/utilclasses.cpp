@@ -7,6 +7,7 @@
 
 // typemap
 #include "classes.hpp"
+#include <string>
 // shroud
 #include "typesclasses.h"
 #include <cstring>
@@ -47,21 +48,27 @@ void CLA_SHROUD_memory_destructor(CLA_SHROUD_capsule_data *cap)
         delete cxx_ptr;
         break;
     }
-    case 2:   // classes::Shape
+    case 2:   // std::string
+    {
+        std::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);
+        delete cxx_ptr;
+        break;
+    }
+    case 3:   // classes::Shape
     {
         classes::Shape *cxx_ptr = 
             reinterpret_cast<classes::Shape *>(ptr);
         delete cxx_ptr;
         break;
     }
-    case 3:   // classes::Circle
+    case 4:   // classes::Circle
     {
         classes::Circle *cxx_ptr = 
             reinterpret_cast<classes::Circle *>(ptr);
         delete cxx_ptr;
         break;
     }
-    case 4:   // classes::Data
+    case 5:   // classes::Data
     {
         classes::Data *cxx_ptr = reinterpret_cast<classes::Data *>(ptr);
         delete cxx_ptr;

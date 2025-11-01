@@ -19,6 +19,8 @@ C c Class1 *getclass3(void) const
 C f Class1 *getclass3(void) const
 C c const std::string &getName(void)
 C f const std::string &getName(void)
+C c std::string getPath(void) const +len(40)
+C f std::string getPath(void) const +len(40)
 C c DIRECTION directionFunc(DIRECTION arg)
 C f DIRECTION directionFunc(DIRECTION arg)
 C f int get_m_flag(void) +intent(getter)
@@ -111,6 +113,7 @@ Fortran Class1 *returnThis(void)
 Fortran Class1 *returnThisBuffer(std::string &name +intent(in), bool flag)
 Fortran Class1 *getclass3(void) const
 Fortran const std::string &getName(void)
+Fortran std::string getPath(void) const +len(40)
 Fortran DIRECTION directionFunc(DIRECTION arg)
 Fortran int get_m_flag(void) +intent(getter)
 Fortran int get_test(void) +intent(getter)
@@ -135,6 +138,8 @@ C-interface c Class1 *getclass3(void) const
 C-interface f Class1 *getclass3(void) const
 C-interface c const std::string &getName(void)
 C-interface f const std::string &getName(void)
+C-interface c std::string getPath(void) const +len(40)
+C-interface f std::string getPath(void) const +len(40)
 C-interface c DIRECTION directionFunc(DIRECTION arg)
 C-interface f DIRECTION directionFunc(DIRECTION arg)
 C-interface f int get_m_flag(void) +intent(getter)
@@ -230,6 +235,7 @@ Python method int Method1(void)
 Python method bool equivalent(const Class1 &obj2) const
 Python method Class1 *getclass3(void) const
 Python method const std::string &getName(void)
+Python method std::string getPath(void) const +len(40)
 Python method DIRECTION directionFunc(DIRECTION arg)
 Close pyClass1type.cpp
 class Class2
@@ -264,6 +270,7 @@ Lua method Class1(int flag)
 Lua method ~Class1(void) +name(delete)
 Lua method int Method1(void)
 Lua method const std::string &getName(void)
+Lua method std::string getPath(void) const +len(40)
 Lua method DIRECTION directionFunc(DIRECTION arg)
 Lua method const std::string &getName(void)
 Lua method Shape(void)

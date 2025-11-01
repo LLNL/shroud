@@ -101,6 +101,7 @@ module classes_mod
         procedure :: return_this_buffer => class1_return_this_buffer
         procedure :: getclass3 => class1_getclass3
         procedure :: get_name => class1_get_name
+        procedure :: get_path => class1_get_path
         procedure :: direction_func => class1_direction_func
         procedure :: get_m_flag => class1_get_m_flag
         procedure :: get_test => class1_get_test
@@ -471,6 +472,41 @@ module classes_mod
         end subroutine c_class1_get_name_bufferify
     end interface
     ! end c_class1_get_name_bufferify
+
+    ! ----------------------------------------
+    ! Function:  std::string getPath +len(40)
+    ! Statement: c_function_string
+    ! start c_class1_get_path
+    interface
+        function c_class1_get_path(self, SHT_rv_capsule) &
+                result(SHT_rv) &
+                bind(C, name="CLA_Class1_getPath")
+            use iso_c_binding, only : C_PTR
+            import :: CLA_SHROUD_capsule_data
+            implicit none
+            type(CLA_SHROUD_capsule_data), intent(IN) :: self
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv_capsule
+            type(C_PTR) :: SHT_rv
+        end function c_class1_get_path
+    end interface
+    ! end c_class1_get_path
+
+    ! ----------------------------------------
+    ! Function:  std::string getPath +len(40)
+    ! Statement: f_function_string_buf_copy
+    ! start c_class1_get_path_bufferify
+    interface
+        subroutine c_class1_get_path_bufferify(self, SHT_rv, SHT_rv_len) &
+                bind(C, name="CLA_Class1_getPath_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT
+            import :: CLA_SHROUD_capsule_data
+            implicit none
+            type(CLA_SHROUD_capsule_data), intent(IN) :: self
+            character(kind=C_CHAR), intent(OUT) :: SHT_rv(*)
+            integer(C_INT), value, intent(IN) :: SHT_rv_len
+        end subroutine c_class1_get_path_bufferify
+    end interface
+    ! end c_class1_get_path_bufferify
 
     ! ----------------------------------------
     ! Function:  DIRECTION directionFunc
@@ -1498,6 +1534,26 @@ contains
         ! splicer end class.Class1.method.get_name
     end function class1_get_name
     ! end class1_get_name
+
+    ! ----------------------------------------
+    ! Function:  std::string getPath +len(40)
+    ! Statement: f_function_string_buf_copy
+    !>
+    !! When return-by-value, the Fortran user always owns the memory. This causes a capsule to passed to the string which invalidates pure as suggested by the const.
+    !<
+    ! start class1_get_path
+    function class1_get_path(obj) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        class(class1), intent(IN) :: obj
+        character(len=40) :: SHT_rv
+        ! splicer begin class.Class1.method.get_path
+        integer(C_INT) SHT_rv_len
+        SHT_rv_len = len(SHT_rv, kind=C_INT)
+        call c_class1_get_path_bufferify(obj%cxxmem, SHT_rv, SHT_rv_len)
+        ! splicer end class.Class1.method.get_path
+    end function class1_get_path
+    ! end class1_get_path
 
     ! ----------------------------------------
     ! Function:  DIRECTION directionFunc

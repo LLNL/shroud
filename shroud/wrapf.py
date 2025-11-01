@@ -1143,6 +1143,9 @@ rv = .false.
                 imports[fmt_result.f_capsule_data_type] = True
 
         args_all_in = True  # assume all arguments are intent(in)
+        if result_stmt.owner == "caller":
+            args_all_in = False
+        
         for arg in ast.declarator.params:
             # default argument's intent
             # XXX look at const, ptr
@@ -1160,6 +1163,8 @@ rv = .false.
                 continue
             intent = meta["intent"]
             if intent != "in":
+                args_all_in = False
+            elif arg_stmt.owner == "caller":
                 args_all_in = False
             notimplemented = notimplemented or arg_stmt.notimplemented
 

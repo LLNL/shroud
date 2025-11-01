@@ -225,6 +225,35 @@ PY_getName(
 }
 
 // ----------------------------------------
+// Function:  std::string getPath +len(40)
+// Statement: py_function_string
+static char PY_getPath__doc__[] =
+"documentation"
+;
+
+/**
+ * When return-by-value, the Fortran user always owns the memory. This causes a capsule to passed to the string which invalidates pure as suggested by the const.
+ */
+static PyObject *
+PY_getPath(
+  PY_Class1 *self,
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin class.Class1.method.getPath
+    PyObject * SHTPy_rv = nullptr;
+
+    std::string SHCXX_rv = self->obj->getPath();
+
+    // post_call
+    SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
+        SHCXX_rv.size());
+
+    return (PyObject *) SHTPy_rv;
+// splicer end class.Class1.method.getPath
+}
+
+// ----------------------------------------
 // Function:  DIRECTION directionFunc
 // Statement: py_function_enum
 // ----------------------------------------
@@ -368,6 +397,8 @@ static PyMethodDef PY_Class1_methods[] = {
         PY_getclass3__doc__},
     {"getName", (PyCFunction)PY_getName, METH_NOARGS,
         PY_getName__doc__},
+    {"getPath", (PyCFunction)PY_getPath, METH_NOARGS,
+        PY_getPath__doc__},
     {"directionFunc", (PyCFunction)PY_directionFunc,
         METH_VARARGS|METH_KEYWORDS, PY_directionFunc__doc__},
     // splicer begin class.Class1.PyMethodDef

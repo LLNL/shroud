@@ -2490,7 +2490,241 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "directionFunc  9 ****************************************",
+                        "<FUNCTION>": "getPath  9 ****************************************",
+                        "ast": {
+                            "declarator": {
+                                "attrs": {
+                                    "len": "40"
+                                },
+                                "func_const": true,
+                                "name": "getPath",
+                                "params": [],
+                                "typemap_name": "std::string"
+                            },
+                            "specifier": [
+                                "std::string"
+                            ],
+                            "typemap_name": "std::string"
+                        },
+                        "decl": "std::string getPath() const +len(40)",
+                        "declgen": "std::string getPath(void) const +len(40)",
+                        "doxygen": {
+                            "description": "When return-by-value, the Fortran user always owns the memory. This causes a capsule to passed to the string which invalidates pure as suggested by the const."
+                        },
+                        "helpers": {
+                            "fc": [
+                                "capsule_data",
+                                "char_copy"
+                            ]
+                        },
+                        "name": "getPath",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "lua": true,
+                            "python": true
+                        },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->getPath(\t)",
+                                        "C_name": "CLA_Class1_getPath",
+                                        "C_prototype": "const CLA_Class1 * self,\t CLA_SHROUD_capsule_data *SHT_rv_capsule",
+                                        "C_return_type": "const char *",
+                                        "attr_len": "40",
+                                        "c_abstract_decl": "char",
+                                        "c_const": "",
+                                        "c_get_value": "",
+                                        "c_local_cxx": "SHC_rv_cxx",
+                                        "c_type": "char",
+                                        "c_var": "SHC_rv",
+                                        "c_var_capsule": "SHT_rv_capsule",
+                                        "cxx_abstract_decl": "std::string",
+                                        "cxx_addr": "",
+                                        "cxx_member": "->",
+                                        "cxx_nonconst_ptr": "SHC_rv_cxx",
+                                        "cxx_type": "std::string",
+                                        "cxx_var": "SHC_rv_cxx",
+                                        "f_helper_capsule_data": "CLA_SHROUD_capsule_data",
+                                        "f_type": "character(len=40)",
+                                        "f_var": "SHT_rv",
+                                        "i_arguments": "self,\t SHT_rv_capsule",
+                                        "i_kind": "C_CHAR",
+                                        "i_module_name": "iso_c_binding",
+                                        "i_name_function": "c_class1_get_path",
+                                        "i_result_clause": "\fresult(SHT_rv)",
+                                        "i_subprogram": "function",
+                                        "i_type": "character(kind=C_CHAR)",
+                                        "i_var": "SHT_rv",
+                                        "i_var_capsule": "SHT_rv_capsule",
+                                        "idtor": "2",
+                                        "stmt_name": "c_function_string",
+                                        "typemap_name": "std::string"
+                                    },
+                                    "meta": {
+                                        "abstract": "string",
+                                        "intent": "function",
+                                        "len": "40"
+                                    },
+                                    "stmt": "c_function_string"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->getPath(\t)",
+                                        "C_name": "CLA_Class1_getPath_bufferify",
+                                        "C_prototype": "const CLA_Class1 * self,\t char *SHC_rv,\t int SHT_rv_len",
+                                        "C_return_type": "void",
+                                        "F_arg_c_call": "obj%cxxmem,\t SHT_rv,\t SHT_rv_len",
+                                        "F_arguments": "obj",
+                                        "F_subprogram": "function",
+                                        "attr_len": "40",
+                                        "c_abstract_decl": "char",
+                                        "c_const": "",
+                                        "c_helper_char_copy": "ShroudCharCopy",
+                                        "c_local_cxx": "SHC_rv_cxx",
+                                        "c_type": "char",
+                                        "c_var": "SHC_rv",
+                                        "c_var_len": "SHT_rv_len",
+                                        "cxx_abstract_decl": "std::string",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHC_rv_cxx",
+                                        "cxx_type": "std::string",
+                                        "cxx_var": "SHC_rv_cxx",
+                                        "f_call_function": "c_class1_get_path_bufferify",
+                                        "f_result_clause": "\fresult(SHT_rv)",
+                                        "f_type": "character(len=40)",
+                                        "f_var": "SHT_rv",
+                                        "f_var_len": "SHT_rv_len",
+                                        "fc_var": "SHT_rv",
+                                        "i_arguments": "self,\t SHT_rv,\t SHT_rv_len",
+                                        "i_intent": "OUT",
+                                        "i_intent_attr": ", intent(OUT)",
+                                        "i_kind": "C_CHAR",
+                                        "i_module_name": "iso_c_binding",
+                                        "i_name_function": "c_class1_get_path_bufferify",
+                                        "i_subprogram": "subroutine",
+                                        "i_suffix": "_bufferify",
+                                        "i_type": "character(kind=C_CHAR)",
+                                        "i_var": "SHT_rv",
+                                        "i_var_len": "SHT_rv_len",
+                                        "idtor": "0",
+                                        "stmt_name": "f_function_string_buf_copy",
+                                        "typemap_name": "std::string"
+                                    },
+                                    "meta": {
+                                        "abstract": "string",
+                                        "api": "buf",
+                                        "deref": "copy",
+                                        "intent": "function",
+                                        "len": "40"
+                                    },
+                                    "stmt": "f_function_string_buf_copy"
+                                }
+                            },
+                            "lua": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "c_abstract_decl": "char",
+                                        "c_var": "SHCXX_rv.c_str()",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_var": "SHCXX_rv",
+                                        "push_arg": "SHCXX_rv.c_str()",
+                                        "push_expr": "lua_pushstring(L, SHCXX_rv.c_str())",
+                                        "stmt": "lua_function_string"
+                                    },
+                                    "meta": {
+                                        "abstract": "string",
+                                        "intent": "function",
+                                        "len": "40"
+                                    }
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "c_var": "SHCXX_rv",
+                                        "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHCXX_rv",
+                                        "cxx_type": "std::string",
+                                        "cxx_var": "SHCXX_rv",
+                                        "data_var": "SHData_rv",
+                                        "numpy_type": null,
+                                        "py_var": "SHTPy_rv",
+                                        "size_var": "SHSize_rv",
+                                        "stmt": "py_function_string",
+                                        "value_var": "SHValue_rv"
+                                    },
+                                    "meta": {
+                                        "abstract": "string",
+                                        "intent": "function",
+                                        "len": "40"
+                                    },
+                                    "stmt": "py_function_string"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "abstract": "string",
+                                        "intent": "function",
+                                        "len": "40"
+                                    }
+                                }
+                            }
+                        },
+                        "zz_fmtdict": {
+                            "C_name_api": "getPath",
+                            "F_name_api": "get_path",
+                            "F_name_function": "get_path",
+                            "F_name_generic": "get_path",
+                            "F_name_impl": "class1_get_path",
+                            "LUA_name": "getPath",
+                            "LUA_name_api": "getPath",
+                            "LUA_name_impl": "l_Class1_getPath",
+                            "PY_name_impl": "PY_getPath",
+                            "c_arglist": [
+                                "SHC_rv"
+                            ],
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "f_arglist": [
+                                "SHT_rv"
+                            ],
+                            "function_name": "getPath"
+                        },
+                        "zz_fmtlang": {
+                            "lua": {
+                                "LUA_used_param_state": true,
+                                "c_var": "\t(l_Class1_Type *)\t luaL_checkudata(\tL, 1, \"Class1.metatable\")",
+                                "cxx_call_list": "",
+                                "nresults": 1,
+                                "rv_asgn": "std::string SHCXX_rv =\t ",
+                                "rv_decl": "std::string SHCXX_rv"
+                            },
+                            "py": {
+                                "C_call_function": "self->obj->getPath()",
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "nullptr",
+                                "PY_ml_flags": "METH_NOARGS",
+                                "PY_used_param_self": true,
+                                "py_var": "SHTPy_rv"
+                            }
+                        }
+                    },
+                    {
+                        "<FUNCTION>": "directionFunc  10 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "directionFunc",
@@ -2856,7 +3090,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "get_m_flag  10 ****************************************",
+                        "<FUNCTION>": "get_m_flag  11 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -2960,7 +3194,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "get_test  11 ****************************************",
+                        "<FUNCTION>": "get_test  12 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -3064,7 +3298,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "set_test  12 ****************************************",
+                        "<FUNCTION>": "set_test  13 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -3211,7 +3445,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "get_m_bool  13 ****************************************",
+                        "<FUNCTION>": "get_m_bool  14 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -3313,7 +3547,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "set_m_bool  14 ****************************************",
+                        "<FUNCTION>": "set_m_bool  15 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -3459,7 +3693,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "get_m_name  15 ****************************************",
+                        "<FUNCTION>": "get_m_name  16 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -3582,7 +3816,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "set_m_name  16 ****************************************",
+                        "<FUNCTION>": "set_m_name  17 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -3728,7 +3962,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "get_m_name_ptr  17 ****************************************",
+                        "<FUNCTION>": "get_m_name_ptr  18 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -3851,7 +4085,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "get_m_name_copy  18 ****************************************",
+                        "<FUNCTION>": "get_m_name_copy  19 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -4229,7 +4463,7 @@
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "getName  19 ****************************************",
+                        "<FUNCTION>": "getName  20 ****************************************",
                         "ast": {
                             "const": true,
                             "declarator": {
@@ -4519,7 +4753,7 @@
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "getReference  20 ****************************************",
+                        "<FUNCTION>": "getReference  21 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "getReference",
@@ -4783,7 +5017,7 @@
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "ctor  21 ****************************************",
+                        "<FUNCTION>": "ctor  22 ****************************************",
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -4847,7 +5081,7 @@
                                         "i_type": "type(CLA_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
                                         "i_var_ptr": "SHT_rv_ptr",
-                                        "idtor": "2",
+                                        "idtor": "3",
                                         "stmt_name": "c_ctor_shadow_capptr",
                                         "typemap_name": "classes::Shape"
                                     },
@@ -4901,7 +5135,7 @@
                                         "i_suffix": "_bufferify",
                                         "i_type": "type(CLA_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
-                                        "idtor": "2",
+                                        "idtor": "3",
                                         "stmt_name": "f_ctor_shadow_capsule_caller",
                                         "typemap_name": "classes::Shape"
                                     },
@@ -5010,7 +5244,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "dtor  22 ****************************************",
+                        "<FUNCTION>": "dtor  23 ****************************************",
                         "ast": {
                             "declarator": {
                                 "default_name": "dtor",
@@ -5142,7 +5376,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "get_ivar  23 ****************************************",
+                        "<FUNCTION>": "get_ivar  24 ****************************************",
                         "ast": {
                             "declarator": {
                                 "func_const": true,
@@ -5391,7 +5625,7 @@
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "ctor  24 ****************************************",
+                        "<FUNCTION>": "ctor  25 ****************************************",
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -5455,7 +5689,7 @@
                                         "i_type": "type(CLA_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
                                         "i_var_ptr": "SHT_rv_ptr",
-                                        "idtor": "3",
+                                        "idtor": "4",
                                         "stmt_name": "c_ctor_shadow_capptr",
                                         "typemap_name": "classes::Circle"
                                     },
@@ -5509,7 +5743,7 @@
                                         "i_suffix": "_bufferify",
                                         "i_type": "type(CLA_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
-                                        "idtor": "3",
+                                        "idtor": "4",
                                         "stmt_name": "f_ctor_shadow_capsule_caller",
                                         "typemap_name": "classes::Circle"
                                     },
@@ -5618,7 +5852,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "dtor  25 ****************************************",
+                        "<FUNCTION>": "dtor  26 ****************************************",
                         "ast": {
                             "declarator": {
                                 "default_name": "dtor",
@@ -5803,7 +6037,7 @@
                 "cxx_header": [],
                 "functions": [
                     {
-                        "<FUNCTION>": "allocate  26 ****************************************",
+                        "<FUNCTION>": "allocate  27 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "allocate",
@@ -5988,7 +6222,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "free  27 ****************************************",
+                        "<FUNCTION>": "free  28 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "free",
@@ -6080,7 +6314,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "ctor  28 ****************************************",
+                        "<FUNCTION>": "ctor  29 ****************************************",
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
@@ -6142,7 +6376,7 @@
                                         "i_type": "type(CLA_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
                                         "i_var_ptr": "SHT_rv_ptr",
-                                        "idtor": "4",
+                                        "idtor": "5",
                                         "stmt_name": "c_ctor_shadow_capptr",
                                         "typemap_name": "classes::Data"
                                     },
@@ -6196,7 +6430,7 @@
                                         "i_suffix": "_bufferify",
                                         "i_type": "type(CLA_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
-                                        "idtor": "4",
+                                        "idtor": "5",
                                         "stmt_name": "f_ctor_shadow_capsule_caller",
                                         "typemap_name": "classes::Data"
                                     },
@@ -6234,7 +6468,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "dtor  29 ****************************************",
+                        "<FUNCTION>": "dtor  30 ****************************************",
                         "ast": {
                             "declarator": {
                                 "default_name": "dtor",
@@ -6328,7 +6562,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "get_nitems  30 ****************************************",
+                        "<FUNCTION>": "get_nitems  31 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -6432,7 +6666,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "set_nitems  31 ****************************************",
+                        "<FUNCTION>": "set_nitems  32 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -6579,7 +6813,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "get_items  32 ****************************************",
+                        "<FUNCTION>": "get_items  33 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -6723,7 +6957,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "set_items  33 ****************************************",
+                        "<FUNCTION>": "set_items  34 ****************************************",
                         "_generated": "getter/setter",
                         "_generated_path": [
                             "getter/setter"
@@ -7006,7 +7240,7 @@
         ],
         "functions": [
             {
-                "<FUNCTION>": "directionFunc  34 ****************************************",
+                "<FUNCTION>": "directionFunc  35 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "directionFunc",
@@ -7366,7 +7600,7 @@
                 }
             },
             {
-                "<FUNCTION>": "passClassByValue  35 ****************************************",
+                "<FUNCTION>": "passClassByValue  36 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "passClassByValue",
@@ -7629,7 +7863,7 @@
                 }
             },
             {
-                "<FUNCTION>": "useclass  36 ****************************************",
+                "<FUNCTION>": "useclass  37 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "useclass",
@@ -7933,7 +8167,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getclass2  37 ****************************************",
+                "<FUNCTION>": "getclass2  38 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -8093,7 +8327,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getclass3  38 ****************************************",
+                "<FUNCTION>": "getclass3  39 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getclass3",
@@ -8301,7 +8535,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getclass2_void  39 ****************************************",
+                "<FUNCTION>": "getclass2_void  40 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -8445,7 +8679,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getclass3_void  40 ****************************************",
+                "<FUNCTION>": "getclass3_void  41 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getclass3_void",
@@ -8588,7 +8822,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getConstClassReference  41 ****************************************",
+                "<FUNCTION>": "getConstClassReference  42 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -8748,7 +8982,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getClassReference  42 ****************************************",
+                "<FUNCTION>": "getClassReference  43 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getClassReference",
@@ -8953,7 +9187,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getClass1Copy  43 ****************************************",
+                "<FUNCTION>": "getClass1Copy  44 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getClass1Copy",
@@ -9211,7 +9445,7 @@
                 }
             },
             {
-                "<FUNCTION>": "set_global_flag  44 ****************************************",
+                "<FUNCTION>": "set_global_flag  45 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "set_global_flag",
@@ -9486,7 +9720,7 @@
                 }
             },
             {
-                "<FUNCTION>": "get_global_flag  45 ****************************************",
+                "<FUNCTION>": "get_global_flag  46 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "get_global_flag",
@@ -9669,7 +9903,7 @@
                 }
             },
             {
-                "<FUNCTION>": "LastFunctionCalled  46 ****************************************",
+                "<FUNCTION>": "LastFunctionCalled  47 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -9949,7 +10183,7 @@
                 ]
             },
             "i_type": "type(CLA_SHROUD_capsule_data)",
-            "idtor": "3",
+            "idtor": "4",
             "impl_header": [
                 "classes.hpp"
             ],
@@ -10102,7 +10336,7 @@
                 ]
             },
             "i_type": "type(CLA_SHROUD_capsule_data)",
-            "idtor": "4",
+            "idtor": "5",
             "impl_header": [
                 "classes.hpp"
             ],
@@ -10143,7 +10377,7 @@
                 ]
             },
             "i_type": "type(CLA_SHROUD_capsule_data)",
-            "idtor": "2",
+            "idtor": "3",
             "impl_header": [
                 "classes.hpp"
             ],

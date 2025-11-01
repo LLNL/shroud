@@ -27,7 +27,7 @@ CLA_Shape * CLA_Shape_ctor(CLA_Shape *SHC_rv)
     // splicer begin class.Shape.method.ctor
     classes::Shape *SHCXX_rv = new classes::Shape();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv->idtor = 2;
+    SHC_rv->idtor = 3;
     SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     return SHC_rv;
     // splicer end class.Shape.method.ctor
@@ -41,7 +41,7 @@ void CLA_Shape_ctor_bufferify(CLA_Shape *SHC_rv)
     // splicer begin class.Shape.method.ctor_bufferify
     classes::Shape *SHCXX_rv = new classes::Shape();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv->idtor = 2;
+    SHC_rv->idtor = 3;
     SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     // splicer end class.Shape.method.ctor_bufferify
 }

@@ -75,6 +75,12 @@ void CLA_Class1_getName_bufferify(CLA_Class1 * self,
     CLA_SHROUD_array *SHT_rv_cdesc,
     CLA_SHROUD_capsule_data *SHT_rv_capsule);
 
+const char * CLA_Class1_getPath(const CLA_Class1 * self,
+    CLA_SHROUD_capsule_data *SHT_rv_capsule);
+
+void CLA_Class1_getPath_bufferify(const CLA_Class1 * self, char *SHC_rv,
+    int SHT_rv_len);
+
 enum CLA_Class1_DIRECTION CLA_Class1_directionFunc(CLA_Class1 * self,
     enum CLA_Class1_DIRECTION arg);
 
