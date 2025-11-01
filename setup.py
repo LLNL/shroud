@@ -51,9 +51,9 @@ setup(
         'Source': 'https://github.com/LLNL/shroud',
     },
 
-    # Choose your license
-#    license='BSD License',
-
+    license='BSD-3-Clause',
+    license_files=["LICENSE"],
+    
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
         # How mature is this project? Common values are
@@ -66,9 +66,6 @@ setup(
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Build Tools',
         'Topic :: Software Development :: Code Generators',
-
-        # Pick your license as you wish (should match "license" above)
-        'License :: OSI Approved :: BSD License',
 
         # Specify the Python versions you support here. In particular, ensure
         # that you indicate whether you support Python 2, Python 3 or both.
