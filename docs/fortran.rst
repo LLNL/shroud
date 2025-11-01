@@ -313,6 +313,13 @@ The *function_suffix* line will be used to add a unique string to the
 generated Fortran wrappers. Without *function_suffix* each function
 will have an integer suffix which is increment for each function.
 
+The entries in *fortran_generic* can vary the *+rank* attribute.
+This will allow arrays of different rank to be passed to a single
+library function.
+
+Note that Fortran cannot differentiate generic function base on the
+return type.
+
 Scalar and Array Arguments
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 

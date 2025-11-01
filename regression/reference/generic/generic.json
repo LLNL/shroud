@@ -1559,6 +1559,7 @@
             },
             {
                 "<FUNCTION>": "SumValues  5 ****************************************",
+                "_fortran_generic_wrap": true,
                 "_gen_fortran_assumed_rank": true,
                 "_overloaded": true,
                 "ast": {
@@ -1716,8 +1717,134 @@
                 "options": {
                     "F_assumed_rank_max": 2
                 },
-                "wrap": {},
+                "wrap": {
+                    "fortran": true
+                },
                 "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "SumValues(\tvalues,\t nvalues)",
+                                "C_call_list": "values,\t nvalues",
+                                "C_name": "SumValues",
+                                "C_prototype": "const int *values,\t int nvalues",
+                                "C_return_type": "int",
+                                "F_arg_c_call": "values,\t nvalues",
+                                "F_arguments": "values,\t nvalues",
+                                "F_subprogram": "function",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "f_call_function": "c_sum_values",
+                                "f_kind": "C_INT",
+                                "f_module_name": "iso_c_binding",
+                                "f_result_clause": "\fresult(SHT_rv)",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_arguments": "values,\t nvalues",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
+                                "i_name_function": "c_sum_values",
+                                "i_result_clause": "\fresult(SHT_rv)",
+                                "i_subprogram": "function",
+                                "i_type": "integer(C_INT)",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "stmt_name": "f_function_native",
+                                "typemap_name": "int"
+                            },
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_native"
+                        },
+                        "nvalues": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "nvalues",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&nvalues",
+                                "cxx_type": "int",
+                                "cxx_var": "nvalues",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "nvalues",
+                                "fc_var": "nvalues",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "integer(C_INT)",
+                                "i_var": "nvalues",
+                                "idtor": "0",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native"
+                        },
+                        "values": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const int *",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "values",
+                                "cxx_abstract_decl": "const int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "(int *) values",
+                                "cxx_type": "int",
+                                "cxx_var": "values",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "values",
+                                "fc_var": "values",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "integer(C_INT)",
+                                "i_var": "values",
+                                "idtor": "0",
+                                "stmt_name": "f_in_native*",
+                                "typemap_name": "int"
+                            },
+                            "meta": {
+                                "abstract": "native*",
+                                "intent": "in"
+                            },
+                            "stmt": "f_in_native*"
+                        }
+                    },
                     "share": {
                         "+result": {
                             "meta": {
@@ -1743,6 +1870,14 @@
                 "zz_fmtdict": {
                     "C_name_api": "SumValues",
                     "F_name_api": "sum_values",
+                    "F_name_function": "sum_values",
+                    "F_name_generic": "sum_values",
+                    "F_name_impl": "sum_values",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "values",
+                        "nvalues"
+                    ],
                     "function_name": "SumValues"
                 }
             },
@@ -2450,6 +2585,7 @@
             },
             {
                 "<FUNCTION>": "AssignValues  6 ****************************************",
+                "_fortran_generic_wrap": true,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2703,8 +2839,191 @@
                 ],
                 "name": "AssignValues",
                 "options": {},
-                "wrap": {},
+                "wrap": {
+                    "fortran": true
+                },
                 "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "AssignValues(\tfrom,\t nfrom,\t to,\t nto)",
+                                "C_call_list": "from,\t nfrom,\t to,\t nto",
+                                "C_name": "AssignValues",
+                                "C_prototype": "const int *from,\t int nfrom,\t int *to,\t int nto",
+                                "C_return_type": "void",
+                                "F_arg_c_call": "from,\t nfrom,\t to,\t nto",
+                                "F_arguments": "from,\t nfrom,\t to,\t nto",
+                                "F_subprogram": "subroutine",
+                                "f_call_function": "c_assign_values",
+                                "i_arguments": "from,\t nfrom,\t to,\t nto",
+                                "i_name_function": "c_assign_values",
+                                "i_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "from": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const int *",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "from",
+                                "cxx_abstract_decl": "const int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "(int *) from",
+                                "cxx_type": "int",
+                                "cxx_var": "from",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "from",
+                                "fc_var": "from",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "integer(C_INT)",
+                                "i_var": "from",
+                                "idtor": "0",
+                                "stmt_name": "f_in_native*",
+                                "typemap_name": "int"
+                            },
+                            "meta": {
+                                "abstract": "native*",
+                                "intent": "in"
+                            },
+                            "stmt": "f_in_native*"
+                        },
+                        "nfrom": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "nfrom",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&nfrom",
+                                "cxx_type": "int",
+                                "cxx_var": "nfrom",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "nfrom",
+                                "fc_var": "nfrom",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "integer(C_INT)",
+                                "i_var": "nfrom",
+                                "idtor": "0",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native"
+                        },
+                        "nto": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "nto",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&nto",
+                                "cxx_type": "int",
+                                "cxx_var": "nto",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "nto",
+                                "fc_var": "nto",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "integer(C_INT)",
+                                "i_var": "nto",
+                                "idtor": "0",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native"
+                        },
+                        "to": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "to",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "to",
+                                "cxx_type": "int",
+                                "cxx_var": "to",
+                                "f_intent": "INOUT",
+                                "f_intent_attr": ", intent(INOUT)",
+                                "f_kind": "C_INT",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "to",
+                                "fc_var": "to",
+                                "i_intent": "INOUT",
+                                "i_intent_attr": ", intent(INOUT)",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "integer(C_INT)",
+                                "i_var": "to",
+                                "idtor": "0",
+                                "stmt_name": "f_inout_native*",
+                                "typemap_name": "int"
+                            },
+                            "meta": {
+                                "abstract": "native*",
+                                "intent": "inout"
+                            },
+                            "stmt": "f_inout_native*"
+                        }
+                    },
                     "share": {
                         "+result": {
                             "meta": {
@@ -2743,6 +3062,16 @@
                 "zz_fmtdict": {
                     "C_name_api": "AssignValues",
                     "F_name_api": "assign_values",
+                    "F_name_function": "assign_values",
+                    "F_name_generic": "assign_values",
+                    "F_name_impl": "assign_values",
+                    "f_arglist": [
+                        "f_var",
+                        "from",
+                        "nfrom",
+                        "to",
+                        "nto"
+                    ],
                     "function_name": "AssignValues"
                 }
             },
@@ -6516,6 +6845,7 @@
             },
             {
                 "<FUNCTION>": "UpdateStructAsClass  12 ****************************************",
+                "_fortran_generic_wrap": true,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -6622,87 +6952,6 @@
                 ],
                 "name": "UpdateStructAsClass",
                 "options": {},
-                "wrap": {},
-                "zz_bind": {
-                    "share": {
-                        "+result": {
-                            "meta": {
-                                "abstract": "native",
-                                "intent": "function"
-                            }
-                        },
-                        "arg": {
-                            "meta": {
-                                "abstract": "shadow*",
-                                "intent": "inout"
-                            }
-                        },
-                        "inew": {
-                            "meta": {
-                                "abstract": "native",
-                                "intent": "in",
-                                "value": true
-                            }
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_name_api": "UpdateStructAsClass",
-                    "F_name_api": "update_struct_as_class",
-                    "function_name": "UpdateStructAsClass"
-                }
-            },
-            {
-                "<FUNCTION>": "UpdateStructAsClass  29 ****************************************",
-                "C_force_wrapper": true,
-                "_PTR_C_CXX_index": 12,
-                "_generated": "fortran_generic",
-                "_generated_path": [
-                    "fortran_generic"
-                ],
-                "_orig_node_index": 12,
-                "_overloaded": true,
-                "ast": {
-                    "declarator": {
-                        "name": "UpdateStructAsClass",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "name": "arg",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "StructAsClass"
-                                },
-                                "specifier": [
-                                    "StructAsClass"
-                                ],
-                                "typemap_name": "StructAsClass"
-                            },
-                            {
-                                "declarator": {
-                                    "name": "inew",
-                                    "typemap_name": "int"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            }
-                        ],
-                        "typemap_name": "long"
-                    },
-                    "specifier": [
-                        "long"
-                    ],
-                    "typemap_name": "long"
-                },
-                "decl": "long UpdateStructAsClass(StructAsClass *arg, long inew)",
-                "declgen": "long UpdateStructAsClass(StructAsClass *arg, int inew)",
-                "name": "UpdateStructAsClass",
-                "options": {},
                 "wrap": {
                     "fortran": true
                 },
@@ -6712,227 +6961,7 @@
                             "fmtdict": {
                                 "C_call_function": "UpdateStructAsClass(\tSHC_arg_cxx,\t inew)",
                                 "C_call_list": "SHC_arg_cxx,\t inew",
-                                "C_name": "GEN_UpdateStructAsClass_int_bufferify",
-                                "C_prototype": "GEN_StructAsClass *arg,\t int inew",
-                                "C_return_type": "long",
-                                "F_arg_c_call": "arg%cxxmem,\t inew",
-                                "F_arguments": "arg,\t inew",
-                                "F_subprogram": "function",
-                                "c_const": "",
-                                "c_get_value": "",
-                                "c_type": "long",
-                                "c_var": "SHC_rv",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_nonconst_ptr": "&SHC_rv",
-                                "cxx_type": "long",
-                                "cxx_var": "SHC_rv",
-                                "f_call_function": "c_update_struct_as_class_int_bufferify",
-                                "f_kind": "C_LONG",
-                                "f_module_name": "iso_c_binding",
-                                "f_result_clause": "\fresult(SHT_rv)",
-                                "f_type": "integer(C_LONG)",
-                                "f_var": "SHT_rv",
-                                "fc_var": "SHT_rv",
-                                "i_arguments": "arg,\t inew",
-                                "i_kind": "C_LONG",
-                                "i_module_name": "iso_c_binding",
-                                "i_name_function": "c_update_struct_as_class_int_bufferify",
-                                "i_result_clause": "\fresult(SHT_rv)",
-                                "i_subprogram": "function",
-                                "i_suffix": "_bufferify",
-                                "i_type": "integer(C_LONG)",
-                                "i_var": "SHT_rv",
-                                "idtor": "0",
-                                "stmt_name": "f_function_native",
-                                "typemap_name": "long"
-                            },
-                            "meta": {
-                                "abstract": "native",
-                                "intent": "function"
-                            },
-                            "stmt": "f_function_native"
-                        },
-                        "arg": {
-                            "fmtdict": {
-                                "c_abstract_decl": "GEN_StructAsClass *",
-                                "c_addr": "",
-                                "c_const": "",
-                                "c_deref": "*",
-                                "c_local_cxx": "SHC_arg_cxx",
-                                "c_member": "->",
-                                "c_type": "GEN_StructAsClass",
-                                "c_var": "arg",
-                                "cxx_abstract_decl": "StructAsClass *",
-                                "cxx_addr": "",
-                                "cxx_member": "->",
-                                "cxx_nonconst_ptr": "SHC_arg_cxx",
-                                "cxx_type": "StructAsClass",
-                                "cxx_var": "SHC_arg_cxx",
-                                "f_capsule_data_type": "GEN_SHROUD_capsule_data",
-                                "f_derived_type": "struct_as_class",
-                                "f_intent": "INOUT",
-                                "f_intent_attr": ", intent(INOUT)",
-                                "f_kind": "struct_as_class",
-                                "f_module_name": "generic_mod",
-                                "f_type": "type(struct_as_class)",
-                                "f_var": "arg",
-                                "fc_var": "arg",
-                                "i_intent": "INOUT",
-                                "i_intent_attr": ", intent(INOUT)",
-                                "i_kind": "struct_as_class",
-                                "i_module_name": "generic_mod",
-                                "i_type": "type(GEN_SHROUD_capsule_data)",
-                                "i_var": "arg",
-                                "idtor": "0",
-                                "stmt_name": "f_inout_shadow*",
-                                "typemap_name": "StructAsClass"
-                            },
-                            "meta": {
-                                "abstract": "shadow*",
-                                "intent": "inout"
-                            },
-                            "stmt": "f_inout_shadow*"
-                        },
-                        "inew": {
-                            "fmtdict": {
-                                "c_abstract_decl": "int",
-                                "c_addr": "&",
-                                "c_const": "",
-                                "c_deref": "",
-                                "c_member": ".",
-                                "c_type": "int",
-                                "c_var": "inew",
-                                "cxx_abstract_decl": "int",
-                                "cxx_addr": "&",
-                                "cxx_member": ".",
-                                "cxx_nonconst_ptr": "&inew",
-                                "cxx_type": "int",
-                                "cxx_var": "inew",
-                                "f_intent": "IN",
-                                "f_intent_attr": ", intent(IN)",
-                                "f_kind": "C_INT",
-                                "f_module_name": "iso_c_binding",
-                                "f_type": "integer(C_INT)",
-                                "f_value_attr": ", value",
-                                "f_var": "inew",
-                                "fc_var": "inew",
-                                "i_intent": "IN",
-                                "i_intent_attr": ", intent(IN)",
-                                "i_kind": "C_INT",
-                                "i_module_name": "iso_c_binding",
-                                "i_type": "integer(C_INT)",
-                                "i_var": "inew",
-                                "idtor": "0",
-                                "stmt_name": "f_in_native",
-                                "typemap_name": "int"
-                            },
-                            "meta": {
-                                "abstract": "native",
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "f_in_native"
-                        }
-                    },
-                    "share": {
-                        "+result": {
-                            "meta": {
-                                "abstract": "native",
-                                "intent": "function"
-                            }
-                        },
-                        "arg": {
-                            "meta": {
-                                "abstract": "shadow*",
-                                "intent": "inout"
-                            }
-                        },
-                        "inew": {
-                            "meta": {
-                                "abstract": "native",
-                                "intent": "in",
-                                "value": true
-                            }
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_name_api": "UpdateStructAsClass",
-                    "F_name_api": "update_struct_as_class",
-                    "F_name_function": "update_struct_as_class_int",
-                    "F_name_generic": "update_struct_as_class",
-                    "F_name_impl": "update_struct_as_class_int",
-                    "f_arglist": [
-                        "SHT_rv",
-                        "arg",
-                        "inew"
-                    ],
-                    "function_name": "UpdateStructAsClass",
-                    "function_suffix": "_int"
-                }
-            },
-            {
-                "<FUNCTION>": "UpdateStructAsClass  30 ****************************************",
-                "C_force_wrapper": true,
-                "_PTR_C_CXX_index": 12,
-                "_generated": "fortran_generic",
-                "_generated_path": [
-                    "fortran_generic"
-                ],
-                "_orig_node_index": 12,
-                "_overloaded": true,
-                "ast": {
-                    "declarator": {
-                        "name": "UpdateStructAsClass",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "name": "arg",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "StructAsClass"
-                                },
-                                "specifier": [
-                                    "StructAsClass"
-                                ],
-                                "typemap_name": "StructAsClass"
-                            },
-                            {
-                                "declarator": {
-                                    "name": "inew",
-                                    "typemap_name": "long"
-                                },
-                                "specifier": [
-                                    "long"
-                                ],
-                                "typemap_name": "long"
-                            }
-                        ],
-                        "typemap_name": "long"
-                    },
-                    "specifier": [
-                        "long"
-                    ],
-                    "typemap_name": "long"
-                },
-                "decl": "long UpdateStructAsClass(StructAsClass *arg, long inew)",
-                "declgen": "long UpdateStructAsClass(StructAsClass *arg, long inew)",
-                "name": "UpdateStructAsClass",
-                "options": {},
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "fmtdict": {
-                                "C_call_function": "UpdateStructAsClass(\tSHC_arg_cxx,\t inew)",
-                                "C_call_list": "SHC_arg_cxx,\t inew",
-                                "C_name": "GEN_UpdateStructAsClass_long_bufferify",
+                                "C_name": "GEN_UpdateStructAsClass_bufferify",
                                 "C_prototype": "GEN_StructAsClass *arg,\t long inew",
                                 "C_return_type": "long",
                                 "F_arg_c_call": "arg%cxxmem,\t inew",
@@ -6947,7 +6976,7 @@
                                 "cxx_nonconst_ptr": "&SHC_rv",
                                 "cxx_type": "long",
                                 "cxx_var": "SHC_rv",
-                                "f_call_function": "c_update_struct_as_class_long_bufferify",
+                                "f_call_function": "c_update_struct_as_class_bufferify",
                                 "f_kind": "C_LONG",
                                 "f_module_name": "iso_c_binding",
                                 "f_result_clause": "\fresult(SHT_rv)",
@@ -6957,7 +6986,7 @@
                                 "i_arguments": "arg,\t inew",
                                 "i_kind": "C_LONG",
                                 "i_module_name": "iso_c_binding",
-                                "i_name_function": "c_update_struct_as_class_long_bufferify",
+                                "i_name_function": "c_update_struct_as_class_bufferify",
                                 "i_result_clause": "\fresult(SHT_rv)",
                                 "i_subprogram": "function",
                                 "i_suffix": "_bufferify",
@@ -7043,6 +7072,429 @@
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "integer(C_LONG)",
                                 "i_var": "inew",
+                                "idtor": "0",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "long"
+                            },
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "abstract": "shadow*",
+                                "intent": "inout"
+                            }
+                        },
+                        "inew": {
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "in",
+                                "value": true
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "UpdateStructAsClass",
+                    "F_name_api": "update_struct_as_class",
+                    "F_name_function": "update_struct_as_class",
+                    "F_name_generic": "update_struct_as_class",
+                    "F_name_impl": "update_struct_as_class",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg",
+                        "inew"
+                    ],
+                    "function_name": "UpdateStructAsClass"
+                }
+            },
+            {
+                "<FUNCTION>": "UpdateStructAsClass  29 ****************************************",
+                "_PTR_F_C_index": 12,
+                "_generated": "fortran_generic",
+                "_generated_path": [
+                    "fortran_generic"
+                ],
+                "_orig_node_index": 12,
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "UpdateStructAsClass",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "StructAsClass"
+                                },
+                                "specifier": [
+                                    "StructAsClass"
+                                ],
+                                "typemap_name": "StructAsClass"
+                            },
+                            {
+                                "declarator": {
+                                    "name": "inew",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "long"
+                    },
+                    "specifier": [
+                        "long"
+                    ],
+                    "typemap_name": "long"
+                },
+                "decl": "long UpdateStructAsClass(StructAsClass *arg, long inew)",
+                "declgen": "long UpdateStructAsClass(StructAsClass *arg, int inew)",
+                "name": "UpdateStructAsClass",
+                "options": {},
+                "wrap": {
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "UpdateStructAsClass(\tSHC_arg_cxx,\t inew)",
+                                "C_call_list": "SHC_arg_cxx,\t inew",
+                                "C_name": "UpdateStructAsClass",
+                                "C_prototype": "GEN_StructAsClass *arg,\t int inew",
+                                "C_return_type": "long",
+                                "F_arg_c_call": "arg%cxxmem,\t int(inew, C_LONG)",
+                                "F_arguments": "arg,\t inew",
+                                "F_subprogram": "function",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "long",
+                                "c_var": "SHC_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_type": "long",
+                                "cxx_var": "SHC_rv",
+                                "f_call_function": "c_update_struct_as_class_bufferify",
+                                "f_kind": "C_LONG",
+                                "f_module_name": "iso_c_binding",
+                                "f_result_clause": "\fresult(SHT_rv)",
+                                "f_type": "integer(C_LONG)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_kind": "C_LONG",
+                                "i_module_name": "iso_c_binding",
+                                "i_name_function": "c_update_struct_as_class_int",
+                                "i_type": "integer(C_LONG)",
+                                "idtor": "0",
+                                "stmt_name": "f_function_native",
+                                "typemap_name": "long"
+                            },
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_native"
+                        },
+                        "arg": {
+                            "fmtdict": {
+                                "c_abstract_decl": "GEN_StructAsClass *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_local_cxx": "SHC_arg_cxx",
+                                "c_member": "->",
+                                "c_type": "GEN_StructAsClass",
+                                "c_var": "arg",
+                                "cxx_abstract_decl": "StructAsClass *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "SHC_arg_cxx",
+                                "cxx_type": "StructAsClass",
+                                "cxx_var": "SHC_arg_cxx",
+                                "f_capsule_data_type": "GEN_SHROUD_capsule_data",
+                                "f_derived_type": "struct_as_class",
+                                "f_intent": "INOUT",
+                                "f_intent_attr": ", intent(INOUT)",
+                                "f_kind": "struct_as_class",
+                                "f_module_name": "generic_mod",
+                                "f_type": "type(struct_as_class)",
+                                "f_var": "arg",
+                                "fc_var": "arg",
+                                "i_intent": "INOUT",
+                                "i_intent_attr": ", intent(INOUT)",
+                                "i_kind": "struct_as_class",
+                                "i_module_name": "generic_mod",
+                                "i_type": "type(GEN_SHROUD_capsule_data)",
+                                "idtor": "0",
+                                "stmt_name": "f_inout_shadow*",
+                                "typemap_name": "StructAsClass"
+                            },
+                            "meta": {
+                                "abstract": "shadow*",
+                                "intent": "inout"
+                            },
+                            "stmt": "f_inout_shadow*"
+                        },
+                        "inew": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "inew",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&inew",
+                                "cxx_type": "int",
+                                "cxx_var": "inew",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "inew",
+                                "fc_var": "inew",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "integer(C_INT)",
+                                "idtor": "0",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "function"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "abstract": "shadow*",
+                                "intent": "inout"
+                            }
+                        },
+                        "inew": {
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "in",
+                                "value": true
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "UpdateStructAsClass",
+                    "F_name_api": "update_struct_as_class",
+                    "F_name_function": "update_struct_as_class_int",
+                    "F_name_generic": "update_struct_as_class",
+                    "F_name_impl": "update_struct_as_class_int",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "arg",
+                        "inew"
+                    ],
+                    "function_name": "UpdateStructAsClass",
+                    "function_suffix": "_int"
+                }
+            },
+            {
+                "<FUNCTION>": "UpdateStructAsClass  30 ****************************************",
+                "_PTR_F_C_index": 12,
+                "_generated": "fortran_generic",
+                "_generated_path": [
+                    "fortran_generic"
+                ],
+                "_orig_node_index": 12,
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "UpdateStructAsClass",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "StructAsClass"
+                                },
+                                "specifier": [
+                                    "StructAsClass"
+                                ],
+                                "typemap_name": "StructAsClass"
+                            },
+                            {
+                                "declarator": {
+                                    "name": "inew",
+                                    "typemap_name": "long"
+                                },
+                                "specifier": [
+                                    "long"
+                                ],
+                                "typemap_name": "long"
+                            }
+                        ],
+                        "typemap_name": "long"
+                    },
+                    "specifier": [
+                        "long"
+                    ],
+                    "typemap_name": "long"
+                },
+                "decl": "long UpdateStructAsClass(StructAsClass *arg, long inew)",
+                "declgen": "long UpdateStructAsClass(StructAsClass *arg, long inew)",
+                "name": "UpdateStructAsClass",
+                "options": {},
+                "wrap": {
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "UpdateStructAsClass(\tSHC_arg_cxx,\t inew)",
+                                "C_call_list": "SHC_arg_cxx,\t inew",
+                                "C_name": "UpdateStructAsClass",
+                                "C_prototype": "GEN_StructAsClass *arg,\t long inew",
+                                "C_return_type": "long",
+                                "F_arg_c_call": "arg%cxxmem,\t inew",
+                                "F_arguments": "arg,\t inew",
+                                "F_subprogram": "function",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "long",
+                                "c_var": "SHC_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_type": "long",
+                                "cxx_var": "SHC_rv",
+                                "f_call_function": "c_update_struct_as_class_bufferify",
+                                "f_kind": "C_LONG",
+                                "f_module_name": "iso_c_binding",
+                                "f_result_clause": "\fresult(SHT_rv)",
+                                "f_type": "integer(C_LONG)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_kind": "C_LONG",
+                                "i_module_name": "iso_c_binding",
+                                "i_name_function": "c_update_struct_as_class_long",
+                                "i_type": "integer(C_LONG)",
+                                "idtor": "0",
+                                "stmt_name": "f_function_native",
+                                "typemap_name": "long"
+                            },
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_native"
+                        },
+                        "arg": {
+                            "fmtdict": {
+                                "c_abstract_decl": "GEN_StructAsClass *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_local_cxx": "SHC_arg_cxx",
+                                "c_member": "->",
+                                "c_type": "GEN_StructAsClass",
+                                "c_var": "arg",
+                                "cxx_abstract_decl": "StructAsClass *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "SHC_arg_cxx",
+                                "cxx_type": "StructAsClass",
+                                "cxx_var": "SHC_arg_cxx",
+                                "f_capsule_data_type": "GEN_SHROUD_capsule_data",
+                                "f_derived_type": "struct_as_class",
+                                "f_intent": "INOUT",
+                                "f_intent_attr": ", intent(INOUT)",
+                                "f_kind": "struct_as_class",
+                                "f_module_name": "generic_mod",
+                                "f_type": "type(struct_as_class)",
+                                "f_var": "arg",
+                                "fc_var": "arg",
+                                "i_intent": "INOUT",
+                                "i_intent_attr": ", intent(INOUT)",
+                                "i_kind": "struct_as_class",
+                                "i_module_name": "generic_mod",
+                                "i_type": "type(GEN_SHROUD_capsule_data)",
+                                "idtor": "0",
+                                "stmt_name": "f_inout_shadow*",
+                                "typemap_name": "StructAsClass"
+                            },
+                            "meta": {
+                                "abstract": "shadow*",
+                                "intent": "inout"
+                            },
+                            "stmt": "f_inout_shadow*"
+                        },
+                        "inew": {
+                            "fmtdict": {
+                                "c_abstract_decl": "long",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "long",
+                                "c_var": "inew",
+                                "cxx_abstract_decl": "long",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&inew",
+                                "cxx_type": "long",
+                                "cxx_var": "inew",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_LONG",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "integer(C_LONG)",
+                                "f_value_attr": ", value",
+                                "f_var": "inew",
+                                "fc_var": "inew",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "C_LONG",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "integer(C_LONG)",
                                 "idtor": "0",
                                 "stmt_name": "f_in_native",
                                 "typemap_name": "long"

@@ -61,10 +61,7 @@ void GEN_GetPointerAsPointer_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi);
 
 void GEN_CreateStructAsClass_bufferify(GEN_StructAsClass *SHC_rv);
 
-long GEN_UpdateStructAsClass_int_bufferify(GEN_StructAsClass *arg,
-    int inew);
-
-long GEN_UpdateStructAsClass_long_bufferify(GEN_StructAsClass *arg,
+long GEN_UpdateStructAsClass_bufferify(GEN_StructAsClass *arg,
     long inew);
 
 #endif  // WRAPGENERIC_H

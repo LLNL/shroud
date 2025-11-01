@@ -4635,6 +4635,7 @@
             },
             {
                 "<FUNCTION>": "getGroupName  17 ****************************************",
+                "_fortran_generic_wrap": true,
                 "_overloaded": true,
                 "ast": {
                     "const": true,
@@ -4716,7 +4717,8 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "fortran": true
                 },
                 "zz_bind": {
                     "c": {
@@ -4739,7 +4741,16 @@
                                 "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHC_rv_cxx)",
                                 "cxx_type": "std::string",
                                 "cxx_var": "SHC_rv_cxx",
+                                "f_type": "character(len=30)",
+                                "f_var": "SHT_rv",
+                                "i_arguments": "idx",
+                                "i_kind": "C_CHAR",
+                                "i_module_name": "iso_c_binding",
                                 "i_name_function": "c_get_group_name",
+                                "i_result_clause": "\fresult(SHT_rv)",
+                                "i_subprogram": "function",
+                                "i_type": "character(kind=C_CHAR)",
+                                "i_var": "SHT_rv",
                                 "idtor": "0",
                                 "stmt_name": "c_function_string&",
                                 "typemap_name": "std::string"
@@ -4768,9 +4779,17 @@
                                 "cxx_var": "idx",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_LONG",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "integer(C_LONG)",
                                 "f_value_attr": ", value",
+                                "f_var": "idx",
                                 "i_intent": "IN",
                                 "i_intent_attr": ", intent(IN)",
+                                "i_kind": "C_LONG",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "integer(C_LONG)",
+                                "i_var": "idx",
                                 "idtor": "0",
                                 "stmt_name": "c_in_native",
                                 "typemap_name": "long"
@@ -4781,6 +4800,102 @@
                                 "value": true
                             },
                             "stmt": "c_in_native"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getGroupName(\tidx)",
+                                "C_call_list": "idx",
+                                "C_name": "CXX_getGroupName_bufferify",
+                                "C_prototype": "long idx,\t char *SHC_rv,\t int SHT_rv_len",
+                                "C_return_type": "void",
+                                "F_arg_c_call": "idx,\t SHT_rv,\t SHT_rv_len",
+                                "F_arguments": "idx",
+                                "F_subprogram": "function",
+                                "attr_len": "30",
+                                "c_abstract_decl": "const char *",
+                                "c_const": "const ",
+                                "c_helper_char_copy": "ShroudCharCopy",
+                                "c_local_cxx": "SHC_rv_cxx",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "c_var_len": "SHT_rv_len",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHC_rv_cxx)",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHC_rv_cxx",
+                                "f_call_function": "c_get_group_name_bufferify",
+                                "f_result_clause": "\fresult(SHT_rv)",
+                                "f_type": "character(len=30)",
+                                "f_var": "SHT_rv",
+                                "f_var_len": "SHT_rv_len",
+                                "fc_var": "SHT_rv",
+                                "i_arguments": "idx,\t SHT_rv,\t SHT_rv_len",
+                                "i_intent": "OUT",
+                                "i_intent_attr": ", intent(OUT)",
+                                "i_kind": "C_CHAR",
+                                "i_module_name": "iso_c_binding",
+                                "i_name_function": "c_get_group_name_bufferify",
+                                "i_subprogram": "subroutine",
+                                "i_suffix": "_bufferify",
+                                "i_type": "character(kind=C_CHAR)",
+                                "i_var": "SHT_rv",
+                                "i_var_len": "SHT_rv_len",
+                                "idtor": "0",
+                                "stmt_name": "f_function_string&_buf_copy",
+                                "typemap_name": "std::string"
+                            },
+                            "meta": {
+                                "abstract": "string&",
+                                "api": "buf",
+                                "deref": "copy",
+                                "intent": "function",
+                                "len": "30"
+                            },
+                            "stmt": "f_function_string&_buf_copy"
+                        },
+                        "idx": {
+                            "fmtdict": {
+                                "c_abstract_decl": "long",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "long",
+                                "c_var": "idx",
+                                "cxx_abstract_decl": "long",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&idx",
+                                "cxx_type": "long",
+                                "cxx_var": "idx",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_LONG",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "integer(C_LONG)",
+                                "f_value_attr": ", value",
+                                "f_var": "idx",
+                                "fc_var": "idx",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "C_LONG",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "integer(C_LONG)",
+                                "i_var": "idx",
+                                "idtor": "0",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "long"
+                            },
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -4803,8 +4918,15 @@
                 "zz_fmtdict": {
                     "C_name_api": "getGroupName",
                     "F_name_api": "get_group_name",
+                    "F_name_function": "get_group_name",
+                    "F_name_generic": "get_group_name",
+                    "F_name_impl": "get_group_name",
                     "c_arglist": [
                         "SHC_rv",
+                        "idx"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
                         "idx"
                     ],
                     "function_name": "getGroupName"
@@ -4812,8 +4934,7 @@
             },
             {
                 "<FUNCTION>": "getGroupName  29 ****************************************",
-                "C_force_wrapper": true,
-                "_PTR_C_CXX_index": 17,
+                "_PTR_F_C_index": 17,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -4874,10 +4995,10 @@
                             "fmtdict": {
                                 "C_call_function": "getGroupName(\tidx)",
                                 "C_call_list": "idx",
-                                "C_name": "CXX_getGroupName_int32_t_bufferify",
+                                "C_name": "getGroupName",
                                 "C_prototype": "int32_t idx,\t char *SHC_rv,\t int SHT_rv_len",
                                 "C_return_type": "void",
-                                "F_arg_c_call": "idx,\t SHT_rv,\t SHT_rv_len",
+                                "F_arg_c_call": "int(idx, C_LONG),\t SHT_rv,\t SHT_rv_len",
                                 "F_arguments": "idx",
                                 "F_subprogram": "function",
                                 "attr_len": "30",
@@ -4894,23 +5015,18 @@
                                 "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHC_rv_cxx)",
                                 "cxx_type": "std::string",
                                 "cxx_var": "SHC_rv_cxx",
-                                "f_call_function": "c_get_group_name_int32_t_bufferify",
+                                "f_call_function": "c_get_group_name_bufferify",
                                 "f_result_clause": "\fresult(SHT_rv)",
                                 "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
                                 "f_var_len": "SHT_rv_len",
                                 "fc_var": "SHT_rv",
-                                "i_arguments": "idx,\t SHT_rv,\t SHT_rv_len",
                                 "i_intent": "OUT",
                                 "i_intent_attr": ", intent(OUT)",
                                 "i_kind": "C_CHAR",
                                 "i_module_name": "iso_c_binding",
-                                "i_name_function": "c_get_group_name_int32_t_bufferify",
-                                "i_subprogram": "subroutine",
-                                "i_suffix": "_bufferify",
+                                "i_name_function": "c_get_group_name_int32_t",
                                 "i_type": "character(kind=C_CHAR)",
-                                "i_var": "SHT_rv",
-                                "i_var_len": "SHT_rv_len",
                                 "idtor": "0",
                                 "stmt_name": "f_function_string&_buf_copy",
                                 "typemap_name": "std::string"
@@ -4952,7 +5068,6 @@
                                 "i_kind": "C_INT32_T",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "integer(C_INT32_T)",
-                                "i_var": "idx",
                                 "idtor": "0",
                                 "stmt_name": "f_in_native",
                                 "typemap_name": "int32_t"
@@ -4998,8 +5113,7 @@
             },
             {
                 "<FUNCTION>": "getGroupName  30 ****************************************",
-                "C_force_wrapper": true,
-                "_PTR_C_CXX_index": 17,
+                "_PTR_F_C_index": 17,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -5060,10 +5174,10 @@
                             "fmtdict": {
                                 "C_call_function": "getGroupName(\tidx)",
                                 "C_call_list": "idx",
-                                "C_name": "CXX_getGroupName_int64_t_bufferify",
+                                "C_name": "getGroupName",
                                 "C_prototype": "int64_t idx,\t char *SHC_rv,\t int SHT_rv_len",
                                 "C_return_type": "void",
-                                "F_arg_c_call": "idx,\t SHT_rv,\t SHT_rv_len",
+                                "F_arg_c_call": "int(idx, C_LONG),\t SHT_rv,\t SHT_rv_len",
                                 "F_arguments": "idx",
                                 "F_subprogram": "function",
                                 "attr_len": "30",
@@ -5080,23 +5194,18 @@
                                 "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHC_rv_cxx)",
                                 "cxx_type": "std::string",
                                 "cxx_var": "SHC_rv_cxx",
-                                "f_call_function": "c_get_group_name_int64_t_bufferify",
+                                "f_call_function": "c_get_group_name_bufferify",
                                 "f_result_clause": "\fresult(SHT_rv)",
                                 "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
                                 "f_var_len": "SHT_rv_len",
                                 "fc_var": "SHT_rv",
-                                "i_arguments": "idx,\t SHT_rv,\t SHT_rv_len",
                                 "i_intent": "OUT",
                                 "i_intent_attr": ", intent(OUT)",
                                 "i_kind": "C_CHAR",
                                 "i_module_name": "iso_c_binding",
-                                "i_name_function": "c_get_group_name_int64_t_bufferify",
-                                "i_subprogram": "subroutine",
-                                "i_suffix": "_bufferify",
+                                "i_name_function": "c_get_group_name_int64_t",
                                 "i_type": "character(kind=C_CHAR)",
-                                "i_var": "SHT_rv",
-                                "i_var_len": "SHT_rv_len",
                                 "idtor": "0",
                                 "stmt_name": "f_function_string&_buf_copy",
                                 "typemap_name": "std::string"
@@ -5138,7 +5247,6 @@
                                 "i_kind": "C_INT64_T",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "integer(C_INT64_T)",
-                                "i_var": "idx",
                                 "idtor": "0",
                                 "stmt_name": "f_in_native",
                                 "typemap_name": "int64_t"
@@ -6088,6 +6196,8 @@
             },
             {
                 "<FUNCTION>": "createView  20 ****************************************",
+                "_fortran_generic_wrap": true,
+                "_overloaded": true,
                 "ast": {
                     "declarator": {
                         "name": "createView",
@@ -6229,16 +6339,21 @@
                         "generic": "(int64_t num_elems)"
                     }
                 ],
+                "helpers": {
+                    "fc": [
+                        "char_len_trim"
+                    ]
+                },
                 "name": "createView",
                 "options": {
-                    "wrap_fortran": false,
                     "wrap_python": false
                 },
                 "user_fmt": {
                     "function_suffix": "_from_type"
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "fortran": true
                 },
                 "zz_bind": {
                     "c": {
@@ -6261,9 +6376,24 @@
                                 "cxx_nonconst_ptr": "SHC_rv_cxx",
                                 "cxx_type": "Class1",
                                 "cxx_var": "SHC_rv_cxx",
+                                "f_capsule_data_type": "CXX_SHROUD_capsule_data",
+                                "f_derived_type": "class1",
+                                "f_kind": "class1",
+                                "f_module_name": "cxxlibrary_mod",
+                                "f_type": "type(class1)",
+                                "f_var": "SHT_rv",
+                                "i_arguments": "path,\t type,\t num_elems,\t SHT_rv",
                                 "i_intent": "OUT",
                                 "i_intent_attr": ", intent(OUT)",
+                                "i_kind": "class1",
+                                "i_module_name": "cxxlibrary_mod",
                                 "i_name_function": "c_create_view_from_type",
+                                "i_result_clause": "\fresult(SHT_rv_ptr)",
+                                "i_result_var": "SHT_rv_ptr",
+                                "i_subprogram": "function",
+                                "i_type": "type(CXX_SHROUD_capsule_data)",
+                                "i_var": "SHT_rv",
+                                "i_var_ptr": "SHT_rv_ptr",
                                 "idtor": "0",
                                 "stmt_name": "c_function_shadow*_capptr",
                                 "typemap_name": "Class1"
@@ -6292,9 +6422,17 @@
                                 "cxx_var": "num_elems",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_LONG",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "integer(C_LONG)",
                                 "f_value_attr": ", value",
+                                "f_var": "num_elems",
                                 "i_intent": "IN",
                                 "i_intent_attr": ", intent(IN)",
+                                "i_kind": "C_LONG",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "integer(C_LONG)",
+                                "i_var": "num_elems",
                                 "idtor": "0",
                                 "stmt_name": "c_in_native",
                                 "typemap_name": "long"
@@ -6324,8 +6462,14 @@
                                 "cxx_var": "path",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
+                                "f_type": "character(len=*)",
+                                "f_var": "path",
                                 "i_intent": "IN",
                                 "i_intent_attr": ", intent(IN)",
+                                "i_kind": "C_CHAR",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "character(kind=C_CHAR)",
+                                "i_var": "path",
                                 "idtor": "0",
                                 "stmt_name": "c_in_string&",
                                 "typemap_name": "std::string"
@@ -6353,9 +6497,17 @@
                                 "cxx_var": "type",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "integer(C_INT)",
                                 "f_value_attr": ", value",
+                                "f_var": "type",
                                 "i_intent": "IN",
                                 "i_intent_attr": ", intent(IN)",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "integer(C_INT)",
+                                "i_var": "type",
                                 "idtor": "0",
                                 "stmt_name": "c_in_native",
                                 "typemap_name": "int"
@@ -6366,6 +6518,183 @@
                                 "value": true
                             },
                             "stmt": "c_in_native"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "createView(\tSHC_path_cxx,\t type,\t num_elems)",
+                                "C_call_list": "SHC_path_cxx,\t type,\t num_elems",
+                                "C_name": "CXX_createView_from_type_bufferify",
+                                "C_prototype": "char *path,\t int SHT_path_len,\t int type,\t long num_elems,\t CXX_Class1 *SHC_rv",
+                                "C_return_type": "void",
+                                "F_arg_c_call": "path,\t SHT_path_len,\t type,\t num_elems,\t SHT_rv%cxxmem",
+                                "F_arguments": "path,\t type,\t num_elems",
+                                "F_subprogram": "function",
+                                "c_abstract_decl": "CXX_Class1 *",
+                                "c_const": "",
+                                "c_local_cxx": "SHC_rv_cxx",
+                                "c_type": "CXX_Class1",
+                                "c_var": "SHC_rv",
+                                "cxx_abstract_decl": "Class1 *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "SHC_rv_cxx",
+                                "cxx_type": "Class1",
+                                "cxx_var": "SHC_rv_cxx",
+                                "f_call_function": "c_create_view_from_type_bufferify",
+                                "f_capsule_data_type": "CXX_SHROUD_capsule_data",
+                                "f_derived_type": "class1",
+                                "f_kind": "class1",
+                                "f_module_name": "cxxlibrary_mod",
+                                "f_result_clause": "\fresult(SHT_rv)",
+                                "f_type": "type(class1)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_arguments": "path,\t SHT_path_len,\t type,\t num_elems,\t SHT_rv",
+                                "i_intent": "OUT",
+                                "i_intent_attr": ", intent(OUT)",
+                                "i_kind": "class1",
+                                "i_module_name": "cxxlibrary_mod",
+                                "i_name_function": "c_create_view_from_type_bufferify",
+                                "i_subprogram": "subroutine",
+                                "i_suffix": "_bufferify",
+                                "i_type": "type(CXX_SHROUD_capsule_data)",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "stmt_name": "f_function_shadow*_capsule_library",
+                                "typemap_name": "Class1"
+                            },
+                            "meta": {
+                                "abstract": "shadow*",
+                                "api": "capsule",
+                                "intent": "function",
+                                "owner": "library"
+                            },
+                            "stmt": "f_function_shadow*_capsule_library"
+                        },
+                        "num_elems": {
+                            "fmtdict": {
+                                "c_abstract_decl": "long",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "long",
+                                "c_var": "num_elems",
+                                "cxx_abstract_decl": "long",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&num_elems",
+                                "cxx_type": "long",
+                                "cxx_var": "num_elems",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_LONG",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "integer(C_LONG)",
+                                "f_value_attr": ", value",
+                                "f_var": "num_elems",
+                                "fc_var": "num_elems",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "C_LONG",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "integer(C_LONG)",
+                                "i_var": "num_elems",
+                                "idtor": "0",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "long"
+                            },
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native"
+                        },
+                        "path": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const char *",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_helper_char_len_trim": "ShroudCharLenTrim",
+                                "c_local_cxx": "SHC_path_cxx",
+                                "c_local_trim": "SHC_path_trim",
+                                "c_member": "->",
+                                "c_type": "char",
+                                "c_var": "path",
+                                "c_var_len": "SHT_path_len",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&path)",
+                                "cxx_type": "std::string",
+                                "cxx_var": "path",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_type": "character(len=*)",
+                                "f_var": "path",
+                                "f_var_len": "SHT_path_len",
+                                "fc_var": "path",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "C_CHAR",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "character(kind=C_CHAR)",
+                                "i_var": "path",
+                                "i_var_len": "SHT_path_len",
+                                "idtor": "0",
+                                "stmt_name": "f_in_string&_buf",
+                                "typemap_name": "std::string"
+                            },
+                            "meta": {
+                                "abstract": "string&",
+                                "api": "buf",
+                                "intent": "in"
+                            },
+                            "stmt": "f_in_string&_buf"
+                        },
+                        "type": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "type",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&type",
+                                "cxx_type": "int",
+                                "cxx_var": "type",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "type",
+                                "fc_var": "type",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "integer(C_INT)",
+                                "i_var": "type",
+                                "idtor": "0",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -6400,8 +6729,605 @@
                 "zz_fmtdict": {
                     "C_name_api": "createView",
                     "F_name_api": "create_view",
+                    "F_name_function": "create_view_from_type",
+                    "F_name_generic": "create_view",
+                    "F_name_impl": "create_view_from_type",
                     "c_arglist": [
                         "SHC_rv",
+                        "path",
+                        "type",
+                        "num_elems"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
+                        "path",
+                        "type",
+                        "num_elems"
+                    ],
+                    "function_name": "createView",
+                    "function_suffix": "_from_type"
+                }
+            },
+            {
+                "<FUNCTION>": "createView  33 ****************************************",
+                "_PTR_F_C_index": 20,
+                "_generated": "fortran_generic",
+                "_generated_path": [
+                    "fortran_generic"
+                ],
+                "_orig_node_index": 20,
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "createView",
+                        "params": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "name": "path",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
+                                    ],
+                                    "typemap_name": "std::string"
+                                },
+                                "specifier": [
+                                    "std::string"
+                                ],
+                                "typemap_name": "std::string"
+                            },
+                            {
+                                "declarator": {
+                                    "name": "type",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "name": "num_elems",
+                                    "typemap_name": "int32_t"
+                                },
+                                "specifier": [
+                                    "int32_t"
+                                ],
+                                "typemap_name": "int32_t"
+                            }
+                        ],
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ],
+                        "typemap_name": "Class1"
+                    },
+                    "specifier": [
+                        "Class1"
+                    ],
+                    "typemap_name": "Class1"
+                },
+                "decl": "Class1 *createView( const std::string& path, int type, long num_elems )",
+                "declgen": "Class1 *createView(const std::string &path, int type, int32_t num_elems)",
+                "helpers": {
+                    "fc": [
+                        "char_len_trim"
+                    ]
+                },
+                "name": "createView",
+                "options": {
+                    "wrap_python": false
+                },
+                "user_fmt": {
+                    "function_suffix": "_from_type"
+                },
+                "wrap": {
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "createView(\tSHC_path_cxx,\t type,\t num_elems)",
+                                "C_call_list": "SHC_path_cxx,\t type,\t num_elems",
+                                "C_name": "createView",
+                                "C_prototype": "char *path,\t int SHT_path_len,\t int type,\t int32_t num_elems,\t CXX_Class1 *SHC_rv",
+                                "C_return_type": "void",
+                                "F_arg_c_call": "path,\t SHT_path_len,\t type,\t int(num_elems, C_LONG),\t SHT_rv%cxxmem",
+                                "F_arguments": "path,\t type,\t num_elems",
+                                "F_subprogram": "function",
+                                "c_abstract_decl": "CXX_Class1 *",
+                                "c_const": "",
+                                "c_local_cxx": "SHC_rv_cxx",
+                                "c_type": "CXX_Class1",
+                                "c_var": "SHC_rv",
+                                "cxx_abstract_decl": "Class1 *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "SHC_rv_cxx",
+                                "cxx_type": "Class1",
+                                "cxx_var": "SHC_rv_cxx",
+                                "f_call_function": "c_create_view_from_type_bufferify",
+                                "f_capsule_data_type": "CXX_SHROUD_capsule_data",
+                                "f_derived_type": "class1",
+                                "f_kind": "class1",
+                                "f_module_name": "cxxlibrary_mod",
+                                "f_result_clause": "\fresult(SHT_rv)",
+                                "f_type": "type(class1)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_intent": "OUT",
+                                "i_intent_attr": ", intent(OUT)",
+                                "i_kind": "class1",
+                                "i_module_name": "cxxlibrary_mod",
+                                "i_name_function": "c_create_view_from_type",
+                                "i_type": "type(CXX_SHROUD_capsule_data)",
+                                "idtor": "0",
+                                "stmt_name": "f_function_shadow*_capsule_library",
+                                "typemap_name": "Class1"
+                            },
+                            "meta": {
+                                "abstract": "shadow*",
+                                "api": "capsule",
+                                "intent": "function",
+                                "owner": "library"
+                            },
+                            "stmt": "f_function_shadow*_capsule_library"
+                        },
+                        "num_elems": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int32_t",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int32_t",
+                                "c_var": "num_elems",
+                                "cxx_abstract_decl": "int32_t",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&num_elems",
+                                "cxx_type": "int32_t",
+                                "cxx_var": "num_elems",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT32_T",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "integer(C_INT32_T)",
+                                "f_value_attr": ", value",
+                                "f_var": "num_elems",
+                                "fc_var": "num_elems",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "C_INT32_T",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "integer(C_INT32_T)",
+                                "idtor": "0",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int32_t"
+                            },
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native"
+                        },
+                        "path": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const char *",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_helper_char_len_trim": "ShroudCharLenTrim",
+                                "c_local_cxx": "SHC_path_cxx",
+                                "c_local_trim": "SHC_path_trim",
+                                "c_member": "->",
+                                "c_type": "char",
+                                "c_var": "path",
+                                "c_var_len": "SHT_path_len",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&path)",
+                                "cxx_type": "std::string",
+                                "cxx_var": "path",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_type": "character(len=*)",
+                                "f_var": "path",
+                                "f_var_len": "SHT_path_len",
+                                "fc_var": "path",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "C_CHAR",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "character(kind=C_CHAR)",
+                                "idtor": "0",
+                                "stmt_name": "f_in_string&_buf",
+                                "typemap_name": "std::string"
+                            },
+                            "meta": {
+                                "abstract": "string&",
+                                "api": "buf",
+                                "intent": "in"
+                            },
+                            "stmt": "f_in_string&_buf"
+                        },
+                        "type": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "type",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&type",
+                                "cxx_type": "int",
+                                "cxx_var": "type",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "type",
+                                "fc_var": "type",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "integer(C_INT)",
+                                "idtor": "0",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "abstract": "shadow*",
+                                "intent": "function"
+                            }
+                        },
+                        "num_elems": {
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "in",
+                                "value": true
+                            }
+                        },
+                        "path": {
+                            "meta": {
+                                "abstract": "string&",
+                                "intent": "in"
+                            }
+                        },
+                        "type": {
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "in",
+                                "value": true
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "createView",
+                    "F_name_api": "create_view",
+                    "F_name_function": "create_view_from_type_int32_t",
+                    "F_name_generic": "create_view",
+                    "F_name_impl": "create_view_from_type_int32_t",
+                    "f_arglist": [
+                        "SHT_rv",
+                        "path",
+                        "type",
+                        "num_elems"
+                    ],
+                    "function_name": "createView",
+                    "function_suffix": "_from_type"
+                }
+            },
+            {
+                "<FUNCTION>": "createView  34 ****************************************",
+                "_PTR_F_C_index": 20,
+                "_generated": "fortran_generic",
+                "_generated_path": [
+                    "fortran_generic"
+                ],
+                "_orig_node_index": 20,
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "createView",
+                        "params": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "name": "path",
+                                    "pointer": [
+                                        {
+                                            "ptr": "&"
+                                        }
+                                    ],
+                                    "typemap_name": "std::string"
+                                },
+                                "specifier": [
+                                    "std::string"
+                                ],
+                                "typemap_name": "std::string"
+                            },
+                            {
+                                "declarator": {
+                                    "name": "type",
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "declarator": {
+                                    "name": "num_elems",
+                                    "typemap_name": "int64_t"
+                                },
+                                "specifier": [
+                                    "int64_t"
+                                ],
+                                "typemap_name": "int64_t"
+                            }
+                        ],
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ],
+                        "typemap_name": "Class1"
+                    },
+                    "specifier": [
+                        "Class1"
+                    ],
+                    "typemap_name": "Class1"
+                },
+                "decl": "Class1 *createView( const std::string& path, int type, long num_elems )",
+                "declgen": "Class1 *createView(const std::string &path, int type, int64_t num_elems)",
+                "helpers": {
+                    "fc": [
+                        "char_len_trim"
+                    ]
+                },
+                "name": "createView",
+                "options": {
+                    "wrap_python": false
+                },
+                "user_fmt": {
+                    "function_suffix": "_from_type"
+                },
+                "wrap": {
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "createView(\tSHC_path_cxx,\t type,\t num_elems)",
+                                "C_call_list": "SHC_path_cxx,\t type,\t num_elems",
+                                "C_name": "createView",
+                                "C_prototype": "char *path,\t int SHT_path_len,\t int type,\t int64_t num_elems,\t CXX_Class1 *SHC_rv",
+                                "C_return_type": "void",
+                                "F_arg_c_call": "path,\t SHT_path_len,\t type,\t int(num_elems, C_LONG),\t SHT_rv%cxxmem",
+                                "F_arguments": "path,\t type,\t num_elems",
+                                "F_subprogram": "function",
+                                "c_abstract_decl": "CXX_Class1 *",
+                                "c_const": "",
+                                "c_local_cxx": "SHC_rv_cxx",
+                                "c_type": "CXX_Class1",
+                                "c_var": "SHC_rv",
+                                "cxx_abstract_decl": "Class1 *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "SHC_rv_cxx",
+                                "cxx_type": "Class1",
+                                "cxx_var": "SHC_rv_cxx",
+                                "f_call_function": "c_create_view_from_type_bufferify",
+                                "f_capsule_data_type": "CXX_SHROUD_capsule_data",
+                                "f_derived_type": "class1",
+                                "f_kind": "class1",
+                                "f_module_name": "cxxlibrary_mod",
+                                "f_result_clause": "\fresult(SHT_rv)",
+                                "f_type": "type(class1)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_intent": "OUT",
+                                "i_intent_attr": ", intent(OUT)",
+                                "i_kind": "class1",
+                                "i_module_name": "cxxlibrary_mod",
+                                "i_name_function": "c_create_view_from_type",
+                                "i_type": "type(CXX_SHROUD_capsule_data)",
+                                "idtor": "0",
+                                "stmt_name": "f_function_shadow*_capsule_library",
+                                "typemap_name": "Class1"
+                            },
+                            "meta": {
+                                "abstract": "shadow*",
+                                "api": "capsule",
+                                "intent": "function",
+                                "owner": "library"
+                            },
+                            "stmt": "f_function_shadow*_capsule_library"
+                        },
+                        "num_elems": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int64_t",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int64_t",
+                                "c_var": "num_elems",
+                                "cxx_abstract_decl": "int64_t",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&num_elems",
+                                "cxx_type": "int64_t",
+                                "cxx_var": "num_elems",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT64_T",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "integer(C_INT64_T)",
+                                "f_value_attr": ", value",
+                                "f_var": "num_elems",
+                                "fc_var": "num_elems",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "C_INT64_T",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "integer(C_INT64_T)",
+                                "idtor": "0",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int64_t"
+                            },
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native"
+                        },
+                        "path": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const char *",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_helper_char_len_trim": "ShroudCharLenTrim",
+                                "c_local_cxx": "SHC_path_cxx",
+                                "c_local_trim": "SHC_path_trim",
+                                "c_member": "->",
+                                "c_type": "char",
+                                "c_var": "path",
+                                "c_var_len": "SHT_path_len",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&path)",
+                                "cxx_type": "std::string",
+                                "cxx_var": "path",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_type": "character(len=*)",
+                                "f_var": "path",
+                                "f_var_len": "SHT_path_len",
+                                "fc_var": "path",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "C_CHAR",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "character(kind=C_CHAR)",
+                                "idtor": "0",
+                                "stmt_name": "f_in_string&_buf",
+                                "typemap_name": "std::string"
+                            },
+                            "meta": {
+                                "abstract": "string&",
+                                "api": "buf",
+                                "intent": "in"
+                            },
+                            "stmt": "f_in_string&_buf"
+                        },
+                        "type": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "type",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&type",
+                                "cxx_type": "int",
+                                "cxx_var": "type",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "type",
+                                "fc_var": "type",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "integer(C_INT)",
+                                "idtor": "0",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "abstract": "shadow*",
+                                "intent": "function"
+                            }
+                        },
+                        "num_elems": {
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "in",
+                                "value": true
+                            }
+                        },
+                        "path": {
+                            "meta": {
+                                "abstract": "string&",
+                                "intent": "in"
+                            }
+                        },
+                        "type": {
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "in",
+                                "value": true
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "createView",
+                    "F_name_api": "create_view",
+                    "F_name_function": "create_view_from_type_int64_t",
+                    "F_name_generic": "create_view",
+                    "F_name_impl": "create_view_from_type_int64_t",
+                    "f_arglist": [
+                        "SHT_rv",
                         "path",
                         "type",
                         "num_elems"
@@ -7782,7 +8708,7 @@
                 ],
                 "functions": [
                     {
-                        "<FUNCTION>": "passStructByReference  33 ****************************************",
+                        "<FUNCTION>": "passStructByReference  35 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "passStructByReference",
@@ -8071,7 +8997,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "passStructByReferenceIn  34 ****************************************",
+                        "<FUNCTION>": "passStructByReferenceIn  36 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "passStructByReferenceIn",
@@ -8360,7 +9286,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "passStructByReferenceInout  35 ****************************************",
+                        "<FUNCTION>": "passStructByReferenceInout  37 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "passStructByReferenceInout",
@@ -8605,7 +9531,7 @@
                         }
                     },
                     {
-                        "<FUNCTION>": "passStructByReferenceOut  36 ****************************************",
+                        "<FUNCTION>": "passStructByReferenceOut  38 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "passStructByReferenceOut",

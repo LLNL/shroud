@@ -56,6 +56,9 @@ struct s_ERR_nested {
 extern "C" {
 #endif
 
+void ERR_AssignValues_bufferify(const int *from, int nfrom, int *to,
+    int nto);
+
 int * ERR_struct1_get_arg2(ERR_struct1 *SH_this,
     ===>SHC_rv c_prototype<===);
 

@@ -231,24 +231,14 @@ void TUT_FortranGenericOverloaded_1(const char *name, double arg2)
     // splicer end function.FortranGenericOverloaded_1
 }
 
-void TUT_FortranGenericOverloaded_1_float_bufferify(char *name,
-    int SHT_name_len, float arg2)
-{
-    // splicer begin function.FortranGenericOverloaded_1_float_bufferify
-    int SHC_name_trim = ShroudCharLenTrim(name, SHT_name_len);
-    const std::string SHC_name_cxx(name, SHC_name_trim);
-    tutorial::FortranGenericOverloaded(SHC_name_cxx, arg2);
-    // splicer end function.FortranGenericOverloaded_1_float_bufferify
-}
-
-void TUT_FortranGenericOverloaded_1_double_bufferify(char *name,
+void TUT_FortranGenericOverloaded_1_bufferify(char *name,
     int SHT_name_len, double arg2)
 {
-    // splicer begin function.FortranGenericOverloaded_1_double_bufferify
+    // splicer begin function.FortranGenericOverloaded_1_bufferify
     int SHC_name_trim = ShroudCharLenTrim(name, SHT_name_len);
     const std::string SHC_name_cxx(name, SHC_name_trim);
     tutorial::FortranGenericOverloaded(SHC_name_cxx, arg2);
-    // splicer end function.FortranGenericOverloaded_1_double_bufferify
+    // splicer end function.FortranGenericOverloaded_1_bufferify
 }
 
 int TUT_UseDefaultOverload_num(int num)

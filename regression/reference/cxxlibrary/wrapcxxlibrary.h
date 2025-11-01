@@ -14,11 +14,8 @@
 #define WRAPCXXLIBRARY_H
 
 // typemap
-#ifdef __cplusplus
-#include <cstdint>
-#else
+#ifndef __cplusplus
 #include <stdbool.h>
-#include <stdint.h>
 #endif
 // shroud
 #include "typescxxlibrary.h"
@@ -69,11 +66,7 @@ void CXX_defaultArgsInOut_1(int in1, int *out1, int *out2, bool flag);
 
 const char * CXX_getGroupName(long idx);
 
-void CXX_getGroupName_int32_t_bufferify(int32_t idx, char *SHC_rv,
-    int SHT_rv_len);
-
-void CXX_getGroupName_int64_t_bufferify(int64_t idx, char *SHC_rv,
-    int SHT_rv_len);
+void CXX_getGroupName_bufferify(long idx, char *SHC_rv, int SHT_rv_len);
 
 CXX_Class1 * CXX_getView_from_name(const char *path,
     CXX_Class1 *SHC_rv);
@@ -88,6 +81,9 @@ void CXX_getView_from_index_bufferify(const long idx,
 
 CXX_Class1 * CXX_createView_from_type(const char *path, int type,
     long num_elems, CXX_Class1 *SHC_rv);
+
+void CXX_createView_from_type_bufferify(char *path, int SHT_path_len,
+    int type, long num_elems, CXX_Class1 *SHC_rv);
 
 void CXX_nested_get_parent(CXX_nested *SH_this,
     CXX_SHROUD_array *SHT_rv_cdesc);

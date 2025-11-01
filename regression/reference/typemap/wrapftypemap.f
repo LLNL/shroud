@@ -32,27 +32,16 @@ module typemap_mod
 
     interface
 
-        function c_pass_index_32_bufferify(i1, i2) &
+        function c_pass_index(i1, i2) &
                 result(SHT_rv) &
-                bind(C, name="TYP_passIndex_32_bufferify")
-            use iso_c_binding, only : C_BOOL, C_INT32_T
+                bind(C, name="TYP_passIndex")
+            use iso_c_binding, only : C_BOOL
             import :: INDEXTYPE
             implicit none
-            integer(C_INT32_T), value, intent(IN) :: i1
+            integer(INDEXTYPE), value, intent(IN) :: i1
             integer(INDEXTYPE), intent(OUT) :: i2
             logical(C_BOOL) :: SHT_rv
-        end function c_pass_index_32_bufferify
-
-        function c_pass_index_64_bufferify(i1, i2) &
-                result(SHT_rv) &
-                bind(C, name="TYP_passIndex_64_bufferify")
-            use iso_c_binding, only : C_BOOL, C_INT64_T
-            import :: INDEXTYPE
-            implicit none
-            integer(C_INT64_T), value, intent(IN) :: i1
-            integer(INDEXTYPE), intent(OUT) :: i2
-            logical(C_BOOL) :: SHT_rv
-        end function c_pass_index_64_bufferify
+        end function c_pass_index
 
         subroutine c_pass_index2(i1) &
                 bind(C, name="TYP_passIndex2")
@@ -96,7 +85,7 @@ contains
         integer(INDEXTYPE), intent(OUT) :: i2
         logical :: SHT_rv
         ! splicer begin function.pass_index_32
-        SHT_rv = c_pass_index_32_bufferify(i1, i2)
+        SHT_rv = c_pass_index(int(i1, INDEXTYPE), i2)
         ! splicer end function.pass_index_32
     end function pass_index_32
 
@@ -107,7 +96,7 @@ contains
         integer(INDEXTYPE), intent(OUT) :: i2
         logical :: SHT_rv
         ! splicer begin function.pass_index_64
-        SHT_rv = c_pass_index_64_bufferify(i1, i2)
+        SHT_rv = c_pass_index(int(i1, INDEXTYPE), i2)
         ! splicer end function.pass_index_64
     end function pass_index_64
 

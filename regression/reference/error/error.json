@@ -1077,6 +1077,7 @@
             },
             {
                 "<FUNCTION>": "AssumedRank  7 ****************************************",
+                "_fortran_generic_wrap": true,
                 "_gen_fortran_assumed_rank": true,
                 "_overloaded": true,
                 "ast": {
@@ -1186,6 +1187,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "fortran": true,
                     "python": true
                 },
                 "zz_bind": {
@@ -1235,6 +1237,69 @@
                                 "intent": "inout"
                             },
                             "stmt": "c_inout_native*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "AssumedRank(\tdata)",
+                                "C_call_list": "data",
+                                "C_name": "ERR_AssumedRank",
+                                "C_prototype": "int *data",
+                                "C_return_type": "void",
+                                "F_arg_c_call": "data",
+                                "F_arguments": "data",
+                                "F_subprogram": "subroutine",
+                                "f_call_function": "c_assumed_rank",
+                                "i_arguments": "data",
+                                "i_name_function": "c_assumed_rank",
+                                "i_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "data": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "data",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "data",
+                                "cxx_type": "int",
+                                "cxx_var": "data",
+                                "f_intent": "INOUT",
+                                "f_intent_attr": ", intent(INOUT)",
+                                "f_kind": "C_INT",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "data",
+                                "fc_var": "data",
+                                "i_intent": "INOUT",
+                                "i_intent_attr": ", intent(INOUT)",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "integer(C_INT)",
+                                "i_var": "data",
+                                "idtor": "0",
+                                "stmt_name": "f_inout_native*",
+                                "typemap_name": "int"
+                            },
+                            "meta": {
+                                "abstract": "native*",
+                                "intent": "inout"
+                            },
+                            "stmt": "f_inout_native*"
                         }
                     },
                     "py": {
@@ -1292,9 +1357,16 @@
                 "zz_fmtdict": {
                     "C_name_api": "AssumedRank",
                     "F_name_api": "assumed_rank",
+                    "F_name_function": "assumed_rank",
+                    "F_name_generic": "assumed_rank",
+                    "F_name_impl": "assumed_rank",
                     "PY_name_impl": "PY_AssumedRank",
                     "c_arglist": [
                         "c_var",
+                        "data"
+                    ],
+                    "f_arglist": [
+                        "f_var",
                         "data"
                     ],
                     "function_name": "AssumedRank"

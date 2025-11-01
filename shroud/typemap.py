@@ -333,6 +333,7 @@ def default_typemap():
             c_type="void",
             cxx_type="void",
             # fortran='subroutine',
+#            f_cast="C_LOC({f_var})",
             f_type="type(C_PTR)",
             f_kind="C_PTR",
             f_module_name="iso_c_binding",

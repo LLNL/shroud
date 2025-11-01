@@ -1089,9 +1089,18 @@ class GenFunctions(object):
             Create functions are appended to this list.
 
         """
-        any_need_wrapper = False
+        need_c_wrapper = False
+        wrap_fortran = True
+        for arg in node.ast.declarator.params:
+            if arg.typemap.sgroup == "void":
+                # Will use Fortran intrinsic to convert argument.
+                wrap_fortran = False  # Do not change until after cloning.
+                need_c_wrapper = True
+        
+        new_functions = []
         for generic in node.fortran_generic:
             new = node.clone()
+            new_functions.append(new)
             ordered_functions.append(new)
             self.append_function_index(new)
             new._generated = "fortran_generic"
@@ -1108,46 +1117,26 @@ class GenFunctions(object):
                                    + node.name)
             new.ast.declarator.params = generic.decls
 
-            # Try to call original C function if possible.
-            # All arguments are native scalar.
-            need_wrapper = False
-            if new.return_this:
-                pass
-            elif new.ast.typemap.sgroup == "shadow":
-                # cxxlibrary.yaml getView with fortran_generic
-                pass
-            elif new.ast.declarator.is_indirect():
-                need_wrapper = True
-            
             for arg in new.ast.declarator.params:
                 if arg.declarator.is_indirect():
-                    need_wrapper = True
-                    break
-                elif arg.typemap.sgroup == "native":
-                    # Will use Fortran intrinsic to convert argument.
-                    pass
-                else:
-                    need_wrapper = True
-                    break
+                    if "rank" in arg.declarator.attrs:
+                        need_c_wrapper = True
+                        break
 
-            if need_wrapper:
-                # The C wrapper is required to cast constants
-                # and return indirects.
-                # generic.yaml: GenericReal
+        # Wrap all generic functions the same way to avoid problems
+        # with arguments dimensions.
+        if need_c_wrapper:
+            for new in new_functions:
                 new.C_force_wrapper = True
                 new._PTR_C_CXX_index = node._function_index
-                any_need_wrapper = True
-            else:
-                new._PTR_F_C_index = node._function_index
-        
-        if any_need_wrapper:
-            # Do not wrap original function, create a C wrapper for
-            # each generic variant.
-            node.wrap.fortran = False
         else:
-            # All generic variants will call the same interface for
-            # the original function.
+            for new in new_functions:
+                new._PTR_F_C_index = node._function_index
+
+        if wrap_fortran:
             node._fortran_generic_wrap = True
+        else:
+            node.wrap.fortran = False
 
     def has_default_args(self, node, ordered_functions):
         """

@@ -1220,7 +1220,8 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             if CC_node.C_signature == signature:
                 need_wrapper = False
                 # The Fortran interface calls the C wrapper, if it exists.
-                fmt_result.C_name = CC_node._bind["c"]["+result"].fmtdict.C_name
+                if "c" in CC_node._bind:
+                    fmt_result.C_name = CC_node._bind["c"]["+result"].fmtdict.C_name
 
         if need_wrapper:
             impl = []

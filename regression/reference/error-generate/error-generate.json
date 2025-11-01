@@ -2696,6 +2696,7 @@
             },
             {
                 "<FUNCTION>": "AssignValues  35 ****************************************",
+                "_fortran_generic_wrap": true,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2892,8 +2893,192 @@
                     "wrap_c": false,
                     "wrap_python": false
                 },
-                "wrap": {},
+                "wrap": {
+                    "fortran": true
+                },
                 "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "AssignValues(\tfrom,\t nfrom,\t to,\t nto)",
+                                "C_call_list": "from,\t nfrom,\t to,\t nto",
+                                "C_name": "ERR_AssignValues_bufferify",
+                                "C_prototype": "const int *from,\t int nfrom,\t int *to,\t int nto",
+                                "C_return_type": "void",
+                                "F_arg_c_call": "from,\t nfrom,\t to,\t nto",
+                                "F_arguments": "from,\t nfrom,\t to,\t nto",
+                                "F_subprogram": "subroutine",
+                                "f_call_function": "c_assign_values_bufferify",
+                                "i_arguments": "from,\t nfrom,\t to,\t nto",
+                                "i_name_function": "c_assign_values_bufferify",
+                                "i_subprogram": "subroutine",
+                                "i_suffix": "_bufferify",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "from": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const int *",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "from",
+                                "cxx_abstract_decl": "const int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<int *>\t(from)",
+                                "cxx_type": "int",
+                                "cxx_var": "from",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "from",
+                                "fc_var": "from",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "integer(C_INT)",
+                                "i_var": "from",
+                                "idtor": "0",
+                                "stmt_name": "f_in_native*",
+                                "typemap_name": "int"
+                            },
+                            "meta": {
+                                "abstract": "native*",
+                                "intent": "in"
+                            },
+                            "stmt": "f_in_native*"
+                        },
+                        "nfrom": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "nfrom",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&nfrom",
+                                "cxx_type": "int",
+                                "cxx_var": "nfrom",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "nfrom",
+                                "fc_var": "nfrom",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "integer(C_INT)",
+                                "i_var": "nfrom",
+                                "idtor": "0",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native"
+                        },
+                        "nto": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "nto",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&nto",
+                                "cxx_type": "int",
+                                "cxx_var": "nto",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "nto",
+                                "fc_var": "nto",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "integer(C_INT)",
+                                "i_var": "nto",
+                                "idtor": "0",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native"
+                        },
+                        "to": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "to",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "to",
+                                "cxx_type": "int",
+                                "cxx_var": "to",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "to",
+                                "fc_var": "to",
+                                "i_intent": "OUT",
+                                "i_intent_attr": ", intent(OUT)",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "integer(C_INT)",
+                                "i_var": "to",
+                                "idtor": "0",
+                                "stmt_name": "f_out_native*",
+                                "typemap_name": "int"
+                            },
+                            "meta": {
+                                "abstract": "native*",
+                                "intent": "out"
+                            },
+                            "stmt": "f_out_native*"
+                        }
+                    },
                     "share": {
                         "+result": {
                             "meta": {
@@ -2932,6 +3117,16 @@
                 "zz_fmtdict": {
                     "C_name_api": "AssignValues",
                     "F_name_api": "assign_values",
+                    "F_name_function": "assign_values",
+                    "F_name_generic": "assign_values",
+                    "F_name_impl": "assign_values",
+                    "f_arglist": [
+                        "f_var",
+                        "from",
+                        "nfrom",
+                        "to",
+                        "nto"
+                    ],
                     "function_name": "AssignValues"
                 }
             },

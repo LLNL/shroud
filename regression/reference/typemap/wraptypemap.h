@@ -18,8 +18,7 @@
 #else
 #include <stdint.h>
 #endif
-#ifdef __cplusplus
-#else
+#ifndef __cplusplus
 #include <stdbool.h>
 #endif
 #include "typestypemap.h"
@@ -35,10 +34,6 @@ extern "C" {
 // splicer end C_declarations
 
 bool TYP_passIndex(IndexType i1, IndexType *i2);
-
-bool TYP_passIndex_32_bufferify(int32_t i1, IndexType *i2);
-
-bool TYP_passIndex_64_bufferify(int64_t i1, IndexType *i2);
 
 void TYP_passIndex2(IndexType i1);
 
