@@ -131,6 +131,14 @@ declarations:
     -  decl: (long length=1)
        function_suffix: _long
 
+  - decl: int getViewFromClass( const std::string& path )
+    doxygen:
+      description: |
+        The capsule which is added for the class should have intent(IN).
+        Needed with type(class1), intent(IN).
+    options:
+      wrap_python: False
+
 ########################################
 # Test overloaded function which return a class pointer,
 # uses function_suffix with fortran_generic and

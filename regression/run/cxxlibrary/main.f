@@ -18,6 +18,7 @@ program tester
   call test_generic
   call test_nested
   call test_return_this
+  call test_capsule_intent
   call test_fortran_generic
 
   call fruit_summary
@@ -183,6 +184,34 @@ contains
     
   end subroutine test_return_this
 
+  subroutine test_capsule_intent
+    use cxxlibrary_mod
+    type(class1) obj
+    integer length
+
+    call set_case_name("test_capsule_intent")
+
+    obj = class1()
+
+    length = obj%get_view_from_class("teststring")
+    call assert_equals(10, length, "intent(inout) lenstr");
+    
+    call test_capsule_intent_worker(obj)
+
+  end subroutine test_capsule_intent
+    
+  subroutine test_capsule_intent_worker(obj)
+    use cxxlibrary_mod
+    type(class1), intent(IN) :: obj
+#if 0
+    integer length
+
+    length = obj%get_view_from_class("teststring2")
+    call assert_equals(1, length, "intent(in) lenstr");
+#endif
+    
+  end subroutine test_capsule_intent_worker
+  
   subroutine test_fortran_generic
     use cxxlibrary_mod
     type(class1) obj1a, obj2a, obj3a
@@ -211,5 +240,6 @@ contains
     obj2d = create_view("name", 1, 1_C_INT64_T, C_NULL_PTR)
 
   end subroutine test_fortran_generic
+
     
 end program tester

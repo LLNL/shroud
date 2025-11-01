@@ -87,6 +87,11 @@ public:
         m_length = length;
         return this;
     };
+
+    int getViewFromClass( const std::string& path )
+    {
+        return path.size();
+    };
 };
 
 //----------------------------------------------------------------------
