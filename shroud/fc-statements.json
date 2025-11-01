@@ -7234,7 +7234,7 @@
             "This helper is added in wrapf.py Wrapf.wrap_class",
             "instead of adding to lots of other groups."
         ],
-        "scope": "cwrap_include",
+        "scope": "cwrap_share",
         "source": [
             "",
             "enum SwigMemFlags {{+",

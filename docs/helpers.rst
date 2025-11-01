@@ -18,13 +18,18 @@ Helper code can be inserted in several files and several locations.
 
     // file C_header_util
 
-    // scope=cwrap_include include
+    // scope=cwrap_include:include
 
+
+    #ifdef SHROUD_SHARE_H
+    // api=c scope=cwrap_share:source
+    #endif
+    
     #ifdef __cplusplus
     extern "C" {
     #endif
 
-    // api=c scope=cwrap_include source
+    // api=c scope=cwrap_include:source
 
     // api=c proto
 
@@ -44,7 +49,7 @@ Helper code can be inserted in several files and several locations.
     extern "C" {
     #endif
 
-    // api=c scope=cwrap_impl source
+    // api=c scope=cwrap_impl:source
 
     #ifdef __cplusplus
     }
@@ -59,10 +64,10 @@ Helper code can be inserted in several files and several locations.
 
     // scope=cwrap_include include
 
-    // api=cxx scope=file source
+    // api=cxx scope=file:source
 
     extern "C" {
-    // api=c scope=file source
+    // api=c scope=file:source
 
 .. code-block:: fortran
 
@@ -155,6 +160,13 @@ Scope of helper.
 
 * ``cwrap_impl`` - Helpers which are written in C and called by C or Fortran.
 
+* ``cwrap_share`` - Code that will be identical across wrapped
+  libraries.  It is protected by the ``SHROUD_SHARE_H`` define to only
+  be included once.  This allows one library to use wrappers from
+  another library.  Most sharing is done by mangling names. This
+  section will be identical across libraries.
+  It must be C language only if C wrappers are being created.
+  
 c_include
 ^^^^^^^^^
 

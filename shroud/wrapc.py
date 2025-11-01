@@ -285,7 +285,8 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
            Should be self.c_helper or self.shared_helper.
         """
         # per class
-        self.helper_include = dict(file={}, cwrap_include={}, cwrap_impl={})
+        self.helper_include = dict(file={}, cwrap_include={},
+                                   cwrap_impl={}, cwrap_share={})
 
         self.helper_summary = dict(
             c=dict(
@@ -294,6 +295,7 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
                 file=[],
                 cwrap_include=[],
                 cwrap_impl=[],
+                cwrap_share=[],
             ),
             cxx=dict(
                 proto=[],
@@ -301,6 +303,7 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
                 file=[],
                 cwrap_include=[],
                 cwrap_impl=[],
+                cwrap_share=[],
             ),
         )
         
@@ -394,6 +397,21 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         headers = self.header_types
         headers.add_shroud_dict(self.helper_include["cwrap_include"])
         headers.write_headers(output, is_header=True)
+
+        
+        share = self.helper_summary["c"]["cwrap_share"]
+        if share:
+            guard2 = "SHROUD_SHARED_H"
+            output.extend(
+                [
+                    "",
+                    "// Shared with other Shroud wrapped libraries",
+                    "#ifndef %s" % guard2,
+                    "#define %s" % guard2,
+                ]
+            )
+            output.extend(share)
+            output.extend(["", "#endif  // " + guard2])
 
         self._push_splicer("types")
         self._create_splicer('CXX_declarations', output, blank=True)

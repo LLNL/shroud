@@ -9,6 +9,17 @@
 #ifndef TYPESLIBRARY_H
 #define TYPESLIBRARY_H
 
+// Shared with other Shroud wrapped libraries
+#ifndef SHROUD_SHARED_H
+#define SHROUD_SHARED_H
+
+enum SwigMemFlags {
+    SWIG_MEM_OWN = 0x01,
+    SWIG_MEM_RVALUE = 0x02,
+};
+
+#endif  // SHROUD_SHARED_H
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -20,11 +31,6 @@ struct s_LIB_SHROUD_capsule_data {
     int cmemflags;  /* memory flags */
 };
 typedef struct s_LIB_SHROUD_capsule_data LIB_SHROUD_capsule_data;
-
-enum SwigMemFlags {
-    SWIG_MEM_OWN = 0x01,
-    SWIG_MEM_RVALUE = 0x02,
-};
 #if 0
 
 // C++ capsule LIB_three_Class1
