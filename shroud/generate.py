@@ -775,7 +775,7 @@ class GenFunctions(object):
                 continue
             if node._gen_fortran_assumed_rank and not node.options.F_CFI:
                 self.process_assumed_rank(node)
-            if node.fortran_generic:
+            if node.fortran_generic and node.wrap.fortran:
                 node._overloaded = True
                 self.generic_function(node, ordered)
         return ordered
@@ -1072,9 +1072,14 @@ class GenFunctions(object):
         Fortran wrappers will be created to call the same C wrapper.
         The conversion of the arguments will be done by Fortran intrinsics.
         ex.  int(arg, kind=C_LONG)
-        Otherwise, a C wrapper will be created for each Fortran function.
-        arg_to_buff will be called after this which may create an additional
-        C wrapper to deal with these arguments.
+
+        If all of the generic arguments are native scalar, then the
+        Fortran wrappers will explictly convert the argument using a
+        Fortran intrinsic function then call the Fortran interface for
+        the original C function.  In this case _fortran_generic_wrap
+        will be set True. The original function can not be called from
+        Fortran since its name conflicts with the generic name or the
+        arguments may be ambiguous with one of the overloads.
 
         Parameters
         ----------
@@ -1084,9 +1089,21 @@ class GenFunctions(object):
             Create functions are appended to this list.
 
         """
-        any_need_wrapper = False
+        need_c_wrapper = False
+        wrap_fortran = True
+        # If overloaded, multiple functions may produce the same names
+        # so always make the wrapper.
+        if not node._cxx_overload:
+            for arg in node.ast.declarator.params:
+                if arg.typemap.sgroup == "void":
+                    # Will use Fortran intrinsic to convert argument.
+                    wrap_fortran = False  # Do not change until after cloning.
+                    need_c_wrapper = True
+        
+        new_functions = []
         for generic in node.fortran_generic:
             new = node.clone()
+            new_functions.append(new)
             ordered_functions.append(new)
             self.append_function_index(new)
             new._generated = "fortran_generic"
@@ -1097,53 +1114,32 @@ class GenFunctions(object):
                 fmt.update(generic.fmtdict)
             fmt.function_suffix = fmt.function_suffix + generic.function_suffix
             new.fortran_generic = {}
-            new.wrap.assign(fortran=True)
+            new.wrap.assign(fortran=True) # Only wrap Fortran
             if len(new.ast.declarator.params) != len(generic.decls):
                 raise RuntimeError("internal: generic_function: length mismatch: "
                                    + node.name)
             new.ast.declarator.params = generic.decls
 
-            # Try to call original C function if possible.
-            # All arguments are native scalar.
-            need_wrapper = False
-            if new.return_this:
-                pass
-            elif new.ast.typemap.sgroup == "shadow":
-                pass
-            elif new.ast.declarator.is_indirect():
-                need_wrapper = True
-            
             for arg in new.ast.declarator.params:
                 if arg.declarator.is_indirect():
-                    need_wrapper = True
-                    break
-                elif arg.typemap.sgroup == "native":
-                    pass
-                else:
-                    need_wrapper = True
-                    break
+                    if "rank" in arg.declarator.attrs:
+                        need_c_wrapper = True
+                        break
 
-            if need_wrapper:
-                # The C wrapper is required to cast constants
-                # and return indirects.
-                # generic.yaml: GenericReal
+        # Wrap all generic functions the same way to avoid problems
+        # with arguments dimensions.
+        if need_c_wrapper:
+            for new in new_functions:
                 new.C_force_wrapper = True
                 new._PTR_C_CXX_index = node._function_index
-                any_need_wrapper = True
-            else:
+        else:
+            for new in new_functions:
                 new._PTR_F_C_index = node._function_index
-        
-        # Do not process templated node, instead process
-        # generated functions above.
-        #        node.wrap.c = False
-        node.wrap.fortran = False
 
-        # At least one of the fortran_generic functions will call
-        # The C library function directly.
-        if not any_need_wrapper:
-            node.wrap.c = True
-
-    #        node.wrap.python = False
+        if wrap_fortran:
+            node._fortran_generic_wrap = True
+        else:
+            node.wrap.fortran = False
 
     def has_default_args(self, node, ordered_functions):
         """

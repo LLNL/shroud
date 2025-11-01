@@ -372,6 +372,54 @@ void CLA_Class1_getName_bufferify(CLA_Class1 * self,
 }
 // end CLA_Class1_getName_bufferify
 
+/**
+ * When return-by-value, the Fortran user always owns the memory. This causes a capsule to passed to the string which invalidates pure as suggested by the const.
+ */
+// ----------------------------------------
+// Function:  std::string getPath +len(40)
+// Statement: c_function_string
+// start CLA_Class1_getPath
+const char * CLA_Class1_getPath(const CLA_Class1 * self,
+    CLA_SHROUD_capsule_data *SHT_rv_capsule)
+{
+    const classes::Class1 *SH_this =
+        static_cast<const classes::Class1 *>(self->addr);
+    // splicer begin class.Class1.method.getPath
+    std::string *SHC_rv_cxx = new std::string;
+    *SHC_rv_cxx = SH_this->getPath();
+    const char *SHC_rv = NULL;
+    if (!SHC_rv_cxx->empty()) SHC_rv = SHC_rv_cxx->c_str();
+    SHT_rv_capsule->addr  = SHC_rv_cxx;
+    SHT_rv_capsule->idtor = 2;
+    return SHC_rv;
+    // splicer end class.Class1.method.getPath
+}
+// end CLA_Class1_getPath
+
+/**
+ * When return-by-value, the Fortran user always owns the memory. This causes a capsule to passed to the string which invalidates pure as suggested by the const.
+ */
+// ----------------------------------------
+// Function:  std::string getPath +len(40)
+// Statement: f_function_string_buf_copy
+// start CLA_Class1_getPath_bufferify
+void CLA_Class1_getPath_bufferify(const CLA_Class1 * self, char *SHC_rv,
+    int SHT_rv_len)
+{
+    const classes::Class1 *SH_this =
+        static_cast<const classes::Class1 *>(self->addr);
+    // splicer begin class.Class1.method.getPath_bufferify
+    std::string SHC_rv_cxx = SH_this->getPath();
+    if (SHC_rv_cxx.empty()) {
+        ShroudCharCopy(SHC_rv, SHT_rv_len, nullptr, 0);
+    } else {
+        ShroudCharCopy(SHC_rv, SHT_rv_len, SHC_rv_cxx.data(),
+            SHC_rv_cxx.size());
+    }
+    // splicer end class.Class1.method.getPath_bufferify
+}
+// end CLA_Class1_getPath_bufferify
+
 // ----------------------------------------
 // Function:  DIRECTION directionFunc
 // Statement: c_function_enum

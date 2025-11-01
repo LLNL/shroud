@@ -79,10 +79,7 @@ void TUT_FortranGenericOverloaded_0(void);
 
 void TUT_FortranGenericOverloaded_1(const char *name, double arg2);
 
-void TUT_FortranGenericOverloaded_1_float_bufferify(char *name,
-    int SHT_name_len, float arg2);
-
-void TUT_FortranGenericOverloaded_1_double_bufferify(char *name,
+void TUT_FortranGenericOverloaded_1_bufferify(char *name,
     int SHT_name_len, double arg2);
 
 int TUT_UseDefaultOverload_num(int num);

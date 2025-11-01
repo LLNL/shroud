@@ -87,10 +87,17 @@ declarations:
     doxygen:
       brief: test helper
 
+  - decl: std::string getPath() const +len(40)
+    doxygen:
+      description:
+        When return-by-value, the Fortran user always owns the memory.
+        This causes a capsule to passed to the string which
+        invalidates pure as suggested by the const.
+  
   - decl: enum DIRECTION { UP = 2, DOWN, LEFT= 100, RIGHT };
   
   - decl: DIRECTION directionFunc(DIRECTION arg);
-  
+
 ##################################################
 
 - decl: class Class2

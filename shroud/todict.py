@@ -339,7 +339,7 @@ class ToDict(visitor.Visitor):
         d = dict()
         add_true_fields(
             node, d, ["fortran", "c", "lua", "python",
-#                      "signature_c", "signature_f",
+#                     "signature_c", "signature_i", "signature_f",
             ]
         )
         return d
@@ -471,6 +471,7 @@ class ToDict(visitor.Visitor):
                 "C_error_pattern",
                 "PY_error_pattern",
                 "_default_funcs",
+                "_fortran_generic_wrap",
                 "_generated",
                 "_generated_path",
                 "_has_default_arg",
@@ -519,6 +520,9 @@ class ToDict(visitor.Visitor):
                     helpers[key] = list(values.keys())
             if helpers:
                 d["helpers"] = self.visit(helpers)
+
+        if node.options.debug_index:
+            add_optional_true_fields(node, d, ["signatures"])
 
         return d
 

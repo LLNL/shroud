@@ -19,6 +19,7 @@ program tester
   call test_class1_final
   call test_class1_new_by_value
   call test_class1
+  call test_class1_memory
   call test_singleton
   call test_subclass
   call test_getter
@@ -248,6 +249,18 @@ contains
 
     ! obj0a has a dangling reference to a deleted object
   end subroutine test_class1
+
+  subroutine test_class1_memory
+    character(40) path
+    type(class1) obj0
+
+    call set_case_name("test_class1_memory")
+
+    obj0 = class1()
+    path = obj0%get_path()
+    call assert_equals(path, "Class1additional", "get_path")
+
+  end subroutine test_class1_memory
 
   subroutine test_singleton
     type(singleton) obj0, obj1

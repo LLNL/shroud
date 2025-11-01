@@ -219,8 +219,7 @@ pdf :
 	$(MAKE) -C build/sphinx/latex all-pdf
 
 test :
-	$(PYTHON) setup.py test
-#	$(PYTHON) -m unittest tests
+	$(PYTHON) -m unittest tests
 
 
 requirements.txt :

@@ -1208,11 +1208,20 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         need_wrapper = need_wrapper or stmt_need_wrapper
         if wlang == "c":
             node.wrap.signature_c = signature
+            node.signatures["c"] = signature
         elif wlang == "f":
-            node.wrap.signature_f = signature
+            # Fortran interface for C function.
+            node.wrap.signature_i = signature
+            node.signatures["i"] = signature
             if node._PTR_F_C_index is not None:
-                # Use a previously generated C wrapper
+                CC_node = self.newlibrary.function_index[node._PTR_F_C_index]
+            else:
+                CC_node = node
+            if CC_node.C_signature == signature:
                 need_wrapper = False
+                # The Fortran interface calls the C wrapper, if it exists.
+                if "c" in CC_node._bind:
+                    fmt_result.C_name = CC_node._bind["c"]["+result"].fmtdict.C_name
 
         if need_wrapper:
             impl = []
@@ -1280,8 +1289,15 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 node.C_signature = signature
 
         else:
-            # There is no C wrapper, have Fortran call the function directly.
-            fmt_result.C_name = node.ast.declarator.name
+            if wlang == "c":
+                # There is no C wrapper, call the function directly.
+                fmt_result.C_name = node.ast.declarator.name
+            elif wlang == "f":
+                if "c" in node._bind:
+                    # The Fortran interface calls the C wrapper.
+                    fmt_result.C_name = node._bind["c"]["+result"].fmtdict.C_name
+                else:
+                    fmt_result.C_name = node.ast.declarator.name
             # Needed to create interface for C only wrappers.
             node.eval_template("i_name_function", fmt=fmt_result)
 

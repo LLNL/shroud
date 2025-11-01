@@ -13,6 +13,7 @@
         "functions": [
             {
                 "<FUNCTION>": "passIndex  0 ****************************************",
+                "_fortran_generic_wrap": true,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -129,7 +130,8 @@
                 "name": "passIndex",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "fortran": true
                 },
                 "zz_bind": {
                     "c": {
@@ -149,16 +151,7 @@
                                 "cxx_nonconst_ptr": "&SHC_rv",
                                 "cxx_type": "bool",
                                 "cxx_var": "SHC_rv",
-                                "f_type": "logical",
-                                "f_var": "SHT_rv",
-                                "i_arguments": "i1,\t i2",
-                                "i_kind": "C_BOOL",
-                                "i_module_name": "iso_c_binding",
                                 "i_name_function": "c_pass_index",
-                                "i_result_clause": "\fresult(SHT_rv)",
-                                "i_subprogram": "function",
-                                "i_type": "logical(C_BOOL)",
-                                "i_var": "SHT_rv",
                                 "idtor": "0",
                                 "stmt_name": "c_function_bool",
                                 "typemap_name": "bool"
@@ -186,17 +179,9 @@
                                 "cxx_var": "i1",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "INDEXTYPE",
-                                "f_module_name": "typemap_mod",
-                                "f_type": "integer(INDEXTYPE)",
                                 "f_value_attr": ", value",
-                                "f_var": "i1",
                                 "i_intent": "IN",
                                 "i_intent_attr": ", intent(IN)",
-                                "i_kind": "INDEXTYPE",
-                                "i_module_name": "typemap_mod",
-                                "i_type": "integer(INDEXTYPE)",
-                                "i_var": "i1",
                                 "idtor": "0",
                                 "stmt_name": "c_in_native",
                                 "typemap_name": "IndexType"
@@ -225,16 +210,8 @@
                                 "cxx_var": "i2",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "INDEXTYPE",
-                                "f_module_name": "typemap_mod",
-                                "f_type": "integer(INDEXTYPE)",
-                                "f_var": "i2",
                                 "i_intent": "OUT",
                                 "i_intent_attr": ", intent(OUT)",
-                                "i_kind": "INDEXTYPE",
-                                "i_module_name": "typemap_mod",
-                                "i_type": "integer(INDEXTYPE)",
-                                "i_var": "i2",
                                 "idtor": "0",
                                 "stmt_name": "c_out_native*",
                                 "typemap_name": "IndexType"
@@ -244,6 +221,128 @@
                                 "intent": "out"
                             },
                             "stmt": "c_out_native*"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "passIndex(\ti1,\t i2)",
+                                "C_call_list": "i1,\t i2",
+                                "C_name": "TYP_passIndex",
+                                "C_prototype": "IndexType i1,\t IndexType *i2",
+                                "C_return_type": "bool",
+                                "F_arg_c_call": "i1,\t i2",
+                                "F_arguments": "i1,\t i2",
+                                "F_subprogram": "function",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "bool",
+                                "c_var": "SHC_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_type": "bool",
+                                "cxx_var": "SHC_rv",
+                                "f_call_function": "c_pass_index",
+                                "f_result_clause": "\fresult(SHT_rv)",
+                                "f_type": "logical",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_arguments": "i1,\t i2",
+                                "i_kind": "C_BOOL",
+                                "i_module_name": "iso_c_binding",
+                                "i_name_function": "c_pass_index",
+                                "i_result_clause": "\fresult(SHT_rv)",
+                                "i_subprogram": "function",
+                                "i_type": "logical(C_BOOL)",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "stmt_name": "f_function_bool",
+                                "typemap_name": "bool"
+                            },
+                            "meta": {
+                                "abstract": "bool",
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_bool"
+                        },
+                        "i1": {
+                            "fmtdict": {
+                                "c_abstract_decl": "IndexType",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "IndexType",
+                                "c_var": "i1",
+                                "cxx_abstract_decl": "IndexType",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&i1",
+                                "cxx_type": "IndexType",
+                                "cxx_var": "i1",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "INDEXTYPE",
+                                "f_module_name": "typemap_mod",
+                                "f_type": "integer(INDEXTYPE)",
+                                "f_value_attr": ", value",
+                                "f_var": "i1",
+                                "fc_var": "i1",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "INDEXTYPE",
+                                "i_module_name": "typemap_mod",
+                                "i_type": "integer(INDEXTYPE)",
+                                "i_var": "i1",
+                                "idtor": "0",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "IndexType"
+                            },
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native"
+                        },
+                        "i2": {
+                            "fmtdict": {
+                                "c_abstract_decl": "IndexType *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "IndexType",
+                                "c_var": "i2",
+                                "cxx_abstract_decl": "IndexType *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "i2",
+                                "cxx_type": "IndexType",
+                                "cxx_var": "i2",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "INDEXTYPE",
+                                "f_module_name": "typemap_mod",
+                                "f_type": "integer(INDEXTYPE)",
+                                "f_var": "i2",
+                                "fc_var": "i2",
+                                "i_intent": "OUT",
+                                "i_intent_attr": ", intent(OUT)",
+                                "i_kind": "INDEXTYPE",
+                                "i_module_name": "typemap_mod",
+                                "i_type": "integer(INDEXTYPE)",
+                                "i_var": "i2",
+                                "idtor": "0",
+                                "stmt_name": "f_out_native*",
+                                "typemap_name": "IndexType"
+                            },
+                            "meta": {
+                                "abstract": "native*",
+                                "intent": "out"
+                            },
+                            "stmt": "f_out_native*"
                         }
                     },
                     "share": {
@@ -271,8 +370,16 @@
                 "zz_fmtdict": {
                     "C_name_api": "passIndex",
                     "F_name_api": "pass_index",
+                    "F_name_function": "pass_index",
+                    "F_name_generic": "pass_index",
+                    "F_name_impl": "pass_index",
                     "c_arglist": [
                         "SHC_rv",
+                        "i1",
+                        "i2"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv",
                         "i1",
                         "i2"
                     ],
@@ -281,7 +388,6 @@
             },
             {
                 "<FUNCTION>": "passIndex  3 ****************************************",
-                "C_force_wrapper": true,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -341,10 +447,10 @@
                             "fmtdict": {
                                 "C_call_function": "passIndex(\ti1,\t i2)",
                                 "C_call_list": "i1,\t i2",
-                                "C_name": "TYP_passIndex_32_bufferify",
+                                "C_name": "passIndex",
                                 "C_prototype": "int32_t i1,\t IndexType *i2",
                                 "C_return_type": "bool",
-                                "F_arg_c_call": "i1,\t i2",
+                                "F_arg_c_call": "int(i1, INDEXTYPE),\t i2",
                                 "F_arguments": "i1,\t i2",
                                 "F_subprogram": "function",
                                 "c_const": "",
@@ -356,20 +462,15 @@
                                 "cxx_nonconst_ptr": "&SHC_rv",
                                 "cxx_type": "bool",
                                 "cxx_var": "SHC_rv",
-                                "f_call_function": "c_pass_index_32_bufferify",
+                                "f_call_function": "c_pass_index",
                                 "f_result_clause": "\fresult(SHT_rv)",
                                 "f_type": "logical",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
-                                "i_arguments": "i1,\t i2",
                                 "i_kind": "C_BOOL",
                                 "i_module_name": "iso_c_binding",
-                                "i_name_function": "c_pass_index_32_bufferify",
-                                "i_result_clause": "\fresult(SHT_rv)",
-                                "i_subprogram": "function",
-                                "i_suffix": "_bufferify",
+                                "i_name_function": "c_pass_index_32",
                                 "i_type": "logical(C_BOOL)",
-                                "i_var": "SHT_rv",
                                 "idtor": "0",
                                 "stmt_name": "f_function_bool",
                                 "typemap_name": "bool"
@@ -408,7 +509,6 @@
                                 "i_kind": "C_INT32_T",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "integer(C_INT32_T)",
-                                "i_var": "i1",
                                 "idtor": "0",
                                 "stmt_name": "f_in_native",
                                 "typemap_name": "int32_t"
@@ -447,7 +547,6 @@
                                 "i_kind": "INDEXTYPE",
                                 "i_module_name": "typemap_mod",
                                 "i_type": "integer(INDEXTYPE)",
-                                "i_var": "i2",
                                 "idtor": "0",
                                 "stmt_name": "f_out_native*",
                                 "typemap_name": "IndexType"
@@ -498,7 +597,6 @@
             },
             {
                 "<FUNCTION>": "passIndex  4 ****************************************",
-                "C_force_wrapper": true,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -558,10 +656,10 @@
                             "fmtdict": {
                                 "C_call_function": "passIndex(\ti1,\t i2)",
                                 "C_call_list": "i1,\t i2",
-                                "C_name": "TYP_passIndex_64_bufferify",
+                                "C_name": "passIndex",
                                 "C_prototype": "int64_t i1,\t IndexType *i2",
                                 "C_return_type": "bool",
-                                "F_arg_c_call": "i1,\t i2",
+                                "F_arg_c_call": "int(i1, INDEXTYPE),\t i2",
                                 "F_arguments": "i1,\t i2",
                                 "F_subprogram": "function",
                                 "c_const": "",
@@ -573,20 +671,15 @@
                                 "cxx_nonconst_ptr": "&SHC_rv",
                                 "cxx_type": "bool",
                                 "cxx_var": "SHC_rv",
-                                "f_call_function": "c_pass_index_64_bufferify",
+                                "f_call_function": "c_pass_index",
                                 "f_result_clause": "\fresult(SHT_rv)",
                                 "f_type": "logical",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
-                                "i_arguments": "i1,\t i2",
                                 "i_kind": "C_BOOL",
                                 "i_module_name": "iso_c_binding",
-                                "i_name_function": "c_pass_index_64_bufferify",
-                                "i_result_clause": "\fresult(SHT_rv)",
-                                "i_subprogram": "function",
-                                "i_suffix": "_bufferify",
+                                "i_name_function": "c_pass_index_64",
                                 "i_type": "logical(C_BOOL)",
-                                "i_var": "SHT_rv",
                                 "idtor": "0",
                                 "stmt_name": "f_function_bool",
                                 "typemap_name": "bool"
@@ -625,7 +718,6 @@
                                 "i_kind": "C_INT64_T",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "integer(C_INT64_T)",
-                                "i_var": "i1",
                                 "idtor": "0",
                                 "stmt_name": "f_in_native",
                                 "typemap_name": "int64_t"
@@ -664,7 +756,6 @@
                                 "i_kind": "INDEXTYPE",
                                 "i_module_name": "typemap_mod",
                                 "i_type": "integer(INDEXTYPE)",
-                                "i_var": "i2",
                                 "idtor": "0",
                                 "stmt_name": "f_out_native*",
                                 "typemap_name": "IndexType"
@@ -715,6 +806,7 @@
             },
             {
                 "<FUNCTION>": "passIndex2  1 ****************************************",
+                "_fortran_generic_wrap": true,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -777,7 +869,8 @@
                 "name": "passIndex2",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "fortran": true
                 },
                 "zz_bind": {
                     "c": {
@@ -788,9 +881,7 @@
                                 "C_name": "TYP_passIndex2",
                                 "C_prototype": "IndexType i1",
                                 "C_return_type": "void",
-                                "i_arguments": "i1",
                                 "i_name_function": "c_pass_index2",
-                                "i_subprogram": "subroutine",
                                 "stmt_name": "c_subroutine",
                                 "typemap_name": "void"
                             },
@@ -817,17 +908,9 @@
                                 "cxx_var": "i1",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "INDEXTYPE",
-                                "f_module_name": "typemap_mod",
-                                "f_type": "integer(INDEXTYPE)",
                                 "f_value_attr": ", value",
-                                "f_var": "i1",
                                 "i_intent": "IN",
                                 "i_intent_attr": ", intent(IN)",
-                                "i_kind": "INDEXTYPE",
-                                "i_module_name": "typemap_mod",
-                                "i_type": "integer(INDEXTYPE)",
-                                "i_var": "i1",
                                 "idtor": "0",
                                 "stmt_name": "c_in_native",
                                 "typemap_name": "IndexType"
@@ -838,6 +921,71 @@
                                 "value": true
                             },
                             "stmt": "c_in_native"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "passIndex2(\ti1)",
+                                "C_call_list": "i1",
+                                "C_name": "TYP_passIndex2",
+                                "C_prototype": "IndexType i1",
+                                "C_return_type": "void",
+                                "F_arg_c_call": "i1",
+                                "F_arguments": "i1",
+                                "F_subprogram": "subroutine",
+                                "f_call_function": "c_pass_index2",
+                                "i_arguments": "i1",
+                                "i_name_function": "c_pass_index2",
+                                "i_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "i1": {
+                            "fmtdict": {
+                                "c_abstract_decl": "IndexType",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "IndexType",
+                                "c_var": "i1",
+                                "cxx_abstract_decl": "IndexType",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&i1",
+                                "cxx_type": "IndexType",
+                                "cxx_var": "i1",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "INDEXTYPE",
+                                "f_module_name": "typemap_mod",
+                                "f_type": "integer(INDEXTYPE)",
+                                "f_value_attr": ", value",
+                                "f_var": "i1",
+                                "fc_var": "i1",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "INDEXTYPE",
+                                "i_module_name": "typemap_mod",
+                                "i_type": "integer(INDEXTYPE)",
+                                "i_var": "i1",
+                                "idtor": "0",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "IndexType"
+                            },
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -859,8 +1007,15 @@
                 "zz_fmtdict": {
                     "C_name_api": "passIndex2",
                     "F_name_api": "pass_index2",
+                    "F_name_function": "pass_index2",
+                    "F_name_generic": "pass_index2",
+                    "F_name_impl": "pass_index2",
                     "c_arglist": [
                         "c_var",
+                        "i1"
+                    ],
+                    "f_arglist": [
+                        "f_var",
                         "i1"
                     ],
                     "function_name": "passIndex2"
@@ -1130,6 +1285,7 @@
             },
             {
                 "<FUNCTION>": "passFloat  2 ****************************************",
+                "_fortran_generic_wrap": true,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1192,7 +1348,8 @@
                 "name": "passFloat",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "fortran": true
                 },
                 "zz_bind": {
                     "c": {
@@ -1203,9 +1360,7 @@
                                 "C_name": "TYP_passFloat",
                                 "C_prototype": "FloatType f1",
                                 "C_return_type": "void",
-                                "i_arguments": "f1",
                                 "i_name_function": "c_pass_float",
-                                "i_subprogram": "subroutine",
                                 "stmt_name": "c_subroutine",
                                 "typemap_name": "void"
                             },
@@ -1232,17 +1387,9 @@
                                 "cxx_var": "f1",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "FLOATTYPE",
-                                "f_module_name": "typemap_mod",
-                                "f_type": "real(FLOATTYPE)",
                                 "f_value_attr": ", value",
-                                "f_var": "f1",
                                 "i_intent": "IN",
                                 "i_intent_attr": ", intent(IN)",
-                                "i_kind": "FLOATTYPE",
-                                "i_module_name": "typemap_mod",
-                                "i_type": "real(FLOATTYPE)",
-                                "i_var": "f1",
                                 "idtor": "0",
                                 "stmt_name": "c_in_native",
                                 "typemap_name": "FloatType"
@@ -1253,6 +1400,71 @@
                                 "value": true
                             },
                             "stmt": "c_in_native"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "passFloat(\tf1)",
+                                "C_call_list": "f1",
+                                "C_name": "TYP_passFloat",
+                                "C_prototype": "FloatType f1",
+                                "C_return_type": "void",
+                                "F_arg_c_call": "f1",
+                                "F_arguments": "f1",
+                                "F_subprogram": "subroutine",
+                                "f_call_function": "c_pass_float",
+                                "i_arguments": "f1",
+                                "i_name_function": "c_pass_float",
+                                "i_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "f1": {
+                            "fmtdict": {
+                                "c_abstract_decl": "FloatType",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "FloatType",
+                                "c_var": "f1",
+                                "cxx_abstract_decl": "FloatType",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&f1",
+                                "cxx_type": "FloatType",
+                                "cxx_var": "f1",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "FLOATTYPE",
+                                "f_module_name": "typemap_mod",
+                                "f_type": "real(FLOATTYPE)",
+                                "f_value_attr": ", value",
+                                "f_var": "f1",
+                                "fc_var": "f1",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "FLOATTYPE",
+                                "i_module_name": "typemap_mod",
+                                "i_type": "real(FLOATTYPE)",
+                                "i_var": "f1",
+                                "idtor": "0",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "FloatType"
+                            },
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -1274,8 +1486,15 @@
                 "zz_fmtdict": {
                     "C_name_api": "passFloat",
                     "F_name_api": "pass_float",
+                    "F_name_function": "pass_float",
+                    "F_name_generic": "pass_float",
+                    "F_name_impl": "pass_float",
                     "c_arglist": [
                         "c_var",
+                        "f1"
+                    ],
+                    "f_arglist": [
+                        "f_var",
                         "f1"
                     ],
                     "function_name": "passFloat"

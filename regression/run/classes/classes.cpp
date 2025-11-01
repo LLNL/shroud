@@ -131,8 +131,17 @@ const std::string& Class2:: getName()
 {
     return class1_name;
 }
-    
 
+// Test const function
+// Also return by Value. The wrapper creates a string which must be
+// deleted by the user via a capsule.
+    std::string Class1::getPath() const
+{
+    std::string thePath = class1_name;
+    thePath = thePath + "additional";
+    return thePath;
+}
+    
 Class1::DIRECTION Class1::directionFunc(Class1::DIRECTION arg)
 {
     last_function_called = "Class1::directionFunc";

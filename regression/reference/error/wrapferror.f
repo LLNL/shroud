@@ -214,10 +214,10 @@ module error_mod
 
         ! ----------------------------------------
         ! Function:  void AssumedRank
-        ! Statement: c_subroutine
+        ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int *data
-        ! Statement: c_inout_native*
+        ! Statement: f_inout_native*
         subroutine c_assumed_rank(data) &
                 bind(C, name="ERR_AssumedRank")
             use iso_c_binding, only : C_INT

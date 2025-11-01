@@ -130,6 +130,24 @@ static int l_Class1_getName(lua_State *L)
     // splicer end class.Class1.method.getName
 }
 
+// std::string getPath(void) const +len(40)
+// ----------------------------------------
+// Function:  std::string getPath +len(40)
+// Statement: lua_function_string
+/**
+ * When return-by-value, the Fortran user always owns the memory. This causes a capsule to passed to the string which invalidates pure as suggested by the const.
+ */
+static int l_Class1_getPath(lua_State *L)
+{
+    // splicer begin class.Class1.method.getPath
+    l_Class1_Type * SH_this = (l_Class1_Type *) luaL_checkudata(
+        L, 1, "Class1.metatable");
+    std::string SHCXX_rv = SH_this->self->getPath();
+    lua_pushstring(L, SHCXX_rv.c_str());
+    return 1;
+    // splicer end class.Class1.method.getPath
+}
+
 // DIRECTION directionFunc(DIRECTION arg)
 // ----------------------------------------
 // Function:  DIRECTION directionFunc
@@ -158,6 +176,7 @@ static const struct luaL_Reg l_Class1_Reg [] = {
     {"__gc", l_Class1_delete},
     {"Method1", l_Class1_Method1},
     {"getName", l_Class1_getName},
+    {"getPath", l_Class1_getPath},
     {"directionFunc", l_Class1_directionFunc},
     // splicer begin class.Class1.register
     // splicer end class.Class1.register

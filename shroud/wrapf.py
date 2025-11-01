@@ -665,7 +665,7 @@ rv = .false.
         multiple Fortran wrappers.
 
         Create Fortran wrappers first.  If no real work to do,
-        F_C_name will be updated to call the C function directly.
+        i_name_function will be updated to call the library function directly.
 
         Parameters
         ----------
@@ -691,7 +691,7 @@ rv = .false.
         cursor.push_phase("Wrapf.wrap_function_interface")
         for node in functions:
             wrap = node.wrap
-            if wrap.c and wrap.signature_c != wrap.signature_f:
+            if wrap.c and wrap.signature_c != wrap.signature_i:
                 self.log.write("C-interface c {0.declgen}\n".format(
                     node))
                 self.wrap_function_interface("c", cls, node, fileinfo)
@@ -1082,6 +1082,8 @@ rv = .false.
         """
         if node._PTR_F_C_index is not None:
             return
+        if node.fortran_generic and node._fortran_generic_wrap is False:
+            return
 
         cursor = self.cursor
         func_cursor = cursor.push_node(node)
@@ -1141,6 +1143,9 @@ rv = .false.
                 imports[fmt_result.f_capsule_data_type] = True
 
         args_all_in = True  # assume all arguments are intent(in)
+        if result_stmt.owner == "caller":
+            args_all_in = False
+        
         for arg in ast.declarator.params:
             # default argument's intent
             # XXX look at const, ptr
@@ -1158,6 +1163,8 @@ rv = .false.
                 continue
             intent = meta["intent"]
             if intent != "in":
+                args_all_in = False
+            elif arg_stmt.owner == "caller":
                 args_all_in = False
             notimplemented = notimplemented or arg_stmt.notimplemented
 
@@ -1208,6 +1215,9 @@ rv = .false.
         arg_f_use = self.sort_module_info(
             modules, fmt_result.F_module_name, imports
         )
+
+        if options.debug_index and node.wrap.signature_i:
+            stmts_comments.append("! Signature: " + node.wrap.signature_i)
 
         c_interface = []
         if node.cpp_if:
@@ -1389,12 +1399,13 @@ rv = .false.
         r_meta = r_bind.meta
         sintent = r_meta["intent"]
         fmt_result = r_bind.fmtdict
-        if C_node is node:
-            fmt_result.f_call_function = C_node._bind["f"]["+result"].fmtdict.i_name_function
+        if node._PTR_F_C_index is not None:
+            CC_node = self.newlibrary.function_index[node._PTR_F_C_index]
+            fmt_result.f_call_function = CC_node._bind["f"]["+result"].fmtdict.i_name_function
         else:
             # node is generated, ex fortran_generic
             # while C_node is the real function
-            fmt_result.f_call_function = C_node._bind["c"]["+result"].fmtdict.i_name_function
+            fmt_result.f_call_function = C_node._bind["f"]["+result"].fmtdict.i_name_function
         result_stmt = r_bind.stmt
         func_cursor.stmt = result_stmt
         self.fill_fortran_function(cls, node)
@@ -1413,6 +1424,11 @@ rv = .false.
 
         fileinfo.apply_helpers_from_stmts(node)
 
+        stmt_indexes = []
+        stmt_indexes.append(result_stmt.index)
+        if r_bind.fstmts:
+            stmt_indexes.append(r_bind.fstmts)
+        
         stmts_comments = []
         if options.debug:
             if node._generated_path:
@@ -1487,6 +1503,7 @@ rv = .false.
                 continue
             
             func_cursor.stmt = arg_stmt
+            stmt_indexes.append(arg_stmt.index)
             arg_typemap = self.fill_fortran_arg(
                 cls, node, C_node, f_arg, c_arg, arg_bind)
 
@@ -1615,6 +1632,10 @@ rv = .false.
             fileinfo.f_function_generic.setdefault(
                 fmt_func.F_name_generic, GenericFunction(True, cls, [])
             ).functions.append(node)
+        elif node._fortran_generic_wrap == True:
+            # Avoid adding to type bound generic functions.
+            # Only called by fortran_generic created functions.
+            pass
         elif options.F_create_generic:
             # if return type is templated in C++,
             # then do not set up generic since only the
@@ -1643,7 +1664,11 @@ rv = .false.
             type_bound_part = fileinfo.type_bound_part
             if node.cpp_if:
                 type_bound_part.append("#" + node.cpp_if)
-            if is_static:
+            if node._fortran_generic_wrap:
+                # Avoid adding to type bound generic functions.
+                # Only called by fortran_generic created functions.
+                pass
+            elif is_static:
                 append_format(type_bound_part,
                               "procedure, nopass :: {F_name_function} => {F_name_impl}",
                               fmt_result)
@@ -1718,6 +1743,15 @@ rv = .false.
             
         arg_f_use = self.sort_module_info(modules, fmt_result.F_module_name)
 
+        signature = ":".join(stmt_indexes)
+        node.signatures["f"] = signature
+        if options.debug_index:
+            stmts_comments.append("! Signature: " + signature)
+
+        if node._fortran_generic_wrap:
+            # Only called from fortran_generic generated function.
+            need_wrapper = False
+
         if need_wrapper or options.debug:
             impl = []
             if node.cpp_if:
@@ -1749,11 +1783,17 @@ rv = .false.
         if need_wrapper:
             fileinfo.impl.append("")
             fileinfo.impl.extend(impl)
-        else:            
+        else:
             # Call the C function directly via bind(C)
             # by changing the i_name_function.
-            C_node._bind["f"]["+result"].fmtdict.i_name_function = fmt_result.F_name_impl
-            if options.debug:
+            # If the function is overloaded, use the interface name
+            # to avoid having the implementation name be the same as the generic name.
+            if not node._overloaded:
+                C_node._bind["f"]["+result"].fmtdict.i_name_function = fmt_result.F_name_impl
+            if node._fortran_generic_wrap:
+                # Only called from fortran_generic generated function.
+                pass
+            elif options.debug:
                 # Include wrapper which would of been generated.
                 fileinfo.impl.append("")
                 fileinfo.impl.append("#if 0")

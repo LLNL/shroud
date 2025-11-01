@@ -40,6 +40,7 @@ public:
     Class1 * returnThisBuffer(std::string & name, bool flag);
     Class1 * getclass3() const;
     const std::string& getName();
+    std::string getPath() const;
 
     enum DIRECTION { UP = 2, DOWN, LEFT= 100, RIGHT };
 

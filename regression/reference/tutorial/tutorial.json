@@ -3871,6 +3871,7 @@
             },
             {
                 "<FUNCTION>": "FortranGenericOverloaded  9 ****************************************",
+                "_fortran_generic_wrap": true,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -3989,6 +3990,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "fortran": true,
                     "lua": true,
                     "python": true
                 },
@@ -4087,6 +4089,115 @@
                                 "intent": "in"
                             },
                             "stmt": "c_in_string&"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "tutorial::FortranGenericOverloaded(\tSHC_name_cxx,\t arg2)",
+                                "C_call_list": "SHC_name_cxx,\t arg2",
+                                "C_name": "TUT_FortranGenericOverloaded_1_bufferify",
+                                "C_prototype": "char *name,\t int SHT_name_len,\t double arg2",
+                                "C_return_type": "void",
+                                "F_arg_c_call": "name,\t SHT_name_len,\t arg2",
+                                "F_arguments": "name,\t arg2",
+                                "F_subprogram": "subroutine",
+                                "f_call_function": "c_fortran_generic_overloaded_1_bufferify",
+                                "i_arguments": "name,\t SHT_name_len,\t arg2",
+                                "i_name_function": "c_fortran_generic_overloaded_1_bufferify",
+                                "i_subprogram": "subroutine",
+                                "i_suffix": "_bufferify",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "arg2": {
+                            "fmtdict": {
+                                "c_abstract_decl": "double",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "double",
+                                "c_var": "arg2",
+                                "cxx_abstract_decl": "double",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&arg2",
+                                "cxx_type": "double",
+                                "cxx_var": "arg2",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_DOUBLE",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "real(C_DOUBLE)",
+                                "f_value_attr": ", value",
+                                "f_var": "arg2",
+                                "fc_var": "arg2",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "C_DOUBLE",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "real(C_DOUBLE)",
+                                "i_var": "arg2",
+                                "idtor": "0",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "double"
+                            },
+                            "meta": {
+                                "abstract": "native",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_native"
+                        },
+                        "name": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const char *",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_helper_char_len_trim": "ShroudCharLenTrim",
+                                "c_local_cxx": "SHC_name_cxx",
+                                "c_local_trim": "SHC_name_trim",
+                                "c_member": "->",
+                                "c_type": "char",
+                                "c_var": "name",
+                                "c_var_len": "SHT_name_len",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&name)",
+                                "cxx_type": "std::string",
+                                "cxx_var": "name",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_type": "character(len=*)",
+                                "f_var": "name",
+                                "f_var_len": "SHT_name_len",
+                                "fc_var": "name",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "C_CHAR",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "character(kind=C_CHAR)",
+                                "i_var": "name",
+                                "i_var_len": "SHT_name_len",
+                                "idtor": "0",
+                                "stmt_name": "f_in_string&_buf",
+                                "typemap_name": "std::string"
+                            },
+                            "meta": {
+                                "abstract": "string&",
+                                "api": "buf",
+                                "intent": "in"
+                            },
+                            "stmt": "f_in_string&_buf"
                         }
                     },
                     "lua": {
@@ -4227,9 +4338,17 @@
                 "zz_fmtdict": {
                     "C_name_api": "FortranGenericOverloaded",
                     "F_name_api": "fortran_generic_overloaded",
+                    "F_name_function": "fortran_generic_overloaded_1",
+                    "F_name_generic": "fortran_generic_overloaded",
+                    "F_name_impl": "fortran_generic_overloaded_1",
                     "PY_name_impl": "PY_FortranGenericOverloaded_1",
                     "c_arglist": [
                         "c_var",
+                        "name",
+                        "arg2"
+                    ],
+                    "f_arglist": [
+                        "f_var",
                         "name",
                         "arg2"
                     ],
@@ -4254,8 +4373,7 @@
             },
             {
                 "<FUNCTION>": "FortranGenericOverloaded  27 ****************************************",
-                "C_force_wrapper": true,
-                "_PTR_C_CXX_index": 9,
+                "_PTR_F_C_index": 9,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -4320,17 +4438,14 @@
                             "fmtdict": {
                                 "C_call_function": "tutorial::FortranGenericOverloaded(\tSHC_name_cxx,\t arg2)",
                                 "C_call_list": "SHC_name_cxx,\t arg2",
-                                "C_name": "TUT_FortranGenericOverloaded_1_float_bufferify",
+                                "C_name": "FortranGenericOverloaded",
                                 "C_prototype": "char *name,\t int SHT_name_len,\t float arg2",
                                 "C_return_type": "void",
-                                "F_arg_c_call": "name,\t SHT_name_len,\t arg2",
+                                "F_arg_c_call": "name,\t SHT_name_len,\t real(arg2, C_DOUBLE)",
                                 "F_arguments": "name,\t arg2",
                                 "F_subprogram": "subroutine",
-                                "f_call_function": "c_fortran_generic_overloaded_1_float_bufferify",
-                                "i_arguments": "name,\t SHT_name_len,\t arg2",
-                                "i_name_function": "c_fortran_generic_overloaded_1_float_bufferify",
-                                "i_subprogram": "subroutine",
-                                "i_suffix": "_bufferify",
+                                "f_call_function": "c_fortran_generic_overloaded_1_bufferify",
+                                "i_name_function": "c_fortran_generic_overloaded_1_float",
                                 "stmt_name": "f_subroutine",
                                 "typemap_name": "void"
                             },
@@ -4368,7 +4483,6 @@
                                 "i_kind": "C_FLOAT",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "real(C_FLOAT)",
-                                "i_var": "arg2",
                                 "idtor": "0",
                                 "stmt_name": "f_in_native",
                                 "typemap_name": "float"
@@ -4410,8 +4524,6 @@
                                 "i_kind": "C_CHAR",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "character(kind=C_CHAR)",
-                                "i_var": "name",
-                                "i_var_len": "SHT_name_len",
                                 "idtor": "0",
                                 "stmt_name": "f_in_string&_buf",
                                 "typemap_name": "std::string"
@@ -4463,8 +4575,7 @@
             },
             {
                 "<FUNCTION>": "FortranGenericOverloaded  28 ****************************************",
-                "C_force_wrapper": true,
-                "_PTR_C_CXX_index": 9,
+                "_PTR_F_C_index": 9,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -4529,17 +4640,14 @@
                             "fmtdict": {
                                 "C_call_function": "tutorial::FortranGenericOverloaded(\tSHC_name_cxx,\t arg2)",
                                 "C_call_list": "SHC_name_cxx,\t arg2",
-                                "C_name": "TUT_FortranGenericOverloaded_1_double_bufferify",
+                                "C_name": "FortranGenericOverloaded",
                                 "C_prototype": "char *name,\t int SHT_name_len,\t double arg2",
                                 "C_return_type": "void",
                                 "F_arg_c_call": "name,\t SHT_name_len,\t arg2",
                                 "F_arguments": "name,\t arg2",
                                 "F_subprogram": "subroutine",
-                                "f_call_function": "c_fortran_generic_overloaded_1_double_bufferify",
-                                "i_arguments": "name,\t SHT_name_len,\t arg2",
-                                "i_name_function": "c_fortran_generic_overloaded_1_double_bufferify",
-                                "i_subprogram": "subroutine",
-                                "i_suffix": "_bufferify",
+                                "f_call_function": "c_fortran_generic_overloaded_1_bufferify",
+                                "i_name_function": "c_fortran_generic_overloaded_1_double",
                                 "stmt_name": "f_subroutine",
                                 "typemap_name": "void"
                             },
@@ -4577,7 +4685,6 @@
                                 "i_kind": "C_DOUBLE",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "real(C_DOUBLE)",
-                                "i_var": "arg2",
                                 "idtor": "0",
                                 "stmt_name": "f_in_native",
                                 "typemap_name": "double"
@@ -4619,8 +4726,6 @@
                                 "i_kind": "C_CHAR",
                                 "i_module_name": "iso_c_binding",
                                 "i_type": "character(kind=C_CHAR)",
-                                "i_var": "name",
-                                "i_var_len": "SHT_name_len",
                                 "idtor": "0",
                                 "stmt_name": "f_in_string&_buf",
                                 "typemap_name": "std::string"
