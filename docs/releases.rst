@@ -256,6 +256,7 @@ size                          f_size
 Old Name                      New Name
 ===========================   ===========================
 F_C_name_template             i_name_function_template
+F_flatten_namespace           flatten_namespace
 ===========================   ===========================
   
 * Added format field *i_suffix*. Used in format fields

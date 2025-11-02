@@ -24,7 +24,6 @@ PY_OBJS = \
     pynsmodule.o \
     pyns_outermodule.o \
     pynswork_ClassWorktype.o \
-    pyns_nsworkmodule.o \
     pynsutil.o
 
 all : ns.so

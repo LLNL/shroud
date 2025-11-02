@@ -28,6 +28,8 @@ extern "C" {
 
 void WWW_inner3_worker3(void);
 
+void WWW_inner4_worker4(void);
+
 void WWW_worker(void);
 
 #ifdef __cplusplus

@@ -74,20 +74,20 @@ int PP_Cstruct1_from_Object(PyObject *obj, void **addr)
 PyObject *PP_ClassWork_to_Object_idtor(nswork::ClassWork *addr,
     int idtor)
 {
-    // splicer begin namespace.nswork.class.ClassWork.utility.to_object
+    // splicer begin class.ClassWork.utility.to_object
     PY_ClassWork *obj = PyObject_New(PY_ClassWork, &PY_ClassWork_Type);
     if (obj == nullptr)
         return nullptr;
     obj->obj = addr;
     obj->idtor = idtor;
     return reinterpret_cast<PyObject *>(obj);
-    // splicer end namespace.nswork.class.ClassWork.utility.to_object
+    // splicer end class.ClassWork.utility.to_object
 }
 
 // converter which may be used with PyBuild.
 PyObject *PP_ClassWork_to_Object(nswork::ClassWork *addr)
 {
-    // splicer begin namespace.nswork.class.ClassWork.utility.to_object
+    // splicer begin class.ClassWork.utility.to_object
     PyObject *voidobj;
     PyObject *args;
     PyObject *rv;
@@ -98,13 +98,13 @@ PyObject *PP_ClassWork_to_Object(nswork::ClassWork *addr)
     rv = PyObject_Call((PyObject *) &PY_ClassWork_Type, args, nullptr);
     Py_DECREF(args);
     return rv;
-    // splicer end namespace.nswork.class.ClassWork.utility.to_object
+    // splicer end class.ClassWork.utility.to_object
 }
 
 // converter which may be used with PyArg_Parse.
 int PP_ClassWork_from_Object(PyObject *obj, void **addr)
 {
-    // splicer begin namespace.nswork.class.ClassWork.utility.from_object
+    // splicer begin class.ClassWork.utility.from_object
     if (obj->ob_type != &PY_ClassWork_Type) {
         // raise exception
         return 0;
@@ -112,7 +112,7 @@ int PP_ClassWork_from_Object(PyObject *obj, void **addr)
     PY_ClassWork * self = (PY_ClassWork *) obj;
     *addr = self->obj;
     return 1;
-    // splicer end namespace.nswork.class.ClassWork.utility.from_object
+    // splicer end class.ClassWork.utility.from_object
 }
 
 // ----------------------------------------

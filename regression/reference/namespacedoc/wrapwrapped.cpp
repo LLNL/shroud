@@ -27,6 +27,16 @@ void WWW_inner3_worker3(void)
 }
 
 // ----------------------------------------
+// Function:  void worker4
+// Statement: c_subroutine
+void WWW_inner4_worker4(void)
+{
+    // splicer begin function.worker4
+    outer::inner4::worker4();
+    // splicer end function.worker4
+}
+
+// ----------------------------------------
 // Function:  void worker
 // Statement: c_subroutine
 void WWW_worker(void)

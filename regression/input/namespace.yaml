@@ -16,7 +16,7 @@ declarations:
 - decl: namespace upper
   # Add a flattened namespace before global function
   options:
-    F_flatten_namespace: True
+    flatten_namespace: True
     wrap_python: False
   declarations:
   - decl: |
@@ -38,6 +38,6 @@ declarations:
 
 - decl: namespace nswork
   options:
-    F_flatten_namespace: True
+    flatten_namespace: True
   declarations:
   - decl: class ClassWork

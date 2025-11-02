@@ -6,8 +6,8 @@
 //
 #include "pynsmodule.hpp"
 
-// splicer begin namespace.nswork.class.ClassWork.impl.include
-// splicer end namespace.nswork.class.ClassWork.impl.include
+// splicer begin class.ClassWork.impl.include
+// splicer end class.ClassWork.impl.include
 
 #ifdef __cplusplus
 #define SHROUD_UNUSED(param)
@@ -23,24 +23,24 @@
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
 
-// splicer begin namespace.nswork.class.ClassWork.impl.C_definition
-// splicer end namespace.nswork.class.ClassWork.impl.C_definition
+// splicer begin class.ClassWork.impl.C_definition
+// splicer end class.ClassWork.impl.C_definition
 
-// splicer begin namespace.nswork.class.ClassWork.impl.additional_methods
-// splicer end namespace.nswork.class.ClassWork.impl.additional_methods
+// splicer begin class.ClassWork.impl.additional_methods
+// splicer end class.ClassWork.impl.additional_methods
 static void
 PY_ClassWork_tp_del (PY_ClassWork *self)
 {
-// splicer begin namespace.nswork.class.ClassWork.type.del
+// splicer begin class.ClassWork.type.del
     PY_SHROUD_release_memory(self->idtor, self->obj);
     self->obj = nullptr;
-// splicer end namespace.nswork.class.ClassWork.type.del
+// splicer end class.ClassWork.type.del
 }
-// splicer begin namespace.nswork.class.ClassWork.impl.after_methods
-// splicer end namespace.nswork.class.ClassWork.impl.after_methods
+// splicer begin class.ClassWork.impl.after_methods
+// splicer end class.ClassWork.impl.after_methods
 static PyMethodDef PY_ClassWork_methods[] = {
-    // splicer begin namespace.nswork.class.ClassWork.PyMethodDef
-    // splicer end namespace.nswork.class.ClassWork.PyMethodDef
+    // splicer begin class.ClassWork.PyMethodDef
+    // splicer end class.ClassWork.PyMethodDef
     {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 

@@ -28,7 +28,6 @@
 PyObject *PY_error_obj;
 PyObject *PY_init_wrapped_inner1(void);
 PyObject *PY_init_wrapped_inner2(void);
-PyObject *PY_init_wrapped_inner4(void);
 
 // splicer begin additional_functions
 // splicer end additional_functions
@@ -53,6 +52,25 @@ PY_worker3(
 }
 
 // ----------------------------------------
+// Function:  void worker4
+// Statement: py_subroutine
+static char PY_worker4__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_worker4(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.worker4
+    outer::inner4::worker4();
+    Py_RETURN_NONE;
+// splicer end function.worker4
+}
+
+// ----------------------------------------
 // Function:  void worker
 // Statement: py_subroutine
 static char PY_worker__doc__[] =
@@ -72,6 +90,7 @@ PY_worker(
 }
 static PyMethodDef PY_methods[] = {
 {"worker3", (PyCFunction)PY_worker3, METH_NOARGS, PY_worker3__doc__},
+{"worker4", (PyCFunction)PY_worker4, METH_NOARGS, PY_worker4__doc__},
 {"worker", (PyCFunction)PY_worker, METH_NOARGS, PY_worker__doc__},
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
@@ -165,14 +184,6 @@ initwrapped(void)
             INITERROR;
         Py_INCREF(submodule);
         PyModule_AddObject(m, (char *) "inner2", submodule);
-    }
-
-    {
-        PyObject *submodule = PY_init_wrapped_inner4();
-        if (submodule == nullptr)
-            INITERROR;
-        Py_INCREF(submodule);
-        PyModule_AddObject(m, (char *) "inner4", submodule);
     }
 
     PY_error_obj = PyErr_NewException((char *) error_name, nullptr, nullptr);

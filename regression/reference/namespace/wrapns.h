@@ -26,6 +26,14 @@ extern "C" {
 // splicer begin C_declarations
 // splicer end C_declarations
 
+//  upper::Color
+enum NS_upper_Color {
+    // splicer begin enum.Color
+    NS_upper_ERROR,
+    NS_upper_WARN
+    // splicer end enum.Color
+};
+
 const char * NS_LastFunctionCalled(void);
 
 void NS_LastFunctionCalled_bufferify(NS_SHROUD_array *SHT_rv_cdesc,

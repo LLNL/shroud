@@ -119,7 +119,8 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
 
         self.wrap_assignment(fileinfo)
             
-        do_write = top or not node.options.F_flatten_namespace
+        # When using flatten_namespace, only add the splicers once.
+        do_write = top or not node.options.flatten_namespace
         if do_write:
             self._create_splicer("additional_functions", fileinfo.impl, blank=True)
             self._create_splicer("additional_declarations", fileinfo.user_declarations, blank=True)
@@ -131,7 +132,7 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
         for ns in node.namespaces:
             if not ns.wrap.fortran:
                 continue
-            if ns.options.F_flatten_namespace:
+            if ns.options.flatten_namespace:
                 self.wrap_namespace(ns, fileinfo)
             else:
                 # Skip file component in scope_file for splicer name.

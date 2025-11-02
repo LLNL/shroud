@@ -11,7 +11,6 @@ module = Extension(
     sources=[
          'pywrapped_inner1module.cpp',
          'pywrapped_inner2module.cpp',
-         'pywrapped_inner4module.cpp',
          'pywrappedmodule.cpp'
     ],
     language='c++',

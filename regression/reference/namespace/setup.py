@@ -12,7 +12,6 @@ module = Extension(
          'pyouter_Cstruct1type.cpp',
          'pyns_outermodule.cpp',
          'pynswork_ClassWorktype.cpp',
-         'pyns_nsworkmodule.cpp',
          'pynsmodule.cpp',
          'pynsutil.cpp'
     ],

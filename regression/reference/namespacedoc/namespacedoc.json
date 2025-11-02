@@ -120,7 +120,118 @@
                 }
             },
             {
-                "<FUNCTION>": "worker  1 ****************************************",
+                "<FUNCTION>": "worker4  1 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "worker4",
+                        "params": [],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void worker4();",
+                "declgen": "void worker4(void)",
+                "name": "worker4",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "outer::inner4::worker4(\t)",
+                                "C_name": "WWW_inner4_worker4",
+                                "C_prototype": "void",
+                                "C_return_type": "void",
+                                "i_name_function": "c_inner4_worker4",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "outer::inner4::worker4(\t)",
+                                "C_name": "WWW_inner4_worker4",
+                                "C_prototype": "void",
+                                "C_return_type": "void",
+                                "F_arguments": "",
+                                "F_subprogram": "subroutine",
+                                "f_call_function": "c_inner4_worker4",
+                                "i_arguments": "",
+                                "i_name_function": "inner4_worker4",
+                                "i_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            },
+                            "stmt": "py_subroutine"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "worker4",
+                    "F_name_api": "worker4",
+                    "F_name_function": "worker4",
+                    "F_name_generic": "worker4",
+                    "F_name_impl": "inner4_worker4",
+                    "PY_name_impl": "PY_worker4",
+                    "c_arglist": [
+                        "c_var"
+                    ],
+                    "f_arglist": [
+                        "f_var"
+                    ],
+                    "function_name": "worker4"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_call_function": "outer::inner4::worker4()",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS"
+                    }
+                }
+            },
+            {
+                "<FUNCTION>": "worker  2 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "worker",
@@ -237,7 +348,7 @@
                 "<NAMESPACE>": "inner1 ****************************************",
                 "functions": [
                     {
-                        "<FUNCTION>": "worker  2 ****************************************",
+                        "<FUNCTION>": "worker  3 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "worker",
@@ -384,7 +495,7 @@
                 "<NAMESPACE>": "inner2 ****************************************",
                 "functions": [
                     {
-                        "<FUNCTION>": "worker  3 ****************************************",
+                        "<FUNCTION>": "worker  4 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "worker",
@@ -525,156 +636,6 @@
                     "PY_this_call": "outer::inner2::",
                     "file_scope": "wrapped_inner2",
                     "namespace_scope": "outer::inner2::"
-                }
-            },
-            {
-                "<NAMESPACE>": "inner4 ****************************************",
-                "functions": [
-                    {
-                        "<FUNCTION>": "worker4  4 ****************************************",
-                        "ast": {
-                            "declarator": {
-                                "name": "worker4",
-                                "params": [],
-                                "typemap_name": "void"
-                            },
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        },
-                        "decl": "void worker4();",
-                        "declgen": "void worker4(void)",
-                        "name": "worker4",
-                        "options": {},
-                        "wrap": {
-                            "c": true,
-                            "fortran": true,
-                            "python": true
-                        },
-                        "zz_bind": {
-                            "c": {
-                                "+result": {
-                                    "fmtdict": {
-                                        "C_call_function": "outer::inner4::worker4(\t)",
-                                        "C_name": "WWW_inner4_worker4",
-                                        "C_prototype": "void",
-                                        "C_return_type": "void",
-                                        "i_name_function": "c_inner4_worker4",
-                                        "stmt_name": "c_subroutine",
-                                        "typemap_name": "void"
-                                    },
-                                    "meta": {
-                                        "abstract": "void",
-                                        "intent": "subroutine"
-                                    },
-                                    "stmt": "c_subroutine"
-                                }
-                            },
-                            "f": {
-                                "+result": {
-                                    "fmtdict": {
-                                        "C_call_function": "outer::inner4::worker4(\t)",
-                                        "C_name": "WWW_inner4_worker4",
-                                        "C_prototype": "void",
-                                        "C_return_type": "void",
-                                        "F_arguments": "",
-                                        "F_subprogram": "subroutine",
-                                        "f_call_function": "c_inner4_worker4",
-                                        "i_arguments": "",
-                                        "i_name_function": "inner4_worker4",
-                                        "i_subprogram": "subroutine",
-                                        "stmt_name": "f_subroutine",
-                                        "typemap_name": "void"
-                                    },
-                                    "meta": {
-                                        "abstract": "void",
-                                        "intent": "subroutine"
-                                    },
-                                    "stmt": "f_subroutine"
-                                }
-                            },
-                            "py": {
-                                "+result": {
-                                    "fmtdict": {
-                                        "stmt": "py_subroutine"
-                                    },
-                                    "meta": {
-                                        "abstract": "void",
-                                        "intent": "subroutine"
-                                    },
-                                    "stmt": "py_subroutine"
-                                }
-                            },
-                            "share": {
-                                "+result": {
-                                    "meta": {
-                                        "abstract": "void",
-                                        "intent": "subroutine"
-                                    }
-                                }
-                            }
-                        },
-                        "zz_fmtdict": {
-                            "C_name_api": "worker4",
-                            "F_name_api": "worker4",
-                            "F_name_function": "worker4",
-                            "F_name_generic": "worker4",
-                            "F_name_impl": "inner4_worker4",
-                            "PY_name_impl": "PY_worker4",
-                            "c_arglist": [
-                                "c_var"
-                            ],
-                            "f_arglist": [
-                                "f_var"
-                            ],
-                            "function_name": "worker4"
-                        },
-                        "zz_fmtlang": {
-                            "py": {
-                                "C_call_function": "outer::inner4::worker4()",
-                                "PY_array_arg": "numpy",
-                                "PY_call_list": "",
-                                "PY_doc_string": "documentation",
-                                "PY_error_return": "nullptr",
-                                "PY_ml_flags": "METH_NOARGS"
-                            }
-                        }
-                    }
-                ],
-                "name": "inner4",
-                "options": {
-                    "F_flatten_namespace": true
-                },
-                "scope": "outer::inner4::",
-                "scope_file": [
-                    "wrapped",
-                    "inner4"
-                ],
-                "wrap": {
-                    "c": true,
-                    "fortran": true,
-                    "python": true
-                },
-                "zz_fmtdict": {
-                    "CXX_this_call": "outer::inner4::",
-                    "C_header_filename": "wrapwrapped_inner4.h",
-                    "C_impl_filename": "wrapwrapped_inner4.cpp",
-                    "C_name_api": "inner4",
-                    "C_name_scope": "inner4_",
-                    "F_impl_filename": "wrapfwrapped_inner4.f",
-                    "F_module_name": "wrapped_inner4_mod",
-                    "F_name_api": "inner4",
-                    "F_name_scope": "inner4_",
-                    "LUA_this_call": "outer::inner4::",
-                    "PY_library_doc": "library documentation",
-                    "PY_module_filename": "pywrapped_inner4module.cpp",
-                    "PY_module_init": "wrapped_inner4",
-                    "PY_module_name": "inner4",
-                    "PY_module_scope": "wrapped.inner4",
-                    "PY_this_call": "outer::inner4::",
-                    "file_scope": "wrapped_inner4",
-                    "namespace_scope": "outer::inner4::"
                 }
             }
         ],

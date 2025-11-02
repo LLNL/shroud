@@ -365,6 +365,12 @@ default_owner
 doxygen
   If True, create doxygen comments.
 
+flatten_namespace
+  Do not create a new Fortran or Python module for the namespace.
+  Instead add the declarations into the parent namespace.
+  The names will be mangled to include namespace so it is still possible
+  to have duplicate names.
+ 
 F_API_case
    Controls mangling of C++ library names to Fortran names
    via the format field *F_name_api*.

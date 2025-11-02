@@ -463,6 +463,7 @@ class LibraryNode(AstNode, NamespaceMixin):
 
         self.options = self.default_options()
         if options:
+            check_deprecated_option(options)
             self.options.update(options, replace=True)
         self.wrap = WrapFlags(self.options)
         if self.options.literalinclude:
@@ -993,6 +994,7 @@ class BlockNode(AstNode, NamespaceMixin):
 
         self.options = util.Scope(parent=parent.options)
         if options:
+            check_deprecated_option(options)
             self.options.update(options, replace=True)
 
         self.user_fmt = format
@@ -1036,6 +1038,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
 
         self.options = util.Scope(parent=parent.options)
         if options:
+            check_deprecated_option(options)
             self.options.update(options, replace=True)
         self.wrap = WrapFlags(self.options)
         self.file_code = {}     # Only used for LibraryNode.
@@ -1097,7 +1100,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
                     parent.fmtdict.C_name_scope + fmt_ns.C_name_api + "_"
                 )
             if fmt_ns.F_name_api:
-                if options.flatten_namespace or options.F_flatten_namespace:
+                if options.flatten_namespace:
                     fmt_ns.F_name_scope = (
                         parent.fmtdict.F_name_scope + fmt_ns.F_name_api + "_"
                     )
@@ -1193,6 +1196,7 @@ class ClassNode(AstNode, NamespaceMixin):
 
         self.options = util.Scope(parent=parent.options)
         if options:
+            check_deprecated_option(options)
             self.options.update(options, replace=True)
         self.wrap = WrapFlags(self.options)
 
@@ -1534,6 +1538,7 @@ class FunctionNode(AstNode):
 
         self.options = util.Scope(parent.options)
         if options:
+            check_deprecated_option(options)
             self.options.update(options, replace=True)
         self.wrap = WrapFlags(self.options)
 
@@ -1828,6 +1833,7 @@ class EnumNode(AstNode):
 
         self.options = util.Scope(parent.options)
         if options:
+            check_deprecated_option(options)
             self.options.update(options, replace=True)
         self.wrap = WrapFlags(self.options)
 
@@ -1981,6 +1987,7 @@ class TypedefNode(AstNode):
         error.cursor.push_node(self)
         self.options = util.Scope(parent=parent.options)
         if options:
+            check_deprecated_option(options)
             self.options.update(options, replace=True)
         self.wrap = WrapFlags(self.options)
 
@@ -2072,6 +2079,7 @@ class VariableNode(AstNode):
 
         self.options = util.Scope(parent=parent.options)
         if options:
+            check_deprecated_option(options)
             self.options.update(options, replace=True)
         self.wrap = WrapFlags(self.options)
 
@@ -2602,8 +2610,28 @@ def create_library_from_dictionary(node, symtab):
     return library
 
 
-# Report changes in format fields.
+# Report changes in option and format fields.
 # Show the new name and add some optional details.
+
+deprecated_options = dict(
+    F_flatten_namespace=dict(
+        new="flatten_namespace",
+        details=[
+            "This option has been merged with the flatten_namespace option",
+        ]
+    )
+)
+
+def check_deprecated_option(fmtdict):
+    for fmt in fmtdict:
+        if fmt in deprecated_options:
+            info = deprecated_options[fmt]
+            msg = "option {} is deprecated, changed to {}".format(
+                fmt, info["new"])
+            details = info.get("details")
+            if details:
+                msg += "\n" + "\n".join(details)
+            error.cursor.warning(msg)
 
 deprecated_formats = dict(
     F_string_result_as_arg=dict(

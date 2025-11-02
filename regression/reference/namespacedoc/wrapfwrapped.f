@@ -29,20 +29,20 @@ module wrapped_mod
         end subroutine inner3_worker3
 
         ! ----------------------------------------
-        ! Function:  void worker
-        ! Statement: f_subroutine
-        subroutine worker() &
-                bind(C, name="WWW_worker")
-            implicit none
-        end subroutine worker
-
-        ! ----------------------------------------
         ! Function:  void worker4
         ! Statement: f_subroutine
         subroutine inner4_worker4() &
                 bind(C, name="WWW_inner4_worker4")
             implicit none
         end subroutine inner4_worker4
+
+        ! ----------------------------------------
+        ! Function:  void worker
+        ! Statement: f_subroutine
+        subroutine worker() &
+                bind(C, name="WWW_worker")
+            implicit none
+        end subroutine worker
     end interface
 
     ! splicer begin additional_declarations
@@ -65,6 +65,18 @@ contains
 #if 0
     ! Only the interface is needed
     ! ----------------------------------------
+    ! Function:  void worker4
+    ! Statement: f_subroutine
+    subroutine inner4_worker4()
+        ! splicer begin function.worker4
+        call c_inner4_worker4()
+        ! splicer end function.worker4
+    end subroutine inner4_worker4
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
     ! Function:  void worker
     ! Statement: f_subroutine
     subroutine worker()
@@ -76,17 +88,5 @@ contains
 
     ! splicer begin additional_functions
     ! splicer end additional_functions
-
-#if 0
-    ! Only the interface is needed
-    ! ----------------------------------------
-    ! Function:  void worker4
-    ! Statement: f_subroutine
-    subroutine inner4_worker4()
-        ! splicer begin namespace.inner2.function.worker4
-        call c_inner4_worker4()
-        ! splicer end namespace.inner2.function.worker4
-    end subroutine inner4_worker4
-#endif
 
 end module wrapped_mod
