@@ -1111,8 +1111,9 @@ class NamespaceNode(AstNode, NamespaceMixin):
         if not skip:
             fmt_ns.PY_module_name = self.name
 
-        self.eval_template("C_header_filename", "_namespace")
-        self.eval_template("C_impl_filename", "_namespace")
+        if not options.flatten_namespace:
+            self.eval_template("C_header_filename", "_namespace")
+            self.eval_template("C_impl_filename", "_namespace")
         if skip:
             # No module will be created for this namespace, use library template.
             self.eval_template("F_impl_filename", "_library")

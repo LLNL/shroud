@@ -11,6 +11,11 @@ const std::string& LastFunctionCalled()
     return last_function_called;
 }
 
+void PassLevelEnum(upper::Level value)
+{
+  last_function_called = "PassLevelEnum";
+}
+
 void outer::One()
 {
   last_function_called = "outer::One";

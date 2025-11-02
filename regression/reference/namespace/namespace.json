@@ -88,7 +88,7 @@
         ],
         "enums": [
             {
-                "<ENUM>": "Color ****************************************",
+                "<ENUM>": "Level ****************************************",
                 "_fmtmembers": {
                     "ERROR": {
                         "C_enum_member": "NS_upper_ERROR",
@@ -116,29 +116,225 @@
                             "name": "WARN"
                         }
                     ],
-                    "name": "Color"
+                    "name": "Level"
                 },
-                "decl": "enum Color {\n  ERROR,\n  WARN,\n};\n",
-                "name": "Color",
+                "decl": "enum Level {\n  ERROR,\n  WARN,\n};\n",
+                "name": "Level",
                 "options": {},
-                "typemap_name": "upper::Color",
+                "typemap_name": "upper::Level",
                 "wrap": {
                     "c": true,
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "C_enum_type": "NS_upper_Color",
-                    "C_name_api": "Color",
+                    "C_enum_type": "NS_upper_Level",
+                    "C_name_api": "Level",
                     "F_enum_kind": "C_INT",
-                    "F_name_api": "color",
-                    "F_name_enum": "upper_color",
-                    "enum_name": "Color"
+                    "F_name_api": "level",
+                    "F_name_enum": "upper_level",
+                    "enum_name": "Level"
                 }
             }
         ],
         "functions": [
             {
-                "<FUNCTION>": "LastFunctionCalled  1 ****************************************",
+                "<FUNCTION>": "PassLevelEnum  1 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "PassLevelEnum",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "name": "value",
+                                    "typemap_name": "upper::Level"
+                                },
+                                "specifier": [
+                                    "upper::Level"
+                                ],
+                                "typemap_name": "upper::Level"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void PassLevelEnum(upper::Level value)",
+                "declgen": "void PassLevelEnum(upper::Level value)",
+                "name": "PassLevelEnum",
+                "options": {
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "PassLevelEnum(\tSHCXX_value)",
+                                "C_call_list": "SHCXX_value",
+                                "C_name": "NS_PassLevelEnum",
+                                "C_prototype": "enum NS_upper_Level value",
+                                "C_return_type": "void",
+                                "i_arguments": "value",
+                                "i_name_function": "c_pass_level_enum",
+                                "i_subprogram": "subroutine",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "value": {
+                            "fmtdict": {
+                                "c_abstract_decl": "enum NS_upper_Level",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "enum NS_upper_Level",
+                                "c_var": "value",
+                                "ci_type": "int",
+                                "cxx_abstract_decl": "upper::Level",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHCXX_value",
+                                "cxx_type": "upper::Level",
+                                "cxx_var": "SHCXX_value",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "value",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "integer(C_INT)",
+                                "i_var": "value",
+                                "idtor": "0",
+                                "stmt_name": "c_in_enum",
+                                "typemap_name": "upper::Level"
+                            },
+                            "meta": {
+                                "abstract": "enum",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "c_in_enum"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "PassLevelEnum(\tSHCXX_value)",
+                                "C_call_list": "SHCXX_value",
+                                "C_name": "NS_PassLevelEnum_bufferify",
+                                "C_prototype": "int value",
+                                "C_return_type": "void",
+                                "F_arg_c_call": "value",
+                                "F_arguments": "value",
+                                "F_subprogram": "subroutine",
+                                "f_call_function": "c_pass_level_enum_bufferify",
+                                "i_arguments": "value",
+                                "i_name_function": "pass_level_enum",
+                                "i_subprogram": "subroutine",
+                                "i_suffix": "_bufferify",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "value": {
+                            "fmtdict": {
+                                "c_abstract_decl": "enum NS_upper_Level",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "value",
+                                "ci_type": "int",
+                                "cxx_abstract_decl": "upper::Level",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHCXX_value",
+                                "cxx_type": "upper::Level",
+                                "cxx_var": "SHCXX_value",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "value",
+                                "fc_var": "value",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "integer(C_INT)",
+                                "i_var": "value",
+                                "idtor": "0",
+                                "stmt_name": "f_in_enum",
+                                "typemap_name": "upper::Level"
+                            },
+                            "meta": {
+                                "abstract": "enum",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_enum"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            }
+                        },
+                        "value": {
+                            "meta": {
+                                "abstract": "enum",
+                                "intent": "in",
+                                "value": true
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "PassLevelEnum",
+                    "F_name_api": "pass_level_enum",
+                    "F_name_function": "pass_level_enum",
+                    "F_name_generic": "pass_level_enum",
+                    "F_name_impl": "pass_level_enum",
+                    "c_arglist": [
+                        "c_var",
+                        "value"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "value"
+                    ],
+                    "function_name": "PassLevelEnum"
+                }
+            },
+            {
+                "<FUNCTION>": "LastFunctionCalled  2 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -340,7 +536,7 @@
                 }
             },
             {
-                "<FUNCTION>": "One  2 ****************************************",
+                "<FUNCTION>": "One  3 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "One",
@@ -770,7 +966,7 @@
                 ],
                 "functions": [
                     {
-                        "<FUNCTION>": "One  3 ****************************************",
+                        "<FUNCTION>": "One  4 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "One",
@@ -932,8 +1128,8 @@
             "struct-Cstruct1": "outer::Cstruct1"
         },
         "upper": {
-            "Color": "enum-Color",
-            "enum-Color": "upper::Color"
+            "Level": "enum-Level",
+            "enum-Level": "upper::Level"
         }
     },
     "types": {
@@ -1009,7 +1205,7 @@
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT"
         },
-        "upper::Color": {
+        "upper::Level": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
             "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
             "LUA_type": "LUA_TNUMBER",
@@ -1019,18 +1215,18 @@
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
             "c_header": [
-                "wrapns_upper.h"
+                "wrapns.h"
             ],
-            "c_to_cxx": "static_cast<upper::Color>({c_var})",
-            "c_type": "enum NS_upper_Color",
+            "c_to_cxx": "static_cast<upper::Level>({c_var})",
+            "c_type": "enum NS_upper_Level",
             "cfi_type": "CFI_type_int",
             "ci_type": "int",
             "cxx_header": [
-                "wrapns_upper.h"
+                "wrapns.h"
             ],
             "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
             "cxx_to_ci": "static_cast<int>({cxx_var})",
-            "cxx_type": "upper::Color",
+            "cxx_type": "upper::Level",
             "f_cast": "int({f_var}, C_INT)",
             "f_kind": "C_INT",
             "f_module": {

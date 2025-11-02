@@ -74,12 +74,12 @@ module ns_mod
         integer(C_INT) :: cmemflags = 0   ! memory flags
     end type NS_SHROUD_capsule_data
 
-    !  enum upper::Color
-    integer, parameter :: upper_color = C_INT
-    ! splicer begin enum.Color
-    integer(upper_color), parameter :: upper_error = 0
-    integer(upper_color), parameter :: upper_warn = 1
-    ! splicer end enum.Color
+    !  enum upper::Level
+    integer, parameter :: upper_level = C_INT
+    ! splicer begin enum.Level
+    integer(upper_level), parameter :: upper_error = 0
+    integer(upper_level), parameter :: upper_warn = 1
+    ! splicer end enum.Level
 
     type class_work
         type(NS_SHROUD_capsule_data) :: cxxmem = &
@@ -107,6 +107,32 @@ module ns_mod
     end interface
 
     interface
+
+        ! ----------------------------------------
+        ! Function:  void PassLevelEnum
+        ! Statement: c_subroutine
+        ! ----------------------------------------
+        ! Argument:  upper::Level value
+        ! Statement: c_in_enum
+        subroutine c_pass_level_enum(value) &
+                bind(C, name="NS_PassLevelEnum")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), value, intent(IN) :: value
+        end subroutine c_pass_level_enum
+
+        ! ----------------------------------------
+        ! Function:  void PassLevelEnum
+        ! Statement: f_subroutine
+        ! ----------------------------------------
+        ! Argument:  upper::Level value
+        ! Statement: f_in_enum
+        subroutine pass_level_enum(value) &
+                bind(C, name="NS_PassLevelEnum_bufferify")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), value, intent(IN) :: value
+        end subroutine pass_level_enum
 
         ! ----------------------------------------
         ! Function:  const std::string &LastFunctionCalled
@@ -194,6 +220,23 @@ contains
 
     ! splicer begin class.ClassWork.additional_functions
     ! splicer end class.ClassWork.additional_functions
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void PassLevelEnum
+    ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  upper::Level value
+    ! Statement: f_in_enum
+    subroutine pass_level_enum(value)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), value, intent(IN) :: value
+        ! splicer begin function.pass_level_enum
+        call c_pass_level_enum_bufferify(value)
+        ! splicer end function.pass_level_enum
+    end subroutine pass_level_enum
+#endif
 
     ! ----------------------------------------
     ! Function:  const std::string &LastFunctionCalled

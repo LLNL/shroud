@@ -39,6 +39,34 @@ static void ShroudStringToCdesc(NS_SHROUD_array *cdesc,
 // splicer end C_definitions
 
 // ----------------------------------------
+// Function:  void PassLevelEnum
+// Statement: c_subroutine
+// ----------------------------------------
+// Argument:  upper::Level value
+// Statement: c_in_enum
+void NS_PassLevelEnum(enum NS_upper_Level value)
+{
+    // splicer begin function.PassLevelEnum
+    upper::Level SHCXX_value = static_cast<upper::Level>(value);
+    PassLevelEnum(SHCXX_value);
+    // splicer end function.PassLevelEnum
+}
+
+// ----------------------------------------
+// Function:  void PassLevelEnum
+// Statement: f_subroutine
+// ----------------------------------------
+// Argument:  upper::Level value
+// Statement: f_in_enum
+void NS_PassLevelEnum_bufferify(int value)
+{
+    // splicer begin function.PassLevelEnum_bufferify
+    upper::Level SHCXX_value = static_cast<upper::Level>(value);
+    PassLevelEnum(SHCXX_value);
+    // splicer end function.PassLevelEnum_bufferify
+}
+
+// ----------------------------------------
 // Function:  const std::string &LastFunctionCalled
 // Statement: c_function_string&
 const char * NS_LastFunctionCalled(void)

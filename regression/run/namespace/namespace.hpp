@@ -6,6 +6,16 @@
 
 const std::string& LastFunctionCalled();
 
+namespace upper {
+    enum Level
+        {
+         ERROR,
+         WARN,
+        };
+};
+
+void PassLevelEnum(upper::Level value);
+
 namespace outer {
   struct Cstruct1 {
     int ifield;

@@ -6,6 +6,8 @@ C f void One(void)
 Close wrapns_outer.h
 Close wrapns_outer.cpp
 class ClassWork
+C c void PassLevelEnum(upper::Level value)
+C f void PassLevelEnum(upper::Level value)
 C c const std::string &LastFunctionCalled(void)
 C f const std::string &LastFunctionCalled(void)
 C c void One(void)
@@ -13,8 +15,11 @@ C f void One(void)
 Close wrapns.h
 Close wrapns.cpp
 class ClassWork
+Fortran void PassLevelEnum(upper::Level value)
 Fortran const std::string &LastFunctionCalled(void)
 Fortran void One(void)
+C-interface c void PassLevelEnum(upper::Level value)
+C-interface f void PassLevelEnum(upper::Level value)
 C-interface c const std::string &LastFunctionCalled(void)
 C-interface f const std::string &LastFunctionCalled(void)
 C-interface f void One(void)
