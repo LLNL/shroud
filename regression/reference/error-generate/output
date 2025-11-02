@@ -71,7 +71,7 @@ Unknown argument 'text3': len_trim(text3)
 Phase: generate functions
 ----------------------------------------
 Node: nested
-line 103
+line 104
 struct nested *parent
 process_class: class nested already exists in class_map
 Wrote error_types.yaml
@@ -80,13 +80,13 @@ Wrote error_types.yaml
 Phase: FillMeta class function
 ----------------------------------------
 Node: arg1
-line 87
+line 88
 int arg1 +badvar+dimension(10)
 Illegal attribute 'badvar' for variable 'arg1'
 only 'name', 'readonly', 'dimension' and 'deref' are allowed on variables
 --------------------
 Node: arg1
-line 87
+line 88
 int arg1 +badvar+dimension(10)
 dimension attribute can only be used on pointer and references
 
@@ -208,8 +208,13 @@ line 80
 void callback_set_alloc(void (*alloc)(int tc +intent(none)))
 Bad value for argument tc intent: none
 --------------------
+Node: func14
+line 82
+void func14(int *arg +constfunc)
+Illegal attribute 'constfunc' for argument 'arg'
+--------------------
 Node: AssignValues
-line 108
+line 109
 void AssignValues(const int *from, int nfrom, int *to +rank(8), int nto)
 'rank' attribute must be 0-7, not '8'
 --------------------
@@ -258,7 +263,7 @@ void func10(int arg1 +api(none))
 'api' attribute must be 'capi', 'buf', 'cdesc' or 'cfi'
 --------------------
 Node: AssignValues
-line 108
+line 109
 void AssignValues(const int *from, int nfrom, int *to +deref(allocatable2), int nto)
 Illegal value 'allocatable2' for deref attribute. Must be 'allocatable', 'pointer', 'copy', 'raw', or 'scalar'.
 --------------------

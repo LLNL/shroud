@@ -135,10 +135,10 @@ void CXX_Class1_declare_1(CXX_Class1 * self, int flag,
 
 /**
  * The capsule which is added for the class should have intent(IN).
- * Needed with type(class1), intent(IN).
+ * Needed with type(class1), intent(IN) arguments.
  */
 // ----------------------------------------
-// Function:  int getViewFromClass
+// Function:  int getViewFromClass +constfunc
 // Statement: c_function_native
 // ----------------------------------------
 // Argument:  const std::string &path
@@ -155,10 +155,10 @@ int CXX_Class1_getViewFromClass(CXX_Class1 * self, const char *path)
 
 /**
  * The capsule which is added for the class should have intent(IN).
- * Needed with type(class1), intent(IN).
+ * Needed with type(class1), intent(IN) arguments.
  */
 // ----------------------------------------
-// Function:  int getViewFromClass
+// Function:  int getViewFromClass +constfunc
 // Statement: f_function_native
 // ----------------------------------------
 // Argument:  const std::string &path

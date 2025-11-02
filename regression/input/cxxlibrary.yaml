@@ -131,11 +131,11 @@ declarations:
     -  decl: (long length=1)
        function_suffix: _long
 
-  - decl: int getViewFromClass( const std::string& path )
+  - decl: int getViewFromClass( const std::string& path ) +constfunc
     doxygen:
       description: |
         The capsule which is added for the class should have intent(IN).
-        Needed with type(class1), intent(IN).
+        Needed with type(class1), intent(IN) arguments.
     options:
       wrap_python: False
 

@@ -10,11 +10,11 @@ Notes to help migrate between releases.
 Unreleased
 ----------
 
-New Features
-^^^^^^^^^^^^
-
 * This is the last version to support Python 2.7.
   Future minimum will be 3.7.
+
+New Features
+^^^^^^^^^^^^
 
 * Move default statements and helpers the file ``fc-statements.json``.
   See :ref:`StatementsAnchor` and :ref:`HelpersAnchor`.
@@ -53,6 +53,10 @@ New Features
   is ``const`` set to ``intent(IN). Otherwise, set to ``intent(INOUT)``.
 
 * Added attribute *+operator(assignment)* to add a Fortran assignment overload.
+
+* Added attribute *+constfunc* to tell Shroud a member function is ``const``
+  even if the ``const`` keyword is not used.
+  This will ensure that the *shadow* argument is ``intent(in)``.
 
 * Added options to control default behavior for dereferencing
   pointers. These options can be used instead of explicitly setting

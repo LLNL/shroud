@@ -1094,14 +1094,15 @@ rv = .false.
         declarator = ast.declarator
         subprogram = declarator.get_subprogram()
         result_typemap = ast.typemap
-        is_pure = declarator.attrs.get("pure", None)
-        func_is_const = declarator.func_const
 
         r_bind = get_func_bind(node, wlang)
         r_meta = r_bind.meta
         result_api = r_meta["api"]
         sintent = r_meta["intent"]
         
+        is_pure = declarator.attrs.get("pure", None)
+        func_is_const = declarator.func_const or r_meta["funcconst"]
+
         # find subprogram type
         # compute first to get order of arguments correct.
         fmt_result = r_bind.fmtdict
@@ -1463,7 +1464,7 @@ rv = .false.
                 # The C++ object pointed to by the derived type may change
                 # so the intent here is not accurate.
                 dummy_arg_list.append(fmt_result.F_this)
-                if declarator.func_const:
+                if declarator.func_const or r_meta["constfunc"]:
                     line = "class({F_derived_name}), intent(IN) :: {F_this}"
                 else:
                     line = "class({F_derived_name}), intent(INOUT) :: {F_this}"

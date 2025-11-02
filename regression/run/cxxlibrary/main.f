@@ -203,12 +203,11 @@ contains
   subroutine test_capsule_intent_worker(obj)
     use cxxlibrary_mod
     type(class1), intent(IN) :: obj
-#if 0
+
     integer length
 
     length = obj%get_view_from_class("teststring2")
-    call assert_equals(1, length, "intent(in) lenstr");
-#endif
+    call assert_equals(11, length, "intent(in) lenstr");
     
   end subroutine test_capsule_intent_worker
   

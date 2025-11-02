@@ -2695,7 +2695,66 @@
                 }
             },
             {
-                "<FUNCTION>": "AssignValues  35 ****************************************",
+                "<FUNCTION>": "func14  35 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "func14",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "constfunc": true
+                                    },
+                                    "name": "arg",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void func14(int *arg +constfunc)",
+                "declgen": "void func14(int *arg +constfunc)",
+                "name": "func14",
+                "options": {},
+                "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg": {
+                            "meta": {
+                                "abstract": "native*",
+                                "intent": "inout"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "func14",
+                    "F_name_api": "func14",
+                    "function_name": "func14"
+                }
+            },
+            {
+                "<FUNCTION>": "AssignValues  36 ****************************************",
                 "_fortran_generic_wrap": true,
                 "_overloaded": true,
                 "ast": {
@@ -3131,14 +3190,14 @@
                 }
             },
             {
-                "<FUNCTION>": "AssignValues  38 ****************************************",
+                "<FUNCTION>": "AssignValues  39 ****************************************",
                 "C_force_wrapper": true,
-                "_PTR_C_CXX_index": 35,
+                "_PTR_C_CXX_index": 36,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
                 ],
-                "_orig_node_index": 35,
+                "_orig_node_index": 36,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -3259,14 +3318,14 @@
                 }
             },
             {
-                "<FUNCTION>": "AssignValues  39 ****************************************",
+                "<FUNCTION>": "AssignValues  40 ****************************************",
                 "C_force_wrapper": true,
-                "_PTR_C_CXX_index": 35,
+                "_PTR_C_CXX_index": 36,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
                 ],
-                "_orig_node_index": 35,
+                "_orig_node_index": 36,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -3420,7 +3479,7 @@
                 }
             },
             {
-                "<FUNCTION>": "struct1_get_arg2  36 ****************************************",
+                "<FUNCTION>": "struct1_get_arg2  37 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -3615,7 +3674,7 @@
                 }
             },
             {
-                "<FUNCTION>": "struct1_set_arg2  37 ****************************************",
+                "<FUNCTION>": "struct1_set_arg2  38 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"

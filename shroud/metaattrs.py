@@ -597,7 +597,8 @@ class FillMeta(object):
 
     def set_func_api_fortran(self, node, meta):
         """
-        Based on other meta attrs: 
+        Based on other meta attrs, compute the default api.
+        This decides how the argument and meta data are passed to C wrapper.
         """
         ast = node.ast
         ntypemap = ast.typemap
@@ -667,6 +668,16 @@ class FillMeta(object):
         if need_buf_result:
             meta["api"] = need_buf_result
 
+    def set_func_constfunc_fortran(self, node, meta):
+        """
+        +constfunc is used to set the class shadow argument is intent(IN).
+        """
+        attrs = node.ast.declarator.attrs
+        constfunc = attrs.get("constfunc", missing)
+
+        if constfunc is not missing:
+            meta["constfunc"] = constfunc
+        
     def set_func_post_c(self, cls, node, meta):
         """Final check on metaattributes for C.
         Check defaults from typemap.
@@ -918,6 +929,7 @@ class FillMetaShare(FillMeta):
             if attr not in [
                 "api",          # arguments to pass to C wrapper.
                 "allocatable",  # return a Fortran ALLOCATABLE
+                "constfunc",
                 "custom",
                 "deref",  # How to dereference pointer
                 "destructor_name",
@@ -1225,6 +1237,7 @@ class FillMetaFortran(FillMeta):
         self.set_func_deref_fortran(node, r_meta)
         self.set_func_owner_fortran(node, r_meta)
         self.set_func_api_fortran(node, r_meta)
+        self.set_func_constfunc_fortran(node, r_meta)
         self.set_func_post_fortran(cls, node, r_meta)
         
         self.meta_function_params(node, fptr_arg)

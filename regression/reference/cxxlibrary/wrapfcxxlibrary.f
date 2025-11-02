@@ -216,7 +216,7 @@ module cxxlibrary_mod
         end subroutine c_class1_declare_1
 
         ! ----------------------------------------
-        ! Function:  int getViewFromClass
+        ! Function:  int getViewFromClass +constfunc
         ! Statement: c_function_native
         ! ----------------------------------------
         ! Argument:  const std::string &path
@@ -233,7 +233,7 @@ module cxxlibrary_mod
         end function c_class1_get_view_from_class
 
         ! ----------------------------------------
-        ! Function:  int getViewFromClass
+        ! Function:  int getViewFromClass +constfunc
         ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  const std::string &path
@@ -829,19 +829,19 @@ contains
     end subroutine class1_declare_1_long
 
     ! ----------------------------------------
-    ! Function:  int getViewFromClass
+    ! Function:  int getViewFromClass +constfunc
     ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  const std::string &path
     ! Statement: f_in_string&_buf
     !>
     !! The capsule which is added for the class should have intent(IN).
-    !! Needed with type(class1), intent(IN).
+    !! Needed with type(class1), intent(IN) arguments.
     !<
     function class1_get_view_from_class(obj, path) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        class(class1), intent(INOUT) :: obj
+        class(class1), intent(IN) :: obj
         character(len=*), intent(IN) :: path
         integer(C_INT) :: SHT_rv
         ! splicer begin class.Class1.method.get_view_from_class

@@ -2560,6 +2560,9 @@
                         "<FUNCTION>": "getViewFromClass  4 ****************************************",
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "constfunc": true
+                                },
                                 "name": "getViewFromClass",
                                 "params": [
                                     {
@@ -2586,10 +2589,10 @@
                             ],
                             "typemap_name": "int"
                         },
-                        "decl": "int getViewFromClass( const std::string& path )",
-                        "declgen": "int getViewFromClass(const std::string &path)",
+                        "decl": "int getViewFromClass( const std::string& path ) +constfunc",
+                        "declgen": "int getViewFromClass(const std::string &path) +constfunc",
                         "doxygen": {
-                            "description": "The capsule which is added for the class should have intent(IN).\nNeeded with type(class1), intent(IN).\n"
+                            "description": "The capsule which is added for the class should have intent(IN).\nNeeded with type(class1), intent(IN) arguments.\n"
                         },
                         "helpers": {
                             "fc": [
@@ -2723,6 +2726,7 @@
                                     },
                                     "meta": {
                                         "abstract": "native",
+                                        "constfunc": true,
                                         "intent": "function"
                                     },
                                     "stmt": "f_function_native"
