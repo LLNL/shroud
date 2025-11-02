@@ -74,6 +74,14 @@ module cxxlibrary_mod
         integer(C_INT) :: cmemflags = 0   ! memory flags
     end type CXX_SHROUD_capsule_data
 
+    !  enum class ColorEnum
+    integer, parameter :: color_enum = C_INT
+    ! splicer begin enum.ColorEnum
+    integer(color_enum), parameter :: colorenum_red = 60
+    integer(color_enum), parameter :: colorenum_blue = 61
+    integer(color_enum), parameter :: colorenum_white = 62
+    ! splicer end enum.ColorEnum
+
     ! typedef LengthType
     ! splicer begin typedef.LengthType
     integer, parameter :: length_type = C_LONG

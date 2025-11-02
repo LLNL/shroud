@@ -406,6 +406,9 @@ F_C_name_template             i_name_function_template
     *C_name_api* and *F_name_api* (controlled by options *C_API_case* and
     *F_API_case*.
 
+  * The Fortran wrapper creates an `integer, parameter` for the kind
+    of the enumeration parameters.
+
 * The *deref* attribute is no longer applied to the C wrapper.  When
   the function result had *+deref(scalar)* on a pointer result, a
   scalar was returned. The C wrapper will now return a pointer giving

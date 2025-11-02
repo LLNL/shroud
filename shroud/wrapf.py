@@ -463,11 +463,11 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
             append_format(output, "!  enum " + node.ast.scope + " {namespace_scope}{enum_name}", fmt_enum)
         else:
             append_format(output, "!  enum {namespace_scope}{enum_name}", fmt_enum)
-            append_format(
-                output,
-                "integer, parameter :: {F_name_enum} = {F_enum_kind}",
-                fmt_enum
-            )
+        append_format(
+            output,
+            "integer, parameter :: {F_name_enum} = {F_enum_kind}",
+            fmt_enum
+        )
         if "f" in node.splicer:
             F_code = None
             F_force = node.splicer["f"]

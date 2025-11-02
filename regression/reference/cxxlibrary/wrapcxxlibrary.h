@@ -30,6 +30,15 @@ extern "C" {
 // splicer begin C_declarations
 // splicer end C_declarations
 
+//  ColorEnum
+enum CXX_ColorEnum {
+    // splicer begin enum.ColorEnum
+    CXX_ColorEnum_RED = 60,
+    CXX_ColorEnum_BLUE,
+    CXX_ColorEnum_WHITE
+    // splicer end enum.ColorEnum
+};
+
 // typedef LengthType
 // splicer begin typedef.LengthType
 typedef long CXX_LengthType;

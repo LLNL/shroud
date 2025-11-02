@@ -100,6 +100,18 @@ declarations:
   - decl: nested *array +dimension(sublevels)
 
 ######################################################################
+
+# scoped enum
+- decl: |
+      enum class ColorEnum {
+        RED = 60,
+        BLUE,
+        WHITE,
+      };
+  options:
+    wrap_python: False
+
+######################################################################
 # by returning this,the C++ function allows chaining.
 # make them subroutines in Fortran.
 # Mix return_this, and default arguments.

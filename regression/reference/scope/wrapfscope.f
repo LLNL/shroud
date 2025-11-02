@@ -107,6 +107,7 @@ module scope_mod
     ! splicer end enum.Color
 
     !  enum class ColorEnum
+    integer, parameter :: color_enum = C_INT
     ! splicer begin enum.ColorEnum
     integer(color_enum), parameter :: colorenum_red = 60
     integer(color_enum), parameter :: colorenum_blue = 61

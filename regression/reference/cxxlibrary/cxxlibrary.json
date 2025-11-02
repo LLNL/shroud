@@ -2989,6 +2989,80 @@
         "cxx_header": [
             "cxxlibrary.hpp"
         ],
+        "enums": [
+            {
+                "<ENUM>": "ColorEnum ****************************************",
+                "_fmtmembers": {
+                    "BLUE": {
+                        "C_enum_member": "CXX_ColorEnum_BLUE",
+                        "C_name_api": "BLUE",
+                        "C_name_scope": "ColorEnum_",
+                        "F_enum_member": "colorenum_blue",
+                        "F_name_api": "blue",
+                        "F_name_scope": "colorenum_",
+                        "F_value": 61,
+                        "enum_member_name": "BLUE"
+                    },
+                    "RED": {
+                        "C_enum_member": "CXX_ColorEnum_RED",
+                        "C_name_api": "RED",
+                        "C_name_scope": "ColorEnum_",
+                        "C_value": 60,
+                        "F_enum_member": "colorenum_red",
+                        "F_name_api": "red",
+                        "F_name_scope": "colorenum_",
+                        "F_value": 60,
+                        "enum_member_name": "RED"
+                    },
+                    "WHITE": {
+                        "C_enum_member": "CXX_ColorEnum_WHITE",
+                        "C_name_api": "WHITE",
+                        "C_name_scope": "ColorEnum_",
+                        "F_enum_member": "colorenum_white",
+                        "F_name_api": "white",
+                        "F_name_scope": "colorenum_",
+                        "F_value": 62,
+                        "enum_member_name": "WHITE"
+                    }
+                },
+                "ast": {
+                    "members": [
+                        {
+                            "name": "RED",
+                            "value": {
+                                "constant": "60"
+                            }
+                        },
+                        {
+                            "name": "BLUE"
+                        },
+                        {
+                            "name": "WHITE"
+                        }
+                    ],
+                    "name": "ColorEnum",
+                    "scope": "class"
+                },
+                "decl": "enum class ColorEnum {\n  RED = 60,\n  BLUE,\n  WHITE,\n};\n",
+                "name": "ColorEnum",
+                "options": {
+                    "wrap_python": false
+                },
+                "typemap_name": "ColorEnum",
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_fmtdict": {
+                    "C_enum_type": "CXX_ColorEnum",
+                    "C_name_api": "ColorEnum",
+                    "F_enum_kind": "C_INT",
+                    "F_name_api": "color_enum",
+                    "F_name_enum": "color_enum",
+                    "enum_name": "ColorEnum"
+                }
+            }
+        ],
         "functions": [
             {
                 "<FUNCTION>": "passStructByReferenceCls  12 ****************************************",
@@ -11518,7 +11592,9 @@
     },
     "symtab": {
         "Class1": "Class1",
+        "ColorEnum": "enum-ColorEnum",
         "Cstruct1_cls": "struct-Cstruct1_cls",
+        "enum-ColorEnum": "ColorEnum",
         "nested": "struct-nested",
         "struct-Cstruct1_cls": "Cstruct1_cls",
         "struct-nested": "nested",
@@ -11563,6 +11639,42 @@
             "wrap_header": [
                 "typescxxlibrary.h"
             ]
+        },
+        "ColorEnum": {
+            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_INT",
+            "PY_ctor": "PyInt_FromLong({ctor_expr})",
+            "PY_format": "i",
+            "PY_get": "PyInt_AsLong({py_var})",
+            "base": "integer",
+            "c_header": [
+                "wrapcxxlibrary.h"
+            ],
+            "c_to_cxx": "static_cast<ColorEnum>({c_var})",
+            "c_type": "enum CXX_ColorEnum",
+            "cfi_type": "CFI_type_int",
+            "ci_type": "int",
+            "cxx_header": [
+                "wrapcxxlibrary.h"
+            ],
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
+            "cxx_to_ci": "static_cast<int>({cxx_var})",
+            "cxx_type": "ColorEnum",
+            "f_cast": "int({f_var}, C_INT)",
+            "f_kind": "C_INT",
+            "f_module": {
+                "iso_c_binding": [
+                    "C_INT"
+                ]
+            },
+            "f_module_name": "iso_c_binding",
+            "f_type": "integer(C_INT)",
+            "flat_name": "int",
+            "is_enum": true,
+            "sgroup": "enum",
+            "sh_type": "SH_TYPE_INT"
         },
         "Cstruct1_cls": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
