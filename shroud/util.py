@@ -826,12 +826,12 @@ class Scope(object):
     def __repr__(self):
         return str(self._to_dict())
 
-    # Useful to find where an fmt field is set.
-#    def __setattr__(self, name, value):
-#        self.__dict__[name] = value
-#        if name is 'c_var_cdesc':
-#            print('setting', name, value)
-#            import traceback; traceback.print_stack()
+    # Useful to find where an fmtdict field is set. Remove XXX to use.
+    def XXX__setattr__(self, name, value):
+        self.__dict__[name] = value
+        if name == 'c_var_cdesc':
+            print('setting', name, value)
+            import traceback; traceback.print_stack()
 
     def get(self, key, value=None):
         """ D.get(k[,d]) -> D[k] if k in D, else d.  d defaults to None.

@@ -188,6 +188,9 @@ class AstNode(object):
 ######################################################################
 
 class NamespaceMixin(object):
+    """
+    Provide methods to add to a scope.
+    """
     def add_class(self, decl, ast=None, fields={},
                   base=[], template_parameters=None,
                   **kwargs):
@@ -303,7 +306,7 @@ class NamespaceMixin(object):
         self.functions.append(fcnnode)
         return fcnnode
 
-    def add_namespace(self, decl, ast=None, expose=True, **kwargs):
+    def add_namespace(self, decl, ast=None, expose=True, skip=False, **kwargs):
         """Add a namespace.
 
         Args:
@@ -312,7 +315,7 @@ class NamespaceMixin(object):
             expose - If True, will be wrapped.
                      Otherwise, only used for lookup while parsing.
         """
-        node = NamespaceNode(decl, parent=self, ast=ast, **kwargs)
+        node = NamespaceNode(decl, parent=self, ast=ast, skip=skip, **kwargs)
         if not node.options.flatten_namespace and expose:
             self.namespaces.append(node)
         return node
@@ -1010,8 +1013,8 @@ class NamespaceNode(AstNode, NamespaceMixin):
 
         Args:
             skip - skip when generating scope_file and format names since
-                   it is part of the initial namespace, not a namespace
-                   within a declaration.
+                   it is part of the initial YAML namespace, not a namespace
+                   declaration.
         """
         # From arguments
         self.parent = parent
