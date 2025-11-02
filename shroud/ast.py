@@ -306,17 +306,15 @@ class NamespaceMixin(object):
         self.functions.append(fcnnode)
         return fcnnode
 
-    def add_namespace(self, decl, ast=None, expose=True, skip=False, **kwargs):
+    def add_namespace(self, decl, ast=None, skip=False, **kwargs):
         """Add a namespace.
 
         Args:
             decl - str declaration ex. 'namespace name'
             ast - declast.Node.  None for non-parsed namescopes like std.
-            expose - If True, will be wrapped.
-                     Otherwise, only used for lookup while parsing.
         """
         node = NamespaceNode(decl, parent=self, ast=ast, skip=skip, **kwargs)
-        if not node.options.flatten_namespace and expose:
+        if not node.options.flatten_namespace:
             self.namespaces.append(node)
         return node
 
