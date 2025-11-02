@@ -2425,8 +2425,8 @@ def listify(entry, names):
       c: |
         // line 1
         // line 2
-      c_buf:
-        - // Test adding a blank line below.
+      f:
+        - ! Test adding a blank line below.
         -
 
     fstatements:

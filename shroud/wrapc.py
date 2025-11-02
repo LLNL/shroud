@@ -1207,7 +1207,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         splicer_list = ["c"]
         if wlang == "f":
-            splicer_list.append("buf")
+            splicer_list.append("buf")  # c_buf splicer
         splicer_name = statements.compute_name(splicer_list)
         if splicer_name in node.splicer:
             need_wrapper = True

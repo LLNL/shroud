@@ -98,6 +98,8 @@ Changes to YAML input
   must be changed.  The C wrapper created for the Fortran wrapper to call
   is now considered part of the Fortran wrapper processing.
   The *c_buf* label used with *fstatements* is now *f*.
+  *c_buf* continues to be used with splicer statements. In that case
+  it is the splicer code used with the Fortran's bufferify C wrapper.
 
   Some uses of option *F_create_bufferify_function* are no longer needed.
   Similar functionality by using the attribute *+api(capi)* to pass the

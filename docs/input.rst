@@ -1076,6 +1076,8 @@ This splicer takes priority over other ways of defining splicers.
      splicer:
         c:
         - "return name != NULL;"
+        c_buf:
+        - // Added to the bufferify C wrapper called by Fortran
         f:
         - 'rv = name .ne. " "'
 
