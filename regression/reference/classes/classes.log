@@ -1,5 +1,7 @@
 Read yaml classes.yaml
 Close classes_types.yaml
+library C wrappers
+namespace classes
 class Class1
 C c Class1(void)
 C f Class1(void)
@@ -103,6 +105,8 @@ C c const std::string &LastFunctionCalled(void) +len(30)
 C f const std::string &LastFunctionCalled(void) +len(30)
 Close wrapclasses.h
 Close wrapclasses.cpp
+library Fortran wrappers
+namespace classes
 class Class1
 Fortran Class1(void)
 Fortran Class1(int flag)

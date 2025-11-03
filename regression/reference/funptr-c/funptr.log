@@ -1,4 +1,6 @@
 Read yaml funptr.yaml
+library C wrappers
+namespace funptr
 C f void callback1(void (*incr1)(void))
 C f void callback1_wrap(void (*incr1_wrap)(void))
 C f void callback1_external(void (*incr1_external)(void) +external)
@@ -14,6 +16,8 @@ C f int abstract1(int input, int (*get_abs)(double, int))
 C f void callback_void_ptr(void (*void_ptr_arg)(void *))
 C f void callback_all_types(void (*all_types)(int, int * +rank(1), char, char *, bool, bool *))
 C f void get_void_ptr(pfvoid *func +funptr+intent(out))
+library Fortran wrappers
+namespace funptr
 typedef TypeID
 typedef incrtype
 typedef get_int

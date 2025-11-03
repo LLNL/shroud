@@ -1,4 +1,6 @@
 Read yaml char.yaml
+library C wrappers
+namespace char
 C c void init_test(void)
 C f void init_test(void)
 C c void passChar(char status)
@@ -52,6 +54,8 @@ C c int fetchCharPtrLibraryNULL(char **outstr +deref(pointer)+intent(out))
 C f int fetchCharPtrLibraryNULL(char **outstr +deref(pointer)+intent(out))
 Close wrapchar.h
 Close wrapchar.cpp
+library Fortran wrappers
+namespace char
 Fortran void init_test(void)
 Fortran void passChar(char status)
 Fortran void passCharForce(char status)

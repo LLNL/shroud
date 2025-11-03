@@ -1,9 +1,13 @@
 Read yaml wrap.yaml
 Close wrap_types.yaml
+library C wrappers
+namespace wrap
 class Class1
 C f int FuncInClass(void)
 Close wrapClass1.h
 Close wrapClass1.c
+library Fortran wrappers
+namespace wrap
 class Class1
 Fortran int FuncInClass(void)
 C-interface f int FuncInClass(void)

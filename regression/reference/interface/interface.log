@@ -1,6 +1,10 @@
 Read yaml interface.yaml
+library C wrappers
+namespace Interface
 C f void Function1(void)
 C f double Function2(double arg1, int arg2)
+library Fortran wrappers
+namespace Interface
 Fortran void Function1(void)
 Fortran double Function2(double arg1, int arg2)
 C-interface f void Function1(void)

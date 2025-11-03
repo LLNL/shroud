@@ -1,9 +1,13 @@
 Read yaml names2.yaml
 Close names_types.yaml
+library C wrappers
+namespace ignore2
 C c void AFunction(void)
 C f void AFunction(void)
 Close wrapNames.h
 Close wrapNames.cpp
+library Fortran wrappers
+namespace ignore2
 Fortran void AFunction(void)
 C-interface f void AFunction(void)
 Close wrapfnames.f

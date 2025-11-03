@@ -1,5 +1,7 @@
 Read yaml generic.yaml
 Close generic_types.yaml
+library C wrappers
+namespace generic
 class StructAsClass
 C f void UpdateAsFloat(float arg)
 C f void UpdateAsDouble(double arg)
@@ -28,6 +30,8 @@ C f long UpdateStructAsClass(StructAsClass *arg, int inew)
 C f long UpdateStructAsClass(StructAsClass *arg, long inew)
 Close wrapgeneric.h
 Close wrapgeneric.c
+library Fortran wrappers
+namespace generic
 class StructAsClass
 Fortran void UpdateAsFloat(float arg)
 Fortran void UpdateAsDouble(double arg)

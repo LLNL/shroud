@@ -1,5 +1,7 @@
 Read yaml forward.yaml
 Close forward_types.yaml
+library C wrappers
+namespace forward
 class Class3
 class Class2
 C c Class2(void)
@@ -16,6 +18,8 @@ C c int passStruct1(const Cstruct1 *arg)
 C f int passStruct1(const Cstruct1 *arg)
 Close wrapforward.h
 Close wrapforward.cpp
+library Fortran wrappers
+namespace forward
 class Class3
 class Class2
 Fortran Class2(void)

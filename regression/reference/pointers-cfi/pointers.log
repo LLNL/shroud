@@ -1,4 +1,6 @@
 Read yaml pointers.yaml
+library C wrappers
+namespace pointers
 C c void intargs_in(const int *arg)
 C f void intargs_in(const int *arg)
 C c void intargs_inout(int *arg)
@@ -91,6 +93,8 @@ C c int *returnIntAllocToFixedArray(void) +deref(allocatable)+dimension(10)
 C f int *returnIntAllocToFixedArray(void) +deref(allocatable)+dimension(10)
 Close wrappointers.h
 Close wrappointers.cpp
+library Fortran wrappers
+namespace pointers
 Fortran void intargs_in(const int *arg)
 Fortran void intargs_inout(int *arg)
 Fortran void intargs_out(int *arg +intent(out))

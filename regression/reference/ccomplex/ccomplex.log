@@ -1,8 +1,12 @@
 Read yaml ccomplex.yaml
+library C wrappers
+namespace ccomplex
 C f void acceptFloatComplexInoutPtr(float complex *arg1)
 C f void acceptDoubleComplexInoutPtr(double complex *arg1)
 C f void acceptDoubleComplexOutPtr(double complex *arg1 +intent(out))
 C f void acceptDoubleComplexOutPtrFlag(double complex *arg1 +intent(out), int *flag +intent(out))
+library Fortran wrappers
+namespace ccomplex
 Fortran void acceptFloatComplexInoutPtr(float complex *arg1)
 Fortran void acceptDoubleComplexInoutPtr(double complex *arg1)
 Fortran void acceptDoubleComplexOutPtr(double complex *arg1 +intent(out))

@@ -1,5 +1,7 @@
 Read yaml tutorial.yaml
 Read splicer ftutorialsplicer.f
+library C wrappers
+namespace tutorial
 C c void NoReturnNoArguments(void)
 C f void NoReturnNoArguments(void)
 C c double PassByValue(double arg1, int arg2)
@@ -54,6 +56,8 @@ C c const std::string &LastFunctionCalled(void) +len(30)
 C f const std::string &LastFunctionCalled(void) +len(30)
 Close wrapTutorial.h
 Close wrapTutorial.cpp
+library Fortran wrappers
+namespace tutorial
 typedef TypeID
 Fortran void NoReturnNoArguments(void)
 Fortran double PassByValue(double arg1, int arg2)

@@ -1,10 +1,14 @@
 Read yaml enum.yaml
+library C wrappers
+namespace enum
 C f int convert_to_int(enum Color in)
 C f enum Color returnEnum(enum Color in)
 C f void returnEnumOutArg(enum Color *out +intent(out))
 C f enum Color returnEnumInOutArg(enum Color *inout +intent(inout))
 Close wrapenum.h
 Close wrapenum.c
+library Fortran wrappers
+namespace enum
 Fortran int convert_to_int(enum Color in)
 Fortran enum Color returnEnum(enum Color in)
 Fortran void returnEnumOutArg(enum Color *out +intent(out))

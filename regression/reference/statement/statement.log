@@ -1,4 +1,6 @@
 Read yaml statement.yaml
+library C wrappers
+namespace statement
 C c int GetNameLength(void) +pure
 C f int GetNameLength(void) +pure
 C c const string &getNameErrorPattern(void) +len(get_name_length())
@@ -6,6 +8,8 @@ C f const string &getNameErrorPattern(void) +len(get_name_length())
 C c bool nameIsValid(const std::string &name)
 Close wrapstatement.h
 Close wrapstatement.cpp
+library Fortran wrappers
+namespace statement
 Fortran int GetNameLength(void) +pure
 Fortran const string &getNameErrorPattern(void) +len(get_name_length())
 Fortran bool nameIsValid(const std::string &name)

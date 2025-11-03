@@ -1,10 +1,14 @@
 Read yaml scope.yaml
 Close scope_types.yaml
+library C wrappers
+namespace scope
+namespace ns1
 struct DataPointer
 C f int *DataPointer_get_items(ns1::DataPointer *SH_this +intent(in)) +dimension(nitems)+intent(getter)
 C f void DataPointer_set_items(ns1::DataPointer *SH_this, int *val +intent(setter)+rank(1)) +intent(setter)
 Close wrapscope_ns1.h
 Close wrapscope_ns1.cpp
+namespace ns2
 struct DataPointer
 C f int *DataPointer_get_items(ns2::DataPointer *SH_this +intent(in)) +dimension(nitems)+intent(getter)
 C f void DataPointer_set_items(ns2::DataPointer *SH_this, int *val +intent(setter)+rank(1)) +intent(setter)
@@ -19,6 +23,8 @@ C f int *DataPointer_get_items(ns3::DataPointer *SH_this +intent(in)) +dimension
 C f void DataPointer_set_items(ns3::DataPointer *SH_this, int *val +intent(setter)+rank(1)) +intent(setter)
 Close wrapscope.h
 Close wrapscope.cpp
+library Fortran wrappers
+namespace scope
 class DataPointer
 class Class1
 class Class2
@@ -26,12 +32,14 @@ Fortran int *DataPointer_get_items(ns3::DataPointer *SH_this +intent(in)) +dimen
 Fortran void DataPointer_set_items(ns3::DataPointer *SH_this, int *val +intent(setter)+rank(1)) +intent(setter)
 C-interface f int *DataPointer_get_items(ns3::DataPointer *SH_this +intent(in)) +dimension(nitems)+intent(getter)
 C-interface f void DataPointer_set_items(ns3::DataPointer *SH_this, int *val +intent(setter)+rank(1)) +intent(setter)
+namespace ns1
 class DataPointer
 Fortran int *DataPointer_get_items(ns1::DataPointer *SH_this +intent(in)) +dimension(nitems)+intent(getter)
 Fortran void DataPointer_set_items(ns1::DataPointer *SH_this, int *val +intent(setter)+rank(1)) +intent(setter)
 C-interface f int *DataPointer_get_items(ns1::DataPointer *SH_this +intent(in)) +dimension(nitems)+intent(getter)
 C-interface f void DataPointer_set_items(ns1::DataPointer *SH_this, int *val +intent(setter)+rank(1)) +intent(setter)
 Close wrapfscope_ns1.f
+namespace ns2
 class DataPointer
 Fortran int *DataPointer_get_items(ns2::DataPointer *SH_this +intent(in)) +dimension(nitems)+intent(getter)
 Fortran void DataPointer_set_items(ns2::DataPointer *SH_this, int *val +intent(setter)+rank(1)) +intent(setter)

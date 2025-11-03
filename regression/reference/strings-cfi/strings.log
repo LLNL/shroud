@@ -1,4 +1,6 @@
 Read yaml strings.yaml
+library C wrappers
+namespace strings
 C c void init_test(void)
 C f void init_test(void)
 C f const string getConstStringLen(void) +len(30)
@@ -57,6 +59,8 @@ C c void PostDeclare(int *count +intent(in)+rank(1), std::string &name)
 C f void PostDeclare(int *count +intent(in)+rank(1), std::string &name)
 Close wrapstrings.h
 Close wrapstrings.cpp
+library Fortran wrappers
+namespace strings
 Fortran void init_test(void)
 Fortran const string getConstStringLen(void) +len(30)
 Fortran const string getConstStringAlloc(void)

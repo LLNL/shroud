@@ -1,5 +1,7 @@
 Read yaml preprocess.yaml
 Close preprocess_types.yaml
+library C wrappers
+namespace preprocess
 class User1
 C c void method1(void)
 C f void method1(void)
@@ -18,6 +20,8 @@ C c void exfunc(int flag)
 C f void exfunc(int flag)
 Close wrapUser2.h
 Close wrapUser2.cpp
+library Fortran wrappers
+namespace preprocess
 class User1
 Fortran void method1(void)
 Fortran void method2(void)

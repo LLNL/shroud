@@ -1,4 +1,6 @@
 Read yaml vectors.yaml
+library C wrappers
+namespace vectors
 C c int vector_sum(const std::vector<int> &arg)
 C f int vector_sum(const std::vector<int> &arg)
 C c void vector_iota_out(std::vector<int> &arg +intent(out))
@@ -31,6 +33,8 @@ C c int returnDim2(int *arg +intent(in)+rank(2), int len +implied(size(arg,2)))
 C f int returnDim2(int *arg +intent(in)+rank(2), int len +implied(size(arg,2)))
 Close wrapvectors.h
 Close wrapvectors.cpp
+library Fortran wrappers
+namespace vectors
 Fortran int vector_sum(const std::vector<int> &arg)
 Fortran void vector_iota_out(std::vector<int> &arg +intent(out))
 Fortran void vector_iota_out_with_num(std::vector<int> &arg +intent(out))

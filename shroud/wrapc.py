@@ -93,6 +93,7 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
     def wrap_library(self):
         newlibrary = self.newlibrary
         fmt_library = newlibrary.fmtdict
+        self.log.write("library C wrappers\n")
         self.wrap_namespace(newlibrary.wrap_namespace, True)
 
         self.gather_helper_code(self.shared_helper)
@@ -117,6 +118,11 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         Wrap depth first to accumulate destructor information
         which is written at the library level.
         """
+        options = node.options
+        if options.flatten_namespace:
+            self.log.write("namespace {0} flatten\n".format(node.name))
+        else:
+            self.log.write("namespace {0}\n".format(node.name))
 
         self.wrap_assignment(node)
         

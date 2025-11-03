@@ -71,6 +71,7 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
         fmt_library.i_result_clause = ""
         fmt_library.i_pure_clause = ""
 
+        self.log.write("library Fortran wrappers\n")
         node = self.newlibrary.wrap_namespace
         fileinfo = ModuleInfo(node)
         self.wrap_namespace(node, fileinfo, top=True)
@@ -89,6 +90,10 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
         top  : True if library module, else namespace module.
         """
         options = node.options
+        if options.flatten_namespace:
+            self.log.write("namespace {0} flatten\n".format(node.name))
+        else:
+            self.log.write("namespace {0}\n".format(node.name))
         self.wrap_class_method_option(node.functions, fileinfo)
 
         self._push_splicer("class")

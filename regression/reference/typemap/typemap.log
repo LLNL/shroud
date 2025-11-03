@@ -1,5 +1,7 @@
 Read yaml typemap.yaml
 Close typemap_types.yaml
+library C wrappers
+namespace typemap
 C c bool passIndex(IndexType i1, IndexType *i2 +intent(out))
 C f bool passIndex(IndexType i1, IndexType *i2 +intent(out))
 C f bool passIndex(int32_t i1, IndexType *i2 +intent(out))
@@ -14,6 +16,8 @@ C f void passFloat(float f1)
 C f void passFloat(double f1)
 Close wraptypemap.h
 Close wraptypemap.cpp
+library Fortran wrappers
+namespace typemap
 Fortran bool passIndex(IndexType i1, IndexType *i2 +intent(out))
 Fortran bool passIndex(int32_t i1, IndexType *i2 +intent(out))
 Fortran bool passIndex(int64_t i1, IndexType *i2 +intent(out))

@@ -1,5 +1,7 @@
 Read yaml error-generate.yaml
 Close error_types.yaml
+library C wrappers
+namespace error
 struct struct1
 struct nested
 C f void AssignValues(const int *from, int nfrom, int *to +intent(out), int nto)
@@ -7,6 +9,8 @@ C f int *struct1_get_arg2(struct1 *SH_this +intent(in)) +deref(pointerxx)+dimens
 C f void struct1_set_arg2(struct1 *SH_this, int *val +intent(setter)+rank(1)) +intent(setter)
 Close wraperror.h
 Close wraperror.cpp
+library Fortran wrappers
+namespace error
 class struct1
 class nested
 typedef none

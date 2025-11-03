@@ -1,5 +1,7 @@
 Read yaml shared.yaml
 Close shared_types.yaml
+library C wrappers
+namespace Shared
 class Object
 C c Object(void)
 C f Object(void)
@@ -49,6 +51,8 @@ C c int use_count(const std::weak_ptr<Object> *f)
 C f int use_count(const std::weak_ptr<Object> *f)
 Close wrapShared.h
 Close wrapShared.cpp
+library Fortran wrappers
+namespace Shared
 class Object
 Fortran Object(void)
 Fortran ~Object(void)

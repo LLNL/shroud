@@ -1,5 +1,7 @@
 Read yaml error.yaml
 Close error_types.yaml
+library C wrappers
+namespace error
 class Cstruct_as_subclass
 C f int get_x1(void) +intent(getter)
 C f void set_x1(int val +intent(setter)) +intent(setter)
@@ -20,6 +22,8 @@ C c const std::string *getConstStringPtrOwnsAllocPattern(void) +free_pattern(C_s
 C f const std::string *getConstStringPtrOwnsAllocPattern(void) +free_pattern(C_string_free)+owner(caller)
 Close wraperror.h
 Close wraperror.cpp
+library Fortran wrappers
+namespace error
 class Cstruct_as_subclass
 Fortran int get_x1(void) +intent(getter)
 Fortran void set_x1(int val +intent(setter)) +intent(setter)
