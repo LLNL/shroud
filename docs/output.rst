@@ -2,8 +2,8 @@
 
    SPDX-License-Identifier: (BSD-3-Clause)
 
-Output
-======
+Output Files
+============
 
 What files are created
 ----------------------

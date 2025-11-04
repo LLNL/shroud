@@ -39,6 +39,8 @@ declarations:
               double dfield;
             };
     - decl: void One()
+
+# One and outer::One
 - decl: void One()
 
 - decl: namespace nswork

@@ -75,7 +75,8 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         newlibrary = self.newlibrary
         fmt_library = newlibrary.fmtdict
         self.log.write("library C wrappers\n")
-        self.wrap_namespace(newlibrary.wrap_namespace, True)
+        fileinfo = FileInfo(newlibrary)
+        self.wrap_namespace(newlibrary.wrap_namespace, fileinfo, True)
 
         self.gather_helper_code(self.shared_helper)
 
@@ -89,7 +90,7 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         self.write_impl_utility()
         self.write_header_utility()
 
-    def wrap_namespace(self, node, top=False):
+    def wrap_namespace(self, node, fileinfo, top=False):
         """Wrap a library or namespace.
 
         Args:
@@ -112,8 +113,10 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
             self._push_splicer("namespace")
             self._push_splicer("XXX") # placer holder
         for ns in node.namespaces:
-            if ns.wrap.c:
-                self.wrap_namespace(ns)
+            if not ns.wrap.c:
+                continue
+            nsinfo = FileInfo(ns)
+            self.wrap_namespace(ns, nsinfo)
         if top:
             self._pop_splicer("XXX")  # This name will not match since it is replaced.
             self._pop_splicer("namespace")
@@ -130,13 +133,14 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
                 structs.append(cls)
             else:
                 self._push_splicer(cls.name)
-                self.write_file(node, cls, None, False)
+                classinfo = FileInfo(cls)
+                self.write_file(node, cls, None, classinfo, False)
                 self._pop_splicer(cls.name)
         self._pop_splicer("class")
 
-        self.write_file(node, None, structs, top)
+        self.write_file(node, None, structs, fileinfo, top)
 
-    def write_file(self, ns, cls, structs, top):
+    def write_file(self, ns, cls, structs, fileinfo, top):
         """Write a file for the library, namespace or class.
 
         Args:
@@ -146,7 +150,6 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         """
         node = cls or ns
         fmt = node.fmtdict
-        fileinfo = FileInfo(node)
 
         if structs:
             for struct in structs:
