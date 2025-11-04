@@ -75,8 +75,11 @@ class TypeOut(util.WrapperMixin):
             parts = fullname.split("::")
             top[parts[-1]] = cls.typemap
         for ns in node.namespaces:
-            top[ns.name] = {}
-            self._get_namespaces(ns, top[ns.name])
+            if ns.options.flatten_namespace:
+                self._get_namespaces(ns, top)
+            else:
+                top[ns.name] = {}
+                self._get_namespaces(ns, top[ns.name])
             
     def splitup(self, ns, output, mode):
         for name in sorted(ns.keys()):

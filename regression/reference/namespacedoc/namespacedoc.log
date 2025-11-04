@@ -12,21 +12,23 @@ C c void worker(void)
 C f void worker(void)
 Close wrapwrapped_inner2.h
 Close wrapwrapped_inner2.cpp
+namespace inner3 flatten
 C c void worker3(void)
 C f void worker3(void)
+Close wrapwrapped.h
+Close wrapwrapped.cpp
+namespace inner4 flatten
 C c void worker4(void)
 C f void worker4(void)
+Close wrapwrapped.h
+Close wrapwrapped.cpp
 C c void worker(void)
 C f void worker(void)
 Close wrapwrapped.h
 Close wrapwrapped.cpp
 library Fortran wrappers
 namespace outer
-Fortran void worker3(void)
-Fortran void worker4(void)
 Fortran void worker(void)
-C-interface f void worker3(void)
-C-interface f void worker4(void)
 C-interface f void worker(void)
 namespace inner1
 Fortran void worker(void)
@@ -36,6 +38,12 @@ namespace inner2
 Fortran void worker(void)
 C-interface f void worker(void)
 Close wrapfwrapped_inner2.f
+namespace inner3 flatten
+Fortran void worker3(void)
+C-interface f void worker3(void)
+namespace inner4 flatten
+Fortran void worker4(void)
+C-interface f void worker4(void)
 Close wrapfwrapped.f
 Close utilwrapped.cpp
 Close typeswrapped.h
@@ -44,7 +52,9 @@ Close pywrapped_inner1module.cpp
 Python function void worker(void)
 Close pywrapped_inner2module.cpp
 Python function void worker3(void)
+Close pywrapped_inner3module.cpp
 Python function void worker4(void)
+Close pywrapped_inner4module.cpp
 Python function void worker(void)
 Close pywrappedmodule.cpp
 Close pywrappedmodule.hpp

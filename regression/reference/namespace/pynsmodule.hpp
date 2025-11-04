@@ -40,15 +40,15 @@ int PP_Cstruct1_from_Object(PyObject *obj, void **addr);
 
 // ------------------------------
 extern PyTypeObject PY_ClassWork_Type;
-// splicer begin class.ClassWork.C_declaration
-// splicer end class.ClassWork.C_declaration
+// splicer begin namespace.nswork.class.ClassWork.C_declaration
+// splicer end namespace.nswork.class.ClassWork.C_declaration
 
 typedef struct {
 PyObject_HEAD
     nswork::ClassWork * obj;
     int idtor;
-    // splicer begin class.ClassWork.C_object
-    // splicer end class.ClassWork.C_object
+    // splicer begin namespace.nswork.class.ClassWork.C_object
+    // splicer end namespace.nswork.class.ClassWork.C_object
 } PY_ClassWork;
 
 extern const char *PY_ClassWork_capsule_name;

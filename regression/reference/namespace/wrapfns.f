@@ -76,22 +76,22 @@ module ns_mod
 
     !  enum upper::Level
     integer, parameter :: upper_level = C_INT
-    ! splicer begin enum.Level
+    ! splicer begin namespace.upper.enum.Level
     integer(upper_level), parameter :: upper_error = 0
     integer(upper_level), parameter :: upper_warn = 1
-    ! splicer end enum.Level
+    ! splicer end namespace.upper.enum.Level
 
     type class_work
         type(NS_SHROUD_capsule_data) :: cxxmem = &
             NS_SHROUD_capsule_data()
-        ! splicer begin class.ClassWork.component_part
-        ! splicer end class.ClassWork.component_part
+        ! splicer begin namespace.nswork.class.ClassWork.component_part
+        ! splicer end namespace.nswork.class.ClassWork.component_part
     contains
         procedure :: get_instance => nswork_class_work_get_instance
         procedure :: set_instance => nswork_class_work_set_instance
         procedure :: associated => nswork_class_work_associated
-        ! splicer begin class.ClassWork.type_bound_procedure_part
-        ! splicer end class.ClassWork.type_bound_procedure_part
+        ! splicer begin namespace.nswork.class.ClassWork.type_bound_procedure_part
+        ! splicer end namespace.nswork.class.ClassWork.type_bound_procedure_part
     end type class_work
 
     interface operator (.eq.)
@@ -195,32 +195,6 @@ module ns_mod
 
 contains
 
-    ! Return pointer to C++ memory.
-    function nswork_class_work_get_instance(obj) result (cxxptr)
-        use iso_c_binding, only: C_PTR
-        class(class_work), intent(IN) :: obj
-        type(C_PTR) :: cxxptr
-        cxxptr = obj%cxxmem%addr
-    end function nswork_class_work_get_instance
-
-    subroutine nswork_class_work_set_instance(obj, cxxmem)
-        use iso_c_binding, only: C_PTR
-        class(class_work), intent(INOUT) :: obj
-        type(C_PTR), intent(IN) :: cxxmem
-        obj%cxxmem%addr = cxxmem
-        obj%cxxmem%idtor = 0
-    end subroutine nswork_class_work_set_instance
-
-    function nswork_class_work_associated(obj) result (rv)
-        use iso_c_binding, only: c_associated
-        class(class_work), intent(IN) :: obj
-        logical rv
-        rv = c_associated(obj%cxxmem%addr)
-    end function nswork_class_work_associated
-
-    ! splicer begin class.ClassWork.additional_functions
-    ! splicer end class.ClassWork.additional_functions
-
 #if 0
     ! Only the interface is needed
     ! ----------------------------------------
@@ -268,6 +242,35 @@ contains
     end subroutine one
 #endif
 
+    ! splicer begin additional_functions
+    ! splicer end additional_functions
+
+    ! Return pointer to C++ memory.
+    function nswork_class_work_get_instance(obj) result (cxxptr)
+        use iso_c_binding, only: C_PTR
+        class(class_work), intent(IN) :: obj
+        type(C_PTR) :: cxxptr
+        cxxptr = obj%cxxmem%addr
+    end function nswork_class_work_get_instance
+
+    subroutine nswork_class_work_set_instance(obj, cxxmem)
+        use iso_c_binding, only: C_PTR
+        class(class_work), intent(INOUT) :: obj
+        type(C_PTR), intent(IN) :: cxxmem
+        obj%cxxmem%addr = cxxmem
+        obj%cxxmem%idtor = 0
+    end subroutine nswork_class_work_set_instance
+
+    function nswork_class_work_associated(obj) result (rv)
+        use iso_c_binding, only: c_associated
+        class(class_work), intent(IN) :: obj
+        logical rv
+        rv = c_associated(obj%cxxmem%addr)
+    end function nswork_class_work_associated
+
+    ! splicer begin namespace.nswork.class.ClassWork.additional_functions
+    ! splicer end namespace.nswork.class.ClassWork.additional_functions
+
     ! Statement: f_operator_assignment_shadow
     ! nswork::ClassWork = nswork::ClassWork
     subroutine nswork_class_work_assign_ClassWork(lhs, rhs)
@@ -284,9 +287,6 @@ contains
         end interface
         call do_assign(lhs%cxxmem, rhs%cxxmem)
     end subroutine nswork_class_work_assign_ClassWork
-
-    ! splicer begin additional_functions
-    ! splicer end additional_functions
 
     function nswork_class_work_eq(a,b) result (rv)
         use iso_c_binding, only: c_associated

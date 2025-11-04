@@ -8,9 +8,9 @@
 // cxx_header
 #include "namespace.hpp"
 // shroud
+#include "wrapns.h"
 #include <cstddef>
 #include <cstring>
-#include "wrapns.h"
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions

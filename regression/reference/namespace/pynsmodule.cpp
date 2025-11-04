@@ -27,6 +27,7 @@
 // splicer end C_definition
 PyObject *PY_error_obj;
 PyObject *PY_init_ns_outer(void);
+PyObject *PY_init_ns_nswork(void);
 
 // splicer begin additional_functions
 // splicer end additional_functions
@@ -165,13 +166,13 @@ initns(void)
         PyModule_AddObject(m, (char *) "outer", submodule);
     }
 
-    // ClassWork
-    PY_ClassWork_Type.tp_new   = PyType_GenericNew;
-    PY_ClassWork_Type.tp_alloc = PyType_GenericAlloc;
-    if (PyType_Ready(&PY_ClassWork_Type) < 0)
-        return RETVAL;
-    Py_INCREF(&PY_ClassWork_Type);
-    PyModule_AddObject(m, "ClassWork", (PyObject *)&PY_ClassWork_Type);
+    {
+        PyObject *submodule = PY_init_ns_nswork();
+        if (submodule == nullptr)
+            INITERROR;
+        Py_INCREF(submodule);
+        PyModule_AddObject(m, (char *) "nswork", submodule);
+    }
 
     PY_error_obj = PyErr_NewException((char *) error_name, nullptr, nullptr);
     if (PY_error_obj == nullptr)

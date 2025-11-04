@@ -21,9 +21,9 @@ extern "C" {
 // Statement: c_subroutine
 void WWW_inner3_worker3(void)
 {
-    // splicer begin function.worker3
+    // splicer begin namespace.inner3.function.worker3
     outer::inner3::worker3();
-    // splicer end function.worker3
+    // splicer end namespace.inner3.function.worker3
 }
 
 // ----------------------------------------
@@ -31,9 +31,9 @@ void WWW_inner3_worker3(void)
 // Statement: c_subroutine
 void WWW_inner4_worker4(void)
 {
-    // splicer begin function.worker4
+    // splicer begin namespace.inner4.function.worker4
     outer::inner4::worker4();
-    // splicer end function.worker4
+    // splicer end namespace.inner4.function.worker4
 }
 
 // ----------------------------------------

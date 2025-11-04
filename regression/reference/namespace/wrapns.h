@@ -30,10 +30,10 @@ extern "C" {
 
 //  upper::Level
 enum NS_upper_Level {
-    // splicer begin enum.Level
+    // splicer begin namespace.upper.enum.Level
     NS_upper_ERROR,
     NS_upper_WARN
-    // splicer end enum.Level
+    // splicer end namespace.upper.enum.Level
 };
 
 void NS_PassLevelEnum(enum NS_upper_Level value);

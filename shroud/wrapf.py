@@ -137,11 +137,14 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
         for ns in node.namespaces:
             if not ns.wrap.fortran:
                 continue
+            # Skip file component in scope_file for splicer name.
+            self._update_splicer_top("::".join(ns.scope_file[1:]))
             if ns.options.flatten_namespace:
+                oldns = fileinfo.node
+                fileinfo.node = ns
                 self.wrap_namespace(ns, fileinfo)
+                fileinfo.node = oldns
             else:
-                # Skip file component in scope_file for splicer name.
-                self._update_splicer_top("::".join(ns.scope_file[1:]))
                 nsinfo = ModuleInfo(ns)
                 self.wrap_namespace(ns, nsinfo)
         if top:

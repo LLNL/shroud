@@ -314,8 +314,7 @@ class NamespaceMixin(object):
             ast - declast.Node.  None for non-parsed namescopes like std.
         """
         node = NamespaceNode(decl, parent=self, ast=ast, skip=skip, **kwargs)
-        if not node.options.flatten_namespace:
-            self.namespaces.append(node)
+        self.namespaces.append(node)
         return node
 
     def add_struct(self, decl, ast=None, fields={},
@@ -548,7 +547,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_deref_func_scalar="pointer",
             F_default_args="generic",  # "generic", "optional", "require"
             F_enum_type="int",
-            F_flatten_namespace=False,
             F_line_length=72,
             F_force_wrapper=False,
             F_result_as_arg="output",
@@ -1041,20 +1039,12 @@ class NamespaceNode(AstNode, NamespaceMixin):
         self.wrap = WrapFlags(self.options)
         self.file_code = {}     # Only used for LibraryNode.
 
-        if self.options.flatten_namespace:
-            self.classes = parent.classes
-            self.enums = parent.enums
-            self.functions = parent.functions
-            self.namespaces = parent.namespaces
-            self.typedefs = parent.typedefs
-            self.variables = parent.variables
-        else:
-            self.classes = []
-            self.enums = []
-            self.functions = []
-            self.namespaces = []
-            self.typedefs = []
-            self.variables = []
+        self.classes = []
+        self.enums = []
+        self.functions = []
+        self.namespaces = []
+        self.typedefs = []
+        self.variables = []
 
         # Headers required by template arguments.
         self.gen_headers_typedef = {}

@@ -115,8 +115,14 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         for ns in node.namespaces:
             if not ns.wrap.c:
                 continue
-            nsinfo = FileInfo(ns)
-            self.wrap_namespace(ns, nsinfo)
+            if ns.options.flatten_namespace:
+                oldns = fileinfo.node
+                fileinfo.node = ns
+                self.wrap_namespace(ns, fileinfo)
+                fileinfo.node = oldns
+            else:
+                nsinfo = FileInfo(ns)
+                self.wrap_namespace(ns, nsinfo)
         if top:
             self._pop_splicer("XXX")  # This name will not match since it is replaced.
             self._pop_splicer("namespace")
