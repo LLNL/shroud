@@ -85,7 +85,8 @@ def append_format_cmds(lstout, stmts, name, fmt):
 
 # http://stackoverflow.com/questions/1175208/elegant-python-function-to-convert-camelcase-to-camel-case
 def un_camel(name):
-    """ Converts a CamelCase name into an under_score name.
+    """ Converts a CamelCase name into an under_score name in lowercase.
+    Helpful for Fortran which is case insensitive. 
 
         >>> un_camel('CamelCase')
         'camel_case'
