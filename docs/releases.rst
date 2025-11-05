@@ -466,6 +466,8 @@ Fixed
     call obj1%delete
     call obj0%delete  ! obj0 has already been released
 
+* Fixes to splicer names to use the correct namespace component.
+
 v0.13.0
 -------
 
