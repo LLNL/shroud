@@ -210,7 +210,7 @@ do-test-nuitka :
 ########################################################################
 # python must have sphinx installed or else it reports
 # error: invalid command 'build_sphinx'
-docs :
+doc docs :
 	$(PYTHON) setup.py build_sphinx --builder html
 #--build-dir build/sphinx/html
 #/usr/bin/sphinx-build -b -E html source build\html

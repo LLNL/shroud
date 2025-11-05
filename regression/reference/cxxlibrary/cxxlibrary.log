@@ -1,5 +1,8 @@
 Read yaml cxxlibrary.yaml
 Close cxxlibrary_types.yaml
+library C wrappers
+namespace cxxlibrary
+namespace structns
 struct Cstruct1
 C c int passStructByReference(Cstruct1 &arg)
 C f int passStructByReference(Cstruct1 &arg)
@@ -26,6 +29,8 @@ C c Class1 *declare(int flag, LengthType length=1)
 C f Class1 *declare(int flag, LengthType length=1)
 C f Class1 *declare(int flag, int length=1)
 C f Class1 *declare(int flag, long length=1)
+C c int getViewFromClass(const std::string &path) +constfunc
+C f int getViewFromClass(const std::string &path) +constfunc
 C f int get_length(void) +intent(getter)
 Close wrapClass1.h
 Close wrapClass1.cpp
@@ -64,6 +69,8 @@ C f nested *nested_get_array(nested *SH_this +intent(in)) +dimension(sublevels)+
 C f void nested_set_array(nested *SH_this, nested *val +intent(setter)+rank(1)) +intent(setter)
 Close wrapcxxlibrary.h
 Close wrapcxxlibrary.cpp
+library Fortran wrappers
+namespace cxxlibrary
 class nested
 class Class1
 Fortran Class1(void)
@@ -75,6 +82,7 @@ Fortran Class1 *declare(int flag)
 Fortran Class1 *declare(int flag, LengthType length=1)
 Fortran Class1 *declare(int flag, int length=1)
 Fortran Class1 *declare(int flag, long length=1)
+Fortran int getViewFromClass(const std::string &path) +constfunc
 Fortran int get_length(void) +intent(getter)
 C-interface c Class1(void)
 C-interface f Class1(void)
@@ -86,6 +94,8 @@ C-interface f Class1 *declare(int flag)
 C-interface f Class1 *declare(int flag, LengthType length=1)
 C-interface f Class1 *declare(int flag, int length=1)
 C-interface f Class1 *declare(int flag, long length=1)
+C-interface c int getViewFromClass(const std::string &path) +constfunc
+C-interface f int getViewFromClass(const std::string &path) +constfunc
 C-interface f int get_length(void) +intent(getter)
 typedef LengthType
 Fortran bool defaultPtrIsNULL(void)
@@ -139,6 +149,7 @@ C-interface f nested **nested_get_child(nested *SH_this +intent(in)) +dimension(
 C-interface f void nested_set_child(nested *SH_this, nested **val +intent(setter)+rank(1)) +intent(setter)
 C-interface f nested *nested_get_array(nested *SH_this +intent(in)) +dimension(sublevels)+intent(getter)
 C-interface f void nested_set_array(nested *SH_this, nested *val +intent(setter)+rank(1)) +intent(setter)
+namespace structns
 class Cstruct1
 Fortran int passStructByReference(Cstruct1 &arg)
 Fortran int passStructByReferenceIn(const Cstruct1 &arg)

@@ -1,8 +1,12 @@
 Read yaml memdoc.yaml
+library C wrappers
+namespace memdoc
 C c const std::string *getConstStringPtrAlloc(void) +owner(library)
 C f const std::string *getConstStringPtrAlloc(void) +owner(library)
 Close wrapmemdoc.h
 Close wrapmemdoc.cpp
+library Fortran wrappers
+namespace memdoc
 Fortran const std::string *getConstStringPtrAlloc(void) +owner(library)
 C-interface c const std::string *getConstStringPtrAlloc(void) +owner(library)
 C-interface f const std::string *getConstStringPtrAlloc(void) +owner(library)

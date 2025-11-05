@@ -1,5 +1,7 @@
 Read yaml arrayclass.yaml
 Close arrayclass_types.yaml
+library C wrappers
+namespace arrayclass
 class ArrayWrapper
 C c ArrayWrapper(void)
 C f ArrayWrapper(void)
@@ -39,6 +41,8 @@ C c double sumArray(void)
 C f double sumArray(void)
 Close wrapArrayWrapper.h
 Close wrapArrayWrapper.cpp
+library Fortran wrappers
+namespace arrayclass
 class ArrayWrapper
 Fortran ArrayWrapper(void)
 Fortran ~ArrayWrapper(void)

@@ -1,14 +1,20 @@
 Read yaml include.yaml
 Close library_types.yaml
+library C wrappers
+namespace library
+namespace one
+namespace two
 C c void function1(void)
 C f void function1(void)
 Close wraplibrary_one_two.h
 Close wraplibrary_one_two.cpp
+namespace three
 class Class1
 C c void method1(CustomType arg1)
 C f void method1(CustomType arg1)
 Close wrapthree_Class1.h
 Close wrapthree_Class1.cpp
+namespace outer1
 class class0
 C c void method(void)
 C f void method(void)
@@ -18,6 +24,7 @@ C c void outer_func(void)
 C f void outer_func(void)
 Close wraplibrary_outer1.h
 Close wraplibrary_outer1.cpp
+namespace outer2
 class class0
 C c void method(void)
 C f void method(void)
@@ -35,26 +42,33 @@ C f void method2(three::Class1 *c2)
 Close wrapClass2.h
 Close wrapClass2.cpp
 Close wraplibrary.h
+library Fortran wrappers
+namespace library
 class Class2
 Fortran void method1(MPI_Comm comm)
 Fortran void method2(three::Class1 *c2)
 C-interface f void method1(MPI_Comm comm)
 C-interface f void method2(three::Class1 *c2)
 typedef CustomType
+namespace one
+namespace two
 Fortran void function1(void)
 C-interface f void function1(void)
 Close wrapflibrary_one_two.f
 Close wrapflibrary_one.f
+namespace three
 class Class1
 Fortran void method1(CustomType arg1)
 C-interface f void method1(CustomType arg1)
 Close wrapflibrary_three.f
+namespace outer1
 class class0
 Fortran void method(void)
 C-interface f void method(void)
 Fortran void outer_func(void)
 C-interface f void outer_func(void)
 Close wrapflibrary_outer1.f
+namespace outer2
 class class0
 Fortran void method(void)
 C-interface f void method(void)

@@ -3,6 +3,10 @@ Read splicer csplicer.c
 Read splicer fsplicer.f
 Read splicer pysplicer.c
 Close userlibrary_types.yaml
+library C wrappers
+namespace UserLibrary
+namespace example
+namespace nested
 class ExClass1
 C c ExClass1(void)
 C f ExClass1(void)
@@ -101,7 +105,11 @@ Close wrapUserLibrary_example_nested.h
 Close wrapUserLibrary_example_nested.cpp
 Close wrapUserLibrary.h
 Close wrapUserLibrary.cpp
+library Fortran wrappers
+namespace UserLibrary
 typedef SidreLength
+namespace example
+namespace nested
 class ExClass1
 Fortran ExClass1(void)
 Fortran ExClass1(const string *name)

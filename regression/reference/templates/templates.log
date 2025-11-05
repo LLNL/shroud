@@ -1,5 +1,8 @@
 Read yaml templates.yaml
 Close templates_types.yaml
+library C wrappers
+namespace templates
+namespace std
 class vector<int>
 C c vector(void)
 C f vector(void)
@@ -22,6 +25,7 @@ C c double &at(size_type n)
 C f double &at(size_type n)
 Close wrapstd_vector_double.h
 Close wrapstd_vector_double.cpp
+namespace internal
 class ImplWorker1
 class ImplWorker2
 class Worker
@@ -68,6 +72,8 @@ C c int UseImplWorker(void)
 C f int UseImplWorker(void)
 Close wraptemplates.h
 Close wraptemplates.cpp
+library Fortran wrappers
+namespace templates
 class Worker
 class user<int>
 Fortran void nested(int arg1, double arg2)
@@ -107,6 +113,7 @@ C-interface f void FunctionTU(int arg1, long arg2)
 C-interface f void FunctionTU(float arg1, double arg2)
 C-interface f int UseImplWorker(void)
 C-interface f int UseImplWorker(void)
+namespace std
 class vector<int>
 typedef size_type
 Fortran vector(void)
@@ -132,6 +139,7 @@ C-interface f void push_back(const double &value +intent(in))
 C-interface c double &at(size_type n)
 C-interface f double &at(size_type n)
 Close wrapftemplates_std.f
+namespace internal
 Close wrapftemplates_internal.f
 Close wrapftemplates.f
 Close utiltemplates.cpp

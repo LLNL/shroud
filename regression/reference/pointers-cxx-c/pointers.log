@@ -1,4 +1,6 @@
 Read yaml pointers.yaml
+library C wrappers
+namespace pointers
 C c void intargs_in(const int *arg)
 C c void intargs_inout(int *arg)
 C c void intargs_out(int *arg +intent(out))

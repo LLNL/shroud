@@ -1,5 +1,9 @@
 Read yaml none.yaml
 Close def_types.yaml
+library C wrappers
+namespace library
+library Fortran wrappers
+namespace library
 Close wrapflibrary.f
 Close utillibrary.cpp
 Close typeslibrary.h

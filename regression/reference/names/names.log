@@ -1,5 +1,9 @@
 Read yaml names.yaml
 Close testnames_types.yaml
+library C wrappers
+namespace testnames
+namespace ns0
+namespace inner
 Close wraptestnames_ns0_inner.hh
 Close wraptestnames_ns0_inner.cc
 class Names
@@ -12,15 +16,19 @@ C f void method2(void)
 Close foo.h
 Close foo.cpp
 Close foons0.cpp
+namespace ns1
 C c void init_ns1(void)
 C f void init_ns1(void)
 Close wraptestnames_ns1.hh
 Close wraptestnames_ns1.cc
+namespace internal
 class ImplWorker1
+namespace std
 class vector<int>
 class vector<double>
 class vector<long>
 class vector<internal::ImplWorker1>
+namespace CAPI
 class Class1
 C c void Member1(void)
 C f void Member1(void)
@@ -30,6 +38,7 @@ C c void Worker1(void)
 C f void Worker1(void)
 Close wraptestnames_CAPI.hh
 Close wraptestnames_CAPI.cc
+namespace CAPI2
 C c void Worker1(void)
 C f void Worker1(void)
 Close wraptestnames_CAPI2.hh
@@ -70,6 +79,8 @@ C c void bindtest(int arg1)
 C f void bindtest(int arg1)
 Close top.h
 Close top.cpp
+library Fortran wrappers
+namespace testnames
 class Names2
 class twoTs<int, long>
 class twoTs<float, double>
@@ -106,6 +117,7 @@ C-interface f int UseImplWorker(void)
 C-interface f int Cstruct_as_class_sum(const Cstruct_as_class *point +pass)
 C-interface f void external_funcs(const char *rdbase, const char *pkg, const char *name, void (*alloc)(double *arr +intent(inout), int *err +intent(out)), void (*afree)(double *arr +intent(inout)), void (*assoc)(double *arr +intent(in), int *err +intent(out)))
 C-interface f void bindtest(int arg1)
+namespace ns0
 class Names
 Fortran Names(void) +name(defaultctor)
 Fortran void method1(void)
@@ -114,23 +126,29 @@ C-interface c Names(void) +name(defaultctor)
 C-interface f Names(void) +name(defaultctor)
 C-interface f void method1(void)
 C-interface f void method2(void)
+namespace inner
 Close wrapftestnames_ns0_inner.F
 Close foo.f
+namespace ns1
 Fortran void init_ns1(void)
 C-interface f void init_ns1(void)
 Close wrapftestnames_ns1.F
+namespace internal
 Close wrapftestnames_internal.F
+namespace std
 class vector<int>
 class vector<double>
 class vector<long>
 class vector<internal::ImplWorker1>
 Close wrapftestnames_std.F
+namespace CAPI
 class Class1
 Fortran void Member1(void)
 C-interface f void Member1(void)
 Fortran void Worker1(void)
 C-interface f void Worker1(void)
 Close wrapftestnames_CAPI.F
+namespace CAPI2
 Fortran void Worker1(void)
 C-interface f void Worker1(void)
 Close wrapftestnames_CAPI2.F

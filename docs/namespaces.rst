@@ -88,7 +88,12 @@ which implementation of *worker* is to be called.
       call inner_worker
     end subroutine work2
 
-.. options flatten_namespace
+The option **flatten_namespace** will avoid creating a module for the
+namespace and instead will add the namespace name to the identifier.
+The C wrapper will also avoid creating a new file for the namespace.
+This is useful for an internal namespace in C++ is used to scope the
+identifier.  The scoping in the wrapper will be done name mangling, or
+flattening the namespace.
 
 Each namespace creates a Python module.
 

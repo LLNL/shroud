@@ -9,6 +9,17 @@
 #ifndef TYPESWRAP_H
 #define TYPESWRAP_H
 
+// Shared with other Shroud wrapped libraries
+#ifndef SHROUD_SHARED_H
+#define SHROUD_SHARED_H
+
+enum SwigMemFlags {
+    SWIG_MEM_OWN = 0x01,
+    SWIG_MEM_RVALUE = 0x02,
+};
+
+#endif  // SHROUD_SHARED_H
+
 // splicer begin types.CXX_declarations
 // splicer end types.CXX_declarations
 
@@ -19,11 +30,6 @@ struct s_WRA_SHROUD_capsule_data {
     int cmemflags;  /* memory flags */
 };
 typedef struct s_WRA_SHROUD_capsule_data WRA_SHROUD_capsule_data;
-
-enum SwigMemFlags {
-    SWIG_MEM_OWN = 0x01,
-    SWIG_MEM_RVALUE = 0x02,
-};
 #if 0
 
 // C++ capsule WRA_Class1

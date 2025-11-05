@@ -67,6 +67,15 @@ struct nested {
 
 //----------------------------------------------------------------------
 
+enum class ColorEnum
+{
+   RED = 60,
+   BLUE,
+   WHITE,
+};
+
+//----------------------------------------------------------------------
+
 typedef long LengthType;
 
 class Class1
@@ -86,6 +95,11 @@ public:
     {
         m_length = length;
         return this;
+    };
+
+    int getViewFromClass( const std::string& path )
+    {
+        return path.size();
     };
 };
 

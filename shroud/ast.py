@@ -188,6 +188,9 @@ class AstNode(object):
 ######################################################################
 
 class NamespaceMixin(object):
+    """
+    Provide methods to add to a scope.
+    """
     def add_class(self, decl, ast=None, fields={},
                   base=[], template_parameters=None,
                   **kwargs):
@@ -303,18 +306,15 @@ class NamespaceMixin(object):
         self.functions.append(fcnnode)
         return fcnnode
 
-    def add_namespace(self, decl, ast=None, expose=True, **kwargs):
+    def add_namespace(self, decl, ast=None, skip=False, **kwargs):
         """Add a namespace.
 
         Args:
             decl - str declaration ex. 'namespace name'
             ast - declast.Node.  None for non-parsed namescopes like std.
-            expose - If True, will be wrapped.
-                     Otherwise, only used for lookup while parsing.
         """
-        node = NamespaceNode(decl, parent=self, ast=ast, **kwargs)
-        if not node.options.flatten_namespace and expose:
-            self.namespaces.append(node)
+        node = NamespaceNode(decl, parent=self, ast=ast, skip=skip, **kwargs)
+        self.namespaces.append(node)
         return node
 
     def add_struct(self, decl, ast=None, fields={},
@@ -460,6 +460,7 @@ class LibraryNode(AstNode, NamespaceMixin):
 
         self.options = self.default_options()
         if options:
+            check_deprecated_option(options)
             self.options.update(options, replace=True)
         self.wrap = WrapFlags(self.options)
         if self.options.literalinclude:
@@ -546,7 +547,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_deref_func_scalar="pointer",
             F_default_args="generic",  # "generic", "optional", "require"
             F_enum_type="int",
-            F_flatten_namespace=False,
             F_line_length=72,
             F_force_wrapper=False,
             F_result_as_arg="output",
@@ -990,6 +990,7 @@ class BlockNode(AstNode, NamespaceMixin):
 
         self.options = util.Scope(parent=parent.options)
         if options:
+            check_deprecated_option(options)
             self.options.update(options, replace=True)
 
         self.user_fmt = format
@@ -1010,8 +1011,8 @@ class NamespaceNode(AstNode, NamespaceMixin):
 
         Args:
             skip - skip when generating scope_file and format names since
-                   it is part of the initial namespace, not a namespace
-                   within a declaration.
+                   it is part of the initial YAML namespace, not a namespace
+                   declaration.
         """
         # From arguments
         self.parent = parent
@@ -1033,24 +1034,17 @@ class NamespaceNode(AstNode, NamespaceMixin):
 
         self.options = util.Scope(parent=parent.options)
         if options:
+            check_deprecated_option(options)
             self.options.update(options, replace=True)
         self.wrap = WrapFlags(self.options)
         self.file_code = {}     # Only used for LibraryNode.
 
-        if self.options.flatten_namespace:
-            self.classes = parent.classes
-            self.enums = parent.enums
-            self.functions = parent.functions
-            self.namespaces = parent.namespaces
-            self.typedefs = parent.typedefs
-            self.variables = parent.variables
-        else:
-            self.classes = []
-            self.enums = []
-            self.functions = []
-            self.namespaces = []
-            self.typedefs = []
-            self.variables = []
+        self.classes = []
+        self.enums = []
+        self.functions = []
+        self.namespaces = []
+        self.typedefs = []
+        self.variables = []
 
         # Headers required by template arguments.
         self.gen_headers_typedef = {}
@@ -1094,7 +1088,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
                     parent.fmtdict.C_name_scope + fmt_ns.C_name_api + "_"
                 )
             if fmt_ns.F_name_api:
-                if options.flatten_namespace or options.F_flatten_namespace:
+                if options.flatten_namespace:
                     fmt_ns.F_name_scope = (
                         parent.fmtdict.F_name_scope + fmt_ns.F_name_api + "_"
                     )
@@ -1105,8 +1099,9 @@ class NamespaceNode(AstNode, NamespaceMixin):
         if not skip:
             fmt_ns.PY_module_name = self.name
 
-        self.eval_template("C_header_filename", "_namespace")
-        self.eval_template("C_impl_filename", "_namespace")
+        if not options.flatten_namespace:
+            self.eval_template("C_header_filename", "_namespace")
+            self.eval_template("C_impl_filename", "_namespace")
         if skip:
             # No module will be created for this namespace, use library template.
             self.eval_template("F_impl_filename", "_library")
@@ -1190,6 +1185,7 @@ class ClassNode(AstNode, NamespaceMixin):
 
         self.options = util.Scope(parent=parent.options)
         if options:
+            check_deprecated_option(options)
             self.options.update(options, replace=True)
         self.wrap = WrapFlags(self.options)
 
@@ -1531,6 +1527,7 @@ class FunctionNode(AstNode):
 
         self.options = util.Scope(parent.options)
         if options:
+            check_deprecated_option(options)
             self.options.update(options, replace=True)
         self.wrap = WrapFlags(self.options)
 
@@ -1825,6 +1822,7 @@ class EnumNode(AstNode):
 
         self.options = util.Scope(parent.options)
         if options:
+            check_deprecated_option(options)
             self.options.update(options, replace=True)
         self.wrap = WrapFlags(self.options)
 
@@ -1978,6 +1976,7 @@ class TypedefNode(AstNode):
         error.cursor.push_node(self)
         self.options = util.Scope(parent=parent.options)
         if options:
+            check_deprecated_option(options)
             self.options.update(options, replace=True)
         self.wrap = WrapFlags(self.options)
 
@@ -2069,6 +2068,7 @@ class VariableNode(AstNode):
 
         self.options = util.Scope(parent=parent.options)
         if options:
+            check_deprecated_option(options)
             self.options.update(options, replace=True)
         self.wrap = WrapFlags(self.options)
 
@@ -2425,8 +2425,8 @@ def listify(entry, names):
       c: |
         // line 1
         // line 2
-      c_buf:
-        - // Test adding a blank line below.
+      f:
+        - ! Test adding a blank line below.
         -
 
     fstatements:
@@ -2599,8 +2599,28 @@ def create_library_from_dictionary(node, symtab):
     return library
 
 
-# Report changes in format fields.
+# Report changes in option and format fields.
 # Show the new name and add some optional details.
+
+deprecated_options = dict(
+    F_flatten_namespace=dict(
+        new="flatten_namespace",
+        details=[
+            "This option has been merged with the flatten_namespace option",
+        ]
+    )
+)
+
+def check_deprecated_option(fmtdict):
+    for fmt in fmtdict:
+        if fmt in deprecated_options:
+            info = deprecated_options[fmt]
+            msg = "option {} is deprecated, changed to {}".format(
+                fmt, info["new"])
+            details = info.get("details")
+            if details:
+                msg += "\n" + "\n".join(details)
+            error.cursor.warning(msg)
 
 deprecated_formats = dict(
     F_string_result_as_arg=dict(

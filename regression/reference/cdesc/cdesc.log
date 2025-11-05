@@ -1,4 +1,6 @@
 Read yaml cdesc.yaml
+library C wrappers
+namespace cdesc
 C c void Rank2In(int *arg +api(cdesc)+intent(in)+rank(2))
 C f void Rank2In(int *arg +api(cdesc)+intent(in)+rank(2))
 C c void GetScalar1(std::string &name +intent(in), void *value +api(cdesc)+intent(in)+rank(0))
@@ -12,6 +14,8 @@ C f void GetScalar2(std::string &name +intent(in), int *value +intent(out))
 C f void GetScalar2(std::string &name +intent(in), double *value +intent(out))
 Close wrapcdesc.h
 Close wrapcdesc.cpp
+library Fortran wrappers
+namespace cdesc
 Fortran void Rank2In(int *arg +api(cdesc)+intent(in)+rank(2))
 Fortran void GetScalar1(std::string &name +intent(in), int *value +api(cdesc)+intent(out)+rank(0))
 Fortran void GetScalar1(std::string &name +intent(in), double *value +api(cdesc)+intent(out)+rank(0))

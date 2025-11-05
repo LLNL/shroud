@@ -1,4 +1,6 @@
 Read yaml types.yaml
+library C wrappers
+namespace types
 C c short short_func(short arg1)
 C f short short_func(short arg1)
 C c int int_func(int arg1)
@@ -49,6 +51,8 @@ C c bool returnBoolAndOthers(int *flag +intent(out))
 C f bool returnBoolAndOthers(int *flag +intent(out))
 Close wraptypes.h
 Close wraptypes.cpp
+library Fortran wrappers
+namespace types
 Fortran short short_func(short arg1)
 Fortran int int_func(int arg1)
 Fortran long long_func(long arg1)

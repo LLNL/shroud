@@ -1,5 +1,7 @@
 Read yaml defaultarg.yaml
 Close defaultarg_types.yaml
+library C wrappers
+namespace defaultarg
 class Class1
 C c Class1(int arg1) +name(new)
 C f Class1(int arg1) +name(new)
@@ -42,6 +44,8 @@ C c void apply_optional(TypeID type, IndexType num_elems, IndexType offset=0, In
 C f void apply_optional(TypeID type, IndexType num_elems, IndexType offset=0, IndexType stride=1)
 Close wrapdefaultarg.h
 Close wrapdefaultarg.cpp
+library Fortran wrappers
+namespace defaultarg
 class Class1
 Fortran Class1(int arg1) +name(new)
 Fortran Class1(int arg1, int arg2=1) +name(new)

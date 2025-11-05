@@ -1,5 +1,7 @@
 Read yaml typedefs.yaml
 Close typedefs_types.yaml
+library C wrappers
+namespace typedefs
 struct Struct1Rename
 C c Alias typefunc(Alias arg)
 C f Alias typefunc(Alias arg)
@@ -21,6 +23,8 @@ C c IndexType2 returnShapeSize2(int ndims, const IndexType2 *shape +intent(in)+r
 C f IndexType2 returnShapeSize2(int ndims, const IndexType2 *shape +intent(in)+rank(1))
 Close wraptypedefs.h
 Close wraptypedefs.cpp
+library Fortran wrappers
+namespace typedefs
 class Struct1Rename
 typedef Alias
 typedef iColor

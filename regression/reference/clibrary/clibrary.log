@@ -1,5 +1,7 @@
 Read yaml clibrary.yaml
 Close clibrary_types.yaml
+library C wrappers
+namespace Clibrary
 C f void NoReturnNoArguments(void)
 C f double PassByValue(double arg1, int arg2)
 C f void PassByReference(double *arg1 +intent(in), int *arg2 +intent(out))
@@ -25,6 +27,8 @@ C f int passAssumedTypeBuf(void *arg +assumedtype, char *outbuf +intent(out))
 C f void callback_set_alloc(int tc, array_info *arr +intent(inout), void (*alloc)(int tc +intent(in), array_info *arr +intent(inout)))
 Close wrapClibrary.h
 Close wrapClibrary.c
+library Fortran wrappers
+namespace Clibrary
 class array_info
 typedef TypeID
 typedef EnumTypeID

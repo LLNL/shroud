@@ -1,4 +1,6 @@
 Read yaml funptr.yaml
+library C wrappers
+namespace funptr
 C c void callback1(void (*incr1)(void))
 C f void callback1(void (*incr1)(void))
 C c void callback1_wrap(void (*incr1_wrap)(void))
@@ -31,6 +33,8 @@ C c void get_void_ptr(pfvoid *func +funptr+intent(out))
 C f void get_void_ptr(pfvoid *func +funptr+intent(out))
 Close wrapfunptr.h
 Close wrapfunptr.cpp
+library Fortran wrappers
+namespace funptr
 typedef TypeID
 typedef incrtype
 typedef get_int

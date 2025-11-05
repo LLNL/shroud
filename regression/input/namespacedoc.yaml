@@ -32,7 +32,7 @@ declarations:
 
 - decl: namespace inner4
   options:
-    F_flatten_namespace: True
+    flatten_namespace: True
   declarations:
   - decl: void worker4();
 

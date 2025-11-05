@@ -21,20 +21,20 @@ module wrapped_mod
     interface
 
         ! ----------------------------------------
-        ! Function:  void worker3
-        ! Statement: f_subroutine
-        subroutine inner3_worker3() &
-                bind(C, name="WWW_inner3_worker3")
-            implicit none
-        end subroutine inner3_worker3
-
-        ! ----------------------------------------
         ! Function:  void worker
         ! Statement: f_subroutine
         subroutine worker() &
                 bind(C, name="WWW_worker")
             implicit none
         end subroutine worker
+
+        ! ----------------------------------------
+        ! Function:  void worker3
+        ! Statement: f_subroutine
+        subroutine inner3_worker3() &
+                bind(C, name="WWW_inner3_worker3")
+            implicit none
+        end subroutine inner3_worker3
 
         ! ----------------------------------------
         ! Function:  void worker4
@@ -49,18 +49,6 @@ module wrapped_mod
     ! splicer end additional_declarations
 
 contains
-
-#if 0
-    ! Only the interface is needed
-    ! ----------------------------------------
-    ! Function:  void worker3
-    ! Statement: f_subroutine
-    subroutine inner3_worker3()
-        ! splicer begin function.worker3
-        call c_inner3_worker3()
-        ! splicer end function.worker3
-    end subroutine inner3_worker3
-#endif
 
 #if 0
     ! Only the interface is needed
@@ -80,12 +68,24 @@ contains
 #if 0
     ! Only the interface is needed
     ! ----------------------------------------
+    ! Function:  void worker3
+    ! Statement: f_subroutine
+    subroutine inner3_worker3()
+        ! splicer begin namespace.inner3.function.worker3
+        call c_inner3_worker3()
+        ! splicer end namespace.inner3.function.worker3
+    end subroutine inner3_worker3
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
     ! Function:  void worker4
     ! Statement: f_subroutine
     subroutine inner4_worker4()
-        ! splicer begin namespace.inner2.function.worker4
+        ! splicer begin namespace.inner4.function.worker4
         call c_inner4_worker4()
-        ! splicer end namespace.inner2.function.worker4
+        ! splicer end namespace.inner4.function.worker4
     end subroutine inner4_worker4
 #endif
 

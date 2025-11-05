@@ -9,118 +9,7 @@
         ],
         "functions": [
             {
-                "<FUNCTION>": "worker3  0 ****************************************",
-                "ast": {
-                    "declarator": {
-                        "name": "worker3",
-                        "params": [],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void worker3();",
-                "declgen": "void worker3(void)",
-                "name": "worker3",
-                "options": {},
-                "wrap": {
-                    "c": true,
-                    "fortran": true,
-                    "python": true
-                },
-                "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "fmtdict": {
-                                "C_call_function": "outer::inner3::worker3(\t)",
-                                "C_name": "WWW_inner3_worker3",
-                                "C_prototype": "void",
-                                "C_return_type": "void",
-                                "i_name_function": "c_inner3_worker3",
-                                "stmt_name": "c_subroutine",
-                                "typemap_name": "void"
-                            },
-                            "meta": {
-                                "abstract": "void",
-                                "intent": "subroutine"
-                            },
-                            "stmt": "c_subroutine"
-                        }
-                    },
-                    "f": {
-                        "+result": {
-                            "fmtdict": {
-                                "C_call_function": "outer::inner3::worker3(\t)",
-                                "C_name": "WWW_inner3_worker3",
-                                "C_prototype": "void",
-                                "C_return_type": "void",
-                                "F_arguments": "",
-                                "F_subprogram": "subroutine",
-                                "f_call_function": "c_inner3_worker3",
-                                "i_arguments": "",
-                                "i_name_function": "inner3_worker3",
-                                "i_subprogram": "subroutine",
-                                "stmt_name": "f_subroutine",
-                                "typemap_name": "void"
-                            },
-                            "meta": {
-                                "abstract": "void",
-                                "intent": "subroutine"
-                            },
-                            "stmt": "f_subroutine"
-                        }
-                    },
-                    "py": {
-                        "+result": {
-                            "fmtdict": {
-                                "stmt": "py_subroutine"
-                            },
-                            "meta": {
-                                "abstract": "void",
-                                "intent": "subroutine"
-                            },
-                            "stmt": "py_subroutine"
-                        }
-                    },
-                    "share": {
-                        "+result": {
-                            "meta": {
-                                "abstract": "void",
-                                "intent": "subroutine"
-                            }
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_name_api": "worker3",
-                    "F_name_api": "worker3",
-                    "F_name_function": "worker3",
-                    "F_name_generic": "worker3",
-                    "F_name_impl": "inner3_worker3",
-                    "PY_name_impl": "PY_worker3",
-                    "c_arglist": [
-                        "c_var"
-                    ],
-                    "f_arglist": [
-                        "f_var"
-                    ],
-                    "function_name": "worker3"
-                },
-                "zz_fmtlang": {
-                    "py": {
-                        "C_call_function": "outer::inner3::worker3()",
-                        "PY_array_arg": "numpy",
-                        "PY_call_list": "",
-                        "PY_doc_string": "documentation",
-                        "PY_error_return": "nullptr",
-                        "PY_ml_flags": "METH_NOARGS"
-                    }
-                }
-            },
-            {
-                "<FUNCTION>": "worker  1 ****************************************",
+                "<FUNCTION>": "worker  0 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "worker",
@@ -237,7 +126,7 @@
                 "<NAMESPACE>": "inner1 ****************************************",
                 "functions": [
                     {
-                        "<FUNCTION>": "worker  2 ****************************************",
+                        "<FUNCTION>": "worker  1 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "worker",
@@ -384,7 +273,7 @@
                 "<NAMESPACE>": "inner2 ****************************************",
                 "functions": [
                     {
-                        "<FUNCTION>": "worker  3 ****************************************",
+                        "<FUNCTION>": "worker  2 ****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "worker",
@@ -528,6 +417,154 @@
                 }
             },
             {
+                "<NAMESPACE>": "inner3 ****************************************",
+                "functions": [
+                    {
+                        "<FUNCTION>": "worker3  3 ****************************************",
+                        "ast": {
+                            "declarator": {
+                                "name": "worker3",
+                                "params": [],
+                                "typemap_name": "void"
+                            },
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void worker3();",
+                        "declgen": "void worker3(void)",
+                        "name": "worker3",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "outer::inner3::worker3(\t)",
+                                        "C_name": "WWW_inner3_worker3",
+                                        "C_prototype": "void",
+                                        "C_return_type": "void",
+                                        "i_name_function": "c_inner3_worker3",
+                                        "stmt_name": "c_subroutine",
+                                        "typemap_name": "void"
+                                    },
+                                    "meta": {
+                                        "abstract": "void",
+                                        "intent": "subroutine"
+                                    },
+                                    "stmt": "c_subroutine"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "outer::inner3::worker3(\t)",
+                                        "C_name": "WWW_inner3_worker3",
+                                        "C_prototype": "void",
+                                        "C_return_type": "void",
+                                        "F_arguments": "",
+                                        "F_subprogram": "subroutine",
+                                        "f_call_function": "c_inner3_worker3",
+                                        "i_arguments": "",
+                                        "i_name_function": "inner3_worker3",
+                                        "i_subprogram": "subroutine",
+                                        "stmt_name": "f_subroutine",
+                                        "typemap_name": "void"
+                                    },
+                                    "meta": {
+                                        "abstract": "void",
+                                        "intent": "subroutine"
+                                    },
+                                    "stmt": "f_subroutine"
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "stmt": "py_subroutine"
+                                    },
+                                    "meta": {
+                                        "abstract": "void",
+                                        "intent": "subroutine"
+                                    },
+                                    "stmt": "py_subroutine"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "abstract": "void",
+                                        "intent": "subroutine"
+                                    }
+                                }
+                            }
+                        },
+                        "zz_fmtdict": {
+                            "C_name_api": "worker3",
+                            "F_name_api": "worker3",
+                            "F_name_function": "worker3",
+                            "F_name_generic": "worker3",
+                            "F_name_impl": "inner3_worker3",
+                            "PY_name_impl": "PY_worker3",
+                            "c_arglist": [
+                                "c_var"
+                            ],
+                            "f_arglist": [
+                                "f_var"
+                            ],
+                            "function_name": "worker3"
+                        },
+                        "zz_fmtlang": {
+                            "py": {
+                                "C_call_function": "outer::inner3::worker3()",
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "nullptr",
+                                "PY_ml_flags": "METH_NOARGS"
+                            }
+                        }
+                    }
+                ],
+                "name": "inner3",
+                "options": {
+                    "flatten_namespace": true
+                },
+                "scope": "outer::inner3::",
+                "scope_file": [
+                    "wrapped",
+                    "inner3"
+                ],
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_fmtdict": {
+                    "CXX_this_call": "outer::inner3::",
+                    "C_name_api": "inner3",
+                    "C_name_scope": "inner3_",
+                    "F_impl_filename": "wrapfwrapped_inner3.f",
+                    "F_module_name": "wrapped_inner3_mod",
+                    "F_name_api": "inner3",
+                    "F_name_scope": "inner3_",
+                    "LUA_this_call": "outer::inner3::",
+                    "PY_library_doc": "library documentation",
+                    "PY_module_filename": "pywrapped_inner3module.cpp",
+                    "PY_module_init": "wrapped_inner3",
+                    "PY_module_name": "inner3",
+                    "PY_module_scope": "wrapped.inner3",
+                    "PY_this_call": "outer::inner3::",
+                    "file_scope": "wrapped_inner3",
+                    "namespace_scope": "outer::inner3::"
+                }
+            },
+            {
                 "<NAMESPACE>": "inner4 ****************************************",
                 "functions": [
                     {
@@ -644,7 +681,7 @@
                 ],
                 "name": "inner4",
                 "options": {
-                    "F_flatten_namespace": true
+                    "flatten_namespace": true
                 },
                 "scope": "outer::inner4::",
                 "scope_file": [
@@ -658,8 +695,6 @@
                 },
                 "zz_fmtdict": {
                     "CXX_this_call": "outer::inner4::",
-                    "C_header_filename": "wrapwrapped_inner4.h",
-                    "C_impl_filename": "wrapwrapped_inner4.cpp",
                     "C_name_api": "inner4",
                     "C_name_scope": "inner4_",
                     "F_impl_filename": "wrapfwrapped_inner4.f",

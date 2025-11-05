@@ -315,7 +315,8 @@ PyModule_AddObject(m, (char *) "{PY_module_name}", submodule);
             return
         self._push_splicer("enums")
         for enum in enums:
-            self.wrap_enum(enum)
+            if enum.wrap.python:
+                self.wrap_enum(enum)
         self._pop_splicer("enums")
 
     def wrap_enum(self, node):

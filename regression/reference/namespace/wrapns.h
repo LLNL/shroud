@@ -13,6 +13,8 @@
 #ifndef WRAPNS_H
 #define WRAPNS_H
 
+// typemap
+#include "wrapns.h"
 // shroud
 #include "typesns.h"
 
@@ -25,6 +27,18 @@ extern "C" {
 
 // splicer begin C_declarations
 // splicer end C_declarations
+
+//  upper::Level
+enum NS_upper_Level {
+    // splicer begin namespace.upper.enum.Level
+    NS_upper_ERROR,
+    NS_upper_WARN
+    // splicer end namespace.upper.enum.Level
+};
+
+void NS_PassLevelEnum(enum NS_upper_Level value);
+
+void NS_PassLevelEnum_bufferify(int value);
 
 const char * NS_LastFunctionCalled(void);
 

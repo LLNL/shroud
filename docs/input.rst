@@ -414,6 +414,15 @@ by adding a splicer block in the YAML file:
 
 .. warning :: Using *charlen* and *dimension* together is not currently supported.
 
+constfunc
+^^^^^^^^^
+
+Add to a function *decl* when C++ ``const`` cannot be used, perhaps to help
+distinguish overloaded functions.
+This will ensure that the *shadow* argument is ``intent(in)`` instead of
+defaulting to ``intent(INOUT)``.
+This allows the function to be used with ``intent(IN)`` subprogram dummy argument.
+
 custom
 ^^^^^^
 
@@ -1067,6 +1076,8 @@ This splicer takes priority over other ways of defining splicers.
      splicer:
         c:
         - "return name != NULL;"
+        c_buf:
+        - // Added to the bufferify C wrapper called by Fortran
         f:
         - 'rv = name .ne. " "'
 

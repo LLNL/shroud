@@ -16,14 +16,19 @@ declarations:
 - decl: namespace upper
   # Add a flattened namespace before global function
   options:
-    F_flatten_namespace: True
+    flatten_namespace: True
     wrap_python: False
   declarations:
   - decl: |
-      enum Color {
+      enum Level {
         ERROR,
         WARN,
       };
+
+# Call a function which uses the enum to test C_header_filename.
+- decl: void PassLevelEnum(upper::Level value)
+  options:
+    wrap_python: False
 
 - decl: const std::string& LastFunctionCalled()
 
@@ -34,10 +39,12 @@ declarations:
               double dfield;
             };
     - decl: void One()
+
+# One and outer::One
 - decl: void One()
 
 - decl: namespace nswork
   options:
-    F_flatten_namespace: True
+    flatten_namespace: True
   declarations:
   - decl: class ClassWork

@@ -10,11 +10,11 @@ Notes to help migrate between releases.
 Unreleased
 ----------
 
-New Features
-^^^^^^^^^^^^
-
 * This is the last version to support Python 2.7.
   Future minimum will be 3.7.
+
+New Features
+^^^^^^^^^^^^
 
 * Move default statements and helpers the file ``fc-statements.json``.
   See :ref:`StatementsAnchor` and :ref:`HelpersAnchor`.
@@ -53,6 +53,10 @@ New Features
   is ``const`` set to ``intent(IN). Otherwise, set to ``intent(INOUT)``.
 
 * Added attribute *+operator(assignment)* to add a Fortran assignment overload.
+
+* Added attribute *+constfunc* to tell Shroud a member function is ``const``
+  even if the ``const`` keyword is not used.
+  This will ensure that the *shadow* argument is ``intent(in)``.
 
 * Added options to control default behavior for dereferencing
   pointers. These options can be used instead of explicitly setting
@@ -94,6 +98,8 @@ Changes to YAML input
   must be changed.  The C wrapper created for the Fortran wrapper to call
   is now considered part of the Fortran wrapper processing.
   The *c_buf* label used with *fstatements* is now *f*.
+  *c_buf* continues to be used with splicer statements. In that case
+  it is the splicer code used with the Fortran's bufferify C wrapper.
 
   Some uses of option *F_create_bufferify_function* are no longer needed.
   Similar functionality by using the attribute *+api(capi)* to pass the
@@ -250,6 +256,7 @@ size                          f_size
 Old Name                      New Name
 ===========================   ===========================
 F_C_name_template             i_name_function_template
+F_flatten_namespace           flatten_namespace
 ===========================   ===========================
   
 * Added format field *i_suffix*. Used in format fields
@@ -400,6 +407,9 @@ F_C_name_template             i_name_function_template
     *C_name_api* and *F_name_api* (controlled by options *C_API_case* and
     *F_API_case*.
 
+  * The Fortran wrapper creates an `integer, parameter` for the kind
+    of the enumeration parameters.
+
 * The *deref* attribute is no longer applied to the C wrapper.  When
   the function result had *+deref(scalar)* on a pointer result, a
   scalar was returned. The C wrapper will now return a pointer giving
@@ -455,6 +465,8 @@ Fixed
     obj1 = obj0       ! Create alias
     call obj1%delete
     call obj0%delete  ! obj0 has already been released
+
+* Fixes to splicer names to use the correct namespace component.
 
 v0.13.0
 -------

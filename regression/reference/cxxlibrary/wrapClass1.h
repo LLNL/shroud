@@ -41,6 +41,11 @@ void CXX_Class1_declare_0(CXX_Class1 * self, int flag);
 void CXX_Class1_declare_1(CXX_Class1 * self, int flag,
     CXX_LengthType length);
 
+int CXX_Class1_getViewFromClass(CXX_Class1 * self, const char *path);
+
+int CXX_Class1_getViewFromClass_bufferify(CXX_Class1 * self, char *path,
+    int SHT_path_len);
+
 int CXX_Class1_get_length(CXX_Class1 * self);
 
 #ifdef __cplusplus

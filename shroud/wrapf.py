@@ -71,6 +71,7 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
         fmt_library.i_result_clause = ""
         fmt_library.i_pure_clause = ""
 
+        self.log.write("library Fortran wrappers\n")
         node = self.newlibrary.wrap_namespace
         fileinfo = ModuleInfo(node)
         self.wrap_namespace(node, fileinfo, top=True)
@@ -89,6 +90,10 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
         top  : True if library module, else namespace module.
         """
         options = node.options
+        if options.flatten_namespace:
+            self.log.write("namespace {0} flatten\n".format(node.name))
+        else:
+            self.log.write("namespace {0}\n".format(node.name))
         self.wrap_class_method_option(node.functions, fileinfo)
 
         self._push_splicer("class")
@@ -119,7 +124,8 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
 
         self.wrap_assignment(fileinfo)
             
-        do_write = top or not node.options.F_flatten_namespace
+        # When using flatten_namespace, only add the splicers once.
+        do_write = top or not node.options.flatten_namespace
         if do_write:
             self._create_splicer("additional_functions", fileinfo.impl, blank=True)
             self._create_splicer("additional_declarations", fileinfo.user_declarations, blank=True)
@@ -131,11 +137,14 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
         for ns in node.namespaces:
             if not ns.wrap.fortran:
                 continue
-            if ns.options.F_flatten_namespace:
+            # Skip file component in scope_file for splicer name.
+            self._update_splicer_top("::".join(ns.scope_file[1:]))
+            if ns.options.flatten_namespace:
+                oldns = fileinfo.node
+                fileinfo.node = ns
                 self.wrap_namespace(ns, fileinfo)
+                fileinfo.node = oldns
             else:
-                # Skip file component in scope_file for splicer name.
-                self._update_splicer_top("::".join(ns.scope_file[1:]))
                 nsinfo = ModuleInfo(ns)
                 self.wrap_namespace(ns, nsinfo)
         if top:
@@ -463,11 +472,11 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
             append_format(output, "!  enum " + node.ast.scope + " {namespace_scope}{enum_name}", fmt_enum)
         else:
             append_format(output, "!  enum {namespace_scope}{enum_name}", fmt_enum)
-            append_format(
-                output,
-                "integer, parameter :: {F_name_enum} = {F_enum_kind}",
-                fmt_enum
-            )
+        append_format(
+            output,
+            "integer, parameter :: {F_name_enum} = {F_enum_kind}",
+            fmt_enum
+        )
         if "f" in node.splicer:
             F_code = None
             F_force = node.splicer["f"]
@@ -1094,14 +1103,15 @@ rv = .false.
         declarator = ast.declarator
         subprogram = declarator.get_subprogram()
         result_typemap = ast.typemap
-        is_pure = declarator.attrs.get("pure", None)
-        func_is_const = declarator.func_const
 
         r_bind = get_func_bind(node, wlang)
         r_meta = r_bind.meta
         result_api = r_meta["api"]
         sintent = r_meta["intent"]
         
+        is_pure = declarator.attrs.get("pure", None)
+        func_is_const = declarator.func_const or r_meta["funcconst"]
+
         # find subprogram type
         # compute first to get order of arguments correct.
         fmt_result = r_bind.fmtdict
@@ -1463,7 +1473,7 @@ rv = .false.
                 # The C++ object pointed to by the derived type may change
                 # so the intent here is not accurate.
                 dummy_arg_list.append(fmt_result.F_this)
-                if declarator.func_const:
+                if declarator.func_const or r_meta["constfunc"]:
                     line = "class({F_derived_name}), intent(IN) :: {F_this}"
                 else:
                     line = "class({F_derived_name}), intent(INOUT) :: {F_this}"

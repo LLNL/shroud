@@ -100,6 +100,18 @@ declarations:
   - decl: nested *array +dimension(sublevels)
 
 ######################################################################
+
+# scoped enum
+- decl: |
+      enum class ColorEnum {
+        RED = 60,
+        BLUE,
+        WHITE,
+      };
+  options:
+    wrap_python: False
+
+######################################################################
 # by returning this,the C++ function allows chaining.
 # make them subroutines in Fortran.
 # Mix return_this, and default arguments.
@@ -130,6 +142,14 @@ declarations:
        function_suffix: _int
     -  decl: (long length=1)
        function_suffix: _long
+
+  - decl: int getViewFromClass( const std::string& path ) +constfunc
+    doxygen:
+      description: |
+        The capsule which is added for the class should have intent(IN).
+        Needed with type(class1), intent(IN) arguments.
+    options:
+      wrap_python: False
 
 ########################################
 # Test overloaded function which return a class pointer,

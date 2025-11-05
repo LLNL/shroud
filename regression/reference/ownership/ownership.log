@@ -1,5 +1,7 @@
 Read yaml ownership.yaml
 Close ownership_types.yaml
+library C wrappers
+namespace ownership
 class Class1
 C c ~Class1(void)
 C f ~Class1(void)
@@ -32,6 +34,8 @@ C c Class1 *getClassNew(int flag) +owner(caller)
 C f Class1 *getClassNew(int flag) +owner(caller)
 Close wrapownership.h
 Close wrapownership.cpp
+library Fortran wrappers
+namespace ownership
 class Class1
 Fortran ~Class1(void)
 Fortran int get_flag(void) +intent(getter)
