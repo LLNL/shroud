@@ -84,7 +84,7 @@ The generated Fortran requires a Fortran 2003 compiler.
 
 ## C++ or C to Python
 
-The generated Python requires Python 2.7 or 3.4+.
+The generated Python requires Python 2.7 or 3.7+.
 
 Python features:
 
@@ -116,7 +116,7 @@ In addition, a file created by
 is available from the github release.
 Shroud and PyYAML are bundled into a single executable which uses
 the Python3 on your path.
-Shiv requires Python 3.6+.
+Shiv requires Python 3.7+.
 
 ```
 wget https://github.com/LLNL/shroud/archive/shroud-0.13.0.pyz

@@ -73,10 +73,15 @@ virtualenv2 :
 pipinstall :
 	$(venv.dir)/bin/pip install .
 
-develop :
+# Uses setup.py
+develop-setup :
 	$(PYTHON) setup.py develop
 #	$(PYTHON) setup.py egg_info --egg-base $(venv.dir) develop
 #	$(venv.dir)/bin/pip install --editable .
+
+# Uses pyproject.toml
+develop :
+	$(venv.dir)/bin/pip install --editable .
 
 setup-sqa :
 #	$(PYTHON) -m pip install ruamel-yaml
