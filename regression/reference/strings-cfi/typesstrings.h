@@ -12,6 +12,17 @@
 // shroud
 #include <stddef.h>
 
+// Shared with other Shroud wrapped libraries
+#ifndef SHROUD_SHARED_H
+#define SHROUD_SHARED_H
+
+enum SwigMemFlags {
+    SWIG_MEM_OWN = 0x01,
+    SWIG_MEM_RVALUE = 0x02,
+};
+
+#endif  // SHROUD_SHARED_H
+
 // splicer begin types.CXX_declarations
 // splicer end types.CXX_declarations
 

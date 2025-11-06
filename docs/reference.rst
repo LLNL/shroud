@@ -245,6 +245,12 @@ C_API_case
    Defaults to *preserve* and will be combined with *C_prefix*.
    For example, **C_name_template** includes ``{C_prefix}{C_name_scope}{C_name_api}``.
 
+   - preserve - Do not change the name.
+   - lower - Convert entire name to lowercase.
+   - upper - Convert entire name to uppercase.
+   - underscore - Words are separated by underscore. `TypeID` to `type_id`.
+     Often refered to as snake case.
+
 C_extern_C
    Set to *true* when the C++ routine is ``extern "C"``.
    Defaults to *false*.
@@ -379,6 +385,7 @@ F_API_case
    Since Fortran is case insensitive, users are not required to
    respect the case of the C++ name.  Using *underscore* makes the
    names easier to read regardless of the case.
+   See **C_API_case** for a description of the options.
 
 F_assumed_rank_min
   Minimum rank of argument with assumed-rank.

@@ -2635,7 +2635,7 @@ extern PyObject *{PY_prefix}error_obj;
             output.extend(self.py_utility_functions)
             need_file = True
         if self.need_blah:
-            self.write_capsule_code(output, fmt)
+            self.write_capsule_delete_code(output, fmt)
             need_file = True
         if need_file:
             self.config.pyfiles.append(
@@ -2645,7 +2645,7 @@ extern PyObject *{PY_prefix}error_obj;
                 fmt.PY_utility_filename, self.config.python_dir, output
             )
 
-    def write_capsule_code(self, output, fmt):
+    def write_capsule_delete_code(self, output, fmt):
         """Write a function used to delete memory when a
         NumPy array is deleted.
 

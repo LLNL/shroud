@@ -40,6 +40,7 @@ void FOR_SHROUD_memory_destructor(FOR_SHROUD_capsule_data *cap)
     }
     cap->addr = nullptr;
     cap->idtor = 0;  // avoid deleting again
+    cap->cmemflags = cap->cmemflags & ~SWIG_MEM_OWN;
 }
 
 // Statement: f_operator_assignment_shadow
