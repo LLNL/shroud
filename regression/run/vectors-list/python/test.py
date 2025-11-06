@@ -85,11 +85,7 @@ class Vectors(unittest.TestCase):
 #        self.assertTrue(np.allclose(rv, outarray))
 
 
-# creating a new test suite
-newSuite = unittest.TestSuite()
- 
-# adding a test case
-newSuite.addTest(unittest.makeSuite(Vectors))
+unittest.TestLoader().loadTestsFromTestCase(Vectors)
 
 if __name__ == "__main__":
     unittest.main()

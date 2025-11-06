@@ -106,15 +106,8 @@ class Tutorial(unittest.TestCase):
         r = tutorial.getMinMax()
         self.assertEqual((-1,100), r)
 
-#
-#  end subroutine test_functions
-#
 
-# creating a new test suite
-newSuite = unittest.TestSuite()
- 
-# adding a test case
-newSuite.addTest(unittest.makeSuite(Tutorial))
+unittest.TestLoader().loadTestsFromTestCase(Tutorial)
 
 if __name__ == "__main__":
     unittest.main()

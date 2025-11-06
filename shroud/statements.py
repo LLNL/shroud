@@ -26,13 +26,37 @@ try:
         fp = importlib.resources.open_binary('shroud', name)
         stmts = yaml.safe_load(fp)
         return stmts
+    ordered_dump = yaml.safe_dump
 except ImportError:
+    def ordered_load(stream, Loader=yaml.SafeLoader,
+                     object_pairs_hook=collections.OrderedDict):
+        class OrderedLoader(Loader):
+            pass
+        def construct_mapping(loader, node):
+            loader.flatten_mapping(node)
+            return object_pairs_hook(loader.construct_pairs(node))
+        OrderedLoader.add_constructor(
+            yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG,
+            construct_mapping)
+        return yaml.load(stream, OrderedLoader)
+    def ordered_dump(data, stream=None, Dumper=yaml.SafeDumper, **kwds):
+        class OrderedDumper(Dumper):
+            pass
+        def represent_ordereddict(dumper, data):
+            return dumper.represent_mapping(
+                yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG,
+            data.items())
+        OrderedDumper.add_representer(OrderedDict, represent_ordereddict)
+        return yaml.dump(data, stream, OrderedDumper, **kwds)
+
+    
     from pkg_resources import resource_filename
     def read_json_resource(name):
         fp = open(resource_filename('shroud', name), 'rb')
         #stmts = json._load(fp)
         # Use pyYAML to load json to avoid unicode issues.
-        stmts = yaml.safe_load(fp)
+#        stmts = yaml.safe_load(fp)
+        stmts = ordered_load(fp)
         return stmts
     def read_yaml_resource(name):
         fp = open(resource_filename('shroud', name), 'rb')
@@ -904,7 +928,8 @@ def print_tree_statements(fp, statements, defaults, options):
         if literalinclude:
             all["sphinx-end-before"] = name
         complete[name] = all
-    yaml.safe_dump(complete, fp, sort_keys=False)
+#    yaml.safe_dump(complete, fp, sort_keys=False)
+    ordered_dump(complete, fp, sort_keys=False)
 
     return
     # DEBUG

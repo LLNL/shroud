@@ -86,11 +86,7 @@ class Clibrary(unittest.TestCase):
         self.assertFalse(clibrary.ImpliedBoolFalse())
 
 
-# creating a new test suite
-newSuite = unittest.TestSuite()
- 
-# adding a test case
-newSuite.addTest(unittest.makeSuite(Clibrary))
+unittest.TestLoader().loadTestsFromTestCase(Clibrary)
 
 if __name__ == "__main__":
     unittest.main()

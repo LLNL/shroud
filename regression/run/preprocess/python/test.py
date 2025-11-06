@@ -48,11 +48,7 @@ class Preprocess(unittest.TestCase):
             preprocess.User2()
 
 
-# creating a new test suite
-newSuite = unittest.TestSuite()
- 
-# adding a test case
-newSuite.addTest(unittest.makeSuite(Preprocess))
+unittest.TestLoader().loadTestsFromTestCase(Preprocess)
 
 if __name__ == "__main__":
     unittest.main()

@@ -53,7 +53,7 @@ jobs:
 
     - name: Test wrapper generation
       run: |
-        make do-test
+        make -k do-test
 
     - name: Compiler version
       run: |
@@ -63,7 +63,7 @@ jobs:
 
     - name: Python module
       run: |
-        make test-python
+        make -k test-python
         
   fortran-tests:
     runs-on: ubuntu-latest
@@ -95,6 +95,6 @@ jobs:
       run: |
         # Add commands to test your project with the selected GCC version
         echo "Running tests with GCC-${{ matrix.gcc-version }}"
-        make test-c
-        make test-fortran
+        make -k test-c
+        make -k test-fortran
         

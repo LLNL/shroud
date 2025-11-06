@@ -39,11 +39,7 @@ class Namespace(unittest.TestCase):
         self.assertEqual(ns.LastFunctionCalled(), "outer::One")
 
 
-# creating a new test suite
-newSuite = unittest.TestSuite()
- 
-# adding a test case
-newSuite.addTest(unittest.makeSuite(Namespace))
+unittest.TestLoader().loadTestsFromTestCase(Namespace)
 
 if __name__ == "__main__":
     unittest.main()

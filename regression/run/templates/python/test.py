@@ -56,11 +56,7 @@ class Templates(unittest.TestCase):
         self.assertEqual(2, rv_int)
         
 
-# creating a new test suite
-newSuite = unittest.TestSuite()
- 
-# adding a test case
-newSuite.addTest(unittest.makeSuite(Templates))
+unittest.TestLoader().loadTestsFromTestCase(Templates)
 
 if __name__ == "__main__":
     unittest.main()

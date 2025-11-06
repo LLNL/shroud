@@ -42,15 +42,20 @@ Defaults to Python 3.
     make virtualenv
     make develop
 
-
-
-    make venv=/usr/tce/packages/python/python-3.7.2/bin/virtualenv virtualenv
-    make develop
-
 `make develop` allows changes to be seen without installed the module again.
 
 The *tempdir* can be verified with `make print-tempdir`.
 Similar to `temp.linux-x86_64-3.9`.
+
+For python2, soon to be dropped, edit the top level Makefile to
+comment out the line `PYTHONEXE := python3`. It will then use the
+python2 on your path.
+
+    make virtualenv2
+    make develop-setup
+
+Note that due to dictionaries not being ordered in Python 2.7, the
+*do-test* tests will produce different output in the JSON files.
 
 # Documentation
 
@@ -367,9 +372,22 @@ are too expensive to be enabled by default.  New in version 3.7.
 Update `docs/releases.rst` with changes and version number.
 It is best to continually update this file as changes are made.
 
-## Branches
+## Branch
 
-Update version number in `shroud/metadata.py`.
+Create a release branch.
+
+## Version
+
+Update version number in files
+
+* `shroud/metadata.py`
+* `setup.py`  Download path
+* `pyproject.toml`
+* `README.md`
+* `pyproject.toml`
+* `docs/conf.py`
+* `docs/releases.rst`
+* Update reference files with new version. `make do-test-replace do-test-args=none`
 
 ## Shiv
 
@@ -380,8 +398,12 @@ shiv's primary goal is making distributing Python applications fast & easy.
 
 https://pypi.org/project/shiv/
 
+    make install-shiv
+    rm dist-shiv/*
     make shiv-file
-    make do-test-pex
+    make do-test-shiv
+
+Move the shiv file to local system.
 
 ## PyPi
 

@@ -119,11 +119,7 @@ class Arrayclass(unittest.TestCase):
         self.assertTrue(arrinst.checkPtr(voidptr))
 
 
-# creating a new test suite
-newSuite = unittest.TestSuite()
- 
-# adding a test case
-newSuite.addTest(unittest.makeSuite(Arrayclass))
+unittest.TestLoader().loadTestsFromTestCase(Arrayclass)
 
 if __name__ == "__main__":
     unittest.main()

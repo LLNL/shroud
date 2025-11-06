@@ -66,11 +66,7 @@ class Struct(unittest.TestCase):
         self.assertEqual(4,   rv)
         
 
-# creating a new test suite
-newSuite = unittest.TestSuite()
- 
-# adding a test case
-newSuite.addTest(unittest.makeSuite(Struct))
+unittest.TestLoader().loadTestsFromTestCase(Struct)
 
 if __name__ == "__main__":
     unittest.main()

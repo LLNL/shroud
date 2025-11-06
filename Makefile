@@ -56,6 +56,10 @@ info:
 # For Python3 use venv module.  This solves the problem where virtualenv
 # in the path does not match the python (like toss3).
 
+# For Python2, make sure python2 is in your path.
+# make virtualenv2
+# make develop
+
 # Create a virtual environment.
 # Include system site-packages to get numpy
 virtualenv : $(venv.dir)
@@ -69,10 +73,15 @@ virtualenv2 :
 pipinstall :
 	$(venv.dir)/bin/pip install .
 
-develop :
+# Uses setup.py
+develop-setup :
 	$(PYTHON) setup.py develop
 #	$(PYTHON) setup.py egg_info --egg-base $(venv.dir) develop
 #	$(venv.dir)/bin/pip install --editable .
+
+# Uses pyproject.toml
+develop :
+	$(venv.dir)/bin/pip install --editable .
 
 setup-sqa :
 #	$(PYTHON) -m pip install ruamel-yaml
