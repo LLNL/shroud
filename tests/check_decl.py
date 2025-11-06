@@ -14,6 +14,7 @@ make test-decl
 make test-decl-diff
 make test-decl-replace
 """
+from __future__ import print_function
 
 from shroud import declast
 #from shroud import declstr
@@ -266,7 +267,7 @@ def test_block(comments, code, symtab):
             create_std = True
         if cmt.find("declstr") != -1:
             do_declstr = True
-        print(f"{cmt}")
+        print(cmt)
     trace = True
     trace = False
     decl = "\n".join(code)

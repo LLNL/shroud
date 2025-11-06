@@ -42,15 +42,20 @@ Defaults to Python 3.
     make virtualenv
     make develop
 
-
-
-    make venv=/usr/tce/packages/python/python-3.7.2/bin/virtualenv virtualenv
-    make develop
-
 `make develop` allows changes to be seen without installed the module again.
 
 The *tempdir* can be verified with `make print-tempdir`.
 Similar to `temp.linux-x86_64-3.9`.
+
+For python2, soon to be dropped, edit the top level Makefile to
+comment out the line `PYTHONEXE := python3`. It will then use the
+python2 on your path.
+
+    make virtualenv2
+    make develop
+
+Note that due to dictionaries not being ordered in Python 2.7, the
+*do-test* tests will produce different output in the JSON files.
 
 # Documentation
 

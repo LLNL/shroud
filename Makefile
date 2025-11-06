@@ -56,6 +56,10 @@ info:
 # For Python3 use venv module.  This solves the problem where virtualenv
 # in the path does not match the python (like toss3).
 
+# For Python2, make sure python2 is in your path.
+# make virtualenv2
+# make develop
+
 # Create a virtual environment.
 # Include system site-packages to get numpy
 virtualenv : $(venv.dir)

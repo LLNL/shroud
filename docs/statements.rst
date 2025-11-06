@@ -214,6 +214,9 @@ An entry may be list. It will be joined with newlines into
 a single string before being used. This allows several lines
 to be used in a more natural manner.
 
+The fmtdict is ordered allowing earlier entries to be used by later
+entries.
+
 .. code-block:: yaml
 
         name: f_mixin_getter_argname
@@ -221,6 +224,10 @@ to be used in a more natural manner.
             f_var: "val"
             i_var: "val"
             c_var: "val"
+
+            cnamefunc: "{C_memory_dtor_function}"
+            cnameproto: "void {cnamefunc}\t({c_capsule_data_type} *cap)"
+            
 
 .. code-block:: yaml
 
