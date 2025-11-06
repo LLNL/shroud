@@ -233,11 +233,7 @@ class Pointers(unittest.TestCase):
         self.assertEqual(8, val)
 
 
-# creating a new test suite
-newSuite = unittest.TestSuite()
- 
-# adding a test case
-newSuite.addTest(unittest.makeSuite(Pointers))
+unittest.TestLoader().loadTestsFromTestCase(Pointers)
 
 if __name__ == "__main__":
     unittest.main()

@@ -356,11 +356,7 @@ class Struct(unittest.TestCase):
                         in str(context.exception))
 
 
-# creating a new test suite
-newSuite = unittest.TestSuite()
- 
-# adding a test case
-newSuite.addTest(unittest.makeSuite(Struct))
+unittest.TestLoader().loadTestsFromTestCase(Struct)
 
 if __name__ == "__main__":
     unittest.main()

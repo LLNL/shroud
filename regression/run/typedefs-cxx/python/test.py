@@ -32,11 +32,8 @@ class Typedefs(unittest.TestCase):
         rv = typedefs.typefunc(arg1)
         self.assertEqual(rv, arg1 + 1)
 
-# creating a new test suite
-newSuite = unittest.TestSuite()
- 
-# adding a test case
-newSuite.addTest(unittest.makeSuite(Typedefs))
+
+unittest.TestLoader().loadTestsFromTestCase(Typedefs)
 
 if __name__ == "__main__":
     unittest.main()

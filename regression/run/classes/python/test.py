@@ -11,6 +11,13 @@ from __future__ import print_function
 import unittest
 import classes
 
+import sys
+
+if sys.version_info >= (3, 10):
+    TypeError_msg = "object cannot be interpreted as an integer"
+else:
+    TypeError_msg = "an integer is required"
+
 class NotTrue:
     """Test bool arguments errors"""
     def __bool__(self):
@@ -61,7 +68,7 @@ class Classes(unittest.TestCase):
         self.assertTrue("is not writable" in str(context.exception))
         with self.assertRaises(TypeError) as context:
             obj.test = "dog"
-        self.assertTrue("an integer is required" in str(context.exception))
+        self.assertTrue(TypeError_msg in str(context.exception))
         #----------
         self.assertEqual(True, obj.m_bool)
         obj.m_bool = False
@@ -137,11 +144,7 @@ class Classes(unittest.TestCase):
         self.assertIsInstance(circle1, classes.Circle)
         
 
-# creating a new test suite
-newSuite = unittest.TestSuite()
- 
-# adding a test case
-newSuite.addTest(unittest.makeSuite(Classes))
+unittest.TestLoader().loadTestsFromTestCase(Classes)
 
 if __name__ == "__main__":
     unittest.main()

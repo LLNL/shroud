@@ -68,11 +68,7 @@ class Ownership(unittest.TestCase):
         self.assertTrue(all(np.equal(rv, [30,31,32,33,34])))
 
 
-# creating a new test suite
-newSuite = unittest.TestSuite()
- 
-# adding a test case
-newSuite.addTest(unittest.makeSuite(Ownership))
+unittest.TestLoader().loadTestsFromTestCase(Ownership)
 
 if __name__ == "__main__":
     unittest.main()

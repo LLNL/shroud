@@ -128,11 +128,8 @@ class Types(unittest.TestCase):
         rv = shtypes.size_func(1)
         self.assertEqual(1, rv)
 
-# creating a new test suite
-newSuite = unittest.TestSuite()
- 
-# adding a test case
-newSuite.addTest(unittest.makeSuite(Types))
+
+unittest.TestLoader().loadTestsFromTestCase(Types)
 
 if __name__ == "__main__":
     unittest.main()

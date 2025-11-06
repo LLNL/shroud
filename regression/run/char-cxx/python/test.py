@@ -59,11 +59,7 @@ class Strings(unittest.TestCase):
         self.assertEqual(0, irv)
         self.assertIs(None, outstr)
 
-# creating a new test suite
-newSuite = unittest.TestSuite()
- 
-# adding a test case
-newSuite.addTest(unittest.makeSuite(Strings))
+unittest.TestLoader().loadTestsFromTestCase(Strings)
 
 if __name__ == "__main__":
     unittest.main()

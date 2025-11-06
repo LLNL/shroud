@@ -51,12 +51,7 @@ class Enum(unittest.TestCase):
         self.assertEqual(cenum.RED, icol)
         
 
-
-# creating a new test suite
-newSuite = unittest.TestSuite()
- 
-# adding a test case
-newSuite.addTest(unittest.makeSuite(Enum))
+unittest.TestLoader().loadTestsFromTestCase(Enum)
 
 if __name__ == "__main__":
     unittest.main()

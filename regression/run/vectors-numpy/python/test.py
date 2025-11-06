@@ -91,11 +91,7 @@ class Vectors(unittest.TestCase):
         self.assertTrue("arg must be a 2-D array of int" in str(context.exception))
 
 
-# creating a new test suite
-newSuite = unittest.TestSuite()
- 
-# adding a test case
-newSuite.addTest(unittest.makeSuite(Vectors))
+unittest.TestLoader().loadTestsFromTestCase(Vectors)
 
 if __name__ == "__main__":
     unittest.main()

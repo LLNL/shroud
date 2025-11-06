@@ -90,7 +90,8 @@ class Struct(unittest.TestCase):
 
         with self.assertRaises(TypeError) as context:
             s.count = [0, 3., "four"]
-        self.assertTrue("argument 'count', index 2 must be int"
+#        self.assertTrue("argument 'count', index 2 must be int" # XXX changed after 3.9
+        self.assertTrue("must be int"
                         in str(context.exception))
 
         with self.assertRaises(TypeError) as context:
@@ -104,11 +105,7 @@ class Struct(unittest.TestCase):
                         in str(context.exception))
 
 
-# creating a new test suite
-newSuite = unittest.TestSuite()
- 
-# adding a test case
-newSuite.addTest(unittest.makeSuite(Struct))
+unittest.TestLoader().loadTestsFromTestCase(Struct)
 
 if __name__ == "__main__":
     unittest.main()
