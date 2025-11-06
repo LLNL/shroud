@@ -58,6 +58,7 @@ void TUT_SHROUD_memory_destructor(TUT_SHROUD_capsule_data *cap)
     }
     cap->addr = nullptr;
     cap->idtor = 0;  // avoid deleting again
+    cap->cmemflags = cap->cmemflags & ~SWIG_MEM_OWN;
 }
 // end release allocated memory
 

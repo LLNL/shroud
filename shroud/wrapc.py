@@ -320,8 +320,9 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         output = []
         headers = util.Header(self.newlibrary)
 
+        fcfmt.add_fc_helper(self.shared_helper, ["capsule_memflags"], fmt)
         capsule_code = []
-        self.capsule_format.write_capsule_code(capsule_code)
+        self.capsule_format.write_capsule_delete_code(capsule_code)
         if capsule_code:
             self.capsule_format.set_capsule_headers(headers)
             self.shared_helper["capsule_dtor"] = True

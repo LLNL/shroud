@@ -15,5 +15,6 @@ void CCO_SHROUD_memory_destructor(CCO_SHROUD_capsule_data *cap)
 {
     cap->addr = NULL;
     cap->idtor = 0;  // avoid deleting again
+    cap->cmemflags = cap->cmemflags & ~SWIG_MEM_OWN;
 }
 // end release allocated memory

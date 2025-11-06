@@ -71,7 +71,7 @@ class CapsuleFmt(object):
         for ntypedefs in self.capsule_typedef_nodes.values():
             headers.add_typemap_list(ntypedefs.impl_header)
             
-    def write_capsule_code(self, output):
+    def write_capsule_delete_code(self, output):
         """Write a function used to delete C/C++ memory.
 
         Parameters
@@ -117,6 +117,7 @@ class CapsuleFmt(object):
         append_format(output,
                       "cap->addr = {nullptr};\n"
                       "cap->idtor = 0;  // avoid deleting again\n"
+                      "cap->cmemflags = cap->cmemflags & ~SWIG_MEM_OWN;\n"
                       "-}}",
                       fmt
         )

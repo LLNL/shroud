@@ -17,4 +17,4 @@
 #define SHARED_FLOAT_ID    40
 #define SHARED_DOUBLE_ID   50
 
-#endif // SHARED_H
+#endif
