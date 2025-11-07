@@ -4650,7 +4650,7 @@
                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                         "PyArg_vargs": "&arg1",
                         "PyBuild_format": "s#i",
-                        "PyBuild_vargs": "SH_arg1.data(),\t SH_arg1.size(),\t nlen"
+                        "PyBuild_vargs": "SH_arg1.data(),\t (Py_ssize_t) SH_arg1.size(),\t nlen"
                     }
                 }
             },
@@ -5035,7 +5035,7 @@
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_NOARGS",
                         "PyBuild_format": "s#i",
-                        "PyBuild_vargs": "SH_arg1.data(),\t SH_arg1.size(),\t nlen"
+                        "PyBuild_vargs": "SH_arg1.data(),\t (Py_ssize_t) SH_arg1.size(),\t nlen"
                     }
                 }
             },
@@ -5508,7 +5508,7 @@
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_NOARGS",
                         "PyBuild_format": "s#s#",
-                        "PyBuild_vargs": "SH_arg1.data(),\t SH_arg1.size(),\t SH_arg2.data(),\t SH_arg2.size()"
+                        "PyBuild_vargs": "SH_arg1.data(),\t (Py_ssize_t) SH_arg1.size(),\t SH_arg2.data(),\t (Py_ssize_t) SH_arg2.size()"
                     }
                 }
             },

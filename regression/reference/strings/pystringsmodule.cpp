@@ -731,8 +731,8 @@ PY_acceptStringPointerLen(
     acceptStringPointerLen(&SH_arg1, &nlen);
 
     // post_call
-    SHTPy_rv = Py_BuildValue("s#i", SH_arg1.data(), SH_arg1.size(),
-        nlen);
+    SHTPy_rv = Py_BuildValue("s#i", SH_arg1.data(),
+        (Py_ssize_t) SH_arg1.size(), nlen);
 
     return SHTPy_rv;
 // splicer end function.acceptStringPointerLen
@@ -774,8 +774,8 @@ PY_fetchStringPointerLen(
     fetchStringPointerLen(&SH_arg1, &nlen);
 
     // post_call
-    SHTPy_rv = Py_BuildValue("s#i", SH_arg1.data(), SH_arg1.size(),
-        nlen);
+    SHTPy_rv = Py_BuildValue("s#i", SH_arg1.data(),
+        (Py_ssize_t) SH_arg1.size(), nlen);
 
     return SHTPy_rv;
 // splicer end function.fetchStringPointerLen
@@ -858,8 +858,9 @@ PY_returnStrings(
     returnStrings(SH_arg1, SH_arg2);
 
     // post_call
-    SHTPy_rv = Py_BuildValue("s#s#", SH_arg1.data(), SH_arg1.size(),
-        SH_arg2.data(), SH_arg2.size());
+    SHTPy_rv = Py_BuildValue("s#s#", SH_arg1.data(),
+        (Py_ssize_t) SH_arg1.size(), SH_arg2.data(),
+        (Py_ssize_t) SH_arg2.size());
 
     return SHTPy_rv;
 // splicer end function.returnStrings

@@ -2347,7 +2347,7 @@
                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                         "PyArg_vargs": "&name",
                         "PyBuild_format": "s#i",
-                        "PyBuild_vargs": "SH_name.data(),\t SH_name.size(),\t value"
+                        "PyBuild_vargs": "SH_name.data(),\t (Py_ssize_t) SH_name.size(),\t value"
                     }
                 }
             },

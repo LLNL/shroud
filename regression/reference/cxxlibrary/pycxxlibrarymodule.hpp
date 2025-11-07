@@ -7,6 +7,7 @@
 #ifndef PYCXXLIBRARYMODULE_HPP
 #define PYCXXLIBRARYMODULE_HPP
 
+#define PY_SSIZE_T_CLEAN
 #include <Python.h>
 
 // cxx_header

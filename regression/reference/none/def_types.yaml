@@ -489,7 +489,7 @@ typemap:
       - <string>
       PY_format: s
       PY_ctor: PyString_FromStringAndSize({ctor_expr})
-      PY_build_arg: "{cxx_var}{cxx_member}data(), {cxx_var}{cxx_member}size()"
+      PY_build_arg: "{cxx_var}{cxx_member}data(), (Py_ssize_t) {cxx_var}{cxx_member}size()"
       PY_build_format: s#
       LUA_type: LUA_TSTRING
       LUA_pop: lua_tostring({LUA_state_var}, {LUA_index})

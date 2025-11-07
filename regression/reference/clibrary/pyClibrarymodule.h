@@ -7,6 +7,7 @@
 #ifndef PYCLIBRARYMODULE_H
 #define PYCLIBRARYMODULE_H
 
+#define PY_SSIZE_T_CLEAN
 #include <Python.h>
 
 // cxx_header
