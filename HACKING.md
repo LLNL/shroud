@@ -396,15 +396,15 @@ from the develop branch. The release candidate branch is used to
 finalize preparations for the release. At this point, the next release
 cycle begins and work may continue on the develop branch.
 
-Update `docs/releases.rst` with changes.
-It is best to continually update this file as user visible changes are made.
-
-## Start Release Candidate Branch
-
 When a release candidate branch is ready, it will be merged into the
 *master* branch and a release tag will be made. Then, the *master*
 branch is merged into the develop branch so that changes made to
 finalize the release are included there.
+
+Update `docs/releases.rst` with changes.
+It is best to continually update this file as user visible changes are made.
+
+## Start Release Candidate Branch
 
 Create a release candidate branch off the develop branch to initiate a
 release. The name of a release branch should contain the associated
@@ -456,7 +456,8 @@ https://pypi.org/project/shiv/
 
 ## Draft a GitHub Release
 
-Draft a new Release on GitHub
+Draft a new Release on GitHub.
+Describe in https://help.github.com/articles/creating-releases/
 
 * Enter a Release title. We typically use titles of the following form Shroud-v0.14.0
 
@@ -482,16 +483,18 @@ development.
 
 ## Upload to PyPi
 
-https://pypi.org/project/llnl-shroud/
+https://pypi.org/manage/account/
 
-> You need an account on pypi.org
+> You need an account on pypi.org and test.pypi.org.
 
     make install-twine
     rm dist/*
     make sdist
+    make twine-check
     make testpypi      installed at https://test.pypi.org
 
-Test Pypi
+Verify the test install.
+https://test.pypi.org/project/llnl-shroud/
 
     cd ~/tmp
     python3 -m venv testpypi
@@ -499,23 +502,23 @@ Test Pypi
     bin/pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ llnl-shroud
 
 If the test install works, then do the real install.
+https://pypi.org/project/llnl-shroud/
 
     make pypi
 
-Then test.
+Then verify the install.
 
     cd ~/tmp
     python3 -m venv pypi
     cd pypi
     bin/pip install --index-url https://pypi.org/simple/ llnl-shroud
 
-
 ## Spack
 
 After a commit hash is created, update
 `scripts/spack/packages/py-shroud/package.py`.
 
-# Annual
+# Annual Changes
 
 Update copyright in `LICENSE`.
 
