@@ -84,7 +84,117 @@
         ],
         "functions": [
             {
-                "<FUNCTION>": "UpdateAsFloat  0 ****************************************",
+                "<FUNCTION>": "LastFunctionCalled  0 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "attrs": {
+                            "len": "40"
+                        },
+                        "name": "LastFunctionCalled",
+                        "params": [],
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ],
+                        "typemap_name": "char"
+                    },
+                    "specifier": [
+                        "char"
+                    ],
+                    "typemap_name": "char"
+                },
+                "decl": "char *LastFunctionCalled(void) + len(40)",
+                "declgen": "char *LastFunctionCalled(void) +len(40)",
+                "helpers": {
+                    "fc": [
+                        "char_copy"
+                    ]
+                },
+                "name": "LastFunctionCalled",
+                "options": {},
+                "wrap": {
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "LastFunctionCalled(\t)",
+                                "C_name": "GEN_LastFunctionCalled_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                                "C_return_type": "void",
+                                "F_arg_c_call": "SHT_rv",
+                                "F_arguments": "",
+                                "F_subprogram": "function",
+                                "attr_len": "40",
+                                "c_const": "",
+                                "c_helper_char_copy": "ShroudCharCopy",
+                                "c_local_cxx": "SHC_rv_cxx",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "c_var_cfi": "SHT_rv_cfi",
+                                "c_var_len": "SHT_rv_len",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "SHC_rv_cxx",
+                                "cxx_type": "char",
+                                "cxx_var": "SHC_rv_cxx",
+                                "f_call_function": "c_last_function_called_CFI",
+                                "f_result_clause": "\fresult(SHT_rv)",
+                                "f_type": "character(len=40)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_arguments": "SHT_rv",
+                                "i_intent": "OUT",
+                                "i_intent_attr": ", intent(OUT)",
+                                "i_kind": "C_CHAR",
+                                "i_module_name": "iso_c_binding",
+                                "i_name_function": "c_last_function_called_CFI",
+                                "i_subprogram": "subroutine",
+                                "i_suffix": "_CFI",
+                                "i_type": "character(kind=C_CHAR)",
+                                "i_var": "SHT_rv",
+                                "i_var_cfi": "SHT_rv_cfi",
+                                "i_var_len": "SHT_rv_len",
+                                "idtor": "0",
+                                "stmt_name": "f_function_char*_cfi_copy",
+                                "typemap_name": "char"
+                            },
+                            "meta": {
+                                "abstract": "char*",
+                                "api": "cfi",
+                                "deref": "copy",
+                                "intent": "function",
+                                "len": "40"
+                            },
+                            "stmt": "f_function_char*_cfi_copy"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "abstract": "char*",
+                                "intent": "function",
+                                "len": "40"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "LastFunctionCalled",
+                    "F_name_api": "last_function_called",
+                    "F_name_function": "last_function_called",
+                    "F_name_generic": "last_function_called",
+                    "F_name_impl": "last_function_called",
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
+                    "function_name": "LastFunctionCalled"
+                }
+            },
+            {
+                "<FUNCTION>": "UpdateAsFloat  1 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "UpdateAsFloat",
@@ -215,7 +325,7 @@
                 }
             },
             {
-                "<FUNCTION>": "UpdateAsDouble  1 ****************************************",
+                "<FUNCTION>": "UpdateAsDouble  2 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "UpdateAsDouble",
@@ -346,7 +456,7 @@
                 }
             },
             {
-                "<FUNCTION>": "GetGlobalDouble  2 ****************************************",
+                "<FUNCTION>": "GetGlobalDouble  3 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "GetGlobalDouble",
@@ -432,7 +542,7 @@
                 }
             },
             {
-                "<FUNCTION>": "GenericReal  3 ****************************************",
+                "<FUNCTION>": "GenericReal  4 ****************************************",
                 "_fortran_generic_wrap": true,
                 "_overloaded": true,
                 "ast": {
@@ -599,13 +709,13 @@
                 }
             },
             {
-                "<FUNCTION>": "GenericReal  13 ****************************************",
-                "_PTR_F_C_index": 3,
+                "<FUNCTION>": "GenericReal  15 ****************************************",
+                "_PTR_F_C_index": 4,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
                 ],
-                "_orig_node_index": 3,
+                "_orig_node_index": 4,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -735,13 +845,13 @@
                 }
             },
             {
-                "<FUNCTION>": "GenericReal  14 ****************************************",
-                "_PTR_F_C_index": 3,
+                "<FUNCTION>": "GenericReal  16 ****************************************",
+                "_PTR_F_C_index": 4,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
                 ],
-                "_orig_node_index": 3,
+                "_orig_node_index": 4,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -871,7 +981,7 @@
                 }
             },
             {
-                "<FUNCTION>": "GenericReal2  4 ****************************************",
+                "<FUNCTION>": "GenericReal2  5 ****************************************",
                 "_fortran_generic_wrap": true,
                 "_overloaded": true,
                 "ast": {
@@ -1136,13 +1246,13 @@
                 }
             },
             {
-                "<FUNCTION>": "GenericReal2  15 ****************************************",
-                "_PTR_F_C_index": 4,
+                "<FUNCTION>": "GenericReal2  17 ****************************************",
+                "_PTR_F_C_index": 5,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
                 ],
-                "_orig_node_index": 4,
+                "_orig_node_index": 5,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1347,13 +1457,13 @@
                 }
             },
             {
-                "<FUNCTION>": "GenericReal2  16 ****************************************",
-                "_PTR_F_C_index": 4,
+                "<FUNCTION>": "GenericReal2  18 ****************************************",
+                "_PTR_F_C_index": 5,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
                 ],
-                "_orig_node_index": 4,
+                "_orig_node_index": 5,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1558,7 +1668,7 @@
                 }
             },
             {
-                "<FUNCTION>": "SumValues  5 ****************************************",
+                "<FUNCTION>": "SumValues  6 ****************************************",
                 "_gen_fortran_assumed_rank": true,
                 "ast": {
                     "declarator": {
@@ -1793,7 +1903,232 @@
                 }
             },
             {
-                "<FUNCTION>": "AssignValues  6 ****************************************",
+                "<FUNCTION>": "BA_nbcastinteger  7 ****************************************",
+                "_gen_fortran_assumed_rank": true,
+                "ast": {
+                    "declarator": {
+                        "name": "BA_nbcastinteger",
+                        "params": [
+                            {
+                                "const": true,
+                                "declarator": {
+                                    "name": "cptr",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "char"
+                                },
+                                "specifier": [
+                                    "char"
+                                ],
+                                "typemap_name": "char"
+                            },
+                            {
+                                "declarator": {
+                                    "attrs": {
+                                        "dimension": ".."
+                                    },
+                                    "name": "ptr",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void BA_nbcastinteger(const char *cptr, int *ptr+dimension(..))",
+                "declgen": "void BA_nbcastinteger(const char *cptr, int *ptr +dimension(..))",
+                "helpers": {
+                    "fc": [
+                        "char_alloc",
+                        "char_free"
+                    ]
+                },
+                "name": "BA_nbcastinteger",
+                "options": {},
+                "user_fmt": {
+                    "F_name_generic": "nbcastinteger"
+                },
+                "wrap": {
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "BA_nbcastinteger(\tSHC_cptr_cxx,\t SHC_ptr_cxx)",
+                                "C_call_list": "SHC_cptr_cxx,\t SHC_ptr_cxx",
+                                "C_name": "GEN_BA_nbcastinteger_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_cptr_cfi,\t CFI_cdesc_t *SHT_ptr_cfi",
+                                "C_return_type": "void",
+                                "F_arg_c_call": "cptr,\t ptr",
+                                "F_arguments": "cptr,\t ptr",
+                                "F_subprogram": "subroutine",
+                                "f_call_function": "c_ba_nbcastinteger_CFI",
+                                "i_arguments": "cptr,\t ptr",
+                                "i_name_function": "nbcastinteger",
+                                "i_subprogram": "subroutine",
+                                "i_suffix": "_CFI",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "cptr": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const char *",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_helper_char_alloc": "ShroudCharAlloc",
+                                "c_helper_char_free": "ShroudCharFree",
+                                "c_local_cxx": "SHC_cptr_cxx",
+                                "c_member": "->",
+                                "c_type": "char",
+                                "c_var": "cptr",
+                                "c_var_cfi": "SHT_cptr_cfi",
+                                "c_var_len": "SHT_cptr_len",
+                                "cxx_abstract_decl": "const char *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "(char *) cptr",
+                                "cxx_type": "char",
+                                "cxx_var": "cptr",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_type": "character(len=*)",
+                                "f_var": "cptr",
+                                "fc_var": "cptr",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "C_CHAR",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "character(kind=C_CHAR)",
+                                "i_var": "cptr",
+                                "i_var_cfi": "SHT_cptr_cfi",
+                                "i_var_len": "SHT_cptr_len",
+                                "idtor": "0",
+                                "stmt_name": "f_in_char*_cfi",
+                                "typemap_name": "char"
+                            },
+                            "meta": {
+                                "abstract": "char*",
+                                "api": "cfi",
+                                "intent": "in"
+                            },
+                            "stmt": "f_in_char*_cfi"
+                        },
+                        "ptr": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_local_cxx": "SHC_ptr_cxx",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "ptr",
+                                "c_var_cfi": "SHT_ptr_cfi",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "ptr",
+                                "cxx_type": "int",
+                                "cxx_var": "ptr",
+                                "f_assumed_shape": "(..)",
+                                "f_dimension": "(..)",
+                                "f_intent": "INOUT",
+                                "f_intent_attr": ", intent(INOUT)",
+                                "f_kind": "C_INT",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "ptr",
+                                "fc_var": "ptr",
+                                "i_dimension": "(..)",
+                                "i_intent": "INOUT",
+                                "i_intent_attr": ", intent(INOUT)",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "integer(C_INT)",
+                                "i_var": "ptr",
+                                "i_var_cfi": "SHT_ptr_cfi",
+                                "idtor": "0",
+                                "rank": "assumed",
+                                "stmt_name": "f_inout_native*_cfi",
+                                "typemap_name": "int"
+                            },
+                            "meta": {
+                                "abstract": "native*",
+                                "api": "cfi",
+                                "dim_ast": {
+                                    "assumedrank": true
+                                },
+                                "dimension": "..",
+                                "intent": "inout"
+                            },
+                            "stmt": "f_inout_native*_cfi"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            }
+                        },
+                        "cptr": {
+                            "meta": {
+                                "abstract": "char*",
+                                "intent": "in"
+                            }
+                        },
+                        "ptr": {
+                            "meta": {
+                                "abstract": "native*",
+                                "dim_ast": {
+                                    "assumedrank": true
+                                },
+                                "dimension": "..",
+                                "intent": "inout"
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "BA_nbcastinteger",
+                    "F_name_api": "ba_nbcastinteger",
+                    "F_name_function": "ba_nbcastinteger",
+                    "F_name_generic": "nbcastinteger",
+                    "F_name_impl": "nbcastinteger",
+                    "f_arglist": [
+                        "f_var",
+                        "cptr",
+                        "ptr"
+                    ],
+                    "function_name": "BA_nbcastinteger"
+                }
+            },
+            {
+                "<FUNCTION>": "AssignValues  8 ****************************************",
                 "_fortran_generic_wrap": true,
                 "_overloaded": true,
                 "ast": {
@@ -2285,14 +2620,14 @@
                 }
             },
             {
-                "<FUNCTION>": "AssignValues  17 ****************************************",
+                "<FUNCTION>": "AssignValues  19 ****************************************",
                 "C_force_wrapper": true,
-                "_PTR_C_CXX_index": 6,
+                "_PTR_C_CXX_index": 8,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
                 ],
-                "_orig_node_index": 6,
+                "_orig_node_index": 8,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2603,14 +2938,14 @@
                 }
             },
             {
-                "<FUNCTION>": "AssignValues  18 ****************************************",
+                "<FUNCTION>": "AssignValues  20 ****************************************",
                 "C_force_wrapper": true,
-                "_PTR_C_CXX_index": 6,
+                "_PTR_C_CXX_index": 8,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
                 ],
-                "_orig_node_index": 6,
+                "_orig_node_index": 8,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2935,14 +3270,14 @@
                 }
             },
             {
-                "<FUNCTION>": "AssignValues  19 ****************************************",
+                "<FUNCTION>": "AssignValues  21 ****************************************",
                 "C_force_wrapper": true,
-                "_PTR_C_CXX_index": 6,
+                "_PTR_C_CXX_index": 8,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
                 ],
-                "_orig_node_index": 6,
+                "_orig_node_index": 8,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -3281,7 +3616,7 @@
                 }
             },
             {
-                "<FUNCTION>": "SavePointer  7 ****************************************",
+                "<FUNCTION>": "SavePointer  9 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -3480,14 +3815,14 @@
                 }
             },
             {
-                "<FUNCTION>": "SavePointer  20 ****************************************",
+                "<FUNCTION>": "SavePointer  22 ****************************************",
                 "C_force_wrapper": true,
-                "_PTR_C_CXX_index": 7,
+                "_PTR_C_CXX_index": 9,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
                 ],
-                "_orig_node_index": 7,
+                "_orig_node_index": 9,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -3757,14 +4092,14 @@
                 }
             },
             {
-                "<FUNCTION>": "SavePointer  21 ****************************************",
+                "<FUNCTION>": "SavePointer  23 ****************************************",
                 "C_force_wrapper": true,
-                "_PTR_C_CXX_index": 7,
+                "_PTR_C_CXX_index": 9,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
                 ],
-                "_orig_node_index": 7,
+                "_orig_node_index": 9,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -4034,7 +4369,7 @@
                 }
             },
             {
-                "<FUNCTION>": "SavePointer2  8 ****************************************",
+                "<FUNCTION>": "SavePointer2  10 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -4263,14 +4598,14 @@
                 }
             },
             {
-                "<FUNCTION>": "SavePointer2  22 ****************************************",
+                "<FUNCTION>": "SavePointer2  24 ****************************************",
                 "C_force_wrapper": true,
-                "_PTR_C_CXX_index": 8,
+                "_PTR_C_CXX_index": 10,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
                 ],
-                "_orig_node_index": 8,
+                "_orig_node_index": 10,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -4568,14 +4903,14 @@
                 }
             },
             {
-                "<FUNCTION>": "SavePointer2  23 ****************************************",
+                "<FUNCTION>": "SavePointer2  25 ****************************************",
                 "C_force_wrapper": true,
-                "_PTR_C_CXX_index": 8,
+                "_PTR_C_CXX_index": 10,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
                 ],
-                "_orig_node_index": 8,
+                "_orig_node_index": 10,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -4873,7 +5208,7 @@
                 }
             },
             {
-                "<FUNCTION>": "GetPointer  9 ****************************************",
+                "<FUNCTION>": "GetPointer  11 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "GetPointer",
@@ -5133,7 +5468,7 @@
                 }
             },
             {
-                "<FUNCTION>": "GetPointerAsPointer  10 ****************************************",
+                "<FUNCTION>": "GetPointerAsPointer  12 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -5387,14 +5722,14 @@
                 }
             },
             {
-                "<FUNCTION>": "GetPointerAsPointer  24 ****************************************",
+                "<FUNCTION>": "GetPointerAsPointer  26 ****************************************",
                 "C_force_wrapper": true,
-                "_PTR_C_CXX_index": 10,
+                "_PTR_C_CXX_index": 12,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
                 ],
-                "_orig_node_index": 10,
+                "_orig_node_index": 12,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -5687,14 +6022,14 @@
                 }
             },
             {
-                "<FUNCTION>": "GetPointerAsPointer  25 ****************************************",
+                "<FUNCTION>": "GetPointerAsPointer  27 ****************************************",
                 "C_force_wrapper": true,
-                "_PTR_C_CXX_index": 10,
+                "_PTR_C_CXX_index": 12,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
                 ],
-                "_orig_node_index": 10,
+                "_orig_node_index": 12,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -5987,7 +6322,7 @@
                 }
             },
             {
-                "<FUNCTION>": "CreateStructAsClass  11 ****************************************",
+                "<FUNCTION>": "CreateStructAsClass  13 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "CreateStructAsClass",
@@ -6091,7 +6426,7 @@
                 }
             },
             {
-                "<FUNCTION>": "UpdateStructAsClass  12 ****************************************",
+                "<FUNCTION>": "UpdateStructAsClass  14 ****************************************",
                 "_fortran_generic_wrap": true,
                 "_overloaded": true,
                 "ast": {
@@ -6368,13 +6703,13 @@
                 }
             },
             {
-                "<FUNCTION>": "UpdateStructAsClass  26 ****************************************",
-                "_PTR_F_C_index": 12,
+                "<FUNCTION>": "UpdateStructAsClass  28 ****************************************",
+                "_PTR_F_C_index": 14,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
                 ],
-                "_orig_node_index": 12,
+                "_orig_node_index": 14,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -6580,13 +6915,13 @@
                 }
             },
             {
-                "<FUNCTION>": "UpdateStructAsClass  27 ****************************************",
-                "_PTR_F_C_index": 12,
+                "<FUNCTION>": "UpdateStructAsClass  29 ****************************************",
+                "_PTR_F_C_index": 14,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
                 ],
-                "_orig_node_index": 12,
+                "_orig_node_index": 14,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {

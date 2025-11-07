@@ -180,7 +180,7 @@ class FillFormat(object):
                 if node.ast.declarator.is_ctor:
                     fmt_func.F_name_generic = fmt_func.F_derived_name
                 else:
-                    node.reeval_template("F_name_generic")
+                    node.eval_template("F_name_generic")
             node.reeval_template("F_name_impl")
             node.reeval_template("F_name_function")
         fmt_func.update(node.user_fmt)

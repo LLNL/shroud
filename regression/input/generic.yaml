@@ -20,6 +20,8 @@ options:
 
 declarations:
 
+- decl: char *LastFunctionCalled(void) + len(40)
+
 ########################################
 # Create a generic interface for two functions.
 # XXX - F_force_wrapper is required since the generic interface is using
@@ -72,6 +74,17 @@ declarations:
       to call them by one name.
   options:
     F_assumed_rank_max: 2
+
+- block: True
+  options:
+    # Change the name of the Fortran implementation based on
+    # F_name_generic to avoid the library's BA_ prefix.
+    F_name_impl_template: "{F_name_generic}{function_suffix}"
+    F_assumed_rank_max: 3
+  declarations:
+  - decl: void BA_nbcastinteger(const char *cptr, int *ptr+dimension(..))
+    format:
+      F_name_generic: nbcastinteger
 
 ########################################
 # Test Fortran Generic and rank.
