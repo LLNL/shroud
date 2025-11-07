@@ -1,0 +1,24 @@
+#!/bin/csh
+# Copyright Shroud Project Developers. See LICENSE file for details.
+#
+# SPDX-License-Identifier: (BSD-3-Clause)
+#
+# Show difference between regression reference file and generated files
+# but only if there are differences.
+# Run from the build/temp*/regression/test directory.
+
+set difftool = tkdiff
+set refhome =  ../../../../regression/reference
+set base = `basename $PWD`
+foreach i (*)
+  if ($i == "cmp-shroud") then
+    continue
+  endif
+  set ref = $refhome/$base/$i
+  if (-f $ref && -f $i) then
+    cmp -s $ref $i
+    if ($status != 0) then
+      $difftool $ref $i
+    endif
+  endif
+end

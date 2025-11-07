@@ -1,3 +1,5 @@
+<!-- Copyright Shroud Project Developers. See LICENSE file for details. -->
+<!-- SPDX-License-Identifier: (BSD-3-Clause)                            -->
 
 This file describes the development process for Shroud.
 This includes setting up a development environment, running tests
@@ -116,6 +118,11 @@ Run the script `regression/do-test.py` over some `regression/input` yaml files.
 
 The output is saved in `build/$tempdir/regression`
 
+A script is added to the output directory to help compare regression files.
+
+   cd $WORK/build/$tempdir/regression/classes
+   ./cmp-shroud
+
 Update fiducials
 
     make do-test-replace [ do-test-args=tutorial ]
@@ -125,12 +132,12 @@ Running a single test
     make do-test do-test-args=tutorial
 
 
-Running a test manually (with pdb).
-Run the test via do-test.  Extract run line from test.log
-```
-cd $WORK/build/$tempdir/regression/classes
-$WORK/build/$tempdir/venv/bin/shroud ...  $WORK/regression/input/classes.yaml
-```
+Running a test manually after adding lines like "import pdb;pdb.set_trace()".
+First, run the test via do-test.  Extract run line from `test.log`.
+It will contain paths and flags used to run `do-test`.
+
+    cd $WORK/build/$tempdir/regression/classes
+    $WORK/build/$tempdir/venv/bin/shroud ...  $WORK/regression/input/classes.yaml
 
 ## Test generated code
 
@@ -410,6 +417,11 @@ Move the shiv file to local system.
 https://pypi.org/project/llnl-shroud/
 
 > You need an account on pypi.org
+
+## Spack
+
+After a commit hash is created, update
+`scripts/spack/packages/py-shroud/package.py`.
 
 # Annual
 

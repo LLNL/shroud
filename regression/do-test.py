@@ -80,6 +80,8 @@ class Tester:
                 print("Missing executable:", executable)
             self.code_path = executable
         makedirs(output)
+
+        self.cmp_script = os.path.join(os.path.dirname(input), "scripts", "cmp-shroud")
         return status
 
     def setup_test(self, desc, replace_ref=False):
@@ -111,6 +113,12 @@ class Tester:
             logging.info("Result directory: " + self.result_dir)
             makedirs(self.result_dir)
             clear_files(self.result_dir)
+
+        cmp_script = os.path.join(self.result_dir, "cmp-shroud")
+        try:
+            os.symlink(self.cmp_script, cmp_script)
+        except FileExistsError:
+            pass
 
         return True
 
@@ -218,7 +226,7 @@ class Tester:
             self.ref_dir,
             self.result_dir,
             # ignore directories with code for other wrappers
-            ignore=["pybindgen", "cython", "swig"],
+            ignore=["pybindgen", "cython", "swig", "cmp-shroud"],
         )
         if not os.path.exists(self.ref_dir):
             logging.info("Reference directory does not exist: " + self.ref_dir)
