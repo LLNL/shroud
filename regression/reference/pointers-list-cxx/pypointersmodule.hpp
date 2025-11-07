@@ -7,6 +7,7 @@
 #ifndef PYPOINTERSMODULE_HPP
 #define PYPOINTERSMODULE_HPP
 
+#define PY_SSIZE_T_CLEAN
 #include <Python.h>
 
 // cxx_header

@@ -218,10 +218,12 @@ python.libs    = $(eval python.libs := $$(call shell,$(python.exe) \
   -c $(call sf_01,LIBS) 2>&1))$(python.libs)
 python.ldflags = $(eval python.ldflags := $$(call shell,$(python.exe) \
   -c $(call sf_01,LDFLAGS) 2>&1))$(python.ldflags)
-python.bldlibrary  = $(eval python.bldlibrary := $$(call shell,$(python.exe) \
-  -c $(call sf_01,BLDLIBRARY) 2>&1))$(python.bldlibrary)
+#python.bldlibrary  = $(eval python.bldlibrary := $$(call shell,$(python.exe) \
+#  -c $(call sf_01,BLDLIBRARY) 2>&1))$(python.bldlibrary)
 python.incdir   = $(eval python.incdir := $$(call shell,$(python.exe) \
   -c $(call sf_01,INCLUDEPY) 2>&1))$(python.incdir)
+python.ldversion = $(eval python.incdir := $$(call shell,$(python.exe) \
+  -c $(call sf_01,LDVERSION) 2>&1))$(python.incdir)
 
 # python 2.7
 # libpl      - .../lib/python2.7/config
@@ -232,6 +234,9 @@ python.incdir   = $(eval python.incdir := $$(call shell,$(python.exe) \
 # libpl      -  .../lib/python3.6/config-3.6m-x86_64-linux-gnu
 # libs       -  -lpthreads -ldl -lutil
 # bldlibrary - -L. -lpython3.6m
+
+# Required with anaconda build which does not have a static library.
+python.bldlibrary = -lpython$(python.ldversion)
 
 PYTHON_VER := $(shell $(PYTHON) -c "import sys;sys.stdout.write('{v[0]}.{v[1]}'.format(v=sys.version_info))")
 PLATFORM := $(shell $(PYTHON) -c "import sys, sysconfig;sys.stdout.write(sysconfig.get_platform())")

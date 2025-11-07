@@ -7,6 +7,7 @@
 #ifndef PYSTRUCTMODULE_H
 #define PYSTRUCTMODULE_H
 
+#define PY_SSIZE_T_CLEAN
 #include <Python.h>
 
 // cxx_header

@@ -7,6 +7,7 @@
 #ifndef PYSTRINGSMODULE_HPP
 #define PYSTRINGSMODULE_HPP
 
+#define PY_SSIZE_T_CLEAN
 #include <Python.h>
 
 // cxx_header

@@ -2439,6 +2439,7 @@ return 1;""",
         output.extend(["#ifndef %s" % guard, "#define %s" % guard])
 
         output.append("")
+        output.append("#define PY_SSIZE_T_CLEAN")
         output.append("#include <Python.h>")
         self.header_type_include.write_headers(output)
 

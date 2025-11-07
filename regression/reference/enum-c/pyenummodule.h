@@ -7,6 +7,7 @@
 #ifndef PYENUMMODULE_H
 #define PYENUMMODULE_H
 
+#define PY_SSIZE_T_CLEAN
 #include <Python.h>
 
 // cxx_header

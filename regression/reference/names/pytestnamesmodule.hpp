@@ -7,6 +7,7 @@
 #ifndef PYTESTNAMESMODULE_HPP
 #define PYTESTNAMESMODULE_HPP
 
+#define PY_SSIZE_T_CLEAN
 #include <Python.h>
 
 // cxx_header

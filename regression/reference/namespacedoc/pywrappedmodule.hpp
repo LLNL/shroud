@@ -7,6 +7,7 @@
 #ifndef PYWRAPPEDMODULE_HPP
 #define PYWRAPPEDMODULE_HPP
 
+#define PY_SSIZE_T_CLEAN
 #include <Python.h>
 
 // splicer begin header.include
