@@ -118,19 +118,19 @@ contains
 
     ! Call as specific.
 
-    call ba_nbcastinteger_0d("scalar specific", scalar)
+    call nbcastinteger_0d("scalar specific", scalar)
     call assert_equals("BA_nbcastinteger scalar specific", last_function_called(), &
          "nbcasetinteger scalar specific")
 
-    call ba_nbcastinteger_1d("1d specific", array)
+    call nbcastinteger_1d("1d specific", array)
     call assert_equals("BA_nbcastinteger 1d specific", last_function_called(), &
          "nbcasetinteger 1d specific")
 
-    call ba_nbcastinteger_2d("2d specific", array2d)
+    call nbcastinteger_2d("2d specific", array2d)
     call assert_equals("BA_nbcastinteger 2d specific", last_function_called(), &
          "nbcasetinteger 2d specific")
 
-    call ba_nbcastinteger_3d("3d specific", array3d)
+    call nbcastinteger_3d("3d specific", array3d)
     call assert_equals("BA_nbcastinteger 3d specific", last_function_called(), &
          "nbcasetinteger 3d specific")
 

@@ -1981,7 +1981,7 @@
                                 "F_subprogram": "subroutine",
                                 "f_call_function": "c_ba_nbcastinteger_CFI",
                                 "i_arguments": "cptr,\t ptr",
-                                "i_name_function": "ba_nbcastinteger",
+                                "i_name_function": "nbcastinteger",
                                 "i_subprogram": "subroutine",
                                 "i_suffix": "_CFI",
                                 "stmt_name": "f_subroutine",
@@ -2118,7 +2118,7 @@
                     "F_name_api": "ba_nbcastinteger",
                     "F_name_function": "ba_nbcastinteger",
                     "F_name_generic": "nbcastinteger",
-                    "F_name_impl": "ba_nbcastinteger",
+                    "F_name_impl": "nbcastinteger",
                     "f_arglist": [
                         "f_var",
                         "cptr",

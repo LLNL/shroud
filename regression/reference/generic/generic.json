@@ -3039,7 +3039,7 @@
                     "F_name_api": "ba_nbcastinteger",
                     "F_name_function": "ba_nbcastinteger",
                     "F_name_generic": "nbcastinteger",
-                    "F_name_impl": "ba_nbcastinteger",
+                    "F_name_impl": "nbcastinteger",
                     "f_arglist": [
                         "f_var",
                         "cptr",
@@ -3247,7 +3247,7 @@
                     "F_name_api": "ba_nbcastinteger",
                     "F_name_function": "ba_nbcastinteger_0d",
                     "F_name_generic": "nbcastinteger",
-                    "F_name_impl": "ba_nbcastinteger_0d",
+                    "F_name_impl": "nbcastinteger_0d",
                     "f_arglist": [
                         "f_var",
                         "cptr",
@@ -3459,7 +3459,7 @@
                     "F_name_api": "ba_nbcastinteger",
                     "F_name_function": "ba_nbcastinteger_1d",
                     "F_name_generic": "nbcastinteger",
-                    "F_name_impl": "ba_nbcastinteger_1d",
+                    "F_name_impl": "nbcastinteger_1d",
                     "f_arglist": [
                         "f_var",
                         "cptr",
@@ -3671,7 +3671,7 @@
                     "F_name_api": "ba_nbcastinteger",
                     "F_name_function": "ba_nbcastinteger_2d",
                     "F_name_generic": "nbcastinteger",
-                    "F_name_impl": "ba_nbcastinteger_2d",
+                    "F_name_impl": "nbcastinteger_2d",
                     "f_arglist": [
                         "f_var",
                         "cptr",
@@ -3883,7 +3883,7 @@
                     "F_name_api": "ba_nbcastinteger",
                     "F_name_function": "ba_nbcastinteger_3d",
                     "F_name_generic": "nbcastinteger",
-                    "F_name_impl": "ba_nbcastinteger_3d",
+                    "F_name_impl": "nbcastinteger_3d",
                     "f_arglist": [
                         "f_var",
                         "cptr",
