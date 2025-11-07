@@ -24,7 +24,12 @@
 // splicer begin C_declarations
 // splicer end C_declarations
 
+void GEN_LastFunctionCalled_CFI(CFI_cdesc_t *SHT_rv_cfi);
+
 int GEN_SumValues_CFI(CFI_cdesc_t *SHT_values_cfi, int nvalues);
+
+void GEN_BA_nbcastinteger_CFI(CFI_cdesc_t *SHT_cptr_cfi,
+    CFI_cdesc_t *SHT_ptr_cfi);
 
 void GEN_AssignValues_scalar_bufferify(const int *from, int nfrom,
     int *to, int nto);

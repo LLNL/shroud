@@ -21,6 +21,8 @@ struct s_StructAsClass {
 };
 typedef struct s_StructAsClass StructAsClass;
 
+char *LastFunctionCalled(void);
+
 double GetGlobalDouble(void);
 
 void GenericReal(double arg);
@@ -28,6 +30,8 @@ void GenericReal(double arg);
 long GenericReal2(long arg1, long arg2);
 
 int SumValues(const int *values, int nvalues);
+
+void BA_nbcastinteger(const char *cptr, int *ptr);
 
 void AssignValues(const int *from, int nfrom, int *to, int nto);
 

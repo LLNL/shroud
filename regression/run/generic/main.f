@@ -18,6 +18,7 @@ program tester
   call test_generic_group
   call test_functions
   call test_assumed_rank
+  call test_assumed_rank_bcast
   call test_scalar_array
   call test_database
   call test_struct
@@ -86,6 +87,54 @@ contains
     array2d = reshape([1, 2, 3, 4, 5, 6], shape(array2d))
     call assert_equals(21, sum_values(array2d, size(array2d)), "sum_values 2d")
   end subroutine test_assumed_rank
+
+  subroutine test_assumed_rank_bcast
+    integer(C_INT) scalar, array(5), array2d(2,3), array3d(2,3,4)
+    
+    call set_case_name("test_assumed_rank_bcast")
+
+    scalar = 5
+    array = 6
+    array2d = 7.0
+    array3d = 8.0
+
+    ! Call as generic.
+
+    call nbcastinteger("scalar", scalar)
+    call assert_equals("BA_nbcastinteger scalar", last_function_called(), &
+         "nbcasetinteger scalar")
+
+    call nbcastinteger("1d", array)
+    call assert_equals("BA_nbcastinteger 1d", last_function_called(), &
+         "nbcasetinteger 1d")
+
+    call nbcastinteger("2d", array)
+    call assert_equals("BA_nbcastinteger 2d", last_function_called(), &
+         "nbcasetinteger 2d")
+
+    call nbcastinteger("3d", array)
+    call assert_equals("BA_nbcastinteger 3d", last_function_called(), &
+         "nbcasetinteger 3d")
+
+    ! Call as specific.
+
+    call ba_nbcastinteger_0d("scalar specific", scalar)
+    call assert_equals("BA_nbcastinteger scalar specific", last_function_called(), &
+         "nbcasetinteger scalar specific")
+
+    call ba_nbcastinteger_1d("1d specific", array)
+    call assert_equals("BA_nbcastinteger 1d specific", last_function_called(), &
+         "nbcasetinteger 1d specific")
+
+    call ba_nbcastinteger_2d("2d specific", array2d)
+    call assert_equals("BA_nbcastinteger 2d specific", last_function_called(), &
+         "nbcasetinteger 2d specific")
+
+    call ba_nbcastinteger_3d("3d specific", array3d)
+    call assert_equals("BA_nbcastinteger 3d specific", last_function_called(), &
+         "nbcasetinteger 3d specific")
+
+  end subroutine test_assumed_rank_bcast
 
   subroutine test_scalar_array
     integer sfrom, sto

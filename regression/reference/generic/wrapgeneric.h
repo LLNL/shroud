@@ -21,11 +21,21 @@
 // splicer begin C_declarations
 // splicer end C_declarations
 
+void GEN_LastFunctionCalled_bufferify(char *SHC_rv, int SHT_rv_len);
+
 int GEN_SumValues_0d_bufferify(const int *values, int nvalues);
 
 int GEN_SumValues_1d_bufferify(const int *values, int nvalues);
 
 int GEN_SumValues_2d_bufferify(const int *values, int nvalues);
+
+void GEN_BA_nbcastinteger_0d_bufferify(const char *cptr, int *ptr);
+
+void GEN_BA_nbcastinteger_1d_bufferify(const char *cptr, int *ptr);
+
+void GEN_BA_nbcastinteger_2d_bufferify(const char *cptr, int *ptr);
+
+void GEN_BA_nbcastinteger_3d_bufferify(const char *cptr, int *ptr);
 
 void GEN_AssignValues_scalar_bufferify(const int *from, int nfrom,
     int *to, int nto);

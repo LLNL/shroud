@@ -9,14 +9,89 @@
 #include "generic.h"
 #include "helper.h"
 // shroud
+#include <stddef.h>
+#include <stdlib.h>
+#include <string.h>
 #include "wrapgeneric.h"
 
+
+// helper char_len_trim
+// Returns the length of character string src with length nsrc,
+// ignoring any trailing blanks.
+static int ShroudCharLenTrim(const char *src, int nsrc) {
+    int i;
+
+    for (i = nsrc - 1; i >= 0; i--) {
+        if (src[i] != ' ') {
+            break;
+        }
+    }
+
+    return i + 1;
+}
+
+
+// helper char_alloc
+// Copy src into new memory and null terminate.
+// If ntrim is 0, return NULL pointer.
+// If blanknull is 1, return NULL when string is blank.
+static char *ShroudCharAlloc(const char *src, int nsrc, int blanknull)
+{
+    int ntrim = ShroudCharLenTrim(src, nsrc);
+    if (ntrim == 0 && blanknull == 1) {
+        return NULL;
+    }
+    char *rv = (char *) malloc(nsrc + 1);
+    if (ntrim > 0) {
+        memcpy(rv, src, ntrim);
+    }
+    rv[ntrim] = '\0';
+    return rv;
+}
+
+// helper ShroudCharCopy
+// Copy src into dest, blank fill to ndest characters
+// Truncate if dest is too short.
+// dest will not be NULL terminated.
+static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
+{
+    if (src == NULL) {
+        memset(dest,' ',ndest); // convert NULL pointer to blank filled string
+    } else {
+        if (nsrc < 0) nsrc = strlen(src);
+        int nm = nsrc < ndest ? nsrc : ndest;
+        memcpy(dest,src,nm);
+        if(ndest > nm) memset(dest+nm,' ',ndest-nm); // blank fill
+    }
+}
+
+// helper char_free
+// Release memory allocated by ShroudCharAlloc
+static void ShroudCharFree(char *src)
+{
+    if (src != NULL) {
+        free(src);
+    }
+}
 
 // Lower bounds of CFI arrays.
 static CFI_index_t SHT_lower_CFI[CFI_MAX_RANK] = {1};
 
 // splicer begin C_definitions
 // splicer end C_definitions
+
+// ----------------------------------------
+// Function:  char *LastFunctionCalled +len(40)
+// Statement: f_function_char*_cfi_copy
+void GEN_LastFunctionCalled_CFI(CFI_cdesc_t *SHT_rv_cfi)
+{
+    // splicer begin function.LastFunctionCalled_CFI
+    char *SHC_rv = (char *) SHT_rv_cfi->base_addr;
+    size_t SHT_rv_len = SHT_rv_cfi->elem_len;
+    char *SHC_rv_cxx = LastFunctionCalled();
+    ShroudCharCopy(SHC_rv, SHT_rv_len, SHC_rv_cxx, -1);
+    // splicer end function.LastFunctionCalled_CFI
+}
 
 /**
  * \brief scalar or array argument using assumed rank
@@ -40,6 +115,28 @@ int GEN_SumValues_CFI(CFI_cdesc_t *SHT_values_cfi, int nvalues)
     int SHC_rv = SumValues(SHC_values_cxx, nvalues);
     return SHC_rv;
     // splicer end function.SumValues_CFI
+}
+
+// ----------------------------------------
+// Function:  void BA_nbcastinteger
+// Statement: f_subroutine
+// ----------------------------------------
+// Argument:  const char *cptr
+// Statement: f_in_char*_cfi
+// ----------------------------------------
+// Argument:  int *ptr +dimension(..)
+// Statement: f_inout_native*_cfi
+void GEN_BA_nbcastinteger_CFI(CFI_cdesc_t *SHT_cptr_cfi,
+    CFI_cdesc_t *SHT_ptr_cfi)
+{
+    // splicer begin function.BA_nbcastinteger_CFI
+    char *cptr = (char *) SHT_cptr_cfi->base_addr;
+    size_t SHT_cptr_len = SHT_cptr_cfi->elem_len;
+    char *SHC_cptr_cxx = ShroudCharAlloc(cptr, SHT_cptr_len, 0);
+    int *SHC_ptr_cxx = (int *) SHT_ptr_cfi->base_addr;
+    BA_nbcastinteger(SHC_cptr_cxx, SHC_ptr_cxx);
+    ShroudCharFree(SHC_cptr_cxx);
+    // splicer end function.BA_nbcastinteger_CFI
 }
 
 /**
