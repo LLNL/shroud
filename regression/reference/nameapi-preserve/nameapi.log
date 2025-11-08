@@ -1,0 +1,52 @@
+Read yaml nameapi.yaml
+Close testapi_types.yaml
+library C wrappers
+namespace testapi
+namespace InnerNamespace
+class InnerClass1
+C c void MemberFunction2(void)
+C f void MemberFunction2(void)
+C f int get_MemberVariable2(void) +intent(getter)
+C f void set_MemberVariable2(int val +intent(setter)) +intent(setter)
+Close wrapInnerNamespace_InnerClass1.h
+Close wrapInnerNamespace_InnerClass1.cpp
+C c void InnerFunction1(void)
+C f void InnerFunction1(void)
+Close wraptestapi_InnerNamespace.h
+Close wraptestapi_InnerNamespace.cpp
+class TopClass1
+C c void MemberFunction1(void)
+C f void MemberFunction1(void)
+C f int get_MemberVariable1(void) +intent(getter)
+C f void set_MemberVariable1(int val +intent(setter)) +intent(setter)
+Close wrapTopClass1.h
+Close wrapTopClass1.cpp
+C c void TopFunction1(void)
+C f void TopFunction1(void)
+Close wraptestapi.h
+Close wraptestapi.cpp
+library Fortran wrappers
+namespace testapi
+class TopClass1
+Fortran void MemberFunction1(void)
+Fortran int get_MemberVariable1(void) +intent(getter)
+Fortran void set_MemberVariable1(int val +intent(setter)) +intent(setter)
+C-interface f void MemberFunction1(void)
+C-interface f int get_MemberVariable1(void) +intent(getter)
+C-interface f void set_MemberVariable1(int val +intent(setter)) +intent(setter)
+Fortran void TopFunction1(void)
+C-interface f void TopFunction1(void)
+namespace InnerNamespace
+class InnerClass1
+Fortran void MemberFunction2(void)
+Fortran int get_MemberVariable2(void) +intent(getter)
+Fortran void set_MemberVariable2(int val +intent(setter)) +intent(setter)
+C-interface f void MemberFunction2(void)
+C-interface f int get_MemberVariable2(void) +intent(getter)
+C-interface f void set_MemberVariable2(int val +intent(setter)) +intent(setter)
+Fortran void InnerFunction1(void)
+C-interface f void InnerFunction1(void)
+Close wrapftestapi_InnerNamespace.f
+Close wrapftestapi.f
+Close utiltestapi.cpp
+Close typestestapi.h

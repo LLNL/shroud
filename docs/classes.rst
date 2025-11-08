@@ -34,8 +34,7 @@ To wrap the class add the lines to the YAML file::
       - decl: void Method1()
 
 Shroud adds the attribute **+intent(ctor)** to the method ``new`` to mark it as a
-constructor.  In this example the empty paren expression is required
-to apply the annotation to the function instead of the result.
+constructor.
 Likewise, ``delete`` is marked as a destructor.  These annotations
 will create wrappers over the ``new`` and ``delete`` keywords.
 
