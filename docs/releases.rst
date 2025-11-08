@@ -16,13 +16,13 @@ Unreleased
 New Features
 ^^^^^^^^^^^^
 
-* Move default statements and helpers the file ``fc-statements.json``.
+* Move default statements and helpers to the file ``fc-statements.json``.
   See :ref:`StatementsAnchor` and :ref:`HelpersAnchor`.
   This makes it possible to change wrapper code by editing a JSON file
   instead of the Python source.
   
 * Most uses of `RuntimeError` have been replace by error handling which
-  cwill report as many errors as possible before quiting.
+  will report as many errors as possible before quiting.
 
 * Remove the assumption that there is only one template argument for
   types.  This worked for ``std::vector`` but is now generalized.
@@ -39,7 +39,9 @@ New Features
   any defaults.
 
 * Support recursive structs. Allows trees to be build in structs.
+
 * Add getter/setter for ``struct`` pointer fields in a struct.
+
 * Parse multiple declarators for a declaration in a struct.
   ex. ``struct name {int i, j;};``
 
