@@ -28,7 +28,6 @@ class WrapFlags(object):
     def __init__(self, options):
         self.fortran = options.get("wrap_fortran", False)
         self.c = options.get("wrap_c", False)
-        self.f_or_c = self.fortran or self.c
         self.lua = options.get("wrap_lua", False)
         self.python = options.get("wrap_python", False)
         self.signature_c = None
@@ -38,7 +37,6 @@ class WrapFlags(object):
     def clear(self):
         self.fortran = False
         self.c = False
-        self.f_or_c = False
         self.lua = False
         self.python = False
 
@@ -50,7 +48,6 @@ class WrapFlags(object):
         """
         self.fortran = fortran
         self.c = c
-        self.f_or_c = self.fortran or self.c
         self.lua = lua
         self.python = python
 
@@ -63,7 +60,6 @@ class WrapFlags(object):
         """
         self.fortran = self.fortran or wrap.fortran
         self.c = self.c or wrap.c
-        self.f_or_c = self.fortran or self.c
         self.lua = self.lua or wrap.lua
         self.python = self.python or wrap.python
 
@@ -555,11 +551,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_struct_getter_setter=True,
             F_trim_char_in=True,
             F_create_generic=True,
-            # wrap options are set in by command line options in main.py
-#            wrap_c=True,
-#            wrap_fortran=True,
-#            wrap_python=False,
-#            wrap_lua=False,
             doxygen=True,  # create doxygen comments
             literalinclude=False, # Create sphinx literalinclude markers
             literalinclude2=False, # Used with global identifiers

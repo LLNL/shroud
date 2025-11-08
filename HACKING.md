@@ -374,18 +374,47 @@ are too expensive to be enabled by default.  New in version 3.7.
 
     setenv PYTHONDEVMODE 1
 
-# Release
+# Release Process
 
-Update `docs/releases.rst` with changes and version number.
-It is best to continually update this file as changes are made.
+Typically, Shroud releases are done when it makes sense to make new
+features or other changes available to users.
 
-## Branch
+Shroud follows the semantic versioning scheme for assigning release
+numbers. Semantic versioning conveys specific meaning about the code
+and modifications from version to version by the way version numbers
+are constructed.
 
-Create a release branch.
+The *master* branch records the official release history of the
+project. Specifically, whenever, the *master* branch is changed, it is
+tagged with a new version number. We use a git ‘lightweight tag’ for
+this purpose. Such a tag is essentially a pointer to a specific commit
+on the *master* branch.
 
-## Version
+When all pull requests intended to be included in a release have been
+merged into the develop branch, we create a release candidate branch
+from the develop branch. The release candidate branch is used to
+finalize preparations for the release. At this point, the next release
+cycle begins and work may continue on the develop branch.
 
-Update version number in files
+When a release candidate branch is ready, it will be merged into the
+*master* branch and a release tag will be made. Then, the *master*
+branch is merged into the develop branch so that changes made to
+finalize the release are included there.
+
+Update `docs/releases.rst` with changes.
+It is best to continually update this file as user visible changes are made.
+
+## Start Release Candidate Branch
+
+Create a release candidate branch off the develop branch to initiate a
+release. The name of a release branch should contain the associated
+release version name. Typically, we use a name like v0.14.0-rc
+
+## Finalize the Release in the Release Candidate Branch
+
+All changes to Shroud related to finalizing the release documentation,
+as opposed to source code changes, are done in the release candidate
+branch. Typical changes include:
 
 * `shroud/metadata.py`
 * `setup.py`  Download path
@@ -396,7 +425,22 @@ Update version number in files
 * `docs/releases.rst`
 * Update reference files with new version. `make do-test-replace do-test-args=none`
 
-## Shiv
+## Create a Pull Request for the Release
+
+Create a pull request to merge the release candidate branch into
+*master* after all release preparation changes have been made. When
+the release candidate branch is complete, reviewed and approved, it
+will be merged into *master*.
+
+## Merge Release Candidate
+
+Merge the release candidate branch into the *master* branch after it
+has been approved and all CI checks have passed. Do not "squash merge"
+as it will make the histories of *master* and develop branches
+disagree, and we want to preserve the history. After merging, the
+release candidate branch can be deleted.
+
+## Create Shiv file
 
 `shiv` is a command line utility for building fully self-contained
 Python zipapps as outlined in PEP 441, but with all their dependencies
@@ -410,20 +454,71 @@ https://pypi.org/project/shiv/
     make shiv-file
     make do-test-shiv
 
-Move the shiv file to local system.
+## Draft a GitHub Release
 
-## PyPi
+Draft a new Release on GitHub.
+Describe in https://help.github.com/articles/creating-releases/
 
+* Enter a Release title. We typically use titles of the following form Shroud-v0.14.0
+
+* Select *master* as the target branch to tag a release.
+
+* Enter the release tag name, such as v0.14.0,
+  and specify to create the tag when the release is published.
+
+* Summary the information in `releases.rst` into the release description
+  (omit any sections that are empty).
+
+* Add shiv file into the binaries box.
+
+* Publish the release.
+  This will create a tag at the tip of the *master* branch and add
+  corresponding entry in the Releases section
+
+## Merge Master to Develop
+
+Create a pull request to merge *master* into develop so that changes
+in the release candidate branch are integrated into subsequent Shroud
+development.
+
+## Upload to PyPi
+
+https://pypi.org/manage/account/
+
+> You need an account on pypi.org and test.pypi.org.
+
+    make install-twine
+    rm dist/*
+    make sdist
+    make twine-check
+    make testpypi      installed at https://test.pypi.org
+
+Verify the test install.
+https://test.pypi.org/project/llnl-shroud/
+
+    cd ~/tmp
+    python3 -m venv testpypi
+    cd testpypi
+    bin/pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ llnl-shroud
+
+If the test install works, then do the real install.
 https://pypi.org/project/llnl-shroud/
 
-> You need an account on pypi.org
+    make pypi
+
+Then verify the install.
+
+    cd ~/tmp
+    python3 -m venv pypi
+    cd pypi
+    bin/pip install --index-url https://pypi.org/simple/ llnl-shroud
 
 ## Spack
 
 After a commit hash is created, update
 `scripts/spack/packages/py-shroud/package.py`.
 
-# Annual
+# Annual Changes
 
 Update copyright in `LICENSE`.
 
