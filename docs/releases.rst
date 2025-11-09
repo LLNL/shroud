@@ -10,6 +10,9 @@ Notes to help migrate between releases.
 Unreleased
 ----------
 
+v0.14.0
+-------
+
 * This is the last version to support Python 2.7.
   Future minimum will be 3.7.
 
@@ -37,8 +40,6 @@ New Features
   instead of just as a side effect of creating Fortran Wrappers.
   Shroud will not generate a C wrapper (option *c_wrap=True*) when
   language is ``c``.
-
-  Naming....
 
 * Support recursive structs. Allows trees to be build in structs.
 

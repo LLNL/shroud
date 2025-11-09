@@ -45,7 +45,7 @@ setup(
     author='Lawrence Livermore National Laboratory',
     author_email='shroud-users@groups.io',
 
-    download_url = 'https://github.com/LLNL/shroud/archive/v0.13.0.tar.gz',
+    download_url = 'https://github.com/LLNL/shroud/archive/v0.14.0.tar.gz',
     project_urls={
         'Documentation': 'http://shroud.readthedocs.io/en/develop',
         'Source': 'https://github.com/LLNL/shroud',
