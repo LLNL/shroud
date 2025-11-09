@@ -1,0 +1,38 @@
+# namesapi.yaml
+# Test options of F_API_case and C_API_case
+# do-test.py will run with different values for the options.
+# The output of the variants can be compared against
+# each other to verify how the options are working.
+
+copyright:
+- Copyright Shroud Project Developers. See LICENSE file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+library: testapi
+
+options:
+  debug: True
+
+  # always create wrappers to demonstrate name generation
+  F_force_wrapper: True
+  wrap_python: False
+
+
+declarations:
+- decl: void TopFunction1(void)
+
+- decl: class TopClass1
+  declarations:
+  - decl: int MemberVariable1;
+  - decl: void MemberFunction1(void)
+
+- decl: namespace InnerNamespace
+  declarations:
+  - decl: void InnerFunction1(void)
+
+  - decl: class InnerClass1
+    declarations:
+    - decl: int MemberVariable2;
+    - decl: void MemberFunction2(void)

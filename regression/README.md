@@ -57,6 +57,13 @@ Does not have a directory under ``run``.
 
 Test name generation when there is a top level namespace
 
+### nameapi
+
+Test options F_API_case and C_api_case.
+do-test.py will run with different values for the options.
+The output of the variants can be compared against
+each other to verify how the options are working.
+
 ### none
 
 Parse an empty file.  This test also uses some additional flags to

@@ -33,10 +33,12 @@ New Features
   statement group is selected to use with a type.  Function and class
   declarations always allowed multiple template arguments.
 
-* Added *fmtdict* field to Fortran and C statement groups. Similar to
-  *fmtdict* already in the Python statement groups. It allows format
-  fields to be set explicitly in the statement group to override the
-  any defaults.
+* C wrappers can now be generated independent of Fortran wrappers
+  instead of just as a side effect of creating Fortran Wrappers.
+  Shroud will not generate a C wrapper (option *c_wrap=True*) when
+  language is ``c``.
+
+  Naming....
 
 * Support recursive structs. Allows trees to be build in structs.
 
@@ -60,6 +62,14 @@ New Features
   even if the ``const`` keyword is not used.
   This will ensure that the *shadow* argument is ``intent(in)``.
 
+* Added attribute *+funptr*. Uses ``type(C_FUNPTR)`` for
+  function pointer arguments.
+
+* Added *fmtdict* field to Fortran and C statement groups. Similar to
+  *fmtdict* already in the Python statement groups. It allows format
+  fields to be set explicitly in the statement group to override the
+  any defaults.
+
 * Added options to control default behavior for dereferencing
   pointers. These options can be used instead of explicitly setting
   *deref* attribute to change the default on each ``decl`` lines:
@@ -70,9 +80,6 @@ New Features
   
 Changes to YAML input
 ^^^^^^^^^^^^^^^^^^^^^
-
-* Added attribute *+funptr*. Uses ``type(C_FUNPTR)`` for
-  function pointer arguments.
 
 * Renamed the *+free_pattern* attribute to *+destructor_name*.
   The values is looked up in the new **destructors** section of
@@ -88,15 +95,10 @@ Changes to YAML input
 * Attribute *+allocatable* is now *+deref(allocatable)*.
   This avoids setting *+allocatable* inconsistent with *+deref*.
 
-* C wrappers can now be generated independent of Fortran wrappers
-  instead of just as a side effect of creating Fortran Wrappers.
-
-  Shroud will not generate a C wrapper (option *c_wrap=True*) when
-  language is ``c``.
-
 .. Fortran interfaces are not generated for the C library routines.
   
-  As part of this effort some uses of *fstatements* in the YAML file
+  As part of creating C wrappers independent of Fortran wrapper,
+  some uses of *fstatements* in the YAML file
   must be changed.  The C wrapper created for the Fortran wrapper to call
   is now considered part of the Fortran wrapper processing.
   The *c_buf* label used with *fstatements* is now *f*.
@@ -433,7 +435,7 @@ Fixed
 ^^^^^
 
 * Fixed the case of mixing default arguments with *fortran_generic*.
-  The *fortran_generic* was restore arguments in the Fortran wrapper
+  The *fortran_generic* will restore arguments in the Fortran wrapper
   which were being trimmed by default arguments.
 
 * Define the typemap *f_cast* field for typedefs to use the

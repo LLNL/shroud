@@ -381,7 +381,7 @@ function pointer.
 
 The ``abstract interface`` is named from option
 **F_abstract_interface_subprogram_template** which defaults to
-``{underscore_name}_{argname}`` where *argname* is the name of the
+``{F_name_api}_{argname}`` where *argname* is the name of the
 function argument.
 
 If the function pointer uses an abstract declarator

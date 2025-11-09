@@ -37,6 +37,11 @@ CFI
    C Fortran Interface defined by the *Further interoperability of Fortran with C*
    features of TS29113 and Fortran 2018.
 
+flatten
+
+   The process of converting a nested name such as ``namespace::class::method``
+   into a name acceptable to Fortran and C such as ``namespace_class_method``.
+   
 Fortran wrapper
 
    Fortran functions which call the C wrapper functions.
