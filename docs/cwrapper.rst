@@ -18,7 +18,7 @@ meta-data must be provided by the user.
 Names
 -----
 
-Shroud will flatten scoped C++ library names to create the C API.
+Shroud will *flatten* scoped C++ library names to create the C API.
 Since C does not support scopes such as classes and namespaces, a name
 such as ``ns1::function`` must be flattened into ``ns1_function`` to
 avoid conflict with a similarly named function ``ns2::function``.
@@ -51,7 +51,7 @@ C wrapper::
 
     {C_return_type} {C_name}({C_prototype})
     {
-        {C_code}
+        splicer code
     }
 
     }
@@ -64,12 +64,14 @@ not be mangled by the C++ compiler.
 .. code-block:: yaml
 
     -  decl: void vector_string_fill(std::vector< std::string > &arg+intent(out))
-       format:
-         C_return_type: int
-         C_return_code: return SH_arg.size();
+       fstatements:
+         c:
+           c_return_type: int
+           c_return:
+           - return SH_arg.size();
 
 The C wrapper (and the Fortran wrapper) will return ``int`` instead of
-``void`` using **C_return_code** to compute the value.  In this case,
+``void`` using **c_return** to compute the value.  In this case,
 the wrapper will return the size of the vector.  This is useful since
 C and Fortran convert the vector into an array.
 
@@ -103,6 +105,7 @@ to generated *C_memory_dtor_function* used to destroy the memory:
     struct s_{C_capsule_data_type} {
         void *addr;     /* address of C++ memory */
         int idtor;      /* index of destructor */
+        int cmemflags;  /* memory flags */
     };
     typedef struct s_{C_capsule_data_type} {C_capsule_data_type};
 
@@ -115,13 +118,17 @@ to the C wrapper:
     struct s_{C_type_name} {
         void *addr;   /* address of C++ memory */
         int idtor;    /* index of destructor */
+        int cmemflags;  /* memory flags */
     };
     typedef struct s_{C_type_name} {C_type_name};
 
 
-``idtor`` is the index of the destructor code.  It is used
+``idtor`` is the index of the destructor code and ``cmemflags``
+describe other properties such as ownership.  It is used
 with memory managerment and discussed in :ref:`MemoryManagementAnchor`.
 
 The C wrapper for a function which returns a class instance will 
 return a *C_capsule_data_type* by value.  Functions which take 
 a class instance will receive a pointer to a *C_capsule_data_type*.
+.. XXX verify this paragraph
+

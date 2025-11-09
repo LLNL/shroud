@@ -49,7 +49,7 @@ the group:
     declarations:
     - block: True
       options:
-        F_name_impl_template: {library}_{undescore_name}
+        F_name_impl_template: {library}_{F_name_api}
       format:
         F_impl_filename: localfile.f
       declarations:
@@ -1148,9 +1148,9 @@ C implementation:
     extern "C" {
       // class.{class_name}.C_definitions
 
-      // function.{underscore_name}{function_suffix}
+      // function.{C_name_api}{function_suffix}
 
-      // class.{cxx_class}.method.{underscore_name}{function_suffix}
+      // class.{cxx_class}.method.{C_name_api}{function_suffix}
 
     }
 
