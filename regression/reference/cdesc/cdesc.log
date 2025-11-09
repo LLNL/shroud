@@ -1,27 +1,37 @@
 Read yaml cdesc.yaml
-C void Rank2In(int * arg +cdesc+intent(in)+rank(2))  +intent(subroutine)
-C void Rank2In(int * arg +cdesc+intent(in)+rank(2))  +intent(subroutine)
-C void GetScalar1(std::string & name +intent(in), void * value +cdesc+intent(in)+rank(0)+value)  +intent(subroutine)
-C void GetScalar1(std::string & name +intent(in), int * value +cdesc+intent(out)+rank(0))  +intent(subroutine)
-C void GetScalar1(std::string & name +intent(in), double * value +cdesc+intent(out)+rank(0))  +intent(subroutine)
-C int getData(void)  +intent(function)
-C double getData(void)  +intent(function)
+library C wrappers
+namespace cdesc
+C c void Rank2In(int *arg +api(cdesc)+intent(in)+rank(2))
+C f void Rank2In(int *arg +api(cdesc)+intent(in)+rank(2))
+C c void GetScalar1(std::string &name +intent(in), void *value +api(cdesc)+intent(in)+rank(0))
+C f void GetScalar1(std::string &name +intent(in), int *value +api(cdesc)+intent(out)+rank(0))
+C f void GetScalar1(std::string &name +intent(in), double *value +api(cdesc)+intent(out)+rank(0))
+C c int getData(void)
+C f int getData(void)
+C c double getData(void)
+C f double getData(void)
+C f void GetScalar2(std::string &name +intent(in), int *value +intent(out))
+C f void GetScalar2(std::string &name +intent(in), double *value +intent(out))
 Close wrapcdesc.h
 Close wrapcdesc.cpp
-Fortran void Rank2In(int * arg +cdesc+intent(in)+rank(2))  +intent(subroutine)
-Fortran void GetScalar1(std::string & name +intent(in), int * value +cdesc+intent(out)+rank(0))  +intent(subroutine)
-Fortran void GetScalar1(std::string & name +intent(in), double * value +cdesc+intent(out)+rank(0))  +intent(subroutine)
-Fortran int getData(void)  +intent(function)
-Fortran double getData(void)  +intent(function)
-Fortran void GetScalar2(std::string & name +intent(in), int * value +intent(out))  +intent(subroutine)
-Fortran void GetScalar2(std::string & name +intent(in), double * value +intent(out))  +intent(subroutine)
-C-interface void Rank2In(int * arg +cdesc+intent(in)+rank(2))  +intent(subroutine)
-C-interface void Rank2In(int * arg +cdesc+intent(in)+rank(2))  +intent(subroutine)
-C-interface void GetScalar1(std::string & name +intent(in), void * value +cdesc+intent(in)+rank(0)+value)  +intent(subroutine)
-C-interface void GetScalar1(std::string & name +intent(in), int * value +cdesc+intent(out)+rank(0))  +intent(subroutine)
-C-interface void GetScalar1(std::string & name +intent(in), double * value +cdesc+intent(out)+rank(0))  +intent(subroutine)
-C-interface int getData(void)  +intent(function)
-C-interface double getData(void)  +intent(function)
+library Fortran wrappers
+namespace cdesc
+Fortran void Rank2In(int *arg +api(cdesc)+intent(in)+rank(2))
+Fortran void GetScalar1(std::string &name +intent(in), int *value +api(cdesc)+intent(out)+rank(0))
+Fortran void GetScalar1(std::string &name +intent(in), double *value +api(cdesc)+intent(out)+rank(0))
+Fortran int getData(void)
+Fortran double getData(void)
+Fortran void GetScalar2(std::string &name +intent(in), int *value +intent(out))
+Fortran void GetScalar2(std::string &name +intent(in), double *value +intent(out))
+C-interface c void Rank2In(int *arg +api(cdesc)+intent(in)+rank(2))
+C-interface f void Rank2In(int *arg +api(cdesc)+intent(in)+rank(2))
+C-interface c void GetScalar1(std::string &name +intent(in), void *value +api(cdesc)+intent(in)+rank(0))
+C-interface f void GetScalar1(std::string &name +intent(in), int *value +api(cdesc)+intent(out)+rank(0))
+C-interface f void GetScalar1(std::string &name +intent(in), double *value +api(cdesc)+intent(out)+rank(0))
+C-interface f int getData(void)
+C-interface f double getData(void)
+C-interface f void GetScalar2(std::string &name +intent(in), int *value +intent(out))
+C-interface f void GetScalar2(std::string &name +intent(in), double *value +intent(out))
 Close wrapfcdesc.f
 Close utilcdesc.cpp
 Close typescdesc.h

@@ -1,6 +1,4 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 # #######################################################################
@@ -11,12 +9,11 @@ ifeq ($(top),)
 top := ../../..
 endif 
 
-include $(top)/regression/run/defaults.mk
+testdir = tr29113
 
 INCLUDE = \
     -I$(top)/regression/reference/tr29113 \
-    -I$(top)/regression/run/tr29113 \
-    -I$(top)/regression/run/fruit
+    -I$(top)/regression/run/tr29113
 
 VPATH = \
     $(top)/regression/reference/tr29113 \
@@ -28,19 +25,16 @@ C_OBJS = \
     utiltr29113.o \
     wraptr29113.o
 F_OBJS = \
-    wrapftr29113.o \
+    main.o \
     fruit.o \
-    main.o
+    wrapftr29113.o
 
 ifeq ($(compiler),gcc)
 FFLAGS += -std=f2008ts
 endif
 
-tr29113 : $(C_OBJS) $(F_OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
+include $(top)/regression/run/defaults.mk
 
-clean :
-	rm -f $(OBJS) *.mod tr29113
 
 tr29113.o : tr29113.hpp
 wrapTr29113.o : wraptr29113.h tr29113.hpp

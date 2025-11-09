@@ -1,0 +1,93 @@
+
+----------------------------------------
+Phase: Check statements
+----------------------------------------
+statement line 16
+Statement must have name or alias
+--------------------
+statement line 17
+Statement: short
+Statement name is too short, must include language and intent.
+--------------------
+statement line 18
+Statement: java_mixin
+Statement does not start with a known language code: 'java'
+--------------------
+statement line 20
+Statement: f_mixin_with-base
+Intent mixin group should not have 'base' field.
+--------------------
+statement line 22
+Statement: f_mixin_with-alias
+Intent mixin group should not have 'alias' field.
+--------------------
+statement line 24
+Statement: f_mixin_with-append
+Intent mixin group should not have 'append' field.
+--------------------
+statement line 26
+Statement: f_mixin_with-alias
+Intent mixin group should not have 'alias' field.
+--------------------
+statement line 30
+Statement: f_mixin_one_alias
+Intent mixin only allowed in name, not alias.
+--------------------
+statement line 33
+Statement: f_in_foo1
+Mixin 'f_in_foo1mixin' must have intent 'mixin'.
+--------------------
+statement line 36
+Statement: f_in_foo2
+Mixin 'f_mixin_nonexistent' not found.
+--------------------
+statement line 42
+Statement: f_mixin_good1
+Statement name 'f_mixin_good1' already exists.
+--------------------
+statement line 46
+Statement: f_in_foo4
+Base 'nonexistent' not found.
+--------------------
+statement line 49
+Statement: f_in_foo5
+Alias 'f_in_foo5a' already exists.
+--------------------
+statement line 49
+Statement: f_in_foo5
+Invalid intent 'badintent' in alias 'f_badintent_foo5ain'.
+--------------------
+statement line 49
+Statement: f_in_foo5
+Mixin not allowed in alias 'f_mixin_not-here'.
+--------------------
+statement line 56
+Statement: f_badintent_foo6
+Invalid intent 'badintent'.
+--------------------
+statement line 60
+Statement: f_in_foo7
+field c_arg_decl is deprecated, changed to c_prototype
+--------------------
+statement line 60
+Statement: f_in_foo7
+c_prototype must be a list.
+--------------------
+statement line 62
+Statement: f_in_foo8
+field c_arg_decl is deprecated, changed to c_prototype
+--------------------
+statement line 62
+Statement: f_in_foo8
+field i_arg_decl is deprecated, changed to i_dummy_decl
+--------------------
+statement line 62
+Statement: f_in_foo8
+field i_arg_names is deprecated, changed to i_dummy_arg
+--------------------
+statement line 62
+Statement: f_in_foo8
+c_prototype, i_dummy_decl and i_dummy_arg must all be same length. Used 1, 1, 2.
+Wrote wrapferror.f
+Wrote utilerror.cpp
+Wrote typeserror.h

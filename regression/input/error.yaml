@@ -1,0 +1,72 @@
+copyright:
+- Copyright Shroud Project Developers. See LICENSE file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+# Test error messages
+
+library: error
+cxx_header: error.hpp
+
+options:
+  debug: True
+  wrap_python: True
+  F_assumed_rank_max: 2
+  PY_write_helper_in_util: True
+
+declarations:
+
+- decl: struct Cstruct_as_subclass {
+          int x1;
+          int y1;
+          int z1;
+        };
+  options:
+    wrap_struct_as: class
+    class_baseclass: Cstruct_as_class
+  doxygen:
+    description: |
+      Treat a struct as a subclass of another struct
+
+- decl: void BadFstatements(void)
+  fstatements:
+    f:
+      f_post_call:
+      - "{no_such_var} = 10"
+      c_return_type: no-such-type
+      helper:
+      - no_c_helper
+    c:
+      c_post_call:
+      - "{no_c_var} = 11;"
+      - "{bad_format = 12;"
+      helper:
+      - no_c_helper2
+
+- decl: void AssumedRank(int *data+dimension(..))
+
+#####
+#
+
+- decl: void PYGoodFunction(void)
+  options:
+  options:
+    wrap_c: False
+    wrap_fortran: False
+    PY_array_arg: none
+    PY_struct_arg: none
+
+
+#####
+# Report on old usage for free_pattern
+
+- decl: const std::string * getConstStringPtrOwnsAllocPattern() +owner(caller)
+  options:
+    wrap_python: False
+  fattrs:
+    free_pattern: C_string_free
+
+patterns:
+    C_string_free: |
+        // Used with +free_pattern(C_string_free)

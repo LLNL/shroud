@@ -1,0 +1,86 @@
+Wrote error_types.yaml
+
+----------------------------------------
+Phase: FillMeta function
+----------------------------------------
+Node: getConstStringPtrOwnsAllocPattern
+line 64
+const std::string *getConstStringPtrOwnsAllocPattern(void) +free_pattern(C_string_free)+owner(caller)
+Deprecated: free_pattern is deprecated. Replace with destructor_name.
+--------------------
+Node: getConstStringPtrOwnsAllocPattern
+line 64
+const std::string *getConstStringPtrOwnsAllocPattern(void) +free_pattern(C_string_free)+owner(caller)
+Deprecated: destructor_name must now be in destructor group instead patterns.
+
+----------------------------------------
+Phase: initial
+----------------------------------------
+Node: Cstruct_as_subclass
+line 20
+Unknown class 'Cstruct_as_class' in option.class_baseclass
+Wrote wrapCstruct_as_subclass.h
+Wrote wrapCstruct_as_subclass.cpp
+
+----------------------------------------
+Phase: Wrapc.wrap_function
+----------------------------------------
+Node: BadFstatements
+line 32
+Statement: c_subroutine
+No such helper 'no_c_helper2'
+--------------------
+Node: BadFstatements
+line 32
+Statement: c_subroutine
+No value for 'no_c_var' in '{no_c_var} = 11;'
+--------------------
+Node: BadFstatements
+line 32
+Statement: c_subroutine
+expected '}' before end of string in '{bad_format = 12;'
+--------------------
+Node: BadFstatements
+line 32
+Statement: f_subroutine
+No such helper 'no_c_helper'
+Wrote wraperror.h
+Wrote wraperror.cpp
+
+----------------------------------------
+Phase: Wrapf.wrap_function_impl
+----------------------------------------
+Node: BadFstatements
+line 32
+Statement: f_subroutine
+No such helper 'no_c_helper'
+--------------------
+Node: BadFstatements
+line 32
+Statement: f_subroutine
+No value for 'no_such_var' in '{no_such_var} = 10'
+
+----------------------------------------
+Phase: Wrapf.wrap_function_interface
+----------------------------------------
+Node: BadFstatements
+line 32
+Statement: f_subroutine
+Unknown type in c_return_type: no-such-type
+Wrote wrapferror.f
+Wrote utilerror.cpp
+Wrote typeserror.h
+
+----------------------------------------
+Phase: Wrapp.wrap_functions
+----------------------------------------
+Node: PYGoodFunction
+line 54
+Illegal value for PY_array_arg 'none'
+--------------------
+Node: PYGoodFunction
+line 54
+Illegal value for PY_struct_arg 'none'
+Wrote pyerrormodule.cpp
+Wrote pyerrormodule.hpp
+Wrote setup.py

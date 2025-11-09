@@ -1,7 +1,5 @@
 copyright:
-- Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-- other Shroud Project Developers.
-- See the top-level COPYRIGHT file for details.
+- Copyright Shroud Project Developers. See LICENSE file for details.
 -
 - "SPDX-License-Identifier: (BSD-3-Clause)"
 -
@@ -47,14 +45,6 @@ declarations:
 #      iso_c_binding:
 #      - C_LONG
 
-- decl: typedef int TypeID
-  fields:
-    # enum for types
-    c_header : sidre/SidreTypes.h
-    cxx_header : sidre/SidreWrapperHelpers.hpp
-    cxx_to_c : static_cast<int>({cxx_var})
-    c_to_cxx : getTypeID({c_var})
-
 - decl: namespace example
   declarations:
   - decl: namespace nested
@@ -94,11 +84,6 @@ declarations:
       - decl: int incrementCount(int incr)
 
       - decl: const string& getNameErrorCheck() const
-
-      - decl: const string& getNameArg() const
-      # This function will convert the return value into a argument
-        format:
-           F_string_result_as_arg: name
 
       - decl: int  getValue(int value)
         format:
@@ -157,22 +142,8 @@ declarations:
       # test forward declarations
       - decl: ExClass1 *get_class1(const ExClass1 *in)
 
-      # typedefs that require modules
-      - decl: void* declare(TypeID type, SidreLength len = 1)
-        # by returning this,the C++ function allows chaining.
-        # make them subroutines in Fortran.
-        return_this: True
-        fortran_generic:
-        -  decl: (int len=1)
-           function_suffix: _int
-        -  decl: (long len=1)
-           function_suffix: _long
-
       # void function
       - decl: void destroyall()
-
-      # return typedef'd type
-      - decl: TypeID getTypeID() const
 
       - decl: template<typename ValueType> void setValue(ValueType value)
         cxx_template:
@@ -312,3 +283,8 @@ declarations:
         brief: Test multidimensional arrays with allocatable
       options:
          F_standard: 2008
+
+    - decl: void pass_voidstartstar(void **args+intent(in)+value)
+      options:
+        wrap_lua: False
+        wrap_python: False

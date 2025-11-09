@@ -1,6 +1,4 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 
@@ -47,15 +45,15 @@ setup(
     author='Lawrence Livermore National Laboratory',
     author_email='shroud-users@groups.io',
 
-    download_url = 'https://github.com/LLNL/shroud/archive/v0.13.0.tar.gz',
+    download_url = 'https://github.com/LLNL/shroud/archive/v0.14.0.tar.gz',
     project_urls={
         'Documentation': 'http://shroud.readthedocs.io/en/develop',
         'Source': 'https://github.com/LLNL/shroud',
     },
 
-    # Choose your license
-#    license='BSD License',
-
+    license='BSD-3-Clause',
+    license_files=["LICENSE"],
+    
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
         # How mature is this project? Common values are
@@ -69,19 +67,18 @@ setup(
         'Topic :: Software Development :: Build Tools',
         'Topic :: Software Development :: Code Generators',
 
-        # Pick your license as you wish (should match "license" above)
-        'License :: OSI Approved :: BSD License',
-
         # Specify the Python versions you support here. In particular, ensure
         # that you indicate whether you support Python 2, Python 3 or both.
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
+        'Programming Language :: Python :: 3.13',
     ],
 
     # What does your project relate to?
@@ -92,11 +89,18 @@ setup(
 #    packages=find_packages(exclude=['contrib', 'docs', 'tests']),
     packages=['shroud'],
 
+#    packages=find_packages(where="src"),
+#    package_dir={"": "src"},
+    package_data={"": ["*.json"]},
+
     # List run-time dependencies here.  These will be installed by pip when
     # your project is installed. For an analysis of "install_requires" vs pip's
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
-    install_requires=['PyYAML>=4.2b1, <=5.4.1'],  # Upper limit for Python2
+    install_requires=[
+        "PyYAML>=4.2b1, <=5.4.1; python_version<'3.0'", # Restrict PyYAML for Python 2.7
+        "PyYAML>=6.0; python_version>='3.0'",  # Use newer versions for Python 3
+    ],
 
     # List additional groups of dependencies here (e.g. development
     # dependencies). You can install these using the following syntax,
@@ -106,8 +110,6 @@ setup(
 #        'dev': ['check-manifest'],
 #        'test': ['coverage'],
 #    },
-
-     test_suite="tests.load_tests2",
 
     # Although 'package_data' is the preferred approach, in some case you may
     # need to place data files outside of your packages. See:

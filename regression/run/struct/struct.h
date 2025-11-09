@@ -1,7 +1,5 @@
-/* This is generated code, do not edit
- * Copyright (c) 2017-2019, Lawrence Livermore National Security, LLC and
- * other Shroud Project Developers.
- * See the top-level COPYRIGHT file for details.
+/*
+ * Copyright Shroud Project Developers. See LICENSE file for details.
  *
  * SPDX-License-Identifier: (BSD-3-Clause)
  *
@@ -32,6 +30,7 @@ void acceptStructInOutPtr(Cstruct1 *arg);
 Cstruct1 returnStructByValue(int i, double d);
 Cstruct1 *returnStructPtr1(int i, double d);
 Cstruct1 *returnStructPtr2(int i, double d, char *outbuf);
+Cstruct1 *returnStructPtrArray(void);
 
 int callback1(Cstruct1 *arg, int (*work)(Cstruct1 *arg));
 
@@ -89,6 +88,17 @@ struct Cstruct_as_subclass {
 typedef struct Cstruct_as_subclass Cstruct_as_subclass;
 // end struct Cstruct_as_class
 
+// Not all fields are wrapped in the YAML file.
+// This demonstrates that only that wrap_struct_as=class
+// does not need all fields wrapped, similar to a class.
+struct Cstruct_as_class2 {
+    char *name;          // get a Fortran allocatable
+    char *private_name;  // not wrapped
+    char *name_ptr;      // get as Fortran pointer
+    char *name_copy;     // get a copy of the field
+};
+typedef struct Cstruct_as_class2 Cstruct_as_class2;
+
 struct Cstruct_as_numpy {
     int x2;
     int y2;
@@ -107,8 +117,23 @@ int acceptBothStructs(Cstruct_as_class *s1, Cstruct_as_numpy *s2);
 
 Cstruct_as_subclass *Create_Cstruct_as_subclass_args(int x, int y, int z);
 
+// C_shadow_result: False
+Cstruct_as_class *Return_Cstruct_as_class(void);
+Cstruct_as_class *Return_Cstruct_as_class_args(int x, int y);
+Cstruct_as_subclass *Return_Cstruct_as_subclass_args(int x, int y, int z);
+
+
 Cstruct_list *get_global_struct_list(void);
 
+/*----------------------------------------------------------------------*/
+// recursive struct
+
+typedef struct s_nested nested;
+struct s_nested {
+    int sublevels;
+    nested *parent;
+    nested **child;
+};
 
 
 #endif // STRUCT_H

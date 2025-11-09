@@ -1,7 +1,5 @@
 copyright:
-- Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-- other Shroud Project Developers.
-- See the top-level COPYRIGHT file for details.
+- Copyright Shroud Project Developers. See LICENSE file for details.
 -
 - "SPDX-License-Identifier: (BSD-3-Clause)"
 -
@@ -23,9 +21,16 @@ declarations:
   declarations:
   - decl: int m_flag +readonly;
   - decl: int m_test +name(test);
+  - decl: bool m_bool;
   - decl: std::string m_name
     options:
       wrap_python: False
+  - decl: std::string m_name_ptr +deref(pointer) +readonly
+    options:
+       wrap_python: False
+  - decl: std::string m_name_copy +deref(copy) +readonly
+    options:
+       wrap_python: False
   - decl: Class1()
     format:
       function_suffix: _default
@@ -82,10 +87,17 @@ declarations:
     doxygen:
       brief: test helper
 
+  - decl: std::string getPath() const +len(40)
+    doxygen:
+      description:
+        When return-by-value, the Fortran user always owns the memory.
+        This causes a capsule to passed to the string which
+        invalidates pure as suggested by the const.
+  
   - decl: enum DIRECTION { UP = 2, DOWN, LEFT= 100, RIGHT };
   
   - decl: DIRECTION directionFunc(DIRECTION arg);
-  
+
 ##################################################
 
 - decl: class Class2
@@ -149,6 +161,8 @@ declarations:
     wrap_lua: False
 
 - decl: const Class1 &getConstClassReference()
+  doxygen:
+    brief: Return a pointer to a library owned structure.
   options:
     # const issues with python
     wrap_python: False
@@ -159,9 +173,12 @@ declarations:
 #  wrap_python: False
     wrap_lua: False
 
-- decl: Class1 getClassCopy(int flag)
+- decl: Class1 getClass1Copy(int flag)
   doxygen:
     brief: Return Class1 instance by value, uses copy constructor
+    description: |
+      Return by value causes Shroud to create memory which
+      must be released by the caller.
   options:
     wrap_python: False
     wrap_lua: False
@@ -186,11 +203,13 @@ declarations:
 - decl: class Shape
   declarations:
   - decl: Shape()
+  - decl: ~Shape()
   - decl: int get_ivar() const
 
 - decl: "class Circle : public Shape"
   declarations:
   - decl: Circle()
+  - decl: ~Circle()
 
 ##################################################
 # test getters with pointers

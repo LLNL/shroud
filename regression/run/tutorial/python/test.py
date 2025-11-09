@@ -1,6 +1,4 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 #
@@ -104,22 +102,12 @@ class Tutorial(unittest.TestCase):
     def test_typefunc(self):
         self.assertEqual(2, tutorial.typefunc(2))
 
-    def test_enumfunc(self):
-        self.assertEqual(2, tutorial.enumfunc(1))
-
     def test_getMinMax(self):
         r = tutorial.getMinMax()
         self.assertEqual((-1,100), r)
 
-#
-#  end subroutine test_functions
-#
 
-# creating a new test suite
-newSuite = unittest.TestSuite()
- 
-# adding a test case
-newSuite.addTest(unittest.makeSuite(Tutorial))
+unittest.TestLoader().loadTestsFromTestCase(Tutorial)
 
 if __name__ == "__main__":
     unittest.main()

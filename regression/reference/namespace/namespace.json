@@ -6,9 +6,7 @@
             "outer_Cstruct1"
         ],
         "copyright": [
-            "Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and",
-            "other Shroud Project Developers.",
-            "See the top-level COPYRIGHT file for details.",
+            "Copyright Shroud Project Developers. See LICENSE file for details.",
             "",
             "SPDX-License-Identifier: (BSD-3-Clause)",
             ""
@@ -18,18 +16,206 @@
         ],
         "functions": [
             {
-                "<FUNCTION>": "1 ****************************************",
-                "C_generated_path": [
-                    "arg_to_buffer"
-                ],
-                "_PTR_F_C_index": "3",
+                "<FUNCTION>": "PassLevelEnum  1 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "PassLevelEnum",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "name": "value",
+                                    "typemap_name": "upper::Level"
+                                },
+                                "specifier": [
+                                    "upper::Level"
+                                ],
+                                "typemap_name": "upper::Level"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void PassLevelEnum(upper::Level value)",
+                "declgen": "void PassLevelEnum(upper::Level value)",
+                "name": "PassLevelEnum",
+                "options": {
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "PassLevelEnum(\tSHCXX_value)",
+                                "C_call_list": "SHCXX_value",
+                                "C_name": "NS_PassLevelEnum",
+                                "C_prototype": "enum NS_upper_Level value",
+                                "C_return_type": "void",
+                                "i_arguments": "value",
+                                "i_name_function": "c_pass_level_enum",
+                                "i_subprogram": "subroutine",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "value": {
+                            "fmtdict": {
+                                "c_abstract_decl": "enum NS_upper_Level",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "enum NS_upper_Level",
+                                "c_var": "value",
+                                "ci_type": "int",
+                                "cxx_abstract_decl": "upper::Level",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHCXX_value",
+                                "cxx_type": "upper::Level",
+                                "cxx_var": "SHCXX_value",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "value",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "integer(C_INT)",
+                                "i_var": "value",
+                                "idtor": "0",
+                                "stmt_name": "c_in_enum",
+                                "typemap_name": "upper::Level"
+                            },
+                            "meta": {
+                                "abstract": "enum",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "c_in_enum"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "PassLevelEnum(\tSHCXX_value)",
+                                "C_call_list": "SHCXX_value",
+                                "C_name": "NS_PassLevelEnum_bufferify",
+                                "C_prototype": "int value",
+                                "C_return_type": "void",
+                                "F_arg_c_call": "value",
+                                "F_arguments": "value",
+                                "F_subprogram": "subroutine",
+                                "f_call_function": "c_pass_level_enum_bufferify",
+                                "i_arguments": "value",
+                                "i_name_function": "pass_level_enum",
+                                "i_subprogram": "subroutine",
+                                "i_suffix": "_bufferify",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "value": {
+                            "fmtdict": {
+                                "c_abstract_decl": "enum NS_upper_Level",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "value",
+                                "ci_type": "int",
+                                "cxx_abstract_decl": "upper::Level",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHCXX_value",
+                                "cxx_type": "upper::Level",
+                                "cxx_var": "SHCXX_value",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "value",
+                                "fc_var": "value",
+                                "i_intent": "IN",
+                                "i_intent_attr": ", intent(IN)",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "integer(C_INT)",
+                                "i_var": "value",
+                                "idtor": "0",
+                                "stmt_name": "f_in_enum",
+                                "typemap_name": "upper::Level"
+                            },
+                            "meta": {
+                                "abstract": "enum",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_enum"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            }
+                        },
+                        "value": {
+                            "meta": {
+                                "abstract": "enum",
+                                "intent": "in",
+                                "value": true
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "PassLevelEnum",
+                    "F_name_api": "pass_level_enum",
+                    "F_name_function": "pass_level_enum",
+                    "F_name_generic": "pass_level_enum",
+                    "F_name_impl": "pass_level_enum",
+                    "c_arglist": [
+                        "c_var",
+                        "value"
+                    ],
+                    "f_arglist": [
+                        "f_var",
+                        "value"
+                    ],
+                    "function_name": "PassLevelEnum"
+                }
+            },
+            {
+                "<FUNCTION>": "LastFunctionCalled  2 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
-                        "metaattrs": {
-                            "deref": "allocatable",
-                            "intent": "function"
-                        },
                         "name": "LastFunctionCalled",
                         "params": [],
                         "pointer": [
@@ -45,7 +231,16 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string& LastFunctionCalled()",
-                "declgen": "const std::string & LastFunctionCalled(void)",
+                "declgen": "const std::string &LastFunctionCalled(void)",
+                "helpers": {
+                    "fc": [
+                        "array_context",
+                        "capsule_data",
+                        "string_to_cdesc",
+                        "copy_string",
+                        "capsule_dtor"
+                    ]
+                },
                 "name": "LastFunctionCalled",
                 "options": {},
                 "wrap": {
@@ -53,169 +248,175 @@
                     "fortran": true,
                     "python": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "LastFunctionCalled(\t)",
+                                "C_name": "NS_LastFunctionCalled",
+                                "C_prototype": "void",
+                                "C_return_type": "const char *",
+                                "c_abstract_decl": "const char *",
+                                "c_const": "const ",
+                                "c_local_cxx": "SHC_rv_cxx",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHC_rv_cxx)",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHC_rv_cxx",
+                                "f_type": "character(len=*)",
+                                "f_var": "SHT_rv",
+                                "i_arguments": "",
+                                "i_kind": "C_CHAR",
+                                "i_module_name": "iso_c_binding",
+                                "i_name_function": "c_last_function_called",
+                                "i_result_clause": "\fresult(SHT_rv)",
+                                "i_subprogram": "function",
+                                "i_type": "character(kind=C_CHAR)",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "stmt_name": "c_function_string&",
+                                "typemap_name": "std::string"
+                            },
+                            "meta": {
+                                "abstract": "string&",
+                                "intent": "function"
+                            },
+                            "stmt": "c_function_string&"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "LastFunctionCalled(\t)",
+                                "C_name": "NS_LastFunctionCalled_bufferify",
+                                "C_prototype": "NS_SHROUD_array *SHT_rv_cdesc,\t NS_SHROUD_capsule_data *SHT_rv_capsule",
+                                "C_return_type": "void",
+                                "F_arg_c_call": "SHT_rv_cdesc,\t SHT_rv_capsule",
+                                "F_arguments": "",
+                                "F_subprogram": "function",
+                                "c_abstract_decl": "const char *",
+                                "c_const": "const ",
+                                "c_helper_array_context": "NS_SHROUD_array",
+                                "c_helper_capsule_dtor": "NS_SHROUD_memory_destructor",
+                                "c_helper_copy_string": "NS_ShroudCopyString",
+                                "c_helper_string_to_cdesc": "ShroudStringToCdesc",
+                                "c_local_cxx": "SHC_rv_cxx",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "c_var_capsule": "SHT_rv_capsule",
+                                "c_var_cdesc": "SHT_rv_cdesc",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHC_rv_cxx)",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHC_rv_cxx",
+                                "f_call_function": "c_last_function_called_bufferify",
+                                "f_deref_attr": ", allocatable",
+                                "f_helper_array_context": "NS_SHROUD_array",
+                                "f_helper_capsule_data": "NS_SHROUD_capsule_data",
+                                "f_helper_capsule_dtor": "NS_SHROUD_capsule_dtor",
+                                "f_helper_copy_string": "NS_SHROUD_copy_string",
+                                "f_result_clause": "\fresult(SHT_rv)",
+                                "f_type": "character(len=:)",
+                                "f_var": "SHT_rv",
+                                "f_var_capsule": "SHT_rv_capsule",
+                                "f_var_cdesc": "SHT_rv_cdesc",
+                                "fc_var": "SHT_rv",
+                                "i_arguments": "SHT_rv_cdesc,\t SHT_rv_capsule",
+                                "i_intent": "OUT",
+                                "i_intent_attr": ", intent(OUT)",
+                                "i_kind": "C_CHAR",
+                                "i_module_name": "iso_c_binding",
+                                "i_name_function": "c_last_function_called_bufferify",
+                                "i_subprogram": "subroutine",
+                                "i_suffix": "_bufferify",
+                                "i_type": "character(kind=C_CHAR)",
+                                "i_var": "SHT_rv",
+                                "i_var_capsule": "SHT_rv_capsule",
+                                "i_var_cdesc": "SHT_rv_cdesc",
+                                "idtor": "0",
+                                "stmt_name": "f_function_string&_cdesc_allocatable",
+                                "typemap_name": "std::string"
+                            },
+                            "meta": {
+                                "abstract": "string&",
+                                "api": "cdesc",
+                                "deref": "allocatable",
+                                "intent": "function"
+                            },
+                            "stmt": "f_function_string&_cdesc_allocatable"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "fmtdict": {
+                                "array_size": "1",
+                                "c_var": "SHCXX_rv",
+                                "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHCXX_rv",
+                                "data_var": "SHData_rv",
+                                "numpy_type": null,
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv",
+                                "stmt": "py_function_string&",
+                                "value_var": "SHValue_rv"
+                            },
+                            "meta": {
+                                "abstract": "string&",
+                                "intent": "function"
+                            },
+                            "stmt": "py_function_string&"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "abstract": "string&",
+                                "intent": "function"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
-                    "C_name": "NS_LastFunctionCalled",
                     "C_name_api": "LastFunctionCalled",
-                    "C_prototype": "void",
-                    "C_return_type": "const char *",
-                    "F_C_arguments": "",
-                    "F_C_call": "c_last_function_called_bufferify",
-                    "F_C_name": "c_last_function_called",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_rv_cdesc",
-                    "F_arguments": "",
                     "F_name_api": "last_function_called",
                     "F_name_function": "last_function_called",
                     "F_name_generic": "last_function_called",
                     "F_name_impl": "last_function_called",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
                     "PY_name_impl": "PY_LastFunctionCalled",
-                    "cxx_rv_decl": "const std::string & SHCXX_rv",
+                    "c_arglist": [
+                        "SHC_rv"
+                    ],
+                    "f_arglist": [
+                        "SHT_rv"
+                    ],
                     "function_name": "LastFunctionCalled"
                 },
-                "zz_fmtresult": {
-                    "fmtc": {
-                        "c_const": "const ",
-                        "c_rv_decl": "const char * SHC_rv",
-                        "c_type": "char",
-                        "c_val": "SHCXX_rv.c_str()",
-                        "c_var": "SHC_rv",
-                        "cfi_type": "CFI_type_other",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
-                        "cxx_type": "std::string",
-                        "cxx_var": "SHCXX_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_string_&_allocatable",
-                        "stmt1": "c_function_string_&"
-                    },
-                    "fmtf": {
-                        "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
-                        "cxx_type": "std::string",
-                        "f_intent": "OUT",
-                        "f_kind": "C_CHAR",
-                        "f_type": "character(*)",
-                        "f_var": "SHT_rv",
-                        "hnamefunc0": "NS_SHROUD_copy_string_and_free",
-                        "hnamefunc1": "array_context",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_function_string_&_cdesc_allocatable",
-                        "stmt1": "f_function_string_&_cdesc_allocatable",
-                        "stmtc0": "c_function_string_&_cdesc_allocatable",
-                        "stmtc1": "c_function_string_&_cdesc_allocatable"
-                    },
-                    "fmtpy": {
-                        "array_size": "1",
-                        "c_deref": "",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
-                        "cxx_type": "std::string",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": null,
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt0": "py_function_string_&",
-                        "stmt1": "py_function_string_&",
-                        "value_var": "SHValue_rv"
+                "zz_fmtlang": {
+                    "py": {
+                        "C_call_function": "LastFunctionCalled()",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "py_var": "SHTPy_rv"
                     }
                 }
             },
             {
-                "<FUNCTION>": "3 ****************************************",
-                "_PTR_C_CXX_index": "1",
-                "_generated": "arg_to_buffer",
-                "ast": {
-                    "const": true,
-                    "declarator": {
-                        "metaattrs": {
-                            "api": "cdesc",
-                            "deref": "allocatable",
-                            "intent": "function"
-                        },
-                        "name": "LastFunctionCalled",
-                        "params": [],
-                        "pointer": [
-                            {
-                                "ptr": "&"
-                            }
-                        ],
-                        "typemap_name": "std::string"
-                    },
-                    "specifier": [
-                        "std::string"
-                    ],
-                    "typemap_name": "std::string"
-                },
-                "decl": "const std::string& LastFunctionCalled()",
-                "declgen": "const std::string & LastFunctionCalled(void)",
-                "name": "LastFunctionCalled",
-                "options": {},
-                "splicer_group": "buf",
-                "wrap": {
-                    "c": true,
-                    "f_c": true
-                },
-                "zz_fmtdict": {
-                    "C_name": "NS_LastFunctionCalled_bufferify",
-                    "C_name_api": "LastFunctionCalled",
-                    "C_prototype": "NS_SHROUD_array *SHT_rv_cdesc",
-                    "C_return_type": "void",
-                    "F_C_arguments": "SHT_rv",
-                    "F_C_name": "c_last_function_called_bufferify",
-                    "F_C_result_clause": "",
-                    "F_C_subprogram": "subroutine",
-                    "F_name_api": "last_function_called",
-                    "cxx_rv_decl": "const std::string & SHCXX_rv",
-                    "function_name": "LastFunctionCalled",
-                    "function_suffix": "_bufferify"
-                },
-                "zz_fmtresult": {
-                    "fmtc": {
-                        "c_const": "const ",
-                        "c_type": "char",
-                        "c_var": "SHC_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
-                        "cfi_type": "CFI_type_other",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
-                        "cxx_type": "std::string",
-                        "cxx_var": "SHCXX_rv",
-                        "hnamefunc0": "ShroudStrToArray",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_function_string_&_cdesc_allocatable",
-                        "stmt1": "c_function_string_&_cdesc_allocatable"
-                    },
-                    "fmtf": {
-                        "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
-                        "c_var_cdesc": "SHT_rv_cdesc",
-                        "f_intent": "OUT",
-                        "f_kind": "C_CHAR",
-                        "f_type": "character(*)",
-                        "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_OTHER"
-                    }
-                }
-            },
-            {
-                "<FUNCTION>": "2 ****************************************",
+                "<FUNCTION>": "One  3 ****************************************",
                 "ast": {
                     "declarator": {
-                        "metaattrs": {
-                            "intent": "subroutine"
-                        },
                         "name": "One",
                         "params": [],
                         "typemap_name": "void"
@@ -231,57 +432,122 @@
                 "options": {},
                 "wrap": {
                     "c": true,
-                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "One(\t)",
+                                "C_name": "NS_One",
+                                "C_prototype": "void",
+                                "C_return_type": "void",
+                                "i_name_function": "c_one",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "One(\t)",
+                                "C_name": "NS_One",
+                                "C_prototype": "void",
+                                "C_return_type": "void",
+                                "F_arguments": "",
+                                "F_subprogram": "subroutine",
+                                "f_call_function": "c_one",
+                                "i_arguments": "",
+                                "i_name_function": "one",
+                                "i_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        }
+                    },
+                    "py": {
+                        "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            },
+                            "stmt": "py_subroutine"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "abstract": "void",
+                                "intent": "subroutine"
+                            }
+                        }
+                    }
+                },
                 "zz_fmtdict": {
-                    "C_name": "NS_One",
                     "C_name_api": "One",
-                    "C_prototype": "void",
-                    "C_return_type": "void",
-                    "F_C_arguments": "",
-                    "F_C_call": "c_one",
-                    "F_C_name": "one",
-                    "F_C_subprogram": "subroutine",
-                    "F_arguments": "",
                     "F_name_api": "one",
                     "F_name_function": "one",
                     "F_name_generic": "one",
                     "F_name_impl": "one",
-                    "F_subprogram": "subroutine",
                     "PY_name_impl": "PY_One",
-                    "function_name": "One",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_subroutine",
-                    "stmtc0": "c_subroutine",
-                    "stmtc1": "c_subroutine"
+                    "c_arglist": [
+                        "c_var"
+                    ],
+                    "f_arglist": [
+                        "f_var"
+                    ],
+                    "function_name": "One"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_call_function": "One()",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS"
+                    }
                 }
             }
         ],
         "language": "cxx",
         "namespaces": [
             {
-                "<NAMESPACE>": "****************************************",
+                "<NAMESPACE>": "upper ****************************************",
                 "enums": [
                     {
-                        "<ENUM>": "****************************************",
+                        "<ENUM>": "Level ****************************************",
                         "_fmtmembers": {
                             "ERROR": {
                                 "C_enum_member": "NS_upper_ERROR",
+                                "C_name_api": "ERROR",
                                 "F_enum_member": "upper_error",
+                                "F_name_api": "error",
                                 "F_value": 0,
-                                "enum_member_lower": "error",
-                                "enum_member_name": "ERROR",
-                                "enum_member_upper": "ERROR"
+                                "enum_member_name": "ERROR"
                             },
                             "WARN": {
                                 "C_enum_member": "NS_upper_WARN",
+                                "C_name_api": "WARN",
                                 "F_enum_member": "upper_warn",
+                                "F_name_api": "warn",
                                 "F_value": 1,
-                                "enum_member_lower": "warn",
-                                "enum_member_name": "WARN",
-                                "enum_member_upper": "WARN"
+                                "enum_member_name": "WARN"
                             }
                         },
                         "ast": {
@@ -293,27 +559,29 @@
                                     "name": "WARN"
                                 }
                             ],
-                            "name": "Color"
+                            "name": "Level"
                         },
-                        "decl": "enum Color {\n  ERROR,\n  WARN,\n};\n",
-                        "name": "Color",
+                        "decl": "enum Level {\n  ERROR,\n  WARN,\n};\n",
+                        "name": "Level",
                         "options": {},
-                        "typemap_name": "upper::Color",
+                        "typemap_name": "upper::Level",
                         "wrap": {
                             "c": true,
                             "fortran": true
                         },
                         "zz_fmtdict": {
-                            "C_enum": "NS_upper_Color",
-                            "enum_lower": "color",
-                            "enum_name": "Color",
-                            "enum_upper": "COLOR"
+                            "C_enum_type": "NS_upper_Level",
+                            "C_name_api": "Level",
+                            "F_enum_kind": "C_INT",
+                            "F_name_api": "level",
+                            "F_name_enum": "upper_level",
+                            "enum_name": "Level"
                         }
                     }
                 ],
                 "name": "upper",
                 "options": {
-                    "F_flatten_namespace": true,
+                    "flatten_namespace": true,
                     "wrap_python": false
                 },
                 "scope": "upper::",
@@ -327,8 +595,6 @@
                 },
                 "zz_fmtdict": {
                     "CXX_this_call": "upper::",
-                    "C_header_filename": "wrapns_upper.h",
-                    "C_impl_filename": "wrapns_upper.cpp",
                     "C_name_api": "upper",
                     "C_name_scope": "upper_",
                     "F_impl_filename": "wrapfns_upper.f",
@@ -345,31 +611,27 @@
                 }
             },
             {
-                "<NAMESPACE>": "****************************************",
+                "<NAMESPACE>": "outer ****************************************",
                 "classes": [
                     {
-                        "<CLASS>": "****************************************",
+                        "<CLASS>": "Cstruct1 ****************************************",
                         "cxx_header": [],
                         "functions": [
                             {
-                                "<FUNCTION>": "0 ****************************************",
+                                "<FUNCTION>": "Cstruct1_ctor  0 ****************************************",
                                 "_generated": "struct_as_class_ctor",
+                                "_generated_path": [
+                                    "struct_as_class_ctor"
+                                ],
                                 "ast": {
                                     "declarator": {
                                         "attrs": {
-                                            "_constructor": true,
                                             "name": "Cstruct1_ctor"
                                         },
-                                        "metaattrs": {
-                                            "intent": "ctor"
-                                        },
+                                        "is_ctor": true,
                                         "params": [
                                             {
                                                 "declarator": {
-                                                    "metaattrs": {
-                                                        "intent": "in",
-                                                        "struct_member": "ifield"
-                                                    },
                                                     "name": "ifield",
                                                     "typemap_name": "int"
                                                 },
@@ -380,10 +642,6 @@
                                             },
                                             {
                                                 "declarator": {
-                                                    "metaattrs": {
-                                                        "intent": "in",
-                                                        "struct_member": "dfield"
-                                                    },
                                                     "name": "dfield",
                                                     "typemap_name": "double"
                                                 },
@@ -404,59 +662,120 @@
                                 "decl": "Cstruct1_ctor",
                                 "declgen": "Cstruct1(int ifield, double dfield) +name(Cstruct1_ctor)",
                                 "name": "Cstruct1_ctor",
-                                "options": {
-                                    "wrap_c": false,
-                                    "wrap_fortran": false,
-                                    "wrap_lua": false
-                                },
+                                "options": {},
+                                "struct_members": [
+                                    "ifield",
+                                    "dfield"
+                                ],
                                 "wrap": {
                                     "python": true
                                 },
-                                "zz_fmtargs": {
-                                    "dfield": {
-                                        "fmtpy": {
-                                            "PY_member_object": "XXXPY_member_object",
-                                            "c_const": "",
-                                            "c_deref": "",
-                                            "c_type": "double",
-                                            "c_var": "dfield",
-                                            "ctor_expr": "dfield",
-                                            "cxx_addr": "&",
-                                            "cxx_member": ".",
-                                            "cxx_nonconst_ptr": "&dfield",
-                                            "cxx_type": "double",
-                                            "cxx_var": "dfield",
-                                            "data_var": "SHData_dfield",
-                                            "field_name": "dfield",
-                                            "numpy_type": "NPY_DOUBLE",
-                                            "py_var": "SHPy_dfield",
-                                            "size_var": "SHSize_dfield",
-                                            "stmt0": "py_ctor_native_scalar_numpy",
-                                            "stmt1": "py_ctor_native",
-                                            "value_var": "SHValue_dfield"
+                                "zz_bind": {
+                                    "py": {
+                                        "+result": {
+                                            "fmtdict": {
+                                                "PYN_descr": "PY_Cstruct1_array_descr",
+                                                "PY_build_format": "O",
+                                                "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
+                                                "PyObject": "PY_Cstruct1",
+                                                "PyTypeObject": "PY_Cstruct1_Type",
+                                                "c_var": "SHCXX_rv",
+                                                "capsule_order": "1",
+                                                "ctor_expr": "SHCXX_rv",
+                                                "cxx_addr": "&",
+                                                "cxx_member": ".",
+                                                "cxx_nonconst_ptr": "&SHCXX_rv",
+                                                "cxx_type": "outer::Cstruct1",
+                                                "cxx_var": "SHCXX_rv",
+                                                "data_var": "SHData_rv",
+                                                "numpy_type": null,
+                                                "py_var": "SHTPy_rv",
+                                                "size_var": "SHSize_rv",
+                                                "stmt": "py_ctor_struct",
+                                                "value_var": "SHValue_rv",
+                                                "vargs": "SHCXX_rv"
+                                            },
+                                            "meta": {
+                                                "abstract": "struct",
+                                                "intent": "ctor"
+                                            },
+                                            "stmt": "py_ctor_struct"
+                                        },
+                                        "dfield": {
+                                            "fmtdict": {
+                                                "PY_member_object": "XXXPY_member_object",
+                                                "c_const": "",
+                                                "c_type": "double",
+                                                "c_var": "dfield",
+                                                "ctor_expr": "dfield",
+                                                "cxx_addr": "&",
+                                                "cxx_member": ".",
+                                                "cxx_nonconst_ptr": "&dfield",
+                                                "cxx_type": "double",
+                                                "cxx_var": "dfield",
+                                                "data_var": "SHData_dfield",
+                                                "field_name": "dfield",
+                                                "numpy_type": "NPY_DOUBLE",
+                                                "py_var": "SHPy_dfield",
+                                                "size_var": "SHSize_dfield",
+                                                "stmt": "py_ctor_native_numpy",
+                                                "value_var": "SHValue_dfield"
+                                            },
+                                            "meta": {
+                                                "abstract": "native",
+                                                "intent": "in",
+                                                "value": true
+                                            },
+                                            "stmt": "py_ctor_native_numpy"
+                                        },
+                                        "ifield": {
+                                            "fmtdict": {
+                                                "PY_member_object": "XXXPY_member_object",
+                                                "c_const": "",
+                                                "c_type": "int",
+                                                "c_var": "ifield",
+                                                "ctor_expr": "ifield",
+                                                "cxx_addr": "&",
+                                                "cxx_member": ".",
+                                                "cxx_nonconst_ptr": "&ifield",
+                                                "cxx_type": "int",
+                                                "cxx_var": "ifield",
+                                                "data_var": "SHData_ifield",
+                                                "field_name": "ifield",
+                                                "numpy_type": "NPY_INT",
+                                                "py_var": "SHPy_ifield",
+                                                "size_var": "SHSize_ifield",
+                                                "stmt": "py_ctor_native_numpy",
+                                                "value_var": "SHValue_ifield"
+                                            },
+                                            "meta": {
+                                                "abstract": "native",
+                                                "intent": "in",
+                                                "value": true
+                                            },
+                                            "stmt": "py_ctor_native_numpy"
                                         }
                                     },
-                                    "ifield": {
-                                        "fmtpy": {
-                                            "PY_member_object": "XXXPY_member_object",
-                                            "c_const": "",
-                                            "c_deref": "",
-                                            "c_type": "int",
-                                            "c_var": "ifield",
-                                            "ctor_expr": "ifield",
-                                            "cxx_addr": "&",
-                                            "cxx_member": ".",
-                                            "cxx_nonconst_ptr": "&ifield",
-                                            "cxx_type": "int",
-                                            "cxx_var": "ifield",
-                                            "data_var": "SHData_ifield",
-                                            "field_name": "ifield",
-                                            "numpy_type": "NPY_INT",
-                                            "py_var": "SHPy_ifield",
-                                            "size_var": "SHSize_ifield",
-                                            "stmt0": "py_ctor_native_scalar_numpy",
-                                            "stmt1": "py_ctor_native",
-                                            "value_var": "SHValue_ifield"
+                                    "share": {
+                                        "+result": {
+                                            "meta": {
+                                                "abstract": "struct",
+                                                "intent": "ctor"
+                                            }
+                                        },
+                                        "dfield": {
+                                            "meta": {
+                                                "abstract": "native",
+                                                "intent": "in",
+                                                "value": true
+                                            }
+                                        },
+                                        "ifield": {
+                                            "meta": {
+                                                "abstract": "native",
+                                                "intent": "in",
+                                                "value": true
+                                            }
                                         }
                                     }
                                 },
@@ -468,29 +787,21 @@
                                     "PY_type_method": "tp_init",
                                     "function_name": "Cstruct1_ctor"
                                 },
-                                "zz_fmtresult": {
-                                    "fmtpy": {
-                                        "PYN_descr": "PY_Cstruct1_array_descr",
-                                        "PY_build_format": "O",
-                                        "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
-                                        "PyObject": "PY_Cstruct1",
-                                        "PyTypeObject": "PY_Cstruct1_Type",
-                                        "c_deref": "",
-                                        "c_var": "SHCXX_rv",
-                                        "ctor_expr": "SHCXX_rv",
-                                        "cxx_addr": "&",
-                                        "cxx_member": ".",
-                                        "cxx_nonconst_ptr": "&SHCXX_rv",
-                                        "cxx_type": "outer::Cstruct1",
-                                        "cxx_var": "SHCXX_rv",
-                                        "data_var": "SHData_rv",
-                                        "numpy_type": null,
-                                        "py_var": "SHTPy_rv",
-                                        "size_var": "SHSize_rv",
-                                        "stmt0": "py_default",
-                                        "stmt1": "py_default",
-                                        "value_var": "SHValue_rv",
-                                        "vargs": "SHCXX_rv"
+                                "zz_fmtlang": {
+                                    "py": {
+                                        "C_call_function": "self->obj->Cstruct1_ctor(ifield,\t dfield)",
+                                        "PY_array_arg": "numpy",
+                                        "PY_call_list": "ifield,\t dfield",
+                                        "PY_doc_string": "documentation",
+                                        "PY_error_return": "-1",
+                                        "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                                        "PY_result": "SHPyResult",
+                                        "PY_used_param_args": true,
+                                        "PY_used_param_kwds": true,
+                                        "PY_used_param_self": true,
+                                        "PyArg_format": "|id:Cstruct1_ctor",
+                                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                                        "PyArg_vargs": "&ifield,\t &dfield"
                                     }
                                 }
                             }
@@ -502,7 +813,7 @@
                         "typemap_name": "outer::Cstruct1",
                         "variables": [
                             {
-                                "<VARIABLE>": "****************************************",
+                                "<VARIABLE>": "ifield ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "name": "ifield",
@@ -520,6 +831,17 @@
                                     "fortran": true,
                                     "python": true
                                 },
+                                "zz_bind": {
+                                    "f": {
+                                        "fmtdict": {
+                                            "i_kind": "C_INT",
+                                            "i_module_name": "iso_c_binding",
+                                            "i_type": "integer(C_INT)",
+                                            "i_var": "ifield"
+                                        }
+                                    },
+                                    "share": {}
+                                },
                                 "zz_fmtdict": {
                                     "PY_getter": "PY_Cstruct1_ifield_getter",
                                     "PY_setter": "PY_Cstruct1_ifield_setter",
@@ -527,13 +849,11 @@
                                     "c_type": "int",
                                     "cxx_type": "int",
                                     "field_name": "ifield",
-                                    "variable_lower": "ifield",
-                                    "variable_name": "ifield",
-                                    "variable_upper": "IFIELD"
+                                    "variable_name": "ifield"
                                 }
                             },
                             {
-                                "<VARIABLE>": "****************************************",
+                                "<VARIABLE>": "dfield ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "name": "dfield",
@@ -551,6 +871,17 @@
                                     "fortran": true,
                                     "python": true
                                 },
+                                "zz_bind": {
+                                    "f": {
+                                        "fmtdict": {
+                                            "i_kind": "C_DOUBLE",
+                                            "i_module_name": "iso_c_binding",
+                                            "i_type": "real(C_DOUBLE)",
+                                            "i_var": "dfield"
+                                        }
+                                    },
+                                    "share": {}
+                                },
                                 "zz_fmtdict": {
                                     "PY_getter": "PY_Cstruct1_dfield_getter",
                                     "PY_setter": "PY_Cstruct1_dfield_setter",
@@ -558,9 +889,7 @@
                                     "c_type": "double",
                                     "cxx_type": "double",
                                     "field_name": "dfield",
-                                    "variable_lower": "dfield",
-                                    "variable_name": "dfield",
-                                    "variable_upper": "DFIELD"
+                                    "variable_name": "dfield"
                                 }
                             }
                         ],
@@ -598,12 +927,9 @@
                 ],
                 "functions": [
                     {
-                        "<FUNCTION>": "4 ****************************************",
+                        "<FUNCTION>": "One  4 ****************************************",
                         "ast": {
                             "declarator": {
-                                "metaattrs": {
-                                    "intent": "subroutine"
-                                },
                                 "name": "One",
                                 "params": [],
                                 "typemap_name": "void"
@@ -619,31 +945,96 @@
                         "options": {},
                         "wrap": {
                             "c": true,
-                            "f_c": true,
                             "fortran": true,
                             "python": true
                         },
+                        "zz_bind": {
+                            "c": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "outer::One(\t)",
+                                        "C_name": "NS_outer_One",
+                                        "C_prototype": "void",
+                                        "C_return_type": "void",
+                                        "i_name_function": "c_one",
+                                        "stmt_name": "c_subroutine",
+                                        "typemap_name": "void"
+                                    },
+                                    "meta": {
+                                        "abstract": "void",
+                                        "intent": "subroutine"
+                                    },
+                                    "stmt": "c_subroutine"
+                                }
+                            },
+                            "f": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "outer::One(\t)",
+                                        "C_name": "NS_outer_One",
+                                        "C_prototype": "void",
+                                        "C_return_type": "void",
+                                        "F_arguments": "",
+                                        "F_subprogram": "subroutine",
+                                        "f_call_function": "c_one",
+                                        "i_arguments": "",
+                                        "i_name_function": "one",
+                                        "i_subprogram": "subroutine",
+                                        "stmt_name": "f_subroutine",
+                                        "typemap_name": "void"
+                                    },
+                                    "meta": {
+                                        "abstract": "void",
+                                        "intent": "subroutine"
+                                    },
+                                    "stmt": "f_subroutine"
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "fmtdict": {
+                                        "stmt": "py_subroutine"
+                                    },
+                                    "meta": {
+                                        "abstract": "void",
+                                        "intent": "subroutine"
+                                    },
+                                    "stmt": "py_subroutine"
+                                }
+                            },
+                            "share": {
+                                "+result": {
+                                    "meta": {
+                                        "abstract": "void",
+                                        "intent": "subroutine"
+                                    }
+                                }
+                            }
+                        },
                         "zz_fmtdict": {
-                            "C_name": "NS_outer_One",
                             "C_name_api": "One",
-                            "C_prototype": "void",
-                            "C_return_type": "void",
-                            "F_C_arguments": "",
-                            "F_C_call": "c_one",
-                            "F_C_name": "one",
-                            "F_C_subprogram": "subroutine",
-                            "F_arguments": "",
                             "F_name_api": "one",
                             "F_name_function": "one",
                             "F_name_generic": "one",
                             "F_name_impl": "one",
-                            "F_subprogram": "subroutine",
                             "PY_name_impl": "PY_One",
-                            "function_name": "One",
-                            "stmt0": "f_subroutine",
-                            "stmt1": "f_subroutine",
-                            "stmtc0": "c_subroutine",
-                            "stmtc1": "c_subroutine"
+                            "c_arglist": [
+                                "c_var"
+                            ],
+                            "f_arglist": [
+                                "f_var"
+                            ],
+                            "function_name": "One"
+                        },
+                        "zz_fmtlang": {
+                            "py": {
+                                "C_call_function": "outer::One()",
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "nullptr",
+                                "PY_ml_flags": "METH_NOARGS"
+                            }
                         }
                     }
                 ],
@@ -680,10 +1071,41 @@
                 }
             },
             {
-                "<NAMESPACE>": "****************************************",
+                "<NAMESPACE>": "nswork ****************************************",
+                "assign_operators": [
+                    {
+                        "bind": {
+                            "fmtdict": {
+                                "C_name_api": "assign",
+                                "C_name_assign_api": "NS_nswork_ClassWork_assign_ClassWork",
+                                "F_name_api": "assign",
+                                "F_name_assign_api": "nswork_class_work_assign_ClassWork",
+                                "alias_code": "// Aliasing another class; clear ownership.\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = 0;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_OWN;",
+                                "c_type_lhs": "NS_nswork_ClassWork",
+                                "c_type_rhs": "NS_nswork_ClassWork",
+                                "capture_code": "// Capture pointer from RHS, clear 'moving' flag.\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
+                                "copy_alias_code": "// RHS shouldn't be deleted, alias to LHS.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nNS_SHROUD_memory_destructor(\t(NS_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
+                                "cxx_type_lhs": "nswork::ClassWork",
+                                "cxx_type_rhs": "nswork::ClassWork",
+                                "destroy_code": "// Replace LHS with a null pointer.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nNS_SHROUD_memory_destructor(\t(NS_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = nullptr;\nlhs_capsule->idtor = 0;\nlhs_capsule->cmemflags = 0;",
+                                "f_capsule_data_type_lhs": "NS_SHROUD_capsule_data",
+                                "f_capsule_data_type_rhs": "NS_SHROUD_capsule_data",
+                                "f_derived_type_lhs": "class_work",
+                                "f_derived_type_rhs": "class_work",
+                                "f_interface_import": "NS_SHROUD_capsule_data",
+                                "function_suffix": "_ClassWork",
+                                "move_alias_code": "// Transferred ownership from a variable that's about to be lost.\n// Move-assign and delete the transient data.\nif (lhs_capsule->cmemflags & SWIG_MEM_OWN) {+\nNS_SHROUD_memory_destructor(\t(NS_SHROUD_capsule_data *) lhs_capsule);\n-}\nlhs_capsule->addr = rhs_capsule->addr;\nlhs_capsule->idtor = rhs_capsule->idtor;\nlhs_capsule->cmemflags = rhs_capsule->cmemflags & ~SWIG_MEM_RVALUE;",
+                                "typemap_lhs": "nswork::ClassWork",
+                                "typemap_rhs": "nswork::ClassWork"
+                            },
+                            "stmt": "f_operator_assignment_shadow"
+                        },
+                        "name": "nswork::ClassWork = nswork::ClassWork"
+                    }
+                ],
                 "classes": [
                     {
-                        "<CLASS>": "****************************************",
+                        "<CLASS>": "ClassWork ****************************************",
                         "cxx_header": [],
                         "name": "ClassWork",
                         "options": {},
@@ -717,14 +1139,14 @@
                             "cxx_class": "ClassWork",
                             "cxx_type": "ClassWork",
                             "f_capsule_data_type": "NS_SHROUD_capsule_data",
-                            "file_scope": "nswork_ClassWork",
-                            "hnamefunc0": "capsule_data_helper"
+                            "f_helper_capsule_data": "NS_SHROUD_capsule_data",
+                            "file_scope": "nswork_ClassWork"
                         }
                     }
                 ],
                 "name": "nswork",
                 "options": {
-                    "F_flatten_namespace": true
+                    "flatten_namespace": true
                 },
                 "scope": "nswork::",
                 "scope_file": [
@@ -738,8 +1160,6 @@
                 },
                 "zz_fmtdict": {
                     "CXX_this_call": "nswork::",
-                    "C_header_filename": "wrapns_nswork.h",
-                    "C_impl_filename": "wrapns_nswork.cpp",
                     "C_name_api": "nswork",
                     "C_name_scope": "nswork_",
                     "F_impl_filename": "wrapfns_nswork.f",
@@ -776,8 +1196,8 @@
             "struct-Cstruct1": "outer::Cstruct1"
         },
         "upper": {
-            "Color": "enum-Color",
-            "enum-Color": "upper::Color"
+            "Level": "enum-Level",
+            "enum-Level": "upper::Level"
         }
     },
     "types": {
@@ -794,26 +1214,25 @@
             "c_type": "NS_nswork_ClassWork",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "nswork::ClassWork",
-            "f_c_module": {
-                "--import--": [
-                    "NS_SHROUD_capsule_data"
-                ]
-            },
-            "f_c_module_line": "--import--:NS_SHROUD_capsule_data",
-            "f_c_type": "type(NS_SHROUD_capsule_data)",
             "f_capsule_data_type": "NS_SHROUD_capsule_data",
             "f_class": "class(class_work)",
             "f_derived_type": "class_work",
+            "f_kind": "class_work",
             "f_module": {
                 "ns_nswork_mod": [
                     "class_work"
                 ]
             },
-            "f_module_line": "ns_nswork_mod:class_work",
             "f_module_name": "ns_nswork_mod",
             "f_to_c": "{f_var}%cxxmem",
             "f_type": "type(class_work)",
             "flat_name": "nswork_ClassWork",
+            "i_module": {
+                "ns_nswork_mod": [
+                    "NS_SHROUD_capsule_data"
+                ]
+            },
+            "i_type": "type(NS_SHROUD_capsule_data)",
             "impl_header": [
                 "namespace.hpp"
             ],
@@ -836,11 +1255,6 @@
             "c_type": "NS_cstruct1",
             "cfi_type": "CFI_type_struct",
             "cxx_type": "outer::Cstruct1",
-            "f_c_module": {
-                "--import--": [
-                    "cstruct1"
-                ]
-            },
             "f_derived_type": "cstruct1",
             "f_kind": "cstruct1",
             "f_module": {
@@ -851,10 +1265,15 @@
             "f_module_name": "ns_outer_mod",
             "f_type": "type(cstruct1)",
             "flat_name": "outer_Cstruct1",
+            "i_module": {
+                "ns_outer_mod": [
+                    "cstruct1"
+                ]
+            },
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT"
         },
-        "upper::Color": {
+        "upper::Level": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
             "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
             "LUA_type": "LUA_TNUMBER",
@@ -863,11 +1282,19 @@
             "PY_format": "i",
             "PY_get": "PyInt_AsLong({py_var})",
             "base": "integer",
-            "c_to_cxx": "static_cast<upper::Color>({c_var})",
-            "c_type": "int",
+            "c_header": [
+                "wrapns.h"
+            ],
+            "c_to_cxx": "static_cast<upper::Level>({c_var})",
+            "c_type": "enum NS_upper_Level",
             "cfi_type": "CFI_type_int",
-            "cxx_to_c": "static_cast<int>({cxx_var})",
-            "cxx_type": "upper::Color",
+            "ci_type": "int",
+            "cxx_header": [
+                "wrapns.h"
+            ],
+            "cxx_to_c": "static_cast<{c_abstract_decl}>({cxx_var})",
+            "cxx_to_ci": "static_cast<int>({cxx_var})",
+            "cxx_type": "upper::Level",
             "f_cast": "int({f_var}, C_INT)",
             "f_kind": "C_INT",
             "f_module": {
@@ -875,9 +1302,11 @@
                     "C_INT"
                 ]
             },
+            "f_module_name": "iso_c_binding",
             "f_type": "integer(C_INT)",
             "flat_name": "int",
-            "sgroup": "native",
+            "is_enum": true,
+            "sgroup": "enum",
             "sh_type": "SH_TYPE_INT"
         }
     }

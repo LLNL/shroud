@@ -1,6 +1,4 @@
-// Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-// other Shroud Project Developers.
-// See the top-level COPYRIGHT file for details.
+// Copyright Shroud Project Developers. See LICENSE file for details.
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
@@ -131,16 +129,7 @@ int UseDefaultOverload(double type, int num, int offset, int stride)
 TypeID typefunc(TypeID arg)
 {
     last_function_called = "typefunc";
-    return static_cast<int>(arg);
-}
-
-EnumTypeID enumfunc(EnumTypeID arg)
-{
-    last_function_called = "enumfunc";
-    switch (arg) {
-    default:
-	return ENUM2;
-    }
+    return arg;
 }
 
 Color colorfunc(Color arg)

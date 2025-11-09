@@ -1,6 +1,4 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 #
@@ -12,32 +10,28 @@ ifndef top
 top = ../..
 endif
 
-include $(top)/regression/run/defaults.mk
+testdir = ownership
 
 INCLUDE = \
     -I$(top)/regression/reference/ownership \
-    -I$(top)/regression/run/ownership \
-    -I$(top)/regression/run/fruit
+    -I$(top)/regression/run/ownership
 
 VPATH = \
     $(top)/regression/reference/ownership \
     $(top)/regression/run/ownership \
     $(top)/regression/run/fruit
 
-OBJS = \
+C_OBJS = \
     ownership.o \
     utilownership.o \
-    wrapfownership.o \
     wrapownership.o \
-    wrapClass1.o \
+    wrapClass1.o
+F_OBJS = \
+    main.o \
     fruit.o \
-    main.o
+    wrapfownership.o
 
-ownership : $(OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod ownership maincpp maincpp.o
+include $(top)/regression/run/defaults.mk
 
 ownership.o : ownership.hpp
 wrapOwnership.o : wrapownership.h ownership.hpp

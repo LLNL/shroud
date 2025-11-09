@@ -1,12 +1,9 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 
 """
 Check attributes in delcaration.
-Set meta attributes.
 Generate additional functions required to create wrappers.
 """
 from __future__ import print_function
@@ -17,12 +14,13 @@ import copy
 
 from . import ast
 from . import declast
+from . import declstr
+from . import error
 from . import todict
 from . import statements
 from . import typemap
 from . import util
 from . import visitor
-from . import whelpers
 
 wformat = util.wformat
 
@@ -31,10 +29,6 @@ class VerifyAttrs(object):
     """
     Check attributes and set some defaults in metaattrs.
     Generate types for classes.
-
-    check order:
-      intent - check_intent_attr
-      deref - check_deref_attr_func / check_deref_attr_var
     """
 
     def __init__(self, newlibrary, config):
@@ -45,13 +39,16 @@ class VerifyAttrs(object):
         """
         self.newlibrary = newlibrary
         self.config = config
+        self.cursor = error.get_cursor()
 
     def verify_attrs(self):
         """Verify library attributes.
         Recurse through all declarations.
         Entry pointer for class VerifyAttrs.
         """
+        self.cursor.push_phase("verify attributes")
         self.verify_namespace_attrs(self.newlibrary.wrap_namespace)
+        self.cursor.pop_phase("verify attributes")
 
     def verify_namespace_attrs(self, node):
         """Verify attributes for a library or namespace.
@@ -59,48 +56,24 @@ class VerifyAttrs(object):
         Args:
             node - ast.LibraryNode, ast.NameSpaceNode
         """
+        cursor = self.cursor
         for cls in node.classes:
-            for var in cls.variables:
-                self.check_var_attrs(cls, var)
+            cursor.push_node(cls)
             for func in cls.functions:
+                cursor.push_node(func)
                 self.check_fcn_attrs(func)
+                cursor.pop_node(func)
+            cursor.pop_node(cls)
 
         for func in node.functions:
+            cursor.push_node(func)
             self.check_fcn_attrs(func)
+            cursor.pop_node(func)
 
         for ns in node.namespaces:
+            cursor.push_node(ns)
             self.verify_namespace_attrs(ns)
-
-    def check_var_attrs(self, cls, node):
-        """Check attributes for variables.
-        This includes struct and class members.
-
-        Args:
-            cls -
-            node -
-        """
-        ast = node.ast
-        declarator = ast.declarator
-        attrs = declarator.attrs
-        for attr in attrs:
-            if attr[0] == "_":  # internal attribute
-                continue
-            # XXX - deref on class/struct members
-            if attr not in ["name", "readonly", "dimension", "deref"]:
-                raise RuntimeError(
-                    "Illegal attribute '{}' for variable '{}' at line {}".format(
-                        attr, node.name, node.linenumber
-                    ) + "\nonly 'name', 'readonly', 'dimension' and 'deref' are allowed on variables"
-                )
-
-        is_ptr = declarator.is_indirect()
-        if attrs["dimension"] and not is_ptr:
-            raise RuntimeError(
-                "dimension attribute can only be "
-                "used on pointer and references"
-            )
-
-        self.parse_attrs(node, ast)
+            cursor.pop_node(ns)
 
     def check_fcn_attrs(self, node):
         """Check attributes on FunctionNode.
@@ -108,55 +81,18 @@ class VerifyAttrs(object):
         Args:
             node - ast.FunctionNode
         """
+        cursor = self.cursor
         options = node.options
 
         ast = node.ast
         declarator = ast.declarator
+        attrs = declarator.attrs
         node._has_found_default = False
 
-        for attr in declarator.attrs:
-            if attr[0] == "_":  # internal attribute
-                continue
-            if attr not in [
-                "api",          # arguments to pass to C wrapper.
-                "allocatable",  # return a Fortran ALLOCATABLE
-                "cdesc",
-                "deref",  # How to dereference pointer
-                "dimension",
-                "free_pattern",
-                "len",
-                "name",
-                "owner",
-                "pure",
-                "rank",
-            ]:
-                raise RuntimeError(
-                    "Illegal attribute '{}' for function '{}' define at line {}".format(
-                        attr, node.ast.name, node.linenumber
-                    )
-                )
-
-        meta = declarator.metaattrs
-        if ast.typemap is None:
-            print("XXXXXX typemap is None")
-        if ast.typemap.sgroup == "shadow":
-            if options.C_shadow_result:
-                meta["api"] = "capptr"
-            else:
-                meta["api"] = "capsule"
-        if declarator.is_ctor():
-            meta["intent"] = "ctor"
-        elif declarator.is_dtor():
-            meta["intent"] = "dtor"
-        else:
-            meta["intent"] = declarator.get_subprogram()
-        self.check_deref_attr_func(node)
-        self.check_common_attrs(node.ast)
-
         for arg in declarator.params:
-            if arg.declarator is None:
-                raise RuntimeError("Argument must have name in {} at line {}".format(
-                    node.decl, node.linenumber))
+            if arg.declarator.name is None:
+                cursor.generate("Argument must have name in {}".format(
+                    node.decl))
             self.check_arg_attrs(node, arg)
 
         if node.fortran_generic:
@@ -167,264 +103,6 @@ class VerifyAttrs(object):
                 check_implied_attrs(node, generic.decls)
         else:
             check_implied_attrs(node, declarator.params)
-
-        self.parse_attrs(node, ast)
-
-    def check_intent_attr(self, node, arg):
-        """Set default intent meta-attribute.
-
-        Intent is only valid on arguments.
-        intent: lower case, no parens, must be in, out, or inout
-        """
-        declarator = arg.declarator
-        attrs = declarator.attrs
-        meta = declarator.metaattrs
-        is_ptr = declarator.is_indirect()
-        intent = attrs["intent"]
-        if intent is None:
-            if node is None:
-                # do not default intent for function pointers
-                pass
-            elif declarator.is_function_pointer():
-                intent = "in"
-            elif not is_ptr:
-                intent = "in"
-            elif arg.const:
-                intent = "in"
-            elif arg.typemap.sgroup == "void":
-                # void *
-                intent = "in"  # XXX must coordinate with VALUE
-            else:
-                intent = "inout"
-            # XXX - Do hidden arguments need intent?
-        else:
-            intent = intent.lower()
-            if intent in ["in", "out", "inout"]:
-                meta["intent"] = intent
-            else:
-                raise RuntimeError("Bad value for intent: " + attrs["intent"])
-            if not is_ptr and intent != "in":
-                # Nonpointers can only be intent(in).
-                raise RuntimeError("{}: Only pointer arguments may have intent attribute".format(node.linenumber))
-        meta["intent"] = intent
-        return intent    
-        
-    def check_deref_attr_func(self, node):
-        """Check deref attr and set default for function.
-
-        Function which return pointers or objects (std::string)
-        set the deref meta attribute.
-
-        Parameters
-        ----------
-        node : FunctionNode
-        ast : declast.Declaration
-        """
-        options = node.options
-        ast = node.ast
-        declarator = ast.declarator
-        attrs = declarator.attrs
-        deref = attrs["deref"]
-        mderef = None
-        ntypemap = ast.typemap
-        nindirect = declarator.is_indirect()
-        if declarator.get_subprogram() == "subroutine":
-            pass
-        if ntypemap.sgroup == "void":
-            # Unable to set Fortran pointer for void
-            # if deref set, error
-            pass
-        elif ntypemap.sgroup == "shadow":
-            # Change a C++ pointer into a Fortran pointer
-            # return 'void *' as 'type(C_PTR)'
-            # 'shadow' assigns pointer to type(C_PTR) in a derived type
-            # Array of shadow?
-            pass
-        elif ntypemap.sgroup == "string":
-            if deref:
-                mderef = deref
-            elif attrs["len"]:
-                mderef = "copy"
-            else:
-                mderef = "allocatable"
-        elif ntypemap.sgroup == "vector":
-            if deref:
-                mderef = deref
-            else:
-                mderef = "allocatable"
-        elif nindirect > 1:
-            if deref:
-                raise RuntimeError(
-                    "Cannot have attribute 'deref' on function which returns multiple indirections in {}".
-                    format(node.decl))
-        elif nindirect == 1:
-            # pointer to a POD  e.g. int *
-            if deref:
-                mderef = deref
-            elif ntypemap.sgroup == "char":  # char *
-                if attrs["len"]:
-                    mderef = "copy"
-                else:
-                    mderef = "allocatable"
-            elif attrs["dimension"]:
-                mderef = "pointer"
-            else:
-                mderef = options.return_scalar_pointer
-        elif deref:
-            raise RuntimeError(
-                "Cannot have attribute 'deref' on non-pointer in {}".format(
-                    node.decl
-                )
-            )
-        ast.declarator.metaattrs["deref"] = mderef
-        
-    def check_deref_attr_var(self, node, ast):
-        """Check deref attr and set default for variable.
-
-        Pointer variables set the default deref meta attribute.
-
-        Parameters
-        ----------
-        node - ast.FunctionNode or ast.FortranGeneric
-        ast : declast.Declaration
-        """
-        declarator = ast.declarator
-        attrs = declarator.attrs
-        meta = declarator.metaattrs
-        ntypemap = ast.typemap
-        is_ptr = declarator.is_indirect()
-
-        deref = attrs["deref"]
-        if deref is not None:
-            if deref not in ["allocatable", "pointer", "raw", "scalar"]:
-                raise RuntimeError(
-                    "Illegal value '{}' for deref attribute. "
-                    "Must be 'allocatable', 'pointer', 'raw', "
-                    "or 'scalar'.".format(deref)
-                )
-            nindirect = declarator.is_indirect()
-            if ntypemap.sgroup == "vector":
-                if deref:
-                    mderef = deref
-                else:
-                    # Copy vector to new array.
-                    mderef = "allocatable"
-            elif nindirect != 2:
-                raise RuntimeError(
-                    "Can only have attribute 'deref' on arguments which"
-                    " return a pointer:"
-                    " '{}' at line {}".format(ast.name, node.linenumber))
-            elif meta["intent"] == "in":
-                raise RuntimeError(
-                    "Cannot have attribute 'deref' on intent(in) argument:"
-                    " '{}' at line".format(ast.name, node.linenumber))
-            meta["deref"] = attrs["deref"]
-            return
-
-        # Set deref attribute for arguments which return values.
-        intent = meta["intent"]
-        spointer = declarator.get_indirect_stmt()
-        if ntypemap.name == "void":
-            # void cannot be dereferenced.
-            pass
-        elif spointer in ["**", "*&"] and intent == "out":
-            if ntypemap.sgroup == "string":
-                # strings are not contiguous, so copy into argument.
-                meta["deref"] = "copy"
-            else:
-                meta["deref"] = "pointer"
-            
-    def check_common_attrs(self, ast):
-        """Check attributes which are common to function and argument AST
-        This includes: dimension, free_pattern, owner, rank
-
-        Parameters
-        ----------
-        ast : declast.Declaration
-        """
-        declarator = ast.declarator
-        attrs = declarator.attrs
-        meta = declarator.metaattrs
-        ntypemap = ast.typemap
-        is_ptr = declarator.is_indirect()
-
-        # api
-        api = attrs["api"]
-        if api is None:
-            pass
-        elif api not in ["capi", "buf", "cfi"]:
-                raise RuntimeError(
-                    "'api' attribute must 'capi', 'buf', or 'cfi'"
-                )
-        else:
-            meta["api"] = api
-
-        # dimension
-        dimension = attrs["dimension"]
-        rank = attrs["rank"]
-        if rank:
-            if rank is True:
-                raise RuntimeError(
-                    "'rank' attribute must have an integer value"
-                )
-            try:
-                attrs["rank"] = int(attrs["rank"])
-            except ValueError:
-                raise RuntimeError(
-                    "'rank' attribute must have an integer value, not '{}'"
-                    .format(attrs["rank"])
-                )
-            if attrs["rank"] > 7:
-                raise RuntimeError(
-                    "'rank' attribute must be 0-7, not '{}'"
-                    .format(attrs["rank"])
-                )
-            if not is_ptr:
-                raise RuntimeError(
-                    "rank attribute can only be "
-                    "used on pointer and references"
-                )
-        if dimension:
-            if dimension is True:
-                raise RuntimeError(
-                    "dimension attribute must have a value."
-                )
-            if attrs["value"]:
-                raise RuntimeError(
-                    "argument may not have 'value' and 'dimension' attribute."
-                )
-            if rank:
-                raise RuntimeError(
-                    "argument may not have 'rank' and 'dimension' attribute."
-                )
-            if not is_ptr:
-                raise RuntimeError(
-                    "dimension attribute can only be "
-                    "used on pointer and references"
-                )
-        elif ntypemap:
-            if ntypemap.base == "vector":
-                # default to 1-d assumed shape
-                attrs["rank"] = 1
-            elif ntypemap.name == 'char' and is_ptr == 2:
-                # 'char **' -> CHARACTER(*) s(:)
-                attrs["rank"] = 1
-
-        owner = attrs["owner"]
-        if owner is not None:
-            if owner not in ["caller", "library"]:
-                raise RuntimeError(
-                    "Illegal value '{}' for owner attribute. "
-                    "Must be 'caller' or 'library'.".format(owner)
-                )
-
-        free_pattern = attrs["free_pattern"]
-        if free_pattern is not None:
-            if free_pattern not in self.newlibrary.patterns:
-                raise RuntimeError(
-                    "Illegal value '{}' for free_pattern attribute. "
-                    "Must be defined in patterns section.".format(free_pattern)
-                )
 
     def check_arg_attrs(self, node, arg, options=None):
         """Regularize attributes.
@@ -443,129 +121,32 @@ class VerifyAttrs(object):
             arg  - declast.Declaration
             options -
         """
+        cursor = self.cursor
         if options is None:
             options = node.options
         declarator = arg.declarator
         argname = declarator.user_name
         attrs = declarator.attrs
-        meta = declarator.metaattrs
-
-        for attr in attrs:
-            if attr[0] == "_":  # Shroud internal attribute.
-                continue
-            if attr not in [
-                "api",
-                "allocatable",
-                "assumedtype",
-                "blanknull",   # Treat blank string as NULL pointer.
-                "capsule",
-                "cdesc",
-                "charlen",   # Assumed length of intent(out) char *.
-                "external",
-                "deref",
-                "dimension",
-                "hidden",  # omitted in Fortran API, returned from C++
-                "implied",  # omitted in Fortran API, value passed to C++
-                "intent",
-                "len",
-                "len_trim",
-                "name",
-                "owner",
-                "pass",
-                "rank",
-                "size",
-                "value",
-            ]:
-                raise RuntimeError(
-                    "Illegal attribute '{}' for argument '{}' defined at line {}".format(
-                        attr, argname, node.linenumber
-                    )
-                )
-
         arg_typemap = arg.typemap
-        if arg_typemap is None:
-            # Sanity check to make sure arg_typemap exists
-            raise RuntimeError(
-                "check_arg_attrs: Missing arg.typemap on line {}: {}".format(
-                    node.linenumber, node.decl
-                )
-            )
-
-        intent = self.check_intent_attr(node, arg)
-        self.check_deref_attr_var(node, arg)
-        self.check_common_attrs(arg)
-
-        is_ptr = declarator.is_indirect()
-
-        # assumedtype
-        assumedtype = attrs["assumedtype"]
-        if assumedtype is not None:
-            if attrs["value"]:
-                raise RuntimeError(
-                    "argument must not have value=True "
-                    "because it has the assumedtype attribute."
-                )
-
-        # value
-        elif attrs["value"] is None:
-            if is_ptr:
-                if arg_typemap.name == "void":
-                    # This causes Fortran to dereference the C_PTR
-                    # Otherwise a void * argument becomes void **
-                    if len(arg.declarator.pointer) == 1:
-                        attrs["value"] = True  # void *
-#                    else:
-#                        attrs["value"] = None # void **  XXX intent(out)?
-            else:
-                attrs["value"] = True
 
         # charlen
         # Only meaningful with 'char *arg+intent(out)'
         # XXX - Python needs a value if 'char *+intent(out)'
-        charlen = attrs["charlen"]
-        if charlen:
+        charlen = attrs.get("charlen", None)
+        if charlen is not None:
+            is_ptr = declarator.is_indirect()
             if arg_typemap.base != "string":
-                raise RuntimeError(
+                cursor.generate(
                     "charlen attribute can only be "
                     "used on 'char *'"
                 )
-            if is_ptr != 1:
-                raise RuntimeError(
+            elif is_ptr != 1:
+                cursor.generate(
                     "charlen attribute can only be "
                     "used on 'char *'"
                 )
-            if charlen is True:
-                raise RuntimeError("charlen attribute must have a value")
-
-        char_ptr_in = (
-            is_ptr == 1 and
-            intent == "in" and
-            arg_typemap.name == "char")
-            
-        blanknull = attrs["blanknull"]
-        if blanknull is not None:
-            if not char_ptr_in:
-                raise RuntimeError(
-                    "blanknull attribute can only be "
-                    "used on intent(in) 'char *'"
-                )
-            else:
-                arg.blanknull = blanknull
-        elif char_ptr_in:
-            arg.blanknull = options.F_blanknull
-
-        if meta["api"]:  # User set
-            pass
-        elif (
-            options.F_CFI is False and
-            char_ptr_in and
-            arg.blanknull is False
-        ):
-            # const char *arg
-            # char *arg+intent(in)
-            # Add terminating NULL in Fortran wrapper.
-            # Avoid a C wrapper just to do the NULL terminate.
-            arg.ftrim_char_in = options.F_trim_char_in
+            elif charlen is True:
+                cursor.generate("charlen attribute must have a value")
 
         if node:
             if declarator.init is not None:
@@ -575,75 +156,38 @@ class VerifyAttrs(object):
 
         # Check template attribute
         temp = arg.template_arguments
-        if arg_typemap and arg_typemap.base == "vector":
+        if arg_typemap and arg_typemap.ntemplate_args > 0:
             if not temp:
-                raise RuntimeError(
-                    "line {}: std::vector must have template argument: {}".format(
-                        node.linenumber, arg.gen_decl()
+                cursor.generate(
+                    "Type '{}' requires template argument: {}".format(
+                        arg_typemap.name, gen_decl(arg)
                     )
                 )
-            arg_typemap = arg.template_arguments[0].typemap
-            if arg_typemap is None:
-                raise RuntimeError(
-                    "check_arg_attr: No such type %s for template: %s"
-                    % (temp, arg.gen_decl())
+            elif len(temp) != arg_typemap.ntemplate_args:
+                cursor.generate(
+                    "Type '{}' may only have {} template arguments: {}".format(
+                        arg_typemap.name, arg_typemap.ntemplate_args, gen_decl(arg)
+                    )
                 )
+            else:
+                for targ in temp:
+                    arg_typemap = targ.typemap
+                    if arg_typemap is None:
+                        # XXX - Not sure this can happen with current parser
+                        raise RuntimeError(
+                            "check_arg_attr: No such type %s for template: %s"
+                            % (temp, gen_decl(arg))
+                        )
         elif temp:
-            raise RuntimeError(
-                "Type '%s' may not supply template argument: %s"
-                % (arg_typemap.name, arg.gen_decl())
+            cursor.generate(
+                "Type '{}' may not supply template argument: {}".format(
+                    arg_typemap.name, gen_decl(arg))
             )
 
-        self.parse_attrs(node, arg)
-
         # Flag node if any argument is assumed-rank.
-        if meta["assumed-rank"]:
-            node._gen_fortran_generic = True
-
-        if declarator.is_function_pointer():
-            for arg1 in declarator.params:
-                self.check_arg_attrs(None, arg1, options)
-
-    def parse_attrs(self, node, ast):
-        """Parse dimension attributes and save the AST.
-        This tree will be traversed by the wrapping classes
-        to convert to language specific code.
-
-        Parameters
-        ----------
-        node : ast.FunctionNode, ast.FortranGeneric, ast.VariableNode
-            Used for line number in error messages.
-        ast : declast.Declaration
-        """
-        attrs = ast.declarator.attrs
-        meta = ast.declarator.metaattrs
-
-        dim = attrs["dimension"]
-        if dim:
-            try:
-                check_dimension(dim, meta)
-            except RuntimeError:
-                raise RuntimeError("Unable to parse dimension: {} at line {}"
-                                   .format(dim, node.linenumber))
-
-
-def check_dimension(dim, meta, trace=False):
-    """Assign AST of dim and assumed_rank flag to meta.
-
-    Look for assumed-rank, "..", first.
-    Else a comma delimited list of expressions.
-
-    Parameters
-    ----------
-    dim : str
-    meta : dict
-    trace : boolean
-    """
-    if dim == "..":
-        meta["dimension"] = declast.AssumedRank()
-        meta["assumed-rank"] = True
-    else:
-        meta["dimension"] = declast.ExprParser(dim, trace=trace).dimension_shape()
+        dim = attrs.get("dimension", None)  # assumed-rank
+        if dim == "..":   # assumed-rank
+            node._gen_fortran_assumed_rank = True
 
 
 class GenFunctions(object):
@@ -659,13 +203,10 @@ class GenFunctions(object):
           process_class
             add_var_getter_setter
             define_function_suffix
+              append_function_index
               has_default_args
               template_function
-              define_result_as_arg_functions
               define_fortran_generic_functions
-              define_bufferify_functions
-                arg_to_CFI
-                arg_to_buffer
       update_templated_typemaps
       gen_namespace
         define_function_suffix
@@ -681,19 +222,27 @@ class GenFunctions(object):
         self.config = config
         self.instantiate_scope = None
         self.language = newlibrary.language
+        self.cursor = error.get_cursor()
+        self.namespace_list = []
 
     def gen_library(self):
         """Entry routine to generate functions for a library.
         """
+        self.cursor.push_phase("generate functions")
         newlibrary = self.newlibrary
-        whelpers.add_all_helpers(newlibrary.symtab)
 
         self.function_index = newlibrary.function_index
         self.class_map = newlibrary.class_map
 
-        self.instantiate_all_classes(newlibrary.wrap_namespace)
-        self.update_templated_typemaps(newlibrary.wrap_namespace)
-        self.gen_namespace(newlibrary.wrap_namespace)
+        ns = newlibrary.wrap_namespace
+        self.push_namespace_list(ns)
+        self.instantiate_all_classes(ns)
+        self.pop_namespace_list()
+
+        self.update_templated_typemaps(ns)
+
+        self.gen_namespace(ns)
+        self.cursor.pop_phase("generate functions")
 
     def gen_namespace(self, node):
         """Process functions which are not in a class.
@@ -701,9 +250,11 @@ class GenFunctions(object):
         Args:
             node - ast.LibraryNode, ast.NamespaceNode
         """
+        self.push_namespace_list(node)
         node.functions = self.define_function_suffix(node.functions)
         for ns in node.namespaces:
             self.gen_namespace(ns)
+        self.pop_namespace_list()
 
     # No longer need this, but keep code for now in case some other dependency checking is needed
     #        for cls in newlibrary.classes:
@@ -724,6 +275,15 @@ class GenFunctions(object):
     def pop_instantiate_scope(self):
         """Remove template arguments from scope"""
         self.instantiate_scope = self.instantiate_scope.get_parent()
+
+    def push_namespace_list(self, node):
+        self.namespace_list.append(node)
+
+    def pop_namespace_list(self):
+        self.namespace_list.pop()
+
+    def current_namespace(self):
+        return self.namespace_list[-1]
 
     def append_function_index(self, node):
         """append to function_index, set index into node.
@@ -749,8 +309,8 @@ class GenFunctions(object):
         found_dtor = False
         for node in cls.functions:
             declarator = node.ast.declarator
-            found_ctor = found_ctor or declarator.is_ctor()
-            found_dtor = found_dtor or declarator.is_dtor()
+            found_ctor = found_ctor or declarator.is_ctor
+            found_dtor = found_dtor or declarator.is_dtor
 
         if found_ctor and found_dtor:
             return cls.functions
@@ -780,14 +340,6 @@ class GenFunctions(object):
         For a class, they're added to the class.
         For a struct, they're added to the struct container (Library, Namespace)
 
-        Must explicitly set metaattrs for arguments since that was
-        done earlier when validating attributes.
-
-        The 'struct' meta attribute is set on the getter so member
-        names in the dimension attribute can be looked up. And set on
-        the 'this' argument to help set CXX_this properly in the C
-        wrapper.
-
         Parameters
         ----------
         parent : ast.LibraryNode, ast.ClassNode
@@ -813,18 +365,25 @@ class GenFunctions(object):
 
         is_struct = cls.wrap_as == "struct"
         if is_struct:
+            nptr = declarator.is_pointer()
             if not options.F_struct_getter_setter:
                 return
-            if declarator.is_pointer() != 1:
+            elif sgroup == "struct":
+                if nptr != 1 and nptr != 2:
+                    # Array of pointers
+                    return
+            elif nptr != 1:
+                # Do not write getter for scalar fields since they can be accessed directly
                 # Skip scalar and char**.
                 return
-            if sgroup in ["char", "string"]:
+            elif sgroup in ["char", "string"]:
                 # No strings for now.
                 return
             # Explicity add the 'this' argument. Added automatically for classes.
             typename = cls.typemap.name
             this_get = "{} *{}".format(typename, cls.fmtdict.CXX_this)
-            this_set = this_get + ","
+            this_set = this_get + ","   # defaults to intent(inout)
+            this_get += "+intent(in)"
             funcname_get = wformat(options.SH_struct_getter_template, fmt_func)
             funcname_set = wformat(options.SH_struct_setter_template, fmt_func)
         else:
@@ -838,73 +397,49 @@ class GenFunctions(object):
         else:
             lang = "cxx_type"
 
-        deref = None
-        if sgroup in ["char", "string"]:
-            value = None
-            deref = "allocatable"
-        elif sgroup == "vector":
-            value = None
-            deref = "pointer"
-        elif declarator.is_pointer():
-            value = None
-            deref = "pointer"
-        else:
-            value = True
-            deref = None
-
         ##########
         # getter
-        argdecl = ast.gen_arg_as_language(lang=lang, name=funcname_get, continuation=True)
+        argdecl = declstr.gen_arg_as_language(ast, lang=lang, name=funcname_get)
         decl = "{}({})".format(argdecl, this_get)
 
-        fattrs = {}
+        attrs = declarator.attrs
+        fattrs = dict(
+            intent="getter",
+        )
+        if "dimension" in attrs:
+            fattrs["dimension"] = attrs["dimension"]
+        if "deref" in attrs:
+            fattrs["deref"] = attrs["deref"]
 
         fcn = parent.add_function(decl, format=fmt_func, fattrs=fattrs)
-        meta = fcn.ast.declarator.metaattrs
-        meta.update(declarator.metaattrs)
-        meta["intent"] = "getter"
-        meta["deref"] = deref
         if is_struct:
-            meta["struct"] = cls.typemap.flat_name
-            meta = fcn.ast.declarator.params[0].declarator.metaattrs
-            meta["struct"] = cls.typemap.flat_name
-            meta["intent"] = "in"
-        fcn.wrap.lua = False
-        fcn.wrap.python = False
+            fcn.struct_parent = cls
+        fcn.wrap.assign(fortran=True)
         fcn._generated = "getter/setter"
+        fcn._generated_path.append("getter/setter")
 
         ##########
         # setter
-        if declarator.attrs["readonly"]:
+        if declarator.attrs.get("readonly", False):
             return
-        argdecl = ast.gen_arg_as_language(lang=lang, name="val", continuation=True)
+        argdecl = declstr.gen_arg_as_language(ast, lang=lang, name="val")
         decl = "void {}({}{})".format(funcname_set, this_set, argdecl)
 
+        fattrs = dict(
+            intent="setter",
+        )
         attrs = dict(
             val=dict(
-                intent="in",
-                value=value,
+                intent="setter",
             )
         )
-        dim = declarator.metaattrs["dimension"]
-        if dim:
-            attrs["val"]["rank"] = len(dim)
+        if "dimension" in declarator.attrs:
+            attrs["val"]["rank"] = declast.find_rank_of_dimension(declarator.attrs["dimension"])
 
-        fcn = parent.add_function(decl, attrs=attrs, format=fmt_func)
-        # XXX - The function is not processed like other, so set intent directly.
-        fcn.ast.declarator.metaattrs["intent"] = "setter"
-        iarg = 0
-        if is_struct:
-            meta = fcn.ast.declarator.params[0].declarator.metaattrs
-            meta["intent"] = "inout"
-            meta["struct"] = cls.typemap.flat_name
-            iarg = 1
-        meta = fcn.ast.declarator.params[iarg].declarator.metaattrs
-        meta.update(declarator.metaattrs)
-        meta["intent"] = "setter"
-        fcn.wrap.lua = False
-        fcn.wrap.python = False
+        fcn = parent.add_function(decl, fattrs=fattrs, attrs=attrs, format=fmt_func)
+        fcn.wrap.assign(fortran=True)
         fcn._generated = "getter/setter"
+        fcn._generated_path.append("getter/setter")
 
     def instantiate_all_classes(self, node):
         """Instantate all class template_arguments recursively.
@@ -918,8 +453,200 @@ class GenFunctions(object):
             self.instantiate_classes(cls)
 
         for ns in node.namespaces:
+            self.push_namespace_list(ns)
             self.instantiate_all_classes(ns)
+            self.pop_namespace_list()
 
+    def template_class(self, cls, clslist):
+        """Create a class for each list of template_arguments.
+        """
+        orig_typemap = cls.typemap
+        if orig_typemap.cxx_instantiation is None:
+            orig_typemap.cxx_instantiation = {}
+        for function in cls.functions:
+            self.append_function_index(function)
+        assign_operators = self.current_namespace().assign_operators
+        # Replace class with new class for each template instantiation.
+        # targs -> ast.TemplateArgument
+        for i, targs in enumerate(cls.template_arguments):
+            newcls = cls.clone()
+            clslist.append(newcls)
+
+            # If single template argument, use its name; else sequence.
+            # XXX - maybe change to names
+            #   i.e.  _int_double  However <std::string,int> is a problem.
+            if targs.fmtdict and 'template_suffix' in targs.fmtdict:
+                class_suffix = targs.fmtdict['template_suffix']
+            elif len(targs.asts) == 1:
+                ntypemap = targs.asts[0].typemap
+                if ntypemap.template_suffix:
+                    class_suffix = ntypemap.template_suffix
+                else:
+                    class_suffix = "_" + ntypemap.flat_name
+            else:
+                class_suffix = "_" + str(i)
+
+            # Update name of class.
+            #  name_api           - vector_0 or vector_int     (Fortran and C names)
+            #  name_instantiation - vector<int>
+            if targs.fmtdict and "cxx_class" in targs.fmtdict:
+                newcls.name_api = targs.fmtdict["cxx_class"]
+            else:
+                newcls.name_api = cls.name + class_suffix
+            newcls.name_instantiation = cls.name + targs.instantiation
+            newcls.scope_file[-1] += class_suffix
+
+            # Add fmt and options from YAML
+            if targs.fmtdict:
+                newcls.user_fmt.update(targs.fmtdict)
+            if targs.options:
+                newcls.options.update(targs.options)
+            
+            # Remove defaulted attributes then reset with current values.
+            newcls.delete_format_templates()
+            newcls.default_format()
+
+            newcls.typemap = typemap.create_class_typemap(newcls)
+            if targs.instantiation in orig_typemap.cxx_instantiation:
+                print("instantiate_classes: {} already in "
+                      "typemap.cxx_instantiation".format(targs.instantiation))
+            orig_typemap.cxx_instantiation[targs.instantiation] = newcls.typemap
+
+            self.template_typedef(newcls, targs)
+
+            self.push_instantiate_scope(newcls, targs)
+            self.process_class(newcls, newcls)
+            add_assign_operator(assign_operators, newcls, newcls)
+            self.pop_instantiate_scope()
+
+    def share_class(self, cls, smart):
+        """Create additional classes for use with smart pointers like std::shared.
+
+        Parameters
+        ----------
+          cls   - ast.ClassNode
+          smart - is a dictionary with fields from YAML file (for smart pointers)
+              type   - std::shared_ptr, std::weak_ptr
+              format -
+        """
+        newcls = cls.clone()
+        newcls.smart_pointer = []
+        fmt_class = newcls.fmtdict
+
+        name_type = smart["type"]
+        ntypemap = cls.symtab.lookup_typemap(name_type)
+        if ntypemap is None:
+            error.get_cursor().warning(
+                "smart_pointer type '{}' is unknown".format(name_type))
+            return
+        if ntypemap.sgroup != "smart_ptr":
+            error.get_cursor().warning(
+                "smart_pointer type '{}' is not a smart pointer".format(name_type))
+            return
+
+        fmt_class.smart_pointer = ntypemap.smart_pointer
+        if "format" in smart:
+            fmt_class.update(smart["format"])
+        newcls.eval_template("C_name_shared_api")
+        newcls.name_api = fmt_class.C_name_shared_api
+        newcls.name_instantiation = "{}<{}>".format(name_type, fmt_class.cxx_type)
+        newcls.scope_file[-1] = newcls.name_api
+        newcls.shared_baseclass = cls
+
+        newcls.C_shared_class = True
+        # Remove defaulted attributes then reset with current values.
+        newcls.delete_format_templates()
+        newcls.default_format()
+
+        newcls.typemap = declast.fetch_smart_ptr_typemap(
+            newcls.name_instantiation,
+            ntypemap,
+            cls.typemap,
+            self.newlibrary.symtab)
+        typemap.fill_class_typemap(newcls)
+        newcls.typemap.base = "smartptr"
+        newcls.typemap.sgroup = "smartptr"
+
+        return newcls
+
+    def add_share_smart_methods(self, cls):
+        """A methods to a std::shared_ptr class.
+
+        long use_count() const noexcept;
+	T* get() const noexcept;
+        """
+        fmt_class = cls.fmtdict
+        if fmt_class.F_name_shared_use_count:
+            decl = "long use_count(void)"
+            fmt_func = dict(
+                F_name_api = fmt_class.F_name_shared_use_count,
+            )
+            fcn = cls.add_function(decl, format=fmt_func)
+            fcn.C_shared_method = True
+
+    def add_smart_ptr_ctor_dtor(self, cls):
+        """
+        Remove existing constructor methods for Object.
+        Replace with smart_ptr specific methods.
+        The Object ctor may have arguments which do not apply to 
+        the smart pointer.
+        TODO: For now, replace with a ctor which accepts no arguments
+        but it may be meaningful to add ctor like weak_ptr(shared_ptr).
+        """
+        # Filter out current ctor and dtor
+        functions = []
+        for function in cls.functions:
+            if function.ast.is_ctor:
+                pass
+            elif function.ast.is_dtor:
+                pass
+            else:
+                functions.append(function)
+        cls.functions = functions
+
+        # Set up symtab for parsing
+        cls.symtab.push_scope(cls.ast.class_specifier)
+        
+        decl = "Object()"
+        fcn = cls.add_function(decl)
+                
+        decl = "~Object()"
+        fcn = cls.add_function(decl)
+
+        cls.symtab.pop_scope()
+        
+    def add_smart_ptr_methods(self, smart_ptrs):
+        """
+        Subclasses for smart pointers have been created.
+        This allows one type of smart pointer to reference another.
+
+        Parameters
+        ----------
+        smart_ptrs - index of smart pointer subclasses, indexed by type name.
+        """
+        assign_operators = self.current_namespace().assign_operators
+
+        clsmap = {}
+        for cls in smart_ptrs.values():
+            clsmap[cls.typemap.smart_pointer] = cls
+            
+        for cls in smart_ptrs.values():
+            smart_pointer =  cls.typemap.smart_pointer
+            add_assign_operator(assign_operators, cls, cls, smart_pointer)
+            if smart_pointer == "shared":
+                self.add_smart_ptr_ctor_dtor(cls)
+                add_assign_operator(assign_operators, cls, cls.shared_baseclass, 'makeshared')
+            elif smart_pointer == "weak":
+                # weak_ptr cannot call methods directly.
+                # TODO: Add constructor from shared.
+                cls.functions = []
+                self.add_smart_ptr_ctor_dtor(cls)
+                if 'shared' in clsmap:
+                    # weak_ptr = shared_ptr
+                    add_assign_operator(assign_operators, cls, clsmap['shared'], 'weak')
+
+            self.add_share_smart_methods(cls)
+        
     def instantiate_classes(self, node):
         """Instantate any template_arguments.
 
@@ -931,8 +658,10 @@ class GenFunctions(object):
         ----------
         node : ast.LibraryNode, ast.NamespaceNode, ast.ClassNode
         """
+        assign_operators = self.current_namespace().assign_operators
         clslist = []
         for cls in node.classes:
+            self.cursor.push_node(cls)
             if cls.wrap_as == "struct":
                 clslist.append(cls)
                 options = cls.options
@@ -940,62 +669,23 @@ class GenFunctions(object):
                     self.add_struct_ctor(cls)
                 self.process_class(node, cls)
             elif cls.template_arguments:
-                orig_typemap = cls.typemap
-                if orig_typemap.cxx_instantiation is None:
-                    orig_typemap.cxx_instantiation = {}
-                # Replace class with new class for each template instantiation.
-                # targs -> ast.TemplateArgument
-                for i, targs in enumerate(cls.template_arguments):
-                    newcls = cls.clone()
-                    clslist.append(newcls)
-
-                    # If single template argument, use its name; else sequence.
-                    # XXX - maybe change to names
-                    #   i.e.  _int_double  However <std::string,int> is a problem.
-                    if targs.fmtdict and 'template_suffix' in targs.fmtdict:
-                        class_suffix = targs.fmtdict['template_suffix']
-                    elif len(targs.asts) == 1:
-                        ntypemap = targs.asts[0].typemap
-                        if ntypemap.template_suffix:
-                            class_suffix = ntypemap.template_suffix
-                        else:
-                            class_suffix = "_" + ntypemap.flat_name
-                    else:
-                        class_suffix = "_" + str(i)
-
-                    # Update name of class.
-                    #  name_api           - vector_0 or vector_int     (Fortran and C names)
-                    #  name_instantiation - vector<int>
-                    if targs.fmtdict and "cxx_class" in targs.fmtdict:
-                        newcls.name_api = targs.fmtdict["cxx_class"]
-                    else:
-                        newcls.name_api = cls.name + class_suffix
-                    newcls.name_instantiation = cls.name + targs.instantiation
-                    newcls.scope_file[-1] += class_suffix
-
-                    if targs.fmtdict:
-                        newcls.user_fmt.update(targs.fmtdict)
-                    if targs.options:
-                        newcls.options.update(targs.options)
-                    
-                    # Remove defaulted attributes then reset with current values.
-                    newcls.delete_format_templates()
-                    newcls.default_format()
-
-                    newcls.typemap = typemap.create_class_typemap(newcls)
-                    if targs.instantiation in orig_typemap.cxx_instantiation:
-                        print("instantiate_classes: {} already in "
-                              "typemap.cxx_instantiation".format(targs.instantiation))
-                    orig_typemap.cxx_instantiation[targs.instantiation] = newcls.typemap
-
-                    self.template_typedef(newcls, targs)
-
-                    self.push_instantiate_scope(newcls, targs)
-                    self.process_class(newcls, newcls)
-                    self.pop_instantiate_scope()
+                self.template_class(cls, clslist)
             else:
                 clslist.append(cls)
                 self.process_class(cls, cls)
+                add_assign_operator(assign_operators, cls, cls)
+                if cls.smart_pointer:
+                    smart_ptrs = {}
+                    # cls.smart_pointer is a dict from YAML file.
+                    for smart in cls.smart_pointer:
+                        shared = self.share_class(cls, smart)
+                        clslist.append(shared)
+                        smart_ptrs[smart["type"]] = shared
+                    self.add_smart_ptr_methods(smart_ptrs)
+                    for shared in smart_ptrs.values():
+                        self.process_class(shared, shared)
+                
+            self.cursor.pop_node(cls)
 
         node.classes = clslist
 
@@ -1020,6 +710,7 @@ class GenFunctions(object):
                 for typedef in typedefmap:
                     if ntypemap is typedef[0]:
                         arg.typemap = typedef[1]
+                        arg.declarator.typemap = typedef[1]
                         break
             
     def update_templated_typemaps(self, node):
@@ -1040,20 +731,19 @@ class GenFunctions(object):
         ast = declast.create_struct_ctor(cls)
         name = ast.declarator.attrs["name"]  #cls.name + "_ctor"
         #  Add variables as function parameters by coping AST.
+        struct_members = {}
         for var in cls.variables:
             a = copy.deepcopy(var.ast)
-            a.declarator.metaattrs["intent"] = "in"
-            a.declarator.metaattrs["struct_member"] = var
+            if a.declarator.is_pointer():
+                a.declarator.attrs["intent"] = "in"
+            struct_members[a.declarator.user_name] = var
             ast.declarator.params.append(a)
-        # Python only
-        opt = dict(
-            wrap_fortran=False,
-            wrap_c=False,
-            wrap_lua=False,
-        )
-        node = cls.add_function(name, ast, options=opt)
-        node.declgen = node.ast.gen_decl()
+        node = cls.add_function(name, ast)
+        node.declgen = gen_decl(node.ast)
+        node.struct_members = struct_members
+        node.wrap.assign(python=True)
         node._generated = "struct_as_class_ctor"
+        node._generated_path.append("struct_as_class_ctor")
 
     def process_class(self, parent, cls):
         """Process variables and functions for a class/struct.
@@ -1065,38 +755,14 @@ class GenFunctions(object):
         cls : ast.ClassNode
         """
         if cls.typemap.flat_name in self.class_map:
-            raise RuntimeError("process_class: class {} already exists in class_map"
+            self.cursor.generate("process_class: class {} already exists in class_map"
                                .format(cls.typemap.flat_name))
+            return
         self.class_map[cls.typemap.flat_name] = cls
+        cls.create_node_map()
         for var in cls.variables:
             self.add_var_getter_setter(parent, cls, var)
         cls.functions = self.define_function_suffix(cls.functions)
-
-    def define_result_as_arg_functions(self, functions):
-        """Convert result into argument if requested."""
-        ordered = []
-        for node in functions:
-            ordered.append(node)
-            if node.wrap.fortran is False:
-                continue
-            self.convert_result_as_arg(node, ordered)
-        return ordered
-
-    def define_bufferify_functions(self, functions):
-        """Create additional C bufferify functions."""
-        ordered = []
-        for node in functions:
-            ordered.append(node)
-            
-            if node.options.F_CFI:
-#                node._gen_fortran_generic = False
-                done = self.arg_to_CFI(node, ordered)
-            else:
-                done = False
-
-            if node.options.F_create_bufferify_function and not done:
-                self.arg_to_buffer(node, ordered)
-        return ordered
 
     def define_fortran_generic_functions(self, functions):
         """Create multiple generic Fortran wrappers to call a
@@ -1107,9 +773,9 @@ class GenFunctions(object):
             ordered.append(node)
             if not node.wrap.fortran:
                 continue
-            if node._gen_fortran_generic and not node.options.F_CFI:
+            if node._gen_fortran_assumed_rank and not node.options.F_CFI:
                 self.process_assumed_rank(node)
-            if node.fortran_generic:
+            if node.fortran_generic and node.wrap.fortran:
                 node._overloaded = True
                 self.generic_function(node, ordered)
         return ordered
@@ -1163,7 +829,7 @@ class GenFunctions(object):
                 # Stuff like push_back which is in a templated class, is not an overload.
                 # C_name_scope is used to distigunish the functions, not function_suffix.
                 continue
-            if function.ast.declarator.is_ctor():
+            if function.ast.declarator.is_ctor:
                 if not function.wrap.fortran:
                     continue
                 # Always create generic interface for class derived type.
@@ -1172,7 +838,6 @@ class GenFunctions(object):
                 overloaded_functions.setdefault(name, []).append(
                     function)
                 function.options.F_create_generic = True
-                fmt.F_name_generic = name
                 function._overloaded = True
             else:
                 overloaded_functions.setdefault(function.name, []).append(
@@ -1186,20 +851,11 @@ class GenFunctions(object):
                     if not function.fmtdict.inlocal("function_suffix"):
                         function.fmtdict.function_suffix = "_{}".format(i)
 
-        # return_this
-        ordered2 = []
-        for method in ordered_functions:
-            ordered2.append(method)
-            if method.return_this:
-                self.process_return_this(method, ordered2)
-                
-        ordered3a = self.define_result_as_arg_functions(ordered2)
-        ordered3 = self.define_fortran_generic_functions(ordered3a)
-        ordered4 = self.define_bufferify_functions(ordered3)
+        ordered3 = self.define_fortran_generic_functions(ordered_functions)
 
-        self.gen_functions_decl(ordered4)
+        self.gen_functions_decl(ordered3)
 
-        return ordered4
+        return ordered3
 
     def template_function(self, node, ordered_functions):
         """ Create overloaded functions for each templated argument.
@@ -1230,10 +886,12 @@ class GenFunctions(object):
             self.append_function_index(new)
 
             new._generated = "cxx_template"
+            new._generated_path.append("cxx_template")
 
             fmt = new.fmtdict
             if targs.fmtdict:
                 fmt.update(targs.fmtdict)
+                new.user_fmt = targs.fmtdict
 
             # Use explicit template_suffix if provide.
             # If single template argument, use type's explicit_suffix
@@ -1311,6 +969,7 @@ class GenFunctions(object):
         self.append_function_index(new)
 
         new._generated = "cxx_template"
+        new._generated_path.append("cxx_template")
 
         new.cxx_template = {}
         #        fmt.CXX_template = targs.instantiation   # ex. <int>
@@ -1362,12 +1021,11 @@ class GenFunctions(object):
             newdecls = copy.deepcopy(params)
             for decl in newdecls:
                 attrs = decl.declarator.attrs
-                meta = decl.declarator.metaattrs
-                if meta["assumed-rank"]:
+                dim = attrs.get("dimension", None)
+                if dim == "..":   # assumed-rank
                     # Replace dimension(..) with rank(n).
-                    attrs["dimension"] = None
+                    del attrs["dimension"]
                     attrs["rank"] = rank
-                    meta["assumed-rank"] = None
             generic = ast.FortranGeneric(
                 "", function_suffix="_{}d".format(rank),
                 decls=newdecls)
@@ -1376,11 +1034,10 @@ class GenFunctions(object):
         # Remove assumed-rank from C function.
         for decl in params:
             attrs = decl.declarator.attrs
-            meta = decl.declarator.metaattrs
-            if meta["assumed-rank"]:
-                attrs["dimension"] = None
-                meta["assumed-rank"] = None
-        node.declgen = node.ast.gen_decl()
+            dim = attrs.get("dimension", None)
+            if dim == "..":   # assumed-rank
+                del attrs["dimension"]
+        node.declgen = gen_decl(node.ast)
         
     def generic_function(self, node, ordered_functions):
         """Create overloaded functions for each generic method.
@@ -1415,9 +1072,14 @@ class GenFunctions(object):
         Fortran wrappers will be created to call the same C wrapper.
         The conversion of the arguments will be done by Fortran intrinsics.
         ex.  int(arg, kind=C_LONG)
-        Otherwise, a C wrapper will be created for each Fortran function.
-        arg_to_buff will be called after this which may create an additional
-        C wrapper to deal with these arguments.
+
+        If all of the generic arguments are native scalar, then the
+        Fortran wrappers will explictly convert the argument using a
+        Fortran intrinsic function then call the Fortran interface for
+        the original C function.  In this case _fortran_generic_wrap
+        will be set True. The original function can not be called from
+        Fortran since its name conflicts with the generic name or the
+        arguments may be ambiguous with one of the overloads.
 
         Parameters
         ----------
@@ -1427,51 +1089,57 @@ class GenFunctions(object):
             Create functions are appended to this list.
 
         """
+        need_c_wrapper = False
+        wrap_fortran = True
+        # If overloaded, multiple functions may produce the same names
+        # so always make the wrapper.
+        if not node._cxx_overload:
+            for arg in node.ast.declarator.params:
+                if arg.typemap.sgroup == "void":
+                    # Will use Fortran intrinsic to convert argument.
+                    wrap_fortran = False  # Do not change until after cloning.
+                    need_c_wrapper = True
+        
+        new_functions = []
         for generic in node.fortran_generic:
             new = node.clone()
+            new_functions.append(new)
             ordered_functions.append(new)
             self.append_function_index(new)
             new._generated = "fortran_generic"
+            new._generated_path.append("fortran_generic")
             fmt = new.fmtdict
             # XXX append to existing suffix
             if generic.fmtdict:
                 fmt.update(generic.fmtdict)
             fmt.function_suffix = fmt.function_suffix + generic.function_suffix
             new.fortran_generic = {}
-            new.wrap.assign(fortran=True)
+            new.wrap.assign(fortran=True) # Only wrap Fortran
+            if len(new.ast.declarator.params) != len(generic.decls):
+                raise RuntimeError("internal: generic_function: length mismatch: "
+                                   + node.name)
             new.ast.declarator.params = generic.decls
 
-            # Try to call original C function if possible.
-            # All arguments are native scalar.
-            need_wrapper = False
-            if new.ast.declarator.is_indirect():
-                need_wrapper = True
-            
             for arg in new.ast.declarator.params:
                 if arg.declarator.is_indirect():
-                    need_wrapper = True
-                    break
-                elif arg.typemap.sgroup == "native":
-                    pass
-                else:
-                    need_wrapper = True
-                    break
+                    if "rank" in arg.declarator.attrs:
+                        need_c_wrapper = True
+                        break
 
-            if need_wrapper:
-                # The C wrapper is required to cast constants.
-                # generic.yaml: GenericReal
+        # Wrap all generic functions the same way to avoid problems
+        # with arguments dimensions.
+        if need_c_wrapper:
+            for new in new_functions:
                 new.C_force_wrapper = True
-                new.wrap.c = True
                 new._PTR_C_CXX_index = node._function_index
-            else:
+        else:
+            for new in new_functions:
                 new._PTR_F_C_index = node._function_index
-        
-        # Do not process templated node, instead process
-        # generated functions above.
-        #        node.wrap.c = False
-        node.wrap.fortran = False
 
-    #        node.wrap.python = False
+        if wrap_fortran:
+            node._fortran_generic_wrap = True
+        else:
+            node.wrap.fortran = False
 
     def has_default_args(self, node, ordered_functions):
         """
@@ -1483,6 +1151,10 @@ class GenFunctions(object):
           void func(int i)
           void func(int i, int j)
         In Fortran, these are added to a generic interface.
+
+        It is also necessary to trim fortran_generic.
+        For example, func() will not have any generic variations
+        since it has no arguments.
 
         Args:
             node -
@@ -1506,8 +1178,11 @@ class GenFunctions(object):
             new = node.clone()
             self.append_function_index(new)
             new._generated = "has_default_arg"
+            new._generated_path.append("has_default_arg")
             del new.ast.declarator.params[i:]  # remove trailing arguments
             new._has_default_arg = False
+            if node.fortran_generic:
+                new.fortran_generic = ast.trim_fortran_generic_decls(node.fortran_generic, i)
             # Python and Lua both deal with default args in their own way
             new.wrap.assign(c=True, fortran=True)
             fmt = new.fmtdict
@@ -1529,557 +1204,6 @@ class GenFunctions(object):
             node.fmtdict.function_suffix = default_arg_suffix[ndefault]
         except IndexError:
             pass
-
-    def move_arg_attributes(self, arg, old_node, new_node):
-        """After new_node has been created from old_node,
-        the result is being converted into an argument.
-        Move some attributes that are associated with the function
-        to the new argument.
-
-        Note: Used with 'char *' and std::string arguments.
-
-        Parameters
-        ----------
-        arg : ast.Declaration
-            New argument, result of old_node.
-        old_node : FunctionNode
-            Original function (wrap fortran).
-        new_node : FunctionNode
-            New function (wrap c) that passes arg.
-        """
-        arg.metaattrs["deref"] = new_node.ast.metaattrs["deref"]
-        new_node.ast.metaattrs["deref"] = None
-            
-        c_attrs = new_node.ast.attrs
-        attrs = arg.attrs
-        for name in ["owner", "free_pattern"]:
-            if c_attrs[name]:
-                attrs[name] = c_attrs[name]
-                del c_attrs[name]
-
-    def result_as_arg(self, node, C_new):
-        """
-        Create a Fortran function for a C function which has the
-        result added as an argument.
-
-        Create Fortran function without bufferify function_suffix but
-        with len attributes on string arguments.
-        char *out(); ->  call out(result_as_arg)
-        """
-        F_new = C_new.clone()
-
-        # Fortran function should wrap the new C function
-        F_new._PTR_F_C_index = C_new._function_index
-        F_new.wrap.assign(fortran=True)
-        # Do not add '_bufferify'
-        F_new.fmtdict.function_suffix = node.fmtdict.function_suffix
-
-        # Do not wrap original function (does not have result argument)
-        node.wrap.fortran = False
-        return F_new
-
-    def process_return_this(self, node, ordered_functions):
-        """Deal with return_this feature.
-
-        If a function is marked return_this, convert it into a 
-        subroutine for the C and Fortran wrappers.
-        Return this allows chaining of function calls.
-        For example in C++:   obj->doA()->doB();
-        Python:   obj.doA().doB()
-        However, there is no way to chain in C or Fortran.
-
-        Clone the function and wrap for C and Fortran.
-        Turn off C and Fortran wrapper on original node.
-        Remove the function result.
-        
-        Parameters
-        ----------
-        node : FunctionNode
-        ordered_functions : list of FunctionNode
-        """
-        if node.wrap.c == False and node.wrap.fortran == False:
-            return
-        new = node.clone()
-        ordered_functions.append(new)
-        self.append_function_index(new)
-        new._generated = "return_this"
-
-        # Only wrap for C and Fortran, transfer values from node.
-        new.wrap.clear()
-        new.wrap.c = node.wrap.c
-        new.wrap.fortran = node.wrap.fortran
-        node.wrap.c = False
-        node.wrap.fortran = False
-
-        # Do not return C++ this instance.
-        new.ast.set_return_to_void()
-        new.ast.declarator.metaattrs["intent"] = "subroutine"
-    
-    def convert_result_as_arg(self, node, ordered_functions):
-        """Convert a function result into an argument.
-
-        Used when the YAML file names the output argument
-        via fmt.F_string_result_as_arg for (char or string)
-        Create a new function.
-
-        For example, a function returns a 'char *' write a Fortran
-        wrapper which accepts a CHARACTER(*) argument which will be
-        assigned the function result.  This helps memory management
-        issues at the cost of copying data.
-
-        The original function will still be wrapped in C but returns a
-        type(C_PTR) where the user must call c_f_pointer themselves.
-        """
-        return ordered_functions # XXX - do nothing for now
-        options = node.options
-        fmt_func = node.fmtdict
-#        if options.F_string_len_trim is False:  # XXX what about vector?
-#            return
-
-        ast = node.ast
-        result_typemap = ast.typemap
-        result_name = None
-
-        # Check if result needs to be an argument.
-        attrs = ast.attrs
-        meta = ast.metaattrs
-        if meta["deref"] == "raw":
-            # No bufferify required for raw pointer result.
-            pass
-        elif result_typemap.sgroup in ["char", "string"]:
-            result_name = fmt_func.F_string_result_as_arg
-#            result_as_arg = fmt_func.F_string_result_as_arg
-#            result_name = result_as_arg or fmt_func.C_string_result_as_arg
-#        elif result_typemap.base == "vector":
-#            has_vector_result = True
-#        elif result_is_ptr:
-#            if meta["deref"] in ["allocatable", "pointer"]:
-#                need_cdesc_result = True
-#            elif attrs["dimension"]:
-#                need_cdesc_result = True
-
-        if not result_name:
-            return
-
-##########
-        # Create a new C function and change arguments
-        # and add attributes.
-        C_new = node.clone()
-        ordered_functions.append(C_new)
-        self.append_function_index(C_new)
-
-#        generated_suffix = "buf"
-        C_new._generated = "result_to_arg"
-        fmt_func = C_new.fmtdict
-#        fmt_func.function_suffix = fmt_func.function_suffix + fmt_func.C_bufferify_suffix + "XXX"
-#        fmt_func.function_suffix = fmt_func.function_suffix
-
-        options = C_new.options
-        C_new.wrap.assign(c=True, fortran=True)
-        C_new._PTR_C_CXX_index = node._function_index
-##########
-
-        # decl: const char * getCharPtr2()
-        new_arg = C_new.ast.result_as_arg(result_name)
-        new_arg.const = False # must be writeable
-#        attrs = new_arg.attrs
-#        new_arg.metaattrs["deref"] = None
-        # Special case for wrapf.py to override "allocatable"
-
-        # Special case for wrapf.py to override "allocatable"
-        node.ast.metaattrs["deref"] = None
-        new_arg.metaattrs["deref"] = "result"
-        new_arg.metaattrs["is_result"] = True
-        C_new.ast.metaattrs["intent"] = "subroutine"
-        C_new.ast.metaattrs["deref"] = None
-
-        node.wrap.fortran = False
-#        node.wrap.c = False
-
-        return
-        F_new = self.result_as_arg(node, C_new)
-        ordered_functions.append(F_new)
-        self.append_function_index(F_new)
-
-    def arg_to_CFI(self, node, ordered_functions):
-        """Look for functions which can use TS29113
-        Futher interoperability with C.
-
-        If a function requires CFI_cdesc_t, clone the function and set
-        arg.metaattrs["api"] to "cfi" to use the correct statements.  The
-        new function will be called by Fortran directly via the
-        bind(C) interface.  The original function no longer needs to
-        be wrapped by Fortran; however, it will still be wrapped by C
-        to provide a C API to a C++ function.
-        
-
-        Parameters
-        ----------
-        node : FunctionNode
-        ordered_functions : list of FunctionNode
-        """
-        options = node.options
-        fmt_func = node.fmtdict
-
-        if options.wrap_fortran is False:
-            # The buffer function is intended to be called by Fortran.
-            # No Fortran, no need for buffer function.
-            return
-
-        ast = node.ast
-        declarator = ast.declarator
-        result_typemap = ast.typemap
-        # shadow classes have not been added yet.
-        # Only care about string, vector here.
-        result_is_ptr = declarator.is_indirect()
-        if (
-            result_typemap
-            and result_typemap.base in ["string", "vector"]
-            and result_typemap.name != "char"
-            and not result_is_ptr
-        ):
-            node.wrap.c = False
-            #            node.wrap.fortran = False
-            self.config.log.write(
-                "Skipping {}, unable to create C wrapper "
-                "for function returning {} instance"
-                " (must return a pointer or reference)."
-                " Bufferify version will still be created.\n".format(
-                    result_typemap.cxx_type, declarator.user_name
-                )
-            )
-        
-        cfi_args = {}
-        for arg in ast.declarator.params:
-            declarator = arg.declarator
-            name = declarator.user_name
-            attrs = declarator.attrs
-            meta = declarator.metaattrs
-            cfi_args[name] = False
-            arg_typemap = arg.typemap
-            if meta["api"]:
-                # API explicitly set by user.
-                continue
-            elif meta["assumed-rank"]:
-                cfi_args[name] = True
-            elif attrs["rank"]:
-                cfi_args[name] = True
-            elif arg_typemap.sgroup == "string":
-                    cfi_args[name] = True
-            elif arg_typemap.sgroup == "char":
-                if declarator.is_indirect():
-                    cfi_args[name] = True
-            elif meta["deref"] in ["allocatable", "pointer"]:
-                cfi_args[name] = True
-        has_cfi_arg = any(cfi_args.values())
-
-        # Function result.
-        need_buf_result   = None
-
-        result_as_arg = ""  # Only applies to string functions
-        # when the result is added as an argument to the Fortran api.
-
-        # Check if result needs to be an argument.
-        declarator = ast.declarator
-        attrs = declarator.attrs
-        meta = declarator.metaattrs
-        if meta["deref"] == "raw":
-            # No bufferify required for raw pointer result.
-            pass
-        elif result_typemap.sgroup == "string":
-            need_buf_result   = "cfi"
-            result_as_arg = fmt_func.F_string_result_as_arg
-            result_name = result_as_arg or fmt_func.C_string_result_as_arg
-        elif result_typemap.sgroup == "char" and result_is_ptr:
-            need_buf_result   = "cfi"
-            result_as_arg = fmt_func.F_string_result_as_arg
-            result_name = result_as_arg or fmt_func.C_string_result_as_arg
-        elif meta["deref"] in ["allocatable", "pointer"]:
-            need_buf_result   = "cfi"
-
-        if not (need_buf_result or
-                has_cfi_arg):
-            return False
-
-        options.wrap_fortran = False
-
-        # Create a new C function and change arguments
-        # and add attributes.
-        C_new = node.clone()
-        ordered_functions.append(C_new)
-        self.append_function_index(C_new)
-
-        generated_suffix = "cfi"
-        C_new._generated = "arg_to_cfi"
-        C_new.splicer_group = "cfi"
-        if need_buf_result:
-            C_new.ast.declarator.metaattrs["api"] = need_buf_result
-        fmt_func = C_new.fmtdict
-        fmt_func.function_suffix = fmt_func.function_suffix + fmt_func.C_cfi_suffix
-
-        C_new.wrap.assign(c=True)#, fortran=True)
-        C_new._PTR_C_CXX_index = node._function_index
-
-        for arg in C_new.ast.declarator.params:
-            name = arg.declarator.user_name
-            if cfi_args[name]:
-                arg.declarator.metaattrs["api"] = generated_suffix
-
-        ast = C_new.ast
-        if True: # preserve to avoid changing indention for now.
-            f_attrs = node.ast.declarator.attrs  # Fortran function attributes
-            f_meta = node.ast.declarator.metaattrs  # Fortran function attributes
-            if result_as_arg:
-                # decl: const char * getCharPtr2() +len(30)
-                # +len implies copying into users buffer.
-                result_as_string = ast.result_as_arg(result_name)
-                result_as_string.const = False # must be writeable
-                attrs = result_as_string.declarator.attrs
-                # Special case for wrapf.py to override "allocatable"
-                f_meta["deref"] = None
-                result_as_string.declarator.metaattrs["api"] = "cfi"
-                result_as_string.declarator.metaattrs["deref"] = "result"
-                result_as_string.declarator.metaattrs["is_result"] = True
-                C_new.ast.declarator.metaattrs["api"] = None
-                C_new.ast.declarator.metaattrs["intent"] = "subroutine"
-                C_new.ast.declarator.metaattrs["deref"] = None
-
-        if result_as_arg:
-            F_new = self.result_as_arg(node, C_new)
-            ordered_functions.append(F_new)
-            self.append_function_index(F_new)
-        else:
-            if node._generated in ["result_to_arg", "fortran_generic", "getter/setter"]:
-                node.wrap.c = False
-            # Fortran function may call C subroutine if string/vector result
-            # Fortran function calls bufferify function.
-            node._PTR_F_C_index = C_new._function_index
-        return True
-
-    def arg_to_buffer(self, node, ordered_functions):
-        """Look for function which have buffer arguments.
-
-        This includes functions with string or vector arguments.
-        If found then create a new C function that
-        sets metaattrs["api"] to 'buf'. This will find groups in
-        fc_statements which will add arguments bufferify arguments
-        (typically a buffer and length).
-
-        String arguments added deref(allocatable) by default so that
-        char * function will create an allocatable string in Fortran.
-
-        Parameters
-        ----------
-        node : FunctionNode
-        ordered_functions : list of FunctionNode
-        """
-        options = node.options
-        fmt_func = node.fmtdict
-
-        if node.wrap.c is False:
-#        if options.wrap_c is False:  # XXX cdesc.yaml GetScalar2
-            # The user does not require a C wrapper.
-            # This can be the case if the Fortran wrapper is doing all
-            # the work via splicer or fstatements.
-            return
-
-        # If a C++ function returns a std::string instance,
-        # the default wrapper will not compile since the wrapper
-        # will be declared as char. It will also want to return the
-        # c_str of a stack variable. Warn and turn off the wrapper.
-        ast = node.ast
-        declarator = ast.declarator
-        result_typemap = ast.typemap
-        # shadow classes have not been added yet.
-        # Only care about string, vector here.
-        result_is_ptr = ast.declarator.is_indirect()
-        if (
-            result_typemap
-            and result_typemap.base in ["string", "vector"]
-            and result_typemap.name != "char"
-            and not result_is_ptr
-        ):
-            node.wrap.c = False
-            #            node.wrap.fortran = False
-            self.config.log.write(
-                "Skipping {}, unable to create C wrapper "
-                "for function returning {} instance"
-                " (must return a pointer or reference)."
-                " Bufferify version will still be created.\n".format(
-                    result_typemap.cxx_type, declarator.user_name
-                )
-            )
-
-        if node.wrap.fortran is False:
-            # The buffer function is intended to be called by Fortran.
-            # No Fortran, no need for buffer function.
-            return
-        if options.F_string_len_trim is False:  # XXX what about vector?
-            return
-
-        # Arguments.
-        # Is result or any argument a string or vector?
-        # If so, additional arguments will be passed down so
-        # create buffer version of function.
-        buf_args = {}
-        for arg in declarator.params:
-            has_buf_arg = None
-            arg_typemap = arg.typemap
-            declarator = arg.declarator
-            attrs = declarator.attrs
-            meta = declarator.metaattrs
-            if meta["api"]:
-                # API explicitly set by user.
-                continue
-            elif attrs["cdesc"]:
-                # User requested cdesc.
-                has_buf_arg = "cdesc"
-            elif arg_typemap.sgroup == "string":
-                if meta["deref"] in ["allocatable", "pointer", "copy"]:
-                    has_buf_arg = "cdesc"
-                    # XXX - this is not tested
-                    # XXX - tested with string **arg+intent(out)+dimension(ndim)
-                else:
-                    has_buf_arg = "buf"
-            elif arg_typemap.sgroup == "char":
-                if arg.ftrim_char_in:
-                    pass
-                elif declarator.is_indirect():
-                    if meta["deref"] in ["allocatable", "pointer"]:
-                        has_buf_arg = "cdesc"
-                    else:
-                        has_buf_arg = "buf"
-            elif arg_typemap.sgroup == "vector":
-                if meta["intent"] == "in":
-                    # Pass SIZE.
-                    has_buf_arg = "buf"
-                else:
-                    has_buf_arg = "cdesc"
-            elif (arg_typemap.sgroup == "native" and
-                  meta["intent"] == "out" and
-                  meta["deref"] != "raw" and
-                  declarator.get_indirect_stmt() in ["**", "*&"]):
-                # double **values +intent(out) +deref(pointer)
-                has_buf_arg = "cdesc"
-                #has_buf_arg = "buf" # XXX - for scalar?
-            buf_args[declarator.user_name] = has_buf_arg
-        # --- End loop over function parameters
-        has_buf_arg = any(buf_args.values())
-
-        # Function result.
-        need_buf_result   = None
-
-        result_as_arg = ""  # Only applies to string functions
-        # when the result is added as an argument to the Fortran api.
-
-        # Check if result needs to be an argument.
-        attrs = ast.declarator.attrs
-        meta = ast.declarator.metaattrs
-        if meta["deref"] == "raw":
-            # No bufferify required for raw pointer result.
-            pass
-        elif result_typemap.sgroup == "string":
-            if meta["deref"] in ["allocatable", "pointer"]:
-                need_buf_result = "cdesc"
-            else:
-                need_buf_result = "buf"
-            result_as_arg = fmt_func.F_string_result_as_arg
-            result_name = result_as_arg or fmt_func.C_string_result_as_arg
-        elif result_typemap.sgroup == "char" and result_is_ptr:
-            if meta["deref"] in ["allocatable", "pointer"]:
-                # Result default to "allocatable".
-                need_buf_result = "cdesc"
-            else:
-                need_buf_result = "buf"
-            result_as_arg = fmt_func.F_string_result_as_arg
-            result_name = result_as_arg or fmt_func.C_string_result_as_arg
-        elif result_typemap.base == "vector":
-            need_buf_result = "cdesc"
-        elif result_is_ptr:
-            if meta["deref"] in ["allocatable", "pointer"]:
-                if meta["dimension"]:
-                    # int *get_array() +deref(pointer)+dimension(10)
-                    need_buf_result = "cdesc"
-
-        # Functions with these results need wrappers.
-        if not (need_buf_result or
-                has_buf_arg):
-            return
-
-        # XXX       node.wrap.fortran = False
-        # Preserve wrap.c.
-        # This keep a version which accepts char * arguments.
-
-        # Create a new C function and change arguments
-        # and add attributes.
-        C_new = node.clone()
-        ordered_functions.append(C_new)
-        self.append_function_index(C_new)
-
-        generated_suffix = "buf"
-        C_new._generated = "arg_to_buffer"
-        C_new.splicer_group = "buf"
-        if need_buf_result:
-            C_new.ast.declarator.metaattrs["api"] = need_buf_result
-        
-        fmt_func = C_new.fmtdict
-        fmt_func.function_suffix = fmt_func.function_suffix + fmt_func.C_bufferify_suffix
-
-        options = C_new.options
-        C_new.wrap.assign(c=node.options.wrap_c)
-        C_new._PTR_C_CXX_index = node._function_index
-
-        for arg in C_new.ast.declarator.params:
-            declarator = arg.declarator
-            attrs = declarator.attrs
-            meta = declarator.metaattrs
-            if buf_args[declarator.user_name]:
-                meta["api"] = buf_args[declarator.user_name]
-            if arg.ftrim_char_in:
-                continue
-            arg_typemap = arg.typemap
-            if arg_typemap.base == "vector":
-                # Do not wrap the orignal C function with vector argument.
-                # Meaningless to call without the size argument.
-                # TODO: add an option where char** length is determined by looking
-                #       for trailing NULL pointer.  { "foo", "bar", NULL };
-                node.wrap.c = False
-                node.wrap.lua = False  # NotImplemented
-
-        ast = C_new.ast
-        if True: # preserve to avoid changing indention for now.
-            # Add additional argument to hold result.
-            # This will allocate a new character variable to hold the
-            # results of the C++ function.
-            f_attrs = node.ast.declarator.attrs  # Fortran function attributes
-            f_meta = node.ast.declarator.metaattrs  # Fortran function attributes
-
-            if result_as_arg:
-                # decl: const char * getCharPtr2() +len(30)
-                # +len implies copying into users buffer.
-                result_as_string = ast.result_as_arg(result_name)
-                result_as_string.const = False # must be writeable
-                attrs = result_as_string.declarator.attrs
-                # Special case for wrapf.py to override "allocatable"
-                f_meta["deref"] = None
-                # We've added an argument to fill, use api=buf.
-                result_as_string.declarator.metaattrs["api"] = "buf"
-                result_as_string.declarator.metaattrs["deref"] = "result"
-                result_as_string.declarator.metaattrs["is_result"] = True
-                C_new.ast.declarator.metaattrs["api"] = None
-                C_new.ast.declarator.metaattrs["intent"] = "subroutine"
-                C_new.ast.declarator.metaattrs["deref"] = None
-
-        if result_as_arg:
-            F_new = self.result_as_arg(node, C_new)
-            ordered_functions.append(F_new)
-            self.append_function_index(F_new)
-        else:
-            if node._generated in ["result_to_arg", "fortran_generic", "getter/setter"]:
-                node.wrap.c = False
-            
-            # Fortran function may call C subroutine if string/vector result
-            node._PTR_F_C_index = C_new._function_index
 
     def XXXcheck_class_dependencies(self, node):
         """
@@ -2132,110 +1256,11 @@ class GenFunctions(object):
             functions - list of ast.FunctionNode.
         """
         for node in functions:
-            node.declgen = node.ast.gen_decl()
-
-
-class Namify(object):
-    """Compute names of functions in library.
-    Need to compute F_name and F_C_name since they interact.
-    Compute all C names first, then Fortran.
-    A Fortran function may call a generated C function via
-    _PTR_F_C_index
-    Also compute number which may be controlled by options.
-
-    C_name - Name of C function
-    F_C_name - Fortran function for C interface
-    F_name_impl - Name of Fortran function implementation
-    """
-
-    def __init__(self, newlibrary, config):
-        """
-        Args:
-            newlibrary - ast.LibraryNode
-            config -
-        """
-        self.newlibrary = newlibrary
-        self.config = config
-
-    def name_library(self):
-        """entry pointer for library"""
-        self.name_language(self.newlibrary.wrap_namespace)
-        self.name_language(self.newlibrary.wrap_namespace)
-
-    def iter_decl(self, node):
-        """Loop over members of a Namespace, class"""
-        for func in node.functions:
-            func.update_names()
-        
-    def name_language(self, node):
-        """
-        Args:
-            handler - function.
-            node - ast.LibraryNode, ast.NamespaceNode
-        """
-        for cls in node.classes:
-            self.iter_decl(cls)
-
-        self.iter_decl(node)
-
-        for ns in node.namespaces:
-            self.name_language(ns)
-
-
-class Preprocess(object):
-    """Compute some state for functions."""
-
-    def __init__(self, newlibrary, config):
-        """
-        Args:
-            newlibrary - ast.LibraryNode
-            config -
-        """
-        self.newlibrary = newlibrary
-        self.config = config
-
-    def process_library(self):
-        """entry pointer for library"""
-        self.process_namespace(self.newlibrary.wrap_namespace)
-
-    def process_namespace(self, node):
-        """Process a namespace.
-
-        Args:
-            node - ast.LibraryNode, ast.NamespaceNode
-        """
-        for cls in node.classes:
-            for func in cls.functions:
-                self.process_function(cls, func)
-
-        for func in node.functions:
-            self.process_function(None, func)
-
-        for ns in node.namespaces:
-            self.process_namespace(ns)
-
-    def process_function(self, cls, node):
-        """
-         Args:
-            cls -
-            node -
-        """
-        attrs = node.ast.declarator.attrs
-        meta = node.ast.declarator.metaattrs
-        if attrs["owner"] == "caller" and \
-           meta["deref"] == "pointer":
-            meta["capsule"] = True
-
-#        for arg in node.ast.declarator.params:
-#   XXX - check for capsule on stuff like 'int **var +intent(out)+dimension(10)'
-
+            node.declgen = gen_decl(node.ast)
 
 def generate_functions(library, config):
-    whelpers.set_library(library)
     VerifyAttrs(library, config).verify_attrs()
     GenFunctions(library, config).gen_library()
-    Namify(library, config).name_library()
-    Preprocess(library, config).process_library()
     ast.promote_wrap(library)
 
 ######################################################################
@@ -2264,7 +1289,7 @@ class TemplateTypemap(visitor.Visitor):
         for cls in node.classes:
             self.visit(cls)
         for fcn in node.functions:
-            if fcn.ast.declarator.is_ctor():
+            if fcn.ast.declarator.is_ctor:
                 fcn.ast.typemap = node.typemap
             self.visit(fcn)
         for var in node.variables:
@@ -2328,32 +1353,28 @@ class CheckImplied(todict.PrintNode):
         elif node.name == "size":
             # size(arg)
             if len(node.args) > 2:
-                raise RuntimeError(
-                    "{}:Too many arguments to 'size': {}".format(
-                        self.context.linenumber, self.expr)
+                error.get_cursor().generate(
+                    "Too many arguments to 'size': {}".format(self.expr)
                 )
             # isinstance(node.args[0], declalst.Identifier)
             argname = node.args[0].name
             arg = declast.find_arg_by_name(self.decls, argname)
             if arg is None:
-                raise RuntimeError(
-                    "{}:Unknown argument '{}': {}".format(
-                        self.context.linenumber, argname, self.expr)
+                error.get_cursor().generate(
+                    "Unknown argument '{}': {}".format(argname, self.expr)
                 )
             return "size"
         elif node.name in ["len", "len_trim"]:
             # len(arg)  len_trim(arg)
             if len(node.args) != 1:
-                raise RuntimeError(
-                    "{}:Too many arguments to '{}': {}".format(
-                        self.context.linenumber, node.name, self.expr)
+                error.get_cursor().generate(
+                    "Too many arguments to '{}': {}".format(node.name, self.expr)
                 )
             argname = node.args[0].name
             arg = declast.find_arg_by_name(self.decls, argname)
             if arg is None:
-                raise RuntimeError(
-                    "{}:Unknown argument '{}': {}".format(
-                        self.context.linenumber, argname, self.expr)
+                error.get_cursor().generate(
+                    "Unknown argument '{}': {}".format(argname, self.expr)
                 )
             # XXX - Make sure character
 #            if arg.attrs["dimension"] is None:
@@ -2381,8 +1402,8 @@ def check_implied_attrs(context, decls):
         decls - list of Declarations
     """
     for decl in decls:
-        expr = decl.declarator.attrs["implied"]
-        if expr:
+        expr = decl.declarator.attrs.get("implied")
+        if expr is not None:
             check_implied(context, expr, decls)
 
 
@@ -2398,3 +1419,34 @@ def check_implied(context, expr, decls):
     visitor = CheckImplied(context, expr, decls)
     return visitor.visit(node)
 
+def gen_decl(ast):
+    """Create str for Declaration and Declarator.
+    """
+    s = str(ast)
+    s2 = str(ast.declarator)
+    if ast.is_ctor or ast.is_dtor:
+        # Class()  -- no blank afer declaration
+        return s + s2
+    else:
+        # int (*)(void)  -- add blank after declaration
+        return s + " " + s2
+
+######################################################################
+
+def add_assign_operator(assign_operators, cls1, cls2, specialize=None):
+    """Add an assignment operator overload for Fortran.
+    """
+    if cls1.options.wrap_fortran:
+        assign_operators.append(AssignOperator(cls1, cls2, specialize))
+        
+
+class AssignOperator(object):
+    """
+    Used to create an assignment operator overload between two classes.
+    """
+    def __init__(self, lhs, rhs, specialization=None):
+        self.lhs = lhs
+        self.rhs = rhs
+        self.name = "%s = %s" % (lhs.typemap.name, rhs.typemap.name)
+        self.bind = None
+        self.specialization = specialization

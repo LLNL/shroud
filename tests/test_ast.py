@@ -1,6 +1,4 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 ########################################################################
@@ -55,7 +53,7 @@ class Namespace(unittest.TestCase):
         class1.symtab.pop_scope()
 
         node = lib.qualified_lookup("Class1")
-        self.assertEqual(class1.ast, node)
+        self.assertEqual(class1.ast.class_specifier, node)
 
         ns = lib.add_namespace("namespace ns1")
         self.assertEqual("ns1::", ns.scope)
@@ -65,9 +63,9 @@ class Namespace(unittest.TestCase):
         self.assertEqual("ns1::Class2::", class2.scope)
 
         node = ns.unqualified_lookup("Class1")
-        self.assertEqual(class1.ast, node)
+        self.assertEqual(class1.ast.class_specifier, node)
         node = ns.unqualified_lookup("Class2")
-        self.assertEqual(class2.ast, node)
+        self.assertEqual(class2.ast.class_specifier, node)
 
         # look for Class2 in lib
         node = lib.unqualified_lookup("Class2")
@@ -76,7 +74,7 @@ class Namespace(unittest.TestCase):
         # using namespace ns1
         lib.ast.using_directive("ns1")
         node = lib.unqualified_lookup("Class2")
-        self.assertEqual(class2.ast, node)
+        self.assertEqual(class2.ast.class_specifier, node)
 
     def test_ns3_enum(self):
         # test enum
@@ -129,7 +127,7 @@ class Namespace(unittest.TestCase):
         class1 = ns2.add_class("class Class1")
         class1.symtab.pop_scope()
         enumx = ns2.add_enum("enum Enumx {}")
-        self.assertEqual(class1.ast, ns2.qualified_lookup("Class1"))
+        self.assertEqual(class1.ast.class_specifier, ns2.qualified_lookup("Class1"))
         self.assertEqual(enumx.ast, ns2.qualified_lookup("Enumx"))
 
         # from ns1, try to lookup Enumx
@@ -154,8 +152,6 @@ class CheckAst(unittest.TestCase):
         library = ast.LibraryNode()
 
         self.assertEqual(library.language, "c++")
-        self.assertEqual(library.options.wrap_c, True)
-        self.assertEqual(library.options.wrap_fortran, True)
 
         fmt = library.fmtdict
         self.assertEqual(fmt.C_prefix, "DEF_")
@@ -170,7 +166,6 @@ class CheckAst(unittest.TestCase):
 
         self.assertEqual(library.language, "c")  # updated from dict
         self.assertEqual(library.options.wrap_c, False)  # updated from dict
-        self.assertEqual(library.options.wrap_fortran, True)
         self.assertEqual(library.fmtdict.fmt1, "fmt1value")
         self.assertEqual(library.fmtdict.fmt2, "fmt2value")
 
@@ -331,31 +326,6 @@ class CheckAst(unittest.TestCase):
         self.assertIsInstance(cls1, ast.ClassNode)
         f1 = cls1.add_declaration("void push_back( const T& value );")
         self.assertIsInstance(f1, ast.FunctionNode)
-
-    def test_d_generate1(self):
-        """char bufferify
-        Generate an additional function with len and len_trim attributes.
-        """
-        library = ast.LibraryNode()
-        self.assertEqual(len(library.functions), 0)
-        library.add_function("void func1(char * arg)")
-        self.assertEqual(len(library.functions), 1)
-
-        generate.generate_functions(library, None)
-#        import json
-#        from shroud import todict
-#        print(json.dumps(todict.to_dict(library),
-#                         indent=4, sort_keys=True, separators=(',', ': ')))
-        
-        self.assertEqual(len(library.functions), 2)
-        self.assertEqual(
-            library.functions[0].declgen,
-            "void func1(char * arg)",
-        )
-        self.assertEqual(
-            library.functions[1].declgen,
-            "void func1(char * arg)",
-        )
 
     def test_function_template1(self):
         """Test function templates.

@@ -1,6 +1,4 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 #
@@ -8,7 +6,7 @@
 #
 # run/typedefs-c
 #
-include $(top)/regression/run/defaults.mk
+testdir = typedefs-c
 
 INCLUDE = \
     -I$(top)/regression/reference/typedefs-c \
@@ -19,20 +17,18 @@ VPATH = \
     $(top)/regression/run/typedefs \
     $(top)/regression/run/fruit
 
-OBJS = \
+C_OBJS = \
+    typedefs.o \
+    wraptypedefs.o \
+    utiltypedefs.o
+F_OBJS = \
     main.o \
     fruit.o \
-    wrapftypedefs.o \
-    typedefs.o \
-    utiltypedefs.o
+    wrapftypedefs.o
 
-typedefs-c : $(OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(CLIBS)
+include $(top)/regression/run/defaults.mk
 
 main.o : main.f fruit.o wrapftypedefs.o
 typedefs.o : typedefs.c typedefs.h
-
-clean :
-	rm -f $(OBJS) *.mod typedefs
 
 main.o : fruit.o wrapftypedefs.o

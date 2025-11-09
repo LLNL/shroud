@@ -13,7 +13,7 @@ verb
 1. wrap or dress (a body) in a shroud for burial.
 2. cover or envelop so as to conceal from view.
 
-[![Build Status](https://travis-ci.org/LLNL/shroud.svg?branch=develop)](https://travis-ci.org/LLNL/shroud)
+[![Build Status](https://github.com/llnl/shroud/actions/workflows/python-test.yml/badge.svg)](https://github.com/llnl/shroud/actions/workflows/python-test.yml)
 [![Documentation Status](https://readthedocs.org/projects/shroud/badge/?version=develop)](http://shroud.readthedocs.io/en/latest/?badge=develop)
 
 ## Goals
@@ -66,6 +66,8 @@ Presentation at FortranCon2020
 https://www.youtube.com/watch?v=1mdI-M94vDc
 [Slides](./pdf/Shroud-forcon.pdf)
 
+For development processes see the [HACKING](./HACKING.md) file.
+
 ## Mailing List
 
 shroud-users@groups.io
@@ -82,7 +84,7 @@ The generated Fortran requires a Fortran 2003 compiler.
 
 ## C++ or C to Python
 
-The generated Python requires Python 2.7 or 3.4+.
+The generated Python requires Python 2.7 or 3.7+.
 
 Python features:
 
@@ -114,16 +116,16 @@ In addition, a file created by
 is available from the github release.
 Shroud and PyYAML are bundled into a single executable which uses
 the Python3 on your path.
-Shiv requires Python 3.6+.
+Shiv requires Python 3.7+.
 
 ```
-wget https://github.com/LLNL/shroud/archive/shroud-0.13.0.pyz
+wget https://github.com/LLNL/shroud/archive/shroud-0.14.0.pyz
 ```
 
 
 ## License
 
-Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC.
+Copyright (c) 2017-2025, Lawrence Livermore National Security, LLC.
 Produced at the Lawrence Livermore National Laboratory.
 
 SPDX-License-Identifier: (BSD-3-Clause)

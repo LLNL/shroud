@@ -1,0 +1,40 @@
+copyright:
+- Copyright Shroud Project Developers. See LICENSE file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+# Test shared pointers
+
+library: Shared
+cxx_header: shared.hpp
+#namespace: shared
+
+options:
+  debug: True
+  F_assignment_api: swig
+
+declarations:
+- decl: class Object
+  smart_pointer:
+  - type: std::shared_ptr
+    format:
+      YAML_test: smart_pointer
+#      C_name_shared_api: rename_object
+#      F_name_shared_use_count: "rename_use_count"
+#      F_name_shared_use_count:
+  - type: std::weak_ptr
+  declarations:
+#  - decl: int id +readonly
+  - decl: Object()
+  - decl: ~Object()
+  - decl: int get_id(void)
+
+#  - decl: Object* createChildA(void)
+  - decl: std::shared_ptr<Object>* createChildA(void)
+  - decl: std::shared_ptr<Object>* createChildB(void)
+  - decl: void replaceChildB(std::shared_ptr<Object>* child)
+
+- decl: void reset_id(void)
+- decl: int use_count(const std::shared_ptr<Object> *f)
+- decl: int use_count(const std::weak_ptr<Object> *f)

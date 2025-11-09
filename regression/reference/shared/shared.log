@@ -1,0 +1,106 @@
+Read yaml shared.yaml
+Close shared_types.yaml
+library C wrappers
+namespace Shared
+class Object
+C c Object(void)
+C f Object(void)
+C c ~Object(void)
+C f ~Object(void)
+C c int get_id(void)
+C f int get_id(void)
+C c std::shared_ptr<Object> *createChildA(void)
+C f std::shared_ptr<Object> *createChildA(void)
+C c std::shared_ptr<Object> *createChildB(void)
+C f std::shared_ptr<Object> *createChildB(void)
+C c void replaceChildB(std::shared_ptr<Object> *child)
+C f void replaceChildB(std::shared_ptr<Object> *child)
+Close wrapObject.h
+Close wrapObject.cpp
+class std::shared_ptr<Object>
+C c int get_id(void)
+C f int get_id(void)
+C c std::shared_ptr<Object> *createChildA(void)
+C f std::shared_ptr<Object> *createChildA(void)
+C c std::shared_ptr<Object> *createChildB(void)
+C f std::shared_ptr<Object> *createChildB(void)
+C c void replaceChildB(std::shared_ptr<Object> *child)
+C f void replaceChildB(std::shared_ptr<Object> *child)
+C c Object(void)
+C f Object(void)
+C c ~Object(void)
+C f ~Object(void)
+C c long use_count(void)
+C f long use_count(void)
+Close wrapObject_shared.h
+Close wrapObject_shared.cpp
+class std::weak_ptr<Object>
+C c Object(void)
+C f Object(void)
+C c ~Object(void)
+C f ~Object(void)
+C c long use_count(void)
+C f long use_count(void)
+Close wrapObject_weak.h
+Close wrapObject_weak.cpp
+C c void reset_id(void)
+C f void reset_id(void)
+C c int use_count(const std::shared_ptr<Object> *f)
+C f int use_count(const std::shared_ptr<Object> *f)
+C c int use_count(const std::weak_ptr<Object> *f)
+C f int use_count(const std::weak_ptr<Object> *f)
+Close wrapShared.h
+Close wrapShared.cpp
+library Fortran wrappers
+namespace Shared
+class Object
+Fortran Object(void)
+Fortran ~Object(void)
+Fortran int get_id(void)
+Fortran std::shared_ptr<Object> *createChildA(void)
+Fortran std::shared_ptr<Object> *createChildB(void)
+Fortran void replaceChildB(std::shared_ptr<Object> *child)
+C-interface c Object(void)
+C-interface f Object(void)
+C-interface f ~Object(void)
+C-interface f int get_id(void)
+C-interface c std::shared_ptr<Object> *createChildA(void)
+C-interface f std::shared_ptr<Object> *createChildA(void)
+C-interface c std::shared_ptr<Object> *createChildB(void)
+C-interface f std::shared_ptr<Object> *createChildB(void)
+C-interface f void replaceChildB(std::shared_ptr<Object> *child)
+class std::shared_ptr<Object>
+Fortran int get_id(void)
+Fortran std::shared_ptr<Object> *createChildA(void)
+Fortran std::shared_ptr<Object> *createChildB(void)
+Fortran void replaceChildB(std::shared_ptr<Object> *child)
+Fortran Object(void)
+Fortran ~Object(void)
+Fortran long use_count(void)
+C-interface f int get_id(void)
+C-interface c std::shared_ptr<Object> *createChildA(void)
+C-interface f std::shared_ptr<Object> *createChildA(void)
+C-interface c std::shared_ptr<Object> *createChildB(void)
+C-interface f std::shared_ptr<Object> *createChildB(void)
+C-interface f void replaceChildB(std::shared_ptr<Object> *child)
+C-interface c Object(void)
+C-interface f Object(void)
+C-interface f ~Object(void)
+C-interface f long use_count(void)
+class std::weak_ptr<Object>
+Fortran Object(void)
+Fortran ~Object(void)
+Fortran long use_count(void)
+C-interface c Object(void)
+C-interface f Object(void)
+C-interface f ~Object(void)
+C-interface f long use_count(void)
+Fortran void reset_id(void)
+Fortran int use_count(const std::shared_ptr<Object> *f)
+Fortran int use_count(const std::weak_ptr<Object> *f)
+C-interface f void reset_id(void)
+C-interface f int use_count(const std::shared_ptr<Object> *f)
+C-interface f int use_count(const std::weak_ptr<Object> *f)
+Close wrapfshared.f
+Close utilShared.cpp
+Close typesShared.h

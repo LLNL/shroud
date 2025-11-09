@@ -1,6 +1,4 @@
-.. Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-   other Shroud Project Developers.
-   See the top-level COPYRIGHT file for details.
+.. Copyright Shroud Project Developers. See LICENSE file for details.
 
    SPDX-License-Identifier: (BSD-3-Clause)
 
@@ -83,8 +81,8 @@ Shroud refers to this as a capsule.
 
 .. literalinclude:: ../regression/reference/classes/typesclasses.h
    :language: c
-   :start-after: start struct CLA_Class1
-   :end-before: end struct CLA_Class1
+   :start-after: start C capsule CLA_Class1
+   :end-before: end C capsule CLA_Class1
 
 The C wrapper will extract the address of the instance then call the
 method.
@@ -143,8 +141,8 @@ procedures associated with it.
 
 .. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
-   :start-after: start helper capsule_data_helper
-   :end-before: end helper capsule_data_helper
+   :start-after: start helper capsule_data
+   :end-before: end helper capsule_data
    :dedent: 4
 
 The capsule is added to the Fortran shadow class.  This derived type
@@ -270,7 +268,7 @@ Additional fields can be added to the splicer for custom behavior.
 Chained functions
 -----------------
 
-C++ allows function calls to be chained by returning the ``this`` argument.
+C++ allows class methods to be chained by returning the ``this`` argument.
 Several functions can be called in succession on the same object.
 
 .. code-block:: c++
@@ -617,6 +615,12 @@ All creation and access of members can be done using Fortran.
 
 .. *wrap_class_as* also exists and defaults to *class*.
 
+C
+^
+
+A C wrapper creates a ``struct`` with the same fields as the C++ struct.
+The name of the ``struct`` is mangled so that any struct defined within
+a namespace will be accessable as a global symbol for C.
 
 Python
 ^^^^^^

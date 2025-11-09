@@ -1,7 +1,5 @@
 /*
- * Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
- * other Shroud Project Developers.
- * See the top-level COPYRIGHT file for details.
+ * Copyright Shroud Project Developers. See LICENSE file for details.
  *
  * SPDX-License-Identifier: (BSD-3-Clause)
  *
@@ -42,6 +40,7 @@ char *Function4a(const char *arg1, const char *arg2);
 void acceptName(const char *name);
 
 void passCharPtrInOut(char *s);
+void passCharPtrCAPI(int n, char *in, char *out);
 
 #define MAXNAME 20
 void returnOneName(char *name1);
@@ -60,13 +59,11 @@ void passVoidStarStar(void *in, void **out);
 
 int passAssumedType(void *arg);
 void passAssumedTypeDim(void *arg);
+void passAssumedTypeRank(void *arg);
 int passAssumedTypeBuf(void *arg, char *outbuf);
 
-void callback1(int type, void (*incr)(void));
-void callback1a(int type, void (*incr)(void));
-void callback2(int type, void * in, void (*incr)(int *));
-void callback3(const char *type, void * in, void (*incr)(int *), char *outbuf);
-void callback_set_alloc(int tc, array_info *arr, void (*alloc)(int tc, array_info *arr));
+void callback_set_alloc(int tc, array_info *arr,
+                        void (*alloc)(int tc, array_info *arr));
 
 #if 0
 const std::string& Function4b(const std::string& arg1, const std::string& arg2);

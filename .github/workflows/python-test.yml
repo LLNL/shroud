@@ -1,0 +1,100 @@
+name: Shroud Tests
+
+on:
+  push:
+    branches:
+      - master
+      - develop
+  pull_request:
+    branches:
+      - master
+      - develop
+
+jobs:
+  python-tests:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+#        python-version: [3.7, 3.8, 3.9, 3.10, 3.11]
+        python-version: [3.12]
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install dependencies
+      run: |
+        pip install "numpy<2"
+
+    # You can test your matrix by printing the current Python version
+    - name: Display Python version
+      run: |
+        python -c "import sys; print(sys.version)"
+        python -c "import numpy; print(numpy.__version__)"
+
+    - name: Install Shroud
+      run: |
+        make virtualenv
+        make develop
+
+    - name: Unittest
+      run: |
+        make test
+
+    - name: Test declarations
+      run: |
+        make test-decl
+
+    - name: Test wrapper generation
+      run: |
+        make -k do-test
+
+    - name: Compiler version
+      run: |
+        gcc --version
+        g++ --version
+        gfortran --version
+
+    - name: Python module
+      run: |
+        make -k test-python
+        
+  fortran-tests:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+#        gcc-version: [9, 10, 11, 12]
+        gcc-version: [12, 13]
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v4
+
+    - name: Install GCC
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y gcc-${{ matrix.gcc-version }} g++-${{ matrix.gcc-version }}  gfortran-${{ matrix.gcc-version }}
+        sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${{ matrix.gcc-version }} 100
+        sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${{ matrix.gcc-version }} 100
+        sudo update-alternatives --install /usr/bin/gfortran gfortran /usr/bin/gfortran-${{ matrix.gcc-version }} 100
+
+    - name: Compiler version
+      run: |
+        gcc --version
+        g++ --version
+        gfortran --version
+
+    - name: Run GCC-specific tests
+      run: |
+        # Add commands to test your project with the selected GCC version
+        echo "Running tests with GCC-${{ matrix.gcc-version }}"
+        make -k test-c
+        make -k test-fortran
+        

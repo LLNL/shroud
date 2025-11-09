@@ -1,6 +1,4 @@
-.. Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-   other Shroud Project Developers.
-   See the top-level COPYRIGHT file for details.
+.. Copyright Shroud Project Developers. See LICENSE file for details.
 
    SPDX-License-Identifier: (BSD-3-Clause)
 
@@ -23,28 +21,65 @@ C wrapper
 
 capsule
 
-   Holds a pointer to a C++ class instance and some
+   Struct to hold a pointer to a C++ class instance and some
    memory management flags.
    The name was inspired by the Python ``PyCapsule`` type.
 
+cdesc
+
+   Struct used to contain information used to describe memory.
+   The address, type, shape, element size.
+   Similar to ``CFI_desc_t`` from Fortran's
+   *Further Interoperability with C*.
+
+CFI
+
+   C Fortran Interface defined by the *Further interoperability of Fortran with C*
+   features of TS29113 and Fortran 2018.
+
+flatten
+
+   The process of converting a nested name such as ``namespace::class::method``
+   into a name acceptable to Fortran and C such as ``namespace_class_method``.
+   
 Fortran wrapper
 
    Fortran functions which call the C wrapper functions.
 
+helper function
+
+   A function used by Shroud to factor out common functionality from wrappers.
+   
 library
 
    A collection of C++ declarations wrapped at the same time.
    This creates a Fortran or Python module.
 
+name mangling
+
+    A technique used to solve various problems caused by the need to
+    resolve unique names for programming entities in many modern
+    programming languages.  -- wikipedia
+
+    Shroud creates unique name for C++ namespaced, overloaded and
+    templated function by adding additional components to the C and
+    Fortran names to make them unique.
+
 native type
 
+   numeric type, intrinsic.
    Integer or real of any size.
+
+POD
+
+   Plain Old Data.
 
 shadow class
 
    A Fortran derived type which contains a capsule and type-bound
-   functions to provide a Fortran object-oriented interface similar to
+   procedures to provide a Fortran object-oriented interface similar to
    a C++ class.
+   Also known as a proxy class.
    Similar to a `PyObject` struct in Python.
 
 splicer
@@ -55,3 +90,12 @@ splicer
    a well defined places.  This allows user provided code to be
    preserved when regenerating wrappers.
 
+statements
+
+   A data structure used to describe how a function argument will be
+   wrapped. Described in :ref:`StatementsAnchor` chapter.
+   
+typemap
+
+   A data structure used to describe how to wrap a C/C++ type.
+   Described in :ref:`TypemapsAnchor` chapter.

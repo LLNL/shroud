@@ -1,0 +1,146 @@
+copyright:
+- Copyright Shroud Project Developers. See LICENSE file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+# Test error messages from ast.py.
+
+library: error
+cxx_header: error.hpp
+
+options:
+  debug: True
+  wrap_python: True
+
+format:
+  F_string_result_as_arg: output
+
+typemap:
+- typename: should-be-type
+- type: IndexType
+- type: IndexType
+  fields:
+    base: int
+
+declarations:
+
+# parser
+- decl: func99()
+
+- other: missing decl
+
+#- decl: 
+- decl: double func99a(double arg1 = 3.1415, bool arg2 = true)
+  default_arg_suffix: need-list
+
+- decl: |
+      template<typename ArgType>
+      void TemplateArgument0(ArgType arg)
+  cxx_template: need-list
+- decl: |
+      template<typename ArgType>
+      void TemplateArgument1(ArgType arg)
+  cxx_template:
+  - dog
+  - cat: bird
+#  - instantiation: <int>
+#  - instantiation: <double>
+  fields: need-dict
+
+- decl: void FortranGenericOverloaded0(double arg2)
+  fortran_generic: need-list-of-dict
+
+- decl: void FortranGenericOverloaded2(double arg2)
+  fortran_generic:
+  - string-fortran-generic
+  - name: need-decl
+
+- decl: void FortranGenericOverloaded3(double arg2)
+  fortran_generic:
+  - decl: (float arg3)
+    function_suffix: _float
+  - decl: (double arg2, float arg2)
+    function_suffix: _double
+  - decl: (doublexx arg2)
+    function_suffix: _doublexx
+
+# Needed to trigger C_API_case error
+- decl: void GoodFunction(void)
+  options:
+    wrap_python: False
+    C_API_case: none
+
+# return_this can only be set for class methods
+- decl: void *returnThis()
+  options:
+    wrap_python: False
+  return_this: True
+
+- decl: class Class1
+  options:
+    wrap_python: False
+  declarations:
+  # return_this must return a pointer to the class
+  - decl: void *returnThis()
+    return_this: True
+  # return_this must return a pointer to the class
+  - decl: Class1 returnThis2()
+    return_this: True
+
+#####
+
+- decl: |
+      enum Color {
+        RED = 10,
+        BLUE,
+        WHITE
+      };
+  options:
+     F_enum_type: shorter
+
+#####
+# Test declast.check_attrs
+
+- decl: void testattrs1()
+  bind:
+    f:
+      decl:  (+attr)
+- decl: void testattrs2()
+  bind:
+    f:
+      decl:  ( name, )
+- decl: void testattrs3()
+  bind:
+    f:
+      decl:  ( name
+- decl: void testattrs4()
+  bind:
+    f:
+      decl:  ( ) name
+
+####
+#
+
+- decl: template<typename T, typename U>
+       struct twostruct
+
+- decl: template<typename T, typename U>
+        void process_twostruct(twostruct<T, U> arg)
+  fstatements:
+    f:
+      # f_arg_decl is deprecated, changed to f_dummy_decl
+      f_arg_decl:
+      -  "integer(C_LONG) :: {f_result_var}"
+
+- decl: void process_twostruct(twostruct<int, long> arg)
+  cxx_template:
+  - instantiation: <int, long>
+
+####
+#
+
+# From char.yaml
+- decl: const char *getConstCharPtrAsCopyArg()
+  format:
+    F_string_result_as_arg: output

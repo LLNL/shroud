@@ -1,23 +1,41 @@
 Read yaml typemap.yaml
 Close typemap_types.yaml
-C bool passIndex(IndexType i1 +value, IndexType * i2 +intent(out))  +intent(function)
-C bool passIndex(int32_t i1 +value, IndexType * i2 +intent(out))  +intent(function)
-C bool passIndex(int64_t i1 +value, IndexType * i2 +intent(out))  +intent(function)
-C void passIndex2(IndexType i1 +value)  +intent(subroutine)
-C void passFloat(FloatType f1 +value)  +intent(subroutine)
+library C wrappers
+namespace typemap
+C c bool passIndex(IndexType i1, IndexType *i2 +intent(out))
+C f bool passIndex(IndexType i1, IndexType *i2 +intent(out))
+C f bool passIndex(int32_t i1, IndexType *i2 +intent(out))
+C f bool passIndex(int64_t i1, IndexType *i2 +intent(out))
+C c void passIndex2(IndexType i1)
+C f void passIndex2(IndexType i1)
+C f void passIndex2(int32_t i1)
+C f void passIndex2(int64_t i1)
+C c void passFloat(FloatType f1)
+C f void passFloat(FloatType f1)
+C f void passFloat(float f1)
+C f void passFloat(double f1)
 Close wraptypemap.h
 Close wraptypemap.cpp
-Fortran bool passIndex(int32_t i1 +value, IndexType * i2 +intent(out))  +intent(function)
-Fortran bool passIndex(int64_t i1 +value, IndexType * i2 +intent(out))  +intent(function)
-Fortran void passIndex2(int32_t i1 +value)  +intent(subroutine)
-Fortran void passIndex2(int64_t i1 +value)  +intent(subroutine)
-Fortran void passFloat(float f1 +value)  +intent(subroutine)
-Fortran void passFloat(double f1 +value)  +intent(subroutine)
-C-interface bool passIndex(IndexType i1 +value, IndexType * i2 +intent(out))  +intent(function)
-C-interface bool passIndex(int32_t i1 +value, IndexType * i2 +intent(out))  +intent(function)
-C-interface bool passIndex(int64_t i1 +value, IndexType * i2 +intent(out))  +intent(function)
-C-interface void passIndex2(IndexType i1 +value)  +intent(subroutine)
-C-interface void passFloat(FloatType f1 +value)  +intent(subroutine)
+library Fortran wrappers
+namespace typemap
+Fortran bool passIndex(IndexType i1, IndexType *i2 +intent(out))
+Fortran bool passIndex(int32_t i1, IndexType *i2 +intent(out))
+Fortran bool passIndex(int64_t i1, IndexType *i2 +intent(out))
+Fortran void passIndex2(IndexType i1)
+Fortran void passIndex2(int32_t i1)
+Fortran void passIndex2(int64_t i1)
+Fortran void passFloat(FloatType f1)
+Fortran void passFloat(float f1)
+Fortran void passFloat(double f1)
+C-interface f bool passIndex(IndexType i1, IndexType *i2 +intent(out))
+C-interface f bool passIndex(int32_t i1, IndexType *i2 +intent(out))
+C-interface f bool passIndex(int64_t i1, IndexType *i2 +intent(out))
+C-interface f void passIndex2(IndexType i1)
+C-interface f void passIndex2(int32_t i1)
+C-interface f void passIndex2(int64_t i1)
+C-interface f void passFloat(FloatType f1)
+C-interface f void passFloat(float f1)
+C-interface f void passFloat(double f1)
 Close wrapftypemap.f
 Close utiltypemap.cpp
 Close typestypemap.h

@@ -1,6 +1,4 @@
-.. Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-   other Shroud Project Developers.
-   See the top-level COPYRIGHT file for details.
+.. Copyright Shroud Project Developers. See LICENSE file for details.
 
    SPDX-License-Identifier: (BSD-3-Clause)
 
@@ -8,6 +6,472 @@ Releases
 ========
 
 Notes to help migrate between releases.
+
+Unreleased
+----------
+
+v0.14.0
+-------
+
+* This is the last version to support Python 2.7.
+  Future minimum will be 3.7.
+
+New Features
+^^^^^^^^^^^^
+
+* Move default statements and helpers to the file ``fc-statements.json``.
+  See :ref:`StatementsAnchor` and :ref:`HelpersAnchor`.
+  This makes it possible to change wrapper code by editing a JSON file
+  instead of the Python source.
+  
+* Most uses of `RuntimeError` have been replace by error handling which
+  will report as many errors as possible before quiting.
+
+* Remove the assumption that there is only one template argument for
+  types.  This worked for ``std::vector`` but is now generalized.
+  This required adding the format field ``targs`` which is a list of
+  objects for template arguments. Used in the format fields as
+  ``{targs[0].cxx_type}`` to access the type of the first template
+  argument. Option *typemap_sgroup* allows futher control of which
+  statement group is selected to use with a type.  Function and class
+  declarations always allowed multiple template arguments.
+
+* C wrappers can now be generated independent of Fortran wrappers
+  instead of just as a side effect of creating Fortran Wrappers.
+  Shroud will not generate a C wrapper (option *c_wrap=True*) when
+  language is ``c``.
+
+* Support recursive structs. Allows trees to be build in structs.
+
+* Add getter/setter for ``struct`` pointer fields in a struct.
+
+* Parse multiple declarators for a declaration in a struct.
+  ex. ``struct name {int i, j;};``
+
+.. Setting *deref* attribute on struct members will be used with the getter.
+   Before only dimension was used.
+
+* Add format fields *F_name_typedef* and *C_name_typedef* to name a typedef
+  for Fortran or C.
+
+* Add intent attribute to a function's ``PASS`` argument. If the C++ function
+  is ``const`` set to ``intent(IN). Otherwise, set to ``intent(INOUT)``.
+
+* Added attribute *+operator(assignment)* to add a Fortran assignment overload.
+
+* Added attribute *+constfunc* to tell Shroud a member function is ``const``
+  even if the ``const`` keyword is not used.
+  This will ensure that the *shadow* argument is ``intent(in)``.
+
+* Added attribute *+funptr*. Uses ``type(C_FUNPTR)`` for
+  function pointer arguments.
+
+* Added *fmtdict* field to Fortran and C statement groups. Similar to
+  *fmtdict* already in the Python statement groups. It allows format
+  fields to be set explicitly in the statement group to override the
+  any defaults.
+
+* Added options to control default behavior for dereferencing
+  pointers. These options can be used instead of explicitly setting
+  *deref* attribute to change the default on each ``decl`` lines:
+  **F_deref_arg_array**, **F_deref_arg_character**,
+  **F_deref_arg_implied_array**, **F_deref_arg_scalar**,
+  **F_deref_func_array**, **F_deref_func_character**,
+  **F_deref_func_implied_array**, **F_deref_func_scalar**.
+  
+Changes to YAML input
+^^^^^^^^^^^^^^^^^^^^^
+
+* Renamed the *+free_pattern* attribute to *+destructor_name*.
+  The values is looked up in the new **destructors** section of
+  the YAML file instead of the **patterns** section.
+  Current use of *+free_pattern* is still supported but will
+  create a warning message in the logfile. The old usage will be
+  removed in a future version.
+  
+* Create an abstract interface for typedef statements which
+  are function pointers. Previously, only function pointers
+  arguments were supported.
+
+* Attribute *+allocatable* is now *+deref(allocatable)*.
+  This avoids setting *+allocatable* inconsistent with *+deref*.
+
+.. Fortran interfaces are not generated for the C library routines.
+  
+  As part of creating C wrappers independent of Fortran wrapper,
+  some uses of *fstatements* in the YAML file
+  must be changed.  The C wrapper created for the Fortran wrapper to call
+  is now considered part of the Fortran wrapper processing.
+  The *c_buf* label used with *fstatements* is now *f*.
+  *c_buf* continues to be used with splicer statements. In that case
+  it is the splicer code used with the Fortran's bufferify C wrapper.
+
+  Some uses of option *F_create_bufferify_function* are no longer needed.
+  Similar functionality by using the attribute *+api(capi)* to pass the
+  address of the string without any buffer arguments or ``NULL`` termination.
+  The C++ function needs some way to know how long the string string is.
+  Typically as another argument to the C++ function.
+
+  .. See clibrary.yaml ImpliedLen
+
+* Rename some fields in Statements to allow C and Fortran entries to exist
+  in the same group by consistently using a ``c_``, ``i_`` or ``f_`` prefix.
+  This allows a single group to contains all the fields used for more complex
+  conversions making it easier to follow the flow.
+
+  This will change the name of fields in *fstatements* in an input YAML file.
+  These are used to changed the default behavior of a wrapper.
+
+  Shroud will print a warning and use the new name.
+  To remove the warning, update the YAML file.
+
+c statements
+
+===========================   ===========================
+Old Name                      New Name
+===========================   ===========================
+c_arg_decl                    c_prototype
+c_helper                      helper
+arg_call                      c_arg_call
+pre_call                      c_pre_call
+call                          c_call
+post_call                     c_post_call
+final                         c_final
+ret                           c_return
+temps                         c_temps
+local                         c_local
+f_arg_decl                    i_dummy_decl
+f_result_decl                 i_result_decl
+f_result_var                  i_result_var
+f_module                      i_module
+f_import                      i_import
+===========================   ===========================
+
+f statements
+
+===========================   ===========================
+Old Name                      New Name
+===========================   ===========================
+need_wrapper                  f_need_wrapper
+arg_name                      f_dummy_arg
+arg_decl                      f_dummy_decl
+arg_c_call                    f_arg_call
+declare                       f_local_decl
+pre_call                      f_pre_call
+call                          f_call
+post_call                     f_post_call
+result                        f_result_var
+temps                         f_temps
+local                         f_local
+f_helper                      helper
+===========================   ===========================
+
+.. from vectors.yaml
+
+.. code-block:: yaml
+
+    fstatements:
+      c:
+        return_type: long
+        ret:
+        - return SHT_arg_cdesc->size;
+      c_buf:
+        return_type: long
+        ret:
+        - return SHT_arg_cdesc->size;
+      f:
+        result: num
+        f_module:
+          iso_c_binding: ["C_LONG"]
+        declare:
+        -  "integer(C_LONG) :: {F_result}"
+        call:
+        -  "{F_result} = {F_C_call}({F_arg_c_call})"              
+
+is now:
+
+.. code-block:: yaml
+
+    fstatements:
+      c:
+        c_return_type: long
+        c_return:
+        - return SHT_arg_cdesc->size;
+        i_result_var: num
+      f:
+        c_return_type: long
+        c_return:
+        - return SHT_arg_cdesc->size;
+        i_result_var: num
+        f_result_var: num
+        f_module:
+          iso_c_binding: ["C_LONG"]
+        f_dummy_decl:
+        -  "integer(C_LONG) :: {f_result_var}"
+        f_call:
+        -  "{f_result_var} = {f_call_function}({F_arg_c_call})"              
+
+* Likewise, some fields were renamed for Typemaps.
+
+The ``f_c_`` prefix was changed to ``i_``. First, to have a consistent
+single character prefix. Next, to avoid finding ``f_c_`` when searching for ``c_``.
+
+===========================   ===========================
+Old Name                      New Name
+===========================   ===========================
+f_c_module                    i_module
+f_c_module_line               i_module
+f_c_type                      i_type
+none                          i_kind
+none                          i_module_name
+===========================   ===========================
+
+* Renamed format fields
+
+===========================   ===========================
+Old Name                      New Name
+===========================   ===========================
+                              f_intent_attr
+f_type_module                 typemap.f_module_name
+F_pure_clause                 f_pure_clause
+F_result_clause               f_result_clause
+F_result                      f_result_var
+F_result_ptr                  removed
+                              Use a f_local variable.
+F_C_arguments                 i_arguments
+F_C_call                      f_call_function
+F_C_name                      i_name_function
+F_C_subprogram                i_subprogram
+F_C_pure_clause               i_pure_clause
+F_C_result_clause             i_result_clause
+none                          i_kind
+none                          i_module_name
+none                          i_suffix
+f_array_allocate              gen.f_allocate_shape
+f_array_shape                 gen.c_f_pointer_shape
+f_cdesc_shape                 gen.f_cdesc_shape
+cfi_type                      typemap.cfi_type
+sh_type                       typemap.sh_type
+size                          f_size
+===========================   ===========================
+  
+* Renamed option fields
+
+===========================   ===========================
+Old Name                      New Name
+===========================   ===========================
+F_C_name_template             i_name_function_template
+F_flatten_namespace           flatten_namespace
+===========================   ===========================
+  
+* Added format field *i_suffix*. Used in format fields
+  *C_name_template* and *i_name_file_template* to allow Fortran wrapper
+  *to call a C function with additional mangling such as
+  *C_cfi_suffix* and *C_bufferify_suffix*.  Previously this was
+  *appended directly to format field *function_suffix*. If
+  *C_name_template* or *i_name_function_template* are explicitly set in the
+  *YAML file then *i_suffix* should be included in the value.
+
+.. See names.yaml
+
+* Removed format field *F_string_result_as_arg*. This modified the
+  wrapper to treat the ``char *`` function result as an argument. The
+  wrapper would then copy into the ``CHARACTER`` argument provided in
+  the call. This functionality has been expanded to support the
+  *deref* attribute. The argument may now be a ``ALLOCATABLE``,
+  ``POINTER`` or ``type(C_PTR)`` using *+deref(allocatable)*,
+  *+deref(pointer), or *+deref(raw)*.  The option **F_result_as_arg**
+  is the name of the argument if none is provided with the *funcarg*
+  attribute.  The original YAML needs to be changed to the second
+  block.
+   
+.. code-block:: yaml
+
+     - decl: const char *getConstCharPtrAsCopyArg()
+       format:
+         F_string_result_as_arg: output
+
+.. code-block:: yaml
+
+     - decl: const char *getConstCharPtrAsCopyArg() +funcarg(output)+deref(copy)
+   
+.. code-block:: yaml
+
+     option:
+       F_result_as_arg: output
+     - decl: const char *getConstCharPtrAsCopyArg() +funcarg+deref(copy)
+   
+* The **c_helper** and **f_helper** statement fields are merged into **helper**.
+  A helper may have a C and Fortran part. This required the helper to
+  be listed twice. Now it only needs to be listed once.
+  The helpers may have a **c_fmtname** and **f_fmtname** field that is
+  used to identify the C and Fortran functions created by the helper.
+  The format fields are used in the statement group. For example,
+  the statement will call the function added by the helper.
+
+* Renamed format fields *hnamefunc*. These fields were added from the
+  statement fields **helper** (was **c_helper** and **f_helper**), each a blank
+  delimited list of names. A format field was added for each name with
+  a 0-based suffix corresponding to the position in the list.
+  Now, the format fields have the prefix of *c_helper_* or *f_helper_*
+  followed by the helpers name. For example, *f_helper_copy_array*.
+  This makes it easier to match the corresponding helper and will help
+  when using statement mixin groups since the order of names will no
+  longer matter.
+
+* Changed statement fields **helper** (was **c_helper** and **f_helper**) from a blank
+  delimited list, into a YAML list.  If they are used in a
+  *fstatements* section of a YAML file, they will need to be changed.
+  This makes them more consistent with *f_temps* and *c_temps* which
+  are also list of names.
+
+  For example, from ``generic.yaml``
+
+.. code-block:: yaml
+
+    -      c_helper: ShroudTypeDefines
+    +      helper:
+    +      - ShroudTypeDefines
+
+.. And easier to use in a mixin group by appending lists.
+
+* Renamed some helpers to have more consistent names.
+  Now the helpers and the function it defines may have different names.
+  Use snake case for all helpers names (before about half used camel case).
+  Continue to use camel case for function names.
+  Remove *Shroud* from the helper name since that's redundant.
+  Rename some functions from ``Str`` to ``Char`` to make clear when
+  it's dealing with C++ types ``char`` vs ``std::string``.
+
+.. Use the helper name in statements to make it easier to rename
+   functions without renaming helpers.
+
+.. list-table:: f statements
+   :widths: 25 25
+   :header-rows: 1
+
+   * - Old Name
+     - New Name
+   * - ShroudStrAlloc
+     - char_alloc
+   * - ShroudStrArrayAlloc
+     - char_array_alloc
+   * - ShroudStrArrayFree
+     - char_array_free
+   * - ShroudStrBlankFill
+     - char_blank_fill
+   * - ShroudStrCopy
+     - char_copy
+   * - ShroudStrFree
+     - char_free
+   * - ShroudStrToArray
+     - string_to_cdesc
+   * - ShroudTypeDefines
+     - type_defines
+
+
+.. Structs in the C++ wrappers now accessed via  a ``using`` statement.
+   The C structs which are created are only used by users of the header,
+   not the implementation.
+   As a side effect of this, the forward.yaml test no longer needs to define
+   the *c_type* field since the C++ type will be used.
+
+* Renamed some format fields to allow more control of argument names
+  in wrappers.  The C wrapper continues to use *c_var* and *cxx_var*.
+  The Fortran wrapper continues to use *f_var*, but if a different
+  argument is needed to be passed to the C wrapper it is now *fc_var*
+  instead of *c_var*.  The interface uses *i_var* instead of reusing
+  *c_var*. Remove format field *F_C_var* since it is redundant with
+  *i_var*.
+
+.. The fmtc and fmtf dictionaries were merged and needed unique names
+   instead of overloading c_var.
+
+.. As part of creating better C specific wrappers (not intented to be
+   called by Fortran, but need a modified API. For example, returning
+   vectors), the fstatements field of a function in the YAML file has
+   changed.  `c_buf` and `f` fields need to be merged.  A fstatements
+   now has both the C and Fortran variables.
+
+   Likewise, *patterns* used by *C_error_pattern* and local splicers
+   use *buf* and *cfi* and will need to change.
+
+* Changes for enumerations
+
+  * Add option *F_enum_type* to define the kind of the Fortran parameter
+    for the enumeration values.
+
+  * Renamed format field *C_enum* to *C_enum_type*.
+    Likewise, option *C_enum_template* is now *C_enum_type_template*.
+
+  * Added option *F_name_enum_template* to compute format field *F_name_enum*.
+    Define format fields C_name_api and F_name_api to replace
+    format fields *enum_lower* and *enum_upper*.
+
+  * Replaced format fields *enum_member_lower* and *enum_member_upper* with
+    *C_name_api* and *F_name_api* (controlled by options *C_API_case* and
+    *F_API_case*.
+
+  * The Fortran wrapper creates an `integer, parameter` for the kind
+    of the enumeration parameters.
+
+* The *deref* attribute is no longer applied to the C wrapper.  When
+  the function result had *+deref(scalar)* on a pointer result, a
+  scalar was returned. The C wrapper will now return a pointer giving
+  it the same prototype as the C++ library function.
+
+.. The C wrapper used by the Fortran wrapper will return a scalar to
+   avoid having to dereference it in the Fortran wrapper via
+   c_f_pointer. And in the simpliest case, eliminates the need
+   for the Fortran wrapper entirely.
+
+* Moved the C wrapper's *C_declarations* splicer earlier in the file
+  before any other generated splicer code.
+  It is intended to contain code which is needed by any following splicers.
+  It was being written before the ``enum`` and ``typedef`` splicers,
+  which was too late.
+  
+
+Fixed
+^^^^^
+
+* Fixed the case of mixing default arguments with *fortran_generic*.
+  The *fortran_generic* will restore arguments in the Fortran wrapper
+  which were being trimmed by default arguments.
+
+* Define the typemap *f_cast* field for typedefs to use the
+  typedef name instead of the type name. This make the use of the
+  typedef in the Fortran wrapper explicit.
+
+  From example, ``tutorial.yaml`` declaration ``typedef int EnumTypeID``
+  changes from  ``int({f_var}, C_INT)`` to ``int({f_var}, enum_type_id)``.
+
+* Changed Fortran wrapper with argument similar to
+  ``char **arg+deref(allocatable)+dimension(nstrs)+intent(out)+len(20)``.
+  The actual argument must now be declared as ``CHARACTER(len=:)`` instead of
+  ``CHARACTER(len=20)``. This is required to pass the argument directly to
+  C using CFI which will allocate the argument.
+  Removed the need for the *f_char_len* format field.
+
+* Fix memory management errors by overloading the assignment operator
+  to keep track of memory ownership. Shroud now produced code similar
+  what swig-fortran creates. gfortran 13 fixed the use of the `final` subroutine
+  to be correct with respect to the standard.
+  The previous scheme relied on the incorrect behavior which caused
+  the ``shared.yaml`` test to fail on the use of ``std::shared_ptr``.
+
+  This also fixes a problem with a possible double free:
+
+.. code-block:: fortran
+                
+    type(class1) obj0, obj1
+    ! Test generic constructor. Allocates new memory.
+    obj0 = class1()
+    obj1 = obj0       ! Create alias
+    call obj1%delete
+    call obj0%delete  ! obj0 has already been released
+
+* Fixes to splicer names to use the correct namespace component.
 
 v0.13.0
 -------

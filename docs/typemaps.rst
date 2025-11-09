@@ -1,6 +1,4 @@
-.. Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-   other Shroud Project Developers.
-   See the top-level COPYRIGHT file for details.
+.. Copyright Shroud Project Developers. See LICENSE file for details.
 
    SPDX-License-Identifier: (BSD-3-Clause)
 
@@ -46,6 +44,8 @@ The base types that Shroud uses are **bool**, **integer**, **real**,
 
 .. **template**
 
+.. used with Fortran declaration:  {base}({kind})
+
 cpp_if
 ^^^^^^
 
@@ -77,6 +77,14 @@ type names. The *flat_name* is always ``double_complex`` while
 
 
 One use of this name is as the **function_suffix** for templated functions.
+
+implied_array
+^^^^^^^^^^^^^
+
+The type is an implied array. For example, ``std::vector``.
+It is not a pointer type but is considered to be an array.
+This will set the default *deref* attribute based on the option
+**F_deref_arg_implied_array** and **F_deref_func_implied_array**.
 
 idtor
 ^^^^^
@@ -134,6 +142,10 @@ Expression to convert from C to C++.
 Defaults to *None* which implies *{c_var}*.
 i.e. no conversion required.
 
+For typedefs, this will use a ``static_cast`` to convert
+between equivelent types.
+
+See also *cxx_to_c*.
 
 c_templates
 ^^^^^^^^^^^
@@ -150,18 +162,6 @@ additional specialization of c_statements may be required::
                - code to copy CHARACTER to vector<string>
 
 
-
-c_return_code
-^^^^^^^^^^^^^
-
-None
-
-c_union
-^^^^^^^
-
-None
-# Union of C++ and C type (used with structs and complex)
-
 cxx_type
 ^^^^^^^^
 
@@ -175,6 +175,11 @@ cxx_to_c
 Expression to convert from C++ to C.
 Defaults to *None* which implies *{cxx_var}*.
 i.e. no conversion required.
+
+Native POD types do not require any conversion.
+The ``std::string`` uses the ``c_str`` method to get a ``char *``.
+
+See also *c_to_cxx*.
 
 cxx_header
 ^^^^^^^^^^
@@ -224,61 +229,17 @@ A C ``int`` is represented as:
 Fortran
 -------
 
-f_c_module
-^^^^^^^^^^
-
-Fortran modules needed for type in the interface.
-A dictionary keyed on the module name with the value being a list of symbols.
-Similar to **f_module**.
-Defaults to *None*.
-
-In this example, the symbol indextype is created by a typedef which
-creates a symbol in Fortran. This symbol, ``indextype``, must be
-imported into the interface.
-
-.. code-block:: c
-
-   typedef int indextype;
-
-.. code-block:: yaml
-
-    indextype:
-       --import--:
-       - indextype
-
-
-f_c_type
-^^^^^^^^
-
-Type declaration for ``bind(C)`` interface.
-Defaults to *None* which will then use *f_type*.
-
-f_cast
+f_type
 ^^^^^^
 
-Expression to convert Fortran type to C type.
-This is used when creating a Fortran generic functions which
-accept several type but call a single C function which expects
-a specific type.
-For example, type ``int`` is defined as ``int({f_var}, C_INT)``.
-This expression converts *f_var* to a ``integer(C_INT)``.
-Defaults to *{f_var}*  i.e. no conversion.
-
-..  See tutorial function9 for example.  f_cast is only used if the types are different.
-
-
-f_derived_type
-^^^^^^^^^^^^^^
-
-Fortran derived type name.
-Defaults to *None* which will use the C++ class name
-for the Fortran derived type name.
-
+Name of type in Fortran.
+For example, ``integer(C_INT)``.
 
 f_kind
 ^^^^^^
 
 Fortran kind of type. For example, ``C_INT`` or ``C_LONG``.
+It will be set the same as *f_derived_type* for derived types.
 Defaults to *None*.
 
 
@@ -296,11 +257,25 @@ Defaults to *None*.:
        iso_c_binding:
        - C_INT
 
-f_type
+f_derived_type
+^^^^^^^^^^^^^^
+
+Fortran derived type name.
+Defaults to *None* which will use the C++ class name
+for the Fortran derived type name.
+
+f_cast
 ^^^^^^
 
-Name of type in Fortran.  ( ``integer(C_INT)`` )
-Defaults to *None*.
+Expression to convert Fortran type to C type.
+This is used when creating a Fortran generic functions which
+accept several type but call a single C function which expects
+a specific type.
+For example, type ``int`` is defined as ``int({f_var}, C_INT)``.
+This expression converts *f_var* to a ``integer(C_INT)``.
+Defaults to *{f_var}*  i.e. no conversion.
+
+..  See tutorial function9 for example.  f_cast is only used if the types are different.
 
 f_to_c
 ^^^^^^
@@ -346,6 +321,79 @@ A ``struct`` defined in another YAML file.
                 
 .. XXX - explain about generated type file.
    
+Also used to extract the *F_derived_member* before passing to C.
+
+ci_type
+^^^^^^^
+
+The type of the argument in the C bufferify wrapper.
+Usually this is the same as *c_type*.
+
+One case where it is different is with enumerations.  In Fortran, the
+option *F_enum_type" determines the type of ``enum`` values in
+Fortran. This defaults to an ``int`` which is then cast to the correct
+type using *c_to_cxx*.
+
+.. ci_to_cxx does not exist since it would always be the samea as c_to_cxx.
+
+cxx_to_ci
+^^^^^^^^^
+
+Convert the C++ type into a Fortran interface type.
+Used to convert function return values.
+If unset, then *cxx_to_c* is used.
+
+Interface
+---------
+
+i_type
+^^^^^^
+
+Type declaration for ``bind(C)`` interface.
+For example, ``integer(C_INT)``.
+
+.. Defaults to *None* which will then use *f_type*.
+
+
+i_module_name
+^^^^^^^^^^^^^
+
+Name of module required for interface type.
+For example, ``iso_c_binding``.
+
+
+i_kind
+^^^^^^
+
+Kind parameter required for interface type.
+For example, ``C_INT``.
+
+i_module
+^^^^^^^^
+
+Fortran modules needed for type in the interface.
+A dictionary keyed on the module name with the value being a list of symbols.
+Similar to **f_module**.
+Defaults to *None*.
+
+Examples
+--------
+
+Fortran native types are used for ``LOGICAL`` and ``CHARACTER``.
+So *f_kind* and *f_module_name* are not defined.
+But for the interface, *i_kind* and *i_module_name* are defined.
+
+.. code-block:: yaml
+
+    bool:
+       f_type: logical
+       f_kind: ""
+       f_module_name: ""
+
+       i_type: logical(C_BOOL)
+       i_kind: C_BOOL
+       i_module_name: iso_c_binding
+
 
 Statements
 ----------
@@ -371,11 +419,6 @@ out
 inout
     Code to add after call when ``intent(INOUT)``.
     Used to implement copy-out semantics.
-
-result
-    Result of function.
-    Including when it is passed as an argument, *F_string_result_as_arg*.
-
 
 Each intent is then broken down into code to be added into
 specific sections of the wrapper.  For example, **declaration**,

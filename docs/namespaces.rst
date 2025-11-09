@@ -1,6 +1,4 @@
-.. Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-   other Shroud Project Developers.
-   See the top-level COPYRIGHT file for details.
+.. Copyright Shroud Project Developers. See LICENSE file for details.
 
    SPDX-License-Identifier: (BSD-3-Clause)
 
@@ -61,7 +59,7 @@ The nested namespaces are added to the format field *C_name_scope*.
 
 For the C wrapper, all symbols are globally visible and must be
 unique. The format fields *C_prefix* and *C_name_scope* are used to
-generate the names. This will essentially "flatten" the namespaces into
+generate the names. This will essentially *flatten* the namespaces into
 legal C identifiers.
 
 .. code-block:: c
@@ -90,7 +88,12 @@ which implementation of *worker* is to be called.
       call inner_worker
     end subroutine work2
 
-.. options flatten_namespace
+The option **flatten_namespace** will avoid creating a module for the
+namespace and instead will add the namespace name to the identifier.
+The C wrapper will also avoid creating a new file for the namespace.
+This is useful for an internal namespace in C++ is used to scope the
+identifier.  The scoping in the wrapper will be done name mangling, or
+flattening the namespace.
 
 Each namespace creates a Python module.
 

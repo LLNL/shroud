@@ -1,6 +1,4 @@
-// Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-// other Shroud Project Developers.
-// See the top-level COPYRIGHT file for details.
+// Copyright Shroud Project Developers. See LICENSE file for details.
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 // #######################################################################
@@ -17,7 +15,7 @@
 // explicitly instantiate template
 //template class std::vector<float>;
 
-void test_vector_int()
+void test_vector_int(void)
 {
   std::vector<int> vec;
 
@@ -27,14 +25,14 @@ void test_vector_int()
 
 }
 
-void test_pairs()
+void test_pairs(void)
 {
   mypair<int> myobject (100, 75);
   int big = myobject.getmax();
   assert(big == 100);
 }
 
-void test_structAsClass()
+void test_structAsClass(void)
 {
     structAsClass<double> mystruct = {2, 3.5};
 

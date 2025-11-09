@@ -1,6 +1,4 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 # #######################################################################
@@ -11,6 +9,7 @@
 from __future__ import print_function
 
 import numpy as np
+import sys
 import unittest
 import cstruct
 
@@ -75,8 +74,10 @@ class Struct(unittest.TestCase):
 
     def test_acceptStructInOutPtr(self):
         str = cstruct.Cstruct1(22, 22.8)
+        self.assertEqual(1, sys.getrefcount(str) - 1)
         out = cstruct.acceptStructInOutPtr(str)
         self.assertIs(str, out)
+        self.assertEqual(2, sys.getrefcount(out) - 1)
         self.assertEqual(23,   out.ifield)
         self.assertEqual(23.8, out.dfield)
 
@@ -100,10 +101,28 @@ class Struct(unittest.TestCase):
 
     def test_returnStructPtr2(self):
         out, name = cstruct.returnStructPtr2(35, 35.5)
+        self.assertEqual(1, sys.getrefcount(out) - 1)
         self.assertIsInstance(out, cstruct.Cstruct1)
         self.assertEqual(35,   out.ifield)
         self.assertEqual(35.5, out.dfield)
         self.assertEqual("returnStructPtr2", name)
+
+    def test_returnStructPtrArray(self):
+        # XXX - shroud is not creating an array
+        out = cstruct.returnStructPtrArray()
+        self.assertEqual(1, sys.getrefcount(out) - 1)
+        self.assertIsInstance(out, cstruct.Cstruct1)
+        self.assertEqual(100,   out.ifield)
+        self.assertEqual(101.,  out.dfield)
+
+#        self.assertIsInstance(out, np.ndarray)
+#        self.assertIs(out.dtype, cstruct.Cstruct1_dtype)
+#        self.assertEqual(1, out.ndim)
+#        self.assertEqual(2, out.size)
+#        self.assertEqual(100,   out[0].ifield)
+#        self.assertEqual(101.,  out[0].dfield)
+#        self.assertEqual(102,   out[1].ifield)
+#        self.assertEqual(103.,  out[1].dfield)
 
     def test_cstruct_ptr_create(self):
         # struct with a char * cfield
@@ -337,11 +356,7 @@ class Struct(unittest.TestCase):
                         in str(context.exception))
 
 
-# creating a new test suite
-newSuite = unittest.TestSuite()
- 
-# adding a test case
-newSuite.addTest(unittest.makeSuite(Struct))
+unittest.TestLoader().loadTestsFromTestCase(Struct)
 
 if __name__ == "__main__":
     unittest.main()

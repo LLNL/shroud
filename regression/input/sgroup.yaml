@@ -1,0 +1,44 @@
+#
+#  Test templates with multiple arguments
+#  and option.typemap_sgroup.
+#
+copyright:
+- Copyright Shroud Project Developers. See LICENSE file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+library: sgroup
+cxx_header: sgroup.hpp
+
+options:
+  debug: True
+  wrap_fortran: True
+  wrap_c: False
+
+declarations:
+
+- decl: template<typename T, typename U>
+       struct twostruct
+# Fortran does no need to know about the internals.
+# The wrapper will create instances.
+#       {
+#         T* values;
+#         U length;
+#       };
+  options:
+    typemap_sgroup: twostruct
+
+- decl: void process_twostruct(twostruct<int, long> arg)
+
+statements:
+
+  fc:
+    extend:
+    - name: f_in_twostruct<native,native>
+      mixin:
+      - c_mixin_declare-arg
+      - c_mixin_arg-call-cvar
+      - f_mixin_declare-interface-arg
+      - f_mixin_declare-fortran-arg
+    # Add meaningful fields here

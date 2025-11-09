@@ -1,0 +1,15 @@
+Read yaml sgroup.yaml
+Close sgroup_types.yaml
+library C wrappers
+namespace sgroup
+C f void process_twostruct(twostruct<int,long> arg)
+Close wrapsgroup.h
+Close wrapsgroup.cpp
+library Fortran wrappers
+namespace sgroup
+class twostruct
+Fortran void process_twostruct(twostruct<int,long> arg)
+C-interface f void process_twostruct(twostruct<int,long> arg)
+Close wrapfsgroup.f
+Close utilsgroup.cpp
+Close typessgroup.h

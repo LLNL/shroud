@@ -1,6 +1,4 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 #
@@ -8,12 +6,11 @@
 #
 # run/templates
 #
-include $(top)/regression/run/defaults.mk
+testdir = templates
 
 INCLUDE = \
     -I$(top)/regression/reference/templates \
-    -I$(top)/regression/run/templates \
-    -I$(top)/regression/run/fruit
+    -I$(top)/regression/run/templates
 
 VPATH = \
     $(top)/regression/reference/templates \
@@ -22,6 +19,7 @@ VPATH = \
 
 C_OBJS = \
     templates.o \
+    utiltemplates.o \
     wraptemplates.o \
     wrapvectorforint.o \
     wrapuser_int.o \
@@ -29,18 +27,13 @@ C_OBJS = \
     wrapstructAsClass_int.o \
     wrapstructAsClass_double.o
 F_OBJS = \
+    main.o \
+    fruit.o \
     wrapftemplates.o \
     wrapftemplates_internal.o \
-    wrapftemplates_std.o \
-    fruit.o \
-    main.o
+    wrapftemplates_std.o
 
-
-templates : $(C_OBJS) $(F_OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod templates
+include $(top)/regression/run/defaults.mk
 
 #templates.o : templates.cpp templates.hpp
 templates.o : templates.hpp
@@ -49,7 +42,7 @@ wrapuser_int.o : wrapuser_int.cpp wrapuser_int.h typestemplates.h templates.hpp
 wraptemplates.o : wraptemplates.cpp wraptemplates.h typestemplates.h templates.hpp
 wrapstructAsClass_int.o : wrapstructAsClass_int.h
 wrapstructAsClass_double.o : wrapstructAsClass_double.h
-main.o : main.f fruit.o wrapftemplates.o
+main.o : main.f fruit.o wrapftemplates.o wrapftemplates_internal.o wrapftemplates_std.o
 maincpp.o : maincpp.cpp templates.hpp
 
 # useful to isolate load error with just C++ code
@@ -57,5 +50,3 @@ maincpp : maincpp.o
 	$(CXX) $(CXXFLAGS) $^ -o $@ $(CXXLIBS)
 
 testc.o : testc.c wrapstd_vector_int.h
-testc : testc.o $(C_OBJS)
-	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)

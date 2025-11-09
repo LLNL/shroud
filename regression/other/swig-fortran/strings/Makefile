@@ -1,12 +1,11 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 #
 
-include ../../defaults.mk
-include $(rundir)/defaults.mk
+testdir = strings
+tester : $(testdir)
+.PHONY : tester
 
 INCLUDE = \
     -I$(rundir) \
@@ -17,15 +16,17 @@ VPATH = \
     $(rundir)/strings \
     $(rundir)/fruit
 
-OBJS = \
-    strings.o \
+F_OBJS = \
     strings_mod.o \
-    strings_wrap.o \
     fruit.o \
     main.o
 
-strings : $(OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
+C_OBJS = \
+    strings.o \
+    strings_wrap.o
+
+include ../../defaults.mk
+include $(rundir)/defaults.mk
 
 swig:
 #	swig -fortran -o swigstrings_module.c strings.i
@@ -34,7 +35,4 @@ swig:
 test:
 	./strings
 
-clean :
-	rm -f $(OBJS) *.mod strings *~
-
-.PHONY : swig test clean
+.PHONY : swig test

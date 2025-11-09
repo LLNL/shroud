@@ -1,6 +1,4 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 #
@@ -9,30 +7,27 @@
 # run/strings-cfi - Futher Interoperability with C.
 # Use test from run/strings.
 #
-include $(top)/regression/run/defaults.mk
+testdir = strings-cfi
 
 INCLUDE = \
     -I$(top)/regression/reference/strings-cfi \
     -I$(top)/regression/run \
-    -I$(top)/regression/run/strings \
-    -I$(top)/regression/run/fruit
+    -I$(top)/regression/run/strings
 
 VPATH = \
     $(top)/regression/reference/strings-cfi \
     $(top)/regression/run/strings \
     $(top)/regression/run/fruit
 
-OBJS = \
+C_OBJS = \
     strings.o \
-    wrapfstrings.o \
-    wrapstrings.o \
+    utilstrings.o \
+    wrapstrings.o
+F_OBJS = \
+    main.o \
     fruit.o \
-    main.o
+    wrapfstrings.o
 
-strings-cfi : $(OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod strings
+include $(top)/regression/run/defaults.mk
 
 main.o : fruit.o wrapfstrings.o

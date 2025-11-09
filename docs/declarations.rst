@@ -1,6 +1,4 @@
-.. Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-   other Shroud Project Developers.
-   See the top-level COPYRIGHT file for details.
+.. Copyright Shroud Project Developers. See LICENSE file for details.
 
    SPDX-License-Identifier: (BSD-3-Clause)
 
@@ -74,17 +72,17 @@ In the following examples, ``int`` can be replaced by any numeric type.
     as the shape.
     See example :ref:`truncate_to_int <example_truncate_to_int>`.
 
-``intent **arg +intent(out)``
+``int **arg +intent(out)``
     Return a pointer in an argument. This is converted into a Fortran
     ``POINTER`` to a scalar.
     See example :ref:`getPtrToScalar <example_getPtrToScalar>`.
 
-``intent **arg +intent(out)+dimension(ncount)``
+``int **arg +intent(out)+dimension(ncount)``
     Return a pointer in an argument. This is converted into a Fortran
     ``POINTER`` to an array by the *dimension* attribute.
     See example :ref:`getPtrToDynamicArray <example_getPtrToDynamicArray>`.
 
-``intent **arg +intent(out)+deref(raw)``
+``int **arg +intent(out)+deref(raw)``
     Return a pointer in an argument.  The Fortran argument will be
     a ``type(C_PTR)``.  This gives the caller the flexibility to
     dereference the pointer themselves using ``c_f_pointer``.
@@ -220,7 +218,13 @@ is to account for blank filled vs ``NULL`` terminated.
     C data structure by copying the data and adding the terminating ``NULL``.
     See example :ref:`acceptCharArrayIn <example_acceptCharArrayIn>`.
 
-.. XXX 
+``char **arg +intent(out)``
+    The argument will return the address of a character array which
+    is owned by the library. The user will not need to release the
+    memory.  The Fortran wrapper will use a variable with the
+    ``POINTER`` attribute which points to the same memory. The length
+    of the string is based on the ``strlen`` of the argument.
+    See example :ref:`fetchCharPtrLibrary <example_fetchCharPtrLibrary>`.
 
 std::string
 -----------
@@ -259,27 +263,28 @@ Shroud provides several options to provide a more idiomatic usage.
 Each of these declaration call identical C++ functions but they are
 wrapped differently.
 
-``char *getCharPtr1``
-    Return a pointer and convert into an ``ALLOCATABLE`` ``CHARACTER``
-    variable.  Fortran 2003 is required. The Fortran application is
-    responsible to release the memory.  However, this may be done
-    automatically by the Fortran runtime.
-    See example :ref:`getCharPtr1 <example_getCharPtr1>`.
-
-``char *getCharPtr2``
+``char *getConstCharPtrLen(void)  +len(30)``
     Create a Fortran function which returns a predefined ``CHARACTER`` 
     value.  The size is determined by the *len* argument on the function.
     This is useful when the maximum size is already known.
     Works with Fortran 90.
-    See example :ref:`getCharPtr2 <example_getCharPtr2>`.
+    See example :ref:`getConstCharPtrLen <example_getConstCharPtrLen>`.
 
-``char *getCharPtr3``
+``char *getConstCharPtrAlloc(void)``
+    Return a pointer and convert into an ``ALLOCATABLE`` ``CHARACTER``
+    variable.  Fortran 2003 is required. The Fortran application is
+    responsible to release the memory.  However, this may be done
+    automatically by the Fortran runtime.
+    See example :ref:`getConstCharPtrAlloc <example_getConstCharPtrAlloc>`.
+
+``char *getConstCharPtrAsCopyArg(void) +funcarg+deref(copy)``
     Create a Fortran subroutine with an additional ``CHARACTER``
     argument for the C function result. Any size character string can
-    be returned limited by the size of the Fortran argument.  The
-    argument is defined by the *F_string_result_as_arg* format string.
-    Works with Fortran 90.
-    See example :ref:`getCharPtr3 <example_getCharPtr3>`.
+    be returned limited by the size of the Fortran argument. The
+    argument is defined by the *+funcarg(output)* format string.
+    If no name is provided with *+funcarg* then option **F_result_as_arg**
+    is used.
+    See example :ref:`getConstCharPtrAsCopyArg <example_getConstCharPtrAsCopyArg>`.
 
 
 .. XXX returning a scalar char will pass the result to the C wrapper
@@ -295,7 +300,7 @@ Functions which return ``std::string`` values are similar but must provide the
 extra step of converting the result into a ``char *``.
 
 ``const string &``
-    See example :ref:`getConstStringRefPure <example_getConstStringRefPure>`.
+    See example :ref:`getConstStringRefAlloc <example_getConstStringRefAlloc>`.
 
 std::vector
 -----------
@@ -358,8 +363,9 @@ Function Pointers
 C or C++ arguments which are pointers to functions are supported.
 The function pointer type is wrapped using a Fortran ``abstract interface``.
 Only C compatible arguments in the function pointer are supported since
-no wrapper for the function pointer is created.  It must be callable 
-directly from Fortran.
+the function will be called by the wrapped library.
+To be portable, functions passed to the library must have the ``BIND(C)``
+attribute.
 
 ``int (*incr)(int)``
     Create a Fortran abstract interface for the function pointer.
@@ -367,13 +373,15 @@ directly from Fortran.
     See example :ref:`callback1 <example_callback1>`.
 
 ``void (*incr)()``
-    Adding the ``external`` attribute will allow any function to be passed.
-    In C this is accomplished by using a cast.
-    See example :ref:`callback1c <example_callback1c>`.
+    Adding the *funptr* attribute will allow any function to be passed.
+    In C this is accomplished by using a cast in the wrapped library.
+
+The *intent* and *value* attributes may be used on arguments of the
+function pointer.
 
 The ``abstract interface`` is named from option
 **F_abstract_interface_subprogram_template** which defaults to
-``{underscore_name}_{argname}`` where *argname* is the name of the
+``{F_name_api}_{argname}`` where *argname* is the name of the
 function argument.
 
 If the function pointer uses an abstract declarator
@@ -394,14 +402,32 @@ argument to an argument):
       F_abstract_interface_subprogram_template: custom_funptr
       F_abstract_interface_argument_template: XX{index}arg
 
-It is also possible to pass a function which will accept any function
-interface as the dummy argument. This is done by adding the *external*
-attribute.  A Fortran wrapper function is created with an ``external``
-declaration for the argument. The C function is called via an interace
-with the ``bind(C)`` attribute.  In the interface, an ``abstract
-interface`` for the function pointer argument is used.  The user's
-library is responsible for calling the argument correctly since the
-interface is not preserved by the ``external`` declaration.
+To allow any function to be passed, the *funptr* attribute can be
+added. This will not use an ``abstract interface``. Instead the
+argument will be defined as ``type(C_FUNPTR)`` from the
+``iso_c_binding`` module.  However, it requires the caller to use
+``C_FUNLOC`` to pass down the function address.  All interface
+information is lost and the C library is expected to know how to deal
+with arbitrary function pointers.
+See example :ref:`callback1_funptr <example_callback1_funptr>`.
+
+
+The *external* attribute can be added to define the argument with
+an ``EXTERNAL`` statement. This can be made to work for some situations.
+However, it is not portable between compilers.  The Fortran standard does
+not allow ``EXTERNAL`` arguments in a ``bind(C)`` subprogram.
+A Fortran wrapper function is created with an ``EXTERNAL``
+declaration for the argument.
+The C function is called via an abstract interace with the ``bind(C)`` attribute.
+
+.. gfortran will not allow multiple calls that mix passing subroutines
+   and functions. It creates an implicit interface based on the first
+   usage and reports error if later uses are not the same.
+
+   It is required to use BIND(C) if the VALUE attribute is used.
+   intel compiler implements 'value semantics'. It will pass down
+   the address of a copy of the dummy argument unless BIND(C) is used.
+      
 
 Struct
 ------

@@ -1,0 +1,135 @@
+copyright:
+- Copyright Shroud Project Developers. See LICENSE file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+# Test function pointers
+# Wrapped with both C and C++.
+
+library: funptr
+cxx_header: funptr.h
+
+options:
+  debug: True
+  wrap_lua: False
+  wrap_python: False
+
+declarations:
+#####
+# Function pointers with no arguments
+# Define function pointer in prototype (not via a typedef).
+
+- decl: void callback1(void (*incr1)(void))
+  doxygen:
+    brief: Create abstract interface for function
+
+- decl: void callback1_wrap(void (*incr1_wrap)(void))
+  doxygen:
+    brief: Create abstract interface for function
+    description: |
+       Create a Fortran wrapper to call the bind(C) interface.
+  options:
+    F_force_wrapper: True
+
+- decl: void callback1_external(void (*incr1_external)(void)+external)
+  doxygen:
+    brief: Declare callback as external
+
+- decl: void callback1_funptr(void (*incr1_funptr)(void)+funptr)
+  doxygen:
+    brief: Declare callback as c_funptr
+    description: |
+      The caller is responsible for using c_funloc to pass the function address.
+  options:
+    literalinclude: True
+
+#####
+# Function pointers with arguments.
+# char * name argument will force a Fortran wrapper.
+# Use a typedef for function pointer.
+
+- decl: typedef int TypeID
+- decl: typedef void (*incrtype)(int i, TypeID j);
+
+- decl: void callback2(const char *name, int ival, incrtype incr)
+  doxygen:
+    brief: Create abstract interface for function
+
+- decl: void callback2_external(const char *name, int ival, incrtype incr+external)
+  doxygen:
+    brief: Declare callback as external
+
+- decl: void callback2_funptr(const char *name, int ival, incrtype incr+funptr)
+  doxygen:
+    brief: Declare callback as c_funptr
+    description: |
+      The caller is responsible for using c_funloc to pass the function address.
+      Allows any function to be passed as an argument.
+
+#####
+# Test assumedtype
+
+- decl: void callback3(int type, void *in+assumedtype+intent(in),
+                       void (*incr3)(void)+funptr)
+  doxygen:
+    brief: Test function pointer with assumedtype
+
+#####
+
+- decl: int callback4(int *ilow+rank(1)+intent(in), int nargs+implied(size(ilow)),
+                      int (*actor)(int *ilow+rank(1)+intent(in),
+                                   int nargs+intent(in)))
+  doxygen:
+    brief: Test attributes on callback arguments
+
+#####
+
+- decl: void callback_ptr(int *(*get_ptr)(void));
+  doxygen:
+    brief: Return a C_PTR
+    description: |
+      No other arguments to test that a function result
+      uses iso_c_binding C_PTR.
+
+- decl: void callback_double(double (*get)(int i, int));
+  doxygen:
+    brief: Return a scalar in the callback.
+    description: |
+      Make the function result a different type than the
+      aruguments to ensure the USE is created fully.
+  options:
+    F_force_wrapper: True
+
+#####
+
+- decl: typedef int (*get_int)(double, int);
+  doxygen:
+    brief: abstract argument
+
+- decl: int abstract1(int input, int (*get_abs)(double, int));
+  doxygen:
+    brief: abstract argument
+  options:
+    F_force_wrapper: True
+    F_abstract_interface_subprogram_template: custom_funptr
+    F_abstract_interface_argument_template: XX{index}arg
+
+#####
+
+- decl: void callback_void_ptr(void (*void_ptr_arg)(void *));
+  doxygen:
+    brief: Test void * argument
+
+- decl: void callback_all_types(void (*all_types)(int, int *+rank(1), char, char *, bool, bool *));
+  doxygen:
+    brief: Test callback argument types
+# XXX - array of bool is not supported
+
+#####
+
+- decl: typedef void (*pfvoid)(void);
+- decl: void get_void_ptr(pfvoid *func+intent(out)+funptr)
+  doxygen:
+    brief: Return a function pointer
+

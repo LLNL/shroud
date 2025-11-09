@@ -1,12 +1,11 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 #
 
-include ../../defaults.mk
-include $(rundir)/defaults.mk
+testdir = struct
+tester : $(testdir)
+.PHONY : tester
 
 INCLUDE = \
     -I$(rundir)/struct \
@@ -16,15 +15,17 @@ VPATH = \
     $(rundir)/struct \
     $(rundir)/fruit
 
-OBJS = \
-    struct.o \
+F_OBJS = \
     cstruct.o \
-    struct_wrap.o \
     fruit.o \
     main.o
 
-struct : $(OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
+C_OBJS = \
+    struct.o \
+    struct_wrap.o
+
+include ../../defaults.mk
+include $(rundir)/defaults.mk
 
 cstruct.f90 : struct.i
 	$(swig-fortran) -fortran struct.i
@@ -36,7 +37,4 @@ swig:
 test:
 	./struct
 
-clean :
-	rm -f $(OBJS) *.mod struct
-
-.PHONY : swig test clean
+.PHONY : swig test

@@ -6,6 +6,65 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- Changed some entries in c_statements and f_statements to
+  consistently prefix with ``f_``, ``i_`` or ``c_``. This allows one
+  group to describe the entire Fortran wrapper, Fortran interface, C
+  wrapper flow of a variable.
+- Require an exact match when looking up statements for Fortran and C
+  wrappers.  Before it used a trie tree to match 'close enough'
+  statements.  This would sometimes result in different matches after
+  adding new tree leafs which ended up changing the tree traversal.
+- Added deref(arg) to deal with Fortran wrappers which return a
+  function result via an argument. Used when
+  fmt.F_string_result_as_arg is defined.  Eliminated
+  meta["is_result"].
+- Remove stmt.c_result_var. Remove custom code in wrapf and replaced
+  with data in FStmts.
+- *f_temps* and *f_local* now create format fields which start with
+  **f** instead of **c**. They are intented to be used the Fortran
+  wrapper and are based off of *f_var* name.
+- Structs now create a ``using`` statement to set the C struct name to
+  the C++ struct name.  This is used when compiling the wrapper
+  implementation to avoid adding `static_casts` in the wrappers.  The
+  users will continue to use the generated C structs which parallel
+  the C++ structs.
+- Class capsule structs are now created by explicit code instead of a
+  helper.  This removes a layer of abstraction to understand how
+  they're written.
+- Removed the *C_capsule_data_type* from *C_array_type*.
+  It must now be passed explicitly to the C wrapper.
+- The *C_array_type* changed to ``void *`` instead of union with
+  ``const void *`` and ``const char *``.
+- Only use the *fmtf* field in ``FunctionNode._fmtresult`` and
+  ``_fmtargs``.  This will eventually allow the fields to be computed
+  once for Fortran, interface and C. *fmtc* will return with true C
+  wrappers.
+
+### Removed
+- Will not create C wrappers when ``language=c``.
+- Removed attribute *+cdesc*. Replace by *+api(cdesc)*
+- Removed *f_module_line* and *c_module_line* from both statements and Typemap.
+- Remove *f_imports* from statements.
+- No longer create a new function for return_this.
+  Instead set api(this) and let statements do the right thing.
+- Removed warnings in ``arg_to_buffer`` and ``arg_to_CFI``.
+  Replaced with *notimplemented* statement groups.
+- Removed options F_create_bufferify_function and F_string_len_trim.
+- Do not added *value* attribute explicitly. Instead use
+  ``append_fortran_value`` to decided when to add ``VALUE``
+  attribute. The user can still set it explictly.
+- Remove meta attribute *assumed-rank*. Instead check *dimension*
+  set to ``..``.
+
+### Added
+- Statement field *c_need_wrapper*. Similar to *f_need_wrapper*.
+- Attribute *+funptr*.
+- function pointer typedefs now create an abstract interface.
+
+### Fixed
+- Avoid memory leaks by using 'N' instead of 'O' in `Py_BuildValue`
+  for objects which have just been created.
 
 ## v0.13.0 - 2023-08-23
 ### Added

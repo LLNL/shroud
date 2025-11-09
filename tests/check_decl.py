@@ -1,6 +1,4 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 ########################################################################
@@ -16,9 +14,25 @@ make test-decl
 make test-decl-diff
 make test-decl-replace
 """
+from __future__ import print_function
 
 from shroud import declast
+#from shroud import declstr
+from shroud import error
 from shroud import todict
+from shroud import typemap
+
+from shroud import declstr
+
+gen_decl = declstr.gen_decl
+gen_decl_noparams = declstr.gen_decl_noparams
+
+gen_arg_as_c = declstr.gen_arg_as_c
+gen_arg_as_cxx = declstr.gen_arg_as_cxx
+
+# Turn off continuation for testing (avoids adding tabs into output)
+declstr.gen_arg_instance.continuation=False
+
 
 import yaml
 import pprint
@@ -28,8 +42,8 @@ lines = """
 # create_std
 --------------------
 # variable declarations
-int i;
-const double d;
+int i, j;
+const double d, *d2;
 --------------------
 # variable pointer declarations
 int *i1;
@@ -48,7 +62,7 @@ class Class2 {
 };
 --------------------
 # Structure for C++
-struct Point { int x; int y;};
+struct Point { int x, x2; int y;};
 struct Point end;
 Point start;
 void func1(struct Point arg1, Point arg2);
@@ -121,6 +135,16 @@ template<T> class user {
 };
 user<int> returnUserType(void);
 --------------------
+# template with two arguments
+template<typename T, typename U>
+struct twostruct
+{
+  T* values;
+  U length;
+};
+template<typename T, typename U>
+void process_twostruct(twostruct<T, U> arg);
+--------------------
 # nested namespace
 # XXX - fix printing
 namespace ns1 {
@@ -133,9 +157,20 @@ namespace ns1 {
 # class in namespace
 namespace ns {
   class name {
-     int imem;
+     int imem, jmem;
   };
 }
+--------------------
+# declstr language=c
+int fun1(int arg1, int *arg2, const int **arg3);
+int callback1(int in, int (*incr)(int));
+--------------------
+# declstr language=c++ create_std
+int fun1(std::vector<int> arg1, std::vector<int> *arg2, std::vector<int> &arg3);
+int callback1(int in, int (*incr)(int));
+
+class Object;
+std::shared_ptr<Object> *return_ptr(void);
 --------------------
 """  # end line
 
@@ -151,7 +186,7 @@ struct Point_s foo;
 """
 Xlines = """
 # language=c
-typedef struct Point_s { int x; int y;} Point;
+typedef struct Point_s { int x, x2; int y;} Point;
 --------------------
 """
 Xlines = """
@@ -170,6 +205,51 @@ void caller(fcn callback);
 --------------------
 """
 
+Xlines = """
+# declstr  create_std language=c++
+class Object;
+std::shared_ptr<Object> *return_ptr(void);
+--------------------
+"""
+
+Xlines = """
+# template with two arguments
+template<typename T, typename U>
+struct twostruct
+{
+  T* values;
+  U length;
+};
+#template<typename T, typename U>
+#void process_twostruct(twostruct<T, U> arg);
+--------------------
+"""
+
+
+def test_decl_str(idx, declaration, indent):
+    """Convert function declaration to C and C++.
+    Along with its arguments.
+    """
+    indent = indent + "    "
+    s = gen_decl(declaration)
+    print(indent, "gen_decl:", idx, s)
+    s = gen_arg_as_c(declaration, add_params=False)
+    print(indent, "as_c    :", idx, s)
+    s = gen_arg_as_cxx(declaration, add_params=False)
+    print(indent, "as_cxx  :", idx, s)
+    
+    if declaration.declarator.params is not None:
+        s = gen_decl_noparams(declaration)
+        print(indent, "no params:", s)
+        indent = indent + "    "
+        for i,  arg in enumerate(declaration.declarator.params):
+            s = gen_decl(arg)
+            print(indent, "gen_decl:", i, s)
+            s = gen_arg_as_c(arg)
+            print(indent, "as_c    :", i, s)
+            s = gen_arg_as_cxx(arg)
+            print(indent, "as_cxx  :", i, s)
+
 def test_block(comments, code, symtab):
     """Parse a single block of code.
     """
@@ -177,14 +257,17 @@ def test_block(comments, code, symtab):
     print("XXXXXXXXXXXXXXXXXXXX")
     language = "cxx"
     create_std = False
+    do_declstr = False
     for cmt in comments:
         if cmt.find("language=c++") != -1:
             language = "cxx"
         elif cmt.find("language=c") != -1:
             language = "c"
-        elif cmt.find("create_std") != -1:
+        if cmt.find("create_std") != -1:
             create_std = True
-        print(f"{cmt}")
+        if cmt.find("declstr") != -1:
+            do_declstr = True
+        print(cmt)
     trace = True
     trace = False
     decl = "\n".join(code)
@@ -198,6 +281,20 @@ def test_block(comments, code, symtab):
         ast = declast.Parser(decl, symtab, trace).top_level()
         asdict = todict.to_dict(ast, labelast=True)
 
+        print("XXXX PRINT")
+        for i, stmt in enumerate(ast.stmts):
+            if isinstance(stmt, declast.Declaration):
+                print(i, stmt)
+                for d2 in stmt.declarators:
+                    print("  ", d2)
+
+                if do_declstr:
+                    print("XXXX DeclStr")
+                    test_decl_str(i, stmt, "")
+
+            elif isinstance(stmt, declast.Template):
+                print(i, stmt)
+
         print("XXXX PRINT_NODE")
         s = todict.print_node(ast)
         print(s)
@@ -206,10 +303,19 @@ def test_block(comments, code, symtab):
         yaml.safe_dump(asdict, sys.stdout)
 
         print("XXXX SymbolTable")
-        symbols = declast.symtab_to_dict(symtab.scope_stack[0])
+        symbols = declast.symtab_to_dict(symtab.top)
         yaml.safe_dump(symbols, sys.stdout)
-    except RuntimeError as err:
-        print(err)
+
+        typemaps = symtab.typemaps
+        user_types = typemap.return_user_types(typemaps)
+        if user_types:
+            print("XXXX Typemap")
+            typemaps_dict = todict.to_dict(user_types)
+            yaml.safe_dump(typemaps_dict, sys.stdout)
+        
+    except error.ShroudParseError as err:
+        print("Parse Error line {}:".format(err.line))
+        print(err.message)
 
 def test_file():
     """Parse a group of lines
@@ -227,8 +333,25 @@ def test_file():
             code = []
         else:
             code.append(line)
-                
 
-        
+
+def info(type, value, tb):
+    if hasattr(sys, 'ps1') or not sys.stderr.isatty():
+    # we are in interactive mode or we don't have a tty-like
+    # device, so we call the default hook
+        sys.__excepthook__(type, value, tb)
+    else:
+        import traceback, pdb
+        # we are NOT in interactive mode, print the exception...
+        traceback.print_exception(type, value, tb)
+        print
+        # ...then start the debugger in post-mortem mode.
+        # pdb.pm() # deprecated
+        pdb.post_mortem(tb) # more "modern"
+
+# Run pdb on exception
+# https://stackoverflow.com/questions/242485/starting-python-debugger-automatically-on-error
+#sys.excepthook = info
+
 if __name__ == "__main__":
     test_file()

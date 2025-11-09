@@ -1,34 +1,28 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 #
 # run/clibrary
 #
-include $(top)/regression/run/defaults.mk
+testdir = clibrary
 
 INCLUDE = \
     -I$(top)/regression/reference/clibrary \
-    -I$(top)/regression/run/clibrary \
-    -I$(top)/regression/run/fruit
+    -I$(top)/regression/run/clibrary
 
 VPATH = \
     $(top)/regression/reference/clibrary \
     $(top)/regression/run/clibrary \
     $(top)/regression/run/fruit
 
-OBJS = \
+C_OBJS = \
     clibrary.o \
-    wrapfclibrary.o \
-    wrapClibrary.o \
+    wrapClibrary.o
+F_OBJS = \
+    main.o \
     fruit.o \
-    main.o
+    wrapfclibrary.o
 
-clibrary : $(OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(CLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod clibrary
+include $(top)/regression/run/defaults.mk
 
 main.o : fruit.o wrapfclibrary.o

@@ -1,7 +1,5 @@
 /*
- * Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
- * other Shroud Project Developers.
- * See the top-level COPYRIGHT file for details.
+ * Copyright Shroud Project Developers. See LICENSE file for details.
  *
  * SPDX-License-Identifier: (BSD-3-Clause)
  * #######################################################################
@@ -56,6 +54,62 @@ void accept_complex(std::complex<double> *arg1);
 //----------------------------------------------------------------------
 
 const std::string& getGroupName(long idx);
+
+//----------------------------------------------------------------------
+
+struct nested {
+    int index;
+    int sublevels;
+    nested *parent;
+    nested **child;   // An array of pointers to children
+    nested *array;    // An array of sublevels nested children
+};
+
+//----------------------------------------------------------------------
+
+enum class ColorEnum
+{
+   RED = 60,
+   BLUE,
+   WHITE,
+};
+
+//----------------------------------------------------------------------
+
+typedef long LengthType;
+
+class Class1
+{
+public:
+    int m_length;
+    Class1() : m_length(99) {};
+
+    // Test fortran_generic with default arguments.
+    int check_length(int length = 1)
+    {
+        return length;
+    };
+
+    // test return_this
+    Class1* declare(int flag, LengthType length = 1)
+    {
+        m_length = length;
+        return this;
+    };
+
+    int getViewFromClass( const std::string& path )
+    {
+        return path.size();
+    };
+};
+
+//----------------------------------------------------------------------
+
+Class1 *getView(const std::string& path);
+Class1 *getView(const long idx );
+Class1 *createView(const std::string& path, int type, long num_elems);
+Class1 *createView(const std::string& path, int type,
+                   long num_elems, void *external_ptr);
 
 #endif // CXXLIBRARY_H
 

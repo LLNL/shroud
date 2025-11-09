@@ -1,11 +1,9 @@
-! Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-! other Shroud Project Developers.
-! See the top-level COPYRIGHT file for details.
+! Copyright Shroud Project Developers. See LICENSE file for details.
 !
 ! SPDX-License-Identifier: (BSD-3-Clause)
 ! #######################################################################
 !
-! Test Fortran API generated from references.yaml.
+! Test Fortran API generated from arrayclass.yaml.
 !
 program tester
   use fruit
@@ -97,6 +95,8 @@ contains
     call assert_true(c_associated(voidptr, c_loc(arr)), "fetchVoidRef")
     call assert_true(arrinst%checkPtr(voidptr), "checkPtr")
 
+    call arrinst%dtor
+    
   end subroutine test_arraywrapper
     
 end program tester

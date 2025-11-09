@@ -1,7 +1,5 @@
 #!/usr/bin/env python
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 #
@@ -82,6 +80,8 @@ class Tester:
                 print("Missing executable:", executable)
             self.code_path = executable
         makedirs(output)
+
+        self.cmp_script = os.path.join(os.path.dirname(input), "scripts", "cmp-shroud")
         return status
 
     def setup_test(self, desc, replace_ref=False):
@@ -113,6 +113,12 @@ class Tester:
             logging.info("Result directory: " + self.result_dir)
             makedirs(self.result_dir)
             clear_files(self.result_dir)
+
+        cmp_script = os.path.join(self.result_dir, "cmp-shroud")
+        try:
+            os.symlink(self.cmp_script, cmp_script)
+        except FileExistsError:
+            pass
 
         return True
 
@@ -220,7 +226,7 @@ class Tester:
             self.ref_dir,
             self.result_dir,
             # ignore directories with code for other wrappers
-            ignore=["pybindgen", "cython", "swig"],
+            ignore=["pybindgen", "cython", "swig", "cmp-shroud"],
         )
         if not os.path.exists(self.ref_dir):
             logging.info("Reference directory does not exist: " + self.ref_dir)
@@ -289,10 +295,11 @@ class TestDesc(object):
     yaml = basename of yaml file, defaults to name.
     cmdline = list of command line arguments to append.
     """
-    def __init__(self, name, yaml=None, cmdline=None):
+    def __init__(self, name, yaml=None, cmdline=None, keywords=[]):
         self.name = name
         self.yaml = (yaml or name) + ".yaml"
         self.cmdline = cmdline or []
+        self.keywords = keywords
 
 if __name__ == "__main__":
     # XXX raise KeyError(key)
@@ -332,9 +339,10 @@ if __name__ == "__main__":
                  ]),
         TestDesc("python-only", yaml="tutorial",
                  cmdline=[
-                     "--option", "wrap_fortran=False",
-                     "--option", "wrap_c=False",
-                     "--option", "wrap_lua=False",
+                     "--no-fortran",
+                     "--no-c",
+                     "--python",
+                     "--no-lua",
                  ]),
         TestDesc("types"),
         TestDesc("typemap"),
@@ -364,6 +372,8 @@ if __name__ == "__main__":
                  cmdline=[
                      "--language", "c",
                      "--option", "wrap_python=false",
+                     # Create literal blocks for documentation
+                     "--option", "literalinclude2=true",
                  ]),
         TestDesc("pointers-cxx", yaml="pointers",
                  cmdline=[
@@ -371,7 +381,55 @@ if __name__ == "__main__":
                      # Create literal blocks for documentation
                      "--option", "literalinclude2=true",
                  ]),
+        TestDesc("pointers-cxx-force", yaml="pointers",
+                 cmdline=[
+                     "--option", "wrap_python=false",
+                     # Create literal blocks for documentation
+                     "--option", "literalinclude2=true",
+                     "--option", "C_force_wrapper=True",
+                     "--option", "F_force_wrapper=True",
+                 ]),
+
+        TestDesc("pointers-c-c", yaml="pointers",
+                 cmdline=[
+                     "--language", "c",
+                     "--option", "wrap_fortran=false",
+                     "--option", "wrap_c=true",
+                     "--option", "wrap_python=false",
+                     "--option", "wrap_lua=false",
+                 ]),
+        TestDesc("pointers-cxx-c", yaml="pointers",
+                 cmdline=[
+                     "--option", "wrap_python=false",
+                     # Create literal blocks for documentation
+                     "--option", "literalinclude2=true",
+                     "--option", "wrap_fortran=false",
+                     "--option", "wrap_c=true",
+                     "--option", "wrap_python=false",
+                     "--option", "wrap_lua=false",
+                 ]),
+
+        TestDesc("pointers-c-f", yaml="pointers",
+                 cmdline=[
+                     "--language", "c",
+                     "--option", "wrap_fortran=true",
+                     "--option", "wrap_c=false",
+                     "--option", "wrap_python=false",
+                     "--option", "wrap_lua=false",
+                 ]),
+        TestDesc("pointers-cxx-f", yaml="pointers",
+                 cmdline=[
+                     "--option", "wrap_python=false",
+                     # Create literal blocks for documentation
+                     "--option", "literalinclude2=true",
+                     "--option", "wrap_fortran=true",
+                     "--option", "wrap_c=false",
+                     "--option", "wrap_python=false",
+                     "--option", "wrap_lua=false",
+                 ]),
+
         TestDesc("pointers-cfi", yaml="pointers",
+                 keywords=["cfi"],
                  cmdline=[
                      "--option", "F_CFI=true",
                      "--option", "wrap_python=false",
@@ -382,6 +440,7 @@ if __name__ == "__main__":
                  cmdline=[
                      # Create literal blocks for documentation
                      "--option", "literalinclude2=true",
+                     "--option", "PY_array_arg=numpy",
                      "--option", "wrap_fortran=false",
                      "--option", "wrap_c=false",
                  ]),
@@ -501,10 +560,47 @@ if __name__ == "__main__":
         TestDesc("scope"),
         TestDesc("names"),
         TestDesc("names2"),
+        TestDesc("nameapi",
+                 keywords=["api"]),
+        TestDesc("nameapi-preserve", yaml="nameapi",
+                 keywords=["api"],
+                 cmdline=[
+                     "--option", "C_API_case=preserve",
+                     "--option", "F_API_case=preserve",
+                 ]),
+        TestDesc("nameapi-lower", yaml="nameapi",
+                 keywords=["api"],
+                 cmdline=[
+                     "--option", "C_API_case=lower",
+                     "--option", "F_API_case=lower",
+                 ]),
+        TestDesc("nameapi-upper", yaml="nameapi",
+                 keywords=["api"],
+                 cmdline=[
+                     "--option", "C_API_case=upper",
+                     "--option", "F_API_case=upper",
+                 ]),
+        TestDesc("nameapi-underscore", yaml="nameapi",
+                 keywords=["api"],
+                 cmdline=[
+                     "--option", "C_API_case=underscore",
+                     "--option", "F_API_case=underscore",
+                 ]),
         TestDesc("namespace"),
         TestDesc("namespacedoc"),
+        TestDesc("char-cxx", yaml="char",
+                 cmdline=[
+                     "--language", "c++",
+                 ]),
+        TestDesc("char-cxx-cfi", yaml="char",
+                 cmdline=[
+                     "--language", "c++",
+                     "--option", "F_CFI=true",
+                     "--option", "wrap_python=false",
+                 ]),
         TestDesc("strings"),
         TestDesc("strings-cfi", yaml="strings",
+                 keywords=["cfi"],
                  cmdline=[
                      "--option", "F_CFI=true",
                      "--option", "wrap_python=false",
@@ -512,18 +608,48 @@ if __name__ == "__main__":
         TestDesc("ccomplex"),
         TestDesc("clibrary"),
         TestDesc("cxxlibrary"),
+
+        TestDesc("funptr-c", yaml="funptr",
+                 cmdline=[
+                     "--language", "c",
+                 ]),
+        TestDesc("funptr-cxx", yaml="funptr",
+                 cmdline=[
+                     "--language", "c++",
+                 ]),
+
         TestDesc("defaultarg"),
         TestDesc("interface"),
         TestDesc("statement"),
         TestDesc("templates"),
+        TestDesc("shared"),
+        TestDesc("sgroup"),
         TestDesc("ownership"),
         TestDesc("generic"),
         TestDesc("generic-cfi", yaml="generic",
+                 keywords=["cfi"],
                  cmdline=[
                      "--option", "F_CFI=true",
                  ]),
         TestDesc("memdoc"),
-        TestDesc("wrap"),
+        TestDesc("wrap-c", yaml="wrap",
+                 cmdline=[
+                     "--language", "c",
+                 ]),
+        TestDesc("wrap-cxx", yaml="wrap",
+                 cmdline=[
+                     "--language", "c++",
+                 ]),
+        TestDesc("error",
+                 keywords=["err"]),
+        TestDesc("error-stmt",
+                 keywords=["err"]),
+        TestDesc("error-ast",
+                 keywords=["err"]),
+        TestDesc("error-fmt",
+                 keywords=["err"]),
+        TestDesc("error-generate",
+                 keywords=["err"]),
     ]
 
     if args.testname:
@@ -539,8 +665,12 @@ if __name__ == "__main__":
                 elif testname + ".yaml" == predefined.yaml:
                     runTests.append(predefined)
                     found = True
+                elif testname in predefined.keywords:
+                    runTests.append(predefined)
+                    found = True
             if not found:
-                # If not predefined, assume testname.yaml
+                # If not predefined, assume testname.yaml.
+                # Useful for tests which are not in availTests.
                 runTests.append(TestDesc(testname))
     else:
         runTests = availTests
@@ -559,21 +689,24 @@ if __name__ == "__main__":
                 status = tester.do_compare()
 
         name = test.name
+        dots = ".............................."[:25 - len(name)]
         if status:
             pass_names.append(name)
-            print("{} pass".format(name))
+            print("{} {} pass".format(name, dots))
         else:
             fail_names.append(name)
-            print("{} ***FAILED".format(name))
+            print("{} {} ***FAILED".format(name, dots))
 
     # summarize results
     if fail_names:
         exit_status = 1
-        msg = "Not all tests passed"
+        msg = "*** Not all tests passed"
     else:
         exit_status = 0
         msg = "All tests passed"
+    print('')
     print(msg)
+    print('')
     logging.info(msg)
 
     tester.close_log()

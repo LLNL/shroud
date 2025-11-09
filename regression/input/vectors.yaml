@@ -1,7 +1,5 @@
 copyright:
-- Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-- other Shroud Project Developers.
-- See the top-level COPYRIGHT file for details.
+- Copyright Shroud Project Developers. See LICENSE file for details.
 -
 - "SPDX-License-Identifier: (BSD-3-Clause)"
 -
@@ -40,7 +38,7 @@ declarations:
   doxygen:
     brief: Copy vector into Fortran input array
     description: |
-      Convert subroutine in to a function and
+      Convert subroutine into a function and
       return the number of items copied into argument
       by setting fstatements for both C and Fortran.
   options:
@@ -49,27 +47,28 @@ declarations:
     literalinclude: True
   fstatements:
     c:
-      return_type: long
-      ret:
-      - return SHT_arg_cdesc->size;
-    c_buf:
-      return_type: long
-      ret:
-      - return SHT_arg_cdesc->size;
+      c_return_type: long
+      c_return:
+      - return SHC_arg_size;
+      i_result_var: num
     f:
-      result: num
+      c_return_type: long
+      c_return:
+      - return SHT_arg_cdesc->size;
+      i_result_var: num
+      f_result_var: num
+      f_dummy_decl:
+      -  "integer(C_LONG) :: {f_result_var}"
+      f_call:
+      -  "{f_result_var} = {f_call_function}({F_arg_c_call})"
       f_module:
         iso_c_binding: ["C_LONG"]
-      declare:
-      -  "integer(C_LONG) :: {F_result}"
-      call:
-      -  "{F_result} = {F_C_call}({F_arg_c_call})"
 
 - decl: void vector_iota_out_with_num2(std::vector<int> &arg+intent(out))
   doxygen:
     brief: Copy vector into Fortran input array
     description: |
-      Convert subroutine in to a function.
+      Convert subroutine into a function.
       Return the number of items copied into argument
       by setting fstatements for the Fortran wrapper only.
   options:
@@ -78,13 +77,13 @@ declarations:
     literalinclude: True
   fstatements:
     f:
-      result: num
+      f_result_var: num
+      f_dummy_decl:
+      -  "integer(C_LONG) :: num"
+      f_post_call:
+      -  "num = SHT_arg_cdesc%size"
       f_module:
         iso_c_binding: ["C_LONG"]
-      declare:
-      -  "integer(C_LONG) :: num"
-      post_call:
-      -  "num = SHT_arg_cdesc%size"
 
 - decl: void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))
   doxygen:
@@ -93,6 +92,9 @@ declarations:
     wrap_python: False
     wrap_lua: False
     literalinclude: True
+  bind:
+    c:
+      decl: (arg+deref(malloc))
 
 - decl: void vector_iota_inout_alloc(std::vector<int> &arg+intent(inout)+deref(allocatable))
   doxygen:
@@ -101,6 +103,9 @@ declarations:
     wrap_python: False
     wrap_lua: False
     literalinclude: True
+  bind:
+    c:
+      decl: (arg+deref(malloc))
 
 # defaults to intent(inout)
 - decl: void vector_increment(std::vector<int> &arg)
@@ -185,6 +190,9 @@ declarations:
       Implement iota function.
       Return a vector as an ALLOCATABLE array.
       Copy results into the new array.
+  bind:
+    c:
+      decl: () +deref(malloc)
 
 ######################################################################
 # Test implied with two arguments

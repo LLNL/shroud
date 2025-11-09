@@ -1,6 +1,4 @@
-.. Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-   other Shroud Project Developers.
-   See the top-level COPYRIGHT file for details.
+.. Copyright Shroud Project Developers. See LICENSE file for details.
 
    SPDX-License-Identifier: (BSD-3-Clause)
 
@@ -51,7 +49,7 @@ the group:
     declarations:
     - block: True
       options:
-        F_name_impl_template: {library}_{undescore_name}
+        F_name_impl_template: {library}_{F_name_api}
       format:
         F_impl_filename: localfile.f
       declarations:
@@ -294,53 +292,75 @@ a default argument may include a plus symbol:
 api
 ^^^
 
-Controls the API used by the C wrapper.  The values are *capi*,
-*buf*, *capsule*, *capptr*, *cdesc* and *cfi*.
-Normally, this attribute is determined by Shroud
-internally.  Scalar native types such as ``int`` and ``double`` will
-use *capi* since the argument can be passed directly to C using the
-*interoperability with C* feature of Fortran.
+Controls the API used by the C wrapper.
+Normally, this attribute is determined by Shroud internally based on the
+argument type and attributes.
+But in some cases it's helpful if the user defines it.
 
-Otherwise a 'bufferify' wrapper will also be created.  Pointers to native and
-``char`` use additional metadata extracted by the Fortran wrapper via
-intrinsics ``LEN`` and ``SIZE``.  In addition, *intent(in)* strings
-will be copied and null-terminated.  This uses *api(buf)*.
+buf
 
-*cdesc* will pass down a pointer to a struct which contains metadata
-for the argument instead of passing additional fields. The advantage
-is the struct can also be used to return metadata from the C wrapper
-to the Fortran wrapper.  The struct is named by the format fields
-*C_array_type* and *F_array_type*.
+   Pass a pointer to a string along with meta data about the length
+   or size.
+   Pointers to native and
+   ``char`` use additional metadata extracted by the Fortran wrapper via
+   intrinsics ``LEN`` and ``SIZE``.  In addition, *intent(in)* strings
+   will be copied and null-terminated.
 
-The option *F_CFI*, will use the *Further interoperability with C*
-features and pass ``CFI_cdesc_t`` arguments to the C where where the
-metadata is extracted.  This uses *api(cfi)*.
+capi
 
-The *capsule* and *capptr* APIs are used by the capsule created by
-shadow types created for C++ classes.  In both cases the result is
-passed from Fortran to C as an extra argument for function which
-return a class. With *capptr*, the C wrapper will return a pointer to
-the capsule argument while *capsule* will not return a value for
-the function. This is controlled by the *C_shadow_result* option.
-
-There is currently one useful case where the user would want to set
-this attribute. To avoid creating a wrapper which copies and null
-terminates a ``char *`` argument the user can set *api(capi)*.  The
-address of the formal parameter will be passed to the user's library.
-This is useful when null termination does not make sense. For example,
-when the argument is a large buffer to be written to a file.  The C
-library must have some other way of determining the length of the
-argument such as another argument with the explicit length.
+    There is currently one useful case where the user would want to set
+    this attribute. To avoid creating a wrapper which copies and null
+    terminates a ``char *`` argument the user can set *api(capi)*.  The
+    address of the formal parameter will be passed to the user's library.
+    This is useful when null termination does not make sense. For example,
+    when the argument is a large buffer to be written to a file.  The C
+    library must have some other way of determining the length of the
+    argument such as another argument with the explicit length.
 
 .. tested by strings.yaml CpassCharPtrCAPI
+    
+capptr
+capsule
+
+    The *capsule* and *capptr* APIs are used by the capsule created by
+    shadow types created for C++ classes.  In both cases the result is
+    passed from Fortran to C as an extra argument for function which
+    return a class. With *capptr*, the C wrapper will return a pointer to
+    the capsule argument while *capsule* will not return a value for
+    the function. This is controlled by the **C_shadow_result** option.
+
+cdesc
+
+    Uses a struct to pass the metadata between Fortran and C.
+    This struct contains additional metadata beyond
+    the length and size used by *api(buf)*.
+    It is also used to return metadata from the C wrapper to the Fortran wrapper.
+    The metadata includes shape information from a *dimension* attribute
+    and is used on *intent(OUT)* arguments and function results to set the
+    shape of Fortran ``POINTER`` variables.
+    The struct is named by the format fields *C_array_type* and *F_array_type*.
+    It is similar to the ``CFI_cdesc_t`` struct provied by Fortran 2018.
+
+cfi
+
+    Use *Further interoperability with C* features and pass
+    ``CFI_cdesc_t`` arguments to the C wrapper which will extract the
+    metadata.  Using option *F_CFI* will make this the default
+    behavior.
+
+this
+
+    Used when the *return_this* field is *True*.
+    The C++ function returns a pointer to the **this** variable.
 
 .. In the future a user settable api might be useful to do custom
    actions in the wrappers.
 
-.. Set internally to api(cdesc) with +cdesc or
+.. Set internally to api(cdesc) with
    deref set to allocatable or pointer.
    api(buf) adds extra arguments for metadata like LEN or SIZE.
    api(cdesc) replaces argument with F_array_type.
+   api(this) set by return_this
    
 assumedtype
 ^^^^^^^^^^^
@@ -359,20 +379,7 @@ Used with ``const char *`` arguments to convert a blank string to a
 ``NULL`` pointer instead of an empty C string (``'\0'``).
 Can be applied to all arguments with the option **F_blanknull**.
 
-capsule
-^^^^^^^
-
-Name of capsule argument.
-Defaults to C_var_capsule_template.
-
-cdesc
-^^^^^
-
-Pass argument from Fortran to C wrapper as a pointer to a context type.
-This struct contains the address, type, rank and size of the argument.
-A 'bufferify' function will be created for the context type.
-
-.. XXX argument is named by context
+.. intent(in)
 
 charlen
 ^^^^^^^
@@ -407,6 +414,24 @@ by adding a splicer block in the YAML file:
 
 .. warning :: Using *charlen* and *dimension* together is not currently supported.
 
+constfunc
+^^^^^^^^^
+
+Add to a function *decl* when C++ ``const`` cannot be used, perhaps to help
+distinguish overloaded functions.
+This will ensure that the *shadow* argument is ``intent(in)`` instead of
+defaulting to ``intent(INOUT)``.
+This allows the function to be used with ``intent(IN)`` subprogram dummy argument.
+
+custom
+^^^^^^
+
+A user defined string which is used when creating the statement group name.
+This allows some custom behavior in the wrapper.
+For example, by defining the *c_call* field with other code.
+This is used by 'std::weak_ptr`` to perform assignment on the pointer which
+is not part of the C++ library being wrapped.
+
 default
 ^^^^^^^
 
@@ -419,6 +444,8 @@ deref
 
 Define how to dereference function results and pointers
 which are returned via an argument.
+It's also used with objects which represent an array such
+as ``std::string`` or ``std::vector``.
 This may be used in conjunction with *dimension* to create arrays.
 For example, ``int **out +intent(out)+deref(pointer)+dimension(10)``.
 
@@ -437,6 +464,8 @@ copy
     This helps reduce memory management problems since there is no dynamic memory.
     In addition, this helps with non-contiguous C++ memory such as
     arrays or vectors of ``char *`` or ``std::string``.
+    Fortran can not deal with ragged arrays directly and will copy into
+    the contiguous argument.
 
 pointer
 
@@ -451,7 +480,9 @@ pointer
     library is being passed back to the user and will be assigned using
     ``c_f_pointer``.
 
-    If *owner(caller)* is also defined, an additional argument is added
+    
+    Attribute *owner(caller)* will be set to *option.default_owner*
+    if it is not also defined. If *caller* an additional argument is added
     which is used to release the memory.
 
     For Python, create a list or NumPy array.
@@ -478,14 +509,16 @@ pointer
 
 raw
 
+    Treat the pointer as a ``void *``.
+    Required when there are several layers of indirection that do not
+    map directly to the wrapper language.
+
+    Attribute *owner(caller)* will be set to *option.default_owner*
+    if it is not also defined.
+    
     For Fortran, return a ``type(C_PTR)``.
 
     For Python, return a ``PyCapsule``.
-
-result-as-arg
-
-   Added by Shroud when a function result needs to be passed as an
-   additional argument from the Fortran wrapper to the C wrapper.
 
 scalar
 
@@ -496,6 +529,27 @@ scalar
 .. XXX copy
    Fortran, copy into existing argument.
    Python, useful for *intent(inout)*.
+
+.. Python provides a different set of values:
+     scalar, raw, numpy, list.
+   See option PY_array_arg.
+
+.. With the `decl` field, deref only applies to the Fortran wrapper.
+   Must be added to a `bind.X.decl` to apply to other languages.
+
+.. function pointers meta[deref] for both the +external and +funptr.
+
+destructor_name
+^^^^^^^^^^^^^^^
+
+Specifies a name in the **destructors** section which lists code to be used to 
+release memory.  Used with function results.
+It is used in the *C_memory_dtor_function* and will have the 
+variable ``void *ptr`` available as the pointer to the memory
+to be released.
+See :ref:`MemoryManagementAnchor` for details.
+
+..  and *intent(out)* arguments.
 
 dimension
 ^^^^^^^^^
@@ -554,12 +608,15 @@ the rank from the ``CFI_cdesc_t`` argument. Otherwise, a generic
 function will be created for each rank requested by options
 *F_assumed_rank_min* and "*F_assumed_rank_max*.
 
+.. Only the Fortran wrapper uses the assumed-rank.
+   The dimension attribute will be removed from the C and Python wrappers.
+
 .. XXX - See Fortran.rst
 
 .. info is passed to statements via fmt fields.
-   cdesc - c_array_shape, c_array_size
-   CFI - c_temp_extents_decl, c_temp_extents_use
-         c_temp_lower_decl, c_temp_lower_use
+   cdesc - gen.c_array_shape, gen.c_array_size
+   CFI - gen.c_extents_decl, gen.c_extents_use
+         gen.c_lower_use
 
 
 external
@@ -570,23 +627,43 @@ that a Fortran wrapper is created which uses the ``external``
 statement for the argument.  This will allow any function to be used
 as the dummy argument for the function pointer.
 
-free_pattern
-^^^^^^^^^^^^
+See also the *funptr* attribute.
+See :ref:`DeclAnchor_Function_Pointers`.
 
-A name in the **patterns** section which lists code to be used to 
-release memory.  Used with function results.
-It is used in the *C_memory_dtor_function* and will have the 
-variable ``void *ptr`` available as the pointer to the memory
-to be released.
-See :ref:`MemoryManagementAnchor` for details.
+funcarg
+^^^^^^^
 
-..  and *intent(out)* arguments.
+Used with functions to convert it to a subroutine and to treat the
+result as an additional argument. This is helpful with functions that
+return a pointer.  Instead, the Fortran wrapper accepts an argument
+from the user which will contain a copy of the result. The result may
+also use the *deref* attribute to create an ``ALLOCATABLE`` or
+``POINTER`` result similar to an *intent(out)* argument.
 
+The attribute value can contain the name for the argument. If no name
+is given then the option **F_result_as_arg** will be used to name the
+argument. The attribute value is assigned to format fields *f_var* and
+*i_var*.
+   
+funptr
+^^^^^^
+
+This attribute is only valid with function pointers.
+Create a ``type(C_FUNPTR)`` argument for the function pointer
+instead of an abstract interface.
+The caller is required to use ``C_FUNLOC`` to get the address
+of the function.
+The advantage is that this will allow any function to be passed.
+Like ``void`` pointers, the user is responsible to ensure the function
+pointer is called with the correct arguments.
+
+See also the *external* attribute.
+See :ref:`DeclAnchor_Function_Pointers`.
 
 hidden
 ^^^^^^
 
-The argument will not appear in the Fortran API.
+The argument will not appear in the Fortran or Python API.
 
 For the native C API it will appear as a regular argument.
 For the bufferify C API, it will be a local variable which
@@ -597,7 +674,7 @@ pointer arguments.  This value is save in the *F_array_type* argument
 or the CFI_cdesc_t struct.
 
 .. statements for native pointer and reference.
-   See c_out_native_*_hidden
+   See c_out_native*_hidden
    Used in the Fortran wrapper when fmt.c_var_cdesc is defined.
 
 For example, setting the shape of a pointer function:
@@ -617,6 +694,8 @@ For example, setting the shape of a pointer function:
  
 .. assumed intent(out)
 
+The api attribute will be set to *hidden* before looking up the
+Fortran statement group.
 
 implied
 ^^^^^^^
@@ -649,6 +728,10 @@ Python wrappers: ``size``, ``len`` and ``len_trim``.
 * len_trim(string)
   Returns the length of a character string, ignoring any trailing blanks.
 
+.. For Python, implied are added in the wrapper after non-implied
+   arguments pre_call.  This allows implied to use the other, possibly
+   computed, values.
+
 intent
 ^^^^^^
 
@@ -661,6 +744,8 @@ Valid values are ``in``, ``out``, ``inout``.
     The argument will be read from and written to.
   out
     The argument will be written to.
+  none
+    No intent. Default for function pointer arguments.
 
 Nonpointer arguments can only be *intent(in)*.
 If the argument is ``const``, the default is ``in``.
@@ -668,8 +753,10 @@ If the argument is ``const``, the default is ``in``.
 In Python, *intent(out)* arguments are not used as
 input arguments to the function but are returned as values.
 
-Internally, Shroud also assigns the values of *function*,
+Internally, Shroud also assigns the values of *function*, *operator*,
 *ctor* and *dtor*.
+
+.. and 'implied' from +implied attribute.
 
 len
 ^^^
@@ -713,6 +800,12 @@ prefix.  Fortran and Python both have an explicit scope of
 ``self%variable`` and ``self.variable`` instead of an implied
 ``this``.
 
+operator
+^^^^^^^^
+
+Defines the function as a Fortran operator.
+Used to create assignment overloads.
+
 owner
 ^^^^^
 
@@ -740,6 +833,8 @@ library
    This is the default value.
 
 .. steal  intent(in)
+
+.. shared  weak     from typemap.smart_pointer
 
 pass
 ^^^^
@@ -833,8 +928,8 @@ An example from strings.yaml:
           This is accomplished with C_finalize_buf which is possible
           because +len(30) so the contents are copied before returning.
       fstatements:
-        c_buf:
-          final:
+        f:
+          c_final:
           - delete {cxx_var};
 
 An example from vectors.yaml:
@@ -843,21 +938,23 @@ An example from vectors.yaml:
 
     - decl: void vector_iota_out_with_num(std::vector<int> &arg+intent(out))
       fstatements:
-        c_buf:
-          return_type: long
-          ret:
+        c:
+          c_return_type: long
+          c_return:
           - return Darg->size;
         f:
-          result: num
+          c_return_type: long
+          c_return:
+          - return SHT_arg_cdesc->size;
+          f_result: num
+          f_dummy_decl:
+          -  "integer(C_LONG) :: {F_result}"
+          f_call:
+          -  "{F_result} = {F_C_call}({F_arg_c_call})"
           f_module:
             iso_c_binding: ["C_LONG"]
-          declare:
-          -  "integer(C_LONG) :: {F_result}"
-          call:
-          -  "{F_result} = {F_C_call}({F_arg_c_call})"
-               
 
-          
+A complete description is in the :ref:`StatementsAnchor` chapter.
 
 Patterns
 --------
@@ -979,6 +1076,8 @@ This splicer takes priority over other ways of defining splicers.
      splicer:
         c:
         - "return name != NULL;"
+        c_buf:
+        - // Added to the bufferify C wrapper called by Fortran
         f:
         - 'rv = name .ne. " "'
 
@@ -1049,9 +1148,9 @@ C implementation:
     extern "C" {
       // class.{class_name}.C_definitions
 
-      // function.{underscore_name}{function_suffix}
+      // function.{C_name_api}{function_suffix}
 
-      // class.{cxx_class}.method.{underscore_name}{function_suffix}
+      // class.{cxx_class}.method.{C_name_api}{function_suffix}
 
     }
 
@@ -1059,6 +1158,24 @@ The splicer comments can be eliminated by setting the option
 **show_splicer_comments** to false. This may be useful to 
 eliminate the clutter of the splicer comments.
 
+
+statements
+----------
+
+Statements add control over how specific function and argument
+wrapping is controlled based on language, intent, and attributes.
+This section is not needed for causual use of Shroud since the
+defaults are sufficient for most cases.
+
+.. code-block:: yaml
+
+    statements:
+      fc:
+        file: [ ]
+        extend:
+        - name: f_...
+
+See :ref:`StatementsAnchor` for details.
 
 file_code
 ---------

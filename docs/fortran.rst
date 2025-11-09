@@ -1,6 +1,4 @@
-.. Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-   other Shroud Project Developers.
-   See the top-level COPYRIGHT file for details.
+.. Copyright Shroud Project Developers. See LICENSE file for details.
 
    SPDX-License-Identifier: (BSD-3-Clause)
 
@@ -29,7 +27,7 @@ in several options used to define names consistently:
 **F_C_name_template**, **F_name_impl_template**,
 **F_name_function_template**, **F_name_generic_template**,
 **F_abstract_interface_subprogram_template**,
-**F_derived_name_template**, **F_typedef_name_template**.
+**F_derived_name_template**, **F_name_typedef_template**.
 
 A Fortran module will be created for the library.  This allows the
 compiler to do it's own mangling so it is unnecessary to add an
@@ -60,12 +58,12 @@ be controlled directly by the input YAML file:
       end interface
 
       interface
-        {F_C_pure_clause} {F_C_subprogram} {F_C_name}
-             {F_C_result_clause} bind(C, name="{C_name}")
+        {i_pure_clause} {i_subprogram} {i_name}
+             {i_result_clause} bind(C, name="{C_name}")
           ! arg_f_use
           implicit none
           ! arg_c_decl
-        end {F_C_subprogram} {F_C_name}
+        end {i_subprogram} {i_name}
       end interface
 
       interface {F_name_generic}
@@ -80,7 +78,7 @@ be controlled directly by the input YAML file:
         ! splicer begin
         declare      ! local variables
         pre_call
-        call  {arg_c_call}
+        call {arg_c_call}
         post_call
         ! splicer end
       end {F_subprogram} {F_name_impl}
@@ -106,7 +104,7 @@ Use of format fields for creating class wrappers.
         procedure :: {F_name_function} => {F_name_impl}
         generic :: {F_name_generic} => {F_name_function}, ...
 
-        ! F_name_getter, F_name_setter, F_name_instance_get as underscore_name
+        ! F_name_instance_get, F_name_instance_set
         procedure :: [F_name_function_template] => [F_name_impl_template]
 
     end type {F_derived_name}
@@ -258,7 +256,7 @@ Argument Coercion
 ^^^^^^^^^^^^^^^^^
 
 The C compiler will coerce arguments in a function call to the type of
-the argument in the prototype.  This makes it very easy to pass an
+the argument in the prototype.  This makes it very easy to pass a
 ``float`` to a function which is expecting a ``double``.  Fortran,
 which defaults to pass by reference, does not have this feature since
 it is passing the address of the argument. This corresponds to C's
@@ -266,11 +264,12 @@ behavior since it cannot coerce a ``float *`` to a ``double *``. When
 passing a literal ``0.0`` as a ``float`` argument it is necessary to
 use ``0.0_C_DOUBLE``.
 
-Shroud can create a generic interface for function which will
+Shroud can create a generic interface for functions which will
 coerce arguments similar to C's behavior.
-The *fortran_generic* section variations of arguments which will be
+The *fortran_generic* section describes variations of arguments which will be
 used to create a generic interface. For example, when wrapping a function
 which takes a ``double``, the ``float`` variation can also be created.
+But like C, it will not automatically coerce a pointer argument.
 
 .. code-block:: yaml
 
@@ -290,12 +289,16 @@ procedures ``generic_real_float`` and ``generic_real_double``.
    :end-before: end generic interface generic_real
    :dedent: 4
 
-This can be used as
+This can be used as with different scalar constants and the
+wrapper will explicitly convert value before calling the
+library function.
 
 .. code-block:: fortran
                 
     call generic_real(0.0)
     call generic_real(0.0d0)
+    call generic_real(0.0_C_FLOAT)
+    call generic_real(0.0_C_DOUBLE)
     
     call generic_real_float(0.0)
     call generic_real_double(0.0d0)
@@ -309,6 +312,13 @@ declared.  The other arguments will be the same as the original
 The *function_suffix* line will be used to add a unique string to the
 generated Fortran wrappers. Without *function_suffix* each function
 will have an integer suffix which is increment for each function.
+
+The entries in *fortran_generic* can vary the *+rank* attribute.
+This will allow arrays of different rank to be passed to a single
+library function.
+
+Note that Fortran cannot differentiate generic function base on the
+return type.
 
 Scalar and Array Arguments
 ^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -1,6 +1,4 @@
-// Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-// other Shroud Project Developers.
-// See the top-level COPYRIGHT file for details.
+// Copyright Shroud Project Developers. See LICENSE file for details.
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
@@ -22,15 +20,27 @@ class Class1
 public:
     int m_flag;
     int m_test;
+    bool m_bool;
     std::string m_name;
-    Class1()         : m_flag(0), m_test(0), m_name("ctor_name")    {};
-    Class1(int flag) : m_flag(flag), m_test(0), m_name("alt_name")  {};
+    std::string m_name_ptr;
+    std::string m_name_copy;
+    Class1()         : m_flag(0), m_test(0), m_bool(true),
+                       m_name("ctor_name"),
+                       m_name_ptr("ptr_name"),
+                       m_name_copy("copy_name")
+    {};
+    Class1(int flag) : m_flag(flag), m_test(0), m_bool(false),
+                       m_name("alt_name"),
+                       m_name_ptr("alt_ptr_name"),
+                       m_name_copy("alt_copy_name")
+    {};
     int Method1();
     bool equivalent(Class1 const &obj2) const;
     Class1 * returnThis();
     Class1 * returnThisBuffer(std::string & name, bool flag);
     Class1 * getclass3() const;
     const std::string& getName();
+    std::string getPath() const;
 
     enum DIRECTION { UP = 2, DOWN, LEFT= 100, RIGHT };
 
@@ -55,7 +65,7 @@ const Class1 * getclass2_void();
 Class1 * getclass3_void();
 const Class1 &getConstClassReference();
 Class1 &getClassReference();
-Class1 getClassCopy(int flag);
+Class1 getClass1Copy(int flag);
 
 #if 0
 class Singleton {

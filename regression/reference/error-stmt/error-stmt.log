@@ -1,0 +1,8 @@
+Read yaml error-stmt.yaml
+library C wrappers
+namespace error
+library Fortran wrappers
+namespace error
+Close wrapferror.f
+Close utilerror.cpp
+Close typeserror.h

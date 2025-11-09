@@ -1,7 +1,5 @@
 copyright:
-- Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-- other Shroud Project Developers.
-- See the top-level COPYRIGHT file for details.
+- Copyright Shroud Project Developers. See LICENSE file for details.
 -
 - "SPDX-License-Identifier: (BSD-3-Clause)"
 -
@@ -100,15 +98,6 @@ declarations:
 # XXX - python wants intent(inout) to fill existing array
 # XXX - fortran prefers intent(out)
 - decl: int accumulate(const int *arr+rank(1), size_t len+implied(size(arr)));
-
-######################################################################
-# Deal with 'char **' arguments
-# Python: treat as list of string, even with numpy.
-
-- decl: int acceptCharArrayIn(char **names +intent(in))
-  doxygen:
-    description: |
-      Return strlen of the first index as a check.
 
 ######################################################################
 # Routine which return pointers in arguments.

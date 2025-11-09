@@ -1,6 +1,4 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 # #######################################################################
@@ -11,12 +9,11 @@ ifeq ($(top),)
 top := ../../..
 endif 
 
-include $(top)/regression/run/defaults.mk
+testdir = tutorial
 
 INCLUDE = \
     -I$(top)/regression/reference/tutorial \
-    -I$(top)/regression/run/tutorial \
-    -I$(top)/regression/run/fruit
+    -I$(top)/regression/run/tutorial
 
 VPATH = \
     $(top)/regression/reference/tutorial \
@@ -28,15 +25,11 @@ C_OBJS = \
     utilTutorial.o \
     wrapTutorial.o
 F_OBJS = \
-    wrapftutorial.o \
     fruit.o \
-    main.o
+    main.o \
+    wrapftutorial.o
 
-tutorial : $(C_OBJS) $(F_OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod tutorial
+include $(top)/regression/run/defaults.mk
 
 tutorial.o : tutorial.cpp tutorial.hpp
 wrapTutorial.o : wrapTutorial.cpp wrapTutorial.h tutorial.hpp
@@ -47,5 +40,3 @@ maincpp : maincpp.o tutorial.o
 	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@ $(CXXLIBS)
 
 testc.o : testc.c wrapTutorial.h tutorial.hpp
-testc : testc.o $(C_OBJS)
-	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)

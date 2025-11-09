@@ -1,7 +1,5 @@
 copyright:
-- Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-- other Shroud Project Developers.
-- See the top-level COPYRIGHT file for details.
+- Copyright Shroud Project Developers. See LICENSE file for details.
 -
 - "SPDX-License-Identifier: (BSD-3-Clause)"
 -
@@ -31,6 +29,17 @@ declarations:
     len: get_name_length()
   C_error_pattern: C_invalid_name
   PY_error_pattern: PY_invalid_name
+
+- decl: bool nameIsValid(const std::string& name)
+   # The concept of a valid name is different for C++, C and Fortran
+   # The wrappers create a different implementation that the C++ function.
+  options:
+    F_create_bufferify_function: false
+  splicer:
+    c:
+    - "return name != NULL;"
+    f:
+    - 'SHT_rv = name .ne. " "'
 
 
 ######################################################################

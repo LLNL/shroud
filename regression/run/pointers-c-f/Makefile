@@ -1,0 +1,32 @@
+# Copyright Shroud Project Developers. See LICENSE file for details.
+#
+# SPDX-License-Identifier: (BSD-3-Clause)
+#
+# #######################################################################
+#
+# run/pointers-c-f
+# Fortran wrappers only for a C library
+#
+testdir = pointers-c-f
+
+INCLUDE = \
+    -I$(top)/regression/reference/$(testdir) \
+    -I$(top)/regression/run/pointers
+
+VPATH = \
+    $(top)/regression/reference/$(testdir) \
+    $(top)/regression/run/pointers \
+    $(top)/regression/run/fruit
+
+C_OBJS = \
+    pointers.o \
+    wrappointers.o \
+    utilpointers.o
+F_OBJS = \
+    main.o \
+    fruit.o \
+    wrapfpointers.o
+
+include $(top)/regression/run/defaults.mk
+
+main.o : fruit.o wrapfpointers.o

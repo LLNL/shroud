@@ -1,6 +1,4 @@
-.. Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-   other Shroud Project Developers.
-   See the top-level COPYRIGHT file for details.
+.. Copyright Shroud Project Developers. See LICENSE file for details.
 
    SPDX-License-Identifier: (BSD-3-Clause)
 
@@ -205,7 +203,7 @@ The template for a function is:
         {               create scope before fail
           {pre_call}    pre_call declares variables for arguments
 
-          call  {arg_call}
+          {call}
           {post_call}
 
           per argument
@@ -215,7 +213,7 @@ The template for a function is:
             {PyObject} *  {py_var} Py_BuildValue("{Py_format}", {vargs});
             {cleanup}
          }
-         return;
+         {c_return};
 
        fail:
           {fail}
@@ -251,14 +249,6 @@ C variables are created before the call to ``Py_ParseArgs``.
 C++ variables are then created in *post_parse* and *pre_call*.
 For example, creating a ``std::string`` from a ``char *``.
 
-allocate_local_var
-^^^^^^^^^^^^^^^^^^
-
-Functions which return a struct/class instance (such as std::vector)
-need to allocate a local variable which will be used to store the result.
-The Python object will maintain a pointer to the instance until it is
-deleted.
-
 c_header
 ^^^^^^^^
 
@@ -268,11 +258,18 @@ cxx_header
 c_helper
 ^^^^^^^^
 
-Blank delimited list of helper functions required for the wrapper.
+List of helper names required for the wrapper.
 The name may contain format strings and will be expand before it is
 used.  ex. ``to_PyList_{cxx_type}``.
-The function associated with the helper will be named *hnamefunc0*,
-*hnamefunc1*, ... for each helper listed.
+The format field associated with the helper will be named *c_helper_{name}*.
+
+It will be necessary to add an alias when the helper name contains a
+format string.  The alias is delimited by a
+colon. ex. ``to_PyList_{cxx_type}:to_PyList``.  In this case the
+format field will be the alias name, *c_helper_{alias}*.
+
+.. Included {cxx_type} in the helper name makes it more general requiring
+   the alias to create a standard name.
 
 need_numpy
 ^^^^^^^^^^
@@ -322,7 +319,7 @@ The argument will be non-const to allow it to be assigned later.
 
 .. code-block:: python
 
-        name="py_char_*_out_charlen",
+        name="py_out_char*_charlen",
         arg_declare=[
             "{c_const}char {c_var}[{charlen}];  // intent(out)",
         ],
@@ -336,14 +333,6 @@ Often used to define variables of type ``PyObject *``.
 .. When defined, *typemap.PY_format* is append to the
    format string for ``PyArg_ParseTupleAndKeywords`` and
    *c_var* is used to hold the parsed.
-
-cxx_local_var
-^^^^^^^^^^^^^
-
-Set when a C++ variable is created by post_parse.
-*scalar*
-
-Used to set format fields *cxx_member*
 
 parse_format
 ^^^^^^^^^^^^
@@ -393,12 +382,6 @@ parse_args
 A list of wrapper variables that are passed to ``PyArg_ParseTupleAndKeywords``.
 Used with *parse_format*.
 
-cxx_local_var
-^^^^^^^^^^^^^
-
-Set to *scalar* or *pointer* depending on the declaration in *post_declare*
-*post_parse* or *pre_call*.
-
 post_declare
 ^^^^^^^^^^^^
 
@@ -445,6 +428,12 @@ arg_call
 
 List of arguments to pass to function.
 
+call
+^^^^
+
+Used to call  the function.
+Used to assign function result to a variable.
+
 post_call
 ^^^^^^^^^
 
@@ -468,10 +457,90 @@ goto_fail
 If *True*, one of the other blocks such as *post_parse*, *pre_call*,
 and *post_call* contain a call to ``fail``.
 If any statements block sets *goto_fail*, then the *fail* block will
-be inserted into the code/
+be inserted into the code.
+
+declare_fail
+^^^^^^^^^^^^
+
+When *goto_fail* is *true*, it can be necessary to declare variables
+before any `goto fail` is added to the wrapper. This will avoid
+compile errors about ``jump to label fail crosses initialization of
+'variable'``.
+
+call_fail
+^^^^^^^^^
+
+Used in combination of *declare_fail* which will assign to the
+variable from *declare_fail* instead of declaring the variable
+which may be done in the *call* clause.
 
 .. object conversion
 
+c_return
+^^^^^^^^
+
+Code to return a value from the wrapper.
+By default an ``PyObject`` is returned and this entry is not needed.
+But some others, such as constructors, return a value since it is
+called via ``tp_init``.
+
+incref_on_return
+^^^^^^^^^^^^^^^^
+
+Used to control reference counting on returned objects.  When the
+format ``O`` is passed to ``PyArg_ParseTupleAndKeywords`` a ``PyObject
+*`` is returned without incrementing the reference count.  If the
+attribute *intent(inout)* is set, then the same object may be returned
+by the function. The reference count must be incremented before it is
+returned.  This can be done by ``Py_BuildValue`` with the ``O`` format
+field. But when there is only one return value, ``Py_INCREF`` will be
+called explicitly.
+
+destructor_name
+^^^^^^^^^^^^^^^
+
+A name for the destructor code in *destructor*.
+Must be unique.  May include format strings:
+
+.. code-block:: yaml
+
+    destructor_name: std_vector_{cxx_T}
+
+Sets the format field *capsule_order* which is the index to the
+destructor for the capsule's contents.
+    
+destructor
+^^^^^^^^^^
+
+A list of lines of code used to delete memory. Usually allocated by a *pre_call*
+statement.
+
+.. The code is inserted into *C_memory_dtor_function* which will provide
+   the address of the memory to destroy in the variable ``void *ptr``.
+
+For example:
+
+.. code-block:: yaml
+
+    destructor:
+    -  std::vector<{cxx_T}> *cxx_ptr = reinterpret_cast<std::vector<{cxx_T}> *>(ptr);
+    -  delete cxx_ptr;
+
+local
+^^^^^
+
+A list of suffixes for local variable names.
+
+.. code-block:: yaml
+
+    local:
+    - len
+
+Create variable names in the format dictionary using
+``{C_local}{rootname}_{name}``.
+For example, argument *foo* creates *SHC_foo_len*.
+
+The format field is named *py_local_{name}*.
 
 object_created
 ^^^^^^^^^^^^^^
@@ -481,6 +550,8 @@ This prevents ``Py_BuildValue`` from converting it into an Object.
 For example, when a pointer is converted into a ``PyCapsule`` or
 when NumPy is used to create an object.
 
+.. Also when the returned object is also an input argument.
+   py_inout_struct_*_class
 
 Predefined Types
 ----------------

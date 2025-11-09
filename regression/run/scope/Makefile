@@ -1,6 +1,4 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 #
@@ -12,30 +10,26 @@ ifeq ($(top),)
 top := ../../..
 endif 
 
-include $(top)/regression/run/defaults.mk
+testdir = scope
 
 INCLUDE = \
     -I$(top)/regression/reference/scope \
-    -I$(top)/regression/run/scope \
-    -I$(top)/regression/run/fruit
+    -I$(top)/regression/run/scope
 
 VPATH = \
     $(top)/regression/reference/scope \
     $(top)/regression/run/scope \
     $(top)/regression/run/fruit
 
-OBJS = \
+C_OBJS = \
     scope.o \
-    wrapfscope.o \
-    wrapscope.o \
+    wrapscope.o
+F_OBJS = \
+    main.o \
     fruit.o \
-    main.o
+    wrapfscope.o
 
-scope : $(OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod scope
+include $(top)/regression/run/defaults.mk
 
 scope.o : scope.hpp
 wrapscope.o : wrapscope.h scope.hpp
@@ -46,5 +40,3 @@ maincpp : maincpp.o #wrapscope.o
 	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@ $(CXXLIBS)
 
 testc.o : testc.c wrapscope.h scope.hpp
-testc : testc.o wrapscope.o scope.o
-	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)

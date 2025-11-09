@@ -1,6 +1,4 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 #
@@ -8,6 +6,9 @@
 #
 #  lua run/classes
 #
+testdir = classes
+
+AS_SHARED := TRUE
 include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
@@ -24,8 +25,6 @@ OBJS = \
     classes.o \
     luaclassesmodule.o
 
-CXXFLAGS += $(SHARED)
-
 all : classes.so # simple
 
 classes.so : $(OBJS)
@@ -34,13 +33,3 @@ classes.so : $(OBJS)
 # XXX testlua.c has some 5.2 features
 simple : testlua.o $(OBJS)
 	$(CC) -o $@ $^ $(LUA_LIB)
-
-clean :
-	rm -f *.so *.o simple
-.PHONY : clean
-
-print-debug:
-	@echo LUA=$(LUA)
-	@echo LUA_PREFIX=$(LUA_PREFIX)
-	@echo LUA_INC=$(LUA_INC)
-	@echo LUA_LIB=$(LUA_LIB)

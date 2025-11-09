@@ -1,7 +1,5 @@
 copyright:
-- Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-- other Shroud Project Developers.
-- See the top-level COPYRIGHT file for details.
+- Copyright Shroud Project Developers. See LICENSE file for details.
 -
 - "SPDX-License-Identifier: (BSD-3-Clause)"
 -
@@ -72,7 +70,11 @@ declarations:
 
 - decl: char *Function4a(
     const char *arg1,
-    const char *arg2 ) +len(30)
+    const char *arg2 ) +len(30) +owner(caller)
+  doxygen:
+    description: |
+      The function allocates memory with malloc which is copied into
+      the users buffer and must then be freed.
 
 - decl: void acceptName(const char *name)
   options:
@@ -87,6 +89,16 @@ declarations:
     description: |
       Change a string in-place.
       For Python, return a new string since strings are immutable.
+
+- decl: void passCharPtrCAPI(int n,
+                              char *in  +api(capi)+intent(inout),
+                              char *out +api(capi)+intent(out))
+  doxygen:
+    brief: api(capi) with intent(out) and intent(inout)
+    description:
+      Only the interface is needed.
+  options:
+    wrap_python: False
 
 ######################################################################
 # charlen
@@ -120,25 +132,21 @@ declarations:
   options:
     literalinclude: True
 
-- decl: int ImpliedLen(const char *text, int ltext+implied(len(text)),
+- decl: int ImpliedLen(const char *text+api(capi), int ltext+implied(len(text)),
                        bool flag+implied(false))
-  options:
-    F_create_bufferify_function: false
   doxygen:
     brief: Return the implied argument - text length
     description: |
        Pass the Fortran length of the char argument directy to the C function.
-       No need for the bufferify version which will needlessly copy the string.
+       Use api(capi) to avoid needlessly copying the string.
 
-- decl: int ImpliedLenTrim(const char *text, int ltext+implied(len_trim(text)),
+- decl: int ImpliedLenTrim(const char *text+api(capi), int ltext+implied(len_trim(text)),
                            bool flag+implied(true))
-  options:
-    F_create_bufferify_function: false
   doxygen:
     brief: Return the implied argument - text length
     description: |
        Pass the Fortran length of the char argument directy to the C function.
-       No need for the bufferify version which will needlessly copy the string.
+       Use api(capi) to avoid needlessly copying the string.
 
 - decl: bool ImpliedBoolTrue(bool flag+implied(true))
   doxygen:
@@ -158,7 +166,7 @@ declarations:
     # Used with interface since there is no implementation.
     F_name_impl: Fortran_bindC1a
     # Unused.
-    F_C_name: Fortran_bindC1b
+    i_name_function: Fortran_bindC1b
   options:
     wrap_python: false
 
@@ -171,7 +179,7 @@ declarations:
     # Used with implemention.
     F_name_impl: Fortran_bindC2a
     # XXX - Used with both interfaces, regular and bufferify
-#    F_C_name: Fortran_bindC2b
+#    i_name_function: Fortran_bindC2b
   options:
     wrap_python: false
 
@@ -195,7 +203,14 @@ declarations:
     wrap_python: false
     literalinclude: True
 
-- decl: void passAssumedTypeDim(void *arg+assumedtype+rank(1))
+#- decl: void passAssumedTypeDim(void *arg+assumedtype+dimension(3))
+#  doxygen:
+#    brief: Test assumed-type with dimension(3)
+#  options:
+#    wrap_python: false
+#    literalinclude: True
+
+- decl: void passAssumedTypeRank(void *arg+assumedtype+rank(1))
   doxygen:
     brief: Test assumed-type with rank(1)
   options:
@@ -213,44 +228,6 @@ declarations:
     wrap_python: false
 
 ######################################################################
-# Function pointer (from tutorial.yaml)
-
-- decl: void callback1(int type, void (*incr)(void)+external)
-  doxygen:
-    brief: Test function pointer
-  options:
-    wrap_lua: False
-    wrap_python: False
-    literalinclude: True
-  
-- decl: void callback1a(int type, void (*incr)(void)+external)
-  doxygen:
-    brief: Test function pointer
-    description: |
-      Add C_force_wrapper to test generating function pointer prototype.
-  options:
-    C_force_wrapper: True
-    wrap_lua: False
-    wrap_python: False
-    literalinclude: True
-  
-- decl: void callback2(int type, void * in+assumedtype,
-                       void (*incr)(int *)+external)
-  doxygen:
-    brief: Test function pointer
-  options:
-    wrap_lua: False
-    wrap_python: False
-
-- decl: void callback3(const char *type, void * in+assumedtype,
-                       void (*incr)(int *)+external, char *outbuf+intent(out))
-  doxygen:
-    brief: Test function pointer
-    description: |
-      A bufferify function will be created.
-  options:
-    wrap_lua: False
-    wrap_python: False
 
 - decl: void callback_set_alloc(int tc, array_info *arr+intent(inout),
                                 void (*alloc)(int tc+intent(in), array_info *arr+intent(inout)))

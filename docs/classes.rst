@@ -1,6 +1,4 @@
-.. Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-   other Shroud Project Developers.
-   See the top-level COPYRIGHT file for details.
+.. Copyright Shroud Project Developers. See LICENSE file for details.
 
    SPDX-License-Identifier: (BSD-3-Clause)
 
@@ -35,9 +33,8 @@ To wrap the class add the lines to the YAML file::
       - decl: ~Class1()  +name(delete)
       - decl: void Method1()
 
-The method ``new`` has the attribute **+constructor** to mark it as a
-constructor.  In this example the empty paren expression is required
-to apply the annotation to the function instead of the result.
+Shroud adds the attribute **+intent(ctor)** to the method ``new`` to mark it as a
+constructor.
 Likewise, ``delete`` is marked as a destructor.  These annotations
 will create wrappers over the ``new`` and ``delete`` keywords.
 
@@ -102,3 +99,10 @@ And the Fortran version::
 
     cptr = class1_new()
     call cptr%method1
+
+
+.. Overload operators
+
+   Adding the +operator(assignment) attribute will add
+   generic :: assignment(=) => assign_weak.
+   The function is assumed to have the correct arguments.

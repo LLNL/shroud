@@ -1,6 +1,4 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 #
@@ -47,12 +45,20 @@ info:
 
 ########################################################################
 # For development:
+# module load python/2.7.18
+# module load python/3.10.8
+# module load python/3.12.2
+
 # make virtualenv
 # make develop
 # module load gcc/6.1.0   or newer
 
 # For Python3 use venv module.  This solves the problem where virtualenv
 # in the path does not match the python (like toss3).
+
+# For Python2, make sure python2 is in your path.
+# make virtualenv2
+# make develop
 
 # Create a virtual environment.
 # Include system site-packages to get numpy
@@ -67,10 +73,15 @@ virtualenv2 :
 pipinstall :
 	$(venv.dir)/bin/pip install .
 
-develop :
+# Uses setup.py
+develop-setup :
 	$(PYTHON) setup.py develop
 #	$(PYTHON) setup.py egg_info --egg-base $(venv.dir) develop
 #	$(venv.dir)/bin/pip install --editable .
+
+# Uses pyproject.toml
+develop :
+	$(venv.dir)/bin/pip install --editable .
 
 setup-sqa :
 #	$(PYTHON) -m pip install ruamel-yaml
@@ -208,7 +219,7 @@ do-test-nuitka :
 ########################################################################
 # python must have sphinx installed or else it reports
 # error: invalid command 'build_sphinx'
-docs :
+doc docs :
 	$(PYTHON) setup.py build_sphinx --builder html
 #--build-dir build/sphinx/html
 #/usr/bin/sphinx-build -b -E html source build\html
@@ -217,8 +228,7 @@ pdf :
 	$(MAKE) -C build/sphinx/latex all-pdf
 
 test :
-	$(PYTHON) setup.py test
-#	$(PYTHON) -m unittest tests
+	$(PYTHON) -m unittest tests
 
 
 requirements.txt :
@@ -242,7 +252,7 @@ decl_ref = $(testsdir)/$(decl_file)
 .PHONY : test-decl-work
 test-decl-work :
 	rm -f $(decl_path) && \
-	$(PYTHON) $(testsdir)/check_decl.py >& $(decl_path)
+	$(PYTHON) $(testsdir)/check_decl.py > $(decl_path) 2>&1
 
 test-decl : test-decl-work
 	diff $(decl_ref) $(decl_path)
@@ -273,6 +283,16 @@ do-test-replace :
 	$(PYTHON) regression/do-test.py -r $(do-test-args)
 
 ########################################################################
+# Run tests prior to a commit
+
+test-commit :
+	@$(MAKE) test-clean
+	@$(MAKE) test
+	@$(MAKE) test-decl
+	@$(MAKE) do-test
+#	@$(MAKE) test-all
+
+########################################################################
 
 print-debug:
 	@echo LUA=$(LUA)
@@ -287,7 +307,7 @@ distclean:
 #	rm -rf dist
 #	rm -rf .eggs
 
-.PHONY : virtualenv pipinstall develop docs test testdirs
+.PHONY : virtualenv pipinstall develop docs pdf test testdirs
 .PHONY : virtualenv2
 .PHONY : test-clean
 .PHONY : do-test do-test-replace print-debug

@@ -1,6 +1,4 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 # #######################################################################
@@ -11,7 +9,7 @@ ifeq ($(top),)
 top := ../../..
 endif 
 
-include $(top)/regression/run/defaults.mk
+testdir = defaultarg64
 
 TEST_CFLAGS   = -DINDEXTYPE_SIZE=64
 TEST_CXXFLAGS = -DINDEXTYPE_SIZE=64
@@ -19,8 +17,7 @@ TEST_FFLAGS   = -DINDEXTYPE_SIZE=64
 
 INCLUDE = \
     -I$(top)/regression/reference/defaultarg \
-    -I$(top)/regression/run/defaultarg \
-    -I$(top)/regression/run/fruit
+    -I$(top)/regression/run/defaultarg
 
 VPATH = \
     $(top)/regression/reference/defaultarg \
@@ -29,19 +26,15 @@ VPATH = \
 
 C_OBJS = \
     defaultarg.o \
-    utildefaultarg.o \
     wrapdefaultarg.o \
-    wrapClass1.o
+    wrapClass1.o \
+    utildefaultarg.o
 F_OBJS = \
-    wrapfdefaultarg.o \
+    main.o \
     fruit.o \
-    main.o
+    wrapfdefaultarg.o
 
-defaultarg64 : $(C_OBJS) $(F_OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod defaultarg
+include $(top)/regression/run/defaults.mk
 
 defaultarg.o : defaultarg.cpp defaultarg.hpp
 wrapdefaultarg.o : wrapdefaultarg.h defaultarg.hpp
@@ -53,5 +46,4 @@ maincpp : maincpp.o defaultarg.o
 	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@ $(CXXLIBS)
 
 testc.o : testc.c wrapdefaultarg.h defaultarg.hpp
-testc : testc.o $(C_OBJS)
-	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)
+

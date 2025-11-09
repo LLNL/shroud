@@ -1,6 +1,4 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 # #######################################################################
@@ -9,14 +7,13 @@
 #
 ifeq ($(top),)
 top := ../../..
-endif 
+endif
 
-include $(top)/regression/run/defaults.mk
+testdir = classes
 
 INCLUDE = \
     -I$(top)/regression/reference/classes \
-    -I$(top)/regression/run/classes \
-    -I$(top)/regression/run/fruit
+    -I$(top)/regression/run/classes
 
 VPATH = \
     $(top)/regression/reference/classes \
@@ -25,6 +22,7 @@ VPATH = \
 
 C_OBJS = \
     classes.o \
+    utilclasses.o \
     wrapclasses.o \
     wrapClass1.o \
     wrapClass2.o \
@@ -38,11 +36,7 @@ F_OBJS = \
     fruit.o \
     main.o
 
-classes : $(C_OBJS) $(F_OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod classes
+include $(top)/regression/run/defaults.mk
 
 classes.o : classes.hpp
 wrapClasses.o : wrapClasses.h classes.hpp
@@ -57,5 +51,3 @@ maincpp : maincpp.o wrapclasses.o wrapClass1.o wrapSingleton.o classes.o
 	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $@ $(CXXLIBS)
 
 testc.o : testc.c wrapclasses.h wrapClass1.h classes.hpp
-testc : testc.o $(C_OBJS)
-	$(CC) $(CFLAGS) $^ -o $@ $(CLIBS)

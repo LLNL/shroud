@@ -1,13 +1,13 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 
 from __future__ import print_function
 
 from shroud import ast
-from shroud import generate
+from shroud import declast
+from shroud import metaattrs
+from shroud import statements
 from shroud import util
 from shroud import wrapp
 
@@ -25,10 +25,16 @@ class CheckImplied(unittest.TestCase):
             ")"
         )
 
-        node._fmtargs = dict(
-            array=dict(fmtpy=util.Scope(None, py_var="SHPy_array")),
-            scalar=dict(fmtpy=util.Scope(None, py_var="SHPy_scalar")),
-        )
+        params = node.ast.declarator.params
+
+        bind_arg = statements.fetch_arg_bind(node, params[0], "py")
+        fmt_arg = statements.set_bind_fmtdict(bind_arg, node.fmtdict)
+        fmt_arg.py_var = "SHPy_array"
+
+        bind_arg = statements.fetch_arg_bind(node, params[1], "py")
+        fmt_arg = statements.set_bind_fmtdict(bind_arg, node.fmtdict)
+        fmt_arg.py_var = "SHPy_scalar"
+        
         self.func1 = node
 
     def test_implied1(self):
@@ -56,6 +62,8 @@ struct Cstruct_list {
     char **svalue   +dimension(nitems);
 };
 """)
+        metaattrs.process_metaattrs(self.library, "share")
+        metaattrs.process_metaattrs(self.library, "py")
 
     def test_dimension(self):
         self.struct.create_node_map()
@@ -71,10 +79,11 @@ struct Cstruct_list {
 
         #####
         var = map['ivalue']
-        # done in generate.VerifyAttrs.parse_attrs
+        # done in metaattrs.FillMeta.parse_dim_attrs
         declarator = var.ast.declarator
-        generate.check_dimension(declarator.attrs["dimension"], declarator.metaattrs)
-        
+        a_bind = statements.fetch_var_bind(var, "share")
+        meta = a_bind.meta
+        meta["dim_ast"] = declast.check_dimension(declarator.attrs["dimension"])
         fmt = var.fmtdict
         fmt.PY_struct_context = "struct."
         have_array = wrapp.py_struct_dimension(self.struct, var, fmt)
@@ -84,9 +93,11 @@ struct Cstruct_list {
 
         #####
         var = map['dvalue']
-        # done in generate.VerifyAttrs.parse_attrs
+        # done in metaattrs.FillMeta.parse_dim_attrs
         declarator = var.ast.declarator
-        generate.check_dimension(declarator.attrs["dimension"], declarator.metaattrs)
+        a_bind = statements.fetch_var_bind(var, "share")
+        meta = a_bind.meta
+        meta["dim_ast"] = declast.check_dimension(declarator.attrs["dimension"])
         
         fmt = var.fmtdict
         fmt.PY_struct_context = "struct."

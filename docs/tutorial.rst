@@ -1,6 +1,4 @@
-.. Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-   other Shroud Project Developers.
-   See the top-level COPYRIGHT file for details.
+.. Copyright Shroud Project Developers. See LICENSE file for details.
 
    SPDX-License-Identifier: (BSD-3-Clause)
 
@@ -557,58 +555,7 @@ The C wrapper will use ``int``:
 Enumerations
 ^^^^^^^^^^^^
 
-Enumeration types can also be supported by describing the type to
-shroud.
-For example:
-
-.. code-block:: c++
-
-  namespace tutorial
-  {
-
-  enum EnumTypeID {
-      ENUM0,
-      ENUM1,
-      ENUM2
-  };
-
-  EnumTypeID enumfunc(EnumTypeID arg);
-
-  } /* end namespace tutorial */
-
-This enumeration is within a namespace so it is not available to
-C.  For C and Fortran the type can be describe as an ``int``
-similar to how the ``typedef`` is defined. But in addition we
-describe how to convert between C and C++:
-
-.. code-block:: yaml
-
-    declarations:
-    - decl: typedef int EnumTypeID
-      fields:
-        c_to_cxx : static_cast<tutorial::EnumTypeID>({c_var})
-        cxx_to_c : static_cast<int>({cxx_var})
-
-The typename must be fully qualified
-(use ``tutorial::EnumTypeId`` instead of ``EnumTypeId``).
-The C argument is explicitly converted to a C++ type, then the
-return type is explicitly converted to a C type in the generated wrapper:
-
-.. code-block:: c++
-
-  int TUT_enumfunc(int arg)
-  {
-      tutorial::EnumTypeID SHCXX_arg = static_cast<tutorial::EnumTypeID>(arg);
-      tutorial::EnumTypeID SHCXX_rv = tutorial::enumfunc(SHCXX_arg);
-      int SHC_rv = static_cast<int>(SHCXX_rv);
-      return SHC_rv;
-  }
-
-Without the explicit conversion you're likely to get an error such as::
-
-    error: invalid conversion from ‘int’ to ‘tutorial::EnumTypeID’
-
-A enum can also be fully defined to Fortran:
+Enumeration types can be supported by describing the type to Shroud.
 
 .. code-block:: yaml
 
@@ -638,9 +585,10 @@ Fortran creates integer parameters for each value:
 .. code-block:: fortran
 
     !  enum tutorial::Color
-    integer(C_INT), parameter :: tutorial_color_red = 0
-    integer(C_INT), parameter :: tutorial_color_blue = 1
-    integer(C_INT), parameter :: tutorial_color_white = 2
+    integer, parameter :: color = C_INT
+    integer(color), parameter :: red = 0
+    integer(color), parameter :: blue = 1
+    integer(color), parameter :: white = 2
 
 
 .. note:: Fortran's ``ENUM, BIND(C)`` provides a way of matching 

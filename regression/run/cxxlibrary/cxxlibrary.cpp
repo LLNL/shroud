@@ -1,7 +1,5 @@
 /*
- * Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
- * other Shroud Project Developers.
- * See the top-level COPYRIGHT file for details.
+ * Copyright Shroud Project Developers. See LICENSE file for details.
  *
  * SPDX-License-Identifier: (BSD-3-Clause)
  * #######################################################################
@@ -13,6 +11,7 @@
 
 static Cstruct1_cls global_Cstruct1_cls;
 static std::string global_string("global-string");
+static Class1 global_class1;
 
 //----------------------------------------------------------------------
 namespace structns {
@@ -107,4 +106,28 @@ void accept_complex(std::complex<double> *arg1)
 const std::string& getGroupName(long idx)
 {
     return global_string;
+}
+
+//----------------------------------------------------------------------
+// Test overload with fortran_generic for long argument.
+
+Class1 *getView(const std::string& path)
+{
+    return &global_class1;
+}
+
+Class1 *getView( const long idx )
+{
+    return &global_class1;
+}
+
+Class1 *createView(const std::string& path, int type, long num_elems)
+{
+    return &global_class1;
+}
+
+Class1 *createView(const std::string& path, int type,
+                   long num_elems, void *external_ptr)
+{
+    return &global_class1;
 }

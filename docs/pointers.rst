@@ -1,6 +1,4 @@
-.. Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-   other Shroud Project Developers.
-   See the top-level COPYRIGHT file for details.
+.. Copyright Shroud Project Developers. See LICENSE file for details.
 
    SPDX-License-Identifier: (BSD-3-Clause)
 
@@ -15,14 +13,14 @@ call-by-reference feature of Fortran provides most of the features
 necessary to pass arrays to C++ libraries. Shroud can also provide
 additional semantic information.  Adding the *rank* attribute
 will declare the argument as an assumed-shape array with the given
-rank: ``+rank(2)`` creates ``arg(:,:)``.  The ``+dimension(n)`` attribute
+rank: **+rank(2)** creates ``arg(:,:)``.  The **+dimension(n)** attribute
 will instead give an explicit dimension: ``+dimension(10,20)`` creates
 ``arg(10,20)``.
 
-Using *dimension* on *intent(in)* arguments will use the dimension
+Using **+dimension** on **+intent(in)** arguments will use the dimension
 shape in the Fortran wrapper instead of assumed-shape. This adds some
 additional safety since many compiler will warn if the actual argument
-is too small.  This is useful when the C++ function has an assumed shape.
+is too small.  This is useful when the C++ function has an defined shape.
 For example, it expects a pointer to 16 elements.
 The Fortran wrapper will pass a pointer to contiguous memory with
 no explicit shape information.
@@ -32,7 +30,7 @@ no explicit shape information.
 When a function returns a pointer, the default behavior of Shroud
 is to convert it into a Fortran variable with the ``POINTER`` attribute
 using ``c_f_pointer``. This can be made explicit by adding
-``+deref(pointer)`` to the function declaration in the YAML file.
+**+deref(pointer)** to the function declaration in the YAML file.
 For example, ``int *getData(void) +deref(pointer)`` creates the Fortran
 function interface
 
@@ -45,12 +43,14 @@ function interface
 The result of the the Fortran function directly accesses the memory
 returned from the C++ library.
 
-An array can be returned by adding the *dimension* attribute to
+An array can be returned by adding the **+dimension** attribute to
 the function.  The dimension expression will be used to provide the
-``shape`` argument to ``c_f_pointer``.  The arguments to *dimension*
+``shape`` argument to ``c_f_pointer``.  The arguments to **+dimension**
 are C++ expressions which are evaluated after the C++ function is
 called and can be the name of another argument to the function or a call
-another C++ function.  As a simple example, this declaration returns a
+another C++ function.
+
+As a simple example, this declaration returns a
 pointer to a constant sized array.
 
 .. code-block:: yaml
@@ -61,29 +61,36 @@ Example :ref:`returnIntPtrToFixedArray <example_returnIntPtrToFixedArray>`
 shows the generated code.
 
 If the dimension is unknown when the function returns, a ``type(C_PTR)``
-can be returned with ``+deref(raw)``.  This will allow the user
+can be returned with **+deref(raw)**.  This will allow the user
 to call ``c_f_pointer`` once the shape is known.
 Instead of a Fortran pointer to a scalar, a scalar can be returned
-by adding ``+deref(scalar)``.
+by adding **+deref(scalar)**.
 
 A common idiom for C++ is to return pointers to memory via arguments.
 This would be declared as ``int **arg +intent(out)``.  By default,
 Shroud treats the argument similar to a function which returns a
 pointer: it adds the *deref(pointer)* attribute to treats it as a
-``POINTER`` to a scalar.  The *dimension* attribute can be used to
+``POINTER`` to a scalar.  The **+dimension** attribute can be used to
 create an array similar to a function result.
-If the *deref(allocatable)* attribute is added, then a Fortran array
-will be allocated to the size of *dimension* attribute and the
+If the **+deref(allocatable)** attribute is added, then a Fortran array
+will be allocated to the size of **+dimension** attribute and the
 argument will be copied into the Fortran memory.
 
 .. If *owner(caller)*, then the memory will be released.
    The Fortran ``ALLOCATABLE`` array will need to be released by the user.
 
-A function which returns multiple layers of indirection will return
-a ``type(C_PTR)``.  This is also true for function arguments beyond
-``int **arg +intent(out)``.
+A function which returns multiple layers of indirection uses
+*deref(raw)* and will return a ``type(C_PTR)``.  This is also true for
+function arguments beyond ``int **arg +intent(out)``.
 This pointer can represent non-contiguous memory and Shroud
 has no way to know the extend of each pointer in the array.
+
+The default behavior of Shroud for *intent(out)* and *intent(inout)*
+arguments can be modifed by setting options **F_deref_arg_array**,
+**F_deref_arg_character**, **F_deref_arg_implied_array**,
+**F_deref_arg_scalar**.  For function results the options are
+**F_deref_func_array**, **F_deref_func_character**,
+**F_deref_func_implied_array** ** **F_deref_func_scalar**.
 
 A special case is provided for arrays of `NULL` terminated strings,
 ``char **``.  While this also represents non-contiguous memory, it is a
@@ -91,14 +98,14 @@ common idiom and can be processed since the length of each string can
 be found with ``strlen``.
 See example :ref:`acceptCharArrayIn <example_acceptCharArrayIn>`.
 
-In Python wrappers, Shroud will allocate *intent(out)* arguments
+In Python wrappers, Shroud will allocate **+intent(out)** arguments
 before calling the function. This requires the dimension attribute
 which defines the shape and must be known before the function is
 called.  The argument will then be returned by the function along with
-the function result and other *intent(out)* arguments.  For example,
-``int **arg +intent(out)+dimension(n)``.  The value of the *dimension*
+the function result and other **+intent(out)** arguments.  For example,
+``int **arg +intent(out)+dimension(n)``.  The value of the **+dimension**
 attribute is used to define the shape of the array and must be known
-before the library function is called.  The *dimension* attribute can
+before the library function is called.  The **+dimension** attribute can
 include the Fortran intrinsic ``size`` to define the shape in terms of
 another array.
 
@@ -112,13 +119,33 @@ another array.
    before calling the C++ function.  For example, using
    ``+intent(out)+rank(1)`` will have problems.
 
-``char *`` functions are treated differently.  By default *deref*
+Function results
+----------------
+
+``char *`` functions have several options.  By default **+deref**
 attribute will be set to *allocatable*.  After the C++ function
 returns, a ``CHARACTER`` variable will be allocated and the contents
 copied.  This will convert a ``NULL`` terminated string into the
-proper length of Fortran variable.
-For very long strings or strings with embedded ``NULL``, ``deref(raw)``
-will return a ``type(C_PTR)``.
+proper length of Fortran variable. *+deref(pointer)* returns a pointer
+to the library's memory.
+
+For very long strings or strings with embedded ``NULL``,
+**+deref(raw)** will return a ``type(C_PTR)``. It is the caller's
+responsiblity to dereference the ``C_PTR``, typically by using the
+Fortran intrinsic ``c_f_pointer``.
+
+The default value of the *deref* attribute for ``char *`` and
+``std::string`` functions is controlled by the option
+**F_deref_func_character**.
+
+When the function has the *+funcarg* attribute, the function result
+will be returned in a function argument. Adding the *+deref(copy)*
+will use the type ``CHARACTER(*)`` for the argument. The C++ function
+return value will be copied into the argument. This avoid any issues
+with memory management since the caller provides the memory and works
+with any version of Fortran. However, if it is too short the result
+will be truncated.
+See example :ref:`getConstCharPtrAsCopyArg <example_getConstCharPtrAsCopyArg>`.
 
 .. deref(allocatable) allocate before or after call...
 
@@ -130,7 +157,7 @@ will return a ``type(C_PTR)``.
 
 
 ``void *`` functions return a ``type(C_PTR)`` argument and cannot
-have *deref*, *dimension*, or *rank* attributes.
+have **deref**, **dimension**, or **rank** attributes.
 A ``type(C_PTR)`` argument will be passed by value.  For a ``void **`` argument,
 the ``type(C_PTR)`` will be passed by reference (the default).  This
 will allow the C wrapper to assign a value to the argument.
@@ -148,7 +175,7 @@ If the C++ library function can also provide the length of the
 pointer, then its possible to return a Fortran ``POINTER`` or
 ``ALLOCATABLE`` variable.  This allows the caller to directly use the
 returned value of the C++ function.  However, there is a price; the
-user will have to release the memory if *owner(caller)* is set.  To
+user will have to release the memory if **owner(caller)** is set.  To
 accomplish this with ``POINTER`` arguments, an additional argument is
 added to the function which contains information about how to delete
 the array.  If the argument is declared Fortran ``ALLOCATABLE``, then
@@ -156,16 +183,20 @@ the value of the C++ pointer are copied into a newly allocated Fortran
 array. The C++ memory is deleted by the wrapper and it is the callers
 responsibility to ``deallocate`` the Fortran array. However, Fortran
 will release the array automatically under some conditions when the
-caller function returns. If *owner(library)* is set, the Fortran
+caller function returns. If **owner(library)** is set, the Fortran
 caller never needs to release the memory.
 
 .. XXX - std::vector defaults to deref(allocatable) to copy data out of vector.
+   The typemap field implied_array is set for std::vector.
+   This causes the option *F_deref_func_implied_array* to determine the default
+   *deref* attribute.
+   
 
 See :ref:`MemoryManagementAnchor` for details of the implementation.
 
 
 A void pointer may also be used in a C function when any type may be
-passed in.  The attribute *assumedtype* can be used to declare a
+passed in.  The attribute **assumedtype** can be used to declare a
 Fortran argument as assumed-type: ``type(*)``.
 
 .. code-block:: yaml
@@ -205,13 +236,25 @@ memory.  Fortran and Python can both hold on to the memory and then
 provide ways to release it using a C++ callback when it is no longer
 needed.
 
+When a library function returns a C++ object such as ``std::string``
+or ``std::vector`` by value and the Fortran wrapper is returning a
+``POINTER`` via *+deref(pointer)* or uses *+deref(raw)*, the C wrapper
+must allocate a new instance. In addition to the ``POINTER``, a
+*capsule* variable is added as a argument. The caller is responsible
+to release the memory via ``call capsule%delete``.  Otherwise the
+memory will leak. The ``FINAL`` subroutine of the capsule will be
+called when it goes out of scope, so an explicit call to ``delete``
+may not be needed.  If the declaration uses *+deref(allocatable)* or
+*+deref(copy)*, the wrapper will release the memory before returning
+to the caller. At this point the returned varible is owned by Fortran
+and released via ``DEALLOCATE`` or going out of scope.
+
 For shadow classes with a destructor defined, the destructor will 
 be used to release the memory.
 
 The *c_statements* may also define a way to destroy memory.
-For example, ``std::vector`` provides the lines:
-
-.. c_vector_out_buf
+For example, the mixin group *c_mixin_destructor_new-vector*
+is used with ``std::vector`` and provides the lines:
 
 .. code-block:: yaml
 
@@ -220,23 +263,44 @@ For example, ``std::vector`` provides the lines:
     -  std::vector<{cxx_T}> *cxx_ptr = reinterpret_cast<std::vector<{cxx_T}> *>(ptr);
     -  delete cxx_ptr;
 
-Patterns can be used to provide code to free memory for a wrapped
-function.  The address of the memory to free will be in the variable
+Destructor code can be defined without creating a new statement group
+by defining it in the **destructors** section of the YAML file.  Then
+use the *+destructor_name* attribute in the declaration.
+This allows custom destructor code to be used more easily.
+
+The address of the memory to free will be in the variable
 ``void *ptr``, which should be referenced in the pattern:
 
 .. code-block:: yaml
 
     declarations:
-    - decl: char * getName() +free_pattern(free_getName)
+    - decl: char *getName() +destructor_name(free_getName)
 
-    patterns:
+    destructors:
        free_getName: |
           decref(ptr);
 
-Without any explicit *destructor_name* or pattern, ``free`` will be
+Without any explicit *destructor_name*, ``free`` will be
 used to release POD pointers; otherwise, ``delete`` will be used.
 
 .. When to use ``delete[] ptr``?
+
+.. There are variants of a capsule based on option.F_assignment_api
+
+   options.F_capsule_variants is a list of variants.
+   
+   options which set format fields
+     F_capsule_data_type_basic_template
+     F_capsule_data_type_swig_template
+     F_capsule_data_type_rca_template
+   These are used by helpers which are evaluted outside the context of a
+   class.
+   basis does not supply a suffix to make current generated code to be
+   unchanged. The other add swig and rca as a suffix.
+   
+
+   fmt.F_capsule_data_type set based on options.F_assignment_api
+   
 
 C and Fortran
 -------------
@@ -252,23 +316,25 @@ In the Tutorial these types are defined in :file:`typesTutorial.h` as:
 
 .. literalinclude:: ../regression/reference/classes/typesclasses.h
    :language: c++
-   :start-after: start struct CLA_Class1
-   :end-before: end struct CLA_Class1
+   :start-after: start C capsule CLA_Class1
+   :end-before: end C capsule CLA_Class1
 
 And :file:`wrapftutorial.f`:
 
 .. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
-   :start-after: start helper capsule_data_helper
-   :end-before: end helper capsule_data_helper
+   :start-after: start helper capsule_data
+   :end-before: end helper capsule_data
    :dedent: 4
 
 *addr* is the address of the C or C++ variable, such as a ``char *``
 or ``std::string *``.  *idtor* is a Shroud generated index of the
-destructor code defined by *destructor_name* or the *free_pattern* attribute.
+destructor code defined by *destructor_name* in the statement group
+or the *destructor_name* attribute.
 These code segments are collected and written to function
 *C_memory_dtor_function*.  A value of 0 indicated the memory will not
 be released and is used with the **owner(library)** attribute.
+*cmemflags* contains bit flags to set pointer properties.
 
 Each class creates its own capsule struct for the C wrapper.
 This is to provide a measure of type safety in the C API.
@@ -285,6 +351,8 @@ A typical destructor function would look like:
 Character and Arrays
 ^^^^^^^^^^^^^^^^^^^^
 
+.. The option **F_deref_func_character** decides the default value of the *deref* attribute.
+
 In order to create an allocatable copy of a C++ pointer, an additional
 structure is involved.  For example, ``getConstStringPtrAlloc``
 returns a pointer to a new string. From :file:`strings.yaml`:
@@ -292,7 +360,7 @@ returns a pointer to a new string. From :file:`strings.yaml`:
 .. code-block:: yaml
 
     declarations:
-    - decl: const std::string * getConstStringPtrAlloc() +owner(library)
+    - decl: const std::string *getConstStringPtrAlloc() +owner(library)
 
 The C wrapper calls the function and saves the result along with
 metadata consisting of the address of the data within the
@@ -305,8 +373,8 @@ and the ``bind(C)`` equivalent **F_array_type**.:
 
 .. literalinclude:: ../regression/reference/memdoc/typesmemdoc.h
    :language: c++
-   :start-after: start array_context
-   :end-before: end array_context
+   :start-after: start helper array_context
+   :end-before: end helper array_context
 
 The union for ``addr`` makes some assignments easier by removing
 the need for casts and also aids debugging.
@@ -314,8 +382,8 @@ The union is replaced with a single ``type(C_PTR)`` for Fortran:
 
 .. literalinclude:: ../regression/reference/memdoc/wrapfmemdoc.f
    :language: fortran
-   :start-after: start array_context
-   :end-before: end array_context
+   :start-after: start helper array_context
+   :end-before: end helper array_context
    :dedent: 4
 
 The C wrapper does not return a ``std::string`` pointer.  Instead it
@@ -355,7 +423,6 @@ to set the value of the result and possible free memory for
           allocated by C. However, not all compilers currently support
           that feature.  The current Shroud implementation works with
           Fortran 2003.
-
 
 Python
 ------

@@ -1,6 +1,4 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 #
@@ -8,29 +6,27 @@
 #
 # run/pointers-c
 #
-include $(top)/regression/run/defaults.mk
+testdir = pointers-c
+#TEST_FFLAGS = -DTEST_C_WRAPPER
 
 INCLUDE = \
-    -I$(top)/regression/reference/pointers-c \
+    -I$(top)/regression/reference/$(testdir) \
     -I$(top)/regression/run/pointers
 
 VPATH = \
-    $(top)/regression/reference/pointers-c \
+    $(top)/regression/reference/$(testdir) \
     $(top)/regression/run/pointers \
     $(top)/regression/run/fruit
 
-OBJS = \
-    main.o \
-    fruit.o \
-    wrapfpointers.o \
+C_OBJS = \
     pointers.o \
     wrappointers.o \
     utilpointers.o
+F_OBJS = \
+    main.o \
+    fruit.o \
+    wrapfpointers.o
 
-pointers-c : $(OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(CLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod pointers
+include $(top)/regression/run/defaults.mk
 
 main.o : fruit.o wrapfpointers.o

@@ -1,7 +1,5 @@
 /*
- * Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
- * other Shroud Project Developers.
- * See the top-level COPYRIGHT file for details.
+ * Copyright Shroud Project Developers. See LICENSE file for details.
  *
  * SPDX-License-Identifier: (BSD-3-Clause)
  *
@@ -85,6 +83,18 @@ void passCharPtrInOut(char *s)
         s[i] = toupper(s[i]);
     }
 }
+
+// Test +api(capi)
+// 'in' and 'out' are 'n' characters long.
+
+void passCharPtrCAPI(int n, char *in, char *out)
+{
+    for (int i = 0; i < n; i++) {
+        out[i] = in[i];
+        in[i] = toupper(in[i]);
+    }
+}
+
 
 //----------------------------------------------------------------------
 // Test charlen attribute.
@@ -173,6 +183,13 @@ void passAssumedTypeDim(void *arg)
 }
 // end passAssumedTypeDim
 
+// start passAssumedTypeRank
+void passAssumedTypeRank(void *arg)
+{
+    strncpy(last_function_called, "passAssumedTypeRank", MAXLAST);
+}
+// end passAssumedTypeRank
+
 /* arg is assumed to be an int. */
 
 int passAssumedTypeBuf(void *arg, char *outbuf)
@@ -184,43 +201,8 @@ int passAssumedTypeBuf(void *arg, char *outbuf)
 
 //----------------------------------------------------------------------
 
-// start callback1
-void callback1(int type, void (*incr)(void))
-{
-  // Use type to decide how to call incr
-}
-// end callback1
-
-void callback1a(int type, void (*incr)(void))
-{
-  // Use type to decide how to call incr
-}
-
-void callback2(int type, void * in, void (*incr)(int *))
-{
-  if (type == 1) {
-    // default function pointer from prototype
-    incr(in);
-  } else if (type == 2) {
-    void (*incr2)(double *) = (void(*)(double *)) incr;
-    incr2(in);
-  }
-}
-
-void callback3(const char *type, void * in, void (*incr)(int *),
-               char *outbuf)
-{
-  if (strcmp(type, "int") == 0) {
-    // default function pointer from prototype
-    incr(in);
-  } else if (strcmp(type, "double") == 0) {
-    void (*incr2)(double *) = (void(*)(double *)) incr;
-    incr2(in);
-  }
-  strncpy(outbuf, "callback3", LENOUTBUF);
-}
-
-void callback_set_alloc(int tc, array_info *arr, void (*alloc)(int tc, array_info *arr))
+void callback_set_alloc(int tc, array_info *arr,
+                        void (*alloc)(int tc, array_info *arr))
 {
   alloc(tc, arr);
 }

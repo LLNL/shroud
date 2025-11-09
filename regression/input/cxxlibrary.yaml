@@ -1,7 +1,5 @@
 copyright:
-- Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-- other Shroud Project Developers.
-- See the top-level COPYRIGHT file for details.
+- Copyright Shroud Project Developers. See LICENSE file for details.
 -
 - "SPDX-License-Identifier: (BSD-3-Clause)"
 -
@@ -83,6 +81,121 @@ declarations:
   - decl: (int32_t idx)
     function_suffix: _int32_t
   - decl: (int64_t idx)
+    function_suffix: _int64_t
+  options:
+    wrap_python: False
+
+######################################################################
+# recursive struct
+# This wraps both a C and C++ library, so must use 'struct s_nested'
+
+- decl: struct nested
+  doxygen:
+    brief: A recursive struct (without using a typedef)
+  declarations:
+  - decl: int index
+  - decl: int sublevels
+  - decl: nested *parent
+  - decl: nested **child +dimension(sublevels)
+  - decl: nested *array +dimension(sublevels)
+
+######################################################################
+
+# scoped enum
+- decl: |
+      enum class ColorEnum {
+        RED = 60,
+        BLUE,
+        WHITE,
+      };
+  options:
+    wrap_python: False
+
+######################################################################
+# by returning this,the C++ function allows chaining.
+# make them subroutines in Fortran.
+# Mix return_this, and default arguments.
+
+# Using this typedef with fortran_generic will test f_cast
+- decl: typedef long LengthType
+
+- decl: class Class1
+  options:
+    wrap_python: False
+  declarations:
+  - decl: int m_length +readonly +name(length);
+  - decl: Class1()
+
+  - decl: int check_length(int length = 1)
+    doxygen:
+       brief: Test fortran_generic with default arguments.
+    fortran_generic:
+    -  decl: (int length=1)
+       function_suffix: _int
+    -  decl: (long length=1)
+       function_suffix: _long
+
+  - decl: Class1* declare(int flag, LengthType length = 1)
+    return_this: True
+    fortran_generic:
+    -  decl: (int length=1)
+       function_suffix: _int
+    -  decl: (long length=1)
+       function_suffix: _long
+
+  - decl: int getViewFromClass( const std::string& path ) +constfunc
+    doxygen:
+      description: |
+        The capsule which is added for the class should have intent(IN).
+        Needed with type(class1), intent(IN) arguments.
+    options:
+      wrap_python: False
+
+########################################
+# Test overloaded function which return a class pointer,
+# uses function_suffix with fortran_generic and
+# which also sets function_suffix
+
+- decl: Class1 *getView( const std::string& path )
+  format:
+    function_suffix: _from_name
+  options:
+    wrap_python: False
+
+- decl: Class1 *getView( const long idx )
+  format:
+    function_suffix: _from_index
+  fortran_generic:
+  - decl: (int32_t idx)
+    function_suffix: _int32_t
+  - decl: (int64_t idx)
+    function_suffix: _int64_t
+  options:
+    wrap_python: False
+
+- decl: Class1 *createView( const std::string& path,
+                            int type,
+                            long num_elems )
+  format:
+    function_suffix: _from_type
+  fortran_generic:
+  - decl: (int32_t num_elems)
+    function_suffix: _int32_t
+  - decl: (int64_t num_elems)
+    function_suffix: _int64_t
+  options:
+    wrap_python: False
+
+- decl: Class1 *createView( const std::string& path,
+                            int type,
+                            long num_elems,
+                            void *external_ptr)
+  format:
+    function_suffix: _from_type_external
+  fortran_generic:
+  - decl: (int32_t num_elems)
+    function_suffix: _int32_t
+  - decl: (int64_t num_elems)
     function_suffix: _int64_t
   options:
     wrap_python: False

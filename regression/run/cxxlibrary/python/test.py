@@ -1,6 +1,4 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 # #######################################################################
@@ -85,11 +83,7 @@ class Struct(unittest.TestCase):
 #        cxxlibrary.defaultArgsInOut(1, True, 5)
         
 
-# creating a new test suite
-newSuite = unittest.TestSuite()
- 
-# adding a test case
-newSuite.addTest(unittest.makeSuite(Struct))
+unittest.TestLoader().loadTestsFromTestCase(Struct)
 
 if __name__ == "__main__":
     unittest.main()

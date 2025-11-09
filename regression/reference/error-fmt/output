@@ -1,0 +1,17 @@
+
+----------------------------------------
+Phase: FillFormat typedef
+----------------------------------------
+Node: IndexType
+Typemap IndexType: Unknown key 'no_such_keyword'
+--------------------
+Node: IndexType
+typedef int64_t IndexType
+Deprecated: Typemap IndexType: Replacing deprecated field 'f_c_module' with 'i_module'
+Wrote wraperror.h
+Wrote wrapferror.f
+Wrote utilerror.cpp
+Wrote typeserror.h
+Wrote pyerrormodule.cpp
+Wrote pyerrormodule.hpp
+Wrote setup.py

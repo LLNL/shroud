@@ -1,6 +1,4 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 #
@@ -130,11 +128,8 @@ class Types(unittest.TestCase):
         rv = shtypes.size_func(1)
         self.assertEqual(1, rv)
 
-# creating a new test suite
-newSuite = unittest.TestSuite()
- 
-# adding a test case
-newSuite.addTest(unittest.makeSuite(Types))
+
+unittest.TestLoader().loadTestsFromTestCase(Types)
 
 if __name__ == "__main__":
     unittest.main()

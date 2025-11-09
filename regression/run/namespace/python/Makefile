@@ -1,9 +1,11 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 
+testdir = namespace
+pymodule = ns.so
+
+AS_SHARED := TRUE
 include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
@@ -16,7 +18,7 @@ VPATH = \
     $(top)/regression/run/namespace \
     $(top)/regression/run/namespace/python
 
-OBJS = \
+PY_OBJS = \
     namespace.o \
     pyouter_Cstruct1type.o \
     pynsmodule.o \
@@ -25,16 +27,9 @@ OBJS = \
     pyns_nsworkmodule.o \
     pynsutil.o
 
-LOCAL_CXXFLAGS += $(SHARED)
-
 all : ns.so
 
-ns.so : $(OBJS)
-	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
+ns.so : $(PY_OBJS)
+	$(CXX) $(LDFLAGS) -o $@ $^ $(LIBS)
 
 namespace.o : namespace.hpp
-
-clean :
-	rm -f *.so *.o
-.PHONY : clean
-

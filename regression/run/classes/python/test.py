@@ -1,6 +1,4 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 #
@@ -12,6 +10,13 @@ from __future__ import print_function
 
 import unittest
 import classes
+
+import sys
+
+if sys.version_info >= (3, 10):
+    TypeError_msg = "object cannot be interpreted as an integer"
+else:
+    TypeError_msg = "an integer is required"
 
 class NotTrue:
     """Test bool arguments errors"""
@@ -50,18 +55,31 @@ class Classes(unittest.TestCase):
     def test_class1_create1(self):
         obj = classes.Class1()
         self.assertIsInstance(obj, classes.Class1)
+        #----------
         self.assertEqual(0, obj.test)
         obj.test = 4
         self.assertEqual(4, obj.test)
         # test -1 since PyInt_AsLong returns -1 on error
         obj.test = -1
         self.assertEqual(-1, obj.test)
+        #----------
         with self.assertRaises(AttributeError) as context:
             obj.m_flag = 1
         self.assertTrue("is not writable" in str(context.exception))
         with self.assertRaises(TypeError) as context:
             obj.test = "dog"
-        self.assertTrue("an integer is required" in str(context.exception))
+        self.assertTrue(TypeError_msg in str(context.exception))
+        #----------
+        self.assertEqual(True, obj.m_bool)
+        obj.m_bool = False
+        self.assertEqual(False, obj.m_bool)
+        # Most objects can convert to bool, make sure same result as bool function
+        val = []
+        obj.m_bool = val
+        self.assertEqual(bool(val), obj.m_bool)
+        val = [0]
+        obj.m_bool = val
+        self.assertEqual(bool(val), obj.m_bool)
         del obj
 
     def test_class1_create2(self):
@@ -126,11 +144,7 @@ class Classes(unittest.TestCase):
         self.assertIsInstance(circle1, classes.Circle)
         
 
-# creating a new test suite
-newSuite = unittest.TestSuite()
- 
-# adding a test case
-newSuite.addTest(unittest.makeSuite(Classes))
+unittest.TestLoader().loadTestsFromTestCase(Classes)
 
 if __name__ == "__main__":
     unittest.main()

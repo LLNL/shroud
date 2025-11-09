@@ -3,6 +3,7 @@ XXXXXXXXXXXXXXXXXXXX
 # create_std
 XXXX CODE
 
+XXXX PRINT
 XXXX PRINT_NODE
 
 XXXX AST
@@ -31,12 +32,18 @@ symbols:
   std:
     cls: Namespace
     symbols:
+      shared_ptr:
+        cls: Typedef
+        typemap: std::shared_ptr
       string:
         cls: Typedef
         typemap: std::string
       vector:
         cls: Typedef
         typemap: std::vector
+      weak_ptr:
+        cls: Typedef
+        typemap: std::weak_ptr
   uint16_t:
     cls: Typedef
     typemap: uint16_t
@@ -53,25 +60,38 @@ symbols:
 XXXXXXXXXXXXXXXXXXXX
 # variable declarations
 XXXX CODE
-int i;
-const double d;
+int i, j;
+const double d, *d2;
+XXXX PRINT
+0 int
+   i
+   j
+1 const double
+   d
+   *d2
 XXXX PRINT_NODE
-int i;
-const double d;
+int i, j;
+const double d, *d2;
 
 XXXX AST
 stmts:
 - _ast: Declaration
-  declarator:
-    name: i
+  declarators:
+  - name: i
+    typemap_name: int
+  - name: j
     typemap_name: int
   specifier:
   - int
   typemap_name: int
 - _ast: Declaration
   const: true
-  declarator:
-    name: d
+  declarators:
+  - name: d
+    typemap_name: double
+  - name: d2
+    pointer:
+    - ptr: '*'
     typemap_name: double
   specifier:
   - double
@@ -85,10 +105,17 @@ XXXX CODE
 int *i1;
 int **i2;
 int &i3;
+XXXX PRINT
+0 int
+   *i1
+1 int
+   **i2
+2 int
+   &i3
 XXXX PRINT_NODE
-int * i1;
-int * * i2;
-int & i3;
+int *i1;
+int **i2;
+int &i3;
 
 XXXX AST
 stmts:
@@ -126,6 +153,9 @@ cls: Global
 XXXXXXXXXXXXXXXXXXXX
 XXXX CODE
 typedef int footype;
+XXXX PRINT
+0 typedef int
+   footype
 XXXX PRINT_NODE
 typedef int footype;
 
@@ -146,11 +176,38 @@ symbols:
   footype:
     cls: Typedef
     typemap: footype
+XXXX Typemap
+footype:
+  LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
+  LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
+  LUA_type: LUA_TNUMBER
+  PYN_typenum: NPY_INT
+  PY_ctor: PyInt_FromLong({ctor_expr})
+  PY_format: i
+  PY_get: PyInt_AsLong({py_var})
+  base: integer
+  c_type: int
+  cfi_type: CFI_type_int
+  cxx_type: footype
+  f_cast: int({f_var}, C_INT)
+  f_kind: C_INT
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_module_name: iso_c_binding
+  f_type: integer(C_INT)
+  flat_name: int
+  sgroup: native
+  sh_type: SH_TYPE_INT
+  typedef: int
 
 XXXXXXXXXXXXXXXXXXXX
 # Class statement
 XXXX CODE
 class Class1;
+XXXX PRINT
+0 class Class1
+   
 XXXX PRINT_NODE
 class Class1;
 
@@ -168,6 +225,10 @@ symbols:
   Class1:
     cls: CXXClass
     typemap: Class1
+XXXX Typemap
+Class1:
+  base: shadow
+  sgroup: shadow
 
 XXXXXXXXXXXXXXXXXXXX
 # Class constructor
@@ -176,10 +237,13 @@ class Class2 {
   Class2();
   ~Class2();
 };
+XXXX PRINT
+0 class Class2
+   
 XXXX PRINT_NODE
 class Class2{
-Class2 ();
-~Class2 ();
+Class2(void);
+~Class2(void);
 }
 ;
 
@@ -191,9 +255,8 @@ stmts:
     members:
     - _ast: Declaration
       declarator:
-        attrs:
-          _constructor: true
-          _name: ctor
+        default_name: ctor
+        is_ctor: true
         params: []
         typemap_name: Class2
       is_ctor: true
@@ -202,9 +265,8 @@ stmts:
       typemap_name: Class2
     - _ast: Declaration
       declarator:
-        attrs:
-          _destructor: Class2
-          _name: dtor
+        default_name: dtor
+        is_dtor: true
         params: []
         typemap_name: void
       is_dtor: Class2
@@ -223,23 +285,36 @@ symbols:
   Class2:
     cls: CXXClass
     typemap: Class2
+XXXX Typemap
+Class2:
+  base: shadow
+  sgroup: shadow
 
 XXXXXXXXXXXXXXXXXXXX
 # Structure for C++
 XXXX CODE
-struct Point { int x; int y;};
+struct Point { int x, x2; int y;};
 struct Point end;
 Point start;
 void func1(struct Point arg1, Point arg2);
+XXXX PRINT
+0 struct Point
+   
+1 struct Point
+   end
+2 Point
+   start
+3 void
+   func1(struct Point arg1, Point arg2)
 XXXX PRINT_NODE
 struct Point{
-int x;
+int x, x2;
 int y;
 }
 ;
 struct Point end;
 Point start;
-void func1(struct Point arg1,Point arg2);
+void func1(struct Point arg1, Point arg2);
 
 XXXX AST
 stmts:
@@ -248,8 +323,10 @@ stmts:
     _ast: Struct
     members:
     - _ast: Declaration
-      declarator:
-        name: x
+      declarators:
+      - name: x
+        typemap_name: int
+      - name: x2
         typemap_name: int
       specifier:
       - int
@@ -313,6 +390,10 @@ symbols:
   struct-Point:
     cls: Struct
     typemap: Point
+XXXX Typemap
+Point:
+  base: struct
+  sgroup: struct
 
 XXXXXXXXXXXXXXXXXXXX
 # Typedef structure
@@ -324,6 +405,15 @@ struct list_s {
 struct list_s var1;
 typedef struct list_s list_typ;
 list_typ var2;
+XXXX PRINT
+0 struct list_s
+   
+1 struct list_s
+   var1
+2 typedef struct list_s
+   list_typ
+3 list_typ
+   var2
 XXXX PRINT_NODE
 struct list_s{
 int i;
@@ -385,6 +475,13 @@ symbols:
   struct-list_s:
     cls: Struct
     typemap: list_s
+XXXX Typemap
+list_typ:
+  base: struct
+  cxx_type: list_typ
+  flat_name: list_typ
+  sgroup: struct
+  typedef: list_s
 
 XXXXXXXXXXXXXXXXXXXX
 # Recursive structure
@@ -395,9 +492,14 @@ struct list_s {
   struct list_s *next;
 };
 struct list_s var1;
+XXXX PRINT
+0 struct list_s
+   
+1 struct list_s
+   var1
 XXXX PRINT_NODE
 struct list_s{
-struct list_s * next;
+struct list_s *next;
 }
 ;
 struct list_s var1;
@@ -447,10 +549,10 @@ XXXX CODE
 struct list_s {
   list_s *prev;
 };
-Parse Error:
+Parse Error line 2:
   list_s *prev;
   ^
-line 2: Expected TYPE_SPECIFIER, found ID 'list_s'
+Expected TYPE_SPECIFIER, found ID 'list_s'
 
 XXXXXXXXXXXXXXXXXXXX
 # Recursive structure
@@ -460,10 +562,13 @@ struct list_s {
   struct list_s *next;
   list_s *prev;
 };
+XXXX PRINT
+0 struct list_s
+   
 XXXX PRINT_NODE
 struct list_s{
-struct list_s * next;
-list_s * prev;
+struct list_s *next;
+list_s *prev;
 }
 ;
 
@@ -507,6 +612,10 @@ symbols:
   struct-list_s:
     cls: Struct
     typemap: list_s
+XXXX Typemap
+list_s:
+  base: struct
+  sgroup: struct
 
 XXXXXXXXXXXXXXXXXXXX
 # enumerations
@@ -516,8 +625,17 @@ enum Color {RED, WHITE, BLUE};
 enum Color global;
 typedef enum Color Color_typ;
 Color_typ local;
+XXXX PRINT
+0 enum Color
+   
+1 enum Color
+   global
+2 typedef enum Color
+   Color_typ
+3 Color_typ
+   local
 XXXX PRINT_NODE
-enum Color { RED, WHITE, BLUE };;
+enum Color { RED, WHITE, BLUE };
 enum Color global;
 typedef enum Color Color_typ;
 Color_typ local;
@@ -569,6 +687,12 @@ symbols:
   enum-Color:
     cls: Enum
     typemap: Color
+XXXX Typemap
+Color_typ:
+  cxx_type: Color_typ
+  flat_name: Color_typ
+  is_enum: true
+  typedef: Color
 
 XXXXXXXXXXXXXXXXXXXX
 # enumerations
@@ -577,10 +701,10 @@ XXXXXXXXXXXXXXXXXXXX
 XXXX CODE
 enum Color {RED, WHITE, BLUE};
 Color flag = RED;
-Parse Error:
+Parse Error line 2:
 Color flag = RED;
 ^
-line 2: Expected TYPE_SPECIFIER, found ID 'Color'
+Expected TYPE_SPECIFIER, found ID 'Color'
 
 XXXXXXXXXXXXXXXXXXXX
 # enumerations C++
@@ -589,11 +713,20 @@ enum Color {RED, WHITE, BLUE};
 enum Color global;
 Color flag = RED;
 void func1(enum Color arg1, Color arg2);
+XXXX PRINT
+0 enum Color
+   
+1 enum Color
+   global
+2 Color
+   flag=RED
+3 void
+   func1(enum Color arg1, Color arg2)
 XXXX PRINT_NODE
-enum Color { RED, WHITE, BLUE };;
+enum Color { RED, WHITE, BLUE };
 enum Color global;
 Color flag=RED;
-void func1(enum Color arg1,Color arg2);
+void func1(enum Color arg1, Color arg2);
 
 XXXX AST
 stmts:
@@ -656,6 +789,9 @@ symbols:
   enum-Color:
     cls: Enum
     typemap: Color
+XXXX Typemap
+Color:
+  is_enum: true
 
 XXXXXXXXXXXXXXXXXXXX
 # pointer typedef
@@ -664,8 +800,15 @@ XXXX CODE
 typedef void *address;
 address var;
 void caller(address arg1);
+XXXX PRINT
+0 typedef void
+   *address
+1 address
+   var
+2 void
+   caller(address arg1)
 XXXX PRINT_NODE
-typedef void * address;
+typedef void *address;
 address var;
 void caller(address arg1);
 
@@ -710,6 +853,23 @@ symbols:
   address:
     cls: Typedef
     typemap: address
+XXXX Typemap
+address:
+  PY_ctor: PyCapsule_New({ctor_expr}, NULL, NULL)
+  base: void
+  c_type: void
+  cfi_type: CFI_type_intptr_t
+  cxx_type: address
+  f_kind: C_PTR
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  f_module_name: iso_c_binding
+  f_type: type(C_PTR)
+  flat_name: void
+  sgroup: void
+  sh_type: SH_TYPE_CPTR
+  typedef: void
 
 XXXXXXXXXXXXXXXXXXXX
 # function pointer typedef
@@ -717,8 +877,13 @@ XXXXXXXXXXXXXXXXXXXX
 XXXX CODE
 typedef int (*fcn)(int);
 void caller(fcn callback);
+XXXX PRINT
+0 typedef int
+   (*fcn)(int)
+1 void
+   caller(fcn callback)
 XXXX PRINT_NODE
-typedef int (* fcn)(int);
+typedef int (*fcn)(int);
 void caller(fcn callback);
 
 XXXX AST
@@ -765,6 +930,10 @@ symbols:
   fcn:
     cls: Typedef
     typemap: fcn
+XXXX Typemap
+fcn:
+  base: procedure
+  sgroup: procedure
 
 XXXXXXXXXXXXXXXXXXXX
 # template
@@ -773,12 +942,16 @@ template<T> class user {
   template<U> void nested(T arg1, U arg2 );
 };
 user<int> returnUserType(void);
+XXXX PRINT
+0 <T>
+1 user<int>
+   returnUserType(void)
 XXXX PRINT_NODE
 template<T>  class user{
-template<U>  void nested(T arg1,U arg2);
+template<U>  void nested(T arg1, U arg2);
 }
 ;
-user returnUserType();
+user<int> returnUserType(void);
 
 XXXX AST
 stmts:
@@ -797,12 +970,14 @@ stmts:
             - _ast: Declaration
               declarator:
                 name: arg1
+                typemap_name: --template-parameter--
               specifier:
               - T
               template_argument: T
             - _ast: Declaration
               declarator:
                 name: arg2
+                typemap_name: --template-parameter--
               specifier:
               - U
               template_argument: U
@@ -841,6 +1016,111 @@ symbols:
   user:
     cls: CXXClass
     typemap: user
+XXXX Typemap
+user:
+  base: shadow
+  sgroup: shadow
+
+XXXXXXXXXXXXXXXXXXXX
+# template with two arguments
+XXXX CODE
+template<typename T, typename U>
+struct twostruct
+{
+  T* values;
+  U length;
+};
+template<typename T, typename U>
+void process_twostruct(twostruct<T, U> arg);
+XXXX PRINT
+0 <T,U>
+1 <T,U>
+XXXX PRINT_NODE
+template<T, U>  struct twostruct{
+T *values;
+U length;
+}
+;
+template<T, U>  void process_twostruct(twostruct<T,U> arg);
+
+XXXX AST
+stmts:
+- _ast: Template
+  decl:
+    _ast: Declaration
+    class_specifier:
+      _ast: Struct
+      members:
+      - _ast: Declaration
+        declarator:
+          name: values
+          pointer:
+          - ptr: '*'
+          typemap_name: --template-parameter--
+        specifier:
+        - T
+        template_argument: T
+      - _ast: Declaration
+        declarator:
+          name: length
+          typemap_name: --template-parameter--
+        specifier:
+        - U
+        template_argument: U
+      name: twostruct
+      typemap_name: twostruct
+    declarator:
+      typemap_name: twostruct
+    specifier:
+    - struct twostruct
+    typemap_name: twostruct
+  parameters:
+  - name: T
+  - name: U
+- _ast: Template
+  decl:
+    _ast: Declaration
+    declarator:
+      name: process_twostruct
+      params:
+      - _ast: Declaration
+        declarator:
+          name: arg
+          typemap_name: twostruct
+        specifier:
+        - twostruct
+        template_arguments:
+        - _ast: Declaration
+          declarator:
+            typemap_name: --template-parameter--
+          specifier:
+          - T
+          template_argument: T
+        - _ast: Declaration
+          declarator:
+            typemap_name: --template-parameter--
+          specifier:
+          - U
+          template_argument: U
+        typemap_name: twostruct
+      typemap_name: void
+    specifier:
+    - void
+    typemap_name: void
+  parameters:
+  - name: T
+  - name: U
+XXXX SymbolTable
+cls: Global
+symbols:
+  twostruct:
+    cls: Struct
+    typemap: twostruct
+XXXX Typemap
+twostruct:
+  base: struct
+  ntemplate_args: 2
+  sgroup: struct
 
 XXXXXXXXXXXXXXXXXXXX
 # nested namespace
@@ -852,6 +1132,7 @@ namespace ns1 {
     int j;
   }
 }
+XXXX PRINT
 XXXX PRINT_NODE
 namespace ns1;
 
@@ -891,9 +1172,10 @@ XXXXXXXXXXXXXXXXXXXX
 XXXX CODE
 namespace ns {
   class name {
-     int imem;
+     int imem, jmem;
   };
 }
+XXXX PRINT
 XXXX PRINT_NODE
 namespace ns;
 
@@ -907,8 +1189,10 @@ stmts:
       _ast: CXXClass
       members:
       - _ast: Declaration
-        declarator:
-          name: imem
+        declarators:
+        - name: imem
+          typemap_name: int
+        - name: jmem
           typemap_name: int
         specifier:
         - int
@@ -928,3 +1212,363 @@ symbols:
       name:
         cls: CXXClass
         typemap: ns::name
+XXXX Typemap
+ns::name:
+  base: shadow
+  sgroup: shadow
+
+XXXXXXXXXXXXXXXXXXXX
+# declstr language=c
+XXXX CODE
+int fun1(int arg1, int *arg2, const int **arg3);
+int callback1(int in, int (*incr)(int));
+XXXX PRINT
+0 int
+   fun1(int arg1, int *arg2, const int **arg3)
+XXXX DeclStr
+     gen_decl: 0 int fun1(int arg1, int *arg2, const int **arg3)
+     as_c    : 0 int fun1
+     as_cxx  : 0 int fun1
+     no params: int fun1
+         gen_decl: 0 int arg1
+         as_c    : 0 int arg1
+         as_cxx  : 0 int arg1
+         gen_decl: 1 int *arg2
+         as_c    : 1 int *arg2
+         as_cxx  : 1 int *arg2
+         gen_decl: 2 const int **arg3
+         as_c    : 2 const int **arg3
+         as_cxx  : 2 const int **arg3
+1 int
+   callback1(int in, int (*incr)(int))
+XXXX DeclStr
+     gen_decl: 1 int callback1(int in, int (*incr)(int))
+     as_c    : 1 int callback1
+     as_cxx  : 1 int callback1
+     no params: int callback1
+         gen_decl: 0 int in
+         as_c    : 0 int in
+         as_cxx  : 0 int in
+         gen_decl: 1 int (*incr)(int)
+         as_c    : 1 int (*incr)(int)
+         as_cxx  : 1 int (*incr)(int)
+XXXX PRINT_NODE
+int fun1(int arg1, int *arg2, const int **arg3);
+int callback1(int in, int (*incr)(int));
+
+XXXX AST
+stmts:
+- _ast: Declaration
+  declarator:
+    name: fun1
+    params:
+    - _ast: Declaration
+      declarator:
+        name: arg1
+        typemap_name: int
+      specifier:
+      - int
+      typemap_name: int
+    - _ast: Declaration
+      declarator:
+        name: arg2
+        pointer:
+        - ptr: '*'
+        typemap_name: int
+      specifier:
+      - int
+      typemap_name: int
+    - _ast: Declaration
+      const: true
+      declarator:
+        name: arg3
+        pointer:
+        - ptr: '*'
+        - ptr: '*'
+        typemap_name: int
+      specifier:
+      - int
+      typemap_name: int
+    typemap_name: int
+  specifier:
+  - int
+  typemap_name: int
+- _ast: Declaration
+  declarator:
+    name: callback1
+    params:
+    - _ast: Declaration
+      declarator:
+        name: in
+        typemap_name: int
+      specifier:
+      - int
+      typemap_name: int
+    - _ast: Declaration
+      declarator:
+        func:
+          name: incr
+          pointer:
+          - ptr: '*'
+          typemap_name: int
+        name: incr
+        params:
+        - _ast: Declaration
+          declarator:
+            typemap_name: int
+          specifier:
+          - int
+          typemap_name: int
+        typemap_name: int
+      specifier:
+      - int
+      typemap_name: int
+    typemap_name: int
+  specifier:
+  - int
+  typemap_name: int
+XXXX SymbolTable
+cls: Global
+XXXX Typemap
+int(*)(int):
+  base: procedure
+  f_type: f-function-pointer
+  sgroup: procedure
+
+XXXXXXXXXXXXXXXXXXXX
+# declstr language=c++ create_std
+XXXX CODE
+int fun1(std::vector<int> arg1, std::vector<int> *arg2, std::vector<int> &arg3);
+int callback1(int in, int (*incr)(int));
+
+class Object;
+std::shared_ptr<Object> *return_ptr(void);
+XXXX PRINT
+0 int
+   fun1(std::vector<int> arg1, std::vector<int> *arg2, std::vector<int> &arg3)
+XXXX DeclStr
+     gen_decl: 0 int fun1(std::vector<int> arg1, std::vector<int> *arg2, std::vector<int> &arg3)
+     as_c    : 0 int fun1
+     as_cxx  : 0 int fun1
+     no params: int fun1
+         gen_decl: 0 std::vector<int> arg1
+         as_c    : 0 int arg1
+         as_cxx  : 0 int arg1
+         gen_decl: 1 std::vector<int> *arg2
+         as_c    : 1 int *arg2
+         as_cxx  : 1 int *arg2
+         gen_decl: 2 std::vector<int> &arg3
+         as_c    : 2 int *arg3
+         as_cxx  : 2 int &arg3
+1 int
+   callback1(int in, int (*incr)(int))
+XXXX DeclStr
+     gen_decl: 1 int callback1(int in, int (*incr)(int))
+     as_c    : 1 int callback1
+     as_cxx  : 1 int callback1
+     no params: int callback1
+         gen_decl: 0 int in
+         as_c    : 0 int in
+         as_cxx  : 0 int in
+         gen_decl: 1 int (*incr)(int)
+         as_c    : 1 int (*incr)(int)
+         as_cxx  : 1 int (*incr)(int)
+2 class Object
+   
+XXXX DeclStr
+     gen_decl: 2 class Object
+     as_c    : 2 --NOTYPE--
+     as_cxx  : 2 --NOTYPE--
+3 std::shared_ptr<Object>
+   *return_ptr(void)
+XXXX DeclStr
+     gen_decl: 3 std::shared_ptr<Object> *return_ptr(void)
+     as_c    : 3 --NOTYPE-- *return_ptr
+     as_cxx  : 3 --NOTYPE-- *return_ptr
+     no params: std::shared_ptr<Object> *return_ptr
+XXXX PRINT_NODE
+int fun1(std::vector<int> arg1, std::vector<int> *arg2, std::vector<int> &arg3);
+int callback1(int in, int (*incr)(int));
+class Object;
+std::shared_ptr<Object> *return_ptr(void);
+
+XXXX AST
+stmts:
+- _ast: Declaration
+  declarator:
+    name: fun1
+    params:
+    - _ast: Declaration
+      declarator:
+        name: arg1
+        typemap_name: std::vector
+      specifier:
+      - std::vector
+      template_arguments:
+      - _ast: Declaration
+        declarator:
+          typemap_name: int
+        specifier:
+        - int
+        typemap_name: int
+      typemap_name: std::vector
+    - _ast: Declaration
+      declarator:
+        name: arg2
+        pointer:
+        - ptr: '*'
+        typemap_name: std::vector
+      specifier:
+      - std::vector
+      template_arguments:
+      - _ast: Declaration
+        declarator:
+          typemap_name: int
+        specifier:
+        - int
+        typemap_name: int
+      typemap_name: std::vector
+    - _ast: Declaration
+      declarator:
+        name: arg3
+        pointer:
+        - ptr: '&'
+        typemap_name: std::vector
+      specifier:
+      - std::vector
+      template_arguments:
+      - _ast: Declaration
+        declarator:
+          typemap_name: int
+        specifier:
+        - int
+        typemap_name: int
+      typemap_name: std::vector
+    typemap_name: int
+  specifier:
+  - int
+  typemap_name: int
+- _ast: Declaration
+  declarator:
+    name: callback1
+    params:
+    - _ast: Declaration
+      declarator:
+        name: in
+        typemap_name: int
+      specifier:
+      - int
+      typemap_name: int
+    - _ast: Declaration
+      declarator:
+        func:
+          name: incr
+          pointer:
+          - ptr: '*'
+          typemap_name: int
+        name: incr
+        params:
+        - _ast: Declaration
+          declarator:
+            typemap_name: int
+          specifier:
+          - int
+          typemap_name: int
+        typemap_name: int
+      specifier:
+      - int
+      typemap_name: int
+    typemap_name: int
+  specifier:
+  - int
+  typemap_name: int
+- _ast: Declaration
+  declarator:
+    typemap_name: Object
+  specifier:
+  - class Object
+  typemap_name: Object
+- _ast: Declaration
+  declarator:
+    name: return_ptr
+    params: []
+    pointer:
+    - ptr: '*'
+    typemap_name: std::shared_ptr<Object>
+  specifier:
+  - std::shared_ptr
+  template_arguments:
+  - _ast: Declaration
+    declarator:
+      typemap_name: Object
+    specifier:
+    - Object
+    typemap_name: Object
+  typemap_name: std::shared_ptr<Object>
+XXXX SymbolTable
+cls: Global
+symbols:
+  MPI_Comm:
+    cls: Typedef
+    typemap: MPI_Comm
+  Object:
+    cls: CXXClass
+    typemap: Object
+  int16_t:
+    cls: Typedef
+    typemap: int16_t
+  int32_t:
+    cls: Typedef
+    typemap: int32_t
+  int64_t:
+    cls: Typedef
+    typemap: int64_t
+  int8_t:
+    cls: Typedef
+    typemap: int8_t
+  size_t:
+    cls: Typedef
+    typemap: size_t
+  std:
+    cls: Namespace
+    symbols:
+      shared_ptr:
+        cls: Typedef
+        typemap: std::shared_ptr
+      string:
+        cls: Typedef
+        typemap: std::string
+      vector:
+        cls: Typedef
+        typemap: std::vector
+      weak_ptr:
+        cls: Typedef
+        typemap: std::weak_ptr
+  uint16_t:
+    cls: Typedef
+    typemap: uint16_t
+  uint32_t:
+    cls: Typedef
+    typemap: uint32_t
+  uint64_t:
+    cls: Typedef
+    typemap: uint64_t
+  uint8_t:
+    cls: Typedef
+    typemap: uint8_t
+XXXX Typemap
+Object:
+  base: shadow
+  sgroup: shadow
+int(*)(int):
+  base: procedure
+  f_type: f-function-pointer
+  sgroup: procedure
+std::shared_ptr<Object>:
+  base: smartptr
+  base_typemap: Object
+  cxx_type: std::shared_ptr<Object>
+  flat_name: std_shared_ptr_Object
+  ntemplate_args: 1
+  sgroup: smartptr
+  smart_pointer: shared

@@ -1,6 +1,4 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 
@@ -16,6 +14,7 @@ import unittest
 
 from . import test_ast
 from . import test_declast
+from . import test_format
 from . import test_generate
 from . import test_statements
 from . import test_util
@@ -38,6 +37,7 @@ test_cases = (
     test_declast.CheckStruct,
     test_declast.CheckClass,
     test_ast.CheckAst,
+    test_format.WFormat,
     test_generate.CheckImplied,
     test_wrapf.CheckAllocatable,
     test_wrapp.CheckImplied,
@@ -53,9 +53,3 @@ def load_tests(loader, tests, pattern):
         tests = loader.loadTestsFromTestCase(test_class)
         suite.addTests(tests)
     return suite
-
-
-def load_tests2():
-    # used from 'setup.py test'
-    loader = unittest.TestLoader()
-    return load_tests(loader, None, None)

@@ -1,0 +1,66 @@
+# Copyright Shroud Project Developers. See LICENSE file for details.
+#
+# SPDX-License-Identifier: (BSD-3-Clause)
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llnl-shroud"
+# If you want to read version from code, mark as dynamic and see below
+version = "0.14.0"
+description = "Generate Fortran and Python wrappers for C and C++ Libraries"
+readme = "README.md"
+requires-python = ">=2.7"
+license = { file = "LICENSE" }
+keywords = ["fortran", "development"]
+authors = [
+  { name = "Lawrence Livermore National Laboratory", email = "shroud-users@groups.io" }
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Topic :: Software Development :: Build Tools",
+  "Topic :: Software Development :: Code Generators",
+  "Programming Language :: Python :: 2",
+  "Programming Language :: Python :: 2.7",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13"
+]
+dependencies = [
+  "PyYAML>=4.2b1,<=5.4.1; python_version<'3.0'",
+  "PyYAML>=6.0; python_version>='3.0'"
+]
+
+[project.urls]
+Homepage = "http://github.gov/llnl/shroud"
+Documentation = "http://shroud.readthedocs.io/en/develop"
+Source = "https://github.com/LLNL/shroud"
+Download = "https://github.com/LLNL/shroud/archive/v0.14.0.tar.gz"
+
+[project.optional-dependencies]
+# Uncomment and edit as needed
+# dev = ["check-manifest"]
+# test = ["coverage"]
+
+[project.scripts]
+shroud = "shroud.main:main"
+
+[tool.setuptools]
+# If using src layout, set packages and package-dir here
+packages = ["shroud"]
+
+[tool.setuptools.package-data]
+# This will include all .json files in all packages
+"shroud" = ["*.json"]
+
+# If you want to mark version/readme as dynamic (e.g., read from code/file):
+# [project]
+# dynamic = ["version", "readme"]

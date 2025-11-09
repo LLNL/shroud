@@ -1,13 +1,7 @@
 #!/usr/bin/env bash
 
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# Shroud Project Developers. See the top-level COPYRIGHT file for details.
-#
-# SPDX-License-Identifier: (BSD-3-Clause)
-
 #=============================================================================
 # Change the copyright date in all files that contain the text
-# "other Axom Project Developers. See the top-level COPYRIGHT file for details.".
 # We restrict to this subset of files
 # since we do not want to modify files we do not own (e.g., other repos
 # included as submodules). Note that this file and *.git files are omitted
@@ -34,6 +28,7 @@
 #=============================================================================
 # First find all the files we want to modify
 #=============================================================================
+rm -f files2change
 git grep -l "Shroud Project Developers" | grep -v update-copyright > files2change
 
 #=============================================================================
@@ -43,31 +38,30 @@ for i in `cat files2change`
 do
     echo $i
     cp $i $i.sed.bak
-    sed "s/Copyright (c) 2017-2023/Copyright (c) 2017-2023/" $i.sed.bak > $i
 done
 
-echo LICENSE
-cp LICENSE LICENSE.sed.bak
-sed "s/Copyright (c) 2017-2023/Copyright (c) 2017-2023/" LICENSE.sed.bak > LICENSE
+#echo LICENSE
+#cp LICENSE LICENSE.sed.bak
+#sed "s/Copyright (c) 2017-2025/Copyright (c) 2017-2025/" LICENSE.sed.bak > LICENSE
 
 #echo RELEASE
 #cp RELEASE RELEASE.sed.bak
 #sed "s/2017-2020/2017-2020/" RELEASE.sed.bak > RELEASE
 
-echo README
-cp README.md README.md.sed.bak
-sed "s/2017-2022/2017-2023/" README.md.sed.bak > README.md
+#echo README
+#cp README.md README.md.sed.bak
+#sed "s/2017-2024/2017-2025/" README.md.sed.bak > README.md
 
 #echo RELEASE-NOTES
 #cp RELEASE-NOTES.md RELEASE-NOTES.md.sed.bak
 #sed "s/2017-2020/2017-2022/" RELEASE-NOTES.md.sed.bak > RELEASE-NOTES.md
 
-echo docs/conf.py
-cp docs/conf.py docs/conf.py.sed.bak
-sed "s/2017-2022/2017-2023/" docs/conf.py.sed.bak > docs/conf.py
+#echo docs/conf.py
+#cp docs/conf.py docs/conf.py.sed.bak
+#sed "s/2017-2024/2017-2025/" docs/conf.py.sed.bak > docs/conf.py
 
 #=============================================================================
 # Remove temporary files created in the process
 #=============================================================================
 find . -name \*.sed.bak -exec rm {} \;
-rm files2change
+#rm files2change

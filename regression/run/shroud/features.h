@@ -14,7 +14,9 @@
 #endif
 #define HAVE_CHARACTER_POINTER_FUNCTION 1
 
-#ifdef __INTEL_COMPILER
+#ifdef __INTEL_LLVM_COMPILER
+
+#elif defined(__INTEL_COMPILER)
 /* Check intel before __GNUC__, since intel also definds __GNUC__ */
 /*
  * __INTEL_COMPILER  VRP    Version Revision Path

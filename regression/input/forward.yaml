@@ -1,7 +1,5 @@
 copyright:
-- Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-- other Shroud Project Developers.
-- See the top-level COPYRIGHT file for details.
+- Copyright Shroud Project Developers. See LICENSE file for details.
 -
 - "SPDX-License-Identifier: (BSD-3-Clause)"
 -
@@ -52,7 +50,7 @@ typemap:
     - struct.hpp
     wrap_header:
     - wrapstruct.h
-    c_type: STR_cstruct1
+#    c_type: STR_cstruct1
     f_derived_type: cstruct1
     f_module_name: struct_mod
 

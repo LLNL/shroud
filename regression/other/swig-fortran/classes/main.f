@@ -1,6 +1,4 @@
-! Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-! other Shroud Project Developers.
-! See the top-level COPYRIGHT file for details.
+! Copyright Shroud Project Developers. See LICENSE file for details.
 !
 ! SPDX-License-Identifier: (BSD-3-Clause)
 ! #######################################################################
@@ -11,12 +9,14 @@ program tester
   use fruit
   use iso_c_binding
   use classes_mod
+  implicit none
   real(C_DOUBLE), parameter :: pi = 3.1415926_C_DOUBLE
   logical ok
 
   call init_fruit
 
   call test_class1_final
+  call test_class1_new_by_value
   call test_class1
   call test_subclass
 
@@ -35,21 +35,51 @@ contains
 
     call set_case_name("test_class1_final")
 
-    ! Test generic constructor
-!!    obj0 = class1_new()
+    ! Test generic constructor. Allocates new memory.
     obj0 = class1()
-!    call assert_equals(1, obj0%cxxmem%refcount, "reference count after new")
 
+    ! Create alias
     obj1 = obj0
-!    call assert_equals(2, obj0%cxxmem%refcount, "rhs reference count after assign")
-!    call assert_equals(2, obj1%cxxmem%refcount, "lhs reference count after assign")
 
+    call obj1%release  ! The alias does not release the memory
     call obj0%release
-!    call assert_equals(1, obj1%cxxmem%refcount, "reference count after delete")
 
     ! should call TUT_SHROUD_array_destructor_function as part of 
     ! FINAL of capsule_data.
   end subroutine test_class1_final
+
+  subroutine test_class1_new_by_value
+    integer mflag
+    logical mlogical
+    type(class1) obj0, obj1
+
+    call set_case_name("test_class1_new_by_value")
+
+    ! Return a new instance via a copy constructor.
+    ! The C wrapper creates an instance then assigns function results into it.
+    ! idtor is set to cause it to be released when it goes out of scope.
+    obj0 = getClass1Copy(5)
+
+    ! Create an alias
+    obj1 = obj0
+
+    call obj1%set_m_bool(.true.)
+    
+    mflag = obj0%get_m_flag()
+    call assert_equals(5, mflag, "obj0%m_flag")
+
+    mlogical = obj0%get_m_bool()
+    call assert_equals(.true., mlogical, "obj0%m_bool")
+
+    mlogical = obj1%get_m_bool()
+    call assert_equals(.true., mlogical, "obj1%m_bool")
+
+    ! should call TUT_SHROUD_array_destructor_function as part of 
+    ! FINAL of capsule_data.
+    call obj0%release
+    call obj1%release
+
+  end subroutine test_class1_new_by_value
 
   subroutine test_class1
 !--    integer iflag, mtest

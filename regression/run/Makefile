@@ -1,6 +1,4 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 #
@@ -43,10 +41,19 @@ endif
 
 .PHONY : sync-cxx
 sync-cxx : \
+  $(relrunpath)/cxx/char.cpp \
+  $(relrunpath)/cxx/enum.cpp \
+  $(relrunpath)/cxx/funptr.cpp \
   $(relrunpath)/cxx/pointers.cpp \
   $(relrunpath)/cxx/struct.cpp \
   $(relrunpath)/cxx/typedefs.cpp
 
+$(relrunpath)/cxx/char.cpp : regression/run/char/char.c | $(relrunpath)/cxx/..
+	cp $< $@
+$(relrunpath)/cxx/enum.cpp : regression/run/enum/enum.c | $(relrunpath)/cxx/..
+	cp $< $@
+$(relrunpath)/cxx/funptr.cpp : regression/run/funptr/funptr.c | $(relrunpath)/cxx/..
+	cp $< $@
 $(relrunpath)/cxx/struct.cpp : regression/run/struct/struct.c | $(relrunpath)/cxx/..
 	cp $< $@
 $(relrunpath)/cxx/pointers.cpp : regression/run/pointers/pointers.c | $(relrunpath)/cxx/..
@@ -66,17 +73,24 @@ fortran-test-list-std = \
   test-fortran-classes \
   test-fortran-forward \
   test-fortran-enum-c \
+  test-fortran-enum-cxx \
   test-fortran-typedefs-c \
   test-fortran-typedefs-cxx \
   test-fortran-namespace \
   test-fortran-pointers-c \
   test-fortran-pointers-cxx \
+  test-fortran-pointers-cxx-force \
+  test-fortran-pointers-c-f \
+  test-fortran-pointers-cxx-f \
   test-fortran-arrayclass \
   test-fortran-struct-c \
   test-fortran-struct-cxx \
+  test-fortran-funptr-c \
+  test-fortran-funptr-cxx \
   test-fortran-vectors \
   test-fortran-cdesc \
   test-fortran-preprocess \
+  test-fortran-char-cxx \
   test-fortran-strings \
   test-fortran-ccomplex \
   test-fortran-clibrary \
@@ -86,10 +100,13 @@ fortran-test-list-std = \
   test-fortran-ownership \
   test-fortran-generic \
   test-fortran-statement \
-  test-fortran-templates
+  test-fortran-templates \
+  test-fortran-shared \
+  test-fortran-wrap-cxx
 
 fortran-test-list-cfi = \
   test-fortran-pointers-cfi \
+  test-fortran-char-cxx-cfi \
   test-fortran-strings-cfi \
   test-fortran-generic-cfi
 
@@ -103,7 +120,7 @@ fortran-% : | $(relrunpath)/%/.. sync-cxx
 # Run a Fortran test
 .PHONY : $(fortran-test-list)
 $(fortran-test-list) : test-fortran-% : fortran-% | $(relrunpath)/%/..
-	$(call run-command,test-f,$(relrunpath)/$*,./$*)
+	$(call run-command,test-f,$(relrunpath)/$*,$(valgrind) ./$*)
 
 # Run the Fortran tests
 .PHONY : test-fortran
@@ -124,11 +141,16 @@ c-test-list = \
   test-c-typemap32 \
   test-c-typemap64 \
   test-c-classes \
-  test-c-enum-c \
+  test-c-enum-cxx \
   test-c-typedefs-cxx \
   test-c-namespace \
   test-c-pointers-cxx \
+  test-c-pointers-cxx-c \
   test-c-struct-cxx \
+  test-c-funptr-cxx \
+  test-c-vectors \
+  test-c-char-cxx \
+  test-c-strings \
   test-c-statement \
   test-c-templates
 
@@ -165,8 +187,10 @@ test-c : $(c-test-list)
 # C++
 
 cpp-test-list = \
-  test-cpp-tutorial \
+  test-cpp-classes \
   test-cpp-templates \
+  test-cpp-sgroup \
+  test-cpp-shared \
   test-cpp-defaultarg32 \
   test-cpp-defaultarg64 \
   test-cpp-scope
@@ -194,7 +218,9 @@ python-test-list = \
   test-python-types \
   test-python-classes \
   test-python-enum-c \
+  test-python-enum-cxx \
   test-python-namespace \
+  test-python-char-cxx \
   test-python-strings \
   test-python-pointers-numpy-cxx \
   test-python-pointers-list-cxx \

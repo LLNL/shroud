@@ -1,6 +1,4 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 # #######################################################################
@@ -109,7 +107,7 @@ class Pointers(unittest.TestCase):
 
         # Call with incorrect argument type
         with self.assertRaises(ValueError) as context:
-            array = np.array([2,4,6,8], dtype=np.float)
+            array = np.array([2,4,6,8], dtype=np.float64)
             out = pointers.incrementIntArray(array)
         self.assertTrue('array must be' in str(context.exception))
 
@@ -125,10 +123,6 @@ class Pointers(unittest.TestCase):
         sum = pointers.accumulate(array)
         self.assertEqual(15, sum)
         
-    def test_acceptCharArrayIn(self):
-        n = pointers.acceptCharArrayIn(["dog", "cat", "monkey"])
-        self.assertEqual(len("dog"), n)
-
     def test_out_ptrs(self):
         # Functions which return a pointer in an argument.
 
@@ -239,11 +233,7 @@ class Pointers(unittest.TestCase):
         self.assertEqual(8, val)
 
 
-# creating a new test suite
-newSuite = unittest.TestSuite()
- 
-# adding a test case
-newSuite.addTest(unittest.makeSuite(Pointers))
+unittest.TestLoader().loadTestsFromTestCase(Pointers)
 
 if __name__ == "__main__":
     unittest.main()

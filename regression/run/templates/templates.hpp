@@ -1,6 +1,4 @@
-// Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-// other Shroud Project Developers.
-// See the top-level COPYRIGHT file for details.
+// Copyright Shroud Project Developers. See LICENSE file for details.
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 
@@ -24,6 +22,8 @@ T mypair<T>::getmax ()
   return retval;
 }
 
+//----------------------------------------------------------------------
+
 class Worker
 {
 };
@@ -40,14 +40,21 @@ T ReturnT()
   return arg;
 }
 
+//----------------------------------------------------------------------
 
 // Function which uses a templated T in the implemetation.
+// templates.yaml contains:
+//  cxx_template:
+//  - instantiation: <internal::ImplWorker1>
+//  - instantiation: <internal::ImplWorker2>
+
 template<typename T>
 int UseImplWorker()
 {
   return T::getValue();
 }
 
+//----------------------------------------------------------------------
 
 template<typename T>
 class user {
@@ -57,6 +64,8 @@ public:
 };
 
 user<int> returnUserType(void);
+
+//----------------------------------------------------------------------
 
 template<typename T>
 struct structAsClass {

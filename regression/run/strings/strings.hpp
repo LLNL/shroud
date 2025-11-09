@@ -1,6 +1,4 @@
-// Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-// other Shroud Project Developers.
-// See the top-level COPYRIGHT file for details.
+// Copyright Shroud Project Developers. See LICENSE file for details.
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 // #######################################################################
@@ -15,37 +13,26 @@
 
 void init_test(void);
 
-void passChar(char status);
-void passCharForce(char status);
-char returnChar();
-
-void passCharPtr(char * dest, const char *src);
-void passCharPtrInOut(char * s);
-
-const char * getCharPtr1();
-const char * getCharPtr2();
-const char * getCharPtr3();
-const char * getCharPtr4();
-const char * getCharPtr5();
-
-const std::string getConstStringResult();
 const std::string getConstStringLen();
-const std::string getConstStringAsArg();
 const std::string getConstStringAlloc();
+const std::string getConstStringPointer();
+const std::string getConstStringRaw();
 
-const std::string& getConstStringRefPure();
-const std::string& getConstStringRefLen();
-const std::string& getConstStringRefAsArg();
-const std::string& getConstStringRefLenEmpty();
-const std::string& getConstStringRefAlloc();
+const std::string getConstStringAsArg();
 
-const std::string * getConstStringPtrLen();
-const std::string * getConstStringPtrAlloc();
-const std::string * getConstStringPtrOwnsAlloc();
-const std::string * getConstStringPtrOwnsAllocPattern();
+const std::string &getConstStringRefLen();
+const std::string &getConstStringRefLenEmpty();
+const std::string &getConstStringRefAlloc();
 
-const std::string * getConstStringPtrPointer();
-const std::string * getConstStringPtrOwnsPointer();
+const std::string &getConstStringRefAsArg();
+
+const std::string *getConstStringPtrLen();
+const std::string *getConstStringPtrAlloc();
+const std::string *getConstStringPtrOwnsAlloc();
+const std::string *getConstStringPtrOwnsAllocPattern();
+
+const std::string *getConstStringPtrPointer();
+const std::string *getConstStringPtrOwnsPointer();
 
 void acceptName_instance(std::string arg1);
 
@@ -82,14 +69,9 @@ extern "C" {
   void CpassChar(char status);
   char CreturnChar();
 
-  void CpassCharPtr(char * dest, const char *src);
 }
-void CpassCharPtrBlank(char *dest, const char *src);
 
 void PostDeclare(int *count, std::string &name);
-int CpassCharPtrNotrim(const char *src);
-int CpassCharPtrCAPI(void *addr, const char *src);
-int CpassCharPtrCAPI2(const char *in, const char *src);
 
 
 #endif // STRINGS_HPP

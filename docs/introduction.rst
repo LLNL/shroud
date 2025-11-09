@@ -1,6 +1,4 @@
-.. Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-   other Shroud Project Developers.
-   See the top-level COPYRIGHT file for details.
+.. Copyright Shroud Project Developers. See LICENSE file for details.
 
    SPDX-License-Identifier: (BSD-3-Clause)
 
@@ -165,6 +163,14 @@ The generated code will require
 XKCD
 ----
 
-`XKCD <https://xkcd.com/1319>`_
+`XKCD 1319 <https://xkcd.com/1319>`_
 
 .. image:: automation.png
+
+`XKCD 974 <https://xkcd.com/974>`_
+
+.. image:: the_general_problem.png
+
+`XKCD 1205 <https://xkcd.com/1205>`_
+
+.. image:: is_it_worth_the_time.png

@@ -1,6 +1,4 @@
-.. Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-   other Shroud Project Developers.
-   See the top-level COPYRIGHT file for details.
+.. Copyright Shroud Project Developers. See LICENSE file for details.
 
    SPDX-License-Identifier: (BSD-3-Clause)
 
@@ -38,7 +36,7 @@ type expected by the C++ function.
 Bool
 ----
 
-The first thing to notice is that **f_c_type** is defined.  This is
+The first thing to notice is that **i_type** is defined.  This is
 the type used in the Fortran interface for the C wrapper.  The type
 is ``logical(C_BOOL)`` while **f_type**, the type of the Fortran
 wrapper argument, is ``logical``.
@@ -73,11 +71,13 @@ Any C++ function which has ``char`` or ``std::string`` arguments or
 result will create an additional C function which include additional
 arguments for the length of the strings.  Most Fortran compiler use
 this convention when passing ``CHARACTER`` arguments. Shroud makes
-this convention explicit for two reasons:
+this convention explicit for two reasons
 
-* It allows an interface to be used.  Functions with an interface will
-  not pass the hidden, non-standard length argument, depending on compiler.
-* Returning character argument from C to Fortran is non-portable.
+    * It allows an interface to be used.  Functions with an interface will
+      not pass the hidden, non-standard length argument, depending on compiler.
+
+    * Returning character argument from C to Fortran is non-portable.
+      Often an additional argument is added for the function result.
 
 The C wrapper will create a NULL terminated copy a string with the
 *intent(in)* attribute.  The assumption is that the trailing blanks
@@ -166,8 +166,8 @@ how to use these routines:
             c_type: MPI_Fint
             f_type: integer
             f_kind: C_INT
-            f_c_type: integer(C_INT)
-            f_c_module:
+            i_type: integer(C_INT)
+            i_module:
                 iso_c_binding:
                   - C_INT
             cxx_to_c: MPI_Comm_c2f({cxx_var})
@@ -181,3 +181,50 @@ This mapping makes the assumption that ``integer`` and
 .. Complex Type
    ------------
 
+
+Typedef
+-------
+
+A typedef is used to create an alias for another type.
+Often to create an abstraction for the intented use of the type.
+
+.. code-block:: c++
+
+   typedef int IndexType;
+
+From the Fortran side, this will create a parameter for the kind parameter.
+
+.. code-block:: fortran
+
+   integer, parameter :: index_type = C_INT
+
+This allows variables to continue to use the typedef.
+
+.. code-block:: c++
+
+   IndexType arg;
+
+From the Fortran side, this will create a parameter for the kind parameter.
+
+.. code-block:: fortran
+
+   integer(index_type) :: arg
+
+A C wrapper will create another typedef which is accessible from C.
+A C++ typedef may be in a scope so Shroud will mangle the name
+to make it accessible at the global level.
+
+.. code-block:: c
+
+    typedef int TYP_IndexType;
+
+The name of the generated typedef can be modified using format fields.
+
+.. code-block:: yaml
+
+    - decl: typedef int32_t IndexType2
+      format:
+        F_name_typedef: LOCAL_Index_Type
+        C_name_typedef: LOCAL_IndexType
+
+.. from typedefs.yaml

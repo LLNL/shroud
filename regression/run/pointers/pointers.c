@@ -1,6 +1,4 @@
-// Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-// other Shroud Project Developers.
-// See the top-level COPYRIGHT file for details.
+// Copyright Shroud Project Developers. See LICENSE file for details.
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
@@ -176,16 +174,6 @@ int accumulate(const int *arr, size_t len)
 
 void Rank2Input(int *arg)
 {
-}
-
-//----------------------------------------------------------------------
-// Return the strlen of the first index as a check
-
-int acceptCharArrayIn(char **names)
-{
-    if (names == NULL)
-        return 0;
-    return strlen(names[0]);
 }
 
 //----------------------------------------------------------------------

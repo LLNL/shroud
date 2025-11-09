@@ -1,3 +1,4 @@
+Will not generate C wrappers for a language=c library
 Wrote clibrary_types.yaml
 Wrote wrapClibrary.h
 Wrote wrapClibrary.c

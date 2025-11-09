@@ -1,6 +1,4 @@
-// Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-// other Shroud Project Developers.
-// See the top-level COPYRIGHT file for details.
+// Copyright Shroud Project Developers. See LICENSE file for details.
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 // #######################################################################
@@ -9,6 +7,15 @@
 //
 
 #include "classes.hpp"
+
+int tester1()
+{
+  return classes::Class1::DIRECTION::UP;
+}
+int tester2()
+{
+  return classes::Class1::UP;
+}
 
 int main(int argc, char *argv[])
 {

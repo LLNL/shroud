@@ -1,0 +1,40 @@
+# Copyright Shroud Project Developers. See LICENSE file for details.
+#
+# SPDX-License-Identifier: (BSD-3-Clause)
+#
+# #######################################################################
+#
+# run/sgroup
+#
+testdir = sgroup
+
+INCLUDE = \
+    -I$(top)/regression/reference/sgroup \
+    -I$(top)/regression/run/sgroup
+
+VPATH = \
+    $(top)/regression/reference/sgroup \
+    $(top)/regression/run/sgroup \
+    $(top)/regression/run/fruit
+
+C_OBJS = \
+    sgroup.o \
+    wrapsgroup.o
+F_OBJS = \
+    main.o \
+    fruit.o \
+    wrapfsgroup.o
+
+include $(top)/regression/run/defaults.mk
+
+#sgroup.o : sgroup.cpp sgroup.hpp
+sgroup.o : sgroup.hpp
+main.o : main.f fruit.o wrapfsgroup.o
+maincpp.o : maincpp.cpp sgroup.hpp
+
+# useful to isolate load error with just C++ code
+maincpp : maincpp.o
+	$(CXX) $(CXXFLAGS) $^ -o $@ $(CXXLIBS)
+
+testc.o : testc.c wrapstd_vector_int.h
+

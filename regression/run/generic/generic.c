@@ -1,20 +1,27 @@
 /*
- * Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
- * other Shroud Project Developers.
- * See the top-level COPYRIGHT file for details.
+ * Copyright Shroud Project Developers. See LICENSE file for details.
  *
  * SPDX-License-Identifier: (BSD-3-Clause)
  */
 // generic.c
 
+#include <stdio.h>
 #include <stdlib.h>
 
 #include "generic.h"
+
+#define LAST_SIZE 40
 
 double global_double;
 void *global_void;
 int global_type;
 size_t global_size;
+char global_last_function_called[LAST_SIZE + 1];  // Space for termination NULL.
+
+char *LastFunctionCalled(void)
+{
+    return global_last_function_called;
+}
 
 double GetGlobalDouble(void)
 {
@@ -51,6 +58,11 @@ int SumValues(const int *values, int nvalues)
         sum += values[i];
     }
     return sum;
+}
+
+void BA_nbcastinteger(const char *cptr, int *ptr)
+{
+    snprintf(global_last_function_called, LAST_SIZE, "BA_nbcastinteger %s", cptr);
 }
 
 // Broadcast if nfrom == 1

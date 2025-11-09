@@ -1,6 +1,4 @@
-! Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-! other Shroud Project Developers.
-! See the top-level COPYRIGHT file for details.
+! Copyright Shroud Project Developers. See LICENSE file for details.
 !
 ! SPDX-License-Identifier: (BSD-3-Clause)
 ! #######################################################################
@@ -16,6 +14,7 @@ program tester
   call init_fruit
 
   call test_ns
+  call test_ns_upper
   call test_ns_outer
 
   call fruit_summary
@@ -39,6 +38,18 @@ contains
     call assert_equals("One", last, "One")
 
   end subroutine test_ns
+
+  subroutine test_ns_upper
+    use ns_mod
+    character(:), allocatable :: last
+
+    call set_case_name("test_ns_upper")
+
+    call pass_level_enum(upper_error)
+    last = last_function_called()
+    call assert_equals("PassLevelEnum", last, "PassLevelEnum")
+
+  end subroutine test_ns_upper
 
   subroutine test_ns_outer
     use ns_mod, only : last_function_called

@@ -1,6 +1,4 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 
@@ -22,6 +20,7 @@ need to be used in a different YAML file.
 """
 from __future__ import print_function
 
+from . import error
 from . import util
 
 # translation table to convert type name to flat name
@@ -38,28 +37,6 @@ except:
 
 void_typemap = None
 
-def flatten_modules_to_line(modules):
-    """Flatten modules dictionary into a line.
-
-    This line can then be used in fc_statements to add module info.
-    The flattend line looks like:
-        module ":" symbol [ "," symbol ]*
-        [ ";" module ":" symbol [ "," symbol ]* ]
-
-    Parameters
-    ----------
-    modules : dictionary of dictionaries:
-        modules['iso_c_bindings'] = ['C_INT', ...]
-    """
-    if modules is None:
-        return None
-    line = []
-    for mname, symbols in modules.items():
-        if mname == "__line__":
-            continue
-        symbolslst = ",".join(symbols)
-        line.append("{}:{}".format(mname, symbolslst))
-    return ";".join(line)
 
 class Typemap(object):
     """Collect fields for an argument.
@@ -78,15 +55,13 @@ class Typemap(object):
     For example, std::string uses <string>. <string> should not be in
     the interface since the wrapper is a C API.
 
-    A new typemap is created for each class and struct
+    A new typemap is created for each class, struct, and typedef.
 
     A new typemap is created for each templated class/struct
     instantiation:
         - decl: template<typename T> class A
           cxx_template:
           - instantiation: <int>
-
-    A new typemap is created for each typedef.
     """
 
     # Array of known keys with default values
@@ -95,13 +70,18 @@ class Typemap(object):
         ("template_suffix", None),  # Name when used by wrapper identifiers
                                     # when added to class/struct format.
                     # Set from format.template_suffix in YAML for class.
+        ("ntemplate_args", 0), # Number of template arguments
         ("base", "unknown"),  # Base type: 'string', 'integer', 'real', 'complex'
+        ("base_typemap", None), # std::shared_ptr<base_typemap>
         ("typedef", None),  # Initialize from existing type (name of type)
+                            # A Typemap instance
         ("cpp_if", None),  # C preprocessor test for c_header
         ("idtor", "0"),  # index of capsule_data destructor
+        ("ast", None),  # Abstract syntax tree (typedef)
         ("cxx_type", None),  # Name of type in C++, including namespace
         ("cxx_to_c", None),  # Expression to convert from C++ to C
         # None implies {cxx_var} i.e. no conversion
+        ("cxx_to_ci", None), # convert from C++ to Fortran interface (ex. enums)
         (
             "cxx_header",
             [],
@@ -110,26 +90,26 @@ class Typemap(object):
             # None = non-templated type.
             # index example ["<int>"] = Typemap for instantiated class.
         # For example, if cxx_to_c was a function
-        ("c_type", None),  # Name of type in C
+        ("c_type", None),  # Name of type in C, used with C wrapper
         ("c_header", []),  # Name of C header file required for type
         ("c_to_cxx", None),  # Expression to convert from C to C++
         # None implies {c_var}  i.e. no conversion
-        ("c_return_code", None),
-        ("f_c_module", None), # Fortran modules needed for interface  (dictionary)
-        ("f_c_module_line", None),
-        ("f_class", None),  # Used with type-bound procedures
+        ("ci_type", None),   # C interface type
+
+        ("i_type", None),  # Type for C interface    -- integer(C_INT)
+        ("i_kind", None),  # Fortran kind            -- C_INT
+        ("i_module_name", None), # Name of module which contains i_type
+        ("i_module", None), # Fortran modules needed for interface  (dictionary)
+        
         ("f_type", None),  # Name of type in Fortran -- integer(C_INT)
         ("f_kind", None),  # Fortran kind            -- C_INT
-        ("f_c_type", None),  # Type for C interface    -- int
+        ("f_module_name", None), # Name of module which contains f_type
+                                 # and f_derived_type and f_capsule_data_type
+        ("f_module", None),  # Fortran modules needed for type  (dictionary)
+        ("f_class", None),  # Used with type-bound procedures
         ("f_to_c", None),  # Expression to convert from Fortran to C
-        (
-            "f_module_name",
-            None,
-        ),  # Name of module which contains f_derived_type and f_capsule_data_type
         ("f_derived_type", None),  # Fortran derived type name
         ("f_capsule_data_type", None),  # Fortran derived type to match C struct
-        ("f_module", None),  # Fortran modules needed for type  (dictionary)
-        ("f_module_line", None),
         ("f_cast", "{f_var}"),  # Expression to convert to type
                                 # e.g. intrinsics such as INT and REAL.
         ("impl_header", []), # implementation header
@@ -169,7 +149,10 @@ class Typemap(object):
         ("sgroup", "unknown"),  # statement group. ex. native, string, vector
         ("sh_type", "SH_TYPE_OTHER"),
         ("cfi_type", "CFI_type_other"),
+        ("implied_array", False),  # ex. std::vector
+        ("is_enum", False),
         ("export", False),      # If True, export to YAML file.
+        ("smart_pointer", None), # Used to generated names, ex shared, weak
         ("__line__", None),
     )
 
@@ -177,6 +160,13 @@ class Typemap(object):
 
     # valid fields
     defaults = dict(_order)
+
+    deprecated = dict(
+        # v0.14
+        f_c_module="i_module",
+        f_c_module_line="i_module",
+        f_c_type="i_type",
+    )
 
     def __init__(self, name, **kw):
         """
@@ -213,13 +203,18 @@ class Typemap(object):
                     setattr(self, key, value.split())
             elif key in self.defaults:
                 setattr(self, key, value)
+            elif key in self.deprecated:
+                setattr(self, self.deprecated[key], value)
+                cursor = error.get_cursor()
+                cursor.deprecated("Typemap %s: Replacing deprecated field '%s' with '%s'" %
+                                  (self.name, key, self.deprecated[key]))
             else:
-                raise RuntimeError("Unknown key for Typemap %s", key)
+                cursor = error.get_cursor()
+                cursor.warning("Typemap %s: Unknown key '%s'" % (
+                    self.name, key))
 
     def finalize(self):
         """Compute some fields based on other fields."""
-        self.f_c_module_line = flatten_modules_to_line(self.f_c_module or self.f_module)
-        self.f_module_line = flatten_modules_to_line(self.f_module)
         if self.cxx_type and not self.flat_name:
             # Do not override an explicitly set value.
             self.compute_flat_name()
@@ -229,8 +224,17 @@ class Typemap(object):
         ntypemap.update(self._to_dict())
         return ntypemap
 
-    def clone_as(self, name):
+    def copy_from_typemap(self, node):
+        """Copy default fields from node.
+        Used to update an existing Typemap.
         """
+        for key, defvalue in self.defaults.items():
+            value = getattr(node, key)
+            setattr(self, key, value)
+
+    def clone_as(self, name):
+        """Creates a new Typemap.
+
         Args:
             name - name of new instance.
         """
@@ -293,7 +297,7 @@ class Typemap(object):
             order = self._keyorder
         else: # class
             # To be used by other libraries which import shadow types. 
-            if self.base == "shadow":
+            if self.base in ["shadow", "smartptr"]:
                 order = [
                     "base",
                     "wrap_header",
@@ -329,8 +333,11 @@ def default_typemap():
             c_type="void",
             cxx_type="void",
             # fortran='subroutine',
+#            f_cast="C_LOC({f_var})",
             f_type="type(C_PTR)",
-            f_c_module=dict(iso_c_binding=["C_PTR"]),
+            f_kind="C_PTR",
+            f_module_name="iso_c_binding",
+            f_module=dict(iso_c_binding=["C_PTR"]),
             PY_ctor="PyCapsule_New({ctor_expr}, NULL, NULL)",
             sh_type="SH_TYPE_CPTR",
             cfi_type="CFI_type_intptr_t",
@@ -344,6 +351,7 @@ def default_typemap():
             f_cast="int({f_var}, C_SHORT)",
             f_type="integer(C_SHORT)",
             f_kind="C_SHORT",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_SHORT"]),
             PY_format="h",
             PY_ctor="PyInt_FromLong({ctor_expr})",
@@ -364,6 +372,7 @@ def default_typemap():
             f_cast="int({f_var}, C_INT)",
             f_type="integer(C_INT)",
             f_kind="C_INT",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_INT"]),
             PY_format="i",
             PY_ctor="PyInt_FromLong({ctor_expr})",
@@ -384,6 +393,7 @@ def default_typemap():
             f_cast="int({f_var}, C_LONG)",
             f_type="integer(C_LONG)",
             f_kind="C_LONG",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_LONG"]),
             PY_format="l",
             PY_ctor="PyInt_FromLong({ctor_expr})",
@@ -404,6 +414,7 @@ def default_typemap():
             f_cast="int({f_var}, C_LONG_LONG)",
             f_type="integer(C_LONG_LONG)",
             f_kind="C_LONG_LONG",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_LONG_LONG"]),
             PY_format="L",
             # #- PY_ctor='PyInt_FromLong({ctor_expr})',
@@ -423,6 +434,7 @@ def default_typemap():
             f_cast="int({f_var}, C_SHORT)",
             f_type="integer(C_SHORT)",
             f_kind="C_SHORT",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_SHORT"]),
             PY_format="H",
             PY_ctor="PyInt_FromLong({ctor_expr})",
@@ -443,6 +455,7 @@ def default_typemap():
             f_cast="int({f_var}, C_INT)",
             f_type="integer(C_INT)",
             f_kind="C_INT",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_INT"]),
             PY_format="I",
             PY_ctor="PyInt_FromLong({ctor_expr})",
@@ -463,6 +476,7 @@ def default_typemap():
             f_cast="int({f_var}, C_LONG)",
             f_type="integer(C_LONG)",
             f_kind="C_LONG",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_LONG"]),
             PY_format="k",
             PY_ctor="PyInt_FromLong({ctor_expr})",
@@ -483,6 +497,7 @@ def default_typemap():
             f_cast="int({f_var}, C_LONG_LONG)",
             f_type="integer(C_LONG_LONG)",
             f_kind="C_LONG_LONG",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_LONG_LONG"]),
             PY_format="K",
             # #- PY_ctor='PyInt_FromLong({ctor_expr})',
@@ -504,6 +519,7 @@ def default_typemap():
             f_cast="int({f_var}, C_SIZE_T)",
             f_type="integer(C_SIZE_T)",
             f_kind="C_SIZE_T",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_SIZE_T"]),
             PY_format="n",
             PY_ctor="PyInt_FromSize_t({ctor_expr})",
@@ -522,9 +538,10 @@ def default_typemap():
             cxx_type="int8_t",
             c_header="<stdint.h>",
             cxx_header="<cstdint>",
-            f_cast="int({f_var}, C_INT8_t)",
+            f_cast="int({f_var}, C_INT8_T)",
             f_type="integer(C_INT8_T)",
             f_kind="C_INT8_T",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_INT8_T"]),
             PY_format="i",
             PY_ctor="PyInt_FromLong({ctor_expr})",
@@ -544,9 +561,10 @@ def default_typemap():
             cxx_type="int16_t",
             c_header="<stdint.h>",
             cxx_header="<cstdint>",
-            f_cast="int({f_var}, C_INT16_t)",
+            f_cast="int({f_var}, C_INT16_T)",
             f_type="integer(C_INT16_T)",
             f_kind="C_INT16_T",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_INT16_T"]),
             PY_format="i",
             PY_ctor="PyInt_FromLong({ctor_expr})",
@@ -566,9 +584,10 @@ def default_typemap():
             cxx_type="int32_t",
             c_header="<stdint.h>",
             cxx_header="<cstdint>",
-            f_cast="int({f_var}, C_INT32_t)",
+            f_cast="int({f_var}, C_INT32_T)",
             f_type="integer(C_INT32_T)",
             f_kind="C_INT32_T",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_INT32_T"]),
             PY_format="i",
             PY_ctor="PyInt_FromLong({ctor_expr})",
@@ -588,9 +607,10 @@ def default_typemap():
             cxx_type="int64_t",
             c_header="<stdint.h>",
             cxx_header="<cstdint>",
-            f_cast="int({f_var}, C_INT64_t)",
+            f_cast="int({f_var}, C_INT64_T)",
             f_type="integer(C_INT64_T)",
             f_kind="C_INT64_T",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_INT64_T"]),
             PY_format="L",
             PY_ctor="PyInt_FromLong({ctor_expr})",
@@ -611,9 +631,10 @@ def default_typemap():
             cxx_type="uint8_t",
             c_header="<stdint.h>",
             cxx_header="<cstdint>",
-            f_cast="int({f_var}, C_INT8_t)",
+            f_cast="int({f_var}, C_INT8_T)",
             f_type="integer(C_INT8_T)",
             f_kind="C_INT8_T",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_INT8_T"]),
             PY_format="i",
             PY_ctor="PyInt_FromLong({ctor_expr})",
@@ -633,9 +654,10 @@ def default_typemap():
             cxx_type="uint16_t",
             c_header="<stdint.h>",
             cxx_header="<cstdint>",
-            f_cast="int({f_var}, C_INT16_t)",
+            f_cast="int({f_var}, C_INT16_T)",
             f_type="integer(C_INT16_T)",
             f_kind="C_INT16_T",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_INT16_T"]),
             PY_format="i",
             PY_ctor="PyInt_FromLong({ctor_expr})",
@@ -655,9 +677,10 @@ def default_typemap():
             cxx_type="uint32_t",
             c_header="<stdint.h>",
             cxx_header="<cstdint>",
-            f_cast="int({f_var}, C_INT32_t)",
+            f_cast="int({f_var}, C_INT32_T)",
             f_type="integer(C_INT32_T)",
             f_kind="C_INT32_T",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_INT32_T"]),
             PY_format="i",
             PY_ctor="PyInt_FromLong({ctor_expr})",
@@ -677,9 +700,10 @@ def default_typemap():
             cxx_type="uint64_t",
             c_header="<stdint.h>",
             cxx_header="<cstdint>",
-            f_cast="int({f_var}, C_INT64_t)",
+            f_cast="int({f_var}, C_INT64_T)",
             f_type="integer(C_INT64_T)",
             f_kind="C_INT64_T",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_INT64_T"]),
             PY_format="L",
             PY_ctor="PyInt_FromLong({ctor_expr})",
@@ -700,6 +724,7 @@ def default_typemap():
             f_cast="real({f_var}, C_FLOAT)",
             f_type="real(C_FLOAT)",
             f_kind="C_FLOAT",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_FLOAT"]),
             PY_format="f",
             PY_ctor="PyFloat_FromDouble({ctor_expr})",
@@ -720,6 +745,7 @@ def default_typemap():
             f_cast="real({f_var}, C_DOUBLE)",
             f_type="real(C_DOUBLE)",
             f_kind="C_DOUBLE",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_DOUBLE"]),
             PY_format="d",
             PY_ctor="PyFloat_FromDouble({ctor_expr})",
@@ -743,6 +769,7 @@ def default_typemap():
             f_cast="cmplx({f_var}, C_FLOAT_COMPLEX)",
             f_type="complex(C_FLOAT_COMPLEX)",
             f_kind="C_FLOAT_COMPLEX",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_FLOAT_COMPLEX"]),
             PY_format="D",
             py_ctype="Py_complex",
@@ -771,6 +798,7 @@ def default_typemap():
             f_cast="cmplx({f_var}, C_DOUBLE_COMPLEX)",
             f_type="complex(C_DOUBLE_COMPLEX)",
             f_kind="C_DOUBLE_COMPLEX",
+            f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_DOUBLE_COMPLEX"]),
             PY_format="D",
             PY_get="PyComplex_AsCComplex({py_var})",
@@ -799,15 +827,21 @@ def default_typemap():
             cxx_type="bool",
             c_header="<stdbool.h>",
             f_type="logical",
-            f_kind="C_BOOL",
-            f_c_type="logical(C_BOOL)",
-            f_module=dict(iso_c_binding=["C_BOOL"]),
+            f_kind="",
+            f_module_name="",
+
+            i_type="logical(C_BOOL)",
+            i_kind="C_BOOL",
+            i_module_name="iso_c_binding",
+            i_module=dict(iso_c_binding=["C_BOOL"]),
+            
             # XXX PY_format='p',  # Python 3.3 or greater
             # Use py_statements.x.ctor instead of PY_ctor. This code will always be
             # added.  Older version of Python can not create a bool directly from
             # from Py_BuildValue.
             # #- PY_ctor='PyBool_FromLong({c_var})',
             PY_PyTypeObject="PyBool_Type",
+            PY_get="PyObject_IsTrue({py_var})",
             PYN_typenum="NPY_BOOL",
             LUA_type="LUA_TBOOLEAN",
             LUA_pop="lua_toboolean({LUA_state_var}, {LUA_index})",
@@ -822,10 +856,15 @@ def default_typemap():
             "char",
             cxx_type="char",
             c_type="char",  # XXX - char *
-            f_type="character(*)",
-            f_kind="C_CHAR",
-            f_c_type="character(kind=C_CHAR)",
-            f_c_module=dict(iso_c_binding=["C_CHAR"]),
+            f_type="character(len=*)",
+            f_kind="",
+            f_module_name="",
+
+            i_type="character(kind=C_CHAR)",
+            i_kind="C_CHAR",
+            i_module_name="iso_c_binding",
+            i_module=dict(iso_c_binding=["C_CHAR"]),
+
             PY_format="s",
             PY_ctor="PyString_FromString({ctor_expr})",
 #            PY_get="PyString_AsString({py_var})",
@@ -835,6 +874,7 @@ def default_typemap():
             LUA_push="lua_pushstring({LUA_state_var}, {push_arg})",
             base="string",
             sgroup="char",
+            sh_type="SH_TYPE_CHAR",
         ),
         # C++ std::string
         string=Typemap(
@@ -843,15 +883,19 @@ def default_typemap():
             cxx_to_c="{cxx_var}{cxx_member}c_str()",  # cxx_member is . or ->
             c_type="char",  # XXX - char *
             impl_header=["<string>"],
-            f_type="character(*)",
-            f_kind="C_CHAR",
-            f_c_type="character(kind=C_CHAR)",
-            f_c_module=dict(iso_c_binding=["C_CHAR"]),
+            f_type="character(len=*)",
+            f_kind="",
+            f_module_name="",
+
+            i_type="character(kind=C_CHAR)",
+            i_kind="C_CHAR",
+            i_module_name="iso_c_binding",
+            i_module=dict(iso_c_binding=["C_CHAR"]),
+            
             PY_format="s",
             PY_ctor="PyString_FromStringAndSize({ctor_expr})",
             PY_build_format="s#",
-            # XXX need cast after PY_SSIZE_T_CLEAN
-            PY_build_arg="{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()",
+            PY_build_arg="{cxx_var}{cxx_member}data(),\t (Py_ssize_t) {cxx_var}{cxx_member}size()",
             LUA_type="LUA_TSTRING",
             LUA_pop="lua_tostring({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushstring({LUA_state_var}, {push_arg})",
@@ -863,6 +907,7 @@ def default_typemap():
         # C++03 "The elements of a vector are stored contiguously" (23.2.4/1).
         vector=Typemap(
             "std::vector",
+            ntemplate_args=1,
             cxx_type="std::vector<{cxx_T}>",
             cxx_header="<vector>",
             # #- cxx_to_c='{cxx_var}.data()',  # C++11
@@ -874,8 +919,29 @@ def default_typemap():
             #            LUA_pop='lua_tostring({LUA_state_var}, {LUA_index})',
             #            LUA_push='lua_pushstring({LUA_state_var}, {push_arg})',
             impl_header=["<vector>"],
+            implied_array=True,
             base="vector",
             sgroup="vector",
+        ),
+        shared_ptr=Typemap(
+            "std::shared_ptr",
+            ntemplate_args=1,
+            cxx_type="std::shared_ptr<{cxx_T}>",
+            cxx_header="<memory>",
+            impl_header=["<memory>"],
+            base="smart_ptr",
+            sgroup="smart_ptr",
+            smart_pointer="shared",
+        ),
+        weak_ptr=Typemap(
+            "std::weak_ptr",
+            ntemplate_args=1,
+            cxx_type="std::weak_ptr<{cxx_T}>",
+            cxx_header="<memory>",
+            impl_header=["<memory>"],
+            base="smart_ptr",
+            sgroup="smart_ptr",
+            smart_pointer="weak",
         ),
         MPI_Comm=Typemap(
             "MPI_Comm",
@@ -886,8 +952,9 @@ def default_typemap():
             # usually, MPI_Fint will be equivalent to int
             f_type="integer",
             f_kind="C_INT",
-            f_c_type="integer(C_INT)",
-            f_c_module=dict(iso_c_binding=["C_INT"]),
+            f_module_name="iso_c_binding",
+            i_type="integer(C_INT)",
+            i_module=dict(iso_c_binding=["C_INT"]),
             cxx_to_c="MPI_Comm_c2f({cxx_var})",
             c_to_cxx="MPI_Comm_f2c({c_var})",
         ),
@@ -899,6 +966,10 @@ def default_typemap():
     del def_types["string"]
     def_types["std::vector"] = def_types["vector"]
     del def_types["vector"]
+    def_types["std::shared_ptr"] = def_types["shared_ptr"]
+    del def_types["shared_ptr"]
+    def_types["std::weak_ptr"] = def_types["weak_ptr"]
+    del def_types["weak_ptr"]
 
     # One typemap for all template parameters.
     type_name = "--template-parameter--"
@@ -992,45 +1063,65 @@ def fill_native_typemap_defaults(ntypemap, fmt):
         ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_kind]}
 
 
-def fill_enum_typemap(node):
+def fill_enum_typemap(node, ftypemap):
     """Fill an enum typemap with wrapping fields.
     The typemap is created in declast.Enum.
 
 # XXX    Create a typemap similar to an int.
 # XXX    C++ enums are converted to a C int.
 
+    ftypemap is how the enum is represented in the Fortran wrapper.
+    Typically an 'int'.
+
     Args:
         node - EnumNode instance.
     """
+    # Using abstract_decl in the converters, maps to any typedef declaration.
     fmt_enum = node.fmtdict
 
     ntypemap = node.typemap
     if ntypemap is None:
         raise RuntimeError("Missing typemap on EnumNode")
     else:
+        ntypemap.copy_from_typemap(ftypemap)
+        ntypemap.is_enum = True
+        ntypemap.ci_type = ftypemap.c_type
+        ntypemap.sgroup = "enum"
+
+        # Include the generated C header file for the
+        # C declaration of the C++ enum.
+        ntypemap.c_header = [fmt_enum.C_header_filename]
+        ntypemap.cxx_header = [fmt_enum.C_header_filename]
+        
         language = node.get_language()
 
-##        inttypemap = lookup_typemap("int")  # XXX - all enums are not ints
-##        ntypemap = inttypemap.clone_as(type_name)
-#        ntypemap.sgroup = "enum"
         if language == "c":
-#            ntypemap.c_type = "enum {}".format(fmt_enum.enum_name)
-            ntypemap.c_type = "int"
+            ntypemap.c_type = "enum %s" % ntypemap.name
+            
+            # XXX - These are used with Python wrapper and ParseTupleAndKeyword.
             ntypemap.cxx_type = util.wformat(
                 "enum {namespace_scope}{enum_name}", fmt_enum
             )
             ntypemap.c_to_cxx = util.wformat(
                 "(enum {namespace_scope}{enum_name}) {{c_var}}", fmt_enum
             )
-            ntypemap.cxx_to_c = "(int) {cxx_var}"
+            ntypemap.c_to_cxx = "({cxx_abstract_decl}) {c_var}"
+            ntypemap.cxx_to_c = "(%s) {cxx_var}" % ntypemap.c_type
+
+            ntypemap.cxx_to_ci = "(%s) {cxx_var}" % ntypemap.ci_type
+
         else:
+            ntypemap.c_type = "enum %s" % fmt_enum.C_enum_type
+
             ntypemap.cxx_type = util.wformat(
                 "{namespace_scope}{enum_name}", fmt_enum
             )
             ntypemap.c_to_cxx = util.wformat(
                 "static_cast<{namespace_scope}{enum_name}>({{c_var}})", fmt_enum
             )
-            ntypemap.cxx_to_c = "static_cast<int>({cxx_var})"
+            ntypemap.cxx_to_c = "static_cast<{c_abstract_decl}>({cxx_var})"
+            
+            ntypemap.cxx_to_ci = "static_cast<%s>({cxx_var})" % ntypemap.ci_type
         ntypemap.compute_flat_name()
     return ntypemap
 
@@ -1045,8 +1136,8 @@ def compute_class_typemap_derived_fields(ntypemap, fields):
         # XXX f_kind
     if "f_type" not in fields:
         ntypemap.f_type = "type(%s)" % ntypemap.f_derived_type
-    if "f_c_type" not in fields:
-        ntypemap.f_c_type = "type(%s)" % ntypemap.f_capsule_data_type
+    if "i_type" not in fields:
+        ntypemap.i_type = "type(%s)" % ntypemap.f_capsule_data_type
 
 def create_class_typemap_from_fields(cxx_name, fields, library):
     """Create a typemap from fields.
@@ -1075,7 +1166,7 @@ def create_class_typemap_from_fields(cxx_name, fields, library):
         base="shadow", sgroup="shadow",
         cxx_type=cxx_name,
         f_capsule_data_type="missing-f_capsule_data_type",
-        f_derived_type=cxx_name,
+        f_kind=fields["f_derived_type"],
 
         cxx_to_c="static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
         c_to_cxx="static_cast<{c_const}%s *>\t({c_var}->addr)" % cxx_name,
@@ -1090,8 +1181,8 @@ def create_class_typemap_from_fields(cxx_name, fields, library):
 
     if "f_module" not in fields:
         ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_derived_type]}
-    if "f_c_module" not in fields:
-        ntypemap.f_c_module = {ntypemap.f_module_name: [ntypemap.f_capsule_data_type]}
+    if "i_module" not in fields:
+        ntypemap.i_module = {ntypemap.f_module_name: [ntypemap.f_capsule_data_type]}
     
     ntypemap.finalize()
     library.symtab.add_typedef(cxx_name, ntypemap)
@@ -1139,7 +1230,8 @@ def fill_class_typemap(node, fields={}):
         c_type=c_name,
         f_module_name=fmt_class.F_module_name,
         f_derived_type=fmt_class.F_derived_name,
-        f_capsule_data_type=fmt_class.F_capsule_data_type,
+        f_kind=fmt_class.F_derived_name,
+        f_capsule_data_type=fmt_class.f_capsule_data_type,
         # #- f_to_c='{f_var}%%%s()' % fmt_class.F_name_instance_get, # XXX - develop test
         sh_type="SH_TYPE_OTHER",
         cfi_type="CFI_type_other",
@@ -1163,8 +1255,8 @@ def fill_class_typemap(node, fields={}):
 
     if "f_module" not in fields:
         ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_derived_type]}
-    if "f_c_module" not in fields:
-        ntypemap.f_c_module = {"--import--": [ntypemap.f_capsule_data_type]}
+    if "i_module" not in fields:
+        ntypemap.i_module = {ntypemap.f_module_name: [ntypemap.f_capsule_data_type]}
 
     ntypemap.finalize()
 
@@ -1209,7 +1301,6 @@ def create_struct_typemap_from_fields(cxx_name, fields, library):
         c_type=cxx_name,
         cxx_type=cxx_name,
         f_type = "type(%s)" % cxx_name,
-        f_to_c="{f_var}",
     )
     ntypemap.update(fields)
 
@@ -1221,8 +1312,8 @@ def create_struct_typemap_from_fields(cxx_name, fields, library):
 
     if "f_module" not in fields:
         ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_derived_type]}
-#    if "f_c_module" not in fields:
-#        ntypemap.f_c_module = {ntypemap.f_module_name: [ntypemap.f_capsule_data_type]}
+#    if "i_module" not in fields:
+#        ntypemap.i_module = {ntypemap.f_module_name: [ntypemap.f_capsule_data_type]}
 
     library.symtab.add_typedef(cxx_name, ntypemap)
 
@@ -1294,11 +1385,9 @@ def fill_struct_typemap(node, fields={}):
 
     if "f_module" not in fields:
         ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_derived_type]}
-    if "f_c_module" not in fields:
-        ntypemap.f_c_module = {"--import--": [ntypemap.f_derived_type]}
+    if "i_module" not in fields:
+        ntypemap.i_module = {ntypemap.f_module_name: [ntypemap.f_derived_type]}
         
-# GGG - sets f_c_module_line and f_module_line which may or may not be needed
-##    ntypemap.finalize()
     if ntypemap.cxx_type and not ntypemap.flat_name:
             ntypemap.compute_flat_name()
 
@@ -1313,11 +1402,12 @@ def create_fcnptr_typemap(symtab, name):
         node - ast.TypedefNode
         fields - dictionary
     """
+    raise NotImplemented
     type_name = symtab.scopename + name
     ntypemap = Typemap(
         type_name,
-        base="fcnptr",
-        sgroup="fcnptr",
+        base="procedure",
+        sgroup="procedure",
     )
     # Check if all fields are C compatible
 #            ntypemap.compute_flat_name()
@@ -1349,8 +1439,8 @@ def fill_fcnptr_typemap(node, fields={}):
     c_type = fmt.C_prefix + cxx_name
     ntypemap = Typemap(
         cxx_name,
-        base="fcnptr",
-        sgroup="fcnptr",
+        base="procedure",
+        sgroup="procedure",
         c_type="c_type",
         cxx_type="cxx_type",
         f_type="XXXf_type",
@@ -1390,7 +1480,6 @@ def fill_typedef_typemap(node, fields={}):
     # Define equivalent parameter for Fortran
 #    node.f_define_parameter = "integer, parameter :: {} = {}".format(
 #        f_name, ntypemap.f_kind)
-#    node.c_typedef = node.ast.gen_decl(as_c=True, name=c_name)
 
 ##############################    print("XXXXX DD", ntypemap.name, fmtdict.C_header_filename)
     ntypemap.update(dict(
@@ -1401,9 +1490,9 @@ def fill_typedef_typemap(node, fields={}):
         f_type = "{}({})".format(ntypemap.base, f_name),
         f_kind=f_name,
         #XXX f_cast  using f_name
-#        f_module_name=fmtdict.F_module_name,
+        f_module_name=fmtdict.F_module_name,
 #        f_derived_type=fmtdict.F_derived_name,
-#        f_capsule_data_type=fmtdict.F_capsule_data_type,
+#        f_capsule_data_type=fmtdict.f_capsule_data_type,
 #        f_module={fmtdict.F_module_name: [fmtdict.F_derived_name]},
         # #- f_to_c='{f_var}%%%s()' % fmtdict.F_name_instance_get, # XXX - develop test
 #        f_to_c="{f_var}%%%s" % fmtdict.F_derived_member,
@@ -1413,24 +1502,29 @@ def fill_typedef_typemap(node, fields={}):
 
     if ntypemap.base in ["shadow", "struct"]:
         ntypemap.f_type = "type({})".format(f_name)
+    elif ntypemap.base == "integer":
+        ntypemap.f_cast = "int({f_var}, %s)" % f_name
+    elif ntypemap.base == "real":
+        ntypemap.f_cast = "real({f_var}, %s)" % f_name
     
-    # import names which are wrapped by this module
+    # USE names which are wrapped by this module
     # XXX - deal with namespaces vs modules
     ntypemap.f_module = {fmtdict.F_module_name: [f_name]}
-    ntypemap.f_c_module = {"--import--": [f_name]}
+    ntypemap.i_module = {fmtdict.F_module_name: [f_name]}
     ntypemap.update(fields)
 #    fill_typedef_typemap_defaults(ntypemap, fmtdict)
     ntypemap.finalize()
 
-def return_shadow_types(typemaps):  # typemaps -> dict
+def return_user_types(typemaps):  # typemaps -> dict
     """Return a dictionary of user defined types."""
     dct = {}
     for key, ntypemap in typemaps.items():
         if ntypemap.name == "--template-parameter--":
             continue
-        elif ntypemap.sgroup in ["shadow", "struct", "template", "enum"]:
+        elif ntypemap.sgroup in [
+                "shadow", "smartptr", "struct", "template", "enum", "procedure"]:
             dct[key] = ntypemap
-        elif hasattr(ntypemap, "is_enum"):
+        elif ntypemap.is_enum:
             dct[key] = ntypemap
         elif hasattr(ntypemap, "is_typedef"):
             dct[key] = ntypemap

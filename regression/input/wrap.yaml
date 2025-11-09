@@ -3,14 +3,14 @@
 # This test is not compiled
 
 copyright:
-- Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-- other Shroud Project Developers.
-- See the top-level COPYRIGHT file for details.
+- Copyright Shroud Project Developers. See LICENSE file for details.
 -
 - "SPDX-License-Identifier: (BSD-3-Clause)"
 -
 
 library: wrap
+
+cxx_header: wrap.hpp
 
 options:
   # Do not wrap anything by default
@@ -22,7 +22,7 @@ options:
 declarations:
 - decl: class Class1
   declarations:
-  - decl: void FuncInClass(void)
+  - decl: int FuncInClass(void)
     options:
       wrap_fortran: True
 

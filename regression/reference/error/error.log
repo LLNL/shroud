@@ -1,0 +1,62 @@
+Read yaml error.yaml
+Close error_types.yaml
+library C wrappers
+namespace error
+class Cstruct_as_subclass
+C f int get_x1(void) +intent(getter)
+C f void set_x1(int val +intent(setter)) +intent(setter)
+C f int get_y1(void) +intent(getter)
+C f void set_y1(int val +intent(setter)) +intent(setter)
+C f int get_z1(void) +intent(getter)
+C f void set_z1(int val +intent(setter)) +intent(setter)
+Close wrapCstruct_as_subclass.h
+Close wrapCstruct_as_subclass.cpp
+C c void BadFstatements(void)
+C f void BadFstatements(void)
+C c void AssumedRank(int *data)
+C f void AssumedRank(int *data)
+C f void AssumedRank(int *data +rank(0))
+C f void AssumedRank(int *data +rank(1))
+C f void AssumedRank(int *data +rank(2))
+C c const std::string *getConstStringPtrOwnsAllocPattern(void) +free_pattern(C_string_free)+owner(caller)
+C f const std::string *getConstStringPtrOwnsAllocPattern(void) +free_pattern(C_string_free)+owner(caller)
+Close wraperror.h
+Close wraperror.cpp
+library Fortran wrappers
+namespace error
+class Cstruct_as_subclass
+Fortran int get_x1(void) +intent(getter)
+Fortran void set_x1(int val +intent(setter)) +intent(setter)
+Fortran int get_y1(void) +intent(getter)
+Fortran void set_y1(int val +intent(setter)) +intent(setter)
+Fortran int get_z1(void) +intent(getter)
+Fortran void set_z1(int val +intent(setter)) +intent(setter)
+C-interface f int get_x1(void) +intent(getter)
+C-interface f void set_x1(int val +intent(setter)) +intent(setter)
+C-interface f int get_y1(void) +intent(getter)
+C-interface f void set_y1(int val +intent(setter)) +intent(setter)
+C-interface f int get_z1(void) +intent(getter)
+C-interface f void set_z1(int val +intent(setter)) +intent(setter)
+Fortran void BadFstatements(void)
+Fortran void AssumedRank(int *data)
+Fortran void AssumedRank(int *data +rank(0))
+Fortran void AssumedRank(int *data +rank(1))
+Fortran void AssumedRank(int *data +rank(2))
+Fortran const std::string *getConstStringPtrOwnsAllocPattern(void) +free_pattern(C_string_free)+owner(caller)
+C-interface c void BadFstatements(void)
+C-interface f void BadFstatements(void)
+C-interface f void AssumedRank(int *data)
+C-interface f void AssumedRank(int *data +rank(0))
+C-interface f void AssumedRank(int *data +rank(1))
+C-interface f void AssumedRank(int *data +rank(2))
+C-interface c const std::string *getConstStringPtrOwnsAllocPattern(void) +free_pattern(C_string_free)+owner(caller)
+C-interface f const std::string *getConstStringPtrOwnsAllocPattern(void) +free_pattern(C_string_free)+owner(caller)
+Close wrapferror.f
+Close utilerror.cpp
+Close typeserror.h
+Python function void BadFstatements(void)
+Python function void AssumedRank(int *data)
+Python function void PYGoodFunction(void)
+Close pyerrormodule.cpp
+Close pyerrormodule.hpp
+Close setup.py

@@ -1,6 +1,4 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 # #######################################################################
@@ -93,11 +91,7 @@ class Vectors(unittest.TestCase):
         self.assertTrue("arg must be a 2-D array of int" in str(context.exception))
 
 
-# creating a new test suite
-newSuite = unittest.TestSuite()
- 
-# adding a test case
-newSuite.addTest(unittest.makeSuite(Vectors))
+unittest.TestLoader().loadTestsFromTestCase(Vectors)
 
 if __name__ == "__main__":
     unittest.main()

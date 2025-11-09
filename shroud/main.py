@@ -1,7 +1,5 @@
 #!/bin/env python3
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 ########################################################################
@@ -22,7 +20,9 @@ from yaml.constructor import Constructor
 
 from . import ast
 from . import declast
+from . import fcfmt
 from . import generate
+from . import metaattrs
 from . import metadata
 from . import splicer
 from . import statements
@@ -75,8 +75,11 @@ class TypeOut(util.WrapperMixin):
             parts = fullname.split("::")
             top[parts[-1]] = cls.typemap
         for ns in node.namespaces:
-            top[ns.name] = {}
-            self._get_namespaces(ns, top[ns.name])
+            if ns.options.flatten_namespace:
+                self._get_namespaces(ns, top)
+            else:
+                top[ns.name] = {}
+                self._get_namespaces(ns, top[ns.name])
             
     def splitup(self, ns, output, mode):
         for name in sorted(ns.keys()):
@@ -141,9 +144,7 @@ class TypeOut(util.WrapperMixin):
         # Dummy out the library for the copyright.
         class Dummy:
             copyright = ["""
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)"""]
         self.newlibrary = Dummy()
@@ -192,10 +193,10 @@ def dump_jsonfile(config, logdir, basename, newlibrary):
         out["types"] = todict.to_dict(typemaps)
     elif newlibrary.options.debug_testsuite:
         # Add user defined types for debugging.
-        user_types = typemap.return_shadow_types(typemaps)
+        user_types = typemap.return_user_types(typemaps)
         if user_types:
             out["types"] = todict.to_dict(user_types)
-        user_types = declast.symtab_to_typemap(newlibrary.symtab.scope_stack[0])
+        user_types = declast.symtab_to_typemap(newlibrary.symtab.top)
         if user_types:
             out["symtab"] = todict.to_dict(user_types)
         # Clean out this info since it's the same for all tests.
@@ -207,7 +208,21 @@ def dump_jsonfile(config, logdir, basename, newlibrary):
     json.dump(out, fp, sort_keys=True, indent=4, separators=(',', ': '))
     fp.close()
 
+def dump_fmt(config, logdir, basename, newlibrary):
+    """Write a JSON file for debugging.
+    """
+    jsonpath = os.path.join(logdir, basename + ".fmt.json")
+    fp = open(jsonpath, "w")
 
+    out = dict(
+        library=todict.print_fmt(newlibrary),
+        # yaml=all,
+    )
+
+    json.dump(out, fp, sort_keys=True, indent=4, separators=(',', ': '))
+    fp.close()
+
+    
 # https://thisdataguy.com/2017/07/03/no-options-with-argparse-and-python/
 class BooleanAction(argparse.Action):
     def __init__(self, option_strings, dest, nargs=None, **kwargs):
@@ -229,6 +244,44 @@ def main():
     )
     parser.add_argument("--version", action="version",
                         version=metadata.__version__)
+
+    ##### Set option wrap fields
+    parser.add_argument(
+        "--fortran", action="append_const", const="fortran", dest="wrappers",
+        help="Create Fortran wrapper"
+    )
+    parser.add_argument(
+        "--c", action="append_const", const="c", dest="wrappers",
+        help="Create C wrapper"
+    )
+    parser.add_argument(
+        "--python", action="append_const", const="python", dest="wrappers",
+        help="Create Python wrapper"
+    )
+    parser.add_argument(
+        "--lua", action="append_const", const="lua", dest="wrappers",
+        help="Create Lua wrapper"
+    )
+
+    ##### Turn off wrap options
+    # Aftet 3.9 use action=argparse.BooleanOptionalAction
+    parser.add_argument(
+        "--no-fortran", action="append_const", const="no-fortran", dest="wrappers",
+        help="Do not create Fortran wrapper"
+    )
+    parser.add_argument(
+        "--no-c", action="append_const", const="no-c", dest="wrappers",
+        help="Do not create C wrapper"
+    )
+    parser.add_argument(
+        "--no-python", action="append_const", const="no-python", dest="wrappers",
+        help="Do not create Python wrapper"
+    )
+    parser.add_argument(
+        "--no-lua", action="append_const", const="no-lua", dest="wrappers",
+        help="Do not create Lua wrapper"
+    )
+    
     parser.add_argument(
         "--outdir",
         default="",
@@ -312,7 +365,20 @@ def main():
     #    sys.stderr.write("Some useful message")  # example error message
     sys.exit(0)  # set status for errors
 
+def process_lang_wrapper_flags(options, wraplist):
+    """Update options based on wraplist.
 
+    options=dict
+    wraplist = [ "fortran", "no-fortran", ...]
+    """
+    if wraplist is None:
+        return
+    for opt in wraplist:
+        if opt[:3] == "no-":
+            options["wrap_" + opt[3:]] = False
+        else:
+            options["wrap_" + opt] = True
+    
 def create_wrapper(filename, outdir="", path=None):
     """Translate function arguments into command line options.
     Return config instance. It has list of files created.
@@ -413,9 +479,18 @@ def main_with_args(args):
     #    config.pyfiles = [] # list of Python module files created
 
     # accumulated input
-    allinput = {}
+    allinput = dict(options={})
     splicers = dict(c={}, f={}, py={}, lua={})
 
+    # Defaults based on entry point.
+    wraplang = dict(
+        wrap_fortran=True,
+        wrap_c=True,
+        wrap_python=False,
+        wrap_lua=False,
+    )
+    allinput["options"].update(wraplang)
+    
     for filename in args.filename:
         ext = os.path.splitext(filename)[1]
         if ext in [".yaml", ".yml"]:
@@ -446,14 +521,17 @@ def main_with_args(args):
 
             fp.close()
             if d is not None:
-                allinput.update(d)
-        #            util.update(allinput, d)  # recursive update
+#                allinput.update(d)
+               util.update(allinput, d)  # recursive update
         elif ext == ".json":
             raise NotImplementedError("Can not deal with json input for now")
         else:
             # process splicer file on command line, search path is not used
             splicer.get_splicer_based_on_suffix(filename, splicers)
 
+    # Default language options from command line arguments
+    process_lang_wrapper_flags(allinput["options"], args.wrappers)
+            
     # Add options from command line last
     # so they replace values from YAML files.
     if args.option:
@@ -465,15 +543,16 @@ def main_with_args(args):
             elif value in ["false", "False"]:
                 value = False
             cmdoptions[name] = value
-        if "options" in allinput:
-            allinput["options"].update(cmdoptions)
-        else:
-            allinput["options"] = cmdoptions
+        allinput["options"].update(cmdoptions)
 
     if args.language:
         allinput['language'] = args.language
 
-    #    print(allinput)
+    language = util.find_language(allinput.get("language"))
+    wrap_c = allinput["options"]["wrap_c"]
+    if language == "c" and wrap_c:
+        allinput["options"]["wrap_c"] = False
+        print("Will not generate C wrappers for a language=c library")
 
     symtab = declast.SymbolTable()
     def_types = symtab.typemaps  #typemap.initialize()
@@ -518,13 +597,27 @@ def main_with_args(args):
     # Write out generated types
     TypeOut(newlibrary, config).write_class_types()
 
+    user_statements = allinput.get("statements", {})
+
     try:
+        statements.update_fc_statements_for_language(
+            newlibrary.language, user_statements.get("fc", {}))
+        whelpers.add_all_helpers(newlibrary, statements)
         wrap = newlibrary.wrap
+
+        metaattrs.process_metaattrs(newlibrary, "share")
+        
+        if wrap.c:
+            metaattrs.process_metaattrs(newlibrary, "c")
+        if wrap.fortran:
+            metaattrs.process_metaattrs(newlibrary, "f")
+        
         # Wrap C functions first to see which actually generate wrappers
         # based on fc_statements. Then the Fortran wrapper will call
         # the C function directly or the wrapped function.
         clibrary = wrapc.Wrapc(newlibrary, config, splicers["c"])
-        if wrap.c:
+        if wrap.c or wrap.fortran:
+            fcfmt.FillFormat(newlibrary).fmt_library()
             clibrary.wrap_library()
 
         if wrap.fortran:
@@ -534,13 +627,16 @@ def main_with_args(args):
             clibrary.write_post_fortran()
 
         if wrap.python:
+            metaattrs.process_metaattrs(newlibrary, "py")
             wrapp.Wrapp(newlibrary, config, splicers["py"]).wrap_library()
 
         if wrap.lua:
+            metaattrs.process_metaattrs(newlibrary, "lua")
             wrapl.Wrapl(newlibrary, config, splicers["lua"]).wrap_library()
     finally:
         # Write a debug dump even if there was an exception.
         dump_jsonfile(config, args.logdir, basename, newlibrary)
+#        dump_fmt(config, args.logdir, basename, newlibrary)
 
     # Write list of output files.  May be useful for build systems
     if args.cfiles:
@@ -558,21 +654,23 @@ def main_with_args(args):
         hfile = os.path.join(args.logdir, args.write_helpers + ".c")
         with open(hfile, "w") as fp:
             whelpers.write_c_helpers(fp)
-        hfile = os.path.join(args.logdir, args.write_helpers + ".f")
-        with open(hfile, "w") as fp:
-            whelpers.write_f_helpers(fp)
 
     if args.write_statements:
+        os.chdir(args.logdir)
         hfile = os.path.join(args.logdir, args.write_statements)
-        wrapp.update_statements_for_language(newlibrary.language)
-        wrapl.update_statements_for_language(newlibrary.language)
+
+        lang = newlibrary.language
+        wrapp.update_statements_for_language(lang)
+        wrapl.update_statements_for_language(lang)
+        options = newlibrary.options
+
         with open(hfile, "w") as fp:
             fp.write("***** Fortran/C\n")
-            statements.write_cf_tree(fp)
+            statements.write_cf_tree(fp, options)
             fp.write("***** Python\n")
-            wrapp.write_stmts_tree(fp)
+            wrapp.write_stmts_tree(fp, options)
             fp.write("***** Lua\n")
-            wrapl.write_stmts_tree(fp)
+            wrapl.write_stmts_tree(fp, options)
             
     log.close()
 
@@ -582,6 +680,24 @@ def main_with_args(args):
     sys.stdout.flush()
     return config
 
+
+def info(type, value, tb):
+    if hasattr(sys, 'ps1') or not sys.stderr.isatty():
+    # we are in interactive mode or we don't have a tty-like
+    # device, so we call the default hook
+        sys.__excepthook__(type, value, tb)
+    else:
+        import traceback, pdb
+        # we are NOT in interactive mode, print the exception...
+        traceback.print_exception(type, value, tb)
+        print
+        # ...then start the debugger in post-mortem mode.
+        # pdb.pm() # deprecated
+        pdb.post_mortem(tb) # more "modern"
+
+# Run pdb on exception
+# https://stackoverflow.com/questions/242485/starting-python-debugger-automatically-on-error
+#sys.excepthook = info
 
 if __name__ == "__main__":
     main()

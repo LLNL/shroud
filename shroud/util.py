@@ -1,6 +1,4 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 
@@ -12,6 +10,8 @@ import os
 import re
 import string
 
+from . import error
+
 try:
     # Python 3
     Mapping = collections.abc.Mapping
@@ -22,6 +22,11 @@ except AttributeError:
     Sequence = collections.Sequence
 OrderedDict = collections.OrderedDict
 
+try:
+    from collections.abc import Mapping  # For Python 3.10+
+except ImportError:
+    from collections import Mapping  # For Python 3.9 and earlier
+
 fmt = string.Formatter()
 
 # See AstNode.eval_template for updating AST node fmtdict.
@@ -31,10 +36,19 @@ def wformat(template, dct):
     assert template is not None
     try:
         return fmt.vformat(template, None, dct)
-    except AttributeError:
+    except AttributeError as err:
+        # err.args ("'Scope' object has no attribute 'c_var_len'",)
+        name = err.args[0].split()[-1]
+        cursor = error.get_cursor()
+        cursor.warning("No value for %s in %r" % (name, template))
+        return "===>%s<===" % template
         #raise        # uncomment for detailed backtrace
         # use %r to avoid expanding tabs
         raise SystemExit("Error with template: " + "%r" % template)
+    except ValueError as err:
+        cursor = error.get_cursor()
+        cursor.warning("%s in %r" % (err.args[0], template))
+        return "===>%s<===" % template
 
 
 def append_format(lstout, template, fmt):
@@ -52,7 +66,7 @@ def append_format_lst(lstout, lstin, fmt):
 
 
 def append_format_cmds(lstout, stmts, name, fmt):
-    """Format entries in dictin[name] and append to lstout.
+    """Format entries in stmts[name] and append to lstout.
     Return True if found.
     Used with c_statements and py_statements.
 
@@ -71,7 +85,8 @@ def append_format_cmds(lstout, stmts, name, fmt):
 
 # http://stackoverflow.com/questions/1175208/elegant-python-function-to-convert-camelcase-to-camel-case
 def un_camel(name):
-    """ Converts a CamelCase name into an under_score name.
+    """ Converts a CamelCase name into an under_score name in lowercase.
+    Helpful for Fortran which is case insensitive. 
 
         >>> un_camel('CamelCase')
         'camel_case'
@@ -91,7 +106,7 @@ def un_camel(name):
 # http://stackoverflow.com/questions/3232943/update-value-of-a-nested-dictionary-of-varying-depth
 def update(d, u):
     for k, v in u.items():
-        if isinstance(v, collections.Mapping):
+        if isinstance(v, Mapping):
             r = update(d.get(k, {}), v)
             d[k] = r
         else:
@@ -155,6 +170,20 @@ def as_yaml(obj, order, output):
             output.append("{}: {}".format(key, value))
 
 
+def find_language(language):
+    """Return the library language in a standard form"""
+    if language is None:
+        language = "c++"
+    language = language.lower()
+    if language not in ["c", "c++"]:
+        raise RuntimeError("language must be 'c' or 'c++', found {}"
+                           .format(language))
+    if language == "c++":
+        # Use a form which can be used as a variable name
+        language = "cxx"
+    return language
+            
+
 def extern_C(output, position):
     """Create extern "C" guards for C++
     """
@@ -199,24 +228,27 @@ class WrapperMixin(object):
         self.splicer_names[-1] = name
         self.splicer_path = ".".join(self.splicer_names) + "."
 
-    def _create_splicer(self, name, out, default=None, force=None):
+    def _create_splicer(self, name, output, default=None, force=None, blank=False):
         """Insert a splicer with *name* into list *out*.
-        If *force* is defined, use it for contents. Otherwise,
-        use the splicer from the splicer_stack if it exists.
+        If *force* is defined, use it for contents.
+        This is usually a splicer associated directly with a decl.
+        Otherwise, use the splicer from the splicer_stack if it exists.
         Finally, add *default* lines.
         Return True if code was added to out, else False.
 
         Args:
             name    - Name of splicer in current level.
-            out     - Output list.
+            output     - Output list.
             default - Default contents if no splicer is present.
             force   - Contents which are added instead of splicer or
                       default.
+            blank   - Add a blank line before any generated output.
         """
         # The prefix is needed when two different sets of output
         # are being create and they are not in sync.
         # Creating methods and derived types together.
         show_splicer_comments = self.newlibrary.options.show_splicer_comments
+        out = []
         if show_splicer_comments:
             out.append(
                 "%s splicer begin %s%s"
@@ -236,6 +268,10 @@ class WrapperMixin(object):
             out.append(
                 "%s splicer end %s%s" % (self.comment, self.splicer_path, name)
             )
+        if out:
+            if blank:
+                output.append("")
+            output.extend(out)
         return added_code
 
     #####
@@ -454,31 +490,13 @@ class WrapperMixin(object):
             output.append(self.doxygen_cont + " \\return %s" % docs["return"])
         output.append(self.doxygen_end)
 
-    def name_temp_vars(self, rootname, stmts, fmt):
-        """Compute names of temporary variables.
-
-        Create stmts.temps and stmts.local variables.
-        """
-        if stmts.temps is not None:
-            for name in stmts.temps:
-                setattr(fmt,
-                        "c_var_{}".format(name),
-                        "{}{}_{}".format(fmt.c_temp, rootname, name))
-        if stmts.local is not None:
-            for name in stmts.local:
-                setattr(fmt,
-                        "c_local_{}".format(name),
-                        "{}{}_{}".format(fmt.C_local, rootname, name))
-
     def get_metaattrs(self, ast):
-        decl = []
-        ast.declarator.gen_attrs(ast.declarator.metaattrs, decl, dict(
-            dimension=True,
-            struct_member=True
-        ))
-        return "".join(decl)
+        """This is the older metaattrs.
+        Maybe update for _bind.meta.
+        """
+        return ""
         
-    def document_stmts(self, output, ast, stmt0, stmt1):
+    def document_stmts(self, output, ast, stmt0):
         """A comments to show which statements were used.
 
         Skip metaattributes which are objects.
@@ -487,14 +505,19 @@ class WrapperMixin(object):
         if dbg:
             output.append(self.comment + " Attrs:    " + dbg)
         
-        if stmt0 == stmt1:
-            output.append(
-                self.comment + " Exact:     " + stmt0)
-        else:
-            output.append(
-                self.comment + " Requested: " + stmt0)
-            output.append(
-                self.comment + " Match:     " + stmt1)
+        output.append(self.comment + " Statement: " + stmt0)
+
+    def document_function(self, output, node, stmt, decl):
+        output.append("! ----------------------------------------")
+        if node.options.debug_index:
+            output.append("! Index:     {}".format(node._function_index))
+        output.append("! Function:  " + decl)
+        self.document_stmts(output, node.ast, stmt.name)
+
+    def document_argument(self, output, arg, stmt, decl):
+        output.append("! ----------------------------------------")
+        output.append("! Argument:  " + decl)
+        self.document_stmts(output, arg, stmt.name)
 
 
 class Header(object):
@@ -541,19 +564,24 @@ class Header(object):
         for name in node.find_header():
             self.header_impl_include_order["cxx_header"][name] = True
 
+    def add_cxx_header_list(self, nodes):
+        for node in nodes:
+            self.add_cxx_header(node)
+
     def add_file_code_header(self, fname, library):
         """Add the headers from file_code for fname.
 
         Parameters
         ----------
-        node : ast.LibraryNode, ast.NamespaceNode
+        fname : str
+        library : ast.LibraryNode, ast.NamespaceNode
         """
         ntypemap = library.file_code.get(fname)
         if ntypemap:
             self.file_code[fname] = ntypemap
             
     def add_typemap_list(self, lst):
-        """Append list of headers."""
+        """Collect list of headers."""
         for name in lst:
             self.header_impl_include_order["typemap"][name] = True
 
@@ -607,7 +635,7 @@ class Header(object):
         for name in getattr(intent_blk, lang):
             self.header_impl_include_order["shroud"][name] = True
 
-    def write_headers(self, output):
+    def write_headers(self, output, is_header=False):
         """Preserve header order, avoid duplicates.
 
         Args:
@@ -619,6 +647,8 @@ class Header(object):
         found = {} # dictionary of header files found.
         for category in ["cxx_header", "file_code", "typemap", "shroud"]:
             lines = []
+            start_cxx = []
+            end_cxx = []
             if category == "file_code":
                 self.write_includes_for_header(self.file_code, lines, found)
             elif category == "typemap":
@@ -626,6 +656,10 @@ class Header(object):
                     self.write_headers_nodes(lines, found)
                 else:
                     self.write_includes_for_header(self.typemaps, lines, found)
+            elif category == "cxx_header":
+                if is_header and self.newlibrary.language == "cxx":
+                    start_cxx = ["#if __cplusplus"]
+                    end_cxx = ["#endif"]
             for header in headers[category].keys():
                 if header in found:
                     continue
@@ -642,7 +676,9 @@ class Header(object):
                 if debug:
                     # Only print label if there are unique entries.
                     output.append("// " + category)
+                output.extend(start_cxx)
                 output.extend(lines)
+                output.extend(end_cxx)
 
     def write_headers_nodes(self, output, skip):
         """Write out headers required by typemaps.
@@ -782,18 +818,21 @@ class Scope(object):
         """
         return getattr(self, key)
 
+    def __setitem__(self, key, value):
+        setattr(self, key, value)
+
     def __contains__(self, item):
         return hasattr(self, item)
 
     def __repr__(self):
         return str(self._to_dict())
 
-    # Useful to find where an fmt field is set.
-#    def __setattr__(self, name, value):
-#        self.__dict__[name] = value
-#        if name is 'c_var_cdesc':
-#            print('setting', name, value)
-#            import traceback; traceback.print_stack()
+    # Useful to find where an fmtdict field is set. Remove XXX to use.
+    def XXX__setattr__(self, name, value):
+        self.__dict__[name] = value
+        if name == 'c_var_cdesc':
+            print('setting', name, value)
+            import traceback; traceback.print_stack()
 
     def get(self, key, value=None):
         """ D.get(k[,d]) -> D[k] if k in D, else d.  d defaults to None.

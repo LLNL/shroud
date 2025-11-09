@@ -1,6 +1,4 @@
-! Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-! other Shroud Project Developers.
-! See the top-level COPYRIGHT file for details.
+! Copyright Shroud Project Developers. See LICENSE file for details.
 !
 ! SPDX-License-Identifier: (BSD-3-Clause)
 ! #######################################################################
@@ -21,6 +19,7 @@ program tester
   call test_class1_final
   call test_class1_new_by_value
   call test_class1
+  call test_class1_memory
   call test_singleton
   call test_subclass
   call test_getter
@@ -53,16 +52,14 @@ contains
 
     call set_case_name("test_class1_final")
 
-    ! Test generic constructor
+    ! Test generic constructor. Allocates new memory.
     obj0 = class1()
-!    call assert_equals(1, obj0%cxxmem%refcount, "reference count after new")
 
+    ! Create alias
     obj1 = obj0
-!    call assert_equals(2, obj0%cxxmem%refcount, "rhs reference count after assign")
-!    call assert_equals(2, obj1%cxxmem%refcount, "lhs reference count after assign")
 
+    call obj1%delete  ! The alias does not release the memory
     call obj0%delete
-!    call assert_equals(1, obj1%cxxmem%refcount, "reference count after delete")
 
     ! should call TUT_SHROUD_array_destructor_function as part of 
     ! FINAL of capsule_data.
@@ -70,31 +67,48 @@ contains
 
   subroutine test_class1_new_by_value
     integer mflag
-    type(class1) obj0
+    logical mlogical
+    type(class1) obj0, obj1
 
     call set_case_name("test_class1_new_by_value")
 
     ! Return a new instance via a copy constructor.
     ! The C wrapper creates an instance then assigns function results into it.
     ! idtor is set to cause it to be released when it goes out of scope.
-    obj0 = get_class_copy(5)
+    obj0 = get_class1_copy(5)
 
+    ! Create an alias
+    obj1 = obj0
+
+    call obj1%set_m_bool(.true.)
+    
     mflag = obj0%get_m_flag()
-    call assert_equals(5, mflag)
+    call assert_equals(5, mflag, "obj0%m_flag")
+
+    ! Both obj0 and obj1 have the same value for m_bool because their aliases
+    mlogical = obj0%get_m_bool()
+    call assert_equals(.true., mlogical, "obj0%m_bool")
+
+    mlogical = obj1%get_m_bool()
+    call assert_equals(.true., mlogical, "obj1%m_bool")
 
     ! should call TUT_SHROUD_array_destructor_function as part of 
     ! FINAL of capsule_data.
     call obj0%delete
+    call obj1%delete
 
   end subroutine test_class1_new_by_value
 
   subroutine test_class1
     integer iflag, mtest
     integer direction
+    logical mlogical
     type(class1) obj0, obj1, obj2
     type(class1) obj0a
     type(c_ptr) ptr
     character(:), allocatable :: name
+    character(:), pointer :: name_ptr
+    character(20) :: name_copy
 
     call set_case_name("test_class1")
 
@@ -103,6 +117,7 @@ contains
     ptr = obj0%get_instance()
     call assert_true(c_associated(ptr), "class1_new obj0")
 
+    !----------
     mtest = obj0%get_test()
     call assert_equals(0, mtest, "get_test 1")
 
@@ -110,18 +125,43 @@ contains
     mtest = obj0%get_test()
     call assert_equals(4, mtest, "get_test 2")
 
+    !----------
+    mlogical = obj0%get_m_bool()
+    call assert_equals(.true., mlogical, "get_m_bool 1")
+    
+    call obj0%set_m_bool(.false.)
+    mlogical = obj0%get_m_bool()
+    call assert_equals(.false., mlogical, "get_m_bool 2")
+
+    !----------
     ! Get default name from constructor
     name = obj0%get_m_name()
     call assert_true(allocated(name), "get_m_name")
-    call assert_equals(len(name), 9, "get_m_name len")
-    call assert_equals(name, "ctor_name", "get_m_name value")
+    call assert_equals(9, len(name), "get_m_name len")
+    call assert_equals("ctor_name", name, "get_m_name value")
+
+    nullify(name_ptr)
+    name_ptr => obj0%get_m_name_ptr()
+    call assert_true(associated(name_ptr), "get_m_name_ptr")
+    call assert_equals(8, len(name_ptr), "get_m_name_ptr len")
+    call assert_equals("ptr_name", name_ptr, "get_m_name_ptr value")
+
+    name_copy = " "
+    call obj0%get_m_name_copy(name_copy)
+    call assert_equals(9, len_trim(name_copy), "get_m_name_copy len")
+    call assert_equals("copy_name", name_copy, "get_m_name_copy value")
 
     ! Set new name then get.
     call obj0%set_m_name("changed_name")
     name = obj0%get_m_name()
     call assert_true(allocated(name), "get_m_name changed")
-    call assert_equals(len(name), 12, "get_m_name changed len")
-    call assert_equals(name, "changed_name", "get_m_name changed value")
+    call assert_equals(12, len(name), "get_m_name changed len")
+    call assert_equals("changed_name", name, "get_m_name changed value")
+
+    name = obj0%get_name()
+    call assert_true(allocated(name), "get_name allocated")
+    call assert_equals(6, len(name), "get_name len")
+    call assert_equals("Class1", name, "get_name value")
 
     obj1 = class1(1)
     ptr = obj1%get_instance()
@@ -210,6 +250,18 @@ contains
     ! obj0a has a dangling reference to a deleted object
   end subroutine test_class1
 
+  subroutine test_class1_memory
+    character(40) path
+    type(class1) obj0
+
+    call set_case_name("test_class1_memory")
+
+    obj0 = class1()
+    path = obj0%get_path()
+    call assert_equals(path, "Class1additional", "get_path")
+
+  end subroutine test_class1_memory
+
   subroutine test_singleton
     type(singleton) obj0, obj1
 
@@ -231,6 +283,7 @@ contains
     base = Shape()
     ivar = base%get_ivar()
     call assert_equals(ivar, 0, "get_ivar")
+    call base%dtor
 
     circle1 = Circle()
     ivar = circle1%get_ivar()
@@ -240,7 +293,8 @@ contains
     cxxptr = circle1%get_instance()
     call assert_true(c_associated(cxxptr), "subclass instance c_associated")
     call assert_true(circle1%associated(), "subclass instance associated")
-    
+    call circle1%dtor
+
   end subroutine test_subclass
 
   subroutine test_getter

@@ -1,12 +1,11 @@
 copyright:
-- Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-- other Shroud Project Developers.
-- See the top-level COPYRIGHT file for details.
+- Copyright Shroud Project Developers. See LICENSE file for details.
 -
 - "SPDX-License-Identifier: (BSD-3-Clause)"
 -
 
 # Test fortran_generic
+# Since language=c, no C wrappers will be generated.
 
 library: generic
 cxx_header: generic.h helper.h
@@ -14,11 +13,14 @@ language: c
 
 options:
   debug: True
+#  debug_index: True
   wrap_python: False
   wrap_lua: False
   literalinclude2: True
 
 declarations:
+
+- decl: char *LastFunctionCalled(void) + len(40)
 
 ########################################
 # Create a generic interface for two functions.
@@ -67,8 +69,22 @@ declarations:
 - decl: int SumValues(const int *values+dimension(..), int nvalues)
   doxygen:
     brief: scalar or array argument using assumed rank
+    description: |
+      Create a function for each rank and a generic interface
+      to call them by one name.
   options:
     F_assumed_rank_max: 2
+
+- block: True
+  options:
+    # Change the name of the Fortran implementation based on
+    # F_name_generic to avoid the library's BA_ prefix.
+    F_name_impl_template: "{F_name_generic}{function_suffix}"
+    F_assumed_rank_max: 3
+  declarations:
+  - decl: void BA_nbcastinteger(const char *cptr, int *ptr+dimension(..))
+    format:
+      F_name_generic: nbcastinteger
 
 ########################################
 # Test Fortran Generic and rank.
@@ -107,11 +123,21 @@ declarations:
 - decl: void SavePointer2(void *addr, int type+implied(type(addr)), size_t size+implied(size(addr)))
   fstatements:
     c:
-      c_helper: ShroudTypeDefines
-      pre_call:
+      # The void * case
+      c_pre_call:
       - // Test adding a blank line below.
       -
       - type = convert_type(type);
+      helper:
+      - type_defines
+    f:
+      # The fortran_generic case
+      c_pre_call:
+      - // Test adding a blank line below.
+      -
+      - type = convert_type(type);
+      helper:
+      - type_defines
   fortran_generic:
   - decl: (float *addr+rank(1)+intent(in))
     function_suffix: _float1d

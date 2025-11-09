@@ -1,7 +1,5 @@
 copyright:
-- Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-- other Shroud Project Developers.
-- See the top-level COPYRIGHT file for details.
+- Copyright Shroud Project Developers. See LICENSE file for details.
 -
 - "SPDX-License-Identifier: (BSD-3-Clause)"
 -
@@ -23,11 +21,6 @@ declarations:
 - decl: extern int global_flag;
 
 - decl: typedef int TypeID;
-
-- decl: typedef int EnumTypeID
-  fields:
-    c_to_cxx : static_cast<tutorial::EnumTypeID>({c_var})
-    cxx_to_c : static_cast<int>({cxx_var})
 
 - decl: |
       enum Color {
@@ -135,9 +128,7 @@ declarations:
 #  format:
 #    F_string_result_as_arg: output
   
-# TypeID and DataTypeId must be define in types
 - decl: TypeID typefunc(TypeID arg)
-- decl: EnumTypeID enumfunc(EnumTypeID arg)
 - decl: Color colorfunc(Color arg);
   
 - decl: void getMinMax(int &min +intent(out), int &max +intent(out))

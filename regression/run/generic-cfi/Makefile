@@ -1,37 +1,31 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # "SPDX-License-Identifier: (BSD-3-Clause)"
 #
 # run/generic-cfi - Futher Interoperability with C.
 # Use test from run/generic.
 #
-include $(top)/regression/run/defaults.mk
+testdir = generic-cfi
 
 INCLUDE = \
     -I$(top)/regression/reference/generic-cfi \
-    -I$(top)/regression/run/generic \
-    -I$(top)/regression/run/fruit
+    -I$(top)/regression/run/generic
 
 VPATH = \
     $(top)/regression/reference/generic-cfi \
     $(top)/regression/run/generic \
     $(top)/regression/run/fruit
 
-OBJS = \
+C_OBJS = \
     generic.o \
     helper.o \
-    wrapfgeneric.o \
-    wrapgeneric.o \
+    wrapgeneric.o
+F_OBJS = \
+    main.o \
     fruit.o \
-    main.o
+    wrapfgeneric.o
 
-generic-cfi : $(OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod generic
+include $(top)/regression/run/defaults.mk
 
 helper.o : generic.h typesgeneric.h
 generic.o : generic.h

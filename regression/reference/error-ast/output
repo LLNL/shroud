@@ -1,0 +1,135 @@
+
+----------------------------------------
+Phase: Create library
+----------------------------------------
+format F_string_result_as_arg is deprecated, changed to option.F_result_as_arg
+Add attribute +funcarg(name)+deref(copy) to decl.
+Option F_result_as_arg is the default name when not specified in +funcarg.
+--------------------
+line 20
+typemap must have 'type' member
+--------------------
+line 21
+typemap must have 'fields' member
+--------------------
+line 23
+Unknown value for 'base' in 'typemap'
+--------------------
+line 29
+Error in 'decl' field
+func99()
+^
+Expected TYPE_SPECIFIER, found ID 'func99'
+--------------------
+line 31
+Expected 'block' or 'decl' in group
+--------------------
+line 34
+field 'default_arg_suffix' must be a list
+--------------------
+line 37
+field 'cxx_template' must be a list
+--------------------
+line 41
+field 'cxx_template' must be a list of dictionaries
+--------------------
+line 46
+'instantation' must be defined for each dictionary in 'cxx_template'
+--------------------
+line 46
+'fields' must be a dictionary
+--------------------
+line 51
+field 'fortran_generic' must be a list
+--------------------
+line 54
+field 'fortran_generic' must be a list of dictionaries
+--------------------
+line 57
+'decl' must be defined for each dictionary in 'fortran_generic'
+--------------------
+Node: FortranGenericOverloaded3
+line 59
+Error in 'fortran_generic', argument 'arg3' not found
+--------------------
+Node: FortranGenericOverloaded3
+line 59
+Error in 'fortran_generic', argument 'arg2' specified more than once
+--------------------
+Node: FortranGenericOverloaded3
+line 59
+Error in 'decl' field
+(doublexx arg2)
+^
+Expected TYPE_SPECIFIER, found ID 'doublexx'
+--------------------
+Node: GoodFunction
+line 69
+void GoodFunction(void)
+Unexpected value of option C_API_case: none
+--------------------
+Node: returnThis
+line 75
+void *returnThis(void)
+return_this can only be set for class methods
+--------------------
+Node: returnThis
+line 85
+void *returnThis(void)
+return_this must return a pointer to the class
+--------------------
+Node: returnThis2
+line 88
+Class1 returnThis2(void)
+return_this must return a pointer to the class
+--------------------
+Node: Color
+line 93
+Unknown type in F_enum_type: shorter
+--------------------
+Node: testattrs1
+line 105
+Error in 'decl' field
+(+attr)
+^
+Expected ID, found PLUS
+--------------------
+Node: testattrs2
+line 109
+Error in 'decl' field
+( name, )
+       ^
+Expected ID, found RPAREN
+--------------------
+Node: testattrs3
+line 113
+Error in 'decl' field
+( name
+^
+Expected RPAREN, found EOF
+--------------------
+Node: testattrs4
+line 117
+Error in 'decl' field
+( ) name
+   ^
+Expected EOF, found ID
+--------------------
+Node: process_twostruct
+line 128
+Templated function requires the 'cxx_template' field
+--------------------
+Node: process_twostruct
+line 128
+field f_arg_decl is deprecated, changed to f_dummy_decl
+--------------------
+Node: process_twostruct
+line 136
+'cxx_template' field only used with a templated function
+--------------------
+Node: getConstCharPtrAsCopyArg
+line 144
+format F_string_result_as_arg is deprecated, changed to option.F_result_as_arg
+Add attribute +funcarg(name)+deref(copy) to decl.
+Option F_result_as_arg is the default name when not specified in +funcarg.
+Too many warnings: 30

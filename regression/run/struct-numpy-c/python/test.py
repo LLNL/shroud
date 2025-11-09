@@ -1,6 +1,4 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 # #######################################################################
@@ -131,12 +129,19 @@ class Struct(unittest.TestCase):
         self.assertEqual(35.5, out["dfield"])
         self.assertEqual("returnStructPtr2", name)
 
+    def test_returnStructPtrArray(self):
+        out = cstruct.returnStructPtrArray()
+        self.assertIsInstance(out, np.ndarray)
+        self.assertIs(out.dtype, cstruct.Cstruct1_dtype)
+        self.assertEqual(1, out.ndim)
+        self.assertEqual(2, out.size)
+        self.assertEqual(100,   out[0]["ifield"])
+        self.assertEqual(101.,  out[0]["dfield"])
+        self.assertEqual(102,   out[1]["ifield"])
+        self.assertEqual(103.,  out[1]["dfield"])
 
-# creating a new test suite
-newSuite = unittest.TestSuite()
- 
-# adding a test case
-newSuite.addTest(unittest.makeSuite(Struct))
+
+unittest.TestLoader().loadTestsFromTestCase(Struct)
 
 if __name__ == "__main__":
     unittest.main()

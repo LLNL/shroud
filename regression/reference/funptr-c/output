@@ -1,0 +1,4 @@
+Will not generate C wrappers for a language=c library
+Wrote wrapffunptr.f
+Wrote utilfunptr.c
+Wrote typesfunptr.h

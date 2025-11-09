@@ -1,6 +1,4 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 
@@ -34,6 +32,53 @@ def add_comment(dct, label, name=None):
     else:
         dct[key] = str(name) + " ****************************************"
 
+######################################################################
+
+class Helpers:
+    def visit_bool(self, node):
+        return node
+
+    def visit_int(self, node):
+        return node
+
+    def visit_str(self, node):
+        return str(node)
+
+    def visit_list(self, node):
+        return [self.visit(n) for n in node]
+
+    def visit_dict(self, node):
+        return {key: "" if value is None else self.visit(value) for (key, value) in node.items()}
+
+    ######################################################################
+
+    def visit_Scope(self, node):
+        d = {}
+        skip = "_" + node.__class__.__name__ + "__"  # __name is skipped
+        for key, value in node.__dict__.items():
+            if not key.startswith(skip):
+                d[key] = value
+        return d
+
+    def add_visit_fields(self, node, d, fields):
+        """Update dict d with fields which must be visited.
+
+        Parameters
+        ----------
+        node : 
+        d : dict
+           Dictionary being filled.
+        fields: list of str or tuple
+            Attribute or node or tuple of attribute, d key.
+        """
+        for key in fields:
+            dkey = self.rename_fields.get(key, key)
+            value = getattr(node, key)
+            if value:
+                d[dkey] = self.visit(value)
+
+######################################################################
+    
 class ToDict(visitor.Visitor):
     """Convert to dictionary.
     """
@@ -44,11 +89,14 @@ class ToDict(visitor.Visitor):
         super(ToDict, self).__init__()
         self.labelast = labelast
 
+    def visit_NoneType(self, node):
+        return node
+
     def visit_bool(self, node):
-        return str(node)
+        return node
 
     def visit_int(self, node):
-        return str(node)
+        return node
 
     def visit_str(self, node):
         return str(node)
@@ -84,11 +132,14 @@ class ToDict(visitor.Visitor):
             d["array"] = self.visit(node.array)
         if node.init is not None:
             d["init"] = node.init
-        add_true_fields(node, d, ["func_const"])
+        add_true_fields(node, d,
+                        ["func_const",
+                         "is_ctor", "is_dtor",
+                         "default_name",
+                        ])
 
-        if node.typemap.base != "template":
-            # Only print name to avoid too much nesting.
-            d["typemap_name"] = node.typemap.name
+        # Only print name to avoid too much nesting.
+        d["typemap_name"] = node.typemap.name
 
         attrs = {key: value
                  for (key, value) in node.attrs.items()
@@ -96,18 +147,6 @@ class ToDict(visitor.Visitor):
         if attrs:
             d["attrs"] = attrs
 
-        metaattrs = {key: value
-                 for (key, value) in node.metaattrs.items()
-                 if value is not None}
-        if metaattrs:
-            if "struct_member" in metaattrs:
-                # struct_member is a ast.VariableNode, add name instead
-                # to avoid huge dump.
-                metaattrs["struct_member"] = metaattrs["struct_member"].name
-            if "dimension" in metaattrs:
-                metaattrs["dimension"] = self.visit(metaattrs["dimension"])
-            d["metaattrs"] = metaattrs
-        
         return d
 
     def visit_Declaration(self, node):
@@ -126,10 +165,14 @@ class ToDict(visitor.Visitor):
         
         add_true_fields(node, d, [
             "const", "volatile",
-            "ftrim_char_in", "blanknull",
             "is_ctor", "is_dtor",
         ])
-        if node.declarator:
+        if len(node.declarators) > 1:
+            lst = []
+            d["declarators"] = lst
+            for d2 in node.declarators:
+                lst.append(self.visit(d2))
+        elif node.declarator:
             # ctor and dtor have no declarator
             d["declarator"] = self.visit(node.declarator)
         if node.storage:
@@ -231,12 +274,38 @@ class ToDict(visitor.Visitor):
     ######################################################################
 
     def visit_Scope(self, node):
+        # Do not call visit for most members. It slows things down a lot.
+        # Instead, have a list of keys which must be visited.
         d = {}
         skip = "_" + node.__class__.__name__ + "__"  # __name is skipped
         for key, value in node.__dict__.items():
-            if not key.startswith(skip):
+            if key in ["gen"]:
+                continue
+            elif key == "c_arglist":
+                d[key] = [ d3.get("c_var", "c_var") for d3 in value]
+            elif key == "f_arglist":
+                d[key] = [ d3.get("f_var", "f_var") for d3 in value]
+            elif key in ["baseclass"]:
+                d[key] = repr(value)
+            elif key in ["targs"]:
+                d[key] = self.visit(value)
+            elif key == "typemap":
+                d["typemap_name"] = value.name # typemap.Typemap
+            elif key == "typemap_lhs":
+                d["typemap_lhs"] = value.name # typemap.Typemap
+            elif key == "typemap_rhs":
+                d["typemap_rhs"] = value.name # typemap.Typemap
+            elif not key.startswith(skip):
                 d[key] = value
         return d
+
+    def visit_TemplateFormat(self, node):
+        # Return the properties of TemplateFormat.
+        # Avoid repeating all of the typemap fields.
+        return dict(
+            cxx_T = node.cxx_T,
+            typemap_name = node.decl.typemap.name,
+        )
 
     ######################################################################
 
@@ -249,9 +318,16 @@ class ToDict(visitor.Visitor):
                 # Only save Typemap names to avoid too much clutter.
                 if value:
                     names = {}
-                    for key, ntypemap in value.items():
-                        names[key] = ntypemap.name
-                    d["cxx_instantiation"] = names
+                    for key2, ntypemap in value.items():
+                        names[key2] = ntypemap.name
+                    d[key] = names
+            elif key == "ast":
+                if value is not None:
+                    d[key] = self.visit(value)
+            elif key in ["base_typemap", "typedef"]:
+                # value is Typemap
+                if value is not None:
+                    d[key] = value.name
             else:
                 if value is not defvalue:
                     d[key] = value
@@ -262,7 +338,9 @@ class ToDict(visitor.Visitor):
     def visit_WrapFlags(self, node):
         d = dict()
         add_true_fields(
-            node, d, ["fortran", "f_c", "c", "lua", "python"]
+            node, d, ["fortran", "c", "lua", "python",
+#                     "signature_c", "signature_i", "signature_f",
+            ]
         )
         return d
 
@@ -275,11 +353,17 @@ class ToDict(visitor.Visitor):
             node, d, [ "fmtdict", "options", "scope_file", ])
         if node.class_map:
             d["class_map"] = sorted(list(node.class_map.keys()))
+        # These fields are not in NamespaceNode
+        self.add_visit_fields(
+            node, d,
+            ["patterns", "destructors"]
+        )
         node = node.wrap_namespace   # XXXX TEMP kludge
         self.add_visit_fields(
             node,
             d,
             [
+                "assign_operators",
                 "classes",
                 "enums",
                 "functions",
@@ -295,6 +379,18 @@ class ToDict(visitor.Visitor):
         )
         return d
 
+    def visit_AssignOperator(self, node):
+        d = dict()
+        self.add_visit_fields(
+            node,
+            d,
+            [
+                "name",
+                "bind",
+                ]
+            )
+        return d
+        
     def visit_ClassNode(self, node):
         d = dict(
             cxx_header=node.cxx_header,
@@ -302,7 +398,7 @@ class ToDict(visitor.Visitor):
             typemap_name=node.typemap.name,  # Only print name to avoid too much nesting.
             parse_keyword=node.parse_keyword,
         )
-        add_comment(d, "class")
+        add_comment(d, "class", node.name)
         add_non_none_fields(node, d, ["linenumber"])
         add_true_fields(
             node, d, [
@@ -311,6 +407,7 @@ class ToDict(visitor.Visitor):
                 "python",
                 "scope",
                 "template_parameters",
+                "smart_pointer",
             ]
         )
         if node.baseclass:
@@ -339,15 +436,15 @@ class ToDict(visitor.Visitor):
 
     def visit_FunctionNode(self, node):
         d = dict(ast=self.visit(node.ast), decl=node.decl, name=node.name)
-        add_comment(d, "function", node._function_index)
+        add_comment(d, "function", "{}  {}".format(node.name, node._function_index))
         self.add_visit_fields(
             node,
             d,
             [
                 "_PTR_C_CXX_index",
                 "_PTR_F_C_index",
-                "_fmtargs",
-                "_fmtresult",
+                "_bind",
+                "_fmtlang",
                 "user_fmt",
                 "fmtdict",
                 "options",
@@ -356,7 +453,6 @@ class ToDict(visitor.Visitor):
                 "fstatements",
                 "splicer",
                 "wrap",
-                "C_generated_path",
                 "C_force_wrapper",
             ],
         )
@@ -370,19 +466,23 @@ class ToDict(visitor.Visitor):
                 "doxygen",
                 "linenumber",
                 "return_this",
-                "splicer_group",
                 "have_template_args",
                 "template_parameters",
                 "C_error_pattern",
                 "PY_error_pattern",
                 "_default_funcs",
+                "_fortran_generic_wrap",
                 "_generated",
+                "_generated_path",
                 "_has_default_arg",
                 "_nargs",
                 "_overloaded",
-                "_gen_fortran_generic",
+                "_gen_fortran_assumed_rank",
             ],
         )
+        if node._orig_node is not None:
+            d["_orig_node_index"] = node._orig_node._function_index
+#            d["_orig_node_name"] = node._orig_node.name
         if node.options.debug_index:
             add_non_none_fields(
                 node,
@@ -406,6 +506,23 @@ class ToDict(visitor.Visitor):
         if node.gen_headers_typedef:
             # OrderedDict
             d['gen_headers_typedef'] = list(node.gen_headers_typedef.keys())
+        if node.struct_parent:
+            d["struct_parent"] = node.struct_parent.typemap.name
+        if node.struct_members:
+            # struct_members are ast.VariableNode, add name instead
+            # to avoid a huge dump.
+            d["struct_members"] = list(node.struct_members.keys())
+
+        if node.fcn_helpers:
+            helpers = {}
+            for key, values in node.fcn_helpers.items():
+                if values:
+                    helpers[key] = list(values.keys())
+            if helpers:
+                d["helpers"] = self.visit(helpers)
+
+        if node.options.debug_index:
+            add_optional_true_fields(node, d, ["signatures"])
 
         return d
 
@@ -416,21 +533,23 @@ class ToDict(visitor.Visitor):
             ast=self.visit(node.ast),
             decl=node.decl,
         )
-        add_comment(d, "enum")
+        add_comment(d, "enum", node.name)
         add_non_none_fields(node, d, ["linenumber"])
         self.add_visit_fields(node, d, [
             "_fmtmembers",
             "user_fmt",
             "fmtdict",
             "options",
+            "splicer",
             "wrap",
         ])
         return d
 
     def visit_NamespaceNode(self, node):
         d = dict(name=node.name)
-        add_comment(d, "namespace")
+        add_comment(d, "namespace", node.name)
         self.add_visit_fields(node, d, [
+            "assign_operators",
             "classes", "enums", "functions", "namespaces", "typedefs", "variables",
             "user_fmt", "fmtdict", "options", "wrap"])
         add_non_none_fields(node, d, ["linenumber"])
@@ -440,13 +559,15 @@ class ToDict(visitor.Visitor):
 
     def visit_TypedefNode(self, node):
         d = dict(name=node.name)
-        add_comment(d, "typedef")
+        add_comment(d, "typedef", node.name)
         self.add_visit_fields(node, d, [
+            "_bind",
             "ast",
             "user_fmt",
             "user_fields",
             "fmtdict",
             "options",
+            "splicer",
             "wrap",
             "f_kind",
             "f_module",
@@ -456,12 +577,13 @@ class ToDict(visitor.Visitor):
 
     def visit_VariableNode(self, node):
         d = dict(name=node.name, ast=self.visit(node.ast))
-        add_comment(d, "variable")
+        add_comment(d, "variable", node.name)
         self.add_visit_fields(node, d, [
             "user_fmt",
             "fmtdict",
             "options",
             "wrap",
+            "_bind",
         ])
         add_non_none_fields(node, d, ["linenumber"])
         return d
@@ -484,10 +606,31 @@ class ToDict(visitor.Visitor):
     def visit_SymbolTable(self, node):
         return {}
 
+
+    def visit_BindArg(self, node):
+        d = {}
+        if node.stmt:
+            d["stmt"] = node.stmt.name
+        if node.fstmts:
+            d["fstmts"] = node.fstmts
+        if node.fmtdict:
+            d["fmtdict"] = self.visit(node.fmtdict)
+        if node.meta is not None:
+            metaattrs = {key: value
+                         for (key, value) in node.meta.items()
+                         if value is not None}
+            if metaattrs:
+                if "fptr" in metaattrs:
+                    metaattrs["fptr"] = self.visit(metaattrs["fptr"])
+                if "dim_ast" in metaattrs:
+                    metaattrs["dim_ast"] = self.visit(metaattrs["dim_ast"])
+                d["meta"] = metaattrs
+        return d
+    
     # Rename some attributes so they sort to the bottom of the JSON dictionary.
     rename_fields = dict(
-        _fmtargs="zz_fmtargs",
-        _fmtresult="zz_fmtresult",
+        _bind="zz_bind",
+        _fmtlang="zz_fmtlang",
         fmtdict="zz_fmtdict",
     )
     def add_visit_fields(self, node, d, fields):
@@ -647,7 +790,20 @@ class PrintNode(visitor.Visitor):
             s += self.visit(node.enum_specifier)
         elif node.class_specifier:
             s += self.visit(node.class_specifier)
+
+        if node.is_ctor or node.is_dtor:
+            comma = ""
+        else:
+            comma = " "
+        for d2 in node.declarators:
+            sdecl = self.visit(d2)
+            if sdecl:
+                s += comma + sdecl
+                comma = ", "
         return s
+
+    def visit_Declarator(self, node):
+        return str(node)
 
     def visit_EnumValue(self, node):
         if node.value is None:
@@ -656,7 +812,7 @@ class PrintNode(visitor.Visitor):
             return "{} = {}".format(node.name, self.visit(node.value))
 
     def visit_Enum(self, node):
-        return " {{ {} }};".format(
+        return " {{ {} }}".format(
             self.comma_list(node.members)
         )
 
@@ -683,6 +839,111 @@ def print_node(node):
     """Convert node to original string.
     """
     visitor = PrintNode()
+    return visitor.visit(node)
+
+######################################################################
+
+class PrintFmt(Helpers, visitor.Visitor):
+    """Collect fmtdict members.
+    Used for development of statements.
+    """
+
+    rename_fields = dict()
+    
+    def visit_ClassNode(self, node):
+        d = dict()
+        add_comment(d, "class", node.name)
+        self.add_visit_fields(
+            node,
+            d,
+            [
+                "classes",
+                "enums",
+                "functions",
+                "variables",
+#                "user_fields",
+#                "user_fmt",
+                "fmtdict",
+            ],
+        )
+        return d
+
+    def visit_EnumNode(self, node):
+        d = dict()
+        add_comment(d, "enum", node.name)
+        self.add_visit_fields(node, d, [
+#            "_fmtmembers",
+#            "user_fmt",
+            "fmtdict",
+        ])
+        return d
+
+    def visit_FunctionNode(self, node):
+        d = dict()
+        add_comment(d, "function", node.name)
+        self.add_visit_fields(
+            node,
+            d,
+            [
+                "_fmtlang",
+#                "user_fmt",
+                "fmtdict",
+            ],
+        )
+        return d
+
+    def visit_LibraryNode(self, node):
+        d = dict()
+        self.add_visit_fields( # TEMP  deal with wrap_namespace
+            node, d, [ "fmtdict"])
+        node = node.wrap_namespace   # XXXX TEMP kludge
+        self.add_visit_fields(
+            node,
+            d,
+            [
+                "classes",
+                "enums",
+                "functions",
+                "namespaces",
+                "typedefs",
+                "variables",
+#                "user_fmt",
+            ],
+        )
+        return d
+
+    def visit_NamespaceNode(self, node):
+        d = dict()
+        add_comment(d, "namespace", node.name)
+        self.add_visit_fields(node, d, [
+            "classes", "enums", "functions", "namespaces", "typedefs", "variables",
+#            "user_fmt",
+            "fmtdict"])
+        return d
+
+    def visit_TypedefNode(self, node):
+        d = dict()
+        add_comment(d, "typedef", node.name)
+        self.add_visit_fields(node, d, [
+#            "user_fmt",
+            "fmtdict",
+        ])
+        return d
+
+    def visit_VariableNode(self, node):
+        d = dict()
+        add_comment(d, "variable", node.name)
+        self.add_visit_fields(node, d, [
+            "user_fmt",
+            "fmtdict",
+        ])
+        return d
+
+    
+def print_fmt(node):
+    """Dump format strings of nodes.
+    """
+    visitor = PrintFmt()
     return visitor.visit(node)
 
 ######################################################################

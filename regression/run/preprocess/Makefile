@@ -1,6 +1,4 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 #
@@ -8,31 +6,27 @@
 #
 # run/preprocess
 #
-include $(top)/regression/run/defaults.mk
+testdir = preprocess
 
 INCLUDE = \
     -I$(top)/regression/reference/preprocess \
-    -I$(top)/regression/run/preprocess \
-    -I$(top)/regression/run/fruit
+    -I$(top)/regression/run/preprocess
 
 VPATH = \
     $(top)/regression/reference/preprocess \
     $(top)/regression/run/preprocess \
     $(top)/regression/run/fruit
 
-OBJS = \
-    wrapfpreprocess.o \
+C_OBJS = \
     wrapUser1.o \
     wrapUser2.o \
-    utilpreprocess.o \
+    utilpreprocess.o
+F_OBJS = \
+    main.o \
     fruit.o \
-    main.o
+    wrapfpreprocess.o
 
-preprocess : $(OBJS)
-	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
-
-clean :
-	rm -f $(OBJS) *.mod preprocess
+include $(top)/regression/run/defaults.mk
 
 wrappreprocess.o : preprocess.hpp
 wrapUser1.o : wrapUser1.h preprocess.hpp wrapUser1.h

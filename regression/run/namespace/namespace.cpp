@@ -1,6 +1,4 @@
-// Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-// other Shroud Project Developers.
-// See the top-level COPYRIGHT file for details.
+// Copyright Shroud Project Developers. See LICENSE file for details.
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 
@@ -11,6 +9,11 @@ static std::string last_function_called;
 const std::string& LastFunctionCalled()
 {
     return last_function_called;
+}
+
+void PassLevelEnum(upper::Level value)
+{
+  last_function_called = "PassLevelEnum";
 }
 
 void outer::One()

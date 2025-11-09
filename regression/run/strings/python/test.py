@@ -1,6 +1,4 @@
-# Copyright (c) 2017-2023, Lawrence Livermore National Security, LLC and
-# other Shroud Project Developers.
-# See the top-level COPYRIGHT file for details.
+# Copyright Shroud Project Developers. See LICENSE file for details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 # #######################################################################
@@ -39,44 +37,22 @@ class Strings(unittest.TestCase):
         ## do something...
         print("FooTest:tearDown_:end")
      
-    def testpassChar(self):
-        strings.passChar('w')
-
-    def testpassCharPtr(self):
-        out = strings.passCharPtr("elephant")
-        self.assertEqual("elephant", out)
-
-    def testreturnChar(self):
-        self.assertEqual('w', strings.returnChar())
-
-    def testpassCharPtrInOut(self):
-        """char * +intent(out)"""
-        self.assertEqual('DOG', strings.passCharPtrInOut('dog'))
-
-    def testgetChar(self):
-        # The variations are useful for the Fortran API,
-        # but really no difference in the Python API.
-        self.assertEqual(static_char, strings.getCharPtr1())
-        self.assertEqual(static_char, strings.getCharPtr2())
-        self.assertEqual(static_char, strings.getCharPtr3())
-
     def testgetConstString(self):
         """return std::string"""
-        self.assertEqual('getConstStringResult', strings.getConstStringResult())
         self.assertEqual(static_str, strings.getConstStringLen())
-        self.assertEqual(static_str, strings.getConstStringAsArg())
         self.assertEqual('getConstStringAlloc', strings.getConstStringAlloc())
+
+        self.assertEqual(static_str, strings.getConstStringAsArg())
 
     def testgetConstStringRef(self):
         """return std::string reference"""
         # The variations are useful for the Fortran API,
         # but really no difference in the Python API.
-        self.assertEqual(static_str, strings.getConstStringRefPure())
         self.assertEqual(static_str, strings.getConstStringRefLen())
-        self.assertEqual(static_str, strings.getConstStringRefAsArg())
-
         self.assertEqual('', strings.getConstStringRefLenEmpty())
         self.assertEqual(static_str, strings.getConstStringRefAlloc())
+
+        self.assertEqual(static_str, strings.getConstStringRefAsArg())
 
     def testgetConstStringPtr(self):
         """return std::string pointer"""
@@ -131,11 +107,7 @@ class Strings(unittest.TestCase):
         self.assertEqual('w', strings.CreturnChar())
 
 
-# creating a new test suite
-newSuite = unittest.TestSuite()
- 
-# adding a test case
-newSuite.addTest(unittest.makeSuite(Strings))
+unittest.TestLoader().loadTestsFromTestCase(Strings)
 
 if __name__ == "__main__":
     unittest.main()
