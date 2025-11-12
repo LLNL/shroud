@@ -549,6 +549,15 @@ variable ``void *ptr`` available as the pointer to the memory
 to be released.
 See :ref:`MemoryManagementAnchor` for details.
 
+.. code-block:: yaml
+
+    declarations:
+    - decl: char *getName() +destructor_name(free_getName)
+
+    destructors:
+       free_getName: |
+          decref(ptr);
+
 ..  and *intent(out)* arguments.
 
 dimension

@@ -105,6 +105,7 @@ const char * TUT_ConcatenateStrings(const char *arg1, const char *arg2,
     if (!SHC_rv_cxx->empty()) SHC_rv = SHC_rv_cxx->c_str();
     SHT_rv_capsule->addr  = const_cast<std::string *>(SHC_rv_cxx);
     SHT_rv_capsule->idtor = 1;
+    SHT_rv_capsule->cmemflags = SWIG_MEM_RVALUE;
     return SHC_rv;
     // splicer end function.ConcatenateStrings
 }
@@ -128,6 +129,7 @@ void TUT_ConcatenateStrings_bufferify(char *arg1, int SHT_arg1_len,
     ShroudStringToCdesc(SHT_rv_cdesc, SHC_rv_cxx);
     SHT_rv_capsule->addr  = const_cast<std::string *>(SHC_rv_cxx);
     SHT_rv_capsule->idtor = 2;
+    SHT_rv_capsule->cmemflags = SWIG_MEM_RVALUE;
     // splicer end function.ConcatenateStrings_bufferify
 }
 

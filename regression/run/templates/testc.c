@@ -26,6 +26,7 @@ void test_int_vector(void)
   /* XXX - need to catch std::out_of_range */
   // out = TEM_vector_int_at(v1, 10);
 
+  TEM_vector_int_dtor(v1);
 }
 
 int main(int argc, char *argv[])

@@ -139,6 +139,7 @@ void ERR_getConstStringPtrOwnsAllocPattern_bufferify(
     ShroudStringToCdesc(SHT_rv_cdesc, SHC_rv_cxx);
     SHT_rv_capsule->addr  = const_cast<std::string *>(SHC_rv_cxx);
     SHT_rv_capsule->idtor = 1;
+    SHT_rv_capsule->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     // splicer end function.getConstStringPtrOwnsAllocPattern_bufferify
 }
 

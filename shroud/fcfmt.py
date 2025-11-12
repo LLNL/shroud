@@ -171,6 +171,7 @@ class FillFormat(object):
         bind_result = statements.fetch_func_bind(node, wlang)
         fmt_result = statements.set_bind_fmtdict(bind_result, fmt_func)
 
+        set_owner(bind_result)
         if wlang == "f":
             if node.options.class_ctor:
                 # Generic constructor for C "class" (wrap_struct_as=class).
@@ -203,6 +204,7 @@ class FillFormat(object):
             func_cursor.stmt = arg_stmt
             arglist.append(fmt_arg)
 
+            set_owner(bind_arg)
             set_f_arg_format(node, arg, bind_arg, wlang)
             if wlang == "f":
                 if arg.declarator.is_function_pointer():
@@ -375,7 +377,7 @@ class FillFormat(object):
             fmt_result.f_var = fmt_result.i_result_var
             self.set_fmt_fields_iface(ast, bind, result_typemap)
             self.set_fmt_fields_dimension(cls, node, ast, bind)
-            set_f_function_format(node, bind, subprogram)
+            set_f_function_format(node, bind)
 
         if result_stmt.i_result_var == "as-subroutine":
             subprogram = "subroutine"
@@ -446,7 +448,7 @@ class FillFormat(object):
                               subprogram, result_typemap)
         self.set_fmt_fields_dimension(cls, C_node, ast, bind)
         self.apply_helpers_from_stmts(node, bind)
-        set_f_function_format(node, bind, subprogram)
+        set_f_function_format(node, bind)
         statements.apply_fmtdict_from_stmts(bind)
 
         # Compute after stmt.fmtdict is evaluated.
@@ -960,6 +962,7 @@ def set_share_function_format(node, bind, wlang):
     fmt.gen = FormatGen(node, node.ast, bind, wlang)
     
 def set_c_function_format(node, bind):
+    """Set C function format fields based on metaattributes."""
     fmt = bind.fmtdict
     meta = bind.meta
 
@@ -971,7 +974,8 @@ def set_c_function_format(node, bind):
 #        fmt.c_var = name  # not being propagated to other uses of result
 #        fmt.c_result_var = name
     
-def set_f_function_format(node, bind, subprogram):
+def set_f_function_format(node, bind):
+    """Set Fortran function format fields based on metaattributes."""
     fmt = bind.fmtdict
     meta = bind.meta
 
@@ -989,7 +993,22 @@ def set_f_function_format(node, bind, subprogram):
         fmt.i_result_var = name
 #        fmt.c_var = name
 #        fmt.c_result_var = name
-    
+
+#####
+# This function is called before any wrapping.
+# The functions above should also be called before any wrapping.
+
+def set_owner(bind):
+    """Set Fortran function format fields based on metaattributes."""
+    fmt = bind.fmtdict
+    meta = bind.meta
+
+    if meta["owner"] == "caller":
+        fmt.c_cmemflags = "SWIG_MEM_OWN"
+        fmt.c_cmemflags_or = "SWIG_MEM_OWN | "
+
+#####
+
 def set_f_arg_format(node, arg, bind, wlang):
     """
     node  - ast.FunctionNode

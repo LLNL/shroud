@@ -10,6 +10,7 @@
 // typemap
 #include <string>
 // shroud
+#include <cstddef>
 #include "wrapClass1.h"
 
 // splicer begin class.Class1.CXX_definitions
@@ -62,6 +63,22 @@ void CXX_Class1_ctor_bufferify(CXX_Class1 *SHC_rv)
     SHC_rv->idtor = 1;
     SHC_rv->cmemflags = SWIG_MEM_RVALUE | SWIG_MEM_OWN;
     // splicer end class.Class1.method.ctor_bufferify
+}
+
+// ----------------------------------------
+// Function:  ~Class1
+// Statement: c_dtor
+void CXX_Class1_dtor(CXX_Class1 * self)
+{
+    Class1 *SH_this = static_cast<Class1 *>(self->addr);
+    // splicer begin class.Class1.method.dtor
+    if (self->cmemflags & SWIG_MEM_OWN) {
+        delete SH_this;
+    }
+    self->addr = nullptr;
+    self->idtor = 0;
+    self->cmemflags = 0;
+    // splicer end class.Class1.method.dtor
 }
 
 /**

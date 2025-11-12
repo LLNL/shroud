@@ -11,7 +11,7 @@ Deprecated: free_pattern is deprecated. Replace with destructor_name.
 Node: getConstStringPtrOwnsAllocPattern
 line 64
 const std::string *getConstStringPtrOwnsAllocPattern(void) +free_pattern(C_string_free)+owner(caller)
-Deprecated: destructor_name must now be in destructor group instead patterns.
+Deprecated: destructor_name must be in the destructor group instead the patterns group.
 
 ----------------------------------------
 Phase: initial

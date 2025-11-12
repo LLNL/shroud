@@ -88,6 +88,15 @@ Changes to YAML input
   Current use of *+free_pattern* is still supported but will
   create a warning message in the logfile. The old usage will be
   removed in a future version.
+
+.. code-block:: yaml
+
+    declarations:
+    - decl: char *getName() +destructor_name(free_getName)
+
+    destructors:
+       free_getName: |
+          decref(ptr);
   
 * Create an abstract interface for typedef statements which
   are function pointers. Previously, only function pointers
@@ -300,7 +309,8 @@ F_flatten_namespace           flatten_namespace
      option:
        F_result_as_arg: output
      - decl: const char *getConstCharPtrAsCopyArg() +funcarg+deref(copy)
-   
+
+
 * The **c_helper** and **f_helper** statement fields are merged into **helper**.
   A helper may have a C and Fortran part. This required the helper to
   be listed twice. Now it only needs to be listed once.

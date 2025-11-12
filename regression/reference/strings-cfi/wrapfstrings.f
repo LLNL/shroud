@@ -82,7 +82,7 @@ module strings_mod
     ! helper capsule_helper
     type :: STR_SHROUD_capsule
         private
-        type(STR_SHROUD_capsule_data) :: mem
+        type(STR_SHROUD_capsule_data) :: mem = STR_SHROUD_capsule_data()
     contains
         final :: SHROUD_capsule_final
         procedure :: delete => SHROUD_capsule_delete

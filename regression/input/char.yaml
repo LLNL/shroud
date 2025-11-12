@@ -256,10 +256,3 @@ patterns:
     # return a blank field string if an error occurs
     C_invalid_name_buf: |
         // Some error code for buf
-
-     # This pattern is added to C_memory_dtor_function
-     # XXX - \t is not dealt with properly
-    C_string_free: |
-        // Used with +free_pattern(C_string_free)
-        std::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);
-        delete cxx_ptr;

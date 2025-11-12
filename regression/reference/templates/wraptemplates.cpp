@@ -46,7 +46,7 @@ void TEM_returnUserType_bufferify(TEM_user_int *SHC_rv)
     *SHC_rv_cxx = returnUserType();
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 5;
-    SHC_rv->cmemflags = SWIG_MEM_RVALUE;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     // splicer end function.returnUserType_bufferify
 }
 

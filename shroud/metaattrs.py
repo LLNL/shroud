@@ -985,6 +985,7 @@ class FillMetaShare(FillMeta):
                 "charlen",   # Assumed length of intent(out) char *.
                 "external",
                 "deref",
+                "destructor_name",
                 "dimension",
                 "funptr",
                 "hidden",  # omitted in Fortran API, returned from C++
@@ -1107,7 +1108,7 @@ class FillMetaShare(FillMeta):
         if destructor_name is not missing:
             if destructor_name in self.newlibrary.patterns:
                 self.cursor.deprecated(
-                    "destructor_name must now be in destructor group instead patterns.")
+                    "destructor_name must be in the destructor group instead the patterns group.")
                 if destructor_name not in self.newlibrary.destructors:
                     self.newlibrary.destructors[destructor_name] = \
                         self.newlibrary.patterns[destructor_name]

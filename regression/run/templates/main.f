@@ -50,6 +50,8 @@ contains
 ! XXX - need to catch std::out_of_range
 !    ivalue => v1%at(10_C_SIZE_T)
 
+    call v1%dtor
+    
   end subroutine test_vector_int
 
   subroutine test_vector_double
@@ -68,6 +70,8 @@ contains
 
 ! XXX - need to catch std::out_of_range
 !    ivalue => v1%at(10_C_SIZE_T)
+
+    call v1%dtor
 
   end subroutine test_vector_double
 
