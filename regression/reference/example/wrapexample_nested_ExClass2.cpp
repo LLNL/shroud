@@ -207,6 +207,7 @@ void AA_example_nested_ExClass2_getName2_bufferify(
     ShroudStringToCdesc(SHT_rv_cdesc, &SHC_rv_cxx);
     SHT_rv_capsule->addr  = const_cast<std::string *>(&SHC_rv_cxx);
     SHT_rv_capsule->idtor = 0;
+    SHT_rv_capsule->cmemflags = SWIG_MEM_RVALUE;
     // splicer end namespace.example::nested.class.ExClass2.method.getName2_bufferify
 }
 
@@ -240,6 +241,7 @@ void AA_example_nested_ExClass2_getName3_bufferify(
     ShroudStringToCdesc(SHT_rv_cdesc, &SHC_rv_cxx);
     SHT_rv_capsule->addr  = &SHC_rv_cxx;
     SHT_rv_capsule->idtor = 0;
+    SHT_rv_capsule->cmemflags = SWIG_MEM_RVALUE;
     // splicer end namespace.example::nested.class.ExClass2.method.getName3_bufferify
 }
 
@@ -272,6 +274,7 @@ void AA_example_nested_ExClass2_getName4_bufferify(
     ShroudStringToCdesc(SHT_rv_cdesc, &SHC_rv_cxx);
     SHT_rv_capsule->addr  = &SHC_rv_cxx;
     SHT_rv_capsule->idtor = 0;
+    SHT_rv_capsule->cmemflags = SWIG_MEM_RVALUE;
     // splicer end namespace.example::nested.class.ExClass2.method.getName4_bufferify
 }
 

@@ -957,7 +957,6 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         ast = node.ast
         declarator = ast.declarator
         C_subprogram = declarator.get_subprogram()
-        r_attrs = declarator.attrs
         r_bind = get_func_bind(node, wlang)
         r_meta = r_bind.meta
         fmt_result = r_bind.fmtdict

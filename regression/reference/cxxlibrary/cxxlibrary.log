@@ -17,6 +17,8 @@ Close wrapcxxlibrary_structns.cpp
 class Class1
 C c Class1(void)
 C f Class1(void)
+C c ~Class1(void)
+C f ~Class1(void)
 C c int check_length(void)
 C f int check_length(void)
 C c int check_length(int length=1)
@@ -74,6 +76,7 @@ namespace cxxlibrary
 class nested
 class Class1
 Fortran Class1(void)
+Fortran ~Class1(void)
 Fortran int check_length(void)
 Fortran int check_length(int length=1)
 Fortran int check_length(int length=1)
@@ -86,6 +89,7 @@ Fortran int getViewFromClass(const std::string &path) +constfunc
 Fortran int get_length(void) +intent(getter)
 C-interface c Class1(void)
 C-interface f Class1(void)
+C-interface f ~Class1(void)
 C-interface f int check_length(void)
 C-interface f int check_length(int length=1)
 C-interface f int check_length(int length=1)

@@ -368,6 +368,7 @@ void CLA_Class1_getName_bufferify(CLA_Class1 * self,
     ShroudStringToCdesc(SHT_rv_cdesc, &SHC_rv_cxx);
     SHT_rv_capsule->addr  = const_cast<std::string *>(&SHC_rv_cxx);
     SHT_rv_capsule->idtor = 0;
+    SHT_rv_capsule->cmemflags = SWIG_MEM_RVALUE;
     // splicer end class.Class1.method.getName_bufferify
 }
 // end CLA_Class1_getName_bufferify
@@ -391,6 +392,7 @@ const char * CLA_Class1_getPath(const CLA_Class1 * self,
     if (!SHC_rv_cxx->empty()) SHC_rv = SHC_rv_cxx->c_str();
     SHT_rv_capsule->addr  = SHC_rv_cxx;
     SHT_rv_capsule->idtor = 2;
+    SHT_rv_capsule->cmemflags = SWIG_MEM_RVALUE;
     return SHC_rv;
     // splicer end class.Class1.method.getPath
 }

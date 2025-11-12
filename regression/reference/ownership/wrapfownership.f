@@ -77,7 +77,7 @@ module ownership_mod
     ! helper capsule_helper
     type :: OWN_SHROUD_capsule
         private
-        type(OWN_SHROUD_capsule_data) :: mem
+        type(OWN_SHROUD_capsule_data) :: mem = OWN_SHROUD_capsule_data()
     contains
         final :: SHROUD_capsule_final
         procedure :: delete => SHROUD_capsule_delete
@@ -292,7 +292,7 @@ module ownership_mod
         end subroutine c_return_int_ptr_dim_default_bufferify
 
         ! ----------------------------------------
-        ! Function:  int *ReturnIntPtrDimRawNew +dimension(len)+owner(caller)
+        ! Function:  int *ReturnIntPtrDimRawNew +destructor_name(delete_int_array)+dimension(len)+owner(caller)
         ! Statement: c_function_native*_caller
         ! ----------------------------------------
         ! Argument:  int *len +hidden+intent(out)
@@ -307,7 +307,7 @@ module ownership_mod
         end function c_return_int_ptr_dim_raw_new
 
         ! ----------------------------------------
-        ! Function:  int *ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
+        ! Function:  int *ReturnIntPtrDimPointerNew +deref(pointer)+destructor_name(delete_int_array)+dimension(len)+owner(caller)
         ! Statement: c_function_native*_caller
         ! ----------------------------------------
         ! Argument:  int *len +hidden+intent(out)
@@ -322,7 +322,7 @@ module ownership_mod
         end function c_return_int_ptr_dim_pointer_new
 
         ! ----------------------------------------
-        ! Function:  int *ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
+        ! Function:  int *ReturnIntPtrDimPointerNew +deref(pointer)+destructor_name(delete_int_array)+dimension(len)+owner(caller)
         ! Statement: f_function_native*_cdesc_pointer_caller
         subroutine c_return_int_ptr_dim_pointer_new_bufferify( &
                 SHT_rv_cdesc, SHT_rv_capsule) &
@@ -334,7 +334,7 @@ module ownership_mod
         end subroutine c_return_int_ptr_dim_pointer_new_bufferify
 
         ! ----------------------------------------
-        ! Function:  int *ReturnIntPtrDimAllocNew +deref(allocatable)+dimension(len)+owner(caller)
+        ! Function:  int *ReturnIntPtrDimAllocNew +deref(allocatable)+destructor_name(delete_int_array)+dimension(len)+owner(caller)
         ! Statement: c_function_native*_caller
         ! ----------------------------------------
         ! Argument:  int *len +hidden+intent(out)
@@ -349,7 +349,7 @@ module ownership_mod
         end function c_return_int_ptr_dim_alloc_new
 
         ! ----------------------------------------
-        ! Function:  int *ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
+        ! Function:  int *ReturnIntPtrDimDefaultNew +destructor_name(delete_int_array)+dimension(len)+owner(caller)
         ! Statement: c_function_native*_caller
         ! ----------------------------------------
         ! Argument:  int *len +hidden+intent(out)
@@ -364,7 +364,7 @@ module ownership_mod
         end function c_return_int_ptr_dim_default_new
 
         ! ----------------------------------------
-        ! Function:  int *ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
+        ! Function:  int *ReturnIntPtrDimDefaultNew +destructor_name(delete_int_array)+dimension(len)+owner(caller)
         ! Statement: f_function_native*_cdesc_pointer_caller
         subroutine c_return_int_ptr_dim_default_new_bufferify( &
                 SHT_rv_cdesc, SHT_rv_capsule) &
@@ -606,7 +606,7 @@ contains
     end function return_int_ptr_dim_default
 
     ! ----------------------------------------
-    ! Function:  int *ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
+    ! Function:  int *ReturnIntPtrDimPointerNew +deref(pointer)+destructor_name(delete_int_array)+dimension(len)+owner(caller)
     ! Statement: f_function_native*_cdesc_pointer_caller
     function return_int_ptr_dim_pointer_new(Crv) &
             result(SHT_rv)
@@ -623,7 +623,7 @@ contains
     end function return_int_ptr_dim_pointer_new
 
     ! ----------------------------------------
-    ! Function:  int *ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
+    ! Function:  int *ReturnIntPtrDimDefaultNew +destructor_name(delete_int_array)+dimension(len)+owner(caller)
     ! Statement: f_function_native*_cdesc_pointer_caller
     function return_int_ptr_dim_default_new(Crv) &
             result(SHT_rv)

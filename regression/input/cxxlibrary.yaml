@@ -125,6 +125,7 @@ declarations:
   declarations:
   - decl: int m_length +readonly +name(length);
   - decl: Class1()
+  - decl: ~Class1()
 
   - decl: int check_length(int length = 1)
     doxygen:

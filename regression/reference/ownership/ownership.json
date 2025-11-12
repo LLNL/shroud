@@ -371,6 +371,9 @@
         "cxx_header": [
             "ownership.hpp"
         ],
+        "destructors": {
+            "delete_int_array": "int * cxx_ptr = reinterpret_cast<int *>(ptr);\ndelete [] cxx_ptr;\n"
+        },
         "functions": [
             {
                 "<FUNCTION>": "ReturnIntPtrRaw  2 ****************************************",
@@ -2178,6 +2181,7 @@
                 "ast": {
                     "declarator": {
                         "attrs": {
+                            "destructor_name": "delete_int_array",
                             "dimension": "len",
                             "owner": "caller"
                         },
@@ -2216,7 +2220,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * ReturnIntPtrDimRawNew(int *len+intent(out)+hidden)",
-                "declgen": "int *ReturnIntPtrDimRawNew(int *len +hidden+intent(out)) +dimension(len)+owner(caller)",
+                "declgen": "int *ReturnIntPtrDimRawNew(int *len +hidden+intent(out)) +destructor_name(delete_int_array)+dimension(len)+owner(caller)",
                 "name": "ReturnIntPtrDimRawNew",
                 "options": {
                     "wrap_fortran": false,
@@ -2268,6 +2272,7 @@
                             },
                             "meta": {
                                 "abstract": "native*",
+                                "destructor_name": "delete_int_array",
                                 "dim_ast": [
                                     {
                                         "name": "len"
@@ -2324,6 +2329,7 @@
                         "+result": {
                             "meta": {
                                 "abstract": "native*",
+                                "destructor_name": "delete_int_array",
                                 "dim_ast": [
                                     {
                                         "name": "len"
@@ -2358,6 +2364,7 @@
                     "declarator": {
                         "attrs": {
                             "deref": "pointer",
+                            "destructor_name": "delete_int_array",
                             "dimension": "len",
                             "owner": "caller"
                         },
@@ -2396,7 +2403,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * ReturnIntPtrDimPointerNew(int *len+intent(out)+hidden)",
-                "declgen": "int *ReturnIntPtrDimPointerNew(int *len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)",
+                "declgen": "int *ReturnIntPtrDimPointerNew(int *len +hidden+intent(out)) +deref(pointer)+destructor_name(delete_int_array)+dimension(len)+owner(caller)",
                 "helpers": {
                     "fc": [
                         "array_context",
@@ -2455,6 +2462,7 @@
                             },
                             "meta": {
                                 "abstract": "native*",
+                                "destructor_name": "delete_int_array",
                                 "dim_ast": [
                                     {
                                         "name": "len"
@@ -2567,6 +2575,7 @@
                                 "abstract": "native*",
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "destructor_name": "delete_int_array",
                                 "dim_ast": [
                                     {
                                         "name": "len"
@@ -2624,6 +2633,7 @@
                         "+result": {
                             "meta": {
                                 "abstract": "native*",
+                                "destructor_name": "delete_int_array",
                                 "dim_ast": [
                                     {
                                         "name": "len"
@@ -2666,6 +2676,7 @@
                             },
                             "meta": {
                                 "abstract": "native*",
+                                "destructor_name": "delete_int_array",
                                 "dim_ast": [
                                     {
                                         "name": "len"
@@ -2708,6 +2719,7 @@
                         "+result": {
                             "meta": {
                                 "abstract": "native*",
+                                "destructor_name": "delete_int_array",
                                 "dim_ast": [
                                     {
                                         "name": "len"
@@ -2762,6 +2774,7 @@
                     "declarator": {
                         "attrs": {
                             "deref": "allocatable",
+                            "destructor_name": "delete_int_array",
                             "dimension": "len",
                             "owner": "caller"
                         },
@@ -2800,7 +2813,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * ReturnIntPtrDimAllocNew(int *len+intent(out)+hidden)",
-                "declgen": "int *ReturnIntPtrDimAllocNew(int *len +hidden+intent(out)) +deref(allocatable)+dimension(len)+owner(caller)",
+                "declgen": "int *ReturnIntPtrDimAllocNew(int *len +hidden+intent(out)) +deref(allocatable)+destructor_name(delete_int_array)+dimension(len)+owner(caller)",
                 "name": "ReturnIntPtrDimAllocNew",
                 "options": {
                     "wrap_fortran": false,
@@ -2852,6 +2865,7 @@
                             },
                             "meta": {
                                 "abstract": "native*",
+                                "destructor_name": "delete_int_array",
                                 "dim_ast": [
                                     {
                                         "name": "len"
@@ -2908,6 +2922,7 @@
                         "+result": {
                             "meta": {
                                 "abstract": "native*",
+                                "destructor_name": "delete_int_array",
                                 "dim_ast": [
                                     {
                                         "name": "len"
@@ -2950,6 +2965,7 @@
                             },
                             "meta": {
                                 "abstract": "native*",
+                                "destructor_name": "delete_int_array",
                                 "dim_ast": [
                                     {
                                         "name": "len"
@@ -2992,6 +3008,7 @@
                         "+result": {
                             "meta": {
                                 "abstract": "native*",
+                                "destructor_name": "delete_int_array",
                                 "dim_ast": [
                                     {
                                         "name": "len"
@@ -3038,6 +3055,7 @@
                 "ast": {
                     "declarator": {
                         "attrs": {
+                            "destructor_name": "delete_int_array",
                             "dimension": "len",
                             "owner": "caller"
                         },
@@ -3076,7 +3094,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * ReturnIntPtrDimDefaultNew(int *len+intent(out)+hidden)",
-                "declgen": "int *ReturnIntPtrDimDefaultNew(int *len +hidden+intent(out)) +dimension(len)+owner(caller)",
+                "declgen": "int *ReturnIntPtrDimDefaultNew(int *len +hidden+intent(out)) +destructor_name(delete_int_array)+dimension(len)+owner(caller)",
                 "helpers": {
                     "fc": [
                         "array_context",
@@ -3135,6 +3153,7 @@
                             },
                             "meta": {
                                 "abstract": "native*",
+                                "destructor_name": "delete_int_array",
                                 "dim_ast": [
                                     {
                                         "name": "len"
@@ -3247,6 +3266,7 @@
                                 "abstract": "native*",
                                 "api": "cdesc",
                                 "deref": "pointer",
+                                "destructor_name": "delete_int_array",
                                 "dim_ast": [
                                     {
                                         "name": "len"
@@ -3304,6 +3324,7 @@
                         "+result": {
                             "meta": {
                                 "abstract": "native*",
+                                "destructor_name": "delete_int_array",
                                 "dim_ast": [
                                     {
                                         "name": "len"
@@ -3346,6 +3367,7 @@
                             },
                             "meta": {
                                 "abstract": "native*",
+                                "destructor_name": "delete_int_array",
                                 "dim_ast": [
                                     {
                                         "name": "len"
@@ -3388,6 +3410,7 @@
                         "+result": {
                             "meta": {
                                 "abstract": "native*",
+                                "destructor_name": "delete_int_array",
                                 "dim_ast": [
                                     {
                                         "name": "len"
@@ -3845,6 +3868,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "deref": "raw",
+                                        "destructor_name": "delete_int_array",
                                         "intent": "out",
                                         "owner": "caller"
                                     },
@@ -3892,7 +3916,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void IntPtrDimRawNew(int **array, int *len+intent(out)+hidden)",
-                "declgen": "void IntPtrDimRawNew(int **array +deref(raw)+intent(out)+owner(caller), int *len +hidden+intent(out))",
+                "declgen": "void IntPtrDimRawNew(int **array +deref(raw)+destructor_name(delete_int_array)+intent(out)+owner(caller), int *len +hidden+intent(out))",
                 "name": "IntPtrDimRawNew",
                 "options": {
                     "wrap_c": false,
@@ -3912,6 +3936,7 @@
                         "array": {
                             "meta": {
                                 "abstract": "native**",
+                                "destructor_name": "delete_int_array",
                                 "intent": "out",
                                 "owner": "caller"
                             }
@@ -3940,6 +3965,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "deref": "pointer",
+                                        "destructor_name": "delete_int_array",
                                         "dimension": "len",
                                         "intent": "out",
                                         "owner": "caller"
@@ -3988,7 +4014,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void IntPtrDimPointerNew(int **array, int *len+intent(out)+hidden)",
-                "declgen": "void IntPtrDimPointerNew(int **array +deref(pointer)+dimension(len)+intent(out)+owner(caller), int *len +hidden+intent(out))",
+                "declgen": "void IntPtrDimPointerNew(int **array +deref(pointer)+destructor_name(delete_int_array)+dimension(len)+intent(out)+owner(caller), int *len +hidden+intent(out))",
                 "name": "IntPtrDimPointerNew",
                 "options": {
                     "wrap_c": false,
@@ -4008,6 +4034,7 @@
                         "array": {
                             "meta": {
                                 "abstract": "native**",
+                                "destructor_name": "delete_int_array",
                                 "dim_ast": [
                                     {
                                         "name": "len"
@@ -4042,6 +4069,7 @@
                                 "declarator": {
                                     "attrs": {
                                         "deref": "allocatable",
+                                        "destructor_name": "delete_int_array",
                                         "dimension": "len",
                                         "intent": "out",
                                         "owner": "caller"
@@ -4090,7 +4118,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void IntPtrDimAllocNew(int **array, int *len+intent(out)+hidden)",
-                "declgen": "void IntPtrDimAllocNew(int **array +deref(allocatable)+dimension(len)+intent(out)+owner(caller), int *len +hidden+intent(out))",
+                "declgen": "void IntPtrDimAllocNew(int **array +deref(allocatable)+destructor_name(delete_int_array)+dimension(len)+intent(out)+owner(caller), int *len +hidden+intent(out))",
                 "name": "IntPtrDimAllocNew",
                 "options": {
                     "wrap_c": false,
@@ -4110,6 +4138,7 @@
                         "array": {
                             "meta": {
                                 "abstract": "native**",
+                                "destructor_name": "delete_int_array",
                                 "dim_ast": [
                                     {
                                         "name": "len"
@@ -4143,6 +4172,7 @@
                             {
                                 "declarator": {
                                     "attrs": {
+                                        "destructor_name": "delete_int_array",
                                         "dimension": "len",
                                         "intent": "out",
                                         "owner": "caller"
@@ -4191,7 +4221,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void IntPtrDimDefaultNew(int **array, int *len+intent(out)+hidden)",
-                "declgen": "void IntPtrDimDefaultNew(int **array +dimension(len)+intent(out)+owner(caller), int *len +hidden+intent(out))",
+                "declgen": "void IntPtrDimDefaultNew(int **array +destructor_name(delete_int_array)+dimension(len)+intent(out)+owner(caller), int *len +hidden+intent(out))",
                 "name": "IntPtrDimDefaultNew",
                 "options": {
                     "wrap_c": false,
@@ -4211,6 +4241,7 @@
                         "array": {
                             "meta": {
                                 "abstract": "native**",
+                                "destructor_name": "delete_int_array",
                                 "dim_ast": [
                                     {
                                         "name": "len"
@@ -5058,9 +5089,6 @@
             }
         ],
         "language": "cxx",
-        "patterns": {
-            "delete_int_array": "int * cxx_ptr = reinterpret_cast<int *>(ptr);\ndelete [] cxx_ptr;\n"
-        },
         "scope_file": [
             "ownership"
         ],

@@ -125,6 +125,7 @@ const char * STR_getConstStringAlloc(
     if (!SHC_rv_cxx->empty()) SHC_rv = SHC_rv_cxx->c_str();
     SHT_rv_capsule->addr  = const_cast<std::string *>(SHC_rv_cxx);
     SHT_rv_capsule->idtor = 1;
+    SHT_rv_capsule->cmemflags = SWIG_MEM_RVALUE;
     return SHC_rv;
     // splicer end function.getConstStringAlloc
 }
@@ -145,6 +146,7 @@ void STR_getConstStringAlloc_bufferify(STR_SHROUD_array *SHT_rv_cdesc,
     ShroudStringToCdesc(SHT_rv_cdesc, SHC_rv_cxx);
     SHT_rv_capsule->addr  = const_cast<std::string *>(SHC_rv_cxx);
     SHT_rv_capsule->idtor = 2;
+    SHT_rv_capsule->cmemflags = SWIG_MEM_RVALUE;
     // splicer end function.getConstStringAlloc_bufferify
 }
 
@@ -164,6 +166,7 @@ void STR_getConstStringPointer_bufferify(
     *SHC_rv_cxx = getConstStringPointer();
     SHT_rv_capsule->addr  = const_cast<std::string *>(SHC_rv_cxx);
     SHT_rv_capsule->idtor = 1;
+    SHT_rv_capsule->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     SHT_rv_cdesc->base_addr = const_cast<char *>(SHC_rv_cxx->data());
     SHT_rv_cdesc->type = SH_TYPE_OTHER;
     SHT_rv_cdesc->elem_len = SHC_rv_cxx->size();
@@ -188,6 +191,7 @@ const char * STR_getConstStringRaw_bufferify(
     const char *SHC_rv = SHC_rv_cxx->data();
     SHT_rv_capsule->addr  = const_cast<std::string *>(SHC_rv_cxx);
     SHT_rv_capsule->idtor = 1;
+    SHT_rv_capsule->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     return SHC_rv;
     // splicer end function.getConstStringRaw_bufferify
 }
@@ -345,6 +349,7 @@ void STR_getConstStringRefAlloc_bufferify(
     ShroudStringToCdesc(SHT_rv_cdesc, &SHC_rv_cxx);
     SHT_rv_capsule->addr  = const_cast<std::string *>(&SHC_rv_cxx);
     SHT_rv_capsule->idtor = 0;
+    SHT_rv_capsule->cmemflags = SWIG_MEM_RVALUE;
     // splicer end function.getConstStringRefAlloc_bufferify
 }
 // end STR_getConstStringRefAlloc_bufferify
@@ -469,6 +474,7 @@ void STR_getConstStringPtrAlloc_bufferify(
     ShroudStringToCdesc(SHT_rv_cdesc, SHC_rv_cxx);
     SHT_rv_capsule->addr  = const_cast<std::string *>(SHC_rv_cxx);
     SHT_rv_capsule->idtor = 0;
+    SHT_rv_capsule->cmemflags = SWIG_MEM_RVALUE;
     // splicer end function.getConstStringPtrAlloc_bufferify
 }
 
@@ -510,6 +516,7 @@ void STR_getConstStringPtrOwnsAlloc_bufferify(
     ShroudStringToCdesc(SHT_rv_cdesc, SHC_rv_cxx);
     SHT_rv_capsule->addr  = const_cast<std::string *>(SHC_rv_cxx);
     SHT_rv_capsule->idtor = 1;
+    SHT_rv_capsule->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     // splicer end function.getConstStringPtrOwnsAlloc_bufferify
 }
 
@@ -543,6 +550,7 @@ void STR_getConstStringPtrOwnsAllocPattern_bufferify(
     ShroudStringToCdesc(SHT_rv_cdesc, SHC_rv_cxx);
     SHT_rv_capsule->addr  = const_cast<std::string *>(SHC_rv_cxx);
     SHT_rv_capsule->idtor = 3;
+    SHT_rv_capsule->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     // splicer end function.getConstStringPtrOwnsAllocPattern_bufferify
 }
 
@@ -1088,6 +1096,7 @@ void STR_fetchArrayStringAlloc_bufferify(
     }
     SHT_strs_capsule->addr  = strs;
     SHT_strs_capsule->idtor = 0;
+    SHT_strs_capsule->cmemflags = SWIG_MEM_RVALUE;
     // splicer end function.fetchArrayStringAlloc_bufferify
 }
 
@@ -1153,6 +1162,7 @@ void STR_fetchArrayStringAllocLen_bufferify(
     }
     SHT_strs_capsule->addr  = strs;
     SHT_strs_capsule->idtor = 0;
+    SHT_strs_capsule->cmemflags = SWIG_MEM_RVALUE;
     // splicer end function.fetchArrayStringAllocLen_bufferify
 }
 

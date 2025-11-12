@@ -46,10 +46,11 @@ void OWN_SHROUD_memory_destructor(OWN_SHROUD_capsule_data *cap)
         delete cxx_ptr;
         break;
     }
-    case 2:   // int
+    case 2:   // delete_int_array
     {
-        int *cxx_ptr = reinterpret_cast<int *>(ptr);
-        free(cxx_ptr);
+        int * cxx_ptr = reinterpret_cast<int *>(ptr);
+        delete [] cxx_ptr;
+
         break;
     }
     default:

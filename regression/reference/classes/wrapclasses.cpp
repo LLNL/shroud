@@ -320,7 +320,7 @@ void CLA_getClass1Copy_bufferify(int flag, CLA_Class1 *SHC_rv)
     *SHC_rv_cxx = classes::getClass1Copy(flag);
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 1;
-    SHC_rv->cmemflags = SWIG_MEM_RVALUE;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     // splicer end function.getClass1Copy_bufferify
 }
 

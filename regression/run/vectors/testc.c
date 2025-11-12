@@ -102,6 +102,7 @@ void test_return(void)
     assert(rv1[7] ==  8 && "ReturnVectorAlloc rv1[7]");
     assert(rv1[8] ==  9 && "ReturnVectorAlloc rv1[8]");
     assert(rv1[9] == 10 && "ReturnVectorAlloc rv1[9]");
+    free(rv1);
 }
 
 int main(int argc, char *argv[])

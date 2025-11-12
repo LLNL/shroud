@@ -260,6 +260,8 @@ contains
     path = obj0%get_path()
     call assert_equals(path, "Class1additional", "get_path")
 
+    call obj0%delete
+
   end subroutine test_class1_memory
 
   subroutine test_singleton
