@@ -9,14 +9,8 @@ import string
 
 from . import error
 
-try:
-    # Python 3
-    Mapping = collections.abc.Mapping
-    Sequence = collections.abc.Sequence
-except AttributeError:
-    # Python 2
-    Mapping = collections.Mapping
-    Sequence = collections.Sequence
+Mapping = collections.abc.Mapping
+Sequence = collections.abc.Sequence
 OrderedDict = collections.OrderedDict
 
 try:

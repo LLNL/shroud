@@ -25,14 +25,8 @@ from . import util
 # translation table to convert type name to flat name
 # unsigned int -> unsigned_int
 # vector<int>  -> vector_int
-try:
-    # Python 2
-    from string import maketrans
-    def flatten_name(name, flat_trantab = maketrans("< ", "__")):
-        return name.replace("::","_").translate(flat_trantab, ">")
-except:
-    def flatten_name(name, flat_trantab="".maketrans("< ", "__", ">")):
-        return name.replace("::","_").translate(flat_trantab)
+def flatten_name(name, flat_trantab="".maketrans("< ", "__", ">")):
+    return name.replace("::","_").translate(flat_trantab)
 
 void_typemap = None
 
