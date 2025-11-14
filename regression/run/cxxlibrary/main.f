@@ -181,6 +181,8 @@ contains
     call obj%declare(5, 44_C_LONG)
     length = obj%get_length()
     call assert_equals(44, length, "explicit length long");
+
+    call obj%dtor
     
   end subroutine test_return_this
 
@@ -197,6 +199,8 @@ contains
     call assert_equals(10, length, "intent(inout) lenstr");
     
     call test_capsule_intent_worker(obj)
+
+    call obj%dtor
 
   end subroutine test_capsule_intent
     

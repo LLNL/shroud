@@ -1353,6 +1353,7 @@ c_function_string:
   - if (!{c_local_cxx}->empty()) {c_var} = {c_local_cxx}->c_str();
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
+  - '{c_var_capsule}->cmemflags = {c_cmemflags_or}SWIG_MEM_RVALUE;'
   c_temps:
   - capsule
   c_local:
@@ -4162,6 +4163,7 @@ c_mixin_capsule_fill_arg:
   c_post_call:
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
+  - '{c_var_capsule}->cmemflags = {c_cmemflags_or}SWIG_MEM_RVALUE;'
   sphinx-end-before: c_mixin_capsule_fill_arg
 c_mixin_capsule_fill_cvar:
   sphinx-start-after: c_mixin_capsule_fill_cvar
@@ -4183,6 +4185,7 @@ c_mixin_capsule_fill_local:
   c_post_call:
   - '{c_var_capsule}->addr  = {c_local_cxx};'
   - '{c_var_capsule}->idtor = {idtor};'
+  - '{c_var_capsule}->cmemflags = {c_cmemflags};'
   sphinx-end-before: c_mixin_capsule_fill_local
 c_mixin_capsule_pass:
   sphinx-start-after: c_mixin_capsule_pass
@@ -6788,6 +6791,7 @@ c_out_vector<string>&_cdesc_allocatable:
   - '{c_var_cdesc}->size      = {c_local_cxx}->size();'
   - '{c_var_capsule}->addr  = {c_local_cxx};'
   - '{c_var_capsule}->idtor = {idtor};'
+  - '{c_var_capsule}->cmemflags = {c_cmemflags};'
   c_temps:
   - cdesc
   - capsule
@@ -9193,6 +9197,7 @@ f_function_native*_cdesc_allocatable:
   - '{c_var_cdesc}->size = {gen.c_array_size};'
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
+  - '{c_var_capsule}->cmemflags = {c_cmemflags_or}SWIG_MEM_RVALUE;'
   c_temps:
   - cdesc
   - capsule
@@ -9282,6 +9287,7 @@ f_function_native*_cdesc_pointer_caller:
   - '{c_var_cdesc}->size = {gen.c_array_size};'
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
+  - '{c_var_capsule}->cmemflags = {c_cmemflags_or}SWIG_MEM_RVALUE;'
   c_temps:
   - cdesc
   - capsule
@@ -10651,6 +10657,7 @@ f_function_string&_cdesc_allocatable:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
+  - '{c_var_capsule}->cmemflags = {c_cmemflags_or}SWIG_MEM_RVALUE;'
   c_temps:
   - cdesc
   - capsule
@@ -10731,6 +10738,7 @@ f_function_string&_cdesc_allocatable_caller:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
+  - '{c_var_capsule}->cmemflags = {c_cmemflags_or}SWIG_MEM_RVALUE;'
   c_temps:
   - cdesc
   - capsule
@@ -10811,6 +10819,7 @@ f_function_string&_cdesc_allocatable_library:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
+  - '{c_var_capsule}->cmemflags = {c_cmemflags_or}SWIG_MEM_RVALUE;'
   c_temps:
   - cdesc
   - capsule
@@ -11857,6 +11866,7 @@ f_function_string*_cdesc_allocatable:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
+  - '{c_var_capsule}->cmemflags = {c_cmemflags_or}SWIG_MEM_RVALUE;'
   c_temps:
   - cdesc
   - capsule
@@ -11937,6 +11947,7 @@ f_function_string*_cdesc_allocatable_caller:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
+  - '{c_var_capsule}->cmemflags = {c_cmemflags_or}SWIG_MEM_RVALUE;'
   c_temps:
   - cdesc
   - capsule
@@ -12017,6 +12028,7 @@ f_function_string*_cdesc_allocatable_library:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
+  - '{c_var_capsule}->cmemflags = {c_cmemflags_or}SWIG_MEM_RVALUE;'
   c_temps:
   - cdesc
   - capsule
@@ -13084,6 +13096,7 @@ f_function_string_cdesc_allocatable:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
+  - '{c_var_capsule}->cmemflags = {c_cmemflags_or}SWIG_MEM_RVALUE;'
   c_temps:
   - cdesc
   - capsule
@@ -13177,6 +13190,7 @@ f_function_string_cdesc_allocatable_caller:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
+  - '{c_var_capsule}->cmemflags = {c_cmemflags_or}SWIG_MEM_RVALUE;'
   c_temps:
   - cdesc
   - capsule
@@ -13270,6 +13284,7 @@ f_function_string_cdesc_allocatable_library:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
+  - '{c_var_capsule}->cmemflags = {c_cmemflags_or}SWIG_MEM_RVALUE;'
   c_temps:
   - cdesc
   - capsule
@@ -13360,6 +13375,7 @@ f_function_string_cdesc_pointer_caller:
   c_post_call:
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
+  - '{c_var_capsule}->cmemflags = {c_cmemflags_or}SWIG_MEM_RVALUE;'
   - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{c_local_cxx}{cxx_member}data());"
   - '{c_var_cdesc}->type = {typemap.sh_type};'
   - '{c_var_cdesc}->elem_len = {c_local_cxx}{cxx_member}size();'
@@ -13760,6 +13776,7 @@ f_function_string_cfi_pointer:
   - -}}
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
+  - '{c_var_capsule}->cmemflags = {c_cmemflags_or}SWIG_MEM_RVALUE;'
   c_temps:
   - capsule
   - cfi
@@ -13861,6 +13878,7 @@ f_function_string_cfi_pointer_caller:
   - -}}
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
+  - '{c_var_capsule}->cmemflags = {c_cmemflags_or}SWIG_MEM_RVALUE;'
   c_temps:
   - capsule
   - cfi
@@ -13962,6 +13980,7 @@ f_function_string_cfi_pointer_library:
   - -}}
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
+  - '{c_var_capsule}->cmemflags = {c_cmemflags_or}SWIG_MEM_RVALUE;'
   c_temps:
   - capsule
   - cfi
@@ -14046,6 +14065,7 @@ f_function_string_raw_caller:
   - const char *{c_var} = {c_local_cxx}{cxx_member}data();
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
+  - '{c_var_capsule}->cmemflags = {c_cmemflags_or}SWIG_MEM_RVALUE;'
   c_return:
   - return {c_var};
   c_temps:
@@ -18516,6 +18536,7 @@ f_mixin_capsule_use:
   c_post_call:
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
+  - '{c_var_capsule}->cmemflags = {c_cmemflags_or}SWIG_MEM_RVALUE;'
   c_temps:
   - capsule
   helper:
@@ -20845,6 +20866,7 @@ f_out_native**_cdesc_allocatable:
   - '{c_var_cdesc}->size = {gen.c_array_size};'
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
+  - '{c_var_capsule}->cmemflags = {c_cmemflags_or}SWIG_MEM_RVALUE;'
   c_temps:
   - cdesc
   - capsule
@@ -21391,6 +21413,7 @@ f_out_string**_cdesc_allocatable:
   - -}}
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
+  - '{c_var_capsule}->cmemflags = {c_cmemflags_or}SWIG_MEM_RVALUE;'
   c_temps:
   - cdesc
   - capsule
@@ -22153,6 +22176,7 @@ f_out_vector<string>&_cdesc_allocatable:
   - '{c_var_cdesc}->size      = {c_local_cxx}->size();'
   - '{c_var_capsule}->addr  = {c_local_cxx};'
   - '{c_var_capsule}->idtor = {idtor};'
+  - '{c_var_capsule}->cmemflags = {c_cmemflags};'
   c_temps:
   - cdesc
   - capsule
@@ -22948,7 +22972,7 @@ h_helper_capsule_helper:
   - '! helper capsule_helper'
   - 'type :: LIB_SHROUD_capsule+'
   - private
-  - 'type(LIB_SHROUD_capsule_data) :: mem'
+  - "type(LIB_SHROUD_capsule_data) :: mem =\t LIB_SHROUD_capsule_data()"
   - -contains
   - '+final :: SHROUD_capsule_final'
   - 'procedure :: delete => SHROUD_capsule_delete'

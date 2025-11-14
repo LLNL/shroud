@@ -119,7 +119,7 @@ the Python3 on your path.
 Shiv requires Python 3.7+.
 
 ```
-wget https://github.com/LLNL/shroud/archive/shroud-0.13.0.pyz
+wget https://github.com/LLNL/shroud/archive/shroud-0.14.0.pyz
 ```
 
 

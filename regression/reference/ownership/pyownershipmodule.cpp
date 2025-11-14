@@ -197,7 +197,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  int *ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
+// Function:  int *ReturnIntPtrDimPointerNew +deref(pointer)+destructor_name(delete_int_array)+dimension(len)+owner(caller)
 // Statement: py_function_native*_numpy
 // ----------------------------------------
 // Argument:  int *len +hidden+intent(out)
@@ -233,7 +233,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  int *ReturnIntPtrDimAllocNew +deref(allocatable)+dimension(len)+owner(caller)
+// Function:  int *ReturnIntPtrDimAllocNew +deref(allocatable)+destructor_name(delete_int_array)+dimension(len)+owner(caller)
 // Statement: py_function_native*_numpy
 // ----------------------------------------
 // Argument:  int *len +hidden+intent(out)
@@ -269,7 +269,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  int *ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
+// Function:  int *ReturnIntPtrDimDefaultNew +destructor_name(delete_int_array)+dimension(len)+owner(caller)
 // Statement: py_function_native*_numpy
 // ----------------------------------------
 // Argument:  int *len +hidden+intent(out)

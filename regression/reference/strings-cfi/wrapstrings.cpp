@@ -109,6 +109,7 @@ const char * STR_getConstStringAlloc(
     if (!SHC_rv_cxx->empty()) SHC_rv = SHC_rv_cxx->c_str();
     SHT_rv_capsule->addr  = const_cast<std::string *>(SHC_rv_cxx);
     SHT_rv_capsule->idtor = 1;
+    SHT_rv_capsule->cmemflags = SWIG_MEM_RVALUE;
     return SHC_rv;
     // splicer end function.getConstStringAlloc
 }
@@ -166,6 +167,7 @@ void STR_getConstStringPointer_CFI(
     }
     SHT_rv_capsule->addr  = const_cast<std::string *>(SHC_rv_cxx);
     SHT_rv_capsule->idtor = 1;
+    SHT_rv_capsule->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     // splicer end function.getConstStringPointer_CFI
 }
 
@@ -185,6 +187,7 @@ const char * STR_getConstStringRaw_bufferify(
     const char *SHC_rv = SHC_rv_cxx->data();
     SHT_rv_capsule->addr  = const_cast<std::string *>(SHC_rv_cxx);
     SHT_rv_capsule->idtor = 1;
+    SHT_rv_capsule->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     return SHC_rv;
     // splicer end function.getConstStringRaw_bufferify
 }

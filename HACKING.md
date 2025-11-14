@@ -420,7 +420,6 @@ branch. Typical changes include:
 * `setup.py`  Download path
 * `pyproject.toml`
 * `README.md`
-* `pyproject.toml`
 * `docs/conf.py`
 * `docs/releases.rst`
 * Update reference files with new version. `make do-test-replace do-test-args=none`
@@ -449,6 +448,7 @@ shiv's primary goal is making distributing Python applications fast & easy.
 
 https://pypi.org/project/shiv/
 
+    git checkout master
     make install-shiv
     rm dist-shiv/*
     make shiv-file
@@ -521,4 +521,4 @@ After a commit hash is created, update
 # Annual Changes
 
 Update copyright in `LICENSE`.
-
+`docs/conf.py` copyright date.

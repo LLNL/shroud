@@ -668,6 +668,7 @@ void POI_getAllocToFixedArray_bufferify(
     SHT_count_cdesc->size = SHT_count_cdesc->shape[0];
     SHT_count_capsule->addr  = count;
     SHT_count_capsule->idtor = 0;
+    SHT_count_capsule->cmemflags = SWIG_MEM_RVALUE;
     // splicer end function.getAllocToFixedArray_bufferify
 }
 // end POI_getAllocToFixedArray_bufferify
@@ -898,6 +899,7 @@ void POI_returnIntAllocToFixedArray_bufferify(
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
     SHT_rv_capsule->addr  = SHC_rv;
     SHT_rv_capsule->idtor = 0;
+    SHT_rv_capsule->cmemflags = SWIG_MEM_RVALUE;
     // splicer end function.returnIntAllocToFixedArray_bufferify
 }
 // end POI_returnIntAllocToFixedArray_bufferify

@@ -805,7 +805,8 @@
         ],
         "c_post_call": [
             "{c_var_capsule}->addr  = {cxx_nonconst_ptr};",
-            "{c_var_capsule}->idtor = {idtor};"
+            "{c_var_capsule}->idtor = {idtor};",
+            "{c_var_capsule}->cmemflags = {c_cmemflags_or}SWIG_MEM_RVALUE;"
         ]
     },
     {
@@ -815,7 +816,8 @@
         ],
         "c_post_call": [
             "{c_var_capsule}->addr  = {c_local_cxx};",
-            "{c_var_capsule}->idtor = {idtor};"
+            "{c_var_capsule}->idtor = {idtor};",
+            "{c_var_capsule}->cmemflags = {c_cmemflags};"
         ]
     },
     {
@@ -7206,7 +7208,7 @@
             "! helper {hname}",
             "type :: {F_capsule_type}+",
             "private",
-            "type({f_capsule_data_type}) :: mem",
+            "type({f_capsule_data_type}) :: mem =\t {f_capsule_data_type}()",
             "-contains",
             "+final :: {F_capsule_final_function}",
             "procedure :: delete => {F_capsule_delete_function}",

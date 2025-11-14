@@ -102,7 +102,7 @@ declarations:
 #    deref: pointer
     dimension: len
     owner: caller
-#    C_free_pattern: delete_int_array
+    destructor_name: delete_int_array
   options:
     wrap_fortran: False
     wrap_lua: False
@@ -113,7 +113,7 @@ declarations:
     deref: pointer
     dimension: len
     owner: caller
-#    C_free_pattern: delete_int_array
+    destructor_name: delete_int_array
   options:
     wrap_lua: False
 
@@ -122,7 +122,7 @@ declarations:
     deref: allocatable
     dimension: len
     owner: caller
-#    C_free_pattern: delete_int_array
+    destructor_name: delete_int_array
   options:
     wrap_fortran: False
     wrap_lua: False
@@ -131,7 +131,7 @@ declarations:
   fattrs:
     dimension: len
     owner: caller
-#    C_free_pattern: delete_int_array
+    destructor_name: delete_int_array
   options:
     wrap_lua: False
   # deref("pointer") will be defaulted, return as a Fortran POINTER.
@@ -201,7 +201,7 @@ declarations:
       intent: out
       deref: raw
       owner: caller
-#    C_free_pattern: delete_int_array
+      destructor_name: delete_int_array
   options:
     wrap_c: False
     wrap_fortran: False
@@ -215,7 +215,7 @@ declarations:
       deref: pointer
       dimension: len
       owner: caller
-#    C_free_pattern: delete_int_array
+      destructor_name: delete_int_array
   options:
     wrap_c: False
     wrap_fortran: False
@@ -229,7 +229,7 @@ declarations:
       deref: allocatable
       dimension: len
       owner: caller
-#    C_free_pattern: delete_int_array
+      destructor_name: delete_int_array
   options:
     wrap_c: False
     wrap_fortran: False
@@ -242,7 +242,7 @@ declarations:
       intent: out
       dimension: len
       owner: caller
-#     C_free_pattern: delete_int_array
+      destructor_name: delete_int_array
   options:
     wrap_c: False
     wrap_fortran: False
@@ -272,7 +272,7 @@ declarations:
 
 
 
-patterns:
+destructors:
    delete_int_array: |
        int * cxx_ptr = reinterpret_cast<int *>(ptr);
        delete [] cxx_ptr;

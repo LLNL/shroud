@@ -21,6 +21,8 @@ void test_class(void)
 
     int flag = CLA_Class1_Method1(&c1);
     assert(flag == 0 && "CLA_class1_method1");
+
+    CLA_Class1_delete(&c1);
 }
 
 // passClassByValue sets global_flag

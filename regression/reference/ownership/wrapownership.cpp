@@ -163,6 +163,7 @@ void OWN_ReturnIntPtrDimAlloc_bufferify(OWN_SHROUD_array *SHT_rv_cdesc,
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
     SHT_rv_capsule->addr  = SHC_rv;
     SHT_rv_capsule->idtor = 0;
+    SHT_rv_capsule->cmemflags = SWIG_MEM_RVALUE;
     // splicer end function.ReturnIntPtrDimAlloc_bufferify
 }
 // end OWN_ReturnIntPtrDimAlloc_bufferify
@@ -203,7 +204,7 @@ void OWN_ReturnIntPtrDimDefault_bufferify(
 }
 
 // ----------------------------------------
-// Function:  int *ReturnIntPtrDimRawNew +dimension(len)+owner(caller)
+// Function:  int *ReturnIntPtrDimRawNew +destructor_name(delete_int_array)+dimension(len)+owner(caller)
 // Statement: c_function_native*_caller
 // ----------------------------------------
 // Argument:  int *len +hidden+intent(out)
@@ -217,7 +218,7 @@ int * OWN_ReturnIntPtrDimRawNew(int *len)
 }
 
 // ----------------------------------------
-// Function:  int *ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
+// Function:  int *ReturnIntPtrDimPointerNew +deref(pointer)+destructor_name(delete_int_array)+dimension(len)+owner(caller)
 // Statement: c_function_native*_caller
 // ----------------------------------------
 // Argument:  int *len +hidden+intent(out)
@@ -231,7 +232,7 @@ int * OWN_ReturnIntPtrDimPointerNew(int *len)
 }
 
 // ----------------------------------------
-// Function:  int *ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
+// Function:  int *ReturnIntPtrDimPointerNew +deref(pointer)+destructor_name(delete_int_array)+dimension(len)+owner(caller)
 // Statement: f_function_native*_cdesc_pointer_caller
 // ----------------------------------------
 // Argument:  int *len +hidden+intent(out)
@@ -251,11 +252,12 @@ void OWN_ReturnIntPtrDimPointerNew_bufferify(
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
     SHT_rv_capsule->addr  = SHC_rv;
     SHT_rv_capsule->idtor = 2;
+    SHT_rv_capsule->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     // splicer end function.ReturnIntPtrDimPointerNew_bufferify
 }
 
 // ----------------------------------------
-// Function:  int *ReturnIntPtrDimAllocNew +deref(allocatable)+dimension(len)+owner(caller)
+// Function:  int *ReturnIntPtrDimAllocNew +deref(allocatable)+destructor_name(delete_int_array)+dimension(len)+owner(caller)
 // Statement: c_function_native*_caller
 // ----------------------------------------
 // Argument:  int *len +hidden+intent(out)
@@ -269,7 +271,7 @@ int * OWN_ReturnIntPtrDimAllocNew(int *len)
 }
 
 // ----------------------------------------
-// Function:  int *ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
+// Function:  int *ReturnIntPtrDimDefaultNew +destructor_name(delete_int_array)+dimension(len)+owner(caller)
 // Statement: c_function_native*_caller
 // ----------------------------------------
 // Argument:  int *len +hidden+intent(out)
@@ -283,7 +285,7 @@ int * OWN_ReturnIntPtrDimDefaultNew(int *len)
 }
 
 // ----------------------------------------
-// Function:  int *ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
+// Function:  int *ReturnIntPtrDimDefaultNew +destructor_name(delete_int_array)+dimension(len)+owner(caller)
 // Statement: f_function_native*_cdesc_pointer_caller
 // ----------------------------------------
 // Argument:  int *len +hidden+intent(out)
@@ -303,6 +305,7 @@ void OWN_ReturnIntPtrDimDefaultNew_bufferify(
     SHT_rv_cdesc->size = SHT_rv_cdesc->shape[0];
     SHT_rv_capsule->addr  = SHC_rv;
     SHT_rv_capsule->idtor = 2;
+    SHT_rv_capsule->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     // splicer end function.ReturnIntPtrDimDefaultNew_bufferify
 }
 
@@ -362,7 +365,7 @@ OWN_Class1 * OWN_getClassNew(int flag, OWN_Class1 *SHC_rv)
     Class1 *SHC_rv_cxx = getClassNew(flag);
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 1;
-    SHC_rv->cmemflags = SWIG_MEM_RVALUE;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     return SHC_rv;
     // splicer end function.getClassNew
 }
@@ -383,7 +386,7 @@ void OWN_getClassNew_bufferify(int flag, OWN_Class1 *SHC_rv)
     Class1 *SHC_rv_cxx = getClassNew(flag);
     SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 1;
-    SHC_rv->cmemflags = SWIG_MEM_RVALUE;
+    SHC_rv->cmemflags = SWIG_MEM_OWN | SWIG_MEM_RVALUE;
     // splicer end function.getClassNew_bufferify
 }
 
