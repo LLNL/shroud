@@ -226,7 +226,7 @@ def test_decl_str(idx, declaration, indent):
     """Convert function declaration to C and C++.
     Along with its arguments.
     """
-    indent = indent + "    "
+    indent = f"{indent}    "
     s = gen_decl(declaration)
     print(indent, "gen_decl:", idx, s)
     s = gen_arg_as_c(declaration, add_params=False)
@@ -237,7 +237,7 @@ def test_decl_str(idx, declaration, indent):
     if declaration.declarator.params is not None:
         s = gen_decl_noparams(declaration)
         print(indent, "no params:", s)
-        indent = indent + "    "
+        indent = f"{indent}    "
         for i,  arg in enumerate(declaration.declarator.params):
             s = gen_decl(arg)
             print(indent, "gen_decl:", i, s)
@@ -310,7 +310,7 @@ def test_block(comments, code, symtab):
             yaml.safe_dump(typemaps_dict, sys.stdout)
         
     except error.ShroudParseError as err:
-        print("Parse Error line {}:".format(err.line))
+        print(f"Parse Error line {err.line}:")
         print(err.message)
 
 def test_file():

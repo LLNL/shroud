@@ -42,7 +42,7 @@ class MainCase(unittest.TestCase):
 
     def run_shroud(self, input):
         tester = self.tester
-        tester.open_log(input + ".log")
+        tester.open_log(f"{input}.log")
         tester.set_test(input)
         status = tester.do_module()
         tester.close_log()
