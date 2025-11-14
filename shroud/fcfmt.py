@@ -399,7 +399,7 @@ class FillFormat(object):
             if result_stmt.i_result_var:
                 fmt_result.i_result_var = wformat(
                     result_stmt.i_result_var, fmt_result)
-            fmt_result.i_result_clause = f"\x0cresult({fmt_result.i_result_var})"
+            fmt_result.i_result_clause = f"\fresult({fmt_result.i_result_var})"
         
     def fill_interface_arg(self, cls, node, arg, bind):
         declarator = arg.declarator
@@ -458,7 +458,7 @@ class FillFormat(object):
                     result_stmt.f_result_var, fmt_result)
             fmt_result.f_var = fmt_result.f_result_var
             fmt_result.fc_var = fmt_result.f_result_var
-            fmt_result.f_result_clause = f"\x0cresult({fmt_result.f_result_var})"
+            fmt_result.f_result_clause = f"\fresult({fmt_result.f_result_var})"
 
     def fill_fortran_arg(self, cls, node, C_node, f_arg, c_arg, bind):
         arg_name = f_arg.declarator.user_name
