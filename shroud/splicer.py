@@ -5,8 +5,6 @@
 """
 Read a file and extract the splicer blocks.
 """
-from __future__ import print_function
-from __future__ import absolute_import
 
 import os
 
@@ -61,7 +59,7 @@ def get_splicers(fname, out):
                         )
                     if end_tag in top:
                         raise RuntimeError(
-                            "Tag already exists - '%s'" % begin_tag
+                            f"Tag already exists - '{begin_tag}'"
                         )
                     top[begin_subtag] = save
                     top = out

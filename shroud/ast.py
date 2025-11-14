@@ -5,20 +5,11 @@
 """
 Abstract Syntax Tree nodes for Library, Class, and Function nodes.
 """
-from __future__ import print_function
-from __future__ import absolute_import
 
 import copy
 
-from . import error
-from . import declast
+from . import declast, error, fcmem, statements, todict, typemap, util, visitor
 from .declstr import gen_decl
-from . import fcmem
-from . import statements
-from . import todict
-from . import typemap
-from . import util
-from . import visitor
 from .util import wformat
 
 
@@ -75,7 +66,7 @@ class WrapFlags(object):
         if self.python:
             flags.append("python")
         aflags = ",".join(flags)
-        return "WrapFlags({})".format(aflags)
+        return f"WrapFlags({aflags})"
 
 # Migrate upper case options to lower case format fields
 mapcase = dict(
@@ -92,7 +83,7 @@ class AstNode(object):
         if fmt is None:
             fmt = self.fmtdict
         if not fmt.inlocal(name):
-            tname = name + tname + "_template"
+            tname = f"{name}{tname}_template"
             lowername = mapcase.get(name, name)
             setattr(fmt, lowername, wformat(self.options[tname], fmt))
 
@@ -100,7 +91,7 @@ class AstNode(object):
         """Always evaluate template."""
         if fmt is None:
             fmt = self.fmtdict
-        tname = name + tname + "_template"
+        tname = f"{name}{tname}_template"
         lowername = mapcase.get(name, name)
         setattr(fmt, lowername, util.wformat(self.options[tname], fmt))
 
@@ -163,8 +154,7 @@ class AstNode(object):
             return util.un_camel(name)
         else:
             raise error.ShroudError(
-                "Unexpected value of option {}: {}"
-                .format(optname, case))
+                f"Unexpected value of option {optname}: {case}")
 
     def apply_C_API_option(self, name):
         """Apply option.C_API_case to name"""
@@ -276,9 +266,7 @@ class NamespaceMixin(object):
             node = self.add_namespace(decl, ast, **kwargs)
         else:
             raise RuntimeError(
-                "add_declaration: unknown ast type {} after parsing '{}'".format(
-                    type(ast), decl
-                )
+                f"add_declaration: unknown ast type {type(ast)} after parsing '{decl}'"
             )
         return node
 
@@ -496,7 +484,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         if namespace:
             ns = self
             for name in namespace.split():
-                ns = ns.add_namespace("namespace " + name, skip=True)
+                ns = ns.add_namespace(f"namespace {name}", skip=True)
             # Any namespaces listed in the "namespace" field are not wrapped.
             self.wrap_namespace = ns
 
@@ -705,7 +693,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         format templates in options.
         """
 
-        C_prefix = self.library.upper()[:3] + "_"  # function prefix
+        C_prefix = f"{self.library.upper()[:3]}_"  # function prefix
         fmt_library = util.Scope(
             parent=None,
             attr_len="0",      # +len(n) attribute
@@ -780,8 +768,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             LUA_state_var="L",
             LUA_this_call="",
 
-            PY_ARRAY_UNIQUE_SYMBOL="SHROUD_{}_ARRAY_API".format(
-                self.library.upper()),
+            PY_ARRAY_UNIQUE_SYMBOL=f"SHROUD_{self.library.upper()}_ARRAY_API",
             PY_helper_prefix="SHROUD_",
             PY_local="SH_",
             PY_prefix="PY_",
@@ -888,7 +875,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         else:        
             fmt_library.PY_helper_static = "static "
         fmt_library.PY_typedef_converter = (
-                fmt_library.C_prefix + "SHROUD_converter_value")
+                f"{fmt_library.C_prefix}SHROUD_converter_value")
 
         for name in [
             "C_header_filename",
@@ -906,9 +893,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         ]:
             if name in kwargs:
                 raise DeprecationWarning(
-                    "Setting field {} in library, change to format group".format(
-                        name
-                    )
+                    f"Setting field {name} in library, change to format group"
                 )
 
         if fmtdict:
@@ -919,7 +904,7 @@ class LibraryNode(AstNode, NamespaceMixin):
 
         # default some format strings based on other format strings
         self.set_fmt_default("C_array_type",
-                             fmt_library.C_prefix + "SHROUD_array")
+                             f"{fmt_library.C_prefix}SHROUD_array")
 
         self.eval_template("C_header_filename", "_library")
         self.eval_template("C_impl_filename", "_library")
@@ -1041,7 +1026,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
         self.gen_headers_typedef = {}
 
         # Create scope
-        self.scope = self.parent.scope + self.name + "::"
+        self.scope = f"{self.parent.scope}{self.name}::"
         if skip:
             self.scope_file = self.parent.scope_file
         else:
@@ -1065,7 +1050,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
 
         fmt_ns = self.fmtdict
         fmt_ns.namespace_scope = (
-            parent.fmtdict.namespace_scope + self.name + "::"
+            f"{parent.fmtdict.namespace_scope}{self.name}::"
         )
         fmt_ns.C_name_api = self.apply_C_API_option(self.name)
         fmt_ns.F_name_api = self.apply_F_API_option(self.name)
@@ -1076,12 +1061,12 @@ class NamespaceNode(AstNode, NamespaceMixin):
         if not skip:
             if fmt_ns.C_name_api:
                 fmt_ns.C_name_scope = (
-                    parent.fmtdict.C_name_scope + fmt_ns.C_name_api + "_"
+                    f"{parent.fmtdict.C_name_scope}{fmt_ns.C_name_api}_"
                 )
             if fmt_ns.F_name_api:
                 if options.flatten_namespace:
                     fmt_ns.F_name_scope = (
-                        parent.fmtdict.F_name_scope + fmt_ns.F_name_api + "_"
+                        f"{parent.fmtdict.F_name_scope}{fmt_ns.F_name_api}_"
                     )
         fmt_ns.file_scope = "_".join(self.scope_file)
         fmt_ns.CXX_this_call = fmt_ns.namespace_scope
@@ -1106,12 +1091,12 @@ class NamespaceNode(AstNode, NamespaceMixin):
         if not skip:
             self.set_fmt_default(
                 "PY_module_init",
-                parent.fmtdict.PY_module_init + "_" + fmt_ns.PY_module_name,
+                f"{parent.fmtdict.PY_module_init}_{fmt_ns.PY_module_name}",
                 fmt_ns
             )
             self.set_fmt_default(
                 "PY_module_scope",
-                parent.fmtdict.PY_module_scope + "." + fmt_ns.PY_module_name,
+                f"{parent.fmtdict.PY_module_scope}.{fmt_ns.PY_module_name}",
                 fmt_ns
             )
 
@@ -1195,7 +1180,7 @@ class ClassNode(AstNode, NamespaceMixin):
         self.name_api = None            # ex. name_int
         self.name_instantiation = None  # ex. name<int>
 
-        self.scope = self.parent.scope + self.name + "::"
+        self.scope = f"{self.parent.scope}{self.name}::"
         self.scope_file = self.parent.scope_file + [self.name]
 
         self.user_fmt = format
@@ -1266,9 +1251,7 @@ class ClassNode(AstNode, NamespaceMixin):
         ]:
             if name in kwargs:
                 raise DeprecationWarning(
-                    "Setting field {} in class {}, change to format group".format(
-                        name, self.name
-                    )
+                    f"Setting field {name} in class {self.name}, change to format group"
                 )
 
     def default_format(self):
@@ -1283,7 +1266,7 @@ class ClassNode(AstNode, NamespaceMixin):
             C_name_api = self.apply_C_API_option(name_api),
             F_name_api = self.apply_F_API_option(name_api),
 
-            class_scope=name_instantiation + "::",
+            class_scope=f"{name_instantiation}::",
 #            namespace_scope=self.parent.fmtdict.namespace_scope + name_api + "::",
 
             # The scope for things in the class.
@@ -1308,8 +1291,8 @@ class ClassNode(AstNode, NamespaceMixin):
         self.eval_template("F_derived_name")
 
         fmt = self.fmtdict
-        fmt.C_name_scope = self.parent.fmtdict.C_name_scope + fmt.C_name_api + "_"
-        fmt.F_name_scope = self.parent.fmtdict.F_name_scope + fmt.F_name_api + "_"
+        fmt.C_name_scope = f"{self.parent.fmtdict.C_name_scope}{fmt.C_name_api}_"
+        fmt.F_name_scope = f"{self.parent.fmtdict.F_name_scope}{fmt.F_name_api}_"
         
         # As PyArray_Descr
         if self.parse_keyword == "struct":
@@ -1724,9 +1707,7 @@ class FunctionNode(AstNode):
         ]:
             if name in kwargs:
                 raise DeprecationWarning(
-                    "Setting field {} in function, change to format group".format(
-                        name
-                    )
+                    f"Setting field {name} in function, change to format group"
                 )
 
         check_deprecated_format(fmtdict)
@@ -1829,10 +1810,10 @@ class EnumNode(AstNode):
         if ast is None:
             ast = declast.check_decl(decl, self.symtab)
         if not isinstance(ast, declast.Declaration):
-            raise RuntimeError("Declaration is not an enumeration: " + decl)
+            raise RuntimeError(f"Declaration is not an enumeration: {decl}")
         enum_specifier = ast.enum_specifier
         if not isinstance(enum_specifier, declast.Enum):
-            raise RuntimeError("Declaration is not an enumeration: " + decl)
+            raise RuntimeError(f"Declaration is not an enumeration: {decl}")
         self.ast = enum_specifier
         self.name = enum_specifier.name
 
@@ -1841,7 +1822,7 @@ class EnumNode(AstNode):
         fmt_enum.enum_name = self.name
         if fmt_enum.cxx_class:
             fmt_enum.namespace_scope = (
-                fmt_enum.namespace_scope + fmt_enum.cxx_class + "::"
+                f"{fmt_enum.namespace_scope}{fmt_enum.cxx_class}::"
             )
         fmt_enum.C_name_api = self.apply_C_API_option(self.name)
         fmt_enum.F_name_api = self.apply_F_API_option(self.name)
@@ -1855,8 +1836,8 @@ class EnumNode(AstNode):
         fmtmembers = {}
         if enum_specifier.scope is not None:
             # members of 'class enum' must be qualified, add to scope.
-            C_name_scope = self.parent.fmtdict.C_name_scope + self.name + "_"
-            F_name_scope = self.parent.fmtdict.F_name_scope + self.name.lower() + "_"
+            C_name_scope = f"{self.parent.fmtdict.C_name_scope}{self.name}_"
+            F_name_scope = f"{self.parent.fmtdict.F_name_scope}{self.name.lower()}_"
         for member in enum_specifier.members:
             fmt = util.Scope(parent=fmt_enum)
             fmt.enum_member_name = member.name
@@ -1901,19 +1882,19 @@ class EnumNode(AstNode):
                 fvalue = cvalue
             else:
                 incr += 1
-                cvalue = "{}+{}".format(cbase, incr)
-                fvalue = "{}+{}".format(fbase, incr)
+                cvalue = f"{cbase}+{incr}"
+                fvalue = f"{fbase}+{incr}"
 
         self._fmtmembers = fmtmembers
         # Headers required by template arguments.
         self.gen_headers_typedef = {}
 
         # Add to namespace
-        self.scope = self.parent.scope + self.name + "::"
+        self.scope = f"{self.parent.scope}{self.name}::"
         ftypemap = self.symtab.lookup_typemap(options.F_enum_type)
         if ftypemap is None:
             error.cursor.ast(self.linenumber,
-                             "Unknown type in F_enum_type: %s" % options.F_enum_type)
+                             f"Unknown type in F_enum_type: {options.F_enum_type}")
             ftypemap = self.symtab.lookup_typemap("int")  # recover from error
         fmt_enum.F_enum_kind = ftypemap.f_kind
         self.typemap = ast.typemap
@@ -2076,7 +2057,7 @@ class VariableNode(AstNode):
             ast = declast.check_decl(decl, self.symtab)
         if not isinstance(ast, declast.Declaration):
             # GGG - only declarations in stucts?
-            raise RuntimeError("Declaration is not a structure: " + decl)
+            raise RuntimeError(f"Declaration is not a structure: {decl}")
         if ast.declarator.params is not None:
             # 'void foo()' instead of 'void foo'
             raise RuntimeError("Arguments given to variable:", ast.gen_decl())
@@ -2151,7 +2132,7 @@ class FortranGeneric(object):
         self.decls = parser.parameter_list()
 
     def __repr__(self):
-        return "<FortranGeneric({}>".format(self.generic)
+        return f"<FortranGeneric({self.generic}>"
 
 
 def trim_fortran_generic_decls(fortran_generic, nargs):
@@ -2343,7 +2324,7 @@ def clean_dictionary(ddct):
                             dct["decl"],
                             fmtdict=dct.get("format", None),
                             options=dct.get("options", None),
-                            function_suffix=dct.get("function_suffix", "_" + str(isuffix)),
+                            function_suffix=dct.get("function_suffix", f"_{isuffix!s}"),
                             linenumber=linenumber,
                         )
                     )
@@ -2606,11 +2587,10 @@ def check_deprecated_option(fmtdict):
     for fmt in fmtdict:
         if fmt in deprecated_options:
             info = deprecated_options[fmt]
-            msg = "option {} is deprecated, changed to {}".format(
-                fmt, info["new"])
+            msg = f"option {fmt} is deprecated, changed to {info['new']}"
             details = info.get("details")
             if details:
-                msg += "\n" + "\n".join(details)
+                msg += f"\n{'\n'.join(details)}"
             error.cursor.warning(msg)
 
 deprecated_formats = dict(
@@ -2627,9 +2607,8 @@ def check_deprecated_format(fmtdict):
     for fmt in fmtdict:
         if fmt in deprecated_formats:
             info = deprecated_formats[fmt]
-            msg = "format {} is deprecated, changed to {}".format(
-                fmt, info["new"])
+            msg = f"format {fmt} is deprecated, changed to {info['new']}"
             details = info.get("details")
             if details:
-                msg += "\n" + "\n".join(details)
+                msg += f"\n{'\n'.join(details)}"
             error.cursor.warning(msg)

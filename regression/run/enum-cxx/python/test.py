@@ -6,10 +6,11 @@
 #
 # Test Python API generated from enum.yaml.
 #
-from __future__ import print_function
 
 import unittest
+
 import cenum
+
 
 class NotTrue:
     """Test bool arguments errors"""

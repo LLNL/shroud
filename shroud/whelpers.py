@@ -47,14 +47,10 @@ the conversion has failed.
 #
 # This also applies to derived types which are bind(C).
 
-from __future__ import print_function
-from __future__ import absolute_import
+import json
 
 #from . import statements  # This is recursive
-from . import typemap
-from . import util
-
-import json
+from . import typemap, util
 
 wformat = util.wformat
 
@@ -136,7 +132,7 @@ if (in != {nullptr}) {{+
     PYHelpers[name] = dict(
         c_fmtname=fmt.hnamefunc,
         dependent_helpers=["PY_converter_type"],
-        proto=fmt.hnameproto + ";",
+        proto=f"{fmt.hnameproto};",
         source=wformat("""
 // helper {hname}
 // Converter from PyObject to char *.
@@ -231,7 +227,7 @@ return 1;
         dependent_helpers=["get_from_object_char"],
         c_include=["<string.h>"],
         cxx_include=["<cstring>"],
-        proto=fmt.hnameproto + ";",
+        proto=f"{fmt.hnameproto};",
         source=wformat("""
 // helper {hname}
 // Fill existing char array from PyObject.
@@ -318,7 +314,7 @@ def add_to_PyList_helper(fmt, ntypemap):
 
     ########################################
     # Used with intent(out)
-    name = "to_PyList_" + flat_name
+    name = f"to_PyList_{flat_name}"
     if ntypemap.PY_ctor is not None:
         fmt.hname = name
         fmt.fcn_suffix = flat_name
@@ -332,7 +328,7 @@ def add_to_PyList_helper(fmt, ntypemap):
 
     ########################################
     # Used with intent(inout)
-    name = "update_PyList_" + flat_name
+    name = f"update_PyList_{flat_name}"
     if ntypemap.PY_ctor is not None:
         ctor_expr = "in[i]"
         if ntypemap.py_ctype is not None:
@@ -342,7 +338,7 @@ def add_to_PyList_helper(fmt, ntypemap):
         fmt.hnameproto = wformat(
             "void {PY_helper_prefix}{hname}\t(PyObject *out, {c_type} *in, size_t size)", fmt)
         helper = dict(
-            proto=fmt.hnameproto + ";",
+            proto=f"{fmt.hnameproto};",
             source=wformat(
                 """
 // helper {hname}
@@ -365,7 +361,7 @@ PyList_SET_ITEM(out, i, {Py_ctor});
     # Use a fixed text in PySequence_Fast.
     # If an error occurs, replace message with one which includes argument name.
     if ntypemap.PY_get:
-        name = "fill_from_PyObject_" + flat_name + "_list"
+        name = f"fill_from_PyObject_{flat_name}_list"
         fmt.hname = name
         fmt.flat_name = flat_name
         fmt.fcn_type = ntypemap.c_type
@@ -378,13 +374,13 @@ PyList_SET_ITEM(out, i, {Py_ctor});
         fmt.Py_get = ntypemap.PY_get.format(py_var="item")
         PYHelpers[name] = fill_from_PyObject_list(fmt)
 
-        name = "fill_from_PyObject_" + flat_name + "_numpy"
+        name = f"fill_from_PyObject_{flat_name}_numpy"
         fmt.hname = name
         PYHelpers[name] = fill_from_PyObject_numpy(fmt)
 
     ########################################
     # Function called by typemap.PY_get_converter for NumPy.
-    name = "get_from_object_{}_numpy".format(flat_name)
+    name = f"get_from_object_{flat_name}_numpy"
     fmt.py_tmp = "array"
     fmt.c_type = ntypemap.c_type
     fmt.numpy_type = ntypemap.PYN_typenum
@@ -396,7 +392,7 @@ PyList_SET_ITEM(out, i, {Py_ctor});
         c_fmtname=fmt.hnamefunc,
         dependent_helpers=["PY_converter_type"],
         need_numpy=True,
-        proto=fmt.hnameproto + ";",
+        proto=f"{fmt.hnameproto};",
         source=wformat("""
 // helper {hname}
 // Convert PyObject to {c_type} pointer.
@@ -419,7 +415,7 @@ return 1;
     ########################################
     # Function called by typemap.PY_get_converter for list.
     if ntypemap.PY_get:
-        name = "get_from_object_{}_list".format(flat_name)
+        name = f"get_from_object_{flat_name}_list"
         fmt.size_var = "size"
         fmt.c_var = "in"
         fmt.fcn_suffix = flat_name
@@ -440,7 +436,7 @@ def fill_from_PyObject_list(fmt):
             "{c_type} *in,\t Py_ssize_t insize)", fmt)
     helper = dict(
         c_fmtname=fmt.hnamefunc,
-        proto=fmt.hnameproto + ";",
+        proto=f"{fmt.hnameproto};",
         source=wformat(
                 """
 // helper {hname}
@@ -498,7 +494,7 @@ def fill_from_PyObject_numpy(fmt):
     fmt.numpy_type
     helper = dict(
         c_fmtname=fmt.hnamefunc,
-        proto=fmt.hnameproto + ";",
+        proto=f"{fmt.hnameproto};",
         need_numpy=True,
         source=wformat(
                 """
@@ -548,7 +544,7 @@ def create_to_PyList(fmt):
         "PyObject *{hnamefunc}\t({c_const}{c_type} *in, size_t size)", fmt)
     helper = dict(
         c_fmtname=fmt.hnamefunc,
-        proto=fmt.hnameproto + ";",
+        proto=f"{fmt.hnameproto};",
         source=wformat(
             """
 // helper {hname}
@@ -583,7 +579,7 @@ def create_get_from_object_list(fmt):
         ],
         c_include=["<stdlib.h>"],   # malloc/free
         cxx_include=["<cstdlib>"],  # malloc/free
-        proto=fmt.hnameproto + ";",
+        proto=f"{fmt.hnameproto};",
         source=wformat("""
 // helper {hname}
 // Convert list of PyObject to array of {c_type}.
@@ -644,7 +640,7 @@ def create_get_from_object_list_charptr(fmt):
         ],
         c_include=["<stdlib.h>"],   # malloc/free
         cxx_include=["<cstdlib>"],  # malloc/free
-        proto=fmt.hnameproto + ";",
+        proto=f"{fmt.hnameproto};",
         source=wformat("""
 
 // helper FREE_{hname}
@@ -722,7 +718,7 @@ def add_to_PyList_helper_vector(fmt, ntypemap):
     fmt.cxx_type = ntypemap.cxx_type
     
     # Used with intent(out)
-    name = "to_PyList_vector_" + flat_name
+    name = f"to_PyList_vector_{flat_name}"
     ctor = ntypemap.PY_ctor
     if ctor is None:
         ctor = "XXXPy_ctor"
@@ -735,7 +731,7 @@ def add_to_PyList_helper_vector(fmt, ntypemap):
     fmt.hnameproto = wformat("PyObject *{hnamefunc}\t(std::vector<{c_type}> & in)", fmt)
     helper = dict(
         c_fmtname=fmt.hnamefunc,
-        proto=fmt.hnameproto + ";",
+        proto=f"{fmt.hnameproto};",
         source=wformat(
             """
 // helper {hname}
@@ -754,7 +750,7 @@ return out;
     PYHelpers[name] = helper
 
     # Used with intent(inout)
-    name = "update_PyList_vector_" + flat_name
+    name = f"update_PyList_vector_{flat_name}"
     ctor = ntypemap.PY_ctor
     if ctor is None:
         ctor = "XXXPy_ctor"
@@ -769,7 +765,7 @@ return out;
         "void {hnamefunc}\t(PyObject *out, {c_type} *in, size_t size)", fmt)
     helper = dict(
         c_fmtname=fmt.hnamefunc,
-        proto=fmt.hnameproto + ";",
+        proto=f"{fmt.hnameproto};",
         source=wformat(
             """
 // helper {hname}
@@ -793,7 +789,7 @@ PyList_SET_ITEM(out, i, {Py_ctor});
     # Convert an empty list into a NULL pointer.
     # Use a fixed text in PySequence_Fast.
     # If an error occurs, replace message with one which includes argument name.
-    name = "create_from_PyObject_vector_" + flat_name
+    name = f"create_from_PyObject_vector_{flat_name}"
     get = ntypemap.PY_get
     if get is None:
         get = "XXXPy_get"
@@ -812,7 +808,7 @@ PyList_SET_ITEM(out, i, {Py_ctor});
     helper = dict(
         c_fmtname=fmt.hnamefunc,
 ##-        cxx_include=["<cstdlib>"],  # malloc/free
-        cxx_proto=fmt.hnameproto + ";",
+        cxx_proto=f"{fmt.hnameproto};",
         cxx_source=wformat(
             """
 // helper {hname}
@@ -874,12 +870,12 @@ def gather_helpers(fp, wrapper, helpers, keys):
         for key, value in helper.items():
             if key in keys:
                 output.append("")
-                output.append("##### start {} {}".format(name, key))
+                output.append(f"##### start {name} {key}")
                 if isinstance(value, list):
                     output.extend(value)
                 else:
                     output.append(value)
-                output.append("##### end {} {}".format(name, key))
+                output.append(f"##### end {name} {key}")
             else:
                 out[key] = value
 
@@ -910,10 +906,10 @@ def apply_fmtdict_from_helpers(helper, fmt):
     fmt.hname = name
 
     if literalinclude:
-        fmt.c_lstart = "{}helper {}\n".format(cstart, name)
-        fmt.c_lend = "\n{}helper {}".format(cend, name)
-        fmt.f_lstart = "{}helper {}\n".format(fstart, name)
-        fmt.f_lend = "\n{}helper {}".format(fend, name)
+        fmt.c_lstart = f"{cstart}helper {name}\n"
+        fmt.c_lend = f"\n{cend}helper {name}"
+        fmt.f_lstart = f"{fstart}helper {name}\n"
+        fmt.f_lend = f"\n{fend}helper {name}"
     
     if "fmtdict" in helper:
         for key, value in helper["fmtdict"].items():

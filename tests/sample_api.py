@@ -6,8 +6,6 @@
 Wrap a library using the Python API.
 """
 
-from __future__ import print_function
-
 import shroud
 
 library = shroud.LibraryNode("testapi")

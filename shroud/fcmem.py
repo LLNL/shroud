@@ -6,10 +6,9 @@
 Memory management for Fortran and C wrappers.
 """
 
-from collections import OrderedDict
-
 from . import util
 from .util import append_format, wformat
+
 
 class CapsuleFmt(object):
     """
@@ -19,7 +18,7 @@ class CapsuleFmt(object):
         # Include files required by wrapper implementations.
         self.newlibrary = newlibrary
         self.language = newlibrary.language
-        self.capsule_typedef_nodes = OrderedDict()  # [typemap.name] = typemap
+        self.capsule_typedef_nodes = {}  # [typemap.name] = typemap
         self.capsule_code = {}
         self.capsule_order = []
         self.capsule_include = {}  # includes needed by C_memory_dtor_function
@@ -102,7 +101,7 @@ class CapsuleFmt(object):
             )
 
             for i, name in enumerate(self.capsule_order):
-                output.append("case {}:   // {}\n{{+".format(i, name))
+                output.append(f"case {i}:   // {name}\n{{+")
                 output.extend(self.capsule_code[name][1])
                 output.append("break;\n-}")
 

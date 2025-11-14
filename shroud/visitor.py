@@ -25,7 +25,7 @@ class Visitor(object):
         meth = self._cache.get(klass, None)
         if meth is None:
             for cls in node.__class__.__mro__:
-                meth_name = "visit_" + cls.__name__
+                meth_name = f"visit_{cls.__name__}"
                 meth = getattr(self, meth_name, None)
                 if meth:
                     break
@@ -37,5 +37,5 @@ class Visitor(object):
 
     def generic_visit(self, node, *args, **kwargs):
         raise NotImplementedError(
-            "Visitor.generic_visit for {}: {}".format(type(node), str(node))
+            f"Visitor.generic_visit for {type(node)}: {node!s}"
         )

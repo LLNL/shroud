@@ -10,14 +10,11 @@ Typical usage:
   declast.check_decl(decl, self.symtab)
 """
 
-from __future__ import print_function
 import collections
 import copy
 import re
 
-from . import error
-from . import todict
-from . import typemap
+from . import error, todict, typemap
 
 Token = collections.namedtuple("Token", ["typ", "value", "line", "column"])
 
@@ -170,7 +167,7 @@ class RecursiveDescent(object):
         lineno = self.token.line
 #        msg = "line {}: ".format(lineno) + format.format(*args)
         msg = format.format(*args)
-        ptr = " " * (self.token.column-1) + "^"
+        ptr = f"{' ' * (self.token.column - 1)}^"
         raise error.ShroudParseError("\n".join([lines[lineno-1], ptr, msg]),
                                      lineno, self.token.column)
 
@@ -369,7 +366,7 @@ class Parser(ExprParser):
         while self.token.typ != "RPAREN":
             node = self.declaration()
             params.append(node)
-            node.declarator.arg_name = "arg" + str(len(params))
+            node.declarator.arg_name = f"arg{len(params)!s}"
             if self.have("COMMA"):
                 if self.have("VARARG"):
                     raise NotImplementedError("varargs")
@@ -401,9 +398,7 @@ class Parser(ExprParser):
             ns = namespace.qualified_lookup(name)
             if not ns:
                 self.error_msg(
-                    "Symbol '{}' is not in namespace '{}'".format(
-                        name, nested[-1]
-                    )
+                    f"Symbol '{name}' is not in namespace '{nested[-1]}'"
                 )
             nested.append(name)
             namespace = ns
@@ -507,9 +502,7 @@ class Parser(ExprParser):
             else:
                 value = self.token.value
             self.error_msg(
-                "Expected TYPE_SPECIFIER, found {} '{}'".format(
-                    self.token.typ, value
-                )
+                f"Expected TYPE_SPECIFIER, found {self.token.typ} '{value}'"
             )
         self.exit("declaration_specifier")
         return
@@ -679,9 +672,7 @@ class Parser(ExprParser):
                     declarator.func_const = True
                 else:
                     raise RuntimeError(
-                        "'{}' unexpected after function declaration".format(
-                            self.token.value
-                        )
+                        f"'{self.token.value}' unexpected after function declaration"
                     )
         while self.token.typ == "LBRACKET":
             self.next() # consume bracket
@@ -771,7 +762,7 @@ class Parser(ExprParser):
 #                    break
         if ntypemap is None:
             self.error_msg(
-                "(get_canonical_typemap) Unknown typemap '{}' - '{}'".format("_".join(decl.specifier), typename)
+                f"(get_canonical_typemap) Unknown typemap '{'_'.join(decl.specifier)}' - '{typename}'"
             )
         decl.typemap = ntypemap
 
@@ -816,7 +807,7 @@ class Parser(ExprParser):
                         parens -= 1
                     elif self.token.typ == "EOF":
                         raise RuntimeError(
-                            "Unbalanced parens in attribute {}".format(name)
+                            f"Unbalanced parens in attribute {name}"
                         )
                     if parens == 0:
                         self.next()
@@ -845,7 +836,7 @@ class Parser(ExprParser):
         self.mustbe("CLASS")
         name = self.mustbe("ID")
         clsnode = CXXClass(name.value, self.symtab)
-        node.specifier.append("class " + name.value)
+        node.specifier.append(f"class {name.value}")
         node.class_specifier = clsnode
         node.typemap = clsnode.typemap
         if self.have("EOF"):
@@ -963,9 +954,9 @@ class Parser(ExprParser):
         name = self.mustbe("ID")  # GGG - optional
         ename = name.value
         if scope:
-            node.specifier.append("enum {} {}".format(scope, ename))
+            node.specifier.append(f"enum {scope} {ename}")
         else:
-            node.specifier.append("enum " + ename)
+            node.specifier.append(f"enum {ename}")
         if self.have("LCURLY"):
             #        self.mustbe("LCURLY")
             node.tag_body = True
@@ -987,7 +978,7 @@ class Parser(ExprParser):
         else:
             enumnode = self.symtab.current.lookup_tag("enum", ename)
             if enumnode is None:
-                raise RuntimeError("Enum tag '%s' is not defined" % ename)
+                raise RuntimeError(f"Enum tag '{ename}' is not defined")
             ntypemap = enumnode.typemap
             node.typemap = ntypemap
         self.exit("enum_decl")#, str(members))
@@ -1011,7 +1002,7 @@ class Parser(ExprParser):
         self.mustbe("STRUCT")
         name = self.mustbe("ID")  # GGG name is optional
         sname = name.value
-        node.specifier.append("struct " + sname)
+        node.specifier.append(f"struct {sname}")
         if self.have("LCURLY"):
             structnode = Struct(sname, self.symtab)
             members = structnode.members
@@ -1033,7 +1024,7 @@ class Parser(ExprParser):
         else:
             structnode = self.symtab.current.lookup_tag("struct", sname)
             if structnode is None:
-                raise RuntimeError("Struct tag '%s' is not defined" % sname)
+                raise RuntimeError(f"Struct tag '{sname}' is not defined")
             node.class_specifier = structnode
             ntypemap = structnode.typemap
             node.typemap = ntypemap
@@ -1141,13 +1132,13 @@ class Node(object):
         Mangle tag name before adding to symbols dictionary.
         Used with struct and enum tags.
         """
-        self.symbols["{}-{}".format(tag, node.name)] = node
+        self.symbols[f"{tag}-{node.name}"] = node
 
     def lookup_tag(self, tag, name):
         """
         Mangle tag name before looking up.
         """
-        return self.unqualified_lookup("{}-{}".format(tag, name))
+        return self.unqualified_lookup(f"{tag}-{name}")
         
     def XXXcreate_template_typemaps(self, node, symtab):
         """
@@ -1208,7 +1199,7 @@ class Node(object):
         """
         ns = self.unqualified_lookup(name)
         if ns is None:
-            raise RuntimeError("{} not found in namespace".format(name))
+            raise RuntimeError(f"{name} not found in namespace")
         if ns not in self.using:
             self.using.append(ns)
 
@@ -1271,7 +1262,7 @@ class Ptr(Node):
 
     def __str__(self):
         if self.const:
-            return self.ptr + " const"
+            return f"{self.ptr} const"
         else:
             return self.ptr
 
@@ -1404,7 +1395,7 @@ class Declarator(Node):
             return todict.print_node(array[0])
         out = []
         for dim in array:
-            out.append("({})".format(todict.print_node(dim)))
+            out.append(f"({todict.print_node(dim)})")
         return '*'.join(out)
 
     def get_subprogram(self):
@@ -1438,7 +1429,7 @@ class Declarator(Node):
             if value is True:
                 parts.append(attr)
             else:
-                parts.append("{}({})".format(attr, value))
+                parts.append(f"{attr}({value})")
             space = ""
 
     def to_string(self, abstract=False, name=None):
@@ -1447,7 +1438,7 @@ class Declarator(Node):
             out.append(str(ptr))
 
         if self.func:
-            out.append("(" + self.func.to_string(abstract) + ")")
+            out.append(f"({self.func.to_string(abstract)})")
         elif abstract:
             pass
         elif name is not None:
@@ -1573,13 +1564,13 @@ class Declaration(Node):
         return "".join(out)
 
     def __repr__(self):
-        return "<Declaration('{}')>".format(str(self))
+        return f"<Declaration('{self!s}')>"
 
     def to_string_declarator(self, abstract=False, name=None):
         """Return the declaration for the first declarator"""
         declarator = self.declarator.to_string(abstract, name)
         if declarator:
-            decl = "{} {}".format(str(self), declarator)
+            decl = f"{self!s} {declarator}"
         else:
             decl = str(self)
         return decl
@@ -1590,7 +1581,7 @@ class Declaration(Node):
         """
         declarator = self.declarator.get_abstract_declarator()
         if declarator:
-            decl = "{} {}".format(str(self), declarator)
+            decl = f"{self!s} {declarator}"
         else:
             decl = str(self)
         return decl
@@ -1605,7 +1596,7 @@ class Declaration(Node):
         
     def gen_template_arguments(self):
         """Return string for template_arguments."""
-        return "<" + self.gen_template_argument() + ">"
+        return f"<{self.gen_template_argument()}>"
         
     def as_cast(self, language="c"):
         """
@@ -1615,7 +1606,7 @@ class Declaration(Node):
         (as_cast) arg
         """
         decl = []
-        typ = getattr(self.typemap, language + '_type')
+        typ = getattr(self.typemap, f"{language}_type")
         decl.append(typ)
         ptrs = []
         for ptr in self.declarator.pointer:
@@ -1788,7 +1779,7 @@ class Struct(Node):
         symtab.push_scope(self)
 
     def __str__(self):
-        return "struct " + self.name
+        return f"struct {self.name}"
 
 
 class Template(Node):
@@ -1830,7 +1821,7 @@ class Template(Node):
         s = []
         for param in self.parameters:
             s.append(str(param))
-        return "<" + ",".join(s) + ">"
+        return f"<{','.join(s)}>"
 
 class TemplateParam(Node):
     """A template parameter.
@@ -1917,7 +1908,7 @@ class SymbolTable(object):
         """
         # node := Struct
         name = node.name
-        self.scopename = self.scopename[:self.scope_len[-1]] + name + '::'
+        self.scopename = f"{self.scopename[:self.scope_len[-1]]}{name}::"
         self.scope_len.append(len(self.scopename))
 
         if not hasattr(node, "scope_prefix"):
@@ -1992,7 +1983,7 @@ class SymbolTable(object):
         elif sgroup == "struct":
             node = Struct(cxx_name, self, ntypemap)
         else:
-            raise RuntimeError("add_namespaces {}".format(sgroup))
+            raise RuntimeError(f"add_namespaces {sgroup}")
         self.restore_depth(depth)
 
     def save_depth(self):
@@ -2081,7 +2072,7 @@ class SymbolTable(object):
         ntypemap = self.lookup_typemap(tname)
         if ntypemap is None:
             cursor = error.get_cursor().warning(
-                "add_typedef_by_name: Unknown type {}".format(tname))
+                f"add_typedef_by_name: Unknown type {tname}")
         else:
             node = Typedef(name, None, ntypemap)
             self.current.add_child(node.name, node)
@@ -2156,10 +2147,10 @@ def symtab_to_typemap(node):
     if hasattr(node, "symbols"):
         for k, v in node.symbols.items():
             # If a tag exists, just add name of tag.
-            if "enum-" + k in node.symbols:
-                symbols[k] = "enum-" + k
-            elif "struct-" + k in node.symbols:
-                symbols[k] = "struct-" + k
+            if f"enum-{k}" in node.symbols:
+                symbols[k] = f"enum-{k}"
+            elif f"struct-{k}" in node.symbols:
+                symbols[k] = f"struct-{k}"
             else:
                 out = symtab_to_typemap(v)
                 if out is not None:
@@ -2213,7 +2204,7 @@ def create_struct_ctor(cls):
     Use with PY_struct_arg==class.
     Used as __init__ function.
     """
-    name = cls.name + "_ctor"
+    name = f"{cls.name}_ctor"
     ast = Declaration()
     ast.is_ctor = True
     ast.typemap = cls.typemap

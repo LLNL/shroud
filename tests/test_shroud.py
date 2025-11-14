@@ -3,17 +3,12 @@
 # SPDX-License-Identifier: (BSD-3-Clause)
 ########################################################################
 
-from __future__ import print_function
-from __future__ import absolute_import
-
-# from __future__ import unicode_literals
-
-from shroud import main
-
 import os
 import sys
 import sysconfig
 import unittest
+
+from shroud import main
 
 from . import do_test
 
@@ -47,7 +42,7 @@ class MainCase(unittest.TestCase):
 
     def run_shroud(self, input):
         tester = self.tester
-        tester.open_log(input + ".log")
+        tester.open_log(f"{input}.log")
         tester.set_test(input)
         status = tester.do_module()
         tester.close_log()

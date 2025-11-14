@@ -4,71 +4,29 @@
 
 """
 """
-from __future__ import print_function
-from __future__ import absolute_import
-
-from . import error
-from . import whelpers
-from .util import wformat
 
 import collections
+import importlib.resources
 import json
+
 import yaml
 
-try:
-    # XXX - python 3.7
-    import importlib.resources
-    def read_json_resource(name):
-        fp = importlib.resources.open_binary('shroud', name)
-        stmts = json.load(fp)
-        return stmts
-    def read_yaml_resource(name):
-        fp = importlib.resources.open_binary('shroud', name)
-        stmts = yaml.safe_load(fp)
-        return stmts
-    ordered_dump = yaml.safe_dump
-except ImportError:
-    def ordered_load(stream, Loader=yaml.SafeLoader,
-                     object_pairs_hook=collections.OrderedDict):
-        class OrderedLoader(Loader):
-            pass
-        def construct_mapping(loader, node):
-            loader.flatten_mapping(node)
-            return object_pairs_hook(loader.construct_pairs(node))
-        OrderedLoader.add_constructor(
-            yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG,
-            construct_mapping)
-        return yaml.load(stream, OrderedLoader)
-    def ordered_dump(data, stream=None, Dumper=yaml.SafeDumper, **kwds):
-        class OrderedDumper(Dumper):
-            pass
-        def represent_ordereddict(dumper, data):
-            return dumper.represent_mapping(
-                yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG,
-            data.items())
-        OrderedDumper.add_representer(OrderedDict, represent_ordereddict)
-        return yaml.dump(data, stream, OrderedDumper, **kwds)
+from . import error, util, whelpers
+from .util import wformat
 
-    
-    from pkg_resources import resource_filename
-    def read_json_resource(name):
-        fp = open(resource_filename('shroud', name), 'rb')
-        #stmts = json._load(fp)
-        # Use pyYAML to load json to avoid unicode issues.
-#        stmts = yaml.safe_load(fp)
-        stmts = ordered_load(fp)
-        return stmts
-    def read_yaml_resource(name):
-        fp = open(resource_filename('shroud', name), 'rb')
-        stmts = yaml.safe_load(fp)
-        return stmts
 
-from . import util
+def read_json_resource(name):
+    fp = importlib.resources.open_binary('shroud', name)
+    stmts = json.load(fp)
+    return stmts
+def read_yaml_resource(name):
+    fp = importlib.resources.open_binary('shroud', name)
+    stmts = yaml.safe_load(fp)
+    return stmts
 
-from collections import OrderedDict
 
 # The dictionary of c and fortran statements.
-fc_dict = OrderedDict() # dictionary of Scope of all expanded fc_statements.
+fc_dict = {} # dictionary of Scope of all expanded fc_statements.
 
 
 class BindArg(object):
@@ -224,8 +182,8 @@ def lookup_fc_stmts(path):
     if stmt is None:
         # XXX - return something so code will get generated
         #  It'll be wrong but acts as a starting place.
-        stmt = fc_dict.get("{}_mixin_unknown".format(path[0]))
-        error.cursor.warning("Unknown statement: {}".format(name))
+        stmt = fc_dict.get(f"{path[0]}_mixin_unknown")
+        error.cursor.warning(f"Unknown statement: {name}")
     return stmt
 
 def lookup_c_function_stmt(node):
@@ -463,8 +421,7 @@ def check_stmt_for_deprecated_names(lang, stmt):
     for key in keys:
         if key in deprecated:
             newkey = deprecated[key]
-            error.cursor.warning("field {} is deprecated, changed to {}".format(
-                key, newkey))
+            error.cursor.warning(f"field {key} is deprecated, changed to {newkey}")
             stmt[newkey] = stmt.pop(key)
 
 
@@ -494,7 +451,7 @@ def post_mixin_check_statement(name, stmt):
                     missing.append(field)
                 elif not isinstance(fvalue, list):
                     err = True
-                    error.cursor.warning("{} must be a list.".format(field))
+                    error.cursor.warning(f"{field} must be a list.")
 #            if missing:
 #                error.cursor.warning("c_prototype, i_dummy_decl and i_dummy_arg must all exist together.\n" +
 #                                     "Missing {}.".format(", ".join(missing)))
@@ -544,13 +501,13 @@ def append_mixin(stmt, mixin):
                 continue
             elif key == "mixin_names":
                 # Indent nested mixins
-                value = ["  " + val for val in value]
+                value = [f"  {val}" for val in value]
             if key not in stmt:
                 stmt[key] = []
             if False:#True:
                 # Report the mixin name for debugging
                 if "name" in mixin:
-                    stmt[key].append("# " + mixin["name"])
+                    stmt[key].append(f"# {mixin['name']}")
                 else:
                     stmt[key].append("# append")
             stmt[key].extend(value)
@@ -597,7 +554,7 @@ def process_mixin(stmts, defaults, stmtdict):
     cursor = error.cursor
     cursor.push_phase("Check statements")
     stmt_cursor = cursor.push_statement()
-    mixins = OrderedDict()
+    mixins = {}
     index = 0
     for stmt in stmts:
         stmt_cursor.stmt = stmt
@@ -646,7 +603,7 @@ def process_mixin(stmts, defaults, stmtdict):
                 continue
             tmp_node["name"] = name
             if name in mixins:
-                cursor.warning("Statement name '{}' already exists.".format(name))
+                cursor.warning(f"Statement name '{name}' already exists.")
             else:
                 mixins[name] = tmp_node
 
@@ -660,13 +617,13 @@ def process_mixin(stmts, defaults, stmtdict):
                 if mixin[0] == "#":
                     continue
                 mparts = mixin.split("_", 2)
-                tmp_node["mixin_names"].append("  " + mixin)
+                tmp_node["mixin_names"].append(f"  {mixin}")
                 if len(mparts) < 2:
-                    cursor.warning("Mixin '{}' must have intent 'mixin'.".format(mixin))
+                    cursor.warning(f"Mixin '{mixin}' must have intent 'mixin'.")
                 elif mparts[1] != "mixin":
-                    cursor.warning("Mixin '{}' must have intent 'mixin'.".format(mixin))
+                    cursor.warning(f"Mixin '{mixin}' must have intent 'mixin'.")
                 elif mixin not in mixins:
-                    cursor.warning("Mixin '{}' not found.".format(mixin))
+                    cursor.warning(f"Mixin '{mixin}' not found.")
                 else:
                     append_mixin(tmp_node, mixins[mixin])
 
@@ -683,16 +640,16 @@ def process_mixin(stmts, defaults, stmtdict):
         index += 1
 
         if intent not in valid_intents:
-            cursor.warning("Invalid intent '{}'.".format(intent))
+            cursor.warning(f"Invalid intent '{intent}'.")
 
         # Create the Scope instance.
         if "base" in stmt:
             if stmt["base"] not in stmtdict:
-                cursor.warning("Base '{}' not found.".format(stmt["base"]))
+                cursor.warning(f"Base '{stmt['base']}' not found.")
             else:
                 node = util.Scope(stmtdict[stmt["base"]])
         elif lang not in defaults:
-            cursor.warning("Statement does not start with a known language code: '%s'" % lang)
+            cursor.warning(f"Statement does not start with a known language code: '{lang}'")
         else:
             node = util.Scope(defaults[lang])
         if not node:
@@ -709,13 +666,11 @@ def process_mixin(stmts, defaults, stmtdict):
                 intent = apart[1]
                 anode = util.Scope(node)
                 if intent == "mixin":
-                    cursor.warning("Mixin not allowed in alias '{}'."
-                                   .format(alias))
+                    cursor.warning(f"Mixin not allowed in alias '{alias}'.")
                 elif intent not in valid_intents:
-                    cursor.warning("Invalid intent '{}' in alias '{}'."
-                                   .format(intent, alias))
+                    cursor.warning(f"Invalid intent '{intent}' in alias '{alias}'.")
                 if alias in stmtdict:
-                    cursor.warning("Alias '{}' already exists.".format(alias))
+                    cursor.warning(f"Alias '{alias}' already exists.")
                 else:
                     anode.name = alias
                     anode.intent = intent
@@ -745,7 +700,7 @@ def update_for_language(stmts, lang):
     For lang==c,
       foo_bar.update(foo_bar["lang_c"])
     """
-    specific = "lang_" + lang
+    specific = f"lang_{lang}"
     for item in stmts:
         if specific in item:
             item.update(item[specific])
@@ -754,10 +709,10 @@ def lookup_fc_helper(name, scope="helper"):
     """Lookup Fortran/C helper.
     If not found, print error and return h_mixin_unknown.
     """
-    helper = fc_dict.get("h_helper_" + name)
+    helper = fc_dict.get(f"h_helper_{name}")
     if helper is None:
         helper = fc_dict["h_mixin_unknown"]
-        error.cursor.warning("No such {} '{}'".format(scope, name))
+        error.cursor.warning(f"No such {scope} '{name}'")
     return helper
 
 def add_json_fc_helpers(fmt):
@@ -864,9 +819,9 @@ def print_tree_index(tree, lines, indent=""):
     if "_node" in tree:
         #        final = '' # + tree["_node"]["scope"].name + '-'
         origname = tree["_node"]["name"]
-        lines.append("{}{} -- {}\n".format(indent, parts[-1], origname))
+        lines.append(f"{indent}{parts[-1]} -- {origname}\n")
     else:
-        lines.append("{}{}\n".format(indent, parts[-1]))
+        lines.append(f"{indent}{parts[-1]}\n")
     indent += '  '
     for key in sorted(tree.keys()):
         if key == '_node':
@@ -928,8 +883,7 @@ def print_tree_statements(fp, statements, defaults, options):
         if literalinclude:
             all["sphinx-end-before"] = name
         complete[name] = all
-#    yaml.safe_dump(complete, fp, sort_keys=False)
-    ordered_dump(complete, fp, sort_keys=False)
+    yaml.safe_dump(complete, fp, sort_keys=False)
 
     return
     # DEBUG
@@ -1136,7 +1090,7 @@ class BaseClassFormat(object):
         return self.cls.typemap.name
 
     def __repr__(self):
-        return "<BasesClassFormat {}>".format(self.cls.typemap.name)
+        return f"<BasesClassFormat {self.cls.typemap.name}>"
 
     def __getattr__(self, name):
         return getattr(self.cls.typemap, name)

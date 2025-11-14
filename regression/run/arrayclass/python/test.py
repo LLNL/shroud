@@ -5,11 +5,13 @@
 #
 # Test Python API generated from references.yaml.
 #
-from __future__ import print_function
+
+import unittest
 
 import numpy as np
-import unittest
+
 import arrayclass
+
 
 class Arrayclass(unittest.TestCase):
     """Test struct problem"""

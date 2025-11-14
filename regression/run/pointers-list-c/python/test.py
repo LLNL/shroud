@@ -5,11 +5,12 @@
 #
 # Test Python API generated from pointers.yaml.
 #
-from __future__ import print_function
 
 import math
-import numpy as np
 import unittest
+
+import numpy as np
+
 import pointers
 
 

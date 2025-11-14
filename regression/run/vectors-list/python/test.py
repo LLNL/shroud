@@ -6,11 +6,13 @@
 # Test Python API generated from vectors.yaml.
 # vectors-list
 #
-from __future__ import print_function
+
+import unittest
 
 import numpy as np
-import unittest
+
 import vectors
+
 
 class NotTrue:
     """Test bool arguments errors"""

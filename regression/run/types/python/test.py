@@ -6,10 +6,11 @@
 #
 # Test Python API generated from types.yaml.
 #
-from __future__ import print_function
 
 import unittest
+
 import shtypes
+
 
 class NotTrue:
     """Test bool arguments errors"""

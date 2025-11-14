@@ -2,13 +2,9 @@
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 
-from __future__ import print_function
-
-from shroud import ast
-from shroud import error
-from shroud import generate
-
 import unittest
+
+from shroud import ast, error, generate
 
 ShroudParseError = error.ShroudParseError
 

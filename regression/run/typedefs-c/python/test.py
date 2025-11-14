@@ -6,12 +6,12 @@
 #
 # Test Python API generated from typedefs.yaml.
 #
-from __future__ import print_function
 
 import unittest
+
 import typedefs
 
- 
+
 class Typedefs(unittest.TestCase):
     """Test tutorial problem"""
      

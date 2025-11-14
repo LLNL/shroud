@@ -5,11 +5,13 @@
 #
 # Test Python API generated from ownership.yaml.
 #
-from __future__ import print_function
+
+import unittest
 
 import numpy as np
-import unittest
+
 import ownership
+
 
 class Ownership(unittest.TestCase):
     """Test tutorial problem"""

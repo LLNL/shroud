@@ -5,18 +5,12 @@
 """
 Generate Lua module for C++ code.
 """
-from __future__ import print_function
-from __future__ import absolute_import
 
-from . import error
-from .declstr import gen_decl, gen_decl_noparams, gen_arg_as_c, gen_arg_as_cxx, DeclStr
-from . import fcfmt
-from . import statements
-from . import typemap
-from . import util
-from .util import wformat, append_format
+from . import error, fcfmt, statements, typemap, util
+from .declstr import (DeclStr, gen_arg_as_c, gen_arg_as_cxx, gen_decl,
+                      gen_decl_noparams)
+from .util import append_format, wformat
 
-from collections import OrderedDict
 
 class Wrapl(util.WrapperMixin):
     """Generate Lua bindings.
@@ -149,16 +143,16 @@ class Wrapl(util.WrapperMixin):
 #            decl = node.ast.gen_decl(as_c=True, name=fmtdict.C_name_typedef,
 #                                     arg_lang="c_type")
             decl = DeclStr(arg_lang="c_type", name=fmtdict.C_name_typedef).gen_decl(node.ast)
-            C_code = [decl + ";"]
+            C_code = [f"{decl};"]
             C_force = None
 
         output.append("")
         if options.literalinclude:
-            output.append("// start typedef " + node.name)
+            output.append(f"// start typedef {node.name}")
         append_format(output, "// typedef {namespace_scope}{class_scope}{typedef_name}", fmtdict)
         self._create_splicer(node.name, output, C_code, C_force)
         if options.literalinclude:
-            output.append("// end typedef " + node.name)
+            output.append(f"// end typedef {node.name}")
         
     def wrap_class(self, node):
         """
@@ -344,7 +338,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             # Find type of each argument
             itype_vars = []
             for iarg in range(1, maxargs + 1):
-                itype_vars.append("SH_itype{}".format(iarg))
+                itype_vars.append(f"SH_itype{iarg}")
                 fmt.itype_var = itype_vars[-1]
                 fmt.iarg = iarg
                 append_format(
@@ -357,7 +351,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             for nargs, calls in enumerate(by_count):
                 if len(calls) == 0:
                     continue
-                lines.append("case {}:".format(nargs))
+                lines.append(f"case {nargs}:")
                 lines.append(1)
                 ifelse = "if"
 
@@ -379,23 +373,23 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                         append_format(lines, "SH_nresult = {nresults};", fmt)
                         lines.extend([-1, "}"])
                     elif nargs == 1:
-                        lines.append("{} ({}) {{+".format(ifelse, checks[0]))
+                        lines.append(f"{ifelse} ({checks[0]}) {{+")
                         self.do_function(cls, call, fmt)
                         append_format(
                             lines, "SH_nresult = {nresults};\n" "-}}", fmt
                         )
                     elif nargs == 2:
-                        lines.append("{} ({} &&+".format(ifelse, checks[0]))
-                        lines.append("{}) {{".format(checks[1]))
+                        lines.append(f"{ifelse} ({checks[0]} &&+")
+                        lines.append(f"{checks[1]}) {{")
                         self.do_function(cls, call, fmt)
                         append_format(
                             lines, "SH_nresult = {nresults};\n" "-}}", fmt
                         )
                     else:
-                        lines.append("{} ({} &&+".format(ifelse, checks[0]))
+                        lines.append(f"{ifelse} ({checks[0]} &&+")
                         for check in checks[1:-1]:
-                            lines.append("{} &&".format(check))
-                        lines.append("{}) {{".format(checks[-1]))
+                            lines.append(f"{check} &&")
+                        lines.append(f"{checks[-1]}) {{")
                         self.do_function(cls, call, fmt)
                         append_format(
                             lines, "SH_nresult = {nresults};\n" "-}}", fmt
@@ -426,7 +420,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         body.append("")
         if node.options.debug:
             for node in overloads:
-                body.append("// " + node.declgen)
+                body.append(f"// {node.declgen}")
         body.extend(self.stmts_comments)
         if node.options.doxygen:
             for node in overloads:
@@ -482,7 +476,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             cls_function = "method"
         else:
             cls_function = "function"
-        self.log.write("Lua {0} {1.declgen}\n".format(cls_function, node))
+        self.log.write(f"Lua {cls_function} {node.declgen}\n")
 
         #        fmt_func = node.fmtdict
         #        fmt = util.Scope(fmt_func)
@@ -542,7 +536,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             fmt_func.rv_decl = gen_arg_as_cxx(ast,
                 name=fmt_result.cxx_var, add_params=False
             )
-            fmt_func.rv_asgn = fmt_func.rv_decl + " =\t "
+            fmt_func.rv_asgn = f"{fmt_func.rv_decl} =\t "
 
         node_stmt = util.Scope(LuaStmts)
         declare_code = []  # Declare variables and pop values.
@@ -584,8 +578,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             fmt_arg.LUA_index = LUA_index
             fmt_arg.c_var = arg_name
             fmt_arg.cxx_var = arg_name
-            fmt_arg.lua_var = "SH_Lua_" + arg_name
-            fmt_arg.c_var_len = "L" + arg_name
+            fmt_arg.lua_var = f"SH_Lua_{arg_name}"
+            fmt_arg.c_var_len = f"L{arg_name}"
             if a_declarator.is_pointer():
                 fmt_arg.c_deref = " *"
                 fmt_arg.c_member = "->"
@@ -611,7 +605,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             if node.options.debug:
                 stmts_comments_args.append(
                     "// ----------------------------------------")
-                stmts_comments_args.append("// Argument:  " + gen_decl(arg))
+                stmts_comments_args.append(f"// Argument:  {gen_decl(arg)}")
                 self.document_stmts(stmts_comments_args, arg, intent_blk.name)
             
             if intent in ["inout", "in"]:
@@ -639,7 +633,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
                 # append_format(post_call_code, arg_typemap.LUA_push, fmt_arg)
                 tmp = wformat(arg_typemap.LUA_push, fmt_arg)
-                node_stmt.post_call.append(tmp + ";")
+                node_stmt.post_call.append(f"{tmp};")
                 # XXX - needs work with pointers: int *out+intent(out)
 
             self.append_code(intent_blk, node_stmt, fmt_arg, fmt_func)
@@ -670,7 +664,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             stmts_comments.append(
                 "// ----------------------------------------")
             stmts_comments.append(
-                "// Function:  " + gen_decl_noparams(ast))
+                f"// Function:  {gen_decl_noparams(ast)}")
             self.document_stmts(stmts_comments, ast, result_blk.name)
             stmts_comments.extend(stmts_comments_args)
             
@@ -732,7 +726,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         # add guard
         guard = fname.replace(".", "_").upper()
-        output.extend(["#ifndef %s" % guard, "#define %s" % guard])
+        output.extend([f"#ifndef {guard}", f"#define {guard}"])
         util.extern_C(output, "begin")
 
         header_impl.write_headers(output)
@@ -746,7 +740,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             fmt,
         )
         util.extern_C(output, "end")
-        output.append("#endif  /* %s */" % guard)
+        output.append(f"#endif  /* {guard} */")
         self.write_output_file(fname, self.config.python_dir, output)
 
     def append_luaL_Reg(self, output, name, lines):
@@ -759,7 +753,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         """
         self._create_splicer("additional_functions", output, blank=True)
         output.extend(
-            ["", "static const struct luaL_Reg {} [] = {{".format(name), 1]
+            ["", f"static const struct luaL_Reg {name} [] = {{", 1]
         )
         output.extend(lines)
         self._create_splicer("register", output)
@@ -857,8 +851,8 @@ class Helpers(object):
         for i, helper in enumerate(c_helper.split()):
             self.c_helpers[helper] = True
             if helper not in LuaHelpers:
-                raise RuntimeError("No such helper {}".format(helper))
-            setattr(fmt, "hnamefunc" + str(i),
+                raise RuntimeError(f"No such helper {helper}")
+            setattr(fmt, f"hnamefunc{i!s}",
                     LuaHelpers[helper].get("name", helper))
         
 #        self.c_helper[name] = True
@@ -888,7 +882,7 @@ class Helpers(object):
         scope = helper_info.get("scope", "file")
         # assert scope in ["file", "utility"]
 
-        lang_key = self.language + "_include"
+        lang_key = f"{self.language}_include"
         if lang_key in helper_info:
             for include in helper_info[lang_key]:
                 self.helper_summary["include"][scope][include] = True
@@ -897,7 +891,7 @@ class Helpers(object):
                 self.helper_summary["include"][scope][include] = True
 
         for key in ["proto", "source"]:
-            lang_key = self.language + "_" + key 
+            lang_key = f"{self.language}_{key}" 
             if lang_key in helper_info:
                 self.helper_summary[key][scope].append(helper_info[lang_key])
             elif key in helper_info:
@@ -958,7 +952,7 @@ LuaHelpers = dict(
 ######################################################################
 
 # The dictionary of Python Scope statements.
-lua_dict = OrderedDict() # dictionary of Scope of all expanded lua_statements,
+lua_dict = {} # dictionary of Scope of all expanded lua_statements,
 default_scope = None  # for statements
 
 def update_statements_for_language(language):
@@ -998,7 +992,7 @@ def lookup_stmts(path):
     stmt = lua_dict.get(name, None)
     if stmt is None:
         stmt = lua_dict["lua_mixin_unknown"]
-        error.cursor.warning("Unknown statement: {}".format(name))
+        error.cursor.warning(f"Unknown statement: {name}")
     return stmt
 
 LuaStmts = util.Scope(

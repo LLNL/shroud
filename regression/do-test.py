@@ -56,7 +56,7 @@ class Tester:
 
     def open_log(self, logname):
         filename = os.path.join(self.test_output_dir, logname)
-        print("Log file: {}".format(filename))
+        print(f"Log file: {filename}")
         logging.basicConfig(
             filename=filename, filemode="w", level=logging.DEBUG
         )
@@ -94,23 +94,23 @@ class Tester:
         self.testDesc = desc
         self.testname = name
         logging.info("--------------------------------------------------")
-        logging.info("Testing " + name)
+        logging.info(f"Testing {name}")
 
         self.testyaml = os.path.join(self.test_input_dir, "input", desc.yaml)
-        logging.info("Input file: " + self.testyaml)
+        logging.info(f"Input file: {self.testyaml}")
         if not os.path.isfile(self.testyaml):
             logging.error("Input file does not exist")
             return False
 
         self.ref_dir = os.path.join(self.test_input_dir, "reference", name)
-        logging.info("Reference directory: " + self.ref_dir)
+        logging.info(f"Reference directory: {self.ref_dir}")
 
         if replace_ref:
             # replacing reference, just create directly in ref directory
             self.result_dir = self.ref_dir
         else:
             self.result_dir = os.path.join(self.test_output_dir, name)
-            logging.info("Result directory: " + self.result_dir)
+            logging.info(f"Result directory: {self.result_dir}")
             makedirs(self.result_dir)
             clear_files(self.result_dir)
 
@@ -154,7 +154,7 @@ class Tester:
             path=[self.test_input_dir],
             filename=[self.testyaml],
         )
-        logging.info("Arguments: " + str(args))
+        logging.info(f"Arguments: {args!s}")
 
         status = True
         self.push_stdout()
@@ -180,7 +180,7 @@ class Tester:
         """ Run test, return True/False for pass/fail.
         Files must compare, with no extra or missing files.
         """
-        logging.info("Code to test: " + self.code_path)
+        logging.info(f"Code to test: {self.code_path}")
 
         cmd = [
             self.code_path,
@@ -229,36 +229,36 @@ class Tester:
             ignore=["pybindgen", "cython", "swig", "cmp-shroud"],
         )
         if not os.path.exists(self.ref_dir):
-            logging.info("Reference directory does not exist: " + self.ref_dir)
+            logging.info(f"Reference directory does not exist: {self.ref_dir}")
             return False
 
         match, mismatch, errors = filecmp.cmpfiles(
             self.ref_dir, self.result_dir, cmp.common
         )
         for file in cmp.common:
-            logging.info("Compare: " + file)
+            logging.info(f"Compare: {file}")
         if mismatch:
             status = False
             for file in mismatch:
-                logging.warning("Does not compare: " + file)
+                logging.warning(f"Does not compare: {file}")
         if errors:
             status = False
             for file in errors:
-                logging.warning("Unable to compare: " + file)
+                logging.warning(f"Unable to compare: {file}")
 
         if cmp.left_only:
             status = False
             for file in cmp.left_only:
-                logging.warning("Only in reference: " + file)
+                logging.warning(f"Only in reference: {file}")
         if cmp.right_only:
             status = False
             for file in cmp.right_only:
-                logging.warning("Only in result: " + file)
+                logging.warning(f"Only in result: {file}")
 
         if status:
-            logging.info("Test {} pass".format(self.testname))
+            logging.info(f"Test {self.testname} pass")
         else:
-            logging.info("Test {} fail".format(self.testname))
+            logging.info(f"Test {self.testname} fail")
         return status
 
 
@@ -285,7 +285,7 @@ def clear_files(path):
             if os.path.isfile(full_path):
                 os.unlink(full_path)
         except Exception as e:
-            logging.warning("Unable to remove file: " + full_path)
+            logging.warning(f"Unable to remove file: {full_path}")
             logging.warning(e)
 
 
@@ -297,7 +297,7 @@ class TestDesc(object):
     """
     def __init__(self, name, yaml=None, cmdline=None, keywords=[]):
         self.name = name
-        self.yaml = (yaml or name) + ".yaml"
+        self.yaml = f"{yaml or name}.yaml"
         self.cmdline = cmdline or []
         self.keywords = keywords
 
@@ -662,7 +662,7 @@ if __name__ == "__main__":
                 if testname == predefined.name:
                     runTests.append(predefined)
                     found = True
-                elif testname + ".yaml" == predefined.yaml:
+                elif f"{testname}.yaml" == predefined.yaml:
                     runTests.append(predefined)
                     found = True
                 elif testname in predefined.keywords:
@@ -692,10 +692,10 @@ if __name__ == "__main__":
         dots = ".............................."[:25 - len(name)]
         if status:
             pass_names.append(name)
-            print("{} {} pass".format(name, dots))
+            print(f"{name} {dots} pass")
         else:
             fail_names.append(name)
-            print("{} {} ***FAILED".format(name, dots))
+            print(f"{name} {dots} ***FAILED")
 
     # summarize results
     if fail_names:

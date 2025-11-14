@@ -5,11 +5,13 @@
 #
 # Test Python API generated from preprocess.yaml.
 #
-from __future__ import print_function
+
+import unittest
 
 import numpy as np
-import unittest
+
 import preprocess
+
 
 class NotTrue:
     """Test bool arguments errors"""

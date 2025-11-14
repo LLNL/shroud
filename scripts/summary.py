@@ -30,9 +30,9 @@ RESET = "\033[0;0m"
 BOLD    = "\033[;1m"
 REVERSE = "\033[;7m"
 
-FAILBUILD = CYAN + "FAIL" + RESET
-FAIL = RED + "FAIL" + RESET
-PASS = GREEN + "PASS" + RESET
+FAILBUILD = f"{CYAN}FAIL{RESET}"
+FAIL = f"{RED}FAIL{RESET}"
+PASS = f"{GREEN}PASS{RESET}"
  
 
 def collect_pass_fail(rootDir):
@@ -119,7 +119,7 @@ def print_table(dct):
 
         versions = [x[len(family)+1:] for x in subset_compilers]
         versions.sort(key=lambda s: [int(u) for u in s.split('.')])
-        subset_compilers = [family + '-' + version for version in versions]
+        subset_compilers = [f"{family}-{version}" for version in versions]
     
         line = "| ".join(x.ljust(8) for x in versions)
         print(family.ljust(test_width), "|", line)
@@ -139,7 +139,7 @@ def print_table(dct):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("usage: {} directory".format(sys.argv[0]))
+        print(f"usage: {sys.argv[0]} directory")
         raise SystemExit
     summary = collect_pass_fail(sys.argv[1])
 #    print_summary(summary)

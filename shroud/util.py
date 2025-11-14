@@ -2,9 +2,6 @@
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 
-from __future__ import print_function
-from __future__ import absolute_import
-
 import collections
 import os
 import re
@@ -12,15 +9,8 @@ import string
 
 from . import error
 
-try:
-    # Python 3
-    Mapping = collections.abc.Mapping
-    Sequence = collections.abc.Sequence
-except AttributeError:
-    # Python 2
-    Mapping = collections.Mapping
-    Sequence = collections.Sequence
-OrderedDict = collections.OrderedDict
+Mapping = collections.abc.Mapping
+Sequence = collections.abc.Sequence
 
 try:
     from collections.abc import Mapping  # For Python 3.10+
@@ -40,15 +30,15 @@ def wformat(template, dct):
         # err.args ("'Scope' object has no attribute 'c_var_len'",)
         name = err.args[0].split()[-1]
         cursor = error.get_cursor()
-        cursor.warning("No value for %s in %r" % (name, template))
-        return "===>%s<===" % template
+        cursor.warning(f"No value for {name} in {template!r}")
+        return f"===>{template}<==="
         #raise        # uncomment for detailed backtrace
         # use %r to avoid expanding tabs
-        raise SystemExit("Error with template: " + "%r" % template)
+        raise SystemExit(f"Error with template: {template!r}")
     except ValueError as err:
         cursor = error.get_cursor()
-        cursor.warning("%s in %r" % (err.args[0], template))
-        return "===>%s<===" % template
+        cursor.warning(f"{err.args[0]} in {template!r}")
+        return f"===>{template}<==="
 
 
 def append_format(lstout, template, fmt):
@@ -139,9 +129,9 @@ def as_yaml(obj, order, output):
             # quote strings which start with { to avoid treating them
             # as a dictionary.
             if value.startswith("{"):
-                output.append('{}: "{}"'.format(key, value))
+                output.append(f'{key}: "{value}"')
             else:
-                output.append("{}: {}".format(key, value))
+                output.append(f"{key}: {value}")
         elif isinstance(value, Sequence):
             # Keys which are are an array of string (code templates)
             if key in (
@@ -152,22 +142,22 @@ def as_yaml(obj, order, output):
                 "post_parse",
                 "ctor",
             ):
-                output.append("{}: |".format(key))
+                output.append(f"{key}: |")
                 for i in value:
-                    output.append("{}".format(i))
+                    output.append(f"{i}")
             else:
-                output.append("{}:".format(key))
+                output.append(f"{key}:")
                 for i in value:
-                    output.append("@- {}".format(i))
+                    output.append(f"@- {i}")
         elif isinstance(value, Mapping):
-            output.append("{}:".format(key))
+            output.append(f"{key}:")
             order0 = sorted(value.keys())
             output.append(1)
             as_yaml(value, order0, output)
             output.append(-1)
         else:
             # numbers or booleans
-            output.append("{}: {}".format(key, value))
+            output.append(f"{key}: {value}")
 
 
 def find_language(language):
@@ -176,8 +166,7 @@ def find_language(language):
         language = "c++"
     language = language.lower()
     if language not in ["c", "c++"]:
-        raise RuntimeError("language must be 'c' or 'c++', found {}"
-                           .format(language))
+        raise RuntimeError(f"language must be 'c' or 'c++', found {language}")
     if language == "c++":
         # Use a form which can be used as a variable name
         language = "cxx"
@@ -209,14 +198,14 @@ class WrapperMixin(object):
         level = self.splicer_stack[-1].setdefault(name, {})
         self.splicer_stack.append(level)
         self.splicer_names.append(name)
-        self.splicer_path = ".".join(self.splicer_names) + "."
+        self.splicer_path = f"{'.'.join(self.splicer_names)}."
 
     def _pop_splicer(self, name):
         # XXX maybe use name for error checking, must pop in reverse order
         self.splicer_stack.pop()
         self.splicer_names.pop()
         if self.splicer_names:
-            self.splicer_path = ".".join(self.splicer_names) + "."
+            self.splicer_path = f"{'.'.join(self.splicer_names)}."
         else:
             self.splicer_path = ""
 
@@ -226,7 +215,7 @@ class WrapperMixin(object):
         level = self.splicer_stack[-2].setdefault(name, {})
         self.splicer_stack[-1] = level
         self.splicer_names[-1] = name
-        self.splicer_path = ".".join(self.splicer_names) + "."
+        self.splicer_path = f"{'.'.join(self.splicer_names)}."
 
     def _create_splicer(self, name, output, default=None, force=None, blank=False):
         """Insert a splicer with *name* into list *out*.
@@ -251,8 +240,7 @@ class WrapperMixin(object):
         out = []
         if show_splicer_comments:
             out.append(
-                "%s splicer begin %s%s"
-                % (self.comment, self.splicer_path, name)
+                f"{self.comment} splicer begin {self.splicer_path}{name}"
             )
         added_code = True
         if force is not None:
@@ -266,7 +254,7 @@ class WrapperMixin(object):
             added_code = False
         if show_splicer_comments:
             out.append(
-                "%s splicer end %s%s" % (self.comment, self.splicer_path, name)
+                f"{self.comment} splicer end {self.splicer_path}{name}"
             )
         if out:
             if blank:
@@ -311,14 +299,14 @@ class WrapperMixin(object):
         output - list of lines to write
         """
         fp = open(os.path.join(directory, fname), "w")
-        fp.write("%s %s\n" % (self.comment, fname))
+        fp.write(f"{self.comment} {fname}\n")
         fp.write("{} This file is generated by Shroud {}. Do not edit.\n".
                  format(self.comment, self.config.write_version))
         self.write_copyright(fp)
         self.indent = 0
         self.write_lines(fp, output, spaces)
         fp.close()
-        self.log.write("Close %s\n" % fname)
+        self.log.write(f"Close {fname}\n")
         print("Wrote", fname)
 
     def write_copyright(self, fp):
@@ -327,10 +315,10 @@ class WrapperMixin(object):
         """
         for line in self.newlibrary.copyright:
             if line:
-                fp.write(self.comment + " " + line + "\n")
+                fp.write(f"{self.comment} {line}\n")
             else:
                 # convert None to blank line
-                fp.write(self.comment + "\n")
+                fp.write(f"{self.comment}\n")
 
     def write_continue(self, fp, line, spaces="    "):
         """
@@ -384,7 +372,7 @@ class WrapperMixin(object):
                 if nparts > 0:
                     dump = True
             if dump:
-                fp.write(subline + self.cont + "\n")
+                fp.write(f"{subline}{self.cont}\n")
                 subline = spaces * (self.indent + indent)
                 nparts = 0
                 part = part.lstrip()
@@ -393,7 +381,7 @@ class WrapperMixin(object):
             if save:
                 subline += part
                 nparts += 1
-        fp.write(subline + "\n")
+        fp.write(f"{subline}\n")
 
     def write_lines(self, fp, lines, spaces="    "):
         """ Write lines with indention and newlines.
@@ -412,7 +400,7 @@ class WrapperMixin(object):
             if isinstance(line, int):
                 self.indent += int(line)
             elif isinstance(line, dict):
-                raise RuntimeError("Found unexpeced dictionary in input:\n%s" % line)
+                raise RuntimeError(f"Found unexpeced dictionary in input:\n{line}")
             else:
                 for subline in line.split("\n"):
                     if len(subline) == 0:
@@ -459,12 +447,10 @@ class WrapperMixin(object):
             node   - ast.LibraryNode, ast.NamespaceNode, ast.ClassNode
         """
         output.append(self.doxygen_begin)
-        output.append(self.doxygen_cont + " \\file %s" % fname)
+        output.append(self.doxygen_cont + f" \\file {fname}")
         output.append(
             self.doxygen_cont
-            + " \\brief Shroud generated wrapper for {} {}".format(
-                node.name, node.nodename
-            )
+            + f" \\brief Shroud generated wrapper for {node.name} {node.nodename}"
         )
         output.append(self.doxygen_end)
 
@@ -474,7 +460,7 @@ class WrapperMixin(object):
         """
         output.append(self.doxygen_begin)
         if "brief" in docs:
-            output.append(self.doxygen_cont + " \\brief %s" % docs["brief"])
+            output.append(self.doxygen_cont + f" \\brief {docs['brief']}")
             output.append(self.doxygen_cont)
         if "description" in docs:
             desc = docs["description"]
@@ -484,10 +470,10 @@ class WrapperMixin(object):
             else:
                 lines = [desc]
             for line in lines:
-                output.append(self.doxygen_cont + " " + line)
+                output.append(f"{self.doxygen_cont} {line}")
         if "return" in docs:
             output.append(self.doxygen_cont)
-            output.append(self.doxygen_cont + " \\return %s" % docs["return"])
+            output.append(self.doxygen_cont + f" \\return {docs['return']}")
         output.append(self.doxygen_end)
 
     def get_metaattrs(self, ast):
@@ -503,20 +489,20 @@ class WrapperMixin(object):
         """
         dbg = self.get_metaattrs(ast)
         if dbg:
-            output.append(self.comment + " Attrs:    " + dbg)
+            output.append(f"{self.comment} Attrs:    {dbg}")
         
-        output.append(self.comment + " Statement: " + stmt0)
+        output.append(f"{self.comment} Statement: {stmt0}")
 
     def document_function(self, output, node, stmt, decl):
         output.append("! ----------------------------------------")
         if node.options.debug_index:
-            output.append("! Index:     {}".format(node._function_index))
-        output.append("! Function:  " + decl)
+            output.append(f"! Index:     {node._function_index}")
+        output.append(f"! Function:  {decl}")
         self.document_stmts(output, node.ast, stmt.name)
 
     def document_argument(self, output, arg, stmt, decl):
         output.append("! ----------------------------------------")
-        output.append("! Argument:  " + decl)
+        output.append(f"! Argument:  {decl}")
         self.document_stmts(output, arg, stmt.name)
 
 
@@ -526,7 +512,7 @@ class Header(object):
     Headers are grouped into categories with keys of
     header_impl_include_order.
     The order of headers from cxx_header, typemap and helpers are preserved
-    (via OrderedDict).
+    (a dict is ordered in Python 3.7+).
     Each header is only included once.
 
     Headers are defined from several categories.
@@ -545,10 +531,10 @@ class Header(object):
         self.newlibrary = newlibrary
         self.options = newlibrary.options
         self.header_impl_include_order = dict(
-            typemap=OrderedDict(),
-            file_code=OrderedDict(),
-            cxx_header=OrderedDict(),
-            shroud=OrderedDict(),
+            typemap={},
+            file_code={},
+            cxx_header={},
+            shroud={},
         )
         self.typemaps = {}          # typemaps used by this header.
         self.typemap_field = None
@@ -665,9 +651,9 @@ class Header(object):
                     continue
                 found[header] = True
                 if header[0] == "<":
-                    lines.append("#include %s" % header)
+                    lines.append(f"#include {header}")
                 else:
-                    lines.append('#include "%s"' % header)
+                    lines.append(f'#include "{header}"')
             if lines:
                 if blank:
                     output.append("")
@@ -675,7 +661,7 @@ class Header(object):
                     blank = False
                 if debug:
                     # Only print label if there are unique entries.
-                    output.append("// " + category)
+                    output.append(f"// {category}")
                 output.extend(start_cxx)
                 output.extend(lines)
                 output.extend(end_cxx)
@@ -690,7 +676,7 @@ class Header(object):
         headers[hdr] [ typedef, None, ... ]
         """
         # find which headers are required and who requires them
-        headers = OrderedDict()
+        headers = {}
         for ntypemap in self.typemaps.values():
             hdr = getattr(ntypemap, self.typemap_field)
             for h in hdr:
@@ -713,10 +699,10 @@ class Header(object):
         fmt = self.newlibrary.fmtdict
         
         # find which headers are required and which language requires them.
-        always = OrderedDict()  # used by C and C++.
-        c_headers = OrderedDict()
-        cxx_headers = OrderedDict()
-        wrap_headers = OrderedDict()
+        always = {}  # used by C and C++.
+        c_headers = {}
+        cxx_headers = {}
+        wrap_headers = {}
 
         # Collect headers for c and c++.
         for ntypemap in typemaps.values():
@@ -758,7 +744,7 @@ class Header(object):
         """
         Parameters
         ----------
-        headers : Dict/OrderedDict. [hdr] = [ typemap, None, ... ]
+        headers : Dict. [hdr] = [ typemap, None, ... ]
                None from helper files
         output : append lines of code.
         found : dictionary of headers which have already be #included..
@@ -772,20 +758,20 @@ class Header(object):
                 # For example, add conditional around mpi.h.
                 ntypemap = headers[hdr][0]
                 if ntypemap and ntypemap.cpp_if:
-                    output.append("#" + ntypemap.cpp_if)
+                    output.append(f"#{ntypemap.cpp_if}")
                 if hdr[0] == "<":
-                    output.append("#include %s" % hdr)
+                    output.append(f"#include {hdr}")
                 else:
-                    output.append('#include "%s"' % hdr)
+                    output.append(f'#include "{hdr}"')
                 if ntypemap and ntypemap.cpp_if:
                     output.append("#endif")
             else:
                 # XXX - unclear how to mix header and cpp_if
                 # so always include the file
                 if hdr[0] == "<":
-                    output.append("#include %s" % hdr)
+                    output.append(f"#include {hdr}")
                 else:
-                    output.append('#include "%s"' % hdr)
+                    output.append(f'#include "{hdr}"')
         
 
 class Scope(object):
@@ -809,8 +795,7 @@ class Scope(object):
             return getattr(self.__parent, name)
         else:
             raise AttributeError(
-                "%r object has no attribute %r"
-                % (self.__class__.__name__, name)
+                f"{self.__class__.__name__!r} object has no attribute {name!r}"
             )
 
     def __getitem__(self, key):
@@ -873,7 +858,7 @@ class Scope(object):
     def clone(self):
         """return new Scope with same inlocal and parent"""
         new = Scope(self.__parent)
-        skip = "_" + self.__class__.__name__ + "__"  # __name is skipped
+        skip = f"_{self.__class__.__name__}__"  # __name is skipped
         for key, value in self.__dict__.items():
             if not key.startswith(skip):
                 new.__dict__[key] = value
@@ -892,14 +877,14 @@ class Scope(object):
         if header:
             print("XXXXXXXXXX", key)
         if key in self.__dict__:
-            print("TRACE {}: {}  {}".format(key, id(self), self.__dict__[key]))
+            print(f"TRACE {key}: {id(self)}  {self.__dict__[key]}")
         elif self.__parent:
-            print("TRACE {}: {}".format(key, id(self)))
+            print(f"TRACE {key}: {id(self)}")
             self.__parent.trace(key, header=False)
 
     def _to_dict(self):
         d = {}
-        skip = "_" + self.__class__.__name__ + "__"  # __name is skipped
+        skip = f"_{self.__class__.__name__}__"  # __name is skipped
         for key, value in self.__dict__.items():
             if not key.startswith(skip):
                 d[key] = value

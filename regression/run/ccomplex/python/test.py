@@ -6,10 +6,10 @@
 #
 # Test Python API generated from ccomplex.yaml.
 #
-from __future__ import print_function
 
 import math
 import unittest
+
 import ccomplex
 
 

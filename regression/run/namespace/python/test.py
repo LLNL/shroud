@@ -6,11 +6,12 @@
 #
 # Test Python API generated from namespace.yaml.
 #
-from __future__ import print_function
 
-import ns
 import types
 import unittest
+
+import ns
+
 
 class Namespace(unittest.TestCase):
     """Test namespace.yaml"""

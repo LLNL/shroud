@@ -5,11 +5,10 @@
 """
 Test utility module
 """
-from __future__ import print_function
-
-from shroud import util
 
 import unittest
+
+from shroud import util
 
 
 class UtilCase(unittest.TestCase):

@@ -5,10 +5,9 @@
 """
 Shroud - generate language bindings
 """
-from __future__ import absolute_import
 
 from .main import create_wrapper
-from .metadata import (__version__, __version_info__)
+from .metadata import __version__, __version_info__
 
 # from ast import LibraryNode, ClassNode, FunctionNode
 
@@ -18,4 +17,3 @@ def print_as_json(node, fp):
     import json
 
     json.dump(node, fp, cls=util.ExpandedEncoder, sort_keys=True, indent=4)
-

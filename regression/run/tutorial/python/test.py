@@ -6,10 +6,11 @@
 #
 # Test Python API generated from tutorial.yaml.
 #
-from __future__ import print_function
 
 import unittest
+
 import tutorial
+
 
 class NotTrue:
     """Test bool arguments errors"""

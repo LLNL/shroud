@@ -10,24 +10,16 @@ Variables prefixes used by generated code:
 SHAPE_ Array variable with shape for use with c_f_pointer.
 
 """
-from __future__ import print_function
-from __future__ import absolute_import
 
 import collections
 import copy
 import os
 import re
 
-from . import error
-from . import declast
+from . import declast, error, fcfmt, statements, todict, typemap, util
 from .declstr import gen_decl, gen_decl_noparams
-from . import fcfmt
-from . import statements
-from . import todict
-from . import typemap
-from . import util
-from .statements import get_func_bind, get_arg_bind
-from .util import wformat, append_format
+from .statements import get_arg_bind, get_func_bind
+from .util import append_format, wformat
 
 default_arg_template = """if (present({f_var})) then
 +{fc_var} = {f_var}-
@@ -91,9 +83,9 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
         """
         options = node.options
         if options.flatten_namespace:
-            self.log.write("namespace {0} flatten\n".format(node.name))
+            self.log.write(f"namespace {node.name} flatten\n")
         else:
-            self.log.write("namespace {0}\n".format(node.name))
+            self.log.write(f"namespace {node.name}\n")
         self.wrap_class_method_option(node.functions, fileinfo)
 
         self._push_splicer("class")
@@ -186,7 +178,7 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
             node - ast.ClassNode
             fileinfo - ModuleInfo
         """
-        self.log.write("class {0.name}\n".format(node))
+        self.log.write(f"class {node.name}\n")
         ntypemap = node.typemap
 
         options = node.options
@@ -201,8 +193,7 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
 
         output.append("")
         if options.literalinclude:
-            output.append("! start derived-type " +
-                          fmt_class.F_derived_name)
+            output.append(f"! start derived-type {fmt_class.F_derived_name}")
         append_format(output, "type, bind(C) :: {F_derived_name}+", fmt_class)
         for var in node.variables:
             bind = statements.fetch_var_bind(var, "f")
@@ -212,8 +203,7 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
                               fmt.i_module_name, fmt.i_kind)
         append_format(output, "-end type {F_derived_name}", fmt_class)
         if options.literalinclude:
-            output.append("! end derived-type " +
-                          fmt_class.F_derived_name)
+            output.append(f"! end derived-type {fmt_class.F_derived_name}")
         self._pop_splicer(fmt_class.cxx_class)
 
     def wrap_class(self, node, fileinfo):
@@ -227,7 +217,7 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
         cursor.push_phase("Wrapf.wrap_class")
         cursor.push_node(node)
 
-        self.log.write("class {}\n".format(node.name_instantiation or node.name))
+        self.log.write(f"class {node.name_instantiation or node.name}\n")
 
         options = node.options
         fmt_class = node.fmtdict
@@ -243,9 +233,9 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
         self.wrap_typedefs(node, fileinfo)
 
         if node.cpp_if:
-            fileinfo.impl.append("#" + node.cpp_if)
+            fileinfo.impl.append(f"#{node.cpp_if}")
         if node.cpp_if:
-            fileinfo.c_interface.append("#" + node.cpp_if)
+            fileinfo.c_interface.append(f"#{node.cpp_if}")
         self._push_splicer("method")
         self.wrap_functions(node, node.functions, fileinfo)
         self._pop_splicer("method")
@@ -268,12 +258,11 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
         f_type_decl = fileinfo.f_type_decl
         f_type_decl.append("")
         if node.cpp_if:
-            f_type_decl.append("#" + node.cpp_if)
+            f_type_decl.append(f"#{node.cpp_if}")
         fileinfo.add_fc_helper(["capsule_data", "capsule_memflags"], fmt_class)
 
         if options.literalinclude:
-            f_type_decl.append("! start derived-type " +
-                               fmt_class.F_derived_name)
+            f_type_decl.append(f"! start derived-type {fmt_class.F_derived_name}")
         if fmt_class.F_derived_member_base:
             append_format(
                 f_type_decl,
@@ -318,11 +307,9 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
                     # to avoid conditional/continuation problems.
                     for function in methods:
                         if function.cpp_if:
-                            f_type_decl.append("#" + function.cpp_if)
+                            f_type_decl.append(f"#{function.cpp_if}")
                         f_type_decl.append(
-                            "generic :: {} => {}".format(
-                                key, function.fmtdict.F_name_function
-                            )
+                            f"generic :: {key} => {function.fmtdict.F_name_function}"
                         )
                         if function.cpp_if:
                             f_type_decl.append("#endif")
@@ -339,8 +326,7 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
         self._create_splicer("type_bound_procedure_part", f_type_decl)
         append_format(f_type_decl, "-end type {F_derived_name}", fmt_class)
         if options.literalinclude:
-            f_type_decl.append("! end derived-type " +
-                               fmt_class.F_derived_name)
+            f_type_decl.append(f"! end derived-type {fmt_class.F_derived_name}")
         if node.cpp_if:
             f_type_decl.append("#endif")
 
@@ -351,12 +337,12 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
 
         # overload operators
         if node.cpp_if:
-            fileinfo.operator_impl.append("#" + node.cpp_if)
+            fileinfo.operator_impl.append(f"#{node.cpp_if}")
         self.overload_compare(
             node, fileinfo,
             fmt_class,
             ".eq.",
-            fmt_class.F_name_scope + "eq",
+            f"{fmt_class.F_name_scope}eq",
             wformat(
                 "c_associated"
                 "(a%{F_derived_member}%addr, b%{F_derived_member}%addr)",
@@ -368,7 +354,7 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
             node, fileinfo,
             fmt_class,
             ".ne.",
-            fmt_class.F_name_scope + "ne",
+            f"{fmt_class.F_name_scope}ne",
             wformat(
                 ".not. c_associated"
                 "(a%{F_derived_member}%addr, b%{F_derived_member}%addr)",
@@ -411,7 +397,7 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
         """
         options = node.options
         fmtdict = node.fmtdict
-        self.log.write("typedef {0.name}\n".format(node))
+        self.log.write(f"typedef {node.name}\n")
 
         declarator = node.ast.declarator
 
@@ -433,11 +419,11 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
         output = fileinfo.typedef_impl
         output.append("")
         if options.literalinclude:
-            output.append("! start typedef " + node.name)
+            output.append(f"! start typedef {node.name}")
         append_format(output, "! typedef {namespace_scope}{class_scope}{typedef_name}", fmtdict)
         self._create_splicer(node.name, output, F_code, F_force)
         if options.literalinclude:
-            output.append("! end typedef " + node.name)
+            output.append(f"! end typedef {node.name}")
 
     def wrap_enums(self, node, fileinfo):
         """Wrap all enums in a splicer block
@@ -469,7 +455,7 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
 
         output.append("")
         if node.ast.scope:
-            append_format(output, "!  enum " + node.ast.scope + " {namespace_scope}{enum_name}", fmt_enum)
+            append_format(output, f"!  enum {node.ast.scope} {{namespace_scope}}{{enum_name}}", fmt_enum)
         else:
             append_format(output, "!  enum {namespace_scope}{enum_name}", fmt_enum)
         append_format(
@@ -592,7 +578,7 @@ rv = c_associated({F_this}%{F_derived_member}%addr)
         fmt.F_name_function = wformat(options.F_name_function_template, fmt)
         fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
 
-        type_bound_part.append("final :: %s" % fmt.F_name_impl)
+        type_bound_part.append(f"final :: {fmt.F_name_impl}")
 
         append_format(
             impl,
@@ -692,8 +678,7 @@ rv = .false.
         cursor.push_phase("Wrapf.wrap_function_impl")
         for node in functions:
             if node.wrap.fortran:
-                self.log.write("Fortran {0.declgen}\n".format(
-                    node))
+                self.log.write(f"Fortran {node.declgen}\n")
                 self.wrap_function_impl(cls, node, fileinfo)
         cursor.pop_phase("Wrapf.wrap_function_impl")
 
@@ -701,12 +686,10 @@ rv = .false.
         for node in functions:
             wrap = node.wrap
             if wrap.c and wrap.signature_c != wrap.signature_i:
-                self.log.write("C-interface c {0.declgen}\n".format(
-                    node))
+                self.log.write(f"C-interface c {node.declgen}\n")
                 self.wrap_function_interface("c", cls, node, fileinfo)
             if wrap.fortran and node.options.F_create_bufferify_function:
-                self.log.write("C-interface f {0.declgen}\n".format(
-                    node))
+                self.log.write(f"C-interface f {node.declgen}\n")
                 self.wrap_function_interface("f", cls, node, fileinfo)
         cursor.pop_phase("Wrapf.wrap_function_interface")
 
@@ -848,10 +831,10 @@ rv = .false.
                 if only:
                     snames = sorted(only.keys())
                     arg_f_use.append(
-                        "use %s, only : %s" % (mname, ", ".join(snames))
+                        f"use {mname}, only : {', '.join(snames)}"
                     )
                 else:
-                    arg_f_use.append("use %s" % mname)
+                    arg_f_use.append(f"use {mname}")
         return arg_f_use
 
     def dump_generic_interfaces(self, fileinfo):
@@ -887,28 +870,28 @@ rv = .false.
 
                 iface.append("")
                 if cls and cls.cpp_if:
-                    iface.append("#" + cls.cpp_if)
+                    iface.append(f"#{cls.cpp_if}")
                 if iface_cpp_if:
-                    iface.append("#" + iface_cpp_if)
+                    iface.append(f"#{iface_cpp_if}")
                 if literalinclude:
-                    iface.append("! start generic interface " + key)
-                iface.append("interface " + key)
+                    iface.append(f"! start generic interface {key}")
+                iface.append(f"interface {key}")
                 iface.append(1)
                 if iface_cpp_if:
                     for node in generics:
-                        iface.append("module procedure " + node.fmtdict.F_name_impl)
+                        iface.append(f"module procedure {node.fmtdict.F_name_impl}")
                 else:
                     for node in generics:
                         if node.cpp_if:
-                            iface.append("#" + node.cpp_if)
-                            iface.append("module procedure " + node.fmtdict.F_name_impl)
+                            iface.append(f"#{node.cpp_if}")
+                            iface.append(f"module procedure {node.fmtdict.F_name_impl}")
                             iface.append("#endif")
                         else:
-                            iface.append("module procedure " + node.fmtdict.F_name_impl)
+                            iface.append(f"module procedure {node.fmtdict.F_name_impl}")
                 iface.append(-1)
-                iface.append("end interface " + key)
+                iface.append(f"end interface {key}")
                 if literalinclude:
-                    iface.append("! end generic interface " + key)
+                    iface.append(f"! end generic interface {key}")
                 if iface_cpp_if:
                     iface.append("#endif")
                 if cls and cls.cpp_if:
@@ -994,25 +977,25 @@ rv = .false.
                 arguments = ",\t ".join(dummy_arg_list)
                 iface.extend(stmts_comments)
                 if options.literalinclude:
-                    iface.append("! start abstract " + key)
+                    iface.append(f"! start abstract {key}")
                 if self.newlibrary.options.literalinclude2:
                     iface.append("abstract interface+")
                 iface.append(
-                    "{} {}({}){} \tbind(C)".format(subprogram, key, arguments, fmt_result.i_result_clause)
+                    f"{subprogram} {key}({arguments}){fmt_result.i_result_clause} \tbind(C)"
                 )
                 iface.append(1)
                 arg_f_use = self.sort_module_info(modules, fmt.F_module_name, imports)
                 iface.extend(arg_f_use)
                 if imports:
-                    iface.append("import :: " + ",\t ".join(sorted(imports.keys())))
+                    iface.append(f"import :: {',\t '.join(sorted(imports.keys()))}")
                 iface.append("implicit none")
                 iface.extend(dummy_decl_list)
                 iface.append(-1)
-                iface.append("end {} {}".format(subprogram, key))
+                iface.append(f"end {subprogram} {key}")
                 if self.newlibrary.options.literalinclude2:
                     iface.append("-end interface")
                 if options.literalinclude:
-                    iface.append("! end abstract " + key)
+                    iface.append(f"! end abstract {key}")
             if not self.newlibrary.options.literalinclude2:
                 iface.append(-1)
                 iface.append("")
@@ -1039,12 +1022,12 @@ rv = .false.
                 # body
                 impl.append("")
                 if node.cpp_if:
-                    impl.append("#" + node.cpp_if)
+                    impl.append(f"#{node.cpp_if}")
                 if options.debug:
-                    impl.append("! Statement: " + asgn_stmt.name)
+                    impl.append(f"! Statement: {asgn_stmt.name}")
                 if options.literalinclude:
                     append_format(impl, "! start {F_name_assign_api}", fmt)
-                impl.append("! " + assign.name)
+                impl.append(f"! {assign.name}")
                 util.append_format_cmds(impl, asgn_stmt, "f_operator_body", fmt)
                 if options.literalinclude:
                     append_format(impl, "! end {F_name_assign_api}", fmt)
@@ -1217,9 +1200,9 @@ rv = .false.
                 c_return_type = wformat(result_stmt.c_return_type, fmt_result)
                 ntypemap = self.symtab.lookup_typemap(c_return_type)
                 if ntypemap is None:
-                    cursor.warning("Unknown type in c_return_type: {}".format(c_return_type))
+                    cursor.warning(f"Unknown type in c_return_type: {c_return_type}")
                 else:
-                    dummy_decl_list.append("{} :: {}".format(ntypemap.f_type, fmt_result.i_result_var))
+                    dummy_decl_list.append(f"{ntypemap.f_type} :: {fmt_result.i_result_var}")
                     self.update_f_module(modules, ntypemap.f_module, fmt_result)
 
         arg_f_use = self.sort_module_info(
@@ -1227,11 +1210,11 @@ rv = .false.
         )
 
         if options.debug_index and node.wrap.signature_i:
-            stmts_comments.append("! Signature: " + node.wrap.signature_i)
+            stmts_comments.append(f"! Signature: {node.wrap.signature_i}")
 
         c_interface = []
         if node.cpp_if:
-            c_interface.append("#" + node.cpp_if)
+            c_interface.append(f"#{node.cpp_if}")
         c_interface.extend(stmts_comments)
         if options.literalinclude:
             append_format(c_interface, "! start {i_name_function}", fmt_result)
@@ -1248,7 +1231,7 @@ rv = .false.
         c_interface.append(1)
         c_interface.extend(arg_f_use)
         if imports:
-            c_interface.append("import :: " + ",\t ".join(sorted(imports.keys())))
+            c_interface.append(f"import :: {',\t '.join(sorted(imports.keys()))}")
         c_interface.append("implicit none")
         c_interface.extend(dummy_decl_list)
         c_interface.append(-1)
@@ -1448,7 +1431,7 @@ rv = .false.
             self.document_function(stmts_comments, node, result_stmt, f_decl)
             c_decl = gen_decl_noparams(C_node.ast)
             if f_decl != c_decl:
-                stmts_comments.append("! Function:  " + c_decl)
+                stmts_comments.append(f"! Function:  {c_decl}")
 
         arg_c_call = []  # arguments to C function
         dummy_arg_list = []  # arguments in subprogram statement
@@ -1533,7 +1516,7 @@ rv = .false.
                 # Pass NULL terminated string to C.
                 arg_stmt = util.Scope(arg_stmt)
                 arg_stmt.f_arg_call = [
-                    "trim({})//C_NULL_CHAR".format(fmt_arg.f_var)
+                    f"trim({fmt_arg.f_var})//C_NULL_CHAR"
                 ]
                 self.set_f_module(modules, "iso_c_binding", "C_NULL_CHAR")
                 need_wrapper = True
@@ -1544,7 +1527,7 @@ rv = .false.
                 arg_stmt = util.Scope(statements.FStmts)
                 if intermediate:
                     # Create a local variable of the interface type.
-                    fmt_arg.fc_var = "SH_" + fmt_arg.f_var
+                    fmt_arg.fc_var = f"SH_{fmt_arg.f_var}"
                     arg_stmt.f_module = {"{i_module_name}": ["{i_kind}"]}
                     arg_stmt.f_dummy_decl = ["{i_type} :: {fc_var}"]
                     arg_stmt.f_pre_call = [
@@ -1572,7 +1555,7 @@ rv = .false.
                 self.document_argument(stmts_comments, f_arg, arg_stmt, f_decl)
                 c_decl = gen_decl(c_arg)
                 if f_decl != c_decl:
-                    stmts_comments.append("! Argument:  " + c_decl)
+                    stmts_comments.append(f"! Argument:  {c_decl}")
 
             # Now C function arguments
             # May have different types, like generic
@@ -1582,12 +1565,9 @@ rv = .false.
             # Create a local variable for C if necessary.
             # The local variable fc_var is used in fc_statements. 
             if optattr:
-                fmt_arg.fc_var = "SH_" + fmt_arg.f_var
+                fmt_arg.fc_var = f"SH_{fmt_arg.f_var}"
                 declare.append(
-                    "{} {}".format(
-                        arg_typemap.i_type or arg_typemap.f_type,
-                        fmt_arg.fc_var,
-                    )
+                    f"{arg_typemap.i_type or arg_typemap.f_type} {fmt_arg.fc_var}"
                 )
                 # XXX - Reusing c_local_var logic, would have issues with bool
                 append_format(optional, default_arg_template, fmt_arg)
@@ -1673,7 +1653,7 @@ rv = .false.
             # Add procedure to derived type
             type_bound_part = fileinfo.type_bound_part
             if node.cpp_if:
-                type_bound_part.append("#" + node.cpp_if)
+                type_bound_part.append(f"#{node.cpp_if}")
             if node._fortran_generic_wrap:
                 # Avoid adding to type bound generic functions.
                 # Only called by fortran_generic created functions.
@@ -1756,7 +1736,7 @@ rv = .false.
         signature = ":".join(stmt_indexes)
         node.signatures["f"] = signature
         if options.debug_index:
-            stmts_comments.append("! Signature: " + signature)
+            stmts_comments.append(f"! Signature: {signature}")
 
         if node._fortran_generic_wrap:
             # Only called from fortran_generic generated function.
@@ -1765,7 +1745,7 @@ rv = .false.
         if need_wrapper or options.debug:
             impl = []
             if node.cpp_if:
-                impl.append("#" + node.cpp_if)
+                impl.append(f"#{node.cpp_if}")
             impl.extend(stmts_comments)
             if options.doxygen and node.doxygen:
                 self.write_doxygen(impl, node.doxygen)
@@ -1852,7 +1832,7 @@ rv = .false.
             if not self.private_lines:
                 self.private_lines.append("")
             self.private_lines.append(
-                "private " + ", ".join(helper_info["private"])
+                f"private {', '.join(helper_info['private'])}"
             )
 
     def gather_helper_code(self, fileinfo):
@@ -1890,9 +1870,9 @@ rv = .false.
         # Added headers used with Fortran preprocessor.
         for hdr in self.newlibrary.fortran_header:
             if hdr[0] == "<":
-                output.append("#include %s" % hdr)
+                output.append(f"#include {hdr}")
             else:
-                output.append('#include "%s"' % hdr)
+                output.append(f'#include "{hdr}"')
 
         self.gather_helper_code(fileinfo)
 
@@ -1900,7 +1880,7 @@ rv = .false.
             self.write_doxygen_file(output, fname, node)
         self._create_splicer("file_top", output)
 
-        output.append("module %s" % module_name)
+        output.append(f"module {module_name}")
         output.append(1)
 
         ntypemap = self.newlibrary.file_code.get(fname)
@@ -1931,12 +1911,12 @@ rv = .false.
             for op in ops:
                 operator = "assignment" if op == "=" else "operator"
                 output.append("")
-                output.append("interface %s (%s)" % (operator, op))
+                output.append(f"interface {operator} ({op})")
                 output.append(1)
                 for fcn, opfcn in fileinfo.operator_map[op]:
                     if fcn.cpp_if:
-                        output.append("#" + fcn.cpp_if)
-                    output.append("module procedure %s" % opfcn)
+                        output.append(f"#{fcn.cpp_if}")
+                    output.append(f"module procedure {opfcn}")
                     if fcn.cpp_if:
                         output.append("#endif")
                 output.append(-1)
@@ -1946,7 +1926,7 @@ rv = .false.
         self.dump_generic_interfaces(fileinfo)
 
         fileinfo.write_module(output)
-        output.append("end module %s" % module_name)
+        output.append(f"end module {module_name}")
 
         self.config.ffiles.append(
             os.path.join(self.config.c_fortran_dir, fname)
@@ -2002,10 +1982,10 @@ class ToImplied(todict.PrintNode):
             argname = node.args[0].name
             arg_typemap = self.arg.typemap
             if len(node.args) > 1:
-                dim = "{},".format(todict.print_node(node.args[1]))
+                dim = f"{todict.print_node(node.args[1])},"
             else:
                 dim = ""
-            return "size({},{}kind={})".format(argname, dim, arg_typemap.f_kind)
+            return f"size({argname},{dim}kind={arg_typemap.f_kind})"
         elif argname == "type":
             # type(arg)
             self.intermediate = True
@@ -2019,13 +1999,13 @@ class ToImplied(todict.PrintNode):
             self.intermediate = True
             argname = node.args[0].name
             arg_typemap = self.arg.typemap
-            return "len({},kind={})".format(argname, arg_typemap.f_kind)
+            return f"len({argname},kind={arg_typemap.f_kind})"
         elif argname == "len_trim":
             # len_trim(arg)
             self.intermediate = True
             argname = node.args[0].name
             arg_typemap = self.arg.typemap
-            return "len_trim({},kind={})".format(argname, arg_typemap.f_kind)
+            return f"len_trim({argname},kind={arg_typemap.f_kind})"
         else:
             return self.param_list(node)
 
@@ -2139,5 +2119,3 @@ def locate_c_function(library, node):
         assert C_node._PTR_F_C_index != C_node._function_index
         C_node = library.function_index[C_node._PTR_F_C_index]
     node.C_node = C_node
-
-

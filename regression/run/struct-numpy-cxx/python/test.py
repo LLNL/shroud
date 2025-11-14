@@ -6,11 +6,13 @@
 # Test Python API generated from struct.yaml.
 # struct-numpy-cxx
 #
-from __future__ import print_function
+
+import unittest
 
 import numpy as np
-import unittest
+
 import cstruct
+
 
 class Struct(unittest.TestCase):
     """Test struct problem"""

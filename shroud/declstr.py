@@ -8,6 +8,7 @@ Generating declarations for wrappers from AST.
 
 from . import todict
 
+
 class DeclStr(object):
     """
     Convert Declarator to a specific C declaration.
@@ -203,7 +204,7 @@ class DeclStr(object):
             if value is True:
                 parts.append(attr)
             else:
-                parts.append("{}({})".format(attr, value))
+                parts.append(f"{attr}({value})")
             space = ""
 
     def ptr(self, pointer, leading_blank=True):

@@ -5,9 +5,9 @@
 #
 # Test Python API generated from strings.yaml.
 #
-from __future__ import print_function
 
 import unittest
+
 import strings
 
 # value from strings.cpp

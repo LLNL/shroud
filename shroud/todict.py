@@ -26,11 +26,11 @@ def add_comment(dct, label, name=None):
     Helps when trying to locate sections in the written JSON file.
     """
     # "<" sorts towards the top.
-    key = "<" + label.upper() + ">"
+    key = f"<{label.upper()}>"
     if name is None:
         dct[key] = "****************************************"
     else:
-        dct[key] = str(name) + " ****************************************"
+        dct[key] = f"{name!s} ****************************************"
 
 ######################################################################
 
@@ -54,7 +54,7 @@ class Helpers:
 
     def visit_Scope(self, node):
         d = {}
-        skip = "_" + node.__class__.__name__ + "__"  # __name is skipped
+        skip = f"_{node.__class__.__name__}__"  # __name is skipped
         for key, value in node.__dict__.items():
             if not key.startswith(skip):
                 d[key] = value
@@ -277,7 +277,7 @@ class ToDict(visitor.Visitor):
         # Do not call visit for most members. It slows things down a lot.
         # Instead, have a list of keys which must be visited.
         d = {}
-        skip = "_" + node.__class__.__name__ + "__"  # __name is skipped
+        skip = f"_{node.__class__.__name__}__"  # __name is skipped
         for key, value in node.__dict__.items():
             if key in ["gen"]:
                 continue
@@ -436,7 +436,7 @@ class ToDict(visitor.Visitor):
 
     def visit_FunctionNode(self, node):
         d = dict(ast=self.visit(node.ast), decl=node.decl, name=node.name)
-        add_comment(d, "function", "{}  {}".format(node.name, node._function_index))
+        add_comment(d, "function", f"{node.name}  {node._function_index}")
         self.add_visit_fields(
             node,
             d,
@@ -504,7 +504,6 @@ class ToDict(visitor.Visitor):
             ],
         )
         if node.gen_headers_typedef:
-            # OrderedDict
             d['gen_headers_typedef'] = list(node.gen_headers_typedef.keys())
         if node.struct_parent:
             d["struct_parent"] = node.struct_parent.typemap.name
@@ -743,7 +742,7 @@ class PrintNode(visitor.Visitor):
         elif node.args:
             return self.param_list(node)
         else:
-            return node.name + "()"
+            return f"{node.name}()"
 
     def visit_AssumedRank(self, node):
         return ".."
@@ -755,7 +754,7 @@ class PrintNode(visitor.Visitor):
         return node.op + self.visit(node.node)
 
     def visit_ParenExpr(self, node):
-        return "(" + self.visit(node.node) + ")"
+        return f"({self.visit(node.node)})"
 
     def visit_Constant(self, node):
         return node.value
@@ -765,12 +764,12 @@ class PrintNode(visitor.Visitor):
         return self.stmt_list(node.stmts)
 
     def visit_CXXClass(self, node):
-        s = ["class {}".format(node.name)]
+        s = [f"class {node.name}"]
         s = []
         if node.baseclass:
             s.append(": ")
             for basetuple in node.baseclass:
-                s.append("{} {}".format(basetuple[0], basetuple[1]))
+                s.append(f"{basetuple[0]} {basetuple[1]}")
                 s.append(", ")
             s.pop()
         if node.members:
@@ -780,7 +779,7 @@ class PrintNode(visitor.Visitor):
         return "".join(s)
 
     def visit_Namespace(self, node):
-        return "namespace {}".format(node.name)
+        return f"namespace {node.name}"
 
     def visit_Declaration(self, node):
         s = str(node)
@@ -809,12 +808,10 @@ class PrintNode(visitor.Visitor):
         if node.value is None:
             return node.name
         else:
-            return "{} = {}".format(node.name, self.visit(node.value))
+            return f"{node.name} = {self.visit(node.value)}"
 
     def visit_Enum(self, node):
-        return " {{ {} }}".format(
-            self.comma_list(node.members)
-        )
+        return f" {{ {self.comma_list(node.members)} }}"
 
     def visit_Struct(self, node):
         s = []
@@ -827,7 +824,7 @@ class PrintNode(visitor.Visitor):
     def visit_Template(self, node):
         parms = self.comma_list(node.parameters)
         decl = self.visit(node.decl)
-        return "template<{}>  {}".format(parms, decl)
+        return f"template<{parms}>  {decl}"
 
     def visit_TemplateParam(self, node):
         return node.name
@@ -968,7 +965,7 @@ class PrintNodeIdentifier(PrintNode):
         elif node.args:
             return self.param_list(node)
         else:
-            return node.name + "()"
+            return f"{node.name}()"
 
 def print_node_identifier(node, symbols, key):
     """Convert node to original string and change identifiers

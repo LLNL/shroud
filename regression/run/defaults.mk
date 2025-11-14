@@ -222,8 +222,8 @@ python.ldflags = $(eval python.ldflags := $$(call shell,$(python.exe) \
 #  -c $(call sf_01,BLDLIBRARY) 2>&1))$(python.bldlibrary)
 python.incdir   = $(eval python.incdir := $$(call shell,$(python.exe) \
   -c $(call sf_01,INCLUDEPY) 2>&1))$(python.incdir)
-python.ldversion = $(eval python.incdir := $$(call shell,$(python.exe) \
-  -c $(call sf_01,LDVERSION) 2>&1))$(python.incdir)
+python.ldversion = $(eval python.ldversion := $$(call shell,$(python.exe) \
+  -c $(call sf_01,LDVERSION) 2>&1))$(python.ldversion)
 
 # python 2.7
 # libpl      - .../lib/python2.7/config

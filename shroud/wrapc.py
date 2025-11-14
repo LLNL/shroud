@@ -6,21 +6,13 @@
 Generate C bindings for C++ classes
 
 """
-from __future__ import print_function
-from __future__ import absolute_import
 
 import os
-from collections import OrderedDict, namedtuple
+from collections import namedtuple
 
-from . import error
-from . import declast
-from .declstr import gen_decl, gen_decl_noparams, gen_arg_as_c, DeclStr
-from . import fcfmt
-from . import todict
-from . import statements
-from . import typemap
-from . import util
-from .statements import get_func_bind, get_arg_bind
+from . import declast, error, fcfmt, statements, todict, typemap, util
+from .declstr import DeclStr, gen_arg_as_c, gen_decl, gen_decl_noparams
+from .statements import get_arg_bind, get_func_bind
 from .util import append_format, wformat
 
 lang_map = {"c": "C", "cxx": "C++"}
@@ -102,9 +94,9 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         """
         options = node.options
         if options.flatten_namespace:
-            self.log.write("namespace {0} flatten\n".format(node.name))
+            self.log.write(f"namespace {node.name} flatten\n")
         else:
-            self.log.write("namespace {0}\n".format(node.name))
+            self.log.write(f"namespace {node.name}\n")
 
         self.wrap_assignment(node)
         
@@ -287,7 +279,7 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         self.helper_summary = dict(
             c=dict(
                 proto=[],
-                proto_include=OrderedDict(),
+                proto_include={},
                 file=[],
                 cwrap_include=[],
                 cwrap_impl=[],
@@ -295,7 +287,7 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
             ),
             cxx=dict(
                 proto=[],
-                proto_include=OrderedDict(),
+                proto_include={},
                 file=[],
                 cwrap_include=[],
                 cwrap_impl=[],
@@ -384,10 +376,10 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
 
         output.extend(
             [
-                "// For C users and %s implementation" % lang_map[self.language],
+                f"// For C users and {lang_map[self.language]} implementation",
                 "",
-                "#ifndef %s" % guard,
-                "#define %s" % guard,
+                f"#ifndef {guard}",
+                f"#define {guard}",
             ]
         )
 
@@ -403,12 +395,12 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
                 [
                     "",
                     "// Shared with other Shroud wrapped libraries",
-                    "#ifndef %s" % guard2,
-                    "#define %s" % guard2,
+                    f"#ifndef {guard2}",
+                    f"#define {guard2}",
                 ]
             )
             output.extend(share)
-            output.extend(["", "#endif  // " + guard2])
+            output.extend(["", f"#endif  // {guard2}"])
 
         self._push_splicer("types")
         self._create_splicer('CXX_declarations', output, blank=True)
@@ -428,7 +420,7 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         if self.language == "cxx":
             output.extend(["", "#ifdef __cplusplus", "}"])
             for header in self.helper_summary["cxx"]["proto_include"].keys():
-                output.append("#include " + header)
+                output.append(f"#include {header}")
             proto = self.helper_summary["cxx"]["proto"]
             if proto:
                 output.append("")
@@ -436,7 +428,7 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
                 output.extend(proto)
             output.append("#endif")
 
-        output.extend(["", "#endif  // " + guard])
+        output.extend(["", f"#endif  // {guard}"])
         self._pop_splicer("util")
 
         self.config.cfiles.append(
@@ -464,12 +456,12 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
                 options = node.options
                 output.append("")
                 if node.cpp_if:
-                    output.append("#" + node.cpp_if)
+                    output.append(f"#{node.cpp_if}")
                 if options.debug:
-                    output.append("// Statement: " + asgn_stmt.name)
+                    output.append(f"// Statement: {asgn_stmt.name}")
                 if options.literalinclude:
                     append_format(output, "// start {F_name_assign_api}", fmt)
-                output.append("// " + assign.name)
+                output.append(f"// {assign.name}")
                 util.append_format_cmds(output, asgn_stmt, "c_body", fmt)
                 if options.literalinclude:
                     append_format(output, "// end {F_name_assign_api}", fmt)
@@ -500,14 +492,14 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
 
         output.extend(
             [
-                "// For C users and %s implementation" % lang_map[self.language],
+                f"// For C users and {lang_map[self.language]} implementation",
                 "",
-                "#ifndef %s" % guard,
-                "#define %s" % guard,
+                f"#ifndef {guard}",
+                f"#define {guard}",
             ]
         )
         if cls and cls.cpp_if:
-            output.append("#" + node.cpp_if)
+            output.append(f"#{node.cpp_if}")
 
         # headers required by typedefs and helpers
         headers = util.Header(self.newlibrary)
@@ -550,8 +542,8 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
             output.extend(fileinfo.header_proto_c)
         output.extend(cplusplus.end_extern_c)
         if cls and cls.cpp_if:
-            output.append("#endif  // " + node.cpp_if)
-        output.extend(["", "#endif  // " + guard])
+            output.append(f"#endif  // {node.cpp_if}")
+        output.extend(["", f"#endif  // {guard}"])
 
         if write_file:
             self.config.cfiles.append(
@@ -577,7 +569,7 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         write_file = False
         output = []
         if cls and cls.cpp_if:
-            output.append("#" + node.cpp_if)
+            output.append(f"#{node.cpp_if}")
 
         # Use headers from implementation
         fileinfo.header_impl.add_cxx_header(node)
@@ -613,7 +605,7 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
             output.append('}  // extern "C"')
 
         if cls and cls.cpp_if:
-            output.append("#endif  // " + node.cpp_if)
+            output.append(f"#endif  // {node.cpp_if}")
 
         if write_file:
             self.config.cfiles.append(
@@ -640,7 +632,7 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         cxxname = node.typemap.cxx_type
 
         output = fileinfo.struct_impl_cxx
-        output.append("using {} = {};".format(cname, cxxname))
+        output.append(f"using {cname} = {cxxname};")
     
         output = fileinfo.struct_impl_c
         output.extend(
@@ -649,13 +641,13 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
                 "typedef struct s_{C_type_name} {C_type_name};".format(
                     C_type_name=cname
                 ),
-                "struct s_{C_type_name} {{".format(C_type_name=cname),
+                f"struct s_{cname} {{",
                 1
             ]
         )
         for var in node.variables:
             ast = var.ast
-            output.append(gen_arg_as_c(ast) + ";")
+            output.append(f"{gen_arg_as_c(ast)};")
         output.extend(
             [
                 -1,
@@ -670,9 +662,7 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
             output.extend(
                 [
                     "",
-                    "0#if sizeof {} != sizeof {}".format(
-                        stypemap.name, stypemap.c_type
-                    ),
+                    f"0#if sizeof {stypemap.name} != sizeof {stypemap.c_type}",
                     "0#error Sizeof {} and {} do not match".format(
                         stypemap.name, stypemap.c_type
                     ),
@@ -711,8 +701,8 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         fmt = util.Scope(node.fmtdict)
         fmt.cname = node.typemap.c_type
         if node.cpp_if:
-            fmt.cpp_if = "#" + node.cpp_if + "\n"
-            fmt.cpp_endif = "\n#endif  // " + node.cpp_if
+            fmt.cpp_if = f"#{node.cpp_if}\n"
+            fmt.cpp_endif = f"\n#endif  // {node.cpp_if}"
         else:
             fmt.cpp_if = ""
             fmt.cpp_endif = ""
@@ -756,7 +746,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         cursor = self.cursor
         cursor.push_node(node)
 
-        self.log.write("class {}\n".format(node.name_instantiation or node.name))
+        self.log.write(f"class {node.name_instantiation or node.name}\n")
 
         fmt_class = node.fmtdict
         # call method syntax
@@ -765,7 +755,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             fmt_class.CXX_this_call = wformat("(*{CXX_this})->", fmt_class)
             pass
         else:
-            fmt_class.CXX_this_call = fmt_class.CXX_this + "->"
+            fmt_class.CXX_this_call = f"{fmt_class.CXX_this}->"
 
         self.capsule_format.compute_idtor(node)
         self.add_class_capsule_structs(node)
@@ -801,16 +791,16 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 #            decl = node.ast.gen_decl(as_c=True, name=fmtdict.C_name_typedef,
 #                                     arg_lang="c_type")
             decl = DeclStr(arg_lang="c_type", name=fmtdict.C_name_typedef).gen_decl(node.ast)
-            C_code = [decl + ";"]
+            C_code = [f"{decl};"]
             C_force = None
 
         output.append("")
         if options.literalinclude:
-            output.append("// start typedef " + node.name)
+            output.append(f"// start typedef {node.name}")
         append_format(output, "// typedef {namespace_scope}{class_scope}{typedef_name}", fmtdict)
         self._create_splicer(node.name, output, C_code, C_force)
         if options.literalinclude:
-            output.append("// end typedef " + node.name)
+            output.append(f"// end typedef {node.name}")
             
     def wrap_enum(self, node, fileinfo):
         """Wrap an enumeration.
@@ -927,8 +917,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         cursor = self.cursor
         func_cursor = cursor.push_node(node)
 
-        self.log.write("C {0} {1.declgen}\n".format(
-            wlang, node))
+        self.log.write(f"C {wlang} {node.declgen}\n")
 
         fmt_func = node.fmtdict
 
@@ -966,11 +955,11 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         if node.C_shared_method:
             # Override value set with cls.C_shared_class.
             # Call method on smart pointer, not what it points to.
-            fmt_result.CXX_this_call = fmt_result.CXX_this + "->"
+            fmt_result.CXX_this_call = f"{fmt_result.CXX_this}->"
 
         # fileinfo.impl_typedef_nodes.update(node.gen_headers_typedef) Python 3.6
         fileinfo.impl_typedef_nodes.update(node.gen_headers_typedef.items())
-        header_typedef_nodes = OrderedDict()
+        header_typedef_nodes = {}
         if ast.template_arguments:
             for targ in ast.template_arguments:
                 header_typedef_nodes[targ.typemap.name] = targ.typemap
@@ -1000,9 +989,9 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             stmts_comments.append(
                 "// ----------------------------------------")
             if options.debug_index:
-                stmts_comments.append("// Index:     {}".format(node._function_index))
+                stmts_comments.append(f"// Index:     {node._function_index}")
             c_decl = gen_decl_noparams(ast)
-            stmts_comments.append("// Function:  " + c_decl)
+            stmts_comments.append(f"// Function:  {c_decl}")
             self.document_stmts(stmts_comments, ast, result_stmt.name)
         
         notimplemented = result_stmt.notimplemented
@@ -1046,8 +1035,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                     cls_typemap = cls.typemap
                     if cls_typemap.base not in ["smartptr", "shadow"]:
                         cursor.warning(
-                            "Wapped class {} is not a shadow type"
-                            .format(cls_typemap.name)
+                            f"Wapped class {cls_typemap.name} is not a shadow type"
                         )
                     append_format(
                         setup_this,
@@ -1105,7 +1093,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 stmts_comments.append(
                     "// ----------------------------------------")
                 c_decl = gen_decl(arg)
-                stmts_comments.append("// Argument:  " + c_decl)
+                stmts_comments.append(f"// Argument:  {c_decl}")
                 self.document_stmts(stmts_comments, arg, arg_stmt.name)
 
             if not hidden:
@@ -1217,7 +1205,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         signature = ":".join(stmt_indexes)
         if options.debug_index:
-            stmts_comments.append("// Signature: " + signature)
+            stmts_comments.append(f"// Signature: {signature}")
 
         need_wrapper = need_wrapper or stmt_need_wrapper
         if wlang == "c":
@@ -1242,7 +1230,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             if options.doxygen and node.doxygen:
                 self.write_doxygen(impl, node.doxygen)
             if node.cpp_if:
-                impl.append("#" + node.cpp_if)
+                impl.append(f"#{node.cpp_if}")
             impl.extend(stmts_comments)
 
             if wlang == "f":
@@ -1273,7 +1261,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             if options.literalinclude:
                 append_format(impl, "// end {C_name}", fmt_result)
             if node.cpp_if:
-                impl.append("#endif  // " + node.cpp_if)
+                impl.append(f"#endif  // {node.cpp_if}")
 
             if node.C_signature == signature:
                 # Use the wrapper which has already been written
@@ -1292,7 +1280,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 fileinfo.header_typedef_nodes.update(header_typedef_nodes.items()) # Python 3.6
                 fileinfo.header_proto_c.append("")
                 if node.cpp_if:
-                    fileinfo.header_proto_c.append("#" + node.cpp_if)
+                    fileinfo.header_proto_c.append(f"#{node.cpp_if}")
                 append_format(
                     fileinfo.header_proto_c,
                     "{C_return_type} {C_name}(\t{C_prototype});",
@@ -1334,9 +1322,9 @@ class FileInfo(object):
         self.node = node      # ast.LibraryNode or ast.NamespaceNode
         
         # Include files required by wrapper prototypes
-        self.header_typedef_nodes = OrderedDict()  # [typemap.name] = typemap
+        self.header_typedef_nodes = {}  # [typemap.name] = typemap
         # Include files required by wrapper implementations.
-        self.impl_typedef_nodes = OrderedDict()  # [typemap.name] = typemap
+        self.impl_typedef_nodes = {}  # [typemap.name] = typemap
         # Headers needed by implementation, i.e. helper functions.
         self.header_impl = util.Header(self.newlibrary)
         # Headers needed by interface.

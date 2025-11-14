@@ -6,21 +6,11 @@
 Check attributes in delcaration.
 Generate additional functions required to create wrappers.
 """
-from __future__ import print_function
-from __future__ import absolute_import
 
-import collections
 import copy
 
-from . import ast
-from . import declast
-from . import declstr
-from . import error
-from . import todict
-from . import statements
-from . import typemap
-from . import util
-from . import visitor
+from . import (ast, declast, declstr, error, statements, todict, typemap, util,
+               visitor)
 
 wformat = util.wformat
 
@@ -91,8 +81,7 @@ class VerifyAttrs(object):
 
         for arg in declarator.params:
             if arg.declarator.name is None:
-                cursor.generate("Argument must have name in {}".format(
-                    node.decl))
+                cursor.generate(f"Argument must have name in {node.decl}")
             self.check_arg_attrs(node, arg)
 
         if node.fortran_generic:
@@ -152,7 +141,7 @@ class VerifyAttrs(object):
             if declarator.init is not None:
                 node._has_default_arg = True
             elif node._has_found_default is True:
-                raise RuntimeError("Expected default value for %s" % argname)
+                raise RuntimeError(f"Expected default value for {argname}")
 
         # Check template attribute
         temp = arg.template_arguments
@@ -318,9 +307,9 @@ class GenFunctions(object):
         added = cls.functions[:]
 
         if not found_ctor:
-            added.append(ast.FunctionNode("{}()".format(cls.name), parent=cls))
+            added.append(ast.FunctionNode(f"{cls.name}()", parent=cls))
         if not found_dtor:
-            added.append(ast.FunctionNode("~{}()".format(cls.name), parent=cls))
+            added.append(ast.FunctionNode(f"~{cls.name}()", parent=cls))
 
         return added
 
@@ -381,8 +370,8 @@ class GenFunctions(object):
                 return
             # Explicity add the 'this' argument. Added automatically for classes.
             typename = cls.typemap.name
-            this_get = "{} *{}".format(typename, cls.fmtdict.CXX_this)
-            this_set = this_get + ","   # defaults to intent(inout)
+            this_get = f"{typename} *{cls.fmtdict.CXX_this}"
+            this_set = f"{this_get},"   # defaults to intent(inout)
             this_get += "+intent(in)"
             funcname_get = wformat(options.SH_struct_getter_template, fmt_func)
             funcname_set = wformat(options.SH_struct_setter_template, fmt_func)
@@ -400,7 +389,7 @@ class GenFunctions(object):
         ##########
         # getter
         argdecl = declstr.gen_arg_as_language(ast, lang=lang, name=funcname_get)
-        decl = "{}({})".format(argdecl, this_get)
+        decl = f"{argdecl}({this_get})"
 
         attrs = declarator.attrs
         fattrs = dict(
@@ -423,7 +412,7 @@ class GenFunctions(object):
         if declarator.attrs.get("readonly", False):
             return
         argdecl = declstr.gen_arg_as_language(ast, lang=lang, name="val")
-        decl = "void {}({}{})".format(funcname_set, this_set, argdecl)
+        decl = f"void {funcname_set}({this_set}{argdecl})"
 
         fattrs = dict(
             intent="setter",
@@ -482,9 +471,9 @@ class GenFunctions(object):
                 if ntypemap.template_suffix:
                     class_suffix = ntypemap.template_suffix
                 else:
-                    class_suffix = "_" + ntypemap.flat_name
+                    class_suffix = f"_{ntypemap.flat_name}"
             else:
-                class_suffix = "_" + str(i)
+                class_suffix = f"_{i!s}"
 
             # Update name of class.
             #  name_api           - vector_0 or vector_int     (Fortran and C names)
@@ -537,11 +526,11 @@ class GenFunctions(object):
         ntypemap = cls.symtab.lookup_typemap(name_type)
         if ntypemap is None:
             error.get_cursor().warning(
-                "smart_pointer type '{}' is unknown".format(name_type))
+                f"smart_pointer type '{name_type}' is unknown")
             return
         if ntypemap.sgroup != "smart_ptr":
             error.get_cursor().warning(
-                "smart_pointer type '{}' is not a smart pointer".format(name_type))
+                f"smart_pointer type '{name_type}' is not a smart pointer")
             return
 
         fmt_class.smart_pointer = ntypemap.smart_pointer
@@ -549,7 +538,7 @@ class GenFunctions(object):
             fmt_class.update(smart["format"])
         newcls.eval_template("C_name_shared_api")
         newcls.name_api = fmt_class.C_name_shared_api
-        newcls.name_instantiation = "{}<{}>".format(name_type, fmt_class.cxx_type)
+        newcls.name_instantiation = f"{name_type}<{fmt_class.cxx_type}>"
         newcls.scope_file[-1] = newcls.name_api
         newcls.shared_baseclass = cls
 
@@ -849,7 +838,7 @@ class GenFunctions(object):
                 for i, function in enumerate(overloads):
                     function._overloaded = True
                     if not function.fmtdict.inlocal("function_suffix"):
-                        function.fmtdict.function_suffix = "_{}".format(i)
+                        function.fmtdict.function_suffix = f"_{i}"
 
         ordered3 = self.define_fortran_generic_functions(ordered_functions)
 
@@ -877,7 +866,7 @@ class GenFunctions(object):
             ordered_functions -
         """
         oldoptions = node.options
-        headers_typedef = collections.OrderedDict()
+        headers_typedef = {}
 
         # targs - ast.TemplateArgument
         for iargs, targs in enumerate(node.template_arguments):
@@ -904,9 +893,9 @@ class GenFunctions(object):
                 if ntypemap.template_suffix:
                     fmt.template_suffix = ntypemap.template_suffix
                 else:
-                    fmt.template_suffix = "_" + ntypemap.flat_name
+                    fmt.template_suffix = f"_{ntypemap.flat_name}"
             else:
-                fmt.template_suffix = "_" + str(iargs)
+                fmt.template_suffix = f"_{iargs!s}"
 
             new.cxx_template = {}
             fmt.CXX_template = targs.instantiation  # ex. <int>
@@ -1027,7 +1016,7 @@ class GenFunctions(object):
                     del attrs["dimension"]
                     attrs["rank"] = rank
             generic = ast.FortranGeneric(
-                "", function_suffix="_{}d".format(rank),
+                "", function_suffix=f"_{rank}d",
                 decls=newdecls)
             node.fortran_generic.append(generic)
 
@@ -1354,27 +1343,27 @@ class CheckImplied(todict.PrintNode):
             # size(arg)
             if len(node.args) > 2:
                 error.get_cursor().generate(
-                    "Too many arguments to 'size': {}".format(self.expr)
+                    f"Too many arguments to 'size': {self.expr}"
                 )
             # isinstance(node.args[0], declalst.Identifier)
             argname = node.args[0].name
             arg = declast.find_arg_by_name(self.decls, argname)
             if arg is None:
                 error.get_cursor().generate(
-                    "Unknown argument '{}': {}".format(argname, self.expr)
+                    f"Unknown argument '{argname}': {self.expr}"
                 )
             return "size"
         elif node.name in ["len", "len_trim"]:
             # len(arg)  len_trim(arg)
             if len(node.args) != 1:
                 error.get_cursor().generate(
-                    "Too many arguments to '{}': {}".format(node.name, self.expr)
+                    f"Too many arguments to '{node.name}': {self.expr}"
                 )
             argname = node.args[0].name
             arg = declast.find_arg_by_name(self.decls, argname)
             if arg is None:
                 error.get_cursor().generate(
-                    "Unknown argument '{}': {}".format(argname, self.expr)
+                    f"Unknown argument '{argname}': {self.expr}"
                 )
             # XXX - Make sure character
 #            if arg.attrs["dimension"] is None:
@@ -1429,7 +1418,7 @@ def gen_decl(ast):
         return s + s2
     else:
         # int (*)(void)  -- add blank after declaration
-        return s + " " + s2
+        return f"{s} {s2}"
 
 ######################################################################
 
@@ -1447,6 +1436,6 @@ class AssignOperator(object):
     def __init__(self, lhs, rhs, specialization=None):
         self.lhs = lhs
         self.rhs = rhs
-        self.name = "%s = %s" % (lhs.typemap.name, rhs.typemap.name)
+        self.name = f"{lhs.typemap.name} = {rhs.typemap.name}"
         self.bind = None
         self.specialization = specialization

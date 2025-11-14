@@ -10,6 +10,8 @@ Notes to help migrate between releases.
 Unreleased
 ----------
 
+* Require Python 3.7.
+
 v0.14.0
 -------
 

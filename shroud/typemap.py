@@ -18,22 +18,15 @@ need to be used in a different YAML file.
 
 
 """
-from __future__ import print_function
 
-from . import error
-from . import util
+from . import error, util
+
 
 # translation table to convert type name to flat name
 # unsigned int -> unsigned_int
 # vector<int>  -> vector_int
-try:
-    # Python 2
-    from string import maketrans
-    def flatten_name(name, flat_trantab = maketrans("< ", "__")):
-        return name.replace("::","_").translate(flat_trantab, ">")
-except:
-    def flatten_name(name, flat_trantab="".maketrans("< ", "__", ">")):
-        return name.replace("::","_").translate(flat_trantab)
+def flatten_name(name, flat_trantab="".maketrans("< ", "__", ">")):
+    return name.replace("::","_").translate(flat_trantab)
 
 void_typemap = None
 
@@ -210,8 +203,7 @@ class Typemap(object):
                                   (self.name, key, self.deprecated[key]))
             else:
                 cursor = error.get_cursor()
-                cursor.warning("Typemap %s: Unknown key '%s'" % (
-                    self.name, key))
+                cursor.warning(f"Typemap {self.name}: Unknown key '{key}'")
 
     def finalize(self):
         """Compute some fields based on other fields."""
@@ -271,10 +263,10 @@ class Typemap(object):
             value = getattr(self, key)
             if value is not defvalue:
                 if isinstance(value, str):
-                    args.append("{0}='{1}'".format(key, value))
+                    args.append(f"{key}='{value}'")
                 else:
-                    args.append("{0}={1}".format(key, value))
-        return "Typemap('%s', " % self.name + ",".join(args) + ")"
+                    args.append(f"{key}={value}")
+        return f"Typemap('{self.name}', {','.join(args)})"
 
     def __as_yaml__(self, indent, output):
         """Write out entire typemap as YAML.
@@ -995,7 +987,7 @@ def check_for_missing_typemap_fields(cxx_name, fields, names):
             missing.append(field_name)
     if missing:
         raise RuntimeError(
-            "typemap {} requires fields {}".format(cxx_name, ", ".join(missing))
+            f"typemap {cxx_name} requires fields {', '.join(missing)}"
         )
 
 def create_native_typemap_from_fields(cxx_name, fields, library):
@@ -1056,9 +1048,9 @@ def fill_native_typemap_defaults(ntypemap, fmt):
     fmt : util.Scope
     """
     if ntypemap.f_type is None:
-        ntypemap.f_type = "{}({})".format(ntypemap.base, ntypemap.f_kind)
+        ntypemap.f_type = f"{ntypemap.base}({ntypemap.f_kind})"
     if ntypemap.f_cast is None:
-        ntypemap.f_cast = "{}({{f_var}}, {})".format(base_cast[ntypemap.base], ntypemap.f_kind)
+        ntypemap.f_cast = f"{base_cast[ntypemap.base]}({{f_var}}, {ntypemap.f_kind})"
     if ntypemap.f_module is None:
         ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_kind]}
 
@@ -1096,7 +1088,7 @@ def fill_enum_typemap(node, ftypemap):
         language = node.get_language()
 
         if language == "c":
-            ntypemap.c_type = "enum %s" % ntypemap.name
+            ntypemap.c_type = f"enum {ntypemap.name}"
             
             # XXX - These are used with Python wrapper and ParseTupleAndKeyword.
             ntypemap.cxx_type = util.wformat(
@@ -1111,7 +1103,7 @@ def fill_enum_typemap(node, ftypemap):
             ntypemap.cxx_to_ci = "(%s) {cxx_var}" % ntypemap.ci_type
 
         else:
-            ntypemap.c_type = "enum %s" % fmt_enum.C_enum_type
+            ntypemap.c_type = f"enum {fmt_enum.C_enum_type}"
 
             ntypemap.cxx_type = util.wformat(
                 "{namespace_scope}{enum_name}", fmt_enum
@@ -1132,12 +1124,12 @@ def compute_class_typemap_derived_fields(ntypemap, fields):
     """
     # compute names derived from other values
     if "f_class" not in fields:
-        ntypemap.f_class = "class(%s)" % ntypemap.f_derived_type
+        ntypemap.f_class = f"class({ntypemap.f_derived_type})"
         # XXX f_kind
     if "f_type" not in fields:
-        ntypemap.f_type = "type(%s)" % ntypemap.f_derived_type
+        ntypemap.f_type = f"type({ntypemap.f_derived_type})"
     if "i_type" not in fields:
-        ntypemap.i_type = "type(%s)" % ntypemap.f_capsule_data_type
+        ntypemap.i_type = f"type({ntypemap.f_capsule_data_type})"
 
 def create_class_typemap_from_fields(cxx_name, fields, library):
     """Create a typemap from fields.
@@ -1271,7 +1263,7 @@ def compute_struct_typemap_derived_fields(ntypemap, fields):
     if "f_kind" not in fields:
         ntypemap.f_kind = ntypemap.f_derived_type
     if "f_type" not in fields:
-        ntypemap.f_type = "type(%s)" % ntypemap.f_derived_type
+        ntypemap.f_type = f"type({ntypemap.f_derived_type})"
 
 def create_struct_typemap_from_fields(cxx_name, fields, library):
     """Create a struct typemap from fields.
@@ -1300,7 +1292,7 @@ def create_struct_typemap_from_fields(cxx_name, fields, library):
         base="struct", sgroup="struct",
         c_type=cxx_name,
         cxx_type=cxx_name,
-        f_type = "type(%s)" % cxx_name,
+        f_type = f"type({cxx_name})",
     )
     ntypemap.update(fields)
 
@@ -1487,7 +1479,7 @@ def fill_typedef_typemap(node, fields={}):
         wrap_header=fmtdict.C_header_filename,
         c_type=c_name,
 
-        f_type = "{}({})".format(ntypemap.base, f_name),
+        f_type = f"{ntypemap.base}({f_name})",
         f_kind=f_name,
         #XXX f_cast  using f_name
         f_module_name=fmtdict.F_module_name,
@@ -1501,7 +1493,7 @@ def fill_typedef_typemap(node, fields={}):
     ))
 
     if ntypemap.base in ["shadow", "struct"]:
-        ntypemap.f_type = "type({})".format(f_name)
+        ntypemap.f_type = f"type({f_name})"
     elif ntypemap.base == "integer":
         ntypemap.f_cast = "int({f_var}, %s)" % f_name
     elif ntypemap.base == "real":
