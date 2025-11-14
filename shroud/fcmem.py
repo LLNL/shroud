@@ -9,6 +9,7 @@ Memory management for Fortran and C wrappers.
 from . import util
 from .util import append_format, wformat
 
+
 class CapsuleFmt(object):
     """
     Methods to compute the destructors for a capsule (shadow) type.

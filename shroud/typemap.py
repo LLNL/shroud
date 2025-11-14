@@ -19,8 +19,8 @@ need to be used in a different YAML file.
 
 """
 
-from . import error
-from . import util
+from . import error, util
+
 
 # translation table to convert type name to flat name
 # unsigned int -> unsigned_int

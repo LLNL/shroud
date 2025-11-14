@@ -15,13 +15,13 @@ make test-decl-diff
 make test-decl-replace
 """
 
-from shroud import declast
-#from shroud import declstr
-from shroud import error
-from shroud import todict
-from shroud import typemap
+import pprint
+import sys
 
-from shroud import declstr
+import yaml
+
+#from shroud import declstr
+from shroud import declast, declstr, error, todict, typemap
 
 gen_decl = declstr.gen_decl
 gen_decl_noparams = declstr.gen_decl_noparams
@@ -33,9 +33,6 @@ gen_arg_as_cxx = declstr.gen_arg_as_cxx
 declstr.gen_arg_instance.continuation=False
 
 
-import yaml
-import pprint
-import sys
 
 lines = """
 # create_std

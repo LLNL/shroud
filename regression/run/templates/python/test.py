@@ -8,7 +8,9 @@
 #
 
 import unittest
+
 import templates
+
 
 class Templates(unittest.TestCase):
     """Test templates problem"""

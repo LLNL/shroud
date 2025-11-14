@@ -7,9 +7,12 @@
 # struct-numpy-c
 #
 
-import numpy as np
 import unittest
+
+import numpy as np
+
 import cxxlibrary
+
 structns = cxxlibrary.structns
 
 class Struct(unittest.TestCase):

@@ -8,7 +8,9 @@
 #
 
 import unittest
+
 import shtypes
+
 
 class NotTrue:
     """Test bool arguments errors"""

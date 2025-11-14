@@ -7,10 +7,13 @@
 # struct-class-cxx
 #
 
-import numpy as np
 import sys
 import unittest
+
+import numpy as np
+
 import cstruct
+
 
 class Struct(unittest.TestCase):
     """Test struct problem"""

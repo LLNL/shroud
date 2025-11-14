@@ -7,6 +7,7 @@
 #
 
 import unittest
+
 import strings
 
 # value from strings.cpp

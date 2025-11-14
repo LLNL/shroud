@@ -6,9 +6,12 @@
 # Test Python API generated from references.yaml.
 #
 
-import numpy as np
 import unittest
+
+import numpy as np
+
 import arrayclass
+
 
 class Arrayclass(unittest.TestCase):
     """Test struct problem"""

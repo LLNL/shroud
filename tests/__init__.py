@@ -10,14 +10,8 @@ Shroud tests
 
 import unittest
 
-from . import test_ast
-from . import test_declast
-from . import test_format
-from . import test_generate
-from . import test_statements
-from . import test_util
-from . import test_wrapf
-from . import test_wrapp
+from . import (test_ast, test_declast, test_format, test_generate,
+               test_statements, test_util, test_wrapf, test_wrapp)
 
 # from . import test_shroud
 

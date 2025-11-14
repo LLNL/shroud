@@ -7,6 +7,7 @@
 #
 
 import unittest
+
 import char
 
 # value from char.c

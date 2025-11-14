@@ -10,15 +10,9 @@ Generate C bindings for C++ classes
 import os
 from collections import namedtuple
 
-from . import error
-from . import declast
-from .declstr import gen_decl, gen_decl_noparams, gen_arg_as_c, DeclStr
-from . import fcfmt
-from . import todict
-from . import statements
-from . import typemap
-from . import util
-from .statements import get_func_bind, get_arg_bind
+from . import declast, error, fcfmt, statements, todict, typemap, util
+from .declstr import DeclStr, gen_arg_as_c, gen_decl, gen_decl_noparams
+from .statements import get_arg_bind, get_func_bind
 from .util import append_format, wformat
 
 lang_map = {"c": "C", "cxx": "C++"}

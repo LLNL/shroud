@@ -6,14 +6,10 @@
 Parse C++ declarations.
 """
 
-from shroud import declast
-from shroud import declstr
-from shroud import error
-from shroud import todict
-from shroud import wrapf
-
-import unittest
 import copy
+import unittest
+
+from shroud import declast, declstr, error, todict, wrapf
 
 # Useful to format reference output of to_dict
 #import pprint

@@ -5,14 +5,15 @@
 """
 """
 
-from . import error
-from . import whelpers
-from .util import wformat
-
 import collections
 import importlib.resources
 import json
+
 import yaml
+
+from . import error, util, whelpers
+from .util import wformat
+
 
 def read_json_resource(name):
     fp = importlib.resources.open_binary('shroud', name)
@@ -23,7 +24,6 @@ def read_yaml_resource(name):
     stmts = yaml.safe_load(fp)
     return stmts
 
-from . import util
 
 # The dictionary of c and fortran statements.
 fc_dict = {} # dictionary of Scope of all expanded fc_statements.

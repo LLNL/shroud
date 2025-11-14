@@ -8,7 +8,9 @@
 from __future__ import print_function
 
 import unittest
+
 import cstruct
+
 
 class Struct(unittest.TestCase):
     """Test struct problem"""

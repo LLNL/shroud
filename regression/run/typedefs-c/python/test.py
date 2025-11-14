@@ -8,9 +8,10 @@
 #
 
 import unittest
+
 import typedefs
 
- 
+
 class Typedefs(unittest.TestCase):
     """Test tutorial problem"""
      

@@ -11,26 +11,14 @@ import argparse
 import json
 import os
 import sys
+
 import yaml
 from yaml.composer import Composer
 from yaml.constructor import Constructor
 
-from . import ast
-from . import declast
-from . import fcfmt
-from . import generate
-from . import metaattrs
-from . import metadata
-from . import splicer
-from . import statements
-from . import todict
-from . import typemap
-from . import util
-from . import whelpers
-from . import wrapc
-from . import wrapf
-from . import wrapp
-from . import wrapl
+from . import (ast, declast, fcfmt, generate, metaattrs, metadata, splicer,
+               statements, todict, typemap, util, whelpers, wrapc, wrapf,
+               wrapl, wrapp)
 
 
 class Config(object):

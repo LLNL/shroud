@@ -2,14 +2,9 @@
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 
-from shroud import ast
-from shroud import declast
-from shroud import metaattrs
-from shroud import statements
-from shroud import util
-from shroud import wrapp
-
 import unittest
+
+from shroud import ast, declast, metaattrs, statements, util, wrapp
 
 
 class CheckImplied(unittest.TestCase):

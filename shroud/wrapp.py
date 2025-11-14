@@ -33,16 +33,10 @@ import collections
 import os
 import re
 
-from . import error
-from . import declast
-from .declstr import gen_decl, gen_decl_noparams, gen_arg_as_c, gen_arg_as_cxx
-from . import fcfmt
-from . import todict
-from . import statements
-from . import typemap
-from . import util
-from . import whelpers
-from .util import wformat, append_format, append_format_lst
+from . import (declast, error, fcfmt, statements, todict, typemap, util,
+               whelpers)
+from .declstr import gen_arg_as_c, gen_arg_as_cxx, gen_decl, gen_decl_noparams
+from .util import append_format, append_format_lst, wformat
 
 # The dictionary of Python Scope statements.
 py_dict = {} # dictionary of Scope of all expanded py_statements.

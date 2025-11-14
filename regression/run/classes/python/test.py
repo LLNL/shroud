@@ -7,10 +7,10 @@
 # Test Python API generated from tutorial.yaml.
 #
 
-import unittest
-import classes
-
 import sys
+import unittest
+
+import classes
 
 if sys.version_info >= (3, 10):
     TypeError_msg = "object cannot be interpreted as an integer"

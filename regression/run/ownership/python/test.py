@@ -6,9 +6,12 @@
 # Test Python API generated from ownership.yaml.
 #
 
-import numpy as np
 import unittest
+
+import numpy as np
+
 import ownership
+
 
 class Ownership(unittest.TestCase):
     """Test tutorial problem"""

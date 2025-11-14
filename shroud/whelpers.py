@@ -47,11 +47,10 @@ the conversion has failed.
 #
 # This also applies to derived types which are bind(C).
 
-#from . import statements  # This is recursive
-from . import typemap
-from . import util
-
 import json
+
+#from . import statements  # This is recursive
+from . import typemap, util
 
 wformat = util.wformat
 

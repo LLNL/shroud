@@ -6,9 +6,9 @@
 Test utility module
 """
 
-from shroud import util
-
 import unittest
+
+from shroud import util
 
 
 class UtilCase(unittest.TestCase):

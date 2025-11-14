@@ -8,7 +8,9 @@
 #
 
 import unittest
+
 import cenum
+
 
 class NotTrue:
     """Test bool arguments errors"""

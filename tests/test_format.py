@@ -3,13 +3,9 @@
 # SPDX-License-Identifier: (BSD-3-Clause)
 ########################################################################
 
-from shroud import ast
-from shroud import error
-from shroud import fcfmt
-from shroud import statements
-from shroud import util
-
 import unittest
+
+from shroud import ast, error, fcfmt, statements, util
 
 error.get_cursor()
 
@@ -380,4 +376,3 @@ class WFormat(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-        

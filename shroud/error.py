@@ -170,4 +170,3 @@ class ShroudParseError(ShroudError):
         self.message = message
         self.line = line
         self.column = column
-

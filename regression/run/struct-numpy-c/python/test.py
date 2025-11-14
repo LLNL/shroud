@@ -7,9 +7,12 @@
 # struct-numpy-c
 #
 
-import numpy as np
 import unittest
+
+import numpy as np
+
 import cstruct
+
 
 class Struct(unittest.TestCase):
     """Test struct problem"""

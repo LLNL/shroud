@@ -6,15 +6,11 @@
 Fill the fmtdict for C and Fortran wrappers.
 """
 
-from . import error
-from .declstr import gen_arg_as_c, gen_arg_as_cxx
-from . import todict
-from . import statements
-from . import typemap
-from . import util
-from .util import wformat, append_format
-
 import collections
+
+from . import error, statements, todict, typemap, util
+from .declstr import gen_arg_as_c, gen_arg_as_cxx
+from .util import append_format, wformat
 
 # convert rank to f_assumed_shape.
 fortran_ranks = [

@@ -3,12 +3,9 @@
 # SPDX-License-Identifier: (BSD-3-Clause)
 ########################################################################
 
-from shroud import ast
-from shroud import declast
-from shroud import generate
-from shroud import typemap  #
-
 import unittest
+
+from shroud import ast, declast, generate, typemap  # 
 
 
 class Namespace(unittest.TestCase):

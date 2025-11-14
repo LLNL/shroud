@@ -2,10 +2,9 @@
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 
-from shroud import statements
-from shroud import util
-
 import unittest
+
+from shroud import statements, util
 
 default_stmts = statements.default_stmts
 

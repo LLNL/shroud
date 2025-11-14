@@ -2,11 +2,9 @@
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 
-from shroud import ast
-from shroud import util
-from shroud import wrapf
-
 import unittest
+
+from shroud import ast, util, wrapf
 
 
 class CheckAllocatable(unittest.TestCase):

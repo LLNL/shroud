@@ -6,13 +6,11 @@
 Generate Lua module for C++ code.
 """
 
-from . import error
-from .declstr import gen_decl, gen_decl_noparams, gen_arg_as_c, gen_arg_as_cxx, DeclStr
-from . import fcfmt
-from . import statements
-from . import typemap
-from . import util
-from .util import wformat, append_format
+from . import error, fcfmt, statements, typemap, util
+from .declstr import (DeclStr, gen_arg_as_c, gen_arg_as_cxx, gen_decl,
+                      gen_decl_noparams)
+from .util import append_format, wformat
+
 
 class Wrapl(util.WrapperMixin):
     """Generate Lua bindings.

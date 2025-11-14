@@ -3,12 +3,12 @@
 # SPDX-License-Identifier: (BSD-3-Clause)
 ########################################################################
 
-from shroud import main
-
 import os
 import sys
 import sysconfig
 import unittest
+
+from shroud import main
 
 from . import do_test
 

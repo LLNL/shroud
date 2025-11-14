@@ -9,15 +9,8 @@ Generate additional functions required to create wrappers.
 
 import copy
 
-from . import ast
-from . import declast
-from . import declstr
-from . import error
-from . import todict
-from . import statements
-from . import typemap
-from . import util
-from . import visitor
+from . import (ast, declast, declstr, error, statements, todict, typemap, util,
+               visitor)
 
 wformat = util.wformat
 

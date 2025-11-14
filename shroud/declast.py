@@ -14,9 +14,7 @@ import collections
 import copy
 import re
 
-from . import error
-from . import todict
-from . import typemap
+from . import error, todict, typemap
 
 Token = collections.namedtuple("Token", ["typ", "value", "line", "column"])
 

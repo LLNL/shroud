@@ -8,7 +8,9 @@
 #
 
 import unittest
+
 import tutorial
+
 
 class NotTrue:
     """Test bool arguments errors"""

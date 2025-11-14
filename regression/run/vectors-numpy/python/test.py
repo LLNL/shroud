@@ -7,9 +7,12 @@
 # vectors-numpy
 #
 
-import numpy as np
 import unittest
+
+import numpy as np
+
 import vectors
+
 
 class NotTrue:
     """Test bool arguments errors"""

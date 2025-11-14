@@ -16,16 +16,10 @@ import copy
 import os
 import re
 
-from . import error
-from . import declast
+from . import declast, error, fcfmt, statements, todict, typemap, util
 from .declstr import gen_decl, gen_decl_noparams
-from . import fcfmt
-from . import statements
-from . import todict
-from . import typemap
-from . import util
-from .statements import get_func_bind, get_arg_bind
-from .util import wformat, append_format
+from .statements import get_arg_bind, get_func_bind
+from .util import append_format, wformat
 
 default_arg_template = """if (present({f_var})) then
 +{fc_var} = {f_var}-
@@ -2125,5 +2119,3 @@ def locate_c_function(library, node):
         assert C_node._PTR_F_C_index != C_node._function_index
         C_node = library.function_index[C_node._PTR_F_C_index]
     node.C_node = C_node
-
-

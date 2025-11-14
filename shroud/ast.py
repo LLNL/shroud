@@ -8,15 +8,8 @@ Abstract Syntax Tree nodes for Library, Class, and Function nodes.
 
 import copy
 
-from . import error
-from . import declast
+from . import declast, error, fcmem, statements, todict, typemap, util, visitor
 from .declstr import gen_decl
-from . import fcmem
-from . import statements
-from . import todict
-from . import typemap
-from . import util
-from . import visitor
 from .util import wformat
 
 

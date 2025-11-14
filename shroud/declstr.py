@@ -8,6 +8,7 @@ Generating declarations for wrappers from AST.
 
 from . import todict
 
+
 class DeclStr(object):
     """
     Convert Declarator to a specific C declaration.

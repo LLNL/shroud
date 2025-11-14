@@ -5,9 +5,11 @@
 ########################################################################
 
 import os
-from distutils.core import setup, Extension
-import shroud
+from distutils.core import Extension, setup
+
 import numpy
+
+import shroud
 
 outdir = 'build/source'
 if not os.path.exists(outdir):
@@ -28,4 +30,3 @@ setup(
     author_email='yyy@zz',
     ext_modules=[ownership],
 )
-

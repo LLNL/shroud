@@ -41,11 +41,8 @@ Fortran:
 
 import copy
 
-from . import ast
-from . import declast
+from . import ast, declast, error, statements
 from .declstr import gen_decl
-from . import error
-from . import statements
 
 FunctionNode = ast.FunctionNode
 
@@ -1467,4 +1464,3 @@ def process_metaattrs(newlibrary, wlang):
     """Process attributes for a language.
     """
     process_map[wlang](newlibrary, wlang).meta_library()
-        
