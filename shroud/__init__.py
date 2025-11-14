@@ -5,7 +5,6 @@
 """
 Shroud - generate language bindings
 """
-from __future__ import absolute_import
 
 from .main import create_wrapper
 from .metadata import (__version__, __version_info__)

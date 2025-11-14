@@ -10,7 +10,6 @@ Typical usage:
   declast.check_decl(decl, self.symtab)
 """
 
-from __future__ import print_function
 import collections
 import copy
 import re

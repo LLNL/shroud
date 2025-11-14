@@ -14,7 +14,6 @@ make test-decl
 make test-decl-diff
 make test-decl-replace
 """
-from __future__ import print_function
 
 from shroud import declast
 #from shroud import declstr

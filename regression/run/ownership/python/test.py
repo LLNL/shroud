@@ -5,7 +5,6 @@
 #
 # Test Python API generated from ownership.yaml.
 #
-from __future__ import print_function
 
 import numpy as np
 import unittest

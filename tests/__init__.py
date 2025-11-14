@@ -8,8 +8,6 @@ Shroud tests
  (from parent directory) python -m unittest test
 """
 
-from __future__ import absolute_import
-
 import unittest
 
 from . import test_ast

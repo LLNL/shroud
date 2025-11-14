@@ -5,8 +5,6 @@
 """
 Generate Lua module for C++ code.
 """
-from __future__ import print_function
-from __future__ import absolute_import
 
 from . import error
 from .declstr import gen_decl, gen_decl_noparams, gen_arg_as_c, gen_arg_as_cxx, DeclStr

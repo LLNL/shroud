@@ -47,9 +47,6 @@ the conversion has failed.
 #
 # This also applies to derived types which are bind(C).
 
-from __future__ import print_function
-from __future__ import absolute_import
-
 #from . import statements  # This is recursive
 from . import typemap
 from . import util

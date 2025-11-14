@@ -18,7 +18,6 @@ need to be used in a different YAML file.
 
 
 """
-from __future__ import print_function
 
 from . import error
 from . import util

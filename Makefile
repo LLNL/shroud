@@ -6,22 +6,23 @@
 #
 # targets to aid development
 #
+# make virtualenv
+# make develop
+# module load gcc/6.1.0   or newer
 
 
 top := $(CURDIR)
 
-PYTHONEXE := python2
 PYTHONEXE := python3
 
 PYTHON := $(shell which $(PYTHONEXE))
 python.dir := $(dir $(PYTHON))
-venv := $(dir $(PYTHON))virtualenv
 PYTHON_VER := $(shell $(PYTHON) -c "import sys;sys.stdout.write('{v[0]}.{v[1]}'.format(v=sys.version_info))")
 PLATFORM := $(shell $(PYTHON) -c "import sys, sysconfig;sys.stdout.write(sysconfig.get_platform())")
 
 LUA = $(shell which lua)
 
-# build/temp-linux-x86_64-2.7
+# build/temp-linux-x86_64-3.7
 tempdir := build/temp.$(PLATFORM)-$(PYTHON_VER)
 testsdir := $(top)/tests
 venv.dir := $(top)/$(tempdir)/venv
@@ -45,20 +46,11 @@ info:
 
 ########################################################################
 # For development:
-# module load python/2.7.18
 # module load python/3.10.8
 # module load python/3.12.2
 
-# make virtualenv
-# make develop
-# module load gcc/6.1.0   or newer
-
 # For Python3 use venv module.  This solves the problem where virtualenv
 # in the path does not match the python (like toss3).
-
-# For Python2, make sure python2 is in your path.
-# make virtualenv2
-# make develop
 
 # Create a virtual environment.
 # Include system site-packages to get numpy
@@ -67,8 +59,6 @@ $(venv.dir) :
 	$(PYTHON) -m venv --system-site-packages $(venv.dir)
 	$(venv.dir)/bin/pip install --upgrade pip
 #wheel setuptools
-virtualenv2 :
-	$(venv) --system-site-packages $(venv.dir)
 
 pipinstall :
 	$(venv.dir)/bin/pip install .

@@ -5,7 +5,6 @@
 """
 Test utility module
 """
-from __future__ import print_function
 
 from shroud import util
 

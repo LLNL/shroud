@@ -6,7 +6,6 @@
 #
 # Test Python API generated from templates.yaml.
 #
-from __future__ import print_function
 
 import unittest
 import templates

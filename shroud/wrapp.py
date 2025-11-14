@@ -29,9 +29,6 @@ SHPyResult Return Python object.
         Necessary when a return object is combined with others by Py_BuildValue.
 """
 
-from __future__ import print_function
-from __future__ import absolute_import
-
 import collections
 import os
 import re

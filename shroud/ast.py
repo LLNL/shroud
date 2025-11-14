@@ -5,8 +5,6 @@
 """
 Abstract Syntax Tree nodes for Library, Class, and Function nodes.
 """
-from __future__ import print_function
-from __future__ import absolute_import
 
 import copy
 

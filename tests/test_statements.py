@@ -2,8 +2,6 @@
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 
-from __future__ import print_function
-
 from shroud import statements
 from shroud import util
 

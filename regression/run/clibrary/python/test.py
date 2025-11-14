@@ -6,7 +6,6 @@
 #
 # Test Python API generated from clibrary.yaml.
 #
-from __future__ import print_function
 
 import math
 import unittest

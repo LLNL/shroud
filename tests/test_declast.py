@@ -5,7 +5,6 @@
 """
 Parse C++ declarations.
 """
-from __future__ import print_function
 
 from shroud import declast
 from shroud import declstr

@@ -13,9 +13,6 @@ Usage:
    cursor.generate("message")
 """
 
-from __future__ import print_function
-from __future__ import absolute_import
-
 from .declstr import gen_decl
 
 cursor = None

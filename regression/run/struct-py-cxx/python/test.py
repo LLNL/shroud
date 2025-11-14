@@ -6,7 +6,6 @@
 # Test Python API generated from struct-py.yaml.
 # struct-py-cxx
 #
-from __future__ import print_function
 
 import numpy as np
 import unittest

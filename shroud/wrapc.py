@@ -6,8 +6,6 @@
 Generate C bindings for C++ classes
 
 """
-from __future__ import print_function
-from __future__ import absolute_import
 
 import os
 from collections import OrderedDict, namedtuple

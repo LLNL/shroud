@@ -6,7 +6,6 @@
 #
 # Test Python API generated from namespace.yaml.
 #
-from __future__ import print_function
 
 import ns
 import types

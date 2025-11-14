@@ -10,8 +10,6 @@ Variables prefixes used by generated code:
 SHAPE_ Array variable with shape for use with c_f_pointer.
 
 """
-from __future__ import print_function
-from __future__ import absolute_import
 
 import collections
 import copy
