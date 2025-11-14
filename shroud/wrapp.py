@@ -44,10 +44,8 @@ from . import util
 from . import whelpers
 from .util import wformat, append_format, append_format_lst
 
-from collections import OrderedDict
-
 # The dictionary of Python Scope statements.
-py_dict = OrderedDict() # dictionary of Scope of all expanded py_statements.
+py_dict = {} # dictionary of Scope of all expanded py_statements.
 default_scope = None  # for statements
 
 # If multiple values are returned, save up to build a tuple to return.

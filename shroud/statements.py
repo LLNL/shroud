@@ -25,10 +25,8 @@ def read_yaml_resource(name):
 
 from . import util
 
-from collections import OrderedDict
-
 # The dictionary of c and fortran statements.
-fc_dict = OrderedDict() # dictionary of Scope of all expanded fc_statements.
+fc_dict = {} # dictionary of Scope of all expanded fc_statements.
 
 
 class BindArg(object):
@@ -557,7 +555,7 @@ def process_mixin(stmts, defaults, stmtdict):
     cursor = error.cursor
     cursor.push_phase("Check statements")
     stmt_cursor = cursor.push_statement()
-    mixins = OrderedDict()
+    mixins = {}
     index = 0
     for stmt in stmts:
         stmt_cursor.stmt = stmt

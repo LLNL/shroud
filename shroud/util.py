@@ -11,7 +11,6 @@ from . import error
 
 Mapping = collections.abc.Mapping
 Sequence = collections.abc.Sequence
-OrderedDict = collections.OrderedDict
 
 try:
     from collections.abc import Mapping  # For Python 3.10+
@@ -517,7 +516,7 @@ class Header(object):
     Headers are grouped into categories with keys of
     header_impl_include_order.
     The order of headers from cxx_header, typemap and helpers are preserved
-    (via OrderedDict).
+    (a dict is ordered in Python 3.7+).
     Each header is only included once.
 
     Headers are defined from several categories.
@@ -536,10 +535,10 @@ class Header(object):
         self.newlibrary = newlibrary
         self.options = newlibrary.options
         self.header_impl_include_order = dict(
-            typemap=OrderedDict(),
-            file_code=OrderedDict(),
-            cxx_header=OrderedDict(),
-            shroud=OrderedDict(),
+            typemap={},
+            file_code={},
+            cxx_header={},
+            shroud={},
         )
         self.typemaps = {}          # typemaps used by this header.
         self.typemap_field = None
@@ -681,7 +680,7 @@ class Header(object):
         headers[hdr] [ typedef, None, ... ]
         """
         # find which headers are required and who requires them
-        headers = OrderedDict()
+        headers = {}
         for ntypemap in self.typemaps.values():
             hdr = getattr(ntypemap, self.typemap_field)
             for h in hdr:
@@ -704,10 +703,10 @@ class Header(object):
         fmt = self.newlibrary.fmtdict
         
         # find which headers are required and which language requires them.
-        always = OrderedDict()  # used by C and C++.
-        c_headers = OrderedDict()
-        cxx_headers = OrderedDict()
-        wrap_headers = OrderedDict()
+        always = {}  # used by C and C++.
+        c_headers = {}
+        cxx_headers = {}
+        wrap_headers = {}
 
         # Collect headers for c and c++.
         for ntypemap in typemaps.values():
@@ -749,7 +748,7 @@ class Header(object):
         """
         Parameters
         ----------
-        headers : Dict/OrderedDict. [hdr] = [ typemap, None, ... ]
+        headers : Dict. [hdr] = [ typemap, None, ... ]
                None from helper files
         output : append lines of code.
         found : dictionary of headers which have already be #included..

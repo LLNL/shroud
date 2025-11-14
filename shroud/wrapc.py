@@ -8,7 +8,7 @@ Generate C bindings for C++ classes
 """
 
 import os
-from collections import OrderedDict, namedtuple
+from collections import namedtuple
 
 from . import error
 from . import declast
@@ -285,7 +285,7 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
         self.helper_summary = dict(
             c=dict(
                 proto=[],
-                proto_include=OrderedDict(),
+                proto_include={},
                 file=[],
                 cwrap_include=[],
                 cwrap_impl=[],
@@ -293,7 +293,7 @@ class Wrapc(util.WrapperMixin, fcfmt.FillFormat):
             ),
             cxx=dict(
                 proto=[],
-                proto_include=OrderedDict(),
+                proto_include={},
                 file=[],
                 cwrap_include=[],
                 cwrap_impl=[],
@@ -968,7 +968,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         # fileinfo.impl_typedef_nodes.update(node.gen_headers_typedef) Python 3.6
         fileinfo.impl_typedef_nodes.update(node.gen_headers_typedef.items())
-        header_typedef_nodes = OrderedDict()
+        header_typedef_nodes = {}
         if ast.template_arguments:
             for targ in ast.template_arguments:
                 header_typedef_nodes[targ.typemap.name] = targ.typemap
@@ -1332,9 +1332,9 @@ class FileInfo(object):
         self.node = node      # ast.LibraryNode or ast.NamespaceNode
         
         # Include files required by wrapper prototypes
-        self.header_typedef_nodes = OrderedDict()  # [typemap.name] = typemap
+        self.header_typedef_nodes = {}  # [typemap.name] = typemap
         # Include files required by wrapper implementations.
-        self.impl_typedef_nodes = OrderedDict()  # [typemap.name] = typemap
+        self.impl_typedef_nodes = {}  # [typemap.name] = typemap
         # Headers needed by implementation, i.e. helper functions.
         self.header_impl = util.Header(self.newlibrary)
         # Headers needed by interface.

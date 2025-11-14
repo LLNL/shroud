@@ -7,7 +7,6 @@ Check attributes in delcaration.
 Generate additional functions required to create wrappers.
 """
 
-import collections
 import copy
 
 from . import ast
@@ -875,7 +874,7 @@ class GenFunctions(object):
             ordered_functions -
         """
         oldoptions = node.options
-        headers_typedef = collections.OrderedDict()
+        headers_typedef = {}
 
         # targs - ast.TemplateArgument
         for iargs, targs in enumerate(node.template_arguments):

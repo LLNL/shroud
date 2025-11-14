@@ -504,7 +504,6 @@ class ToDict(visitor.Visitor):
             ],
         )
         if node.gen_headers_typedef:
-            # OrderedDict
             d['gen_headers_typedef'] = list(node.gen_headers_typedef.keys())
         if node.struct_parent:
             d["struct_parent"] = node.struct_parent.typemap.name
