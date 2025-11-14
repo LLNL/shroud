@@ -59,7 +59,7 @@ def get_splicers(fname, out):
                         )
                     if end_tag in top:
                         raise RuntimeError(
-                            "Tag already exists - '%s'" % begin_tag
+                            f"Tag already exists - '{begin_tag}'"
                         )
                     top[begin_subtag] = save
                     top = out

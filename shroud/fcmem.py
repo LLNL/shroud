@@ -100,7 +100,7 @@ class CapsuleFmt(object):
             )
 
             for i, name in enumerate(self.capsule_order):
-                output.append("case {}:   // {}\n{{+".format(i, name))
+                output.append(f"case {i}:   // {name}\n{{+")
                 output.extend(self.capsule_code[name][1])
                 output.append("break;\n-}")
 

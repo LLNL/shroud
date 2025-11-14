@@ -182,8 +182,8 @@ def lookup_fc_stmts(path):
     if stmt is None:
         # XXX - return something so code will get generated
         #  It'll be wrong but acts as a starting place.
-        stmt = fc_dict.get("{}_mixin_unknown".format(path[0]))
-        error.cursor.warning("Unknown statement: {}".format(name))
+        stmt = fc_dict.get(f"{path[0]}_mixin_unknown")
+        error.cursor.warning(f"Unknown statement: {name}")
     return stmt
 
 def lookup_c_function_stmt(node):
@@ -421,8 +421,7 @@ def check_stmt_for_deprecated_names(lang, stmt):
     for key in keys:
         if key in deprecated:
             newkey = deprecated[key]
-            error.cursor.warning("field {} is deprecated, changed to {}".format(
-                key, newkey))
+            error.cursor.warning(f"field {key} is deprecated, changed to {newkey}")
             stmt[newkey] = stmt.pop(key)
 
 
@@ -452,7 +451,7 @@ def post_mixin_check_statement(name, stmt):
                     missing.append(field)
                 elif not isinstance(fvalue, list):
                     err = True
-                    error.cursor.warning("{} must be a list.".format(field))
+                    error.cursor.warning(f"{field} must be a list.")
 #            if missing:
 #                error.cursor.warning("c_prototype, i_dummy_decl and i_dummy_arg must all exist together.\n" +
 #                                     "Missing {}.".format(", ".join(missing)))
@@ -502,13 +501,13 @@ def append_mixin(stmt, mixin):
                 continue
             elif key == "mixin_names":
                 # Indent nested mixins
-                value = ["  " + val for val in value]
+                value = [f"  {val}" for val in value]
             if key not in stmt:
                 stmt[key] = []
             if False:#True:
                 # Report the mixin name for debugging
                 if "name" in mixin:
-                    stmt[key].append("# " + mixin["name"])
+                    stmt[key].append(f"# {mixin['name']}")
                 else:
                     stmt[key].append("# append")
             stmt[key].extend(value)
@@ -604,7 +603,7 @@ def process_mixin(stmts, defaults, stmtdict):
                 continue
             tmp_node["name"] = name
             if name in mixins:
-                cursor.warning("Statement name '{}' already exists.".format(name))
+                cursor.warning(f"Statement name '{name}' already exists.")
             else:
                 mixins[name] = tmp_node
 
@@ -618,13 +617,13 @@ def process_mixin(stmts, defaults, stmtdict):
                 if mixin[0] == "#":
                     continue
                 mparts = mixin.split("_", 2)
-                tmp_node["mixin_names"].append("  " + mixin)
+                tmp_node["mixin_names"].append(f"  {mixin}")
                 if len(mparts) < 2:
-                    cursor.warning("Mixin '{}' must have intent 'mixin'.".format(mixin))
+                    cursor.warning(f"Mixin '{mixin}' must have intent 'mixin'.")
                 elif mparts[1] != "mixin":
-                    cursor.warning("Mixin '{}' must have intent 'mixin'.".format(mixin))
+                    cursor.warning(f"Mixin '{mixin}' must have intent 'mixin'.")
                 elif mixin not in mixins:
-                    cursor.warning("Mixin '{}' not found.".format(mixin))
+                    cursor.warning(f"Mixin '{mixin}' not found.")
                 else:
                     append_mixin(tmp_node, mixins[mixin])
 
@@ -641,16 +640,16 @@ def process_mixin(stmts, defaults, stmtdict):
         index += 1
 
         if intent not in valid_intents:
-            cursor.warning("Invalid intent '{}'.".format(intent))
+            cursor.warning(f"Invalid intent '{intent}'.")
 
         # Create the Scope instance.
         if "base" in stmt:
             if stmt["base"] not in stmtdict:
-                cursor.warning("Base '{}' not found.".format(stmt["base"]))
+                cursor.warning(f"Base '{stmt['base']}' not found.")
             else:
                 node = util.Scope(stmtdict[stmt["base"]])
         elif lang not in defaults:
-            cursor.warning("Statement does not start with a known language code: '%s'" % lang)
+            cursor.warning(f"Statement does not start with a known language code: '{lang}'")
         else:
             node = util.Scope(defaults[lang])
         if not node:
@@ -667,13 +666,11 @@ def process_mixin(stmts, defaults, stmtdict):
                 intent = apart[1]
                 anode = util.Scope(node)
                 if intent == "mixin":
-                    cursor.warning("Mixin not allowed in alias '{}'."
-                                   .format(alias))
+                    cursor.warning(f"Mixin not allowed in alias '{alias}'.")
                 elif intent not in valid_intents:
-                    cursor.warning("Invalid intent '{}' in alias '{}'."
-                                   .format(intent, alias))
+                    cursor.warning(f"Invalid intent '{intent}' in alias '{alias}'.")
                 if alias in stmtdict:
-                    cursor.warning("Alias '{}' already exists.".format(alias))
+                    cursor.warning(f"Alias '{alias}' already exists.")
                 else:
                     anode.name = alias
                     anode.intent = intent
@@ -703,7 +700,7 @@ def update_for_language(stmts, lang):
     For lang==c,
       foo_bar.update(foo_bar["lang_c"])
     """
-    specific = "lang_" + lang
+    specific = f"lang_{lang}"
     for item in stmts:
         if specific in item:
             item.update(item[specific])
@@ -712,10 +709,10 @@ def lookup_fc_helper(name, scope="helper"):
     """Lookup Fortran/C helper.
     If not found, print error and return h_mixin_unknown.
     """
-    helper = fc_dict.get("h_helper_" + name)
+    helper = fc_dict.get(f"h_helper_{name}")
     if helper is None:
         helper = fc_dict["h_mixin_unknown"]
-        error.cursor.warning("No such {} '{}'".format(scope, name))
+        error.cursor.warning(f"No such {scope} '{name}'")
     return helper
 
 def add_json_fc_helpers(fmt):
@@ -822,9 +819,9 @@ def print_tree_index(tree, lines, indent=""):
     if "_node" in tree:
         #        final = '' # + tree["_node"]["scope"].name + '-'
         origname = tree["_node"]["name"]
-        lines.append("{}{} -- {}\n".format(indent, parts[-1], origname))
+        lines.append(f"{indent}{parts[-1]} -- {origname}\n")
     else:
-        lines.append("{}{}\n".format(indent, parts[-1]))
+        lines.append(f"{indent}{parts[-1]}\n")
     indent += '  '
     for key in sorted(tree.keys()):
         if key == '_node':
@@ -1093,7 +1090,7 @@ class BaseClassFormat(object):
         return self.cls.typemap.name
 
     def __repr__(self):
-        return "<BasesClassFormat {}>".format(self.cls.typemap.name)
+        return f"<BasesClassFormat {self.cls.typemap.name}>"
 
     def __getattr__(self, name):
         return getattr(self.cls.typemap, name)

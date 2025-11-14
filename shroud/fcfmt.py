@@ -108,7 +108,7 @@ class FillFormat(object):
             # Used with wrap_struct_as=class.
             baseclass = node.parent.ast.unqualified_lookup(options.class_baseclass)
             if not baseclass:
-                self.cursor.warning("Unknown class '{}' in option.class_baseclass".format(options.class_baseclass))
+                self.cursor.warning(f"Unknown class '{options.class_baseclass}' in option.class_baseclass")
                 fmt_class.F_derived_member_base = "===>F_derived_member_base<==="
             else:
                 fmt_class.F_derived_member_base = baseclass.typemap.f_derived_type
@@ -166,7 +166,7 @@ class FillFormat(object):
         options = node.options
         fmt_func = node.fmtdict
         arglist = []
-        setattr(fmt_func, "{}_arglist".format(wlang), arglist)
+        setattr(fmt_func, f"{wlang}_arglist", arglist)
 
         bind_result = statements.fetch_func_bind(node, wlang)
         fmt_result = statements.set_bind_fmtdict(bind_result, fmt_func)
@@ -399,7 +399,7 @@ class FillFormat(object):
             if result_stmt.i_result_var:
                 fmt_result.i_result_var = wformat(
                     result_stmt.i_result_var, fmt_result)
-            fmt_result.i_result_clause = "\fresult(%s)" % fmt_result.i_result_var
+            fmt_result.i_result_clause = f"\x0cresult({fmt_result.i_result_var})"
         
     def fill_interface_arg(self, cls, node, arg, bind):
         declarator = arg.declarator
@@ -458,7 +458,7 @@ class FillFormat(object):
                     result_stmt.f_result_var, fmt_result)
             fmt_result.f_var = fmt_result.f_result_var
             fmt_result.fc_var = fmt_result.f_result_var
-            fmt_result.f_result_clause = "\fresult(%s)" % fmt_result.f_result_var
+            fmt_result.f_result_clause = f"\x0cresult({fmt_result.f_result_var})"
 
     def fill_fortran_arg(self, cls, node, C_node, f_arg, c_arg, bind):
         arg_name = f_arg.declarator.user_name
@@ -487,23 +487,23 @@ class FillFormat(object):
         if prefix is None:
             prefix = lang
 
-        names = stmts.get(lang + "_temps", None)
+        names = stmts.get(f"{lang}_temps", None)
         if names is not None:
             for name in names:
                 setattr(fmt,
-                        "{}_var_{}".format(prefix, name),
-                        "{}{}_{}".format(fmt.c_temp, rootname, name))
+                        f"{prefix}_var_{name}",
+                        f"{fmt.c_temp}{rootname}_{name}")
 
         if prefix == "i":
             # Interfaces have no local variables
             return
 
-        names = stmts.get(lang + "_local", None)
+        names = stmts.get(f"{lang}_local", None)
         if names is not None:
             for name in names:
                 setattr(fmt,
-                        "{}_local_{}".format(prefix, name),
-                        "{}{}_{}".format(fmt.C_local, rootname, name))
+                        f"{prefix}_local_{name}",
+                        f"{fmt.C_local}{rootname}_{name}")
                 if name == "cxx":
                     # Enable cxx_nonconst_ptr to continue to work
                     fmt.cxx_var = fmt.c_local_cxx
@@ -589,7 +589,7 @@ class FillFormat(object):
         elif ntypemap.base == "string":
             if meta["len"] and meta["intent"] == "function":
                 # Declare local variable for function result
-                fmt.f_type = "character(len={})".format(meta["len"])
+                fmt.f_type = f"character(len={meta['len']})"
             elif meta["deref"] == "allocatable":
                 fmt.f_type = "character(len=:)"
             else:
@@ -705,7 +705,7 @@ class FillFormat(object):
                 elif visitor.compute_shape:
                     fmt.f_dimension = fmt.f_assumed_shape
                 else:
-                    fmt.f_dimension = "(" + ",".join(visitor.shape) + ")"
+                    fmt.f_dimension = f"({','.join(visitor.shape)})"
 
     def apply_helpers_from_stmts(self, node, bind):
         """
@@ -749,7 +749,7 @@ def fmt_assignment(library, node):
         iface_import[fmt.f_capsule_data_type_lhs] = True
         iface_import[fmt.f_capsule_data_type_rhs] = True
 
-        fmt.function_suffix = "_" + fmt_rhs.cxx_class
+        fmt.function_suffix = f"_{fmt_rhs.cxx_class}"
         fmt.F_name_api = fmt_lhs.F_name_assign
         fmt.F_name_assign_api = wformat(options.F_name_impl_template, fmt)
         fmt.f_interface_import = ",\t ".join(iface_import.keys())
@@ -780,10 +780,10 @@ def add_fc_helper(node_helpers, helpers, fmt):
             node_helpers[helper] = True
             fmtname = helper_info.f_fmtname
             if fmtname:
-                setattr(fmt, "f_helper_" + helper, fmtname)
+                setattr(fmt, f"f_helper_{helper}", fmtname)
             fmtname = helper_info.c_fmtname
             if fmtname:
-                setattr(fmt, "c_helper_" + helper, fmtname)
+                setattr(fmt, f"c_helper_{helper}", fmtname)
 
 
 ######################################################################
@@ -836,15 +836,14 @@ class ToDimensionC(todict.PrintNode):
             member = self.cls.map_name_to_node[argname]
             if member.may_have_args():
                 if node.args is None:
-                    print("{} must have arguments".format(argname))
+                    print(f"{argname} must have arguments")
                 else:
-                    return "{}{}({})".format(
-                        self.context, argname, self.comma_list(node.args))
+                    return f"{self.context}{argname}({self.comma_list(node.args)})"
             else:
                 if node.args is not None:
-                    print("{} must not have arguments".format(argname))
+                    print(f"{argname} must not have arguments")
                 else:
-                    return "{}{}".format(self.context, argname)
+                    return f"{self.context}{argname}"
         else:
             deref = ''
             arg = self.fcn.ast.declarator.find_arg_by_name(argname)
@@ -919,17 +918,16 @@ class ToDimension(todict.PrintNode):
             member = self.cls.map_name_to_node[argname]
             if member.may_have_args():
                 if node.args is None:
-                    print("{} must have arguments".format(argname))
+                    print(f"{argname} must have arguments")
                 else:
                     self.compute_shape = True
-                    return "obj->{}({})".format(
-                        argname, self.comma_list(node.args))
+                    return f"obj->{argname}({self.comma_list(node.args)})"
             else:
                 if node.args is not None:
-                    print("{} must not have arguments".format(argname))
+                    print(f"{argname} must not have arguments")
                 else:
                     self.compute_shape = True
-                    return "obj->{}".format(argname)
+                    return f"obj->{argname}"
         else:
             if self.fcn.ast.declarator.find_arg_by_name(argname) is None:
                 self.need_helper = True
@@ -1028,9 +1026,9 @@ def set_f_arg_format(node, arg, bind, wlang):
         intent = "IN"
     if intent != "NONE":
         fmt.f_intent = intent
-        fmt.f_intent_attr = ", intent({})".format(fmt.f_intent)
+        fmt.f_intent_attr = f", intent({fmt.f_intent})"
         fmt.i_intent = intent
-        fmt.i_intent_attr = ", intent({})".format(fmt.i_intent)
+        fmt.i_intent_attr = f", intent({fmt.i_intent})"
 
     if meta["optional"]:
         fmt.f_optional_attr = ", optional"
@@ -1079,7 +1077,7 @@ def set_f_var_format(var, bind):
                 fmt.i_kind = ntypemap.f_kind
 
         if meta["len"]:
-            fmt.i_type = "character(len={})".format(meta["len"])
+            fmt.i_type = f"character(len={meta['len']})"
 
         if declarator.array:
             decl = ["("]
@@ -1172,8 +1170,8 @@ class NonConst(object):
 #        fmt.cxx_var = wformat("{{{}}}".format(name), self.state.fmtdict)
         fmt.cxx_var = self.state.fmtdict.get(name)
         if fmt.cxx_var is None:
-            print("Missing name in nonconst.{}".format(name))
-            return "===>nonconst.{}<===".format(name)
+            print(f"Missing name in nonconst.{name}")
+            return f"===>nonconst.{name}<==="
         if self.state.language == "c":
             if arg.const:
                 value = wformat(
@@ -1203,7 +1201,7 @@ class FormatCdecl(object):
 
     def __getattr__(self, name):
         """If name is in fmtdict, use it. Else use name directly"""
-        varname = self.state.fmtdict.get(name) or "===>{}<===".format(name)
+        varname = self.state.fmtdict.get(name) or f"===>{name}<==="
         decl = gen_arg_as_c(self.state.ast, name=varname)
         return decl
 
@@ -1221,7 +1219,7 @@ class FormatCXXdecl(object):
 
     def __getattr__(self, name):
         """If name is in fmtdict, use it. Else use name directly"""
-        varname = self.state.fmtdict.get(name) or "===>{}<===".format(name)
+        varname = self.state.fmtdict.get(name) or f"===>{name}<==="
         decl = gen_arg_as_cxx(self.state.ast,
                               with_template_args=True,
                               name=varname)
@@ -1240,7 +1238,7 @@ class FormatCXXresult(object):
 
     def __getattr__(self, name):
         """If name is in fmtdict, use it. Else use name directly"""
-        varname = self.state.fmtdict.get(name) or "===>{}<===".format(name)
+        varname = self.state.fmtdict.get(name) or f"===>{name}<==="
         decl = gen_arg_as_cxx(self.state.ast,
                               with_template_args=True,
                               add_params=False,  # Required for function results
@@ -1262,7 +1260,7 @@ class FormatCIdecl(object):
 
     def __getattr__(self, name):
         """If name is in fmtdict, use it. Else use name directly"""
-        varname = self.state.fmtdict.get(name) or "===>{}<===".format(name)
+        varname = self.state.fmtdict.get(name) or f"===>{name}<==="
         decl = gen_arg_as_c(self.state.ast, lang=maplang[self.state.wlang])
         return decl
 
@@ -1321,7 +1319,7 @@ class FormatGen(object):
             value = ""
         else:
             value = "(" + ",".join(
-                ["{0}%shape({1})".format(f_var_cdesc, r)
+                [f"{f_var_cdesc}%shape({r})"
                  for r in range(1, rank+1)]) + ")"
         return value
 
@@ -1335,7 +1333,7 @@ class FormatGen(object):
         if int(rank) == 0:
             value = ""
         else:
-            value = ",\t {0}%shape(1:{1})".format(f_var_cdesc, rank)
+            value = f",\t {f_var_cdesc}%shape(1:{rank})"
         return value
 
     @property
@@ -1351,7 +1349,7 @@ class FormatGen(object):
         if int(rank) == 0:
             value = ""
         else:
-            value = "\n{0}%shape(1:{1}) = shape({2})".format(f_var_cdesc, rank, f_var)
+            value = f"\n{f_var_cdesc}%shape(1:{rank}) = shape({f_var})"
         return value
 
     ##########
@@ -1363,7 +1361,7 @@ class FormatGen(object):
         shape = self.bind.meta.get("dim_shape")
         if shape is None:
             return "1"
-        fmtdim = ["({})".format(dim) for dim in shape]
+        fmtdim = [f"({dim})" for dim in shape]
         value = "*".join(fmtdim)
         return value
 
@@ -1379,9 +1377,8 @@ class FormatGen(object):
                                        "===>c_var_cdesc<===")
         fmtshape = []
         for i, dim in enumerate(shape):
-            fmtshape.append("{}->shape[{}] = {};".format(
-                c_var_cdesc, i, dim))
-        value = "\n" + "\n".join(fmtshape)
+            fmtshape.append(f"{c_var_cdesc}->shape[{i}] = {dim};")
+        value = f"\n{'\n'.join(fmtshape)}"
         return value
 
     @property

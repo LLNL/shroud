@@ -76,7 +76,7 @@ class Cursor(object):
 
     def pop_phase(self, name):
         if name != self.phase:
-            raise RuntimeError("pop_phase: does not match: %s" % name)
+            raise RuntimeError(f"pop_phase: does not match: {name}")
         self.phase_list.pop()
         self.phase = self.phase_list[-1]
 
@@ -127,7 +127,7 @@ class Cursor(object):
         node = self.node_list[-1].node
         self.context()
         self.decl_line(node)
-        print("Deprecated: " + message)
+        print(f"Deprecated: {message}")
 
     def warning(self, message):
         self.nwarning += 1
@@ -158,7 +158,7 @@ class Cursor(object):
 
     def check_for_warnings(self):
         if self.nwarning > 0:
-            print("Too many warnings: {}".format(self.nwarning))
+            print(f"Too many warnings: {self.nwarning}")
             raise SystemExit
 
 class ShroudError(Exception):

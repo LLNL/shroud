@@ -138,8 +138,7 @@ class FillMeta(object):
         if intent is not missing:
             intent = intent.lower()
             if intent not in ["getter", "setter"]:
-                self.cursor.generate("Bad value for function intent: {}"
-                                     .format(intent))
+                self.cursor.generate(f"Bad value for function intent: {intent}")
             meta["intent"] = intent
         elif declarator.is_ctor:
             meta["intent"] = "ctor"
@@ -949,9 +948,7 @@ class FillMetaShare(FillMeta):
                 "__line__",
             ]:
                 cursor.generate(
-                    "Illegal attribute '{}' for function '{}'".format(
-                        attr, node.name
-                    )
+                    f"Illegal attribute '{attr}' for function '{node.name}'"
                 )
 
         self.check_common_attrs(node.ast, meta)
@@ -1002,8 +999,7 @@ class FillMetaShare(FillMeta):
                 "__line__",
             ]:
                 cursor.generate(
-                    "Illegal attribute '{}' for argument '{}'".format(
-                        attr, argname))
+                    f"Illegal attribute '{attr}' for argument '{argname}'")
                 continue
 
         arg_typemap = arg.typemap
@@ -1056,15 +1052,13 @@ class FillMetaShare(FillMeta):
                     rank = int(rank)
                 except ValueError:
                     self.cursor.generate(
-                        "rank attribute must have an integer value, not '{}'"
-                        .format(rank)
+                        f"rank attribute must have an integer value, not '{rank}'"
                     )
                 else:
                     meta["rank"] = int(rank)
                     if rank > 7:
                         self.cursor.generate(
-                            "'rank' attribute must be 0-7, not '{}'"
-                            .format(rank)
+                            f"'rank' attribute must be 0-7, not '{rank}'"
                         )
             if not is_ptr:
                 self.cursor.generate(
@@ -1140,8 +1134,7 @@ class FillMetaShare(FillMeta):
             meta["dimension"] = dim
             meta["dim_ast"] = declast.check_dimension(dim)
         except error.ShroudParseError:
-            self.cursor.generate("Unable to parse dimension: {}"
-                                     .format(dim))
+            self.cursor.generate(f"Unable to parse dimension: {dim}")
 
 ######################################################################
 #

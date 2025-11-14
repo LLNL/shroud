@@ -203,7 +203,7 @@ class DeclStr(object):
             if value is True:
                 parts.append(attr)
             else:
-                parts.append("{}({})".format(attr, value))
+                parts.append(f"{attr}({value})")
             space = ""
 
     def ptr(self, pointer, leading_blank=True):
