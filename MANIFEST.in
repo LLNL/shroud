@@ -2,5 +2,18 @@
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 #######################################################################
-include README.md
-recursive-include docs Makefile *.rst *.png *.py
+include README.md LICENSE
+recursive-exclude compiler *
+recursive-exclude docs *
+recursive-exclude examples *
+recursive-exclude pdf *
+recursive-exclude regression *
+recursive-exclude scripts *
+recursive-exclude tests *
+
+# Exclude any compiled Python files
+exclude *.pyc
+exclude .flake8 .gitignore .readthedocs.yml .travis.yml
+exclude CHANGELOG.md HACKING.md Makefile
+recursive-exclude .github *
+recursive-exclude dist-nuitka *

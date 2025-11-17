@@ -12,8 +12,9 @@ name = "llnl-shroud"
 version = "0.14.0"
 description = "Generate Fortran and Python wrappers for C and C++ Libraries"
 readme = "README.md"
-requires-python = ">=2.7"
-license = { file = "LICENSE" }
+requires-python = ">=3.7"
+license = "BSD-3-Clause"
+license-files = ["LICENSE"]
 keywords = ["fortran", "development"]
 authors = [
   { name = "Lawrence Livermore National Laboratory", email = "shroud-users@groups.io" }
@@ -49,6 +50,8 @@ Download = "https://github.com/LLNL/shroud/archive/v0.14.0.tar.gz"
 # test = ["coverage"]
 
 [project.scripts]
+shroud = "shroud.main:main"
+[project.entry-points.console_scripts]
 shroud = "shroud.main:main"
 
 [tool.setuptools]
