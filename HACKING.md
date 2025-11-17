@@ -555,6 +555,12 @@ Then verify the install.
 After a commit hash is created, update
 `scripts/spack/packages/py-shroud/package.py`.
 
+Find the hash with `git rev-list -n 1 v0.14.0`
+
+In the spack-packages repository update
+`repos/spack_repo/builtin/packages/py_shroud`
+
+
 # Annual Changes
 
 Update copyright in `LICENSE`.
