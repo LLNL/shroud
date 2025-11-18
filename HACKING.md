@@ -391,14 +391,14 @@ this purpose. Such a tag is essentially a pointer to a specific commit
 on the *master* branch.
 
 When all pull requests intended to be included in a release have been
-merged into the develop branch, we create a release candidate branch
-from the develop branch. The release candidate branch is used to
+merged into the *develop* branch, we create a release candidate branch
+from the *develop* branch. The release candidate branch is used to
 finalize preparations for the release. At this point, the next release
-cycle begins and work may continue on the develop branch.
+cycle begins and work may continue on the *develop* branch.
 
 When a release candidate branch is ready, it will be merged into the
 *master* branch and a release tag will be made. Then, the *master*
-branch is merged into the develop branch so that changes made to
+branch is merged into the *develop* branch so that changes made to
 finalize the release are included there.
 
 Update `docs/releases.rst` with changes.
@@ -406,7 +406,7 @@ It is best to continually update this file as user visible changes are made.
 
 ## Start Release Candidate Branch
 
-Create a release candidate branch off the develop branch to initiate a
+Create a release candidate branch off the *develop* branch to initiate a
 release. The name of a release branch should contain the associated
 release version name. Typically, we use a name like v0.14.0-rc
 
@@ -424,6 +424,27 @@ branch. Typical changes include:
 * `docs/releases.rst`
 * Update reference files with new version. `make do-test-replace do-test-args=none`
 
+## Build a Python Distribution
+
+Build and test python distribution files. Both a tar file and a wheel.
+Do this before finishing the release to make sure it works.
+
+    make install-twine
+    make sdist
+    make twine-check
+
+Test it in a virtual environment where `SHROUD_DEV` is where the
+git clone is located.
+
+    cd $SHROUD_TEST
+    python3 -m venv venv
+    source venv/bin/activate or source venv/bin/activate.csh
+    pip install $SHROUD_DEV/dist/*.tar.gz
+    $SHROUD_TEST/venv/bin/shroud --version
+
+    cd $SHROUD_DEV
+    make do-test-install install-shroud=$SHROUD_TEST/venv/bin/shroud
+
 ## Create a Pull Request for the Release
 
 Create a pull request to merge the release candidate branch into
@@ -435,7 +456,7 @@ will be merged into *master*.
 
 Merge the release candidate branch into the *master* branch after it
 has been approved and all CI checks have passed. Do not "squash merge"
-as it will make the histories of *master* and develop branches
+as it will make the histories of *master* and *develop* branches
 disagree, and we want to preserve the history. After merging, the
 release candidate branch can be deleted.
 
@@ -477,32 +498,44 @@ Describe in https://help.github.com/articles/creating-releases/
 
 ## Merge Master to Develop
 
-Create a pull request to merge *master* into develop so that changes
+Create a pull request to merge *master* into *develop* so that changes
 in the release candidate branch are integrated into subsequent Shroud
 development.
 
 ## Upload to PyPi
 
-https://pypi.org/manage/account/
+The Pypi website is used by the `pip` utility to install Python modules.
+You should be able to use the `dist` files from
+*Build a Python distribution* since nothing has changed.
+
+* https://pypi.org/project/llnl-shroud/
+
+* https://pypi.org/manage/account/
 
 > You need an account on pypi.org and test.pypi.org.
 
-    make install-twine
-    rm dist/*
-    make sdist
-    make twine-check
-    make testpypi      installed at https://test.pypi.org
+Pypi uses two factor authentication.
+You should also create API tokens used in a `.pypirc` file.
+
+First, updated to https://test.pypi.org.
+
+    make testpypi
 
 Verify the test install.
-https://test.pypi.org/project/llnl-shroud/
 
     cd ~/tmp
     python3 -m venv testpypi
     cd testpypi
     bin/pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ llnl-shroud
+    bin/shroud --version
+
+    cd $SHROUD_DEV
+    make do-test-install install-shroud=$SHROUD_TEST/venv/bin/shroud
 
 If the test install works, then do the real install.
-https://pypi.org/project/llnl-shroud/
+Note that pypi only allows a file to be uploaded once.
+You can delete then reupload within 24 hours.
+Otherwise, a new version number will be required.
 
     make pypi
 
@@ -511,12 +544,22 @@ Then verify the install.
     cd ~/tmp
     python3 -m venv pypi
     cd pypi
-    bin/pip install --index-url https://pypi.org/simple/ llnl-shroud
+    bin/pip install llnl-shroud
+    bin/shroud --version
+
+    cd $SHROUD_DEV
+    make do-test-install install-shroud=$SHROUD_TEST/venv/bin/shroud
 
 ## Spack
 
 After a commit hash is created, update
 `scripts/spack/packages/py-shroud/package.py`.
+
+Find the hash with `git rev-list -n 1 v0.14.0`
+
+In the spack-packages repository update
+`repos/spack_repo/builtin/packages/py_shroud`
+
 
 # Annual Changes
 

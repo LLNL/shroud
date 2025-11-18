@@ -34,7 +34,7 @@ extensions = []
 templates_path = ['_templates']
 
 # The suffix of source filenames.
-source_suffix = '.rst'
+source_suffix = {'.rst': 'restructuredtext'}
 
 # The encoding of source files.
 #source_encoding = 'utf-8-sig'
@@ -99,11 +99,7 @@ pygments_style = 'default'
 try:
     import sphinx_rtd_theme
 except:
-    html_theme = 'classic'
-    html_theme_options = {
-        'codebgcolor': 'lightgrey',
-        'stickysidebar': 'true'
-    }
+    html_theme = 'alabaster'
     html_theme_path = []
 else:
     html_theme = 'sphinx_rtd_theme'

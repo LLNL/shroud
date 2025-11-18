@@ -63,12 +63,6 @@ $(venv.dir) :
 pipinstall :
 	$(venv.dir)/bin/pip install .
 
-# Uses setup.py
-develop-setup :
-	$(PYTHON) setup.py develop
-#	$(PYTHON) setup.py egg_info --egg-base $(venv.dir) develop
-#	$(venv.dir)/bin/pip install --editable .
-
 # Uses pyproject.toml
 develop :
 	$(venv.dir)/bin/pip install --editable .
@@ -111,20 +105,33 @@ install-pybindgen:
 
 ########################################################################
 # Distributing at pypi
-# make install-twine   (needs python3)
+# make install-twine
 
+install-setuptools :
+	$(python.dir)/pip install --upgrade setuptools
 install-twine :
-	$(python.dir)/pip install twine
+	$(python.dir)/pip install --upgrade twine
+	# https://github.com/pypa/twine/issues/1216
+	$(python.dir)/pip install --upgrade packaging
 sdist :
-	$(python.dir)/python setup.py sdist bdist_wheel
+	rm -rf dist
+	$(python.dir)/python -m build
 twine-check:
-	$(python.dir)/twine check dist/shroud-*.tar.gz
+	$(python.dir)/twine check dist/*.tar.gz dist/*.whl
 testpypi:
 	$(python.dir)/twine upload -r testpypi dist/*
 pypi:
 	$(python.dir)/twine upload dist/*
 
 .PHONY : install-twine sdist testpypi pypi
+
+
+# Test sdist files which are installed in a virtual environment. See HACKING.md.
+do-test-install :
+	@export TEST_OUTPUT_DIR=$(top)/$(tempdir)/regression; \
+	export TEST_INPUT_DIR=$(top)/regression; \
+	export EXECUTABLE_DIR=$(install-shroud); \
+	$(PYTHON) regression/do-test.py $(do-test-args)
 
 ########################################################################
 # Creating pex executable
@@ -210,11 +217,9 @@ do-test-nuitka :
 # python must have sphinx installed or else it reports
 # error: invalid command 'build_sphinx'
 doc docs :
-	$(PYTHON) setup.py build_sphinx --builder html
-#--build-dir build/sphinx/html
-#/usr/bin/sphinx-build -b -E html source build\html
+	sphinx-build -b html docs build/sphinx/html
 pdf :
-	$(PYTHON) setup.py build_sphinx -b latex
+	sphinx-build -b latex docs build/sphinx/latex
 	$(MAKE) -C build/sphinx/latex all-pdf
 
 test :

@@ -1,7 +1,8 @@
-# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
-# Spack Project Developers. See the top-level COPYRIGHT file for details.
+# Copyright Spack Project Developers. See COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
+
+from spack_repo.builtin.build_systems.python import PythonPackage
 
 from spack.package import *
 
@@ -17,6 +18,7 @@ class PyShroud(PythonPackage):
 
     version("develop", branch="develop")
     version("master", branch="master")
+    version("0.14.0", tag="v0.14.0", commit="03b46abdb0b7221e05bd7f36e8087f7319fc9cf0")
     version("0.13.0", tag="v0.13.0", commit="4388ff1b689bbe450ba7d1b9bc4e1fe2563a4101")
     version("0.12.2", tag="v0.12.2", commit="939ba0a3e8b5a885da3ddaebb92bf93cb12b0401")
     version("0.12.1", tag="v0.12.1", commit="c09344655371885a42783f8c0ac8a31f2bbffc9f")
